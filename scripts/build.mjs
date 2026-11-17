@@ -142,8 +142,9 @@ function heading(sectionName,title,description){
 function breadcrumbs(labels){
   return `<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="${url('/')}">Atlas</a>${labels.map(([label,href])=>`<span><span class="crumb-separator">/</span>${href?`<a href="${url(href)}">${esc(label)}</a>`:`<span aria-current="page">${esc(label)}</span>`}</span>`).join('')}</nav>`;
 }
+const externalArrow='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>';
 function card(p){
-  return `<a href="${url('/projects/'+encodeURIComponent(p.project.id)+'/')}" class="project-row"><div><span class="micro">${p.project.category==='foundations'?'Foundations':'Research'} · Version ${p.revision}</span><h3>${esc(p.project.title)}</h3><p>${esc(p.project.summary)}</p></div><span aria-hidden="true">↗</span></a>`;
+  return `<a href="${url('/projects/'+encodeURIComponent(p.project.id)+'/')}" class="project-row"><div><span class="micro">${p.project.category==='foundations'?'Foundations':'Research'} · Version ${p.revision}</span><h3>${esc(p.project.title)}</h3><p>${esc(p.project.summary)}</p></div>${externalArrow}</a>`;
 }
 
 const projectFiles=(await readdir(path.join(root,'content','projects'))).filter(f=>f.endsWith('.json')).sort();
@@ -175,13 +176,13 @@ const featured=`<main id="main-content" class="simple-home">
 <h1>Conjecture Atlas</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
 <nav class="simple-quick-links" aria-label="About and feedback">
-<a href="${url('/about/')}"><span>About this site</span><span aria-hidden="true">↗</span></a>
-<a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span><span aria-hidden="true">↗</span></a>
-<a href="${url('/manifesto/')}"><span>Why this site?</span><span aria-hidden="true">↗</span></a>
+<a href="${url('/about/')}"><span>About this site</span>${externalArrow}</a>
+<a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span>${externalArrow}</a>
+<a href="${url('/manifesto/')}"><span>Why this site?</span>${externalArrow}</a>
 </nav></section>
 <section class="simple-tracks wrap"><h2>Two kinds of work</h2><div class="simple-track-list">
-<a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and full proofs, with clear links between results.</p></div><span aria-hidden="true">↗</span></a>
-<a href="${url('/research/')}"><div><h3>Research</h3><p>Conjectures, partial results, and plans for new theories.</p></div><span aria-hidden="true">↗</span></a>
+<a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and full proofs, with clear links between results.</p></div>${externalArrow}</a>
+<a href="${url('/research/')}"><div><h3>Research</h3><p>Conjectures, partial results, and plans for new theories.</p></div>${externalArrow}</a>
 </div></section>
 <section class="simple-projects wrap" id="projects"><h2>Project outlines</h2>
 <div class="simple-project-list">${bundles.map(card).join('')}</div>
@@ -279,10 +280,10 @@ const about=`<main id="main-content" class="wrap index-page simple-about-page">
 ${breadcrumbs([['About']])}
 ${heading('ABOUT THIS SITE','Math is better when we share it.','Conjecture Atlas is a place to read, check, and build mathematics in the open.')}
 <section class="simple-about-section"><h2>Two kinds of projects</h2>
-<div class="simple-track-list"><a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and complete proofs.</p></div><span aria-hidden="true">↗</span></a>
-<a href="${url('/research/')}"><div><h3>Research</h3><p>Open questions, partial results, and plans for new theories.</p></div><span aria-hidden="true">↗</span></a></div></section>
-<section class="simple-about-section"><h2>How we work</h2><p>We use AI to read, organize, and check mathematics. Exact versions and the history of changes remain available. We also aim to use Lean for formal verification.</p><a class="text-link" href="${url('/manifesto/')}">Read more about our goals ↗</a></section>
-<section class="simple-about-section"><h2>Feedback and editing</h2><p>Everyone may join discussions through GitHub Issues. The owner and approved GitHub collaborators are the only people who can publish changes to the site.</p><a class="button button-dark" href="${url('/feedback/')}">Read and share feedback ↗</a></section>
+<div class="simple-track-list"><a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and complete proofs.</p></div>${externalArrow}</a>
+<a href="${url('/research/')}"><div><h3>Research</h3><p>Open questions, partial results, and plans for new theories.</p></div>${externalArrow}</a></div></section>
+<section class="simple-about-section"><h2>How we work</h2><p>We use AI to read, organize, and check mathematics. Exact versions and the history of changes remain available. We also aim to use Lean for formal verification.</p><a class="text-link" href="${url('/manifesto/')}">Read more about our goals ${externalArrow}</a></section>
+<section class="simple-about-section"><h2>Feedback and editing</h2><p>Everyone may join discussions through GitHub Issues. The owner and approved GitHub collaborators are the only people who can publish changes to the site.</p><a class="button button-dark" href="${url('/feedback/')}">Read and share feedback ${externalArrow}</a></section>
 </main>`;
 await save('/about/',loadPage('About this site','About the open mathematical atlas and how to contribute.',about,'/about/'));
 
@@ -295,7 +296,7 @@ ${heading('CONTRIBUTE','How feedback works','Read, question, correct, and build 
 </main>`;
 await save('/feedback/guide/',loadPage('How feedback works','How to post public feedback, upload a LaTeX or Lean ZIP, and follow a GitHub discussion.',guide,'/feedback/guide/'));
 
-const categories=CATEGORIES.map(([id,label])=>`<a href="${githubIssueUrl(id)}">${esc(label)} ↗</a>`).join('');
+const categories=CATEGORIES.map(([id,label])=>`<a href="${githubIssueUrl(id)}">${esc(label)} ${externalArrow}</a>`).join('');
 const filters=CATEGORIES.map(([id,label])=>`<button type="button" data-category="${esc(id)}">${esc(label)}</button>`).join('');
 const feedback=`<main id="main-content" class="wrap index-page discussion-page">
 ${breadcrumbs([['Feedback']])}
