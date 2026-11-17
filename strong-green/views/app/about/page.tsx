@@ -1,0 +1,14 @@
+export const metadata={title:"About this research programme",description:"Mathematical status, public feedback, and revision policy."};
+export default function Page(){return <div className="site-shell"><header className="page-header"><p className="eyebrow">About the project</p><h1>Mathematics with a visible history.</h1><p>A research programme on strong non-Archimedean Green forms and Beilinson–Bloch height pairings.</p></header><article className="article">
+  <h2>Mathematical status</h2><p>Permanent records link each assertion to its statement, hypotheses, argument and declared dependencies.</p>
+  <div className="table-scroll"><table className="data-table"><thead><tr><th>Label</th><th>Meaning</th></tr></thead><tbody>
+  <tr><td>Open</td><td>An unresolved conjecture or research question.</td></tr>
+  <tr><td>Draft · audit pending</td><td>A proposed construction or argument whose indicated interfaces require review.</td></tr>
+  <tr><td>Conditional</td><td>A deduction under its stated hypotheses. Each dependency retains its own status.</td></tr>
+  <tr><td>Internal proof available</td><td>An argument is supplied in the linked research manuscript. This label does not mean journal peer review or formal verification.</td></tr>
+  <tr><td>Review recorded</td><td>A recorded review matched to exact statement, source and dependency versions. Publication alone never supplies this label.</td></tr>
+  </tbody></table></div>
+  <h2>Research and review</h2><p>The manuscripts and records were developed with AI-assisted research and editing. Source versions and proof dependencies are preserved. Automated checks test document consistency and links; mathematical validity requires examination of the argument.</p>
+  <h2>One feedback system</h2><p>This project uses the same GitHub Issues board as the rest of Conjecture Atlas. General comments, mathematical questions, corrections, references and source uploads are welcome. A record or version is useful for a precise correction but is not required for general feedback.</p><p>Issues, comments, GitHub account names and attachments are public. Do not submit confidential material. Posting an Issue does not edit a theorem or publish a proof.</p><p><a className="button" href="/atlas-feedback/?project=strong-green">Project feedback</a> <a className="text-link" href="/atlas-feedback/guide/">How feedback works</a></p>
+  <h2>Revisions and historical editions</h2><p>A proposed correction is reviewed against its exact source and downstream dependencies. Accepted changes are linked to a reviewable repository change and a new edition. Permanent record IDs are retained; earlier public editions remain available at fixed URLs. Privacy removals are identified separately from mathematical corrections.</p><p><a href="/versions">Edition history</a> · <a href="/sources">Published sources</a> · <a href="/atlas-maintenance/">Maintenance and contribution policy</a></p>
+  </article></div>;}

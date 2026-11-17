@@ -1,0 +1,2773 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,enumitem,booktabs,array,xcolor,fancyhdr,longtable}
+\definecolor{resultlink}{HTML}{1F4E79}
+\definecolor{sectionlink}{HTML}{00656D}
+\definecolor{equationlink}{HTML}{643F7A}
+\definecolor{citationlink}{HTML}{2F6B3C}
+\definecolor{urllink}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=sectionlink,citecolor=citationlink,urlcolor=urllink,bookmarksnumbered=true]{hyperref}
+\hypersetup{pdftitle={Domains and constructions of Beilinson--Bloch height pairings},pdfauthor={},pdfsubject={Geometric deductions from the stated actual-form and reciprocity hypotheses}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\PP}{\mathbb P}\newcommand{\LL}{\mathbb L}
+\newcommand{\CH}{\operatorname{CH}}\newcommand{\an}{\mathrm{an}}
+\newcommand{\homol}{\mathrm{hom}}\newcommand{\BC}{\mathrm{BC}}
+\newcommand{\D}{d'd''}\newcommand{\ob}{\mathfrak o}
+\newcommand{\Spec}{\operatorname{Spec}}\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\alg}{\mathrm{alg}}\newcommand{\geomhom}{\mathrm{geom\,hom}}
+\newcommand{\cK}{\mathcal K}\newcommand{\cH}{\mathcal H}
+\newcommand{\rk}{\operatorname{rk}}\newcommand{\im}{\operatorname{im}}
+\newcommand{\secref}[1]{\hyperref[#1]{\textcolor{sectionlink}{Section~\ref*{#1}}}}
+\newcommand{\subref}[1]{\hyperref[#1]{\textcolor{sectionlink}{\S\ref*{#1}}}}
+\newcommand{\thmref}[1]{\hyperref[#1]{\textcolor{resultlink}{Theorem~\ref*{#1}}}}
+\newcommand{\propref}[1]{\hyperref[#1]{\textcolor{resultlink}{Proposition~\ref*{#1}}}}
+\newcommand{\lemref}[1]{\hyperref[#1]{\textcolor{resultlink}{Lemma~\ref*{#1}}}}
+\newcommand{\corref}[1]{\hyperref[#1]{\textcolor{resultlink}{Corollary~\ref*{#1}}}}
+\newcommand{\hypref}[1]{\hyperref[#1]{\textcolor{resultlink}{Hypothesis~\ref*{#1}}}}
+\let\oldeqref\eqref
+\renewcommand{\eqref}[1]{\hyperref[#1]{\textcolor{equationlink}{(\ref*{#1})}}}
+\newcommand{\proofloc}[1]{\emph{Proof.} See \subref{#1}.}
+\setlist{itemsep=3pt,topsep=5pt,leftmargin=2em}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{3pt}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Domains of Beilinson--Bloch height pairings}\fancyhead[R]{}\fancyfoot[C]{\thepage}
+\title{Domains and constructions of\newline Beilinson--Bloch height pairings}
+\author{}
+\date{Research manuscript, version 0.3.0 --- 17 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We organize the geometric domains of zero-curvature Green forms and normalized
+Beilinson--Bloch height pairings. Under explicit actual-form, numerical
+and reciprocity hypotheses, Chow covariance turns decompositions and model
+corrections into constructions on the exact support complement of a prescribed
+cycle. The resulting domains include products of arbitrary curves and
+surfaces, their specified motivic summands, Hilbert schemes of points on
+surfaces, and the surface-moduli motives furnished by B\"ulles. Other
+applications use low-dimensional diagonal support, Chow niveau, flat
+fibrations, and semistable models. We give the precise complementary-degree
+conditions for global heights, construct Chow identities for separated
+hypersurfaces and cyclic covers, and record the field and cover degrees in
+the comparison with classical abelian heights. The geometric proofs are given
+in full; the separately supplied analytic and model statements are identified
+at each use.
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+Let $K/\Q_p$ be finite, with a fixed absolute value, and let $X/K$ be smooth,
+projective and geometrically integral of dimension $n$. For a rational
+codimension-$r$ cycle $Z$, a zero-curvature Green form is required to satisfy
+\begin{equation}\label{eq:strong-G}
+ \int_{X^{\an}\setminus |Z|^{\an}}\gamma_Z\wedge\D\eta
+       =-\int_{Z^{\an}}\eta,
+ \qquad \eta\in B_c^{n-r,n-r}(X^{\an}),
+\end{equation}
+where $B^{\bullet,\bullet}$ is Mihatsch's sheaf of ordinary actual
+$\delta$-forms and
+$\gamma_Z\in B^{r-1,r-1}(X^{\an}\setminus |Z|^{\an})$ has the
+integrability required in this identity. The support $|Z|$ is the support of
+the specified cycle after equal components have been collected. All forms,
+tests and integrals in \eqref{eq:strong-G} use the original valued field $K$.
+
+For complete intersections cut out by global functions, Mihatsch constructs
+such forms explicitly \cite[Theorem 5.5]{Mihatsch}. The general projective
+problem requires a global compatibility condition. The companion obstruction
+theory \cite{InternalGreen,InternalNumerical,InternalCovariance} attaches to a
+Chow class a closed-form Bott--Chern class. Vanishing of this obstruction
+allows one to correct a curved Green form for the original cycle by a global
+ordinary form. The algebraic question is therefore to identify Chow sources
+on which this obstruction vanishes.
+
+The present paper develops this question through Chow decompositions,
+semistable models, and explicit geometric constructions. Its analytic
+foundation is stated in \secref{sec:analytic}; the corresponding internal
+proofs are identified in the accompanying dossier. We first describe the
+abelian transfer, which also provides a classical formula for the height.
+The required algebraic datum is literal.
+For smooth projective varieties $V,W$, a correspondence of degree $a$ from
+$V$ to $W$ means an element of
+$\CH^{\dim V+a}(V\times W)_\Q$; it sends codimension $r$ to codimension
+$r+a$. Write $\CH^r(V)_{\Q,\homol}$ for the kernel of the geometric
+cycle class map, with homological triviality imposed on every geometric
+component when $V$ is disconnected.
+
+\begin{definition}\label{def:abelian-retraction}
+A smooth projective geometrically integral variety $X/k$ has a
+\emph{potential abelian Chow retraction} if there are a finite extension
+$L/k$, abelian varieties $A_j/L$, integers $a_j$, and rational
+correspondences
+\[
+ u_j\in\CH^{\dim X+a_j}(X_L\times_L A_j)_\Q,
+ \qquad
+ v_j\in\CH^{\dim A_j-a_j}(A_j\times_L X_L)_\Q
+\]
+such that
+\begin{equation}\label{eq:diagonal-intro}
+       \Delta_{X_L}=\sum_j v_j\circ u_j
+       \quad\text{in }\CH^{\dim X}(X_L\times_L X_L)_\Q.
+\end{equation}
+The zero-dimensional abelian variety $\Spec L$ is allowed.
+\end{definition}
+
+\paragraph{Standing analytic hypotheses.}
+Throughout this paper, assertions about actual Green forms use the
+obstruction, numerical-model and Chow-covariance hypotheses in
+\secref{sec:analytic}. Assertions about the analytic height additionally
+use the reciprocity and comparison hypotheses in \subref{sub:height-input}.
+Each further model theorem is used with the hypotheses stated at its point
+of application. This convention separates the geometric deductions proved
+here from their companion analytic foundation.
+
+\begin{theorem}[Chow-motivic transfer]\label{thm:main}
+Assume the local analytic hypotheses of \secref{sec:analytic}.
+Let $K/\Q_p$ be finite with its fixed absolute value. Let $X/K$ be smooth,
+projective and geometrically integral, and suppose that $X$ has a potential
+abelian Chow retraction. Then
+\[
+ \ob^r_{X,K}(z)=0
+ \quad\text{for every }z\in\CH^r(X)_{\Q,\homol}
+ \quad\text{and every }r.
+\]
+For $1\le r\le\dim X$, every specified rational cycle $Z$ representing
+such a class has an ordinary actual Green form on
+$X^{\an}\setminus |Z|^{\an}$ satisfying \eqref{eq:strong-G}.
+For a fixed $r$, it is enough that the correspondences in
+\eqref{eq:diagonal-intro} act as the identity on
+$\CH^r(X_L)_{\Q,\homol}$.
+\end{theorem}
+
+\proofloc{proof:main}
+
+We apply this theorem to three classes of varieties. The block conditions in
+the following statement are geometric conditions over an algebraic closure.
+
+\begin{theorem}[Explicit families]\label{thm:families}
+Over a field $k$ of characteristic zero, each of the following varieties
+has a potential abelian Chow retraction, as does every finite product of
+them and every smooth projective geometrically integral variety becoming
+isomorphic to such a product over a finite extension.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item A positive-dimensional hypersurface
+\begin{equation}\label{eq:binary-family}
+ \sum_{i=1}^{b}f_i(x_{i0},x_{i1})+\sum_{j=1}^{a}c_jt_j^d=0
+ \quad\text{in }\PP^{2b+a-1}_k,
+\end{equation}
+where $d\ge2$, $2b+a\ge3$, the variable blocks are disjoint, each
+$c_j\ne0$, and each binary form $f_i$ has a reduced zero divisor on $\PP^1$.
+\item A cubic hypersurface in $N=5b+a\ge3$ variables, where
+$0\le a\le4$, given by
+\begin{equation}\label{eq:cubic-family}
+       \sum_{i=1}^{b}f_i(x_{i1},\ldots,x_{i5})+g(y_1,\ldots,y_a)=0.
+\end{equation}
+Each $f_i=0$ is a smooth cubic threefold. For $a=0$ the last term is
+omitted; for $a=1$ it is $cy_1^3$ with $c\ne0$; for $a\ge2$ it defines a smooth
+cubic hypersurface in $\PP^{a-1}$.
+\item The cyclic cover of $P=\PP^n_k$, $n\ge1$, defined by
+\begin{equation}\label{eq:cyclic-family}
+ X(F;q,m)=\Spec_P\left(\bigoplus_{j=0}^{q-1}\mathcal O_P(-jm)\right),
+ \qquad u^q=F,
+\end{equation}
+where $q\ge2$, $m\ge1$, and $F$ is a degree-$qm$ polynomial in
+$n+1=2b+a\ge2$ variables, with disjoint reduced binary blocks and
+nonzero unary terms as in \eqref{eq:binary-family}.
+\end{enumerate}
+Under the local analytic hypotheses, over every finite $K/\Q_p$ these varieties satisfy the
+conclusion of \thmref{thm:main} for every residue prime $p$.
+\end{theorem}
+
+The proofs are in \subref{proof:binary}, \subref{proof:cubic} and
+\subref{proof:cyclic}, respectively. Products are handled by a tensor
+identity of Chow correspondences. The cubic motive in (ii) is the
+abelian-type motive of Laterveer \cite[Theorem 5]{Laterveer}; the work
+needed here is its finite algebraic descent and its use in the original
+valued-field theory. The construction in (i) follows the controlled join
+of Shioda--Katsura \cite[Remark 1.10]{SK}.
+
+\begin{theorem}[Normalized height formula]\label{thm:height-main}
+Assume the local and global analytic hypotheses of \secref{sec:analytic}.
+Let $F$ be a number field and let $X/F$ be smooth, projective and
+geometrically integral of dimension $n\ge1$, with a potential abelian
+Chow retraction. The canonical normalized analytic height of the companion
+height theory is defined on
+\begin{equation}\label{eq:height-domain}
+ \CH^r(X)_{\Q,\homol}\times\CH^{n+1-r}(X)_{\Q,\homol},
+ \qquad 1\le r\le n.
+\end{equation}
+For any factorization \eqref{eq:diagonal-intro} over a finite $E/F$,
+\begin{equation}\label{eq:height-main}
+ h_X^{\an}(z,w)=\frac1{[E:\Q]}\sum_j
+       \bigl\langle u_{j*}z_E,{}^tv_{j*}w_E\bigr\rangle_{A_j,\mathrm{Kun}}.
+\end{equation}
+Here the classical abelian pairing has the normalization of K\"unnemann
+\cite{Kun}. The two image codimensions are
+$r+a_j$ and $\dim A_j+1-r-a_j$. Terms in zero or impossible homological
+degrees are omitted. The value is independent of the factorization and
+the finite field of definition.
+\end{theorem}
+
+\proofloc{proof:height}
+
+
+% Source: papers/pairing-sections/overview.tex
+\subsection{The geometric domains}
+
+For a smooth projective variety $V/K$, write $\mathsf V(V)$ for
+\[
+ \CH^r(V)_{\Q,\geomhom}\subseteq\ker\ob^r_{V,K}
+ \quad\text{for every }r.
+\]
+Here and below, the local assertions use the companion results stated in
+\secref{sec:analytic}. A number-field variety has a \emph{full height
+domain} if both complete groups in \eqref{eq:height-domain} are in the
+domain of the companion normalized pairing for every $r$.
+
+\begin{theorem}[Geometric domains]\label{thm:geometric-domains}
+Assume the analytic hypotheses of \secref{sec:analytic} and the model
+inputs specified in the cited sections.
+Let $K/\Q_p$ be finite. Each of the following smooth projective
+geometrically integral varieties has property $\mathsf V$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item A variety of dimension at most three; a geometrically uniruled
+fourfold; or a variety of dimension at most five whose universal
+geometric rational $\CH_0$ is supported in dimension at most three.
+\item A product
+\[
+ T\times\prod_a C_a\times\prod_b S_b,
+\]
+where the $C_a$ are arbitrary smooth projective curves, the $S_b$ are
+arbitrary smooth projective surfaces, and $T$ has potentially good
+projective reduction. The coefficient $T$ may be a point.
+\item A variety whose rational Chow motive, after a finite extension,
+is a retract of a finite direct sum of Tate twists of the varieties in
+\textup{(ii)}. In particular this includes products of point Hilbert
+schemes of arbitrary surfaces with curves and the allowed coefficient
+$T$, as well as the surface-moduli motives specified in
+\secref{sec:products}.
+\item A variety in one of the full-degree Chow-niveau, complete-intersection,
+or flat-fibration cases of \secref{sec:niveau}, or satisfying an
+all-degree numerical model criterion of \secref{sec:models}.
+\end{enumerate}
+For every specified geometrically homologically trivial cycle, property
+$\mathsf V$ supplies a form satisfying \eqref{eq:strong-G} on its exact
+support complement. For a number-field variety to which one of these
+criteria applies at every finite completion, the normalized pairing has
+a full height domain.
+\end{theorem}
+
+The proofs of (i), (ii)--(iii), and (iv) occupy
+\secref{sec:endpoints}, \secref{sec:products}, and
+\secref{sec:niveau}--\secref{sec:models}, respectively. The global
+assertion follows from \lemref{lem:two-degrees}. Geometric constructions
+can be base changed to all completions; a reduction condition on $T$ is
+imposed separately at each finite place.
+
+The distinction between a local degree range and a global height range
+is useful even when all degrees are not covered. If $S\subseteq
+\{1,\ldots,n\}$ is the set of local degrees established at every finite
+place, then the full height pairs occur in
+\begin{equation}\label{eq:range-intersection}
+ S\cap(n+1-S).
+\end{equation}
+For example, small diagonal support gives local degrees $r\leq2$ or
+$r\geq n-2$; for $n\geq6$ the corresponding full height degrees are
+$r\leq2$ or $r\geq n-1$.
+
+On an arbitrary smooth projective variety, the same formalism applies
+to subgroups. In particular algebraically trivial cycles lie in the
+local obstruction kernel in every degree. This gives the pairing on
+the two algebraically trivial groups described in
+\secref{sec:cycle-domains}.
+
+
+
+\subsection{Proof strategy and relation to earlier work}
+
+The local transfer has three steps. First, K\"unnemann's exact complex on
+a strictly semistable abelian model produces a cycle extension whose
+restriction to every special-fiber component is homologically trivial.
+The companion numerical criterion then annihilates the actual
+obstruction. Second, the diagonal identity expresses an original Chow
+class as a sum of images of homologically trivial abelian classes.
+Chow-kernel covariance transfers their vanishing and the full finite
+degree descends it to $K$. Third, the original curved Green pair is
+corrected on $X$ itself. This last step retains the original support.
+
+For the separated-variable families, a single join step has source
+$\Bl_C(A\times B)$ with a smooth codimension-two center $C$. Both the
+ambient product and the center have lower-complexity Chow factorizations.
+The exact blowup identity and the degree retraction therefore give a
+recursive factorization for the target. For cyclic covers, the additional
+map from an ordinary hypersurface is finite flat everywhere, of rank $m$.
+Its full rank is the factor in the Chow identity and in the height formula.
+
+The geometry of abelian-type motives and the classical abelian height are
+inputs to this argument. K\"unnemann's height already has correspondence
+functoriality and finite-extension compatibility \cite[\S1]{Kun}. Our
+height formula records its realization by the companion ordinary-form
+theory and the precise scalar in the explicit Chow constructions.
+The companion references in \secref{sec:analytic} separate this analytic
+input from the algebraic arguments proved here.
+
+After the analytic input and abelian transfer, we treat the endpoint
+degrees, small diagonal support, products, Chow niveau, and flat
+fibrations. The explicit Chow identities then give separated hypersurfaces
+and cyclic covers. The final sections discuss model criteria, global
+families, and the normalized height formulas.
+
+\section{The analytic hypotheses}\label{sec:analytic}
+
+\subsection{Ordinary forms and the cycle obstruction}\label{sub:obstruction}
+
+Fix $K$ as above and set $D=d'd''$. For a smooth projective $K$-variety,
+the actual Bott--Chern group used in the companion theory is
+\begin{equation}\label{eq:BC}
+ H_{\BC}^{r,r}(X^{\an})=
+ \frac{\{\omega\in B^{r,r}(X^{\an}):d'\omega=d''\omega=0\}}
+ {D B^{r-1,r-1}(X^{\an})}.
+\end{equation}
+The real vector-space structure of this group is retained, and the
+cycle map below is $\Q$-linear.
+
+\begin{hypothesis}[Actual cycle obstruction]\label{prop:obstruction}
+There is a Chow-invariant map
+\[
+ \ob^r_{X,K}:\CH^r(X)_\Q\longrightarrow H_{\BC}^{r,r}(X^{\an}).
+\]
+For a specified cycle $Z$, the construction gives an ordinary actual
+form $G_Z$ on its exact support complement and a closed global ordinary
+form $\Omega_Z$ such that
+\begin{equation}\label{eq:curved}
+       D[G_Z]+\delta_Z=[\Omega_Z],
+       \qquad \ob^r_{X,K}([Z])=[\Omega_Z].
+\end{equation}
+The equality is tested against every complementary compact actual form,
+with the integrability supplied by the construction. If
+$\ob^r_{X,K}([Z])=0$, there is a global
+$\Psi\in B^{r-1,r-1}(X^{\an})$ with $D\Psi=\Omega_Z$, and
+$G_Z-\Psi$ satisfies \eqref{eq:strong-G} on the same complement.
+\end{hypothesis}
+
+This is the curved-pair and obstruction construction of
+\cite{InternalGreen}, specifically the formulas PC7, OC1 and OC2 and
+their exact-support sufficient direction. The current notation in
+\eqref{eq:curved} expresses the integral identity of the supplied
+ordinary forms.
+
+\subsection{Numerical witnesses and Chow covariance}\label{sub:covariance}
+
+We state the numerical input in the finite constant-field case used in
+this paper. A pure operational representative of a codimension-$r$
+cycle on a regular model means a rational virtual vector bundle whose
+Chern character has that cycle in degree $r$ and vanishes in all other
+degrees. Such a representative is part of the companion construction.
+
+\begin{hypothesis}[Finite numerical-model criterion]\label{prop:numerical}
+Let $V/K$ be smooth projective and integral, let $1\le r\le\dim V$,
+and let $z\in\CH^r(V)_\Q$. Suppose that a smooth integral finite
+constant-field cover $V'\to V$, of complete native degree $e>0$, has a
+regular projective model carrying a pure operational representative of
+the pulled-back class $z$. Suppose that its degree-$r$ character pairs
+to zero with every integral vertical $r$-cycle, with all
+scheme-theoretic fiber multiplicities and residue degrees retained.
+Then $\ob^r_{V,K}(z)=0$.
+\end{hypothesis}
+
+This is the finite-cover case of \cite{InternalNumerical}, Theorem
+\texttt{r12a:finite-numerical-cover}. It applies as well when the
+constant field of $V$ is a finite extension of $K$: the model and its
+numerical degrees are then regarded over $K^\circ$.
+
+Write $\mathcal K_K^r(V)=\ker\ob^r_{V,K}$. The following covariance
+is an assertion about Chow classes.
+
+\begin{hypothesis}[Native Chow-kernel covariance]\label{prop:covariance}
+In the fixed $K$-theory, rational Chow correspondences between smooth
+projective varieties preserve $\mathcal K_K^*$, with their usual
+codimension shifts. In particular proper Chow pushforward preserves
+the kernel. For a finite extension $L/K$, the projection
+$\pi:V_L\to V$ satisfies
+\[
+          \pi_*\pi^*z=[L:K]z.
+\]
+Thus native-$K$ obstruction zero of $\pi^*z$ implies obstruction zero
+of $z$. Finite actual trace and integration use the full degree
+$[L:K]$ and the absolute value extending that of $K$.
+\end{hypothesis}
+
+The source is \cite{InternalCovariance}, Theorem
+\texttt{r16cov:correspondences}, together with the full finite trace
+theorem FT16. If $L/K$ has ramification index $e(L/K)$ and residue
+degree $f(L/K)$, then
+\begin{equation}\label{eq:local-normalization}
+ [L:K]=e(L/K)f(L/K),\qquad
+ c_L=-\log|\varpi_L|=c_K/e(L/K).
+\end{equation}
+
+There is a useful distinction in this convention. If $V$ is defined
+over $L$, its native obstruction $\ob_{V,K}$ is calculated on $V$
+regarded as a $K$-scheme. A correspondence over $L$ is inserted into
+the open-and-closed diagonal factor
+\[
+       V\times_L W\hookrightarrow V\times_K W.
+\]
+Composition on this factor is composition over $L$. This realizes an
+$L$-Chow identity inside the original $K$-theory without changing its
+coefficients.
+
+\subsection{Heights on the admitted Chow domain}\label{sub:height-input}
+
+For number fields, use the standard absolute values: the finite ones
+extend $|p|=p^{-1}$ and the archimedean ones are the usual absolute
+values, with the companion product-formula weights. For a
+number-field variety $X/F$, let $\mathcal H^r(X)$ be the subgroup
+of $\CH^r(X)_{\Q,\homol}$ whose localizations at all finite places
+have zero actual obstruction.
+
+\begin{hypothesis}[Admitted-domain reciprocity and comparison]\label{hyp:height-input}
+The companion constructions \cite{InternalHeight} define a canonical normalized real pairing
+\[
+ h_X^{\an}:\mathcal H^r(X)\times\mathcal H^{n+1-r}(X)\longrightarrow\R.
+\]
+It includes the archimedean terms, local residue identities, global
+reciprocity, and descent to rational equivalence. On admitted classes
+it is invariant under finite number-field extension. For an actual
+Chow correspondence $v:A\rightsquigarrow X$, its adjunction formula is
+\begin{equation}\label{eq:height-adjunction}
+       h_X^{\an}(v_*a,w)=h_A^{\an}(a,{}^tv_*w).
+\end{equation}
+For an abelian variety $A/E$, the comparison theorem gives
+\begin{equation}\label{eq:abelian-comparison}
+       h_A^{\an}(a,b)=[E:\Q]^{-1}\langle a,b\rangle_{A,\mathrm{Kun}}.
+\end{equation}
+\end{hypothesis}
+
+The three assertions are H16, HA16 and MM16 in the fixed companion version.
+Their original proof texts are supplied separately. In particular the
+height hypothesis includes independence of the Green choices, local
+reciprocity, good-place vanishing and rational-equivalence descent;
+it is a separate input from the existence of local Green forms.
+
+\section{Abelian varieties and Chow-motivic transfer}\label{sec:transfer}
+
+\subsection{The local abelian model}
+
+Let $R$ be a complete discrete valuation ring of characteristic-zero
+fraction field $F$ and finite residue field $k$. Let $\mathcal P/R$ be
+regular, projective and strictly semistable of relative dimension $d$,
+with special fiber $Y=\bigcup_iD_i$. For a smooth projective
+$k$-variety $D$, put
+\[
+ A^q(D)=\operatorname{im}\bigl(\CH^q(D)_\Q\to
+ H^{2q}_{\textnormal{ét}}(D_{\bar k},\Q_\ell(q))\bigr),
+ \qquad \ell\ne\operatorname{char}k.
+\]
+Using the signed restriction $\rho$ and Gysin $\gamma$ maps on the
+component intersections, define
+\begin{align*}
+ A^q(Y)&=\ker\bigl(A^q(Y^{(1)})\xrightarrow{\rho}A^q(Y^{(2)})\bigr),\\
+ A_s(Y)&=\operatorname{coker}\bigl(
+ A^{d-s-1}(Y^{(2)})\xrightarrow{\gamma}A^{d-s}(Y^{(1)})\bigr).
+\end{align*}
+Here $Y^{(a)}$ is the disjoint union of the $a$-fold intersections.
+
+For an abelian variety over $F$, K\"unnemann constructs such a model
+after a finite extension and proves that the natural homology map
+$A_s(Y)\to H^{\textnormal{ét}}_{2s}(Y_{\bar k},\Q_\ell(-s))$
+is injective and that
+\begin{equation}\label{eq:kun-complex}
+ A_{d+1-r}(Y)\xrightarrow{i^*i_*}A^r(Y)
+                  \xrightarrow{\cap[Y]}A_{d-r}(Y)
+\end{equation}
+is exact at the middle term \cite[Theorems 5.6 and 6.6]{Kun}.
+The complete-DVR clause of the correction in \cite[\S5.8]{Kun}
+is the one used here.
+
+\begin{lemma}\label{lem:model-correction}
+Assume the injectivity and exactness just stated. Every
+$z\in\CH^r(\mathcal P_F)_{\Q,\homol}$ has an extension
+$\Theta_0\in\CH^r(\mathcal P)_\Q$ whose refined restriction to
+each $D_i$ is geometrically homologically trivial.
+\end{lemma}
+
+\begin{proof}
+Choose a cycle extension $\Theta$ and let $a\in A^r(Y)$ be its
+component restrictions. The class $a\cap[Y]$ is the cycle-image class
+of the specialization of $z$. Its geometric homology class is zero
+because specialization commutes with the cycle class map. Injectivity
+gives $a\cap[Y]=0$ in $A_{d-r}(Y)$, and exactness of
+\eqref{eq:kun-complex} supplies $b\in A_{d+1-r}(Y)$ with
+$i^*i_*b=a$.
+
+The map $\CH_{d+1-r}(Y)_\Q\to A_{d+1-r}(Y)$ is surjective.
+Lift $b$ to $\beta$ and set $\Theta_0=\Theta-i_*\beta$. Its generic
+restriction is $z$, and its tuple of component cycle classes is zero.
+Since $A^r(Y)$ is a subspace of the direct sum of the component
+cycle-image groups, each component restriction has zero class.
+\end{proof}
+
+\begin{proposition}\label{prop:abelian-zero}
+For every abelian variety $A/K$ and every $r$,
+$\CH^r(A)_{\Q,\homol}\subset\mathcal K_K^r(A)$. The same
+holds for an abelian variety over a finite $L/K$ regarded as a
+$K$-scheme, with homological triviality on every geometric component.
+\end{proposition}
+
+\begin{proof}
+Choose the finite extension and the abelian model supplied above.
+By \lemref{lem:model-correction}, the pulled-back cycle has an
+extension with homologically trivial component restrictions. These
+restrictions are numerically trivial. Its pure operational
+representative therefore has zero pairing with every integral
+vertical $r$-cycle: such a cycle lies in a special-fiber component,
+and the pairing is the numerical pairing of the refined restriction
+there. \hypref{prop:numerical} gives the desired native obstruction
+zero.
+
+If $A$ is over $L$, choose its semistable extension over a finite
+$M/L$ and regard the model over $K^\circ$. Residue degrees multiply
+the numerical pairings, and ramification is included in the
+scheme-theoretic multiplicities. Their zero values are unchanged.
+The same criterion applies to the finite $K$-morphism $A_M\to A$.
+The degree-zero and out-of-range homological Chow groups vanish.
+\end{proof}
+
+\subsection{Proof of the transfer theorem}\label{proof:main}
+
+Let $L/K$ and $(u_j,v_j)$ be a retraction as in
+\eqref{eq:diagonal-intro}, and let $z\in\CH^r(X)_{\Q,\homol}$.
+Every $u_{j*}z_L$ is geometrically homologically trivial.
+By \propref{prop:abelian-zero}, it lies in the native group
+$\mathcal K_K^{r+a_j}(A_j)$. Applying \hypref{prop:covariance} to
+$v_j$ and summing the diagonal identity gives
+\[
+               z_L=\sum_jv_{j*}u_{j*}z_L\in\mathcal K_K^r(X_L).
+\]
+As explained in \subref{sub:covariance}, this is an identity in the
+original $K$-theory. The finite projection $\pi:X_L\to X$ gives
+$\pi_*z_L=[L:K]z$. Kernel covariance and rational division by the
+complete degree imply $\ob^r_{X,K}(z)=0$.
+
+For the specified cycle $Z$, choose the pair $(G_Z,\Omega_Z)$ of
+\hypref{prop:obstruction}. Its vanishing class supplies a global
+$\Psi$ with $D\Psi=\Omega_Z$. Thus $\gamma_Z=G_Z-\Psi$ has
+the required support, integrability and test identity. The same
+argument proves the fixed-degree version, since only the action
+of the diagonal on $z_L$ was used. This proves \thmref{thm:main}.
+
+
+% Source: papers/pairing-sections/endpoints_support.tex
+\section{Endpoint degrees and small diagonal support}\label{sec:endpoints}
+
+\subsection{Chow transfer and complementary degrees}
+
+\begin{lemma}[Transfer through a Chow diagonal]\label{lem:general-transfer}
+Suppose that over a finite extension $L/K$ there are smooth projective
+varieties $V_j$ and correspondences of opposite degrees satisfying
+\[
+ \Delta_{X_L}=\sum_jv_j\circ u_j
+ \quad\text{in }\CH^{\dim X}(X_L\times_LX_L)_\Q.
+\]
+Fix $r$. If every homologically trivial image $u_{j*}z_L$ is in the
+native obstruction kernel of $V_j$, then
+$z\in\cK_K^r(X)$. In particular $\mathsf V(V_j)$ for every $j$
+implies $\mathsf V(X)$.
+\end{lemma}
+
+\begin{proof}
+Cycle classes commute with correspondences, so the image classes are
+homologically trivial. Kernel covariance sends $v_{j*}u_{j*}z_L$ into
+$\cK_K^r(X_L)$. Sum the diagonal and push down by $X_L\to X$.
+The result is $[L:K]z$, and rational division gives the conclusion.
+All correspondences over $L$ are interpreted on the diagonal
+open-and-closed factor of the product over $K$, as in
+\subref{sub:covariance}. Finally apply the curved-pair theorem to the
+specified representative of $z$.
+\end{proof}
+
+\begin{lemma}[The two-degree criterion]\label{lem:two-degrees}
+Let $X/F$ have dimension $n$, and let $S\subseteq\{1,\ldots,n\}$.
+Suppose that at every finite place $v$, all geometric homological
+classes in degrees $r\in S$ have zero native obstruction. Then
+$\cH^r(X)=\CH^r(X)_{\Q,\geomhom}$ for $r\in S$. The full height
+pairing in degrees $(r,n+1-r)$ is therefore defined whenever
+$r\in S\cap(n+1-S)$.
+\end{lemma}
+
+\begin{proof}
+Geometric cycle classes commute with passage to $F_v$. Thus every
+global homologically trivial class in an asserted degree belongs to
+each local kernel defining $\cH^r(X)$. The opposite inclusion is in
+the definition of $\cH^r(X)$. Apply the companion pairing to both
+resulting equalities.
+\end{proof}
+
+\begin{proposition}[Endpoint input]\label{prop:endpoint-input}
+For a smooth projective $n$-fold over the original $K$, geometric
+homological divisors, zero-cycles and one-cycles have zero obstruction.
+Thus $\mathsf V(X)$ holds if $n\leq3$.
+\end{proposition}
+
+The divisor and zero-cycle assertions are the endpoint results in
+\cite{InternalEndpoints}. For one-cycles, the precise input is the
+regular-model curve correction followed by dominant obstruction
+descent, also recorded there. Its proof proceeds as follows. Choose a
+projective strictly semistable alteration $V\to X$, over a finite
+constant extension, of the same dimension as $X$. The pullback of a
+homologically trivial one-cycle remains a one-cycle. The curve
+correction produces a rational virtual bundle on the regular model
+whose generic degree-$(n-1)$ character is that class and whose degree
+on every vertical $(n-1)$-cycle is zero. The numerical-model criterion
+annihilates its obstruction; dominant descent gives the assertion on
+$X$. This uses the full degree of the alteration and leaves the final
+curved-pair correction on $X$.
+
+\subsection{Two orientations of the diagonal}\label{sub:small-support}
+
+\begin{definition}\label{def:small-support}
+A rational small-support diagonal for $X$, of dimension $n$, is an
+identity
+\begin{equation}\label{eq:small-diagonal}
+ \Delta_X=A+B,\qquad
+ \operatorname{Supp}A\subseteq D\times X,\quad
+ \operatorname{Supp}B\subseteq X\times T,
+\end{equation}
+in rational Chow, where $D$ is a divisor and $\dim T\leq3$.
+The identity may be supplied after a finite extension of the ground
+field. The supports belong to actual cycle representatives of $A,B$.
+\end{definition}
+
+\begin{theorem}[Small diagonal support]\label{thm:small-support}
+If $X$ has a small-support diagonal, its complete geometric homological
+Chow groups are in the local obstruction kernel for
+\begin{equation}\label{eq:small-support-range}
+ r\leq2\quad\text{or}\quad r\geq n-2.
+\end{equation}
+It has property $\mathsf V$ if $n\leq5$. Over a number field, the
+same geometric hypothesis gives a full height domain if $n\leq5$;
+for $n\geq6$ it gives the full pairs with $r\leq2$ or $r\geq n-1$.
+\end{theorem}
+
+\begin{proof}
+Resolve the components of $D$ and $T$, with maps $a_i:D_i\to X$ and
+$b_j:T_j\to X$. A cycle supported on the image of a proper surjection
+can be lifted rationally: choose a closed point of the fiber above its
+generic point, take its closure, and divide by the full generic
+degree. This also applies to cycles contained in exceptional images.
+It lifts \eqref{eq:small-diagonal} to correspondences
+\[
+ U_i\in\CH^{n-1}(D_i\times X)_\Q,\qquad
+ V_j\in\CH^{t_j}(X\times T_j)_\Q,\quad t_j=\dim T_j\leq3.
+\]
+The identity and its transpose act as
+\begin{align}
+ z&=\sum_iU_{i*}a_i^*z+\sum_jb_{j*}V_{j*}z,
+       \label{eq:small-forward}\\
+ z&=\sum_i a_{i*}{}^tU_{i*}z+\sum_j{}^tV_{j*}b_j^*z.
+       \label{eq:small-transpose}
+\end{align}
+All intermediate classes are geometrically homologically trivial.
+In \eqref{eq:small-forward}, the class on $D_i$ has dimension
+$n-1-r\leq1$ when $r\geq n-2$. In
+\eqref{eq:small-transpose}, it has codimension $r-1\leq1$ when
+$r\leq2$. These are the endpoint degrees. Every feasible class on
+$T_j$ is an endpoint class because $t_j\leq3$; impossible degrees
+and homologically trivial rank classes are zero. Apply kernel
+covariance to the indicated orientation. If the identity is defined
+after a finite extension, use \lemref{lem:general-transfer} to descend.
+The two local ranges cover every degree for $n\leq5$. Intersecting
+them with their complementary ranges proves the height assertions
+by \lemref{lem:two-degrees}.
+\end{proof}
+
+\begin{proposition}[Universal zero-cycle support]\label{prop:universal-support}
+Suppose that a closed subset $T\subset X_{\bar k}$, of dimension at
+most $s$, surjects onto $\CH_0(X_\Omega)_\Q$ for every algebraically
+closed extension $\Omega/\bar k$. Then after a finite extension of
+$k$ there is an identity \eqref{eq:small-diagonal} with $\dim T\leq s$.
+\end{proposition}
+
+\begin{proof}
+Apply the support hypothesis to the generic point over
+$\overline{\bar k(X)}$. A rational-equivalence certificate uses only
+finitely many points, curves and functions, so it is defined over a
+finite extension of $\bar k(X)$. Norming down and dividing by its
+degree gives the supported generic-point relation over $\bar k(X)$.
+Close the cycle in $X_{\bar k}\times T$ and spread the relation over
+an open subset of the first factor. Chow localization puts the
+remaining difference from $\Delta_X$ over its closed complement;
+contain this complement in a divisor. Finally descend the finite
+cycle-and-function certificate and the supports to a finite
+extension of $k$.
+\end{proof}
+
+\begin{corollary}[Rationally connected fibrations]\label{cor:rc-fibrations}
+Let $f:X\to B$ be a surjective morphism of smooth projective varieties
+in characteristic zero. Suppose that over a nonempty open of $B$ it
+is smooth with rationally connected geometric fibers. If $\dim B\leq3$,
+then \thmref{thm:small-support} applies to $X$. In particular it gives
+all degrees if $\dim X\leq5$. Geometrically rationally connected
+varieties, including smooth Fano varieties, are examples with
+zero-dimensional support.
+\end{corollary}
+
+\begin{proof}
+The closure of a closed point of the generic fiber is a multisection
+$T\subset X$ of dimension $\dim B$. It is proper and surjective over
+$B$. After any algebraically closed extension, move a zero-cycle
+into the smooth rationally connected locus. Each of its points is
+rationally equivalent, inside its fiber, to a point of $T$ in the
+same fiber. Rational connectedness gives this equality by chains of
+rational curves. The multisection therefore supplies universal
+geometric rational zero-cycle support. Apply
+\propref{prop:universal-support} and \thmref{thm:small-support}.
+\end{proof}
+
+\subsection{Projective bundles and dominant images}
+
+\begin{proposition}\label{prop:closures}
+Property $\mathsf V$ is preserved by projective bundles, by blowups
+along smooth centers when both the ambient variety and the center
+have $\mathsf V$, and by smooth projective dominant morphism images.
+The assertions allow a preliminary finite extension.
+\end{proposition}
+
+\begin{proof}
+The Chow-motive projective-bundle and blowup decompositions are
+finite direct sums of Tate twists of the indicated smooth varieties.
+Apply \lemref{lem:general-transfer}. For a projective dominant
+morphism $f:V\to X$ with relative dimension $e$, choose a relatively
+ample class $a$ whose top degree on the generic fiber is $d>0$.
+The correspondence $d^{-1}f_*(a^e\cdot-)$ is a left inverse to
+$f^*$ by the projection formula. Its action gives a rational Chow
+retraction and hence the same transfer. The formula can be checked
+after product with any smooth projective test variety, so it is a
+Chow correspondence identity. Finite descent is as before.
+\end{proof}
+
+\begin{corollary}\label{cor:uniruled}
+A geometrically uniruled smooth projective fourfold has $\mathsf V$.
+So does any smooth projective dominant morphism image of a
+projective-bundle tower over a variety of dimension at most three,
+or over one of these uniruled fourfolds.
+\end{corollary}
+
+\begin{proof}
+After a finite extension, a uniruled fourfold is dominated rationally
+by $B\times\PP^1$ for a smooth projective threefold $B$. Resolve this
+map in characteristic zero by smooth blowups of the four-dimensional
+source. Every nontrivial center has dimension at most two, hence has
+$\mathsf V$. The source and its resolution have $\mathsf V$ by
+\propref{prop:closures}. The resolved dominant morphism transfers it
+to $X$. The remaining assertions follow successively from projective
+bundle and dominant-morphism transfer.
+\end{proof}
+
+
+
+% Source: papers/pairing-sections/products_moduli.tex
+\section{Products of curves and surfaces and their Chow summands}\label{sec:products}
+
+\subsection{The product-model input}
+
+The product theorem uses a numerical calculation on a particular
+semistable model. We state its algebraic content before applying the
+companion comparison with actual-form obstructions.
+
+Let $R$ be a complete discrete valuation ring with finite residue field.
+Take regular projective reduced strictly semistable models of finitely
+many curves and surfaces. Fix orders on their components and form the
+ordered staircase resolution of their product. Write its special fiber
+as $D=\bigcup_iD_i$, with $\dim D_i=d$, retaining each connected
+intersection separately. For an oriented edge $i\to j$, let
+$j_i:E_{ij}\to D_i$ and $j_j:E_{ij}\to D_j$ be the inclusions. Set
+\[
+ (\rho x)_{ij}=j_j^*x_j-j_i^*x_i,\qquad
+ \sigma y=(j_{i*}y,-j_{j*}y),\qquad A=\sigma\rho.
+\]
+These are cohomological actions of actual rational Chow correspondences.
+The off-diagonal entries of $A$ have codimension $d+1$; its diagonal
+entry on $D_i$ is
+\[
+ (\Delta_i)_*c_1(N_{D_i/\mathcal D})
+       =-(\Delta_i)_*\sum_{j\ne i}[E_{ij}].
+\]
+
+\begin{proposition}[Companion product-model theorem]\label{prop:product-model}
+For this ordered model there is an invertible prime $\ell$ and a
+matrix of rational Chow correspondences $G$, with entries of
+codimension $d-1$, for which
+\begin{equation}\label{eq:inner-inverse}
+ A^H G^H A^H=A^H
+\end{equation}
+on full geometric $\ell$-adic cohomology, in every degree and with
+its Tate twist. This remains true after product with a smooth
+projective $R$-scheme, by replacing $A,G$ with the exterior products
+of their correspondences and the coefficient's diagonal.
+\end{proposition}
+
+The proof is \cite[model splitting theorem]{InternalProducts}, whose
+actual deletion and residual-core constructions are included in the
+proof dossier. The essential structure is as follows. Each component
+is a tower of blowups of closed strata in the full reduced boundary
+of a product of smooth curve and surface components. For a subset
+$I$ of the surface indices, coordinate deletion gives an actual
+proper birational map
+\begin{equation}\label{eq:deletion-map}
+ f_I:D_{\boldsymbol i}\longrightarrow
+ \left(\prod_{j\in I}X_{j,i_j}\right)\times W_{-I,\boldsymbol i_{-I}},
+\end{equation}
+where $W_{-I}$ is the staircase component of the remaining factors.
+The refined surface projectors $p_j$ onto $H^2_{\rm tr}$ annihilate
+cohomology supported on the boundary curves. Consequently the transported
+projectors
+\[
+ P_I=f_I^*((\boxtimes_{j\in I}p_j)\boxtimes1)f_{I*}
+\]
+satisfy $P_I=\prod_{j\in I}P_{\{j\}}$, commute with the incidence,
+and do so on exceptional summands as well. The proof of commutation
+uses support localization for the kernel of a birational pull-push
+operator in \eqref{eq:deletion-map}.
+
+The simultaneous sectors retain the tensor factors $t_2$ selected by
+these projectors. The residual projector annihilates each generator
+which still contains a full-surface $t_2$ factor; the deletion proof
+establishes this equality in relative Chow before passing to
+localization. The surviving blowup and localization generators
+in the complementary factor are of abelian type. Thus the incidence
+operator on a sector is the identity on its retained transcendental
+factor tensored with an operator on one abelian carrier. Numerical
+semisimplicity and the one-prime comparison for that carrier give its
+inner inverse, which is tensored back with the retained factor.
+Finite-field choices descend by normalized averaging: the equation
+\eqref{eq:inner-inverse} is linear in $G$. This is the algebraic
+product-model statement used here.
+
+Two consequences of \eqref{eq:inner-inverse} explain its role in the
+height problem. Let $\mathscr A^u$ be the space of actual algebraic
+cycle classes on the disjoint union of the $D_i$, and let
+$p:\mathscr A^u\twoheadrightarrow N^u(D^{(0)})_\Q\otimes\Q_\ell$
+be the quotient to numerical classes. If $p(x)$ is in the numerical
+kernel of $A$, then
+\begin{equation}\label{eq:numerical-correction}
+ x^\flat=x-G^HA^Hx
+\end{equation}
+has the same numerical image and belongs to $\ker A^H$. Also,
+if an algebraic class $\alpha$ is in $\im A^H$, then $G^H\alpha$
+is algebraic and $A^HG^H\alpha=\alpha$. Hence
+\begin{equation}\label{eq:image-saturation}
+ \mathscr A^{u+1}\cap\im A^H=A^H\mathscr A^u.
+\end{equation}
+The numerical-kernel lifting and actual-span saturation are the two
+inputs to the companion model criterion \cite{InternalModel}.
+
+\begin{theorem}[Arbitrary curve and surface products]\label{thm:products}
+Let $X_1,\ldots,X_m/K$ be arbitrary smooth projective geometrically
+integral curves or surfaces. Let $T/K$ be smooth projective
+geometrically integral with potentially good projective reduction. Then
+\[
+ X=T\times\prod_{a=1}^mX_a
+\]
+has $\mathsf V$. The assertion holds over every finite extension of
+$K$ for every newly specified geometrically homologically trivial
+cycle there. Empty products and a point as coefficient are permitted.
+\end{theorem}
+
+\begin{proof}
+After a common finite extension choose projective strictly semistable
+alterations of the low-dimensional factors and a smooth projective
+model of $T$. Semistable repair after any intermediate ramified
+extension is part of the ordered-model construction in
+\cite{InternalProducts}. Apply \propref{prop:product-model} to the
+resulting witness. Weight--monodromy for curves and surfaces, the
+purity of the good coefficient, and K\"unneth give the odd-weight
+condition in the companion model criterion. Equations
+\eqref{eq:numerical-correction} and \eqref{eq:image-saturation}
+supply its two exactness conditions. The pulled-back obstruction
+therefore vanishes. Dominant and finite-degree descent give zero
+obstruction over $K$; the original curved pair gives the requested
+form.
+
+For an arbitrary finite $K'/K$, the factors still have the same
+dimensions and the coefficient remains potentially good. Reapply
+the construction over $K'$ to its newly specified cycle. This proves
+the assertion for new classes, as well as for pullbacks of old ones.
+\end{proof}
+
+Over a number field, the curves and surfaces are unrestricted. If a
+coefficient $T$ is present, it is required to have potentially good
+projective reduction at every finite place. Applying
+\thmref{thm:products} at all completions and using
+\lemref{lem:two-degrees} gives the full height in every complementary
+degree, also after every finite number-field extension.
+
+\subsection{Abelian factors and the surface-generated Chow domain}
+
+\begin{lemma}\label{lem:abelian-curve-source}
+Over a characteristic-zero field, an abelian variety becomes a
+rational Chow-motive retract of a product of curves after a finite
+extension.
+\end{lemma}
+
+\begin{proof}
+For an abelian variety of dimension $g\geq2$, choose a smooth
+complete-intersection curve and a point $c_0$ on it after a finite
+extension. Translate by $-c_0$ and call the resulting pointed curve
+$C$; choose the complete intersection so that $C-C$ generates $A$.
+The addition map $C^g\to A$ is dominant. Indeed,
+the successive sums of $C$ increase in dimension until they fill
+$A$: stabilization at a proper subvariety would make that subvariety
+stable under the group generated by $C$. Since source and target
+have dimension $g$, the map is generically finite, of some degree
+$d>0$. Its graph satisfies $f_*f^*=d\Delta_A$, and
+$d^{-1}f_*$ is a Chow retraction. Dimension one is immediate;
+dimension zero gives the unit motive.
+\end{proof}
+
+\begin{corollary}\label{cor:surface-envelope}
+Suppose that after a finite extension the rational Chow motive of
+$X$ is a direct summand of a finite direct sum of Tate twists of
+products of curves and surfaces. Then $\mathsf V(X)$ holds. It also
+holds for $T\times X$ with a potentially good projective coefficient.
+These conclusions include products with arbitrary abelian factors.
+\end{corollary}
+
+\begin{proof}
+Choose the inclusion and retraction correspondences. Their composites
+sum to the diagonal. Tensor with the coefficient's diagonal when
+needed, apply \thmref{thm:products} to each intermediate variety,
+and use \lemref{lem:general-transfer}. An abelian factor may first be
+replaced by its curve-product retraction from
+\lemref{lem:abelian-curve-source}.
+\end{proof}
+
+\subsection{Hilbert schemes of points on arbitrary surfaces}
+
+Let $S$ be a smooth projective geometrically integral surface and
+let $H=S^{[m]}$. For a
+partition $\lambda=1^{a_1}\cdots m^{a_m}$, put
+$l(\lambda)=\sum_i a_i$, $s_\lambda=m-l(\lambda)$, and
+$G_\lambda=\prod_i\mathfrak S_{a_i}$. On the smooth power
+$S^{l(\lambda)}$, use the rational projector
+\[
+ e_\lambda=|G_\lambda|^{-1}\sum_{g\in G_\lambda}\Gamma_g.
+\]
+The theorem of de Cataldo--Migliorini
+\cite[Theorem 6.2.1 and Remark 6.2.2]{DCM} gives
+\begin{equation}\label{eq:hilbert-motive}
+ h(S^{[m]})\simeq\bigoplus_{\lambda\vdash m}
+       (h(S^{l(\lambda)}),e_\lambda)\otimes\LL^{s_\lambda}.
+\end{equation}
+We use the covariant twist convention
+$\CH_a(h(V)(s))=\CH_{a-s}(V)_\Q$.
+
+\begin{theorem}\label{thm:hilbert}
+For arbitrary smooth projective geometrically integral surfaces
+$S_i$, curves $C_j$, and
+positive integers $m_i$, the variety
+\[
+ T\times\prod_j C_j\times\prod_i S_i^{[m_i]}
+\]
+has $\mathsf V$ if $T$ is smooth projective geometrically integral
+and has potentially good projective reduction.
+Over a number field, it has a full height domain when this reduction
+condition holds at every finite place.
+\end{theorem}
+
+\begin{proof}
+Tensor the actual incidence correspondences in
+\eqref{eq:hilbert-motive}. For a tuple of partitions they factor
+through $T\times\prod_j C_j\times\prod_i S_i^{l(\lambda_i)}$.
+If $s=\sum_i s_{\lambda_i}$, this intermediate variety has
+dimension $\dim X-2s$ and an original codimension-$r$ class maps
+to codimension $r-s$. Its homological class is zero. Apply
+\thmref{thm:products} in every feasible degree and then
+\lemref{lem:general-transfer}. The group in degree zero has no
+homological kernel, and out-of-range groups vanish. The global
+assertion follows at all completions. The correspondences commute
+with base change, so the same proof applies to all new classes
+after finite extension.
+\end{proof}
+
+\subsection{Finite specialization of Chow certificates}
+
+\begin{lemma}\label{lem:specialize-certificate}
+Let $X/k$ be smooth projective in characteristic zero. Suppose that
+over a field extension $\Omega/k$ its diagonal factors in rational
+Chow through finitely many products of smooth projective curves and
+surfaces. Then such a factorization exists over a finite extension
+$E/k$, with auxiliary curves and surfaces allowed to change.
+\end{lemma}
+
+\begin{proof}
+Choose cycle representatives for the correspondences and finitely
+many principal divisors witnessing the diagonal equality. All these
+data, together with the auxiliary varieties and their projective
+embeddings, descend to a field finitely generated over $k$. Spread
+them over a smooth integral finite-type $k$-scheme $B$. Shrink $B$
+so that the auxiliary families are smooth projective with
+geometrically integral fibers, the cycles have their expected
+codimensions, and the relative Chow equality holds. The last step
+follows either by spreading its principal-divisor certificate or by
+the direct-limit description of Chow groups over the function field.
+
+Choose a closed point $b\in B$. Its residue field $E$ is finite over
+$k$. Since $B$ is smooth, refined pullback to $b$ commutes with
+the smooth pullbacks, proper projections and diagonal intersections
+which define correspondence composition. The constant family
+$X\times B$ specializes to $X_E$, while the auxiliary families
+specialize to smooth curves and surfaces. Thus the diagonal
+certificate specializes with all its degree shifts.
+\end{proof}
+
+\begin{theorem}[Complex certificates and surface moduli]\label{thm:moduli}
+Let $X/F$ be smooth projective over a number field. If for one complex
+embedding $h(X_\C)$ retracts through products of curves and surfaces
+in rational Chow motives, then $X$ has a full height domain, also
+after every finite number-field extension. In particular this holds
+if $X_\C$ is a smooth projective moduli space appearing in
+B\"ulles's theorem: Gieseker-stable twisted sheaves, or stable objects
+for a generic stability condition, on a complex projective K3 or
+abelian surface. Finite products of these spaces and the varieties
+in \thmref{thm:hilbert} are allowed, with an everywhere potentially
+good projective coefficient.
+\end{theorem}
+
+\begin{proof}
+By \lemref{lem:specialize-certificate}, a finite extension $E/F$
+carries an actual diagonal certificate of the required kind.
+Complete it at a place above each finite place of $F$ and apply
+\corref{cor:surface-envelope}; full-degree descent gives the
+original local kernel vanishing. The same construction over a
+compositum treats every new cycle after finite extension. Apply
+\lemref{lem:two-degrees}.
+
+For the moduli spaces, \cite[Theorem 0.1]{Bulles} supplies precisely
+an actual rational Chow retraction through powers of the underlying
+surface. The first assertion applies. For products, tensor the
+certificates; the intermediate varieties remain products of curves
+and surfaces. The surface's finite-dimensionality is not an
+assumption of the cited retraction theorem.
+\end{proof}
+
+
+
+% Source: papers/pairing-sections/niveau_fibrations.tex
+\section{Chow niveau, complete intersections, and flat fibrations}\label{sec:niveau}
+
+\subsection{A residual motive of small dimension}
+
+We use covariant rational Chow motives, with
+$\CH_a(h(T)(u))=\CH_{a-u}(T)_\Q$.
+
+\begin{theorem}[Chow-niveau transfer]\label{thm:niveau}
+Let $X/k$ have dimension $n$. Suppose that after a finite extension
+there is an actual rational Chow decomposition
+\begin{equation}\label{eq:niveau-decomposition}
+ h(X)\simeq Q\oplus(T,e,u),\qquad
+ Q\text{ of abelian type},\quad \dim T\leq n-2u,
+\end{equation}
+where $u\geq0$. Over a finite extension of $\Q_p$ this gives zero
+obstruction on the full geometric homological Chow groups for
+\begin{equation}\label{eq:niveau-local}
+ r\leq u+1\quad\text{or}\quad r\geq n-u-1.
+\end{equation}
+Every degree is covered if $n\leq2u+3$. Over a number field the full
+height pairs are obtained in every degree in that case; otherwise
+they are obtained for
+\begin{equation}\label{eq:niveau-height}
+ r\leq u+1\quad\text{or}\quad r\geq n-u.
+\end{equation}
+
+A sufficient hypothesis for \eqref{eq:niveau-decomposition} is a
+morphism $N\to h(X)$ from an abelian-type Chow motive which, on an
+algebraically closed universal domain $\Omega/k$ of infinite
+transcendence degree over the field of definition, surjects on
+algebraically trivial $\CH_i$ for every $i<u$.
+\end{theorem}
+
+\begin{proof}
+Let $m=\dim T$. The residual image of a codimension-$r$ class has
+dimension $n-r-u$ and codimension
+\begin{equation}\label{eq:residual-degree}
+ m-n+r+u\leq r-u.
+\end{equation}
+If $r\leq u+1$, this is a divisor degree or lower. If
+$r\geq n-u-1$, the residual cycle dimension is at most one.
+The endpoint input applies in either case. If $n\leq2u+3$, then
+$m\leq3$, so every residual degree is covered. The abelian-type
+summands are covered by \thmref{thm:main}. Their actual inclusion
+and retraction maps, followed by \lemref{lem:general-transfer},
+prove the local assertion. Intersect its range with the range of
+$n+1-r$ to obtain \eqref{eq:niveau-height}.
+
+For the sufficient hypothesis apply Vial's
+\cite[Theorem 3.11]{Vial} with algebraic equivalence and $M=h(X)$.
+The finite-dimensionality required there holds for $N$. Self-duality
+of $h(X)$ gives \eqref{eq:niveau-decomposition} over the field of
+definition of the morphism. Its additional curve and Tate summands
+are of abelian type. A negative residual dimension means that the
+residual summand is zero.
+\end{proof}
+
+In particular it suffices that
+$\CH_i(X_\Omega)_{\Q,\alg}=0$ for $0\leq i<u$: take $N=0$.
+This criterion concerns the subgroup algebraically equivalent to
+zero, rather than a quotient by algebraic equivalence.
+
+\subsection{Small-degree Chow bounds}
+
+Let $X\subset\PP^N$ be a smooth complete intersection of degrees
+$d_1\geq\cdots\geq d_c\geq2$, and put $n=N-c$.
+
+\begin{proposition}\label{prop:small-degree}
+Let $0\leq t\leq n-1$. Suppose either
+\begin{equation}\label{eq:elv}
+ \left(d_1\geq3\ \text{or}\ c\geq t+1\right),\qquad
+ \sum_{a=1}^c\binom{d_a+t}{t+1}\leq N,
+\end{equation}
+or all $d_a=2$, $1\leq c\leq t$, and
+\begin{equation}\label{eq:elv-quadratic}
+ c(t+2)\leq N+c-t-1.
+\end{equation}
+Then \thmref{thm:niveau} applies with $u=t+1$.
+For a hypersurface of degree $d\geq3$, an alternative sufficient
+condition is
+\begin{equation}\label{eq:hi-bound}
+ (j+1)(N-j)+1\geq\binom{d+j+1}{j+1}
+             \quad(0\leq j\leq t).
+\end{equation}
+In each case all degrees are covered if $n\leq2t+5$; otherwise
+the guaranteed full height degrees are $r\leq t+2$ or
+$r\geq n-t-1$.
+\end{proposition}
+
+\begin{proof}
+Theorem 4.6 of Esnault--Levine--Viehweg \cite{ELV} gives
+$\CH_i(X_\Omega)_\Q=\Q$ for $0\leq i\leq t$ under
+\eqref{eq:elv} or \eqref{eq:elv-quadratic}. In the hypersurface
+case, Hirschowitz--Iyer \cite[Theorem 1.5]{HI} gives the same
+conclusion degree by degree under \eqref{eq:hi-bound}; the upper
+variety is projective space and its relevant Chow group is
+one-dimensional. A linear-section generator has nonzero projective
+degree. The algebraically trivial subgroup is therefore zero in
+all these degrees. Apply \thmref{thm:niveau} with $u=t+1$.
+\end{proof}
+
+There is a further useful bound for mixed quadrics and cubics.
+Otwinowska's rewritten author version \cite[Corollaire 1]{Otwinowska}
+gives the following statement for smooth complete intersections:
+if there are $a$ quadrics and $b\geq1$ cubics in $\PP^N$, $N\leq15$,
+then $\CH_i(-)_\Q$ is generated by the ambient section class for
+\begin{equation}\label{eq:ot-bound}
+ 0\leq i\leq t=\left\lfloor\frac{N-2a-3b}{3}\right\rfloor.
+\end{equation}
+Its complex-field formulation gives the required universal-domain
+statement in characteristic zero. Indeed, descend a given cycle
+and its equations to a finitely generated field, embed that field
+in $\C$, and obtain the rational-equivalence certificate there.
+The certificate descends to a further finitely generated field,
+which embeds over the original field of definition into the
+universal domain. Its base change proves the original relation.
+The coefficient of the ambient class is fixed by projective degree.
+
+\begin{corollary}[Explicit complete-intersection domains]\label{cor:ci-list}
+Every smooth geometrically integral variety in the following table
+has $\mathsf V$ locally and a full height domain over a number
+field. A presentation after a finite extension suffices.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Type & Dimension & Low-Chow parameter $t$\\
+\midrule
+Cubic hypersurface & $6,7$ & $1$\\
+Cubic hypersurface & $8,9$ & $2$\\
+Cubic hypersurface & $11$ & $3$\\
+Quartic hypersurface & $7$ & $1$\\
+Complete intersection $(2,3)$ & $6,7$ & $1$\\
+Complete intersection $(2,3)$ & $9$ & $2$\\
+Complete intersection $(2,2,3)$ & $7$ & $1$\\
+Complete intersection $(3,3)$ & $7$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The cubic cases in dimension at most five already follow from
+\corref{cor:rc-fibrations}.
+\end{corollary}
+
+\begin{proof}
+For cubics the values in \eqref{eq:hi-bound} are
+$4,10,20,35$ for $j=0,1,2,3$. The requisite minimum ambient
+dimensions for $t=1,2,3$ are $6,9,12$, respectively. These imply
+the first three rows. For the quartic row, $N=8$ and the two
+inequalities are $9\geq5$ and $15\geq15$.
+
+For $(2,3)$ of dimension $6$ or $7$, the zero-cycle statement
+follows from \eqref{eq:elv}. The upper quadric, which may be
+singular, has $\CH_2=\Q$ by the all-intersection form of
+\cite[Theorem 4.6]{ELV} and \eqref{eq:elv-quadratic}.
+The distinct-largest-degree
+case of \cite[Theorem 1.5]{HI}, with $j=1,c=2$, has
+$\rho=3N-19$ and $\rho+1\geq N-2$ exactly when $N\geq8$.
+Thus $\CH_1=\Q$. The last three rows follow from
+\eqref{eq:ot-bound}: their ambient dimensions are $11,10,9$,
+respectively. In every row $n\leq2t+5$.
+\end{proof}
+
+\subsection{The all-fiber criterion}
+
+\begin{proposition}[Flat-fibration transfer]\label{prop:fibration}
+Let $f:Y\to B$ be flat, projective and surjective, with $Y,B$
+smooth projective and $\dim Y=n$, $\dim B=b$. Fix an integer
+$u\geq1$ with $n-2u\geq0$. Suppose that for
+every geometric scheme fiber over a universal domain
+\[
+ \CH_i(Y_\omega)_\Q=\Q\quad(0\leq i<u).
+\]
+Assume $\mathsf V(B)$ in the native local theory. Then the full
+local source vanishes for $r\leq u+1$ or $r\geq n-u-1$, and in
+all degrees if $n-2u\leq3$. If these base hypotheses hold at every
+finite place of a number-field model, the corresponding full
+height degrees are obtained by \eqref{eq:range-intersection}.
+\end{proposition}
+
+\begin{proof}
+Vial's flat-fibration decomposition \cite[Theorem 4.2]{VialFibrations}
+is an actual Chow decomposition
+\begin{equation}\label{eq:fibration-motive}
+ h(Y)\simeq\bigoplus_{j=0}^{n-b}h(B)(j)\oplus(T,e,u),
+ \qquad\dim T=n-2u.
+\end{equation}
+The base summands are admitted by hypothesis. The residual-degree
+calculation \eqref{eq:residual-degree} and the endpoint input give
+the stated local degrees. Transfer through the actual diagonal
+and apply \lemref{lem:two-degrees} globally.
+\end{proof}
+
+\begin{corollary}[Quadric and cubic fibers]\label{cor:quad-cubic-fibers}
+The following flat projective surjective maps, with smooth projective
+geometrically integral total space and base, have $\mathsf V$:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Every geometric scheme fiber is a nonzero quadric of fixed
+dimension $q\geq1$ in $\PP^{q+1}$, and $1\leq b\leq3$.
+The same holds for $b=4$, $q$ odd, if the base has $\mathsf V$;
+in particular the base may be $\PP^4$.
+\item Every geometric scheme fiber is a nonzero cubic hypersurface
+of fixed dimension $q$, and
+\[
+ (q,b)=(5,1),(5,2),(6,1),\text{ or }(8,1).
+\]
+\end{enumerate}
+The conclusions concern the entire geometric homological Chow
+groups. Over number fields the same geometric hypotheses give
+full height domains, with the base condition imposed at all
+finite places when $b=4$.
+\end{corollary}
+
+\begin{proof}
+A nonzero quadric scheme of dimension $q$ over an algebraically
+closed characteristic-zero field has $\CH_i\simeq\Z$ for
+$i<q/2$. This includes rank-one quadrics: Chow groups are
+unchanged by reduction. For other singular quadrics, the cone
+description and the split-quadric cellular filtration give the
+same range; the cone localization proof is recorded in
+\cite{InternalFibrations}. Take $u=\lceil q/2\rceil$ in
+\propref{prop:fibration}. Its residual dimension is $b$ for even
+$q$ and $b-1$ for odd $q$, giving (i).
+
+For cubics of dimension at least five, the all-intersection
+ELV bound gives $\CH_0=\CH_1=\Q$. For $q=8$, the HI bound
+also gives $\CH_2=\Q$. These cited bounds apply to the reduced
+singular hypersurfaces in question. A nonreduced cubic has
+reduction a hyperplane or a union of two hyperplanes; the closed
+union Chow sequence gives the same low-degree groups. Thus the
+four cases have residual dimensions $2,3,3,3$, respectively,
+using $u=2,2,2,3$. The base has dimension at most two and hence
+has $\mathsf V$. Apply \propref{prop:fibration}.
+\end{proof}
+
+\subsection{A signed retraction for intersections of quadrics}
+
+\begin{theorem}[Intersections of quadrics]\label{thm:quadrics}
+A smooth complete intersection of $c$ quadrics in $\PP^N$,
+$1\leq c\leq N-1$, has $\mathsf V$ in all degrees when
+\[
+ c\leq4,\qquad\text{or}\qquad c=5\text{ and }N\text{ is even}.
+\]
+For arbitrary $c$, the local degrees supplied are
+\begin{equation}\label{eq:quadrics-local}
+ r\leq\lfloor N/2\rfloor-c+2
+ \quad\text{or}\quad r\geq\lceil N/2\rceil-2.
+\end{equation}
+The full global height degrees outside the full case are
+$r\leq\lfloor N/2\rfloor-c+2$ or
+$r\geq\lceil N/2\rceil-1$.
+\end{theorem}
+
+\begin{proof}
+For $c=1$, pass to a finite splitting field of the smooth quadric.
+Its cellular Chow decomposition is Tate, so \thmref{thm:main}
+gives every degree. Assume $c\geq2$. Write the equations as
+$Q_1,\ldots,Q_c$ and let
+\[
+ Y=\{\textstyle\sum_jt_jQ_j=0\}\subset\PP^N\times\PP^{c-1}.
+\]
+It is a flat family of nonzero $(N-1)$-dimensional quadric
+schemes. The total space is smooth: at a possible singular point
+all $Q_j$ vanish, while their independent conormal differentials
+on the smooth complete intersection make $\sum_jt_jdQ_j$
+nonzero. Set $m=c-1$, $E=X\times\PP^m$, and write
+$j:E\hookrightarrow Y$, $p:E\to X$. The normal sequence is
+\[
+ 0\longrightarrow N_{E/Y}\longrightarrow
+ p^*\mathcal O_X(2)^{\oplus c}\longrightarrow
+ p^*\mathcal O_X(2)\otimes\mathcal O_{\PP^m}(1)
+ \longrightarrow0.
+\]
+Its degree-$m$ Chern class has fiber-leading term
+$(-1)^mc_1(\mathcal O_{\PP^m}(1))^m$, and fiber integration gives
+\[
+ p_*c_m(N_{E/Y})=(-1)^m.
+\]
+Consequently the correspondences
+\begin{equation}\label{eq:quadrics-retraction}
+ U=j_*p^*,\qquad V=(-1)^mp_*j^!,\qquad VU=1
+\end{equation}
+give a retraction, by self-intersection. The calculation after
+every smooth projective product shows the same identity for
+Chow correspondences. Here $U$ sends codimension $r$ to $r+m$.
+
+Apply \propref{prop:fibration} to $Y\to\PP^{c-1}$, with
+$u=\lceil(N-1)/2\rceil$. Its residual dimension is $c-2$ if
+$N$ is even, and $c-1$ if $N$ is odd. These are at most three
+in the asserted full cases. Substituting $r+m$ in the outer
+range and using \eqref{eq:quadrics-retraction} gives
+\eqref{eq:quadrics-local}. Intersecting the two complementary
+ranges gives the height statement.
+\end{proof}
+
+\begin{theorem}[Relative quadrics]\label{thm:relative-quadrics}
+Let $B$ be smooth projective geometrically integral of dimension
+$b\geq1$, and let $\mathcal V,\mathcal F$ be vector bundles of
+ranks $N+1,c$, with $c\geq1$ and $N\geq c+1$.
+Let $\pi:\PP_B(\mathcal V)\to B$ parametrize lines. Suppose that
+the zero scheme of a regular section of
+$\mathcal O(2)\otimes\pi^*\mathcal F$ is smooth projective
+geometrically integral, is flat over $B$, and has expected
+codimension $c$ in every geometric fiber. If $\mathsf V(B)$,
+then it has $\mathsf V$ whenever
+\[
+ b+c\leq5\quad(N\text{ even}),\qquad
+ b+c\leq4\quad(N\text{ odd}).
+\]
+In general the local degree range is
+\[
+ r\leq\lfloor N/2\rfloor-c+2
+ \quad\text{or}\quad r\geq b+\lceil N/2\rceil-2.
+\]
+Over a number field with the base admitted at every finite place,
+the corresponding full height range ends instead at
+$r\geq b+\lceil N/2\rceil-1$. The base condition is automatic
+for $1\leq b\leq3$.
+\end{theorem}
+
+\begin{proof}
+Form $C=\PP_B(\mathcal F^\vee)$ and the universal quadric
+$Y\to C$. Expected fiber codimension ensures that no nonzero
+coefficient vector gives the zero quadratic equation. Smoothness
+of the total space follows from the absolute differential of the
+regular section defining $X$; the base directions are included.
+The projective-bundle formula gives $\mathsf V(C)$. For
+$E=X\times_BC$, the same normal sequence and fiber integration
+as in \eqref{eq:quadrics-retraction} give a signed retraction with
+shift $c-1$. The residual dimension of the universal quadric is
+$b+c-2$ for even $N$ and $b+c-1$ for odd $N$. Apply the
+flat-fibration theorem, transfer through the retraction, and use
+\lemref{lem:two-degrees}.
+\end{proof}
+
+
+
+\section{Actual Chow identities}\label{sec:chow}
+
+For the algebraic arguments, let $k$ be any characteristic-zero
+field. Write $\mathcal A_k(V)$ for a diagonal factorization of $V$
+through abelian varieties over $k$ itself, in the sense of
+\eqref{eq:diagonal-intro} with $L=k$. Smooth disconnected varieties
+are interpreted by the direct sum of their components.
+
+\begin{lemma}\label{lem:tensor}
+The property $\mathcal A_k$ is stable under finite products, finite
+disjoint unions of pure-dimensional components, isomorphisms and
+base extension. A pointed smooth projective geometrically integral
+curve has this property.
+\end{lemma}
+
+\begin{proof}
+For products, take exterior products of the two sets of
+correspondences, with the factors ordered as source and target.
+Composition commutes with exterior products, so
+\[
+ \Delta_{V\times W}=\Delta_V\boxtimes\Delta_W
+       =\sum_{j,l}(v_j\boxtimes v_l)\circ(u_j\boxtimes u_l).
+\]
+The intermediate variety $A_j\times A_l$ is abelian. This equality
+is in the Chow group of the product with itself. Disjoint unions
+and isomorphisms follow by inserting component maps and by conjugating
+with graphs; flat field extension preserves the identity.
+
+For a pointed curve $C$, use
+$h(C)=\mathbf1\oplus h^1(C)\oplus\LL$ and the identification of
+$h^1(C)$ with the corresponding summand of $h(J(C))$. These are
+Chow-motive decompositions \cite[\S3.2, Proposition 4.5 and
+Theorems 5.2--5.3]{Scholl}. Their inclusion and retraction maps,
+with the Tate terms through $\Spec k$, give the required identity.
+\end{proof}
+
+\subsection{A codimension-two blowup}
+
+Let $j:C\hookrightarrow V$ be a smooth center of codimension two,
+and let
+\[
+ q:W=\Bl_CV\longrightarrow V,\qquad i:E\hookrightarrow W,
+ \qquad p:E=\PP_C(N_{C/V})\longrightarrow C.
+\]
+Set $\xi=c_1(\mathcal O_E(1))$. Then $N_{E/W}=\mathcal O_E(-1)$
+and $p_*\xi=1$.
+
+\begin{lemma}\label{lem:blowup}
+There is an equality of rational Chow correspondences
+\begin{equation}\label{eq:blowup-diagonal}
+        \Delta_W=q^*q_*-i_*p^*p_*i^*.
+\end{equation}
+If $\mathcal A_k(V)$ and $\mathcal A_k(C)$ hold, so does
+$\mathcal A_k(W)$.
+\end{lemma}
+
+\begin{proof}
+The Chow blowup formula \cite[\S6.7]{Fulton} writes every class
+$z\in\CH^r(W)_\Q$ uniquely as
+$z=q^*a+i_*p^*b$, where $b\in\CH^{r-1}(C)_\Q$. The projection
+and self-intersection formulas give
+\[
+\begin{array}{ll}
+ q_*q^*a=a,&q_*i_*p^*b=0,\\
+ p_*i^*q^*a=0,&p_*i^*i_*p^*b=-p_*(\xi p^*b)=-b.
+\end{array}
+\]
+Consequently $a=q_*z$ and $b=-p_*i^*z$, which proves
+\eqref{eq:blowup-diagonal} as an operator identity.
+
+To obtain a correspondence identity, repeat the argument after
+product with any smooth projective $T$. Flat product commutes with
+the blowup, and the same calculation applies to every Chow group
+of $T\times W$. Taking $T=W$ and applying the operator on the
+second factor to $\Delta_W$ proves the equality of correspondences.
+Finally insert the given factorizations of $V$ and $C$. The center
+maps $-p_*i^*:W\rightsquigarrow C$ and
+$i_*p^*:C\rightsquigarrow W$ have degrees $-1$ and $1$.
+\end{proof}
+
+\subsection{Generically finite morphisms}
+
+\begin{lemma}\label{lem:degree}
+Let $g:W\to X$ be a dominant generically finite morphism of degree
+$d$ between smooth projective geometrically integral varieties of
+the same dimension. Then
+\begin{equation}\label{eq:degree-diagonal}
+                       g_*g^*=d\Delta_X
+\end{equation}
+as Chow correspondences. Thus $\mathcal A_k(W)$ implies
+$\mathcal A_k(X)$.
+\end{lemma}
+
+\begin{proof}
+For every smooth projective $T$, the Chow projection formula gives
+$(g_T)_*g_T^*z=z\cdot(g_T)_*[T\times W]=dz$.
+Taking $T=X$ and $z=\Delta_X$ proves \eqref{eq:degree-diagonal}.
+If $\Delta_W=\sum_jv_ju_j$, then
+\begin{equation}\label{eq:degree-maps}
+             \Delta_X=\sum_j(d^{-1}g_*v_j)\circ(u_jg^*).
+\end{equation}
+The maps in each pair have opposite degrees.
+\end{proof}
+
+\section{Separated binary hypersurfaces}\label{sec:binary}
+
+Allow first $2b+a\ge2$ in \eqref{eq:binary-family}, so that
+zero-dimensional factors can occur in an induction. These factors
+are finite \'etale. For every binary block, Euler's identity
+shows that simultaneous vanishing of its derivatives at a nonzero
+vector would give a multiple projective root. A nonzero unary
+term has nonvanishing derivative away from zero in characteristic
+zero. The full gradient therefore vanishes only at the affine
+origin. The hypersurface is smooth; when its dimension is positive,
+connectedness of a projective hypersurface makes it geometrically
+integral.
+
+\subsection{The controlled join}
+
+Let $F(x_0,\ldots,x_r)$ and $G(y_0,\ldots,y_s)$ be homogeneous of
+degree $d$, with $r,s\ge1$, such that $X_F$ and $X_G$ are smooth.
+Set
+\[
+ A=\{F+u^d=0\},\quad B=\{G+v^d=0\},\quad H=\{F+G=0\}.
+\]
+
+\begin{lemma}\label{lem:join}
+Over a field containing $\zeta$ with $\zeta^d=-1$, the rational map
+\begin{equation}\label{eq:join-map}
+ A\times B\dashrightarrow H,\qquad
+ ((x,u),(y,v))\longmapsto(vx,\zeta uy)
+\end{equation}
+extends to a morphism
+$g:\Bl_{X_F\times X_G}(A\times B)\to H$ of generic degree $d$.
+The center is smooth of codimension two.
+\end{lemma}
+
+\begin{proof}
+Substitution in the equation of $H$ gives
+$v^dF(x)+\zeta^du^dG(y)=-u^dv^d+u^dv^d=0$.
+Near a base point, choose nonzero coordinates $x_i,y_j$ and
+trivialize the projective line bundles. The base ideal of the
+displayed sections is then $(u,v)$. These are local equations
+of transverse smooth divisors from the two factors. Their blowup
+makes the base ideal invertible and resolves the map, with center
+$X_F\times X_G$.
+
+On the dense open of $H$ where $F(X)=-G(Y)\ne0$, normalize
+$u=v=1$. A preimage has
+$x=\lambda X$, $y=\lambda\zeta^{-1}Y$, and
+$\lambda^d=-1/F(X)$. There are exactly $d$ distinct geometric
+solutions. The exceptional divisor has smaller dimension and
+does not dominate this open. Hence $g$ is generically finite
+of degree $d$. This is the controlled construction of
+\cite[Remark 1.10]{SK}, with its center and degree retained.
+\end{proof}
+
+\subsection{The recursive diagonal}\label{proof:binary}
+
+We prove that every separated binary/unary hypersurface has
+$\mathcal A$ after a finite extension. In dimension zero, split
+the finite \'etale scheme. In dimension one, choose a
+point after a finite extension and apply \lemref{lem:tensor}.
+
+Suppose $H$ has dimension $n\ge2$. Choose one binary block as
+$G$; if all blocks are unary, combine two unary terms into $G$.
+The remaining polynomial $F$ has $n\ge2$ variables. In the
+join construction, the dimensions are
+\[
+ \dim A=n-1,\quad \dim B=1,\quad
+ \dim X_F=n-2,\quad \dim X_G=0.
+\]
+All four varieties belong to the same class. Induction, followed
+by one common finite extension, supplies actual factorizations
+for $A$, $B$, $X_F$ and every component of $X_G$. We include
+the root needed for \lemref{lem:join} in that extension.
+
+The tensor identity gives factorizations for $V=A\times B$ and
+$C=X_F\times X_G$. \lemref{lem:blowup} gives one for $W=\Bl_CV$,
+and \lemref{lem:degree} gives one for $H$. All branches of the
+induction have strictly smaller single-factor dimension; finitely
+many finite extensions suffice. Products and finite forms follow
+from \lemref{lem:tensor}. This proves part (i) of
+\thmref{thm:families}.
+
+More explicitly, suppose
+$\Delta_V=\sum_jv_j^Vu_j^V$ and $\Delta_C=\sum_l v_l^Cu_l^C$.
+The maps for $H$ are
+\begin{align}
+ u_j^H&=u_j^Vq_*g^*,& v_j^H&=d^{-1}g_*q^*v_j^V,\label{eq:ambient-recursion}\\
+ u_l^H&=-u_l^Cp_*i^*g^*,& v_l^H&=d^{-1}g_*i_*p^*v_l^C.
+ \label{eq:center-recursion}
+\end{align}
+Substituting \eqref{eq:blowup-diagonal} and
+\eqref{eq:degree-diagonal} verifies their sum is $\Delta_H$.
+
+\begin{example}
+For $\lambda_i\in k\setminus\{2,-2\}$, the quartic sixfold
+\[
+ \sum_{i=0}^{3}
+ \bigl(x_{2i}^4+\lambda_i x_{2i}^2x_{2i+1}^2+x_{2i+1}^4\bigr)=0
+       \quad\text{in }\PP^7_k
+\]
+belongs to the family. A binary block has a repeated projective
+root precisely when $\lambda_i=2$ or $-2$. Over a finite extension
+of $\Q_2$, the same characteristic-zero calculation applies.
+\end{example}
+
+\section{Split cubics and finite Chow descent}\label{sec:cubic}
+
+Laterveer proves that the cubic varieties
+\eqref{eq:cubic-family} over $\C$ have Chow motives of abelian
+type \cite[Theorem 5]{Laterveer}. This is a conclusion about
+rational equivalence, and gives a retract of a finite sum of
+Tate twists of abelian motives. We need its finite field of
+definition, including the rational equivalences in the retraction.
+
+\begin{lemma}\label{lem:descent}
+Let $k_0/\Q$ be finitely generated, let $V_0/k_0$ be smooth
+projective, and fix an embedding $k_0\hookrightarrow\C$.
+If $h(V_{0,\C})$ is of abelian type, then an actual abelian
+Chow retraction of $V_0$ is defined over a finite extension
+$k_1/k_0$. For every embedding $k_0\hookrightarrow k$ into
+a characteristic-zero field, it therefore exists over a finite
+extension of $k$.
+\end{lemma}
+
+\begin{proof}
+Vial's descent theorem \cite[Theorem 1 and \S1.1]{Vial} applies
+to the extension $\bar k_0\subset\C$. It shows that
+$h(V_{0,\bar k_0})$ is of abelian type. By the definition of
+this category, it is a retract of a finite sum of Tate twists
+of motives of abelian varieties: tensor products remain abelian
+motives, and duality is absorbed by a Tate twist. Thus there
+are finitely many correspondences satisfying the diagonal
+identity over $\bar k_0$.
+
+The varieties, group laws, cycles, and rational equivalences in
+that identity are all defined by finitely many coefficients.
+After clearing rational denominators, each rational equivalence
+is a finite sum of divisors of rational functions on integral
+subvarieties. These data descend to one finite subextension
+$k_1/k_0$. Equivalently, the finitely many equalities in the
+Chow groups hold at a finite stage of their directed limit over
+$\bar k_0$.
+
+Extend $k_0\hookrightarrow k$ to $k_1\hookrightarrow\bar k$.
+Then $L=kk_1$ is finite over $k$, and flat base change carries
+the same Chow identity to $L$.
+\end{proof}
+
+\subsection{Application to the block family}\label{proof:cubic}
+
+For a cubic over $k$ as in \eqref{eq:cubic-family}, put its
+coefficients in a finitely generated subfield $k_0\subset k$.
+The smoothness assumptions descend and remain true after
+embedding $k_0$ into $\C$. Laterveer's theorem applies there,
+and \lemref{lem:descent} gives the required finite Chow
+factorization over $k$. Tensoring the factorizations deals
+with products; transporting them through an actual isomorphism
+deals with finite forms. This proves part (ii) of
+\thmref{thm:families}.
+
+For example, two arbitrary smooth cubic threefold blocks followed
+by a smooth binary cubic give a cubic tenfold in $\PP^{11}$.
+Replacing the binary block by a smooth four-variable cubic
+gives a cubic twelvefold in $\PP^{13}$. Their central cycle
+codimensions are $5$ and $6$. The two five-variable blocks
+need not themselves separate into binary terms.
+
+\section{Separated-branch cyclic covers}\label{sec:cyclic}
+
+Use the data of \eqref{eq:cyclic-family}, set $d=qm$, and put
+\[
+                  Y=\{T^d=F(x_0,\ldots,x_n)\}\subset\PP^{n+1}_k.
+\]
+
+\begin{lemma}\label{lem:cyclic-cover}
+The varieties $X=X(F;q,m)$ and $Y$ are smooth, projective and
+geometrically integral of dimension $n$. The map
+\begin{equation}\label{eq:finite-cyclic}
+                    f:Y\longrightarrow X,\qquad u=T^m,
+\end{equation}
+is finite flat of rank $m$.
+\end{lemma}
+
+\begin{proof}
+The block derivative calculation in \secref{sec:binary} shows
+that $B=\{F=0\}\subset\PP^n$ is smooth and nonempty. On the
+chart $x_i\ne0$, write $R_i=k[x_j/x_i:j\ne i]$ and
+$F_i=F/x_i^d$. The cover algebra is
+\[
+                      B_i=R_i[u_i]/(u_i^q-F_i).
+\]
+It is free of rank $q$ over $R_i$. Off $B$, the derivative in
+$u_i$ is nonzero; above $B$, the differential of $F_i$ proves
+smoothness. Over $\bar k$, the valuation at any component of
+$B$ gives $F_i$ value one. Eisenstein's criterion shows that
+$U^q-F_i$ is irreducible over the function field. The chart
+algebras inject into this field, so the cover is geometrically
+integral. Being finite over $\PP^n$, it is projective.
+
+The polynomial $T^d-F$ has the separated-block form with one
+additional unary term. Thus $Y$ is smooth and geometrically
+integral. Its projection to $\PP^n$ has no base point. With
+$t_i=T/x_i$, the source algebra is
+\begin{equation}\label{eq:cyclic-algebra}
+ R_i[t_i]/(t_i^{qm}-F_i)\simeq B_i[t_i]/(t_i^m-u_i).
+\end{equation}
+The right side is free of rank $m$ with basis
+$1,t_i,\ldots,t_i^{m-1}$. The transition laws
+$t_j=(x_i/x_j)t_i$ and $u_j=(x_i/x_j)^m u_i$ glue these maps.
+This proves the rank everywhere, including the length-$m$
+fibers with equation $t_i^m=0$ along the branch.
+\end{proof}
+
+\subsection{The product diagonal}\label{proof:cyclic}
+
+Each $Y_i$ associated with a cover $X_i$ belongs to the separated
+hypersurface family. Over one finite extension, choose its Chow
+factorization $\Delta_{Y_i}=\sum_{j_i}v_{i,j_i}u_{i,j_i}$.
+For a finite product put
+$Y=\prod_iY_i$, $X=\prod_iX_i$, and $M=\prod_i m_i$.
+The product map $f:Y\to X$ is finite flat of rank $M$.
+
+For $J=(j_1,\ldots,j_s)$ set
+\[
+ A_J=\prod_i A_{i,j_i},\qquad
+ u_J=\boxtimes_i u_{i,j_i},\qquad v_J=\boxtimes_i v_{i,j_i}.
+\]
+The tensor identity gives $\Delta_Y=\sum_Jv_Ju_J$.
+Since $f_*f^*=M\Delta_X$, the maps
+\begin{equation}\label{eq:cyclic-diagonal}
+                   U_J=u_Jf^*,\qquad V_J=M^{-1}f_*v_J
+\end{equation}
+satisfy $\sum_JV_JU_J=\Delta_X$. The rank $M$ is included
+once, and all exceptional signs from the factorization of $Y$
+are retained. Actual finite forms are handled by transport of
+this identity. This proves part (iii) of \thmref{thm:families}.
+
+
+% Source: papers/pairing-sections/models_families.tex
+\section{Model criteria and arithmetic families}\label{sec:models}
+
+\subsection{Numerical corrections on a semistable witness}
+
+The numerical-model criterion of \hypref{prop:numerical} is often
+applied through a projective dominant witness. In the general
+companion formulation \cite{InternalEndpoints}, the witness carries
+a rational virtual bundle whose generic degree-$r$ Chern character
+is the pulled-back class and whose degree on every vertical
+$r$-dimensional subvariety is zero. The native model-Chern detector
+then gives zero obstruction upstairs, and dominant detection gives
+zero obstruction downstairs. This formulation permits a witness
+of positive relative dimension as well as a generically finite one.
+
+We record three ways of producing this numerical correction.
+The model calculations and their supporting residue sequences are
+given in \cite{InternalModelCriteria}; all model conditions below
+refer to supplied projective models.
+
+\begin{proposition}[Scalar total boundary image]\label{prop:scalar-model}
+Let $R=K^\circ$ and let $\mathcal X/R$ be integral, regular,
+projective reduced strictly semistable, with smooth geometrically
+integral generic fiber,
+of relative dimension $n\geq3$, with smooth geometrically integral
+components $D_i$, smooth closed strata, connected dual graph, and
+one relatively ample class $H$. Fix $1\leq r\leq n$ and an
+invertible prime $\ell$. Assume that at every vertex $i$ the sum
+of Gysin images
+\[
+ \sum_{j\ne i}\im\bigl(
+ H^{2r-2}(E_{ij,\bar k},\Q_\ell(r-1))
+       \longrightarrow H^{2r}(D_{i,\bar k},\Q_\ell(r))\bigr)
+\]
+has dimension one. Then every geometrically homologically trivial
+codimension-$r$ cycle on the generic fiber has zero obstruction.
+\end{proposition}
+
+\begin{proof}
+Choose a Chow extension $\Theta$. The companion specialization
+calculation puts its component class in the displayed total image.
+Set
+\[
+ \lambda_i=\deg_k(i_i^!\Theta\,H_i^{n-r}),\qquad
+ w_{ij}=\deg_k((H|_{E_{ij}})^{n-1}),
+\]
+summing disconnected intersections with their native residue degrees.
+The specialization trace gives $\sum_i\lambda_i=0$.
+The connected weighted graph has positive weights and hence a rational
+solution of
+\[
+ \sum_jw_{ij}(v_j-v_i)=\lambda_i.
+\]
+The corrected extension
+$\Theta_{\rm ad}=\Theta-\sum_i v_i i_{i*}H_i^{r-1}$ has zero
+component class: in a one-dimensional total image its degree against
+$H_i^{n-r}$ detects that class. Its pure operational representative
+is numerically zero on every vertical $r$-cycle. Apply the numerical
+model criterion. A constant change of all $v_i$ adds the principal
+total-fiber class multiplied by $H^{r-1}$ and hence changes nothing
+in Chow.
+\end{proof}
+
+One geometric instance is a supplied two-factor hypersurface
+degeneration
+\begin{equation}\label{eq:two-factor-model}
+ AB+\varpi G=0\quad\text{in }\PP^{n+1}_R,
+ \qquad\deg A=a,\quad\deg B=b,\quad\deg G=a+b.
+\end{equation}
+Assume the two special hypersurfaces, their intersection, and
+$\Sigma=(A=B=G=0)$ have the smooth transverse geometrically
+integral strata specified by these equations, and that the generic
+fiber is smooth geometrically integral. Blowing up $(A,\varpi)$
+gives components $\Bl_\Sigma(A=0)$ and $(B=0)$ meeting in
+$(A=B=0)$. The blowup and restriction computation in
+\cite{InternalModelCriteria} verifies the scalar-image condition in
+every degree. Thus these local hypersurfaces have $\mathsf V$.
+
+\begin{proposition}[Positive primitive components]\label{prop:positive-model}
+Let a smooth projective fourfold have, after a finite extension, a
+projective dominant four-dimensional witness with a regular flat
+projective model. Write its special fiber as $\sum_i m_iD_i$, with
+$m_i>0$, reduced strict normal-crossings support and smooth closed
+strata. Suppose a relatively ample $H$ makes
+\[
+ \deg(xy)\quad\text{positive definite on}\quad
+ P_H^2(D_i)=\ker\bigl(H:N^2(D_i)_\Q\to N^3(D_i)_\Q\bigr)
+\]
+for every component. Then the original fourfold has $\mathsf V$.
+\end{proposition}
+
+\begin{proof}
+The companion numerical correction leaves a canonical primitive
+residual $R_i$ with
+$\sum_i m_i\deg(R_i^2)=0$. This residual identity, including the
+native constant-field factors, is the primitive-residual theorem of
+\cite{InternalModelCriteria}. Positivity and $m_i>0$ give $R_i=0$
+for every $i$. The resulting operational lift is numerically
+admissible, so codimension two follows by witness descent.
+One-cycles and the endpoint degrees complete the fourfold.
+\end{proof}
+
+The verified component classes include abelian fourfolds, rank-two
+projective bundles over smooth threefolds, rank-three bundles over
+smooth surfaces, rank-four bundles over smooth curves, and $\PP^4$.
+For the abelian case the positivity input is \cite{Ancona}; the
+projective-bundle cases follow from the numerical projective-bundle
+formula and divisor Hodge index. If $f:D'\to D_{k'}$ is finite
+surjective and $(D',f^*H_{k'})$ has the required positivity, then
+$(D,H)$ has it by pullback and the degree formula.
+
+\begin{proposition}[Finite model symmetries]\label{prop:symmetry-model}
+For a regular projective model of relative dimension $n\geq4$,
+with the preceding multiplicity and stratum conventions, put
+\[
+ P_H^2=\bigoplus_i\ker\bigl(H^{n-3}:N^2(D_i)_\Q\to
+                                    N^{n-1}(D_i)_\Q\bigr),
+ \qquad Q(x,y)=\sum_i m_i\deg(x_iy_iH_i^{n-4}).
+\]
+Let a finite group act on the model preserving the numerical class
+of $H$. If $Q$ is nondegenerate and $P_H^2$ is multiplicity-free
+as a rational representation, every codimension-two homological
+class has zero obstruction. In dimension four, nondegeneracy is
+automatic and the conclusion gives $\mathsf V$.
+\end{proposition}
+
+\begin{proof}
+The image of the canonical residual map is an invariant totally
+isotropic submodule of $P_H^2$, by the equivariant residual theorem
+in \cite{InternalModelCriteria}. Every rational simple representation
+of a finite group is self-dual, by an averaged positive rational
+form. Distinct simple summands are therefore orthogonal for $Q$.
+Multiplicity-freeness and nondegeneracy imply that each summand is
+nondegenerate, so no nonzero invariant totally isotropic submodule
+exists. The residual vanishes. Numerical correction and witness
+descent give the asserted degree. In dimension four, numerical
+duality and divisor Hodge index give the required nondegeneracy;
+the endpoints and one-cycles give all remaining degrees.
+\end{proof}
+
+The same proof applies to a sum of rational central isotypic
+projectors $e$ when $eP_H^2$ has these properties, and gives the
+corresponding cycle subspace $e\CH^2_{\Q,\geomhom}$. Such a
+subspace pairs globally with the admitted complementary group.
+
+\subsection{Ordinary quadratic reduction}\label{sub:ordinary-reduction}
+
+\begin{theorem}[Companion ordinary-reduction theorem]\label{thm:ordinary}
+Let $K/\Q_p$ be finite for any prime $p$, and let $X/K$ be smooth
+projective geometrically integral of dimension at least three.
+Suppose $X$ has an integral flat projective model whose geometric
+special fiber is integral and smooth apart from finitely many
+ordinary quadratic points, meaning that their projectivized
+geometric tangent cones are smooth quadrics. Then $\mathsf V(X)$ holds. The same
+conclusion holds if such a smooth projective dominant witness is
+supplied after a finite extension. The theorem reapplies to all
+new cycles over every finite valued extension.
+\end{theorem}
+
+\begin{proof}
+In odd residue characteristic the normal-form and successive
+reduced-point blowup calculation of \cite{InternalOrdinary}
+produces a regular reduced quadric forest after finite extension.
+Its numerical corrections are compatible with the incidence maps.
+The all-characteristic quadric-forest theorem in the same source
+handles odd-dimensional ordinary quadratic models at residue two.
+
+For even $n\geq4$ at residue two, use the henselian normal form of
+\cite[Lemma 4(ii)]{JannsenSaito}. A common finite extension splits
+all the finitely many node polynomials. Translating each by an
+integral root gives an actual pointed \'etale local equation
+\[
+ P(x_1,\ldots,x_n)+z^2+\epsilon\varpi^qz=0,
+ \qquad q\geq1,\quad\epsilon\in R^\times,
+\]
+with unimodular polar form for $P$, where $R$ is the auxiliary
+field's valuation ring and $\varpi$ its uniformizer. The common \'etale charts and
+exact saturated blowup calculations are proved in
+\cite[common \'etale neighborhoods and native degenerate-node chains]
+{InternalOrdinary}. Each reduced-point blowup decreases $q$ by
+one. After exactly $q$ blowups the exceptional chain consists of
+$q-1$ copies of
+$\PP_E(\mathcal O_E\oplus\mathcal O_E(-1))$ and a terminal
+smooth quadric, where
+\[
+ E=(\overline P(X)+Z^2=0)\subset\PP^n,
+ \qquad
+ T=(\overline P(X)+Z^2+\overline\epsilon ZS=0)
+       \subset\PP^{n+1}.
+\]
+All double strata are the smooth odd-dimensional quadric $E$;
+all multiplicities are one and the intermediate sections are
+disjoint. The same quadric-forest numerical criterion now applies.
+
+In every case numerical witness descent uses the complete common
+field degree, and the original curved pair gives the form on the
+specified support complement. The dominant-witness version follows
+from the same detector. After a finite valued extension the ordinary
+geometric special points persist, with possibly larger finite
+orders; apply the construction anew to every new cycle.
+\end{proof}
+
+Over a number field, good reduction or the ordinary alternative at
+every finite completion, also on the stated dominant witnesses,
+gives the full height pairing. Local auxiliary extensions are
+descended before this global construction and need not come from
+one fixed global extension.
+
+\subsection{Tate and abelian-type strata}
+
+\begin{theorem}[Companion all-strata criterion]\label{thm:abelian-strata}
+Let $Y,T/K$ be smooth projective geometrically integral. Suppose
+$Y$ has a supplied regular projective reduced strictly
+semistable model whose every connected closed geometric stratum
+has a rational Chow motive of abelian type after finite constants.
+Assume weight--monodromy for $Y$ in every degree and every
+invertible coefficient prime. If $T$ has potentially good projective
+reduction, then $T\times Y$ has $\mathsf V$, also for all new
+cycles after every finite valued extension.
+\end{theorem}
+
+\begin{proof}
+The ramified all-strata theorem in \cite{InternalUniformization}
+preserves the stated Chow-motive condition on a projective
+semistable repair. Its toroidal calculation expresses new strata
+through blowups of old boundary strata and projective bundles over
+them. For a closed-boundary blowup the property holds in both
+directions; this permits the toroidal factorization steps. The
+character lattice of a new stratum is primitive, and its calculation
+retains the actual line-bundle transition functions.
+
+For a new cycle over $L/K$, pass to a finite extension where $T$
+is good and the strata split. On one abelian carrier, numerical
+semisimplicity and its comparison prime supply an algebraic
+cohomological inner inverse to the boundary incidence. Tensor it
+with the diagonal of the coefficient, so the inverse acts on all
+mixed K\"unneth summands. Weight--monodromy gives the odd-weight
+condition, while the inverse gives numerical-kernel lifting and
+actual-span saturation. Apply the companion model criterion and
+descend with the full degree. The final curved-pair correction is
+on the original support of the newly specified cycle.
+\end{proof}
+
+\begin{corollary}[Drinfeld uniformization]\label{cor:drinfeld}
+Let $X_a$ be smooth projective algebraizations of
+$\Gamma_a\backslash\Omega_K^{d_a}$, where
+$\Gamma_a\subset\operatorname{PGL}_{d_a+1}(K)$ is torsion-free,
+discrete and cocompact, and $d_a\geq1$. Then
+$T\times\prod_aX_a$ has $\mathsf V$ for every potentially good
+projective coefficient $T$, also over every finite extension.
+\end{corollary}
+
+\begin{proof}
+The projective semistable cover of a Drinfeld quotient has
+components and closed strata obtained by the successive
+rational-linear-subspace blowups of projective space. Their actual
+Chow motives are split Tate, by the blowup formula. Staircase
+products retain this property. Ito's theorem \cite{Ito} gives
+weight--monodromy, and K\"unneth gives it for the product. Apply
+\thmref{thm:abelian-strata} and descend the finite cover.
+\end{proof}
+
+One may also include curve or surface factors supplied with
+projective strict semistable models all of whose closed strata are
+of Chow abelian type. The resulting placewise presentations give
+full global heights when available at every finite completion;
+the factors in those local presentations may depend on the place.
+
+\begin{theorem}[Totally degenerate strata]\label{thm:totally-degenerate}
+Suppose a smooth projective $X/K$ has, over a finite extension
+$L/K$, a projective dominant generically finite morphism
+$Y\to X_L$, with $Y$ smooth projective geometrically integral
+of dimension $\dim X$ and carrying a regular projective reduced
+strictly semistable model. On every
+connected geometric closed stratum $D$, require:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Each integral Chow group is finitely generated. The compatible
+hyperplane class $H$ from a projective embedding of the special
+fiber satisfies, for $2c\leq\dim D$ and nonzero rational primitive
+$x$ with $H^{\dim D-2c+1}x=0$,
+\[
+ (-1)^c\deg(xH^{\dim D-2c}x)>0.
+\]
+\item For every $\ell$ different from the residue characteristic,
+odd geometric integral cohomology is torsion and
+\[
+ (\CH^c(D)/\mathrm{tors})\otimes\Z_\ell
+ \simeq H^{2c}(D,\Z_\ell(c))/\mathrm{tors}.
+\]
+\end{enumerate}
+Then $\mathsf V(X)$ holds. Smooth projective toric strata satisfy
+these hypotheses. A global full height domain follows if such
+witnesses, or another full local criterion, are supplied at every
+finite place.
+\end{theorem}
+
+\begin{proof}
+These are conditions (a),(b) of Raskind--Xarles
+\cite[Definition 1]{RX}. Define finitely many Chow generators and
+components over one finite residue extension and lift it
+unramifiedly. The cycle isomorphisms and Poincar\'e duality identify
+native numerical groups with even cohomology, compatibly with the
+actual incidence correspondences. Thus every numerical-kernel
+test lifts to a closed cohomological support test, by the companion
+component-detection theorem \cite{InternalDegenerate}.
+
+The cited Raskind--Xarles weight result kills the relevant odd
+local Galois groups. More precisely, for
+$W=H^{2t-1}(Y_{\bar L},\Q_\ell(t))$ the inertia invariants have
+weights at most $-1$, and the inertia-$H^1$ term has weights at
+least $1$. Hence $W^{G_L}=H^1(L,W)=0$. The companion period
+comparison identifies the rational detector period with the
+local Abel--Jacobi cup-product against the closed support test.
+It vanishes in $\Q_\ell$, hence is zero as its original rational
+intersection number. The finite detector and exact-support
+reconstruction give the result. The global assertion applies
+\lemref{lem:two-degrees} to these supplied local witnesses.
+\end{proof}
+
+\subsection{A common arithmetic construction}\label{sub:arithmetic-construction}
+
+The dense families below use actual local models, together with an
+arithmetic pencil argument. We give the latter separately to specify
+the field and density quantifiers.
+
+\begin{lemma}[Congruence pencils]\label{lem:congruence-pencils}
+Let a fixed integral flat projective ambient model with geometrically
+integral fibers and a section system be supplied over a number
+ring. Suppose a finite free coefficient module surjects
+onto the section system and its required residue spaces. Suppose
+the system has a nonempty fixed-member Lefschetz-pencil open, and
+that one can prescribe smooth sections at a finite set of places
+and an established local smoothing model at distinguished places.
+Require the chosen equations to be nonzero on every special
+ambient fiber, and the generic smooth-member open to consist of
+geometrically integral members.
+After a single finite extension realizing these finite residue data,
+the congruence-pencil construction gives a Zariski-dense set of
+smooth generic members with the prescribed local models, smooth
+reduction at the exceptional places, and smooth or ordinary-quadratic
+reduction at all remaining places.
+\end{lemma}
+
+\begin{proof}
+Choose a smooth reference section $H_0$ and include in a finite
+set all rational primes below its bad reductions, its zero special
+sections, and residue characteristic two. Prepare the desired
+residue sections after finite residue extensions. A monic
+polynomial with separable irreducible reductions of one common
+degree realizes all these extensions in one number field, unramified
+at the chosen primes. This field is fixed from now on.
+
+In the free coefficient module impose the finite congruences for a
+second section $H_1$, using the square of each native maximal
+ideal to retain a prescribed first-order smoothing. For a
+distinguished rational prime $p$ unramified in the starting
+number field, this is the modulus $p^2$ used in the applications.
+Intersect this
+affine congruence lattice with the fixed-$H_0$ Lefschetz open. The
+intersection is Zariski dense. For a chosen $H_1$, spread its pencil
+outside a finite further set of primes. At those additional primes,
+choose the parameter to specialize to the already smooth reference
+member; at the originally prepared primes choose it to preserve
+the chosen residue member. Chinese remainders give infinitely many
+parameters with these requirements. Omit the finitely many singular
+generic members.
+
+Outside the spreading set, the pencil has smooth or ordinary
+quadratic fibers. At every exceptional prime the selected residue
+fiber is smooth or is the prescribed established smoothing.
+The nonzero residue equations are non-zero-divisors on the integral
+ambient fibers. The relative Cartier criterion therefore makes the
+resulting divisors flat over the number ring. Generic geometric
+integrality follows from the prescribed open. In each application,
+nonzero residue equations are checked at the exceptional primes by
+the congruences and elsewhere by independence of the two pencil
+sections. Finally a polynomial
+vanishing on all constructed members vanishes on each permitted
+pencil, since that pencil contains infinitely many of them. Varying
+$H_1$ in the dense congruence open proves density in the stated
+section space. The finite spreading set may depend on $H_1$; the
+fixed field does not.
+\end{proof}
+
+\subsection{Hypersurfaces and complete intersections}
+
+The following are the geometric conclusions of the local model
+calculations in \cite{InternalDense}. Their arithmetic proofs use
+\lemref{lem:congruence-pencils}. Each constructed member has full
+heights on all new homological classes after every finite extension
+of its stated field.
+
+\begin{theorem}[Dense hypersurface families]\label{thm:dense-hypersurfaces}
+For every $n\geq3$ and $D\geq3$, there is a Zariski-dense subset
+of the full degree-$D$ hypersurface parameter space over $\Q$
+consisting of smooth geometrically integral varieties with full
+height domains over every number field.
+
+For $n\geq4$, fix positive $d_1,\ldots,d_m$, $m\geq3$,
+$D=\sum_i d_i$, and suppose
+\[
+ b_n=\sum_{|I|=n+1}\prod_{i\in I}d_i-\binom{m-1}{n}>0.
+\]
+There is such a dense subset with a distinguished product-profile
+degeneration of extreme monodromy rank $\rk N^n=b_n$. For linear
+factors this gives $D\geq n+2$ and
+$\rk N^n=\binom{D-1}{n+1}$.
+\end{theorem}
+
+\begin{proof}
+For the ordinary family take
+\[
+ F_0=\sum_{j=0}^{n+1}X_j^D,\qquad
+ J_D=\sum_{j=0}^n X_j^{D-1}X_{j+1}+X_{n+1}^D.
+\]
+At a prime dividing $D$, descending through the partial derivatives
+shows $J_D$ is smooth. At every other prime $F_0$ is smooth.
+Choose an integral $F_1$ congruent to $J_D$ at primes dividing
+$D$ and in the fixed-$F_0$ Lefschetz open. The members
+$DF_0+aF_1$, with Chinese-remainder conditions on $a$, have smooth
+reduction at the finitely many exceptional primes, including two,
+and ordinary reduction elsewhere. Apply \thmref{thm:ordinary}.
+Varying $F_1$ proves the asserted full-space density.
+
+For the product profile, prepare transverse integral factors
+$P=\prod_i f_i$ and a smoothing section $Q$. Choose
+$q>D$ outside their finite bad set and impose
+$F_1\equiv P-DF_0+qQ\pmod{q^2}$ as well. For $a\equiv1$
+modulo $q^2$, the exact equation at $q$ is $P+qQ_a$ with
+$\bar Q_a=\bar Q$. The ordered product-model calculation in
+\cite{InternalDense} gives full local vanishing and the displayed
+extreme monodromy rank. Its ramified-extension theorem treats all
+new cycles after arbitrary finite extension. At the other primes
+use the preceding ordinary argument. The complementary-degree
+criterion gives the heights.
+\end{proof}
+
+\begin{theorem}[Successive complete-intersection sections]\label{thm:dense-ci}
+Let $\mathcal Y\subset\PP^N_{\mathcal O_F}$ be a supplied
+integral flat projective relative complete intersection of dimension
+$m\geq4$, with smooth geometrically integral generic fiber and
+geometrically integral special fibers smooth outside finite sets.
+For every $d\geq3$, after one fixed finite extension $E/F$ there
+is a dense subset of the full degree-$d$ section system on $Y_E$
+whose smooth members have full height domains over all finite
+extensions of $E$.
+
+Consequently one can construct complete intersections of any
+specified multidegree $(d_1,\ldots,d_t)$ with all $d_i\geq3$
+and final dimension at least three, over one fixed finite extension
+of any prescribed number field. The first equations may be fixed
+so that density holds in the final section system. A split quadric
+may be used as the initial ambient variety.
+\end{theorem}
+
+\begin{proof}
+The Koszul resolution supplies the full section space from ambient
+polynomials. Smooth residue sections can be chosen to avoid the
+finite ambient singular loci, after finite residue preparation.
+The degree-$d$ jets for $d\geq3$ give the fixed-member Lefschetz
+open. Apply \lemref{lem:congruence-pencils}; the resulting integral
+complete-intersection model has smooth or odd-characteristic
+ordinary fibers and good fibers at two. Use
+\thmref{thm:ordinary}. Its model has the same finite-singular-locus
+property, so one can iterate, fixing the earlier equations before
+varying the last one.
+\end{proof}
+
+There is also a product-profile final-section version on the fixed
+ambient of \thmref{thm:dense-ci}, with $m=n+1\geq5$. If the
+ambient degree is $\delta$, the final degree is
+$D=\sum_{i=1}^s e_i$ with $s\geq3$, $e_i\geq1$, the companion
+construction gives a dense final-section family after one fixed
+extension, with
+\[
+ \rk N^n=\delta\sum_{|I|=n+1}\prod_{i\in I}e_i
+                                      -\binom{s-1}{n}.
+\]
+For example degree-five sections of the split quadric fivefold
+give a dense family of type-$(2,5)$ fourfolds with $\rk N^4=1$.
+The local product theorem and the same congruence-pencil proof
+give their complete height domains.
+
+\subsection{Product ambients and positive fourfold hosts}
+
+\begin{theorem}[Dense product-ambient families]\label{thm:dense-products}
+For each fixed set of input data below, the constructed dense set
+has a full height domain over all finite extensions of one fixed
+finite extension of its stated initial number field.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item For every $D\geq5$ and every prescribed number field
+$F_{\rm base}$, one fixed finite $F/F_{\rm base}$ supports a
+dense subset of the full bidegree-$(D,D)$ system on
+$(\PP^1\times\PP^4)_F$. A distinguished product model has
+\[
+ \rk N^4=(D-1)\binom{D-1}{4}>0.
+\]
+\item Let $\mathcal S/\mathcal O_F$ be a supplied smooth
+projective geometrically integral surface model and let $A$ be
+relatively very ample. On $\mathcal S\times\PP^3$, put
+$L=A\boxtimes\mathcal O(1)$. After one fixed finite extension
+$E/F$, the image of degree-five embedding polynomials has a
+dense such subset, with
+$\rk N^4=10\deg(A^2)-1$. If those polynomials span the full
+section space, this is density in $|L^5|$.
+\item Let $\mathcal M/\mathcal O_{F_0}$ be a supplied smooth
+projective scheme of relative dimension four over the whole number
+ring, with geometrically integral fibers. Fix an odd rational prime $p$ unramified
+in $F_0$. At each $v\mid p$ and every finite residue extension
+$k'/k(v)$ assume
+\begin{equation}\label{eq:host-signature}
+ b^-(N^2(\mathcal M_{k'})_\R,\deg xy)
+                  =\rho(\mathcal M_{k'})-1.
+\end{equation}
+Choose $H$ sufficiently positive for relative very ampleness,
+normal generation and section base change. Put
+$L_0=H\boxtimes\mathcal O_{\PP^1}(1)$ and $c=\deg H^4$.
+One fixed finite $F/F_0$, unramified above $p$, supports a dense
+subset of the full $|L_0^5|_F$ with
+\[
+ \rk N^4=4(5c-4)>0,\qquad
+ b_1(X)=b_1(M),\quad b_2(X)=b_2(M)+1.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For (i), use $D$ transverse $\mathcal O(1,1)$ factors at a
+distinguished prime. The ambient double-stratum comparison retains
+both hyperplane classes. The ordered model and its uniform
+finite-extension comparison, proved in \cite{InternalDense}, give
+full local vanishing and
+$5\binom D5-\binom{D-1}4=(D-1)\binom{D-1}4$.
+
+For (ii), the local surface-ambient comparison uses the actual
+blowups of the double strata. Its extreme incidence complex gives
+$10\deg(A^2)-1$. The free module of embedding polynomials supplies
+the coefficient space in \lemref{lem:congruence-pencils}, proving
+density in its image. The stated spanning hypothesis identifies
+that image with the full section system.
+
+For (iii), the positive-host suspension calculation in
+\cite{InternalPositiveHosts} applies to five divisors on $M$
+and five distinct point factors on $\PP^1$. Residue Bertini
+prepares smooth geometrically integral intersections of one,
+two and three divisors, split finite-\'etale fourfold intersections
+of degree $c$, and empty fivefold intersection. The smoothing
+section cuts each positive-dimensional stratum transversely,
+with geometrically integral positive-dimensional cuts and
+finite-\'etale zero-dimensional cuts, and avoids the
+zero-dimensional strata. Condition \eqref{eq:host-signature} kills
+the primitive numerical residual. Its uniform form over finite
+residue extensions gives the all-new-cycle ramified conclusion.
+The incidence complex has $\dim H_3=5c-4$ before joining the
+five point vertices, hence $\rk N^4=4(5c-4)$ afterward.
+Weak Lefschetz gives the two Betti numbers. Relative Serre
+vanishing and a sufficiently high Veronese supply the full
+coefficient module and the required jets. Apply
+\lemref{lem:congruence-pencils} to all three cases, use ordinary
+reduction at nondistinguished bad primes, and then
+\lemref{lem:two-degrees}.
+\end{proof}
+
+The signature hypothesis in (iii) is supplied by everywhere-good
+abelian fourfolds, by the projective-bundle host types listed after
+\propref{prop:positive-model}, and by $\PP^4$. For $\PP^4$,
+$H=\mathcal O(1)$ and $p=5$, the result gives bidegree-$(5,5)$
+fourfolds with $\rk N^4=4$, $b_1=0$, $b_2=2$.
+
+\subsection{Explicit elliptic-power families}
+
+Let $E_0/\Q$ be $y^2=x^3-x$ and put
+$F_{\rm tor}=\Q(E_0[3])$, adjoining all geometric $3$-torsion.
+The elliptic curve has an everywhere-good model $\mathcal E$
+over this field. At two, potential good reduction follows from
+complex multiplication; after adjoining $3$-torsion its finite
+inertia image lies in the torsion-free principal congruence
+subgroup of $\operatorname{GL}_2(\Z_3)$, so it is trivial. The
+curve is already good at the other primes. This field is
+unramified above five.
+
+Put $A=\mathcal O_E(3[0])\boxtimes\mathcal O_E(3[0])$ on $E^2$,
+and $H=\boxtimes_{i=1}^4\mathcal O_E(3[0])$ on $E^4$.
+The plane-cubic embeddings and the Segre construction prove full
+section spanning. The following dense subsets of full linear
+systems are constructed over fixed finite extensions of
+$F_{\rm tor}$ unramified above five, and have full heights after
+every further finite extension:
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Ambient and system & Distinguished profile & Monodromy & $(b_1,b_2)$\\
+\midrule
+$E^2\times\PP^3$, $|(A\boxtimes\mathcal O(1))^5|$
+ & five section factors & $\rk N^4=179$ & $(4,7)$\\
+same system & curve and five hyperplanes & $N^4=0$ & $(4,7)$\\
+$E^4\times\PP^1$, $|(H\boxtimes\mathcal O(1))^5|$
+ & two curves and five points & $\rk N^2=802816$, $N^3=0$ & $(8,29)$\\
+same system & five divisors and five points & $\rk N^4=38864$ & $(8,29)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first row has $\deg A^2=18$. The second uses the mixed
+surface--hyperplane local theorem of \cite{InternalMixedFamilies};
+its weight-two contribution contains a nonzero eight-dimensional
+summand. In the third row the double-stratum model is the actual
+blowup of the curve product along the smoothing cuts. The local
+signature condition holds for the abelian fourfold product, and
+the exact rank formula is
+\[
+ \rk N^2=(2g(C)-b_1(S))(2g(D)-b_1(T))(d-1),\qquad N^3=0.
+\]
+Here $g(C)=g(D)=226$, $b_1(S)=b_1(T)=4$, and $d=5$.
+The final row is \thmref{thm:dense-products}(iii), with
+$c=4!\,3^4=1944$. The arithmetic argument is again
+\lemref{lem:congruence-pencils}, now with the full Segre coefficient
+system. The different monodromy profiles retain the distinctions
+among these constructed subsets even when the ambient system is
+the same.
+
+
+
+% Source: papers/pairing-sections/cycle_domains.tex
+\section{Cycle subgroups and explicit representatives}\label{sec:cycle-domains}
+
+\subsection{Algebraically trivial cycles}\label{sub:algebraic-triviality}
+
+Write $\CH^r(X)_{\Q,\alg}$ for the rational Chow classes whose
+base change to an algebraic closure is algebraically equivalent
+to zero.
+
+\begin{proposition}\label{prop:algebraic-triviality}
+On every smooth projective $X/K$ and in every codimension,
+\[
+ \CH^r(X)_{\Q,\alg}\subseteq\cK_K^r(X).
+\]
+Over a number field, the companion normalized height is therefore
+defined on
+\[
+ \CH^r(X)_{\Q,\alg}\times
+ \CH^{n+1-r}(X)_{\Q,\alg},
+\]
+and more generally on either algebraically trivial factor paired
+with the admitted complementary group $\cH$.
+\end{proposition}
+
+\begin{proof}
+Algebraic equivalence is generated by connected smooth projective
+curve families. After a finite extension, an algebraically trivial
+class is a finite sum of
+\[
+ \Gamma_*([a]-[b]),\qquad
+ \Gamma\in\CH^r(C\times X)_\Q,
+\]
+with $a,b$ rational over that finite extension on the smooth
+projective parameter curve. Enlarge the extension to retain the
+finite rational-equivalence witnesses as well.
+The degree-zero divisor $[a]-[b]$ is in its endpoint kernel.
+Kernel covariance and full-degree finite descent prove the local
+inclusion. The constant-field interpretation of algebraic
+triviality is equivalently obtained by norming the finite family
+certificate. Apply this inclusion at every completion and then
+the companion height theorem.
+\end{proof}
+
+Together with the endpoint results, this also gives the full
+divisor--zero-cycle height on an arbitrary $n$-fold. The complete
+one-cycle group lies in $\cH^{n-1}(X)$ and pairs with
+$\cH^2(X)$. Whenever one of the geometric or model criteria above
+establishes the entire codimension-two group, this becomes the
+full complementary pairing.
+
+\subsection{Finite obstruction certificates}\label{sub:finite-certificates}
+
+The finite-detector theorem of \cite{InternalDetectors} provides,
+for a fixed admissible model calculation, finitely many rational
+period coordinates for the actual obstruction. Their vanishing
+is a certificate that a specified homological Chow class belongs
+to $\cK_K^r(X)$. The normalized tests use
+\[
+ \eta_j=\frac{1}{[L:K]c_L}\Tr^K_{X_L/X}(b_j),\qquad
+ c_L=-\log|\varpi_L|=c_K/e(L/K).
+\]
+Thus all model families, isotypic sectors and individually certified
+classes may be combined inside the same admitted group. For a
+number-field class one checks this membership at its finitely many
+relevant bad places; the good places are handled by the good-model
+construction. The output Green identity still has the complete
+actual test space in \eqref{eq:strong-G}.
+
+\subsection{Exact-support cancellation for complete intersections}\label{sub:ci-certificates}
+
+Let $\bar L$ be a line bundle with one fixed piecewise-smooth or
+smooth metric allowed by the complete-intersection construction
+on a smooth projective $X/K$, and let
+$s_0,s_1$ be regular rank-$r$ tuples of sections of $L$, with
+$n\geq r\geq3$. Write $Y_i=V(s_i)$ with its scheme-theoretic
+cycle multiplicities, and put
+\[
+ Z=[Y_1]-[Y_0],\quad
+ S=|Y_0|^{\an}\cup|Y_1|^{\an},\quad
+ U=X^{\an}\setminus|Z|^{\an},\quad W=X^{\an}\setminus S.
+\]
+The complete-intersection kernel of the tropical companion
+\cite{InternalTropical}, for a common allowed metric on $L$, is
+\begin{equation}\label{eq:ci-kernel}
+ \phi_s=\min_i(-\log\|s_i\|),\quad
+ R=c_1(\bar L),\quad A_s=R-D\phi_s,\quad
+ G_s=\phi_s\sum_{j=0}^{r-1}A_s^jR^{r-1-j}.
+\end{equation}
+It satisfies $D[G_s]+\delta_{Y_s}=[R^r]$ against all actual
+tests. The raw difference is defined on $W$; cancelled components
+lie in $C_U=S\cap U$.
+
+\begin{proposition}[Supplied cancellation certificates]\label{prop:ci-cancellation}
+Each of the following hypotheses supplies an explicit actual
+Green form for $Z$ on $U$, satisfying \eqref{eq:strong-G}.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item On an ordinary analytic neighborhood of $C_U$ in $U$,
+$s_1=Ms_0$ exactly, where $M$ is an invertible three-row block
+plus the identity in the other rows. Two specified entries $a,d$
+in its first column have nonvanishing opens covering $C_U$.
+\item On a Zariski neighborhood of $C_U$, the two regular
+sequences define the same ideal. Their comparison matrix on the
+reduced conormal coefficient ring has a supplied finite ordered
+factorization into elementary shears, one-entry units, invertible
+two-row blocks, and invertible three-row blocks with the two-pivot
+cover in \textup{(i)}. All row labels, coefficient data and inverses
+are part of the factorization. At each fixed word position use
+the same cap offsets and inner and outer partitions for every
+local coefficient lift.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For (i), the relative three-row face identities in
+\cite{InternalTropical} give, for an ordinary neighborhood $N$
+of $C_U$ in $U$, the identity on $N\cap W$
+\[
+ G_{s_1}-G_{s_0}=d'\alpha+d''\beta+E,
+\]
+where $\alpha,\beta$ are actual on $N\cap W$ and $E$ is
+actual on $N$. Their explicit
+two-pivot partition uses $v(d)-v(a)$ and includes the differentiated
+partition and mixed-derivative terms. Choose the companion
+relative-support cutoff $\zeta$ on $U$, with support closed in
+$U$ inside this neighborhood and value one near $C_U$.
+On $W$ the corrected form
+\[
+ G_{s_1}-G_{s_0}
+ -d'\operatorname{ext}_0(\zeta\alpha)
+ -d''\operatorname{ext}_0(\zeta\beta)
+\]
+equals $E$ near $C_U$, so it glues to an actual form on $U$.
+The relative-support Stokes calculation of the companion proves
+the all-actual test identity.
+
+For (ii), lift the fixed finite word locally and execute its
+factors at the actual intermediate tuples. The final discrepancy
+is $1+E_0$ with entries of $E_0$ vanishing on the reduced common
+zero scheme. Near $C_U$ its entries have norm less than one, so
+this discrepancy preserves the tuple supremum norm and the
+complete expression \eqref{eq:ci-kernel}. The coefficient-uniform
+germ theorem in \cite{InternalTropical} identifies the complete
+primitive germs for different local lifts. They therefore glue
+with a locally finite partition; its derivative discrepancy
+extends by zero. Apply the same relative-support cutoff argument.
+The calculation retains the original nonreduced schemes and their
+cycle multiplicities throughout.
+\end{proof}
+
+These regular sections have
+$[Y_i]=c_r(L^{\oplus r})\cap[X]=c_1(L)^r\cap[X]$ in Chow.
+Consequently $[Z]=0$. The constructions make the exact-support
+Green representative explicit. For such globally defined cycles,
+the Chow-descended height is
+\[
+ h_X([Z],w)=0\qquad(w\in\cH^{n+1-r}(X)),
+\]
+even though individual local Green integrals may be nonzero.
+
+\subsection{Comparison with supplied arithmetic models}\label{sub:supplied-models}
+
+Suppose an admitted pair $z,w$ has regular numerically admissible
+arithmetic lifts $\widehat\Theta,\widehat\Phi$ on a regular flat
+projective model over $\mathcal O_F$, with zero archimedean
+curvature in the comparison normalization. The companion
+model-comparison theorem \cite{InternalHeight} identifies its
+normalized height with
+\[
+ h_X(z,w)=[F:\Q]^{-1}
+          \widehat{\deg}(\widehat\Theta\cdot\widehat\Phi).
+\]
+If $f:Y\to X_E$ is a degree-$d$ alteration with $Y$ smooth
+projective, and the supplied admissible lifts of
+$f^*z_E,f^*w_E$ lie on a regular flat projective
+$\mathcal O_E$-model of $Y$, with the same zero-curvature
+archimedean normalization, the corresponding formula is
+\[
+ h_X(z,w)=\frac{1}{d[E:\Q]}
+          \widehat{\deg}(\widehat\Theta\cdot\widehat\Phi).
+\]
+The generic degree and the absolute number-field degree are separate
+factors. These formulas and the abelian comparison in the next
+section describe the same normalized pairing on their common domains.
+
+
+
+\section{Height pairings and recursive formulas}\label{sec:heights}
+
+\subsection{Proof of the normalized height theorem}\label{proof:height}
+
+Let $X/F$ satisfy the hypothesis of \thmref{thm:height-main}.
+At each finite place $v$, complete a field of definition of
+the Chow retraction at a place above $v$. The resulting
+extension of $F_v$ is finite. \thmref{thm:main}, applied with
+the original absolute value of $F_v$, shows that every geometric
+homological class has zero local obstruction. Both groups in
+\eqref{eq:height-domain} are therefore in the full domain of
+the companion height theorem.
+
+Normalized finite-extension invariance, the Chow identity and
+\eqref{eq:height-adjunction} give
+\begin{align*}
+ h_X^{\an}(z,w)
+ &=h_{X_E}^{\an}(z_E,w_E)\\
+ &=\sum_jh_{X_E}^{\an}(v_{j*}u_{j*}z_E,w_E)\\
+ &=\sum_jh_{A_j}^{\an}(u_{j*}z_E,{}^tv_{j*}w_E).
+\end{align*}
+The image classes are homologically trivial and have codimensions
+$r+a_j$ and $\dim A_j+1-r-a_j$. An image in codimension zero
+is zero because its geometric cycle class detects its rank.
+Out-of-range images also vanish. Apply
+\eqref{eq:abelian-comparison} to each remaining term to obtain
+\eqref{eq:height-main}. Every permitted choice computes the
+same canonical left side, proving independence. This completes
+the proof of \thmref{thm:height-main}.
+
+\subsection{The signed join recursion}
+
+Consider a join $g:W=\Bl_CV\to H$ of degree $d$ over a number
+field, with the potential abelian Chow retractions constructed above
+for $V,C,W,H$. For geometrically homologically trivial rational
+Chow classes $z,w$ on $H$ in complementary codimensions, put
+\[
+ a_z=q_*g^*z,\quad a_w=q_*g^*w,\qquad
+ b_z=p_*i^*g^*z,\quad b_w=p_*i^*g^*w.
+\]
+
+\begin{corollary}\label{cor:height-recursion}
+The normalized heights satisfy
+\begin{equation}\label{eq:height-recursion}
+ h_H^{\an}(z,w)=\frac1d
+          \left(h_V^{\an}(a_z,a_w)-h_C^{\an}(b_z,b_w)\right).
+\end{equation}
+The center height is summed over its components after a finite
+splitting field. Its two degrees are $r-1$ and $s-1$, where
+$r+s=\dim H+1$; zero or impossible homological terms are omitted.
+\end{corollary}
+
+\begin{proof}
+Adjunction and $g_*g^*=d$ yield
+$h_W^{\an}(g^*z,g^*w)=d\,h_H^{\an}(z,w)$. Apply
+\eqref{eq:blowup-diagonal} to the first entry on $W$.
+The transposes of $q^*$ and $i_*p^*$ act by $q_*$ and
+$p_*i^*$, respectively. A second application of adjunction
+gives the right side of \eqref{eq:height-recursion}, with
+the negative sign from the normal bundle of the exceptional
+divisor. The center codimensions sum to $\dim C+1$.
+\end{proof}
+
+\subsection{The cyclic-cover scalar}
+
+For the product cover $f:Y_E\to X_E$ of rank $M$ and the
+factorization of $Y_E$ used in \eqref{eq:cyclic-diagonal},
+the same adjunction gives
+\begin{align}
+ h_X^{\an}(z,w)
+ &=\frac1M h_{Y_E}^{\an}(f^*z_E,f^*w_E)\notag\\
+ &=\frac1{M[E:\Q]}\sum_J
+   \bigl\langle u_{J*}f^*z_E,{}^tv_{J*}f^*w_E
+              \bigr\rangle_{A_J,\mathrm{Kun}}.\label{eq:cyclic-height}
+\end{align}
+Indeed, $f_*f^*z_E=M z_E$. The global pairing is already
+absolutely normalized, while the factor $M^{-1}$ records the
+finite flat rank in \eqref{eq:cyclic-algebra}. In particular,
+using the maps $(U_J,V_J)$ instead absorbs this factor into
+$V_J$ and gives the same formula.
+
+\begin{thebibliography}{99}
+
+% Source: papers/pairing-sections/bibliography_additions.tex
+\bibitem{DCM} M. A. A. de Cataldo and L. Migliorini,
+\emph{The Chow groups and the motive of the Hilbert scheme of points
+on a surface}, J. Algebra 251 (2002), 824--848, Theorem 6.2.1 and
+Remark 6.2.2. \url{https://arxiv.org/abs/math/0005249}.
+\bibitem{Bulles} T.-H. B\"ulles, \emph{Motives of moduli spaces on K3
+surfaces and of special cubic fourfolds}, arXiv:1806.08284, Theorem 0.1.
+\url{https://arxiv.org/abs/1806.08284}.
+\bibitem{VialFibrations} C. Vial, \emph{Algebraic cycles and fibrations},
+Documenta Math. 18 (2013), 1521--1553, Theorem 4.2.
+\url{https://arxiv.org/abs/1203.2650}.
+\bibitem{ELV} H. Esnault, M. Levine and E. Viehweg,
+\emph{Chow groups of projective varieties of very small degree},
+Duke Math. J. 87 (1997), 29--58, Theorem 4.6.
+\url{https://page.mi.fu-berlin.de/esnault/preprints/helene/38-duke97.pdf}.
+\bibitem{HI} A. Hirschowitz and J. N. Iyer,
+\emph{Hilbert schemes of fat $r$-planes and the triviality of Chow
+groups of complete intersections}, final author manuscript,
+Theorem 1.5 and Sections 5--6. The exact version is identified in
+the source dossier.
+\url{https://math.univ-cotedazur.fr/u/ah/div/roitfinalCM.pdf}.
+\bibitem{Otwinowska} A. Otwinowska,
+\emph{Remarques sur les cycles de petite dimension de certaines
+intersections compl\`etes}, C. R. Acad. Sci. Paris S\'er. I Math.
+329 (1999), 141--146. Rewritten author version, 13 December 1999,
+Corollaire 1.
+\url{https://www.imo.universite-paris-saclay.fr/~anna.otwinowska/intcompletes.ps}.
+\bibitem{Ancona} G. Ancona, \emph{Standard conjectures for abelian
+fourfolds}, Invent. Math. 223 (2021), 149--212.
+\bibitem{Ito} T. Ito, \emph{Weight-monodromy conjecture for
+$p$-adically uniformized varieties}, Invent. Math. 159 (2005),
+607--656. \url{https://arxiv.org/abs/math/0301201}.
+\bibitem{JannsenSaito} U. Jannsen and S. Saito,
+\emph{Bertini theorems and Lefschetz pencils over discrete valuation
+rings, with applications to higher class field theory},
+arXiv:0911.1470, Section 3, Lemma 4 and Theorem 5.
+\url{https://arxiv.org/abs/0911.1470}.
+\bibitem{RX} W. Raskind and X. Xarles,
+\emph{On the \'etale cohomology of algebraic varieties with totally degenerate
+reduction over $p$-adic fields}, J. Math. Sci. Univ. Tokyo 14
+(2007), 261--291. Definition 1(a),(b), Proposition 2 and Corollary 2.
+\url{https://www.ms.u-tokyo.ac.jp/journal/pdf/jms140204.pdf}.
+\bibitem{InternalEndpoints} Research archive,
+\emph{Endpoint cycles, numerical curve lifts, and dominant
+obstruction descent}. Exact sources: regular-model curve correction
+(R12), all-degree dominant detection and one-cycles (R16).
+See the companion source index, group E.
+\bibitem{InternalProducts} Research archive,
+\emph{Actual deletion models and the residual core for all surface
+products}. Exact sources: the binary supported transport, incidence
+conventions, and all-factor deletion proof (R20), including the
+model-splitting and full local product theorems. Source group P.
+\bibitem{InternalModel} Research archive,
+\emph{Actual algebraic class spans, incidence defects, and odd-weight
+obstructions}. Exact model interfaces AK19, CR19 and OW19;
+source group M. The product theorem invokes these interfaces in
+their specified actual-class-span form.
+\bibitem{InternalFibrations} Research archive,
+\emph{Low-Chow fibers and signed quadric retractions}. Exact
+quadric-fiber, cubic-fiber, relative-quadric and height-domain
+proofs (R32--SC2); source group Q.
+\bibitem{InternalModelCriteria} Research archive,
+\emph{Primitive residuals, scalar boundary corrections, and model
+symmetries}. Exact numerical model proofs (R16); source group M.
+\bibitem{InternalOrdinary} Research archive,
+\emph{Ordinary quadratic models and exact native normal forms}
+(R17), including ON17, the all-characteristic quadric-forest criterion
+C217, and the even-dimensional residue-two argument CD217;
+arbitrary-thickness extension and global-height
+corollaries. Source group O.
+\bibitem{InternalUniformization} Research archive,
+\emph{Drinfeld uniformization, ramified toroidal strata, and motive
+closure} (R20). Source group U.
+\bibitem{InternalDense} Research archive,
+\emph{Arithmetic congruence pencils and complete-height families}
+(R17--R18), with the all-degree and all-finite-extension overlays.
+Source group D.
+\bibitem{InternalMixedFamilies} Research archive,
+\emph{Mixed surface--hyperplane and two-surface arithmetic
+families} (R21--R22). Source group D.
+\bibitem{InternalPositiveHosts} Research archive,
+\emph{Positive fourfold suspensions and supplied projective hosts}
+(R22). Source group D.
+\bibitem{InternalDegenerate} Research archive,
+\emph{Totally degenerate strata and original-source period
+annihilation} (R32--SC2), with the component-detection comparison.
+Source group M.
+\bibitem{InternalDetectors} Research archive,
+\emph{Finite actual tests and height-obstruction quotients}
+(R17), with exact-support equivalence and native trace weights.
+Source group F.
+\bibitem{InternalTropical} Research archive,
+\emph{Complete-intersection kernels and exact-support
+two-pivot and conormal-word cancellation}. Tropical branch,
+R9 and R12 exact sources; source group T. The complete source
+and dependency audit accompanies the paper.
+
+
+\bibitem{Mihatsch} A. Mihatsch, \emph{$\delta$-forms on Lubin--Tate spaces},
+arXiv:2112.10018v4, 2024. \url{https://arxiv.org/abs/2112.10018}.
+\bibitem{Kun} K. K\"unnemann, \emph{Height pairings for algebraic cycles on
+abelian varieties}, Ann. Sci. \'Ecole Norm. Sup. (4) 34 (2001), 503--523.
+\url{https://www.numdam.org/article/ASENS_2001_4_34_4_503_0.pdf}.
+\bibitem{SK} T. Shioda and T. Katsura, \emph{On Fermat varieties},
+Tohoku Math. J. (2) 31 (1979), 97--115.
+\url{https://doi.org/10.2748/tmj/1178229881}.
+\bibitem{Laterveer} R. Laterveer, \emph{Some cubics with finite-dimensional
+motive}, arXiv:1708.05671v1, 2017, Theorem 5 and Proposition 6.
+\url{https://arxiv.org/abs/1708.05671}.
+\bibitem{Vial} C. Vial, \emph{Remarks on motives of abelian type},
+Tohoku Math. J. (2) 69 (2017), 195--220; author version of 20 July 2015.
+\url{https://www.math.uni-bielefeld.de/~vial/abelian.pdf}.
+\bibitem{Scholl} A. J. Scholl, \emph{Classical motives}, in
+\emph{Motives}, Proc. Sympos. Pure Math. 55, Part 1 (1994), 163--187.
+\url{https://www.dpmms.cam.ac.uk/~ajs1005/preprints/classical_motives.pdf}.
+\bibitem{Fulton} W. Fulton, \emph{Intersection Theory}, second edition,
+Ergebnisse der Mathematik und ihrer Grenzgebiete 2, Springer, 1998.
+\bibitem{InternalGreen} Research archive, \emph{Curved ordinary Green
+pairs and the Chow-to-actual Bott--Chern obstruction}, R11 companion
+manuscripts, frozen dependencies of R32. Exact statements: PC7;
+OC1--OC2; exact-support obstruction criterion. Source paths and
+hash/review bindings are supplied in the accompanying source map.
+\bibitem{InternalNumerical} Research archive,
+\emph{Numerical witness descent}, R12 companion manuscript,
+\texttt{r12a:finite-numerical-cover}, as frozen in the R32 dependency chain.
+\bibitem{InternalCovariance} Research archive,
+\emph{Chow-kernel covariance and full finite actual trace}, R16 companion
+manuscripts CV16 and FT16, as frozen in the R32 dependency chain.
+\bibitem{InternalHeight} Research archive,
+\emph{Global analytic heights, correspondence adjunction and abelian
+comparison}, R16 companion manuscripts H16, HA16 and MM16,
+as frozen in the R32 dependency chain.
+\end{thebibliography}
+\end{document}

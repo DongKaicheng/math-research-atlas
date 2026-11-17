@@ -1,7 +1,10 @@
-import {readFile,writeFile,mkdir,readdir,cp} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir,cp,rm} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import katex from 'katex';
+import {marked, Renderer} from 'marked';
+import {buildStrongGreen} from './build-strong-green.mjs';
+import {FEEDBACK_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const output=path.join(root,'dist');
@@ -9,18 +12,18 @@ const base=(process.env.SITE_BASE_PATH??'/math-research-atlas').replace(/\/$/,''
 const origin=(process.env.SITE_ORIGIN??'https://dongkaicheng.github.io/math-research-atlas').replace(/\/$/,'');
 const repository=process.env.GITHUB_REPOSITORY||'DongKaicheng/math-research-atlas';
 const gh='https://github.com/'+repository;
-const CATEGORIES=[
-  ['question','Questions'],['correction','Corrections'],['reference','References'],
-  ['suggestion','Ideas'],['proof','Proofs'],['counterexample','Counterexamples'],
-  ['formalization','Lean / formalization'],
-];
+const CATEGORIES=FEEDBACK_CATEGORIES;
 
 const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 const url=p=>base+(p.startsWith('/')?p:'/'+p);
-const githubIssueUrl=kind=>gh+'/issues/new?template='+kind+'.yml';
+const githubIssueUrl=kind=>feedbackIssueUrl(repository,kind);
 const canonical=p=>origin+(p==='/'?'/':p);
 const section=(id,label,title,body)=>`<section class="document-section" id="${esc(id)}"><p class="section-number">${esc(label)}</p><h2>${esc(title)}</h2>${body}</section>`;
 const alert=(title,copy)=>`<div class="outline-notice"><div><strong>${esc(title)}</strong><p>${esc(copy)}</p></div></div>`;
+
+// dist is generated output; a clean build prevents stale public downloads.
+await rm(output,{recursive:true,force:true});
+await mkdir(output,{recursive:true});
 
 function math(s,display=false){
   try{return katex.renderToString(s.trim(),{throwOnError:false,trust:false,displayMode:display,maxSize:12,maxExpand:1000});}
@@ -94,6 +97,20 @@ function markdown(source=''){
   return blocks.join('\n');
 }
 
+// Editorial guides use CommonMark lists and nested code blocks. Keep their
+// renderer separate from mathematical records' explicit TeX handling.
+function guideMarkdown(source=''){
+  const renderer=new Renderer();
+  renderer.html=({text})=>esc(text);
+  renderer.link=function({href,title,tokens}){
+    const text=this.parser.parseInline(tokens);
+    if(!(/^(?:https?:\/\/|#)/i.test(href)||href.startsWith('/')&&!href.startsWith('//')))return text;
+    const target=href.startsWith('/')?url(href):href;
+    return `<a href="${esc(target)}"${title?` title="${esc(title)}"`:''}>${text}</a>`;
+  };
+  return marked.parse(source.replace(/^# [^\n]+\n\s*/,''),{renderer,async:false});
+}
+
 function loadPage(title,description,content,p,extraHead='',extraScripts=''){
   const pageTitle=title==='Conjecture Atlas'?'Conjecture Atlas — Open mathematics':title+' | Conjecture Atlas';
   return `<!doctype html>
@@ -120,10 +137,10 @@ ${extraHead}
 </div></header>
 ${content}
 <footer class="site-footer minimal-footer"><div class="footer-bottom">
-<span>Conjecture Atlas · Kaicheng Dong</span>
+<span>Conjecture Atlas · Open mathematical research</span>
 <nav aria-label="Footer">
 <a href="${url('/about/')}">About</a><a href="${url('/manifesto/')}">Why this site?</a>
-<a href="${url('/feedback/')}">Feedback</a><a href="${url('/updates/')}">Updates</a>
+<a href="${url('/feedback/')}">Feedback</a><a href="${url('/updates/')}">Updates</a><a href="${url('/maintenance/')}">How the site is maintained</a>
 <a href="${gh}" target="_blank" rel="noopener noreferrer">GitHub</a>
 </nav></div></footer>
 ${extraScripts}
@@ -144,7 +161,7 @@ function breadcrumbs(labels){
 }
 const externalArrow='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>';
 function card(p){
-  return `<a href="${url('/projects/'+encodeURIComponent(p.project.id)+'/')}" class="project-row"><div><span class="micro">${p.project.category==='foundations'?'Foundations':'Research'} · Version ${p.revision}</span><h3>${esc(p.project.title)}</h3><p>${esc(p.project.summary)}</p></div>${externalArrow}</a>`;
+  return `<a href="${url('/projects/'+encodeURIComponent(p.project.id)+'/')}" class="project-row"><div><span class="micro">${p.project.category==='foundations'?'Foundations':'Research'} · ${p.edition?'Edition '+esc(p.edition):'Version '+p.revision}</span><h3>${esc(p.project.title)}</h3><p>${esc(p.project.summary)}</p></div>${externalArrow}</a>`;
 }
 
 const projectFiles=(await readdir(path.join(root,'content','projects'))).filter(f=>f.endsWith('.json')).sort();
@@ -184,9 +201,9 @@ const featured=`<main id="main-content" class="simple-home">
 <a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and full proofs, with clear links between results.</p></div>${externalArrow}</a>
 <a href="${url('/research/')}"><div><h3>Research</h3><p>Conjectures, partial results, and plans for new theories.</p></div>${externalArrow}</a>
 </div></section>
-<section class="simple-projects wrap" id="projects"><h2>Project outlines</h2>
+<section class="simple-projects wrap" id="projects"><h2>Projects</h2>
 <div class="simple-project-list">${bundles.map(card).join('')}</div>
-<p class="micro">These are initial outlines. Exact statements and complete proofs will appear only after source review and publication.</p>
+<p class="micro">Each project distinguishes open questions, conditional results, and available proofs. Outline projects are labelled separately from full research editions.</p>
 </section></main>`;
 await save('/',loadPage('Conjecture Atlas','Open mathematical theory, research programmes, proofs, and collaboration.',featured,'/'));
 
@@ -231,7 +248,7 @@ for(const bundle of bundles){
   ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',entryList(results))}
   ${section('programme','04 / PROGRAMME',isFoundation?'Further development':'A programme of proof',`<div class="prose-math">${markdown(p.programme)}</div>`)}
   ${!isFoundation&&notes.length?section('notes','NOTES','Notes & definitions',entryList(notes)):''}
-  ${section('feedback','05 / CONTRIBUTE','Questions and corrections',`<p class="section-lead">Open a public GitHub issue about this project, attach a LaTeX ZIP if useful, and discuss it with other readers.</p><a class="button button-dark" href="${gh}/issues/new?template=question.yml&title=${encodeURIComponent('['+p.id+'] ')}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a>`)}
+  ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
   await save(route,loadPage(p.title,p.summary,content,route,'',legacyRedirect));
@@ -265,7 +282,7 @@ for(const {entry:e,project:p,revision} of entries){
   ${e.approach?section('approach','APPROACH','Research approach',`<div class="prose-math">${markdown(e.approach)}</div>`):''}
   ${e.dependencies.length?section('dependencies','DEPENDENCIES','Direct dependencies',`<ul>${e.dependencies.map(id=>`<li><a href="${url('/r/'+id+'/')}">${esc(id)}</a></li>`).join('')}</ul>`):''}
   ${e.references.length?section('references','REFERENCES','References',`<ol>${e.references.map(x=>`<li><a href="${esc(x.url)}" rel="noopener noreferrer">${esc(x.label)}</a>${x.locator?' · '+esc(x.locator):''}</li>`).join('')}</ol>`):''}
-  ${section('feedback','DISCUSSION','Questions and corrections',`<p class="section-lead">Reference this permanent ID (${esc(e.id)}) and project version ${revision} in your submission.</p><a class="button button-dark" href="${githubIssueUrl('correction')}">Submit feedback</a>`)}
+  ${section('feedback','DISCUSSION','Questions and corrections',`<p class="section-lead">Reference this permanent ID (${esc(e.id)}) and project version ${revision} in your submission.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;entry=${encodeURIComponent(e.id)}&amp;version=${revision}">Discuss this result</a>`)}
   </div></main>`;
   await save(route,loadPage(e.title,e.summary,details,route));
 }
@@ -283,7 +300,7 @@ ${heading('ABOUT THIS SITE','Math is better when we share it.','Conjecture Atlas
 <div class="simple-track-list"><a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and complete proofs.</p></div>${externalArrow}</a>
 <a href="${url('/research/')}"><div><h3>Research</h3><p>Open questions, partial results, and plans for new theories.</p></div>${externalArrow}</a></div></section>
 <section class="simple-about-section"><h2>How we work</h2><p>We use AI to read, organize, and check mathematics. Exact versions and the history of changes remain available. We also aim to use Lean for formal verification.</p><a class="text-link" href="${url('/manifesto/')}">Read more about our goals ${externalArrow}</a></section>
-<section class="simple-about-section"><h2>Feedback and editing</h2><p>Everyone may join discussions through GitHub Issues. The owner and approved GitHub collaborators are the only people who can publish changes to the site.</p><a class="button button-dark" href="${url('/feedback/')}">Read and share feedback ${externalArrow}</a></section>
+<section class="simple-about-section"><h2>Feedback and editing</h2><p>All projects share one GitHub Issues feedback board. General comments do not need a theorem ID. Mathematical revisions are reviewed separately and published with an edition history.</p><a class="button button-dark" href="${url('/feedback/')}">Read and share feedback ${externalArrow}</a> <a class="text-link" href="${url('/maintenance/')}">Publication and maintenance</a></section>
 </main>`;
 await save('/about/',loadPage('About this site','About the open mathematical atlas and how to contribute.',about,'/about/'));
 
@@ -291,32 +308,37 @@ const guideSource=await readFile(path.join(root,'content','guide.md'),'utf8');
 const guide=`<main id="main-content" class="wrap index-page discussion-page discussion-guide">
 ${breadcrumbs([['Feedback','/feedback/'],['How feedback works']])}
 ${heading('CONTRIBUTE','How feedback works','Read, question, correct, and build on mathematical work together.')}
-<div class="prose-math">${markdown(guideSource)}</div>
+<div class="prose-math">${guideMarkdown(guideSource)}</div>
 <p><a class="button button-dark" href="${url('/feedback/')}">View feedback</a> <a class="button button-outline" href="${gh}/issues/new/choose">Send feedback on GitHub</a></p>
 </main>`;
 await save('/feedback/guide/',loadPage('How feedback works','How to post public feedback, upload a LaTeX or Lean ZIP, and follow a GitHub discussion.',guide,'/feedback/guide/'));
 
-const categories=CATEGORIES.map(([id,label])=>`<a href="${githubIssueUrl(id)}">${esc(label)} ${externalArrow}</a>`).join('');
+const categories=CATEGORIES.map(([id,label])=>`<a data-feedback-kind="${esc(id)}" href="${githubIssueUrl(id)}">${esc(label)} ${externalArrow}</a>`).join('');
 const filters=CATEGORIES.map(([id,label])=>`<button type="button" data-category="${esc(id)}">${esc(label)}</button>`).join('');
 const feedback=`<main id="main-content" class="wrap index-page discussion-page">
 ${breadcrumbs([['Feedback']])}
-${heading('OPEN DISCUSSION','Feedback & discussion','Read and share questions, corrections, proofs, and research ideas.')}
+${heading('OPEN DISCUSSION','Feedback & discussion','One shared board for general comments, mathematical questions, corrections, and research ideas across the atlas.')}
 <p class="discussion-guide-link">New here? <a href="${url('/feedback/guide/')}">How to submit feedback and upload LaTeX files.</a></p>
+<div class="outline-notice"><div><strong>General feedback is welcome.</strong><p>Comment on the site, its organization, notation, explanations, accessibility, or future directions. A theorem ID, proof, or version number is not required.</p><a class="text-link" data-feedback-kind="general" href="${githubIssueUrl('general')}">Leave a general comment →</a></div></div>
+<div id="feedback-context-controls"></div>
 <div class="discussion-filters" role="group" aria-label="Filter feedback"><button type="button" data-category="" class="active">All</button>${filters}</div>
-<section class="discussion-list" aria-label="Public feedback" id="github-feedback"><div class="discussion-empty"><p>Loading public GitHub discussions…</p></div></section>
+<section class="discussion-list" aria-label="Public feedback" id="github-feedback"><div class="discussion-empty"><p>Loading public GitHub Issues…</p><a href="${gh}/issues">Read the feedback directly on GitHub</a></div></section>
 <p class="discussion-note">Discussions and attached ZIP files are public. You need a GitHub account to post or comment. <a href="${gh}/issues">View all issues on GitHub</a>.</p>
-<section id="new" class="discussion-form"><h2>Start a discussion</h2><p>Choose the type of contribution. GitHub will open a guided form where you can write your message, attach a ZIP file, and submit it publicly.</p>
+<section id="new" class="discussion-form"><h2>Start a discussion</h2><p>Choose a category to continue on GitHub. Opening the form does not submit anything. You can write your message, attach a ZIP file, and review it before posting publicly.</p>
 <div class="feedback-choice-grid">${categories}</div>
 <p>Corrections and proofs do not automatically change a published mathematical claim. The owner reviews proposed changes separately.</p>
 </section>
 </main>`;
 await save('/feedback/',loadPage('Feedback & discussion','Open GitHub-based mathematical feedback with comments, categories, and LaTeX attachments.',feedback,'/feedback/','',
-  `<script>window.ATLAS_GITHUB_REPOSITORY=${JSON.stringify(repository)};</script><script defer src="${url('/assets/feedback.js')}"></script>`));
+  `<script>window.ATLAS_GITHUB_REPOSITORY=${JSON.stringify(repository)};window.ATLAS_FEEDBACK_PROJECTS=${JSON.stringify(bundles.map(b=>({id:b.project.id,title:b.project.title}))).replace(/</g,'\\u003c')};</script><script type="module" src="${url('/assets/feedback.js')}"></script>`));
+
+const maintenanceSource=await readFile(path.join(root,'docs','MAINTENANCE.md'),'utf8');
+await save('/maintenance/',loadPage('Publication and maintenance','How feedback, review, revisions, frozen editions, and corrections are maintained.',`<main id="main-content" class="wrap index-page discussion-page discussion-guide">${breadcrumbs([['Publication and maintenance']])}${heading('CONJECTURE ATLAS','Publication and maintenance','One feedback board, reviewed changes, and permanent publication history.')}<div class="prose-math">${guideMarkdown(maintenanceSource)}</div></main>`,'/maintenance/'));
 
 const updates=`<main id="main-content" class="wrap index-page simple-track-index">
 ${breadcrumbs([['Updates']])}
 ${heading('CONJECTURE ATLAS','Updates','Changes to published projects. Old versions remain available.')}
-<div class="simple-project-list">${bundles.filter(x=>x.revision>0).map(x=>`<a href="${url('/projects/'+x.project.id+'/')}"><div><span class="micro">Version ${x.revision} · ${esc(x.publishedAt.slice(0,10))}</span><h3>${esc(x.project.title)}</h3><p>${esc(x.changeSummary)}</p></div></a>`).join('')||'<p class="simple-track-empty">No updates yet.</p>'}</div>
+<div class="simple-project-list">${bundles.filter(x=>x.revision>0).map(x=>`<a href="${url('/projects/'+x.project.id+'/')}"><div><span class="micro">${x.edition?'Edition '+esc(x.edition):'Version '+x.revision} · ${esc(x.publishedAt.slice(0,10))}</span><h3>${esc(x.project.title)}</h3><p>${esc(x.changeSummary)}</p></div></a>`).join('')||'<p class="simple-track-empty">No updates yet.</p>'}</div>
 <p class="discussion-note">Every publication also has a Git commit and change history in <a href="${gh}/commits/main">GitHub</a>.</p>
 </main>`;
 await save('/updates/',loadPage('Updates','Public revision history for mathematical projects.',updates,'/updates/'));
@@ -331,24 +353,27 @@ ${breadcrumbs([['Search']])}${heading('CONJECTURE ATLAS','Search','Find a projec
 await save('/search/',loadPage('Search','Search public project outlines, results, and mathematical topics.',search,'/search/','',
   `<script defer src="${url('/assets/search.js')}"></script>`));
 
+await cp(path.join(root,'public'),output,{recursive:true});
+const strongGreen=await buildStrongGreen({root,output,base,origin,repository});
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
-  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')}))];
+  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),...strongGreen.searchIndex];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
+await cp(path.join(root,'lib','feedback.mjs'),path.join(output,'assets','feedback-core.mjs'));
 const katexCss=path.join(root,'node_modules','katex','dist','katex.min.css');
 await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/feedback/','/feedback/guide/','/updates/','/search/',
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...strongGreen.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+
- routes.filter(p=>p!=='/search/').map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
+ [...new Set(routes.filter(p=>p!=='/search/'&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))].map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
 await writeFile(path.join(output,'sitemap.xml'),sitemap);
 await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`);
 const updateItems=bundles.filter(b=>b.revision>0).map(b=>`<item><title>${xml(b.project.title)}</title><link>${xml(canonical('/projects/'+b.project.id+'/'))}</link><description>${xml(b.changeSummary)}</description><pubDate>${new Date(b.publishedAt).toUTCString()}</pubDate></item>`).join('');
 await writeFile(path.join(output,'feed.xml'),`<?xml version="1.0"?><rss version="2.0"><channel><title>Conjecture Atlas updates</title><link>${xml(canonical('/'))}</link><description>Changes to published mathematical research</description>${updateItems}</channel></rss>`);
 await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html'));
-process.stdout.write(`Built ${routes.length} pages, ${bundles.length} project outlines and ${entries.length} permanent entries into dist/.\n`);
+process.stdout.write(`Built ${new Set(routes).size} page routes, ${bundles.length} projects and ${entries.length+strongGreen.recordCount} permanent entries into dist/.\n`);

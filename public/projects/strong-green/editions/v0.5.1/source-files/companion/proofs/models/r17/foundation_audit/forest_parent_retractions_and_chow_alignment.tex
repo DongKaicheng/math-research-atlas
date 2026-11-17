@@ -1,0 +1,190 @@
+% Round 17. Foundation branch; candidate pending independent review.
+\section{Parent retractions on a forest remove all boundary comparisons}
+\label{r17fr:section}
+
+\paragraph{Status.}
+\textbf{Internally reviewed.} The final claims register identifies the independent audits and frozen dependencies.
+This is a Chow-level strengthening of the rooted numerical-surjectivity
+argument in FT17.  It does not assume numerical-to-homological
+comparison on the double strata.  The retractions correct the
+representatives themselves.
+
+Let $\mathcal X/R$ be regular, integral, flat and projective,
+with smooth geometrically integral projective generic fiber $X$
+of dimension $n\ge3$ over a finite extension of $\mathbf Q_p$.
+Suppose the special fiber is reduced and strictly semistable.
+Its native components and native connected double strata are
+denoted $D_v$ and $E_e$.  They are smooth projective over the
+finite residue field $k$, without a geometric-integrality
+requirement.  Suppose the resulting finite multigraph is a
+forest and orient each tree away from a chosen root.  A triple
+intersection would give a triangle, so a forest has no triple
+strata.  All Chow and numerical groups have rational coefficients.
+
+\begin{definition}[Parent retraction data]
+\label{r17fr:definition}
+For each nonroot vertex $v$, let $e$ be its parent edge and
+let $j_{e,v}:E_e\hookrightarrow D_v$ be the inclusion.
+Require a $k$-morphism
+\[
+               \pi_v:D_v\longrightarrow E_e,
+                 \qquad\pi_vj_{e,v}=\operatorname{id}_{E_e}.
+ \tag{FR17.1}\label{r17fr:retraction}
+\]
+There is no required retraction from the parent component,
+no fixed variety common to the different edges, and no
+condition on restrictions to the other incident edges.
+The root component is unrestricted.
+\end{definition}
+
+Put
+\[
+ C^a=\bigoplus_vN^a(D_v)_{\mathbf Q},\qquad
+ W^a=\bigoplus_eN^a(E_e)_{\mathbf Q},\qquad
+ (\rho_au)_e=j_{e,v}^*u_v-j_{e,p}^*u_p,
+\]
+where $p$ and $v$ are the parent and child of $e$.  As before,
+$A_a u=(i_v^!\sum_wi_{w*}u_w)_v$.  All degrees use $\deg_k$.
+
+\begin{lemma}[Simultaneous numerical surjectivity]
+\label{r17fr:rho-surjective}
+Under \eqref{r17fr:retraction}, the map
+$\rho_a:C^a\to W^a$ is surjective for every $0\le a\le n-1$.
+Moreover
+\[
+                          \ker A_a=\ker\rho_a.
+ \tag{FR17.2}\label{r17fr:kernel}
+\]
+\end{lemma}
+
+\begin{proof}
+Every map is a morphism of smooth projective varieties, so its
+Chow pullback preserves numerical equivalence by projection
+formula.  In particular $j_{e,v}^*\pi_v^*=\operatorname{id}$
+on numerical groups.  For a desired tuple $t_e\in W^a$,
+set the class at each root to zero.  After a parent's class
+$u_p$ is fixed, set
+\[
+                u_v=\pi_v^*(t_e+j_{e,p}^*u_p).
+\]
+Its restriction difference at the parent edge is $t_e$.
+Its other incident edges lead only to children whose classes
+have not yet been chosen.  Proceeding down the finite tree
+therefore constructs $u$ with $\rho_au=t$.
+
+The reduced total-fiber relation and self-intersection give
+\[
+ \langle A_au,w\rangle
+      =-\sum_e\deg_k((\rho_au)_e(\rho_{n-1-a}w)_e).
+ \tag{FR17.3}\label{r17fr:energy}
+\]
+The numerical pairings on every native $D_v$ and $E_e$ are
+perfect.  Since the second restriction map is surjective
+in the complementary degree, $A_au=0$ forces
+$\rho_au=0$.  The converse follows from the same identity.
+This is ordinary rational perfect-pairing linear algebra,
+with no higher-codimension positivity or Lefschetz premise.
+\end{proof}
+
+\begin{proposition}[Recursive Chow alignment without a comparison theorem]
+\label{r17fr:Chow}
+For every $v=(v_w)\in\ker A_a$, $0\le a\le n-1$, there
+are actual rational Chow representatives
+$\zeta_w\in\operatorname{CH}^a(D_w)_{\mathbf Q}$ of the
+$v_w$ whose restrictions agree on each double stratum.
+\end{proposition}
+
+\begin{proof}
+Choose arbitrary rational Chow representatives $\alpha_w$.
+Keep $\zeta_w=\alpha_w$ at the roots.  Suppose the representative
+$\zeta_p$ of a parent has already been fixed.  At a child $w$
+with parent edge $e$, put
+\[
+ \Delta_e=j_{e,w}^*\alpha_w-j_{e,p}^*\zeta_p,
+ \qquad
+ \zeta_w=\alpha_w-\pi_w^*\Delta_e.
+ \tag{FR17.4}\label{r17fr:alignment}
+\]
+By Lemma~\ref{r17fr:rho-surjective}, the original numerical
+tuple is compatible.  Inductively $\zeta_p$ has numerical
+class $v_p$, so $\Delta_e$ is numerically zero on $E_e$.
+Its pullback is numerically zero on $D_w$, and $\zeta_w$
+still represents $v_w$.  The right inverse identity makes
+its restriction on the parent edge exactly that of
+$\zeta_p$ in the Chow group.
+
+Changing $\alpha_w$ may change restrictions at its child
+edges.  No earlier equality is affected, because the only
+previously treated edge at $w$ is its parent edge.  The
+changes at child edges are corrected in subsequent steps.
+After finitely many steps all equalities hold.  This is the
+reason a forest, and not independent one-sided surjectivity
+on an arbitrary graph, suffices.  The equality is already
+in rational Chow groups; no assertion about a cycle-class
+map from numerical groups is involved.
+\end{proof}
+
+\begin{theorem}[All-codimension strong G from parent retractions]
+\label{r17fr:actual}
+Under the stated model and parent-retraction hypotheses,
+every geometrically homologically trivial rational Chow
+class on $X$ has a numerically admissible extension on
+$\mathcal X$ in every valid positive codimension.
+Consequently its actual obstruction is zero, and every
+specified cycle in it has a strong ordinary actual Green
+form on the exact specified support complement, tested
+against all compact actual forms over the original field.
+For FD17's notation on this model,
+\[
+                   K_{\rm comp}=\ker A_{n-r}
+                        \quad(1\le r\le n).
+ \tag{FR17.5}\label{r17fr:compatible}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply Proposition~\ref{r17fr:Chow} with $a=n-r$ and then
+apply geometric cycle classes.  It gives exactly the
+compatible representatives in KC17, with all special-fiber
+multiplicities one.  KC17's arbitrary-degree compatible
+lift, native top trace and rational numerical duality
+produce a vertical Chow correction on this model.
+The frozen literal numerical detector and exact-support
+actual reconstruction give the conclusion, as in FH17.
+All native residue degrees remain in the pairings.  The
+theorem can likewise be used on a supplied projective
+dominant witness after a finite auxiliary extension;
+dominant and full-degree finite Bott--Chern injection
+then descend the obstruction to the original field.
+\end{proof}
+
+\begin{corollary}[Arbitrarily twisted ruled components on a forest]
+If every nonroot component is a projective-line bundle
+over its parent double stratum and that stratum is one
+of its sections, the preceding theorem applies.
+The line-bundle twists may be arbitrary.  More generally,
+any supplied smooth projective component with the stated
+algebraic retraction is allowed.
+\end{corollary}
+
+\begin{proof}
+The bundle projection is \eqref{r17fr:retraction}.
+There is no comparison of the different section
+restriction maps in this argument.  The component's
+other boundary strata may therefore have distinct
+Chow restriction maps.
+\end{proof}
+
+\paragraph{Relation to FT17 and the remaining graph gate.}
+FT17 uses numerical divisor surjectivity together with
+curve-class comparison on the doubles to obtain a
+codimension-two result.  Here the algebraic retractions
+supply surjectivity in all complementary degrees and
+the explicit representative correction
+\eqref{r17fr:alignment}.  Thus all codimensions are covered
+without any numerical-to-homological assertion on those
+doubles.  For a graph with cycles, the recursive procedure
+returns a possible Chow discrepancy at the closing edge;
+FR17 does not discard it.  FH17 treats a different sufficient
+condition by common restrictions and finite actual holonomy.
+No claim that arbitrary models admit either kind of data is made.

@@ -1,0 +1,787 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,enumitem,booktabs,array,longtable,fancyhdr}
+\usepackage{xcolor}
+\definecolor{MathInternalLink}{HTML}{1F4E79}
+\definecolor{MathSectionLink}{HTML}{00656D}
+\definecolor{MathEquationLink}{HTML}{643F7A}
+\definecolor{MathCitationLink}{HTML}{2F6B3C}
+\definecolor{MathExternalLink}{HTML}{843C39}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=MathInternalLink,citecolor=MathCitationLink,
+urlcolor=MathExternalLink,linktoc=all,bookmarksnumbered=true,
+pdftitle={Arithmetic Conjectures for Beilinson--Bloch Heights on Products of Curves},
+pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\crefname{conjecture}{conjecture}{conjectures}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{question}{question}{questions}
+\Crefname{question}{Question}{Questions}
+\DeclareRobustCommand{\MathSecref}[1]{\begingroup\hypersetup{linkcolor=MathSectionLink}\Cref{#1}\endgroup}
+\DeclareRobustCommand{\MathEqref}[1]{\begingroup\hypersetup{linkcolor=MathEquationLink}\eqref{#1}\endgroup}
+\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}\newcommand{\A}{\mathbb A}\newcommand{\Fbar}{\overline F}
+\newcommand{\CH}{\operatorname{CH}}\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Hom}{\operatorname{Hom}}\newcommand{\End}{\operatorname{End}}
+\newcommand{\Spec}{\operatorname{Spec}}\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\rad}{\operatorname{rad}}\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}\newcommand{\Griff}{\operatorname{Griff}}
+\newcommand{\AJ}{\operatorname{AJ}}\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\cl}{\operatorname{cl}}\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\Td}{\operatorname{Td}}\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\homol}{\mathrm{hom}}\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\et}{\textnormal{ét}}\newcommand{\cont}{\mathrm{cont}}
+\newcommand{\cP}{\mathcal P}\newcommand{\cO}{\mathcal O}
+\newcommand{\cD}{\mathscr D}\newcommand{\cV}{\mathcal V}
+\newcommand{\tGamma}{{}^t\Gamma}
+\numberwithin{equation}{section}
+\setlist{leftmargin=2em,itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{3pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Arithmetic conjectures for cycle heights}
+\fancyfoot[C]{\thepage}
+\title{Arithmetic Conjectures for Beilinson--Bloch Heights\\
+on Products of Curves}
+\author{}
+\date{17 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We formulate an arithmetic programme for height pairings on the
+homologically trivial Chow groups of products of curves. Exact
+Chow projectors reduce arithmetic hard Lefschetz to off-central
+vanishing and reduce primitive integral Northcott to two central
+assertions: injectivity of the algebraic Abel--Jacobi map and
+Northcott on a residual Griffiths quotient. The latter assertion
+contains real positivity but also requires integral and
+varying-field information. We separate the proposed arithmetic
+inputs into scalar detection by continuous étale cohomology,
+a common rational lattice, and ramification control for the
+minimal fields of cycle classes. The stated implications specify
+where each input enters.
+\end{abstract}
+{\hypersetup{linkcolor=MathSectionLink}\tableofcontents}
+
+\section{Introduction}\label{sec:introduction}
+
+The expected positivity of Beilinson--Bloch heights is an arithmetic
+Hodge--Riemann principle. A Northcott property is stronger: it asks
+for finiteness of integral cycle classes of bounded degree and
+height. Even a positive quadratic form does not give this
+finiteness unless the integral classes are arithmetically discrete.
+Allowing the field of definition to vary adds a further descent
+problem.
+
+For products of curves, tensor Chow projectors separate these
+questions. The all-\(h^1\) part of a subproduct carries a central
+height precisely when its dimension is \(2c-1\) in codimension
+\(c\). The other parts are responsible for arithmetic Lefschetz.
+Within the central part, curve correspondences separate a
+Néron--Tate summand and its residual Griffiths quotient. This
+paper formulates the resulting conjectures and organizes the
+arithmetic inputs to their study. The complete reduction proofs
+are given in the companion manuscript \cite{ArithmeticReductions}.
+
+These conjectures are expressed within the Bloch--Beilinson
+and arithmetic standard-conjecture framework. The arithmetic
+Lefschetz and primitive positivity statements are those recorded
+in \cite[Conjecture~2.3.1]{ZhangStandard}. The purpose of the
+formulation here is to specify the residual objects, their
+integral images and the exact implications connecting the
+different arithmetic questions.
+
+\subsection{The fixed product and height data}\label{sec:height-data}
+
+Let \(F\) be a number field, and let
+\[
+ X=\prod_{i=1}^n C_i,\qquad
+ o_i\in C_i(F),\qquad H_i=p_i^*[o_i],\qquad
+ \ell=\sum_{i=1}^n a_iH_i,\quad a_i\in\Z_{>0},
+\]
+where the curves are smooth, projective and geometrically
+connected. For a finite extension \(E/F\), write
+\[
+ V^r(X_E)=\CH^r(X_E)_{\homol,\Q}.
+\]
+
+% Source: papers/arithmetic-sections/conventions.tex
+Fix an algebraic closure \(\Fbar\) of \(F\) and an embedding into
+\(\C\). Homological triviality is defined by geometric rational
+Betti cohomology. All Chow groups below have rational coefficients
+unless otherwise indicated. We regard \(V^r(X_E)\) as a subspace
+of \(V^r(X_{\Fbar})\): restriction is injective because a rational
+equivalence descends to a finite extension and trace composed with
+restriction multiplies by its degree.
+
+\begin{definition}\label[definition]{def:heights}
+A curve-normalized height system consists of pairings on all smooth
+projective varieties used below, including the subproducts and the
+source curves of correspondences. For such a variety \(X\) of
+dimension \(n\), these are
+\[
+ h_X:V^r(X_E)\times V^{n+1-r}(X_E)\longrightarrow\R
+\]
+over every finite extension \(E/F\), satisfying:
+\begin{enumerate}[label=(H\arabic*)]
+\item bilinearity over \(\Q\) and symmetry under exchange of the
+complementary degrees;
+\item invariance under extension in the absolute normalization,
+and covariance under isomorphisms, including Galois conjugation;
+\item correspondence adjunction
+\[
+ h_X(\Gamma_*z,w)=h_Y(z,{}^t\Gamma_*w);
+\]
+\item on a pointed curve \(C\), the form \(-h_C\) on
+\(\Pic^0(C)_\Q\) is the positive Néron--Tate form for the canonical
+principal polarization, in the corresponding Poincaré normalization.
+\end{enumerate}
+\end{definition}
+
+These hypotheses will be understood in every statement involving
+\(h\). A real positive form means positive definiteness after
+tensoring the rational group over a fixed number field with \(\R\).
+For codimension \(r\) on \(X\), the symbol \(\AJ_\Q\)
+denotes the complex Abel--Jacobi map with target
+\(J^r(X_\C)(\C)\otimes_\Z\Q\).
+
+Let \(\Lambda_X^r(E)\) be the image in \(V^r(X_{\Fbar})\) of the
+integral-coefficient cycles over \(E\) with zero geometric rational
+cycle class. Thus torsion and rational equivalence are removed before
+counting. For a fixed rational projector \(P\), we use its projected
+integral image \(P_*\Lambda_X^r(E)\); for an integral projector this
+equals \(\Lambda_X^r(E)\cap P_*V^r(X_E)\).
+
+\begin{definition}\label[definition]{def:northcott}
+For compatible integral images \(\Lambda(E)\) in one geometric
+rational group and a quadratic form \(q\), bounded-degree Northcott
+means that, for every \(B\in\R\) and integer \(D\ge1\),
+\[
+ \{\xi\in\bigcup_{[E:F]\le D}\Lambda(E):q(\xi)\le B\}
+\]
+is finite. Fixed-field Northcott means the same assertion with
+\(E\) fixed. Bounded denominators mean the union of
+\(d^{-1}\Lambda(E)\) for \(1\le d\le d_0\), with \(d_0\) fixed.
+\end{definition}
+
+Northcott for integral images implies the bounded-denominator version
+by scaling. A fixed initial extension \(F_0/F\) is harmless for
+bounded-degree assertions: after replacing \(E\) by \(EF_0\),
+\([EF_0:F_0]\le[E:F]\), the integral image remains integral, and
+the absolute height is unchanged.
+
+
+
+
+
+\subsection{Central cores and the residual pairing}
+\label{sec:central-data}
+
+For a subset \(S\subseteq\{1,\ldots,n\}\), put
+\[
+ Y_S=\prod_{i\in S}C_i,\qquad
+ \Pi_S=\bigotimes_{i\in S}\pi_{1,i},
+ \qquad U_S^c(E)=\Pi_{S*}V^c(Y_{S,E}).
+\]
+Here \(\pi_{1,i}=\Delta_{C_i}-o_i\times C_i-C_i\times o_i\).
+The empty subproduct has zero homologically trivial Chow groups.
+The core is central if \(|S|=2c-1\).
+
+Fix such an odd subproduct. Let
+\[
+ A_{S,E}=U_S^c(E)\cap\CH^c(Y_{S,E})_{\alg,\Q},
+ \qquad G_{S,E}=U_S^c(E)/A_{S,E}.
+\]
+The maximal curve-visible construction in
+\cite[Section 3]{ArithmeticReductions} gives an actual
+self-transpose Chow projector \(e_S\le\Pi_S\), with
+\(R_S=\Pi_S-e_S\). Choose one finite extension \(F_0/F\)
+over which these projectors are defined for all odd subproducts.
+For every finite \(E/F_0\),
+\[
+ U_S^c(E)=e_SU_S^c(E)\oplus R_SU_S^c(E),\qquad
+ e_SU_S^c(E)\simeq B_S(E)_\Q
+\]
+for a fixed abelian variety \(B_S/F_0\).
+The decomposition is height-orthogonal, and the form
+\(q_{e,S}(u)=(-1)^ch_{Y_S}(u,u)\) on the first summand is
+a positive Néron--Tate form. Moreover,
+\[
+ R_SA_{S,E}=\ker(\AJ_\Q|_{A_{S,E}})
+ =A_{S,E}\cap\rad(h_{Y_S}|_{U_S^c(E)}).
+\]
+For \(\xi=[z]\), \(\eta=[w]\) in \(G_{S,E}\), define
+\[
+ h_{G,S}(\xi,\eta)=h_{Y_S}(R_Sz,R_Sw),\qquad
+ q_{G,S}(\xi)=(-1)^ch_{G,S}(\xi,\xi).
+\]
+The radical equality makes this pairing well defined, and the
+projector construction proves its independence of the maximal
+curve-visible lift. These facts hold for every height system in
+\Cref{def:heights}.
+
+The integral structures are
+\[
+ \Lambda_{U,S}(E)=\Pi_{S*}\Lambda_{Y_S}^c(E),\qquad
+ \Lambda_{G,S}(E)=\im\!\left(\Lambda_{U,S}(E)\to G_{S,E}\right).
+\]
+The projector \(\Pi_S\) is integral. The residual projector
+\(R_S\) is rational, with one fixed denominator; that denominator
+is independent of the cycle and of \(E\).
+Since algebraic triviality is geometric, all these rational
+quotients embed in their counterparts over \(\Fbar\).
+
+\subsection{The three central assertions}\label{sec:three-assertions}
+
+\begin{conjecture}[Off-central vanishing]
+\label[conjecture]{conj:offcentral}
+For every subproduct \(Y_S\), every finite \(E/F_0\), and
+every \(c\) with \(|S|\ne2c-1\),
+\[
+ U_S^c(E)=0.
+\]
+\end{conjecture}
+
+\begin{conjecture}[Central algebraic Abel--Jacobi injectivity]
+\label[conjecture]{conj:AJ}
+For every \(|S|=2c-1\) and finite \(E/F_0\), the map
+\[
+ \AJ_\Q:A_{S,E}\longrightarrow
+ J^c(Y_{S,\C})(\C)\otimes_\Z\Q
+\]
+is injective.
+\end{conjecture}
+
+\begin{conjecture}[Residual integral Northcott]
+\label[conjecture]{conj:residual-northcott}
+For every \(|S|=2c-1\), every \(B\in\R\), and every integer
+\(D\ge1\), the set of geometric classes
+\[
+ \left\{\xi\in\bigcup_{[E:F_0]\le D}\Lambda_{G,S}(E):
+       q_{G,S}(\xi)\le B\right\}
+\]
+is finite.
+\end{conjecture}
+
+These assertions address, respectively, the degrees in which
+the height pairing should be nondegenerate, its radical on
+the algebraically trivial part, and the arithmetic size of
+the remaining integral quotient.
+
+\section{From the central assertions to the whole product}
+\label{sec:product-programme}
+
+\subsection{Arithmetic Lefschetz and the primitive form}
+\label{sec:lefschetz-conjecture}
+
+For \(1\le r\le\lfloor(n+1)/2\rfloor\), put
+\[
+\begin{aligned}
+ P_\ell^r(X_E)&=\ker\!\left(
+   \ell^{n+2-2r}:V^r(X_E)\longrightarrow V^{n+2-r}(X_E)\right),\\
+ q_{\ell,r}(z)&=(-1)^rh_X(z,\ell^{n+1-2r}z).
+\end{aligned}
+\]
+The primitive integral image is
+\(\Lambda_X^r(E)\cap P_\ell^r(X_E)\).
+
+\begin{theorem}[Equivalence of the arithmetic programmes]
+\label[theorem]{thm:program-equivalence}
+For the fixed pointed product, positive integers \(a_i\), and
+a height system satisfying \Cref{def:heights}, the following
+conditions are equivalent.
+\begin{enumerate}[label=(\roman*)]
+\item \Cref{conj:offcentral,conj:AJ,conj:residual-northcott}
+hold for all subproducts of \(X\).
+\item For every finite \(E/F_0\) and every
+\(1\le r\le\lfloor(n+1)/2\rfloor\),
+\[
+ \ell^{n+1-2r}:V^r(X_E)\xrightarrow{\sim}V^{n+1-r}(X_E),
+\]
+and \(q_{\ell,r}\) has bounded-degree Northcott on the
+primitive integral images.
+\end{enumerate}
+Either condition implies real positive definiteness of all
+primitive forms and nondegeneracy, also after real scalar
+extension, of the complementary height pairings over every
+fixed number field.
+\end{theorem}
+
+The full proof is the principal reduction theorem of
+\cite{ArithmeticReductions}, completed in its Section 7.
+Its two mechanisms are the exact central-block identity and
+the central radical decomposition. We recall them because
+they determine which conjecture is needed at each step.
+
+The Chow block indexed by \(S,c\) is
+\[
+ U_S^c(E)\otimes_\Q \Q[x_i:i\notin S]/(x_i^2),
+\]
+with \(\ell\) acting as multiplication by
+\(\sum_{i\notin S}x_i\). Writing
+\(I=\{1,\ldots,n\}\setminus S\), the identification sends
+\(u\otimes x_T\) to \(a_Tj_Tu\), where
+\(a_T=\prod_{i\in T}a_i\) and \(j_T\) inserts \([o_i]\)
+on \(T\) and \([C_i]\) on \(I\setminus T\). The lowering
+operator is
+\[
+ F x_T=\sum_{i\in T}x_{T\setminus\{i\}}.
+\]
+The arithmetic hard Lefschetz maps
+are isomorphisms exactly when the noncentral cores vanish.
+This equivalence is independent of the choice of the positive
+weights \(a_i\), with the points \(o_i\) fixed.
+
+In a central block let \(m=n-|S|\), \(t=r-c\),
+\(I=\{1,\ldots,n\}\setminus S\), and
+\(z_S=\sum_{|T|=t}u_Tx_T\). For \(0\le t\le m/2\),
+primitivity means \(Fz_S=0\); the signed height is then
+\begin{equation}\label{eq:programme-squares}
+ q_{\ell,r}(z_S)
+  =(m-2t)!\prod_{i\in I}a_i
+       \sum_{|T|=t}(-1)^c h_{Y_S}(u_T,u_T).
+\end{equation}
+This central-block identity uses only adjunction and the
+square-zero calculation. Off-central vanishing enters when
+all of \(V^r(X_E)\) is reduced to these central blocks.
+If \(z\) is integral, the single integer
+\(N_a=\prod_i a_i\) clears the denominators of every \(u_T\).
+
+Finally, central integral Northcott is equivalent to
+\[
+ \ker(\AJ_\Q|_{A_{S,E}})=0\quad\hbox{for every finite }E/F_0,
+ \qquad\text{and residual integral Northcott on }\Lambda_{G,S}.
+\]
+Indeed
+\[
+ (-1)^ch_{Y_S}(z,z)
+  =q_{e,S}(e_Sz)+q_{G,S}([z]).
+\]
+The visible summand has classical bounded-degree Northcott
+through fixed correspondences with bounded denominators.
+A nonzero algebraic radical class would have infinitely
+many integral multiples of height zero. After this radical
+is removed, the pair \((e_Sz,[z])\) detects \(z\).
+
+\subsection{Residual positivity and its precise role}
+\label{sec:residual-positivity}
+
+\begin{conjecture}[Real residual positivity]
+\label[conjecture]{conj:residual-positivity}
+For every central subproduct and every finite \(E/F_0\),
+\(q_{G,S}\) extends to a positive definite quadratic form on
+\(G_{S,E}\otimes_\Q\R\).
+\end{conjecture}
+
+This is a weaker consequence of
+\Cref{conj:residual-northcott}. More generally, if a subgroup
+\(\Lambda\) spans a rational vector space \(V\), finiteness
+of all height balls in \(\Lambda\) forces the real extension
+of \(q\) to be positive definite. A negative direction gives
+a negative rational vector and its integer multiples.
+A real null direction, in a finite-dimensional rational
+subspace, gives infinitely many integral vectors of bounded
+height by rounding its scalar multiples. This is the proof
+of the real-positivity lemma in
+\cite[Section 5.1]{ArithmeticReductions}.
+
+The converse is an integral problem. For example,
+\[
+ \Lambda=\sum_{p\ {\rm prime}}\Z\,p^{-1}\subset\Q,
+ \qquad q(x)=x^2
+\]
+has a positive real form and a finite free local completion
+\(\Lambda\otimes\Z_p=p^{-1}\Z_p\) at every prime. Nevertheless
+\(q(1/p)\to0\). The extra input needed for finiteness is one
+common rational lattice, rather than a separate local bound
+at each prime.
+
+With \Cref{conj:AJ,conj:residual-positivity}, the central form
+is real positive definite by its orthogonal splitting.
+Adding \Cref{conj:offcentral} propagates this positivity and
+nondegeneracy to the product through
+\eqref{eq:programme-squares}. The associated primitive
+bilinear form then satisfies
+\[
+ |b_{\ell,r}(z,w)|^2\le q_{\ell,r}(z)q_{\ell,r}(w).
+\]
+The finiteness assertion in \Cref{conj:residual-northcott}
+requires the additional arithmetic inputs below.
+
+\section{Arithmetic detection and the integral lattice}
+\label{sec:detection-conjectures}
+
+Fix one central subproduct \(Y\) of dimension \(k=2c-1\),
+and abbreviate \(G_{S,E},R_S,q_{G,S}\) to \(G_E,R,q_G\).
+
+\subsection{Scalar detection by a residual regulator}
+\label{sec:scalar-detection}
+
+For every prime \(p\), let
+\[
+ V_p=R_*H_{\et}^{2c-1}(Y_{\Fbar},\Q_p(c)).
+\]
+The actual projector \(R\) has geometric cohomology in one
+degree. Consequently, its part of Hochschild--Serre has one
+row and gives a canonical identification
+\[
+ R_*H^{2c}_{\cont}(Y_E,\Q_p(c))\simeq H^1(E,V_p).
+\]
+The continuous cycle class of \(Rz\) annihilates \(A_E\).
+It therefore defines a residual arithmetic Abel--Jacobi map
+\[
+ a_{p,E}:G_E\longrightarrow H^1(E,V_p),
+\]
+compatible with restriction and trace and independent of
+the curve-visible lift under the common cohomological
+identification. The construction is proved in
+\cite[Section 4.1]{ArithmeticReductions}, in the
+continuous-cohomology framework of \cite{Raskind,Kahn}.
+
+The representation \(V_p\) has weight \(-1\). For one fixed
+set \(S_0\) of places of \(F_0\), containing the bad-reduction
+places, inflation identifies
+\[
+ H^1(G_{E,S_E},V_p)\simeq H^1(E,V_p),
+ \qquad S_E=\{v:v\mid S_0\text{ or }v\mid p\},
+\]
+with archimedean places included. This whole target is
+finite-dimensional over \(\Q_p\).
+
+\begin{conjecture}[Residual scalar detection]
+\label[conjecture]{conj:detection}
+For every finite \(E/F_0\) and every prime \(p\), the
+scalar-extended map
+\[
+ G_E\otimes_\Q\Q_p\longrightarrow H^1(E,V_p)
+\]
+is injective.
+\end{conjecture}
+
+The word \emph{scalar} specifies the strength needed here.
+Injectivity of the \(\Q\)-linear map \(a_{p,E}\) alone would
+not imply finite rational rank: a finite-dimensional
+\(\Q_p\)-space is infinite-dimensional over \(\Q\).
+In contrast, scalar-extended injectivity at one prime gives
+\[
+ \dim_\Q G_E
+ \le \dim_{\Q_p}H^1(E,V_p)<\infty.
+\]
+
+For every fixed \(E,p\), the integral cycle map and one
+denominator clearing \(R\) place
+\(a_{p,E}(\Lambda_G(E))\) in a finitely generated
+\(\Z_p\)-module. Under scalar-extended injectivity,
+\[
+ \Lambda_G(E)\otimes_\Z\Z_p
+ \quad\text{is finitely generated over }\Z_p,
+ \qquad \Lambda_G(E)/p\Lambda_G(E)\quad\text{is finite}.
+\]
+The proof uses the integral image theorem of
+\cite[Theorem 2.4]{Kahn}; it is given in
+\cite[Section 4.3]{ArithmeticReductions}.
+
+\subsection{A common lattice across coefficient primes}
+\label{sec:lattice-conjecture}
+
+\begin{conjecture}[Residual integral discreteness]
+\label[conjecture]{conj:lattice}
+For every finite \(E/F_0\), the space \(G_E\) is
+finite-dimensional, and there are a rational basis
+\(v_1,\ldots,v_s\) and an integer \(N_E\ge1\) such that
+\[
+ \Lambda_G(E)\subseteq N_E^{-1}\sum_{i=1}^s\Z v_i.
+\]
+\end{conjecture}
+
+For a finite-rank torsion-free group and a real positive
+definite quadratic form, the following conditions are
+equivalent: finite height balls, a positive height gap,
+finite generation, a common denominator bound in a rational
+basis, and relative compactness of the diagonal image in
+the finite adeles. The proof in
+\cite[Section 5.2]{ArithmeticReductions} is an elementary
+lattice argument. It follows that
+\Cref{conj:lattice,conj:residual-positivity} imply
+fixed-field Northcott for every \(E\).
+Conversely, fixed-field Northcott together with finite
+rational rank implies \Cref{conj:lattice} and real
+positivity. Finite rank is an explicit premise in this
+converse.
+
+A route to \Cref{conj:lattice} is an almost-everywhere
+saturation comparison. Fix \(E\), put \(V=G_E\), and suppose
+that \(V\) is finite-dimensional. Seek a full rational
+lattice \(\Lambda_0\subset V\) and full local lattices
+\(M_p\subset H^1(E,V_p)\) such that the scalar-extended
+regulators \(D_p\) are injective and
+\begin{equation}\label{eq:common-lattice-target}
+ D_p(\Lambda_G(E))\subseteq M_p\quad\text{for every }p,
+ \qquad
+ D_p^{-1}(M_p)=\Lambda_0\otimes\Z_p
+       \quad\text{for almost every }p.
+\end{equation}
+Then the inverse lattices at the finitely many exceptional
+primes can be absorbed into one integer \(N_E\).
+Thus \eqref{eq:common-lattice-target} proves
+\Cref{conj:lattice}. The fixed-prime local bounds above
+supply the first type of control; the equality with one
+common rational lattice is the comparison still required.
+
+Integral detection is formulated on the stated image in
+a rational quotient. The unrestricted integral continuous
+cycle class map has torsion counterexamples over number
+fields in codimension three
+\cite[Theorems 1.3--1.4]{ScaviaSuzuki}.
+The torsion kernels in those statements and the torsion-free
+group \(\Lambda_G(E)\) are different arithmetic objects.
+
+\subsection{The height-gap route}\label{sec:height-gap-route}
+
+There is a second route that can start from one coefficient
+prime. Suppose \(\sqrt{q_G}\) is the norm of a real positive
+quadratic form, and, for some integer \(m\ge2\),
+\[
+ s=|\Lambda_G(E)/m\Lambda_G(E)|<\infty,\qquad
+ q_G(\lambda)\ge\varepsilon_E>0
+       \quad(0\ne\lambda\in\Lambda_G(E)).
+\]
+The quantitative descent criterion of
+\cite[Section 5.4]{ArithmeticReductions} gives finite
+generation and fixed-field Northcott. If \(B\ge0\),
+\(j\in\Z_{\ge0}\), and \(m^{2j}\varepsilon_E>4B\), then
+\[
+ \#\{\lambda\in\Lambda_G(E):q_G(\lambda)\le B\}\le s^j.
+\]
+The reason is that two classes in the ball congruent
+modulo \(m^j\Lambda_G(E)\) would differ by \(m^jz\) with
+\(q_G(z)<\varepsilon_E\). The usual height descent then
+generates the group from a finite ball and representatives
+modulo \(m\).
+
+Scalar detection at one prime supplies a finite quotient
+with \(m=p\), through the local integral bound.
+A genuine positive height gap is the additional input.
+Real positive definiteness alone does not supply this gap
+on a subgroup with unbounded denominators.
+
+\section{Minimal class fields and bounded-degree Northcott}
+\label{sec:class-fields}
+
+\subsection{Trace and the class field}\label{sec:class-trace}
+
+View the residual groups inside the geometric quotient
+with its discrete \(\Gal(\Fbar/F_0)\)-action. For a class
+\(\xi\), define
+\[
+ F_0(\xi)=
+ \Fbar^{\operatorname{Stab}_{\Gal(\Fbar/F_0)}(\xi)}.
+\]
+If \(\xi\in\Lambda_G(E)\), its minimal class field
+\(K=F_0(\xi)\) is contained in \(E\), and trace gives
+\begin{equation}\label{eq:class-trace}
+ [E:K]\xi\in\Lambda_G(K).
+\end{equation}
+Indeed the pushforward of an integral representative has
+geometric class equal to the sum over the \(K\)-embeddings
+of \(E\), and every summand is \(\xi\). Thus the multiplier
+is at most \(D\) when \([E:F_0]\le D\).
+This concerns the field of the class; a particular cycle
+representative need not descend to \(K\).
+
+\begin{conjecture}[Residual class-field ramification]
+\label[conjecture]{conj:ramification}
+For every \(B\ge0\) and integer \(D\ge1\), there is a
+finite set \(S(B,D)\) of finite places of \(F_0\) such that
+the fields \(F_0(\xi)/F_0\), for
+\[
+ \xi\in\Lambda_G(E),\qquad [E:F_0]\le D,\qquad q_G(\xi)\le B,
+\]
+are unramified outside \(S(B,D)\).
+\end{conjecture}
+
+Under fixed-field Northcott for every finite extension,
+\Cref{conj:ramification} is equivalent to bounded-degree
+Northcott. Hermite--Minkowski leaves finitely many possible
+class fields \(K\) of degree at most \(D\).
+Equation \eqref{eq:class-trace} then reduces the classes to
+the finitely many fixed-field balls
+\[
+ m\xi\in\Lambda_G(K),\qquad
+ 1\le m\le D,\qquad q_G(m\xi)\le D^2B.
+\]
+The converse follows by taking the union of ramification
+sets of the finitely many classes in a ball.
+The full proof is in
+\cite[Section 6.2]{ArithmeticReductions}; the
+finite-ramification form of Hermite--Minkowski is
+\cite[Theorem 10.2.2]{Kedlaya}.
+
+\subsection{The extra information needed as the field varies}
+\label{sec:varying-field-obstacle}
+
+A fixed set \(S_E\) for \(H^1(E,V_p)\) controls ramification
+over \(E\). It does not bound the ramification of the
+class field \(F_0(\xi)/F_0\). The distinction persists even
+when fixed-field estimates are uniform in the degree.
+For example, choose infinitely many distinct quadratic
+extensions \(K_i/F_0\), with characters \(\chi_i\), and set
+\[
+ \mathcal G=\bigoplus_i\Q e_i,\qquad
+ \sigma e_i=\chi_i(\sigma)e_i,\qquad
+ \Lambda(E)=\bigoplus_{K_i\subseteq E}\Z e_i,\qquad
+ q\left(\sum a_ie_i\right)=\sum a_i^2.
+\]
+These integral images are compatible with trace.
+Their ranks, height gaps and quotients modulo any integer
+\(m\ge2\) have degree-dependent uniform bounds, and all
+fixed-field balls are finite. Yet the infinitely many
+\(e_i\in\Lambda(K_i)\) have degree two and height one.
+This example isolates the field-control hypothesis in
+the ramification criterion.
+
+A quantitative strengthening asks for constants
+\(A_D,B_D\ge0\), depending only on the fixed residual data
+and \(D\), such that
+\begin{equation}\label{eq:discriminant-target}
+ \log N_{F_0/\Q}\mathfrak d_{F_0(\xi)/F_0}
+    \le A_Dq_G(\xi)+B_D
+ \qquad([E:F_0]\le D,\ \xi\in\Lambda_G(E)).
+\end{equation}
+This is a research question stronger than
+\Cref{conj:ramification}. A bound of the displayed form
+would imply the required finite ramification set at every
+bounded height.
+
+\section{A proof programme and its arithmetic obstacles}
+\label{sec:programme}
+
+The reduction theorem provides two complementary routes.
+One seeks the three central assertions directly. The other
+constructs arithmetic detectors for the residual quotient
+and then proves integral and field-of-definition control.
+
+\subsection{The geometric and central steps}\label{sec:geometric-steps}
+
+The first target is \Cref{conj:offcentral}. The tensor Chow
+decomposition gives an exact test: a nonzero off-central
+core would produce a misplaced Lefschetz string.
+A proof must therefore eliminate the core in the rational
+Chow group, rather than merely its cohomological realization.
+
+The next target is the algebraic kernel in
+\Cref{conj:AJ}. The projector construction already identifies
+it as \(R_SA_{S,E}\), and adjunction places it in the full
+central height radical. Establishing its vanishing is a
+separate arithmetic cycle statement. Once it vanishes,
+the visible Néron--Tate factor has all the required
+fixed-field and bounded-degree finiteness properties.
+
+For the residual factor, real positivity is an initial
+target. It supplies Cauchy--Schwarz and, together with the
+algebraic kernel statement, central nondegeneracy.
+The primitive sum-of-squares identity transfers these
+consequences uniformly to every degree of the product.
+
+\subsection{A detector-to-Northcott route}\label{sec:arithmetic-steps}
+
+For each fixed finite \(E/F_0\), the sequence of inputs is:
+\begin{enumerate}
+\item Prove scalar-extended injectivity of one residual
+regulator. The finite-dimensional cohomological target then
+gives finite rational rank.
+\item Prove one common denominator bound for the integral
+image, for example through the all-prime saturation
+condition \eqref{eq:common-lattice-target}. Alternatively,
+combine a finite Kummer quotient with a positive height gap.
+\item Establish real residual positivity. Together with
+the common lattice, this gives fixed-field Northcott.
+\item Control the ramification of minimal class fields in
+bounded degree and height. The trace criterion then gives
+bounded-degree Northcott.
+\end{enumerate}
+The alternatives in the second step have different
+arithmetic content. All-prime saturation compares integral
+cohomology across coefficient primes. The height-gap
+route instead requires a uniform positive lower bound on
+nonzero integral classes over the fixed field.
+
+Under real positivity, scalar detection and the
+almost-everywhere lattice comparison for every finite
+\(E/F_0\), the first three steps establish fixed-field
+Northcott. Adding \Cref{conj:ramification} proves
+\Cref{conj:residual-northcott}. Alternatively, a finite
+Kummer quotient and a genuine gap over every fixed field,
+together with real positivity and
+\Cref{conj:ramification}, give the same conclusion without
+a preliminary finite-rank assumption. Finally,
+\Cref{conj:offcentral,conj:AJ} and
+\Cref{thm:program-equivalence} give the product programme.
+
+The local-to-global construction of a height system and
+these arithmetic properties meet at \Cref{def:heights}.
+A construction of local Green forms must supply the
+global pairing, adjunction and curve normalization before
+the arithmetic reductions apply. The present programme
+starts from that explicitly stated height system; its
+subsequent tasks concern vanishing, positivity, integral
+discreteness and fields of cycle classes.
+
+
+% Source: papers/arithmetic-sections/conjecture-references.tex
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{References}
+
+\bibitem{ArithmeticReductions}
+\emph{Arithmetic Lefschetz and integral heights:
+proofs and reductions on products of curves}, companion research
+manuscript, 17 November 2026.
+
+\bibitem{Kahn}
+B. Kahn, \emph{On the injectivity and non-injectivity of the
+\(\ell\)-adic cycle class maps}, manuscript dated 10 March 2024.
+\href{https://webusers.imj-prg.fr/~bruno.kahn/preprints/ladic-cycle-class-rev3.pdf}
+{Author-hosted PDF}.
+
+\bibitem{Kedlaya}
+K. S. Kedlaya, \emph{Weil cohomology in practice},
+Chapter 10, Comparing Galois representations: the Faltings--Serre
+method, lecture of 30 October 2019.
+\href{https://kskedlaya.org/weil-cohom/chapter-10.html}
+{Author-hosted notes}.
+
+\bibitem{Raskind}
+W. Raskind, \emph{Higher \(\ell\)-adic Abel--Jacobi mappings and
+filtrations on Chow groups},
+\href{https://arxiv.org/abs/alg-geom/9412001}{arXiv:alg-geom/9412001}.
+
+\bibitem{ScaviaSuzuki}
+F. Scavia and F. Suzuki,
+\emph{Non-injectivity of the cycle class map in continuous
+\(\ell\)-adic cohomology},
+\href{https://arxiv.org/abs/2208.06713}{arXiv:2208.06713}.
+
+\bibitem{ZhangStandard}
+S.-W. Zhang, \emph{Standard conjectures and height pairings},
+\href{https://arxiv.org/abs/2009.07089v3}{arXiv:2009.07089v3}.
+The numbering cited here refers to the version of 29 April 2022.
+
+\end{thebibliography}
+
+
+
+\end{document}
+

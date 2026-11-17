@@ -71,3 +71,12 @@ test('Projects have unique permanent IDs and explicit mathematical tracks',async
   }
   assert.equal(new Set(ids).size,ids.length);
 });
+test('Maintenance guides preserve complete list items, nested commands and heading hierarchy',async()=>{
+  const maintenance=await read('maintenance/index.html');
+  assert.match(maintenance,/<h2>One feedback record<\/h2>/);
+  assert.match(maintenance,/<li>Maintainer identifies its scope:[^<]+formalization\.<\/li>/);
+  assert.match(maintenance,/<li><p>Build and test with the repository[^<]+<\/p>\s*<pre><code class="language-sh">npm ci\nnpm run build\nnpm run check\n<\/code><\/pre>\s*<\/li>/);
+  const guide=await read('feedback/guide/index.html');
+  assert.match(guide,/<h2>How to submit feedback<\/h2>/);
+  assert.match(guide,/href="\/math-research-atlas\/feedback\/"/);
+});

@@ -1,0 +1,306 @@
+% Round 16. Local actual activation of published numerical admissibility.
+% The published abelian height theorem is not claimed as a new result.
+% Mathematical source independently PASS at root, higher_trace and global_height.
+% Reviewed mathematical SHA: bf03e6ba96ac9ff1519dd9283b16febd7fb5b3defd5cb3566b9cc80db24e9a6e.
+% This activation changes only these provenance comments.
+\section{Local abelian admissibility and actual Chow-motivic transfer}
+\label{r16ab:section}
+
+The numerical input in this section is published.  K\"unnemann's
+2001 paper already constructs the full classical height on abelian
+varieties over number fields, and Round 7 recorded that global
+admissibility theorem.  Here we isolate its genuinely local theorem,
+valid over an arbitrary complete discretely valued field with finite
+residue field, and combine it with the frozen actual numerical detector.
+The resulting statement concerns ordinary actual Green forms on their
+specified exact support complements.  Its Chow-motivic transfer uses
+the new correspondence stability proved in this round.  No novelty
+claim is made for the underlying abelian numerical theorem or classical
+abelian height.
+
+\subsection{The precise published local input}
+
+Fix a complete discrete valuation ring $R$ with finite residue field
+$k$ and fraction field $F$ of characteristic zero.  For a smooth
+projective $k$-variety $D$, write
+\[
+ A^u(D)=\operatorname{im}\bigl(\operatorname{CH}^u(D)_{\mathbf Q}
+          \longrightarrow H^{2u}(D_{\bar k},\mathbf Q_\ell(u))\bigr),
+ \qquad \ell\ne\operatorname{char}k.
+ \tag{AB16.1}\label{r16ab:cycle-image}
+\]
+These are rational cycle-image groups, not numerical groups and not
+the full cohomology groups.  If $\mathcal P/R$ is regular, projective
+and strictly semistable of relative dimension $d$, with reduced
+special fiber $Y=\bigcup_iD_i$, let $Y^{(1)}$ and $Y^{(2)}$ denote
+the disjoint unions of components and their pairwise intersections.
+Put
+\[
+ \begin{split}
+ A^u(Y)&=\ker\bigl(\rho:A^u(Y^{(1)})\to A^u(Y^{(2)})\bigr),\\
+ A_s(Y)&=\operatorname{coker}\bigl(
+       \gamma:A^{d-s-1}(Y^{(2)})\to A^{d-s}(Y^{(1)})\bigr),
+ \end{split}
+ \tag{AB16.2}\label{r16ab:strata-groups}
+\]
+where $\rho$ and $\gamma$ are the signed restriction and Gysin maps.
+There is a natural surjection
+$\operatorname{CH}_s(Y)_{\mathbf Q}\twoheadrightarrow A_s(Y)$.
+The component restrictions of a Chow class on $\mathcal P$ lie in
+$A^u(Y)$.  Write $i:Y\hookrightarrow\mathcal P$.
+
+\begin{proposition}[Published local abelian input, with its original scope]
+\label{r16ab:published}
+Let $A/F$ be an abelian variety.  After a finite extension $F'/F$
+there is a regular projective strictly semistable model
+$\mathcal P/R'$ of $A_{F'}$ for which, in every degree, the natural map
+\[
+                 A_s(Y)\longrightarrow
+              H^{\mathrm{et}}_{2s}(Y_{\bar k'},\mathbf Q_\ell(-s))
+ \tag{AB16.3}\label{r16ab:homology-injection}
+\]
+is injective and the complex
+\[
+ A_{d+1-u}(Y)\xrightarrow{i^*i_*}A^u(Y)
+                 \xrightarrow{\ \cap[Y]\ }A_{d-u}(Y)
+ \tag{AB16.4}\label{r16ab:local-exact}
+\]
+is exact at its middle term.
+\end{proposition}
+
+\begin{proof}[Literature provenance]
+This is K. K\"unnemann, \emph{Height pairings for algebraic cycles on
+abelian varieties}, Ann. Sci. \`Ecole Norm. Sup. (4) 34 (2001),
+503--523, Section 5.5, Theorem 5.6 and Theorem 6.6.
+Semi-abelian reduction, a finite unramified splitting extension and a
+finite ramified extension provide the model in Sections 5.5--5.6.
+Section 6.2 explicitly works over a complete DVR with finite residue
+field; Theorem 6.6 proves \eqref{r16ab:homology-injection} and
+\eqref{r16ab:local-exact} for these local models.  Section 5.8's
+erratum explicitly retains the original DVR assertion when the base
+is complete.  Thus no descent of $A$ to a number field is needed.
+
+The definitions in Sections 2.3--2.6 are exactly cycle images and
+their cokernels as in \eqref{r16ab:cycle-image}--\eqref{r16ab:strata-groups}.
+The reduction to a toric degeneration in Section 6 proves the assertion
+without assuming numerical equivalence equals homological equivalence
+for arbitrary finite-field abelian varieties.
+\end{proof}
+
+\begin{lemma}[The local exact complex supplies a numerical model witness]
+\label{r16ab:numerical-witness}
+Let $\mathcal P/R$ be a regular projective strictly semistable model
+of a smooth projective generic fiber $V/F$, of dimension $d$.
+Assume \eqref{r16ab:homology-injection} and
+\eqref{r16ab:local-exact} in the relevant degrees.
+For every geometrically homologically trivial
+$z\in\operatorname{CH}^r(V)_{\mathbf Q}$, $1\le r\le d$,
+there is an extension $\Theta_0\in\operatorname{CH}^r(\mathcal P)_{\mathbf Q}$
+of $z$ whose refined restriction to every $D_i$ is geometrically
+homologically trivial, and therefore numerically trivial.
+Its pure operational vector-bundle representative is vertically
+numerically zero in the precise sense of Round 12 \texttt{ND2}.
+\end{lemma}
+
+\begin{proof}
+Choose any Chow extension $\Theta$ of $z$, for instance the sum of
+the cycle closures.  Let $a\in A^r(Y)$ be its tuple of component
+restrictions.  The image $a\cap[Y]\in A_{d-r}(Y)$ is the image of
+the specialization of $z$.  Geometric cycle classes commute with
+specialization, so its image in geometric $\ell$-adic homology is zero.
+The injection \eqref{r16ab:homology-injection} makes
+$a\cap[Y]=0$ in $A_{d-r}(Y)$.  Exactness gives
+$b\in A_{d+1-r}(Y)$ with $i^*i_*b=a$.
+
+Choose $\beta\in\operatorname{CH}_{d+1-r}(Y)_{\mathbf Q}$ mapping
+to $b$, using the stated surjection, and put
+\[
+                       \Theta_0=\Theta-i_*\beta.
+ \tag{AB16.5}\label{r16ab:corrected-witness}
+\]
+Its generic restriction is still $z$.  Its tuple of component
+cycle classes is $a-i^*i_*b=0$.  As $A^r(Y)$ is a subspace of
+the direct sum of the component cycle images, each component class
+itself is zero.  This proves the asserted homological vanishing,
+not just a zero class after pushing from $Y$ to $\mathcal P$.
+
+On the regular model, use the pure rational Chern representative
+from Round 12 \texttt{alteration/numerical\_witness\_descent.tex},
+equation \texttt{ND1}: a virtual vector bundle $\xi_{\Theta_0}$
+with $\operatorname{ch}(\xi_{\Theta_0})\cap[\mathcal P]=\Theta_0$
+and all operational character degrees other than $r$ equal to zero.
+Every integral vertical $r$-cycle lies in some $D_i$.  Its pairing
+with $\operatorname{ch}_r(\xi_{\Theta_0})$ is the numerical pairing
+of the refined restriction on that $D_i$ with this cycle, hence zero.
+This uses only homological triviality implying numerical triviality.
+
+The first part is also the local correction argument appearing in
+K\"unnemann's proof of Proposition 3.3, printed pp.511--512; the
+global arithmetic gluing in that proposition is not needed here.
+\end{proof}
+
+\begin{theorem}[Full local actual strong G for abelian varieties]
+\label{r16ab:local-G}
+Let $K/\mathbf Q_p$ be finite and let $A/K$ be an abelian variety.
+For every $r$ and every geometrically homologically trivial
+$z\in\operatorname{CH}^r(A)_{\mathbf Q}$,
+\[
+                         \mathfrak o_{A,K}^r(z)=0.
+ \tag{AB16.6}\label{r16ab:abelian-obstruction-zero}
+\]
+In particular, for $1\le r\le\dim A$, each specified rational
+cycle $Z$ in class $z$ has a zero-curvature ordinary actual Green
+form on precisely $A^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}$,
+against every complementary compact actual test over the original $K$.
+
+More generally, if $A$ is defined over a finite extension $L/K$,
+the same assertion holds on $A$, viewed as a smooth integral
+$K$-variety, for geometric homological triviality on every component.
+\end{theorem}
+
+\begin{proof}
+Apply Proposition~\ref{r16ab:published} after a finite extension
+$F/K$ and Lemma~\ref{r16ab:numerical-witness} to the pullback of $z$.
+This supplies a pure numerical model bundle witness on $A_F$.
+The map $A_F\to A$ is genuinely finite dominant of complete
+native degree $[F:K]$.  The frozen Round 12 finite numerical-model
+cover theorem \texttt{r12a:finite-numerical-cover} applies in every
+degree and proves \eqref{r16ab:abelian-obstruction-zero}.
+
+For the last assertion first choose $F/L$ with this model.  Regard
+it over $K^\circ$.  Degrees on its vertical supports are multiplied
+by the residue-field degree, and the scheme-theoretic special-fiber
+multiplicities, including ramification, are retained.  Zero numerical
+pairings remain zero.  The same frozen theorem now applies to the
+finite $K$-morphism $A_F\to A$, so its conclusion is directly in
+the original $K$-actual theory.  It is not obtained by relabeling an
+$L$-test identity.  Degrees zero and outside the Chow range are
+vacuous for the geometric homological kernel.
+
+Finally choose the frozen curved pair for the original specified
+cycle $Z$ and subtract a global actual primitive of its curvature.
+This is the established sufficient direction to strong G and gives
+the exact final support and all actual tests.  No support on an
+alteration is pushed to the target.
+\end{proof}
+
+\subsection{Transfer through actual Chow correspondences}
+
+\begin{theorem}[A supplied Chow-motive factorization through abelian varieties]
+\label{r16ab:motivic}
+Let $X/K$ be smooth projective geometrically integral.  Suppose that
+after a finite extension $L/K$ there are abelian varieties $A_j/L$
+and rational Chow correspondences $u_j,v_j$ with opposite degree
+shifts such that
+\[
+                 [\Delta_{X_L}]=\sum_j v_j\circ u_j
+           \quad\text{in }\operatorname{CH}^{\dim X}(X_L\times_LX_L)_{\mathbf Q}.
+ \tag{AB16.7}\label{r16ab:chow-factorization}
+\]
+Then the full geometric homological Chow group of $X$ has zero
+actual obstruction in every degree.  Consequently strong G holds
+for all its specified geometrically homologically trivial rational
+cycles over $K$, with their exact supports and full actual tests.
+
+It is enough, in a fixed degree $r$, to supply
+$\sum_jv_{j*}u_{j*}=\operatorname{id}$ on
+$\operatorname{CH}^r(X_L)_{\mathbf Q,\mathrm{geom\,hom}}$.
+In particular the all-degree hypothesis holds when the rational Chow
+motive of $X_L$ is a direct summand of a finite direct sum of Tate
+twists of motives $h(A_j)$.
+\end{theorem}
+
+\begin{proof}
+For a geometric homological class $z$, each $u_{j*}z_L$ is again
+geometrically homologically trivial.  By
+Theorem~\ref{r16ab:local-G}, its obstruction is zero in the native
+$K$-theory of $A_j$.  The new correspondence-kernel theorem
+\texttt{r16cov:correspondences} sends these classes to zero
+obstruction classes $v_{j*}u_{j*}z_L$ on $X_L$, still over $K$.
+
+Here a correspondence defined on a product over $L$ is used in the
+$K$-theory by the open-and-closed immersion
+\[
+                X_L\times_LA_j\hookrightarrow X_L\times_KA_j.
+\]
+This immersion selects the diagonal factor of the finite etale
+algebra $L\otimes_KL$.  Algebraic correspondence composition on
+these factors is precisely composition over $L$, and the diagonal
+of $X_L$ lies in the same factor.  Thus
+\eqref{r16ab:chow-factorization} is an actual Chow correspondence
+identity after this interpretation, with no field-degree divisor
+inserted into it.  Summing gives
+$\mathfrak o_{X_L,K}(z_L)=0$.
+
+Full finite actual Bott--Chern injectivity for $X_L\to X$ now gives
+$\mathfrak o_{X,K}(z)=0$, using the complete degree $[L:K]$.
+Apply the exact-support sufficient direction as before.
+The assertion for a single Chow degree uses the same equality on
+that group's elements.  A motivic inclusion and retraction give
+\eqref{r16ab:chow-factorization} by their defining Chow identity.
+Neither a merely cohomological decomposition nor an unproved lifting
+of numerical projectors is used.
+\end{proof}
+
+\begin{corollary}[Arbitrary finite products of curves]
+\label{r16ab:curve-products}
+Let $C_1,\ldots,C_m/K$ be smooth projective geometrically integral
+curves and put $X=\prod_iC_i$.  In every codimension, every
+geometrically homologically trivial rational Chow class on $X$ has
+zero actual obstruction.  Hence every specified cycle in that full
+group satisfies strong G, on its exact support complement and
+against all original-field actual tests.  The assertion is not
+restricted to exterior products of cycles or to external-product tests.
+\end{corollary}
+
+\begin{proof}
+After a finite extension choose a rational point on each curve.
+The rational Chow-motive identities are
+\[
+ h(C_i)=\mathbf 1\oplus h^1(C_i)\oplus\mathbb L,
+       \qquad h^1(C_i)\simeq h^1(J(C_i)),
+ \tag{AB16.8}\label{r16ab:curve-motive}
+\]
+and $h^1(J(C_i))$ is a direct summand of $h(J(C_i))$.
+These are identities for rational equivalence: A. J. Scholl,
+\emph{Classical motives}, Proc. Sympos. Pure Math. 55, Part 1
+(1994), 163--187, Section 3.2, Proposition 4.5 and
+Theorems 5.2--5.3 give the curve projectors, the Picard-motive
+comparison and the abelian Chow projectors, respectively.
+They also cover the genus-zero case, where the middle summand is zero.
+
+Tensor the split inclusions and retractions in
+\eqref{r16ab:curve-motive} and expand the finite direct sum.
+Each term is a summand of a Tate twist of the motive of a product
+of Jacobians.  That product is an abelian variety; the unit terms
+are allowed as the zero-dimensional abelian variety.  This supplies
+the exact Chow factorization required in
+Theorem~\ref{r16ab:motivic}.  Its native finite descent removes the
+auxiliary choice of points and field.
+\end{proof}
+
+\paragraph{Height consequence and precise novelty boundary.}
+For varieties over a number field satisfying the supplied Chow
+factorization, the same algebraic identities hold after completion
+and finite local extension.  Theorem~\ref{r16ab:motivic} therefore
+puts their full geometric homological Chow groups in the proved
+global height domain of \texttt{r16h:global-height}.  This supplies
+the actual analytic height construction on that full domain.
+The classical existence for abelian varieties and its admissible
+Chow-motivic consequences were already known and recorded in Round 7;
+this section makes no priority claim and does not identify the new
+analytic metric with every previously chosen model metric without
+the separate comparison theorem.  General varieties have not been
+shown to possess the Chow factorization above.
+
+\paragraph{Primary sources inspected in this round.}
+K\"unnemann's original PDF, including its local hypotheses and the
+complete-DVR erratum, is
+\url{https://www.numdam.org/article/ASENS_2001_4_34_4_503_0.pdf}.
+Scholl's author-hosted manuscript is
+\url{https://www.dpmms.cam.ac.uk/~ajs1005/preprints/classical_motives.pdf}.
+The abelian Chow--K\"unneth theorem originates in C. Deninger and
+J. Murre, \emph{Motivic decomposition of abelian schemes and the
+Fourier transform}, J. reine angew. Math. 422 (1991), 201--219,
+DOI \texttt{10.1515/crll.1991.422.201}; the cited Scholl source
+proves the particular comparison and projectors used here.

@@ -1,0 +1,686 @@
+% Round 16, global_height_audit. New bridge; independent audit requested.
+% Historical sources are inputs with their frozen scope, not modified here.
+\section{From a vanishing actual obstruction to reciprocal Green pairings}
+\label{r16h:section}
+
+\paragraph{Status and conventions.}
+The point-slice and height theorems below have passed independent review
+at root and in the model-obstruction branch, relative to their stated
+frozen inputs. The review is recorded in
+\path{round16/audits/obstruction_zero_height_model_review.md}; the
+finite-flat base-change step was additionally checked by the trace
+branch. These are internal mathematical reviews, not external peer
+review or formal verification. This proof uses the Round 16
+full finite actual trace reconstructed from the final Round 11 interfaces;
+it does not presume the historical Round 6 trace candidate. The latter
+reconstruction has been independently checked by this author in
+\texttt{global\_height/full\_finite\_trace\_independent\_audit.md}.
+The new result below is a proper-slice residue theorem for the concrete
+Round 11 supported-complex Green pair. In particular it uses
+$\mathfrak o=0$, not an unproved converse $G\Rightarrow\mathfrak o=0$.
+
+Fix a finite extension $K/\mathbf Q_p$ with its original absolute value.
+All forms are Mihatsch actual forms in the ordinary topology, and
+$D=d'd''$. Integration uses the native $K$-weights. A rational cycle is
+always written with its final nonzero prime coefficients before choosing
+its supporting complexes.
+
+\subsection{The finite-flat interface, including ramification}
+
+\begin{lemma}[Finite-flat base change for an arbitrary normal testing map]
+\label{r16h:finite-base-change}
+Let $q:V\to U$ be finite flat of degree $d$, with $U,V$ smooth integral
+$K$-varieties and $U$ geometrically integral. Let $a:M\to U$ be a
+morphism with $M$ normal integral. Write the fundamental cycle of the
+finite flat fiber product as
+\[
+ [V\times_U M]=\sum_j e_j[W_j],
+ \qquad N_j=W_j^\nu,\quad q_j:N_j\to M,\quad \rho_j:N_j\to V,
+\]
+where $e_j$ is the generic Artinian length. For every actual form $\omega$
+on $V^{\rm an}$,
+\[
+ a^*\operatorname{Tr}_q\omega
+   =\sum_j e_j\operatorname{Tr}_{q_j}(\rho_j^*\omega).
+ \tag{H16.1}\label{r16h:base-change}
+\]
+This is an equality of ordinary actual forms, in every bidegree. It is
+local on ordinary opens and retains all native field degrees.
+\end{lemma}
+
+\begin{proof}
+We first record why taking a product commutes with trace here, without
+assuming a general current base-change theorem. In the explicit Round 16
+construction, a source presentation $\omega=t_f^\star\gamma$ is encoded by
+the independent-parameter kernel
+$\Gamma_f=\prod_iD\max(v(f_i)-v(z_i),0)$. The trace is the supplied
+product-moment integral of
+$\chi(t)\gamma(t)\operatorname{Tr}^{\rm curv}_{q\times\mathrm{id}}\Gamma_f$.
+After taking a product with a smooth variety $M_0$, pull back exactly the
+same source units, Newton coefficients, descended sorted potentials and
+parameter cutoff. The pure-curvature orbit identity is unchanged.
+To check its trace pairing, pass to a normal Galois closure and use the
+native finite degree formula on its product with $M_0$. These products
+are normal because $M_0$ is smooth. If they are disconnected, sum over
+their disjoint normal integral components; their degrees over each
+target component sum to the original degree. The Galois action permutes
+these components, so the same orbit-average proof applies. Thus the
+pulled pure-curvature output is the product-map pure-curvature trace.
+The supplied-presentation base-change identity FT16.3 then gives
+\[
+ \operatorname{Tr}_{q\times\mathrm{id}_{M_0}}(\mathrm{pr}_V^*\omega)
+             =\mathrm{pr}_U^*(\operatorname{Tr}_q\omega).
+ \tag{H16.2}\label{r16h:product-trace}
+\]
+This argument uses the explicit trace formula and actual uniqueness,
+not a proposed base-change law for arbitrary currents.
+
+For smooth $M$, factor $a$ as its closed graph in $U\times M$ followed
+by the projection. Apply the ramified closed-slice proof in
+\texttt{round10/trace/ramified\_form\_base\_change.tex},
+Theorem G10.T2, to $q\times\mathrm{id}_M$ and this graph, and use
+\eqref{r16h:product-trace}. Its formerly conditional full-trace input is
+now supplied by Round 16. For clarity, the essential calculation of that
+proof is the following. Locally a smooth closed slice is a regular
+sequence $f_1,\ldots,f_c$. Mihatsch's complete-intersection kernel
+\[
+ g=(-1)^{c-1}\phi(D\phi)^{c-1},\qquad \phi=\min_i v(f_i),
+\]
+has the strong all-actual-test residue identity; flat pullback preserves
+the regular sequence, including its scheme multiplicities. For a compact
+actual form $\beta$ of the slice's top degree, $D\beta$ has support away
+from that fiber product. A compact cutoff of $g$ equal to one over the
+image of this support is therefore an allowed trace test. Trace
+adjunction and commutation with $D$ give
+\[
+ \int_{\text{slice}}\operatorname{Tr}\beta
+                   =\int_{\text{fiber product}}\beta.
+\]
+Arbitrary actual slice tests lift locally by lifting their unit moments
+and keeping their original Euclidean delta coefficient. Multiplication
+by these lifted tests gives the form-valued assertion. Decomposing the
+fiber-product fundamental cycle and normalizing produces exactly the
+generic lengths $e_j$, not coefficient one. No trace on a nonreduced
+or nonnormal target is introduced.
+
+For normal $M$, the right side of \eqref{r16h:base-change} exists on all
+of $M$: finite flatness makes every $W_j$ dominate $M$, and normalization
+is finite. Compare on the dense smooth algebraic locus of $M$ by the
+preceding argument. Actual forms on a pure-dimensional variety are
+determined on a dense algebraic open. Indeed, a difference supported
+on a proper algebraic closed subset, wedged with any complementary
+smooth compact test, is a top actual form whose support avoids that
+subset by Mihatsch Corollary 4.9. Its current vanishes, and Proposition
+4.11 gives actual vanishing. This proves the equality everywhere.
+\end{proof}
+
+\subsection{A supported bivariant calculation}
+
+\begin{lemma}[The point residue of a supported perfect complex]
+\label{r16h:algebraic-residue}
+Let $X/K$ be smooth of dimension $n$, let $Z\subset X$ have pure
+codimension $r$, and let $C$ be a perfect complex exact off $Z$. Put
+\[
+ c=\operatorname{ch}_r^Z(C),\qquad z_C=c\cap[X]\in\operatorname{CH}_{n-r}(Z)_{\mathbf Q}.
+\]
+For an integral $r$-dimensional variety $a:M\to X$ such that
+$S=M\times_X Z$ is finite, one has
+\[
+ \operatorname{ch}_r^S(La^*C)\cap[M]
+       =\Delta_X^!([M]\times z_C)
+       =:I_a(z_C)\quad\text{in }\operatorname{CH}_0(S)_{\mathbf Q}.
+ \tag{H16.3}\label{r16h:refined-residue}
+\]
+Because $S$ is finite, this is equality of the specified point
+coefficients, including nonreduced and residue-field contributions.
+\end{lemma}
+
+\begin{proof}
+Localized Chern characters are bivariant classes and commute with
+arbitrary base change (Stacks 0FB3). The graph of $a$ is a regular
+immersion in $X\times_K M$, since it is a section of the smooth
+projection to $M$. Bivariant classes commute with its refined Gysin map
+(Stacks 0FBP). Pull $c$ to $X\times M$; its action on $[X]\times[M]$
+is $z_C\times[M]$, by flat exterior-product compatibility. Applying
+the graph Gysin and commuting it past $c$ gives the left side of
+\eqref{r16h:refined-residue}; the graph Gysin of $[X]\times[M]$ is
+$[M]$. Its action on $z_C\times[M]$ is precisely the refined diagonal
+intersection on the right. This is the smooth-orientation calculation
+of Stacks 0FBR, Proposition 42.60.2; the associated intersection is
+defined in Stacks 0FC0. Finally $\operatorname{CH}_0$ of a finite
+scheme is the free group on its closed points, so no rational
+equivalence can hide a changed point coefficient.
+\end{proof}
+
+\subsection{The new curved proper-slice theorem}
+
+Use the precise Round 11 supported-model-complex setup:
+$\mathcal X/R$ is integral flat projective with smooth geometrically
+integral generic fiber $X$, $C$ is a bounded vector-bundle complex on
+$\mathcal X$ exact off its full model cohomology support, and its generic
+support $Z$ is pure of codimension $r$. Its frozen Green pair is
+\[
+ \Omega_C=\sum_i(-1)^i\operatorname{ch}_r(\overline C_i),
+ \qquad G_C\in B^{r-1,r-1}((X\setminus Z)^{\rm an}),
+ \qquad D[G_C]+\delta_{z_C}=[\Omega_C].
+\]
+The last identity already holds on every compact actual test on $X$.
+The source is \texttt{round11/perfect\_complex/supported\_complex\_green.tex},
+PC2--PC10, together with the final minimal-trace audit. We retain its
+particular construction, not an arbitrary solution of the current equation.
+
+\begin{theorem}[All-actual finite-intersection residue identity]
+\label{r16h:curved-slice}
+Let $a:M\to X$ be any morphism from a normal integral quasiprojective
+$K$-variety of dimension $r$, with finite $S=a^{-1}Z$. The particular
+Round 11 form $G_C$ satisfies
+\[
+ \int_{M\setminus S}a^*G_C\wedge D\eta
+       +\int_{I_a(z_C)}\eta
+       =\int_M a^*\Omega_C\wedge\eta
+ \tag{H16.4}\label{r16h:curved-slice-eq}
+\]
+for every compact actual scalar test $\eta\in B_c^{0,0}(M^{\rm an})$.
+The form $a^*G_C$ is ordinary actual on exactly $M\setminus S$.
+\end{theorem}
+
+\begin{proof}
+The relative diagonalization PC2 supplies a proper generically finite
+$f:T\to X$, of degree $d$, with $T$ smooth projective and $f$ finite
+over $U=X\setminus Z$, and a supported perfect-$K_0$ identity
+\[
+ [f^*C]=\sum_\alpha\epsilon_\alpha[L_\alpha\xrightarrow{s_\alpha}M_\alpha].
+\]
+Every $s_\alpha$ is an isomorphism off $f^{-1}Z$. The finite restriction
+is flat because source and target are smooth of equal dimension. Put
+\[
+ B_{r-1}(l,m)=\frac1{r!}\sum_{b=0}^{r-1}m^{r-1-b}l^b,
+ \quad g_\alpha=-\log\|s_\alpha\|,\quad
+ G_T=\sum_\alpha\epsilon_\alpha g_\alpha B_{r-1}(l_\alpha,m_\alpha).
+\]
+Then $G_C=d^{-1}\operatorname{Tr}_{f|_{f^{-1}U}}G_T$. The minimal
+trace and the full trace agree on this scalar-curvature input, since
+both are actual and have the same all-actual-test adjunction.
+
+In $T\times_X M$, take the normalizations $N_j$ of the reduced
+components dominating $M$, with their generic Artinian lengths $e_j$.
+Write $b_j:N_j\to M$ and $\rho_j:N_j\to T$. These are proper over
+$M$, are finite over $M\setminus S$, and
+\[
+                  \sum_j e_j(b_j)_*[N_j]=d[M].
+ \tag{H16.5}\label{r16h:source-degrees}
+\]
+Extra components lying over $S$ are not included; they contribute zero
+to this displayed pushforward. The pulled line maps on each $N_j$ are
+nonzero, since their generic points lie over $U$. Their Cartier
+divisors $D_{\alpha j}$ lie over the finite set $S$.
+
+On each normal $N_j$, apply scalar strong Poincare--Lelong to the
+pulled line maps with the compact actual test
+$\rho_j^*B_{r-1}(l_\alpha,m_\alpha)b_j^*\eta$. Compactness follows
+from properness of $b_j$. The Chern factors are separately closed.
+The strict curvature identity PC9 pulls back as an actual identity.
+Sum with weights $e_j\epsilon_\alpha$ to obtain
+\begin{align*}
+ &\sum_j e_j\int_{N_j\setminus b_j^{-1}S}
+                    \rho_j^*G_T\wedge b_j^*D\eta\\
+ &\quad+\sum_{j,\alpha}e_j\epsilon_\alpha
+       \int_{D_{\alpha j}}\rho_j^*B_{r-1}(l_\alpha,m_\alpha)b_j^*\eta
+       =\sum_j e_j\int_{N_j}b_j^*(a^*\Omega_C\wedge\eta).
+ \tag{H16.6}\label{r16h:upstairs-slice}
+\end{align*}
+Scalar strong Poincare--Lelong applies to normal integral sources; the
+argument has not asserted that these $N_j$ are smooth.
+
+The actual $(1,1)$ form $D\eta$ has support disjoint from the finite
+algebraic set $S$ by Corollary 4.9. Its pulled support is compact in
+the finite locus. Lemma~\ref{r16h:finite-base-change} and finite trace
+adjunction identify the first line with
+$d\int_{M\setminus S}a^*G_C\wedge D\eta$.
+The top actual form $a^*\Omega_C\wedge\eta$ is likewise supported
+away from $S$. The native degree formula and
+\eqref{r16h:source-degrees} identify the right side with
+$d\int_Ma^*\Omega_C\wedge\eta$.
+
+Each component of $D_{\alpha j}$ is projective over its image, a
+closed point of $S$. Its Chern polynomial has top degree $r-1$.
+Thus the frozen Chern-degree lemma PC6, now with zero-dimensional
+target, identifies its analytic integral with the algebraic Chern
+degree times the value of $\eta$, with the native residue degree.
+The Cartier localized-character identity PC4 and the proper
+bivariant projection formula therefore identify the middle sum with
+the integral of the zero-cycle
+\begin{align*}
+ &\sum_j e_j(b_j)_*\left(
+           \operatorname{ch}^{b_j^{-1}S}_r(Lb_j^*La^*C)\cap[N_j]\right)\\
+ &\hspace{25mm}=\operatorname{ch}_r^S(La^*C)\cap
+                    \sum_j e_j(b_j)_*[N_j]
+       =d I_a(z_C).
+\end{align*}
+Here the supported line-complex $K_0$ identity was pulled to $N_j$;
+localized characters commute with this arbitrary pullback. The final
+equality is Lemma~\ref{r16h:algebraic-residue}. Everything takes place
+in $\operatorname{CH}_0(S)$, hence gives the exact point coefficients.
+Divide \eqref{r16h:upstairs-slice} by $d$.
+
+No general proper actual pushforward appears: the only operations are
+finite actual traces away from $S$, scalar Poincare--Lelong on normal
+sources, and scalar top-Chern integration on proper fibers.
+\end{proof}
+
+\begin{corollary}[The obstruction-zero sector has the full point-slice property]
+\label{r16h:P}
+Let $Z$ be a specified rational codimension-$r$ cycle on a smooth
+projective geometrically integral $X/K$, and assume
+$\mathfrak o_X^r([Z])=0$. There is an ordinary actual strong Green form
+$\gamma_Z$ on exactly $X^{\rm an}\setminus|Z|^{\rm an}$ which, for
+every normal integral quasiprojective $r$-fold $a:M\to X$ with finite
+$S=a^{-1}|Z|$, satisfies
+\[
+             D[a^*\gamma_Z]=-\delta_{I_a(Z)}
+ \tag{H16.7}\label{r16h:P-eq}
+\]
+on all compact actual scalar tests. In particular the frozen
+$P_{\rm chain}$ condition holds. The same chosen form works for all
+such maps $a$.
+\end{corollary}
+
+\begin{proof}
+Choose the Round 11 supported complexes component by component, with
+the original final support, obtaining $(G_Z,\Omega_Z)$ and $z_C=Z$.
+The definition and Chow-class independence of the frozen obstruction
+give a global actual $\Psi$ with $D\Psi=\Omega_Z$. Set
+$\gamma_Z=G_Z-\Psi|_{X\setminus|Z|}$. The already proved Round 11
+Green equation gives strong $G$ on all actual tests, with the exact
+support. Pullback of the globally defined actual primitive commutes
+with $D$. Subtract its equation from
+Theorem~\ref{r16h:curved-slice}, component by component.
+This is a concrete residue proof; it does not pull back a distributional
+Green equation through an intersection.
+\end{proof}
+
+\subsection{Finite constant extensions of the concrete Green choice}
+
+\begin{proposition}[Absolute normalization for obstruction-zero choices]
+\label{r16h:constant-extension}
+For a finite extension $L/K$, a Green form chosen as in
+Corollary~\ref{r16h:P} pulls back to a strong Green form for $Z_L$.
+If $Z,W$ have complementary codimensions, disjoint supports, and both
+local obstruction classes vanish, then
+\[
+                   \lambda_L(Z_L,W_L)=\lambda_K(Z,W).
+ \tag{H16.8}\label{r16h:local-absolute}
+\]
+\end{proposition}
+
+\begin{proof}
+Base change the supported model complex, relative line decomposition,
+and its model metrics to $R_L$. Generic sources remain smooth, possibly
+with several disjoint components, whose total degree is $d$. Lemma
+\ref{r16h:finite-base-change}, applied on the finite locus to
+$X_L\to X$ viewed as a $K$-morphism, says that the pullback of $G_C$
+is exactly the base-changed line-sum trace divided by $d$. The proof
+PC4--PC10 therefore gives its all-actual Green equation with cycle
+$Z_L$ and curvature $\Omega_{C,L}$. The actual primitive pulls back
+with $D\Psi_L=\Omega_{C,L}$, so subtraction gives strong $G$.
+
+The analytic space of an $L$-variety viewed over $K$ has the same
+ordinary actual forms: its analytic units and genuine moment
+presentations are unchanged. Its native $K$-integrals are $[L:K]$
+times its native $L$-integrals. This is the constant-field weight
+normalization in Mihatsch Lemma 3.16 and Section 4.3. Dividing the
+base-changed equations by this common factor preserves every actual
+test and gives the asserted equation over $L$.
+
+The native finite degree formula for $X_L\to X$, followed by that
+same factor cancellation on $W_L$, gives
+$\int_{W_L/L}\gamma_{Z,L}=\int_{W/K}\gamma_Z$. Disjoint-polar
+Stokes makes both local numbers independent of the chosen Green
+forms because both complementary cycles have strong solutions. This
+proves \eqref{r16h:local-absolute}.
+\end{proof}
+
+\subsection{A canonical real height on the local obstruction-zero domain}
+
+Let $X/F$ be smooth projective geometrically integral of dimension $n$
+over a number field. Geometric homological triviality is with rational
+coefficients. Fix the usual normalized place absolute values and put
+$n_v=[F_v:\mathbf Q_v]/[F:\mathbf Q]$. Define the Chow subspace
+\[
+ \mathcal H^r(X)=\{\alpha\in\operatorname{CH}^r(X)_{\mathbf Q,\rm hom}:
+       \mathfrak o_{X_{F_v}}^r(\alpha_{F_v})=0
+                    \text{ for every finite place }v\}.
+ \tag{H16.9}\label{r16h:height-domain}
+\]
+Outside a fixed finite set of bad-reduction places, the local
+obstruction vanishes for every such class by the frozen Round 11
+smooth-projective-good-model theorem. Thus this definition imposes
+only finitely many possibly nonzero local obstruction maps.
+
+\begin{theorem}[Obstruction-zero analytic Beilinson--Bloch height]
+\label{r16h:global-height}
+For $p,q\geq1$ with $p+q=n+1$, there is a canonical real-valued
+$\mathbf Q$-bilinear pairing
+\[
+ h_X^{\rm an}:\mathcal H^p(X)\times\mathcal H^q(X)\longrightarrow\mathbf R.
+ \tag{H16.10}\label{r16h:height}
+\]
+For disjoint representatives $Z,W$, it is the finite sum
+\[
+ h_X^{\rm an}([Z],[W])
+         =\sum_v n_v\lambda_v(Z_v,W_v),\qquad
+ \lambda_v(Z_v,W_v)=\int_{W_v^{\rm an}}\gamma_{Z_v}\quad(v<\infty),
+ \tag{H16.11}\label{r16h:height-sum}
+\]
+with the classical zero-curvature complex Green normalization at
+infinite places. It is independent of all Green choices and moving
+representatives, symmetric under interchange of the two factors, and
+invariant under finite number-field extension. It is the adelic degree
+of the canonical Green metric on the corresponding restriction of
+Bloch's algebraic biextension, with the dual/sign convention fixed
+by the scalar Green function $-\log|f|$.
+\end{theorem}
+
+\begin{proof}
+\emph{Local definition and symmetry, with its current hypotheses.}
+Every specified representative of a class in $\mathcal H^r$ has the
+strong Green form of Corollary~\ref{r16h:P}. Here the precise frozen
+input is Lemma \texttt{lem:extension}, Proposition
+\texttt{prop:stokes}, and Corollary \texttt{cor:independence} in
+\texttt{history\_01\_07/analytic\_bb\_input/}\allowbreak
+\texttt{Lecture\_F\_Analytic\_Conjectures\_Beilinson\_Bloch\_2026-11-04.tex}.
+Their hypotheses hold for every strong Green choice in the question,
+not only the constructed one. Indeed, if $S$ has codimension at least
+$r$, every compact complementary actual test for a form of degree
+$(r-1,r-1)$ has degree $(n-r+1,n-r+1)$ and support disjoint from
+$S$ by Corollary 4.9. Its integral with any off-$S$ actual Green
+form is consequently a finite integral on a compact subset away
+from $S$. It defines the canonical algebraic-dual actual current;
+on original smooth tests it is continuous by Mihatsch Lemma 5.1.
+No extra local integrability hypothesis at $S$ is needed.
+
+For disjoint polar supports $S,T$, the opens $X\setminus S$ and
+$X\setminus T$ cover $X$. On either open at least one Green current
+is a genuine actual form, so the module action of actual forms on
+the algebraic dual of compact actual tests defines the mixed
+currents there, and their ordinary form products agree on the overlap.
+If $g=[\gamma_Z]$ and $h=[\gamma_W]$, the identity
+\[
+ (Dg)h-g(Dh)=d'((d''g)h)+d''(g(d'h))
+\]
+holds by the Leibniz rule on both opens. Its right side vanishes
+on the compact test $1$ because $X$ is proper and boundaryless.
+Substitution of the two strong equations gives
+\[
+                    \int_W\gamma_Z=\int_Z\gamma_W.
+\]
+It also shows independence of either Green choice: subtract two
+strong solutions in one factor and apply the same identity with
+zero residue in that factor. This uses all actual tests, not a
+model-generated subspace. Additivity follows on common disjoint
+position, keeping the union of polar supports when cycle components
+cancel. The archimedean zero-curvature construction has the same
+properties.
+
+\emph{Almost all local terms vanish.}
+Spread a fixed disjoint pair and $X$ to a smooth projective model
+over $\mathcal O_F[S^{-1}]$. After enlarging $S$, their flat closures
+are disjoint: the intersection is proper over this one-dimensional
+base with empty generic fiber, hence has finite image. On a good
+local model choose finite vector-bundle resolutions of those
+closures, on the fixed regular projective model itself. Their full
+cohomology supports are the respective closures. The Round 11
+good-model theorem gives zero model curvature for the homologically
+trivial generic cycle and a strong Green form literally zero on
+every tube disjoint from its closure. The other cycle lies in those
+tubes, so its integral is zero. Green-choice independence transfers
+this value to the originally chosen form. Thus
+\eqref{r16h:height-sum} is a finite sum.
+
+\emph{The exact principal transport.}
+Suppose $Z'-Z=\partial B$, with $Z,Z'$ disjoint from $W$. The good
+higher-Chow moving complex supplies such a one-chain $B$ over $F$,
+with both faces separately
+avoiding $W$ and finite proper intersection with $W$ along the
+normalized chain. For this calculation first clear denominators in
+\emph{both} $Z,Z',B$ and $W$. Local rational homogeneity has already
+been proved, so one divides by the product of the two chosen
+multipliers at the end. All point exponents in the norm computation
+that follows are therefore integers. For one integral chain component, normalize its
+projective closure in $X\times\mathbf P^1$. Remove the fiber of
+the parameter $f$ at $-1$, obtaining a normal $q$-fold $a:M\to X$.
+Its inverse image $S=a^{-1}|W|$ is finite, $f$ is a unit near $S$,
+and $a_*\operatorname{Div}_M(f)=\partial B$. The precise moving
+input is Gorchinskiy's Lemma 2.1: the subcomplex meeting the fixed
+components of $|W|$ and all simplex faces properly is
+quasi-isomorphic to the full higher-Chow complex. Since $Z'-Z$ is
+already in its degree-zero part and is a boundary in the full
+complex, injectivity on degree-zero homology produces the required
+chain over the original field $F$. The faces each have expected
+intersection dimension $-1$ with $W$, hence separately avoid it.
+Use $\Delta^1=\{t_0+t_1=1\}$, $f=t_0/t_1$, and
+$\partial B=B\cdot\{t_0=0\}-B\cdot\{t_1=0\}$; then the omitted
+fiber is $f=-1$ and the divisor has the displayed sign.
+The scalar Green function $-\log|f|$ is zero on the ordinary open
+$|f+1|<1$ surrounding the removed fiber, so its current and
+derivatives have compact support on $M$. Apply scalar
+Poincare--Lelong and compact-support disjoint-polar Stokes to this
+function and the actual pullback Green form for $W$ supplied by
+\eqref{r16h:P-eq}. If
+$I_a(W)=\sum_{x\in S}m_x[x]$, the result is
+\[
+ \lambda_v(\partial B,W)
+       =-\log|a(B,W)|_v,\qquad
+ |a(B,W)|_v=
+ \left|\prod_{x\in S}\operatorname{Norm}_{\kappa(x)/F}(f(x))^{m_x}\right|_v.
+ \tag{H16.12}\label{r16h:principal}
+\]
+Here $a(B,W)\in F^\times$ is the \emph{algebraic} higher-Chow
+transport element in the chosen biextension convention. With the
+standard simplex symbol written using $-f$, its point formula uses
+$\operatorname{Norm}(-f(x))$ instead. The two displayed point products
+differ only by a sign, and $|-1|_v=1$ at every place. Any omitted
+point evaluation at $f=-1$ likewise has absolute value one.
+Thus the asserted equality of logarithms does not require an
+incorrect identification of differently signed field elements.
+For a sum of chain components multiply their algebraic norm
+evaluations. This is exactly the degree-one higher-Chow product
+and pushforward into $\operatorname{CH}^1(F,1)=F^\times$;
+Gorchinskiy's Proposition 4.2 identifies its biextension with
+Bloch's. No proper-intersection assertion for the projected
+$K_1$-chain carrier is substituted for the good higher-Chow chain.
+The exact residue coefficients of Theorem~\ref{r16h:curved-slice}
+are what makes this the absolute value of the prescribed algebraic
+norm, rather than an unspecified local constant. At completion, finite field tensors,
+norms and refined Gysin coefficients base change with their full
+degrees, so the right side is one global element evaluated at $v$.
+The established complex Green construction has the same principal
+law at infinity.
+
+\emph{Chow descent.}
+For $Z,Z'$ representing the same class and avoiding $W$, the moving
+complex gives the good chain just used. Summing
+\eqref{r16h:principal} with the weights $n_v$ gives zero by the
+number-field product formula. Thus the global value is unchanged
+by rational equivalence in the first argument; symmetry gives the
+second argument. To compare two disjoint pairs $(Z_1,W_1)$ and
+$(Z_2,W_2)$, choose a representative $W_0$ avoiding
+$|Z_1|\cup|Z_2|$ and compare successively
+$(Z_1,W_1),(Z_1,W_0),(Z_2,W_0),(Z_2,W_2)$. This proves independence
+of simultaneous moving. Moving finitely many cycles into common
+disjoint position and using local additivity proves rational
+bilinearity. Symmetry was already established locally.
+
+\emph{Absolute base field.}
+The obstruction is functorial under finite constant extension, so
+these domains map into the corresponding domains after extension.
+Proposition~\ref{r16h:constant-extension} gives equality of each
+local value after such extension, with the classical equality at
+infinity. For $F'/F$, the identity
+\[
+ \sum_{w\mid v}\frac{[F'_w:\mathbf Q_v]}{[F':\mathbf Q]}
+                        =\frac{[F_v:\mathbf Q_v]}{[F:\mathbf Q]}
+\]
+then proves invariance of the global sum.
+
+\emph{Identification of the algebraic object.}
+Bloch's biextension has the representative frame transition
+$s_{Z',W}=a(B,W)s_{Z,W}$, with the dual convention corresponding
+to $-\log|f|$. Define $\|s_{Z,W}\|_v=\exp(-\lambda_v(Z,W))$.
+Equation \eqref{r16h:principal} is exactly the change-of-frame norm
+law; local bilinearity makes both biextension laws isometries.
+The algebraic reciprocity and closed-chain relations give coherence.
+Almost-all-place vanishing makes a global representative frame have
+norm one outside a finite set. Its adelic degree is
+\eqref{r16h:height-sum}; another global frame has the same degree
+by the product formula. Integral homological torsion is killed
+after multiplication and the rational version is obtained by
+bilinearity, not by claiming an ordinary line is a fractional
+tensor power. The moving and biextension inputs are precisely
+Gorchinskiy, \emph{Notes on the biextension of Chow groups}, Lemma
+2.1, Section 4.1 and Proposition 4.2, as in the frozen initial
+Lecture F.
+\end{proof}
+
+\paragraph{What this theorem does not assume or prove.}
+It does not assume $P_{\rm chain}$, tube vanishing or scalar-extension
+compatibility as extra conjectures on this domain: these were just
+proved for the concrete supported-complex choices. It does not show
+that $\mathcal H^r(X)$ is the complete homologically trivial Chow
+group in general. Nor does it establish familywise continuity of a
+biextension metric, nondegeneracy, positivity, a height conjecture,
+or, by itself, comparison with a particular admissible
+arithmetic-model metric. The separate independently reviewed
+reconstruction \texttt{r16mm:local}--\texttt{r16mm:global} now gives
+that comparison when regular numerically admissible model lifts
+are supplied. It does not supply those lifts for every class in
+$\mathcal H$. No historical threefold classical-height claim is
+used in this proof.
+
+\begin{corollary}[Domains supplied by the activated obstruction theorems]
+\label{r16h:domains}
+Relative to the internally reviewed Rounds 12, 15 and 16 inputs, the pairing above is
+unconditional on the following domains.
+\begin{enumerate}
+\item For every smooth projective $n$-fold with $n\geq2$, the new
+      one-cycle theorem \texttt{r16G:one-cycles} gives
+      $\mathcal H^{n-1}=\operatorname{CH}^{n-1}_{\mathbf Q,\rm hom}$.
+      Consequently the complete one-cycle factor pairs with
+      $\mathcal H^2$ in the complementary codimension. This does not
+      make $\mathcal H^2$ the complete group in arbitrary dimension.
+\item For every smooth projective threefold over a number field, it
+      is defined on the complete pair
+      $\operatorname{CH}^2_{\mathbf Q,\rm hom}\times
+       \operatorname{CH}^2_{\mathbf Q,\rm hom}$, by Round 15 G1.
+\item For a supplied projective-bundle tower over a smooth projective
+      geometrically integral base of dimension at most three, it is
+      defined on both complete complementary homologically trivial
+      Chow groups in every admissible pair of codimensions, by
+      Round 15 G3 and its actual obstruction primitives. The same is
+      now true for a smooth projective variety admitting, after a
+      finite number-field extension, an everywhere-defined projective
+      dominant morphism from such a tower, by
+      \texttt{r16G:towers}. This assertion does not replace that
+      morphism by an arbitrary rational map.
+\item On every geometrically uniruled fourfold, Round 15 G2 supplies
+      the complete codimension-two factor and Round 16's one-cycle
+      theorem supplies the complete codimension-three factor. Thus
+      the pairing is defined on
+      $\operatorname{CH}^2_{\mathbf Q,\rm hom}\times
+       \operatorname{CH}^3_{\mathbf Q,\rm hom}$ in full. The two
+      endpoint codimensions are also complete by the frozen divisor
+      and degree-zero zero-cycle theorems, so all admissible
+      complementary pairs on this fourfold are covered.
+\item For every geometrically unirational variety of dimension at
+      most five, both complete complementary homologically trivial
+      Chow groups are covered, by the independently reviewed
+      theorem \texttt{r16cov:unirational}. In particular every
+      geometrically unirational fivefold has the full middle
+      self-pairing
+      $\operatorname{CH}^3_{\mathbf Q,\rm hom}\times
+       \operatorname{CH}^3_{\mathbf Q,\rm hom}\to\mathbf R$.
+      More generally, the same full conclusion holds for targets
+      of the rational domination of dimension-at-most-five sources
+      satisfying the original-field full-kernel hypothesis of
+      \texttt{r16cov:rational-low-dimension}. In higher dimensions,
+      one applies \texttt{r16cov:rational-outer} separately to
+      both complementary codimensions; a theorem for one factor
+      alone does not supply the other factor.
+\item In every dimension, geometrically algebraically trivial classes
+      lie in $\mathcal H^r$ in all codimensions, by that same Round 12
+      theorem. Either factor can also be enlarged by any independently
+      proved local obstruction-zero sector in its own codimension.
+\item The complete complementary groups are covered for every
+      variety admitting, after a finite number-field extension, the
+      supplied Chow-motive factorization through Tate twists of
+      abelian varieties in \texttt{r16ab:motivic}. In particular this
+      includes all abelian varieties and arbitrary finite products
+      of smooth projective geometrically integral curves, in every
+      dimension and codimension. The factorization is an identity
+      of rational Chow correspondences, not merely a decomposition
+      in geometric cohomology. Its local original-field conditions
+      are checked in \texttt{r16ab:local-G}.
+\end{enumerate}
+These are statements about the above canonical real analytic
+biextension pairing; no bibliographic priority claim is made.
+\end{corollary}
+
+The new one-cycle and dominant-tower inputs, including their exact
+native-field conditions, are in
+\path{round16/model_obstruction/one_cycles_and_dominant_activation.tex}.
+The newly added rational-domination consequences are in
+\path{round16/root/proper_covariance_and_rational_domination.tex};
+their independent review is
+\path{round16/audits/proper_covariance_rational_domination_model_review.md}.
+The abelian and Chow-motivic inputs are in
+\path{round16/model_obstruction/local_abelian_and_chow_motivic_activation.tex},
+independently reviewed by the trace and global-height branches.
+
+\begin{corollary}[Functoriality of the proved global height domains]
+\label{r16h:domain-functoriality}
+The groups $\mathcal H^r$ are stable under algebraic pullback,
+proper pushforward between smooth projective varieties, and
+algebraic correspondences, with the usual codimension shifts.
+Every finite sum of correspondence images of known complete
+homological obstruction-zero sectors is therefore a proved
+height-domain class in its target codimension.
+\end{corollary}
+
+\begin{proof}
+Algebraic pullback preserves geometric homological triviality and
+commutes with every local obstruction map. At each finite place,
+\texttt{r16cov:proper-push} and
+\texttt{r16cov:correspondences} give the corresponding stability
+of the local obstruction kernel. Algebraic proper push,
+intersection and finite field base change commute, so these are
+the completions of the original number-field operations.
+Taking the intersection over the finite places proves the claim.
+The statement concerns membership of both arguments in the
+height domain; it does not claim a complete homological group
+unless such a source decomposition has been supplied.
+\end{proof}
+
+\paragraph{Primary and internal sources.}
+The primary algebraic sources checked for the new residue step are
+\url{https://stacks.math.columbia.edu/tag/0FB3},
+\url{https://stacks.math.columbia.edu/tag/0FBP},
+\url{https://stacks.math.columbia.edu/tag/0FBR}, and
+\url{https://stacks.math.columbia.edu/tag/0FC0}.
+The all-degree Cartier localized polynomial remains the exact frozen
+PC4 input, Fulton, \emph{Intersection Theory}, Corollary 18.1.2;
+a leading-term localized statement alone would not suffice.
+Analytic inputs are Mihatsch's actual pullback, strong scalar and
+complete-intersection Poincare--Lelong, support avoidance and current
+injectivity, as itemized in the cited R10/R11 proofs. Internal inputs
+are final R11 minimal trace and supported complexes, the R16 full
+trace, the frozen initial disjoint-polar Stokes/moving construction,
+and the specific R12/R15 obstruction-vanishing theorems used above.
+The moving and biextension source was independently re-opened as
+Gorchinskiy, arXiv:0802.1437v2 (7 March 2009),
+\url{https://arxiv.org/pdf/0802.1437}, especially Lemmas 2.1, 2.2
+and Proposition 4.2. The complex Green existence and logarithmic
+regularity input is Gillet--Soul\'e, \emph{Arithmetic intersection
+theory}, Sections 1.2--1.3,
+\url{https://www.numdam.org/article/PMIHES_1990__72__93_0.pdf},
+with its scalar normalization rescaled to $-\log|f|$ as in the
+frozen initial Lecture F.

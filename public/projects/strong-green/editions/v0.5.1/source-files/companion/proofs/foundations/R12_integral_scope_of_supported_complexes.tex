@@ -1,0 +1,107 @@
+% Round 12. Explicit scope clarification; no historical source is edited.
+\section{The supported-complex construction over a nongeometrically integral base}
+\label{r12i:section}
+
+\begin{lemma}[Native integral scope of the supported-complex construction]
+\label{r12i:integral-PC}
+Keep the original finite extension $K/\mathbf Q_p$ and its absolute
+value.  The Round 11 supported-complex theorem, the exact-support
+Green-pair construction for every prescribed rational cycle, and
+the generic-Chow-zero global primitive construction apply to every
+smooth integral projective $K$-variety $X$.  Geometric integrality
+over $K$ is not required.  Every actual form, test and finite-trace
+operation in these statements is in the original $K$-analytic theory.
+\end{lemma}
+
+\begin{proof}
+The supported-complex section and its main theorem already assume
+only that $X$ is smooth and integral.  We check the one potentially
+sensitive ingredient and then the passage to an arbitrary prescribed
+cycle, whose Round 11 corollary was stated with the stronger hypothesis.
+
+Let $F\to Y$ be the smooth projective flag fibration appearing after
+the kernel-Grassmann modification and its characteristic-zero generic
+resolution.  Both $F$ and $Y$ are smooth integral $K$-varieties.
+Put $d=\dim F-\dim Y$.  If $d=0$, the map is already finite etale
+and its integral source can be used.  If $d>0$, the uniform fiber
+dimension argument in Round 11 gives a nonempty open of tuples of
+high-degree very ample sections whose common zero locus has finite
+nonempty fibers over every point of $Y$.  Its dimension estimate is
+made on every geometric fiber and does not require the total space
+or the base to be geometrically integral.
+
+Intersect this parameter open with the smooth complete-intersection
+Bertini open.  The latter requires smoothness of the source and a
+linear system giving an immersion, not geometric irreducibility;
+these are exactly the hypotheses of Stacks Lemma 33.47.3,
+Tag~\texttt{0FD6}.  Successive restrictions of the very ample linear
+system still give immersions.  Equivalently, after algebraic base
+change the smoothness conditions are imposed simultaneously on the
+finitely many geometric components; the resulting nonempty open is
+defined over $K$.  Since $K$ is infinite it has a $K$-rational tuple.
+No analytic scalar extension is involved in this algebraic check.
+
+The resulting complete intersection $T_0^{\rm all}$ is smooth,
+projective, and of pure dimension $\dim Y$.  Its map to $Y$ is
+proper with finite nonempty fibers, hence finite surjective.
+Miracle flatness applies, since its source is Cohen--Macaulay and
+$Y$ is regular; see Stacks Tag~\texttt{00R4}.
+Every connected component of a regular scheme is integral, because
+its irreducible components are disjoint.  Choose any nonempty
+connected component $T_0$.  It is open and closed in
+$T_0^{\rm all}$, so its finite map is still flat.  Its image is both
+open and closed in integral $Y$, and therefore all of $Y$.
+Consequently $T_0\to Y$ is smooth-source, integral, finite flat and
+surjective, with its own native positive degree.
+
+Choosing this component does not spoil the supported $K_0$ identity:
+the identity is pulled back to the chosen component, rather than
+being an equality that would require summing the classes of all
+components of a fixed intersection cycle.  Subsequent target-flag
+graph closures and generic resolutions are birational on this
+integral source and preserve its full prescribed finite open.
+The leading supported-character identity then uses
+$f_*[T]=d[X]$ with this actual function-field degree $d$.
+Normality needed by the minimal trace follows from smoothness of
+the generic source and target.  None of these statements requires
+geometric integrality.
+
+For a prescribed cycle $Z=\sum_j a_j[Z_j]$ on this $X$, resolve each
+$\mathcal O_{Z_j}$ by finitely many generic vector bundles.  Such
+resolutions use regularity and the projective resolution property,
+which hold for smooth integral $X$ over $K$.  Extend the bundles by
+the same finite Grassmann-graph construction to a projective flat
+model, and extend the differentials after uniformizer rescaling.
+Each model complex has generic support exactly $Z_j$.  The preceding
+supported-complex theorem applies component by component.  Summing
+with the nonzero coefficients gives a Green pair on exactly
+$X^{\rm an}\setminus|Z|^{\rm an}$, with the original cycle and all
+actual tests retained.  This proves the stated extension of the
+exact-support corollary.
+
+The global primitive proof uses the same construction with generic
+open $U=X$.  Generic $K_0$ relations, Grassmann subbundle graphs,
+and rational Adams projectors require smooth integral projectivity,
+not geometric integrality.  Their primitives consequently retain
+the original global scalar-curvature line sums and finite-flat maps
+over $K$, exactly as in Round 11.
+\end{proof}
+
+\begin{remark}[Finite constant extensions are treated as native schemes]
+Let $K'/K$ be finite and let $Y/K'$ be smooth integral projective.
+The composite $Y\to\operatorname{Spec}K$ is smooth because
+$K'/K$ is separable, and it is still integral and projective.
+A projective flat $R'$-model of $Y$ is projective and flat over $R$.
+Lemma~\ref{r12i:integral-PC} can therefore be run directly on this
+$R$-model, producing $K$-actual forms and testing against arbitrary
+$K$-actual tests.  This is not an inference from a formula tested
+only over $K'$.
+
+The special fiber over $R$ keeps its ramification thickening, and
+the degree of a finite generic map is its full degree as a
+$K$-morphism.  Thus no comparison of native skeleton measures over
+different ground fields is required for this scope clarification.
+The same native treatment was already stated in the proof of
+Round 11's finite good-cover corollary; the present lemma makes its
+extension to the exact-support corollary explicit.
+\end{remark}

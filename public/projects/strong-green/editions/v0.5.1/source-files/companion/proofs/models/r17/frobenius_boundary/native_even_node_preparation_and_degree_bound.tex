@@ -1,0 +1,331 @@
+% Round 17. NF217. New separate native refinement of CD217.
+% Does not change the already reviewed CD217 theorem or its published input.
+\section{Native preparation of degenerate quadratic points and a field-degree bound}
+\label{r17nf:section}
+
+\paragraph{Purpose and inputs.}
+CD217 proved the even-dimensional residue-two case using the
+published Jannsen--Saito henselian normal form, which permits a
+finite etale extension of the valuation ring. Here we give a
+native construction over the completed valuation ring of the
+original node residue field. The only preparation theorem used
+is the formal one-variable Weierstrass theorem over a complete
+DVR. A faithful-flatness argument then proves that its unit is
+an actual regular function. No formal coordinate change is
+assumed to algebraize.
+
+The published preparation input is, for example, the classical
+specialization of Laurent Berger, \emph{The Weierstrass preparation
+theorem and resultants of p-adic power series}, Section 1 and
+Theorem B, \url{https://arxiv.org/pdf/1910.05319} (published in
+\emph{Muenster Journal of Mathematics} 14 (2021), 155--163).
+The complete-DVR statement has been checked in that primary
+source. The algebraic isometry slice is the independently
+proved C217 lemma \texttt{r17c2:isometry-slice}.
+No novelty claim is made for a Morse or Weierstrass normal-form
+principle.
+
+\begin{lemma}[The prepared unit is regular on an etale curve]
+\label{r17nf:regular-unit}
+Let $R$ be a complete DVR, and let $(C,p)$ be a pointed
+smooth $R$-curve equipped with a morphism
+$z:C\to\mathbf A^1_R$ which is etale at $p$, sends $p$
+to the closed origin, and induces the same residue field
+there. Put $A=\mathcal O_{C,p}$. If $g\in A$ has
+reduction of order exactly $s\ge1$ in the local parameter
+$z$ on the special fiber, then there are a monic polynomial
+\[
+        T(z)=z^s+b_{s-1}z^{s-1}+\cdots+b_0\in R[z],
+                       \qquad b_i\in\mathfrak m_R,
+\]
+and a unit $u\in A^\times$ such that $g=uT(z)$ in $A$.
+\end{lemma}
+
+\begin{proof}
+The given pointed etale coordinates identify the completed
+noetherian local ring with
+\[
+                             \widehat A\simeq R[[z]].
+\]
+Here completeness of $R$ is essential. The formal
+Weierstrass theorem gives $\widehat u\in R[[z]]^\times$
+and the displayed distinguished polynomial $T\in R[z]$
+with $g=\widehat uT$ in $\widehat A$.
+The polynomial already belongs to $A$. Completion is
+faithfully flat, so contraction of its principal ideal gives
+\[
+                         (T)\widehat A\cap A=(T)A.
+ \tag{NF217.1}\label{r17nf:ideal-contraction}
+\]
+Consequently $g=uT$ for an actual $u\in A$.
+The ring $\widehat A=R[[z]]$ is a domain and $T\ne0$,
+so this $u$ maps to $\widehat u$. Its residue is nonzero,
+hence $u$ is a unit of the local ring $A$. After shrinking
+around $p$ it is a regular invertible function on $C$.
+No descent of an arbitrary formal series or formal
+isomorphism is being asserted: only divisibility by the
+finite polynomial $T$, already in $A$, is descended.
+\end{proof}
+
+\begin{proposition}[Native quadratic preparation in even relative dimension at two]
+\label{r17nf:normal-form}
+Let $R=K^\circ$ for a finite $K/\mathbf Q_2$, and let
+$\mathcal X/R$ be flat of finite type with smooth generic
+fiber. Let $p$ be an ordinary quadratic special-fiber point
+of even relative dimension $n\ge2$. Write $k_p=\kappa(p)$
+and let $R_p/R$ be the unramified extension with residue
+field $k_p$.
+
+There is a common residue-isomorphic pointed etale
+neighborhood of $\mathcal X$ at $p$ and of
+\[
+ \operatorname{Spec}R_p[y_1,\ldots,y_n,z]
+                   /(P(y)+z^2+bz+c),
+ \tag{NF217.2}\label{r17nf:equation}
+\]
+where $P$ is a quadratic form over $R_p$ with unimodular
+polar matrix, $b,c\in\mathfrak m_{R_p}$, and
+\[
+                          0\ne b^2-4c\in\mathfrak m_{R_p}.
+ \tag{NF217.3}\label{r17nf:discriminant}
+\]
+No further extension of the node residue field is needed
+for this normal form. All coordinates and units in the
+construction are regular on actual etale neighborhoods.
+\end{proposition}
+
+\begin{proof}
+Work over $R_p$ at the diagonal point, which is rational
+on the special fiber; write $R$ for this ring in the
+local calculation. This local unramified chart is not
+a replacement of the global model field.
+The smooth-ambient lemma of ON17, whose Tor and
+Jacobian proof does not use $2^{-1}$, writes
+$\mathcal X=V(f)$ in a smooth ambient $W/R$ of relative
+dimension $n+1$ near the selected point.
+
+\emph{Choice of the transverse variables.}
+The special quadratic form has a polar radical of
+dimension one. Indeed its alternating polar matrix
+has odd size, and a larger radical would contain a
+nonzero zero of the restricted square over the algebraic
+closure, contradicting smoothness of the projectivized
+tangent quadric. Its value on the radical is nonzero
+by the same smoothness argument.
+Choose a native complement on which the polar form is
+nondegenerate, and lift its basis together with a radical
+basis vector to relative etale coordinates
+\[
+                              (x_1,\ldots,x_n,z)
+\]
+on $W$, all zero at the special point. The special
+quadratic term then has the form
+$\overline P(x)+\alpha z^2$ with
+$\alpha\ne0$ and invertible polar matrix on the $x$
+variables. This is a decomposition over the native
+residue field, not a splitting into hyperbolic planes.
+
+\emph{The critical curve and the exact transverse square.}
+Express
+$df=\sum_i F_i\,dx_i+F_z\,dz$.
+The scheme $C=V(F_1,\ldots,F_n)$ is smooth of relative
+dimension one and $z:C\to\mathbf A^1_R$ is etale near
+the selected point, because the $x$-Jacobian is the
+invertible transverse polar block. Shrink to that
+neighborhood. Henselian lifting of its closed point
+in the fiber $z=0$ gives a native section
+$a:\operatorname{Spec}R\to C$ with $z(a)=0$.
+
+Form the actual etale base change
+\[
+                         W_1=W\times_{\mathbf A^1_R}C.
+\]
+It has the diagonal section $\sigma:C\to W_1$ over $C$.
+Let $u_i=x_i-x_i|_C$ be its relative coordinates, and
+put $g=f|_C$. On a pointed neighborhood the section
+ideal is $(u_1,\ldots,u_n)$. The relative differential
+of $f$ over $C$ vanishes on this section by definition
+of $C$. The conormal sequence therefore gives the exact
+ideal membership
+\[
+                    f-g\in(u_1,\ldots,u_n)^2.
+\]
+Choose regular coefficients and write
+\[
+               f-g=\sum_{i\le j}A_{ij}u_iu_j=q_w(u).
+ \tag{NF217.4}\label{r17nf:transverse-form}
+\]
+Along the native $R$-section $\sigma a$ its coefficient
+form is a quadratic form $q_0$ over $R$ with unimodular
+polar matrix. The latter assertion follows from the
+transverse Hessian modulo the maximal ideal.
+
+Now apply the original C217 isometry-slice lemma with
+base DVR $R$, smooth $R$-scheme $W_1$, and $R$-section
+$\sigma a$. There is no need to invoke an unstated
+version over an arbitrary base $C$. It gives a pointed
+etale $W_2\to W_1$ and a regular matrix $M$, equal to
+the identity along the lifted $R$-section, such that
+$q_0(Mv)=q_w(v)$. Set $y=Mu$. Thus, exactly on this
+actual neighborhood,
+\[
+                                f=q_0(y)+g.
+ \tag{NF217.5}\label{r17nf:split-function}
+\]
+The morphism $(y,C):W_2\to\mathbf A^n_C$ is etale
+at the selected point: relatively over $C$, one has
+$dy=du$ there because $u=0$ and $M=1$.
+The morphism $W_1\to C$ was smooth of relative dimension
+$n$, so this is the ordinary relative Jacobian criterion.
+We retain the actual function $g$ on $C$ and do not
+replace its coordinate by a formal one.
+
+\emph{One-variable preparation and absorption of its unit.}
+Modulo the uniformizer, the equations $F_i=0$ have
+linear part $\overline B_P x=0$. Thus in the completed
+special critical curve each $x_i$ has order at least
+two in $z$. Substituting into the special quadratic
+term shows
+\[
+                            \overline g=\alpha z^2+O(z^3),
+                                \qquad\alpha\ne0.
+\]
+Apply Lemma~\ref{r17nf:regular-unit} to the actual local
+ring $\mathcal O_{C,p}$. It gives
+\[
+                  g=u(z)\bigl(z^2+bz+c\bigr),
+       \qquad b,c\in\mathfrak m_R,\quad
+                  u\in\mathcal O_{C,p}^{\times}.
+ \tag{NF217.6}\label{r17nf:prepared}
+\]
+The notation $u(z)$ means a regular function on the
+etale curve $C$, not necessarily a polynomial or a
+function on the whole affine line. Shrink so that it
+and its inverse are regular. Its value $u(a)$ is a
+native unit of $R$.
+
+Multiplying the hypersurface equation by this regular
+unit's inverse yields
+\[
+                  u^{-1}f=u^{-1}q_0(y)+z^2+bz+c.
+\]
+The variable-coefficient quadratic form $u^{-1}q_0$
+restricts along the retained native $R$-section to
+$P=u(a)^{-1}q_0$, whose polar matrix is unimodular.
+A second application of the same C217 slice, again
+over $R$ and with that $R$-section, gives a pointed
+etale neighborhood and a regular matrix $N$ with
+$P(Nv)=u^{-1}q_0(v)$. Put $w=Ny$. Its relative
+Jacobian over $C$ is invertible at the selected point.
+Composing with the etale coordinate $z:C\to\mathbf A^1_R$
+shows that $(w,z)$ is an actual etale map to
+$\mathbf A^{n+1}_R$, and
+\[
+                          u^{-1}f=P(w)+z^2+bz+c
+ \tag{NF217.7}\label{r17nf:exact-identity}
+\]
+as an identity of regular functions. Restricting this
+map to $f=0$ gives a common pointed etale neighborhood
+with \eqref{r17nf:equation}, without changing the
+selected residue field.
+
+\emph{The nonzero discriminant.}
+Certainly $b^2-4c$ lies in the maximal ideal. Suppose
+it were zero. If $b=c=0$, put $z_*=0$; otherwise
+$b^2=4c$ with $c\in\mathfrak m_R$ gives
+\[
+                         v(b)=v(2)+\tfrac12v(c)>v(2).
+\]
+Hence $z_*=-b/2$ lies in $\mathfrak m_R$ in either
+case. The target section $(w,z)=(0,z_*)$ has the same
+closed point as the chosen pointed etale map. Since
+$R$ is henselian, that map lifts the section to the
+chosen neighborhood. The section lies on the
+hypersurface and its generic point is singular:
+all derivatives in $w$ vanish at zero and
+$2z_*+b=0$. Etale morphisms preserve the smoothness
+criterion, so this contradicts the assumed smooth
+generic fiber of $\mathcal X$. Thus the discriminant
+is nonzero, proving \eqref{r17nf:discriminant}.
+\end{proof}
+
+\begin{corollary}[An explicit simultaneous auxiliary-degree bound]
+\label{r17nf:degree}
+Let $\mathcal X/K^\circ$ be an integral flat projective
+model as in the even-dimensional ordinary quadratic
+case of CD217, with finitely many native closed nodes
+$p_1,\ldots,p_t$. Put
+\[
+ d_i=[\kappa(p_i):k],\qquad
+ f=\operatorname{lcm}(d_1,\ldots,d_t),\qquad
+ s=\sum_{i=1}^t d_i.
+\]
+If there are no nodes take $f=1,s=0$ and $L=K$.
+Otherwise there is a finite extension $L/K$ on which
+the native semistable chains of CD217 exist and such
+that
+\[
+                               [L:K]\le f\,2^s.
+ \tag{NF217.8}\label{r17nf:bound}
+\]
+It can be taken Galois over $K$. Its full actual degree,
+not the displayed upper bound, is the one used in every
+original-field trace or obstruction descent.
+\end{corollary}
+
+\begin{proof}
+For each native node, Proposition~\ref{r17nf:normal-form}
+gives its quadratic polynomial over the unramified
+extension $K_i/K$ of degree exactly $d_i$, with no
+additional residue extension. Let $K_0/K$ be the
+unramified extension of degree $f$. It contains each
+$K_i$, and over its residue field each original point
+has exactly $d_i$ rational conjugate points.
+
+For each of the $d_i$ embeddings $K_i\to K_0$, include
+the conjugate quadratic polynomial. There are at most
+$s$ such polynomials in total. Each has nonzero
+discriminant and has splitting field of degree at most
+two over $K_0$. Their compositum $L$ consequently has
+\[
+                    [L:K_0]\le2^s,
+                  \qquad [L:K]=f[L:K_0]\le f2^s.
+\]
+The chosen full set of conjugate polynomials is stable
+under the cyclic group $\operatorname{Gal}(K_0/K)$.
+Their compositum of splitting fields is therefore
+normal, and it is separable in characteristic zero;
+thus $L/K$ can be taken Galois without a further
+unbounded normal closure.
+
+Every quadratic root is integral with zero special
+reduction. Translating by one root changes the linear
+coefficient to $\beta$ with $\beta^2=b^2-4c\ne0$.
+Its positive integral valuation over $L$ is the number
+$q$ used in the CD217 chain construction. All special
+points are now rational, so its native blowups give
+one finite chain at each of them. The model remains
+integral by flatness and geometric integrality of the
+generic fiber. CD217 proves regularity, reduced strict
+semistability and the all-characteristic quadric
+boundary property of the resolved model.
+
+The actual G conclusion and its exact specified
+support are already those of CD217. This corollary
+supplies a bounded choice of witness field; it does
+not replace its normalization by a bound or by a
+selected quadratic branch. The trace uses the exact
+composite degree $[L:K]$ and all native residue factors.
+\end{proof}
+
+\paragraph{Limitations.}
+The normal-form statement requires a complete native DVR;
+its proof uses actual coefficients of a Weierstrass
+polynomial in that ring. It does not assert the same
+finite polynomial over an arbitrary noncomplete base.
+The degree bound depends on the number and residue
+degrees of the nodes, as it must for simultaneous
+splitting of several quadratic characters. Neither
+statement supplies ordinary quadratic reduction for
+an arbitrary variety. The general strong conjecture
+outside the proved reduction sectors remains open.

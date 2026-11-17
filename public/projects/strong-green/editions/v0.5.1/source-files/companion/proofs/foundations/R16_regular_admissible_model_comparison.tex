@@ -1,0 +1,502 @@
+% Round 16. Reconstructed framed scalar comparison, independently reviewed.
+% This is a comparison on supplied regular numerically admissible model data.
+\section{Comparison with a supplied regular numerically admissible model}
+\label{r16mm:section}
+
+The complete mathematical source passed independent trace-branch
+review at SHA256
+\texttt{0dc8be905b0bf30b1dbf15eaaa75acdec5e9950045dbe3d41fe28b108de0df38},
+recorded in
+\path{higher_trace/regular_admissible_model_comparison_independent_audit.md}.
+The current text adds the review's optional explicit cap/Adams
+justification and this status notice to that core proof. The final
+abelian identification corollary was independently checked by the
+model branch at SHA256
+\texttt{89c45cb47dc6c74b73f5b0361d8ba52bcae638ff36f3e488c2cc010351df8a12}.
+It identifies an already published classical height; it is not
+a new existence claim for the classical abelian pairing.
+
+The historical Round 7 model-comparison manuscripts retained an
+unresolved full finite-trace interface. The present argument rebuilds
+the fixed-supported-complex scalar comparison using the independently
+proved R11 construction and H16.1. It then checks the algebraic
+comparison with the finite Gillet--Soul\'e term directly. Historical
+proof statuses are not changed. No existence of an admissible model
+lift for a general class is inferred.
+
+Let $K/\mathbf Q_p$ have valuation ring $R$, residue field $k$,
+uniformizer $\varpi$, and prescribed scalar
+$c_R=-\log|\varpi|>0$. All analytic integrations use the native
+$K$-weights. Every degree of a zero-cycle below is taken on a
+proper vertically supported scheme over $k$, with nilpotent
+thickenings identified with their reductions for Chow groups.
+
+\begin{lemma}[Native vertical Cartier evaluation]
+\label{r16mm:vertical}
+Let $\mathcal V/R$ be integral, normal, flat and projective,
+of relative dimension $t$, with normal generic fiber $V$.
+Write $[\mathcal V_k]=\sum_i b_i[Y_i]$. Let $E$ be a vertical
+Cartier divisor and write its Weil cycle as $\sum_i a_i[Y_i]$.
+For a degree-$t$ polynomial $P$ in first Chern classes of model
+line bundles, let $P^{\rm an}$ be its actual model form and
+$g_E=-\log\|1\|_{\mathcal O(E)}$. Then
+\[
+ \int_{V^{\rm an}}g_E\,P^{\rm an}
+     =c_R\sum_i a_i\deg_k(P|_{Y_i}\cap[Y_i])
+     =c_R\deg_k(P|_E\cap[E]).
+ \tag{MM16.1}\label{r16mm:vertical-eq}
+\]
+For a signed divisor the final expression is interpreted by
+linearity on its positive and negative supports.
+\end{lemma}
+
+\begin{proof}
+The actual-product/Bedford--Taylor comparison in the frozen
+R10 model-Chern theorem identifies the top actual measure with
+the native model measure. Chambert-Loir--Ducros, the manuscript
+dated 25 July 2025, Theorem~18.5.5 and Proposition~18.5.8, give
+\[
+ [P^{\rm an}]=\sum_i b_i\deg_k(P|_{Y_i}\cap[Y_i])\,\delta_{\xi_i},
+\]
+where $\xi_i$ is the unique divisorial analytic point over the
+generic point of $Y_i$. Normality and excellence allow the
+relatively normal formal completion used in those statements.
+The generic multiplicity and defect are one, and their valuation
+index is exactly $b_i$, not one. The same frozen comparison works
+for the line bundles pulled to this normal model: locally
+$[uT]=u[T]$ and $[Du\wedge T]=D(u[T])$ for the continuous model
+weight $u$ and a closed model product $T$. This is the precise
+Bedford--Taylor recursion, so the actual and classical model
+measures coincide without changing the field.
+
+At $\xi_i$, the prescribed valuation is $c_R/b_i$ times the
+integer divisor valuation. Thus $g_E(\xi_i)=c_Ra_i/b_i$.
+Multiplication by the preceding finite signed measure cancels
+$b_i$ and proves \eqref{r16mm:vertical-eq}. Continuous scalar
+multiplication is permitted for that Radon measure; the scalar
+here is a global actual PL function. All residue-field degrees
+remain inside $\deg_k$.
+\end{proof}
+
+\begin{lemma}[The supported line-complex character over the trait]
+\label{r16mm:cartier}
+Let $\mathcal V$ be integral projective over $R$, of total
+dimension $a$, and let $s:L\to M$ be a nonzero line-bundle
+map with Cartier zero scheme $E$. With $M$ in homological
+degree zero, for every $r\geq1$ one has
+\[
+ \operatorname{ch}_r^E([L\xrightarrow{s}M])\cap[\mathcal V]
+  =\frac1{r!}\sum_{j=0}^{r-1}
+        c_1(M|_E)^{r-1-j}c_1(L|_E)^j\cap[E].
+ \tag{MM16.2}\label{r16mm:cartier-eq}
+\]
+This is a supported Chow identity over the excellent DVR itself,
+including entirely vertical and nonreduced Cartier schemes.
+\end{lemma}
+
+\begin{proof}
+Put $N=M\otimes L^{-1}=\mathcal O(E)$. Blow up
+$\mathbf P^1_{\mathcal V}$ along $E\times\{\infty\}$.
+Its infinity fiber consists of the strict transform
+$\mathcal V'$ and $P=\mathbf P_E(N^\vee|_E\oplus\mathcal O_E)$.
+The strict transform $J$ of $\mathbf P^1_E$ is Cartier, disjoint
+from $\mathcal V'$, and meets $P$ in the zero section of the
+normal line $N|_E$. Locally the relevant chart is
+$A[t,y]/(ty-f)$ with $J=(y)$, where $f$ is a nonzerodivisor;
+these assertions therefore also hold when the ambient model
+or $E$ is singular.
+
+The perfect complex $q^*M\otimes[\mathcal O(-J)\to\mathcal O]$
+pulls back the original complex away from infinity and is zero
+on $\mathcal V'$. The general-base deformation lemma Stacks
+0FE8 (42.51.2), with the geometry of 0FBG, computes its localized
+character by the exceptional contribution. On $P$, put
+$m=c_1(M|_E)$, $l=c_1(L|_E)$, $\nu=m-l$, and let $h$ be
+the zero-section divisor class. Its normal bundle is $N|_E$,
+so $h^2=\nu h$, $\pi_*(h\cap[P])=[E]$, and $\pi_*[P]=0$.
+Therefore the exceptional push is the formal polynomial series
+\[
+       \pi_*\bigl(e^m(1-e^{-h})\cap[P]\bigr)
+                   =\frac{e^m-e^l}{m-l}\cap[E].
+\]
+Its degree $r-1$ term is \eqref{r16mm:cartier-eq}. The quotient
+denotes its polynomial series, never inversion of a Chow class.
+The push is to $E$, so the support has not been forgotten.
+This reconstructs the general-base Cartier step of the R7
+manuscript without importing a field-only Riemann--Roch theorem.
+\end{proof}
+
+\begin{theorem}[Framed scalar comparison for the concrete R11 Green pair]
+\label{r16mm:framed}
+Let $\mathcal X/R$ be integral flat projective with smooth
+geometrically integral generic fiber $X$. Let $C$ be a bounded
+model vector-bundle complex exact off a model closed support
+$\mathcal Z$. Fix $1\leq r\leq\dim X$, and assume its generic
+support $Z$ is pure of codimension $r$ or is empty. Let $G_C$
+be its degree-$(r-1,r-1)$ actual form from the
+concrete R11 line-complex construction. For an integral
+$(r-1)$-dimensional subvariety $W\subset X\setminus Z$, let
+$\mathcal W$ be its schematic closure and
+$B=\mathcal Z\cap\mathcal W$. Then
+\[
+ \int_{W^{\rm an}}G_C
+       =c_R\deg_k\left(
+          \operatorname{ch}_r^B(C|^{\mathbf L}_{\mathcal W})
+                                  \cap[\mathcal W]\right).
+ \tag{MM16.3}\label{r16mm:framed-eq}
+\]
+For empty $Z$, use the frozen generic-acyclic version of that
+construction, so $G_C$ is global actual. The comparison is for
+the fixed supported perfect complex, with
+its differential and vertical support retained. It includes a
+testing cycle contained in the branch locus of the chosen finite
+presentation and arbitrary vertical excess on the model.
+\end{theorem}
+
+\begin{proof}
+Use the R11 supported line-complex presentation on a proper
+model map $f:\mathcal T\to\mathcal X$, whose generic fiber
+has degree $d$ and is finite flat over $X\setminus Z$.
+It gives, in the supported perfect group,
+$[f^*C]=\sum_\alpha\epsilon_\alpha[L_\alpha\to M_\alpha]$
+and, over that complement,
+\[
+ G_C=d^{-1}\operatorname{Tr}_f G_T,
+ \qquad
+ G_T=\sum_\alpha\epsilon_\alpha g_\alpha
+                   B_{r-1}(l_\alpha,m_\alpha),
+ \quad
+ B_{r-1}(l,m)=\frac1{r!}\sum_{j=0}^{r-1}m^{r-1-j}l^j.
+ \tag{MM16.4}\label{r16mm:presentation}
+\]
+Retain the full finite fiber over the normalization of $W$ and
+its generic Artinian lengths $e_\lambda$. Let $V_\lambda$ be
+the resulting normal generic components, and let
+$\mathcal V_\lambda$ be their normal projective closures on
+the presentation model, using a graph closure if needed. They
+are flat over $R$ and proper over $\mathcal W$. Their weighted
+fundamental cycles satisfy
+\[
+ \sum_\lambda e_\lambda
+                   (h_\lambda)_*[\mathcal V_\lambda]
+                                      =d[\mathcal W].
+ \tag{MM16.5}\label{r16mm:closure-degree}
+\]
+This is an equality of model cycles because the closures are
+integral and dominate $\mathcal W$ with those generic degrees.
+No vertical component of a possibly nonflat full model fiber
+product has been inserted or silently deleted.
+
+H16.1 gives the actual finite-flat base-change formula on the
+normalization of $W$, including all $e_\lambda$. Integrating
+its actual top form and using finite adjunction gives
+\[
+ \int_WG_C=d^{-1}\sum_{\lambda,\alpha}
+ e_\lambda\epsilon_\alpha
+       \int_{V_\lambda}g_{\alpha\lambda}
+                          B_{r-1}(l_{\alpha\lambda},m_{\alpha\lambda}).
+ \tag{MM16.6}\label{r16mm:trace-scalar}
+\]
+Top actual integration is unchanged under normalization.
+Compactness is automatic for these proper generic cycles;
+equivalently multiply by an ordinary smooth compact scalar
+equal to one near $W$ inside $X\setminus Z$ before applying
+the finite adjunction. No individual geometric sheet is used.
+
+Each pulled line map is an isomorphism on $V_\lambda$, so its
+Cartier divisor $E_{\alpha\lambda}$ on $\mathcal V_\lambda$
+is entirely vertical. Lemma~\ref{r16mm:vertical} computes each
+integral in \eqref{r16mm:trace-scalar} as $c_R$ times the
+supported degree of $B_{r-1}\cap[E_{\alpha\lambda}]$.
+Lemma~\ref{r16mm:cartier} identifies it with the localized
+degree-$r$ character of that line complex. Additivity and
+arbitrary derived base change of localized characters identify
+the sum over $\alpha$ with
+\[
+ \operatorname{ch}_r^{h_\lambda^{-1}B}
+       (h_\lambda^*(C|^{\mathbf L}_{\mathcal W}))
+                                         \cap[\mathcal V_\lambda].
+\]
+The supported line-complex identity pulls back because its
+termwise vector-bundle sequences are locally split. A common
+nilpotent support thickening can be retained throughout.
+Proper bivariant projection and \eqref{r16mm:closure-degree}
+then make the weighted pushed sum exactly
+$d\operatorname{ch}_r^B(C|^{\mathbf L}_{\mathcal W})\cap[\mathcal W]$.
+All these pushes in the degree calculation are between proper
+vertical supports. Divide by $d$ to obtain the formula.
+\end{proof}
+
+\begin{lemma}[Supported character degree and finite Euler intersection]
+\label{r16mm:euler}
+Let $\mathcal X/R$ be regular integral flat projective of total
+dimension $N=n+1$. Let $\mathcal Z,\mathcal W$ be integral
+model cycles of codimensions $r,s$ with $r+s=N$, whose generic
+fibers are disjoint. Put $B=\mathcal Z\cap\mathcal W$ and
+choose finite vector-bundle resolutions $C_Z,C_W$. Then
+\[
+ \deg_k\left(\operatorname{ch}_r^B
+          (C_Z|^{\mathbf L}_{\mathcal W})\cap[\mathcal W]\right)
+ =\chi_R R\Gamma\left(\mathcal X,
+         \mathcal O_{\mathcal Z}\otimes^{\mathbf L}
+                                   \mathcal O_{\mathcal W}\right),
+ \tag{MM16.7}\label{r16mm:euler-eq}
+\]
+where $\chi_R$ is the alternating sum of finite $R$-lengths.
+The intersection $B$ may have positive dimension.
+\end{lemma}
+
+\begin{proof}
+This is the supported calculation in the R7 finite-bridge
+manuscript; its primary algebraic inputs can be checked directly.
+Write $a_i=\operatorname{ch}_i^{\mathcal Z}(C_Z)$ and
+$b_j=\operatorname{ch}_j^{\mathcal W}(C_W)$.
+Support dimension gives $a_i\cap[\mathcal X]=0$ for $i<r$
+in the Chow group of $\mathcal Z$ itself, and similarly for
+$j<s$. The leading terms are $[\mathcal Z]$ and
+$[\mathcal W]$ by Stacks 0FEW. Centrality (42.52.2) permits
+each lower term to act first, so its product vanishes before
+forgetting intersection support. Intersected-support
+multiplicativity (42.52.6) consequently gives
+\[
+ \operatorname{ch}^B(C_Z\otimes C_W)\cap[\mathcal X]
+  =a_r\cap[\mathcal W]\in\operatorname{CH}_0(B)_{\mathbf Q},
+ \tag{MM16.8}\label{r16mm:pure-zero}
+\]
+with no other-dimensional terms: total degree below $N$ has
+a lower factor, and total degree above $N$ has negative output
+dimension.
+
+For the closed immersion $B\to\mathcal X$, Stacks 0FEW gives
+the isomorphism
+\[
+ G_0(B)_{\mathbf Q}\xrightarrow{\sim}\operatorname{CH}_*(B)_{\mathbf Q},
+ \qquad [F]\longmapsto
+           \operatorname{ch}^B(F)\cap[\mathcal X].
+\]
+It is stated over the general excellent base, with regular
+quasi-compact ambient scheme. It sends the class of a closed
+point sheaf to that point, since all lower-dimensional terms
+would have negative dimension. If a zero-cycle represents the
+right side of \eqref{r16mm:pure-zero}, injectivity therefore
+identifies the alternating cohomology-sheaf class of
+$C_Z\otimes C_W$ with the corresponding point-sheaf combination.
+The proper Euler-length map is additive on $G_0(B)$ and takes
+$\mathcal O_x$ to $[\kappa(x):k]$. Applying it proves
+\eqref{r16mm:euler-eq}. Coherent cohomology has finite length
+because $B$ is vertical and proper. No Todd correction is
+discarded: the supported character class has already been
+proved purely zero-dimensional. No degree on the Chow group of
+the whole trait model is used.
+\end{proof}
+
+\begin{theorem}[Local comparison on supplied numerical model lifts]
+\label{r16mm:local}
+Let $\mathcal X/R$ be regular integral flat projective, with
+smooth geometrically integral generic fiber $X$ of dimension
+$n$. Let $Z,W$ be disjoint geometrically homologically trivial
+rational cycles of codimensions $r,s$, $r+s=n+1$.
+Suppose rational model cycles $\Theta_Z,\Theta_W$ of those
+codimensions have generic cycles exactly $Z,W$ and are
+numerically admissible: their operational intersection degree
+against every vertical cycle of the complementary testing
+dimension is zero on each special component. Then both cycles
+have exact strong ordinary actual Green forms, and their
+choice-independent local pairing satisfies
+\[
+ \lambda_K(Z,W)=c_R\,I_R(\Theta_Z,\Theta_W),
+ \tag{MM16.9}\label{r16mm:local-eq}
+\]
+where $I_R$ is the bilinear extension of the finite Euler tensor
+intersection in \eqref{r16mm:euler-eq}. The statement permits
+singular cycle models, nonreduced special fibers and arbitrary
+vertical excess. It makes no assertion that such lifts always
+exist.
+\end{theorem}
+
+\begin{proof}
+Write each specified model cycle as a rational sum of prime
+cycles and choose vector-bundle resolutions of their structure
+sheaves; regularity and projectivity supply such resolutions.
+Their degree-$r$ Chern characters represent the operational
+class of $\Theta_Z$: the localized leading-term identity gives
+this equality after capping with the regular model, and the frozen
+R12 cap/Adams characterization identifies that degree-$r$ term
+with its operational class. The strict R10 model-Chern identities and
+numerical detector make the sum of their actual curvatures
+literally zero. Sum their concrete R11 Green forms. A vertical
+component contributes a global actual form from the R11
+generic-acyclic construction. The horizontal components are
+exactly the closures of the final nonzero prime coefficients
+of $Z$. Hence the sum is actual on the exact complement of
+$Z$ and has its strong residue on all actual tests. The same
+argument applies to $W$.
+
+By Theorem~\ref{r16mm:framed} and Lemma~\ref{r16mm:euler},
+the value of this constructed form on $W$ is
+$c_R I_R(\Theta_Z,\overline W)$.
+Write $\Theta_W=\overline W+V$, where $V$ is a rational
+vertical cycle of dimension $r$. The additional localized
+degree against each prime component of $V$ pushes into that
+proper $k$-variety as the ordinary operational degree of
+$\Theta_Z$ on it. Numerical admissibility makes this degree
+zero. Thus $\overline W$ may be replaced by $\Theta_W$.
+Disjoint-polar choice independence, already proved because both
+generic cycles have strong G, replaces the constructed form
+by any supplied exact strong Green form. This proves
+\eqref{r16mm:local-eq} without selecting an unspecified global
+actual primitive whose scalar value might be uncontrolled.
+\end{proof}
+
+\begin{theorem}[Global comparison with the classical admissible model height]
+\label{r16mm:global}
+Let $\mathcal X/\mathcal O_F$ be regular integral flat projective
+with smooth projective geometrically integral generic fiber $X$.
+Let $z,w$ be complementary geometrically homologically trivial
+rational Chow classes admitting numerically admissible rational
+model Chow lifts $\Theta,\Phi$ on this supplied model. Then
+they belong to the domains $\mathcal H$ of
+Theorem~\ref{r16h:global-height}, and
+\[
+ h_X^{\rm an}(z,w)=\frac1{[F:\mathbf Q]}
+                \widehat{\deg}\bigl(\widehat\Theta\cdot\widehat\Phi\bigr),
+ \tag{MM16.10}\label{r16mm:global-eq}
+\]
+where the arithmetic lifts have zero archimedean curvature.
+The right side is the classical admissible intersection height
+on the supplied domain. The comparison is for the fixed
+absolute-value normalization of the analytic height.
+\end{theorem}
+
+\begin{proof}
+Choose disjoint generic cycle representatives $Z,W$ of $z,w$.
+Each given model Chow lift has a rational cycle representative
+whose generic cycle is exactly the chosen one: lift the finitely
+many rational-equivalence functions from their generic carriers
+to their model closures and retain all their vertical divisor
+terms. This changes only the model representative, not its
+Chow class or its numerical admissibility. There is no requirement
+to move the resulting special-fiber intersections into proper
+position.
+
+After completion at a finite place $v$, regularity is preserved
+and the same numerical and supported identities apply. Local
+numerical lifts also imply obstruction zero by the frozen
+R11 criterion, hence membership in $\mathcal H$. The preceding
+theorem identifies the analytic local value with $c_v I_v$.
+If $v\mid p$ has ramification index $e_v$ and residue degree
+$f_v$, then $c_v=(\log p)/e_v$ and
+\[
+ \frac{[F_v:\mathbf Q_p]}{[F:\mathbf Q]}c_v I_v
+             =\frac{\log\#k_v}{[F:\mathbf Q]}I_v.
+ \tag{MM16.11}\label{r16mm:weight}
+\]
+The right side is exactly the finite arithmetic-degree term:
+Gillet--Soul\'e, Theorem~4.3.2 and Remark~4.3.8(iv), define it
+by supported derived tensor, proper cohomology and length.
+The explicit double sum of lengths is
+$\sum_{a,b}(-1)^{a+b}\operatorname{length}_{R_v}
+H^a(\mathcal X_{R_v},\mathcal{T}or_b(\mathcal O_{\Theta},
+\mathcal O_{\Phi}))$, extended bilinearly in prime model cycles.
+
+At infinity choose logarithmic-type zero-curvature complex
+Green forms. In Gillet--Soul\'e's principal normalization
+$g_Z=-\log|f|^2$, the corresponding form for our normalization
+is $g_Z/2$. Since the second Green curvature is zero, the
+archimedean star-product integral is its evaluation on the
+other cycle. The arithmetic degree contributes
+$\frac1{2[F:\mathbf Q]}\sum_{\sigma:F\hookrightarrow\mathbf C}
+\int_{W_\sigma}g_{Z,\sigma}$, which is precisely our sum over
+archimedean places with weights one at a real place and two
+at a complex place, divided by $[F:\mathbf Q]$.
+
+These are the finite and infinite terms of
+\eqref{r16mm:global-eq}. Only finitely many finite terms occur,
+either by proper vertically supported cohomology of the
+generic-disjoint pair on the arithmetic model, or by the
+already proved height finiteness theorem. The latter theorem
+also removes all generic moving and Green choices. The usual
+arithmetic Chow identity for the product with a smooth form
+class shows that zero-curvature arithmetic lifts have the
+same degree product. Thus no unrecorded Bott--Chern correction
+or rational-equivalence logarithm is omitted.
+\end{proof}
+
+\begin{corollary}[Identification with the published abelian height]
+\label{r16mm:abelian}
+Let $A/F$ be an abelian variety over a number field. In every
+complementary pair of codimensions, the full analytic height
+supplied by \texttt{r16ab:local-G} and
+Theorem~\ref{r16h:global-height} equals K\"unnemann's classical
+abelian height divided by $[F:\mathbf Q]$, with the same
+Gillet--Soul\'e product and scalar sign convention.
+\end{corollary}
+
+\begin{proof}
+After a finite extension $E/F$, semi-abelian reduction holds.
+K\"unnemann, \emph{Height pairings for algebraic cycles on abelian
+varieties}, Theorem~1.6, supplies a regular flat projective
+model over $\mathcal O_E$ and lifts of all geometric homological
+classes orthogonal to all vertical classes. A vertical testing
+cycle supported at a single finite place contributes only its
+local intersection degree times the positive factor
+$\log\#k_v$. Thus this orthogonality is precisely the
+placewise numerical admissibility needed in
+Theorem~\ref{r16mm:global}. Every cycle on a completed special
+fiber is a cycle on that same algebraic special fiber, so the
+condition includes all its component tests.
+
+Theorem~\ref{r16mm:global} identifies the analytic pairing over
+$E$ with that model pairing divided by $[E:\mathbf Q]$.
+K\"unnemann's Section~1.4, equation~(7), and Lemma~1.5 descend
+the classical unnormalized pairing by $1/[E:F]$; its Corollary~1.7
+is the resulting published abelian height over $F$.
+Theorem~\ref{r16h:global-height} makes the analytic normalized
+pairing invariant under this same finite extension. Since
+$[E:\mathbf Q]=[E:F][F:\mathbf Q]$, the two formulas give the
+assertion. Only a constant-field extension and its native degree
+are used, not an arithmetic alteration comparison.
+\end{proof}
+
+\paragraph{The framing limitation and the remaining comparison boundary.}
+For $C=[\mathcal O\xrightarrow{\varpi^a}\mathcal O]$ in degree
+one, the absolute model $K_0$ class and actual curvature are
+zero, but the constructed scalar is $a c_R$. Its supported
+character has exactly degree $a$ on a degree-one point model.
+Thus curvature equality alone cannot prove a model scalar
+comparison on arbitrary test cycles. Theorem~\ref{r16mm:framed}
+keeps this framing; Theorem~\ref{r16mm:local} removes it only
+through the already proved two-sided Green-choice independence.
+
+The global theorem compares with a supplied regular numerical
+admissible model. It does not assert the existence of such a
+global model or admissible lifts for every class in $\mathcal H$,
+and it does not promote a bare strong-G solution to obstruction
+zero. No arithmetic-alteration projection formula is folded into
+\eqref{r16mm:global-eq}. A separate scalar descent using the new
+Chow-correspondence adjunction is stated in
+\texttt{r16ha:alteration-comparison}; that statement still requires
+the regular admissible lifts upstairs and supplies its own generic
+degree calculation. Parameter-
+space continuity of a biextension metric, positivity and
+nondegeneracy are not conclusions of this scalar theorem.
+
+\paragraph{Sources and provenance.}
+The new analytic substitutions are H16.1 and the final R11
+\path{perfect_complex/supported_complex_green.tex}; model
+identities are the independently audited R10
+\path{chern/model_chern_without_trace.tex}.
+The historical arguments reconstructed here are
+\path{history_01_07/bb_round7/proofs/good_relative_complex_local_scalar_M.tex}
+and
+\path{history_01_07/bb_round7/proofs/good_localized_chern_GS_finite_bridge.tex}.
+Their prior review flags are not removed.
+Primary sources re-opened for this reconstruction are
+\url{https://www.imj-prg.fr/~antoine.ducros/fdceb.pdf},
+Theorem~18.5.5 and Proposition~18.5.8;
+\url{https://stacks.math.columbia.edu/tag/0FE8},
+\url{https://stacks.math.columbia.edu/tag/0FB9},
+\url{https://stacks.math.columbia.edu/tag/0FEW}; and
+Gillet--Soul\'e,
+\url{https://www.numdam.org/article/PMIHES_1990__72__93_0.pdf},
+Theorem~4.3.2 and Remark~4.3.8(iv)--(v).

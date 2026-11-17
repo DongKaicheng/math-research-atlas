@@ -1,0 +1,401 @@
+% Round 20. RT20. family20. New candidate; does not alter the frozen RB18 or DU20 sources.
+\section{Ramified toroidal strata and actual Chow-motive closure}
+\label{r20rt:section}
+
+\paragraph{Scope and relation to the frozen results.}
+RB18's accepted height theorem has an explicit fourfold positivity
+scope.  We do not change that scope.  We reconstruct its
+dimension-independent stratum geometry here and apply it instead
+to actual Chow-motive presentations.  The additional algebraic
+point is that the property for \emph{all} closed strata survives
+both directions of the specified smooth toroidal modifications.
+This gives a separate ramified closure theorem and, after review,
+an extension of DU20 to potentially-good coefficients.
+
+All residue-field varieties below are native smooth projective
+varieties.  A closed stratum means a connected component of an
+intersection of boundary components, including the ambient variety
+when the intersection is empty.  Let $\mathcal C(k)$ denote
+either the category of split Tate rational Chow motives over $k$,
+or the rational Chow motives of abelian type as defined in AT20.
+Both are closed under finite direct sums, direct summands,
+products and Tate twists.  Every identity below is in actual
+rational Chow theory, unless a cohomological realization is
+explicitly mentioned.
+
+\subsection{The two directions of boundary-stratum blowup}
+
+\begin{lemma}[Exact reversible all-strata motive criterion]
+\label{r20rt:reversible}
+Let $(W,\partial W=\bigcup_iD_i)$ be a smooth projective pair
+with strict normal-crossings boundary over a field $k$.
+Blow up a smooth connected component $Z$ of $D_K=\bigcap_{k\in K}D_k$
+with $K\ne\varnothing$, so the center is a proper closed boundary
+stratum, with its full reduced transformed boundary.  Every old closed
+stratum has motive in $\mathcal C(k)$ if and only if every new
+closed stratum does.
+\end{lemma}
+
+\begin{proof}
+It suffices to work with the connected strata meeting $Z$;
+the other strata are unchanged.  Write $c=|K|$, $F$ for
+the exceptional boundary component and $\widetilde D_i$ for
+strict transforms.  In the convention that $\mathbf P^{\rm lines}$
+parametrizes one-dimensional subspaces, the actual normal bundle is
+\[
+ N_{Z/W}=\bigoplus_{k\in K}\mathcal O_W(D_k)|_Z.
+ \tag{RT20.1}\label{r20rt:normal}
+\]
+This is the dual of the conormal splitting of the transverse
+Cartier equations.  The Rees charts used in AT20 give, for
+$K\not\subset J$,
+\[
+ \bigcap_{j\in J}\widetilde D_j
+   =\operatorname{Bl}_{D_{J\cup K}}D_J,
+ \qquad
+ \operatorname{codim}_{D_J}D_{J\cup K}=|K\setminus J|,
+ \tag{RT20.2}\label{r20rt:strict}
+\]
+on the relevant connected components.  For $K\subset J$
+this intersection is empty.  The exceptional intersections are
+\[
+ F\cap\bigcap_{j\in J}\widetilde D_j
+  =\mathbf P^{\rm lines}_{D_{J\cup K}}
+       \left(\bigoplus_{k\in K\setminus J}
+                     \mathcal O_W(D_k)|_{D_{J\cup K}}\right),
+ \tag{RT20.3}\label{r20rt:exceptional}
+\]
+with rank zero interpreted as empty.  An empty center in
+\eqref{r20rt:strict} means the unchanged stratum.  The
+Cartier-center case is allowed and just renames its boundary.
+
+For the forward implication, the blowup isomorphism is
+induced in Chow groups by
+\[
+ (\alpha,(\beta_a))\longmapsto
+ f^*\alpha+\sum_{a=1}^{c-1}j_*(\xi^{a-1}p^*\beta_a),
+ \tag{RT20.4}\label{r20rt:chowmap}
+\]
+and the projective-bundle isomorphism by
+$ (\beta_a)\mapsto\sum_a\xi^a p^*\beta_a$.
+These formulas after every smooth projective test product
+give the corresponding actual Chow-motive decompositions.
+Thus \eqref{r20rt:strict} and \eqref{r20rt:exceptional}
+put every new closed stratum in $\mathcal C(k)$.
+
+For the reverse implication, fix an old connected stratum
+of $D_J$.  If $K\not\subset J$, its strict transform is
+the smooth blowup in \eqref{r20rt:strict}.  The original
+stratum is an actual Chow summand of that transform: the
+graph pullback and graph pushforward compose to the
+identity because the proper birational map has degree one.
+This includes $J=\varnothing$, hence the ambient $W$.
+
+If $K\subset J$, choose one $k_0\in K$ and put
+$J'=J\setminus\{k_0\}$.  Formula
+\eqref{r20rt:exceptional} becomes the rank-one bundle
+\[
+ F\cap\bigcap_{j\in J'}\widetilde D_j
+     =\mathbf P^{\rm lines}_{D_J}
+                    (\mathcal O_W(D_{k_0})|_{D_J})
+     \simeq D_J.
+ \tag{RT20.5}\label{r20rt:recovery}
+\]
+It is an actual new closed stratum, so gives the required
+old motive directly.  Strata in other connected components
+of $D_K$ were not modified and are treated as unchanged.
+This proves the reverse implication without extracting a
+summand from a numerical or cohomological motive.
+\end{proof}
+
+\subsection{The actual ramified model and its strata in all dimensions}
+
+Let $\mathcal X/R$ be regular projective reduced strictly
+semistable of relative dimension $n$, with finite residue field.
+Write its components $D_1,\ldots,D_m$ and
+$I_i=\mathcal O_{\mathcal X}(-D_i)$.  Let $L/K$ be finite
+of ramification index $e$, with uniformizer $t$.
+Saito's Lemmas 1.2.4--1.2.5 state that the \emph{actual blowup}
+of $\mathcal X_{R_L}$ in
+\[
+ \mathfrak a_e=
+ \prod_{0\le j<k\le m}\prod_{h=1}^{e-1}
+       (I_{j+1}\cdots I_k\mathcal O_{\mathcal X_{R_L}}
+                                          +t^h\mathcal O_{\mathcal X_{R_L}})
+ \tag{RT20.6}\label{r20rt:saito}
+\]
+is reduced strictly semistable.  Its generic fiber is $X_L$,
+and it is projective.  There is no tameness assumption.
+For $e=1$ the ideal is the unit ideal.  We denote this model
+by $\mathcal Y/R_L$.
+
+\begin{lemma}[Dimension-independent actual toroidal comparison]
+\label{r20rt:comparison}
+After a finite constant-field splitting, let $S$ be a connected
+closed stratum of $\mathcal Y_k$ defined by $q$ components.
+It is connected, as a smooth projective strict toroidal pair,
+by smooth projective blowups and blowdowns along closed
+boundary strata to a product of $b$ projective-line bundles
+over an old closed stratum $D_I$, where
+$s=|I|\geq q$ and $b=s-q$.
+The old-stratum map is native and birational over the common
+normal torus torsor; no finite Kummer cover of $D_I$ occurs.
+\end{lemma}
+
+\begin{proof}
+We include the geometric argument to make its dimension scope
+explicit, rather than extending RB18's fourfold conclusion by
+its name.  Split the finitely many native connected strata
+by a constant extension if necessary and keep all boundary
+labels.  A further finite constant extension can be taken
+for the finitely many new strata as well.
+
+\emph{Step 1: primitive local orbit lattices.}
+Near an old $s$-fold stratum the actual etale chart is
+$x_1\cdots x_s=\pi$.  After base change, write
+$\pi=ut^e$ and absorb the unit $u$ into one $x_i$; no
+root of $u$ is extracted.  The character lattice and its dual are
+\[
+ M_I=(\mathbf Z^I\oplus\mathbf Z[t])/
+                    \mathbf Z((1)_{i\in I},-e),
+ \qquad
+ N_I=\{(a,h):\sum_i a_i=eh\}.
+ \tag{RT20.7}\label{r20rt:lattice}
+\]
+Saito's subdivision has height-one rays $(a,1)$ and
+unimodular cones.  Let the $q$-dimensional cone $\sigma$
+define $S$ generically, and let $I$ be the union of the
+supports of its rays.  Every $x_i$ for $i\in I$ contains
+a positive exponent of a component defining $S$, so it
+vanishes on $S$.  Hence the map factors scheme-theoretically
+through $D_I$ and dominates it.
+The dense orbit character lattice is
+\[
+ M_\sigma=M_I\cap\sigma^\perp,
+                    \qquad\operatorname{rank}M_\sigma=s-q=b.
+ \tag{RT20.8}\label{r20rt:orbit}
+\]
+The cone rays are part of an integral basis.  Thus this is
+the primitive free orbit lattice, and its local open-orbit
+ring is its group ring over the ring of $D_I^\circ$.
+There is no nontrivial finite index and no residual finite
+field or Kummer extension in this description.  The proof
+works when the residue characteristic divides $e$.
+
+\emph{Step 2: the actual torsor and extending line bundles.}
+Choose a basis of $M_\sigma$ with fixed integer representatives
+$((c_{i\nu}),d_\nu)$.  The corresponding open-orbit
+coordinates are the residues of the valuation-zero monomials
+$t^{d_\nu}\prod_i x_i^{c_{i\nu}}$.  Negative exponents
+are used only for invertible orbit characters.  If local
+defining equations change by $x_i\mapsto g_i x_i$, the
+coordinate is multiplied by
+$\prod_i(g_i|_{D_I})^{c_{i\nu}}$.  Thus the open is the
+product of the nonzero spaces of the actual line bundles
+\[
+ \mathcal L_\nu=
+   \bigotimes_{i\in I}
+       (\mathcal O_{\mathcal X}(D_i)|_{D_I})^{c_{i\nu}}.
+ \tag{RT20.9}\label{r20rt:bundles}
+\]
+The scheme-theoretic factorization in Step 1 permits the
+restriction of every transition unit to $D_I$.  Changing a
+chosen representative only changes the extension by an old
+boundary line bundle; the same open torsor remains fixed.
+
+With the quotient convention, put
+\[
+ \mathcal P_S=
+  \prod_{\nu=1}^{b}{}_{D_I}
+        \mathbf P_{D_I}(\mathcal O\oplus\mathcal L_\nu^\vee).
+ \tag{RT20.10}\label{r20rt:bundleproduct}
+\]
+Its open where the two quotient coordinates are nonzero
+is the same product of $\mathcal L_\nu^\times$ over
+$D_I^\circ$.  Its boundary consists of the zero and infinity
+sections and the old boundary pullbacks.
+
+\emph{Step 3: verify the comparison on deeper boundaries.}
+At $D_{I\cup J}$, $I\cap J=\varnothing$, the lattices fit
+in the actual exact sequence
+\[
+ 0\longrightarrow\mathbf Z^J\longrightarrow
+ M_{I\cup J}\cap\sigma^\perp\longrightarrow
+ M_I\cap\sigma^\perp\longrightarrow0.
+ \tag{RT20.11}\label{r20rt:deeper}
+\]
+To verify the kernel, subtract the appropriate multiple of
+the defining relation in \eqref{r20rt:lattice}; a vector
+mapping to zero is left with exactly its $J$ coordinates,
+with no relation among them.  Fixed lifts of an orbit basis
+and the old boundary coordinates therefore form an integral
+basis.  The comparison uses integral monomials in this basis,
+pullbacks of old boundary coordinates, and unchanged smooth
+base coordinates.  It is consequently a toroidal birational
+map of the actual pairs with one common open, compatible
+with all overlaps.  It is not inferred merely from two
+unrelated normal-crossings compactifications of the same
+function field.  The boundary on $S$ is the restriction of
+the other components of the strict SNC fiber; all its
+connected components are retained.
+
+\emph{Step 4: the precise factorization input.}
+Use the corrected integral-conical-complex weak factorization
+of Matsuki's erratum, item 2, with the projectivity construction
+of AKMW, Theorem 2.7.1.  First take the normalized monomial
+graph and a common coherent regular subdivision.  This is
+projective and resolves only the supplied toroidal monoid
+charts.  The ensuing polyhedral cobordism and its integral
+desingularization produce smooth star subdivisions and their
+inverses, with projective support functions.  A smooth star
+is realized by blowing up the corresponding smooth closed
+boundary stratum.  Every intermediate variety remains smooth
+and projective, and every intermediate boundary is the full
+strict transformed boundary.
+
+Only this integral-combinatorial part is used in positive
+characteristic.  Its lattice subdivisions, monomial charts,
+and integral support-function line bundles make sense over
+the native field in every characteristic.  No general
+characteristic-$p$ weak factorization or resolution theorem,
+and no withdrawn toric strong-factorization algorithm, is
+invoked.  Strict labels and the finite constant splitting
+remove lattice self-identifications.  This proves the required
+chain in every dimension.  Steps 1--4 are the geometric
+argument appearing before the fourfold specialization in
+RB18; none of them used the number four.
+\end{proof}
+
+\begin{theorem}[Ramified preservation of all-strata Chow motives]
+\label{r20rt:ramified}
+Suppose all closed strata of $\mathcal X_k$ have motives in
+$\mathcal C$ after one finite constant extension.  For every
+finite valued $L/K$, the Saito model \eqref{r20rt:saito},
+after a further finite unramified extension if needed, has
+every closed stratum in the same motive class.
+\end{theorem}
+
+\begin{proof}
+Fix any new closed stratum $S$ and its pair comparison from
+Lemma~\ref{r20rt:comparison}.  Every closed stratum of
+$\mathcal P_S$ is a product of some of its projective-line
+bundle factors over an old closed stratum $D_{I\cup J}$;
+the other factors have been fixed to zero or infinity
+sections.  Choosing both sections of one factor gives an
+empty intersection.  Thus every nonempty closed stratum
+has motive in $\mathcal C$ by the actual projective-bundle
+formula.  Apply Lemma~\ref{r20rt:reversible} successively
+along the comparison chain, in its indicated directions.
+It proves the all-strata assertion for the pair on $S$,
+and in particular for $S$ itself.  There are only finitely
+many new strata.  The finitely many constant splittings
+can be combined into one finite unramified extension of
+$L$.  This proves the theorem for the actual new model.
+\end{proof}
+
+\subsection{Consequences for the full Green and height domains}
+
+\begin{theorem}[Potentially-good coefficients for supplied abelian strata]
+\label{r20rt:green}
+Fix the original valued $K/\mathbf Q_p$.  Let $Y/K$ be
+smooth projective geometrically integral with a regular
+projective reduced strictly semistable model whose closed
+strata have Chow abelian type after finite constant extension.
+Assume weight--monodromy in every cohomological degree for
+$Y$ at every invertible coefficient prime.  Let $T/K$ be
+smooth projective geometrically integral with potentially
+good projective reduction.  Then $T\times Y$ has full
+strong G in every $1\leq r\leq\dim(T\times Y)$, after
+every finite valued extension and for all new homological
+rational cycles.
+\end{theorem}
+
+\begin{proof}
+Fix a new cycle over a finite $L/K$.  Choose a finite
+extension $M/L$ containing a field over which $T$ has a
+smooth projective model.  Apply Theorem~\ref{r20rt:ramified}
+to the model of $Y$ over $M$, and then take its finite
+unramified splitting extension $M'/M$.  Thus $Y_{M'}$
+has an actual projective strict model with the required
+component Chow motives, while $T_{M'}$ has a smooth
+projective model.
+
+AT20's one-carrier comparison-prime argument and PI20's
+numerical generalized inverse give a rational actual
+incidence inverse on full geometric cohomology at one
+invertible prime.  Tensoring its error with
+$\Delta_{T_0}$ proves the full identity on all mixed
+classes, without a motive or numerical--homological
+comparison assumption on $T_0$.
+
+Weight--monodromy is stable under finite extension: the
+monodromy logarithm is multiplied by the nonzero ramification
+index, leaving its centered filtration unchanged; on its
+graded pieces Frobenius is replaced by the appropriate
+residue-degree power, giving the same weight rule over the
+new residue field.  Tensoring with the pure good-reduction
+cohomology of $T$ retains weight--monodromy.  Hence OW19
+kills the actual inertia term, and AK19/CR19 kill the
+incidence defect.  VT17 gives G over $M'$ for the specified
+pulled cycle, with the low-dimensional endpoint theorems
+used if the total dimension is at most two.
+
+Finally use finite actual trace divided by the complete
+degree $[M':L]$.  The original absolute value is extended
+without renormalization.  This recovers the original
+specified support and all actual compact tests over $L$.
+The proof began with an arbitrary new cycle over $L$ and
+built its model afresh; no old-cycle pullback assumption
+or arbitrary proper actual pushforward occurs.
+\end{proof}
+
+\begin{corollary}[The additional Drinfeld and mixed-product scope]
+\label{r20rt:drinfeld}
+DU20 remains valid with its coefficient $T$ assumed only
+potentially good projective.  More generally one may take
+finitely many Drinfeld quotient factors and finitely many
+curve or surface factors having supplied projective strict
+models with Chow-abelian-type closed strata after finite
+extensions, together with a potentially-good projective
+coefficient.  This entire product has full G in every
+degree and over every finite extension for every new cycle.
+\end{corollary}
+
+\begin{proof}
+Pass to the finite etale strict Drinfeld covers used in
+DU20.  Their strata are split Tate.  Choose a common finite
+field for all supplied models; whenever a further extension
+is needed, Theorem~\ref{r20rt:ramified} supplies the new
+strict model and preserves its all-strata motive property.
+AT20's staircase construction combines the factors, keeping
+all closed strata of Chow abelian type.  Ito proves
+weight--monodromy for the Drinfeld factors, and the known
+curve/surface theorems prove it for the other factors;
+Kunneth and the tensor-product monodromy filtration prove
+it for their product.  Apply Theorem~\ref{r20rt:green}
+and descend the finite etale covers by complete degrees.
+\end{proof}
+
+At every finite place of a number-field variety supplied
+with such local models, these full new-cycle statements
+give the full complementary PH16 height domain, over
+all finite number-field extensions, by the same finite
+compositum and full-degree descent used in DU20.
+This preserves the existing native-good DU20 proof unchanged;
+the present corollary is a separately audited extension.
+
+\paragraph{Primary inputs and limits.}
+Saito, Lemmas 1.2.4--1.2.5:
+\url{https://www.ms.u-tokyo.ac.jp/~t-saito/pp/wmr2r.pdf};
+Matsuki's corrected weak factorization, item 2:
+\url{https://arxiv.org/pdf/math/0006038};
+AKMW, Theorem 2.7.1 and its projective conical construction:
+\url{https://personal.math.ubc.ca/~karu/papers/semist.pdf}.
+These primary statements and the frozen RB18 source and
+independent review were checked.  The motive argument does
+not imply invariance of NC17's unrefined compatible quotient,
+nor a numerical-kernel cancellation theorem for arbitrary
+centers.  No nonreduced initial model, nonsplit lattice
+monodromy, general positive-characteristic factorization,
+or arbitrary model's Chow motive is covered.  General G
+and arbitrary-variety full unconditional heights remain open.

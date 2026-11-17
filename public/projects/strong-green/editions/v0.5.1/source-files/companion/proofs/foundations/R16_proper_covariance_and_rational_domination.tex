@@ -1,0 +1,349 @@
+% Round 16. Activated after independent review by model_obstruction.
+% Reviewed mathematical source SHA256: 7f3515235ca070ecdad00b6339db0a1ed7c02a370eabe26631b57f5d1723057b.
+% This update changes only these status comments.
+\section{Proper covariance of the obstruction kernel and new rational-dominance cases}
+\label{r16cov:section}
+
+The deformation theorem for smooth closed immersions supplies the
+covariance that a Chow blowup formula alone could not supply.
+This section states the resulting consequences at the level of
+Chow classes.  Each exact-support conclusion is obtained afterwards
+from the original prescribed curved Green pair.  In particular,
+cancelled polar components are not removed by an unproved analytic
+extension argument.
+
+\begin{definition}[The obstruction kernel and full homological vanishing]
+\label{r16cov:definition}
+For a smooth integral projective variety $X/K$, put
+\[
+ \mathcal K_K^r(X)=\ker\bigl(\mathfrak o_{X,K}^r:
+       \operatorname{CH}^r(X)_{\mathbf Q}
+              \longrightarrow H_{\mathrm{BC,act}}^{r,r}(X^{\rm an})\bigr).
+ \tag{CV16.1}\label{r16cov:kernel}
+\]
+The degree-zero curvature map is the rank map, so that the notation
+also makes sense in degree zero.  Groups in impossible Chow degrees
+are zero.  Write $\mathcal V_{r,K}(X)$ for the assertion that every
+geometrically homologically trivial rational codimension-$r$ class
+lies in $\mathcal K_K^r(X)$, and $\mathcal V_{*,K}(X)$ if this holds
+in all degrees.  For a nongeometrically integral $X$, geometric
+triviality is required on every geometric component.  These are
+statements about the obstruction kernel; they are stronger than
+merely asserting strong G for an unspecified representative.
+\end{definition}
+
+\begin{lemma}[Projective-space push on the curvature image]
+\label{r16cov:projective-push}
+Let $X/K$ be smooth integral projective and
+$\pi:X\times\mathbf P^N\to X$.  For every rational Chow class $a$,
+\[
+ I_\pi\bigl(\mathfrak o_{X\times\mathbf P^N,K}(a)\bigr)
+                  =\mathfrak o_{X,K}(\pi_*a).
+ \tag{CV16.2}\label{r16cov:projective-compatibility}
+\]
+Integration on the left is the induced map on actual Bott--Chern
+cohomology, of degree $(-N,-N)$.
+\end{lemma}
+
+\begin{proof}
+Use the algebraic projective-bundle decomposition to write uniquely
+$a=\sum_{j=0}^N h_{\rm alg}^j\pi^*a_j$.
+The Chow pushforward is $a_N$.  The frozen curvature ring map and
+pullback compatibility give
+\[
+ \mathfrak o(a)=\sum_{j=0}^N[h]^j\pi^*\mathfrak o(a_j),
+\]
+where $h$ is a first Chern representative of $\mathcal O(1)$.
+The all-actual integration theorem commutes with $D$, hence acts on
+Bott--Chern classes.  Its actual target-factor projection formula,
+including negative-output degrees, gives $I_\pi(h^j)=0$ for $j<N$
+and $I_\pi(h^N)=1$.  Integrating the displayed decomposition proves
+\eqref{r16cov:projective-compatibility}.  This is a compatibility on
+the algebraic curvature image established from the two projective
+bundle formulas; it is not assumed for arbitrary proper maps.
+\end{proof}
+
+\begin{theorem}[The obstruction kernel is stable under every proper smooth-projective push]
+\label{r16cov:proper-push}
+Let $f:V\to X$ be a morphism of smooth integral projective
+$K$-varieties, with $\dim V=m$ and $\dim X=n$.  Then
+\[
+ f_*\mathcal K_K^r(V)\ \subset\
+          \mathcal K_K^{r+n-m}(X).
+ \tag{CV16.3}\label{r16cov:proper-kernel}
+\]
+The assertion is understood as zero when the algebraic pushforward
+has impossible dimension.  All constant-field and generic cycle
+degrees are the original $K$-degrees.
+\end{theorem}
+
+\begin{proof}
+Choose a projective closed embedding $e:V\hookrightarrow\mathbf P^N_K$.
+The graph map $i=(f,e):V\hookrightarrow X\times\mathbf P^N$ is a
+closed immersion of smooth varieties, of codimension $c=n+N-m$.
+Increasing $N$ if necessary makes $c\geq1$.  The decomposition
+$f=\pi\circ i$ is algebraic and projective.
+
+For $z\in\mathcal K_K^r(V)$,
+Theorem~\ref{r16gi:kernel} gives
+$\mathfrak o_{X\times\mathbf P^N,K}^{r+c}(i_*z)=0$.
+Apply Lemma~\ref{r16cov:projective-push} and algebraic functoriality
+of proper cycle pushforward.  The resulting zero class is
+$\mathfrak o_{X,K}^{r+c-N}(f_*z)$, whose degree is
+$r+n-m$.  This proves the assertion, including the dimension-zero
+output, where the curvature map is the rank map.
+
+No actual form is pushed along $i$ or $f$.  The only actual
+integration used is the proved projective-bundle operator.  The
+closed-immersion step is the separate deformation proof about the
+kernel of a Chow-to-cohomology map.
+\end{proof}
+
+\begin{corollary}[Exact support after proper push and cancellation]
+\label{r16cov:push-G}
+Let $f,V,X$ be as above, let $Z$ be a specified rational cycle on
+$V$ with $[Z]\in\mathcal K_K^r(V)$, and put $s=r+n-m$ with
+$1\leq s\leq n$.  Every specified rational cycle $W$ representing
+$f_*[Z]$ has an ordinary actual strong Green form
+\[
+ \gamma_W\in B^{s-1,s-1}
+        (X^{\rm an}\setminus|W|^{\rm an})
+\]
+on every compact actual complementary test over $K$.
+This includes the literal cycle $f_*Z$ after collecting its
+nonzero coefficients, even when components collapse or cancel.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{r16cov:proper-push} proves that the Chow class of $W$
+has zero obstruction.  Choose the frozen curved Green pair for
+the specified final cycle $W$ and subtract its global actual
+curvature primitive.  This is the established sufficient
+direction to strong G, and its complement is exactly $X\setminus|W|$.
+There is no proposed removal of cancelled singularities from a
+previously summed Green form.
+\end{proof}
+
+\begin{proposition}[Stability under algebraic correspondences]
+\label{r16cov:correspondences}
+Let $V,X$ be smooth integral projective, with $\dim V=m$, and let
+$\Gamma\in\operatorname{CH}^{m+d}(V\times X)_{\mathbf Q}$.
+The usual action
+\[
+ \Gamma_*z=(p_X)_*(\Gamma\cdot p_V^*z)
+\]
+sends $\mathcal K_K^r(V)$ into $\mathcal K_K^{r+d}(X)$.
+The kernels therefore form a graded ideal stable under smooth
+pullback, proper pushforward and algebraic correspondences.
+\end{proposition}
+
+\begin{proof}
+The frozen pullback and ring properties put
+$\Gamma\cdot p_V^*z$ in the obstruction kernel on $V\times X$.
+Apply Theorem~\ref{r16cov:proper-push} to $p_X$.
+If the product is not integral, decompose it into its disjoint
+smooth integral components and sum; the proof and all native
+degrees are unchanged.  The other stated stabilities are either
+the same theorem or the already frozen pullback and ring identities.
+\end{proof}
+
+\begin{corollary}[A precise correspondence-generated sector]
+\label{r16cov:generated-sector}
+For any smooth projective $X/K$, strong G holds for every specified
+cycle whose Chow class is a finite sum of correspondence images
+of classes in the known obstruction-zero sectors.  These include
+all geometrically homologically trivial classes on smooth projective
+varieties of dimension at most three, all such one-cycle classes
+on smooth projective varieties of arbitrary dimension, and all
+degrees on the supplied towers and other full-kernel varieties
+proved in this report.
+
+More generally, suppose there are smooth projective $V_i$ with
+$\mathcal V_{*,K}(V_i)$ and algebraic correspondences $A_i,B_i$
+with the appropriate degree shifts such that
+\[
+                 [\Delta_X]=\sum_i B_i\circ A_i
+                       \quad\text{in }\operatorname{CH}^{n}(X\times X)_{\mathbf Q}.
+ \tag{CV16.4}\label{r16cov:diagonal-factorization}
+\]
+Then $\mathcal V_{*,K}(X)$ holds.
+\end{corollary}
+
+\begin{proof}
+The first assertion follows from Proposition~\ref{r16cov:correspondences},
+linearity and the exact-support sufficient direction.  In the second,
+if $z$ is geometrically homologically trivial, each $A_{i*}z$ is
+geometrically homologically trivial by functoriality of the geometric
+cycle class for correspondences.  It belongs to the relevant
+$\mathcal K(V_i)$.  Apply the same proposition to $B_i$ and use
+$z=\sum_i B_{i*}A_{i*}z$, which follows from the actual Chow identity
+\eqref{r16cov:diagonal-factorization}.  A decomposition only in
+geometric cohomology would not suffice for this argument.
+\end{proof}
+
+\begin{proposition}[Ascent through a smooth blowup in a specified degree]
+\label{r16cov:blowup-ascent}
+Let $q:Y=\operatorname{Bl}_C V\to V$ be the blowup of a smooth
+closed center of codimension $c\geq2$, with $V$ smooth integral
+projective of dimension $m$.  Fix a degree $r$.
+If $\mathcal V_{r,K}(V)$ and
+\[
+                    \mathcal V_{r-j,K}(C)
+                              \quad(1\leq j\leq c-1)
+ \tag{CV16.5}\label{r16cov:center-hypotheses}
+\]
+hold in the nonzero center degrees, then $\mathcal V_{r,K}(Y)$.
+In particular, if both $V$ and $C$ have full homological obstruction
+vanishing, then so does $Y$.
+\end{proposition}
+
+\begin{proof}
+Write $i:E=\mathbf P_C(N_{C/V})\hookrightarrow Y$ and $\pi:E\to C$.
+The algebraic Chow blowup formula gives, uniquely,
+\[
+ z=q^*a+\sum_{j=1}^{c-1}
+                i_*(\xi_{\rm alg}^{j-1}\pi^*b_j),
+ \qquad b_j\in\operatorname{CH}^{r-j}(C)_{\mathbf Q}.
+ \tag{CV16.6}\label{r16cov:blowup-cycle}
+\]
+The geometric cohomology blowup formula is the corresponding direct
+sum, and the cycle-class map is compatible with these summands.
+Thus geometric homological triviality of $z$ implies that of $a$
+and of every $b_j$.  The hypotheses put them in their obstruction
+kernels.  Pullback and multiplication by a Chern class preserve the
+kernel, so each $\xi^{j-1}\pi^*b_j$ lies in $\mathcal K(E)$.
+The new closed-immersion kernel theorem, or
+Theorem~\ref{r16cov:proper-push}, sends it into $\mathcal K(Y)$.
+The first summand is also in that kernel by pullback.  This proves
+the claim.  Smooth disconnected centers are treated componentwise.
+
+This final Gysin step is essential.  Before its proof in this round,
+the dimension count in \eqref{r16cov:center-hypotheses} did not by
+itself justify ascent, even when the center classes had strong G.
+\end{proof}
+
+\begin{theorem}[Rational domination in dimensions at most five]
+\label{r16cov:rational-low-dimension}
+Let $X/K$ be smooth projective geometrically integral.  Suppose there
+are a finite extension $L/K$, a smooth projective geometrically
+integral $L$-variety $V$ of dimension at most five, and a dominant
+rational $K$-map $V\dashrightarrow X$.  Assume that $V$, viewed as
+a $K$-variety, satisfies $\mathcal V_{*,K}(V)$.
+Then $\mathcal V_{*,K}(X)$ holds.  In particular the hypothesis on
+$V$ is supplied by a projective-bundle tower over a smooth projective
+base of dimension at most three, in the native-field scope of the
+frozen tower theorem.
+\end{theorem}
+
+\begin{proof}
+Resolve the rational map over $L$ in characteristic zero by a finite
+sequence of blowups of smooth centers on $V$, obtaining
+$a:\widetilde V\to X$.  The map is everywhere defined, projective
+and dominant.  Each nontrivial center has codimension at least two,
+hence dimension at most three.  The endpoint theorems and the
+one-cycle theorem give full obstruction vanishing on every such
+smooth projective center, including its nongeometrically integral
+components in the original $K$-theory.  Apply
+Proposition~\ref{r16cov:blowup-ascent} in every degree at every step.
+It gives $\mathcal V_{*,K}(\widetilde V)$.
+
+Pull a geometrically homologically trivial class of $X$ to
+$\widetilde V$.  Its obstruction is zero.  The all-degree dominant
+Bott--Chern detection theorem \texttt{r16pb:dominant} then makes
+the original class zero.  The conclusion is on the original
+$K$-actual test space; the resolution over $L$ is regarded throughout
+as a smooth integral $K$-variety, and no degree is replaced by the
+number of geometric sheets.
+\end{proof}
+
+\begin{theorem}[The two outer codimension ranges under rational domination]
+\label{r16cov:rational-outer}
+Let $V,X$ be smooth projective geometrically integral $K$-varieties
+of the same dimension $m$, and suppose $V\dashrightarrow X$ is
+dominant rational.  If $\mathcal V_{r,K}(V)$ holds and
+\[
+                   r\leq2\qquad\text{or}\qquad r\geq m-2,
+ \tag{CV16.7}\label{r16cov:outer-ranges}
+\]
+then $\mathcal V_{r,K}(X)$ holds.  The same statement holds after a
+finite constant extension when the source hypothesis is supplied
+in the original-field theory.
+\end{theorem}
+
+\begin{proof}
+In a resolution by smooth blowups, a center of codimension $c$
+has dimension $m-c$.  The exceptional coefficient $b_j$ in
+\eqref{r16cov:blowup-cycle} has codimension $r-j$ on it, with
+$1\leq j\leq c-1$.
+If $r\leq2$, each positive such codimension is at most one;
+the divisor theorem applies, while a homologically trivial
+codimension-zero class is zero.  This recovers the safe old
+codimension-two argument at the kernel level.
+
+If $r\geq m-2$, the dimension of a nonzero center cycle is
+\[
+           (m-c)-(r-j)=m-r+j-c\leq m-r-1\leq1.
+\]
+It is therefore a one-cycle or a zero-cycle, governed by the
+new all-dimensional one-cycle theorem or the frozen endpoint
+theorem.  Impossible dimensions contribute zero.  In both cases
+all center hypotheses of Proposition~\ref{r16cov:blowup-ascent}
+are met.  Iterate ascent, then descend along the resolved dominant
+morphism using \texttt{r16pb:dominant}.  The finite-extension
+version uses the same native integral statements componentwise.
+\end{proof}
+
+\begin{corollary}[Geometrically unirational varieties]
+\label{r16cov:unirational}
+Every smooth projective geometrically unirational variety of
+dimension at most five satisfies strong G for all specified
+geometrically homologically trivial rational cycles in every
+codimension, on their exact support complements and against all
+original actual tests.
+
+In any dimension $m$, such a variety has this conclusion in the
+ranges $r\leq2$ and $r\geq m-2$.  For a unirational sixfold the
+only positive codimension not covered by this statement is $r=3$.
+\end{corollary}
+
+\begin{proof}
+Geometric unirationality supplies, after a finite extension, a
+dominant rational map from projective space of the same dimension.
+For clarity, the definition allowing a larger projective source
+gives this version by intersecting a general linear subspace of
+the target dimension with a dominant open of the map; the required
+linear subspace and map are defined over a finite extension.
+Projective space has no nonzero geometric homological Chow kernel,
+so satisfies the native source hypothesis in every degree.
+Apply Theorem~\ref{r16cov:rational-low-dimension} or
+Theorem~\ref{r16cov:rational-outer}.
+\end{proof}
+
+\paragraph{Consequences for the height domain.}
+For a variety over a number field, the above geometric hypotheses
+hold after completion at every finite place, allowing finite local
+extensions and retaining their native normalizations.  Thus on
+the complete complementary homologically trivial Chow groups of
+a geometrically unirational variety of dimension at most five,
+the height theorem \texttt{r16h:global-height} applies without
+any remaining local obstruction hypothesis.  In particular it
+constructs the complete middle self-pairing
+\[
+ \operatorname{CH}^3(X)_{\mathbf Q,\rm hom}\times
+ \operatorname{CH}^3(X)_{\mathbf Q,\rm hom}\longrightarrow\mathbf R
+\]
+for a geometrically unirational fivefold.  This uses the separately
+proved residue, reciprocity and almost-all-place vanishing theorem,
+not local G alone.
+
+\paragraph{The remaining general problem.}
+The new kernel is now stable under algebraic correspondences and
+proper maps.  Nevertheless, a general homologically trivial class
+has not been shown to lie in it.  In dimension four, arbitrary
+codimension-two classes remain the first unrestricted case.
+For rational sources in higher dimensions, arbitrary middle-degree
+center classes can reappear in a resolution.  The outer-range
+calculation above does not cover them.  A diagonal factorization
+only in cohomology, an unspecified motivic decomposition, or an
+unproved relation between homological and obstruction equivalence
+cannot substitute for the Chow identities used in this section.

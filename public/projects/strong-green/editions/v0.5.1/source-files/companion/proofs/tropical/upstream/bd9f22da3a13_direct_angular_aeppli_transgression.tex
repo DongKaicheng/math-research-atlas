@@ -1,0 +1,389 @@
+\section{An actual angular transgression with one determinant residue}
+\label{sec:r9-angular-aeppli-transgression}
+
+The compact torus obstruction for a translated frame remembers
+every coordinate first moment.  Those separate moments need not
+survive when the angular coordinate hyperplanes are restored.
+We construct an actual Aeppli transgression on the full angular
+projective space and then pull it back through the displayed
+section map.  Only the determinant valuation remains.  The
+construction retains all mixed metric coefficients and gives
+literal actual primitives, not just an equality in a quotient.
+
+\subsection{Actual angular forms and their finite presentation}
+
+Fix $r\ge2$, put $s=r-1$, and work on $P=\mathbf P^{s}_K$
+over the original field and absolute value.  In homogeneous
+coordinates $z=(z_1,\ldots,z_r)^t$, write formally
+$u_0(z)=-\log\max_i|z_i|$.  This is a metric potential in
+a chosen homogeneous frame, not a scalar on $P$; the actual
+global form $\omega=-Du_0$ is the standard first Chern form.
+For $A\in\mathrm{GL}_r(K)$ define the actual global scalar
+and actual closed form
+\[
+ v_A(z)=-\log\|Az\|_\infty+\log\|z\|_\infty,
+       \qquad \omega_A=A^*\omega=\omega-Dv_A.
+ \tag{AAT1}
+\]
+The two homogeneous changes cancel, so $v_A$ is well-defined
+on $P$.  Locally one retains the entries of $z$ and $Az$
+whose norms can be maximal, takes ratios with one retained
+nonzero entry, and obtains finite actual unit presentations.
+The function is continuous and piecewise smooth.  Its
+differentials and the displayed products are operations in
+the actual form sheaf.  Set
+\[
+ \Xi_A=v_A\sum_{j=0}^{s}\omega_A^j\wedge\omega^{s-j}
+                     \in B^{s,s}(P).
+ \tag{AAT2}
+\]
+These objects and their equalities are taken in actual $B$,
+with its coefficient-final topology, not in a completion or
+an abstract current space.  All restrictions and common unit
+refinements are the actual ones.
+
+For the finite calculation, use the elementary diagonalization
+EFF5,
+\[
+ A=U\operatorname{diag}(\lambda_1,\ldots,\lambda_r)V,
+ \qquad U,V\in\mathrm{GL}_r(\mathcal O_K),\qquad
+ a_i=v(\lambda_i).
+ \tag{AAT3}
+\]
+The matrices $U,V$ preserve the maximum norm over every
+completed residue field.  Consequently
+$v_A=V^*v_a$, $\omega_A=V^*\omega_a$, and
+$\Xi_A=V^*\Xi_a$, where the subscript $a$ denotes the
+diagonal matrix.  On the complete angular torus $z_r\ne0$,
+$z_i\ne0$ for every $i$, use $x_i=v(z_i/z_r)$ and put
+$x_r=0$.  The entire coefficient presentation is
+\[
+ \begin{gathered}
+ u(x)=\min_{1\le i\le r}x_i,\qquad
+ u_a(x)=\min_{1\le i\le r}(x_i+a_i),\qquad v_a=u_a-u,\\
+ \omega=-Du,\quad\omega_a=-Du_a,\qquad
+ \Xi_a=(u_a-u)\sum_{j=0}^{s}(-Du_a)^j(-Du)^{s-j}.
+ \end{gathered}
+ \tag{AAT4}
+\]
+This is one actual Euclidean delta presentation on
+$E=\mathbf R^{s}$.  Its walls have rational directions
+and the displayed real intercepts.  The pure corner
+products have total carrier codimension $s$, hence are
+finite zero-dimensional polyhedral measures; multiplication
+by $u_a-u$ is legitimate actual scalar multiplication.
+Coincident walls and all their actual relations are retained.
+
+There is also a useful explicit support bound.  If
+\[
+ \max_i x_i-\min_i x_i>\operatorname{osc}(a)
+                         :=\max_i a_i-\min_i a_i,
+ \tag{AAT5}
+\]
+an index attaining $\max_i x_i$ is strictly nonminimal
+for both $u$ and $u_a$.  Omit that entry locally for both
+potentials.  The two curvature forms then pull back from
+one projective space of dimension at most $r-2$, so every
+mixed product of total exponent $s=r-1$ is actual zero.
+The same argument applies near a vanishing homogeneous
+coordinate, which is strictly nonminimal for both minima.
+Thus $\Xi_a$ is zero near the coordinate boundary and its
+native coefficient is supported in
+\[
+                         |x_i|\le\operatorname{osc}(a)
+                               \qquad(1\le i\le s).
+ \tag{AAT6}
+\]
+In particular it has one compact native presentation on
+the complete angular torus, not just support in an open
+set with an unproved native-membership assertion.
+
+\subsection{The exact angular mass}
+
+\begin{lemma}[Determinant mass]
+\label{lem:r9-angular-determinant-mass}
+With the original-field normalization,
+\[
+                       \int_P\Xi_A=v(\det A).
+ \tag{AAT7}
+\]
+\end{lemma}
+
+\begin{proof}
+It suffices by (AAT3) and actual integration under a
+projective automorphism to treat a diagonal matrix.
+Arrange the real numbers $a_i$ in nondecreasing order,
+writing $a_{(1)}\le\cdots\le a_{(r)}$.
+
+Fix $0\le j\le s$.  At any point in the support of
+$\omega_a^j\omega^{s-j}$, let $I_a,I_0$ be the indices
+attaining the respective minima in (AAT4).
+The actual local dimension factorization of CI2--CI3
+gives
+\[
+                         |I_a|\ge j+1,
+                         \qquad |I_0|\ge r-j.
+ \tag{AAT8}
+\]
+Indeed, if fewer entries are active for a given potential,
+its relevant power pulls back from a projective space of
+smaller dimension and is zero on a neighborhood.  The two
+sets in (AAT8) have total size at least $r+1$, so they
+intersect.  For an index in their intersection,
+$v_a=a_i$.  For every index in $I_a$ one has $a_i\le v_a$;
+for every index in $I_0$ one has $a_i\ge v_a$.
+Thus at least $j+1$ weights are at most $v_a$ and at least
+$r-j$ are at least $v_a$.  This forces
+\[
+                  v_a=a_{(j+1)}
+             \quad\text{on }\operatorname{supp}
+                                      (\omega_a^j\omega^{s-j}).
+ \tag{AAT9}
+\]
+The argument includes repeated weights and coincident walls.
+The products are genuine zero-dimensional polyhedral
+measures in the native torus presentation, so multiplying
+them by a scalar constant on their support gives that
+constant times the measure; there is no derivative-of-Dirac
+term or discarded normal jet here.
+
+Each mixed product has total integral one.  Namely
+$\omega_a-\omega=-Dv_a$ globally on the proper $P$,
+and factorization of the difference of powers followed
+by actual Stokes gives
+\[
+ \int_P\omega_a^j\omega^{s-j}=\int_P\omega^s=1.
+ \tag{AAT10}
+\]
+The final equality is the standard original-field
+projective calibration, also obtained by the full-tie
+calculation CMC3 with all exponents one: in angular
+coordinates $\omega^s$ is the weight-one point at the
+origin.  Therefore (AAT9)--(AAT10) yield
+\[
+ \int_P\Xi_a=\sum_{j=0}^{s}a_{(j+1)}
+            =\sum_{i=1}^r a_i=v(\det A).
+\]
+The integral units $U,V$ in (AAT3) have determinant of
+norm one, and no extension or rescaling of $K$ occurs.
+\end{proof}
+
+\subsection{A displayed actual angular primitive}
+
+There is a direct finite primitive which avoids any
+compact homotopy.  For the diagonal data, keep the
+ordered real numbers $a_{(1)},\ldots,a_{(r)}$ and put
+\[
+ \begin{split}
+ Q_j&=-v_a\sum_{\ell=0}^{j-1}
+                     \omega_a^\ell\omega^{s-1-\ell}
+                                  \quad(1\le j\le s),\\
+ \sigma_a^{\rm alg}&=\sum_{j=1}^{s}a_{(j+1)}d''Q_j.
+ \end{split}
+ \tag{AAT23}
+\]
+These are global actual forms on $P$.  The same
+scalar-on-carrier identity used in AAT9 gives
+$\Xi_a=\sum_{j=0}^s a_{(j+1)}\omega_a^j\omega^{s-j}$
+as an actual form, not only after integration.
+Since $DQ_j=\omega_a^j\omega^{s-j}-\omega^s$,
+the finite formula proves directly
+\[
+                  d'\sigma_a^{\rm alg}=\Xi_a-c_A\omega^s.
+ \tag{AAT24}
+\]
+Pullback by $V$ gives $\sigma_A^{\rm alg}$ with
+the same identity for $\Xi_A$.  This primitive
+may meet the angular coordinate boundary, which
+is permitted.  All later full-metric transgression
+and gluing formulas can use this finite primitive;
+they therefore do not require EH/TDC compact
+solvers or a topology-comparison theorem.
+
+The diagonal construction also makes sense for
+any real vector $a$, directly from the minima
+in AAT4 and the corresponding piecewise smooth
+metric on projective space.  No element of $K$
+of a prescribed real valuation is needed for
+the finite actual formulas AAT23--AAT24.  This
+observation supplies the original-field interface
+for lifted finite constants in CFN.
+
+For reference, a second choice with compact
+angular torus support is provided by the older
+compact calculus as follows.  It is optional
+for the representation theorem below.
+
+Write $c_A=v(\det A)$ and let $\mu=\omega^s$.
+In the diagonal coordinates, (AAT6)--(AAT7) show that
+the literal compact Euclidean coefficient
+$\Xi_a-c_A\mu$ has mass zero.  Choose one nondegenerate
+compact rectangle $Q$ containing the box in (AAT6) and
+the origin.  The frozen TDC9--TDC10 Aeppli solver gives
+the actual compact coefficient
+\[
+                  \sigma_a^{\rm E}=h'_E(\Xi_a-c_A\mu),
+       \qquad d'\sigma_a^{\rm E}=\Xi_a-c_A\mu.
+ \tag{AAT11}
+\]
+Pull this coefficient back by the angular unit tuple
+and extend by zero from its compact support in the
+angular torus to all of $P$.  This is actual sheaf
+gluing, using the compact support in $Q$; the source
+coefficient is realized by the pure-torus PAB bridge.
+Denote the resulting actual form by $\sigma_a$ and put
+\[
+                 \sigma_A=V^*\sigma_a\in B^{s-1,s}(P).
+ \tag{AAT12}
+\]
+Since $V$ is a maximum-norm isometry, $V^*\mu=\mu$.
+Consequently
+\[
+                      d'\sigma_A=\Xi_A-c_A\omega^s
+                                      \quad\text{on all of }P.
+ \tag{AAT13}
+\]
+This is a constructed actual primitive in one colour.
+It does not require zero first moments: those are needed
+for a compact $D$-primitive, whereas (AAT11) is the
+mass-zero compact Aeppli step.  Its support may meet
+coordinate hyperplanes of a different frame after the
+projective change $V$.  This is precisely why the full
+torus compact-$D$ obstruction of CMC is not contradicted.
+
+For each fixed matrix $A$, the diagonalization, rectangle,
+unit tuple, finite wall arrangement, and TDC operators
+are fixed before any allowed smooth coefficients vary.
+Their mixed seminorm bounds and their compatibility
+with actual relations are the frozen TDC and PAB ones.
+Different diagonalizations or rectangles need not give
+the same $\sigma_A$; every allowed choice gives the
+same literal equation (AAT13).  No canonical continuous
+section on all matrices or on the whole analytic form
+space is needed or asserted.
+
+\subsection{Full metric transgression for a regular tuple}
+
+Let now $X/K$ be smooth projective of dimension $n\ge r$,
+let $L$ carry one piecewise smooth metric, and let $s_0$
+be a regular $r$-tuple of global sections with zero
+scheme $Y_0$.  On $W=X^{\rm an}\setminus|Y_0|$ put
+\[
+ \Phi=\min_i\{-\log\|s_{0,i}\|\},\qquad
+ R=c_1(L),\qquad
+ F:W\longrightarrow P,\qquad C_0=F^*\omega=R-D\Phi.
+ \tag{AAT14}
+\]
+For a constant $A\in\mathrm{GL}_r(K)$ write
+$v=F^*v_A$, $C_A=F^*\omega_A$, and $\sigma=F^*\sigma_A$.
+Thus $C_A=C_0-Dv$ and the scalar potential for $As_0$
+is exactly $\Phi+v$.  For $1\le j\le r-1$ define
+\[
+                  B_j=-v\sum_{\ell=0}^{j-1}
+                                   C_A^\ell C_0^{j-1-\ell},
+       \qquad DB_j=C_A^j-C_0^j,
+ \tag{AAT15}
+\]
+and set $B_0=0$.  The full mixed primitives are
+\[
+ \begin{split}
+ \alpha_A&=\sum_{j=1}^{r-1}
+                     \Phi\,d''B_j\wedge R^{r-1-j}+\sigma
+                      \in B^{r-2,r-1}(W),\\
+ \beta_A&=\sum_{j=1}^{r-1}
+                     d'\Phi\wedge B_j\wedge R^{r-1-j}
+                      \in B^{r-1,r-2}(W).
+ \end{split}
+ \tag{AAT16}
+\]
+No coordinate or product assumption is imposed on the
+tuple $s_0$.  Its projective morphism $F$ and all actual
+pullbacks in these formulas are defined on $W$; this
+does not assert that $F$ gives a faithful native torus
+presentation or a proper actual pushforward.
+
+\begin{theorem}[Actual determinant-residue transgression]
+\label{thm:r9-actual-determinant-transgression}
+With $G_{As_0},G_{s_0}$ the exact same-metric CI2
+expressions, the forms (AAT16) satisfy
+\[
+       G_{As_0}-G_{s_0}
+              =d'\alpha_A+d''\beta_A+c_A C_0^{r-1}
+                                             \quad\text{on }W.
+ \tag{AAT17}
+\]
+Every term is an actual form over the original field.
+In particular determinant-unit frame changes have a
+displayed actual Aeppli primitive on the whole punctured
+domain, with all mixed metric terms retained.
+\end{theorem}
+
+\begin{proof}
+The graded Leibniz rule gives
+\[
+ d'(\Phi d''B_j)+d''(d'\Phi\wedge B_j)
+                         =\Phi DB_j-D\Phi\wedge B_j.
+ \tag{AAT18}
+\]
+All $B_j$ have even total degree; the minus sign in
+the second differential follows from $d''d'=-D$.
+Since $D\Phi=R-C_0$, subtracting the sum of (AAT18)
+times $R^{r-1-j}$ from the difference of the CI2
+expressions leaves
+\[
+ \sum_{j=0}^{r-1}
+       \bigl(v C_A^j+(R-C_0)B_j\bigr)R^{r-1-j}.
+ \tag{AAT19}
+\]
+For $\Xi_j=v\sum_{\ell=0}^{j}C_A^\ell C_0^{j-\ell}$
+and $\Xi_{-1}=0$, the summand in parentheses is
+$\Xi_j-R\Xi_{j-1}$.  The full sum therefore telescopes
+to $\Xi_{r-1}=F^*\Xi_A$, without suppressing any base,
+normal, or metric coefficient.  Equation (AAT13) says
+$F^*\Xi_A=d'\sigma+c_A C_0^{r-1}$.  Incorporating
+$\sigma$ into $\alpha_A$ proves (AAT17).
+\end{proof}
+
+The scalar $c_A$ is explicitly computable from the given
+matrix.  The primitive in (AAT16) may be constructed
+from the finite actual formula AAT23, actual pullback,
+and finite sheaf operations.  The compact Euclidean
+homotopy and actual angular zero extension above
+provide a second permissible choice.
+Thus (AAT17) does not rename an existence assumption,
+and it does not demand a continuous linear splitting of
+an arbitrary actual quotient.
+
+\subsection{Replacing the angular residue by an extending metric form}
+
+For actual extension, the residue in (AAT17) need not be
+made zero: it suffices to replace it by a form already
+defined on all of $X$.  Define on $W$
+\[
+ P_0=\Phi\sum_{\ell=0}^{r-2}C_0^\ell R^{r-2-\ell}
+                         \in B^{r-2,r-2}(W).
+ \tag{AAT20}
+\]
+Since $D\Phi=R-C_0$ and both curvatures are jointly closed,
+the finite telescoping identity gives
+\[
+                       DP_0=R^{r-1}-C_0^{r-1}.
+ \tag{AAT21}
+\]
+There is no zero-scheme current in this equality: it is
+an equality of actual forms on $W$.
+Set $\widehat\alpha_A=\alpha_A-c_A d''P_0$.
+Equation (AAT17) becomes the literal identity
+\[
+       G_{As_0}-G_{s_0}
+          =d'\widehat\alpha_A+d''\beta_A+c_A R^{r-1}
+                                             \quad\text{on }W.
+ \tag{AAT22}
+\]
+The last term is the restriction of an actual global
+form on $X$.  Hence no determinant-zero or equal-
+determinant condition is needed merely to extend the
+corrected form through a cancelled component.  The
+next section localizes the two actual Aeppli primitives
+and retains this extending residue separately near
+each component.

@@ -1,0 +1,432 @@
+% Round 21 / Hodge branch. New candidate; independent review required.
+\section{A mixed-degeneration global family with complete heights}
+\label{r21mg:section}
+
+\paragraph{Precise contribution.}
+The local MX21 theorem can replace the distinguished-place input in
+the frozen SG18 coefficient construction.  We carry out that
+replacement with literal integral coefficients and check every finite
+place.  The resulting family has the full homologically trivial Chow
+groups as its height domain after every number-field extension.
+It is not the SG18 family with a different model: at the distinguished
+places its fourth monodromy is zero, whereas the fourth monodromy of
+every SG18 member has rank $179$.  It also has a nonzero weight-two
+piece, so it has no potential good reduction there.
+
+This does not classify overlap with every earlier abstract motivic
+criterion, and it does not prove G for every member of the ambient
+linear system or for arbitrary varieties.  No historical priority is
+claimed for the classical arithmetic-pencil or semistable-resolution
+methods used in the construction.
+
+\subsection{The exact frozen global input and its check}
+
+Use the global data of frozen SG18:
+\[
+ E_0/\mathbf Q:\ y^2=x^3-x,\qquad
+ F_0=\mathbf Q(E_0[3]),\qquad
+ \mathcal S=\mathcal E\times_{\mathcal O_{F_0}}\mathcal E,
+ \qquad
+ \mathcal A_0=\mathcal O_{\mathcal E}(3[0])
+                     \boxtimes\mathcal O_{\mathcal E}(3[0]).
+ \tag{MG21.1}\label{r21mg:surface}
+\]
+Here $F_0$ contains the coordinates of \emph{all} geometric
+$3$-torsion points.  SG18 proves that $F_0/\mathbf Q$ is finite
+Galois and unramified at $5$, that $E_0$ has good reduction at
+every finite place of $F_0$, and that $\mathcal E$ is a smooth
+projective elliptic scheme over the entire number ring.
+
+We recall the hypotheses and degree checks in that proof to make
+the reuse precise.  The discriminant of the displayed equation is
+$64$, so only places above $2$ require a new argument.  Complex
+multiplication over $\mathbf Q(i)$ gives potential good reduction
+there by Serre--Tate, Theorem 6(a).  Thus the $3$-adic inertia image
+at $2$ is finite.  Over $F_0$ it is contained in
+$1+3M_2(\mathbf Z_3)$, since all $3$-torsion is rational.
+This congruence group has no nontrivial finite-order elements:
+for $1+3^aB\ne1$ the binomial expansion of a prime-order power
+has a unique lowest-valuation term, including at the prime $3$.
+The finite inertia image is therefore trivial.  The prime-to-residue
+Neron--Ogg--Shafarevich criterion, Serre--Tate Theorem 1, supplies
+good reduction at $2$.  Good reduction already holds at every other
+prime, including $3$.  At $5$ the original elliptic model has finite
+etale $3$-torsion, so inertia on the full torsion field is trivial.
+The local proper smooth elliptic models glue by the Neron property;
+the identity divisor of relative degree three gives projectivity.
+This does not assert that the same Weierstrass equation is smooth
+over the whole number ring.
+
+Set
+\[
+  \mathcal Y=\mathcal S\times\mathbf P^3_{\mathcal O_{F_0}},
+  \qquad \mathcal L_0=\mathcal A_0\boxtimes\mathcal O(1),
+  \qquad \mathcal A=\mathcal A_0^5.
+ \tag{MG21.2}\label{r21mg:ambient}
+\]
+All these schemes are smooth projective with geometrically integral
+fibers at every finite place.  In particular
+$\mathcal A\boxtimes\mathcal O(5)=\mathcal L_0^5$, exactly the
+line bundle in the frozen SG18 global coefficient space.
+
+The retained SG18 source is
+\texttt{research\_input/round18/sectors/}
+\texttt{abelian\_surface\_ambient\_complete\_heights.tex},
+SHA-256
+\texttt{14fb50ae6121f72918f18850c4b8e8c17ac7289ca8305c9205cb7497751f3905}.
+Its Lemmas \texttt{r18sg:global-good} and
+\texttt{r18sg:coefficients}, including their native-field scope,
+are the exact global inputs here.  The original Serre--Tate primary
+source is
+\url{https://wstein.org/papers/bib/Serre-Tate-Good_Reduction_of_Abelian_Varieties.pdf},
+printed pages 493 and 503.
+
+\begin{lemma}[Actual free coefficients for the mixed product]
+\label{r21mg:coefficients}
+There is a fixed relative projective embedding
+$\mathcal Y\hookrightarrow\mathbf P^N_{\mathcal O_{F_0}}$ with
+$\mathcal O(1)|_{\mathcal Y}=\mathcal L_0$ such that the finite free
+module $V_5$ of degree-five ambient polynomials surjects onto
+$H^0(\mathcal Y,\mathcal L_0^5)$ and onto its section space on
+every field fiber.  The same remains true after the finite field
+extension used below.  Consequently every mixed product
+\[
+       P=f_0\prod_{j=1}^5l_j,
+       \quad f_0\in H^0(\mathcal S,\mathcal A_0^5),
+       \quad l_j\in H^0(\mathbf P^3,\mathcal O(1)),
+ \tag{MG21.3}\label{r21mg:P}
+\]
+has an actual degree-five polynomial representative in $V_5$.
+\end{lemma}
+
+\begin{proof}
+This is SG18's full-section coefficient lemma, with the mixed
+product interpreted in its correct line bundle.  For clarity, on
+each elliptic fiber the degree-three embedding is a plane cubic;
+$H^1(\mathbf P^2,\mathcal O(t))=0$ makes its coordinate polynomials
+surject onto every positive tensor degree.  Combining the two
+elliptic embeddings and $\mathbf P^3$ by Segre gives the same
+surjectivity for $\mathcal L_0^d$ in every field fiber.  Positive
+elliptic line bundles have no higher cohomology.  Kunneth and
+cohomology and base change make the section module locally free,
+and Nakayama proves the global surjectivity from a chosen finite
+free ambient coordinate module.  No freeness of the section module
+itself over a Dedekind ring is required.  These arguments commute
+with the finite flat number-ring base change.
+
+The two factors in \eqref{r21mg:P} have bidegrees $(5,0)$ and
+$(0,5)$ relative to $\mathcal A_0$ and $\mathcal O(1)$; their product
+therefore belongs to $H^0(\mathcal L_0^5)$.  Surjectivity gives the
+asserted polynomial representative.  We choose one such representative
+before imposing any coefficient congruence.  The individual factors
+are not incorrectly regarded as degree-one Segre forms.
+\end{proof}
+
+\subsection{The complete global family}
+
+\begin{theorem}[Mixed global complete-height family, MG21]
+\label{r21mg:main}
+There is one fixed finite extension $F/F_0$, unramified at all places
+over $5$, and a Zariski-dense family of smooth geometrically integral
+fourfolds
+\[
+                              X\in|\mathcal L_0^5|_{Y_F}
+ \tag{MG21.4}\label{r21mg:family}
+\]
+with the following properties.
+\begin{enumerate}
+\item For every finite extension $F'/F$, every finite place $w$ of
+$F'$, every codimension, and every specified geometrically
+homologically trivial rational cycle on $X_{F'_w}$, strong G holds
+with exact support, all compact ordinary actual tests, and the given
+absolute value.
+\item For every such $F'/F$, the frozen PH16 pairings are defined on
+the complete complementary geometric homological Chow groups:
+\[
+ \operatorname{CH}^r(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+   \times\operatorname{CH}^{5-r}(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+          \longrightarrow\mathbf R,\qquad 1\le r\le4.
+ \tag{MG21.5}\label{r21mg:height}
+\]
+GA17 supplies regular-model admissible Chow lifts on these full
+domains.
+\item At every place of $F$ over $5$, the actual MX21 model has at
+most four components through a point, the fourth monodromy operator
+on $H^4$ is zero, and its weight-two graded piece contains a
+nonzero Frobenius-stable direct summand of dimension $8$.
+The generic fiber has no potential good reduction at these places.
+\item After a common finite extension of the corresponding local
+fields at $5$, no member is geometrically isomorphic to a member of
+the frozen explicit SG18 family, whose fourth monodromy has rank
+$179$.  This distinguishes these generic fibers, not merely their
+chosen models.
+\end{enumerate}
+The density is over the one fixed $F$ and in the full section space.
+No assertion that every member of that linear system has G is made.
+\end{theorem}
+
+\begin{proof}
+\emph{1. Fix the reference and all residue choices before the field.}
+Choose an integral polynomial $H_0\in V_5$ whose generic divisor
+on $Y_{F_0}$ is smooth.  The very ample degree-five system has a
+nonempty smooth Bertini open, and an integral coefficient lattice
+is Zariski dense, so such a choice exists.
+Let $S_0$ be the finite set of rational primes other than $5$ lying
+below the places where that divisor is not smooth, together with
+$2$.  Include a place where its entire defining section vanishes
+on reduction in this set as well.
+
+At \emph{every} place $v$ of $F_0$ over every prime in $S_0$, choose
+a smooth degree-five special section $G_v$ after a finite residue
+extension.  The smooth open is geometrically nonempty.  It is
+essential to make this choice even at places over the same rational
+prime where $H_0$ was already smooth.
+
+At every $v\mid5$, choose instead, after a finite residue extension,
+a smooth geometrically integral curve cut by
+$f_{0,v}\in H^0(S_v,\mathcal A_{0,v}^5)$, five hyperplanes
+$l_{j,v}$ of $\mathbf P^3$ in general position, and
+$Q_v\in H^0(Y_v,\mathcal L_{0,v}^5)$ transverse to every mixed
+stratum, with the geometric integrality and finite-etale conditions
+of MX21.  The line bundles are very ample, so simultaneous Bertini
+on the finite list of strata gives a nonempty open over the
+algebraic closure and hence a point over a finite residue extension.
+
+Choose an integer $N$ divisible by all the finitely many residue
+extension degrees just chosen.  At each of the selected maximal
+ideals of $\mathcal O_{F_0}$ choose a monic irreducible polynomial
+of degree $N$ over its residue field.  Coefficientwise CRT gives one
+monic $g\in\mathcal O_{F_0}[T]$ with all these reductions.  It is
+irreducible over $F_0$: a monic factor would have integral
+coefficients in the integrally closed number ring and would give
+a nontrivial factor of one of the irreducible reductions.
+Put $F=F_0[T]/(g)$.  At each selected place this extension is
+unramified and inert of degree $N$, since the reduction of $g$
+is separable and irreducible.  The corresponding finite etale local
+algebra is already the unramified integer ring.  Thus all selected
+residue fields are available over this fixed $F$, and $F/\mathbf Q$
+is unramified at $5$.  The everywhere-good surface base changes to
+an everywhere-good surface over $\mathcal O_F$.
+
+\emph{2. Lift actual mixed factors and impose literal congruences.}
+The section module of $\mathcal A_0^5$ on the surface commutes with
+reduction, by the positive-degree elliptic cohomology calculation.
+CRT in this module lifts the finitely many $f_{0,v}$ at $v\mid5$
+to one global section $f_0$.  The hyperplane coefficients lift in
+the free module $\mathcal O_F^4$, and $Q_v$ lifts in the ambient
+free module $V_5$.  Form the actual mixed section
+$P=f_0\prod_{j=1}^5l_j$ and choose a polynomial representative
+$P\in V_5$ using Lemma~\ref{r21mg:coefficients}.  Hence all
+congruences below are literal congruences of ambient polynomials.
+Use the same coefficient surjectivity to represent the chosen
+$G_v$ at every place over $S_0$.
+
+Put $B=\prod_{p\in S_0}p$ and $M=25B$.  Choose $H_1\in V_5$
+subject to
+\[
+ H_1\equiv P+5Q\pmod{25\mathcal O_F},\qquad
+ H_1\equiv G_v\pmod{\mathfrak p_v}\quad(v\text{ above }S_0).
+ \tag{MG21.6}\label{r21mg:H1}
+\]
+These conditions are pairwise compatible.  At $5$ the equality
+$25\mathcal O_F=\prod_{v\mid5}\mathfrak p_v^2$ holds because
+the field is unramified there.  Their solution set is a nonempty
+translate of a full integral coefficient lattice.
+
+Require also that the pencil $[uH_0+vH_1]$ have smooth base locus
+and only transverse one-node singular geometric members, and that
+$H_1$ itself be smooth.  The fixed-smooth-member Lefschetz open
+proved in frozen CG18 and used in SG18 is nonempty on this actual
+smooth fivefold.  Its proof needs only first and second jets at one
+point and independent first jets at two distinct points.  Degree-five
+polynomials in the given projective embedding supply all these jets.
+The marked-singularity incidence gives a discriminant hypersurface
+with a dense one-node open; projection from the fixed smooth
+$[H_0]$ is finite and generically etale in characteristic zero.
+Avoiding its bad and branch loci gives exactly the stated pencil
+condition.  No step uses how the residue target $P$ factors.
+The dense congruence lattice therefore meets this open densely.
+
+\emph{3. Spread each chosen pencil and select infinitely many parameters.}
+After $H_1$ is fixed, spread the pencil and enlarge a finite set of
+places so that outside it the base locus is smooth and every
+geometric fiber is smooth or has exactly one ordinary quadratic
+point.  This is the same finite-presentation argument as SG18:
+the finite critical-value scheme, its separation of distinct values,
+the nonzero Hessians, and the smoothness off it spread after
+inverting finitely many primes.  The two coefficient sections also
+remain independent there, so no parameter gives a zero defining
+section.  Include all places above $S_0\cup\{5\}$ and all
+characteristic-two places in the exceptional set.
+Let $T$ be the finite set of underlying rational primes.  It may
+depend on $H_1$, but neither $F$ nor the earlier lattice does.
+
+For every integer $a$ satisfying
+\[
+ a\equiv1\pmod{25},\qquad a\equiv1\pmod B,\qquad
+ a\equiv0\pmod p\quad(p\in T\setminus(S_0\cup\{5\})),
+ \tag{MG21.7}\label{r21mg:a}
+\]
+take the divisor
+\[
+                              X_a=V(MH_0+aH_1)\subset Y_F.
+ \tag{MG21.8}\label{r21mg:Xa}
+\]
+The CRT moduli are coprime after repetitions are removed, so there
+are infinitely many such integers.  Remove the finitely many which
+give a singular generic member.  All remaining members are smooth.
+
+\emph{4. Check the actual local model at every finite place.}
+At $v\mid5$, write the literal polynomial equality
+$H_1=P+5Q+25R_1$.  The integer $a$ is a unit there.  Dividing the
+local equation by $a$ gives
+\[
+ P+5Q_a=0,\qquad
+ Q_a=Q+5R_1+5B a^{-1}H_0,
+                       \qquad\bar Q_a=\bar Q.
+ \tag{MG21.9}\label{r21mg:localmixed}
+\]
+Here $5$ is a native uniformizer.  This is exactly the MX21
+mixed model with $\mathcal A=\mathcal A_0^5$ and $d=5$,
+including the previously chosen actual transverse strata.
+
+At every place above $S_0$, the integer $M$ reduces to zero and
+$a$ to one.  The special defining section is the chosen smooth
+$G_v$.  At any exceptional place outside $S_0\cup\{5\}$, $M$
+is a unit and $a$ reduces to zero, so the special divisor is the
+smooth reference $H_0$.  This reference is smooth there because
+all of its bad rational primes were already put into $S_0$.
+At every other place the spread pencil has a smooth or one-node
+special divisor.  Thus there is no missing finite place.
+
+Every defining special section just described is nonzero.  In the
+smooth ambient with integral fibers it is a nonzerodivisor; the
+relative Cartier divisor is flat over the trait.  The generic
+fiber is geometrically integral, and flatness plus the Cartier
+Cohen--Macaulay property makes the total closure integral.  The
+required local projective models are therefore actual flat
+integral models, not just descriptions of individual equations.
+
+For clarity, smooth and one-node geometric fibers are integral.
+On every field fiber,
+\[
+ H^1(S\times\mathbf P^3,
+                \mathcal A_0^{-5}\boxtimes\mathcal O(-5))=0:
+ \tag{MG21.10}\label{r21mg:connected}
+\]
+the two Kunneth terms contain respectively
+$H^0(\mathbf P^3,\mathcal O(-5))=0$ and
+$H^1(\mathbf P^3,\mathcal O(-5))=0$.
+The divisor sequence gives $H^0(X,\mathcal O_X)=\bar k$ after
+geometric base change.  Such a Cartier fourfold is $S_2$, and
+an isolated-node fiber is also $R_1$, hence normal.  Connectedness
+and normality give geometric integrality.  The same reasoning
+applies to the smooth generic members.
+
+\emph{5. Activate every complete local cycle domain, then the heights.}
+At every place above $5$, MX21 proves full G and its all-finite-
+extension version for every new cycle over that extension.
+At every other place the literal model above meets the frozen
+good-reduction or ON17 ordinary-quadratic theorem, including its
+all-finite-extension statement.  Characteristic-two places were
+forced smooth.  For an arbitrary finite $F'/F$ and every $w$ over
+these places, apply the corresponding local theorem to the entire
+new Chow group on $X_{F'_w}$.  No such group is replaced by cycles
+pulled back from $F$.
+
+The frozen PH16 hypotheses now hold at all finite places in every
+complementary degree.  Together with its established archimedean
+input, PH16 yields \eqref{r21mg:height} on the full original global
+homological Chow groups over $F'$.  GA17 supplies the admissible
+regular-model lifts on this proved domain.  All actual local
+identities use their exact specified supports, all compact actual
+tests, the full auxiliary field degrees, and the fixed local
+absolute values.
+
+\emph{6. Prove density over the one fixed number field.}
+The choices of $F$ and of the residue coefficient lattice precede
+the variation of $H_1$.  The allowed $H_1$ in that lattice and in
+the fixed-member open are Zariski dense in $V_{5,F}$.
+For each such direction, infinitely many integers $a$ in
+\eqref{r21mg:a} survive the finite exclusion.  A polynomial
+vanishing on all constructed coefficient vectors $MH_0+aH_1$
+therefore vanishes on the whole affine line in each such direction.
+In particular it vanishes at $MH_0+H_1$.  Those latter points
+are dense, so the polynomial is zero.  The surjection of
+Lemma~\ref{r21mg:coefficients} makes the images dense in the full
+section space, and hence in the displayed projective linear system.
+
+\emph{7. Check the genuine generic-fiber distinction.}
+The sign in \eqref{r21mg:surface} matters: this is $y^2=x^3-x$,
+not the plus-sign illustration in MX21.  At $5$ it has eight points,
+Frobenius trace $-2$, and eigenvalues $\alpha=-1+2i$, $\beta=-1-2i$
+on $H^1$.  Its square surface has four independent divisor classes
+from the factors, the diagonal, and the order-four automorphism
+graph; their intersection matrix has determinant $-4$.
+The other two $H^2$ eigenvalues are
+\[
+                   \alpha^2=-3-4i,\qquad \beta^2=-3+4i.
+ \tag{MG21.11}\label{r21mg:T}
+\]
+Their quotients by $5$ are not roots of unity: they lie in
+$\mathbf Q(i)$ and are not $1,-1,i,-i$.  A geometric divisor is
+defined over some finite residue extension and has a Tate
+eigenvalue there.  Thus these two directions remain outside the
+divisor subspace after every residue extension, while the four
+displayed independent divisors fill the other four-dimensional
+space.  Hence $\dim T=2$ at every completion above $5$ used here.
+
+MX21 with $d=5$ gives a direct summand of dimension
+$2\binom43=8$ in the weight-two part of $H^4$ and therefore excludes
+potential good reduction.  Its actual model has no fivefold
+stratum.  The frozen NM17 crossing-depth bound gives $N^4=0$.
+Equivalently, the weight spectral sequence has no column outside
+$-3\le a\le3$, and $N$ lowers the abutment weight filtration by
+two; its fourth power is zero on $H^4$.
+
+Frozen SG18 instead proves $\operatorname{rank}N^4=179$ at every
+place above $5$ for every member of its explicitly constructed
+family.  Restriction to a finite valued extension multiplies a
+normalized logarithmic monodromy by a nonzero ramification scalar,
+so zero versus nonzero fourth power persists.  A geometric
+isomorphism over an algebraic closure is defined over a finite
+extension and would identify the corresponding cohomological
+Galois representations after a common finite extension.  The two
+monodromy assertions contradict that possibility.  This proves
+the stated strict distinction from the named frozen SG18 family.
+\end{proof}
+
+\subsection{Boundaries of the theorem}
+
+The new global family has the same complete cycle-group scope as
+SG18 but a different certified local degeneration type and different
+intrinsic monodromy at $5$.  In particular the calculation proves
+more than another model of the same SG18 generic fibers.  It does
+not assert disjointness from every earlier abstract correspondence,
+domination or motivic sufficient criterion; those are larger
+collections without a complete isomorphism classification.
+
+Weak Lefschetz still gives $b_1(X)=4$ and $b_2(X)=7$, since the
+ambient and total line bundle are unchanged.  Consequently these
+are not smooth projective-space complete-intersection fourfolds,
+nor members of the frozen projective-space hypersurface families.
+The comparison with SG18 uses $N^4$, not these shared Betti numbers.
+
+The extension from local G to complete heights was made only after
+checking every finite place in the construction.  Neither a local
+dense family alone nor the existence of a positive model at one
+place would have sufficed.  General G for arbitrary varieties and
+the arbitrary-variety complete unconditional BB height problem
+remain \textbf{OPEN}.
+
+\paragraph{Dependency ledger.}
+The genuinely new local input is MX21.  The preserved frozen
+arithmetic inputs are SG18's everywhere-good surface and free
+coefficient lemma, the CG18/SC18 fixed-smooth-member Lefschetz
+pencil proof, the finite-place spreading and CRT mechanism written
+out above, ON17 and the frozen good-reduction all-cycle theorems,
+RI18 as used inside MX21, PH16, and GA17.  The distinction uses
+NM17's crossing-depth bound and SG18's checked fourth-monodromy
+rank.  The $5$-adic transcendental eigenspaces are recomputed above;
+no identification of the two different elliptic equations is
+assumed.

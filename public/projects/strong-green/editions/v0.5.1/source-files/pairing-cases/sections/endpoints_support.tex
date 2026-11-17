@@ -1,0 +1,205 @@
+\section{Endpoint degrees and small diagonal support}\label{sec:endpoints}
+
+\subsection{Chow transfer and complementary degrees}
+
+\begin{lemma}[Transfer through a Chow diagonal]\label{lem:general-transfer}
+Suppose that over a finite extension $L/K$ there are smooth projective
+varieties $V_j$ and correspondences of opposite degrees satisfying
+\[
+ \Delta_{X_L}=\sum_jv_j\circ u_j
+ \quad\text{in }\CH^{\dim X}(X_L\times_LX_L)_\Q.
+\]
+Fix $r$. If every homologically trivial image $u_{j*}z_L$ is in the
+native obstruction kernel of $V_j$, then
+$z\in\cK_K^r(X)$. In particular $\mathsf V(V_j)$ for every $j$
+implies $\mathsf V(X)$.
+\end{lemma}
+
+\begin{proof}
+Cycle classes commute with correspondences, so the image classes are
+homologically trivial. Kernel covariance sends $v_{j*}u_{j*}z_L$ into
+$\cK_K^r(X_L)$. Sum the diagonal and push down by $X_L\to X$.
+The result is $[L:K]z$, and rational division gives the conclusion.
+All correspondences over $L$ are interpreted on the diagonal
+open-and-closed factor of the product over $K$, as in
+\subref{sub:covariance}. Finally apply the curved-pair theorem to the
+specified representative of $z$.
+\end{proof}
+
+\begin{lemma}[The two-degree criterion]\label{lem:two-degrees}
+Let $X/F$ have dimension $n$, and let $S\subseteq\{1,\ldots,n\}$.
+Suppose that at every finite place $v$, all geometric homological
+classes in degrees $r\in S$ have zero native obstruction. Then
+$\cH^r(X)=\CH^r(X)_{\Q,\geomhom}$ for $r\in S$. The full height
+pairing in degrees $(r,n+1-r)$ is therefore defined whenever
+$r\in S\cap(n+1-S)$.
+\end{lemma}
+
+\begin{proof}
+Geometric cycle classes commute with passage to $F_v$. Thus every
+global homologically trivial class in an asserted degree belongs to
+each local kernel defining $\cH^r(X)$. The opposite inclusion is in
+the definition of $\cH^r(X)$. Apply the companion pairing to both
+resulting equalities.
+\end{proof}
+
+\begin{proposition}[Endpoint input]\label{prop:endpoint-input}
+For a smooth projective $n$-fold over the original $K$, geometric
+homological divisors, zero-cycles and one-cycles have zero obstruction.
+Thus $\mathsf V(X)$ holds if $n\leq3$.
+\end{proposition}
+
+The divisor and zero-cycle assertions are the endpoint results in
+\cite{InternalEndpoints}. For one-cycles, the precise input is the
+regular-model curve correction followed by dominant obstruction
+descent, also recorded there. Its proof proceeds as follows. Choose a
+projective strictly semistable alteration $V\to X$, over a finite
+constant extension, of the same dimension as $X$. The pullback of a
+homologically trivial one-cycle remains a one-cycle. The curve
+correction produces a rational virtual bundle on the regular model
+whose generic degree-$(n-1)$ character is that class and whose degree
+on every vertical $(n-1)$-cycle is zero. The numerical-model criterion
+annihilates its obstruction; dominant descent gives the assertion on
+$X$. This uses the full degree of the alteration and leaves the final
+curved-pair correction on $X$.
+
+\subsection{Two orientations of the diagonal}
+
+\begin{definition}\label{def:small-support}
+A rational small-support diagonal for $X$, of dimension $n$, is an
+identity
+\begin{equation}\label{eq:small-diagonal}
+ \Delta_X=A+B,\qquad
+ \operatorname{Supp}A\subseteq D\times X,\quad
+ \operatorname{Supp}B\subseteq X\times T,
+\end{equation}
+in rational Chow, where $D$ is a divisor and $\dim T\leq3$.
+The identity may be supplied after a finite extension of the ground
+field. The supports belong to actual cycle representatives of $A,B$.
+\end{definition}
+
+\begin{theorem}[Small diagonal support]\label{thm:small-support}
+If $X$ has a small-support diagonal, its complete geometric homological
+Chow groups are in the local obstruction kernel for
+\begin{equation}\label{eq:small-support-range}
+ r\leq2\quad\text{or}\quad r\geq n-2.
+\end{equation}
+It has property $\mathsf V$ if $n\leq5$. Over a number field, the
+same geometric hypothesis gives a full height domain if $n\leq5$;
+for $n\geq6$ it gives the full pairs with $r\leq2$ or $r\geq n-1$.
+\end{theorem}
+
+\begin{proof}
+Resolve the components of $D$ and $T$, with maps $a_i:D_i\to X$ and
+$b_j:T_j\to X$. A cycle supported on the image of a proper surjection
+can be lifted rationally: choose a closed point of the fiber above its
+generic point, take its closure, and divide by the full generic
+degree. This also applies to cycles contained in exceptional images.
+It lifts \eqref{eq:small-diagonal} to correspondences
+\[
+ U_i\in\CH^{n-1}(D_i\times X)_\Q,\qquad
+ V_j\in\CH^{t_j}(X\times T_j)_\Q,\quad t_j=\dim T_j\leq3.
+\]
+The identity and its transpose act as
+\begin{align}
+ z&=\sum_iU_{i*}a_i^*z+\sum_jb_{j*}V_{j*}z,
+       \label{eq:small-forward}\\
+ z&=\sum_i a_{i*}{}^tU_{i*}z+\sum_j{}^tV_{j*}b_j^*z.
+       \label{eq:small-transpose}
+\end{align}
+All intermediate classes are geometrically homologically trivial.
+In \eqref{eq:small-forward}, the class on $D_i$ has dimension
+$n-1-r\leq1$ when $r\geq n-2$. In
+\eqref{eq:small-transpose}, it has codimension $r-1\leq1$ when
+$r\leq2$. These are the endpoint degrees. Every feasible class on
+$T_j$ is an endpoint class because $t_j\leq3$; impossible degrees
+and homologically trivial rank classes are zero. Apply kernel
+covariance to the indicated orientation. If the identity is defined
+after a finite extension, use \lemref{lem:general-transfer} to descend.
+The two local ranges cover every degree for $n\leq5$. Intersecting
+them with their complementary ranges proves the height assertions
+by \lemref{lem:two-degrees}.
+\end{proof}
+
+\begin{proposition}[Universal zero-cycle support]\label{prop:universal-support}
+Suppose that a closed subset $T\subset X_{\bar k}$, of dimension at
+most $s$, surjects onto $\CH_0(X_\Omega)_\Q$ for every algebraically
+closed extension $\Omega/\bar k$. Then after a finite extension of
+$k$ there is an identity \eqref{eq:small-diagonal} with $\dim T\leq s$.
+\end{proposition}
+
+\begin{proof}
+Apply the support hypothesis to the generic point over
+$\overline{\bar k(X)}$. A rational-equivalence certificate uses only
+finitely many points, curves and functions, so it is defined over a
+finite extension of $\bar k(X)$. Norming down and dividing by its
+degree gives the supported generic-point relation over $\bar k(X)$.
+Close the cycle in $X_{\bar k}\times T$ and spread the relation over
+an open subset of the first factor. Chow localization puts the
+remaining difference from $\Delta_X$ over its closed complement;
+contain this complement in a divisor. Finally descend the finite
+cycle-and-function certificate and the supports to a finite
+extension of $k$.
+\end{proof}
+
+\begin{corollary}[Rationally connected fibrations]\label{cor:rc-fibrations}
+Let $f:X\to B$ be a surjective morphism of smooth projective varieties
+in characteristic zero. Suppose that over a nonempty open of $B$ it
+is smooth with rationally connected geometric fibers. If $\dim B\leq3$,
+then \thmref{thm:small-support} applies to $X$. In particular it gives
+all degrees if $\dim X\leq5$. Geometrically rationally connected
+varieties, including smooth Fano varieties, are examples with
+zero-dimensional support.
+\end{corollary}
+
+\begin{proof}
+The closure of a closed point of the generic fiber is a multisection
+$T\subset X$ of dimension $\dim B$. It is proper and surjective over
+$B$. After any algebraically closed extension, move a zero-cycle
+into the smooth rationally connected locus. Each of its points is
+rationally equivalent, inside its fiber, to a point of $T$ in the
+same fiber. Rational connectedness gives this equality by chains of
+rational curves. The multisection therefore supplies universal
+geometric rational zero-cycle support. Apply
+\propref{prop:universal-support} and \thmref{thm:small-support}.
+\end{proof}
+
+\subsection{Projective bundles and dominant images}
+
+\begin{proposition}\label{prop:closures}
+Property $\mathsf V$ is preserved by projective bundles, by blowups
+along smooth centers when both the ambient variety and the center
+have $\mathsf V$, and by smooth projective dominant morphism images.
+The assertions allow a preliminary finite extension.
+\end{proposition}
+
+\begin{proof}
+The Chow-motive projective-bundle and blowup decompositions are
+finite direct sums of Tate twists of the indicated smooth varieties.
+Apply \lemref{lem:general-transfer}. For a projective dominant
+morphism $f:V\to X$ with relative dimension $e$, choose a relatively
+ample class $a$ whose top degree on the generic fiber is $d>0$.
+The correspondence $d^{-1}f_*(a^e\cdot-)$ is a left inverse to
+$f^*$ by the projection formula. Its action gives a rational Chow
+retraction and hence the same transfer. The formula can be checked
+after product with any smooth projective test variety, so it is a
+Chow correspondence identity. Finite descent is as before.
+\end{proof}
+
+\begin{corollary}\label{cor:uniruled}
+A geometrically uniruled smooth projective fourfold has $\mathsf V$.
+So does any smooth projective dominant morphism image of a
+projective-bundle tower over a variety of dimension at most three,
+or over one of these uniruled fourfolds.
+\end{corollary}
+
+\begin{proof}
+After a finite extension, a uniruled fourfold is dominated rationally
+by $B\times\PP^1$ for a smooth projective threefold $B$. Resolve this
+map in characteristic zero by smooth blowups of the four-dimensional
+source. Every nontrivial center has dimension at most two, hence has
+$\mathsf V$. The source and its resolution have $\mathsf V$ by
+\propref{prop:closures}. The resolved dominant morphism transfers it
+to $X$. The remaining assertions follow successively from projective
+bundle and dominant-morphism transfer.
+\end{proof}

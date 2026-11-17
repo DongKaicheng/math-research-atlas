@@ -1,0 +1,66 @@
+\section{The exact central Northcott reduction}
+\label{sec:central-northcott}
+
+Continue with the central notation of
+\MathSecref{sec:central-projector}. Let
+\(\Lambda_U(E)=\Pi_*\Lambda_Y^c(E)\) and let
+\(\Lambda_G(E)\) be its image in \(G_E\). The quotient may be
+viewed in the geometric group: if an element defined over \(E\)
+becomes geometrically algebraically trivial, it is in \(A_E\) by
+definition. In particular, these rational quotients inject under
+field extension.
+
+\begin{theorem}\label[theorem]{thm:central-northcott}
+The following conditions are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item The form \(q_U(z)=(-1)^ch_Y(z,z)\) has bounded-degree
+Northcott on \(\Lambda_U\).
+\item For every finite \(E/F_0\), \(K_E=\ker(\AJ_\Q|_{A_E})=0\),
+and \(q_G\) has bounded-degree Northcott on \(\Lambda_G\).
+\end{enumerate}
+There is also a fixed-field version, with all groups and the
+vanishing condition taken over one fixed \(E\).
+\end{theorem}
+
+\begin{proof}
+Suppose (i). If \(0\ne z\in K_E\), multiply by one integer to
+make \(z\) integral. All positive integer multiples of this class
+are distinct and have height zero, contradicting Northcott.
+Thus \(K_E=0\).
+
+Choose an integer \(M\ge1\) such that \(MR\) is represented by
+an integral correspondence. For \(\xi\in\Lambda_G(E)\), choose
+\(z\in\Lambda_U(E)\) mapping to \(\xi\). Then
+\[
+ MRz\in\Lambda_U(E),\qquad
+ q_U(MRz)=M^2q_G(\xi),\qquad [MRz]=M\xi.
+\]
+Northcott for \(\Lambda_U\) bounds the possible classes \(MRz\),
+and hence the possible \(\xi\). This proves residual Northcott.
+
+Conversely, assume (ii). Residual Northcott implies
+\(q_G(\xi)>0\) for every nonzero rational class \(\xi\in G_E\).
+Indeed one multiple of \(\xi\) is in \(\Lambda_G(E)\), and a
+nonpositive height would give infinitely many integral multiples
+of height at most zero. For every \(z\in U_E\), orthogonality gives
+\begin{equation}\label{eq:central-norm-split}
+ q_U(z)=q_e(ez)+q_G([z]).
+\end{equation}
+Both terms are nonnegative. If \(z\) is integral and
+\(q_U(z)\le B\), residual Northcott bounds the possibilities for
+\([z]\). The denominators of the fixed projector \(e\), followed
+by \Cref{lem:visible-integral}, bound the possibilities for \(ez\).
+Finally
+\[
+ z\longmapsto(ez,[z])
+\]
+is injective: its kernel is \(RA_E=K_E=0\). This proves (i).
+The argument with \(E\) fixed is identical.
+\end{proof}
+
+The equivalence separates the algebraic Abel--Jacobi kernel from
+integral finiteness on the residual quotient. In fact, Northcott
+also forces real positive definiteness, by
+\Cref{lem:northcott-real}. This observation will combine the
+central equivalence with the primitive calculation in
+\Cref{thm:program-equivalence}.

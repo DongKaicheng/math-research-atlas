@@ -1,0 +1,311 @@
+\section{A finite block word on the reduced conormal scheme}
+\label{sec:r11-reduced-conormal-word}
+
+\paragraph{Status, authorship, and scope.}
+\textbf{PROVED THIS ROUND}, pending final exact-source independent
+review.  The construction contributors are \texttt{/root} and
+\texttt{/root/r11\_challenge}.  The input below is a finite algebraic
+word on a reduced scheme.  The output is a genuinely constructed
+actual Green form on the original exact complement.  No calculus of
+Mihatsch forms is imposed on that reduced scheme, and no arbitrary
+analytic matrix factorization is asserted.
+
+This module uses the precise finite-word germ-invariance theorem GIC.
+In particular, the positive floor in every capped subtuple norm and
+the fixed canonical two-pivot partition are part of that theorem.
+Equality just of the endpoint norms would not suffice.
+
+\subsection{Original cycle and the independently checkable certificate}
+
+Let $X/K$ be the original smooth projective geometrically integral
+variety, let $n=\dim X$, and let $n\ge r\ge2$.  Fix the original
+absolute value and one actual metrized line bundle $\overline L$ of
+the type allowed in frozen CI.  Let $s_0,s_1$ be regular $r$-tuples
+of global sections of the same $L$, and put
+\[
+ \begin{gathered}
+ Y_i=V(s_i),\qquad Z=[Y_1]-[Y_0],\qquad
+ U=X^{\rm an}\setminus|Z|,\\
+ W=X^{\rm an}\setminus(|Y_0|\cup|Y_1|),\qquad
+ C_U=(|Y_0|\cup|Y_1|)\cap U.
+ \end{gathered}
+ \tag{CBW1}
+\]
+Supply a Zariski open $V\subset X$ with
+\[
+ C_U\subset V^{\rm an},\qquad
+ \mathcal I_{Y_0}|_V=\mathcal I_{Y_1}|_V=:\mathcal I.
+ \tag{CBW2}
+\]
+The open $V$ need not be affine.  Set $Y=V(\mathcal I)\subset V$
+and $Y_{\rm red}=V(\sqrt{\mathcal I})$.  The original zero schemes
+and all their cycle multiplicities remain $Y_0,Y_1$, not their
+reductions.  The reduction here serves only to formulate a sufficient
+finite coefficient certificate.
+
+Each regular tuple identifies the same conormal bundle with
+$(L^{-1}|_Y)^{\oplus r}$.  The common scalar line-bundle frame
+cancels from their change of basis.  Thus the regular-sequence
+calculation in frozen ICC gives a canonical matrix
+\[
+ \overline M\in\operatorname{GL}_r\bigl(\Gamma(Y,\mathcal O_Y)\bigr),
+ \qquad
+ \overline M_{\rm red}
+   \in\operatorname{GL}_r\bigl(\Gamma(Y_{\rm red},\mathcal O_{Y_{\rm red}})\bigr).
+ \tag{CBW3}
+\]
+Explicitly, every local analytic or algebraic comparison $s_1=M_i s_0$
+reduces to $\overline M$, since two comparison rows differ by a
+regular-sequence relation whose coefficients lie in $\mathcal I$.
+
+A \emph{reduced conormal block-word certificate} is the following
+finite data.  In the commutative original-$K$ ring
+$A=\Gamma(Y_{\rm red},\mathcal O_{Y_{\rm red}})$, supply an exact
+factorization
+\[
+                 \overline M_{\rm red}
+                           =\overline F_m\cdots\overline F_1,
+ \tag{CBW4}
+\]
+where each factor is one of:
+\begin{enumerate}
+\item an elementary shear $E_{ij}(b)$ with $b\in A$;
+\item one-entry multiplication $D_i(\lambda)$ with $\lambda\in A^\times$;
+\item a specified $2\times2$ block in two selected rows, the identity
+on the other rows, with entries in $A$ and determinant in $A^\times$.
+\end{enumerate}
+The word length, row labels, coefficients, unit inverses, and block
+determinant inverses are part of the certificate.  Its meaning is an
+identity of finite matrices over $A$, not a condition involving
+existence of Green forms or actual primitives.  Execution is from
+right to left in (CBW4).  A fixed signed permutation could also be
+inserted with its zero native primitive; it is unnecessary for the
+stated factor list.
+
+The mathematical object does not identify different words: one
+specified word is used throughout the construction.  Local lifts
+of this same word are considered equivalent when their coefficient
+restrictions to $Y_{\rm red}$ agree.  GIC proves the exact actual
+germ compatibility for that equivalence.  No word-independence or
+classification of all matrix relations is asserted.
+
+\begin{theorem}[Original-support Green form from a reduced conormal word]
+Under (CBW1)--(CBW4), there is an explicitly constructed
+\[
+                         g_Z\in B^{r-1,r-1}(U)
+ \tag{CBW5}
+\]
+over the original $K$, satisfying
+\[
+ \int_U g_Z\wedge d'd''\eta=-\int_Z\eta
+      \qquad\text{for every actual }
+      \eta\in B_c^{n-r,n-r}(X^{\rm an}).
+ \tag{CBW6}
+\]
+The cancellation set $C_U$ need not be closed in $X^{\rm an}$,
+proper, or separated from the remaining support.  No literal
+common tail is required of the two original tuples.
+\end{theorem}
+
+\subsection{Local lifts and a final small norm-isometric error}
+
+\begin{proof}
+The quotient map $\mathcal O_V\to\mathcal O_{Y_{\rm red}}$ is
+surjective as a sheaf.  Therefore all the finitely many coefficients
+in (CBW4) admit simultaneous lifts on a sufficiently fine affine
+open cover of $V$ near $Y$.  The unit and determinant inverses in
+the certificate show that these lifted units and determinants are
+nonzero at the points of $Y_{\rm red}$.  Shrink their ordinary
+analytic neighborhoods so that the lifted elementary, diagonal
+and two-row factors $F_{i,j}$ are all invertible.  Define
+\[
+                         T_i=F_{i,m}\cdots F_{i,1}.
+ \tag{CBW7}
+\]
+This is one fixed finite word on each local neighborhood.  It has
+reduction $\overline M_{\rm red}$ on $Y_{\rm red}$.
+
+Independently choose a local exact comparison
+\[
+                             s_1=M_i s_0.
+ \tag{CBW8}
+\]
+It exists by equality of the ideals.  The same elementary conormal
+calculation as ICC shows that $M_i$ is invertible near $Y$.
+Both (CBW7) and (CBW8) reduce to the matrix in (CBW3), so every
+entry of $M_i-T_i$ vanishes on the reduced support.  Hence
+\[
+       H_i=M_iT_i^{-1}=I_r+E_i^{\rm mat},\qquad
+                       E_i^{\rm mat}|_{Y_{\rm red}}=0.
+ \tag{CBW9}
+\]
+After shrinking to an ordinary neighborhood $N_i\subset U$ of
+the relevant portion of $C_U$, continuity gives
+\[
+            \max_{a,b}|(E_i^{\rm mat})_{ab}|<1
+                                  \quad\hbox{on all of }N_i.
+ \tag{CBW10}
+\]
+This is a pointwise neighborhood inequality, not a global boundedness
+assumption on the original comparison matrices.  It holds at every
+analytic point near the reduced zero set because the displayed
+entries vanish there.  Over each completed residue field, the
+ultrametric inequality gives
+\[
+                 \|H_i v\|_\infty=\|v\|_\infty
+                                  \quad\text{for every vector }v.
+ \tag{CBW11}
+\]
+Its inverse is equally norm-isometric.  In the common line-bundle
+metric this proves literal equality of the two tuple norms, and
+therefore of their complete CI expressions,
+\[
+                  G_{s_1}=G_{T_i s_0}
+                                  \quad\hbox{on }N_i\cap W.
+ \tag{CBW12}
+\]
+No isometry-equivariance theorem for arbitrary primitive choices is
+used: only the actual CI expression, which is a fixed function of
+the tuple norm and common metric, is compared in (CBW12).
+
+Execute the lifted word in (CBW7), using SHT for each shear, the
+frozen antisymmetric unit primitive for each diagonal factor, and
+the fixed canonical-partition GB construction for each two-row
+block.  Fix the same positive cap constants and the same pivot
+partition function for every occurrence on every local lift.
+Evaluate all factors on their actual intermediate tuples and sum
+their finite actual primitives and their extending residues.
+Together with (CBW12), this constructs
+\[
+ \begin{gathered}
+ p_i=(p_i',p_i'')\in
+ B^{r-2,r-1}(N_i\cap W)\oplus B^{r-1,r-2}(N_i\cap W),\\
+ E_i^{\rm form}\in B^{r-1,r-1}(N_i),\qquad
+ G_{s_1}-G_{s_0}=\partial_1p_i+E_i^{\rm form}|_W.
+ \end{gathered}
+ \tag{CBW13}
+\]
+All differentiated pivot-partition terms of GB are retained in
+$E_i^{\rm form}$.  It is not replaced by a determinant residue
+alone.  The matrix error in (CBW9) is not confused with this
+extending differential form.
+
+\subsection{Actual germ gluing, followed by the original-support cutoff}
+
+On an overlap, the two systems of coefficient lifts restrict to
+the same prescribed word on $Y_{\rm red}$.  Their differences
+therefore vanish on that reduced support.  The GIC finite-word
+lemma applies to the entire original tuple $s_0$, all intermediate
+invertible matrices, and all positive-floor capped subtuple norms.
+For every $x\in C_U\cap N_i\cap N_j$ it proves that on one
+ordinary neighborhood of $x$ the pairs $p_i,p_j$ agree literally
+on its punctured part, with every actual mixed derivative.
+This statement uses the fixed word; it does not infer compatibility
+between arbitrary different local factorizations.
+
+Put $N=\bigcup_iN_i$.  Choose an ordinary smooth locally finite
+partition $(\rho_i)$ on $N$ subordinate to these neighborhoods,
+with each support closed inside its own domain.  Closed-support
+zero extension defines the locally finite actual pair
+\[
+                         p=\sum_i\rho_i p_i
+                                   \quad\hbox{on }N\cap W.
+ \tag{CBW14}
+\]
+The actual cross term on $N\cap W$ is
+\[
+       H=\sum_i\bigl(d'\rho_i\wedge p_i'
+                              +d''\rho_i\wedge p_i''\bigr).
+ \tag{CBW15}
+\]
+Near each $x\in C_U$, only finitely many supports occur.
+The just-proved literal germ equalities make all their pairs equal
+on one common punctured neighborhood.  There (CBW15) is zero,
+because $\sum_i d'\rho_i=\sum_i d''\rho_i=0$.
+Thus $H$ has a genuine actual zero extension $\widetilde H$ to
+$N$; this is equality to zero on ordinary neighborhoods, not a
+boundary-value or distributional extension assertion.
+Set
+\[
+              E=\sum_i\rho_iE_i^{\rm form}-\widetilde H
+                                         \in B^{r-1,r-1}(N).
+ \tag{CBW16}
+\]
+Differentiating the full locally finite sum in (CBW14) and using
+(CBW13) proves
+\[
+                  G_{s_1}-G_{s_0}=\partial_1p+E|_{N\cap W}.
+ \tag{CBW17}
+\]
+Every compact set encounters only finitely many summands.  No
+completion of an actual-form space is being used.
+
+Finally take the frozen RSP cutoff $\zeta$ on the original $U$,
+supported in $N$ and equal to one near $C_U$.  On $W$ put
+\[
+ g_W=G_{s_1}-G_{s_0}
+             -d'(\widetilde{\zeta p'})-d''(\widetilde{\zeta p''}).
+ \tag{CBW18}
+\]
+By (CBW17) this agrees with $E$ near $C_U$ and therefore glues
+to the actual form (CBW5) on exactly $U$.  For every actual test
+in (CBW6), the frozen support lemma places $D\eta$ compactly
+inside $W$.  Actual Stokes kills the two correction pairings in
+(CBW18).  Subtracting the original CI identities cancels their
+identical curvature term and gives (CBW6).  The original cycle,
+multiplicities, absolute value and field have never been changed.
+\end{proof}
+
+\subsection{Specializations and limits}
+
+For $r=2$, the canonical matrix (CBW3) is itself one allowed
+$2\times2$ block.  Thus (CBW2) alone supplies the certificate:
+\emph{every such rank-two same-ideal CI difference has the required
+original-support actual form, even when its canceled part meets
+the remaining support}.  This is not a theorem for arbitrary
+codimension-two homologically trivial cycles or for different
+common-zero ideals.
+
+For $r>2$, (CBW4) remains an additional finite input.  No theorem
+that all matrices over $A$ admit such a word is asserted.  In the
+shared-tail setting of GIC, the conormal comparison has block shape
+$\left(\begin{smallmatrix}\overline A&\overline B\\0&I\end{smallmatrix}\right)$,
+so its explicit upper shears and its one $2\times2$ block give
+the certificate directly.  This is a compatibility check between
+the two constructions, not a second count of that existence class.
+
+If the reduced common support is proper and its global-function
+ring is a finite product of fields, ordinary finite Gaussian
+elimination over each field supplies words of this kind.  This
+explains consistency with the already frozen OFC class.  That
+class is not registered as a new independent result here, and no
+high-order analytic form is descended from one of those fields.
+The lifted coefficients in the proof are sections of the original
+$K$-scheme's structure sheaf, obtained by local quotient lifting.
+
+All operations used to construct the actual forms are finite on
+each local presentation and locally finite only in ordinary sheaf
+gluing.  Restrictions and refinements preserve the displayed
+identities.  On each fixed compact whole test presentation, the
+frozen support argument and finite mixed coefficient estimates
+give the same continuous integration interface as RSP.  No
+topology is placed on the set of words to infer a continuous
+choice, no full inherited-kernel comparison is proved, and no
+arbitrary word is identified with another one by an abstract
+quotient.
+
+General different-ideal cancellation, a general conormal block-word
+existence theorem, general strong G, the entire lower-middle actual
+kernel, arbitrary high-order actual descent and the additional
+Beilinson--Bloch height axioms remain \textbf{OPEN}.
+
+\paragraph{Exact-source dependencies.}
+GIC, including its full positive-floor and zero-parameter checks:
+\path{2ea4db21676b04cc4f2bbebfe168fec80c405f228e546f16550b9445d707c056}.
+Other inputs are
+GB \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9},
+ICC \path{6836e2a945bfbf49faf41bef2d31a9d11c2af1434ada08048616069b906f4e49},
+SHT \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f},
+RSP \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2},
+and CI \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+No result from another research branch is imported.

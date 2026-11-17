@@ -3,28 +3,25 @@ name: Publish mathematical atlas
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
 
 concurrency:
-  group: github-pages
+  group: github-pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
@@ -40,12 +37,30 @@ jobs:
           GITHUB_REPOSITORY: DongKaicheng/math-research-atlas
       - name: Check generated content and links
         run: npm run check
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload pages
+      - name: Check frozen release integrity
+        run: npm run check:release
+      - name: Preserve published history
+        run: npm run check:history
+        env:
+          HISTORY_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+      - name: Upload checked pages
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
       - name: Deploy pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,0 +1,438 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\usepackage{xcolor,xurl,enumitem}
+\definecolor{LinkBlue}{HTML}{1F4E79}
+\definecolor{CiteGreen}{HTML}{2F6B3C}
+\definecolor{UrlBrown}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=LinkBlue,citecolor=CiteGreen,urlcolor=UrlBrown,breaklinks=true]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\crefname{hypothesis}{hypothesis}{hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{conjecture}{conjecture}{conjectures}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\numberwithin{equation}{section}
+\setlist{itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\B}{\mathcal B}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\homol}{\mathrm{hom}}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\R}{\mathbf R}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Norm}{\operatorname{Norm}}
+\newcommand{\Div}{\operatorname{div}}
+\title{Zero-Curvature Green Forms and\newline Beilinson--Bloch Height Pairings}
+\author{}
+\date{18 November 2026}
+\hypersetup{pdftitle={Zero-Curvature Green Forms and Beilinson--Bloch Height Pairings},pdfauthor={}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We describe a direct route from actual non-Archimedean Green forms to a Beilinson--Bloch height pairing on the full complementary homologically trivial Chow groups. Disjoint-polar Stokes gives reciprocity and independence of Green choices. A scalar principal Green function on a normal carrier, together with supported point residues, extension of actual germs and projective-bundle integration, gives the exact principal-divisor norm law. We prove the global descent by the product formula and record the finite-extension normalization. The local existence conjecture and the additional analytic constructions are stated separately. The resulting programme identifies both the obstruction to constructing actual Green forms and the compatibility needed to turn them into global heights.
+\end{abstract}
+\tableofcontents
+
+\section{The local existence problem}\label{groute:introduction}
+
+Let $K/\Q_p$ be finite with a fixed absolute value extending $|p|_p=p^{-1}$. Every finite extension carries the extension of this absolute value. Let $X/K$ be smooth, projective and geometrically integral of dimension $n\ge1$. We write $\B^{a,b}$ for Mihatsch's ordinary sheaf of actual $\delta$-forms and put $D=d'd''$. An actual form means a section of this sheaf on the ordinary topology of the Berkovich space; all integrals use the native valued-field weights.
+
+For a rational codimension-$r$ cycle $Z$, written with its final nonzero prime coefficients, put
+\[
+ U_Z=X^{\an}\setminus|Z|^{\an}.
+\]
+Geometric homological triviality means vanishing of the rational $\ell$-adic cycle class on $X_{\overline K}$, with $\ell\ne p$.
+
+\begin{conjecture}[Strong zero-curvature Green forms]\label[conjecture]{groute:strong-green}
+For every $K$, $X$, $1\le r\le n$ and prescribed rational cycle $Z$ with $[Z]\in\CH^r(X)_{\Q,\homol}$, there is
+\[
+ \gamma_Z\in\B^{r-1,r-1}(U_Z)
+\]
+such that the integrals below exist and
+\begin{equation}\label{groute:strong-equation}
+ \int_{U_Z}\gamma_Z\wedge D\eta=-\int_{Z^{\an}}\eta
+ \qquad\bigl(\eta\in\B_c^{n-r,n-r}(X^{\an})\bigr).
+\end{equation}
+The form, its domain and the identity are over the original valued field $K$.
+\end{conjecture}
+
+The support complement and the full actual test space are part of the assertion. A solution only as a current, or on the complement of a larger algebraic set, is a different construction. Mihatsch's complete-intersection Green functions motivate the actual-form formulation; the relevant ordinary sheaf and scalar calculus are described in \cite{M}. The prescribed-cycle and finite-trace constructions in \cite{Local} give one proposed method for treating general cycles.
+
+Over a number field $F$, let $X/F$ have dimension $n$, and set
+\[
+ V^k(X)=\CH^k(X)_{\Q,\homol},\qquad r+s=n+1.
+\]
+The global objective is a pairing $h_X:V^r(X)\times V^s(X)\to\R$ given on disjoint representatives by local Green integrals. This route uses strong Green forms themselves. It does not require proving that an arbitrary strong solution makes the particular curvature obstruction of another construction vanish.
+
+Existence of the forms is only the first step. The main conditional theorem is \Cref{groute:global-height}; its proof is in \Cref{groute:global-proof}. It requires the actual current calculus, the principal-divisor calculation and the good-reduction compatibility specified below. These hypotheses are the analytic tasks of the route, rather than consequences inferred from the existence assertion alone.
+
+\section{Reciprocity for disjoint cycles}\label{groute:reciprocity}
+
+\begin{hypothesis}[Actual forms and Green currents]\label[hypothesis]{groute:current-calculus}
+The actual forms used below have pullback, a graded product and the differentials $d',d''$, with the usual Leibniz identities. Their map to integration currents on actual tests is injective and commutes with these differentials. Compactly supported Stokes and ordinary smooth partitions of unity hold in the indicated degrees. An actual form of bidegree $(a,b)$ has zero germ along an algebraic closed subset of dimension less than $\max(a,b)$.
+
+If $S\subset X$ is algebraic of codimension at least $r$, an actual form of degree $(r-1,r-1)$ on $X^{\an}\setminus S^{\an}$ defines its integration current on all compact actual complementary tests. For Green forms with disjoint polar supports, the products of an actual form with such a current, glued on the complements of the two supports, satisfy the graded Leibniz identities. Scalar strong Poincar\'e--Lelong holds on normal integral carriers for $-\log|f|$, with the full divisor coefficients and all compact actual tests.
+\end{hypothesis}
+
+The support statement explains why the stated Green current can be tested. Its complementary tests have degree $(n-r+1,n-r+1)$, whereas $\dim S\le n-r$. A compact such test therefore has support in a compact subset of $X^{\an}\setminus S^{\an}$. The current calculus on actual tests and the operations on normal carriers remain explicit premises.
+
+\begin{lemma}[Disjoint-polar reciprocity]\label[lemma]{groute:stokes}
+Assume \Cref{groute:current-calculus}. Let $Z,W$ have complementary codimensions $r,s$, with $r+s=n+1$. Suppose they have Green forms $g_Z,g_W$ satisfying \eqref{groute:strong-equation}, and their polar supports are disjoint algebraic sets of codimension at least $r,s$, respectively. Then
+\begin{equation}\label{groute:reciprocity-equation}
+ \int_W g_Z=\int_Z g_W.
+\end{equation}
+The value is independent of either Green choice with such a support. It is rational-bilinear on cycles in common disjoint position.
+\end{lemma}
+
+\begin{proof}
+Write $g=[g_Z]$ and $h=[g_W]$. On each open complement at least one of these currents is an actual form, so the mixed products in
+\[
+ (Dg)h-g(Dh)=d'((d''g)h)+d''(g(d'h))
+\]
+are defined there. They agree on the overlap and hence glue on $X^{\an}$. Evaluate on $1$, which is an allowed compact test since $X$ is proper. Stokes kills the right side. Substituting $Dg=-\delta_Z$ and $Dh=-\delta_W$ gives \eqref{groute:reciprocity-equation}.
+
+For two choices for $Z$, their difference has zero residue. Apply the same identity to that difference and $h$; the change of $\int_Wg_Z$ is zero. Interchanging the factors proves independence of $g_W$. For additivity use the sum of forms on the complement of the union of their polar supports. This union still avoids the other cycle. The same independence argument compares this sum with a form for the final cycle, even when some components cancel. Rational homogeneity follows in the same manner.
+\end{proof}
+
+In particular, when both complementary classes have strong Green forms, the local pairing
+\[
+ \lambda_K(Z,W)=\int_{W^{\an}}\gamma_Z
+\]
+is well defined for disjoint representatives. This conclusion does not yet identify its change under rational equivalence. That change is computed by a principal norm.
+
+\section{The principal-divisor calculation}\label{groute:principal-calculation}
+
+An elementary rational equivalence is represented by a rational function on a subvariety. For the height calculation it is useful to retain a normal carrier mapping to $X$ together with its parameter map. This allows proper intersection with the other cycle to be imposed before projection to $X$.
+
+\begin{definition}[A principal datum]\label[definition]{groute:principal-datum}
+Let $M$ be a normal integral projective $s$-fold, let $f:M\to X$ be a morphism, and let $u:M\to\mathbf P^1$ be a morphism not identically $0$ or $\infty$. Write
+\[
+ E=\Div(u),\qquad Z=f_*E,\qquad S=f(|E|).
+\]
+For a codimension-$s$ cycle $W$ require
+\begin{equation}\label{groute:principal-position}
+ S\cap|W|=\varnothing,
+ \qquad f^{-1}|W|\setminus u^{-1}(-1)\ \text{finite}.
+\end{equation}
+Intersection coefficients are the refined coefficients defined using the graph of $f$ and the smooth target $X$.
+\end{definition}
+
+The omitted fibre is suited to a higher-Chow one-chain with parameter $\mathbf P^1\setminus\{-1\}$. Indeed, the affine simplex $t_0+t_1=1$ has coordinate $u=t_0/t_1$; its faces are $u=0,\infty$ and the missing value is $u=-1$. In the non-Archimedean topology, $-\log|u|$ vanishes on the ordinary neighbourhood $|u+1|<1$ of that fibre. This permits a principal calculation even when intersection with $W$ is larger on the omitted fibre.
+
+The following analytic hypotheses specify the operations used to push this scalar Green function. They are stated on the auxiliary smooth ambient varieties and normal carriers that occur in the construction.
+
+\begin{hypothesis}[Supported residues, extension and integration]\label[hypothesis]{groute:principal-operations}
+In addition to \Cref{groute:current-calculus}, assume the following properties.
+\begin{enumerate}
+\item For a closed integral subvariety $i:M\hookrightarrow P$ of codimension $c$ in a smooth projective variety, there is a separately closed global actual form $\Omega_M$ and a curved Green form $\Gamma_M$ with
+\[
+ D[\Gamma_M]+\delta_{i_*[M]}=[\Omega_M].
+\]
+For every normal integral $c$-fold $b:T\to P$ whose inverse image of $i(M)$ is finite, the chosen pair satisfies
+\begin{equation}\label{groute:point-residue}
+ \int_{T\setminus b^{-1}i(M)}b^*\Gamma_M\wedge D\eta
+   +\int_{I_b([M])}\eta
+       =\int_Tb^*\Omega_M\,\eta,
+ \qquad\eta\in\B_c^{0,0}(T^{\an}).
+\end{equation}
+The refined zero-cycle $I_b([M])$ includes all point multiplicities and residue degrees. The assertion is local on the indicated ordinary opens.
+\item Restriction to a reduced closed subvariety identifies the relevant degreewise actual germs. A scalar actual form on $M$ extends to an ambient ordinary open. If its $D$ is zero on $M$, the derivative of an extension has zero germ there. If it is locally constant or zero on an ordinary neighbourhood in $M$, an extension has the same germ near that set. Smooth cutoffs may be chosen subordinate to these neighbourhoods.
+\item For $\pi:P=X\times\mathbf P^a\to X$, there is an actual integration operator $I_\pi$, local on ordinary opens, lowering both degrees by $a$, commuting with $d',d''$, and satisfying projection and all-test adjunction. For a compact cycle $W$ in the relevant open, it also satisfies
+\begin{equation}\label{groute:bundle-restriction}
+ \int_W I_\pi\beta=\int_{W\times\mathbf P^a}\beta.
+\end{equation}
+Top-degree integration respects proper cycle pushforward and normalization with their native degrees.
+\end{enumerate}
+\end{hypothesis}
+
+Part (1) is a supported point-residue identity, not a formal pullback of a distributional equation. Its conditional proof from supported perfect complexes and finite-flat trace is given in \cite[Section 3]{Global}. Parts (2) and (3), and the principal construction below, are the constructions of \cite[Sections 5--7]{Global}. In this paper they are the explicit analytic premises for the deduction.
+
+\begin{lemma}[Localization near a closed subvariety]\label[lemma]{groute:localization}
+Under \Cref{groute:principal-operations}, let $g$ be a scalar strong Green function for a divisor $E$ on a normal projective $M$, and let $i:M\hookrightarrow P$ be as above. On
+\[
+ U=P^{\an}\setminus|i_*E|^{\an},
+\]
+choose an actual extension $\widetilde g$ of $g$. For a sufficiently small ordinary neighbourhood $N$ of $i(M)\cap U$ on which $D\widetilde g=0$, there is a localized pair
+\[
+ \Gamma_N=\chi\Gamma_M,
+ \qquad \Omega_N=\Omega_M+D((\chi-1)\Gamma_M)
+\]
+on $U$, supported in $N$, with
+\[
+ D[\Gamma_N]+\delta_{i_*[M]}=[\Omega_N].
+\]
+The form $\Omega_N\widetilde g$ has the zero-curvature Green identity for $i_*E$.
+\end{lemma}
+
+\begin{proof}
+Choose $\chi=1$ near $i(M)\cap U$, supported in $N$. The form $(\chi-1)\Gamma_M$ vanishes near $i(M)$ and therefore extends by zero across it on $U$. The displayed formula for $\Omega_N$ is an actual form and gives the localized curved identity. Outside $N$ one has $\chi=0$ and $D\Gamma_M=\Omega_M$, so $\Omega_N=0$ there. Separate closedness is preserved.
+
+Let $\eta$ be a compact actual complementary test for the cycle $i_*E$. Its derivative $D\eta$ has zero germ along $i(|E|)$ by the dimension-support condition. Thus $\widetilde gD\eta$ is a compact actual test on $U$. Its derivative is $D\widetilde g\wedge D\eta$, which vanishes on the support of $\Gamma_N$. The localized curved identity gives
+\[
+ \int_U\Omega_N\widetilde g\wedge D\eta
+       =\int_Mg\wedge D(i^*\eta)
+       =-\int_Ei^*\eta=-\int_{i_*E}\eta.
+\]
+The second equality is the supplied scalar Green identity. This proves the assertion on all stated tests.
+\end{proof}
+
+\begin{proposition}[Principal push and norm evaluation]\label[proposition]{groute:principal-push}
+Assume \Cref{groute:current-calculus,groute:principal-operations}. For a principal datum as in \Cref{groute:principal-datum}, there is an actual form $g_Z$ of bidegree $(r-1,r-1)$ on $X^{\an}\setminus S^{\an}$ with Green residue $Z=f_*\Div(u)$ such that
+\begin{equation}\label{groute:principal-norm}
+ \int_W g_Z=-\log|\mu(M,u;W)|_K
+\end{equation}
+for integral data. Here
+\[
+ \mu(M,u;W)=\prod_x\Norm_{\kappa(x)/K}(u(x))^{m_x}
+\]
+is the product at the finite refined intersections outside $u=-1$. For rational data, clear the coefficients of both the principal datum and $W$, and divide the logarithm by the resulting positive integral multiplier.
+\end{proposition}
+
+\begin{proof}
+Choose a projective embedding $e:M\hookrightarrow\mathbf P^a$ such that
+\[
+ i=(f,e):M\hookrightarrow P=X\times\mathbf P^a
+\]
+has codimension $c=n+a-s>0$. The function $g=-\log|u|$ is a scalar strong Green function for $E=\Div(u)$. Apply \Cref{groute:localization} to obtain $\Omega_N\widetilde g$, and set
+\begin{equation}\label{groute:principal-form}
+ g_Z=I_{\pi|_{X\setminus S}}(\Omega_N\widetilde g).
+\end{equation}
+Its bidegree is $(c-a,c-a)=(r-1,r-1)$. Adjunction, commutation with $D$ and proper cycle integration give its zero-curvature identity with residue $f_*E$. This construction uses the integration on the projective bundle, not an unspecified actual pushforward along $f$.
+
+It remains to choose the localization so that its integral is the asserted norm. First suppose $W$ is integral and let $W^\nu\to W$ be its normalization. Put
+\[
+ T=W^\nu\times\mathbf P^a,
+ \qquad b:T\longrightarrow P,
+ \qquad B=i(u^{-1}(-1)).
+\]
+The normal variety $T$ has dimension $n-s+a=c$. By \eqref{groute:bundle-restriction} and normalization invariance,
+\begin{equation}\label{groute:principal-top}
+ \int_Wg_Z=\int_T b^*(\Omega_N\widetilde g).
+\end{equation}
+On $T^\circ=T\setminus b^{-1}B$, the inverse image of $i(M)$ is finite. Write its refined intersection cycle as $\sum_xm_x[x]$.
+
+The scalar $g$ is zero on a neighbourhood of $u^{-1}(-1)$. The germ hypothesis permits $\widetilde g$ to be zero near the compact set $B$. At every intersection point outside $B$, $u$ is a unit and its absolute value is constant near that rigid point. The same germ hypothesis makes $\widetilde g$ equal to that constant in an ambient neighbourhood. Choose disjoint neighbourhoods of these finitely many points and smooth cutoffs $\chi_t$ equal to one on smaller neighbourhoods. They may be chosen away from the zero neighbourhood of $B$.
+
+Shrink $N$ so that its intersection with $b(T)$ lies either in the zero neighbourhood of $B$ or in one of these smaller constant neighbourhoods. Such a shrinking is possible because the remaining closed subset of the compact $b(T)$ is disjoint from $i(M)$. The integral in \eqref{groute:principal-top} is now
+\[
+ \sum_t -\log|u(t)|\int_{T^\circ}b^*\Omega_N\,b^*\chi_t.
+\]
+Each test $b^*\chi_t$ is compactly supported in $T^\circ$. The point-residue formula \eqref{groute:point-residue} also holds for the localized pair: its correction is the pullback of the global actual form $(\chi-1)\Gamma_M$, and Stokes accounts for its derivative. The cutoff choices make $D(b^*\chi_t)$ vanish where it meets the support of $b^*\Gamma_N$. Consequently
+\[
+ \int_{T^\circ}b^*\Omega_N\,b^*\chi_t
+       =\sum_{b(x)=t}m_x[\kappa(x):K].
+\]
+Substitution gives the sum of the negative logarithms of the norms, because
+\[
+ \log|\Norm_{L/K}(a)|_K=[L:K]\log|a|_L
+\]
+for the extended absolute value. Proper projection of refined graph intersections identifies these points with the refined intersection of $M\to X$ and $W\to X$, and transitivity of norms gives the stated element $\mu$.
+
+For a rational cycle $W$, make every neighbourhood and cutoff choice simultaneously for its finitely many prime components, and then sum their evaluations with the coefficients. Thus a single form with residue $Z$ is used, not a sum of one such form per component of $W$. Clear denominators in both arguments before taking norms and divide by their product at the end.
+\end{proof}
+
+The polar set $S$ in this proposition may be larger than the final support of $Z$ because of cancellation. Its codimension is at least $r$, and it is disjoint from $W$. These are exactly the support conditions needed in \Cref{groute:stokes}. The calculation does not require extending $g_Z$ across the cancelled components.
+
+\begin{corollary}[The principal law for an arbitrary strong Green choice]\label[corollary]{groute:principal-law}
+Assume the hypotheses of \Cref{groute:principal-push}, and suppose $W$ has a strong Green form $\gamma_W$ on its prescribed complement. Then
+\[
+ \int_Z\gamma_W=-\log|\mu(M,u;W)|_K
+\]
+for integral data, with the stated rational scaling otherwise. If a sum of such principal data joins disjoint representatives $Z_0,Z_1$, then
+\begin{equation}\label{groute:change-law}
+ \lambda_K(Z_1,W)-\lambda_K(Z_0,W)
+       =-N^{-1}\log|\mu|_K,
+\end{equation}
+where $\mu$ is the product of their algebraic norms after clearing denominators in both arguments.
+\end{corollary}
+
+\begin{proof}
+Reciprocity for the disjoint polar sets gives
+\[
+ \int_Z\gamma_W=\int_Wg_Z.
+\]
+Apply \Cref{groute:principal-push}. For the difference formula, reciprocity gives
+\[
+ \lambda_K(Z_1,W)-\lambda_K(Z_0,W)
+       =\int_{Z_1-Z_0}\gamma_W.
+\]
+Apply the preceding calculation to each principal datum and multiply its norm factors. The separate polar supports of the two forms for $Z_0,Z_1$ avoid $W$; no removability of their difference is used.
+\end{proof}
+
+\section{Descent to rational equivalence over a number field}\label{groute:global}
+
+Let $F$ be a number field, let $X/F$ be smooth, projective and geometrically integral of dimension $n$, and let $r+s=n+1$. At finite places use the absolute value extending $|p|_p=p^{-1}$; at infinite places use the ordinary absolute value, including the unsquared complex absolute value. Set
+\begin{equation}\label{groute:weights}
+ w_v=\frac{[F_v:\Q_v]}{[F:\Q]},
+ \qquad\sum_vw_v\log|a|_v=0\quad(a\in F^\times).
+\end{equation}
+
+\begin{hypothesis}[Moving, good reduction and infinite places]\label[hypothesis]{groute:global-compatibility}
+The following data are available for the indicated cycles.
+\begin{enumerate}
+\item Every class has a representative avoiding any finite list of complementary cycles. Rationally equivalent cycles that both avoid a fixed cycle can be joined over $F$ by good higher-Chow one-chains. Their normal projective closures and parameter maps give principal data satisfying \eqref{groute:principal-position}. The refined norm product of each chain is an element of $F^\times$; localization preserves that product and its point coefficients.
+\item A fixed disjoint pair can be spread to disjoint closures on a smooth projective model outside a finite set of places. At these places a strong Green choice for the first cycle is zero on the tubes outside its closure, so its integral on the second cycle is zero.
+\item At infinite places, the zero-curvature complex Green construction is available with the scalar normalization $-\log|f|$. It has the same symmetry, choice-independence and principal norm law as \Cref{groute:stokes,groute:principal-law}.
+\end{enumerate}
+\end{hypothesis}
+
+The moving-complex and biextension constructions used here are those cited in \cite[Section 3]{Global}, following Gorchinskiy. The proper positioning is imposed on the one-chain before projecting its normal carrier to $X$. For a chain over $F$, the element in \eqref{groute:change-law} is therefore one global norm product, rather than an independently chosen local constant.
+
+\begin{theorem}[The direct construction of the height pairing]\label[theorem]{groute:global-height}
+Assume \Cref{groute:current-calculus,groute:principal-operations} over every finite completion and for the auxiliary varieties used in the principal calculation, both for the ordered degrees $(r,s)$ and for $(s,r)$. Assume \Cref{groute:global-compatibility} with these two ordered pairs. If \Cref{groute:strong-green} holds for every prescribed homologically trivial cycle of codimension $r$ or $s$ on $X_{F_v}$ at every finite place, then
+\begin{equation}\label{groute:height-formula}
+ h_X(z,w)=\sum_vw_v\lambda_v(Z,W)
+\end{equation}
+defines a rational-bilinear pairing
+\[
+ h_X:V^r(X)\times V^s(X)\longrightarrow\R.
+\]
+It is independent of Green choices and disjoint rational representatives and is symmetric in complementary codimensions. The sum in \eqref{groute:height-formula} is finite for each pair.
+\end{theorem}
+
+\subsection{Proof of the height theorem}\label{groute:global-proof}
+
+\begin{proof}
+\emph{Local values and finite support.}
+Choose disjoint representatives $Z,W$. Strong Green forms at the finite places and the complex forms at infinity give the local values. \Cref{groute:stokes} proves their choice-independence, symmetry and rational bilinearity on disjoint cycles. At the places of good reduction in \Cref{groute:global-compatibility}, the specially chosen form has zero integral on the other cycle. Choice-independence gives the same value for every strong Green choice. Thus only finitely many terms remain.
+
+\emph{Rational equivalence in one variable.}
+Suppose $Z_0,Z_1$ are rationally equivalent and both avoid $W$. Choose a good one-chain over $F$ joining them. Clear denominators in the chain, the endpoints and $W$. Let $N$ be the product of the two required integral multipliers. By \Cref{groute:principal-law}, there is one $\mu\in F^\times$ such that at every finite place
+\[
+ \lambda_v(Z_1,W)-\lambda_v(Z_0,W)
+        =-N^{-1}\log|\mu|_v.
+\]
+The infinite-place law is identical. The product formula in \eqref{groute:weights} makes the global change zero. The same proof with $r,s$ interchanged gives independence in the other variable.
+
+\emph{Simultaneous moving and bilinearity.}
+Given two disjoint pairs $(Z_0,W_0)$ and $(Z_1,W_1)$ for the same classes, choose $W'$ in the common class avoiding both $Z_0$ and $Z_1$. The four pairs
+\[
+ (Z_0,W_0),\quad(Z_0,W'),\quad(Z_1,W'),\quad(Z_1,W_1)
+\]
+have the same global value by the preceding step. This proves independence of all representatives. Move the finitely many cycles in an additive relation into common disjoint position. Local bilinearity then gives global rational bilinearity. Finally, local reciprocity gives symmetry.
+\end{proof}
+
+The metric interpretation uses the same calculation. For integral representative data, if $s_{Z,W}$ is a representative frame of Bloch's biextension and a rational equivalence changes it by $s_{Z_1,W}=\mu s_{Z_0,W}$ in the chosen convention, then
+\[
+ \|s_{Z,W}\|_v=\exp(-\lambda_v(Z,W))
+\]
+satisfies the required norm transformation law. For rational cycles, first apply this identity to integral multiples in both variables and then divide the logarithmic degree by the product of the multipliers; equivalently, use the corresponding tensor powers of the rational biextension. The finite-support property makes the resulting degree adelic. Its independence of the global frame is again the product formula. This identification also requires the algebraic biextension transition relations supplied by the moving construction; the complete argument is given in \cite[Section 3.5]{Global}.
+
+\section{The original absolute value and finite extension}\label{groute:base-change}
+
+Finite extension is often used in a local construction. To obtain the desired height over the original field, both the form-level trace and the field degree must be controlled.
+
+\begin{hypothesis}[Finite trace and native weights]\label[hypothesis]{groute:trace}
+For the finite constant map $q:X_L\to X$, viewed over $K$, actual tests have a trace commuting with both differentials and satisfying all-test adjunction. Finite-flat restriction of cycle integrals has its full generic lengths and residue degrees; in particular, integration of a pulled-back top-degree form over $W_L$, in the native $K$-theory, is $[L:K]$ times its integral over $W$. The actual sheaf of an $L$-variety is identified with that of the same variety viewed over $K$, and the native $K$-integral is $[L:K]$ times its native $L$-integral.
+\end{hypothesis}
+
+\begin{proposition}[Local extension invariance]\label[proposition]{groute:local-extension}
+Assume \Cref{groute:current-calculus,groute:trace}. Pullback of a strong Green form for $Z$ is a strong Green form for $Z_L$ on its prescribed complement. If both complementary cycles have strong Green forms, then
+\begin{equation}\label{groute:local-invariance}
+ \lambda_L(Z_L,W_L)=\lambda_K(Z,W).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Take any compact actual test $\eta$ upstairs. In the native $K$-theory, adjunction, commutation with $D$ and the original Green identity give
+\[
+ \int_{(U_Z)_L/K}q^*\gamma_Z\wedge D\eta
+ =\int_{U_Z/K}\gamma_Z\wedge D\Tr_q\eta
+ =-\int_{Z/K}\Tr_q\eta
+ =-\int_{Z_L/K}\eta.
+\]
+The last equality is finite-flat cycle restriction with the prescribed coefficients. Divide by $[L:K]$ to obtain the Green identity over $L$. It holds for every upstairs actual test.
+
+On the disjoint complementary cycle, the native degree formula gives
+\[
+ \int_{W_L/K}q^*\gamma_Z=[L:K]\int_{W/K}\gamma_Z.
+\]
+The change from native $K$-integration to native $L$-integration cancels the factor. Choice-independence from \Cref{groute:stokes} proves \eqref{groute:local-invariance} for any permitted choices.
+\end{proof}
+
+\begin{corollary}[Absolute normalization]\label[corollary]{groute:global-extension}
+Assume the hypotheses of \Cref{groute:global-height} and the compatible trace hypotheses over finite extensions. Then for finite $E/F$ the height on pulled-back classes satisfies
+\[
+ h_{X_E}(z_E,w_E)=h_X(z,w),
+\]
+whenever the height on the stated domain over $E$ is constructed with the same hypotheses and normalization.
+\end{corollary}
+
+\begin{proof}
+Group the sum over places $u$ of $E$ above each $v$ of $F$. Use \Cref{groute:local-extension}, its archimedean counterpart, and
+\[
+ \sum_{u\mid v}\frac{[E_u:\Q_v]}{[E:\Q]}
+       =\frac{[F_v:\Q_v]}{[F:\Q]}.
+\]
+The finite sums are equal.
+\end{proof}
+
+For descent of an actual primitive, the corresponding formula is $[L:K]^{-1}\Tr_q\beta$. In particular ramification cannot be removed from the denominator or from the absolute-value normalization. Both affect the local differential and integration identities used by this route.
+
+\section{A programme for completing the direct route}\label{groute:programme}
+
+\subsection{Constructing actual Green forms}\label{groute:existence-problem}
+
+\begin{problem}[Existence on the exact support complement]\label[problem]{groute:existence}
+Prove \Cref{groute:strong-green} for all smooth projective $X/K$ and all codimensions. The construction must yield a section on $U_Z$ and \eqref{groute:strong-equation} for every compact actual test, over the original valued field.
+\end{problem}
+
+One sufficient construction begins with a curved pair
+\[
+ D[G_Z]+\delta_Z=[\Omega_Z],
+\]
+where $\Omega_Z$ is global actual, and produces a global actual primitive $D\Psi_Z=\Omega_Z$. Then $G_Z-\Psi_Z|_{U_Z}$ is the required form by Stokes. This is the obstruction route developed separately in \cite{Obstruction}. A direct construction may instead produce $\gamma_Z$ without identifying this selected curvature class.
+
+A tropical approach seeks compatible primitives on charts and refinements. Its required output is a global actual form, not just a compatible family of current classes. If local primitives $\Psi_i$ satisfy $D\Psi_i=\Omega$ on a cover, their differences are $D$-closed on overlaps. The gluing problem is to modify them by $D$-closed actual forms so that they agree. A satisfactory comparison must carry these overlap relations, both differentials, and the original integration pairing through refinements. A topological inverse-limit description by itself supplies none of those differential conclusions.
+
+\begin{problem}[Descent and gluing of primitives]\label[problem]{groute:gluing}
+Construct a comparison from a specified tropical or Aeppli complex to the ordinary actual form complex which sends the proposed curvature class to $\Omega_Z$, sends the constructed primitive to a section of $\B^{r-1,r-1}(X^{\an})$, and commutes with $d',d''$ and integration on all original tests. Prove compatibility with refinements and with finite-extension descent in \Cref{groute:trace}.
+\end{problem}
+
+For this purpose the comparison has to recover actual representatives and their relations. Exactness after enlarging the test space dual, or after replacing a form by an arbitrary current, does not establish the required map into $\B^{r-1,r-1}$.
+
+\subsection{The analytic operations needed for the principal law}\label{groute:compatibility-problem}
+
+\begin{problem}[Supported residues and principal push]\label[problem]{groute:operations}
+Establish \Cref{groute:current-calculus,groute:principal-operations,groute:trace} for the stated actual categories. In particular, prove the supported point-residue formula on normal carriers, presentation-independent finite trace with all-test adjunction, extension of the actual germs used in \Cref{groute:localization}, and the projective-bundle restriction identity \eqref{groute:bundle-restriction}.
+\end{problem}
+
+The point-residue calculation must retain the refined intersection coefficients. A normal carrier need not be Cohen--Macaulay, so lengths of an underived intersection cannot replace refined graph intersection without a separate justification. The omitted fibre is treated by the actual vanishing of $-\log|u|$ near $u=-1$; no intersection formula on that larger fibre is used. These are the two geometric features responsible for the exact norm in \Cref{groute:principal-push}.
+
+The hypotheses have different roles. Actual Stokes supplies independence of Green choices and reciprocity. Supported residues and projective integration supply the scalar norm of a principal cycle. Good reduction makes the global sum finite. The weighted product formula then gives rational-equivalence descent. Thus solving the existence problem must be accompanied by these compatibilities, as stated in \Cref{groute:global-height}.
+
+\subsection{Identification with the classical height}\label{groute:comparison-problem}
+
+\begin{problem}[Adjunction and classical comparison]\label[problem]{groute:comparison}
+For the resulting heights, establish correspondence adjunction
+\[
+ h_X(\Gamma_*z,w)=h_Y(z,{}^t\Gamma_*w)
+\]
+on the complementary domains on which the operations are defined. Identify the pairing with the classical Beilinson--Bloch constructions on their common domains and with the same absolute normalization. For a pointed curve, match the scalar convention with the Poincar\'e convention in which $-h_C$ is the positive N\'eron--Tate form.
+\end{problem}
+
+The companion comparison proofs \cite[Sections 8--9]{Global} use proper-intersection residues and, for arithmetic-model comparison, supplied numerically admissible lifts on regular models. Existence of those lifts is additional to the comparison theorem. Establishing the pairing, identifying it with the classical constructions, and proving positivity of its primitive part are separate mathematical assertions. This route is complete for the existence problem once the hypotheses of \Cref{groute:global-height} are established; the adjunction and normalization problem identifies the resulting object as the expected canonical height system.
+
+\begin{thebibliography}{99}
+\bibitem{M} A. Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces}, arXiv:2112.10018v4 (2024), Definition 4.2 and Section 5. \url{https://arxiv.org/abs/2112.10018v4}.
+\bibitem{Local} \emph{Local Green Forms and Chow Correspondences: Conditional Reductions and Construction Draft}, companion manuscript, 17 November 2026. \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/green-constructions/}.
+\bibitem{Global} \emph{Global Height Pairings from Admitted Green Classes}, companion manuscript, 17 November 2026, Sections 2--3 and 5--9. \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/global-height-pairing/}.
+\bibitem{Obstruction} \emph{Local Curvature Obstructions and Beilinson--Bloch Height Pairings}, companion route paper, 18 November 2026. \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/obstruction-height-route/}.
+\bibitem{Programme} \emph{Strong Green Forms and Beilinson--Bloch Heights: A Local-to-Global Research Programme}, companion manuscript, 17 November 2026. \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/strong-g-programme/}.
+\end{thebibliography}
+\end{document}

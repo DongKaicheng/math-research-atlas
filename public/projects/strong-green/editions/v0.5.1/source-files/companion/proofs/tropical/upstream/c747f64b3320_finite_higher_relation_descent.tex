@@ -1,0 +1,222 @@
+\section{Finite actual descent from displayed higher relation witnesses}
+\label{sec:r11-finite-higher-relation-descent}
+
+\paragraph{Status and relation to the frozen input.}
+\textbf{PROVED THIS ROUND} as an explicit higher-degree certificate
+interface, submitted for exact-source review.  The construction
+contributor is \texttt{/root/r11\_cube}.  The two- and three-level
+partition calculation is the exact recovered earlier FG input,
+not a new result.  This section records its all-degree recurrence
+and its fourth-cover term.  It does not assert the existence of
+the supplied overlap witnesses, nor infer exactness from closedness.
+
+\subsection{The actual complex and all-colour insertion}
+
+Let $W$ be an ordinary original-$K$ analytic open on which the
+frozen actual calculus and ordinary smooth partitions apply.
+Fix $s\ge0$.  In array order define
+\[
+ L_j^s(V)=\bigoplus_{i=0}^j B^{s-i,s-j+i}(V),\qquad
+ (\partial_jv)_i=d''v_i+d'v_{i+1}\quad(0\le i<j).
+ \tag{FHD1}
+\]
+A negative bidegree is zero.  Equality is equality of actual
+forms, not equality in a quotient or completion.  This is the
+ordering of OES; for $j=2,3$ it is $(B,M,A)$ and $(V,Q,P,U)$,
+respectively, and gives the frozen two-colour boundaries.
+Full anticommutation proves $\partial_{j-1}\partial_j=0$.
+
+For an ordinary smooth actual scalar $\chi$, put
+\[
+ (K_j(\chi)v)_i=d''\chi\wedge v_i+d'\chi\wedge v_{i+1}.
+ \tag{FHD2}
+\]
+The complete Leibniz rules give
+\[
+ \partial_j(\chi v)=\chi\partial_jv+K_j(\chi)v,\qquad
+ \partial_{j-1}K_j(\chi)+K_{j-1}(\chi)\partial_j=0.
+ \tag{FHD3}
+\]
+The second equality follows by applying $\partial_{j-1}$ to
+the first, including the first equality applied to
+$\chi\partial_jv$.  Thus every $D\chi$ and every mixed-colour
+term is present before cancellation.  The formula is not a
+replacement of the two colours by a single derivative.
+
+Let $W=\bigcup_{i=1}^N W_i$ be a finite ordinary open cover,
+and choose an ordinary smooth actual partition $(\chi_i)$ with
+\[
+ \sum_i\chi_i=1,\qquad \operatorname{supp}_W\chi_i
+                      \text{ closed in }W\text{ and contained in }W_i.
+ \tag{FHD4}
+\]
+All cochains below are alternating in their ordered indices;
+repeated indices give zero.  Write
+\[
+ (\delta a)_{i_0\cdots i_{j+1}}
+    =\sum_{t=0}^{j+1}(-1)^t
+                 a_{i_0\cdots\widehat{i_t}\cdots i_{j+1}}.
+ \tag{FHD5}
+\]
+Restrictions to the full actual intersections are implicit.
+All sums below range over all ordered tuples, not just increasing
+ones, so no factorial is inserted.
+
+\subsection{The finite formula}
+
+Fix $k\ge1$ and an actual $u\in L_{k-1}^s(W)$.  Supply, for
+$0\le j\le N-1$, actual cochains
+\[
+ a_j\in\check C^j((W_i),L_{k+j}^s)
+ \tag{FHD6}
+\]
+satisfying the displayed entire equations
+\[
+ \partial_ka_0=u|_{W_i},\qquad
+ \partial_{k+j}a_j=\delta a_{j-1}\quad(1\le j\le N-1).
+ \tag{FHD7}
+\]
+For exactly $N$ cover members, $\delta a_{N-1}=0$ automatically
+by alternation.  More generally the same construction may be
+stopped at any finite level $h$ if $\delta a_h=0$ is supplied.
+
+Define
+\[
+ \begin{split}
+ S_0&=\sum_{i_0}\chi_{i_0}(a_0)_{i_0},\\
+ S_j&=\sum_{i_0,\ldots,i_j}\chi_{i_0}
+    K_{k+1}(\chi_{i_1})K_{k+2}(\chi_{i_2})\cdots
+      K_{k+j}(\chi_{i_j})(a_j)_{i_0\cdots i_j}
+                  \quad(j\ge1).
+ \end{split}
+ \tag{FHD8}
+\]
+Composition acts from right to left.  Every summand is first an
+actual form on its displayed overlap, and is then extended by zero
+to $W$.  This extension is legitimate: the support of the scalar
+or derivative factor attached to each index is closed in $W$ and
+contained in its corresponding $W_i$.  No unweighted cochain is
+extended through a missing or singular set.
+
+\begin{theorem}[Displayed finite higher-witness descent]
+The actual form
+\[
+ \boxed{\qquad
+ P=\sum_{j=0}^{N-1}(-1)^{j(j-1)/2}S_j\in L_k^s(W)
+                 \qquad}
+ \tag{FHD9}
+\]
+satisfies $\partial_kP=u$ on the whole original $W$.
+\end{theorem}
+
+\begin{proof}
+Introduce the finite actual residuals
+\[
+ W_j=\sum_{i_0,\ldots,i_j}
+       K_k(\chi_{i_0})K_{k+1}(\chi_{i_1})\cdots
+       K_{k+j}(\chi_{i_j})(a_j)_{i_0\cdots i_j}.
+ \tag{FHD10}
+\]
+Full differentiation gives
+\[
+ \partial_kS_0=u+W_0,\qquad
+ \partial_kS_j=W_j+(-1)^jW_{j-1}\quad(j\ge1).
+ \tag{FHD11}
+\]
+For the second identity, differentiating the leading scalar in
+(FHD8) gives $W_j$.  Move the remaining derivative through all
+$j$ insertion factors using (FHD3), giving the sign $(-1)^j$,
+and use $\partial a_j=\delta a_{j-1}$.  In the resulting
+alternating sum, the term omitting $i_0$ gives $W_{j-1}$ because
+$\sum\chi_{i_0}=1$.  Every term omitting $i_t$ for $t\ge1$
+is killed by $\sum_{i_t}K(\chi_{i_t})=0$.  These identities
+hold on all full intersections before their closed-support
+zero extensions are summed.
+
+The terminal residual is zero.  Indeed insert $\sum_l\chi_l=1$
+and expand $\delta a_j$ to obtain the exact identity
+\[
+ W_j=\sum_{l,i_0,\ldots,i_j}\chi_l
+     K_k(\chi_{i_0})\cdots K_{k+j}(\chi_{i_j})
+                           (\delta a_j)_{l i_0\cdots i_j}.
+ \tag{FHD12}
+\]
+The first alternating term gives $W_j$; each other term omits
+one insertion index and is killed by its zero sum.  At $j=N-1$
+the cochain on the right has $N+1$ alternating indices and hence
+is zero.  Finally the coefficients
+$c_j=(-1)^{j(j-1)/2}$ obey
+$c_{j-1}+(-1)^jc_j=0$.  All adjacent residuals in (FHD11)
+therefore cancel in (FHD9), including the terminal one, and the
+remaining term is $u$.
+\end{proof}
+
+\subsection{The exact four-vertex cube interface}
+
+For the rank-four cube put $s=3$, $k=3$ and use its four ordinary
+vertex opens.  The required data are exactly
+\[
+ \begin{gathered}
+ H_i\in L_3^3(W_i),\quad S_{ij}\in L_4^3(W_{ij}),\quad
+ T_{ijk}\in L_5^3(W_{ijk}),\quad V_{ijkl}\in L_6^3(W_{ijkl}),\\
+ \partial_3H_i=u,\qquad
+ \partial_4S_{ij}=H_j-H_i,\qquad
+ \partial_5T_{ijk}=S_{jk}-S_{ik}+S_{ij},\qquad
+ \partial_6V_{ijkl}=T_{jkl}-T_{ikl}+T_{ijl}-T_{ijk}.
+ \end{gathered}
+ \tag{FHD13}
+\]
+The full global witness is
+\[
+ \begin{split}
+ H={}&\sum_i\chi_iH_i
+       +\sum_{i,j}\chi_iK_4(\chi_j)S_{ij}\\
+     &-\sum_{i,j,l}\chi_iK_4(\chi_j)K_5(\chi_l)T_{ijl}\\
+     &-\sum_{i,j,l,m}\chi_iK_4(\chi_j)K_5(\chi_l)
+                                      K_6(\chi_m)V_{ijlm}.
+ \end{split}
+ \tag{FHD14}
+\]
+Then $\partial_3H=u$.  In particular the fourth-overlap term
+has a minus sign.  Omitting it would leave the full $W_2$
+residual from (FHD10), not a justified zero.  The negative
+bidegree convention leaves $L_6^3=B^{0,0}$ in its central array
+slot and $L_7^3=0$; no further cover term is needed because
+there are only four vertex indices.
+
+If $u$ is the exact GR remainder and all of (FHD13) have actually
+been constructed, substituting (FHD14) into GR's full identity
+gives the whole-domain relative cube with its displayed extending
+cubic error.  This is a certificate implication.  The VSW local
+witnesses alone do not supply $S,T,V$, and the vanishing of
+projective periods alone does not supply them either.  The further
+finite-path-to-original-$U$ Green bridge remains exactly the
+separately stated frozen FG/RSP interface; it is not automatic
+from the formal definition of the cochains.
+
+\paragraph{Actual topology and refinement.}
+The spaces in (FHD1) carry their own actual direct-sum coefficient
+topologies.  All operations in (FHD8) are finite sums, actual
+restrictions, the two actual derivatives, multiplication by the
+fixed ordinary partition, and closed-support zero extension.
+On a fixed whole finite presentation they have the ordinary
+finite Leibniz estimates into a common refinement.  Refining the
+analytic charts or the native presentation changes none of the
+displayed actual identities.  No quotient is substituted for the
+output, and no whole inherited-topology inverse continuity,
+Hausdorff assertion, bornological conclusion or continuous
+choice of missing cochains is claimed.
+
+\paragraph{Exact dependencies and counting boundary.}
+The source of the two- and three-level calculation is the
+recovered earlier FG source
+\path{4175a690d78ecd1d38364584d292c615f4a1f7512fad2b1ce2ccfa8cf0328234}.
+Its attribution and earlier status are unchanged.  The present
+recurrence is proved directly above from the actual calculus;
+it does not restore any missing later FG bytes.  GR is used only
+for the explicitly conditional cube application, source
+\path{c47cbd11e549bf94430182888bccffce20cad14ddc70f2929cab7ba04f5d3997}.
+VSW supplies local witnesses only, source
+\path{c1d7fe4a37cee80c4933bd78e91b8ae0cc2562c551e48f73237ed7cdb32ac1bc}.
+No new external theorem is used.  Internal exact-source reviews
+are not formal verification, external peer review or novelty proof.

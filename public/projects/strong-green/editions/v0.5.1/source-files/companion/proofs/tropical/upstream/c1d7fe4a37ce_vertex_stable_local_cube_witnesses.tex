@@ -1,0 +1,451 @@
+\section{Vertex-stable actual local witnesses for the higher-rank raw cube}
+\label{sec:r11-vertex-stable-local-cube}
+
+\paragraph{Status and scope.}
+\textbf{PROVED THIS ROUND}, submitted for exact-source independent
+review.  The construction contributors are \texttt{/root} and
+\texttt{/root/r11\_cube}.  The theorem below constructs actual
+third witnesses on a specified finite ordinary projective cover
+of the entire punctured tuple domain, including proper-entry zeros.
+It does not glue these witnesses across the cover.  Their higher
+overlap compatibility, a whole-domain third witness, and the general
+original-cycle Green consequence remain \textbf{OPEN}.
+
+The two ingredients proved here are a directed version of SWP with
+a finite tail, and a precise eventual-coordinate-independence
+extension.  No local $\partial_3$-exactness theorem is assumed.
+
+\subsection{A directed finite sweep with possibly tangent carriers}
+
+Fix coordinates $(x_1,\ldots,x_k,z,\tau)$, where $z$ denotes a
+finite list of passive real coordinates, and put
+\[
+ \Gamma=\{\tau>0,\ x_j> -\tau\ (1\le j\le k)\},
+ \qquad w=\sum_{j=1}^k\partial_{x_j},\qquad v=-w.
+ \tag{VSW1}
+\]
+Let $B=B(z,\tau)>0$ be a finite continuous homogeneous PL scalar.
+Let $F$ be a finite native actual form, with constant tangential
+coefficients on central carriers of pure codimension $c\ge1$,
+and with tangential bidegree either $(0,h)$ or $(h,0)$.
+Assume the entire identities
+\[
+ d'F=d''F=0,\qquad
+ F=0\quad\hbox{on }\{x_j>B\hbox{ for every }j\}\subset\Gamma.
+ \tag{VSW2}
+\]
+For $x\in\Gamma$ the translated point $x+tw$ remains in
+$\Gamma$, and it belongs to the zero region in (VSW2) whenever
+\[
+                              t>B(z,\tau)+\tau.
+ \tag{VSW3}
+\]
+This is a uniform bound on every compact parameter set and does
+not depend on the values of the angular coordinates $x_j$.
+
+Refine the finite source presentation by the walls of $B$ and
+the inequalities $x_j=B$.  Delete zero coefficient carriers.
+Every remaining carrier is disjoint from the open zero region:
+a constant tangential coefficient which is zero on a nonempty
+relative open part of a carrier is zero on that carrier.
+Thus (VSW3) bounds the time support carrier by carrier as well.
+
+For every carrier $\sigma$ not tangent to $v$, use precisely
+the transverse formula SWP4--SWP5, with
+$\widehat\sigma=(\sigma+\mathbb R_{\ge0}v)\cap\Gamma$,
+the unique $t_\sigma$, the projected coefficient
+$\widehat\alpha_\sigma$, and weight $\mu_\sigma\wedge v$.
+Define the finite polyhedral expression
+\[
+ \mathcal S_iF=
+    \sum_{v\notin N_\sigma}
+       t_\sigma\widehat\alpha_\sigma
+                    \wedge[\widehat\sigma,\mu_\sigma\wedge v].
+ \tag{VSW4}
+\]
+No summand is assigned to a carrier tangent to $v$.
+
+\begin{lemma}[Directed actual sweep]
+The expression (VSW4) is actual and $D\mathcal S_iF=F$ on
+the whole $\Gamma$.  It is compatible with refinement and all
+native actual relations, and has polynomial coefficients of degree
+one on carriers of codimension $c-1$.
+\end{lemma}
+
+\begin{proof}
+Use the same auxiliary distribution contractions as in SWP.
+For a carrier tangent to $v$, its normal current is killed by
+both contractions.  Since its tangential coefficient has only
+one colour, the double contraction $i''_vi'_v$ is zero too.
+The transverse carriers give exactly (VSW4), by SWP8.  Hence
+the finite expression has the distributional representation
+\[
+        \mathcal S_iF=
+               \int_0^\infty t\,T_t^*(i''_vi'_vF)\,dt,
+             \qquad T_t(x)=x-tv=x+tw.
+ \tag{VSW5}
+\]
+The time support is bounded by (VSW3) on every compact test
+support.  The full Cartan calculation SWP10--SWP11 therefore
+applies and gives
+\[
+ d'\mathcal S_iF=-\int_0^\infty T_t^*(i''_vF)\,dt,
+ \qquad
+ d''\mathcal S_iF=\int_0^\infty T_t^*(i'_vF)\,dt,
+ \qquad D\mathcal S_iF=F.
+ \tag{VSW6}
+\]
+It remains to check that the single-contraction integrals are
+finite polyhedral forms even on the tangent carriers.
+
+The transverse contributions are exactly SWP9.  If $v\in
+N_\sigma$, translation stays inside the affine span of $\sigma$.
+For a point $x$ in that span, its set of contributing times is
+\[
+             I_\sigma(x)=\{t\ge0:x-tv\in\sigma\}.
+ \tag{VSW7}
+\]
+It is an interval.  Writing the finitely many linear inequalities
+of $\sigma$ bounds its endpoints by maxima and minima of a finite
+list of homogeneous linear functions of $x$.  By (VSW3) its upper
+endpoint is finite wherever it contributes.  After one finite
+polyhedral refinement its length $L_\sigma(x)$ is a homogeneous
+linear nonnegative scalar, extended by zero where the interval
+is empty.  The integral of the constant tangential coefficient is
+therefore exactly
+\[
+ L_\sigma(x)\,(i''_v\alpha_\sigma)
+      \wedge[\sigma+\mathbb R_{\ge0}v,\mu_\sigma]
+ \quad\hbox{or}\quad
+ L_\sigma(x)\,(i'_v\alpha_\sigma)
+      \wedge[\sigma+\mathbb R_{\ge0}v,\mu_\sigma],
+ \tag{VSW8}
+\]
+restricted to $\Gamma$, with the respective sign in (VSW6).
+The unused contraction vanishes for a one-colour coefficient.
+These are finite polyhedral forms of carrier codimension $c$;
+the transverse contributions have codimension $c-1$.
+Consequently both full derivatives in (VSW6) are polyhedral.
+Mihatsch's exact native criterion used in SWP proves actualness.
+The full distributional identity (VSW5) proves presentation and
+refinement compatibility.  Its role is to verify the displayed
+finite actual output, not to replace that output by a current.
+\end{proof}
+
+\subsection{Eventual coordinate independence and genuine zero-entry extension}
+
+Say that a finite native form $\beta$ on $\Gamma$ is
+\emph{eventually independent of $x_j$ with bound $B$} if, on
+the entire open $x_j>B(z,\tau)$, its carrier expression has no
+prime or double-prime $dx_j$ factor and all remaining coefficients
+are independent of $x_j$.  Equivalently, locally in the remaining
+coordinates it is the pullback of a native actual form under the
+linear projection forgetting $x_j$.  For the equivalence, choose
+any constant section $x_j=\gamma$ above the bound on a small
+neighborhood in the other coordinates; native affine pullback is
+actual, and the independence identifies the different choices.
+This definition refers to the whole actual form, not to a preferred
+formal lift.
+
+If $F$ in (VSW2) is eventually independent of each $x_j$ with
+this same bound, so is $\mathcal S_iF$.  Indeed, when $x_j>B$,
+the entire ray $x+tw$ remains in that independence region.
+The $\partial_{x_j}$ component of each contraction has no effect,
+and the remaining translated coefficients are independent of $x_j$.
+The common time bound (VSW3) is independent of $x_j$.  The equality
+with a projected form follows in the whole distributional native
+chart and hence, because both sides are actual, in native $B$.
+The operators $d',d'',N,I',I''$ of SWP also preserve eventual
+independence: on this open the $x_j\partial_{x_j}$ summand of
+the radial contraction is zero, and all other operations commute
+with the indicated projection.
+
+Here is the exact analytic extension consequence.  On an original
+$K$ analytic open, let $u_1,\ldots,u_k$ be analytic functions,
+possibly zero, and let the parameters in $z,\tau$ be valuations
+of analytic units, with $\tau>0$.  Suppose
+\[
+                  v(u_j)>-\tau,
+ \tag{VSW9}
+\]
+where $v(0)=+\infty$.  A native actual form $\beta$ as above,
+eventually independent of every $x_j$ with bound $B$, has an actual
+extension from the locus where all $u_j$ are units to this entire
+open, by the following explicit local rule.
+
+At a point, let $J$ be the indices of its zero functions.
+Shrink an ordinary neighborhood so that all $u_j$ for $j\notin J$
+are units, the parameters and $B$ are bounded there, and
+$v(u_j)>B$ for $j\in J$.  Choose nonzero constants
+$\epsilon_j\in K$ with
+\[
+             v(\epsilon_j)>\sup B\qquad(j\in J).
+ \tag{VSW10}
+\]
+Such constants exist with the original valuation, by powers of
+any original uniformizer.  Substitute these constants for the
+$u_j$, $j\in J$, in the finite native presentation of $\beta$;
+all arguments are now units, so this gives an actual form on the
+ordinary neighborhood.  The resulting form is independent of
+the constants and of this neighborhood: eventual independence
+identifies any two choices as full native forms after projection.
+The same argument identifies a constant substitution with an
+unmodified nonzero function whenever the latter has valuation
+above $B$.  Hence the forms glue on all overlaps, including those
+with zero entries.  This is a literal actual sheaf construction,
+not an appeal to density of the all-nonzero locus.
+
+The rule commutes with every finite identity among the supplied
+eventually-independent forms, and with their full derivatives.
+In particular it transfers identities involving SWP's radial
+operators after they have been evaluated as actual forms.
+It does not define a radial operation on arbitrary Berkovich
+forms.  It does not modify the original tuple, ideal, or cycle;
+the small constants occur only in the local presentation of the
+already specified extending form.
+
+\subsection{The full GR remainder has the required finite tail}
+
+Take the exact three-distinct-entry raw CS cube, of rank $r\ge4$,
+with original unit valuations $a,b,c$.  Put $s=r-1$,
+$d=r-2$ and $\ell=r-3\ge1$.  For now give all six faces the
+same positive auxiliary cap offset $\tau$ from NCP, retaining
+all its derivatives.  Use exactly the signed face order
+\[
+ (ab;f),\ (ac;Bf),\ (bc;f),\ -(bc;Af),\ -(ac;f),\ -(ab;Cf).
+ \tag{VSW11}
+\]
+Let $\mathcal R_f$ be the entire GR20 triple
+\[
+             u=\mathcal R_f=E_{\rm glob}-C_0^\ell E_{abc}.
+ \tag{VSW12}
+\]
+It is already actual and metric-independent on the punctured
+tuple domain.  We do not replace it by selected closed curvature
+blocks.  All formal parameter coefficients defining $E_{\rm glob}$
+remain precisely those of GR5 and GR13--GR18.
+
+Fix an entry $i$.  On its projective chart normalize $f_i$ to
+one and let $x_j=v(f_j/f_i)$ for $j\ne i$.  The native domain
+is (VSW1) with $k=r-1$ and passive parameters $z=(a,b,c)$.
+The eight normalized potentials are explicitly
+\[
+ \phi_S=\min\left(w_i(S),\ \min_{j\ne i}
+                      \{x_j+w_j(S)\}\right),
+ \tag{VSW13}
+\]
+where $w_1(S),w_2(S),w_3(S)$ are respectively $a,b,c$ when
+their index belongs to $S$, and zero otherwise; all other
+$w_j(S)$ are zero.  Each face cap is exactly
+\[
+ \Psi_\nu=\min\bigl(\psi_\nu,
+       \phi_{\mathrm{base}(\nu)}+|a_\nu|+|b_\nu|+\tau\bigr),
+ \tag{VSW14}
+\]
+where $\psi_\nu$ is the norm of that face's unchanged passive
+entries with its prescribed base tuple.  Thus the entire native
+presentation uses finitely many homogeneous minima and absolute
+values, including every one of their walls.  Compute (VSW12)
+with reference metric zero.  GR17--GR18 make the result independent
+of this choice and identify it with the original $u$ on the chart.
+
+Set
+\[
+       S_0=|a|+|b|+|c|,\qquad B_0=3S_0+2\tau.
+ \tag{VSW15}
+\]
+If a single $x_j>B_0$, that entry is strictly inactive in all
+eight full norms and all six capped passive norms.  Indeed, its
+value after any of the changes is at least $x_j-S_0>2S_0+2\tau$.
+The unchanged normalized entry $i$ bounds every full minimum
+above by $S_0$, and every cap's second branch is at most
+$2S_0+\tau$.  Therefore deleting entry $j$ does not change
+any one of (VSW13)--(VSW14) on this entire ordinary open.
+Their full mixed derivatives and every GR parameter coefficient
+are unchanged there.  In particular $u$ and both of its curls
+are eventually independent of every $x_j$ with bound $B_0$.
+
+We next prove the full tail identity needed for those curls:
+\[
+       d''u_A=d'u_B=0\quad\hbox{where all }x_j>B_0.
+ \tag{VSW16}
+\]
+On this open the normalized entry $i$ is the unique minimizer
+in all eight norms.  Thus all their projective curvatures,
+including $C_0$, are zero.  If $i$ is outside the three changed
+entries, every face passive norm equals the common full potential,
+and all GR normalizer differences are zero; (VSW16) follows.
+
+Suppose, for example, that $i=1$.  The two $ab$ faces have
+identical norm, cap and unit arguments, because changing entry 3
+cannot affect any of them.  Their full GR residuals cancel with
+their opposite signs.  The two $ac$ faces cancel in the same
+way.  For each of the remaining $bc$ faces all four potentials
+have the same value $\gamma$, where $\gamma=0$ or $a$, and
+the cap equals that value because entry 1 is passive.
+Relative to the global base potential zero, GR18 reads
+\[
+ \widetilde p_v=\rho\gamma\quad\hbox{for every vertex},
+ \qquad
+ \widetilde R=-\widetilde D((1-\rho)\gamma),
+ \qquad C_v=0,
+ \tag{VSW17}
+\]
+with $\rho=3t^2-2t^3$.  In CS7 the $\mathfrak a(p,p)$
+terms vanish, while the other terms sum to zero by the full
+edge-weight sum and its first derivatives.  Thus the entire
+unrestricted GR11 residual for this face is
+\[
+             \tfrac12\mathfrak a(b,c;\widetilde R^{d}).
+ \tag{VSW18}
+\]
+The curvature $\widetilde R$ has zero exterior-free part,
+because $D\gamma=0$.  Since $d=r-2\ge2$, its $d$th power
+has no single-exterior coefficient.  Hence both coefficients
+$F_1^+$ and $F_2^-$ used for the $A,B$ entries of GR5 are zero.
+The double-exterior coefficient is not discarded; it can contribute
+to the $M$ entry and is irrelevant to this particular conclusion.
+This proves that $E_{{\rm glob},A}=E_{{\rm glob},B}=0$ here.
+The subtracted $C_0^\ell E_{abc}$ is zero because $\ell\ge1$.
+This proves (VSW16).  Exchanging the changed index proves the
+same assertion for $i=2,3$.  The cancellation is an entire
+actual identity also on all $a,b,c$ sign walls.
+
+The exact finite GR expressions show moreover that $d''u_A$
+and $d'u_B$ have constant tangential coefficients of degrees
+$(0,3)$ and $(3,0)$ on central carriers of codimension $\ell$.
+For the first entry, the single prime parameter coefficient in
+GR5 removes one curvature factor from the degree $d$ residual,
+leaving $d-1=\ell$ curvature factors and two tangential
+double-prime factors with one linear coefficient.  Differentiating
+by $d''$ gives constant three-double-prime coefficients; a boundary
+term of higher carrier codimension would have negative prime
+tangential degree and is zero.  The second entry is the
+opposite-colour calculation.  The term $C_0^\ell E_{abc}$
+has precisely the same carrier and coefficient types.
+These statements may also be read from the full CF4 curl formula;
+no curvature factor is cancelled in the actual quotient.
+
+\subsection{Actual local witnesses on the original punctured domain}
+
+Use the directed sweep with $B=B_0$ on the two entire curls:
+\[
+ F_i=\mathcal S_i(d''u_A),\qquad
+ G_i=\mathcal S_i(d'u_B).
+ \tag{VSW19}
+\]
+They are actual, have the required bidegrees and Euler weights
+$(1,4)$ and $(4,1)$, and satisfy $DF_i=d''u_A$ and
+$DG_i=d'u_B$.  Their time support is uniformly bounded by
+$3S_0+3\tau$ on (VSW1).  They and $u$ are eventually
+independent of each angular coordinate by (VSW15).
+
+Apply the explicit formula SWP17--SWP20 to $u,F_i,G_i$ in
+the verified finite polynomial native carrier space.  Here
+$\Gamma$ is a central conical open subdomain: the carrierwise
+radial proof SWP12--SWP14 is local and applies there verbatim;
+no extension of these forms to the whole half-space is required.
+Denote
+the resulting actual quadruple by $H_i$.  It satisfies
+\[
+                              u=\partial_3H_i
+                                  \quad\hbox{on }\Gamma.
+ \tag{VSW20}
+\]
+Every operation used to obtain $H_i$ preserves eventual
+independence, so all four of its components have the zero-entry
+extension described in (VSW9)--(VSW10).
+
+Now choose $\pi\in K$ with $\gamma=v(\pi)>0$ and specialize
+the auxiliary unit to $\pi$.  On the original $W=N\setminus
+|f=0|$, define the finite ordinary opens
+\[
+ O_i=\{|f_i|>e^{-\gamma}\|f\|_\infty\},\qquad
+                            1\le i\le r.
+ \tag{VSW21}
+\]
+Ratios in this formula are independent of a frame and of the common
+metric.  These opens cover $W$; at any point an entry attaining
+the maximum belongs to its $O_i$.  On $O_i$, $f_i$ trivializes
+$L$, all ratios $f_j/f_i$ are analytic, and their valuations
+are greater than $-\gamma$ or are $+\infty$.
+The preceding original-$K$ constant-substitution construction
+therefore gives actual forms $H_i$ on all of $O_i$, not just
+its all-unit locus.  It transfers (VSW20) as a literal actual
+identity.  For the already defined triple $u$, the substituted
+form is exactly the original GR triple: (VSW15) shows that these
+small replacements preserve all eight full norm potentials and
+all six capped passive potentials literally on the neighborhood,
+so their complete GR parameter coefficients and mixed derivatives
+are identical.  No uniqueness from a dense punctured subset is
+being used.  There is no rational-point reduction or extension of
+arbitrary high-degree forms from another field.
+
+\begin{theorem}[Finite original-field local relative cube witnesses]
+For every $r\ge4$, the full raw capped three-distinct-entry cube
+has, on the entire ordinary opens (VSW21), actual quadruples
+$\mathcal H_i\in L_3^{r-1}(O_i)$ such that
+\[
+       \mathcal Q_{a,b,c}(f)|_{O_i}
+             =\partial_3\mathcal H_i+R^{r-3}E_{abc}|_{O_i}.
+ \tag{VSW22}
+\]
+All original positive cap offsets, all mixed metric coefficients,
+all unit-valuation walls, and all proper-entry-zero points are
+retained.  The displayed extending triple is defined on the
+unpunctured $N$.
+\end{theorem}
+
+\begin{proof}
+First compute the global GR data using common offset $\gamma$.
+With $h_0$ exactly as in GR21, GR23 gives
+\[
+ \mathcal Q_\gamma
+       =\partial_3(T_{\rm glob}+K_{h_0}(E_{abc}))
+                         +R^{r-3}E_{abc}+u.
+ \tag{VSW23}
+\]
+Insert (VSW20), now actually extended over $O_i$.
+For arbitrary original offsets $\varepsilon_\nu>0$, CT on
+each of the same six faces supplies a whole-$W$ actual quadruple
+$\Delta T_\nu$ with
+$q_\nu[\varepsilon_\nu]-q_\nu[\gamma]
+=\partial_3\Delta T_\nu$.
+Thus the explicit required quadruple is
+\[
+ \mathcal H_i=
+  (T_{\rm glob}+K_{h_0}(E_{abc})
+                 +\sum_\nu\sigma_\nu\Delta T_\nu)|_{O_i}+H_i.
+ \tag{VSW24}
+\]
+Every term is a finite actual construction on its stated ordinary
+domain.  GR contains the complete metric transport; QHT is applied
+only to the independently closed triple $E_{abc}$; CT contains
+the full mixed parameter and cap-wall terms.  This proves (VSW22).
+\end{proof}
+
+\paragraph{What this does not yet glue.}
+The opens $O_i$ cover the punctured $W$, not a supplied unpunctured
+neighborhood cover of the cancellation locus in $N$.  On an overlap
+$O_i\cap O_j$ the difference $\mathcal H_i-\mathcal H_j$ is
+$\partial_3$-closed, but no fourth witness for that difference has
+been constructed here.  Taking a partition-weighted sum would
+introduce precisely those unproved higher mixed terms.
+Consequently (VSW22) is not a whole-$W$ relative cube witness and
+does not by itself yield the finite-cover RAG/FG original-$U$
+Green construction.  It identifies a smaller, concrete remaining
+task: higher compatibility of the displayed vertex witnesses,
+with their actual zero-entry extensions already constructed.
+The strict proper-fiber obstruction remains intact, and no general
+Strong G or OPEN-KERNEL counterexample or solution is inferred.
+
+\paragraph{Exact dependencies.}
+SWP: \path{85f78ced06bfb952c74afdef693aa20fa8538c3faf3bd1bd59bb14d90f3aaa20}.
+GR: \path{c47cbd11e549bf94430182888bccffce20cad14ddc70f2929cab7ba04f5d3997}.
+CT: \path{0c10e28336f9c779cc3dc4a35393b1fc52d1f6d7d154a4ec466c13d7c6514e95}.
+NCP: \path{144df3e33ec6beeefa7907b1292edc31855d289727da777082c5015d33676743}.
+CF: \path{90bc9837cf43de60a2e20c494374b412bb36d68a6d5deb61697fb04bc68d2e52}.
+QHT: \path{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0}.
+The full CS/MT and native-definition inputs are those read and
+locked in GR and SWP.  Internal review is not formal verification,
+external peer review, or proof of novelty.

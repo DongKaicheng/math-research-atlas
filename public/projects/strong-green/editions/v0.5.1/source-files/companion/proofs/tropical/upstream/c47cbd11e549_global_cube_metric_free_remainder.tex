@@ -1,0 +1,377 @@
+\section{An explicit metric-independent remainder for the full raw cube}
+\label{sec:r11-global-cube-remainder}
+
+\paragraph{Status and scope.}
+This is an R11 construction by \texttt{/root/r11\_cube}, submitted
+for independent exact-source review.  It constructs a global actual
+quadruple and a completely specified metric-independent actual triple
+whose sum is the raw six-face CS cube on the entire original punctured
+open.  The latter triple has \emph{not} been proved to extend across
+the common zero set.  The final specified closed remainder below is
+still OPEN.  No vanishing of a mixed parameter residual, no exactness
+of an actual complex, and no new original-cycle Green existence theorem
+is asserted.
+
+\subsection{The parameter identity with a retained nonzero defect}
+
+Use exactly the finite algebraic two-colour extension CT1--CT3,
+\[
+ \mathscr B(W)\otimes\mathbb R[t]\otimes
+                       \Lambda(\epsilon',\epsilon''),
+ \qquad \widetilde d't=\epsilon',\quad
+ \widetilde d''t=\epsilon'',
+ \tag{GR1}
+\]
+with the exterior variables written on the left.  It is an algebraic
+device with actual coefficients, not an analytic real-interval
+pullback, a completion, or a current space.  All integrations below
+are integrations of finitely many real polynomial coefficients.
+
+Let $\widetilde q=(\widetilde A,\widetilde B,\widetilde M)$ be a
+finite polynomial triple of bidegrees $L_2^s$, and write
+\[
+ \widetilde A=A_0+\epsilon'A_1+\epsilon''A_2
+                                      +\epsilon'\epsilon''A_{12},
+ \tag{GR2}
+\]
+and similarly for $B,M$.  Write its \emph{complete} boundary as
+\[
+ \widetilde\partial_2\widetilde q=\widetilde F
+                  =(\widetilde F^+,\widetilde F^-),\qquad
+ \widetilde F^\pm=F_0^\pm+\epsilon'F_1^\pm
+             +\epsilon''F_2^\pm+\epsilon'\epsilon''F_{12}^\pm.
+ \tag{GR3}
+\]
+No coefficient of $\widetilde F$ is assumed zero or closed.
+Assume only $A_2(0)=M_1(0)=0$.  Define the actual quadruple
+$\mathcal T(\widetilde q)$ by the exact CT7 formula
+\[
+ \begin{split}
+ J_q&=\int_0^1(1-t)M_{12}(t)\,dt,\\
+ \mathcal T(\widetilde q)
+  &=\left(\int_0^1A_1\,dt,\ \int_0^1B_2\,dt,\
+          \int_0^1M_1\,dt-d''J_q,\ \int_0^1M_2\,dt\right).
+ \end{split}
+ \tag{GR4}
+\]
+The full retained-defect triple is
+\[
+ \mathcal E(\widetilde F)=
+ \left(\int_0^1F_1^+\,dt,\ \int_0^1F_2^-\,dt,\
+       \int_0^1F_2^+\,dt+d'\int_0^1(1-t)F_{12}^+\,dt\right).
+ \tag{GR5}
+\]
+
+\begin{lemma}[Full finite parameter identity]
+With these data one has the actual identity
+\[
+ \operatorname{ev}_1\widetilde q-\operatorname{ev}_0\widetilde q
+            =\partial_3\mathcal T(\widetilde q)
+                              +\mathcal E(\widetilde F).
+ \tag{GR6}
+\]
+\end{lemma}
+
+\begin{proof}
+The six nonconstant-exterior equations, with every defect retained,
+are
+\[
+ \begin{split}
+ \dot A_0&=d'A_1+d''M_1+F_1^+,\\
+ \dot M_0&=d'A_2+d''M_2+F_2^+,\\
+ \partial_t(A_2-M_1)&=-d'A_{12}-d''M_{12}+F_{12}^+,\\
+ \dot M_0&=d''B_1+d'M_1+F_1^-,\\
+ \dot B_0&=d''B_2+d'M_2+F_2^-,\\
+ \partial_t(M_2-B_1)&=-d''B_{12}-d'M_{12}+F_{12}^-.
+ \end{split}
+ \tag{GR7}
+\]
+These follow by the same full graded expansion as CT9--CT10.
+The first and fifth equations give the first two entries of
+(GR6).  For the third entry,
+\[
+ \dot M_0-d'M_1-d''M_2=d'(A_2-M_1)+F_2^+.
+ \tag{GR8}
+\]
+Its first term, using the third equation of (GR7) and the initial
+condition, integrates to
+\[
+ \int_0^1d'(A_2-M_1)\,dt
+   =-DJ_q+d'\int_0^1(1-t)F_{12}^+\,dt.
+ \tag{GR9}
+\]
+Equations (GR8)--(GR9) give precisely the third components of
+(GR4)--(GR5), with their signs.  The last two missing exterior
+coefficients of $F$ have not been declared zero: (GR7) displays
+them, while the asymmetric extraction (GR5) needs only the
+indicated four coefficients.  Its bidegrees are exactly those
+of $L_2^s$.  All operations are finite actual operations.
+\end{proof}
+
+\subsection{The unrestricted CS expression and its exact boundary}
+
+Retain the original data of QH10: $f$ has rank $r\ge3$, three
+distinct unit changes have weights $a,b,c$, $W=N\setminus|f=0|$,
+$s=r-1$ and $d=s-1$.  Write $\Phi_v$ for the eight actual norm
+potentials, indexed by subsets $v\subset\{a,b,c\}$, and use
+the original metric curvature $R$.  For a face $\nu$ of the
+cube, denote its two ordered weights by $(a_\nu,b_\nu)$ and
+its four oriented edges by $e$.  Let $P_\nu$ be the full SHT
+square pair and $e_\nu=(a_\nu d''b_\nu,b_\nu d'a_\nu)$.
+
+For \emph{any} actual scalar $\Psi$ on the whole $W$, define
+$q_\nu[\Psi]$ to be the finite expression CS36 with this scalar:
+\[
+ \begin{gathered}
+ R_\Psi=R-D\Psi,\qquad p_v=\Phi_v-\Psi,\qquad
+ h_\Psi=-\Psi\sum_{j=0}^{d-1}R_\Psi^jR^{d-1-j},\\
+ q_\nu[\Psi]=Q_{{\rm edge},\nu}[\Psi]-Q_{{\rm met},\nu}[\Psi]
+ -(0,0,a_\nu b_\nu R_\Psi^d/2)
+                                     +\mathcal H_{h_\Psi}(e_\nu).
+ \end{gathered}
+ \tag{GR10}
+\]
+Here $Q_{\rm edge}$ means \emph{every} term of CS30 with its
+CS6--CS9 formulas, and $Q_{\rm met}$ is exactly MT15 for the
+unshifted face and the common change $-\Psi$.  Thus (GR10) is
+well-defined even when $\Psi$ is not a legal CS cap; no witness
+property for an arbitrary $\Psi$ is assumed.
+
+Let $S_{e,s}[\Psi]$ denote the full residual CS7, with the same
+normalization.  The unconditional finite boundary identity is
+\[
+ \begin{split}
+ \partial_2q_\nu[\Psi]
+    &=P_\nu-e_\nu R^d+F_\nu[\Psi],\\
+ F_\nu[\Psi]
+    &=\frac12\left(\sum_{e\in\nu}S_{e,s}[\Psi]
+                     +\mathfrak a(a_\nu,b_\nu;R_\Psi^d)\right).
+ \end{split}
+ \tag{GR11}
+\]
+Indeed CS10 gives
+$\partial_2Q_{\rm edge}=P_\nu^*+\sum_eS_{e,s}/2$;
+MT16 removes $P_\nu^*-P_\nu$; the scalar correction contributes
+$-e_\nu R_\Psi^d+\mathfrak a(a_\nu,b_\nu;R_\Psi^d)/2$;
+and the independently closed-pair homotopy contributes
+$e_\nu(R_\Psi^d-R^d)$.  Their sum is (GR11).
+Neither CS29 nor an independent closedness of any residual
+coefficient is used in this derivation.
+
+The same identity holds in (GR1) for a polynomial common
+normalization.  All algebraic terms are the full differential
+polynomials.  The one support step in CS10 is unchanged:
+on a $D|c_e|$ carrier the original norm difference is zero with
+its tangential first jet, and subtracting the same formal scalar
+from both endpoints leaves that difference and its formal first
+jets unchanged.  No parameter coefficient is removed by a
+dimension assertion.
+
+\subsection{The simultaneous six-face interpolation}
+
+List the six faces with the exact QH10 signs:
+\[
+ \begin{array}{c|c|c}
+ \nu&\text{face and base tuple}&\sigma_\nu\\\hline
+ 1&(a,b;f)&+1\\
+ 2&(a,c;Bf)&+1\\
+ 3&(b,c;f)&+1\\
+ 4&(b,c;Af)&-1\\
+ 5&(a,c;f)&-1\\
+ 6&(a,b;Cf)&-1.
+ \end{array}
+ \tag{GR12}
+\]
+Let $\Psi_\nu$ be that face's original actual CS24 cap with the
+prescribed positive constant.  Put $\Phi_\emptyset=\Phi_0$,
+$\rho(t)=3t^2-2t^3$, and define on the entire original $W$
+\[
+ \widetilde\Psi_\nu
+     =\Psi_\nu+\rho(t)(\Phi_0-\Psi_\nu),\qquad
+ \widetilde Q=\sum_{\nu=1}^6\sigma_\nu q_\nu[\widetilde\Psi_\nu],
+ \qquad
+ \widetilde F=\sum_{\nu=1}^6\sigma_\nu F_\nu[\widetilde\Psi_\nu].
+ \tag{GR13}
+\]
+All operations in (GR10) are now taken with $\widetilde d',
+\widetilde d''$.  No claim is made that the interpolated normalizers
+are legal caps or that their individual residuals vanish.
+
+Endpoint and face telescoping give the literal identities
+\[
+ \operatorname{ev}_0\widetilde Q=\mathcal Q_{a,b,c}(f),\qquad
+ \operatorname{ev}_1\widetilde Q=0,\qquad
+                 \widetilde\partial_2\widetilde Q=\widetilde F.
+ \tag{GR14}
+\]
+For the middle equality, every face has the same normalizer $\Phi_0$.
+Each oriented cube edge occurs twice with opposite signs, so the
+entire CS30 edge triples cancel, including their scalar and
+tetrahedron terms.  The MT15 sums are linear in the full edge
+sums $f_k,\Gamma_k$ when their common scalar and reference are fixed,
+so they cancel as well.  Finally the three pairs of parallel faces
+have equal ordered weights, the same $R_{\Phi_0}$ and the same
+$h_{\Phi_0}$; their scalar and independently closed-pair correction
+terms therefore cancel.  This is equality of displayed expressions,
+not a claim that $\Phi_0$ is a legal cap on every face.
+
+For the last equality of (GR14), $\sum\sigma_\nu P_\nu=0$ by
+the same oriented-edge cancellation, and
+$\sum\sigma_\nu e_\nu=0$ by parallel-face cancellation.  Apply
+the complete (GR11) in the finite parameter algebra.
+
+Every single-exterior coefficient of $\widetilde Q$ has a factor
+$\rho'(t)$, exactly as in CT19.  In particular the initial condition
+of (GR6) holds.  The double-exterior coefficients, which contain
+$\rho''$ and $(\rho')^2$, are retained.
+
+\begin{theorem}[Explicit global cube reduction]
+The following are completely specified actual forms on all of $W$:
+\[
+ T_{\rm glob}=-\mathcal T(\widetilde Q)\in L_3^s(W),\qquad
+ E_{\rm glob}=-\mathcal E(\widetilde F)\in L_2^s(W).
+ \tag{GR15}
+\]
+They satisfy the literal identity
+\[
+             \mathcal Q_{a,b,c}(f)=\partial_3T_{\rm glob}+E_{\rm glob},
+                         \qquad \partial_2E_{\rm glob}=0.
+ \tag{GR16}
+\]
+The triple $E_{\rm glob}$ is independent of the original common
+piecewise smooth metric on $L$.  This is not an extension assertion.
+\end{theorem}
+
+\begin{proof}
+Apply (GR6) to (GR14).  Its endpoint difference is
+$-\mathcal Q_{a,b,c}(f)$, giving both minus signs in (GR15).
+The raw cube is $\partial_2$-closed by frozen QH11, so
+$\partial_2\partial_3=0$ gives the last equality of (GR16).
+No actual cochain has been chosen by an abstract inverse.
+
+To prove the metric assertion, write
+\[
+ \theta_v=\Phi_v-\Phi_0,\qquad
+ \kappa_\nu=\Psi_\nu-\Phi_0,\qquad C_0=R-D\Phi_0.
+ \tag{GR17}
+\]
+Under (GR13), the normalized vertex potentials and reference
+curvature in every residual become exactly
+\[
+ \widetilde p_{v,\nu}=\theta_v-(1-\rho)\kappa_\nu,\qquad
+ \widetilde R_\nu
+                 =C_0-\widetilde D((1-\rho)\kappa_\nu).
+ \tag{GR18}
+\]
+These, the original unit weights and their absolute-value walls,
+are all the arguments of $\widetilde F$ in (GR11).
+Changing the common metric adds one common actual scalar to all
+$\Phi_v$ and $\Psi_\nu$, and its $D$ to $R$.  Thus every quantity
+in (GR17)--(GR18) is literally unchanged.  The full single and
+double parameter coefficients of $\widetilde F$, and hence (GR5),
+are unchanged.  This proves metric independence with every mixed
+coefficient retained.
+\end{proof}
+
+In particular, for two actual common metrics, the difference of
+their raw cubes is the explicitly displayed third boundary
+\[
+ \mathcal Q^{(1)}-\mathcal Q^{(0)}
+                   =\partial_3(T_{\rm glob}^{(1)}-T_{\rm glob}^{(0)}).
+ \tag{GR19}
+\]
+This is a whole-cube metric transport formula.  It does not apply
+CPT or QHT to nonclosed lower-degree blocks.
+
+\subsection{The exact remaining actual problem}
+
+Let $\ell=r-3$ and take the independently closed unit triple
+$E_{abc}=\mathcal H_c(e_{ab})$ from CU6, which is actual on all of
+$N$.  Define the fully specified actual metric-independent triple
+\[
+                  \mathcal R_f=E_{\rm glob}-C_0^\ell E_{abc}
+                                           \in L_2^s(W).
+ \tag{GR20}
+\]
+It is $\partial_2$-closed, but no actual third primitive for it
+has been constructed.  For $\ell\ge1$ put
+\[
+ h_0=-\Phi_0\sum_{j=0}^{\ell-1}C_0^jR^{\ell-1-j},
+                \qquad Dh_0=C_0^\ell-R^\ell.
+ \tag{GR21}
+\]
+Since the coefficient triple $E_{abc}$ is independently closed
+on $N$, the exact QHT identity applies without cancellation:
+\[
+ (C_0^\ell-R^\ell)E_{abc}
+                         =\partial_3K_{h_0}(E_{abc}).
+ \tag{GR22}
+\]
+For $\ell=0$ set this correction to zero.  Consequently the
+entire raw cube has the exact decomposition
+\[
+ \boxed{\quad
+ \mathcal Q_{a,b,c}(f)
+  =\partial_3\bigl(T_{\rm glob}+K_{h_0}(E_{abc})\bigr)
+                         +R^\ell E_{abc}+\mathcal R_f.
+ \quad}
+ \tag{GR23}
+\]
+Every form in this equation has been constructed.  The first
+quadruple is actual on $W$; the middle triple genuinely extends
+on $N$; the last term is the explicit unresolved actual remainder.
+
+\paragraph{OPEN, not an exactness conclusion.}
+Constructing an actual $V_f\in L_3^s(W)$ with
+$\mathcal R_f=\partial_3V_f$ would give the desired relative
+cube certificate by adding $V_f$ to the quadruple in (GR23).
+This is one precise sufficient target for the displayed choice
+of extending triple.  It is not asserted to be necessary for
+every possible extending error, and no general relative cube
+counterexample would follow from failure of this particular
+subtraction.  Closedness of $\mathcal R_f$ is not used as a
+primitive existence theorem.
+
+The scalars in (GR17) have useful bounds but those do not solve
+extension.  If $L_0=|a|+|b|+|c|$, then
+$|\theta_v|\le L_0$ and $|\kappa_\nu|\le2L_0+\varepsilon$
+for a common cap constant.  These follow from the unit norm
+bound and the two branches of each original CS cap.  They do
+not imply that any scalar, derivative, or remainder in (GR20)
+extends across the common zero set.  For example a capped angular
+norm ratio can remain bounded and have different limits on two
+original-$K$ normal sections.  No growth condition is imposed;
+boundedness is recorded only as a property of the specified
+input scalars, not as a replacement for an actual extension proof.
+
+\paragraph{Actual interfaces and the Green bridge.}
+All formulas are on the one entire original $W$ and use the eight
+original norm potentials, six fixed cap presentations and the three
+unit weights.  The parameter algebra adds only finitely many
+coefficient operations; it neither moves valuation walls nor assumes
+a local contraction of an actual relation quotient.  Every coefficient
+is an actual form, respects all original non-product unit relations,
+and commutes with restriction and allowed refinement.  On a fixed
+whole presentation the finite operations retain all mixed seminorms
+and have only the usual finite-stage continuity.  No probe topology,
+strict image, Hausdorff quotient, higher descent or function-space
+completion is substituted.
+
+No Green form is asserted from (GR23) while $\mathcal R_f$ remains
+unresolved.  If a full actual third witness is later supplied, the
+exact earlier recovered FG11--FG16 certificate and the frozen
+RAG/RSP bridge give the original-$U$ form only with their separately
+supplied local paths and whole-overlap data.  Those finite gluing
+formulas are frozen inputs, not new results of this module.  All
+field, absolute-value, support, CI0 and full actual-test restrictions
+remain unchanged.
+
+\paragraph{Exact dependencies.}
+CT: \path{0c10e28336f9c779cc3dc4a35393b1fc52d1f6d7d154a4ec466c13d7c6514e95};
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf};
+MT: \path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4};
+QHT: \path{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0};
+CPT: \path{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6};
+CU6: \path{d38d0c77f879e3ca80962fa0fac2e56f6ea159fd59971a0bd810fbadc0a91471}.
+FIV is not used to replace the raw CS faces by unspecified PPC
+tetrahedra.  No missing R10 source is promoted to a frozen theorem.

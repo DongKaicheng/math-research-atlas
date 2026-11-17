@@ -1,0 +1,330 @@
+% Round 16. Separate continuation after the principal results were frozen.
+% Root and global_height independent full reviews PASS at mathematical SHA
+% e8bc3c712d9ea91d36d4c9b10efb7b38c9a37fb7545c83ad20e5f59ad04f2d5f.
+% This activation changes only the status notice.
+% Subsequent PDF layout only: GG16.5 is displayed on two lines.
+% Reduced models only; no priority claim.
+\section{A graph correction for scalar total boundary images}
+\label{r16gg:section}
+
+\paragraph{Provenance and exact scope.}
+Historical Round 7 already studied scalar-degree correction matrices
+and recorded higher-codimension numerical admissibility criteria in
+\path{history_01_07/bb_round7/proofs/threefold_scalar_degree_kernel.tex}.
+Its original review flags remain unchanged. The result here is a
+direct sufficient condition on the \emph{total cohomological Gysin
+image at each component}, followed by native actual activation.
+It neither reasserts all historical higher-kernel conclusions nor
+claims priority for the graph method. The general-degree support
+argument below is proved explicitly; the already reviewed
+Section~\ref{r16mb:section} states its degree-four case only.
+
+\begin{lemma}[Single-divisor generators of the supported image in every degree]
+\label{r16gg:support}
+Let $D/k$ be a smooth projective $n$-fold over a finite field,
+let $B=\bigcup_a E_a$ be a reduced strict normal crossings divisor
+whose intersections are smooth of their expected codimensions,
+and let $\ell\ne\operatorname{char}k$. For every $1\leq r\leq n$,
+\[
+ \operatorname{im}\left(H^{2r}_{B_{\bar k}}(D_{\bar k},\mathbf Q_\ell)
+                   \longrightarrow H^{2r}(D_{\bar k},\mathbf Q_\ell)\right)
+ =\sum_a\operatorname{im}\left(
+ H^{2r-2}((E_a)_{\bar k},\mathbf Q_\ell)(-1)
+                  \xrightarrow{j_{a*}}H^{2r}(D_{\bar k},\mathbf Q_\ell)
+                         \right).
+ \tag{GG16.1}\label{r16gg:support-image}
+\]
+The statement is also valid for an empty boundary, with zero image.
+\end{lemma}
+
+\begin{proof}
+After a finite residue extension all geometric components can be
+labeled separately; this changes neither geometric cohomology nor
+the claimed images. Iterating the closed-support Mayer--Vietoris
+triangle gives the bounded Frobenius-equivariant spectral sequence
+\[
+ E_1^{-p,q}=\bigoplus_{|I|=p+1}H^q_{(E_I)_{\bar k}}
+                  (D_{\bar k},\mathbf Q_\ell)
+       \Longrightarrow H^{q-p}_{B_{\bar k}}(D_{\bar k},\mathbf Q_\ell),
+                         \qquad p\geq0.
+ \tag{GG16.2}\label{r16gg:support-sequence}
+\]
+Here $E_I=\bigcap_{a\in I}E_a$; empty intersections are omitted.
+This is the resolution for closed supports, not ordinary cohomology
+of the boundary union. Smooth-pair purity, with $t=p+1$, identifies
+its terms as
+\[
+ H^q_{(E_I)_{\bar k}}(D_{\bar k},\mathbf Q_\ell)
+                =H^{q-2t}((E_I)_{\bar k},\mathbf Q_\ell)(-t).
+ \tag{GG16.3}\label{r16gg:purity}
+\]
+Every stratum is smooth and projective. Weil purity therefore
+makes this term pure of weight $q$. The differential $d_1$
+preserves $q$. Every $E_2^{-p,q}$ is consequently pure of
+weight $q$, and each $d_s$ for $s\geq2$ changes the second
+index to $q-s+1$. Disjoint Weil weights force these later
+differentials to vanish, so $E_2=E_\infty$.
+
+In total degree $2r$ one has $q=2r+p$, and the corresponding
+stratum cohomology group is
+\[
+       H^{2r-p-2}((E_I)_{\bar k},\mathbf Q_\ell)(-p-1),
+                    \qquad\text{of weight }2r+p.
+ \tag{GG16.4}\label{r16gg:indices}
+\]
+Only
+\[
+       0\leq p\leq\min(n-1,\,2r-2,\,2n-2r)
+\]
+can occur: the stratum has dimension $n-p-1$, and its
+cohomological degree lies between zero and twice that dimension.
+Thus the unique possible weight $2r$ comes from column zero,
+and every other graded piece has strictly larger weight.
+
+Column zero is a subcomplex of the finite support resolution.
+Its cohomological image in $H^{2r}_B$ is the filtration subspace
+$F^0H^{2r}_B=E_\infty^{0,2r}$; there are no positive columns.
+The quotient has only weights larger than $2r$. Frobenius
+primary decomposition splits off exactly this weight-$2r$
+subspace: its characteristic polynomial is coprime to that of
+the quotient, since their Weil weights differ. This uses generalized
+primary subspaces, not semisimplicity. Any equivariant map to
+the pure weight-$2r$ target $H^{2r}(D_{\bar k})$ kills the
+remaining subspace. Its image therefore comes entirely from
+column zero, which purity identifies with the displayed individual
+divisor Gysin maps. The reverse inclusion follows by factoring
+each individual support map through the union. This proves
+\eqref{r16gg:support-image}.
+
+The primary ingredients are the same precise ones as in
+Section~\ref{r16mb:section}: smooth-pair purity in SGA 4,
+Expose XVI, Theorem 3.7 and Remark 3.10(a); Deligne,
+\emph{La conjecture de Weil I}, Theorem 1.6; and localization
+for closed supports, also recorded in Stacks Project Tag
+\texttt{09XP}. The displayed spectral-sequence indices and
+the general-degree weight deduction have been given here
+rather than assumed from the degree-four statement.
+\end{proof}
+
+\begin{definition}[Scalar total boundary images]
+\label{r16gg:definition}
+Let $R$ be the valuation ring of a finite extension of $\mathbf Q_p$,
+with finite residue field $k$. Let $\mathcal V/R$ be integral,
+regular, projective and strictly semistable of relative dimension
+$n\geq3$, with smooth geometrically integral generic fiber and
+reduced special fiber
+\[
+                         \mathcal V_k=\bigcup_{i=1}^{s}D_i,
+                              \qquad s\geq2.
+\]
+Assume the $D_i$ are smooth projective geometrically integral,
+and all closed strata are smooth. Let the dual graph, with
+an edge whenever $E_{ij}=D_i\cap D_j$ is nonempty, be connected.
+The intersections may be disconnected and may have larger
+native fields of constants. Fix one relatively ample $H$,
+one $\ell\ne p$, and $1\leq r\leq n$.
+
+For $j\ne i$, let $j_{ij,i}:E_{ij}\hookrightarrow D_i$.
+The scalar total-image hypothesis in degree $r$ is
+\[
+ \begin{gathered}
+ \dim_{\mathbf Q_\ell}M_i^r=1\quad\hbox{for every }i,
+ \\
+ M_i^r=\sum_{j\ne i}\operatorname{im}\left(
+ H^{2r-2}((E_{ij})_{\bar k},\mathbf Q_\ell(r-1))
+ \xrightarrow{j_{ij,i*}}
+ H^{2r}((D_i)_{\bar k},\mathbf Q_\ell(r))\right).
+ \end{gathered}
+ \tag{GG16.5}\label{r16gg:total-image}
+\]
+This is a rank condition on the \emph{sum} of all boundary images
+at each vertex. Rank one for each separate edge does not imply it.
+\end{definition}
+
+\begin{theorem}[Direct rational graph correction]
+\label{r16gg:correction}
+Under \eqref{r16gg:total-image}, every geometrically homologically
+trivial rational codimension-$r$ generic class has a Chow extension
+whose component restrictions are all geometrically homologically
+trivial, and hence numerically trivial.
+
+More explicitly, for any actual Chow extension $\Theta$, put
+$\theta_i=i_i^!\Theta$, $H_i=H|_{D_i}$, and
+\[
+ \lambda_i=\deg_k(\theta_iH_i^{n-r}),\qquad
+ w_{ij}=\deg_k\bigl((H|_{E_{ij}})^{n-1}\bigr)=w_{ji},
+ \tag{GG16.6}\label{r16gg:weights}
+\]
+with $w_{ij}=0$ if $E_{ij}$ is empty and $w_{ii}=0$.
+There is a rational solution, unique modulo a constant vector, of
+\[
+                  \sum_jw_{ij}(v_j-v_i)=\lambda_i
+                  \qquad(1\leq i\leq s).
+ \tag{GG16.7}\label{r16gg:laplacian}
+\]
+The extension
+\[
+                 \Theta^{\rm ad}
+                    =\Theta-\sum_i v_i\,i_{i*}H_i^{r-1}
+ \tag{GG16.8}\label{r16gg:extension}
+\]
+has the asserted zero restrictions. For this fixed initial
+$\Theta$, its Chow class is independent of the constant
+ambiguity in $v$.
+\end{theorem}
+
+\begin{proof}
+Take a pure operational $K_0$ representative of the chosen
+$\Theta$, by frozen \texttt{r12n:K0}. Its degree-$2r$ geometric
+Chern class on the model restricts to
+$a_i=\operatorname{cl}_\ell(\theta_i)$ and has zero geometric
+generic restriction. Apply proper nearby-cycle comparison on
+the entire model and then restrict its zero generic image to
+\[
+                  U_i=D_i\setminus\bigcup_{j\ne i}E_{ij}.
+\]
+Since the model is reduced strictly semistable, the structural
+morphism is smooth along $U_i$. The nearby-cycle unit is an
+isomorphism there, so $a_i|_{(U_i)_{\bar k}}=0$.
+This is the proper-global-then-open argument of
+Lemma~\ref{r16tb:numerical}; no nonproper specialization
+isomorphism is asserted. Localization and
+Lemma~\ref{r16gg:support}, with the uniform twist $(r)$ restored,
+show that $a_i\in M_i^r$.
+
+For every nonempty native edge, the rational algebraic class
+\[
+        j_{ij,i*}c_{1,\ell}(H|_{E_{ij}})^{r-1}\in M_i^r
+\]
+has pairing $w_{ij}>0$ with $c_{1,\ell}(H_i)^{n-r}$.
+Thus this pairing is a nonzero functional on the one-dimensional
+$M_i^r$. There is a unique vector $e_i\in M_i^r$ with that
+pairing equal to one. It has a native rational algebraic
+representative obtained by dividing any such edge class by
+$w_{ij}$. In particular
+\[
+                   a_i=\lambda_i e_i,\qquad
+ j_{ij,i*}c_{1,\ell}(H|_{E_{ij}})^{r-1}=w_{ij}e_i.
+ \tag{GG16.9}\label{r16gg:normalized-lines}
+\]
+All $\lambda_i$ are rational degrees of the actual chosen cycles.
+No rational lifting of an arbitrary $\ell$-adic class is assumed.
+
+Frozen \texttt{r12n:weighted-trace} applied to the global top
+class given by the pure representative times $c_1(H)^{n-r}$
+gives
+\[
+                             \sum_i\lambda_i=0.
+ \tag{GG16.10}\label{r16gg:trace-zero}
+\]
+Its generic factor is geometrically zero and the special
+multiplicities are exactly one. Native degrees in
+\eqref{r16gg:weights} include every constant-field degree
+of every connected component of an intersection.
+
+Let $L$ be the rational symmetric matrix
+$(Lv)_i=\sum_jw_{ij}(v_j-v_i)$. Its column sums are zero,
+and over $\mathbf R$ its energy is
+\[
+                 v^tLv=-\sum_{i<j}w_{ij}(v_i-v_j)^2.
+ \tag{GG16.11}\label{r16gg:energy}
+\]
+All nonzero weights are positive. Connectedness implies
+$\ker L=\mathbf Q(1,\ldots,1)$ over $\mathbf Q$ as well.
+Its rank is $s-1$, so its image is exactly the rational
+hyperplane of coordinate sum zero. Equation
+\eqref{r16gg:trace-zero} therefore gives the rational solution
+\eqref{r16gg:laplacian}, unique modulo constants. This is
+ordinary rational matrix inversion; no real solution is
+substituted for a rational Chow correction.
+
+The principal total-fiber relation gives
+\[
+ c_1(N_{D_i/\mathcal V})=-\sum_{j\ne i}[E_{ij}]
+                         \quad\hbox{in }\operatorname{CH}^1(D_i).
+\]
+Refined transverse restriction and self-intersection thus make
+the component restriction of $\sum_jv_j i_{j*}H_j^{r-1}$ equal to
+\[
+              \sum_{j\ne i}(v_j-v_i)
+                      j_{ij,i*}(H|_{E_{ij}})^{r-1}.
+ \tag{GG16.12}\label{r16gg:vertical-restrictions}
+\]
+Triple and higher strata add no term to this Cartier-divisor
+identity. On cohomology, \eqref{r16gg:normalized-lines} turns
+it into $(Lv)_ie_i=\lambda_i e_i=a_i$.
+Subtracting proves that every component Chow restriction of
+\eqref{r16gg:extension} has zero geometric cycle class and
+therefore is numerically zero. The generic Chow class is
+unchanged. Changing $v$ by a constant changes the correction
+by a scalar multiple of
+$H^{r-1}\sum_i[D_i]=H^{r-1}\operatorname{div}(\pi)$,
+which is zero in the model Chow group. This proves the final
+assertion as well.
+\end{proof}
+
+\begin{corollary}[Native actual activation]
+\label{r16gg:actual}
+Let $X/K$ be smooth projective geometrically integral. Suppose
+that after a finite extension $F/K$ there is a smooth projective
+geometrically integral $V/F$, with a projective dominant morphism
+$V\to X_F$, and a model satisfying
+Definition~\ref{r16gg:definition} in degree $r$.
+Then every geometrically homologically trivial rational
+codimension-$r$ class on $X$ has zero native actual obstruction.
+Every specified cycle in such a class has a strong Green form
+on its exact support complement, with the equality on all
+original compact actual tests. If the model satisfies the
+total-image condition in all degrees, the target has full
+strong G in every positive codimension.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{r16gg:correction} supplies the numerically
+admissible model lift of the refined generic pullback class.
+Frozen \texttt{r12n:K0} supplies its pure operational
+virtual-bundle representative, including zero supported
+degree on every integral vertical test of the required
+dimension. Apply Corollary~\ref{r16G:numerical-witness}
+and its exact-support bridge in the original $K$-theory.
+The model viewed over $K^\circ$ retains the ramification
+factor in special multiplicities and the residue factor
+in native vertical degrees; both preserve zero. All finite
+degrees in dominant actual Bott--Chern detection are complete
+native degrees. The argument does not assume that the
+dominant map is finite away from the chosen cycle, and
+does not push its Green form analytically.
+\end{proof}
+
+\begin{remark}[A dual restriction test for the total-image hypothesis]
+\label{r16gg:dual-test}
+The dimension of $M_i^r$ is the rank of the single tuple-restriction map
+\[
+ H^{2n-2r}((D_i)_{\bar k},\mathbf Q_\ell(n-r))
+ \longrightarrow
+ \bigoplus_{j\ne i}H^{2n-2r}((E_{ij})_{\bar k},\mathbf Q_\ell(n-r)).
+ \tag{GG16.13}\label{r16gg:dual-rank}
+\]
+Indeed Poincare duality gives perfect pairings on the smooth
+projective $D_i$ and on every geometric component of the
+intersections. Gysin--restriction adjunction identifies
+\eqref{r16gg:dual-rank} with the transpose of the sum of Gysin
+maps whose image is $M_i^r$. Their ranks are equal. Disconnected
+intersections use the direct sum of their component pairings.
+This gives a concrete full-cohomology test, as in the central
+calculation of Proposition~\ref{r16sc:hypersurface-images}.
+It is the rank of the tuple that must be one; separate rank-one
+restriction maps can jointly have larger rank.
+\end{remark}
+
+\paragraph{Limits.}
+The rank condition concerns the sum of all geometric boundary
+Gysin images at each component. Individually one-dimensional
+edge images can span a larger space and do not suffice.
+Nor is this condition asserted stable under arbitrary model
+blowups or alterations. The proof is for reduced strictly
+semistable models only: at a multiple component the open
+single-component locus need not be smooth over the trait,
+so the nearby-cycle step cannot be imported unchanged.
+No universal existence of these model witnesses or unconditional
+general-G conclusion is claimed.

@@ -1,0 +1,84 @@
+// Reading order only; exact hypotheses and proof status remain in the papers.
+export const routesOverview = {
+  title: 'Routes to Beilinson–Bloch height pairings',
+  summary: 'Three approaches to the existence problem. Each has its own account of the construction, known cases and remaining difficulties, with a separate mathematical article and PDF.',
+  context: String.raw`Let \(X/F\) be smooth, projective and geometrically integral of dimension \(n\), over a number field. Write \(V^k(X)=\operatorname{CH}^k(X)_{\mathbb Q,\mathrm{hom}}\), where the subscript denotes geometric homological triviality, and let \(r+s=n+1\).`,
+  target: String.raw`\[h_X:V^r(X)\times V^s(X)\longrightarrow\mathbb R.\]`,
+  targetHref: '/papers/strong-g-programme#conj:global-height',
+  paperHref: '/papers/strong-g-programme#sec:programme',
+  comparisonHref: '/papers/strong-g-programme#sec:programme-comparison',
+};
+
+export const globalRoutes = [
+  {
+    id: 'obstruction-route', slug: 'obstruction-vanishing',
+    title: 'Vanishing of local curvature obstructions', paperSlug: 'obstruction-height-route',
+    summary: 'Start with the pairing on the common kernels of the local curvature maps. Prove that both kernels contain all homologically trivial classes.',
+    progress: 'Curvature correction, algebraic-equivalence vanishing and Chow-correspondence transfer give conditional constructions on the cycle groups and varieties listed in Progress.',
+    difficulty: 'Annihilate the curvature class of every localized global cycle, in both complementary codimensions.',
+    status: 'Conditional constructions; general vanishing open',
+    introduction: 'A prescribed cycle is first given a Green form with curvature. One then seeks a global primitive of that curvature. Since the curvature class depends only on the Chow class, algebraic equivalence and Chow correspondences become tools for proving its vanishing.',
+    conclusion: String.raw`Under the analytic hypotheses, the construction gives \(h_X:\mathcal H^r(X)\times\mathcal H^s(X)\to\mathbb R\), where \(\mathcal H^k(X)\) is the common kernel of the curvature obstructions at all finite places. The constructed domain is the full product precisely when \(\mathcal H^r=V^r\) and \(\mathcal H^s=V^s\).`,
+    steps: [
+      { title: 'A prescribed Green pair', kind: 'Required analytic construction', text: String.raw`Construct \((G_Z,\Omega_Z)\) with \(D[G_Z]+\delta_Z=[\Omega_Z]\), where \(D=d'd''\). The actual Bott–Chern class \([\Omega_Z]=\mathfrak o([Z])\) must depend only on \([Z]\).`, href: '/papers/obstruction-height-route#obroute:green-pair-hypothesis', link: 'The Green-pair hypothesis' },
+      { title: 'Vanishing of the curvature class', kind: 'Open in general', text: String.raw`Prove \(\mathfrak o^k_{X_{F_v}}(z_{F_v})=0\) for every \(z\in V^k(X)\), every finite \(v\), and \(k=r,s\). For the global target, only localizations of global classes are needed.`, href: '/papers/obstruction-height-route#obroute:global-vanishing', link: 'The exact vanishing problem' },
+      { title: 'Removal of curvature', kind: 'Proved deduction from the first two conditions', text: String.raw`Choose a global actual primitive \(D\Psi_Z=\Omega_Z\). Then \(\gamma_Z=G_Z-\Psi_Z\) on the prescribed complement has zero curvature. Stokes’ formula proves the Green identity against every actual complementary test.`, href: '/papers/obstruction-height-route#obroute:curvature-correction', link: 'Proof of curvature correction' },
+      { title: 'The global pairing', kind: 'Conditional local-to-global theorem', text: 'The local intersection and principal-divisor identities give the pairing on the common kernels. The vanishing in Step 2 makes both of these kernels the full homologically trivial Chow groups.', href: '/papers/obstruction-height-route#obroute:kernel-height', link: 'The global construction and its hypotheses' },
+    ],
+    sections: [
+      { id: 'geometric-vanishing', title: 'Algebraic equivalence and Chow correspondences', text: 'The compact-parameter argument annihilates the obstruction on algebraically trivial cycles. Covariance under rational Chow correspondences then transports vanishing. A decomposition of the diagonal reduces the problem to the varieties through which the diagonal factors. The analytic covariance and field-descent statements remain premises of these geometric deductions.', href: '/results#chow-domains', link: 'Geometric cases and their proofs' },
+      { id: 'source-periods', title: 'Detection by periods', text: String.raw`One may seek fixed linear functionals \(P_1,\ldots,P_m\) with \(P_j(z)=0\) for every \(j\) implying \(\mathfrak o(z)=0\). This requires a comparison with the actual curvature obstruction and a vanishing theorem for those particular periods. Finite-dimensionality of a cohomology group alone is insufficient.`, href: '/papers/obstruction-height-route#obroute:period-criterion', link: 'The period criterion' },
+      { id: 'remaining-problems', title: 'The remaining problems', text: 'The analytic foundation must establish the prescribed Green construction, trace and intersection identities on actual forms. Beyond the geometric cases, the central question is why homologically trivial Chow classes have zero image in Bott–Chern cohomology. After algebraically trivial classes have been killed, the remaining map factors through the corresponding quotient of the Chow group.', href: '/papers/obstruction-height-route', link: 'Formal research problems' },
+    ],
+  },
+  {
+    id: 'direct-route', slug: 'green-forms',
+    title: 'Direct construction of zero-curvature Green forms', paperSlug: 'green-height-route',
+    summary: 'Construct strong Green forms directly, then prove the local identities needed to sum their pairings over all places.',
+    progress: 'The principal-divisor calculation and the product formula give a conditional passage from local Green forms to a global Chow pairing.',
+    difficulty: 'Construct actual Green forms with exact support and establish the restriction, trace and intersection identities used by the local height.',
+    status: 'Strong Green existence and analytic compatibility open in general',
+    introduction: 'This approach begins with a zero-curvature Green form itself, without requiring it to come from a particular Chern-character construction. The main additional task is to identify its integrals against principal cycles with the field norms describing rational equivalence.',
+    conclusion: String.raw`At a finite place and for disjoint cycles, define \(\lambda_v(Z,W)=\int_{W_{F_v}^{\mathrm{an}}}\gamma_{Z,v}\); at infinity use the classical zero-curvature complex Green construction. Under the local calculus, moving and good-place hypotheses, the sum \(\sum_v [F_v:\mathbb Q_v]\lambda_v/[F:\mathbb Q]\) descends to \(V^r(X)\times V^s(X)\).`,
+    steps: [
+      { title: 'Strong Green forms in both codimensions', kind: 'Open existence problem', text: String.raw`Over every original finite completion, construct \(\gamma_Z\in\mathcal B^{r-1,r-1}(X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}})\) with \(\int\gamma_Z\wedge D\eta=-\int_Z\eta\) for all compactly supported actual complementary tests. Do the same in degree \(s\).`, href: '/papers/green-height-route#groute:strong-green', link: 'The strong Green conjecture' },
+      { title: 'Intersection and principal divisors', kind: 'Additional analytic constructions', text: 'Construct a principal-cycle Green form from −log|f| on a normal carrier. This uses a closed-immersion construction, a supported intersection formula and integration along a projective bundle, with their actual-form identities.', href: '/papers/green-height-route#groute:principal-push', link: 'The principal-cycle construction' },
+      { title: 'The principal transformation law', kind: 'Proved under those hypotheses', text: String.raw`Reciprocity identifies the change under rational equivalence with \(-m^{-1}\log|a|_v\). One element \(a\in F^\times\) and one denominator \(m\), obtained from the algebraic norm calculation, must work at every place.`, href: '/papers/green-height-route#groute:principal-law', link: 'Proof of the norm formula' },
+      { title: 'Descent to Chow groups', kind: 'The product-formula deduction', text: 'The weighted sum of the principal terms is zero. Moving cycles and applying the law in both variables gives a well-defined bilinear pairing; reciprocity gives symmetry. Good-place vanishing makes the sum finite.', href: '/papers/green-height-route#groute:global-height', link: 'The local-to-global proof' },
+    ],
+    sections: [
+      { id: 'tropical-primitives', title: 'Tropical forms and global primitives', text: 'One possible method is to solve for primitives on tropical charts and descend them to the Berkovich space. The comparison must preserve both differentials, integration and compatibility on overlaps. A topological inverse limit alone does not give this statement for forms. A global actual primitive, together with a prescribed curved Green pair, would supply a strong Green form.', href: '/papers/green-height-route#groute:gluing', link: 'The tropical comparison problem' },
+      { id: 'finite-descent', title: 'Descent to the original valued field', text: String.raw`For \(L/K\) finite, retain the extension of the original absolute value. A trace must be defined on the primitive, commute with \(D\), and satisfy adjunction on all actual tests. Descent uses the full factor \([L:K]^{-1}\). A proper alteration does not automatically supply a pushforward of arbitrary actual forms.`, href: '/papers/green-height-route#groute:local-extension', link: 'The finite-trace criterion' },
+      { id: 'remaining-problems', title: 'The remaining problems', text: 'The local existence problem retains the precise cycle complement, actual form sheaf and full test class. The principal-divisor argument also needs restriction along singular carriers and compatible projective-bundle integration. Correspondence adjunction and comparison with arithmetic-intersection heights require further identities with the same normalizations.', href: '/papers/green-height-route', link: 'Formal research problems' },
+    ],
+  },
+  {
+    id: 'zhang-route', slug: 'zhang',
+    title: 'Admissible arithmetic liftings: Zhang’s approach', paperSlug: 'zhang-height-route',
+    summary: 'Correct cycle closures by vertical cycles on arithmetic models, then use arithmetic intersection. The general construction follows conditionally from the standard conjectures.',
+    progress: 'Zhang proves a general conditional lifting theorem and constructs the pairing unconditionally for the product of a curve and a surface.',
+    difficulty: 'Prove the required duality and Lefschetz statements for algebraic classes on special fibres, or construct the necessary vertical corrections directly.',
+    status: 'Published conditional theorem; unconditional curve–surface case',
+    introduction: 'Shou-Wu Zhang’s construction uses algebraic cycle classes on the special fibres of arithmetic models. Vertical corrections make the closure of a homologically trivial cycle orthogonal to vertical cycles. Arithmetic intersection then gives a number independent of the chosen lifting.',
+    conclusion: String.raw`For suitable liftings on a regular arithmetic model, \(h_X(z,w)=[F:\mathbb Q]^{-1}\widehat{\deg}(\widehat z\cdot\widehat w)\). A construction after alteration uses the corresponding degree-normalized descent.`,
+    steps: [
+      { title: 'Algebraic classes on the special fibre', kind: 'The geometric input', text: String.raw`For \(i:Y\hookrightarrow\mathcal X\), the image of \(i^*i_*:A_{n+1-r}(Y)\to A^r(Y)\) describes the curvature changes obtainable from vertical cycles. The local standard conjectures concern duality and Lefschetz operators on these groups. This local construction is made over the completion of a maximal unramified extension, with a geometric special fibre; return to the original place uses cycle descent.`, href: 'https://arxiv.org/pdf/2009.07089v3#page=8', link: 'Zhang, §1.1' },
+      { title: 'Harmonic decomposition and liftings', kind: 'Zhang’s conditional theorems', text: 'The Lefschetz and Hodge standard conjectures on every smooth geometric stratum of a strictly semistable model imply local duality and Lefschetz. The harmonic curvature of a homologically trivial class is then zero. A vertical correction gives a Beilinson–Bloch lifting, and alterations extend the conditional lifting theorem to general reduction.', href: 'https://arxiv.org/pdf/2009.07089v3#page=21', link: 'Theorem 1.5.1, Proposition 1.6.3 and Theorem 1.6.4' },
+      { title: 'Arithmetic intersection', kind: 'Construction of the global pairing', text: 'Combine the finite-place corrections with zero-curvature Green currents at infinity. Differences between liftings are vertical classes and zero-curvature archimedean terms. Orthogonality and homological triviality make their intersections with the complementary lifting vanish.', href: '/papers/zhang-height-route', link: 'The lifting and intersection argument' },
+      { title: 'Known cases and the general problem', kind: 'Published result and remaining conjectures', text: 'For a curve times a surface, Zhang verifies the required conditions on a semistable model and then uses alterations. In general, the corresponding standard conjectures, or a direct construction of the vertical correction, remain the substantial open input.', href: 'https://arxiv.org/html/2111.10276v4#S5', link: 'The curve–surface theorem, §5' },
+    ],
+    sections: [
+      { id: 'vertical-correction', title: 'The vertical correction equation', text: String.raw`For a closure \(\overline z\) of \(z\), seek a vertical class \(a\) satisfying \(i^*\overline z+i^*i_*a=0\) in the algebraic cohomology group. Numerical orthogonality is the condition needed by the intersection pairing; the cohomological lifting theorem supplies a sufficient correction.`, href: '/papers/zhang-height-route', link: 'The precise lifting problem' },
+      { id: 'known-case', title: 'The product of a curve and a surface', text: String.raw`For \(X=C\times S\), with \(C\) a smooth projective curve and \(S\) a smooth projective surface over a number field, the middle pairing is on \(V^2(X)\times V^2(X)\). Zhang resolves the product of semistable models, checks the conditions on its strata and then passes to general reduction by alterations. This published result is separate from the conditional actual-form constructions.`, href: 'https://arxiv.org/abs/2111.10276v4', link: 'The published curve–surface paper' },
+      { id: 'comparison', title: 'Relation to the Green-form approaches', text: 'An arithmetic lifting and an actual non-Archimedean form are different objects. Comparing their heights requires equality of local intersection values with matching normalizations. Zhang’s L-liftings of all Chow classes are a further extension with additional arithmetic standard-conjecture hypotheses, not a premise of the ordinary homologically trivial pairing.', href: '/papers/zhang-height-route', link: 'Comparison and research problems' },
+    ],
+  },
+];
+
+export const localApproaches = [
+  { id: 'geometric-vanishing', title: 'Algebraic equivalence and Chow correspondences', href: '/routes/obstruction-vanishing#geometric-vanishing' },
+  { id: 'source-periods', title: 'Detection by periods', href: '/routes/obstruction-vanishing#source-periods' },
+  { id: 'tropical-primitives', title: 'Tropical forms and global primitives', href: '/routes/green-forms#tropical-primitives' },
+];
+
+export const getResearchRoute = slug => globalRoutes.find(route => route.slug === slug);

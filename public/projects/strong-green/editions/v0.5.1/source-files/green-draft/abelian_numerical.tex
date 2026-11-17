@@ -1,0 +1,312 @@
+\section{Finite numerical certificates and abelian varieties}
+\label{sec:abelian-numerical}
+
+In this section $K/\mathbf Q_p$ is finite, with valuation ring $R$
+and finite residue field $k$.  For a smooth integral projective
+$K$-variety $V$ of dimension $d$, write
+\[
+ \CH^r(V)_{\mathbf Q,\homol}
+ =\ker\bigl(\CH^r(V)_{\mathbf Q}\longrightarrow
+          H^{2r}(V_{\overline K},\mathbf Q_\ell(r))\bigr),
+ \qquad \ell\ne p.
+\]
+When $V$ is not geometrically integral, the geometric class is
+understood on every component.  The construction of the preceding
+sections applies to smooth integral $V$ with this convention: the
+finite multisection argument, model Chern forms, finite trace, and
+supported-complex Green construction use integrality over $K$;
+geometric integrality enters the algebraic-equivalence theorem only.
+
+\subsection{A finite numerical certificate}
+
+\begin{definition}\label{def:numerical-certificate}
+Let $\mathcal V/R$ be integral, projective and flat, with smooth
+integral generic fiber $V$.  A virtual model bundle
+$\xi\in K_0(\mathcal V)_{\mathbf Q}$ is an
+\emph{$r$-numerical certificate} for
+$b\in\CH^r(V)_{\mathbf Q}$ if
+\[
+  \operatorname{ch}_r(\xi|_V)=b
+\quad\text{and}\quad
+  \deg_k\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)=0
+\]
+for every integral $r$-dimensional closed subscheme
+$T\subset\mathcal V_s$.  The degree is that of the resulting
+zero-cycle on the proper $k$-scheme $T$.
+\end{definition}
+
+\begin{lemma}[Model refinements preserve numerical certificates]
+\label{lem:refine-certificate}
+If $\rho:\mathcal V'\to\mathcal V$ is a projective morphism of
+integral projective flat $R$-models that is an isomorphism on
+generic fibers, then $\rho^*\xi$ is an $r$-numerical certificate
+for the same generic class whenever $\xi$ is.
+\end{lemma}
+
+\begin{proof}
+The equality on the generic fiber is immediate.  For an integral
+vertical $r$-cycle $T'$ on $\mathcal V'$, the operational projection
+formula gives
+\[
+ \deg_k\bigl(\operatorname{ch}_r(\rho^*\xi_s)\cap[T']\bigr)
+ =\deg_k\bigl(\operatorname{ch}_r(\xi_s)\cap\rho_{s*}[T']\bigr).
+\]
+The proper pushforward on the right is zero if the image has
+dimension smaller than $r$; otherwise it is a positive integer
+multiple of an integral $r$-cycle on $\mathcal V_s$.  The numerical
+certificate makes its degree zero.
+\end{proof}
+
+\begin{theorem}[Finite numerical descent]\label{thm:finite-numerical}
+Let $h:V\to X$ be finite dominant between smooth integral
+projective $K$-varieties, and let $1\le r\le\dim X$.  If $h^*z$
+has an $r$-numerical certificate on a projective flat model of $V$,
+then
+\[
+                     \Ob^r_{X,K}(z)=0
+                     \qquad(z\in\CH^r(X)_{\mathbf Q}).
+\]
+Each prescribed rational cycle $Z$ in class $z$ consequently has
+an ordinary actual zero-curvature Green form on
+$X^{\an}\setminus|Z|^{\an}$ satisfying \eqref{eq:main-green}
+for every compact actual complementary test.
+
+The assertion also applies when $V$ is the underlying $K$-variety
+of a smooth integral projective variety over a finite extension
+$F/K$, and its model is projective flat over $F^\circ$.
+\end{theorem}
+
+\begin{proof}
+Put $e=\deg_K(h)$.  A finite map between smooth integral varieties
+of the same dimension is flat, so $h$ is finite flat of rank $e$.
+Choose a projective flat model $\mathcal X$ and a virtual bundle
+representing $z$; let $\Omega_X$ be its actual degree-$r$ character.
+The existence of this model character and its dependence only on
+the generic Chow class in actual Bott--Chern cohomology were proved
+in Proposition~\ref{r11p:generic-chow-primitive}.
+
+Let $\xi$ be the supplied certificate on $\mathcal V$.  Form the
+closure of the generic graph of $h$ in
+$\mathcal V\times_R\mathcal X$.  It is a projective flat model
+$\mathcal V'$ of $V$, with morphisms to both original models.
+By Lemma~\ref{lem:refine-certificate}, the pullback of $\xi$ remains
+numerically trivial on vertical $r$-cycles.  Replacing
+$\mathcal V$ by this model makes the two model characters
+comparable.
+
+The numerical vanishing theorem \Cref{r10c:numerical-zero,r10c:chern}
+gives the \emph{strict equality of actual forms}
+\[
+                     \operatorname{ch}_r(\bar\xi)=0
+                                \quad\text{on }V^{\an}.
+\]
+The virtual bundles $h^*\xi_X$ and $\xi$ have the same generic
+degree-$r$ Chow character.  Thus
+$h^*\Omega_X-\operatorname{ch}_r(\bar\xi)=h^*\Omega_X$
+has a global actual $D$-primitive by the generic-Chow-zero theorem
+Proposition~\ref{r11p:generic-chow-primitive}.  We use its constructive form:
+\begin{equation}\label{eq:certificate-primitive}
+ h^*\Omega_X=\sum_jc_j\,\Omega_j,
+ \qquad
+ \beta_V=\sum_j\frac{c_j}{e_j}
+        \Tr^{\mathscr M}_{b_j}(G_j),
+ \qquad
+ DG_j=b_j^*\Omega_j.
+\end{equation}
+Here $c_j\in\mathbf Q$, each $b_j:T_j\to V$ is finite flat of
+native degree $e_j$, and $G_j$ is a global sum of the original
+PL scalar--curvature generators.  In particular the composite
+$h b_j$ is finite flat on the \emph{whole} generic fiber $X$.
+
+The finite trace of \Cref{r11p:minimal-trace-theorem} therefore
+defines the following actual form on the original $X^{\an}$:
+\begin{equation}\label{eq:descent-primitive}
+ \beta_X=\frac1e\sum_j\frac{c_j}{e_j}
+                  \Tr^{\mathscr M}_{h b_j}(G_j).
+\end{equation}
+For an arbitrary compact complementary actual test $\eta$, the
+finite-trace pairing and actual Stokes give
+\[
+ \begin{aligned}
+ \int_X\beta_X\wedge D\eta
+   &=\frac1e\sum_j\frac{c_j}{e_j}
+                   \int_{T_j}G_j\wedge(hb_j)^*D\eta\\
+   &=\frac1e\sum_jc_j\int_V\Omega_j\wedge h^*\eta\\
+   &=\frac1e\int_Vh^*(\Omega_X\wedge\eta)
+     =\int_X\Omega_X\wedge\eta.
+ \end{aligned}
+\]
+The last equality uses the full native degree $e$, and the first
+three equalities hold for \emph{every} compact actual test by the
+finite-trace theorem.  Mihatsch's injectivity of the map from
+actual forms to currents now yields $D\beta_X=\Omega_X$.
+The obstruction class vanishes; subtracting $\beta_X$ from the
+exact-support curved pair of Corollary~\ref{r11p:any-cycle-pair} yields
+the asserted Green form.
+
+For a model over $F^\circ$, regard it as a model over $R$.
+The scheme-theoretic special fiber retains its ramification
+multiplicity.  Each vertical numerical degree over $k$ is the
+corresponding degree over the residue field of $F$ multiplied
+by that residue-field degree.  The same proof uses the complete
+native generic degree of $h$, including the constant-field factor.
+\end{proof}
+
+\subsection{The special fiber of a semistable abelian model}
+
+Let $R'$ be a complete discrete valuation ring with finite residue
+field $k'$ and fraction field $F$.  Let $\mathcal A/R'$ be a regular
+projective strictly semistable model of an abelian variety $A/F$
+of dimension $d$, and let $Y=\bigcup_iD_i$ be its reduced special
+fiber.  With $Y^{(1)}=\coprod_iD_i$ and
+$Y^{(2)}=\coprod_{i<j}(D_i\cap D_j)$, define
+\[
+ A^s(D)=\operatorname{im}\bigl(\CH^s(D)_{\mathbf Q}
+           \to H^{2s}(D_{\bar k'},\mathbf Q_\ell(s))\bigr)
+\]
+for each smooth projective stratum $D$ and set
+\begin{equation}\label{eq:kun-strata}
+ A^s(Y)=\ker\bigl(A^s(Y^{(1)})\xrightarrow{\rho}A^s(Y^{(2)})\bigr),
+ \qquad
+ A_s(Y)=\operatorname{coker}\bigl(
+ A^{d-s-1}(Y^{(2)})\xrightarrow{\gamma}A^{d-s}(Y^{(1)})\bigr).
+\end{equation}
+The two arrows are the signed restrictions and Gysin maps.
+The natural map $\CH_s(Y)_{\mathbf Q}\twoheadrightarrow A_s(Y)$
+is surjective.
+
+\begin{theorem}[K\"unnemann's local semistable theorem]
+\label{thm:kunnemann-local}
+After a finite extension of any finite $p$-adic field $K$, every
+abelian variety over $K$ admits a regular projective strictly
+semistable model $\mathcal A/R'$ for which, in all degrees, the
+cycle-class map
+\[
+ A_s(Y)\longrightarrow
+ H^{\mathrm{\acute et}}_{2s}(Y_{\bar k'},\mathbf Q_\ell(-s))
+\]
+is injective, and the middle term of
+\begin{equation}\label{eq:kun-complex}
+ A_{d+1-r}(Y)\xrightarrow{i^*i_*} A^r(Y)
+                   \xrightarrow{\cap[Y]} A_{d-r}(Y)
+\end{equation}
+is exact, where $i:Y\hookrightarrow\mathcal A$.
+\end{theorem}
+
+\begin{proof}[Source of the published theorem]
+This is the complete-DVR construction and special-fiber theorem
+of \cite[Theorems~5.6 and~6.6]{Kunnemann}.
+The base ring is complete and has finite residue field, as in
+Section~6.2 of the cited work.  The groups in
+\eqref{eq:kun-strata} are defined using the geometric
+cycle-class images on the individual strata.
+\end{proof}
+
+\begin{lemma}[A pure, vertically numerical extension]
+\label{lem:abelian-lift}
+Let $A/F$ have a model furnished by
+\Cref{thm:kunnemann-local}.  For every geometrically homologically
+trivial class $z\in\CH^r(A)_{\mathbf Q}$,
+$1\le r\le d$, there is $\Theta_0\in\CH^r(\mathcal A)_{\mathbf Q}$
+restricting to $z$, such that its refined restriction to
+every $D_i$ is homologically trivial.  In particular $z$ has
+an $r$-numerical certificate on $\mathcal A$.
+\end{lemma}
+
+\begin{proof}
+Choose a Chow extension $\Theta$ of $z$ by taking closures of
+cycle representatives.  Its tuple $a$ of component restriction
+classes belongs to $A^r(Y)$.  The class of
+$a\cap[Y]\in A_{d-r}(Y)$ is the specialization of $z$.
+Compatibility of proper specialization with geometric
+$\ell$-adic cycle classes makes its image in geometric homology
+zero.  By the injectivity in \Cref{thm:kunnemann-local},
+$a\cap[Y]=0$.
+
+Exactness of \eqref{eq:kun-complex} gives
+$b\in A_{d+1-r}(Y)$ with $i^*i_*b=a$.
+Choose $\beta\in\CH_{d+1-r}(Y)_{\mathbf Q}$ mapping to $b$
+and set
+\[
+                           \Theta_0=\Theta-i_*\beta.
+\]
+The generic fiber of $i_*\beta$ is empty, so $\Theta_0|_A=z$.
+The tuple of its component restrictions is
+$a-i^*i_*b=0$ in $A^r(Y)$.  Since $A^r(Y)$ is a subspace of
+$\bigoplus_i A^r(D_i)$, each component restriction has zero
+geometric $\ell$-adic class and is numerically trivial.
+
+The regularity of $\mathcal A$ and the rational Chern-character
+isomorphism on regular schemes
+\cite[Tag 0FEY]{StacksFEY} supply a unique
+$\xi\in K_0(\mathcal A)_{\mathbf Q}$ satisfying
+\begin{equation}\label{eq:pure-ch}
+                    \operatorname{ch}(\xi)\cap[\mathcal A]
+                              =\Theta_0.
+\end{equation}
+For completeness, applying the Adams operation $2^{-r}\psi^2$
+to \eqref{eq:pure-ch} yields the same codimension-$r$ class.
+Uniqueness therefore gives $\psi^2\xi=2^r\xi$.
+Because $\operatorname{ch}_j(\psi^2\xi)=2^j\operatorname{ch}_j(\xi)$,
+all operational character components except $j=r$ vanish.
+
+Every integral vertical $r$-cycle $T\subset\mathcal A_s$
+is contained in a component $D_i$.  The projection formula for
+the refined restriction gives
+\[
+ \deg_{k'}\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)
+ =\deg_{k'}\bigl((\Theta_0|_{D_i})\cap[T]\bigr)=0.
+\]
+The last equality follows from numerical triviality of the
+component restriction.  Thus $\xi$ is a numerical certificate.
+\end{proof}
+
+\subsection{Zero-curvature Green forms on abelian targets}
+
+\begin{theorem}[Full actual strong Green forms for abelian varieties]
+\label{thm:abelian-G}
+Let $A/K$ be an abelian variety of arbitrary dimension.  For
+every $1\le r\le\dim A$ and every prescribed rational cycle $Z$
+whose Chow class is geometrically homologically trivial, there is
+an actual form
+\[
+ \gamma_Z\in\B^{r-1,r-1}
+                    (A^{\an}\setminus|Z|^{\an})
+\]
+satisfying \eqref{eq:main-green} for all compact actual tests
+over the original $K$.
+\end{theorem}
+
+\begin{proof}
+Choose a finite field extension $F/K$ for which $A_F$ has the
+semistable model of \Cref{thm:kunnemann-local}.  Its $r$-numerical
+certificate for $Z_F$ is supplied by
+Lemma~\ref{lem:abelian-lift}.  The finite dominant map
+$h:A_F\to A$ has native degree $[F:K]$ and is finite flat as
+a map of smooth integral $K$-varieties.  Apply
+\Cref{thm:finite-numerical} to $h$.  It supplies a global actual
+primitive for the obstruction of $Z$ on the original
+$A^{\an}$, and hence the asserted Green form on the prescribed
+support complement.
+\end{proof}
+
+\begin{corollary}[Finite abelian domination]
+\label{cor:finite-abelian}
+Let $X/K$ be smooth projective geometrically integral, and assume
+there is a finite surjective morphism $f:A\to X$ from an abelian
+variety $A/K$.  Every geometrically homologically trivial rational
+cycle on $X$ satisfies the strong Green identity in all
+codimensions, with prescribed exact support and all compact
+original-field actual tests.
+\end{corollary}
+
+\begin{proof}
+For $z\in\CH^r(X)_{\mathbf Q,\homol}$, the class
+$f^*z$ is geometrically homologically trivial by functoriality
+of the geometric cycle-class map.  Extend $K$ to $F$ as in
+\Cref{thm:abelian-G}; Lemma~\ref{lem:abelian-lift} gives a
+numerical certificate for its pullback to $A_F$.
+The composite finite dominant map $A_F\to A\to X$ has
+degree $[F:K]\deg f$.  Apply \Cref{thm:finite-numerical}
+directly to this composite.
+\end{proof}

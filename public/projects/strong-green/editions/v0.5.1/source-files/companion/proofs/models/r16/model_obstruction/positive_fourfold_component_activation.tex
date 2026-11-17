@@ -1,0 +1,248 @@
+% Round 16. Explicit actual activation of historical/published positivity.
+% Mathematical source independently PASS by higher_trace at SHA
+% 203455da36d1200359656dd98e77fdd565fab9e982b000e41096859568ef5ae5.
+% This activation changes only provenance comments. No new positivity mechanism.
+\section{Positive fourfold components: an explicit actual activation}
+\label{r16pos:section}
+
+\paragraph{Provenance.}
+The Ancona application and the projective-bundle signature calculations
+below already appear in the historical Round 7 source
+\path{history_01_07/bb_round7/proofs/threefold_fourfold_examples.tex}.
+Its supplied-arithmetic-cover consequence retained a human-review flag.
+Round 15 subsequently proved the multiplicity-weighted isotropy and
+its exact-support actual bridge with the revised pure-operational
+interfaces. The present section records the precise local consequence
+of those accepted inputs, adds the full fourfold conclusion using
+the new one-cycle theorem, and states its original-field dominant
+witness scope. It does not claim discovery of the positivity
+argument, a new theorem of Hodge type, or existence of such a model
+for an arbitrary fourfold.
+
+\begin{definition}[Primitive-positive numerical fourfold]
+\label{r16pos:definition}
+For a smooth projective geometrically integral fourfold $D/k$ over
+a finite field and an ample rational divisor class $H$, put
+\[
+ P_H^2(D)=\ker\bigl(H:N^2(D)_{\mathbf Q}
+                              \longrightarrow N^3(D)_{\mathbf Q}\bigr).
+ \tag{PP16.1}\label{r16pos:primitive}
+\]
+The pair $(D,H)$ is primitive-positive if
+$\deg_k(xy)$ is positive definite on $P_H^2(D)_{\mathbf R}$.
+For a smooth integral $D$ with finite constant field
+$k_D=H^0(D,\mathcal O_D)$, the same definition uses native
+$k$-degrees, equivalently $k_D$-degrees multiplied by $[k_D:k]$.
+\end{definition}
+
+\begin{lemma}[Published abelian positivity and elementary component types]
+\label{r16pos:types}
+Every ample class gives a primitive-positive pair for any of the
+following smooth projective geometrically integral fourfolds over
+a finite field:
+\begin{enumerate}
+\item an abelian fourfold;
+\item $\mathbf P_B(E)$ with $\dim B=3$ and $\operatorname{rank}E=2$;
+\item $\mathbf P_S(E)$ with $\dim S=2$ and $\operatorname{rank}E=3$;
+\item a projective $3$-space bundle over a smooth projective curve,
+      or $\mathbf P^4$.
+\end{enumerate}
+Furthermore, if $k'/k$ is finite and
+$f:D'\to D_{k'}$ is finite surjective with $D'$ of one of these
+types, then $(D,H)$ is primitive-positive for every ample $H$.
+More generally the last assertion holds whenever
+$(D',f^*H_{k'})$ is primitive-positive.
+\end{lemma}
+
+\begin{proof}
+The first assertion is exactly Ancona,
+\emph{Standard conjectures for abelian fourfolds},
+Invent. Math. \textbf{223} (2021), 149--212,
+Theorems 1.3--1.4, with the numerical primitive definition in
+Conjecture 1.2. The primary author version is
+\url{https://arxiv.org/pdf/1806.03216}, version 3;
+the DOI is \texttt{10.1007/s00222-020-00990-7}.
+In dimension four and codimension two the Hodge sign is $+1$
+and there is no remaining Lefschetz factor. Replacing an ample
+line bundle by a very ample power leaves its primitive kernel
+unchanged. No assertion that numerical and homological equivalence
+coincide for a chosen $\ell$ is used.
+
+Here are the elementary signature checks for the other entries,
+also retaining their historical provenance. The numerical middle
+form is nondegenerate, and on $H N^1(D)$ has signature
+$(1,\rho_1(D)-1)$ by divisor Hodge index. Its orthogonal complement
+is $P_H^2(D)$ by perfect numerical pairing with $N^3(D)$.
+It is therefore enough to have middle signature
+$(\rho_2(D)-\rho_1(D)+1,\rho_1(D)-1)$.
+
+For a rank-two bundle on $B$, numerical projective decomposition
+writes a middle class as $(\alpha,\beta)\in N^2(B)\oplus N^1(B)$.
+Its pairing is
+\[
+ \deg_B\bigl(\alpha\beta'+\alpha'\beta+c_1(E)\beta\beta'\bigr).
+\]
+The change $\alpha\mapsto\alpha+\frac12c_1(E)\beta$ makes it
+the hyperbolic form on $N^1(B)$ and its numerical dual.
+If $\rho=\dim N^1(B)$, then
+$\rho_1(D)=\rho+1$, $\rho_2(D)=2\rho$, and the signature is
+$(\rho,\rho)$, as required. Numerical decomposition is justified
+by the Chow projective formula: its coefficient extraction maps
+are combinations of push, pull, and intersection, all of which
+preserve numerical equivalence by the degree projection formula.
+
+For a rank-three bundle on $S$, choose a degree-one rational
+zero-cycle class $u$ and put $P=\pi^*u$, $\xi=c_1(\mathcal O(1))$.
+The block $\xi\pi^*N^1(S)$ has the surface divisor pairing.
+Replacing $\xi\pi^*D$ by
+$\xi\pi^*D-\deg_S(c_1(E)D)P$ makes it orthogonal to
+the plane spanned by $P,\xi^2$. That plane has matrix
+\[
+ \begin{pmatrix}0&1\\1&\deg_S(c_1(E)^2-c_2(E))\end{pmatrix}
+\]
+and signature $(1,1)$. The total signature is $(2,\rho_1(S))$,
+while $\rho_1(D)=\rho_1(S)+1$ and $\rho_2(D)=\rho_1(S)+2$.
+Finally the projective-space bundle over a curve has middle
+hyperbolic plane and $\rho_1=\rho_2=2$; projective four-space
+has $\rho_1=\rho_2=1$ and middle form positive. Their primitive
+spaces are zero. These computations hold for every ample $H$
+because the middle form's signature is independent of $H$.
+
+For the finite-cover assertion, pullback on numerical groups
+is injective: proper push composed with finite flat pullback
+is multiplication by the full degree. A finite map between the
+smooth equidimensional varieties here is flat; its generic
+degree includes inseparability if present. Finite pullback
+preserves ampleness and sends a primitive class to a primitive
+class. Constant extension is also injective by its degree
+projection formula. For a nonzero $x\in P_H^2(D)_{\mathbf R}$,
+\[
+  \deg_{k'}\bigl((f^*x_{k'})^2\bigr)
+       =\deg(f)\deg_k(x^2)>0.
+ \tag{PP16.2}\label{r16pos:finite-degree}
+\]
+Here degree over $k'$ of a base-changed zero-cycle equals its
+original degree over $k$; viewing that same cycle over $k$
+would additionally multiply it by $[k':k]$. Both conventions
+give the same positive sign. This proves the asserted
+positive definiteness without changing its numerical category.
+\end{proof}
+
+\begin{theorem}[Full actual G from positive fourfold components]
+\label{r16pos:local}
+Let $K/\mathbf Q_p$ be finite and let $X/K$ be a smooth projective
+geometrically integral fourfold. Suppose that there are a finite
+extension $F/K$, a smooth projective geometrically integral
+fourfold $V/F$, and a projective dominant morphism
+$f:V\to X_F$. Suppose $V$ has an integral regular flat projective
+model $\mathcal V/F^\circ$ with
+\[
+             [\mathcal V_{k_F}]=\sum_i m_iD_i,\qquad m_i>0,
+ \tag{PP16.3}\label{r16pos:model}
+\]
+whose reduced support is strict normal crossings and all closed
+strata are smooth over $k_F$. Let $H$ be one relatively ample
+line bundle on this model, and assume every $(D_i,H|_{D_i})$
+is primitive-positive with native residue degrees.
+
+Then every geometrically homologically trivial rational class
+on $X$, in every positive codimension, has zero actual obstruction.
+In particular, for every specified such codimension-$r$ cycle $Z$
+there is an ordinary actual form on its exact complement,
+\[
+ \gamma_Z\in B^{r-1,r-1}(X^{\rm an}\setminus|Z|^{\rm an}),
+ \qquad
+ \int\gamma_Z\wedge D\eta=-\int_Z\eta
+ \quad(\eta\in B_c^{4-r,4-r}(X^{\rm an})).
+ \tag{PP16.4}\label{r16pos:G}
+\]
+The components may, in particular, be any mixture of the types
+and finite covers specified in Lemma~\ref{r16pos:types}.
+There is no bound on their number or on their primitive ranks.
+The conclusion does not require the generic fourfold itself
+to be abelian or to have an abelian Chow motive.
+\end{theorem}
+
+\begin{proof}
+For $z\in\operatorname{CH}^2(X)_{\mathbf Q,\mathrm{geom\,hom}}$
+the class $f^*z_F$ is geometrically homologically trivial on $V$.
+Apply the frozen canonical residual construction over $F$,
+\path{round15/actual_local/canonical_primitive_numerical_residual.tex},
+Theorem \texttt{r15res:canonical-residual}. Its residual lies in
+$\bigoplus_iP_H^2(D_i)$. The weighted isotropy theorem
+\texttt{r15iso:total-isotropy} in
+\path{round15/actual_local/weighted_primitive_isotropy.tex} gives
+\[
+              \sum_i m_i\deg_{k_F}(R_i^2)=0.
+ \tag{PP16.5}\label{r16pos:weighted-zero}
+\]
+Each summand is nonnegative and each $m_i$ is strictly positive.
+Positive definiteness forces every $R_i=0$. For a component
+with constant field $k_i$, its native degree is
+$[k_i:k_F]\deg_{k_i}$, another positive factor; it is not
+silently replaced by degree one. Thus the frozen residual
+theorem supplies a rational model Chow lift with all component
+numerical restrictions zero. Its pure operational $K_0$
+representative, from frozen R12 \texttt{r12n:K0}, has
+degree-two Chern degree zero on every vertical two-dimensional
+test cycle, and generic degree-two character exactly $f^*z_F$.
+
+Now apply Corollary~\ref{r16G:numerical-witness} to the composite
+$V\to X_F\to X$. This uses that model witness in the original
+$K$-theory. Viewed over $K^\circ$, the special fiber has the
+same reduced components, its multiplicities acquire the
+ramification factor, and vertical degree acquires the residue
+factor $[k_F:k_K]$. Zero numerical degrees stay zero. The
+actual model-Chern detector therefore gives the upstairs
+obstruction zero in the original theory; the independently
+proved dominant Bott--Chern injection gives
+$\mathfrak o_{X,K}^2(z)=0$. No alteration is presumed finite
+off $Z$, and no Green form is pushed along $f$.
+
+Codimension three is the new all-dimensional one-cycle theorem
+\ref{r16G:one-cycles}. Codimensions one and four are the
+frozen divisor and geometric degree-zero endpoint results.
+These exhaust the positive codimensions on a fourfold.
+For each specified final cycle, take its own frozen curved
+Green pair and subtract the global actual primitive supplied
+by obstruction vanishing. This gives \eqref{r16pos:G} on
+the exact original support complement and on all original
+actual tests, as in Proposition~\ref{r16G:dominant-witness}.
+\end{proof}
+
+\begin{corollary}[The corresponding full complementary fourfold height]
+\label{r16pos:height}
+Let $X/F$ be a smooth projective geometrically integral fourfold
+over a number field. Assume that at every finite place not
+covered by the frozen good-model theorem the hypotheses of
+Theorem~\ref{r16pos:local} are supplied over $F_v$.
+Then the independently reviewed height theorem gives the
+canonical normalized real pairing on the full groups
+\[
+ \operatorname{CH}^2(X)_{\mathbf Q,\mathrm{geom\,hom}}
+       \times
+ \operatorname{CH}^3(X)_{\mathbf Q,\mathrm{geom\,hom}}.
+\]
+The assertion includes all classes in those groups and requires
+neither a global regular model nor a global model for the
+local auxiliary extensions. It does not assert that all
+fourfolds meet these local component conditions.
+\end{corollary}
+
+\begin{proof}
+The preceding theorem and the stated good-model inputs put
+both full groups in the local obstruction-zero domain at
+every finite place. Apply Theorem~\ref{r16h:global-height}.
+Its native local normalization, finite-place finiteness and
+principal transformation law have been separately proved.
+\end{proof}
+
+\paragraph{Remaining distinction.}
+The positivity hypothesis is a theorem for the explicitly
+listed component classes; it is open for a general smooth
+projective fourfold over a finite field. An arbitrary unpolarized
+Chow-motive factorization through abelian varieties is not used
+to transfer a positive primitive form. Such a transfer would
+need compatibility with the primitive pairing, not merely an
+isomorphism of underlying motive objects. Nor does a nonzero
+residual on some other model disprove strong G.

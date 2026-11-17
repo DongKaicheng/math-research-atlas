@@ -1,0 +1,390 @@
+% Round 22 / geometry branch. Candidate; independent review required.
+\section{Two surface factors, actual triple strata, and the full fourfold gate}
+\label{r22ds:section}
+
+\paragraph{Scope.}
+This section gives a new local presentation beyond the one-curve-factor
+construction MX21.  Its generic fourfold is an ample divisor in
+$S\times T\times\mathbf P^1$.  The central fiber has two curve
+factors and several point factors; its actual triple strata are products
+of the two curves.  The proof uses the full numerical middle space of
+each component.  For the point components $S\times T$, that positivity
+is an explicit hypothesis, with an unconditional elliptic-square
+instance proved below from the frozen FP21 criterion.  Positivity of
+an arbitrary product of two surfaces is not asserted.
+
+All numerical groups and intersection degrees below are native to the
+indicated finite field.  The symbol $N^a$ means rational cycles modulo
+numerical equivalence.  Numerical duality is the perfect pairing between
+$N^a$ and $N^{\dim-a}$, not a comparison with an unproved cohomological
+quotient.  The final Green output has the frozen ordinary actual
+$\delta$-form meaning.
+
+\subsection{The supplied local datum}
+
+Let $R=\mathcal O_K$ be the valuation ring of the fixed finite valued
+extension $K/\mathbf Q_p$, with native uniformizer $\pi$ and finite
+residue field $k$.  Let $\mathcal S,\mathcal T$ be smooth projective
+geometrically integral surface schemes over $R$.  Write $S,T$ for
+their special fibers.  Choose relatively ample line bundles
+$\mathcal A,\mathcal B$ and sections $f,g$ whose special zero divisors
+$C\subset S,D\subset T$ are smooth geometrically integral curves.
+Choose $d\ge2$ linear forms $l_1,\ldots,l_d$ on $\mathbf P^1_R$
+with pairwise distinct native special zeroes $p_1,\ldots,p_d$.
+Put
+\[
+ \mathcal Y=\mathcal S\times_R\mathcal T\times_R\mathbf P^1_R,
+ \qquad \mathcal L=\mathcal A\boxtimes\mathcal B\boxtimes\mathcal O(d),
+ \qquad P=fg\prod_{j=1}^d l_j.
+ \tag{DS22.1}\label{r22ds:datum}
+\]
+The line bundles of the individual factors need not agree.  On the
+special fiber, order the factor divisors as
+\[
+ H_0=C\times T\times\mathbf P^1,\quad
+ H_1=S\times D\times\mathbf P^1,\quad
+ H_{j+1}=S\times T\times\{p_j\}\quad(1\le j\le d).
+ \tag{DS22.2}\label{r22ds:factors}
+\]
+For a nonempty index set $I$, let $H_I=\bigcap_{i\in I}H_i$.
+No two point factors meet, so $H_I$ is empty for $|I|\ge4$.
+Every nonempty $H_I$ is smooth and geometrically integral.
+
+Choose $Q\in H^0(\mathcal Y,\mathcal L)$ with these precise properties:
+its special section cuts every nonempty $H_I$ transversely; every
+positive-dimensional cut is geometrically integral; every
+zero-dimensional cut is finite etale.  Empty cuts are allowed.
+Assume also that
+\[
+                    X=V(P+\pi Q)\subset\mathcal Y_K
+ \tag{DS22.3}\label{r22ds:X}
+\]
+is smooth and geometrically integral.  These are supplied hypotheses,
+not a claim that arbitrary coefficients satisfy them.  For the ample
+elliptic product data used in DG22, simultaneous Bertini gives such
+residue sections after one finite unramified preparation.  The global
+argument there constructs the smooth generic members separately.
+
+\subsection{Actual resolution and its complete strata}
+
+\begin{proposition}[Ordered resolution, DS22]
+\label{r22ds:resolution}
+Blow up the ambient $\mathcal Y$ successively in the strict transforms
+of $H_0,H_1,\ldots,H_d$ as closed subschemes of its special fiber, and
+take the strict transform of the flat closure of $X$.
+The result $\mathcal X$ is projective, regular and reduced strictly
+semistable over $R$.  Its components are the $d+2$ continuing factor
+components $D_0,\ldots,D_{d+1}$ and no others.  Every nonempty
+stratum $D_I$ is the iterated smooth blowup of $H_I$ in the centers
+\[
+              Z_{I,j}=H_I\cap H_j\cap V(\bar Q),\qquad j>\max I,
+ \tag{DS22.4}\label{r22ds:centers}
+\]
+in decreasing order of $j$.  Every nonempty center has codimension
+two in $H_I$, and its transform at the moment it is blown up is
+isomorphic to that original center.  In particular the full double
+and triple list is
+\[
+\begin{aligned}
+ D_{01}&=\operatorname{Bl}_{\coprod_{j=1}^d Z_j}
+                          (C\times D\times\mathbf P^1),
+ &Z_j&=(C\times D\times\{p_j\})\cap V(\bar Q),\\
+ D_{0,j+1}&=C\times T,
+ &D_{1,j+1}&=S\times D,\\
+ D_{0,1,j+1}&=C\times D.
+\end{aligned}
+ \tag{DS22.5}\label{r22ds:explicitstrata}
+\]
+Here the $Z_j$ are disjoint smooth curves when nonempty.  There are
+genuine triple strata and no quadruple strata.  Each component is a
+sequence of smooth surface blowups of either
+$C\times T\times\mathbf P^1$, $S\times D\times\mathbf P^1$,
+or $S\times T$; the point components $D_{j+1}=S\times T$ are
+unchanged.
+\end{proposition}
+
+\begin{proof}
+The actual local calculation is the same ordered-factor calculation
+as MX21, but we give it to fix the centers and eliminate any appeal
+to an unspecified resolution.  At a point on $s$ central factors,
+their defining functions are distinct members of a regular relative
+parameter system.  Here $s\le3$.  If $\bar Q$ is a unit, the equation
+is $x_1\cdots x_s=\pi u$ with $u$ a unit; it is already strictly
+semistable and the factor ideals become principal.  If $\bar Q=0$,
+the transverse cut supplies one additional parameter, and the local
+equation, after a harmless unit change, is
+\[
+                          x_1\cdots x_s=\pi y.
+ \tag{DS22.6}\label{r22ds:local}
+\]
+The two saturated charts of the first blowup in $(\pi,x_1)$ are
+$\pi=x_1t_1$, $x_2\cdots x_s=t_1y$, and
+$x_1=\pi u_1$, $y=u_1x_2\cdots x_s$.  Continuing in the first
+chart gives the terminal charts
+\[
+ \pi=x_1\cdots x_{a-1}t_{a-1},\qquad
+ x_a=t_{a-1}u_a,\qquad y=u_ax_{a+1}\cdots x_s.
+ \tag{DS22.7}\label{r22ds:charts}
+\]
+After eliminating the two displayed variables the remaining local
+ring is regular and $\pi$ is a square-free product.  The final
+continuing chart has the same property.  The vertical factors in
+these charts are precisely the original factor components.  Thus
+there are no additional components or hidden multiplicities.
+Projectivity follows from the actual ambient blowups.  The closure
+and its transform are integral, because the assumed geometrically
+integral generic fiber is dense; the displayed charts and the
+relative Cartier equation also verify flatness.
+
+On an earlier factor the modification induced by a later factor is
+the two-generator ideal $(\bar f_j,\bar Q)$; on the later factor
+itself that step is Cartier and has no effect.  Restricting the two
+Rees charts to an intersection indexed by $I$ leaves precisely the
+ideals with $j>\max I$, in the reverse order displayed in
+\eqref{r22ds:centers}.  Local unit changes preserve these ideals,
+so the chart calculations glue.  Transversality makes each center
+smooth of codimension two.  A preceding center restricts to a
+subsequent center by the ideal of the remaining factor, since
+$\bar Q$ already vanishes there.  It is Cartier, so that blowup
+does not change the subsequent center.  The possible intersection
+of two different point factors is empty.  This proves the center
+assertions without a hidden normal-crossings simplification.
+
+For $I=\{0,1\}$ the only remaining factors are the $d$ distinct
+points, giving the disjoint curves $Z_j$.  For $I=\{0,j+1\}$ or
+$\{1,j+1\}$ there is no larger intersecting point factor and no
+remaining earlier surface factor, so these doubles are unchanged.
+The triples are likewise unchanged.  This proves the entire list
+\eqref{r22ds:explicitstrata}.  On a single factor all centers are
+surfaces, and on a point component there are no centers.  These
+observations also prove the component assertion.
+\end{proof}
+
+\subsection{A full hyperbolic middle form independent of standard D}
+
+\begin{lemma}[Threefold times a projective line]
+\label{r22ds:hyperbolic}
+Let $W/k$ be any smooth projective geometrically integral threefold.
+On the full native numerical middle group of $W\times\mathbf P^1$
+the intersection form has signature
+$(\rho(W),\rho(W))$.  Its negative index is
+$\rho(W\times\mathbf P^1)-1$.  For every ample class $H$ on this
+fourfold the primitive middle group
+$\ker(H:N^2\to N^3)$ is positive definite.
+\end{lemma}
+
+\begin{proof}
+The actual projective-bundle formula and numerical duality give
+\[
+ N^2(W\times\mathbf P^1)
+            =N^2(W)\oplus N^1(W)h,
+ \qquad h^2=0.
+ \tag{DS22.8}\label{r22ds:hyperbolicform}
+\]
+Each summand is isotropic.  Their cross pairing is precisely the
+perfect native numerical pairing $N^2(W)\times N^1(W)\to\mathbf Q$.
+Both summands therefore have dimension $\rho(W)$, and the form is
+hyperbolic.  Moreover $\rho(W\times\mathbf P^1)=\rho(W)+1$.
+This calculation uses all numerical cycles, including classes not
+known to arise from an algebraic basis of geometric cohomology.
+
+Divisor Hodge index for the ample class $H$ makes the pairing on
+$HN^1$ nondegenerate of signature $(1,\rho(W))$; in particular
+multiplication by $H$ on $N^1$ is injective.  Its orthogonal
+complement in $N^2$ is $\ker(H:N^2\to N^3)$ by numerical duality.
+All negative directions already lie in $HN^1$.  The full form is
+nondegenerate, so that orthogonal complement is positive definite.
+No assertion about the Lefschetz standard conjecture for an
+arbitrary threefold was used.
+\end{proof}
+
+Use the following explicit condition on the two surface fibers:
+\[
+ b^-\bigl(N^2(S\times T)_{\mathbf R},\deg(xy)\bigr)
+                         =\rho(S\times T)-1.
+ \tag{DS22.9}\label{r22ds:MP}
+\]
+When an all-finite-extension assertion is wanted, require this same
+condition after every finite extension of $k$, for the whole new
+native numerical group there.
+
+\begin{proposition}[Full component positivity]
+\label{r22ds:positivity}
+Assume \eqref{r22ds:MP}.  Every component $D_i$ of the actual model
+has negative middle index $\rho(D_i)-1$.  For the restrictions of
+any one genuinely relatively ample line bundle on $\mathcal X$,
+all component primitive middle forms are positive definite.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{r22ds:hyperbolic} applies to the original first two
+components, taking $W=C\times T$ or $W=S\times D$.
+Condition \eqref{r22ds:MP} applies to each unchanged point component.
+For a smooth surface center $Z$ in a smooth fourfold $M$, write
+$q:\widetilde M=\operatorname{Bl}_ZM\to M$, $j:F\hookrightarrow
+\widetilde M$, $p:F\to Z$.  The actual Chow blowup decomposition
+and its native degree pairing give
+\[
+ N^2(\widetilde M)
+           =q^*N^2(M)\ \perp\ j_*p^*N^1(Z),\qquad
+ (j_*p^*a,j_*p^*b)=-\deg_Z(ab).
+ \tag{DS22.10}\label{r22ds:blowupsignature}
+\]
+The mixed term is a codimension-three intersection on the surface
+$Z$ and is zero.  The exceptional formula follows from
+$j^*j_*=-\xi$ and $p_*\xi=1$.  Both summand pairings are
+nondegenerate, which also justifies passing from the Chow formula
+to the numerical direct sum.  Surface divisor Hodge index shows
+that each geometrically connected surface center adds exactly one
+negative direction, while the Picard rank adds one.  The supplied
+integrality hypotheses ensure the centers here are geometrically
+integral; disjoint connected centers could equivalently be handled
+componentwise with their native degrees.  Induction through the
+actual centers of \eqref{r22ds:centers} proves the index formula.
+
+Finally, for any ample restriction $H_i$, divisor Hodge index on
+$H_iN^1(D_i)$ already accounts for the entire negative index.
+Its orthogonal complement is the primitive middle group and is
+positive definite, exactly as in the preceding lemma.  A merely
+nef pullback class has not been substituted for the required ample
+class.
+\end{proof}
+
+\begin{lemma}[The complete native curve gate on the doubles]
+\label{r22ds:CD}
+Every double in \eqref{r22ds:explicitstrata} has the CD17 property:
+an actual native numerically zero rational curve has zero geometric
+$\ell$-adic class, for every $\ell\ne\operatorname{char}k$.
+The assertion holds anew after every finite constant extension.
+\end{lemma}
+
+\begin{proof}
+The original doubles $C\times T$, $S\times D$, and
+$C\times D\times\mathbf P^1$ are products of smooth curves and
+surfaces.  The frozen SP19 product comparison applies to their
+entire curve groups.  Its precise classical input is algebraicity
+of inverse Lefschetz in degree two for products of curves and
+surfaces, not algebraicity of all $H^2$.  The only transformed
+double is the blowup $D_{01}$ in the smooth curves $Z_j$.
+Frozen CD17 smooth-blowup comparison, or SP19 birational ascent,
+therefore gives the assertion for it.  The same proofs apply to
+the whole new native curve group over each finite constant field;
+no new cycle is assumed to descend to $k$.
+\end{proof}
+
+\begin{theorem}[Full $U_2$ and complete local G, DS22]
+\label{r22ds:green}
+For every datum \eqref{r22ds:datum}--\eqref{r22ds:X} satisfying
+\eqref{r22ds:MP}, the actual reduced strictly semistable model has
+\[
+ U_2=\frac{\ker\rho_2\cap\operatorname{im}\sigma_2}
+                 {\operatorname{im}(\sigma_2\rho_1)}=0.
+ \tag{DS22.11}\label{r22ds:U}
+\]
+Its generic fourfold has full strong G in every codimension.
+If \eqref{r22ds:MP} holds after every finite constant extension,
+then for every finite valued extension $L/K$ the same complete
+assertion holds for every new specified geometrically homologically
+trivial rational cycle on $X_L$.
+\end{theorem}
+
+\begin{proof}
+Choose an actually relatively ample line bundle on $\mathcal X$.
+Frozen PU18 identifies the full $U_2$ with its unique primitive
+representative subspace in $\ker\rho_2\cap\operatorname{im}\sigma_2$
+and proves that subspace totally isotropic.  The direct sum of the
+component primitive middle forms is positive definite by
+Proposition~\ref{r22ds:positivity}; hence that subspace is zero.
+The model has genuine triples throughout this argument.  Neither
+$\ker A=\ker\rho$ nor $K_{\rm comp}=\ker A$ is claimed.
+
+Lemma~\ref{r22ds:CD} closes the actual representative-lifting gate
+of CL17.  The frozen exact detector, equivalently the MZ20
+consequence of $U_2=0$, kills the remaining cycle-visible obstruction
+for every original geometrically homologically trivial codimension
+two Chow class.  The frozen divisor, one-cycle, and zero-cycle
+theorems supply all other fourfold codimensions.  Thus VT17 gives,
+for every specified $Z$, an actual ordinary-topology form
+\[
+ \gamma_Z\in B^{r-1,r-1}
+                  (X^{\rm an}\setminus|Z|^{\rm an})
+ \quad\text{with}\quad
+ \int_{X^{\rm an}\setminus|Z|^{\rm an}}^*
+       \gamma_Z\wedge d'd''\eta=-\int_{Z^{\rm an}}^*\eta
+ \tag{DS22.12}\label{r22ds:actualG}
+\]
+for every actual compactly supported complementary test $\eta$.
+This is the exact original support and the full test space.
+
+For each finite unramified extension, the same smooth strata and
+the ordered charts base change, and the assumed positivity is for
+the whole new native numerical group.  Reapply the argument to
+every new cycle over that field.  The model is reduced strictly
+semistable, so frozen RI18, Corollary \texttt{r18ri:all-finite},
+propagates the result from all unramified fields to every finite
+valued extension.  Its norm argument and finite actual trace retain
+the full degrees, including ramification and residue degrees, and
+the extension of the fixed original absolute value.  The last
+application of VT17 is made to the final specified cycle.  No
+arbitrary proper actual pushforward or finite-on-complement
+alteration assertion enters.
+\end{proof}
+
+\subsection{A concrete unconditional positivity input}
+
+\begin{corollary}[Ordinary elliptic squares at five]
+\label{r22ds:elliptic}
+Let $E/\mathbf F_5$ be $y^2=x^3-x$, and let $S=T=E^2$ after any
+finite constant extension.  Condition \eqref{r22ds:MP} holds after
+every further finite constant extension.  Consequently every local
+smoothing datum above with these good special surfaces has the
+complete all-finite-extension Green property of
+Theorem~\ref{r22ds:green}.
+\end{corollary}
+
+\begin{proof}
+Counting the five possible $x$ coordinates gives $\#E(\mathbf F_5)=8$.
+The Frobenius eigenvalues on $H^1(E)$ are
+$\alpha=-1+2i$, $\beta=-1-2i$, with $\alpha\beta=5$.
+The two factor divisors, the diagonal, and the graph of the
+automorphism $(x,y)\mapsto(-x,2y)$ of $E^2$ have an intersection
+matrix of determinant $-4$.  Thus they are four independent native
+divisor classes.  On $H^2(E^2)$ the remaining two eigenvalues are
+$\alpha^2=-3-4i$ and $\beta^2=-3+4i$.
+
+The ratio $\alpha/\beta=(-3-4i)/5$ is not a root of unity: the only
+roots of unity in $\mathbf Q(i)$ are $1,-1,i,-i$.
+Therefore $\alpha^2/5$, $\beta^2/5$, and
+$\alpha^2/\beta^2=(\alpha/\beta)^2$ are not roots of unity.
+A geometric divisor is defined over a finite constant field and
+has a Tate eigenvalue after that extension.  Hence the two remaining
+directions never become divisors, and the four displayed classes
+are the full geometric divisor space over every constant field.
+The actual full geometric divisor projector in FP21 is therefore
+native already over $\mathbf F_5$.
+
+Frobenius on the transcendental surface block has the two distinct
+eigenvalues $\alpha^2,\beta^2$, and every positive power still has
+distinct eigenvalues.  Frozen FP21, Corollary
+\texttt{r21fp:simplespectrum}, now gives the full numerical middle
+signature of $S\times S$ and its all-finite-constant-field assertion.
+This is exactly \eqref{r22ds:MP}, for all actual new cycles.  It
+does not discard a possible $t_2\otimes t_2$ block: FP21 identifies
+that whole block by the actual Frobenius correspondence algebra.
+\end{proof}
+
+\paragraph{Dependencies and the remaining boundary.}
+The geometric local calculation extends the explicitly checked
+ordered-factor calculation of MX21.  The full positive-product
+input in the displayed elliptic case is the frozen FP21 simple
+all-powers Frobenius theorem.  The threefold-times-line hyperbolic
+calculation restates the already closed rank-two projective-bundle
+case of PC16, itself retaining its R7 provenance; it is not a new
+positivity result.  The new content is its activation on the actual
+two-surface mixed models, together with their complete strata and
+cycle domain.  The final
+interfaces are PU18, CD17/SP19, CL17, MZ20, RI18, VT17 and the
+already closed other-codimension Green theorems.  No old analytical
+gate is reopened.  For arbitrary good surfaces $S,T$, condition
+\eqref{r22ds:MP} remains an explicit hypothesis; this section does
+not prove general G or arbitrary-variety complete heights.

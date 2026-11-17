@@ -1,0 +1,515 @@
+% Round 17. Foundation branch. Candidate; independent review required.
+% This source does not edit the odd-characteristic scope of ON17 or QF17.
+\section{Nondegenerate quadratic reduction in residue characteristic two}
+\label{r17c2:section}
+
+\paragraph{Scope and classical antecedents.}
+\textbf{Internally reviewed.} The final claims register identifies the independent audits and frozen dependencies.
+We prove the characteristic-two version needed for odd-dimensional
+ordinary quadratic reduction. The exact quadratic change of
+coordinates uses an explicit etale isometry slice, rather than division
+by two or extraction of square roots of units. We also prove
+the quadric intersection and cycle-class inputs in every
+characteristic. The resulting local and height theorems retain
+native residue fields, all field degrees and all ordinary actual
+tests. The even-dimensional degenerate quadratic case in residue
+characteristic two is not included in this section.
+
+Jannsen--Saito, \emph{Bertini theorems and Lefschetz pencils over
+discrete valuation rings}, Section 3, Lemma 4(i) and Theorem 5(c),
+\url{https://arxiv.org/pdf/0911.1470}, state the classical
+nondegenerate normal form and its order reduction, including
+residue characteristic two. The new use here is their activation
+through a native all-degree numerical correction and the frozen
+ordinary actual detector. No priority claim is made for the
+normal-form or quadric facts.
+
+\subsection{Quadric cycle comparisons without a characteristic restriction}
+
+\begin{lemma}[Split quadric cells and native numerical comparison]
+\label{r17c2:quadric-cycles}
+Let $E/k$ be a smooth projective quadric over a finite field
+of arbitrary characteristic, and let $\ell\ne\operatorname{char}k$.
+Every native numerically zero rational cycle on $E$ has zero
+geometric $\ell$-adic class. The native numerical groups are
+one-dimensional ample lines except possibly in the middle
+codimension of an even-dimensional quadric. In that middle
+degree their dimension is at most two.
+\end{lemma}
+
+\begin{proof}
+A smooth quadric splits over some finite extension $k'/k$.
+For completeness, over the algebraic closure one splits off
+successive hyperbolic pairs: an isotropic vector in a smooth
+quadric is not in the polar radical, and a vector with polar
+pairing one can be modified by a multiple of it to become
+isotropic. Repeat on the orthogonal complement. In odd vector
+dimension the final one-dimensional summand is a square term.
+The finitely many chosen basis vectors and coefficients are
+defined over a finite extension of the finite field. This
+argument also applies in characteristic two to smooth odd
+dimensional quadrics with their one-dimensional anisotropic
+polar radical.
+
+We record the split calculation without importing a
+characteristic-not-two cellular theorem. Write $Q_d$ for a
+split smooth projective quadric of dimension $d$. For $d\ge2$
+choose a hyperbolic pair, so its equation is
+\[
+                  x_0x_1+q'(x_2,\ldots,x_{d+1})=0.
+ \tag{C217.1}\label{r17c2:split-equation}
+\]
+The open set $x_0\ne0$ is $\mathbf A^d$. The reduced
+closed complement is the projective cone over $Q_{d-2}$,
+with vertex $[0:1:0:\cdots:0]$. Removing that vertex is
+a line bundle over $Q_{d-2}$. A closed affine-cell filtration
+of the base therefore gives one on the cone: include the
+vertex first and then the cones over the successive closed
+subsets. Each new stratum is a line bundle over an affine
+cell and hence is affine space of dimension one larger.
+Finally adjoin the open $\mathbf A^d$.
+The bases are $Q_0$, two rational points, and $Q_1$, the
+split smooth conic $\mathbf P^1$. In characteristic two
+a tangent-hyperplane complement on that conic can be
+nonreduced; the filtration uses its reduced point, which
+has exactly the same open complement. Chow localization
+and etale cohomology use these reduced closed supports.
+
+This gives one affine cell in every dimension from $0$
+through $d$, with a second cell in dimension $d/2$ if
+$d$ is even. The ordinary Chow localization sequence
+shows that the closures of the cells generate the rational
+Chow groups. In etale Borel--Moore cohomology the localization
+sequence and the single even-degree class of an affine cell
+show inductively that those closures form a basis: there
+are no odd terms which could produce boundary relations.
+Compatibility of the cycle class with localization gives
+\[
+ \operatorname{CH}^j(Q_d)_{\mathbf Q}\otimes\mathbf Q_\ell
+        \xrightarrow{\sim}
+ H^{2j}((Q_d)_{\bar k},\mathbf Q_\ell(j)),
+ \tag{C217.2}\label{r17c2:split-cycle-iso}
+\]
+and all odd cohomology is zero. Proper smooth duality makes
+the corresponding cycle intersection pairing nondegenerate.
+
+If a native cycle $z$ on $E$ is numerically zero, its
+pullback to $E_{k'}$ remains numerically zero. Indeed for
+every complementary $\xi$ upstairs, finite projection gives
+\[
+ \deg_{k'}(z_{k'}\xi)
+      =\frac1{[k':k]}\deg_k\bigl(z\,\operatorname{pr}_*\xi\bigr)=0.
+\]
+The split cycle isomorphism and its perfect intersection
+pairing make its geometric class zero. This is also the
+original geometric class of $z$. Restriction to $k'$ is
+injective on native numerical groups by projection and
+the full nonzero finite degree. The split dimensions just
+computed give the asserted dimension bounds, and the
+nonzero native ample powers fill each one-dimensional
+off-middle group.
+\end{proof}
+
+\begin{lemma}[The quadric middle form in every characteristic]
+\label{r17c2:quadric-form}
+Let $E/k$ be a smooth projective quadric of dimension
+$2a\ge2$ over a finite field of arbitrary characteristic.
+For every ample rational divisor $h$, the form
+\[
+                (-1)^a\deg_k(u^2)
+\]
+is positive definite on the real extension of
+$\{u\in N^a(E)_{\mathbf Q}:\deg_k(u h^a)=0\}$.
+\end{lemma}
+
+\begin{proof}
+Pass to a finite splitting field only for the numerical
+calculation. In the hyperbolic equation
+$\sum_{i=0}^a x_i y_i=0$, cut by $x_1=\cdots=x_a=0$.
+The resulting cycle is the union of two maximal planes,
+of classes $l,l'$, so for the natural hyperplane $h_0$,
+\[
+                         h_0^a=l+l'.
+\]
+This is an actual complete-intersection cycle identity,
+also in characteristic two. For either maximal plane
+$\mathbf P^a\subset E$, smoothness gives the normal-bundle
+sequence
+\[
+ 0\longrightarrow N_{\mathbf P^a/E}
+   \longrightarrow\mathcal O(1)^{\oplus(a+1)}
+   \longrightarrow\mathcal O(2)\longrightarrow0.
+\]
+Its top Chern coefficient is
+\[
+ \deg(l^2)=\deg((l')^2)
+     =[t^a]\frac{(1+t)^{a+1}}{1+2t}
+     =\frac{1+(-1)^a}{2}.
+\]
+Since $\deg(h_0^a l)=1$, it follows that
+\[
+       \deg(ll')=\frac{1-(-1)^a}{2},\qquad
+       \deg((l-l')^2)=2(-1)^a.
+ \tag{C217.3}\label{r17c2:middle-matrix}
+\]
+All coefficients are integer intersection numbers. Their
+use does not require that the characteristic invert two.
+The displayed matrix is nondegenerate, so these two plane
+classes form the middle numerical basis supplied by the
+cell calculation.
+
+For $a\ge2$, the geometric Picard group has rank one by
+the same cell calculation. Thus an ample $h$ is a positive
+rational multiple of $h_0$ numerically, and its orthogonal
+middle line is the line of $l-l'$. For $a=1$, the split
+quadric surface is $\mathbf P^1\times\mathbf P^1$ in
+every characteristic. Write $h=\alpha l+\beta l'$ with
+$\alpha,\beta>0$. Its orthogonal line is generated by
+$\alpha l-\beta l'$, whose square is $-2\alpha\beta$.
+These calculations prove definiteness after splitting.
+
+Native numerical restriction is injective, and
+$\deg_{k'}(u_{k'}v_{k'})=\deg_k(uv)$ when each degree is
+taken over its own base field. Restrict the definite form
+to the native subspace. This proves the lemma without
+putting an ordering on any $\mathbf Q_\ell$-space.
+\end{proof}
+
+\begin{proposition}[Quadric forests in arbitrary residue characteristic]
+\label{r17c2:forest}
+The numerical equality $\ker A_{n-r}=\ker\rho_{n-r}$ and
+the all-degree strong-G conclusion of QF17 hold for a
+supplied reduced strictly semistable native quadric forest
+in every residue characteristic. All its other hypotheses,
+including $n\ge3$, remain in force.
+\end{proposition}
+
+\begin{proof}
+The incidence formula and the cut-edge construction of
+independent ample powers in QF17 use only the reduced
+principal fiber and the fact that the graph is a forest.
+In nonmiddle degree the groups on every double quadric
+are the one-dimensional ample lines of
+Lemma~\ref{r17c2:quadric-cycles}; complementary independent
+edge powers annihilate every edge difference of an
+adjoint-kernel tuple.
+
+In middle degree $n=2a+1$, cut-edge ample powers make
+each difference primitive for the common ample class.
+The identity
+$0=-\sum_e\deg_k((\rho_a v)_e^2)$ and
+Lemma~\ref{r17c2:quadric-form} force every difference to
+vanish, with the positive native weights $[k_e:k]$ kept.
+No component positivity is assumed. This proves the same
+kernel equality.
+
+Lemma~\ref{r17c2:quadric-cycles} turns numerical equality
+of actual restriction differences into geometric
+cohomological equality. The reduced compatible-kernel
+criterion KC17 then produces a rational numerical
+admissible extension in every degree. Its cohomological
+weight, native trace and numerical-duality proof has no
+odd-characteristic premise. The frozen numerical detector
+and exact-support reconstruction supply the full ordinary
+actual statement over the native valued field.
+\end{proof}
+
+\subsection{An exact etale Morse construction with unimodular polar form}
+
+\begin{lemma}[A pointed smooth isometry slice]
+\label{r17c2:isometry-slice}
+Let $R$ be a complete DVR of mixed characteristic, with
+any residue characteristic. Let $U/R$ be smooth, let
+$a:\operatorname{Spec}R\to U$ be a section, and let
+$q_x(v)$ be a quadratic form in $N$ indeterminates $v$,
+with coefficients regular on $U$. Put $q_0=q_x|_a$.
+Assume the polar bilinear matrix $B_0$ of $q_0$ is
+invertible over $R$. Then there is a pointed etale
+neighborhood $U'\to U$, with a lift of the section and
+unchanged closed residue field, and a regular matrix
+$M:U'\to\operatorname{GL}_N$ such that
+\[
+                  q_0(Mv)=q_x(v),\qquad M|_a=1.
+ \tag{C217.4}\label{r17c2:isometry}
+\]
+\end{lemma}
+
+\begin{proof}
+The coefficient equations $q_0(Mv)-q_x(v)=0$ inside
+$U\times\operatorname{GL}_N$ have the identity solution
+over $a$. The derivative in the matrix direction $A$
+at that solution is the quadratic polynomial
+\[
+                   B_0(v,Av)=v^{\mathsf T}B_0Av.
+ \tag{C217.5}\label{r17c2:differential}
+\]
+Because $B_0$ is invertible, $C=B_0A$ can be any matrix.
+Its resulting quadratic coefficients are $C_{ii}$ on
+$v_i^2$ and $C_{ij}+C_{ji}$ on $v_iv_j$. Taking $C$
+upper triangular makes these arbitrary, even in
+characteristic two. This proves smoothness of the
+isometry scheme at the identity and also yields a
+particularly explicit etale slice, as follows.
+
+Let $s$ be the $d=N(N+1)/2$ entries of an upper triangular
+matrix $C(s)$, and set
+\[
+                M(s)=1+B_0^{-1}C(s).
+\]
+On the open set where $M(s)$ is invertible, map $s$ to
+the $d$ coefficients of $q_0(M(s)v)$. At $s=0$ its
+value is the coefficient vector of $q_0$, and the
+derivative is exactly the identity: the derivative
+polynomial is $v^{\mathsf T}C(s)v$, whose coefficients
+are the independent upper triangular entries themselves.
+Thus this coefficient map is etale on a neighborhood of
+the entire zero section over $R$.
+
+Base change that etale map by the coefficient map
+$x\mapsto q_x$ on $U$. The resulting $U'\to U$ is
+etale and has the lift of $a$ given by $s=0$, so its
+selected closed point has unchanged residue field.
+Its matrix $M(s)$ satisfies the exact coefficient
+equations and is the identity along $a$. This proves
+the assertion without square-root extraction, an
+unproved smooth-section choice, or a formal series.
+\end{proof}
+
+\begin{proposition}[Native normal form when the Hessian is invertible]
+\label{r17c2:normal-form}
+Let $\mathcal X/R$ be flat of finite type, with smooth
+generic fiber. Suppose a special-fiber ordinary quadratic
+point $p$ of relative dimension $n$ has invertible polar
+Hessian on its $(n+1)$-dimensional tangent space.
+Let $R_p/R$ be the native unramified extension for
+$\kappa(p)$. Then there is a common residue-isomorphic
+pointed etale neighborhood with
+\[
+ \operatorname{Spec}R_p[z_0,\ldots,z_n]/(Q(z)-u\pi^b),
+       \qquad u\in R_p^\times,\quad b\ge1,
+ \tag{C217.6}\label{r17c2:normal-equation}
+\]
+where the polar matrix of $Q$ is unimodular over $R_p$.
+In particular this applies to every ordinary quadratic
+point in odd relative dimension in residue characteristic
+two.
+\end{proposition}
+
+\begin{proof}
+The Tor, local Nakayama and Jacobian argument of ON17's
+smooth-ambient lemma does not use invertibility of two.
+It gives a smooth ambient $W/R_p$ of relative dimension
+$N=n+1$ and a single Cartier equation $f$. The native
+gradient map has invertible Jacobian at $p$ by the stated
+polar-Hessian hypothesis. Henselian lifting therefore gives
+its critical section $a$ over $R_p$, just as in ON17.
+Choose translated etale coordinates $x_i$ for its ideal.
+For $c=f(a)$ one has $f-c\in(x)^2$; moreover
+$0\ne c\in\pi R_p$, since otherwise the generic
+hypersurface would have a critical point on it.
+
+Write the exact expression
+\[
+        f-c=\sum_{i\le j}a_{ij}(x)x_ix_j=q_x(x).
+\]
+This requires no division by two. Its value $q_0=q_x|_a$
+has the prescribed invertible polar matrix. Apply
+Lemma~\ref{r17c2:isometry-slice}, and put $z=Mx$.
+Then $q_0(z)=f-c$ exactly. Along $a$ one has $x=0$
+and $M=1$, so $dz=dx$. Thus $z$ is an etale coordinate
+map on a pointed neighborhood. Writing $-c=u\pi^b$
+and restricting this map to $f=0$ gives the stated
+common pointed etale neighborhood. The only constant
+extension used for this local chart is the native
+unramified $R_p/R$, with unchanged residue field at
+the selected point.
+
+Finally, in characteristic two with $N$ even, the polar
+matrix is alternating. If it were degenerate, its radical
+would have dimension at least two. Over the algebraic
+closure the restriction of a quadratic form to this
+radical is the square of a linear form, and hence vanishes
+at a nonzero radical vector. That vector would be a
+singular projective point of the tangent quadric. Its
+smoothness rules this out. Thus ordinary quadratic points
+with $n$ odd have exactly the invertible Hessian required.
+\end{proof}
+
+\subsection{The native semistable chains in residue characteristic two}
+
+\begin{proposition}[Order reduction for an invertible polar quadratic form]
+\label{r17c2:chains}
+Assume $R=K^\circ$ for $K/\mathbf Q_2$ and $n\ge3$ is
+odd. Let an integral flat projective model with smooth
+geometrically integral generic fiber have geometrically
+integral special fiber, smooth except at finitely many
+ordinary quadratic points. Make the single extension
+$K'=K(\tau)$ with $\tau^2=\pi$.
+At a native point with normal-form order $b$, exactly
+$b$ successive blowups at the remaining reduced point
+give the chain of QF17: $b-1$ projective cone resolutions
+$\mathbf P_E(\mathcal O_E\oplus\mathcal O_E(-1))$ and
+one terminal smooth quadric. The resulting global model
+is regular, projective and reduced strictly semistable,
+with a native quadric tree and no triple strata.
+\end{proposition}
+
+\begin{proof}
+Proposition~\ref{r17c2:normal-form} supplies exact native
+equations $Q(x)=u\pi^b$, with invertible polar matrix.
+The extension $\tau^2=\pi$ is Eisenstein of full degree
+two and residue degree one, even though it is wild.
+The equation becomes $Q(x)=u\tau^{2b}$.
+
+The saturated reduced-point blowup charts are exactly
+\[
+ x_i v=\tau,\qquad
+ Q(y_0,\ldots,1,\ldots,y_n)
+                          =u x_i^{2b-2}v^{2b},
+ \tag{C217.7}\label{r17c2:x-chart}
+\]
+and
+\[
+                         Q(z)=u\tau^{2b-2}.
+ \tag{C217.8}\label{r17c2:tau-chart}
+\]
+The Rees saturation verification in QF17 uses only a
+nonzero polynomial modulo the chart generator and
+permutation of a regular sequence in the semistable
+Cohen--Macaulay ambient chart. It uses neither two as a
+unit nor tame ramification, so it applies unchanged.
+The $\tau$-chart polynomial is primitive over its DVR,
+giving the same injectivity of multiplication by $\tau$.
+
+We check every smoothness step which previously invoked
+odd characteristic. Write $\overline B$ for the invertible
+polar matrix over the native residue field. For a vector
+$X$ with $X_i=1$, its gradient is $\overline B X$.
+Euler's polynomial identity still gives
+$\sum_jX_j\partial_j\overline Q=2\overline Q=0$
+in characteristic two. If every derivative in a $y_j$
+direction vanished, it would force the remaining $i$
+derivative to vanish as well. This contradicts
+$\overline B X\ne0$. Thus one $y$ derivative is a unit
+at every closed-fiber point in \eqref{r17c2:x-chart},
+also when $b=1$ and the right side is $\overline u v^2$.
+Eliminating that variable etale locally leaves precisely
+$x_i v=\tau$. These charts are regular strictly
+semistable with multiplicity one.
+
+For $b>1$, the only remaining singular special point of
+\eqref{r17c2:tau-chart} is $z=0$, since its gradient
+$\overline Bz$ vanishes only there. Its order has decreased
+by two. For $b=1$, the equation is $Q(z)=u$ and is smooth
+over the DVR: $z=0$ is not on its special fiber, so its
+gradient cannot vanish. The terminal exceptional quadric is
+\[
+                  T=\{\overline Q(X)=\overline u S^2\}
+                                      \subset\mathbf P^{n+1}.
+ \tag{C217.9}\label{r17c2:terminal}
+\]
+It is smooth in characteristic two. Indeed all its
+$X$ derivatives vanishing would imply $X=0$, and its
+equation would then imply $S=0$, impossible projectively.
+Its section $S=0$ is the smooth double quadric
+$E=\{\overline Q=0\}\subset\mathbf P^n$.
+
+For larger order the exceptional component is the cone
+over this $E$. Its vertex blowup is the same projective
+bundle as in QF17, with its two disjoint sections. This
+identification follows from the line-to-vertex map and
+its direction charts, without a characteristic hypothesis.
+The number of blowups and components follows by induction.
+The native pointed etale charts identify the associated
+graded rings, so each exceptional variety is defined over
+the original point's residue field, not a chosen geometric
+splitting field. Blowup commutes with the etale maps.
+
+Away from the original finitely many points the model is
+smooth, and their chains are disjoint. Consequently the
+global model has the stated tree, smooth components and
+double strata, and no triple points. Projectivity is
+preserved by the blowups; the displayed charts and the
+integral generic fiber give integrality and flatness.
+This is also the nondegenerate case of the original
+Jannsen--Saito order-reduction theorem.
+\end{proof}
+
+\begin{theorem}[All-degree actual G for odd-dimensional ordinary quadratic reduction at two]
+\label{r17c2:actual}
+Let $K/\mathbf Q_2$ and its absolute value be fixed, and
+let $X/K$ be smooth projective geometrically integral of
+odd dimension $n\ge3$. Suppose it has an integral flat
+projective model with geometrically integral special fiber,
+smooth except at finitely many ordinary quadratic points.
+Then every geometrically homologically trivial rational
+cycle in every positive codimension has strong ordinary
+actual G on its exact specified support complement, for
+every original compact actual test. No regularity of the
+initial total model or bound on the node orders is required.
+
+The conclusion holds anew for all such cycles after every
+finite extension of $K$, and for every smooth projective
+target admitting such a projective dominant witness after
+a finite auxiliary local extension.
+\end{theorem}
+
+\begin{proof}
+The chain proposition gives a regular reduced quadric
+forest over $K'$. Apply the all-characteristic forest
+criterion of Proposition~\ref{r17c2:forest}. It constructs
+native rational numerical admissible lifts in every degree.
+The frozen original-field numerical witness and dominant
+Bott--Chern detector descend obstruction zero, retaining
+the full auxiliary degree two and every node residue
+degree. The frozen curved pair for the final specified
+cycle then supplies its exact-support all-actual form.
+No alteration is claimed finite on that complement.
+
+After any further finite extension, flatness and the
+integral generic fiber preserve integrality of the model.
+The special geometric nodes and their invertible polar
+forms persist, while each order is multiplied by the
+ramification index. Thus the same theorem applies to all
+newly defined cycles, not only pullbacks. The dominant
+witness assertion is the frozen numerical detector, with
+the full composite function-field degrees.
+\end{proof}
+
+\begin{corollary}[The ordinary quadratic height sector at all finite primes in odd dimension]
+\label{r17c2:height}
+Let $X/F$ be smooth projective geometrically integral over
+a number field. Suppose every finite completion has a
+projective dominant witness after a finite auxiliary local
+extension with good or ordinary quadratic reduction. For
+the ordinary quadratic alternative above residue two,
+assume the witness has odd dimension at least three;
+above other primes use ON17's range.
+Then the canonical height is defined on the entire
+geometric homological rational Chow groups in every pair
+of complementary degrees. In particular this applies
+when an odd-dimensional $X$ itself has good or ordinary
+quadratic reduction at every finite place.
+The value has the frozen number-field normalization and
+the automatic arithmetic-intersection comparison of GA17.
+\end{corollary}
+
+\begin{proof}
+ON17, the present theorem, and the frozen good-reduction
+theorem supply local obstruction zero for every geometric
+homological class at every finite place. The frozen
+canonical height theorem and GA17 therefore apply to the
+complete homological groups for the stated reduction
+sector. No assertion is made that arbitrary varieties
+have witnesses of this type.
+\end{proof}
+
+\paragraph{Remaining characteristic-two case.}
+For even relative dimension in residue characteristic two,
+an ordinary tangent quadric has a one-dimensional polar
+radical, so the gradient-section argument and the isometry
+slice above do not apply. Jannsen--Saito treat that case
+by a different polynomial $P(x)+z^2+bz+c$ and a different
+order reduction. Its integration into the present native
+numerical proof requires a separate statement, field-degree
+account and review; it is not included by analogy here.

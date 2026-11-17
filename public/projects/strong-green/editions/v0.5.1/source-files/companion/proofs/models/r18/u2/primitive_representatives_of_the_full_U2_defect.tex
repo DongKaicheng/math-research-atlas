@@ -1,0 +1,361 @@
+% Round 18. Author: general_u2 branch. New interface, not a new Green family.
+\section{Primitive representatives of the full numerical $U_2$ defect}
+\label{r18pu:section}
+
+\paragraph{Historical scope before stating the interface.}
+The divisor-kernel formula, ample-weighted injectivity on its image,
+and primitive normalization of an \emph{actual generic homological
+cycle} already occur in the frozen R7 sources.  So do the total
+isotropy and rational Witt-index bound for the actual obstruction
+image.  They are not claimed as new results of this round.
+The purpose here is to identify the \emph{entire model numerical
+space} $U_2$ introduced in DQ17 with a precisely specified primitive
+subspace, and then to identify the actual period map with its
+possibly proper cycle-generated subspace.  This is a current-interface
+identification and an independently checked structural strengthening,
+not a new class of generic fibers or a solution of general G.
+
+The exact unchanged historical sources, with their archive paths
+and SHA-256 hashes, are recorded in
+\path{u2/pu18_historical_bridge.json}.  They are:
+\begin{itemize}
+\item R7 \path{threefold_elementary_kernel.tex}, Theorem
+      \texttt{bb7tf:elementary-kernel}, equation TF.E1;
+\item R7 \path{threefold_codimension_two_obstruction.tex},
+      Proposition \texttt{bb7tf:weighted-kernel}, equation TF.P1,
+      and the subsequent actual-cycle normalization;
+\item R7 \path{threefold_boundary_primitive_obstruction.tex},
+      TF.O1--TF.O6, concerning the actual obstruction image;
+\item R7 \path{descent_inertia_primitive_remainder.tex},
+      R7.IR9--R7.IR15, concerning a separate cohomological quotient
+      under the displayed divisor-Tate hypothesis.
+\end{itemize}
+The last cohomological quotient is not identified with $U_2$ here.
+The old draft headers in those unchanged files do not alter the
+later frozen registers.
+
+\subsection{A complete check of the divisor input}
+
+Use the reduced strict semistable native model of DQ17, of relative
+dimension $n\ge3$.  Fix one relatively ample rational class $H$.
+Let $T^0$ be the direct sum of the fundamental-class lines of the
+native connected triple strata, and let
+\[
+ \delta_0:W^0\longrightarrow T^0,\qquad
+       (\delta_0b)_{ijk}=b_{ij}-b_{ik}+b_{jk}.
+ \tag{PU18.1}\label{r18pu:delta}
+\]
+All restrictions to disconnected strata are taken on their actual
+native connected pieces.  Thus multiple edges and multiple triples
+are included, with their ordinary signed incidence maps.
+Put
+\[
+ \begin{gathered}
+ q_W(x,y)=\sum_e\deg_{E_e}(x_ey_eH_e^{n-3}),\qquad
+ R_1=\operatorname{im}\rho_1,\\
+ d_0=\rho_1\sigma_1:W^0\to W^1,\qquad J=\operatorname{im}d_0 .
+ \end{gathered}
+ \tag{PU18.2}\label{r18pu:edge-form}
+\]
+Divisor Hodge index makes $q_W$ nondegenerate, with positive
+index equal to the number of native connected edges.
+
+\begin{lemma}[The full radical, including harmonic edge directions]
+\label{r18pu:radical}
+One has
+\[
+                       \operatorname{rad}(q_W|_{R_1})=J.
+ \tag{PU18.3}\label{r18pu:radical-equality}
+\]
+Consequently
+\[
+ \ker(H^{n-3}A_1)=\ker A_1=B_1+L_1,
+ \qquad
+ H^{n-3}:\operatorname{im}A_1\longrightarrow C^{n-1}
+                           \text{ is injective}.
+ \tag{PU18.4}\label{r18pu:weighted-kernel}
+\]
+These conclusions reproduce the R7 divisor input in current signs.
+\end{lemma}
+
+\begin{proof}
+The degree-zero instance of DG18's actual triple factorization gives
+$d_0=\tau_1\delta_0$, where $\tau_1$ is the alternating triple Gysin
+into edge divisors.  Projection formula therefore gives
+\[
+ q_W(Hb,d_0c)=
+      \sum_T\deg_T(H_T^{n-2})(\delta_0b)_T(\delta_0c)_T .
+ \tag{PU18.5}\label{r18pu:scalar-energy}
+\]
+Every coefficient in this scalar form is positive.  It follows,
+by also setting $c=b$, that
+\[
+       \ker d_0=\ker\delta_0,\qquad
+       \dim J=\operatorname{rank}\delta_0,\qquad
+       HW^0\cap J^\perp=H\ker\delta_0 .
+ \tag{PU18.6}\label{r18pu:J}
+\]
+Here the last perpendicular is for $q_W$.  On $HW^0$ the form
+is positive definite, with diagonal entries
+$\deg_E(H_E^{n-1})$.
+
+DQ17's identity $A_1\sigma_1=0$ and its energy adjunction give
+$q_W(d_0b,\rho_1v)=0$ for every $b,v$.
+Thus $J\subset R_1\cap R_1^\perp$; in particular $J$ is totally
+isotropic.
+
+DG18's unconditional $U_1=0$ shows
+\[
+                 \ker\delta_0=\operatorname{im}\rho_0
+                                      \oplus\ker\sigma_1 .
+ \tag{PU18.7}\label{r18pu:harmonic-split}
+\]
+Indeed, for $b\in\ker d_0$, the class $\sigma_1b$ lies in
+$B_1\cap L_1=\operatorname{im}A_0$.  Write it as
+$\sigma_1\rho_0c$; then $b-\rho_0c\in\ker\sigma_1$.
+If $\rho_0c\in\ker\sigma_1$, then $A_0c=0$.
+The native weighted graph-Laplacian energy, whose edge weights
+are $\deg_E(H_E^{n-1})>0$, gives $\rho_0c=0$.  This proves
+the directness of the sum.  No vanishing of the first cohomology
+of the dual incidence complex has been assumed.
+
+The two positive subspaces
+$H\operatorname{im}\rho_0$ and $H\ker\sigma_1$ in
+\eqref{r18pu:harmonic-split} are orthogonal.  Projection formula
+proves this, since pairing $Hb$ with $H\rho_0c$ is the degree
+pairing of $\sigma_1b$ against the corresponding component
+multiple of $H^{n-1}$.  More generally
+\[
+                    H\ker\sigma_1\subset R_1^\perp,
+             \qquad H\operatorname{im}\rho_0\subset R_1.
+ \tag{PU18.8}\label{r18pu:two-subspaces}
+\]
+
+Pass to the nondegenerate real quadratic space $J^\perp/J$.
+Its positive index is
+$\#\{\text{native edges}\}-\dim J=\dim\ker\delta_0$.
+The image of the positive definite space $H\ker\delta_0$
+is injective and has exactly that dimension, by
+\eqref{r18pu:J}.  It is therefore a maximal positive subspace,
+and its perpendicular is negative definite.
+The subspace $R_1/J$ contains
+$H\operatorname{im}\rho_0$ and is orthogonal to
+$H\ker\sigma_1$.  Decomposing with respect to the two orthogonal
+positive subspaces in \eqref{r18pu:harmonic-split} shows that
+$R_1/J$ is the orthogonal direct sum of
+$H\operatorname{im}\rho_0$ and a subspace of that negative
+definite perpendicular.  Its restricted form is nondegenerate.
+This proves \eqref{r18pu:radical-equality}, first over $\mathbf R$
+and then over $\mathbf Q$.
+
+For $F=H^{n-3}A_1:C^1\to C^{n-1}$, the native perfect
+pairing of these two spaces gives
+\[
+                 \langle Fv,u\rangle_C
+                         =-q_W(\rho_1v,\rho_1u).
+ \tag{PU18.9}\label{r18pu:F}
+\]
+Thus $\ker F=\rho_1^{-1}(J)=B_1+L_1$.
+DQ17 already gives $B_1+L_1\subseteq\ker A_1$, whereas
+$\ker A_1\subseteq\ker F$.  This proves both equalities and
+the stated injection on $\operatorname{im}A_1$.
+\end{proof}
+
+\subsection{The entire numerical defect has a unique primitive representative}
+
+Now let $n\ge4$ and set
+\[
+ P_H^2(C)=\ker(H^{n-3}:C^2\to C^{n-1}),\qquad
+ \mathscr U_H=P_H^2(C)\cap B_2\cap L_2 .
+ \tag{PU18.10}\label{r18pu:primitive-space}
+\]
+
+\begin{theorem}[A rational isomorphism for the full $U_2$]
+\label{r18pu:full-defect}
+The quotient map induces a canonical rational isomorphism
+\[
+          \mathscr U_H\xrightarrow{\sim}
+             U_2=(B_2\cap L_2)/\operatorname{im}A_1 .
+ \tag{PU18.11}\label{r18pu:U-isomorphism}
+\]
+Equivalently,
+\[
+                    B_2\cap L_2
+                       =\operatorname{im}A_1\oplus\mathscr U_H.
+ \tag{PU18.12}\label{r18pu:direct-sum}
+\]
+The dependence on $H$ is the explicitly specified primitive
+representative, while the quotient $U_2$ itself does not depend on it.
+\end{theorem}
+
+\begin{proof}
+For $z\in B_2\cap L_2$, the functional
+$\lambda_z(v)=\langle H^{n-3}z,v\rangle_C$ on $C^1$
+annihilates $B_1+L_1$.
+For $v\in B_1$, the class $H^{n-3}v$ is in $B_{n-2}$,
+which is orthogonal to $L_2$ by signed adjunction.
+For $v\in L_1$, its ample multiple is in $L_{n-2}$,
+which is orthogonal to $B_2$.  These are two distinct
+uses of the two numerator conditions on $z$.
+
+The rational map $F$ in \eqref{r18pu:F} is symmetric, and
+Lemma~\ref{r18pu:radical} identifies its kernel with $B_1+L_1$.
+Its image is the annihilator of that kernel.  Hence there
+is $v\in C^1$ with $Fv=H^{n-3}z$.  Put
+$z_H=z-A_1v$.  Since $\operatorname{im}A_1\subseteq B_2\cap L_2$,
+this belongs to $\mathscr U_H$ and represents the original
+quotient class.
+
+If two such representatives differed, their difference would
+be $A_1v$ with $H^{n-3}A_1v=0$.  The last assertion of
+\eqref{r18pu:weighted-kernel} makes that difference zero.
+This proves existence, uniqueness and the direct sum.
+Every matrix and right-hand side is rational; no scalar
+extension of cycle coefficients is used.
+\end{proof}
+
+\subsection{A bound for the whole fourfold numerical defect}
+
+In relative dimension four set
+\[
+ q_C(z,z')=\sum_i\deg_{D_i}(z_i z_i'),\qquad
+ \rho_i=\dim N^1(D_i)_{\mathbf Q},\qquad
+ \eta_i=\dim N^2(D_i)_{\mathbf Q}-\rho_i .
+ \tag{PU18.13}\label{r18pu:fourfold-form}
+\]
+For each component let $b_i^-$ be the negative index of its
+nondegenerate middle numerical form, and put
+\[
+                          \epsilon_i=b_i^--(\rho_i-1).
+ \tag{PU18.14}\label{r18pu:excess-negative}
+\]
+
+\begin{corollary}[Primitive Witt and signature bounds on $U_2$]
+\label{r18pu:Witt}
+The form $q_C$ on $P_H^2(C)$ is nondegenerate, of dimension
+$\sum_i\eta_i$ and negative index $\sum_i\epsilon_i$.
+In particular each $\epsilon_i\ge0$.
+The subspace $\mathscr U_H$ is totally isotropic, and
+\[
+ \begin{split}
+ \dim_{\mathbf Q}U_2
+  &\le \operatorname{wi}_{\mathbf Q}(q_C|_{P_H^2(C)})\\
+  &\le \min\left\{\sum_i\epsilon_i,\
+                         \sum_i(\eta_i-\epsilon_i)\right\}.
+ \end{split}
+ \tag{PU18.15}\label{r18pu:Witt-bound}
+\]
+Here the rational Witt index means the largest dimension
+of a rational totally isotropic subspace.
+Thus a nonzero $U_2$ requires a rational isotropic primitive
+tuple and requires a failure of primitive middle positivity
+on at least one component.  Neither condition is asserted
+to be sufficient for $U_2\ne0$.
+\end{corollary}
+
+\begin{proof}
+Divisor Hodge index makes the form on $HN^1(D_i)$
+nondegenerate with signature $(1,\rho_i-1)$.
+Its orthogonal complement in $N^2(D_i)$ is precisely
+$\ker(H:N^2(D_i)\to N^3(D_i))$, by numerical duality
+between $N^3(D_i)$ and $N^1(D_i)$.
+This proves the dimension, nondegeneracy and negative-index
+statements, including $\epsilon_i\ge0$.
+
+For $z,z'\in\mathscr U_H$, one lies in $L_2$ and the
+other in $B_2=L_2^\perp$, so $q_C(z,z')=0$.
+The isomorphism \eqref{r18pu:U-isomorphism} therefore
+places the entire $U_2$, not merely a cycle-image quotient,
+in a rational totally isotropic subspace of this primitive
+form.  The first inequality follows by definition of
+Witt index; extension to $\mathbf R$ gives the usual bound
+by the smaller of the positive and negative indices.
+\end{proof}
+
+When every $\epsilon_i=0$, this supplies another proof of the
+fourfold numerical $U_2$ consequence of S18, without invoking the
+full BGS stratum theorem.  It does not improve the R7 actual-cycle
+anisotropy criterion to a new Green domain: that earlier criterion
+already applies directly to the actual primitive obstruction
+image, without the extra double-comparison assumption needed
+for the next identification.
+
+\subsection{The actual cycle image can be strictly smaller}
+
+Assume $n=4$ and $K_2=B_2$, for example by the precise CD17
+curve-comparison hypothesis on all doubles.  For a geometrically
+homologically trivial native class $z\in\operatorname{CH}^2(X)_{\mathbf Q}$,
+choose a Chow extension with its frozen pure operational
+representative, and write $c_z\in C^2$ for its numerical
+component restriction tuple.
+
+\begin{proposition}[The cycle period map in the primitive coordinates]
+\label{r18pu:period-image}
+One has $c_z\in B_2\cap L_2$.  Its class modulo
+$\operatorname{im}A_1$, and hence its unique primitive
+representative $(c_z)_H\in\mathscr U_H$, is independent of the
+chosen extension.  The resulting rational linear map
+\[
+ \operatorname{CH}^2(X)_{\mathbf Q,\mathrm{geom\,hom}}
+              \longrightarrow \mathscr U_H,\qquad z\longmapsto(c_z)_H
+ \tag{PU18.16}\label{r18pu:cycle-map}
+\]
+has kernel exactly the strong-G subgroup of VT17.  Its image
+is a subspace of $\mathscr U_H$; surjectivity is not asserted.
+For $v\in V_2$, its native normalized model period is
+\[
+                      \nu_z(v)=q_C((c_z)_H,v).
+ \tag{PU18.17}\label{r18pu:period-formula}
+\]
+This is DQ17's perfect duality with
+$V_2/(B_2+L_2)$, expressed in primitive coordinates.
+\end{proposition}
+
+\begin{proof}
+The two further restrictions of one operational model class
+to a double agree in actual Chow.  Thus $c_z\in B_2$.
+ER17/FD17 kills its period against $K_2=B_2$ because $z$
+is homologically trivial.  Under the perfect middle
+numerical pairing, $B_2^\perp=L_2$ by DQ17's signed
+adjunction.  Therefore $c_z\in L_2$ as well.
+
+Localization changes the component tuple of two extensions
+of the same generic Chow class by an element of
+$\operatorname{im}A_1$.  Theorem~\ref{r18pu:full-defect}
+gives the stated independence and linearity.
+By definition the native model period is $q_C(c_z,v)$.
+The difference $c_z-(c_z)_H$ lies in $\operatorname{im}A_1$,
+which is orthogonal to $V_2=\ker A_2$ by DQ17.
+This proves \eqref{r18pu:period-formula}.
+
+All periods on $V_2$ vanish precisely when
+$c_z\in V_2^\perp=\operatorname{im}A_1$, precisely when
+$(c_z)_H=0$.  FD17 and the necessary-and-sufficient theorem
+VT17 identify that zero locus with existence of the
+ordinary actual Green form on the original specified
+support complement, tested against all original compact
+actual forms.  The primitive tuple is an algebraic
+description of the obstruction; it does not replace the
+analytic output or narrow the test space.
+\end{proof}
+
+\paragraph{The exact remaining question.}
+For a fourfold with the stated double comparison, general G asks
+that the image in \eqref{r18pu:cycle-map} be zero.  Vanishing of
+the full $\mathscr U_H$, equivalently $U_2=0$, is stronger.
+Even if the full numerical model space were nonzero, its actual
+homological cycle image could vanish.  Without double comparison
+there is also the independent CL17 compatible-representative
+defect; \eqref{r18pu:cycle-map} has not removed it.
+
+This distinction is also why a rational isotropic vector in a
+component middle form is not a counterexample to G: it must
+first belong to the compatible signed edge image, and then
+must be realized by the component restrictions of a generic
+homologically trivial cycle.  Neither realization is supplied
+by quadratic-form linear algebra alone.
+
+The new model theorem PG18 proves $U_2=0$ in its common-ambient
+product-smoothing class by an actual triple calculation.
+The present section locates the general remaining numerical
+defect precisely, but adds no unrestricted G or height theorem.

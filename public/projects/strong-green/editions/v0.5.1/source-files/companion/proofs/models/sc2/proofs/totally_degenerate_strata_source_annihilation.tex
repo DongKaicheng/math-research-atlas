@@ -1,0 +1,379 @@
+% Author: /root/etale_aj. 12 November 2026.
+% Additive SC2 source. Independent exact-source review is required.
+\section{Original source annihilation for projective models with totally degenerate strata}
+\label{sc2td:section}
+
+\paragraph{Scope and source.}
+This is an application of the frozen FD17 and ED27 source interfaces,
+not a new construction of their analytic objects. It supplies every
+detector-closure certificate in a geometric class of models and then
+kills the original Abel--Jacobi source. In every dimension and codimension,
+the resulting Green form is ordinary actual on the originally specified
+support complement, with the original absolute value and all compact
+actual tests. General G and arbitrary-variety complete unconditional BB
+remain \texttt{OPEN}.
+
+The external theorem used is Raskind--Xarles, \emph{On the Etale
+Cohomology of Algebraic Varieties with Totally Degenerate Reduction over
+$p$-adic Fields}, J. Math. Sci. Univ. Tokyo 14 (2007), 261--291:
+Definition 1, conditions (a),(b), printed pp.~266--267;
+Proposition 1, p.~275; Proposition 2 and Corollaries 1,2,
+pp.~277--279. The exact final publisher PDF is retained and hashed
+in the companion dependency record. Only (a) and (b) are used.
+The crystalline and ordinary conditions (c),(d) are not inferred or needed.
+Their definition permits a regular proper model. Our hypothesis below
+explicitly requires a regular \emph{projective} witness, as FD17 does;
+we do not assert that properness implies projectivity.
+
+\subsection{Full native assumptions}
+
+Fix $K/\mathbf Q_p$ finite with its original absolute value, and let
+$X/K$ be smooth projective geometrically integral of dimension $n\geq1$.
+Suppose that the following data are supplied, independently of a cycle:
+\[
+ L/K\text{ finite valued},\qquad
+ g:Y\longrightarrow X_L\text{ projective dominant generically finite},
+ \qquad \mathcal Y/O_L.
+ \tag{TDR2.1}
+\]
+Here $Y/L$ is smooth projective geometrically integral, and
+$\mathcal Y$ is a regular projective reduced strictly semistable model
+of $Y$, of relative dimension $n$. Write $k$ for the native finite
+residue field. For every nonempty indexed stratum $D_I$ of the special
+fibre put $\overline D_I=D_I\times_k\bar k$ and
+$d_I=\dim D_I$. Disconnected geometric strata are retained with all
+their connected components.
+
+Assume the following exact Raskind--Xarles conditions.
+\begin{enumerate}
+\item[(a)] Each $\operatorname{CH}^c(\overline D_I)$ is finitely generated.
+There is a projective embedding of the entire special fibre whose
+restricted hyperplane operators $H_I$ satisfy, for $2c\leq d_I$,
+\[
+ H_I^{d_I-2c+1}x=0\quad\Longrightarrow\quad
+ (-1)^c\deg\bigl(x\,H_I^{d_I-2c}x\bigr)>0
+ \quad\text{for }0\ne x\in\operatorname{CH}^c(\overline D_I)_{\mathbf Q}.
+ \tag{TDR2.2}
+\]
+The positivity is read componentwise, or on the direct sum with the
+sum of component degrees.
+\item[(b)] For every prime $\ell\ne p$ the odd integral geometric
+etale cohomology of each stratum is torsion, and the cycle map induces
+\[
+ \bigl(\operatorname{CH}^c(\overline D_I)/\mathrm{tors}\bigr)
+       \otimes\mathbf Z_\ell
+ \xrightarrow{\ \sim\ }
+ H^{2c}(\overline D_I,\mathbf Z_\ell(c))/\mathrm{tors}.
+ \tag{TDR2.3}
+\]
+\end{enumerate}
+These are hypotheses on the specified strata; no standard conjecture
+is declared true for arbitrary strata. For the rational argument below,
+the rational cycle isomorphisms and the weight--monodromy consequence
+at one supplied $\ell\ne p$ would suffice. We state (a),(b) as in the
+published theorem, so that the exact external implication is available
+without weakening or reproving it.
+
+\begin{theorem}[TDR2-A: original-source vanishing]
+\label{sc2td:main}
+Under (TDR2.1)--(TDR2.3), for every $1\leq r\leq n$ and every original
+rational cycle $Z$ on $X$ with zero geometric $\ell$-adic cycle class,
+the original Chow-source map to the FD17 numerical detector dual
+vanishes at $[Z]$. In particular all its originally fixed finite
+detector periods are exactly zero, and $Z$ has the original ordinary
+actual strong-zero-curvature Green form. The assertion holds for every
+specified representative of $[Z]$ with its own exact support complement.
+It does not assert that the detector kernel or residual quotient is zero.
+\end{theorem}
+
+\subsection{Splitting and the numerical-to-cohomological comparison}
+
+There are finitely many strata and finitely many degrees. Choose integral
+generators of all their finitely generated geometric Chow groups modulo
+torsion. Each generator is represented by an actual finite cycle, defined
+over a finite extension of $k$. Enlarging that extension also separates
+all geometric components. It lifts uniquely to a finite unramified
+extension $L'/L$. Replace the supplied witness by its base change to
+$O_{L'}$, retaining the complete degree $[L':K]$.
+This remains a regular projective reduced strictly semistable witness.
+Relabel it $(L,Y,\mathcal Y,k)$ for the following calculation. All of
+these choices precede $Z$.
+
+\begin{lemma}[TDR2-B: native numerical realization]
+\label{sc2td:native}
+For every native component $D_i$ after this finite splitting and every
+$0\leq c\leq n$, restriction and cycle class identify
+\[
+ \operatorname{CH}^c(D_i)_{\mathbf Q}
+       \simeq \operatorname{CH}^c(\overline D_i)_{\mathbf Q},
+ \qquad
+ N^c(D_i)_{\mathbf Q}\otimes\mathbf Q_\ell
+       \simeq H^{2c}(\overline D_i,\mathbf Q_\ell(c)).
+ \tag{TDR2.4}
+\]
+The second isomorphism is induced by the actual cycle class map.
+It is compatible with native degree pairings, restriction, Gysin,
+and the full component-incidence operator $A$. In particular it is
+not an assumed cycle map on an arbitrary numerical group.
+\end{lemma}
+
+\begin{proof}
+Surjectivity of the first map follows from the selected generators.
+If a native rational Chow class becomes zero over $\bar k$, its
+rational equivalence uses finitely many subvarieties and rational
+functions, hence is already defined over a finite extension $k'/k$.
+Finite flat pullback followed by proper pushforward multiplies the
+native Chow class by $[k':k]$. It was zero after pullback, so it was
+zero over $k$ with rational coefficients. This proves injectivity.
+
+Condition (b), tensored with $\mathbf Q_\ell$, says that the geometric
+cycle maps in both complementary codimensions $c,n-c$ are isomorphisms.
+Compatibility of cycle intersection with etale cup product and native
+proper trace makes the rational Chow degree pairing nondegenerate:
+if a class pairs to zero against every native complementary Chow class,
+its geometric cycle class pairs to zero against the entire complementary
+geometric cohomology. Poincare duality kills that cohomology class.
+The cycle isomorphism and the first assertion then kill the native
+rational Chow class. Thus the kernel defining numerical equivalence is
+zero on $\operatorname{CH}^c(D_i)_{\mathbf Q}$, proving (TDR2.4).
+
+The cycle-class compatibility used here is for actual Chow cycles.
+It commutes with Cartier restriction, proper Gysin, and multiplication
+by the diagonal normal class. These are precisely the entries of the
+incidence operator in VT17/ED27. The resulting numerical realization
+therefore intertwines the full operators, including their fixed signs.
+No native residue degree has been divided out: on a zero-cycle the
+geometric trace of its native cycle class is its native degree.
+\end{proof}
+
+Fix $r$ and put $a=n-r$, $q=a+1$. Write
+\[
+ C^c=\bigoplus_iN^c(D_i)_{\mathbf Q},\qquad
+ H_c=\bigoplus_iH^{2c}(\overline D_i,\mathbf Q_\ell(c)),
+ \qquad V=\ker(A_a:C^a\to C^{a+1}).
+ \tag{TDR2.5}
+\]
+For every original numerical detector $v\in V$, choose any actual
+native rational representatives $\widetilde v_i$. Their classes
+$h=(\operatorname{cl}_\ell(\widetilde v_i))_i$ satisfy
+\[
+                    A_{\ell,a}h=0.
+ \tag{TDR2.6}
+\]
+Indeed the cohomological tuple in (TDR2.6) is the class of the actual
+Cartier restrictions of $\sum_i j_{i*}\widetilde v_i$; their numerical
+tuple is $A_av=0$. The injectivity in (TDR2.4), in degree $a+1$,
+therefore proves the asserted cohomological zero. Here $A_{\ell,a}$
+is ED27's full incidence operator, equivalently $-\gamma\rho_a$ with
+the SC2-EA sign convention. Nothing requires $\rho_a h=0$.
+
+ED27's model-weight and component-detection lemma now shows that the
+supported detector class
+\[
+ t_v=\sum_i(j_i)_*\operatorname{cl}_\ell(\widetilde v_i)
+       \in H^{2q}_{\mathcal Y_k}(\mathcal Y,\mathbf Q_\ell(q))
+ \quad\text{satisfies}\quad \operatorname{forg}(t_v)=0.
+ \tag{TDR2.7}
+\]
+Thus the finite etale-closure certificates missing in general ED27/SC1
+have actually been supplied here, for every detector. In the notation
+of SC1, its algebraic envelope is $E_c=H_c$, its projection $\nu_c$
+is an isomorphism, and the space of genuinely closed lifts maps onto
+$V\otimes\mathbf Q_\ell$. This does not set $V$ equal to zero.
+
+\subsection{The odd Galois groups, with both weights retained}
+
+The exact consequence of Raskind--Xarles Corollary 2 is
+weight--monodromy for every $H^m(Y_{\bar L},\mathbf Q_\ell)$.
+It follows from (a),(b) on the supplied model; this is an established
+theorem in this class, not a general weight--monodromy assumption.
+Finite unramified splitting preserves all these hypotheses.
+
+\begin{lemma}[The weight calculation used in this application]
+\label{sc2td:odd}
+For $1\leq t\leq n$ put
+$W_t=H^{2t-1}(Y_{\bar L},\mathbf Q_\ell(t))$. Then
+\[
+                         W_t^{G_L}=0,
+ \qquad                  H^1(L,W_t)=0.
+ \tag{TDR2.8}
+\]
+\end{lemma}
+
+\begin{proof}
+The monodromy filtration on $W_t$ is centered at weight
+$(2t-1)-2t=-1$. Strict semistability makes inertia unipotent, with
+nilpotent monodromy $N$. Each monodromy string centered at $-1$ has
+a bottom piece in $\ker N$ of weight $-1-j$ and a top piece in
+$\operatorname{coker}N$ of weight $-1+j$, with $j\geq0$.
+Equivalently these are the primitive-decomposition consequences of
+$N^j:\operatorname{gr}_j^M\simeq
+\operatorname{gr}_{-j}^M(-j)$. They concern a filtration by pure
+subquotients; no Frobenius semisimplicity is needed.
+
+Consequently $W_t^{I_L}=\ker N$ has weights at most $-1$.
+Its Frobenius operator has no eigenvalue $1$, so both its invariants
+and its coinvariants are zero. The canonical tame inertia formula is
+\[
+ H^1(I_L,W_t)\simeq\operatorname{coker}
+       (N:W_t\to W_t(-1))
+       \simeq (W_t/NW_t)(-1),
+ \tag{TDR2.9}
+\]
+where the last expression treats $N$ as the underlying nilpotent
+linear operator and retains the indicated Frobenius twist. Its pure
+subquotients have weights $(-1+j)+2=1+j\geq1$, so it has no
+Frobenius-fixed vectors. In particular the two inertia terms have
+different signs of weight; they have not both been called negative.
+
+For completeness the inertia--residue-field Hochschild--Serre sequence
+is
+\[
+ 0\to H^1(k,W_t^{I_L})\to H^1(L,W_t)
+     \to H^1(I_L,W_t)^{G_k}\to0.
+ \tag{TDR2.10}
+\]
+The left term is the Frobenius coinvariant group just shown to be zero,
+and the right term is zero by the positive-weight calculation. This
+proves the second assertion. The first follows from
+$W_t^{G_L}=(W_t^{I_L})^{G_k}=0$.
+\end{proof}
+
+\subsection{Proof on the original Chow source and full descent}
+
+\begin{proof}[Proof of Theorem \ref{sc2td:main}]
+For the original $z=[Z]$ let $z_Y=g^*z_L$. Its geometric cycle class
+is zero by pullback compatibility. Choose any actual rational model
+Chow extension $\Theta$ of $z_Y$, as allowed by frozen localization.
+For every fixed numerical detector $v$, the closure certificate
+(TDR2.7) permits the unique ED27 generic class $\psi_v$ and its
+geometric restriction
+\[
+ b_v\in H^{2q-1}(Y_{\bar L},\mathbf Q_\ell(q))^{G_L}.
+\]
+The exact original-source ED27 formula reads
+\[
+ \begin{split}
+ P_z(v)
+   &=\sum_i\deg_k\bigl(j_i^!\Theta\cdot\widetilde v_i\bigr)\\
+   &=\operatorname{ord}_L\bigl(
+       \operatorname{AJ}_\ell(z_Y)\cup_{\rm ev}b_v\bigr).
+ \end{split}
+ \tag{TDR2.11}
+\]
+The geometric coefficient degrees add to $2n$, and their twists to
+$n+1$; the resulting class is in $H^1(L,\mathbf Q_\ell(1))$ with
+the original positive valuation normalization.
+
+Equation (TDR2.8) for $t=r$ gives
+$\operatorname{AJ}_\ell(z_Y)=0$. Independently, its assertion for
+$t=q$ gives $b_v=0$. Either fact annihilates (TDR2.11).
+These are used only after the actual closure certificate has been
+proved. In particular this argument does not infer numerical-period
+zero from an arbitrary cohomological primitive of $s_z$, or substitute
+the full Rapoport--Zink boundary space for the original Chow source.
+
+Each $P_z(v)$ was a rational native intersection number. Its zero image
+in $\mathbf Q_\ell$ means that rational number is exactly zero.
+Choose the FD17 basis before $Z$; all its periods therefore vanish.
+The frozen exact-kernel theorem constructs the strong Green form on
+the exact support complement of this specified $Z$, against all compact
+ordinary actual tests, over the original $K$. This step is the already
+proved FD17/VT17 activation and requires no new proper actual push.
+
+More explicitly, for the final finite field $L$ used in the witness,
+FD17 normalizes the original tests by
+\[
+ \eta_j=\frac{1}{[L:K]c_L}
+       \operatorname{Tr}_{X_L/X}^{K}\bigl(B_g(\beta_{v_j})\bigr),
+ \qquad c_L=-\log|\varpi_L|=c_K/e(L/K).
+ \tag{TDR2.12}
+\]
+The degree is the complete $[L:K]$, including the splitting extension
+and every ramification and residue factor. The absolute value is
+extended without renormalization. $B_g$ is the frozen graph-adjoint
+representative, not a newly assumed proper actual pushforward.
+If a finite detector family from an earlier witness had already been
+fixed, its periods also vanish: FD17 identifies its kernel with the
+same original obstruction kernel. We have proved a zero value for the
+original source, not replaced the requested periods by approximate ones.
+\end{proof}
+
+\subsection{Concrete scope and boundaries}
+
+\paragraph{No novelty claim for previously covered model families.}
+The concrete toric case below was already covered by the R6 criterion
+and its frozen R18 reuse. The historical R6 files are
+\path{round6_general_g/models_all_dimensions_criterion.tex}
+(SHA256 \texttt{64d87a1f5d904d095b56333ffb624c1d3bbde0c864c4f90491898fa84832fa9a})
+and \path{round6_general_g/root_all_codimension_consequences.tex}
+(SHA256 \texttt{02d54471c113ee35d9f5a53e1c0c9da8d92defa4615e36e4a42f8552dc06c64c}).
+Their complete extraction paths are recorded in the companion JSON.
+The R6 criterion uses numerical hard Lefschetz and Hodge index on
+all strata for the restriction of one relatively ample class on the
+total model, and the specified double-stratum numerical-to-homological
+comparison. Raskind--Xarles Remark 1(i), p.~268, supplies hard
+Lefschetz on Chow groups, and the comparison above identifies the
+numerical groups. However its condition (a) specifies a polarization
+on the special fibre. Without a lifting or polarization-independence
+argument, it has not been shown that the entire (a),(b) class is
+literally contained in the R6 hypothesis. That containment does hold
+when the specified polarization is the restriction of a relatively
+ample class on the total model. The older all-codimension conclusion explicitly
+states ordinary actual forms and all compact actual tests; it is not
+relabelled as only a PWS assertion.
+
+The general stratum mechanisms thus overlap, but no strictly new
+geometric family has been established by this comparison. Accordingly
+this module is registered as an exact original-source and etale
+comparison certificate under the R32 interfaces, with no new geometric
+G-domain counted. Its proof depends on FD17, ED27 and the
+published Raskind--Xarles theorem, not on either R6 proof. Historical
+R6 review/status flags are preserved; this module does not silently
+reaudit or alter their entire historical chain.
+
+\begin{corollary}[TDR2-C: supplied projective toric-stratum witnesses]
+\label{sc2td:toric}
+The theorem applies if the supplied regular projective reduced strictly
+semistable witness has every geometric stratum a disjoint union of
+smooth projective toric varieties. In particular it applies to $X$
+itself when such a model exists after a finite valued extension, and
+more generally when $X$ admits the supplied witness (TDR2.1).
+\end{corollary}
+
+\begin{proof}
+Raskind--Xarles Example 1(i), printed p.~270, verifies their
+conditions (a)--(d) for projective special fibres with these strata.
+Its (a),(b) are exactly the hypotheses above; the already supplied
+projectivity of the total model supplies the remaining FD17 condition.
+Theorem \ref{sc2td:main} then applies.
+\end{proof}
+
+This is an arbitrary-dimensional model criterion. The source is still
+the actual original geometric-homological Chow group of $X$. There is
+no assertion that every $X$ admits such a witness. The positivity in
+(a) is a substantive input and cannot be discarded for general
+algebraic strata. Even a cycle-class isomorphism on every stratum,
+without the cited monodromy theorem or another odd-side annihilation
+input, has not been promoted here to the conclusion.
+
+\paragraph{Failed shortcuts explicitly excluded.}
+The numerical condition $A_av=0$ alone did not give (TDR2.6): the
+native comparison lemma did. Weight--monodromy alone would not give
+that comparison, so the general SC1 defect is not solved by merely
+asserting an Abel--Jacobi zero. Nor does the sign of an $M_{-1}$ index
+replace the weight computation in (TDR2.9). No Frobenius weight-zero
+semisimplicity or Liu very-nice condition (N3) is invoked. No claim is
+made for all rigid uniformizations or all Shimura varieties from their
+names alone. Finally the theorem is a local Green statement: a global
+height conclusion needs the separately frozen global assembly and its
+hypotheses at every place, and no arbitrary-variety global conclusion
+is asserted here.
+
+\paragraph{Nonvanishing of the ambient detector space is allowed.}
+For example the standard smooth projective model of $\mathbf P^n$
+has a single component, with zero incidence operator because its
+special fibre is principal. Hence $\ker A_a=C^a$ is nonzero for
+$0\leq a\leq n$. This is consistent with the theorem: the conclusion
+is zero on the original homologically trivial source, and does not
+ask the whole detector space to vanish.

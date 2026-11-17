@@ -1,0 +1,602 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\usepackage{xcolor}
+\definecolor{LinkBlue}{HTML}{1F4E79}
+\definecolor{CiteGreen}{HTML}{2F6B3C}
+\definecolor{UrlBrown}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=LinkBlue,citecolor=CiteGreen,urlcolor=UrlBrown,breaklinks=true]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{problem}[theorem]{Problem}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\crefname{conjecture}{conjecture}{conjectures}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{hypothesis}{hypothesis}{hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\setlength{\emergencystretch}{3em}
+\numberwithin{equation}{section}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\B}{\mathcal B}
+\newcommand{\Ob}{\mathfrak o}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\R}{\mathbf R}
+\newcommand{\homol}{\mathrm{hom}}
+\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Res}{\operatorname{Res}}
+\title{Strong Green Forms and Beilinson--Bloch Heights\\A Local-to-Global Research Programme}
+\author{}
+\date{17 November 2026}
+\hypersetup{pdftitle={Strong Green Forms and Beilinson--Bloch Heights: A Local-to-Global Research Programme},pdfauthor={}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The local problem is to construct an actual non-Archimedean zero-curvature Green form for a homologically trivial cycle, on its prescribed support complement and against all compact actual tests. The global problem is to obtain a Beilinson--Bloch pairing on the full complementary homologically trivial Chow groups. We separate the local construction, the vanishing of its Chow obstruction, and the reciprocity and principal transformation laws needed for the global sum. We give the formal curvature-correction argument and a precise local-to-global criterion, then formulate the remaining analytic and arithmetic problems in dependency order. Correspondence adjunction and comparison with classical heights are additional steps. For products of curves, the resulting height system leads to separate questions of arithmetic Lefschetz, positivity, integral discreteness and fields of definition.
+\end{abstract}
+
+\tableofcontents
+
+\section{The local problem and its arithmetic purpose}\label{sec:purpose}
+
+On a curve, Green functions turn degree-zero divisors into local intersection pairings. Their global sum is related to the canonical height on the Jacobian. In higher codimension the same construction asks for a Green object of positive bidegree, compatible with rational equivalence, intersection and change of field. An actual differential-form representative provides more than a numerical local pairing: it places that pairing inside a differential calculus in which its support and functoriality can be studied.
+
+We work locally over a finite extension $K/\Q_p$ with one fixed absolute value. The absolute value is extended, rather than renormalized, on every finite extension of $K$. Let $X/K$ be smooth, projective and geometrically integral of dimension $n$. Write
+\[
+ D=d'd'',\qquad \B^{p,q}=\B^{p,q}_{X^{\an}}
+\]
+for the ordinary sheaf of actual $\delta$-forms in the sense of Mihatsch \cite{M}. The underlying topology is the ordinary topology of the Berkovich analytification.
+
+Fix a prime $\ell\ne p$. We write
+\[
+ \CH^r(X)_{\Q,\homol}
+ =\ker\!\left(\CH^r(X)_\Q\longrightarrow
+ H^{2r}_{\mathrm{\acute et}}(X_{\overline K},\Q_\ell(r))\right).
+\]
+Geometric algebraic equivalence defines the subgroup $\CH^r(X)_{\Q,\alg}$. For a prescribed rational cycle $Z=\sum_i a_i[Z_i]$ of codimension $r$, let
+\[
+ |Z|=\bigcup_{a_i\ne0}Z_i,\qquad
+ U_Z=X^{\an}\setminus |Z|^{\an}.
+\]
+The integration current of $Z$ retains its coefficients and the cycle multiplicities of the actual integration theory.
+
+\begin{conjecture}[Strong zero-curvature Green forms]\label[conjecture]{conj:strong-green}
+For every such valued field $K$, every $X/K$, every $1\le r\le n$, and every prescribed rational cycle $Z$ with $[Z]\in\CH^r(X)_{\Q,\homol}$, there exists
+\[
+ \gamma_Z\in\B^{r-1,r-1}(U_Z)
+\]
+such that the following integrals are defined and
+\begin{equation}\label{eq:strong-green}
+ \int_{U_Z}\gamma_Z\wedge D\eta
+ =-\int_{Z^{\an}}\eta
+ \qquad
+ \left(\eta\in\B_c^{n-r,n-r}(X^{\an})\right).
+\end{equation}
+The form and identity are over the original valued field $K$.
+\end{conjecture}
+
+The prescribed representative is part of the data. Replacing $Z$ by a rationally equivalent cycle may be useful in a global pairing, but it does not change the local target in \Cref{conj:strong-green}. Likewise, the test space in \eqref{eq:strong-green} is the complete compactly supported actual space. A finite detector, when available, is a criterion for constructing this form, rather than a replacement for its test space.
+
+Mihatsch's theory supplies the actual form category and Green constructions for complete-intersection formal models \cite[Theorems 4.5 and 5.5]{M}. K\"unnemann's height pairing for cycles on abelian varieties \cite{Kunnemann} provides an arithmetic comparison point. The purpose of the present programme is the general form-level statement \eqref{eq:strong-green} and its passage to global heights. The conditional local reductions and the full available construction arguments are collected in \cite{LocalConstruction}.
+
+The main implication is the curvature correction of \Cref{thm:source-reduction}: prescribed Green pairs together with vanishing of their actual Bott--Chern classes give strong Green forms. The local-to-global criterion in \Cref{prop:programme-assembly} identifies the further statements needed to obtain a Chow pairing from these forms. These two reductions determine the research programme in \Cref{sec:programme}. Its analytic branch concerns existence and descent; its arithmetic branch begins only after the pairing, correspondence adjunction and curve normalization have been established.
+
+\section{Curvature and the original Chow-source obstruction}\label{sec:obstruction}
+
+The first construction should produce a curved Green identity. A second argument then removes its curvature. This separates the support problem, which depends on the prescribed cycle, from a vanishing problem depending on its Chow class.
+
+\begin{definition}[Actual Bott--Chern space]\label[definition]{def:bc}
+For $1\le r\le n$, set
+\[
+ H^{r,r}_{\mathrm{BC,act}}(X)=
+ \frac{\{\omega\in\B^{r,r}(X^{\an}):d'\omega=d''\omega=0\}}
+ {D\B^{r-1,r-1}(X^{\an})}.
+\]
+This is an algebraic quotient of real vector spaces.
+\end{definition}
+
+\begin{hypothesis}[Chow obstruction and prescribed Green pairs]\label[hypothesis]{hyp:green-pairs}
+For each smooth projective integral $K$-variety in the argument, the following constructions exist.
+\begin{enumerate}
+\item There is a rational-linear, Chow-invariant map
+\[
+ \Ob^r_{X,K}:\CH^r(X)_\Q\longrightarrow H^{r,r}_{\mathrm{BC,act}}(X).
+\]
+It is computed by actual degree-$r$ model Chern-character forms and is compatible with the genuine analytic pullbacks used in the argument.
+\item For every prescribed rational codimension-$r$ cycle $Z$, there are
+\[
+ G_Z\in\B^{r-1,r-1}(U_Z),\qquad
+ \Omega_Z\in\B^{r,r}(X^{\an}),
+\]
+with $d'\Omega_Z=d''\Omega_Z=0$, $[\Omega_Z]=\Ob^r_{X,K}([Z])$, and
+\begin{equation}\label{eq:curved-pair}
+ \int_{U_Z}G_Z\wedge D\eta+\int_{Z^{\an}}\eta
+ =\int_{X^{\an}}\Omega_Z\wedge\eta
+ \qquad\left(\eta\in\B_c^{n-r,n-r}(X^{\an})\right).
+\end{equation}
+All displayed pairings are defined in the actual calculus.
+\end{enumerate}
+\end{hypothesis}
+
+\begin{theorem}[Reduction to source-image vanishing]\label[theorem]{thm:source-reduction}
+Assume \Cref{hyp:green-pairs}. If
+\begin{equation}\label{eq:source-vanishing}
+ \Ob^r_{X,K}\bigl(\CH^r(X)_{\Q,\homol}\bigr)=0,
+\end{equation}
+then \Cref{conj:strong-green} holds for $(X,r)$. More precisely, each prescribed cycle $Z$ whose class has zero obstruction has a Green form satisfying \eqref{eq:strong-green} on $U_Z$.
+\end{theorem}
+
+\begin{proof}
+Zero obstruction means that the given global curvature has a global actual primitive: choose $\Psi_Z\in\B^{r-1,r-1}(X^{\an})$ with $D\Psi_Z=\Omega_Z$. Put
+\[
+ \gamma_Z=G_Z-\Psi_Z|_{U_Z}.
+\]
+Actual Stokes gives $\int_X\Psi_Z\wedge D\eta=\int_X\Omega_Z\wedge\eta$. Subtracting this equality from \eqref{eq:curved-pair} proves \eqref{eq:strong-green}. The correction is global on $X^{\an}$, so its restriction preserves $U_Z$.
+\end{proof}
+
+The theorem asks for vanishing on the image of the original Chow group. It leaves the ambient Bott--Chern space free to contain other classes. This distinction also governs the residual-period formulation below: a large obstruction target can coexist with a zero image of homologically trivial cycles.
+
+\subsection{Finite descent and structured primitives}\label{sec:finite-descent}
+
+A finite cover often supplies a model on which the curvature becomes numerically accessible. Returning the primitive to $K$ is then part of the construction.
+
+\begin{hypothesis}[A compatible finite trace]\label[hypothesis]{hyp:trace}
+Let $q:Y\to X$ be finite dominant of native generic degree $d$. On the class of forms occurring in a chosen primitive construction, suppose an actual trace is defined, commutes with $D$, and satisfies
+\[
+ \Tr_q(q^*\Omega)=d\Omega
+\]
+for the closed actual form under consideration, with adjunction against all compact actual complementary tests.
+\end{hypothesis}
+
+\begin{proposition}[Primitive descent]\label[proposition]{prop:primitive-descent}
+Under \Cref{hyp:trace}, if a primitive $\beta$ in the trace domain satisfies $D\beta=q^*\Omega$, then
+\[
+ \Psi=\frac1d\Tr_q(\beta)
+ \quad\text{satisfies}\quad D\Psi=\Omega.
+\]
+\end{proposition}
+\begin{proof}
+The stated compatibilities give
+$D\Psi=d^{-1}\Tr_q(D\beta)=d^{-1}\Tr_q(q^*\Omega)=\Omega$.
+\end{proof}
+
+The construction draft uses a trace on the actual scalar--curvature module generated locally by $u_0Du_1\cdots Du_k$, with piecewise-linear potentials. When a primitive is assembled from several such generators on finite covers, descent is applied to the original generators along the composite maps. For an extension $L/K$, the denominator is the full degree $[L:K]$, including ramification and residue degree. These are the form-domain and normalization requirements that a proof of \Cref{hyp:trace} must meet.
+
+\section{Two geometric sources of vanishing}\label{sec:geometric-routes}
+
+The obstruction formulation admits two different kinds of geometric input. Algebraic equivalence gives an additive parameter space. Abelian varieties give special-fibre numerical corrections. They lead to distinct reduction arguments.
+
+\subsection{Additive parameter spaces}\label{sec:additive-route}
+
+\begin{lemma}[Compact rigidity]\label[lemma]{lem:compact}
+Let $A$ be a compact topological abelian group and $W$ a torsion-free abelian group. An additive map $\varphi:A\to W$ is zero if its kernel contains a neighbourhood of the identity.
+\end{lemma}
+\begin{proof}
+Choose an identity neighbourhood $U\subseteq\ker\varphi$, and an open identity neighbourhood $V$ with $V-V\subseteq U$. Finitely many translates of $V$ cover $A$. For $a\in A$, two sufficiently many successive multiples of $a$ belong to the same translate, so $ma\in U$ for some integer $m>0$. Thus $m\varphi(a)=0$, and torsion-freeness gives $\varphi(a)=0$.
+\end{proof}
+
+\begin{hypothesis}[Rational-fibre rigidity]\label[hypothesis]{hyp:rigidity}
+For smooth separated $S/K$, $a_0\in S(K)$ and an actual form $\omega$ on $(X\times_KS)^{\an}$, there is an ordinary neighbourhood $V$ of $a_0$ such that
+\[
+ s_a^*\omega=s_{a_0}^*\omega\qquad(a\in V\cap S(K)).
+\]
+The obstruction in \Cref{hyp:green-pairs} is compatible with these rational-fibre pullbacks.
+\end{hypothesis}
+
+\begin{theorem}[The algebraically trivial source]\label[theorem]{thm:algebraic-source}
+Assume \Cref{hyp:green-pairs,hyp:rigidity}. Then
+\[
+ \Ob^r_{X,K}\bigl(\CH^r(X)_{\Q,\alg}\bigr)=0.
+\]
+Consequently every prescribed geometrically algebraically trivial cycle satisfies \eqref{eq:strong-green}.
+\end{theorem}
+\begin{proof}
+Choose a finite Galois extension $L/K$ over which the given class $z_L$ is a finite rational sum of curve-correspondence images of degree-zero divisor classes, together with the relevant rational-equivalence identities. The Poincar\'e bundles on the pointed curves and their Jacobians produce an additive family $\Theta$ on $X_L\times J$, for a product of Jacobians $J/L$, and a point $t\in J(L)$ with $\Theta_t=z_L$.
+
+Let $A=\Res_{L/K}J$. Evaluation $A_L\to J$, followed by algebraic finite-flat pushforward, gives an additive Chow family $\Theta^N$ on $X\times A$. At the point $a\in A(K)=J(L)$ corresponding to $t$, proper pushforward and refined fibre pullback give
+\[
+ (\Theta^N)_a=[L:K]z.
+\]
+Represent the family obstruction by a model Chern form on $(X\times A)^{\an}$. By \Cref{hyp:rigidity}, the map
+\[
+ b\longmapsto\Ob^r_{X,K}((\Theta^N)_b)
+\]
+is locally constant at zero. It is additive, takes zero to zero, and has values in a real vector space. Since $A(K)$ is compact, \Cref{lem:compact} makes the map zero. Hence $[L:K]\Ob^r_{X,K}(z)=0$, and rational linearity proves the asserted vanishing. Apply \Cref{thm:source-reduction} to the prescribed representative.
+\end{proof}
+
+If this vanishing is available, the remaining obstruction factors through
+\[
+ \CH^r(X)_{\Q,\homol}/\CH^r(X)_{\Q,\alg}.
+\]
+The target remains the image of this quotient under the obstruction map. Establishing that the quotient itself is zero is a substantially different problem.
+
+\subsection{Numerical corrections and Chow retractions}\label{sec:abelian-route}
+
+A numerical model certificate for a class $b\in\CH^r(V)_\Q$ is a virtual bundle $\xi\in K_0(\mathcal V)_\Q$ on an integral projective flat model such that
+\[
+ \operatorname{ch}_r(\xi|_V)=b,
+ \qquad
+ \deg\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)=0
+\]
+for every integral vertical $r$-cycle $T$. On K\"unnemann's semistable abelian models, the source argument uses the special-fibre exact sequence to subtract a vertical correction from a Chow extension. The corrected component restrictions yield such a certificate. The analytic numerical detector and finite descent are the required passage from this algebraic certificate to an actual primitive.
+
+\begin{proposition}[Chow-retraction transfer]\label[proposition]{prop:chow-transfer}
+Assume the obstruction kernels are stable under the algebraic Chow correspondences used below, including finite algebraic pushforward. Let $L/K$ be finite. Suppose there are smooth projective intermediate varieties $V_j/L$ and opposite-degree correspondences $u_j:X_L\rightsquigarrow V_j$, $v_j:V_j\rightsquigarrow X_L$ such that, on the homologically trivial group in degree $r$,
+\[
+ \sum_j(v_j)_*(u_j)_*=\lambda\id,
+ \qquad \lambda\in\Q^\times.
+\]
+If every $(u_j)_*z_L$ has zero obstruction in the native $K$-theory, then $\Ob^r_{X,K}(z)=0$.
+\end{proposition}
+\begin{proof}
+Kernel stability and rational linearity annihilate the obstruction of the sum, hence of $\lambda z_L$. Apply algebraic pushforward along $\pi:X_L\to X$. The Chow identity $\pi_*\pi^*=[L:K]$ gives zero obstruction for $\lambda[L:K]z$. Divide by this nonzero rational scalar.
+\end{proof}
+
+For products of pointed curves, the projectors splitting $h(C)=\mathbf1\oplus h^1(C)\oplus\mathbb L$ factor the diagonal through products of Jacobians with Tate shifts. The companion construction paper separates this algebraic identity from the regular-model construction and from supported numerical correspondence transfer. Its model-sensitive criterion requires a regular projective flat target model after finite extension; that condition remains attached to that version of the argument.
+
+\section{Residual periods and the general source}\label{sec:periods}
+
+Geometric transfer handles classes generated by a controlled family of correspondences. The general source-image problem asks why a homologically trivial class outside those families should still annihilate the actual obstruction.
+
+\begin{definition}[A finite original-source detector]\label[definition]{def:detector}
+For fixed $(X,K,r)$, a finite original-source detector consists of linear functionals
+\[
+ P_1,\ldots,P_m:\CH^r(X)_{\Q,\homol}\longrightarrow\R
+\]
+and a comparison with the obstruction construction such that
+\begin{equation}\label{eq:detector-criterion}
+ P_1(z)=\cdots=P_m(z)=0
+ \quad\Longrightarrow\quad \Ob^r_{X,K}(z)=0.
+\end{equation}
+The maps and their construction data are fixed before $z$ is chosen. A faithful detector additionally has the reverse implication.
+\end{definition}
+
+\begin{conjecture}[Vanishing of the original source periods]\label[conjecture]{conj:periods}
+For every faithful finite detector associated with the original actual obstruction, with its comparison hypotheses satisfied, all its functionals vanish on $\CH^r(X)_{\Q,\homol}$.
+\end{conjecture}
+
+\begin{corollary}\label[corollary]{cor:detector-green}
+Under \Cref{hyp:green-pairs}, the existence of a faithful detector as in \Cref{def:detector} and \Cref{conj:periods} imply \Cref{conj:strong-green} for $(X,K,r)$.
+\end{corollary}
+\begin{proof}
+Apply \eqref{eq:detector-criterion} to each class and then \Cref{thm:source-reduction}. The latter theorem gives the form on the prescribed complement and the identity on all actual tests.
+\end{proof}
+
+The historical finite-period programme is recorded in \cite{Synthesis}. Its comparison data select a residual quotient and preserve the numerical periods of the original Chow source. The decisive next step is a source-sensitive vanishing theorem. A comparison with de Rham, \'{e}tale, syntomic or Abel--Jacobi data is useful here only when it identifies the same source class and the same pairing. An abstract cohomological isomorphism does not by itself compute $P_j(z)$.
+
+The tropical route asks for the corresponding comparison through compatible finite charts and refinements. Its principal tasks are descent of actual forms, compatibility of $D$ with refinement, and preservation of integration. A topological inverse-limit presentation motivates the construction; the needed assertion is a differential and pairing comparison. The source class must acquire a primitive in the ordinary actual category on the original complement.
+
+\section{The global pairing and a weaker vanishing target}\label{sec:global}
+
+Let $F$ be a number field and $X/F$ smooth, projective and geometrically integral of dimension $n$. Write
+\[
+ V^r(X)=\CH^r(X)_{\Q,\homol}.
+\]
+At finite places use the absolute values extending $|p|_p=p^{-1}$, and at archimedean places the usual real or complex absolute value. Put
+\[
+ w_v=\frac{[F_v:\Q_v]}{[F:\Q]},
+\]
+where the archimedean local degrees are $1$ and $2$. Then $\sum_vw_v\log|a|_v=0$ for $a\in F^\times$.
+
+\begin{conjecture}[Global Beilinson--Bloch pairing]\label[conjecture]{conj:global-height}
+For every number field $F$, every such $X/F$, and $r,s\ge1$ with $r+s=n+1$, there is a canonical rational-bilinear real-valued pairing
+\[
+ h_X:V^r(X)\times V^s(X)\longrightarrow\R
+\]
+with the following properties.
+\begin{enumerate}
+\item It is symmetric in complementary codimensions.
+\item For a finite extension $E/F$, absolute normalization gives
+$h_{X_E}(z_E,w_E)=h_X(z,w)$.
+\item For an algebraic correspondence $\Gamma:Y\rightsquigarrow X$ and complementary classes for which the operations are defined,
+$h_X(\Gamma_*z,w)=h_Y(z,{}^t\Gamma_*w)$.
+\item For disjoint representatives, it is a well-defined sum of local Green pairings,
+\[
+ h_X([Z],[W])=\sum_vw_v\lambda_v(Z_v,W_v),
+ \qquad
+ \lambda_v(Z_v,W_v)=\int_{W_v^{\an}}\gamma_{Z_v}
+ \quad(v\nmid\infty),
+\]
+with the matching archimedean convention. The sum and the induced Chow pairing are independent of the choices and moving operations.
+\item It agrees with the classical Beilinson--Bloch constructions on their common domains. On a pointed curve, its negative is the positive N\'eron--Tate form in the corresponding Poincar\'e convention.
+\end{enumerate}
+\end{conjecture}
+
+The construction and the axioms of a pairing are followed by different arithmetic questions: the sign on primitive classes, the radical, and bounded-height finiteness. Zhang's arithmetic standard-conjecture formulation provides the relevant setting for those properties \cite{ZhangStandard}. The present local-to-global problem concerns the domain and construction of the pairing itself.
+
+\subsection{The fixed global-source domain}\label{sec:global-source}
+
+The recovered H16 construction in \cite{GlobalConstruction} first works on the intersection of the local obstruction kernels over all finite completions. The finite-detector formulation recorded in \cite[\S1.3]{Synthesis} uses an additional fixed-witness comparison. One fixes a finite set $S$ of places, the detector spaces, and that comparison before choosing the cycles, and writes the admitted domain as
+\begin{equation}\label{eq:global-kernel}
+ \mathcal H^r(X)=\ker\!\left(
+ V^r(X)\xrightarrow{P_X^r}\bigoplus_{v\in S}V_{v,r}^{\vee}\right).
+\end{equation}
+Here $P_X^r$ is applied to localizations of global classes. The good-place and comparison conditions in this description are part of the fixed global witness. The good-model vanishing statement alone does not identify the all-completion kernel with a chosen finite tester kernel.
+
+\begin{hypothesis}[Height assembly on the kernel domain]\label[hypothesis]{hyp:assembly}
+For the fixed witness in \eqref{eq:global-kernel}, a normalized real-valued pairing is constructed on
+\[
+ \mathcal H^r(X)\times\mathcal H^{n+1-r}(X),
+\]
+with the required local-sum, choice-independence and comparison properties. Any functoriality used on this domain is included among the assembly hypotheses.
+\end{hypothesis}
+
+\begin{conjecture}[Global-source period vanishing]\label[conjecture]{conj:global-periods}
+For every fixed global witness satisfying the assembly and comparison conditions, the maps $P_X^r$ vanish on $V^r(X)$ in every relevant codimension.
+\end{conjecture}
+
+\begin{theorem}[Enlarging the global domain]\label[theorem]{thm:global-domain}
+Assume \Cref{hyp:assembly} for complementary codimensions $r,s$. If $P_X^r=0$ and $P_X^s=0$, its pairing has domain $V^r(X)\times V^s(X)$ and retains the properties established by the assembly theorem.
+\end{theorem}
+\begin{proof}
+The two vanishing assertions make the two kernels in \eqref{eq:global-kernel} equal to their complete source groups. The same pairing therefore has the asserted domain. Its construction and the proofs of its properties are unchanged.
+\end{proof}
+
+This gives two paths to the complete global domain. General local source vanishing controls every class over every completion. Global-source period vanishing controls only classes coming from $X/F$, but that is enough for \Cref{thm:global-domain}. In both paths, local existence must be combined with the assembly statement; the finite local Green identity alone does not establish convergence or independence of a global height.
+
+\section{A long-term proof programme}\label{sec:programme}
+
+The local and global targets have different quantifiers. \Cref{conj:strong-green} concerns every homologically trivial cycle over a local field. The global construction only uses localizations of cycles over one number field. Within either target, existence of a Green form, independence of a local intersection number, and descent of a global sum to rational equivalence are distinct assertions. The following problems isolate the additional mathematics at each passage.
+
+\subsection{Supported Green forms and finite trace}\label{sec:programme-analytic}
+
+\begin{problem}[The prescribed-cycle construction]\label[problem]{prob:supported-construction}
+Establish \Cref{hyp:green-pairs} for every $(X,K,r)$ of \Cref{conj:strong-green}. For the chosen supported-complex construction, prove independence of the model Chern class, construct $G_Z$ on the whole open set $U_Z$, and establish \eqref{eq:curved-pair} on all compact actual tests of $X^{\an}$, with the prescribed cycle coefficients.
+\end{problem}
+
+The proposed construction uses a perfect complex supported on the prescribed cycle and a decomposition after a proper generically finite map. On the complement of the support, the map must be finite and the complex must admit its asserted line-complex decomposition. Scalar Poincar\'e--Lelong then produces the Green form upstairs; finite trace supplies its actual representative downstairs. The numerical detector addresses curvature, while the supported complex determines the residue. These two roles require different compatibility statements.
+
+For the finite-trace part, let $q:Y\to X$ have degree $d$ and let $\mathcal M_q$ be the stated module of forms to which the construction is applied. The required identities are
+\begin{equation}\label{eq:programme-trace}
+ \begin{split}
+ D\Tr_q\beta&=\Tr_q D\beta,\qquad
+ \Tr_q(q^*\Omega)=d\Omega,\\
+ \int_X\Tr_q\beta\wedge\eta&=\int_Y\beta\wedge q^*\eta.
+ \end{split}
+\end{equation}
+The last equality is required for every compact actual test for which the displayed degrees are complementary. The operator must be independent of a presentation of $\beta$ in $\mathcal M_q$. For the restricted scalar--curvature construction, a relation among sums of $u_0Du_1\cdots Du_k$ must therefore remain a relation after trace. This is the precise descent question; an operator defined on a free list of presentations does not yet define an operator on actual forms.
+
+The supported calculation also has to survive the normal testing maps used by rational equivalences. For a normal integral $r$-fold $a:M\to X$ with $a^{-1}|Z|$ finite, the needed formula is
+\begin{equation}\label{eq:programme-slice}
+ \int_{M\setminus a^{-1}|Z|}a^*G_Z\wedge D\eta
+   +\int_{I_a(Z)}\eta
+ =\int_M a^*\Omega_Z\wedge\eta,
+ \qquad \eta\in\B_c^{0,0}(M^{\an}),
+\end{equation}
+where $I_a(Z)$ is the refined zero-dimensional intersection. Its coefficients include generic Artinian lengths and residue-field degrees. The finite-flat base-change and supported-character arguments in \cite[Section 3]{GlobalConstruction} are directed precisely at this formula.
+
+The logical order is to establish the actual trace and the supported identity, then their base-change and point-slice compatibilities. Once $D\Psi_Z=\Omega_Z$ is known, subtracting $\Psi_Z$ gives both the strong Green identity and the corresponding zero-curvature version of \eqref{eq:programme-slice}. For a finite extension $L/K$, the primitive descends by \Cref{prop:primitive-descent} with denominator $[L:K]$ and the extended original absolute value.
+
+\subsection{Homological triviality and the curvature obstruction}\label{sec:programme-source}
+
+\begin{problem}[Vanishing of the curvature obstruction]\label[problem]{prob:obstruction-vanishing}
+Assume \Cref{hyp:green-pairs}. For every $(X,K,r)$, prove
+\[
+ \Ob^r_{X,K}\bigl(\CH^r(X)_{\Q,\homol}\bigr)=0.
+\]
+\end{problem}
+
+A solution to \Cref{prob:supported-construction,prob:obstruction-vanishing} proves strong G by \Cref{thm:source-reduction}. This is a sufficient route to strong G. Its remaining vanishing assertion can be approached in three ways.
+
+First, use geometric relations in the Chow group. Under rational-fibre rigidity, \Cref{thm:algebraic-source} handles the algebraically trivial subgroup. The remaining map factors through the Griffiths quotient
+\[
+ \CH^r(X)_{\Q,\homol}/\CH^r(X)_{\Q,\alg}.
+\]
+Where a rational Chow decomposition of the diagonal is available, \Cref{prop:chow-transfer} reduces the obstruction to the corresponding groups of the intermediate varieties. The equality of correspondences must hold in the rational Chow group, with the stated finite-extension and model hypotheses. The task on a residual summand is to kill its image under $\Ob$, rather than to prove the whole Griffiths quotient zero.
+
+Second, construct and evaluate a finite detector. For fixed $(X,K,r)$, \Cref{def:detector} requires a comparison proving that vanishing of the chosen periods implies vanishing of this actual obstruction. Only after that comparison is proved does period vanishing solve the problem. An arithmetic Abel--Jacobi map may carry nonzero information on a homologically trivial cycle; a comparison with such a map must determine which part the actual periods measure. Geometric homological triviality alone is not a vanishing theorem for an arithmetic Abel--Jacobi class.
+
+Third, seek primitives by tropical or Aeppli methods. A suitable comparison would have to pass from compatible local primitives through refinements to a global $\Psi\in\B^{r-1,r-1}(X^{\an})$ satisfying $D\Psi=\Omega$. Its mathematical obligations are descent of actual representatives, compatibility with $d'$ and $d''$, and equality of the original integrals. The obstruction to gluing local primitives must be computed in the actual complex. A topological inverse-limit description supplies the spaces and maps, but not this differential comparison. This route may replace the numerical-detector argument if it produces the same global actual primitive.
+
+For the global application there is a weaker target: prove
+\begin{equation}\label{eq:programme-global-vanishing}
+ \Ob^r_{X_{F_v},F_v}(z_{F_v})=0
+ \quad\text{for every }z\in V^r(X)
+ \text{ and every finite }v.
+\end{equation}
+It concerns only localizations of global classes. A proof in both complementary degrees can complete the obstruction-domain construction without resolving \Cref{prob:obstruction-vanishing} for arbitrary local classes.
+
+\subsection{Reciprocity and descent to a global Chow pairing}\label{sec:programme-global}
+
+The starting domain of the H16 construction is
+\begin{equation}\label{eq:programme-all-completion}
+ \mathcal H^r(X)=
+ \bigcap_{v\nmid\infty}
+ \ker\!\left(V^r(X)\longrightarrow
+    H^{r,r}_{\mathrm{BC,act}}(X_{F_v}),\quad
+    z\longmapsto\Ob^r_{X_{F_v},F_v}(z_{F_v})\right).
+\end{equation}
+Good-reduction vanishing makes only finitely many of these maps possibly nonzero. To replace the remaining obstruction spaces by finite-dimensional tester spaces, as in \eqref{eq:global-kernel}, one needs the additional fixed-witness comparison. Thus the all-completion domain is defined before any finite detector is selected.
+
+The following criterion states exactly what the global sum needs. It applies to the obstruction-domain construction and to a direct construction from strong G.
+
+\begin{proposition}[A local-to-global criterion]\label[proposition]{prop:programme-assembly}
+Fix a smooth projective geometrically integral $X/F$ of dimension $n$, complementary integers $r+s=n+1$, and rational subspaces $H^r\subseteq V^r(X)$ and $H^s\subseteq V^s(X)$. Suppose that every pair of classes has disjoint rational cycle representatives. For every such pair $(Z,W)$, suppose that real local numbers $\lambda_v(Z,W)$ have been constructed, with the following properties.
+\begin{enumerate}
+\item Each local number is independent of the chosen Green forms. It is rational-bilinear whenever the cycles are in common disjoint position, and
+\[
+ \lambda_v(Z,W)=\lambda_v(W,Z).
+\]
+\item For every fixed disjoint pair, $\lambda_v(Z,W)=0$ for all but finitely many $v$.
+\item If $Z_0,Z_1$ are rationally equivalent and both avoid $W$, there is a rational-equivalence chain over $F$, with a single element $a\in F^\times$ and a positive integer $N$ after clearing the rational coefficients of the chain and of $W$, such that
+\[
+ \lambda_v(Z_1,W)-\lambda_v(Z_0,W)
+       =-N^{-1}\log|a|_v
+\]
+at every place, with the same $a$ and $N$. The same assertion is required with the two complementary degrees interchanged. The moving statement supplies these chains over $F$ and permits a representative of a class in $H^r$ (respectively $H^s$) to avoid any finite list of codimension-$s$ (respectively codimension-$r$) cycles.
+\end{enumerate}
+Then
+\begin{equation}\label{eq:programme-assembled-height}
+ h_X(z,w)=\sum_v w_v\lambda_v(Z,W)
+\end{equation}
+is a well-defined rational-bilinear pairing on $H^r\times H^s$, symmetric in complementary degrees.
+
+If the subspaces and local constructions are given compatibly over finite extensions, and
+\[
+ \lambda_u(Z_{E_u},W_{E_u})=\lambda_v(Z_{F_v},W_{F_v})
+ \qquad(u\mid v)
+\]
+for every finite $E/F$, then the pairing is invariant under finite extension in the absolute normalization.
+\end{proposition}
+
+\begin{proof}
+The second hypothesis makes \eqref{eq:programme-assembled-height} a finite sum. The first gives independence of Green choices. Summing the third equality and using the weighted product formula proves independence of the representative of the first class while the second is fixed. Symmetry gives the same assertion for the second class.
+
+For two disjoint representative pairs $(Z_0,W_0)$ and $(Z_1,W_1)$, choose $W'$ avoiding both $Z_0$ and $Z_1$. Compare successively
+\[
+ (Z_0,W_0),\quad(Z_0,W'),\quad(Z_1,W'),\quad(Z_1,W_1).
+\]
+The preceding independence assertions identify their heights. Moving a finite list of cycles into common disjoint position now proves rational bilinearity from the first hypothesis. Local symmetry gives global symmetry.
+
+For finite $E/F$, group the finite sum over the places $u$ above each $v$. The local equality and
+\[
+ \sum_{u\mid v}\frac{[E_u:\Q_v]}{[E:\Q]}
+       =\frac{[F_v:\Q_v]}{[F:\Q]}
+\]
+give the asserted invariance.
+\end{proof}
+
+For the obstruction-domain route, the supported point-slice identity supplies the principal transformation law and \cite[Theorem 3.6]{GlobalConstruction} gives the pairing on \eqref{eq:programme-all-completion}, under its standing analytic hypotheses. The remaining task for the full domain is \eqref{eq:programme-global-vanishing} in degrees $r$ and $s$.
+
+For the direct route, supply strong Green forms for all local cycles in those degrees and establish the principal-push construction on normal carriers. The latter construction supplies the exact norm evaluation needed in part (3) of \Cref{prop:programme-assembly}. Disjoint-polar Stokes supplies part (1), and the good-model construction supplies part (2). This is the route of \cite[Theorem 7.5]{GlobalConstruction}, with its actual-calculus, supported-complex, finite-trace, projective-bundle and immersion-germ hypotheses. It does not require the reverse implication from an arbitrary strong Green solution to vanishing of the selected obstruction.
+
+\begin{problem}[Completion of the height construction]\label[problem]{prob:global-construction}
+Establish the hypotheses of \Cref{prop:programme-assembly} on $V^r(X)\times V^{n+1-r}(X)$ for every smooth projective geometrically integral $X/F$ and every admissible $r$. In the obstruction-domain route, prove \eqref{eq:programme-global-vanishing} in both degrees. In the direct route, prove strong G together with the stated principal-push and good-place inputs.
+\end{problem}
+
+The delicate point in the principal law is an exact global norm, not merely a local constant. For a normal carrier of a higher-Chow one-chain, the refined intersection coefficients and the omitted parameter fibre must give one element of $F^\times$ whose absolute value is evaluated at every place. The product formula then performs the Chow descent. This explains why reciprocity, refined point-slice formulas and field normalization are prerequisites for the height construction rather than consequences of a local existence assertion.
+
+\subsection{Correspondence adjunction and comparison with classical heights}\label{sec:programme-comparison}
+
+\begin{problem}[The functorial and normalized height system]\label[problem]{prob:height-comparison}
+For the pairings constructed in \Cref{prob:global-construction}, prove correspondence adjunction
+\[
+ h_X(\Gamma_*z,w)=h_Y(z,{}^t\Gamma_*w)
+\]
+on all the stated complementary domains, compatibility with isomorphisms and conjugation, and the curve normalization in \Cref{conj:global-height}. Identify the pairing with each classical construction on its common domain and with the same absolute normalization.
+\end{problem}
+
+The correspondence argument requires a height projection formula for properly positioned cycles and preservation of the pairing domains under the induced Chow maps. Resolving a correspondence over the number field gives two morphisms; moving with respect to both morphisms allows the projection formula to be applied twice. This is the mechanism of \cite[Section 9]{GlobalConstruction}. It is additional to \Cref{prop:programme-assembly}, which only uses the three local laws stated there.
+
+For comparison with an arithmetic-model height, one fixes a regular projective arithmetic model and numerically admissible rational lifts of both cycles. The local comparison identifies the Green integral with the finite Euler intersection of these supplied lifts. Summing with the weights $w_v$ and the matching archimedean convention gives the arithmetic intersection height; see \cite[Section 8]{GlobalConstruction}. The existence of numerically admissible lifts for an arbitrary cycle is a further problem. A comparison theorem conditional on such lifts does not itself produce them.
+
+Determinant, Deligne-pairing and Poincar\'e-metric comparisons are a related way to identify the normalized height on families. Their bad-reduction extension calls for admissible vertical corrections. These comparisons can be developed in parallel with the domain problem, but enter the arithmetic applications only on the domains where the resulting identities have been established.
+
+\subsection{Arithmetic Lefschetz and positivity on products of curves}\label{sec:programme-arithmetic}
+
+The arithmetic branch begins with a height system on the varieties used by the correspondences. Its hypotheses are rational bilinearity and symmetry, invariance under finite extension and conjugation, correspondence adjunction, and the positive N\'eron--Tate normalization of $-h_C$ on a pointed curve. These are the four height axioms of \cite[Section 1.1]{ArithmeticProgramme}. They must hold on all subproducts, source curves and finite extensions in the following discussion.
+
+Fix a product $X=\prod_{i=1}^nC_i$ of pointed smooth projective geometrically connected curves $(C_i,o_i)$ over $F$, with polarization
+\[
+ \ell=\sum_{i=1}^n a_i p_i^*[o_i],\qquad a_i\in\mathbf Z_{>0}.
+\]
+For a nonempty subset $S$, put
+\[
+ Y_S=\prod_{i\in S}C_i,\qquad
+ \Pi_S=\bigotimes_{i\in S}
+   (\Delta_{C_i}-o_i\times C_i-C_i\times o_i),\qquad
+ U_S^c(E)=\Pi_{S*}V^c(Y_{S,E}).
+\]
+Fix an algebraic closure $\overline F$ and an embedding $\overline F\hookrightarrow\mathbf C$. Choose one finite $F_0/F$ over which the central projectors of \cite{ArithmeticProgramme} are defined. For $|S|=2c-1$, these are self-transpose rational Chow projectors $e_S\le\Pi_S$ and $R_S=\Pi_S-e_S$. The $e_S$-summand is represented by a fixed abelian variety and carries its N\'eron--Tate form. Put
+\[
+ A_{S,E}=U_S^c(E)\cap\CH^c(Y_{S,E})_{\Q,\alg},
+ \qquad G_{S,E}=U_S^c(E)/A_{S,E}.
+\]
+The central radical computation gives
+\[
+ R_SA_{S,E}=\ker(\mathrm{AJ}_\Q|_{A_{S,E}})
+      =A_{S,E}\cap\operatorname{rad}(h_{Y_S}|_{U_S^c(E)}).
+\]
+It therefore defines the residual form by
+\[
+ h_{G,S}([z],[w])=h_{Y_S}(R_Sz,R_Sw),\qquad
+ q_{G,S}(\xi)=(-1)^ch_{G,S}(\xi,\xi).
+\]
+These constructions and their independence statements use the height axioms above; their proofs are in \cite[Section 3]{ArithmeticReductions}. All the following targets are required for every finite $E/F_0$.
+
+\begin{problem}[Off-central Chow groups and central heights]\label[problem]{prob:central-arithmetic}
+Prove the following statements for all subproducts.
+\begin{enumerate}
+\item If $|S|\ne2c-1$, then $U_S^c(E)=0$.
+\item If $|S|=2c-1$, the map
+\[
+ \mathrm{AJ}_\Q:A_{S,E}\longrightarrow
+ J^c(Y_{S,\mathbf C})(\mathbf C)\otimes_{\mathbf Z}\Q
+\]
+is injective.
+\item The residual form $q_{G,S}$ is positive definite on $G_{S,E}\otimes_\Q\R$.
+\end{enumerate}
+\end{problem}
+
+The first assertion is equivalent, by the Chow-block calculation in \cite{ArithmeticReductions}, to arithmetic hard Lefschetz for the pointed product. The second removes the algebraic height radical from each central block. Together with the third it gives central positivity. Under the first assertion, only central blocks remain, so the primitive sum-of-squares identity propagates this positivity to the whole product. In particular, for
+\[
+ P_\ell^r(X_E)=\ker\!\left(
+ \ell^{n+2-2r}:V^r(X_E)\to V^{n+2-r}(X_E)\right),
+\]
+the target is positivity of
+\[
+ q_{\ell,r}(z)=(-1)^r h_X(z,\ell^{n+1-2r}z),
+ \qquad 1\le r\le\left\lfloor\frac{n+1}{2}\right\rfloor.
+\]
+These are consequences of the central assertions and the height axioms; the construction of a pairing supplies the height to be studied, not the Chow vanishing or its sign.
+
+\subsection{Integral discreteness and bounded-degree Northcott}\label{sec:programme-northcott}
+
+Fix a central subproduct and abbreviate $G_{S,E}$ and $q_{G,S}$ to $G_E$ and $q_G$. Let $\Lambda_G(E)$ be the image in $G_E$ of integral-coefficient homologically trivial cycles after applying $\Pi_S$. The quotients are viewed inside one geometric rational group, and the residual projector has one fixed denominator. The finiteness problem counts these classes, not their cycle representatives.
+
+\begin{problem}[Residual integral Northcott]\label[problem]{prob:residual-northcott}
+For every real $B$ and positive integer $D$, prove finiteness of
+\[
+ \left\{\xi\in\bigcup_{[E:F_0]\le D}\Lambda_G(E):
+                    q_G(\xi)\le B\right\}.
+\]
+\end{problem}
+
+This is stronger than real residual positivity: finite integral height balls imply real positivity by the finite-dimensional rounding argument of \cite[Section 5.1]{ArithmeticReductions}. The programme for the converse direction has two separate parts.
+
+Over a fixed $E$, one route seeks a rational basis $e_1,\ldots,e_t$ of $G_E$ and one integer $N_E\ge1$ such that
+\begin{equation}\label{eq:programme-lattice}
+ \dim_\Q G_E=t<\infty,\qquad
+ \Lambda_G(E)\subseteq N_E^{-1}\sum_{j=1}^t\mathbf Z e_j.
+\end{equation}
+Real positivity then makes every bounded-height ball finite. Scalar-extended injectivity of a residual regulator
+$G_E\otimes_\Q\Q_p\to H^1(E,V_p)$, with the finite-dimensional target specified in \cite[Section 3.1]{ArithmeticProgramme}, is a proposed route to finite rank. The remaining task is one common denominator bound across all coefficient primes. Separate integral bounds at each prime do not yield \eqref{eq:programme-lattice}. An alternative route uses a finite quotient $\Lambda_G(E)/m\Lambda_G(E)$ for an integer $m\ge2$, together with a genuine positive lower bound for $q_G$ on the nonzero elements of $\Lambda_G(E)$. Under real positivity, the height-descent argument in \cite[Section 5.4]{ArithmeticReductions} then gives fixed-field Northcott.
+
+As $E$ varies, fixed-field Northcott must be combined with control of fields of classes. For a geometric residual class $\xi$, put
+\[
+ F_0(\xi)=\overline F^{\operatorname{Stab}_{\operatorname{Gal}(\overline F/F_0)}(\xi)}.
+\]
+The required field-theoretic statement is that, for fixed $B,D$, all these extensions of degree at most $D$ and height at most $B$ are unramified outside one finite set of places of $F_0$. Hermite--Minkowski then leaves finitely many possible class fields $K$. If $\xi\in\Lambda_G(E)$ and $K=F_0(\xi)$, the trace identity gives
+\[
+ [E:K]\xi\in\Lambda_G(K),\qquad 1\le [E:K]\le D.
+\]
+Fixed-field Northcott applied to the finite collection of balls of height at most $D^2B$ proves \Cref{prob:residual-northcott} for $B\ge0$; positivity handles negative $B$. The full criterion and its converse are proved in \cite[Section 6]{ArithmeticReductions}.
+
+Finally, residual integral Northcott together with assertions (1) and (2) of \Cref{prob:central-arithmetic} gives the product programme of arithmetic hard Lefschetz and primitive integral Northcott, by \cite[Section 7]{ArithmeticReductions}. Thus the hierarchy is: local and global constructions produce the pairing; adjunction and curve normalization permit the central reductions; central Chow vanishing and positivity govern its nondegeneracy; integral discreteness and field control supply the additional finiteness. This order keeps each consequence with the hypotheses that actually imply it.
+
+\begin{thebibliography}{99}
+\bibitem{M} A. Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces}, arXiv:2112.10018, version 4 (2024), \url{https://arxiv.org/abs/2112.10018v4}.
+\bibitem{Kunnemann} K. K\"unnemann, \emph{Height pairings for algebraic cycles on abelian varieties}, Ann. Sci. \'Ecole Norm. Sup. (4) \textbf{34} (2001), 503--523, \url{https://www.numdam.org/article/ASENS_2001_4_34_4_503_0.pdf}.
+\bibitem{ZhangStandard} S.-W. Zhang, \emph{Standard conjectures and height pairings}, arXiv:2009.07089, version 3 (2022), \url{https://arxiv.org/abs/2009.07089v3}.
+\bibitem{LocalConstruction} \emph{Local Green Forms and Chow Correspondences: Conditional Reductions and Construction Draft}, companion manuscript, 17 November 2026. Based on the frozen local construction sources of 16 November 2026.
+\bibitem{GlobalConstruction} \emph{Global Height Pairings from Admitted Green Classes}, companion manuscript, 17 November 2026, Theorem~3.6 and the subsequent proper-intersection, reciprocity and comparison arguments; \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/global-height-pairing/}.
+\bibitem{ArithmeticProgramme} \emph{Arithmetic Conjectures for Beilinson--Bloch Heights on Products of Curves}, companion programme, 17 November 2026; \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/arithmetic-conjectures/}.
+\bibitem{ArithmeticReductions} \emph{Arithmetic Lefschetz and Integral Heights: Proofs and Reductions on Products of Curves}, companion manuscript, 17 November 2026; \url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/arithmetic-reductions/}.
+\bibitem{ConditionalTransfer} \emph{Algebraic Equivalence and Chow--Motivic Transfer for Actual Non-Archimedean Green Forms}, revised internal draft, 16 November 2026, \texttt{algebraic-transfer-conditional.tex}.
+\bibitem{Synthesis} \emph{Cross-chat research synthesis for the strong Green and Beilinson--Bloch programme}, 16 November 2026, \texttt{cross-chat-synthesis.tex}, especially \S\S1.1--1.3. This is a source and version synthesis; its H16 entry refers to the corresponding frozen assembly proof.
+\end{thebibliography}
+\end{document}

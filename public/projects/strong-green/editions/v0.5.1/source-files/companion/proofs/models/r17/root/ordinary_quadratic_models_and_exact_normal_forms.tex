@@ -1,0 +1,327 @@
+% Round 17. Root. Independent review required before activation.
+\section{Ordinary quadratic models without a supplied exact equation}
+\label{r17on:section}
+
+QF17 constructs native semistable chains and numerical
+admissible extensions from exact pointed etale equations.
+Here we verify that the exact equation is automatic at an
+ordinary quadratic special-fiber point in odd residue
+characteristic. The local normal-form principle is classical;
+the purpose of the proof is to retain native residue fields
+and to make its use in the all-degree actual theorem precise.
+In particular, no formal coordinate change is silently
+algebraized.
+
+Throughout this section $R=K^\circ$ is a complete discrete
+valuation ring of mixed characteristic $(0,p)$, $p\ne2$,
+with uniformizer $\pi$ and finite residue field $k$.
+A special-fiber point of relative dimension $n$ is called
+\emph{ordinary quadratic} when its completed geometric local
+ring is a hypersurface in $n+1$ variables with zero linear
+term and nondegenerate quadratic term. Equivalently its
+projectivized tangent cone is a smooth quadric. The residue
+fields at the closed points are retained rather than split.
+
+\begin{lemma}[A smooth local ambient is automatic]
+\label{r17on:ambient}
+Let $\mathcal X/R$ be flat of finite type, with a closed
+ordinary quadratic point $p$ of its special fiber, of
+relative dimension $n$. After passage to a
+residue-isomorphic pointed etale neighborhood of $p$,
+$\mathcal X$ is a Cartier hypersurface in a smooth
+$R$-scheme of relative dimension $n+1$.
+One may take this neighborhood over the finite unramified
+extension $R_p/R$ with residue field $\kappa(p)$, choosing
+the diagonal point after base change; its map to the
+original scheme remains pointed etale with residue
+field $\kappa(p)$.
+\end{lemma}
+
+\begin{proof}
+First make the indicated unramified base change and
+choose the point with the original residue field. This
+is an etale change, not a decision to replace the global
+model field. Work over $R_p$ and write this point as a
+rational point of the special fiber.
+
+Choose a local affine presentation in a smooth affine
+space over $R_p$, of relative dimension $M$. At the
+chosen point write its regular local ring as $B$,
+its defining ideal as $I$, and $A=B/I$.
+Flatness of $A/R_p$ and of $B/R_p$ gives
+\[
+ I/\pi I\ \simeq\
+  \ker(B/\pi B\longrightarrow A/\pi A).
+ \tag{ON17.1}\label{r17on:tor}
+\]
+Indeed the left injection is precisely the vanishing of
+$\operatorname{Tor}_1^{R_p}(A,k_p)$.
+The special local ring is a complete intersection of
+codimension $c=M-n$, and its embedding dimension is
+$n+1$. To see the same statements before completion,
+use faithful flatness of completion: minimal numbers
+of generators and the complete-intersection property
+of an ideal in a regular local ring are detected there.
+Thus the special ideal has $c$ generators whose linear
+parts have rank $c-1$.
+
+Lift these generators to $f_1,\ldots,f_c\in I$.
+Equation~\eqref{r17on:tor} and local Nakayama give
+$I=(f_1,\ldots,f_c)$. After a constant invertible
+linear combination, the first $c-1$ special differentials
+are independent. The Jacobian criterion makes
+\[
+                  W=V(f_1,\ldots,f_{c-1})
+\]
+smooth of relative dimension $n+1$ on a neighborhood of
+the point. The last equation $f=f_c|_W$ is nonzero in
+its regular local ring: otherwise the special fiber
+would have dimension $n+1$. Therefore it is a
+nonzerodivisor, and $\mathcal X=V(f)\subset W$ is
+Cartier near the point. Its special quadratic term is
+the original nondegenerate one, after the elimination
+of the independent linear equations.
+
+The lci lifting facts used here can also be read in
+Stacks Project, Lemma 29.31.10 (Tag \texttt{01UE}) and
+Section 37.62 (Tag \texttt{068E}). The direct Tor,
+Nakayama and Jacobian argument records the relative
+codimension-one conclusion needed below.
+\end{proof}
+
+\begin{proposition}[Native pointed etale quadratic normal form]
+\label{r17on:normal-form}
+In the situation of Lemma~\ref{r17on:ambient}, assume
+the generic fiber of $\mathcal X$ is smooth.
+There are a nondegenerate quadratic form
+$Q\in R_p[z_0,\ldots,z_n]$, a unit $u\in R_p^\times$
+and an integer $b\ge1$ such that the local model has a
+common residue-isomorphic pointed etale neighborhood with
+\[
+       \operatorname{Spec}
+       R_p[z_0,\ldots,z_n]/(Q(z)-u\pi^b)
+ \tag{ON17.2}\label{r17on:exact}
+\]
+at its origin. The residue quadratic form is the
+original tangent-cone form up to an invertible change
+of coordinates and a unit. No additional extension of
+$\kappa(p)$ is required.
+\end{proposition}
+
+\begin{proof}
+Use the smooth ambient $W/R_p$ and function $f$ from
+the preceding lemma, shrinking around the chosen point
+whenever necessary. Choose relative etale coordinates
+$t_0,\ldots,t_n$. Express
+$df=\sum_i F_i\,dt_i$. At the special point all $F_i$
+vanish, and the Jacobian of $(F_i)$ is the nondegenerate
+Hessian. Therefore the relative critical locus
+$V(F_0,\ldots,F_n)$ is etale over $R_p$ at that point.
+The henselian property supplies a section $a$ through
+it. Its values are native elements of $R_p$.
+
+Replace $t_i$ by $x_i=t_i-t_i(a)$.
+The section ideal is generated by the $x_i$ after
+shrinking: in an etale coordinate neighborhood the
+section is the component of the zero coordinate fiber
+through the chosen point. Set $c=f(a)\in R_p$.
+Since $df|_a=0$, the conormal sequence for the smooth
+section gives
+\[
+                   f-c\in (x_0,\ldots,x_n)^2.
+ \tag{ON17.3}\label{r17on:quadratic-ideal}
+\]
+The section lies over the special zero of $f$, so
+$c\in\pi R_p$. If $c=0$, its generic point would
+be a critical point on the generic hypersurface,
+contradicting smoothness. Hence $c\ne0$.
+
+Because $2$ is invertible, write the exact identity
+\[
+                      f-c=x^{\mathsf T}H(x)x
+\]
+with a symmetric matrix of regular functions.
+Its value at the section is a unimodular symmetric
+matrix over $R_p$. A constant congruence over this
+local ring diagonalizes it with unit entries
+$\epsilon_0,\ldots,\epsilon_n$. Such diagonalization
+requires no splitting of the quadratic form: reduction
+modulo $\pi$ has a vector of nonzero norm, one splits
+off that rank-one summand and continues on its
+unimodular orthogonal complement, then lifts the
+chosen bases.
+
+After that constant change, all leading principal
+minors are units along the section. Shrink so they
+are invertible functions. The finite Gaussian
+congruence (or $LDL^{\mathsf T}$ elimination) over
+the ring of regular functions gives
+\[
+     H(x)=T(x)^{\mathsf T}
+          \operatorname{diag}(d_0(x),\ldots,d_n(x))T(x),
+ \qquad T(a)=1,\quad d_i(a)=\epsilon_i.
+ \tag{ON17.4}\label{r17on:ldl}
+\]
+All denominators are those unit principal minors.
+In particular this is a finite algebraic operation.
+
+Adjoin variables $s_i$ satisfying
+$s_i^2=d_i(x)/\epsilon_i$ and choose the branch with
+$s_i(a)=1$. This is a finite etale cover because
+$2s_i$ is invertible; its selected section has
+unchanged residue field. Put
+\[
+                  z_i=s_i\,(T(x)x)_i.
+ \tag{ON17.5}\label{r17on:new-coordinates}
+\]
+Then, as an equality of regular functions,
+\[
+                   f-c=\sum_i\epsilon_i z_i^2.
+ \tag{ON17.6}\label{r17on:identity}
+\]
+The relative Jacobian of $z$ along the section is
+the identity after the prior constant basis change.
+Thus the map $z$ to affine $(n+1)$-space over $R_p$
+is etale on a pointed neighborhood.
+
+Writing $Q=\sum_i\epsilon_i z_i^2$ and
+$-c=u\pi^b$, its restriction to $f=0$ is the
+base change of that etale map to $Q=u\pi^b$.
+The same neighborhood is etale over the original
+hypersurface. Both maps have the chosen residue
+field $\kappa(p)$. This is the claimed common
+pointed etale normal form.
+No infinite series substitution, analytic inverse
+function theorem, or unproved passage from a formal
+isomorphism to an etale one has been used.
+\end{proof}
+
+\begin{theorem}[Full actual G for ordinary quadratic reduction]
+\label{r17on:actual}
+Let $X/K$ be smooth projective geometrically integral
+of dimension $n\ge3$, where $K/\mathbf Q_p$ is finite
+and $p\ne2$. Suppose it has an integral flat projective
+model $\mathcal X/R$ whose special fiber is geometrically
+integral and smooth except for finitely many ordinary
+quadratic points. The total model need not be regular,
+and no bound is imposed on the orders of its node
+deformations.
+
+Then every geometrically homologically trivial rational
+cycle in every positive codimension satisfies strong G
+over the original field $K$, on the complement of its
+exact specified support and against every original compact
+actual test.
+The same assertion holds for any original-field smooth
+projective target admitting a projective dominant witness
+of this reduction type after a finite auxiliary extension.
+\end{theorem}
+
+\begin{proof}
+Flatness and smoothness of the special fiber away from
+the indicated points make the model morphism smooth
+there. At each point, Proposition~\ref{r17on:normal-form}
+supplies exactly the native pointed etale datum of
+Definition~\ref{r17qf:thick-datum}, with an arbitrary
+positive integer $b_j$. The native unramified rings
+$R_{p_j}$ describe only the pointed local charts;
+they are not multiplied together as extra global
+constant extensions.
+
+Apply QF17. A single ramified quadratic extension
+$K(\sqrt\pi)/K$ followed by the stated reduced-point
+blowups gives a regular reduced quadric forest.
+Its native numerical correction exists in every
+degree, hence its actual obstruction is zero.
+The frozen dominant and full finite-constant
+detectors descend that zero obstruction with all
+degrees intact. The curved pair for the final
+specified cycle reconstructs the required ordinary
+actual form with its exact support.
+The dominant-witness assertion is the same frozen
+detector and does not push the form through an
+alteration or assume that alteration is finite
+away from the cycle.
+\end{proof}
+
+\begin{corollary}[Finite extensions preserve this proved reduction sector]
+\label{r17on:extensions}
+Under the hypotheses of Theorem~\ref{r17on:actual},
+every finite extension $L/K$ has the full strong-G
+conclusion for all geometrically homologically trivial
+rational cycles on $X_L$, including cycles not defined
+over $K$.
+\end{corollary}
+
+\begin{proof}
+Base change preserves the geometric integral special
+fiber and its ordinary quadratic points. It preserves
+flatness and the smooth geometrically integral generic
+fiber, and the base-changed model is integral since
+it is flat with integral generic fiber. In the
+native local normal form, writing
+$\pi_K=v\pi_L^{e(L/K)}$ replaces the node order $b$
+by $e(L/K)b$ and multiplies its unit coefficient
+by $v^b$. Nondegeneracy of the special quadratic
+form is unchanged. Residue extensions are handled
+at each native point without assuming splitness.
+The theorem therefore applies afresh to the whole
+Chow group over $L$. This is stronger than
+ascent of cycles already defined over $K$.
+\end{proof}
+
+\begin{corollary}[Complete height for the specified ordinary-reduction sector]
+\label{r17on:height}
+Let $X/F$ be smooth projective geometrically integral
+of dimension $n\ge3$ over a number field.
+Suppose that every finite completion has, after a finite
+auxiliary local extension if necessary, a projective
+dominant witness with either good reduction or the
+ordinary quadratic reduction of
+Theorem~\ref{r17on:actual}. Require odd residue
+characteristic for the latter alternative.
+Then the frozen height construction gives the canonical
+real Beilinson--Bloch pairing on the entire geometric
+homological rational Chow groups in complementary degrees:
+\[
+ \operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^{n+1-r}(X)_{\mathbf Q,\mathrm{geom\,hom}}
+                         \longrightarrow\mathbf R.
+ \tag{ON17.7}\label{r17on:height-pairing}
+\]
+The pairing has the frozen rational-equivalence,
+choice-independence, correspondence-adjunction and
+number-field normalization properties. GA17 identifies
+it with normalized admissible arithmetic intersection
+on any fixed regular arithmetic alteration as there.
+\end{corollary}
+
+\begin{proof}
+The good-reduction detector and
+Theorem~\ref{r17on:actual} give obstruction zero for
+all local geometric-homological cycles in every degree.
+Thus the global domain $\mathcal H^r(X)$ is the full
+geometric-homological Chow group for this specified
+class of varieties. Apply the frozen PH16 implication
+and the GA17 admissible-alteration comparison.
+No additional arbitrary-Green residue premise is
+introduced. This is a theorem for the stated
+reduction sector, not general G or a general
+unconditional height theorem.
+\end{proof}
+
+\paragraph{Published antecedent and the exact new use.}
+The deformation normal form and its order reduction
+are classical: Jannsen--Saito, \emph{Bertini theorems
+and Lefschetz pencils over discrete valuation rings},
+Section 3, Lemma 4 and Theorem 5, printed pp.11--13,
+\url{https://arxiv.org/pdf/0911.1470}.
+Their Lemma 4 cites SGA7, Expose XV, 1.3.2.
+The proof above keeps an unsplit native residue field
+and supplies common pointed etale charts explicitly.
+The research conclusion is the activation of all
+ordinary quadratic models through QF17's all-degree
+native numerical correction and the frozen ordinary
+actual detector. No novelty is claimed for the
+classical local normal-form statement.

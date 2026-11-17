@@ -1,0 +1,616 @@
+\section{The full distinct-entry diagonal square modulo an extending pair}
+\label{sec:r10-commuting-diagonal-relative-square}
+
+\paragraph{Draft status.}
+This module is submitted for independent exact-source review.  It treats
+precisely the prescribed antisymmetric SHT primitives, with all their
+metric terms and absolute-value walls.  Its inputs are R10 MT and the
+frozen R9 PPC, CPT, CDP, RAG and RSP interfaces.
+
+Let $N$ be an ordinary analytic open over the original $K$, let $L$
+carry its fixed piecewise smooth metric with curvature $R$, and let
+$f=(f_1,\ldots,f_r)$ be analytic sections of $L$.  No regularity is
+needed for the local identity.  Put
+\[
+ C=|f=0|,\qquad W=N\setminus C,\qquad s=r-1,\qquad d=r-2.
+ \tag{CS1}
+\]
+Let $\lambda,\mu$ be analytic units on all of $N$, write
+$a=v(\lambda)$, $b=v(\mu)$, and let $A$ and $B$ multiply the first
+and second entries respectively.  Write $T=AB=BA$.  The four
+potentials $\Phi_0,\Phi_A,\Phi_B,\Phi_T$ and their projective
+curvatures $C_i=R-D\Phi_i$ are actual on $W$.  Define
+\[
+ P_s=p_{0A,a}+p_{AT,b}-p_{0B,b}-p_{BT,a},\qquad
+ e_{a,b}=(a\,d''b,\ b\,d'a).
+ \tag{CS2}
+\]
+Every $p$ in (CS2) is exactly R9 SHT4--SHT6.  Equivalently use the
+oriented loop $0\to A\to T\to B\to0$ with weights $a,b,-a,-b$.
+The pair $e_{a,b}$ is actual and closed on all of $N$ by
+$Da=Db=0$ and the sign cancellation in R9 CPT11.
+
+We construct an actual triple $q_s$ on all of $W$ such that
+\[
+                    P_s=\partial_2q_s+e_{a,b}R^{s-1}|_W.
+ \tag{CS3}
+\]
+For $r=2$ this is the frozen CDP theorem.  The new construction is
+for every $r\ge3$, with arbitrary additional base directions.  The
+last pair in (CS3) is defined across the common zero set.  We do not
+require or assert a strict witness with that pair removed.
+
+\subsection{A universal edge reduction with its full residual}
+
+For an even diagonal form $Q$ and actual scalars $u,v$, write
+\[
+ \begin{split}
+ s'(u,v)&=u\,d'v-v\,d'u,\qquad
+ s''(u,v)=u\,d''v-v\,d''u,\\
+ \mathfrak a(u,v;Q)&=(s''(u,v)Q,-s'(u,v)Q).
+ \end{split}
+ \tag{CS4}
+\]
+The second-component sign is part of the definition.  A formal
+letter $d$ below denotes a coefficient calculation performed
+separately in each colour; it never identifies $d'$ and $d''$.
+
+Consider one rank-one unit edge with actual potentials $p,q$, unit
+weight $c$, and a closed reference curvature $R_0$.  Retain
+\[
+ C_p=R_0-Dp,\qquad C_q=R_0-Dq,\qquad t=|c|,
+ \tag{CS5}
+\]
+and the actual norm relation $p=q$ on $c=0$.  Set
+\[
+ \begin{gathered}
+ H_k=h_{k-1}(R_0,C_p,C_q),\qquad J_k=h_{k-1}(C_p,C_q),\\
+ K_{p,k}=h_{k-1}(R_0,C_p),\qquad K_{q,k}=h_{k-1}(R_0,C_q),\\
+ M_k=-\frac14\bigl[(q^2-p^2)H_k+t(q-p)J_k
+                                      +c(pK_{p,k}+qK_{q,k})\bigr].
+ \end{gathered}
+ \tag{CS6}
+\]
+Here $h_j$ is the complete homogeneous polynomial in all displayed
+variables, with $h_0=1$ and $h_j=0$ for $j<0$.  Define
+\[
+ S_{e,k}=\mathfrak a(p,q;H_k)
+             +\mathfrak a(c_+,q;K_{q,k})
+             +\mathfrak a(c_-,p;K_{p,k}),\qquad
+ c_+=\max(c,0),\quad c_-=\min(c,0).
+ \tag{CS7}
+\]
+This pair has degrees $(k-1,k)$ and $(k,k-1)$.  We make no
+separate closedness claim about it or its summands.
+
+Let $Q_k^{\mathrm{tet}}(R_0;t,p,q)$ be the explicit PPC8--PPC10
+triple for the four potentials $(0,t,p,q)$ in degree $k$.
+For $k\ge2$, put
+\[
+ F_k=h_{k-2}(R_0,R_0-Dt,C_p,C_q)
+ \tag{CS8}
+\]
+and define
+\[
+ \begin{split}
+ A_k={}&(t\,d''p\wedge d''q-p\,d''t\wedge d''q
+                                      +q\,d''t\wedge d''p)F_k,\\
+ B_k={}&(t\,d'p\wedge d'q-p\,d't\wedge d'q
+                                      +q\,d't\wedge d'p)F_k,\\
+ Z_k={}&\bigl[t(d'p\wedge d''q-d'q\wedge d''p)
+           -p(d't\wedge d''q-d'q\wedge d''t)\\
+ &\hspace{24mm}+q(d't\wedge d''p-d'p\wedge d''t)\bigr]F_k,\\
+ Q_k^{\mathrm{tet}}&=(A_k/3,B_k/3,-Z_k/6).
+ \end{split}
+ \tag{CS9}
+\]
+Set $Q_1^{\mathrm{tet}}=Q_0^{\mathrm{tet}}=0$.  Its boundary is
+$\delta T_k=T_{t,p,q}-T_{0,p,q}+T_{0,t,q}-T_{0,t,p}$.
+This definition retains the full curvature $R_0-D|c|$.
+
+\begin{lemma}[Full edge formula]
+For the literal SHT expression with degree $k$, including when it is
+only a truncated expression rather than a rank-$r$ primitive,
+\[
+ \boxed{\quad
+ p_e^{[k]}=
+ \partial_2\left\{(0,0,M_k)+\frac12
+       \bigl(Q_k^{\mathrm{tet}}-R_0Q_{k-1}^{\mathrm{tet}}\bigr)\right\}
+                                      -\frac12S_{e,k}.
+ \quad}
+ \tag{CS10}
+\]
+All absolute-value walls remain.  No curvature coefficient pair is
+declared closed.
+\end{lemma}
+
+\begin{proof}
+All curvature factors in (CS6) are closed.  Flattening the two
+first derivatives only for the coefficient calculation, the sum
+of the SHT components is $2dM_k$ and their difference is
+\[
+ \theta_e=-s(p,q)H_k-\frac12s(t,q-p)J_k
+               -\frac12\{s(c,p)K_{p,k}+s(c,q)K_{q,k}\},
+ \qquad s(u,v)=u\,dv-v\,du.
+ \tag{CS11}
+\]
+This is an expansion of the entire SHT6 expression: $H_k$ has the
+reference curvature as an additional variable, so the lower metric
+terms are included.
+
+In the coefficient calculation for $\delta T_k$, one may replace
+$R_0-Dt$ by $R_0$ in its curvature polynomials, for the following
+actual reason.  Every term of their difference has a factor $Dt$,
+whose pure polyhedral support lies on $c=0$.  On each carrier there,
+$t=0$ with zero tangential first jet.  Also $q-p=0$ with zero
+tangential first jet.  The symbol in $T_{t,p,q}$ consequently
+vanishes because it is built from $q-p$; those in $T_{0,t,p}$ and
+$T_{0,t,q}$ vanish because they contain $t$ and its first derivative.
+Every term with a positive power of $Dt$ is killed by restricting
+its scalar and first-form coefficient to its carrier.  The same
+calculation holds on each further actual refinement.  It drops no
+derivative-of-Dirac term.
+
+The resulting difference of flattened components is
+\[
+ \delta\theta_k=s(t,p)\{H_k-h_{k-1}(R_0,R_0,C_p)\}
+             -s(t,q)\{H_k-h_{k-1}(R_0,R_0,C_q)\}.
+ \tag{CS12}
+\]
+The complete homogeneous identities
+\[
+ \begin{split}
+ H_k-R_0H_{k-1}&=J_k,\\
+ h_{k-1}(R_0,R_0,C_p)
+     -R_0h_{k-2}(R_0,R_0,C_p)&=K_{p,k}
+ \end{split}
+ \tag{CS13}
+\]
+and the analogous $q$ identity give
+\[
+ \delta\theta_k-R_0\delta\theta_{k-1}
+       =s(t,p)(J_k-K_{p,k})-s(t,q)(J_k-K_{q,k}).
+ \tag{CS14}
+\]
+For $k=1$ both tetrahedron differences are zero and this reads
+$0=0$.  Subtract one half of (CS14) from (CS11), and use
+$(t+c)/2=c_+$ and $(c-t)/2=c_-$.  The remainder is exactly
+the negative of the first-colour expression defining $S_{e,k}$.
+The other colour has its prescribed opposite sign.  Reconstituting
+the pair gives the scalar boundary, one half of the tetrahedron
+pair boundary, and $-S_{e,k}/2$, proving (CS10).
+\end{proof}
+
+\subsection{The two support identities for the residual}
+
+The following arguments concern actual projective curvatures.  On
+a local unit presentation the tuple norm is a finite minimum of
+valuation coordinates with the common metric added.  Its projective
+curvature is the pure polyhedral corner of that minimum.  It
+vanishes on the ordinary open where one entry is strictly the unique
+minimizer.  In curvature products the scalar and first-form
+coefficients are restricted tangentially to each carrier.  Equality
+of scalars on an entire carrier therefore gives equality of their
+full restricted first jets.  These are the frozen RAT3/TGC6 support
+interfaces, with all actual refinement relations retained.
+
+For an edge raising one entry by $c\ge0$, every point in the support
+of the old corner has an unchanged entry attaining the old minimum.
+It still attains that minimum after the raise, so
+\[
+                         p=q\quad\hbox{on }\operatorname{supp}C_p.
+ \tag{CS15}
+\]
+This is unaffected by a common reference potential.  Thus every
+$\mathfrak a(p,q;C_p^iQ)$ with $i\ge1$ is zero, with full tangential
+first jets retained.  On a carrier where the changed entry attains
+the new minimum, its old value is the old minimum, and hence
+\[
+                              p+c=q.
+ \tag{CS16}
+\]
+For $c\le0$ apply the same facts to the reverse edge.  On the wall
+$c=0$, one has $p=q$, while the restrictions of $c,c_+,c_-$ and
+their tangential first derivatives are zero.  These statements
+are checked on every carrier, including intersections with other
+walls.  No sign-chamber formula is extended by a characteristic
+function.
+
+\begin{lemma}[Two-entry recurrence]
+Suppose on an ordinary open all four square norms are determined
+by the first two entries.  Let $R_0$ be any common closed reference
+curvature, with the normalized potentials satisfying (CS5).
+For every edge and $k\ge2$,
+\[
+                         S_{e,k}=R_0S_{e,k-1}.
+ \tag{CS17}
+\]
+Consequently the full square satisfies
+\[
+                \sum_e S_{e,s}
+                      =-\mathfrak a(a,b;R_0^{s-1}).
+ \tag{CS18}
+\]
+\end{lemma}
+
+\begin{proof}
+The difference in (CS17), by (CS13), is
+\[
+ \mathfrak a(p,q;h_{k-1}(C_p,C_q))
+       +\mathfrak a(c_+,q;C_q^{k-1})
+       +\mathfrak a(c_-,p;C_p^{k-1}).
+ \tag{CS19}
+\]
+For $c\ge0$, (CS15) kills every monomial containing $C_p$.
+The remaining term is $\mathfrak a(p+c,q;C_q^{k-1})$.
+Since $k-1\ge1$, its carrier lies in the new two-entry corner,
+where both entries attain the new minimum.  Equation (CS16)
+kills the symbol and its restricted first jet there.  Where one
+entry vanishes and the other is active, the corner is already
+zero on an ordinary neighborhood.  Reverse the edge for $c\le0$;
+the preceding wall check covers every carrier in $c=0$.
+This proves (CS17).
+
+In degree one all four polynomials $H_1,J_1,K_{p,1},K_{q,1}$
+are one and the tetrahedron term is zero.  The full rank-two
+CDP8--CDP12 calculation, including zero-entry neighborhoods and an
+arbitrary common scalar or metric, gives
+\[
+                          \sum_e S_{e,1}=-\mathfrak a(a,b;1).
+ \tag{CS20}
+\]
+It can also be checked by substituting the four two-entry minima
+in (CS7) and using the four homogeneous first-jet relations CDP10.
+Iterating (CS17) proves (CS18).  Mixed products $C_pC_q$ have
+not been declared zero: the coefficient relations kill their
+specific symbol factors before the other curvatures are wedged.
+\end{proof}
+
+\begin{lemma}[Passive-block normalization]
+Let $r\ge3$ and suppose the passive tuple $(f_3,\ldots,f_r)$
+is nonzero on an ordinary open.  Normalize by its norm potential,
+so its maximum norm is one and its projective curvature is the
+reference $R_0$.  For $s=r-1$,
+\[
+                    R_0^{s-1}=0,\qquad S_{e,s}=0
+                                \quad\hbox{for every square edge}.
+ \tag{CS21}
+\]
+\end{lemma}
+
+\begin{proof}
+The reference curvature is the pullback of the standard projective
+form by the genuine original-$K$ map defined by the $r-2$ passive
+sections, whose target is $\mathbf P^{r-3}$.  Its $(r-2)$nd power
+is zero, with all mixed base coefficients retained.  For $r=3$
+the target is $\mathbf P^0$ and the reference curvature is zero.
+
+For $c\ge0$, (CS15) removes every $C_p$-containing monomial from
+the first term of (CS7).  What remains is
+\[
+             \mathfrak a(p+c,q;h_{s-1}(R_0,C_q)).
+ \tag{CS22}
+\]
+Its pure $R_0^{s-1}$ term is zero.  Every other monomial contains
+a positive power of $C_q$.  On a carrier of such a monomial,
+if the changed entry is active, use (CS16).  If it is inactive
+and a passive entry is active, the normalized potential is $q=0$
+with zero tangential first jet.  If both the changed entry and
+all passive entries are inactive, the other affected entry is
+the unique minimum, so $C_q$ vanishes on an ordinary neighborhood
+and this case contributes no carrier.  These cases exhaust the
+active set.  Reverse the edge for $c\le0$ and retain the wall
+check at zero.  This proves (CS21) as an actual pair identity.
+\end{proof}
+
+\subsection{One capped actual norm on the entire punctured overlap}
+
+The passive norm potential diverges at passive-zero points, which
+may lie in $W$.  A single capped potential avoids any extension
+of triples across that locus.  Let
+\[
+ \psi=-\log\|(f_3,\ldots,f_r)\|_{L,\infty},
+ \tag{CS23}
+\]
+interpreted as $+\infty$ at the passive zero set.  Choose one real
+number $\varepsilon>0$ and put
+\[
+ \kappa=|a|+|b|+\varepsilon,\qquad
+                 \Psi=\min(\psi,\Phi_0+\kappa)\quad\hbox{on }W.
+ \tag{CS24}
+\]
+This is an ordinary actual scalar on all of $W$.  On the
+passive-nonzero locus it has a finite piecewise smooth presentation.
+Near a passive-zero point, some affected section is nonzero.  The
+ratio of the passive maximum norm to the full maximum norm is a
+continuous function vanishing there, while $e^{-\kappa}$ is
+continuous and positive.  On an ordinary neighborhood that ratio
+is less than $e^{-\kappa}$, so $\Psi=\Phi_0+\kappa$ literally.
+This defines an actual scalar across the passive zero set by
+equality on an open overlap.
+
+The common metric term occurs once in each entry of the minimum
+and cancels from their comparison.  On every fixed whole local
+unit presentation, the cap is thus one finite piecewise affine
+operation together with the original metric potential.  All
+real offsets and absolute-value walls remain.  No element of $K$
+with valuation $\varepsilon$ is required.  Define
+\[
+                 R_*=R-D\Psi,\qquad p_i=\Phi_i-\Psi.
+ \tag{CS25}
+\]
+Then $C_i=R_*-Dp_i$ are the original projective curvatures.
+Let $P_s^*$ be the full SHT loop for these potentials and reference
+curvature.  MT16 with common scalar $h=-\Psi$ gives an actual
+triple $Q_{\rm met}$ on all of $W$ satisfying
+\[
+                   P_s^*-P_s=\partial_2Q_{\rm met}.
+ \tag{CS26}
+\]
+There is no requirement that $\Psi$ extend through the common zero
+set $C$: this calculation takes place on $W$.
+
+The two ordinary opens
+\[
+ \begin{split}
+ W_{\rm pas}&=\{\psi<\Phi_0+\kappa\},\\
+ W_{\rm two}&=\{\psi>\Phi_0+|a|+|b|\}
+ \end{split}
+ \tag{CS27}
+\]
+cover $W$ because $\varepsilon>0$, and the second contains every
+passive-zero point.  In terms of continuous norm ratios they are
+strict inequalities, hence are ordinary opens rather than rational
+domains being substituted for actual sheaf opens.
+
+On $W_{\rm pas}$, the cap equals $\psi$.  Equation (CS21) makes
+both $\sum_eS_{e,s}$ and $\mathfrak a(a,b;R_*^{s-1})$ zero.
+On $W_{\rm two}$ all passive entries are strictly inactive for
+all four norms.  Indeed unit scaling changes a norm potential
+by at most the absolute value of its unit valuation, so
+\[
+                 \Phi_i\le\Phi_0+|a|+|b|<\psi
+                              \qquad(i=0,A,B,T).
+ \tag{CS28}
+\]
+This holds at every analytic point over its completed residue
+field.  The two-entry recurrence (CS18) therefore applies on
+that entire open for $R_*$, including every cap-transition
+curvature term and mixed derivative.  Actual sheaf locality gives
+\[
+                   \sum_eS_{e,s}=-\mathfrak a(a,b;R_*^{s-1})
+                                      \quad\hbox{on all of }W.
+ \tag{CS29}
+\]
+No triple has been extended from one member of (CS27): the cap
+and every ensuing triple were already actual on all of $W$.
+The cover only verifies equality between global actual formulas.
+
+\subsection{The explicit whole-overlap triple}
+
+For each oriented edge use $(p_i,p_j,c_e,R_*)$ in (CS6)--(CS9).
+Put
+\[
+ Q_{\rm edge}=\sum_e\left\{(0,0,M_{e,s})+\frac12
+     \bigl(Q_{e,s}^{\mathrm{tet}}-R_*Q_{e,s-1}^{\mathrm{tet}}\bigr)
+                                                       \right\}.
+ \tag{CS30}
+\]
+Then (CS10) and (CS29) give
+\[
+ P_s^*=\partial_2Q_{\rm edge}
+                 +\frac12\mathfrak a(a,b;R_*^{s-1}).
+ \tag{CS31}
+\]
+The alternating symbol and the extending pair differ by
+\[
+ \frac12\mathfrak a(a,b;R_*^{s-1})
+       =e_{a,b}R_*^{s-1}
+                   -\partial_2(0,0,abR_*^{s-1}/2).
+ \tag{CS32}
+\]
+For $d=s-1\ge1$, set
+\[
+                h_*=-\Psi\sum_{\ell=0}^{d-1}R_*^\ell R^{d-1-\ell}.
+ \tag{CS33}
+\]
+All curvatures are closed and $R_*-R=-D\Psi$, so
+$Dh_*=R_*^d-R^d$.  The independently closed pair $e_{a,b}$
+satisfies the exact general-degree CPT identity
+\[
+                 e_{a,b}R_*^d-e_{a,b}R^d
+                                      =\partial_2H_{h_*}(e_{a,b}),
+ \tag{CS34}
+\]
+where, explicitly,
+\[
+ H_{h_*}(e_{a,b})=
+ \bigl(d''h_*\wedge(e_{a,b})',
+       -d'h_*\wedge(e_{a,b})'',
+                        h_*\wedge d'(e_{a,b})'\bigr).
+ \tag{CS35}
+\]
+Here $h_*$ has degree $(d-1,d-1)$.  CPT is not being applied
+to one of the nonclosed residual summands.
+
+Define on the whole original $W$
+\[
+ \boxed{\quad
+ q_s=Q_{\rm edge}-Q_{\rm met}
+           -(0,0,abR_*^{s-1}/2)+H_{h_*}(e_{a,b}).
+ \quad}
+ \tag{CS36}
+\]
+Every term is an explicitly specified actual form.  Equations
+(CS26), (CS31), (CS32), (CS34) prove (CS3), with these signs.
+Its last pair extends through the common zero set because the
+original $R,a,b$ are defined on all of $N$.
+
+\begin{theorem}[All-rank actual relative commuting-square witness]
+For every $r\ge2$, over the original field and absolute value,
+the prescribed SHT square of two distinct-entry analytic unit
+changes has the explicit actual witness (CS3).  For $r=2$
+use frozen CDP2--CDP3.  For $r\ge3$ use (CS24)--(CS36).
+All valuation walls, the arbitrary common metric, all mixed
+base derivatives and zeros of proper subsets of the tuple
+entries are retained.
+\end{theorem}
+
+No boundedness, fixed valuation order, rational-point test,
+product family or analytic root is assumed.  Divisions by
+$2,3,6$ are real coefficient operations and impose no residual
+characteristic restriction.  The rank-three passive target is
+$\mathbf P^0$; the proof handles that endpoint.  The rank-two
+theorem is inherited, not counted again.
+
+\subsection{Finite path orders and the original-support bridge}
+
+For two paths consisting of the same prescribed diagonal unit
+factors, an adjacent swap on distinct entries leaves all common
+prefix and suffix terms identical.  Apply (CS3) to the actual
+intermediate tuple.  A supplied finite sequence of such swaps
+gives the literal identity
+\[
+                 p_1-p_0=\partial_2q+e|_W,\qquad
+ q=\sum_{\rm swaps}\pm q_s,\qquad
+ e=R^{r-2}\sum_{\rm swaps}\pm e_{a,b}.
+ \tag{CS37}
+\]
+This covers reorderings of one factor per entry and shuffles
+preserving the within-entry order of repeated factors.  It
+does not assert same-entry merger relations or arbitrary
+elementary-shear and pivot coherence.
+
+For the actual Green consequence, retain original global regular
+CI tuples $s_0,s_1$ of the same metrized line bundle on smooth
+projective $X/K$.  Write
+\[
+ \begin{gathered}
+ Z=[Y_1]-[Y_0],\quad T=|Z|,\quad S=|Y_0|\cup|Y_1|,\\
+ U=X^{\rm an}\setminus T,\quad V=X^{\rm an}\setminus S,\quad
+ C_U=S\cap U.
+ \end{gathered}
+ \tag{CS38}
+\]
+Suppose $N\subset U$ is an ordinary neighborhood of $C_U$ and
+$N=N_0\cup N_1$.  Supply the local finite analytic frame paths
+of frozen SHT/RSP, yielding
+\[
+       g|_{N_i\cap V}=\partial_1p_i+E_i,\qquad
+       g=G_{s_1}-G_{s_0},\qquad E_i\in B^{s,s}(N_i).
+ \tag{CS39}
+\]
+Assume their complete primitive expressions on the whole overlap
+differ by a supplied finite sequence of the swaps just treated,
+with all unit factors and intermediate tuples defined on the
+unpunctured overlap.  Equation (CS37) supplies the actual triple
+$q=(A_{01},B_{01},M_{01})$ and extending pair $e=(e',e'')$.
+
+For a subordinate ordinary smooth partition $\chi_0+\chi_1=1$,
+write $\chi=\chi_1$ and use actual zero extensions of all
+overlap-supported products in
+\[
+ \begin{split}
+ \alpha={}&\chi_0\alpha_0+\chi_1\alpha_1
+                  +d'\chi\wedge A_{01}+d''\chi\wedge M_{01},\\
+ \beta={}&\chi_0\beta_0+\chi_1\beta_1
+                  +d''\chi\wedge B_{01}+d'\chi\wedge M_{01},\\
+ E={}&\chi_0E_0+\chi_1E_1
+                             -d'\chi\wedge e'-d''\chi\wedge e''.
+ \end{split}
+ \tag{CS40}
+\]
+The exact RAG6--RAG9 calculation gives
+$g=d'\alpha+d''\beta+E$ on $N\cap V$, with $E$ actual on $N$.
+In particular its differentiated extending-pair terms remain,
+as do both mixed $D\chi\wedge M_{01}$ terms before their
+opposite-sign cancellation.
+
+Choose the $U$-only RSP2 cutoff $\zeta$, equal to one near
+$C_U$ with closed $U$-support inside $N$.  Let
+$\widetilde\alpha,\widetilde\beta$ be the actual zero extensions
+of $\zeta\alpha,\zeta\beta$ to $V$.  Set
+\[
+ g_V=g-d'\widetilde\alpha-d''\widetilde\beta,\qquad
+ g_Z=\text{the actual gluing of $g_V$ with $E$ near $C_U$}.
+ \tag{CS41}
+\]
+This is an actual $B^{r-1,r-1}$ form on exactly $U$.
+For every actual $\eta\in B_c^{n-r,n-r}(X^{\rm an})$, frozen
+support avoidance gives $\operatorname{supp}D\eta\Subset V$.
+The products of the correction primitives with $D\eta$ have
+compact support in $V$, so full actual Stokes gives zero for
+their integrals.  The original frozen CI8 identity yields
+\[
+                       \int_Ug_Z\wedge D\eta=-\int_Z\eta
+                              \quad\hbox{for every such actual test}.
+ \tag{CS42}
+\]
+No separated-test restriction, new growth condition, enlarged
+deleted support or current-to-form inference is involved.
+
+For more than two opens, RAG's sequential whole-overlap witness
+must still be supplied after each partition gluing step.
+Pairwise swaps are not asserted to supply all higher witnesses
+for an arbitrary cover.  A global diagonal comparison already
+has an old single-path repair.  Reordering that global path is
+therefore not advertised as a new previously unsolved cycle
+class.  The new assertion is the all-rank relative identity for
+the formerly unresolved prescribed square and its two-open
+actual repair interface.
+
+\subsection{Actual refinements and remaining scope}
+
+The object is a specified finite actual path pair; its equivalence
+is witnessed by the actual triple (CS36) and the extending pair
+(CS3).  No quotient or completion is used as a representative.
+Restriction, finite sums, full differentiation and wedge products
+are the operations.  Local presentations use the entire original
+norm and unit data, the single cap minimum, and finite PPC/CPT/MT
+formulas.  Refinement preserves every identity because scalar and
+first-jet carrier restrictions were checked on the complete
+refinement.
+
+The pair and triple spaces retain their own actual coefficient-final
+topologies.  For a fixed whole presentation the cap introduces one
+finite arrangement in the stated unit coordinates with all real
+intercepts; the remaining operations are finite polynomial and
+differential operations with all mixed seminorms.  This gives
+fixed-presentation finite-stage control only.  It does not identify
+image-final and ambient inherited topologies or prove new global
+strictness, Hausdorffness or bornologicity.
+
+Nonproduct refinements such as $(T_1,T_2,T_1+T_2)$ are retained:
+no independent-coordinate image replaces their actual relations.
+Passive zeros of such expressions are explicitly handled by the
+cap.  In moving-puncture curve families, all units and norm
+potentials may depend on every base coordinate.  Their complete
+derivatives remain, and any number of passive base directions may
+be adjoined.  No fiberwise compact angular homotopy is used.
+
+Every inequality and active-set statement holds at arbitrary
+analytic points over their completed residue fields.  The
+original $K$ and absolute value remain fixed.  No degree
+division or higher actual-form descent is used.  ASP is respected
+by the nonzero extending pair; LTF is respected because no
+truncated pair is assumed closed.  The separate TROP-NR, CI0,
+FL, JR, AQ, QP, ND and wedge failure scopes are unchanged.
+
+General homological triviality still has no all-actual period
+theorem here.  Arbitrary unequal-ideal cancellation, arbitrary
+analytic matrix coherence, full lower-middle OPEN-KERNEL,
+arbitrary higher actual descent and complete unconditional
+Beilinson--Bloch height theory remain separate open tasks.
+The original-support bridge above covers only the specified
+original CI data with its finite overlap certificate.
+
+\paragraph{Construction provenance.}
+The diagonal constructor supplied the capped-passive proof, using
+the audit/challenge constructor's normalized-edge derivation and
+independent coefficient sign checks.  Both are construction
+contributors and are excluded from independent reviews of this
+module.  Root reviews this module without contributing a
+construction step; MT is a separately audited dependency.
+No external peer-review, formal-verification or novelty claim
+is made.
+

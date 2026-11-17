@@ -1,0 +1,604 @@
+% Round 18. ci_global branch. Candidate; independent review required.
+\section{Iterated complete intersections and a final deep degeneration}
+\label{r18ce:section}
+
+Two distinct constructions are kept separate here.  The first takes
+sections of an ambient model whose bad fibers have only finitely
+many singular points; it produces a new model with good or ordinary
+quadratic reduction at every place and can be iterated.  The second
+inserts CA18's deep product degeneration only at the last step.
+A deep normal-crossings ambient fiber has a positive-dimensional
+double locus, so it is not an input to the first construction.
+An ample section cannot in general avoid that locus.
+
+\subsection{Native ambient data and the two geometric lemmas}
+
+Let $F$ be a number field and let
+\[
+       \mathcal Y\subset\mathbf P^N_{\mathcal O_F}
+ \tag{CE18.1}\label{r18ce:ambient}
+\]
+be a specified integral flat projective relative complete
+intersection of relative dimension $m\ge4$, cut out by actual
+homogeneous equations of fixed positive degrees
+$b_1,\ldots,b_c$, where $c=N-m$.
+Assume that its generic fiber $Y/F$ is smooth and geometrically
+integral, and that every geometric special fiber is integral
+and is smooth except at finitely many points.
+Good or ordinary-quadratic special fibers satisfy the latter
+condition, but the ambient local singularities do not need to
+be resolved for the argument below.  The equations and the
+relative complete-intersection property are part of the input.
+In particular, this is not a claim that an arbitrary variety
+admits such a model.
+
+Fix $d\ge3$ and let $V_{d,F}$ be the full vector space of
+degree-$d$ homogeneous forms on the displayed projective space.
+All forms below are actual forms in this space, even if their
+restriction map to $Y$ has a kernel.
+The map onto $H^0(Y,\mathcal O_Y(d))$ is surjective: the
+Koszul resolution of the complete-intersection ideal gives
+$H^1(\mathbf P^N,\mathcal I_Y(d))=0$ in the present
+positive-dimensional range.  Thus the section-space density
+below has its usual full-linear-system meaning.
+
+\begin{lemma}[Finite singular loci can be avoided at a special fiber]
+\label{r18ce:residue-Bertini}
+Let $Y_0\subset\mathbf P^N_k$ be a geometrically integral
+complete intersection of dimension $m\ge4$ whose geometric
+singular locus is finite.  There is a nonempty geometric open
+of degree-$d$ forms whose divisor on $Y_0$ is smooth and
+geometrically integral and avoids that singular locus.
+Over a finite $k$ this open has a point over some finite
+extension of $k$; no fixed bound or degree-one assertion
+about that extension is required.
+\end{lemma}
+
+\begin{proof}
+Over $\bar k$, avoiding the finite singular set excludes
+finitely many proper linear hyperplanes in coefficient space.
+On the smooth locus of $Y_0$, evaluation of first jets is
+surjective.  Indeed the monomials $X_0^d,X_0^{d-1}X_i$
+give all first jets on projective space at the first
+coordinate point, and the quotient to the tangent space of
+$Y_0$ is surjective.  The incidence of a singular divisor
+point in that smooth locus therefore has dimension at most
+one less than the coefficient parameter space.  Its image
+closure is a proper subset.  Intersecting the complement
+with the open avoiding the finite singular locus gives
+a nonempty open of globally smooth divisors.
+
+Each such nonzero divisor is a positive-dimensional
+projective complete intersection and is geometrically
+connected.  For a direct cohomological check, the Koszul
+resolution by the ambient defining equations, together
+with the vanishing of intermediate cohomology of line
+bundles on projective space, gives
+$H^0(Y_0,\mathcal O_{Y_0})=k$ and
+$H^1(Y_0,\mathcal O_{Y_0}(-d))=0$ after algebraic closure.
+In the resolution of $\mathcal O_{Y_0}(-d)$ every term
+is a negative line bundle.  Its only possible nonzero
+projective-space cohomology is in degree $N$, and the
+resolution has length $c=N-m$; thus no cohomology in
+degrees $0<i<m$ survives.  The divisor exact sequence
+then gives its $H^0$ equal to $\bar k$.
+Smoothness and connectedness imply geometric integrality.
+Finally a point in a nonempty open over $\bar k$ has
+finitely many algebraic coordinates.  If $k$ is finite,
+these coordinates lie in one finite extension.
+\end{proof}
+
+\begin{lemma}[Fixed-member pencils on the actual smooth generic ambient]
+\label{r18ce:fixed-pencil}
+Let $H_0\in V_{d,F}$ cut a smooth divisor on $Y$.
+There is a nonempty Zariski open of $H_1\in V_{d,F}$
+such that $H_1$ and the base $H_0=H_1=0$ cut smoothly
+on $Y$, and every singular geometric pencil member has
+one ordinary quadratic point with transverse discriminant
+intersection.
+\end{lemma}
+
+\begin{proof}
+The full proof of CG18's fixed-member lemma applies with
+$5,6,5$ replaced by $d,N,m$, respectively; here are the
+precise inputs so that this is not an invocation beyond
+that proof's checked range.
+First jets at one point are supplied by
+$X_0^d,X_0^{d-1}X_i$.  Second jets are supplied also by
+$X_0^{d-2}X_iX_j$, and are therefore arbitrary on the
+smooth tangent space of $Y$.  First jets at two distinct
+points are jointly independent: after making those two
+coordinate points, the two lists
+$X_0^d,X_0^{d-1}X_i$ and
+$X_1^d,X_1^{d-1}X_j$ are distinct and each has zero
+first jet at the opposite point.  The inequality $d\ge3$
+is used exactly here.
+
+If the coefficient projective space has dimension $M$,
+the marked-singularity incidence over $Y$ is a smooth
+irreducible projective bundle of dimension $M-1$.
+The degenerate-Hessian locus and the closure of the
+two-marked-point incidence after forgetting its second
+point each have dimension at most $M-2$.  Their
+complement gives unique nondegenerate singularities;
+the coefficient image is an irreducible discriminant
+hypersurface with a dense smooth one-node open.
+The Hessian implicit-function argument identifies its
+normal differential with variation of the critical value.
+
+Projection of that discriminant from the prescribed
+smooth point $[H_0]$ is finite, because no line through
+that point is contained in the discriminant.  It is
+generically etale in characteristic zero.  Exclude its
+branch locus and the image of its non-one-node subset.
+This gives a nonempty open of transverse one-node
+directions.  The smooth-base condition gives another
+nonempty open by Bertini on the fixed smooth $H_0$
+divisor; the restricted degree-$d$ system is very ample.
+Their intersection in the irreducible direction space,
+followed by exclusion of singular $H_1$, proves the lemma.
+All constructions are defined over $F$.
+\end{proof}
+
+\subsection{A section construction with no deep special fiber}
+
+\begin{theorem}[One fixed finite extension and a dense ordinary-reduction family]
+\label{r18ce:ordinary-family}
+Under \eqref{r18ce:ambient}, for every $d\ge3$ there is a
+finite extension $E/F$ and a Zariski-dense set of smooth
+divisors $X\subset Y_E$ cut by degree-$d$ forms with a
+flat integral projective complete-intersection model over
+$\mathcal O_E$ such that every special fiber is
+geometrically integral and is either smooth or has one
+ordinary quadratic point in odd residue characteristic.
+Every place of residue characteristic two is a good
+place for $X$.
+
+Every such $X$ has full ordinary actual strong G in
+all codimensions at every finite completion, for all
+new cycles after every finite extension of $E$.
+Consequently PH16 gives the full complementary
+geometrically homological rational Chow-group
+Beilinson--Bloch heights over every such extension.
+The density is in the section space of this one fixed
+$Y_E$ and this one fixed $E$.
+\end{theorem}
+
+\begin{proof}
+\emph{1. Fix a smooth reference member and a finite bad set.}
+Choose an integral actual form $H_0$ cutting a smooth
+geometrically integral divisor on $Y$, by characteristic-zero
+Bertini and clearing denominators.
+Let $S_0$ be a finite set of rational primes containing
+$2$, every rational prime below a nonsmooth special fiber
+of $\mathcal Y$, and every prime below a fiber on which
+$H_0$ fails to cut a smooth divisor of dimension $m-1$.
+These sets are finite, by properness and the given
+smooth generic fibers.  In particular, outside $S_0$
+both $\mathcal Y$ and its reference divisor are smooth.
+Include all primes of $F$ above the rational primes
+in $S_0$ in the next step, including those at which
+no failure occurred.
+
+\emph{2. Choose one extension for all residue conditions.}
+For each such prime ideal $\mathfrak p$, apply
+Lemma~\ref{r18ce:residue-Bertini} to its actual special
+fiber.  Choose a smooth section over some finite
+extension of $\kappa(\mathfrak p)$, and let its degree
+be $f_{\mathfrak p}$.  Choose $N_0\ge2$ divisible by
+all these finitely many degrees.
+For each $\mathfrak p$ choose a monic irreducible
+degree-$N_0$ polynomial over $\kappa(\mathfrak p)$.
+The Chinese remainder theorem on coefficients gives
+one monic $g\in\mathcal O_F[T]$ with those reductions.
+It is irreducible over $F$: a factorization into
+monic factors over $F$ would have integral
+coefficients, since $\mathcal O_F$ is integrally
+closed, and would contradict any of the irreducible
+reductions.  Let $E=F[T]/(g)$.
+At each of the selected $\mathfrak p$ there is one
+prime $\mathfrak P$ of $E$, with unramified local
+degree $N_0$ and residue extension of that degree.
+This follows either from the finite etale local
+algebra $\mathcal O_{F_{\mathfrak p}}[T]/(g)$ or
+from the unit discriminant and irreducible reduction.
+All the chosen smooth residue sections therefore
+exist over their native $\kappa(\mathfrak P)$.
+Choose actual integral lifts $G_{\mathfrak P}$ of
+their coefficient tuples.  This fixes $E$ once and
+for all before varying the next section.
+
+\emph{3. Choose a fixed-member pencil in the coefficient lattice.}
+Let $B=\prod_{p\in S_0}p$.  Require
+\[
+       H_1\equiv G_{\mathfrak P}\pmod{\mathfrak P}
+          \quad\text{at every selected }\mathfrak P.
+ \tag{CE18.2}\label{r18ce:coefficient-CRT}
+\]
+The moduli are distinct maximal ideals.  Their solution
+set is a nonempty affine lattice in integral form
+coefficients over $E$, with a nonzero ideal as its
+translation module.  Such an ideal contains a
+nonzero integer, so the lattice contains a product
+of infinite arithmetic progressions and is Zariski
+dense over $E$.  Intersect it with the nonempty open
+of Lemma~\ref{r18ce:fixed-pencil}.  The resulting
+allowed $H_1$ remain Zariski dense.
+
+After fixing an allowed $H_1$, spread its pencil over
+$\mathcal O_E[1/S]$, for a finite set $S$ of prime
+ideals containing all primes above $S_0$.  Outside
+$S$, the ambient and base are smooth, the pencil
+total space is smooth, the relative critical scheme
+is finite etale with distinct critical values, and
+its Hessians are invertible.  Its map to the
+parameter line is a closed immersion.  Exclude
+also any prime where the two sections become
+dependent.  These are the finite-presentation
+spreading arguments proved in CG18: first remove
+vertical critical components, then spread all the
+listed open conditions and finite morphisms.
+Every geometric member outside $S$ is smooth or
+has precisely one ordinary quadratic singularity.
+
+\emph{4. Choose the arithmetic parameters and check every place.}
+Let $T$ be the finite set of rational primes under
+$S$.  Take integers $a$ in the infinite progression
+\[
+       a\equiv1\pmod B,
+       \qquad a\equiv0\pmod p\quad(p\in T\setminus S_0),
+ \tag{CE18.3}\label{r18ce:parameter-CRT}
+\]
+excluding the finitely many singular generic members,
+and let
+\[
+                         X_a=Y_E\cap V(BH_0+aH_1).
+ \tag{CE18.4}\label{r18ce:ordinary-equation}
+\]
+At every prime above $S_0$, its reduction is the
+chosen smooth $H_1$ divisor, avoiding every singular
+point of the ambient special fiber.  At a prime
+above $T\setminus S_0$, $B$ is a unit and the
+reduction is the smooth $H_0$ divisor.  At every
+remaining prime, $[B:a]$ is an integral parameter
+of the spread pencil, so its special fiber is
+smooth or has one ordinary quadratic point.
+The characteristic-two primes are all in the
+first, smooth case.
+
+All these sections are nonzero on the corresponding
+integral ambient fibers.  Their divisor sequences
+are consequently flat over the native valuation
+rings, and they glue to the indicated global
+relative complete-intersection model.  The smooth
+integral generic fiber and flatness imply that
+the model is integral.  Its special fibers with
+isolated singularities are geometrically integral:
+the complete-intersection condition is $S_2$,
+isolated singularities in dimension $m-1\ge3$
+give $R_1$, and the Koszul connectedness argument
+in Lemma~\ref{r18ce:residue-Bertini} gives
+connectedness.  They are thus connected normal
+schemes.  At the selected bad-ambient primes,
+the divisor is actually contained in the smooth
+locus of the ambient over the valuation ring
+near the special fiber, so its asserted good
+reduction is literal.
+
+\emph{5. Complete cycle domains, extension stability and density.}
+The frozen good-reduction theorem and ON17 apply
+at every finite place.  ON17 is a theorem for
+flat integral projective models of ordinary
+quadratic reduction, independent of the number
+of global ambient defining equations.  Its
+arbitrary-thickness and finite-extension
+conclusions apply anew to all cycles over
+every finite local extension.  Thus the
+full ordinary-actual G domain is obtained,
+with exact specified supports and full tests.
+PH16 and GA17 give the stated complete height
+domains over every finite number-field
+extension of $E$.
+
+For each allowed $H_1$ infinitely many integers
+$a$ remain.  A polynomial vanishing on all
+$BH_0+aH_1$ therefore vanishes on each full
+affine line and hence at $BH_0+H_1$.
+The allowed $H_1$ form a dense set, so that
+polynomial is zero.  Passing to the linear
+section-space image and its projectivization
+proves the precise density assertion.  No
+uniform spreading set as $H_1$ varies is
+needed.
+\end{proof}
+
+\subsection{Iteration without inserting a deep ambient fiber}
+
+\begin{corollary}[Specified multidegrees]
+\label{r18ce:iteration}
+Fix a number field $F_{\mathrm{base}}$, a final dimension
+$n\ge3$, and a finite multidegree
+$(d_1,\ldots,d_t)$ with each $d_i\ge3$.
+After a finite extension $E/F_{\mathrm{base}}$ there
+are smooth geometrically integral complete intersections
+of that multidegree in $\mathbf P_E^{n+t}$ having
+good or ordinary quadratic reduction at all finite
+places, with good reduction at residue characteristic
+two.  They have full local G and the complete
+complementary homological Chow-group heights over
+every finite extension of $E$.
+
+More precisely one can fix the first $t-1$ defining
+equations and one final field $E$ so that a Zariski-dense
+set of last degree-$d_t$ sections on that fixed
+ambient complete intersection has these properties.
+For $t=1$ this reduces to a weaker-field-version of
+the already frozen GP17 sector.
+\end{corollary}
+
+\begin{proof}
+Start with $\mathbf P^{n+t}_{\mathcal O_{F_{\mathrm{base}}}}$.
+Apply Theorem~\ref{r18ce:ordinary-family} in degree
+$d_1$, and choose one of its smooth generic members
+and its actual global model.  That model is a
+relative complete intersection with geometrically
+integral good or isolated-node special fibers.
+It is therefore an input to the same theorem in
+degree $d_2$.  Continue in this manner.
+Before each cut the ambient relative dimension
+is at least $n+1\ge4$, exactly as required.
+Each finite field extension preserves the geometric
+integrality and isolated-node property of the
+previous ambient model; possible node thickness
+changes do not alter this special-fiber condition.
+
+There are finitely many cuts, so their fields
+form a finite tower with finite total extension
+$E/F_{\mathrm{base}}$.  At the last cut keep
+its field, its already selected ambient, and
+all its residue data fixed, and vary the
+last section as in the density theorem.
+This proves the stated density and cycle
+coverage.  It does not claim joint density
+in the space where all prior ambient equations
+are simultaneously varied.
+\end{proof}
+
+The same iteration can begin with a specified smooth
+relative split quadric over $\mathbf Z$, as in CG18,
+followed by degrees at least three.  It therefore
+also supplies multidegrees $(2,d_2,\ldots,d_t)$ with
+$d_i\ge3$ for $i\ge2$.  No assertion about arbitrary
+degree-two steps inside an already chosen ambient
+is inferred from the degree-$d\ge3$ two-jet proof.
+
+\subsection{A final deep product degeneration}
+
+Now let the input \eqref{r18ce:ambient} have
+$m=n+1\ge5$.  This includes any of the ordinary
+complete-intersection ambient models just constructed.
+Fix $s\ge3$ and positive integers $e_1,\ldots,e_s$
+of sum $D$.  Put $\delta=\prod_{j=1}^c b_j$,
+with $\delta=1$ for projective-space ambient.
+
+\begin{theorem}[Deep full-height sections of a fixed complete intersection]
+\label{r18ce:deep-family}
+There is one finite extension $E/F$, one rational
+prime $q$ unramified in $E$, and a Zariski-dense
+set of smooth degree-$D$ divisors $X\subset Y_E$
+such that:
+\begin{enumerate}
+\item at every finite completion, every specified
+      geometrically homologically trivial rational
+      cycle has ordinary actual strong G in every
+      codimension, with exact support and full tests;
+\item at every place above $q$ the native model is
+      the CA18 product model with factor degrees
+      $e_1,\ldots,e_s$, and
+      \[
+       \operatorname{rank}N^n
+        =\delta\sum_{|I|=n+1}\prod_{i\in I}e_i
+                                -\binom{s-1}{n};
+       \tag{CE18.5}\label{r18ce:monodromy}
+      \]
+\item after the independently reviewed RI18 theorem
+      is applied at these places, the full assertion
+      holds for all new cycles over every finite
+      number-field extension of $E$, and PH16 gives
+      the complete complementary Chow-group heights
+      over every such extension.
+\end{enumerate}
+At the places away from $q$ the reductions are good
+or ordinary quadratic in odd residue characteristic.
+The fixed field and fixed ambient are part of the
+density assertion.
+\end{theorem}
+
+\begin{proof}
+Run steps 1 and 2 of
+Theorem~\ref{r18ce:ordinary-family} in degree $D$,
+fixing $H_0,S_0,E$ and all smooth residue sections.
+Before selecting $H_1$, choose actual degree-$e_i$
+factor forms over $E$ whose divisors on the smooth
+generic complete intersection $Y_E$ form a geometric
+SNC divisor with all intersections smooth of the
+expected dimension and with no $(n+2)$-fold point.
+This is obtained successively by characteristic-zero
+Bertini on the finite collection of previous strata
+and by avoiding their zero-dimensional intersections.
+The positive-dimensional complete intersections are
+geometrically connected, hence integral.  Choose
+a degree-$D$ form $Q$ transverse to each of those
+positive-dimensional strata and avoiding the
+zero-dimensional ones.  All these open conditions
+have $E$-rational choices because $E$ is infinite.
+Clear denominators and put $P=\prod_i f_i$.
+
+The ambient model is smooth away from finitely
+many primes, and all the chosen geometric
+conditions spread away from finitely many more.
+Choose a rational $q$ outside their underlying
+finite set, outside $S_0$, and outside the
+discriminant of $E/\mathbf Q$.  Then every
+$w\mid q$ has a smooth complete-intersection
+ambient model and the exact native CA18 data.
+
+Let $B=\prod_{p\in S_0}p$, $M=q^2B$, and add
+to the residue congruences \eqref{r18ce:coefficient-CRT}
+the congruence
+\[
+                         H_1\equiv P+qQ\pmod{q^2\mathcal O_E}.
+ \tag{CE18.6}\label{r18ce:deep-CRT}
+\]
+The ideals are coprime, so this is still a full
+affine coefficient lattice.  Choose $H_1$ in
+its intersection with the fixed-$H_0$ Lefschetz
+open.  Spread only after this choice, add all
+places above $q$ to the finite exceptional set,
+and choose integers $a$ with
+\[
+ \begin{gathered}
+ a\equiv1\pmod{q^2},\qquad a\equiv1\pmod B,\\
+ a\equiv0\pmod p
+   \quad\text{for the other rational primes under that set}.
+ \end{gathered}
+ \tag{CE18.7}\label{r18ce:deep-parameters}
+\]
+Exclude the finitely many singular generic members
+and put $X_a=Y_E\cap V(MH_0+aH_1)$.
+At $w\mid q$ this is exactly
+\[
+                  P+qQ_a=0,\qquad
+            Q_a=(MH_0+aH_1-P)/q,\qquad\bar Q_a=\bar Q.
+\]
+The coefficient congruences make the quotient
+integral, and $q$ has native uniformizer exponent
+one.  CA18 supplies full local G and
+\eqref{r18ce:monodromy}.
+
+At every other finite place the proof in step 4
+of Theorem~\ref{r18ce:ordinary-family} is unchanged:
+the original finitely many bad ambient fibers
+are cut by chosen smooth divisors avoiding their
+finite singular sets, the other exceptional
+places reduce to the smooth $H_0$, and all
+remaining members have good or ordinary-node
+reduction.  These give full local G.
+
+CA18 applies afresh after every unramified
+extension at a place above $q$.  These are
+exactly the inputs of RI18's norm-detection
+theorem, which covers all cycles over arbitrary
+finite extensions, retaining the full field
+degree in its final actual trace and the
+original absolute value.  Good reduction and
+ON17 already have that extension stability
+at every other place.  Hence PH16 and GA17
+give the stated complete heights over every
+finite extension of $E$.
+
+For density use the same line argument with
+$MH_0+aH_1$ as in the preceding theorem.
+The additional congruence is fixed, so its
+full affine lattice remains dense; the prime,
+field and ambient are not varied in that
+argument.  This proves the theorem.
+\end{proof}
+
+If $s\ge n+2$, the integer in
+\eqref{r18ce:monodromy} is positive, since it is at
+least $\binom{s}{n+1}-\binom{s-1}{n}
+=\binom{s-1}{n+1}>0$.
+If $s=n+1$, it equals $\delta\prod_i e_i-1$
+and is positive exactly when $\delta\prod_i e_i>1$.
+In particular, for an ambient complete intersection
+of degree $\delta\ge2$, every last degree
+$D\ge n+1$ admits such a positive-rank construction
+by taking $s=n+1$ and factor degrees
+$(1,\ldots,1,D-n)$.
+The frozen NM17 obstruction then excludes potential
+good reduction and every strict semistable dominant
+witness of crossing depth less than $n$.
+
+\subsection{An intrinsic geometric distinction in all these dimensions}
+
+\begin{proposition}[At least two nonlinear complete-intersection equations]
+\label{r18ce:not-hypersurface}
+Let $X$ be a smooth geometrically integral complete
+intersection of dimension $n\ge3$ in projective
+space, with multidegree $(a_1,\ldots,a_t)$.
+If at least two of the $a_i$ are at least two,
+then $X$ is not geometrically isomorphic to any
+smooth hypersurface of dimension $n$ in
+$\mathbf P^{n+1}$.
+\end{proposition}
+
+\begin{proof}
+Work over an algebraic closure.  The primary
+Grothendieck--Lefschetz theorem gives
+\[
+                    \operatorname{Pic}(X)=\mathbf Z[\mathcal O_X(1)]
+\]
+for a projective complete intersection of
+dimension at least three, and the same assertion
+holds for a smooth hypersurface.  The exact
+reference is SGA~2, Expose XII, Corollaire 3.7,
+checked in the recomposed primary edition,
+\url{https://wstein.org/sga/circle/SGA2.pdf},
+printed page 121 (PDF page 129).
+An isomorphism must take the positive ample
+generator to the positive ample generator.
+If the hypersurface degree is $e$, equality of
+the hyperplane top degrees would give
+\[
+                                e=\prod_{i=1}^t a_i.
+\]
+Adjunction on the two varieties gives, with
+the same identified generator,
+\[
+ e-n-2=\sum_i a_i-(n+t+1),
+             \qquad e=1+\sum_i(a_i-1).
+\]
+Set $u_i=a_i-1\ge0$.  At least two $u_i$
+are positive, so expansion of the product
+gives
+\[
+                    \prod_i(1+u_i)>1+\sum_i u_i.
+\]
+This contradicts the two displayed equalities.
+The argument uses intrinsic Picard generators;
+it does not assume beforehand that a hypothetical
+isomorphism is a projective linear isomorphism.
+\end{proof}
+
+\paragraph{Scope, failure boundary and dependencies.}
+The ordinary construction may be iterated because
+each of its outputs has only isolated singular
+special points.  After the deep final step the
+special fiber has positive-dimensional intersection
+strata; that output is not fed back into the
+avoidance lemma.  The result gives complete-height
+families for many specified complete-intersection
+multidegrees and, in the last theorem, a deep
+degeneration with nonzero extreme monodromy.
+It does not prove full G for every complete
+intersection or allow deformation of an arbitrary
+fixed cycle into one of these arithmetic families.
+
+The geometric inputs are the explicitly verified
+jet-surjectivity and finite-point avoidance
+arguments, elementary field/ideal CRT, projective
+complete-intersection cohomology from the Koszul
+complex, and the stated primary Picard theorem.
+The ordinary local domain uses frozen ON17,
+including its arbitrary-thickness and all-new-cycle
+extension corollary.  The deep last step uses
+CA18 and the separately reviewed RI18.  The
+height implication is frozen PH16 and GA17.
+Every auxiliary local descent inherits its full
+degree and original absolute-value normalization
+from these activated interfaces.  No arbitrary
+proper actual pushforward, unproved Gysin
+cancellation or general resolution-factorization
+assumption appears.  General G and arbitrary-
+variety complete unconditional height remain open.

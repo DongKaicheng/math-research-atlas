@@ -1,0 +1,223 @@
+% Round 14. New extension of the R13 smooth germ lemma; independently cross-audited.
+\section{Algebraic closed-immersion germs do not require smoothness}
+\label{r14l:section}
+
+The smooth analytic retraction used in Round 13 has a stronger
+consequence for algebraic varieties. A singular closed subvariety
+can be treated point by point through a smooth algebraic stratum.
+The resulting statement is about the original actual sheaf on
+the ordinary analytic topology, not about a replacement by forms
+on a resolution.
+
+Throughout this section $K$ has characteristic zero. Every variety
+whose actual sheaf is written is reduced and pure-dimensional;
+its analytification is good and boundaryless. Different varieties
+in one morphism may have different dimensions. This purity
+condition is retained because Mihatsch's Definition 4.2 is stated
+for pure-dimensional spaces.
+
+\begin{lemma}[Lifting a moment presentation across a closed immersion]
+\label{r14l:local-lift}
+For every algebraic locally closed immersion $j:T\hookrightarrow X$,
+the actual restriction map
+\[
+                           j^{-1}\mathcal B_X\longrightarrow\mathcal B_T
+\tag{L1}\label{r14l:restriction}
+\]
+is surjective on every stalk, in every tridegree.
+No smoothness or normality assumption is needed.
+\end{lemma}
+
+\begin{proof}
+Fix $x\in T^{\rm an}$ and an actual germ on $T$ represented
+on an ordinary neighborhood $W$ by a finite unit tuple
+$u=(u_1,\ldots,u_s)$ and an ambient Euclidean delta form $\gamma$.
+Locally in $X$ the immersion is closed. Choose an ordinary
+ambient neighborhood $O$ of $x$ such that
+$O\cap T^{\rm an}\subset W$ and $T\cap O$ is closed in $O$.
+Choose an affinoid neighborhood $V\subset O$ with $x$ in its
+ordinary interior. The closed analytic subspace $T\cap V$ is
+affinoid, with algebra $A/I$ if $V=\mathcal M(A)$.
+The restrictions of the $u_i$ to $T\cap V$ lift to elements
+$\widetilde u_i\in A$. Since
+$|\widetilde u_i(x)|=|u_i(x)|>0$, their simultaneous nonvanishing
+locus contains an ordinary neighborhood $V'$ of $x$ inside
+$\operatorname{Int}(V)$. On $V'$ all $\widetilde u_i$ are
+analytic units. The actual form
+$t_{\widetilde u}^{\star}(\gamma)$ is a lift of the prescribed
+germ by Mihatsch's genuine analytic pullback theorem. The
+construction preserves the ambient tridegree.
+\end{proof}
+
+\begin{theorem}[Arbitrary algebraic immersion germ isomorphism]
+\label{r14l:germ-iso}
+For every algebraic locally closed immersion of the varieties
+specified above, (L1) is an isomorphism of trigraded sheaves
+with all actual differential operators. In particular,
+\[
+                          j^{-1}\mathcal B_X\simeq\mathcal B_T
+\tag{L2}\label{r14l:germ-isomorphism}
+\]
+holds when either or both varieties are singular.
+\end{theorem}
+
+\begin{proof}
+Only injectivity remains. Let an actual germ $\alpha$ on $X$
+restrict to zero on $T$ at $x$. Locally embed the algebraic
+variety $X$ as a closed subvariety of a smooth affine space $P$.
+Lemma~\ref{r14l:local-lift} lifts the chosen germ of $\alpha$
+to an actual germ $\widetilde\alpha$ on $P$.
+
+Choose a smooth algebraic locally closed subvariety
+$S\subset T$ whose analytification contains $x$. Such an $S$
+always exists over a characteristic-zero field: take the reduced
+Zariski closure in $T$ of the scheme point underlying $x$ and
+then its nonempty smooth locus. That scheme point is the generic
+point of its closure, hence belongs to this smooth locus.
+Equivalently, use a finite algebraic smooth stratification of $T$.
+After shrinking an algebraic ambient open containing $S$, the
+immersion $S\hookrightarrow P$ is closed and both varieties
+are smooth.
+
+The restriction of $\widetilde\alpha$ to $S$ has zero germ at
+$x$, since it factors through its zero restriction to $T$.
+The Round 13 smooth closed-immersion germ lemma now implies
+$\widetilde\alpha=0$ at $x$ in $\mathcal B_P$.
+Restricting to $X$ gives $\alpha=0$. This proves injectivity.
+All maps are genuine analytic pullbacks, so they preserve the
+trigrading and commute with the actual differentials.
+\end{proof}
+
+\begin{corollary}[Ordinary degreewise extension and zero-neighborhood kernel]
+\label{r14l:global-extension}
+Let $j:T\hookrightarrow X$ be closed, with $X^{\rm an}$
+paracompact and admitting ordinary smooth partitions of unity.
+Then restriction on global actual forms is surjective in every
+degree. Its kernel consists exactly of the forms which vanish
+on an ordinary open neighborhood of $T^{\rm an}$.
+\end{corollary}
+
+\begin{proof}
+Choose local moment lifts and multiply them by an ordinary
+smooth partition of unity on $X$ subordinate to their open
+neighborhoods and the complement of $T$. Their locally finite
+sum, with the complement term chosen zero, lifts the prescribed
+global form. This is degreewise extension only; multiplying by
+a partition does not commute with $d'$ or $d''$.
+
+The kernel assertion follows directly from (L2): zero
+restriction means zero ambient germ at each point of $T$.
+The union of the resulting zero neighborhoods is the required
+ordinary neighborhood of $T^{\rm an}$.
+\end{proof}
+
+\subsection{Actual descent through a singular closed-locus square}
+
+\begin{theorem}[Exact actual square for a proper modification]
+\label{r14l:modification-square}
+Let $q:Y\to X$ be a proper algebraic morphism which is an
+isomorphism outside a reduced closed subvariety $Z\subset X$.
+Put $E=(q^{-1}Z)_{\rm red}$, and write $i:E\hookrightarrow Y$,
+$j:Z\hookrightarrow X$, and $q_E:E\to Z$. Assume that
+$X,Y,Z,E$ are pure-dimensional varieties and that the ambient
+analytic spaces admit ordinary smooth partitions of unity.
+The following is degreewise exact as a sequence of actual
+double complexes of global forms:
+\[
+0\longrightarrow\mathcal B(X)
+ \xrightarrow{(q^*,j^*)}\mathcal B(Y)\oplus\mathcal B(Z)
+ \xrightarrow{\ i^*-q_E^*\ }\mathcal B(E)
+ \longrightarrow0.
+\tag{L3}\label{r14l:modification-sequence}
+\]
+The center and exceptional variety may be singular; no normal
+crossing or smooth-intersection hypothesis is used.
+\end{theorem}
+
+\begin{proof}
+Surjectivity of the last arrow follows from
+Corollary~\ref{r14l:global-extension} for $i$.
+Suppose $(\beta,\gamma)$ lies in its kernel.
+Choose a global form $\alpha_0$ on $X$ with
+$j^*\alpha_0=\gamma$. Then
+$\beta-q^*\alpha_0$ has zero restriction to $E$, so it
+vanishes on an ordinary neighborhood $N$ of $E$.
+Properness makes $q(Y\setminus N)$ closed and disjoint from
+$Z$. Hence there is an ordinary neighborhood $V$ of $Z$ with
+$q^{-1}(V)\subset N$.
+
+Over $X\setminus Z$ transport $\beta-q^*\alpha_0$ through
+the isomorphism $q$; it vanishes on $V\setminus Z$ and
+therefore glues with the zero form on $V$. Call the resulting
+global actual form $\alpha_1$. Then
+$q^*\alpha_1=\beta-q^*\alpha_0$ and $j^*\alpha_1=0$.
+Thus $\alpha_0+\alpha_1$ maps to $(\beta,\gamma)$.
+
+If $(q^*\alpha,j^*\alpha)=0$, the first component makes
+$\alpha$ zero outside $Z$ and the second makes it zero on an
+ordinary neighborhood of $Z$. Hence $\alpha=0$.
+Finally all arrows are actual pullbacks, so they commute with
+both differentials. This proves (L3) as a short exact double
+complex, not merely as a sequence of currents.
+\end{proof}
+
+\begin{corollary}[The same actual Aeppli obstruction for singular centers]
+\label{r14l:aeppli}
+Under the hypotheses of Theorem~\ref{r14l:modification-square},
+there is an exact sequence
+\[
+\begin{split}
+H_{\mathrm A}^{r-1,r-1}(Y)\oplus H_{\mathrm A}^{r-1,r-1}(Z)
+ &\longrightarrow H_{\mathrm A}^{r-1,r-1}(E)
+ \xrightarrow{\ \delta\ }H_{\mathrm{BC}}^{r,r}(X)\\
+ &\longrightarrow H_{\mathrm{BC}}^{r,r}(Y)
+                       \oplus H_{\mathrm{BC}}^{r,r}(Z).
+\end{split}
+\tag{L4}\label{r14l:aeppli-sequence}
+\]
+Every group here is the actual group on the original analytic
+space. If $r>\dim Z$, the kernel of pullback to $Y$ is
+identified with
+\[
+\frac{H_{\mathrm A}^{r-1,r-1}(E)}
+ {i^*H_{\mathrm A}^{r-1,r-1}(Y)+
+                         q_E^*H_{\mathrm A}^{r-1,r-1}(Z)}.
+\tag{L5}\label{r14l:obstruction-quotient}
+\]
+\end{corollary}
+
+\begin{proof}
+Apply the direct lift-and-differentiate construction of the
+Round 13 Aeppli connecting map to the short exact double
+complex (L3). The proof uses only degreewise exactness and the
+double-complex identities, so applies verbatim. In particular,
+no purported general long exact sequence for Bott--Chern
+cohomology is assumed. If $r>\dim Z$, actual forms on $Z$ in
+bidegree $(r,r)$ vanish, so its Bott--Chern term is zero.
+Exactness gives precisely (L5).
+\end{proof}
+
+\paragraph{Purity boundary and relation to the arrangement note.}
+An arbitrary inverse image of a closed algebraic set need not
+be pure-dimensional. We do not write $\mathcal B(E)$ for such
+a space under Mihatsch's present definition. Formula (L3)
+applies directly, for example, to a normalized blowup of a
+pure-dimensional center when its reduced inverse image is an
+effective Cartier divisor, and to modifications presented with
+a pure Cartier closed locus. The compatible-family construction
+for finite pure arrangements remains available when the chosen
+union is not covered by this purity hypothesis. The new theorem
+removes smoothness assumptions; it does not silently change the
+definition on nonpure spaces.
+
+\paragraph{Primary inputs.}
+Mihatsch's Definition 4.2 and Theorem 4.5 supply the actual
+local moment presentations and genuine pullback on
+pure-dimensional boundaryless spaces:
+\url{https://arxiv.org/html/2112.10018v4}.
+The affinoid quotient property is the defining local property of
+a closed analytic immersion. The smooth ordinary germ
+isomorphism is the separately audited Round 13 theorem based on
+Berkovich's degree-one etale germ criterion. The extension from
+smooth to singular algebraic immersions is the new stratum
+argument proved here.
