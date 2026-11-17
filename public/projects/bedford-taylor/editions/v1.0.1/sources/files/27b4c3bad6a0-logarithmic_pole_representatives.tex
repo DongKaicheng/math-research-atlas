@@ -1,0 +1,395 @@
+\section{Preserving compact-sublevel poles in every power class}
+\label{sec:r11-logarithmic-pole-representatives}
+
+Keep the arbitrary original background, the strict analytic
+Laurent box $V$, its closed box $C$, and its barrier $\rho$
+from (TC1)--(TC4). In particular $\overline V$ is contained
+in the interior of one original affinoid, and $S$ extends to
+an ordinary neighborhood of $C$. Put $q=n-p\geq1$.
+All assertions below concern the actual given representatives;
+they change a potential by an explicit formula, rather than
+changing it on an exceptional set.
+
+\begin{lemma}[Logarithmic attenuation and exponential capacity tails]
+\label{lem:r11-logarithmic-attenuation}
+Let $u:V\to[-\infty,0]$ be extended classical psh with
+$\mathrm{BG}(u,0)$, without any no-loss assumption. Set
+\[
+                         v=-\log(1-u),
+ \tag{LP1}
+\]
+with the value $-\infty$ at each actual pole of $u$.
+Then $v$ is negative extended classical psh, has the same
+actual pole set, satisfies $\mathrm{BG}(v,0)$, and belongs
+to $\mathcal F_{S,\partial}(V)$. For some finite $C_0,t_0$
+depending on the stated data, one has
+\[
+               C_S(\{v<-t\};V)\leq C_0e^{-qt}
+                                     \qquad(t\geq t_0).
+ \tag{LP2}
+\]
+For every compact $H\Subset V$ and every $0<c<q$,
+\[
+                \int_H e^{-cv}\,d\mu_v<\infty.
+ \tag{LP3}
+\]
+The integral omits the $\mu_v$-null pole set. No global
+finite mass at the ordinary boundary is inferred at this stage.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this
+explicit exponential-tail attenuation, using (BQ1) as input.
+
+\begin{proof}
+The scalar map $F(r)=-\log(1-r)$ on $r\leq0$ has
+$F'(r)=(1-r)^{-1}>0$ and $F''(r)=(1-r)^{-2}>0$.
+Apply frozen convex increasing composition to the bounded
+canonical truncations of $u$ and pass to their decreasing
+limit. This proves the asserted classical property and actual
+values. The identity
+\[
+                    \{v<-t\}=\{u<-(e^t-1)\}
+ \tag{LP4}
+\]
+proves the compact-sublevel condition, the equality of poles,
+and, by (BQ1), the bound $C(e^t-1)^{-q}$.
+For sufficiently large $t$ this is (LP2).
+The capacity-tail criterion (BC3)--(BC5) now puts $v$ in
+the no-loss boundary class.
+
+To prove (LP3), partition the sufficiently deep finite-value
+locus into the Borel strips
+\[
+                     A_m=\{m\leq-v<m+1\},
+                           \qquad m\in\mathbf N.
+ \tag{LP5}
+\]
+On $A_m$, strict maximum locality identifies $\mu_v$ with
+the bounded measure of $v\vee(-m-2)$. Its normalized capacity
+bound gives
+\[
+ \mu_v(A_m)
+    \leq(m+2)^q C_S(A_m;V)
+    \leq(m+2)^q C_S(\{v<-m+1\};V)
+    \leq C_1(m+2)^q e^{-qm}.
+ \tag{LP6}
+\]
+The harmless shift by one keeps the last carrier strictly
+open and includes any equality-level mass. Multiplication by
+$e^{c(m+1)}$ and summation converge if $c<q$.
+On the remaining bounded-value portion of the compact $H$,
+local finiteness of $\mu_v$ completes the proof.
+\end{proof}
+
+\begin{theorem}[One actual pole representative in every finite power class]
+\label{thm:r11-all-power-pole-representative}
+Let $u$ satisfy Lemma~\ref{lem:r11-logarithmic-attenuation}.
+For every prescribed compact $H\Subset V$ and every
+$\varepsilon>0$ there exists a negative extended classical
+psh function $g$ on $V$ such that
+\[
+ \begin{gathered}
+  g=-\log(1-u)-\varepsilon
+       \quad\hbox{on an ordinary neighborhood of }H
+                      \hbox{ and of the pole set},\\
+  \{g=-\infty\}=\{u=-\infty\},\qquad
+  \mathrm{BG}(g,0),\qquad \mu_g(V)<\infty,\\
+  g\in\bigcap_{\sigma>0}\mathcal E^\sigma_{S,\partial}(V).
+ \end{gathered}
+ \tag{LP7}
+\]
+More precisely, $g=A\rho$ on an ordinary boundary collar,
+for a finite $A>0$, and there are finite constants such that
+for all sufficiently large real $t$ and integers $j$,
+\[
+ \begin{split}
+ C_S(\{g<-t\};V)&\leq C_2e^{-qt},\\
+ \mu_g\{g\leq-t\}&\leq C_3(1+t)^q e^{-qt},\\
+ \|\mu_{g,j}-\mu_g\|_{\mathrm{TV}(V)}
+                  &\leq C_4(1+j)^q e^{-qj}.
+ \end{split}
+ \tag{LP8}
+\]
+For every $0<c<q$, including the actual canonical truncations,
+\[
+       \int_V e^{-cg}\,d\mu_g<\infty,
+       \qquad
+       \sup_{j\geq1}\int_Ve^{-cg_j}\,d\mu_{g,j}<\infty.
+ \tag{LP9}
+\]
+In fact these truncation exponential moments increase to the
+displayed limiting moment. The function $g$ itself is chosen
+using only $u,H,\varepsilon,V,\rho$: it is independent of the
+background. The same $g$ therefore satisfies (LP7)--(LP9)
+simultaneously for every original symmetric middle-positive
+separately closed background of every degree $p<n$ extending
+to a neighborhood of $C$, with the corresponding $q=n-p$.
+Constants may depend on $S,u,V,H,\varepsilon,c$; no uniformity
+over backgrounds or prescribed potentials is asserted.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} with the
+explicit strict-box and background-extension hypotheses.
+
+\begin{proof}
+Write $v=-\log(1-u)$ and choose $M>0$. The compact set
+\[
+                      K=H\cup\overline{\{v<-M\}}
+                              \Subset V
+\]
+contains the pole set. Choose an ordinary relatively compact
+neighborhood $W$ of $K$ inside $V$. On the compact
+$\overline W$, continuity and strict negativity of $\rho$
+give an $A>0$ so large that
+$A\rho<-M-\varepsilon-1$ everywhere there.
+Define $g$ on the following two ordinary open sets:
+\[
+ \begin{cases}
+ g=v-\varepsilon&\text{on }W,\\
+ g=\max(v-\varepsilon,A\rho)&\text{on }V\setminus K.
+ \end{cases}
+ \tag{LP10}
+\]
+On their overlap $W\setminus K$ one has $v\geq-M$,
+so the first branch strictly exceeds $A\rho$.
+The definitions therefore agree on the entire ordinary overlap.
+The local classical gluing property, equivalently the frozen
+curvewise definition after every complete extension, proves
+that $g$ is extended classical psh on $V$.
+It has the same actual poles as $v$, since those lie in $K$
+and the function is bounded below on $V\setminus K$.
+It also gives the required equality near $H$ and all poles.
+
+Near the ordinary boundary, the condition
+$\rho>-\varepsilon/(2A)$ makes the second branch in (LP10)
+strictly larger than $v-\varepsilon\leq-\varepsilon$.
+Thus $g=A\rho$ on this boundary collar. Its strict negative
+sublevels are consequently contained in a compact subset of
+$V$, the union of $\overline W$ and an appropriate compact
+negative sublevel of $\rho$.
+For $t>M+\varepsilon$, the portion outside $K$ cannot belong
+to $\{g<-t\}$, and the exact deep-sublevel identity is
+\[
+                    \{g<-t\}=\{v<-(t-\varepsilon)\}.
+ \tag{LP11}
+\]
+Equation (LP2) gives the first estimate in (LP8).
+The capacity-tail criterion therefore puts $g$ in
+$\mathcal F_{S,\partial}(V)$.
+
+Choose a compact subset of $V$ outside which $g=A\rho$.
+On that compact subset $\mu_g$ is finite by the no-loss
+class theorem. Outside it ordinary locality identifies the
+measure with $A^q\mu_\rho$, whose total mass is finite by
+(TC4). Thus $\mu_g(V)<\infty$.
+In particular this argument does not assert local boundedness
+of $g$ near its interior poles or attempt to apply bounded
+CLN across them.
+
+Repeat the integer-strip estimate (LP6), now with $g$ and
+the global finite mass on its bounded-value part. Summing
+from $m=\lfloor t\rfloor$ gives the second estimate in
+(LP8): for the decreasing exponential series,
+\[
+ \sum_{m\geq N}(m+2)^q e^{-qm}
+                         \leq C_q(N+2)^q e^{-qN}.
+\]
+The same strip estimate with $e^{c(m+1)}$ proves the first
+assertion of (LP9) for every $c<q$. All finite powers are
+bounded by a constant times this exponential, so (LP7)
+follows from the definition of the power classes.
+
+For the uncut canonical product, capacity normalization gives
+\[
+ \nu_{g,j}(V)
+       \leq j^q C_S(\{g\leq-j\};V)
+       \leq j^q C_S(\{g<-j+1\};V)
+       \leq C_5j^q e^{-qj}.
+ \tag{LP12}
+\]
+The current $\mu_{g,j}$ agrees with $\mu_g$ on $\{g>-j\}$.
+The variation on the complement is at most the sum of the
+discarded mass (LP12) and the second bound in (LP8). This
+proves the third bound there. For any fixed $j$, the bounded
+function $g_j$ equals $A\rho$ on a sufficiently narrow
+ordinary collar and extends as that bounded classical function
+across $\partial V$. Bounded CLN and the extension of $S$
+give $\mu_{g,j}(V)<\infty$.
+
+Finally split the weighted truncation integral at $\{g>-j\}$:
+\[
+ \int_V e^{-cg_j}\,d\mu_{g,j}
+    =\int_{\{g>-j\}}e^{-cg}\,d\mu_g
+                            +e^{cj}\nu_{g,j}(V).
+ \tag{LP13}
+\]
+The first term is bounded by the established finite integral.
+The second is $O(j^q e^{-(q-c)j})$ for large $j$, and the
+finitely many remaining terms are finite. This proves (LP9).
+There is also an exact distributional strengthening. Since
+$g$ has no loss, (NS7) at level $-j$ gives
+$\nu_{g,j}(V)=\mu_g\{g\leq-j\}$. Consequently
+\[
+ (-g_j)_*\mu_{g,j}
+       =(y\mapsto\min(y,j))_*\bigl((-g)_*\mu_g\bigr).
+ \tag{LP18}
+\]
+Indeed the two sides agree on the finite-value carrier $g>-j$,
+and both remaining parts have the same mass at the scalar value
+$j$. The omitted pole is $\mu_g$-null. Apply (LP18) to the
+increasing weights $e^{c\min(y,j)}$ and use monotone convergence
+to obtain the claimed monotone convergence of exponential
+moments. The construction (LP10) contains no background datum,
+so repeating the proof for each allowed $S$ proves the simultaneous
+quantifier stated above.
+Every locality or capacity normalization used the full original
+tester class on the same $V$.
+\end{proof}
+
+\begin{corollary}[An exact family of complete relative pole sets]
+\label{cor:r11-all-power-complete-poles}
+On the stated domain, the following two families of subsets
+are equal:
+\[
+ \begin{split}
+ &\bigl\{\{u=-\infty\}:u\leq0\text{ extended classical psh},
+                                  \ \mathrm{BG}(u,0)\bigr\},\\
+ &\bigl\{\{g=-\infty\}:g\in\bigcap_{\sigma>0}
+       \mathcal E^\sigma_{S,\partial}(V),\ \mu_g(V)<\infty\bigr\}.
+ \end{split}
+ \tag{LP14}
+\]
+Each such set, and every subset of it, has zero ordinary-open
+outer $S$-capacity. The same set is avoided by every original
+coefficient of $S$ and every finite product of power-class
+potentials, and by every graded energy current already defined.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the exact
+pole-family equality. The nullity assertions have status
+\texttt{DIRECT\_COROLLARY}; their inputs are (BQ2), (DG3), and (TC9).
+
+\begin{proof}
+Theorem~\ref{thm:r11-all-power-pole-representative} proves the
+first inclusion in (LP14); the reverse is part of the printed
+definition of every power class. Outer nullity follows from
+(BQ2), and is inherited by arbitrary subsets. For the complete
+pole set, which is Borel, (DG3) and
+Corollary~\ref{cor:r11-power-class-null-ideal} give all the
+stated coefficient-null assertions. Their positive variation
+measures then also vanish on all measurable subsets.
+\end{proof}
+
+\begin{corollary}[Exponential coefficient and energy calculus for the representative]
+\label{cor:r11-logarithmic-all-degree-exponential}
+Let $g$ be the function constructed in (LP10), let
+$N_k=N_k(g)$, and let $T_{k,j}=T_k(g_j)$.
+For every original compact smooth complementary test $\eta$,
+$0\leq k\leq q$, and $0<c<q$, the coefficient multiplier
+$e^{-cg}N_k$ is locally defined and
+\[
+ \bigl\|\mu_{e^{-cg_j}T_{k,j}-e^{-cg}N_k,\eta}\bigr\|_{\rm TV}
+       \leq C_{\eta,c}(1+j)^k e^{-(q-c)j}
+ \tag{LP15}
+\]
+for all sufficiently large $j$. For $0\leq k\leq q-1$,
+the analogous statement for the energy currents is
+\[
+ \bigl\|\mu_{e^{-cg_j}\Gamma_{T_{k,j}}(g_j)
+                     -e^{-cg}\Gamma_{N_k}(g),\eta}\bigr\|_{\rm TV}
+       \leq C'_{\eta,c}(1+j)^{k+2}e^{-(q-c)j}.
+ \tag{LP16}
+\]
+Here the test degree in (LP16) is complementary to the energy
+degree. In particular, throughout $0\leq k\leq q-1$,
+\[
+ D(e^{-cg}N_k)
+      =-c e^{-cg}N_{k+1}
+                          +c^2e^{-cg}\Gamma_{N_k}(g)
+ \tag{LP17}
+\]
+on all original compact smooth tests. The energy currents need
+not be separately closed. The signed right side of (LP17) is
+separately closed as a whole by that identity, but is not
+asserted to be positive. The $N_k$ themselves are the already established
+separately closed middle-positive currents, with $N_0=S$.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+exponential weights; existence, closedness and the finite-power
+energy construction are inputs from the all-degree theorems.
+
+\begin{proof}
+Since $g$ belongs to every positive power class, the original
+all-degree products, energy currents and their coherent finite
+level restrictions exist by
+Theorems~\ref{thm:r11-power-full-recursion} and
+\ref{thm:r11-power-graded-energy}. No exponential assertion
+is used for their initial construction.
+
+Fix a positive original trace control for $\eta$ supplied by
+(DG2). On the strip $A_m=\{m\leq-g<m+1\}$, strict
+bounded locality allows every slot to be replaced by its
+truncation at $-m-2$. Equations (DG3) and (LP8) bound the
+resulting trace by
+\[
+                         C_\eta(m+2)^k e^{-qm}.
+\]
+The same statement for the energy trace follows from (PG8),
+with $k$ replaced by $k+2$. Energy locality here is the
+already proved shifted-square/four-branch locality, not an
+inference from equality of arbitrary Borel representatives.
+Multiplication by $e^{c(m+1)}$ and summation prove local
+exponential integrability and the limiting tail bounds.
+The pole set gives zero trace mass, including at $k=0$,
+by (DG3) and its outer capacity nullity.
+
+On $\{g\leq-j\}$, the entire uncut curvature trace is
+bounded by $C_\eta j^k C_S\{g\leq-j\}$, and its weighted
+version by $e^{cj}$ times that quantity. The corresponding
+energy bound is $C_\eta j^{k+2}e^{cj}C_S\{g\leq-j\}$.
+Using the strict enlargement in (LP12) bounds both by the
+displayed exponential rates. On $\{g>-j\}$, the respective
+weighted measures agree exactly by the established locality.
+Adding the uncut and limiting tails proves (LP15)--(LP16),
+first for positive traces and then for every original coefficient.
+
+The bounded smooth scalar chain identity is
+\[
+ D(e^{-cg_j}T_{k,j})
+     =-c e^{-cg_j}T_{k+1,j}
+                  +c^2e^{-cg_j}\Gamma_{T_{k,j}}(g_j).
+\]
+Pass the three terms through (LP15)--(LP16) and use
+distributional continuity. This proves (LP17).
+No differentiation of a restricted current is performed,
+and the construction and all bounds remain valid after
+each actual moment refinement of a fixed test.
+\end{proof}
+
+\paragraph{Exact advance and remaining polar gate.}
+The frozen R2 trace-null witness theorem supplies a
+measure-dependent attenuation for a specified nonconcentrating
+trace. This section instead starts with the explicit compact
+sublevel hypothesis, uses the new arbitrary-$S$ capacity tail,
+and constructs one actual representative in every finite power
+class, with a global boundary collar and quantitative exponential
+control. It does not audit or replace that frozen theorem.
+
+The unrestricted converse that every outer-$S$-capacity-null set
+lies in a pole set in (LP14) is \texttt{FALSE} without a
+nondegeneracy qualification. For example, on an original open
+unit disc take $S=0$ and $E=V$. Its relative capacity is zero.
+A potential with $E\subset\{u=-\infty\}$ would be identically
+$-\infty$ and its strict negative sublevel would be all of $V$,
+whose closure meets the ordinary boundary; it cannot satisfy
+$\mathrm{BG}(u,0)$. Frozen proper-support examples give the
+same obstruction for nonzero backgrounds away from their support.
+An appropriate converse with explicit local nondegeneracy and
+domain hypotheses remains \texttt{OPEN}. Nor is a general
+ambient pluripolar set asserted to admit a global compact-sublevel
+defining potential. The frozen relative-support counterexamples
+continue to prevent an unrestricted identification of relative
+nullity with ambient negligible or pluripolar sets.
+The strict-box and extension hypotheses are used to control
+the ordinary boundary; removing them is not part of this proof.

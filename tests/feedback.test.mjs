@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {
-  FEEDBACK_CATEGORIES, feedbackContext, feedbackIssueUrl,
+  FEEDBACK_CATEGORIES, feedbackContext, feedbackIssueUrl, feedbackIssueDraft, MAX_ISSUE_URL_LENGTH,
   issueCategory, issueProject, matchesFeedback, isRepositoryIssueUrl,
 } from '../lib/feedback.mjs';
 
@@ -43,6 +43,44 @@ test('Context can be round-tripped through encoded query parameters', () => {
   assert.deepEqual(feedbackContext(new URLSearchParams(context)), context);
   assert.deepEqual(feedbackContext('?' + new URLSearchParams(context)), context);
   assert.deepEqual(feedbackContext({}), {project: '', entry: '', version: '', page: ''});
+});
+
+test('Overlong exact references are omitted, never truncated into a different citation', () => {
+  const page = 'https://example.org/' + 'a'.repeat(1100) + '#proof';
+  const result = feedbackIssueDraft(repository, 'correction', {...context, page});
+  assert.equal(feedbackContext({page}).page, '');
+  assert.deepEqual(result.omitted, ['page']);
+  assert.equal(new URL(result.url).searchParams.get('target'), context.entry);
+  assert.equal(new URL(result.url).searchParams.get('version'), context.version);
+  assert.equal(feedbackContext({entry: 'X'.repeat(129)}).entry, '');
+  assert.equal(feedbackContext({version: 'v'.repeat(121)}).version, '');
+});
+
+test('Encoded Unicode context stays within the Issue draft URL budget and reports omissions', () => {
+  const page = 'https://example.org/?q=' + 'é'.repeat(140) + '#proof';
+  const c = {...context, page, version: '版'.repeat(120)};
+  assert.ok(feedbackContext(c).page.endsWith('#proof'), 'The source reference itself remains exact');
+  const result = feedbackIssueDraft(repository, 'correction', c);
+  assert.ok(result.url.length <= MAX_ISSUE_URL_LENGTH);
+  assert.ok(result.omitted.includes('page'));
+  assert.equal(new URL(result.url).searchParams.get('target'), context.entry);
+  assert.equal(new URL(result.url).searchParams.get('project'), context.project);
+});
+
+test('Bedford–Taylor feedback retains a fixed edition, source anchor, and permanent ID', () => {
+  const bt = {
+    project: 'bedford-taylor', entry: 'R01', version: 'v0.18.0',
+    page: 'https://example.github.io/math-atlas/projects/bedford-taylor/editions/v0.18.0/results/r01/#proof',
+  };
+  const incoming = feedbackContext(new URLSearchParams(bt));
+  assert.deepEqual(incoming, bt);
+  const url = new URL(feedbackIssueUrl(repository, 'correction', incoming));
+  assert.equal(url.searchParams.get('project'), 'bedford-taylor');
+  assert.equal(url.searchParams.get('version'), 'v0.18.0');
+  assert.equal(url.searchParams.get('target'), bt.entry + ' — ' + bt.page);
+  assert.equal(url.searchParams.get('title'), '[Correction] [bedford-taylor] ');
+  const general = new URL(feedbackIssueUrl(repository, 'general', incoming));
+  for (const field of ['project', 'target', 'version']) assert.equal(general.searchParams.has(field), false);
 });
 
 test('Untrusted context cannot select an external endpoint or unsafe URL scheme', () => {

@@ -1,0 +1,391 @@
+\section{Uniform coarea capacity for arbitrary backgrounds}
+\label{sec:r11-uniform-coarea-capacity}
+
+Fix an original ordinary domain $\Omega$ and an arbitrary
+allowed positive closed $(p,p)$-current $S$.  Put $q=n-p\ge1$.
+All assertions below are local on compact subsets of $\Omega$,
+and the capacity tester class always uses this same domain:
+\[
+ \mathcal P(\Omega)
+  =\{v\in\mathcal C_b(\Omega):0\le v\le1\},
+ \qquad
+ C_S(E;\Omega)
+  =\sup_{v\in\mathcal P(\Omega)}T_{S,q}(v,\ldots,v)(E).
+ \tag{EC1}
+\]
+Its ordinary-open outer regularization is $C_S^*$.
+No unrestricted Borel identification of $C_S$ and $C_S^*$
+is assumed.  Let $f=a-b$, where $a,b$ are classical psh and
+bounded on $\Omega$.  For a normalized tuple
+$\mathbf v=(v_1,\ldots,v_{q-1})\in\mathcal P(\Omega)^{q-1}$,
+write
+\[
+ Q_{\mathbf v}=T_{S,q-1}(v_1,\ldots,v_{q-1}).
+ \tag{EC2}
+\]
+When $q=1$ this means $Q_{\varnothing}=S$.
+Each $Q_{\mathbf v}$ is an original positive separately closed
+$(n-1,n-1)$-current, even though $S$ is otherwise arbitrary.
+
+\begin{definition}[The energy capacity of a bounded difference]
+\label{def:r11-energy-layer-capacity}
+For Borel $E\subset\Omega$ and arbitrary $A\subset\Omega$ put
+\[
+ \begin{split}
+ \mathsf e_{S,f}(E;\Omega)
+    &=\sup_{\mathbf v\in\mathcal P(\Omega)^{q-1}}
+                          \Gamma_{Q_{\mathbf v}}(f)(E),\\
+ \mathsf e_{S,f}^{\mathrm o}(A;\Omega)
+    &=\inf_{\substack{G\supset A\\G\text{ ordinary open in }\Omega}}
+                                      \mathsf e_{S,f}(G;\Omega).
+ \end{split}
+ \tag{EC3}
+\]
+This is a capacity attached to the energy of the specified $f$;
+it is not a redefinition of $C_S$.  It is finite on compact
+cores by the frozen relative energy and CLN estimates.
+\end{definition}
+
+\begin{lemma}[A uniform bound by the original BT capacity]
+\label{lem:r11-energy-layer-BT-bound}
+Let $m_a=\sup_\Omega a-\inf_\Omega a$ and define $m_b$
+similarly.  Then for all Borel $E$ and arbitrary $A$,
+\[
+ \begin{split}
+ \mathsf e_{S,f}(E;\Omega)&\le B_f C_S(E;\Omega),\\
+ \mathsf e_{S,f}^{\mathrm o}(A;\Omega)&\le B_f C_S^*(A;\Omega),
+ \qquad
+ B_f=\frac{q^q}{q!}(m_a^2+m_b^2).
+ \end{split}
+ \tag{EC4}
+\]
+Both capacities in (EC3) are monotone and countably subadditive.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of mixed
+positivity and the bounded energy identity.
+
+\begin{proof}
+For $m_a>0$ put $a_0=(a-\inf a)/m_a\in\mathcal P(\Omega)$.
+Since $a_0^2$ is normalized classical and $Q_{\mathbf v}$ is
+positive closed,
+\[
+ \Gamma_{Q_{\mathbf v}}(a)
+  =m_a^2\left(\tfrac12D(a_0^2Q_{\mathbf v})
+                              -a_0D(a_0Q_{\mathbf v})\right)
+  \le\tfrac12m_a^2T_{S,q}(a_0^2,\mathbf v).
+\]
+If $m_a=0$ its energy is zero.  The same applies to $b$.
+Positivity of $\Gamma_Q(a+b)$ gives
+$\Gamma_Q(a-b)\le2\Gamma_Q(a)+2\Gamma_Q(b)$.
+For any normalized tuple $(w_1,\ldots,w_q)$, the expansion of
+$T_{S,q}(\sum_iw_i,\ldots,\sum_iw_i)$ contains the mixed
+term $q!T_{S,q}(w_1,\ldots,w_q)$ and has all terms positive.
+The average $q^{-1}\sum_iw_i$ is normalized, hence
+\[
+ T_{S,q}(w_1,\ldots,w_q)(E)
+                         \le\frac{q^q}{q!}C_S(E;\Omega).
+\]
+Combining these inequalities proves the first line of (EC4).
+Taking ordinary open neighborhoods proves its second line.
+The remaining assertions follow by taking suprema of positive
+measure inequalities and then ordinary open covers.
+\end{proof}
+
+\begin{theorem}[A uniform bounded coarea density]
+\label{thm:r11-uniform-coarea-density}
+Let $K\Subset\Omega$ be compact.  Choose an original smooth
+compact function $0\le\chi\le1$, equal to one on a neighborhood
+of $K$.  There is a finite constant $A_{\chi,S,a,b}$ such that,
+for every normalized tuple $\mathbf v$, the coarea density of
+Corollary~\ref{cor:r11-energy-bv-density} satisfies
+\[
+ \|k_{\chi,f,Q_{\mathbf v}}\|_{\infty}
+ +\operatorname{Var}(k_{\chi,f,Q_{\mathbf v}})
+                                      \le A_{\chi,S,a,b}.
+ \tag{EC5}
+\]
+In particular, for every Borel $B\subset\mathbf R$,
+\[
+ \sup_{\mathbf v}
+  \int_{\{f\in B\}}\chi\,d\Gamma_{Q_{\mathbf v}}(f)
+                      \le A_{\chi,S,a,b}\,\mathcal L^1(B).
+ \tag{EC6}
+\]
+The constants are independent of the tuple and of actual
+moment refinements.  They may depend on the fixed original
+compact geometry, the local coefficient masses of $S$, and
+the indicated bounds for $a,b$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+By (LC10)--(LC12) it suffices to bound uniformly
+\[
+ \int\chi\,|D(fQ_{\mathbf v})|
+                  +\int|\Gamma_{Q_{\mathbf v}}(\chi,f)|.
+ \tag{EC7}
+\]
+Because $D(fQ_{\mathbf v})=D(aQ_{\mathbf v})-D(bQ_{\mathbf v})$
+is a difference of two positive mixed BT measures, its first
+term is bounded by the relative CLN estimate, uniformly in the
+normalized tail $\mathbf v$.  For the second term use the
+measure-valued Cauchy--Schwarz inequality on a fixed compact
+neighborhood of $\operatorname{supp}\chi$:
+\[
+ \int|\Gamma_{Q_{\mathbf v}}(\chi,f)|
+ \le
+ \left(\int\Gamma_{Q_{\mathbf v}}(\chi)\right)^{1/2}
+ \left(\int_{\operatorname{supp}\chi}
+                                 \Gamma_{Q_{\mathbf v}}(f)\right)^{1/2}.
+\]
+The first factor is a fixed smooth coefficient pairing against
+$Q_{\mathbf v}$ and is uniformly bounded by CLN.  The second
+is uniformly bounded either by the frozen energy estimate or
+by (EC4) and local finiteness of $C_S$ on that compact core.
+A slightly larger compact smooth cutoff may be inserted in
+both factors.  This proves a common bound for (EC7), and hence
+(EC5), after increasing the constant by a factor of two.
+Equation (EC6) follows by integrating the uniformly bounded
+density.  All applications use the original compact test
+sheaf; no chosen tropical pushforward of $S$ is involved.
+\end{proof}
+
+\begin{theorem}[Outer coarea control and energy-null level sets]
+\label{thm:r11-outer-coarea-capacity}
+For each compact $K\Subset\Omega$ there is a finite $A_K$
+such that every subset $B\subset\mathbf R$, whether Borel or
+not, satisfies
+\[
+ \boxed{\quad
+ \mathsf e_{S,f}^{\mathrm o}
+                  (K\cap f^{-1}(B);\Omega)
+                 \le A_K\,\mathcal L^{1,*}(B).
+ \quad}
+ \tag{EC8}
+\]
+Consequently, every real-null set of values has relatively
+energy-outer-null inverse image on every compact core.  In
+particular each actual level set $\{f=t\}$ is locally null
+for this outer energy capacity, simultaneously for all
+normalized mixed tails in (EC2).
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.  This is an
+ordinary-open outer assertion, not only a zero-mass statement
+for each individual energy measure.
+
+\begin{proof}
+Take $K\subset V\Subset\Omega$ and a compact smooth $\chi$
+equal to one on $\overline V$.  The previous theorem gives
+\[
+ \mathsf e_{S,f}(V\cap f^{-1}(J);\Omega)
+                                  \le A_K\mathcal L^1(J)
+ \tag{EC9}
+\]
+for every real open set $J$.  Bounded relative quasicontinuity
+on arbitrary original analytic neighborhoods, proved in
+Corollary~\ref{cor:r11-analytic-bounded-relative-QC} by the new
+analytic Laurent collar extension of the frozen bounded argument,
+applied to $a,b$ and a finite compact cover, gives for each
+$\epsilon>0$ an ordinary open $G$
+with $C_S(G;\Omega)<\epsilon$ such that $f$ is continuous
+on $\overline V\setminus G$.  Domain monotonicity permits all
+exceptional sets from the finitely many smaller regularization
+stages to be measured in the same capacity domain $\Omega$.
+
+Choose a real open $J\supset B$ with its Lebesgue measure
+arbitrarily close to $\mathcal L^{1,*}(B)$; when that outer
+measure is infinite there is nothing to prove.  Relative
+continuity supplies an ordinary open $H\subset V$ such that
+\[
+ H\cap(V\setminus G)
+       = f^{-1}(J)\cap(V\setminus G).
+\]
+Then $O=H\cup(G\cap V)$ is an ordinary open neighborhood of
+$K\cap f^{-1}(B)$ and
+\[
+ \begin{split}
+ \mathsf e_{S,f}(O;\Omega)
+ &\le\mathsf e_{S,f}(V\cap f^{-1}(J);\Omega)
+                              +\mathsf e_{S,f}(G;\Omega)\\
+ &\le A_K\mathcal L^1(J)+B_f\epsilon.
+ \end{split}
+\]
+Take the infimum over such neighborhoods, then let $\epsilon$
+and the real outer-cover error tend to zero.  This proves
+(EC8) without any use of Borel outer regularity of $C_S$.
+\end{proof}
+
+\begin{proposition}[Scalar-set outer regularity and compact energy densities]
+\label{prop:r11-scalar-energy-outer-regularity}
+Fix an original compact smooth $\chi\geq0$, and set
+\[
+ \mathsf e_{\chi,S,f}(E)
+   =\sup_{\mathbf v}\int_E\chi\,d\Gamma_{Q_{\mathbf v}}(f),
+ \qquad
+ c_{\chi,S,f}(B)=\mathsf e_{\chi,S,f}(f^{-1}(B)).
+ \tag{EC12}
+\]
+Write $\mathsf e_{\chi,S,f}^{\mathrm o}$ for ordinary-open outer
+regularization on $\Omega$.  For every real Borel set $B$,
+\[
+ \mathsf e_{\chi,S,f}^{\mathrm o}(f^{-1}(B))
+       =\mathsf e_{\chi,S,f}(f^{-1}(B))
+       =\sup_{\mathbf v}\int_B k_{\chi,f,Q_{\mathbf v}}(t)\,dt.
+ \tag{EC13}
+\]
+The value capacity $c_{\chi,S,f}$ is continuous on increasing
+Borel sequences and on decreasing Borel sequences.  It is inner
+regular by compact real sets and outer regular by real open sets.
+Its extension to arbitrary subsets by real-open outer covers is
+a finite Choquet capacity on the real line.
+Moreover the family of scalar measures
+$f_*(\chi\Gamma_{Q_{\mathbf v}}(f))$ is precompact in total
+variation, with a positive BV density for every limiting measure.
+These statements concern scalar inverse images for the fixed $f$,
+not arbitrary subsets of the analytic space.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Equations (LC12) and (EC5) give the last expression in (EC13)
+and a finite constant $A$ such that all its densities are supported
+in one compact real interval $I$ and bounded by $A$.  Thus
+\[
+ |c_{\chi,S,f}(B)-c_{\chi,S,f}(B')|
+                 \le A\,\mathcal L^1((B\mathbin\triangle B')\cap I)
+ \tag{EC14}
+\]
+for Borel $B,B'$.  Ordinary real measure regularity now proves
+inner and outer regularity and continuity on decreasing sequences.
+Continuity on increasing sequences also follows by commuting the
+two suprema over sequence indices and normalized tails.
+For completeness, every arbitrary subset has a Borel hull with
+the same outer value, obtained by intersecting open neighborhoods
+whose values tend to the infimum.  For increasing arbitrary sets
+$A_j$, choose such Borel hulls $B_j$ and replace them by the
+increasing Borel sets $H_j=\bigcap_{k\geq j}B_k\supset A_j$.
+Monotonicity and Borel continuity from below give the same
+continuity for the outer extension.  Continuity from above on
+compact sets was already proved.  This verifies the stated
+Choquet axioms on arbitrary subsets as well.
+
+To prove the analytic outer identity, choose $V\Subset\Omega$
+containing $\operatorname{supp}\chi$.  Given $\epsilon>0$,
+bounded relative quasicontinuity supplies an ordinary open $G$
+with $C_S(G;\Omega)<\epsilon$ such that $f$ is continuous on
+$\overline V\setminus G$.  Choose a real open $J\supset B$
+with $\mathcal L^1((J\setminus B)\cap I)<\epsilon$.
+There is an ordinary open $H\subset V$ whose intersection
+with $V\setminus G$ equals $f^{-1}(J)\cap(V\setminus G)$.
+The ordinary open set
+\[
+ O=H\cup(G\cap V)\cup(\Omega\setminus\operatorname{supp}\chi)
+\]
+contains $f^{-1}(B)$, and the last summand has zero weighted
+energy for every tail.  The bound (EC4) gives
+\[
+ \mathsf e_{\chi,S,f}(O)
+ \le c_{\chi,S,f}(J)
+          +\|\chi\|_\infty B_f\epsilon
+ \le c_{\chi,S,f}(B)
+          +(A+\|\chi\|_\infty B_f)\epsilon.
+\]
+The opposite inequality follows from monotonicity on every
+open neighborhood.  Let $\epsilon$ tend to zero to obtain
+(EC13).  This argument uses no outer regularity of $C_S$ on
+general Borel sets.
+
+Finally partition $I$ into intervals of mesh at most $h$ and
+replace each density by its interval averages.  For a BV
+function, the $L^1$ error of this replacement is at most
+$h\operatorname{Var}(k)$.  The average vectors lie in a fixed
+bounded finite-dimensional box, hence have compact closure.
+The common variation bound in (EC5) proves total boundedness
+of the original density family in $L^1(I)$.  Any resulting
+$L^1$ limit remains nonnegative and retains the variation bound
+by the distributional definition of variation.  Equality between
+the $L^1$ distance of densities and total variation of their
+measures proves the last assertion.
+\end{proof}
+
+\begin{theorem}[A one-dimensional Sobolev functional calculus]
+\label{thm:r11-sobolev-scalar-calculus}
+Let $I$ be a bounded interval containing the range of $f$ on
+a neighborhood of a fixed compact core.  For
+$F\in W^{1,2}(I)$ use its continuous one-dimensional
+representative.  If smooth $F_j\to F$ in $W^{1,2}(I)$,
+then $F_j(f)$ converge locally uniformly to $F(f)$ and are
+Cauchy in every localized energy of $Q_{\mathbf v}$,
+uniformly over normalized tails.  For a compact smooth cutoff
+$\chi\ge0$ as above,
+\[
+ \sup_{\mathbf v}
+ \int\chi\,d\Gamma_{Q_{\mathbf v}}
+                       (F_j(f)-F_l(f))
+       \le A_{\chi,S,a,b}\|F'_j-F'_l\|_{L^2(I)}^2.
+ \tag{EC10}
+\]
+The resulting energy measures are independent of the smooth
+approximations and satisfy
+\[
+ \Gamma_{Q_{\mathbf v}}(F(f),G(f))
+           =F'(f)G'(f)\Gamma_{Q_{\mathbf v}}(f)
+ \tag{EC11}
+\]
+for $F,G\in W^{1,2}(I)$.  Changing derivatives on real
+Lebesgue-null sets has no effect.  The convergence of the
+localized energy measures is in total variation, uniformly
+over the same tails.
+
+This constructs a relative finite-energy composition.  It
+does not assert that a general $W^{1,2}$ composition is
+classical psh, or a bounded difference of classical psh.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+On a bounded interval the continuous representative satisfies
+the elementary estimate
+\[
+ \|H\|_{\infty,I}
+ \le |I|^{-1/2}\|H\|_{L^2(I)}
+                         +|I|^{1/2}\|H'\|_{L^2(I)}.
+\]
+Thus the stated Sobolev convergence implies uniform
+convergence on $I$, and hence after composition on the
+chosen core.  For smooth $F_j,F_l$, the chain rule and
+(EC6) give exactly (EC10).
+
+The derivative products converge in $L^1(I)$, since
+\[
+ \|F'_jG'_j-F'G'\|_{L^1(I)}
+ \le\|F'_j-F'\|_2\|G'_j\|_2
+                       +\|F'\|_2\|G'_j-G'\|_2.
+\]
+The uniformly bounded pushforward density from (EC5) turns
+this into convergence in total variation of the weighted
+energy measures, uniformly over $\mathbf v$.  This proves
+(EC11) and independence.  The absolute continuity in (LC12)
+shows that the choice of an almost-everywhere representative
+of $F',G'$ is immaterial.  Localizations agree because the
+limits agree on every original compact test, so the
+construction respects ordinary restriction and all actual
+moment refinements.
+\end{proof}
+
+\paragraph{Scope in the final BT program.}
+Theorem~\ref{thm:r11-outer-coarea-capacity} gives a way, valid for every allowed background, to remove bad
+scalar values in uniform mixed energy estimates.  It also supplies a quantitative replacement
+for informal claims that a gradient cannot charge its own
+level set.  The family in (EC3), however, is formed from
+energy measures of the fixed function $f$.  Curvature measures
+$D(fQ)$ may charge those same levels.  Consequently (EC8)
+does not identify arbitrary BT-capacity-zero sets, does not
+prove unrestricted Borel regularity of $C_S$, and does not
+declare every level set pluripolar.  Those stronger assertions
+remain outside the theorem.

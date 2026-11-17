@@ -1,0 +1,301 @@
+\section{Closed nonlinear source images and a dual normal decomposition}
+\label{sec:r12-nonlinear-dual-source}
+
+Keep exactly (ED1), the unchanged arbitrary original $S$, and the
+Banach space $\mathbb D_S$ of the preceding section. Its positive
+potential cone is denoted $\mathscr C$ even though its Borel
+representatives are nonpositive functions. Write $J$ for (ED9),
+$r(u)=e(u)^{1/d}$, and $\|\cdot\|_*$ for the genuine operator
+dual norm (ED10). In particular this is not the absolute-variation
+distance of R11 (VF11).
+
+\begin{theorem}[A complete curvature-dual metric and closed source image]
+\label{thm:r12-closed-full-source-image}
+The image $J(\mathscr C)$ is norm closed in $\mathbb D_S^*$.
+The formula
+\[
+                 d_J(u,v)=\|J(u)-J(v)\|_*
+ \tag{NI1}
+\]
+defines a complete metric on $\mathscr C$, inducing precisely the
+R11 strong discrepancy topology. For $u,v\in\mathscr C$,
+\[
+ \begin{split}
+ I(u,v)&\leq(r(u)+r(v))d_J(u,v),\\
+ d_J(u,v)&\leq\sqrt q\,
+     \max(r(u),r(v))^{(q-1)/2}I(u,v)^{1/2}.
+ \end{split}
+ \tag{NI2}
+\]
+No common dominating measure and no fixed actual lower barrier
+are required. The assertion concerns all $q\geq1$ and the full
+original test category on the stated domain.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. R11 (OI1)--(OI3)
+proved closedness only inside a fixed dominated interval for its
+stronger absolute-variation distance; neither restriction occurs here.
+
+\begin{proof}
+Multilinearity gives the exact identity
+$I(u,v)=(J(u)-J(v))(u-v)$. The dual inequality and
+$\|u-v\|_{\rm ed}\leq r(u)+r(v)$ prove the first estimate.
+The second is (ED11). Thus $d_J=0$ gives $I=0$ and equal
+relative classes. Symmetry and the triangle inequality come
+from the dual norm, not from an asserted triangle inequality
+for $I$.
+
+For completeness, mixed Holder also gives the explicit root bound
+\[
+ I(u,v)\geq\bigl(r(u)-r(v)\bigr)
+                   \bigl(r(u)^q-r(v)^q\bigr)
+                \geq|r(u)-r(v)|^{q+1}.
+\]
+The first inequality follows by bounding the two mixed terms in
+$e(u)+e(v)-B(u,v^{[q]})-B(v,u^{[q]})$ separately. The second
+is the elementary inequality $x^q-y^q\geq(x-y)^q$ for
+$x\geq y\geq0$. Hence convergence to a fixed potential in
+$I$ automatically bounds the energy roots.
+
+Suppose $J(u_j)$ is norm Cauchy. Its norms are bounded, so
+$r(u_j)^q=\|J(u_j)\|_*$ bounds the energy roots. The first
+estimate in (NI2) makes $(u_j)$ strongly Cauchy. R11 strong
+completeness gives $u\in\mathscr C$ with $I(u_j,u)\to0$.
+Its energy roots remain bounded, and the second estimate gives
+$J(u_j)\to J(u)$ in norm. Every norm limit of image elements
+is consequently in the image, proving closedness and metric
+completeness. The same inequalities prove equivalence of the
+two convergences: strong convergence bounds the roots by the
+frozen energy-root estimate, whereas $d_J$ convergence bounds
+them by the exact dual norm identity. These arguments also
+identify their Cauchy sequences.
+\end{proof}
+
+\begin{corollary}[Source approximation on every original test]
+\label{cor:r12-original-source-approximation}
+Let $u_j\in\mathscr C$ and suppose their source functionals
+$J(u_j)$ converge in $\mathbb D_S^*$ to $\ell$. Then there is
+a unique $u\in\mathscr C$ with $J(u)=\ell$, and $u_j\to u$
+strongly. If a specified original Radon measure $\mu$ satisfies
+\[
+                 \ell(\phi)=-\int_V\phi\,d\mu
+            \quad\text{for every original compact smooth scalar }\phi,
+ \tag{NI3}
+\]
+then $\widehat\mu_u=\mu$ on all such tests, after every actual
+moment refinement. All other strong current and weighted limits
+of R11 (IC11)--(IC13) hold as well.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}.
+
+\begin{proof}
+Closedness supplies $u$ and the quantitative estimates supply
+strong convergence. Every original compact smooth scalar is an
+element of $\mathbb D_S$: R11 (HC14)--(HC15) writes it as the
+exact difference of two actual bounded finite-mass common-collar
+potentials. That construction is valid for all $q$, not only
+for its separate Hilbert-space consequence. Thus (ED9) and
+(NI3) give equality on the complete original scalar test sheaf.
+Original smooth scalar density and Radon regularity identify
+the same measures. The strong calculus supplies the other
+limits. This is an approximation criterion, not a claim that
+every source admits such image approximants.
+\end{proof}
+
+\begin{definition}[The strong-continuous energy dual]
+\label{def:r12-strong-continuous-dual}
+Let $\mathbb D_{S,\mathrm{s}}^*$ consist of those
+$\ell\in\mathbb D_S^*$ for which
+\[
+  u_j,u\in\mathscr C,\ I(u_j,u)\to0
+                 \quad\Longrightarrow\quad\ell(u_j)\to\ell(u).
+ \tag{NI4}
+\]
+This is a continuity requirement on the actual strong cone.
+It is not automatically imposed on every Banach-dual functional.
+\end{definition}
+
+\begin{lemma}[A closed dual class containing every curvature]
+\label{lem:r12-strong-dual-closed}
+The class $\mathbb D_{S,\mathrm{s}}^*$ is a norm-closed linear
+subspace of $\mathbb D_S^*$, and $J(\mathscr C)$ is contained
+in it. Consequently the norm-closed linear span of all curvature
+functionals is contained in this class.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+proved Banach realization and frozen strong tester estimate.
+
+\begin{proof}
+Linearity is immediate. A strongly convergent row has bounded
+$r(u_j)$, hence is bounded in $\mathbb D_S$. If $\ell_m\to\ell$
+in norm, the error $|(\ell-\ell_m)(u_j-u)|$ is uniformly small
+for large $m$. Fixing $m$ then invokes (NI4), proving closure.
+For fixed $v\in\mathscr C$, the completed R11 tester estimate
+(EV1) bounds $|J(v)(u_j-u)|$ by
+$\int|u_j-u|\,d\widehat\mu_v\to0$. Its constants are finite
+on the bounded-energy family. This proves the curvature assertion.
+\end{proof}
+
+Let
+\[
+ \mathscr C^\circ
+   =\{n\in\mathbb D_S^*:n(v)\leq0\text{ for every }v\in\mathscr C\}.
+ \tag{NI5}
+\]
+This is the polar of the potential cone in the specified dual,
+not an identification of any two current-positivity cones.
+
+\begin{theorem}[All-degree variational normal decomposition]
+\label{thm:r12-nonlinear-normal-decomposition}
+For every $\ell\in\mathbb D_{S,\mathrm{s}}^*$, the functional
+\[
+                F_\ell(v)=\ell(v)-e(v)/d\qquad(v\in\mathscr C)
+ \tag{NI6}
+\]
+has a unique maximizer $u=\Pi(\ell)$. Every maximizing sequence
+converges strongly to $u$. Equivalently, there is a unique pair
+$(u,n)$ with
+\[
+       \ell=J(u)+n,\qquad
+       u\in\mathscr C,\quad n\in\mathscr C^\circ,
+                           \quad n(u)=0.
+ \tag{NI7}
+\]
+The residual also lies in $\mathbb D_{S,\mathrm{s}}^*$.
+Define the nonnegative support gauge
+\[
+       p(\ell)=\sup_{\substack{v\in\mathscr C\\r(v)\leq1}}\ell(v).
+ \tag{NI8}
+\]
+Then
+\[
+ \begin{split}
+ e(u)&=\ell(u),\qquad r(u)^q=p(\ell)\leq\|\ell\|_*,\\
+ \sup F_\ell&=\frac qd\,p(\ell)^{d/q}.
+ \end{split}
+ \tag{NI9}
+\]
+If $\ell$ is nonnegative on $\mathscr C$, then
+$p(\ell)=\|\ell\|_*$. No assertion that the residual $n$ vanishes
+is part of this theorem.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for arbitrary
+strong-continuous signed dual data and every remaining degree.
+The midpoint existence mechanism is explicitly inherited from
+R11; the Banach source class and exact normal decomposition
+are the new extension. This is not unrestricted source solvability.
+
+\begin{proof}
+Since $|\ell(v)|\leq\|\ell\|_*r(v)$,
+$F_\ell(v)\leq\|\ell\|_*r(v)-r(v)^d/d$. Thus its supremum
+$L\geq F_\ell(0)=0$ is finite, and every maximizing sequence
+has bounded energies. In the midpoint gap the linear term
+cancels. The frozen sharp inequality gives
+\[
+ c_q I(v_j,v_k)
+     \leq L-\tfrac12(F_\ell(v_j)+F_\ell(v_k))\longrightarrow0,
+ \quad c_q=\frac{1-2^{-q}}{2d}.
+\]
+Strong completeness provides $u\in\mathscr C$. Its energy
+converges, and (NI4) passes the datum term, so $F_\ell(u)=L$.
+The same midpoint estimate proves uniqueness and convergence
+of every maximizing sequence. Actual classical strong density
+also gives the same supremum over the frozen actual class.
+
+The continuous $d$-linear extension $B$ makes $e/d$ a polynomial
+on $\mathbb D_S$ whose differential at $u$ is $J(u)$.
+Only segments inside $\mathscr C$ are used for maximization.
+Their first variation gives
+\[
+                   (\ell-J(u))(v-u)\leq0\qquad(v\in\mathscr C).
+ \tag{NI10}
+\]
+Conversely convexity of $e$ on the cone makes this sufficient.
+Taking the competitors $0,2u$ gives $(\ell-J(u))(u)=0$.
+Then (NI10) is precisely the polar condition in (NI7).
+Conversely (NI7) implies (NI10). The pair is unique because
+the maximizer is unique and $n=\ell-J(u)$. Its strong continuity
+follows from the preceding lemma.
+
+Scaling along $tu$ gives $e(u)=\ell(u)$, also when $u=0$.
+For each $v\in\mathscr C$, the polar inequality gives
+$\ell(v)\leq J(u)(v)\leq r(v)r(u)^q$. Thus
+$p(\ell)\leq r(u)^q$. If $u\ne0$, evaluation on $u/r(u)$
+gives the reverse inequality; if $u=0$, the polar condition
+and the allowed zero tester give $p(\ell)=0$. This proves
+(NI9). Finally (ED10) says
+$\|\ell\|_* =\max(p(\ell),p(-\ell))$; if $\ell\geq0$ on
+the cone, the latter second term is zero.
+\end{proof}
+
+\begin{theorem}[A quantitative nonlinear retraction of source functionals]
+\label{thm:r12-source-retraction}
+Put $\mathcal P(\ell)=J(\Pi(\ell))$ on
+$\mathbb D_{S,\mathrm{s}}^*$. This is a retraction onto the norm-closed
+image $J(\mathscr C)$, and is positively homogeneous of degree one.
+For $\|\ell\|_*,\|m\|_*\leq R$, with $R>0$, one has
+\[
+ \begin{split}
+ I(\Pi(\ell),\Pi(m))&\leq2R^{1/q}\|\ell-m\|_*,\\
+ \|\mathcal P(\ell)-\mathcal P(m)\|_*
+                         &\leq\sqrt{2qR}\,\|\ell-m\|_*^{1/2}.
+ \end{split}
+ \tag{NI11}
+\]
+The first inequality has the more precise right side
+$(\ell-m)(\Pi(\ell)-\Pi(m))$. If
+$n=\ell-\mathcal P(\ell)$ and $R=\|\ell\|_*>0$, then
+\[
+ \left(\sqrt{qR+\|n\|_*}-\sqrt{qR}\right)^2
+ \leq\operatorname{dist}_*(\ell,J(\mathscr C))\leq\|n\|_*.
+ \tag{NI12}
+\]
+In particular a nonzero residual is a quantitative obstruction to
+source-image approximation, not merely a failure of one chosen
+maximization algorithm.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this nonlinear
+all-degree dual retraction and the exact image-approximation gap.
+It is not asserted to be a Hilbert metric projection.
+
+\begin{proof}
+If $\ell=J(a)$, the pair $(a,0)$ satisfies (NI7), so uniqueness
+gives the retraction. Homogeneity of $J$ gives
+$\Pi(t\ell)=t^{1/q}\Pi(\ell)$ and
+$\mathcal P(t\ell)=t\mathcal P(\ell)$ for $t\geq0$;
+the case $t=0$ is the zero class.
+
+Write $u=\Pi(\ell)$ and $v=\Pi(m)$. Use $v,u$ as the
+competitors in their two inequalities (NI10), and add. It yields
+$I(u,v)\leq(\ell-m)(u-v)$. Duality bounds this by
+$\|\ell-m\|_*(r(u)+r(v))$; (NI9) bounds the roots by
+$R^{1/q}$. The second line of (NI11) now follows from (ED11).
+If $R=0$ both projections are zero.
+
+Let $\delta$ be the distance in (NI12). Since $J(0)=0$,
+$\delta\leq R$. Choose $\eta_j\in J(\mathscr C)$ with
+$\delta_j=\|\ell-\eta_j\|_*\to\delta$. Their norms are
+at most $R+\delta_j$. Retraction and (NI11) imply
+\[
+ \|n\|_*\leq\delta_j+
+               \sqrt{2q(R+\delta_j)\delta_j}.
+\]
+Passing to the limit and using $\delta\leq R$ gives
+$\|n\|_*\leq\delta+2\sqrt{qR\delta}$. Solving this
+quadratic inequality in $\sqrt\delta$ gives the lower bound.
+The upper bound uses the particular image element $\mathcal P(\ell)$.
+\end{proof}
+
+\paragraph{Source equations and scope.}
+For an actual measure datum whose literal integration defines $\ell$,
+the equation in the completed class holds exactly when the residual
+is zero. The decomposition does not assert that an arbitrary positive
+Radon datum has that property. The R11 compact-source obstruction
+still gives nonzero residuals, and the new higher-degree cap-lift
+obstruction supplies further examples. No ambient classical
+representative, ordinary pointwise boundary trace, analytic GQ,
+or low-real-degree CTO is inferred.

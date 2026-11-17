@@ -1,5 +1,5 @@
 import {
-  FEEDBACK_CATEGORIES, feedbackContext, feedbackIssueUrl,
+  FEEDBACK_CATEGORIES, feedbackContext, feedbackIssueDraft,
   issueCategory, issueProject, matchesFeedback, isRepositoryIssueUrl,
 } from './feedback-core.mjs';
 
@@ -13,6 +13,7 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
   const contextHost = document.getElementById('feedback-context-controls');
   let contextForm, contextNotice, contextPanel;
   let lastContext = null;
+  let contextFeedback = '';
   let issues = [];
   let nextPage = 1, loadedPages = 0;
   let hasMore = true, loading = false, error = false;
@@ -29,40 +30,50 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
     const value = new URLSearchParams(location.search).get('category') ?? '';
     return Object.hasOwn(categories, value) ? value : '';
   }
-  function navigate(values) {
+  function navigate(values, notice = '') {
     const url = new URL(location.href);
     for (const [key, value] of Object.entries(values)) {
       if (value) url.searchParams.set(key, value);
       else url.searchParams.delete(key);
     }
     history.pushState({}, '', url.pathname + url.search + url.hash);
+    contextFeedback = notice;
     draw();
+  }
+  function contextWarning(omitted) {
+    if (!omitted.length) return '';
+    const labels = {project: 'project', entry: 'result ID', version: 'version', page: 'page link'};
+    return ' The ' + omitted.map(key => labels[key]).join(', ') + ' could not be included in the GitHub form because it is invalid or too long. Copy the complete value into the Issue details on GitHub; it has not been shortened.';
   }
   function syncContext() {
     const c = context();
+    const omitted = new Set();
     issueLinks.forEach(link => {
       if (Object.hasOwn(categories, link.dataset.feedbackKind)) {
-        link.href = feedbackIssueUrl(repository, link.dataset.feedbackKind, c);
+        const draft = feedbackIssueDraft(repository, link.dataset.feedbackKind, new URLSearchParams(location.search));
+        link.href = draft.url;
+        draft.omitted.forEach(key => omitted.add(key));
       }
     });
     if (!contextForm) return;
+    contextNotice.textContent = (c.project
+      ? 'Showing feedback linked to ' + c.project + '. Mathematical forms below carry the optional context shown here. General feedback always opens without a theorem or version.'
+      : 'All projects share this discussion board. Context is optional. General feedback needs no project, theorem, or version.')
+      + contextWarning([...omitted]) + (contextFeedback ? ' ' + contextFeedback : '');
     const serialized = JSON.stringify(c);
     // Preserve a reader's expansion and unsubmitted typing when only the board
     // is redrawn (pagination, loading, or a category filter).
     if (serialized === lastContext) return;
     lastContext = serialized;
-    contextPanel.open = Object.values(c).some(Boolean);
+    contextPanel.open = Object.values(c).some(Boolean) || omitted.size > 0;
     for (const key of ['project', 'entry', 'version', 'page']) {
       const control = contextForm.elements.namedItem(key);
       if (key === 'project' && c.project && ![...control.options].some(o => o.value === c.project)) {
         const option = append(control, 'option', '', c.project);
         option.value = c.project;
       }
-      control.value = c[key];
+      control.value = c[key] || (omitted.has(key) ? new URLSearchParams(location.search).get(key) ?? '' : '');
     }
-    contextNotice.textContent = c.project
-      ? 'Showing feedback linked to ' + c.project + '. Mathematical forms below carry the optional context shown here. General feedback always opens without a theorem or version.'
-      : 'All projects share this discussion board. Context is optional. General feedback needs no project, theorem, or version.';
   }
   if (contextHost) {
     contextPanel = append(contextHost, 'details', 'feedback-context-panel');
@@ -89,7 +100,6 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
       const input = append(label, 'input');
       input.name = name;
       input.type = 'text';
-      input.maxLength = name === 'page' ? 1000 : 128;
       input.placeholder = placeholder;
     }
     const actions = append(contextForm, 'div', 'feedback-context-actions');
@@ -103,10 +113,24 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
     });
     contextNotice = append(contextPanel, 'p', 'discussion-note');
     contextNotice.setAttribute('aria-live', 'polite');
+    scope.addEventListener('change', () => {
+      const project = feedbackContext({project: scope.value}).project;
+      if (project === context().project) return;
+      lastContext = null;
+      navigate({project, entry: '', version: '', page: '', ...(project && category() === 'general' ? {category: ''} : {})},
+        'Project changed. Previous result, version and page context was cleared. Add the context for this project if needed.');
+    });
     contextForm.addEventListener('submit', event => {
       event.preventDefault();
-      const values = feedbackContext(Object.fromEntries(new FormData(contextForm)));
-      navigate({...values, ...(values.project && category() === 'general' ? {category: ''} : {})});
+      const raw = Object.fromEntries(new FormData(contextForm));
+      const values = feedbackContext(raw);
+      const invalid = feedbackIssueDraft(repository, 'question', raw).omitted.filter(key => !values[key]);
+      lastContext = null;
+      navigate({...values, ...(values.project && category() === 'general' ? {category: ''} : {})}, contextWarning(invalid));
+      // Keep rejected values available for copying; only the form URL omits
+      // them. Do not turn a long source reference into a different short one.
+      for (const key of invalid) contextForm.elements.namedItem(key).value = raw[key];
+      if (invalid.length) contextPanel.open = true;
     });
   }
 
@@ -192,6 +216,6 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
       ...(button.dataset.category === 'general' ? {project: '', entry: '', version: '', page: ''} : {}),
     });
   }));
-  addEventListener('popstate', draw);
+  addEventListener('popstate', () => {contextFeedback = ''; draw();});
   loadNextPage();
 }

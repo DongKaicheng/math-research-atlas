@@ -1,0 +1,301 @@
+\section{Power energy controls all original degrees and unbounded energies}
+\label{sec:r11-power-all-degree}
+
+Keep the explicit domain condition (DG1): the compact closure of
+the ordinary open set $V$ lies in the ordinary interior of one
+original $K$-affinoid domain. The background $S$ is an arbitrary
+original symmetric middle-positive separately closed $(p,p)$-current
+on $V$, and $q=n-p\geq1$. No smoothness, geometric origin or prior
+BT representation of $S$ is assumed.
+
+Fix $\sigma>0$ and a finite family
+$u_1,\ldots,u_m\in\mathcal E^\sigma_{S,\partial}(V)$. Put
+\[
+ \kappa=q+\sigma,\quad w=\sum_i u_i,\quad W=1-w,\quad
+ W_j=1-\sum_i\max(u_i,-j),\quad E_j=\{w>-j\}.
+ \tag{PG1}
+\]
+Let $T_{\alpha,j}$ and $N_\alpha$ be the bounded and unbounded
+mixed currents from Section~\ref{sec:r11-capacity-dimension-gain};
+$|\alpha|=k\leq q$ includes repeated slots and $\alpha=0$.
+The power-energy cone theorem and (PE2) give
+\[
+ {\cal J}_w(R):=\int_R^\infty
+       t^{\kappa-1}C_S(\{w<-t\};V)\,dt<\infty
+       \quad(R>0),\qquad {\cal J}_w(R)\longrightarrow0.
+ \tag{PG2}
+\]
+This is an actual capacity integral in the fixed domain $V$.
+
+\begin{lemma}[Graded coefficient moments including the endpoint]
+\label{lem:r11-graded-curvature-moments}
+Let $a\geq0$ and $a+k\leq\kappa$. For every original compact
+positive coefficient control $\Theta$ of degree $(q-k,q-k)$,
+the measures $W^a\Theta\wedge N_\alpha$ are locally finite.
+There is a finite constant $C_\Theta$, independent of $j,R$, such
+that for $R\geq1$,
+\[
+ \begin{split}
+ \sup_{j\geq1}\int_{\{w\leq-R\}}W_j^a\,
+                           \Theta\wedge T_{\alpha,j}
+     &\leq C_\Theta R^{a+k-\kappa}{\cal J}_w(R/4),\\
+ \int_{\{w\leq-R\}}W^a\,\Theta\wedge N_\alpha
+     &\leq C_\Theta R^{a+k-\kappa}{\cal J}_w(R/4).
+ \end{split}
+ \tag{PG3}
+\]
+The constant may depend on the family size, degree, exponent,
+and coefficient control. Each full local moment in the first
+line, with the tail indicator removed, is uniformly bounded in $j$.
+
+For every continuous $F$ on the nonpositive orthant with
+$|F(x)|\leq A(1-\sum_i x_i)^a$, there is local coefficient
+total-variation convergence
+\[
+               F(\mathbf u_j)T_{\alpha,j}
+                          \longrightarrow F(\mathbf u)N_\alpha.
+ \tag{PG4}
+\]
+The endpoint $a+k=\kappa$ is included for this fixed family.
+Multipliers on its pole union are immaterial because all these
+currents have zero coefficient mass there.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+degree-dependent strengthening of (DG9)--(DG11), using the
+proved power-energy capacity criterion.
+
+\begin{proof}
+Write $F_w(t)=C_S(\{w<-t\};V)$. On
+$A_T=\{-2T<w\leq-T\}$ all $u_i>-2T$. For any $j$, strict
+bounded maximum locality permits replacing each $u_{i,j}$
+on this shell by $\max(u_i,-\min(j,2T))$, whose global range
+is $[-2T,0]$. Estimate (DG3) and $W_j\leq W\leq1+2T$ give
+\[
+ \int_{A_T}W_j^a\Theta\wedge T_{\alpha,j}
+       \leq C T^{a+k}F_w(T/2).
+ \tag{PG5}
+\]
+This is uniform even when $j<T$. Each finite-stage current is
+zero on the pole union by (DG3). The same shell estimate holds
+for $N_\alpha$ by consistent restriction. Monotonicity gives
+\[
+ T^\kappa F_w(T/2)
+       \leq C_\kappa\int_{T/4}^{T/2}
+                         t^{\kappa-1}F_w(t)\,dt.
+ \tag{PG6}
+\]
+Sum (PG5) over $T=2^\ell R$, $\ell\geq0$. The factors
+$T^{a+k-\kappa}$ are bounded by $R^{a+k-\kappa}$, and the
+integration intervals in (PG6) are disjoint. This proves (PG3).
+On $\{w>-1\}$ consistency with the fixed level-one product
+controls the remaining compact coefficient masses.
+
+The bounded and limiting weighted currents agree on $E_j$.
+Their variations on its complement are bounded by (PG3) at
+$R=j$ and the growth bound for $F$. The bounds tend to zero,
+also at equality, because $ {\cal J}_w(j/4)\to0$.
+Finite coefficient domination proves (PG4) for every original
+test and actual refinement.
+\end{proof}
+
+\begin{theorem}[Full recursive calculus in every positive power class]
+\label{thm:r11-power-full-recursion}
+For every $\sigma>0$, every finite family in
+$\mathcal E^\sigma_{S,\partial}(V)$, and every
+$|\alpha|\leq q-1$, the multiplier $u_iN_\alpha$ is defined
+on all original coefficients and
+\[
+                         D(u_iN_\alpha)=N_{\alpha+e_i}.
+ \tag{PG7}
+\]
+All repeated and mixed products in this class therefore have
+the full recursive differential meaning through top degree,
+in addition to separate closedness, symmetry, multilinearity,
+and truncation independence.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as an
+all-degree consequence of one top power-energy condition per
+potential. The affinoid domain hypothesis remains in force.
+
+\begin{proof}
+For $k=|\alpha|\leq q-1$, one has $1+k\leq q<q+\sigma$.
+Apply (PG4) with $F(x)=x_i$ before differentiating. The bounded
+identity $D(u_{i,j}T_{\alpha,j})=T_{\alpha+e_i,j}$ then passes
+distributionally to (PG7). The other properties were proved
+without this recursion in the dimension-gain theorem; there
+is no circular definition of the top product.
+\end{proof}
+
+\subsection{A direct capacity bound for bounded energy currents}
+
+\begin{lemma}[The extra two powers in an energy trace]
+\label{lem:r11-bounded-energy-capacity-power}
+Let $-L\leq b_i\leq0$ be bounded classical psh functions on $V$,
+and let $Q_\alpha$ be their bounded mixed product over $S$,
+$|\alpha|=k\leq q-1$. For every original compact positive
+control $\Theta$ of degree $(q-k-1,q-k-1)$ and Borel $A\subset V$,
+\[
+       \int_A\Theta\wedge\Gamma_{Q_\alpha}(b_i)
+                 \leq C_\Theta L^{k+2}C_S(A;V).
+ \tag{PG8}
+\]
+The constant is independent of the bounded potentials and $L>0$.
+Mixed energy coefficient variations have the corresponding
+bound by the sum of the diagonal traces.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the bounded energy identity and the global original-coefficient
+compensator, retaining the arbitrary background.
+
+\begin{proof}
+Put $v=b_i+L$, so $0\leq v\leq L$ and $v^2$ is bounded
+classical psh. The energy identity gives
+\[
+ 0\leq\Gamma_{Q_\alpha}(b_i)
+       =\tfrac12D(v^2Q_\alpha)-vD(b_iQ_\alpha)
+       \leq\tfrac12D(v^2Q_\alpha).
+ \tag{PG9}
+\]
+These are middle-cone inequalities; the nonnegative Borel
+multiplier in the second term preserves positivity.
+Use (DG2) for the energy current and its original test.
+Normalize the $k$ slots in $Q_\alpha$ by $L$, the first
+slot $v^2$ by $L^2$, and fill the remaining $q-k-1$ slots
+with the global normalized smooth compensator. Positive
+mixed expansion gives the factor $(q^q/q!)C_S$ and proves
+(PG8). The positive energy matrix and its measure
+Cauchy--Schwarz inequality control cross variations.
+No energy current has been assumed closed.
+\end{proof}
+
+\begin{theorem}[Unbounded energy currents in the graded power domain]
+\label{thm:r11-power-graded-energy}
+Assume $|\alpha|=k\leq q-1$ and $k+2\leq\kappa=q+\sigma$.
+There is an intrinsic matrix of coefficient-Radon currents
+\[
+ G^\alpha_{ia}
+  =\tfrac12\left[
+     D(u_i u_aN_\alpha)-u_iN_{\alpha+e_a}
+                           -u_aN_{\alpha+e_i}\right].
+ \tag{PG10}
+\]
+It is positive semidefinite in the original middle cone,
+has zero coefficient mass on the pole union, and satisfies
+\[
+       \Gamma_{T_{\alpha,j}}(u_{i,j},u_{a,j})
+                                \longrightarrow G^\alpha_{ia}
+ \tag{PG11}
+\]
+in local coefficient total variation. If $b\geq0$ and
+$b+k+2\leq\kappa$, then for every original compact positive
+control $\Theta$,
+\[
+ \begin{split}
+ \sup_j\int_{\{w\leq-R\}} W_j^b
+           \Theta\wedge\Gamma_{T_{\alpha,j}}(u_{i,j})
+   &\leq C_\Theta R^{b+k+2-\kappa}{\cal J}_w(R/4),\\
+ \int_{\{w\leq-R\}} W^b\Theta\wedge G^\alpha_{ii}
+   &\leq C_\Theta R^{b+k+2-\kappa}{\cal J}_w(R/4).
+ \end{split}
+ \tag{PG12}
+\]
+The corresponding full local moments are finite. A continuous
+weight of growth at most $W^b$ may be inserted in (PG11),
+with the same total-variation conclusion for this fixed tuple.
+
+In particular $\sigma\geq1$ gives these energy currents in
+every permitted energy degree. If $0<\sigma<1$, the conclusion
+applies to $k\leq q-2$. The energy currents need not be closed.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. This improves
+the sufficient superquadratic all-trace hypothesis (UE2) on the
+printed domain, and includes the finite first-power energy endpoint.
+
+\begin{proof}
+On $A_T=\{-2T<w\leq-T\}$ replace every truncated slot by its
+further truncation at $-2T$. Lemma
+\ref{lem:r11-energy-truncation-locality} permits this in the
+background slots and the differentiated energy slot. Its proof
+uses shifted squares and four-branch maxima, so also applies
+with unequal initial truncation levels. Estimate (PG8) gives
+\[
+ \int_{A_T}W_j^b
+        \Theta\wedge\Gamma_{T_{\alpha,j}}(u_{i,j})
+                  \leq C T^{b+k+2}F_w(T/2).
+ \tag{PG13}
+\]
+Each finite-stage energy is zero on the pole union by (PG8)
+and $C_S(P;V)=0$. Sum (PG13) with (PG6) to obtain the first
+bound of (PG12).
+
+Bounded energy locality gives consistency of the restrictions
+on $E_j$. The positive cut diagonal energies increase, and
+the shell estimates and level-one core give locally finite
+limits. Their tails and those of the uncut energies satisfy
+(PG12), first with $b=0$, then with the stated weights.
+Both tails tend to zero, proving total-variation convergence.
+Polarization gives the cross limits, the positive matrix
+assertion, and all coefficient variation bounds.
+
+The three terms in (PG10) are defined before identification:
+use (PG3) with $(a,k)=(2,k)$ and $(a,k)=(1,k+1)$.
+Their total exponent is $k+2\leq\kappa$. Pass the bounded
+three-term energy formula through (PG4) and distributional
+continuity. This identifies the limits with (PG10), including
+every original compact test and actual refinement.
+No Borel-restricted current has been differentiated.
+\end{proof}
+
+\begin{theorem}[A degree-dependent unbounded chain rule]
+\label{thm:r11-power-graded-chain}
+Assume the preceding hypotheses. Let $F$ be $C^2$ near
+the nonpositive orthant and suppose, for some
+$2\leq r\leq\kappa-k$ and finite $A$,
+\[
+ |F(x)|\leq A W(x)^r,\quad
+ |F_i(x)|\leq A W(x)^{r-1},\quad
+ |F_{ia}(x)|\leq A W(x)^{r-2},
+ \qquad W(x)=1-\sum_i x_i.
+ \tag{PG14}
+\]
+Then the following is an equality of original
+coefficient-defined currents on ordinary opens:
+\[
+ D(F(\mathbf u)N_\alpha)
+       =\sum_i F_i(\mathbf u)N_{\alpha+e_i}
+                         +\sum_{i,a}F_{ia}(\mathbf u)G^\alpha_{ia}.
+ \tag{PG15}
+\]
+Convex coordinatewise nondecreasing $F$ gives a middle-positive
+right side. The endpoint $r=\kappa-k$ is permitted for each
+fixed finite-power-energy family.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} with the
+printed growth, background and domain hypotheses.
+
+\begin{proof}
+Apply the bounded multivariable chain identity to common
+truncations. The term to be differentiated has growth $W^r$
+and degree $k$; each curvature multiplier has growth
+$W^{r-1}$ and degree $k+1$; each energy multiplier has growth
+$W^{r-2}$ and energy budget $k+2$. Each total exponent is
+$r+k\leq\kappa$. Equations (PG4) and (PG12) therefore pass
+every term in local coefficient total variation.
+Distributional continuity proves (PG15). The sign assertion
+uses $F_i\geq0$, the positive Hessian of $F$, and the positive
+energy matrix, without specializing $S$.
+\end{proof}
+
+\paragraph{Uniform families and the critical boundary.}
+For a uniform $\sigma$-power energy bound, (PE10) and (PE4)
+bound $ {\cal J}_{w_l}(0)$ uniformly. The tail estimates above
+are then uniform and vanish whenever the relevant total
+exponent is strictly below $q+\sigma$. At equality, a bound
+for the full integral does not force a uniformly vanishing
+tail. This distinction is essential for varying tuples;
+it does not affect the fixed-tuple endpoint constructions.

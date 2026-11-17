@@ -1,0 +1,270 @@
+\section{A Banach space of differences of strong energy potentials}
+\label{sec:r12-energy-difference}
+
+\paragraph{Exact standing hypotheses and frozen inputs.}
+Let $K/\mathbf Q_p$ be the original finite extension with its original
+absolute value. Let $X$ be good, Hausdorff, boundaryless, quasi-smooth,
+and pure of dimension $n$. Choose a compact original affinoid domain
+$B\subset X$, functions $f_a,g_b\in\mathcal O(B)$ and positive real
+thresholds $R_a,r_b$, such that
+\[
+ K_0=\{|f_a|\leq R_a,\ |g_b|\geq r_b\}
+                         \Subset\operatorname{Int}_X(B),\qquad
+ V=\{|f_a|<R_a,\ |g_b|>r_b\}\ne\varnothing .
+ \tag{ED1}
+\]
+Let $S$ be an arbitrary original symmetric CLD middle-positive,
+separately $d'$- and $d''$-closed $(p,p)$-current on an ordinary
+neighborhood of $K_0$. Put $q=n-p\geq1$ and $d=q+1$.
+No strong positivity, geometric representation or approximation of
+$S$ is assumed. Every current below is tested on the full original
+CLD test sheaf, with every actual moment refinement.
+
+Write $\mathscr C=\widehat{\mathcal E}^{1}_{\rm str}(V)$ for the
+precise R11 strong completion, with its encoded approximation
+boundary condition. Its elements are nonpositive Borel potentials
+modulo local ordinary-open outer $S$-capacity zero. We use the R11
+inputs (GE10)--(GE18), (IC10)--(IC22), (CC1)--(CC11), (CI1)--(CI8)
+and the completed extension of (EV1). They provide, respectively,
+the symmetric global mixed energy, its positive energy matrices,
+the complete strong cone, its intrinsic original currents, and its
+monotone closure. All these statements are \texttt{INTERNAL\_INPUT}
+in their printed R11 scopes.
+
+For $u_0,\ldots,u_q\in\mathscr C$, abbreviate
+\[
+ B(u_0,\ldots,u_q)=\int_V(-u_0)\,\widehat N_q(u_1,\ldots,u_q),
+ \quad e(u)=B(u^{[d]}),\quad r(u)=e(u)^{1/d}.
+ \tag{ED2}
+\]
+The frozen inequalities are $B(\mathbf u)\leq\prod_i r(u_i)$ and
+$r(u+v)\leq r(u)+r(v)$. The zero-energy class is zero. Completed
+potentials are finite outside outer-null sets; all differences below
+are formed there and assigned any finite Borel value on the joint
+exceptional set. In particular no expression $(-\infty)-(-\infty)$
+is used as a pointwise number.
+
+\begin{definition}[Energy-difference space and its norm]
+\label{def:r12-energy-difference}
+Let $\mathbb D_S=\mathscr C-\mathscr C$ be the real vector space of
+such Borel differences modulo local outer-capacity equality. Define
+\[
+ \|h\|_{\rm ed}
+   =\inf\{r(a)+r(b):a,b\in\mathscr C,\ h=a-b\}.
+ \tag{ED3}
+\]
+This is a norm defined by the energy cone, not the discrepancy $I$.
+It is not declared to be the ordinary supremum norm or a Hilbert norm.
+\end{definition}
+
+\begin{lemma}[Continuous extension of the mixed energy]
+\label{lem:r12-difference-mixed-extension}
+There is a unique symmetric real $d$-linear form on $\mathbb D_S$
+extending $B$, and it satisfies
+\[
+       |B(h_0,\ldots,h_q)|\leq\prod_{i=0}^q\|h_i\|_{\rm ed}.
+ \tag{ED4}
+\]
+Moreover $\|u\|_{\rm ed}=r(u)$ for every $u\in\mathscr C$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the full
+unbounded cone-difference construction; the mixed energy bound on
+the positive cone is the explicit frozen input.
+
+\begin{proof}
+Expand each difference into its two cone terms and extend by the
+finite multilinear expansion. If $a-b=a'-b'$, then
+$a+b'=a'+b$ in the original relative cone. Separate additivity of
+the frozen $B$ therefore makes the expansion independent of that
+presentation, one slot at a time. Positive real homogeneity and
+changing the signs of differences give real multilinearity.
+For specified decompositions $h_i=a_i-b_i$, the triangle inequality
+and cone Holder give the bound $\prod_i(r(a_i)+r(b_i))$.
+Taking independent infima proves (ED4).
+
+The definition gives $\|u\|_{\rm ed}\leq r(u)$. Applying (ED4)
+to the diagonal tuple gives $e(u)\leq\|u\|_{\rm ed}^{d}$, so the
+reverse inequality follows. This argument also covers zero energy.
+\end{proof}
+
+\begin{theorem}[Actual Borel realization and Banach completeness]
+\label{thm:r12-energy-difference-Banach}
+Formula (ED3) is a norm, $\mathbb D_S$ is complete for that norm,
+and $\mathscr C$ is a closed convex cone in this Banach space.
+Norm convergence implies convergence in the full local outer
+$S$-capacity topology. More precisely, with
+$C_0=d2^d$, one has
+\[
+ C_S^*(\{|h|>t\};V)\leq C_0 t^{-d}\|h\|_{\rm ed}^{d}
+                    \qquad(h\in\mathbb D_S,\ t>0).
+ \tag{ED5}
+\]
+For $u,v\in\mathscr C$,
+\[
+ I(u,v)\leq\bigl(r(u)^q+r(v)^q\bigr)\|u-v\|_{\rm ed}.
+ \tag{ED6}
+\]
+The result does not identify this norm topology with the strong
+discrepancy topology on $\mathscr C$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+The infimum in (ED3) is finite. Minkowski on $\mathscr C$ proves
+the triangle inequality; switching the two cone terms proves
+symmetry, and homogeneity follows by rescaling decompositions.
+The R11 capacity integral bound $J_1^*(u)\leq2^d e(u)$ and
+monotonicity of the sublevels give
+\[
+ \frac{t^d}{d}C_S^*(\{u<-t\};V)
+       \leq\int_0^t s^{d-1}C_S^*(\{u<-s\};V)\,ds
+       \leq2^d e(u).
+\]
+For $h=a-b$, the set $\{|h|>t\}$ is contained, modulo an
+outer-null set, in $\{a<-t\}\cup\{b<-t\}$. Hence its outer
+capacity is at most $C_0t^{-d}(r(a)^d+r(b)^d)$, bounded by
+$C_0t^{-d}(r(a)+r(b))^d$. Infimizing proves (ED5), and shows
+that a zero seminorm has the zero relative Borel class. Local
+outer-null sets here also have zero outer capacity in the fixed
+domain: use a countable compact exhaustion and the R11 domain
+comparison on its cores. The same comparison transfers norm
+convergence to every smaller-domain original capacity.
+
+We prove completeness inside the space of actual Borel differences,
+rather than introducing an abstract completion with unidentified
+elements. For a norm-Cauchy sequence choose a subsequence $(h_j)$
+whose successive increments have decompositions
+\[
+ h_{j+1}-h_j=a_j-b_j,\qquad
+ \sum_{j\geq1}(r(a_j)+r(b_j))<\infty.
+ \tag{ED7}
+\]
+Write $h_1=a_0-b_0$. The partial sums
+$A_N=a_0+\sum_{j=1}^N a_j$ and
+$B_N=b_0+\sum_{j=1}^N b_j$ decrease as Borel potentials,
+outside one countable union of outer-null sets. Their energy
+roots are bounded by the corresponding sums of roots, so the
+R11 decreasing-closure theorem (CI8) gives strong limits
+$A,B\in\mathscr C$. Apply the same theorem to each tail series.
+It yields $A-A_N,B-B_N\in\mathscr C$ and
+\[
+ r(A-A_N)+r(B-B_N)
+          \leq\sum_{j>N}(r(a_j)+r(b_j))\longrightarrow0.
+ \tag{ED8}
+\]
+The identities with the tails hold on the common finite locus,
+hence in the relative Borel quotient. Thus $h=A-B\in\mathbb D_S$
+is the norm limit of the subsequence and of the original Cauchy
+sequence. No abstract vector invisible to Borel capacity has been
+adjoined.
+
+For $u,v\in\mathscr C$, multilinearity gives
+\[
+ I(u,v)=B(u-v,u^{[q]})-B(u-v,v^{[q]}).
+\]
+Apply (ED4) to obtain (ED6). If a sequence in $\mathscr C$
+converges in norm to $h\in\mathbb D_S$, its energy roots are
+bounded by the norm triangle inequality and the preceding lemma.
+Equation (ED6) makes it strongly Cauchy. R11 completeness supplies
+a limit $u\in\mathscr C$. The norm limit and the strong limit
+have the same local capacity class by (ED5) and the R11 strong
+topology theorem. Thus $h=u$, proving norm closedness.
+Convexity is the frozen cone addition property.
+\end{proof}
+
+\begin{definition}[Curvature as an energy-dual functional]
+\label{def:r12-dual-curvature}
+For $u\in\mathscr C$ put
+\[
+       J(u)(h)=B(h,u^{[q]})=-\int_Vh\,d\widehat\mu_u
+                      \qquad(h\in\mathbb D_S).
+ \tag{ED9}
+\]
+The displayed integral is literal and absolutely convergent: for
+$h=a-b$, $|h|\leq(-a)+(-b)$ off a common null set, and the
+two mixed first energies are finite. The current measure ignores
+that exceptional set. Thus $J(u)$ is a genuine functional in
+$\mathbb D_S^*$, with its original current interpretation.
+\end{definition}
+
+\begin{theorem}[Exact dual norm and strong continuity of curvature]
+\label{thm:r12-dual-curvature-continuity}
+For every continuous linear functional $\ell$ on $\mathbb D_S$,
+\[
+ \|\ell\|_*=
+     \sup_{\substack{a\in\mathscr C\\r(a)\leq1}}|\ell(a)|.
+ \tag{ED10}
+\]
+For $u\in\mathscr C$ one has $\|J(u)\|_*=r(u)^q$.
+For $u,v\in\mathscr C$ and $R=\max(r(u),r(v))$,
+\[
+ \begin{split}
+ \|J(u)-J(v)\|_*&\leq qR^{q-1}\|u-v\|_{\rm ed},\\
+ \|J(u)-J(v)\|_*&\leq\sqrt q\,R^{(q-1)/2}I(u,v)^{1/2}.
+ \end{split}
+ \tag{ED11}
+\]
+At $R=0$ both sides mean zero; for $q=1$ the power $R^0$ is
+one. In particular strong convergence of potentials gives norm
+convergence of their source functionals, in every remaining degree.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the precise
+Banach dual and quantitative all-degree source map. The integrated
+positive energy matrices used in the proof are frozen inputs.
+
+\begin{proof}
+If the supremum in (ED10) is $L$, a decomposition $h=a-b$
+gives $|\ell(h)|\leq L(r(a)+r(b))$. Taking the infimum yields
+$\|\ell\|_*\leq L$; the reverse follows from
+$\|a\|_{\rm ed}=r(a)$. Equation (ED4) bounds the norm of
+$J(u)$ by $r(u)^q$. For $r(u)>0$, evaluation on $u/r(u)$
+gives equality; if $r(u)=0$, the class and functional are zero.
+
+The finite telescoping expansion gives
+\[
+ (J(u)-J(v))(h)
+    =\sum_{l=0}^{q-1}B(h,u-v,u^{[l]},v^{[q-1-l]}).
+ \tag{ED12}
+\]
+Equation (ED4) proves the first bound in (ED11).
+For the sharper strong-topology bound define
+\[
+ H(f,g)=\sum_{l=0}^{q-1}
+                 B(f,g,u^{[l]},v^{[q-1-l]}).
+\]
+This is a positive semidefinite bilinear form on $\mathbb D_S$.
+Indeed each summand is the integrated energy form with the
+fixed completed positive closed mixed background. Positivity on
+finite differences follows from R11 (GE7), passed through the
+global mixed-energy convergence (IC13). It is not a pointwise
+Alexandrov--Fenchel assertion. We have
+\[
+ H(u-v,u-v)=I(u,v),\qquad
+ H(a,a)\leq q r(a)^2R^{q-1}\quad(a\in\mathscr C).
+\]
+Cauchy--Schwarz for this positive semidefinite form and (ED12)
+bound the functional on every $a$ with $r(a)\leq1$.
+Equation (ED10) proves the second bound. Strongly convergent
+rows have bounded energy roots by R11, so the final assertion
+follows. Every construction used the intrinsic original products;
+no special tropical trace was substituted for their test sheaf.
+\end{proof}
+
+\paragraph{Two different source distances.}
+When signed measure integration defines the corresponding continuous
+functionals, their difference norm is
+\[
+ \delta_*(\mu,\nu)
+     =\sup_{\substack{a\in\mathscr C\\r(a)\leq1}}
+                    \left|\int_V(-a)\,d(\mu-\nu)\right|.
+ \tag{ED13}
+\]
+This is not the R11 absolute-variation distance (VF11), which has
+$\int(-a)\,d|\mu-\nu|$ inside the supremum. The latter dominates
+(ED13) whenever it is defined, and can be strictly stronger.
+The signed cancellation in (ED13) is essential to (ED11).
+The Banach space and its curvature map do not prove an analytic
+PS/PL presentation quotient, or equality on additional GK delta tests.

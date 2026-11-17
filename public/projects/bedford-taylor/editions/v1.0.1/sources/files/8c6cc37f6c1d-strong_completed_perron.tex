@@ -1,0 +1,181 @@
+\section{Relative Perron envelopes of arbitrary strong completed families}
+\label{sec:r11-strong-completed-Perron}
+
+Retain exactly the strict analytic box, background extension
+and full strong first-energy class of
+Section~\ref{sec:r11-strong-completed-comparison}.
+The background is the unchanged arbitrary original symmetric
+middle-positive separately closed $S$.
+Write $f\preceq g$ if $f\leq g$ locally outside an
+ordinary-open outer $S$-capacity-null set. This order concerns
+the completed Borel representatives. No ordinary ambient
+upper regularization is used.
+
+The frozen R2 relative capacitary envelope theorem is
+\texttt{INTERNAL\_INPUT} in its bounded scope. Theorem
+\ref{thm:r11-barrier-relative-Perron} extends an actual family
+above one prescribed actual power-energy barrier. The theorem
+below instead permits an arbitrary nonempty family of strong
+completed first-energy potentials, with no common actual lower
+barrier. Its countable selection is proved directly by global
+energy minimization over finite maxima.
+
+\begin{theorem}[The full strong completed relative envelope]
+\label{thm:r11-strong-completed-Perron}
+Let $\mathscr F\subset\widehat{\mathcal E}^1_{\rm str}(V)$
+be any nonempty family, possibly uncountable. Let
+$\mathscr F^\vee$ consist of all nonempty finite maxima of
+its members, and put
+\[
+                    L=\inf_{w\in\mathscr F^\vee}\widehat e(w).
+ \tag{SE1}
+\]
+There is a unique relative class
+$H\in\widehat{\mathcal E}^1_{\rm str}(V)$ with the following
+least-upper-bound properties:
+\[
+ \begin{split}
+ &f\preceq H\qquad(f\in\mathscr F),\\
+ &\bigl[f\preceq g\text{ for every }f\in\mathscr F,
+                      \ g\text{ Borel}\bigr]
+                                      \Longrightarrow H\preceq g.
+ \end{split}
+ \tag{SE2}
+\]
+The exceptional set in the first line may depend on $f$;
+there is no uncountable-union nullity assertion.
+
+There are countably many selected members of $\mathscr F$
+whose cumulative finite maxima $v_j$ satisfy
+\[
+                  v_j\uparrow H,\qquad
+                  \widehat I(v_j,H)\longrightarrow0,
+                  \widehat e(H)=L.
+ \tag{SE3}
+\]
+Here the actual increasing Borel limit may be used as the
+representative of $H$. More generally, every sequence
+$w_j\in\mathscr F^\vee$ with $\widehat e(w_j)\to L$
+converges strongly to $H$ and therefore has all the critical
+current and mixed-energy limits (IC11)--(IC13).
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for arbitrary
+completed families and their full energy boundary class.
+
+\begin{proof}
+Finite maxima are members of the strong completion by (CC1).
+Their energies are nonnegative, and one fixed family member
+has finite energy. Thus $0\leq L<\infty$.
+Choose $w_j\in\mathscr F^\vee$ with
+$\widehat e(w_j)\leq L+1/j$, and put
+\[
+                            v_j=\max(w_1,\ldots,w_j).
+ \tag{SE4}
+\]
+Each is still a finite maximum of members of the given family.
+It increases with $j$, and energy monotonicity gives
+$L\leq\widehat e(v_j)\leq\widehat e(w_j)$.
+The increasing-closure theorem
+\ref{cor:r11-strong-monotone-closure} therefore gives its
+actual Borel limit $H$ in the strong completion, with strong
+convergence and $\widehat e(H)=L$.
+Only countably many members of the given family occur in all the
+selected $w_j$; this proves the countable assertion in (SE3).
+
+Fix an arbitrary $f\in\mathscr F$ and set $z_j=\max(v_j,f)$.
+Then $z_j\in\mathscr F^\vee$ and
+\[
+                       L\leq\widehat e(z_j)
+                                      \leq\widehat e(v_j).
+\]
+The strong maximum continuity (CC2) gives
+$z_j\to z:=\max(H,f)$ strongly. Hence
+$\widehat e(z)=L=\widehat e(H)$.
+Since $H\leq z$, the ordered discrepancy estimate (CI1)
+gives
+\[
+               0\leq\widehat I(H,z)
+                      \leq\widehat e(H)-\widehat e(z)=0.
+ \tag{SE5}
+\]
+Separation of the completed classes implies $z=H$
+locally outside an outer-null set. Thus $f\preceq H$.
+This argument fixes one $f$ at a time, as required by (SE2).
+
+Now let $g$ be any Borel upper bound in the sense of the
+second line of (SE2). It bounds each of the countably many
+selected family members outside its corresponding null set.
+Their countable union is locally outer-null. Off that union,
+$g$ bounds every $v_j$ and hence their actual pointwise
+limit $H$. This proves leastness among Borel upper bounds,
+without requiring $g$ to be psh or completed.
+Two such least upper bounds bound each other, so their
+relative classes agree.
+
+Finally, every $w\in\mathscr F^\vee$ satisfies $w\preceq H$,
+by the first line of (SE2) and finite subadditivity.
+For any sequence whose energies tend to $L$, (CI1) gives
+\[
+             0\leq\widehat I(w_j,H)
+                    \leq\widehat e(w_j)-\widehat e(H)
+                                      \longrightarrow0.
+ \tag{SE6}
+\]
+The strong continuity theorem supplies all the current and
+critical weighted-measure limits claimed in the statement.
+\end{proof}
+
+\begin{corollary}[Subsolution envelopes and Borel upper constraints]
+\label{cor:r11-strong-Perron-subsolution}
+Let $\nu$ be a fixed positive Radon measure on $V$ and
+$\psi$ a Borel upper constraint. If the preceding nonempty
+family satisfies
+\[
+                    \widehat\mu_f\geq\nu,
+                    \qquad f\preceq\psi
+                                  \quad(f\in\mathscr F),
+ \tag{SE7}
+\]
+then its canonical relative envelope satisfies
+\[
+                             \widehat\mu_H\geq\nu,
+                             \qquad H\preceq\psi.
+ \tag{SE8}
+\]
+The current inequality holds on every original compact smooth
+scalar test and every actual moment refinement. A finite total
+mass for $\nu$ is not needed; the printed Radon hypothesis is
+local. No equality $\widehat\mu_H=\nu$ or contact support
+assertion is inferred.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for full strong
+completed subsolution families; it is a consequence of the
+new finite-maximum and envelope theorems.
+
+\begin{proof}
+The completed weak maximum inequality, proved with its full
+middle-positive cone and equality-side mass, shows that every
+finite maximum of members of $\mathscr F$ has top measure at
+least $\nu$. In particular $\widehat\mu_{v_j}\geq\nu$ for
+the selected increasing sequence (SE4).
+Its strong convergence passes every original compact scalar
+test, so positivity gives $\widehat\mu_H\geq\nu$.
+All measures are locally Radon; no global mass subtraction
+or unproved boundary tightness is needed for this inequality.
+The least-upper-bound property (SE2), or the countable selected
+members directly, gives $H\preceq\psi$.
+\end{proof}
+
+\paragraph{The distinction from an ambient Perron construction.}
+This theorem supplies a canonical relative least upper bound
+and a retained source lower bound inside the complete strong
+class. The ordinary upper semicontinuous envelope can still
+lose the relative mass, as in the all-power counterexample
+(PO1)--(PO7). Moreover the exact strong completed compact-source
+obstruction (SO1)--(SO6) prevents promoting (SE8) to a universal
+source equation. These are separate issues from the proved
+existence of this Borel relative envelope. General raw-capacity
+outer regularity, unrestricted ordinary-boundary Dirichlet
+existence, GQ and low-real-degree CTO remain outside the claim.

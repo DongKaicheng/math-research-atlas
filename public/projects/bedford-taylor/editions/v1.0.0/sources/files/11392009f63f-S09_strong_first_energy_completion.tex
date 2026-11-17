@@ -1,0 +1,533 @@
+\section{The complete relative strong first-energy space}
+\label{sec:r11-strong-first-energy-completion}
+
+Retain precisely the strict analytic box and extension hypotheses
+(TC1)--(TC2), the arbitrary original separately closed symmetric
+middle-positive background $S$, and $q=n-p\geq1$. Write
+$d=q+1$, $\alpha=2^{-q}$, and $\mathcal E^1=
+\mathcal E^1_{S,\partial}(V)$. The actual classical class
+$\mathcal E^1$ is not enlarged by definition. We instead construct
+a distinct space of actual Borel functions modulo local ordinary-open
+outer $S$-capacity. Its defining rows have no prescribed common
+actual lower barrier. We do not assert that its members admit
+ambient classical representatives or compact negative sublevel
+closures. Their boundary condition is the strong approximation
+condition printed below.
+
+The frozen bounded predecessors are the R2 capacitary completion,
+R3 bounded common-collar strong topology, and R4 completed
+variational retraction. The new inputs are the unbounded global
+first-energy calculus, the tester estimate (EV1), and the analytic
+bounded completion in Lemma~\ref{lem:r11-analytic-bounded-completion}.
+The present construction does not reinterpret the frozen linear
+Hilbert completion as a nonlinear classical potential space.
+
+\subsection{Uniform tails and the boundary of an energy-Cauchy row}
+
+Call an actual row $(u_j)\subset\mathcal E^1$ strongly Cauchy if
+\[
+               \lim_{N\to\infty}\sup_{j,l\geq N}
+                    \mathscr I_S(u_j,u_l)=0.
+ \tag{IC1}
+\]
+No triangle inequality for $\mathscr I_S$ is assumed.
+
+\begin{lemma}[Uniform deep tails and global weighted tightness]
+\label{lem:r11-strong-cauchy-uniform-tails}
+Every strongly Cauchy actual row has bounded first energies and
+\[
+ \begin{split}
+ \lim_{R\to\infty}\sup_j
+     \int_{\{u_j<-R\}}(-u_j)\,d\mu_{u_j}&=0,\\
+ \lim_{R\to\infty}\sup_j
+     \int_R^\infty t^q C_S(\{u_j<-t\};V)\,dt&=0.
+ \end{split}
+ \tag{IC2}
+\]
+For finitely many strongly Cauchy actual rows $u_{i,j}$,
+$0\leq i\leq q$, the finite positive Radon measures
+\[
+            (-u_{0,j})M(u_{1,j},\ldots,u_{q,j})
+ \tag{IC3}
+\]
+are uniformly tight on $V$. The same conclusions hold if the
+indices of the finitely many rows tend independently to infinity.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. The first assertion
+extends (EV19) from convergence to a specified actual member to
+arbitrary strongly Cauchy rows; the boundary tightness is proved
+without a common lower barrier.
+
+\begin{proof}
+The energy-root estimate (EV9) bounds the energies by some $M$.
+The case $M=0$ is immediate from the constant-one mixed Holder
+inequality; otherwise enlarge $M$ to be positive. On
+$\{-u_j>R\}$ split according to whether
+$-u_N\leq(-u_j)/2$. The calculation used for (EV20) gives
+\[
+ \int_{\{u_j<-R\}}(-u_j)\,d\mu_{u_j}
+ \leq 2\int|u_j-u_N|\,d\mu_{u_j}
+       +4\int|u_N-u_N^{(R/4)}|\,d\mu_{u_j},
+ \qquad u^{(L)}=\max(u,-L).
+ \tag{IC4}
+\]
+By (EV1), the first integral is at most
+$C_{q,M}\mathscr I_S(u_j,u_N)^\alpha$.
+For fixed $N$, the second is at most
+$C_{q,M}\mathscr I_S(u_N,u_N^{(R/4)})^\alpha$, uniformly
+in $j$. The latter discrepancy tends to zero by (EV15).
+Choose $N$ large using (IC1), then let $R$ grow, and finally
+make the Cauchy error tend to zero. The finitely many indices
+$j<N$ have vanishing tails because their first energies are
+finite. This proves the first line of (IC2). The tail form of
+(EV21),
+\[
+ \int_R^\infty t^q C_S(\{u_j<-t\};V)\,dt
+       \leq 2^{q+1}\int(-u_j-R/2)^+\,d\mu_{u_j},
+ \tag{IC5}
+\]
+proves the second. For a finite sum of rows, the sublevel union
+bound gives the same uniform tail conclusion, with the factor
+$(\#\text{slots})^{q+1}$ and a fixed rescaling of $R$.
+
+For (IC3), all slot energies are uniformly bounded. Write
+$M_j=M(u_{1,j},\ldots,u_{q,j})$. Positivity of the expansion
+of $\mu_{\sum_{i=1}^q u_{i,j}}$ and (EV1) give
+\[
+             \int|u_{0,j}-u_{0,N}|\,dM_j
+                  \leq C\mathscr I_S(u_{0,j},u_{0,N})^\alpha,
+ \tag{IC6}
+\]
+where $C$ depends on the uniform energies and $q$, but not on
+the derivative-row indices. Fix a sufficiently late $N$.
+For $\epsilon>0$, the set
+$K_\epsilon=\overline{\{u_{0,N}<-\epsilon\}}$ is compact.
+On its complement $u_{0,N}=u_{0,N}^{(\epsilon)}$, and hence
+\[
+ \begin{split}
+ \int_{V\setminus K_\epsilon}(-u_{0,j})\,dM_j
+ &\leq \int|u_{0,j}-u_{0,N}|\,dM_j
+          +\int(-u_{0,N}^{(\epsilon)})\,dM_j\\
+ &\leq C\mathscr I_S(u_{0,j},u_{0,N})^\alpha
+       +e_1(u_{0,N}^{(\epsilon)})^{1/d}
+                          \prod_{i=1}^q e_1(u_{i,j})^{1/d}.
+ \end{split}
+ \tag{IC7}
+\]
+The last line is the global constant-one Holder inequality.
+The small-value energy vanishes:
+\[
+ e_1(u_{0,N}^{(\epsilon)})
+   \leq C_q\int_0^\epsilon t^q
+                    C_S(\{u_{0,N}<-t\};V)\,dt\longrightarrow0,
+ \tag{IC8}
+\]
+by the power-energy/capacity equivalence. First make the
+Cauchy error small, then choose $\epsilon$ small. The
+finitely many omitted weights $u_{0,j}$, with derivative
+rows still varying, are handled by the same argument with
+zero first term: outside their own compact negative sublevel,
+the Holder bound with $u_{0,j}^{(\epsilon)}$ tends uniformly
+to zero. A finite union of these compacts proves uniform
+tightness. This observation also proves the assertion for
+independent row indices, without taking a diagonal assumption
+on any derivative slot.
+\end{proof}
+
+\subsection{The Borel class and its intrinsic original currents}
+
+\begin{definition}[Strong relative first-energy completion]
+\label{def:r11-strong-first-energy-completion}
+Let $\widehat{\mathcal E}^1_{\rm str}(V)$ consist of actual
+Borel functions $u:V\to[-\infty,0]$ which are limits of an
+actual strongly Cauchy row in every local truncated outer
+$S$-capacity. Equality means local outer-capacity equality.
+The capacities may equivalently be taken on all compact
+cores in the fixed domain $V$, by (AL9). A choice of actual
+defining row is not part of the element of this quotient.
+\end{definition}
+
+\begin{proposition}[Borel limits of all strongly Cauchy actual rows]
+\label{prop:r11-strong-cauchy-borel-limit}
+Every row satisfying (IC1) has a limit in
+Definition~\ref{def:r11-strong-first-energy-completion}, unique
+modulo local outer-capacity zero. Every member of that space is
+finite and continuous locally outside ordinary open sets of
+arbitrarily small outer capacity. Its pole set is locally
+outer-capacity zero.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for unrestricted
+strongly Cauchy first-energy rows, with no common actual barrier.
+
+\begin{proof}
+Uniform energy and (EV8) make each fixed bounded truncation
+of the row Cauchy in every local outer capacity. Apply the
+countable compact-core and integer-level diagonal construction
+from the bounded completion. A subsequence has compatible
+pointwise limits of all bounded truncations off a locally
+outer-null set. Its actual pointwise limsup defines a Borel
+$u\leq0$ on all of $V$, and the Cauchy property gives the
+required capacity convergence for the full row.
+
+There is a uniform deep sublevel estimate. The no-loss
+sublevel inequality and the first-energy bound imply
+\[
+            C_S(\{u_j<-R\};V)\leq C_q M R^{-d}.
+ \tag{IC9}
+\]
+These sets are ordinary open, so the same bound holds for
+their outer capacities. On a fixed compact core, the set
+$\{u<-2R\}$ is contained in $\{u_j<-R\}$ together with
+a positive gap of the fixed truncations at $3R$.
+Pass $j\to\infty$ in the outer-capacity subadditivity bound.
+It follows that the pole of $u$ has outer capacity zero on
+that core. Outside an ordinary open cover of a sufficiently
+deep sublevel, $u$ agrees with one bounded truncation.
+Its bounded-completion quasicontinuity then proves the stated
+finite local quasicontinuity. The level-set triangle inequality
+proves uniqueness. Neither this argument nor its conclusion
+requires compact negative sublevel closures for the limit.
+\end{proof}
+
+\begin{theorem}[Canonical critical calculus in the strong completion]
+\label{thm:r11-strong-completed-calculus}
+For a finite tuple $\mathbf u$ in
+$\widehat{\mathcal E}^1_{\rm str}(V)$, with actual strongly
+Cauchy defining rows $\mathbf u_j$, there are intrinsic
+coefficient-Radon original currents
+\[
+ \widehat N_\gamma(\mathbf u),\qquad
+ \widehat{\mathcal J}'_{\gamma,i},\quad
+ \widehat{\mathcal J}''_{\gamma,i},\qquad
+ \widehat G^\gamma_{ih}.
+ \tag{IC10}
+\]
+Curvatures have $k=|\gamma|\leq q$; first-order and energy
+currents have $k\leq q-1$. All energy degrees are included,
+since $k+2\leq q+1=d$. Curvatures are separately closed,
+symmetric and middle-positive; energy matrices are positive.
+First-order and energy currents are not asserted to be closed.
+
+For any continuous $F$ on the nonpositive orthant satisfying
+$|F(x)|\leq A(1-\sum_i x_i)^a$, the actual multiplier limit
+\[
+                  F(\mathbf u_j)P_j
+                         \longrightarrow F(\mathbf u)\widehat P
+       \qquad(a+b\leq d)
+ \tag{IC11}
+\]
+holds on every original compact smooth complementary test and
+every actual moment refinement. Here the degree budget $b$ is
+$k$, $k+1$, or $k+2$ for curvature, first-order, or energy.
+All these multipliers are coefficient-integrable. The currents
+and weighted limits are independent of defining rows and of
+outer-capacity-null representatives, and they annihilate the
+joint pole set. They satisfy all original recursive identities,
+including
+\[
+ \begin{split}
+ D(u_i\widehat N_\gamma)&=\widehat N_{\gamma+e_i},\\
+ d'(u_i\widehat N_\gamma)&=\widehat{\mathcal J}'_{\gamma,i},\qquad
+ d''(u_i\widehat N_\gamma)=\widehat{\mathcal J}''_{\gamma,i}
+                         \qquad(k\leq q-1),
+ \end{split}
+ \tag{IC12}
+\]
+and the actual three-term energy identity (RC13).
+
+For $q+1$ completed slots, the global mixed energy is finite and
+\[
+ \mathcal I_S(u_{0,j},\ldots,u_{q,j})
+      \longrightarrow
+ \widehat B(u_0,\ldots,u_q)
+       :=\int_V(-u_0)\widehat N(u_1,\ldots,u_q).
+ \tag{IC13}
+\]
+The corresponding positive weighted measures converge against
+every bounded original smooth scalar test, including those
+without compact support. The assertion also permits independent
+indices tending to infinity in the defining rows.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the strong
+completion without a prescribed actual lower barrier.
+
+\begin{proof}
+For a finite tuple define
+\[
+ \Phi(R)=\sup_j\int_R^\infty t^q
+          C_S\!\left(\left\{\sum_i u_{i,j}<-t\right\};V\right)dt.
+ \tag{IC14}
+\]
+By Lemma~\ref{lem:r11-strong-cauchy-uniform-tails},
+$\Phi(0)<\infty$ and $\Phi(R)\to0$; the same is true for
+the supremum over independently large row indices, with the
+finitely many earlier indices included if needed. At every
+original compact test stage, the actual truncation estimates
+(PG3), (FO8), and (PG12) give
+\[
+ \|\mu_{P_j-P_j^{(L)},\eta}\|_{\rm TV}
+             \leq C_\eta L^{b-d}\Phi(L/4).
+ \tag{IC15}
+\]
+The bounded analytic completion supplies intrinsic currents
+$P^{(L)}$ of the completed clipped tuple. Passing $j$ to
+infinity in the difference of two bounded stages shows that
+$P^{(L)}$ are Cauchy in local coefficient total variation,
+exactly as in (RC10). Their limit defines $\widehat P$.
+Coefficient/refinement identities, positivity and separate
+closedness pass on all original tests.
+
+The limiting coefficients have the common modulus
+\[
+    \inf_{L\geq1}\{L^b s+L^{b-d}\Phi(L/4)\}
+                              \longrightarrow0\quad(s\downarrow0).
+ \tag{IC16}
+\]
+Its weak-limit proof keeps $L$ fixed until after ordinary-open
+variation lower semicontinuity and Radon outer regularity.
+Thus it controls both the defining and limiting coefficients,
+including the critical case $b=d$. It annihilates every
+locally outer-null set and, in particular, the joint pole set.
+The bounded quasicontinuous multiplier argument therefore
+passes every bounded continuous function of a fixed clipped
+tuple.
+
+For endpoint integrability apply that argument to
+$\theta_R(z)\min((1+z)^a,H)$, where
+$z=-\sum_i u_i$ and $\theta_R$ is zero below $R$ and one
+above $2R$. For fixed $R,H$ this is a continuous function
+of one sufficiently large clipped tuple; once a slot exceeds
+that clipping level its value is the constant $H$.
+When $a=0$, use $\theta_R$ itself. The actual row estimates
+bound the integral by
+$C R^{a+b-d}\Phi(R/8)$. Passing to the bounded multiplier
+limit and then $H\uparrow\infty$ proves the same tail bound
+for the limiting positive traces. Variation lower
+semicontinuity handles signed first-order coefficients, and
+positive diagonal controls handle cross energies.
+Adding the bounded-value part gives actual coefficient
+integrability. Clipping a general $F$ and then letting its
+clipping level tend to infinity proves (IC11). Consequently
+all multipliers in (IC12) and (RC13) are defined before
+distributional differentiation, and the original row
+identities pass to the limit.
+
+For two different defining tuples with the same Borel
+capacity limits, their bounded completed stages are identical.
+The union of their finitely many row families has the same
+vanishing-tail property. The preceding construction therefore
+gives identical unbounded currents and actual multipliers.
+This proves approximation independence without presupposing
+that the two tuples are mutually strongly Cauchy.
+
+Finally, (IC11) gives local convergence of (IC3).
+The uniform global tightness in
+Lemma~\ref{lem:r11-strong-cauchy-uniform-tails}, together
+with the uniform finite mixed-energy bound (GE10), identifies
+a finite global limiting measure and gives its total-mass
+convergence. This is precisely (IC13). Tightness also passes
+every bounded original scalar test. The independent-index
+assertions follow from the same bounds, or by applying the
+argument to every sequence of independently diverging indices.
+\end{proof}
+
+\subsection{Intrinsic discrepancy, completeness, and the exact scope}
+
+Define on this Borel space
+\[
+ \begin{split}
+ \widehat e(u)&=\widehat B(u^{[q+1]}),\\
+ \widehat I(u,v)&=\widehat e(u)+\widehat e(v)
+       -\widehat B(u,v^{[q]})-\widehat B(v,u^{[q]}).
+ \end{split}
+ \tag{IC17}
+\]
+
+\begin{lemma}[Uniform discrepancy continuity on energy balls]
+\label{lem:r11-discrepancy-uniform-perturbation}
+The completed space is closed under finite sums and nonnegative
+scalar multiples. Its mixed energy is symmetric, positive and
+multilinear on that cone, and satisfies the constant-one Holder
+inequality. The formulas (EV1), (EV8), (EV9) and the sharp
+midpoint inequality (SM8) hold in the completion, with their
+actual Borel multipliers and local capacities. In particular,
+$\widehat I\geq0$, and it vanishes exactly on equal relative
+classes.
+
+If $\widehat e(a),\widehat e(a'),\widehat e(b)\leq M$,
+then
+\[
+ \big|\widehat I(a,b)-\widehat I(a',b)\big|
+       \leq L_q M^{1-\alpha}\widehat I(a,a')^\alpha,
+ \qquad
+ L_q=2(q+1)2^{(q-1)\alpha}3^{d(1-\alpha)}.
+ \tag{IC18}
+\]
+The assertion at $M=0$ means that both sides are zero.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the uniform
+discrepancy modulus; the global algebraic inequalities are
+\texttt{DIRECT\_COROLLARY} extensions through (IC13).
+
+\begin{proof}
+For two strongly Cauchy defining rows, the sum rows have the
+required Borel capacity limit. Expand the discrepancy of two
+independently late sum rows into finitely many global mixed
+energies. Equation (IC13) makes each term converge to the
+corresponding completed mixed energy; the total limiting
+discrepancy is zero. Thus the sum row is strongly Cauchy.
+Positive scaling is immediate, and zero scaling means the
+zero function even at poles. Passing the actual finite mixed
+identities and (GE10) through (IC13) now proves all asserted
+cone identities.
+
+The actual inequalities (EV1), (EV9), and (SM8) pass by
+global mixed-energy convergence. For (EV1), its left side is
+the actual weight $|u-v|$, which has degree-one growth and is
+bounded by $(-u)+(-v)$; (IC11) and the tightness of these two
+critical positive mixed measures pass its global integral.
+For (EV8), use defining rows, their convergent energies,
+and the level-set triangle inequality for clipped gaps;
+then remove deep sublevels using (IC9) and decrease the
+intermediate gap threshold. This also proves that
+$\widehat I=0$ gives equality in all local outer capacities.
+The converse follows from intrinsic current and multiplier
+independence.
+
+It remains to prove (IC18). It suffices first to consider
+actual potentials. Write $h=a-a'$. Telescoping the three
+terms of $I(a,b)$ that depend on $a$, and using full mixed
+symmetry, expresses their difference as $2(q+1)$ signed
+integrals of $-h$ against positive mixed top products whose
+slots lie among $a,a',b$. Every such product is bounded by
+$\mu_\psi$, where $\psi=a+a'+b$, by the positive expansion.
+Thus
+\[
+ |I(a,b)-I(a',b)|
+                  \leq2(q+1)\int|a-a'|\,d\mu_\psi.
+ \tag{IC19}
+\]
+Minkowski gives $e_1(\psi)\leq3^dM$ and
+$e_1(a+a')\leq2^dM$. Apply (EV1) to (IC19) to obtain
+(IC18). For completed potentials pass through actual
+defining rows whose energies tend to the completed energies;
+first allow $M+\epsilon$ and then let $\epsilon\downarrow0$.
+The zero-energy case follows separately from Holder.
+\end{proof}
+
+\begin{theorem}[Completeness and the intrinsic strong topology]
+\label{thm:r11-complete-strong-first-energy-space}
+Every $\widehat I$-Cauchy sequence in
+$\widehat{\mathcal E}^1_{\rm str}(V)$ converges to a unique
+relative class in that space, with discrepancy tending to zero.
+The actual classical class is strongly dense.
+
+For members $u_j,u$ of this space, one has
+\[
+ \widehat I(u_j,u)\longrightarrow0
+ \quad\Longleftrightarrow\quad
+ \left\{
+ \begin{array}{l}
+ u_j\longrightarrow u\text{ in all local truncated outer capacities},\\
+ \widehat e(u_j)\longrightarrow\widehat e(u).
+ \end{array}\right.
+ \tag{IC20}
+\]
+Strongly convergent finite tuples have every original local
+weighted-current limit in (IC11), including all its critical
+endpoints, and the global mixed-energy and weighted-measure
+limits (IC13). These assertions do not claim local total
+variation for arbitrary varying strongly convergent rows.
+
+Every fixed actual lower-barrier completion
+$\widehat{\mathcal E}^1_a$ of (RC2) embeds canonically in this
+space, preserving all its original currents, actual multipliers
+and mixed energies.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the full relative
+strong completion. This does not assert actual classical
+completeness.
+
+\begin{proof}
+If $(v_l)$ is an actual defining row for a completed $u$, then
+for fixed $l$, (IC13) gives
+$\widehat I(v_l,u)=\lim_{r\to\infty}I(v_l,v_r)$.
+Its Cauchy property therefore implies
+$\widehat I(v_l,u)\to0$. This proves strong density.
+
+Now let $(u_j)$ be completed and $\widehat I$-Cauchy.
+The energy-root estimate bounds its energies. Choose actual
+$v_j$ with $\widehat I(v_j,u_j)<2^{-j}$ and uniformly bounded
+energies. Applying (IC18) in its two slots shows
+\[
+ I(v_j,v_l)\leq\widehat I(u_j,u_l)
+                   +C\bigl(2^{-j\alpha}+2^{-l\alpha}\bigr).
+ \tag{IC21}
+\]
+Hence $(v_j)$ is strongly Cauchy and has a completed Borel
+limit $u$. Its defining property and strong density imply
+$\widehat I(v_j,u)\to0$. A further use of (IC18) gives
+$\widehat I(u_j,u)\to0$. Separation proves uniqueness.
+This proves completeness using a proved uniform modulus,
+rather than an unproved triangle inequality.
+
+The forward implication of (IC20) follows from the completed
+energy-root and capacity estimates. For the reverse, the
+energies are uniformly bounded. Bounded completed stages and
+the strict subcritical truncation bound for top unweighted
+currents give local convergence of their top measures. More
+explicitly, the stage error has order at most $C M/L$ for
+degree $q<d$; first fix $L$, use bounded-completion capacity
+continuity, and then let $L$ grow. The same uniform coefficient
+modulus permits bounded quasicontinuous weight passage.
+Consequently, by first truncating the weight and inserting a
+compact nonnegative cutoff, then increasing both,
+\[
+ \liminf_j\widehat B(u_j,u^{[q]})\geq\widehat e(u),\qquad
+ \liminf_j\widehat B(u,u_j^{[q]})\geq\widehat e(u).
+ \tag{IC22}
+\]
+Holder gives upper bounds tending to $\widehat e(u)$ for
+both cross energies. Expanding (IC17) proves the converse.
+This argument uses no critical weighted continuity to prove
+that very continuity.
+
+For a strongly convergent completed tuple choose, at the $j$th
+row, classical approximants with discrepancy at most $2^{-j}$,
+and sufficiently accurate values on the first $j$ compact
+test stages and bounded clipped weights. The defining-row
+convergence allows these finitely many requirements
+simultaneously. By (IC18), these actual rows are strongly
+Cauchy, with the same Borel limits and energies. The preceding
+construction and (IC11)--(IC13) give the asserted limits.
+Equivalently, any failure on a fixed test would furnish a
+subsequence and actual approximants contradicting those
+already proved actual-row limits. This last argument also
+covers bounded original scalar tests in the global statement.
+
+Finally, classical defining rows of a fixed-barrier member
+have joint critical mixed-energy convergence by (RC14), even
+when two row indices tend independently. Expanding their
+discrepancy therefore makes them strongly Cauchy. The Borel
+representative is unchanged, and the intrinsic bounded stages
+agree in the two constructions. Hence all local currents,
+actual weighted multipliers and global mixed energies agree.
+\end{proof}
+
+\paragraph{The remaining source and representative gates.}
+The completed space solves the strong Cauchy problem for the
+relative first-energy geometry. It does not turn a capacity
+class into an actual ambient classical psh function. It also
+does not, by itself, extend an arbitrary datum integral
+$u\mapsto\int u\,d\mu$ continuously to this Borel space.
+Such a datum statement requires its own null-set and uniform
+integrability hypotheses; finite energy-dual size alone is
+not used as a substitute for them. The barrier-constrained
+problem (BV7)--(BV8) retains its printed integrable barrier
+and BT-diffuse datum assumptions. No unrestricted nonlinear
+source equation, GQ, or low-real-degree CTO is inferred.

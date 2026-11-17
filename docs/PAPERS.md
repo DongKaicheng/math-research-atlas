@@ -1,4 +1,6 @@
-# Rebuilding a paper in a new draft edition
+# Rebuilding Beilinson–Bloch papers in a new draft edition
+
+This renderer is specific to the `strong-green` project. Bedford–Taylor editions use the audited reading-export procedure in [the maintenance protocol](MAINTENANCE.md#bedfordtaylor-editions).
 
 The public repository contains the expanded LaTeX, PDF and HTML record of each paper. No former website checkout or private research directory is needed to rebuild one of these documents.
 

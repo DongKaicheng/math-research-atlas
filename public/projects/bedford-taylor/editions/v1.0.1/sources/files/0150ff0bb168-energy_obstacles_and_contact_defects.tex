@@ -1,0 +1,449 @@
+\section{The energy obstacle map and its contact defect}
+\label{sec:r12-energy-obstacles}
+
+Keep exactly the strict original analytic Laurent box and background
+extension \textup{(ED1)}.  Thus $S$ remains an arbitrary original
+symmetric CLD middle-positive separately $d'$- and $d''$-closed
+$(p,p)$-current, $q=n-p\ge1$, and $d=q+1$.  No factorization of
+$S$ is imposed in this section.  Write
+\[
+ \mathscr C=\widehat{\mathcal E}^{1}_{\rm str}(V),\qquad
+ \mathbb D_S=\mathscr C-\mathscr C,\qquad
+ r(u)=e(u)^{1/d},\qquad E(u)=e(u)/d.
+ \tag{OC1}
+\]
+The Banach norm $\|\cdot\|_{\rm ed}$, its literal Borel
+realization, and the curvature functional
+$J(u)(h)=-\int h\,d\widehat\mu_u$ are the proved R12
+\textup{(ED2)--(ED11)}.  Their proof does not use the obstacle
+map constructed below.  The R11 strong relative Perron theorem
+\textup{(SE1)--(SE6)} is an \texttt{INTERNAL\_INPUT}.
+All orders are relative Borel orders modulo local ordinary-open
+outer $S$-capacity zero, denoted by $\preceq$.  All measures are
+the original measures on the full original test sheaf.
+
+\begin{definition}[An obstacle in the energy-difference space]
+\label{def:r12-energy-obstacle}
+For $f\in\mathbb D_S$ put
+\[
+ P(f)=\sup_{\rm rel}\{v\in\mathscr C:v\preceq f\},
+ \qquad \mathfrak E(f)=E(P(f)).
+ \tag{OC2}
+\]
+The supremum is the R11 relative least upper bound among Borel
+classes.  It is not the ordinary upper semicontinuous
+regularization of a pointwise supremum.
+\end{definition}
+
+\begin{theorem}[A global obstacle map and quantitative continuity]
+\label{thm:r12-global-energy-obstacle}
+The definition is valid for every $f\in\mathbb D_S$.  Its value
+$P(f)$ is the greatest member of $\mathscr C$ below $f$, and
+\[
+ P(f)\preceq f,\qquad P(u)=u\quad(u\in\mathscr C),\qquad
+ r(P(f))\le\|f\|_{\rm ed}.
+ \tag{OC3}
+\]
+The map $P$ is order preserving, positively homogeneous and
+superadditive in the relative order, hence order concave.
+For $f,g\in\mathbb D_S$, set
+$R=\max(r(P(f)),r(P(g)))$.  Then
+\[
+ \begin{split}
+ |r(P(f))-r(P(g))|&\le\|f-g\|_{\rm ed},\\
+ I(P(f),P(g))&\le R^q\|f-g\|_{\rm ed},\\
+ \|J(P(f))-J(P(g))\|_*
+       &\le\sqrt q\,R^{(2q-1)/2}\|f-g\|_{\rm ed}^{1/2}.
+ \end{split}
+ \tag{OC4}
+\]
+At $R=0$ the second and third left sides are zero.  In
+particular, norm convergence of obstacles gives strong
+convergence of their envelopes and dual-norm convergence of
+their original curvature functionals.  Norm continuity of
+$P$ with values in $\mathbb D_S$ is not claimed.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+global energy-difference obstacle domain and its quantitative
+estimates, in every degree and for arbitrary original $S$.
+
+\begin{proof}
+Write $f=a-b$ with $a,b\in\mathscr C$.  Since $b\preceq0$,
+one has $a\preceq f$.  The family in \textup{(OC2)} is therefore
+nonempty.  R11 \textup{(SE2)} gives its relative envelope in
+$\mathscr C$ and keeps it below the Borel upper constraint $f$.
+Thus the envelope itself belongs to the family and is its
+greatest member.  In particular $P(u)=u$ on the cone.
+Energy monotonicity gives $r(P(f))\le r(a)$; infimizing over
+decompositions proves the last assertion of \textup{(OC3)}.
+
+Increasing the obstacle increases its competitor family.
+Positive rescaling maps competitor families bijectively onto
+each other, and $P(0)=0$ handles scale zero.  Also
+$P(f)+P(g)\in\mathscr C$ lies below $f+g$, proving
+superadditivity and hence concavity.
+
+For the estimates write $f-g=a-b$, $a,b\in\mathscr C$, and
+put $u=P(f)$, $v=P(g)$.  Since
+\[
+ u+b\preceq f+b=g+a\preceq g,\qquad
+ v+a\preceq g+a=f+b\preceq f,
+\]
+both are legitimate cone competitors.  Consequently
+\[
+                        a\preceq u-v\preceq-b.
+ \tag{OC5}
+\]
+In particular $u\succeq v+a$ and $v\succeq u+b$.
+Energy monotonicity and Minkowski give
+$r(u)\le r(v)+r(a)$ and $r(v)\le r(u)+r(b)$.
+Infimizing proves the first estimate in \textup{(OC4)}.
+
+The literal mixed integrals and \textup{(OC5)} give the sharper
+signed estimate, without inserting an absolute-variation norm,
+\[
+ \begin{split}
+ I(u,v)&=J(u)(u-v)-J(v)(u-v)\\
+       &\le J(u)(a)+J(v)(b)\\
+       &\le r(a)r(u)^q+r(b)r(v)^q
+        \le R^q(r(a)+r(b)).
+ \end{split}
+ \tag{OC6}
+\]
+Taking the infimum gives the second estimate.  Combine it with
+the proved integrated Cauchy--Schwarz bound
+$\|J(u)-J(v)\|_*\le\sqrt q R^{(q-1)/2}I(u,v)^{1/2}$
+to obtain the third.  The bound in \textup{(OC3)} controls
+$R$ on a norm-convergent obstacle row.  All subsequent
+strong current and weighted limits are therefore the full
+original limits of R11, not only selected moment pairings.
+\end{proof}
+
+\begin{proposition}[A finite convex obstacle energy]
+\label{prop:r12-convex-obstacle-energy}
+The function $\mathfrak E:\mathbb D_S\to[0,\infty)$ is
+finite, convex, order decreasing and positively homogeneous
+of degree $d$.  It is locally Lipschitz, with the precise bound
+\[
+       |\mathfrak E(f)-\mathfrak E(g)|
+           \le\max(r(P(f)),r(P(g)))^q\|f-g\|_{\rm ed}.
+ \tag{OC7}
+\]
+Its restriction to $\mathscr C$ is the original first energy
+$e/d$.  Its convexity is a statement on all of $\mathbb D_S$;
+it does not declare the polynomial extension $B(f^{[d]})/d$
+convex outside the potential cone.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Finiteness, order decrease and homogeneity follow from
+\textup{(OC3)} and the corresponding cone energy properties.
+For $0\le s\le1$, the order concavity of $P$ gives
+\[
+ P((1-s)f+sg)\succeq(1-s)P(f)+sP(g).
+\]
+Apply energy monotonicity, followed by convexity of $E$ on
+the cone, to obtain convexity of $\mathfrak E$.  Finally,
+$|x^d-y^d|/d\le\max(x,y)^{d-1}|x-y|$ for $x,y\ge0$.
+Use the first line of \textup{(OC4)} and $d-1=q$ to obtain
+\textup{(OC7)}.  The norm bound \textup{(OC3)} makes this a
+local Lipschitz estimate on the entire Banach space.
+\end{proof}
+
+\subsection{Contact defects and exact subgradients}
+
+Call a continuous linear functional $\ell\in\mathbb D_S^*$
+\emph{order reversing} if $h\succeq0$ implies $\ell(h)\le0$.
+This is order on Borel scalar differences, not an identification
+of positivity cones for differential forms.  Every literal
+positive measure datum $\ell_\mu(h)=-\int h\,d\mu$ with finite
+integrals and a continuous extension to $\mathbb D_S$ has this
+property.  Write
+\[
+ \partial\mathfrak E(f)=\{\ell\in\mathbb D_S^*:
+ \mathfrak E(g)\ge\mathfrak E(f)+\ell(g-f)
+                      \text{ for every }g\in\mathbb D_S\}
+ \tag{OC8}
+\]
+for the Banach subdifferential, and retain the cone polar
+$\mathscr C^\circ$ of \textup{(NI5)}.
+
+\begin{definition}[Relative contact defect]
+\label{def:r12-relative-contact-defect}
+For $f\in\mathbb D_S$, with $u=P(f)$, put
+\[
+ \mathfrak Q(f)=\int_V(f-u)\,d\widehat\mu_u
+                         =J(u)(u-f)\ge0.
+ \tag{OC9}
+\]
+The integral is literal and finite: $f-u$ is a finite sum of
+cone differences, and all its absolute mixed first-energy
+integrals are finite.  Its nonnegativity uses $u\preceq f$
+and the fact that the original completed measure ignores the
+relative null set.  Vanishing means the relative Borel
+contact identity
+$(f-u)\widehat\mu_u=0$; no ordinary support regularity is
+part of this definition.
+\end{definition}
+
+\begin{theorem}[The obstacle subdifferential and contact criterion]
+\label{thm:r12-obstacle-subdifferential}
+Let $f\in\mathbb D_S$ and $u=P(f)$.  A functional
+$\ell\in\mathbb D_S^*$ belongs to $\partial\mathfrak E(f)$
+if and only if all three conditions hold:
+\[
+ \begin{gathered}
+ \ell\text{ is order reversing},\\
+ \ell-J(u)\in\mathscr C^\circ,
+                   \qquad (\ell-J(u))(u)=0,\\
+                         \ell(f-u)=0.
+ \end{gathered}
+ \tag{OC10}
+\]
+Every such functional has $\|\ell\|_*=r(u)^q$.
+In particular,
+\[
+       \boxed{\quad J(P(f))\in\partial\mathfrak E(f)
+                        \quad\Longleftrightarrow\quad
+                         \mathfrak Q(f)=0.\quad}
+ \tag{OC11}
+\]
+For $u\in\mathscr C$, one always has
+$J(u)\in\partial\mathfrak E(u)$.
+
+If $\ell$ is additionally in the strong-continuous dual
+$\mathbb D_{S,\mathrm s}^*$, the middle line of
+\textup{(OC10)} is equivalent to $u=\Pi(\ell)$ by the
+proved R12 normal-decomposition theorem.  Strong continuity
+is not being asserted for every Banach subgradient.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+precise original arbitrary-background obstacle energy.  This is
+a contact/variational characterization; it does not assert
+that the contact defect vanishes.
+
+\begin{proof}
+Suppose first that $\ell\in\partial\mathfrak E(f)$.
+For $h\succeq0$ and $t>0$, order decrease gives
+$\mathfrak E(f+th)\le\mathfrak E(f)$.  The subgradient
+inequality then gives $t\ell(h)\le0$, proving order reversal.
+Since $P(u)=u$ and $E(u)=\mathfrak E(f)$, the competitor
+$g=u$ in \textup{(OC8)} gives $\ell(u-f)\le0$.
+But $u-f\preceq0$ and order reversal give the opposite
+inequality.  Hence $\ell(f-u)=0$.
+
+Restricting \textup{(OC8)} to $v\in\mathscr C$ now gives
+\[
+                        E(v)\ge E(u)+\ell(v-u).
+ \tag{OC12}
+\]
+Along the cone segment $u+t(v-u)$ the polynomial energy
+has derivative $J(u)(v-u)$ at zero.  Applying
+\textup{(OC12)}, dividing by $t>0$ and letting $t\downarrow0$
+gives $(\ell-J(u))(v-u)\le0$.  The competitors $0$ and
+$2u$ yield $(\ell-J(u))(u)=0$, and then the same inequality
+is the polar condition.  This proves necessity.
+
+Conversely assume \textup{(OC10)}.  Cone convexity and its
+first derivative give
+\[
+ E(v)\ge E(u)+J(u)(v-u)\ge E(u)+\ell(v-u)
+                                     \quad(v\in\mathscr C).
+\]
+For arbitrary $g\in\mathbb D_S$ use $v=P(g)\preceq g$.
+Order reversal gives $\ell(P(g)-u)\ge\ell(g-u)$, so
+\[
+ \mathfrak E(g)\ge E(u)+\ell(g-u)
+                 =\mathfrak E(f)+\ell(g-f).
+\]
+The equality uses $\ell(f-u)=0$.  This proves sufficiency.
+
+Order reversal makes $\ell(v)\ge0$ on the nonpositive cone.
+The polar condition gives
+$0\le\ell(v)\le J(u)(v)\le r(v)r(u)^q$.
+The exact dual norm formula \textup{(ED10)} proves
+$\|\ell\|_*\le r(u)^q$.  If $u\ne0$, evaluation on
+$u/r(u)$ gives equality because $\ell(u)=e(u)$.
+For $u=0$, the upper bound gives the same conclusion.
+Finally $J(u)$ is order reversing, its normal residual is
+zero, and its last condition in \textup{(OC10)} is exactly
+$-\mathfrak Q(f)=0$.  This proves \textup{(OC11)} and
+the assertion at cone points.  The final equivalence is
+precisely the already proved normal-decomposition theorem
+with its stated continuity gate.
+\end{proof}
+
+\begin{corollary}[Zero-mass slack does not move a cone envelope]
+\label{cor:r12-zero-mass-obstacle-slack}
+If $u\in\mathscr C$, $g\in\mathbb D_S$, $g\succeq0$, and
+$\int g\,d\widehat\mu_u=0$, then
+$P(u+g)=u$ and $\mathfrak Q(u+g)=0$.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the frozen ordered energy separation and the new obstacle definition.
+It is recorded as a valid nontrivial contact mechanism, not as
+unrestricted orthogonality.
+
+\begin{proof}
+Put $v=P(u+g)$.  Then $u\preceq v\preceq u+g$.
+Thus $\int(v-u)\,d\widehat\mu_u=0$ and convexity gives
+$E(v)\ge E(u)+J(u)(v-u)=E(u)$.  Energy monotonicity gives
+the reverse inequality.  The frozen ordered discrepancy bound
+$I(u,v)\le e(u)-e(v)$ makes $u=v$ as relative classes.
+The contact defect is then the assumed zero integral.
+\end{proof}
+
+\subsection{Directional loss, source equations and failure of orthogonality}
+
+For $u\in\mathscr C$ and $h\in\mathbb D_S$, define the
+one-sided defect
+\[
+ \mathfrak d_u(h)=
+ \lim_{t\downarrow0}
+       \frac{\mathfrak E(u+th)-E(u)}{t}-J(u)(h).
+ \tag{OC13}
+\]
+Convexity and local Lipschitz continuity make the limit finite.
+Since $J(u)$ is a subgradient, the defect is nonnegative.
+It is positively homogeneous and subadditive, being a convex
+directional derivative minus a linear functional.
+
+\begin{theorem}[A first-order contact gate and its exact loss]
+\label{thm:r12-first-order-contact-gate}
+For $u,h$ as above, put $v_t=P(u+th)$ and
+$G_t=u+th-v_t\succeq0$ for $t>0$.  Then
+\[
+ \begin{split}
+ &\mathfrak E(u+th)-E(u)-tJ(u)(h)\\
+ &\quad=
+ \underbrace{E(v_t)-E(u)-J(u)(v_t-u)}_{\ge0}
+                       +\int_VG_t\,d\widehat\mu_u\ge0,
+ \end{split}
+ \tag{OC14}
+\]
+and
+\[
+ \mathfrak E(u+th)-E(u)-tJ(u)(h)
+       \le t(J(v_t)-J(u))(h)+\mathfrak Q(u+th).
+ \tag{OC15}
+\]
+Consequently
+\[
+ \mathfrak d_u(h)
+       \le\liminf_{t\downarrow0}\frac{\mathfrak Q(u+th)}{t}.
+ \tag{OC16}
+\]
+
+Let $\mu$ be a positive Radon datum whose literal integration
+functional $\ell_\mu\in\mathbb D_{S,\mathrm s}^*$ is defined
+on every energy difference, and let $u=\Pi(\ell_\mu)$.
+If, for every original compact smooth scalar $\phi$ and both
+signs, one has
+\[
+                  \mathfrak Q(u\pm t\phi)=o(t)
+                                     \quad(t\downarrow0),
+ \tag{OC17}
+\]
+then $\widehat\mu_u=\mu$ on every original compact smooth
+scalar test, after every actual moment refinement.
+Condition \textup{(OC17)} is a sufficient first-order contact
+criterion, not a condition proved for general obstacles or data.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+defect identities and \texttt{CONDITIONAL} for the source
+conclusion under the explicit geometric contact criterion.
+This condition is stated using the independently constructed
+envelope and its own curvature, not by assuming the desired
+source equality.
+
+\begin{proof}
+All integrals are finite by the mixed first-energy inequality.
+Subtract $tJ(u)(h)$ from the convex tangent remainder at $u$.
+Since $v_t-u-th=-G_t$ and $J(u)=-\int(\cdot)\,d\widehat\mu_u$,
+this gives exactly \textup{(OC14)}.  The tangent inequality
+at $v_t$ instead gives
+$E(v_t)-E(u)\le J(v_t)(v_t-u)$.
+Substitute $v_t-u=th-G_t$ to obtain \textup{(OC15)}.
+The third estimate of \textup{(OC4)} gives
+$J(v_t)\to J(u)$ in the actual dual norm.  Divide
+\textup{(OC15)} by $t$ and let $t\downarrow0$; the error
+$(J(v_t)-J(u))(h)$ tends to zero.  This proves
+\textup{(OC16)}, including the possibility that its right
+side is infinite.
+
+For the datum assertion, order reversal and the normal
+decomposition give $\ell_\mu\in\partial\mathfrak E(u)$
+by \textup{(OC10)}.  Thus
+\[
+ \mathfrak d_u(h)\ge(\ell_\mu-J(u))(h)
+                                    \quad(h\in\mathbb D_S).
+ \tag{OC18}
+\]
+Every original compact smooth $\phi$ belongs to $\mathbb D_S$
+by the exact all-degree finite-mass difference construction
+R11 \textup{(HC14)--(HC15)}.  Assumption \textup{(OC17)},
+\textup{(OC16)} and nonnegativity make both
+$\mathfrak d_u(\phi)$ and $\mathfrak d_u(-\phi)$ zero.
+Apply \textup{(OC18)} in both signs to get
+$\ell_\mu(\phi)=J(u)(\phi)$.  The literal integral
+definitions give the original source identity on every
+such test.  The choice of $\phi$ was unrestricted in the
+original sheaf, so actual refinements are included.
+\end{proof}
+
+\begin{corollary}[A nonzero variational residual forces an obstacle kink]
+\label{cor:r12-normal-residual-obstacle-kink}
+For the positive datum and maximizer of the preceding theorem,
+put $n=\ell_\mu-J(u)$.  For every $h\in\mathbb D_S$ the
+right and left directional slopes of $\mathfrak E$ at $u$
+have a gap at least $|n(h)|$.  If $n(h)>0$, then
+\[
+ \mathfrak d_u(h)\ge n(h)>0,
+ \qquad
+ \liminf_{t\downarrow0}\frac{\mathfrak Q(u+th)}{t}\ge n(h).
+ \tag{OC19}
+\]
+If the source equation fails on an original compact smooth
+test, the direction $h$ can be chosen to be such a test,
+with its sign changed if necessary.  In that case universal
+relative obstacle orthogonality and two-sided differentiability
+of this obstacle energy at the maximizer are both false.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+quantitative contact interpretation of the normal residual.
+
+\begin{proof}
+Both $J(u)$ and $\ell_\mu$ are subgradients at $u$.
+The right slope in direction $h$ is at least the larger of
+$J(u)(h)$ and $\ell_\mu(h)$, whereas the left slope is at
+most their smaller value.  Their difference is at least
+$|n(h)|$.  Equation \textup{(OC18)} gives the first bound
+in \textup{(OC19)}, and \textup{(OC16)} gives the second.
+Distinct original Radon measures are distinguished by an
+original compact smooth scalar test; the exact test-difference
+construction places that direction in $\mathbb D_S$.
+No ordinary upper envelope or stronger delta-test equality
+is used in this separation.
+\end{proof}
+
+\paragraph{Which proposed classical step fails.}
+The map $P$ exists on every energy difference, its energy is
+finite and convex, and the original curvature is strongly
+continuous.  These facts alone do not make the curvature a
+subgradient at the \emph{obstacle} $f$: by \textup{(OC11)},
+the missing statement is precisely its nonnegative contact
+defect.  The new all-degree compact-source examples force
+that defect to persist at first order along an original
+smooth direction through a genuine variational maximizer.
+Thus the unrestricted contact step is \texttt{FALSE} in
+this classical-approximation strong class.  The qualified
+criterion \textup{(OC17)} remains useful on a separately
+proved obstacle/data subclass; no such universal subclass
+identification is claimed.

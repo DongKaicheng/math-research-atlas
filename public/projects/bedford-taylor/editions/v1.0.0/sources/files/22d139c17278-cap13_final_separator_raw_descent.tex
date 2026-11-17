@@ -1,0 +1,495 @@
+\section{Final-separator descent and normalized local angular gauges}
+\label{sec:r13-final-separator-raw-descent}
+
+The completed marked curve will be kept as the \emph{old} coefficient
+chart when the last source-separating functions are added.  This order
+matters.  Contracting new sources only to the tangent plane of the
+pre-completion chart does not control mixed relations involving its
+new Picard coordinates.
+
+\subsection{A linear descent statement for the entire labelled star}
+
+Let $T$ and $N$ be finite-dimensional real vector spaces.  Let
+$v_p\in N\setminus\{0\}$, $p\in M$, be a finite labelled family
+such that
+\[
+ \ker\bigl(\mathbf R^M\longrightarrow N,\ (a_p)\longmapsto
+                    \sum_pa_pv_p\bigr)=\mathbf Rw,
+       \qquad w_p>0.
+ \tag{SD1}
+\]
+Write $W_p=T\oplus\mathbf Rv_p$.  On a connected convex open
+base $B\subset T$, let $b_p$ be continuous finite piecewise smooth
+covectors on the respective half-products, with common tangential
+strain.  Their traces are denoted $\beta_p=b_p|_T$ and their
+primitive normal traces $c_p=b_p(v_p)$.  Fix $p_0\in M$ and put
+\[
+ \beta_0=\beta_{p_0},\qquad
+ K_p=\beta_p-\beta_0,\qquad z_w=\sum_pw_pc_p.
+ \tag{SD2}
+\]
+By CS6 every $K_p$ is affine Killing on $B$.
+
+Consider a second finite labelled incident system
+$W'_\alpha\supset T'$ in an ambient space $W'$, and a linear
+map
+\[
+ \pi:W'\longrightarrow T\oplus N,
+                    \qquad \pi|_{T'}:T'\xrightarrow{\sim}T.
+ \tag{SD3}
+\]
+Partition its labels into sets $I_p$, $p\in M$, and $I_0$ such
+that
+\[
+ \pi(W'_\alpha)\subset W_p\quad(\alpha\in I_p),
+   \qquad \pi(W'_\alpha)\subset T\quad(\alpha\in I_0).
+ \tag{SD4}
+\]
+No independence among the final spaces or between these sets is
+assumed.  Labels with zero old normal image remain in $I_0$.
+Choose the pulled-back traces
+\[
+ b'_\alpha=\pi^*b_p\quad(\alpha\in I_p),\qquad
+ b'_\alpha=\pi^*\beta_0\quad(\alpha\in I_0).
+ \tag{SD5}
+\]
+The second expression is defined on the relevant ordinary image
+contained in $T$, rather than by restricting an arbitrary current
+to $T$.
+
+\begin{theorem}[Every mixed raw Hessian descends to the old flux]
+\label{thm:r13-sd-mixed-raw-hessian}
+If $\operatorname{Hess}_Tz_w=0$, then every raw defect for the
+\emph{whole} final labelled system has zero full Hessian on
+$B'=(\pi|_{T'})^{-1}B$.  This includes simultaneous relations
+mixing different old marks with arbitrary silent labels.
+The conclusion also holds for any other continuous finite-PS
+branch primitives with the same strains as SD5.
+\end{theorem}
+
+\begin{proof}
+Take $u'=(u'_\alpha)$ with $\sum_\alpha u'_\alpha=0$.
+For $\alpha\in I_p$ write uniquely
+\[
+ \pi u'_\alpha=t_\alpha+a_\alpha v_p,
+ \qquad A_p=\sum_{\alpha\in I_p}a_\alpha,
+ \tag{SD6}
+\]
+and put $t_\alpha=\pi u'_\alpha$ for $\alpha\in I_0$.
+Applying $\pi$ to the relation gives
+$\sum_\alpha t_\alpha=0$ and $\sum_pA_pv_p=0$.
+Thus $A=cw$ for a real constant $c$.  The final raw defect is
+exactly
+\[
+ \begin{split}
+ \sum_\alpha b'_\alpha(u'_\alpha)
+   &=\sum_pA_pc_p+
+       \sum_p\sum_{\alpha\in I_p}K_p(t_\alpha)\\
+   &=c z_w+
+       \sum_p\sum_{\alpha\in I_p}K_p(t_\alpha).
+ \end{split}
+ \tag{SD7}
+\]
+The terms involving the common trace $\beta_0$ cancel because
+$\sum t_\alpha=0$.  The remaining evaluations of the fixed
+vectors $t_\alpha$ in affine Killing fields are affine.  This
+proves the asserted Hessian vanishing, with every mixed relation
+retained.  The difference of two primitives with the same strain
+on a connected convex half-product is affine Killing by CS6 in
+all its variables.  Its boundary evaluation on $u'_\alpha$ is
+affine, proving the last assertion.
+\end{proof}
+
+The statement requires no decomposition of the final raw kernel
+into separate source kernels.  In particular it is stronger than
+testing each balanced source independently.  Conversely it
+requires SD4 relative to the \emph{completed} old columns: making
+silent labels tangent only after forgetting those columns is
+insufficient for SD6.
+
+\subsection{An explicit normalized gauge on one whole positive face}
+
+Assume now $T=T_0\oplus E$, with $\dim E=2$, and let
+$B=B_0\times\operatorname{relint}(\gamma)$, where $B_0\subset T_0$
+is connected and convex and $\gamma\subset E$ is a convex
+two-dimensional cone.  All functions extend continuously to
+$B_0\times\{0\}$ and satisfy the central normalization
+\[
+        b_p(t,0,0)|_{T_0}=b_{T_0}(t),\qquad
+        b_p(t,0,0)|_{E\oplus\mathbf Rv_p}=0,
+ \tag{LG1}
+\]
+with one common covector $b_{T_0}(t)$; it need not be zero.
+Their regularity is the closed-cell regularity of CS.  Assume
+$\operatorname{Hess}_Tz_w=0$ on the \emph{whole} $B$.
+
+\begin{theorem}[A local normalized angular gauge]
+\label{thm:r13-lg-normalized-angular-gauge}
+There are constant alternating forms on the three-dimensional
+normal spaces $E\oplus\mathbf Rv_p$, extended by zero on
+$T_0$, whose associated linear Killing corrections make every
+raw incident defect zero along $B$.  These corrections preserve
+the strains and LG1.  After this correction, the branch
+covectors admit a common ambient covector trace on $B$.
+Pulling the corrected primitives through SD3--SD5 gives the same
+conclusion for the whole final system.
+\end{theorem}
+
+\begin{proof}
+By CS6, $K_p$ is an affine Killing covector on $T_0\oplus E$.
+Its value is zero on $B_0\times\{0\}$ by the common central
+value in LG1.  Write
+$K_p(y)=a_p+\Omega_py$ with $\Omega_p$ alternating.  Vanishing
+on the nonempty open tangent set implies $a_p=0$ and
+$\Omega_pT_0=0$.  Alternation also removes all mixed
+$T_0$--$E$ entries.  Thus
+\[
+              K_p(t,x)=\Omega_p^E x,
+                   \qquad \Omega_p^E\in\bigwedge^2E^*.
+ \tag{LG2}
+\]
+Add the Killing covector $-\Omega_p^E x$ on branch $p$,
+extended independently of its primitive transverse variable
+$s$.  This makes all tangential traces equal to $\beta_0$.
+It leaves every $c_p$ and hence $z_w$ unchanged.
+
+The affine function $z_w$ vanishes at $(t,0)$ for every
+$t\in B_0$, again by LG1.  Consequently
+\[
+                              z_w(t,x)=\ell(x)
+                         \quad\text{for some }\ell\in E^*.
+ \tag{LG3}
+\]
+On one chosen branch $p_0$, add the further Killing covector
+\[
+       \kappa_{p_0}(x,s)
+           ={s\over w_{p_0}}\,\ell
+                  -{\ell(x)\over w_{p_0}}\,ds.
+ \tag{LG4}
+\]
+Here $s$ is the primitive parameter with tangent vector $v_{p_0}$.
+Its coefficient matrix is alternating, so its strain is zero.
+At $s=0$ its tangential trace is zero, while its contribution to
+the weighted normal flux is $-\ell(x)$.  All corrected branches
+therefore have the same tangential trace and flux zero.  Every
+raw relation vanishes by CS15 and SD1.
+
+The restriction map from the ambient dual of
+$T+\operatorname{span}\{v_p\}$ to the finite direct sum of the
+$W_p^*$ has image exactly the annihilator of its raw sum kernel.
+The corrected traces belong to that image.  A fixed linear
+right inverse on this image supplies one ambient covector trace,
+continuous and finite-PS in the base variables.  For the final
+system use its pullback through $\pi$; each silent branch takes
+the common tangent restriction.  All corrections vanish at
+$(x,s)=0$, so LG1 is preserved.
+\end{proof}
+
+The gauge is local to the one positive face.  Different faces
+may require different constant alternating forms on a shared
+three-cone.  The existence of a single set of cone gauges valid
+at all faces is still the separate JF8 equation.  Local gauges
+on every nonzero angular neighborhood do not prove that equation.
+
+\subsection{Finite projection of a supplied actual curve block}
+
+The following use of projection is a calculation on one original
+analytic source.  It is not a proper pushforward statement for
+an arbitrary current.  Let a fixed adapted tuple $a$ have
+radial rank two on an actual curve block supplied by FC and CC.
+For calculation, enlarge it by the two CC normal parameters and
+a finite generating family for $k(C)$.  These are actual units
+on the same ordinary neighborhood.  CC identifies the whole
+source of this calculating tuple as the Gauss product, with
+the marked calibration $\delta_pm_p$ at every radius.
+
+\begin{lemma}[Calibrated finite projection without a new global completion]
+\label{lem:r13-sd-finite-calculating-projection}
+The complete top-dimensional source contribution of $a$ on this
+ordinary block is the coordinate projection of that entire
+calibrated calculating source.  A branch of projected rank less
+than three contributes zero to every top-degree form pulled
+back from $a$.  A full-rank projected branch has the factor
+\[
+             i_T\,{m_p^{a}\over m_p},
+             \qquad
+        \delta_pm_p\,i_T\,{m_p^{a}\over m_p}
+                    =\delta_pi_Tm_p^{a},
+ \tag{SD8}
+\]
+where $i_T$ is the saturated tangent lattice index and
+$m_p^{a}$ the stretching in the saturated old normal quotient.
+All coincident branch images are summed only after their labels
+and these factors have been retained.
+\end{lemma}
+
+\begin{proof}
+Retention of $a$ means that every full-rank $a$ source is a
+full-rank source of the calculating tuple.  CC identifies all
+the latter sources on the specified ordinary block.  The
+sourcewise coordinate-refinement formula retained in GP and
+CC18 therefore computes the full $a$ contribution.  A
+top-degree differential form pulled back through a map of rank
+less than three is literally zero on that branch; no current
+restriction is being used.  On a full-rank branch, the exact
+sequence of tangent and normal lattices gives SD8, precisely as
+in CC18.  The ordinary domain and the same analytic source are
+unchanged by this calculation.  The calculating coordinates
+need not be added to the global tuple on every other source.
+\end{proof}
+
+\subsection{Actual detector after one final separator}
+
+\begin{lemma}[Finite normal Newton preparation after the last separator]
+\label{lem:r13-sd-finite-normal-newton}
+Fix an SP completed curve block with its two rational normal
+parameters $z_1,z_2$.  A further fixed finite list of rational
+functions in $F$ is adapted after a finite rational conical
+subdivision of the positive two-face and regular toroidal
+modification.  More precisely, remove the finite one-dimensional
+angular tie rays of its normal Newton diagrams.  Each remaining
+two-dimensional sector has one leading normal monomial for
+each numerator and denominator, with coefficient in
+$k(C)^\times$.  The regular two-cones of a finite refinement
+are attached to smooth proper curves $C'$ with
+$k(C')=k(C)$, hence $C'\simeq C$.  On each such curve the
+new functions are adapted, and the old normalized marked orders
+are unchanged under this identification and the old coordinate
+projection.  Any new mark outside the old marked support has
+zero old completed normal column.
+\end{lemma}
+
+\begin{proof}
+Write each rational function as $A/B$ with nonzero
+$A,B\in\mathcal O_{V,\eta_C}$.  Complete this regular
+two-dimensional local ring and choose a coefficient field.
+It is $k(C)[[z_1,z_2]]$.  The support of each nonzero
+series has finitely many minimal elements for the coordinatewise
+partial order on $\mathbf N^2$: induction on the first
+coordinate, retaining only successive strict decreases of the
+second, proves this elementary finiteness.  Every exponent
+dominates a minimal one.  Therefore every strictly positive
+weight takes its minimum on that finite set.  The finitely
+many equal-weight rays divide the positive quadrant into
+sectors with a unique leading exponent for every $A$ and $B$.
+Taking the union over the finite function list gives one finite
+rational fan.
+
+Perform the regular toroidal subdivision used in FC.  On each
+regular two-cone the pullback of a series is its selected
+normal monomial times a unit: every other exponent differs
+by a nonnegative vector in the dual cone, and at least one
+of its two normal exponents is positive.  The same assertion
+holds in the local ring, by faithful flatness of its completion.
+Taking the quotient gives the adapted expression for $A/B$.
+Over the generic point of $C$, the new two-cone is a split
+toric fixed point.  Its residue field is precisely $k(C)$.
+Its curve closure is thus birational to $C$; the proper smooth
+curve identification follows.  Monomial normal parameters
+can be chosen from the original rational $z_1,z_2$ on these
+generic charts.  The old normalized residue functions are
+then the same functions of $k(C)$.  If other trivializations
+are used, SH gives the equivalent common shear, and the old
+normal coordinate projection is unchanged.
+
+In particular all old normalized residue functions have order
+zero at a point outside their old divisor supports.  New
+functions may make such a point visible, but its old completed
+normal column remains zero.  Their own finite supports add
+only finitely many marks.  The tie rays and all subdivision
+boundary rays are lower-dimensional faces; no conclusion of
+the two-dimensional-sector statement is assigned to them.
+\end{proof}
+
+For an actual analytic unit of norm one at the central point,
+first use its rational residue representative.  Their ratio
+has residue one, so a strict ordinary inequality gives equal
+norms and normalized initial forms on a common central
+neighborhood.  This is the finite replacement step of FC.
+The lemma therefore applies to the final FA and protection
+coordinates without assuming in advance that they were adapted
+to the old curve.
+
+We formulate the geometric combination on the supplied
+three-dimensional central model of FC, with any supplied
+calibrated old tangent factor.  Start with finitely many
+specified original two-faces.  Prepare their proper smooth
+marked curves by FC.  Apply SP simultaneously and retain the
+resulting completed tuple $j$.  Each specified block now has
+its old labelled columns $v_p$, weights $w_p=\delta_pm_p$, and
+kernel SD1.  All original coefficient coordinates are retained.
+
+\emph{Only after this completion}, apply FA to the whole compact
+full source $S_j$, and retain its finite separating coordinates
+in a tuple $h$.  Any further finite protection coordinates are
+retained too.  Choose a common finite source/target subdivision
+for this final tuple.  On the positive two-face pieces considered
+below its $j$ projection has rank two and lies in the specified
+old two-face.  Work in one sufficiently short common collar;
+every face in the conclusion is a whole connected positive
+prepared piece of this collar, not an isolated compact box.
+
+\begin{theorem}[Complete positive-face detector with the last separator]
+\label{thm:r13-sd-actual-final-separator-detector}
+Assume the original coefficient tensor $Z$ has continuous
+finite-PS branch primitives as in CS, with common tangential
+strain, and that $D[Z]=0$ against every original compact smooth
+complementary CLD test.  Use the protected complete calibrated
+source presentation of GP, the finite face preparation and
+rank alternative of FC, and the all-radius comparison of CC.
+Then, over each of the above positive rank-two pieces:
+\begin{enumerate}
+\item the full distributional Hessian of the old completed
+      flux $z_w$ vanishes, including all angular, old tangent,
+      and mixed entries;
+\item every raw Hessian for the \emph{entire final incident
+      system}, including mixed core/satellite relations and
+      all zero-old-image labels, vanishes;
+\item if the fixed branch system extends to the central face
+      with LG1, there is the normalized local angular gauge
+      of LG2--LG4 and a continuous finite-PS ambient covector
+      lift on a neighborhood of that positive face.
+\end{enumerate}
+The finite calculating enlargements in the preceding lemma are
+used only to evaluate source contributions.  They do not
+require a further global Picard completion or a repeated
+separator/completion process.
+\end{theorem}
+
+\begin{proof}
+Fix a compact box in a positive prepared piece.  FC is applied
+with \emph{old tuple $j$}.  Because $h$ separates the complete
+old full source, every final full-rank source over this box is
+either the same actual old core source or has its entire old
+$j$ ordinary image in the tangent plane.  This is the strict
+ordinary containment of FC4, including commensurable radii.
+It is stronger than a dimension statement at a source point.
+The full protected source sum is finite, and its source germs
+are complete balanced cycles by GP and local balancing.
+
+At the old core, CC and a finite adapted calculation give the
+complete marked normal cycle.  Any final incident branch projects
+either to one of its old labelled rays or to zero in its old
+normal quotient.  AH supplies an explicit finite angular horn
+for the finished adapted list supplied by
+Lemma~\ref{lem:r13-sd-finite-normal-newton}; a further common finite source
+subdivision keeps each old coefficient branch specified.
+If a normal parameterization needs extra curve generators,
+Lemma~\ref{lem:r13-sd-finite-calculating-projection} computes its
+contribution on the same ordinary block.  The full lattice
+projection formula gives, in compatible primitive coordinates,
+\[
+         i_T\sum_{\alpha\mapsto p}w'_\alpha\lambda_\alpha=w_p,
+       \qquad \pi(v'_\alpha)=\lambda_\alpha v_p,
+                      \quad\lambda_\alpha>0.
+ \tag{SD9}
+\]
+Silent labels have $\pi(v'_\alpha)=0$.  The tangent factor
+$i_T>0$ is fixed on the prepared piece and is not silently
+absorbed into the old weights.
+
+Use the pullback of the old branch primitive on every branch
+projecting to an old mark.  On each entire satellite source,
+FC4 makes the represented tensor the literal pullback of the
+common old tangential strain; use $\pi^*\beta_0$ there.
+Choose the quotient splitting through the retained old tangent
+projection, so every silent normal vector has zero old image.
+Its normal flux is zero.  Its tangential Green terms cancel on
+its complete balanced cycle.  The unequal tangential traces of
+the main branches cancel by CS10--CS11.  Thus CS, SD9, and the
+complete original current equation give
+\[
+                  \operatorname{Hess}_T(i_T^{-1}z_w)=0
+ \tag{SD10}
+\]
+on the box.  Every symmetric tangent dual is paired with this
+same full source calculation, so no marginal spanning argument
+replaces the paired-symbol test.  The factor $i_T^{-1}$ is
+nonzero and constant.  In SD10 the tangent variables have first
+been transported through $\pi|_{T'}$ and all symmetric duals
+in the final tangent variables are varied.  Equivalently, if
+one uses the pullbacks of the old tangent test forms, their
+tangent integration Jacobian supplies the factor $i_T$ and
+SD10 reads directly as $\operatorname{Hess}_Tz_w=0$ in old
+coordinates.  Both conventions give the same full Hessian
+vanishing, proving the first assertion.
+
+For every final raw relation apply SD6--SD7.  The silent spaces
+are tangent \emph{for $j$}, which is the tuple whose old marked
+kernel is SD1.  Hence the theorem on mixed raw Hessians applies
+to the entire system without assuming that its kernel splits
+as a sum of separate source kernels.  It also makes the
+conclusion independent of the chosen same-strain primitives.
+
+The boxes cover the whole positive prepared piece in the same
+fixed finite coefficient system.  Distributional Hessian
+vanishing is local, so it holds on that whole piece; its affine
+expressions agree on overlaps.  With the central continuity and
+normalization assumed in the third assertion, LG applies.  Its
+common ambient trace extends over each incident half-product by
+a fixed linear complement to its tangent restriction.  These
+extensions agree on the face.  A finite source subdivision gives
+a continuous finite-PS covector on the local union, with the
+original branch strains.  Pullback through the final coordinate
+projection gives the stated final-system lift.
+\end{proof}
+
+\begin{corollary}[Coverage of a complete original two-face inventory]
+\label{cor:r13-sd-complete-original-two-face-inventory}
+Suppose the original finite coefficient tuple $f$ has first been
+protected by its complete-source faithful tuple as in FC, and
+the supplied original curve list contains \emph{every} labelled
+old full-source two-face under consideration.  Retain this
+first faithful tuple through SP and through the last separator
+for $j$.  Then every final positive two-face whose $f$ projection
+has rank two and is contained in one of those original geometric
+two-faces has a local continuous finite-PS covector lift, under
+the regularity and central normalization of the theorem.
+\end{corollary}
+
+\begin{proof}
+The intermediate $j$ face is either a completed original core
+piece, or its actual source is not one of the listed old full
+sources.  In the first case apply the theorem.  In the second
+case FC, now with old tuple $f$ and the first faithful tuple
+retained, places the entire ordinary $f$ image in the original
+two-plane.  The represented tensor is therefore the literal
+pullback of its common tangential strain.  Pick one tangential
+primitive and pull it back; this is already a local primitive
+on that entire ordinary source.  After the last separator for
+$j$, all other final sources over that intermediate face have
+their ordinary $j$ images in its tangent plane.  Their $f$
+images are in the same original two-plane.  The same pulled-back
+primitive therefore works on their complete union, including
+every mixed relation.
+
+All labels are accounted for because the original full-source
+inventory is complete and FC prepares every remaining finite
+source piece.  No assertion about only a selected old source is
+substituted for this hypothesis.  A final face projecting into
+the interior of one old top cone is simpler: the one primitive
+on that cone pulls back throughout its local coefficient image.
+\end{proof}
+
+\paragraph{Exact scope.}
+The source hypothesis is now a proved combination of the stated
+FC, SP, CC, AH, FA and GP inputs for the supplied model and its
+finite positive rank-two face list.  It is not asserted for a
+general ordinary nonsaturated analytic germ without those model
+inputs.  New one-dimensional angular walls, faces whose old
+projection has rank at most one, and the common central face
+retain their own raw equations.  In particular the theorem
+does not prove JF8 for the entire three-fan.  It gives no
+ordinary-to-GK upgrade, no universal higher-degree relation
+descent, and no general A1 statement.
+
+\paragraph{Proof provenance.}
+SD1 and the old weights are SP4 and CC15--CC18; complete original
+tests and the calibrated source sum are GP and its retained
+sourcewise coordinate-refinement formula.  FC is used with the
+\emph{post-SP} tuple as its old tuple.  AH controls the fixed
+adapted finite lists on their original ordinary horns.  The
+new algebraic steps are SD6--SD7 and the explicit local gauge
+LG2--LG4.  The Stokes identity used throughout is the separately
+reviewed CS theorem, which includes all internal coefficient
+walls and all mixed differential terms.

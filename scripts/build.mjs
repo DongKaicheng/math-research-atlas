@@ -2,9 +2,11 @@ import {readFile,writeFile,mkdir,readdir,cp,rm} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import katex from 'katex';
+import {buildBedfordTaylor} from './build-bedford-taylor.mjs';
 import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
 import {FEEDBACK_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
+import {restorePackedAssets} from './restore-packed-assets.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const output=path.join(root,'dist');
@@ -22,6 +24,7 @@ const section=(id,label,title,body)=>`<section class="document-section" id="${es
 const alert=(title,copy)=>`<div class="outline-notice"><div><strong>${esc(title)}</strong><p>${esc(copy)}</p></div></div>`;
 
 // dist is generated output; a clean build prevents stale public downloads.
+await restorePackedAssets(root);
 await rm(output,{recursive:true,force:true});
 await mkdir(output,{recursive:true});
 
@@ -231,7 +234,7 @@ for(const bundle of bundles){
   <header class="document-header">
   <p class="eyebrow">${isFoundation?'FOUNDATIONAL THEORY':'CONJECTURES & NEW THEORY'}</p>
   <h1>${esc(p.title)}</h1><p class="document-deck">${esc(p.summary)}</p>
-  <div class="document-meta"><span>${esc(p.authors.join(' · '))}</span><span class="outline-badge">Version ${bundle.revision}${bundle.revision===0?' · Outline':''}</span></div>
+  <div class="document-meta"><span class="outline-badge">Version ${bundle.revision}${bundle.revision===0?' · Outline':''}</span></div>
   ${bundle.revision>0?`<p class="document-meta">Earlier versions: ${histories.get(p.id).map(s=>`<a href="${url('/projects/'+p.id+'/versions/'+s.revision+'/')}">Version ${s.revision}</a>`).join(' · ')}</p>`:''}
   <div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>
   </header>
@@ -260,6 +263,7 @@ for(const bundle of bundles){
     <header class="document-header"><p class="eyebrow">ARCHIVED PUBLICATION</p><h1>${esc(old.title)}</h1><p class="document-deck">${esc(old.summary)}</p>
     <p class="document-meta">Version ${snapshot.revision} · ${esc(snapshot.publishedAt)}</p>
     ${alert('Historical version','This is an immutable snapshot; later versions may correct or extend its mathematics.')}
+    ${snapshot.publicationProjection?'<p class="document-meta">Unsigned historical reading copy. Its mathematical text and historical status are retained; the original file identity is recorded with the snapshot.</p>':''}
     <a class="button button-outline" href="${url(route)}">Current version</a></header>
     <div class="document-body">
     ${section('motivation','MOTIVATION','Motivation',`<div class="prose-math">${markdown(old.motivation)}</div>`)}
@@ -355,8 +359,9 @@ await save('/search/',loadPage('Search','Search public project outlines, results
 
 await cp(path.join(root,'public'),output,{recursive:true});
 const strongGreen=await buildStrongGreen({root,output,base,origin,repository});
+const bedfordTaylor=await buildBedfordTaylor({root,output,base,origin,repository});
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
-  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),...strongGreen.searchIndex];
+  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
 await cp(path.join(root,'lib','feedback.mjs'),path.join(output,'assets','feedback-core.mjs'));
@@ -365,15 +370,15 @@ await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...strongGreen.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...bedfordTaylor.routes,...strongGreen.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+
- [...new Set(routes.filter(p=>p!=='/search/'&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))].map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
+ [...new Set(routes.filter(p=>p!=='/search/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))].map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
 await writeFile(path.join(output,'sitemap.xml'),sitemap);
 await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`);
 const updateItems=bundles.filter(b=>b.revision>0).map(b=>`<item><title>${xml(b.project.title)}</title><link>${xml(canonical('/projects/'+b.project.id+'/'))}</link><description>${xml(b.changeSummary)}</description><pubDate>${new Date(b.publishedAt).toUTCString()}</pubDate></item>`).join('');
 await writeFile(path.join(output,'feed.xml'),`<?xml version="1.0"?><rss version="2.0"><channel><title>Conjecture Atlas updates</title><link>${xml(canonical('/'))}</link><description>Changes to published mathematical research</description>${updateItems}</channel></rss>`);
 await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html'));
-process.stdout.write(`Built ${new Set(routes).size} page routes, ${bundles.length} projects and ${entries.length+strongGreen.recordCount} permanent entries into dist/.\n`);
+process.stdout.write(`Built ${new Set(routes).size} page routes, ${bundles.length} projects and ${entries.length+bedfordTaylor.recordCount+strongGreen.recordCount} permanent entries into dist/.\n`);

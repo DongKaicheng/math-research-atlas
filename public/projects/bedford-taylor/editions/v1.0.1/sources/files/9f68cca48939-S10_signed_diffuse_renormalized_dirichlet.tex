@@ -1,0 +1,540 @@
+\section{Signed diffuse data: strong truncations and the full renormalized problem}
+\label{sec:r11-signed-diffuse-renormalized}
+
+Keep the same original arbitrary $(n-1,n-1)$ background, affinoid
+neighborhood and part form as above.  Let $\mu$ be any finite
+signed energy-diffuse Radon measure on $F$, and put
+$B=\|\mu\|_{\rm TV}$.  All currents, coefficients and tests are
+original CLD objects.  The new argument uses the already proved
+positive-data theorem for the \emph{datum} $|\mu|$, with the same
+original background $S$.  It does not replace that background.
+
+\begin{lemma}[Bounded energy tests and signed Radon functionals]
+\label{lem:r11-bounded-H-tests-diffuse}
+Every bounded $z\in H$ has original compact smooth core
+approximations converging strongly in $H$, uniformly bounded
+in absolute value, and along a subsequence quasi-everywhere.
+If a finite signed Radon measure $\nu$ on $F$ has a continuous
+core functional for the energy norm, then $|\nu|$ charges no
+energy-polar set.  If $h\in H$ and $D(hS)=\nu$ on every original
+compact smooth test, then
+\[
+       \mathcal E(h,z)=-\int\widetilde z\,d\nu
+                     \qquad(z\in H\cap L^\infty),
+       \qquad h=u_\nu .
+ \tag{SD1}
+\]
+The last equality is the already defined transposition solution.
+Neither conclusion assumes that $|\nu|$ has a finite-energy norm.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} in the stated
+original-core realization; the compact-core capacity formula is
+an already specified \texttt{EXTERNAL\_KNOWN} form input.
+
+\begin{proof}
+For bounded $z$, start with any original core sequence $z_j\to z$
+in $H$ and compose it with one fixed smooth normal clamp that
+fixes a neighborhood of the range of $z$ and is bounded globally.
+The gradient-module chain rule proves strong convergence of these
+compositions to $z$.  They are still original compact smooth
+functions because the clamp fixes zero.  A summable-capacity
+subsequence converges quasi-everywhere.
+
+Let $K$ be an energy-polar compact set and choose an ordinary
+relatively open neighborhood $G$ with compact closure such that
+$|\nu|(G\setminus K)<\epsilon$.
+The regular compact-core capacity formula, coercivity, a smooth
+scalar clamp, and a fixed original cutoff supported in $G$
+give core functions $0\le a_j\le1$, equal to one near $K$,
+supported in $G$, with $\mathcal E(a_j)\to0$.
+Multiplication by that cutoff preserves the energy convergence
+by (AE12).  Hence $\int a_j\,d\nu\to0$, while
+\[
+       \left|\nu(K)-\int a_j\,d\nu\right|
+                            \le |\nu|(G\setminus K)<\epsilon.
+\]
+Let $\epsilon\downarrow0$.  The same argument applies to every
+polar compact subset of the positive and negative Hahn sets.
+Radon inner regularity of the two variations therefore proves
+that $|\nu|$ vanishes on every polar Borel set.
+
+For bounded $z\in H$ use the uniformly bounded core
+approximation just constructed.  Energy continuity passes its
+left side in the original identity; diffuseness and dominated
+convergence pass the right side.  This proves (SD1)'s first
+assertion.  For $f\in L^\infty(\lambda)$ take $z=Gf$, which
+is bounded by the torsion estimate.  Symmetry gives
+\[
+ \int h f\,d\lambda=\mathcal E(h,Gf)
+                         =-\int\widetilde{Gf}\,d\nu.
+\]
+Since $h\in L^2(\lambda)\subset L^1(\lambda)$, transposition
+uniqueness gives $h=u_\nu$.
+\end{proof}
+
+The usual product rule extends to bounded members of $H$:
+$d(z_1z_2)=z_1dz_2+z_2dz_1$.  Indeed the preceding uniformly bounded
+core approximations and the original gradient module pass this
+identity by dominated convergence against the fixed limiting
+energy measures.  This fact will be used for a product of two
+bounded energy functions, not only a smooth cutoff.
+
+\begin{theorem}[Strong clipping convergence for signed nest data]
+\label{thm:r11-signed-strong-truncations}
+Let $\mu_j=\mathbf1_{F_j}\mu$ be the finite-energy nest
+restrictions from (MD3), and put $u_j=-G\mu_j$.
+For every $k>0$,
+\[
+                          T_ku_j\longrightarrow T_ku_\mu
+                                      \quad\hbox{strongly in }H.
+ \tag{SD2}
+\]
+The conclusion does not require monotonicity of the signed
+potentials.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Let $w=-u_{|\mu|}=G|\mu|\ge0$ be the positive-data Green
+potential, with its canonical representative.  Positivity and
+order of the transposition map give
+$|u_j|,|u_\mu|\le w$ quasi-everywhere for all $j$.
+Put $a_M=|\mu|\{w>M\}$, so $a_M\to0$, and define
+\[
+          \zeta_M=\frac{T_{2M}w-T_Mw}{M}\in H,\qquad
+          0\le\zeta_M\le1.
+\]
+It equals one on $\{w\ge2M\}$.  The exact positive-data
+band identity and the closed clipping rule give
+\[
+ \mathcal E(\zeta_M)\le\frac{a_M}{M},\qquad
+ d\zeta_M=\frac1M\mathbf1_{\{M<w<2M\}}\,dw.
+ \tag{SD3}
+\]
+Here $dw$ on the printed bounded band means the compatible
+clipped gradient $d(T_{2M+1}w)$ there; no globally Radon
+first-order current of the unbounded $w$ is required.
+Test the finite-energy equation for $u_j$ with
+$\zeta_M^2T_ku_j\in H\cap L^\infty$.
+The original closed gradient product and clipping rules give
+\[
+ \int\zeta_M^2\,d\Gamma_S(T_ku_j)
+  =-\int\zeta_M^2 T_k\widetilde u_j\,d\mu_j
+                  -2\int\zeta_M T_k\widetilde u_j\,
+                                      d\Gamma_S(u_j,\zeta_M).
+\]
+The first term in absolute value is at most $k a_M$.
+The cross energy is carried where $M<w<2M$, and there
+$|u_j|<2M$, so its $u_j$ factor may be clipped at $2M$.
+Cauchy--Schwarz and (MD5) therefore prove
+\[
+ \sup_j\Gamma_S(T_ku_j)\{w\ge2M\}
+   \le k a_M+2k\sqrt{\mathcal E(\zeta_M)
+                                 \sup_j\mathcal E(T_{2M}u_j)}
+   \le k a_M+2k\sqrt{2B a_M}\longrightarrow0.
+ \tag{SD4}
+\]
+This is the required uniform control of energy in the region
+where positive and negative potentials could be large and cancel.
+
+On $A_M=\{w\le M\}$ one has $|u_j-u_l|\le2M$.
+The first-order clipping rule and (MD5), applied to the
+finite-energy datum $\mu_j-\mu_l$, give
+\[
+ \|\mathbf1_{A_M}(du_j-du_l)\|^2
+      \le\mathcal E(T_{2M+1}(u_j-u_l))
+      \le(2M+1)\|\mu_j-\mu_l\|_{\rm TV}\longrightarrow0.
+ \tag{SD5}
+\]
+Thus the localized gradients have a fixed limit in the
+original Hilbert gradient module.  Its energy measure is
+absolutely continuous with respect to $\lambda$.
+For a smooth scalar $P$ with $P(0)=0$ and compactly supported
+first derivative, bounded convergence against this fixed
+limiting module measure proves that
+$\mathbf1_{A_M}d(P(u_j))$ converges strongly.
+Here $u_j\to u$ in $L^1(\lambda)$, and hence in measure;
+continuity and boundedness of $P'$ supply the required
+convergence of its scalar multipliers.
+The energy of $P(u_j)$ outside $A_M$ is bounded by a fixed
+multiple of the tail of a clipping $T_Lu_j$, where $L$
+contains the support of $P'$.  Formula (SD4) makes it small
+uniformly in $j$ as $M\to\infty$.
+It follows that $P(u_j)$ is Cauchy in $H$; its $L^2$ limit
+is $P(u)$, by boundedness and the $L^1$ convergence of $u_j$.
+
+Finally approximate $T_k$ by smooth normal clamps
+$P_\epsilon$ with uniform scalar error at most $\epsilon$,
+whose derivatives differ from that of $T_k$ only where
+$k-\epsilon<|s|<k+\epsilon$.  For $0<\epsilon<k/2$, the
+finite-energy band formula and the source equation give
+\[
+ \begin{split}
+ \mathcal E(T_ku_j-P_\epsilon(u_j))
+  &\le\mathcal E(T_{k+\epsilon}u_j-T_{k-\epsilon}u_j)\\
+  &=-\int(T_{k+\epsilon}\widetilde u_j
+                 -T_{k-\epsilon}\widetilde u_j)\,d\mu_j
+       \le2\epsilon B.
+ \end{split}
+ \tag{SD6}
+\]
+The smooth compositions are strongly convergent by the
+preceding paragraph.  First let $j,l\to\infty$ and then
+$\epsilon\downarrow0$ in the triangle inequality.
+This makes $T_ku_j$ Cauchy in $H$.  Its already known
+$L^2$ limit is $T_ku$, proving (SD2).
+\end{proof}
+
+\begin{theorem}[Full signed renormalized chain and energy distribution]
+\label{thm:r11-signed-renormalized-chain}
+For $u=u_\mu$, the increasing compatible energy measure
+$\Gamma_S(u)=\lim_k\Gamma_S(T_ku)$ is sigma-finite, finite
+on every bounded value strip, and zero on every exact scalar
+level.  If $\Phi\in C^2(\mathbf R)$ has bounded first derivative
+and compactly supported second derivative, then
+\[
+ D(\Phi(u)S)=\Phi'(\widetilde u)\mu
+                           +\Phi''(\widetilde u)\Gamma_S(u)
+ \tag{SD7}
+\]
+on all original compact smooth tests.  Every term is coefficient-
+defined, and the right side is a finite signed Radon measure.
+If in addition $\Phi'$ has compact support, then
+$\Phi(u)-\Phi(0)\in H$.
+For every $0\le a<b$,
+\[
+ \mathcal E(T_bu-T_au)
+                   =-\int(T_b\widetilde u-T_a\widetilde u)\,d\mu.
+ \tag{SD8}
+\]
+The scalar energy image has density
+\[
+ \widetilde u_*\Gamma_S(u)=k_\mu(t)\,dt,\qquad
+ k_\mu(t)=
+ \begin{cases}
+       \mu\{\widetilde u<t\},&t<0,\\
+       -\mu\{\widetilde u>t\},&t>0.
+ \end{cases}
+ \tag{SD9}
+\]
+This density is nonnegative and bounded by $B$ almost everywhere;
+its value at zero is immaterial.  In particular all bounded-value
+weighted energy measures used here are finite Radon measures.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for signed
+finite diffuse data.  Unweighted energy need not be an ordinary
+locally finite current, as the positive-data counterexample already
+shows.
+
+\begin{proof}
+Compatibility and level zero follow from the $H$ clipping
+identities exactly as in (RT7)--(RT9), without any sign
+hypothesis on $u$.  Choose $M$ containing the support of
+$\Phi''$ in its interior.  The finite-energy chain for $u_j$
+reads
+\[
+ D(\Phi(u_j)S)=\Phi'(\widetilde u_j)\mu_j
+                         +\Phi''(\widetilde u_j)\Gamma_S(T_Mu_j).
+\]
+The left side passes because $\Phi$ is Lipschitz and
+$u_j\to u$ in $L^1(\lambda)$.  The source term passes in
+variation by the already proved capacity convergence of $u_j$
+to $u$, diffuseness of $|\mu|$, bounded continuity of $\Phi'$, and
+total-variation convergence of $\mu_j$ to $\mu$.
+Strong convergence in (SD2), the energy variation estimate
+(KT2), and bounded convergence against the fixed limiting
+energy measure pass the last term.  This proves (SD7).
+For merely $C^2$ scalar functions, ordinary smoothing gives
+the same limit, uniformly in the first two derivatives on
+the bounded active range and uniformly in scalar values
+up to the original Lipschitz error.
+If $\Phi'$ is compactly supported, its normalized composition
+is a smooth function of one bounded clipping and lies in $H$.
+
+The same strong clipping convergence passes the finite-energy
+band identity, proving (SD8).  Apply the argument separately
+to the bounded one-sided bands
+\[
+ B^+_{a,b}(s)=\min((s-a)^+,b-a),\qquad
+ B^-_{a,b}(s)=-B^+_{a,b}(-s).
+\]
+Their derivatives are the indicators of $(a,b)$ and
+$(-b,-a)$, respectively.  Composing a strongly convergent
+clipping with these finite hinge combinations is strongly
+continuous: the closed gradient formula applies, and the
+limiting $H$ energy is zero on their finitely many corner
+levels by (RT1).  Hence
+\[
+ \begin{split}
+ \Gamma_S(u)\{a<u<b\}&=-\int_a^b\mu\{u>t\}\,dt,\\
+ \Gamma_S(u)\{-b<u<-a\}&=\int_a^b\mu\{u<-t\}\,dt.
+ \end{split}
+\]
+There is no energy mass at zero or at the interval endpoints.
+These formulas prove (SD9).  Nonnegativity follows because
+it is the density of a positive measure; the bound follows
+from total variation of $\mu$.
+\end{proof}
+
+\begin{proposition}[Finite global level measures and clipping curvatures]
+\label{prop:r11-signed-global-curvature-truncation}
+The Kato measures $L_t(u;S)$ are finite for every real $t$,
+with
+\[
+ \begin{aligned}
+ L_t(u;S)(F)&\le |\mu|\{u\le t\}&& (t<0),\\
+ L_t(u;S)(F)&\le |\mu|\{u>t\}&& (t>0),\\
+ L_0(u;S)(F)&\le B.
+ \end{aligned}
+ \tag{SD10}
+\]
+For $M>0$, the actual signed Radon curvature
+$\nu_M=D(T_Mu\,S)$ satisfies
+\[
+ \begin{split}
+ \nu_M&=\mathbf1_{\{-M<u\le M\}}\mu+L_{-M}(u;S)-L_M(u;S),\\
+ \|\nu_M\|_{\rm TV}&\le B,\qquad
+ \|\nu_M-\mu\|_{\rm TV}
+                    \le2|\mu|\{|u|\ge M\}\longrightarrow0.
+ \end{split}
+ \tag{SD11}
+\]
+Both $\nu_M$ and every $L_t(u;S)$ are energy diffuse.
+No finite-energy norm of $|\nu_M|$ is claimed.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Apply (SD7) to the smooth one-sided hinges.  Their positive
+defects are
+$\Phi_\epsilon''(u-t)\Gamma_S(u)$, supported in the scalar
+strip $t<u<t+\epsilon$.  Formula (SD9), the nonnegative
+unit-integral second derivative, and its bounded density
+show that their masses are at most $B$.
+For $t>0$ the sharper bound is $|\mu|\{u>t\}$; for
+$t<0$ and sufficiently small $\epsilon$ it is
+$|\mu|\{u<t+\epsilon\}$.
+They converge on original compact tests to $L_t(u;S)$.
+Positivity, compact smooth exhaustion and then
+$\epsilon\downarrow0$ prove (SD10).
+
+The scalar identity $T_Ms=h_{-M}(s)-h_M(s)$ gives the
+first formula of (SD11).  The three source regions
+$\{u\le-M\}$, $\{-M<u\le M\}$ and $\{u>M\}$
+partition the finite-value locus.  Triangle inequalities
+and (SD10) therefore give both variation estimates in
+(SD11).  Since $T_Mu\in H$, its finite Radon curvature
+is diffuse by Lemma~\ref{lem:r11-bounded-H-tests-diffuse}.
+
+For any fixed $t$ and $M>|t|$, the exact scalar identity
+\[
+                    h_t(T_Mu)=h_t(u)-h_M(u)
+ \tag{SD12}
+\]
+holds on the finite-value locus and hence in the coefficient-defined
+$L^1$ sense.  Its left side belongs to $H$.  Its curvature is finite Radon
+by (SD10) and the Kato decompositions, hence diffuse by
+the same lemma.  Thus
+\[
+ L_t(u;S)-L_M(u;S)
+       =D(h_t(T_Mu)S)-\mathbf1_{\{t<u\le M\}}\mu
+\]
+is a diffuse finite signed measure.  On any polar Borel
+set, the mass of $L_t$ is therefore at most $L_M(F)$,
+which tends to zero by (SD10).  This proves diffuseness
+of $L_t$ without assuming it passes through an arbitrary
+weak measure limit.
+\end{proof}
+
+\begin{lemma}[Finite signed Radon data in the $H$ level theorem]
+\label{lem:r11-H-level-carrier-finite-signed}
+Let $v\in H$ and suppose $D(vS)=\sigma$ is a finite signed
+Radon measure on the original tests.  Then the conclusion
+(RT2)--(RT3) holds, with a finite diffuse positive level
+measure, without assuming finite energy integral of
+$|\sigma|$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the required
+signed-data strengthening of the earlier $H$ carrier lemma.
+
+\begin{proof}
+The datum is diffuse and the current equation extends to
+all bounded $H$ tests by Lemma
+\ref{lem:r11-bounded-H-tests-diffuse}.
+Consequently the finite-energy scalar chain proof applies:
+its test $\psi\Phi'(v)$ is bounded and lies in $H$.
+The one-sided band tests are also bounded $H$ vectors and
+give (SD9) with $v,\sigma$ in place of $u,\mu$.
+Thus the smoothed hinge defects have uniformly bounded
+total mass, and their positive limit $L_t(v;S)$ is finite.
+The signed measure
+$D(h_t(v)S)=\mathbf1_{\{v>t\}}\sigma+L_t(v;S)$ is finite
+and comes from an $H$ vector.  It is therefore diffuse by
+the preceding lemma, as is $L_t$.
+
+The original current identity for this hinge source now
+extends to every bounded $H$ test.  Take
+$z=\psi g(v)$ with $\psi$ an original compact nonnegative
+smooth function and $g$ smooth bounded, with bounded
+derivative, nonnegative and zero near $t$.
+Strong convergence of the smooth hinges in $H$ and bounded
+convergence against the finite measure $|\sigma|$ pass
+\[
+ \int z\,dL_{t,\epsilon}
+     =-\mathcal E(h_{t,\epsilon}(v),z)
+              -\int z\Phi_\epsilon'(v-t)\,d\sigma
+\]
+to $\int z\,dL_t$.
+Its left side is zero for small $\epsilon$ because
+$g\Phi_\epsilon''=0$.  The same countable family of
+nonnegative tests as in the proof of (RT3) shows that
+$L_t$ is carried by $\{\widetilde v=t\}$.
+\end{proof}
+
+\begin{theorem}[Exact level carriers and coarea for all signed diffuse data]
+\label{thm:r11-signed-diffuse-exact-level}
+For every finite signed energy-diffuse datum and every real $t$,
+\[
+                    \mathbf1_{\{\widetilde u\ne t\}}L_t(u;S)=0.
+ \tag{SD13}
+\]
+For every bounded compactly supported Borel scalar $\theta$,
+\[
+                \int\theta(t)L_t(u;S)\,dt
+                         =\theta(\widetilde u)\Gamma_S(u)
+ \tag{SD14}
+\]
+as finite signed Radon measures.  The hard-curvature
+variation bounds (SD11) hold on the complete original
+space and every actual moment refinement.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+First identify $\nu_M=\mu$ on $A_M=\{|u|<M\}$.
+Choose a smooth $\Phi$ with $\Phi'$ zero outside $[-M,M]$
+and strictly positive on $(-M,M)$.
+The identities $\Phi(T_Mu)=\Phi(u)$ and (RT9) make their
+weighted energies agree.  Compare (SD7) with the bounded
+$H$ chain for $T_Mu$ and its finite signed datum $\nu_M$.
+The latter chain is valid by the bounded-test extension,
+so $\Phi'(u)(\nu_M-\mu)=0$, proving the assertion on $A_M$.
+
+Fix $t$, choose $M>|t|$, and apply the preceding $H$ level
+lemma to $v=T_Mu$.  The level measure $L_t(v;S)$ is carried
+by $\{v=t\}=\{u=t\}$.
+Compare the curvature of the two sides of (SD12), and then
+restrict their actual Radon measures to $A_M$.
+The just proved identity $\nu_M=\mu$ on $A_M$ cancels the
+source terms and gives
+\[
+     \mathbf1_{A_M}(L_t(u;S)-L_M(u;S))
+                         =\mathbf1_{A_M}L_t(T_Mu;S).
+\]
+It follows that
+$L_t(u;S)(A_M\cap\{u\ne t\})\le L_M(u;S)(F)\to0$.
+The sets $A_M$ exhaust the finite-value locus, and $L_t$ is
+diffuse, so it gives no mass to the omitted polar infinite-
+value set.  This proves (SD13) by monotone measure convergence.
+
+For smooth compactly supported $\theta$, take
+$\Phi(s)=\int\theta(t)(s-t)^+dt$.
+It has bounded first derivative and compactly supported
+second derivative $\theta$, so (SD7) and Fubini prove
+(SD14) on every original test.
+The positive kernels $L_t$, their global bound by $B$,
+and their Borel original-test pairings extend the equality
+to nonnegative Borel $\theta$; subtract positive and negative
+parts.  The right side is finite by (SD9).
+No unbounded unweighted energy current or restricted
+background closedness has been assumed.
+\end{proof}
+
+\begin{definition}[The signed renormalized zero-boundary class]
+\label{def:r11-signed-renormalized-boundary}
+For the specified finite signed diffuse datum, a candidate is
+$v\in L^1(F,\lambda)$ with a finite energy-quasicontinuous
+representative and $T_kv\in H$ for every $k>0$.
+Use the compatible sigma-finite energy measure of its
+clippings.  Require the original current identity
+\[
+ D(\Phi(v)S)=\Phi'(\widetilde v)\mu
+                     +\Phi''(\widetilde v)\Gamma_S(v)
+ \tag{SD15}
+\]
+for every $\Phi\in C^2(\mathbf R)$ with compactly supported
+first derivative, and the radiation condition
+$k^{-1}\mathcal E(T_{2k}v-T_kv)\to0$.
+These conditions specify the boundary and solution class
+without using the transposition identity in their definition.
+\end{definition}
+
+\begin{theorem}[The complete finite-diffuse relative renormalized Dirichlet problem]
+\label{thm:r11-signed-renormalized-Dirichlet}
+Every finite signed energy-diffuse Radon datum has exactly one
+candidate in Definition~\ref{def:r11-signed-renormalized-boundary}.
+It is the transposition solution $u_\mu$, and all its original
+current, exact-level, coarea and global curvature-variation
+conclusions above hold.  The construction and solution class
+are independent of the chosen faithful reference measure.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+printed relative linear operator and boundary class, in
+arbitrary ambient dimension and arbitrary original $S$ of
+the specified degree.
+
+\begin{proof}
+Existence follows from (SD7), the truncation membership,
+quasicontinuity, and the already proved signed radiation
+estimate (KT11).  For uniqueness choose smooth odd scalar
+clamps $\Phi_k$ fixing the interval $[-k,k]$, constant
+outside $[-2k,2k]$, with $\Phi_k(0)=0$,
+$0\le\Phi_k'\le1$ and
+$|\Phi_k''|\le C/k$ on the two transition bands.
+Then $|\Phi_k(s)|\le|s|$ and $\Phi_k(s)\to s$.
+For a candidate $v$, its prescribed chain gives
+\[
+ \begin{split}
+ \nu_k:=D(\Phi_k(v)S)
+       &=\Phi_k'(v)\mu+\Phi_k''(v)\Gamma_S(v),\\
+ \|\nu_k-\mu\|_{\rm TV}
+       &\le |\mu|\{|v|>k\}
+                +\frac Ck\mathcal E(T_{2k}v-T_kv)\to0.
+ \end{split}
+ \tag{SD16}
+\]
+The measures $\nu_k$ are finite signed Radon measures.
+The potential $\Phi_k(v)=\Phi_k(T_{2k}v)$ belongs to $H$,
+so Lemma~\ref{lem:r11-bounded-H-tests-diffuse} proves
+both diffuseness of $\nu_k$ and
+$\Phi_k(v)=u_{\nu_k}$.  This step does not infer a
+finite-energy norm for $|\nu_k|$ from its signed core norm.
+The established total-variation stability gives
+$\|\Phi_k(v)-u_\mu\|_1\le2\|\nu_k-\mu\|_{\rm TV}\to0$.
+Dominated convergence also gives $\Phi_k(v)\to v$ in
+$L^1(\lambda)$.  Thus $v=u_\mu$ almost everywhere.
+Equality of all clipped $H$ vectors identifies the canonical
+representatives quasi-everywhere.  Reference independence
+follows from the already proved independence of the original
+core form and the transposition solution.
+\end{proof}
+
+\paragraph{The remaining general problem.}
+This section closes the signed diffuse chain and level-carrier
+gates left open at the preceding positive-data stage.  It does
+not establish ambient classical psh representability, ordinary
+pointwise boundary regularity, or an unrestricted diagonal nonlinear Monge--Ampere
+Dirichlet theory.  General analytic PS/PL relation descent and
+low-real-degree CTO remain \texttt{OPEN}.  The background in
+all the proved relative statements remains arbitrary.
+Unrestricted equality of energy and BT polar ideals is already
+\texttt{FALSE} by frozen R6, and unrestricted ambient classical
+solvability is already \texttt{FALSE} by frozen R10; the larger
+relative solution class is consistent with both obstructions.

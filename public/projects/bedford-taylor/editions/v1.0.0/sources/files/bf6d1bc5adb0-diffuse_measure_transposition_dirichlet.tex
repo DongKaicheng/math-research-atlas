@@ -1,0 +1,455 @@
+\section{Finite diffuse data and an intrinsic transposition Dirichlet problem}
+\label{sec:r11-diffuse-dirichlet}
+
+Retain the arbitrary original background and the analytic domains
+$(B,\Omega,V)$ of Section~\ref{sec:r11-affinoid-energy}.  Thus
+$S$ has degree $(n-1,n-1)$, $F=V\cap\operatorname{supp}S$,
+$\lambda=D(hS)$ is faithful, and
+$H=\mathscr D_0(V)$ is a regular strongly local coercive part form.
+The reference measure $\lambda|_F$ is finite because $V\Subset\Omega$.
+Write $c_V$ for the transient $0$-capacity of this part form.
+Its usual outer definition agrees, on quasi-open sets, with
+\[
+ c_V(A)=\inf\{\mathcal E(v,v):v\in H,\ 
+                              \widetilde v\geq1\text{ quasi-everywhere on }A\}.
+ \tag{MD1}
+\]
+The tilde denotes the energy-quasicontinuous representative.
+Since $\mathcal E\leq\mathcal E_1\leq3\mathcal E$,
+\[
+                    c_V\leq\operatorname{cap}_{H,1}\leq3c_V.
+ \tag{MD2}
+\]
+The two capacities therefore have identical polar sets.
+They are capacities on the original support space $F$, with
+its ordinary subspace topology; they are not identified with
+relative BT capacity.
+
+\begin{definition}[Finite energy-diffuse data]
+\label{def:r11-energy-diffuse-data}
+Let $\mathcal M_{\mathrm{diff}}(F)$ be the finite signed Radon
+measures $\mu$ on $F$ for which $|\mu|$ vanishes on every
+$c_V$-polar Borel set.  This is a condition on the specified
+background and domain, not on an unknown solution.
+\end{definition}
+
+\noindent\textbf{Status: definition.}
+
+\begin{lemma}[The finite-energy nest input]
+\label{lem:r11-finite-energy-nest}
+For every $\mu\in\mathcal M_{\mathrm{diff}}(F)$ there are increasing
+Borel sets $F_j$ such that
+$|\mu|(F\setminus\bigcup_jF_j)=0$ and
+$\tau_j={\bf1}_{F_j}|\mu|$ has finite energy integral:
+\[
+             \int_F|\widetilde v|\,d\tau_j
+                         \leq C_j\,\mathcal E(v,v)^{1/2}
+                                  \qquad(v\in H).
+ \tag{MD3}
+\]
+In particular $\mu_j={\bf1}_{F_j}\mu$ converges to $\mu$ in
+total variation and has a finite-energy variation.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{EXTERNAL\_KNOWN}}.
+The precise input is Klimsiak--Rozkosz,
+\emph{On the structure of bounded smooth measures associated with a
+quasi-regular Dirichlet form}, arXiv:1410.4927v2,
+Lemma~2.1 (pp.~2--3).  It asserts a finite $0$-energy nest
+for every smooth measure of a transient quasi-regular form.
+The original form here is regular, hence quasi-regular, and
+coercivity proves transience.  A finite Radon measure charging
+no polar sets is smooth: any compact form nest has finite
+measure on its members and has polar complement.  Apply the
+lemma to $|\mu|$.  The claimed total-variation convergence
+then follows by monotone convergence.
+No existence theorem for the original current equation is
+included in this external input.
+
+\subsection{Quantitative estimates before passing to measure data}
+
+For a finite signed Radon measure $\sigma$ whose variation has
+finite energy integral, let $G\sigma\in H$ be its Riesz potential:
+\[
+               \mathcal E(G\sigma,v)=\int_F\widetilde v\,d\sigma
+                                 \qquad(v\in H).
+ \tag{MD4}
+\]
+This is the R6 finite-energy result applied on the analytic
+domains now covered by Section~\ref{sec:r11-affinoid-energy}.
+For $k>0$ set $T_k(s)=\max(-k,\min(k,s))$.
+
+\begin{lemma}[Mass controls integrability and all truncations]
+\label{lem:r11-finite-energy-mass-estimates}
+Under the preceding assumptions on $\sigma$, put $w=G\sigma$.
+Then
+\[
+ \|w\|_{L^1(\lambda)}\leq2\|\sigma\|_{\mathrm{TV}},\qquad
+ \mathcal E(T_k w,T_k w)\leq k\|\sigma\|_{\mathrm{TV}},\qquad
+ c_V(\{|\widetilde w|>k\})\leq\frac{\|\sigma\|_{\mathrm{TV}}}{k}.
+ \tag{MD5}
+\]
+The constants are independent of the finite-energy norm of $\sigma$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the uniform
+original-background mass estimate needed for the larger solution class.
+Only the frozen positivity and coercive barrier are used.
+
+\begin{proof}
+Positive finite-energy measures integrate canonical energy
+representatives.  To recall the justification, their core norm
+bound and the compact-core capacity formula show that they
+vanish on polar compact sets, hence on polar Borel sets by Radon
+regularity.  For a core approximation $v_j\to v$ in $H$,
+the same norm bound applied to smooth approximations of
+$|v_j-v_l|$ makes it Cauchy in $L^1$ of the measure.
+A subsequence converges quasi-everywhere, so its $L^1$ limit is
+the canonical representative $\widetilde v$.
+This proves the integration interpretation in (MD4).
+
+Order preservation of $G$ gives
+$|G\sigma|\leq G|\sigma|$ quasi-everywhere.  With the torsion
+vector $z=G1$, whose representative satisfies $0\leq z\leq2$,
+symmetry yields
+\[
+ \int_FG|\sigma|\,d\lambda
+       =\mathcal E(G|\sigma|,z)
+       =\int_F\widetilde z\,d|\sigma|
+       \leq2\|\sigma\|_{\mathrm{TV}}.
+ \tag{MD6}
+\]
+This proves the first estimate.
+
+The normal contraction $P(s)=s-2T_k(s)$ has Lipschitz constant
+one and $P(0)=0$.  The Markov contraction inequality therefore
+gives
+$\mathcal E(w-2T_kw,w-2T_kw)\leq\mathcal E(w,w)$.
+Expanding proves
+$\mathcal E(T_kw,T_kw)\leq\mathcal E(w,T_kw)$.
+Equation (MD4), tested with $T_kw$, bounds its right side by
+$k\|\sigma\|_{\mathrm{TV}}$.  The vector $|T_kw|/k$ is
+admissible for the outer-capacity estimate of the quasi-open
+set $\{|\widetilde w|>k\}$, giving the last inequality.
+\end{proof}
+
+\begin{definition}[The transposition boundary condition]
+\label{def:r11-transposition-boundary}
+A function $u\in L^1(F,\lambda)$ satisfies the zero transposition
+Dirichlet problem for $\mu\in\mathcal M_{\mathrm{diff}}(F)$ if
+\[
+             \int_Fu f\,d\lambda
+                   =-\int_F\widetilde{Gf}\,d\mu
+                        \qquad(f\in L^\infty(F,\lambda)).
+ \tag{MD7}
+\]
+Here $Gf=G(f\lambda)\in H$, and its canonical representative is
+bounded by $2\|f\|_\infty$.  The right side is therefore defined
+for every datum under consideration.
+\end{definition}
+
+\noindent\textbf{Status: definition.}
+This is an intrinsic energy boundary condition through the
+part resolvent.  It does not assert an ordinary pointwise
+boundary limit.
+
+\begin{theorem}[All-original-current Dirichlet solutions for finite diffuse data]
+\label{thm:r11-diffuse-transposition-dirichlet}
+Every $\mu\in\mathcal M_{\mathrm{diff}}(F)$ has a unique
+$L^1(F,\lambda)$ solution $u_\mu$ of (MD7).  The solution has
+a canonical finite energy-quasicontinuous representative
+outside a polar set, and
+\[
+       T_k(u_\mu)\in H,\qquad
+       \mathcal E(T_ku_\mu,T_ku_\mu)\leq k\|\mu\|_{\mathrm{TV}}.
+ \tag{MD8}
+\]
+Its coefficient-defined original current satisfies
+\[
+                         D(u_\mu S)=\mu\quad\hbox{on }V
+ \tag{MD9}
+\]
+against every original compact smooth scalar test, including
+all actual moment refinements.
+The solution map is linear, is order reversing on positive data,
+and for $\mu,\nu\in\mathcal M_{\mathrm{diff}}(F)$ satisfies
+\[
+ \begin{split}
+ \|u_\mu-u_\nu\|_{L^1(\lambda)}
+                   &\leq2\|\mu-\nu\|_{\mathrm{TV}},\\
+ \mathcal E\bigl(T_k(u_\mu-u_\nu),T_k(u_\mu-u_\nu)\bigr)
+                   &\leq k\|\mu-\nu\|_{\mathrm{TV}},\\
+ c_V(\{|\widetilde u_\mu-\widetilde u_\nu|>k\})
+                   &\leq\|\mu-\nu\|_{\mathrm{TV}}/k.
+ \end{split}
+ \tag{MD10}
+\]
+For positive $\mu$, one has $u_\mu\leq0$.
+When $\mu$ already has finite energy, this is exactly the
+frozen R6 energy solution.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the
+all-original-current extension to finite diffuse data without a
+finite-energy norm assumption.  The abstract exhaustion lemma
+above is the stated \texttt{EXTERNAL\_KNOWN} input.
+This theorem does not assert ambient classical psh membership
+or a nonlinear diagonal Monge--Ampere equation.
+
+\begin{proof}
+Choose $\mu_j$ from Lemma~\ref{lem:r11-finite-energy-nest} and
+put $u_j=-G\mu_j$.  Differences have finite-energy variation,
+so (MD5) gives
+\[
+ \|u_j-u_l\|_1\leq2\|\mu_j-\mu_l\|_{\mathrm{TV}},\qquad
+ c_V(\{|\widetilde u_j-\widetilde u_l|>k\})
+       \leq\|\mu_j-\mu_l\|_{\mathrm{TV}}/k.
+ \tag{MD11}
+\]
+Hence $u_j$ converges in $L^1(\lambda)$ to some $u$ and is
+Cauchy in energy capacity.  A subsequence with summable
+successive capacity errors has a finite limit outside a polar
+set: choose summable level thresholds and cover the corresponding
+successive gap sets by open sets with summable capacities.
+Away from their tails the sequence is uniformly Cauchy.
+The quasicontinuity of each $\widetilde u_j$, with another
+summable family of exceptional open sets, makes its limit
+energy-quasicontinuous.  This limit agrees almost everywhere
+with the $L^1$ limit.
+
+For fixed $k$, the vectors $T_ku_j$ are bounded in $H$ by
+(MD5).  Since
+\[
+ \|T_ku_j-T_ku\|_{L^2(\lambda)}^2
+                         \leq2k\|u_j-u\|_{L^1(\lambda)},
+\]
+their $L^2$ limit is $T_ku$.  Weak compactness in $H$ and
+coercivity identify every weak cluster point with this vector.
+Lower semicontinuity proves (MD8).
+The truncation of the capacity-limit representative is itself
+quasicontinuous and agrees $\lambda$-almost everywhere with
+this $H$ vector.  Uniqueness of quasicontinuous representatives
+therefore identifies it with the canonical representative of
+$T_ku$; the capacity estimate consequently concerns the same
+representative throughout.
+The bound on the capacity of its level sets follows by applying
+(MD1) to $|T_ku|/k$ and its canonical representative.
+It also shows directly that the possible infinite-value set
+has capacity zero.
+
+For $f\in L^\infty(F,\lambda)$, finite-energy symmetry gives
+\[
+                  \int_Fu_j f\,d\lambda
+                      =-\int_F\widetilde{Gf}\,d\mu_j .
+\]
+The left side converges by $L^1$ convergence and the right
+side by total-variation convergence and the bound
+$|\widetilde{Gf}|\leq2\|f\|_\infty$.
+Thus $u$ satisfies (MD7).  Since bounded measurable functions
+separate $L^1$ classes, (MD7) proves uniqueness.
+It also proves linearity.  Positivity and order follow by
+applying (MD11) to common finite-energy exhaustions of the
+positive data and passing to the capacity limit.
+
+We verify the current statement without substituting any
+restricted test family.  For original
+$\phi\in A_c^{0,0}(V;\mathbf R)$, (AE10) gives
+$D(\phi S)=b_\phi\lambda$ with $b_\phi$ bounded and compactly
+supported.  Coefficient domination makes $uS$ well defined
+on every original complementary form, because $u\in L^1(\lambda)$.
+Since $\phi\in H$, the Green identity implies
+$G(b_\phi)=-\phi$.  Applying (MD7) with $f=b_\phi$ gives
+\[
+ \langle D(uS),\phi\rangle
+        =\int_Fu\,b_\phi\,d\lambda
+        =\int_F\phi\,d\mu .
+ \tag{MD12}
+\]
+This proves (MD9) for all original tests.  Alternatively it
+follows by $L^1(\lambda)$ convergence in the same coefficient
+pairing from the finite-energy equations.
+
+For two data, choose a common finite-energy exhaustion of
+$|\mu|+|\nu|$.  Apply (MD5) to the differences of the
+approximations, then pass as above.  This proves all of
+(MD10) and independence of the initial exhaustion in both
+$L^1$ and the canonical capacity class.
+If $\mu$ has finite energy, its Riesz solution already
+satisfies (MD7), so uniqueness identifies the two solutions.
+\end{proof}
+
+\subsection{The relative BT-capacity consequence}
+
+\begin{proposition}[Independence of the faithful reference]
+\label{prop:r11-transposition-reference-independence}
+Fix $V$ and the original restriction of $S$ to an ordinary
+neighborhood of $\overline V$.  The energy capacity $c_V$,
+the class $\mathcal M_{\mathrm{diff}}(F)$, and the canonical
+solution and original current in
+Theorem~\ref{thm:r11-diffuse-transposition-dirichlet} do not depend
+on the choices of compensators, faithful potential $h$, or ambient
+affinoid neighborhoods for which the construction is available.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the larger
+measure-data solution class.
+
+\begin{proof}
+The original core $A_c^{0,0}(V;\mathbf R)$ and its energy
+$\mathcal E(f,g)=\int d'f\wedge d''g\wedge S$ are independent
+of all these choices.  Coercivity identifies each part space
+with the Hilbert completion of this same core modulo zero
+energy, by the same energy norm.  The compact-core formula
+for transient capacity therefore gives the same $c_V$ on
+compact sets and hence, by outer and Choquet regularity, on
+all Borel sets.  In particular all canonical core-limit
+quasicontinuous representatives and all polar sets coincide.
+The two faithful measures have the same null ideal by (AE7).
+
+Finite-energy Riesz potentials are the same abstract Hilbert
+vectors and therefore have the same canonical representatives.
+Choose one finite-energy nest for $|\mu|$ relative to this
+common energy.  The canonical solution is the limit in the
+common capacity of the same finite-energy potential sequence.
+Equation (MD11) makes this limit independent of the reference;
+its two $L^1$ realizations are representatives of that one
+class.  Finally the coefficient multiplication $uS$ and its
+distributional derivative use only the original $S$ and
+the common almost-everywhere class, proving the current assertion.
+\end{proof}
+
+\begin{proposition}[Local BT-capacity control and diffuse BT data]
+\label{prop:r11-bt-capacity-diffuse-dirichlet}
+For each compact $K_0\Subset V$ there is a finite constant
+$C_{K_0}$ depending only on the fixed background, domains and
+coefficient controls such that
+\[
+ \operatorname{Cap}_S^*
+   \bigl(K_0\cap\{|\widetilde u_\mu-\widetilde u_\nu|>k\};\Omega\bigr)
+       \leq C_{K_0}
+           \left(\frac{3\|\mu-\nu\|_{\mathrm{TV}}}{k}\right)^{1/2}.
+ \tag{MD13}
+\]
+The representatives may be set to zero off $\operatorname{supp}S$.
+They are locally quasicontinuous for relative BT outer capacity.
+
+In particular every finite signed Radon measure on $V$ whose
+variation vanishes on all locally relative BT outer-null sets
+is an allowed datum for Theorem~\ref{thm:r11-diffuse-transposition-dirichlet}.
+This includes any finite datum with a capacity domination
+condition whose right side vanishes at capacity zero; no Dini
+growth condition is required for this $L^1$ transposition class.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+new theorem and the frozen one-way energy-to-BT-capacity bridge,
+now valid on the analytic affinoid domains of
+Theorem~\ref{thm:r11-general-affinoid-faithful-form}.
+
+\begin{proof}
+The R4 bridge uses only the faithful coefficient bounds,
+local smooth regularization, fixed-cutoff energy estimates,
+and the regular compact-core capacity formula.  All these
+inputs hold on the present analytic domains by (AE5)--(AE13)
+and the frozen local bounded BT calculus; its proof is
+unchanged.  Hence
+\[
+ \operatorname{Cap}_S^*(A;\Omega)
+       \leq C_{K_0}\operatorname{cap}_{\mathcal E,1}
+                  (A\cap\operatorname{supp}S)^{1/2}
+                         \quad(A\subset K_0).
+ \tag{MD14}
+\]
+The full-space energy capacity is no larger than the part
+capacity, and (MD2) bounds the latter by $3c_V$.
+Equation (MD10) gives (MD13).
+
+Energy quasicontinuity passes through (MD14) on every compact
+stage.  The open complement of $\operatorname{supp}S$ has
+zero relative capacity, since every relative BT measure is
+supported on $\operatorname{supp}S$; it may be included in
+each exceptional open set.  This justifies the zero extension
+without claiming continuity across its boundary.
+
+An energy-polar set is locally BT outer-null by (MD14).
+Thus a datum satisfying the displayed null-set hypothesis
+vanishes on it.  The same hypothesis makes it vanish off
+$\operatorname{supp}S$.  It belongs to
+$\mathcal M_{\mathrm{diff}}(F)$, proving the final assertion.
+This argument uses only the null ideals, not equality of the
+two capacities or outer regularity of raw BT capacity.
+\end{proof}
+
+\subsection{A strict extension beyond finite-energy data}
+
+\begin{proposition}[An original finite diffuse datum of infinite energy norm]
+\label{prop:r11-infinite-energy-diffuse-example}
+For every $n\geq3$ there are a smooth original positive closed
+background $S$ on an ordinary torus box, a finite positive Radon
+measure $\mu$ carried by a compact subset, and a part domain $V$,
+such that $\mu$ is energy diffuse but
+\[
+                              \|\mu\|_{-1,V}=\infty.
+ \tag{MD15}
+\]
+Theorem~\ref{thm:r11-diffuse-transposition-dirichlet} supplies
+its canonical $L^1$ relative solution; that solution is not in $H$.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a full-dimensional
+strictness example.  It is not used to replace the arbitrary-$S$
+theorem by a toric theorem.
+
+\begin{proof}
+Use original torus coordinates $t_i=\log|T_i|$,
+$\beta=\sum_i d't_i\wedge d''t_i$, and
+$S=\beta^{n-1}[U]/(n-1)!$ on a bounded ordinary torus box.
+Take a smaller Euclidean ball centered at the origin in its
+tropical image and a nonnegative compact smooth cutoff $\chi$
+which equals one on a still smaller ball.  Put
+\[
+ \alpha=(n+2)/2,\qquad
+                 \mu=\sigma_*(\chi(t)|t|^{-\alpha}\,dt),
+ \tag{MD16}
+\]
+where $\sigma$ is the original joint Gauss section.
+Since $\alpha<n$, this is finite and compactly supported.
+The smooth coefficient measure $\beta\wedge S=n\,\sigma_*dt$
+is locally dominated by the faithful reference measure.
+Consequently $\mu\ll\lambda$, so it charges no energy-polar set.
+
+Let $a=(n-2)/2$, and choose an original compact smooth scalar
+$\phi_\varepsilon(t)$ which equals
+$(|t|^2+\varepsilon^2)^{-a/2}$ on the smaller ball and has
+support in the fixed cutoff ball.  Direct radial integration
+with the original calibration gives, for constants independent
+of $\varepsilon$,
+\[
+ \int\phi_\varepsilon\,d\mu\geq c\log(1/\varepsilon)-C,\qquad
+             \mathcal E(\phi_\varepsilon,\phi_\varepsilon)
+                      \leq C\bigl(1+\log(1/\varepsilon)\bigr).
+ \tag{MD17}
+\]
+Indeed the first integrand has radial exponent
+$n-1-a-\alpha=-1$ on $\varepsilon\leq|t|\leq r$,
+and the squared-gradient energy has exponent
+$n-1-2a-2=-1$ there.  The inner ball and the fixed cutoff
+annulus contribute bounded amounts to the energy.
+The ratio in the negative-energy core norm tends to infinity,
+proving (MD15).  If the resulting solution belonged to $H$,
+(AE15) and Cauchy--Schwarz would make that norm finite,
+a contradiction.
+\end{proof}
+
+\paragraph{The larger class and the remaining nonlinear problem.}
+Positive data give positive relative curvature $D(u_\mu S)$,
+but $u_\mu$ is not asserted ambient classical psh.  The R10
+compact-source obstruction therefore does not conflict with
+this theorem.  For an arbitrary original background $S_0$
+of degree $(p,p)$ and fixed bounded classical slots
+$v_2,\ldots,v_{n-p}$, the entire construction applies to
+$S=T_{S_0,n-p-1}(v_2,\ldots,v_{n-p})$.  It solves one free
+relative slot on every original test.  It does not construct
+a diagonal product of several moving $L^1$ solutions, prove a
+general nonlinear Monge--Ampere existence theorem, or settle
+OPEN-GQ/OPEN-CTO.

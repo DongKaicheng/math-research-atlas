@@ -1,0 +1,232 @@
+\section{Failure of the classical total-mass calibration for relative extremals}
+\paragraph{Status and scope.}
+This is an original-category obstruction to importing the classical
+relative-extremal-function proof of Borel capacity regularity unchanged.
+It is not a counterexample to B1. The background is smooth and strongly
+positive, $q=1$, and the original dimension is any $n\ge2$. The exact
+capacity calculation uses every original normalized classical psh tester,
+not only toric testers. No equality of an actual envelope with its toric
+trace is assumed, and no nonlinear pushforward identity is used.
+
+Fix the prescribed finite $K/\mathbf Q_p$ and its absolute value,
+$\lambda=-\log|\pi|>0$, the original torus $X=(\mathbf G_m^n)^{\rm an}$,
+$t_i=\log|T_i|$, and
+\[
+ V=\{|t_i|<\lambda\ (1\le i\le n)\},\quad
+ \beta=\sum_{i=1}^n d't_i\wedge d''t_i,\quad
+ S=\beta^{n-1}\wedge[X],\quad q=n-(n-1)=1.
+\]
+Use normalized moments $x_i=t_i/\lambda$ and write
+$\tau=(x_1,\ldots,x_n):V\to Q=(-1,1)^n$. Let
+$\sigma:Q\to V$ be the joint original Gauss section and set
+\[
+ \gamma=(n-1)!\lambda^{n-2},\qquad A_n=n!2^n\lambda^{n-2}.
+\]
+For $0<r<1$, define
+\[
+ K_r=\tau^{-1}([-r,r]^n),\quad
+ a_r=\max\left\{{\|x\|_\infty-r\over1-r},0\right\},\quad h_r=a_r-1.
+ \tag{EC1}
+\]
+The compact original analytic domain $K_r$ has nonempty ordinary interior.
+The functions $a_r$ and $h_r$ are actual continuous classical psh functions
+formed from finite real maxima of original harmonic affine potentials on
+the same ordinary representative. In particular $0\le a_r<1$ on $V$.
+
+\begin{lemma}[A local linear trace identity for the full bounded tester class]
+Let $a$ be any original bounded classical psh function on $V$. The bounded
+Borel function $a\circ\sigma$ has a unique continuous convex representative
+$g_a$ modulo Lebesgue null sets. As Radon measures on $Q$,
+\[
+ \tau_*(Da\wedge S)=\gamma\Delta g_a.
+ \tag{EC2}
+\]
+Pointwise inequalities for actual functions pass to their canonical
+convex traces. No assertion about arbitrary completed Borel representatives
+is involved here.
+\end{lemma}
+\begin{proof}
+For $\varphi\in C_c^\infty(Q)$, $\varphi\circ\tau$ is an original compactly
+supported smooth CLD scalar test: the moment map is proper over compact
+subsets of $Q$. The current recursion, compact Stokes, and the frozen full
+original top-form Gauss calibration yield
+\[
+ \begin{split}
+ \int_V(\varphi\circ\tau)\,d(Da\wedge S)
+ &=\langle aS,D(\varphi\circ\tau)\rangle\\
+ &=(n-1)!\lambda^{n-2}\int_Q(a\circ\sigma)\Delta\varphi\,dx.
+ \end{split}
+ \tag{EC3}
+\]
+The coefficient follows from
+$D\varphi\wedge\beta^{n-1}=(n-1)!\Delta\varphi\,d\mathrm{vol}$
+in unnormalized moment coordinates: the rescaling contributes
+$\lambda^{-2}$ from differentiation and $\lambda^n$ from volume.
+
+For completeness, convexity of the canonical trace need not be imported
+from a completed zero-boundary theorem. Fix a unit vector $v\in\mathbf R^n$
+and an orthonormal basis $w_2,\ldots,w_n$ of $v^\perp$. The constant
+strongly positive $(n-1,n-1)$ form
+\[
+ \Theta_v=\bigwedge_{j=2}^n
+ d'\langle w_j,t\rangle\wedge d''\langle w_j,t\rangle
+\]
+is separately closed. The positive bounded BT measure
+$Da\wedge\Theta_v\wedge[X]$, tested against nonnegative
+$\varphi\circ\tau$, gives by the same Stokes and top-form computation
+\[
+ 0\le\lambda^{n-2}\int_Q(a\circ\sigma)\,\partial_{vv}\varphi\,dx.
+\]
+Thus every distributional second directional derivative of
+$a\circ\sigma$ is nonnegative. Local mollifications have positive
+semidefinite Hessian and are convex. They remain uniformly bounded on
+protected compact boxes; the elementary interior slope bound for bounded
+convex functions makes them locally equicontinuous. Subsequential locally
+uniform limits produce a continuous convex representative $g_a$; convergence
+in distributions identifies it with $a\circ\sigma$ almost everywhere.
+Any two such representatives agree everywhere by continuity. Bounds and
+order inequalities pass first almost everywhere and then everywhere.
+This also proves the asserted canonical nature of the trace without
+asserting equality at every individual Gauss point.
+
+Equation (EC3) now identifies the two positive Radon measures in (EC2).
+Only local boundedness, current recursion, positivity, and the full
+original top-form calibration have been used. The energy and zero-boundary
+assumptions imposed in R17 FP for its later conclusions are not used.
+This is a linear degree-one identity, not an arbitrary higher-degree
+Monge--Ampere pushforward assertion.
+\end{proof}
+
+\begin{proposition}[Exact capacity over all original normalized testers]
+For every $0<r<1$,
+\[
+ \boxed{\quad C_S(K_r;V)=C_S^*(K_r;V)
+             =A_n\,{r^{n-1}\over1-r}.\quad}
+ \tag{EC4}
+\]
+\end{proposition}
+\begin{proof}
+Let $a$ be any original tester with $0\le a\le1$. Then
+$0\le g_a\le1$. Fix all coordinates other than $x_i$. The resulting
+one-variable convex function $f$ has
+\[
+ f''([-r,r])=f'_+(r)-f'_-(-r)\le {2\over1-r}.
+ \tag{EC4a}
+\]
+Indeed the right derivative is at most
+$(1-f(r))/(1-r)\le1/(1-r)$ by comparison with secants approaching $1$;
+the left derivative is at least
+$(f(-r)-1)/(1-r)\ge-1/(1-r)$ by secants approaching $-1$.
+Distributional slicing, obtained by Fubini from the definition of
+$\partial_{ii}g_a$, integrates (EC4a) over the other $n-1$ coordinates
+and gives
+\[
+ \partial_{ii}g_a([-r,r]^n)\le {2(2r)^{n-1}\over1-r}.
+\]
+Summing over $i$ and multiplying by $\gamma$ in (EC2) gives the upper
+bound in (EC4) for every original tester. This is a slice computation,
+not an assertion of an $n$-dimensional atom on a coordinate hyperplane.
+
+For the explicit $a_r$, fix the other $n-1$ coordinates in the inner
+cube. In the remaining coordinate the function is
+$\max\{(|x_i|-r)/(1-r),0\}$, so its derivative measure on $[-r,r]$
+has mass $2/(1-r)$, including its two endpoint atoms. Integrating these
+slice measures gives exactly $2(2r)^{n-1}/(1-r)$ in each coordinate.
+This also accounts for all edges and corners, without any extra mass.
+Therefore
+\[
+ \Delta a_r([-r,r]^n)={2n(2r)^{n-1}\over1-r},
+\]
+so $a_r$ attains the full raw upper bound. For $r<s<1$, the open set
+$\tau^{-1}((-s,s)^n)$ contains $K_r$ and its capacity is at most the just
+computed value $C_S(K_s;V)$. Let $s\downarrow r$ and use
+$C_S\le C_S^*$ to obtain the outer equality. This special exact
+calculation does not revive universal compact raw/outer equality.
+\end{proof}
+
+\begin{proposition}[Obstruction to total-mass extremal calibration]
+Every bounded actual classical psh function $u$ satisfying
+\[
+ h_r\le u\le0\text{ on }V,\qquad
+ u\le-1\text{ on }\operatorname{Int}K_r
+ \tag{EC5}
+\]
+has canonical convex trace $g_u=h_r\circ\sigma$ and
+\[
+ \begin{split}
+ \int_V Du\wedge S&={A_n\over1-r},\\
+ \int_{V\setminus K_r}Du\wedge S
+   &=A_n{1-r^{n-1}\over1-r}>0,\\
+ {\displaystyle\int_V Du\wedge S\over C_S^*(K_r;V)}
+   &=r^{1-n}.
+ \end{split}
+ \tag{EC6}
+\]
+In particular no such assignment of actual extremals can identify their
+total relative source masses with the original capacities, even up to a
+fixed multiplicative upper constant as the obstacle $K_r$ varies within
+this one fixed original domain and smooth background.
+\end{proposition}
+\begin{proof}
+The order-preserving trace lemma and continuity show $g_u=-1$ on
+$[-r,r]^n$ and $g_u\le0$ on $Q$. If $R=\|x\|_\infty>r$, intersect the
+ray through $x$ with the cubes of radius $r$ and $s$, where $R<s<1$.
+Convexity between these two points, followed by $s\uparrow1$, gives
+\[
+ g_u(x)\le {R-1\over1-r}.
+\]
+The lower bound $u\ge h_r$ gives the reverse inequality. This proves
+the trace identity without asserting equality off the Gauss section.
+
+For $r<s<1$, flux through the cube of radius $s$ gives
+\[
+ \Delta g_u([-s,s]^n)={2n(2s)^{n-1}\over1-r}.
+\]
+Equivalently, the same slicing computation gives derivative jump
+$2/(1-r)$ in each coordinate for almost every fixed choice of the other
+coordinates in $[-s,s]^{n-1}$; integration yields the displayed formula
+without invoking a boundary regularity theorem. Letting $s\uparrow1$ uses
+only monotone convergence for this single Radon measure, not continuity
+of an outer capacity. The inner mass is the value already computed in
+(EC4). Multiplying by $\gamma$ and subtracting proves (EC6). For
+$n\ge2$, $r^{1-n}\to\infty$ as $r\downarrow0$, proving the last assertion.
+\end{proof}
+
+\paragraph{Application to a putative relative extremal function.}
+Let
+\[
+ H=\sup\{v:v\text{ is original classical psh},\ v\le0\text{ on }V,
+                                      \ v\le-1\text{ on }K_r\}.
+\]
+Replacing any competitor by $\max\{v,-1\}$ increases it and preserves
+the constraints, so the envelope can be taken over bounded competitors.
+The explicit $h_r$ is a competitor; hence $h_r\le H\le0$ and $H=-1$ on
+$K_r$. Its ordinary upper semicontinuous regularization $H^*$ satisfies
+$h_r\le H^*\le0$ and $H^*=-1$ on $\operatorname{Int}K_r$.
+If $H^*$ is an actual classical psh function, (EC6) applies to it.
+Consequently its source has positive mass away from the compact obstacle
+and its total mass cannot equal (EC4). If psh-envelope existence is not
+available, the conjunction of that existence assertion and the classical
+total-mass calibration is still refuted. No envelope-existence theorem,
+all-fiber envelope identity, or completed point representative is assumed.
+
+\paragraph{Precise implication for B1.}
+One cannot import the classical extremal proof simply by replacing
+$(dd^c h)^n$ with $(Dh)^q\wedge S$ while keeping the original classical
+psh competitor cone. Already for arbitrary original dimension $n\ge2$
+and remaining degree $q=1$, the forced convex trace carries relative
+source mass outside its obstacle. Enlarging the competitor cone to all
+functions subharmonic for the trace operator changes the tester problem
+and is not an admissible repair. Original outer Borel compact-inner
+regularity remains OPEN; this is a failed analytic calibration, not a
+failure of B1 itself.
+
+\paragraph{Internal dependencies and review boundary.}
+The proof uses the frozen bounded fixed-background BT recursion and
+positivity, max stability of bounded classical psh functions, and the
+full original top-form Gauss calibration (R17 FP6, source
+8389d2ce81aa5fd1b563767a3c207a06d0b50e661fb06ee978da2d39634c49be.tex,
+with its local calculation explicitly extended above). The directional
+constant forms give a self-contained convex-trace argument. No energy
+completion, abstract weak-compactness inference, general GQ/KC12 descent,
+model/conormal restriction, or original raw/outer equality is imported.

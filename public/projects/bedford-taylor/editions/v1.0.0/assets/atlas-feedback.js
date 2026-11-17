@@ -1,0 +1,1 @@
+(()=>{'use strict';const update=()=>{for(const link of document.querySelectorAll('[data-atlas-feedback]')){const u=new URL(link.href);const p=new URL(u.searchParams.get('page'));p.hash=location.hash;u.searchParams.set('page',p.href);link.href=u.href;}};update();addEventListener('hashchange',update);})();

@@ -1,0 +1,516 @@
+\section{Power energies, integral mixed inequalities, and capacity stability}
+\label{sec:r11-power-energy-stability}
+
+Keep the original arbitrary $S$, ordinary domain $V$, and $q=n-p\geq1$.
+All top products are those of
+Theorem~\ref{thm:r11-boundary-mixed-top-calculus}. The statements
+below use integrated positivity, comparison, and fixed-domain
+capacity. They do not assume a pointwise Alexandrov--Fenchel or
+hyperbolicity property for the middle-positive background. Such a
+property is not available for arbitrary $S$.
+
+For a negative extended classical psh $u$ with $\mathrm{BG}(u,0)$
+and $s>0$, define the extended nonnegative quantities
+\[
+ \begin{split}
+ e_s(u)&=\int_V(-u)^s\,d\mu_u,\\
+ J_s(u)&=\int_0^\infty t^{q+s-1}
+                       \operatorname{Cap}_S(\{u<-t\};V)\,dt.
+ \end{split}
+ \tag{PE1}
+\]
+The first integral is over the finite-value locus; $\mu_u$ is zero
+on the omitted pole set. The integrand defining $J_s$ is Borel
+because its capacity factor is nonincreasing in $t$.
+
+\begin{theorem}[A capacity-only criterion for finite power energy]
+\label{thm:r11-power-energy-capacity-equivalence}
+For $u$ as above and $s>0$, the following are equivalent:
+\[
+ J_s(u)<\infty
+ \quad\Longleftrightarrow\quad
+ u\in\mathcal F_{S,\partial}(V)\ \hbox{and}\ e_s(u)<\infty.
+ \tag{PE2}
+\]
+On this class, more generally with extended values allowed after
+membership in $\mathcal F_{S,\partial}$ is known,
+\[
+ {s\over2^{q+s}}J_s(u)
+       \leq e_s(u)
+       \leq {s2^q\over1-2^{-s}}J_s(u).
+ \tag{PE3}
+\]
+Denote the equivalent class in (PE2) by
+$\mathcal E^s_{S,\partial}(V)$. Raw or outer capacity gives the
+same $J_s$, because all its sublevels are ordinary open.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+all-original arbitrary-background top calculus. Finiteness of
+$e_s$ alone, outside the no-loss class, is not a sufficient
+condition; the logarithmic counterexample has $\mu_u=0$.
+
+\begin{proof}
+For $u\in\mathcal F_{S,\partial}$, the first inequality of (BC4)
+and Tonelli's theorem give
+\[
+ \begin{split}
+ J_s(u)
+ &\leq2^q\int_0^\infty t^{s-1}\mu_u(\{u<-t/2\})\,dt\\
+ &= {2^{q+s}\over s}\int_V(-u)^s\,d\mu_u.
+ \end{split}
+ \tag{PE4}
+\]
+For the opposite direction no absence of loss is needed.
+Real-level truncations are bounded classical psh functions and
+obey the same consistency as integer truncations: one may express
+them as the maximum of an integer truncation and a constant.
+On $\{-2t<u<-t\}$ the measure $\mu_u$ equals the bounded
+measure of $\max(u,-2t)$. Normalizing this potential to $[0,1]$
+therefore gives
+\[
+       \mu_u(\{-2t<u<-t\})
+          \leq(2t)^q\operatorname{Cap}_S(\{u<-t\};V).
+ \tag{PE5}
+\]
+For a fixed finite value $a=-u>0$, the parameter $t$ in this
+annulus ranges over $(a/2,a)$. Tonelli consequently yields
+\[
+ {1-2^{-s}\over s}e_s(u)
+   =\int_0^\infty t^{s-1}
+                 \mu_u(\{-2t<u<-t\})\,dt
+   \leq2^qJ_s(u).
+ \tag{PE6}
+\]
+Endpoint levels cause no loss in this integration, since for each
+fixed value they form a Lebesgue-null set of parameters.
+
+It remains to show that finite $J_s$ forces no loss. Write
+$\kappa=q+s$. Monotonicity of the sublevel capacity implies
+\[
+ {1-2^{-\kappa}\over\kappa}\,
+       t^\kappa\operatorname{Cap}_S(\{u<-t\};V)
+ \leq\int_{t/2}^t r^{\kappa-1}
+                 \operatorname{Cap}_S(\{u<-r\};V)\,dr.
+ \tag{PE7}
+\]
+When $J_s<\infty$, this proves
+$t^q\operatorname{Cap}_S(\{u<-t\};V)\to0$.
+Theorem~\ref{thm:r11-capacity-tail-criterion} gives
+$u\in\mathcal F_{S,\partial}$, and (PE6) gives finite $e_s$.
+Conversely, (PE4) proves finiteness of $J_s$ from the right side
+of (PE2). This proves every assertion without an assumption on
+an unrestricted unbounded Monge--Ampere operator.
+\end{proof}
+
+Put
+\[
+ \kappa=q+s,\qquad
+ A_{q,s}={2^{2q+s}\over1-2^{-s}},\qquad
+ C_{q,s}={A_{q,s}(q+1)^{\kappa+1}\over q!}.
+ \tag{PE8}
+\]
+These constants are explicit and are not claimed optimal.
+
+\begin{theorem}[Power-energy cone and an integral mixed Holder inequality]
+\label{thm:r11-power-mixed-holder}
+For every $s>0$, the class $\mathcal E^s_{S,\partial}(V)$ is
+upward closed among negative extended classical psh functions,
+closed under finite positive sums, and closed under finite maxima.
+If $u\leq v\leq0$ with $u$ in the class, then
+\[
+                         e_s(v)\leq2^{q+s}e_s(u).
+ \tag{PE9}
+\]
+For $u_1,\ldots,u_m$ in the class,
+\[
+                  e_s\left(\sum_{i=1}^m u_i\right)
+                    \leq A_{q,s}m^\kappa\sum_{i=1}^m e_s(u_i).
+ \tag{PE10}
+\]
+For any $u_0,u_1,\ldots,u_q$ in the class, the full mixed
+weighted integral is finite and satisfies
+\[
+ \boxed{\quad
+ \int_V(-u_0)^s\,dM(u_1,\ldots,u_q)
+ \leq C_{q,s}\,e_s(u_0)^{s/\kappa}
+                         \prod_{i=1}^q e_s(u_i)^{1/\kappa}.
+ \quad}
+ \tag{PE11}
+\]
+A zero factor makes the right side zero. The mixed measure gives
+zero mass to the pole of $u_0$, so the integral retains the
+actual representative without any undefined product at a pole.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. This is an
+integral Cegrell-type estimate with a nonsharp constant. It is
+not a pointwise determinant inequality for $S$.
+
+\begin{proof}
+Upward membership follows from the solid boundary cone and
+$J_s(v)\leq J_s(u)$. Integrating (BC12) by layer cake gives
+the sharper numerical estimate (PE9). For a sum, (BC6) with
+all coefficients one yields
+\[
+ J_s\left(\sum_i u_i\right)\leq m^\kappa\sum_iJ_s(u_i).
+\]
+Combine both inequalities of (PE3) to obtain (PE10).
+Positive homogeneity $e_s(cu)=c^\kappa e_s(u)$ follows from
+the exact scaling of the top measure. These facts prove the
+stated cone properties; a maximum follows from upward closure.
+
+Let $w=u_0+\cdots+u_q$. Its positive mixed expansion contains
+$q!M(u_1,\ldots,u_q)$, hence
+\[
+                 q!M(u_1,\ldots,u_q)\leq\mu_w.
+ \tag{PE12}
+\]
+Since $w=-\infty$ at every pole of $u_0$, the right side gives
+zero mass to that pole, and so does the left side. On the
+remaining locus, $(-u_0)^s\leq(-w)^s$. Thus the left side
+of (PE11) is at most $e_s(w)/q!$ and is finite.
+
+For $\varepsilon>0$ set
+$v_i=u_i/(e_s(u_i)+\varepsilon)^{1/\kappa}$.
+Then $e_s(v_i)\leq1$. By (PE10) with $m=q+1$,
+$e_s(\sum_{i=0}^qv_i)/q!\leq C_{q,s}$.
+Apply (PE12) to this normalized tuple and then use positive
+homogeneity in all $q$ differentiated slots and the degree-$s$
+homogeneity of the weight. This gives
+\[
+ \int(-u_0)^s\,dM(u_1,\ldots,u_q)
+ \leq C_{q,s}(e_s(u_0)+\varepsilon)^{s/\kappa}
+                       \prod_{i=1}^q(e_s(u_i)+\varepsilon)^{1/\kappa}.
+\]
+Letting $\varepsilon\downarrow0$ proves (PE11), including every
+degenerate zero-energy case. No nondegeneracy of $S$ is used.
+\end{proof}
+
+\begin{proposition}[Capacity domination and quantitative top truncation tails]
+\label{prop:r11-power-capacity-domination}
+Let $u_1,\ldots,u_q\in\mathcal E^s_{S,\partial}(V)$, put
+$w=\sum_i u_i$, and write $M=M(u_1,\ldots,u_q)$.
+For every Borel $E\subset V$ and every $t>0$,
+\[
+ M(E)\leq{1\over q!}
+       \left(q^qt^q\operatorname{Cap}_S(E;V)+t^{-s}e_s(w)\right).
+ \tag{PE13}
+\]
+In particular, for finite-capacity sets,
+\[
+ M(E)\leq B_{q,s}
+       \left(\prod_{i=1}^q e_s(u_i)^{1/\kappa}\right)
+                    \operatorname{Cap}_S(E;V)^{s/\kappa},
+ \quad
+ B_{q,s}={q^q+1\over q!}
+                  \left(A_{q,s}q^{\kappa+1}\right)^{q/\kappa}.
+ \tag{PE14}
+\]
+For infinite capacity the estimate is vacuous. A zero energy
+factor makes $M$ the zero measure.
+If $M_k=T_{S,q}(\max(u_1,-k),\ldots,\max(u_q,-k))$, then
+\[
+ \|M_k-M\|_{\mathrm{TV}(V)}
+       \leq {q^q4^{q+s}+1\over q!}\,k^{-s}e_s(w).
+ \tag{PE15}
+\]
+All inequalities hold on actual Borel sets, not only on a chosen
+moment image or a restricted family of test functions.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+On $E_t=\bigcap_i\{u_i>-t\}$, strict locality identifies $M$
+with the bounded mixed product of the real-level truncations.
+Their sum lies in $[-qt,0]$. The positive expansion and capacity
+normalization give
+\[
+                         M(E\cap E_t)
+                        \leq{(qt)^q\over q!}\operatorname{Cap}_S(E;V).
+\]
+The complement of $E_t$ is contained in $\{w\leq-t\}$.
+The positive expansion $q!M\leq\mu_w$ and the power moment
+bound give $M(V\setminus E_t)\leq e_s(w)/(q!t^s)$.
+This proves (PE13).
+
+If $c=\operatorname{Cap}_S(E;V)$ and $e=e_s(w)$ are positive
+and finite, choose $t=(e/c)^{1/\kappa}$ in (PE13), obtaining
+\[
+                   M(E)\leq{q^q+1\over q!}
+                                   e^{q/\kappa}c^{s/\kappa}.
+\]
+The cases $c=0$ or $e=0$ follow by letting $t\to\infty$ or
+$t\downarrow0$, respectively. Normalize the $q$ slots by
+$(e_s(u_i)+\varepsilon)^{1/\kappa}$ as in the preceding proof;
+(PE10) bounds the energy of their sum by
+$A_{q,s}q^{\kappa+1}$. Scaling back and letting
+$\varepsilon\downarrow0$ gives (PE14). If an energy is zero,
+this proves vanishing on every compact set, whose relative
+capacity is finite by frozen CLN; the Radon measure is therefore
+zero.
+
+For (PE15), use the exact agreement on $E_k$. On its complement,
+the bounded positive expansion and (BC4) give
+\[
+ \begin{split}
+ M_k(V\setminus E_k)
+  &\leq{(qk)^q\over q!}\operatorname{Cap}_S(\{w<-k/2\};V)\\
+  &\leq{q^q4^q\over q!}\mu_w(\{w<-k/4\})
+   \leq{q^q4^{q+s}\over q!}k^{-s}e_s(w).
+ \end{split}
+\]
+The limiting mass on the complement is at most
+$k^{-s}e_s(w)/q!$. Their sum bounds total variation and proves
+(PE15).
+\end{proof}
+
+\subsection{The exact capacity quantifier for nonmonotone convergence}
+
+\begin{definition}[Truncated local convergence in original capacity]
+\label{def:r11-truncated-local-capacity}
+For negative extended classical psh functions $v_l,u$ on $V$,
+write $v_l\to u$ in truncated local original capacity if the
+following holds. For every ordinary analytic Laurent-box domain
+$\Omega\Subset V$ whose compact closure is contained in an
+original unit-moment chart, every compact $L\Subset\Omega$,
+every $k>0$, and every $\delta>0$,
+\[
+ \operatorname{Cap}_{S|\Omega}
+ \left(L\cap\{|\max(v_l,-k)-\max(u,-k)|>\delta\};\Omega\right)
+                                               \longrightarrow0.
+ \tag{PE16}
+\]
+The quantifier includes every actual finite refinement of that
+moment chart and every further Laurent-box shrink. Under the
+additional one-affinoid condition (DG1), Corollary
+\ref{cor:r11-affinoid-local-capacity-topology} proves its equivalence
+with fixed-domain capacity convergence on every compact core of $V$.
+Without that domain hypothesis the printed all-local definition
+remains the hypothesis used here.
+\end{definition}
+
+\begin{lemma}[The bounded finite-stage stability input on analytic boxes]
+\label{lem:r11-bounded-analytic-capacity-stability}
+For uniformly bounded classical psh families, (PE16) implies the
+frozen weighted BT stability on every original compact test, in
+every degree $0\leq r\leq q$. The same multiplier conclusion
+holds for a bounded continuous scalar composition of one of
+the potentials.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+frozen R1/R4 theorem \texttt{thm:capacity-stability}, with the
+analytic bounded quasicontinuity of
+Corollary~\ref{cor:r11-analytic-bounded-relative-QC} supplying
+its domain extension. The bounded calculus itself is not new.
+
+\begin{proof}
+We record the precise controls, so no stronger topology is
+silently substituted. Localize an original test to finitely many
+of the stated boxes. Its finitely many moment coordinates $t_a$
+are bounded on each compact closure. The bounded smooth classical
+psh function $\rho=\frac12\sum_a t_a^2$ has
+$D\rho=\sum_a d't_a\wedge d''t_a$. Finite original positive
+matrix domination bounds every coefficient measure of a degree-$r$
+bounded product on the compact stage by a constant times
+\[
+          T_{S,q}(a_1,\ldots,a_r,\rho,\ldots,\rho).
+\]
+Mixed capacity domination therefore bounds it by
+$C\operatorname{Cap}_{S|\Omega}(\,\cdot\,;\Omega)$, uniformly
+in the family. Only wedge with positive $(1,1)$ forms is used,
+so the arbitrary middle-positive cone is retained.
+
+The analytic Laurent collar theorem gives the exact bounded
+quasicontinuity needed for the frozen capacity-controlled
+multiplier lemma. Its proof separates a changing bounded weight
+on its capacity-small gap set and replaces the fixed limit weight
+by a continuous function off a small ordinary open exception.
+The coefficient domination just given controls both errors.
+Induction through $D(uP)$ then proves the bounded stability in
+every degree, exactly as in the frozen proof. A bounded continuous
+composition has capacity convergence by uniform continuity on
+the bounded range and is quasicontinuous by composition, so the
+same multiplier lemma applies to it. All controls in this proof use
+the local capacity in (PE16). Under (DG1), the separate analytic
+extension theorem (AL8)--(AL9) gives the equivalent fixed-domain
+criterion; that comparison is not assumed in the multiplier proof.
+\end{proof}
+
+\begin{theorem}[Nonmonotone stability and lower semicontinuity of power energy]
+\label{thm:r11-power-capacity-stability}
+Fix $s>0$. For $1\leq i\leq q$, let
+$v_{i,l}\in\mathcal E^s_{S,\partial}(V)$ and let $u_i$ be
+negative extended classical psh with $\mathrm{BG}(u_i,0)$.
+Assume (PE16) in every slot and
+\[
+                         \sup_{i,l}e_s(v_{i,l})<\infty.
+ \tag{PE17}
+\]
+Then $u_i\in\mathcal E^s_{S,\partial}(V)$,
+\[
+ e_s(u_i)\leq\liminf_l e_s(v_{i,l}),\qquad
+ M(v_{1,l},\ldots,v_{q,l})\longrightarrow M(u_1,\ldots,u_q)
+ \tag{PE18}
+\]
+on every original compact smooth scalar test. No monotonicity of
+the approximating potentials is assumed.
+
+Suppose additionally that $v_{0,l}$ and $u_0$ satisfy the same
+hypotheses. If $\Psi:[0,\infty)\to\mathbf R$ is continuous and
+\[
+                         |\Psi(t)|/t^s\longrightarrow0
+                                      \quad(t\to\infty),
+ \tag{PE19}
+\]
+then the locally finite weighted measures satisfy
+\[
+ \Psi(-v_{0,l})M(v_{1,l},\ldots,v_{q,l})
+        \longrightarrow\Psi(-u_0)M(u_1,\ldots,u_q)
+ \tag{PE20}
+\]
+on the same full original test family. Their weights at poles
+are immaterial because the measures give those poles zero mass.
+In particular powers $t^a$ with $0<a<s$ are allowed.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. The exact
+localized capacity hypothesis and the global power-energy bound
+are both retained.
+
+\begin{proof}
+First prove membership of a limit $u$, before applying any
+unbounded continuity assertion. Fix $t,\delta>0$. The set
+$\{u<-t-\delta\}$ has compact closure by its boundary-gap
+condition. Choose a finite cover of that closure by compact
+cores $L_a\Subset\Omega_a$ of admissible boxes. Choose
+$k>t+\delta$. On the strict sublevel one has
+\[
+ \{u<-t-\delta\}
+ \subset\{v_l<-t\}\cup
+       \{|\max(v_l,-k)-\max(u,-k)|>\delta\}.
+\]
+The second set need only be considered on the fixed compact
+cover. Domain restriction and (PE16) make its contribution to
+the capacity measured on $V$ tend to zero. Consequently
+\[
+ \operatorname{Cap}_S(\{u<-t-\delta\};V)
+       \leq\liminf_l\operatorname{Cap}_S(\{v_l<-t\};V).
+\]
+Let $\delta\downarrow0$. The raw capacity is continuous from
+below: this follows by commuting the two increasing suprema
+over capacity testers and over the increasing carriers. Hence
+the same inequality holds with $\{u<-t\}$ on the left.
+Fatou and (PE4) give
+\[
+ J_s(u)\leq\liminf_lJ_s(v_l)
+       \leq {2^{q+s}\over s}\liminf_l e_s(v_l)<\infty.
+ \tag{PE21}
+\]
+Theorem~\ref{thm:r11-power-energy-capacity-equivalence} proves
+that every $u_i$ lies in the energy class. This step used only
+bounded capacity and the printed boundary condition.
+
+Put $w_l=\sum_i v_{i,l}$ and $w=\sum_i u_i$.
+Equation (PE10) gives one finite uniform bound for $e_s(w_l)$
+and $e_s(w)$. By (PE15), replacing every differentiated slot
+by its truncation at $-k$ changes its mixed top measure by at
+most a constant times $k^{-s}$ in total variation, uniformly
+in $l$. For fixed $k$, Lemma
+\ref{lem:r11-bounded-analytic-capacity-stability} gives convergence
+of the bounded products on every original compact test.
+Pass first in $l$ and then in $k$; the explicit uniform
+variation bound proves the unweighted convergence in (PE18).
+
+We next prove (PE20). The integral inequality (PE11) and the
+uniform energy bound give
+\[
+ \sup_l\int(-v_{0,l})^s\,dM(v_{1,l},\ldots,v_{q,l})<\infty,
+ \qquad
+ \int(-u_0)^s\,dM(u_1,\ldots,u_q)<\infty.
+ \tag{PE22}
+\]
+For $R>0$ let $\Psi_R(t)=\Psi(\min(t,R))$ and put
+$\epsilon_R=\sup_{t\geq R}|\Psi(t)|/t^s$ for large $R$.
+Then $\epsilon_R\to0$ and
+\[
+          |\Psi(t)-\Psi_R(t)|
+                \leq2\epsilon_R t^s\mathbf1_{\{t>R\}}.
+\]
+By (PE22), the errors from replacing the weight by $\Psi_R$
+are uniformly small on every compact test as $R\to\infty$.
+For fixed $R$, the weights are bounded continuous compositions
+of truncations of the zeroth potential. Replacing the other
+slots by their truncations at $-k$ has a uniform error bounded
+by $\|\Psi_R\|_\infty$ times (PE15). For fixed $R,k$, the
+bounded multiplier statement of the preceding lemma passes
+the limit in $l$. Let $k\to\infty$ and finally $R\to\infty$.
+This proves (PE20). Local finiteness follows from (PE22) on
+the large-value region and the uniform finite compact masses
+on the remaining bounded-value region. The positive expansion
+with the zeroth potential proves that its pole has zero mixed
+mass, as in (PE12).
+
+Finally apply the bounded-weight case just proved to a single
+potential repeated in every differentiated slot, with weight
+$\min(t^s,R^s)$ and any nonnegative original compact smooth
+$0\leq\chi\leq1$. It gives
+\[
+ \int\chi\min((-u)^s,R^s)\,d\mu_u
+  =\lim_l\int\chi\min((-v_l)^s,R^s)\,d\mu_{v_l}
+                         \leq\liminf_l e_s(v_l).
+\]
+Increase $R$ and then take the supremum over such compact
+cutoffs. Radon inner regularity gives $e_s(u)$ on the left.
+This proves the sharp lower-semicontinuity assertion in (PE18),
+improving the preliminary bound from (PE21).
+\end{proof}
+
+\begin{corollary}[A precise closure principle for class-valued nonlinear Dirichlet data]
+\label{cor:r11-power-Dirichlet-closure}
+Fix $s>0$ and a positive Radon datum $\mu$ on $V$. Suppose there
+are bounded negative classical psh $u_l$ satisfying
+$\mathrm{BG}(u_l,0)$,
+\[
+ (Du_l)^q\wedge S=\mu_l,\qquad
+ \mu_l\longrightarrow\mu\ \hbox{on all original compact tests},
+ \qquad\sup_l e_s(u_l)<\infty,
+ \tag{PE23}
+\]
+and suppose $u_l$ has a limit $u$ in the exact sense (PE16),
+where $u$ is actual negative extended classical psh and
+$\mathrm{BG}(u,0)$. Then
+\[
+                    u\in\mathcal E^s_{S,\partial}(V),
+                    \qquad\mu_u=\mu.
+ \tag{PE24}
+\]
+Any two solutions in this class with datum $\mu$ agree outside
+a relative outer-capacity-null set.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{CONDITIONAL}} as a nonlinear
+Dirichlet existence mechanism: bounded solvability, the uniform
+power-energy estimate, an actual classical capacity limit, and
+its zero-boundary gap condition are the explicit premises.
+The passage to the limit and the stated uniqueness conclusion
+are fully proved. No existence or compactness premise is declared
+automatic for arbitrary original $S$.
+
+\begin{proof}
+Apply Theorem~\ref{thm:r11-power-capacity-stability} with the
+same potential in every slot. The original current limit is
+both $\mu_u$ and $\mu$, proving (PE24). Outer-capacity uniqueness
+is Corollary~\ref{cor:r11-boundary-outer-domination}.
+\end{proof}
+
+\paragraph{Precise remaining gates.}
+The theory above supplies full-dimensional arbitrary-background
+energy inequalities and stability in a specified unbounded
+boundary class. It does not prove capacity compactness of an
+arbitrary energy-bounded family, regularization of a proposed
+unbounded envelope, pointwise uniqueness for degenerate $S$,
+or unrestricted nonlinear Dirichlet existence. The original
+all-refinement PS/PL quotient and CTO remain separate open gates.

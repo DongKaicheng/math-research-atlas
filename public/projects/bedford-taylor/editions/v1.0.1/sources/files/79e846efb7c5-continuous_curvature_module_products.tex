@@ -1,0 +1,168 @@
+\section{Products in the continuous coefficient curvature module}
+\label{sec:r6-continuous-curvature-module-products}
+
+This section records a consequence of the represented-order theorem.
+The input currents have a prescribed local finite potential
+presentation. No product of completely arbitrary positive closed
+currents is defined.
+
+\begin{definition}
+On an allowed ordinary open $U$, let $\mathscr M^1(U)$ be the
+$C(U,\mathbf R)$-module of original coefficient-Radon $(1,1)$-currents
+locally admitting a finite expression
+\[
+                         A=\sum_{\alpha}f_\alpha D[g_\alpha],
+ \qquad f_\alpha\in C(U,\mathbf R),\quad g_\alpha\in\mathcal C_b(U).
+\]
+The expression is local; actual equality of currents is the equivalence
+relation. Signed bounded classical potentials can be used after
+expanding them into two classical parts. Its positive cone consists
+of those represented currents which are positive in the original
+middle CLD sense. Variable continuous coefficients need not preserve
+separate closedness.
+\end{definition}
+
+\begin{theorem}[Positive products of continuously weighted curvatures]
+\label{thm:r6-positive-continuous-module-products}
+Let $S$ be any fixed allowed $(p,p)$-background and $r\le n-p$.
+There is a well-defined symmetric $C(U,\mathbf R)$-multilinear map
+\[
+ \Phi_{S,r}:(\mathscr M^1)^r\longrightarrow
+       \{\text{original coefficient-Radon $(p+r,p+r)$-currents}\}
+\]
+characterized on finite local presentations by
+\begin{equation}
+ \Phi_{S,r}(A_1,\ldots,A_r)
+ =\sum_{\alpha_1,\ldots,\alpha_r}
+    \left(\prod_{i=1}^r f_{i,\alpha_i}\right)
+    T_{S,r}(g_{1,\alpha_1},\ldots,g_{r,\alpha_r}).
+ \label{eq:r6-continuous-module-product}
+\end{equation}
+It commutes with ordinary restriction and gluing. If every $A_i$ is
+positive, its image is positive. In particular the map is increasing
+in each slot when all the other slots are positive. When every slot
+is $D[g_i]$, it is the frozen bounded BT product.
+
+No separate closedness of the output is asserted for general
+continuous coefficients. The map does not factor through every
+higher-degree ordinary-current relation merely from its construction.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the new
+bounded-difference positivity criterion and continuous-coefficient
+relation theorem, with the positivity argument written out.
+
+\begin{proof}
+Each expression in \eqref{eq:r6-continuous-module-product} is a finite
+sum of continuous multiples of positive coefficient-Radon currents.
+Suppose the presentation of one slot is changed without changing its
+original current. Fix one multi-index in the remaining slots and put
+\[
+ R=T_{S,r-1}(g_{1,\alpha_1},\ldots,
+              \widehat{g_{i,\alpha_i}},\ldots,g_{r,\alpha_r}).
+\]
+This is an allowed positive separately closed background. The
+zero-relation assertion of
+Theorem~\ref{thm:r6-bounded-curvature-continuous-module}, applied to
+$R$, makes the change in that slot zero. Multiplication by the
+remaining continuous coefficient product and finite summation
+preserve zero. Changing the slots one at a time proves presentation
+independence. Finite linearity, scalar multiplication, symmetry of
+the frozen BT tails, ordinary locality and gluing give the stated
+module and sheaf properties.
+
+For positivity fix a positive original compact complementary test
+$\eta$. Use finitely many local presentations near its support and
+nonnegative smooth localization; it suffices to treat one presentation.
+All its coefficients are bounded by a fixed number $M\ge1$ on a
+slightly larger compact neighborhood. For $0<\epsilon<1$, subdivide
+the test support into finitely many ordinary neighborhoods on which
+\[
+                    |f_{i,\alpha}-c_{i,\alpha}|<\epsilon
+\]
+for suitable constants $c_{i,\alpha}$. On one such neighborhood put
+\[
+ H_i=\sum_\alpha(c_{i,\alpha}+\epsilon)g_{i,\alpha}.
+\]
+It is an actual bounded classical difference, and
+\[
+ D[H_i]=A_i+\sum_\alpha(c_{i,\alpha}+\epsilon-f_{i,\alpha})
+                                      D[g_{i,\alpha}]\ge0.
+\]
+Theorem~\ref{thm:r6-positive-bounded-dsh-classical} therefore gives
+$H_i\in\mathcal C_b$ on that neighborhood. Hence
+$T_{S,r}(H_1,\ldots,H_r)\ge0$ there.
+
+For every multi-index the scalar difference between its coefficient
+in \eqref{eq:r6-continuous-module-product} and its coefficient in
+$T_{S,r}(H_1,\ldots,H_r)$ has absolute value at most
+$2r\epsilon(M+2)^{r-1}$. This follows by telescoping the product of
+$r$ scalars, since each paired scalar differs by at most $2\epsilon$.
+Let $R_0$ be the finite sum of all the positive BT tails in
+\eqref{eq:r6-continuous-module-product}, without coefficients.
+On this neighborhood the positive test cone therefore gives
+\[
+          \Phi_{S,r}(A_1,\ldots,A_r)
+                   \ge -2r\epsilon(M+2)^{r-1}R_0.
+\]
+The same constant and the same $R_0$ work for every member of the
+finite subdivision. Apply a nonnegative original smooth partition
+to $\eta$, sum the inequalities, and let $\epsilon\downarrow0$.
+The fixed control mass $\langle R_0,\eta\rangle$ is finite. The
+pairing of $\Phi_{S,r}$ with $\eta$ is nonnegative. This proves
+positivity on all original tests in the specified cone.
+
+For monotonicity subtract the two products and telescope their
+slots. Each term has one positive difference slot and all other
+slots positive, so the proved positivity applies. The BT
+specialization is its defining one-term presentation.
+\end{proof}
+
+\begin{example}[Borel coefficients do not preserve current relations]
+\label{ex:r6-borel-curvature-module-failure}
+The word continuous in the preceding module cannot be replaced by
+bounded Borel, even when all potential functions are continuous.
+Take the ordinary bidannulus
+\[
+ U=\{r<|T_1|<R,\ r<|T_2|<R\}\subset(\mathbf G_{m,K}^2)^{\an},
+             \qquad 0<r<1<R,
+\]
+and let $Y=\{T_2=1\}\cap U$, $S=[Y]$, and
+$g=\max\{0,\log|T_1|\}$. This is a continuous locally bounded
+classical psh function. The frozen first-order analytic-divisor
+nonconcentration theorem, applied to $D[g]$, gives
+\[
+                         \mathbf1_YD[g]=0
+\]
+as an ambient coefficient-Radon current. On the other hand, the
+restriction and projection formulas for the subvariety background,
+and the one-variable slope computation, give
+\[
+ \mathbf1_YD(g[Y])=D(g[Y])=i_*\delta_{\zeta_{0,1}}\ne0,
+                  \qquad i:Y\hookrightarrow U.
+\]
+Here $\zeta_{0,1}$ is the radius-one Gauss point in the $T_1$ annulus;
+the slope jump of $\max(0,\log|T_1|)$ is exactly one. An original
+nonnegative compact smooth scalar test equal to one near this point
+pairs with the displayed measure to give one. Thus the failure is
+visible on original tests, not only on an enlarged test sheaf.
+\end{example}
+
+\noindent\textbf{Status: \texttt{FALSE}} for the proposed Borel
+extension; the example is a \texttt{DIRECT\_COROLLARY} of the frozen
+polar-carrier obstruction and first-order nonconcentration. It is not
+counted as a new counterexample mechanism. R5,
+Corollary~\ref{cor:r5-universal-borel-kernel-strict} and
+Remark~\ref{rem:r5-bounded-usc-kernel-obstruction}, already show why
+arbitrary assigned bounded upper semicontinuous values must also be
+excluded from the bounded-classical-difference positivity criterion.
+
+\paragraph{What this construction does not settle.}
+Independence of the degree-one presentations means that relations in
+$\mathscr M^1$ may be substituted inside
+\eqref{eq:r6-continuous-module-product}. It does not say that every
+ordinary zero current formed from several curvature factors is such
+a relation. The higher-degree analytic delta kernel remains a separate
+problem. Nor is the output of a continuous coefficient product an
+admissible new background unless its required positivity and separate
+closedness are independently available.

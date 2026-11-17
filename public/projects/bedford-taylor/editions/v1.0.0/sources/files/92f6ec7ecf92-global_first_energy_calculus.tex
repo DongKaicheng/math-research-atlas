@@ -1,0 +1,511 @@
+\section{Global first-energy Green calculus and relative Aubin--Mabuchi geometry}
+\label{sec:r11-global-first-energy}
+
+Throughout this section the domain and background satisfy precisely
+(TC1)--(TC2): $V$ is the strict original analytic Laurent box compactly
+contained in the interior of one original affinoid domain, and the
+arbitrary original symmetric middle-positive separately closed
+$(p,p)$-current $S$ is defined on a neighborhood of its closed box.
+Put $q=n-p\geq1$, retain the negative bounded barrier $\rho$ of
+Lemma~\ref{lem:r11-strict-Laurent-barrier}, and abbreviate
+$\mathcal E^1=\mathcal E^1_{S,\partial}(V)$.
+The background is not assumed strongly positive. The positive energy
+matrices used below come from rank-one original $(1,1)$ squares
+wedged with the same middle-positive background.
+
+The compact bounded Green identity is the frozen R4 input
+\texttt{eq:relative-green-energy} in
+\texttt{relative\_energy\_agent.tex}, with the analytic local
+scope made explicit in Section~\ref{sec:r11-analytic-Laurent-collars}.
+The bounded common-collar Aubin--Mabuchi variation is already frozen
+in R3 \texttt{energy\_convex\_blocks.tex},
+\texttt{lem:r3-energy-midpoint}. The new assertions here remove that
+fixed compact collar by the proved unbounded zero-boundary energy
+class. The complete argument keeps track of the global boundary
+term; it does not assume that it vanishes merely because a potential
+has pointwise zero boundary values.
+
+\begin{lemma}[Global bounded Green exchange from finite curvature mass]
+\label{lem:r11-global-bounded-Green}
+Let $Q$ be any original symmetric middle-positive separately closed
+$(n-1,n-1)$-current on $V$. Let $a,b\leq0$ be bounded classical
+psh functions satisfying $\mathrm{BG}(a,0)$ and
+$\mathrm{BG}(b,0)$. Suppose the two positive measures
+$D(aQ)$ and $D(bQ)$ have finite total mass on $V$. Then
+\[
+ \begin{split}
+  \int_V(-a)D(bQ)&=\int_V(-b)D(aQ),\\
+  \int_V\Gamma_Q(a,b)&=\int_V(-a)D(bQ),\qquad
+  \int_V\Gamma_Q(a)=\int_V(-a)D(aQ)<\infty.
+ \end{split}
+ \tag{GE1}
+\]
+The cross energy has finite total variation. These are identities
+of the actual original Borel multipliers and energy measures.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a global
+zero-boundary extension of compact bounded Green exchange.
+
+\begin{proof}
+For $\epsilon>0$ put $a^\epsilon=\max(a,-\epsilon)$.
+The bounded difference $a-a^\epsilon$ is supported in the compact
+set $K_\epsilon=\overline{\{a<-\epsilon\}}\Subset V$.
+Compact Green exchange therefore gives
+\[
+ \int(a-a^\epsilon)D(bQ)
+     =\int bD(aQ)-\int bD(a^\epsilon Q).
+ \tag{GE2}
+\]
+The measure $D(a^\epsilon Q)$ has the same finite total mass as
+$D(aQ)$. Indeed their difference is $D((a^\epsilon-a)Q)$,
+with compactly supported multiplier. A compact original smooth
+cutoff equal to one on a neighborhood of that support has zero
+pairing with this derivative. Outside the compact support the
+two measures agree, by ordinary locality. This proves both
+finiteness and equality of their total masses.
+
+Fix $\delta>0$. The set
+$L_\delta=\overline{\{b<-\delta\}}$ is compact in $V$.
+Relative CLN for the fixed $Q$ and the normalized classical
+function $(a^\epsilon+\epsilon)/\epsilon\in[0,1]$ gives
+$D(a^\epsilon Q)(L_\delta)\leq C_{\delta,Q}\epsilon$.
+Consequently
+\[
+ \left|\int bD(a^\epsilon Q)\right|
+ \leq \|b\|_\infty C_{\delta,Q}\epsilon
+                     +\delta D(aQ)(V).
+ \tag{GE3}
+\]
+First let $\epsilon\downarrow0$, then $\delta\downarrow0$.
+The last term in (GE2) tends to zero. Bounded convergence on
+its left proves the first equality in (GE1).
+
+The original bounded clipping rule, including the zero energy
+of an exact scalar level, gives
+$\Gamma_Q(a-a^\epsilon,a)
+ =\mathbf1_{\{a<-\epsilon\}}\Gamma_Q(a)$.
+Apply compact Green to this difference and $a$:
+\[
+ \int_{\{a<-\epsilon\}}\Gamma_Q(a)
+                 =\int(a^\epsilon-a)D(aQ).
+ \tag{GE4}
+\]
+As $\epsilon\downarrow0$ the right side increases to the
+finite integral $\int(-a)D(aQ)$. The energy gives no mass
+to $\{a=0\}$, so monotone convergence gives the diagonal
+energy identity. Apply it also to $b$ and $a+b$; the latter
+has the same boundary property and finite curvature mass.
+Polarization and the first equality of (GE1) identify the
+cross integral. The measure Cauchy--Schwarz inequality bounds
+its total variation by the product of the square roots of the
+two finite diagonal masses.
+\end{proof}
+
+For $u_0,\ldots,u_q\in\mathcal E^1$ define
+\[
+ \mathcal I_S(u_0,\ldots,u_q)
+       =\int_V(-u_0)M(u_1,\ldots,u_q).
+ \tag{GE5}
+\]
+It is finite by the already proved mixed estimate (PE11).
+Its interpretation uses the actual potentials; all mixed
+measures annihilate their joint pole union.
+
+\begin{theorem}[Full symmetry of the global first mixed energy]
+\label{thm:r11-global-first-mixed-symmetry}
+The nonnegative functional (GE5) is symmetric in all $q+1$
+slots and separately additive and positively homogeneous on
+$\mathcal E^1$. In particular the undifferentiated slot may
+be exchanged with any differentiated slot without a boundary
+term. Every integral is over the whole ordinary domain $V$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+unbounded first-power boundary class and arbitrary original $S$.
+
+\begin{proof}
+Use the decreasing finite-mass approximants from
+Theorem~\ref{thm:r11-finite-mass-power-approximation}:
+$b_{i,j}=\max(u_i,j\rho)$. For a fixed $j$ they all lie
+in $[-j,0]$ and satisfy the compact-sublevel boundary condition.
+Let $A_j=\sum_{i=0}^q b_{i,j}$. Since
+$A_j\geq(q+1)j\rho$ and $\rho<0$, comparison with
+$c(q+1)j\rho$ for $c>1$ has strict gap all of $V$ and gives
+\[
+          \mu_{A_j}(V)
+              \leq[(q+1)j]^q\mu_\rho(V)<\infty
+ \tag{GE6}
+\]
+after $c\downarrow1$. The positive mixed expansion of
+$\mu_{A_j}$ shows that every mixed top measure formed from
+these bounded slots has finite total mass.
+
+Fix the last $q-1$ slots and use their bounded mixed product
+as $Q$ in Lemma~\ref{lem:r11-global-bounded-Green}. Its two
+curvature measures are finite by (GE6), so the lemma exchanges
+the first two slots. Symmetry among the differentiated slots
+is already part of bounded BT; hence the bounded mixed energy
+is fully symmetric.
+
+The approximants in each slot have the fixed lower barrier
+$u_i\in\mathcal E^1$. The global critical mixed-energy
+continuity of Theorem~\ref{thm:r11-critical-energy-barrier-continuity}
+therefore passes the bounded identity to (GE5), on the whole
+domain and with no escaped boundary mass. This proves full
+symmetry. Additivity and positive homogeneity in the first
+slot are ordinary integration identities; in the other slots
+they follow from the unbounded mixed-current calculus. The
+same symmetry transfers all of them to every slot.
+\end{proof}
+
+\begin{theorem}[Globally finite unbounded energy matrices]
+\label{thm:r11-global-first-energy-matrix}
+Let $a,b,c_2,\ldots,c_q\in\mathcal E^1$ and put
+$Q=N(c_2,\ldots,c_q)$, with $Q=S$ when $q=1$.
+The graded energy currents at the endpoint $\sigma=1$ are
+finite measures on all of $V$ and satisfy
+\[
+ \begin{split}
+ \int_V\Gamma_Q(a,b)
+       &=\mathcal I_S(a,b,c_2,\ldots,c_q),\\
+ \left|\int_V\Gamma_Q(a,b)\right|^2
+       &\leq\mathcal I_S(a,a,c_2,\ldots,c_q)
+                   \mathcal I_S(b,b,c_2,\ldots,c_q).
+ \end{split}
+ \tag{GE7}
+\]
+Every cross energy has finite total variation, and the same
+matrix positivity holds for finite real linear combinations
+of the displayed potentials. Thus it applies to differences
+even though a difference need not be psh.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as global
+finiteness and Green identification; local endpoint existence
+is the separate proved theorem (PG10)--(PG12).
+
+\begin{proof}
+Fix $\epsilon>0$ and put $a^\epsilon=\max(a,-\epsilon)$.
+This bounded function belongs to $\mathcal E^1$ by solidity.
+For integers $j>\epsilon$, write $a_j=\max(a,-j)$ and
+let $Q_j$ use the same canonical level $j$ in its other slots.
+The difference $a_j-a^\epsilon$ is supported in the one
+compact set $K_\epsilon=\overline{\{a<-\epsilon\}}$.
+The bounded compact Green formula and clipping locality give
+\[
+ \int_{\{a<-\epsilon\}}\Gamma_{Q_j}(a_j)
+                =\int(a^\epsilon-a_j)D(a_jQ_j).
+ \tag{GE8}
+\]
+Insert a fixed original compact cutoff equal to one near
+$K_\epsilon$ when reading this identity. The endpoint graded
+energy convergence (PG11) passes its left side in local total
+variation. Its indicator is independent of $j>\epsilon$.
+The weighted curvature convergence (PG4) with $a=1,k=q$
+passes its right side, since $a+k=q+1=q+\sigma$ for
+$\sigma=1$. Include the bounded slot $a^\epsilon$ in the
+fixed family; its canonical truncation is itself for large $j$.
+Thus
+\[
+ \int_{\{a<-\epsilon\}}\Gamma_Q(a)
+           =\int(a^\epsilon-a)M(a,c_2,\ldots,c_q).
+ \tag{GE9}
+\]
+The energy gives zero mass to the joint pole set by (PG12).
+It also gives no mass to $\{a=0\}$: the corresponding bounded
+energies vanish there, and (PG11) is local total-variation
+convergence on the identical set $\{a_j=0\}=\{a=0\}$.
+Let $\epsilon\downarrow0$ in (GE9). Both sides increase,
+and the right side has finite limit by (PE11). This proves
+the global diagonal identity in (GE7).
+
+Apply it to $a+b$ as well. The full symmetry from the
+preceding theorem and polarization give the cross identity.
+The positive local energy matrix and an increasing compact
+exhaustion give the global Cauchy--Schwarz inequality and the
+total-variation bound. No convergence of global unweighted
+energy masses was assumed in order to obtain their finiteness.
+\end{proof}
+
+\begin{theorem}[The constant-one first-energy Holder inequality]
+\label{thm:r11-optimal-first-energy-Holder}
+For all $u_0,\ldots,u_q\in\mathcal E^1$,
+\[
+ \boxed{\quad
+ \mathcal I_S(u_0,\ldots,u_q)
+                    \leq\prod_{i=0}^q e_1(u_i)^{1/(q+1)}.
+ \quad}
+ \tag{GE10}
+\]
+In particular
+\[
+ e_1(u+v)^{1/(q+1)}
+           \leq e_1(u)^{1/(q+1)}+e_1(v)^{1/(q+1)}.
+ \tag{GE11}
+\]
+The constant one in (GE10) is optimal whenever a potential
+of positive first energy exists. This is an integral inequality;
+it makes no pointwise Alexandrov--Fenchel or hyperbolicity
+claim for the arbitrary middle-positive background.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. The earlier
+(PE11) supplied a finite constant for every power and is used
+to justify integrability before this sharper first-power proof.
+
+\begin{proof}
+The zero-energy case already follows from (PE11), including
+its proved zero-factor limiting argument. Otherwise rescale
+each potential so that $e_1(u_i)=1$. Put $d=q+1$.
+Among the finitely many mixed values
+\[
+ B_\alpha=\mathcal I_S(
+             \underbrace{u_0,\ldots,u_0}_{\alpha_0},\ldots,
+             \underbrace{u_q,\ldots,u_q}_{\alpha_q}),
+       \qquad \alpha_i\in\mathbf N,\quad\sum_i\alpha_i=d,
+\]
+choose a largest value $M$, and among its indices choose one
+maximizing $\sum_i\alpha_i^2$. If this index has two positive
+entries $\alpha_i,\alpha_l$, the two-slot energy
+Cauchy--Schwarz inequality (GE7), with all remaining slots
+fixed, gives
+\[
+       M^2=B_\alpha^2
+           \leq B_{\alpha+e_i-e_l}B_{\alpha-e_i+e_l}
+           \leq M^2.
+\]
+Since a diagonal value is one, $M\geq1>0$, and both
+neighboring values must equal $M$. At least one neighboring
+index has a strictly larger sum of squares: the two changes
+are $2(\alpha_i-\alpha_l)+2$ and its opposite plus $2$.
+This contradicts the choice. Thus a maximizing index is
+pure, and $M=e_1(u_i)=1$. Every mixed value is at most one,
+proving (GE10) after undoing the normalization.
+
+Expand $e_1(u+v)$ by the fully symmetric multilinearity of
+(GE5), and apply (GE10) term by term. The binomial theorem
+gives (GE11). If all slots equal one potential with positive
+energy, equality holds in (GE10), proving optimality.
+\end{proof}
+
+\begin{proposition}[The relative capacity quotient determines every original product]
+\label{prop:r11-capacity-representative-quotient}
+Let $u_i,v_i\in\mathcal F_{S,\partial}(V)$ for a finite
+family of indices, and suppose
+\[
+       C_S(\{u_i\ne v_i\};V)=0\quad\hbox{for every }i.
+ \tag{GE12}
+\]
+Then every mixed original product of the $u_i$ is equal to
+the corresponding product of the $v_i$, in every degree
+$0\leq k\leq q$, against every original complementary test
+and after every actual moment refinement. For one pair,
+\[
+ \mu_u=\mu_v
+  \quad\Longleftrightarrow\quad C_S(\{u\ne v\};V)=0
+  \quad\Longleftrightarrow\quad C_S^*(\{u\ne v\};V)=0.
+ \tag{GE13}
+\]
+If one member of a pair in (GE13) belongs to
+$\mathcal E^\sigma_{S,\partial}$, so does the other, with
+the same power energy. All defined graded energy currents
+and integrable weighted products agree after these replacements.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+representative quotient within the specified actual-potential
+classes. It is not the analytic PS/PL relation quotient GQ.
+
+\begin{proof}
+Let $E$ be the finite union of the exceptional Borel sets in
+(GE12); it has zero raw capacity. At each canonical level $j$,
+the bounded differences $u_{i,j}-v_{i,j}$ vanish outside $E$.
+Every bounded mixed background $Q_j$ over $S$ gives $E$ zero
+variation in each original coefficient by the global
+coefficient bound (DG3), including degree zero. Therefore
+$(u_{i,j}-v_{i,j})Q_j=0$ as an original current. The bounded
+telescoping formula
+\[
+ \prod_{i=1}^k Du_{i,j}\wedge S-
+ \prod_{i=1}^k Dv_{i,j}\wedge S
+       =\sum_{i=1}^k D\bigl((u_{i,j}-v_{i,j})Q_{i,j}\bigr)
+ \tag{GE14}
+\]
+is zero; $Q_{i,j}$ uses the already replaced slots before
+$i$ and the unreplaced slots after it. Pass the uncut local
+coefficient total-variation limits from the all-degree theorem.
+This proves product equality without assuming a locality
+principle on an arbitrary equality Borel set.
+
+For a single pair, equality of the top measures gives both
+one-sided outer-capacity domination statements from
+Corollary~\ref{cor:r11-boundary-outer-domination}. Their
+boundary-gap hypotheses hold because both potentials are
+negative and have compact negative sublevels. Countable
+subadditivity gives outer capacity zero of their inequality
+set. Outer zero implies raw zero, and the proved product
+equality gives the remaining implication in (GE13).
+
+All products annihilate $E$ in their coefficient variations,
+again by (DG3) and the increasing cut construction. Thus
+the actual multiplier values of the two families agree
+almost everywhere for each such coefficient. This preserves
+integrability, power energies and weighted products.
+The graded energy formula (PG10) then proves energy-current
+equality wherever its degree hypotheses are satisfied.
+\end{proof}
+
+\begin{theorem}[Global Aubin--Mabuchi variation and energy rigidity]
+\label{thm:r11-global-Aubin-Mabuchi}
+For $u\in\mathcal E^1$ put
+\[
+             \mathscr A_S(u)=\frac1{q+1}\int_V u\,d\mu_u
+                              =-\frac{e_1(u)}{q+1}.
+ \tag{GE15}
+\]
+For $u,v\in\mathcal E^1$, let $h=v-u$ and
+$u_t=(1-t)u+tv$, $0\leq t\leq1$. Then $\mathscr A_S(u_t)$
+is a polynomial and
+\[
+ \begin{split}
+ \frac d{dt}\mathscr A_S(u_t)&=\int_V h\,d\mu_{u_t},\\
+ \frac {d^2}{dt^2}\mathscr A_S(u_t)
+              &=-q\int_V\Gamma_{N(u_t^{q-1})}(h)\leq0.
+ \end{split}
+ \tag{GE16}
+\]
+All displayed signed integrals are absolutely convergent.
+The functional is increasing under pointwise order, and
+\[
+ \int(v-u)\,d\mu_v
+    \leq\mathscr A_S(v)-\mathscr A_S(u)
+    \leq\int(v-u)\,d\mu_u.
+ \tag{GE17}
+\]
+The symmetric discrepancy
+\[
+ \begin{split}
+ \mathscr I_S(u,v)
+    &:=\int_V(u-v)(d\mu_v-d\mu_u)\\
+    &=\sum_{l=0}^{q-1}
+       \int_V\Gamma_{N(u^l,v^{q-1-l})}(u-v)\geq0
+ \end{split}
+ \tag{GE18}
+\]
+vanishes exactly when the equivalent conditions (GE13) hold.
+Consequently $\mathscr A_S$ is strictly concave on the
+relative capacity quotient: equality with its chord at one
+strict interior parameter holds exactly for equivalent
+potentials. No pointwise separation or positivity on every
+ordinary open set is assumed for the background.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the
+global unbounded energy extension and quotient rigidity.
+The bounded common-collar variation formula itself is an
+\texttt{INTERNAL\_INPUT}, as specified above.
+
+\begin{proof}
+Full symmetric multilinearity of (GE5) makes the energy a
+polynomial along the segment. Differentiating its $q+1$
+equal slots gives the first formula in (GE16). Differentiating
+once more gives
+$q\int hD(hN(u_t^{q-1}))$. The global energy matrix identity
+(GE7), extended by bilinearity to the difference $h$, is
+exactly its negative in (GE16). Finiteness follows from
+(GE10) in each expanded mixed term. Concavity follows from
+matrix positivity, and the tangent inequalities (GE17) follow
+by integrating the decreasing first derivative. If $u\leq v$
+the first derivative is nonnegative, proving monotonicity.
+
+The telescoping identity for $\mu_v-\mu_u$ and the same
+global Green identity give (GE18). Suppose its sum is zero.
+Every summand is nonnegative, so for each
+$Q_l=N(u^l,v^{q-1-l})$ one has
+$\Gamma_{Q_l}(h)(V)=0$.
+For an original compact smooth scalar test $\varphi$, choose
+an original compact cutoff $\chi$ equal to one on its
+differential support, and use canonical bounded approximants
+$h_j=v_j-u_j$ and $Q_{l,j}$. Compact integration by parts
+and energy Cauchy--Schwarz give
+\[
+ |\langle D(h_jQ_{l,j}),\varphi\rangle|^2
+       \leq\left(\int\chi\Gamma_{Q_{l,j}}(h_j)\right)
+             \left(\int\chi\Gamma_{Q_{l,j}}(\varphi)\right).
+ \tag{GE19}
+\]
+The first factor tends to zero by the endpoint local
+energy total-variation convergence (PG11). The second is
+bounded: its scalar differentials are fixed original smooth
+forms, and $Q_{l,j}$ has local coefficient total-variation
+convergence. The weighted convergence (PG4) also gives
+$h_jQ_{l,j}\to hQ_l$, so (GE19) proves $D(hQ_l)=0$
+against every original test. Summing the recursive telescoping
+formula yields $\mu_u=\mu_v$. Conversely this equality
+makes the defining expression in (GE18) zero. Proposition
+\ref{prop:r11-capacity-representative-quotient} gives precisely
+the other equivalences.
+
+If the energy agrees with its chord at one interior point,
+concavity forces it to be affine on the whole segment.
+Its endpoint derivatives are equal, so (GE16) gives
+$\mathscr I_S(u,v)=\mathscr A_S'(0)-\mathscr A_S'(1)=0$.
+Conversely equivalent potentials have identical mixed products
+and energies by the preceding proposition, and the energy is
+constant on their segment. This proves the claimed strict
+concavity on the quotient.
+\end{proof}
+
+\begin{corollary}[The variational necessary condition retains its domain gate]
+\label{cor:r11-variational-necessary-condition}
+Let $\mu$ be a positive Radon datum such that
+$\int(-v)\,d\mu<\infty$ for every $v\in\mathcal E^1$.
+If $u\in\mathcal E^1$ solves $\mu_u=\mu$, then it maximizes
+\[
+                   v\longmapsto\mathscr A_S(v)-\int v\,d\mu
+ \tag{GE20}
+\]
+on $\mathcal E^1$. Conversely, a maximizer satisfies the
+current equation provided that for every original compact
+smooth scalar $\varphi$ there is $\epsilon_\varphi>0$
+such that $u+t\varphi\in\mathcal E^1$ for all
+$|t|<\epsilon_\varphi$. This last variation hypothesis is
+explicit and is not asserted for a general classical psh
+potential or arbitrary datum.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} for
+necessity and \texttt{CONDITIONAL} for the stated converse.
+
+\begin{proof}
+The upper tangent inequality in (GE17) gives necessity.
+Under the printed two-sided variation hypothesis, apply
+the first derivative identity to the admissible segment
+$u+t\varphi$. Maximality for both signs gives
+$\int\varphi\,d\mu_u=\int\varphi\,d\mu$ for every
+original compact smooth scalar test. This is exactly the
+original current equation. No envelope differentiability or
+unstated admissibility of arbitrary smooth perturbations is
+used.
+\end{proof}
+
+\paragraph{Scope and rejected shortcut.}
+The tempting inference from first-energy dual boundedness to
+an unrestricted ambient classical Dirichlet solution remains
+\texttt{FALSE}, by Corollary~\ref{cor:r11-dual-energy-insufficient}.
+Concavity alone supplies no compactness or representability
+theorem for a maximizing family. The two-sided variation gate
+in the last corollary cannot be discarded by analogy with a
+smooth strictly elliptic problem. The relative capacity quotient
+in (GE12)--(GE14) identifies actual potentials in the proved
+boundary classes; it does not identify analytic PS/PL
+presentations, does not enlarge the class of delta tests, and
+does not close GQ or low-real-degree CTO.
+
+One possible alternate approximation is
+$\max(u_i-\epsilon_j,j\rho)$, which imposes a common ordinary
+collar. That route requires separate uniform control of the
+small-value energy near the moving collar. The proof above
+instead uses (GE3) and the already proved decreasing finite-mass
+approximation; no claim about the alternate route is needed.

@@ -1,0 +1,463 @@
+\section{A complete barrier-constrained nonlinear variational problem}
+\label{sec:r11-completed-barrier-variational}
+
+Retain the strict analytic box and background extension
+(TC1)--(TC2), with the original arbitrary symmetric
+middle-positive separately closed $(p,p)$-current $S$.
+Set $q=n-p\geq1$, $d=q+1$, and fix an actual
+$a\in\mathcal E^1_{S,\partial}(V)$.
+Write $\widehat{\mathcal E}^1_a$ for the Borel relative
+completion of Definition~\ref{def:r11-barrier-completion}.
+The background remains $S$; only the potential class
+is enlarged by the stated capacity completion.
+
+The frozen predecessor is R4
+\path{completed_variational_retraction.tex}.
+It treats a bounded completed problem with a fixed
+collar, and already distinguishes its constrained
+variational condition from an arbitrary source equation.
+The result here is an unbounded global first-energy
+problem with one actual power-energy lower barrier,
+using the new critical continuity and sharp midpoint
+modulus.  It does not claim a new bounded Hilbert
+projection theorem.
+
+\subsection{Global geometry in the completed order interval}
+
+For completed potentials with actual first-energy
+lower barriers, define
+\[
+\begin{split}
+ \widehat B(u_0,\ldots,u_q)
+    &=\int_V(-u_0)\widehat N(u_1,\ldots,u_q),\\
+ \widehat e(u)&=\widehat B(u^{[q+1]}),\qquad
+ \widehat A(u)=-\widehat e(u)/d,\\
+ \widehat I(u,v)
+    &=\widehat e(u)+\widehat e(v)
+       -\widehat B(u,v^{[q]})-\widehat B(v,u^{[q]}).
+\end{split}
+ \tag{BV1}
+\]
+The integrals are finite by (RC14).  They use the
+actual Borel multipliers, with the joint pole set
+annihilated by every coefficient.
+
+\begin{lemma}[Completed energy geometry and separation]
+\label{lem:r11-completed-first-energy-geometry}
+The form $\widehat B$ is symmetric, nonnegative and
+multilinear on the completed positive cone.
+The function $\widehat A$ is concave along every
+segment, and
+\[
+ \widehat A\left(\frac{u+v}{2}\right)
+      -\frac{\widehat A(u)+\widehat A(v)}2
+                    \geq c_q\widehat I(u,v)\geq0,
+ \qquad c_q=\frac{1-2^{-q}}{2(q+1)}.
+ \tag{BV2}
+\]
+Moreover
+\[
+ \widehat I(u,v)=0
+       \quad\Longleftrightarrow\quad
+ u=v\text{ locally outside a set of outer }S
+                         \text{-capacity zero}.
+ \tag{BV3}
+\]
+On $\widehat{\mathcal E}^1_a$ one has
+$0\leq\widehat e(u)\leq e_1(a)$.
+For a segment $u_t=(1-t)u+tv$,
+\[
+             \frac{d}{dt}\widehat A(u_t)
+                    =\int_V(v-u)\,d\widehat N_q(u_t).
+ \tag{BV4}
+\]
+All signed integrals in this formula are absolutely
+convergent.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}
+of the new global critical completion theorem,
+the actual first-energy geometry and its sharp
+midpoint estimate.  The separation assertion is
+proved explicitly to avoid assuming an ambient
+classical representative.
+
+\begin{proof}
+Choose classical defining rows for all the
+finitely many completed slots, retaining their
+fixed actual barriers.  Formula (RC14) passes
+each global mixed energy and every diagonal
+energy to its completed value.  It therefore
+passes symmetry, positive multilinearity,
+the constant-one Holder inequality, concavity,
+and (SM8).  For $u\geq a$, choose its defining
+rows above $a$.  Actual energy monotonicity
+gives $e_1(u_l)\leq e_1(a)$, and (RC14)
+gives the stated bound.
+
+If $\widehat I(u,v)=0$, the same convergence
+gives $I(u_l,v_l)\to0$ for their classical
+defining rows.  These rows have uniformly
+bounded energy.  The all-local outer-capacity
+estimate (EV8) makes every actual gap between
+$u_l$ and $v_l$ tend to zero in capacity.
+The defining convergence of each clipped row,
+and the capacity-small deep sublevels of the
+fixed barriers, give the same conclusion for
+the completed gap.  The level-set triangle
+inequality then makes each positive gap of
+$u-v$ outer-null.  A countable union proves
+the forward implication of (BV3).
+Conversely, outer-null changes preserve every
+completed current and every actual integrable
+multiplier by (RC4)--(RC8), so the expression
+in (BV1) is zero.
+
+Finally positive multilinearity makes
+$\widehat A(u_t)$ a finite polynomial in $t$.
+Differentiate its $d$ symmetric slots.
+This is (BV4), with integrability from the
+completed mixed-energy bound.  No distributional
+product of two unbounded differences is being
+introduced by this scalar calculation.
+\end{proof}
+
+\begin{lemma}[Finite diffuse data integrate barrier-bounded capacity limits]
+\label{lem:r11-barrier-diffuse-integration}
+Let $\mu$ be a finite positive Radon measure on $V$
+which vanishes on every Borel set of zero ordinary-open
+outer $S$-capacity.  Suppose
+\[
+                              \int_V(-a)\,d\mu<\infty.
+ \tag{BV5}
+\]
+If $u_j,u\in\widehat{\mathcal E}^1_a$ converge in the
+defining local truncated outer capacities, then
+\[
+                           \int_V|u_j-u|\,d\mu\longrightarrow0.
+ \tag{BV6}
+\]
+In particular this integral is independent of the
+chosen relative representatives.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+in the unbounded barrier completion; the underlying
+finite-measure capacity argument is detailed below.
+
+\begin{proof}
+A finite measure that vanishes on outer-null Borel
+sets is sequentially absolutely continuous for this
+outer capacity.  Otherwise choose Borel $E_j$ with
+capacities tending to zero but $\mu(E_j)\geq\epsilon$,
+and pass to a subsequence with summable capacities.
+The limsup has outer capacity zero by countable
+subadditivity.  On the other hand, continuity from
+above of the finite measure applied to the decreasing
+tail unions gives its mass at least $\epsilon$.
+This is a contradiction.
+
+The actual pole set of $a$ is outer-null and hence
+$\mu$-null.  Off it the inequalities
+$a\leq u_j,u\leq0$ imply
+$|u_j-u|\leq-a$.
+On a fixed compact set remove a deep sublevel of $a$;
+its capacity and hence its $\mu$ mass can be made
+small.  On the complement full values agree with
+one fixed truncation, whose convergence in capacity
+and the preceding sequential absolute continuity
+give convergence in $\mu$ measure.
+Exhaust $V$ by compact sets and use finiteness of
+$\mu$ to obtain convergence in measure on all of $V$.
+The integrable bound $-a$ in (BV5) then gives
+$L^1(\mu)$ convergence: every subsequence has an
+almost-everywhere convergent further subsequence,
+and dominated convergence applies to it.
+This proves (BV6) for the whole sequence.
+The same null-set argument proves representative
+independence.
+\end{proof}
+
+\begin{theorem}[A unique completed barrier-constrained maximizer]
+\label{thm:r11-completed-barrier-maximizer}
+For every datum satisfying Lemma
+\ref{lem:r11-barrier-diffuse-integration}, the functional
+\[
+      \widehat{\mathcal F}_\mu(u)
+            =\widehat A(u)-\int_Vu\,d\mu,
+              \qquad u\in\widehat{\mathcal E}^1_a,
+ \tag{BV7}
+\]
+has a maximizer, unique modulo local outer
+$S$-capacity zero.  Its value lies between zero
+and $\int(-a)\,d\mu$.
+Denote its relative class by $\Pi_a(\mu)$.
+Every classical maximizing sequence in the
+actual interval $\{a\leq u\leq0\}$ is Cauchy
+in all local outer capacities and converges to
+this completed class.
+The maximizer is characterized by the precise
+variational inequality
+\[
+ \int_V(v-u)\,d\bigl(\widehat N_q(u)-\mu\bigr)
+               \leq0
+       \quad\bigl(v\in\widehat{\mathcal E}^1_a,\ u=\Pi_a(\mu)\bigr).
+ \tag{BV8}
+\]
+The inequality is equivalent to maximality, and
+all its integrals are absolutely convergent.
+It is not asserted to be the unrestricted
+current equation $\widehat N_q(u)=\mu$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+for the unbounded completed order interval and
+arbitrary original $S$.
+
+\begin{proof}
+The zero potential is admissible and has functional
+value zero.  Since $\widehat e(u)\geq0$ and
+$-u\leq-a$, every value in (BV7) is at most
+$\int(-a)\,d\mu<\infty$.
+For any completed $u$ its classical defining
+rows converge in energy by (RC14) and in
+$L^1(\mu)$ by (BV6).
+Thus the supremum over the completed interval
+equals the supremum over its actual classical
+members.
+
+Choose a classical sequence approaching this
+finite supremum $L$.
+Every term has first energy at most $e_1(a)$.
+The midpoint remains in the same actual interval.
+Its linear datum term cancels from the midpoint
+gap, so (SM8) gives
+\[
+ c_q I(u_j,u_l)
+       \leq L-\frac{\mathcal F_\mu(u_j)+
+                              \mathcal F_\mu(u_l)}2\longrightarrow0.
+ \tag{BV9}
+\]
+The local capacity estimate (EV8) makes the
+sequence Cauchy in the defining topology.
+The fixed-barrier completeness theorem gives
+a limit $u\in\widehat{\mathcal E}^1_a$.
+Global critical energy continuity (RC14) and
+(BV6) give
+$\widehat{\mathcal F}_\mu(u)=L$.
+This proves existence without an ambient upper
+regularization or a classical compactness claim.
+
+If $u,v$ are both maximizers, (BV2) and the
+affinity of the datum integral give
+$c_q\widehat I(u,v)\leq0$.
+By (BV3) they are the same relative class.
+The same Cauchy argument and uniqueness apply
+to every classical maximizing sequence.
+
+For any completed competitor $v$, the segment
+$u_t=(1-t)u+tv$ stays in the interval.
+The derivative at $t=0$ is the left side of
+(BV8), by (BV4) and (BV6).
+Maximality gives its nonpositive sign.
+Conversely concavity gives the upper tangent
+inequality for (BV7); (BV8) therefore makes
+every competitor's value at most the value
+at $u$.  The data integrals are controlled
+by (BV5), and all curvature integrals by
+the completed mixed-energy bound.
+This proves both the characterization and
+the claimed integrability.
+\end{proof}
+
+\begin{theorem}[Data stability and retraction on the finite-mass image]
+\label{thm:r11-completed-barrier-data-stability}
+Let $\mu,\nu$ satisfy (BV5) and the same
+finite BT-diffuse hypotheses, and define
+\[
+                    \delta_a(\mu,\nu)
+                         =\int_V(-a)\,d|\mu-\nu|.
+ \tag{BV10}
+\]
+Then
+\[
+ \widehat I(\Pi_a(\mu),\Pi_a(\nu))
+       \leq\delta_a(\mu,\nu).
+ \tag{BV11}
+\]
+In particular, if $\delta_a(\mu_j,\mu)\to0$,
+the completed maximizers converge in every
+local outer capacity, every original mixed
+current, and all the fixed-barrier weighted
+limits of (RC8) and (RC14).
+
+If $b\in\widehat{\mathcal E}^1_a$ and its top
+measure $\mu_b=\widehat N_q(b)$ has finite
+total mass, then it satisfies the stated
+datum hypotheses and
+\[
+                                \Pi_a(\mu_b)=b
+ \tag{BV12}
+\]
+in the relative capacity quotient.
+If the actual barrier has finite total top mass
+and positive first energy, the constant one
+in (BV11) is optimal for that same barrier,
+domain and background.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+for the quantitative completed variational map.
+The term retraction means exactly (BV12).
+
+\begin{proof}
+Write $u=\Pi_a(\mu)$ and $w=\Pi_a(\nu)$.
+Use $w$ as a competitor in (BV8) for $u$,
+and $u$ as a competitor for $w$.
+Adding the two resulting inequalities gives
+\[
+ 0\leq\widehat I(u,w)
+       \leq\int_V(u-w)\,d(\nu-\mu)
+       \leq\int_V(-a)\,d|\nu-\mu|.
+\]
+The last inequality uses $|u-w|\leq-a$.
+This proves (BV11).  The two-competitor argument
+is the frozen bounded retraction mechanism;
+the newly justified unbounded integrals and
+completed interval make it applicable here.
+
+For clarity, the passage from $\widehat I\to0$
+to local capacity convergence is also valid
+for completed rows.  Approximate each pair
+by classical rows with their fixed barrier.
+Their energies and discrepancies converge
+by (RC14).  Apply (EV8) to the classical
+rows, use the level-set triangle inequality
+and the defining capacity convergence, and
+then decrease its intermediate gap threshold
+to the requested one.  The resulting bound
+is the same fixed-interval capacity modulus.
+Thus (BV11) gives the stated convergence,
+and (RC8), (RC14) give all the current
+and weighted conclusions.
+
+For (BV12), outer-capacity control of the
+completed current on each compact stage
+shows that $\mu_b$ is BT diffuse.
+Also
+$\int(-a)\,d\mu_b=\widehat B(a,b^{[q]})<\infty$.
+Its finite total mass is the printed
+additional assumption.
+The completed tangent inequality for
+$\widehat A$ gives
+\[
+ \widehat A(v)-\widehat A(b)
+                    \leq\int(v-b)\,d\mu_b .
+\]
+Thus $b$ maximizes (BV7) for datum $\mu_b$.
+Uniqueness proves (BV12).
+Finally, if $\mu_a$ has finite total mass and
+$e_1(a)>0$, take $\mu=\mu_a$ and $\nu=0$.
+The retraction identity gives $\Pi_a(\mu_a)=a$,
+and $\Pi_a(0)=0$ because the objective is
+$-\widehat e/d\leq0$.
+Then
+$\widehat I(a,0)=e_1(a)=\delta_a(\mu_a,0)$,
+proving the stated optimality.
+\end{proof}
+
+\begin{proposition}[A completed variational maximizer need not solve the source equation]
+\label{prop:r11-completed-maximizer-source-obstruction}
+For the precise smooth moment-Laplacian background
+(DO6), with $n\geq2$ and $q=1$, take the
+nonzero compact smooth source (DO9).
+For every actual
+$a\in\mathcal E^1_{S,\partial}(V)$, the
+maximizer $\Pi_a(\mu)$ exists, but
+\[
+                            D(\Pi_a(\mu)\,S)\ne\mu .
+ \tag{BV13}
+\]
+More generally no member of
+$\widehat{\mathcal E}^1_a$ has that source.
+Thus the implication from completed variational
+maximality to an unrestricted original source
+equation is \texttt{FALSE}, even after the
+classical representative requirement is relaxed
+to this relative completion.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+as the extension of the frozen compact-source
+obstruction to the new barrier completion.
+It refines the earlier actual-class obstruction
+without replacing its proof.
+
+\begin{proof}
+The datum (DO9) is finite and dominated by a
+fixed multiple of the full normalized BT
+capacity, so it is BT diffuse.
+Equation (DO4), with $s=1$ and $v=a$,
+gives $\int(-a)\,d\mu<\infty$.
+The existence theorem therefore applies.
+
+Suppose a completed member $u$ had
+$D(uS)=\mu$, and choose classical defining
+rows $a\leq u_j\leq0$.
+Their Gauss traces $g_j=u_j\circ\sigma$
+are finite convex functions on the real
+box $Q$, by the frozen trace theorem.
+The actual barrier has a finite convex
+Gauss trace on all of $Q$, by the
+finite-trace argument in the proof of
+Theorem~\ref{thm:r11-power-compact-source-obstruction}.
+Hence on every compact subbox the $g_j$
+have uniform upper and lower bounds.
+Elementary convex slope bounds give
+equicontinuity on each smaller compact
+subbox.  A diagonal finite-net argument
+therefore supplies a subsequence converging
+locally uniformly to a finite convex $g$.
+
+The completed weighted current convergence
+in degree zero gives $u_jS\to uS$ on
+every original compact test.
+For each real $\phi\in C_c^\infty(Q)$,
+the exact original calibration now yields
+\[
+ \langle t_*D(uS),\phi\rangle
+     =\lim_j\int_Q g_j\Delta\phi\,dy
+     =\int_Q g\Delta\phi\,dy
+     =\langle\Delta g,\phi\rangle.
+ \tag{BV14}
+\]
+The purported source has compact tropical
+support.  The frozen R10 convex compact-source
+rigidity makes $g$ affine and $\Delta g=0$.
+Equation (BV14) would therefore give
+$t_*\mu=0$, contradicting the nonzero
+positive source (DO9).
+This proves (BV13) throughout the completed
+interval.
+It uses the full-original degree-zero
+convergence before testing the pushforward;
+no toric-only definition of the currents
+or auxiliary-field quotient is substituted.
+\end{proof}
+
+\paragraph{The remaining equation gate is concrete.}
+The theorem proves existence, uniqueness, source
+stability and a retraction for a nonlinear
+constrained relative problem.
+Its Euler condition is exactly (BV8).
+Promoting that inequality to equality against
+every original test requires additional
+admissible variations or a different potential
+class.  Proposition
+\ref{prop:r11-completed-maximizer-source-obstruction}
+shows that this promotion is not a technical
+consequence of the completion already built.
+The finite signed diffuse relative linear
+Dirichlet problem uses the larger specified
+energy class and remains compatible with
+this obstruction.

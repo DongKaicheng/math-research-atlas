@@ -1,0 +1,3080 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{booktabs,longtable,array,microtype,needspace,etoolbox}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{InternalLink}{HTML}{0057B8}
+\definecolor{CitationLink}{HTML}{1B7837}
+\definecolor{URLLink}{HTML}{A33A00}
+\definecolor{ReturnLink}{HTML}{6A3D9A}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=InternalLink,citecolor=CitationLink,
+urlcolor=URLLink,linktoc=all,pdfborder={0 0 0},
+pdftitle={Locally bounded classical plurisubharmonic functions and mixed currents},
+pdfauthor={}}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{convention}[theorem]{Convention}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\dd}{\mathrm d'\mathrm d''}
+\newcommand{\dpr}{\mathrm d'}
+\newcommand{\dpp}{\mathrm d''}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\Cb}{\mathcal C_b}
+\newcommand{\Rb}{\mathcal R_b}
+\newcommand{\PLsp}{\mathrm{PL}_{\mathrm{sp}}}
+\newcommand{\MA}{\operatorname{MA}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\returnlink}[2]{\par\smallskip\noindent
+\hyperref[#1]{\textcolor{ReturnLink}{Return to #2.}}\par}
+\newcommand{\KeepStatement}[1]{\BeforeBeginEnvironment{#1}{\Needspace{5\baselineskip}}}
+\forcsvlist{\KeepStatement}{theorem,proposition,lemma,corollary,definition,convention,remark}
+\AddToHook{cmd/section/before}{\Needspace{8\baselineskip}}
+\AddToHook{cmd/subsection/before}{\Needspace{6\baselineskip}}
+\crefname{convention}{convention}{conventions}
+\Crefname{convention}{Convention}{Conventions}
+\setlength{\emergencystretch}{2em}
+\title[Classical psh functions and mixed currents]{Locally bounded classical plurisubharmonic functions\newline and mixed currents}
+\author{}
+\date{10 November 2026}
+
+\begin{document}
+\begin{abstract}
+Let $K$ be a finite extension of $\mathbb Q_p$ and let $X$ be a good,
+Hausdorff, boundaryless, quasi-smooth $K$-analytic space. We prove that
+every locally bounded classically plurisubharmonic function on $X$
+is locally a decreasing limit of semipositive rational piecewise-linear
+functions defined over $K$ on one fixed neighborhood. We use this
+regularization to construct mixed currents in the original
+Chambert--Loir--Ducros calculus. The unweighted currents are symmetric,
+closed and strongly positive. Their coefficient measures are Radon
+measures on the analytic space, so multiplication by a locally bounded
+classical weight uses its given Borel representative. These weighted
+products are jointly continuous along decreasing sequences with locally
+bounded limits, and the construction is compatible with \'etale
+pullback of the potentials. The regularization proof uses curve slicing,
+projective contact rigidity, and continuity of ample envelopes on
+normal models. A fixed vertical correction for mixed-characteristic
+test ideals provides the envelope estimate.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:introduction}
+Let $K$ be a finite extension of $\mathbb Q_p$. A classically
+plurisubharmonic function on a Berkovich $K$-analytic space is an
+upper-semicontinuous function whose pullback to every analytic curve,
+after any complete extension of $K$, is subharmonic \cite{GR}.
+This definition tests positivity on curves and does not require the
+function to have a smooth local expression. The question addressed here
+is whether locally bounded functions in this class admit decreasing
+piecewise-linear approximation, and whether their curvatures have mixed
+products in the Chambert--Loir--Ducros calculus.
+
+For continuous semipositive potentials, uniform approximation provides
+the mixed products. A locally bounded classical potential may be
+discontinuous. The recursive construction then requires multiplication
+of a current by a Borel function, and its continuity requires a limit
+theorem in which both that function and the current vary. We prove
+these assertions for the original CLD test forms. The approximation
+takes place over $K$ on a fixed neighborhood of each point; all weighted
+products use the given pointwise representatives.
+
+\subsection{Definitions and main results}\label{sec:main-results}
+
+\begin{convention}\label[convention]{conv:spaces}
+Fix a finite extension $K/\mathbb Q_p$ with its prescribed absolute
+value. Choose a uniformizer $\pi$ and put $\lambda=-\log|\pi|$.
+Unless another field is specified, $X$ is a good, Hausdorff,
+boundaryless, quasi-smooth $K$-analytic space of pure dimension
+$n\geq1$. All opens are ordinary topological opens. A real function
+is \emph{locally bounded} if it is bounded above and below on a
+neighborhood of every point. No replacement on a null or polar set
+is made.
+\end{convention}
+
+\begin{definition}\label[definition]{def:classes}
+For an ordinary open $U\subset X$, let $\Cb(U)$ be the real-valued, locally bounded,
+upper-semicontinuous functions $u$ such that, for every complete
+isometric extension $F/K$ and every morphism $C\to U_F$ from an
+$F$-analytic curve, the pullback of $u$ is subharmonic in the sense
+of \cite[Definition~4.1 and \S3]{GR}.
+
+Let $\PLsp(U)$ denote the continuous real piecewise-linear functions
+semipositive in the local model, or equivalently reduction, sense of
+\cite[Theorem~4.3]{GR}. Define $\Rb(U)$ to be the locally
+bounded functions $u$ such that every point has one ordinary
+neighborhood $V\subset U$ and a sequence
+\[
+ p_m\in\PLsp(V),\qquad p_m\downarrow u|_V.
+\]
+The neighborhood is independent of $m$. On an algebraic chart,
+\emph{rational} PL means rational slopes and constants in
+$\lambda\mathbb Q$.
+\end{definition}
+
+\begin{convention}\label[convention]{conv:forms}
+We use the original CLD forms $A^{p,q}$ and their compactly
+supported test spaces $A_c^{p,q}$, with the canonical calibration.
+Put $D=\dd$. A current of bidegree $(k,k)$ acts on
+$A_c^{n-k,n-k}$. A symmetric current is called \emph{strongly
+positive} if it is nonnegative on weakly positive complementary
+original forms. The weakly positive cone is tested by decomposable
+vectors; the strongly positive cone is generated by decomposable
+squares. These conventions concern the original test sheaf, not the
+larger weakly smooth sheaf of \cite{GJR}.
+
+A metric is written additively in weights $-\log\|e\|$, so its
+curvature is $D[-\log\|e\|]$. On a projective variety a continuous
+\emph{model-semipositive} metric means a uniform limit of nef
+rational model metrics on the same identified line bundle.
+A \emph{bounded classical metric} is a metric whose local weights
+are classical and whose difference from a continuous reference
+metric is bounded. A rational \emph{pure Fubini--Study metric},
+abbreviated pure-FS, is given by a finite generating tuple
+$s_0,\ldots,s_N$ of a tensor power $mL$, with local weight
+\[
+ \frac1m\max_i\bigl(\log|s_i/e^{\otimes m}|+c_i\bigr),
+ \qquad c_i\in\lambda\mathbb Q .
+\]
+After replacing $m$ by a multiple, the constants can be absorbed
+by multiplying the sections by powers of $\pi$.
+\end{convention}
+
+The recursive formula for mixed currents will involve multiplying a
+current by a locally bounded, possibly discontinuous function. The
+following condition specifies the measures used for that multiplication.
+
+\begin{definition}[Coefficient Radon currents]\label[definition]{def:coefficient-radon}
+A current $T$ is of \emph{coefficient Radon type} if each finite
+original moment presentation represents its coefficient functionals
+by signed Radon measures on the analytic domain, compatibly
+with all original smooth scalar functions, relations between forms,
+and common refinements. In particular, for every compact original
+test $\eta$, there is a signed Radon measure $\mu_{T,\eta}$ with
+\[
+ \int a\,d\mu_{T,\eta}=\langle T,a\eta\rangle
+ \quad\text{for every original smooth scalar }a.
+\]
+For a locally bounded Borel function $h$, multiplication is
+defined by
+\begin{equation}\label{eq:borel-multiplication}
+ \langle hT,\eta\rangle=\int h\,d\mu_{T,\eta}.
+\end{equation}
+The compatibility requirements make this definition independent of
+the chosen presentation. A measure only on one tropical image does
+not suffice for this definition.
+\end{definition}
+
+\begin{theorem}[Local decreasing regularization]
+\label[theorem]{thm:local-regularization}
+For every ordinary open $U\subset X$,
+\[
+ \Cb(U)=\Rb(U).
+\]
+For $u\in\Cb(U)$, the local approximants may be chosen rational PL,
+defined over $K$ on one fixed neighborhood. Both classes are stable
+under decreasing sequences whose pointwise limit is locally
+bounded.
+\end{theorem}
+\noindent\hyperref[proof:local-regularization]{Proof on
+p.~\pageref{proof:local-regularization}.}
+
+\Needspace{15\baselineskip}
+\begin{theorem}[Mixed currents]\label[theorem]{thm:mixed-currents}
+For $u_1,\ldots,u_k\in\Cb(U)$, $0\leq k\leq n$, there are
+coefficient Radon currents
+\begin{equation}\label{eq:recursive-current}
+ T_0=[1],\qquad
+ T_k(u_1,\ldots,u_k)=D\bigl(u_1T_{k-1}(u_2,\ldots,u_k)\bigr).
+\end{equation}
+They are symmetric, $\dpr$- and $\dpp$-closed, strongly positive,
+and multilinear on the cone in the differentiated arguments. They agree
+with the continuous CLD products whenever the potentials are
+continuous and semipositive. They are independent of decreasing PL
+regularization and commute with ordinary restriction and gluing.
+For $u_0\in\Cb(U)$, the weighted current
+\begin{equation}\label{eq:source-current}
+ S_k(u_0;u_1,\ldots,u_k)=u_0T_k(u_1,\ldots,u_k)
+\end{equation}
+uses the Borel multiplication of
+\Cref{def:coefficient-radon}.
+\end{theorem}
+\noindent\hyperref[proof:main-currents]{Proof on
+p.~\pageref{proof:main-currents}.}
+
+\begin{theorem}[Joint decreasing continuity]
+\label[theorem]{thm:joint-monotone}
+Suppose that, for $0\leq i\leq k$, the functions
+$u_{i,j}\in\Cb(U)$ decrease pointwise to a locally
+bounded function $u_i$. Then
+\[
+ S_k(u_{0,j};u_{1,j},\ldots,u_{k,j})
+ \longrightarrow S_k(u_0;u_1,\ldots,u_k)
+\]
+on every form in $A_c^{n-k,n-k}(U)$. The corresponding unweighted
+currents also converge. In top degree these are locally weak
+convergences of Radon measures, against every continuous
+compactly supported scalar function.
+\end{theorem}
+\noindent\hyperref[proof:main-currents]{Proof on
+p.~\pageref{proof:main-currents}.}
+
+\begin{corollary}\label[corollary]{cor:quasiprojective}
+The preceding results apply on every ordinary open in the
+analytification of a smooth quasi-projective $K$-variety. Local
+boundedness there imposes no boundedness condition at a deleted
+algebraic boundary.
+\end{corollary}
+
+\begin{remark}[The undifferentiated argument]\label[remark]{rem:source-slot}
+A constant in a differentiated argument has zero curvature. A change
+$u_0\mapsto u_0+c$ in the undifferentiated argument changes $S_k$ by $cT_k$.
+Thus $S_k$ is symmetric in $u_1,\ldots,u_k$, but not in all its
+arguments. The weighted current may be signed and need not be closed.
+The hypothesis on the limit in \Cref{thm:joint-monotone} is
+essential to the stated class; for example, the decreasing constants
+$-j$ have no locally bounded limit.
+\end{remark}
+
+\subsection{Proof strategy and relation to earlier work}
+The proof has two parts. We first pass from the curve condition to
+local decreasing regularization. We then use this regularization to
+construct the mixed currents and prove their continuity. The first
+part uses only first-order currents and products of continuous metrics,
+so it does not presuppose the products in \Cref{thm:mixed-currents}.
+
+The continuous products come from uniform approximation by semipositive
+model metrics. Approximation by Fubini--Study metrics and by smooth
+semipositive metrics is supplied by
+\cite[Corollary~7.6 and Theorems~7.8, 7.14]{BE}, in the current calculus
+of \cite{CLD12}. To treat a discontinuous classical potential $v$, we
+slice a test presentation by algebraic curves. The curve condition
+applies over the completed residue fields of the slicing points, even
+when those fields are nondiscretely valued. Thuillier's lisse
+approximation and Dirichlet energy \cite[\S\S3.4--3.5]{Thuillier}
+give a positive Laplacian on each curve. Integrating these Laplacians
+gives the first-order current $D[v]$, its coefficient measures, and the
+Green formulas needed below. The lisse functions are auxiliary
+piecewise-affine potentials on skeleta; the tests remain original CLD
+forms. We use the skeleton integration formulas of \cite{CLD25} on
+their original unit-moment presentations.
+
+The passage to regularization is made on a smooth projective
+geometrically integral variety over a field in the finite unit-Gauss
+tower class $\mathcal G_K$ of \Cref{def:gauss-fields}, with an ample
+line bundle $L$. The contact theorem states that a bounded
+classical metric $r$ and a continuous model-semipositive metric $p$
+satisfy
+\[
+ r\geq p,\qquad \int (r-p)c_1(L,p)^n=0
+ \quad\Longrightarrow\quad r=p
+\]
+pointwise. Its proof is an induction on dimension. The first-order
+Green estimate controls the gap $r-p$ against smooth backgrounds.
+A generic hyperplane then identifies its limit against the continuous
+background and reduces the vanishing assertion to dimension $n-1$.
+The hyperplane is defined over a unit-Gauss completion, which is why
+the induction treats arbitrary data over all finite unit-Gauss towers
+at once.
+
+To obtain the approximants, choose continuous metrics
+$\rho_\ell\downarrow r$ and take their semipositive envelopes
+$s_\ell=P_L\rho_\ell$. Continuity and orthogonality of these envelopes
+give
+\[
+ \int (\rho_\ell-s_\ell)c_1(L,s_\ell)^n=0.
+\]
+Apply contact to $\max(r,s_\ell)$ and $s_\ell$. Their nonnegative gap
+is bounded by $\rho_\ell-s_\ell$, so contact gives
+$r\leq s_\ell\leq\rho_\ell$ and hence $s_\ell\downarrow r$.
+The envelope theorem is proved in \Cref{sec:normal-envelopes} on a
+normal model. Its algebraic input is the corrected subadditivity
+inequality of \Cref{thm:fixed-correction}; the vertical correction is
+independent of the ideals and their exponents and therefore contributes
+an error tending to zero after normalization by degree. To return to
+a local potential, \Cref{lem:common-collar} realizes it, up to a
+constant, as a metric weight on a smaller fixed neighborhood.
+
+For the mixed-current construction, the induction is on exterior
+degree. Strong positivity supplies coefficient Radon measures on the
+analytic space, making $u_1T_{k-1}$ meaningful before we differentiate
+it. To prove weighted convergence, we use Wu's top-degree theorem for
+decreasing piecewise-linear potentials
+\cite[Theorem~4.2(4)]{Wu}. A complementary test is reduced to products
+of curvatures of auxiliary quadratic potentials. In middle degrees,
+this reduction is only modulo the annihilator of decomposable squares.
+Strong positivity kills that term in the current pairing, and the
+corresponding coefficient measure remains zero after Borel
+multiplication. Thus the reduction applies to every original
+complementary test.
+
+It remains to replace decreasing PL sequences by arbitrary decreasing
+classical potentials. We first place the whole family on one projective
+variety, using the common bounds supplied by its first terms and its
+limits. A compact diagonal argument then chooses decreasing PL
+approximants whose current pairings approach the required ones. Choosing
+the common local domain before the approximants resolves the domain
+dependence noted in \cite[Remark~4.6]{Wu} for this class of functions.
+
+\Cref{sec:first-order,sec:contact} establish first-order positivity and
+regularization; \Cref{sec:construction,sec:arbitrary-columns} construct
+the products and prove decreasing continuity. \Cref{sec:localization}
+transports these results to ordinary analytic charts and glues the
+currents. \Cref{sec:etale} treats specified potential tuples under
+\'etale pullback, including the finite-degree formula. The curve
+arguments, normal-model envelope construction, and common local domain
+are proved in the appendices. The
+\hyperref[sec:notation]{index of notation} records the definitions and
+normalizations used throughout.
+
+\enlargethispage{\baselineskip}
+\begingroup
+\footnotesize
+\noindent\begin{minipage}{\textwidth}
+\tableofcontents
+\end{minipage}
+\endgroup
+
+\section{First-order currents and energy}\label{sec:first-order}
+
+We construct $D[v]$ by integrating curve Laplacians in the directions
+of complementary test forms. The resulting coefficient measures allow
+us to form the quadratic energy expressions for bounded potentials.
+These first-order expressions supply the contact estimate in
+\Cref{thm:projective-regularization}; no higher product of discontinuous
+potentials is used at this stage.
+
+\begin{definition}\label[definition]{def:gauss-fields}
+Let $\mathcal G_K$ be the finite unit-Gauss tower class of
+\Cref{lem:gauss-countable}. The induction below is carried out
+simultaneously over every $F\in\mathcal G_K$, for arbitrary data
+defined over $F$. The residue field of such an $F$ need not be finite
+or perfect. Its valuation ring is nevertheless a complete excellent
+mixed-characteristic DVR, and its compact analytic domains used here
+are metrizable.
+\end{definition}
+
+For a current of bidegree $(1,1)$, the complementary degree is $n-1$.
+Every $(n-1)$-vector on a face of dimension at most $n$
+is decomposable. This is the linear-algebra fact that permits the
+following reduction to curve-slicing directions.
+
+\begin{lemma}[One-curvature complementary spanning]
+\label[lemma]{lem:first-order-span}
+Let $r=n-1$. On a finite original moment presentation, every
+symmetric compact $(r,r)$-test is, after finite localization, a
+signed sum
+\begin{equation}\label{eq:first-order-span}
+ \eta=\sum_\ell a_\ell\Omega_\ell,\qquad
+ \Omega_\ell=\bigwedge_{b=1}^{r}\dpr\ell_{\ell b}\wedge\dpp\ell_{\ell b},
+\end{equation}
+where the $a_\ell$ are smooth compact scalars and each
+$\ell_{\ell b}$ is a rational linear combination of logarithmic
+norms of units.
+\end{lemma}
+\begin{proof}
+Let $E$ be the ambient moment tangent space. The orthogonal
+complement of the span of decomposable squares in
+$\operatorname{Sym}^2(\bigwedge^r E^*)$ consists of quadratic forms
+vanishing on decomposable $r$-vectors. Every $r$-vector in a face
+tangent space of dimension at most $r+1=n$ is decomposable.
+Polarization therefore makes this complement zero on every
+face. Rational decomposable squares span the remaining finite
+dimensional space. Choose a finite basis from them and apply a
+fixed linear splitting to the smooth coefficient matrix of $\eta$.
+The scalar coefficients remain smooth. Clear rational denominators
+and use a finite original smooth partition of unity.
+For $n=1$ the assertion is the scalar statement with empty wedge.
+\end{proof}
+
+\begin{proposition}[First-order measures and positivity]
+\label[proposition]{prop:first-order}
+Let $F\in\mathcal G_K$, let $X/F$ be smooth algebraic of pure
+dimension $n$, and let $v$ be locally bounded classical psh on an
+ordinary open $U\subset X^{\an}$. Then $D[v]$ is a closed positive
+original current of coefficient Radon type. In every algebraic-unit
+curve-slicing presentation it satisfies the Borel kernel
+identity of \Cref{thm:actual-kernel}.
+\end{proposition}
+\begin{proof}
+By \Cref{lem:exact-units}, the finitely many analytic units in a
+localized test presentation may be replaced, with exactly the same
+norms, by algebraic units on a fixed smaller norm-box interior.
+After clearing denominators, each direction in
+\eqref{eq:first-order-span} is given by $n-1$ algebraic units.
+These units define a map $p:W\to\mathbb G_m^{n-1}$. When this map
+is dominant, its fibers over the base skeleton are the curves on
+which we use the subharmonicity of $v$. Choose a nonnegative coordinate top
+form on the base equal to its constant volume form near the
+projected test support. If $p$ is dominant,
+\Cref{thm:actual-kernel} shows that
+$a\mapsto\langle D[v],a\Omega_\ell\rangle$ is a positive Radon
+measure on $W$. If $p$ is not dominant, the pairing
+vanishes by tropical dimension. The signed spanning lemma gives
+order-zero bounds in every coefficient direction. Smooth scalar
+relations and common refinements follow from Radon uniqueness.
+
+The slicing argument gives positivity in constant decomposable
+directions. To obtain positivity on every complementary test, we must
+also show that coefficient mass on a face has tangent indices on that
+face. Closedness supplies this tangency. Multiply the coefficient measures
+by a nonnegative compact smooth cutoff and push them to moment
+space. Write their symmetric matrix as $M_{IJ}$, and view each
+column as an $r$-vector measure $F_J$. Closedness of $D[v]$ implies
+that its distributional boundary is a measure; localization adds
+only the derivative of the cutoff times the order-zero
+current. For an affine linear equation $\ell$, choose
+$\ell_\epsilon=\ell\theta(\ell/\epsilon)$, where $\theta=1$ near
+zero and has compact support. This cutoff tends uniformly to zero,
+while its differential detects precisely the mass on $\{\ell=0\}$. Insert $\ell_\epsilon$ times a compact
+scalar and a constant $(r-1)$-covector into the boundary equation.
+Terms containing $\ell_\epsilon$ tend to zero. Its differential is
+bounded and converges pointwise to
+$\mathbf1_{\{\ell=0\}}\,d\ell$. Dominated convergence for the
+finite coefficient measures gives
+\[
+ (\iota_{d\ell}F_J)|_{\{\ell=0\}}=0.
+\]
+The equations of the affine span of each face therefore make both
+indices tangent to that face. On its tangent space every $r$-vector
+is decomposable. Positivity on rational decomposable directions,
+followed by density, makes the coefficient matrix positive
+semidefinite there. It pairs nonnegatively with every positive
+original test. For $n=1$ positivity is the curve statement.
+
+The coefficient identities are identities of Radon measures and
+therefore remain valid after multiplication by a bounded Borel scalar,
+as in \Cref{thm:actual-kernel}.
+\end{proof}
+
+\begin{proposition}[Smooth-background energy]
+\label[proposition]{prop:first-order-energy}
+Let $X/F$ be smooth projective, $F\in\mathcal G_K$, and $L$ ample.
+Let $r$ be a bounded classical metric and let $p,q$ be continuous
+model-semipositive metrics on the same line. Set $g=r-p$, $b=q-p$
+and $V=\deg_F(L^n)$. If $\Omega$ is a product of $n-1$ smooth
+semipositive regularized-FS curvatures on $L$, put
+\begin{align}
+ \Gamma(g)&=\tfrac12D[g^2]-gD[g],\label{eq:gamma}\\
+ \Gamma(g,h)&=\tfrac12\bigl(D[gh]-gD[h]-hD[g]\bigr),
+ &E_\Omega(g,h)&=\int_{X^{\an}}\Gamma(g,h)\wedge\Omega.\notag
+\end{align}
+Then
+\begin{align}
+ E_\Omega(g)&\geq0,&
+ |E_\Omega(g,b)|^2&\leq E_\Omega(g)E_\Omega(b),\label{eq:energy-cs}\\
+ E_\Omega(g)&=-\int gD[g]\wedge\Omega,&
+ E_\Omega(g,b)&=-\int gD[b]\wedge\Omega,\label{eq:energy-green}\\
+ 0\leq E_\Omega(b)&\leq2V\|q-p\|_\infty.&&\label{eq:energy-bound}
+\end{align}
+\end{proposition}
+\begin{proof}
+We first check that the energy expressions are defined using the
+first-order measures already constructed. Locally translate the
+bounded classical summands to be nonnegative. Their squares are then
+classical by convex increasing composition on curves. Polarization
+expresses squares and products of their differences as finite linear
+combinations of such squares. Thus \Cref{prop:first-order} defines
+the differentiated terms in \eqref{eq:gamma}, and its coefficient
+measures permit multiplication by the bounded gaps.
+
+The curve chain rule of \Cref{lem:bounded-curve-energy}, transported
+through \Cref{thm:actual-kernel}, makes the quadratic expression
+nonnegative on each positive decomposable background. A smooth
+regularized-FS curvature has a positive semidefinite ambient
+Hessian, and their product is strongly positive. With one dominating
+coefficient measure, positivity on countably many rational directions
+passes by continuity to its variable decomposable directions.
+Polarization proves \eqref{eq:energy-cs}.
+
+Stokes against the smooth closed $\Omega$ gives the first equality
+of \eqref{eq:energy-green}. For the second, approximate $p,q$
+uniformly by smooth regularized-FS metrics, keeping $\Omega$ fixed.
+The localized variation estimate of \Cref{lem:curve-variation}
+supplies an integrable factor multiplying the uniform approximation
+error on the curve slices. A finite partition of unity and the kernel formula
+therefore give Green symmetry with the continuous $b$. The positive
+continuous measures $c_1(L,p)\wedge\Omega$ and
+$c_1(L,q)\wedge\Omega$ each have mass $V$. Their difference gives
+\eqref{eq:energy-bound}.
+\end{proof}
+
+\begin{remark}[The energy current]\label[remark]{rem:gamma-not-closed}
+The current $\Gamma(g)$ need not be closed. The face-tangency
+argument above is applied only to $D[v]$. Energy positivity is used
+on the strongly positive smooth backgrounds of
+\Cref{prop:first-order-energy}. Its construction uses only first-order
+currents, independently of the higher mixed products.
+\end{remark}
+
+\section{Contact rigidity and decreasing regularization}
+\label{sec:contact}
+
+In this section \(X/F\) is smooth projective geometrically integral,
+\(F\in\mathcal G_K\), and \(L\) is ample. The continuous products
+used here are constructed from model-semipositive metrics. Uniform
+pure-FS approximation and smoothing are valid over these fields
+\cite[Corollary~7.6 and Theorems~7.8, 7.14]{BE}. Their model measure is
+\begin{equation}\label{eq:native-model-measure}
+ c_1(L_1,\phi_1)\cdots c_1(L_n,\phi_n)
+ =\sum_B b_B\deg_B(\mathcal L_1\cdots\mathcal L_n)\delta_{x_B}
+\end{equation}
+on a common normal model, where \(b_B\) is the multiplicity of the
+special-fiber component \(B\) and all intersection degrees are taken
+over the residue field. This convention retains residual degrees
+and the prescribed absolute value.
+
+\begin{definition}\label[definition]{def:envelope}
+For a continuous metric \(\rho\) on \(L\), let
+\[
+ P_L\rho=\sup\{s:s\text{ continuous model-semipositive on }L,\ s\leq\rho\},
+\]
+pointwise in a common local frame. Nef rational model minorants
+give the same envelope: approximate a continuous competitor
+uniformly and shift its approximants down by rational valuation
+constants. Continuity and orthogonality of this envelope are proved
+in \Cref{thm:normal-envelope}.
+\end{definition}
+
+The next lemma replaces one Fubini--Study curvature by integration
+over a generic hyperplane. It is used as an identity of measures:
+we will integrate the bounded, possibly discontinuous gap $r-p$
+against it in the proof of contact rigidity.
+
+\begin{lemma}[A single generic hyperplane]\label[lemma]{lem:single-hyperplane}
+Suppose \(n\geq2\). Let \(q\) be a pure-FS metric on \(L\), given by
+generating sections \(s_0,\ldots,s_N\) of \(mL\), with rational
+constants absorbed in a tensor power. Put
+\[
+ E=\widehat{F(Z_0,\ldots,Z_N)}_{\rm Gauss},\qquad
+ H=\left\{\sum_iZ_i s_i=0\right\}\subset X_E.
+\]
+Then \(H/E\) is smooth projective geometrically integral of
+dimension \(n-1\). For the natural map
+\(\iota:H^{\an}\to X^{\an}\) and continuous model-semipositive
+metrics \(a_1,\ldots,a_{n-1}\) on \(L\),
+\begin{align}
+ c_1(q)\prod_{i=1}^{n-1}c_1(a_i)
+ &=\frac1m\,\iota_*\prod_{i=1}^{n-1}c_1(a_i|_H),
+ \label{eq:single-hyperplane}\\
+ \deg_E((L_E|_H)^{n-1})&=m\deg_F(L^n).
+ \label{eq:hyperplane-degree}
+\end{align}
+The first equality is an equality of Radon measures.
+\end{lemma}
+\begin{proof}
+The associated morphism \(X\to\mathbb P_F^N\) is finite onto its
+image: the pullback of \(\mathcal O(1)\) is ample, so a
+positive-dimensional proper fiber is impossible. Generic Bertini
+in characteristic zero gives smoothness and geometric
+irreducibility of the hyperplane pullback; for irreducibility see
+\cite[Lemma~37.32.3]{Stacks}. Completion of the Gauss parameter
+field preserves these geometric properties.
+
+First take all \(a_i\) to be nef rational model metrics,
+and choose a common normal projective model carrying them and the
+generated model line of \(q\). Work over
+\(R[Z_0,\ldots,Z_N]_{(\pi)}\) and then its completion. For an
+irreducible special component \(B\), the incidence in affine
+coefficient space is the kernel vector bundle of the generating
+evaluation map. Its projectivization is a projective bundle over
+\(B\). If the image of \(B\) under the
+generated linear system is a point, the generic hyperplane misses
+it, and its intersection degree with that generated line is zero.
+Otherwise the incidence dominates the parameter space; its generic
+fiber is integral. It need not be geometrically integral.
+
+The multiplicity of the induced component is the original
+vertical multiplicity \(b_B\). This can be read at its generic
+point, away from the singular loci of the model and of \(B\):
+the hyperplane cuts a parameter on \(B\), whereas the uniformizer
+has order \(b_B\). Such generic points avoid every fixed proper
+closed subset of \(B\) in the universal incidence. Normalization
+retains the associated residual degrees. The divisorial points of
+the hyperplane model restrict to \(x_B\), and the projection formula
+for their intersection degrees gives exactly the coefficient of
+\(\delta_{x_B}\) in \eqref{eq:native-model-measure}. The root
+presentation of \(mL\) supplies the factor \(1/m\).
+Completion preserves normality because it is a regular morphism.
+
+This proves \eqref{eq:single-hyperplane} for model metrics.
+Uniform approximation passes it to the stated continuous
+metrics, on both sides as Radon measures. Finally the algebraic
+intersection number of \(H\sim mL_E\) gives
+\eqref{eq:hyperplane-degree}. There is no finite-degree factor for
+the transcendental Gauss extension.
+\end{proof}
+
+\begin{lemma}[Weighted uniform stability in lower dimension]
+\label[lemma]{lem:weighted-stability}
+Suppose that bounded classical metrics in dimension \(d\) admit
+decreasing continuous semipositive regularization. On a smooth
+projective \(d\)-fold, let \(r\) be a bounded classical metric,
+\(p\) continuous model-semipositive on the same ample line, and
+\(h=r-p\). For continuous semipositive \(a_i,b_i\) on that line,
+with \(W\) its top degree,
+\begin{equation}\label{eq:weighted-stability}
+ \left|\int h\left(\prod_{i=1}^d c_1(a_i)
+                         -\prod_{i=1}^d c_1(b_i)\right)\right|
+ \leq2W\sum_{i=1}^d\|a_i-b_i\|_\infty.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose continuous semipositive \(r_\ell\downarrow r\).
+At a fixed \(\ell\), telescope the product and use the continuous
+Green formula to move the difference
+\(D[a_i-b_i]\) onto \(r_\ell-p\). The two resulting positive
+mixed measures each have mass \(W\). The corresponding term is
+bounded by \(2W\|a_i-b_i\|_\infty\). Sum the terms and let
+\(\ell\to\infty\). On the two fixed measures in the left side,
+the functions \(r_\ell-p\) are uniformly bounded and converge
+pointwise to \(h\), so bounded convergence applies.
+\end{proof}
+
+\begin{theorem}[Projective contact and regularization]
+\label[theorem]{thm:projective-regularization}
+For every \(F\in\mathcal G_K\) and every positive dimension, the
+following statements hold.
+\begin{enumerate}
+\item If \(r\) is a bounded classical metric on \(L\), \(p\) is
+continuous model-semipositive, \(r\geq p\), and
+\[
+ \int (r-p)c_1(L,p)^n=0,
+\]
+then \(r=p\) at every point.
+\item Every bounded classical metric \(r\) on \(L\) is the
+decreasing pointwise limit of continuous model-semipositive
+metrics, and also of rational pure-FS metrics, on the same
+identified line over \(F\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+We prove contact in dimension $n$ using both assertions in smaller
+dimensions, and then deduce regularization in dimension $n$ from
+contact. The induction is simultaneous for all $F\in\mathcal G_K$,
+so the lower-dimensional assertions remain available over the
+unit-Gauss field of a generic hyperplane. In dimension one, contact
+is \Cref{prop:curve-contact}; the envelope argument at the end of the
+proof then gives regularization.
+
+Assume \(n\geq2\), and set \(g=r-p\geq0\), \(V=\deg_F(L^n)\).
+Choose smooth semipositive regularized-FS metrics \(p_j\to p\)
+uniformly and put \(\Omega_j=c_1(p_j)^{n-1}\). The function \(g\)
+is bounded and upper semicontinuous. Continuous mixed convergence
+and the upper Portmanteau inequality give
+\[
+ A_j=\int g\,c_1(p)\wedge\Omega_j\longrightarrow0.
+\]
+Since $D[g]=c_1(r)-c_1(p)$, the Green identity gives
+$E_{\Omega_j}(g)=A_j-\int g\,c_1(r)\wedge\Omega_j$.
+The second term is nonnegative by first-order positivity and $g\geq0$.
+Together with \Cref{prop:first-order-energy}, this yields
+\[
+ 0\leq E_{\Omega_j}(g)\leq A_j.
+\]
+For a fixed pure-FS metric \(q\), set
+\(I_j(q)=\int g\,c_1(q)\wedge\Omega_j\).
+Green symmetry identifies $I_j(q)-A_j$ with
+$-E_{\Omega_j}(g,q-p)$. Cauchy--Schwarz and
+$E_{\Omega_j}(q-p)\leq2V\|q-p\|_\infty$ therefore yield
+\begin{equation}\label{eq:contact-estimate}
+ 0\leq I_j(q)
+ \leq A_j+\bigl(2V\|q-p\|_\infty A_j\bigr)^{1/2}
+ \longrightarrow0.
+\end{equation}
+
+The convergence of the background measures alone does not identify
+their integrals against the discontinuous function $g$. Apply
+\Cref{lem:single-hyperplane} to $q$. On its hyperplane $H/E$, the
+dimension-$(n-1)$ induction gives decreasing regularization of $r|_H$,
+which is the hypothesis needed for the weighted stability estimate. Applying
+\Cref{lem:weighted-stability} there and using
+\eqref{eq:hyperplane-degree}, the factor \(m\) cancels the \(1/m\)
+in \eqref{eq:single-hyperplane}. Consequently
+\[
+ I_j(q)\longrightarrow
+       \int g\,c_1(q)c_1(p)^{n-1}.
+\]
+The measure identity and
+\eqref{eq:contact-estimate} now give
+\[
+ \int_{H^{\an}}g|_H\,c_1(p|_H)^{n-1}=0.
+\]
+The lower-dimensional contact theorem shows \(g|_H=0\).
+
+We now pass from vanishing on the generic hyperplane to pointwise
+vanishing on $X$. The intermediate points are the Shilov boundary
+points of a model associated with a pure-FS metric $q$ close to $p$.
+Normalize the projective closure of its image in the finite
+function-field extension \(F(X)\). This gives a normal model
+finite over that image, with the generated model line of \(mL\)
+relatively ample. Every special component has dimension \(n\)
+and meets the generic hyperplane. The divisorial points of these
+intersections restrict to all its component points \(x_B\), so
+the equality \(g|_H=0\) implies \(g(x_B)=0\).
+
+On a formal generating-frame domain, the model weight of \(mq\)
+is zero. The local weight \(m(r-q)\) is classical psh there.
+The maximum principle on its Shilov boundary
+\cite[Theorem~6.4 and Remark~7.5]{GR} therefore gives
+\[
+ r-q\leq\max_B(p-q)(x_B)\leq\|p-q\|_\infty.
+\]
+These domains cover \(X^{\an}\). Hence
+\[
+ 0\leq r-p\leq2\|p-q\|_\infty.
+\]
+Pure-FS approximation to \(p\) proves the contact assertion.
+
+It remains to deduce regularization from contact. Compact
+metrizability gives continuous metrics $\rho_\ell\downarrow r$.
+Set $s_\ell=P_L\rho_\ell$. By \Cref{thm:normal-envelope}, each
+$s_\ell$ is continuous model-semipositive and satisfies envelope
+orthogonality. Although $r$ is not yet known to be a semipositive
+competitor, the classical metric $\max(r,s_\ell)$ lies above $s_\ell$
+and satisfies
+\[
+ 0\leq\max(r,s_\ell)-s_\ell\leq\rho_\ell-s_\ell.
+\]
+Its contact integral is therefore zero. The contact assertion just
+proved implies $\max(r,s_\ell)=s_\ell$, or $r\leq s_\ell$.
+Since \(s_\ell\leq\rho_\ell\) and envelopes preserve order,
+\[
+ s_\ell\downarrow r.
+\]
+Uniform pure-FS approximation need not preserve the order of the
+sequence. To retain monotonicity, choose rational pure-FS $a_\ell$ with
+\(\|a_\ell-s_\ell\|_\infty\leq\epsilon_\ell\), where
+\(\epsilon_\ell=\lambda4^{-\ell}\).
+Then \(q_\ell=a_\ell+3\epsilon_\ell\) is decreasing: its next
+term is at most \(s_\ell+\epsilon_\ell\), whereas its current
+term is at least \(s_\ell+2\epsilon_\ell\).
+It converges pointwise to \(r\). This proves the second assertion
+and completes the simultaneous induction.
+\end{proof}
+
+\begin{proposition}[Local algebraic regularization]
+\label[proposition]{prop:local-algebraic-regularization}
+Let \(F\in\mathcal G_K\), and let \(u\) be locally bounded
+classical psh on an ordinary open of a smooth geometrically integral
+algebraic \(F\)-variety. Near each point, \(u\) is the decreasing limit
+of rational semipositive PL functions over \(F\) on one fixed
+ordinary domain. The approximants may be taken in Wu's algebraic
+tropically convex PL class on that domain.
+\end{proposition}
+\begin{proof}
+Choose an affine algebraic neighborhood of the prescribed point.
+Compactify it projectively over \(F\), and resolve the compactification
+while preserving the smooth affine open
+\cite[Theorem~1.1]{BM}. The resulting variety is smooth projective
+and geometrically integral over \(F\), and contains the ordinary open
+on which \(u\) is given.
+The projective theorem applies to a global metric, whereas $u$ is
+given only locally. Apply \Cref{lem:common-collar} to the single
+function $u$. On a smaller fixed neighborhood it realizes $u+c$
+as the exact weight of a bounded classical metric on an ample line;
+outside a larger neighborhood the metric is supplied by a fixed
+Fubini--Study barrier.
+\Cref{thm:projective-regularization} provides decreasing
+pure-FS metrics there. Restrict to the fixed frame and subtract
+the same constant \(c\). The inactive floor of
+\Cref{lem:inactive-floor} gives the stated finite algebraic
+tropically convex representations, including at zeros of
+individual sections. 
+\end{proof}
+
+\section{Coefficient measures and the mixed-current construction}
+\label{sec:construction}
+
+We construct the products by induction using
+$T_k=D(u_1T_{k-1})$. Two points require attention: the Borel product
+$u_1T_{k-1}$ must be independent of a moment presentation, and
+top-degree PL convergence must determine the pairing with an arbitrary
+complementary test. The coefficient-measure lemma addresses the first
+point and supplies the linear-algebra reduction for the second.
+
+\begin{lemma}[Coefficient measures of strongly positive currents]
+\label[lemma]{lem:strong-coefficients}
+Every symmetric strongly positive original current is of
+coefficient Radon type. On a fixed finite moment presentation its
+coefficient variations are bounded by finitely many positive
+cutoff evaluations. Consequently these variations are locally
+uniformly bounded in a weakly convergent family of such currents.
+\end{lemma}
+\begin{proof}
+Put \(r=n-k\), and let \(E\) be the ambient moment tangent space.
+Identify symmetric \((r,r)\)-forms with symmetric bilinear tensors
+using the usual Lagerberg sign. Choose a rational basis \(e_I\)
+of \(\bigwedge^rE^*\), and put
+\(\sigma=\sum_Ie_I\otimes e_I\). For any constant symmetric
+tensor \(A\), choose \(C_A\) so that \(C_A\sigma\pm A\) are
+positive semidefinite, hence weakly positive. If \(\phi\) is an
+arbitrary original smooth scalar supported where \(\kappa=1\),
+strong positivity gives
+\begin{equation}\label{eq:coefficient-bound}
+ |\langle T,\phi A\rangle|
+ \leq C_A\|\phi\|_\infty\langle T,\kappa\sigma\rangle.
+\end{equation}
+The estimate applies to every original smooth scalar $\phi$,
+including those that do not factor through the chosen moment map:
+pass to a common refinement, where pullback preserves weak positivity.
+Riesz representation therefore gives coefficient measures on the
+analytic domain itself.
+
+Let \(W_r\) be the span of squares of decomposable \(r\)-vectors
+in \(\operatorname{Sym}^2(\bigwedge^rE)\), and let \(A_r=W_r^\perp\)
+in the dual symmetric tensor space. Both signs of a tensor in
+\(A_r\) are weakly positive. Hence \(T\) annihilates every smooth
+coefficient times such a tensor. Its coefficient measure is zero,
+and remains zero after multiplication by any bounded Borel
+function.
+
+We use decomposable directions after passing to the quotient by
+$A_r$. Choose finitely many rational decomposable squares and a fixed
+linear splitting in that quotient. Every symmetric test then has a
+decomposition
+\begin{equation}\label{eq:full-test-splitting}
+ \eta=\sum_\ell a_\ell\Omega_\ell+B,\qquad B(t)\in A_r,
+\end{equation}
+where the \(a_\ell\) are original smooth compact scalars and the
+\(\Omega_\ell\) are constant rational decomposable forms.
+The annihilator term is killed by \(T\) and by every Borel
+multiple of \(T\).
+
+All form relations and changes of presentation can be checked
+after multiplying by every original smooth scalar. Uniqueness
+of Radon measures then proves those relations as measure
+identities. This also proves compatibility with Borel
+multiplication. Finally, in a weakly convergent family, the
+finitely many positive evaluations on \(\kappa\sigma\) converge
+and are bounded. Equation~\eqref{eq:coefficient-bound} gives the
+last assertion.
+\end{proof}
+
+\begin{remark}[The middle-degree annihilator]
+\label[remark]{rem:pluecker-annihilator}
+The term \(B\) in \eqref{eq:full-test-splitting} is necessary.
+For \(\dim E=4\) and \(r=2\), the Plücker quadratic
+\[
+ z_{12}z_{34}-z_{13}z_{24}+z_{14}z_{23}
+\]
+vanishes on all decomposable bivectors. The decomposable-square
+span has dimension \(20\), whereas the symmetric tensor space has
+dimension \(21\). Strong positivity kills this annihilator in
+the current pairing; it does not remove it from the original
+form sheaf.
+\end{remark}
+
+To apply a top-degree convergence theorem to a test in complementary
+degree $r$, we will fill its $r$ directions with curvature factors.
+The following quadratic potentials realize exactly those factors and
+admit PL approximants on the same domain.
+
+\begin{lemma}[Auxiliary quadratic potentials]\label[lemma]{lem:quadratics}
+After fixed finite localization, every decomposable direction in
+\eqref{eq:full-test-splitting} is a product
+\[
+ \Omega=\prod_{a=1}^{r}D h_a,\qquad
+ h_a=\tfrac12\ell_a^2,
+\]
+where the \(\ell_a\) are rational linear combinations of
+logarithmic norms of algebraic units. Each \(h_a\) admits a
+decreasing sequence of algebraic tropically convex rational PL
+approximants, uniformly on the relevant compact neighborhood.
+\end{lemma}
+\begin{proof}
+Use \Cref{lem:exact-units} and clear rational denominators.
+The unit logarithms are pluriharmonic, so
+\(D(\ell_a^2/2)=d'\ell_a\wedge d''\ell_a\).
+On one fixed bounded interval containing the range of \(\ell_a\),
+approximate \(t^2/2\) uniformly by finite maxima of affine
+functions with rational slopes and constants in
+\(\lambda\mathbb Q\). Such maxima are dense: approximate finitely
+many supporting slopes and their intercepts, using the density
+of \(\mathbb Q\) and of \(\lambda\mathbb Q\).
+Choose errors \(\epsilon_m=\lambda4^{-m}\) and add
+\(3\epsilon_m\). The same margin calculation as in
+\Cref{thm:projective-regularization} makes the sequence decreasing
+to \(t^2/2\). Clearing denominators realizes the affine branches
+by algebraic monomials in the units and powers of \(\pi\).
+\Cref{lem:inactive-floor} gives the required algebraic PL
+presentation. The interval, units and analytic domain remain fixed.
+\end{proof}
+
+\begin{proposition}[Top-degree PL convergence and normalization]
+\label[proposition]{prop:wu-input}
+On an ordinary algebraic analytic open of dimension \(n\) over
+\(K\), decreasing sequences of algebraic tropically convex PL functions
+\(p_{i,j}\downarrow p_i\), \(0\leq i\leq n\), with locally
+bounded limits satisfy
+\begin{equation}\label{eq:wu-weighted}
+ p_{0,j}\,\MA_{\rm PL}(p_{1,j},\ldots,p_{n,j})
+ \longrightarrow
+ p_0\,\MA_{\rm PL}(p_1,\ldots,p_n)
+\end{equation}
+locally weakly as Radon measures. The continuous PL
+stages agree with the original CLD products normalized by
+\eqref{eq:native-model-measure}.
+\end{proposition}
+\begin{proof}
+This is \cite[Theorem~4.2(4)]{Wu}, applied on compact supports,
+with every sequence, including the undifferentiated one, in the
+algebraic tropically convex PL class.
+The local class is \cite[Definition~3.8]{Wu}; the continuous PL
+comparison is \cite[Proposition~4.1(3)]{Wu}.
+
+We make the normalization explicit. Wu's preliminary convention
+may be achieved by replacing the absolute value temporarily by
+\(|\cdot|_*=|\cdot|^{1/\lambda}\). The canonical homeomorphism
+\(j:X^{\an}\to X_*^{\an}\) sends a seminorm to its
+\(1/\lambda\)-power. Put \(p_{i,*}\circ j=p_i/\lambda\).
+In logarithmic coordinates \(t_*=t/\lambda\), pullback of a
+top Lagerberg form satisfies
+\begin{equation}\label{eq:valuation-calibration}
+ \int_{X^{\an}}j^*\alpha
+       =\lambda^{-n}\int_{X_*^{\an}}\alpha.
+\end{equation}
+There are two differentials in each of the \(n\) directions,
+while the calibrated real volume has dimension \(n\), which
+gives this factor. Also
+\(j^*D_*p_{i,*}=\lambda^{-1}Dp_i\).
+The factors therefore cancel in the calibrated top product:
+\[
+ j^*\MA_*(p_{1,*},\ldots,p_{n,*})
+       =\MA_{\rm PL}(p_1,\ldots,p_n)
+\]
+as transported measures. Equivalently, both sides assign the
+same structural degree to every model component in
+\eqref{eq:native-model-measure}. Inserting the weight gives
+the factor \(\lambda^{-1}\), since \(p_{0,*}\circ j=p_0/\lambda\);
+multiplication by \(\lambda\) returns \eqref{eq:wu-weighted}.
+Thus the formula holds for the prescribed absolute value and the given
+functions, with the model masses in \eqref{eq:native-model-measure}.
+
+The constructed PL functions satisfy the stated local hypothesis
+by \Cref{lem:inactive-floor,lem:quadratics}. In particular rational
+valuation constants are encoded by constant algebraic
+coordinates, or become rational under the normalization above.
+All uses of \eqref{eq:wu-weighted} are on compact tests; no global
+integrability assertion on a noncompact open is needed.
+\end{proof}
+
+\begin{proposition}[Construction and decreasing PL convergence]
+\label[proposition]{prop:pl-construction}
+On an ordinary open in the analytification of a smooth geometrically
+integral \(K\)-variety, the
+currents in \Cref{thm:mixed-currents} exist. If each potential varies
+in a decreasing sequence of algebraic tropically convex PL functions
+on one fixed open, with locally bounded classical limit, then the
+weighted currents converge on every original complementary test.
+\end{proposition}
+\begin{proof}
+We prove existence in degree $k$ from weighted convergence in degree
+$k-1$, and then prove weighted PL convergence in degree $k$.
+This order is required by the recursion: differentiation of
+$u_1T_{k-1}$ uses the undifferentiated argument at the preceding degree.
+For $k=0$, $T_0=[1]$, and the weighted assertion is bounded convergence
+against each fixed original top-form measure.
+
+Suppose the statement holds in degree \(k-1\). The coefficient
+measures of \(T_{k-1}\) allow multiplication by \(u_1\).
+Distributional differentiation of this Borel product defines \(T_k\) by
+\eqref{eq:recursive-current}. Choose decreasing rational
+pure-FS approximants to its potentials on one fixed open.
+By weighted convergence in degree $k-1$, the Borel products formed
+from these approximants converge to $u_1T_{k-1}$ on every original
+test. Applying distributional differentiation shows that their
+continuous mixed currents converge to the $T_k$ just defined. Finite convex-maximum smoothing makes
+each approximating current strongly positive. The limit is
+strongly positive, and \Cref{lem:strong-coefficients} supplies
+its coefficient measures. Permuting the continuous
+approximants proves symmetry. Closedness and multilinearity
+follow from the recursion and the continuous identities.
+The recursion also makes the candidate independent of the
+chosen approximants.
+
+We still need weighted convergence in degree $k$; it does not follow
+by multiplying the unweighted current limit by a discontinuous
+function. Use \eqref{eq:full-test-splitting}. Its annihilator term
+has zero coefficient measure, so both the current and its Borel
+multiple kill that term. It suffices to treat a test \(a\Omega\), where
+\(\Omega=Dh_1\cdots Dh_r\), \(r=n-k\), and the \(h_\alpha\)
+are as in \Cref{lem:quadratics}. First we prove the unweighted
+identity of Radon measures on the analytic domain
+\begin{equation}\label{eq:current-pl-measure}
+ T_k(u_1,\ldots,u_k)\wedge\Omega
+ =\MA_{\rm PL}(u_1,\ldots,u_k,h_1,\ldots,h_r).
+\end{equation}
+Let \(u_{i,j}\downarrow u_i\) be PL sequences and
+\(h_{\alpha,l}\downarrow h_\alpha\) their uniform PL
+approximants. At fixed \(j\), continuous mixed convergence lets
+one choose an auxiliary index \(l(j)\geq j\), increasing in
+\(j\), so that the error on the given smooth scalar test is
+less than \(1/j\). Apply \Cref{prop:wu-input} to the resulting
+\(n\) decreasing PL sequences. Its unweighted version
+follows by taking a fixed nonzero weight in \(\lambda\mathbb Q\).
+The other limit is
+\(T_k(u_1,\ldots,u_k)\wedge\Omega\), by the already established
+current convergence. Equality on every smooth scalar, and
+Radon uniqueness, prove \eqref{eq:current-pl-measure}.
+
+Because \eqref{eq:current-pl-measure} is now an identity of Radon
+measures on the analytic domain, we may multiply it by the given
+Borel function $u_0$. For the varying PL weight $u_{0,j}$, at
+each fixed \(j\) use the continuous compact scalar
+\(a u_{0,j}\) to choose the auxiliary index with error less
+than \(1/j\). Increase the indices to preserve all
+decreasing auxiliary sequences. The weighted assertion
+\eqref{eq:wu-weighted} yields
+\[
+ \langle u_{0,j}T_k(u_{1,j},\ldots,u_{k,j}),a\Omega\rangle
+ \longrightarrow
+ \int a u_0\,d\MA_{\rm PL}(u_1,\ldots,u_k,h_1,\ldots,h_r).
+\]
+By \eqref{eq:current-pl-measure}, the right side is precisely
+\(\langle u_0T_k(u_1,\ldots,u_k),a\Omega\rangle\).
+For each test, this diagonal proves convergence to the current
+defined by the recursion. Finite summation finishes
+the induction.
+\end{proof}
+
+\section{Decreasing families of classical potentials}\label{sec:arbitrary-columns}
+
+Each classical potential has a decreasing PL regularization, but
+independently regularizing the members of a decreasing family need
+not preserve their order. We use a compact diagonal argument to
+choose one approximant from each row. The choice must both preserve
+decrease and satisfy prescribed bounds on current pairings.
+
+\begin{lemma}[A compact triangular diagonal]
+\label[lemma]{lem:triangular-diagonal}
+Let \(Z\) be compact, and suppose, for finitely many \(i\), that
+bounded metrics \(R_{i,j}\downarrow R_i\) on one identified line
+have continuous decreasing rows \(P_{i,j,m}\downarrow R_{i,j}\).
+Let \(\delta_j>0\) decrease strictly to zero. Given arbitrary
+thresholds for \(m\), one can choose \(m_j\geq j\) beyond them
+so that
+\[
+ Q_{i,j}=P_{i,j,m_j}+\delta_j
+\]
+decreases in \(j\) and converges pointwise to \(R_i\).
+\end{lemma}
+\begin{proof}
+Proceed inductively. The desired inequality
+\(P_{i,j,m}+\delta_j<Q_{i,j-1}\) holds eventually at each
+point: its limit on the left is
+\(R_{i,j}+\delta_j\), whereas the right is at least
+\(R_{i,j-1}+\delta_{j-1}\), with a strict positive margin.
+The sets on which it holds are increasing open sets in \(m\).
+Compactness gives one index for all points and the finite
+set of indices \(i\).
+
+Monotonicity alone would only give a limit above $R_i$. To force the
+correct limit, compare the chosen term with the first $j$ fixed rows
+by imposing the finite family of caps
+\[
+ P_{i,j,m}+\delta_j\leq P_{i,a,j}+2\delta_j,
+ \qquad 1\leq a\leq j.
+\]
+The limiting left side is at most
+\(R_{i,a}+\delta_j\), so the same strict-margin compactness
+argument permits all these caps. Include the prescribed
+thresholds and \(m_j\geq j\).
+The decreasing limit \(Q_i\) is at least \(R_i\).
+For fixed \(a\), the cap gives \(Q_i\leq R_{i,a}\) as
+\(j\to\infty\). Letting \(a\to\infty\) gives \(Q_i=R_i\)
+pointwise.
+\end{proof}
+
+\begin{proposition}[Convergence for decreasing classical potentials]
+\label[proposition]{prop:arbitrary-convergence}
+The conclusion of \Cref{thm:joint-monotone} holds on ordinary
+opens in the analytification of a smooth geometrically integral
+\(K\)-variety.
+\end{proposition}
+\begin{proof}
+The decreasing-limit property on curves shows that each locally
+bounded limit $u_i$ is classical
+\cite[Proposition~4.2]{GR}.
+The endpoint inequalities
+\(u_i\leq u_{i,j}\leq u_{i,1}\) give common upper and lower
+bounds near a prescribed compact local support. Apply
+\Cref{lem:common-collar} on a fixed smooth projective compactification
+of the affine algebraic chart, as in the proof of
+\Cref{prop:local-algebraic-regularization}, before choosing any regularizing
+sequences. It gives one smooth projective variety \(Z\), one
+ample line, one frame on a relatively compact ordinary
+neighborhood \(V\), and one constant \(c\), with bounded
+classical metrics
+\[
+ R_{i,j}\downarrow R_i
+\]
+whose local weights are exactly \(u_{i,j}+c\) and \(u_i+c\).
+For each \(i,j\), choose decreasing pure-FS metrics
+\(P_{i,j,m}\downarrow R_{i,j}\)
+by \Cref{thm:projective-regularization}. One inactive floor
+works for all these sequences on \(V\).
+
+Fix a complementary test \(\eta\) supported in \(V\). Write
+\[
+ F_j=\langle S_k(u_{0,j};u_{1,j},\ldots,u_{k,j}),\eta\rangle,
+ \qquad
+ B_j=|\langle T_k(u_{1,j},\ldots,u_{k,j}),\eta\rangle|.
+ \]
+Choose strictly decreasing \(\delta_j\in\lambda\mathbb Q_{>0}\)
+with \(\delta_j\leq2^{-j}\) and \(\delta_jB_j\leq1/j\).
+The small shift enforces strict decrease in the compact diagonal.
+It also changes the undifferentiated argument, so we choose it to make
+that change in the pairing at most $1/j$. This choice uses only the
+finite value of $B_j$, without a bound uniform in $j$.
+For each fixed \(j\), decreasing PL convergence from
+\Cref{prop:pl-construction} shows that, as \(m\to\infty\),
+the weighted-current pairing of the shifted local weights
+\(P_{i,j,m}+\delta_j-c\) converges to
+\[
+ F_j+\delta_j\langle T_k(u_{1,j},\ldots,u_{k,j}),\eta\rangle.
+\]
+The shifts in the differentiated arguments have zero curvature.
+Choose a threshold for \(m\) making this error less than \(1/j\).
+
+Apply \Cref{lem:triangular-diagonal} with those thresholds.
+The caps in the diagonal lemma ensure that the local weights
+$Q_{i,j}-c$ converge pointwise to $u_i$. They are decreasing
+algebraic tropically convex PL functions on the same $V$. Their weighted-current pairing \(G_j\) converges
+to the desired limit by \Cref{prop:pl-construction}.
+The chosen threshold and the bound on \(\delta_j\) give
+\[
+ |F_j-G_j|\leq2/j.
+\]
+This proves convergence on \(\eta\). A finite original
+smooth partition of the support proves the assertion for
+an arbitrary compact test. The unweighted assertion follows
+by taking a constant weight.
+\end{proof}
+
+\begin{proposition}[Continuous compatibility and top degree]
+\label[proposition]{prop:continuous-top}
+The constructed currents agree with the continuous CLD
+products on their common continuous domain. Their top-degree
+weighted convergence holds against continuous compact scalar
+tests.
+\end{proposition}
+\begin{proof}
+For continuous limits, decreasing continuous PL
+regularization is uniform on compact subsets by Dini's
+argument. Continuous CLD mixed convergence therefore
+identifies the products. Conversely the recursive formula
+and \Cref{prop:pl-construction} determine the current
+uniquely from any decreasing PL regularization.
+
+In top degree choose a nonnegative original smooth cutoff
+equal to one on the test support. Its evaluations on the
+positive measures \(T_{n,j}\) converge by
+\Cref{prop:arbitrary-convergence}, giving a common mass
+bound there. The weights have a common bound \(M\)
+on a slightly larger compact neighborhood, so
+\(|S_{n,j}|\leq M T_{n,j}\) there. Uniform approximation
+of a continuous compact scalar by original smooth scalars
+then extends convergence to that scalar.
+\end{proof}
+
+\section{Ordinary localization and the main theorems}
+\label{sec:localization}
+
+The preceding constructions were made on algebraic charts. We now
+transfer them to the analytic spaces of \Cref{conv:spaces}. The
+ordinary neighborhood must be fixed before regularization, and a
+finite change in the constant field must retain the original
+integration calibration. Once these points are settled, the recursive
+formula identifies the locally constructed currents on overlaps.
+
+\begin{proposition}[Transport to an ordinary analytic chart]
+\label[proposition]{prop:ordinary-transport}
+Every point of \(X\) has one ordinary neighborhood on which
+\Cref{prop:local-algebraic-regularization,prop:pl-construction,prop:arbitrary-convergence}
+apply with the original \(K\)-calibration. For a finite decreasing
+family of locally bounded classical functions, the neighborhood
+and the projective variety can be chosen independently of the
+sequence index.
+\end{proposition}
+\begin{proof}
+By \Cref{lem:local-algebraization}, a sufficiently small ordinary
+neighborhood is an ordinary open of a smooth affine \(K\)-variety.
+Its integral components are disjoint; restrict to the component
+containing the point. Let \(L\) be its finite constant field as
+in \Cref{lem:finite-constants}. The same variety is smooth
+geometrically integral over the finite \(p\)-adic field \(L\).
+Take its projective closure and resolve that closure while preserving
+the smooth affine open \cite[Theorem~1.1]{BM}. This gives a smooth
+projective geometrically integral \(L\)-variety containing the
+original chart. 
+The preceding theorems apply with \(L\) as the initial field and
+\(\mathcal G_L\) as its auxiliary tower class. All local weights
+are functions on the identical original analytic chart.
+The algebraic \(L\)-functions used in their PL expressions belong
+to its original \(K\)-coordinate ring. If \(\pi_L\) is a uniformizer
+of \(L\), then
+\(-\log|\pi_L|\mathbb Q=\lambda\mathbb Q\).
+Thus these are rational PL functions defined over \(K\), and the
+classical and model-semipositive conditions are preserved.
+For the currents, multiply the \(L\)-calibration by the
+single factor \([L:K]\) in
+\eqref{eq:finite-constant-calibration}.
+
+For a decreasing family \(u_{i,j}\downarrow u_i\), choose this
+chart and a slightly larger compact neighborhood first.
+The endpoint inequalities
+\[
+ u_i\leq u_{i,j}\leq u_{i,1}
+\]
+give common two-sided bounds there for the finite family.
+The common collar of \Cref{lem:common-collar} therefore fixes
+the projective variety, line, frame and local domain for all indices.
+The potentials themselves are not required to extend to the
+compactification. The analytic isomorphism transfers every
+original test presentation, so it also preserves the current identities on every
+original test form.
+\end{proof}
+
+\phantomsection\label{proof:local-regularization}
+\begin{proof}[Proof of \Cref{thm:local-regularization}]
+The inclusion \(\Cb(U)\subset\Rb(U)\) follows from
+\Cref{prop:ordinary-transport}.
+Conversely, semipositive PL functions are classical by
+\cite[Theorem~4.3]{GR}. This result is applied on the strict
+ordinary algebraic charts just constructed; rational tensor
+denominators can be cleared.
+The decreasing-limit property of classical subharmonic functions
+on curves, with the all-extension quantifier, makes the pointwise
+limit classical \cite[Proposition~4.2]{GR}.
+That limit is upper semicontinuous as an infimum of continuous
+functions, and it is locally bounded by the definition
+of \(\Rb\). This proves equality on every ordinary open.
+
+Now let \(u_j\) decrease in either class with a locally
+bounded pointwise limit \(u\). The equality just proved makes
+every \(u_j\) classical. Since
+\(\{u<a\}=\bigcup_j\{u_j<a\}\), the limit is upper semicontinuous.
+The curve decreasing-limit property again makes \(u\) classical.
+Applying the regularization assertion to this function gives
+membership in \(\Rb\) on one neighborhood at a time. No
+intersection of the separate approximation neighborhoods
+of the \(u_j\) is used.
+\end{proof}
+
+\begin{lemma}[Equality and Borel multiplication]
+\label[lemma]{lem:borel-equality}
+If two coefficient Radon currents \(T,T'\) agree on all
+original smooth compact tests on an ordinary open, then
+\(hT=hT'\) for every locally bounded Borel function \(h\).
+\end{lemma}
+\begin{proof}
+For a fixed compact original test \(\eta\), the scalar
+functionals
+\[
+ a\longmapsto\langle T,a\eta\rangle,\qquad
+ a\longmapsto\langle T',a\eta\rangle
+\]
+agree on every original smooth scalar. Smooth scalar density
+on a compact neighborhood and uniqueness of Radon measures
+give \(\mu_{T,\eta}=\mu_{T',\eta}\). Integrating the given
+function \(h\) against this equality proves the assertion.
+The coefficient relations and common refinements are measure
+identities by \Cref{lem:strong-coefficients}; finite localization
+therefore removes the choice of presentation.
+\end{proof}
+
+\phantomsection\label{proof:main-currents}
+\begin{proof}[Proof of \Cref{thm:mixed-currents,thm:joint-monotone}]
+Construct the currents on the ordinary charts of
+\Cref{prop:ordinary-transport}. At degree zero their
+normalization is the intrinsic integration current \([1]_K\),
+by \Cref{lem:finite-constants}. Suppose the constructions
+agree in degree \(k-1\) on an overlap. By
+\Cref{lem:borel-equality}, multiplication by the same Borel
+function \(u_1\) agrees there. Applying \(D\) identifies
+the two degree-\(k\) currents in
+\eqref{eq:recursive-current}. A second application of the
+lemma with \(u_0\) identifies the weighted currents.
+Thus the local currents glue uniquely.
+
+Closedness, strong positivity, symmetry and additivity in the
+differentiated arguments are local properties, proved in
+\Cref{prop:pl-construction}. Positive homogeneity follows
+from the same recursion and approximation. A constant in a
+differentiated argument contributes zero because the preceding
+current is closed. Linearity of Borel multiplication
+gives the identity for the undifferentiated argument in \Cref{rem:source-slot}.
+The recurrence and the continuous compatibility of
+\Cref{prop:continuous-top} give independence of PL
+regularization.
+
+For joint convergence, \Cref{thm:local-regularization} first
+makes each bounded limit \(u_i\) classical. Cover the compact
+support of a test by finitely many ordinary charts and split
+the test into compact summands by an original smooth
+partition of unity. The compact-support partition theorem
+\cite[Corollary~15.2.9]{CLD25} is sufficient; no global
+paracompactness assumption is needed. On each slightly larger
+compact subchart the bounded endpoints give the common bounds
+used in \Cref{prop:arbitrary-convergence}. Apply that proposition,
+restore the single constant-field factor, and sum.
+Only the test forms are partitioned.
+Taking a constant weight proves the unweighted convergence.
+In top degree, the cutoff mass argument in
+\Cref{prop:continuous-top} extends convergence to all continuous
+compact scalar tests.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{cor:quasiprojective}]
+The analytification of a smooth separated variety over \(K\)
+is good, Hausdorff, quasi-smooth and without relative analytic
+boundary \cite[Exercise~5.1.1(iii), Fact~5.1.5]{Tem}.
+These properties are preserved on ordinary opens.
+Every compact test uses only finitely many relatively compact
+charts inside the given open, to which the main theorems apply.
+\end{proof}
+
+\begin{remark}[Two different boundaries]\label[remark]{rem:boundaries}
+If \(Y\subset\overline Y\) is a projective compactification,
+the deleted algebraic locus \(\overline Y\setminus Y\)
+differs from the relative analytic boundary of
+\(Y^{\an}\to\mathcal M(K)\), which is empty for smooth \(Y\).
+A potential can be unbounded near the deleted algebraic
+locus and remain locally bounded at every point of \(Y^{\an}\).
+The present theorems apply on that ordinary open and make no
+claim about extension of the potential to \(\overline Y^{\an}\).
+For a singular variety they apply on its smooth locus.
+\end{remark}
+
+\section{Compatibility for specified potential tuples}
+\label{sec:etale}
+
+For a specified tuple of potentials, composition with an \'etale
+map gives another tuple of locally bounded classical potentials.
+The next theorem identifies its mixed current with the limit of the
+continuous-stage pullbacks. Thus the operation is defined through
+the potentials and their decreasing regularizations; no pullback of
+an arbitrary distributional current is required.
+
+\begin{theorem}[\'Etale compatibility]
+\label[theorem]{thm:etale-compatibility}
+Let \(f:Y\to X\) be étale between spaces satisfying
+\Cref{conv:spaces}. Let \(W\subset X\) be an ordinary open
+on which a finite tuple \(u_0,\ldots,u_k\in\Cb(W)\) has
+decreasing continuous semipositive regularizations
+\(a_{i,m}\downarrow u_i\). Then, on every original compact
+test in \(f^{-1}(W)\),
+\begin{equation}\label{eq:etale-tuple}
+ S_{k,Y}(a_{0,m}\circ f;a_{1,m}\circ f,\ldots,a_{k,m}\circ f)
+ \longrightarrow
+ S_{k,Y}(u_0\circ f;u_1\circ f,\ldots,u_k\circ f).
+\end{equation}
+This extension of the continuous-stage operation is independent
+of the regularizations and commutes with ordinary restriction
+and composition of étale maps.
+\end{theorem}
+\begin{proof}
+Composition of curve tests preserves classicality, and
+continuity of \(f\) preserves local boundedness.
+At a continuous stage, local uniform smooth semipositive
+approximation and the pullback identity for smooth forms
+identify the pulled-back operation with the continuous mixed
+product of the pulled-back weights. To obtain the required smooth
+approximations, apply \Cref{thm:local-regularization} to a continuous
+weight. Its decreasing PL approximation is uniform on a smaller
+compact neighborhood by Dini's theorem. In the pure-FS
+presentations furnished by the proof, smoothing the convex maximum
+gives original smooth semipositive weights with the same uniform
+limit; see \cite[Theorem~7.14]{BE}. The argument is local on both
+spaces.
+\Cref{thm:joint-monotone} on \(Y\) gives
+\eqref{eq:etale-tuple} with the Borel product on its right,
+for every choice of base regularization.
+For an étale map \(g:Z\to Y\), pull the same continuous
+approximants twice and apply the theorem on \(Z\).
+Both operations give the weighted current of
+\((u_i\circ f\circ g)_i\). Restriction follows from locality.
+\end{proof}
+
+\begin{proposition}[The finite-étale degree formula]
+\label[proposition]{prop:etale-degree}
+Let \(f:Y\to X\) be finite étale of constant degree \(d\).
+For every tuple \(u_0,\ldots,u_k\in\Cb(X)\),
+\begin{align}
+ f_*S_{k,Y}(u_0\circ f;u_1\circ f,\ldots,u_k\circ f)
+ &=dS_{k,X}(u_0;u_1,\ldots,u_k),\label{eq:etale-source-degree}\\
+ f_*T_{k,Y}(u_1\circ f,\ldots,u_k\circ f)
+ &=dT_{k,X}(u_1,\ldots,u_k).\label{eq:etale-curvature-degree}
+\end{align}
+For locally constant degree, the formulas hold componentwise.
+\end{proposition}
+\begin{proof}
+For smooth inputs, apply the calibrated finite-map integration
+formula to the pullback of
+\(u_0Du_1\cdots Du_k\wedge\eta\);
+see \cite[Proposition~15.4.3]{CLD25}.
+Locally uniform smooth approximation gives the same formula
+for continuous semipositive inputs.
+For the bounded tuple, split a compact base test into finitely
+many compact summands supported on ordinary opens \(W_a\)
+where simultaneous decreasing continuous regularizations
+exist. Properness of \(f\) makes the pulled-back test compact
+in \(f^{-1}(W_a)\). Apply \Cref{thm:joint-monotone} on both
+spaces to pass each continuous-stage identity to its limit, and sum.
+A constant weight gives
+\eqref{eq:etale-curvature-degree}.
+\end{proof}
+
+\begin{proposition}[Descent of the bounded class]
+\label[proposition]{prop:etale-descent}
+Let \(f:Y\to X\) be a finite étale surjection and \(u\)
+a given real function on \(X\). If
+\(u\circ f\in\Cb(Y)\), then \(u\in\Cb(X)=\Rb(X)\).
+Membership of a given function in this class is
+also local for étale covers.
+\end{proposition}
+\begin{proof}
+Classical subharmonicity descends under the finite surjection
+by \cite[Proposition~4.2(6)]{GR}.
+A finite surjection is proper and closed, so upper
+semicontinuity and local boundedness descend as follows. Since
+\(\{u\geq a\}=f(\{u\circ f\geq a\})\), upper
+semicontinuity descends.
+Cover the finite fiber above \(x\) by finitely many open
+neighborhoods on which \(u\circ f\) is bounded, let \(V\)
+be their union, and choose a common bound \(M\).
+The ordinary open \(X\setminus f(Y\setminus V)\)
+contains \(x\), and its entire inverse image lies in \(V\).
+Surjectivity gives \(|u|\leq M\) there.
+
+For an étale cover, choose a point above \(x\) and a local
+finite-étale representative on compact analytic neighborhoods
+\cite[\S11.6.3 and Lemma~11.6.5(a)]{CLD25}. Restrict the target to an ordinary
+open in its relative interior. The locally separated
+interior formula used in \Cref{lem:local-algebraization}
+makes its inverse image ordinary open in the source.
+The positive-degree component supplies a finite-étale
+surjection near \(x\). The first assertion and ordinary
+locality apply. Finally \Cref{thm:local-regularization}
+gives the local regularization on \(X\).
+\end{proof}
+
+\begin{remark}[Descent data]\label[remark]{rem:tuple-pullback}
+\Cref{prop:etale-descent} concerns a function already
+given on the base. Functions independently chosen on different
+sheets need not descend: constants \(0\) and \(1\) on two
+disjoint copies of a ball provide an example.
+\end{remark}
+
+
+\appendix
+\section{Curve Laplacians and Borel slicing}
+\label{sec:curve-kernel}
+
+The slicing formula in this appendix expresses the first-order
+current of \Cref{prop:first-order} as an integral of positive curve
+Laplacians. Its measure-theoretic form is needed when the test
+coefficient is only Borel.
+The measure identities in this section are identities on analytic spaces.
+In particular, a Borel coefficient is not replaced by a function on the
+image of a moment map. Put $D=\dd$. On a smooth analytic curve we use the
+sign for which the Laplacian of a convex function on an oriented annulus
+has nonnegative second derivative. With weights $-\log\|e\|$, this is the
+sign for which a semipositive model metric has positive curvature of mass
+equal to the degree of its line bundle.
+Original unit-moment forms are used throughout. The integration theory
+of \cite[\S15.1 and \S15.3]{CLD25} restricts on these presentations to
+the original one: both integrate their Lagerberg representatives with
+the canonical finite-degree calibration. Thus the use below of the
+more general skeleton formulation in \cite{CLD25} changes neither the
+test forms nor their integrals; compare the original calibration in
+\cite[\S3.5]{CLD12}.
+
+\begin{lemma}[Countability of the auxiliary fields]\label[lemma]{lem:gauss-countable}
+Let $K/\mathbb Q_p$ be finite. Let $\mathcal G_K$ consist of the fields
+obtained from $K$ by finitely many operations
+\[
+ E\longmapsto \widehat{E(Z_1,\ldots,Z_s)}_{\mathrm{Gauss}},
+ \qquad |Z_i|=1.
+\]
+Every $F\in\mathcal G_K$ has a countable dense subfield. Its valuation
+ring is a complete excellent discrete valuation ring of mixed
+characteristic, with the same value group as $K$.
+Every compact analytic domain admitting a finite affinoid cover in a
+good Hausdorff $F$-analytic space is metrizable. Locally in such a space,
+ordinary analytic opens admit countable compact
+exhaustions and countable families of original smooth scalar functions
+that are uniformly dense on each fixed compact support.
+\end{lemma}
+\begin{proof}
+A $\mathbb Q$-span of a $\mathbb Q_p$-basis of $K$ is countable and dense;
+the subfield it generates is still countable. If $E_0\subset E$ is a
+countable dense subfield, then $E_0(Z_1,\ldots,Z_s)$ is dense for the
+unit Gauss valuation in $E(Z_1,\ldots,Z_s)$ and hence in its completion.
+The valuation ring after one step is the completion of
+$E^\circ[Z_1,\ldots,Z_s]_{(\pi)}$. This is a discrete valuation ring
+with uniformizer $\pi$ and residue field
+$\widetilde E(Z_1,\ldots,Z_s)$. Its completion is excellent.
+
+An affinoid algebra over a field with a countable dense subfield has a
+countable dense subset. Evaluation of the absolute values of these
+elements embeds its Berkovich spectrum in a countable product of compact
+intervals: uniform approximation determines the value of every other
+element. The spectrum is therefore compact metrizable. A finite
+affinoid cover gives the assertion for compact domains. An ordinary
+open in such a compact neighborhood is locally compact and second
+countable, and admits a countable compact exhaustion. Original smooth
+partitions of unity and uniform smooth density
+\cite[Theorem~15.2.6 and Corollary~15.2.7]{CLD25} give the last assertion.
+For a fixed compact set one first chooses a larger compact neighborhood
+and a smooth cutoff equal to one on the smaller set, and then takes a
+countable dense subset of the resulting separable space of continuous
+functions.
+\end{proof}
+
+\begin{lemma}[Compatibility of curve Laplacians]\label[lemma]{lem:curve-native}
+Let $E$ be a complete nontrivially valued field of characteristic zero,
+and let $C$ be an ordinary open in the analytification of a smooth
+algebraic $E$-curve. A locally bounded subharmonic function $b$ has a
+positive Radon Laplacian $\Delta_C b$, and
+\begin{equation}\label{eq:curve-original-test}
+ \int_C a\,d(\Delta_C b)=\int_C b\,Da
+ \qquad(a\in A_c^{0,0}(C)).
+\end{equation}
+Both sides use the canonical calibration over $E$. The assertion does not
+require the residue field of $E$ to be algebraic over a finite field.
+\end{lemma}
+\begin{proof}
+The open $C$ is strictly analytic. Thuillier's
+Theorem~3.4.12 gives its positive Radon Laplacian, and
+Theorem~3.4.2 gives, on a relatively compact larger open, a decreasing
+net $b_\nu$ of lisse subharmonic functions with limit $b$
+\cite{Thuillier}. Here \emph{lisse} means piecewise affine on a finite
+semistable skeleton after a finite extension; it does not mean original
+CLD smooth. The relation between this subharmonicity and the curve
+convention used here is \cite[\S3.3.1--\S3.3.2]{GR}.
+
+For a lisse function, \eqref{eq:curve-original-test} follows from
+integration by parts on a common finite skeleton for the function and
+the original moment presentation of $a$. Along an annular edge the
+formula is the one-variable integration-by-parts formula; the endpoint
+terms are the weighted outgoing slopes. These are precisely the atoms
+of the lisse Laplacian. The edge weights retain the residue
+degrees. A finite extension used to obtain the skeleton can be removed
+by the calibrated base-extension integration formula
+\cite[\S15.3, Proposition~14.3.6]{CLD25}; both sides have the same
+normalization. This is also the lisse comparison underlying
+\cite[Proposition~4.2]{Wanner}.
+
+On a compact neighborhood of $\operatorname{supp}a$, a tail of
+$b_\nu$ is bounded above, while $b$ bounds it below. Integration of a
+decreasing net of continuous functions against a finite Radon measure
+commutes with its infimum. To see this, a continuous function strictly
+above the infimum eventually dominates the net on the compact set:
+the sets on which this domination holds form an increasing open cover.
+Compactness gives one index. Taking the infimum of the integrals of
+continuous majorants proves the assertion by Radon regularity. Apply
+this to the positive and negative parts of the fixed measure $Da$.
+The Laplacians converge as distributions by Thuillier's construction;
+their masses on a smaller compact set are bounded by testing against
+one nonnegative lisse cutoff. Uniform density then permits every
+continuous compact test, including $a$. Passing to the limit gives
+\eqref{eq:curve-original-test}.
+\end{proof}
+
+\begin{lemma}[Borel coarea for a smooth relative form]
+\label[lemma]{lem:borel-coarea}
+Let $F\in\mathcal G_K$, let $n\geq2$, let $W$ be an ordinary algebraic analytic open
+of a smooth $n$-fold, and let
+$p:W\to(\mathbb G_m^{n-1})^{\an}$ be induced by a dominant algebraic
+morphism. In the specified torus coordinates $z_1,\ldots,z_{n-1}$ put
+$t_i=-\log|z_i|$, and let
+\[
+ \Omega=\omega(t)\bigwedge_{i=1}^{n-1}\dpr t_i\wedge\dpp t_i,
+ \qquad 0\leq\omega\in C_c^\infty(\mathbb R^{n-1}).
+\]
+Thus $\Omega$ is presented by these coordinates and its measure is
+supported on their standard Gauss skeleton. Let
+$\beta\in A_c^{1,1}(W)$, and let $h$ be a
+bounded Borel function on a neighborhood of its support.
+Writing $\nu_\Omega=\Omega^{\mathrm{Rad}}$ and $C_y=p^{-1}(y)$, one has
+\begin{equation}\label{eq:actual-smooth-coarea}
+ \int_W h\,\beta\wedge p^*\Omega
+ =\int_{\operatorname{Sk}(\mathbb G_m^{n-1})}
+       \left(\int_{C_y}h|_{C_y}\,\beta|_{C_y}\right)d\nu_\Omega(y).
+\end{equation}
+The inner integral is measurable after completion of $\nu_\Omega$, and
+its absolute value is integrable. The fibers over this skeleton are
+smooth curves over $\mathscr H(y)$.
+\end{lemma}
+\begin{proof}
+Every torus skeleton point has generic algebraic support. Generic
+smoothness in characteristic zero therefore makes $C_y$ a smooth
+$\mathscr H(y)$-curve. Since the support of $\beta$ is compact, the
+calculation is confined to finitely many compact moment presentations.
+The flat locus of $p$ is dense; the hypotheses used in the smooth
+coarea theorem \cite[Theorem~16.5.4]{CLD25} are thus satisfied.
+
+For the Borel coefficient in \eqref{eq:actual-smooth-coarea}, refine
+the moment presentations by the
+base coordinates and choose the convenient skeleton cells of
+\cite[Lemma~14.1.5]{CLD25}. On each cell $D\subset W$,
+the refined tropicalization $t_D:D\to\overline D$ is a homeomorphism
+onto a polyhedral cell. The Borel coefficient used on that cell is
+$h\circ t_D^{-1}$. Distinct cells having the same tropical image are
+kept separate, with their respective values of $h$. Using relative
+interiors, or a disjoint Borel subdivision,
+avoids double counting their boundaries.
+
+The integration formula is now a finite sum of ordinary Lebesgue
+integrals on these calibrated cells. The base and fiber skeletons are
+compatible by \cite[Lemma~14.2.10]{CLD25}. If a full-dimensional source
+cell $D$ projects onto a full-dimensional base cell $B$, let $d_D,d_B$
+be their calibrated finite degrees. Its fiber calibration is $d_D/d_B$;
+this is the degree calculation in the proof of
+\cite[Theorem~16.5.4]{CLD25}. Consequently ordinary Borel Fubini on
+$\overline D\to\overline B$ gives exactly the corresponding summand
+of \eqref{eq:actual-smooth-coarea}, with coefficient $d_D$ on the
+source and $d_B(d_D/d_B)$ after integration over the base. Cells of
+insufficient base or fiber dimension contribute zero, outside a
+finite union of lower-dimensional base cells. That union is
+$\nu_\Omega$-null. The same computation applied to absolute values
+gives absolute integrability, since $h$ is bounded and the smooth
+form has compact support. This proves the formula and its
+measurability assertion. The construction evaluates $h$ on $D$, not
+on the tropical image without a chosen inverse, and is compatible with further
+subdivision and common moment refinements.
+When using this formula on a prescribed compact source support, a
+coordinate cutoff $\omega$ may be chosen equal to one on a neighborhood
+of its compact image under $(-\log|z_1|,\ldots,-\log|z_{n-1}|)\circ p$.
+The resulting form $\Omega$ on the base torus has compact support in
+a closed polyannulus, so the compactness requirement of the coarea theorem is
+retained.
+\end{proof}
+
+\begin{theorem}[The curve Laplacian kernel]\label[theorem]{thm:actual-kernel}
+In the setting of \Cref{lem:borel-coarea}, let $v$ be locally bounded
+and classically plurisubharmonic. After restricting to a relatively
+compact neighborhood in $W$, there is a measurable family of positive
+Radon measures
+\[
+ \mu_y=\Delta_{C_y}(v|_{C_y})
+ \quad\text{for $\nu_\Omega$-almost every }y
+\]
+whose integral is a positive Radon measure $\mu_{v,p,\Omega}$ on the
+analytic domain $W$. It satisfies
+\begin{equation}\label{eq:actual-kernel-smooth}
+ \langle D[v],a\,p^*\Omega\rangle
+ =\int_W a\,d\mu_{v,p,\Omega}
+ =\int\left(\int_{C_y}a|_{C_y}\,d\mu_y\right)d\nu_\Omega(y)
+ \quad(a\in A_c^{0,0}(W)).
+\end{equation}
+For every bounded Borel $h$ on the relevant compact support, the same
+measure identity gives
+\begin{equation}\label{eq:actual-kernel-borel}
+ \int_W ha\,d\mu_{v,p,\Omega}
+ =\int\left(\int_{C_y}(ha)|_{C_y}\,d\mu_y\right)d\nu_\Omega(y).
+\end{equation}
+Scalar multiplication and relations between original test forms are
+preserved on common refinements.
+\end{theorem}
+\begin{proof}
+The all-extension quantifier in classical plurisubharmonicity implies
+that $v|_{C_y}$ is subharmonic over $\mathscr H(y)$. These fields may
+be nondiscrete. \Cref{lem:curve-native} gives their positive
+Laplacians. Since $\Omega$ has top degree on the base, it is closed,
+and distributional differentiation gives
+\[
+ L(a):=\langle D[v],a\,p^*\Omega\rangle
+      =\int_W v\,Da\wedge p^*\Omega.
+\]
+Apply \Cref{lem:borel-coarea} with $h=v$ and $\beta=Da$, followed by
+\eqref{eq:curve-original-test} on each fiber. This proves that
+$y\mapsto\int a|_{C_y}\,d\mu_y$ is measurable modulo a null set and
+integrable, and that its integral is $L(a)$. In particular $L(a)\geq0$
+when $a\geq0$.
+
+Positivity of $L$ gives an order-zero estimate. Fix
+a compact $Q\Subset W$ and an original smooth cutoff $\kappa\geq0$
+equal to one near $Q$. For every original smooth $a$ supported in $Q$,
+\begin{equation}\label{eq:kernel-mass-bound}
+ |L(a)|\leq\|a\|_\infty L(\kappa)<\infty.
+\end{equation}
+The last value is finite because $v$ is bounded on the compact
+support of $D\kappa$ and $D\kappa\wedge p^*\Omega$ is a smooth
+top-degree form of finite total variation. Positivity and
+\eqref{eq:kernel-mass-bound}, together with original smooth density,
+therefore give a positive Radon measure $\mu_{v,p,\Omega}$ by the
+Riesz representation theorem.
+
+The preceding argument constructs a measure from its smooth
+pairings. To integrate arbitrary Borel functions fiberwise, we also
+need a measurable kernel defined outside one common null set.
+Put, on $Q'=\operatorname{supp}\kappa$,
+$\nu_y=\kappa|_{C_y}\mu_y$, viewed as a finite measure on the compact
+metric space $Q'$ and extended by zero off the fiber. Choose a
+countable family of original smooth functions uniformly dense in
+$C(Q')$. Their products with $\kappa$ have measurable integrals by
+the preceding coarea calculation. Together with the test $\kappa$,
+this involves only countably many exceptional null sets; remove one
+Borel null set containing their union and set $\nu_y=0$ there.
+For the remaining parameters the mass $\nu_y(Q')$ is finite.
+Uniform approximation consequently proves measurability of
+$y\mapsto\int f\,d\nu_y$ for every $f\in C(Q')$.
+
+For an open subset $A$ of $Q'$, continuous functions
+$0\leq f_j\uparrow\mathbf1_A$ show that $y\mapsto\nu_y(A)$ is
+measurable. The monotone-class theorem then gives this assertion for
+every Borel subset of $Q'$, and gives measurable integration of every
+bounded Borel function on $Q'$. Moreover,
+\[
+ \int \nu_y(Q')\,d\nu_\Omega(y)=L(\kappa)<\infty.
+\]
+Thus $\nu(A)=\int\nu_y(A)\,d\nu_\Omega(y)$ is a finite Borel measure
+on the compact metric space $Q'$, hence a Radon measure. On original
+smooth tests it agrees with $\kappa\mu_{v,p,\Omega}$; uniform
+density identifies these measures. Taking a countable compact
+exhaustion and a countable collection of such cutoffs produces a
+single conull parameter set and compatible kernels. Equality of the
+measures on $W$ proves \eqref{eq:actual-kernel-borel}.
+
+Finally, if two presentations define the same original complementary
+form $\eta$, then for every original smooth scalar $f$ their
+coefficient measures have integral $\langle D[v],f\eta\rangle$.
+They are equal by density and Radon uniqueness. The same argument
+applies to every finite relation among test forms and to multiplication
+by an original smooth scalar. These relations hold as measure
+identities before multiplication by $h$ and remain true afterwards.
+This proves compatibility with common refinements and with
+Borel coefficients.
+\end{proof}
+
+\begin{remark}\label[remark]{rem:kernel-field-scope}
+Only the complete-field curve theory is used over $\mathscr H(y)$
+in \Cref{thm:actual-kernel}; the envelope theorem is used over
+$F\in\mathcal G_K$. The countability needed to select one conull set
+is that of a dense family of tests on $W$, not of the residue fields.
+The coordinate-presentation
+hypothesis on $\Omega$ is essential: an arbitrary original smooth form
+on a torus may have a refined skeleton. In the applications below,
+$p$ is formed from the units in a decomposable complementary direction;
+a coordinate cutoff $\omega=1$ near the projected test support gives
+exactly the displayed class of base forms. When $n=1$, the base is a
+point and the statement is \Cref{lem:curve-native}. If $p$ is not dominant,
+its top-degree base form pulls back to zero by tropical dimension,
+and the corresponding first-order pairing is zero.
+\end{remark}
+
+\returnlink{sec:first-order}{first-order positivity}
+
+\section{Bounded curve energy and a localized Green estimate}
+\label{sec:curve-energy}
+
+The local estimate below transfers differentiation from a continuous
+potential to a compactly supported bounded weight. Its total variation
+bound then controls the error when the continuous potential varies
+uniformly, even though the weight may be discontinuous. It is used in
+\Cref{prop:first-order-energy}; the proper-curve identity supplies
+the initial case of \Cref{thm:projective-regularization}.
+
+We retain the curve convention of \Cref{lem:curve-native}.
+The field in this appendix is complete and nontrivially valued of
+characteristic zero. The curves used below are ordinary opens in
+smooth algebraic curves; in particular they are strictly analytic.
+The operator \(D\) on a lisse function is its weighted graph
+Laplacian. Original smooth functions on a common skeleton are
+piecewise smooth graph functions, and the same integration-by-parts
+formula applies to them.
+
+\begin{lemma}[Bounded curve energy]\label[lemma]{lem:bounded-curve-energy}
+Locally bounded subharmonic functions have locally finite Dirichlet
+energy. For a finite real linear combination \(b\) of such functions,
+the expression
+\[
+ \Gamma_C(b)=\tfrac12D[b^2]-bD[b]
+\]
+is a nonnegative Radon measure. Its polarization is bilinear and
+satisfies Cauchy--Schwarz on compact supports. The product and chain
+rules are
+\begin{align}
+ D[ab]&=aD[b]+bD[a]+2\Gamma_C(a,b),\label{eq:curve-product}\\
+ D[\Phi(b)]&=\Phi'(b)D[b]+\Phi''(b)\Gamma_C(b)
+ \label{eq:curve-chain}
+\end{align}
+whenever the functions are locally bounded and \(\Phi\) is \(C^2\)
+on a neighborhood of their relevant range.
+
+On a smooth proper connected curve, if \(r,p\) are bounded
+subharmonic metrics on the same line, then their gap \(g=r-p\)
+satisfies
+\begin{equation}\label{eq:proper-curve-energy}
+ E_C(g)=-\int gD[g]\geq0.
+\end{equation}
+The associated Green pairing is symmetric. If \(E_C(g)=0\), the
+function \(g\) is constant pointwise.
+\end{lemma}
+\begin{proof}
+We recall how boundedness puts these statements within the
+complete-field curve theory. On a compact domain inside a larger
+curve open, Thuillier's harmonic interpolants give lisse
+subharmonic functions \(b_S\downarrow b\), indexed by finite sets
+of nonrigid points containing the boundary
+\cite[Theorem~3.4.2]{Thuillier}. Their values on each such set are
+the values of the given function \(b\). At an additional fixed inner boundary
+these values can be kept fixed by including its finitely many
+points in every \(S\).
+
+Take original smooth cutoffs \(0\leq\rho,\kappa\leq1\), with
+\(\kappa=1\) near \(\supp\rho\), on the larger domain. A tail of the
+interpolants is bounded by \(M+\epsilon\) on these compact supports
+if \(|b|\leq M\); this follows from the increasing open cover
+\(\{b_S<M+\epsilon\}\). On a common finite skeleton, the graph
+product formula gives, with \(x_S^2=\int\rho^2\Gamma_C(b_S)\),
+\begin{equation}\label{eq:curve-local-energy-bound}
+ x_S^2\leq (M+\epsilon)^2\|D\kappa\|_{\rm TV}
+       +2(M+\epsilon)x_S
+                       \left(\int\Gamma_C(\rho)\right)^{1/2}.
+\end{equation}
+Indeed \(\int_{\supp\rho}Db_S\leq
+(M+\epsilon)\|D\kappa\|_{\rm TV}\), by testing against \(\kappa\),
+and integration by parts in
+\(\int \rho^2\,d'b_S\,d''b_S\) gives the displayed mixed term.
+Thus the local Dirichlet energies are bounded.
+
+Subtracting the fixed harmonic extension of the inner boundary
+values places the interpolants in the Dirichlet space with zero
+boundary values. The finite-skeleton harmonic interpolants are the
+orthogonal projections to the corresponding finite-dimensional
+Dirichlet subspaces. Their energies increase under refinement;
+the bound above puts their limit in the Hilbert completion.
+For nested point sets $S\subset S'$, orthogonality gives
+\[
+ \|b_{S'}-b_S\|_D^2
+       =\|b_{S'}\|_D^2-\|b_S\|_D^2
+\]
+after the fixed harmonic extension has been subtracted. The
+bounded increasing energies therefore make this net Cauchy. Its
+distributional limit is $b$, so its Dirichlet limit represents the
+same potential. This is the construction and
+projection argument in \cite[\S3.5, especially Lemma~3.5.3 and the
+discussion following it]{Thuillier}. It applies simultaneously to
+a finite list of bounded subharmonic functions.
+
+Products of bounded Dirichlet functions and \(C^2\) compositions
+satisfy the graph product and chain rules. These rules pass from
+the interpolants to the Dirichlet limit: boundedness controls the
+multipliers, strong Dirichlet convergence controls the derivative
+terms, and the interpolants converge to the given functions at
+every point. Green-kernel symmetry
+\cite[Remark~3.4.15]{Thuillier} and the energy-integrability
+identity \cite[Proposition~3.5.7 and its local variant,
+Proposition~3.5.10]{Thuillier} identify the resulting pairings with
+integration of these bounded potentials against their
+Laplacians. Thus the measure in the statement is
+\(\tfrac12D[b^2]-bD[b]\), with the Borel product of the original
+representative, and not an independently chosen representative.
+The finite-skeleton rules give
+\eqref{eq:curve-product}--\eqref{eq:curve-chain}; positivity and
+Cauchy--Schwarz pass through the same Dirichlet limit.
+
+For the proper assertion, choose a lisse semipositive reference
+metric on the line after replacing it by a positive tensor power
+if necessary. More generally a fixed difference of such reference
+metrics suffices. Its curvature is a finite combination of atoms
+at nonrigid points. The gap of a bounded subharmonic metric from
+this reference is bounded. Its Green potential therefore has
+finite energy by \cite[Proposition~3.5.7]{Thuillier}.
+Polarization gives the symmetric Green pairing and
+\eqref{eq:proper-curve-energy}, with the mass of each Chern
+measure equal to the degree of its line.
+
+Finally, if \(E_C(g)=0\), Cauchy--Schwarz with the elementary Green
+function \(g_{x,y}\) gives \(g(x)=g(y)\) for all nonrigid \(x,y\).
+In each local frame the subharmonic weights of \(r\) and of
+\(p+g(x)\) therefore agree at all such points. They agree everywhere
+by \cite[Lemma~3.4.1]{Thuillier}. Thus the gap is constant at every point.
+\end{proof}
+
+\begin{lemma}[Localized variation and Green formula]
+\label[lemma]{lem:curve-variation}
+Let \(b\) be locally bounded subharmonic on a smooth curve open,
+and let \(a\in A_c^{0,0}\). Choose original smooth compact cutoffs
+\(0\leq\rho,\kappa\leq1\) with \(\rho=1\) near \(\supp a\) and
+\(\kappa=1\) near \(\supp\rho\). Suppose \(|b|\leq M\) on a
+neighborhood of these supports. Set
+\[
+ E(f)=\int d'f\wedge d''f,\qquad A_\kappa=\|D\kappa\|_{\rm TV}.
+\]
+Then \(D[ab]\) is a signed Radon measure and
+\begin{equation}\label{eq:localized-variation}
+ \begin{split}
+ \|D[ab]\|_{\rm TV}\leq {}&
+ M\|a\|_\infty A_\kappa+M\|Da\|_{\rm TV}\\
+ &+2M\sqrt{E(a)}
+                 \bigl(\sqrt{A_\kappa}+2\sqrt{E(\rho)}\bigr).
+ \end{split}
+\end{equation}
+For continuous subharmonic \(w\),
+\begin{equation}\label{eq:localized-green}
+ \int ab\,D[w]=\int w\,D[ab].
+\end{equation}
+If the cutoffs are restrictions of fixed original source functions
+in \Cref{thm:actual-kernel}, the bound in
+\eqref{eq:localized-variation} is integrable over the slicing base.
+\end{lemma}
+\begin{proof}
+Use a decreasing lisse subharmonic regularization \(b_\nu\) on a
+larger open. On the relevant compact set, take a tail with
+\(|b_\nu|\leq M+\epsilon\). The estimate
+\eqref{eq:curve-local-energy-bound} gives
+\[
+ x_\nu\leq(M+\epsilon)
+              \bigl(\sqrt{A_\kappa}+2\sqrt{E(\rho)}\bigr),
+ \qquad x_\nu^2=\int\rho^2\,d'b_\nu\wedge d''b_\nu.
+\]
+The local mass of \(Db_\nu\) on \(\supp a\) is at most
+\((M+\epsilon)A_\kappa\). Apply the graph product formula
+\[
+ D(ab_\nu)=aDb_\nu+b_\nu Da+
+              d'a\wedge d''b_\nu+d'b_\nu\wedge d''a.
+\]
+The first two terms have the first two bounds of
+\eqref{eq:localized-variation}, with \(M+\epsilon\); Cauchy--Schwarz
+bounds the last two by \(2\sqrt{E(a)}x_\nu\).
+The distributional limit is \(D[ab]\), so the uniform variation
+bound makes it a measure with the same estimate. Let
+\(\epsilon\downarrow0\).
+
+At fixed \(\nu\), approximate \(w\) by lisse subharmonic functions
+on a larger domain. Since \(w\) is continuous, the decreasing net
+converges uniformly on the compact support by the finite-cover
+form of Dini's argument. The finite-skeleton Green formula
+therefore passes to \(w\). Now let \(\nu\) decrease to its limit.
+The left side integrates \(ab_\nu\) against the fixed positive
+measure \(D[w]\). Decreasing continuous-net integration, applied
+after decomposing the sign of \(a\), gives its limit \(ab\).
+On the right, distributional convergence and the common total
+variation bound imply convergence on continuous compact tests:
+approximate such a test uniformly by original smooth functions
+and use the variation bound for the error. A cutoff equal to one
+on $\supp a$ permits applying this observation to $w$.
+This proves
+\eqref{eq:localized-green}.
+
+For the base integral, finite moment presentations and compact
+coefficient bounds give positive original smooth \((1,1)\)-forms
+majorizing both signs of \(D\kappa\) and \(Da\). Their restrictions
+to the fibers majorize \(A_\kappa(y)\) and \(\|Da_y\|_{\rm TV}\).
+Their integrals over the base are finite by
+\Cref{lem:borel-coarea}. The same is true of \(E(a_y)\) and
+\(E(\rho_y)\), since these are fiber integrals of fixed positive
+smooth forms. Cauchy--Schwarz on the base bounds the products of
+square roots in \eqref{eq:localized-variation}. This proves
+integrability without a uniform degree assertion for the fibers.
+\end{proof}
+
+\begin{corollary}\label[corollary]{cor:weighted-uniform-curve}
+If continuous subharmonic \(w_j\to w\) uniformly on the relevant
+support, then
+\[
+ \left|\int ab\,(D[w_j]-D[w])\right|
+ \leq\|w_j-w\|_\infty\|D[ab]\|_{\rm TV}.
+\]
+The same conclusion holds for finite real linear combinations of
+the bounded subharmonic weight \(b\).
+\end{corollary}
+\begin{proof}
+Subtract \eqref{eq:localized-green} for \(w_j\) and \(w\), and
+use the variation norm. Then use linearity.
+\end{proof}
+
+\begin{proposition}[The curve contact theorem]\label[proposition]{prop:curve-contact}
+Let \(C/F\) be smooth projective geometrically integral, and \(L\)
+ample. Let \(p\) be a continuous model-semipositive metric on \(L\)
+and \(r\) a bounded classical metric on \(L\). If
+\[
+ g=r-p\geq0,\qquad \int g\,c_1(L,p)=0,
+\]
+then \(g=0\) at every point.
+\end{proposition}
+\begin{proof}
+Both local weights are subharmonic. By
+\Cref{lem:bounded-curve-energy},
+\[
+ 0\leq E_C(g)=-\int gD[g]
+       =\int g\,c_1(L,p)-\int g\,c_1(L,r)\leq0.
+\]
+Hence \(g\) is constant. The measure \(c_1(L,p)\) has
+positive mass \(\deg_F L\), so the constant is zero.
+\end{proof}
+\returnlink{prop:first-order-energy}{smooth-background energy}
+\returnlink{thm:projective-regularization}{projective contact and regularization}
+
+\section{Envelopes on a normal model}
+\label{sec:normal-envelopes}
+
+We prove continuity of the ample envelopes used in
+\Cref{thm:projective-regularization}. Weighted base ideals encode the
+semipositive minorants of a model obstacle. We replace them by test
+ideals to obtain global generation after one fixed ample twist.
+The required comparison comes from subadditivity with a vertical
+correction independent of the ideals and their exponents. Dividing
+logarithmic norms by degree makes the resulting error tend to zero.
+
+Throughout this appendix $R$ is a complete discrete valuation ring of
+mixed characteristic, $F=\operatorname{Frac}(R)$ has characteristic
+zero, $\pi$ is a uniformizer, and $\lambda=-\log|\pi|>0$. No finiteness
+or perfection assumption is imposed on the residue field. All test
+ideals are those of \cite[Definition~8.37]{BMP}; after completion we use
+the stable complete-local ideals of \cite[Definition~8.13]{BMP}.
+
+\subsection{A correction independent of ideals and exponents}
+
+Let $(S,\mathfrak m)$ be a complete Noetherian normal local domain
+of mixed characteristic $(0,p)$ and dimension $d$, and let
+$\Delta\geq0$ be an integral Weil divisor such that
+$K_S+\Delta$ is Cartier. Choose a local trivialization of this Cartier
+divisor and a compatible rational canonical section. The canonical
+module is then represented by
+\[
+ W=\mathcal O_S(-\Delta)\subset S,
+ \qquad K_S=-\Delta.
+\]
+Choose $c\ne0$ with $cS\subset W$. Put
+\[
+ E=H^d_{\mathfrak m}(W),\quad F_S=H^d_{\mathfrak m}(S),\quad
+ \alpha:E\longrightarrow F_S,\quad \beta:F_S\longrightarrow E,
+\]
+where $\alpha$ is induced by inclusion and $\beta$ by multiplication
+by $c$. Both composites are multiplication by $c$. Top local duality
+identifies the Matlis dual of $E$ with
+$\operatorname{Hom}_S(W,W)=S$, so $E$ is the injective hull of the
+residue field. This does not require $S$ to be Cohen--Macaulay, and
+$\alpha$ need not be injective.
+
+The Noether different will supply the local correction factor. Its
+role is to factor multiplication on a big Cohen--Macaulay algebra
+through a flat module, where annihilators of finitely generated
+ideals commute with base change.
+
+\begin{lemma}[A flat factorization]\label[lemma]{lem:different-factor}
+Let $A\subset S$ be a finite extension of complete local domains, with
+$A$ regular of dimension $d$. Write
+\[
+ \mathfrak N_{S/A}
+ =\mu\bigl(\operatorname{Ann}_{S\otimes_A S}(\ker\mu)\bigr),
+ \qquad \mu:S\otimes_A S\longrightarrow S.
+\]
+If $B$ is a balanced big Cohen--Macaulay $S^+$-algebra, multiplication
+by every $z\in\mathfrak N_{S/A}$ on $B$ factors $S$-linearly as
+\[
+ B\xrightarrow{j_z}S\otimes_A B\xrightarrow{\mu_B}B,
+ \qquad \mu_Bj_z=z\operatorname{id}_B,
+\]
+and $S\otimes_A B$ is $S$-flat. For every finitely generated ideal
+$I\subset S$, it follows that
+\begin{equation}\label{eq:different-annihilator}
+ z\operatorname{Ann}_{H^d_{\mathfrak m}(B)}(I)
+ \subset
+ \operatorname{im}\bigl((S\otimes_A B)\otimes_S
+       \operatorname{Ann}_{F_S}(I)\longrightarrow H^d_{\mathfrak m}(B)\bigr).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Every system of parameters of $A$ is a system of parameters of $S$.
+Thus $B$ is balanced big Cohen--Macaulay over $A$, and is $A$-flat by
+\cite[Setup~2.1 and Proposition~4.9]{Holm}. Choose
+$\gamma=\sum u_i\otimes v_i$ annihilating $\ker\mu$ and satisfying
+$\mu(\gamma)=z$. Set $j_z(b)=\sum u_i\otimes v_i b$.
+The relations $(s\otimes1-1\otimes s)\gamma=0$ prove $S$-linearity;
+multiplication proves the asserted composite. Flat base change gives
+the flatness of the middle module $C=S\otimes_A B$.
+A top \v{C}ech cokernel gives $H^d_{\mathfrak m}(C)=C\otimes_S F_S$.
+Since $I$ is finitely generated and $C$ is flat,
+$\operatorname{Ann}_{C\otimes F_S}(I)=C\otimes\operatorname{Ann}_{F_S}(I)$.
+Apply local cohomology to the factorization and then apply $\mu_B$.
+\end{proof}
+
+\begin{proposition}[Complete-local corrected subadditivity]
+\label[proposition]{prop:local-subadditivity}
+With the preceding notation, for nonzero ideals $\mathfrak a,\mathfrak b$
+and rational $s,t\geq0$,
+\begin{equation}\label{eq:local-corrected}
+ c\mathfrak N_{S/A}\,
+ \tau(S,\Delta,\mathfrak a^s\mathfrak b^t)
+ \subset
+ \tau(S,\Delta,\mathfrak a^s)\tau(S,\Delta,\mathfrak b^t).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Choose a single sufficiently large perfectoid balanced BCM
+$S^+$-algebra $B$ for the three stable test ideals. Such a choice, and
+the mixed element-wise description below, are supplied by
+\cite[Definitions~8.2 and~8.13, Theorem~8.11]{BMP}.
+For an ideal datum $\mathfrak a^s$, let $\mathcal R_{\mathfrak a,s}$
+be the allowed root multipliers: powers $f^q$ in $B$, where
+$0\ne f\in\mathfrak a^m$ and $q\geq s/m$ is rational. Put
+$T_{\mathfrak a}=\tau(S,\Delta,\mathfrak a^s)$. Then
+\begin{equation}\label{eq:pair-kernel}
+ \operatorname{Ann}_E(T_{\mathfrak a})
+ =\bigcap_{g\in\mathcal R_{\mathfrak a,s}}
+       \ker\bigl(E\xrightarrow{\alpha}F_S
+                      \longrightarrow H^d_{\mathfrak m}(B)
+                      \xrightarrow{g}H^d_{\mathfrak m}(B)\bigr).
+\end{equation}
+Indeed, the root maps defining the parameter test modules start from
+$F_S$, whose Matlis dual is $W$. The dual of $\alpha$ is the chosen
+inclusion $W\hookrightarrow S=\operatorname{Hom}_S(W,W)$.
+Precomposition therefore gives precisely the pair ideals as ideals of
+$S$. The equality follows from Matlis duality. The pair factor is
+one because $K_S+\Delta=0$ in the chosen trivialization.
+
+Here stability is required simultaneously for the three ideal data,
+rather than for every ideal on $S$ at once. The existence and
+comparison theorem in \cite[Theorem~8.11]{BMP} permits replacing
+their three sufficiently large algebras by a common one. The mixed
+version of \cite[Definition~8.2]{BMP} is a sum of the element-wise
+parameter test modules for products of root multipliers. Matlis
+duality changes that sum into the intersection of kernels in
+\eqref{eq:pair-kernel}, and gives the corresponding intersection
+over pairs $(g,h)$ for the mixed datum.
+
+Take $\eta\in\operatorname{Ann}_E(T_{\mathfrak a}T_{\mathfrak b})$
+and $h\in\mathcal R_{\mathfrak b,t}$. For every $a\in T_{\mathfrak a}$,
+the element $a\eta$ is annihilated by $T_{\mathfrak b}$; its image
+under $h\alpha$ is therefore zero by \eqref{eq:pair-kernel} for
+$\mathfrak b^t$. Hence $h\alpha(\eta)$ is annihilated by
+$T_{\mathfrak a}$.
+For $z\in\mathfrak N_{S/A}$, \eqref{eq:different-annihilator} expresses
+\[
+ zh\alpha(\eta)=\sum_i b_i\zeta_i,
+ \qquad \zeta_i\in\operatorname{Ann}_{F_S}(T_{\mathfrak a}),\quad b_i\in B.
+\]
+Now $\beta(\zeta_i)\in\operatorname{Ann}_E(T_{\mathfrak a})$.
+Equation~\eqref{eq:pair-kernel} gives
+$gc\zeta_i=g\alpha\beta(\zeta_i)=0$ for every
+$g\in\mathcal R_{\mathfrak a,s}$. Hence $czgh\alpha(\eta)=0$.
+The mixed element-wise definition tests exactly the products $gh$.
+Thus
+\[
+ cz\operatorname{Ann}_E(T_{\mathfrak a}T_{\mathfrak b})
+ \subset\operatorname{Ann}_E
+       \tau(S,\Delta,\mathfrak a^s\mathfrak b^t).
+\]
+Taking annihilators yields \eqref{eq:local-corrected}. No factorization
+of an arbitrary root of an element of $(\mathfrak a\mathfrak b)^m$
+is used.
+\end{proof}
+
+To globalize the correction, we need finitely many local differents
+whose sum is the unit ideal on the generic fiber. The next lemma
+obtains them from finite projections that are \'etale on a covering
+of that fiber. Their common failure is then supported vertically and
+is killed by one power of $\pi$.
+
+\begin{lemma}[Finite projections and a vertical different]
+\label[lemma]{lem:finite-projections}
+Let $\mathcal X$ be normal, integral, projective and flat over $R$,
+with smooth generic fiber $X$ of dimension $n$. There are finitely
+many finite morphisms $f_j:\mathcal X\to\mathbb P_R^n$ whose generic
+\'etale loci cover $X$. The sum $\mathfrak J$ of their coherent
+Noether-different ideals contains $\pi^{C_0}\mathcal O_{\mathcal X}$
+for some $C_0$.
+\end{lemma}
+\begin{proof}
+Choose a relatively very ample line $\mathcal H$. On the special
+fiber, choose $n+1$ homogeneous parameters without a common zero.
+This works over an arbitrary residue field: at each stage, Serre
+interpolation provides a high-degree section nonzero at a chosen
+closed point of each component of the preceding zero locus. The
+dimension drops at each step. Taking powers makes the degrees equal;
+taking further powers permits lifting the sections to $\mathcal X$
+by Serre vanishing. Every tuple congruent to these lifts modulo $\pi$
+has no base point on $\mathcal X$: a nonempty proper closed base locus
+would meet the special fiber. It defines a finite morphism to
+$\mathbb P_R^n$, because the pullback of $\mathcal O(1)$ is relatively
+ample and so no fiber can have positive dimension.
+
+Fix a closed point $x\in X$. Increase the degree until sections
+surject onto its first infinitesimal neighborhood. Since
+$\kappa(x)/F$ is separable, one can prescribe one nonzero section and
+$n$ ratios with independent differentials at $x$. Being \'etale at
+$x$ is therefore a nonempty Zariski-open condition on the tuple; the
+determinant condition can be expressed over $F$ by its field norm.
+The congruence coset of lifts modulo $\pi$ is Zariski dense in the
+$F$-vector space of tuples, since $F$ is infinite and the section
+module is a full $R$-lattice. Choose a tuple in this open set.
+The resulting generic \'etale loci cover every closed point of $X$,
+hence all of the Jacobson scheme $X$. Quasi-compactness selects
+finitely many morphisms.
+
+On affine target charts their Noether-different ideals glue, since
+the diagonal ideal is finitely generated and annihilators commute
+with localization. On the smooth generic fiber the different is a
+unit at every \'etale point; see \cite[\S49.12]{Stacks}.
+Thus $\mathfrak J|_X=\mathcal O_X$. The coherent quotient
+$\mathcal O_{\mathcal X}/\mathfrak J$ is supported on the special
+fiber. A finite affine cover gives one exponent $C_0$.
+\end{proof}
+
+\begin{theorem}[Global fixed correction]\label[theorem]{thm:fixed-correction}
+Let $\mathcal X/R$ be as in \Cref{lem:finite-projections}. Fix an
+effective integral vertical Weil divisor $\Delta_0$ such that
+$K_{\mathcal X}+\Delta_0$ is Cartier. There is an integer $C\geq0$,
+independent of the nonzero coherent ideals $\mathfrak a,\mathfrak b$
+and rational exponents $s,t\geq0$, such that
+\begin{equation}\label{eq:global-correction}
+ \pi^C\tau(\mathcal X,\Delta_0,\mathfrak a^s\mathfrak b^t)
+ \subset
+ \tau(\mathcal X,\Delta_0,\mathfrak a^s)
+ \tau(\mathcal X,\Delta_0,\mathfrak b^t).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Choose $T$ globally with
+$\pi^T\mathcal O_{\mathcal X}\subset\mathcal O_{\mathcal X}(-\Delta_0)$.
+It exists because the latter coherent ideal is the unit ideal on
+$X$. It gives $c=\pi^T$ in every local canonical embedding above.
+
+Fix a closed point $y$ of the special fiber and a finite projection
+from \Cref{lem:finite-projections}. Complete the regular local ring
+of $\mathbb P_R^n$ at the image of $y$. Its finite algebra splits
+into complete local factors; the factor at $y$ is
+$S=\widehat{\mathcal O}_{\mathcal X,y}$. It is a normal domain by
+excellence. Both rings have dimension $n+1$, so the map from the
+complete regular domain $A$ to $S$ is injective. An original
+Noether-different tensor witness base changes to the finite completed
+algebra and projects in both tensor factors to a witness for $S/A$.
+Thus the completed image of the global different is contained in
+$\mathfrak N_{S/A}$.
+
+Apply \Cref{prop:local-subadditivity}. Corollary~8.40 of \cite{BMP}
+identifies the completed global test ideals with the complete-local
+ones, and faithful flatness descends the containment. Sum over the
+finitely many projections and use
+$\pi^{C_0}\mathcal O\subset\mathfrak J$. This gives
+\eqref{eq:global-correction} with $C=T+C_0$ at every closed
+special-fiber point. A nonzero coherent failure quotient on the proper
+$R$-scheme would have such a point in its support. The containment
+therefore holds everywhere, with a constant chosen before the ideals
+and exponents.
+\end{proof}
+
+\begin{remark}\label[remark]{rem:regular-subadditivity}
+The uncorrected subadditivity in \cite[Theorem~8.41(h)]{BMP} applies
+on a regular scheme without a boundary in its two factors.
+In \Cref{thm:fixed-correction}, the scheme is normal and the
+boundary $\Delta_0$ occurs in both factors. The factor $\pi^C$
+accounts for these differences. Its independence of the ideals and
+the exponents will give an error of order $m^{-1}$ in the envelope
+construction.
+Fang--Gubler--K\"unnemann prove continuity for model obstacles on
+regular models carrying an ample extension, and for arbitrary
+continuous obstacles under resolution of projective models
+\cite[Theorem~1.1]{FGK}. The proof below instead uses
+\Cref{thm:fixed-correction} on one normal model and retains a
+uniform error term throughout the construction.
+\end{remark}
+
+\subsection{Weighted ideals and removal of the auxiliary line}
+
+\begin{theorem}[Continuity and orthogonality of ample envelopes]
+\label[theorem]{thm:normal-envelope}
+Let $X/F$ be smooth projective geometrically integral and $L$ ample.
+For every continuous metric $\rho$ on $L$, its pointwise envelope
+\[
+ P_L\rho=\sup\{q:q\text{ is continuous model-semipositive on }L, q\leq\rho\}
+\]
+is continuous and model-semipositive on the same identified line.
+It is uniformly approximable by nef rational model metrics over $F$,
+and
+\begin{equation}\label{eq:envelope-orthogonality}
+ \int_{X^{\an}}(\rho-P_L\rho)c_1(L,P_L\rho)^n=0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Take a normal projective flat model $\mathcal X$ carrying an extension
+$\mathcal L$ of $L$. Replace it by the normalization of the blowup
+of its rank-one canonical fractional sheaf. This modification is an
+isomorphism on the smooth
+generic fiber and gives a Cartier extension $G$ of its canonical line.
+Compatible rational sections make $G-K_{\mathcal X}$ vertical.
+For sufficiently large $N_0$,
+\[
+ \Delta_0=G+N_0\operatorname{div}(\pi)-K_{\mathcal X}\geq0,
+ \qquad K_{\mathcal X}+\Delta_0\text{ Cartier}.
+\]
+First suppose that the obstacle is an integral model metric $r$;
+rational denominators will be cleared and divided out afterwards.
+Let $\theta$ be the metric of $\mathcal L$. On a dominating normal
+model $f:\mathcal W\to\mathcal X$, a constant translation permits
+writing
+\[
+ r=\theta+u,\qquad u=\log|\mathcal E|,
+ \qquad (\pi^N)\mathcal O_{\mathcal W}\subset\mathcal E
+                  \subset\mathcal O_{\mathcal W},
+\]
+with $\mathcal E$ an invertible vertical ideal. The section lattices
+below encode the condition that a Fubini--Study weight lie below $r$.
+We form their base ideals $\mathfrak c_l$ and the associated
+asymptotic test ideals $\beta_m$:
+\begin{align}
+ V_l&=H^0\bigl(\mathcal W,(f^*\mathcal L\otimes\mathcal E)^l\bigr),\notag\\
+ \mathfrak c_l&=\operatorname{im}
+       (V_l\otimes\mathcal L^{-l}\longrightarrow\mathcal O_{\mathcal X}),
+       \label{eq:weighted-ideals}\\
+ \beta_m&=\sum_{l\gg0}\tau(\mathcal X,\Delta_0,\mathfrak c_l^{m/l}),
+ \quad \psi_m=m^{-1}\log|\beta_m|,
+ \quad P=P_Lr-\theta.\notag
+\end{align}
+Only sufficiently large degrees are used, so these ideals are vertical.
+The sum is directed under divisibility, since
+$\mathfrak c_l^q\subset\mathfrak c_{lq}$ and test ideals commute
+with powers. It stabilizes by Noetherianity.
+
+Normality identifies $V_l$ with the unit lattice for the sup norm of
+$lr$. Pure-FS density on an ample line
+\cite[Corollary~7.6 and Theorem~7.8]{BE} gives
+\begin{equation}\label{eq:weighted-envelope-sup}
+ P=\sup_{l\gg0}l^{-1}\log|\mathfrak c_l|,
+ \qquad (mq)^{-1}\log|\mathfrak c_{mq}|\longrightarrow P
+ \quad(q\longrightarrow\infty)
+\end{equation}
+for fixed $m$. For the latter limit, products of unit sections give
+superadditivity of the degree-weighted functions. Divide large
+degrees by any fixed sufficiently large $l$, leaving remainders in
+a finite interval of globally generated degrees. Their weights are
+bounded on the compact analytic space, so their contribution divided
+by the total degree tends to zero. Taking the supremum over $l$
+proves the stated pointwise limit.
+
+Let $\tau_0=\tau(\mathcal X,\Delta_0)$. It contains a power of $\pi$,
+and Cartier translation and monotonicity give
+$\mathfrak c_{mq}\tau_0\subset\beta_{mq}$. Iterating
+\eqref{eq:global-correction} and using repeated-factor compatibility
+\cite[Theorem~8.41(c)]{BMP}, choose a degree computing $\beta_{mq}$ to get
+\begin{equation}\label{eq:asymptotic-correction}
+ \pi^{C(q-1)}\beta_{mq}\subset\beta_m^q.
+\end{equation}
+Indeed, \eqref{eq:asymptotic-correction} gives
+\[
+ \frac{1}{mq}\log|\beta_{mq}|
+       -\frac{C(q-1)\lambda}{mq}\leq\psi_m.
+\]
+Use $\mathfrak c_{mq}\tau_0\subset\beta_{mq}$ and
+\eqref{eq:weighted-envelope-sup}, then let $q\to\infty$.
+The contribution of the fixed ideal $\tau_0$ tends to zero, leaving
+$P-C\lambda/m\leq\psi_m$.
+
+There is also a fixed upper bound
+\begin{equation}\label{eq:ideal-upper}
+ \psi_m\leq u+B\lambda/m.
+\end{equation}
+Indeed, put
+$\Delta_{\mathcal W}=f^*(K_{\mathcal X}+\Delta_0)-K_{\mathcal W}$.
+For a noneffective $\Delta_{\mathcal W}$, choose an effective
+vertical Cartier divisor $A$ with $\Delta_{\mathcal W}+A\geq0$ and
+interpret its test ideal as
+$\mathcal O(A)\tau(\mathcal W,\Delta_{\mathcal W}+A)$.
+Cartier translation makes this independent of $A$.
+Birational inclusion, monotonicity, powers and Cartier translation
+\cite[Proposition~7.16(b), Theorem~8.41(b),(c),(j)]{BMP} imply
+\[
+ \tau(\mathcal X,\Delta_0,\mathfrak c_l^{m/l})\mathcal O_{\mathcal W}
+ \subset\mathcal E^m\tau(\mathcal W,\Delta_{\mathcal W}).
+\]
+Indeed, the pushforward inclusion of
+\cite[Theorem~8.41(j)]{BMP} gives the first pullback containment
+by adjunction. The further containment follows from
+$\mathfrak c_l\mathcal O_{\mathcal W}\subset\mathcal E^l$ and
+Cartier translation for the invertible ideal $\mathcal E$.
+The last test ideal is a fixed coherent fractional ideal, equal to
+$\mathcal O_X$ on the generic fiber. One power $\pi^B$ clears its
+vertical poles, proving \eqref{eq:ideal-upper}.
+
+The bounds on $\psi_m$ compare functions, but do not yet give
+semipositive metrics. For that purpose we show that one fixed ample
+twist makes every $\beta_m\mathcal L^m$ globally generated. Fix $l$ and choose $R$-module generators
+$\sigma_1,\ldots,\sigma_a$ of $V_l$, regarded as sections of
+$\mathcal L^l$ on $\mathcal X$. Discard any zero generator and let
+$D_b=\operatorname{div}(\sigma_b)$, an effective Cartier divisor
+linearly equivalent to $l\mathcal L$. Locally trivializing
+$\mathcal L^l$ expresses $\mathfrak c_l$ as the sum of the
+principal ideals defined by these sections. Repeated application of
+the summation formula \cite[Theorem~8.41(g)]{BMP}, together with
+Cartier translation, gives
+\[
+ \tau(\mathcal X,\Delta_0,\mathfrak c_l^{m/l})
+ =\sum_{\substack{t_b\in\mathbb Q_{\geq0}\\\sum_b t_b=m/l}}
+   \tau\left(\mathcal X,\Delta_0+\sum_b t_bD_b\right).
+\]
+The local expressions agree on overlaps because they use the
+Cartier divisors of global sections. Each divisor
+$D=\sum_b t_bD_b$ is effective and satisfies
+$D\sim_{\mathbb Q}m\mathcal L$. By Noetherianity, finitely many
+terms suffice for this sum and for the sum defining $\beta_m$;
+compare \cite[Remark~8.42]{BMP}.
+
+Choose a generated ample Cartier divisor $H$ and write
+$G_0=K_{\mathcal X}+\Delta_0$. This is Cartier by construction.
+For each such $D$, apply \cite[Corollary~7.24]{BMP} with
+$M=m\mathcal L+G_0+H$. Its required difference is
+\[
+ M-K_{\mathcal X}-(\Delta_0+D)
+       \sim_{\mathbb Q}H,
+\]
+which is big and nef. Since the special fiber has dimension $n$,
+the sheaf
+\[
+ \tau(\mathcal X,\Delta_0+D)
+       \otimes\mathcal L^m\otimes\mathcal O(G_0+(n+1)H)
+\]
+is generated. Take a generated ample model line $\mathcal A$ and
+choose $m_0$, independently of $m,l,D$, so that
+$\mathcal A^{m_0}\otimes\mathcal O(-G_0-(n+1)H)$ is generated.
+Tensoring with this fixed generated line and then taking the sum
+proves that $\beta_m\mathcal L^m\mathcal A^{m_0}$ is generated for
+every $m$.
+
+Let $A=\mathcal A|_X$ with its model metric $q_A$. Generation gives
+a pure-FS metric $t_m$ on $mL+m_0A$ with exact weight
+$m\theta+m\psi_m+m_0q_A$. This metric is on $mL+m_0A$;
+to compare it with the envelope, we must return to $L$.
+Choose $r_0$ so that $r_0L-A$ is generated, and a pure-FS metric
+$\nu$ on that line. Adding $m_0\nu$ cancels the auxiliary $A$
+and produces a metric on $(m+r_0m_0)L$. Set
+\[
+ M_m=m+r_0m_0,\qquad h_m=(t_m+m_0\nu)/M_m,\qquad
+ d=q_A+\nu-r_0\theta,\quad D_0=\|d\|_\infty.
+\]
+Every $h_m$ is a nef rational model metric on $L$. Since
+$-N\lambda\leq u\leq0$ and $P\leq u$, the lower estimate and
+\eqref{eq:ideal-upper} give, with a constant $C_1$ independent of $m$,
+\[
+ h_m-P_Lr\geq-\frac{C\lambda+m_0D_0}{M_m},
+ \qquad h_m-r\leq\frac{C_1}{M_m}.
+\]
+Shift $h_m$ down by its upper error $C_1/M_m$. The result is a
+continuous semipositive minorant of $r$, hence lies below $P_Lr$
+by the definition of the envelope. Combining this with the lower
+estimate gives
+\begin{equation}\label{eq:envelope-uniform-bound}
+ -\frac{C\lambda+m_0D_0}{M_m}
+ \leq h_m-P_Lr\leq\frac{C_1}{M_m}.
+\end{equation}
+This proves uniform convergence for a model obstacle on the prescribed
+line. Real constant translations are allowed in the uniform closure
+of rational model metrics; rational downward approximations give the
+same pointwise envelope. Undo the preparatory translation.
+
+For a rational model obstacle clear its tensor denominator, use
+$P_{dL}(dr)=dP_Lr$, and divide back. For a continuous obstacle, uniform
+model density and the estimate
+$\|P_Lr-P_Lr'\|_\infty\leq\|r-r'\|_\infty$
+give continuity and same-line semipositive approximation by a diagonal.
+Finally \cite[Theorem~6.7]{BGM}, applicable because $X$ is geometrically
+reduced, gives \eqref{eq:envelope-orthogonality} after this continuity
+has been established.
+\end{proof}
+
+\begin{remark}\label[remark]{rem:gauss-envelope-scope}
+Every field in $\mathcal G_K$ satisfies the hypotheses of this
+appendix by \Cref{lem:gauss-countable}. The proof applies to arbitrary
+projective varieties, lines and obstacles defined over that field;
+it does not require their descent to $K$. This is the field scope
+needed for the induction through generic hyperplanes.
+\end{remark}
+\returnlink{thm:projective-regularization}{projective contact and regularization}
+
+\section{Algebraic coordinates and a common local domain}
+\label{sec:local-geometry}
+
+The projective approximation theorem must be applied to local
+potentials without changing them near the test support. The collar
+in \Cref{lem:common-collar} achieves this for an entire decreasing
+family at once: its first terms and limits determine a common bound,
+and that bound determines one barrier and one local domain.
+The last two lemmas transfer these constructions to the analytic
+spaces of \Cref{conv:spaces}, including their integration
+normalizations.
+
+In the first three lemmas, \(F\in\mathcal G_K\),
+\(\pi\) is the chosen uniformizer, and \(\lambda=-\log|\pi|\).
+All constructions take place over \(F\) on the indicated ordinary
+neighborhoods.
+
+\begin{lemma}[Exact replacement of analytic units]
+\label[lemma]{lem:exact-units}
+Let \(Y/F\) be smooth integral affine, let \(O\subset Y^{\an}\) be ordinary open,
+and let \(f_1,\ldots,f_a\) be analytic units on \(O\).
+Every \(x\in O\) has a compact affinoid neighborhood \(C\subset O\)
+and rational functions \(g_1,\ldots,g_a\in F(Y)\) such that
+\begin{equation}\label{eq:exact-units}
+ \|f_i-g_i\|_C<\min_C|f_i|,
+ \qquad |g_i(y)|=|f_i(y)|\quad(y\in C).
+\end{equation}
+The \(g_i\) are units on one algebraic open containing \(C\).
+Consequently the logarithms and their original smooth differentials
+agree on the ordinary interior of \(C\). A compactly supported
+smooth test can be divided into finitely many tests on such
+neighborhoods, with one simultaneous replacement for each finite
+moment presentation.
+\end{lemma}
+\begin{proof}
+Embed \(Y\) in affine space with
+coordinates \(T_1,\ldots,T_N\).
+Polynomial evaluations generate the topology of \(Y^{\an}\).
+Since \(|F^\times|^{\mathbb Q}\) is dense in \(\mathbb R_{>0}\),
+there are finitely many polynomial inequalities, with strict slack
+at \(x\), whose closed solution set \(C\) contains an ordinary
+neighborhood of \(x\) and lies in \(O\).
+Include upper bounds for every \(T_j\). Thus \(C\) is compact, and
+it has a presentation
+\[
+ |T_j|\le R_j,\qquad |P_i|\le S_i,\qquad |Q_l|\ge r_l>0,
+ \qquad R_j,S_i,r_l\in |F^\times|^{\mathbb Q}.
+\]
+It is obtained from the closed polydisc by imposing the equations of
+\(Y\), followed by Weierstrass and Laurent localizations.
+Its affinoid algebra is a quotient of the generalized Tate algebra
+with coordinates \(T_j,U_i,V_l\) and relations
+\[
+ U_i=P_i(T),\qquad Q_l(T)V_l=1.
+\]
+The radii for \(U_i\) and \(V_l\) are \(S_i\) and \(r_l^{-1}\).
+Polynomials in these coordinates are dense in that Tate algebra,
+and hence their images are uniformly dense in \(\cO(C)\).
+Those images belong to
+\(F[Y][Q_1^{-1},\ldots,Q_b^{-1}]\).
+Compactness and invertibility give \(\min_C|f_i|>0\).
+Approximate the finitely many \(f_i|_C\) by elements of the displayed
+localization with errors smaller than these minima.
+The ultrametric inequality gives the pointwise equalities in
+\eqref{eq:exact-units}. Their numerators and denominators do not vanish
+anywhere on \(C\); removing their algebraic zero loci gives one
+algebraic open on which all \(g_i\) are units.
+The logarithms are equal as smooth functions on \(\operatorname{Int}C\),
+so applying \(\dpr,\dpp\) preserves the equality.
+For the last assertion, cover the compact test support by finitely
+many such interiors and use a smooth partition subordinate to this
+finite cover. Apply the construction to the whole finite unit list
+on each summand.
+\end{proof}
+
+\begin{lemma}[A common collar for decreasing families]
+\label[lemma]{lem:common-collar}
+Let \(Y/F\) be smooth projective and let \(O\subset Y^{\an}\) be
+ordinary open. For finitely many indices \(i\), let
+\(u_{i,j}\downarrow u_i\) be classical plurisubharmonic functions
+whose first terms and limits are locally bounded.
+Near every \(x\in O\), there are one ordinary neighborhood \(V\)
+with compact closure in \(O\), an ample line bundle \(L\) on \(Y\),
+an algebraic frame \(e\) near \(\overline V\), a constant
+\(c\in\lambda\mathbb Q\), and bounded classical metrics
+\(R_{i,j}\downarrow R_i\) on this same \(L\) such that
+\begin{equation}\label{eq:common-collar-weights}
+ \operatorname{wt}_e(R_{i,j})=u_{i,j}+c,\qquad
+ \operatorname{wt}_e(R_i)=u_i+c\quad\hbox{on }V.
+\end{equation}
+All geometric choices are independent of \(i,j\).
+\end{lemma}
+\begin{proof}
+Choose a projective embedding by a sufficiently ample line \(A\)
+and an affine coordinate chart containing \(x\).
+As in the proof of \Cref{lem:exact-units}, choose nested polynomial
+norm boxes in this chart,
+\[
+ x\in\operatorname{Int}C_1,\qquad
+ C_1\subset\operatorname{Int}C_{\mathrm{mid}},\qquad
+ C_{\mathrm{mid}}\subset\operatorname{Int}C_2,\qquad C_2\subset O,
+\]
+using the same finite polynomial list and strictly nested thresholds.
+All lower-bound polynomials are nonzero on \(C_2\).
+Choose additional thresholds strictly between those for \(C_1\)
+and \(C_{\mathrm{mid}}\).
+Clear rational powers in the thresholds to obtain a function
+\begin{equation}\label{eq:collar-barrier}
+ b=\max\left\{0,\log|P_a^{N_a}/c_a|,
+                    \log|d_l/Q_l^{M_l}|\right\},
+ \qquad c_a,d_l\in F^\times .
+\end{equation}
+The barrier must vanish on the inner box, where we want to retain
+the given potentials, and be uniformly positive on the outer collar,
+where the extension must agree with a global metric. The function
+$b$ is finite continuous on $C_2$, zero on $C_1$, and satisfies
+\[
+ b\ge\delta>0\quad\hbox{on }C_2\setminus\operatorname{Int}C_{\mathrm{mid}}
+\]
+for one \(\delta\).
+Indeed, outside the strict intermediate box at least one defining
+bound fails; the ratio between that threshold and its chosen inner
+threshold is strictly larger than one. The minimum of the finitely
+many positive logarithmic gaps gives \(\delta\).
+
+Clear the denominators in \eqref{eq:collar-barrier} and homogenize.
+After increasing the common degree by a power of the affine-chart
+denominator, the branches become ratios \(s_a/s_0\) of sections of
+\(A^{m_0}\), where \(s_0\) is nowhere zero on \(C_2\); include
+the branch \(s_0/s_0=1\). This denominator can be chosen as a product
+of the homogenized \(Q_l\) and the affine-chart denominator, so its
+nonvanishing on \(C_2\) is preserved.
+Choose \(m_0\) large enough that \(A^{m_0}\) is generated.
+Append small \(F\)-scalar multiples of a global generating tuple.
+Since \(C_2\) is compact and \(s_0\) has no zero there, the appended
+ratios have absolute value less than one on \(C_2\).
+Their ratios stay below the branch $1$ on $C_2$, so they do not
+change $b$ there. They ensure that the enlarged tuple generates the
+line everywhere. Its pure Fubini--Study metric \(q\) has
+weight \(b\) in the frame \(s_0\) on \(C_2\).
+
+The inequalities \(u_i\le u_{i,j}\le u_{i,1}\) and compactness give
+one two-sided bound for all the functions on \(C_2\).
+Choose \(c\in\lambda\mathbb Q\) and \(M\) with
+\(0<u_{i,j}+c\le M\) and \(0<u_i+c\le M\) there.
+Choose an integer \(m>0\) with \(m\delta>M+1\), and put
+\(L=A^{mm_0}\), \(e=s_0^m\).
+On \(\operatorname{Int}C_2\), give \(R_{i,j}\) the \(e\)-weight
+\[
+ \max\{u_{i,j}+c,mb\}.
+\]
+On \(Y^{\an}\setminus C_{\mathrm{mid}}\), set \(R_{i,j}=mq\).
+These are an ordinary open cover, and their prescriptions agree on
+the overlap because \(mb>M\) there.
+The maximum and locality properties of classical psh functions
+\cite[Proposition~4.2]{GR} prove classicality.
+The metric difference \(R_{i,j}-mq\) lies in \([0,M]\);
+thus it is bounded globally.
+Use the same prescription with \(u_i\) to define \(R_i\).
+For a decreasing sequence of real numbers,
+the maximum with a fixed number commutes with its limit.
+It follows that \(R_{i,j}\downarrow R_i\) at every point.
+Finally take \(V=\operatorname{Int}C_1\). Here \(b=0\) and the
+first branch is positive, proving \eqref{eq:common-collar-weights}.
+The closure of \(V\) lies in \(C_1\subset O\).
+\end{proof}
+
+\begin{lemma}[One inactive floor]
+\label[lemma]{lem:inactive-floor}
+In \Cref{lem:common-collar}, suppose that
+\(P_{i,j,m}\downarrow R_{i,j}\) are pure Fubini--Study metrics
+on \(L\). Their weights on the same \(V\), and all their
+nonnegative translates in \(\lambda\mathbb Q\), have finite
+tropically convex rational PL presentations in algebraic
+coordinates. The algebraic chart and \(V\) are independent of \(i,j,m\).
+\end{lemma}
+\begin{proof}
+After clearing a tensor denominator, each weight in the fixed frame
+has the form
+\[
+ P=\frac1N\max_a\log|s_a/e^{\otimes N}|,
+\]
+where the finitely many \(s_a\) generate \(NL\).
+Rational constants in \(\lambda\mathbb Q\) can be absorbed by
+raising to one common tensor power and multiplying sections by
+powers of \(\pi\).
+All these weights lie above their limits as \(m\to\infty\), and those limits
+lie above the finitely many bounded functions \(u_i+c\) on \(V\).
+Choose a single $B\in\lambda\mathbb Q$ strictly below all of them.
+This floor will keep the tropical expression finite at zeros of
+individual sections, while remaining inactive in every approximating
+weight.
+Then \(P=\max\{B,P\}\) on \(V\), for every \(i,j,m\).
+
+Write \(B=a\lambda/N_0=(1/N_0)\log|\pi^{-a}|\).
+Appending the nonzero constant regular function \(\pi^{-a}\)
+to the algebraic moment coordinates represents the floor by a
+rational linear expression with zero constant term.
+In the valuation coordinates \(t_f=-\log|f|\), the resulting function
+is a maximum of rational linear functions \(-t_f/N\).
+The floor remains finite even when some section coordinates vanish.
+Near such a point, those coordinates have value \(+\infty\) and their
+branches are inactive; deleting them leaves a finite rational PL
+expression on a neighborhood of that point.
+Restrict the ambient extended tropical domain to the locus where
+the appended constant coordinate is finite. The finitely many
+possible subsets of inactive coordinates give the finite PL
+cover in Wu's definition. The expression is continuous on this
+domain and convex on its finite-coordinate part, hence tropically convex by
+\cite[Lemma~3.4(1), Definitions~3.1 and~3.7]{Wu}.
+The appended constant coordinate is algebraic; if an affine embedding
+is desired, include generators of the fixed affine coordinate ring
+as additional coordinates which the displayed function ignores.
+
+A nonnegative translate still lies above \(B\), and a translate in
+\(\lambda\mathbb Q\) is handled by the same section-power operation.
+Thus the floor and the underlying domain are independent of the indices
+and of the translate. Subtracting the fixed \(c\) in
+\eqref{eq:common-collar-weights} only replaces the floor by \(B-c\).
+This construction does not require setting \(\lambda=1\).
+\end{proof}
+
+\begin{lemma}[Ordinary algebraic neighborhoods]
+\label[lemma]{lem:local-algebraization}
+Let \(X\) be good, Hausdorff, boundaryless and quasi-smooth over \(K\).
+For every \(x\in X\) and ordinary neighborhood \(N\) of \(x\),
+there is a smaller ordinary neighborhood \(W\subset N\)
+which is \(K\)-analytically isomorphic to an ordinary open
+of a smooth affine \(K\)-variety.
+\end{lemma}
+\begin{proof}
+Shrink \(N\) inside the interior of an affinoid neighborhood of \(x\);
+it is then separated and remains boundaryless.
+Ducros's algebraization lemma \cite[Lemma~(0.21)]{Duc}, applied
+with the full group of positive radii, gives an affinoid
+neighborhood \(V\) of \(x\) in \(N\), identified with an affinoid
+domain in the analytification of a smooth affine \(K\)-variety \(Y\).
+No extension of \(K\) is made.
+
+The relative-interior composition formula, with locally separated
+intermediate spaces \cite[\S2.11(3)--(4)]{GR}, gives
+\[
+ \operatorname{Int}(V/N)=\operatorname{Int}(V/K)
+                      =\operatorname{Int}(V/Y^{\an}),
+\]
+because \(N\) and \(Y^{\an}\) are boundaryless.
+Relative interiors of analytic-domain embeddings are their ordinary
+topological interiors; see \cite[Fact~3.4.11 and Fact~4.2.15(i)]{Tem}.
+The common interior is therefore ordinary open in both \(N\)
+and \(Y^{\an}\), and contains \(x\) since \(V\) was a neighborhood.
+It is the required \(W\). One may shrink it further to have compact
+closure in a larger such chart.
+\end{proof}
+
+\begin{lemma}[Finite constants and integration]
+\label[lemma]{lem:finite-constants}
+Let \(Y\) be a smooth integral affine \(K\)-variety, and let \(L\)
+be the algebraic closure of \(K\) in \(K(Y)\). Then \(L/K\)
+is finite separable, \(Y\) is naturally an \(L\)-variety, and
+\(Y/L\) is smooth and geometrically integral.
+Viewing this same analytic space over \(K\) or over \(L\) does not
+change its functions, absolute values or classical psh functions.
+If \(d=[L:K]\), the calibrated integration currents satisfy
+\begin{equation}\label{eq:finite-constant-calibration}
+ [1]_K=d[1]_L.
+\end{equation}
+Consequently the mixed currents and weighted currents, whenever
+constructed by the recursion in the main theorem, satisfy
+\[
+ T_{k,K}=dT_{k,L},\qquad S_{k,K}=dS_{k,L}.
+\]
+\end{lemma}
+\begin{proof}
+The extension \(L/K\) is finite because \(K(Y)/K\) is finitely
+generated, and it is separable in characteristic zero.
+Every element of \(L\) is integral over \(K\), hence over the normal
+affine coordinate ring of \(Y\); it therefore belongs to that ring.
+This gives the \(L\)-structure.
+The diagonal factor of \(Y\times_K L\), singled out by
+\(L\otimes_K L\to L\), is \(Y\) itself as an \(L\)-scheme.
+It is open and closed, so it is smooth over \(L\).
+The function-field extension \(K(Y)/L\) is regular, giving geometric
+integrality.
+
+There is a unique extension of the absolute value of the complete
+field \(K\) to \(L\). Thus the two analytifications have the same
+points, topology and analytic functions.
+An \(E/L\)-curve test maps to the diagonal open-and-closed factor
+\(Y_L\times_L E\) of \(Y_K\times_K E\), and is therefore a permitted
+\(K\)-curve test. Conversely, for an \(E/K\)-curve test, pass to a
+completed algebraic closure \(\Omega/E\). Then
+\(L\otimes_K\Omega=\prod_{\sigma:L\to\Omega}\Omega\).
+The inverse images of these factors are open-and-closed curves.
+Classicality over \(L\) gives subharmonicity on each of them.
+Sheafiness and descent under analytic field extension
+\cite[Proposition~3.5(7)]{GR} give subharmonicity on the original
+\(E\)-curve. Upper semicontinuity and local boundedness
+are unchanged.
+
+The moment skeletons are the same in the two interpretations.
+Forgetting \(L\) multiplies each finite moment degree by \(d\);
+its calibration is therefore multiplied by \(d\), as in
+\cite[Remark~14.4.3]{CLD25}.
+This proves \eqref{eq:finite-constant-calibration}.
+Differentiation and multiplication by a fixed Borel function are
+linear. Induction through the recursive definition gives the same
+single factor \(d\) at every exterior degree, not \(d^k\).
+\end{proof}
+
+\returnlink{prop:ordinary-transport}{transport to ordinary analytic charts}
+\returnlink{prop:local-algebraic-regularization}{local algebraic regularization}
+
+
+\section*{Use of generative AI}
+Generative AI was used in developing and drafting mathematical arguments
+and in revising the exposition of this manuscript.
+
+\begin{thebibliography}{99}
+\raggedright
+
+\bibitem{BMP}
+B.~Bhatt, L.~Ma, Z.~Patakfalvi, K.~Schwede, K.~Tucker,
+J.~Waldron, and J.~Witaszek, with an appendix by R.~Datta,
+\emph{Test ideals in mixed characteristic: a unified theory up to perturbation},
+\href{https://arxiv.org/abs/2401.00615v2}{arXiv:2401.00615v2}, 2025.
+
+\bibitem{BM}
+E.~Bierstone and P.~D.~Milman,
+\emph{Functoriality in resolution of singularities},
+Max-Planck-Institut f\"ur Mathematik preprint 2007-30, 2007.
+\href{https://archive.mpim-bonn.mpg.de/2624/1/preprint_2007_30.pdf}{Author manuscript}.
+
+\bibitem{BE}
+S.~Boucksom and D.~Eriksson,
+\emph{Spaces of norms, determinant of cohomology and Fekete points
+in non-Archimedean geometry},
+\href{https://arxiv.org/abs/1805.01016v3}{arXiv:1805.01016v3}, 2021.
+
+\bibitem{BGM}
+S.~Boucksom, W.~Gubler, and F.~Martin,
+\emph{Non-Archimedean volumes of metrized nef line bundles},
+\'Epijournal de G\'eom\'etrie Alg\'ebrique \textbf{5} (2021), Article 13;
+\href{https://arxiv.org/abs/2011.06986v3}{arXiv:2011.06986v3}.
+
+\bibitem{CLD12}
+A.~Chambert--Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de Berkovich},
+\href{https://arxiv.org/abs/1204.6277v1}{arXiv:1204.6277v1}, 2012.
+This edition fixes the original test sheaf used here.
+
+\bibitem{CLD25}
+A.~Chambert--Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de Berkovich},
+\href{https://arxiv.org/abs/1204.6277v2}{arXiv:1204.6277v2}, 2025.
+
+\bibitem{Duc}
+A.~Ducros,
+\emph{Espaces de Berkovich, polytopes, squelettes et th\'eorie des mod\`eles},
+Confluentes Mathematici \textbf{4} (2012), no.~4, Article 1250007,
+57 pp. The numbering used here is that of the
+\href{https://webusers.imj-prg.fr/~antoine.ducros/tropicbis.pdf}{53-page author manuscript},
+Lemma~(0.21).
+
+\bibitem{FGK}
+Y.~Fang, W.~Gubler, and K.~K\"unnemann,
+\emph{On the non-Archimedean Monge--Amp\`ere equation in mixed characteristic},
+Nagoya Mathematical Journal \textbf{259} (2025), 548--561;
+\href{https://arxiv.org/abs/2203.12282v3}{arXiv:2203.12282v3}.
+
+\bibitem{GJR}
+W.~Gubler, P.~Jell, and J.~Rabinoff,
+\emph{Forms on Berkovich spaces based on harmonic tropicalizations},
+\href{https://arxiv.org/abs/2111.05741v3}{arXiv:2111.05741v3}.
+
+\bibitem{GR}
+W.~Gubler and J.~Rabinoff,
+\emph{Classically psh and pluriharmonic functions on Berkovich spaces},
+\href{https://arxiv.org/abs/2506.13548v2}{arXiv:2506.13548v2}, 2025.
+
+\bibitem{Holm}
+H.~Holm,
+\emph{The structure of balanced big Cohen--Macaulay modules over
+Cohen--Macaulay rings},
+Glasgow Mathematical Journal \textbf{59} (2017), 549--561.
+\href{https://web.math.ku.dk/~holm/download/MCM-big.pdf}{Author manuscript}.
+
+\bibitem{Stacks}
+The Stacks Project Authors,
+\emph{The Stacks Project}, 2026.
+\href{https://stacks.math.columbia.edu/tag/0BWB}{Section 49.12:
+The Noether different};
+\href{https://stacks.math.columbia.edu/tag/0G4C}{Section 37.32:
+Bertini theorems}.
+
+\bibitem{Tem}
+M.~Temkin,
+\emph{Introduction to Berkovich analytic spaces},
+preliminary lecture notes, 2010.
+\href{https://berkovich-2010.imj-prg.fr/lecture-notes/Temkin-lecture-notes.pdf}{Lecture notes}.
+
+\bibitem{Thuillier}
+A.~Thuillier,
+\emph{Th\'eorie du potentiel sur les courbes en g\'eom\'etrie
+analytique non archim\'edienne. Applications \`a la th\'eorie d'Arakelov},
+doctoral thesis, Universit\'e de Rennes~1, 2005.
+\href{https://theses.hal.science/tel-00010990/document}{Thesis}.
+
+\bibitem{Wanner}
+V.~Wanner,
+\emph{Comparison of two notions of subharmonicity on non-archimedean curves},
+\href{https://arxiv.org/abs/1801.04713v3}{arXiv:1801.04713v3}, 2018.
+
+\bibitem{Wu}
+L.~Wu,
+\emph{On the local theory of non-archimedean psh functions},
+\href{https://arxiv.org/abs/2609.27610v1}{arXiv:2609.27610v1}, 2026.
+
+\end{thebibliography}
+
+\clearpage
+\section*{Index of notation}\label{sec:notation}
+The entries are grouped by mathematical role. Each locator links
+to the definition or principal use and gives its page.
+
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.18\textwidth}
+>{\raggedright\arraybackslash}p{.48\textwidth}
+>{\raggedright\arraybackslash}p{.26\textwidth}@{}}
+\toprule
+Symbol & Meaning and scope & Definition or first use\\
+\midrule
+\endfirsthead
+\toprule
+Symbol & Meaning and scope & Definition or first use\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\emph{Continued on the next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{3}{@{}l}{\textbf{Fields, domains and input classes}}\\*[3pt]
+\(K,\pi,\lambda\) &
+Finite extension of \(\mathbb Q_p\), chosen uniformizer, and
+\(\lambda=-\log|\pi|>0\) for the prescribed absolute value. &
+\Cref{conv:spaces}, p.~\pageref{conv:spaces}\\
+\(X,U,n\) &
+Good Hausdorff boundaryless quasi-smooth analytic space, ordinary
+open, and pure dimension. &
+\Cref{conv:spaces}, p.~\pageref{conv:spaces}\\
+\(\Cb(U)\) &
+Locally bounded upper-semicontinuous classical psh functions;
+curve tests after every complete isometric field extension. &
+\Cref{def:classes}, p.~\pageref{def:classes}\\
+\(\PLsp(U)\) &
+Continuous model-semipositive PL functions. Rational slopes
+and constants in \(\lambda\mathbb Q\) are used in the constructions. &
+\Cref{def:classes}, p.~\pageref{def:classes}\\
+\(\Rb(U)\) &
+Locally bounded functions locally obtained as decreasing
+PL limits on one fixed ordinary domain. &
+\Cref{def:classes}, p.~\pageref{def:classes}\\
+\(\mathcal G_K\) &
+Fields obtained from \(K\) by finitely many unit-Gauss completions;
+the simultaneous dimension induction uses arbitrary data over them. &
+\Cref{def:gauss-fields,lem:gauss-countable},
+p.~\pageref{lem:gauss-countable}\\
+\(L/K,\ d\) &
+Finite algebraic constant field of a smooth integral affine
+\(K\)-variety, and its degree; forgetting constants multiplies
+each calibrated current by the single factor \(d\). &
+\Cref{lem:finite-constants}, p.~\pageref{lem:finite-constants}\\[4pt]
+
+\multicolumn{3}{@{}l}{\textbf{Forms, coefficient measures and mixed currents}}\\*[3pt]
+\(A^{p,q}, A_c^{p,q}\) &
+Original CLD smooth forms and compact test forms, with their
+canonical calibration. &
+\Cref{conv:forms}, p.~\pageref{conv:forms}\\
+\(D,\dpr,\dpp\) &
+The original differentials and curvature operator
+\(D=\dpr\dpp\). &
+\Cref{conv:forms}, p.~\pageref{conv:forms}\\
+\([1]\) &
+Integration current in the ground-field calibration. &
+\eqref{eq:recursive-current}, p.~\pageref{eq:recursive-current}\\
+\(\mu_{T,\eta},hT\) &
+Radon measure on the analytic domain representing the scalar functional
+\(a\mapsto\langle T,a\eta\rangle\), and multiplication by a
+locally bounded Borel function. &
+\Cref{def:coefficient-radon}, p.~\pageref{def:coefficient-radon}\\
+\(T_k(u_1,\ldots,u_k)\) &
+Symmetric closed strongly positive mixed curvature current of
+bidegree \((k,k)\). &
+\Cref{thm:mixed-currents}, p.~\pageref{thm:mixed-currents}\\
+\(S_k(u_0;u_1,\ldots,u_k)\) &
+Weighted current \(u_0T_k(u_1,\ldots,u_k)\), with undifferentiated
+argument \(u_0\). &
+\eqref{eq:source-current}, p.~\pageref{eq:source-current}\\
+\(W_r,\ A_r\) &
+Span of decomposable squares in the symmetric tensor space
+of \(r\)-vectors, and its annihilator in the dual tensor space. &
+\Cref{lem:strong-coefficients}, p.~\pageref{lem:strong-coefficients}\\
+\(\MA_{\rm PL}\) &
+Top-degree measure in the local PL theory, compared with the
+continuous CLD product. &
+\Cref{prop:wu-input}, p.~\pageref{prop:wu-input}\\
+\(j,\ |\cdot|_*\) &
+Transport under \(|\cdot|_*=|\cdot|^{1/\lambda}\), used only
+to compare valuation conventions with the PL input. &
+\eqref{eq:valuation-calibration}, p.~\pageref{eq:valuation-calibration}\\[4pt]
+
+\multicolumn{3}{@{}l}{\textbf{Metrics, energy and slicing}}\\*[3pt]
+\(c_1(L,\phi)\) &
+Curvature of the additive metric \(\phi\), with
+model mass equal to structural degree. &
+\Cref{conv:forms}, \eqref{eq:native-model-measure},
+p.~\pageref{eq:native-model-measure}\\
+\(\Gamma(g),\Gamma(g,h)\) &
+First-order quadratic energy current and its symmetric
+polarization. &
+\eqref{eq:gamma}, p.~\pageref{eq:gamma}\\
+\(E_\Omega(g,h)\) &
+Energy paired with a smooth strongly positive closed
+complementary background. &
+\Cref{prop:first-order-energy}, p.~\pageref{prop:first-order-energy}\\
+\(P_L\rho\) &
+Pointwise envelope of continuous model-semipositive minorants
+of \(\rho\) on the same ample line \(L\). &
+\Cref{def:envelope}, p.~\pageref{def:envelope}\\
+\(E,\ H,\ \iota\) &
+Unit-Gauss parameter field, its generic hyperplane, and the map
+from that hyperplane to the original projective analytic space. &
+\Cref{lem:single-hyperplane}, p.~\pageref{lem:single-hyperplane}\\
+\(\Delta_C b,\Gamma_C\) &
+Positive curve Laplacian of a subharmonic function,
+and the curve energy measure. &
+\Cref{lem:curve-native,lem:bounded-curve-energy},
+p.~\pageref{lem:bounded-curve-energy}\\
+\(p:W\to\mathbb G_m^{n-1},\ \Omega\) &
+Algebraic curve-slicing map and a nonnegative top form in
+the specified standard torus coordinates. &
+\Cref{lem:borel-coarea}, p.~\pageref{lem:borel-coarea}\\
+\(\nu_\Omega,\ \mu_y\) &
+Base skeletal measure and the curve Laplacian kernel,
+defined off one common null parameter set. &
+\Cref{thm:actual-kernel}, p.~\pageref{thm:actual-kernel}\\[4pt]
+
+\multicolumn{3}{@{}l}{\textbf{Normal-model envelopes and local geometry}}\\*[3pt]
+\(R,F\) &
+In Appendix~\ref{sec:normal-envelopes}, a complete
+mixed-characteristic DVR and its characteristic-zero
+fraction field; no residue-field finiteness is assumed. &
+\Cref{sec:normal-envelopes}, p.~\pageref{sec:normal-envelopes}\\
+\(S,W,E,F_S\) &
+Complete local normal domain, its chosen canonical module
+\(W=\cO_S(-\Delta)\), and their top local cohomology modules. &
+\Cref{sec:normal-envelopes}, p.~\pageref{sec:normal-envelopes}\\
+\(\mathfrak N_{S/A}\) &
+Noether different of a finite extension from a regular local
+subring; its witnesses give the flat factorization. &
+\Cref{lem:different-factor}, p.~\pageref{lem:different-factor}\\
+\(\tau(\cO_{\mathcal X},\Delta,\mathfrak a^s)\) &
+Mixed-characteristic test ideal; the global fixed correction
+is independent of the ideals and rational exponents. &
+\Cref{thm:fixed-correction}, p.~\pageref{thm:fixed-correction}\\
+\(\mathfrak c_\ell,\ \beta_m,\ \psi_m\) &
+Weighted base ideals, stable asymptotic test ideals, and their
+normalized logarithmic norms in the envelope construction. &
+\eqref{eq:weighted-ideals}, p.~\pageref{eq:weighted-ideals}\\
+\(C_1,C_{\rm mid},C_2,\ b\) &
+Nested compact norm boxes and their logarithmic collar barrier. &
+\Cref{lem:common-collar}, p.~\pageref{lem:common-collar}\\
+\(R_{i,j},P_{i,j,m},Q_{i,j}\) &
+Bounded projective metrics on a common line bundle, decreasing pure-FS
+rows, and the compact triangular diagonal. &
+\Cref{lem:common-collar,lem:triangular-diagonal},
+p.~\pageref{lem:triangular-diagonal}\\
+\end{longtable}
+\normalsize
+
+\end{document}

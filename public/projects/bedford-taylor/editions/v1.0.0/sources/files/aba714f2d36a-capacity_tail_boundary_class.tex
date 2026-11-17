@@ -1,0 +1,461 @@
+\section{An intrinsic no-loss boundary class and its mixed top calculus}
+\label{sec:r11-capacity-tail-boundary-class}
+
+Retain the original field, analytic space, arbitrary background $S$,
+ordinary domain $V$, and $q=n-p\geq1$ from
+Section~\ref{sec:r11-unbounded-comparison}. Every potential below is
+negative extended classical psh, with its actual values retained.
+The capacity always has the fixed tester domain $V$. The results
+of this section concern top-degree measures. They do not construct
+all lower-degree products without the separate energy hypotheses.
+
+\begin{lemma}[Compact conservation of truncation mass]
+\label{lem:r11-compact-truncation-conservation}
+If $\mathrm{BG}(u,0)$ holds, then $\mu_u$ in (UC3) is locally
+finite, without assuming absence of truncation loss. More precisely,
+fix $M>0$ and $H\Subset V$, set
+$K_M=\overline{\{u<-M\}}\Subset V$, and choose an original smooth
+compact function $0\leq\chi\leq1$ which is one on an ordinary
+neighborhood of $H\cup K_M$. Then for integers $j,l>M$,
+\[
+                       \int\chi\,d\mu_{u,j}
+                           =\int\chi\,d\mu_{u,l}.
+ \tag{BC1}
+\]
+In particular $\sup_j\mu_{u,j}(H)<\infty$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a compact
+conservation statement for unbounded actual potentials, using only
+the frozen bounded telescoping identity and original compact Stokes.
+
+\begin{proof}
+Outside $K_M$ one has $u\geq-M$, hence $u_j=u_l=u$ there.
+The bounded mixed calculus gives
+\[
+ \mu_{u,j}-\mu_{u,l}
+   =D\left((u_j-u_l)
+       \sum_{r=0}^{q-1}(Du_j)^r(Du_l)^{q-1-r}\wedge S\right).
+ \tag{BC2}
+\]
+Every product in the parentheses is a frozen original positive
+closed product. Its bounded Borel multiplier is zero outside
+$K_M$, so the entire current in parentheses has support in $K_M$.
+Pair (BC2) with $\chi$. Since $D\chi$ vanishes near $K_M$,
+the pairing is zero, proving (BC1). Fixing one $l>M$ bounds
+the nonnegative masses on $H$ for every $j>M$; the remaining
+finitely many $j$ have finite mass. The increasing restricted
+measures in (UC3) have the same bound on $H$, proving local
+finiteness of their limit. No bound for a lower-degree truncation
+product is inferred from this top-degree Stokes argument.
+\end{proof}
+
+\begin{definition}[The no-loss zero-boundary class]
+\label{def:r11-no-loss-boundary-class}
+Set
+\[
+ \mathcal F_{S,\partial}(V)
+   =\{u\in\mathcal F_{S,\mathrm{loc}}(V):
+                                      \mathrm{BG}(u,0)\}.
+ \tag{BC3}
+\]
+The notation records compact strict negative sublevels, not an
+unstated ordinary boundary regularity hypothesis.
+\end{definition}
+
+\begin{theorem}[An exact capacity-tail criterion]
+\label{thm:r11-capacity-tail-criterion}
+Let $u$ satisfy $\mathrm{BG}(u,0)$. The following are equivalent:
+\begin{enumerate}
+\item $u\in\mathcal F_{S,\partial}(V)$;
+\item $\displaystyle\lim_{t\to\infty}
+              t^q\operatorname{Cap}_S(\{u<-t\};V)=0$;
+\item $\displaystyle\lim_{j\to\infty}\nu_{u,j}(V)=0$.
+\end{enumerate}
+The capacity in (2) can equivalently be replaced by its ordinary-open
+outer regularization. If these conditions hold, then
+$\mu_{u,j}-\mu_u$ is a finite signed measure on $V$ for every
+sufficiently large $j$, and
+\[
+ \begin{split}
+ t^q\operatorname{Cap}_S(\{u<-t\};V)
+       &\leq2^q\mu_u(\{u<-t/2\}),\\
+ \nu_{u,j}(V)&\leq4^q\mu_u(\{u<-j/4\}),\\
+ \|\mu_{u,j}-\mu_u\|_{\mathrm{TV}(V)}
+       &\leq(4^q+1)\mu_u(\{u<-j/4\})\longrightarrow0.
+ \end{split}
+ \tag{BC4}
+\]
+The measures themselves need not have finite total mass near the
+boundary; their difference is supported in one fixed compact set
+for all sufficiently large $j$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. The condition in
+(2) is expressed solely through the frozen bounded capacity.
+
+\begin{proof}
+Lemma~\ref{lem:r11-compact-truncation-conservation} supplies local
+finiteness automatically. For $j>M$, the discarded measure is
+carried by $\{u\leq-j\}\subset K_M$. Thus (1) and (3) are
+equivalent. Under (1), (UC20) with $v=0$ and $\delta=t/2$
+gives the first inequality of (BC4). Its right side tends to zero:
+for large $t$ the carrier lies in the fixed compact $K_M$, on
+which $\mu_u$ is finite, and the decreasing carriers intersect
+in the $\mu_u$-null pole set. Upper semicontinuity makes
+$\{u<-t\}$ ordinary open, so its raw and outer capacities agree.
+This proves (2).
+
+Conversely, the bounded function $h_j=1+u_j/j$ is a normalized
+capacity tester and $\mu_{u,j}=j^q\mu_{h_j}$. Therefore
+\[
+ \nu_{u,j}(V)
+    \leq j^q\operatorname{Cap}_S(\{u<-j/2\};V).
+ \tag{BC5}
+\]
+Condition (2) makes this tend to zero and proves (3).
+Combining (BC5) with the first inequality of (BC4), at $t=j/2$,
+gives the second. The measures agree on $\{u>-j\}$; on its
+complement their variation difference is at most the sum of their
+masses. The second inequality and
+$\{u\leq-j\}\subset\{u<-j/4\}$ give the last bound in
+(BC4). All these tail sets lie in $K_M$ for large $j$, as claimed.
+\end{proof}
+
+\begin{theorem}[A solid convex cone of actual potentials]
+\label{thm:r11-solid-boundary-cone}
+The class $\mathcal F_{S,\partial}(V)$ contains $0$ and has the
+following closure properties.
+\begin{enumerate}
+\item If $u$ belongs to the class and $v$ is any negative extended
+classical psh function with $u\leq v\leq0$, then $v$ belongs
+to the class.
+\item If $u_1,\ldots,u_m$ belong to the class and $a_i\geq0$,
+then $\sum_i a_i u_i$ belongs to the class, with zero-coefficient
+terms omitted.
+\item Finite maxima of its members belong to the class.
+\end{enumerate}
+No continuity, smoothness, geometric origin or full-support
+assumption is imposed on $S$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. These are
+closure assertions for the explicit no-loss class, not for all
+unbounded classical psh functions.
+
+\begin{proof}
+For (1), $\{v<-t\}\subset\{u<-t\}$ gives both the compact
+boundary-gap condition and the capacity-tail criterion.
+For (2), assume $A=\sum_i a_i>0$. The elementary inclusion
+\[
+ \left\{\sum_i a_i u_i<-t\right\}
+                  \subset\bigcup_{i:a_i>0}\{u_i<-t/A\}
+ \tag{BC6}
+\]
+gives compact sublevels and
+\[
+ t^q\operatorname{Cap}_S
+          \left(\left\{\sum_i a_i u_i<-t\right\};V\right)
+ \leq A^q\sum_{i:a_i>0}
+       (t/A)^q\operatorname{Cap}_S(\{u_i<-t/A\};V)
+                       \longrightarrow0.
+\]
+The sum is an extended classical psh function by the frozen
+curve definition and positivity. The zero sum is immediate.
+Finally a finite maximum is classical psh and dominates any one
+of its members, so (1) proves (3).
+\end{proof}
+
+\subsection{Top mixed products without a superlinear energy assumption}
+
+\begin{theorem}[A positive mixed top calculus in the boundary class]
+\label{thm:r11-boundary-mixed-top-calculus}
+For $u_1,\ldots,u_q\in\mathcal F_{S,\partial}(V)$ put
+\[
+ M_j=T_{S,q}(u_{1,j},\ldots,u_{q,j}),\qquad
+ E_j=\bigcap_{i=1}^q\{u_i>-j\}.
+\]
+The increasing consistent restrictions define a locally finite
+positive measure
+\[
+            M(u_1,\ldots,u_q)=\lim_j\mathbf1_{E_j}M_j.
+ \tag{BC7}
+\]
+It gives zero mass to the union of the $q$ pole sets. The uncut
+measures converge to it in total variation on the whole domain,
+in the sense of a finite signed difference:
+\[
+               \|M_j-M(u_1,\ldots,u_q)\|_{\mathrm{TV}(V)}
+                                           \longrightarrow0.
+ \tag{BC8}
+\]
+Independent canonical truncation levels have the same limit as
+their minimum tends to infinity. The resulting product is symmetric,
+additive and positively homogeneous in every slot on this cone, and
+\[
+ M(u_1,\ldots,u_q)
+   ={1\over q!}\sum_{I\subset\{1,\ldots,q\}}
+        (-1)^{q-|I|}\mu_{\sum_{i\in I}u_i}.
+ \tag{BC9}
+\]
+Here the empty sum has zero top measure. Every equality is an
+equality of actual Borel measures, and hence holds against every
+original compact smooth scalar test and all its actual refinements.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. This top-degree
+result requires no superlinear weighted energy estimate and does
+not assert the corresponding lower-degree recursive calculus.
+
+\begin{proof}
+Let $w=\sum_i u_i$ and $s_j=\sum_i u_{i,j}$. The solid-cone
+theorem puts $w$ in $\mathcal F_{S,\partial}(V)$. The exact identity
+\[
+                      \max(s_j,-j)=\max(w,-j)=w_j
+ \tag{BC10}
+\]
+holds: if no slot is truncated then $s_j=w$, while if a slot is
+truncated then $s_j\leq-j$. Strict Borel maximum locality thus
+identifies the top measure of $s_j$ with $\mu_w$ on $\{w>-j\}$.
+As $-qj\leq s_j\leq0$, capacity normalization gives
+\[
+ \mu_{s_j}(\{w\leq-j\})
+       \leq(qj)^q\operatorname{Cap}_S(\{w<-j/2\};V)
+                                     \longrightarrow0.
+ \tag{BC11}
+\]
+The mass of $\mu_w$ on the same compact tails tends to zero.
+Hence $\mu_{s_j}\to\mu_w$ in total variation on $V$.
+
+The positive bounded mixed expansion gives $q!M_j\leq\mu_{s_j}$.
+The complement of $E_j$ is contained in $\{w\leq-j\}$.
+Equation (BC11) therefore makes the discarded part
+$\mathbf1_{V\setminus E_j}M_j$ tend to zero in mass. Frozen
+strict maximum locality gives consistency on $E_j$, exactly as
+in (UC2). Their increasing limit is bounded locally by the
+already bounded family $\mu_{s_j}/q!$, so is locally finite.
+Its mass on $V\setminus E_j$ tends to zero, since these tails
+are eventually compact and decrease to the union of the pole sets.
+This proves (BC7)--(BC8).
+
+For completeness consider independent levels $l_i\geq m$. Fix
+$M>0$ and let $K=\overline{\{w<-M\}}$. Whenever all levels
+exceed $M$, all the truncated slots agree with their actual values
+outside $K$. A slot-by-slot bounded telescoping identity and
+compact Stokes, exactly as in (BC2), show that the integral of
+the mixed measure against any fixed cutoff $\chi=1$ near $K$
+is independent of all the levels. Passing to the common-level
+limit using (BC8) shows that this integral equals $\int\chi\,dM$.
+For $m>M$, strict locality gives equality with $M$ on $E_m$,
+whereas $V\setminus E_m\subset K$. Subtracting these equal
+cutoff integrals yields
+\[
+ T_{S,q}(u_{1,l_1},\ldots,u_{q,l_q})(V\setminus E_m)
+                            =M(V\setminus E_m).
+\]
+Consequently the total variation of the difference is at most
+$2M(V\setminus E_m)$, which tends to zero. This proves independence
+of the truncation rates.
+
+Bounded polarization gives (BC9) at level $j$. For every subset
+$I$, the preceding argument with $s_{I,j}=\sum_{i\in I}u_{i,j}$
+shows $\mu_{s_{I,j}}\to\mu_{\sum_{i\in I}u_i}$ in total
+variation; the empty subset contributes zero. Passing in the finite
+polarization identity proves (BC9).
+
+Here is also a direct justification of all multilinearity claims.
+For any finite family in the cone and fixed positive coefficients
+$c_i$, put $A=\sum_i c_i$ and $c=\min_i c_i>0$. With
+$s_j=\sum_i c_i u_{i,j}$ and $w=\sum_i c_i u_i$ one has
+\[
+                    \max(s_j,-cj)=\max(w,-cj).
+\]
+The preceding locality proof applies, and its discarded mass is
+at most $(Aj)^q\operatorname{Cap}_S(\{w<-cj/2\};V)$, which
+tends to zero by the tail criterion. Thus the positive bounded
+polynomial expansion of $\mu_{s_j}$ passes to the limit for
+every set of coefficients. Comparing coefficients in these finite
+polynomial identities proves additivity and positive homogeneity
+in each slot, with zero coefficients omitted. Symmetry is inherited
+from the bounded products. No signed current order or PS quotient
+is used.
+\end{proof}
+
+\begin{lemma}[Uniform tails above one no-loss lower barrier]
+\label{lem:r11-uniform-upper-tail}
+If $u,v\in\mathcal F_{S,\partial}(V)$ and $u\leq v\leq0$,
+then for every $t>0$,
+\[
+                 \mu_v(\{v<-t\})
+                      \leq2^q\mu_u(\{u<-t/2\}).
+ \tag{BC12}
+\]
+The right side is finite, and tends to zero as $t\to\infty$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} from the
+one-sided comparison theorem and the solid boundary cone.
+
+\begin{proof}
+Scaling and addition of constants have their expected action on
+(UC3): $\mu_{au-b}=a^q\mu_u$ for $a>0$, $b\geq0$.
+Indeed, on each $\{u>-k\}$ and for $j>ak+b$, write
+$au_k-b=\max((au-b)_j,-ak-b)$ and apply strict maximum
+locality and bounded scaling. Exhaust the finite-value locus;
+both sides vanish on its complement.
+Now $2u$ belongs to the boundary class and
+$\mathrm{BG}(2u,v-t)$ holds because its positive-margin gaps lie
+in compact strict negative sublevels of $u$. Moreover,
+\[
+       \{-\infty<v<-t\}\subset\{2u<v-t\}
+                                      \subset\{u<-t/2\}.
+\]
+Apply (UC10) to $2u,v-t$ and use the scaling and translation
+identities. The omitted set $\{v=-\infty\}$ is $\mu_v$-null
+by its definition; no literal strict-gap inclusion at a common
+pole is asserted. This proves (BC12). The limiting assertion follows
+from local finiteness on a fixed compact tail and zero mass on
+the pole set.
+\end{proof}
+
+\begin{theorem}[Joint decreasing continuity in the boundary class]
+\label{thm:r11-boundary-joint-decreasing}
+For $1\leq i\leq q$, suppose $v_{i,l}$ are negative extended
+classical psh functions and
+\[
+              v_{i,l}\downarrow u_i\in\mathcal F_{S,\partial}(V)
+                         \quad\hbox{pointwise on }V.
+ \tag{BC13}
+\]
+Then every $v_{i,l}$ belongs to the same boundary class, and
+\[
+       M(v_{1,l},\ldots,v_{q,l})
+                       \longrightarrow M(u_1,\ldots,u_q)
+ \tag{BC14}
+\]
+against every original compact smooth scalar test. No uniform
+superlinear energy bound is needed. The conclusion is ordinary
+current convergence, not convergence on arbitrary delta tests.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} in this top-degree
+no-loss boundary class.
+
+\begin{proof}
+Membership follows from upward stability. Put $w=\sum_i u_i$
+and $w_l=\sum_i v_{i,l}$, so $w\leq w_l\leq0$. Let
+$M_l=M(v_{1,l},\ldots,v_{q,l})$ and let $M_{l,k}$ be the
+bounded mixed product with every slot truncated at $-k$.
+They agree by strict locality on
+$E_{l,k}=\bigcap_i\{v_{i,l}>-k\}$. The positive mixed expansion
+and (BC12) give
+\[
+ M_l(V\setminus E_{l,k})
+ \leq {1\over q!}\mu_{w_l}(\{w_l\leq-k\})
+ \leq {2^q\over q!}\mu_w(\{w<-k/4\}).
+ \tag{BC15}
+\]
+In the last step use $\{w_l\leq-k\}\subset\{w_l<-k/2\}$
+before applying (BC12).
+The sum of the $q$ bounded truncated slots lies in $[-qk,0]$.
+Also $V\setminus E_{l,k}\subset\{w\leq-k\}$. Capacity
+normalization, the positive expansion and the first inequality
+of (BC4) therefore give
+\[
+ M_{l,k}(V\setminus E_{l,k})
+ \leq{(qk)^q\over q!}\operatorname{Cap}_S(\{w<-k/2\};V)
+ \leq{q^q4^q\over q!}\mu_w(\{w<-k/4\}).
+ \tag{BC16}
+\]
+The right sides are independent of $l$ and tend to zero.
+Because the measures agree on $E_{l,k}$, their sum bounds the
+total variation of $M_l-M_{l,k}$ on all of $V$.
+
+For fixed $k$, the bounded functions
+$\max(v_{i,l},-k)$ decrease jointly to $\max(u_i,-k)$.
+Frozen bounded joint decreasing continuity gives convergence of
+$M_{l,k}$ against every original compact smooth test as
+$l\to\infty$. Apply the uniform tail bounds to the two ends
+of this convergence, then let $k\to\infty$ and use (BC8) for
+the limiting tuple. This proves (BC14) for the full original
+test family. The two limits are separated by explicit uniform
+total-variation bounds; no varying-background continuity or
+unproved capacity regularity is inserted.
+\end{proof}
+
+\begin{corollary}[Outer-capacity domination in the boundary class]
+\label{cor:r11-boundary-outer-domination}
+Let $u\in\mathcal F_{S,\partial}(V)$ and let $v$ be any
+negative extended classical psh function. The strict actual gap
+$A=\{u<v\}$ is relatively quasi-open for the fixed capacity:
+for each $\eta>0$ there is an ordinary open $G\subset V$ with
+$\operatorname{Cap}_S(G;V)<\eta$ such that $A\cup G$ is
+ordinary open. In particular,
+\[
+                 \operatorname{Cap}_S^*(A;V)
+                              =\operatorname{Cap}_S(A;V).
+ \tag{BC17}
+\]
+If either $\mu_u(A)=0$ or
+$\mathbf1_A\mu_u\leq\mathbf1_A\mu_v$, then
+\[
+                        \operatorname{Cap}_S^*(A;V)=0.
+ \tag{BC18}
+\]
+If $u,v\in\mathcal F_{S,\partial}(V)$ and $\mu_u=\mu_v$,
+then $\operatorname{Cap}_S^*(\{u\ne v\};V)=0$.
+These conclusions do not assert actual pointwise equality for a
+degenerate background.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} from the solid
+cone, the new unbounded outer quasicontinuity, and one-sided
+domination. Equality of raw and outer capacities is proved only
+for these specified strict-gap sets.
+
+\begin{proof}
+Put $z=\max(u,v)$. Upward stability makes $z$ a member of the
+boundary class even when $v$ itself is not. The exact identity
+$A=\{u<z\}$ holds, including the extended values. Since $z\leq0$,
+each set $\{u<z-1/m\}$ has compact closure in $V$.
+Choose compact neighborhoods $H_m\Subset V$ of these closures,
+with ordinary interiors, and set $W=\bigcup_m\operatorname{Int}_X H_m$.
+Then $A\subset W$.
+
+Apply Corollary~\ref{cor:r11-unbounded-outer-quasicontinuity} to
+$u$ and $z$ on each $H_m$, with total error budget less than
+$\eta2^{-m}$. Let $G$ be the union of the resulting ordinary
+open exceptional sets. Countable subadditivity gives
+$\operatorname{Cap}_S(G;V)<\eta$, and $u,z$ are finite and
+continuous on $W\setminus G$: this follows locally from the
+cover by the interiors of the $H_m$. Thus $A\setminus G$ is
+relatively open in $W\setminus G$. There is an ordinary open
+$O\subset W$ with $O\setminus G=A\setminus G$.
+Consequently $A\cup G=O\cup G$ is ordinary open. By (UC22),
+\[
+ \operatorname{Cap}_S^*(A;V)
+ \leq\operatorname{Cap}_S(A\cup G;V)
+ \leq\operatorname{Cap}_S(A;V)+\operatorname{Cap}_S(G;V).
+\]
+Let $\eta\downarrow0$ and use the opposite inequality from
+monotonicity to prove (BC17).
+
+The condition $\mathrm{BG}(u,v)$ is automatic, since
+$\{u<v-\varepsilon\}\subset\{u<-\varepsilon\}$.
+Theorem~\ref{thm:r11-unbounded-capacity-domination} therefore
+gives raw nullity under either printed measure hypothesis;
+(BC17) upgrades it to (BC18). For equal measures and two class
+members, apply this argument in both orders and take the union
+of the two strict gaps.
+\end{proof}
+
+\paragraph{Scope and unsolved gates.}
+The boundary class is strictly smaller than all negative extended
+classical psh functions: the logarithmic example in
+Proposition~\ref{prop:r11-logarithmic-comparison-failure} has
+persistent discarded mass and fails the equivalent capacity-tail
+criterion. The present top calculus has genuine unbounded members,
+for example all radial attenuations $u_a$ with $0<a<1$ from
+Section~\ref{sec:r11-radial-unbounded-energy}. It supplies no lower-degree
+closedness without additional input, no arbitrary-boundary Perron
+solution, and no GQ or CTO relation descent.

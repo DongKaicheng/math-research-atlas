@@ -99,10 +99,13 @@ the current page must not present a withdrawn result as valid.
 3. Inspect the rendered overview, Progress, route pages, formal papers, equations,
    and PDF downloads. Check a narrow layout and keyboard navigation.
 4. Verify version links, permanent result links, canonical URLs, and the sitemap.
-   Confirm paper hashes refer to the exact public bytes. For a new formal
-   edition, run `npm run freeze:release`, rebuild, then run `npm run check`
-   and `npm run check:release`. Include the frozen files and checksum manifest
-   in the same publication change. Do not copy old freeze markers into a draft.
+   Confirm paper hashes refer to the exact public bytes. For Beilinson–Bloch,
+   rebuild and review papers in a new draft, then run `npm run freeze:release`.
+   For Bedford–Taylor, use the audited reading-receipt import procedure below.
+   Rebuild, then run `npm run check` and `npm run check:release`; the release
+   check verifies both projects. Include each new edition’s frozen files and
+   checksums, plus its source receipt where applicable, in the publication change.
+   Do not copy old review or freeze markers into a draft.
 5. Audit public text, PDF metadata, TeX, JSON, and archive members for unintended
    names, private paths, email addresses, credentials, or private correspondence.
    Preserve legitimate external bibliographic attribution.
@@ -115,6 +118,82 @@ the current page must not present a withdrawn result as valid.
 The Pages workflow builds from `main`. Browser-visible success, automated checks,
 deployment success, and mathematical review are separate observations. Report
 only checks actually performed.
+
+## Beilinson–Bloch editions
+
+The current project address is `/projects/strong-green/`; exact editions live
+under `/projects/strong-green/editions/<edition>/`. The current pointer is
+`content/strong-green/current.json`, and the corresponding Atlas project card
+must name the same edition.
+
+Maintain mathematical records and full article HTML in
+`content/strong-green/releases/<edition>/`. Follow the
+[paper rebuilding workflow](https://github.com/DongKaicheng/math-research-atlas/blob/main/docs/PAPERS.md)
+to compile and inspect matching TeX, PDF and HTML in a new unpublished draft.
+Reconcile their hashes and affected mathematical records, then use
+`npm run freeze:release` for the completed Beilinson–Bloch edition. Keep the
+previous pages and downloads unchanged under their old version addresses.
+
+The ordinary website build consumes the checked-in paper artifacts; it does
+not execute TeX or recompile contributor uploads. `strong-green/views/` controls
+future page presentation; it must not change an already frozen edition.
+
+## Bedford–Taylor editions
+
+The public project has a stable current address at
+`/projects/bedford-taylor/` and exact editions below
+`/projects/bedford-taylor/editions/<edition>/`. The initial unsigned snapshot is `v1.0.0`; current publication `v1.0.1`
+adds the completed feedback and source-scope review of 18 November 2026. Both preserve the recovered research statuses. It does not claim that
+the research programme or every recorded proof has been completed.
+
+The source of a mathematical correction remains the maintained mathematical
+project. Revise the relevant definitions, statements and proofs there, check
+affected dependencies, and rebuild matching HTML, TeX and PDF reading copies.
+Do not correct a PDF or a rendered theorem in isolation. Run the unsigned
+reading-export audit before importing the next publication.
+
+The import adapter uses an exact file allowlist, not a whole-workspace copy.
+For a newly audited reading export, capture a new receipt containing the source
+commit, edition, audit identity, paths, sizes and SHA-256 values:
+
+```sh
+node scripts/import-bedford-taylor.mjs --source <audited-reading-dist> --capture-receipt <absolute-new-path-in-content/bedford-taylor/source-receipts> --source-commit <exact-source-commit> --audit-report <passing-reading-export-audit.json>
+```
+
+Capturing a receipt records bytes; it does not approve them. Inspect the source
+diff and completed audit with the proposed publication change. Then create a
+new edition using the accepted receipt:
+
+```sh
+node scripts/import-bedford-taylor.mjs --source <audited-reading-dist> --edition <new-edition> --receipt <accepted-source-receipt.json>
+```
+
+The importer refuses to replace an existing edition and does not move an
+existing current pointer. After inspection, update
+`content/bedford-taylor/current.json`, preserve the previous Atlas bundle in
+`content/history/bedford-taylor/`, and increment the publication record in
+`content/projects/bedford-taylor.json`. Record the actual change and any related
+Issues or Pull Requests; leave those references absent when none exists.
+
+Run the full build, tests and release check. The Pages workflow checks frozen
+file membership and hashes, source receipts, links, and append-only history
+before deployment. It does not execute uploaded contributor files or compile
+unreviewed TeX. Review PDF text and metadata when preparing the reading edition;
+the public build additionally verifies that it serves those exact PDF bytes.
+
+The website's Versions page links each fixed edition and its checksums. The
+older Atlas outline is retained as an explicitly unsigned historical reading
+copy. The two inherited ZIP filenames both provide the current edition's
+unsigned reading-source package, as their README explains; their filenames do
+not certify a historical snapshot. Never describe them as untouched old archives.
+
+Very large rendered HTML pages may be stored losslessly in a release's
+`packed/` directory, indexed by `packed-assets.json`. The ordinary build restores
+their exact public paths and checks both compressed bytes and the original
+frozen manifest before using them. This storage choice does not alter the
+published file, its URL or checksum. Keep the packed bytes and index immutable
+with the release. A clean checkout must run the build before the read-only
+release check; do not hand-edit the restored, ignored HTML copies.
 
 ## Historical material and privacy
 
@@ -166,3 +245,41 @@ the contribution.
 See the [reader guide](https://dongkaicheng.github.io/math-research-atlas/feedback/guide/) and GitHub's current documentation for
 [file attachments](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/attaching-files)
 and [issue-form fields](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema).
+
+
+## Coordinating parallel project updates
+
+Each project uses its own source directory, result IDs, current-edition pointer
+and fixed edition directories. Shared navigation, feedback and deployment are
+one atlas-wide implementation. Do not copy an older complete atlas over the
+current repository when importing a project. Bring in the project-specific
+adapter and release files, then integrate their routes and search records with
+all other current projects.
+
+Start from the actual remote branch. Before publication fetch again, compare
+the current head with the recorded base, and merge independent updates. If a
+shared file conflicts, reconcile both project adapters and both release checks;
+do not pick one whole file merely to resolve the conflict. Publish by a
+non-force branch update, so a concurrent change cannot be overwritten.
+
+The Pages workflow compares protected paths against the real push or pull
+request base and fails in CI when the base is missing. This check protects all
+project release directories, source receipts and historical snapshots. A
+current-edition pointer may change; the fixed files it names may not.
+
+## Resuming Bedford–Taylor research
+
+The recovered research baseline is Round 13 / checkpoint v32, with the R v2.6
+regularization manuscript and B v0.1 bounded-calculus manuscript. The reading
+edition includes 74 thematic records, 26 definition groups, 66 formal
+statements, 14 formal open items and 105 source files. Source status and
+independent proof acceptance remain distinct. The full historical R21 ZIP/PDF
+is still unavailable; its recovered appendices do not replace it.
+
+The next substantive research task is actual analytic curvature-relation
+descent for the allowed original backgrounds. The supplied normal-three
+quadratic model gives vanishing away from the centre and a central coefficient
+expressed by the tangent pairing. The general vanishing of that coefficient
+remains open. Preserve these hypotheses, the original field and absolute value,
+full test classes and ordinary locality in future work. Update an exact source
+and its affected dependencies before changing a public status.

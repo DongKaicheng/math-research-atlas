@@ -1,0 +1,292 @@
+\section{Disintegration into original ambient currents}
+\label{sec:r12-original-current-disintegration}
+
+The closed parameter bands admit a genuine local disintegration,
+but its conditional currents remain on the original ambient
+$K$-analytic space. They are not currents on a newly introduced
+residue-field analytic space. This distinction is essential for
+using the frozen arbitrary-background BT theorem without changing
+its field or its test sheaf.
+
+Throughout this section $U$ is second countable in addition to the
+standing original hypotheses. The conclusion is ordinary-local on
+every space in the project: every point has an ordinary neighborhood
+of this kind, as proved below. Let $s:U\to J\subset\mathbf R^c$ be
+the original parameter map, and let $R$ be an allowed $s$-background.
+
+\subsection{A countably cofinal system of original smooth tests}
+
+\begin{lemma}[Local countability does not discard actual refinements]
+\label{lem:r12-countably-cofinal-original-tests}
+Every point of an allowed original analytic space has a second
+countable ordinary neighborhood. On any such $U$, the original
+compact smooth CLD test spaces in all bidegrees admit a countable
+cofinal family of finite moment-and-cutoff presentation stages.
+Each stage is a quotient of a separable smooth coefficient space,
+has a countable dense subset, and has a countable dense subset in
+its original middle-positive cone. All equality kernels between
+the stages can likewise be checked on countably many dense
+coefficient relations.
+
+More precisely, every original compact test, including a test
+initially represented after an arbitrary actual refinement, is a
+finite sum of tests in these stages. Approximation within each
+stage is in its usual smooth coefficient topology on one fixed
+compact support. No assertion about all GK delta-tests is made.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the exact
+original-test cofinality used in the conditional-current argument.
+The original smooth cutoff/partition and common-moment properties
+are frozen \texttt{INTERNAL\_INPUT}s.
+
+\begin{proof}
+The finite extension $K/\mathbf Q_p$ is separable as a metric field.
+Every $K$-affinoid algebra is a quotient of a generalized Tate
+algebra in finitely many variables. Polynomials with coefficients
+in a fixed countable dense subfield, followed by passage to the
+quotient, give a countable dense subset of that Banach algebra.
+This argument also applies to non-strict radii: finite polynomials
+are dense in the defining weighted completion.
+
+The Berkovich spectrum of a separable affinoid algebra is compact
+metrizable. Indeed a countable dense set of functions determines
+each bounded multiplicative seminorm, and all remaining evaluations
+are uniform limits of these evaluations, since
+$\bigl||f(x)|-|g(x)|\bigr|\le\|f-g\|$. The spectrum embeds
+continuously and injectively in a countable product of compact
+real intervals. Compactness and the Hausdorff property identify
+its topology with that induced metric topology. By goodness, an
+ordinary point has an affinoid neighborhood; its ordinary interior
+is the required second countable neighborhood.
+
+On a second countable good $U$, choose a countable collection of
+affinoid neighborhoods whose ordinary interiors form a basis.
+To construct it, for each member of a countable topological basis
+cover its points by affinoid interiors contained in that member,
+and choose a countable subcover. Choose a countable dense subset
+$D_B$ of each resulting affinoid algebra $\mathcal O(B)$.
+Whenever $g$ is an analytic unit on a neighborhood of $B$, choose
+$g_0\in D_B$ with
+\[
+ \|g-g_0\|_B<\min\left\{\inf_{x\in B}|g(x)|,\|g^{-1}\|_B^{-1}\right\}.
+ \tag{DI1}
+\]
+The right side is positive by compactness and invertibility. The
+ultrametric inequality gives $|g_0|=|g|$ on $B$, and the Neumann
+series applied to $1+g^{-1}(g_0-g)$ makes $g_0$ a unit there. Their actual
+logarithmic moment functions and their original differentials
+therefore agree exactly on the ordinary interior. Thus every finite
+actual moment tuple on a compact local stage is replaceable, after
+finite ordinary localization, by a tuple from a countable family.
+This applies equally to arbitrary extra units in a refinement.
+
+Fix countably many original smooth cutoffs for pairs of basis
+neighborhoods with nested compact closures, equal to one on the
+smaller compact and supported in the larger. The frozen cutoff
+theorem supplies each such choice. Include the finitely many
+moments used by each cutoff in the countable family; finite unions
+and finite common refinements remain countable. A finite collection
+of these cutoffs covers the support of any test. Normalizing their
+sum on a neighborhood of that support yields a finite smooth
+partition and reduces the test to compact stages in the stated
+countable family.
+
+For a fixed tuple and cutoff, write its coefficient arrays on
+real coordinate neighborhoods. Use a countable exhaustion by
+rational real balls and compact coordinate cores. The corresponding
+$C^\infty$ coefficient spaces are separable metrizable spaces;
+finite products and their quotients have the same property. The
+actual zero-form conditions on a fixed moment image are closed
+linear conditions, obtained by restrictions to its relevant tangent
+spaces. The smooth coefficient relations comparing two stages can
+be imposed on their countable common refinements; their kernels
+are separable subspaces. Choose a countable dense subset in each
+such kernel. The preimage of the middle-positive cone is likewise
+a subspace subset of a second countable metric coefficient space,
+and hence is separable; choose dense positive representatives.
+These choices prove all countability assertions. No rationality of
+the real coefficients of a test is required: only density within
+its fixed smooth presentation is used.
+\end{proof}
+
+\begin{lemma}[A recalled Radon disintegration construction]
+\label{lem:r12-Radon-conditional-measures}
+Let $M$ be a locally compact second countable Hausdorff space,
+$s:M\to J$ continuous, and $\mu$ a finite positive Radon measure.
+Put $\nu=s_*\mu$. There is a measurable family of positive Radon
+probability measures $\mu_a$, for $\nu$-almost every $a$, carried
+by $s^{-1}(a)$, such that for every nonnegative Borel $F$,
+\[
+                       \int_M F\,d\mu
+                          =\int_J\left(\int_M F\,d\mu_a\right)d\nu(a).
+ \tag{DI2}
+\]
+The identity also holds after insertion of any bounded Borel
+parameter weight. Integrable signed functions are allowed.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{EXTERNAL\_KNOWN}} as the usual
+Radon conditional-measure theorem. The construction below records
+the countable version needed here, using Radon--Nikodym and Riesz
+representation only.
+
+\begin{proof}
+Take a countable dense rational vector lattice in $C_0(M)$, enlarged
+to include a compact approximate unit $\chi_m\uparrow1$, and products
+with pullbacks of a countable determining algebra in $C_c(J)$.
+For each chosen $f$, the signed measure
+$E\mapsto\int_{s^{-1}(E)}f\,d\mu$ is absolutely continuous with
+respect to $\nu$. Choose its Radon--Nikodym derivative $g_f$.
+Outside one null set the maps $f\mapsto g_f(a)$ are rational-linear,
+positive, bounded by $\|f\|_\infty$, and satisfy
+\[
+                  g_{\phi(s)f}(a)=\phi(a)g_f(a).
+\]
+There are only countably many identities and inequalities to impose.
+Extend by continuity to $C_0(M)$ and apply Riesz representation to
+obtain $\mu_a$ of mass at most one. The approximate unit and
+monotone convergence show that its mass equals one almost everywhere:
+the increasing limit of $g_{\chi_m}$ has integral $\nu(J)$ and is
+bounded above by one. The displayed multiplication identity then
+gives $s_*\mu_a=\delta_a$, first on the determining continuous
+algebra and then on Borel sets. Thus $\mu_a$ is carried by
+$s^{-1}(a)$.
+
+The derivatives $g_f$ supply measurability and (DI2) on the chosen
+algebra. Uniform approximation extends these assertions to
+$C_0(M)$; the monotone-class theorem extends them to nonnegative
+Borel functions. Multiplication by a bounded Borel function of
+$s$ gives the weighted version. The signed assertion follows from
+positive and negative parts. No regularity of a conditional density
+in $a$ is asserted.
+\end{proof}
+
+\subsection{Conditional currents retain the entire original test sheaf}
+
+\begin{theorem}[Disintegration of a parameter-annihilated original current]
+\label{thm:r12-original-current-disintegration}
+Let $R$ be an allowed $s$-background on second countable $U$.
+There is a finite positive Radon control measure $\nu$ on $J$ and
+a measurable family of original currents $R_a$ on the same $U$
+such that, for $\nu$-almost every $a$,
+\begin{enumerate}
+\item $R_a$ is symmetric, middle-positive, separately $d'$- and
+$d''$-closed, coefficient-Radon, and $s$-annihilated;
+\item its coefficient measures are carried by $s^{-1}(a)$;
+\item for every Borel $E\subset J$ and every original compact
+smooth test $\eta$,
+\[
+               \langle R_E,\eta\rangle
+                    =\int_E\langle R_a,\eta\rangle\,d\nu(a).
+ \tag{DI3}
+\]
+\end{enumerate}
+Local coefficient variations of the family are $\nu$-integrable.
+The exceptional set can be chosen once for all original tests and
+all actual moment refinements. For the chosen control measure $\nu$,
+the family is unique up to one $\nu$-null set as original currents.
+At every parameter atom of positive $\nu$-mass,
+\[
+                       R_a=\nu(\{a\})^{-1}R_{\{a\}}.
+ \tag{DI4}
+\]
+The normalization measure is not claimed to be canonical; the
+closed-band current-valued measure $E\mapsto R_E$ is canonical.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for original
+all-test currents. This is not an auxiliary-field current theorem.
+
+\begin{proof}
+Choose the countably cofinal stages of
+Lemma~\ref{lem:r12-countably-cofinal-original-tests}. On each stage,
+use a finite constant exterior coefficient frame with a fixed
+compact cutoff. The coefficient-Radon property gives finitely many
+finite signed Radon measures representing all its test pairings.
+List the resulting countable collection as $(\mu_j)_{j\ge1}$,
+including finitely many positive domination controls on every stage.
+The measure
+\[
+            \mu=\sum_{j\ge1}
+                    \frac{2^{-j}}{1+\|\mu_j\|_{\mathrm{TV}}}|\mu_j|
+ \tag{DI5}
+\]
+is finite positive Radon and dominates every listed coefficient
+measure by a fixed constant depending on its index. Thus every
+fixed compact coefficient frame is bounded by $C\mu$, not merely
+absolutely continuous without quantitative control.
+If $R=0$ the theorem is trivial; otherwise discard any
+zero summands and put $\nu=s_*\mu$.
+
+Write $\mu_j=g_j\mu$ using Borel versions of their Radon--Nikodym
+densities, and disintegrate $\mu$ by the preceding lemma. Outside
+one $\nu$-null set all $\int|g_j|\,d\mu_a$ are finite. Put
+$\mu_{j,a}=g_j\mu_a$. On a given stage these finitely many signed
+Radon measures define an order-zero functional on its smooth
+coefficient arrays.
+
+We check that these functionals give an original current, rather
+than independent unrelated functions on the chosen stages. For
+each of the countably many dense zero-form relations from the
+cofinality lemma, its original coefficient measure is zero, hence
+its conditional pairing is zero almost everywhere. Impose all
+these equalities outside one null set. Each conditional stage
+functional is continuous for the smooth coefficient topology,
+by its finite coefficient-variation bound, so it kills the entire
+closed relation kernel. The same reasoning on common stages
+identifies any two representations. Consequently the functionals
+extend to one coefficient-Radon original current $R_a$ on all
+compact original smooth tests. The measure construction proves
+(DI3), first on the countable stages and then on every test.
+Its finite stage variations are integrable because
+\[
+                 \int_J\int|g_j|\,d\mu_a\,d\nu
+                                           =\int|g_j|\,d\mu<\infty.
+ \tag{DI6}
+\]
+
+For every positive test in the chosen countable dense family,
+positivity of every $R_E$ in (DI3) forces
+$\langle R_a,\eta\rangle\ge0$ almost everywhere. Impose these
+countably many inequalities simultaneously; continuity on each
+stage gives positivity on its full middle-positive cone. Thus
+$R_a$ is middle-positive, not merely positive on decomposable or
+strongly positive tests. The same countable argument applied to
+the symmetry identities gives symmetry.
+
+Every $R_E$ is separately closed by the new closed-band theorem.
+For each test $\alpha$ in a countable dense source stage,
+(DI3) applied to $d'\alpha$ gives
+\[
+                      \int_E\langle R_a,d'\alpha\rangle\,d\nu=0
+                           \qquad\text{for all Borel }E.
+\]
+Its integrand is therefore zero almost everywhere. Impose the
+countably many prime and double-prime equations and extend by
+continuity of the differentials on each source stage. This proves
+separate closedness on all original tests. The identical argument
+for $d's_i\wedge R_E$ and $d''s_i\wedge R_E$ proves (PB2) for
+$R_a$. The support assertion follows from that of $\mu_a$.
+Set $R_a=0$ on the one exceptional null set if a family indexed by
+every parameter is desired; no potential function is changed.
+
+Uniqueness follows from (DI3) on a countable determining family:
+two families have equal pairings there almost everywhere, and
+continuity then identifies their original currents. Applying (DI3)
+to $E=\{a\}$ proves (DI4). A null exceptional set cannot contain
+an atom of positive $\nu$-mass. All refinements were included in
+the exact cofinality lemma, so the conclusion is not a statement
+only on the initial countable moment names.
+\end{proof}
+
+\paragraph{The scope of the conditional object.}
+Each $R_a$ is an original $K$-current on $U$, tested by the entire
+ambient original sheaf, including moments with genuine mixed
+dependence on any parameter and fiber coordinates. The theorem
+does not identify it with a current on $Y$, on a norm-level
+polyhedron, or on a completed-residue-field analytic fiber.
+It asserts no inverse to a geometric pushforward. Its use in the
+next section is legitimate precisely because the frozen BT theorem
+already permits every original positive separately closed current
+on $U$, including these conditional ones.

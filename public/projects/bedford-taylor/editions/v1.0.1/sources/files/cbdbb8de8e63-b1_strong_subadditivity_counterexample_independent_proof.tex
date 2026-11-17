@@ -1,0 +1,120 @@
+\section{An independent derivation of the three-arm obstruction}
+\noindent\textbf{Status.} \texttt{PROVED-INTERNAL}: failure of strong subadditivity of the original outer capacity in every ambient dimension $n\ge2$, with remaining degree $q=1$. This does not refute Borel compact-inner regularity, because strong subadditivity is not a necessary axiom of a Choquet capacity.
+
+Use the original torus, box $V$, normalized moment map $\tau:V\to Q=(-1,1)^n$, and smooth positive background $S=\beta^{n-1}[X]$ from the audited linear trace lemma. Put
+\[
+ \gamma=(n-1)!\lambda^{n-2}.
+\]
+That lemma, for every bounded original normalized classical psh tester $a$, gives a continuous convex $g:Q\to[0,1]$ with
+\[
+ \tau_*(Da\wedge S)=\gamma\Delta g.
+ \tag{SA1}
+\]
+It uses the convex almost-everywhere representative of $a\circ\sigma$, not an unproved pointwise identification.
+
+Fix $0<r<1/3$. In $(-1,1)^2$ let
+\[
+ C=\{(0,-s):0\le s\le r\},\quad
+ D=\{(s,0):0\le s\le r\},\quad
+ E=\{(-s,0):0\le s\le r\},\quad
+ A=C\cup D,\quad B=C\cup E.
+\]
+Write $J=[-r,r]^{n-2}$, with the usual singleton and volume-one convention if $n=2$, and put
+\[
+ \widehat F=\tau^{-1}(F\times J)\quad(F=A,B,C,D,E),\qquad
+ \kappa=\gamma(2r)^{n-2}.
+\]
+These are compact subsets in the original ordinary topology; no assumption that their inverse images consist only of skeleton points is made.
+
+\begin{lemma}[Paired jumps on adjacent perpendicular arms]
+For every convex $g:(-1,1)^2\to[0,1]$,
+\[
+ \Delta g(C)\le2r,\qquad
+ \Delta g(A)\le {2r\over1-r},\qquad
+ \Delta g(B)\le {2r\over1-r}.
+ \tag{SA2}
+\]
+\end{lemma}
+\begin{proof}
+The slice formula gives
+\[
+ \partial_{xx}g(C)=\int_0^r
+ \bigl(\partial_{x,+}g(0,-s)-\partial_{x,-}g(0,-s)\bigr)\,ds.
+\]
+The transverse Lebesgue factor in the other slice formula gives
+$\partial_{yy}g(C)=0$. Every slice at $x=0$ has derivative jump at most $2$, by secants toward $x=\pm1$ and $0\le g\le1$. This proves the first bound. In particular, trace Hessian measures have no point atoms, so the common endpoint of the arms causes no additional term.
+
+Set $L=(1-r)^{-1}$. Every subgradient $p$ of $g$ at a point of $[-r,r]^2$ satisfies $|p_1|+|p_2|\le L$: apply the supporting inequality at displacement $(1-r-\varepsilon)(\operatorname{sgn}p_1,\operatorname{sgn}p_2)$ and then let $\varepsilon\downarrow0$.
+
+For almost every $s\in(0,r)$, the restrictions of $g$ to both axes are differentiable in their tangential directions at $(0,-s)$ and $(s,0)$. Thus all subgradients at the first point have the same second component $b$, and all those at the second have the same first component $c$. The projections of these compact subdifferentials onto the normal coordinate are intervals with endpoints the corresponding one-sided directional derivatives. Write their extremal elements as
+\[
+ p_C^+=(a,b),\quad p_C^-=(a-h,b),\qquad
+ p_D^-=(c,d),\quad p_D^+=(c,d+k),
+\]
+where $h,k\ge0$ are exactly the normal derivative jumps.
+Monotonicity of the subgradient map applied to $p_C^+$ and $p_D^-$ gives
+\[
+ (p_D^--p_C^+)\cdot(s,s)\ge0,
+ \qquad c+d\ge a+b.
+\]
+The $\ell^1$ bounds on $p_C^-$ and $p_D^+$ give
+\[
+ h\le a+L-|b|,\qquad k\le L-|c|-d.
+\]
+Therefore
+\[
+ h+k\le2L+a-d-|b|-|c|
+       \le2L+c-b-|b|-|c|\le2L.
+\]
+Only the normal components charge the respective arms: $\partial_{yy}g(C)=0$ and $\partial_{xx}g(D)=0$ by their transverse Lebesgue factors. Integrating $h+k$ in $s$ proves the bound for $A$. Reflection of the first coordinate proves the bound for $B$.
+\end{proof}
+
+\begin{lemma}[The needed outer upper bound is non-circular]
+For any compact $F\Subset Q$, the family $\mathcal C_n$ of convex functions $g:Q\to[0,1]$ satisfies
+\[
+ \inf_{F\subset U\Subset Q,\ U\text{ open}}\ \sup_{g\in\mathcal C_n}\Delta g(U)
+       =\sup_{g\in\mathcal C_n}\Delta g(F).
+ \tag{SA3}
+\]
+Consequently the right side, multiplied by $\gamma$, bounds the original $C_S^*(\tau^{-1}F;V)$ from above.
+\end{lemma}
+\begin{proof}
+Interior slope bounds and the Arzela--Ascoli diagonal argument make $\mathcal C_n$ compact for locally uniform convergence. Under such convergence the positive measures $\Delta g$ converge weakly on each protected compact region: distributional convergence follows immediately, and uniform local mass bounds upgrade it to convergence against continuous compact tests.
+
+Choose closed compact neighborhoods $F_j\downarrow F$ inside $Q$, and choose $g_j$ whose mass on $F_j$ is within $1/j$ of the supremum. Extract a locally uniformly convergent subsequence with limit $g$. For each fixed $m$, eventual containment $F_j\subset F_m$ and Portmanteau give
+\[
+ \lim_j\sup_{f\in\mathcal C_n}\Delta f(F_j)\le\Delta g(F_m).
+\]
+Let $m\to\infty$ and use continuity from above of this single locally finite measure. The result is at most $\sup_f\Delta f(F)$. Monotonicity supplies the reverse bound. Taking the interiors of the $F_j$ proves (SA3).
+
+For every original tester the pushforward is given by (SA1), so its mass on the ordinary open set $\tau^{-1}U$ is at most $\gamma\sup_g\Delta g(U)$. Taking these particular original open neighborhoods gives the claimed outer upper bound. This argument uses compactness of the explicit convex family, not a general Borel outer-regularity theorem for the original tester family.
+\end{proof}
+
+\begin{proposition}[Strict failure of original outer strong subadditivity]
+One has
+\[
+ C_S^*(\widehat C;V)=2r\kappa,\qquad
+ C_S^*(\widehat A\cup\widehat B;V)\ge4r\kappa,
+\]
+whereas
+\[
+ C_S^*(\widehat A;V),\ C_S^*(\widehat B;V)
+                         \le {2r\over1-r}\kappa.
+\]
+Since $\widehat A\cap\widehat B=\widehat C$, these imply
+\[
+ C_S^*(\widehat A\cup\widehat B;V)+C_S^*(\widehat A\cap\widehat B;V)
+ -C_S^*(\widehat A;V)-C_S^*(\widehat B;V)
+ \ge {2r(1-3r)\over1-r}\kappa>0.
+ \tag{SA4}
+\]
+At $r=1/6$, the left two capacities sum to at least $\kappa$, while the right two sum to at most $4\kappa/5$.
+\end{proposition}
+\begin{proof}
+For $n=2$, combine (SA2) and (SA3). The explicit normalized toric tester $|x|$ has trace source $2\delta_0(dx)\,dy$, so it gives $C$ mass $2r$. The tester $|y|$ gives $D\cup E$ mass $4r$. These provide the lower bounds using actual continuous classical psh testers and hence also lower bounds for outer capacity.
+
+For general $n$, fix the last $n-2$ coordinates and apply the two-dimensional calculation to the resulting convex slice, then integrate over $J$. The $x$ and $y$ Hessian components acquire the factor $(2r)^{n-2}$. Every Hessian component in one of the other coordinate directions gives $(A\cup B)\times J$ zero mass: its transverse projection includes the planar three-arm set, which has two-dimensional Lebesgue measure zero; the slice masses are locally uniformly bounded. The same applies to $A\times J$, $B\times J$, and $C\times J$. The explicit testers $|x|$ and $|y|$ are independent of the other coordinates and give exactly the claimed lower bounds. Finally multiply by $\gamma$ from (SA1) and apply (SA3) to the compact products.
+\end{proof}
+
+\paragraph{Limits of the conclusion.}
+The capacity, normalization, background, field, absolute value, and full tester class are unchanged. The counterexample concerns strong subadditivity, not ordinary subadditivity. It is an obstruction to a proposed route to B1, not a counterexample to B1 itself. The compact-set outer argument above is confined to this explicit moment-trace setting and cannot be exported to arbitrary compact sets or arbitrary backgrounds. No claim of worldwide novelty is made without a separate literature comparison.

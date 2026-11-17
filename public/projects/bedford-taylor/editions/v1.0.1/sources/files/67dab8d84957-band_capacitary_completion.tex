@@ -1,0 +1,508 @@
+\section{A capacitary completion with an intrinsic bounded current calculus}
+\label{sec:r12-band-capacitary-completion}
+
+Assume (CB1)--(CB2) and the containing-affinoid hypothesis
+(BQ4). Thus $R$ is still an original arbitrary middle-positive
+separately closed conormal current of remaining degree $k\geq1$.
+Put
+\[
+ \mathcal A_0=\mathcal A_s^{\rm band,ct}(V),\qquad
+ \gamma_0(E)=\sup_{h\in\mathcal A_0}\widetilde\mu_h(E),\qquad
+ \gamma_1(E)=C_R^{\rm band}(E;V,s).
+ \tag{BC1}
+\]
+The distinction is essential: $\mathcal A_0$ uses continuous
+actual branches, whereas $\gamma_1$ allows all bounded actual
+classical branches. Both capacities use their entire displayed
+tester families, and both are finite on compact sets. Write
+$\gamma_i^*$ for ordinary-open outer regularization, $i=0,1$.
+Then $\gamma_0\leq\gamma_1$, but equality is not assumed.
+
+We give one construction for either fixed choice $i\in\{0,1\}$.
+The self-generated case $i=0$ has the exact unchanged-outer-capacity
+conclusion. The stronger full-band control $i=1$ has only the
+one-sided comparison printed below.
+
+The bounded recursive completion method itself is an explicitly
+frozen input: R11 \path{capacity/barrier_relative_completion.tex},
+\path{lem:r11-analytic-bounded-completion}, transfers R2
+\path{capacitary_closure.tex}, \path{prop:r2-completion} and
+\path{thm:r2-completed-calculus}, to the original analytic setting.
+The proofs below verify that method for the new band seed and
+its two distinct capacities. They do not claim the first bounded
+arbitrary-background capacitary completion.
+
+\begin{definition}[The two explicitly normalized capacitary completions]
+\label{def:r12-band-capacitary-completion}
+Let $\mathfrak B_i(V)$ be the closure of $\mathcal A_0$ among
+Borel functions $V\to[0,1]$, modulo equality outside a locally
+$\gamma_i^*$-null set, for local convergence in outer
+$\gamma_i$-capacity. Thus a defining row satisfies
+\[
+ \gamma_i^*\bigl(H\cap\{|h_m-h|>\delta\}\bigr)\longrightarrow0
+       \quad(H\Subset V\text{ compact},\ \delta>0),
+       \qquad h_m\in\mathcal A_0.
+ \tag{BC2}
+\]
+No ambient classical psh representative of $h$ is required or
+asserted. Affine normalization extends the construction to any
+fixed bounded real range when that is needed.
+\end{definition}
+
+\begin{theorem}[Concrete completeness and quasicontinuity]
+\label{thm:r12-band-completion-metric}
+Each $\mathfrak B_i(V)$ is a complete metrizable space of actual
+Borel classes. Its members are locally ordinary-open outer
+$\gamma_i$-quasicontinuous. It is closed under finite convex
+combinations, maxima and the bounded operation
+$\max(f,g-\epsilon)$ for $\epsilon\geq0$.
+
+For an increasing compact exhaustion
+$H_l\subset\operatorname{Int}(H_{l+1})$ of $V$, one compatible
+metric is
+\[
+ \begin{split}
+ d_i(f,g)&=\sum_{l\geq1}2^{-l}\,\kappa_{i,l}(f,g),\\
+ \kappa_{i,l}(f,g)&=\inf\{\epsilon>0:
+  \gamma_i^*(H_l\cap\{|f-g|>\epsilon\})\leq\epsilon\}.
+ \end{split}
+ \tag{BC3}
+\]
+The terms lie in $[0,1]$ because all functions are normalized.
+Only a countable compact exhaustion of the ordinary geometry is
+used here; there is no countable-cofinal replacement of the
+capacity tester family.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the concrete
+completions of this seed class.
+
+\begin{proof}
+The affinoid space is metrizable over the original separable
+field, as in the exact test-countability argument (DI1), so its
+ordinary open $V$ has the stated compact exhaustion. The union
+bound for the two error sets and countable subadditivity of
+$\gamma_i^*$ give the triangle inequality for each
+$\kappa_{i,l}$, and hence for $d_i$. Vanishing distance is
+equivalent to equality outside a locally outer-null set: test
+the difference at thresholds $1/m$ and take the countable union.
+The same threshold argument shows that metric convergence is
+exactly (BC2).
+
+The entire space of normalized Borel classes is complete for
+this metric. Indeed take a Cauchy row and select a subsequence,
+still denoted $f_j$, such that
+\[
+ \gamma_i^*(H_j\cap\{|f_{j+1}-f_j|>2^{-j}\})<2^{-j}.
+\]
+Choose ordinary open covers $G_j$ of these error sets with
+$\gamma_i(G_j)<2^{1-j}$. The late-tail unions have capacity
+tending to zero. Off their limsup, the successive differences
+are eventually bounded by the summable sequence $2^{-j}$ on
+each compact core. Thus $f_j$ has a finite pointwise Borel
+limit there, lying in $[0,1]$. Set the limit equal to zero on
+the outer-null limsup. Uniform tail convergence outside the
+late open union proves local capacity convergence, and the
+Cauchy property returns the whole row to the same limit.
+The closed seed closure $\mathfrak B_i(V)$ is therefore complete.
+
+Each seed member is outer-$\gamma_1$-quasicontinuous by (BQ2),
+and hence is outer-$\gamma_0$-quasicontinuous. For a capacity
+limit of seed members, use the same fast-subsequence construction.
+On a fixed compact remove a late union of the error covers and
+also open quasicontinuity exceptions for the countably many
+approximants, assigning summable arbitrarily small capacities.
+Outside their union the approximants are continuous and converge
+uniformly. Their limit is continuous there. This proves the
+asserted quasicontinuity for either completion, and also proves
+that changing values on an outer-null set has no effect on it.
+
+The seed is closed under the printed finite operations: refine
+finitely many countable parameter partitions and apply the
+corresponding maximum or convex operation to their continuous
+actual classical branches. The outputs remain normalized. These
+operations are continuous for local capacity convergence, by
+their pointwise Lipschitz inequalities and a finite union of
+error sets. Taking seed limits proves the closure statements.
+\end{proof}
+
+\subsection{Construction on all original tests, before any compact restriction}
+
+\begin{theorem}[Intrinsic bounded products in the completion]
+\label{thm:r12-completed-band-products}
+For $h_1,\ldots,h_j\in\mathfrak B_i(V)$ and $0\leq j\leq k$,
+the recursion
+\[
+ \widehat T^{,i}_{R,0}=R,\qquad
+ \widehat T^{,i}_{R,j}(h_1,\ldots,h_j)
+    =D\bigl(h_1\widehat T^{,i}_{R,j-1}(h_2,\ldots,h_j)\bigr)
+ \tag{BC4}
+\]
+is well-defined on the actual Borel quotient and gives original
+symmetric middle-positive, separately closed, conormal
+coefficient-Radon currents. It is independent of all defining
+rows. For every original compact complementary test $\eta$,
+\[
+ \left|\mu_{\widehat T^{,i}_{R,j}(\mathbf h),\eta}\right|(E)
+                \leq C_\eta\gamma_i^*(E)
+                         \qquad(E\subset V\text{ Borel}),
+ \tag{BC5}
+\]
+where the constant is independent of the normalized completed
+tuple. For a diagonal top product the exact constant is one:
+\[
+       \widehat\mu^{,i}_h(E)
+           :=\widehat T^{,i}_{R,k}(h^{[k]})(E)
+                          \leq\gamma_i^*(E).
+ \tag{BC6}
+\]
+The products are symmetric and multilinear in the usual bounded
+positive-cone sense after affine normalization. They agree with
+the seed products, annihilate a constant differentiated slot,
+and have original smooth-factor compatibility. They are local
+on ordinary opens for equality of the Borel entries modulo the
+specified outer-null sets.
+
+Every equality is on every original compact smooth complementary
+test and every actual moment refinement. Ordinary-current
+equality is not promoted to equality on extra GK delta tests.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this completed
+bounded current calculus. Frozen bounded products enter only at
+the actual seed level.
+
+\begin{proof}
+First observe that (BQ5) for seed tuples holds with the smaller
+$\gamma_0$, not merely with $\gamma_1$. Its proof averages a
+finite seed tuple and one normalized original smooth compensator;
+that average is still in $\mathcal A_0$. Thus every seed
+coefficient has the bound $C_\eta\gamma_0(E)$, and hence the
+bound $C_\eta\gamma_i(E)$ for either choice of $i$.
+The same argument at degree zero controls the original background
+coefficients, so multiplication of $R$ by a bounded Borel
+$\gamma_i$-class is intrinsic.
+
+Induct on $j$. Assume the tail current $Q$ is constructed and
+all its seed approximating tails $Q_m$ converge to it on original
+tests, with (BC5). Each $h_1$ has the proved quasicontinuity.
+The proof of the weighted weak-passage lemma (BQ6)--(BQ7) applies
+unchanged when the limit coefficient bound is $C_\eta\gamma_i^*$:
+its fixed exceptional sets are ordinary open, on which
+$\gamma_i^*=\gamma_i$, and its varying-multiplier estimate uses
+outer capacity already. Therefore
+$h_{1,m}Q_m\to h_1Q$ on all original tests. Applying
+distributional $D$ proves convergence of the seed products to
+the intrinsic right side of (BC4).
+
+The seed coefficient variations are uniformly bounded on compact
+sets. Their distributional limit consequently has order-zero
+Radon coefficients and is the same original current. Positivity,
+symmetry, separate closedness and the conormal identities pass
+on arbitrary original tests. For each fixed coefficient measure,
+variation lower semicontinuity on an ordinary open $G$ gives
+\[
+        |\mu_{\widehat T,\eta}|(G)
+                 \leq\liminf_m|\mu_{T_m,\eta}|(G)
+                 \leq C_\eta\gamma_i(G).
+ \tag{BC7}
+\]
+One first tests continuous compact scalar factors; original
+smooth scalar density and the uniform coefficient bounds justify
+this passage from current convergence. Individual Radon outer
+regularity then proves (BC5) on every Borel $E$. In particular
+the new current ignores the specified outer-null sets, validating
+all Borel multiplications at the next induction step. For a
+diagonal top tuple the seed measure bound is exactly
+$\widetilde\mu_{h_m}\leq\gamma_i$; the identical open passage
+and Radon outer step prove (BC6).
+
+The recursion proves independence of defining rows. Symmetry and
+the bounded affine-cone multilinear identities follow by passing
+the corresponding seed identities through simultaneous defining
+rows. For a smooth slot the distributional Leibniz identity and
+separate closedness of the tail give the usual smooth wedge.
+A constant slot gives zero for the same reason. Ordinary locality
+follows by induction from the local distributional recursion and
+coefficient nullity of the exceptional set. No varying weak limit
+has been restricted to a compact set or to a discontinuous
+equality indicator in this construction.
+\end{proof}
+
+\begin{theorem}[Capacity and intrinsic joint decreasing continuity]
+\label{thm:r12-completed-band-continuity}
+For tuples in $\mathfrak B_i(V)$, local outer-$\gamma_i$-capacity
+convergence in every slot implies convergence of every mixed
+current (BC4) on all original tests. Bounded Borel weights may
+also vary in local outer $\gamma_i$-capacity, provided their
+limit is locally outer-$\gamma_i$-quasicontinuous; the weighted
+current convergence then holds as well.
+
+In particular, if finitely many normalized completed rows
+$h_{a,m}\downarrow h_a$ pointwise on their Borel representatives
+and each $h_a\in\mathfrak B_i(V)$, all mixed products and
+the stated weighted versions converge. No monotonicity of any
+chosen actual or band-pasted defining witnesses is required.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the completed
+class with its printed topology and limit-membership condition.
+
+\begin{proof}
+Every completed entry is quasicontinuous and every completed
+mixed tail has the outer bound (BC5). The weighted weak-passage
+proof therefore applies exactly as in the construction of (BC4).
+Induction on the tuple length proves the first assertion, now
+for completed rather than merely seed rows. The weighted
+conclusion is the same lemma applied to the resulting mixed
+currents.
+
+For decreasing rows, remove one ordinary open set of arbitrarily
+small $\gamma_i$-capacity so that the countably many entries
+and their finitely many limits are all continuous on the fixed
+compact complement. This uses summable error budgets and the
+proved quasicontinuity. Dini's theorem gives uniform convergence
+there. Hence the rows converge in local outer $\gamma_i$-capacity,
+and the first assertion applies. Membership of the limit is an
+explicit hypothesis; an arbitrary pointwise infimum is not
+declared a member without a separate capacity-limit argument.
+\end{proof}
+
+\begin{theorem}[Strict maximum carriers and the equality-side inequality]
+\label{thm:r12-completed-band-maximum-carriers}
+Let $u,v,z_1,\ldots,z_b\in\mathfrak B_i(V)$, let
+$w=\max(u,v)$, and suppose $a\geq1$, $a+b\leq k$. Then
+\[
+ \mathbf1_{\{u>v\}}\widehat T^{,i}_{R,a+b}(w^{[a]},\mathbf z)
+    =\mathbf1_{\{u>v\}}\widehat T^{,i}_{R,a+b}(u^{[a]},\mathbf z).
+ \tag{BC8}
+\]
+Moreover the full middle-positive current inequality holds:
+\[
+ \begin{split}
+ \widehat T^{,i}_{R,a+b}(w^{[a]},\mathbf z)
+ \geq{}&\mathbf1_{\{u\geq v\}}
+                    \widehat T^{,i}_{R,a+b}(u^{[a]},\mathbf z)\\
+       &+\mathbf1_{\{u<v\}}
+                    \widehat T^{,i}_{R,a+b}(v^{[a]},\mathbf z).
+ \end{split}
+ \tag{BC9}
+\]
+No restricted current in these formulas is asserted separately
+closed. In top degree, finite maxima therefore preserve any
+fixed original positive-measure subsolution lower bound.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this completion.
+The proof parallels the frozen carrier method, but uses the
+newly established band-capacity continuity rather than assuming
+it for the larger class.
+
+\begin{proof}
+At the seed level refine finitely many countable band partitions.
+On each band the continuous actual branches have an ordinary
+open strict comparison locus. Frozen ordinary locality gives
+the maximum identity there; (PB9) and the positive band sum give
+the seed version of (BC8).
+
+Choose seed defining rows for the completed tuple and their
+maxima. Let $\chi_\epsilon$ be a continuous Lipschitz scalar
+cutoff which is zero on $(-\infty,\epsilon]$, one on
+$[2\epsilon,\infty)$, and nondecreasing between. Multiply the
+seed strict-carrier identity by
+$\chi_\epsilon(u_m-v_m)$. These bounded weights converge in
+local capacity to $\chi_\epsilon(u-v)$, whose limit is
+quasicontinuous. The completed weighted continuity theorem
+passes the identity. Let $\epsilon\downarrow0$ using a fixed
+rescaled cutoff. Bounded convergence for every original
+coefficient measure gives (BC8).
+
+Put $w_\epsilon=\max(u,v-\epsilon)$. This belongs to the
+completion and converges uniformly to $w$, hence in local
+capacity. Apply (BC8) on its two strict carriers. The shift
+can be normalized by replacing $u,v$ by
+$(u+\epsilon)/(1+\epsilon),v/(1+\epsilon)$, so the identity
+uses only already constructed normalized entries and their
+proved affine compatibility. Positivity on the remaining
+restriction gives, before any limiting operation,
+\[
+ \widehat T^{,i}(w_\epsilon^{[a]},\mathbf z)
+ \geq\mathbf1_{\{u\geq v\}}\widehat T^{,i}(u^{[a]},\mathbf z)
+       +\mathbf1_{\{u<v-\epsilon\}}\widehat T^{,i}(v^{[a]},\mathbf z).
+\]
+The first right-hand current is fixed, retaining any equality
+mass. The second increases on every positive original test as
+$\epsilon\downarrow0$. The left side converges by the proved
+capacity theorem. This yields (BC9) on the full middle-positive
+dual cone. In top degree the two indicators partition the
+finite Borel locus, and all relevant measures ignore its
+outer-null complement; the subsolution assertion follows.
+\end{proof}
+
+\subsection{The exact capacity statement and the remaining cofinality gate}
+
+For Borel $E$ define
+\[
+                \widehat\gamma_i(E)
+                  =\sup_{h\in\mathfrak B_i(V)}\widehat\mu_h^{,i}(E).
+ \tag{BC10}
+\]
+\begin{theorem}[Outer capacity is unchanged for the exact seed]
+\label{thm:r12-band-completion-outer-capacity}
+For every Borel $E\subset V$,
+\[
+ \gamma_0(E)\leq\widehat\gamma_0(E)\leq\gamma_0^*(E),
+ \qquad
+ \widehat\gamma_0(G)=\gamma_0(G)\quad(G\text{ ordinary open}),
+ \qquad
+ \widehat\gamma_0^*=\gamma_0^*.
+ \tag{BC11}
+\]
+For the full-band-control completion only the following is
+asserted without an extra cofinality theorem:
+\[
+ \gamma_0(E)\leq\widehat\gamma_1(E)\leq\gamma_1^*(E),
+ \qquad
+ \gamma_0(G)\leq\widehat\gamma_1(G)\leq\gamma_1(G)
+                       \quad(G\text{ ordinary open}).
+ \tag{BC12}
+\]
+In particular, (BC11) does not prove that completing the seed
+creates no mass gain on compact sets.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the exact
+capacity comparisons. The equality with the outer capacity of
+the \emph{entire original or full band} tester class remains
+\texttt{OPEN} unless its required cofinality is separately proved.
+
+\begin{proof}
+The seed is included in both completions and its products agree
+with the completed products. This gives both lower bounds.
+The upper bounds are (BC6). On an ordinary open set raw and
+outer capacity agree by definition, proving the open equalities
+or inequalities as printed. Taking infima over ordinary open
+neighborhoods proves the last equality in (BC11). No limit has
+been restricted to a compact set in this argument.
+\end{proof}
+
+\begin{proposition}[All globally continuous Borel slice families enter the completion]
+\label{prop:r12-continuous-slice-completion}
+Let $H:J\times V\to[0,1]$ be jointly Borel, and suppose that
+for every $t\in J$ the function $H_t=H(t,\cdot)$ is a
+continuous actual classical psh function on the entire fixed
+$V$. Then the actual diagonal Borel function
+\[
+                                h(x)=H(s(x),x)
+ \tag{BC13}
+\]
+belongs to both $\mathfrak B_0(V)$ and $\mathfrak B_1(V)$.
+It admits locally uniformly convergent approximants from
+$\mathcal A_0$. Therefore the preceding bounded products,
+maximum carriers and intrinsic decreasing theorem apply to
+such slice families, even when the actual diagonal rows
+decrease without decreasing ambient slice witnesses.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this explicit
+inclusion and its intrinsic continuity consequence. It is not an
+uncountable pointwise fiber-capacity selection theorem.
+
+\begin{proof}
+On the locally compact second countable ordinary space $V$,
+$C(V)$ with its compact-open metric is separable. This follows,
+for example, from separability of the continuous function spaces
+on a countable compact exhaustion and their countable product.
+Its subset consisting of continuous normalized actual classical
+psh functions is therefore separable as well. Choose a countable
+dense family $(a_l)$ in that subset; these are actual functions
+on $V$, not conditional fiber representatives.
+
+Fix a compact exhaustion $H_m$ as in (BC3). For each fixed
+$a_l$, the function
+$t\mapsto\sup_{x\in H_m}|H(t,x)-a_l(x)|$ is Borel:
+the supremum can be taken over a countable dense subset of
+$H_m$, because every slice is continuous. For each $m$, choose
+the first index $l=l_m(t)$ for which this supremum is less than
+$1/m$. Density ensures existence for every $t$, and the first
+index defines a countable Borel parameter partition. Put
+$h_m(x)=a_{l_m(s(x))}(x)$. Then $h_m\in\mathcal A_0$ and
+\[
+                     \sup_{x\in H_m}|h_m(x)-h(x)|<1/m.
+\]
+Thus $h_m\to h$ locally uniformly, which implies (BC2) for
+both capacities. The completed conclusions now follow. This
+selection uses the compact-open topology of \emph{continuous
+global functions}; it makes no simultaneous exceptional-set
+assertion for an uncountable family of conditional current tests.
+\end{proof}
+
+\begin{corollary}[The empty parameter tuple retains the original arbitrary background]
+\label{cor:r12-empty-parameter-completion}
+Permit the empty parameter tuple, with $J=\mathbf R^0$ a single
+point and $\Omega_s=1$. Then (CB2) is vacuous and $R=S$ is
+the \emph{unchanged arbitrary original} middle-positive separately
+closed background. The seed $\mathcal A_0$ is exactly the
+normalized continuous actual classical psh family on $V$,
+$\gamma_0$ is its raw tester capacity, and $\gamma_1=C_S$ is
+the full original normalized bounded classical tester capacity.
+All preceding constructions and printed bounds apply under
+(BQ4), without any additional structural restriction on $S$.
+
+Where the frozen R11 bounded completion hypotheses overlap,
+the $i=1$ construction is a subclass of that frozen completion,
+and its products agree with the frozen products. Neither equality
+of the two tester capacities nor equality of the two completed
+potential classes is inferred.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} and an
+explicit recovery/transfer of the frozen arbitrary-background
+bounded mechanism, not a new claim of its first construction.
+
+\begin{proof}
+There is only one nonempty band, so the definitions reduce to
+the displayed actual seed and its two capacities. The proofs
+above require no conormal equation when the tuple is empty.
+For the frozen comparison, a continuous actual defining row
+is also an allowed row of bounded actual classical functions.
+The intrinsic recursions agree at degree zero and hence at
+every successive degree. This identifies their products on
+all original tests wherever both constructions are defined.
+\end{proof}
+
+\paragraph{The precise failed inclusion and the remaining theory.}
+The original first attempt at the open-capacity assertion used
+the words ``the original testers are included.'' That is valid
+for the exact seed $\mathcal A_0$ and invalid for the larger
+class of possibly discontinuous classical branches without an
+additional approximation theorem. It is retained here as a
+\texttt{FAILED\_ATTEMPT}, repaired by the two separate capacities
+(BC1) and the exact inequalities (BC11)--(BC12). No counterexample
+to the missing cofinality is claimed.
+
+The completion supplies positive closed products, the original
+recursion, symmetry and bounded multilinearity, original smooth
+compatibility, locality, maximum carriers, and weighted joint
+decreasing continuity with its printed limit-membership condition.
+It does not assert every classical capacity or Dirichlet property:
+unrestricted comparison with boundary data, arbitrary compact
+raw/outer equality, identification with all ambient classical psh
+functions, and analytic PS/PL presentation descent require their
+own proofs. The two completions use different possible null
+quotients; they are not silently identified with one another or
+with the energy lattice. For arbitrary original $S$, applying
+the construction to the derived $R=\Omega_s\wedge S$ retains
+all original-field and all-original-test requirements without
+turning it into a proof of OPEN-GQ or OPEN-CTO.
+
+Domain restriction is a separate issue from locality of the
+constructed currents. Capacity on a smaller tester domain can
+be larger, so convergence in the capacity of $V$ alone does not
+prove membership in the corresponding completion on an arbitrary
+smaller open. No such domain-capacity equivalence or gluing theorem
+for the potential classes is assumed. Whenever the class
+constructions coexist on an overlap and their Borel values agree
+in the relevant null quotients, their original currents restrict
+and agree by the local recursion. That conditional compatibility
+does not assert the missing class membership.

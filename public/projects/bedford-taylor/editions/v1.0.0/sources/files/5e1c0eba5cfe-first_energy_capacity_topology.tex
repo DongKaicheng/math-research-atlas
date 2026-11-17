@@ -1,0 +1,495 @@
+\section{Quantitative first-energy convergence in every local capacity}
+\label{sec:r11-first-energy-capacity-topology}
+
+Retain the strict analytic box, background extension and
+$\mathcal E^1$ hypotheses of
+Section~\ref{sec:r11-global-first-energy}.
+All functions below are actual negative classical members
+of that class; all capacities use the full original tester
+class. Put $d=q+1$ and $\alpha_q=2^{-q}$.
+The symmetric discrepancy $\mathscr I_S$ is (GE18).
+At a joint pole, a difference is used only as a Borel
+coefficient representative; all involved products and
+capacities annihilate that pole union.
+
+The bounded common-collar predecessors are the frozen R3
+\texttt{energy\_convex\_blocks.tex},
+\texttt{thm:r3-I-capacity}, and
+\texttt{strong\_relative\_topology.tex}.
+They already contain the positive discrepancy, the mixed
+energy transfer recurrence, and bounded relative energy
+topologies. The new scope here is the global unbounded
+first-energy class, uniform control over its energy testers,
+the analytic all-local domain extension, and critical
+endpoint continuity without a prescribed common collar.
+
+\begin{theorem}[A uniform first-energy tester estimate]
+\label{thm:r11-first-energy-uniform-tester}
+For $u,v,\psi\in\mathcal E^1$, put $w=u+v$ and
+$M=\max\{e_1(w),e_1(\psi)\}$. Then
+\[
+ \boxed{\quad
+ \int_V|u-v|\,d\mu_\psi
+   \leq 2^{(q-1)\alpha_q}
+          \mathscr I_S(u,v)^{\alpha_q}M^{1-\alpha_q}.
+ \quad}
+ \tag{EV1}
+\]
+The conclusion is zero if $M=0$. For a mixed top measure
+in place of $\mu_\psi$, the positive expansion of the sum
+of its $q$ potentials gives the same estimate divided by
+$q!$, with that sum as $\psi$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} in the
+unbounded global first-energy class.
+
+\begin{proof}
+Write $h=u-v$. For $0\leq k\leq q-1$ set
+\[
+ J_k=\int_V\Gamma_{N(\psi^{[k]},w^{[q-1-k]})}(h).
+ \tag{EV2}
+\]
+These are finite nonnegative numbers by (GE7). The positive
+expansion of $Dw=Du+Dv$ and (GE18) give
+$J_0\leq2^{q-1}\mathscr I_S(u,v)$.
+For $k\leq q-2$, full mixed energy symmetry exchanges one
+$\psi$ slot with one $h$ slot. Expanding that latter
+$h=u-v$ in the background gives
+\[
+ \begin{split}
+ J_{k+1}
+ &=\int\Gamma_{N(u,\psi^{[k]},w^{[q-2-k]})}(h,\psi)
+   -\int\Gamma_{N(v,\psi^{[k]},w^{[q-2-k]})}(h,\psi)\\
+ &\leq\left[J_k\,
+       \mathcal I_S(\psi^{[k+2]},w^{[q-1-k]})\right]^{1/2}
+ \leq(J_kM)^{1/2}.
+ \end{split}
+ \tag{EV3}
+\]
+For the middle inequality apply energy Cauchy--Schwarz in
+each of the two positive backgrounds and then Cauchy--Schwarz
+to the resulting two nonnegative summands. Their first
+diagonal masses add to $J_k$, and their second diagonal
+masses add to the displayed mixed energy. The last inequality
+is the constant-one Holder inequality (GE10). Thus
+\[
+ J_{q-1}\leq J_0^{2^{-(q-1)}}M^{1-2^{-(q-1)}}.
+ \tag{EV4}
+\]
+When $q=1$ this is just the identity $J_{q-1}=J_0$.
+
+The real-span element
+$|h|=2\max(u,v)-u-v$ has the exact energy identity
+$\Gamma_Q(|h|)=\Gamma_Q(h)$ for every background $Q$
+in (EV2). To justify it in the present class, use canonical
+bounded truncations of $u,v,\max(u,v)$ and the background
+slots. At level $j$ one has
+$\max(u_j,v_j)=\max(\max(u,v),-j)$.
+The bounded absolute-value chain and the zero energy of
+the level $\{u_j=v_j\}$ prove the identity at that stage.
+Endpoint local total-variation convergence (PG11) passes
+it to the unbounded currents. Both are already globally
+finite by (GE7).
+
+Global Green, followed by Cauchy--Schwarz, now yields
+\[
+ \int|h|\,d\mu_\psi
+  =-\int\Gamma_{N(\psi^{[q-1]})}(|h|,\psi)
+       \leq J_{q-1}^{1/2}e_1(\psi)^{1/2}.
+ \tag{EV5}
+\]
+Combine this with (EV4), the bound on $J_0$, and
+$e_1(\psi)\leq M$. If $M=0$, the mixed Holder estimate
+already makes the integral zero. The mixed-measure
+assertion follows from
+$q!M(\psi_1,\ldots,\psi_q)\leq\mu_{\sum_i\psi_i}$.
+\end{proof}
+
+
+
+\begin{theorem}[Quantitative capacity control on every compact/domain pair]
+\label{thm:r11-first-energy-all-local-capacity}
+Fix a compact $K\Subset V$ and choose $A_K>0$ so that
+$A_K\rho<-2$ on a neighborhood of $K$. Set
+\[
+ B_K=2A_K^q\mu_\rho(V),\qquad
+ \Lambda_K(u,v)=\max\{e_1(u+v),B_K\}.
+ \tag{EV6}
+\]
+For $\delta>0$ put
+$G_\delta(u,v)=\{u<v-\delta\}\cup\{v<u-\delta\}$,
+using actual extended comparisons. Then
+\[
+ C_S(K\cap G_\delta(u,v);V)
+    \leq\frac{2^{(q-1)\alpha_q}}\delta
+          \Lambda_K(u,v)^{1-\alpha_q}
+                      \mathscr I_S(u,v)^{\alpha_q}.
+ \tag{EV7}
+\]
+If $K\subset\operatorname{Int}_X K'\Subset V$, the same
+bound for $K'$ bounds the outer capacity of
+$K\cap G_\delta(u,v)$.
+
+Consequently for every ordinary $\Omega\subset V$ and
+compact $K\Subset\Omega$, and every $M_0<\infty$, there
+is a finite constant $C_{K,\Omega,M_0,S}$ such that
+$e_1(u),e_1(v)\leq M_0$ implies
+\[
+ C_{S|\Omega}^*(K\cap G_\delta(u,v);\Omega)
+       \leq\frac{C_{K,\Omega,M_0,S}}\delta
+                            \mathscr I_S(u,v)^{\alpha_q}.
+ \tag{EV8}
+\]
+This is the complete all-local capacity topology, by the
+proved analytic affinoid domain comparison, not an assumed
+identification of two admissibility domains.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+global-energy estimate for all original local testers.
+
+\begin{proof}
+For a normalized tester $0\leq a\leq1$ on $V$ put
+$\psi=\max(a-2,A_K\rho)$.
+It is bounded in $[-2,0]$, has compact negative sublevels,
+and agrees with $a-2$ near $K$.
+Comparison with $cA_K\rho$ for $c>1$ gives
+$\mu_\psi(V)\leq A_K^q\mu_\rho(V)$ after $c\downarrow1$.
+Thus $\psi\in\mathcal E^1$ and $e_1(\psi)\leq B_K$,
+uniformly in the original tester $a$. Ordinary locality
+gives $\mathbf1_K\mu_a=\mathbf1_K\mu_\psi$.
+The joint pole set has raw capacity zero, so it has zero
+mass for $\mu_a$. On its complement, Chebyshev and (EV1)
+give
+\[
+ \mu_a(K\cap G_\delta(u,v))
+       \leq\delta^{-1}\int|u-v|\,d\mu_\psi
+       \leq\frac{2^{(q-1)\alpha_q}}\delta
+             \Lambda_K(u,v)^{1-\alpha_q}
+                          \mathscr I_S(u,v)^{\alpha_q}.
+\]
+Take the full tester supremum to prove (EV7).
+
+To obtain the outer bound, fix $\eta>0$. Outer
+quasicontinuity on $K'$ and outer nullity of the poles
+give an ordinary open $O$ with $C_S(O;V)<\eta$ such
+that both potentials are finite and continuous on
+$K'\setminus O$. In the relative space
+$\operatorname{Int}_X K'\setminus O$ the strict gap is
+open. Hence there is an ordinary open $H\subset
+\operatorname{Int}_X K'$ such that
+$H\setminus O=G_\delta(u,v)\cap
+(\operatorname{Int}_X K'\setminus O)$.
+The open set $H\cup O$ covers $K\cap G_\delta$ and is
+contained in $(K'\cap G_\delta)\cup O$. Therefore
+\[
+ C_S^*(K\cap G_\delta;V)
+              \leq C_S(K'\cap G_\delta;V)+\eta.
+\]
+Let $\eta\downarrow0$ and use (EV7) on $K'$.
+
+Finally choose $K'$ inside $\Omega$ and an ordinary open
+core containing $K$ compactly in $\Omega$. The outer
+domain comparison (AL9) multiplies this estimate by a fixed
+geometric constant. Minkowski (GE11) gives
+$e_1(u+v)\leq2^{q+1}M_0$, proving (EV8).
+No general Borel raw/outer equality is used.
+\end{proof}
+
+\begin{theorem}[The strong first-energy topology]
+\label{thm:r11-strong-first-energy-topology}
+For any $u,v\in\mathcal E^1$,
+\[
+ \left|e_1(u)^{1/d}-e_1(v)^{1/d}\right|^d
+                                      \leq\mathscr I_S(u,v).
+ \tag{EV9}
+\]
+For a sequence $u_j\in\mathcal E^1$ and an actual
+$u\in\mathcal E^1$, the following are equivalent:
+\begin{enumerate}
+\item $\mathscr I_S(u_j,u)\to0$.
+\item $u_j\to u$ in all-local truncated original capacity
+and $e_1(u_j)\to e_1(u)$.
+\end{enumerate}
+The forward implication gives outer-capacity convergence
+of the full actual gaps on every compact/domain pair.
+This theorem describes convergence to an already specified
+actual class member; it does not assert classical
+representability of every Cauchy sequence.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+unbounded class. The bounded fixed-collar energy topology
+was already frozen in R3.
+
+\begin{proof}
+Put $a=e_1(u)^{1/d}$ and $b=e_1(v)^{1/d}$.
+Expand the definition (GE18), then use the constant-one
+mixed Holder inequality on its two cross terms:
+\[
+ \begin{split}
+ \mathscr I_S(u,v)
+ &=e_1(u)+e_1(v)
+       -\mathcal I_S(u,v^{[q]})-\mathcal I_S(v,u^{[q]})\\
+ &\geq a^d+b^d-ab^{d-1}-ba^{d-1}
+       =(a-b)(a^{d-1}-b^{d-1})\geq|a-b|^d.
+ \end{split}
+ \tag{EV10}
+\]
+The last inequality follows by the binomial expansion after
+ordering $a,b$. Thus (1) implies energy convergence and a
+uniform energy bound. The capacity estimate (EV8) gives
+all the asserted forward capacity conclusions.
+
+Conversely suppose (2). In particular the energies are
+uniformly bounded. For each bounded weight truncation and
+each original compact cutoff, the proved local bounded-weight
+capacity continuity gives
+\[
+ \begin{split}
+ \liminf_j\mathcal I_S(u_j,u^{[q]})&\geq e_1(u),\\
+ \liminf_j\mathcal I_S(u,u_j^{[q]})&\geq e_1(u).
+ \end{split}
+ \tag{EV11}
+\]
+Here is the order of limits: first replace the
+undifferentiated weight by $-\max(\cdot,-L)$ and insert a
+compact nonnegative cutoff; the original bounded-weight
+continuity passes $j\to\infty$. Then let the cutoff
+increase to one and $L\to\infty$, using positivity.
+The derivative slots are controlled by the uniform power
+energy hypothesis through the already proved top capacity
+stability theorem. Thus neither line presupposes critical
+weighted continuity.
+
+The optimal Holder upper bounds are respectively
+$e_1(u_j)^{1/d}e_1(u)^{q/d}$ and
+$e_1(u)^{1/d}e_1(u_j)^{q/d}$, both tending to $e_1(u)$.
+Thus both cross integrals converge to $e_1(u)$.
+The first line of (EV10) now proves (1).
+\end{proof}
+
+\begin{theorem}[Critical mixed energy and weighted-current continuity]
+\label{thm:r11-strong-critical-mixed-continuity}
+Let $u_{i,j},u_i\in\mathcal E^1$ for $0\leq i\leq q$,
+and assume $\mathscr I_S(u_{i,j},u_i)\to0$ for every slot.
+Then
+\[
+ \mathcal I_S(u_{0,j},\ldots,u_{q,j})
+                  \longrightarrow\mathcal I_S(u_0,\ldots,u_q),
+ \tag{EV12}
+\]
+and the finite positive measures
+\[
+ (-u_{0,j})M(u_{1,j},\ldots,u_{q,j})
+                      \longrightarrow(-u_0)M(u_1,\ldots,u_q)
+ \tag{EV13}
+\]
+converge against every bounded original smooth scalar test
+on $V$, including tests without compact support. In
+particular there is neither a critical pole residue nor
+escaped boundary energy. No common pointwise lower barrier
+is required in this statement.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}. The
+strong discrepancy hypothesis is substantive; the critical
+failure in (PS7) concerns mere capacity convergence with
+a uniform energy bound.
+
+\begin{proof}
+By (EV9), every slot has uniformly bounded first energy.
+Telescope the fully symmetric multilinear integral
+$\mathcal I_S$ one slot at a time. Move each changing
+slot to the undifferentiated position by (GE5).
+The absolute value of that difference is bounded by
+$\int|u_{i,j}-u_i|M(\mathbf z_j)$ for a mixed tuple
+of unchanged or already changed slots. Its positive
+expansion is at most $1/q!$ times the diagonal product
+of their sum. That sum has uniformly bounded energy by
+(GE11). Estimate (EV1) makes each of the finitely many
+differences tend to zero. This proves (EV12).
+
+Write $M_j=M(u_{1,j},\ldots,u_{q,j})$ and $M$ for its
+limit. The same estimate gives
+\[
+                  \int|u_{0,j}-u_0|\,dM_j\longrightarrow0.
+ \tag{EV14}
+\]
+For $u=u_0$, put $u^R=\max(u,-R)$. Since $u^R-u\geq0$,
+the nonnegative discrepancy satisfies
+\[
+ 0\leq\mathscr I_S(u,u^R)
+       =\int(u^R-u)(d\mu_u-d\mu_{u^R})
+       \leq\int(u^R-u)\,d\mu_u\longrightarrow0.
+ \tag{EV15}
+\]
+The last limit is dominated convergence against the finite
+first-energy weight $(-u)\mu_u$.
+Apply (EV1) to $u,u^R$ and to the uniformly bounded-energy
+sum of the differentiated slots of $M_j$. This proves
+$\sup_j\int|u-u^R|\,dM_j\to0$; the same holds for $M$.
+The constants are uniform because $e_1(u^R)\leq e_1(u)$
+by energy monotonicity and all other energies are bounded.
+
+For fixed $R$, local bounded-weight capacity continuity
+gives $(-u^R)M_j\to(-u^R)M$ on every original compact
+scalar test. Use the preceding uniform weight tail and
+(EV14) to pass $R\to\infty$. This proves local convergence
+in (EV13). Their total masses converge by (EV12).
+Positive finite Radon measures with local convergence
+and convergent full masses are tight: choose a compact
+original cutoff whose integral in the limit is arbitrarily
+close to the full limit mass, and pass its local integral.
+This controls the complements uniformly for all large $j$.
+It follows that every bounded original smooth scalar test,
+with no compact-support restriction, has the same limit.
+\end{proof}
+
+\begin{corollary}[Energy-dual maximizing sequences are strongly Cauchy]
+\label{cor:r11-dual-maximizing-Cauchy}
+Let $\mu$ be a positive Radon datum with
+$D=\mathfrak d_1(\mu)<\infty$ as defined in (DO1).
+For $\mathcal F_\mu(u)=\mathscr A_S(u)-\int u\,d\mu$,
+\[
+ 0\leq\sup_{u\in\mathcal E^1}\mathcal F_\mu(u)
+               \leq\frac q{q+1}D^{(q+1)/q}<\infty.
+ \tag{EV16}
+\]
+Every maximizing sequence is uniformly bounded in first
+energy and is Cauchy for $\mathscr I_S$ and in every local
+outer capacity. This does not assert the existence of an
+actual classical limit or a classical Dirichlet solution.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+compactness estimate in the unbounded nonlinear class;
+the representation and equation gates remain explicit.
+
+\begin{proof}
+Positive homogeneity and the definition of $D$ give
+$\int(-u)\,d\mu\leq D e_1(u)^{1/d}$.
+If $e_1(u)=0$, scale $u$ by an arbitrary positive number
+in (DO1) to obtain the same zero conclusion.
+Thus, with $x=e_1(u)^{1/d}$,
+\[
+                \mathcal F_\mu(u)\leq-x^d/d+Dx.
+\]
+Maximizing this real polynomial gives (EV16), and it tends
+to $-\infty$ as $x\to\infty$. Since $0$ is admissible,
+every tail of a maximizing sequence has
+$\mathcal F_\mu(u_j)\geq-1$ and hence
+\[
+          e_1(u_j)\leq
+             \max\{2d,(2dD)^{d/(d-1)}\}.
+ \tag{EV17}
+\]
+Discarding finitely many terms gives uniform energy for
+the sequence.
+
+The frozen bounded common-collar midpoint argument now
+applies to the proved global variation (GE16), giving
+\[
+ \mathscr A_S\left(\frac{u+v}2\right)
+       -\frac{\mathscr A_S(u)+\mathscr A_S(v)}2
+            \geq\frac q{4^{q+1}}\mathscr I_S(u,v).
+ \tag{EV18}
+\]
+For completeness the midpoint Green formula is
+$\frac q2\int_0^1\min(t,1-t)
+ \int\Gamma_{N(u_t^{q-1})}(u-v)\,dt$.
+On $[1/4,3/4]$, positive mixed expansion bounds its
+energy integrand below by $4^{-(q-1)}\mathscr I_S(u,v)$.
+The interval length and the scalar weight give exactly
+the constant in (EV18). All global energy integrals
+are finite by (GE7).
+
+The datum integral is affine, so it cancels in the midpoint
+gap. If $L=\sup\mathcal F_\mu$, then
+\[
+ \frac q{4^{q+1}}\mathscr I_S(u_j,u_l)
+        \leq L-\frac{\mathcal F_\mu(u_j)+
+                              \mathcal F_\mu(u_l)}2\longrightarrow0.
+\]
+The uniform energy bound and (EV8) give the all-local
+outer-capacity Cauchy conclusion. Producing an actual
+classical representative of that completed class, and
+valid admissible variations that identify its curvature
+with the datum, are not proved by this argument. The
+compact-source obstruction (DO9) prevents omitting those
+gates in a universal classical existence assertion.
+\end{proof}
+
+\begin{corollary}[Strong first-energy convergence controls every graded endpoint]
+\label{cor:r11-strong-first-energy-graded-endpoints}
+Let $u_{i,j},u_i\in\mathcal E^1$ be a finite family with
+$\mathscr I_S(u_{i,j},u_i)\to0$ in every slot. For
+$w_j=\sum_i u_{i,j}$ one has
+\[
+ \lim_{R\to\infty}\sup_j\int_R^\infty
+                 t^q C_S(\{w_j<-t\};V)\,dt=0.
+ \tag{EV19}
+\]
+Consequently all three convergence assertions (GS3), and
+the double-prime first-order assertion, hold with
+$\sigma=1$ and weak inequalities in their degree/weight
+conditions. They hold on every original compact
+complementary test and every actual moment refinement,
+without a common pointwise lower barrier. These are
+original-current convergence assertions; total-variation
+convergence for arbitrary varying tuples is not claimed.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the
+uniform-tail consequence of the strong topology; applying
+the established endpoint theorem is a direct consequence.
+
+\begin{proof}
+First consider one sequence $u_j\to u$ in discrepancy.
+Put $a_j=-u_j$ and $b=-u$ off the joint polar set.
+The uniform energy bound follows from (EV9). On
+$\{a_j>R\}$ split according as $b\leq a_j/2$ or
+$b>a_j/2$. In the first region $a_j\leq2|u_j-u|$;
+in the second, $a_j<2b$ and $b>R/2$.
+For $b>R/2$ one has
+$b\leq2(b-R/4)^+=2|u-u^{R/4}|$.
+Thus
+\[
+ \int_{\{a_j>R\}}a_j\,d\mu_{u_j}
+    \leq2\int|u_j-u|\,d\mu_{u_j}
+             +4\int|u-u^{R/4}|\,d\mu_{u_j}.
+ \tag{EV20}
+\]
+By (EV1), the first term tends to zero as $j\to\infty$.
+By (EV1) and (EV15), the second tends to zero as
+$R\to\infty$ uniformly in $j$. To obtain the supremum
+over all $j$, first make the first term small for
+$j\geq j_0$; the finitely many earlier rows each have
+integrable first-energy weight, so their tails tend
+to zero separately. Then let $R\to\infty$, and finally
+$j_0\to\infty$. This proves uniform vanishing of the
+left side of (EV20).
+
+The sublevel capacity bound (PE4), before its full
+integration, gives for every row
+\[
+ \int_R^\infty t^q C_S(\{u_j<-t\};V)\,dt
+       \leq2^{q+1}\int(a_j-R/2)^+\,d\mu_{u_j}.
+ \tag{EV21}
+\]
+Its right side is bounded by a constant times the
+uniformly vanishing energy tail at $R/2$.
+This proves (EV19) for one row.
+
+For $m$ slots, the actual sublevel inclusion
+$\{w_j<-t\}\subset\bigcup_{i=1}^m\{u_{i,j}<-t/m\}$
+and subadditivity imply that its capacity-tail integral
+is at most $m^{q+1}$ times the sum of the individual
+tail integrals starting at $R/m$. This proves (EV19)
+for the family. The full local capacity convergence is
+already supplied by (EV8), so every hypothesis of
+Theorem~\ref{thm:r11-nonmonotone-graded-stability}, including
+its endpoint condition (GS4), now holds at $\sigma=1$.
+Applying that theorem proves the current conclusions.
+\end{proof}

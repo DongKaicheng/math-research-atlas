@@ -1,0 +1,260 @@
+\section{Scalar descent through quasi-\'etale uniformization}
+\label{sec:r24-harmonic-uniformization}
+
+\paragraph{Status and authorship.}
+The scalar assertions proved below are \texttt{DIRECT\_COROLLARY} of the
+specified primary results.  They are not an arbitrary-current descent
+theorem and do not settle KC12.  The independent-audit agent constructed
+this deduction after the root requested a source audit.  The root
+independently proposed the same Galois-saturation repair after being
+informed of the relevant passage in Ducros.  Neither participant is an
+author-independent reviewer of this deduction.  A separate review is
+required before it is used as an accepted input.
+
+\subsection{Definitions and exact external interfaces}
+
+Let $k$ be a complete nontrivially valued non-Archimedean field.  In its
+application to this project, $k$ is the original $K$, or a finite
+extension used only in scalar analytic geometry, with the given
+absolute value extended and never renormalized.  All spaces in the
+descent assertion are good, Hausdorff and strictly $k$-analytic.
+
+The notation $\operatorname{PL}_{\mathbf R}(X)$ has the geometric
+meaning of Gubler--Jell--Rabinoff, Definition~5.1: on a covering by
+strictly analytic domains the function is a finite real linear
+combination of logarithms of absolute values of analytic units on
+those domains.  This definition concerns functions on the full
+analytic domains.  It is not a definition in terms of a selected
+skeleton or a chosen finite set of ordinary current tests.  We use
+the following primary inputs, with their original hypotheses.
+
+\begin{enumerate}
+\item Gubler--Jell--Rabinoff, arXiv:2111.05741v3, Definition~5.1,
+Remark~5.2 and Lemma~5.4: geometric real PL functions are G-local and
+are preserved by analytic pullback.  Proposition~5.11, printed
+pp.~34--35, gives descent along finite, flat, surjective morphisms of
+good strictly analytic spaces.  Corollary~5.12, printed p.~36, gives
+descent after extension to the completion of an algebraic extension.
+\item Ducros, \emph{Families of Berkovich spaces}, Theorem~5.4.6 and
+the reduction in the proof of Proposition~9.1.1(c), printed
+pp.~118--120 and~177, give the following local form.  A quasi-\'etale
+morphism can be covered G-locally on its source by strict affinoid
+domains $D$ admitting a factorization
+\[
+ D\lhook\joinrel\longrightarrow E\longrightarrow Z
+ \lhook\joinrel\longrightarrow X,                         \tag{HU1}
+\]
+where $D$ is an analytic domain of $E$, $Z$ is a connected strict
+affinoid domain of $X$, and $E\to Z$ is connected finite \'etale.
+One may use finitely many such pieces when the source is compact.
+The same proof explicitly passes to a connected finite Galois cover
+of $Z$ dominating $E$.
+\item Ducros, Proposition~9.1.1, printed pp.~177--178: if $Y$ is
+quasi-compact and $\Gamma$-strict, $X$ is separated, and a coherent
+sheaf on $Y$ is $X$-flat with quasi-finite support, its image is a
+compact $\Gamma$-strict analytic domain of $X$.  We use only the case
+of the structure sheaf of a strict affinoid domain of a finite
+\'etale cover, with $\Gamma=\{1\}$.  Such a domain maps
+quasi-\'etale, and hence flat, to the base.
+\item Temkin, arXiv:1503.05729v2, Theorem~3.3.1 and
+Corollary~3.3.2, printed p.~12, together with the rigid/Berkovich
+translation in \S3.4: a compact quasi-smooth strictly $k$-analytic
+space has, after a finite extension $l/k$, a surjective
+quasi-\'etale affinoid cover possessing a \emph{strictly semistable}
+formal $l^\circ$-model.  It is this statement, retaining the chosen
+strictly semistable model, that is used below.  The separate wording
+of Theorem~3.4.1 says only that the maximal affine model is
+semistable; that wording alone is not silently strengthened.
+\item Gubler--Rabinoff, arXiv:2506.13548v2,
+Definition~7.1 and Proposition~7.2(6),(7), printed pp.~34--35:
+classically pluriharmonic scalars are preserved by base extension and
+analytic pullback.  Proposition~7.8, printed p.~36: on a good,
+quasi-compact strictly analytic space having a strictly semistable
+formal model, every classically pluriharmonic scalar is geometric
+real PL.
+\end{enumerate}
+
+Here \emph{classically pluriharmonic} means that both $h$ and $-h$
+are classically psh in the curve-test sense of the last reference.
+No identification with an arbitrary continuous ordinary-current
+harmonic witness is included in that definition.
+
+\subsection{Galois saturation and scalar PL descent}
+
+\paragraph{Proposition (compact quasi-\'etale scalar descent).}
+Let $f:Y\to X$ be a surjective quasi-\'etale morphism between compact
+good Hausdorff strictly $k$-analytic spaces.  For every real function
+$h$ on $X$,
+\[
+ h\circ f\in\operatorname{PL}_{\mathbf R}(Y)
+ \quad\Longleftrightarrow\quad
+ h\in\operatorname{PL}_{\mathbf R}(X).                   \tag{HU2}
+\]
+The assertion is about the given function on all analytic points.
+It does not assert that $f$ has an interior lift over each point of
+$X$, nor that $f$ becomes finite on an ordinary neighborhood of
+every target point.
+
+\paragraph{Proof.}
+Analytic pullback proves the reverse implication.  Assume the left
+side.  By HU1 and compactness, choose finitely many strict affinoid
+source domains $D_i$ covering $Y$, with factorizations
+$D_i\hookrightarrow E_i\to Z_i\hookrightarrow X$ as in HU1.
+The finite family can be obtained from finitely many source
+neighborhoods covered by the local affinoid pieces; thus it is an
+actual G-cover and not just a collection of selected points.
+It suffices to prove the assertion on the image of each $D_i$.
+Fix one piece and omit its index.
+
+Choose a connected finite Galois cover $q:\widetilde E\to Z$
+dominating $E\to Z$, and write $G=\operatorname{Aut}_Z(\widetilde E)$.
+Let $\widetilde D$ be the inverse image of $D$.  It is a compact
+strict affinoid domain of $\widetilde E$.  The composite
+$\widetilde D\to Z$ is quasi-\'etale: analytic-domain embeddings and
+finite \'etale maps are quasi-\'etale, and this property is stable
+under composition.  In particular it is flat and has
+zero-dimensional fibers.  Ducros, Proposition~9.1.1, applied to
+$\mathcal O_{\widetilde D}$ therefore shows that
+\[
+ C=q(\widetilde D)=f(D)
+ \quad\hbox{is a compact strict analytic domain of }Z.    \tag{HU3}
+\]
+It is consequently also an analytic domain of $X$.
+
+For every analytic point $z\in Z$, the Galois group acts transitively
+on the points of $q^{-1}(z)$.  This is the usual finite-Galois-cover
+fiber property, and is also the property used in the Galois
+saturation in Ducros's proof of Proposition~9.1.1(c).  More
+explicitly, after tensoring the finite \'etale fiber algebra with
+$\mathscr H(z)$, its geometric points form a $G$-torsor.  The
+absolute Galois group of $\mathscr H(z)$ commutes with this action;
+therefore $G$ is transitive on its orbits, equivalently on the field
+factors of that finite \'etale algebra.  Each finite extension of the
+complete valued field $\mathscr H(z)$ has its unique extended
+absolute value, so these factors are exactly the analytic fiber
+points.  Hence
+\[
+ q^{-1}(C)=\bigcup_{g\in G}g(\widetilde D).              \tag{HU4}
+\]
+Indeed, any point on the right maps to the image of $\widetilde D$;
+conversely, a point above $z\in C$ is a conjugate of some chosen
+point of $\widetilde D$ above $z$.  Both sides carry their induced
+analytic-domain structure in $\widetilde E$, and analytic-domain
+structures on a fixed subset are unique.  The union in HU4 is
+finite.  No points lying on domain boundaries have been removed.
+
+Put $\widetilde h=h\circ q$ on $\widetilde E$, where $h$ is restricted
+to $Z$.  Its restriction to $\widetilde D$ is geometric real PL by
+pullback from $D$.  Since $q\circ g=q$, the function $\widetilde h$
+is $G$-invariant.  Transporting the presentation on $\widetilde D$
+by each $g$ proves that $\widetilde h$ is geometric real PL on every
+$g(\widetilde D)$.
+
+For clarity, no goodness assumption is needed for the possibly
+non-affinoid union in HU4.  Cover $C$ by strict affinoid domains $V$.
+For each such $V$, the space $q^{-1}(V)$ is strict affinoid and
+$q^{-1}(V)\to V$ is finite \'etale and surjective.  Its intersections
+with the finitely many domains $g(\widetilde D)$ form a finite
+analytic-domain cover.  Restriction of the preceding PL
+presentations and G-locality show that
+$\widetilde h|_{q^{-1}(V)}$ is real PL.  Gubler--Jell--Rabinoff,
+Proposition~5.11, now gives $h|_V\in\operatorname{PL}_{\mathbf R}(V)$.
+G-locality gives $h|_C\in\operatorname{PL}_{\mathbf R}(C)$, understood
+through this affinoid cover if necessary.
+
+Finally, the finitely many compact analytic domains $f(D_i)$ cover
+$X$, because the $D_i$ cover $Y$ and $f$ is surjective.  They form a
+finite G-cover of $X$.  Applying G-locality once more proves HU2.
+\hfill$\square$
+
+\paragraph{What the saturation accomplishes.}
+The finite \'etale map used for descent is
+$q^{-1}(V)\to V$, after $V$ has been recognized as an actual target
+analytic domain.  It need not map back into the \emph{single}
+original source piece $D$.  The equality of the scalar pullback on
+all its Galois conjugates supplies PL presentations on the additional
+pieces.  Thus this proof is not a domination of the original
+quasi-\'etale cover by an ordinary finite \'etale cover, and it makes
+no assertion of descent for an arbitrary current originally given
+only on $D$.
+
+\subsection{The scalar consequence of altered uniformization}
+
+\paragraph{Corollary (classical pluriharmonic scalars are geometric
+real PL in the compact strict quasi-smooth case).}
+Let $X$ be a compact good Hausdorff quasi-smooth strictly
+$k$-analytic space.  Every classically pluriharmonic real function
+on $X$ belongs to $\operatorname{PL}_{\mathbf R}(X)$:
+\[
+ \operatorname{PH}_{\mathrm{cl}}(X)
+       \subseteq\operatorname{PL}_{\mathbf R}(X).       \tag{HU5}
+\]
+In particular this holds over the original $K$.  It also yields the
+corresponding local assertion at a point admitting a compact strict
+quasi-smooth analytic neighborhood on which the scalar is
+classically pluriharmonic.
+
+\paragraph{Proof.}
+Use Temkin, Corollary~3.3.2 and \S3.4, to choose a finite extension
+$l/k$ and a surjective quasi-\'etale morphism
+$p:Y\to X_l$ with $Y$ affinoid and possessing a strictly semistable
+formal model over $l^\circ$.  The original absolute value is merely
+extended to $l$.  The scalar
+$h_l\circ p$ is classically pluriharmonic by
+Gubler--Rabinoff, Proposition~7.2(6),(7).  Their Proposition~7.8
+shows that it is geometric real PL on $Y$.  Apply HU2 over $l$ to
+obtain $h_l\in\operatorname{PL}_{\mathbf R}(X_l)$.  Finally,
+Gubler--Jell--Rabinoff, Corollary~5.12, descends this property along
+the finite algebraic extension $l/k$ and gives HU5.
+All steps concern scalars and their analytic pullbacks.  No current
+over $l$ is constructed or imported. \hfill$\square$
+
+\subsection{Boundary pressure test and the remaining KC interfaces}
+
+Let $\varpi\in K$ satisfy $0<|\varpi|<1$, and consider the compact
+annulus and its two closed subannuli
+\[
+ \begin{split}
+ B&=\{|\varpi|\leq |T|\leq |\varpi|^{-1}\},\\
+ B_-&=\{|\varpi|\leq |T|\leq1\},\qquad
+ B_+=\{1\leq |T|\leq |\varpi|^{-1}\}.
+ \end{split}                                                    \tag{HU6}
+\]
+The map $B_-\amalg B_+\to B$ is surjective and quasi-\'etale.
+The unit Gauss point is in the ordinary interior of $B$ and on the
+analytic boundary of both displayed source domains.  Thus the
+shortcut asserting an ordinary interior lift for every point of a
+surjective quasi-\'etale compact cover is \texttt{FALSE}.  This is
+the already frozen R19 UF5 example, not a new counterexample family.
+It does not contradict HU2: $B_-,B_+$ themselves are a finite
+target G-cover, and scalar PL presentations glue on that cover.
+The associated R19 UF6--UF8 current example explains why discarding
+the boundary is nevertheless invalid for arbitrary-current action.
+
+The following conclusions are deliberately \emph{not} part of HU5.
+\begin{enumerate}
+\item A finite continuous scalar with ordinary $D[h]=0$ has not,
+by the definition alone, been identified with a classically
+pluriharmonic scalar.  Any use of HU5 for KC harmonic witnesses must
+pin a valid comparison in exactly that scalar class.  No general
+positivity-to-regularization implication is inferred from the
+abstracts of the cited papers.
+\item Geometric real PL on a G-cover is not yet a single global
+unit-log expression on a prescribed ordinary domain.  A
+residue/Picard argument, when applicable, must retain its own exact
+hypotheses and ordinary-germ quantifiers.
+\item HU2 and HU5 construct neither pullback nor descent for
+arbitrary allowed positive currents along the quasi-\'etale map.
+They do not localize a previously chosen full carrier polar.
+\item No conclusion about mixed KC harmonic generators with
+arbitrary companion potentials, the full carrier-CLN seminorm, or
+the actual signed PL relation ideal follows just from scalar
+recognition.  No ordinary-current equality is promoted to an
+arbitrary action on GK delta tests.
+\end{enumerate}
+
+Accordingly the original same-germ KC12 implication and the
+variable-PS/CTO gates retain status \texttt{OPEN}.  The precise
+topological obstruction to the naive three-result concatenation is
+repaired for geometric scalar PL descent by HU2; it is not repaired
+for arbitrary-current descent by the same argument.

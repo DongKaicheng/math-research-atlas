@@ -1,0 +1,279 @@
+\section{An attained finite-energy capacity for the parameter module}
+\label{sec:r12-parameter-energy-capacity}
+
+Keep all hypotheses and notation of
+Section~\ref{sec:r12-parameter-energy-Dirichlet}. In particular
+$R$ is a conormal original background on the strict original box,
+$k=n-P\ge1$, $d=k+1$, and $\psi$ is the bounded continuous
+actual geometry-dependent probe with $-1\le\psi<0$.
+Write
+\[
+        \omega=T_{R,k}(\psi^{[k]}),\qquad
+        \theta=s_*((-\psi)\omega),\qquad
+        h_c=\psi c(s),\qquad c\in L^d_+(\theta).
+                                                                    \tag{PC1}
+\]
+The preceding module theorem proves the literal all-original-test
+identities
+$\mu_{h_c}=c(s)^k\omega$ and
+$e_{s,\psi}(h_c)=\|c\|_d^d$. The present admissible family is
+normalized by that energy. It is neither the full classical
+$[0,1]$ tester family nor the full band-pasting family.
+
+\begin{definition}[Energy-normalized parameter capacity]
+\label{def:r12-parameter-energy-capacity}
+For Borel $A\subset V$, set
+\[
+       \mathfrak c_\psi(A)
+          =\sup_{\substack{c\in L^d_+(\theta)\\\|c\|_d\le1}}
+                                \mu_{h_c}(A).
+                                                                    \tag{PC2}
+\]
+The value may be infinite. Its ordinary-open outer regularization is
+\[
+       \mathfrak c_\psi^{\mathrm o}(A)
+          =\inf_{\substack{G\supset A\\G\text{ ordinary open in }V}}
+                                      \mathfrak c_\psi(G),
+                                                                    \tag{PC3}
+\]
+where (PC3) is defined for arbitrary subsets. The original field,
+absolute value, underlying potentials and current test sheaf have
+not changed. Only the explicitly displayed scalar normalization
+and the explicitly specified parameter module define this capacity.
+\end{definition}
+
+For Borel $A$, the finite parameter measure
+$\lambda_A=s_*(\mathbf1_A\omega)$ is absolutely continuous with
+respect to $\theta$, because the parameter measures
+$s_*\omega$ and $\theta$ have the same null sets. Choose a
+nonnegative Borel Radon--Nikodym density
+\[
+                            g_A=\frac{d\lambda_A}{d\theta}.
+                                                                    \tag{PC4}
+\]
+It is specified only as a $\theta$-class. This is a conditional
+\emph{measure} density, not a pointwise capacity on an intrinsic
+analytic fiber. It retains the mass of the complete original
+measure $\omega$ on $A$.
+
+\begin{theorem}[Exact capacity and an attained bounded optimizer]
+\label{thm:r12-parameter-energy-capacity-formula}
+For every Borel $A\subset V$,
+\[
+                         \mathfrak c_\psi(A)=\|g_A\|_{L^d(\theta)},
+                                                                    \tag{PC5}
+\]
+with the value $+\infty$ allowed on either side. Suppose
+$A\subset W\Subset V$, where $W$ is ordinary open, and put
+$\varepsilon_W=\min_{\overline W}(-\psi)>0$. Then
+\[
+              0\le g_A\le\varepsilon_W^{-1},\qquad
+              \mathfrak c_\psi(A)
+                    \le\varepsilon_W^{-k/d}\omega(A)^{1/d}.
+                                                                    \tag{PC6}
+\]
+If $\omega(A)>0$, the supremum in (PC2) has the unique
+maximizing parameter class
+\[
+                    c_A=\frac{g_A}{\|g_A\|_d},\qquad
+                    h_A=\psi\,c_A(s),\qquad
+                    e_{s,\psi}(h_A)=1.
+                                                                    \tag{PC7}
+\]
+This coefficient has a bounded Borel representative, so $h_A$
+has ordinary zero boundary value and is one of the already
+constructed bounded original-current parameter potentials.
+Its entire original source, not just its parameter pushforward,
+is
+\[
+                        \mu_{h_A}
+                             =\frac{g_A(s)^k}{\|g_A\|_d^k}\omega.
+                                                                    \tag{PC8}
+\]
+For $\omega(A)=0$ the capacity is zero; uniqueness of a maximizing
+coefficient is not asserted in that case.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this
+explicit finite-energy capacity and its original-current optimizer.
+Radon--Nikodym and Holder duality are \texttt{EXTERNAL\_KNOWN};
+the required actual products and energy are already proved in
+the parameter-module theorem.
+
+\begin{proof}
+For each admissible coefficient, the exact source formula gives
+\[
+                       \mu_{h_c}(A)=\int_J c^k g_A\,d\theta.
+                                                                    \tag{PC9}
+\]
+The map $c\mapsto c^k$ sends the nonnegative unit ball of
+$L^d(\theta)$ onto that of $L^{d/k}(\theta)$. Since the
+conjugate exponent of $d/k$ is $d$, Holder's inequality gives
+the upper bound in (PC5) whenever $g_A\in L^d$.
+For a nonzero such $g_A$, the coefficient in (PC7) has norm one
+and gives equality in (PC9): its value is
+$\|g_A\|_d^{-k}\int g_A^{k+1}d\theta=\|g_A\|_d$.
+The equality case in Holder, including vanishing on $\{g_A=0\}$,
+gives the uniqueness of this nonnegative parameter class.
+If $g_A$ is not in $L^d$, let $g_{A,N}=\min(g_A,N)$ and use
+$c_N=g_{A,N}/\|g_{A,N}\|_d$ whenever the denominator is nonzero.
+Then (PC9) is at least $\|g_{A,N}\|_d\to\infty$.
+If $g_A=0$, all values in (PC9) are zero. These cases prove (PC5).
+
+For the local bound, on $W$ one has
+$\omega\le\varepsilon_W^{-1}(-\psi)\omega$. Hence
+$\lambda_A\le\varepsilon_W^{-1}\theta$, which gives the
+pointwise density bound in (PC6). Therefore
+\[
+             \int g_A^d\,d\theta
+                    \le\varepsilon_W^{-(d-1)}\int g_A\,d\theta
+                    =\varepsilon_W^{-k}\omega(A).
+\]
+This proves the remaining bound and the boundedness of the
+optimizer. The parameter-module theorem supplies (PC8), its
+original-test meaning, and ordinary zero boundary value for a
+bounded coefficient. No maximizer in the unrestricted classical
+psh tester family is inferred.
+\end{proof}
+
+\begin{theorem}[Local full Borel regularity and the exact null ideal]
+\label{thm:r12-parameter-energy-capacity-regularity}
+Fix any ordinary $W\Subset V$. Then for every Borel $A\subset W$,
+\[
+                  \mathfrak c_\psi(A)=\mathfrak c_\psi^{\mathrm o}(A).
+                                                                    \tag{PC10}
+\]
+The outer infimum may equivalently be taken over ordinary opens
+contained in $W$. On Borel subsets of $W$, the capacity is inner
+regular by compact subsets of the original analytic space and
+outer regular by ordinary
+open subsets. It is continuous on increasing and on decreasing
+Borel sequences in $W$. More quantitatively, for Borel $A,B\subset W$,
+\[
+       |\mathfrak c_\psi(A)-\mathfrak c_\psi(B)|
+                 \le\varepsilon_W^{-k/d}\omega(A\mathbin\triangle B)^{1/d}.
+                                                                    \tag{PC11}
+\]
+For every such Borel $A$,
+\[
+       \mathfrak c_\psi(A)=0
+          \quad\Longleftrightarrow\quad\omega(A)=0
+          \quad\Longleftrightarrow\quad
+                            \mathfrak c_\psi^{\mathrm o}(A)=0.
+                                                                    \tag{PC12}
+\]
+The finite ordinary-open outer extension on $W$ is a Choquet
+capacity on all subsets of $W$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+energy-normalized parameter module. This is a full Borel
+regularity theorem for the capacity (PC2), not for unrestricted
+classical Bedford--Taylor capacity.
+
+\begin{proof}
+As a supremum of positive Radon measures, (PC2) is monotone and
+countably subadditive. It is finite on $W$ by (PC6). For any
+Borel $E\subset W$, finite Radon regularity of $\omega|_W$
+provides an ordinary open $G$ in $W$ containing $E$ with
+$\omega(G\setminus E)$ arbitrarily small. The set $G$ is also
+ordinary open in $V$ because $W$ is open. Subadditivity and
+(PC6) give
+\[
+             \mathfrak c_\psi(G)
+               \le\mathfrak c_\psi(E)
+                      +\varepsilon_W^{-k/d}\omega(G\setminus E)^{1/d}.
+\]
+Taking the error to zero proves (PC10). Intersecting an ambient
+open neighborhood with $W$ shows equality of the two outer
+infima. This argument uses an open window, not an unjustified
+compact-window neighborhood replacement.
+
+Subadditivity bounds the difference of the capacities of $A,B$
+by the larger of their capacities on the two set differences;
+(PC6) gives (PC11). Inner regularity follows by choosing compact
+$K\subset A$ with $\omega(A\setminus K)$ small. Increasing
+or decreasing Borel sequences in $W$ have symmetric differences
+of $\omega$-mass tending to zero, since $\omega(W)<\infty$.
+Thus (PC11) proves both continuity assertions. Formula (PC5),
+together with $\int g_A\,d\theta=\omega(A)$, proves the first
+equivalence in (PC12); (PC10) gives the second.
+
+For completeness, every subset of $W$ has a Borel hull of the
+same outer capacity: intersect a sequence of ordinary open
+neighborhoods whose capacities approach the infimum and use
+the already proved Borel regularity. For increasing arbitrary
+sets $A_j$, choose such Borel hulls $B_j$ and set
+$H_j=\bigcap_{l\ge j}B_l$. Then $H_j$ increases, contains
+$A_j$, and has capacity $\mathfrak c_\psi^{\mathrm o}(A_j)$.
+Continuity below on Borel sets proves continuity below of the
+outer extension on arbitrary sets. Continuity above on compact
+sets follows from (PC11). These, monotonicity and the zero value
+on the empty set are the claimed finite Choquet properties.
+\end{proof}
+
+\begin{corollary}[Parameter bands and comparison with original capacity]
+\label{cor:r12-parameter-energy-capacity-bands}
+For an ordinary $W\Subset V$, let $g_W$ denote (PC4) with
+$A=W$, and set $\Theta_W=g_W^d\theta$. This is a finite positive
+Radon measure on the real parameter space, and for every Borel $E$,
+\[
+         \mathfrak c_\psi(W\cap s^{-1}(E))=\Theta_W(E)^{1/d}.
+                                                                    \tag{PC13}
+\]
+For every Borel $A\subset W$ one also has
+\[
+          \mathfrak c_\psi(A)
+               \le\varepsilon_W^{-k/d} C_R(A;V)^{1/d}.
+                                                                    \tag{PC14}
+\]
+The same inequality holds for the two ordinary-open outer
+regularizations on arbitrary subsets of $W$. Only this direction
+is asserted. In particular (PC12) does not identify the full
+classical $R$-capacity-null ideal with the $\omega$-null ideal
+on arbitrary analytic sets.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}.
+
+\begin{proof}
+The parameter density of $\mathbf1_{W\cap s^{-1}(E)}\omega$
+is $\mathbf1_Eg_W$. Formula (PC5) gives (PC13), and (PC6)
+makes its measure finite. The actual potential $\psi+1$ is
+an original normalized classical tester on the same $V$, so
+$\omega(A)\le C_R(A;V)$. Combine this with (PC6) to obtain
+(PC14). For outer capacities, intersect any proposed ordinary
+open neighborhood with $W$, apply the same bound there, and
+take the infimum. No equivalence between the two tester
+families or their null ideals has been used.
+\end{proof}
+
+\paragraph{Background, boundary and test scope.}
+Every arbitrary original allowed $S$ yields this mechanism
+through the proved conormal mixed-slot current
+$R=\Omega_s\wedge S$. The coefficients are the exact
+parameter $L^d$ classes of the preceding energy module.
+The bounded capacitary optimizer (PC7) has ordinary zero
+boundary value; general energy-admissible potentials retain
+only the printed bounded-parameter completion boundary convention.
+Their products are literal original currents on all original
+tests, not currents on a new field or a parameter space alone.
+
+The density $g_A$ in (PC4) averages the fixed original source
+measure along parameters. There is no maximization over an
+uncountable family of fiberwise psh functions, and no measurable
+choice of intrinsic analytic-fiber solutions. This is why the
+exact formula and attainment are available in this explicitly
+specified module. They do not resolve OPEN-GQ, OPEN-CTO, or
+the raw/outer problem for the full original classical capacity.
+
+\paragraph{Exact dependency snapshot.}
+The current and energy theorem used here is
+\path{energy/parameter_finite_energy_dirichlet.tex}, including
+(PD4)--(PD11), at SHA256
+\texttt{dd3fbcc3753ad9e3df7145688fa5ff6c1d5e39cb4400c18a5c7a077dfcfdba7c}.
+Its subsequent additions of comparison and exact saturated-null
+statements have been independently reviewed; (PC5)--(PC14) need
+only the already proved intrinsic source and energy formulas,
+strict negativity of the actual probe, and its normalized bounded
+classicality.

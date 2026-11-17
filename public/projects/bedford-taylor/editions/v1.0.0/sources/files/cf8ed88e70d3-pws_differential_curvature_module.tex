@@ -1,0 +1,493 @@
+\section{A differential module with actual piecewise smooth coefficients}
+\label{sec:r10-pws-differential-module}
+
+All currents and tests in this section are original CLD objects over
+the fixed $K/\mathbf Q_p$ with its original absolute value.  Piecewise
+smooth (PS) means the actual codimension-zero sheaf, with tangential
+matching and the full actual moment equivalence, as in the frozen R6
+PS multiplication theorem.  It does not mean an arbitrary Borel
+coefficient array.  Backgrounds remain arbitrary original symmetric
+middle-positive separately closed currents.
+
+The inputs used below are precisely: the frozen R4 uniform normal-wall
+variation estimate for positive separately closed currents; the frozen
+weighted joint bounded BT theorem; the R6 canonical PS multiplication
+and tangency theorem; and the codimension-zero case of the R6 anchored
+Courant presentation.  No analytic positive-codimension relation
+quotient is assumed.
+
+The exact frozen pins are
+\texttt{thm:r6-delta-module-generation} in
+\texttt{\detokenize{delta_module_generation.tex}},
+\texttt{lem:r6-level-tangency} and
+\texttt{thm:r6-pws-multiplication} in
+\texttt{\detokenize{pws_tangent_extension.tex}},
+\texttt{lem:r4-wall-normal-factor} and
+\texttt{thm:r4-piecewise-test-continuity} in
+\texttt{\detokenize{potential_quotient_next.tex}}, and
+\texttt{thm:relative-monotone} in the frozen foundational
+\texttt{\detokenize{relative_monotone.tex}}.
+Their full archived paths, SHA256 values, and exact uses are
+recorded in \texttt{\detokenize{PWS_DEPENDENCY_CHECK.json}}.
+
+\subsection{A simultaneous smoothing estimate with moving closed tails}
+
+On a compact stage in one original moment presentation, the frozen
+anchored construction writes every PS form as a finite sum of words
+\[
+ \alpha=
+ F(\lambda_1,\ldots,\lambda_N)\,
+ d'_P\lambda_{i_1}\wedge\cdots\wedge d'_P\lambda_{i_a}
+ \wedge d''_P\lambda_{j_1}\wedge\cdots\wedge d''_P\lambda_{j_b},
+ \tag{P1}
+\]
+where the $\lambda_i$ are continuous real PL functions in those
+moments and $F$ is smooth on a neighborhood of the relevant finite
+coordinate image.  Finite sums and original smooth coefficient forms
+are allowed.  The latter can also be included by adding the original
+affine moment coordinates to the list in (P1).
+
+Here is the exact use of the frozen generation theorem.  In its
+codimension-zero case, every lifted constant full-dimensional
+balanced cycle on a connected real neighborhood is a constant
+multiple of the ambient integration current.  Its printed anchored
+coefficient is $g(\lambda_A)d'_P\lambda_I\wedge d''_P\lambda_J$,
+which is (P1).  Its Courant functions are continuous PL but need not
+be convex.  Refining by their finitely many walls and adding a
+sufficiently large positive sum of absolute affine wall functions
+writes each one locally as
+\[
+                         \lambda_i=\lambda_i^+-\lambda_i^-,
+ \tag{P2}
+\]
+with both $\lambda_i^\pm$ convex PL.  Indeed their gradient jumps
+are bounded normal multiples along finitely many walls; a large
+sum of absolute wall functions makes every jump nonnegative.
+Convexity on all segments then proves (P2).  This is the PL case
+of the frozen R6 continuous-PS difference lemma.
+
+Use one nonnegative compact smooth convolution kernel of total mass
+one and zero first moment, with radius $\varepsilon$, for all real representatives on a
+slightly larger stage.  Write
+$\lambda_{i,\varepsilon}^\pm=\lambda_i^\pm*\rho_\varepsilon$ and
+$\lambda_{i,\varepsilon}=\lambda_{i,\varepsilon}^+
+                       -\lambda_{i,\varepsilon}^-$.
+Each positive row is smooth convex and decreases as
+$\varepsilon\downarrow0$, by the convexity/Jensen argument already
+printed for PL slots.  The signed row is the convolution of
+$\lambda_i$ itself.  It converges locally uniformly, and all its
+first coefficient derivatives have one compact-stage bound.
+Let $\alpha_\varepsilon$ be the smooth form obtained from (P1)
+by these replacements.
+
+\begin{lemma}[Uniform normal-factor error for the differentiated rows]
+\label{lem:r10-pws-word-uniform-error}
+Fix a compact original test stage, a PS form $\alpha$ as above,
+and an original compact smooth complementary form $\eta$.
+There are finitely many fixed original positive compact smooth
+controls $\Theta_l$ and a constant $C$ such that, for every
+allowed positive separately closed diagonal current $T$ of the
+degree needed to pair $\alpha\wedge T$ with $\eta$,
+\[
+ \left|\mu_{(\alpha_\varepsilon-\alpha)\wedge T,\eta}\right|
+        (\operatorname{supp}\eta)
+ \le C\varepsilon^{1/2}\sum_l\langle T,\Theta_l\rangle.
+ \tag{P3}
+\]
+The same estimate holds after multiplication by a Borel scalar
+of absolute value at most one.  It applies to each word arising
+by differentiating the coefficient part of (P1) once or twice.
+All actual refinements are allowed by making a common original
+moment presentation with the chosen test.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+frozen R4 normal-factor variation estimate, with the required
+special smoothing rows verified here.
+
+\begin{proof}
+Refine the finitely many PL subdivisions by one finite arrangement
+of affine hyperplanes $\ell_H=0$.  Choose on each face an ambient
+gradient from any incident chamber.  These are legitimate PS
+representatives by the frozen tangency theorem.
+
+Across a facet, continuity of $\lambda_i$ makes the difference
+of its two constant gradients a scalar multiple of $d\ell_H$.
+Compare two points at distance at most $\varepsilon$ by the
+segment between them.  The successive gradient changes are
+bounded normal multiples at the finitely many crossed walls.
+Every crossed wall satisfies $|\ell_H(x)|\le C_H\varepsilon$
+at the initial point $x$.  At a point on several walls the
+same statement holds after choosing an incident chamber; its
+ambiguity is a sum of the same conormals.  Averaging the
+gradient differences against the kernel therefore gives
+\[
+ \begin{split}
+ d'\lambda_{i,\varepsilon}-d'_P\lambda_i
+       &=\sum_H b'_{i,H,\varepsilon}\,d'\ell_H,\\
+ d''\lambda_{i,\varepsilon}-d''_P\lambda_i
+       &=\sum_H b''_{i,H,\varepsilon}\,d''\ell_H,
+ \end{split}
+ \tag{P4}
+\]
+where the Borel coefficients have a common bound and are supported
+in the indicated shrinking wall tubes.  All identities are
+understood modulo the face conormal ambiguity, which every
+allowed $T$ annihilates before Borel restriction.
+
+The scalar functions $\lambda_{i,\varepsilon}-\lambda_i$ are
+$O(\varepsilon)$ uniformly, so smoothness of $F$ on a compact
+coordinate neighborhood gives the same bound for their scalar
+coefficient error.  Expand the difference of the finite wedge
+products in (P1) by replacing one factor at a time.  It is a sum
+of an $O(\varepsilon)$ bounded coefficient form and bounded
+forms with one factor $d'\ell_H$ or $d''\ell_H$, supported in
+the corresponding wall tube.  All other first-derivative
+coefficients are uniformly bounded.  Multiplication by the fixed
+smooth $\eta$ preserves this description.
+
+Original coefficient domination bounds the first part by
+$C\varepsilon\sum_l\langle T,\Theta_l\rangle$.  The R4
+normal-factor variation estimate bounds every remaining part by
+$C\varepsilon^{1/2}\sum_l\langle T,\Theta_l\rangle$.
+That frozen estimate is a total-variation estimate and already
+permits arbitrary bounded Borel coefficients in its other
+factors.  It therefore proves (P3) and its scalar-weight version.
+If the complementary degree of $T$ is zero, only scalar words
+can occur, and uniform scalar convergence proves the estimate
+without a wall argument.
+
+Replacing $F$ by one of its finitely many derivatives and
+deleting or adding finitely many first-derivative letters gives
+exactly the same coefficient description.  This proves the
+assertion needed for once- and twice-differentiated words.
+\end{proof}
+
+\begin{lemma}[Weighted BT convergence against these moving PS rows]
+\label{lem:r10-weighted-pws-moving-tails}
+Let $T_m$ be any positive mixed bounded BT tail over a fixed
+allowed background, whose finitely many classical slots decrease
+to locally bounded limits, and let $T$ be the limiting tail.
+Let $u_m\downarrow u$ be bounded classical weights with locally
+bounded limit; a fixed bounded classical $u_m=u$ is allowed.
+Let $\alpha_{\varepsilon_m}$ be one of the rows just constructed,
+where $\varepsilon_m\downarrow0$.  Then
+\[
+             u_m\alpha_{\varepsilon_m}\wedge T_m
+                          \longrightarrow u\alpha\wedge T
+ \tag{P5}
+\]
+on every original compact smooth complementary test.
+The assertion also holds with the fixed PS coefficient $\alpha$
+in place of its moving row.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as the
+weighted PS convergence used in the intrinsic extension.
+
+\begin{proof}
+Unweighted frozen BT convergence bounds the finitely many
+positive controls of $T_m$ in (P3), uniformly in $m$.
+The weights have a common finite compact-stage bound.
+Thus (P3) shows that replacing
+$\alpha_{\varepsilon_m}$ by $\alpha$ in (P5) has error tending
+to zero, even after multiplication by $u_m$.
+
+To handle the fixed $\alpha$, choose another fixed smoothing
+parameter $\delta>0$.  The test
+$\alpha_\delta\wedge\eta$ is original smooth, so the frozen
+weighted joint theorem gives
+\[
+ \langle u_m\alpha_\delta\wedge T_m,\eta\rangle
+                  \longrightarrow
+ \langle u\alpha_\delta\wedge T,\eta\rangle.
+\]
+The errors in replacing $\alpha_\delta$ by $\alpha$ on either
+side are uniformly $O(\delta^{1/2})$, by (P3) and the common
+weight and control bounds.  First let $m\to\infty$ and then
+$\delta\downarrow0$.  This proves both assertions.  In
+particular the passage with a possibly discontinuous classical
+weight uses the frozen weighted BT theorem; it is not inferred
+from weak convergence of Radon measures against Borel tests.
+\end{proof}
+
+\subsection{Intrinsic derivatives and the corrected operator}
+
+\begin{definition}[The full PS coefficient module over allowed backgrounds]
+\label{def:r10-full-pws-background-module}
+For $0\le a,b\le n$, let $\mathscr N_{\rm PS}^{a,b}$ consist
+of original currents locally admitting a finite expression
+\[
+                         R=\sum_{\nu=1}^N\alpha_\nu\wedge S_\nu,
+ \tag{P6}
+\]
+where each $S_\nu$ is an allowed arbitrary original positive
+separately closed current and $\alpha_\nu$ is an actual PS form
+of the needed bidegree.  Products in (P6) are the frozen
+canonical PS products.  Equality means equality of original
+currents on all original tests, not equality of witnesses.
+Neither symmetry nor separate closedness of $R$ is assumed.
+\end{definition}
+
+Every such $R$ belongs to the frozen tangential Radon module,
+even when it is not closed.  Indeed, write a PS multiplier by
+its finite smooth-face/Borel-stratum formula.  For every original
+smooth level $h=c$, both conormals annihilate the corresponding
+restriction of each closed $S_\nu$ before any face restriction.
+Bounded coefficient multiplication and further Borel restriction
+preserve these zero measures, so the same conormal identities
+hold for $R$.  The R6 PS multiplication theorem consequently
+applies to $R$ itself.  Its finite face formula is intrinsic:
+a zero coefficient-Radon current has zero coefficient measures,
+which remain zero after each bounded coefficient multiplication.
+Thus further PS multiplication and associativity do not depend
+on a witness (P6), and do not require $R$ to be separately closed.
+
+\begin{theorem}[Derivative-Radon closure with every interface retained]
+\label{thm:r10-pws-derivative-radon-closure}
+The module $\mathscr N_{\rm PS}$ is stable under actual PS
+exterior coefficients, $d'$, and $d''$.  In particular
+\[
+                        R,\quad d'R,\quad d''R,\quad DR
+                   \quad\hbox{are coefficient-Radon currents}.
+ \tag{P7}
+\]
+Their derivatives are their intrinsic original distribution
+derivatives.  They can be computed in any local anchored
+presentation by the usual graded product rule, using the
+following replacements for every continuous PL generator
+$\lambda=\lambda^+-\lambda^-$ over a closed tail $T$:
+\[
+ \begin{array}{c|cc}
+ &d'&d''\\ \hline
+ \lambda&d'_P\lambda&d''_P\lambda\\
+ d'_P\lambda&0&-D(\lambda T)\\
+ d''_P\lambda&D(\lambda T)&0 .
+ \end{array}
+ \tag{P8}
+\]
+In the bottom two rows the entry means insertion into that
+word and absorption of the curvature into the closed tail;
+$D(\lambda T)=D(\lambda^+T)-D(\lambda^-T)$.
+Several curvature factors mean the frozen mixed BT products,
+expanded linearly in their positive and negative slots.
+All identities hold on every original test and every actual
+moment refinement.  Degrees outside $0,\ldots,n$ are zero.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+intrinsic differential module and its interface formulas.
+The existence of the undifferentiated module is
+\texttt{INTERNAL\_INPUT} from R6.
+
+\begin{proof}
+PS multiplication and its associativity are frozen inputs.
+Consider one word $\alpha\wedge S$ in (P6), using (P1)--(P2),
+and its smooth row $R_m=\alpha_{\varepsilon_m}\wedge S$.
+Lemma~\ref{lem:r10-pws-word-uniform-error} gives
+$R_m\to R$ in local coefficient variation on every fixed test.
+
+Differentiate the smooth word once or twice.  A coefficient
+derivative of $F$ creates another first-derivative letter.
+Differentiating $d'\lambda_m$ by $d''$ gives
+$-D\lambda_m$, and differentiating $d''\lambda_m$ by $d'$
+gives $D\lambda_m$.  The other same-prime derivatives and
+all derivatives of curvature factors are zero.  After
+expanding (P2), every term in $d'R_m$, $d''R_m$, or $DR_m$
+is another row of the type in Lemma
+~\ref{lem:r10-pws-word-uniform-error} multiplied by a positive
+closed BT tail over $S$, with at most two inserted convex
+PL smoothing slots.  The signs are exactly the usual graded
+signs; no derivative of a Borel face indicator is discarded.
+
+Lemma~\ref{lem:r10-weighted-pws-moving-tails}, with weight
+one, gives a coefficient-Radon limit for each finite term.
+It is its stated PS coefficient times the bounded BT tail
+of the limiting PL potentials.  Distributional differentiation
+is continuous on the original test space, so these limits are
+precisely $d'R$, $d''R$, and $DR$.  Their finite expressions
+belong to $\mathscr N_{\rm PS}$, because every positive
+mixed tail is again an allowed closed background.  This also
+proves (P8).
+
+The intrinsic distribution derivative is independent of every
+choice of representative, subdivision, DC splitting, and
+smoothing row.  The finite calculation therefore proves
+the asserted independence rather than assuming it.
+The frozen anchored presentation and PS multiplication apply
+after every common actual refinement.  Localizing on compact
+supports and gluing gives the full original test statement.
+\end{proof}
+
+\begin{theorem}[Intrinsic corrected bounded insertion on the PS module]
+\label{thm:r10-pws-corrected-bounded-insertion}
+For $R\in\mathscr N_{\rm PS}^{a,b}$ and an original locally
+bounded classical psh function $u$, with
+$\max(a,b)+1\le n$, the intrinsic distribution
+\[
+ \mathfrak B_uR
+    =D(uR)-d'(u\,d''R)+d''(u\,d'R)+uDR
+ \tag{P9}
+\]
+is a coefficient-Radon current belonging to
+$\mathscr N_{\rm PS}^{a+1,b+1}$.  For every witness (P6),
+\[
+                   \mathfrak B_uR
+                         =\sum_\nu\alpha_\nu\wedge D(uS_\nu).
+ \tag{P10}
+\]
+In particular (P10) is independent of that witness.
+It is linear over actual PS exterior coefficients, local in
+the ordinary topology, and commutes with $d'$ and $d''$ in
+every permitted bidegree.  Iteration gives
+\[
+ \mathfrak B_{u_k}\cdots\mathfrak B_{u_1}R
+        =\sum_\nu\alpha_\nu\wedge
+                          T_{S_\nu,k}(u_1,\ldots,u_k),
+       \qquad \max(a,b)+k\le n.
+ \tag{P11}
+\]
+These products are mixed symmetric and have joint decreasing
+continuity on every original compact smooth test.
+No middle-order preservation for an arbitrary positive
+nonclosed member of $\mathscr N_{\rm PS}$ is asserted.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+PS coefficient extension, including bounded classical weights
+which are not assumed continuous.
+
+\begin{proof}
+All four scalar multiplications in (P9) are intrinsic
+coefficient-Radon multiplications by (P7).  Thus its left
+side is an intrinsic distribution before proving the right
+side.  For one witness term, use the smooth rows $R_m$
+of the previous proof.  The already proved smooth corrected
+Leibniz identity gives
+\[
+                       \mathfrak B_uR_m
+                         =\alpha_{\varepsilon_m}\wedge D(uS).
+ \tag{P12}
+\]
+On the right, the fixed positive closed current $D(uS)$
+and (P3) give convergence in local coefficient variation to
+$\alpha\wedge D(uS)$.
+
+On the left, each of $R_m,d'R_m,d''R_m,DR_m$ is the finite
+sum described in the derivative proof.  Lemma
+~\ref{lem:r10-weighted-pws-moving-tails}, now with the
+fixed classical weight $u$, proves convergence after
+multiplying each of these currents by $u$.  Passing their
+printed distribution derivatives to the limit proves
+(P10).  This passage is the reason the normal-wall estimate
+and weighted theorem were established before defining the
+extension.  It does not differentiate a PS coefficient
+through $S$ without accounting for its corners.
+
+Every right side in (P10) belongs to the module.  Since the
+left side depends only on $R$, representation independence
+follows.  Canonical PS associativity proves PS coefficient
+linearity.  Ordinary locality and compatibility with all
+refinements follow from the intrinsic formula and the
+already original PS products.
+
+For completeness the differential commutation is an
+intrinsic operator calculation, not an unproved PS
+Leibniz rule.  The anticommutation of the two differentials
+gives, with all scalar factors defined by (P7),
+\[
+ \begin{split}
+ d'\mathfrak B_uR
+       &=D(u\,d'R)+d'(uDR)=\mathfrak B_u(d'R),\\
+ d''\mathfrak B_uR
+       &=D(u\,d''R)+d''(uDR)=\mathfrak B_u(d''R).
+ \end{split}
+ \tag{P13}
+\]
+Module closure permits both sides.  Formula (P11) follows
+by induction from (P10); every tail is positive and closed.
+Frozen mixed symmetry proves its symmetry.  For a decreasing
+tuple the frozen products converge with uniform compact
+positive controls.  The fixed-PS version of (P5), with
+weight one, gives the stated continuity.  Finite localization
+handles all original test supports.
+\end{proof}
+
+\subsection{An explicit nonclosed first-derivative example}
+
+\begin{corollary}[The full nonsymmetric PL gradient product]
+\label{cor:r10-nonsymmetric-PL-gradient-product}
+Let $S$ be any allowed $(p,p)$-background, $p+2\le n$,
+and let $\phi,\psi$ be locally bounded convex PL functions
+of original moments.  Define by canonical PS multiplication
+\[
+                         R=d'_P\phi\wedge d''_P\psi\wedge S.
+ \tag{P14}
+\]
+Then all the following are intrinsic coefficient-Radon
+identities on the complete original test sheaf:
+\[
+ \begin{split}
+ d'R&=-d'_P\phi\wedge D(\psi S),\\
+ d''R&=-d''_P\psi\wedge D(\phi S),\\
+ DR&=-T_{S,2}(\phi,\psi),\\
+ \mathfrak B_uR&=
+          d'_P\phi\wedge d''_P\psi\wedge D(uS)
+ \end{split}
+ \tag{P15}
+\]
+for every locally bounded classical $u$.  No symmetry of
+$R$ is required.  For $\phi=\psi$, $R$ is the positive
+gradient-energy current and
+\[
+ R=\tfrac12D(\phi^2S)-\phi D(\phi S),\qquad
+                         DR=-T_{S,2}(\phi,\phi).
+ \tag{P16}
+\]
+The first equality in (P16) is the frozen R6 scalar PS
+product rule; the new assertion is stability under the
+intrinsic operator with every printed derivative retained.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the two new module theorems and the indicated frozen energy
+identity.
+
+\begin{proof}
+Apply (P8) to the two first-derivative letters, remembering
+their total degree one.  This gives the first three lines
+of (P15), including the negative sign in $DR$.
+Formula (P10) gives the last line.  The frozen scalar
+PS Leibniz formula for $\phi^2$ gives (P16).
+All background products in the formulas are the existing
+bounded BT products over the same arbitrary $S$.
+\end{proof}
+
+\paragraph{The exact limits of the extension.}
+The argument proves a differential module and corrected
+insertion, not OPEN-GQ.  A finite PS/PL response belongs to
+this module once its pure-cycle slots have their prescribed
+bounded presentations.  It does not follow that a zero
+actual positive-codimension delta-form has zero response.
+In particular no equality on an auxiliary-field cap
+background is inferred from an unproved analytic quotient.
+The smooth freezing argument alone does not transfer ordinary
+order on an arbitrary nonclosed PS response: piecewise constant
+coefficient backgrounds are generally not separately closed.
+Theorem~\ref{thm:r10-ps-module-positivity} resolves this finite
+actual PS positivity question by a genuinely closed conormal
+penalty, followed by exact tangency on each carrier.  No claim
+of signed actual-relation descent follows from that order theorem.
+
+The scalar class cannot be enlarged silently to arbitrary
+Borel coefficient functions.  On an original annulus let
+$\xi$ be its unit Gauss point, $S=[U]$, and
+$u=(\log|T|)_+$.  Original smooth top-form integration has
+no atom at $\xi$, so $\mathbf1_{\{\xi\}}S=0$, whereas
+$\mathbf1_{\{\xi\}}D(uS)=\delta_\xi$.  A coefficient-linear
+extension over all Borel witnesses would therefore send
+the same zero current to both zero and a nonzero measure.
+This is a concrete \texttt{FALSE} extension, not a GQ
+counterexample.  In (P5), the Borel point values of bounded
+classical weights are admitted only through the frozen
+weighted BT theorem.

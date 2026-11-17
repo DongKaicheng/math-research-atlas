@@ -1,0 +1,189 @@
+\section{The sharp midpoint modulus of the first energy}
+\label{sec:r11-sharp-midpoint-modulus}
+
+Retain exactly the strict-box, background-extension and
+$\mathcal E^1_{S,\partial}(V)$ hypotheses of the global
+first-energy calculus.  Put
+\[
+ c_q=\frac{1-2^{-q}}{2(q+1)},\qquad
+ \mathscr D_S(u,v)=
+       \mathscr A_S\left(\frac{u+v}{2}\right)
+            -\frac{\mathscr A_S(u)+\mathscr A_S(v)}2 .
+ \tag{SM1}
+\]
+The simpler positive constant in (EV18) already suffices
+for the Cauchy argument there.  This section computes
+the optimal uniform coefficient and its equality example.
+
+\begin{lemma}[A finite Bernstein coefficient comparison]
+\label{lem:r11-midpoint-Bernstein}
+For every integer $q\geq1$ and $0\leq l\leq q-1$,
+\[
+ a_{q,l}:=
+ \frac q2\binom{q-1}{l}
+    \int_0^1\min(t,1-t)t^l(1-t)^{q-1-l}\,dt
+       \geq c_q.
+ \tag{SM2}
+\]
+Equality holds for $l=0$ and $l=q-1$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+auxiliary finite polynomial inequality; the following
+proof holds for every $q$, independently of any numerical
+checks.
+
+\begin{proof}
+For $1\leq k\leq q$ write
+\[
+\begin{split}
+ p_i(s)&=\binom qi s^i(1-s)^{q-i},\\
+ B_k(s)&=\sum_{i=k}^q p_i(s),\\
+ b_k(t)&=q\binom{q-1}{k-1}t^{k-1}(1-t)^{q-k}.
+\end{split}
+ \tag{SM3}
+\]
+Termwise differentiation of the finite sum telescopes
+to $B_k'=b_k$.  The integral of $b_k$ over $[0,1]$
+is one.  Also
+$B_k(1-s)=1-B_{q-k+1}(s)$, by the binomial theorem.
+Consequently
+\[
+ P_k(s):=\int_s^{1-s}b_k(t)\,dt
+              =1-B_k(s)-B_{q-k+1}(s)
+                    \quad(0\leq s\leq1/2).
+ \tag{SM4}
+\]
+For $1\leq k\leq(q+1)/2$ this gives
+\[
+ P_k(s)-P_1(s)
+       =\sum_{i=1}^{k-1}\bigl(p_i(s)-p_{q-i}(s)\bigr)\geq0.
+ \tag{SM5}
+\]
+Indeed $i\leq(q-1)/2$, and for $0<s\leq1/2$
+the ratio is
+$p_i(s)/p_{q-i}(s)=(s/(1-s))^{2i-q}\geq1$.
+At $s=0$ use continuity.
+The symmetry $P_k=P_{q+1-k}$ proves the same
+bound for the remaining $k$.
+
+Layer cake for the nonnegative tent function now gives
+\[
+ a_{q,k-1}
+   =\frac12\int_0^{1/2}P_k(s)\,ds
+   \geq\frac12\int_0^{1/2}P_1(s)\,ds=a_{q,0}.
+ \tag{SM6}
+\]
+The endpoint integral, or its reflected version, is
+\[
+ \frac q2\left[
+      \int_0^{1/2}t^q\,dt
+        +\int_{1/2}^1(1-t)t^{q-1}\,dt\right]
+       =\frac{1-2^{-q}}{2(q+1)}.
+ \tag{SM7}
+\]
+This proves every assertion, including $q=1$.
+\end{proof}
+
+\begin{theorem}[Optimal midpoint control of the relative discrepancy]
+\label{thm:r11-sharp-midpoint-modulus}
+For every $u,v\in\mathcal E^1_{S,\partial}(V)$,
+\[
+ \boxed{\qquad
+       \mathscr D_S(u,v)\geq
+          \frac{1-2^{-q}}{2(q+1)}\,\mathscr I_S(u,v).
+       \qquad}
+ \tag{SM8}
+\]
+If the class contains a potential of positive first
+energy, the constant cannot be increased for that
+same domain and background.
+No strict positivity or geometric representation of
+the original middle-positive $S$ is required.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}
+as the sharp quantitative form of the global
+arbitrary-background midpoint estimate.
+
+\begin{proof}
+Let $h=u-v$ and set
+\[
+ \gamma_l=
+       \int_V\Gamma_{N(u^{[l]},v^{[q-1-l]})}(h)
+                      \quad(0\leq l\leq q-1).
+ \tag{SM9}
+\]
+Each $\gamma_l$ is finite and nonnegative by (GE7),
+and (GE18) gives
+$\mathscr I_S(u,v)=\sum_l\gamma_l$.
+The scalar Green formula for a twice differentiable
+function on $[0,1]$, applied to
+$\mathscr A_S((1-t)u+tv)$ and (GE16), yields
+\[
+ \mathscr D_S(u,v)=
+       \frac q2\int_0^1\min(t,1-t)
+          \int_V\Gamma_{N(((1-t)u+tv)^{[q-1]})}(h)\,dt
+       =\sum_{l=0}^{q-1}a_{q,l}\gamma_l .
+ \tag{SM10}
+\]
+The possible reversal of $l$ under $t\mapsto1-t$
+does not affect the coefficient, since the tent
+function is symmetric.
+All operations are finite sums of the already
+proved globally integrable mixed energies.
+Apply (SM2) term by term to prove (SM8).
+
+For sharpness choose any $u$ with $e_1(u)>0$ and
+take $v=0$.  The zero potential is in the same
+boundary power class.  Homogeneity and the definition
+of the discrepancy give
+\[
+ \mathscr I_S(u,0)=e_1(u),\qquad
+ \mathscr D_S(u,0)
+    =\left(\frac12-2^{-(q+1)}\right)
+                       \frac{e_1(u)}{q+1}
+    =c_q e_1(u).
+ \tag{SM11}
+\]
+Thus equality occurs for the same original background
+and domain, proving optimality.
+\end{proof}
+
+\begin{corollary}[An explicit error bound for dual maximization]
+\label{cor:r11-sharp-maximizing-error}
+In the setting of (EV16), let
+$L=\sup\mathcal F_\mu$.
+For any $u,v\in\mathcal E^1$,
+\[
+ \mathscr I_S(u,v)
+       \leq \frac{2(q+1)}{1-2^{-q}}\,
+                \left[L-\frac{\mathcal F_\mu(u)+\mathcal F_\mu(v)}2\right].
+ \tag{SM12}
+\]
+Thus prescribed objective gaps give a quantitative
+bound in every local outer capacity through (EV8).
+This remains a convergence estimate; it supplies
+neither an ambient classical representative of
+a completion limit nor the missing admissible
+variations for an unrestricted source equation.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}.
+
+\begin{proof}
+The datum integral is affine along the segment,
+so it cancels from the midpoint gap.
+The value at the midpoint is at most $L$.
+Use (SM8) and divide by its positive constant.
+\end{proof}
+
+\paragraph{Auxiliary verification.}
+The exact rational script
+\path{research_r11/verify_midpoint_coefficients.py}
+expands the two polynomial integrals for a finite
+range of $q$ and checks their minimum against (SM7).
+It tests normalization and signs only.
+The all-$q$ argument is (SM3)--(SM7), and the analytic
+argument is the full original global energy identity
+(SM10).

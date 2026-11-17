@@ -1,0 +1,131 @@
+\section{A restricted positive Borel result from a uniform Hausdorff estimate}
+\paragraph{Author and status.}
+Independent derivation and audit by task \texttt{/root/b1\_positive\_routes}.
+\texttt{PROVED-INTERNAL}, conditional only on the already audited original
+local linear trace lemma. This is a restricted positive result, not the
+general B1 theorem and not a claim of worldwide novelty.
+
+Retain the fixed original $K$, absolute value, original $n$-torus with
+$n\ge2$, the strict Laurent box $V$, normalized moments
+$\tau:V\to Q=(-1,1)^n$, and the smooth strongly positive background
+$S=\beta^{n-1}[X]$ used in the preceding sections. Thus $q=1$ and
+\[
+ \tau_*(Da\wedge S)=\gamma\Delta g_a,
+ \qquad\gamma=(n-1)!\lambda^{n-2},
+\]
+for every original normalized tester $0\le a\le1$, with canonical convex
+trace $0\le g_a\le1$. Fix a compact set $P\Subset Q$ and set
+$d=\operatorname{dist}(P,\mathbf R^n\setminus Q)>0$.
+
+\begin{lemma}[Uniform local ball and Hausdorff control]
+There is a constant $M_{n,P}<\infty$, independent of the original tester,
+such that every Borel $F\subset P$ satisfies
+\[
+ C_S^*(\tau^{-1}F;V)
+       \le M_{n,P}\gamma\,\mathcal H^{n-1}(F).
+ \tag{HR1}
+\]
+The Hausdorff measure has any one fixed standard normalization; its
+normalizing factor is absorbed in $M_{n,P}$.
+\end{lemma}
+\begin{proof}
+Every convex $g:Q\to[0,1]$ is Lipschitz with constant at most
+$L=2/d$ on the $d/2$ neighborhood of $P$. Indeed, at a point of that
+neighborhood, moving toward either sign of any unit vector by a distance
+approaching $d/2$ remains in $Q$; the subgradient inequality bounds every
+directional component of the subgradient by $2/d$.
+
+Choose a fixed smooth nonnegative cutoff $\eta$ on $\mathbf R^n$, equal
+to one on the unit ball and supported in the ball of radius two. For
+$z\in P$ and $0<\rho<d/8$, let
+$\eta_{z,\rho}(x)=\eta((x-z)/\rho)$. Positivity of the Radon measure
+$\Delta g$ and distributional integration by parts imply
+\[
+ \begin{split}
+ \Delta g(B(z,\rho))
+ &\le\int\eta_{z,\rho}\,d\Delta g
+   =-\int\nabla g\cdot\nabla\eta_{z,\rho}\,dx\\
+ &\le L\|\nabla\eta\|_{L^1(\mathbf R^n)}\rho^{n-1}.
+ \end{split}
+ \tag{HR2}
+\]
+All supports remain in the protected region where the common Lipschitz
+bound is valid. The identity is legitimate for locally Lipschitz $g$;
+no trace theorem on sphere boundaries is used. The original linear trace
+identity consequently gives
+\[
+ C_S(\tau^{-1}B(z,\rho);V)
+       \le\gamma L\|\nabla\eta\|_1\rho^{n-1}.
+ \tag{HR3}
+\]
+
+Cover $F$ by countably many open balls centered in $F$, of radii less
+than $d/8$. The original open union of their inverseimages contains
+$\tau^{-1}F$. For every original tester, its mass on that union is at
+most the sum of its masses on the individual inverseimages, so (HR3)
+bounds the raw capacity of this union by the sum of the right sides.
+Taking the infimum over arbitrarily fine ball covers proves (HR1),
+using the ball-cover characterization of Hausdorff measure and absorbing
+its fixed dimensional normalization into $M_{n,P}$. The capacity being
+estimated is always the original open outer capacity; it is not replaced
+by a Hausdorff capacity or a smaller tester class.
+\end{proof}
+
+\begin{theorem}[Borel inner regularity for finite-Hausdorff saturated sets]
+Let $B\subset P$ be Borel with $\mathcal H^{n-1}(B)<\infty$, and let
+$E=\tau^{-1}B$. Then
+\[
+ \boxed{\quad C_S^*(E;V)
+      =\sup_{H\subset E,\ H\text{ compact}}C_S^*(H;V).\quad}
+ \tag{HR4}
+\]
+In fact compact inverseimages $H=\tau^{-1}F$, with $F\subset B$ compact,
+already suffice for the supremum.
+\end{theorem}
+\begin{proof}
+The finite Borel measure
+$A\mapsto\mathcal H^{n-1}(A\cap B)$ on $\mathbf R^n$ is Radon.
+Consequently, for every $\epsilon>0$, there is a compact
+$F\subset B$ such that $\mathcal H^{n-1}(B\setminus F)<\epsilon$.
+This uses ordinary regularity of a single finite Borel measure on
+Euclidean space, not regularity of the capacity under investigation.
+
+The moment map is proper over compact subsets of $Q$, hence
+$\tau^{-1}F$ is an original compact subset of $E$. Countable
+subadditivity of the original outer capacity and (HR1) give
+\[
+ C_S^*(E;V)
+ \le C_S^*(\tau^{-1}F;V)
+        +C_S^*(\tau^{-1}(B\setminus F);V)
+ \le C_S^*(\tau^{-1}F;V)+M_{n,P}\gamma\epsilon.
+\]
+For clarity, the subadditivity used here follows directly from the
+definition: choose original open supersets of the separate sets with
+raw capacities arbitrarily close to their outer capacities, take their
+union, and use countable subadditivity of every tester measure before
+taking the tester supremum. It is ordinary subadditivity, not the
+strong-subadditivity assertion refuted above.
+
+Since (HR1) makes the left side finite, letting $\epsilon\downarrow0$
+proves the upper bound by the compact supremum. The reverse bound is
+monotonicity. No increasing-sequence continuity of the outer capacity
+is used.
+\end{proof}
+
+\paragraph{Exact limitations.}
+The theorem concerns full moment-saturated sets $\tau^{-1}B$, with $B$
+inside one fixed protected compact stage and of finite
+$\mathcal H^{n-1}$ measure, for this specific smooth strongly positive
+background and remaining degree one. It does not cover arbitrary
+Borel subsets of the original Berkovich space, arbitrary closed
+backgrounds, or higher remaining degrees. In particular a Borel subset
+of $\tau^{-1}B$ need not be the inverseimage of any Borel subset of $B$;
+no such extension is asserted. Likewise $\sigma$-finiteness alone gives
+no uniform small Hausdorff remainder and cannot be substituted for
+finiteness without an additional argument. No global exhaustion or
+boundary-tail theorem is obtained.
+
+The estimate also gives outer capacity zero for every saturated
+$\mathcal H^{n-1}$-null set in the protected stage. This is compatible
+with the failure of strong subadditivity: regularity and submodularity
+are distinct properties. General B1 remains OPEN.

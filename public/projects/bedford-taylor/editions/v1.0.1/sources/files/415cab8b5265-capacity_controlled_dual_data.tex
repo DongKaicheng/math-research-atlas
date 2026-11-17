@@ -1,0 +1,230 @@
+\section{Capacity-controlled signed data in the strong energy dual}
+\label{sec:r12-capacity-dual-data}
+
+We retain exactly the strict Laurent-box and extension hypotheses
+(ED1), the arbitrary original middle-positive separately closed
+background $S$, and all original tests. Put $d=q+1\geq2$,
+$\mathscr C=\widehat{\mathcal E}^{1}_{\rm str}(V)$, and
+$\mathbb D_S=\mathscr C-\mathscr C$. No moment presentation or
+special form of $S$ is imposed in this section. The outer capacity
+$C_S^*(E;V)$ always uses the full original bounded classical tester
+class on the specified whole domain $V$.
+
+The datum criterion below is a sufficient condition for membership
+in the strong-continuous dual, not a nonlinear solvability theorem.
+It does not require domination by one actual curvature measure.
+
+\begin{definition}[An integrable capacity modulus]
+\label{def:r12-integrable-capacity-modulus}
+An integrable capacity modulus in degree $d$ is a nondecreasing
+function $F:[0,\infty]\to[0,\infty]$, finite on every finite
+positive argument, with $F(0)=0$, such that
+\[
+                 \int_0^1 F(s)s^{-1-1/d}\,ds<\infty.
+ \tag{CD1}
+\]
+The value at infinity is its increasing limit. Let $\mu$ be a
+finite signed original Radon measure on $V$. We say that its
+variation has modulus $F$ if
+\[
+                    |\mu|(E)\leq F\bigl(C_S^*(E;V)\bigr)
+                    \quad\text{for every Borel }E\subset V.
+ \tag{CD2}
+\]
+The total variation $m=|\mu|(V)$ is finite independently of
+whether $C_S^*(V;V)$ is finite.
+\end{definition}
+
+Put $C_0=d2^d$, as in (ED5), and define
+\[
+       A_{F,m}:=\int_0^\infty
+              \min\{m,F(C_0s^{-d})\}\,ds.
+ \tag{CD3}
+\]
+If $m=0$, set $A_{F,0}=0$. Substitution $x=C_0s^{-d}$ on a
+tail of the integral shows that (CD1) makes (CD3) finite.
+
+\begin{theorem}[Literal signed data and strong continuity]
+\label{thm:r12-capacity-modulus-strong-dual}
+Suppose $\mu$ satisfies (CD2) for an integrable capacity modulus.
+Then every $h\in\mathbb D_S$ is absolutely integrable for
+$|\mu|$, and
+\[
+       \ell_\mu(h)=-\int_V h\,d\mu,
+       \qquad
+       \|\ell_\mu\|_*\leq A_{F,m}
+ \tag{CD4}
+\]
+defines an element of $\mathbb D_{S,\mathrm s}^*$.
+More explicitly, if $u_j,u\in\mathscr C$ and $I(u_j,u)\to0$,
+then
+\[
+                    \int_V|u_j-u|\,d|\mu|\longrightarrow0.
+ \tag{CD5}
+\]
+All differences and integrals are unchanged by locally outer-null
+modifications. The assertion holds for every $q\geq1$ and every
+allowed original $S$, including degenerate backgrounds after the
+specified relative quotient.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+full-degree signed datum class in the newly constructed Banach
+dual. The sublevel and all-local strong capacity estimates are
+the explicitly inherited R11 inputs (CI3), (EV7)--(EV8).
+
+\begin{proof}
+For $a\in\mathscr C$, (ED5) and (CD2) give
+\[
+       |\mu|\{a<-t\}
+       \leq \min\{m,F(C_0r(a)^d t^{-d})\},\qquad t>0.
+ \tag{CD6}
+\]
+The actual Borel representative of $a$ is nonpositive and finite
+outside an outer-null set. Condition (CD2) annihilates this set.
+The layer-cake formula, followed by $t=r(a)s$, therefore gives
+\[
+                        \int_V(-a)\,d|\mu|
+                                      \leq A_{F,m}r(a).
+ \tag{CD7}
+\]
+When $r(a)=0$, the class is zero outside a local outer-null set,
+which is globally outer-null in the fixed domain by the R11
+countable compact exhaustion and domain comparison. Thus (CD7)
+holds in that case too. If $h=a-b$, then
+$|h|\leq(-a)+(-b)$ off the joint null set. Consequently
+$\int|h|\,d|\mu|\leq A_{F,m}(r(a)+r(b))$. Taking the infimum
+over its presentations proves absolute integrability and (CD4).
+This is a literal integral on the actual Borel difference space;
+no unproved extension of a measure to abstract completion points
+is used.
+
+Now let $u_j\to u$ strongly. The energy-root estimate gives a
+finite $R$ with $r(u_j),r(u)\leq R$. If $R=0$ the assertion
+is immediate. Otherwise, for every $L>0$, (CD6) gives
+\[
+ \sup_j\int_V\bigl((-u_j)-L\bigr)_+\,d|\mu|
+       \leq\int_L^\infty
+                  \min\{m,F(C_0R^d t^{-d})\}\,dt
+                   \longrightarrow0\quad(L\to\infty).
+ \tag{CD8}
+\]
+The same bound holds for $u$. This is a uniform integrability
+statement for the full finite datum, including its boundary tail.
+
+Fix $L$ and write $u_j^{(L)}=\max(u_j,-L)$ and
+$u^{(L)}=\max(u,-L)$. On each compact $K\Subset V$, the
+R11 strong estimate makes
+$C_S^*(K\cap\{|u_j^{(L)}-u^{(L)}|>\varepsilon\};V)$ tend
+to zero. An integrable nondecreasing modulus satisfies
+$F(s)\to0$ as $s\downarrow0$: otherwise (CD1) would diverge.
+Hence (CD2) gives convergence in $|\mu|$-measure on $K$.
+The clipped differences are bounded by $L$, so their integrals
+over $K$ tend to zero. Radon inner regularity and finiteness of
+$|\mu|$ allow a compact $K$ with arbitrarily small
+$|\mu|(V\setminus K)$; the same bound $L$ then passes this
+convergence to the whole domain. Finally (CD8) removes the
+clipping uniformly. This proves (CD5) and the defining
+strong-dual continuity (NI4).
+
+Every capacity in the argument is the frozen full original
+capacity. Actual moment refinements alter neither the measure
+integrals nor the classes of tests defining these estimates.
+No assertion of raw outer regularity on arbitrary Borel sets
+is needed.
+\end{proof}
+
+\begin{corollary}[Power and logarithmic endpoint moduli]
+\label{cor:r12-power-capacity-dual-data}
+Let $m=|\mu|(V)<\infty$. If, for constants $A>0$ and
+$\gamma>1/d$,
+\[
+                 |\mu|(E)\leq A\,C_S^*(E;V)^\gamma
+                    \quad(E\text{ Borel}),
+ \tag{CD9}
+\]
+then $\ell_\mu\in\mathbb D_{S,\mathrm s}^*$ and
+\[
+ \|\ell_\mu\|_*
+ \leq \frac{d\gamma}{d\gamma-1}
+       m^{1-1/(d\gamma)}
+                  (A C_0^\gamma)^{1/(d\gamma)}.
+ \tag{CD10}
+\]
+There are also endpoint admissible moduli: any nondecreasing
+extension, for $s$ bounded away from zero, of
+\[
+             F(s)=A s^{1/d}\bigl(\log(e/s)\bigr)^{-\alpha}
+                   \quad(0<s\leq1),\qquad \alpha>1,
+ \tag{CD11}
+\]
+satisfies (CD1). Neither the unmodified critical power
+$s^{1/d}$ nor the range $\alpha\leq1$ satisfies this
+integral criterion. This last statement is about the criterion,
+not a universal necessity claim for all possible measures.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}.
+
+\begin{proof}
+For (CD9), (CD3) becomes the integral of
+$\min(m,A C_0^\gamma s^{-d\gamma})$. Splitting at
+$s_0=(A C_0^\gamma/m)^{1/(d\gamma)}$ yields (CD10) when
+$m>0$, and the zero case is immediate. For (CD11), substitution
+$y=\log(e/s)$ turns (CD1), up to the harmless constant $A$,
+into $\int_1^\infty y^{-\alpha}\,dy$. This proves all printed
+assertions without an endpoint counterexample being inferred
+from the failure of a sufficient estimate.
+\end{proof}
+
+\begin{proposition}[Uniform capacity control converts variation to dual convergence]
+\label{prop:r12-capacity-dini-data-stability}
+Let $\mu_j,\mu$ be finite signed Radon measures such that
+$m_j=|\mu_j-\mu|(V)\to0$. Suppose the variations
+$|\mu_j-\mu|$ all satisfy (CD2) with one common integrable
+modulus $F$. Then
+\[
+         \|\ell_{\mu_j-\mu}\|_*
+                \leq A_{F,m_j}\longrightarrow0.
+ \tag{CD12}
+\]
+This unconditional statement defines only the functional of the
+controlled difference. If the individual datum functionals are
+defined, it is their difference by literal integration.
+If additionally each $\ell_{\mu_j}$ and $\ell_\mu$ lies in
+$\mathbb D_{S,\mathrm s}^*$, their canonical variational
+potentials from (NI7) converge strongly, and their normal
+residuals converge in dual norm. For power domination the
+right side in (CD12) has the explicit bound (CD10) with
+$m=m_j$. If $\ell_{\mu_j}=J(u_j)$ are actual completed source
+functionals, then the limit is itself $J(u)$; in that special
+case $\widehat\mu_u=\mu$ on every original scalar test.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the new datum criterion and nonlinear closed-image theorem.
+
+\begin{proof}
+Apply (CD4) to $\mu_j-\mu$. Since $m_j$ is bounded, the
+integrands in (CD3) are dominated by one integrable function
+$\min(M,F(C_0s^{-d}))$ and tend pointwise to zero. Dominated
+convergence proves (CD12). The quantitative retraction estimate
+(NI11) supplies strong convergence of the variational potentials
+and dual convergence of their curvatures; subtracting from the
+data gives convergence of the residuals. The final assertion is
+the closed-image criterion (NI1)--(NI3). It assumes source
+approximants and does not create them from capacity domination.
+\end{proof}
+
+\paragraph{Relation to the frozen first-order theory.}
+R11 already solves a different linear transposition equation for
+arbitrary finite diffuse data in a first-order Dirichlet-form
+space. That result does not say that the solution is a classical
+psh strong-completion member. The present theorem places signed
+data in an all-degree nonlinear energy dual and supplies its
+variational decomposition. It neither supersedes that linear
+result nor removes the nonlinear normal residual. In particular,
+bounded-source domination implies (CD9) with $\gamma=1$, but
+the compact-source examples in Section~\ref{sec:r12-positive-moment-lifts}
+show that even this datum class does not imply the unrestricted
+source equation.

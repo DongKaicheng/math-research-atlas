@@ -1,0 +1,3849 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{microtype,booktabs,longtable,array,needspace,etoolbox,enumitem}
+\usepackage{xcolor}
+\definecolor{MathLink}{HTML}{1F4E79}
+\definecolor{SectionLink}{HTML}{00656D}
+\definecolor{EquationLink}{HTML}{643F7A}
+\definecolor{CitationLink}{HTML}{2F6B3C}
+\definecolor{URLLink}{HTML}{843C39}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=MathLink,citecolor=CitationLink,
+ urlcolor=URLLink,linktoc=all,pdfborder={0 0 0},
+ pdftitle={Bedford--Taylor products with a positive closed background},
+ pdfauthor={},pdfsubject={Internal research manuscript, 16 November 2026}}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{convention}[theorem]{Convention}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{section}
+\newcommand{\Cb}{\mathcal C_b}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\PSH}{\operatorname{PSH}}
+\newcommand{\PH}{\mathscr{PH}}
+\newcommand{\DSH}{\mathscr{DSH}_{\mathrm{lb}}}
+\newcommand{\Mone}{\mathscr M^1}
+\newcommand{\Ccone}{\mathscr C}
+\newcommand{\ddc}{d'd''}
+\newcommand{\Real}{\mathbf R}
+\newcommand{\MathSecref}[1]{\begingroup\hypersetup{linkcolor=SectionLink}\hyperref[#1]{Section~\ref*{#1}}\endgroup}
+\newcommand{\MathEqref}[1]{\begingroup\hypersetup{linkcolor=EquationLink}\hyperref[#1]{(\ref*{#1})}\endgroup}
+\let\OriginalEqref\eqref
+\renewcommand{\eqref}[1]{\begingroup\hypersetup{linkcolor=EquationLink}\OriginalEqref{#1}\endgroup}
+\newcommand{\prooflink}[1]{\par\noindent\begingroup\hypersetup{linkcolor=SectionLink}\hyperref[#1]{Proof in Section~\ref*{#1}.}\endgroup\par\medskip}
+\newcommand{\KeepStatement}[1]{\BeforeBeginEnvironment{#1}{\Needspace{5\baselineskip}}}
+\forcsvlist{\KeepStatement}{theorem,proposition,lemma,corollary,definition,convention,remark,example}
+\AddToHook{cmd/section/before}{\Needspace{8\baselineskip}}
+\AddToHook{cmd/subsection/before}{\Needspace{6\baselineskip}}
+\setlength{\emergencystretch}{2em}
+\setlist[enumerate]{leftmargin=*,label=\textup{(\roman*)}}
+\title[Bedford--Taylor products and relative energy]{Bedford--Taylor products with a positive closed background:\\curvature quotients, relative energy and source equations}
+\author{}
+\date{16 November 2026\\Internal research manuscript}
+\begin{document}
+\begin{abstract}
+We study Bedford--Taylor products in the original Chambert--Loir--Ducros
+calculus over a fixed finite extension of $\mathbf Q_p$. A symmetric
+middle-positive current, separately closed for $d'$ and $d''$, is retained
+as the background. Locally bounded classical plurisubharmonic potentials
+give intrinsic mixed currents with weighted joint decreasing continuity.
+The kernel of curvature on bounded classical differences yields a
+potential-independent operation, and continuous coefficient relations
+extend it to a module of curvature currents. An order estimate then gives
+a faithful completion of that module inside the original currents.
+On strict Laurent domains whose closed boxes carry the background, the
+relative first-energy calculus admits a complete Borel realization with
+critical weighted continuity. We describe its variational source map and
+prove that a single geometric potential detects the entire original-test
+defect of a literal Radon datum. In remaining degree one, finite signed
+energy-diffuse data have a unique relative renormalized zero-boundary
+solution. The regularization and analytic energy estimates used in the
+constructions are stated with their precise hypotheses and cited to the
+accompanying foundational manuscripts.
+\end{abstract}
+\maketitle
+\setcounter{tocdepth}{1}
+\begingroup\hypersetup{linkcolor=SectionLink}\tableofcontents\endgroup
+\clearpage
+% BEGIN sections/01_introduction.tex
+\section{Introduction}\label{sec:introduction}
+
+The Bedford--Taylor recursion differentiates a potential after multiplying
+it by a positive closed current. Over a non-Archimedean field, this
+construction raises two distinct questions. The first is analytic:
+which potential classes make the recursive products positive and stable
+under approximation? The second concerns the objects on which the
+construction depends: when can a potential be replaced by another
+potential with the same curvature, or a finite curvature expression by
+another expression representing the same current?
+
+We develop these questions with one positive closed current retained as
+the background. The resulting local calculus leads to an ordered module
+of curvature currents. On specified analytic domains it also leads to
+relative capacities, a complete first-energy space, and source equations.
+The proofs use the local regularization of classical potentials and the
+analytic energy estimates in the accompanying manuscripts
+\cite{Continuous,Bounded,Order,Energy,Dual}. The arguments below give the
+constructions and the transitions between these theories; the cited
+analytic inputs are stated at the points where they enter.
+
+\subsection{The local product}
+
+Fix a finite extension $K/\mathbf Q_p$ with its prescribed absolute value.
+Let $X$ be a good, Hausdorff, boundaryless, quasi-smooth $K$-analytic
+space of pure dimension $n$. Opens are ordinary opens in the Berkovich
+topology. On such an open $U$, write $\Cb(U)$ for the actual real-valued,
+locally bounded, upper-semicontinuous functions whose pullback to every
+analytic curve after every complete isometric extension of $K$ is
+subharmonic. These are the locally bounded classical plurisubharmonic
+functions of \cite{GR25}. Put $D=d'd''$.
+
+Forms and currents belong to the original Chambert--Loir--Ducros
+calculus, with its canonical calibration. Positivity means the middle
+positive cone of \cite[Definition 5.1.1(c)]{CLD12}; a positive current is
+nonnegative on the corresponding positive complementary forms. A
+background of degree $(p,p)$ is a symmetric positive current $S$ such
+that $d'S=d''S=0$. All current identities below are tested on every
+original compactly supported smooth complementary form. The tests
+retain all their actual finite moment refinements, including those on
+which the moment map loses rank.
+
+\begin{theorem}[Bounded products with a fixed background]
+\label[theorem]{thm:main-bounded}
+Let $S$ be a background of degree $(p,p)$ on $U$, and put $q=n-p$.
+For $0\le k\le q$ there are unique recursively defined coefficient
+Radon currents
+\begin{equation}\label{eq:main-recursion}
+ T_{S,0}=S,\qquad
+ T_{S,k}(u_1,\ldots,u_k)
+       =D\bigl(u_1T_{S,k-1}(u_2,\ldots,u_k)\bigr),
+       \qquad u_i\in\Cb(U).
+\end{equation}
+The multiplication in this formula uses the given Borel functions and
+the coefficient measures on the analytic space. The currents are
+positive, symmetric as currents, and separately $d'$- and $d''$-closed.
+The operation is invariant under permutations of the differentiated slots,
+additive and positively
+homogeneous in each such slot, local for ordinary restriction, and
+independent of the regularization used to compute them.
+
+If $u_{i,j}\downarrow u_i$ in $\Cb(U)$ for $0\le i\le k$, with locally
+bounded limits, then
+\begin{equation}\label{eq:main-decreasing}
+ u_{0,j}T_{S,k}(u_{1,j},\ldots,u_{k,j})
+       \longrightarrow u_0T_{S,k}(u_1,\ldots,u_k)
+\end{equation}
+on every original compact smooth complementary test. In top degree this
+is local weak convergence of signed Radon measures against compactly
+supported continuous functions. Finally, if $D[u_i]=D[v_i]$ for every
+differentiated slot, then
+\[
+ T_{S,k}(u_1,\ldots,u_k)=T_{S,k}(v_1,\ldots,v_k).
+\]
+\end{theorem}
+\prooflink{sec:weighted-continuity}
+
+Coefficient multiplication and the ordered construction are established
+in \MathSecref{sec:coefficients-construction}. The convergence proof
+uses a common collar on a small norm box. The collar permits Green
+exchange with a smooth argument before any two discontinuous
+approximation parameters are passed to a limit. Positivity then gives
+a lower bound for a fixed trace test. A separate upper bound for
+decreasing weights determines the trace limit and hence all original
+test limits. The final curvature-independence assertion is proved in
+\MathSecref{sec:curvature-quotient}.
+
+\subsection{Curvature relations and order completion}
+
+Let $\Mone(U)$ be the sheaf of coefficient Radon $(1,1)$-currents
+locally admitting a finite expression
+\begin{equation}\label{eq:main-module}
+ A=\sum_\alpha f_\alpha D[g_\alpha],\qquad
+ f_\alpha\in C(U,\Real),\quad g_\alpha\in\Cb(U).
+\end{equation}
+Actual equality of currents is the equivalence relation. Its positive
+cone is inherited from the original middle-positive cone. Given
+$Q\in\Mone(U)$ positive, define
+\[
+ \begin{aligned}
+ E_Q&=\{A\in\Mone(U):-cQ\le A\le cQ\text{ for some }c\ge0\},\\
+ \|A\|_Q&=\inf\{c\ge0:-cQ\le A\le cQ\}.
+ \end{aligned}
+\]
+We denote by $\Mone_{\rm ord}$ the sheaf obtained from the completions
+of these normed spaces, using the common control $Q+R$ to compare
+limits originally controlled by $Q$ and $R$.
+
+\begin{theorem}[Continuous coefficient action and its order completion]
+\label[theorem]{thm:main-module}
+For every background $S$ of degree $(p,p)$ and $r\le n-p$, the formula
+\begin{equation}\label{eq:main-module-action}
+ \Phi_{S,r}(A_1,\ldots,A_r)
+ =\sum_{\alpha_1,\ldots,\alpha_r}
+       \left(\prod_{i=1}^r f_{i,\alpha_i}\right)
+       T_{S,r}(g_{1,\alpha_1},\ldots,g_{r,\alpha_r})
+\end{equation}
+is independent of all presentations \MathEqref{eq:main-module}. It
+defines a symmetric $C(U,\Real)$-multilinear local operation, positive
+when every slot is positive.
+
+Each completion $\widehat E_Q$ embeds faithfully and isometrically into
+the actual symmetric coefficient Radon currents. These embeddings are
+compatible under change of control. The operation $\Phi_{S,r}$ extends
+uniquely to $\Mone_{\rm ord}$, locally and independently of the
+approximating sequences. If
+$-M_iQ_i\le A_i,B_i\le M_iQ_i$ and
+$-\delta_iQ_i\le A_i-B_i\le\delta_iQ_i$, then
+\begin{equation}\label{eq:main-order-estimate}
+ -E R_S\le
+ \Phi_{S,r}(A_1,\ldots,A_r)-\Phi_{S,r}(B_1,\ldots,B_r)
+ \le E R_S,
+\end{equation}
+where
+\[
+ R_S=\Phi_{S,r}(Q_1,\ldots,Q_r),\qquad
+ E=\sum_{i=1}^r\delta_i\prod_{j\ne i}M_j.
+\]
+The output is separately closed whenever it is obtained as a limit of
+separately closed mixed approximants.
+\end{theorem}
+\prooflink{sec:continuous-module}
+
+The bounded-difference criterion is the link between potential theory
+and this order structure: for $a,b\in\Cb$, positivity of $D[a-b]$
+makes the actual difference $a-b$ classical psh. Freezing continuous
+coefficients on a finite cover then transfers their relations to every
+fixed background. The multilinear estimate
+\MathEqref{eq:main-order-estimate} follows by a positive expansion and
+telescoping. The embedding and extension are proved in
+\MathSecref{sec:order-completion}.
+
+The continuous coefficient operation acts on degree-one presentations.
+A higher-degree analytic relation involving cancellation between several
+nonzero mixed terms is a separate relation problem. For example,
+potential independence concerns each equality $D[u]=D[v]$, whereas a
+quadratic relation can have the form
+$\sum_\nu c_\nu D_\delta h_\nu\wedge D_\delta k_\nu=0$.
+The latter is the subject of the companion research program.
+
+\subsection{Relative energy and source equations}
+
+The global energy theory uses a domain with an explicit boundary.
+Let $B\subset X$ be a compact affinoid, and let
+\begin{equation}\label{eq:main-box}
+ K_0=\{|f_a|\le R_a,\ |g_b|\ge r_b\}
+       \Subset\operatorname{Int}_X(B),\qquad
+ V=\{|f_a|<R_a,\ |g_b|>r_b\}\ne\varnothing.
+\end{equation}
+All thresholds are positive, the analytic functions are defined on $B$,
+and $S$ is defined on an ordinary neighborhood of $K_0$.
+Put $q=n-p\ge1$ and $d=q+1$.
+
+For a Borel set $E\subset V$, define
+\[
+ C_S(E;V)=\sup_{\substack{h\in\Cb(V)\\0\le h\le1}}
+                  T_{S,q}(h,\ldots,h)(E),\qquad
+ C_S^*(E;V)=\inf_{\substack{G\supset E\\G\ {\rm ordinary\ open}}}
+                         C_S(G;V).
+\]
+The actual class $\mathcal E^1_{S,\partial}(V)$ consists of negative
+extended classical potentials with compact negative sublevel closures,
+canonical truncation no loss, and finite first energy. The precise
+definition and the nonpolar construction occur in
+\MathSecref{sec:relative-energy}. For its members write
+\[
+ B(u_0,\ldots,u_q)=\int_V(-u_0)\,D u_1\wedge\cdots\wedge D u_q\wedge S,
+ \qquad e(u)=B(u^{[d]}),
+\]
+and
+\[
+ I(u,v)=e(u)+e(v)-B(u,v^{[q]})-B(v,u^{[q]}).
+\]
+A row is strongly Cauchy if
+$\sup_{j,l\ge N}I(u_j,u_l)\to0$. Define $\Ccone$ to consist of its
+actual Borel limits in every local truncated outer $S$-capacity,
+modulo local outer-capacity zero.
+
+\begin{theorem}[The complete relative first-energy space]
+\label[theorem]{thm:main-energy}
+Under \MathEqref{eq:main-box}, every strongly Cauchy row in
+$\mathcal E^1_{S,\partial}(V)$ has a unique limit in $\Ccone$.
+There are intrinsic mixed curvature, first-order and energy currents,
+and global mixed energies
+on $\Ccone$, independent of all defining rows and outer-capacity-null
+representatives. The mixed energy is symmetric and satisfies
+\begin{equation}\label{eq:main-holder}
+ \widehat B(u_0,\ldots,u_q)
+       \le\prod_{i=0}^q\widehat e(u_i)^{1/d}.
+\end{equation}
+The completed discrepancy $\widehat I$ separates relative classes and
+is complete. Moreover,
+\begin{equation}\label{eq:main-strong-topology}
+ \widehat I(u_j,u)\to0
+ \quad\Longleftrightarrow\quad
+ \begin{cases}
+ u_j\to u\text{ in every local truncated outer capacity},\\
+ \widehat e(u_j)\to\widehat e(u).
+ \end{cases}
+\end{equation}
+For a finite tuple, let $F$ be continuous on the nonpositive orthant and
+satisfy $|F(x)|\le A(1-\sum_i x_i)^a$, with $a\ge0$. Give a
+curvature current with $k$ curvature slots the degree budget $b=k$;
+for a first-order or energy current over $k$ curvature slots put
+$b=k+1$ or $b=k+2$, respectively. In the legal bidegrees, if
+$a+b\le q+1$, these multipliers are coefficient-integrable and their
+weighted currents converge on every original compact smooth test under
+strong convergence of the tuple. The global mixed weighted top measures
+also converge. The actual classical class is strongly dense.
+\end{theorem}
+\prooflink{sec:strong-completion}
+
+The proof first extracts uniform deep tails from the Cauchy condition.
+These tails give the uniform integrability required at the critical
+degree. Compact sublevels of one fixed late member of each row also
+give global tightness, without a common lower barrier. Truncation then
+constructs the currents before unbounded multiplication is used.
+
+Put $r(u)=\widehat e(u)^{1/d}$. The completed cone gives the
+energy-difference space $\mathbb D_S=\Ccone-\Ccone$ with norm
+\[
+ \|h\|_{\rm ed}=\inf_{h=a-b}\bigl(r(a)+r(b)\bigr),
+          \qquad a,b\in\Ccone.
+\]
+Write $\mathbb D_{S,\mathrm s}^*$ for its continuous linear
+functionals whose restriction to $\Ccone$ is continuous under strong
+convergence. A positive Radon measure $\mu$ defines a \emph{literal}
+member of this class if
+$\ell_\mu(h)=-\int h\,d\mu$ is absolutely defined on $\mathbb D_S$,
+independent of outer-null representatives, norm continuous and strongly
+continuous on $\Ccone$.
+
+\begin{theorem}[Variational sources and one geometric probe]
+\label[theorem]{thm:main-source}
+Under \MathEqref{eq:main-box}, $\mathbb D_S$ is Banach and
+\[
+ J(u)(h)=\widehat B(h,u^{[q]})=-\int h\,d\widehat\mu_u
+\]
+defines an injective map with norm-closed image in $\mathbb D_S^*$.
+The metric $\|J(u)-J(v)\|_*$ is complete and induces the strong topology
+on $\Ccone$. Every $\ell\in\mathbb D_{S,\mathrm s}^*$ has a unique
+variational maximizer
+\[
+ u=\Pi(\ell)=\operatorname*{argmax}_{v\in\Ccone}
+                     \bigl(\ell(v)-\widehat e(v)/d\bigr)
+\]
+and a unique decomposition $\ell=J(u)+n$ with
+$n(v)\le0$ for every $v\in\Ccone$ and $n(u)=0$.
+
+There is one bounded continuous classical $-1<\psi_0<0$,
+determined by the Laurent box and having finite top mass, such that
+$\psi_0\pm\epsilon_\phi\phi\in\mathcal E^1_{S,\partial}(V)$
+for every original compact smooth real scalar $\phi$ and some
+$\epsilon_\phi>0$. The choice of $\psi_0$ and $\epsilon_\phi$ works
+for every extending allowed background. For a literal positive Radon
+datum as above, set $u=\Pi(\ell_\mu)$ and
+\[
+ \Xi_{\psi_0}(\mu)=J(u)(\psi_0)-\ell_\mu(\psi_0)\ge0.
+\]
+Then
+\[
+ \Xi_{\psi_0}(\mu)=0
+ \quad\Longleftrightarrow\quad
+ \widehat\mu_u=\mu
+ \quad\Longleftrightarrow\quad
+ \mu=\widehat\mu_v\text{ for some }v\in\Ccone.
+\]
+The solution is unique. For every such datum and every original compact
+smooth scalar test,
+\[
+ \left|\int\phi\,d(\mu-\widehat\mu_u)\right|
+                    \le\epsilon_\phi^{-1}\Xi_{\psi_0}(\mu).
+\]
+\end{theorem}
+\prooflink{sec:variational-source}
+
+The probe is a convergent sum of exact-moment compensators. Its selected
+summands admit both signs of a prescribed compact smooth direction.
+The normal inequality on these two competitors gives the defect bound;
+literal integration then turns equality on all tests into equality of
+Radon measures.
+
+The remaining degree $q=1$ gives a linear equation even when the
+ambient dimension is larger than one. For this assertion choose one
+compact affinoid $B$, ordinary opens $V\Subset\Omega$ with
+$\overline\Omega\subset\operatorname{Int}_X(B)$, and a background
+$S$ of degree $(n-1,n-1)$ on $\Omega$. On $F=V\cap\supp S$, the
+original compact smooth core has a faithful, regular, strongly local,
+coercive Dirichlet-form realization $(\mathcal E,H)$ in a finite
+reference measure $\lambda$. This construction and its identification
+with the original current are stated in
+\MathSecref{sec:linear-dirichlet}. Let $c_V$ be its energy capacity and
+$T_k(s)=\max(-k,\min(k,s))$.
+
+\begin{theorem}[The finite diffuse relative Dirichlet equation]
+\label[theorem]{thm:main-linear}
+In the preceding domain, let $\mu$ be a finite signed Radon measure on
+$F$ whose variation vanishes on every $c_V$-polar Borel set. There is a
+unique $u\in L^1(F,\lambda)$ with a finite energy-quasicontinuous
+representative, $T_ku\in H$ for every $k>0$, the original chain identity
+\[
+ D(\Phi(u)S)=\Phi'(u)\mu+\Phi''(u)\Gamma_S(u)
+\]
+for every $\Phi\in C^2(\mathbf R)$ with compactly supported first
+derivative, and
+$k^{-1}\mathcal E(T_{2k}u-T_ku)\to0$.
+Here $\Gamma_S(u)$ is the compatible sigma-finite energy measure of
+its clippings. This solution satisfies $D(uS)=\mu$ on every original
+compact scalar test and is independent of the faithful reference
+measure. If $\mu_j\to\mu$ in total variation, then
+\[
+ \|u_{\mu_j}-u_\mu\|_{L^1(\lambda)}\to0,
+ \qquad
+ \mathcal E(T_ku_{\mu_j}-T_ku_\mu)\to0
+                       \quad(k>0).
+\]
+\end{theorem}
+\prooflink{sec:linear-dirichlet}
+
+\subsection{Relation to the existing calculus}
+
+The recursive construction and continuous-potential theory originate in
+\cite[\S5.6]{CLD12}. The revised treatment
+\cite[Lemma 8.5.5 and Propositions 8.7.2, 8.7.4]{CLD25} supplies
+positivity, local uniform stability and symmetry for continuous psh
+potentials on a positive closed background. Its discussion
+\cite[\S8.6.1--8.6.2]{CLD25} isolates the question of annihilating
+zero-curvature potential differences against a background. The
+regularization manuscripts \cite{Continuous,Bounded} supply the
+particular continuous and locally bounded classical approximation
+statements used here. The bounded curvature quotient and ordered
+difference criterion are developed in \cite{Quotient,Order}.
+
+The relative energy construction in \cite{Energy} works with the
+original coefficient measures and the full local test sheaf. Its
+global boundary class is tied to \MathEqref{eq:main-box}. The dual
+construction in \cite{Dual} then treats a source as a literal measure
+when measure equality is required. This separation of local products,
+relative completion and source compatibility determines the organization
+of the present article.
+
+
+Wu \cite[Theorem 4.2 and Appendix A]{Wu26} constructs top-degree local
+Monge--Amp\`ere measures for a class defined by decreasing tropical-convex
+PL approximation on a fixed neighborhood. The classical regularization
+input here supplies that neighborhood and approximation from the
+complete-extension curve definition; the background calculus retains
+all allowed bidegrees. On balanced polyhedral and tropical spaces,
+\cite{BMPS26,APW26} develop related product, energy and source theories.
+Their geometric categories provide useful comparison for the relation
+and solvability questions arising from original analytic currents.
+
+Relative capacity with a positive closed current is classical in the
+complex setting \cite{DE06}. Relative non-pluripolar products and their
+closedness are developed in \cite[Theorem 3.7]{Vu21}, and the
+constant-one first-energy mixed inequality has the complex precedent
+\cite[Theorem 3.2]{Cegrell98}. The role of these constructions here is
+their realization with the fixed original non-Archimedean background,
+coefficient measures and boundary class.
+
+General renormalized measure-data equations for transient regular
+Dirichlet forms satisfying the strong sector condition are treated in
+\cite{KR15}. In the linear part of this article, the analytic work is
+the faithful realization of the part form, its measures and its scalar
+chain identities in the original CLD calculus. The abstract
+finite-energy nest theorem used there is \cite[Lemma 2.1]{KRStructure}.
+
+% END sections/01_introduction.tex
+
+% BEGIN sections/02_coefficients_and_construction.tex
+\section{Coefficient measures and the ordered construction}
+\label{sec:coefficients-construction}
+
+\subsection{Positive currents and analytic-space coefficients}
+
+A current is of coefficient Radon type if its coefficient functionals
+in every finite original moment presentation are signed Radon measures
+on the analytic domain, compatibly with scalar multiplication, relations
+between forms, and common refinements. In particular, for every compact
+original test $\eta$ there is a signed measure $\mu_{T,\eta}$ satisfying
+\[
+ \int a\,d\mu_{T,\eta}=\langle T,a\eta\rangle
+ \quad(a\text{ original smooth}).
+\]
+This condition permits the definition
+\begin{equation}\label{eq:borel-multiplication}
+ \langle hT,\eta\rangle=\int h\,d\mu_{T,\eta}
+\end{equation}
+for an actual locally bounded Borel function $h$.
+
+\begin{lemma}[Finite test control]\label[lemma]{lem:finite-control}
+Every positive current is of coefficient Radon type. For each compact
+original test $\eta$ there is a nonnegative compact trace test $\Theta$
+and a constant $c_\eta$ such that
+\begin{equation}\label{eq:finite-control}
+ |\langle T,h\eta\rangle|
+       \le c_\eta\|h\|_\infty\langle T,\Theta\rangle
+\end{equation}
+for positive $T$ and bounded Borel $h$ on the chosen compact stage.
+The positive cone is weakly closed and pointed. If positive currents
+$T_j$ converge on all original tests, their coefficient variations are
+uniformly bounded on each compact stage. Thus
+$f_jT_j\to fT$ for locally uniformly convergent continuous $f_j\to f$.
+\end{lemma}
+
+\begin{proof}
+Localize to a finite moment presentation containing the coefficients of
+$\eta$ and a smooth cutoff $\chi$ equal to one near its support.
+A positive current annihilates the antisymmetric part of a test.
+For the symmetric part, put
+\[
+ \beta=\sum_{a=1}^N d't_a\wedge d''t_a,
+ \qquad\Omega=\beta^m/m!,
+\]
+where $(m,m)$ is the test bidegree. The coefficient matrix of $\Omega$
+is positive definite on this finite exterior space. Matrix domination
+therefore gives
+$c_\eta\|h\|_\infty\chi\Omega\pm h\eta\ge0$ for smooth $h$.
+The inequality persists after adjoining scalar moments and pulling
+back to a common refinement. Positivity proves
+\MathEqref{eq:finite-control} for smooth $h$.
+
+Compact uniform density of original smooth scalar functions and the
+Riesz representation theorem produce the coefficient measures. Their
+uniqueness preserves the original relations and refinements. Bounded
+Borel approximation against these measures gives
+\MathEqref{eq:finite-control} in the stated form. If $T_j\to T$, the
+trace masses $\langle T_j,\Theta\rangle$ are bounded, so the same
+coefficient estimate is uniform. Approximate $f$ uniformly by a smooth
+function, pass the fixed smooth pairing, and then let the uniform error
+go to zero; the term $(f_j-f)T_j$ is controlled by the same bound.
+Closedness of the positive cone follows on each positive test. If both
+$T$ and $-T$ are positive, the trace control makes every pairing zero.
+This is the coefficient argument of
+\cite[Lemma \emph{Continuous coefficients}]{Continuous} in the present analytic category, using
+the ordinary local transport of \cite{Bounded}.
+\end{proof}
+
+\subsection{Regularization on a fixed neighborhood}
+
+We use the following two precise regularization consequences.
+The first is \cite[Theorem 1.5]{Bounded}; its construction uses the
+prescribed field and the original calibration.
+
+\begin{proposition}[Classical regularization]\label[proposition]{prop:regularization}
+For every $u\in\Cb(U)$ and every $x\in U$ there is one ordinary
+neighborhood $W$ of $x$ and continuous semipositive rational PL
+functions $p_j$ over $K$, defined on $W$, with $p_j\downarrow u$.
+The class $\Cb$ is stable under decreasing locally bounded limits.
+For finitely many decreasing families with locally bounded endpoints,
+the common projective extension construction gives one such neighborhood
+for all rows. Continuous members of these rows admit smooth positive
+uniform approximants on smaller fixed neighborhoods. Smooth majorants
+of each bounded member can consequently be chosen pointwise convergent
+and locally uniformly bounded.
+\end{proposition}
+
+The simultaneous neighborhood assertion uses the norm-box projective
+extension in \cite[Appendix D]{Bounded}. Smooth approximation of the
+continuous rows is \cite[Lemma \emph{Smooth approximation of FS metrics} and Proposition \emph{Regularized maximum}]{Continuous}.
+The smooth approximating rows in the last sentence are not required to
+decrease. Their precise collar version is proved below.
+
+\begin{proposition}[First order and ordered products]
+\label[proposition]{prop:ordered-construction}
+If $R$ is a background and $u\in\Cb$, then $D(uR)$ is positive,
+symmetric, separately closed and of coefficient Radon type. Iterating
+this operation defines \MathEqref{eq:main-recursion}. The ordered
+products are local and separately additive and positively homogeneous
+in the potentials. They are independent of the approximants used in
+the first-order construction.
+\end{proposition}
+
+\begin{proof}
+Work on a regularization neighborhood and choose continuous positive
+$p_j\downarrow u$. The continuous background theorem
+\cite[Theorem \emph{Continuous potentials on a positive closed background}]{Continuous}, transported to this neighborhood as in
+\cite{Bounded}, makes $D(p_jR)$ positive. Bounded convergence against
+the fixed coefficient measures of $R$ gives $p_jR\to uR$ on every
+original test. Distributional differentiation gives
+$D(p_jR)\to D(uR)$. Positivity and symmetry pass to the limit.
+The identities $d'D=d''D=0$ give separate closedness, and
+\cref{lem:finite-control} gives coefficient Radon type. The result is
+the derivative of the already defined actual product $uR$, so it is
+independent of the row. The same argument applies successively to every
+positive closed intermediate current. Linearity of multiplication and
+differentiation gives the algebraic properties; restriction commutes
+with both operations.
+\end{proof}
+
+\begin{proposition}[Relative local mass estimate]\label[proposition]{prop:relative-cln}
+Fix compact test stages $L\Subset W$ and $k\le q$. For each finite
+original coefficient presentation on $L$ there is a constant $C$ and a
+compact positive trace test $\Theta$ on $W$ such that
+\[
+ \|T_{S,k}(u_1,\ldots,u_k)\|_{L}
+       \le C\prod_{i=1}^k\|u_i\|_{L^\infty(W)}
+                         \langle S,\Theta\rangle
+\]
+whenever the displayed bounds are finite. Here the left side denotes
+the sum of the coefficient variations in that finite presentation.
+The estimate is local and may be applied after every actual refinement.
+\end{proposition}
+
+\begin{proof}
+Choose nested compactly supported cutoffs between $L$ and $W$ and add
+the finitely many moment coordinates used by their coefficients.
+The trace estimate in \cref{lem:finite-control} reduces a coefficient
+variation to a positive trace pairing. For one differentiated slot,
+distributional integration by parts writes it as
+$\langle u_1R,D(\chi\alpha)\rangle$, where $\alpha$ is a fixed
+closed trace form. On its compact support both signs of
+$D(\chi\alpha)$ are bounded by a constant times the next positive
+trace form. The coefficient bound is therefore at most
+$C\|u_1\|_\infty$ times the trace mass of $R$ on the next compact
+stage. Repeat with the remaining differentiated slots. The last trace
+is a fixed compact test against $S$. This proves the estimate; finite
+localization supplies the general compact stage.
+\end{proof}
+
+% END sections/02_coefficients_and_construction.tex
+
+% BEGIN sections/03_weighted_continuity.tex
+\section{Weighted decreasing continuity}
+\label{sec:weighted-continuity}
+
+The ordered products from \cref{prop:ordered-construction} are defined
+before symmetry or joint convergence is used. The following collar
+construction supplies the Green exchanges needed to prove convergence.
+
+\begin{lemma}[A common domain for smooth majorants]
+\label[lemma]{lem:common-majorants}
+Let $x\in U$, and let $u_{i,j}\downarrow u_i$ be finitely many decreasing
+families in $\Cb(U)$ with locally bounded limits. After shrinking around
+$x$, there is one ordinary neighborhood $W$, independent of $i,j$, with
+the following property. Each of the functions $a=u_{i,j}$ and $a=u_i$
+has smooth psh majorants $a_\nu$ on $W$ such that
+\[
+ a_\nu\geq a,\qquad a_\nu(x')\longrightarrow a(x')\quad(x'\in W).
+\]
+The majorants are bounded uniformly in $\nu$ on each fixed compact subset
+after a finite prefix is discarded. If $a\leq M$ on a compact neighborhood
+$C\Subset W$, its majorants may be chosen with $a_\nu\leq M+1$ on $C$.
+The index discarded may depend on the function $a$.
+\end{lemma}
+
+\begin{proof}
+Use \cite[Proposition \emph{Transport to an ordinary analytic chart}]{Bounded} to work on one ordinary algebraic
+neighborhood, with the original field and calibration. Apply \cite[Lemma D.2, \emph{A common collar for decreasing families}]{Bounded} to the entire finite family of sequences, before choosing
+approximants. It gives one projective variety, one ample line, one frame
+on $W$, and bounded classical metrics whose weights on $W$ are the given
+functions plus one fixed constant. By \cite[Theorem \emph{Projective contact and regularization}]{Bounded}, every such
+metric is a decreasing limit of pure Fubini--Study metrics on this same
+line. Their weights $p_\nu$ are continuous, satisfy $p_\nu\geq a$, and
+decrease pointwise to $a$ after the fixed constant is removed.
+
+Smooth each pure Fubini--Study metric uniformly, using \cite[Lemma \emph{Smooth approximation of FS metrics} and
+Proposition \emph{Regularized maximum}]{Continuous}. If the uniform error is at most
+$\epsilon_\nu\downarrow0$, add $\epsilon_\nu$ to the smoothed weight.
+The resulting smooth psh function $a_\nu$ satisfies
+\[
+ p_\nu\leq a_\nu\leq p_\nu+2\epsilon_\nu.
+\]
+This proves pointwise convergence and the majorant property.
+On $C$, the increasing open sets $\{p_\nu<M+1/2\}$ cover $C$ whenever
+$a\leq M$. Compactness gives a common index on $C$. Discard this prefix
+and require $2\epsilon_\nu<1/2$. The same argument with any bound for
+$a$ gives local uniform boundedness of the row. No monotonicity of the
+\emph{smoothed} row is asserted or needed.
+\end{proof}
+
+\begin{lemma}[A smooth psh collar]
+\label[lemma]{lem:smooth-collar}
+Under the assumptions of \cref{lem:common-majorants}, there are
+compact polynomial norm boxes
+\[
+ x\in\operatorname{Int}C_1,\qquad
+ C_1\subset\operatorname{Int}C_{\mathrm{mid}},\qquad
+ C_{\mathrm{mid}}\subset\operatorname{Int}C_2\Subset W,
+\]
+a smooth psh function $b$ on a neighborhood of $C_2$, and a nonnegative
+original smooth cutoff $\chi$ compactly supported in
+$\Omega=\operatorname{Int}C_2$, with the following properties.
+After adding one constant $c$ to all the original functions, put
+\[
+ v_{i,j}=\max\{u_{i,j}+c,b\},\qquad
+ v_i=\max\{u_i+c,b\}.
+\]
+Then:
+\begin{enumerate}
+\item $v_{i,j},v_i\in\Cb(\Omega)$ and $v_{i,j}\downarrow v_i$;
+\item $v_{i,j}=u_{i,j}+c$ and $v_i=u_i+c$ on a neighborhood of $C_1$;
+\item $\chi=1$ on a neighborhood of $C_{\mathrm{mid}}$;
+\item all $v_{i,j},v_i$ equal $b$ on one fixed neighborhood of
+      $\operatorname{supp}d'\chi\cup\operatorname{supp}d''\chi$;
+\item each patched function $v$ has smooth psh majorants $v_\nu\geq v$
+      converging pointwise to $v$, uniformly bounded on $\operatorname{supp}\chi$,
+      and equal to $b$ on that same collar.
+\end{enumerate}
+The majorant rows in (5) need not be decreasing.
+\end{lemma}
+
+\begin{proof}
+Choose the boxes by the construction in \cite[Lemma D.2, \emph{A common collar for decreasing families}]{Bounded}. In
+particular, lower-bound polynomials have no zero near $C_2$. Choose
+thresholds strictly between the defining thresholds for $C_1$ and
+$C_{\mathrm{mid}}$. The finite maximum
+\[
+ b_0=\max\{0,\log|P_a^{N_a}/c_a|,
+                     \log|d_l/Q_l^{M_l}|\}
+\]
+is zero on a neighborhood of $C_1$ and at least some $\delta>0$ on a
+neighborhood in $C_2$ of $C_2\setminus\operatorname{Int}C_{\mathrm{mid}}$.
+All its branches other than the zero branch are logarithms of analytic
+units where they are active. A branch with a zero is strictly inactive
+near that zero.
+
+Apply the regularized maximum of \cite[Proposition \emph{Regularized maximum}]{Continuous}, with
+smoothing radius smaller than all the fixed gaps. The result $\widetilde b$
+is an original smooth psh function: zero branches at polynomial zeros
+are deleted by the exact inactivity property. On a neighborhood of
+$C_1$, only the constant zero branch is active, so $\widetilde b=0$.
+On the outer collar, $\widetilde b\geq\delta$.
+
+The endpoint bounds give a constant $c$ and a finite $M$ such that
+\[
+ 1\leq u_i+c\leq u_{i,j}+c\leq M
+ \quad\hbox{on a neighborhood of }C_2.
+\]
+Multiply $\widetilde b$ by a positive constant so that the resulting $b$
+is greater than $M+3$ on the outer collar. Choose $\chi$, with
+$0\leq\chi\leq1$, equal to one near $C_{\mathrm{mid}}$ and compactly
+supported in $\Omega$. Smooth cutoff existence and a finite localization
+are part of the original CLD test calculus. Its derivative support lies
+where the fixed outer-collar inequality holds.
+
+Classical psh functions are stable under maxima and addition of constants.
+This proves (1)--(4). To prove (5), apply \cref{lem:common-majorants}
+to the \emph{unpatched} function $a=u_{i,j}+c$ or $u_i+c$. Discard a
+prefix so that its smooth psh majorants $a_\nu$ are at most $M+1$ on
+$C_2$. Define
+\[
+ v_\nu=\operatorname{rmax}_{\epsilon_\nu}(a_\nu,b),
+ \qquad \epsilon_\nu\downarrow0,
+\]
+with all radii less than the fixed collar gap. The regularized maximum
+majorizes the ordinary maximum and has error at most $\epsilon_\nu$.
+It is exactly $b$ on the collar because the other branch is inactive
+there. These facts give all the assertions in (5).
+\end{proof}
+
+The collar lies on a chosen norm box. The closed positive form that
+controls a test is selected from that test's finite moment presentation.
+
+
+
+\begin{lemma}[Green exchange on a common collar]
+\label[lemma]{lem:collar-green}
+Let $Q$ be a symmetric positive $d'$- and $d''$-closed current of
+bidegree $(n-1,n-1)$ on $\Omega$. Let $\chi\in A_c^{0,0}(\Omega)$.
+Suppose that $a$ is smooth, $g$ is locally bounded Borel, and both equal
+one smooth function $b$ on a neighborhood of
+$\operatorname{supp}d'\chi\cup\operatorname{supp}d''\chi$.
+Whenever $D(gQ)$ has coefficient Radon type, one has
+\[
+ \langle aD(gQ),\chi\rangle
+ =\langle gD(aQ),\chi\rangle.
+\]
+In this statement positivity of $a$ and $g$ is not required.
+\end{lemma}
+
+\begin{proof}
+Since $Q$ is closed and $a$ is smooth, $D(aQ)=Da\wedge Q$. The
+definition of the distributional derivative gives
+\begin{align*}
+ \langle aD(gQ)-gD(aQ),\chi\rangle
+  &=\langle gQ,D(\chi a)-\chi Da\rangle\\
+  &=\langle Q,g\{aD\chi+d'\chi\wedge d''a
+                         +d'a\wedge d''\chi\}\rangle.
+\end{align*}
+Every term in braces is supported in the collar. Substituting $a=g=b$
+there makes the last expression
+\[
+ \langle bQ,D(\chi b)-\chi Db\rangle=0.
+\]
+The final equality follows by applying the same distributional identity
+to the smooth pair $(b,b)$. The substitutions are valid identities of
+coefficient measures. 
+\end{proof}
+
+\begin{lemma}[Monotonicity of the ordered trace integral]
+\label[lemma]{lem:trace-monotonicity}
+Let $S$ have bidegree $(p,p)$, let $0\leq k\leq n-p$, and let
+$\alpha$ be a smooth, positive, $d'$- and $d''$-closed form of bidegree
+$(n-p-k,n-p-k)$ such that wedging it with a positive current preserves
+positivity. Let $\chi\geq0$ be compactly supported in $\Omega$.
+
+For $0\leq i\leq k$, suppose $f_i,g_i\in\Cb(\Omega)$,
+$f_i\leq g_i$, and all these functions equal the same smooth psh
+function $b$ near the derivative support of $\chi$. Assume that each
+$g_i$ has the smooth majorants with this exact collar supplied by
+\cref{lem:smooth-collar}. Define, using the ordered products,
+\[
+ J(f_0;f_1,\ldots,f_k)
+   =\langle f_0T_{S,k}(f_1,\ldots,f_k),\chi\alpha\rangle.
+\]
+Then
+\[
+ J(f_0;f_1,\ldots,f_k)
+ \leq J(g_0;g_1,\ldots,g_k).
+\]
+
+\end{lemma}
+
+\begin{proof}
+The case $k=0$ is measure monotonicity. For $k>0$, fix smooth psh
+majorants $G_i\geq g_i$ with the common collar. First replace the weight
+$f_0$ by $G_0$, using positivity of
+$T_{S,k}(f_1,\ldots,f_k)\wedge\alpha$. Apply
+\cref{lem:collar-green} with
+\[
+ Q=T_{S,k-1}(f_2,\ldots,f_k)\wedge\alpha
+\]
+to move $G_0$ into a differentiated position and $f_1$ into the weight.
+The resulting current $DG_0\wedge Q$ is positive and closed. Replace
+the weight $f_1$ by $G_1$, and repeat. At the end one obtains
+\[
+ J(f_0;f_1,\ldots,f_k)
+ \leq\langle G_k\,DG_0\wedge\cdots\wedge DG_{k-1}\wedge S,
+                     \chi\alpha\rangle.
+\]
+A final application of the same Green identity, together with
+commutation of smooth even-degree factors, makes the right-hand side
+$J(G_0;G_1,\ldots,G_k)$.
+
+Now let the index of $G_k$ tend to infinity, keeping every other index
+fixed. Bounded convergence against the fixed coefficient measures of
+$S$ implies $D(G_kS)\to D(g_kS)$. The outer factors and the weight are
+smooth and fixed, so this convergence can be tested directly. Next let
+the index of $G_{k-1}$ tend to infinity. The background
+$D(g_kS)$ is now fixed, so the same argument applies. Continue in the
+order $k,k-1,\ldots,1$. Finally, with the ordered product fixed, let the
+weight $G_0$ tend to $g_0$ by bounded convergence. The result is exactly
+$J(g_0;g_1,\ldots,g_k)$ in its original order. The order of these limits keeps the coefficient measure fixed at each
+discontinuous multiplication.
+\end{proof}
+
+\begin{lemma}[An upper bound for decreasing weights]
+\label[lemma]{lem:upper-weight}
+Let $P_j,P$ be positive coefficient Radon currents of one bidegree,
+with $P_j\to P$ on all original compact smooth tests. Let $a_j\downarrow a$
+be locally uniformly bounded functions. Suppose that, near the support
+of a fixed positive compact test $\Theta$, every fixed $a_l$ has bounded
+continuous majorants converging pointwise to $a_l$.
+Then
+\[
+ \limsup_{j\to\infty}\langle a_jP_j,\Theta\rangle
+       \leq\langle aP,\Theta\rangle.
+\]
+\end{lemma}
+
+\begin{proof}
+For $j\geq l$ and a continuous majorant $a_{l,\nu}\geq a_l$,
+positivity gives
+\[
+ \langle a_jP_j,\Theta\rangle
+       \leq\langle a_{l,\nu}P_j,\Theta\rangle.
+\]
+Keep $l,\nu$ fixed and pass to the limit in $j$, using \cref{lem:finite-control}. Bounded convergence against the fixed positive Radon measure
+$\mu_{P,\Theta}$ first allows $\nu\to\infty$ and then $l\to\infty$.
+\end{proof}
+
+\begin{theorem}[Weighted decreasing continuity for a fixed arbitrary background]
+\label[theorem]{thm:relative-monotone}
+Let $S$ be any
+symmetric positive original CLD current of bidegree $(p,p)$ on $U$,
+separately $d'$- and $d''$-closed. Let $0\leq k\leq n-p$.
+If $u_{i,j}\downarrow u_i$ in $\Cb(U)$ for $0\leq i\leq k$, with
+locally bounded limits, then
+\[
+ u_{0,j}T_{S,k}(u_{1,j},\ldots,u_{k,j})
+ \longrightarrow
+ u_0T_{S,k}(u_1,\ldots,u_k)
+\]
+on every original compact smooth complementary test form. The ordered
+unweighted products have the corresponding joint decreasing continuity.
+
+\end{theorem}
+
+\begin{proof}
+Write $W_k$ for the weighted assertion with $k$ differentiated slots.
+Bounded convergence for the fixed coefficient measures of $S$ proves
+$W_0$. Distributional differentiation shows that $W_{k-1}$ implies
+joint unweighted convergence in degree $k$. We prove $W_k$ assuming
+this unweighted convergence.
+
+The statement is local on compact test supports. Use a finite original
+smooth partition to reduce to one test $\eta$ supported in a small
+norm box $C_1$ as in \cref{lem:smooth-collar}. Include in the chosen
+ordinary neighborhood all the unit coordinates needed to present
+$\eta$. Let these coordinates be $t_1,\ldots,t_N$, and set
+\[
+ \beta=\sum_{a=1}^N d't_a\wedge d''t_a,
+ \qquad r=n-p-k,\qquad \alpha=\frac{\beta^r}{r!}.
+\]
+For $r=0$ set $\alpha=1$. The form $\alpha$ is closed and strongly
+positive. In the fixed finite coefficient space it is a positive
+definite trace form. After replacing $\eta$ by its symmetric part,
+there is $C>0$ such that
+\[
+ \Theta_\pm=C\chi\alpha\pm\eta
+\]
+are positive original compact tests. This is precisely the matrix
+domination used in \cref{lem:finite-control}; additional scalar coordinates
+are handled by pullback to a common refinement. 
+
+Patch all the potentials to $v_{i,j},v_i$ by
+\cref{lem:smooth-collar}, and put
+\[
+ P_j=T_{S,k}(v_{1,j},\ldots,v_{k,j}),\qquad
+ P=T_{S,k}(v_1,\ldots,v_k).
+\]
+The induction hypothesis gives $P_j\to P$. Applying
+\cref{lem:trace-monotonicity} to the ordered tuples
+$(v_0,\ldots,v_k)\leq(v_{0,j},\ldots,v_{k,j})$ yields
+\[
+ \langle v_0P,\chi\alpha\rangle
+       \leq\langle v_{0,j}P_j,\chi\alpha\rangle.
+\]
+\cref{lem:upper-weight} gives the reverse limsup inequality.
+Consequently
+\begin{equation}
+ \label{eq:trace-limit}
+ \langle v_{0,j}P_j,\chi\alpha\rangle
+       \longrightarrow\langle v_0P,\chi\alpha\rangle.
+\end{equation}
+Apply \cref{lem:upper-weight} to $\Theta_+$ and $\Theta_-$.
+Together with \eqref{eq:trace-limit}, the two resulting inequalities
+give respectively the upper and lower bounds for
+$\langle v_{0,j}P_j,\eta\rangle$. Thus this pairing converges to
+$\langle v_0P,\eta\rangle$.
+
+On a neighborhood of $\operatorname{supp}\eta$, the patched potentials
+are $u_{i,j}+c$ and $u_i+c$. Ordinary locality of the recursion identifies
+the differentiated products there with the original products, since
+constants in differentiated slots vanish. Remove the constant $c$ from
+the weight by the unweighted degree-$k$ convergence already established.
+Finite summation over the test partition proves $W_k$.
+
+This induction proves all $W_k$ and all allowed unweighted assertions.
+
+\end{proof}
+
+\begin{corollary}[Symmetry and the first-stage calculus]
+\label[corollary]{cor:full-calculus}
+Under the hypotheses of \cref{thm:relative-monotone}, the currents
+$T_{S,k}$ are symmetric in the differentiated arguments,
+positive, symmetric as currents, and separately $d'$- and $d''$-closed.
+They are additive and positively homogeneous in each potential, commute
+with ordinary restriction and gluing, and are independent of the
+regularization used to compute them. In particular,
+\[
+ D\bigl(uD(vS)\bigr)=D\bigl(vD(uS)\bigr)
+ \qquad(u,v\in\Cb(U),\ p\leq n-2).
+\]
+\end{corollary}
+
+\begin{proof}
+All assertions except permutation symmetry were proved for the ordered
+recursion. Choose, locally on one fixed domain, continuous semipositive
+PL approximants decreasing to each potential, as in \cref{prop:regularization}.
+Continuous arbitrary-background products are symmetric, by uniform
+smooth approximation and fixed-continuous-multiplier convergence.
+\cref{thm:relative-monotone}, with a constant weight, passes this
+identity to the given potentials. The recursion identifies the result
+independently of the approximants and on overlaps.
+\end{proof}
+
+\begin{corollary}[Top-degree convergence as measures]
+\label[corollary]{cor:top-measures}
+If $p+k=n$, the weighted convergence in
+\cref{thm:relative-monotone} holds against every compactly
+supported continuous scalar function, locally as signed Radon measures.
+\end{corollary}
+
+\begin{proof}
+Unweighted convergence against one nonnegative smooth cutoff equal to
+one near a prescribed compact set bounds the masses of the positive
+measures there. The weights have a common actual pointwise bound on a
+slightly larger compact neighborhood. Thus the weighted variations are
+uniformly bounded. Uniform density of original smooth scalar functions,
+with a fixed cutoff, extends convergence to continuous scalar tests.
+\end{proof}
+
+
+% END sections/03_weighted_continuity.tex
+
+% BEGIN sections/04_curvature_quotient.tex
+\section{The curvature quotient of bounded classical potentials}
+\label{sec:curvature-quotient}
+
+Write $\DSH(U)$ for the actual real functions locally expressible as
+differences of two members of $\Cb$. Let $\PH(U)$ consist of finite
+continuous functions whose two signs are classical psh. The following
+result from the ordered-potential manuscript is the regularity input
+for this section \cite[Theorem 21.4]{Order}.
+
+\begin{theorem}[The bounded-difference criterion]\label[theorem]{thm:difference-criterion}
+For $h\in\DSH(U)$,
+\[
+                  D[h]\ge0\quad\Longleftrightarrow\quad h\in\Cb(U).
+\]
+Both sides concern the given actual function.
+\end{theorem}
+
+We recall the two geometric steps behind the criterion, since its use
+is stronger than a choice of a good representative for a distribution.
+Order transfer along analytic curve maps after every complete extension
+preserves the actual bounded classical difference and the original
+curvature inequality. On a curve the positive difference of the two
+Laplacians gives an actual subharmonic difference: positive Green
+potentials identify its endpoint values along nested discs. To recover
+ambient upper semicontinuity, use a compact semistable cover of a norm
+box and its finite Shilov interpolants. If $h=a-b$ and $a<a(x)+\epsilon$
+on the box, the one-sided curve maximum principle gives
+$h\circ q\le P h$ and $b\circ q\le P b$ on each compact chart.
+The fiber maximum of the continuous function $P h$ is upper
+semicontinuous and majorizes $h$, while its value above $x$ is at most
+$h(x)+\epsilon$. Letting $\epsilon$ decrease proves ambient upper
+semicontinuity. The full complete-extension curve condition then gives
+classical psh membership. These steps and the required algebraic
+localization and trace arguments are proved in
+\cite[Sections 19--21]{Order}; the zero-curvature predecessor appears
+in \cite[Section 10]{Quotient}.
+
+\begin{theorem}[The actual curvature kernel]\label[theorem]{thm:actual-kernel}
+The equality
+\[
+ \ker\bigl(D:\DSH(U)\longrightarrow\mathcal D'^{1,1}(U)\bigr)
+                           =\PH(U)
+\]
+holds for actual functions. In particular, if $u,v\in\Cb(U)$ and
+$D[u]=D[v]$, the difference $u-v$ is continuous and both its signs
+are classical psh.
+\end{theorem}
+
+\begin{proof}
+If $D[h]=0$, apply \cref{thm:difference-criterion} to $h$ and $-h$.
+Both are upper semicontinuous, so $h$ is continuous; they are classical
+psh by the same criterion. Conversely, for $h\in\PH$, first-order
+positivity gives $D[h]\ge0$ and $-D[h]\ge0$. Pointedness of the cone
+in \cref{lem:finite-control} makes $D[h]=0$. This reasoning is local
+and hence applies to every locally represented difference.
+\end{proof}
+
+\begin{theorem}[Background invariance and order]
+\label[theorem]{thm:background-order}
+Let $S$ be a background of degree $(p,p)$, with $p<n$. For
+$u,v\in\Cb(U)$,
+\[
+ D[u]\ge D[v]\quad\Longrightarrow\quad D(uS)\ge D(vS).
+\]
+Equality of the ambient curvatures gives equality of the displayed
+relative curvatures. The same replacement is valid in every
+differentiated slot of a mixed product whose other slots are fixed.
+\end{theorem}
+
+\begin{proof}
+The actual difference $h=u-v$ has positive curvature, hence is classical
+psh by \cref{thm:difference-criterion}. The first-order construction
+gives $D(hS)\ge0$, and linearity identifies this with
+$D(uS)-D(vS)$. For equality, both $h$ and $-h$ give positive relative
+curvatures; pointedness makes them zero. To change one mixed slot,
+use symmetry to put it first. The product of the remaining slots with
+$S$ is one fixed positive separately closed background, to which the
+first-order assertion applies.
+\end{proof}
+
+This proves the last assertion of \cref{thm:main-bounded}. It also
+constructs products of curvature currents having bounded classical
+local potentials.
+
+\begin{corollary}[Gluing local-potential currents]
+\label[corollary]{cor:potential-current-products}
+Suppose each $\alpha_i$ is a $(1,1)$-current locally of the form
+$D[a_i]$ with $a_i\in\Cb$. For $k\le n-p$ there is a unique positive
+separately closed current
+$\alpha_1\wedge\cdots\wedge\alpha_k\wedge S$ whose expression on
+such a neighborhood is $T_{S,k}(a_1,\ldots,a_k)$. It is symmetric,
+local, additive and positively homogeneous in these current slots.
+\end{corollary}
+
+\begin{proof}
+On an overlap, corresponding potentials have the same ambient
+curvature. Replace the slots one at a time using
+\cref{thm:background-order}. The local currents therefore agree on
+all original tests and glue by the sheaf property of currents. Their
+remaining properties follow locally from the bounded calculus.
+\end{proof}
+
+\begin{corollary}[Continuous curvature domination]
+\label[corollary]{cor:continuous-domination}
+Let $u\in\Cb(U)$, let $g$ be continuous classical psh, and suppose
+$0\le D[u]\le C D[g]$ for $C\ge0$. Then $u$ and $Cg-u$ are
+continuous classical psh functions.
+\end{corollary}
+
+\begin{proof}
+The bounded classical difference $Cg-u$ has positive curvature, so it
+is upper semicontinuous and classical. The identity
+$u=Cg-(Cg-u)$ makes $u$ lower semicontinuous. It is already upper
+semicontinuous, hence continuous, and the same follows for $Cg-u$.
+\end{proof}
+
+An undifferentiated weight retains its actual value. For example,
+$D[0]=D[1]$, while $0S=0$ and $1S=S$. The quotient constructed here
+is therefore precisely the quotient in the differentiated slots.
+
+% END sections/04_curvature_quotient.tex
+
+% BEGIN sections/05_continuous_module.tex
+\section{Continuous coefficients and mixed curvature operations}
+\label{sec:continuous-module}
+
+\begin{theorem}[Transfer of continuous coefficient relations]
+\label[theorem]{thm:continuous-relations}
+Let $g_1,\ldots,g_m\in\Cb(U)$ and $f_1,\ldots,f_m\in C(U,\Real)$.
+For a fixed background $S$, put
+\[
+ A=\sum_i f_iD[g_i],\qquad A_S=\sum_i f_iD(g_iS).
+\]
+Then $A\ge0$ implies $A_S\ge0$. In particular, $A=0$ implies
+$A_S=0$ on every original complementary test.
+\end{theorem}
+
+\begin{proof}
+Set $T=\sum_iD(g_iS)\ge0$. For $\epsilon>0$, work near a point on
+a neighborhood where $|f_i-c_i|<\epsilon$ for suitable real constants.
+There,
+\[
+ D\left[\sum_i(c_i+\epsilon)g_i\right]
+       =A+\sum_i(c_i+\epsilon-f_i)D[g_i]\ge0.
+\]
+The actual function inside brackets is a bounded classical difference,
+as is seen by separating its positive and negative real coefficients.
+By \cref{thm:difference-criterion} it is classical psh. Its curvature
+against $S$ is positive, so $\sum_i c_iD(g_iS)\ge-\epsilon T$.
+The coefficient error gives $A_S\ge-2\epsilon T$ on this neighborhood.
+
+Cover the support of a positive original test by finitely many such
+neighborhoods and use a nonnegative smooth partition. Summing gives the
+same inequality on that test. Its control mass against $T$ is finite,
+so $\epsilon\downarrow0$ proves $A_S\ge0$. If $A=0$, apply the
+argument to both coefficient lists $(f_i)$ and $(-f_i)$ and use
+pointedness of the positive cone.
+\end{proof}
+
+We now prove the finite-presentation part of \cref{thm:main-module}.
+
+\begin{proof}[Proof of the continuous coefficient operation]
+Each expression in \MathEqref{eq:main-module-action} is a finite sum
+of continuous multiples of positive coefficient Radon currents. If a
+presentation of one slot changes without changing its actual current,
+fix a multi-index in the other slots and set
+\[
+ R=T_{S,r-1}(g_{1,\alpha_1},\ldots,
+                \widehat{g_{i,\alpha_i}},\ldots,g_{r,\alpha_r}).
+\]
+This is a fixed positive separately closed background. The zero-relation
+case of \cref{thm:continuous-relations} makes the change in that slot
+zero. Multiply by the remaining continuous coefficients and sum. Changing
+one slot at a time proves independence of all presentations. Symmetry,
+multilinearity and ordinary locality follow from the bounded products.
+
+For positivity, fix a positive compact complementary test and localize
+to one finite presentation. Its coefficients are bounded by $M\ge1$
+on a slightly larger compact set. Subdivide the test support into
+ordinary neighborhoods on which
+$|f_{i,\alpha}-c_{i,\alpha}|<\epsilon$, with $0<\epsilon<1$.
+On one such neighborhood put
+\[
+ H_i=\sum_\alpha(c_{i,\alpha}+\epsilon)g_{i,\alpha}.
+\]
+If $A_i\ge0$, then
+\[
+ D[H_i]=A_i+\sum_\alpha(c_{i,\alpha}+\epsilon-f_{i,\alpha})
+                                             D[g_{i,\alpha}]\ge0.
+\]
+Thus $H_i\in\Cb$ by \cref{thm:difference-criterion}, and
+$T_{S,r}(H_1,\ldots,H_r)\ge0$.
+
+For each multi-index, telescope the product of its $r$ scalar
+coefficients. The difference between the coefficient in
+\MathEqref{eq:main-module-action} and that in the last positive
+product is at most $2r\epsilon(M+2)^{r-1}$ in absolute value.
+Let $R_0$ be the finite sum of all the positive BT tails in that
+presentation, with their scalar coefficients omitted. Hence
+\[
+       \Phi_{S,r}(A_1,\ldots,A_r)
+            \ge-2r\epsilon(M+2)^{r-1}R_0
+\]
+on each member of the subdivision. A nonnegative partition and the
+fixed finite control mass pass this inequality to the original test.
+Letting $\epsilon$ decrease proves positivity. Telescoping in the slots
+then proves monotonicity when the remaining slots are positive.
+\end{proof}
+
+\begin{example}[A Borel coefficient can destroy a relation]
+\label[example]{ex:borel-relation}
+On the bidannulus
+$U=\{r<|T_1|<R,\ r<|T_2|<R\}$, where $0<r<1<R$, take
+$Y=\{T_2=1\}\cap U$ and $g=\max(0,\log|T_1|)$.
+The first-order analytic-divisor nonconcentration theorem gives
+$\mathbf1_YD[g]=0$ as an ambient coefficient Radon current.
+The subvariety formula and the slope jump on the $T_1$-annulus give
+\[
+ \mathbf1_YD(g[Y])=D(g[Y])=i_*\delta_{\zeta_{0,1}}\ne0,
+ \qquad i:Y\hookrightarrow U.
+\]
+Here $\zeta_{0,1}$ is the radius-one Gauss point; the slope jump is one.
+A compact nonnegative original scalar test equal to one near that point
+has integral one. This is the obstruction to Borel coefficient transfer described in
+\cite[Section \emph{Products in the continuous coefficient curvature module}]{Order}.
+\end{example}
+
+Continuous variable coefficients also affect closedness. The operation
+is an operation on coefficient currents; an output serves as a new
+background when its separate closedness has been established.
+
+% END sections/05_continuous_module.tex
+
+% BEGIN sections/06_order_completion.tex
+\section{Order completion inside the original currents}
+\label{sec:order-completion}
+
+The continuous coefficient operation has a useful continuity stronger
+than distributional continuity. A fixed positive control measures the
+size of a signed current and, simultaneously, the error of all its
+background actions. We follow the intrinsic order construction of
+\cite{Intrinsic}.
+
+\begin{lemma}[Signed products]\label[lemma]{lem:signed-order}
+Let $Q_i\in\Mone$ be positive and suppose
+$-M_iQ_i\le A_i\le M_iQ_i$, where $M_i\ge0$. Then
+\begin{equation}\label{eq:signed-order}
+ -\Bigl(\prod_iM_i\Bigr)R_S
+ \le\Phi_{S,r}(A_1,\ldots,A_r)
+ \le\Bigl(\prod_iM_i\Bigr)R_S,
+ \qquad R_S=\Phi_{S,r}(Q_1,\ldots,Q_r).
+\end{equation}
+The difference estimate \MathEqref{eq:main-order-estimate} also holds.
+\end{lemma}
+
+\begin{proof}
+Set $A_i^\pm=(M_iQ_i\pm A_i)/2$. These are positive,
+$A_i=A_i^+-A_i^-$, and $A_i^++A_i^-=M_iQ_i$. Expand the mixed
+product into a signed sum of positive currents. The unsigned sum is
+$\Phi_{S,r}(M_1Q_1,\ldots,M_rQ_r)$. This unsigned sum plus or minus
+the signed sum is twice a positive subsum, proving
+\MathEqref{eq:signed-order}. Telescope the difference between two
+mixed products one slot at a time and apply this inequality to each
+term. Addition gives \MathEqref{eq:main-order-estimate}.
+\end{proof}
+
+For one positive $Q\in\Mone(U)$, the space $E_Q$ and its gauge were
+defined in the introduction. Every finite presentation belongs locally
+to some such space: bound its coefficients and sum its positive
+curvature generators.
+
+\begin{theorem}[Faithful realization]\label[theorem]{thm:faithful-order}
+The completion $\widehat E_Q(U)$ embeds isometrically into the actual
+symmetric coefficient Radon $(1,1)$-currents. Its image is the closure
+of $E_Q(U)$ for the ambient order norm defined by $Q$. If an actual
+current is obtained using controls $Q$ and $R$, its two realizations
+agree in the completion controlled by $Q+R$.
+\end{theorem}
+
+\begin{proof}
+If $\|A\|_Q=0$, then $-\epsilon Q\le A\le\epsilon Q$ for every
+$\epsilon>0$. The finite test control makes every pairing of $A$
+zero. Thus the gauge is a norm. Addition of order bounds gives its
+triangle inequality. Weak closedness of the positive cone shows that
+the infimum in a finite gauge is attained.
+
+Let $(A_j)$ be order Cauchy. On each fixed original compact test its
+values are Cauchy by \cref{lem:finite-control}. The finite coefficient
+bound makes their limit a distribution and a coefficient Radon current
+on every compact presentation. Symmetry and compatibility with all
+relations and refinements pass to this limit, denoted $A$. If
+$\|A_j-A_l\|_Q\le\epsilon$ for $j,l\ge N$, let $l$ tend to infinity
+in both order inequalities. Weak closedness gives
+\begin{equation}\label{eq:order-limit}
+                -\epsilon Q\le A_j-A\le\epsilon Q\qquad(j\ge N).
+\end{equation}
+The convergence is therefore convergence in the ambient order norm.
+If $A=0$, the same inequality shows that the original sequence
+represents zero in the completion. This proves injectivity, the
+isometry, and the description of the image.
+
+Since $Q,R\le Q+R$, both completion sequences are Cauchy for that
+larger control. Their actual limits agree; injectivity for $Q+R$
+identifies the two completion classes.
+\end{proof}
+
+An actual symmetric coefficient current belongs to $\Mone_{\rm ord}$
+when it belongs locally to one of these embedded completions. This is
+a sheaf by the local definition and the sheaf property of currents.
+Local addition uses $Q+R$, and multiplication by a continuous function
+uses its bound on a smaller neighborhood.
+
+\begin{theorem}[Extension of the mixed operation]
+\label[theorem]{thm:extended-operation}
+The maps $\Phi_{S,r}$ extend uniquely to symmetric locally
+$C(U,\Real)$-multilinear operations on $\Mone_{\rm ord}$, continuous
+for every common finite family of local order controls. They are
+positive, local, compatible with gluing, and satisfy the signed and
+difference estimates. Their supports satisfy
+\begin{equation}\label{eq:product-support}
+ \supp\Phi_{S,r}(A_1,\ldots,A_r)
+       \subset\supp S\cap\bigcap_i\supp A_i.
+\end{equation}
+If the mixed products along an order-convergent approximation are
+separately closed, their limit is separately closed.
+\end{theorem}
+
+\begin{proof}
+Choose local controls $Q_i$ and Cauchy approximants $A_{i,j}$. Their
+order norms are bounded. The difference estimate and finite test
+control make the mixed products Cauchy in coefficient measure on every
+fixed compact presentation. Their limit is therefore a coefficient
+Radon current. The same estimate applied to two approximating families
+proves independence. For different controls $R_i$, pass to $Q_i+R_i$
+and use \cref{thm:faithful-order}; the resulting limits agree.
+
+Algebraic identities pass to the limit. If $A_i\ge0$, the inequality
+\MathEqref{eq:order-limit} gives positive approximants
+$A_{i,j}+\epsilon_{i,j}Q_i$, with $\epsilon_{i,j}\to0$. These have the
+same limits, so positivity passes from the finite-presentation
+operation. The order estimates also pass by weak closedness.
+
+Restriction is contractive for the restricted controls, so these local
+constructions agree on intersections and glue. On an open where one
+slot is zero, its completion class is zero by faithful realization,
+and multilinearity makes the product zero. The same holds where
+$S=0$, proving \MathEqref{eq:product-support}. Finally, distributional
+continuity of $d'$ and $d''$ proves the closedness assertion.
+\end{proof}
+
+This completes \cref{thm:main-module}. The numerical coefficient in
+the order estimate is independent of $S$; the controlling trace mass
+is evaluated against the particular background and test.
+
+\begin{corollary}[Fixed-generator approximation by curvatures]
+\label[corollary]{cor:fixed-generator-closedness}
+Suppose locally
+\[
+ A=\sum_{i=1}^N f_iD[g_i],\qquad
+ A_j=\sum_{i=1}^N f_{i,j}D[g_i]=D[v_j],
+\]
+where $g_i$ and $v_j$ are finite continuous local classical psh
+differences, $f_i,f_{i,j}$ are continuous, and $f_{i,j}\to f_i$ locally
+uniformly. Then $\Phi_{S,1}(A)$ is separately closed for every allowed
+background $S$.
+\end{corollary}
+
+\begin{proof}
+Write $g_i=g_i^+-g_i^-$ and choose the fixed control
+$Q=\sum_i(D[g_i^+]+D[g_i^-])$. On a smaller neighborhood the error
+is bounded between $\pm\epsilon_jQ$, where
+$\epsilon_j=\max_i\|f_i-f_{i,j}\|_\infty\to0$. Thus the actions
+converge on all original tests. Continuous relation transfer identifies
+$\Phi_{S,1}(A_j)=D(v_jS)$, a separately closed current. Both first
+derivatives pass to the limit. This argument uses the coefficient
+convergence and requires no bound or normalization on $v_j$.
+\end{proof}
+
+\begin{proposition}[A support-conormal certificate]
+\label[proposition]{prop:support-conormal}
+Let $A_i=D[g_i]$ for continuous classical psh differences, and set
+$T_i=D(g_iS)$ and $F_i=\supp A_i$. Then $\supp T_i\subset F_i$.
+If a smooth function $h$ vanishes on $F_i$, then
+$d'h\wedge T_i=d''h\wedge T_i=0$.
+
+Suppose smooth covectors admit an identity
+\[
+ \theta_i=\sum_a f_{ai}\eta_a+\sum_j b_{ij}d'h_{ij},\qquad
+ \sum_i f_{ai}A_i=0,\qquad h_{ij}|_{F_i}=0,
+\]
+with continuous scalar coefficients and original smooth
+$\eta_a,h_{ij}$. Then $\sum_i\theta_i\wedge T_i=0$. The same
+assertion holds after interchanging the two differential columns.
+\end{proposition}
+
+\begin{proof}
+On the complement of $F_i$, the zero curvature relation transfers to
+$T_i=0$. This proves the support assertion. Hence $hT_i=0$; separate
+closedness and the smooth product rule give the conormal identities.
+Each scalar relation transfers to $\sum_i f_{ai}T_i=0$. Multiply by
+$\eta_a$, apply the conormal identity to the remaining terms, and sum.
+\end{proof}
+
+% END sections/06_order_completion.tex
+
+% BEGIN sections/07_relative_energy.tex
+\section{Relative power energies on Laurent domains}
+\label{sec:relative-energy}
+
+\subsection{Truncation, capacity and the boundary class}
+
+We now impose the strict Laurent-domain and background-extension
+hypotheses \MathEqref{eq:main-box}. All capacities use the entire
+normalized classical tester class on the indicated domain. Its ordinary
+open outer regularization is denoted $C_S^*$. Local truncated capacity
+convergence means that, for every ordinary $\Omega\subset V$, compact
+$L\Subset\Omega$, $R>0$ and $\delta>0$,
+\[
+ C_{S|\Omega}^*\bigl(L\cap
+ \{|\max(u_j,-R)-\max(u,-R)|>\delta\};\Omega\bigr)\to0.
+\]
+
+Let $u_1,\ldots,u_m\le0$ be extended classical potentials, with their
+actual values. Put $u_i^{(j)}=\max(u_i,-j)$ and
+$E_j=\bigcap_i\{u_i>-j\}$. The restrictions
+\begin{equation}\label{eq:nonpolar-cut}
+ \mathbf1_{E_j}T_{S,k}(u_1^{(j)},\ldots,u_k^{(j)})
+\end{equation}
+are consistent on their common finite-value regions. Their increasing
+positive coefficient limits define the nonpolar product whenever those
+limits are locally finite. For a single potential write
+$\mu_{u,j}=T_{S,q}((u^{(j)})^{[q]})$,
+$\nu_{u,j}=\mathbf1_{\{u\le-j\}}\mu_{u,j}$, and $\mu_u$ for the
+nonpolar top measure.
+
+\begin{definition}[The actual boundary power classes]
+\label[definition]{def:power-class}
+The boundary condition $\mathrm{BG}(u,0)$ means
+$\overline{\{u<-t\}}\Subset V$ for every $t>0$. The class
+$\mathcal F_{S,\partial}(V)$ consists of negative extended classical
+potentials satisfying this condition and
+$\nu_{u,j}(V)\to0$. For $\sigma>0$, set
+\[
+ \mathcal E^\sigma_{S,\partial}(V)
+ =\left\{u\in\mathcal F_{S,\partial}(V):
+          e_\sigma(u)=\int_V(-u)^\sigma\,d\mu_u<\infty\right\}.
+\]
+The integral is over the finite-value locus, to which $\mu_u$ is
+carried. Write $\mathcal E^1=\mathcal E^1_{S,\partial}(V)$.
+\end{definition}
+
+The following analytic results will be used with their displayed
+domain. Their proofs in \cite{Energy} supply the coefficient cutoffs,
+capacity comparison, and tail bounds needed for the later completions.
+
+\begin{theorem}[Analytic truncation estimates]\label[theorem]{thm:analytic-estimates}
+The following statements hold.
+\begin{enumerate}
+\item A locally coefficient-finite product
+\MathEqref{eq:nonpolar-cut} is separately closed on all original tests.
+This is an ordinary-local assertion. Under $\mathrm{BG}(u,0)$,
+$\mu_u$ is locally finite and
+\[
+ u\in\mathcal F_{S,\partial}(V)
+ \quad\Longleftrightarrow\quad
+ t^qC_S(\{u<-t\};V)\to0.
+\]
+\item For $\sigma>0$ and $u$ satisfying $\mathrm{BG}(u,0)$, put
+\[
+ J_\sigma(u)=\int_0^\infty
+               t^{q+\sigma-1}C_S(\{u<-t\};V)\,dt.
+\]
+Then $J_\sigma(u)<\infty$ exactly when
+$u\in\mathcal E^\sigma_{S,\partial}(V)$, and
+\begin{equation}\label{eq:capacity-energy}
+ \frac{\sigma}{2^{q+\sigma}}J_\sigma(u)
+       \le e_\sigma(u)
+       \le\frac{\sigma2^q}{1-2^{-\sigma}}J_\sigma(u).
+\end{equation}
+Raw and outer capacities agree on these ordinary open sublevels.
+\item For a finite tuple $\mathbf u$ in this power class and a
+multi-index $\gamma$ with $k=|\gamma|\le q$, its unbounded mixed
+curvature $N_\gamma$ is defined, positive and separately closed.
+For $k\le q-1$,
+\begin{equation}\label{eq:actual-recursion}
+ D(u_iN_\gamma)=N_{\gamma+e_i},\qquad
+ \mathcal J'_{\gamma,i}=d'(u_iN_\gamma),\quad
+ \mathcal J''_{\gamma,i}=d''(u_iN_\gamma).
+\end{equation}
+The first-order currents are of coefficient Radon type. When
+$k+2\le q+\sigma$, the energy matrix is also of coefficient Radon
+type and is given by
+\begin{equation}\label{eq:three-term-energy}
+ G^\gamma_{ih}
+   =\tfrac12\left[D(u_i u_hN_\gamma)
+       -u_iN_{\gamma+e_h}-u_hN_{\gamma+e_i}\right].
+\end{equation}
+It is positive semidefinite in the middle cone.
+\item Put $\kappa=q+\sigma$, $w=\sum_i u_i$,
+$W=1-w$, and
+$J_w(R)=\int_R^\infty t^{\kappa-1}C_S(\{w<-t\};V)\,dt$.
+For a curvature, first-order or energy coefficient current $P$, assign
+the degree budget $b=k,k+1,k+2$, respectively. If $a+b\le\kappa$,
+the actual and canonically truncated coefficients have the uniform
+tail bound
+\begin{equation}\label{eq:graded-tail}
+ \int_{\{w\le-R\}}W^a\,|d\mu_{P,\eta}|
+       \le C_\eta R^{a+b-\kappa}J_w(R/4),\qquad R\ge1,
+\end{equation}
+with the corresponding bound for every bounded truncation.
+Canonical truncations converge in local coefficient total variation,
+including continuous tuple multipliers of growth at most $W^a$.
+\item Bounded actual Borel capacity limits of classical functions in
+$[-R,0]$ have an intrinsic bounded calculus, including first-order and
+energy currents. Its degree-$b$ coefficients satisfy
+\begin{equation}\label{eq:bounded-capacity-control}
+                |\mu_{P_R,\eta}|(E)\le C_\eta R^bC_S^*(E;V).
+\end{equation}
+These currents are independent of defining rows and outer-null changes,
+and bounded continuous tuple weights pass under capacity convergence.
+\item There is a bounded continuous classical barrier
+\begin{equation}\label{eq:box-barrier}
+ \rho=\max\left(-1,\max_a\log\frac{|f_a|}{R_a},
+                      \max_b\log\frac{r_b}{|g_b|}\right)
+\end{equation}
+on a neighborhood of $K_0$, with $-1\le\rho<0$ on $V$, compact
+negative sublevels, and $\mu_\rho(V)<\infty$. For
+$u\in\mathcal E^\sigma$, the bounded finite-mass potentials
+$\max(u,j\rho)$ decrease to $u$. Fixed lower-barrier families have
+critical weighted convergence, including global mixed-energy
+convergence in first energy.
+\end{enumerate}
+\end{theorem}
+
+The individual restricted stages in \MathEqref{eq:nonpolar-cut} may
+have boundary derivatives; the closedness theorem concerns their
+locally finite limit. The exact sources of
+\cref{thm:analytic-estimates} are
+\cite[Sections 8, 12, 15--20, 31]{Energy}. In particular, the
+first-order estimate is (FO8), the curvature and energy bounds are
+(PG3) and (PG12), and the bounded Borel construction is the lemma
+\emph{Analytic bounded capacitary calculus}. The boundary comparison
+and all-degree capacity estimates also give the following consequences
+used below: equality of two no-loss top measures implies equality of
+their potentials modulo local outer capacity; the actual power classes
+are closed under finite sums and maxima; and capacity convergence of
+uniformly energy-bounded tuples passes bounded weighted products below
+the critical degree. These are proved in
+\cite[Sections 12, 14--18, 28]{Energy}.
+
+\subsection{Global Green symmetry and the mixed energy inequality}
+
+For bounded classical $a,b$ and a closed background $Q$ of degree
+$(n-1,n-1)$, write
+$\Gamma_Q(a,b)=\frac12[D(abQ)-aD(bQ)-bD(aQ)]$.
+The bounded energy identity and its positive energy matrix are those
+of the relative first-order calculus \cite{Relative}; the same
+definition is justified for the unbounded products by
+\MathEqref{eq:three-term-energy}.
+
+\begin{lemma}[Global bounded Green exchange]\label[lemma]{lem:global-green}
+Let $a,b\le0$ be bounded classical potentials with compact negative
+sublevel closures. If $D(aQ)$ and $D(bQ)$ have finite total mass, then
+\[
+ \int_V(-a)D(bQ)=\int_V(-b)D(aQ)=\int_V\Gamma_Q(a,b).
+\]
+The diagonal energy is finite, and the cross energy has finite total
+variation.
+\end{lemma}
+
+\begin{proof}
+Put $a^\epsilon=\max(a,-\epsilon)$. The difference
+$a-a^\epsilon$ is supported in
+$K_\epsilon=\overline{\{a<-\epsilon\}}\Subset V$. Compact Green
+exchange gives
+\[
+ \int(a-a^\epsilon)D(bQ)
+       =\int bD(aQ)-\int bD(a^\epsilon Q).
+\]
+The measures $D(a^\epsilon Q)$ and $D(aQ)$ have the same finite
+total mass: their difference is the derivative of a compactly
+supported current, which pairs to zero with a cutoff equal to one
+near that support. For fixed $\delta>0$, relative CLN on
+$L_\delta=\overline{\{b<-\delta\}}$ gives
+$D(a^\epsilon Q)(L_\delta)\le C_{\delta,Q}\epsilon$. Therefore
+\[
+ \left|\int bD(a^\epsilon Q)\right|
+       \le\|b\|_\infty C_{\delta,Q}\epsilon
+                               +\delta D(aQ)(V).
+\]
+Let $\epsilon\downarrow0$ and then $\delta\downarrow0$ to obtain
+the first equality.
+
+The bounded clipping rule and the zero energy of an exact scalar
+level give
+\[
+ \int_{\{a<-\epsilon\}}\Gamma_Q(a)
+                     =\int(a^\epsilon-a)D(aQ).
+\]
+Monotone convergence identifies its limit with
+$\int(-a)D(aQ)<\infty$. Apply the diagonal identity also to $b$ and
+$a+b$ and polarize. Measure Cauchy--Schwarz bounds the total variation
+of the cross energy by the square root of the two diagonal masses.
+\end{proof}
+
+\begin{theorem}[First mixed energy]\label[theorem]{thm:first-mixed-energy}
+For $u_0,\ldots,u_q\in\mathcal E^1$, the finite functional
+\[
+ B(u_0,\ldots,u_q)=\int_V(-u_0)N_q(u_1,\ldots,u_q)
+\]
+is symmetric and separately additive and positively homogeneous.
+For $Q=N_{q-1}(c_2,\ldots,c_q)$,
+\begin{equation}\label{eq:global-energy-matrix}
+ \int_V\Gamma_Q(a,b)=B(a,b,c_2,\ldots,c_q),\qquad
+ |B(a,b,\mathbf c)|^2\le B(a,a,\mathbf c)B(b,b,\mathbf c).
+\end{equation}
+The energy matrix stays positive on finite real linear combinations
+of the potentials, and all cross energies have finite total variation.
+Moreover,
+\begin{equation}\label{eq:holder}
+ B(u_0,\ldots,u_q)\le\prod_{i=0}^q e(u_i)^{1/d},\qquad
+ e(u+v)^{1/d}\le e(u)^{1/d}+e(v)^{1/d}.
+\end{equation}
+The constant one is optimal whenever the class contains a positive
+energy potential.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: exchange the undifferentiated slot.}
+Use $b_{i,j}=\max(u_i,j\rho)$. For fixed $j$ these potentials are
+bounded and their sum is bounded below by $(q+1)j\rho$. Boundary
+comparison with $c(q+1)j\rho$, followed by $c\downarrow1$, gives
+\[
+ \mu_{\sum_i b_{i,j}}(V)
+       \le[(q+1)j]^q\mu_\rho(V)<\infty.
+\]
+The positive mixed expansion makes each top mixed measure finite.
+Apply \cref{lem:global-green} after fixing the last $q-1$ slots.
+Together with differentiated-slot symmetry this proves full bounded
+mixed symmetry. The fixed lower-barrier convergence in
+\cref{thm:analytic-estimates} passes the identity globally to the
+$u_i$. Finiteness is the mixed power-energy estimate in
+\cite[(PE11)]{Energy}. Additivity follows from integration and the
+unbounded recursion.
+
+\textbf{Step 2: identify the global energy measures.}
+For $a^\epsilon=\max(a,-\epsilon)$, apply compact Green to the
+canonical bounded difference $a^{(j)}-a^\epsilon$ and to the bounded
+background $Q_j$. The clipping rule gives
+\[
+ \int_{\{a<-\epsilon\}}\Gamma_{Q_j}(a^{(j)})
+       =\int(a^\epsilon-a^{(j)})D(a^{(j)}Q_j).
+\]
+The support lies in a fixed compact set. Critical local total-variation
+convergence from \cref{thm:analytic-estimates} passes the energy side;
+the degree-one weighted curvature convergence passes the other side.
+Thus the same identity holds for $a,Q$. Let $\epsilon\downarrow0$.
+The energy is zero on the pole and the scalar level $a=0$, and the
+right side tends to its finite mixed energy. This proves the diagonal
+identity. Polarization and positive energy matrices give
+\MathEqref{eq:global-energy-matrix} and the variation bound.
+
+\textbf{Step 3: prove the sharp integral inequality.}
+The zero-factor case follows from the mixed power-energy estimate.
+Otherwise normalize $e(u_i)=1$. Among the finitely many mixed values
+$B_\alpha=B(u_0^{[\alpha_0]},\ldots,u_q^{[\alpha_q]})$,
+$\sum\alpha_i=d$, choose a largest value $M$, and among its indices
+maximize $\sum\alpha_i^2$. If two entries $\alpha_i,\alpha_l$ are
+positive, energy Cauchy--Schwarz gives
+\[
+ M^2\le B_{\alpha+e_i-e_l}B_{\alpha-e_i+e_l}\le M^2.
+\]
+Since a diagonal value is one, $M>0$, and both neighboring values
+equal $M$. At least one neighboring index has larger sum of squares,
+a contradiction. Thus a maximizing index is pure and $M=1$.
+Rescaling proves the first inequality in \MathEqref{eq:holder}.
+Expand $e(u+v)$ and use the binomial theorem for the second. Equality
+with all slots equal proves optimality.
+\end{proof}
+
+\subsection{Discrepancy and quantitative tests}
+
+Set $\mathscr A(u)=-e(u)/d$. Symmetric multilinearity and global
+Green give, for $h=v-u$ and $u_t=(1-t)u+tv$,
+\begin{equation}\label{eq:energy-variation}
+ \frac d{dt}\mathscr A(u_t)=\int h\,d\mu_{u_t},\qquad
+ \frac{d^2}{dt^2}\mathscr A(u_t)
+        =-q\int\Gamma_{N(u_t^{[q-1]})}(h)\le0.
+\end{equation}
+In particular
+\begin{equation}\label{eq:discrepancy}
+ I(u,v)=e(u)+e(v)-B(u,v^{[q]})-B(v,u^{[q]})
+       =\sum_{l=0}^{q-1}\int\Gamma_{N(u^{[l]},v^{[q-1-l]})}(u-v).
+\end{equation}
+It is nonnegative and vanishes precisely on equal relative capacity
+classes. To see the latter assertion, zero discrepancy makes each
+diagonal energy in the sum zero. Compact Green and Cauchy--Schwarz,
+passed through canonical truncations, then give
+$D((u-v)N(u^{[l]},v^{[q-1-l]}))=0$ on every test. Summing the
+telescoping identity gives $\mu_u=\mu_v$. The boundary comparison
+consequence of \cref{thm:analytic-estimates} identifies their relative
+classes. The reverse follows from representative independence.
+
+\begin{theorem}[Uniform energy tests]\label[theorem]{thm:uniform-energy-test}
+Put $\alpha=2^{-q}$. For $u,v,\psi\in\mathcal E^1$ and
+$M=\max\{e(u+v),e(\psi)\}$,
+\begin{equation}\label{eq:uniform-energy-test}
+ \int_V|u-v|\,d\mu_\psi
+       \le2^{(q-1)\alpha}I(u,v)^\alpha M^{1-\alpha}.
+\end{equation}
+For a mixed top measure, replace $\psi$ by the sum of its $q$
+potentials and divide the bound by $q!$. At $M=0$ the integral is zero.
+\end{theorem}
+
+\begin{proof}
+Let $h=u-v$, $w=u+v$, and
+$J_k=\int\Gamma_{N(\psi^{[k]},w^{[q-1-k]})}(h)$ for
+$0\le k\le q-1$. Positive expansion gives
+$J_0\le2^{q-1}I(u,v)$. Exchange one $\psi$ slot with one $h$ slot by
+global symmetry and expand the latter as $u-v$. Cauchy--Schwarz in
+the two positive backgrounds, then in their two scalar terms, gives
+\[
+ J_{k+1}\le
+ \{J_k B(\psi^{[k+2]},w^{[q-1-k]})\}^{1/2}
+       \le(J_kM)^{1/2}.
+\]
+Hence $J_{q-1}\le J_0^{2^{-(q-1)}}M^{1-2^{-(q-1)}}$.
+The bounded absolute-value chain, the zero energy of an exact scalar
+level, and critical total-variation passage give
+$\Gamma_Q(|h|)=\Gamma_Q(h)$ in these backgrounds. Global Green gives
+\[
+ \int|h|\,d\mu_\psi
+    =-\int\Gamma_{N(\psi^{[q-1]})}(|h|,\psi)
+       \le J_{q-1}^{1/2}e(\psi)^{1/2}.
+\]
+Combine the inequalities. The zero case follows from mixed energy
+finiteness and \MathEqref{eq:holder}. Positive expansion
+$q!N(\psi_1,\ldots,\psi_q)\le\mu_{\sum\psi_i}$ proves the last
+assertion.
+\end{proof}
+
+We record the remaining quantitative consequences needed for the
+completion. They are proved in
+\cite[Section \emph{Quantitative first-energy convergence in every local capacity}]{Energy}.
+For an energy bound $e(u),e(v)\le M_0$ and every compact/domain pair
+$L\Subset\Omega\subset V$,
+\begin{align}
+ C_{S|\Omega}^*(L\cap\{|u-v|>\delta\};\Omega)
+       &\le C_{L,\Omega,M_0,S}\delta^{-1}I(u,v)^\alpha,
+                  \label{eq:energy-capacity}\\
+ |e(u)^{1/d}-e(v)^{1/d}|^d&\le I(u,v),
+                  \label{eq:energy-root}\\
+ I(u,u^{(R)})&\le\int(u^{(R)}-u)\,d\mu_u\longrightarrow0,
+                  \label{eq:clipping-strong}\\
+ \int_R^\infty t^qC_S(\{u<-t\};V)\,dt
+       &\le2^d\int(-u-R/2)^+\,d\mu_u.
+                  \label{eq:capacity-tail-energy}
+\end{align}
+The capacity estimate uses a normalized tester $a$ replaced near $L$
+by $\max(a-2,A_L\rho)$. Its energy is uniformly bounded by the finite
+mass of $\rho$, so \MathEqref{eq:uniform-energy-test} applies. Outer
+quasicontinuity and the analytic domain comparison give all local outer
+capacities. For \MathEqref{eq:energy-root}, write
+$a=e(u)^{1/d}$, $b=e(v)^{1/d}$ and use mixed H\"older to bound
+$I(u,v)$ below by $(a-b)(a^{d-1}-b^{d-1})\ge|a-b|^d$.
+The clipping bound follows from the definition of $I$ and positivity;
+dominated convergence passes its right side. The tail estimate is the
+tail form of \MathEqref{eq:capacity-energy}.
+
+\begin{proposition}[Sharp midpoint bound]\label[proposition]{prop:midpoint}
+For $u,v\in\mathcal E^1$,
+\begin{equation}\label{eq:midpoint}
+ \mathscr A\left(\frac{u+v}{2}\right)
+       -\frac{\mathscr A(u)+\mathscr A(v)}2
+       \ge c_q I(u,v),\qquad
+ c_q=\frac{1-2^{-q}}{2(q+1)}.
+\end{equation}
+This constant is optimal if a positive-energy potential exists.
+\end{proposition}
+
+\begin{proof}
+The scalar Green formula on $[0,1]$ and
+\MathEqref{eq:energy-variation} express the left side as
+$\sum_{l=0}^{q-1}a_{q,l}\gamma_l$, where
+\[
+ \gamma_l=\int\Gamma_{N(u^{[l]},v^{[q-1-l]})}(u-v)\ge0,
+ \quad
+ a_{q,l}=\frac q2\binom{q-1}{l}
+           \int_0^1\min(t,1-t)t^l(1-t)^{q-1-l}\,dt.
+\]
+Their sum $\sum_l\gamma_l$ is $I(u,v)$. We verify
+$a_{q,l}\ge c_q$. Put
+$p_i(s)=\binom qi s^i(1-s)^{q-i}$,
+$B_k(s)=\sum_{i=k}^qp_i(s)$, and
+$b_k(t)=q\binom{q-1}{k-1}t^{k-1}(1-t)^{q-k}$.
+Differentiation gives $B_k'=b_k$. For $0\le s\le1/2$,
+\[
+ P_k(s):=\int_s^{1-s}b_k(t)\,dt
+       =1-B_k(s)-B_{q-k+1}(s).
+\]
+If $k\le(q+1)/2$, then
+$P_k(s)-P_1(s)=\sum_{i=1}^{k-1}(p_i(s)-p_{q-i}(s))\ge0$,
+since $(s/(1-s))^{2i-q}\ge1$; the remaining cases follow from
+$P_k=P_{q+1-k}$. Layer cake for the tent function gives
+$a_{q,k-1}=\frac12\int_0^{1/2}P_k(s)\,ds\ge a_{q,0}$.
+The endpoint integral is $a_{q,0}=c_q$, proving the bound.
+For $v=0$ and $e(u)>0$, homogeneity gives $I(u,0)=e(u)$ and
+equality in \MathEqref{eq:midpoint}.
+\end{proof}
+
+% END sections/07_relative_energy.tex
+
+% BEGIN sections/08_strong_completion.tex
+\section{The complete relative first-energy space}
+\label{sec:strong-completion}
+
+Retain the domain and background of \MathEqref{eq:main-box}.
+Put $d=q+1$, $\alpha=2^{-q}$ and
+$\mathcal E^1=\mathcal E^1_{S,\partial}(V)$. We construct
+actual Borel classes from the strong Cauchy condition and then define
+their currents through bounded truncations.
+
+\subsection{Uniform tails and the boundary of an energy-Cauchy row}
+
+Call an actual row $(u_j)\subset\mathcal E^1$ strongly Cauchy if
+\begin{equation}\label{eq:strong-cauchy}
+               \lim_{N\to\infty}\sup_{j,l\geq N}
+                    I(u_j,u_l)=0.
+\end{equation}
+The Cauchy condition is stated directly in terms of this discrepancy.
+
+\begin{lemma}[Uniform deep tails and global weighted tightness]
+\label[lemma]{lem:r11-strong-cauchy-uniform-tails}
+Every strongly Cauchy actual row has bounded first energies and
+\begin{equation}\label{eq:uniform-deep-tails}
+ \begin{split}
+ \lim_{R\to\infty}\sup_j
+     \int_{\{u_j<-R\}}(-u_j)\,d\mu_{u_j}&=0,\\
+ \lim_{R\to\infty}\sup_j
+     \int_R^\infty t^q C_S(\{u_j<-t\};V)\,dt&=0.
+ \end{split}
+\end{equation}
+For finitely many strongly Cauchy actual rows $u_{i,j}$,
+$0\leq i\leq q$, the finite positive Radon measures
+\begin{equation}\label{eq:cauchy-weighted-measures}
+            (-u_{0,j})M(u_{1,j},\ldots,u_{q,j})
+\end{equation}
+are uniformly tight on $V$. The same conclusions hold if the
+indices of the finitely many rows tend independently to infinity.
+\end{lemma}
+
+\begin{proof}
+The energy-root estimate \MathEqref{eq:energy-root} bounds the energies by some $M$.
+The case $M=0$ is immediate from the constant-one mixed H\"older
+inequality; otherwise enlarge $M$ to be positive. On
+$\{-u_j>R\}$ split according to whether
+$-u_N\leq(-u_j)/2$. The pointwise splitting used below gives
+\begin{equation}\label{eq:tail-splitting}
+ \int_{\{u_j<-R\}}(-u_j)\,d\mu_{u_j}
+ \leq 2\int|u_j-u_N|\,d\mu_{u_j}
+       +4\int|u_N-u_N^{(R/4)}|\,d\mu_{u_j},
+ \qquad u^{(L)}=\max(u,-L).
+\end{equation}
+By \MathEqref{eq:uniform-energy-test}, the first integral is at most
+$C_{q,M}I(u_j,u_N)^\alpha$.
+For fixed $N$, the second is at most
+$C_{q,M}I(u_N,u_N^{(R/4)})^\alpha$, uniformly
+in $j$. The latter discrepancy tends to zero by \MathEqref{eq:clipping-strong}.
+Choose $N$ large using \MathEqref{eq:strong-cauchy}, then let $R$ grow, and finally
+make the Cauchy error tend to zero. The finitely many indices
+$j<N$ have vanishing tails because their first energies are
+finite. This proves the first line of \MathEqref{eq:uniform-deep-tails}. The tail form of
+\MathEqref{eq:capacity-tail-energy},
+\begin{equation}\label{eq:strong-capacity-tail}
+ \int_R^\infty t^q C_S(\{u_j<-t\};V)\,dt
+       \leq 2^{q+1}\int(-u_j-R/2)^+\,d\mu_{u_j},
+\end{equation}
+proves the second. For a finite sum of rows, the sublevel union
+bound gives the same uniform tail conclusion, with the factor
+$(\#\text{slots})^{q+1}$ and a fixed rescaling of $R$.
+
+For \MathEqref{eq:cauchy-weighted-measures}, all slot energies are uniformly bounded. Write
+$M_j=M(u_{1,j},\ldots,u_{q,j})$. Positivity of the expansion
+of $\mu_{\sum_{i=1}^q u_{i,j}}$ and \MathEqref{eq:uniform-energy-test} give
+\begin{equation}\label{eq:weight-freeze}
+             \int|u_{0,j}-u_{0,N}|\,dM_j
+                  \leq CI(u_{0,j},u_{0,N})^\alpha,
+\end{equation}
+where $C$ depends on the uniform energies and $q$, but not on
+the derivative-row indices. Fix a sufficiently late $N$.
+For $\epsilon>0$, the set
+$K_\epsilon=\overline{\{u_{0,N}<-\epsilon\}}$ is compact.
+On its complement $u_{0,N}=u_{0,N}^{(\epsilon)}$, and hence
+\begin{equation}\label{eq:boundary-tightness}
+ \begin{split}
+ \int_{V\setminus K_\epsilon}(-u_{0,j})\,dM_j
+ &\leq \int|u_{0,j}-u_{0,N}|\,dM_j
+          +\int(-u_{0,N}^{(\epsilon)})\,dM_j\\
+ &\leq CI(u_{0,j},u_{0,N})^\alpha
+       +e_1(u_{0,N}^{(\epsilon)})^{1/d}
+                          \prod_{i=1}^q e_1(u_{i,j})^{1/d}.
+ \end{split}
+\end{equation}
+The last line is the global constant-one H\"older inequality.
+The small-value energy vanishes:
+\begin{equation}\label{eq:small-value-energy}
+ e_1(u_{0,N}^{(\epsilon)})
+   \leq C_q\int_0^\epsilon t^q
+                    C_S(\{u_{0,N}<-t\};V)\,dt\longrightarrow0,
+\end{equation}
+by the power-energy/capacity equivalence. First make the
+Cauchy error small, then choose $\epsilon$ small. The
+finitely many omitted weights $u_{0,j}$, with derivative
+rows still varying, are handled by the same argument with
+zero first term: outside their own compact negative sublevel,
+the H\"older bound with $u_{0,j}^{(\epsilon)}$ tends uniformly
+to zero. A finite union of these compacts proves uniform
+tightness. This observation also proves the assertion for
+independent row indices, without taking a diagonal assumption
+on any derivative slot.
+\end{proof}
+
+\subsection{The Borel class and its intrinsic original currents}
+
+\begin{definition}[Strong relative first-energy completion]
+\label[definition]{def:r11-strong-first-energy-completion}
+Let $\widehat{\mathcal E}^1_{\rm str}(V)$ consist of actual
+Borel functions $u:V\to[-\infty,0]$ which are limits of an
+actual strongly Cauchy row in every local truncated outer
+$S$-capacity. Equality means local outer-capacity equality.
+The capacities may equivalently be taken on all compact
+cores in the fixed domain $V$, by the analytic capacity-domain comparison in \cref{thm:analytic-estimates}. A choice of actual
+defining row is not part of the element of this quotient.
+\end{definition}
+
+\begin{proposition}[Borel limits of all strongly Cauchy actual rows]
+\label[proposition]{prop:r11-strong-cauchy-borel-limit}
+Every row satisfying \MathEqref{eq:strong-cauchy} has a limit in
+\cref{def:r11-strong-first-energy-completion}, unique
+modulo local outer-capacity zero. Every member of that space is
+finite and continuous locally outside ordinary open sets of
+arbitrarily small outer capacity. Its pole set is locally
+outer-capacity zero.
+\end{proposition}
+
+\begin{proof}
+Uniform energy and \MathEqref{eq:energy-capacity} make each fixed bounded truncation
+of the row Cauchy in every local outer capacity. Apply the
+countable compact-core and integer-level diagonal construction
+from the bounded completion. A subsequence has compatible
+pointwise limits of all bounded truncations off a locally
+outer-null set. Its actual pointwise limsup defines a Borel
+$u\leq0$ on all of $V$, and the Cauchy property gives the
+required capacity convergence for the full row.
+
+There is a uniform deep sublevel estimate. The no-loss
+sublevel inequality and the first-energy bound imply
+\begin{equation}\label{eq:deep-sublevels}
+            C_S(\{u_j<-R\};V)\leq C_q M R^{-d}.
+\end{equation}
+These sets are ordinary open, so the same bound holds for
+their outer capacities. On a fixed compact core, the set
+$\{u<-2R\}$ is contained in $\{u_j<-R\}$ together with
+a positive gap of the fixed truncations at $3R$.
+Pass $j\to\infty$ in the outer-capacity subadditivity bound.
+It follows that the pole of $u$ has outer capacity zero on
+that core. Outside an ordinary open cover of a sufficiently
+deep sublevel, $u$ agrees with one bounded truncation.
+Its bounded-completion quasicontinuity then proves the stated
+finite local quasicontinuity. The level-set triangle inequality
+proves uniqueness. 
+\end{proof}
+
+\begin{theorem}[Canonical critical calculus in the strong completion]
+\label[theorem]{thm:r11-strong-completed-calculus}
+For a finite tuple $\mathbf u$ in
+$\widehat{\mathcal E}^1_{\rm str}(V)$, with actual strongly
+Cauchy defining rows $\mathbf u_j$, there are intrinsic
+coefficient-Radon original currents
+\begin{equation}\label{eq:completed-currents}
+ \widehat N_\gamma(\mathbf u),\qquad
+ \widehat{\mathcal J}'_{\gamma,i},\quad
+ \widehat{\mathcal J}''_{\gamma,i},\qquad
+ \widehat G^\gamma_{ih}.
+\end{equation}
+Curvatures have $k=|\gamma|\leq q$; first-order and energy
+currents have $k\leq q-1$. All energy degrees are included,
+since $k+2\leq q+1=d$. Curvatures are separately closed,
+symmetric and middle-positive; energy matrices are positive.
+First-order and energy currents are not asserted to be closed.
+
+For any continuous $F$ on the nonpositive orthant satisfying
+$|F(x)|\leq A(1-\sum_i x_i)^a$, the actual multiplier limit
+\begin{equation}\label{eq:critical-completed-weights}
+                  F(\mathbf u_j)P_j
+                         \longrightarrow F(\mathbf u)\widehat P
+       \qquad(a+b\leq d)
+\end{equation}
+holds on every original compact smooth complementary test and
+every actual moment refinement. Here the degree budget $b$ is
+$k$, $k+1$, or $k+2$ for curvature, first-order, or energy.
+All these multipliers are coefficient-integrable. The currents
+and weighted limits are independent of defining rows and of
+outer-capacity-null representatives, and they annihilate the
+joint pole set. They satisfy all original recursive identities,
+including
+\begin{equation}\label{eq:completed-recursion}
+ \begin{split}
+ D(u_i\widehat N_\gamma)&=\widehat N_{\gamma+e_i},\\
+ d'(u_i\widehat N_\gamma)&=\widehat{\mathcal J}'_{\gamma,i},\qquad
+ d''(u_i\widehat N_\gamma)=\widehat{\mathcal J}''_{\gamma,i}
+                         \qquad(k\leq q-1),
+ \end{split}
+\end{equation}
+and the actual three-term energy identity obtained by placing hats on \MathEqref{eq:three-term-energy}.
+
+For $q+1$ completed slots, the global mixed energy is finite and
+\begin{equation}\label{eq:global-completed-energy}
+ B(u_{0,j},\ldots,u_{q,j})
+      \longrightarrow
+ \widehat B(u_0,\ldots,u_q)
+       :=\int_V(-u_0)\widehat N(u_1,\ldots,u_q).
+\end{equation}
+The corresponding positive weighted measures converge against
+every bounded original smooth scalar test, including those
+without compact support. The assertion also permits independent
+indices tending to infinity in the defining rows.
+\end{theorem}
+
+\begin{proof}
+For a finite tuple define
+\begin{equation}\label{eq:joint-tail-function}
+ \Phi(R)=\sup_j\int_R^\infty t^q
+          C_S\!\left(\left\{\sum_i u_{i,j}<-t\right\};V\right)dt.
+\end{equation}
+By \cref{lem:r11-strong-cauchy-uniform-tails},
+$\Phi(0)<\infty$ and $\Phi(R)\to0$; the same is true for
+the supremum over independently large row indices, with the
+finitely many earlier indices included if needed. At every
+original compact test stage, the actual truncation estimate \MathEqref{eq:graded-tail} give
+\begin{equation}\label{eq:truncation-error}
+ \|\mu_{P_j-P_j^{(L)},\eta}\|_{\rm TV}
+             \leq C_\eta L^{b-d}\Phi(L/4).
+\end{equation}
+The bounded analytic completion supplies intrinsic currents
+$P^{(L)}$ of the completed clipped tuple. Passing $j$ to
+infinity in the difference of two bounded stages shows that
+$P^{(L)}$ are Cauchy in local coefficient total variation,
+by comparing two truncation levels with the same tail bound. Their limit defines $\widehat P$.
+Coefficient/refinement identities, positivity and separate
+closedness pass on all original tests.
+
+The limiting coefficients have the common modulus
+\begin{equation}\label{eq:coefficient-modulus}
+    \inf_{L\geq1}\{L^b s+L^{b-d}\Phi(L/4)\}
+                              \longrightarrow0\quad(s\downarrow0).
+\end{equation}
+Its weak-limit proof keeps $L$ fixed until after ordinary-open
+variation lower semicontinuity and Radon outer regularity.
+Thus it controls both the defining and limiting coefficients,
+including the critical case $b=d$. It annihilates every
+locally outer-null set and, in particular, the joint pole set.
+The bounded quasicontinuous multiplier argument therefore
+passes every bounded continuous function of a fixed clipped
+tuple.
+
+For endpoint integrability apply that argument to
+$\theta_R(z)\min((1+z)^a,H)$, where
+$z=-\sum_i u_i$ and $\theta_R$ is zero below $R$ and one
+above $2R$. For fixed $R,H$ this is a continuous function
+of one sufficiently large clipped tuple; once a slot exceeds
+that clipping level its value is the constant $H$.
+When $a=0$, use $\theta_R$ itself. The actual row estimates
+bound the integral by
+$C R^{a+b-d}\Phi(R/8)$. Passing to the bounded multiplier
+limit and then $H\uparrow\infty$ proves the same tail bound
+for the limiting positive traces. Variation lower
+semicontinuity handles signed first-order coefficients, and
+positive diagonal controls handle cross energies.
+Adding the bounded-value part gives actual coefficient
+integrability. Clipping a general $F$ and then letting its
+clipping level tend to infinity proves \MathEqref{eq:critical-completed-weights}. Consequently
+all multipliers in \MathEqref{eq:completed-recursion} and \MathEqref{eq:three-term-energy} are defined before
+distributional differentiation, and the original row
+identities pass to the limit.
+
+For two different defining tuples with the same Borel
+capacity limits, their bounded completed stages are identical.
+The union of their finitely many row families has the same
+vanishing-tail property. The preceding construction therefore
+gives identical unbounded currents and actual multipliers.
+This proves approximation independence.
+
+Finally, \MathEqref{eq:critical-completed-weights} gives local convergence of \MathEqref{eq:cauchy-weighted-measures}.
+The uniform global tightness in
+\cref{lem:r11-strong-cauchy-uniform-tails}, together
+with the uniform finite mixed-energy bound \MathEqref{eq:holder}, identifies
+a finite global limiting measure and gives its total-mass
+convergence. This is precisely \MathEqref{eq:global-completed-energy}. Tightness also passes
+every bounded original scalar test. The independent-index
+assertions follow from the same bounds, or by applying the
+argument to every sequence of independently diverging indices.
+\end{proof}
+
+\subsection{Intrinsic discrepancy and completeness}
+
+Define on this Borel space
+\begin{equation}\label{eq:completed-discrepancy}
+ \begin{split}
+ \widehat e(u)&=\widehat B(u^{[q+1]}),\\
+ \widehat I(u,v)&=\widehat e(u)+\widehat e(v)
+       -\widehat B(u,v^{[q]})-\widehat B(v,u^{[q]}).
+ \end{split}
+\end{equation}
+
+\begin{lemma}[Uniform discrepancy continuity on energy balls]
+\label[lemma]{lem:r11-discrepancy-uniform-perturbation}
+The completed space is closed under finite sums and nonnegative
+scalar multiples. Its mixed energy is symmetric, positive and
+multilinear on that cone, and satisfies the constant-one H\"older
+inequality. The formulas \MathEqref{eq:uniform-energy-test}, \MathEqref{eq:energy-capacity}, \MathEqref{eq:energy-root} and the sharp
+midpoint inequality \MathEqref{eq:midpoint} hold in the completion, with their
+actual Borel multipliers and local capacities. In particular,
+$\widehat I\geq0$, and it vanishes exactly on equal relative
+classes.
+
+If $\widehat e(a),\widehat e(a'),\widehat e(b)\leq M$,
+then
+\begin{equation}\label{eq:uniform-discrepancy}
+ \big|\widehat I(a,b)-\widehat I(a',b)\big|
+       \leq L_q M^{1-\alpha}\widehat I(a,a')^\alpha,
+ \qquad
+ L_q=2(q+1)2^{(q-1)\alpha}3^{d(1-\alpha)}.
+\end{equation}
+The assertion at $M=0$ means that both sides are zero.
+\end{lemma}
+
+\begin{proof}
+For two strongly Cauchy defining rows, the sum rows have the
+required Borel capacity limit. Expand the discrepancy of two
+independently late sum rows into finitely many global mixed
+energies. Equation \MathEqref{eq:global-completed-energy} makes each term converge to the
+corresponding completed mixed energy; the total limiting
+discrepancy is zero. Thus the sum row is strongly Cauchy.
+Positive scaling is immediate, and zero scaling means the
+zero function even at poles. Passing the actual finite mixed
+identities and \MathEqref{eq:holder} through \MathEqref{eq:global-completed-energy} now proves all asserted
+cone identities.
+
+The actual inequalities \MathEqref{eq:uniform-energy-test}, \MathEqref{eq:energy-root}, and \MathEqref{eq:midpoint} pass by
+global mixed-energy convergence. For \MathEqref{eq:uniform-energy-test}, its left side is
+the actual weight $|u-v|$, which has degree-one growth and is
+bounded by $(-u)+(-v)$; \MathEqref{eq:critical-completed-weights} and the tightness of these two
+critical positive mixed measures pass its global integral.
+For \MathEqref{eq:energy-capacity}, use defining rows, their convergent energies,
+and the level-set triangle inequality for clipped gaps;
+then remove deep sublevels using \MathEqref{eq:deep-sublevels} and decrease the
+intermediate gap threshold. This also proves that
+$\widehat I=0$ gives equality in all local outer capacities.
+The converse follows from intrinsic current and multiplier
+independence.
+
+It remains to prove \MathEqref{eq:uniform-discrepancy}. It suffices first to consider
+actual potentials. Write $h=a-a'$. Telescoping the three
+terms of $I(a,b)$ that depend on $a$, and using full mixed
+symmetry, expresses their difference as $2(q+1)$ signed
+integrals of $-h$ against positive mixed top products whose
+slots lie among $a,a',b$. Every such product is bounded by
+$\mu_\psi$, where $\psi=a+a'+b$, by the positive expansion.
+Thus
+\begin{equation}\label{eq:discrepancy-telescope}
+ |I(a,b)-I(a',b)|
+                  \leq2(q+1)\int|a-a'|\,d\mu_\psi.
+\end{equation}
+Minkowski gives $e_1(\psi)\leq3^dM$ and
+$e_1(a+a')\leq2^dM$. Apply \MathEqref{eq:uniform-energy-test} to \MathEqref{eq:discrepancy-telescope} to obtain
+\MathEqref{eq:uniform-discrepancy}. For completed potentials pass through actual
+defining rows whose energies tend to the completed energies;
+first allow $M+\epsilon$ and then let $\epsilon\downarrow0$.
+The zero-energy case follows separately from H\"older.
+\end{proof}
+
+\begin{theorem}[Completeness and the intrinsic strong topology]
+\label[theorem]{thm:r11-complete-strong-first-energy-space}
+Every $\widehat I$-Cauchy sequence in
+$\widehat{\mathcal E}^1_{\rm str}(V)$ converges to a unique
+relative class in that space, with discrepancy tending to zero.
+The actual classical class is strongly dense.
+
+For members $u_j,u$ of this space, one has
+\begin{equation}\label{eq:completed-topology}
+ \widehat I(u_j,u)\longrightarrow0
+ \quad\Longleftrightarrow\quad
+ \left\{
+ \begin{array}{l}
+ u_j\longrightarrow u\text{ in all local truncated outer capacities},\\
+ \widehat e(u_j)\longrightarrow\widehat e(u).
+ \end{array}\right.
+\end{equation}
+Strongly convergent finite tuples have every original local
+weighted-current limit in \MathEqref{eq:critical-completed-weights}, including all its critical
+endpoints, and the global mixed-energy and weighted-measure
+limits \MathEqref{eq:global-completed-energy}. The weighted limits here are original-current limits.
+
+\end{theorem}
+
+\begin{proof}
+If $(v_l)$ is an actual defining row for a completed $u$, then
+for fixed $l$, \MathEqref{eq:global-completed-energy} gives
+$\widehat I(v_l,u)=\lim_{r\to\infty}I(v_l,v_r)$.
+Its Cauchy property therefore implies
+$\widehat I(v_l,u)\to0$. This proves strong density.
+
+Now let $(u_j)$ be completed and $\widehat I$-Cauchy.
+The energy-root estimate bounds its energies. Choose actual
+$v_j$ with $\widehat I(v_j,u_j)<2^{-j}$ and uniformly bounded
+energies. Applying \MathEqref{eq:uniform-discrepancy} in its two slots shows
+\begin{equation}\label{eq:diagonal-cauchy}
+ I(v_j,v_l)\leq\widehat I(u_j,u_l)
+                   +C\bigl(2^{-j\alpha}+2^{-l\alpha}\bigr).
+\end{equation}
+Hence $(v_j)$ is strongly Cauchy and has a completed Borel
+limit $u$. Its defining property and strong density imply
+$\widehat I(v_j,u)\to0$. A further use of \MathEqref{eq:uniform-discrepancy} gives
+$\widehat I(u_j,u)\to0$. Separation proves uniqueness.
+This proves completeness using the uniform discrepancy modulus.
+
+The forward implication of \MathEqref{eq:completed-topology} follows from the completed
+energy-root and capacity estimates. For the reverse, the
+energies are uniformly bounded. Bounded completed stages and
+the strict subcritical truncation bound for top unweighted
+currents give local convergence of their top measures. More
+explicitly, the stage error has order at most $C M/L$ for
+degree $q<d$; first fix $L$, use bounded-completion capacity
+continuity, and then let $L$ grow. The same uniform coefficient
+modulus permits bounded quasicontinuous weight passage.
+Consequently, by first truncating the weight and inserting a
+compact nonnegative cutoff, then increasing both,
+\begin{equation}\label{eq:cross-energy-liminf}
+ \liminf_j\widehat B(u_j,u^{[q]})\geq\widehat e(u),\qquad
+ \liminf_j\widehat B(u,u_j^{[q]})\geq\widehat e(u).
+\end{equation}
+H\"older gives upper bounds tending to $\widehat e(u)$ for
+both cross energies. Expanding \MathEqref{eq:completed-discrepancy} proves the converse.
+This argument uses no critical weighted continuity to prove
+that very continuity.
+
+For a strongly convergent completed tuple choose, at the $j$th
+row, classical approximants with discrepancy at most $2^{-j}$,
+and sufficiently accurate values on the first $j$ compact
+test stages and bounded clipped weights. The defining-row
+convergence allows these finitely many requirements
+simultaneously. By \MathEqref{eq:uniform-discrepancy}, these actual rows are strongly
+Cauchy, with the same Borel limits and energies. The preceding
+construction and \MathEqref{eq:critical-completed-weights}--\MathEqref{eq:global-completed-energy} give the asserted limits.
+Equivalently, any failure on a fixed test would furnish a
+subsequence and actual approximants contradicting those
+already proved actual-row limits. This last argument also
+covers bounded original scalar tests in the global statement.
+
+\end{proof}
+
+
+\subsection{Monotone closure and the capacity integral}
+
+\begin{proposition}[Monotone closure]\label[proposition]{prop:completed-monotone}
+For completed potentials $a\le b$ relatively quasi-everywhere,
+\[
+             0\le\widehat I(a,b)\le\widehat e(a)-\widehat e(b).
+\]
+An increasing sequence in the strong cone converges strongly to its
+pointwise monotone Borel limit. The same holds for a decreasing
+sequence with uniformly bounded energies. Equalities and monotonicity
+are understood outside one locally outer-null set.
+\end{proposition}
+
+\begin{proof}
+The mixed energy is decreasing in each potential for pointwise order:
+this follows from positivity in the weight slot and symmetry in every
+other slot. Both cross terms in the discrepancy are consequently at
+least $\widehat e(b)$, proving the inequality. Along an increasing
+sequence the energies decrease and are nonnegative; along a decreasing
+sequence they increase and are bounded by hypothesis. In either case
+they converge, so the displayed inequality makes the row strongly
+Cauchy. Completeness supplies a limit. A summable-capacity diagonal
+subsequence of its bounded truncations converges pointwise off a
+locally outer-null set; monotonicity identifies this limit with the
+specified Borel monotone limit. Thus the full sequence converges
+strongly.
+\end{proof}
+
+We also use the following precise capacity characterization from
+\cite[Theorem 37.2]{Energy}. A Borel function $u\le0$ represents a
+member of the strong cone if and only if each $u^{(m)}$ is a bounded
+capacitary limit of actual classical functions on the same domain $V$
+with values in $[-m,0]$, and
+\begin{equation}\label{eq:completed-capacity-integral}
+ J_1^*(u):=\int_0^\infty t^qC_S^*(\{u<-t\};V)\,dt<\infty.
+ \qquad
+ 2^{-d}J_1^*(u)\le\widehat e(u)\le2^dJ_1^*(u).
+\end{equation}
+The admissibility of the bounded stages is part of this criterion.
+The completed sublevel theorem in \cite[Section 36]{Energy} proves the
+capacity inequalities and the forward direction. For the reverse,
+form $v_j=\max(u,j\rho)=\max(u^{(j)},j\rho)$. Bounded classical
+approximants of $u^{(j)}$, followed by this maximum, are bounded below
+by the actual first-energy barrier $j\rho$. The fixed-barrier
+critical convergence of \cref{thm:analytic-estimates} makes their
+limit a strong member $v_j$. The sublevel bounds give
+$\widehat e(v_j)\le2^dJ_1^*(u)$. The $v_j$ decrease, hence converge
+strongly by \cref{prop:completed-monotone}. On a compact core and for
+fixed $R$, strict negativity of $\rho$ gives
+$v_j^{(R)}=u^{(R)}$ for all large $j$. The completed limit is therefore
+the given capacity class of $u$. The sublevel theorem then gives both
+inequalities in \MathEqref{eq:completed-capacity-integral}.
+
+% END sections/08_strong_completion.tex
+
+% BEGIN sections/09_variational_source.tex
+\section{The energy dual and the source equation}
+\label{sec:variational-source}
+
+In this section $\Ccone=\widehat{\mathcal E}^{1}_{\rm str}(V)$,
+and $B,e,I$ denote the completed mixed energy, energy and discrepancy.
+Write $r(u)=e(u)^{1/d}$. A difference is formed on the common finite
+locus of its two Borel potentials and is assigned any finite value on
+the outer-null exceptional set.
+
+\subsection{The Banach space of energy differences}
+
+\begin{definition}[Energy-difference space and its norm]
+\label[definition]{def:r12-energy-difference}
+Let $\mathbb D_S=\mathscr C-\mathscr C$ be the real vector space of
+such Borel differences modulo local outer-capacity equality. Define
+\begin{equation}\label{eq:dual-ed3}
+ \|h\|_{\rm ed}
+   =\inf\{r(a)+r(b):a,b\in\mathscr C,\ h=a-b\}.
+\end{equation}
+
+\end{definition}
+
+\begin{lemma}[Continuous extension of the mixed energy]
+\label[lemma]{lem:r12-difference-mixed-extension}
+There is a unique symmetric real $d$-linear form on $\mathbb D_S$
+extending $B$, and it satisfies
+\begin{equation}\label{eq:dual-ed4}
+       |B(h_0,\ldots,h_q)|\leq\prod_{i=0}^q\|h_i\|_{\rm ed}.
+\end{equation}
+Moreover $\|u\|_{\rm ed}=r(u)$ for every $u\in\mathscr C$.
+\end{lemma}
+
+\begin{proof}
+Expand each difference into its two cone terms and extend by the
+finite multilinear expansion. If $a-b=a'-b'$, then
+$a+b'=a'+b$ in the relative cone. Separate additivity of
+the completed $B$ therefore makes the expansion independent of that
+presentation, one slot at a time. Positive real homogeneity and
+changing the signs of differences give real multilinearity.
+For specified decompositions $h_i=a_i-b_i$, the triangle inequality
+and cone H\"older give the bound $\prod_i(r(a_i)+r(b_i))$.
+Taking independent infima proves \MathEqref{eq:dual-ed4}.
+
+The definition gives $\|u\|_{\rm ed}\leq r(u)$. Applying \MathEqref{eq:dual-ed4}
+to the diagonal tuple gives $e(u)\leq\|u\|_{\rm ed}^{d}$, so the
+reverse inequality follows. This argument also covers zero energy.
+\end{proof}
+
+\begin{theorem}[Actual Borel realization and Banach completeness]
+\label[theorem]{thm:r12-energy-difference-Banach}
+Formula \MathEqref{eq:dual-ed3} is a norm, $\mathbb D_S$ is complete for that norm,
+and $\mathscr C$ is a closed convex cone in this Banach space.
+Norm convergence implies convergence in the full local outer
+$S$-capacity topology. More precisely, with
+$C_0=d2^d$, one has
+\begin{equation}\label{eq:dual-ed5}
+ C_S^*(\{|h|>t\};V)\leq C_0 t^{-d}\|h\|_{\rm ed}^{d}
+                    \qquad(h\in\mathbb D_S,\ t>0).
+\end{equation}
+For $u,v\in\mathscr C$,
+\begin{equation}\label{eq:dual-ed6}
+ I(u,v)\leq\bigl(r(u)^q+r(v)^q\bigr)\|u-v\|_{\rm ed}.
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+The infimum in \MathEqref{eq:dual-ed3} is finite. Minkowski on $\mathscr C$ proves
+the triangle inequality; switching the two cone terms proves
+symmetry, and homogeneity follows by rescaling decompositions.
+The capacity integral bound \MathEqref{eq:completed-capacity-integral} and
+monotonicity of the sublevels give
+\[
+ \frac{t^d}{d}C_S^*(\{u<-t\};V)
+       \leq\int_0^t s^{d-1}C_S^*(\{u<-s\};V)\,ds
+       \leq2^d e(u).
+\]
+For $h=a-b$, the set $\{|h|>t\}$ is contained, modulo an
+outer-null set, in $\{a<-t\}\cup\{b<-t\}$. Hence its outer
+capacity is at most $C_0t^{-d}(r(a)^d+r(b)^d)$, bounded by
+$C_0t^{-d}(r(a)+r(b))^d$. Infimizing proves \MathEqref{eq:dual-ed5}, and shows
+that a zero seminorm has the zero relative Borel class. Local
+outer-null sets here also have zero outer capacity in the fixed
+domain: use a countable compact exhaustion and the analytic domain comparison on its cores. The same comparison transfers norm
+convergence to every smaller-domain original capacity.
+
+We prove completeness inside the space of actual Borel differences,
+rather than introducing an abstract completion with unidentified
+elements. For a norm-Cauchy sequence choose a subsequence $(h_j)$
+whose successive increments have decompositions
+\begin{equation}\label{eq:dual-ed7}
+ h_{j+1}-h_j=a_j-b_j,\qquad
+ \sum_{j\geq1}(r(a_j)+r(b_j))<\infty.
+\end{equation}
+Write $h_1=a_0-b_0$. The partial sums
+$A_N=a_0+\sum_{j=1}^N a_j$ and
+$B_N=b_0+\sum_{j=1}^N b_j$ decrease as Borel potentials,
+outside one countable union of outer-null sets. Their energy
+roots are bounded by the corresponding sums of roots, so the
+\cref{prop:completed-monotone} gives strong limits
+$A,B\in\mathscr C$. Apply the same theorem to each tail series.
+It yields $A-A_N,B-B_N\in\mathscr C$ and
+\begin{equation}\label{eq:dual-ed8}
+ r(A-A_N)+r(B-B_N)
+          \leq\sum_{j>N}(r(a_j)+r(b_j))\longrightarrow0.
+\end{equation}
+The identities with the tails hold on the common finite locus,
+hence in the relative Borel quotient. Thus $h=A-B\in\mathbb D_S$
+is the norm limit of the subsequence and of the original Cauchy
+sequence. No abstract vector invisible to Borel capacity has been
+adjoined.
+
+For $u,v\in\mathscr C$, multilinearity gives
+\[
+ I(u,v)=B(u-v,u^{[q]})-B(u-v,v^{[q]}).
+\]
+Apply \MathEqref{eq:dual-ed4} to obtain \MathEqref{eq:dual-ed6}. If a sequence in $\mathscr C$
+converges in norm to $h\in\mathbb D_S$, its energy roots are
+bounded by the norm triangle inequality and the preceding lemma.
+Equation \MathEqref{eq:dual-ed6} makes it strongly Cauchy. \cref{thm:r11-complete-strong-first-energy-space} supplies
+a limit $u\in\mathscr C$. The norm limit and the strong limit
+have the same local capacity class by \MathEqref{eq:dual-ed5} and \MathEqref{eq:completed-topology}. Thus $h=u$, proving norm closedness.
+Convexity is the completed cone addition property.
+\end{proof}
+
+\begin{definition}[Curvature as an energy-dual functional]
+\label[definition]{def:r12-dual-curvature}
+For $u\in\mathscr C$ put
+\begin{equation}\label{eq:dual-ed9}
+       J(u)(h)=B(h,u^{[q]})=-\int_Vh\,d\widehat\mu_u
+                      \qquad(h\in\mathbb D_S).
+\end{equation}
+The displayed integral is literal and absolutely convergent: for
+$h=a-b$, $|h|\leq(-a)+(-b)$ off a common null set, and the
+two mixed first energies are finite. The current measure ignores
+that exceptional set. Thus $J(u)$ is a genuine functional in
+$\mathbb D_S^*$, with its original current interpretation.
+\end{definition}
+
+\begin{theorem}[Exact dual norm and strong continuity of curvature]
+\label[theorem]{thm:r12-dual-curvature-continuity}
+For every continuous linear functional $\ell$ on $\mathbb D_S$,
+\begin{equation}\label{eq:dual-ed10}
+ \|\ell\|_*=
+     \sup_{\substack{a\in\mathscr C\\r(a)\leq1}}|\ell(a)|.
+\end{equation}
+For $u\in\mathscr C$ one has $\|J(u)\|_*=r(u)^q$.
+For $u,v\in\mathscr C$ and $R=\max(r(u),r(v))$,
+\begin{equation}\label{eq:dual-ed11}
+ \begin{split}
+ \|J(u)-J(v)\|_*&\leq qR^{q-1}\|u-v\|_{\rm ed},\\
+ \|J(u)-J(v)\|_*&\leq\sqrt q\,R^{(q-1)/2}I(u,v)^{1/2}.
+ \end{split}
+\end{equation}
+At $R=0$ both sides mean zero; for $q=1$ the power $R^0$ is
+one. In particular strong convergence of potentials gives norm
+convergence of their source functionals, in every remaining degree.
+\end{theorem}
+
+\begin{proof}
+If the supremum in \MathEqref{eq:dual-ed10} is $L$, a decomposition $h=a-b$
+gives $|\ell(h)|\leq L(r(a)+r(b))$. Taking the infimum yields
+$\|\ell\|_*\leq L$; the reverse follows from
+$\|a\|_{\rm ed}=r(a)$. Equation \MathEqref{eq:dual-ed4} bounds the norm of
+$J(u)$ by $r(u)^q$. For $r(u)>0$, evaluation on $u/r(u)$
+gives equality; if $r(u)=0$, the class and functional are zero.
+
+The finite telescoping expansion gives
+\begin{equation}\label{eq:dual-ed12}
+ (J(u)-J(v))(h)
+    =\sum_{l=0}^{q-1}B(h,u-v,u^{[l]},v^{[q-1-l]}).
+\end{equation}
+Equation \MathEqref{eq:dual-ed4} proves the first bound in \MathEqref{eq:dual-ed11}.
+For the sharper strong-topology bound define
+\[
+ H(f,g)=\sum_{l=0}^{q-1}
+                 B(f,g,u^{[l]},v^{[q-1-l]}).
+\]
+This is a positive semidefinite bilinear form on $\mathbb D_S$.
+Indeed each summand is the integrated energy form with the
+fixed completed positive closed mixed background. Positivity on
+finite differences follows from \MathEqref{eq:global-energy-matrix}, passed through the global completed-energy convergence \MathEqref{eq:global-completed-energy}.  We have
+\[
+ H(u-v,u-v)=I(u,v),\qquad
+ H(a,a)\leq q r(a)^2R^{q-1}\quad(a\in\mathscr C).
+\]
+Cauchy--Schwarz for this positive semidefinite form and \MathEqref{eq:dual-ed12}
+bound the functional on every $a$ with $r(a)\leq1$.
+Equation \MathEqref{eq:dual-ed10} proves the second bound. Strongly convergent
+rows have bounded energy roots by \MathEqref{eq:energy-root}, so the final assertion
+follows. 
+\end{proof}
+
+
+\subsection{Closed sources and variational normals}
+
+\begin{theorem}[A complete curvature-dual metric and closed source image]
+\label[theorem]{thm:r12-closed-full-source-image}
+The image $J(\mathscr C)$ is norm closed in $\mathbb D_S^*$.
+The formula
+\begin{equation}\label{eq:dual-ni1}
+                 d_J(u,v)=\|J(u)-J(v)\|_*
+\end{equation}
+defines a complete metric on $\mathscr C$, inducing precisely the strong discrepancy topology. For $u,v\in\mathscr C$,
+\begin{equation}\label{eq:dual-ni2}
+ \begin{split}
+ I(u,v)&\leq(r(u)+r(v))d_J(u,v),\\
+ d_J(u,v)&\leq\sqrt q\,
+     \max(r(u),r(v))^{(q-1)/2}I(u,v)^{1/2}.
+ \end{split}
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+Multilinearity gives the exact identity
+$I(u,v)=(J(u)-J(v))(u-v)$. The dual inequality and
+$\|u-v\|_{\rm ed}\leq r(u)+r(v)$ prove the first estimate.
+The second is \MathEqref{eq:dual-ed11}. Thus $d_J=0$ gives $I=0$ and equal
+relative classes. Symmetry and the triangle inequality come
+from the dual norm, not from an asserted triangle inequality
+for $I$.
+
+For completeness, mixed H\"older also gives the explicit root bound
+\[
+ I(u,v)\geq\bigl(r(u)-r(v)\bigr)
+                   \bigl(r(u)^q-r(v)^q\bigr)
+                \geq|r(u)-r(v)|^{q+1}.
+\]
+The first inequality follows by bounding the two mixed terms in
+$e(u)+e(v)-B(u,v^{[q]})-B(v,u^{[q]})$ separately. The second
+is the elementary inequality $x^q-y^q\geq(x-y)^q$ for
+$x\geq y\geq0$. Hence convergence to a fixed potential in
+$I$ automatically bounds the energy roots.
+
+Suppose $J(u_j)$ is norm Cauchy. Its norms are bounded, so
+$r(u_j)^q=\|J(u_j)\|_*$ bounds the energy roots. The first
+estimate in \MathEqref{eq:dual-ni2} makes $(u_j)$ strongly Cauchy. \cref{thm:r11-complete-strong-first-energy-space} gives $u\in\mathscr C$ with $I(u_j,u)\to0$.
+Its energy roots remain bounded, and the second estimate gives
+$J(u_j)\to J(u)$ in norm. Every norm limit of image elements
+is consequently in the image, proving closedness and metric
+completeness. The same inequalities prove equivalence of the
+two convergences: strong convergence bounds the roots by the
+\MathEqref{eq:energy-root}, whereas $d_J$ convergence bounds
+them by the exact dual norm identity. These arguments also
+identify their Cauchy sequences.
+\end{proof}
+
+\begin{definition}[The strong-continuous energy dual]
+\label[definition]{def:r12-strong-continuous-dual}
+Let $\mathbb D_{S,\mathrm{s}}^*$ consist of those
+$\ell\in\mathbb D_S^*$ for which
+\begin{equation}\label{eq:dual-ni4}
+  u_j,u\in\mathscr C,\ I(u_j,u)\to0
+                 \quad\Longrightarrow\quad\ell(u_j)\to\ell(u).
+\end{equation}
+
+\end{definition}
+
+\begin{lemma}[A closed dual class containing every curvature]
+\label[lemma]{lem:r12-strong-dual-closed}
+The class $\mathbb D_{S,\mathrm{s}}^*$ is a norm-closed linear
+subspace of $\mathbb D_S^*$, and $J(\mathscr C)$ is contained
+in it. Consequently the norm-closed linear span of all curvature
+functionals is contained in this class.
+\end{lemma}
+
+\begin{proof}
+Linearity is immediate. A strongly convergent row has bounded
+$r(u_j)$, hence is bounded in $\mathbb D_S$. If $\ell_m\to\ell$
+in norm, the error $|(\ell-\ell_m)(u_j-u)|$ is uniformly small
+for large $m$. Fixing $m$ then invokes \MathEqref{eq:dual-ni4}, proving closure.
+For fixed $v\in\mathscr C$, the completed tester estimate \MathEqref{eq:uniform-energy-test} bounds $|J(v)(u_j-u)|$ by
+$\int|u_j-u|\,d\widehat\mu_v\to0$. Its constants are finite
+on the bounded-energy family. This proves the curvature assertion.
+\end{proof}
+
+Let
+\begin{equation}\label{eq:dual-ni5}
+ \mathscr C^\circ
+   =\{n\in\mathbb D_S^*:n(v)\leq0\text{ for every }v\in\mathscr C\}.
+\end{equation}
+
+
+\begin{theorem}[All-degree variational normal decomposition]
+\label[theorem]{thm:r12-nonlinear-normal-decomposition}
+For every $\ell\in\mathbb D_{S,\mathrm{s}}^*$, the functional
+\begin{equation}\label{eq:dual-ni6}
+                F_\ell(v)=\ell(v)-e(v)/d\qquad(v\in\mathscr C)
+\end{equation}
+has a unique maximizer $u=\Pi(\ell)$. Every maximizing sequence
+converges strongly to $u$. Equivalently, there is a unique pair
+$(u,n)$ with
+\begin{equation}\label{eq:dual-ni7}
+       \ell=J(u)+n,\qquad
+       u\in\mathscr C,\quad n\in\mathscr C^\circ,
+                           \quad n(u)=0.
+\end{equation}
+The residual also lies in $\mathbb D_{S,\mathrm{s}}^*$.
+Define the nonnegative support gauge
+\begin{equation}\label{eq:dual-ni8}
+       p(\ell)=\sup_{\substack{v\in\mathscr C\\r(v)\leq1}}\ell(v).
+\end{equation}
+Then
+\begin{equation}\label{eq:dual-ni9}
+ \begin{split}
+ e(u)&=\ell(u),\qquad r(u)^q=p(\ell)\leq\|\ell\|_*,\\
+ \sup F_\ell&=\frac qd\,p(\ell)^{d/q}.
+ \end{split}
+\end{equation}
+If $\ell$ is nonnegative on $\mathscr C$, then
+$p(\ell)=\|\ell\|_*$. 
+\end{theorem}
+
+\begin{proof}
+Since $|\ell(v)|\leq\|\ell\|_*r(v)$,
+$F_\ell(v)\leq\|\ell\|_*r(v)-r(v)^d/d$. Thus its supremum
+$L\geq F_\ell(0)=0$ is finite, and every maximizing sequence
+has bounded energies. In the midpoint gap the linear term
+cancels. \MathEqref{eq:midpoint} gives
+\[
+ c_q I(v_j,v_k)
+     \leq L-\tfrac12(F_\ell(v_j)+F_\ell(v_k))\longrightarrow0,
+ \quad c_q=\frac{1-2^{-q}}{2d}.
+\]
+Strong completeness provides $u\in\mathscr C$. Its energy
+converges, and \MathEqref{eq:dual-ni4} passes the datum term, so $F_\ell(u)=L$.
+The same midpoint estimate proves uniqueness and convergence
+of every maximizing sequence. Actual classical strong density
+also gives the same supremum over the actual classical class.
+
+The continuous $d$-linear extension $B$ makes $e/d$ a polynomial
+on $\mathbb D_S$ whose differential at $u$ is $J(u)$.
+Only segments inside $\mathscr C$ are used for maximization.
+Their first variation gives
+\begin{equation}\label{eq:dual-ni10}
+                   (\ell-J(u))(v-u)\leq0\qquad(v\in\mathscr C).
+\end{equation}
+Conversely convexity of $e$ on the cone makes this sufficient.
+Taking the competitors $0,2u$ gives $(\ell-J(u))(u)=0$.
+Then \MathEqref{eq:dual-ni10} is precisely the polar condition in \MathEqref{eq:dual-ni7}.
+Conversely \MathEqref{eq:dual-ni7} implies \MathEqref{eq:dual-ni10}. The pair is unique because
+the maximizer is unique and $n=\ell-J(u)$. Its strong continuity
+follows from the preceding lemma.
+
+Scaling along $tu$ gives $e(u)=\ell(u)$, also when $u=0$.
+For each $v\in\mathscr C$, the polar inequality gives
+$\ell(v)\leq J(u)(v)\leq r(v)r(u)^q$. Thus
+$p(\ell)\leq r(u)^q$. If $u\ne0$, evaluation on $u/r(u)$
+gives the reverse inequality; if $u=0$, the polar condition
+and the allowed zero tester give $p(\ell)=0$. This proves
+\MathEqref{eq:dual-ni9}. Finally \MathEqref{eq:dual-ed10} says
+$\|\ell\|_* =\max(p(\ell),p(-\ell))$; if $\ell\geq0$ on
+the cone, the latter second term is zero.
+\end{proof}
+
+\begin{theorem}[A quantitative nonlinear retraction of source functionals]
+\label[theorem]{thm:r12-source-retraction}
+Put $\mathcal P(\ell)=J(\Pi(\ell))$ on
+$\mathbb D_{S,\mathrm{s}}^*$. This is a retraction onto the norm-closed
+image $J(\mathscr C)$, and is positively homogeneous of degree one.
+For $\|\ell\|_*,\|m\|_*\leq R$, with $R>0$, one has
+\begin{equation}\label{eq:dual-ni11}
+ \begin{split}
+ I(\Pi(\ell),\Pi(m))&\leq2R^{1/q}\|\ell-m\|_*,\\
+ \|\mathcal P(\ell)-\mathcal P(m)\|_*
+                         &\leq\sqrt{2qR}\,\|\ell-m\|_*^{1/2}.
+ \end{split}
+\end{equation}
+The first inequality has the more precise right side
+$(\ell-m)(\Pi(\ell)-\Pi(m))$. If
+$n=\ell-\mathcal P(\ell)$ and $R=\|\ell\|_*>0$, then
+\begin{equation}\label{eq:dual-ni12}
+ \left(\sqrt{qR+\|n\|_*}-\sqrt{qR}\right)^2
+ \leq\operatorname{dist}_*(\ell,J(\mathscr C))\leq\|n\|_*.
+\end{equation}
+In particular a nonzero residual is a quantitative obstruction to
+source-image approximation, not merely a failure of one chosen
+maximization algorithm.
+\end{theorem}
+
+\begin{proof}
+If $\ell=J(a)$, the pair $(a,0)$ satisfies \MathEqref{eq:dual-ni7}, so uniqueness
+gives the retraction. Homogeneity of $J$ gives
+$\Pi(t\ell)=t^{1/q}\Pi(\ell)$ and
+$\mathcal P(t\ell)=t\mathcal P(\ell)$ for $t\geq0$;
+the case $t=0$ is the zero class.
+
+Write $u=\Pi(\ell)$ and $v=\Pi(m)$. Use $v,u$ as the
+competitors in their two inequalities \MathEqref{eq:dual-ni10}, and add. It yields
+$I(u,v)\leq(\ell-m)(u-v)$. Duality bounds this by
+$\|\ell-m\|_*(r(u)+r(v))$; \MathEqref{eq:dual-ni9} bounds the roots by
+$R^{1/q}$. The second line of \MathEqref{eq:dual-ni11} now follows from \MathEqref{eq:dual-ed11}.
+If $R=0$ both projections are zero.
+
+Let $\delta$ be the distance in \MathEqref{eq:dual-ni12}. Since $J(0)=0$,
+$\delta\leq R$. Choose $\eta_j\in J(\mathscr C)$ with
+$\delta_j=\|\ell-\eta_j\|_*\to\delta$. Their norms are
+at most $R+\delta_j$. Retraction and \MathEqref{eq:dual-ni11} imply
+\[
+ \|n\|_*\leq\delta_j+
+               \sqrt{2q(R+\delta_j)\delta_j}.
+\]
+Passing to the limit and using $\delta\leq R$ gives
+$\|n\|_*\leq\delta+2\sqrt{qR\delta}$. Solving this
+quadratic inequality in $\sqrt\delta$ gives the lower bound.
+The upper bound uses the particular image element $\mathcal P(\ell)$.
+\end{proof}
+
+
+\subsection{One geometric potential and all compact smooth directions}
+
+We next construct a potential that permits both signs of each original
+compact smooth scalar direction. The construction is made from the
+geometry of $V$ before choosing $S$.
+
+\begin{lemma}[Countable exact moments and compensators]
+\label[lemma]{lem:geometric-compensators}
+There are compact moment cores $K_l\Subset V$ and smooth classical
+psh functions $a_l$ on $V$, with $0\le a_l\le1$, such that every
+original compact smooth scalar test can be localized to finitely many
+of these cores. On each selected core, $Da_l$ dominates a positive
+multiple of the identity form in all the moment directions of the
+localized test and its smooth partition. The same assertion holds
+after every actual finite refinement.
+\end{lemma}
+
+\begin{proof}
+We use the exact unit replacement of \cite[Lemma 2.1]{Energy}.
+For clarity, its countability comes from a countable dense subring
+$A_0$ of the separable affinoid algebra $\mathcal O(B)$. Laurent
+inequalities in $A_0$ with rational positive thresholds give a
+countable neighborhood system. On a suitable such Laurent domain,
+a unit $u$ is approximated by a quotient $b/c$ from $A_0$ so closely
+that $\|u-b/c\|\|u^{-1}\|<1$. Thus $|u|=|b/c|$ at every point
+of the domain. The logarithmic moment and all its CLD differentials
+are exactly preserved. Close this countable collection under finite
+refinements and select countable cofinal compact cores.
+
+For a finite moment list $t_i=\log|b_i/c_i|$ on a core, choose a
+smooth nonnegative function $\kappa$ of integral one supported in
+$(-1,0)$ and set
+\[
+ \zeta(s)=\int_{-\infty}^{s}(s-r)\kappa(r)\,dr,
+ \qquad F(s)=\zeta(s)^2.
+\]
+The function $F$ is convex and nondecreasing, vanishes for $s\le-1$,
+and has $F''=2$ for $s\ge0$. Choose $A$ so that
+$\log|b_i|+A$ and $\log|c_i|+A$ are positive near the core.
+The sum of $F(\log|b_i|+A)$ and $F(\log|c_i|+A)$ is smooth and
+classical on the affinoid interior, with the zero branches extended
+by zero near analytic zeros. Its Hessian dominates
+$\sum_i d't_i\wedge d''t_i$ near the core, by
+$(\xi-\eta)^2\le2\xi^2+2\eta^2$. Normalize this bounded sum on
+$\overline V$ to obtain $a_l$. Finite localization of any actual test
+uses finitely many exact moment cores and includes the partition
+moments. This proves the assertion with the full original test sheaf.
+\end{proof}
+
+\begin{proposition}[A simultaneous geometric probe]
+\label[proposition]{prop:geometric-probe}
+There is a bounded continuous classical potential $\psi_0$ determined
+by the box alone such that, for every extending allowed $S$,
+\[
+ -1<\psi_0<0,\qquad \rho\le\psi_0,\qquad
+ \mu_{\psi_0}(V)\le\mu_\rho(V)<\infty.
+\]
+It has compact negative sublevels and ordinary zero boundary value.
+For every original real compact smooth scalar $\phi$, there is
+$\epsilon_\phi>0$, independent of $S$, such that
+\begin{equation}\label{eq:two-sided-probe}
+ \psi_0+t\phi\in\mathcal E^1_{S,\partial}(V),
+       \qquad |t|\le\epsilon_\phi.
+\end{equation}
+These functions are bounded continuous classical psh, lie between
+$-1$ and $0$, and have finite total top mass. On a fixed finite
+presentation one may choose
+\begin{equation}\label{eq:probe-seminorm}
+ \epsilon_\phi\ge
+       \frac{c_{\mathfrak a}}{\max(1,\|\phi\|_{2,\mathfrak a})},
+\end{equation}
+where $\|\cdot\|_{2,\mathfrak a}$ is the sum of the real $C^2$ norms
+of its representatives on that presentation.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: construct the potential.}
+Choose $A_l\ge1$ with $A_l\rho<-2$ near $K_l$, and set
+\[
+ \psi_l=\max(a_l-2,A_l\rho),\qquad
+ c_l=\frac{2^{-l}}{1+A_l},\qquad
+ \psi_0=\sum_{l=1}^\infty c_l\psi_l.
+\]
+Each $\psi_l$ is bounded between $-2$ and $0$, and
+$\psi_l\ge A_l\rho$. The series converges uniformly. Its partial
+sums decrease and are classical, so the finite continuous limit is
+classical by bounded decreasing closure. Moreover,
+\[
+ T:=\sum_lc_lA_l=1-\sum_lc_l<1,\qquad
+                  \psi_0\ge T\rho> -1.
+\]
+Strict negativity follows from any summand. The lower barrier gives
+compact negative sublevels and zero boundary value. Boundary
+comparison with $c\rho$, $c>1$, on the increasing compact-gap sets
+$\{c\rho<\psi_0-\epsilon\}$, followed by $\epsilon\downarrow0$
+and $c\downarrow1$, gives the mass bound. Thus all finite positive
+power energies of $\psi_0$ are finite. Omitting finitely many
+summands gives the same properties for the remainder.
+
+\textbf{Step 2: perturb each selected moment core.}
+Localize $\phi=\sum_{l\in F}\phi_l$ on finitely many cores from
+\cref{lem:geometric-compensators}, combining repeated indices. Near
+$\supp\phi_l$, one has $\psi_l=a_l-2$. The Hessian of the actual
+smooth representative of $\phi_l$ is bounded in the selected moment
+directions. The strict positive Hessian contributed by the corresponding
+convex-flat numerator and denominator terms of $a_l$ dominates both
+signs of this perturbation. Hence there is $\delta_l>0$ such that
+$\psi_l+\tau\phi_l$ is classical for $|\tau|\le\delta_l$.
+Outside the support it equals $\psi_l$, so ordinary gluing applies.
+Decrease $\delta_l$ to retain strict negativity on its compact
+support.
+
+Write $\psi_0=r_F+\sum_{l\in F}c_l\psi_l$ and choose
+$\epsilon_\phi/c_l\le\delta_l$ for every selected $l$. Then
+\[
+ \psi_0+t\phi
+       =r_F+\sum_{l\in F}c_l
+                      (\psi_l+(t/c_l)\phi_l)
+\]
+is classical and negative. Decrease $\epsilon_\phi$ again so that
+$\epsilon_\phi\|\phi\|_\infty\le(1-T)/2$. This preserves the
+lower bound $-1$. The perturbation agrees with $\psi_0$ off one
+compact set, so its boundary condition is unchanged. Its top source
+agrees there by locality; relative CLN gives finite mass on a larger
+compact neighborhood. It therefore has finite total mass and belongs
+to every finite positive power class.
+
+For a fixed finite presentation, the Hessian bounds, the negativity
+margins and the finitely many coefficients $c_l$ are uniform on the
+unit ball of its $C^2$ seminorm. Scaling this estimate gives
+\MathEqref{eq:probe-seminorm}.
+\end{proof}
+
+In particular every compact original smooth scalar belongs to
+$\mathbb D_S$: it is the difference of the two cone members
+$\epsilon_\phi^{-1}(\psi_0+\epsilon_\phi\phi)$ and
+$\epsilon_\phi^{-1}\psi_0$.
+
+\subsection{The scalar source defect}
+
+A Radon measure $\mu$ defines a \emph{literal energy functional} if
+$\ell_\mu(h)=-\int_Vh\,d\mu$ is absolutely defined on $\mathbb D_S$,
+independent of relative representatives, and continuous for its norm.
+We impose strong continuity when writing
+$\ell_\mu\in\mathbb D_{S,\mathrm s}^*$.
+
+\begin{theorem}[One probe detects the literal source equation]
+\label[theorem]{thm:single-probe}
+Suppose $\ell=J(u)+n$ is a normal pair, with
+$u\in\Ccone$, $n(v)\le0$ for every $v\in\Ccone$, and $n(u)=0$.
+Set
+\[
+ \Xi_{\psi_0}(\ell,u)=J(u)(\psi_0)-\ell(\psi_0)=-n(\psi_0)\ge0.
+\]
+For every original real compact smooth scalar $\phi$,
+\begin{equation}\label{eq:single-probe-estimate}
+                 |n(\phi)|\le\epsilon_\phi^{-1}
+                                      \Xi_{\psi_0}(\ell,u).
+\end{equation}
+Now let $\mu$ be positive Radon with
+$\ell_\mu\in\mathbb D_{S,\mathrm s}^*$, and let
+$u=\Pi(\ell_\mu)$. Then the following are equivalent:
+\begin{enumerate}
+\item $\displaystyle\Xi_{\psi_0}(\mu)
+        :=\int_V(-\psi_0)\,d\widehat\mu_u
+             -\int_V(-\psi_0)\,d\mu=0$;
+\item $\widehat\mu_u=\mu$ on every original compact smooth scalar test;
+\item there exists $v\in\Ccone$ with $\widehat\mu_v=\mu$.
+\end{enumerate}
+The solution in \textup{(iii)} is unique and equals $u$. For all data
+in this class,
+\begin{equation}\label{eq:literal-defect-bound}
+ \left|\int_V\phi\,d(\mu-\widehat\mu_u)\right|
+                       \le\epsilon_\phi^{-1}\Xi_{\psi_0}(\mu).
+\end{equation}
+The same $\psi_0$ works for every extending background, every legal
+remaining degree, and every actual refinement of the original tests.
+\end{theorem}
+
+\begin{proof}
+Apply the normal inequality to the two cone members
+$\psi_0\pm\epsilon_\phi\phi$ from
+\MathEqref{eq:two-sided-probe}. It gives
+$0\ge n(\psi_0)\pm\epsilon_\phi n(\phi)$, which is
+\MathEqref{eq:single-probe-estimate}.
+
+For a literal datum both probe integrals are finite by the energy-dual
+bound and mixed H\"older. The normal on a smooth test is
+$-\int\phi\,d(\mu-\widehat\mu_u)$, proving
+\MathEqref{eq:literal-defect-bound}. If $\Xi=0$, all these test
+integrals vanish. Original scalar density and Radon uniqueness give
+equality of the measures. Conversely, measure equality gives equality
+of the two finite probe integrals. Finally, a source potential $v$ has
+$J(v)=\ell_\mu$ by literal integration. The normal pair $(v,0)$ and
+the variational uniqueness theorem give $v=u$. This proves all three
+equivalences.
+\end{proof}
+
+For a nonliteral functional the first part detects its compact-test
+shadow. The literal hypothesis in the equivalence identifies that
+shadow with the specified Radon measure.
+
+\begin{corollary}[Additive strictness and dense admissible sources]
+\label[corollary]{cor:additive-strictness}
+Under the literal hypotheses of \cref{thm:single-probe}, if
+$u=v+\varepsilon\psi_0$ for some $v\in\Ccone$ and
+$\varepsilon>0$, then $\widehat\mu_u=\mu$.
+For any $a\in\Ccone$, the potentials $a+\varepsilon\psi_0$ admit
+both signs of every compact smooth direction, tend to $a$ in the
+energy-difference norm, and satisfy
+\[
+ \|J(a+\varepsilon\psi_0)-J(a)\|_*
+       \le(r(a)+\varepsilon r(\psi_0))^q-r(a)^q.
+\]
+Their sources are therefore dense in $J(\Ccone)$.
+\end{corollary}
+
+\begin{proof}
+The normal satisfies
+$0=n(u)=n(v)+\varepsilon n(\psi_0)$, and both terms are
+nonpositive. Hence $\Xi=0$, so \cref{thm:single-probe} applies.
+For the second assertion use
+$a+\varepsilon(\psi_0+t\phi)\in\Ccone$ and
+$\|\varepsilon\psi_0\|_{\rm ed}=\varepsilon r(\psi_0)$.
+Expanding the $q$ source slots and bounding each mixed functional by
+the product of its energy roots gives the displayed binomial estimate.
+\end{proof}
+
+% END sections/09_variational_source.tex
+
+% BEGIN sections/10_linear_dirichlet.tex
+\section{The relative linear renormalized Dirichlet problem}
+\label{sec:linear-dirichlet}
+
+Here the remaining degree is $q=1$, so $S$ has degree $(n-1,n-1)$.
+The ambient dimension is arbitrary. This section uses the following
+slightly more general domain: choose one compact original affinoid $B$,
+ordinary opens $V\Subset\Omega$ with
+$\overline\Omega\subset\operatorname{Int}_X(B)$, and an allowed
+background $S$ on $\Omega$. The Laurent domains used above satisfy
+these conditions after an intermediate neighborhood is chosen.
+
+\subsection{The original energy form and its diffuse data}
+
+The faithful-form construction
+\cite[Theorem \emph{A faithful coercive original form without algebraizability}
+and its part-space corollary]{Energy} gives a bounded continuous
+classical $0\le h\le1$ on $\Omega$ and a positive reference measure
+$\lambda=D(hS)$. It is faithful to the original coefficients:
+$\lambda(E)=0$ if and only if $\mathbf1_ES=0$ for Borel $E$.
+Put $F=V\cap\supp S$. The measure $\lambda|_F$ is finite.
+The energy closure $H$ of the original real smooth compact scalar
+core on $V$, modulo zero energy, is a regular strongly local symmetric
+Dirichlet form on $F$, with
+\begin{equation}\label{eq:linear-form}
+ \mathcal E(f,g)=\int_V\tfrac12
+        (d'f\wedge d''g+d'g\wedge d''f)\wedge S,
+ \qquad \mathcal E(f,f)\ge\tfrac12\|f\|_{L^2(\lambda)}^2.
+\end{equation}
+For an original compact smooth $\phi$,
+\begin{equation}\label{eq:original-form-coefficients}
+ D(\phi S)=b_\phi\lambda,\quad b_\phi\in L^\infty_c(\lambda),
+ \qquad
+ \mathcal E(v,\phi)=-\langle D(vS),\phi\rangle
+                   =-\int_Fv b_\phi\,d\lambda\quad(v\in H).
+\end{equation}
+Every original compact coefficient of $S$ is bounded by a constant
+multiple of $\lambda$. Multiplication by a fixed core cutoff obeys
+\begin{equation}\label{eq:cutoff-energy}
+ \mathcal E(\chi v,\chi v)
+ \le2\|\chi\|_\infty^2\mathcal E(v,v)+2C_\chi\|v\|_2^2.
+\end{equation}
+The faithful measure is obtained from a summable sequence of the exact
+moment compensators of \cref{lem:geometric-compensators}. Thus the
+form and its current identities retain every original refinement.
+
+Let $c_V$ be the transient zero-capacity of this part form; for
+quasi-open sets it is the infimum of $\mathcal E(v,v)$ over $v\in H$
+with $\widetilde v\ge1$ quasi-everywhere. A finite signed Radon datum
+$\mu$ on $F$ is \emph{energy diffuse} if $|\mu|$ vanishes on every
+$c_V$-polar Borel set. The tilde denotes the canonical
+energy-quasicontinuous representative. This energy capacity and the
+relative Bedford--Taylor capacity play different roles.
+
+For $f\in L^2(F,\lambda)$, let $Gf\in H$ be the Riesz potential,
+$\mathcal E(Gf,z)=\int fz\,d\lambda$. The original barrier gives
+$|Gf|\le(2-h)\|f\|_\infty\le2\|f\|_\infty$ for bounded $f$.
+Set $T_k(s)=\max(-k,\min(k,s))$.
+
+\begin{theorem}[Transposition with the full original current]
+\label[theorem]{thm:linear-transposition}
+Every finite signed energy-diffuse Radon measure $\mu$ has a unique
+$u_\mu\in L^1(F,\lambda)$ satisfying
+\begin{equation}\label{eq:transposition}
+ \int_Fu_\mu f\,d\lambda
+       =-\int_F\widetilde{Gf}\,d\mu
+                 \qquad(f\in L^\infty(F,\lambda)).
+\end{equation}
+Its canonical representative is finite and energy-quasicontinuous
+outside a polar set, $T_ku_\mu\in H$, and $D(u_\mu S)=\mu$ on every
+original compact scalar test. The map is linear, order reversing on
+positive data, and
+\begin{align}
+ \|u_\mu-u_\nu\|_{L^1(\lambda)}
+     &\le2\|\mu-\nu\|_{\rm TV},\label{eq:linear-l1-stability}\\
+ \mathcal E(T_k(u_\mu-u_\nu))
+     &\le k\|\mu-\nu\|_{\rm TV},\label{eq:linear-clipping-bound}\\
+ c_V(\{|\widetilde u_\mu-\widetilde u_\nu|>k\})
+     &\le k^{-1}\|\mu-\nu\|_{\rm TV}.
+                         \label{eq:linear-capacity-bound}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: finite-energy data.}
+A finite diffuse measure is a smooth measure for the regular transient
+form. The finite-energy nest theorem
+\cite[Lemma 2.1]{KRStructure} gives increasing Borel sets $F_j$ with
+$|\mu|(F\setminus\bigcup F_j)=0$ such that
+$\mathbf1_{F_j}|\mu|$ has finite energy integral. Put
+$\mu_j=\mathbf1_{F_j}\mu$ and $u_j=-G\mu_j$.
+
+For a signed datum $\sigma$ with finite-energy variation, order gives
+$|G\sigma|\le G|\sigma|$. Pair with the torsion vector $G1\le2$ to
+obtain $\|G\sigma\|_1\le2\|\sigma\|_{\rm TV}$. The normal
+contraction $s-2T_k(s)$ gives
+$\mathcal E(T_kG\sigma)\le\mathcal E(G\sigma,T_kG\sigma)
+\le k\|\sigma\|_{\rm TV}$. Testing capacity with
+$|T_kG\sigma|/k$ gives the analogous capacity estimate.
+Apply these estimates to $\mu_j-\mu_l$.
+
+\textbf{Step 2: take the canonical limit.}
+The $u_j$ are Cauchy in $L^1(\lambda)$ and in energy capacity. A
+summable-capacity subsequence, together with the quasicontinuity of
+its terms, has a finite energy-quasicontinuous limit off a polar set.
+For fixed $k$, the $T_ku_j$ are bounded in $H$, and
+$\|T_ku_j-T_ku\|_2^2\le2k\|u_j-u\|_1$. Weak compactness and
+coercivity give $T_ku\in H$ and the clipping bound. The canonical
+representatives agree by capacity convergence. Finite-energy symmetry
+passes to \MathEqref{eq:transposition}, using total-variation
+convergence of $\mu_j$ and boundedness of $Gf$.
+Bounded measurable functions separate $L^1$ classes, so the
+transposition identity gives uniqueness and linearity.
+
+\textbf{Step 3: identify every original test.}
+Coefficient domination makes $uS$ defined on all compact original
+coefficients. For a compact original smooth $\phi$,
+\MathEqref{eq:original-form-coefficients} gives
+$G(b_\phi)=-\phi$. Use $f=b_\phi$ in
+\MathEqref{eq:transposition} to obtain
+\[
+ \langle D(uS),\phi\rangle
+     =\int_Fu b_\phi\,d\lambda=\int_F\phi\,d\mu.
+\]
+A common finite-energy exhaustion of $|\mu|+|\nu|$ passes the three
+finite-energy difference estimates to the limit. This proves the
+bounds and the order assertion.
+\end{proof}
+
+\subsection{Closed-form identities used for signed data}
+
+For $v\in H$, its original core gradients close to a Hilbert gradient
+module, and its energy measure $\Gamma_S(v)$ is the total-variation
+limit of the core energy measures. In particular,
+\begin{equation}\label{eq:energy-variation-norm}
+ \|\Gamma_S(v)-\Gamma_S(w)\|_{\rm TV}
+ \le\mathcal E(v-w)^{1/2}
+       \bigl(\mathcal E(v)^{1/2}+\mathcal E(w)^{1/2}\bigr).
+\end{equation}
+The closed chain and product rules give
+\begin{equation}\label{eq:hilbert-clipping}
+ dT_kv=\mathbf1_{\{|\widetilde v|<k\}}\,dv,
+ \qquad \Gamma_S(v)\{\widetilde v=t\}=0.
+\end{equation}
+For $h_t(s)=(s-t)^+-(-t)^+$, the finite-energy level measure is
+\begin{equation}\label{eq:hilbert-level}
+ L_t(v;S)=D(h_t(v)S)-\mathbf1_{\{\widetilde v>t\}}D(vS).
+\end{equation}
+When $|D(vS)|$ has finite energy integral, this is positive, diffuse
+and carried by $\{\widetilde v=t\}$. These original-current facts
+are proved in \cite[Sections 41--42]{Energy}. The scalar chain is
+obtained by closing the original identity against tests
+$\phi\Phi'(v)$; one-sided smooth hinges prove
+\MathEqref{eq:hilbert-clipping} and the level assertion.
+
+For a positive diffuse datum $\tau$, the potential $w=G\tau$ has
+strongly convergent bounded clippings of its increasing finite-energy
+nest potentials. Their energy identities give
+\begin{equation}\label{eq:positive-band}
+ \mathcal E(T_{2M}w-T_Mw)
+                  \le M\tau\{w>M\}.
+\end{equation}
+The compatible energy measures of the clippings satisfy
+\begin{equation}\label{eq:compatible-clippings}
+ \Gamma_S(T_ku)
+      =\mathbf1_{\{|\widetilde u|<k\}}\Gamma_S(T_lu),\qquad l>k.
+\end{equation}
+For any diffuse datum the Kato inequality, obtained from smooth
+one-sided hinges in the transposition approximation, defines a positive
+Radon measure
+$L_t(u;S)=D(h_t(u)S)-\mathbf1_{\{\widetilde u>t\}}\mu$.
+Its exact level carrier for signed data is proved below.
+
+We use one elementary continuity fact. If $\nu$ is finite and
+energy diffuse, then $c_V(E_j)\to0$ implies $|\nu|(E_j)\to0$.
+Otherwise a subsequence with summable capacities and variations bounded
+below would have a polar limsup with positive variation. Consequently,
+capacity convergence passes bounded continuous scalar compositions in
+$L^1(|\nu|)$.
+
+\subsection{Signed clippings, chain rules and level measures}
+
+Fix a finite signed energy-diffuse datum $\mu$ and write
+$B_\mu=\|\mu\|_{\rm TV}$. Every occurrence of $u$ below means its
+canonical representative when used as a measure multiplier.
+
+\begin{lemma}[Bounded energy tests and signed Radon functionals]
+\label[lemma]{lem:r11-bounded-H-tests-diffuse}
+Every bounded $z\in H$ has original compact smooth core
+approximations converging strongly in $H$, uniformly bounded
+in absolute value, and along a subsequence quasi-everywhere.
+If a finite signed Radon measure $\nu$ on $F$ has a continuous
+core functional for the energy norm, then $|\nu|$ charges no
+energy-polar set.  If $h\in H$ and $D(hS)=\nu$ on every original
+compact smooth test, then
+\begin{equation}\label{eq:signed-sd1}
+       \mathcal E(h,z)=-\int\widetilde z\,d\nu
+                     \qquad(z\in H\cap L^\infty),
+       \qquad h=u_\nu .
+\end{equation}
+
+
+\end{lemma}
+
+\begin{proof}
+For bounded $z$, start with any original core sequence $z_j\to z$
+in $H$ and compose it with one fixed smooth normal clamp that
+fixes a neighborhood of the range of $z$ and is bounded globally.
+The gradient-module chain rule proves strong convergence of these
+compositions to $z$.  They are still original compact smooth
+functions because the clamp fixes zero.  A summable-capacity
+subsequence converges quasi-everywhere.
+
+Let $K$ be an energy-polar compact set and choose an ordinary
+relatively open neighborhood $G$ with compact closure such that
+$|\nu|(G\setminus K)<\epsilon$.
+The regular compact-core capacity formula, coercivity, a smooth
+scalar clamp, and a fixed original cutoff supported in $G$
+give core functions $0\le a_j\le1$, equal to one near $K$,
+supported in $G$, with $\mathcal E(a_j)\to0$.
+Multiplication by that cutoff preserves the energy convergence
+by \MathEqref{eq:cutoff-energy}.  Hence $\int a_j\,d\nu\to0$, while
+\[
+       \left|\nu(K)-\int a_j\,d\nu\right|
+                            \le |\nu|(G\setminus K)<\epsilon.
+\]
+Let $\epsilon\downarrow0$.  The same argument applies to every
+polar compact subset of the positive and negative Hahn sets.
+Radon inner regularity of the two variations therefore proves
+that $|\nu|$ vanishes on every polar Borel set.
+
+For bounded $z\in H$ use the uniformly bounded core
+approximation just constructed.  Energy continuity passes its
+left side in the original identity; diffuseness and dominated
+convergence pass the right side.  This proves \MathEqref{eq:signed-sd1}'s first
+assertion.  For $f\in L^\infty(\lambda)$ take $z=Gf$, which
+is bounded by the torsion estimate.  Symmetry gives
+\[
+ \int h f\,d\lambda=\mathcal E(h,Gf)
+                         =-\int\widetilde{Gf}\,d\nu.
+\]
+Since $h\in L^2(\lambda)\subset L^1(\lambda)$, transposition
+uniqueness gives $h=u_\nu$.
+\end{proof}
+
+The usual product rule extends to bounded members of $H$:
+$d(z_1z_2)=z_1dz_2+z_2dz_1$.  Indeed the preceding uniformly bounded
+core approximations and the original gradient module pass this
+identity by dominated convergence against the fixed limiting
+energy measures.  This fact will be used for a product of two
+bounded energy functions, not only a smooth cutoff.
+
+\begin{theorem}[Strong clipping convergence for signed nest data]
+\label[theorem]{thm:r11-signed-strong-truncations}
+Let $\mu_j=\mathbf1_{F_j}\mu$ be the finite-energy nest
+restrictions from the finite-energy nest in the proof of \cref{thm:linear-transposition}, and put $u_j=-G\mu_j$.
+For every $k>0$,
+\begin{equation}\label{eq:signed-sd2}
+                          T_ku_j\longrightarrow T_ku_\mu
+                                      \quad\hbox{strongly in }H.
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+Let $w=-u_{|\mu|}=G|\mu|\ge0$ be the positive-data Green
+potential, with its canonical representative.  Positivity and
+order of the transposition map give
+$|u_j|,|u_\mu|\le w$ quasi-everywhere for all $j$.
+Put $a_M=|\mu|\{w>M\}$, so $a_M\to0$, and define
+\[
+          \zeta_M=\frac{T_{2M}w-T_Mw}{M}\in H,\qquad
+          0\le\zeta_M\le1.
+\]
+It equals one on $\{w\ge2M\}$.  The positive-data band estimate \MathEqref{eq:positive-band} and the closed clipping rule give
+\begin{equation}\label{eq:signed-sd3}
+ \mathcal E(\zeta_M)\le\frac{a_M}{M},\qquad
+ d\zeta_M=\frac1M\mathbf1_{\{M<w<2M\}}\,dw.
+\end{equation}
+Here $dw$ on the printed bounded band means the compatible
+clipped gradient $d(T_{2M+1}w)$ there; no globally Radon
+first-order current of the unbounded $w$ is required.
+Test the finite-energy equation for $u_j$ with
+$\zeta_M^2T_ku_j\in H\cap L^\infty$.
+The original closed gradient product and clipping rules give
+\[
+ \int\zeta_M^2\,d\Gamma_S(T_ku_j)
+  =-\int\zeta_M^2 T_k\widetilde u_j\,d\mu_j
+                  -2\int\zeta_M T_k\widetilde u_j\,
+                                      d\Gamma_S(u_j,\zeta_M).
+\]
+The first term in absolute value is at most $k a_M$.
+The cross energy is carried where $M<w<2M$, and there
+$|u_j|<2M$, so its $u_j$ factor may be clipped at $2M$.
+Cauchy--Schwarz and \MathEqref{eq:linear-clipping-bound} therefore prove
+\begin{equation}\label{eq:signed-sd4}
+ \sup_j\Gamma_S(T_ku_j)\{w\ge2M\}
+   \le k a_M+2k\sqrt{\mathcal E(\zeta_M)
+                                 \sup_j\mathcal E(T_{2M}u_j)}
+   \le k a_M+2k\sqrt{2B_\mu a_M}\longrightarrow0.
+\end{equation}
+This is the required uniform control of energy in the region
+where positive and negative potentials could be large and cancel.
+
+On $A_M=\{w\le M\}$ one has $|u_j-u_l|\le2M$.
+The first-order clipping rule and \MathEqref{eq:linear-clipping-bound}, applied to the
+finite-energy datum $\mu_j-\mu_l$, give
+\begin{equation}\label{eq:signed-sd5}
+ \|\mathbf1_{A_M}(du_j-du_l)\|^2
+      \le\mathcal E(T_{2M+1}(u_j-u_l))
+      \le(2M+1)\|\mu_j-\mu_l\|_{\rm TV}\longrightarrow0.
+\end{equation}
+Thus the localized gradients have a fixed limit in the
+original Hilbert gradient module.  Its energy measure is
+absolutely continuous with respect to $\lambda$.
+For a smooth scalar $P$ with $P(0)=0$ and compactly supported
+first derivative, bounded convergence against this fixed
+limiting module measure proves that
+$\mathbf1_{A_M}d(P(u_j))$ converges strongly.
+Here $u_j\to u$ in $L^1(\lambda)$, and hence in measure;
+continuity and boundedness of $P'$ supply the required
+convergence of its scalar multipliers.
+The energy of $P(u_j)$ outside $A_M$ is bounded by a fixed
+multiple of the tail of a clipping $T_Lu_j$, where $L$
+contains the support of $P'$.  Formula \MathEqref{eq:signed-sd4} makes it small
+uniformly in $j$ as $M\to\infty$.
+It follows that $P(u_j)$ is Cauchy in $H$; its $L^2$ limit
+is $P(u)$, by boundedness and the $L^1$ convergence of $u_j$.
+
+Finally approximate $T_k$ by smooth normal clamps
+$P_\epsilon$ with uniform scalar error at most $\epsilon$,
+whose derivatives differ from that of $T_k$ only where
+$k-\epsilon<|s|<k+\epsilon$.  For $0<\epsilon<k/2$, the
+finite-energy band formula and the source equation give
+\begin{equation}\label{eq:signed-sd6}
+ \begin{split}
+ \mathcal E(T_ku_j-P_\epsilon(u_j))
+  &\le\mathcal E(T_{k+\epsilon}u_j-T_{k-\epsilon}u_j)\\
+  &=-\int(T_{k+\epsilon}\widetilde u_j
+                 -T_{k-\epsilon}\widetilde u_j)\,d\mu_j
+       \le2\epsilon B_\mu.
+ \end{split}
+\end{equation}
+The smooth compositions are strongly convergent by the
+preceding paragraph.  First let $j,l\to\infty$ and then
+$\epsilon\downarrow0$ in the triangle inequality.
+This makes $T_ku_j$ Cauchy in $H$.  Its already known
+$L^2$ limit is $T_ku$, proving \MathEqref{eq:signed-sd2}.
+\end{proof}
+
+\begin{theorem}[Full signed renormalized chain and energy distribution]
+\label[theorem]{thm:r11-signed-renormalized-chain}
+For $u=u_\mu$, the increasing compatible energy measure
+$\Gamma_S(u)=\lim_k\Gamma_S(T_ku)$ is sigma-finite, finite
+on every bounded value strip, and zero on every exact scalar
+level.  If $\Phi\in C^2(\mathbf R)$ has bounded first derivative
+and compactly supported second derivative, then
+\begin{equation}\label{eq:signed-sd7}
+ D(\Phi(u)S)=\Phi'(\widetilde u)\mu
+                           +\Phi''(\widetilde u)\Gamma_S(u)
+\end{equation}
+on all original compact smooth tests.  Every term is coefficient-
+defined, and the right side is a finite signed Radon measure.
+If in addition $\Phi'$ has compact support, then
+$\Phi(u)-\Phi(0)\in H$.
+For every $0\le a<b$,
+\begin{equation}\label{eq:signed-sd8}
+ \mathcal E(T_bu-T_au)
+                   =-\int(T_b\widetilde u-T_a\widetilde u)\,d\mu.
+\end{equation}
+The scalar energy image has density
+\begin{equation}\label{eq:signed-sd9}
+ \widetilde u_*\Gamma_S(u)=k_\mu(t)\,dt,\qquad
+ k_\mu(t)=
+ \begin{cases}
+       \mu\{\widetilde u<t\},&t<0,\\
+       -\mu\{\widetilde u>t\},&t>0.
+ \end{cases}
+\end{equation}
+This density is nonnegative and bounded by $B_\mu$ almost everywhere;
+its value at zero is immaterial.  In particular all bounded-value
+weighted energy measures used here are finite Radon measures.
+\end{theorem}
+
+\begin{proof}
+Compatibility and level zero follow from the $H$ clipping
+identities exactly as in \MathEqref{eq:compatible-clippings} and \MathEqref{eq:hilbert-clipping}, without any sign
+hypothesis on $u$.  Choose $M$ containing the support of
+$\Phi''$ in its interior.  The finite-energy chain for $u_j$
+reads
+\[
+ D(\Phi(u_j)S)=\Phi'(\widetilde u_j)\mu_j
+                         +\Phi''(\widetilde u_j)\Gamma_S(T_Mu_j).
+\]
+The left side passes because $\Phi$ is Lipschitz and
+$u_j\to u$ in $L^1(\lambda)$.  The source term passes in
+variation by the capacity convergence of $u_j$
+to $u$, diffuseness of $|\mu|$, bounded continuity of $\Phi'$, and
+total-variation convergence of $\mu_j$ to $\mu$.
+Strong convergence in \MathEqref{eq:signed-sd2}, the energy variation estimate
+\MathEqref{eq:energy-variation-norm}, and bounded convergence against the fixed limiting
+energy measure pass the last term.  This proves \MathEqref{eq:signed-sd7}.
+For merely $C^2$ scalar functions, ordinary smoothing gives
+the same limit, uniformly in the first two derivatives on
+the bounded active range and uniformly in scalar values
+up to the original Lipschitz error.
+If $\Phi'$ is compactly supported, its normalized composition
+is a smooth function of one bounded clipping and lies in $H$.
+
+The same strong clipping convergence passes the finite-energy
+band identity, proving \MathEqref{eq:signed-sd8}.  Apply the argument separately
+to the bounded one-sided bands
+\[
+ B^+_{a,b}(s)=\min((s-a)^+,b-a),\qquad
+ B^-_{a,b}(s)=-B^+_{a,b}(-s).
+\]
+Their derivatives are the indicators of $(a,b)$ and
+$(-b,-a)$, respectively.  Composing a strongly convergent
+clipping with these finite hinge combinations is strongly
+continuous: the closed gradient formula applies, and the
+limiting $H$ energy is zero on their finitely many corner
+levels by \MathEqref{eq:hilbert-clipping}.  Hence
+\[
+ \begin{split}
+ \Gamma_S(u)\{a<u<b\}&=-\int_a^b\mu\{u>t\}\,dt,\\
+ \Gamma_S(u)\{-b<u<-a\}&=\int_a^b\mu\{u<-t\}\,dt.
+ \end{split}
+\]
+There is no energy mass at zero or at the interval endpoints.
+These formulas prove \MathEqref{eq:signed-sd9}.  Nonnegativity follows because
+it is the density of a positive measure; the bound follows
+from total variation of $\mu$.
+\end{proof}
+
+\begin{proposition}[Finite global level measures and clipping curvatures]
+\label[proposition]{prop:r11-signed-global-curvature-truncation}
+The Kato measures $L_t(u;S)$ are finite for every real $t$,
+with
+\begin{equation}\label{eq:signed-sd10}
+ \begin{aligned}
+ L_t(u;S)(F)&\le |\mu|\{u\le t\}&& (t<0),\\
+ L_t(u;S)(F)&\le |\mu|\{u>t\}&& (t>0),\\
+ L_0(u;S)(F)&\le B_\mu.
+ \end{aligned}
+\end{equation}
+For $M>0$, the actual signed Radon curvature
+$\nu_M=D(T_Mu\,S)$ satisfies
+\begin{equation}\label{eq:signed-sd11}
+ \begin{split}
+ \nu_M&=\mathbf1_{\{-M<u\le M\}}\mu+L_{-M}(u;S)-L_M(u;S),\\
+ \|\nu_M\|_{\rm TV}&\le B_\mu,\qquad
+ \|\nu_M-\mu\|_{\rm TV}
+                    \le2|\mu|\{|u|\ge M\}\longrightarrow0.
+ \end{split}
+\end{equation}
+Both $\nu_M$ and every $L_t(u;S)$ are energy diffuse.
+
+\end{proposition}
+
+\begin{proof}
+Apply \MathEqref{eq:signed-sd7} to the smooth one-sided hinges.  Their positive
+defects are
+$\Phi_\epsilon''(u-t)\Gamma_S(u)$, supported in the scalar
+strip $t<u<t+\epsilon$.  Formula \MathEqref{eq:signed-sd9}, the nonnegative
+unit-integral second derivative, and its bounded density
+show that their masses are at most $B_\mu$.
+For $t>0$ the sharper bound is $|\mu|\{u>t\}$; for
+$t<0$ and sufficiently small $\epsilon$ it is
+$|\mu|\{u<t+\epsilon\}$.
+They converge on original compact tests to $L_t(u;S)$.
+Positivity, compact smooth exhaustion and then
+$\epsilon\downarrow0$ prove \MathEqref{eq:signed-sd10}.
+
+The scalar identity $T_Ms=h_{-M}(s)-h_M(s)$ gives the
+first formula of \MathEqref{eq:signed-sd11}.  The three source regions
+$\{u\le-M\}$, $\{-M<u\le M\}$ and $\{u>M\}$
+partition the finite-value locus.  Triangle inequalities
+and \MathEqref{eq:signed-sd10} therefore give both variation estimates in
+\MathEqref{eq:signed-sd11}.  Since $T_Mu\in H$, its finite Radon curvature
+is diffuse by \cref{lem:r11-bounded-H-tests-diffuse}.
+
+For any fixed $t$ and $M>|t|$, the exact scalar identity
+\begin{equation}\label{eq:signed-sd12}
+                    h_t(T_Mu)=h_t(u)-h_M(u)
+\end{equation}
+holds on the finite-value locus and hence in the coefficient-defined
+$L^1$ sense.  Its left side belongs to $H$.  Its curvature is finite Radon
+by \MathEqref{eq:signed-sd10} and the Kato decompositions, hence diffuse by
+the same lemma.  Thus
+\[
+ L_t(u;S)-L_M(u;S)
+       =D(h_t(T_Mu)S)-\mathbf1_{\{t<u\le M\}}\mu
+\]
+is a diffuse finite signed measure.  On any polar Borel
+set, the mass of $L_t$ is therefore at most $L_M(F)$,
+which tends to zero by \MathEqref{eq:signed-sd10}.  This proves diffuseness
+of $L_t$ without assuming it passes through an arbitrary
+weak measure limit.
+\end{proof}
+
+\begin{lemma}[Finite signed Radon data in the $H$ level theorem]
+\label[lemma]{lem:r11-H-level-carrier-finite-signed}
+Let $v\in H$ and suppose $D(vS)=\sigma$ is a finite signed
+Radon measure on the original tests.  Then the conclusion
+\MathEqref{eq:hilbert-level} and its exact carrier assertion holds, with a finite diffuse positive level
+measure, without assuming finite energy integral of
+$|\sigma|$.
+\end{lemma}
+
+\begin{proof}
+The datum is diffuse and the current equation extends to
+all bounded $H$ tests by Lemma
+\ref{lem:r11-bounded-H-tests-diffuse}.
+Consequently the finite-energy scalar chain proof applies:
+its test $\psi\Phi'(v)$ is bounded and lies in $H$.
+The one-sided band tests are also bounded $H$ vectors and
+give \MathEqref{eq:signed-sd9} with $v,\sigma$ in place of $u,\mu$.
+Thus the smoothed hinge defects have uniformly bounded
+total mass, and their positive limit $L_t(v;S)$ is finite.
+The signed measure
+$D(h_t(v)S)=\mathbf1_{\{v>t\}}\sigma+L_t(v;S)$ is finite
+and comes from an $H$ vector.  It is therefore diffuse by
+the preceding lemma, as is $L_t$.
+
+The original current identity for this hinge source now
+extends to every bounded $H$ test.  Take
+$z=\psi g(v)$ with $\psi$ an original compact nonnegative
+smooth function and $g$ smooth bounded, with bounded
+derivative, nonnegative and zero near $t$.
+Strong convergence of the smooth hinges in $H$ and bounded
+convergence against the finite measure $|\sigma|$ pass
+\[
+ \int z\,dL_{t,\epsilon}
+     =-\mathcal E(h_{t,\epsilon}(v),z)
+              -\int z\Phi_\epsilon'(v-t)\,d\sigma
+\]
+to $\int z\,dL_t$.
+Its left side is zero for small $\epsilon$ because
+$g\Phi_\epsilon''=0$.  The same countable family of
+nonnegative tests as in the finite-energy level-carrier proof cited above shows that
+$L_t$ is carried by $\{\widetilde v=t\}$.
+\end{proof}
+
+\begin{theorem}[Exact level carriers and coarea for all signed diffuse data]
+\label[theorem]{thm:r11-signed-diffuse-exact-level}
+For every finite signed energy-diffuse datum and every real $t$,
+\begin{equation}\label{eq:signed-sd13}
+                    \mathbf1_{\{\widetilde u\ne t\}}L_t(u;S)=0.
+\end{equation}
+For every bounded compactly supported Borel scalar $\theta$,
+\begin{equation}\label{eq:signed-sd14}
+                \int\theta(t)L_t(u;S)\,dt
+                         =\theta(\widetilde u)\Gamma_S(u)
+\end{equation}
+as finite signed Radon measures.  The hard-curvature
+variation bounds \MathEqref{eq:signed-sd11} hold on the complete original
+space and every actual moment refinement.
+\end{theorem}
+
+\begin{proof}
+First identify $\nu_M=\mu$ on $A_M=\{|u|<M\}$.
+Choose a smooth $\Phi$ with $\Phi'$ zero outside $[-M,M]$
+and strictly positive on $(-M,M)$.
+The identities $\Phi(T_Mu)=\Phi(u)$ and \MathEqref{eq:compatible-clippings} make their
+weighted energies agree.  Compare \MathEqref{eq:signed-sd7} with the bounded
+$H$ chain for $T_Mu$ and its finite signed datum $\nu_M$.
+The latter chain is valid by the bounded-test extension,
+so $\Phi'(u)(\nu_M-\mu)=0$, proving the assertion on $A_M$.
+
+Fix $t$, choose $M>|t|$, and apply the preceding $H$ level
+lemma to $v=T_Mu$.  The level measure $L_t(v;S)$ is carried
+by $\{v=t\}=\{u=t\}$.
+Compare the curvature of the two sides of \MathEqref{eq:signed-sd12}, and then
+restrict their actual Radon measures to $A_M$.
+The just proved identity $\nu_M=\mu$ on $A_M$ cancels the
+source terms and gives
+\[
+     \mathbf1_{A_M}(L_t(u;S)-L_M(u;S))
+                         =\mathbf1_{A_M}L_t(T_Mu;S).
+\]
+It follows that
+$L_t(u;S)(A_M\cap\{u\ne t\})\le L_M(u;S)(F)\to0$.
+The sets $A_M$ exhaust the finite-value locus, and $L_t$ is
+diffuse, so it gives no mass to the omitted polar infinite-
+value set.  This proves \MathEqref{eq:signed-sd13} by monotone measure convergence.
+
+For smooth compactly supported $\theta$, take
+$\Phi(s)=\int\theta(t)(s-t)^+dt$.
+It has bounded first derivative and compactly supported
+second derivative $\theta$, so \MathEqref{eq:signed-sd7} and Fubini prove
+\MathEqref{eq:signed-sd14} on every original test.
+The positive kernels $L_t$, their global bound by $B_\mu$,
+and their Borel original-test pairings extend the equality
+to nonnegative Borel $\theta$; subtract positive and negative
+parts. The right side is finite by \MathEqref{eq:signed-sd9}.\qedhere
+\end{proof}
+
+\begin{definition}[The signed renormalized zero-boundary class]
+\label[definition]{def:r11-signed-renormalized-boundary}
+For the specified finite signed diffuse datum, a candidate is
+$v\in L^1(F,\lambda)$ with a finite energy-quasicontinuous
+representative and $T_kv\in H$ for every $k>0$.
+Use the compatible sigma-finite energy measure of its
+clippings.  Require the original current identity
+\begin{equation}\label{eq:signed-sd15}
+ D(\Phi(v)S)=\Phi'(\widetilde v)\mu
+                     +\Phi''(\widetilde v)\Gamma_S(v)
+\end{equation}
+for every $\Phi\in C^2(\mathbf R)$ with compactly supported
+first derivative, and the radiation condition
+$k^{-1}\mathcal E(T_{2k}v-T_kv)\to0$.
+These conditions specify the boundary and solution class
+without using the transposition identity in their definition.
+\end{definition}
+
+\begin{theorem}[The complete finite-diffuse relative renormalized Dirichlet problem]
+\label[theorem]{thm:r11-signed-renormalized-Dirichlet}
+Every finite signed energy-diffuse Radon datum has exactly one
+candidate in \cref{def:r11-signed-renormalized-boundary}.
+It is the transposition solution $u_\mu$, and all its original
+current, exact-level, coarea and global curvature-variation
+conclusions above hold.  The construction and solution class
+are independent of the chosen faithful reference measure.
+\end{theorem}
+
+\begin{proof}
+Existence follows from \MathEqref{eq:signed-sd7}, the truncation membership,
+quasicontinuity, and the band identity \MathEqref{eq:signed-sd8}, which gives $k^{-1}\mathcal E(T_{2k}u-T_ku)\le|\mu|\{|u|>k\}\to0$.  For uniqueness choose smooth odd scalar
+clamps $\Phi_k$ fixing the interval $[-k,k]$, constant
+outside $[-2k,2k]$, with $\Phi_k(0)=0$,
+$0\le\Phi_k'\le1$ and
+$|\Phi_k''|\le C/k$ on the two transition bands.
+Then $|\Phi_k(s)|\le|s|$ and $\Phi_k(s)\to s$.
+For a candidate $v$, its prescribed chain gives
+\begin{equation}\label{eq:signed-sd16}
+ \begin{split}
+ \nu_k:=D(\Phi_k(v)S)
+       &=\Phi_k'(v)\mu+\Phi_k''(v)\Gamma_S(v),\\
+ \|\nu_k-\mu\|_{\rm TV}
+       &\le |\mu|\{|v|>k\}
+                +\frac Ck\mathcal E(T_{2k}v-T_kv)\to0.
+ \end{split}
+\end{equation}
+The measures $\nu_k$ are finite signed Radon measures.
+The potential $\Phi_k(v)=\Phi_k(T_{2k}v)$ belongs to $H$,
+so \cref{lem:r11-bounded-H-tests-diffuse} proves
+both diffuseness of $\nu_k$ and
+$\Phi_k(v)=u_{\nu_k}$.  
+The established total-variation stability gives
+$\|\Phi_k(v)-u_\mu\|_1\le2\|\nu_k-\mu\|_{\rm TV}\to0$.
+Dominated convergence also gives $\Phi_k(v)\to v$ in
+$L^1(\lambda)$.  Thus $v=u_\mu$ almost everywhere.
+Equality of all clipped $H$ vectors identifies the canonical
+representatives quasi-everywhere.  Reference independence follows because the original core energy
+$\mathcal E(f,g)=\int d'f\wedge d''g\wedge S$ is independent of the
+faithful measure. Coercivity identifies each realization with the same
+Hilbert completion. Its compact-core zero-capacity, polar sets and
+canonical representatives coincide. A common finite-energy nest then
+gives the same capacity limit of the same Riesz potentials.
+\end{proof}
+
+
+\subsection{Stability under signed measure convergence}
+
+\begin{theorem}[Strong clipping and smooth-curvature stability]
+\label[theorem]{thm:r11-signed-data-strong-clipping}
+Suppose $\|\mu_j-\mu\|_{\rm TV}\to0$, and write
+$u_j=u_{\mu_j}$, $u=u_\mu$ for the unique intrinsic
+renormalized solutions of $D(u_jS)=\mu_j$, $D(uS)=\mu$.
+Then, for every fixed $k>0$,
+\begin{equation}\label{eq:stability-ds1}
+                    \|T_ku_j-T_ku\|_H\longrightarrow0.
+\end{equation}
+In particular, for any fixed $k,l>0$, the finite original
+energy measures converge in global total variation:
+\begin{equation}\label{eq:stability-ds2}
+ \Gamma_S(T_ku_j,T_lu_j)
+               \longrightarrow\Gamma_S(T_ku,T_lu).
+\end{equation}
+If $\Phi\in C^2(\mathbf R)$ has bounded first derivative
+and compactly supported second derivative, then
+\begin{equation}\label{eq:stability-ds3}
+           D(\Phi(u_j)S)\longrightarrow D(\Phi(u)S)
+                       \quad\hbox{in global total variation}.
+\end{equation}
+If, more restrictively, $\Phi'$ has compact support, then
+$\Phi(u_j)-\Phi(0)\to\Phi(u)-\Phi(0)$ strongly in $H$.
+For this latter class both original first-order currents
+$d'(\Phi(u_j)S)$ and $d''(\Phi(u_j)S)$ converge in local
+coefficient total variation, against every original compact
+complementary smooth test and every actual moment refinement.
+The zero-order multipliers $\Phi(u_j)S$ converge in that same
+local coefficient sense under the hypotheses of \MathEqref{eq:stability-ds3}.
+\end{theorem}
+
+\begin{proof}
+The finite-datum estimates give $u_j\to u$ in energy capacity
+and in $L^1(\lambda)$.  The clipped functions converge in
+$L^2(\lambda)$: they are bounded by $k$, and $\lambda(F)<\infty$
+because the part domain is relatively compact in the neighborhood
+where $\lambda$ is Radon.  Also
+$\mathcal E(T_ku_j)\leq k\|\mu_j\|_{\rm TV}$, so these
+vectors are bounded in $H$.  Every weakly convergent subsequence
+therefore has the unique $L^2$ representative $T_ku$.
+Consequently the whole sequence converges weakly in $H$.
+
+Take $a=0,b=k$ in \MathEqref{eq:signed-sd8}.  The exact norm identity is
+\begin{equation}\label{eq:stability-ds4}
+ \mathcal E(T_ku_j)=-\int_F T_k\widetilde u_j\,d\mu_j,
+ \qquad
+ \mathcal E(T_ku)=-\int_F T_k\widetilde u\,d\mu.
+\end{equation}
+The difference between the first datum integral and the second
+is bounded in absolute value by
+\begin{equation}\label{eq:stability-ds5}
+ k\|\mu_j-\mu\|_{\rm TV}
+       +\int_F|T_k\widetilde u_j-T_k\widetilde u|\,d|\mu|.
+\end{equation}
+The second term tends to zero by energy-capacity convergence,
+finite diffuseness of $|\mu|$, and boundedness of the clippings.
+Thus the norms in \MathEqref{eq:stability-ds4} converge.  Weak convergence and convergence
+of norms in the Hilbert space prove \MathEqref{eq:stability-ds1}.  The exact band identity is what turns weak clipping convergence
+into norm convergence.
+
+The original closed gradient module gives, for $f_j,g_j,f,g\in H$,
+\begin{equation}\label{eq:stability-ds6}
+ \|\Gamma_S(f_j,g_j)-\Gamma_S(f,g)\|_{\rm TV}
+  \leq \|f_j-f\|_H\|g_j\|_H
+                         +\|f\|_H\|g_j-g\|_H.
+\end{equation}
+This is measure Cauchy--Schwarz after adding and subtracting
+$\Gamma_S(f,g_j)$.  Applying \MathEqref{eq:stability-ds1} proves \MathEqref{eq:stability-ds2}.
+
+For \MathEqref{eq:stability-ds3}, choose $M$ larger than the support radius of $\Phi''$.
+The all-original chain identity reads
+\begin{equation}\label{eq:stability-ds7}
+ D(\Phi(u_j)S)=\Phi'(\widetilde u_j)\mu_j
+       +\Phi''(\widetilde u_j)\Gamma_S(T_Mu_j).
+\end{equation}
+The first term converges in variation: its changing-datum error
+is at most $\|\Phi'\|_\infty\|\mu_j-\mu\|_{\rm TV}$,
+and its fixed-datum multiplier error tends to zero by finite
+diffuseness and capacity convergence.  For the second term use
+\MathEqref{eq:stability-ds2} and then bounded convergence in measure against the fixed
+finite diffuse measure $\Gamma_S(T_Mu)$.  This gives its variation
+convergence as well and proves \MathEqref{eq:stability-ds3}.  The zero-order multiplier
+claim follows from the Lipschitz bound for $\Phi$, $L^1(\lambda)$
+stability and the faithful original coefficient domination.
+
+If $\Phi'$ has compact support, its normalized composition is
+a smooth function of one sufficiently large clipping.  The
+closed gradient formula and \MathEqref{eq:stability-ds1} give strong convergence:
+the changing-gradient term is bounded by
+$\|\Phi'\|_\infty\|T_Mu_j-T_Mu\|_H$, and the
+changing scalar factor tends to zero in the fixed finite
+energy measure.  Its $L^2$ representative converges by the
+same bounded composition argument.  Finally, on a fixed
+original compact stage, write any complementary one-form
+test as a finite sum of bounded smooth coefficients times
+differentials of original local moment functions.  Multiply
+those moment functions by original compact cutoffs equal to
+one on the test support.  The coefficient pairing of a
+first-order derivative with each such term is an original
+mixed gradient measure; \MathEqref{eq:stability-ds6}, or its one-variable
+Cauchy--Schwarz bound, controls its variation by a fixed
+constant times the $H$-norm of the changing potential.
+This proves local coefficient-TV convergence of both first-order
+currents.  The argument starts with an arbitrary original test
+and is valid after any further actual moment refinement.
+
+\end{proof}
+
+
+% END sections/10_linear_dirichlet.tex
+
+% BEGIN sections/11_bibliography.tex
+\begin{thebibliography}{KR17}
+\bibitem[APW26]{APW26}
+O.~Amini, M.~Piquerez and L.~Wu,
+\emph{On solutions to tropical Monge--Amp\`ere equations},
+arXiv:2610.25602v1 (2026).
+\url{https://arxiv.org/abs/2610.25602}.
+
+\bibitem[BMPS26]{BMPS26}
+A.~M.~Botero, E.~Mazzon and L.~Pille--Schneider,
+\emph{Monge--Amp\`ere measures on balanced polyhedral spaces},
+arXiv:2603.08664v1 (2026).
+\url{https://arxiv.org/abs/2603.08664}.
+
+\bibitem[Ceg98]{Cegrell98}
+U.~Cegrell, \emph{Pluricomplex energy},
+Acta Math. \textbf{180} (1998), 187--217.
+\url{https://doi.org/10.1007/BF02392899}.
+
+\bibitem[CLD12]{CLD12}
+A.~Chambert--Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de
+Berkovich}, arXiv:1204.6277v1 (2012).
+\url{https://arxiv.org/pdf/1204.6277v1}.
+
+\bibitem[CLD25]{CLD25}
+A.~Chambert--Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de
+Berkovich}, arXiv:1204.6277v2 (2025).
+\url{https://arxiv.org/pdf/1204.6277v2}.
+
+\bibitem[DE06]{DE06}
+K.~Dabbek and F.~Elkhadhra,
+\emph{Capacity associated to a positive closed current},
+Documenta Math. \textbf{11} (2006), 469--486.
+\url{https://doi.org/10.4171/DM/219}.
+
+\bibitem[GR25]{GR25}
+W.~Gubler and J.~Rabinoff,
+\emph{Classically psh and pluriharmonic functions on Berkovich spaces},
+arXiv:2506.13548v2 (2025).
+\url{https://arxiv.org/pdf/2506.13548v2}.
+
+\bibitem[KR15]{KR15}
+T.~Klimsiak and A.~Rozkosz,
+\emph{Renormalized solutions of semilinear equations involving measure
+data and operator corresponding to Dirichlet form},
+NoDEA Nonlinear Differential Equations Appl. \textbf{22} (2015),
+1911--1934.
+\url{https://doi.org/10.1007/s00030-015-0350-1}.
+
+\bibitem[KR17]{KRStructure}
+T.~Klimsiak and A.~Rozkosz,
+\emph{On the structure of bounded smooth measures associated with a
+quasi-regular Dirichlet form},
+Bull. Polish Acad. Sci. Math. \textbf{65} (2017), 45--56;
+arXiv:1410.4927v2, Lemma 2.1.
+\url{https://doi.org/10.4064/ba8108-7-2017}.
+
+\bibitem[Vu21]{Vu21}
+D.-V.~Vu, \emph{Relative non-pluripolar product of currents},
+Ann. Global Anal. Geom. \textbf{60} (2021), 269--311.
+\url{https://doi.org/10.1007/s10455-021-09780-7}.
+
+\bibitem[Wu26]{Wu26}
+L.~Wu, \emph{On the local theory of non-archimedean psh functions},
+arXiv:2609.27610v1 (2026).
+\url{https://arxiv.org/abs/2609.27610}.
+
+\bibitem[Cont]{Continuous}
+\emph{Continuous CLD-positive potentials and mixed currents},
+internal manuscript, version 2.6, 15 November 2026.
+The supplied source is \nolinkurl{R_CLD_Regularization_v2.6.tex}.
+
+\bibitem[Bound]{Bounded}
+\emph{Locally bounded classical plurisubharmonic functions
+and mixed currents}, internal manuscript, edited version 0.1,
+10 November 2026.
+The supplied source is \nolinkurl{B_Agent_Edited_v0.1.tex}.
+
+\bibitem[Rel]{Relative}
+\emph{Relative Bedford--Taylor theory on Berkovich spaces},
+internal research manuscript, fourth record, 11 November 2026.
+The bounded relative energy and original coefficient arguments are
+retained in the accompanying complete source and proof archive.
+
+\bibitem[Quot]{Quotient}
+\emph{Bounded classical curvature kernels and arbitrary-background
+potential quotients}, internal research manuscript, fifth record,
+10 November 2026. See in particular Section 10.
+
+\bibitem[Order]{Order}
+\emph{The ordered potential quotient, delta tests, and relative
+Bedford--Taylor theory}, internal research manuscript, sixth record,
+10 November 2026. The supplied complete source is
+\nolinkurl{NA_BT_R6_Delta_Capacity_Dirichlet_2026-11-10.tex};
+its formal title is the one printed here.
+
+\bibitem[Energy]{Energy}
+\emph{Unbounded energy, capacity, and relative Dirichlet theory},
+internal research manuscript, eleventh record, 11 November 2026.
+The complete source and PDF are supplied as companions. Section and
+parenthesized estimate references in this article refer to that
+fixed version.
+
+\bibitem[Dual]{Dual}
+\emph{Closed bands, energy duals, and nonlinear source gaps},
+internal research manuscript, twelfth record, 12 November 2026.
+See Sections 12--13, 25 and 31 for the dual and probe constructions.
+
+\bibitem[OrdComp]{Intrinsic}
+\emph{Order-controlled intrinsic extensions and sufficient certificates
+for non-Archimedean Bedford--Taylor actions}, internal proof note,
+14 November 2026, Sections 2--5.
+\end{thebibliography}
+
+% END sections/11_bibliography.tex
+
+\end{document}

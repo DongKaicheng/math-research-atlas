@@ -1,0 +1,476 @@
+\section{A spherical formula for the realized critical residual}
+\label{sec:r13-spherical-critical-residual}
+
+Let $T_0$ be a critical tangent supplied by MT on
+$\mathbf R^N$, $N\ge2$.  Thus it is a symmetric,
+middle-positive, separately closed real supercurrent of
+bidimension $(2,2)$.  Put
+\[
+ \beta=\sum_i d'x_i\wedge d''x_i,\qquad
+ \mu=\tfrac12T_0\wedge\beta^2,\qquad
+ \mu(B_R)=\nu R^2.
+ \tag{SR1}
+\]
+MT gives zero coefficient mass at the origin, conicity,
+and radial two-vector support.  All norms and spheres in
+this section are those of these fixed protected real
+coordinates.  The conclusions are a polar reformulation
+and corollaries of MT--LE--PT; they do not constitute a
+new general relation-annihilation theorem.
+
+\subsection{The angular matrix measure and its normalization}
+
+Use the standard column-positive convention to associate
+to a symmetric $(2,2)$ test form $\eta$ its coefficient
+operator $C_\eta$ on $\bigwedge^2\mathbf R^N$.  In
+particular
+\[
+                    C_{\beta^2/2}=I.
+ \tag{SR2}
+\]
+For symmetric $(1,1)$ coefficient matrices $E,H$, this
+convention is characterized by
+\[
+\begin{split}
+C_{E\wedge H}(u\wedge v,s\wedge t)
+={}&E(u,s)H(v,t)+H(u,s)E(v,t)\\
+ &-E(u,t)H(v,s)-H(u,t)E(v,s).
+\end{split}
+ \tag{SR3}
+\]
+Let $\mathsf Q$ be the positive semidefinite matrix-valued
+Radon measure representing $T_0$ in this convention:
+\[
+ \langle T_0,\eta\rangle
+       =\int\operatorname{tr}(C_\eta\,d\mathsf Q),
+                 \qquad \operatorname{tr}\mathsf Q=\mu.
+ \tag{SR4}
+\]
+The trace is the full matrix contraction, including off-diagonal
+entries.
+
+Write $r=|x|$, $\theta=x/r$, and let
+\[
+ A_\theta:\mathbf R^N\longrightarrow\bigwedge^2\mathbf R^N,
+                     \qquad A_\theta v=\theta\wedge v.
+ \tag{SR5}
+\]
+It restricts to an isometry on $\theta^\perp$.  The radial
+support assertion of MT says that $\mathsf Q$ is supported
+as a matrix on $A_\theta(\theta^\perp)$ at $\mu$-almost
+every nonzero point.
+
+\begin{proposition}[Polar coefficient measure]
+\label{prop:r13-angular-critical-matrix}
+There is a unique finite positive semidefinite matrix-valued
+measure $\mathsf M$ on $\mathbb S^{N-1}$ such that
+\[
+ \mathsf M\theta=0,\qquad
+ \sigma:=\operatorname{tr}\mathsf M,\qquad
+                   \sigma(\mathbb S^{N-1})=2\nu,
+ \tag{SR6}
+\]
+and, in polar coordinates,
+\[
+ A_\theta^*\,d\mathsf Q\,A_\theta
+                         =r\,dr\,d\mathsf M(\theta).
+ \tag{SR7}
+\]
+The notation $\mathsf M\theta=0$ means that the matrix
+density with respect to $\sigma$ kills $\theta$ almost
+everywhere.  Equation SR7 determines $\mathsf Q$ completely,
+since its matrix support is radial.
+\end{proposition}
+
+\begin{proof}
+Put $d\mathsf B=A_\theta^*d\mathsf Q A_\theta$ on
+$\mathbf R^N\setminus\{0\}$.  It is positive semidefinite,
+kills $\theta$, and has trace $\mu$, by the radial support
+and the isometry in SR5.  The coefficient form of MT's
+conicity is
+\[
+             \mathsf Q(\lambda E)=\lambda^2\mathsf Q(E)
+                              \quad(\lambda>0).
+ \tag{SR8}
+\]
+Since $A_\theta$ has degree zero under dilation, the same
+equation holds for $\mathsf B$.
+
+For a Borel set $G\subset\mathbb S^{N-1}$ define
+\[
+ \mathsf M(G)=2\mathsf B
+       \bigl(\{0<r\le1,\ \theta\in G\}\bigr).
+ \tag{SR9}
+\]
+For $0<a<b$, SR8 gives
+\[
+ \mathsf B\bigl(\{a<r\le b,\ \theta\in G\}\bigr)
+              =\frac{b^2-a^2}{2}\mathsf M(G).
+\]
+These identities on Borel rectangles prove SR7 by the
+uniqueness of finite measures on compact radial annuli.
+Positivity, tangency and SR6 follow from the corresponding
+properties of $\mathsf B$ and $\mu(B_1)=\nu$.
+The same rectangle identity proves uniqueness.
+\end{proof}
+
+\subsection{Radial cutoffs read a full angular tensor}
+
+Let $E$ be a symmetric $(1,1)$ symbol whose coefficients
+are homogeneous of degree zero and have a supplied genuine
+compatible finite-PS ambient presentation on a conical
+subdivision.  It is locally bounded.  Its restriction to the
+sphere is denoted by the same letter.  Put
+\[
+ E_{rr}(\theta)=E(\theta,\theta),\qquad
+            E_{\rm tan}=E|_{\theta^\perp\times\theta^\perp}.
+ \tag{SR10}
+\]
+All face values use the canonical tangential PS convention
+of PT.  Since $\mathsf M$ is tangent, the contraction
+$E_{\rm tan}:d\mathsf M$ equals $E:d\mathsf M$.
+
+\begin{theorem}[Angular formula]
+\label{thm:r13-angular-critical-pairing}
+Let $\rho(x)=\psi(|x|)$ be any compact smooth radial
+function equal to one near the origin.  Then
+\[
+ \boxed{
+ \langle T_0,E\wedge D\rho\rangle
+       =\int_{\mathbb S^{N-1}}E_{\rm tan}:d\mathsf M
+          -\int_{\mathbb S^{N-1}}E_{rr}\,d\sigma.}
+ \tag{SR11}
+\]
+In particular the pairing is independent of the choice of
+such a radial cutoff.  The angular pairings retain all
+coefficient walls and all mixed entries.
+\end{theorem}
+
+\begin{proof}
+On $r>0$ the matrix of $D\rho$ is
+\[
+       \psi''(r)\theta\theta^t
+           +\frac{\psi'(r)}r(I-\theta\theta^t).
+ \tag{SR12}
+\]
+For $u,v\perp\theta$, SR3 gives
+\[
+ C_{E\wedge D\rho}(\theta\wedge u,\theta\wedge v)
+       =\psi''(r)E(u,v)
+                +\frac{\psi'(r)}r E(\theta,\theta)(u,v).
+ \tag{SR13}
+\]
+Here $(u,v)$ is the Euclidean inner product.  Radial
+support removes all other coefficient blocks.  Combining
+SR7 and SR13, and using the degree-zero homogeneity of
+$E$, yields
+\[
+\begin{split}
+\langle T_0,E\wedge D\rho\rangle
+={}&\left(\int_0^\infty r\psi''(r)\,dr\right)
+            \int_{\mathbb S^{N-1}}E_{\rm tan}:d\mathsf M\\
+ &+\left(\int_0^\infty\psi'(r)\,dr\right)
+            \int_{\mathbb S^{N-1}}E_{rr}\,d\sigma.
+\end{split}
+\]
+All radial derivatives are supported in a compact annulus.
+Their two integrals are $1$ and $-1$, respectively, because
+$\psi=1$ near zero and vanishes near infinity.  This proves
+SR11.
+
+The use of finite-PS coefficients is legitimate by PT.
+More explicitly, on a conical coefficient wall the normal
+cocoefficients of $\mathsf Q$ vanish as measures.  Because
+$\theta$ is tangent to that wall, SR5 transfers the same
+annihilation to the corresponding normal entries of
+$\mathsf M$.  Thus the displayed contractions do not depend
+on ambient representatives of the face values.  Tangential
+mass on the wall remains in both integrals.
+\end{proof}
+
+\begin{corollary}[Necessary angular constraints from closedness]
+\label{cor:r13-angular-constant-tensor-balance}
+For every smooth tangent vector field $v$ on the sphere,
+\[
+           \int_{\mathbb S^{N-1}}e_{\mathbb S}(v):d\mathsf M=0,
+           \qquad e_{\mathbb S}(v)=\operatorname{sym}\nabla_{\mathbb S}v.
+ \tag{SR14a}
+\]
+Equivalently $\operatorname{div}_{\mathbb S}\mathsf M=0$
+in the distributional tangent sense.  The matrix also satisfies
+\[
+       \int_{\mathbb S^{N-1}}d\mathsf M
+            =\int_{\mathbb S^{N-1}}\theta\theta^t\,d\sigma.
+ \tag{SR14}
+\]
+Equivalently, for every $a,b\in\mathbf R^N$,
+\[
+ \int (a^t d\mathsf M b)
+                =\int(a\cdot\theta)(b\cdot\theta)\,d\sigma.
+\]
+The finite moment identity alone is not asserted sufficient.
+The distributional condition is used in the real converse
+below; original analytic realization is a separate question.
+\end{corollary}
+
+\begin{proof}
+On the punctured real space put $b(r\theta)=r v(\theta)$,
+using the Euclidean identification of vectors and covectors,
+and let $E=e(b)$ be its symmetric derivative.  Since
+$v\perp\theta$, direct differentiation gives
+$E_{rr}=0$ and $E_{\rm tan}=e_{\mathbb S}(v)$.  The tensor
+$E$ is full-exact: in the retained sign convention it is
+\[
+ E=d'\!\left(\tfrac12\sum_jb_jd''x_j\right)
+           +d''\!\left(-\tfrac12\sum_jb_jd'x_j\right).
+\]
+Both closedness equations of $T_0$ therefore imply
+$\langle T_0,E\wedge D\rho\rangle=0$.  To justify the
+integration by parts, multiply the displayed primitive
+forms by a smooth cutoff equal to one on a neighborhood
+of the compact annular support of $D\rho$; the added
+derivatives then have zero product with $D\rho$.
+Apply SR11 to obtain SR14a.  This use of SR11 is legitimate
+also for a smooth degree-zero homogeneous tensor on the
+puncture: its proof needs only boundedness on the sphere
+and the radial formula, and $D\rho$ is supported away
+from zero.
+
+Take $E$ to be any constant symmetric tensor.  It is smooth
+and closed.  Separate closedness of $T_0$, tested against
+the compact form $E\wedge d''\rho$, gives
+$\langle T_0,E\wedge D\rho\rangle=0$.
+Apply SR11 and vary the symmetric matrix $E$.
+\end{proof}
+
+\subsection{The actual leading residual and arbitrary cutoffs}
+
+Return to the PA--MT--LE--PT setting, with the same original
+degree-one background $S$.  Let $Z_0$ be LE's full paired
+leading tensor and $T_0$ any of its realized critical
+background tangents.  Write
+\[
+ Z_0=\tfrac12\sum_\alpha c_\alpha
+       \bigl(d'_P h_\alpha\wedge d''_P k_\alpha
+                +d'_P k_\alpha\wedge d''_P h_\alpha\bigr),
+ \tag{SR15}
+\]
+where $h_\alpha,k_\alpha$ are the actual ambient homogeneous
+PL first jets.  Their spherical derivatives mean the
+tangential derivatives of the restrictions to the sphere,
+with all face restrictions retained.
+
+\begin{theorem}[Spherical expression for the central coefficient]
+\label{thm:r13-spherical-realized-residual}
+With the normalization SR6,
+\[
+\boxed{
+c_S(P)=\sum_\alpha c_\alpha
+  \left(\int_{\mathbb S^{N-1}}h_\alpha k_\alpha\,d\sigma
+    -\int_{\mathbb S^{N-1}}
+                  d_{\mathbb S}h_\alpha\otimes
+                         d_{\mathbb S}k_\alpha:d\mathsf M\right).}
+ \tag{SR16}
+\]
+Moreover, in the retained derivative convention,
+\[
+                     D(Z_0\wedge T_0)=-c_S(P)\delta_0
+                                  \quad\hbox{on }\mathbf R^N.
+ \tag{SR17}
+\]
+Consequently PT's formula for $c_S(P)$ is independent of
+every compact smooth cutoff equal to one near zero, whether
+or not it is radial.  The angular measure may depend on the
+chosen critical tangent, but its value in SR16 does not.
+\end{theorem}
+
+\begin{proof}
+Euler's identity for each homogeneous scalar gives
+$d h_\alpha(\theta)=h_\alpha(\theta)$ in the radial
+direction.  Thus the radial entry of SR15 is
+$\sum c_\alpha h_\alpha k_\alpha$, and its tangential
+entry is the corresponding symmetrized spherical gradient
+product.  The symmetry of $\mathsf M$ makes its contraction
+with that product equal to the unsymmetrized expression
+in SR16.  Apply SR11 and PT11, which supplies the negative
+of that pairing.
+
+For the stronger distributional identity, let
+$\eta\in C_c^\infty(\mathbf R^N)$ be arbitrary.  For
+sufficiently small $\delta>0$, proper protection makes
+$\eta_\delta=\eta(z/\delta)$ an original compact smooth
+test on the whole inverse image.  The actual equality
+$\mathcal A_S(P)=c_S(P)\delta_y=-D M_S(Z_P)$ gives
+\[
+       \langle T,Z_P\wedge D[\eta(z/\delta)]\rangle
+                              =-c_S(P)\eta(0).
+ \tag{SR18}
+\]
+Here $T$ is MT's unscaled full-fiber transpose.  If the
+support of $\eta$ is contained in $B_R$, LE's complete-face
+Taylor estimate and MT's mass bound imply
+\[
+ \left|\langle T,(Z_P-Z_0)\wedge D[\eta(z/\delta)]\rangle\right|
+       \le C_\eta\delta^{-1}\mu_T(B_{R\delta})
+                               =O_{S,\eta}(\delta).
+ \tag{SR19}
+\]
+Indeed the coefficient error is $O(\delta)$ there and
+the Hessian is $O(\delta^{-2})$.  This uses every point
+of the protected inverse image, not only the distinguished
+source point.
+
+The exact scaling from PT12 identifies
+$\langle T,Z_0\wedge D[\eta(z/\delta)]\rangle$ with
+$\langle T_\delta,Z_0\wedge D\eta\rangle$.
+Along the subsequence defining $T_0$, PT's compatible-PS
+weak continuity passes this last pairing to
+$\langle T_0,Z_0\wedge D\eta\rangle$.
+Equations SR18--SR19 therefore give
+\[
+             \langle T_0,Z_0\wedge D\eta\rangle
+                                     =-c_S(P)\eta(0).
+\]
+This is SR17.  Taking any cutoff with value one near zero
+proves its asserted independence.  No claim that the formal
+quadratic first-jet presentation is itself an actual zero
+has been used.
+\end{proof}
+
+\subsection{An exact real classification, without analytic realization}
+
+\begin{theorem}[Real conic currents and divergence-free angular matrices]
+\label{thm:r13-real-angular-classification}
+The polar construction SR7 is a bijection between the
+following two classes:
+\begin{enumerate}
+\item finite symmetric positive semidefinite matrix-valued
+measures $\mathsf M$ on $\mathbb S^{N-1}$ satisfying
+$\mathsf M\theta=0$ and
+$\operatorname{div}_{\mathbb S}\mathsf M=0$;
+\item symmetric middle-positive separately $d'$- and
+$d''$-closed real supercurrents $T$ of bidimension $(2,2)$
+on $\mathbf R^N$ with
+\[
+                 \lambda^2(a_\lambda)_*T=T,
+                 \qquad a_\lambda(x)=x/\lambda.
+ \tag{SR20}
+\]
+\end{enumerate}
+Their traces satisfy
+$\mu_T(B_R)=\tfrac12\sigma(\mathbb S^{N-1})R^2$.
+This classifies real currents only.  It does not characterize
+which of them are critical tangents of original allowed
+non-Archimedean backgrounds under all actual refinements.
+\end{theorem}
+
+\begin{proof}
+Given $\mathsf M$ in the first class, define its radial
+cocoefficient measure by
+\[
+           d\mathsf Q=r\,dr\,A_\theta d\mathsf M A_\theta^*.
+ \tag{SR21}
+\]
+It has locally finite trace, is positive semidefinite,
+and defines a middle-positive coefficient-Radon current
+by SR4.  It is symmetric, satisfies SR20, and has the
+displayed trace normalization.  It remains to prove both
+closedness equations.
+
+First suppose $d\mathsf M=B(\theta)\,d\omega(\theta)$,
+where $B$ is a smooth symmetric tangent matrix and $d\omega$
+is Euclidean spherical surface measure.  Relative to
+Lebesgue measure, SR21 has cocoefficients
+\[
+ C_{ij,kl}(x)=r^{2-N}
+  (\theta_i\theta_kB_{jl}-\theta_i\theta_lB_{jk}
+          -\theta_j\theta_kB_{il}+\theta_j\theta_lB_{ik}).
+ \tag{SR22}
+\]
+Extend the indices antisymmetrically from $i<j$ and $k<l$.
+In these complementary cocoefficients, $d'T=0$ is exactly
+$\sum_i\partial_i C_{ij,kl}=0$; the second closedness
+equation is its column transpose.  If
+$v=\operatorname{div}_{\mathbb S}B$, direct differentiation
+using $B\theta=0$ and symmetry gives
+\[
+ \sum_i\partial_i C_{ij,kl}
+       =r^{1-N}\theta_j(\theta_l v_k-\theta_k v_l).
+ \tag{SR23}
+\]
+For completeness,
+$\partial_i\theta_j=r^{-1}(\delta_{ij}-\theta_i\theta_j)$,
+and
+\[
+ \sum_i\partial_i B_{il}
+        =r^{-1}\bigl(v_l-\theta_l\operatorname{tr}B\bigr).
+\]
+In differentiating SR22, the first two terms contribute
+$r^{1-N}(\theta_k B_{jl}-\theta_l B_{jk})$.
+The derivatives of the last two terms cancel these,
+the symmetric $B_{kl}$ terms, and the trace terms,
+leaving precisely SR23.  Thus $v=0$ proves both
+closedness equations on the punctured space.
+
+For a finite matrix measure, average its tensorial rotation
+translates against a smooth approximate identity of $SO(N)$.
+This produces smooth tangent symmetric positive semidefinite
+matrix densities, converging weakly to $\mathsf M$.
+Distributional spherical divergence commutes with isometries,
+so every average remains divergence-free.  The smoothing
+assertion follows by differentiating the group convolution;
+the rotation action is smooth and transitive on the sphere.
+Their currents converge coefficientwise on every compact
+annulus by SR21.  Distributional continuity of $d'$ and
+$d''$ therefore proves closedness of the limiting current
+on the punctured space.
+
+To include the origin, use a smooth deletion cutoff which
+changes from zero to one on $\epsilon<r<2\epsilon$ and
+has first derivative bounded by $C/\epsilon$.  The error
+in either closedness equation, against any fixed compact
+test, is bounded by
+\[
+            C\epsilon^{-1}\mu_T(B_{2\epsilon})
+                                     =O(\epsilon).
+ \tag{SR24}
+\]
+It tends to zero.  Thus both equations hold globally.
+
+Conversely, for any current in the second class, SR20 gives
+$\mathsf Q(\lambda E)=\lambda^2\mathsf Q(E)$.
+Its trace therefore has no atom at zero and has ball mass
+$\nu R^2$ for a finite $\nu$.  Apply MT's annular
+Stokes identity to this positive closed real current.
+Its constant normalized ball mass forces the tangential
+two-vector block to vanish, and positivity removes the
+mixed blocks.  This is the radial support used in SR5.
+Proposition~\ref{prop:r13-angular-critical-matrix} now gives
+the unique tangent positive angular measure.  Corollary
+\ref{cor:r13-angular-constant-tensor-balance} gives its
+distributional spherical divergence zero.  The two explicit
+polar constructions are inverse.
+\end{proof}
+
+\paragraph{Scope of the angular representation.}
+SR7 and SR11 are real coefficient identities for the supplied
+critical tangent.  SR14a and SR14 use its closedness and supply
+necessary angular equilibrium constraints.  SR16--SR17
+use the actual original background, the actual zero relation,
+and the complete protected-fiber PA--MT--LE--PT comparison.
+They do not construct an original background from an arbitrary
+positive angular measure, identify that measure with a residue
+numerical class, or prove SR16 is zero.  The remaining question
+is the annihilation of this full paired angular expression
+for the measures realized by the original allowed backgrounds.
+The real classification SR20--SR24 does not remove that
+restriction or assert that every real angular measure in
+its first class is analytically realized.
+
+\paragraph{Dependencies.}
+MT supplies SR1, SR4, SR8 and radial matrix support.  PT supplies
+the canonical compatible-PS pairing and its weak continuity.
+LE supplies the complete leading tensor and the coefficient
+estimate used in SR19; PA supplies the actual central current
+identity in SR18.  The polar measure construction, normalization,
+and the integration in SR11 are proved in this section.

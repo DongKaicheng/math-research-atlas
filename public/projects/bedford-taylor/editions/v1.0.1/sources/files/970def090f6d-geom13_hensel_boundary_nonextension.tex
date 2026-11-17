@@ -1,0 +1,146 @@
+\section{An irreducible selector whose norms do not extend across every boundary}
+\label{sec:r13-hensel-boundary-nonextension}
+
+Let \(K\) be the original finite extension of \(\mathbf Q_p\),
+with its original absolute value, and let \(k\) be its residue
+field.  Work on the original three-dimensional torus with
+coordinates \((A,C,S)\).  Let \(y\) be its unit-radius Gauss
+point, so its residue field is \(k(a,c,s)\).  Put
+\[
+ P(V)=V^2-V-A,\qquad Z=C^2-C-A,
+ \qquad F(E)=P(C+E)
+       =E^2+(2C-1)E+Z.
+\tag{HB1}
+\]
+The zero-slice divisor \(D=\{c^2-c-a=0\}\) in the smooth
+residue model is smooth and irreducible.  Indeed its derivative
+with respect to \(a\) is \(-1\).  Moreover \(V^2-V-a\) is
+irreducible over \(k(a,s)\): a rational root, viewed as a
+rational function of \(a\) over \(k(s)\), can have no finite
+pole, since a pole of order \(m\) would give one of order
+\(2m\) in its square minus itself.  It is therefore a
+polynomial in \(a\), whose square minus itself has even
+positive degree, or degree zero, and cannot equal \(a\).
+The polynomial is separable in every residue characteristic.
+Thus HB1 is an actual irreducible etale zero-slice presentation
+at the generic point of \(D\); its derivative \(2c-1\) there
+is nonzero.
+
+Let \(\mathcal H_F\) be the strict ordinary Hensel domain
+HN3, and let
+\(\alpha=C+e\) be its selected root.  Since \(A\) is a
+unit and the product of the two roots of \(P\) is \(-A\),
+\(\alpha\) is an analytic unit on this domain.  At the
+generic zero-slice point its residue is the nonzero element
+\(c\in k(D)\), so this is one of the allowed finite
+surface units.
+
+\begin{proposition}[Two ordinary branches of the selected norm]
+\label{prop:r13-hensel-two-ordinary-branches}
+The original ordinary open domains
+\[
+ \mathcal B_0=\{0<|A|<1,\ 0<|C|<1\},\qquad
+ \mathcal B_1=\{0<|A|<1,\ |C-1|<1\}
+\tag{HB2}
+\]
+are contained in \(\mathcal H_F\).  At every actual point
+of these domains one has
+\[
+             |\alpha|=|A|\quad\hbox{on }\mathcal B_0,
+       \qquad |\alpha|=1\quad\hbox{on }\mathcal B_1.
+\tag{HB3}
+\]
+No extension of the ground field or restriction to a moment
+source locus occurs in these identities.
+\end{proposition}
+
+\begin{proof}
+On \(\mathcal B_0\) one has \(|2C-1|=1\) and
+\(|Z|<1\).  On \(\mathcal B_1\), writing \(C=1+W\),
+one has \(|2C-1|=|1+2W|=1\) and
+\(|Z|=|W+W^2-A|<1\).  Thus HN3 holds on both ordinary
+sets, in every residue characteristic.  On the first set,
+\(|C|<1\) and \(|e|<1\) imply \(|\alpha|<1\).
+The equation \(\alpha^2-\alpha=A\) then gives
+\(|\alpha|=|A|\).  On the second set,
+\(|\alpha-1|=|C-1+e|<1\), so \(|\alpha|=1\).
+\end{proof}
+
+For \(0<r<1\), let \(q_r\) be the actual Gauss point
+with radii \((r,1,1)\) in \((A,C,S)\).  For \(0<s<1\)
+let \(x_0(r,s)\) be the Gauss point with radii
+\((r,s,1)\) in \((A,C,S)\), and let \(x_1(r,s)\) be
+the Gauss point with these same radii in \((A,C-1,S)\).
+These are points of the original analytic space for all
+real \(r,s\) in the displayed intervals, including
+commensurable radii.  The Gauss maximum formula gives
+\[
+ \lim_{s\to1^-}x_0(r,s)=q_r
+       =\lim_{s\to1^-}x_1(r,s),
+       \qquad \lim_{r\to1^-}q_r=y.
+\tag{HB4}
+\]
+For the first equality, the closed unit discs in the
+\(C\)-variable centered at zero and at one have the
+same Gauss norm; the two formulas agree on every
+polynomial.  Uniform approximation on a fixed affinoid
+neighborhood extends this convergence to all analytic
+functions.  At \(q_r\), the two summands of \(Z\) of
+degree one and two in \(C\) have independent Gauss
+monomials, so \(|Z|=1\), and HN3 fails there.
+
+\begin{theorem}[Failure of an entire central continuous extension]
+\label{thm:r13-hensel-no-entire-central-continuous-extension}
+Let \(U\) be any original ordinary neighborhood of
+\(y\), and let \(G\) be any finite tuple of actual
+analytic units on \(U\).  There is no continuous
+function
+\[
+                     \Psi:t_G(U)\longrightarrow\mathbf R
+\tag{HB5}
+\]
+such that
+\[
+             \Psi(t_G(x))=-\log|\alpha(x)|
+                     \qquad(x\in U\cap\mathcal H_F).
+\tag{HB6}
+\]
+In particular no finite actual refinement supplies a
+continuous piecewise affine extension on the entire
+central moment image for this selected norm.
+\end{theorem}
+
+\begin{proof}
+Choose \(r<1\) sufficiently close to one that
+\(q_r\in U\).  By HB4, both \(x_i(r,s)\) belong
+to \(U\) for all \(s\) sufficiently close to one.
+They lie in \(\mathcal B_i\), respectively.  The
+actual moment map is continuous, so both moment
+families converge to \(t_G(q_r)\).  Equations
+HB3 and HB6 would give the two different limiting
+values \(-\log r>0\) and zero for the continuous
+function HB5 at this same point.  This is impossible.
+The argument applies to every finite tuple \(G\),
+not only to the coordinates used to exhibit HB4.
+\end{proof}
+
+All coefficients of \(P\) have norm at most one
+at \(y\), and
+\[
+                         |\operatorname{Res}(P,V)(y)|
+                              =|-A(y)|=1.
+\tag{HB7}
+\]
+Thus the all-conjugate resultant hypotheses of HN14
+hold.  The selected logarithm nevertheless lacks the
+entire extension in HB5.  There is no contradiction:
+its value tends to zero along every approach to
+\(y\) in the selected domain, whereas HB4 gives
+two different limits at each nearby excluded point
+\(q_r\).  Protected continuity on the realized
+selected domain, and continuity after adjoining the
+single original center, are the precise surviving
+statements.  This example refutes the stronger
+extension shortcut; it does not obstruct an intrinsic
+differential construction using actual local root
+domains or a separately justified singular pairing.

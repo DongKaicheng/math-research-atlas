@@ -1,0 +1,370 @@
+\section{Graph pullback, the complete wall drift, and a finite core repair}
+\label{sec:r13-graph-pullback-wall-drift}
+
+A continuous piecewise-affine coordinate graph can repair a
+coefficient obstruction by changing the full incident spaces.
+Pulling its primitive back to the old real branch generally
+creates normal jumps.  This section records their exact measure,
+quantifies the drift required by PK, and separates a universal
+real graph repair from the extra source branches of actual units.
+
+\subsection{The full distributional graph chain rule}
+
+Let \(U\subset\mathbf R^d\) be open and let
+\(F:U\to\mathbf R^m\) be continuous and affine on each
+cell of a finite polyhedral decomposition.  Let
+\(B=\sum_{a=1}^m B_a(y)\,dy_a\) be a smooth covector on a
+neighborhood of \(F(U)\).  On cell interiors define
+\[
+ g=F^*B=(DF)^TB(F),\qquad
+ A=(DF)^T e(B)(F)\,DF.
+ \tag{GD1}
+\]
+The cellwise field \(g\) is locally bounded and belongs to
+\(\mathrm{BD}_{\rm loc}(U)\).  For an internal facet \(H\),
+choose the unit normal \(\nu_H\) pointing from its minus
+cell to its plus cell.  Continuity of \(F\) gives
+\[
+             DF^+-DF^-=c_H\otimes\nu_H,
+                       \qquad c_H\in\mathbf R^m.
+ \tag{GD2}
+\]
+A common refinement includes every internal facet of every
+coordinate, including facets whose individual contributions
+subsequently cancel.
+
+\begin{proposition}[The weighted wall measure]
+\label{prop:r13-graph-full-strain-chain-rule}
+The full distributional symmetric derivative is
+\[
+ \begin{split}
+ Eg&=A\,\mathcal L^d+\mathcal W_{F,B},\\
+ \mathcal W_{F,B}
+    &=\sum_{a=1}^m B_a(F)\,D^2F_a\\
+    &=\sum_H\langle B(F),c_H\rangle\,
+             \nu_H\otimes\nu_H\,
+                     \mathcal H^{d-1}\!\llcorner H.
+ \end{split}
+ \tag{GD3}
+\]
+Multiplication in the middle line is by the continuous
+function \(B_a(F)\).  All formulas remain valid when
+\(DF\) has deficient rank.
+\end{proposition}
+
+\begin{proof}
+On a cell the ordinary chain rule gives the regular symmetric
+derivative \(A\).  The one-sided traces of \(g\) differ by
+\[
+             g^+-g^-=\langle B(F),c_H\rangle\nu_H.
+ \tag{GD4}
+\]
+The distributional derivative of a piecewise smooth field is
+its regular derivative plus its jump tensor with the oriented
+facet normal.  Taking the symmetric part of GD4 gives the
+last line of GD3.  There are no extra contributions on
+intersections of two or more facets: the first derivative of
+a locally bounded piecewise smooth field has the displayed
+facet measure, and those intersections have zero facet
+measure.  Applying the same jump calculation to the
+piecewise constant gradient of each scalar \(F_a\) gives
+the middle line.  This proves the equality as matrix-valued
+measures, with every wall included.  None of the steps
+inverts \(DF\).
+\end{proof}
+
+For a graph \(F(x)=(x,\phi_1(x),\ldots,\phi_r(x))\),
+the old coordinate functions have zero Hessian, so
+\[
+       \mathcal W_{F,B}
+           =\sum_{a=1}^r B_{d+a}(F)\,D^2\phi_a.
+ \tag{GD5}
+\]
+The sum is taken before its total variation.  It is the
+joint weighted wall measure, not a collection of unrelated
+coordinatewise bounds.
+
+If a wall is rational for a lattice \(\Lambda\), let
+\(\nu_0\in\Lambda^*\) be its primitive oriented conormal.
+When the gradient jump of a scalar coordinate is
+\(q\nu_0\), its Hessian, using the ambient lattice measure,
+is
+\[
+                    q\,\nu_0\otimes\nu_0\,\lambda_H,
+ \tag{GD6}
+\]
+where \(\lambda_H\) is the induced lattice measure on the
+wall.  Indeed the quotient of the wall and ambient lattice
+covolumes is \(|\nu_0|\), which cancels the conversion
+from \(\nu_0\) to the Euclidean unit normal in GD3.
+Thus the primitive slope \(q\) and the facet carrier are
+both retained.  Formula GD6 is a real lattice normalization;
+no analytic source multiplicity is replaced by one.
+
+\subsection{The trace version of the strain gap}
+
+The KG estimate extends to noncontinuous branch fields with
+specified tangential traces.  More precisely, let
+\(g_i\in\mathrm{BD}(B_R^i)\cap L^2(B_R^i)\).  For each pair \(i,j\),
+use the bounded trace map on the two half-balls cut out by
+\(S_{ij}\).  Suppose that the tangential restrictions of
+both one-sided traces of \(g_i\) and both one-sided traces
+of \(g_j\) agree almost everywhere on \(D_R^{ij}\).
+Then
+\[
+ R^3|\mathfrak s(c)|\leq
+         C\sum_i|Z_i\mathcal L^3-Eg_i|(B_R^i).
+ \tag{GD7}
+\]
+To prove this, apply the same branchwise Korn--Poincare
+projection as in KG.  The half-ball estimate is applied
+to either chosen one-sided trace.  The trace of the given
+continuous \(b_i\) is its usual value, while the assumed
+common tangential traces of \(g_i\) cancel in KG7.  The
+symmetric-disk argument and the finite stress pairing are
+unchanged.  This proof requires no trace on a codimension-two
+set and no continuity of the normal components of \(g_i\).
+
+Now let \(F:|\Sigma|\cap\overline{B_R(0)}\to\mathbf R^m\)
+be one continuous finite-PL map, with restrictions \(F_i\)
+to the five complete source planes of PK.  Let \(B\) be
+smooth on a neighborhood of its compact image.  Write \(A_i\) and
+\(\mathcal W_i\) for the regular and wall terms of GD3
+on \(P_i\).  The piecewise fields \(g_i=F_i^*B\) satisfy
+the trace hypothesis of GD7.  Indeed the two restrictions
+of \(F\) agree on \(S_{ij}\); their tangential derivatives
+there agree almost everywhere, independently of their
+one-sided normal derivatives.  Pairing with the continuous
+value \(B(F)\) preserves this equality.
+
+\begin{corollary}[A repair must carry a definite wall drift]
+\label{cor:r13-graph-repair-drift-lower-bound}
+There is a constant \(C>0\) depending only on the PK
+configuration such that
+\[
+ R^3|\mathfrak s(c)|\leq C\sum_i
+       \left(\int_{B_R^i}|Z_i-A_i|\,d\mathcal L^3
+                          +|\mathcal W_i|(B_R^i)\right).
+ \tag{GD8}
+\]
+If the refined regular strain pulls back exactly to \(Z_i\)
+on every old cell, then
+\[
+        \sum_i|\mathcal W_i|(B_R^i)
+                   \geq C^{-1}R^3|\mathfrak s(c)|.
+ \tag{GD9}
+\]
+The same positive lower bound holds for the limit inferior
+of the drift masses when the sum of the regular strain
+errors tends to zero.
+\end{corollary}
+
+\begin{proof}
+The pullbacks are locally piecewise smooth, hence belong
+to \(\mathrm{BD}\) on the bounded balls, and have the
+common tangential traces just checked.  Substitute GD3
+into GD7 and use the triangle inequality for measure
+variation.  This gives GD8 and its two consequences.
+\end{proof}
+
+In particular a graph which is linear on each entire old
+source plane has \(\mathcal W_i=0\).  It cannot repair
+PK10, even if its ambient space is enlarged.  A piecewise
+linear graph can repair it only with nonzero combined
+wall drift.  A real subdivision with no change of
+coordinate map has zero such drift.
+
+\subsection{An explicit universal real hat-graph repair}
+
+For the particular PK fields there is a concrete graph
+repair, before any claim about actual units.  On each
+source plane put
+\[
+                         q(n)=\tfrac12 b_i(n)(n).
+ \tag{GD10}
+\]
+This is one continuous homogeneous piecewise-quadratic
+function on \(|\Sigma|\).  On an intersection \(S_{ij}\),
+PK9 gives \(b_i(n)(n)=\theta_{ij}(n,n)=0\), so the
+values agree between the planes.  On a coefficient cone,
+write \(b_i(n)=L_\sigma n\).  Then
+\[
+                  \operatorname{Hess}(q|_\sigma)
+                         =\operatorname{sym}L_\sigma=Z_\sigma.
+ \tag{GD11}
+\]
+This is the regular-cell Hessian; the full Hessian can
+also have the wall measures of GD3.
+
+Take a finite common simplicial fan on which \(q\) is
+quadratic.  Choose one nonzero rational vector \(v_\rho\)
+for each geometric ray, and let \(\phi_\rho\) be its
+nodal piecewise-linear coordinate: it takes value one
+at \(v_\rho\), value zero at the other selected ray
+vectors, and is linear on every cone.  These are
+continuous functions on the entire fan.  Define the
+ordinary quadratic polynomial
+\[
+ \begin{split}
+ Q(y)&=\sum_\rho q(v_\rho)y_\rho^2\\
+ &\quad+\sum_{\{\rho,\rho'\}\text{ spanning a two-face}}
+   \bigl(q(v_\rho+v_{\rho'})-q(v_\rho)-q(v_{\rho'})\bigr)
+                                      y_\rho y_{\rho'}.
+ \end{split}
+ \tag{GD12}
+\]
+Every coefficient is well defined by the common closed-face
+values of \(q\).  Polarization in the ray basis of a
+simplicial cone proves
+\[
+                    q=Q((\phi_\rho)_\rho).
+ \tag{GD13}
+\]
+For the graph
+\(F(n)=(n,(\phi_\rho(n))_\rho)\), take the smooth ambient
+covector \(B=dQ\), with zero old-coordinate components.
+It vanishes at the origin and satisfies
+\[
+                  F^*e(B)|_\sigma=Z_\sigma
+ \tag{GD14}
+\]
+on every old coefficient cone.  It is one ambient covector
+on this refined graph, so all of the graph's simultaneous
+incident relations hold.  Formula GD9 shows that its old
+pullback has unavoidable wall drift when \(\mathfrak s(c)\ne0\).
+The graph alone is not asserted to be a balanced actual
+source cycle.
+
+\subsection{Actual unit realization on a supplied split SNC core}
+
+There is a finite original-field algebraic construction
+which realizes these nodal coordinates on a supplied SNC
+core.  Its conclusion deliberately stops at that core.
+
+\begin{lemma}[Simultaneous semilocal boundary generators]
+\label{lem:r13-semilocal-boundary-generators}
+Let \(V\) be a smooth projective integral variety over the
+original finite residue field \(k\), and let
+\(D_1,\ldots,D_r\) be distinct prime boundary Cartier
+divisors.  Let \(Z\) be any finite set of closed points
+meeting every \(D_i\).  There are functions
+\(f_1,\ldots,f_r\in k(V)^\times\) and one open
+neighborhood of \(Z\) such that
+\[
+                     \operatorname{div}(f_i)=D_i
+                      \quad\hbox{on that neighborhood}.
+ \tag{GD15}
+\]
+In particular
+\(\operatorname{ord}_{D_j}(f_i)=\delta_{ij}\) for all
+\(i,j\), and every additional zero or pole component
+avoids \(Z\).
+\end{lemma}
+
+\begin{proof}
+A finite set of points of a projective variety lies in an
+affine open: use a sufficiently high very ample power,
+surjectivity of evaluation at the finite reduced subscheme,
+and a section nonzero at each point.  Work in the semilocal
+ring \(A=\mathcal O_{V,Z}\) of such an affine open.
+Each invertible ideal \(\mathcal O_V(-D_i)\otimes A\)
+is free of rank one.  Explicitly, choose a nonzero generator
+in each of its finitely many one-dimensional residue
+fibers; the Chinese remainder theorem lifts these choices
+to one element \(f_i\) of the ideal.  Nakayama's lemma
+at every maximal ideal makes this a generator over \(A\).
+As the ideal is embedded in the fraction field \(k(V)\),
+this is a nonzero rational function.  Its generating
+property holds on an open neighborhood of each point of
+\(Z\).  Intersect finitely many such neighborhoods for
+all \(i\).  Equality of the invertible ideals gives GD15.
+Every \(D_j\) meets that neighborhood, so its generic
+order is the stated Kronecker delta.  The assertion about
+extra components follows from the same divisor equality.
+No extension of \(k\) is used.
+\end{proof}
+
+\begin{corollary}[Finite actual hat coordinates on the retained core]
+\label{cor:r13-actual-hats-on-supplied-snc-core}
+Assume the fixed original analytic model germ of R12 TC
+is supplied with a split simplicial SNC core on a smooth
+projective threefold \(V\) over \(k\).  Suppose its
+finitely many retained monomial cones are centered at
+triple points of the boundary, with compatible ray labels
+\(D_i\), and that its old coordinate map faithfully
+parameterizes the geometric core fan.  Use the actual
+order vectors of the divisorial valuations as its selected
+ray vectors; their old projected vectors need not be
+primitive.  Coefficient data on coincident geometric cones
+must agree, while all actual source labels and their
+calibrations are retained.
+
+There is one finite tuple of actual norm-one units over
+the original \(K\), retaining the old coordinates, whose
+new moment coordinates, with convention \(-\log|\cdot|\),
+equal \(\phi_i\) on every retained
+closed old monomial cone, after one common central
+shrinking.  Thus any given continuous \(q\) which is quadratic on
+each core cone and has polynomial representation GD12 has
+the regular-cell identity GD14 on its actual refined
+core graph.
+\end{corollary}
+
+\begin{proof}
+Let \(Z\) contain all retained triple points.  If necessary,
+add one closed point on each boundary component not
+already meeting \(Z\).  Apply the semilocal lemma.
+At a retained triple point with regular normal parameters
+\(z_1,z_2,z_3\), the function \(f_i\) is the corresponding
+parameter times a unit if \(D_i\) passes through the
+point, and is a unit otherwise.  Its order vector is
+therefore exactly the desired nodal vector.
+
+Apply the frozen finite same-field residue-unit lifting
+result R6 to the finite list \(f_i\).  The TC monomial
+comparison evaluates their unit factors with norm one
+on all sufficiently near-central positive monomial
+parameters.  The finite list of functions and charts
+has one common collar and ordinary central shrinking.
+Hence their log values are the stated normal parameters.
+Continuity extends these equalities to all closed cone
+faces, including commensurable radii.  Retaining the old
+coordinates retains their old graded rank, so every
+old full-source point remains in the new full source.
+These points form the asserted refined core graph.
+
+The normal coefficient one is the actual divisorial
+order in GD15.  When an old projected ray has a
+nontrivial primitive index, that index remains its
+projection index; it is not absorbed into a coefficient
+or a source weight.  The polynomial identity GD13 and
+the ordinary linear chain rule on every core cone now
+give GD14.
+\end{proof}
+
+\paragraph{The remaining complete-source equation.}
+The functions \(f_i\) generally have additional zero and
+pole divisors outside \(Z\).  Their new incident branches
+and any branches exposed along old double curves remain
+in the complete actual refinement.  GD14 proves nothing
+about the strain equation on those branches.  To obtain
+an actual refinement theorem one must construct or verify
+an extension with the correct strains on that entire
+new source family, with its labels, weights, primitive
+indices and later refinements.  The semilocal lemma does
+not supply that extension.  In particular its core graph
+cannot replace the absolute cap carrier.  The full
+wall drift GD3 and the quantitative lower bound GD9
+explain why disregarding those added directions loses
+essential data.
+
+\paragraph{Dependencies and scope.}
+GD3--GD6 and GD10--GD15 are direct distributional and
+finite algebraic calculations.  GD7--GD9 use the reviewed
+KG estimate and the same two primary \(\mathrm{BD}\)
+inputs.  The conditional analytic core corollary uses
+the frozen R6 same-field unit lift and the supplied
+R12 TC monomial comparison only on its stated core.
+No equality against all original analytic tests or all
+GK delta tests is inferred from these real coefficient
+identities.

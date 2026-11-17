@@ -1,0 +1,328 @@
+\section{Degree-one action and the quadratic analytic Aeppli obstruction}
+\label{sec:r23-quadratic-aeppli-action}
+
+\paragraph{Status and exact gain.}
+This section is a \texttt{DIRECT\_COROLLARY} of the frozen R6
+degree-one action and piecewise-smooth Leibniz theorem.  It is not
+counted as a new principal theorem.  It makes one distinction in
+the R22 singular interface precise: in formal degree two, a full
+\emph{intrinsic} Aeppli identity already suffices for annihilation
+by every allowed original background.  There is no additional
+arbitrary-background action hypothesis for that implication.
+The existence of the identity remains \texttt{OPEN}.  The analogous
+full-polar compatibility and the unchanged KC12 seminorm conclusion
+are not proved here.
+
+Fix the original finite extension $K/\mathbf Q_p$ and its original
+absolute value.  Let $U$ be an original good, Hausdorff, boundaryless,
+quasi-smooth analytic space, locally of pure dimension $n$.  All
+sheaves, restrictions and germs below use its ordinary topology.
+Write $B^{a,b}$ for the genuine analytic Mihatsch delta-form sheaf,
+including all actual moment refinements.  Use standard CLD signs:
+$d'd''=-d''d'$ and $D=d'd''$.  Let $S$ be any original symmetric
+middle-positive, separately $d'$- and $d''$-closed current of degree
+$(p,p)$, with $0\le p\le n-2$.  No conormality, model origin,
+weak-approximation, or special decomposition is assumed for $S$.
+
+\subsection{The precise first-degree multiplication input}
+
+The frozen R6 theorem
+\texttt{thm:r6-arbitrary-background-degree-one-delta} supplies a
+canonical linear operation, denoted here by
+\[
+ M_S:B^{1,1}(U)\longrightarrow\mathcal D'^{p+1,p+1}(U),
+ \qquad M_S(\alpha)=\alpha\wedge S.                 \tag{QA1}
+\]
+Its values are coefficient-Radon currents.  It respects ordinary
+restriction, gluing, every actual refinement, and actual equality
+in $B^{1,1}$.  It agrees with the already established multiplication
+by piecewise-smooth forms and satisfies
+\[
+       M_S(fD_\delta g)=fD(gS)                       \tag{QA2}
+\]
+for continuous piecewise-smooth scalars $f,g$ in their finite local
+presentations; $g$ is expanded into the permitted local continuous
+psh differences.  The required local decomposition is the frozen
+\texttt{lem:r6-continuous-pws-dsh}.  Only this degree-one operation
+is used.  In particular, no expression $(D\alpha)\wedge S$ is
+defined by appealing to a presumed higher-degree action.
+
+Every actual form of total bidegree $(0,1)$ is piecewise smooth,
+and locally has an anchored finite presentation
+\[
+                    \beta=\sum_j f_jd''_Pg_j,        \tag{QA3}
+\]
+with continuous piecewise-smooth scalars $f_j,g_j$.  This is the
+codimension-zero module generation used explicitly in the proof of
+R6, \texttt{cor:r6-all-background-qone-full-delta}.  A form of
+bidegree $(1,0)$ has the column-exchanged presentation.
+Their products with $S$ are the frozen canonical PS products.
+
+\begin{lemma}[Full first derivatives commute with the available action]
+For every actual $\beta\in B^{0,1}(U)$ and
+$\gamma\in B^{1,0}(U)$,
+\[
+ \begin{split}
+ M_S(d'\beta)&=d'(\beta\wedge S),\\
+ M_S(d''\gamma)&=d''(\gamma\wedge S).
+ \end{split}                                          \tag{QA4}
+\]
+These are equalities of ordinary currents on all original smooth
+compact tests, with all full polyhedral boundary contributions
+retained.  They hold in every degree $p<n$ where (QA1) is defined;
+the stronger restriction $p\le n-2$ is needed only for the
+subsequent nontrivial quadratic derivative.
+\end{lemma}
+
+\begin{proof}
+The assertion is local in the ordinary topology, so use (QA3).
+For one summand the actual full delta Leibniz rule reads
+\[
+ d'(f d''_P g)=d'_P f\wedge d''_P g+fD_\delta g.
+                                                        \tag{QA5}
+\]
+The scalar has no boundary differential, and $d''g=d''_Pg$;
+the singular derivative of the latter is exactly $D_\delta g$.
+Applying (QA1)--(QA2), including agreement with PS multiplication,
+gives
+\[
+ M_S\bigl(d'(f d''_P g)\bigr)
+       =d'_P f\wedge d''_P g\wedge S+fD(gS).             \tag{QA6}
+\]
+
+The frozen first-derivative identity is
+$d''(gS)=d''_Pg\wedge S$.  The right side is in the tangential
+coefficient-Radon module of R6.  Its $d'$ derivative is $D(gS)$,
+which is coefficient-Radon because $g$ is a finite local continuous
+psh difference.  Therefore the frozen
+\texttt{lem:r6-pws-radon-leibniz}, applied to multiplication by
+$f$, gives
+\[
+ d'\bigl(f(d''_P g\wedge S)\bigr)
+       =d'_P f\wedge d''_P g\wedge S+fD(gS).             \tag{QA7}
+\]
+Equations (QA6)--(QA7) agree.  Sum the finitely many terms and
+use ordinary locality to obtain the first equation of (QA4).
+The identical argument with the two columns exchanged gives the
+second equation, with the standard CLD anticommutation signs.
+
+For clarity, the proof in R6 subsequently integrates (QA7) when
+$p=n-1$.  That degree assumption is used only for the top-degree
+integral there, not for the local current identity (QA7).  No
+integration of a non-top-degree form is performed here.
+The input Leibniz theorem proves equality on the complete original
+test sheaf by convergence against fixed Radon coefficient measures;
+we do not delete a boundary term on a charged face.  Since all
+products on both sides are already intrinsic, the equations respect
+every actual refinement, including deficient-rank moment maps.
+\end{proof}
+
+\subsection{An intrinsic obstruction map for an arbitrary background}
+
+Let $\mathcal E^{1,1}$ be the image sheaf
+\[
+ \mathcal E^{1,1}
+   =d'B^{0,1}+d''B^{1,0}\ \subset B^{1,1}.               \tag{QA8}
+\]
+Here an image sheaf means that the decomposition is required locally
+in the ordinary topology; a global decomposition on $U$ is not
+assumed.  Nilpotence and anticommutation give $D\mathcal E^{1,1}=0$.
+Define the actual degree-$(1,1)$ Aeppli sheaf by
+\[
+ \mathcal H_A^{1,1}(B)
+   =\ker(D:B^{1,1}\to B^{2,2})/\mathcal E^{1,1}.          \tag{QA9}
+\]
+This definition uses the original analytic delta quotient itself.
+It is not the analogous quotient on one chosen ambient real space,
+nor a quotient defined only by the tests extending to one marked
+point.  It introduces no new carrier seminorm or relation generator.
+
+\begin{proposition}[The available action factors through the actual quotient]
+The operation
+\[
+        \mathfrak o_S(\alpha):=D\bigl(M_S(\alpha)\bigr)   \tag{QA10}
+\]
+annihilates $\mathcal E^{1,1}$.  It therefore induces a linear
+map of ordinary sheaves
+\[
+ \mathfrak o_S:\mathcal H_A^{1,1}(B)
+                  \longrightarrow\mathcal D'^{p+2,p+2}. \tag{QA11}
+\]
+Its values are separately closed currents.  Formula (QA10) has
+support contained in $\operatorname{supp}\alpha\cap
+\operatorname{supp}S$ for every representative $\alpha$.
+All original tests and actual refinements are retained.
+No assertion that (QA11) is zero on its entire domain is made.
+\end{proposition}
+
+\begin{proof}
+By (QA4), the value of (QA10) on $d'\beta$ is
+$d'd''d'(\beta\wedge S)=0$.  Its value on $d''\gamma$ is
+$d'd''d''(\gamma\wedge S)=0$.  These identities hold for
+distributions with the indicated standard signs.  Ordinary locality
+annihilates the image sheaf in (QA8), so the map is well defined
+even when representatives differ only by local exact expressions.
+Restriction of (QA10) to the kernel in (QA9) proves (QA11).
+In fact (QA10) already factors through $B^{1,1}/\mathcal E^{1,1}$;
+the restriction is made to isolate the actual zero-relation problem.
+
+Both derivatives of $D M_S(\alpha)$ vanish by nilpotence and
+anticommutation.  The support assertion follows from the support
+theorem for (QA1) and the support property of a distributional
+derivative.  The operation $D M_S(\alpha)$ need not be
+coefficient-Radon for arbitrary $\alpha$; no such general claim is
+needed.  For the finite Hessian-product expressions below it is the
+already defined finite signed BT current, hence coefficient-Radon.
+Every definition used is a morphism in the actual original sheaves,
+so their all-test and all-refinement compatibilities pass to the
+quotient.  An ordinary-current-to-GK-test extension is not inferred.
+\end{proof}
+
+\subsection{The quadratic curvature transgression}
+
+Let $\mathscr P$ be the real sheaf of finite continuous PL functions
+in actual original unit moments, allowing finite sums and ordinary
+restriction.  These functions belong locally to the frozen DC
+class.  For the formal symmetric square, over $\mathbf R$ and not
+over the ring of pointwise scalar functions, define
+\[
+ \begin{split}
+ \widetilde\tau([h][g])
+       &=\tfrac12\bigl(hD_\delta g+gD_\delta h\bigr)
+                                                    \in B^{1,1},\\
+ \kappa_2([h][g])&=D_\delta h\wedge D_\delta g
+                                                    \in B^{2,2}.
+ \end{split}                                           \tag{QA12}
+\]
+These are linear maps from $\operatorname{Sym}^2_{\mathbf R}
+\mathscr P$.  Full delta Leibniz and the separate closedness of a
+scalar curvature give
+\[
+                         D\widetilde\tau=\kappa_2.      \tag{QA13}
+\]
+Thus every actual analytic quadratic relation $P\in\ker\kappa_2$
+has an intrinsic class
+\[
+                   \tau(P)=[\widetilde\tau(P)]
+                                   \in\mathcal H_A^{1,1}(B).
+                                                        \tag{QA14}
+\]
+One may instead use an ordered primitive $\alpha_P=\sum_\nu
+a_\nu h_\nu D_\delta g_\nu$ for a displayed polynomial
+$P=\sum_\nu a_\nu[h_\nu][g_\nu]$.  The class is unchanged,
+because the exact full identity
+\[
+ hD_\delta g-gD_\delta h
+       =d'(h d''g)+d''(g d'h)                           \tag{QA15}
+\]
+has the indicated signs.  Indeed the two first-derivative cross
+terms cancel, and $d''d'h=-D_\delta h$.
+
+\begin{theorem}[Quadratic intrinsic exactness suffices for every allowed action]
+Let $P=\sum_\nu a_\nu[h_\nu][g_\nu]$ be a finite original
+PL presentation on one ordinary representative of a germ, and
+assume $\kappa_2(P)=0$ in its actual analytic delta sheaf.
+For every allowed original $S$ of degree $p\le n-2$,
+\[
+          \mathcal A_S(P)=\mathfrak o_S\bigl(\tau(P)\bigr).
+                                                        \tag{QA16}
+\]
+In particular, if on that ordinary germ
+\[
+           \alpha_P=d'\beta+d''\gamma,
+       \quad \beta\in B^{0,1}=PS^{0,1},\quad
+             \gamma\in B^{1,0}=PS^{1,0},                \tag{QA17}
+\]
+then $\mathcal A_S(P)=0$ for every allowed original $S$, on
+every original compact smooth complementary test and every actual
+refinement.  The absolute carrier of $S$ is unchanged.
+The ordinary representative for (QA17) can be chosen before
+the background and the tests, since it is an intrinsic identity
+of the specified relation.
+\end{theorem}
+
+\begin{proof}
+Expand each signed PL potential into its fixed finite convex-PL
+differences.  R6 and (QA2) identify
+\[
+          M_S(\alpha_P)=\sum_\nu a_\nu h_\nu D(g_\nu S).
+                                                        \tag{QA18}
+\]
+Applying $D$ gives exactly the recursively defined relative
+quadratic BT action.  The frozen signed multilinearity and symmetry
+identify the same expression for the symmetrized primitive in
+(QA12).  Alternatively, (QA15) and (QA4) show directly that the
+two values after $D$ agree.  This proves (QA16).
+
+Under (QA17), (QA4) gives
+\[
+ M_S(\alpha_P)=d'(\beta\wedge S)+d''(\gamma\wedge S).
+                                                        \tag{QA19}
+\]
+Apply $D$ and use nilpotence to obtain zero.  This reasoning takes
+place on the same ordinary representative as the identity and
+uses only its already intrinsic degree-one products.  Arbitrary
+compact original tests in that representative are allowed, including
+tests whose own units do not extend to the germ center.
+All actual refinements were part of the input identities.
+The support statements for (QA1) and ordinary derivatives show
+that no replacement or enlargement of the original carrier has
+entered the argument.  If the identity is only germwise, choose
+one representative where it holds before choosing $S$ or a test;
+no global polar is transported to that smaller quotient.
+\end{proof}
+
+The finite-tail version is immediate in its exact limited scope.
+If one fixed common tuple of continuous psh potentials is appended
+to every term of $P$, first form its frozen positive separately
+closed BT product with $S$ and apply the theorem to that background.
+Fixed signed finite PL tails are treated by their finite positive
+expansions.  Distinct termwise tail tuples are not replaced by one
+common background, and this observation does not settle the general
+higher-degree coupled relation.
+
+\subsection{What remains open and what this implication does not supply}
+
+The new readback removes an additional action hypothesis only from
+the \emph{quadratic arbitrary-background} route through (QA17).
+The actual existence question is now explicit: for the restricted
+class $\alpha_P$ arising from an actual quadratic PL-zero, must
+$\tau(P)$ vanish in the actual Aeppli sheaf, or at least be killed
+by every map (QA11)?  This is \texttt{OPEN}.  The frozen CL
+calculation replaces $\alpha_P$, modulo full exact types, by the
+specified finite piecewise-constant PS energy form; PH's pointed
+homotopy retains a singular boundary and does not prove its
+exactness.  Actual $D$-closedness alone is not inserted as a new
+kernel of (QA10).
+
+A general full original carrier polar is not an allowed positive
+current $S$.  Consequently neither (QA1) nor (QA4) can be applied
+to it by a change of notation.  Even if (QA17) were proved for
+all quadratic relations, the theorem above would establish their
+arbitrary-background annihilation, not automatically zero of the
+unchanged carrier-CLN seminorm.  The frozen IF strict gap prohibits
+inferring that seminorm assertion solely from carried-current
+annihilation.  Conversely, the theorem supplies no realization of
+an arbitrary real conormal current as a full original polar.
+
+The differentials in (QA4), (QA15), and (QA17) are the full analytic
+delta differentials.  Replacing them by $d'_P,d''_P$ would delete
+the singular curvature in (QA5) and invalidate (QA19).  No
+convolution of an actual zero is asserted to remain zero.  No
+ordinary-current equality is promoted to equality on all GK delta
+tests.  The relevant degree-one delta operation is an explicit
+frozen theorem, and no degree-two delta operation is assumed in
+order to prove its own presentation independence.  Thus KC12,
+OPEN-GQ in general, and variable-PS/CTO remain \texttt{OPEN}.
+
+\paragraph{Dependencies and participation.}
+The root constructed this quotient/action deduction after directly
+reading the frozen R6 degree-one action, its anchored generation,
+and its Radon Leibniz proof.  The audit researcher independently
+checked the typing of those frozen inputs and confirmed that the
+local product identity precedes the special top-degree integral;
+that input calibration is disclosed as a contribution, not counted
+as an independent review of this source.  The exact source and input
+hashes, any subsequent author-separated review, and the R22-to-R23
+scope correction are recorded separately.  Internal review is not
+external peer review or formal verification.

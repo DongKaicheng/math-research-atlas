@@ -1,0 +1,505 @@
+\section{An exact nonlinear flux law and compatible radial source equations}
+\label{sec:r12-radial-flux-source-inversion}
+
+Keep the original $n$-polydisc, $n>q\ge1$, and the single
+fixed original background $S$ of \textup{(PO3)}.  This is
+an explicit family of allowed backgrounds in every remaining
+degree, not a replacement of the arbitrary background in the
+general theorems.  Write $d=q+1$ and retain the original
+radial parameter $t$ and diagonal Gauss map $\sigma$.
+
+For a positive Radon measure $\nu$ on $(0,\infty)$ with
+finite tails, use the \emph{open-tail} convention
+\[
+ H_\nu(t)=\nu((t,\infty)),\qquad t>0.
+ \tag{RF1}
+\]
+Thus $H_\nu$ is right continuous and $-dH_\nu=\nu$
+as distributions on $(0,\infty)$.  An atom at $t$ is
+excluded from $H_\nu(t)$, but included in its left limit.
+This convention is important in the clipping formulas below.
+
+\begin{definition}[Admissible radial slopes and source fluxes]
+\label{def:r12-radial-admissible-flux}
+Let $\mathscr A_q$ be the cone of finite-valued,
+nonnegative, nonincreasing right-continuous functions
+$A:(0,\infty)\to[0,\infty)$ such that
+\[
+                 \int_0^\infty e^{-t}A(t)^d\,dt<\infty.
+ \tag{RF2}
+\]
+Set
+\[
+ F_A(t)=\int_0^t A(s)\,ds,\qquad
+ u_A(x)=-F_A(t(x))\quad(x\ne o),\qquad
+ u_A(o)=-F_A(\infty).
+ \tag{RF3}
+\]
+The value at $o$ may be $-\infty$.  A source $\nu$ is
+\emph{radially flux-compatible} if it has finite tails,
+the function $e^tH_\nu(t)$ is nonincreasing, and
+\[
+              \int_0^\infty e^{t/q}H_\nu(t)^{d/q}\,dt<\infty.
+ \tag{RF4}
+\]
+These are conditions on the ordinary one-dimensional
+Radon datum.  They do not invoke an unknown potential
+or an unspecified solution of a source equation.
+\end{definition}
+
+\begin{theorem}[Exact radial flux and finite-energy inversion]
+\label{thm:r12-exact-radial-flux-inverse}
+Every $A\in\mathscr A_q$ defines an actual extended
+classical psh potential $u_A$ in the original no-loss
+zero-boundary first-energy class.  Its original top source is
+\[
+ \mu_{u_A}=\sigma_*\nu_A,\qquad
+ H_{\nu_A}(t)=e^{-t}A(t)^q.
+ \tag{RF5}
+\]
+Its energy and every mixed first energy have the exact formulas
+\[
+ \begin{split}
+ e(u_A)&=\int_0^\infty e^{-t}A(t)^d\,dt,\\
+ B(u_{A_0},\ldots,u_{A_q})
+     &=\int_0^\infty e^{-t}\prod_{i=0}^q A_i(t)\,dt.
+ \end{split}
+ \tag{RF6}
+\]
+All source identities hold on every original compact smooth
+scalar test and every actual moment refinement.
+
+The source map from these radial potentials is a bijection
+onto the flux-compatible Radon data.  The inverse is explicit:
+\[
+ A_\nu(t)=\bigl(e^tH_\nu(t)\bigr)^{1/q},\qquad
+ u_\nu=-\int_0^{t(\cdot)}
+                     \bigl(e^sH_\nu(s)\bigr)^{1/q}ds.
+ \tag{RF7}
+\]
+For such a datum $u_\nu$ is the unique solution of
+$\widehat\mu_v=\sigma_*\nu$ in the \emph{full} strong
+classical-approximation cone $\mathscr C$, not just among
+radial candidates.  The flux condition is asserted necessary
+only within the displayed radial class; no classification of
+all arbitrary nonradial source measures is claimed.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+explicit fixed allowed background.  The arbitrary-background
+bounded calculus, no-loss extension, first-energy mixed
+calculus, and original radial-shell calibration are frozen
+\texttt{INTERNAL\_INPUT}.
+
+\begin{proof}
+On every interval $(0,R)$ the exponential weight is bounded
+below, so Holder's inequality makes $F_A(R)$ finite.
+The function $F_A$ is nonnegative, increasing and concave,
+with $F_A(0)=0$.  The scalar function
+$z\mapsto-F_A(-z)$ on $z<0$ is convex and nondecreasing.
+The frozen radial/convex composition calculus therefore gives
+the actual extended classical psh function in \textup{(RF3)}.
+One can also construct it by decreasing the bounded classical
+radial potentials with slopes
+\[
+                  A_{N,R}(t)=\min(A(t),N)\mathbf1_{(0,R)}(t).
+ \tag{RF8}
+\]
+Each of these extends across the boundary by a finite linear
+continuation of its radial scalar function.  The limits are
+taken on the original space, with no extension of $K$.
+Their finite values at every finite positive depth show
+that the limit is not identically $-\infty$.  The boundary value of $u_A$ is zero
+because $F_A(t)\to0$ as $t\downarrow0$, and its strict
+negative sublevels are compactly contained smaller polydiscs.
+
+For the moment take a bounded radial slope, clipped to zero
+after a finite depth.  Polarization of the same original
+radial-shell calibration used in \textup{(PO6)} gives
+\[
+ H_{T_{[V],n}(u_A^{[q]},\psi_s^{[n-q]})}(t)
+                      =A(t)^q\mathbf1_{(0,s)}(t)
+ \tag{RF9}
+\]
+at all continuity points.  Here the tail is taken along the
+original diagonal Gauss ray; the formula asserts the full
+original measure identity.  Indeed the top measure of
+$a u_A+b\psi_s$ has tail
+$(aA(t)+b\mathbf1_{(0,s)}(t))^n$ away from jump points.
+The coefficient of $a^qb^{n-q}$ has the same binomial
+factor on both sides of mixed multilinearity, so there is
+no additional factorial.  Right continuity determines the
+measure and all jump masses uniquely.
+
+Insert the fixed background \textup{(PO3)}.  The coefficient
+Fubini argument of \textup{(PO5)}, applied on each fixed
+compact original stage, gives
+\[
+          H_{\mu_{u_A}}(t)
+                =A(t)^q\int_t^\infty e^{-s}ds
+                =e^{-t}A(t)^q.
+ \tag{RF10}
+\]
+For a slope not bounded near zero, first fix $R$.  One has
+\[
+ \sup_V\left|u_{A_{N,R}}-u_{A\mathbf1_{(0,R)}}\right|
+        \le\int_0^R(A-\min(A,N))\,dt\longrightarrow0.
+\]
+Frozen bounded uniform stability therefore gives the
+clipped original source, including on compact sets
+containing the origin.  Away from clipping depth $R$
+its tail is the stated one.  Local boundedness on
+every $(\varepsilon,R)$ gives the same formula there.
+Only after this fixed-$R$ passage do we let $R$ tend
+to infinity, using \textup{(RF11)} below to control
+the entire collapsed tail and the value-truncation loss.
+A compact subset of $V$ stays a positive radial depth
+away from the outer boundary, so the zero-depth boundary
+is not silently added to $V$.
+
+Let $H_A(t)=e^{-t}A(t)^q$.  It is right continuous,
+nonincreasing, finite for $t>0$, and tends to zero at
+infinity.  It therefore defines a unique positive Radon
+measure $\nu_A=-dH_A$ with the displayed open tail.
+Clipping the slope at depth $R$ collapses its entire
+remaining source to that depth:
+\[
+ \nu_{A\mathbf1_{(0,R)}}
+       =\mathbf1_{(0,R)}\nu_A+\nu_A([R,\infty))\delta_R,
+ \qquad
+ \nu_A([R,\infty))=e^{-R}A(R-)^q.
+ \tag{RF11}
+\]
+There is no ambiguity when $A$ jumps at $R$: the left
+limit includes the pre-existing atom.  For $R\ge1$,
+this collapsed mass is bounded by $e^{-R}A(1-)^q$
+after choosing any fixed earlier positive depth instead
+of $1$ if necessary.  In particular it tends to zero.
+
+If $F_A$ is unbounded, its value truncation at $-j$
+corresponds to the unique depth $R_j$ with $F_A(R_j)=j$;
+on any possible plateau one uses the first such depth,
+which gives the same clipped potential.  When $F_A$
+is unbounded its slope cannot vanish at a finite depth,
+so these depths tend to infinity.  Formula \textup{(RF11)}
+proves absence of truncation loss.  If $F_A$ is bounded,
+the potential is already bounded and there is no pole
+loss.  Thus the frozen no-loss class and original source
+in \textup{(RF5)} are established without inferring
+membership from a formally finite nonpluripolar energy.
+
+Integration by parts now gives
+\[
+              \int_0^\infty F_A\,d\nu_A
+                   =\int_0^\infty A(t)H_A(t)\,dt.
+ \tag{RF12}
+\]
+For completeness, both endpoint terms vanish.  At infinity
+$F_A$ grows at most linearly and $H_A$ is exponentially
+bounded.  At zero, monotonicity and Holder imply
+\[
+ F_A(t)A(t)^q
+ \le \left(t^{q/d}\Bigl(\int_0^t A^d\Bigr)^{1/d}\right)
+       \left(t^{-q/d}\Bigl(\int_0^t A^d\Bigr)^{q/d}\right)
+ =\int_0^t A^d\longrightarrow0.
+\]
+The exponential factor does not affect this limit.
+Substitution in \textup{(RF12)} proves the first identity
+in \textup{(RF6)}, hence actual first-energy membership.
+The second follows by polarizing that identity in
+$A_0,\ldots,A_q$, using the frozen symmetric mixed first
+energy.  All integrals are finite by ordinary Holder.
+
+Conversely, the flux hypotheses make $A_\nu$ a member
+of $\mathscr A_q$: the integral in \textup{(RF4)} is
+exactly \textup{(RF2)} after substitution.  Formula
+\textup{(RF5)} constructs $u_\nu$ with the specified
+original Radon source.  The right-continuous tail recovers
+$A$, and integration with boundary value zero recovers
+the radial potential, proving the radial bijection.
+
+Finally suppose any $v\in\mathscr C$ has the same
+original source measure as $u_\nu$.  The literal mixed
+energy extension identifies their curvature functionals
+on every cone member, hence on $\mathbb D_S$.
+The strong discrepancy is zero and frozen separation
+gives $v=u_\nu$ as relative classes.  This proves
+uniqueness in the full cone without asserting radiality
+of arbitrary other source data.
+\end{proof}
+
+\begin{corollary}[A linear compatibility condition for finite radial data]
+\label{cor:r12-finite-radial-data-compatibility}
+Let $\nu$ be a finite positive Radon measure on $(0,\infty)$,
+of total mass $M$.  It is flux-compatible if and only if
+\[
+                         \nu\ge H_\nu(t)\,dt.
+ \tag{RF13}
+\]
+Equivalently, $e^tH_\nu(t)$ is nonincreasing; no further
+finite-energy condition is needed in this finite-mass case.
+The solution \textup{(RF7)} has bounded initial slope
+$A_\nu(0+)=M^{1/q}$, belongs to every finite positive
+power-energy class, and satisfies
+\[
+             e_\alpha(u_\nu)
+                 \le M^{1+\alpha/q}\Gamma(\alpha+1)
+                 \qquad(\alpha>0).
+ \tag{RF14}
+\]
+The same bound holds for its bounded radial truncations.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the exact source theorem, with an explicit datum criterion.
+
+\begin{proof}
+Distributional differentiation gives
+\[
+                 d(e^tH_\nu)=e^t(H_\nu\,dt-\nu).
+\]
+Thus \textup{(RF13)} is exactly monotonicity of the
+right-continuous flux.  Since $H_\nu(0+)=M$,
+compatibility gives $H_\nu(t)\le Me^{-t}$ and
+$A_\nu(t)\le M^{1/q}$.  This proves the energy
+integrability and the initial-slope assertion.  The
+bound $F_{A_\nu}(t)\le M^{1/q}t$ and layer cake yield
+\[
+ \int F_{A_\nu}(t)^\alpha\,d\nu(t)
+ \le M^{\alpha/q}\alpha\int_0^\infty
+                              t^{\alpha-1}H_\nu(t)dt
+ \le M^{1+\alpha/q}\Gamma(\alpha+1).
+\]
+The no-loss proof is already part of the theorem.
+In \textup{(RF11)} each source tail is moved to the
+clipping depth and its potential value becomes the
+corresponding smaller clipped value.  Its power
+energy is therefore no larger than the original
+integral, proving the last assertion.
+\end{proof}
+
+\begin{proposition}[Exact discrepancy and stability of the inverse]
+\label{prop:r12-radial-flux-stability}
+For $A,B\in\mathscr A_q$ one has
+\[
+ I(u_A,u_B)=\int_0^\infty
+               e^{-t}(A-B)(A^q-B^q)\,dt.
+ \tag{RF15}
+\]
+With all norms below taken in $L^d(e^{-t}dt)$,
+\[
+ \|A-B\|_d^d\le I(u_A,u_B)
+   \le q(\|A\|_d+\|B\|_d)^{q-1}\|A-B\|_d^2.
+ \tag{RF16}
+\]
+Consequently strong convergence in this radial class
+is exactly convergence of slopes in this weighted
+$L^d$ space.  For compatible sources it is equivalently
+\[
+ \int_0^\infty e^{t/q}
+       |H_{\nu_j}(t)^{1/q}-H_\nu(t)^{1/q}|^d\,dt
+                                                        \longrightarrow0.
+ \tag{RF17}
+\]
+In particular, vaguely convergent compatible finite
+data of uniformly bounded total mass have strongly
+convergent solutions, provided the vague limit is
+taken on $(0,\infty)$; the conclusion includes loss
+of source mass through the excluded outer boundary.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for
+the exact radial nonlinear inverse; no general data
+continuity outside this fixed-background family is inferred.
+
+\begin{proof}
+Apply the original discrepancy identity and then
+integrate by parts, with the vanishing endpoint
+terms justified as in \textup{(RF12)}.  This gives
+\[
+ I(u_A,u_B)
+  =\int(F_A-F_B)d(\nu_A-\nu_B)
+  =\int(A-B)(H_{\nu_A}-H_{\nu_B})dt,
+\]
+which is \textup{(RF15)}.  For nonnegative scalars
+$a,b$ and integer $q\ge1$,
+\[
+ |a-b|^{q+1}\le(a-b)(a^q-b^q)
+                      \le q(a+b)^{q-1}|a-b|^2.
+\]
+Integrate the first inequality.  Holder with exponents
+$d/(q-1)$ and $d/2$, followed by Minkowski, proves
+the second; for $q=1$ it is simply an equality.
+The energy identity in \textup{(RF6)} makes the
+topological equivalence immediate.  Substitution
+of \textup{(RF7)} gives \textup{(RF17)}.
+
+For the final statement let the total masses be
+bounded by $M$.  Compatibility gives the uniform
+tail bound $H_{\nu_j}(t)\le Me^{-t}$, so no mass
+can escape to infinity.  Vague convergence therefore
+implies tail convergence at every continuity point
+of the limit tail, by first restricting to a compact
+interval and then using the exponential bound.
+The limit is finite and compatible: the distributional
+inequality \textup{(RF13)} passes locally to the limit,
+and its tails obey the same bound.  Almost-everywhere
+convergence of $A_{\nu_j}$, their uniform bound
+$M^{1/q}$, and dominated convergence in $L^d(e^{-t}dt)$
+prove strong convergence.  Source mass may escape to
+zero, which is outside $V$'s ordinary radial domain;
+the proof does not assert preservation of total mass
+under this vague convergence.
+\end{proof}
+
+\subsection{An explicit nonpolar datum with no full-cone source solution}
+
+\begin{theorem}[A positive-capacity atom and its exact variational replacement]
+\label{thm:r12-positive-capacity-atom-source-obstruction}
+Fix $R>0$, write $E_R=1-e^{-R}$, and let
+\[
+ \lambda_R=\delta_{\sigma(R)},\qquad
+ \ell_R(h)=-h(\sigma(R)),\qquad
+ c_R=\left(\frac R{E_R}\right)^{1/q},\qquad
+ v_R=c_R\psi_R.
+ \tag{RF18}
+\]
+The datum is a literal positive Radon measure supported
+at a point of positive full outer capacity.  It is
+dominated by the actual bounded source
+$e^R\mu_{\psi_R}$, so $\ell_R\in\mathbb D_{S,\mathrm s}^*$.
+Its exact norm and its unique variational maximizer
+over the entire completed cone are
+\[
+       \|\ell_R\|_* =\frac R{E_R^{1/d}},\qquad
+       \mathop{\rm argmax}_{a\in\mathscr C}
+                  \{\ell_R(a)-e(a)/d\}=v_R.
+ \tag{RF19}
+\]
+Nevertheless there is no $a\in\mathscr C$ satisfying
+$\widehat\mu_a=\lambda_R$ on all original tests.
+Indeed the maximizer has the different exact source
+\[
+ \widehat\mu_{v_R}
+     =\frac R{E_R}\,
+           \sigma_*\bigl(\mathbf1_{(0,R)}e^{-s}ds+e^{-R}\delta_R\bigr).
+ \tag{RF20}
+\]
+Thus positive-capacity support, domination by an actual
+bounded source, and all finite power-energy bounds on
+the variational solution do not suffice for the
+unrestricted source equation.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.  The
+unrestricted source-existence claim under only the
+listed conditions is \texttt{FALSE}, in every $q\ge1$.
+The background remains the single explicit allowed
+current \textup{(PO3)}.
+
+\begin{proof}
+Positivity of capacity and the literal atom bound
+follow from \textup{(PO4)}.  Frozen strong tester
+continuity against the fixed actual source proves
+strong continuity of $\ell_R$; this is literal
+evaluation at a non-null point, not the nonliteral
+null-fiber evaluation considered elsewhere.
+
+For arbitrary $a\in\mathscr C$ put
+$F_a(t)=-a(\sigma(t))$.  The completed trace theorem
+makes $F_a$ nonnegative and concave with $F_a(0)=0$.
+Its chord bound on $[0,R]$ gives
+\[
+ \begin{split}
+ B(a,\psi_R^{[q]})
+   &=\int_0^R F_a(s)e^{-s}ds+e^{-R}F_a(R)\\
+   &\ge\frac{F_a(R)}R
+             \left(\int_0^R se^{-s}ds+Re^{-R}\right)
+     =\frac{E_R}{R}F_a(R).
+ \end{split}
+ \tag{RF21}
+\]
+Mixed Holder bounds the left side by $r(a)E_R^{q/d}$.
+Consequently $\ell_R(a)\le R E_R^{-1/d}r(a)$,
+with equality at a positive multiple of $\psi_R$.
+The cone/difference dual norm identity proves the
+first assertion of \textup{(RF19)}.  Optimizing
+$cr\mapsto\ell_R(c\psi_R)-e(c\psi_R)/d
+=cR-c^dE_R/d$ gives $c=c_R$, and the same norm
+bound proves this is a global maximizer on the full
+cone.  Frozen strict midpoint energy separation
+proves uniqueness.  No radiality assumption is
+imposed on the competitors in this argument.
+
+Homogeneity of the original source gives
+\textup{(RF20)}.  Its diffuse positive measure on
+every compact radial subinterval of $(0,R)$ makes
+it different from $\lambda_R$.  This difference is
+visible on original compact smooth scalar tests:
+choose a nonnegative smooth compact real function
+$\chi$ supported in $(-R,0)$ and put, on the
+coordinate-unit torus,
+$\eta=\prod_{i=1}^n\chi(\log|T_i|)$, extended
+by zero near all coordinate zero loci.  Its support
+is an ordinary compact polyannulus in $V$,
+$\eta(\sigma(R))=0$, and its integral against
+\textup{(RF20)} is strictly positive when $\chi$
+is not identically zero.  Thus the discrepancy is
+not merely a failure on auxiliary or delta tests.
+
+If an $a\in\mathscr C$ solved the source equation,
+then $J(a)=\ell_R$ by literal integration on the
+energy-difference space.  The differentiable energy
+support inequality makes such an $a$ a variational
+maximizer.  Uniqueness would force $a=v_R$, in
+contradiction with \textup{(RF20)} and the preceding
+original test.  This proves full-cone nonexistence.
+\end{proof}
+
+\begin{corollary}[The normal residual is exactly a concavity defect]
+\label{cor:r12-radial-atom-normal-concavity}
+For the datum and maximizer in \textup{(RF18)}, the
+normal functional $n_R=\ell_R-J(v_R)$ satisfies,
+for every $a\in\mathscr C$,
+\[
+ n_R(a)=-\frac R{E_R}\int_0^R
+          \left(F_a(s)-\frac{s}{R}F_a(R)\right)e^{-s}ds\le0.
+ \tag{RF22}
+\]
+It vanishes precisely on those cone members whose
+actual radial trace is linear on $[0,R]$.
+In particular $n_R(v_R)=0$, but $n_R$ is nonzero
+as an original-test functional.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} exact
+geometric description of one full-cone normal face.
+
+\begin{proof}
+Use \textup{(PO4)} and $c_R^q=R/E_R$ to expand
+$J(v_R)(a)$.  Since
+$\int_0^Rse^{-s}ds=E_R-Re^{-R}$, the result is
+\textup{(RF22)}.  The integrand is nonnegative by
+concavity and continuous, so its weighted integral
+vanishes exactly when it vanishes identically.
+That is precisely the asserted linearity.  The
+original test constructed above gives a nonzero
+value of the residual, so its negativity on the
+potential cone is not an equality on the original
+smooth test sheaf.
+\end{proof}
+
+\paragraph{What this advances, and what it does not.}
+The flux condition gives an explicit compatible
+nonlinear source class, a literal actual solution,
+full-cone uniqueness, and a quantified strong inverse
+in every remaining degree.  The atom computation
+identifies a nonzero normal residual as a concrete
+concavity defect, rather than assuming it vanishes
+because the datum is positive or capacity controlled.
+It is a full-dimensional stress test for the general
+source problem, not a universal classification of
+arbitrary-$S$ sources and not a proof of OPEN-GQ or
+OPEN-CTO.  No auxiliary analytic field, change of
+absolute value, or restriction to toric test forms
+is used in any displayed current equality.

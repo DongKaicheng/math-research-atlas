@@ -1,0 +1,390 @@
+\section{Positive level currents and an intrinsic energy disintegration}
+\label{sec:r11-level-disintegration}
+
+The construction in this section applies to every allowed original
+background.  It introduces positive currents carried by the level sets
+of a bounded difference of classical psh functions.  They need not be
+closed.  Their exact differential defect is retained, and their
+Lebesgue integral recovers the energy current.  In particular no
+arbitrary-current pullback, auxiliary residue field, or analytic
+PS-relation quotient occurs in the construction.
+
+Keep the original finite extension $K/\mathbf Q_p$ and its absolute
+value.  Let $X$ be good, Hausdorff, boundaryless, quasi-smooth and pure
+of dimension $n$, and let $U\subset X$ be ordinary open.  Every test
+below is an original compactly supported smooth CLD test, of its
+complementary bidegree.  Let $Q$ be an arbitrary symmetric
+middle-positive, separately $d'$- and $d''$-closed current of degree
+$(p,p)$, where $0\le p<n$.  Write $D=d'd''$.  A bounded difference
+means a function $f=a-b$, with $a,b$ locally bounded classical psh;
+all assertions are local, and finitely many such presentations may
+be used on a compact test support.
+
+The inputs are the frozen bounded weighted BT calculus, finite
+polarization, strict Borel maximum locality, and coefficient-Radon
+control on all original tests.  These are
+\texttt{INTERNAL\_INPUT}.  In particular $D(fQ)$ is a signed
+coefficient-Radon current, defined by linearity from the two bounded
+classical potentials.
+
+\subsection{The bounded-difference chain rule}
+
+\begin{lemma}[Smooth scalar calculus on bounded differences]
+\label{lem:r11-bounded-difference-chain}
+The distribution
+\[
+ \Gamma_Q(f,g)
+ =\frac12\{D(fgQ)-fD(gQ)-gD(fQ)\}
+ \tag{LC1}
+\]
+is a symmetric coefficient-Radon current of degree $(p+1,p+1)$.
+It is bilinear, and $\Gamma_Q(f):=\Gamma_Q(f,f)$ is
+middle-positive.  On every relatively compact witness stage,
+for a smooth real function $F$ on an interval containing the range
+of $f$, one has
+\[
+ D(F(f)Q)=F'(f)D(fQ)+F''(f)\Gamma_Q(f),
+ \qquad
+ \Gamma_Q(F(f),g)=F'(f)\Gamma_Q(f,g).
+ \tag{LC2}
+\]
+All multipliers use the given actual Borel values.  The formulas
+are independent of the psh presentation of $f,g$ and of every
+actual moment refinement.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+frozen weighted bounded calculus.  The passage from top-degree
+energy measures to lower-degree coefficient currents is included
+in the following argument.
+
+\begin{proof}
+Take simultaneous smooth decreasing classical rows for the finitely
+many psh summands on a compact regularization stage.  The smooth
+identity for (LC1) is
+\[
+ \Gamma_Q(f,g)
+ =\tfrac12(d'f\wedge d''g+d'g\wedge d''f)\wedge Q.
+\]
+For $f=g$ the first factor is strongly positive, so the current is
+middle-positive.  The two weighted terms in (LC1) converge by the
+frozen weighted theorem, and the first term converges by bounded
+convergence against the fixed coefficient measures of $Q$.
+Thus (LC1) is the distributional limit of positive currents when
+$f=g$.  The original positive-current coefficient theorem makes
+it coefficient-Radon; polarization treats $f,g$.  This proof works
+in every permitted bidegree, not only in top degree.
+
+For completeness, a smooth function $H$ of finitely many bounded
+psh variables is locally a difference of two smooth convex,
+coordinatewise nondecreasing functions of those variables.  On a
+slightly larger compact real box, add a sufficiently large positive
+multiple of $\sum x_i^2$, followed by a sufficiently large linear
+multiple of $\sum x_i$.  The resulting function and the added
+function are convex and coordinatewise nondecreasing on that box.
+Their compositions with the psh variables are bounded classical
+psh functions.  Applied to decreasing rows, each such composition
+decreases to the actual composition.  This gives, in particular,
+bounded-difference presentations for $F(f)$ and all smooth scalar
+coefficients needed in the smooth chain identities.
+
+One can therefore pass every weighted term of those identities by
+the frozen joint decreasing theorem after the indicated finite
+decompositions.  For an energy term multiplied by a smooth scalar
+coefficient, expand (LC1): the $D(f^2Q)$ term is a difference of
+bounded one-potential BT currents by the same convex decomposition
+of $f^2$, and its coefficient, as well as the coefficients of
+$fD(fQ)$, has such a decomposition.  Every passage is consequently
+a finite combination of the already proved weighted BT passages.
+This proves both formulas in (LC2).  They involve only intrinsic
+distributional operations and actual coefficient multiplication,
+which proves independence of the chosen witnesses and refinements.
+\end{proof}
+
+\begin{definition}[The level curvature current]
+\label{def:r11-level-current}
+For a bounded difference $f$ and $t\in\mathbf R$ put
+\[
+ \mathsf L^Q_f(t)
+ :=D(\max\{f,t\}\,Q)
+                 -\mathbf1_{\{f>t\}}D(fQ).
+ \tag{LC3}
+\]
+The first current is well defined: if $f=a-b$, then
+$\max\{f,t\}=\max\{a,b+t\}-b$ is again a bounded
+difference.  Formula (LC3) is the definition, not an assertion
+that a Borel-restricted closed current is closed.
+\end{definition}
+
+\begin{theorem}[Positivity, carriers, and the differential defect]
+\label{thm:r11-positive-level-current}
+For every real $t$, $\mathsf L^Q_f(t)$ is a middle-positive
+coefficient-Radon current of degree $(p+1,p+1)$ and is carried by
+the actual Borel set $\{f=t\}$.  More precisely,
+\[
+ \mathbf1_{\{f\ne t\}}\mathsf L^Q_f(t)=0.
+ \tag{LC4}
+\]
+Its separate derivatives are exactly
+\[
+ \begin{split}
+ d'\mathsf L^Q_f(t)
+       &=-d'\bigl(\mathbf1_{\{f>t\}}D(fQ)\bigr),\\
+ d''\mathsf L^Q_f(t)
+       &=-d''\bigl(\mathbf1_{\{f>t\}}D(fQ)\bigr).
+ \end{split}
+ \tag{LC5}
+\]
+No vanishing of these derivatives is asserted when $p+1<n$.
+The construction is local in the original ordinary topology and
+commutes with every actual refinement of the same functions and tests.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Choose a smooth convex $\psi_\epsilon:\mathbf R\to\mathbf R$
+which is zero on $(-\infty,0]$, has derivative in $[0,1]$, and
+has derivative one on $[\epsilon,\infty)$.  It can be obtained by
+integrating twice a nonnegative smooth function of integral one
+supported in $(0,\epsilon)$.  It satisfies
+\[
+ |\psi_\epsilon(s)-s_+|\le\epsilon,
+ \qquad
+ \psi_\epsilon'(s)\longrightarrow\mathbf1_{\{s>0\}}
+                   \quad\text{at every real }s.
+\]
+The chain identity (LC2) gives
+\[
+ D(\psi_\epsilon(f-t)Q)
+        -\psi_\epsilon'(f-t)D(fQ)
+            =\psi_\epsilon''(f-t)\Gamma_Q(f)\ge0.
+ \tag{LC6}
+\]
+On a compact original test support the first term tends to
+$D((f-t)_+Q)$ by uniform convergence and the fixed coefficient
+Radon bounds for $Q$.  The second tends to
+$\mathbf1_{\{f>t\}}D(fQ)$ by bounded convergence against the
+fixed signed coefficient measures of $D(fQ)$.  As $D(tQ)=0$,
+the limiting distribution is (LC3).  Positivity is closed under
+this convergence on all original tests, proving the claim.
+
+To identify its carrier, use $\max\{f,t\}=\max\{a,b+t\}-b$.
+Strict Borel maximum locality gives
+\[
+ \begin{split}
+ \mathbf1_{\{f>t\}}D(\max\{f,t\}Q)
+        &=\mathbf1_{\{f>t\}}D(fQ),\\
+ \mathbf1_{\{f<t\}}D(\max\{f,t\}Q)&=0.
+ \end{split}
+\]
+This is a coefficient-measure identity; neither strict Borel set
+is being declared ordinary open.  Subtracting the second term
+of (LC3) proves (LC4).  Applying $d'$ and $d''$ to (LC3),
+and using $d'D=d''D=0$, proves (LC5).  Finally every term in
+the definition already has the original all-test and refinement
+meaning, so no additional descent is needed.
+\end{proof}
+
+\subsection{Coarea on all original tests}
+
+\begin{theorem}[Lebesgue disintegration of the energy current]
+\label{thm:r11-level-coarea}
+For every bounded Borel function $\vartheta:\mathbf R\to\mathbf R$
+and every original compact smooth complementary test $\eta$,
+\[
+ \int_{\mathbf R}\vartheta(t)
+                 \langle\mathsf L^Q_f(t),\eta\rangle\,dt
+       =\langle\vartheta(f)\Gamma_Q(f),\eta\rangle.
+ \tag{LC7}
+\]
+The integration is local on the test support: levels outside a
+compact interval containing its nearby $f$-range give zero.
+In particular,
+\[
+ \int_{\mathbf R}\mathsf L^Q_f(t)\,dt=\Gamma_Q(f),
+ \qquad
+ \mathbf1_{\{f=t\}}\Gamma_Q(f)=0\quad(t\in\mathbf R).
+ \tag{LC8}
+\]
+The second identity holds for every level, including levels
+charged by $D(fQ)$.
+
+For a fixed positive trace on a compact moment stage, the resulting
+positive scalar measures satisfy the full kernel formula
+\[
+ \int_B \mathsf L^Q_f(t)(E)\,dt
+       =\Gamma_Q(f)(E\cap\{f\in B\})
+ \tag{LC9}
+\]
+for Borel $B\subset\mathbf R$ and Borel $E$ in that stage.
+Here the notation in (LC9) refers to the chosen scalar trace;
+finite polarization recovers every original coefficient pairing.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+First take $\vartheta\in C_c^\infty(\mathbf R)$ and set
+\[
+ F(s)=\int_{\mathbf R}\vartheta(t)(s-t)_+\,dt.
+\]
+Then $F''=\vartheta$ and
+$F'(s)=\int_{t<s}\vartheta(t)\,dt$.  The function $F$ is
+smooth.  On a compact test support the integrands in the
+potential term of (LC3) are uniformly bounded, while the
+restricted-curvature term is controlled by the fixed total
+variations of $D(fQ)$.  Fubini and distributional differentiation
+therefore give
+\[
+ \int\vartheta(t)\mathsf L^Q_f(t)\,dt
+      =D(F(f)Q)-F'(f)D(fQ)
+      =\vartheta(f)\Gamma_Q(f).
+\]
+The last equality is (LC2).
+
+For a positive compact smooth trace test, the map
+$t\mapsto\langle\mathsf L^Q_f(t),\eta\rangle$ is
+nonnegative and Borel: the maximum term is continuous in $t$
+on each compact support, and the restricted signed-measure term
+is Borel by ordinary dominated integration.  Its integral is
+finite on every relevant compact interval by the proved formula
+with a smooth cutoff equal to one there.  Uniqueness of finite
+Radon measures on $\mathbf R$ extends the formula from smooth
+$\vartheta$ to bounded Borel $\vartheta$.  A finite collection
+of positive trace tests dominates all coefficient variations
+on a compact stage, so finite polarization gives (LC7) for
+every original $\eta$.
+
+For a fixed scalar trace, weak Borel measurability of the positive
+Radon measures $\mathsf L^Q_f(t)$ implies measurability of their
+values on Borel sets.  This can also be checked directly by
+approximating open-set indicators from a countable continuous
+core on a relatively compact affinoid stage and then using the
+monotone-class theorem.  Formula (LC7), first for compact
+continuous scalar weights on the stage and then by Radon
+uniqueness, gives (LC9).  These arguments are local on finitely
+many such stages and do not impose global second countability
+on $X$.
+
+Taking $B=\{t\}$ in (LC9) proves the zero-level energy assertion,
+because Lebesgue measure has no atoms.  Taking $\vartheta=1$
+on the local range proves the first identity in (LC8).
+\end{proof}
+
+\begin{corollary}[A localized bounded-variation energy density]
+\label{cor:r11-energy-bv-density}
+Suppose now that $p=n-1$, so the level currents are measures.
+For an original smooth compact $\chi\ge0$ define the finite
+signed measure on $\mathbf R$
+\[
+ \nu_{\chi,f,Q}
+  :=f_*\bigl(\chi D(fQ)+\Gamma_Q(\chi,f)\bigr).
+ \tag{LC10}
+\]
+Then $\nu_{\chi,f,Q}(\mathbf R)=0$, and for every $t\in\mathbf R$
+\[
+ k_{\chi,f,Q}(t):=\int\chi\,d\mathsf L^Q_f(t)
+       =\nu_{\chi,f,Q}(( -\infty,t])\ge0.
+ \tag{LC11}
+\]
+Thus $k$ is a right-continuous compactly supported BV function,
+$\operatorname{Var}(k)\le|\nu_{\chi,f,Q}|(\mathbf R)$, and
+\[
+ f_*(\chi\Gamma_Q(f))=k_{\chi,f,Q}(t)\,dt,
+ \qquad
+ \|k_{\chi,f,Q}\|_\infty
+                     \le|\nu_{\chi,f,Q}|(\mathbf R).
+ \tag{LC12}
+\]
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+The compact Stokes identity gives
+$\int\chi D(fQ)=-\int\Gamma_Q(\chi,f)$, hence total mass
+zero in (LC10).  Apply the first-derivative chain identity to the
+one-sided smooth truncations used in (LC6).  Their uniform
+convergence and the pointwise convergence of their derivatives
+give
+\[
+ \int\chi D(\max\{f,t\}Q)
+       =-\int_{\{f>t\}}\Gamma_Q(\chi,f).
+\]
+All limits here concern the fixed finite mixed energy measure;
+its total variation is finite by Cauchy--Schwarz.  Subtracting
+the strict curvature term of (LC3) yields
+$k(t)=-\nu_{\chi,f,Q}((t,\infty))$, which is (LC11).
+The support of $\chi$ and its differential is compact, and
+$f$ is bounded on a neighborhood of that support, so $\nu$
+and $k$ have the claimed compact support.  The BV and norm
+bounds are the elementary cumulative-measure bounds.  Finally
+(LC7) identifies the pushforward density with $k$.
+\end{proof}
+
+\begin{proposition}[A nonclosed level current on the original two-torus]
+\label{prop:r11-nonclosed-level-example}
+The conclusion that every positive level current in
+Theorem~\ref{thm:r11-positive-level-current} is separately closed is
+\texttt{FALSE}, even when the potential is smooth and classical and
+the background is the original integration current.  This failure
+occurs in every dimension $n\geq2$.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} counterexample.
+
+\begin{proof}
+First take $X=(\mathbf G_{m,K}^2)^{\mathrm{an}}$, set
+$t_i=-\log|T_i|$, and work on the ordinary domain
+$U=\{|t_1|<1,\ |t_2|<1\}$.  Put
+\[
+ Q=[U],\qquad f=t_1^2+t_2,\qquad
+ B_1=d't_1\wedge d''t_1.
+ \tag{LC13}
+\]
+The function $f$ is bounded, original smooth and classical psh:
+its convex moment expression has positive semidefinite Hessian.
+One has $D(fQ)=2B_1\wedge[U]$.  The distributional derivative of
+the half-space indicator in the two original moment coordinates
+therefore gives
+\[
+ d'\mathsf L_f^Q(0)
+ =-2\delta(t_1^2+t_2)\,d't_2\wedge B_1\wedge[U].
+ \tag{LC14}
+\]
+This can be verified directly by the smooth one-sided functions
+from (LC6): their derivatives converge to the strict indicator,
+and ordinary real integration by parts in the moment variables
+gives the displayed hypersurface distribution.
+
+Choose $\rho\in C_c^\infty((-1,1)^2)$ nonnegative and positive
+on a nonempty segment of $\{(s,-s^2):|s|<1/2\}$.
+The original smooth form $\rho(t_1,t_2)d''t_2$ has compact
+support in $U$: the inverse image of the compact moment support
+is a compact polyannulus.  Original tropical calibration of the
+two-torus has multiplicity one, so its pairing with (LC14),
+up to the fixed orientation convention, has absolute value
+\[
+ 2\int_{-1}^{1}\rho(s,-s^2)\,ds>0.
+ \tag{LC15}
+\]
+Thus $d'\mathsf L_f^Q(0)\ne0$.  By symmetry the double-prime
+defect is nonzero as well.  In higher dimensions take the product
+with $n-2$ original open annuli, keep $f$ independent of the extra
+coordinates, and wedge the test with a positive compact moment
+volume form in those coordinates.  Its nonzero pairing is the
+product of (LC15) with a strictly positive real integral.  This
+uses actual original tests in every dimension; no delta-test
+enlargement is used.
+\end{proof}
+
+\paragraph{Closedness and the relation to the general target.}
+The currents $\mathsf L^Q_f(t)$ provide an actual level
+disintegration of energy, rather than a disintegration of an
+arbitrary BT curvature measure into closed backgrounds.
+Equation (LC5) is indispensable below top degree.  In particular
+one cannot insert each level current into the frozen closed-background
+calculus and integrate without separately resolving that derivative
+defect.  Neither general OPEN-GQ nor general Borel regularity of
+the raw relative BT capacity is inferred from this construction.

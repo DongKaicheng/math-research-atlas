@@ -1,0 +1,134 @@
+\section{A residue-field section is stronger than finite unit lifting}
+\label{sec:r13-residue-field-section-obstruction}
+
+Let \(k\) be the original finite residue field.  Finite
+surjectivity from a residue local ring, used in ML and UA,
+does not supply a field section preserving all algebraic
+relations.  The following example stays over \(k\).
+
+\begin{proposition}[A smooth proper divisor without a rational coefficient-field section]
+\label{prop:r13-no-rational-residue-field-section}
+There are a smooth projective rational threefold \(V/k\)
+and a smooth proper integral divisor \(D\subset V\) such
+that the residue map
+\[
+             \mathcal O_{V,\eta_D}\longrightarrow k(D)
+\tag{RE1}
+\]
+has no \(k\)-algebra section defined on the whole field
+\(k(D)\).
+\end{proposition}
+
+\begin{proof}
+Choose the smooth plane cubic \(E\subset\mathbf P^2_k\)
+defined by
+\[
+ \begin{cases}
+ Y^2Z=X^3-XZ^2,&\operatorname{char}k\ne2,\\
+ Y^2Z+YZ^2=X^3,&\operatorname{char}k=2.
+ \end{cases}
+\tag{RE2}
+\]
+In odd characteristic its affine possible singular
+points have \(Y=0\) and \(X\in\{0,1,-1\}\);
+the derivative in \(X\) is respectively \(1,-2,-2\).
+The point at infinity is smooth because its derivative
+in \(Z\) is nonzero.  In characteristic two the three
+partial derivatives are \(X^2,Z^2,Y^2\), with no
+common projective zero.  Thus \(E\) is smooth in
+either case, and a smooth plane cubic has genus one.
+
+Put
+\[
+ V=\mathbf P^2_k\times\mathbf P^1_k,
+ \qquad D=E\times\mathbf P^1_k.
+\tag{RE3}
+\]
+These are smooth and projective, and \(D\) is a
+Cartier divisor.  Their function fields are
+\(k(V)=k(x,y,s)\) and \(k(D)=k(E)(s)\).
+If RE1 had a field section, its composition with
+the inclusion in \(k(V)\), restricted to \(k(E)\),
+would give a \(k\)-embedding
+\[
+                         k(E)\hookrightarrow k(x,y,s).
+\tag{RE4}
+\]
+It would define a dominant rational map
+\(\mathbf P^3_k\dashrightarrow E\).
+
+Base change to an algebraic closure.  Choose two
+points in its open domain having distinct images,
+and take the projective line through them.  The
+restricted rational map on that line is nonconstant.
+It induces an inclusion
+\(\bar k(E)\subset\bar k(t)\).  The field-theoretic
+L\"uroth theorem, valid in every characteristic,
+makes this intermediate field rational.  This
+contradicts the genus-one property.  Therefore
+RE4, and hence the proposed section, cannot exist.
+\end{proof}
+
+The proposition refutes the stronger prescription
+of choosing all rational residue lifts as one
+relation-preserving coefficient-field section.
+Every fixed finite list still lifts individually
+through RE1, and the ordinary product and finite
+strict-comparison arguments of CC, UA and UF are
+unaffected.
+
+\begin{corollary}[Two units and one relation need not lift exactly]
+\label{cor:r13-finite-relation-no-exact-lift}
+Let \(x_E,y_E\in k(E)^\times\subset k(D)^\times\)
+be the affine coordinates of RE2.  There are no units
+\(X,Y\in\mathcal O_{V,\eta_D}^\times\) reducing to
+\(x_E,y_E\) and satisfying the corresponding equation
+\[
+ \begin{cases}
+ Y^2=X^3-X,&\operatorname{char}k\ne2,\\
+ Y^2+Y=X^3,&\operatorname{char}k=2.
+ \end{cases}
+\tag{RE5}
+\]
+\end{corollary}
+
+\begin{proof}
+Such units would define a homomorphism from the
+integral affine coordinate ring of \(E\) to \(k(V)\).
+Its kernel is prime.  A nonzero prime in this
+one-dimensional affine domain is maximal and has
+residue field algebraic over \(k\).  This is
+incompatible with the transcendental residues
+\(x_E,y_E\).  Hence the homomorphism is injective
+and extends to \(k(E)\hookrightarrow k(V)\),
+contradicting the proof above.
+\end{proof}
+
+\paragraph{The estimate left outside the core fiber.}
+The direct polynomial comparison in UF has
+\(|\widehat A-A_0|<1\).  In its completed core
+fiber \(|A_0|=1\), which gives the needed relative
+strict inequality.  On a different ray a chosen
+surface numerator can instead have order \(a>0\),
+while the first normal error has order \(m>0\).
+The comparison then requires \(a<m\); it need
+not follow when \(a\ge m\).  A finite Taylor
+cancellation alone supplies only a finite error
+order; absent an additional divisibility or
+relative bound, it does not control arbitrary
+later rays.  The proposition
+explains why a universal rational coefficient
+section cannot be assumed to remove all such
+errors.  It is not a counterexample to finite
+controlled correction or to intrinsic descent.
+
+\paragraph{Classical input checked.}
+The all-characteristic algebraic form of L\"uroth's
+theorem was checked in M.~Musta\c t\u a,
+\emph{Lecture 1. Definitions and first examples},
+Theorem~2.1 and its algebraic proof on pp.~4--6,
+\url{https://public.websites.umich.edu/~mmustata/lecture1_rationality.pdf},
+accessed 2026-11-15.  Only that classical field theorem
+is imported; the divisor-section obstruction above
+is the displayed deduction.
+

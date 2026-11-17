@@ -1,0 +1,533 @@
+\section{Fixed all-test strict sources need not have a density neighborhood of solvability}
+\label{sec:r17-fixed-strict-source-nonopenness}
+
+\paragraph{Status and precise purpose.}
+This section proves a new original-category obstruction at a
+\emph{fixed} reference source. It is not a new parameterized existence
+theorem. The reference potential already permits both signs of every
+original compact smooth scalar direction. Nevertheless arbitrarily
+small strictly positive original smooth density changes can leave
+the source image of the entire prescribed strong completion.
+The proof uses remaining degree one, where a linear moment identity
+is valid. No nonlinear Gauss-trace pushforward is asserted.
+
+The new statements have status \texttt{NEW\_PROVED} relative to the
+frozen R12--R16 chain, subject to the author-separated audit recorded
+in the companion ledger. The existing simultaneous probe, canonical
+convex Gauss traces, global Green energy, and literal fixed-source
+domination are \texttt{INTERNAL\_INPUT}; they are not reproved as
+new. The full completed moment-Laplacian identity itself is already
+SO6, following DO6--DO9; the additional $H_0^1$ boundary and
+contraction statement below is new. Ordinary real Green theory
+and almost-everywhere differentiability of a monotone function
+are explicitly identified \texttt{EXTERNAL\_KNOWN} inputs.
+
+\subsection{One allowed original background, with all original tests retained}
+
+Fix the prescribed finite extension $K/\mathbf Q_p$, its unchanged
+absolute value, and an original uniformizer $\pi$. Set
+$\lambda=-\log|\pi|>0$ and
+\[
+ \begin{split}
+ X&=(\mathbf G_{m,K}^{2})^{\rm an},\qquad
+ t=(\log|T_1|,\log|T_2|),\\
+ Q&=(-\lambda,\lambda)^2,\qquad V=t^{-1}(Q),\\
+ \beta&=d't_1\wedge d''t_1+d't_2\wedge d''t_2,
+ \qquad S=\beta\wedge[X].
+ \end{split}
+ \tag{FP1}
+\]
+The closed box lies in the ordinary interior of the original compact
+affinoid $t^{-1}([-2\lambda,2\lambda]^2)$, and $S$ extends to a
+neighborhood of that larger box. All radii are in the original value
+group. This is an allowed symmetric middle-positive separately
+$d'$- and $d''$-closed background, here in fact supplied by a smooth
+strongly positive form. This additional description is specific to
+the counterexample; no general positivity cones are identified.
+Here $n=2$, $p=1$, $q=1$, and $d=2$.
+
+Let $\mathscr C$ be the unchanged relative Borel strong completion
+with its printed approximation boundary condition, and let
+$\mathbb D=\mathscr C-\mathscr C$. Its quadratic mixed energy is
+$B$, so $I(a,b)=B(a-b,a-b)$. Write $\mu_u$ for its completed
+source measure. Actual defining functions retain boundedness where
+used, finite mass, compact strict negative sublevels, and the original
+canonical no-loss conditions. No ordinary boundary value is simply
+postulated for an arbitrary completed member.
+
+Let $\sigma:Q\to V$ be the original joint Gauss section. Frozen
+NF supplies a canonical finite nonpositive convex trace $g_u$ for
+each $u\in\mathscr C$. It is additive, homogeneous, locally uniform
+under strong convergence, and agrees with $u\circ\sigma$ only
+Lebesgue-almost everywhere for a general relative representative.
+All arguments below use this canonical trace; no point value of a
+Borel class at an outer-null Gauss point is chosen.
+The printed NF unit box is replaced by $Q$ using the same proof
+after a real affine coordinate rescaling; the original field,
+absolute value and moment map are unchanged. Formula (FP6) below
+independently fixes the energy normalization in the present coordinates.
+
+\subsection{The degree-one moment equation and its completed zero boundary}
+
+\begin{lemma}[A continuous zero-boundary distribution with an energy bound]
+Let $Q\subset\mathbf R^2$ be a bounded open rectangle. Suppose
+$g\in C(\overline Q)$, $g|_{\partial Q}=0$, and for some $C<\infty$,
+\[
+ \left|\int_Qg\,\Delta\varphi\,dx\right|
+                   \le C\|\nabla\varphi\|_{L^2(Q)}
+                    \quad(\varphi\in C_c^\infty(Q)).
+ \tag{FP2}
+\]
+Then $g\in H_0^1(Q)$ and $\|\nabla g\|_2\le C$.
+\end{lemma}
+
+\begin{proof}
+Extend $g$ continuously by zero outside $Q$. Let $Q_\varepsilon$
+be inner rectangles exhausting $Q$, and mollify with a nonnegative
+even kernel of radius less than half the distance of
+$Q_\varepsilon$ to $\partial Q$, obtaining $g_\varepsilon$.
+For a smooth test on $Q_\varepsilon$, move the convolution onto
+the test in (FP2). Its support stays in $Q$, and convolution
+does not increase its $L^2$ gradient norm. Density therefore gives
+\[
+ \|\Delta g_\varepsilon\|_{H^{-1}(Q_\varepsilon)}\le C,
+ \tag{FP3}
+\]
+where $H_0^1$ is normed by the gradient.
+
+Let $H_\varepsilon$ be the harmonic extension of the smooth
+boundary values $g_\varepsilon|_{\partial Q_\varepsilon}$.
+Rectangles are regular for the ordinary Dirichlet problem. Equivalently
+one may minimize the real Dirichlet energy with those smooth trace
+values; the weak maximum principle and the elementary rectangle
+barriers give its continuous boundary values. Then
+$v_\varepsilon=g_\varepsilon-H_\varepsilon\in
+H_0^1(Q_\varepsilon)$ and
+$\Delta v_\varepsilon=\Delta g_\varepsilon$. Testing this equality
+by $v_\varepsilon$ in (FP3) gives
+$\|\nabla v_\varepsilon\|_2\le C$.
+Extend $v_\varepsilon$ by zero to $Q$ and extract a weakly
+convergent subsequence in $H_0^1(Q)$.
+
+Uniform continuity of the zero extension of $g$ implies
+$\sup_{\partial Q_\varepsilon}|g_\varepsilon|\to0$.
+The maximum principle gives the same bound for
+$\|H_\varepsilon\|_\infty$. Also $g_\varepsilon\to g$ uniformly
+on compact subsets. Hence $v_\varepsilon\to g$ locally uniformly,
+identifying its weak $H_0^1$ limit with $g$. Weak lower
+semicontinuity proves the claimed energy bound. This argument
+is the step excluding an uncontrolled harmonic boundary summand.
+\end{proof}
+
+\begin{proposition}[The completed moment identity retains the real zero boundary]
+In (FP1), every $u\in\mathscr C$ satisfies
+\[
+ g_u\in H_0^1(Q),\qquad
+ \|\nabla(g_u-g_v)\|_2^2\le I(u,v)
+                              \quad(u,v\in\mathscr C),
+ \tag{FP4}
+\]
+and
+\[
+                         t_*\mu_u=\Delta g_u
+                   \quad\text{as Radon measures on }Q.
+ \tag{FP5}
+\]
+Formula (FP5) is the frozen SO6 identity in this normalization.
+The new conclusion is (FP4), including its boundary condition.
+In particular, equality of two prescribed original source measures
+fixes the corresponding real zero-boundary Poisson equation uniquely.
+\end{proposition}
+
+\begin{proof}
+For an actual bounded admissible potential $a$ and
+$\varphi\in C_c^\infty(Q)$, original current recursion, compact
+Stokes and the full original top-form Gauss calibration give
+\[
+ \begin{split}
+ \int_V\varphi(t)\,d\mu_a
+  &=\langle aS,D(\varphi\circ t)\rangle
+    =\int_Qg_a\Delta\varphi\,dx,\\
+ B(a,\varphi\circ t)&=-\int_Qg_a\Delta\varphi\,dx,\qquad
+ B(\varphi\circ t,\varphi\circ t)
+                         =\int_Q|\nabla\varphi|^2dx.
+ \end{split}
+ \tag{FP6}
+\]
+The factor is $(n-1)!=1$ with the unnormalized $\beta$ in (FP1).
+The test $\varphi\circ t$ has compact original support because
+$t$ is proper over compact subsets of $Q$. It is an exact difference
+of admissible actual potentials by frozen HC14--HC15. Consequently
+the full difference energy and its Cauchy--Schwarz inequality apply
+to it. These identities use actual original tests and the fixed
+smooth background, and require no unresolved delta-action quotient.
+
+For two bounded actual admissible potentials $a,b$, put
+$h=a-b$ and $g=g_a-g_b$. Each individual convex trace is continuous
+in $Q$ and tends uniformly to zero at its boundary: otherwise a
+sequence with value at most $-\epsilon$ would lie in the fixed
+compact strict negative sublevel of the original potential while
+its moments leave every compact subset of $Q$. Thus $g$ extends
+continuously by zero to $\partial Q$. Formula (FP6) and the
+positive energy matrix give (FP2) with $C=B(h,h)^{1/2}$.
+The preceding lemma proves
+\[
+                 \|\nabla(g_a-g_b)\|_2^2\le B(a-b,a-b).
+ \tag{FP7}
+\]
+In particular each actual trace lies in $H_0^1(Q)$.
+
+Every completed member has a bounded actual strongly defining
+row by the frozen clipping diagonal. In degree one, (FP7) makes
+its traces Cauchy in $H_0^1(Q)$. Their NF locally uniform limit
+is precisely $g_u$, so it is also the $H_0^1$ limit. Applying
+this to two rows proves (FP4) with the original completed boundary
+condition, rather than imposing a new boundary representative.
+Pass in the first line of (FP6) using completed source continuity
+on the fixed original compact test and the local convergence of
+the traces. This proves (FP5). No expression involving a higher
+power of $Dg_u$ has been used.
+\end{proof}
+
+\subsection{A real Poisson perturbation that destroys convexity}
+
+We record the real lemma with all hypotheses needed for a possibly
+nonsmooth reference trace. The reference Hessian may have a singular
+positive part; no smoothness of the reference source density is assumed.
+
+\begin{lemma}[Small smooth density changes of a locally strict convex source]
+Let $g\in H_0^1(Q)$ be finite and convex on a rectangle $Q\subset
+\mathbf R^2$. Put $\tau=\Delta g\ge0$. Suppose on a nonempty ball
+$B\Subset Q$ that
+\[
+                         \tau\ge c\,dx\quad(c>0).
+ \tag{FP8}
+\]
+There are $k_j\in C_c^\infty(B)$, $0\le k_j\le1$, and positive
+$\epsilon_j\downarrow0$ after a subsequence, such that the unique
+$H_0^1(Q)$ solution of
+\[
+                 \Delta v_j=(1+\epsilon_j k_j)\tau
+ \tag{FP9}
+\]
+is not convex. Each $1+\epsilon_jk_j$ lies in $[1,3/2]$ after
+discarding finitely many terms.
+\end{lemma}
+
+\begin{proof}
+Fix a unit direction $e$ and an interior line segment in $B$
+parallel to $e$. The convex restriction of $g$ to this segment
+has a finite second-order expansion at almost every point:
+its right derivative is monotone and is differentiable with finite
+derivative almost everywhere; integrating that first-order
+expansion gives the second-order expansion of the restriction.
+Choose such a point $x_0$, so that explicitly
+\[
+ g(x_0+se)=g(x_0)+a s+\tfrac12 b s^2+o(s^2),
+                         \qquad b\ge0.
+\]
+Put $A=b+1>0$. Thus $b$ is the second derivative, not the
+coefficient of $s^2$. This one-dimensional fact
+suffices; no second-order expansion in every direction is needed.
+Let $G_Q(x,y)$ be the positive Dirichlet Green function for
+$-\Delta$ on $Q$, and put
+$K(y)=\partial_{ee,x}G_Q(x_0,y)$ for $y\ne x_0$.
+With polar coordinates around $x_0$ and angle measured from $e$,
+the fundamental solution and its harmonic correction give
+\[
+ K(y)=\frac{\cos(2\theta)}{2\pi r^2}+O(1),\qquad
+                    r=|y-x_0|\downarrow0.
+ \tag{FP10}
+\]
+Here the correction is uniformly bounded after two $x$ derivatives
+on one fixed inner ball: its boundary data stay uniformly bounded
+as $y$ ranges in that inner ball, and the maximum principle and
+interior harmonic derivative estimate apply. In particular this
+statement does not require a smooth boundary at the corners of $Q$.
+
+Choose $R>0$ with $\overline B(x_0,R)\subset B$, small enough
+that the leading term in (FP10) dominates the bounded remainder
+on the fixed angular sectors $\cos(2\theta)\ge1/2$.
+For $\delta_j\downarrow0$ take smooth radial cutoffs $\chi_j$
+supported in $\delta_j<r<R$, equal to one on
+$2\delta_j\le r\le R/2$, and between zero and one.
+Choose a fixed smooth angular function $\zeta$ on the unit circle,
+with $0\le\zeta\le1$, supported where $\cos(2\theta)>1/2$,
+and equal to one on a smaller nonempty angular arc. Define
+\[
+ k_j(y)=\chi_j(r)\zeta((y-x_0)/r),
+ \qquad k_j=0\text{ off that annulus}.
+ \tag{FP11}
+\]
+These are smooth compact functions, with $0\le k_j\le1$ and
+$Kk_j\ge0$ pointwise. On the smaller arc and middle annulus,
+(FP10) gives $Kk_j\ge c_1r^{-2}$ for a fixed $c_1>0$.
+Thus (FP8) implies
+\[
+ M_j:=\int_QK(y)k_j(y)\,d\tau(y)
+       \ge c_2\log\frac{R}{4\delta_j}\longrightarrow+\infty.
+ \tag{FP12}
+\]
+Any singular positive part of $\tau$ contributes with the same
+nonnegative sign. For each fixed $j$, this integral is finite
+because its support is compact and separated from $x_0$.
+
+The distribution $k_j\tau$ belongs to $H^{-1}(Q)$: multiplication
+of an $H_0^1$ test by the fixed compact smooth $k_j$ is bounded in
+$H_0^1$, and $\tau=\Delta g\in H^{-1}$. Let $z_j\in H_0^1(Q)$
+be its unique zero-boundary Poisson potential. It is harmonic near
+$x_0$, and the Green formula, differentiated on that source-free
+ball, gives
+\[
+                  \partial_{ee}z_j(x_0)=-M_j.
+ \tag{FP13}
+\]
+This formula also holds for the present finite signed measure
+on its compact support: convolve it there in $H^{-1}$, use the
+smooth-source Green formula, and pass to the limit. The solutions
+converge in $H_0^1$; on the source-free ball harmonic interior
+estimates give convergence of every derivative, while the smooth
+kernel on the compact source support passes through the measure
+limit. This justifies (FP13) without pairing a singular kernel
+with its pole.
+
+Set $\epsilon_j=A/M_j$ and, if desired, pass to a subsequence
+making these numbers decrease. Then $\epsilon_j\to0$ and the
+unique solution of (FP9) is $v_j=g+\epsilon_jz_j$. Since
+$k_j\tau\ge0$, the weak maximum principle also gives
+$z_j\le0$, so this candidate remains nonpositive and retains
+the zero boundary; the failed condition is convexity.
+Its restriction to the chosen line has a second-order expansion
+at $x_0$ with second coefficient $b-A=-1$. A convex function
+cannot have such a negative coefficient, by its centered second
+difference along $e$. Hence $v_j$ is not convex. Positivity of the density follows
+for sufficiently large $j$ from $\epsilon_j<1/2$.
+\end{proof}
+
+\subsection{The fixed original source counterexample}
+
+Say that a bounded actual admissible $w<0$ has the full
+two-sided compact test property if
+\[
+ \text{for every real original compact smooth }\phi
+ \text{ there is }s_\phi>0\text{ with }
+       w+s\phi\text{ actual admissible whenever }|s|\le s_\phi.
+ \tag{FP14}
+\]
+All actual refinements of $\phi$ are included. This condition is
+nonempty: the frozen NP probe $\psi_0$ has it, is continuous and
+bounded between $-1$ and zero, has finite mass and all finite
+positive power energies, and retains its strict negative-sublevel
+and no-loss boundary conditions. It is not a Banach interior claim.
+
+\begin{theorem}[Failure of local density solvability at every such fixed source]
+In the one fixed original geometry (FP1), let $w$ be any bounded
+actual finite-mass reference with (FP14) and the printed actual
+boundary and no-loss hypotheses. Then the following statements hold.
+\begin{enumerate}
+\item For every nonempty real ball $B\Subset Q$, there are
+strictly positive original smooth densities
+$f_j=1+\epsilon_j k_j\circ t$, with $k_j\in C_c^\infty(B)$,
+such that
+\[
+  1\le f_j\le\tfrac32,\qquad
+  \|f_j-1\|_\infty\longrightarrow0,
+  \qquad f_j\mu_w\notin\{\mu_u:u\in\mathscr C\}.
+ \tag{FP15}
+\]
+In particular the reference $w$ is fixed throughout the sequence.
+\item Every $f_j\mu_w$ is a positive original Radon datum,
+literal and strongly continuous on the entire completed difference
+quotient. The data share the same null ideal as $\mu_w$, and
+\[
+ \|\ell_{f_j\mu_w}-J(w)\|_*
+                   \le\|f_j-1\|_\infty\|J(w)\|_*
+                       \longrightarrow0.
+ \tag{FP16}
+\]
+They have one common full original tester capacity bound and one
+common fixed-source strong $L^1$ modulus.
+\item There is also a sequence as in (FP15) which tends to one
+in the original smooth compact-open topology on $V$, as well as
+uniformly. For this additional assertion the compact supports of
+$f_j-1$ escape every compact subset of $V$; no common compact
+support is asserted.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First observe why the real lemma applies to the canonical trace
+of the \emph{fixed} $w$. Choose a real compact smooth scalar
+$\varphi$ equal to $|x|^2/2$ on a neighborhood of
+$\overline B$. By properness $\varphi\circ t$ is an original
+compact smooth scalar. Property (FP14) makes
+$w-s(\varphi\circ t)$ actual psh for some $s>0$. Its canonical
+Gauss trace is $g_w-s\varphi$ and is convex. Therefore
+\[
+                    \Delta g_w\ge2s\,dx\quad\text{on }B.
+ \tag{FP17}
+\]
+Formula (FP4) supplies $g_w\in H_0^1(Q)$, and (FP5) identifies
+$\tau=\Delta g_w=t_*\mu_w$. Apply the real lemma to get $k_j$
+and $\epsilon_j$.
+
+If some $u\in\mathscr C$ had source $f_j\mu_w$, its source
+equality on the original tests $\varphi\circ t$ would imply
+\[
+ \Delta g_u=(1+\epsilon_j k_j)\Delta g_w,
+                   \qquad g_u\in H_0^1(Q).
+ \tag{FP18}
+\]
+Uniqueness of the real zero-boundary Poisson solution identifies
+$g_u$ with the nonconvex $v_j$ in (FP9), contrary to the full
+completed Gauss convexity theorem NF. This excludes every source
+in the unchanged completion, not only toric or actual candidates.
+The argument uses a subset of the full original test family to
+derive a contradiction; it does not replace that family by a
+smaller one in any definition.
+
+Fixed-source domination FD gives all literal and strong assertions,
+and its positive norm bound applied to $|f_j-1|\mu_w$ gives
+(FP16). The bounds in (FP15) give equality of null ideals.
+If $m=\|w\|_\infty>0$, then $1+w/m$ is an actual full normalized
+tester and $\mu_w=m\mu_{1+w/m}$ in degree one. Hence
+\[
+       (f_j\mu_w)(A)\le\tfrac32 m C_S(A;V)
+                  \le\tfrac32 m C_S^*(A;V)
+                 \quad(A\text{ original Borel}).
+ \tag{FP19}
+\]
+This uses no raw/outer equality. The same fixed measure bound
+provides the common strong $L^1$ modulus from FD.
+
+For the last assertion, choose balls $B_j\Subset Q$ escaping
+every compact subset of $Q$, with closures still inside $Q$.
+At each $B_j$ repeat (FP17) and the real lemma, choosing one
+of its perturbations with amplitude below $1/j$. Each
+$f_j-1$ has compact support
+$t^{-1}(\operatorname{supp}k_j)\Subset V$, contained in
+$t^{-1}(B_j)$ by properness.
+Every compact analytic $H\subset V$ has compact image $t(H)$
+in $Q$, disjoint from these supports for all sufficiently large
+$j$. Thus $f_j-1$ is identically zero on an ordinary neighborhood
+of $H$ eventually, as an original smooth germ after every actual
+refinement; the zero representative is available there.
+This gives convergence in the original smooth compact-open topology.
+It does not claim that every ambient presentation of a zero germ
+vanishes away from its actual analytic image.
+Uniform convergence follows separately from the chosen amplitudes.
+\end{proof}
+
+\begin{corollary}[Degree-one density openness is already linear saturation]
+For $q=1$ at any nonzero completed $w$ in the general original
+scope of LI, existence of a two-sided $L^\infty(\mu_w)$ density
+neighborhood of sources is equivalent to the known-source linear
+saturation condition LI13. In particular LI13 fails at every fixed
+actual $w$ of (FP14) in (FP1).
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of LI,
+degree-one source linearity and injectivity. This is part of the
+same linearization mechanism, not another example family.
+
+\begin{proof}
+The reverse implication is LI with zero nonlinear remainder.
+For the forward implication, shrink a density radius if necessary
+and choose $0<a<1$ such that $(1\pm ag)\mu_w$ have sources
+$v_\pm$ for every real $g$ with $\|g\|_\infty\le1$.
+Degree-one additivity and source injectivity give
+$v_++v_-=2w$. Thus
+\[
+ h=(v_+-w)/a,\qquad w\pm ah=v_\pm\in\mathscr C,
+ \qquad M(h)=g\mu_w,
+ \qquad\|h\|_w\le1/a.
+ \tag{FP20}
+\]
+Homogeneity gives the bound for every bounded $g$. Linearized
+injectivity in LI makes this solution a bounded linear inverse.
+The last assertion follows from (FP15). No order-Lipschitz
+assumption on a pre-existing nonlinear solution map is needed
+for this degree-one argument.
+\end{proof}
+
+\subsection{Consequences, topology limits, and failed shortcuts}
+
+The universally proposed implication
+``a fixed reference admits both signs of all original compact
+smooth tests, therefore every sufficiently small smooth density
+change of its source is compatible'' is \texttt{FALSE} when
+smallness means uniform density norm, even with support in one
+fixed compact moment core. All data in this counterexample are
+already literal strong data. It neither refutes LG nor uses a
+nonliteral $L_\infty$ functional.
+
+For the common-support construction, derivatives of the $k_j$ may
+grow as their inner annuli shrink. It does \emph{not} assert
+convergence in all smooth seminorms on that same compact core.
+The smooth compact-open convergence in the last part instead uses
+supports escaping the boundary and is not convergence in the
+usual common-support topology of compact test functions.
+Treating either of these stronger unsupported topologies as proved
+would be a \texttt{FAILED\_ATTEMPT}.
+
+The actual reference and domain never change in either sequence.
+This differs from the already proved IS transfer, whose strict
+references vary with the density parameter. For $q=1$, the
+principal-ideal linear inverse hypothesis LI13 necessarily fails
+at every $w$ in (FP14), since LI would otherwise solve all small
+uniform density perturbations. This diagnoses a real geometric
+obstruction to that sufficient condition, rather than silently
+assuming a bounded-Hessian estimate from scalar ellipticity.
+
+In fact the perturbations can be chosen entirely upward:
+$\mu_w\le f_j\mu_w\le(1+\epsilon_j)\mu_w$.
+Thus even this arbitrarily narrow one-sided Radon source bracket
+at the same full-test-strict reference does not force compatibility.
+
+The real $H_0^1$ boundary identification is essential. Distributional
+equality of Laplacians alone would leave a harmonic summand and
+would not prove the counterexample. Likewise the positivity of
+$Kk_j$ is essential: it prevents an unexamined singular part of
+the reference Laplacian from cancelling the logarithmic lower bound.
+Both discarded shortcuts are recorded as \texttt{FAILED\_ATTEMPT}.
+
+No general GQ/CTO statement, KC12 converse, general literal rooftop
+theorem, or new capacity recovery conclusion follows. The independent
+geometric Dirichlet compatibility problem remains \texttt{OPEN}.
+All positive general implications elsewhere continue to use arbitrary
+original middle-positive $S$ with their exact printed hypotheses.
+No ordinary current identity here is promoted to all GK delta tests.
+
+\paragraph{Exact input and external-source boundary.}
+The internal sources are DO6--DO9 and SO5--SO6 for the prior
+full-cone moment-Laplacian obstruction; NF6--NF11 for canonical
+full completed convex traces;
+GE7 and ED12 for positive quadratic energy and its completion;
+HC14--HC15 and HD14 for original compact scalar decomposition and
+the unnormalized full torus calibration; NP1--NP5 for the nonempty
+all-test strict reference class; and FD1--FD8 for full literal
+fixed-source domination. Their exact files, hashes, and read scopes
+are in the companion ledger. The actual boundary-to-$H_0^1$ bridge,
+its application to the full completed cone, and the fixed-source
+obstruction above are new proofs in this round.
+
+The one-dimensional almost-everywhere second expansion follows
+from differentiation of the monotone derivative and the integral
+formula for a convex function. A primary exposition of this
+elementary one-dimensional input, and of the stronger theorem
+which is unnecessary here, is Ralph Howard,
+\emph{Alexandrov's theorem on the second derivatives of convex
+functions via Rademacher's theorem}, May 1998, Remark 6.2,
+printed page 19; the convex integral formula is recalled in Section 2.
+The ordinary Green decomposition, weak Poisson uniqueness, maximum
+principle and interior harmonic estimates are the standard real
+facts documented in Jeff Viaclovsky's MIT 18.156 lecture notes,
+Lectures 1--3 (interior estimates, Green decomposition and weak
+harmonic regularity), together with Lecture 17 for the weak
+Dirichlet problem via the Hilbert-space representation theorem.
+Their basic real statements are not claimed as new.
+The particular nonnegative angular-annular multiplier, its protection against
+singular reference mass, and the original-category conclusions are
+proved explicitly above. A targeted search of the exact frozen
+local sources found no prior fixed all-test-strict-source version;
+this is an internal novelty boundary, not a claim of world priority.

@@ -1,0 +1,449 @@
+\section{An actual Borel order-energy lattice and original current multipliers}
+\label{sec:r12-order-energy-lattice}
+
+Retain exactly \textup{(ED1)} and the arbitrary original
+middle-positive separately closed background $S$.  The
+potential cone remains the frozen
+$\mathscr C=\widehat{\mathcal E}^1_{\rm str}(V)$.
+We now complete its difference space for the distinct lattice
+norm \textup{(FO8)}.  This introduces a larger \emph{scalar
+multiplier space}, not a larger potential cone.  Its Borel
+realization and the closedness of the old cone are proved
+rather than assumed.
+
+\begin{definition}[The order-energy lattice]
+\label{def:r12-order-energy-lattice}
+Let $\mathbb L_S$ be the norm completion of
+$(\mathbb D_S,\|\cdot\|_{\rm o})$.
+\end{definition}
+
+The notation $P(f)$ will also be used for a Borel obstacle
+$f$ not initially known to lie in $\mathbb D_S$, whenever
+at least one member of $\mathscr C$ lies below $f$.
+The R11 relative Perron theorem then gives exactly the same
+greatest-minorant construction.  This is an explicitly
+nonempty-family use of the frozen theorem.
+
+\begin{theorem}[Borel realization and an exact majorant norm]
+\label{thm:r12-Borel-order-lattice}
+The completion $\mathbb L_S$ is a Banach lattice whose
+elements have canonical Borel classes, finite outside a
+locally outer $S$-capacity-null set.  These classes are
+injectively determined by the completion elements.  Lattice
+operations agree with the actual Borel operations, and
+\[
+ \boxed{\qquad
+ \|f\|_{\mathbb L_S}
+    =r(P(-|f|))
+    =\min\{r(a):a\in\mathscr C,\ a\preceq-|f|\}.
+ \qquad}
+ \tag{OL1}
+\]
+In particular every member admits an actual cone majorant
+of its absolute value.  The capacity estimate
+\textup{(FO12)} holds with this norm.  The original potential
+cone $\mathscr C$ is closed in $\mathbb L_S$, and its norm
+is still exactly $r$.
+
+More precisely, each $f\in\mathbb L_S$ has a sequence
+$f_j\in\mathbb D_S$ and cone functions $W_j\in\mathscr C$
+such that
+\[
+ |f-f_j|\preceq-W_j,\qquad r(W_j)\longrightarrow0.
+ \tag{OL2}
+\]
+The construction does not assert that every Borel function
+with some finite-energy cone majorant belongs to $\mathbb L_S$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as an
+identified Borel Banach lattice over the unchanged full
+strong potential cone.  The decreasing-series theorem R11
+\textup{(CI8)} is an \texttt{INTERNAL\_INPUT}.
+
+\begin{proof}
+Take a Cauchy row in the order norm and pass to a subsequence,
+still denoted $(f_j)$, with
+\[
+                 \sum_j\|f_{j+1}-f_j\|_{\rm o}<\infty.
+\]
+Put $w_j=P(-|f_{j+1}-f_j|)\in\mathscr C$.  Then
+$|f_{j+1}-f_j|\preceq-w_j$ and
+$\sum_jr(w_j)<\infty$.  The partial sums of the nonpositive
+$w_j$ decrease, and Minkowski bounds their energy roots.
+R11 \textup{(CI8)} gives their Borel cone sum and every
+tail sum
+\[
+ W_j=\sum_{l\ge j}w_l\in\mathscr C,\qquad
+ r(W_j)\le\sum_{l\ge j}r(w_l)\longrightarrow0.
+ \tag{OL3}
+\]
+Outside one countable union of relative null sets, this is
+an ordinary series of nonpositive numbers with finite sum.
+Thus the series of successive absolute differences is
+pointwise convergent there.  It defines a finite Borel
+limit $f$ and gives \textup{(OL2)}.  The same argument
+identifies the limit in local capacity for the entire
+original Cauchy row, by \textup{(FO12)} and the Cauchy
+property.
+
+If this limit is the zero Borel class, then
+$|f_j|\preceq-W_j$.  The greatest-minorant property gives
+$\|f_j\|_{\rm o}\le r(W_j)\to0$.  Thus the completion
+element itself is zero.  Applying this observation to
+the difference of two Cauchy rows proves both independence
+of choices and injectivity of the Borel realization.  This
+step excludes an abstract norm vector invisible to Borel
+capacity.
+
+Put $a_j=P(-|f_j|)$.  Since
+$|f|\preceq-a_j-W_j$, the Borel obstacle $-|f|$ has
+a cone minorant $a_j+W_j$.  Its envelope $a=P(-|f|)$
+therefore exists, and
+\[
+ r(a)\le r(a_j+W_j)\le\|f_j\|_{\rm o}+r(W_j).
+ \tag{OL4}
+\]
+Conversely $|f_j|\preceq|f|+|f_j-f|\preceq-a-W_j$,
+so
+\[
+                  \|f_j\|_{\rm o}\le r(a)+r(W_j).
+ \tag{OL5}
+\]
+Passing to the limit proves \textup{(OL1)}.  The minimum
+statement follows from energy monotonicity and the greatest
+minorant property.  The same majorant gives
+\textup{(FO12)} for the completed element.
+
+The pointwise inequalities
+$||f|-|g||\le|f-g|$ and the corresponding inequalities
+for maxima show that lattice operations are continuous
+in the order norm on $\mathbb D_S$.  They extend to the
+completion and agree with the Borel limits just constructed.
+Formula \textup{(OL1)} also proves directly that the extended
+norm is monotone in absolute Borel order.  Thus the completion
+is a Banach lattice with the asserted concrete realization.
+
+Finally let a cone row $u_j$ converge in $\mathbb L_S$.
+Its roots $r(u_j)=\|u_j\|_{\mathbb L_S}$ are bounded.
+The second line of \textup{(FO11)} makes it strongly
+Cauchy, and the frozen strong completeness supplies a
+limit $u\in\mathscr C$.  Both its strong limit and its
+order-norm limit have the same local capacity class.
+Injectivity of the Borel realization identifies them.
+This proves closedness of $\mathscr C$, without declaring
+it equal to every nonpositive member of the larger lattice.
+\end{proof}
+
+\begin{proposition}[Relative quasicontinuity in the lattice]
+\label{prop:r12-lattice-quasicontinuity}
+Every member of $\mathbb L_S$ has a finite representative
+which is locally ordinary-open outer $S$-quasicontinuous,
+with the same fixed-domain outer capacity as the original
+completion.  This does not identify raw and outer capacity
+on arbitrary Borel sets.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+\textup{(OL2)--(OL3)}, the capacity estimate and the frozen
+quasicontinuity of strong cone members.
+
+\begin{proof}
+In constructing \textup{(OL2)}, pass to a faster subsequence
+so that
+$C_0 2^{jd}r(W_j)^d\le2^{-2j}$.
+The sets where $|f-f_j|>2^{-j}$ have outer capacity at
+most $2^{-2j}$.  Cover a sufficiently late tail of these
+sets by ordinary open sets with arbitrarily small total
+capacity.  Outside their union the approximants converge
+uniformly.  Each $f_j$ is a difference of two strong cone
+members and is therefore finite and continuous off a
+further ordinary open set of arbitrarily small capacity
+on the fixed compact core.  Choose and sum these exceptional
+capacities over the countably many approximants.  The uniform
+limit is finite and continuous off their union.  A countable
+compact exhaustion gives the stated local result.  Only
+outer capacity subadditivity and its defining open covers
+are used.
+\end{proof}
+
+\subsection{The variation norm is the dual norm of this lattice}
+
+\begin{theorem}[Literal curvature integration and weighted total variation]
+\label{thm:r12-lattice-dual-variation}
+For each $u\in\mathscr C$, the functional $J(u)$ extends
+uniquely to $\mathbb L_S$ and satisfies
+\[
+ J(u)(f)=-\int_V f\,d\widehat\mu_u,\qquad
+ \|J(u)\|_{\mathbb L_S^*}=r(u)^q.
+ \tag{OL6}
+\]
+The integral is literal and absolutely convergent for every
+completed lattice element.  If $u,v\in\mathscr C$ and
+$\sigma=\widehat\mu_u-\widehat\mu_v$, then
+\[
+ \begin{split}
+ \|J(u)-J(v)\|_{\mathbb L_S^*}
+   &=\sup_{\substack{a\in\mathscr C\\r(a)\le1}}
+                               \int_V(-a)\,d|\sigma|\\
+   &=\delta_1(\widehat\mu_u,\widehat\mu_v).
+ \end{split}
+ \tag{OL7}
+\]
+Here $\delta_1$ uses the R11 weighted absolute-variation
+formula, not the new signed operator distance $\delta_*$
+on $\mathbb D_S^*$.  In \textup{(OL7)} the supremum is
+unchanged if it is restricted to actual first-energy
+potentials, as in the frozen formula.  Applying that
+formula to these general completed source measures is
+not an import of R11's more restricted dominated-data
+stability theorem.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+norm-dual interpretation of the two distinct source distances.
+
+\begin{proof}
+Since $J(u)$ is order reversing, \textup{(FO10)} gives its
+unique continuous extension, with the same norm.  Let
+$f\in\mathbb L_S$ and $a=P(-|f|)$.  Then
+\[
+ \int|f|\,d\widehat\mu_u
+       \le\int(-a)\,d\widehat\mu_u
+       =B(a,u^{[q]})\le\|f\|_{\mathbb L_S}r(u)^q.
+ \tag{OL8}
+\]
+All relative null sets are ignored by the original curvature
+measure.  The approximants in \textup{(OL2)} have integral
+error at most $r(W_j)r(u)^q\to0$, proving literal agreement
+with the functional extension.  Testing on $u/r(u)$ gives
+the norm equality, with the zero case interpreted separately.
+
+The difference $\sigma$ is a locally finite signed
+Radon measure; its global total variation may be infinite.
+All weighted variation integrals below are finite.
+Put $\delta$ equal to the supremum in \textup{(OL7)}.
+It is finite, at most $r(u)^q+r(v)^q$.
+For any $f\in\mathbb L_S$ of norm at most one, its
+minorant $a=P(-|f|)$ has $r(a)\le1$.  Therefore
+\[
+ \left|\int f\,d\sigma\right|
+          \le\int|f|\,d|\sigma|
+          \le\int(-a)\,d|\sigma|\le\delta.
+ \tag{OL9}
+\]
+This is one inequality in \textup{(OL7)}.
+
+For the reverse fix $a\in\mathscr C$, $r(a)\le1$.
+The finite positive measure $(-a)|\sigma|$ ignores the
+joint pole-null set.  By Radon regularity choose disjoint
+compact subsets of a Hahn positive and negative carrier
+that omit arbitrarily little of this finite weighted measure.
+Choose an original compact smooth scalar $\chi$ equal to
+$1$ on the first compact and $-1$ on the second, with
+$|\chi|\le1$.  The original smooth cutoff and finite
+ordinary-open gluing calculus supplies such a function.
+For $M>0$ define the lattice clipping
+\[
+                     f_M=\max\bigl(a,\min(-a,M\chi)\bigr).
+ \tag{OL10}
+\]
+Every entry is in $\mathbb D_S$, including $M\chi$ by
+R11 \textup{(HC14)--(HC15)}.  Hence $f_M\in\mathbb D_S$.
+It satisfies $|f_M|\preceq-a$, so its order norm is at
+most $r(a)\le1$.  On the two chosen compact sets,
+$f_M$ tends respectively to $-a$ and $a$ as $M\to\infty$,
+outside the harmless pole set.  The error everywhere is
+bounded by $2(-a)$, which is integrable for $|\sigma|$.
+First let $M\to\infty$ and then let the omitted weighted
+mass tend to zero.  The pairings $\int f_M\,d\sigma$
+approach $\int(-a)\,d|\sigma|$ from within arbitrarily
+small error.  Taking the supremum over $a$ proves the
+reverse inequality.  No product $a\chi$ or density of
+background currents was required.
+
+Finally, to compare the tester class with the frozen
+absolute-variation formula, choose for any $a\in\mathscr C$
+an actual strong defining row $a_j$.  The completed tester
+estimate \textup{(EV1)} gives
+\[
+ \int|a_j-a|\,d|\sigma|
+  \le\int|a_j-a|\,(d\widehat\mu_u+d\widehat\mu_v)
+                                      \longrightarrow0.
+\]
+Their energy roots converge.  If $r(a)\le1$, replacing
+$a_j$ by $a_j/\max(1,r(a_j))$ gives actual unit-root
+testers with the same limiting weighted variation
+pairing.  When $r(a)=0$, its pairing is zero.  The
+actual and completed suprema therefore agree.  This
+argument needs neither a common actual lower barrier
+nor a common actual dominating source measure.
+\end{proof}
+
+\paragraph{Topology qualification.}
+The positive functionals $J(u)$ have the same individual
+norm in the two dual spaces, but differences of them need
+not.  In the original annulus example \textup{(CG1)--(CG16)},
+$J(u_s)\to J(u_0)$ in the signed $\mathbb D_S^*$ norm,
+while their $\mathbb L_S^*$ distance has lower limit at
+least $\sqrt2$.  Thus strong curvature continuity must not
+be upgraded to lattice-dual norm continuity.  Moreover,
+Theorems~\ref{thm:r12-pole-order-dual-not-strong}
+and~\ref{thm:r12-strong-not-order-topology} show that
+the positive-dual continuity gate and \textup{(FO13)}
+are both \texttt{FALSE}: the order lattice is strictly
+stronger than the strong potential topology, and it has
+nonzero positive functionals invisible to every original
+compact smooth scalar test.  The multiplier conclusions
+below need only order-norm convergence and are unaffected.
+
+\subsection{Multipliers of every completed mixed original current}
+
+\begin{lemma}[A finite-energy trace-completing potential]
+\label{lem:r12-trace-completing-potential}
+Let $0\le k\le q$ and let $\eta$ be an original compact
+smooth complementary $(q-k,q-k)$-test form for an original
+middle-positive $(p+k,p+k)$-current.  There are a bounded
+actual classical $\psi\in\mathscr C$ of finite total top
+mass and a finite constant $C_\eta$ such that, for every
+tuple $u_1,\ldots,u_k\in\mathscr C$, the coefficient
+measure of $T=\widehat N_k(u_1,\ldots,u_k)$ satisfies
+\[
+ |\mu_{T,\eta}|
+        \le C_\eta\,
+             \widehat N_q(u_1,\ldots,u_k,\psi^{[q-k]}).
+ \tag{OL11}
+\]
+For $k=q$, one may omit $\psi$ and take
+$C_\eta=\|\eta\|_\infty$ for the scalar test.
+The domination is local on the coefficient support and
+is an inequality of positive Radon measures, not a
+closedness assertion for their Borel restrictions.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the frozen original middle-coefficient trace bound, analytic
+compensators R11 \textup{(AE2)--(AE5)}, and finite-mass
+collar construction \textup{(TC7)--(TC8)}.
+
+\begin{proof}
+Use finitely many original moment stages and a compact
+smooth partition near the support of $\eta$.  On each
+stage a fixed multiple of the full moment trace power
+dominates every coefficient of that test in the middle
+matrix convention.  The original analytic compensator
+lemma gives a global smooth classical psh function whose
+curvature dominates this stage's positive $(1,1)$ trace
+near the relevant compact piece.  Sum the finitely many
+compensators, obtaining one smooth classical $g$ with
+all these local domination properties.  Choose $C$ with
+$g-C<-1$ on $V$, and choose $A$ large enough that
+\[
+                         \psi=\max(g-C,A\rho)
+\]
+equals $g-C$ near the whole test support.  Here $\rho$
+is the strict-box barrier.  The exact collar construction
+proves that $\psi$ is bounded, actual, zero-boundary in
+the frozen energy sense, and has finite total top mass.
+Thus it belongs to every positive power class.
+
+On each compact test stage, $D\psi=Dg$ dominates its
+full moment trace.  Taking powers preserves the necessary
+strong-form domination; the middle-positive coefficient
+matrix bound then controls $|\mu_{T,\eta}|$ by a
+constant times $(D\psi)^{q-k}\wedge T$ there.
+Original smooth-factor compatibility identifies the latter
+with the restriction of the mixed top measure in
+\textup{(OL11)}.  Sum the finitely many stage bounds.
+All moment stages may include any specified actual test
+refinement, so this is a complete original-test assertion.
+\end{proof}
+
+\begin{theorem}[Order-energy multipliers and closed distributional cap currents]
+\label{thm:r12-lattice-current-multipliers}
+Let $0\le k\le q$, $u_1,\ldots,u_k\in\mathscr C$, and
+$T=\widehat N_k(u_1,\ldots,u_k)$, with $T=S$ when $k=0$.
+Every $f\in\mathbb L_S$ defines a literal order-zero
+original coefficient product $fT$.  For every compact
+original complementary test $\eta$ and the potential
+$\psi$ from Lemma~\ref{lem:r12-trace-completing-potential},
+\[
+ \int_V|f|\,d|\mu_{T,\eta}|
+       \le C_\eta\|f\|_{\mathbb L_S}
+                   \prod_{i=1}^k r(u_i)\,r(\psi)^{q-k}.
+ \tag{OL12}
+\]
+For $k=q$, the last factor is one.  Thus order-norm
+convergence of multipliers gives local coefficient-total-
+variation convergence against every original test.
+
+If $k<q$, the formula
+\[
+                 \mathcal D_T(f)=D(fT)
+ \tag{OL13}
+\]
+defines a linear continuous original current-valued map
+whose values are separately $d'$- and $d''$-closed.
+For $f\in\mathscr C$ it is exactly the frozen positive
+BT current
+$\widehat N_{k+1}(f,u_1,\ldots,u_k)$.
+For general $f\in\mathbb L_S$, neither positivity nor
+order zero of \textup{(OL13)} is asserted.
+Every equality and convergence is on the full original
+compact smooth complementary test sheaf and every actual
+moment refinement.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+new completed scalar multiplier domain and its continuous
+closed-current action, in every dimension and for arbitrary
+original $S$.  The already constructed BT products are
+\texttt{INTERNAL\_INPUT}, not newly defined by this theorem.
+
+\begin{proof}
+For $f\in\mathbb L_S$ put $a=P(-|f|)$, so
+$|f|\preceq-a$ and $r(a)=\|f\|_{\mathbb L_S}$.
+The coefficient domination \textup{(OL11)} and the
+literal mixed-energy formula give
+\[
+ \begin{split}
+ \int|f|\,d|\mu_{T,\eta}|
+ &\le C_\eta\int(-a)\,
+            d\widehat N_q(u_1,\ldots,u_k,\psi^{[q-k]})\\
+ &=C_\eta B(a,u_1,\ldots,u_k,\psi^{[q-k]})\\
+ &\le C_\eta r(a)\prod_i r(u_i)\,r(\psi)^{q-k}.
+ \end{split}
+\]
+The top mixed measure ignores every relative null set;
+the coefficient domination therefore shows that the
+same is true of the coefficient measure.  Hence the
+product is independent of the Borel representative of
+$f$.  These coefficient products agree on overlaps by
+their ordinary measure definition, and their local
+bounds give an original order-zero current $fT$.
+Applying the estimate to a difference of multipliers
+proves the stated coefficient variation convergence.
+
+Distributional $D$ is continuous on original currents.
+It is therefore legitimate to define \textup{(OL13)};
+the identities $d'D=0$ and $d''D=0$ give separate
+closedness.  At a cone multiplier the frozen original
+completed recurrence identifies it with the stated BT
+product.  At an exact difference of cone members it is
+the corresponding signed difference.  At an arbitrary
+lattice limit it is its original current limit, but
+no closed positive cone argument has been supplied to
+make that distribution a positive order-zero current.
+The proof retains this distinction explicitly.
+\end{proof}
+
+\paragraph{No relation-quotient shortcut.}
+The scalar Borel quotient used in this construction is
+already the proved relative potential quotient.  It is
+not the unresolved actual analytic PS/PL presentation
+quotient.  Extending $f\mapsto D(fT)$ to the lattice
+does not show that two actual delta-form presentations
+with the same analytic value have the same arbitrary-$S$
+action.  Nor does ordinary current equality become an
+equality on all additional GK delta tests.  These are
+separate gates from the original-test multiplier theorem.

@@ -1,0 +1,241 @@
+\section{Nonsmooth scalar curvature and the two level currents}
+\label{sec:r11-nonsmooth-scalar-curvature}
+
+Keep the original hypotheses and notation of
+Section~\ref{sec:r11-level-disintegration}.  Thus $Q$ is any
+original symmetric middle-positive separately closed current of
+degree $(p,p)$, $p<n$, and $f$ is a locally bounded difference
+of classical psh functions.  All identities are identities of
+original coefficient-Radon currents on ordinary open sets, tested
+against every original compact smooth complementary form.  The
+positive level-current theorem of that section is the only new
+input to the present extension.
+
+\begin{definition}[Lower and upper slope conventions]
+Write
+\[
+ \begin{split}
+ \mathsf L_f^{-}(t)
+    &=D(\max(f,t)Q)-\mathbf1_{\{f>t\}}D(fQ),\\
+ \mathsf L_f^{+}(t)
+    &=D(\max(f,t)Q)-\mathbf1_{\{f\geq t\}}D(fQ).
+ \end{split}
+ \tag{SC1}
+\]
+The superscripts indicate the lower and upper values assigned to
+the derivative of the scalar hinge at its corner; in particular
+$\mathsf L_f^{-}(t)=\mathsf L_f^Q(t)$ from (LC3).
+The background $Q$ is suppressed in this section's notation only.
+\end{definition}
+
+\begin{proposition}[Two positive level currents and their jump]
+\label{prop:r11-two-level-currents}
+Both currents in (SC1) are middle-positive and carried by
+$\{f=t\}$.  They satisfy
+\[
+ \mathsf L_f^{+}(t)=\mathsf L_{-f}^{-}(-t),\qquad
+ \mathsf L_f^{-}(t)-\mathsf L_f^{+}(t)
+                      =\mathbf1_{\{f=t\}}D(fQ).
+ \tag{SC2}
+\]
+For every original compact smooth test $\eta$, the scalar function
+$t\mapsto\langle\mathsf L_f^{-}(t),\eta\rangle$ is right
+continuous and has bounded variation on each compact level interval.
+Its left limit at every $t$ is
+$\langle\mathsf L_f^{+}(t),\eta\rangle$.  On any compact real
+interval of levels, the local positive coefficient masses of both
+families are uniformly bounded.  Both admit the energy coarea
+identity (LC7), with the same energy current $\Gamma_Q(f)$.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+The elementary identity
+$\max(-f,-t)=\max(f,t)-f-t$ and $D(tQ)=0$ give the first
+formula in (SC2); Theorem~\ref{thm:r11-positive-level-current}
+applied to $-f$ proves positivity and the carrier of
+$\mathsf L_f^{+}(t)$.  Subtracting (SC1) proves the second formula.
+
+For a fixed compact test, the function
+$t\mapsto\langle D(\max(f,t)Q),\eta\rangle$ is Lipschitz:
+the potentials differ by at most $|t-s|$, and the fixed signed
+coefficient measure $\mu_{Q,D\eta}$ has finite variation on the
+test support.  Continuity from below and above for the fixed
+signed coefficient measures of $D(fQ)$ gives
+\[
+ \begin{split}
+ \lim_{s\downarrow t}\mathbf1_{\{f>s\}}D(fQ)
+       &=\mathbf1_{\{f>t\}}D(fQ),\\
+ \lim_{s\uparrow t}\mathbf1_{\{f>s\}}D(fQ)
+       &=\mathbf1_{\{f\geq t\}}D(fQ),
+ \end{split}
+\]
+in local coefficient total variation.  This proves the stated
+one-sided continuity after combining the two terms of (SC1).
+The first term is Lipschitz in the level, and the second is a
+tail of a fixed finite signed measure after pushforward by $f$;
+their sum therefore has bounded variation on compact intervals.
+
+For the uniform mass assertion, fix a compact original moment
+stage and a positive trace control $\chi\beta^{n-p-1}$, where
+$\beta$ is the sum of the elementary positive moment squares.
+The closed current $Q'=\beta^{n-p-1}\wedge Q$ has degree
+$(n-1,n-1)$ and
+$\mathsf L_f^{\pm,Q'}(t)=\beta^{n-p-1}\wedge
+\mathsf L_f^{\pm,Q}(t)$ by the bounded smooth-slot identities.
+The bounded-variation density bound (LC12), applied to $f$ and
+$-f$, bounds the two positive trace masses uniformly in $t$.
+Finite original coefficient domination proves the assertion for
+every compact stage, including any actual moment refinement.
+
+Finally the difference in (SC2), integrated in $t$ against a
+bounded Borel scalar function, is zero: for each point $x$ the
+indicator of the singleton $\{f(x)\}$ has Lebesgue integral
+zero, and Fubini applies to each fixed finite coefficient
+variation of $D(fQ)$.  Therefore (LC7) for the minus convention
+also proves it for the plus convention.
+\end{proof}
+
+\begin{theorem}[An exact scalar curvature formula with a real measure]
+\label{thm:r11-stieltjes-scalar-curvature}
+Let $J\subset\mathbf R$ be an open interval, let $I\Subset J$
+contain the range of $f$ near the compact test support, and let
+$F$ be a finite convex real function on $J$.  Let $\nu_F=F''$
+be its positive distributional second-derivative measure, and
+write $F'_-,F'_+$ for its finite one-sided derivatives on $I$.
+Then $F(f)$ is locally a bounded difference of classical psh
+functions, and
+\[
+ \boxed{\quad
+ D(F(f)Q)
+  =F'_-(f)D(fQ)+\int_J\mathsf L_f^{-}(t)\,d\nu_F(t)
+  =F'_+(f)D(fQ)+\int_J\mathsf L_f^{+}(t)\,d\nu_F(t).
+ \quad}
+ \tag{SC3}
+\]
+The integrals are weak integrals of coefficient-Radon currents;
+they are well defined locally, middle-positive, and carried by
+the actual inverse image of a carrier of $\nu_F$.
+Only levels in a compact interval near the local range contribute.
+
+The same formula holds for a real difference of two finite convex
+functions, with its signed second-derivative measure and the
+corresponding signed integral.  All multipliers in (SC3) use the
+actual given Borel values.  The construction commutes with
+ordinary restriction and every actual moment refinement.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.
+
+\begin{proof}
+Write $f=a-b$ on the chosen witness stage.  On a compact interval
+strictly larger than $I$ and contained in $J$, the convex function
+$F$ is Lipschitz.  Extend its restriction affinely past the two
+endpoints using its interior one-sided slopes; this gives a global
+convex Lipschitz extension $\widehat F$ agreeing with $F$ on $I$.
+Choose $L$ greater than the absolute values of its slopes.  On the
+compact range box of $(a,b)$ the function
+\[
+                  (s,t)\longmapsto\widehat F(s-t)+L(s+t)
+ \tag{SC4}
+\]
+is convex and nondecreasing in each variable.  The frozen
+convex nondecreasing composition rule makes (SC4), composed
+with $(a,b)$, a bounded classical psh function.  Subtracting
+$L(a+b)$ gives a bounded-difference presentation of $F(f)$.
+
+Choose $c<\inf I\leq\sup I<d$ with $[c,d]\Subset J$.
+The elementary real convex representation, on $I$, is
+\[
+ F(s)=A+Bs+\int_{(c,d)}(s-t)_+\,d\nu_F(t),\qquad
+ F'_-(s)=B+\nu_F((c,s)).
+ \tag{SC5}
+\]
+The constants $A,B$ absorb the affine contribution of levels
+outside $(c,d)$.  The measure in (SC5) is finite.  The
+potentials $(f-t)_+$ are uniformly bounded on the compact
+stage, so Fubini against the fixed coefficient measures of
+$Q$ and distributional differentiation give
+\[
+ D(F(f)Q)=B D(fQ)
+           +\int_{(c,d)}D((f-t)_+Q)\,d\nu_F(t).
+ \tag{SC6}
+\]
+The positive level masses are uniformly bounded by
+Proposition~\ref{prop:r11-two-level-currents}; their compact
+test pairings are Borel.  They consequently have a well-defined
+weak integral with local coefficient-Radon control.  Insert
+$D((f-t)_+Q)=\mathbf1_{\{f>t\}}D(fQ)+\mathsf L_f^-(t)$
+in (SC6), and apply Fubini to the fixed signed coefficient
+measures in its first term.  Its multiplier is exactly
+$B+\nu_F((c,f))=F'_-(f)$.  This proves the first equality
+in (SC3).
+
+Replacing the strict indicator by the weak indicator gives
+$B+\nu_F((c,f])=F'_+(f)$ and the plus level current, proving
+the second equality.  This also checks explicitly the jump
+contribution at a real atom of $\nu_F$: changing slope
+conventions changes the curvature multiplier by
+$\nu_F(\{f\})D(fQ)$ and changes the level integral by its
+negative, through (SC2).
+
+For any Borel carrier $A$ of $\nu_F$, the positive scalar
+kernel construction in (LC9), applied to the finite measure
+$\nu_F$ in place of Lebesgue measure for measurability only,
+makes the weak integral a positive measure kernel.  Each level
+current is carried by $\{f=t\}$, so its integral is carried
+by $f^{-1}(A)$.  No assertion that this inverse image is
+closed is required.  Finite polarization gives the same
+carrier assertion for every original coefficient.
+Linearity treats a difference of convex scalar functions.
+Intrinsic definitions and the already established refinement
+invariance of each level current prove the final assertions.
+\end{proof}
+
+\begin{corollary}[Original Kato inequalities and the exact defect]
+\label{cor:r11-original-kato}
+For $f$ as above, put $f_+=\max(f,0)$ and use
+$\operatorname{sgn}(0)=0$.  Then
+\[
+ \begin{split}
+ D(f_+Q)-\mathbf1_{\{f>0\}}D(fQ)&=\mathsf L_f^-(0)\geq0,\\
+ D(|f|Q)-\operatorname{sgn}(f)D(fQ)
+                 &=\mathsf L_f^-(0)+\mathsf L_f^+(0)\geq0.
+ \end{split}
+ \tag{SC7}
+\]
+Both defects are positive coefficient-Radon currents carried by
+the actual zero set of $f$.  The same identities hold after
+every original positive coefficient trace and against every
+original complementary test.  Below top degree the defects
+need not be closed.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the new
+two-level theorem.
+
+\begin{proof}
+The first identity is (SC1).  Apply it to $-f$ and add, using
+$|f|=f_++(-f)_+$ and
+$\mathsf L_{-f}^-(0)=\mathsf L_f^+(0)$ from (SC2).
+The two strict indicators give $\operatorname{sgn}(f)$ with
+the printed value at zero.  Positivity and the carriers were
+proved before the identities were added.  Nonclosedness is
+allowed by the explicit differential defects in (LC5), and
+Proposition~\ref{prop:r11-nonclosed-level-example} prevents a
+universal closedness inference.
+\end{proof}
+
+\paragraph{What this calculus resolves and what it leaves open.}
+Formula (SC3) integrates a real curvature measure against actual
+level currents of a bounded psh difference.  It therefore gives
+a precise replacement for formal multiplication by a real Dirac
+mass in a nonsmooth scalar chain rule.  Its hypotheses do not
+define an arbitrary pullback of a cycle through a moment map,
+and no relation quotient for analytic delta presentations follows.
+Moreover the level currents retain the defects (LC5).  Treating
+them as separately closed backgrounds in a second BT iteration
+is a \texttt{FAILED\_ATTEMPT}; (LC13)--(LC15) give its concrete
+failure already on the original two-torus.
+

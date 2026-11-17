@@ -68,7 +68,7 @@ test('The atlas card, current pointer and published research edition agree',asyn
   assert.equal(source.edition.revision,revision);
   assert.equal(published.edition.revision,revision);
 });
-test('The GitHub publication ships no historical signed archive or write endpoint',async()=>{
+test('The Beilinson–Bloch publication retains its exact PDF inventory without historical signed archives',async()=>{
   const all=await walk();
   // A new edition keeps the old PDFs. Match every retained edition's declared
   // paper inventory instead of fixing the total to the initial release count.
@@ -90,8 +90,9 @@ test('The GitHub publication ships no historical signed archive or write endpoin
     }
   }
   assert.ok(editions.length>0,'At least the current public edition is retained');
-  assert.deepEqual(all.filter(f=>f.endsWith('.pdf')).sort(),expected.sort());
-  assert.ok(!all.some(f=>f.startsWith('api/')||f.endsWith('.zip')||f.includes('/manuscripts/')));
+  assert.deepEqual(all.filter(f=>f.startsWith(editionPrefix+'/')&&f.endsWith('.pdf')).sort(),expected.sort());
+  assert.ok(!all.some(f=>f.startsWith('api/')),'No public write endpoint');
+  assert.ok(!all.some(f=>f.startsWith(editionPrefix+'/')&&(f.endsWith('.zip')||f.includes('/manuscripts/'))),'The BB export contains only its declared public source projection');
   for(const f of all.filter(x=>x.endsWith('.html'))){
     const text=await readFile(path.join(root,f),'utf8');
     assert.doesNotMatch(text,/\/api\/feedback|beilinson-bloch-research\.spectacularsheep\.chatgpt\.site/);

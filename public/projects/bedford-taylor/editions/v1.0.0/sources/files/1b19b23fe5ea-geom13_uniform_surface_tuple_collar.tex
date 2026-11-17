@@ -1,0 +1,390 @@
+\section{A fixed surface tuple on a nonempty outer divisor collar}
+\label{sec:r13-fixed-surface-tuple-collar}
+
+Keep the original finite extension \(K/\mathbf Q_p\), its norm,
+and the divisor tube of DT and AF.  The central model has
+dimension three, the supplied divisor is \(D\), its actual
+surface factor is \((Y_D,v)\), and its normal parameter is
+\(Z\).  The surface point has the original discrete value
+group.  Write \(q_D(r)\) for the actual relative Gauss point
+with \(|Z|=r\).  All ordinary domains below are domains in
+these original analytic spaces.
+
+\subsection{One finite set of controls for every outer annulus}
+
+The proof of AF1 uses a finite list of zero-slice functions
+on an ordinary surface neighborhood \(W_0\ni v\).  Its
+invertible coefficient and localizer functions \(u_i\) have
+\(|u_i(v)|=1\); its other coefficient functions \(a_j\) have
+\(|a_j(v)|\leq1\).  Inverse functions needed in the estimates
+are included among the \(u_i^{\pm1}\).  This list is fixed by
+the given finite central conditions and standard etale chart.
+For every compact interval \(I\Subset(r_*,1)\), the argument
+chooses a number \(c_I>1\), sufficiently close to one, and
+uses only the surface restrictions
+\[
+       c_I^{-1}<|u_i|<c_I,\qquad |a_j|<c_I.
+\tag{UA1}
+\]
+The constants \(M\), the finitely many divisor orders, and
+the preliminary threshold \(r_*<1\) are independent of
+\(I\).  Bounds such as \(r_+c_I^{M+2}<1\) determine how
+close \(c_I\) is to one; they do not change the list of
+functions.
+
+Choose a finite tuple of surface units \(C\) as follows.
+Retain every \(u_i\).  If \(|a_j(v)|=1\), retain \(a_j\),
+after restricting its unit domain.  If \(|a_j(v)|<1\),
+retain \(1+a_j\).  Every coordinate of \(C\) has norm one
+at \(v\).  Shrink \(W_0\) once so all these are actual
+units.  Put \(t_C=-\log|C|\), coordinatewise.
+
+\begin{lemma}[Fixed controls and a fixed protected central fiber]
+\label{lem:r13-fixed-controls-protected-fiber}
+Let \(F\) be any fixed finite surface tuple retaining \(C\),
+and apply GP once on a prescribed ordinary neighborhood of
+\(v\) in \(W_0\), retaining \(F\).  Denote the protected
+tuple by \(G\), its central value by \(b=t_G(v)\), and its
+compact entire central fiber by \(E=t_G^{-1}(b)\).  Then:
+\begin{enumerate}
+\item Every point of \(E\) satisfies \(|u_i|=1\) and
+\(|a_j|\leq1\).
+\item For every \(c>1\), one may narrow the target bands
+around \(b\), without changing any unit, so their complete
+ordinary inverse image satisfies
+\(c^{-1}<|u_i|<c\) and \(|a_j|<c\).  The closed narrower
+bands still have compact inverse image in the original
+interior.  The entire central fiber and all its source
+germs remain unchanged.
+\item For every \(I\Subset(r_*,1)\), the actual AF product
+isomorphism exists on a product containing the relative
+Gauss family over all of \(E\), with the narrowed surface
+bands of the second assertion.  It satisfies the original
+finite central conditions at every analytic product point.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+All coordinates of \(C\) have their norm-one values on
+\(E\).  In the case \(|a_j(v)|<1\), the ultrametric
+inequality gives
+\[
+                |a_j|=|(1+a_j)-1|\leq1
+                       \quad\hbox{on }E.
+\tag{UA2}
+\]
+The other assertions in the first item follow directly
+from the retained coordinates.  To prove the second item,
+choose \(1<c'<c\) and restrict the \(C\)-coordinate bands
+to \((c'^{-1},c')\).  For a shifted coordinate, its upper
+bound gives \(|a_j|\leq\max(|1+a_j|,1)<c'\).  Use still
+smaller bands for the closed target closure if necessary.
+All these bands contain \(b\), so they retain exactly the
+same entire central fiber.  GP supplies compactness and
+the interior property before narrowing, and these properties
+persist.  Source germs depend on the tuple and an ordinary
+neighborhood of their points, not on the widths of bands
+containing their central value.
+
+For the last assertion use the AF estimates with the same
+finite functions, but on a neighborhood of \(E\) satisfying
+UA1.  They are inequalities for zero-slice analytic functions
+and hold at every analytic product point.  For an open
+interval \(J\) with \(I\Subset J\Subset(r_*,1)\), choose
+\(c_I\) so that all strict Newton and divisor-domination
+inequalities AF4--AF8 hold.  Cover the compact surface set
+by finitely many affinoid neighborhoods contained in the
+allowed narrower bands.  Newton iteration on the products
+gives the selected root; uniqueness in its Hensel ball
+glues the roots and the inverse zero-slice maps.  Taking
+ordinary interiors gives the required product.  The same
+finite basic central inequalities AF2 place its entire
+image in the prescribed original ordinary domain.  This
+proof uses the fixed bounds on \(E\); it does not require
+that an arbitrary surface neighborhood contain \(E\).
+\end{proof}
+
+\subsection{The interval-independent finite preparation}
+
+Fix the initial finite surface coefficient tuple of AF9,
+of full normal rank two, and adjoin \(C\).  Keep the fixed
+finite closed-cell PS hypotheses of NSA: smooth extensions
+near every closed coefficient cell, compatible prescribed
+face restrictions, and bounded first derivatives on each
+smaller compact truncation.  Bounds are taken only after
+an annular interval and truncation have been chosen.
+
+\begin{proposition}[Finite surface preparation before the radial interval]
+\label{prop:r13-surface-preparation-before-interval}
+In this fixed AF setting, the unit tuple in the annular
+NSA construction can be chosen before the compact radial
+interval.  More precisely, there is one finite surface
+tuple \(H\), consisting of units of norm one at \(v\)
+after original-constant normalization, and one fixed
+finite sequence of surface geometric preparations, with
+\(H\) the last protected tuple on its fixed surface
+unit domain.  Write \(E_H=t_H^{-1}(t_H(v))\) for its
+entire compact central fiber.  These data have
+the following property.  For every
+\(I\Subset(r_*,1)\), the construction yields a continuous
+finite-PS ambient covector \(\Lambda_I\) in the coordinates
+\((Z,H)\) on an ordinary neighborhood of the entire
+product over \(I\) and \(E_H\), with
+\[
+                    t_{(Z,H)}^*e(\Lambda_I)=T,
+                       \qquad e=\operatorname{sym}d,
+\tag{UA3}
+\]
+whenever the represented tensor satisfies the original
+current equation on the AF product.  This is the complete
+ordinary image identity, with all its lower faces.  The
+tuple \(H\) and the geometric choices do not depend on
+\(I\); the coefficient operators, ordinary truncations
+and bounds may depend on \(I\).
+\end{proposition}
+
+\begin{proof}
+We specify the choices in the order in which their data
+become available.  Every protection performed in this
+proof retains \(C\).  Thus Lemma~\ref{lem:r13-fixed-controls-protected-fiber}
+permits it to be made once on the surface and used in
+every later annular interval by changing only target bands.
+Every ordinary localization used for residue identities,
+unit domains or full-rank fiber isolation is a fixed
+surface localization.  It can be imposed before that
+protection.  All analytic domains are common domains of
+finitely many such requirements.
+
+\emph{Entry and the full trace space.}
+Perform the first CE protection for the fixed old surface
+tuple.  Its complete finite central source fiber and every
+projected satellite ray are now fixed.  Insert those rays
+once to obtain CE's rational normal fan \(\Sigma_0\).
+In particular this subdivision is not recomputed when
+the tangent interval changes.  The finite-dimensional
+space of continuous homogeneous functions linear on
+\(\Sigma_0\) is defined by rational face equations.
+Choose CG's rational ambient PL/DC extension basis for
+this entire space, rather than for the span of the
+coefficient functions on one particular interval.
+
+SC applies to that fixed rational family and constructs
+its actual cap units, numerical matrix, rational kernel
+basis and RB unit representatives before any coefficient
+vector is chosen.  All these functions therefore can be
+chosen now.  Adjoin them and make the next fixed surface
+localization and protection required for SS.  These steps
+fix the old tuple \(\tau\) for NSA.  On each later
+interval CE and SP construct the conewise primitives;
+CG's affine projector is chosen on that interval.  The
+resulting central trace lies in the already prepared
+full space.  SS and CU use the same fixed cap and unit
+families to normalize it.  Their arbitrary compact
+tangent tests and the complete protected source sums
+are legitimate by the preceding lemma.  Changing the
+affine projector changes coefficients, not the PL
+basis, caps or units.
+
+\emph{Core, source separation and transverse bases.}
+Apply SA to the frozen \(\tau\), then BG, SN and the
+source-exhaustion theorem.  Their smooth proper surface,
+finite boundary graph, actual node coordinates and
+selected-factor localizers depend only on that tuple.
+Choose the first FA family on its complete full source
+star, with the finite algebraization coordinates retained.
+Make the corresponding fixed surface localization and
+protection.  Choose the full finite marked sets on all
+tracked divisor curves, and choose RT's Picard basis for
+the entire weighted zero-sum space on each such set.
+SL lifts these functions simultaneously, with residue
+one on the other tracked divisors.  Include the finite
+SA coordinates required for these functions.
+
+No value of a primitive or a trace function is used in
+these choices.  The weighted spanning tree can likewise
+be fixed now.  On a later interval RCF computes the
+sourcewise flux coefficients, and the tree chooses the
+rotation coefficients.  RT is its fixed real linear
+map on the resulting entire trace family.  Thus none
+of these differential steps adds a unit.  The actual
+new-mark and primitive-index checks in NSA are checks
+of these fixed finite coordinate maps.  They apply on
+every interval with the same labels and weights.
+
+The intermediate protection coordinates cause no new
+coefficient-dependent algebraic choice: their norms
+are constant on an ordinary surface germ at \(v\).
+They can be retained in the fixed pre-Picard tuple,
+as NSA does.  Their selected main-source residues are
+constants after normalization.  Their additional
+protected source germs and projected rays have already
+been fixed by the corresponding protection; the NSA
+satellite argument retains them in each source sum.
+
+\emph{Final preparation.}
+Freeze the tuple containing the preceding coefficients,
+caps, kernel units, nodes, first separators, Picard units
+and algebraization coordinates, and retain every earlier
+protection coordinate before the last protection.
+Choose the final FA/CS
+separating family and any finite SA completion.  Localize
+the complete old full-rank central fiber once.  Perform
+the last surface protection, retaining \(C\) again.
+Call this last protected tuple \(H\).  All earlier
+coordinates have already been retained; there is no
+additional coordinate choice after this protection.
+
+For a specified interval, narrow the finitely many
+protected target bands using UA1 and the lemma, take
+a common smaller normal truncation, and run NSA's
+coefficient operations on a real tangent interval
+containing \(-\log I\).  The complete image proof of
+NSA checks every actual incidence, including the
+additional protected sources.  The narrowed target
+bands contain \(t_H(v)\), hence their full inverse
+image contains the entire same compact fiber \(E_H\).
+The fixed-control lemma supplies an AF product over
+that whole fiber for the chosen interval.  Its final NL extension
+uses only the fixed finite coordinate spaces; the
+closed-cell coefficient subdivision and its analytic
+extensions may be restricted to the chosen interval.
+NL does not select a new analytic unit.  This proves
+UA3.  Intersecting the real coefficient cells with a
+new tangent interval or with a fixed geometric cone
+changes a real subdivision only; no unit is selected
+from those coefficient walls.  There are finitely
+many geometric stages, and
+all have been fixed before the interval.  The full
+fixed-tuple assertion follows.
+\end{proof}
+
+\subsection{Central lift first, then every sufficiently outer interval}
+
+\begin{theorem}[A nonempty central-compatible punctured collar]
+\label{thm:r13-central-compatible-punctured-collar}
+Let a fixed central finite coefficient presentation on
+the original threefold have the AF closed-cell PS
+pullback, and assume \(D[T]=0\) on its original ordinary
+domain against all original compact smooth complementary
+CLD tests.  Then there are one finite actual central
+unit tuple \(\widehat H\), retaining the original
+coefficient tuple and \(Z\), and a number \(r_0<1\),
+such that the following holds for every compact
+\(I\Subset(r_0,1)\).
+
+There is an ordinary neighborhood \(U_I\) of the
+entire actual interval \(q_D(I)\), and a continuous
+finite-PS ambient covector \(\widehat\Lambda_I\)
+in the fixed \(\widehat H\)-coordinates, with smooth
+closed-cell extensions and bounded first derivatives
+on a smaller fixed truncation, whose strain pulls
+back to \(T\) on the complete ordinary image and
+every lower face.  Consequently there are smooth
+full-exact forms
+\[
+       a_{I,\eta}=d'\beta_{I,\eta}+d''\zeta_{I,\eta},
+              \qquad \epsilon_{I,\eta}\longrightarrow0,
+\tag{UA4}
+\]
+and one fixed positive control \(Q_I=D[q_I]\) on
+that domain satisfying the original NSA4 order and
+all-background inequalities.  For each \(I\), the
+tuple, covector, control and approximation precede
+every later allowed symmetric middle-positive
+separately \(d'\)- and \(d''\)-closed background,
+every original compact complementary smooth test,
+and every actual refinement, including rank loss.
+The central tuple \(\widehat H\) is independent of
+\(I\).
+\end{theorem}
+
+\begin{proof}
+Prepare the fixed surface tuple \(H\) of the preceding
+proposition.  Normalize its central surface values
+by constants in the original \(K\).  For each of its
+finitely many residue functions in \(k(D)^\times\),
+choose a unit of the residue local ring at \(D\)
+mapping to it, and lift that function to an actual
+unit at the original threefold point using the
+finite same-field unit lifting theorem.  These
+central units have divisor order zero at \(D\).
+Use DT8 for their exact norm and normalized
+initial-form comparison with the prescribed
+surface units; the finite ordinary comparison
+of two surface lifts with the same residue is
+included as well.  The construction uses the
+original field and its original norm throughout.
+
+Apply AF1 to this now fixed enlarged central list.
+It supplies a threshold \(r_0<1\), enlarged to
+include the initial \(r_*\), and for every
+\(I\Subset(r_0,1)\) an actual product domain
+\(\mathcal A_J\times W_I^{\rm lift}\), with
+\(I\Subset J\) and \(v\in W_I^{\rm lift}\),
+on which all surface coordinates in \(H\) have
+the exact norms of their central lifts.  The
+original coefficient coordinates retain their
+fixed integral affine graph formulas involving
+\(Z\).  Every radial value is included.
+
+Run the preceding proposition on the same
+interval, using the original finite central
+conditions.  It gives \(\Lambda_I\) on a
+product neighborhood
+\(\mathcal A_{J'}\times W_I^{\rm strain}\)
+of the relative Gauss interval.  Shrink the
+two open radial intervals so both still
+contain \(I\).  The ordinary surface
+intersection
+\[
+       W_I^{\rm lift}\cap W_I^{\rm strain}
+                          \ni v
+\tag{UA5}
+\]
+is nonempty.  Both products use the same
+selected zero-slice comparison, by Newton
+uniqueness.  Hence they intersect in an
+actual product containing \(q_D(I)\).
+This is the required nonvacuity: the interval
+was chosen after the final central-lift
+threshold, and no new coefficient unit is
+selected afterward.  Extra finite controls
+used to describe the lift domain impose
+only an ordinary restriction; they are not
+inputs to another scalar trace construction.
+
+On this intersection the exact coordinate
+identities transport \(\Lambda_I\) to
+\(\widehat\Lambda_I\).  Pullback through
+their fixed integral affine graph gives
+the full strain identity on each actual
+face, with the prescribed lower-face
+values.  Every later actual refinement
+is a linear coordinate pullback after
+finite common subdivision, so rank loss
+does not change this identity.  Restrict
+to a smaller ordinary protected truncation
+and apply the retained ambient strain
+smoothing theorem.  It gives UA4 and
+exactly the control and all-background
+inequalities of NSA4, with their original
+tests and positivity hypotheses.
+\end{proof}
+
+\paragraph{Quantifiers.}
+The theorem supplies one central tuple and a
+primitive for every compact interval in an
+actual nonempty punctured collar.  The
+primitives, domains and finite constants can
+depend on the interval.  Compatibility
+between those primitives at the original
+apex is a further coefficient problem.
+Here the complete image is the image of
+the displayed ordinary domain \(U_I\).
+Other actual sources in a larger central
+domain with the same completed moment
+value over the old ray are not included
+unless they belong to \(U_I\).  Exhausting
+their complete incident family is a
+separate source-localization question.
+

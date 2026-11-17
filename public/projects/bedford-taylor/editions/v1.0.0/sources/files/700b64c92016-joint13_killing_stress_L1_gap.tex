@@ -1,0 +1,261 @@
+\section{A quantitative strain gap and the failure of fixed-control approximation on the supplied fan}
+\label{sec:r13-killing-stress-l1-gap}
+
+Keep the five planes, trace data, fields \(b_i\), strains \(Z_i\),
+and edge stress \(s\) of PK.  Equip \(N=\mathbf R^4\) and its
+subspaces with their Euclidean norms.  Write
+\[
+ B_R^i=P_i\cap B_R(0),\qquad
+ D_R^{ij}=S_{ij}\cap B_R(0),\qquad
+             \mathfrak s(c)=\sum_{i<j}s_{ij}c_{ij}.
+ \tag{KG1}
+\]
+All tensor-measure total variations below use the Euclidean
+Frobenius norm.  Changing to the fixed lattice calibrations
+changes only the constants.
+
+The two external analytic inputs are the classical
+Korn--Poincare estimate in \(\mathrm{BD}\) and the bounded
+\(\mathrm{BD}\) trace map on a bounded Lipschitz domain.
+Here \(Eu=\operatorname{sym}Du\) denotes the full distributional
+symmetric derivative.  In the form needed on a three-ball,
+there is an affine Killing field \(K\) such that
+\[
+ \|u-K\|_{L^1(B_R)}\leq C R\,|Eu|(B_R).
+ \tag{KG2}
+\]
+The trace estimate on a half-ball is
+\[
+ \|\gamma u\|_{L^1(\partial B_R^+)}
+       \leq C\bigl(R^{-1}\|u\|_{L^1(B_R^+)}
+                              +|Eu|(B_R^+)\bigr).
+ \tag{KG3}
+\]
+We use KG2 only for continuous \(\mathrm{BD}\) fields on a
+closed ball; hence they are also in \(L^2\).  KG2 follows by
+Holder and scaling from the \(L^{3/2}\) estimate stated as
+Theorem A.1 in Friedrich's paper cited below.  KG3 follows
+by scaling from Babadjian's Theorem 3.2; for a continuous
+field its trace is its usual boundary restriction.  No
+\(L^1\) estimate for the full gradient is used.
+
+\subsection{The finite Killing stress is stable in the strain-measure norm}
+
+\begin{theorem}[Quantitative obstruction]
+\label{thm:r13-strain-measure-gap}
+There is a constant \(C>0\), depending only on the fixed
+five-plane configuration, such that the following holds.
+Let \(g_i\) be continuous covector fields on
+\(\overline{B_R^i}\), belonging to \(\mathrm{BD}(B_R^i)\).
+Assume that their tangential traces agree on every pair disk:
+\[
+                  g_i(x)|_{S_{ij}}=g_j(x)|_{S_{ij}}
+                           \quad(x\in D_R^{ij}).
+ \tag{KG4}
+\]
+Then
+\[
+ R^3|\mathfrak s(c)|
+       \leq C\sum_{i=0}^4
+             |Z_i\,\mathcal L^3-Eg_i|(B_R^i).
+ \tag{KG5}
+\]
+In particular, when \(c_{01}=1\) and the other edge data
+are zero, the sum on the right has a strictly positive lower
+bound proportional to \(R^3\).  The conclusion applies to
+the restrictions of any single smooth ambient covector field.
+\end{theorem}
+
+\begin{proof}
+First take \(R=1\).  Put
+\(u_i=b_i-g_i\) and
+\(\eta_i=|Eu_i|(B_1^i)\).  The full identity
+\(Eb_i=Z_i\mathcal L^3\) gives exactly the error measure
+appearing in KG5.  By KG2 choose
+\[
+ K_i(x)=k_i+\Omega_i(x,\cdot),\qquad
+              \Omega_i\in\bigwedge^2P_i^*,
+ \qquad r_i=u_i-K_i,
+\]
+with \(\|r_i\|_{L^1(B_1^i)}\leq C\eta_i\).
+Its symmetric derivative is still \(Eu_i\).
+Apply KG3 to either half-ball cut out by \(S_{ij}\).
+Restriction can only decrease the \(L^1\) norm and the
+variation of the derivative measure, so
+\[
+       \|r_i|_{D_1^{ij}}\|_{L^1(D_1^{ij})}
+                           \leq C_{ij}\eta_i.
+ \tag{KG6}
+\]
+Continuity identifies this trace from either side.  The
+finitely many constants can be replaced by their maximum.
+
+Let \(\widehat\theta_{ij}\) be the alternating form on
+\(S_{ij}\) with
+\(\widehat\theta_{ij}(a_{ij},b_{ij})=1\).  Denote the
+coefficient vectors of \(\Omega_i\) by \(\omega_i\), as in
+PK2--PK5.  On \(D_1^{ij}\), the common \(g\) trace cancels.
+Using PK9 gives the exact identity of tangential covectors
+\[
+ (r_i-r_j)|_{S_{ij}}
+ =\bigl(c_{ij}-(D\omega)_{ij}\bigr)
+                 \widehat\theta_{ij}(x,\cdot)
+                    -(k_i-k_j)|_{S_{ij}}.
+ \tag{KG7}
+\]
+The disk is symmetric under \(x\mapsto-x\).  For any
+linear map \(L\) and constant vector \(a\), the triangle
+inequality gives
+\[
+       \int_{D_1^{ij}}|Lx|\,dx
+                     \leq\int_{D_1^{ij}}|Lx-a|\,dx.
+ \tag{KG8}
+\]
+Indeed integrate
+\(2|Lx|\leq|Lx-a|+|-Lx-a|\).
+The constant
+\(\kappa_{ij}=\int_{D_1^{ij}}
+                  |\widehat\theta_{ij}(x,\cdot)|\,dx\)
+is strictly positive.  KG6--KG8 therefore imply
+\[
+       |c_{ij}-(D\omega)_{ij}|
+                          \leq C'(\eta_i+\eta_j).
+ \tag{KG9}
+\]
+Pair this inequality with the finite stress PK6.  Since
+\(s^TD=0\), it gives
+\( |\mathfrak s(c)|\leq C\sum_i\eta_i\).
+There is no bound or convergence assumption on the translations
+\(k_i\) or rotations \(\Omega_i\); the symmetric-disk
+argument removes the translations and the stress removes
+all rotations.
+
+For general \(R\), replace \(g_i(x)\) on the unit ball by
+\(R^{-1}g_i(Rx)\).  The target \(b_i\) is homogeneous of
+degree one, and the variation of its strain error rescales
+by \(R^{-3}\).  The unit-ball result yields KG5.
+\end{proof}
+
+\subsection{Smooth full-exact forms are included}
+
+Let \(a=d'\beta+d''\zeta\) be a smooth real \((1,1)\)-form
+on an ambient neighborhood of the closed ball.  Write
+\(\beta=\sum p_j\,d''x_j\) and
+\(\zeta=\sum q_j\,d'x_j\).  In the usual superform signs,
+\[
+ a_{ij}=\partial_i p_j-\partial_j q_i,
+ \qquad
+ \operatorname{sym}a=e(B),
+       \qquad B=\sum_j(p_j-q_j)\,dx_j.
+ \tag{KG10}
+\]
+Restriction to a linear plane commutes with this identity.
+Consequently KG5 gives
+\[
+ \sum_i\int_{B_R^i}
+       |Z_i-\iota_i^*\operatorname{sym}a|\,d\mathcal L^3
+                    \geq C^{-1}R^3|\mathfrak s(c)|.
+ \tag{KG11}
+\]
+This lower bound holds for all such \(a\), without bounds
+on their coefficients or derivatives.
+
+\subsection{A fixed finite positive current cannot dominate vanishing errors}
+
+We make the current-order conclusion precise.  Work in an
+ambient open neighborhood \(O\) of \(\overline{B_R(0)}\).
+For a smooth full-exact \(a\), form the fixed-fan current
+\[
+ \mathcal E_a=\sum_i\iota_{i*}
+       [Z_i-\iota_i^*\operatorname{sym}a].
+ \tag{KG12}
+\]
+Let \(\mathcal Q\) be a fixed real current of bidegree
+\((2,2)\) which is nonnegative on compactly supported
+strongly positive smooth real \((2,2)\) tests.  For each
+fixed constant strongly positive test form, its evaluation
+on \(\mathcal Q\) is thus a locally finite positive Radon
+measure.  Say that
+\(-\epsilon\mathcal Q\leq\mathcal E_a\leq
+\epsilon\mathcal Q\) when both differences are
+nonnegative on all these tests.  This definition is sufficient
+for the result; no identification of the strong, middle and
+weak positivity cones is made.
+
+\begin{corollary}[No vanishing fixed-control error on PK10]
+\label{cor:r13-no-fixed-control-on-supplied-five-plane-fan}
+If \(\mathfrak s(c)\ne0\), there is no sequence of smooth
+full-exact \((1,1)\)-forms \(a_j\) and numbers
+\(\epsilon_j\downarrow0\) satisfying
+\[
+             -\epsilon_j\mathcal Q\leq\mathcal E_{a_j}
+                                      \leq\epsilon_j\mathcal Q
+ \tag{KG13}
+\]
+on \(O\), for one fixed \(\mathcal Q\) as above.
+\end{corollary}
+
+\begin{proof}
+For each \(P_i\), choose an orthonormal basis of its
+three-dimensional tangent space.  The six scalar quadratic
+probes in the directions \(e_a\) and \(e_a+e_b\),
+\(1\leq a<b\leq3\), determine every symmetric matrix
+entry by polarization.  For each direction choose a constant
+decomposable positive ambient \((2,2)\)-form whose restriction
+to \(P_i\) pairs with that quadratic probe, including its
+fixed positive normalization.  Such a form is obtained from
+two covectors spanning the perpendicular two-plane and their
+double-primed copies.  Write these thirty forms as
+\(\Psi_{i\nu}\).
+
+For each \(\Psi_{i\nu}\), KG13 dominates the corresponding
+scalar signed measure by
+\(\epsilon_j\,\mathcal Q(\Psi_{i\nu})\).
+Let
+\(A_i=P_i\setminus\bigcup_{k\ne i}P_k\).
+The five intrinsic three-dimensional error measures are
+mutually singular: their intersections have three-dimensional
+measure zero.  Restricting the scalar measure inequality to
+\(A_i\) therefore isolates exactly the desired scalar
+probe of the \(i\)-th strain error.  No other source plane
+contributes on this Borel set.
+
+Choose a nonnegative compact cutoff \(\chi\) in \(O\)
+which is one on \(\overline{B_R(0)}\).  Polarization and
+finite-dimensional norm comparison give a constant \(C_0\)
+such that
+\[
+ \sum_i\int_{B_R^i}
+       |Z_i-\iota_i^*\operatorname{sym}a_j|\,d\mathcal L^3
+ \leq C_0\epsilon_j
+       \sum_{i,\nu}\langle\mathcal Q,\chi\Psi_{i\nu}\rangle.
+ \tag{KG14}
+\]
+Every term in the finite sum is finite and nonnegative,
+and the sum is independent of \(j\).  Its right side tends
+to zero, contrary to KG11.
+\end{proof}
+
+\paragraph{What this rules out.}
+The same fixed supplied fan has all the local primitives and
+fixed-fan \(d'd''\)-closure proved in PK, yet even arbitrarily
+large smooth ambient full-exact coefficients cannot approach
+its strain in the above fixed-positive-control order.  This
+is a quantitative obstruction on retained real source planes.
+No original analytic zero realizing PK10 has been constructed,
+and KG does not refute the original analytic all-refinement
+criterion.  Genuine actual unit refinements can change the
+incident spaces and the associated stress; that operation is
+not represented by a real subdivision of this fixed fan.
+
+\paragraph{Primary analytic sources.}
+M. Friedrich, \emph{A Korn--Poincare-type inequality for special
+functions of bounded deformation}, arXiv:1503.06755v3,
+Theorem A.1, states the classical \(\mathrm{BD}\)
+Korn--Poincare estimate used in KG2 in arbitrary dimension.
+J.-F. Babadjian, \emph{Traces of functions of bounded deformation},
+arXiv:1308.5497v2, Theorem 3.2, proves the bounded trace map
+on Lipschitz domains and its agreement with continuous
+boundary restrictions.  Only these two analytic estimates
+are imported; KG5--KG14 are the finite-configuration and
+current-order deductions given here.

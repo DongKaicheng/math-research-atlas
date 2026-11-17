@@ -1,0 +1,402 @@
+# Non-Archimedean Bedford–Taylor theory：内部成果审计、任务清单与研究计划
+
+日期：2026-11-14。性质：已有结果的源文、依赖与状态审计，加上后续研究计划；不是 R25 冻结证明包，没有新增数学定理。
+
+## 一、审计结论
+
+现有理论远不止连续势或二次关系的准备工作。任意固定原始背景上的有界 BT 七项性质和势无关性，环境背景的局部极性/容量理论，限定范围的无界正幂能量微积分，严格 Laurent 域上的强第一能量完成，以及相对线性测度数据问题和非线性变分/相容性判据，已经有内部证明。
+
+真正仍未闭合的主线是：一般实际解析关系下降及变量 PS/CTO/测试兼容；修正后的任意相对背景外容量正则性；literal ED-bounded 测度的强积分连续性；独立且可验证的非线性源相容性条件。域与边界/实际 classical 代表的扩展也须分层处理。
+
+“完成”在本报告中意味着冻结源文有明确证明，在所列原假设及采纳的 R/B/A2 输入下可用；本轮未重新独立验证所有历史证明。文件哈希检查只证明字节一致性，不证明数学正确。
+
+## 二、版本与核查范围
+
+- 外层 R24 handoff 与内嵌 R24 的 SHA-256、大小已重新核对。
+- R24 的 644 个清单成员重新检查大小和 SHA-256，未发现不一致。
+- 执行恢复脚本后，R23 313 个、R22 2258 个成员通过其恢复核验；未覆盖不同字节的已有文件。
+- 顺嵌套链提取了 R3–R20 的主要文本，R3 包内保留 R1/R2 原源。对旧包记录了 archive hashes；不声称本轮逐个重新校验全部更早 manifest。
+- 重点核对 R1–R4 有界/环境势论、R5/R6 势商及连续系数模、R10 PS current 模、R11 无界/能量/线性问题、R12/R16/R17 数据/容量/相容性，以及 R18/R24 关系下降。
+- R21 历史完整 ZIP/PDF 没有字节恢复；沿用保留/重建源文及既有新审查的资格说明。
+- 包内 evidence/ 是选定原始模块的字节不变副本，不是完整历史档案；SOURCE_INDEX.json 给出其原路径和 SHA-256。
+
+## 三、共同数学范围与三类不能混同的空间
+
+原始有限 K/Qp、原绝对值；good、Hausdorff、boundaryless、quasi-smooth 原始解析空间（逐纯维分支处理）；ordinary opens/germs；全部原始紧支 smooth CLD tests 与 actual refinements；S 对称、middle-positive、分别 d'、d'' 闭。令 D=d'd''，q=n-p。
+
+局部定理不自动成为全局边界定理。很多全局能量结果要求一个严格 Laurent box，闭包紧含在原 affinoid 内部，S 延拓到闭包的 ordinary 邻域。
+
+必须分清：actual classical psh 类；按相对外容量等价的 Borel/strong E1 完成类；q=1 faithful part-energy/renormalized 解类。q=1 能量方程普遍可解，不意味着其解属于 classical-approximation 正锥。完成边界也不等于普通逐点边界。
+
+## 四、在原范围内已经完成的理论
+
+### C01　R/B/A2 冻结基础
+
+R/B 原始连续正则化、局部有界 classical psh 背景[1]微积分及普通代数局部化；A2 指定范围 geometric adelic nefness。
+
+**范围限制：**授权 INTERNAL_INPUT，不是此次独立重证；A2 不列为待攻。
+
+**源文：**S01, S02。
+
+### C02　任意固定原始 S 的有界 BT 七项性质
+
+存在、正性、分别闭性、对称性、势多线性、ordinary restriction/gluing、加权联合递减连续性。
+
+**范围限制：**局部有界 classical 势；固定 S；全部原始 smooth CLD tests/actual refinements。
+
+**源文：**S01, S02。
+
+### C03　CLN 与容量控制
+
+局部有限-test CLN、系数 Radon 控制、限定可积条件的 L1/截断估计。
+
+**范围限制：**不提供无条件移动背景连续性。
+
+**源文：**S01, S02。
+
+### C04　曲率核与势无关性
+
+D[u]=D[v] => u-v 实际连续 pluriharmonic，且 D(uS)=D(vS)；有局部有界 classical 势的曲率 currents 可混合并粘合。
+
+**范围限制：**不只连续势；不定义两个完全任意正闭 currents 的积。
+
+**源文：**S04。
+
+### C05　连续标量系数曲率模
+
+局部有界 classical 曲率的连续标量系数关系与顺序传递；多槽模正乘积。
+
+**范围限制：**一般变量系数输出不自动 separately closed；不等于所有高次 actual relations。
+
+**源文：**S05。
+
+### C06　既有 PS current 模
+
+有限 PS 系数乘原始允许 currents 的微分、内禀曲率运算及 witness independence。
+
+**范围限制：**对象先是既有原始 current；不等于全 variable-PS analytic delta quotient。
+
+**源文：**S06, S07。
+
+### C07　有界容量完成与单调极限
+
+actual increasing supremum、相对 Borel 完成、q.e. 独立性、局部拟连续性、strict maximum locality。
+
+**范围限制：**一般相对类不能以 ambient usc envelope 替代。
+
+**源文：**S02。
+
+### C08　环境 [1] 极性/Choquet 理论
+
+局部 pluripolar/outer-null/negligible 等价；限定 exhaustion domain 的 extremal mass、raw/outer Borel 正则性与 Choquet。
+
+**范围限制：**ambient scope，不能推广到所有相对 S；不声称任意空间单一全局 untwisted 极函数。
+
+**源文：**S02, S03。
+
+### C09　极集限制与有界比较
+
+从全域已定义的 S 得到 pole-set restriction closedness/BT compatibility；compact-gap comparison；相对容量意义 domination。
+
+**范围限制：**一般 S 可给 ambient 极集正质量；无条件逐点 domination 错误。
+
+**源文：**S02。
+
+### C10　无界 nonpolar 产品
+
+系数局部有限下的非极 mixed limit separately closed；no-loss 容量尾判据。
+
+**范围限制：**保留 compact-sublevel boundary、局部质量条件；不能省略 no-loss。
+
+**源文：**S08, S11。
+
+### C11　正幂能量类
+
+E^sigma，sigma>0，容量积分刻画、all-degree recursion、first-order/energy currents 与精确指数预算。
+
+**范围限制：**端点稳定需一致尾可积或相应强拓扑；仅能量有界不够。
+
+**源文：**S08。
+
+### C12　E1 全局 Green 与强完成
+
+strict box/延拓背景的 Green 对称、常数1混合能量不等式、强完成 Borel 实现、比较/支配、强单调闭包。
+
+**范围限制：**完成边界不等于普通逐点边界，完成成员未必 ambient classical。
+
+**源文：**S08, S09。
+
+### C13　Perron/obstacle
+
+有界和强能量相对 envelope、finite rooftop、源下界和 Borel constraints 保持。
+
+**范围限制：**最大元/变分最大化不自动解指定源方程。
+
+**源文：**S08, S09, S12, S16。
+
+### C14　相对线性测度方程
+
+q=n-p=1，finite signed energy-diffuse Radon datum 的 renormalized zero-boundary solution、chain/coarea、clipping、obstacle contact。
+
+**范围限制：**affinoid part domain 与其 clipping/radiation boundary；不是 ambient classical psh 普遍解。
+
+**源文：**S08, S10, S11。
+
+### C15　能量对偶与非线性变分
+
+Banach difference space、order-energy lattice、norm-closed source image、strong-continuous 数据唯一变分投影/normal residual。
+
+**范围限制：**源像不因此 weak*-closed/convex；变分解与源解分开。
+
+**源文：**S12, S15。
+
+### C16　精确源相容性判据
+
+literal strong Radon data 的 Xi=0 单probe判据；有subsolution时 Perron–variational gap；后续正compact-test判据。
+
+**范围限制：**判据已证；从独立几何/数据假设推出判据未证。
+
+**源文：**S13, S16。
+
+### C17　已受控测度和参数模型
+
+source domination/capacity domination 的 literal strong 积分连续性；closed parameter bands/disintegration/指定Lp模块兼容源。
+
+**范围限制：**不替代所有 relative 数据；parameter-annihilated 条件原样保留。
+
+**源文：**S12, S16。
+
+### C18　full-polar 内禀 normal current
+
+带任意解析权重的 NC3 散度、全部 smooth presentation quotient、NC8 内禀流与边界。
+
+**范围限制：**R18 已证；NC12 漂移消灭及其后奇异配对仍开放。
+
+**源文：**S18。
+
+### C19　R24 标量与 cap 工具
+
+原始连续 harmonic=classical PH=局部unit logs；HC/CZ same-carrier cap 控制；AP 给定连续势的作用等式。
+
+**范围限制：**分别保留 exact support、whole carrier、stage 与 existence 前提。
+
+**源文：**S19, S21。
+
+## 五、必须从“待证明”中删除的错误命题
+
+这些反例是理论的一部分，不是证明技术暂时不足。应保留其精确量词和限定条件。
+
+### F01　任意相对 S 的全部紧集/Borel raw capacity = outer capacity
+
+R16 crossed box 全tester反例；raw decreasing-compact continuity 也失败。
+
+源文：S14, S15, S25。
+
+### F02　所有 capacity-controlled / finite-energy datum 自动是指定完成空间的源
+
+严格源、正smooth density、任意小扰动仍可不相容。
+
+源文：S11, S16, S17。
+
+### F03　变分最大化/relative Perron 直接给源等式
+
+仅提供 Euler inequality / subsolution；需 normal residual=0。
+
+源文：S11, S12, S13。
+
+### F04　任意 S 下相对 envelope 可换成 ambient usc envelope
+
+可丢失原始 source；relative 与 ambient 类须分开。
+
+源文：S02, S11。
+
+### F05　仅能量有界+容量收敛给临界 weighted continuity
+
+有端点反例；一致tails/强拓扑是修正条件。
+
+源文：S08, S11。
+
+### F06　无界 nonpolar 产品无条件满足递归
+
+可遗失极性剩余 Dirac；no-loss/可积前提不可删。
+
+源文：S11。
+
+### F07　任意相对容量零集等于 ambient 极集，或无条件逐点支配
+
+退化/支撑使原断言错误；ambient 局部结论已经完成。
+
+源文：S02, S11。
+
+### F08　每个 full polar 都有指定连续系数 smooth-form 双原函数
+
+R24 VE 排除，含更换 Hessian 代表；适当奇异原函数未被排除。
+
+源文：S22。
+
+### F09　global full polar 任意局部化/固定域全权重 harmonic comparator/有限局部常系数核
+
+NL/BC/IK 已排除相应强断言；不是 KC12 反例。
+
+源文：S18, S19, S20。
+
+最重要的容量修正：R16 中 q≥2 的 crossed-box 例子，κ=(2λ)^(-q)，H={A,B}，满足
+
+    C_S(H;V) = (2+2^(1-q)) κ < 3κ ≤ C_S^*(H;V) ≤ 4κ.
+
+这里 supremum 是全部原始 normalized classical testers，包括非连续者，不是只在 toric testers 上计算。旧 R2/R11 将任意相对背景 raw/outer 问题记为 OPEN；该无条件命题到 R16 已为 FALSE。环境背景 [1] 的已证合格域定理不受此反例推翻。
+
+## 六、仍待完成的数学任务
+
+各 A1 子路线是备选/互补，不是必须机械顺序完成的全部条件。P1 表示优先主线，P2 表示扩展主线，P3 表示非必经路线；这不是预计用时。
+
+### A1　一般 actual PL 关系的任意背景作用下降（P1）
+
+- [ ] **目标：**证明 actual signed PL-zero => A_S(P)=0；KC12 same-germ qzero 是更强充分路线。
+- **已有而不应重做：**有界BT、R5势商、R18内禀流均已存在。
+- **验收条件：**原K/原范数/same germ/全测试细化/所有合法degrees及mixed tails；不增加S假设。
+- **依赖：**C02, C04, C05, C18, C19。
+- **依据：**S18, S19, S20。
+
+### A1-RV　二次作用的 RV/AP 路线（P1-备选路线）
+
+- [ ] **目标：**RV4 balanced covector lift，加上 gamma 连续普通势或必要 covector relation action transfer；也可直接证明完整作用恒等式绕过两步。
+- **已有而不应重做：**给定连续势的作用比较已证明；曲率order interval不是势存在性。
+- **验收条件：**对实际RV产生的类的一般定理；一般维数、任意S；两个缺口不可混称一个。
+- **依赖：**C05, C06, C19。
+- **依据：**S21, S20。
+
+### A1-NC　NC12 加奇异配对路线（P1-备选路线）
+
+- [ ] **目标：**先消灭局部unit drift使T分别闭，再构造边界完整的singular PL/Aeppli pairing。
+- **已有而不应重做：**NC3/NC8与gluing已是R18；连续smooth-form universal primitive已FALSE。
+- **验收条件：**在既定global polar上全局合法处理local units；闭性不当成完整下降。
+- **依赖：**C18。
+- **依据：**S18, S22。
+
+### A1-MODEL　LG7 Abhyankar 模型证书路线（P1-备选路线）
+
+- [ ] **目标：**模型上的实际零给完整carrier证书，再通过已证finite-etale+EC获得所有S作用。
+- **已有而不应重做：**不把混合q-return ST19/LG4强加为作用路线的必需条件。
+- **验收条件：**模型证书全部原始germs/carriers/细化；若另追求q-return则单列。
+- **依赖：**C18, C19。
+- **依据：**S20, S23。
+
+### A2　高次数、variable-PS、CTO 和 GK 测试接口（P1-后续）
+
+- [ ] **目标：**从纯曲率下降推进高次数signed relation、variable-PS系数、low-real-degree CTO、ordinary-to-GK全部测试与粘合。
+- **已有而不应重做：**既有PS current模、top-real-degree/fan具体族、smooth current gluing已完成。
+- **验收条件：**四个接口分别证明，不从二次或ordinary equality自动推出全部。
+- **依赖：**A1, C05, C06。
+- **依据：**S06, S07, S20。
+
+### B1　相对外容量的 Borel 内正则性（P1-并行）
+
+- [ ] **目标：**判断/证明 C*_S(E)=sup_{H compact subset E} C*_S(H)。
+- **已有而不应重做：**ambient [1]限定域Choquet已证；普遍raw=outer已FALSE。
+- **验收条件：**全原始normalized testers，不替换为特殊族或单一辅助energy capacity。
+- **依赖：**C07, C08, C17。
+- **依据：**S14, S16。
+
+### B2　有条件的 normalized tester 紧集恢复（P2）
+
+- [ ] **目标：**寻找内禀、可验证且排除crossed-box的条件，证明compact recovery/相应容量等式。
+- **已有而不应重做：**不再证明普遍FG1；完成空间的source不自动是normalized tester source。
+- **验收条件：**给出确切新增假设、完整测试归一化及适用范围；保留反例。
+- **依赖：**C08, C17。
+- **依据：**S14, S16。
+
+### C1　literal ED 有界测度的强 L1 连续性（P1-并行）
+
+- [ ] **目标：**真实positive Radon literal integration在全difference space ED-bounded => strong rows 的L1(mu)收敛。
+- **已有而不应重做：**固定source domination、合适capacity domination和weakcompact数据类已完成；finite rooftops已存在。
+- **验收条件：**不添加有限总质量；不拿nonliteral functional或abstract cone当反例。
+- **依赖：**C12, C13, C15, C17。
+- **依据：**S16。
+
+### C1-ROOF　ordered rooftop 连续性充分路线（P1-备选子任务）
+
+- [ ] **目标：**w<=rel u且u_j strong->u => e(P(w,u_j))->e(w)，或SR8有限minorant次线性预算。
+- **已有而不应重做：**已有ROOF=>literal连续性的蕴含，不需重证有限rooftop存在。
+- **验收条件：**同域同完成边界；pointwise relative order不偷换additive cone order。
+- **依赖：**C12, C13。
+- **依据：**S16。
+
+### C2　非线性 Dirichlet 的可验证源相容性（P1-并行）
+
+- [ ] **目标：**由独立几何/数据假设推出Xi=0/ZP；或验证LI known-point linear estimate并建立对mixed nonlinear terms封闭的数据类。
+- **已有而不应重做：**变分投影、Xi判据、相对q1测度解均已完成；smooth positive small density不足。
+- **验收条件：**条件不引用未知solution/optimizer；解在指定空间且保留边界；一般维数/背景目标不降为又一个参数例。
+- **依赖：**C12, C15, C16, C17。
+- **依据：**S13, S16, S17。
+
+### D1　域、边界与 classical 代表的合格扩展（P2）
+
+- [ ] **目标：**刻画何时strong completion有actual classical代表，以及何种几何保证peak barriers/普通边界可解和正则性。
+- **已有而不应重做：**ambient bounded代表、相对q1part-boundary解、strict-box能量理论已完成。
+- **验收条件：**分清ordinary boundary、compact sublevels/no-loss、strong completion boundary；不主张无条件代表存在。
+- **依赖：**C08, C10, C12, C14, C2。
+- **依据：**S02, S08, S11。
+
+### D2　相对极性与逐点检测的进一步分类（P2）
+
+- [ ] **目标：**在明确nondegeneracy/detection假设下连接relative null、pointwise domination与ambient代表。
+- **已有而不应重做：**ambient local pluripolar/negligible/outer-null等价已证，任意S无条件版FALSE。
+- **验收条件：**结论针对可验证的新背景/域条件；保留一般S的relative q.e.理论。
+- **依赖：**C08, C09, C12。
+- **依据：**S02, S03, S11。
+
+### E1　Wloc 密度及额外基域扩展（P3-非必经路线）
+
+- [ ] **目标：**根据需要研究任意S的weak delta approximation和非原K诱导势的新域quotient。
+- **已有而不应重做：**原K诱导势经过complete extension/analytic maps的结论已存在。
+- **验收条件：**不是预设任意current pullback；norm-shift失败不等于所有density失败。
+- **依赖：**C04, C05。
+- **依据：**S11, S20。
+
+## 七、推荐研究顺序
+
+### 阶段 0：固化全理论地图，而非重新证明基础
+
+把本报告的 C/F/A–E 索引接入唯一结果登记；每条定理附原始假设、势类、背景类、边界、测试、确切源码和依赖。R/B/A2 保持授权输入。早期 OPEN 到后期 CLOSED 或 FALSE 的变化必须有后继定理，不按最近摘要覆盖整条历史。
+
+本次已经形成分主题的状态核对和选定源文索引，但还不是逐条历史命题的最终专著依赖数据库。
+
+### 阶段 1：三条并行主线，不让所有势理论等待 KC12
+
+1. **解析微积分线 A：**以 general arbitrary-S action descent 为终点，先处理一般维数二次关系的真实缺口。RV/AP、NC12+singular pairing、Abhyankar model certificate 三条路线按能给出实际证明的程度选择。NC3/NC8 已有；仅重述它们不算进展。
+2. **容量线 B：**研究原外容量的 Borel compact inner regularity；另行提出足以排除 crossed-box 的 tester recovery 条件。不能再把 universal raw=outer 当作主目标。
+3. **数据/方程线 C：**literal ED 强 L1 连续性和非线性源相容性并行。前者拓展可用数据类，后者必须从独立条件得到 Xi=0；证明前者不等于所有数据可解。
+
+### 阶段 2：完成真正跨层的接口
+
+A 的作用下降若完成，再逐项检查高次数传播、variable-PS、signed CTO、完整 GK 测试与 ordinary gluing。二次成立不自动等于任意次数；已知 current 模上的 PS witness independence 不自动等于实际 delta-form relation quotient。
+
+B/C 的结果若成立，再用于 qualified equilibrium/contact formulas、可验证源类的存在/唯一性/稳定性，以及 D 的域/边界和 classical 代表问题。已经建立的强空间比较和 Perron 不重新计为新成果。
+
+### 阶段 3：专题书的统一成型
+
+建议按读者理解顺序，而不是 R1–R24 时间顺序组织：
+
+I. 原始解析范畴、psh、CLD/实际 delta 微积分及正性；
+II. 任意固定背景的有界 BT、曲率商与系数模；
+III. 相对容量、环境极性、比较/包络及必要反例；
+IV. 无界 nonpolar/正幂能量微积分与强完成；
+V. 相对线性方程、非线性变分、源相容性和合格 Dirichlet 理论；
+VI. 实际解析关系、测试传递、自然性及已建立的全局应用。
+
+成书时只使用已审定的定理；开放问题单列。完整理论包含正确的非存在与范围边界，不等于逐字复制复情形中在本范畴下已经被否定的命题。
+
+## 八、每轮研究的实际进展标准
+
+每轮至少输出以下之一：解决现有精确开放断言；严格缩小它且证明返回主目标的蕴含；在原始全部量词下给出真实反例并建立合格替代目标。新增定义、更多同类参数例、重复的 normal-current/散度公式、仅换术语的条件性归约，不自动算主线推进。
+
+每个新结论需检查：same germ、correct absolute carrier、全部原始 tests/refinements、正性锥、奇异边界项、合法次数、普通拓扑与完成边界、是否偷用未证 quotient、是否误把 scalar/real 对象当作 original full polar。每个估计明确固定背景还是允许移动背景；每个解明确所在空间。
+
+## 九、继续研究提示词
+
+请以本审计的 R24 冻结链为基础继续发展整套 non-Archimedean Bedford–Taylor theory，目标是专题专著，而非拆成小论文。先读本报告、TASK_REGISTER.json、SOURCE_INDEX.json；正式新证明仍以完整 R24 handoff 及依赖原源为依据，本轻量证据包不是完整父链替代品。
+
+不要重开已经完成的任意固定 S 的有界七性质、R5 局部有界势 quotient、R2 环境极性/Choquet、R11 正幂能量/强完成/relative q=1 测度方程、R12 Xi 判据、R18 normal-current 构造；也不要再次尝试被 R16 否定的 universal compact raw/outer equality。
+
+优先 A1 general analytic relation action、B1 outer-capacity Borel inner regularity、C1 literal ED 强积分连续性、C2 独立几何 source compatibility。备选路线及精确验收见任务表。保持原 K、原绝对值、ordinary germs、全部原始 tests/refinements 和 arbitrary allowed S。不把新结果夸成完整理论，不把一个特殊类的证明记为普遍结论。输出准确源码、依赖、反例压力检查、可核验审查及仍未解决的最小断言。

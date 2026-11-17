@@ -49,7 +49,13 @@ async function board(responses, query = '', withContext = false) {
   const sandbox = {
     ...core, URL, URLSearchParams, Date, Number, Set, Object,
     get location() { return location; },
-    window: {ATLAS_GITHUB_REPOSITORY: repository},
+    window: {ATLAS_GITHUB_REPOSITORY: repository, ATLAS_FEEDBACK_PROJECTS: [
+      {id: 'strong-green', title: 'Strong Green'}, {id: 'bedford-taylor', title: 'Bedford–Taylor'},
+    ]},
+    FormData: class {
+      constructor(form) { this.values = nodes(form).filter(node => node.name).map(node => [node.name, node.value]); }
+      [Symbol.iterator]() { return this.values[Symbol.iterator](); }
+    },
     history: {pushState(_state, _title, path) { location = new URL(path, location); }},
     addEventListener() {},
     document: {
@@ -156,4 +162,80 @@ test('Linked project context starts expanded and General feedback clears and clo
     assert.equal(nodes(panel).find(n => n.name === key).value, '');
     assert.equal(b.location.searchParams.has(key), false);
   }
+});
+
+test('Changing the project clears the previous mathematical context before opening another Issue draft', async () => {
+  const page = 'https://example.org/math-atlas/projects/strong-green/editions/v0.5.1/#proof';
+  const b = await board([[]], '?' + new URLSearchParams({...{
+    project: 'strong-green', entry: 'SG-001', version: 'v0.5.1', page,
+  }}), true);
+  const form = nodes(b.contextHost).find(node => node.tagName === 'form');
+  const project = form.elements.namedItem('project');
+  project.value = 'bedford-taylor';
+  project.listeners.get('change')();
+  assert.equal(b.location.searchParams.get('project'), 'bedford-taylor');
+  for (const key of ['entry', 'version', 'page']) {
+    assert.equal(b.location.searchParams.has(key), false);
+    assert.equal(form.elements.namedItem(key).value, '');
+  }
+  const draft = new URL(b.links[1].href);
+  assert.equal(draft.searchParams.get('project'), 'bedford-taylor');
+  assert.equal(draft.searchParams.has('target'), false);
+  assert.equal(draft.searchParams.has('version'), false);
+  assert.match(textOf(b.contextHost), /Previous result, version and page context was cleared/);
+  form.elements.namedItem('entry').value = 'NABT-000002';
+  form.elements.namedItem('version').value = 'v1.0.1';
+  form.listeners.get('submit')({preventDefault() {}});
+  const amended = new URL(b.links[1].href);
+  assert.equal(amended.searchParams.get('target'), 'NABT-000002');
+  assert.equal(amended.searchParams.get('version'), 'v1.0.1');
+});
+
+test('A source URL too long to prefill remains available for copying and is clearly explained', async () => {
+  const page = 'https://example.org/' + 'a'.repeat(1100) + '#proof';
+  const b = await board([[]], '?' + new URLSearchParams({project: 'bedford-taylor', page}), true);
+  const form = nodes(b.contextHost).find(node => node.tagName === 'form');
+  assert.equal(form.elements.namedItem('page').value, page);
+  assert.equal(new URL(b.links[1].href).searchParams.has('target'), false);
+  assert.match(textOf(b.contextHost), /page link could not be included/);
+  assert.match(textOf(b.contextHost), /it has not been shortened/);
+  form.listeners.get('submit')({preventDefault() {}});
+  assert.equal(form.elements.namedItem('page').value, page);
+  assert.equal(b.location.searchParams.has('page'), false);
+  assert.equal(new URL(b.links[1].href).searchParams.has('target'), false);
+  assert.match(textOf(b.contextHost), /Copy the complete value/);
+});
+
+test('A valid Unicode source URL omitted from a long draft receives a visible explanation', async () => {
+  const page = 'https://example.org/?q=' + 'é'.repeat(140) + '#proof';
+  const b = await board([[]], '?' + new URLSearchParams({project: 'bedford-taylor', entry: 'R01', version: '版'.repeat(120), page}), true);
+  assert.equal(new URL(b.links[1].href).searchParams.get('target'), 'R01');
+  assert.match(textOf(b.contextHost), /page link could not be included/);
+  const form = nodes(b.contextHost).find(node => node.tagName === 'form');
+  assert.ok(form.elements.namedItem('page').value.endsWith('#proof'));
+});
+
+test('Bedford–Taylor uses the shared board and preserves exact context in its Issue drafts', async () => {
+  const page = 'https://example.org/math-atlas/projects/bedford-taylor/editions/v0.18.0/results/r01/#proof';
+  const query = '?' + new URLSearchParams({project: 'bedford-taylor', entry: 'R01', version: 'v0.18.0', page});
+  const b = await board([[
+    issue(1), issue(2, {title: '[Correction] [bedford-taylor] A missing assumption'}),
+  ]], query, true);
+  assert.equal(nodes(b.list).filter(n => n.className === 'discussion-card').length, 1);
+  assert.match(textOf(b.list), /A missing assumption/);
+  const target = new URL(b.links[1].href);
+  assert.equal(target.pathname, '/Example/math-atlas/issues/new');
+  assert.equal(target.searchParams.get('project'), 'bedford-taylor');
+  assert.equal(target.searchParams.get('version'), 'v0.18.0');
+  assert.equal(target.searchParams.get('target'), 'R01 — ' + page);
+  assert.equal(b.requests.length, 1);
+  assert.match(b.requests[0].url, /^https:\/\/api\.github\.com\/repos\/Example\/math-atlas\/issues\?/);
+});
+
+test('The configured repository owner is displayed as Maintainer on discussion cards', async () => {
+  const b = await board([[issue(1, {user: {login: 'example'}})]]);
+  const card = nodes(b.list).find(n => n.className === 'discussion-card');
+  const meta = nodes(card).find(n => n.className === 'discussion-meta');
+  assert.match(textOf(meta), /Maintainer/);
+  assert.doesNotMatch(textOf(meta), /example/i);
 });

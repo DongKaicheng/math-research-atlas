@@ -1,0 +1,402 @@
+\section{Relative Stokes with common tangential strains}
+\label{sec:r13-common-strain-stokes}
+
+The local equation relevant to a positive face involves primitives on
+all incident half-products.  Equal tangential strains suffice for its
+boundary calculation.  Their tangential primitive traces may differ
+by affine Killing fields.  Keeping these fields in the Green formula
+gives the full relation Hessian at a completed curve star.
+
+\subsection{The half-products and the boundary tensor}
+
+Let $T$ be a real vector space of dimension $d\geq1$, with fixed
+lattice measure, and let $B\subset T$ be a bounded convex open
+polytope.  Let $N$ be a finite-dimensional real vector space and
+let
+\[
+ \Sigma=\sum_{i\in I}w_i[\mathbb R_{\geq0}v_i],\qquad
+ v_i\ne0,\qquad \sum_iw_iv_i=0,
+ \tag{CS1}
+\]
+be a finite labelled balanced one-cycle.  Each $v_i$ is primitive
+for its specified ray lattice.  The real weights may be signed in
+the real statement.  Distinct labels are retained even when their
+vectors coincide.  Put $W_i=T\oplus\mathbb Rv_i$.  On the closed
+half-product $B\times[0,\epsilon)v_i$ let
+\[
+ b_i(t,s)=\sum_{a=1}^d b_{i,a}(t,s)\,dt_a+c_i(t,s)\,ds
+ \tag{CS2}
+\]
+be continuous and finite piecewise smooth, with smooth extensions
+near the closed cells and locally bounded first derivatives.  All
+coefficient walls are included, including walls meeting $s=0$.
+Write $A_i=e(b_i)=\operatorname{sym}(db_i)$, using distributional
+derivatives.  Continuity makes its first derivative the bounded
+cellwise derivative, with no coefficient-jump measure.
+
+Assume the tangential boundary covectors have one common strain:
+\[
+       e_T\bigl(b_i(t,0)|_T\bigr)=A_T
+       \quad\hbox{as distributions on }B\quad(i\in I).
+ \tag{CS3}
+\]
+Their values need not coincide.  Define the normal flux and the
+$N$-valued tangential covector
+\[
+ z(t)=\sum_iw_ic_i(t,0),\qquad
+ B_a(t)=\sum_iw_ib_{i,a}(t,0)v_i.
+ \tag{CS4}
+\]
+
+\begin{lemma}[The unmatched trace is a Killing tensor]
+\label{lem:r13-weighted-killing-trace}
+For every $\lambda\in N^*$, the covector
+$\sum_a\lambda(B_a)dt_a$ is an affine Killing covector on $B$.
+Equivalently,
+\[
+ \partial_aB_b+\partial_bB_a=0
+       \quad\hbox{distributionally for all }a,b.
+ \tag{CS5}
+\]
+For any fixed index $i_0$, each difference
+$K_i=b_i(\cdot,0)|_T-b_{i_0}(\cdot,0)|_T$ is likewise affine
+Killing.
+\end{lemma}
+
+\begin{proof}
+Apply $e_T$ to CS4.  By CS3 the result is
+$A_T\otimes\sum_iw_iv_i=0$.  This proves CS5.  For completeness,
+if $k_a$ are distributional coefficients satisfying
+$\partial_ak_b+\partial_bk_a=0$, then
+\[
+ 2\partial_a\partial_bk_c
+ =\partial_a(\partial_bk_c+\partial_ck_b)
+  +\partial_b(\partial_ak_c+\partial_ck_a)
+  -\partial_c(\partial_ak_b+\partial_bk_a)=0.
+ \tag{CS6}
+\]
+Thus every coefficient is affine on the connected convex set
+$B$, and its linear part is alternating.  This conclusion applies
+to $\lambda(B)$ and, by CS3, to every $K_i$.  In particular it
+already includes all tangential coefficient walls.
+\end{proof}
+
+\begin{theorem}[Common-strain product Stokes]
+\label{thm:r13-common-strain-stokes}
+For every smooth compactly supported ambient function $\chi$ on
+a neighborhood of the truncated product and every constant
+symmetric tangent form $\Omega$ of bidegree $(d-1,d-1)$,
+\[
+ \sum_iw_i\int_{B\times[0,\epsilon)v_i}
+                       A_i\wedge D\chi\wedge\Omega
+       =-\int_B z\,D_T\chi_0\wedge\Omega,
+ \qquad \chi_0(t)=\chi(t,0).
+ \tag{CS7}
+\]
+The support of $\chi$ stays away from the outer boundaries.
+Here $D=d'd''$, with the positive product orientation and the
+original primitive ray parameters.
+\end{theorem}
+
+\begin{proof}
+Let the symmetric matrix $C^{ab}$ represent the tangent dual
+$\Omega$.  The complete half-product Green formula FS6 gives,
+on the branch $i$,
+\[
+ \int A_i\wedge D\chi\wedge\Omega
+ =\int_B\sum_{a,b}C^{ab}
+ \bigl(b_{i,a}(t,0)\,\partial_b\partial_s\chi_i(t,0)
+              -c_i(t,0)\,\partial_a\partial_b\chi_0(t)\bigr)dt,
+ \tag{CS8}
+\]
+where $\chi_i(t,s)=\chi(t,sv_i)$.  Full continuity of $b_i$
+on its half-product removes every internal-wall term in that
+formula.  Its integrand before taking the boundary is the full
+contraction
+\[
+ \sum_{a,b}C^{ab}
+   \bigl((A_i)_{ab}(\chi_i)_{ss}
+          +(A_i)_{ss}(\chi_i)_{ab}
+                     -2(A_i)_{as}(\chi_i)_{bs}\bigr).
+ \tag{CS9}
+\]
+
+Put $\xi(t)=d_N\chi(t,0)\in N^*$.  The sum of the first
+boundary terms in CS8 is
+\[
+       \int_B\sum_{a,b}C^{ab}
+                       \langle\partial_b\xi(t),B_a(t)\rangle dt.
+ \tag{CS10}
+\]
+Integrate once in $t$.  This is legitimate distributionally,
+so no tangential wall term is omitted.  Since $C$ is symmetric,
+CS5 makes the result
+\[
+ -\frac12\int_B\sum_{a,b}C^{ab}
+                   \langle\xi,\partial_bB_a+\partial_aB_b\rangle dt
+ =0.
+ \tag{CS11}
+\]
+The remaining terms in CS8 are precisely the right side of
+CS7.  Thus the tangent cancellation occurs after integration;
+it requires the common tangential strain in CS3, rather than
+a common tangential primitive value.
+\end{proof}
+
+\subsection{Intrinsic Hessians and the complete relation space}
+
+The normal flux depends on a quotient section, whereas its full
+tangential Hessian does not.  To state this, start with an ambient
+space $W$ and its tangent subspace $T$.  The normal vectors are
+in $W/T$, and a common linear section identifies them with the
+$v_i$ used above.  The incident space is
+$W_i=T+\mathbb Rv_i$.
+
+\begin{lemma}[Section and primitive-gauge invariance]
+\label{lem:r13-flux-hessian-invariance}
+Under CS3, changing the common linear section of $W\to W/T$
+changes $z$ by an affine function on $B$.  Changing any branch
+primitive by a strain-preserving affine Killing covector also
+changes $z$ by an affine function.  Consequently
+$\operatorname{Hess}_Tz$ is independent of these choices.
+\end{lemma}
+
+\begin{proof}
+Two sections differ by a linear map $L:W/T\to T$.  The new
+normal lift is $v_i+Lv_i$, so
+\[
+ z'-z=\sum_iw_i b_i(t,0)|_T(Lv_i)
+      =\sum_iw_iK_i(t)(Lv_i).
+ \tag{CS12}
+\]
+In the second equality the common $b_{i_0}$ contribution vanishes
+by balancing.  Each $K_i$ is affine by the preceding lemma;
+hence CS12 is affine.  The same proof allows individual changes
+$v_i\mapsto v_i+t_i$ whose weighted sum $\sum_iw_it_i$ is zero.
+For a strain-preserving change on a branch, CS6 in the full
+half-product variables gives an affine Killing field.  Its
+normal evaluation along $s=0$ is affine in $t$, proving the
+second assertion.
+\end{proof}
+
+Define the complete labelled normal relation space and raw
+incident relation space by
+\[
+ R_\Sigma=\ker\left(\mathbb R^I\longrightarrow N,
+                         (a_i)\longmapsto\sum_ia_iv_i\right),
+ \quad
+ \mathcal K=\ker\left(\bigoplus_iW_i\longrightarrow T\oplus N\right).
+ \tag{CS13}
+\]
+For $a\in R_\Sigma$ and $u=(u_i)\in\mathcal K$ put
+\[
+ z_a(t)=\sum_i a_i b_i(t,0)(v_i),\qquad
+ \mathcal F_u(t)=\sum_i b_i(t,0)(u_i).
+ \tag{CS14}
+\]
+Every sum map here retains simultaneous relations among all
+incident spaces.  It is not replaced by pairwise intersections.
+
+\begin{proposition}[The exact Hessian reduction]
+\label{prop:r13-raw-hessian-reduction}
+Under CS3, the full Hessian of every raw defect vanishes if and
+only if $\operatorname{Hess}_Tz_a=0$ for every
+$a\in R_\Sigma$.  More precisely, write uniquely
+$u_i=t_i+a_iv_i$.  Then $\sum_it_i=0$, $a\in R_\Sigma$, and
+\[
+        \mathcal F_u(t)=z_a(t)+\sum_iK_i(t)(t_i).
+ \tag{CS15}
+\]
+The second term is affine.  The correspondence therefore
+identifies the effective full relation Hessian with the linear
+map
+\[
+ R_\Sigma\longrightarrow\mathcal D'(B,\operatorname{Sym}^2T^*),
+                    \quad a\longmapsto\operatorname{Hess}_Tz_a.
+ \tag{CS16}
+\]
+\end{proposition}
+
+\begin{proof}
+Use the fixed splitting $T\oplus N$.  The condition
+$\sum_iu_i=0$ separates into the two assertions in the
+statement.  Subtracting $b_{i_0}(\sum_it_i)=0$ yields CS15.
+Conversely every $a\in R_\Sigma$ is represented by the raw
+relation $u_i=a_iv_i$.  This proves both directions and the
+linear description CS16.  In particular, tangential duplicate
+relations contribute only affine functions even when their
+primitive traces have not been aligned.
+\end{proof}
+
+\begin{corollary}[One balanced relation gives the full Hessian]
+\label{cor:r13-single-balance-full-hessian}
+Assume $R_\Sigma=\mathbb Rw$, and suppose
+\[
+ \sum_iw_i\int A_i\wedge D\chi\wedge\Omega=0
+       \quad\hbox{for all }\chi,\Omega\hbox{ in CS7}.
+ \tag{CS17}
+\]
+Then every $\mathcal F_u$ has zero full distributional Hessian
+on $B$.  Equivalently, every raw relation defect is affine on
+$B$, including across its coefficient walls.
+\end{corollary}
+
+\begin{proof}
+Choose $\chi(t,n)=\varphi(t)\psi(n)$, where $\varphi$ is
+arbitrary compact smooth on $B$ and $\psi=1$ near zero.
+CS7 and CS17 give
+$\int_Bz\,D_T\varphi\wedge\Omega=0$.  All constant symmetric
+tangent duals occur, so this is
+$\operatorname{Hess}_Tz_w=0$.  Since $w$ spans the entire
+$R_\Sigma$, the preceding proposition proves the assertion.
+The joint test symbols are the actual pairs
+$w\otimes C$, for every symmetric $C$; they span
+$R_\Sigma\otimes\operatorname{Sym}^2T$.
+\end{proof}
+
+More generally, if actual complete test constructions supply
+CS17 for balanced vectors $w^{(1)},\ldots,w^{(r)}$ on the
+same coefficient system, their conclusions detect exactly the
+restriction of CS16 to their linear span.  Equality of that
+span with $R_\Sigma$ is the required finite test.  A list of
+separately spanning scalar functions does not supply this
+condition on the actual balanced vectors.
+
+\subsection{Normalized marked curves}
+
+Let $C/k$ be a proper smooth integral curve over the original
+finite residue field.  Retain its full constant field and put
+$\delta_p=[\kappa(p):k]$.  For a finite marked set $M$ with
+$|M|\geq2$,
+let $g_1,\ldots,g_m\in k(C)^\times$ have divisor supports
+in $M$, and let
+\[
+ \nu_p=(\operatorname{ord}_p g_j)_j\ne0,
+ \qquad \nu_p=m_pv_p,
+ \qquad m_p\in\mathbb Z_{>0},\quad v_p\text{ primitive}.
+ \tag{CS18}
+\]
+Assume the marked divisor rows of the chosen functions span
+the degree-zero hyperplane
+\[
+ \operatorname{span}_{\mathbb R}
+       \{(\operatorname{ord}_pg_j)_{p\in M}:1\leq j\leq m\}
+             =\delta^\perp\subset\mathbb R^M.
+ \tag{CS19}
+\]
+The retained finite-field Picard construction supplies such
+functions.  If several prescribed curves lie on one supplied
+smooth projective integral model, ML supplies their exact
+simultaneous restrictions in the same ambient function field.
+
+\begin{lemma}[Primitive conversion and complete relation kernel]
+\label{lem:r13-curve-primitive-kernel}
+For $w_p=\delta_pm_p$, the labelled column map
+$(a_p)\mapsto\sum_pa_pv_p$ has kernel $\mathbb Rw$.
+For the normalized curve parameter $u=-\log|z_p|$ and primitive
+image parameter $s=m_pu$, a logarithm with curve order
+$\operatorname{ord}_p g$ has primitive slope
+\[
+ h_p(g)=\frac{\operatorname{ord}_p g}{m_p},
+      \qquad w_ph_p(g)=\delta_p\operatorname{ord}_p g.
+ \tag{CS20}
+\]
+\end{lemma}
+
+\begin{proof}
+The matrix with columns $\nu_p$ has kernel $\mathbb R\delta$
+by CS19.  Since its columns are $m_pv_p$, rescaling the columns
+gives the asserted kernel.  Substituting $u=s/m_p$ in the
+linear branch logarithm proves CS20.  In particular all marks
+remain labelled; CS19 also excludes a zero column.  Distinct
+marks cannot yield the same primitive ray, since their
+coordinate difference would be a kernel vector with entries
+of both signs, whereas all $w_p$ are positive.
+\end{proof}
+
+The equality $w_p=\delta_pm_p$ in an analytic application is
+the actual source calibration, to be supplied by its ordinary
+comparison theorem.  CS20 describes its conversion and does
+not replace the calibration.  The tangent-face lattice is
+the saturated actual lattice.  Any index of its projection
+to an older, nonsaturated tangent face remains in that separate
+projection formula.
+
+\subsection{Original ordinary tests and tangent-only sources}
+
+We state the analytic application with a finite actual source
+presentation.  Let $U$ be an ordinary original analytic
+neighborhood, and suppose a fixed finite moment refinement has
+a protected calibrated product presentation over $B$ with
+labelled main cycle $\Sigma$ as in CS1.  Every added complete
+source cycle is balanced, and its old coefficient image is
+contained in the same tangent plane.  The retained tangent
+coordinates split the actual tangent lattice.  The represented
+tensor on such an added source is the literal pullback of
+$A_T$.  Require that all compact ambient tests
+$\chi\Omega$ used above are realized as original compact
+smooth CLD tests on $U$, and that integration uses the complete
+source sum with its actual weights.  These are the ordinary
+protection and source-comparison hypotheses.
+
+\begin{theorem}[Actual raw-Hessian detector on a completed curve block]
+\label{thm:r13-actual-completed-curve-detector}
+Suppose the main branch primitives satisfy CS2--CS3, and their
+strains represent an ordinary current $Z$ for which
+$D[Z]=0$ on every original compact complementary smooth CLD
+test on $U$.  If its calibrated main curve star satisfies
+CS18--CS19 with actual weights $w_p=\delta_pm_p$, then every
+raw incident defect has zero full distributional Hessian on
+$B$.  No tangential primitive alignment is needed before this
+calculation.
+\end{theorem}
+
+\begin{proof}
+Fix one main tangent trace $b_0$ with $e_Tb_0=A_T$.  On every
+additional source use its pullback.  Because the old coefficient
+image lies literally in the tangent plane, its strain is the
+represented pullback of $A_T$.  In the quotient splitting given
+by the retained tangent projection, its normal trace is zero.
+The common $b_0$ tangent boundary terms cancel on that whole
+balanced source cycle.  If a different quotient section is
+used, the lemma on section changes gives the same Hessian
+statement.  All source labels and their absolute carriers have
+remained in the integral.
+
+The original current equation and the complete source formula
+therefore give CS17 for the main cycle.  Its primitives only
+need CS3, by the common-strain Stokes theorem.  The curve
+primitive-kernel lemma gives $R_\Sigma=\mathbb Rw$, so the
+single-balance corollary yields the full raw relation Hessian.
+Each symmetric tangent dual is tested together with this same
+complete actual one-cycle.  All internal coefficient walls are
+already included in CS8--CS11.
+\end{proof}
+
+On a positive codimension-one face of a three-dimensional normal
+fan, the base $B$ includes both old tangent variables and the
+two directions along that face.  The theorem thus tests the
+entire Hessian in those variables, including angular and mixed
+entries.  Suppose these local Hessian identities cover the whole
+connected convex product of the old tangent base with the
+relative interior of the positive face, using one fixed finite
+coefficient system.  If that system extends continuously to the
+central normalized face, the affine expressions agree on
+overlaps.  The zero-central-value condition then removes their
+constant and old tangent-linear terms.  This gives JF7 on that
+whole face.  A single compact box away from the central face
+only gives the local affine conclusion of the theorem.  The finite
+skew-gauge membership JF8 and the raw systems on other faces
+remain distinct finite equations.
+
+\paragraph{Proof inputs.}
+The half-product identity is the reviewed FS6--FS9 in
+\texttt{finite\_ps\_relative\_stokes.tex}, retained in Round 12
+under the frozen Round 11 inputs.  The raw relation convention
+is JF3 of Round 12.  The finite Picard row construction is
+PP7--PP11 of the retained pointed Picard theorem; the finite
+simultaneous ambient restriction theorem is ML of Round 12.
+The new deductions here are the cancellation CS10--CS11 with
+unequal tangential primitive traces, the section-invariant full
+relation Hessian CS12--CS16, and their actual completed-curve
+combination under the stated complete source hypotheses.

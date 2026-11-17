@@ -1,0 +1,769 @@
+{
+  "edition": "2026-11-18",
+  "definitions": [
+    {
+      "id": "background-and-potentials",
+      "title": "Background currents and classical potentials",
+      "paragraphs": [
+        "On an ordinary open \\(U\\) of pure dimension \\(n\\), an allowed background is a symmetric CLD current \\(S\\) of bidegree \\((p,p)\\) with \\(d'S=d''S=0\\), positive on the signed column-square tests \\(\\eta\\wedge J\\eta\\) of complementary degree. Equivalently, its coefficient matrices in these presentations are positive semidefinite. Write \\(q=n-p\\).",
+        "The class \\(\\mathcal C_b(U)\\) consists of real-valued, locally bounded, upper-semicontinuous functions whose pullback to every analytic curve is subharmonic, after every complete isometric extension of \\(K\\). These are the classical psh potentials used here. With \\(D=d'd''\\), the bounded product is the recursively constructed current \\[T_{S,0}=S,\\qquad T_{S,b}(u_1,\\ldots,u_b)=D\\bigl(u_1T_{S,b-1}(u_2,\\ldots,u_b)\\bigr),\\quad b\\le q.\\] Finite differences of these potentials are handled by signed multilinear extension."
+      ],
+      "articleLinks": [
+        {
+          "label": "Definition 1.1 — backgrounds and potentials",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:background"
+        },
+        {
+          "label": "Recursive product (1.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:bt-recursion"
+        }
+      ],
+      "usedBy": [
+        "overview",
+        "REL-ALL",
+        "REL-CRITICAL",
+        "REL-CARRIER",
+        "REL-BG",
+        "INT-DIFF"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-background-and-potentials"
+    },
+    {
+      "id": "admissible-presentation",
+      "title": "Admissible scalar presentations",
+      "paragraphs": [
+        "Choose analytic units \\(f_1,\\ldots,f_N\\) on one ordinary open \\(U\\), and put \\(t_f=(-\\log|f_1|,\\ldots,-\\log|f_N|)\\). A finite family of continuous real functions is admissible when all its members are expressed on the complete image \\(t_f(U)\\) using one finite coefficient complex, are piecewise linear or piecewise smooth with a smooth extension near each closed cell, belong to the actual degree-zero delta-form sheaf with full curvature \\(D_\\delta h\\in\\mathscr B^{1,1}(U)\\), and are finite differences of continuous classical psh functions on that same \\(U\\).",
+        "Here \\(\\mathscr B=B_{\\mathrm{Mih}}\\) is the analytic delta-form sheaf, and “full” derivatives include polyhedral boundary terms. A refinement adjoins actual analytic units and retains the whole refined image, including faces where the induced tangent map loses rank."
+      ],
+      "articleLinks": [
+        {
+          "label": "Definition 1.2 — admissible finite scalar presentations",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:admissible"
+        }
+      ],
+      "usedBy": [
+        "overview",
+        "REL-ALL",
+        "REL-CRITICAL",
+        "REL-CARRIER",
+        "INT-DIFF"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-admissible-presentation"
+    },
+    {
+      "id": "analytic-relation-and-action",
+      "title": "Analytic relations and their background action",
+      "paragraphs": [
+        "For admissible scalars, take a finite formal symmetric expression \\(P=\\sum_\\nu c_\\nu[h_{\\nu1}]\\cdots[h_{\\nu b}]\\), with \\(c_\\nu\\in\\mathbf R\\). The brackets denote formal factors, not pointwise multiplication. Its delta-form value and its action on a background are \\[\\begin{aligned}\\kappa_b(P)&=\\sum_\\nu c_\\nu D_\\delta h_{\\nu1}\\wedge\\cdots\\wedge D_\\delta h_{\\nu b},\\\\\\mathcal A_S(P)&=\\sum_\\nu c_\\nu T_{S,b}(h_{\\nu1},\\ldots,h_{\\nu b}).\\end{aligned}\\]",
+        "An actual analytic relation means \\(\\kappa_b(P)=0\\) in the analytic delta-form sheaf. The action \\(\\mathcal A_S(P)\\) is the signed current defined by the displayed recursion. An intrinsic action means that \\(\\mathcal A_S(P)\\) depends only on \\(\\kappa_b(P)\\): two expressions with the same delta-form value give the same current. Equivalently, every actual analytic relation acts by zero. Current equality is tested on every original compactly supported smooth complementary CLD form."
+      ],
+      "articleLinks": [
+        {
+          "label": "Curvature value (1.2)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:kappa"
+        },
+        {
+          "label": "Background action (1.3) and analytic relations",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:action"
+        }
+      ],
+      "usedBy": [
+        "overview",
+        "REL-ALL",
+        "REL-CRITICAL",
+        "REL-CARRIER",
+        "INT-DIFF"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-analytic-relation-and-action"
+    },
+    {
+      "id": "quadratic-transgression",
+      "title": "Quadratic transgression and exactness",
+      "paragraphs": [
+        "For \\(P=\\sum_\\nu c_\\nu[h_\\nu][k_\\nu]\\), set \\[\\alpha_P=\\frac12\\sum_\\nu c_\\nu(h_\\nu D_\\delta k_\\nu+k_\\nu D_\\delta h_\\nu),\\qquad Z_P=\\frac12\\sum_\\nu c_\\nu(d'_Ph_\\nu\\wedge d''_Pk_\\nu+d'_Pk_\\nu\\wedge d''_Ph_\\nu).\\] The symbols \\(d'_P,d''_P\\) are cellwise derivatives. The full delta derivative includes the boundary contributions. The degree-one action is \\(M_S(fD_\\delta g)=fD(gS)\\) on these finite presentations, and \\(\\mathcal A_S(P)=DM_S(\\alpha_P)=-DM_S(Z_P)\\).",
+        "A full first-order exact certificate is an identity \\(\\alpha_P=d'\\beta+d''\\zeta\\) in the actual delta-form sheaf, with \\(\\beta\\in\\mathscr B^{0,1}\\) and \\(\\zeta\\in\\mathscr B^{1,0}\\). Its construction is sufficient for the quadratic action to vanish."
+      ],
+      "articleLinks": [
+        {
+          "label": "Degree-one action (3.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:degree-one-action"
+        },
+        {
+          "label": "Quadratic tensors (3.3) and transgression (3.4)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:quadratic-energy"
+        },
+        {
+          "label": "First-order exact subspace (3.5)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:first-order-quotient"
+        }
+      ],
+      "usedBy": [
+        "REL-ALL",
+        "REL-CRITICAL",
+        "INT-DIFF"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-quadratic-transgression"
+    },
+    {
+      "id": "residue-rank",
+      "title": "The residue rank of a presentation",
+      "paragraphs": [
+        "For the finite unit tuple \\(f\\) at \\(x\\), let \\(\\mathscr F_f(x)=\\widetilde K^{\\mathrm{gr}}(\\widetilde f_1(x),\\ldots,\\widetilde f_N(x))\\) be its graded residue field and put \\[\\begin{aligned}d_f(x)&=\\operatorname{trdeg}^{\\mathrm{gr}}_{\\widetilde K^{\\mathrm{gr}}}\\mathscr F_f(x),\\\\r_f(x)&=\\dim_{\\mathbf Q}\\operatorname{Span}_{\\mathbf Q}\\{-\\log|f_i(x)|+\\mathbf Q\\log|K^\\times|\\}_i,\\\\s_f(x)&=d_f(x)-r_f(x).\\end{aligned}\\] Thus \\(s_f(x)\\) is the transcendence degree of the tuple's field of normalized residues. It measures the fixed presentation, not the ambient analytic dimension."
+      ],
+      "articleLinks": [
+        {
+          "label": "Residue-rank definitions (4.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:residue-rank"
+        }
+      ],
+      "usedBy": [
+        "REL-ALL"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-residue-rank"
+    },
+    {
+      "id": "absolute-cap-carrier",
+      "title": "The absolute cap carrier",
+      "paragraphs": [
+        "For a prescribed ordinary localization \\(O\\), analytic units \\(f_1,\\ldots,f_c\\), and real levels \\(a_i\\), write \\(x_+=\\max\\{x,0\\}\\). The absolute cap carrier is the closed support \\[F=\\operatorname{supp}T_{[O],c}((\\log|f_1|-a_1)_+,\\ldots,(\\log|f_c|-a_c)_+).\\] Here \\([O]\\) is the integration current on \\(O\\). The support is selected by this positive product; it is fixed independently of cancellation in a signed relation."
+      ],
+      "articleLinks": [
+        {
+          "label": "Absolute cap carrier (3.8)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:absolute-cap"
+        }
+      ],
+      "usedBy": [
+        "REL-CARRIER"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-absolute-cap-carrier"
+    },
+    {
+      "id": "carrier-relations",
+      "title": "The permitted carrier relations",
+      "paragraphs": [
+        "Let \\(\\mathcal D(U)\\) be the real vector space of finite differences of continuous, locally bounded classical psh functions, and let \\(\\mathcal P^b(U)=\\operatorname{Sym}^b_{\\mathbf R}\\mathcal D(U)\\). A factor \\(h\\) is \\(F\\)-harmonic if near every point of \\(F\\), its restriction to \\(F\\) agrees with a continuous function of zero current curvature.",
+        "The subspace \\(\\mathcal Z_F^b(U)\\) is the linear span of exactly three kinds of expressions: monomials with an \\(F\\)-harmonic factor; monomials whose ordinary pointwise product vanishes on all of \\(F\\); and finite identities already zero in one common ambient real PL cycle algebra, pulled back by the original moment map. An equality arising only after analytic pullback is not added to this generator space."
+      ],
+      "articleLinks": [
+        {
+          "label": "Carrier relation space in §3.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:carrier-relations"
+        },
+        {
+          "label": "Original carrier definitions (KC1–KC2)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/sources/view/cfa1011fee52/#sec:r12-carrier-cln-certificates"
+        }
+      ],
+      "usedBy": [
+        "REL-CARRIER"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-carrier-relations"
+    },
+    {
+      "id": "carrier-seminorm",
+      "title": "The carrier-CLN seminorm",
+      "paragraphs": [
+        "For a compact stage \\(L\\Subset U\\), put \\(C=F\\cap L\\), \\(\\|h\\|_C=\\sup_C|h|\\), and \\(\\operatorname{osc}_C u=\\inf_{a\\in\\mathbf R}\\sup_C|u-a|\\); both quantities are zero for empty \\(C\\). Define \\[q^{U,b}_{F,L}(P)=\\inf\\sum_\\nu|c_\\nu|\\,\\|h_\\nu\\|_C\\prod_{j=2}^{b}\\operatorname{osc}_C u_{\\nu j},\\] where the infimum ranges over finite decompositions \\(P=Z+\\sum_\\nu c_\\nu[h_\\nu]\\prod_{j=2}^{b}[u_{\\nu j}]\\) on the same \\(U\\), with \\(Z\\in\\mathcal Z_F^b(U)\\), \\(h_\\nu\\in\\mathcal D(U)\\), and \\(u_{\\nu j}\\in\\mathcal C_b(U)\\cap C(U)\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Carrier seminorm (3.7)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:carrier-seminorm"
+        },
+        {
+          "label": "Original seminorm definition",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/sources/view/cfa1011fee52/#def:r12-carrier-cln-seminorm"
+        }
+      ],
+      "usedBy": [
+        "REL-CARRIER"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-carrier-seminorm"
+    },
+    {
+      "id": "weakly-approximable-backgrounds",
+      "title": "Locally weakly approximable backgrounds",
+      "paragraphs": [
+        "The class \\(\\mathcal W^p_{\\mathrm{loc}}\\) is the ordinary-local weak closure of positive, separately \\(d'\\)- and \\(d''\\)-closed actual delta-form backgrounds of bidegree \\((p,p)\\). A background belongs to it when, near every point on a fixed ordinary representative, it lies in that closure. Weak convergence means convergence of the pairing with every original compact smooth complementary CLD test on that representative."
+      ],
+      "articleLinks": [
+        {
+          "label": "Definition of the background closure in §3.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:background-closure"
+        }
+      ],
+      "usedBy": [
+        "REL-ALL",
+        "REL-CRITICAL",
+        "REL-BG"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-weakly-approximable-backgrounds"
+    },
+    {
+      "id": "supplied-normal-three-model",
+      "title": "A supplied normal-three model germ",
+      "paragraphs": [
+        "This is a smooth integral model germ \\((Y,y)\\) over \\(K^\\circ\\), of relative dimension three, with \\(\\lvert\\mathcal H(y)^\\times\\rvert=\\lvert K^\\times\\rvert\\) and residue field \\(F=\\widetilde{\\mathcal H(y)}\\) of transcendence degree three over \\(\\widetilde K\\), together with the following geometric data over the original field.",
+        "The finite residue tuple has a smooth projective simple-normal-crossings model of \\(F\\); its labelled monomial cones, their lattice-normalized slopes and residue-degree weights, and all lower strata are realized by actual Gauss families on the ordinary germ. This realization covers the complete source of the fixed tuple, and the families converge ordinarily to \\(y\\), uniformly in their angular parameters. These lifting and realization data are part of “supplied”, in addition to the two field conditions."
+      ],
+      "articleLinks": [
+        {
+          "label": "Model hypotheses in §4.2 and (4.3)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:normal-three-model"
+        }
+      ],
+      "usedBy": [
+        "REL-ALL",
+        "REL-CRITICAL"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-supplied-normal-three-model"
+    },
+    {
+      "id": "protected-presentation",
+      "title": "A protected moment presentation",
+      "paragraphs": [
+        "A protected presentation is a finite actual moment map \\(t:U\\to\\Omega\\subset\\mathbf R^N\\) containing the chosen scalar tuple, with \\(t(y)=0\\), such that the entire inverse image \\(t^{-1}(L)\\) is compact in \\(U\\) for every compact \\(L\\Subset\\Omega\\). For a degree-one background on the three-dimensional model, its transpose is the real supercurrent of bidimension \\((2,2)\\) defined by \\[\\langle T_S,\\eta\\rangle=\\langle S,t^*\\eta\\rangle,\\qquad\\eta\\in\\mathcal A_c^{2,2}(\\Omega).\\]"
+      ],
+      "articleLinks": [
+        {
+          "label": "Protected presentation and transpose (4.7)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:protected-presentation"
+        }
+      ],
+      "usedBy": [
+        "REL-CRITICAL"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-protected-presentation"
+    },
+    {
+      "id": "critical-tangent",
+      "title": "Critical tangent currents",
+      "paragraphs": [
+        "Set \\(\\beta=\\sum_i d'z_i\\wedge d''z_i\\), \\(\\mu_S=\\tfrac12T_S\\wedge\\beta^2\\), and \\(\\nu=\\lim_{r\\downarrow0}\\mu_S(B_r)/r^2\\). A critical tangent of this background and protected presentation is a local weak subsequential limit \\[T_0=\\lim_{j\\to\\infty}\\delta_j^2(a_{\\delta_j})_*T_S,\\qquad a_\\delta(z)=z/\\delta,\\qquad\\delta_j\\downarrow0.\\] The established growth theorem gives such conic, positive, separately closed limits with \\(\\mu_{T_0}(B_R)=\\nu R^2\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Critical rescaling and tangent currents in §4.3",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:critical-tangent"
+        }
+      ],
+      "usedBy": [
+        "REL-CRITICAL"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-critical-tangent"
+    },
+    {
+      "id": "realized-spherical-pairing",
+      "title": "The realized spherical pairing",
+      "paragraphs": [
+        "Let \\(\\mathsf Q\\) be the positive-semidefinite coefficient measure of \\(T_0\\) on \\(\\bigwedge^2\\mathbf R^N\\), normalized so that \\(\\operatorname{tr}\\mathsf Q=\\tfrac12T_0\\wedge\\beta^2\\). With \\(r=|z|\\), \\(\\theta=z/r\\), and \\(A_\\theta v=\\theta\\wedge v\\), its angular matrix measure \\(\\mathsf M\\) is uniquely defined by \\[A_\\theta^*\\,d\\mathsf Q\\,A_\\theta=r\\,dr\\,d\\mathsf M(\\theta).\\] It satisfies \\(\\mathsf M\\theta=0\\), \\(\\operatorname{div}_{\\mathbb S}\\mathsf M=0\\), and \\(\\sigma(\\mathbb S^{N-1})=2\\nu\\), where \\(\\sigma=\\operatorname{tr}\\mathsf M\\).",
+        "For the homogeneous piecewise-linear first jets \\(h_\\nu^{[1]},k_\\nu^{[1]}\\) of the closed-cell scalar extensions at the centre, the spherical pairing is \\[\\sum_\\nu c_\\nu\\left(\\int_{\\mathbb S^{N-1}}h_\\nu^{[1]}k_\\nu^{[1]}\\,d\\sigma-\\int_{\\mathbb S^{N-1}}d_{\\mathbb S}h_\\nu^{[1]}\\otimes d_{\\mathbb S}k_\\nu^{[1]}:d\\mathsf M\\right).\\]",
+        "Here the colon denotes matrix contraction; values on coefficient walls are the canonical tangential piecewise-smooth values. “Realized” requires the jets to come from the given analytic relation and \\(\\mathsf M\\) from the same background and protected presentation. The spherical formula identifies this number with the central coefficient \\(c_S(P)\\) in \\(\\mathcal A_S(P)=c_S(P)\\delta_y\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Angular measure: exact polar definition",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/sources/view/35290a2e4db3/#prop:r13-angular-critical-matrix"
+        },
+        {
+          "label": "Leading tensor (4.9)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:leading-tensor"
+        },
+        {
+          "label": "Angular data (4.10) and spherical pairing (4.11)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:angular-constraints"
+        },
+        {
+          "label": "Exact spherical formula (4.11)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:spherical-residual"
+        }
+      ],
+      "usedBy": [
+        "REL-CRITICAL"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-realized-spherical-pairing"
+    },
+    {
+      "id": "coupled-relations-and-differential-extension",
+      "title": "Coupled relations and the differential extension problem",
+      "paragraphs": [
+        "A higher coupled relation is a finite expression \\(P=\\sum_\\nu c_\\nu[h_{\\nu1}]\\cdots[h_{\\nu b}]\\) with \\(b>2\\) whose summands need not share the same remaining curvature factors. Thus one cannot treat the whole expression merely by inserting one common product into the background. Variable coefficients means replacing the constants \\(c_\\nu\\) by functions represented piecewise smoothly on a finite common coefficient complex.",
+        "The requested graded differential action would make these expressions independent of presentation and compatible with the full \\(d',d''\\) operators. Its coefficient sheaves, allowed singular delta-form tests, and class of maps for functoriality are to be specified and constructed as part of the problem. The existing current action uses the original compact smooth CLD tests."
+      ],
+      "articleLinks": [
+        {
+          "label": "Higher relations and the extension sought in §3.3",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#higher-degrees-and-differential-interfaces"
+        }
+      ],
+      "usedBy": [
+        "INT-DIFF"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-coupled-relations-and-differential-extension"
+    },
+    {
+      "id": "laurent-box",
+      "title": "Strict Laurent box",
+      "paragraphs": [
+        "Let \\(B\\subset X\\) be a compact affinoid, let \\(f_a,g_b\\) be analytic on \\(B\\), and choose positive real numbers \\(R_a,r_b\\). The domain used for the energy theory is",
+        "\\[K_0=\\{|f_a|\\le R_a,\\ |g_b|\\ge r_b\\}\\Subset\\operatorname{Int}_X(B),\\qquad V=\\{|f_a|<R_a,\\ |g_b|>r_b\\}\\ne\\varnothing.\\]",
+        "The background \\(S\\) must be defined on an ordinary neighborhood of \\(K_0\\). Its remaining degree is \\(q=n-p\\ge1\\), where \\(S\\) has bidegree \\((p,p)\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: domain and background hypothesis (2.6)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:energy-domain"
+        }
+      ],
+      "usedBy": [
+        "CAP-BOREL",
+        "ED-STRONG",
+        "SOURCE-COMPAT",
+        "DOMAIN"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-laurent-box"
+    },
+    {
+      "id": "relative-capacity",
+      "title": "Relative capacity and normalized testers",
+      "paragraphs": [
+        "A normalized tester on \\(V\\) is an actual locally bounded classical psh function \\(h\\in\\mathcal C_b(V)\\) with \\(0\\le h\\le1\\), defined on the whole of \\(V\\). For a Borel set \\(E\\subset V\\), set",
+        "\\[C_S(E;V)=\\sup_{h\\in\\mathcal C_b(V),\\,0\\le h\\le1}T_{S,q}(h,\\ldots,h)(E),\\qquad C_S^*(E;V)=\\inf_{\\substack{E\\subset G\\subset V\\\\G\\ {\\rm ordinary\\ open}}}C_S(G;V).\\]",
+        "The second formula also defines \\(C_S^*\\) for arbitrary subsets. All null-set and quasi-everywhere statements below use this outer capacity with the specified background \\(S\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: relative capacity (5.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:raw-capacity"
+        },
+        {
+          "label": "Programme: outer capacity (5.2)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:outer-capacity"
+        }
+      ],
+      "usedBy": [
+        "CAP-BOREL",
+        "CAP-DETECT",
+        "ED-STRONG",
+        "REPRESENTATIVES",
+        "SINGULARITIES"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-relative-capacity"
+    },
+    {
+      "id": "relative-nullity",
+      "title": "Relative null sets and completed representatives",
+      "paragraphs": [
+        "A set \\(N\\subset V\\) is locally \\(S\\)-outer-null if \\(C^*_{S|\\Omega}(N\\cap L;\\Omega)=0\\) for every ordinary open \\(\\Omega\\subset V\\) and compact \\(L\\Subset\\Omega\\). Such sets form the relative local null ideal. A statement holds relatively quasi-everywhere if its exceptional set is in this ideal; two Borel representatives define the same relative class when \\(\\{u\\ne v\\}\\) is locally outer-null.",
+        "Local truncated capacity convergence of \\(u_j\\) to \\(u\\) means, for every such \\(\\Omega,L\\) and every \\(R,\\delta>0\\),",
+        "\\[C^*_{S|\\Omega}\\!\\left(L\\cap\\{|\\max(u_j,-R)-\\max(u,-R)|>\\delta\\};\\Omega\\right)\\longrightarrow0.\\]"
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: local truncated capacity convergence",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:local-truncated-capacity"
+        },
+        {
+          "label": "Results paper: equality of completed classes, Definition 8.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:r11-strong-first-energy-completion"
+        }
+      ],
+      "usedBy": [
+        "CAP-DETECT",
+        "ED-STRONG",
+        "REPRESENTATIVES",
+        "SINGULARITIES"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-relative-nullity"
+    },
+    {
+      "id": "nonpolar-products",
+      "title": "Non-polar products",
+      "paragraphs": [
+        "For negative extended classical potentials \\(u_1,\\ldots,u_b\\), let \\(u_i^{(j)}=\\max(u_i,-j)\\) and \\(E_j=\\bigcap_i\\{u_i>-j\\}\\). Their non-polar product is the coefficient-measure limit",
+        "\\[\\langle Du_1\\wedge\\cdots\\wedge Du_b\\wedge S\\rangle=\\lim_{j\\to\\infty}\\mathbf1_{E_j}T_{S,b}(u_1^{(j)},\\ldots,u_b^{(j)}),\\]",
+        "whenever the increasing coefficient limits are locally finite. For \\(b=q\\) and a repeated potential \\(u\\), denote the resulting top-degree measure by \\(\\mu_u\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: truncation definition (7.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#eq:nonpolar-cut"
+        }
+      ],
+      "usedBy": [
+        "SINGULARITIES",
+        "GREEN",
+        "ADELIC"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-nonpolar-products"
+    },
+    {
+      "id": "boundary-energy",
+      "title": "No loss of truncation mass and finite energy",
+      "paragraphs": [
+        "For a negative extended classical potential \\(u\\), put \\(u_j=\\max(u,-j)\\) and \\(\\nu_{u,j}=\\mathbf1_{\\{u\\le-j\\}}T_{S,q}(u_j,\\ldots,u_j)\\). The boundary no-loss class \\(\\mathcal F_{S,\\partial}(V)\\) is defined by",
+        "\\[\\overline{\\{u<-t\\}}\\Subset V\\quad(t>0),\\qquad \\nu_{u,j}(V)\\longrightarrow0.\\]",
+        "For \\(\\sigma>0\\), define \\(\\mathcal E^\\sigma_{S,\\partial}(V)=\\{u\\in\\mathcal F_{S,\\partial}(V):e_\\sigma(u)<\\infty\\}\\), where \\(e_\\sigma(u)=\\int_V(-u)^\\sigma\\,d\\mu_u\\). The integral is over the finite-value locus carrying the non-polar measure."
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: boundary power classes, Definition 7.1",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:power-class"
+        }
+      ],
+      "usedBy": [
+        "ED-STRONG",
+        "SOURCE-COMPAT",
+        "DOMAIN",
+        "REPRESENTATIVES",
+        "SINGULARITIES",
+        "GREEN",
+        "ADELIC"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-boundary-energy"
+    },
+    {
+      "id": "strong-completion",
+      "title": "Strong first-energy completion",
+      "paragraphs": [
+        "For \\(u_i\\in\\mathcal E^1_{S,\\partial}(V)\\), define \\(B_S(u_0,\\ldots,u_q)=\\int_V(-u_0)\\,T_{S,q}(u_1,\\ldots,u_q)\\) and \\(e(u)=B_S(u,\\ldots,u)\\). Here \\(T_{S,q}\\) denotes the non-polar extension of the bounded product. Set",
+        "\\[I(u,v)=e(u)+e(v)-B_S(u,v,\\ldots,v)-B_S(v,u,\\ldots,u).\\]",
+        "A sequence is strongly Cauchy if \\(\\sup_{j,k\\ge N}I(u_j,u_k)\\to0\\). The cone \\(\\mathscr C=\\widehat{\\mathcal E}^{1}_{\\rm str}(V)\\) consists of its Borel limits in every local truncated outer capacity, identified modulo the relative local null ideal. The completed energy and discrepancy are obtained from these approximating sequences; strong convergence means \\(I(u_j,u)\\to0\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: strong Cauchy condition (8.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#eq:strong-cauchy"
+        },
+        {
+          "label": "Results paper: completion, Definition 8.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:r11-strong-first-energy-completion"
+        },
+        {
+          "label": "Programme: energy discrepancy (2.14)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:strong-discrepancy"
+        }
+      ],
+      "usedBy": [
+        "ED-STRONG",
+        "SOURCE-COMPAT",
+        "DOMAIN",
+        "REPRESENTATIVES"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-strong-completion"
+    },
+    {
+      "id": "literal-energy-dual",
+      "title": "Energy differences and literal energy-dual measures",
+      "paragraphs": [
+        "Set \\(r(u)=e(u)^{1/(q+1)}\\). The energy-difference Banach space and its norm are",
+        "\\[\\mathbb D_S=\\mathscr C-\\mathscr C,\\qquad \\|h\\|_{\\rm ed}=\\inf_{h=a-b,\\ a,b\\in\\mathscr C}\\{r(a)+r(b)\\}.\\]",
+        "Differences are Borel functions modulo the relative local null ideal. A positive Radon measure \\(\\mu\\) is a literal energy-dual datum if it vanishes on that ideal, every \\(h\\in\\mathbb D_S\\) is absolutely \\(\\mu\\)-integrable, and \\(\\ell_\\mu(h)=-\\int_Vh\\,d\\mu\\) satisfies \\(|\\ell_\\mu(h)|\\le C_\\mu\\|h\\|_{\\rm ed}\\) for all \\(h\\). Its total mass on \\(V\\) may be infinite.",
+        "The strong-continuous dual \\(\\mathbb D_{S,\\mathrm s}^*\\) consists of those \\(\\ell\\in\\mathbb D_S^*\\) for which \\(I(u_j,u)\\to0\\) in \\(\\mathscr C\\) implies \\(\\ell(u_j)\\to\\ell(u)\\). Literal strong continuity asks for the stronger integral statement \\(\\int_V|u_j-u|\\,d\\mu\\to0\\)."
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: energy-difference space, Definition 9.1",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:r12-energy-difference"
+        },
+        {
+          "label": "Programme: literal energy-dual datum (6.3)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:literal-ed"
+        },
+        {
+          "label": "Results paper: strong-continuous dual, Definition 9.7",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:r12-strong-continuous-dual"
+        }
+      ],
+      "usedBy": [
+        "ED-STRONG",
+        "SOURCE-COMPAT"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-literal-energy-dual"
+    },
+    {
+      "id": "source-image",
+      "title": "Source map, variational projection and normal probe",
+      "paragraphs": [
+        "For \\(u\\in\\mathscr C\\), let \\(\\widehat\\mu_u\\) be its completed top-degree BT measure. The source map is \\(J(u)(h)=-\\int_Vh\\,d\\widehat\\mu_u\\). Its image \\(J(\\mathscr C)\\subset\\mathbb D_S^*\\) is the source image.",
+        "For \\(\\ell\\in\\mathbb D_{S,\\mathrm s}^*\\), the variational projection is \\(\\Pi(\\ell)=\\operatorname*{argmax}_{v\\in\\mathscr C}\\{\\ell(v)-e(v)/(q+1)\\}\\). Its normal residual is \\(n=\\ell-J(\\Pi(\\ell))\\), characterized by \\(n(v)\\le0\\) for \\(v\\in\\mathscr C\\) and \\(n(\\Pi(\\ell))=0\\).",
+        "Choose the bounded continuous classical potential \\(-1<\\psi_0<0\\) supplied by the geometric-probe construction: for every original compact smooth scalar \\(\\varphi\\), one has \\(\\psi_0\\pm\\varepsilon_\\varphi\\varphi\\in\\mathcal E^1_{S,\\partial}(V)\\) for some \\(\\varepsilon_\\varphi>0\\), with the same choices for all extending backgrounds. For a literal positive datum with \\(\\ell_\\mu\\in\\mathbb D_{S,\\mathrm s}^*\\), its normal-probe defect is \\(\\Xi_{S,\\psi_0}(\\mu)=-n(\\psi_0)\\). Its vanishing is equivalent to \\(\\widehat\\mu_{\\Pi(\\ell_\\mu)}=\\mu\\). The checkable-source problem asks for conditions on the given data that force this vanishing."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: source map (6.8)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:source-map"
+        },
+        {
+          "label": "Programme: projection and normal residual, Theorem 6.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#thm:normal-probe"
+        },
+        {
+          "label": "Programme: normal-probe defect (6.10)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:xi"
+        },
+        {
+          "label": "Results paper: the simultaneous geometric probe",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#prop:geometric-probe"
+        }
+      ],
+      "usedBy": [
+        "SOURCE-COMPAT"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-source-image"
+    },
+    {
+      "id": "boundary-tightness",
+      "title": "Boundary control in the completion",
+      "paragraphs": [
+        "The actual boundary condition is \\(\\overline{\\{u<-t\\}}\\Subset V\\) for every \\(t>0\\); the boundary condition on \\(\\mathscr C\\) is inherited by strong approximation from \\(\\mathcal E^1_{S,\\partial}(V)\\).",
+        "For the weighted measures \\(m_j=(-u_{0,j})T_{S,q}(u_{1,j},\\ldots,u_{q,j})\\) of finitely many strongly Cauchy sequences, uniform boundary tightness means: for every \\(\\varepsilon>0\\), some compact \\(H\\Subset V\\) satisfies \\(\\sup_jm_j(V\\setminus H)<\\varepsilon\\). This is the property whose preservation is sought under domain exhaustion."
+      ],
+      "articleLinks": [
+        {
+          "label": "Results paper: actual boundary condition, Definition 7.1",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:power-class"
+        },
+        {
+          "label": "Results paper: uniform weighted tightness, Lemma 8.1",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#lem:r11-strong-cauchy-uniform-tails"
+        },
+        {
+          "label": "Results paper: boundary estimate (8.7)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#eq:boundary-tightness"
+        }
+      ],
+      "usedBy": [
+        "DOMAIN"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-boundary-tightness"
+    },
+    {
+      "id": "singularity-type",
+      "title": "Local singularity type",
+      "paragraphs": [
+        "For negative actual classical potentials, \\(u\\preceq v\\) near \\(x\\) means that \\(u\\le v+C\\) on some ordinary neighborhood of \\(x\\), for a finite constant \\(C\\). They have the same local singularity type when both \\(u\\preceq v\\) and \\(v\\preceq u\\). Thus bounded changes of singularity mean mutual bounded comparison, with the background \\(S\\) kept fixed when relative masses and energies are compared."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: definition of singularity type, §7.2",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#def:singularity-type"
+        }
+      ],
+      "usedBy": [
+        "SINGULARITIES"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-singularity-type"
+    },
+    {
+      "id": "green-current",
+      "title": "Green currents and the finite-energy extension",
+      "paragraphs": [
+        "For a cycle \\(Z\\) of codimension \\(r\\), let \\(\\delta_Z\\) be its integration current and let \\(\\omega_Z\\) be the prescribed representative of its class. A Green current is a current \\(g_Z\\) of bidegree \\((r-1,r-1)\\) satisfying \\(Dg_Z+\\delta_Z=\\omega_Z\\) on the original compact smooth test forms.",
+        "The finite-energy Green problem asks to construct classes of such currents for which mixed products are limits of integrable truncations, with presentation independence and Green symmetry. Choosing those classes and their intersection hypotheses is part of the problem."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: Green-current identity (7.1)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:green-current"
+        },
+        {
+          "label": "Programme: proposed finite-energy product class, Problem 7.4",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#problem:green"
+        }
+      ],
+      "usedBy": [
+        "GREEN"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-green-current"
+    },
+    {
+      "id": "adelic-energy-input",
+      "title": "Local finite-energy integrals for the arithmetic problem",
+      "paragraphs": [
+        "The local input is the mixed-energy functional \\(B_S(u_0,\\ldots,u_q)=\\int_V(-u_0)\\,T_{S,q}(u_1,\\ldots,u_q)\\) on the stated finite-energy classes, using the non-polar product, together with its completed extension. The background, domain and boundary condition are part of the data.",
+        "An adelic finite-energy intersection is the construction sought in Problem 7.5: select metrized line bundles with local terms extending the continuous intersection theory, and prove that the place-by-place sum converges and is independent of approximation. The admissible global metric class, summability and boundary conditions are to be specified by that construction."
+      ],
+      "articleLinks": [
+        {
+          "label": "Programme: local mixed-energy integral (2.12)",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#eq:mixed-energy"
+        },
+        {
+          "label": "Results paper: local energy class, Definition 7.1",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/bedford-taylor-products/#def:power-class"
+        },
+        {
+          "label": "Programme: adelic extension target, Problem 7.5",
+          "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/papers/research-program/#problem:adelic"
+        }
+      ],
+      "usedBy": [
+        "ADELIC"
+      ],
+      "url": "/math-research-atlas/projects/bedford-taylor/editions/v1.0.0/conjectures/#definition-adelic-energy-input"
+    }
+  ],
+  "usage": {
+    "overview": [
+      "background-and-potentials",
+      "admissible-presentation",
+      "analytic-relation-and-action"
+    ],
+    "REL-ALL": [
+      "background-and-potentials",
+      "admissible-presentation",
+      "analytic-relation-and-action"
+    ],
+    "REL-CRITICAL": [
+      "supplied-normal-three-model",
+      "protected-presentation",
+      "critical-tangent",
+      "realized-spherical-pairing"
+    ],
+    "REL-CARRIER": [
+      "absolute-cap-carrier",
+      "carrier-relations",
+      "carrier-seminorm"
+    ],
+    "REL-BG": [
+      "weakly-approximable-backgrounds"
+    ],
+    "INT-DIFF": [
+      "coupled-relations-and-differential-extension"
+    ],
+    "CAP-BOREL": [
+      "laurent-box",
+      "relative-capacity"
+    ],
+    "CAP-DETECT": [
+      "relative-capacity",
+      "relative-nullity"
+    ],
+    "ED-STRONG": [
+      "laurent-box",
+      "boundary-energy",
+      "strong-completion",
+      "relative-nullity",
+      "literal-energy-dual"
+    ],
+    "SOURCE-COMPAT": [
+      "laurent-box",
+      "boundary-energy",
+      "strong-completion",
+      "literal-energy-dual",
+      "source-image"
+    ],
+    "DOMAIN": [
+      "laurent-box",
+      "boundary-energy",
+      "strong-completion",
+      "boundary-tightness"
+    ],
+    "REPRESENTATIVES": [
+      "boundary-energy",
+      "strong-completion",
+      "relative-nullity"
+    ],
+    "SINGULARITIES": [
+      "singularity-type",
+      "nonpolar-products",
+      "boundary-energy",
+      "relative-nullity"
+    ],
+    "GREEN": [
+      "green-current",
+      "nonpolar-products",
+      "boundary-energy"
+    ],
+    "ADELIC": [
+      "adelic-energy-input",
+      "boundary-energy"
+    ]
+  },
+  "relatedUsage": {
+    "REL-ALL": [
+      "residue-rank",
+      "quadratic-transgression",
+      "weakly-approximable-backgrounds",
+      "supplied-normal-three-model"
+    ],
+    "REL-CRITICAL": [
+      "background-and-potentials",
+      "admissible-presentation",
+      "analytic-relation-and-action",
+      "quadratic-transgression",
+      "weakly-approximable-backgrounds"
+    ],
+    "REL-CARRIER": [
+      "background-and-potentials",
+      "admissible-presentation",
+      "analytic-relation-and-action"
+    ],
+    "REL-BG": [
+      "background-and-potentials"
+    ],
+    "INT-DIFF": [
+      "background-and-potentials",
+      "admissible-presentation",
+      "analytic-relation-and-action",
+      "quadratic-transgression",
+      "residue-rank"
+    ]
+  },
+  "prerequisites": {
+    "admissible-presentation": [
+      "background-and-potentials"
+    ],
+    "analytic-relation-and-action": [
+      "admissible-presentation"
+    ],
+    "quadratic-transgression": [
+      "analytic-relation-and-action"
+    ],
+    "carrier-relations": [
+      "background-and-potentials"
+    ],
+    "carrier-seminorm": [
+      "absolute-cap-carrier",
+      "carrier-relations"
+    ],
+    "protected-presentation": [
+      "supplied-normal-three-model"
+    ],
+    "critical-tangent": [
+      "protected-presentation"
+    ],
+    "realized-spherical-pairing": [
+      "quadratic-transgression",
+      "critical-tangent"
+    ],
+    "relative-capacity": [
+      "background-and-potentials"
+    ],
+    "relative-nullity": [
+      "relative-capacity"
+    ],
+    "nonpolar-products": [
+      "background-and-potentials"
+    ],
+    "boundary-energy": [
+      "laurent-box",
+      "nonpolar-products"
+    ],
+    "strong-completion": [
+      "boundary-energy",
+      "relative-nullity"
+    ],
+    "literal-energy-dual": [
+      "strong-completion"
+    ],
+    "source-image": [
+      "literal-energy-dual"
+    ],
+    "boundary-tightness": [
+      "strong-completion"
+    ]
+  }
+}

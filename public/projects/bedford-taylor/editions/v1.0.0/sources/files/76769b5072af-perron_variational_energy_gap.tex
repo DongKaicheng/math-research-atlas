@@ -1,0 +1,283 @@
+\section{Least-energy source majorants and the Perron--variational gap}
+\label{sec:r12-perron-variational-gap}
+
+Retain the full hypotheses (ED1), the original arbitrary background
+$S$, and the unchanged strong cone $\mathscr C$. Put $d=q+1$.
+For dual functionals write
+\[
+       \ell\preceq_{\rm psh}\lambda
+       \quad\Longleftrightarrow\quad
+       \ell(v)\leq\lambda(v)\quad\text{for every }v\in\mathscr C.
+ \tag{PV1}
+\]
+This is the order tested by negative energy potentials. It is
+neither ordinary measure order nor middle positivity of currents.
+
+\begin{lemma}[A one-sided Bregman bound]
+\label{lem:r12-one-sided-Bregman}
+For $a,b\in\mathscr C$,
+\[
+ \begin{split}
+ e(a)-e(b)-dJ(b)(a-b)
+  &=\sum_{j=0}^{q-1}(q-j)
+       \int_V\Gamma_{\widehat N(a^{[j]},b^{[q-1-j]})}(a-b),\\
+ I(a,b)&\leq e(a)-e(b)-dJ(b)(a-b)\leq qI(a,b).
+ \end{split}
+ \tag{PV2}
+\]
+Every displayed energy is finite and nonnegative.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the frozen mixed variation and the coefficient computation (JD9).
+The bounded Bregman calculation was already present in R3.
+
+\begin{proof}
+Apply polynomial Taylor expansion to $e((1-t)b+ta)$ and
+retain its first derivative rather than canceling it by
+averaging. The same beta integral as in (JD9) gives the
+coefficients $q-j$. Their unweighted sum is $I(a,b)$ by
+the frozen discrepancy identity, proving both inequalities.
+The completed mixed energy calculus justifies all global
+integrals before this algebraic computation is made.
+\end{proof}
+
+\begin{theorem}[The unique least-energy curvature majorant]
+\label{thm:r12-least-energy-curvature-majorant}
+Let $\ell\in\mathbb D_{S,\mathrm s}^*$ be nonnegative on
+$\mathscr C$, and put $u=\Pi(\ell)$. Then
+\[
+       \ell\preceq_{\rm psh}J(u),\qquad
+       \|J(u)\|_*=\|\ell\|_*.
+ \tag{PV3}
+\]
+Among all $v\in\mathscr C$ satisfying
+$\ell\preceq_{\rm psh}J(v)$, the potential $u$ is the
+unique one of least energy. Every such $v$ satisfies
+\[
+               0\leq I(u,v)\leq q\bigl(e(v)-e(u)\bigr).
+ \tag{PV4}
+\]
+Consequently any row of these majorants with
+$e(v_j)\to e(u)$ converges strongly to $u$ on the full
+original current calculus.
+
+The map $\ell\mapsto J(\Pi(\ell))$ is an idempotent,
+positively homogeneous, dual-norm-preserving retraction on
+this positive dual cone. Its norm continuity is (NI11).
+The phrase \emph{least energy} does not assert a least element
+for the order (PV1), and norm preservation does not mean
+preservation of the total mass of a measure.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+all-degree majorant characterization and its quantitative
+energy gap. The normal decomposition is the preceding
+proved R12 input.
+
+\begin{proof}
+The normal residual in (NI7) is nonpositive on $\mathscr C$,
+which proves the order assertion in (PV3). Positivity of
+$\ell$ on this cone gives $p(\ell)=\|\ell\|_*$, so (NI9)
+and (ED10) prove its norm equality.
+
+For a competitor $v$, the majorant condition tested at $u$
+gives $B(u,v^{[q]})=J(v)(u)\geq\ell(u)=e(u)$.
+Use (PV2) with $(a,b)=(u,v)$ to obtain
+\[
+ \begin{split}
+ I(u,v)&\leq e(u)-e(v)-d\bigl(B(u,v^{[q]})-e(v)\bigr)\\
+       &=e(u)+q e(v)-d B(u,v^{[q]})
+                         \leq q(e(v)-e(u)).
+ \end{split}
+\]
+This proves (PV4), minimality, and uniqueness by relative
+discrepancy separation. It also proves the approximation
+assertion. The retraction, homogeneity and continuity follow
+from the corresponding exact properties of (NI7)--(NI11).
+No positivity of the signed residual measure is inferred
+from its potential-test order.
+\end{proof}
+
+For a literal positive Radon datum $\mu$, (PV3) says
+\[
+      \int_V(-v)\,d\mu\leq\int_V(-v)\,d\widehat\mu_u
+               \quad(v\in\mathscr C),\qquad
+      \int_V(-u)\,d\mu=e(u).
+ \tag{PV5}
+\]
+One may call this a nonlinear energy sweeping of the datum,
+provided (PV1), the specified source class, and the absence
+of a total-mass claim remain part of the definition.
+
+\begin{lemma}[The variational source cannot have a positive excess]
+\label{lem:r12-variational-positive-excess}
+Let $\mu$ be a positive original Radon measure whose literal
+functional belongs to $\mathbb D_{S,\mathrm s}^*$, and
+put $u=\Pi(\ell_\mu)$. If $\widehat\mu_u\geq\mu$
+as original measures, then $\widehat\mu_u=\mu$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+radial variational orthogonality and the frozen completed
+weak maximum inequality.
+
+\begin{proof}
+For every $a\in\mathscr C$, apply the completed weak
+maximum inequality to $a$ and the zero potential, assigning
+the equality set to $a$. Since $\max(a,0)=0$, it gives
+\[
+                   \mathbf1_{\{a=0\}}\widehat\mu_a=0.
+ \tag{PV6}
+\]
+All involved measures also ignore the relative pole set.
+Now let $\tau=\widehat\mu_u-\mu\geq0$. It is dominated
+by $\widehat\mu_u$, so it ignores both sets just mentioned.
+Radial stationarity gives the finite equality
+\[
+                       \int_V(-u)\,d\tau
+                                  =e(u)-\ell_\mu(u)=0.
+\]
+The integrand is strictly positive and finite on the
+remaining full carrier $\{-\infty<u<0\}$. Its increasing
+level exhaustion therefore makes $\tau$ vanish there too.
+Thus $\tau=0$ as a Radon measure. No subtraction of
+infinite unweighted total masses has occurred.
+\end{proof}
+
+\begin{theorem}[An exact scalar gap between Perron and variational potentials]
+\label{thm:r12-perron-variational-gap}
+Let $\mu$ be a positive original Radon measure with a
+literal strong-continuous energy functional. Suppose the
+completed subsolution family
+\[
+             \mathscr S_\mu
+               =\{v\in\mathscr C:\widehat\mu_v\geq\mu\}
+ \tag{PV7}
+\]
+is nonempty. Let $H_\mu$ be its greatest relative member,
+constructed by the frozen R11 full Perron theorem (SE1)--(SE8),
+and let $u_\mu=\Pi(\ell_\mu)$. Define
+\[
+                  \Delta_S(\mu)=e(H_\mu)-e(u_\mu).
+ \tag{PV8}
+\]
+Then
+\[
+              \Delta_S(\mu)\geq0,\qquad
+              I(H_\mu,u_\mu)\leq q\Delta_S(\mu).
+ \tag{PV9}
+\]
+Moreover the following conditions are equivalent:
+\begin{enumerate}
+\item $\Delta_S(\mu)=0$;
+\item $H_\mu=u_\mu$ as relative completed classes;
+\item $\widehat\mu_{u_\mu}=\mu$ on every original test;
+\item there exists $v\in\mathscr C$ with $\widehat\mu_v=\mu$;
+\item there exists a row $v_j\in\mathscr S_\mu$ with
+      $e(v_j)\to e(u_\mu)$.
+\end{enumerate}
+If they hold, this source potential is unique. The family
+is nonempty, in particular, whenever $\mu\leq A\mu_\psi$
+for an actual first-energy $\psi$ and finite $A\geq0$.
+
+Thus the general subsolution Perron construction and the
+general variational construction are linked by a single
+nonnegative scalar gap. Its universal vanishing is not
+claimed: the compact-source examples (ML22)--(ML28) have
+$\Delta_S(\mu)>0$ in every $2\leq q<r$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for this
+all-degree criterion and quantitative comparison. The two
+constructions themselves are explicitly frozen or previously
+proved inputs. Unqualified vanishing of the gap is
+\texttt{FALSE}, not a theorem hidden in the word Perron.
+
+\begin{proof}
+The R11 theorem applies to the nonempty family in (PV7),
+keeps its measure lower bound, and makes its relative
+envelope an actual member of $\mathscr C$. Thus $H_\mu$
+is the greatest member of that family. Every measure
+majorant is also a majorant for the potential-test order
+(PV1). Applying (PV4) proves (PV9).
+
+If the gap is zero, (PV9) gives equality of the two
+relative potentials. The common potential is a subsolution,
+so Lemma~\ref{lem:r12-variational-positive-excess} makes
+its source exactly $\mu$. Conversely, a source potential
+$v$ has zero normal residual and hence is the unique
+variational potential $u_\mu$. It belongs to (PV7), so
+$H_\mu\succeq u_\mu$. Energy monotonicity gives
+$e(H_\mu)\leq e(u_\mu)$, and (PV9) gives equality.
+This proves the first four equivalences and uniqueness.
+
+Every $v\in\mathscr S_\mu$ is below $H_\mu$, so
+$e(v)\geq e(H_\mu)$. A row in condition (5) therefore
+forces the gap to be zero. If the gap is zero, the
+constant row $v_j=u_\mu$ supplies condition (5).
+Alternatively (PV4) directly shows that any such row
+converges strongly to $u_\mu$ and its source inequalities
+pass to all original compact tests.
+
+For the printed dominated datum, $A^{1/q}\psi$ is a
+subsolution (the zero case is immediate), and its literal
+datum functional satisfies the strong-dual hypothesis by
+mixed Holder and (EV1). The nonlinear compact-source
+examples satisfy these same assumptions but have no source
+in $\mathscr C$. The equivalence therefore makes their
+gap strictly positive. None of these arguments needs a
+common actual lower barrier for the whole subsolution family.
+\end{proof}
+
+\begin{proposition}[A quantitative positive-test lower bound for the gap]
+\label{prop:r12-positive-test-gap-bound}
+Under the preceding theorem put $u=u_\mu$, $H=H_\mu$,
+$R=r(H)$, and define
+\[
+ \varepsilon_+(\mu,u)=
+   \sup_{\substack{0\leq\phi\in A_c^{0,0}(V)\\
+                   \|\phi\|_{\rm ed}\leq1}}
+                   \left(\int_V\phi\,d(\mu-\widehat\mu_u)\right)_+.
+ \tag{PV10}
+\]
+This is finite. If $R>0$, then
+\[
+       \Delta_S(\mu)\geq
+          \frac{\varepsilon_+(\mu,u)^2}{q^2R^{q-1}}.
+ \tag{PV11}
+\]
+If $R=0$, the datum and all quantities are zero. Also
+$\varepsilon_+(\mu,u)=0$ if and only if the source equation
+holds. Every positive test in (PV10) is from the full
+original sheaf, not a selected moment family.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the new gap theorem and the proved source-dual estimate.
+
+\begin{proof}
+All original compact smooth scalars lie in $\mathbb D_S$
+by (HC14)--(HC15). Finiteness follows by the dual norm of
+$\ell_\mu-J(u)$. Since $\widehat\mu_H\geq\mu$, each
+nonnegative test in (PV10) gives
+\[
+ \int\phi\,d(\mu-\widehat\mu_u)
+       \leq\int\phi\,d(\widehat\mu_H-\widehat\mu_u)
+       =(J(u)-J(H))(\phi).
+\]
+Consequently $\varepsilon_+\leq\|J(H)-J(u)\|_*$.
+The energy minimum gives $r(u)\leq R$. Equations (NI2)
+and (PV9) now give
+$\varepsilon_+\leq qR^{(q-1)/2}\Delta_S(\mu)^{1/2}$,
+which is (PV11). When $R=0$, the subsolution $H=0$
+already forces $\mu=0$.
+
+Vanishing in (PV10), together with original positive
+scalar test detection, says $\widehat\mu_u\geq\mu$.
+Lemma~\ref{lem:r12-variational-positive-excess} upgrades
+this to equality. The reverse implication is immediate.
+This is a full original-measure statement, not an
+ordinary-to-delta-test promotion.
+\end{proof}
+

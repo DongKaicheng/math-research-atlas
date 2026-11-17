@@ -1,0 +1,394 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\M}{\mathcal M^1}
+\newcommand{\Pp}{\Phi_{S,r}}
+\newcommand{\D}{\mathrm D}
+\newcommand{\supp}{\operatorname{supp}}
+\title{Order-controlled intrinsic extensions and sufficient certificates\ for non-Archimedean Bedford--Taylor actions}
+\author{Internal continuation after the R24 audit}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We establish quantitative order continuity of the already constructed
+continuous-coefficient curvature products, identify their order completions
+with actual currents, and extend the products uniquely to these completions.
+We also prove that controlled approximation by already annihilated
+degree-one forms suffices for the quadratic action obstruction to vanish.
+These are consequences of accepted internal inputs, not a solution of the
+general analytic relation problem. In particular, no density assertion,
+new principal descent theorem, or claim of literature priority is made.
+\end{abstract}
+\tableofcontents
+
+\section{Scope and precise inputs}
+
+Work over the original finite extension $K/\mathbf Q_p$, with its unchanged
+absolute value, on an ordinary open $U$ of a good, Hausdorff, boundaryless,
+quasi-smooth analytic space, locally of pure dimension $n$. All equalities
+of currents are on the full original compactly supported smooth CLD test
+sheaf. All actual moment refinements are retained. Write $D=d'd''$ with
+$d'd''=-d''d'$. An allowed background $S$ has bidegree $(p,p)$ and is
+symmetric, middle-positive and separately closed. No stronger positive cone
+or geometric presentation of $S$ is imposed.
+
+The input sheaf $\M$ consists of symmetric coefficient-Radon $(1,1)$
+currents locally admitting finite presentations
+\[
+ A=\sum_i f_iD[g_i],\qquad f_i\in C(U,\mathbf R),
+\]
+where $g_i$ are locally bounded original classical psh functions; signed
+differences are handled by finite expansion. Equality is actual current
+equality, not equality of formal expressions. Its positive cone is the
+original middle cone. Frozen R6 supplies symmetric, positive,
+$C(U,\mathbf R)$-multilinear products
+\[
+ \Phi_{S,r}:(\M)^r\longrightarrow\mathcal D'^{p+r,p+r},\qquad
+ \Phi_{S,r}(A_1,\ldots,A_r)
+ =\sum_{i_1,\ldots,i_r}\prod_j f_{j,i_j}
+       T_{S,r}(g_{1,i_1},\ldots,g_{r,i_r}),
+ \tag{I1}
+\]
+for $r\le n-p$. Values are coefficient-Radon currents. This operation is
+ordinary-local and respects all representations and actual refinements.
+For $r=1$ put $M_S=\Phi_{S,1}$. The same notation agrees with the frozen
+degree-one action on genuine symmetric analytic delta-forms. On
+nonsymmetric genuine $B^{1,1}$ arguments in (I3), $M_S$ denotes the
+broader frozen QA degree-one action. All order estimates and completions
+in this note are restricted to symmetric arguments.
+
+We use the frozen finite-frame coefficient domination: if $R$ is positive
+and $T$ symmetric with $-cR\le T\le cR$, then, for each fixed original
+compact test $\eta$, there is a finite positive control
+\[
+ |\langle T,\eta\rangle|\le c\,N_{R,\eta}<\infty.       \tag{I2}
+\]
+On each finite moment presentation and compact stage this also controls
+the coefficient measures. It follows by applying positivity to $cR\pm T$
+and the fixed finite positive controls for $\eta$. These are the original
+middle-cone controls, not an assertion about a stronger cone. In particular,
+an order-bounded limit is coefficient-Radon, the cone is weakly closed,
+and differential operators are continuous for distributional convergence.
+
+Frozen QA supplies, for actual analytic $\beta\in B^{0,1}$ and
+$\zeta\in B^{1,0}$,
+\[
+ M_S(d'\beta)=d'(\beta\wedge S),\qquad
+ M_S(d''\zeta)=d''(\zeta\wedge S).                       \tag{I3}
+\]
+These are full derivatives with every polyhedral boundary term present.
+Consequently $DM_S(d'\beta+d''\zeta)=0$.
+
+The exact source files and hashes are in the accompanying dependency ledger.
+These inputs are adopted in their frozen scope; the present note does not
+independently reprove the entire R1--R24 chain.
+
+\section{A sharp order estimate}
+
+\begin{lemma}[Signed products controlled by positive products]\label{lem:order}
+Suppose $Q_i\in\M$ are positive and
+$-M_iQ_i\le A_i\le M_iQ_i$ for $M_i\ge0$. Then
+\[
+ -\Bigl(\prod_iM_i\Bigr)R_S\le
+ \Phi_{S,r}(A_1,\ldots,A_r)\le
+ \Bigl(\prod_iM_i\Bigr)R_S,
+ \qquad R_S=\Phi_{S,r}(Q_1,\ldots,Q_r)\ge0.             \tag{OC1}
+\]
+If $-M_iQ_i\le A_i,B_i\le M_iQ_i$ and
+$-\delta_iQ_i\le A_i-B_i\le\delta_iQ_i$, then
+\[
+ -E R_S\le \Phi_{S,r}(A_1,\ldots,A_r)
+               -\Phi_{S,r}(B_1,\ldots,B_r)\le E R_S,
+ \qquad E=\sum_i\delta_i\prod_{j\ne i}M_j.             \tag{OC2}
+\]
+\end{lemma}
+\begin{proof}
+Put $A_i^\pm=(M_iQ_i\pm A_i)/2$. Each is a positive member of $\M$,
+$A_i=A_i^+-A_i^-$ and $A_i^++A_i^-=M_iQ_i$. Expanding the product by
+multilinearity gives a signed sum of positive currents. Its positive and
+negative subsums are both bounded by the sum of all terms, which is
+$\Phi_{S,r}(M_1Q_1,\ldots,M_rQ_r)$. More exactly, the unsigned sum
+plus or minus the signed sum is twice one of those positive subsums.
+This proves (OC1), including zero values of $M_i$. Telescope the difference
+of the two products one slot at a time and apply (OC1) to each summand.
+Adding the resulting order inequalities proves (OC2). No positivity of
+a signed tail is assumed.
+\end{proof}
+
+The estimate holds for every allowed $S$ with the same numerical $E$.
+The controlling mass $N_{R_S,\eta}$ depends on $S$ and the test; there is
+no uniform bound on the masses of all backgrounds.
+
+\section{Completion as actual currents}
+
+For one positive $Q\in\M(U)$ set
+\[
+ \begin{aligned}
+ E_Q(U)&=\{A\in\M(U): -cQ\le A\le cQ\text{ for some }c<\infty\},\\
+ \|A\|_Q&=\inf\{c:-cQ\le A\le cQ\}.
+ \end{aligned}                                         \tag{OC3}
+\]
+The case $Q=0$ gives the zero space. Every finite presentation belongs
+locally to such an ideal: after bounding its coefficients, a sum of the
+positive curvatures in that presentation is a control. No one global
+control on an arbitrary open is asserted.
+
+\begin{theorem}[Faithful realization of each order completion]\label{thm:completion}
+The norm completion $\widehat E_Q(U)$ embeds isometrically into actual
+symmetric coefficient-Radon $(1,1)$ currents on $U$. Its image is exactly
+the closure of $E_Q(U)$ in the order norm determined by $Q$ in the ambient
+space of such currents. If the same actual current is obtained with
+controls $Q$ and $R$, the two realizations agree in the completion for
+$Q+R$.
+\end{theorem}
+\begin{proof}
+The gauge is a norm: if its value is zero, then $\pm A\le\epsilon Q$
+for every $\epsilon>0$; (I2) on every test implies $A=0$.
+The triangle inequality follows by adding order bounds. Weak closedness
+of the cone also shows that the infimum defining a finite norm is attained.
+
+If $(A_j)$ is order-Cauchy, (I2) makes its values Cauchy on every test.
+The local finite-frame bound makes the limit a distribution and, on each
+compact presentation, coefficient-Radon. Its symmetry and compatibility
+between presentations pass to the limit. Write the resulting actual
+current as $A$. If $\|A_j-A_k\|_Q\le\epsilon$ for $j,k\ge N$, let
+$k\to\infty$ in the order inequalities to obtain
+\[
+                -\epsilon Q\le A_j-A\le\epsilon Q
+                       \quad(j\ge N).                   \tag{OC4}
+\]
+Thus convergence is in the ambient order norm. If $A=0$, (OC4) says
+the original sequence represents zero in the completion, proving
+injectivity; (OC4) also proves the norm assertion and the characterization
+of the image. Since $Q\le Q+R$ and $R\le Q+R$, both completion sequences
+are Cauchy for the larger control. Their actual limits agree, so
+injectivity for $Q+R$ identifies them.
+\end{proof}
+
+Define $\M_{\rm ord}$ locally: an actual symmetric coefficient-Radon
+current belongs if every point has an ordinary neighborhood on which it
+lies in one of these embedded completions. This is a sheaf by its local
+definition and the sheaf property of currents. It is not a claim that a
+single global order bound survives arbitrary gluing. Local addition uses
+$Q+R$, and multiplication by continuous functions uses their local boundedness.
+
+\begin{theorem}[Intrinsic extension of the mixed operations]\label{thm:extension}
+The operations (I1) extend uniquely to symmetric locally
+$C(U,\mathbf R)$-multilinear maps on $(\M_{\rm ord})^r$, continuous in
+each common finite collection of local order controls. They are independent
+of approximation sequences, controls and moment presentations, preserve
+positivity, commute with ordinary restriction and gluing, and satisfy
+(OC1)--(OC2). Their supports satisfy
+\[
+ \supp\Phi_{S,r}(A_1,\ldots,A_r)
+       \subseteq\supp S\cap\bigcap_i\supp A_i.          \tag{OC5}
+\]
+If mixed products along one such approximation are separately closed,
+their limit is separately closed. Separate closedness of the limit factors
+alone is not claimed to imply this hypothesis.
+\end{theorem}
+\begin{proof}
+Choose local controls $Q_i$ and Cauchy approximations $A_{i,j}$.
+Their norms are bounded, so (OC2) and (I2) make the mixed products Cauchy
+in coefficient measure on every fixed compact presentation. They have
+a coefficient-Radon limit. Applying (OC2) to different approximations
+proves uniqueness for these controls. For other controls $R_i$, replace
+each by $Q_i+R_i$ and apply Theorem~\ref{thm:completion}; the same estimate
+proves equality of the resulting limits. All algebraic properties follow
+by taking limits of the frozen identities.
+
+If $A_i\ge0$, (OC4) yields positive approximants
+$A_{i,j}+\epsilon_{i,j}Q_i\ge0$ with $\epsilon_{i,j}\to0$.
+They have the same limits. Positivity follows from (I1) and weak closedness
+of the cone. Passing the order inequalities to the limit gives (OC1)--(OC2).
+Restriction maps are contractive for the restricted controls. The local
+constructions therefore agree on intersections and glue as ordinary
+currents. On an open where one $A_i$ is zero, its completion class is zero
+by Theorem~\ref{thm:completion}; multilinearity makes the product zero.
+The same is true where $S=0$, proving (OC5). Distributional continuity
+of $d'$ and $d''$ proves the last assertion.
+\end{proof}
+
+\begin{remark}[What the completion does not assert]
+This is an intrinsic extension by a specified convergence mechanism.
+We have not proved that it strictly enlarges $\M$, that all positive closed
+currents belong to it, that products of arbitrary currents exist, or that
+all actual higher-degree analytic relations are killed. The theorem does
+not alter the carrier-CLN seminorm or its relation ideal. Closedness of
+actions of arbitrary closed degree-one delta-forms remains a separate issue.
+\end{remark}
+
+\section{Controlled exact approximation and the quadratic obstruction}
+
+For a finite actual PL relation
+\[
+ P=\sum_\nu c_\nu[h_\nu][g_\nu],\qquad
+ \sum_\nu c_\nu D_\delta h_\nu\wedge D_\delta g_\nu=0,
+\]
+QA defines the symmetric actual degree-one primitive
+\[
+ \alpha_P=\frac12\sum_\nu c_\nu
+       (h_\nu D_\delta g_\nu+g_\nu D_\delta h_\nu),
+ \quad D_\delta\alpha_P=0,
+ \quad\mathcal A_S(P)=DM_S(\alpha_P).                    \tag{OC6}
+\]
+The operation on the right is already defined, without assuming a
+general degree-two action on delta-forms.
+
+\begin{theorem}[Controlled approximation suffices]\label{thm:density}
+Let $\alpha\in B^{1,1}(U)$ be symmetric. Suppose actual symmetric
+degree-one forms $a_j$, a fixed positive $Q\in\M(U)$ and
+$\epsilon_j\downarrow0$ satisfy
+\[
+ -\epsilon_jQ\le[\alpha]-[a_j]\le\epsilon_jQ,
+ \qquad DM_S(a_j)=0\quad\text{for every allowed }S.      \tag{OC7}
+\]
+The data are chosen on one representative before $S$ and the tests.
+Then $DM_S(\alpha)=0$ for every allowed $S$, with
+\[
+ |\langle DM_S(\alpha),\eta\rangle|
+             \le \epsilon_j N_{M_S(Q),D\eta}.           \tag{OC8}
+\]
+One sufficient, non-circular choice is
+$a_j=d'\beta_j+d''\zeta_j$ in the full actual delta sheaf.
+In particular, (OC7) for $\alpha=\alpha_P$ proves
+$\mathcal A_S(P)=0$ for all backgrounds in legal degree.
+\end{theorem}
+\begin{proof}
+R6 positive scalar-module transfer gives
+$-\epsilon_jM_S(Q)\le M_S(\alpha)-M_S(a_j)\le
+\epsilon_jM_S(Q)$. Apply (I2) to the fixed test $D\eta$.
+Distributional duality, whose fixed convention sign disappears inside
+absolute values, gives (OC8). The right side tends to zero for each $S$
+and each test. No derivative convergence of coefficients is needed.
+Formula (I3) proves the asserted sufficient exactness condition. Finally
+use (OC6). The argument can also be applied on neighborhoods of each
+point and then glued; it does not restrict a global full polar.
+\end{proof}
+
+\begin{corollary}[Fixed generators and no gauge condition on potentials]
+Suppose on one representative
+\[
+ [\gamma]=\sum_{i=1}^N f_iD[g_i],\qquad
+ A_j=\sum_{i=1}^N f_{i,j}D[g_i]=D[v_j],                 \tag{OC9}
+\]
+where the $g_i$ are finite continuous classical psh differences, all
+coefficients are continuous, $f_{i,j}\to f_i$ locally uniformly, and
+$v_j$ are finite continuous local classical psh differences. Then
+$M_S(\gamma)$ is separately closed for every allowed $S$.
+No uniform bound, normalization, or convergence of $v_j$ is required.
+For genuine degree-one delta curvatures the local DC requirement for a
+given continuous potential is also supplied by frozen AP.
+\end{corollary}
+\begin{proof}
+Write $g_i=g_i^+-g_i^-$ and take the fixed positive represented control
+$Q=\sum_i(D[g_i^+]+D[g_i^-])$. On a compactly contained ordinary
+neighborhood, with $\epsilon_j=\max_i\|f_i-f_{i,j}\|_\infty$,
+the error in (OC9) lies between $\pm\epsilon_jQ$.
+Equivalently its action is a finite sum of uniformly small coefficients
+times fixed coefficient-Radon currents $D(g_iS)$. Thus
+$M_S(A_j)\to M_S(\gamma)$ on all tests. Scalar relation transfer gives
+$M_S(A_j)=D(v_jS)$, which is separately closed. Distributional continuity
+of both first derivatives proves the assertion. Locality handles the
+whole representative.
+\end{proof}
+
+This corollary replaces the demand for one exact continuous potential
+by a particular controlled approximation target. No such approximation
+has been constructed for all RV/QT boundaries, and strict logical
+weakening within that analytic class has not been established. RV4 and
+the general AP boundary problem therefore remain open. A weak limit of
+ambient currents alone does not satisfy the displayed order hypothesis.
+
+\section{A directly verifiable first-order relation certificate}
+
+\begin{proposition}[Scalar rows and actual support conormals]\label{prop:conormal}
+Put $A_i=D[g_i]$ and $T_i=D(g_iS)$ for fixed finite continuous psh
+differences $g_i$. Let $F_i=\supp A_i$ be the actual analytic support.
+Then $\supp T_i\subset F_i$. If $h$ is original smooth and vanishes
+on $F_i$, then $d'h\wedge T_i=d''h\wedge T_i=0$.
+
+Suppose smooth covectors $\theta_i$ admit a finite identity on $U$
+\[
+ \theta_i=\sum_a f_{ai}\eta_a+\sum_j b_{ij}d'h_{ij},
+ \qquad \sum_i f_{ai}A_i=0,
+ \qquad h_{ij}|_{F_i}=0,                               \tag{SC1}
+\]
+with continuous scalar coefficients and original smooth $\eta_a,h_{ij}$.
+Then $\sum_i\theta_i\wedge T_i=0$. The same assertion holds with
+the columns exchanged. There is also the version in which $\theta_i$
+and $\eta_a$ are actual PS covectors, $f_{ai},b_{ij}$ are continuous PS
+scalars, and $h_{ij}$ remain original smooth, provided the displayed
+identities are identities in the already established PS coefficient
+module. No new product for arbitrary continuous covector coefficients
+is inferred from that version.
+\end{proposition}
+\begin{proof}
+On $U\setminus F_i$ the scalar curvature relation $A_i=0$ transfers
+by R6 to $T_i=0$, proving the support assertion. Multiplication by $h$
+gives $hT_i=0$. Since $T_i$ is separately closed, the smooth distributional
+product rule gives the conormal assertion. Each scalar relation in (SC1)
+transfers to $\sum_i f_{ai}T_i=0$. Multiply it by $\eta_a$, use the
+conormal assertion for the remaining terms, and sum. All currents and
+supports are the actual original ones. No finite skeleton replaces $F_i$.
+\end{proof}
+
+The proposition is a sufficient certificate, not a generation theorem.
+One would still have to show that the particular covector relation in
+AP24.9 is generated by certified scalar rows, support conormals and the
+already settled ambient relations. Such a theorem has not been proved.
+The simpler implication obtained by differentiating a scalar zero
+$\sum_i f_iA_i=0$ does not apply merely from the closedness of
+$\sum_i f_iA_i$.
+
+\section{A necessary warning about approximation}
+
+An order estimate is stronger than weak convergence. Precisely, let $C$
+and $Q$ be positive coefficient-Radon currents and let a fixed positive
+smooth complementary test form $\theta$ define local scalar measures
+$\mu_T(\varphi)=\langle T,\varphi\theta\rangle$. Suppose on a compact
+measurable set $E$ that $\mu_C(E)=c>0$ whereas $\mu_{A_j}(E)=0$ for
+every proposed approximant. If
+$-\epsilon_jQ\le C-A_j\le\epsilon_jQ$, then
+\[
+                       c\le\epsilon_j\mu_Q(E).          \tag{OC10}
+\]
+Local finiteness of $Q$ prevents $\epsilon_j\to0$. This is simply the
+scalar-measure consequence of the order inequality. It applies, for
+example, to real hyperplane delta mass and its diffuse smooth
+regularizations. The real example is a convergence-topology diagnostic,
+not a counterexample to KC12 or to analytic density in a correctly
+chosen class. Any use for an original cap must separately verify the
+displayed measure assumptions. Ordinary smoothing therefore does not
+by itself supply the required controlled approximation.
+
+\section{Source comparison and remaining task}
+
+All proved assertions above are recorded as direct consequences or
+functional-analytic extensions of frozen inputs. We found no matching
+order-completion statement in the source modules inspected, but do not
+claim an exhaustive priority audit. These estimates do not settle the
+existence of an approximating family in (OC7) or (OC9).
+
+For comparison, Mihatsch, \emph{On Tropical Intersection Theory},
+arXiv:2107.12067v3, Lemma 4.5, gives a PL potential for a divisor on
+$\mathbf R^n$. This is a statement about the ambient real space. We do
+not replace a scalar cycle closed only on the full analytic quotient
+by an ambient closed divisor. The different numbering in v2 is not used.
+
+The next geometric objective is either to construct an intrinsic
+controlled exact approximation for the actual quadratic primitive, or
+to construct (OC9) for the actual RV scalar remainder, or to prove the
+specific covector relation has a certificate of type (SC1) with any
+additional already justified ambient generators. These are alternative
+routes. A successful scalar-remainder construction still leaves the
+balanced lift RV4 unless it is bypassed by a direct argument for
+$\alpha_P$. KC12, OPEN-GQ, NC12, variable-PS and CTO retain their
+frozen open status.
+\end{document}

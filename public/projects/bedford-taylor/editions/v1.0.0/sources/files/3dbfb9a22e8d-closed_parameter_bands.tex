@@ -1,0 +1,220 @@
+\section{Closed parameter bands and an original-current Radon calculus}
+\label{sec:r12-closed-parameter-bands}
+
+Fix the original finite extension $K/\mathbf Q_p$ and its original
+absolute value. Let $U$ be an ordinary open in a good, Hausdorff,
+boundaryless, quasi-smooth, pure $n$-dimensional $K$-analytic space.
+All currents and tests in this section are original CLD objects.
+In particular, an equality is required on every original compact
+smooth complementary test, allowing every actual moment refinement.
+No equality on an enlarged GK delta-test sheaf is asserted.
+
+Let $f_1,\ldots,f_c$ be original analytic units, set
+\[
+ s_i=\log|f_i|,\qquad s=(s_1,\ldots,s_c):U\longrightarrow J\subset\mathbf R^c,
+ \qquad
+ \Omega_s=\bigwedge_{i=1}^c(d's_i\wedge d''s_i),
+ \tag{PB1}
+\]
+where $J$ is a real open containing the image under consideration.
+No rank, independence, submersion, saturation, or product hypothesis
+on $s$ is imposed in this section. The original smooth functions
+$s_i$ satisfy $Ds_i=0$ and their prime and double-prime differentials
+are separately closed.
+
+\begin{definition}[Parameter-annihilated currents]
+\label{def:r12-parameter-annihilated}
+A coefficient-Radon current $R$ on $U$ is \emph{$s$-annihilated} if
+\[
+                 d's_i\wedge R=d''s_i\wedge R=0
+                         \qquad(1\le i\le c).
+ \tag{PB2}
+\]
+An allowed $s$-background is an $s$-annihilated, original symmetric
+middle-positive, separately $d'$- and $d''$-closed diagonal current.
+The adjective describes a proved extra structure of a derived
+current; it does not restrict the background $S$ in OPEN-GQ.
+\end{definition}
+
+For every arbitrary original allowed $(p,p)$-background $S$ with
+$p+c\le n$, the derived current $\Omega_s\wedge S$ is an allowed
+$s$-background. Indeed $\Omega_s$ is smooth, strongly positive and
+separately closed, so its wedge preserves the original middle cone;
+every conormal in (PB2) is repeated in this product. This uses no
+regularization or replacement of $S$. It also covers all cases where
+$\Omega_s$ happens to vanish because of moment-rank degeneracy.
+
+\subsection{The Borel parameter algebra preserves closedness}
+
+\begin{lemma}[Bounded smooth approximation for finitely many parameter measures]
+\label{lem:r12-parameter-L1-approximation}
+Let $\nu_1,\ldots,\nu_N$ be finite positive Radon measures on a
+compact subset of $J$, and let $b:J\to\mathbf R$ be Borel and
+bounded on a neighborhood of that subset. There are smooth real
+functions $b_m$ on $J$, with one common bound, such that
+\[
+                   \sum_{j=1}^N\int|b_m-b|\,d\nu_j\longrightarrow0.
+ \tag{PB3}
+\]
+If $b\ge0$, the $b_m$ can be chosen nonnegative. No measure in this
+statement is assumed to be nonatomic.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{EXTERNAL\_KNOWN}} as elementary
+Radon regularity; the short proof fixes precisely the version used.
+
+\begin{proof}
+Replace the finite family by its sum. Truncate $b$ to its fixed
+bound on a compact neighborhood and approximate it in $L^1$ by
+bounded simple functions. Inner and outer regularity approximate
+each indicator by a continuous function between zero and one.
+Continuous compactly supported functions on $J$ can be uniformly
+approximated by smooth functions by convolution after a compact
+cutoff. Truncation with a smooth approximation to the scalar
+clipping map keeps a common bound and, when required, nonnegativity.
+A diagonal choice proves (PB3).
+\end{proof}
+
+\begin{theorem}[Closed Borel bands and differential commutation]
+\label{thm:r12-closed-parameter-bands}
+Let $R$ be an allowed $s$-background. For every locally bounded
+Borel $b:J\to\mathbf R$, the intrinsic coefficient multiplication
+$b(s)R$ is separately closed and $s$-annihilated. It is middle-positive
+if $b\ge0$. In particular, for every Borel $E\subset J$,
+\[
+                            R_E:=\mathbf1_{s^{-1}(E)}R
+ \tag{PB4}
+\]
+is a genuine positive separately closed original current.
+
+More generally, let $u$ be an original locally bounded Borel scalar
+such that $T=D(uR)$ is coefficient-Radon. Then $T$ is $s$-annihilated
+and, on all original tests,
+\[
+                         D\bigl(u\,b(s)R\bigr)=b(s)D(uR).
+ \tag{PB5}
+\]
+Thus (PB5) applies in particular to every frozen locally bounded
+classical BT insertion into $R$.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the original
+closed-band calculus. The coefficient-Radon nature and positivity of
+the frozen bounded BT insertion are \texttt{INTERNAL\_INPUT}.
+
+\begin{proof}
+First take $b$ smooth. Its differentials are combinations of the
+$d's_i$ and $d''s_i$. Consequently
+\[
+ d'b(s)\wedge R=d''b(s)\wedge R=Db(s)\wedge R=0.
+ \tag{PB6}
+\]
+The distributional product rule and separate closedness of $R$
+give separate closedness of $b(s)R$. Conormality follows immediately
+from (PB2). For a compact original test $\eta$ complementary to $T$,
+the smooth identity
+\[
+ D(b(s)\eta)=b(s)D\eta+d'b(s)\wedge d''\eta
+                    -d''b(s)\wedge d'\eta+Db(s)\wedge\eta
+\]
+and (PB6), still valid after scalar multiplication by $u$, imply
+\[
+ \langle b(s)D(uR),\eta\rangle
+   =\langle uR,D(b(s)\eta)\rangle
+   =\langle uR,b(s)D\eta\rangle.
+ \tag{PB7}
+\]
+This is (PB5) for smooth $b$.
+
+For Borel $b$, fix one arbitrary compact original test stage. Choose
+finite coefficient-Radon frames controlling $R$ on the supports of
+the test and its required derivatives. Push the total variations of
+these finitely many coefficient measures forward by $s$; they are
+finite Radon measures on the real parameter space. Apply
+Lemma~\ref{lem:r12-parameter-L1-approximation}. The resulting
+$b_m(s)R$ converge to $b(s)R$ against every pairing needed for the
+closedness equation of that test. Distributional differentiation is
+continuous, so closedness passes to the limit. Multiplication of the
+already zero coefficient measures in (PB2) proves conormality.
+Positive scalar multiplication proves middle positivity when $b\ge0$.
+
+For (PB5), include in the same finite controlling family the
+coefficient measures of $T$ on $\operatorname{supp}\eta$ and those
+of $R$ on $\operatorname{supp}D\eta$. The common compact bound on
+$u$ then gives convergence of both sides of (PB7). This proves
+(PB5) without inferring convergence against a discontinuous weight
+from weak current convergence alone. The approximating functions
+may depend on the test: since that test was arbitrary, the resulting
+intrinsic equality holds on the whole original test sheaf. No
+countability assumption on the collection of all refinements is
+needed.
+
+Finally, separate closedness of $d's_i,d''s_i$ gives directly, as
+distributions,
+\[
+ d's_i\wedge D(uR)=D(u\,d's_i\wedge R)=0,
+ \qquad
+ d''s_i\wedge D(uR)=D(u\,d''s_i\wedge R)=0.
+ \tag{PB8}
+\]
+This proves the asserted conormality of $T$. All arguments involve
+intrinsic original forms and coefficient measures, and hence are
+unchanged after any actual refinement containing the chosen data.
+\end{proof}
+
+\begin{corollary}[A closed current-valued Radon resolution]
+\label{cor:r12-current-valued-parameter-resolution}
+The assignment $E\mapsto R_E$ is countably additive on Borel sets
+in every original compact-test pairing. Its local coefficient
+variation is controlled by that of $R$. Every $R_E$ is separately
+closed and positive. For all permitted bounded classical tuples,
+\[
+ T_{R_E,k}(u_1,\ldots,u_k)
+       =\mathbf1_{s^{-1}(E)}T_{R,k}(u_1,\ldots,u_k).
+ \tag{PB9}
+\]
+If $E_1,\ldots,E_N$ form a finite Borel partition on the parameter
+range under consideration, then $R=\sum_iR_{E_i}$ and every bounded
+mixed BT product has the corresponding exact finite decomposition.
+The same conclusions hold for countable partitions whenever a
+compact test is fixed and the sums are interpreted in coefficient
+variation.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}}.
+
+\begin{proof}
+Coefficient-Radon multiplication gives countable additivity and the
+variation bound. The theorem gives positivity and closedness of each
+band. Apply (PB5) repeatedly: every positive mixed tail is separately
+closed, coefficient-Radon, and $s$-annihilated by (PB8). This proves
+(PB9). Sum the resulting coefficient measures over a partition.
+\end{proof}
+
+\paragraph{What is and is not a fiber construction.}
+The resolution (PB4) retains every Borel set, including individual
+parameters and atoms. It does not discard an exceptional parameter
+set. It is a current-valued measure on the parameter space, not a
+construction of BT products over a completed residue field. Its band
+currents live on the original $U$, are carried measure-theoretically
+by $s^{-1}(E)$, and use every original test there. Their topological
+supports are only asserted to lie in the closure of that carrier.
+No conditional fiber current on a new analytic field is asserted.
+
+The conormal hypothesis is essential. A general Borel restriction
+of a closed current need not be closed. Moreover, the frozen R10
+annular example shows that arbitrary Borel scalar coefficients
+cannot commute with curvature insertion: for the unit Gauss point
+$\xi$, $\mathbf1_{\{\xi\}}[U]=0$ but
+$\mathbf1_{\{\xi\}}D((\log|T|)_+[U])=\delta_\xi$.
+That example does not contradict (PB5), because $[U]$ is not
+annihilated by $d'\log|T|$ and $d''\log|T|$.
+
+\paragraph{Frozen inputs and exact scope.}
+Only the frozen original coefficient-Radon calculus, smooth form
+Leibniz rules, positivity under strongly positive smooth wedges,
+and bounded arbitrary-background BT theorem are used. The R10
+source \path{signed_descent/pws_differential_curvature_module.tex}
+is used for its explicit warning against unrestricted Borel
+coefficient linearity; its finite PS module is not enlarged
+without the separate proof above. No R/B/A2 proof is re-audited.

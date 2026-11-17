@@ -1,0 +1,376 @@
+\section{Finite signed diffuse data and an exact relative obstacle problem}
+\label{sec:r11-diffuse-obstacle-contact}
+
+Keep the original arbitrary symmetric middle-positive separately
+closed $(n-1,n-1)$-current $S$, the analytic affinoid neighborhood
+$\Omega$, and the ordinary part domain $V\Subset\Omega$ from the
+signed diffuse Dirichlet theorem.  Write $(H,\mathcal E,c_V,G,\lambda)$
+for its faithful part form and put
+\[
+                              Az=-D(zS).
+ \tag{OB1}
+\]
+Thus $G\sigma=-u_\sigma$ for a finite signed energy-diffuse measure
+$\sigma$, and $A(G\sigma)=\sigma$ on every original test.
+All functions below use their canonical energy-quasicontinuous
+representatives on $F$.  Inequalities mean quasi-everywhere on $F$;
+no pointwise boundary condition or ambient classical psh condition
+is substituted for the specified part-form boundary class.
+
+\begin{lemma}[Positive parts are Green potentials]
+\label{lem:r11-diffuse-positive-part-Green}
+Let $\sigma$ be any finite signed energy-diffuse Radon measure and
+let $z=G\sigma$.  Then $z^+$ is the Green potential of its own finite
+signed diffuse curvature and
+\[
+ \begin{split}
+ Az^+&=\mathbf1_{\{\widetilde z>0\}}\sigma-L_0(z;S),\\
+ z^+&=G(Az^+),\qquad L_0(z;S)\ge0.
+ \end{split}
+ \tag{OB2}
+\]
+In particular,
+\[
+        \mathbf1_{\{\widetilde z>0\}}\sigma\le0
+                              \quad\Longrightarrow\quad z\le0.
+ \tag{OB3}
+\]
+These assertions do not require $z$ or $z^+$ to belong to $H$.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the full
+signed exact-level and global curvature-variation theorems, with the
+Green representation proved explicitly below.
+
+\begin{proof}
+The signed Kato theorem gives the first line of (OB2), and its level
+measure is finite and diffuse by (SD10)--(SD13).  For $M>0$ put
+$v_M=(T_Mz)^+\in H$.  The actual scalar identity
+$v_M=z^+-(z-M)^+$ and the signed level formula give
+\[
+ D(v_MS)=\mathbf1_{\{0<\widetilde z\le M\}}D(zS)
+                                    +L_0(z;S)-L_M(z;S).
+ \tag{OB4}
+\]
+Consequently
+\[
+ \|D(v_MS)-D(z^+S)\|_{\rm TV}
+                   \le2|\sigma|\{\widetilde z>M\}\longrightarrow0.
+\]
+Each $v_M$ is an $H$ vector with finite signed Radon curvature, so
+Lemma~\ref{lem:r11-bounded-H-tests-diffuse} identifies it with the
+transposition solution of that curvature.  Total-variation to
+$L^1(\lambda)$ stability then gives
+$v_M\to u_{D(z^+S)}$.  Also $v_M\to z^+$ in $L^1(\lambda)$ by
+dominated convergence, since $|v_M|\le|z|$.  This proves the second
+line of (OB2), including the canonical representative: its bounded
+clippings agree as $H$ vectors and hence quasi-everywhere.
+
+Under the hypothesis in (OB3), (OB2) gives $Az^+\le0$.
+Order preservation of $G$ therefore gives $z^+=G(Az^+)\le0$.
+Thus $z\le0$.  No test of an unbounded vector as if it belonged
+to $H$ occurs in this proof.
+\end{proof}
+
+\begin{definition}[Obstacles with finite curvature and the diffuse solution class]
+\label{def:r11-diffuse-obstacle-class}
+An allowed obstacle is a vector $\psi\in H$ such that
+$\tau:=A\psi$ is a finite signed Radon measure and $|\tau|$ has
+finite energy integral.  In particular every real original compact
+smooth function is an allowed obstacle: its curvature has a bounded
+density with respect to a faithful reference measure, by the
+original compact coefficient control.
+
+Fix a finite signed energy-diffuse datum $\mu$.  A solution pair
+$(w,\rho)$ consists of a finite positive energy-diffuse Radon measure
+$\rho$ and a signed renormalized zero-boundary solution $w$ of
+\[
+                               Aw=\mu+\rho
+ \tag{OB5}
+\]
+such that
+\[
+                     w\ge\psi,\qquad
+                     \rho\{\widetilde w>\widetilde\psi\}=0.
+ \tag{OB6}
+\]
+The renormalized condition in (OB5) means the intrinsic class from
+Definition~\ref{def:r11-signed-renormalized-boundary}, with sign
+reversed: $w\in L^1(\lambda)$ is finite and quasicontinuous,
+$T_kw\in H$ for every $k>0$, the original chain identity is
+\[
+ D(\Phi(w)S)=-\Phi'(\widetilde w)(\mu+\rho)
+                         +\Phi''(\widetilde w)\Gamma_S(w)
+ \tag{OB7}
+\]
+for $C^2$ scalar $\Phi$ with compactly supported first derivative,
+and $k^{-1}\mathcal E(T_{2k}w-T_kw)\to0$.
+Thus the definition does not prescribe $w$ by a Green formula.
+\end{definition}
+
+\begin{theorem}[The full finite-diffuse obstacle and contact theorem]
+\label{thm:r11-diffuse-obstacle-contact}
+For every allowed obstacle $\psi$ and every finite signed
+energy-diffuse datum $\mu$, there is exactly one solution pair in
+Definition~\ref{def:r11-diffuse-obstacle-class}.  It satisfies
+\[
+ \begin{split}
+ w&=G(\mu+\rho),\qquad Aw=\mu+\rho,\\
+ 0\le\rho&\le(\tau-\mu)^+\le\tau^++\mu^-,\qquad \tau=A\psi.
+ \end{split}
+ \tag{OB8}
+\]
+The second line is the actual measure inequality, including the
+contact set and every original test; no density of the arbitrary
+background is assumed.  In particular the reaction is finite.
+
+The solution is the least member of the following explicitly
+nonempty class:
+\[
+ \mathscr M_{\mu,\psi}=
+ \{G(\mu+\eta):\ \eta\ge0\text{ finite and energy diffuse},\
+                         G(\mu+\eta)\ge\psi\}.
+ \tag{OB9}
+\]
+It is therefore an actual relative envelope, with a finite positive
+reaction carried by contact.  All equations are original current
+equalities on the ordinary domain, for every compact smooth scalar
+test and every actual moment refinement.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.  This extends the
+finite-energy Hilbert obstacle problem to every finite signed diffuse
+datum.  The obstacle hypothesis and part-form boundary class are
+retained explicitly; it is not an unrestricted classical obstacle or
+nonlinear Monge--Ampere existence assertion.
+
+\begin{proof}
+First consider a finite-energy datum $\mu_j$ and the Hilbert obstacle
+solution $w_j$ from Theorem~\ref{thm:r11-relative-energy-obstacle}.
+Its reaction $\rho_j$ is positive, has finite energy integral, and is
+carried by $\{w_j=\psi\}$.  It need not initially be assumed finite
+in total mass.  Put $f_j=w_j-\psi\in H_+$.  Its curvature is
+\[
+                           D(f_jS)=\tau-\mu_j-\rho_j.
+\]
+The total variation on the right has finite energy integral, so the
+$H$ level theorem (RT2) applies even if its total mass near the
+boundary is infinite.  Since $f_j^+=f_j$, its zero-level formula is
+\[
+        \mathbf1_{\{\widetilde f_j=0\}}
+                         (\tau-\mu_j-\rho_j)\ge0.
+ \tag{OB10}
+\]
+Combine this with the contact carrier of $\rho_j$ to obtain
+\[
+                          0\le\rho_j\le(\tau-\mu_j)^+.
+ \tag{OB11}
+\]
+This is the required finite-mass bound; it is derived before being
+used in any finite-data approximation argument.
+
+Now let $\mu_j=\mathbf1_{F_j}\mu$ be an increasing finite-energy
+nest for $|\mu|$, and solve these finite-energy obstacle problems.
+The signed measures converge in total variation to $\mu$ and
+$\mu_j^-\le\mu^-$.  Thus all reactions are dominated by the same
+finite diffuse measure
+\[
+                         \pi=\tau^++\mu^-,\qquad 0\le\rho_j\le\pi.
+ \tag{OB12}
+\]
+For two indices put $d=w_j-w_l\in H$.  The source equation extends
+to $T_kd\in H$.  On $\{d>0\}$ the measure $\rho_j$ is zero,
+because $w_j>w_l\ge\psi$ there.  On $\{d<0\}$ the measure
+$\rho_l$ is zero.  Therefore
+\[
+ \begin{split}
+ \mathcal E(T_kd)
+   &=\int T_k\widetilde d\,d(\mu_j-\mu_l+\rho_j-\rho_l)\\
+   &\le k\|\mu_j-\mu_l\|_{\rm TV},\qquad
+ c_V\{|\widetilde d|>k\}
+                         \le\frac{\|\mu_j-\mu_l\|_{\rm TV}}{k}.
+ \end{split}
+ \tag{OB13}
+\]
+The first equality follows from the closed clipping rule and the
+$H$ source identity.  The reaction integral is nonpositive by the
+two contact observations.  The capacity estimate follows by the
+normal clipped capacity test.  Thus $w_j$ is Cauchy in capacity.
+
+Since $w_j=G(\mu_j+\rho_j)$ by the finite-energy theorem, positivity
+of the transposition Green operator and (OB12) give
+\[
+                  |w_j|\le G(2|\mu|+\tau^+)=:B
+                                        \quad\hbox{quasi-everywhere}.
+\]
+The fixed potential $B$ is finite quasi-everywhere and belongs to
+$L^1(\lambda)$.  The usual summable-capacity subsequence construction
+from (MD7)--(MD10) gives a finite quasicontinuous limit $w$ and
+capacity convergence of the whole sequence.  Coercivity implies
+convergence in $\lambda$-measure; the displayed domination then
+gives $w_j\to w$ in $L^1(\lambda)$.  The inequalities $w_j\ge\psi$
+pass outside a polar set to $w\ge\psi$.
+For completeness, the source identity also gives
+$\mathcal E(T_kw_j)\le k(\|\mu\|_{\rm TV}+\pi(F))$.
+Thus each sequence of bounded clippings has a weak $H$ limit, whose
+$L^2$ representative is $T_kw$.  Its canonical representative is the
+capacity limit: choose a summable-capacity subsequence, then apply
+Mazur's lemma to its tails.  The convex combinations still converge
+uniformly outside the same arbitrarily small-capacity exceptional
+sets, while their strong $H$ convergence identifies the canonical
+limit.  Hence $T_kw\in H$ with the same quasi-everywhere values.
+
+Write $\rho_j=r_j\pi$ with $0\le r_j\le1$.  The finite Radon
+space here is second countable, so $L^1(\pi)$ is separable.
+Weak-star sequential compactness gives a subsequence with
+$r_j\rightharpoonup^*r$ in $L^\infty(\pi)$, where $0\le r\le1$.
+Set $\rho=r\pi$.  It is finite, positive and diffuse.  For every
+$f\in L^\infty(\lambda)$ the canonical $Gf$ is bounded and hence
+belongs to $L^1(\pi)$.  Passing to the limit in the finite-energy
+Green identity gives
+\[
+ \int wf\,d\lambda
+       =\lim_j\int\widetilde{Gf}\,d(\mu_j+\rho_j)
+       =\int\widetilde{Gf}\,d(\mu+\rho).
+ \tag{OB14}
+\]
+The first passage uses $L^1(\lambda)$ convergence; the two datum
+passages use total variation and weak-star convergence, respectively.
+Thus $w=G(\mu+\rho)$.  The signed diffuse theorem now supplies its
+complete intrinsic renormalized class and every original current
+equation, so no current-only uniqueness assumption is needed.
+The preceding clipped representative identification makes this an
+equality of canonical functions quasi-everywhere as well as in $L^1$.
+
+For contact let $g(s)=\min(1,s^+)$.  The functions
+$g(w_j-\psi)$ converge in capacity to $g(w-\psi)$ and are bounded.
+Finite diffuseness of $\pi$ gives convergence in $L^1(\pi)$.
+The exact finite-energy contact condition and (OB12) therefore imply
+\[
+ \begin{split}
+ \int g(\widetilde w-\widetilde\psi)\,d\rho
+ &=\lim_j\int g(\widetilde w-\widetilde\psi)\,d\rho_j\\
+ &=\lim_j\int g(\widetilde w_j-\widetilde\psi)\,d\rho_j=0.
+ \end{split}
+ \tag{OB15}
+\]
+The first passage is weak-star convergence against the fixed bounded
+function.  The second is bounded by the $L^1(\pi)$ error.  Since
+$w\ge\psi$, this proves the exact contact carrier.  In particular
+the proof does not restrict an uncontrolled weak measure limit to a
+discontinuous contact set.
+
+For any solution pair in the stated class, signed renormalized
+uniqueness first gives $w=G(\mu+\rho)$.  Since $\psi=G\tau$,
+the difference $f=w-\psi=G(\mu+\rho-\tau)$ is a signed diffuse
+Green potential and is nonnegative.  Its signed zero-level Kato
+formula gives
+\[
+                  \mathbf1_{\{\widetilde f=0\}}
+                              (\tau-\mu-\rho)\ge0.
+\]
+The contact carrier yields the second line of (OB8), exactly as in
+(OB10)--(OB11).
+
+Finally let $v=G(\mu+\eta)\in\mathscr M_{\mu,\psi}$.
+Then $z=w-v=G(\rho-\eta)$.  On $\{z>0\}$ one has
+$w>v\ge\psi$, so $\rho$ is zero there and
+$\mathbf1_{\{z>0\}}(\rho-\eta)\le0$.
+Lemma~\ref{lem:r11-diffuse-positive-part-Green} gives $z\le0$.
+This proves leastness.  The class is nonempty before solving the
+obstacle: take $\eta=\tau^++\mu^-$, since
+$G(\mu+\eta)=G(\mu^++\tau^+)\ge G\tau=\psi$.
+Two solution pairs are each least, so their potentials coincide;
+their original equations then identify their reaction measures.
+This proves uniqueness and independence of the extracted subsequence.
+\end{proof}
+
+\begin{theorem}[Order and quantitative dependence on the signed source]
+\label{thm:r11-diffuse-obstacle-stability}
+For a fixed allowed obstacle, write $w_\mu$ for the solution.
+For any two finite signed diffuse data $\mu,\nu$ one has
+\[
+ \begin{split}
+ |w_\mu-w_\nu|&\le G|\mu-\nu|,\\
+ \|w_\mu-w_\nu\|_{L^1(\lambda)}&\le2\|\mu-\nu\|_{\rm TV},\\
+ c_V\{|\widetilde w_\mu-\widetilde w_\nu|>k\}
+                              &\le\frac{\|\mu-\nu\|_{\rm TV}}{k}.
+ \end{split}
+ \tag{OB16}
+\]
+If $\mu\le\nu$, then $w_\mu\le w_\nu$.
+For fixed source the solution also increases when the allowed
+obstacle increases.  These are relative energy orders; no pointwise
+statement outside the coefficient support is asserted.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the finite
+signed diffuse obstacle map.
+
+\begin{proof}
+Put $d=w_\mu-w_\nu$ and $b=G|\mu-\nu|\ge0$.
+The signed Green potential $z=d-b$ has source
+\[
+            Az=\mu-\nu-|\mu-\nu|+\rho_\mu-\rho_\nu.
+\]
+On $\{z>0\}$ one has $d>b\ge0$, so the contact condition gives
+$\rho_\mu=0$ there.  The remaining restricted source is
+nonpositive.  Apply (OB3) to obtain $d\le b$; interchange the two
+data to obtain $-d\le b$.  This is the first line of (OB16).
+The torsion bound and the finite-datum capacity bound for $b$
+give the remaining two lines.  If $\mu\le\nu$, apply (OB3)
+directly to $d$, using its same contact sign, to get order.
+For ordered obstacles, the solution of the larger obstacle belongs
+to the class (OB9) for the smaller one, so leastness proves order.
+\end{proof}
+
+\begin{corollary}[Positive nest data give decreasing finite reactions]
+\label{cor:r11-positive-obstacle-reaction-TV}
+If $\mu\ge0$ and $\mu_j\uparrow\mu$ are its finite-energy nest
+restrictions, then their finite-energy obstacle solutions satisfy
+\[
+       w_j\uparrow w_\mu,\qquad
+       \rho_j\downarrow\rho_\mu,\qquad
+       \|\rho_j-\rho_\mu\|_{\rm TV}\longrightarrow0,\qquad
+       0\le\rho_j\le\tau^+.
+ \tag{OB17}
+\]
+In this positive-data case the limiting reaction itself has finite
+energy integral.  The potential $w_\mu$ need not belong to $H$.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a stronger
+reaction convergence statement for positive nested data.
+
+\begin{proof}
+Order gives $w_l\ge w_j$ for $l\ge j$.  On the contact set
+$\{w_l=\psi\}$ one also has $w_j=\psi$.
+The nonnegative $H$ vector $f=w_l-w_j$ has curvature
+\[
+                         D(fS)=-(\mu_l-\mu_j)-(\rho_l-\rho_j).
+\]
+Its zero-level Kato inequality, restricted to the contact set of
+$w_l$, gives $\rho_l\le\rho_j$ there because $\mu_l\ge\mu_j$.
+Off that set $\rho_l=0$.  Hence the reactions decrease as measures.
+Their common finite bound $\tau^+$ from (OB11) gives total-variation
+convergence.  The preceding uniqueness and source convergence identify
+the limits with $w_\mu,\rho_\mu$.  Domination by the finite-energy
+measure $\tau^+$ gives finite energy integral for the reaction.
+This does not put the possibly infinite-energy source $\mu$ or the
+whole potential $w_\mu$ in $H$.
+\end{proof}
+
+\paragraph{Dependency and scope audit.}
+The finite-energy obstacle/contact theorem is used only for the nest
+approximants.  Its level-zero Kato consequence proves the uniform
+finite reaction bound before extracting measures.  The signed
+renormalized theorem supplies both the limiting boundary class and
+the positive-part Green representation used in comparison; the
+unbounded potentials are never tested as if they were $H$ vectors.
+The common finite diffuse domination is what passes contact through
+the signed approximation.  No ambient regularization of an arbitrary
+upper envelope, no current pullback under an auxiliary field, and no
+analytic PS/PL quotient is used.  Removing the finite-curvature
+obstacle hypothesis, imposing ordinary pointwise boundary values, or
+realizing these envelopes by ambient classical psh functions requires
+additional arguments and is not asserted here.

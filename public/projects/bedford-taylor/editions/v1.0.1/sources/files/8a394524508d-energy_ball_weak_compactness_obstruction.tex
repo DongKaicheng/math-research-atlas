@@ -1,0 +1,149 @@
+\section{Energy balls need not be weakly compact in either Banach realization}
+\label{sec:r12-energy-ball-weak-compactness-obstruction}
+
+The weak-$*$ compact datum family in (CW14) does not by itself
+supply a weakly compact family of candidate potentials. The
+following consequence of the proved pole example makes that
+obstruction explicit. It is a statement about the two new
+Banach norms, not about failure of the complete strong topology.
+
+Fix $n>q\geq1$ and the original radial-mixture background
+$S$ of (PO3), on its original unit polydisc $V$. Retain the
+original field and absolute value. Put $d=q+1$ and use the
+already proved actual potentials
+\[
+ \psi_j=\max\!\left(\log\max_{1\leq i\leq n}|T_i|,-j\right),
+ \qquad
+ u=\log\max_{1\leq i\leq n}|T_i|,
+                    \qquad j=1,2,\ldots .
+ \tag{WB1}
+\]
+The value of $u$ at the origin is $-\infty$. It represents
+a member of the same no-loss first-energy cone, and (PO7)
+gives
+\[
+       e(u)=1,\qquad e(\psi_j)=1-e^{-j},\qquad
+                               I(\psi_j,u)=e^{-j}.
+ \tag{WB2}
+\]
+The pole functional is continuous on both $\mathbb D_S$
+and $\mathbb L_S$ and satisfies
+\[
+                   L_\infty(u)=1,\qquad L_\infty(\psi_j)=0.
+ \tag{WB3}
+\]
+All these statements are exactly the earlier original-current
+pole construction, including its actual Borel representatives.
+
+\begin{proposition}[No weak cluster and nonreflexivity in every remaining degree]
+\label{prop:r12-energy-ball-nonreflexivity}
+For the allowed data just specified, the sequence $(\psi_j)$
+has no weakly convergent subnet, and in particular no weakly
+convergent subsequence, in either $\mathbb D_S$ or
+$\mathbb L_S$. Consequently
+\[
+      \mathcal B_{\mathscr C}
+            =\{v\in\mathscr C:r(v)\leq1\}
+ \tag{WB4}
+\]
+is not weakly compact in either Banach space, and neither
+$\mathbb D_S$ nor $\mathbb L_S$ is reflexive.
+
+This holds in every remaining degree $q\geq1$ by the
+specified example in every $n>q$. It does not say that
+these spaces are nonreflexive for every possible background
+$S$, including the zero or other degenerate backgrounds.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+the present round's exact Banach realizations, source-functional
+continuity and pole functional. The proposed universal weak
+compactness of bounded potential energy balls is
+\texttt{FALSE}. The weak closedness of norm-closed convex
+sets and weak compactness of bounded closed balls in a
+reflexive Banach space are \texttt{EXTERNAL\_KNOWN}
+functional-analysis facts.
+
+\begin{proof}
+Let $E$ denote either $\mathbb D_S$ or $\mathbb L_S$.
+The proved realization theorems say that the same cone
+$\mathscr C$ is norm closed and convex in $E$, and that
+\[
+                         \|v\|_E=r(v)\qquad(v\in\mathscr C).
+ \tag{WB5}
+\]
+It is therefore weakly closed, by the Hahn--Banach
+separation theorem. Every source functional $J(a)$,
+$a\in\mathscr C$, is continuous on $E$. In the lattice
+case this uses its proved literal extension (OL6),
+not a newly assumed extension of an arbitrary dual.
+On the cone these source functionals are also continuous
+for the strong discrepancy topology, by the frozen
+tester estimate and (NI4).
+
+Suppose that a subnet $(\psi_{j_\gamma})$ converges
+weakly in $E$ to $v$. The subnet indices are cofinal
+in the integer row, so (WB2) still makes it converge
+strongly to $u$. Weak closedness gives $v\in\mathscr C$.
+For every fixed $a\in\mathscr C$, the weak and strong
+continuities just stated give, respectively,
+\[
+      J(a)(v)=\lim_\gamma J(a)(\psi_{j_\gamma})=J(a)(u).
+ \tag{WB6}
+\]
+Choose $a=v$ and $a=u$. The exact energy-discrepancy
+identity then yields
+\[
+              I(v,u)=(J(v)-J(u))(v-u)=0.
+ \tag{WB7}
+\]
+The strong cone is separated, so $v=u$ as its original
+relative Borel class. On the other hand, continuity of
+$L_\infty\in E^*$ and (WB3) would give
+$L_\infty(v)=0$, whereas $L_\infty(u)=1$. This is a
+contradiction. It proves the absence of a weakly
+convergent subnet in either space.
+
+The sequence lies in (WB4), by (WB2) and (WB5).
+Every net in a compact space has a convergent subnet;
+thus (WB4) is not weakly compact. Finally (WB4) is
+the intersection of the norm-closed convex cone with
+the closed unit ball, so it is weakly closed in that
+ball. If $E$ were reflexive, its closed unit ball
+would be weakly compact, making (WB4) weakly compact
+as well. This contradiction proves nonreflexivity.
+\end{proof}
+
+\paragraph{Consequence for the compact-capacity attempt.}
+The mechanism ``bounded first energies imply weakly compact
+potential candidates; then use weak-$*$ compactness of the
+localized source data'' is invalid in these Banach realizations.
+The first assertion is disproved by (WB1)--(WB7), even though
+the displayed row actually converges strongly. This does not
+contradict strong completeness of $\mathscr C$, completeness
+of the curvature metric $d_J$, or the weak-$*$ compactness
+of the specified datum family in the \emph{dual} space.
+It also gives no counterexample to (FG1), to compact ordinary
+outer regularity, or to the analytic relation quotient.
+
+\paragraph{Exact dependency snapshots.}
+The energy-difference closed-cone theorem is
+\path{energy/energy_difference_banach.tex}, SHA256:
+\begin{quote}\small
+\nolinkurl{12bde9976ef8d8dcb3abbfc23f71f8e1a1ae37a6195de0dcdd13f09c5c0f5f45}.
+\end{quote}
+The lattice realization and source extension are
+\path{nonlinear/order_energy_lattice_completion.tex}, SHA256:
+\begin{quote}\small
+\nolinkurl{754db6baac08f682e94d5342aa3e757914f3442592bd10cb288f8f2c7ce1bb69}.
+\end{quote}
+The exact energies and pole dual are
+\path{nonlinear/radial_pole_order_dual_obstruction.tex}, SHA256:
+\begin{quote}\small
+\nolinkurl{f57f4ccac82fc36cbfb4c6663091bdc738d800ebaf022eb9c602176854fa4365}.
+\end{quote}
+The source strong-continuity and discrepancy identity are
+\path{energy/nonlinear_dual_source_geometry.tex}, SHA256:
+\begin{quote}\small
+\nolinkurl{29a083c0f65d93f777cae9bbe0c02a36385510e7b1a6c9542552322439168743}.
+\end{quote}

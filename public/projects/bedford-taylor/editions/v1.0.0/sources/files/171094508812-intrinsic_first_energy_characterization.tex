@@ -1,0 +1,210 @@
+\section{An intrinsic capacity characterization of the strong first-energy class}
+\label{sec:r11-intrinsic-first-energy-characterization}
+
+Retain the strict analytic box, original background extension and
+arbitrary original $S$ of (TC1)--(TC2). Let
+$\mathcal A_S^{[-R,0]}(V)$ denote the global bounded capacitary
+completion of Lemma~\ref{lem:r11-analytic-bounded-completion}:
+its members are Borel limits, in every local outer capacity,
+of actual bounded classical functions on the same whole domain
+$V$, with values in $[-R,0]$.
+The word ``global'' specifies that admissibility domain; it
+does not assert a uniform convergence on all of $V$.
+
+The theorem below replaces a strongly Cauchy approximating row
+by an intrinsic condition on all bounded stages and one
+capacity integral. The bounded-stage admissibility condition
+is retained explicitly. An arbitrary Borel function with a
+finite numerical capacity integral is not asserted admissible.
+
+\begin{lemma}[Ordered discrepancy is bounded by energy loss]
+\label{lem:r11-ordered-completed-discrepancy}
+If $a,b\in\widehat{\mathcal E}^1_{\rm str}(V)$ and
+$a\leq b$ outside a locally outer-capacity-null set, then
+\[
+       0\leq\widehat I(a,b)
+                            \leq\widehat e(a)-\widehat e(b).
+ \tag{CI1}
+\]
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+proved completed symmetric mixed energy and its positivity.
+
+\begin{proof}
+The completed mixed energy is decreasing in each potential
+with respect to pointwise order: in the undifferentiated
+slot this is positivity of the product measure, and symmetry
+gives it in every slot. All products ignore the exceptional
+outer-null set. Therefore
+\[
+       \widehat B(a,b^{[q]})\geq\widehat e(b),\qquad
+       \widehat B(b,a^{[q]})\geq\widehat e(b).
+\]
+Insert these two inequalities in the definition (IC17) of
+$\widehat I$. Its nonnegativity is already proved. This gives
+(CI1), with finite global integrals throughout.
+\end{proof}
+
+\begin{theorem}[Bounded-stage admissibility and one capacity integral]
+\label{thm:r11-intrinsic-strong-first-energy}
+For an actual Borel function $u:V\to[-\infty,0]$, the following
+are equivalent:
+\begin{enumerate}
+\item $u\in\widehat{\mathcal E}^1_{\rm str}(V)$.
+\item For every positive integer $m$,
+$u^{(m)}=\max(u,-m)$ belongs to
+$\mathcal A_S^{[-m,0]}(V)$, and
+\[
+                J_1^*(u):=\int_0^\infty
+                       t^q C_S^*(\{u<-t\};V)\,dt<\infty.
+ \tag{CI2}
+\]
+\end{enumerate}
+In the second condition no current of the unbounded function
+is assumed in advance. Once either condition holds, the
+canonical original currents and all critical first-energy
+identities are those of (IC10)--(IC20), and
+\[
+       2^{-q-1}J_1^*(u)\leq\widehat e(u)
+                                  \leq2^{q+1}J_1^*(u).
+ \tag{CI3}
+\]
+The capacity integral is unchanged if raw capacity is used.
+This last equality is a conclusion for the resulting completed
+strict sublevels, not a premise of the second condition.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a converse
+capacity characterization of the full strong Borel class,
+with its bounded-stage admissibility gate retained.
+
+\begin{proof}
+Suppose first that $u$ belongs to the strong completion.
+An actual strongly Cauchy defining row, clipped at $-m$,
+is a sequence of actual global bounded classical functions
+in $[-m,0]$ converging to $u^{(m)}$ in the required local
+outer capacities. This proves every bounded-stage condition.
+The completed capacity-layer theorem (CY3) at $s=1$ gives
+(CI2) and the lower inequality of (CI3).
+
+Conversely assume precisely the second condition. Let $\rho$
+be the actual barrier (TC3), so $-1\leq\rho<0$ on $V$ and
+$\rho$ has finite total top mass. For each integer $j\geq1$
+define the Borel function
+\[
+                     v_j=\max(u,j\rho)
+                         =\max(u^{(j)},j\rho).
+ \tag{CI4}
+\]
+The equality follows from $j\rho\geq-j$.
+Choose global actual bounded defining rows for $u^{(j)}$.
+Taking their maximum with $j\rho$ gives actual classical
+functions between $j\rho$ and zero, converging to $v_j$
+in the bounded local capacity topology. Each such function
+belongs to $\mathcal E^1$ by upward stability above the
+actual first-energy barrier $j\rho$. Thus
+$v_j\in\widehat{\mathcal E}^1_{j\rho}$ by the definition
+of the barrier completion, and hence belongs to the strong
+completion by its proved embedding. This step defines
+products only for $v_j$, not yet for the given $u$.
+
+Since $v_j\geq u$, monotonicity of outer capacity gives
+$\widehat J_1(v_j)\leq J_1^*(u)$.
+The already proved theorem (CY3), applied to the valid
+completed member $v_j$, therefore gives
+\[
+                    \widehat e(v_j)\leq2^{q+1}J_1^*(u).
+ \tag{CI5}
+\]
+Pointwise $v_{j+1}\leq v_j$. Hence their energies increase
+and are bounded by (CI5). For $l\geq j$, (CI1) gives
+\[
+                  \widehat I(v_l,v_j)
+                           \leq\widehat e(v_l)-\widehat e(v_j).
+ \tag{CI6}
+\]
+The increasing bounded energy sequence has a finite limit,
+so $(v_j)$ is strongly Cauchy. Completeness (IC20) supplies
+a strong completed limit $v$.
+
+It remains to identify its actual capacity class with $u$;
+pointwise convergence alone is not used for that purpose.
+Fix a compact $H\Subset V$ and a clipping depth $R>0$.
+The continuous strict negativity of $\rho$ makes
+$\max_H\rho<0$. For all sufficiently large $j$, one has
+$j\rho<-R$ on $H$, and therefore the exact scalar identity
+\[
+                              v_j^{(R)}=u^{(R)}
+                                      \quad\hbox{on }H
+ \tag{CI7}
+\]
+holds. Strong convergence gives local clipped capacity
+convergence to $v$. Equation (CI7) identifies that limit
+with $u^{(R)}$ on every such compact core. The countable
+core and integer-depth definition of the completion thus
+identifies $u$ with the strong completed limit, using its
+specified Borel representative. This proves membership.
+
+The full completed current and energy calculus now applies
+to $u$. Applying (CY3) at $s=1$ gives both inequalities in
+(CI3); the strict-gap regularity preceding (CC8) gives the
+raw/outer equality for its sublevels. No unbounded current
+of $u$ was used before it was constructed through completion.
+\end{proof}
+
+\begin{corollary}[Monotone closure with the exact energy hypothesis]
+\label{cor:r11-strong-monotone-closure}
+Let $u_j$ be members of
+$\widehat{\mathcal E}^1_{\rm str}(V)$, monotone outside one
+locally outer-null set, and let $u$ be their actual pointwise
+monotone limit there, with any nonpositive extended Borel values
+on that null set.
+If $u_j$ increases, then $u$ belongs to the strong completion
+and $\widehat I(u_j,u)\to0$.
+If $u_j$ decreases, the same conclusion holds provided
+\[
+                            \sup_j\widehat e(u_j)<\infty.
+ \tag{CI8}
+\]
+Every original critical local current and global mixed
+weighted-measure convergence assertion (IC11)--(IC13)
+then holds for finite tuples satisfying these hypotheses.
+Ordinary upper semicontinuous regularization of the limit
+is not part of this conclusion.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for monotone
+sequences in the full strong completion; the increasing
+bounded relative precursor was already frozen in R2.
+
+\begin{proof}
+For an increasing sequence, the nonnegative energies decrease
+and are bounded above by the first energy. For a decreasing
+sequence they increase, with the explicit bound (CI8).
+In either case they converge. Equation (CI1), applied in
+the appropriate order to two terms, shows that the sequence
+is strongly Cauchy. Completeness gives a strong limit $v$.
+
+Choose a subsequence whose fixed bounded truncations converge
+pointwise off a locally outer-null set, using the usual
+summable-capacity diagonal construction over compact cores
+and integer depths. Monotonicity makes that pointwise limit
+equal to the specified $u$. Thus $u=v$ in the completed
+capacity class, and the entire sequence converges strongly.
+The strong continuity theorem gives all the stated current
+and weighted-measure limits. No current equality outside its
+original test sheaf is asserted.
+\end{proof}
+
+\paragraph{Exact scope.}
+The intrinsic condition (CI2) still requires every bounded
+truncation to be an admissible global capacitary limit of
+actual bounded classical functions. It therefore does not
+turn a numerical capacity bound into ambient psh geometry.
+It removes a prescribed actual lower barrier and a prescribed
+strong approximating row from the characterization of the
+completed first-energy class, while retaining the original
+background, absolute value and all original tests. It does
+not prove arbitrary-source Dirichlet existence or general
+raw-capacity outer regularity.

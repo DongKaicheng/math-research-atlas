@@ -1,0 +1,362 @@
+\section{Closed relative truncation products of unbounded classical potentials}
+\label{sec:r11-relative-truncation}
+
+Throughout this section $K/\mathbf Q_p$ is the fixed original finite
+extension with its original absolute value.  The space $X$ is good,
+Hausdorff, boundaryless, quasi-smooth and purely $n$-dimensional; $U$ is
+ordinary open.  The background $S$ is an arbitrary original symmetric
+CLD middle-positive, separately $d'$- and $d''$-closed current of
+degree $(p,p)$.  Write
+\[
+ T_{S,I}(\mathbf u)=\bigwedge_{i\in I}D u_i\wedge S
+\]
+for the frozen bounded Bedford--Taylor product; $T_{S,\varnothing}=S$.
+Products are always the original current products.  This notation
+asserts neither a quotient for all actual delta-form presentations nor
+equality against additional GK delta tests.
+
+The following frozen inputs are used: bounded mixed products, their
+weighted decreasing convergence, relative CLN, the bounded energy and
+chain identities, and strict Borel maximum locality.  These are
+\texttt{INTERNAL\_INPUT}, with sources R4 and the R2--R3 modules
+preserved in the R10 archive.  In particular R3,
+\texttt{pluripolar\_zero\_extension.tex}, is not reproved below: its
+closed exceptional-set hypothesis does not apply directly to the
+possibly nonclosed pole sets in the present construction.
+
+\subsection{First derivatives and a plateau estimate}
+
+\begin{lemma}[First-order coefficient measures for bounded potentials]
+\label{lem:r11-bounded-first-order}
+Let $T$ be any allowed original positive closed current of degree
+$(P,P)$, $d=n-P\geq1$, and let $v$ be a locally bounded classical
+psh function.  The currents $d'(vT)$ and $d''(vT)$ are coefficient-Radon.
+For an original $(d-1,d)$-test $\alpha$, choose on its compact stage a
+nonnegative smooth cutoff $\chi=1$ near its support and a positive
+moment control $\beta=\sum_a d't_a\wedge d''t_a$.  There is a finite
+constant $C_\alpha$ such that, for every bounded Borel $b$,
+\[
+ \left|\int b\,d'(vT)\wedge\alpha\right|^2
+ \leq C_\alpha
+ \left(\int\chi\,\Gamma_T(v)\wedge\beta^{d-1}\right)
+ \left(\int\chi b^2\,\beta^d\wedge T\right).
+ \tag{NP1}
+\]
+There is the analogous double-prime inequality.  Here
+\[
+ \Gamma_T(v)=\tfrac12D(v^2T)-vD(vT)
+\]
+is the frozen positive bounded-energy current.  For every $C^1$
+function $F$ on a neighborhood of the bounded range under consideration,
+\[
+ d'(F(v)T)=F'(v)d'(vT),\qquad
+ d''(F(v)T)=F'(v)d''(vT).
+ \tag{NP2}
+\]
+These statements are local on ordinary opens and include arbitrary
+additional actual moment coordinates used in $v$ or the tests.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of the
+frozen weighted bounded calculus, with the first-order passage detailed
+here to make the later Borel restrictions legitimate.
+
+\begin{proof}
+Choose bounded smooth decreasing regularizations $v_m$ on a fixed
+neighborhood of the compact stage.  The bounded energy identity and
+weighted joint decreasing convergence give
+\[
+ \int\chi\,\Gamma_T(v_m-v_l)\wedge\beta^{d-1}\longrightarrow0
+                    \quad(\min(m,l)\longrightarrow\infty).
+ \tag{NP3}
+\]
+This is the calculation in R4,
+\texttt{prop:r4-classical-in-energy}: expand the energy of the
+difference; the four weighted curvature terms have the same limit
+and cancel, and its squared-function term tends to zero against fixed
+coefficient measures.  The calculation uses bounded local calculus,
+not the later global faithful energy construction.
+
+For smooth $v_m-v_l$ the positive coefficient matrix of $T$ and
+measure Cauchy--Schwarz bound the total variation of every fixed
+coefficient of $d'((v_m-v_l)T)$ by a constant times the square root
+of (NP3).  It follows that the first derivatives converge in local
+coefficient total variation.  Since $v_mT\to vT$ on all original
+tests by bounded convergence against the fixed coefficients of $T$,
+the limit is $d'(vT)$.  The smooth coefficient inequality passes to
+this total-variation limit and gives (NP1); it also gives the inequality
+with a Borel restriction inserted into both positive factors.  Borel
+weights are permitted by Radon measure Cauchy--Schwarz, not by an
+assertion that a Borel-restricted background is closed.
+
+The smooth identity for $F(v_m)$ passes to distributions.  On its
+right-hand side the derivative measures converge in total variation,
+the multipliers are uniformly bounded, and $F'(v_m)\to F'(v)$
+pointwise.  Dominated convergence for the fixed limiting derivative
+measure proves (NP2).  The double-prime argument is identical.
+Finite partitions handle tests requiring several presentations.
+The control $\beta$ only uses the fixed test coordinates; adjoining
+the units used by each individual approximation preserves its positive
+coefficient inequality.  No common finite moment for the entire
+infinite sequence is assumed.
+\end{proof}
+
+\begin{lemma}[No first-order energy on the zero plateau]
+\label{lem:r11-zero-plateau}
+With $T$ as above, let $v\geq0$ be bounded classical psh.  Then
+\[
+ \mathbf1_{\{v=0\}}\Gamma_T(v)=0,\qquad
+ \mathbf1_{\{v=0\}}d'(vT)=
+ \mathbf1_{\{v=0\}}d''(vT)=0.
+ \tag{NP4}
+\]
+All restrictions concern coefficient measures on the actual ordinary
+space.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} by the following
+short bounded-energy argument; no general assertion about an arbitrary
+Borel level set of a current is assumed.
+
+\begin{proof}
+For $\varepsilon>0$ set
+\[
+ g_\varepsilon=\max(v-\varepsilon,0),\qquad
+ h_\varepsilon=v-g_\varepsilon=\min(v,\varepsilon).
+\]
+The functions $v$ and $g_\varepsilon$ are bounded classical, and $h_\varepsilon$
+is their bounded difference.  For any fixed nonnegative compact
+smooth $\chi$ and its moment control, the bounded energy identity gives
+\begin{align*}
+ 0\leq\int\chi\Gamma_T(h_\varepsilon)\wedge\beta^{d-1}
+ &\leq \tfrac12\varepsilon^2
+     |\mu_{T,D\chi\wedge\beta^{d-1}}|(\operatorname{supp}\chi)\\
+ &\quad+\varepsilon\int\chi
+       \bigl(D(vT)+D(g_\varepsilon T)\bigr)\wedge\beta^{d-1}.
+\end{align*}
+The last masses are uniformly bounded as $\varepsilon\downarrow0$
+by relative CLN, since $0\leq g_\varepsilon\leq v$.  The displayed
+quantity therefore tends to zero.  Upper semicontinuity of $v$
+makes $\{v<\varepsilon\}$ ordinarily open.  On that open
+$h_\varepsilon=v$, so ordinary locality identifies their energy
+currents there.  It follows that the restriction of the positive
+energy current to $\{v=0\}$ is zero, for every original positive
+control.  The restricted form of (NP1) now makes every first-order
+coefficient zero on that same set.  Refining the moment presentation
+does not change any of these identities.
+\end{proof}
+
+\subsection{Consistent truncations and closedness}
+
+Let $u_1,\ldots,u_k\leq0$ be extended classical psh functions,
+$1\leq k\leq n-p$.  Put
+\[
+ u_{i,j}=\max(u_i,-j),\qquad
+ E_j=\bigcap_{i=1}^k\{u_i>-j\},\qquad
+ T_j=T_{S,\{1,\ldots,k\}}(\mathbf u_j),\qquad
+ R_j=\mathbf1_{E_j}T_j.
+ \tag{NP5}
+\]
+The sets $E_j$ are Borel and need not be ordinarily open.  The
+restriction $R_j$ need not be closed.
+
+\begin{definition}[Finite relative truncation mass]
+\label{def:r11-finite-truncation-mass}
+The tuple has locally finite relative truncation mass if for every
+original compact positive coefficient control $\Theta$ of degree
+$(n-p-k,n-p-k)$ one has
+\[
+                         \sup_j\langle R_j,\Theta\rangle<\infty.
+ \tag{NP6}
+\]
+It suffices to impose (NP6) on the finite positive controls dominating
+each original compact test stage; the quantifier ranges over every
+stage and its actual moment refinements.  In particular it is not a
+single selected tropical trace bound.
+\end{definition}
+
+\begin{theorem}[Closed relative truncation product]
+\label{thm:r11-closed-nonpolar-product}
+Under (NP6), the increasing coefficient limit
+\[
+ \mathcal N_S(u_1,\ldots,u_k)=\lim_{j\to\infty}R_j
+ \tag{NP7}
+\]
+is a well-defined original symmetric middle-positive,
+separately $d'$- and $d''$-closed coefficient-Radon current of degree
+$(p+k,p+k)$.  If
+$P=\bigcup_i\{u_i=-\infty\}$, then
+\[
+ \mathbf1_P\mathcal N_S(\mathbf u)=0,
+ \qquad
+ \mathbf1_{E_j}\mathcal N_S(\mathbf u)=R_j.
+ \tag{NP8}
+\]
+The construction is ordinary-local, symmetric in the potentials,
+compatible with all original tests and actual moment refinements,
+and independent of any cofinal choice of separate truncation levels.
+For locally bounded potentials it is the frozen bounded BT product.
+The background $S$ is arbitrary throughout.
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}}.  The finite-mass
+condition is an explicit necessary condition for the coefficient limit
+to be a current; the new conclusion is its separate closedness across
+all truncation interfaces, including a possibly nonclosed pole set.
+
+\begin{proof}
+For $l\geq j$, strict Borel maximum locality applied successively in
+each slot gives
+\[
+                       \mathbf1_{E_j}T_l=\mathbf1_{E_j}T_j.
+ \tag{NP9}
+\]
+Consequently $R_l-R_j$ is positive.  The local bounds (NP6) and the
+finite positive controls yield Radon limits of all diagonal coefficient
+measures; polarization gives the remaining coefficients.  Their linear
+and refinement identities pass to the limits.  These same controls
+give continuity on every original compact test stage.  Thus (NP7)
+defines a current $N$, and (NP8) follows from (NP9) and monotone
+measure convergence.  Its coefficients are carried by the union
+of the $E_j$, which is $U\setminus P$.
+
+If $p+k=n$, closedness is automatic by degree.  Suppose
+$d=n-p-k\geq1$.  Fix an original $(d-1,d)$-test $\alpha$,
+and choose $\chi,\beta$ on a compact stage as in (NP1).  Set
+\[
+ \psi=\sum_{i=1}^k u_i,\qquad
+ v_j=\max(0,1+\psi/j),\qquad a_j=2v_j-v_j^2.
+ \tag{NP10}
+\]
+The functions $v_j$ are actual bounded classical psh, between zero
+and one.  This follows either by bounded decreasing approximation of
+the summands or the extended classical maximum property.  They
+increase to one on $U\setminus P$ and vanish on $P$.
+Since all $u_i\leq0$, the set $F_j=\{v_j>0\}=\{\psi>-j\}$
+is contained in $E_j$.  In particular, for $r=1,2$,
+\[
+ v_j^rT_j=v_j^rN,\qquad a_jT_j=a_jN.
+ \tag{NP11}
+\]
+These are coefficient identities: on $F_j$ use (NP9), and on its
+complement the multipliers vanish.  They do not assert closedness of
+either Borel restriction.
+
+The bounded energy identity, compact Stokes and positivity give
+\begin{align*}
+ B_j&:=\int\chi\Gamma_{T_j}(v_j)\wedge\beta^{d-1}\\
+ &=\tfrac12\langle v_j^2T_j,D\chi\wedge\beta^{d-1}\rangle
+      -\int\chi v_jD(v_jT_j)\wedge\beta^{d-1}\\
+ &\leq\tfrac12|\mu_{N,D\chi\wedge\beta^{d-1}}|
+                      (\operatorname{supp}\chi)=:B<\infty.
+ \tag{NP12}
+\end{align*}
+In the last line we used (NP11).  Thus the bound does not require
+uniform mass of the uncut currents $T_j$ at their moving interfaces.
+
+By (NP2), $d'(a_jT_j)=2(1-v_j)d'(v_jT_j)$.  Lemma
+\ref{lem:r11-zero-plateau} allows the first-order factor to be
+restricted to $F_j$.  Apply (NP1) with the Borel multiplier
+$\mathbf1_{F_j}(1-v_j)$.  Equations (NP9) and (NP12) yield
+\[
+ |\langle d'(a_jT_j),\alpha\rangle|^2
+ \leq4C_\alpha B
+       \int\chi(1-v_j)^2\,\beta^d\wedge N
+                       \longrightarrow0.
+ \tag{NP13}
+\]
+Dominated convergence applies to the fixed finite coefficient measure
+on the right, because $N$ has no coefficient mass on $P$.
+At the same time (NP11) and dominated convergence give $a_jT_j\to N$
+on all original tests.  Distributional continuity now implies
+$d'N=0$.  The double-prime estimate proves $d''N=0$.
+
+The construction and proof commute with ordinary restriction and
+common actual refinement.  For separate level vectors, the same
+strict Borel locality gives a directed consistent family; diagonal
+integer levels are cofinal.  This proves independence of that choice
+and symmetry.  If all potentials are locally bounded, their
+truncations agree with them on any fixed compact neighborhood once
+the levels are large enough, proving compatibility with bounded BT.
+\end{proof}
+
+\begin{corollary}[Background linearity and pole restrictions]
+\label{cor:r11-nonpolar-background-restriction}
+On the finite-mass domain of the preceding theorem, $\mathcal N_S$
+is additive and nonnegative-real homogeneous in the original positive
+closed background.  If $A$ is a complete classical pole set, then
+\[
+ \mathbf1_A\mathcal N_S(\mathbf u)
+                    =\mathcal N_{\mathbf1_A S}(\mathbf u).
+ \tag{NP14}
+\]
+The right side is defined by the same truncations and automatically
+has locally finite coefficient mass.  If $S$ has no coefficient mass
+on any local pluripolar set, the same is true of $\mathcal N_S$.
+For arbitrary $S$, (NP8) only removes the poles of the stated tuple.
+\end{corollary}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} using the
+frozen complete-pole restriction theorem for bounded products.
+
+\begin{proof}
+Background linearity holds at every truncated level and passes through
+the increasing positive limits.  The frozen pole restriction identity
+gives $\mathbf1_A T_j=T_{\mathbf1_A S,k}(\mathbf u_j)$;
+the restricted background is separately closed by that theorem.
+Restrict also to $E_j$ and take the increasing coefficient limits.
+The required mass bounds are inherited from $N$.  Localizing the
+result to a complete pole witness proves the final assertion.
+\end{proof}
+
+\begin{proposition}[Potential additivity can fail over a polar background]
+\label{prop:r11-nonpolar-additivity-failure}
+For every $n\geq2$ there are an allowed original $n$-dimensional
+ordinary domain, a positive closed background $S$ of degree $(1,1)$,
+a bounded classical $u$, and an extended classical $v$ for which all
+three relative truncation products exist and
+\[
+ \mathcal N_S(u+v)=0=\mathcal N_S(v),
+                   \qquad \mathcal N_S(u)\ne0.
+ \tag{NP15}
+\]
+Thus unrestricted additivity in unbounded potentials, while retaining
+every polar background component, is false for (NP7).
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the explicit
+original example; the unrestricted additivity assertion is
+\texttt{FALSE}.  This is not a counterexample to the frozen bounded
+multilinearity theorem.
+
+\begin{proof}
+Take an ordinary product of the open unit disc in coordinate $z$
+and $n-1$ bounded open annuli in unit coordinates $t_1,\ldots,t_{n-1}$.
+Let $Z=\{z=0\}$ and $S=[Z]$.  Put
+\[
+ v=\log|z|,\qquad
+ u=\tfrac12(\log|t_1|)^2-C,
+\]
+where $C$ makes $u\leq0$ on the domain.  The logarithm is an extended
+classical psh function, with value $-\infty$ on $Z$; $u$ is bounded
+classical and its curvature on $Z$ is the nonzero original positive
+form $d'\log|t_1|\wedge d''\log|t_1|$.  Hence $D(uS)\ne0$;
+one can test it with a nonnegative compact product test in the
+remaining annular directions.  The ordinary original product
+calibration has positive degree, so the pairing is strictly positive.
+
+Each truncated product over $S$ is supported on $Z$, by ordinary
+locality of the frozen calculus.  The finite loci of $v$ and $u+v$
+are disjoint from $Z$.  Their cut currents $R_j$ are therefore zero
+at every level.  This gives (NP15) and all its mass assertions.
+The example uses a special background only to disprove the universal
+additivity assertion; no restriction on $S$ was used in the theorem.
+\end{proof}
+
+\paragraph{The remaining unrestricted issue.}
+Theorem~\ref{thm:r11-closed-nonpolar-product} does not make (NP6)
+automatic for every extended classical tuple.  Nor does it identify
+relative polar null sets with ambient pluripolarity for every background.
+The finite-energy criterion in the next section gives a checkable large
+domain on which the uncut products also converge and the usual
+recursive differential identity survives.

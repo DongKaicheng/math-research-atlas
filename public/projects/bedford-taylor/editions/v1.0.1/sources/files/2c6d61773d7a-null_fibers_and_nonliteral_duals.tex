@@ -1,0 +1,347 @@
+\section{Null moment fibers and positive duals which are not literal data}
+\label{sec:r12-null-fibers-nonliteral-duals}
+
+The first part uses precisely the proper original moment and
+background factorization (ML12), with $1\leq q<r$:
+\[
+ t:V\longrightarrow Q\subset\mathbf R^r,\qquad
+ S=(t^*\beta_0)^{r-q}\wedge R,\qquad
+ \beta_0=\sum_{i=1}^r d'x_i\wedge d''x_i.
+ \tag{NF1}
+\]
+Here $R$ is an arbitrary allowed original symmetric middle-positive
+separately closed $(n-r,n-r)$-current. Properness means that the
+inverse image of every compact real set is compact in the ordinary
+analytic open $V$. All capacities use every normalized original
+bounded classical tester on $V$, without restricting its actual
+moment refinements. The factorization is a printed hypothesis for
+these geometric null-set conclusions, not a property of every $S$.
+
+\begin{lemma}[A closed order-zero supercurrent has no sub-top atom]
+\label{lem:r12-closed-current-no-atom}
+Let $T$ be an order-zero real supercurrent of bidegree $(q,q)$
+on $Q$, with $q<r$ and $d'T=0$. Every coefficient measure of
+$T$ has zero mass at each point. In particular, if $T$ is
+middle-positive, the positive measure
+$T\wedge\beta_0^{r-q}$ has no atoms.
+\end{lemma}
+
+\noindent\textbf{Status: \texttt{DIRECT\_COROLLARY}} of
+distributional closedness and the coefficient-measure definition;
+the elementary proof is included. Separate $d''$-closedness and
+positivity are not needed for the first assertion.
+
+\begin{proof}
+Fix $x\in Q$ and write the vector of coefficient measures near
+$x$ as its atom at $x$ plus a vector of measures having no atom
+there. Let $k=r-q\geq1$, let $\eta$ be any constant form of
+degree $(k-1,k)$, and choose $\varphi\in C_c^\infty(\mathbf R^r)$.
+For small $\epsilon>0$ the compact test
+\[
+               \varphi_\epsilon(y)\eta
+           =\epsilon\varphi((y-x)/\epsilon)\eta
+\]
+is supported in $Q$. Closedness gives
+$\langle T,d'\varphi_\epsilon\wedge\eta\rangle=0$.
+The coefficients of $d'\varphi_\epsilon$ are uniformly bounded.
+Thus the contribution from the atom-free part tends to zero,
+because its variations on these shrinking balls tend to zero.
+The contribution of the atom is its pairing with
+$d'\varphi(0)\wedge\eta$. Every covector can occur as
+$d'\varphi(0)$, and forms $\xi'\wedge\eta$ of these degrees
+span the entire complementary coefficient space $(k,k)$.
+The atomic tensor therefore pairs to zero with every coefficient
+test and is zero. This works at every point.
+The trace is a fixed finite linear combination of coefficient
+measures, so it has no atom either.
+\end{proof}
+
+\begin{theorem}[Full original outer capacity vanishes on each proper moment fiber]
+\label{thm:r12-null-proper-moment-fibers}
+Under (NF1), let $H\Subset Q$ be compact. For sufficiently
+small $\epsilon>0$ put
+\[
+ \omega_H(\epsilon)=
+   \sup_{x\in H}\ \sup_{\substack{v\text{ original bounded classical psh on }V\\
+                                  0\leq v\leq1}}
+     \bigl((Dv)^q\wedge S\bigr)
+                           \bigl(t^{-1}(B(x,\epsilon))\bigr).
+ \tag{NF2}
+\]
+This is finite and
+\[
+                  \lim_{\epsilon\downarrow0}\omega_H(\epsilon)=0.
+ \tag{NF3}
+\]
+Consequently, for every $x\in Q$,
+\[
+                    C_S^*(t^{-1}\{x\};V)=0.
+ \tag{NF4}
+\]
+The same holds for the inverse image of any countable subset
+of $Q$. The conclusions concern the full original capacity
+and ordinary open neighborhoods, not a toric-only tester capacity.
+No numerical power rate is asserted in (NF3).
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+uniform full-tester null-fiber statement in every sub-top
+degree. It uses the new positive moment lifts and the frozen
+arbitrary-background relative CLN estimate.
+
+\begin{proof}
+For every tester in (NF2), its original bounded lift is
+\[
+             T_v=t_*\bigl((Dv)^q\wedge R\bigr),\qquad
+             \nu_v=T_v\wedge\beta_0^{r-q}
+                       =t_*\bigl((Dv)^q\wedge S\bigr).
+ \tag{NF5}
+\]
+These are the actual currents and exact unnormalized trace
+identity of (ML15)--(ML17). On each compact $H'\Subset Q$,
+properness makes $t^{-1}(H')$ compact. The original relative
+CLN estimate on a slightly larger compact set, with
+$\|v\|_\infty\leq1$, bounds $\nu_v(H')$ uniformly over
+the full tester class. This proves finiteness in (NF2).
+The trace coefficient lemma (ML4)--(ML5) makes the family
+of lifts locally sequentially compact. Every limiting lift
+is again positive, symmetric and separately closed.
+
+If (NF3) failed, there would be $\delta>0$,
+$\epsilon_j\downarrow0$, $x_j\in H$, and normalized
+testers $v_j$ with
+$\nu_{v_j}(B(x_j,\epsilon_j))\geq\delta$.
+After subsequences, $x_j\to x\in H$ and $T_{v_j}\to T$
+locally on all real tests. Its trace $\nu$ is the local vague
+limit of $\nu_{v_j}$. For any sufficiently small fixed
+$\rho>0$, eventually
+$B(x_j,\epsilon_j)\subset\overline B(x,\rho)\Subset Q$.
+Portmanteau on this compact set gives
+\[
+      \delta\leq\limsup_j\nu_{v_j}(\overline B(x,\rho))
+                              \leq\nu(\overline B(x,\rho)).
+\]
+Letting $\rho\downarrow0$ gives $\nu\{x\}\geq\delta$,
+contradicting Lemma~\ref{lem:r12-closed-current-no-atom}.
+This proves the uniform assertion.
+
+The sets $t^{-1}(B(x,\epsilon))$ are ordinary open
+neighborhoods of the compact fiber $t^{-1}\{x\}$.
+Their raw capacities are exactly the inner supremum in
+(NF2). Taking their decreasing numerical bound in the
+definition of outer capacity proves (NF4). Countable
+subadditivity of the frozen outer capacity gives the last
+assertion. Neither a Radon disintegration over residue
+fields nor a change of the original field has occurred.
+\end{proof}
+
+\subsection{Canonical convex traces of the complete energy class}
+
+For the remainder take the allowed original example
+\[
+ \begin{gathered}
+ X=(\mathbf G_{m,K}^{r})^{\rm an},\quad
+ Q=(-1,1)^r,\quad V=t^{-1}(Q),\quad t_i=\log|T_i|,\\
+ 1\leq q<r,\quad S=\beta^{r-q}\wedge[V],\quad
+ \beta=\sum_i d't_i\wedge d''t_i,\quad
+ \sigma:Q\longrightarrow V\text{ the original joint Gauss section}.
+ \end{gathered}
+ \tag{NF6}
+\]
+These data satisfy (ED1) and (NF1). The frozen R6
+\texttt{lem:r6-joint-gauss-convexity}, used in R11
+\texttt{comparison/power\_class\_source\_obstruction.tex}
+before the choice of its background, says that a bounded
+original classical psh potential has a finite convex
+restriction to $\sigma(Q)$. That assertion is independent
+of the remaining degree $q$. We use it as an exact
+\texttt{INTERNAL\_INPUT}; no nonlinear identity between
+a Gauss trace Hessian and the original top measure is used.
+
+\begin{proposition}[All-degree completed Gauss traces and point evaluation]
+\label{prop:r12-completed-gauss-evaluation}
+Every $u\in\mathscr C$ for (NF6) has a canonical finite
+nonpositive continuous convex function $g_u$ on $Q$.
+It is the locally uniform limit of the Gauss traces of any
+actual bounded strong defining row. It agrees with the
+chosen relative Borel representative $u\circ\sigma$ only
+Lebesgue-almost everywhere, not necessarily at every point.
+
+The assignment is additive and positively homogeneous on
+$\mathscr C$, and extends linearly to $\mathbb D_S$.
+For each $x\in Q$, the formula
+\[
+                         \ell_x(u)=-g_u(x)
+ \tag{NF7}
+\]
+defines an order-reversing functional in
+$\mathbb D_{S,\mathrm s}^*$. For every original compact
+smooth scalar $\phi$ on $V$,
+\[
+                              \ell_x(\phi)=-\phi(\sigma(x)).
+ \tag{NF8}
+\]
+Nevertheless this functional is not literal integration
+against a Radon measure on all relative Borel representatives
+in $\mathbb D_S$.
+\end{proposition}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} for the
+full-degree strong class and the nonliteral positive dual
+phenomenon. The old bounded Gauss convexity is not recounted
+as a new result.
+
+\begin{proof}
+Fix real compact sets $H\Subset\operatorname{Int}H'\Subset Q$.
+Patch the quadratic $|t|^2/2-C$ to a large multiple of the
+strict-box barrier, as in (ML25), to obtain an actual
+bounded first-energy potential $\psi$ equal to that quadratic
+on $t^{-1}(H')$. All factors are unnormalized, so locality
+and the original torus calibration give
+\[
+           \mathbf1_{t^{-1}(H')}\mu_\psi
+                   =\mathbf1_{t^{-1}(H')}\beta^r\wedge[V]
+                   =r!\,\sigma_*(\mathbf1_{H'}\,dx).
+ \tag{NF9}
+\]
+For any actual bounded first-energy potential $a$,
+the mixed energy inequality implies
+\[
+              \int_{H'}(-a\circ\sigma)\,dx
+                          \leq\frac{r(\psi)^q}{r!}\,r(a).
+ \tag{NF10}
+\]
+For two such potentials, the completed tester estimate
+(EV1) controls their trace difference in $L^1(H')$ by
+a quantity tending to zero under strong convergence on
+an energy-bounded set.
+
+We recall explicitly the elementary convex compactness step.
+If $g\leq0$ is finite convex on a ball $B(x,2\rho)$,
+then $-g$ is nonnegative and concave. For
+$y=(x+z)/2\in B(x,\rho)$, concavity gives
+$-g(y)\geq(-g(x))/2$. Hence
+$-g(x)\leq2\operatorname{vol}(B(x,\rho))^{-1}
+\int_{B(x,\rho)}(-g)$. An $L^1$ bound on a larger
+compact set therefore bounds $|g|$ on an interior compact
+set. Secant-slope estimates for convex functions then give
+a uniform Lipschitz bound on a still smaller compact set.
+Thus an $L^1_{\rm loc}$-Cauchy row of these convex functions
+converges locally uniformly to one finite continuous convex
+function: compactness gives subsequential limits, and its
+$L^1$ limit makes them identical.
+
+Choose an actual bounded strongly defining row for $u$;
+such a row is supplied by the R11 clipping diagonal.
+The traces are convex by the frozen input, are locally
+$L^1$-bounded by (NF10), and are $L^1$-Cauchy by (EV1).
+The preceding argument defines $g_u$ and proves independence
+of the row. Their $L^1(\mu_\psi)$ convergence to the
+relative Borel class, using (NF9), proves the almost-everywhere
+identification in the statement. Exact cone addition and
+homogeneity, followed by local $L^1$ limits, give the stated
+linearity. Equal Borel difference presentations give equal
+traces almost everywhere, hence everywhere by continuity.
+
+The point bound from (NF10) yields, for each fixed $x$,
+\[
+                     0\leq-g_u(x)\leq C_x r(u),
+ \tag{NF11}
+\]
+with a finite constant independent of $u$. Extending by
+differences and infimizing proves boundedness of $\ell_x$
+on $\mathbb D_S$. If $h=a-b\succeq0$, its relative
+exceptional set is $\mu_\psi$-null. Thus
+$g_a-g_b\geq0$ almost everywhere on each core, and continuity
+makes the inequality hold at every point. This proves order
+reversal. For a strongly convergent cone row, (EV1) and
+(NF9) again give local $L^1$ convergence of its convex
+traces; the uniform convex bounds give local uniform
+convergence. Consequently $\ell_x$ is strongly continuous.
+
+The all-degree original test decomposition (HC14)--(HC15)
+writes $\phi=a-b$ as an exact difference of actual bounded
+finite-mass common-collar potentials. Their actual Gauss
+traces give (NF8), including every refined non-toric original
+test. In particular any Radon measure giving the same
+original test restriction must be $\delta_{\sigma(x)}$.
+But (NF4) makes $\{\sigma(x)\}$ outer-capacity null.
+Changing a Borel representative at this point does not
+change its class, whereas literal integration against this
+Dirac measure changes. For example, change the value of
+the strictly negative patched $\psi$ there to zero.
+Thus the functional cannot be literal Radon integration
+on all representatives of $\mathbb D_S$. This does not
+conflict with its canonical-trace definition.
+\end{proof}
+
+\begin{theorem}[Literal positive data are not closed in the energy dual norm]
+\label{thm:r12-literal-dual-data-not-closed}
+In (NF6), for every $x\in Q$ there are finite positive Radon
+measures $\mu_\epsilon$, each dominated by a finite constant
+times one actual bounded first-energy source, such that
+their literal integration functionals satisfy
+\[
+               \|\ell_{\mu_\epsilon}-\ell_x\|_*
+                                      \leq C_x'\epsilon\longrightarrow0.
+ \tag{NF12}
+\]
+All these functionals and their limit are order reversing
+and strongly continuous. The limit is not a literal Radon
+datum on the relative Borel quotient. The same measures
+converge on every original compact smooth scalar test to
+$\delta_{\sigma(x)}$, which charges a full outer-capacity
+null set.
+
+This does not contradict closedness of $J(\mathscr C)$:
+the approximating data here are not source functionals.
+Their nonzero compact tropical carriers already exclude
+that possibility by (ML20).
+\end{theorem}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}} as a
+counterexample to the blanket identification of the positive
+strong energy dual with literal finite-energy Radon data.
+That identification, and norm-closedness of the literal
+positive datum class without a uniform diffuseness gate,
+are \texttt{FALSE}.
+
+\begin{proof}
+Choose a nonnegative smooth probability density
+$\theta_\epsilon$ supported in $B(x,\epsilon)\Subset Q$
+and set $\mu_\epsilon=\sigma_*(\theta_\epsilon\,dx)$.
+On one fixed larger compact core, (NF9) gives
+$\mu_\epsilon\leq(\|\theta_\epsilon\|_\infty/r!)\mu_\psi$.
+The mixed energy inequality and (EV1) therefore make
+each a literal member of $\mathbb D_{S,\mathrm s}^*$.
+For $u\in\mathscr C$ with $r(u)\leq1$, the proof of
+(NF11) also gives a common Lipschitz constant for $g_u$
+on this core. The almost-everywhere identification of the
+representative gives
+\[
+ \left|\ell_{\mu_\epsilon}(u)-\ell_x(u)\right|
+       =\left|\int(g_u(x)-g_u(y))\theta_\epsilon(y)\,dy\right|
+       \leq C_x'\epsilon.
+\]
+The exact cone formula for the operator dual norm (ED10)
+proves (NF12). Evaluation on continuous original compact
+tests proves the ordinary measure convergence. The previous
+proposition proves that its limit is nonliteral on the
+relative quotient. Finally the carrier of each tropical
+pushforward is a nonempty compact subset of $Q$, so the
+source obstruction applies to every approximating measure.
+All constructions remain on the original field and norm.
+\end{proof}
+
+\paragraph{The exact surviving distinctions.}
+There are now three separate notions: a bounded Banach-dual
+functional, a strong-continuous order-reversing functional,
+and a literal positive Radon datum whose integrals ignore
+the relative null ideal. The first need not be strongly
+continuous by (CG11)--(CG14), and the second need not be
+literal by (NF7)--(NF12). The capacity-modulus condition
+(CD1)--(CD2) supplies the third with all required continuity.
+The nonlinear source image is a further, closed proper subset,
+with the normal and contact obstructions already proved.
+None of these distinctions closes OPEN-GQ or identifies
+relative null sets with all pluripolar or negligible sets.

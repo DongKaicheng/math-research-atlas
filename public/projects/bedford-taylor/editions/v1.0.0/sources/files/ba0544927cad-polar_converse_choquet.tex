@@ -1,0 +1,471 @@
+\section{Polar witnesses and capacitability from ambient extremals}
+\label{sec:r2-polar-converse-choquet}
+
+\noindent\textbf{Status: \texttt{NEW\_PROVED}, relative to the adopted
+inputs and the preceding reviewed R2 theorems.}
+The witness construction, arbitrary-set extremal mass formula, and
+ordinary-open proof of increasing continuity are supplied below.
+The Choquet and patching consequences are
+\texttt{DIRECT\_COROLLARY}. The two theorem groups
+\textup{(N)} and \textup{(E)} are separated to display dependencies;
+both have been proved in the preceding sections. Neither a general
+Josefson theorem nor Borel outer regularity is an input.
+
+\subsection{Domain and the two theorem inputs}
+
+Let $V$ be a connected ordinary open with compact closure in a smooth
+affine algebraic chart over the fixed finite extension $K/\mathbf Q_p$.
+Assume that its ordinary boundary is nonempty and that there is
+\[
+ \rho\in\Cb(V)\cap C(\overline V),\qquad
+ \rho<0\text{ on }V,\qquad \rho=0\text{ on }\partial V.
+\]
+Thus each negative sublevel of $\rho$ has compact closure in $V$.
+All capacities in this section use the ambient background $[1]$ and
+the \emph{fixed admissibility domain $V$}. Write
+\[
+ C(E)=\operatorname{Cap}_{[1]}(E;V),\qquad
+ C^*(E)=\inf_{\substack{G\supset E\\G\text{ ordinary open in }V}}C(G).
+\]
+The first notation is initially for Borel sets; the second is defined
+for arbitrary subsets. All Monge--Amp\`ere measures and their weak
+limits use the original CLD scalar test functions.
+
+For any subset $A\subset V$, define
+\[
+ \mathcal F_A=\{v\in\Cb(V):-1\leq v\leq0,\ v=-1\text{ on }A\},
+ \qquad h_A=\sup_{v\in\mathcal F_A}v,\qquad U_A=h_A^*.
+\]
+The ordinary upper regularization $U_A$ is bounded classical by
+Theorem~\ref{thm:r2-local-upper-envelope}. The conditions $v=-1$
+and $v\leq-1$ are identical for this normalized family. The raw
+supremum is never substituted for its regularization without a
+stated argument.
+
+The two theorem groups are recorded separately to make the dependency
+order explicit:
+\begin{enumerate}[label=\textup{(\Alph*)}]
+\item[\textup{(N)}] For every locally uniformly upper-bounded family
+of bounded classical psh functions, the difference between its actual
+supremum and its ordinary usc regularization is contained locally in
+a Borel set of ambient outer capacity zero. In particular a locally
+uniformly bounded increasing sequence has its actual supremum equal
+to its regularization outside such a set, and their values agree at
+every ambient divisorial point. Local and fixed-domain null classes
+are identified only through
+Corollary~\ref{cor:r2-fixed-domain-null-classes}.
+These are Theorem~\ref{thm:r2-negligible-outer-zero},
+Theorem~\ref{thm:r2-increasing-no-jump}, and
+Corollary~\ref{cor:r2-divisorial-no-jump}.
+
+\item[\textup{(E)}] If $G\Subset V$ is ordinary open, then $U_G=-1$
+at every point of $G$, $U_G$ has ordinary boundary limit zero,
+$\operatorname{supp}(DU_G)^n\subset\overline G$, and
+\[
+ \int_V(DU_G)^n=C(G).
+\]
+For a compact $K\Subset V$, the corresponding compact extremal
+identity is
+\[
+ \int_V(DU_K)^n=C(K).
+\]
+The open-set identity concerns \emph{total mass}. It does not assert
+$\int_G(DU_G)^n=C(G)$: the function is constant on $G$.
+These are Theorems~\ref{thm:r2-open-extremal} and
+\ref{thm:r2-compact-extremal}, with the domain and boundary
+properties of Lemma~\ref{lem:r2-extremal-basics}.
+\end{enumerate}
+
+For every fixed $A\subset W\Subset V$, choose $a>0$ sufficiently
+large that $a\rho\leq-1$ on $\overline W$. Then
+\[
+ b=\max(-1,a\rho)\in\mathcal F_A,
+ \qquad b\leq U_A\leq0.
+\]
+This gives the ordinary boundary limit zero of $U_A$, uniformly for
+all such $A$. In particular $\{U_A<-1+\eta\}\Subset V$ for every
+$0<\eta<1$, with a common compact bound for fixed $W$ and $\eta$.
+The capacity of $W$ is finite by relative CLN on a slightly larger
+compact stage.
+
+We also use the total-mass order of
+Lemma~\ref{lem:r2-total-mass-order}: if $u\leq v\leq0$ are bounded
+classical functions with ordinary boundary limits zero, then
+$\int_V(Dv)^n\leq\int_V(Du)^n$, including infinite masses.
+
+\subsection{A nontrivial pole witness for an outer-capacity-zero set}
+
+\begin{theorem}[A witness on the specified exhaustion domain]
+\label{thm:r2-capacity-zero-polar-witness}
+Let $E\subset W\Subset V$ be an arbitrary subset with $C^*(E)=0$.
+For every fixed ambient divisorial point $z\in V$ there is a nonpositive
+extended classical psh function $\phi$ on $V$ such that
+\[
+ E\subset\{\phi=-\infty\},\qquad -1\leq\phi(z)\leq0.
+\]
+In particular the witness is not identically $-\infty$.
+\end{theorem}
+
+\begin{proof}
+Choose an ordinary $W'$ with
+$\overline W\subset W'\Subset V$. From $C^*(E)=0$ choose ordinary
+opens $O_j\supset E$ with $C(O_j)<2^{-j}$ and set
+\[
+ G_j=W'\cap\bigcap_{i=1}^jO_i,\qquad u_j=U_{G_j}.
+\]
+The $G_j$ decrease, while $-1\leq u_j\uparrow h\leq0$.
+They share a lower barrier $b=\max(-1,a\rho)$ as above.
+Their measures are supported in the one compact set
+$\overline W'$, and their total masses tend to zero by \textup{(E)}.
+
+Put $U=h^*\in\Cb(V)$. By \textup{(N)}, $h=U$ locally outside
+sets of outer capacity zero. The actual increasing-limit theorem
+\ref{cor:r2-local-increasing}, the completed calculus
+\ref{thm:r2-completed-calculus}, and independence under such changes
+of representatives give
+\[
+ (Du_j)^n\longrightarrow(DU)^n
+\]
+on all original compact scalar tests. Their vanishing total masses
+imply $(DU)^n=0$. Also $b\leq U\leq0$, so $U$ has ordinary
+boundary limit zero. Pointwise ambient domination
+\ref{cor:r2-pointwise-ambient}, applied to $U$ and $0$, now gives
+$U=0$ on $V$. Indeed all sets $\{U<-\epsilon\}$ are relatively
+compact by the lower barrier, and $(DU)^n$ vanishes on the whole
+strict gap.
+
+By the divisorial part of \textup{(N)}, $u_j(z)\uparrow0$.
+Choose a strictly increasing sequence $j_l$ such that
+$u_{j_l}(z)>-2^{-l}$. The finite sums
+\[
+ \phi_m=\sum_{l=1}^m u_{j_l}
+\]
+are nonpositive classical psh and decrease with $m$. Their pointwise
+limit $\phi$ is extended classical psh by the classical decreasing
+closure, and $\phi(z)\geq-\sum_l2^{-l}=-1$.
+For $x\in E$, every $G_j$ contains $x$ and the open-set extremal
+satisfies $u_j(x)=-1$ exactly. Thus $\phi_m(x)=-m$ and
+$\phi(x)=-\infty$. No integrability of the original set or a
+global pole-patching theorem has been used.
+\end{proof}
+
+\begin{corollary}[The local zero-set equivalence on this domain]
+\label{cor:r2-local-polar-equivalence}
+On the same exhaustion domain, for every arbitrary $E\subset W\Subset V$,
+\[
+ C^*(E)=0
+ \quad\Longleftrightarrow\quad
+ E\subset\{\phi=-\infty\}
+ \text{ for some nonpositive classical }\phi\text{ on }V,
+ \ \phi\not\equiv-\infty.
+\]
+The implication from right to left is the already proved ambient
+polar theorem, not a new nonconcentration hypothesis.
+\end{corollary}
+
+\begin{proof}
+The forward implication is the theorem. For the reverse implication,
+Corollary~\ref{cor:r2-ambient-polar-outer-zero} gives local outer
+capacity zero on every compact/domain pair. The fixed-domain
+comparison \ref{cor:r2-fixed-domain-null-classes} gives $C^*(E)=0$.
+\end{proof}
+
+\begin{definition}[Local negligibility in the ordinary topology]
+\label{def:r2-local-negligibility}
+Let $E$ be an arbitrary subset of an allowed ordinary open $U$.
+It is locally negligible if every $x\in U$ has an ordinary
+neighborhood $O\subset U$ and a nonempty locally uniformly
+upper-bounded family $\mathcal F\subset\Cb(O)$ such that
+\[
+ E\cap O\subset
+ \left\{\sup_{v\in\mathcal F}v<
+                    \left(\sup_{v\in\mathcal F}v\right)^*\right\}.
+\]
+It is locally increasing-negligible if the family can be chosen as
+one increasing locally uniformly bounded sequence in $\Cb(O)$.
+Local pluripolarity means that every $x\in U$ has a connected ordinary
+neighborhood $O\subset U$ and an extended classical psh function
+$\phi$ on $O$, not identically $-\infty$ there, with
+$E\cap O\subset\{\phi=-\infty\}$.
+Local outer-capacity zero means that
+\[
+ \operatorname{Cap}_{[1]}^*(E\cap H;\Omega)=0
+\]
+for every permitted ordinary norm-box domain $\Omega\subset U$
+and every compact $H\Subset\Omega$.
+\end{definition}
+
+\begin{corollary}[Local polar, negligible, and outer-zero sets]
+\label{cor:r2-polar-negligible-equivalence}
+On every allowed ordinary open $U$, the following properties of an arbitrary subset
+$E\subset U$ are equivalent:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $E$ is locally pluripolar;
+\item $E$ has local ambient outer-capacity zero;
+\item $E$ is locally increasing-negligible;
+\item $E$ is locally negligible.
+\end{enumerate}
+These are local witness assertions. A single global psh witness on
+$U$ is not asserted.
+\end{corollary}
+
+\begin{proof}
+The implication (i)$\Rightarrow$(ii) is
+Corollary~\ref{cor:r2-ambient-polar-outer-zero}.
+For (ii)$\Rightarrow$(i), fix $x\in U$ and use
+Lemma~\ref{lem:r2-local-exhaustion-domains} in an ordinary algebraic
+neighborhood to choose an exhaustion domain $V$ containing $x$.
+Choose a connected ordinary $W$ with $x\in W\Subset V$ and an
+ambient divisorial point $z\in W$. The local null-class comparison
+gives $\operatorname{Cap}_{[1]}^*(E\cap W;V)=0$.
+Theorem~\ref{thm:r2-capacity-zero-polar-witness} supplies a
+nonpositive classical witness $\phi$ on $V$, finite at $z$, whose
+pole set contains $E\cap W$. Its restriction to $W$ is a
+nontrivial classical witness, as required.
+
+For (i)$\Rightarrow$(iii), shrink a connected witness neighborhood
+if necessary and subtract a finite upper bound so that $\phi\leq0$.
+The pole set $P=\{\phi=-\infty\}$ has empty ordinary interior by
+Proposition~\ref{prop:r2-no-interior-poles}; hence the witness remains
+nontrivial on every smaller connected ordinary neighborhood.
+The actual bounded classical functions
+\[
+ w_N=1+\frac{\max(\phi,-N)}{N}
+\]
+increase to $\mathbf1_{P^c}$. Because $P$ has empty ordinary
+interior, the ordinary usc regularization of this actual limit is
+the constant one. Its discrepancy set is exactly $P$, which
+contains the specified part of $E$. This proves increasing
+negligibility. The implication (iii)$\Rightarrow$(iv) is immediate.
+
+Finally (iv)$\Rightarrow$(ii) follows from
+Theorem~\ref{thm:r2-negligible-outer-zero}. To express it on a
+prescribed compact/domain pair $(H,\Omega)$, restrict the local
+witness families to smaller permitted domains contained in $\Omega$.
+Choose countably many ordinary cores covering $E\cap H$; such a
+choice exists in the locally second-countable finite $p$-adic
+setting. Each core intersection has outer capacity zero on its
+own domain and therefore on $\Omega$ by domain monotonicity.
+Countable subadditivity gives the required zero capacity on $H$.
+No uncountable union of exceptional sets is taken.
+\end{proof}
+
+\begin{corollary}[Pole patching on one exhaustion domain]
+\label{cor:r2-exhaustion-domain-pole-patching}
+On the same connected exhaustion domain $V$, let $E\subset V$
+have local ambient outer-capacity zero. In particular this applies
+to a locally pluripolar $E$. Then there is one nonpositive extended
+classical psh function $\phi$ on $V$, not identically $-\infty$,
+such that $E\subset\{\phi=-\infty\}$. No relative compactness
+of $E$ itself is required for this conclusion.
+\end{corollary}
+
+\noindent\textbf{Provenance: \texttt{DIRECT\_COROLLARY}.}
+The domain $V$ and its exhaustion hypothesis are retained.
+
+\begin{proof}
+Choose ordinary $W_m\Subset V$ increasing to $V$ and fix one
+ambient divisorial point $z\in V$. Put $E_m=E\cap W_m$.
+The fixed-domain null-class comparison gives $C^*(E_m)=0$.
+The witness theorem gives nonpositive classical $\phi_m$ on $V$
+with $E_m\subset\{\phi_m=-\infty\}$ and $\phi_m(z)\geq-1$.
+The series
+\[
+ \phi=\sum_{m\geq1}2^{-m}\phi_m
+\]
+is a decreasing limit of nonpositive classical partial sums and
+is therefore extended classical. It satisfies $\phi(z)\geq-1$,
+so it is nontrivial. Every point of $E$ belongs to some $E_m$,
+and the corresponding positive summand forces $\phi=-\infty$
+there.
+\end{proof}
+
+\begin{remark}[Why the domain qualification is essential]
+Untwisted pole globalization on every analytic space is
+\texttt{FALSE}. For example, the rational point $0$ of
+$\mathbf P^{1,\an}_K$ is locally pluripolar, with local witness
+$\log|t|$. A nontrivial global extended classical psh function
+on this proper connected space attains a finite maximum and is
+constant by the strong maximum principle
+\cite[Theorem 6.1]{GR25}. It therefore has no
+pole. The preceding corollary is globalization on the one
+specified exhaustion domain; it is not that false unrestricted
+assertion, nor a theorem about globally twisted psh functions.
+\end{remark}
+
+\subsection{An outer-capacity formula for arbitrary relatively compact sets}
+
+\begin{theorem}[The extremal total-mass formula]
+\label{thm:r2-arbitrary-extremal-mass}
+For every arbitrary $A\subset W\Subset V$,
+\[
+ C^*(A)=\int_V(DU_A)^n<\infty.
+\]
+This assertion neither assumes Borel measurability of $A$ nor
+identifies the raw capacity with its outer regularization beforehand.
+\end{theorem}
+
+\begin{proof}
+If $G\Subset V$ is ordinary open and contains $A$, then
+$\mathcal F_G\subset\mathcal F_A$, hence $U_G\leq U_A\leq0$.
+Both functions have boundary limit zero. The mass-order lemma and
+\textup{(E)} imply
+\[
+ \int_V(DU_A)^n\leq\int_V(DU_G)^n=C(G).
+\]
+Taking the infimum over such $G$ gives
+$\int_V(DU_A)^n\leq C^*(A)$. Relatively compact opens suffice here:
+intersect any open cover with a fixed relatively compact open
+neighborhood of $\overline W$. This also proves finiteness.
+
+Since $h_A=-1$ on $A$, input \textup{(N)} shows that
+\[
+ A\cap\{U_A>-1\}\subset N
+\]
+for some set $N\subset W$ with $C^*(N)=0$. We may use a Borel
+outer-zero cover of this defect if $A$ itself is not Borel.
+Fix $0<\eta<1$ and put
+\[
+ G_\eta=\{U_A<-1+\eta\},\qquad
+ v_\eta=\max\left(-1,\frac{U_A}{1-\eta}\right).
+\]
+The set $G_\eta$ is ordinary open and relatively compact, because
+$U_A$ is usc and bounded below by the common exhaustion barrier.
+The function $v_\eta$ is classical, has boundary value zero,
+belongs to $[-1,0]$, and equals $-1$ on $G_\eta$. Consequently
+\[
+ \frac{U_A}{1-\eta}\leq v_\eta\leq U_{G_\eta}.
+\]
+Twice applying the mass-order lemma gives
+\[
+ C(G_\eta)=\int_V(DU_{G_\eta})^n
+ \leq\int_V(Dv_\eta)^n
+ \leq(1-\eta)^{-n}\int_V(DU_A)^n.
+\]
+Finally $A\subset G_\eta\cup N$. Monotonicity and subadditivity
+of outer capacity, and its equality with raw capacity on ordinary
+open sets, imply
+\[
+ C^*(A)\leq C(G_\eta)
+ \leq(1-\eta)^{-n}\int_V(DU_A)^n.
+\]
+Let $\eta$ decrease to zero. The two inequalities prove the formula.
+\end{proof}
+
+\subsection{The missing continuity axiom and the Choquet conclusion}
+
+\begin{theorem}[Continuity from below on arbitrary subsets of a core]
+\label{thm:r2-outer-capacity-increasing-sets}
+If $A_j\subset A_{j+1}\subset W\Subset V$ are arbitrary subsets
+and $A=\bigcup_jA_j$, then
+\[
+ C^*(A)=\lim_j C^*(A_j).
+\]
+\end{theorem}
+
+\begin{proof}
+Write $U_j=U_{A_j}$; these bounded classical functions decrease
+with $j$. By \textup{(N)}, each defect
+$A_j\cap\{U_j>-1\}$ is contained in an outer-zero set $N_j$.
+The countable union of the $N_j$ has outer capacity zero.
+For $\epsilon>0$, choose one ordinary open set $G$ containing
+that union with $C(G)<\epsilon$.
+
+Fix $0<\eta<1$ and put
+\[
+ O_j=G\cup\{U_j<-1+\eta\}.
+\]
+These are \emph{increasing ordinary open sets}, since the $U_j$
+decrease. Each $O_j$ contains $A_j$. The truncation estimate in
+the preceding proof and its mass formula give
+\[
+ C(O_j)\leq\epsilon+
+      (1-\eta)^{-n}C^*(A_j).
+\]
+The raw capacity is continuous from below on Borel sets, directly
+from its definition as a supremum of Radon measures. Applying
+this only to the increasing \emph{open} sets $O_j$ yields
+\[
+ C^*(A)\leq C\Bigl(\bigcup_jO_j\Bigr)
+       =\lim_j C(O_j)
+       \leq\epsilon+(1-\eta)^{-n}\lim_j C^*(A_j).
+\]
+Let $\epsilon$ and then $\eta$ decrease to zero. Monotonicity
+supplies the reverse inequality.
+
+This is the ordinary-open argument of the classical capacitability
+proof, \cite[\S8, Theorem 8.2]{BT82}, with its analytic hypotheses
+proved separately here. An infinite intersection of open covers is
+not declared open, and no infimum/supremum interchange is made.
+\end{proof}
+
+\begin{corollary}[Local Choquet capacitability and Borel outer regularity]
+\label{cor:r2-local-choquet}
+Fix an ordinary core $W\Subset V$. The set function
+\[
+ A\longmapsto C^*(A),\qquad A\subset W,
+\]
+is a finite monotone countably subadditive Choquet capacity: it is
+continuous from below on arbitrary increasing sets and from above
+on decreasing compact sets. Every Suslin subset $A\subset W$
+(analytic in the descriptive-set-theoretic sense) is capacitable:
+\[
+ C^*(A)=\sup_{\substack{K\subset A\\K\text{ compact}}}C(K).
+\]
+In particular every Borel $A\subset W$ satisfies
+\[
+ C(A)=C^*(A).
+\]
+\end{corollary}
+
+\begin{proof}
+Monotonicity and countable subadditivity are already proved for
+outer capacity. Compact continuity from above is
+Lemma~\ref{lem:r2-outer-facts}; increasing continuity is the preceding
+theorem. Finiteness follows by covering $\overline W$ with one
+relatively compact ordinary open and applying CLN to its closure.
+The core $W$ is a locally compact second-countable metrizable space
+in the fixed finite $p$-adic algebraic setting. The Choquet
+capacitability theorem, in the form recalled in
+\cite[\S8, following Theorem 8.2]{BT82}, therefore gives
+\[
+ C^*(A)=\sup_{K\subset A\text{ compact}}C^*(K)
+\]
+for such Suslin $A$. This terminology concerns analytic sets of the
+Polish space $W$, not analytic subspaces over the base field $K$.
+For compact $K$, the mass formula of the
+preceding theorem and the compact part of \textup{(E)} give
+$C^*(K)=C(K)$.
+
+For Borel $A$, raw inner regularity is elementary:
+\[
+ C(A)=\sup_{v}\sup_{K\subset A\text{ compact}}
+       \int_K(Dv)^n
+     =\sup_{K\subset A\text{ compact}}C(K).
+\]
+Only two suprema are interchanged in this equality. Combining it
+with capacitability gives $C(A)=C^*(A)$.
+\end{proof}
+
+\paragraph{Scope and dependency order.}
+The capacity-zero witness uses only the open extremal identity,
+ambient no-jump, the proved increasing calculus, and pointwise
+ambient domination. The arbitrary-set mass formula and Choquet
+continuity do not use that witness theorem: their only null-set
+input is \textup{(N)}. Thus the argument does not prove negligible
+sets polar by first assuming that conclusion. The capacitability
+statement is on each fixed relatively compact core of this explicitly
+qualified domain. It does not assert a global Josefson theorem on an
+arbitrary analytic space, or discard the negative-exhaustion-domain
+hypothesis.
+
+\paragraph{A distinction in abstract capacity theory.}
+For a Borel capacity $c$, its Borel-envelope extension
+$\inf\{c(B): A\subset B,\ B\text{ Borel}\}$ is different from
+the ordinary-open extension used here. The familiar increasing-set
+argument using $\bigcap_{k\geq j}G_k$ yields Borel sets, not open
+ones. Raw Borel inner regularity and raw Borel continuity from below
+therefore do not, by that argument, supply the missing continuity
+axiom for the ordinary-open extension. Theorem
+\ref{thm:r2-outer-capacity-increasing-sets} supplies the required
+axiom by actual ordinary sublevel sets of extremal functions.

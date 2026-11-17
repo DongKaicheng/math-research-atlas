@@ -1,0 +1,1746 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{enumitem,booktabs,array,longtable}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{TheoremLink}{HTML}{1F4E79}
+\definecolor{SectionLink}{HTML}{00656D}
+\definecolor{EquationLink}{HTML}{643F7A}
+\definecolor{CitationLink}{HTML}{2F6B3C}
+\definecolor{URLLink}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=TheoremLink,citecolor=CitationLink,
+ urlcolor=URLLink,bookmarksnumbered=true,pdfencoding=auto]{hyperref}
+\hypersetup{pdftitle={An intrinsic non-Archimedean Bedford--Taylor program},
+ pdfauthor={},pdfsubject={Research program; 16 November 2026}}
+\newcommand{\MathSecref}[1]{{\hypersetup{linkcolor=SectionLink}Section~\ref{#1}}}
+\newcommand{\MathEqref}[1]{{\hypersetup{linkcolor=EquationLink}\eqref{#1}}}
+\newcommand{\Thmref}[1]{Theorem~\ref{#1}}
+\newcommand{\Conjref}[1]{Conjecture~\ref{#1}}
+\newcommand{\Questref}[1]{Question~\ref{#1}}
+\newcommand{\Probref}[1]{Problem~\ref{#1}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\R}{\mathbf R}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\D}{\mathrm D}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Cb}{\mathcal C_b}
+\newcommand{\PSH}{\operatorname{PSH}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\osc}{\operatorname{osc}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\str}{\mathrm{str}}
+\newcommand{\ed}{\mathrm{ed}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\B}{\mathscr B}
+\newcommand{\C}{\mathscr C}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\rel}{\mathrm{rel}}
+\newcommand{\res}{\mathrm{res}}
+\newcommand{\gr}{\mathrm{gr}}
+\newcommand{\trop}{\operatorname{trop}}
+\newcommand{\sm}{\mathrm{sm}}
+\setlist[enumerate]{leftmargin=*,itemsep=3pt,topsep=5pt}
+\setlist[itemize]{leftmargin=*,itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{2}
+
+\title{An intrinsic non-Archimedean Bedford--Taylor program:\\
+ analytic relations, relative capacities and source geometry}
+\author{}
+\date{16 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The local Bedford--Taylor construction with a positive closed background
+provides a common setting for curvature products, relative capacity,
+finite energy and measure equations on Berkovich spaces.  We formulate a
+program for extending this construction to an intrinsic calculus and for
+determining the correct range of its potential theory.  Its principal
+conjecture asserts that every actual analytic relation between admissible
+finite PL or piecewise-smooth curvature products acts trivially on every allowed
+background.  The quadratic problem has a degree-one transgression; it is
+settled for finite presentations of residue rank at most two.  On supplied
+smooth normal-three model germs, the remaining action is a central
+coefficient expressed by a paired spherical tensor and a realized positive
+closed tangent current.  We use these results to identify the next
+geometric cancellation problem.  Two further questions concern Borel
+regularity of relative outer capacity and strong continuity of literal
+energy-dual measures.  The nonlinear equation is organized around its
+closed source image and the exact normal-probe obstruction.  Explicit
+counterexamples determine which capacity, rooftop and solvability
+principles can belong to the theory.  We conclude with precise extension
+problems for domains, singularities, Green currents and arithmetic
+intersection theory.
+\end{abstract}
+\clearpage
+
+{\hypersetup{linkcolor=SectionLink}\tableofcontents}
+\clearpage
+
+\section{Introduction}
+\label{sec:introduction}
+
+The Bedford--Taylor operation begins with a simple recursion.  If a
+potential can be multiplied by a closed current, its curvature can be
+inserted by applying a second derivative.  The force of the construction
+comes from proving that the resulting product depends on the curvature,
+is symmetric in its differentiated slots, and survives monotone limits.
+In the non-Archimedean setting these requirements interact with an
+additional geometric issue: a differential expression is represented in
+local moment coordinates, and a relation can become zero only after it
+is pulled back to the analytic space.  Such a relation must remain zero
+when an arbitrary positive closed background is inserted.
+
+The differential forms and currents of Chambert-Loir--Ducros provide the
+analytic language for this question \cite{CLD12,CLD25}.  Delta-forms retain
+polyhedral boundary terms and connect local calculations with tropical
+and arithmetic intersection theory \cite{GK,Mihatsch}.  The global
+theory of semipositive metrics and finite-energy potentials provides a
+second source of constructions and questions
+\cite{BFJmetrics,BFJma,Reboulet}.  The program developed here starts from
+the established local calculus with a fixed positive closed background
+and asks how far its intrinsic differential, capacitary and variational
+structures extend.
+
+Recent tropical work makes the equation side of this distinction
+particularly concrete.  Amini--Piquerez--Wu develop regularization,
+Bedford--Taylor measures and energy on compact prek\"ahler tropical
+varieties, and prove failure of the tropical Calabi--Yau theorem when
+a codimension-two star satisfies their genericity condition
+\cite[Theorems~5.13 and~11.4]{APW}.  Their comparison with
+non-Archimedean solutions uses a strongly faithful tropicalization
+and specified support hypotheses \cite[Theorem~12.11]{APW}.  These
+results make source compatibility and the analytic realization of
+tropical data central questions in the present program.
+
+The choice of background is essential.  A current of positive degree
+can detect a small analytic set and can impose additional restrictions
+on the sources of a Monge--Amp\`ere operator.  Consequently, the relative
+theory contains more than a change of notation in the ambient theory.
+Its basic objects are a potential class, an allowed background, a
+specified capacity, and, for a global equation, a specified boundary
+completion.  We keep these objects explicit throughout.
+
+\subsection{The analytic category and the main conjecture}
+
+Fix a finite extension $K/\Q_p$ with its given absolute value.  An
+\emph{analytic space} in this paper is a good, Hausdorff, boundaryless,
+quasi-smooth Berkovich $K$-space, locally of pure dimension $n$.  Opens,
+germs and sheaves use its ordinary topology.  We write
+\[
+                         \D=d'd'',\qquad d'd''=-d''d'.
+\]
+Current identities use the original compactly supported smooth CLD
+forms of complementary degree.  A finite moment presentation is refined
+by adjoining actual analytic units; every face of the refined image is
+retained, including faces on which its tangent map loses rank.
+
+\begin{definition}[Background and classical potential]
+\label{def:background}
+An \emph{allowed background} on an ordinary open $U$ is a symmetric
+CLD middle-positive current $S$ of bidegree $(p,p)$ satisfying
+$d'S=d''S=0$.  Middle positivity is the CLD cone detected by the signed
+column-square tests $\eta\wedge J\eta$ in complementary degree; its
+coefficient matrices are positive semidefinite in those presentations.
+Put $q=n-p$.
+
+The class $\Cb(U)$ consists of real-valued, locally bounded,
+upper-semicontinuous classical psh functions.  Classical psh means that
+pullback to every analytic curve, after every complete isometric
+extension of the ground field, is subharmonic.  The bounded
+Bedford--Taylor product is denoted by
+\begin{equation}
+ T_{S,0}=S,\qquad
+ T_{S,b}(u_1,\ldots,u_b)
+   =\D\bigl(u_1T_{S,b-1}(u_2,\ldots,u_b)\bigr),\quad b\le q.
+ \label{eq:bt-recursion}
+\end{equation}
+For finite differences of such potentials the notation denotes the
+signed multilinear extension.
+\end{definition}
+
+The existence and properties of \MathEqref{eq:bt-recursion} are
+established inputs, recalled in \MathSecref{sec:foundation}.  Let
+$\B^{a,b}=B^{a,b}_{\mathrm{Mih}}$ denote the actual analytic delta-form
+sheaf, with its full differentials.
+
+\begin{definition}[Admissible finite scalar presentations]
+\label{def:admissible}
+A finite family of continuous real scalars is \emph{admissible} if,
+locally on one ordinary representative, it is expressed through an
+actual unit tuple $t_f=(-\log|f_1|,\ldots,-\log|f_N|)$ on its complete
+moment image, with one finite coefficient complex, and has the following
+properties.  Each scalar is PL or piecewise smooth with a smooth
+extension near each closed coefficient cell.  It belongs to the actual
+degree-zero delta-form sheaf and has its full curvature
+$\D_\delta h\in\B^{1,1}$.  It is also a finite difference of continuous
+classical psh functions on that representative.
+
+Write $\mathscr P_{\mathrm{adm}}$ for the resulting local scalar
+sheaf.  Its PL subsheaf is denoted by $\mathscr P$.  Every finite
+continuous PL presentation in actual unit moments belongs to this
+class by local convex-difference decomposition.
+\end{definition}
+
+Both the actual delta product and the signed bounded BT product are
+therefore defined for an admissible family.  The finite closed-cell
+PS extension used in the quadratic results has exactly this scope
+\cite{I11,QA}.
+
+For a finite real presentation
+\[
+ P=\sum_{\nu=1}^{m}c_\nu[h_{\nu1}]\cdots[h_{\nu b}]
+       \in\Sym^b_{\R}\mathscr P_{\mathrm{adm}}(U),
+\]
+define two maps with different targets:
+\begin{align}
+ \kappa_b(P)
+   &=\sum_\nu c_\nu\,
+          \D_\delta h_{\nu1}\wedge\cdots\wedge
+                             \D_\delta h_{\nu b}\in\B^{b,b}(U),
+                    \label{eq:kappa}\\
+ \A_S(P)
+   &=\sum_\nu c_\nu T_{S,b}(h_{\nu1},\ldots,h_{\nu b}).
+                    \label{eq:action}
+\end{align}
+The brackets in $P$ are formal symmetric-product symbols over $\R$.
+They do not denote pointwise multiplication of functions.  We call $P$
+an \emph{actual analytic relation} when $\kappa_b(P)=0$ in the analytic
+delta-form sheaf.  Its action \MathEqref{eq:action} is an already defined
+finite signed coefficient-Radon current.
+
+\begin{conjecture}[Descent of actual analytic relations]
+\label{conj:descent}
+Let $n\ge1$, $1\le b\le n$, and let $P$ be a finite signed admissible
+PL/PS presentation at an ordinary germ $(X,x)$ over the fixed $K$.  Suppose
+$\kappa_b(P)=0$ as an actual analytic delta-form germ.  There is an
+ordinary representative $U$ of this germ, chosen for $P$, such that
+for every $0\le p\le n-b$ and every allowed background $S$ of bidegree
+$(p,p)$ on $U$,
+\begin{equation}
+                              \A_S(P)=0\quad\hbox{on }U.
+                              \label{eq:main-descent}
+\end{equation}
+The equality holds on every original compact smooth complementary CLD
+test and after every actual refinement of the presentation.  The field,
+its absolute value and the carrier of $S$ remain the given ones.
+\end{conjecture}
+
+The quantifiers express the intrinsic content of the conjecture.  The
+relation and an ordinary representative are fixed before the background
+and its tests are chosen.  A proof would define an action of the actual
+curvature-product sheaf $\im\kappa_b$ by choosing any finite local
+presentation and using \MathEqref{eq:action}.  Ordinary locality would
+then glue these actions.  A common bounded curvature tail can be
+absorbed into the background, so the same statement controls its
+insertion in larger products.
+
+There are two reasons to begin with $b=2$.  First, this is the first
+degree in which actual relations can couple distinct curvature factors.
+Second, the quadratic action has a degree-one transgression:
+\begin{equation}
+ \alpha_P=\frac12\sum_\nu c_\nu
+          (h_\nu\D_\delta k_\nu+k_\nu\D_\delta h_\nu),
+ \qquad
+ \A_S(P)=\D M_S(\alpha_P),
+ \label{eq:intro-transgression}
+\end{equation}
+where $M_S$ is the established degree-one action.  This identity turns
+the descent problem into an exactness or controlled-approximation
+problem in a module whose action is already available.  In finite
+residue rank at most two that construction has been completed
+\cite{I11}.  In the next model case, normal dimension three, it reduces
+the action to a central angular pairing \cite{I13}.
+
+\subsection{Three interacting directions}
+
+The intrinsic relation problem is one branch of the program.  A second
+branch asks which regularity and comparison principles belong to the
+relative capacity defined by the full class of normalized classical
+testers.  A third studies literal measures on the strong energy
+completion and the image of its source map.  These branches share the
+bounded calculus, but their remaining arguments have different inputs.
+The capacity and source questions can be studied with the existing
+potential calculus while relation descent remains open.
+
+This distinction determines the form of the statements below.
+\Conjref{conj:descent} is a positive structural conjecture.  Borel
+inner regularity of relative outer capacity and literal energy-dual
+continuity are posed as questions: their full original formulations
+remain undecided.  Nonlinear source compatibility is a classification
+problem, because positive smooth density perturbations can already
+leave the source image.  The examples in
+\MathSecref{sec:capacity} and \MathSecref{sec:sources} are therefore
+part of the mathematical specification of the program.
+
+\section{The established potential calculus}
+\label{sec:foundation}
+
+We recall the results on which the open problems rest.  Detailed
+proofs of the bounded construction, curvature quotient and energy
+interfaces are assembled in the companion article \cite{Mature};
+the original constructions and more extensive energy theory are in
+\cite{R,B,Rchain}.  The statements in this section are used with their
+printed domain and boundary hypotheses.
+
+\subsection{Bounded products and the curvature quotient}
+
+The scalar input identifies locally bounded classical psh functions
+with limits of decreasing semipositive rational PL sequences on a
+single fixed ordinary neighborhood \cite{B}.  In the finite continuous
+setting, current positivity is also related to locally uniform smooth
+positive approximation in the geometric scope of \cite{R}.  These
+regularizations serve different purposes: decreasing approximation
+constructs bounded products, whereas uniform approximation is suited
+to continuous coefficients and moving continuous data.
+
+For comparison, Wu constructs top-degree local mixed Monge--Amp\`ere
+measures for his locally PL-regularizable bounded psh class, with
+weighted convergence for decreasing PL approximating rows
+\cite[Theorem~4.2, pp.~25--26]{Wu}.  The dependence of a
+regularizing neighborhood on the member of a general decreasing psh
+sequence is isolated in his Remark~4.6.  His Appendix~A compares the
+one-step smooth- and PL-approximable classes; comparison with the
+iterated CLD closure uses an envelope property
+\cite[Remark~A.2 and Theorem~A.3, pp.~52--53]{Wu}.  The scalar input
+used here specifies the classical class over the original $K$ and
+one fixed neighborhood; the relative theorem below then addresses
+every legal degree and an arbitrary allowed background.
+
+\begin{theorem}[Bounded relative calculus]
+\label{thm:bounded}
+Let $S$ be an allowed background of degree $(p,p)$ on $U$, and let
+$u_1,\ldots,u_b\in\Cb(U)$, where $b\le n-p$.  The recursion
+\MathEqref{eq:bt-recursion} defines a coefficient-Radon current,
+independent of the decreasing regularizations used in its construction.
+It is positive, separately $d'$- and $d''$-closed, symmetric in the
+differentiated slots, and additive and positively homogeneous in each
+slot.  It commutes with ordinary restriction and gluing.
+
+For decreasing rows $u_{i,j}\downarrow u_i$ in $\Cb(U)$, including a
+bounded weight slot $u_{0,j}\downarrow u_0$, one has
+\begin{equation}
+ u_{0,j}T_{S,b}(u_{1,j},\ldots,u_{b,j})
+       \longrightarrow u_0T_{S,b}(u_1,\ldots,u_b)
+                         \label{eq:weighted-monotone}
+\end{equation}
+on all original compact smooth tests.  In top degree this is local
+weak convergence of measures on compact continuous scalar tests.
+Each differentiated slot depends only on its curvature current.
+\end{theorem}
+
+The local CLN bounds control the coefficient measures against a finite
+positive frame.  This is the estimate that makes the recursion and
+its limiting operations analytic-space constructions.  In
+\MathEqref{eq:weighted-monotone} the Borel weight is its given pointwise
+representative.  The closure and symmetry assertions concern the
+unweighted differentiated product.
+
+Potential independence is stronger than regularization independence.
+For bounded classical potentials $u,v$ it gives
+\begin{equation}
+                  \D[u]=\D[v]\quad\Longrightarrow\quad
+                              \D((u-v)S)=0.
+                              \label{eq:potential-independence}
+\end{equation}
+The actual bounded classical curvature kernel is continuous
+pluriharmonic.  In the finite continuous class, current harmonicity,
+classical pluriharmonicity and ordinary local finite real sums of
+logarithms of analytic units agree \cite{R24}.  The same quotient
+argument transports curvature order: if $h=a-b$ is a difference of
+locally bounded classical potentials, then $\D[h]\ge0$ precisely when
+$h$ is classical psh in this class.
+
+Consider the sheaf of actual currents
+\begin{equation}
+ \mathcal M^1(U)=
+   \left\{\sum_{i=1}^m f_i\D[g_i]:
+        f_i\in C(U,\R),\ g_i\in\Cb(U),\ m<\infty\right\},
+                         \label{eq:curvature-module}
+\end{equation}
+with signed presentations interpreted by finite expansion.  Products
+of elements of this module with a fixed $S$ are already independent
+of their continuous-coefficient presentations.  This gives a
+substantial intrinsic calculus.  The main conjecture concerns the
+additional higher-degree relations arising in the actual delta-form
+quotient.
+
+\subsection{Order control and what it measures}
+
+For a positive represented curvature current $Q$, set
+\begin{equation}
+ E_Q=\{A\in\mathcal M^1:\ -cQ\le A\le cQ
+                              \text{ for some }c\ge0\},\qquad
+ \|A\|_Q=\inf\{c:\ -cQ\le A\le cQ\}.
+                         \label{eq:order-norm}
+\end{equation}
+Let $\Phi_{S,b}$ denote the established mixed module product.
+The positive order estimate is
+\begin{align}
+ -M_iQ_i\le A_i\le M_iQ_i\quad(1\le i\le b)
+ &\quad\Longrightarrow\quad
+ -\Bigl(\prod_iM_i\Bigr)R_S
+ \le\Phi_{S,b}(A_1,\ldots,A_b)
+ \le\Bigl(\prod_iM_i\Bigr)R_S,\nonumber\\[-3pt]
+ &\hspace{32mm}R_S=\Phi_{S,b}(Q_1,\ldots,Q_b).
+                         \label{eq:order-product}
+\end{align}
+Its polarized difference estimate is obtained by replacing one factor
+at a time.  The completion of $E_Q$ embeds faithfully into actual
+coefficient-Radon currents.  The controls $Q$ and $R$ are compatible
+through $Q+R$, and ordinary localization gives the sheaf
+$\mathcal M^1_{\mathrm{ord}}$.  The mixed products extend uniquely,
+with positivity, $C(U)$-multilinearity, locality and support
+intersection \cite{Order}.
+
+Order convergence supplies a quantitative comparison with one fixed
+positive measure after inserting every background.  Ordinary weak
+convergence alone has no such control.  Thus
+\MathEqref{eq:order-norm} is useful for relation descent only when the
+approximants and the fixed $Q$ are actually constructed.  Its
+completion theorem does not supply density of an arbitrary class of
+currents.
+
+\subsection{Truncation, no loss and finite energy}
+
+Let $V$ be a strict Laurent box of the following form.  For a compact
+original affinoid $B$, choose analytic functions and positive
+thresholds such that
+\begin{equation}
+ \begin{split}
+ K_0&=\{|f_a|\le R_a,\ |g_b|\ge r_b\}
+                      \Subset\operatorname{Int}_X(B),\\
+ V&=\{|f_a|<R_a,\ |g_b|>r_b\}\ne\varnothing,
+ \end{split}
+                         \label{eq:energy-domain}
+\end{equation}
+and suppose that $S$ is defined on an ordinary neighborhood of $K_0$.
+These assumptions will remain in force for every global energy or
+source statement in this paper.  Write $q=n-p\ge1$.
+
+For negative extended classical psh functions $u_1,\ldots,u_b$, put
+$u_{i,j}=\max(u_i,-j)$ and $E_j=\bigcap_i\{u_i>-j\}$.  Strict maximum
+locality makes
+\begin{equation}
+ \one_{E_j}T_{S,b}(u_{1,j},\ldots,u_{b,j})
+                         \label{eq:nonpolar-truncation}
+\end{equation}
+a consistent increasing family of positive coefficient measures.
+Its locally coefficient-finite limit is the non-polar product.  The
+limit is separately closed; closedness is a property of the resulting
+current, obtained by truncation estimates.
+
+For a single negative potential $u$, impose
+\begin{equation}
+ \overline{\{u<-t\}}\Subset V\quad(t>0),
+ \qquad
+ \nu_{u,j}:=\one_{\{u\le-j\}}T_{S,q}(u_j^{[q]}),
+ \qquad \nu_{u,j}(V)\longrightarrow0.
+                         \label{eq:no-loss}
+\end{equation}
+These conditions define $\mathcal F_{S,\partial}(V)$.  If $\mu_u$
+denotes the non-polar top measure, define
+\begin{equation}
+ \mathcal E^\sigma_{S,\partial}(V)
+   =\left\{u\in\mathcal F_{S,\partial}(V):
+                e_\sigma(u):=\int_V(-u)^\sigma\,\dd\mu_u<\infty\right\},
+                  \qquad \sigma>0.
+                         \label{eq:energy-class}
+\end{equation}
+The relative capacity of \MathSecref{sec:capacity} gives exact tail
+characterizations:
+\begin{align}
+ u\in\mathcal F_{S,\partial}(V)
+   &\ \Longleftrightarrow\
+       t^q C_S(\{u<-t\};V)\longrightarrow0,
+                        \label{eq:no-loss-capacity}\\
+ u\in\mathcal E^\sigma_{S,\partial}(V)
+   &\ \Longleftrightarrow\
+       \int_0^\infty t^{q+\sigma-1}
+                    C_S(\{u<-t\};V)\,\dd t<\infty,
+                        \label{eq:energy-capacity}
+\end{align}
+within the stated boundary class.  The theory also provides mixed
+products in every legal degree, the corresponding recursive current
+identities, and mixed integrability estimates.  Uniform energy bounds,
+together with the stated capacity convergence, give subcritical
+stability; the endpoint requires uniform tail
+integrability \cite{Rchain}.
+
+For first energy, the global Green formula makes
+\begin{equation}
+ B_S(u_0,\ldots,u_q)
+    =\int_V(-u_0)\,T_{S,q}(u_1,\ldots,u_q)
+                         \label{eq:mixed-energy}
+\end{equation}
+symmetric in all $q+1$ slots.  Its sharp mixed-energy estimate is
+\begin{equation}
+ B_S(u_0,\ldots,u_q)
+       \le\prod_{i=0}^{q}e_1(u_i)^{1/(q+1)}.
+                         \label{eq:mixed-holder}
+\end{equation}
+The strong completion
+$\C=\widehat{\mathcal E}^{1}_{\str}(V)$ has actual Borel
+representatives modulo the relative local outer-null ideal, extended
+mixed currents $\widehat N_b$, and top measures
+$\widehat\mu_u=\widehat N_q(u^{[q]})$.  Put $d=q+1$ and
+\begin{equation}
+ e(u)=B_S(u^{[d]}),\qquad r(u)=e(u)^{1/d},\qquad
+ I(u,v)=e(u)+e(v)-B_S(u,v^{[q]})-B_S(v,u^{[q]}).
+                         \label{eq:strong-discrepancy}
+\end{equation}
+Strong convergence $I(u_j,u)\to0$ is equivalent to convergence in all
+local truncated outer capacities together with $e(u_j)\to e(u)$.
+The boundary of $\C$ is encoded by strong approximation from
+\MathEqref{eq:energy-class}.  Its members need not have ambient
+classical representatives.
+
+There are consequently three distinct completions: the order
+completion of curvature currents, the strong completion of potentials,
+and the Borel completion defined by relative capacity.  Each is useful
+because it preserves a different set of operations.  The later
+interface problems specify when information passes between them.
+
+\section{Analytic relations and quantitative certificates}
+\label{sec:relations}
+
+\subsection{The quadratic transgression}
+
+The degree-one delta action is a canonical map
+\begin{equation}
+ M_S:\B^{1,1}(U)\longrightarrow\mathcal D'^{p+1,p+1}(U),
+ \qquad M_S(f\D_\delta g)=f\D(gS),
+                         \label{eq:degree-one-action}
+\end{equation}
+for the finite continuous scalar presentations at issue.  It is
+compatible with actual equality and with the full first derivatives
+\cite{Rchain,QA}:
+\begin{equation}
+ M_S(d'\beta)=d'(\beta\wedge S),\qquad
+ M_S(d''\zeta)=d''(\zeta\wedge S).
+                         \label{eq:first-derivative-action}
+\end{equation}
+The polyhedral boundary contributions are included in these formulas.
+
+For $P=\sum c_\nu[h_\nu][k_\nu]$, define
+\begin{align}
+ u_P&=\sum_\nu c_\nu h_\nu k_\nu,
+ &A_{0,P}&=\frac12\D_\delta u_P,\nonumber\\
+ Z_P&=\frac12\sum_\nu c_\nu
+ (d'_Ph_\nu\wedge d''_Pk_\nu+d'_Pk_\nu\wedge d''_Ph_\nu),
+ &\alpha_P&=A_{0,P}-Z_P.
+                         \label{eq:quadratic-energy}
+\end{align}
+Here $d'_P,d''_P$ mean the piecewise derivatives of the continuous
+scalar functions.  Full delta Leibniz gives
+\begin{equation}
+          \D_\delta\alpha_P=\kappa_2(P),\qquad
+          \A_S(P)=\D M_S(\alpha_P)=-\D M_S(Z_P).
+                         \label{eq:quadratic-return}
+\end{equation}
+Thus the signed quadratic relation retains the \emph{paired} tensor
+$Z_P$.  Treating the two scalar families independently would lose the
+cross terms that determine its action.
+
+Let
+\begin{equation}
+ \mathscr J^{1,1}=d'\B^{0,1}+d''\B^{1,0},\qquad
+ \mathscr Q^{1,1}=\B^{1,1}/\mathscr J^{1,1},
+                         \label{eq:first-order-quotient}
+\end{equation}
+where the sums are images in the ordinary sheaf category.  The operator
+$\D M_S$ vanishes on $\mathscr J^{1,1}$.  For an actual zero relation
+$P$, its class $[\alpha_P]$ lies in the Aeppli quotient
+$\ker\D_\delta/\mathscr J^{1,1}$.  For a general nonzero quadratic
+curvature, $[\alpha_P]$ instead belongs to the larger quotient
+\MathEqref{eq:first-order-quotient}; its derivative is that curvature.
+
+\begin{proposition}[Two sufficient quadratic certificates]
+\label{prop:certificates}
+Let $P$ be an actual quadratic relation on an ordinary germ.  Either
+of the following constructions proves its action vanishes for every
+allowed background of degree $p\le n-2$:
+\begin{enumerate}
+\item an actual local identity
+      $\alpha_P=d'\beta+d''\zeta$;
+\item full-exact symmetric approximants $a_j=d'\beta_j+d''\zeta_j$,
+      one fixed positive represented control $Q$, and
+      $\varepsilon_j\downarrow0$, all chosen on an ordinary
+      representative before the background and tests, such that
+      \begin{equation}
+       -\varepsilon_jQ\le[\alpha_P]-[a_j]\le\varepsilon_jQ
+                       \label{eq:controlled-exact}
+      \end{equation}
+      in the established order module, with its all-background
+      degree-one action estimate.
+\end{enumerate}
+\end{proposition}
+
+The first implication follows by applying
+\MathEqref{eq:first-derivative-action} and $\D$.  For the second, the
+order estimate bounds the difference against each fixed compact test
+by $\varepsilon_j$ times a fixed positive control measure; distributional
+continuity of $\D$ then applies.  These implications are the proved
+transgression and order-continuation results \cite{QA,Order}.  The
+construction of the certificates is the remaining mathematical work.
+
+The singular term $A_{0,P}$ has a useful role.  It is already full
+first-order exact and can be retained while only the regular energy
+$Z_P$ is approximated.  The existing counterexample to a compact
+continuous-coefficient smooth-form double primitive for every full
+polar \cite{R24} rules out an unnecessary regularity demand.  It leaves
+the actual full-exact certificate in
+\MathEqref{eq:controlled-exact} available.
+
+\subsection{A stronger carrier seminorm route}
+
+There is a second way to certify all-background descent, based on a
+fixed absolute cap carrier.  We state it because it exposes the
+difference between an action theorem and a stronger family of
+quantitative relation certificates.
+
+Let $\mathcal D(U)$ be the real space of finite continuous locally
+bounded classical psh differences and let
+$\mathcal P^b(U)=\Sym^b_\R\mathcal D(U)$.  For a closed carrier
+$F\subset U$, let $\mathcal Z_F^b(U)$ be generated by the following
+specified relations: a factor whose restriction near each point of $F$
+agrees with an ordinary local pluriharmonic function; an ordinary
+pointwise zero product on all of $F$; and a permitted common ambient
+real PL cycle identity together with its actual original pullback.
+These are the established carrier relation generators of \cite{R24}.
+An arbitrary analytic relation is not included as a generator.
+
+For $L\Subset U$, write $C=F\cap L$ and set
+$\|h\|_C=\sup_C|h|$ and
+$\osc_Cu=\inf_{a\in\R}\sup_C|u-a|$.  Empty-carrier norms are zero.
+Define
+\begin{equation}
+ \begin{split}
+ q^{U,b}_{F,L}(P)=\inf\biggl\{
+   \sum_\nu |c_\nu|\,\|h_\nu\|_C
+                       \prod_{j=2}^{b}\osc_Cu_{\nu j}:\quad
+   P=Z+\sum_\nu c_\nu[h_\nu]\prod_{j=2}^{b}[u_{\nu j}],\\[-2pt]
+   Z\in\mathcal Z_F^b(U),\quad h_\nu\in\mathcal D(U),\quad
+   u_{\nu j}\in\Cb(U)\cap C(U)\biggr\}.
+ \end{split}
+ \label{eq:carrier-seminorm}
+\end{equation}
+Every decomposition in the infimum is finite and is made on the same
+ordinary $U$.
+
+For the cap reduction, the carrier is
+\begin{equation}
+ F=\supp\,T_{[O],c}
+       ((\log|f_1|-a_1)_+,\ldots,(\log|f_c|-a_c)_+),
+                         \label{eq:absolute-cap}
+\end{equation}
+where $O$ and $f_i$ are the prescribed ordinary localization and
+analytic units.  The relative cap for $S$ is carried by this absolute
+set.  The carrier is selected by the cap construction, independently
+of cancellation in the signed relation.
+
+\begin{question}[Vanishing of the carrier-CLN certificate]
+\label{question:carrier}
+Let $P$ be an actual signed PL-zero germ of degree $b\ge2$.  On an
+ordinary representative, is
+\[
+                            q^{U,b}_{F,L}(P)=0
+\]
+for every required compact stage $L$ and the original absolute cap
+carrier \MathEqref{eq:absolute-cap}, with the generator space in
+\MathEqref{eq:carrier-seminorm} unchanged?
+\end{question}
+
+The established cap and CLN argument sends this zero certificate to
+$\A_S(P)=0$ for all allowed $S$ \cite{R24}.  It is therefore a
+sufficient route to the PL part of \Conjref{conj:descent}.  The reverse implication
+would require information on every polar of the seminorm, whereas
+background actions constitute a particular family of functionals.
+No identification of these two families is presently available.
+Direct exactness in \MathEqref{eq:quadratic-return} may prove the
+desired action without settling \Questref{question:carrier}.
+
+There is also a background-approximation route.  Let
+$\mathcal W^p_{\mathrm{loc}}$ be the ordinary-local weak closure, on
+fixed representatives, of positive separately closed actual
+delta-form backgrounds of bidegree $(p,p)$.  The full actual
+delta-testing calculus has been established in this class, which is
+stable under insertion of bounded BT curvature tails \cite{Rchain}.
+
+\begin{question}[Local approximation of backgrounds]
+\label{question:background-density}
+Does every allowed background of degree $(p,p)$ belong to
+$\mathcal W^p_{\mathrm{loc}}$?  More generally, which intrinsic
+geometric or coefficient conditions characterize this local weak
+closure on the original analytic space?
+\end{question}
+
+A density theorem would transfer the available testing calculus by
+its specified weak continuity.  It is an alternative source of
+all-background results; the quadratic exactness route treats $S$
+directly and can be pursued independently.
+
+\subsection{Higher degrees and differential interfaces}
+
+For $b>2$, a relation can have different curvature tails in its different
+summands.  Absorbing one common tail into $S$ treats a useful class of
+relations, but leaves this coupled case.  A possible proof architecture
+would produce transgressions for coupled presentations and compatibility
+relations between them, or prove that their analytic relation ideal is
+generated by already controlled lower-degree relations.  Either route
+must retain the full boundary differentials on common refinements.
+
+\begin{problem}[From curvature products to differential calculus]
+\label{problem:interfaces}
+Construct, in the original analytic category, the additional interfaces
+needed for a graded differential action: descent for higher coupled
+relations, descent with variable finite piecewise-smooth coefficients,
+compatibility of the resulting differential operators, and the extension
+from ordinary-current tests to the intended delta-form test classes.
+For each interface, identify its object sheaf and prove its local
+presentation independence, differential identities and stated
+functoriality.
+\end{problem}
+
+This formulation allows the different interfaces to use different
+arguments.  For example, equality on all ordinary smooth tests gives
+an ordinary current; extending the pairing to singular delta tests
+requires a continuity or integrability theorem for those tests.
+Similarly, an analytic map pulls back the scalar potentials used in
+a product in its established range, while a pullback of an arbitrary
+current requires separate hypotheses.  The resulting calculus should
+record the mapping class as part of each naturality statement.
+
+\section{Residue rank and the first critical normal model}
+\label{sec:rank}
+
+The finite moment presentation determines which residue geometry enters
+the quadratic relation.  This gives a measure of complexity that is
+different from the ambient analytic dimension.
+
+\subsection{The completed rank-two construction}
+
+For a fixed actual unit tuple $f=(f_1,\ldots,f_N)$ at $x$, put
+\begin{align}
+ \mathscr F_f(x)&=\widetilde K^{\gr}
+                  (\widetilde f_1(x),\ldots,\widetilde f_N(x)),\nonumber\\
+ d_f(x)&=\operatorname{trdeg}^{\gr}_{\widetilde K^{\gr}}
+                           \mathscr F_f(x),\nonumber\\
+ r_f(x)&=\dim_\Q\operatorname{Span}_\Q
+     \{-\log|f_i(x)|+\Q\log|K^\times|\}_{i=1}^N,
+ \qquad s_f(x)=d_f(x)-r_f(x).
+                         \label{eq:residue-rank}
+\end{align}
+The number $s_f(x)$ is the transcendence degree of the finitely
+generated field of normalized residues of the tuple.  It is bounded by
+$s_K(x)=\operatorname{trdeg}_{\widetilde K}\widetilde{\mathcal H(x)}$.
+
+\begin{theorem}[Quadratic descent in finite residue rank at most two]
+\label{thm:rank-two}
+Fix a finite continuous PL or PS scalar presentation through $f$,
+whose coefficient functions extend smoothly near the closed cells of
+one finite coefficient complex.  Let
+$P=\sum c_\nu[h_\nu][k_\nu]$ be an actual quadratic relation at $x$.
+If $s_f(x)\le2$, an ordinary neighborhood and a finite actual
+original-unit refinement carry a continuous finite-PS covector whose
+full strain is $Z_P$.  In particular $Z_P$, and hence $\alpha_P$,
+is full first-order exact there.
+
+There are also full-exact symmetric approximants satisfying
+\MathEqref{eq:controlled-exact} with one fixed represented positive
+control, chosen before every subsequent background, test and refinement.
+Consequently $\A_S(P)=0$ for every allowed $S$ of degree $p\le n-2$.
+\end{theorem}
+
+This is the construction of \cite{I11}, not merely a reduction to an
+unproved normal-surface lifting statement.  It first realizes the
+finite graded moment field on a target over the same $K$.  A complete
+normal-surface construction produces the covector on the whole actual
+moment image.  Its coefficients then return to the original source;
+their strain identities restrict through every later tangent map.
+The source-side order estimate retains $A_{0,P}$ and regularizes the
+energy with one fixed positive control.  Thus the ambient dimension
+and the ranks of later tests are unrestricted.  The rank hypothesis
+belongs to the fixed relation tuple.
+
+There is an intrinsic quotient consequence.  Let
+$\mathscr K_2=\im_{\mathrm{sh}}\kappa_2$.  At every point with
+$s_K(x)\le2$, the formula
+\begin{equation}
+ \tau_{2,x}:\mathscr K_{2,x}\longrightarrow\mathscr Q^{1,1}_x,
+ \qquad \tau_{2,x}(\kappa_2(P))=[\alpha_P]=-[Z_P],
+ \qquad \overline\D\,\tau_{2,x}=\operatorname{id}
+                         \label{eq:quadratic-quotient}
+\end{equation}
+is well defined.  Comparing two presentations uses their finite union
+tuple; its residue rank is still at most two under this stalk
+hypothesis.  On an ordinary open set where $s_K\le2$ everywhere,
+these maps form a sheaf morphism.  In particular they do so on analytic
+spaces of dimension at most two \cite{I11}.
+
+At a point of larger residue dimension, separate rank bounds on two
+presentations do not give a rank bound on their union.  For example,
+at the three-dimensional torus Gauss point the pairs $(T_1,T_2)$ and
+$(T_2,T_3)$ each generate two residue variables, while their union
+generates three.  This explains why the stalk hypothesis in
+\MathEqref{eq:quadratic-quotient} has mathematical content.
+
+\subsection{Ordinary punctured descent in a supplied normal-three germ}
+
+The next completed reduction concerns a supplied smooth integral
+normal-three model germ $(Y,y)$ over $K^\circ$.  Its distinguished
+analytic point has
+\begin{equation}
+ |\mathcal H(y)^\times|=|K^\times|,
+ \qquad F=\widetilde{\mathcal H(y)},
+ \qquad\operatorname{trdeg}_{\widetilde K}F=3.
+                         \label{eq:normal-three-model}
+\end{equation}
+Here ``supplied model germ'' includes the original-field lifting and
+complete-source comparison of \cite{I13}: the finite residue tuple is
+prepared on a smooth projective simple-normal-crossings model of $F$;
+its labelled monomial cones, their calibrations and all lower strata
+are realized by actual Gauss families on the ordinary germ.  The
+comparison covers the complete source of the fixed tuple, and the
+families converge ordinarily to $y$ uniformly in their angular
+parameters.  These are the model hypotheses of the result below.
+
+\begin{theorem}[Punctured quadratic action and a central residual]
+\label{thm:punctured}
+Let $(Y,y)$ be a supplied normal-three model germ as above, and let
+$P$ be a fixed finite continuous closed-cell PL/PS quadratic
+presentation with $\kappa_2(P)=0$.  There is an ordinary representative
+$U$ such that, for every allowed background $S$ of degree $p=0$ or $1$,
+\begin{equation}
+                        \A_S(P)|_{U\setminus\{y\}}=0.
+                         \label{eq:punctured}
+\end{equation}
+For $p=0$ the action vanishes on $U$.  For $p=1$ there is a scalar
+$c_S(P)$ such that
+\begin{equation}
+                              \A_S(P)=c_S(P)\delta_y.
+                         \label{eq:central-residual}
+\end{equation}
+All equalities use the original compact smooth tests and actual
+refinements.  The representative and its ordinary cover are fixed for
+$P$ before $S$ and its tests are chosen.
+\end{theorem}
+
+The proof in \cite{I13} covers a fixed finite old source inventory.
+Top-cone interiors have local ambient strain extensions.  Positive
+two-faces are treated by proper marked residue curves, simultaneous
+Picard completion and a final faithful separator.  The remaining
+finite ray families are treated by ordinary products with completed
+surface core fibers.  Off the old source the rank-two construction
+applies.  Each local primitive covers an ordinary neighborhood of the
+actual point, and ordinary current locality yields
+\MathEqref{eq:punctured}.
+
+The curve calibration explains why the geometric preparation must keep
+its labels.  At a marked residue point $a$, let $b_a=m_av_a$ be the
+actual order vector with $v_a$ primitive in the saturated normal
+lattice, and let $\delta_a=[\kappa(a):\widetilde K]$.  Its weight and
+the slope of a newly adjoined rational function $g$ satisfy
+\begin{equation}
+                 w_a=\delta_am_a,\qquad
+                 w_ah_a(g)=\delta_a\operatorname{ord}_a(g).
+                         \label{eq:curve-calibration}
+\end{equation}
+New zero-old-column marks and satellite pieces can enter after the
+Picard functions are adjoined.  Applying the last faithful separator
+to the completed tuple is what makes the subsequent common-strain
+Stokes argument account for those pieces.
+
+Once the action is supported at $y$, coefficient-Radon structure and
+separate closedness eliminate point support below top degree.  In top
+degree, a Dirac mass remains possible.  The current problem therefore
+has an exact scalar form.
+
+\subsection{Critical tangents and the full spherical pairing}
+
+Choose a protected finite actual moment map
+$t:U\to\Omega\subset\R^N$ containing the scalar presentation, with
+$t(y)=0$, such that $t^{-1}(L)$ is compact in $U$ for every compact
+$L\Subset\Omega$.  For an allowed degree-one background define the
+real supercurrent
+\begin{equation}
+                  \langle T_S,\eta\rangle
+                       =\langle S,t^*\eta\rangle,
+            \qquad \eta\in\mathcal A_c^{2,2}(\Omega).
+                         \label{eq:transpose}
+\end{equation}
+This uses the entire ordinary inverse image.  It is middle-positive,
+symmetric and separately closed, of real bidimension $(2,2)$.
+With
+\[
+        \beta=\sum_i d'z_i\wedge d''z_i,\qquad
+        \mu_S=\frac12T_S\wedge\beta^2,
+\]
+the function $r\mapsto\mu_S(B_r)/r^2$ is nondecreasing.  Thus
+\begin{equation}
+ \mu_S(B_r)=O(r^2),\qquad
+ \nu=\lim_{r\downarrow0}\frac{\mu_S(B_r)}{r^2}<\infty.
+                         \label{eq:critical-growth}
+\end{equation}
+Subsequences of the rescaled currents
+$T_{S,\delta}=\delta^2(a_\delta)_*T_S$,
+$a_\delta(z)=z/\delta$, have conic positive separately closed limits
+$T_0$ with trace mass $\mu_{T_0}(B_R)=\nu R^2$ \cite{I13}.
+The real growth calculation is the Lelong monotonicity argument for
+positive closed supercurrents \cite[Proposition~3.4 and
+Corollary~3.5]{Lagerberg}.  Its application here uses the protected
+transpose \MathEqref{eq:transpose}: full compact pullback support
+retains both closedness equations.  The later PS pairing and the
+comparison with the analytic relation are the additional interfaces
+proved in \cite{I13}.
+
+The closed-cell scalar extensions have homogeneous PL first jets
+$h_\nu^{[1]},k_\nu^{[1]}$.  Their full paired tensor
+\begin{equation}
+ Z_0=\frac12\sum_\nu c_\nu
+ (d'_Ph_\nu^{[1]}\wedge d''_Pk_\nu^{[1]}
+       +d'_Pk_\nu^{[1]}\wedge d''_Ph_\nu^{[1]})
+                         \label{eq:leading-tensor}
+\end{equation}
+satisfies $-Cr\beta\le Z_P-Z_0\le Cr\beta$ on the complete protected
+inverse image of $B_r$.  The inequality is preserved by rank-losing
+tangent maps.  A cutoff $\rho(z/\delta)$ has second derivatives of
+size $O(\delta^{-2})$; combining this with
+\MathEqref{eq:critical-growth} shows that replacement of $Z_P$ by
+$Z_0$ changes its residual pairing by $O(\delta)$.
+
+\begin{theorem}[Spherical formula for the realized residual]
+\label{thm:spherical}
+In the setting of \Thmref{thm:punctured}, let $T_0$ be any critical
+tangent obtained from the same background and protected presentation.
+There is a finite positive semidefinite matrix-valued measure
+$\mathsf M$ on $\mathbb S^{N-1}$ such that
+\begin{equation}
+ \mathsf M\theta=0,\qquad
+ \operatorname{div}_{\mathbb S}\mathsf M=0,\qquad
+ \sigma=\tr\mathsf M,\qquad
+ \sigma(\mathbb S^{N-1})=2\nu.
+                         \label{eq:angular-constraints}
+\end{equation}
+For the actual first jets in \MathEqref{eq:leading-tensor},
+\begin{equation}
+ \begin{split}
+ c_S(P)=\sum_\nu c_\nu\biggl(&
+      \int_{\mathbb S^{N-1}}h_\nu^{[1]}k_\nu^{[1]}\,\dd\sigma\\
+      &-\int_{\mathbb S^{N-1}}
+          d_{\mathbb S}h_\nu^{[1]}\otimes
+          d_{\mathbb S}k_\nu^{[1]}:\dd\mathsf M\biggr).
+ \end{split}
+                         \label{eq:spherical-residual}
+\end{equation}
+The coefficient-wall values are their canonical tangential PS values.
+Equivalently, for every compact smooth cutoff $\rho$ equal to one near
+zero,
+\begin{equation}
+ c_S(P)=-\langle T_0,Z_0\wedge\D\rho\rangle,
+ \qquad \D(Z_0\wedge T_0)=-c_S(P)\delta_0.
+                         \label{eq:tangent-residual}
+\end{equation}
+The value is independent of the chosen critical tangent and cutoff.
+\end{theorem}
+
+The matrix measure is the angular coefficient measure of the conic
+current: its radial coefficient disintegration is $r\,\dd r\,\dd\mathsf
+M$.  Positivity controls all coefficients by the trace, and separate
+closedness gives the spherical divergence equation.  In fact this
+construction classifies the corresponding real positive closed cones.
+The analytic cancellation problem concerns the pairs $(Z_0,\mathsf M)$
+realized jointly by an original analytic zero relation and its allowed
+background.
+
+\begin{conjecture}[Cancellation of the realized critical pairing]
+\label{conj:critical}
+For every supplied normal-three model germ, every actual quadratic
+relation in the finite closed-cell PL/PS class, every allowed
+degree-one background, and every common protected presentation, the
+right-hand side of \MathEqref{eq:spherical-residual} is zero.
+\end{conjecture}
+
+This is the precise remaining special case of quadratic descent in
+that model category.  It is proved when $\nu=0$, when $Z_0$ has an
+actual full-exact identity on an ordinary neighborhood of the protected
+central fiber, or when each scalar first jet is one ambient linear
+function.  The last case follows from the angular balance identity
+\begin{equation}
+          \int_{\mathbb S^{N-1}}\dd\mathsf M
+             =\int_{\mathbb S^{N-1}}\theta\theta^t\,\dd\sigma.
+                         \label{eq:angular-moment}
+\end{equation}
+Bounded-potential and the established weakly approximable background
+classes provide further known cases \cite{Rchain,I13}.
+
+The next geometric question is a wall-flux cancellation.  Cellwise
+strain primitives already exist.  Their differences on overlaps are
+affine Killing fields, and smooth interpolation across a wall produces
+an $\varepsilon^{-1}$ derivative.  The available normal strip estimate
+is $O(\varepsilon)$, so the resulting error can have order one.
+Separate closedness controls the compatible PS pairings, but this
+critical contribution must be eliminated using the actual zero
+relation and its joint source geometry.  A successful argument should
+express the wall flux in an actual relation module and then annihilate
+it under refinement; an estimate that only treats each open cell
+cannot decide \Conjref{conj:critical}.
+
+Two existing examples delimit this approach.  A real five-plane fan
+has locally normalized angular primitives and a nonzero global
+Killing obstruction, with a quantitative $L^1$ gap; it is $\D$-closed
+but not separately $d'$- and $d''$-closed.  It rules out automatic
+global patching from those local data.  A separate real coefficient
+example has a positive closed plane background and a bounded PS tensor
+whose second derivative is a Dirac mass; it reaches the critical
+$r^2$ growth.  Neither example is an original analytic zero relation.
+Their role is to identify the missing structural input, rather than
+to decide the analytic conjecture \cite{I13}.
+
+\section{Relative capacity and the correct Borel question}
+\label{sec:capacity}
+
+\subsection{The capacity attached to the full tester class}
+
+For $S$ and $V$ as in \MathEqref{eq:energy-domain}, define on Borel
+sets $E\subset V$
+\begin{align}
+ C_S(E;V)
+   &=\sup\left\{\int_E T_{S,q}(u^{[q]}):
+                   u\in\Cb(V),\ 0\le u\le1\right\},
+                         \label{eq:raw-capacity}\\
+ C_S^*(E;V)
+   &=\inf\{C_S(G;V): E\subset G\subset V,
+                                      \ G\text{ ordinary open}\}.
+                         \label{eq:outer-capacity}
+\end{align}
+The same outer formula applies to arbitrary subsets.  The testers are
+defined on the whole specified $V$.  They are actual classical
+potentials, so the definition keeps the original analytic constraint.
+
+Relative quasicontinuity, bounded decreasing convergence in capacity,
+strict maximum locality, compact-gap comparison and the appropriate
+relative quasi-everywhere domination are established.  The ambient
+background $[1]$ also has its local polar-set theory and its qualified
+exhaustion-domain Choquet theory \cite{Rchain}.  For a general $S$, an
+ambient polar set may carry background mass.  Thus relative nullity
+must be defined by \MathEqref{eq:outer-capacity}; it cannot be replaced
+by ambient pluripolarity.
+
+\begin{question}[Borel inner regularity of relative outer capacity]
+\label{question:outer}
+For every strict Laurent box \MathEqref{eq:energy-domain}, every
+allowed extending background $S$, and every Borel $E\subset V$, is
+\begin{equation}
+ C_S^*(E;V)\overset{?}{=}\sup\{C_S^*(H;V): H\subset E,\ H\text{ compact}\}
+                         \label{eq:borel-inner}
+\end{equation}
+The question includes the local relatively compact case and its
+passage to an exhaustion of $V$.
+\end{question}
+
+This is an outer-capacity question.  The stronger equality
+$C_S=C_S^*$ is false even for compact sets in the original category.
+The crossed-box construction gives a full-tester compact gap and also
+excludes the corresponding continuity assertion for the raw capacity
+on decreasing compact sets \cite{R24}.  These examples leave
+\MathEqref{eq:borel-inner} undecided.
+
+\subsection{Exact examples and a restricted positive result}
+
+There is a second obstruction to transplanting the usual extremal-mass
+proof.  Let $X=(\mathbf G_{m,K}^n)^{\an}$ with $n\ge2$,
+$\lambda=-\log|\pi|$, $t_i=\log|T_i|$, and
+\[
+ V=\{|t_i|<\lambda\},\qquad
+ \beta=\sum_i d't_i\wedge d''t_i,\qquad S_0=\beta^{n-1}\wedge[X].
+\]
+Put $\tau=t/\lambda$, $K_r=\tau^{-1}([-r,r]^n)$, and
+$A_n=n!2^n\lambda^{n-2}$.  The complete original tester class satisfies
+\begin{equation}
+                 C_{S_0}(K_r;V)=C_{S_0}^*(K_r;V)
+                       =A_n\frac{r^{n-1}}{1-r},\qquad 0<r<1.
+                         \label{eq:box-capacity}
+\end{equation}
+For
+$h_r=\max\{(\|\tau\|_\infty-r)/(1-r),0\}-1$,
+every bounded actual classical $u$ satisfying
+$h_r\le u\le0$ and $u\le-1$ on $\operatorname{Int}K_r$ has
+\begin{equation}
+                  \int_V\D u\wedge S_0=\frac{A_n}{1-r}.
+                         \label{eq:obstacle-mass}
+\end{equation}
+The ratio of \MathEqref{eq:obstacle-mass} to
+\MathEqref{eq:box-capacity} is $r^{1-n}$, which is unbounded as
+$r\downarrow0$ \cite{Capacity}.  A total relative extremal mass
+therefore cannot calibrate this capacity by a universal constant.
+The same original smooth-background setting also supplies failure of
+strong subadditivity for outer capacity; ordinary subadditivity
+survives.  Strong subadditivity is a possible proof mechanism, rather
+than a necessary condition for the desired Borel inner regularity.
+
+There is a useful positive range.  If $B$ is a Borel subset of a
+compactly contained moment box and
+$\mathcal H^{n-1}(B)<\infty$, then for the full saturated set
+$E=\tau^{-1}(B)$,
+\begin{equation}
+ C_{S_0}^*(E;V)=
+       \sup_{H\subset E\ {\rm compact}}C_{S_0}^*(H;V),
+                         \label{eq:hausdorff-range}
+\end{equation}
+and saturated compact subsets suffice.  The proof obtains a uniform
+Hausdorff bound for the full tester family; finite-measure inner
+regularity then makes the discarded remainder small uniformly in
+the testers.  It extends to backgrounds $S'$ for which both $S'$ and
+$CS_0-S'$ are allowed positive separately closed currents
+\cite{Capacity}.
+
+This suggests a concrete route for larger classes: obtain local
+uniform remainder estimates for the original tester measures, and
+then pass to Borel sets by an exhaustion that preserves those
+estimates.  A countable family of dominating Radon measures, or a
+replacement by completed sources, would require a separate theorem.
+The finite-Hausdorff argument works because it proves precisely the
+uniform remainder bound needed for its specified sets.
+
+\begin{problem}[Detection and tester recovery]
+\label{problem:tester}
+Find intrinsic conditions on $(V,S)$ and a class of sets under which
+normalized actual classical testers recover the intended compact
+masses and relative quasi-everywhere statements determine the desired
+pointwise representatives.  The conditions should distinguish the
+relative null ideal from ambient pluripolarity and remain valid for
+the full tester class in \MathEqref{eq:raw-capacity}.
+\end{problem}
+
+Such conditions could connect capacity to geometric support or a
+verified local approximation of $S$.  They would also supply the
+representative information needed in the singularity and boundary
+problems below.
+
+\section{Literal measures and the geometry of the source image}
+\label{sec:sources}
+
+Fix \MathEqref{eq:energy-domain} and its strong completion $\C$.  The
+equation of interest is
+\begin{equation}
+                              \widehat\mu_u=\mu,\qquad u\in\C.
+                         \label{eq:source-equation}
+\end{equation}
+It has two logically distinct requirements: the prescribed measure
+must pair continuously with the strong potential topology, and its
+functional must lie in the source image.
+
+\subsection{The energy-difference space and literal continuity}
+
+The completed Borel difference space and its norm are
+\begin{equation}
+ \mathbb D_S=\C-\C,\qquad
+ \|h\|_{\ed}=\inf_{h=a-b}\{r(a)+r(b):a,b\in\C\}.
+                         \label{eq:ed-norm}
+\end{equation}
+This is a Banach space, with $\|u\|_{\ed}=r(u)$ for $u\in\C$.
+A positive Radon measure $\mu$ is a \emph{literal energy-dual datum}
+if it annihilates the relative null ideal, every member of
+$\mathbb D_S$ is literally $\mu$-integrable, and
+\begin{equation}
+ \ell_\mu(h)=-\int_Vh\,\dd\mu,
+ \qquad |\ell_\mu(h)|\le C_\mu\|h\|_{\ed}
+                       \quad(h\in\mathbb D_S).
+                         \label{eq:literal-ed}
+\end{equation}
+This definition concerns the actual measure and all completed Borel
+differences.  The measure may have infinite total mass on $V$.
+
+\begin{question}[Literal strong continuity]
+\label{question:literal}
+For every fixed allowed $S$ and strict Laurent box, does
+\MathEqref{eq:literal-ed} imply
+\begin{equation}
+       I(u_j,u)\longrightarrow0\quad\overset{?}{\Longrightarrow}\quad
+       \int_V|u_j-u|\,\dd\mu\longrightarrow0
+                       \qquad(u_j,u\in\C)
+                         \label{eq:literal-strong}
+\end{equation}
+\end{question}
+
+Source-dominated data and specific capacity-dominated classes already
+satisfy this continuity.  The general question asks for the missing
+uniform integrability mechanism.  Strong convergence controls the
+nonlinear energy discrepancy in \MathEqref{eq:strong-discrepancy};
+it need not be convergence in the difference norm
+\MathEqref{eq:ed-norm}.  Boundedness of a functional for the latter
+norm therefore does not settle \MathEqref{eq:literal-strong}.
+
+Let $P_S(a,b)$ be the greatest member of $\C$ lying below $a$ and $b$
+in the relative quasi-everywhere order.  Finite rooftops exist.  One
+proved sufficient route to \Questref{question:literal} is the
+following fixed-background ordered-rooftop continuity assertion:
+\begin{equation}
+ \left.
+ \begin{gathered}
+       w\preceq_{\rel}u,\quad u_j\longrightarrow u
+                              \text{ strongly in }\C
+ \end{gathered}\right\}
+ \quad\Longrightarrow\quad
+                  e(P_S(w,u_j))\longrightarrow e(w).
+                         \label{eq:ordered-rooftop}
+\end{equation}
+Another sufficient route is sublinear growth of the energy roots of
+finite common minorants along subsequences.  For example, a direct
+estimate
+\begin{equation}
+ e(P_S(u_j:j\in F))\le C\sum_{j\in F}e(u_j)
+                         \label{eq:finite-rooftop-budget}
+\end{equation}
+with $C$ independent of the finite cardinality $|F|$, on the rows
+needed by the packing criterion, yields a sublinear root budget
+$O(|F|^{1/(q+1)})$.  The established reductions and the exact weaker
+subsequence criterion are recorded in \cite{Rchain,Rooftop}.
+
+The coefficient-one binary energy bound is false.  In remaining degree
+$q=1$, the universal bound
+\begin{equation}
+                  e(P_S(u,v))\le2(e(u)+e(v))
+                         \label{eq:binary-rooftop}
+\end{equation}
+has optimal constant $2$ across allowed backgrounds, already for
+smooth strongly positive backgrounds and bounded actual obstacles
+\cite{Rooftop}.  Repeated use of this binary bound gives a quadratic
+worst-case energy budget in the number of obstacles and does not
+supply \MathEqref{eq:finite-rooftop-budget}.  The counterexamples also
+exclude an energy-only modulus uniform over changing backgrounds;
+the fixed-$S$ assertion \MathEqref{eq:ordered-rooftop} remains open.
+The constant-one mixed-energy inequality
+\MathEqref{eq:mixed-holder} concerns a different expression and
+remains available.
+
+\subsection{Variational projection and an exact scalar obstruction}
+
+Define the source functional
+\begin{equation}
+ J(u)(h)=-\int_Vh\,\dd\widehat\mu_u,
+                   \qquad J:\C\longrightarrow\mathbb D_S^*.
+                         \label{eq:source-map}
+\end{equation}
+The image $J(\C)$ is norm closed.  The distance
+$\|J(u)-J(v)\|_*$ is complete and induces the strong topology.
+Let $\mathbb D_{S,\mathrm s}^*$ be the norm-dual functionals
+continuous on every strongly convergent cone row.
+
+\begin{theorem}[Projection and the normal-probe criterion]
+\label{thm:normal-probe}
+For every $\ell\in\mathbb D_{S,\mathrm s}^*$ there is a unique
+$u=\Pi(\ell)\in\C$ maximizing
+\[
+                        \ell(v)-\frac{e(v)}{q+1}
+                                    \quad(v\in\C).
+\]
+Its normal residual $n=\ell-J(u)$ satisfies
+\begin{equation}
+                    n(v)\le0\quad(v\in\C),\qquad n(u)=0.
+                         \label{eq:normal-cone}
+\end{equation}
+There is one bounded continuous strictly negative actual classical potential
+$\psi_0$, depending only on the box, for which every literal positive
+Radon datum $\mu$ with $\ell_\mu\in\mathbb D_{S,\mathrm s}^*$ has
+\begin{equation}
+ \Xi_{S,\psi_0}(\mu):=-n(\psi_0)\ge0,
+ \qquad
+ \Xi_{S,\psi_0}(\mu)=0
+     \Longleftrightarrow\widehat\mu_{\Pi(\ell_\mu)}=\mu
+     \Longleftrightarrow\mu\in\widehat\mu(\C).
+                         \label{eq:xi}
+\end{equation}
+When the equation is soluble, its member of $\C$ is unique.  For every
+original compact smooth scalar test $\varphi$ there is a finite
+constant $C_\varphi$, independent of $S$ and $\mu$, such that
+\begin{equation}
+ \left|\int_V\varphi\,
+       \dd(\widehat\mu_{\Pi(\ell_\mu)}-\mu)\right|
+                     \le C_\varphi\Xi_{S,\psi_0}(\mu).
+                         \label{eq:xi-error}
+\end{equation}
+\end{theorem}
+
+The proof of \cite{R12} constructs $\psi_0$ so that both signs of
+each original compact smooth direction are admissible small
+perturbations of it.  Testing the normal inequality with these two
+perturbations proves \MathEqref{eq:xi-error}.  Literal Radon
+uniqueness then identifies the source measures when the defect is
+zero.  This makes the remaining equation problem explicit: find
+conditions on the given data that eliminate the variational normal.
+
+\begin{problem}[A checkable description of compatible sources]
+\label{problem:sources}
+For a specified geometry $(V,S)$, characterize substantial classes of
+literal positive Radon data $\mu$ for which
+$\ell_\mu\in\mathbb D_{S,\mathrm s}^*$ and
+$\Xi_{S,\psi_0}(\mu)=0$.  The hypotheses should be verifiable from
+$\mu$, the geometry and explicitly supplied reference objects.
+Determine the corresponding existence, uniqueness and stability
+theorems in $\C$, together with precise obstructions outside these
+classes.
+\end{problem}
+
+The zero-defect criterion is a complete test after the variational
+maximizer is known.  \Probref{problem:sources} asks for input
+conditions that make that equality follow.  Assuming the desired
+source identity or a sharp norm equality involving the unknown
+optimizer would restate the conclusion.
+
+\subsection{Why smooth positive data do not give a universal conjecture}
+
+Tropical non-surjectivity is established in \cite{APW}; the relative
+source problem asks for its own geometric constraints on the given
+analytic domain and background.  The fixed-source obstruction already
+appears in remaining degree one
+on a two-dimensional analytic torus \cite{SourceObstruction}.  Use
+$V=t^{-1}(( -\lambda,\lambda)^2)$ and
+$S=(d't_1\wedge d''t_1+d't_2\wedge d''t_2)\wedge[X]$.
+Every completed potential has a canonical convex moment trace $g_u$
+with
+\begin{equation}
+          g_u\in H_0^1(( -\lambda,\lambda)^2),\qquad
+                        t_*\widehat\mu_u=\Delta g_u.
+                         \label{eq:trace-poisson}
+\end{equation}
+The trace is defined canonically; arbitrary Borel values at individual
+Gauss points are not used.
+
+There are fixed strict reference sources $\mu_w$ and smooth positive
+densities $f_j\to1$ uniformly such that
+\begin{equation}
+                          f_j\mu_w\notin\widehat\mu(\C).
+                         \label{eq:density-obstruction}
+\end{equation}
+The data retain literal strong continuity and uniform source domination.
+Their zero-boundary real Poisson solutions fail convexity.  Thus the
+linear trace identity \MathEqref{eq:trace-poisson} obstructs the
+existence of a source potential in the full prescribed strong
+completion.  This is a geometric constraint on the positive potential
+cone, and it survives arbitrarily small uniform density perturbations.
+
+A prospective local existence theorem should therefore choose a
+compatible data manifold or cone around a known reference $w$.
+On a class where the mixed expansion is justified, the linearization
+is
+\begin{equation}
+              L_wh=q\,\D h\wedge(\D w)^{q-1}\wedge S.
+                         \label{eq:linearization}
+\end{equation}
+Three ingredients would make an inverse construction meaningful:
+an independently described range of $L_w$ with its boundary and
+moment conditions; a right inverse with estimates in spaces embedded
+in the required potential completion; and stability of that range
+under the mixed nonlinear remainder.  The last condition is substantive.
+The available finite-angular-mode constructions impose weighted
+harmonic moment conditions on the linear inverse, and a second
+nonlinear residual can fail them \cite{C2}.  A right inverse on the
+initial finite modes alone does not control the nonlinear iteration.
+
+\subsection{The completed linear equation in its natural space}
+
+Remaining degree one means $q=n-p=1$, in arbitrary ambient dimension.
+For the specified affinoid part domains and relative faithful energy
+form, the signed measure equation has a developed renormalized theory
+\cite{Rchain,Mature}.  Here $H$ is the energy space of that part form,
+$T_kv=\max(-k,\min(v,k))$, and $\Gamma_S$ is its energy measure.
+A finite signed energy-diffuse Radon datum, meaning that its total
+variation vanishes on energy-polar sets, has a
+unique canonical zero-boundary renormalized solution $v$.  Its
+clippings $T_kv\in H$ belong to the energy space, and its finite
+energy-quasicontinuous representative $\widetilde v$ satisfies
+\begin{equation}
+ \D(\Phi(v)S)=\Phi'(\widetilde v)\mu+
+                           \Phi''(\widetilde v)\Gamma_S(v)
+                         \label{eq:renormalized-chain}
+\end{equation}
+for $\Phi\in C^2$ with compactly supported derivative, together with
+the radiation condition
+$k^{-1}\mathcal E(T_{2k}v-T_kv)\to0$.
+There are coarea, level-carrier and total-variation stability results.
+
+This theorem identifies a natural solution space for the linear
+measure problem.  Its solution need not be an ambient classical psh
+function or a member of the nonlinear source cone $\C$.  The
+compatibility obstruction in \MathEqref{eq:density-obstruction} and
+the renormalized existence theorem are therefore complementary parts
+of the relative theory.
+
+\section{Domains, singularities and geometric applications}
+\label{sec:applications}
+
+The Laurent-box hypotheses isolate a domain on which barriers,
+truncation estimates and global integration by parts are established.
+Extending the theory requires replacing the work performed by each
+of those hypotheses.
+
+\subsection{Boundary and representative problems}
+
+\begin{problem}[A domain theory with explicit boundary control]
+\label{problem:domains}
+Find geometric conditions on an ordinary domain $V$ and an allowed
+background $S$ that imply the barrier construction, the global Green
+formula and uniform boundary tightness needed for the strong
+completion.  Determine when exhaustion by relatively compact
+subdomains preserves the no-loss class, the source measures and the
+specified boundary condition.
+\end{problem}
+
+A useful theorem would state whether the boundary is an ordinary
+pointwise value, a capacity boundary value, an energy trace or a
+boundary defined by approximation.  It would then give the comparison
+between those notions under its geometric assumptions.  A negative
+exhaustion potential by itself does not record all the estimates used
+in the Laurent-box construction; the missing ingredients include
+uniform control of cutoff errors and of weighted mass near the
+boundary.
+
+\begin{problem}[Classical representatives of completed potentials]
+\label{problem:representatives}
+Characterize pairs $(V,S)$ and subclasses of $\C$ for which every
+completed Borel class has a canonical ambient classical psh
+representative.  Establish the continuity, comparison and boundary
+properties of that representative, and identify a relative detection
+condition that promotes quasi-everywhere equality to the intended
+pointwise equality.
+\end{problem}
+
+The curvature quotient and relative capacity provide two possible
+inputs.  Curvature determines a bounded potential modulo a
+pluriharmonic term, while capacity controls the exceptional sets of
+a completed representative.  A representative theorem must connect
+these two facts using actual regularization or detection; it cannot
+identify their quotient spaces by definition.
+
+\subsection{Singularity types and relative mass}
+
+For negative actual potentials, a local singularity comparison
+$u\le v+O(1)$ defines a preorder, and mutual comparison defines a
+singularity type.  Non-polar products give a way to ask which masses
+and mixed energies are determined by such a type.  In a relative
+theory the background is part of this question: it may charge an
+ambient polar locus, and a relative outer-null set need not be an
+ambient polar set.
+
+\begin{problem}[Relative singularity invariants]
+\label{problem:singularities}
+For explicit classes of negative actual potentials and allowed
+backgrounds, determine which non-polar masses, no-loss conditions and
+energy integrability properties are invariant under bounded changes
+of singularity.  Construct the associated envelopes and comparison
+theorems, specifying their ordinary domains, boundary conditions and
+relative null ideals.  Describe how these invariants change under
+proper geometric modifications in mapping classes for which the
+required current operations are defined.
+\end{problem}
+
+The capacity-tail formulas
+\MathEqref{eq:no-loss-capacity}--\MathEqref{eq:energy-capacity}
+provide a concrete starting point: they turn integrability into
+sublevel-set estimates.  A useful first extension would combine these
+estimates with a controlled model singularity and prove stability of
+the truncation mass under a specified modification.  This would
+produce information about singularity types without first requiring
+the entire graded differential interface.
+
+\subsection{Green currents and intersection theory}
+
+For a cycle $Z$ of codimension $r$, a Green current has bidegree
+$(r-1,r-1)$ and satisfies an identity of the form
+\begin{equation}
+                              \D g_Z+\delta_Z=\omega_Z,
+                         \label{eq:green-current}
+\end{equation}
+with a prescribed representative $\omega_Z$ of its class.  Existing
+delta-form theories construct Green objects and intersection
+formulas in substantial geometric ranges \cite{GK,Mihatsch}.
+The relative BT program suggests an extension in which the metric
+potentials or coefficients have finite energy.
+
+\begin{problem}[Finite-energy Green products]
+\label{problem:green}
+Construct classes of Green currents satisfying
+\MathEqref{eq:green-current} for which mixed products and local
+intersection pairings are defined by integrable truncation limits.
+Prove independence of the admissible presentations and truncations,
+Green symmetry, and agreement with the existing smooth, formal and
+delta-form products on their common domains.  State proper-intersection
+or replacement hypotheses that control products along the cycles.
+\end{problem}
+
+For curvature-generated Green expressions, relation descent would
+make the local differential presentation intrinsic.  The energy
+theory would provide bounds for the limiting integrals.  Products
+with a cycle current and their functoriality would still require
+the stated intersection and integrability arguments.  This separates
+the algebraic role of \Conjref{conj:descent} from the analytic role
+of energy estimates in a proposed Green product.
+
+\subsection{An arithmetic application with local and global conditions}
+
+The continuous theory already connects local current positivity with
+metric geometry.  In the geometric scope of \cite{R}, continuous
+Chern products glue, enjoy the stated smooth-subvariety projection
+formula, and identify the prescribed local mixed measures of the
+relevant integrable adelic line bundles.  With the exact
+boundary-completion identifications assumed there, finite continuous
+local CLD-positive weights give positivity of those prescribed
+Yuan--Zhang local measures.  The separate geometric adelic-nefness
+input retains its own hypotheses \cite{R,YZ}.
+
+\begin{problem}[Adelic finite-energy intersection]
+\label{problem:adelic}
+For a specified class of adelic metrized line bundles on a
+quasi-projective variety, define local finite-energy intersection
+terms that extend the established continuous ones.  Find explicit
+summability and boundary conditions under which their sum defines a
+global intersection pairing, independent of approximation and
+compatible with the product formula.  Prove the resulting variation,
+projection and positivity statements under stated geometric
+positivity hypotheses.
+\end{problem}
+
+The local and global requirements can be tested separately.  At a
+non-Archimedean place, the local task is to establish the chosen
+mixed-energy integral and its change under replacement of a metric.
+Across places, one needs a dominating summable estimate and a
+compatible treatment of the quasi-projective boundary.  Local
+positivity supplies the sign of a measure; an arithmetic positivity
+theorem also needs the global geometric assumptions.  This division
+would make a finite-energy extension of adelic intersection theory
+verifiable one interface at a time.
+
+\section{A proof architecture for the program}
+\label{sec:architecture}
+
+The program has three immediate mathematical targets.  The relation
+branch seeks cancellation of the critical pairing
+\MathEqref{eq:spherical-residual}, followed by a return from supplied
+normal-three models to general ordinary germs and by treatment of
+higher coupled relations.  The capacity branch seeks the uniform
+tester remainder estimates needed for
+\MathEqref{eq:borel-inner}.  The equation branch seeks fixed-background
+control sufficient for \MathEqref{eq:literal-strong} and independent
+conditions describing the closed source image.
+
+These targets suggest distinct forms of progress.  For the first,
+one needs an actual geometric wall-flux identity, an actual full-exact
+construction, or a counterexample retaining the complete original
+analytic relation.  The real angular classification makes the
+residual explicit, but analytic joint realization supplies further
+constraints that a successful proof must use.  For the second, a
+positive result should exhibit a remainder estimate uniform in the
+original normalized testers; a negative result should use those same
+testers and ordinary Borel sets.  For the third, an existence theorem
+should derive compatibility from data and known reference geometry,
+while an obstruction should identify the exact constraint that the
+datum violates.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.23\textwidth}p{0.31\textwidth}p{0.37\textwidth}@{}}
+\toprule
+Direction & Established input & Missing mathematical step\\
+\midrule
+Intrinsic relations & Bounded calculus, degree-one action,
+quadratic transgression, rank-two construction & Critical joint
+cancellation; general-germ return; higher and coefficient relations\\[4pt]
+Relative capacity & CLN, quasicontinuity, comparison,
+qualified Hausdorff control & Uniform Borel remainder control for
+the original testers\\[4pt]
+Literal data & Strong completion, energy difference norm,
+source and capacity dominated classes & Fixed-background uniform
+integrability or the corresponding actual counterexample\\[4pt]
+Nonlinear sources & Closed source image, variational projection,
+normal-probe criterion & Independent compatible data classes and
+stability of their nonlinear constraints\\[4pt]
+Geometric applications & Green symmetry, local Chern products,
+existing delta and adelic theories & Mapping, singularity,
+intersection and global summability interfaces\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The foundations support these directions without a circular dependence.
+The bounded recursion is available before the analytic relation
+conjecture.  The capacities and strong energy spaces are built from
+that recursion.  Literal continuity would enlarge the data to which
+the variational projection applies; it would not remove its normal
+residual.  Source compatibility is a further condition.  Conversely,
+explicit source classes can be constructed and analyzed without first
+settling literal continuity for every energy-dual datum.
+
+A complete theory in this sense would give a coherent account of
+objects, operations, limits and compatible equations.  It would
+include the nonexistence and strict-inequality phenomena already
+described here, together with the hypotheses that replace the false
+universal assertions.  The present conjectures and problems specify
+the mathematical steps from the established potential calculus to
+that theory.
+
+\begin{thebibliography}{99}
+\raggedright
+
+\bibitem{CLD12}
+A.~Chambert-Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de
+Berkovich}, \href{https://arxiv.org/abs/1204.6277v1}{arXiv:1204.6277v1},
+2012.  Original smooth test sheaf.
+
+\bibitem{CLD25}
+A.~Chambert-Loir and A.~Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de
+Berkovich}, \href{https://arxiv.org/abs/1204.6277v2}{arXiv:1204.6277v2},
+2025.
+
+\bibitem{GK}
+W.~Gubler and K.~K\"unnemann,
+\emph{A tropical approach to non-Archimedean Arakelov geometry},
+Algebra Number Theory \textbf{11} (2017), no.~1, 77--180.
+\href{https://doi.org/10.2140/ant.2017.11.77}{doi:10.2140/ant.2017.11.77}.
+
+\bibitem{Mihatsch}
+A.~Mihatsch, \emph{$\delta$-Forms on Lubin--Tate Spaces},
+Duke Math. J. \textbf{173} (2024), no.~14, 2809--2928;
+\href{https://arxiv.org/abs/2112.10018v4}{arXiv:2112.10018v4}.
+
+\bibitem{BFJmetrics}
+S.~Boucksom, C.~Favre and M.~Jonsson,
+\emph{Singular semipositive metrics in non-Archimedean geometry},
+J. Algebraic Geom. \textbf{25} (2016), 77--139.
+
+\bibitem{BFJma}
+S.~Boucksom, C.~Favre and M.~Jonsson,
+\emph{Solution to a non-Archimedean Monge--Amp\`ere equation},
+J. Amer. Math. Soc. \textbf{28} (2015), 617--667.
+\href{https://doi.org/10.1090/S0894-0347-2014-00806-7}{doi:10.1090/S0894-0347-2014-00806-7}.
+
+\bibitem{Reboulet}
+R.~Reboulet,
+\emph{Plurisubharmonic geodesics in spaces of non-Archimedean metrics
+of finite energy}, J. reine angew. Math. \textbf{793} (2022), 59--103.
+\href{https://doi.org/10.1515/crelle-2022-0059}{doi:10.1515/crelle-2022-0059}.
+
+\bibitem{YZ}
+X.~Yuan and S.-W.~Zhang,
+\emph{Adelic line bundles on quasi-projective varieties},
+\href{https://arxiv.org/abs/2105.13587v9}{arXiv:2105.13587v9}.
+
+\bibitem{Lagerberg}
+A.~Lagerberg, \emph{Super currents and tropical geometry},
+Math. Z. \textbf{270} (2012), 1011--1050;
+\href{https://arxiv.org/abs/1008.2856}{arXiv:1008.2856}, 2010.
+Section~3, especially Proposition~3.4 and Corollary~3.5.
+
+\bibitem{Wu}
+L.~Wu, \emph{On the local theory of non-archimedean psh functions},
+\href{https://arxiv.org/abs/2609.27610v1}{arXiv:2609.27610v1},
+23 September 2026.
+
+\bibitem{APW}
+O.~Amini, M.~Piquerez and L.~Wu,
+\emph{On solutions to tropical Monge--Amp\`ere equations},
+\href{https://arxiv.org/abs/2610.25602v1}{arXiv:2610.25602v1},
+19 October 2026.
+
+\bibitem{Mature}
+\emph{Bedford--Taylor products with a positive closed
+background: curvature quotients, relative energy and source equations},
+companion manuscript, 16 November 2026.
+
+\bibitem{R}
+\emph{Continuous CLD-positive potentials and mixed currents},
+internal manuscript R, version 2.6, 15 November 2026.  Theorems on
+regularization, mixed currents and local Chern products.
+
+\bibitem{B}
+\emph{Locally bounded classical plurisubharmonic functions and mixed currents}, internal manuscript B, edited version 0.1,
+10 November 2026.  Theorems 1.5--1.7 and the specified \`etale
+compatibilities.
+
+\bibitem{Rchain}
+NA--BT research project, \emph{Relative Bedford--Taylor calculus and finite energy},
+internal proof collection, R1--R24, November 2026.  The fixed-background
+calculus, potential quotient, unbounded products, R11 energy completion
+and relative remaining-degree-one equation.
+
+\bibitem{R12}
+NA--BT research project, \emph{Energy duals, source images and a single normal probe},
+internal proof collection R12, November 2026.  Scope formulas
+M2--M18 and the single-probe normal-residual theorem NP6--NP10.
+
+\bibitem{R24}
+NA--BT research project, \emph{Carrier-CLN certificates and the analytic relation
+problem}, internal proof collection R24, 14 November 2026.  Carrier
+seminorm R24.1, absolute carrier R24.1a, and the harmonic and
+primitive results in their stated scopes.
+
+\bibitem{QA}
+NA--BT research project, \emph{Degree-one action and the quadratic analytic Aeppli
+obstruction}, internal proof module, retained in the November 2026
+intrinsic-differential collection, formulas QA1--QA19.
+
+\bibitem{Order}
+NA--BT research project, \emph{Intrinsic order continuation}, internal manuscript,
+14 November 2026.  Fixed-control mixed estimates and the actual
+coefficient-current completion.
+
+\bibitem{I11}
+NA--BT research project, \emph{Actual normal stars and ordinary
+gluing}, internal intrinsic-differential collection,
+Round 11, 15 November 2026.  Ordinary quadratic descent in finite
+residue rank at most two and intrinsic quadratic transgression,
+modules OR and IQ.
+
+\bibitem{I13}
+NA--BT research project, \emph{Normal curve detectors and ordinary refinements},
+internal intrinsic-differential collection, Round 13,
+16 November 2026.  In particular CC1, punctured action PA, protected
+transpose MT, leading energy LE, compatible PS pairing PT and
+spherical residual SR.
+
+\bibitem{Capacity}
+NA--BT research project, \emph{Structure of the original relative capacity}, internal manuscript,
+15 November 2026.  Strong-subadditivity obstruction, exact box
+capacity and extremal-mass obstruction, finite-Hausdorff saturated
+Borel regularity and background-order extension.
+
+\bibitem{Rooftop}
+NA--BT research project, \emph{Sharp binary rooftop energy obstruction in original
+smooth backgrounds}, internal manuscript, 15 November 2026, with
+the fixed-background continuity question and finite-family criteria.
+
+\bibitem{SourceObstruction}
+NA--BT research project, \emph{Fixed all-test strict sources need not have a density
+neighborhood of solvability}, internal proof collection R17,
+November 2026, formulas FP1--FP9 and the fixed-source theorem.
+
+\bibitem{C2}
+NA--BT research project, \emph{Finite-mode source compatibility and nonlinear
+moment obstructions}, internal source-compatibility collection,
+November 2026.  Weighted harmonic-moment conditions and their
+specified finite-mode range.
+
+\end{thebibliography}
+\end{document}
