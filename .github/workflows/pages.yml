@@ -1,0 +1,51 @@
+name: Publish mathematical atlas
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build static pages
+        run: npm run build
+        env:
+          SITE_BASE_PATH: /math-research-atlas
+          SITE_ORIGIN: https://dongkaicheng.github.io/math-research-atlas
+          GITHUB_REPOSITORY: DongKaicheng/math-research-atlas
+      - name: Check generated content and links
+        run: npm run check
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,41 @@
+name: Idea
+description: "Share a new approach, improvement, or research idea."
+title: "[Suggestion] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a **public** GitHub Issue. Your name, text, and ZIP attachments will be visible to everyone.
+        Drag and drop a .zip file containing LaTeX or Lean sources into the detail field if useful.
+  - type: input
+    id: target
+    attributes:
+      label: Related project or result
+      description: "Give a project page, permanent theorem ID, or link."
+      placeholder: "For example: strong-green or /r/EXACT-ID/"
+  - type: input
+    id: version
+    attributes:
+      label: Version (if relevant)
+      description: "The version of the statement or page being discussed."
+      placeholder: "For example: version 0"
+  - type: textarea
+    id: details
+    attributes:
+      label: "Your idea"
+      description: "Be specific. You can attach .zip sources here using GitHub's upload control."
+      placeholder: "Explain your contribution, with hypotheses, links, and mathematics where relevant."
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Sources and references
+      description: "Papers, sections, source files, or existing discussions, if useful."
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public contribution
+      options:
+        - label: "I understand that this Issue and its attachments will be public."
+          required: true
