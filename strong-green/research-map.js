@@ -3,23 +3,100 @@
   if (!forest) return;
   const controls = forest.querySelector('[data-diagram-zoom-controls]');
   const canvas = forest.querySelector('[data-diagram-scroll]');
+  const diagram = canvas?.querySelector?.('[data-complete-logical-diagram]');
+  const toolbar = forest.querySelector('.logic-diagram-tools');
   const output = forest.querySelector('[data-diagram-zoom-value]');
   let zoom = 1;
+  let zoomFramePending = false;
+  let zoomAnchor;
+  let hashFramePending = false;
+  let hashNavigation = 0;
   if (controls) controls.hidden = false;
+
+  function toolbarBottom() {
+    const bounds = toolbar?.getBoundingClientRect();
+    return bounds && bounds.top <= 0 && bounds.bottom > 0 ? bounds.bottom : 0;
+  }
+  function readingPoint() {
+    if (hashFramePending) return;
+    if (!diagram?.getBoundingClientRect || !canvas?.getBoundingClientRect) return;
+    const bounds = diagram.getBoundingClientRect();
+    const viewport = canvas.getBoundingClientRect();
+    const anchor = { scrollX: window.scrollX, scrollY: window.scrollY, scrollLeft: canvas.scrollLeft };
+    if (!(bounds.width > 0 && bounds.height > 0)) return anchor;
+    const left = Math.max(0, viewport.left + canvas.clientLeft, bounds.left);
+    const right = Math.min(window.innerWidth, viewport.left + canvas.clientLeft + canvas.clientWidth, bounds.right);
+    const top = Math.max(0, toolbarBottom(), bounds.top);
+    const bottom = Math.min(window.innerHeight, bounds.bottom);
+    if (left >= right || top >= bottom) return anchor;
+    anchor.x = (left + right) / 2;
+    anchor.y = (top + bottom) / 2;
+    anchor.u = (anchor.x - bounds.left) / bounds.width;
+    anchor.v = (anchor.y - bounds.top) / bounds.height;
+    return anchor;
+  }
+  function restoreReadingPoint(anchor) {
+    if (!anchor) return;
+    if (anchor.u === undefined) {
+      // Changing a diagram below the viewport must not move the page.
+      canvas.scrollLeft = anchor.scrollLeft;
+      window.scrollTo({ left: anchor.scrollX, top: anchor.scrollY, behavior: 'instant' });
+      return;
+    }
+    // Measure actual CSS dimensions after layout. This also compensates for
+    // browser scroll anchoring instead of assuming the window stayed still.
+    const bounds = diagram.getBoundingClientRect();
+    canvas.scrollLeft += bounds.left + anchor.u * bounds.width - anchor.x;
+    window.scrollTo({ left: window.scrollX,
+      top: window.scrollY + bounds.top + anchor.v * bounds.height - anchor.y,
+      behavior: 'instant' });
+  }
   function setZoom(value) {
-    zoom = Math.max(.9, Math.min(2, Math.round(value * 10) / 10));
+    const next = Math.max(.9, Math.min(2, Math.round(value * 10) / 10));
+    if (next === zoom) return;
+    // Several key presses in one animation frame share the original reading
+    // point; recapturing it after a partial resize would accumulate drift.
+    if (!zoomFramePending) zoomAnchor = readingPoint();
+    zoom = next;
     canvas?.style.setProperty('--diagram-zoom', String(zoom));
     if (output) output.textContent = Math.round(zoom * 100) + '%';
+    if (!zoomFramePending) {
+      zoomFramePending = true;
+      requestAnimationFrame(() => {
+        zoomFramePending = false;
+        const anchor = zoomAnchor;
+        zoomAnchor = undefined;
+        restoreReadingPoint(anchor);
+      });
+    }
   }
   forest.querySelector('[data-diagram-zoom="-"]')?.addEventListener('click', () => setZoom(zoom - .1));
   forest.querySelector('[data-diagram-zoom="+"]')?.addEventListener('click', () => setZoom(zoom + .1));
   forest.querySelector('[data-diagram-reset]')?.addEventListener('click', () => setZoom(1));
   function revealLogicHash() {
+    const navigation = ++hashNavigation;
+    hashFramePending = false;
+    // Any new navigation wins over an older zoom, including a page anchor
+    // outside the diagram. Only graph targets receive graph-specific focus.
+    zoomAnchor = undefined;
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = id && document.getElementById(id);
-    if (!target || !forest.contains(target)) return;
-    requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    if (!target || !forest.contains(target) || !target.matches('[data-logic-node], [data-logic-gate], [data-logic-tree]')) return;
+    const hash = location.hash;
+    hashFramePending = true;
+    requestAnimationFrame(() => {
+      if (navigation !== hashNavigation) return;
+      hashFramePending = false;
+      if (location.hash !== hash) return;
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' });
+      // CSS supplies a no-JS margin; account for a wrapping sticky toolbar too.
+      const clearance = toolbarBottom();
+      const bounds = target.getBoundingClientRect?.();
+      if (clearance && bounds && bounds.top < clearance + 12)
+        window.scrollBy({ top: bounds.top - clearance - 12, left: 0, behavior: 'instant' });
+    });
   }
   window.addEventListener('hashchange', revealLogicHash);
   revealLogicHash();

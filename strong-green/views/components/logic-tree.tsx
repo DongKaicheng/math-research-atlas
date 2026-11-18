@@ -47,7 +47,7 @@ function DiagramBox({ item }: { item: any }) {
     <Lines lines={item.titleLines} x={x + 17} y={titleY} step={25} size={19} color="#1d4d3a" serif />
     {item.noteLines.length > 0 && <Lines lines={item.noteLines} x={x + 17} y={noteY} />}
   </>;
-  return <g id={item.id} data-logic-node="" data-logic-role={role} data-logic-record={item.record}
+  return <g id={item.id} tabIndex={-1} data-logic-node="" data-logic-role={role} data-logic-record={item.record}
     data-logic-status={item.status} className="logic-svg-node" aria-label={`${roleNames[role]}: ${item.title}. ${item.statusLabel}`}>
     {item.href ? <a href={item.href} aria-label={`Read ${item.title}`} className="logic-svg-link">{contents}</a> : contents}
     {item.links.map((link: any, index: number) => {
@@ -68,7 +68,7 @@ function DiagramGate({ item }: { item: any }) {
   const explanationY = nextY;
   nextY += item.explanationLines.length * 20 + 11;
   const path = `M ${cx} ${cy - 29} L ${cx + 32} ${cy} L ${cx} ${cy + 29} L ${cx - 32} ${cy} Z`;
-  return <g id={item.id} data-logic-gate={kind} className="logic-svg-gate" aria-label={`${item.relationLines.join(' ')}. ${item.explanationLines.join(' ')}`}>
+  return <g id={item.id} tabIndex={-1} data-logic-gate={kind} className="logic-svg-gate" aria-label={`${item.relationLines.join(' ')}. ${item.explanationLines.join(' ')}`}>
     <path d={path} fill={kind === 'blocked' ? '#fff0eb' : kind === 'open' ? '#fff5d9' : '#f4f6f1'} stroke={colors[kind]} strokeWidth={2.3} />
     <text x={cx} y={cy + 4} textAnchor="middle" fontFamily="Arial, sans-serif" fontSize={kind === 'blocked' ? 12 : 11} fontWeight={700} fill={colors[kind]}>{graphGateLabels[kind]}</text>
     <Lines lines={item.relationLines} x={x} y={relationY} step={22} size={16} color={colors[kind]} weight={700} />
@@ -82,28 +82,37 @@ function DiagramGate({ item }: { item: any }) {
   </g>;
 }
 
+function DiagramSection({ item: section, width }: { item: any; width: number }) {
+  let sy = section.y + 34;
+  const titleY = sy; sy += section.titleLines.length * 35 + 16;
+  const summaryY = sy; sy += section.summaryLines.length * 23 + 13;
+  return <g id={section.id} tabIndex={-1} data-logic-tree="" aria-label={section.titleLines.join(' ')}>
+    <path d={`M 28 ${section.y - 12} H ${width - 28}`} stroke="#7d9986" strokeWidth="2" />
+    <text x="54" y={section.y + 5} fontFamily="Arial, sans-serif" fontWeight="700" fontSize="11" fill="#597260">LOGICAL TREE {section.number}</text>
+    <Lines lines={section.titleLines} x={54} y={titleY} step={35} size={28} color="#214d3c" serif />
+    <Lines lines={section.summaryLines} x={54} y={summaryY} step={23} size={16} />
+    <Lines lines={section.scopeLines} x={54} y={sy} size={14} color="#59665f" />
+  </g>;
+}
+
 export function CompleteLogicSVG({ trees, title = 'Complete logical diagram: Beilinson–Bloch heights and Green forms' }: { trees: readonly LogicTree[]; title?: string }) {
   const scene = buildLogicScene(trees, entries);
+  // SVG paint order is also its reading and keyboard order. Keep connecting
+  // lines behind the graph, then interleave its content in visual order.
+  const readingOrder = [
+    ...scene.sections.map((item: any) => ({ kind: 'section', item, y: item.y - 12, key: item.id })),
+    ...scene.boxes.map((item: any) => ({ kind: 'box', item, y: item.y, key: item.id })),
+    ...scene.gates.map((item: any) => ({ kind: 'gate', item, y: item.cy - 29, key: item.id })),
+    ...scene.texts.map((item: any, index: number) => ({ kind: 'text', item, y: item.y, key: `label-${index}` })),
+  ].sort((a, b) => a.y - b.y);
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${scene.width} ${scene.height}`} width={scene.width} height={scene.height}
     className="complete-logic-svg" data-complete-logical-diagram="" role="group" aria-labelledby="complete-logic-title complete-logic-description">
     <title id="complete-logic-title">{title}</title>
-    <desc id="complete-logic-description">Every argument is fully drawn. Read from premises upward through ALL, ANY, IFF or OPEN junctions. Red blocked links do not assert an implication. Blue dashed links identify proof rules; grey dashed links give scope and definitions. All result boxes and proof sources are hyperlinks.</desc>
-    <style>{`.logic-svg-link:hover > rect,.logic-svg-link:focus-visible > rect{stroke:#176e92;stroke-width:3}.logic-svg-source:hover text,.logic-svg-source:focus-visible text{fill:#aa4828;text-decoration:underline}.logic-svg-node:target > a > rect{stroke:#b76524;stroke-width:4}.logic-svg-link,.logic-svg-source{cursor:pointer}`}</style>
+    <desc id="complete-logic-description">Every argument is fully drawn. Read from premises upward through ALL, ANY, IFF or OPEN junctions. Red blocked links do not assert an implication. Blue dashed links identify proof rules; grey dashed links give scope and definitions. Follow node and evidence links to their cited statements. Each node and junction also has its own fragment target.</desc>
+    <style>{`.logic-svg-link:hover > rect,.logic-svg-link:focus-visible > rect{stroke:#176e92;stroke-width:3}.logic-svg-source:hover text,.logic-svg-source:focus-visible text{fill:#aa4828;text-decoration:underline}.logic-svg-node:target > a > rect,.logic-svg-node:target > rect,.logic-svg-node:focus-visible > a > rect,.logic-svg-node:focus-visible > rect{stroke:#b76524;stroke-width:4}.logic-svg-gate:focus-visible > path{stroke-width:4}.logic-svg-link,.logic-svg-source{cursor:pointer}`}</style>
     <defs>{Object.entries(colors).map(([kind, color]) => <marker key={kind} id={`logic-arrow-${kind}`} markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M 0 0 L 9 4.5 L 0 9 Z" fill={color} /></marker>)}</defs>
     <rect width={scene.width} height={scene.height} fill="#fbfcf8" />
-    {scene.sections.map((section: any) => {
-      let sy = section.y + 34;
-      const titleY = sy; sy += section.titleLines.length * 35 + 16;
-      const summaryY = sy; sy += section.summaryLines.length * 23 + 13;
-      return <g id={section.id} key={section.id} data-logic-tree="" aria-label={section.titleLines.join(' ')}>
-        <path d={`M 28 ${section.y - 12} H ${scene.width - 28}`} stroke="#7d9986" strokeWidth="2" />
-        <text x="54" y={section.y + 5} fontFamily="Arial, sans-serif" fontWeight="700" fontSize="11" fill="#597260">LOGICAL TREE {section.number}</text>
-        <Lines lines={section.titleLines} x={54} y={titleY} step={35} size={28} color="#214d3c" serif />
-        <Lines lines={section.summaryLines} x={54} y={summaryY} step={23} size={16} />
-        <Lines lines={section.scopeLines} x={54} y={sy} size={14} color="#59665f" />
-      </g>;
-    })}
-    <g className="logic-svg-edges" fill="none" strokeLinejoin="round" strokeLinecap="round">
+    <g className="logic-svg-edges" aria-hidden="true" fill="none" strokeLinejoin="round" strokeLinecap="round">
       {scene.edges.map((edge: any) => {
         const effective = edge.relation || edge.kind;
         const color = colors[effective];
@@ -117,9 +126,12 @@ export function CompleteLogicSVG({ trees, title = 'Complete logical diagram: Bei
         </g>;
       })}
     </g>
-    {scene.texts.map((item: any, index: number) => <text key={index} x={item.x} y={item.y} fontSize="10.5" fontWeight="700" fill="#6e7b75" fontFamily="Arial, sans-serif">{item.text}</text>)}
-    {scene.boxes.map((item: any) => <DiagramBox key={item.identity} item={item} />)}
-    {scene.gates.map((item: any) => <DiagramGate key={item.id} item={item} />)}
+    {readingOrder.map(({ kind, item, key }) => {
+      if (kind === 'section') return <DiagramSection key={key} item={item} width={scene.width} />;
+      if (kind === 'box') return <DiagramBox key={key} item={item} />;
+      if (kind === 'gate') return <DiagramGate key={key} item={item} />;
+      return <text key={key} x={item.x} y={item.y} fontSize="10.5" fontWeight="700" fill="#6e7b75" fontFamily="Arial, sans-serif">{item.text}</text>;
+    })}
   </svg>;
 }
 
@@ -141,7 +153,7 @@ export function LogicForest({ trees, title, downloadPath = '/projects/strong-gre
       <ul>{trees.map(tree => <li key={tree.id}><a href={`#${tree.id}`}>{tree.navTitle || tree.title}</a></li>)}</ul>
     </nav>
     <div className="logic-diagram-tools">
-      <div data-diagram-zoom-controls="" hidden><button type="button" data-diagram-zoom="-">−</button><output data-diagram-zoom-value="" aria-live="polite">100%</output><button type="button" data-diagram-zoom="+">+</button><button type="button" data-diagram-reset="">100%</button></div>
+      <div data-diagram-zoom-controls="" hidden><button type="button" data-diagram-zoom="-" aria-label="Zoom out">−</button><output data-diagram-zoom-value="" aria-live="polite">100%</output><button type="button" data-diagram-zoom="+" aria-label="Zoom in">+</button><button type="button" data-diagram-reset="" aria-label="Reset zoom to 100%">100%</button></div>
       <a href={downloadPath} download={downloadName}>Download the complete linked SVG</a>
     </div>
     <p className="logic-pan-hint">The full diagram continues down the page. On a narrow screen, scroll sideways inside the diagram to keep the text readable.</p>

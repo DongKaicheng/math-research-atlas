@@ -147,7 +147,10 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   }
   const rewrite=(html,namespace)=>html.replace(/\b(href|src)="([^"]*)"/g,(_all,attr,href)=>`${attr}="${link(href,namespace)}"`);
   function registerDiagram(asset,trees,title){
-    const svg=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees,title})),projectPath)
+    // A saved diagram must keep opening the evidence edition it was drawn
+    // from. Current-only proof-navigation links retain their explicit routing
+    // above; paper, record and source evidence stays on the frozen edition.
+    const svg=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees,title})),editionPath)
       .replace(/href="(\/[^\"]*)"/g,(_all,href)=>`href="${new URL(href,origin).href}"`);
     diagramAssets.set(asset,{svg,version:createHash('sha256').update(svg).digest('hex').slice(0,16)});
   }

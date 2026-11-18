@@ -58,6 +58,34 @@ test('Progress proof views remain bound to the exact inspected public source byt
   }
 });
 
+test('Recovered endpoints use a separate conditional compact proof without circular curve transfer', () => {
+  const endpoint = progressProofs.find(item => item.caseId === 'endpoints');
+  const byId = new Map(allNodes(endpoint).map(node => [node.id, node]));
+  for (const suffix of ['divisor', 'zero-cycle', 'algebraic-endpoint']) {
+    const tree = endpoint.trees.find(item => item.id === `proof-endpoints-${suffix}-tree`);
+    assert.ok(tree, suffix);
+    assert.equal(tree.root.id, `proof-endpoints-${suffix}-conclusion`);
+    assert.equal(tree.root.status, 'conditional');
+    assert.equal(tree.root.gate.kind, 'all');
+    assert.ok(tree.scope.includes('(A1)') && tree.scope.includes('(A2)') && tree.scope.includes('(R)'));
+  }
+  const independent = endpoint.trees.find(item => item.id === 'proof-endpoints-algebraic-endpoint-tree');
+  const actualInputs = new Set(walkProofNodes(independent.root).map(node => node.record).filter(Boolean));
+  for (const record of ['BB-ACTUAL-OBSTRUCTION', 'BB-SUPPORTED-GREEN-PAIR', 'BB-RATIONAL-FIBRE-RIGIDITY']) {
+    assert.ok(actualInputs.has(record), record);
+    assert.equal(entries.find(item => item.id === record).status, 'draft', record);
+  }
+  const independentLinks = walkProofNodes(independent.root).flatMap(node => [node.href, ...(node.links || []).map(link => link.href), ...(node.gate?.sources || []).map(link => link.href)]).filter(Boolean);
+  assert.ok(independentLinks.every(href => !/pairing-constructions#(?:prop|sub):algebraic-triviality/.test(href)), 'Endpoint cannot depend on the curve-transfer proof which uses that endpoint');
+  assert.match(byId.get('proof-endpoints-divisor-algebraic-power').note, /Definition 6\.1.*Theorem 6\.3/);
+  assert.match(byId.get('proof-endpoints-zero-cycle-component-scope').note, /every geometric connected component/);
+  assert.match(byId.get('proof-endpoints-algebraic-original-character').note, /ΨZ=|D\(\(βa−Hz\)\/d\)=ΩZ/);
+  assert.equal(byId.get('proof-endpoints-divisor-input').href, '/results/proof-diagrams/endpoints/#proof-endpoints-divisor-conclusion');
+  assert.equal(byId.get('proof-endpoints-zero-cycle-input').href, '/results/proof-diagrams/endpoints/#proof-endpoints-zero-cycle-conclusion');
+  const source = endpoint.sourceBindings.find(item => item.file.endsWith('R12_compact_parameter_algebraic_triviality.tex'));
+  assert.ok(source.locators.includes('r12p:picard-products') && source.locators.includes('r12p:top-degree'));
+});
+
 test('The complete index and all independent proof pages are fully drawn without disclosures', async () => {
   const pages = [{ path: progressProofPath, trees: progressProofTrees }, ...progressProofs];
   for (const item of pages) {
@@ -153,6 +181,9 @@ test('Every standalone SVG has a matching content fingerprint and working links'
       assert.equal(url.origin, 'https://dongkaicheng.github.io', href);
       assert.ok(url.pathname.startsWith(base + '/'), href);
       assert.ok(!url.pathname.includes(base + base), href);
+      if (/\/(?:papers|entries)\//.test(url.pathname)) {
+        assert.ok(url.pathname.startsWith(prefix + '/editions/' + revision + '/'), 'Saved diagram evidence must be edition-pinned: ' + href);
+      }
       let target = decodeURIComponent(url.pathname.slice(base.length + 1));
       if (target.endsWith('/')) target += 'index.html';
       else if (!path.extname(target)) target += '/index.html';
@@ -160,6 +191,13 @@ test('Every standalone SVG has a matching content fingerprint and working links'
       if (url.hash) assert.ok(text.includes('id="' + decodeURIComponent(url.hash.slice(1)) + '"'), file + ': ' + href);
     }
   }
+});
+
+test('The saved whole-project map also pins paper and record evidence to its edition', async () => {
+  const svg = await read('dist/projects/strong-green/assets/complete-logical-map.svg');
+  const evidence = [...svg.matchAll(/\bhref="([^"]+)"/g)].map(match => match[1]).filter(href => /\/(?:papers|entries)\//.test(href));
+  assert.ok(evidence.length > 10);
+  for (const href of evidence) assert.ok(href.startsWith('https://dongkaicheng.github.io' + prefix + '/editions/' + revision + '/'), href);
 });
 
 test('Shared feedback preserves valid proof fragments without creating another inbox or record ID', async () => {

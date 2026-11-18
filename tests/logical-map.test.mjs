@@ -123,12 +123,13 @@ test('Diagram zoom and deep links never collapse a branch or modify the suppleme
     querySelector: selector => ({ '[data-diagram-zoom-controls]': controls, '[data-diagram-zoom="+"]': plus, '[data-diagram-zoom="-"]': minus, '[data-diagram-reset]': reset, '[data-diagram-zoom-value]': output, '[data-diagram-scroll]': canvas })[selector],
     contains: item => item === target,
   };
-  const target = { scrollIntoView() { this.scrolled = true; } };
+  const target = { matches: () => true, focus(options) { this.focused = options.preventScroll; }, scrollIntoView() { this.scrolled = true; } };
   vm.runInNewContext(source, {
     document: { querySelector: selector => selector === '[data-logic-forest]' ? forest : null, getElementById: () => target },
     location: { hash: '#logic-chow-retraction' }, window: { addEventListener() {} }, requestAnimationFrame: callback => callback(),
   });
   assert.equal(controls.hidden, false);
+  assert.equal(target.focused, true);
   assert.equal(target.scrolled, true);
   handlers.plus();
   assert.equal(output.textContent, '110%');
@@ -210,7 +211,7 @@ test('The downloadable SVG is complete and keeps absolute canonical hyperlinks w
   assert.equal((svg.match(/data-logic-node=""/g) || []).length, scene.boxes.length);
   assert.equal((svg.match(/data-logic-gate="/g) || []).length, scene.gates.length);
   assert.doesNotMatch(svg, /<script|foreignObject|<details|\/math-research-atlas\/math-research-atlas/);
-  for (const entry of entries) assert.ok(svg.includes(`href="https://dongkaicheng.github.io${project}/entries/${entry.id}/"`), entry.id);
+  for (const entry of entries) assert.ok(svg.includes(`href="https://dongkaicheng.github.io${project}/editions/${revision}/entries/${entry.id}/"`), entry.id);
   const html = await read('dist/projects/strong-green/research-map/index.html');
   const fingerprint = createHash('sha256').update(svg).digest('hex').slice(0, 16);
   assert.ok(html.includes(`${project}/assets/complete-logical-map.svg?v=${fingerprint}`));

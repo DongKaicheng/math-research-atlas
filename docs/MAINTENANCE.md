@@ -294,6 +294,22 @@ an old mathematical edition to add these reading pages. Run the complete
 repository tests and release/history checks after changing the renderer or the
 proof data, and inspect representative long diagrams and their source links.
 
+Keep the SVG's DOM reading order aligned with its visible vertical order,
+including junction evidence links. Diagram fragments must move keyboard focus
+as well as the viewport. When changing scale in a long diagram, preserve the
+visible diagram coordinate, not only the percentage label. The sticky scale
+controls must leave the linked node visible below them on narrow viewports.
+Standalone SVG downloads pin paper and permanent-record evidence to their
+mathematical source edition; navigation between current graphical views stays
+current. Check the export separately from the inline page.
+
+An unlocated historical proof file is not evidence that the entire public
+corpus lacks the argument. Before labelling a premise as imported without a
+public proof, check the full companion sources as well as the shortened reading
+paper. If an argument is recovered later, record the earlier scope limitation
+and the correction in a new publication note, preserving its actual analytic
+conditions and avoiding circular reuse of another proof route.
+
 ## Historical material and privacy
 
 Import only the intended public corpus. Original private research archives and

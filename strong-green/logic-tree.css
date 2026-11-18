@@ -15,7 +15,7 @@
 .logic-quick-nav { margin:22px 0 16px; }
 .logic-quick-nav ul { display:flex; flex-wrap:wrap; gap:10px 23px; list-style:none; padding:0; margin:0; }
 .logic-quick-nav a { display:inline-block; padding:5px 0; font-size:.86rem; font-weight:600; }
-.logic-diagram-tools { display:flex; align-items:center; flex-wrap:wrap; gap:15px 25px; padding:14px 0; border-block:1px solid #c9d4c6; }
+.logic-diagram-tools { position:sticky; top:0; z-index:4; display:flex; align-items:center; flex-wrap:wrap; gap:15px 25px; padding:14px 8px; border-block:1px solid #c9d4c6; background:#fbfcf8; }
 .logic-diagram-tools > div { display:flex; align-items:center; gap:8px; }
 .logic-diagram-tools > div[hidden] { display:none; }
 .logic-diagram-tools button { min-width:44px; min-height:44px; padding:7px 13px; border:1px solid #98b0a0; border-radius:4px; color:#244c3c; background:#fbfcf8; font-size:1rem; cursor:pointer; }
@@ -27,13 +27,15 @@
 .complete-logic-svg text { letter-spacing:normal; }
 .complete-logic-svg a { text-decoration:none; }
 .complete-logic-svg a:hover text { text-decoration:underline; }
-.complete-logic-svg .logic-svg-node:target > a > rect { stroke:#b76524; stroke-width:4; }
-.complete-logic-svg [id] { scroll-margin-top:20px; }
+.complete-logic-svg .logic-svg-node:target > a > rect,
+.complete-logic-svg .logic-svg-node:target > rect { stroke:#b76524; stroke-width:4; }
+.complete-logic-svg [id] { scroll-margin-top:100px; }
 @media (min-width:1200px) { .research-map { max-width:1200px; } }
 @media (max-width:600px) {
   .logic-reading-guide { padding:16px; }
   .logic-diagram-key { display:grid; gap:8px; }
   .logic-diagram-tools { align-items:flex-start; }
+  .complete-logic-svg [id] { scroll-margin-top:150px; }
 }
 @media print {
   .logic-diagram-tools,.logic-quick-nav,.logic-pan-hint { display:none; }

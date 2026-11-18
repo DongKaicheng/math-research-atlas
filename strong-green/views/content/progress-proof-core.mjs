@@ -14,10 +14,12 @@ const foundation = name => `companion/proofs/foundations/${name}.tex`;
 const curveFile = foundation('R12_curve_lifts_and_actual_green');
 const descentFile = foundation('R16_one_cycles_and_dominant_activation');
 const finiteFile = foundation('R17_finite_actual_tests_and_height_obstruction_quotients');
+const compactFile = foundation('R12_compact_parameter_algebraic_triviality');
 const algebraicFile = 'green-draft/algebraic_equivalence.tex';
 const curveSource = label => raw(curveFile, label);
 const descentSource = label => raw(descentFile, label);
 const finiteSource = label => raw(finiteFile, label);
+const compactSource = label => raw(compactFile, label);
 const algebraicSource = label => raw(algebraicFile, label);
 const diagram = (caseId, suffix, label) => link(`/results/proof-diagrams/${caseId}/#proof-${caseId}-${suffix}`, label);
 
@@ -54,6 +56,14 @@ const heightBinding = locators => ({
   file: 'public/projects/strong-green/editions/v0.5.1/papers/global-height-pairing.tex',
   sha256: '7d8edacfa18eb8496cc69942f15da22b15348a03f91fdd7316362c0d01851a08', locators,
 });
+const greenBinding = locators => ({
+  file: 'public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex',
+  sha256: '968f0560d434f7fb071eedff83c9d90c73a5387113975eb9e8a3a6697d56b263', locators,
+});
+const compactBinding = locators => ({
+  file: sourceFile(compactFile),
+  sha256: 'de1a3a130af7221532e3d860cc858ddea7b74e29316a3b854d7398512b9f0efe', locators,
+});
 
 function kernelDomain() {
   const c = 'kernel-domain', { id, node, record } = vocabulary(c);
@@ -64,7 +74,7 @@ function kernelDomain() {
     scope: 'Fix a finite place K, a smooth projective geometrically integral X/K, and the prescribed rational codimension-r cycle Z. Keep its final support, the original absolute value, native degrees and every actual test.',
     contexts: [record('local-context', 'BB-LOCAL-DATA', 'These are the scope and normalization conventions. The analytic construction below remains conditional on the stated companion foundations.')],
     root: node('local-conclusion', 'Exact-support strong G with the point-slice property', height('r16h:P', 'H16: point-slice corollary'),
-      'The same γ = G − Ψ works on Xᵃⁿ ∖ |Z|ᵃⁿ and for every normal r-dimensional carrier meeting Z in finitely many points.',
+      'The same γ = G − Ψ works on Xᵃⁿ ∖ |Z|ᵃⁿ. For every normal integral quasiprojective r-dimensional carrier a:M→X with finite a⁻¹|Z|, its point-slice identity holds against every compact actual scalar test on Mᵃⁿ.',
       gate('all', 'ALL ingredients of the concrete correction',
         'Subtract the pullback of the global primitive from the curved slice identity. The correction introduces no additional deleted locus.',
         [height('r16h:P', 'Proof of the exact-support and point-slice conclusion')], [
@@ -77,7 +87,7 @@ function kernelDomain() {
                 record('obstruction-interface', 'BB-ACTUAL-OBSTRUCTION', 'The prescribed pair has curvature representing this Chow-invariant class. This analytic interface retains its draft status.'),
               ])),
           node('curved-slice', 'The curved pair has the exact finite-intersection residue', height('r16h:curved-slice', 'All-actual finite-intersection residue theorem'),
-            'On a normal carrier a:M→X with finite S = a⁻¹|Z|, the residue is precisely the refined intersection Iₐ(Z), with every point coefficient.',
+            'For a normal integral quasiprojective r-dimensional carrier a:M→X with finite S = a⁻¹|Z|, the curved slice identity holds against every compact actual scalar test on Mᵃⁿ. Its residue is precisely the refined intersection Iₐ(Z), with every point coefficient.',
             gate('all', 'ALL data in the proper-slice calculation',
               'Normalize the components dominating M, retain their Artinian lengths, sum scalar Poincaré–Lelong, identify the algebraic point cycle, and divide by the full presentation degree.',
               [height('r16h:curved-slice', 'Complete proper-slice proof'), height('r16h:source-degrees', 'Weighted source-degree identity')], [
@@ -192,7 +202,8 @@ function algebraicallyTrivial() {
               'Kernel covariance kills every correspondence image. Summing gives zero for zL; proper finite pushdown gives [L:K]z, then divide in the rational Chow group.',
               [pairing('prop:algebraic-triviality', 'Proof of the algebraic-equivalence inclusion')], [
                 node('curve-expression', 'A finite curve-family expression for zL', pairing('prop:algebraic-triviality', 'Descent of the curve data'), 'Use smooth projective connected curves, rational marked points, correspondences and actual finite rational-equivalence witnesses over L.', undefined, 'hypothesis'),
-                node('degree-zero-divisor', 'The degree-zero divisor endpoint input', pairing('prop:endpoint-input', 'Imported endpoint assertion'), 'The public pairing manuscript invokes this endpoint theorem. Its separate proof body is not present in the public endpoint source inspected here.', undefined, 'hypothesis'),
+                node('degree-zero-divisor', 'The degree-zero divisor endpoint input', diagram('endpoints', 'divisor-conclusion', 'Recovered conditional divisor proof'),
+                  'This application uses the divisor endpoint as a premise. The endpoint diagram derives it from geometric algebraic equivalence and the independent compact/Poincaré proof under (A1), (A2) and (R); it does not invoke this curve-transfer argument.', undefined, 'hypothesis', [green('sec:conditional-algebraic-proof', 'Independent compact proof'), compactSource('R12: r12p:picard-products')]),
                 node('chow-covariance', 'Kernel preservation by Chow correspondences and finite pushdown', pairing('prop:covariance', 'Chow covariance'), 'Use the correct codimension shifts. An L-correspondence is read on the diagonal open-and-closed component over K; finite pushforward after pullback is multiplication by [L:K].', undefined, 'hypothesis'),
               ])),
           node('norm-compact', 'A native norm family reduces z to compact additive rigidity', green('r12p:geometric-algebraic', 'Geometric algebraic triviality theorem'),
@@ -262,12 +273,14 @@ function algebraicallyTrivial() {
     sourceBindings: [
       pairingBinding(['prop:algebraic-triviality', 'sub:algebraic-triviality', 'prop:covariance', 'prop:endpoint-input']),
       { file: sourceFile(algebraicFile), sha256: '443e559c7d05c8784d45c4e17ba8ccc55344c60fc0ab7e8d46b13cd9e59ac585', locators: ['r12p:rigid-fiber', 'r12p:compact-multiple', 'r12p:compact-additive', 'r12p:poincare', 'r12p:norm-family', 'r12p:geometric-algebraic', 'r12p:degree-norm', 'r12p:final-primitive'] },
+      greenBinding(['hyp:construction-calculus', 'thm:main-algebraic', 'sec:conditional-algebraic-proof']),
+      compactBinding(['r12p:geometric-algebraic', 'r12p:picard-products']),
     ],
   };
 }
 
 function endpoints() {
-  const c = 'endpoints', { id, node } = vocabulary(c);
+  const c = 'endpoints', { id, node, record } = vocabulary(c);
   const global = {
     id: id('domains-tree'), navTitle: '1. Endpoint domains and low dimensions',
     title: 'Endpoint vanishing must cover both complementary degrees',
@@ -278,10 +291,10 @@ function endpoints() {
       gate('all', 'ALL endpoint inputs and the kernel pairing',
         'The three local endpoint results imply H¹=V¹, Hⁿ=Vⁿ and Hⁿ⁻¹=Vⁿ⁻¹. Substitute the appropriate equalities in Hʳ×Hⁿ⁺¹⁻ʳ.',
         [pairing('prop:endpoint-input', 'Endpoint proposition'), pairing('lem:two-degrees', 'Two-degree criterion')], [
-          node('divisor-input', 'Homologically trivial divisors have zero obstruction', pairing('prop:endpoint-input', 'Imported divisor endpoint'),
-            'The source invokes InternalEndpoints here. The separate divisor proof body is not included in the inspected public endpoint corpus; this node remains an imported hypothesis, not a newly completed proof.', undefined, 'hypothesis'),
-          node('zero-cycle-input', 'Homologically trivial zero-cycles have zero obstruction', pairing('prop:endpoint-input', 'Imported zero-cycle endpoint'),
-            'The source invokes InternalEndpoints here. Missing public proof text is a provenance limitation; it is not evidence that the endpoint statement is false.', undefined, 'hypothesis'),
+          node('divisor-input', 'Homologically trivial divisors have zero obstruction', diagram(c, 'divisor-conclusion', 'Recovered conditional divisor proof'),
+            'This remains an input to the domain calculation. The expanded proof below uses the divisor numerical-to-algebraic comparison and the independent compact/Poincaré construction under (A1), (A2) and (R).', undefined, 'hypothesis', [pairing('prop:endpoint-input', 'Endpoint assertion'), compactSource('R12: r12p:picard-products')]),
+          node('zero-cycle-input', 'Homologically trivial zero-cycles have zero obstruction', diagram(c, 'zero-cycle-conclusion', 'Recovered conditional zero-cycle proof'),
+            'This remains an input to the domain calculation. The public R12 top-degree proof reduces componentwise degree-zero cycles to geometric algebraic equivalence; its actual-form hypotheses remain explicit below.', undefined, 'hypothesis', [pairing('prop:endpoint-input', 'Endpoint assertion'), compactSource('R12: r12p:top-degree')]),
           node('one-cycle-input', 'Homologically trivial one-cycles have zero obstruction', diagram(c, 'one-cycle-conclusion', 'One-cycle descent proof'),
             'The same-dimensional semistable alteration, original-model curve correction and dominant obstruction injection are expanded below.', undefined, 'conditional', [descentSource('R16: theorem r16G:one-cycles')]),
           node('two-degree-transfer', 'Localize global classes and apply the kernel pairing', pairing('lem:two-degrees', 'Two-degree proof'),
@@ -293,13 +306,131 @@ function endpoints() {
         'For n≤3 each admissible codimension is 1, n−1 or n. Thus the endpoint set and its complementary set cover every pair.',
         [pairing('prop:endpoint-input', 'Endpoint range'), pairing('lem:two-degrees', 'Complementary-degree criterion')], [
           node('small-dimension', 'The dimension satisfies 1≤n≤3', pairing('prop:endpoint-input', 'Dimension range'), 'Only codimensions 1 through n occur. In dimension zero the listed positive complementary range is empty.', undefined, 'hypothesis'),
-          node('all-endpoints', 'The three local endpoint inputs above', diagram(c, 'main', 'Endpoint-domain tree'), 'Keep the imported divisor and zero-cycle premises and the conditional one-cycle proof.'),
+          node('all-endpoints', 'The three local endpoint inputs above', diagram(c, 'main', 'Endpoint-domain tree'), 'Use the expanded conditional divisor and zero-cycle proofs and the conditional one-cycle proof. All three retain their actual-form premises.'),
           node('small-height', 'H16 on both complementary kernels', diagram('kernel-domain', 'main', 'Kernel-domain proof diagram'), 'The same analytic and reciprocity hypotheses remain required.', undefined, 'conditional', [height('r16h:global-height', 'H16 height theorem')]),
         ]))],
   };
 
+  const divisor = {
+    id: id('divisor-tree'), navTitle: '2. Divisors from algebraic equivalence',
+    title: 'The divisor endpoint follows from the independent compact-parameter proof',
+    summary: 'Geometric homological triviality gives numerical triviality; a nonzero tensor power is algebraically trivial, and rational coefficients remove that power.',
+    scope: 'K is the original finite extension of ℚp with its original absolute value. Let X/K be smooth projective geometrically integral of dimension n≥1 and D a prescribed rational divisor with zero geometric ℓ-adic class for one ℓ≠p. The actual-form conclusion assumes (A1), (A2) and (R).',
+    contexts: [node('divisor-cartier-convention', 'Clear rational coefficients in the divisor class', curveSource('R12: divisor comparison in r12n:cohom-lift'),
+      'Choose a positive integer a so that aD is a Cartier divisor on smooth X, and put L=O(aD). The comparison below is made on X over an algebraic closure; rational Chow coefficients permit division by every nonzero integer.', undefined, 'definition')],
+    root: node('divisor-conclusion', 'Ob¹X([D]) = 0 and exact-support strong G for D', green('thm:main-algebraic', 'Conditional Theorem A in codimension one'),
+      'The R12 Picard corollary supplies Df=c₁(L̄) for a geometrically algebraically trivial rational line-bundle class. A generic Chow-zero comparison handles the particular model character in the prescribed curved pair.',
+      gate('all', 'BOTH the algebraic reduction and the conditional actual construction',
+        'Apply the independent compact/Poincaré theorem to the rational divisor class. Its global primitive corrects the original curved pair on X, preserving the exact support and every compact actual complementary test.',
+        [green('thm:main-algebraic', 'Conditional algebraic-equivalence theorem'), compactSource('R12: r12p:picard-products and r12p:geometric-algebraic')], [
+          node('divisor-geometric-algebraic', '[D] is geometrically algebraically trivial in CH¹ℚ', compactSource('R12: r12p:picard-products'),
+            'If L⊗m is algebraically trivial for m≠0, then am[D] is algebraically trivial. Divide by am in the rational Chow group.',
+            gate('all', 'Pass from the tensor power to the rational divisor class',
+              'This implication uses rational coefficients; it does not assert that every numerically trivial integral line bundle already lies in Pic⁰.',
+              [curveSource('R12: r12n:cohom-lift, Kleiman 6.3(a,b)'), green('thm:main-algebraic', 'Geometric algebraic-equivalence input')], [
+                node('divisor-algebraic-power', 'Some nonzero tensor power of L is algebraically trivial', curveSource('R12: Kleiman comparison in r12n:cohom-lift'),
+                  'Kleiman, The Picard scheme, Definition 6.1 and Theorem 6.3(b)⇒(a), over an algebraically closed field: numerical triviality is equivalent to a nonzero tensor power being algebraically trivial. The R12 source cites this exact comparison.',
+                  gate('all', 'Apply the projective Picard comparison',
+                    'X over the algebraic closure is projective and L is invertible, so the stated theorem applies to its numerically trivial class.',
+                    [curveSource('R12: r12n:cohom-lift and its primary-source record'), green('thm:main-algebraic', 'Target algebraic input')], [
+                      node('divisor-numerical-zero', 'L has degree zero on every geometric integral curve', curveSource('R12: divisor numerical/cohomological comparison'),
+                        'For each complete integral curve C, cycle classes commute with intersection and trace: deg(c₁(L)·[C])=Tr(c₁(L)∪cl(C))=0. Thus L is geometrically numerically trivial.',
+                        gate('all', 'Use cycle-class compatibility with intersection and degree',
+                          'Multiplying the prescribed divisor by a preserves its zero geometric class. The trace calculation is on the geometric generic fibre; no special-fibre correction or divisor Tate assertion is used.',
+                          [curveSource('R12: divisor comparison used in r12n:cohom-lift'), pairing('prop:endpoint-input', 'Geometric homological endpoint input')], [
+                            node('divisor-homology-zero', 'The prescribed divisor has zero geometric ℓ-adic class', pairing('prop:endpoint-input', 'Divisor premise'),
+                              'This is the input for one ℓ≠p. It concerns the class of D on X over the algebraic closure, not only a numerical condition on one model.', undefined, 'hypothesis'),
+                          ])),
+                    ])),
+              ])),
+          node('divisor-actual-construction', 'The compact/Poincaré theorem under (A1), (A2), (R)', diagram(c, 'algebraic-endpoint-conclusion', 'Complete independent actual-form construction'),
+            'Use the construction expanded below with r=1. It starts from generic Chow-zero model relations, rational-fibre rigidity and compactness; it does not use the divisor endpoint or the curve-transfer proof.', undefined, 'conditional', [green('hyp:construction-calculus', 'Exact actual-form hypotheses'), compactSource('R12: r12p:picard-primitive')]),
+        ], { 'BB-ALG-TRANSFER': 'This remains a conditional application of Theorem A; the classical divisor comparison does not certify its draft actual-form premises.' })),
+  };
+
+  const zeroCycle = {
+    id: id('zero-cycle-tree'), navTitle: '3. Zero-cycles from degree zero',
+    title: 'The top-degree endpoint has an explicit public R12 proof',
+    summary: 'A zero geometric top-degree class has degree zero on each geometric component. Point differences are algebraically trivial and enter the compact-parameter construction.',
+    scope: 'Let X/K be smooth projective geometrically integral of dimension n≥1 over the original valued finite extension K/ℚp, and let Z be a prescribed rational zero-cycle. Assume zero geometric ℓ-adic class for one ℓ≠p and retain (A1), (A2), (R).',
+    contexts: [node('zero-cycle-component-scope', 'The degree condition is geometric and componentwise', compactSource('R12: boundary after r12p:top-degree'),
+      'For the stated geometrically integral X there is one geometric component. If that assumption is dropped, require degree zero on every geometric connected component; total degree zero across different components is insufficient.', undefined, 'definition')],
+    root: node('zero-cycle-conclusion', 'ObⁿX([Z]) = 0 and exact-support strong G for Z', green('thm:main-algebraic', 'Conditional Theorem A in top degree'),
+      'The complete companion source proves r12p:top-degree. Apply it to the actual model character of the prescribed pair, then subtract its global actual primitive. The test space is all compact actual scalar tests on Xᵃⁿ.',
+      gate('all', 'BOTH geometric algebraic equivalence and the actual construction',
+        'The R12 top-degree proof reduces the generic zero-cycle class to geometric algebraic equivalence and invokes the compact/Poincaré theorem. Its primitive is on all of X, so the correction retains exactly Xᵃⁿ∖|Z|ᵃⁿ.',
+        [compactSource('R12: r12p:top-degree and its proof'), green('sec:conditional-algebraic-proof', 'Conditional construction over the original field')], [
+          node('zero-cycle-geometric-algebraic', '[Z] is geometrically algebraically trivial', compactSource('R12: proof of r12p:top-degree'),
+            'Every degree-zero class on a smooth connected projective geometric component is a rational sum of point differences. Those differences are algebraically trivial.',
+            gate('all', 'BOTH the point-difference expression and connected families',
+              'Algebraic equivalence is additive, so the finite rational sum of the displayed point differences is algebraically trivial.',
+              [compactSource('R12: r12p:top-degree, geometric point-difference argument'), green('r12p:geometric-algebraic', 'Curve-family representation of algebraic equivalence')], [
+                node('zero-cycle-point-differences', 'Write each component as Σᵢaᵢ([xᵢ]−[x₀])', compactSource('R12: degree-zero generic class in r12p:top-degree'),
+                  'Over the algebraic closure all closed points have degree one. Choose x₀ on each component; the equality follows from Σᵢaᵢ=0 on that component.',
+                  gate('all', 'Use the componentwise degree-zero equality',
+                    'The cycle has finite support and rational coefficients, so this is a finite identity of cycles on each component.',
+                    [compactSource('R12: r12p:top-degree and componentwise qualification'), pairing('prop:endpoint-input', 'Zero-cycle endpoint input')], [
+                      node('zero-cycle-geometric-degree', 'The degree on every geometric component is zero', compactSource('R12: top-degree generic Chow condition'),
+                        'The trace of a zero-cycle class on a smooth projective connected geometric component is its degree. Restrict the zero cohomology class to each component and take that trace.',
+                        gate('all', 'Trace the geometric top-degree cycle class',
+                          'The trace is normalized so that a geometric point has class of degree one. This gives zero degree separately on every component.',
+                          [compactSource('R12: r12p:top-degree and its geometric scope'), pairing('prop:endpoint-input', 'Geometric homological hypothesis')], [
+                            node('zero-cycle-homology-zero', 'The prescribed zero-cycle has zero geometric ℓ-adic class', pairing('prop:endpoint-input', 'Zero-cycle premise'),
+                              'Use the actual geometric class in H²ⁿ(X over the algebraic closure, ℚℓ(n)), for one ℓ≠p.', undefined, 'hypothesis'),
+                          ])),
+                    ])),
+                node('zero-cycle-point-families', 'Point differences are fibres of connected cycle families', compactSource('R12: point differences connected by curve correspondences'),
+                  'On a smooth connected projective geometric component V, the diagonal in V×V is the family of points. Its fibres at x and x₀ give [x]−[x₀]. The curve-correspondence formulation used by R12 gives the same algebraic equivalence; its finite witnesses descend in the common construction below.', undefined, 'conditional', [green('r12p:geometric-algebraic', 'Finite curve-correspondence witnesses')]),
+              ])),
+          node('zero-cycle-actual-construction', 'The compact/Poincaré theorem under (A1), (A2), (R)', diagram(c, 'algebraic-endpoint-conclusion', 'Complete independent actual-form construction'),
+            'Use the construction below with r=n. The prescribed curvature is an actual degree-n model character. R12 first combines Chern polynomials by Adams projection and tensor products; it makes no claim for arbitrary atomic actual forms.', undefined, 'conditional', [compactSource('R12: r12p:top-degree and its stated boundary'), green('hyp:construction-calculus', 'Exact actual-form hypotheses')]),
+        ], { 'BB-ALG-TRANSFER': 'The top-degree corollary applies the conditional algebraic-equivalence theorem. Recovering its public proof does not upgrade the analytic foundations.' })),
+  };
+
+  const algebraicEndpoint = {
+    id: id('algebraic-endpoint-tree'), navTitle: '4. The independent actual-form construction',
+    title: 'Compact Poincaré families supply the global primitive for both endpoints',
+    summary: 'Descend finite algebraic data, form an additive norm family over K, use compactness and rational-fibre rigidity, and correct the original model character.',
+    scope: 'Let K/ℚp be finite with its original absolute value, X/K smooth projective geometrically integral with n=dim X, and z=[Z]∈CHʳ(X)ℚ geometrically algebraically trivial, 1≤r≤n. All actual-form assertions are under (A1), (A2), (R) for every smooth projective variety used. K and its absolute value remain fixed; a finite Galois extension is used only for algebraic family data.',
+    root: node('algebraic-endpoint-conclusion', 'ObʳX(z) = 0 and strong G for the original Z', green('sec:conditional-algebraic-proof', 'Independent conditional Theorem A proof'),
+      'The construction uses no divisor endpoint and no correspondence-kernel transfer theorem. All final forms and tests are native over K, on exactly Xᵃⁿ∖|Z|ᵃⁿ.',
+      gate('all', 'ALL norm-family, primitive and exact-support inputs',
+        'The native norm fibre is d z. Compactness gives Dβa=Ωa−Ω₀. Generic Chow-zero comparison gives DHz=Ωa−Ω₀−dΩZ; hence ΨZ=(βa−Hz)/d has DΨZ=ΩZ. Subtract ΨZ from the prescribed pair and apply actual Stokes.',
+        [green('sec:conditional-algebraic-proof', 'Complete conditional argument'), compactSource('R12: r12p:geometric-algebraic, R12.P13–14')], [
+          node('algebraic-native-family', 'An additive family over K has a rational fibre d z', green('r12p:norm-family', 'Algebraic norm family'),
+            'Here d=[L:K] is the entire finite field degree. The norm operates on algebraic Chow families, not on an already constructed actual primitive.',
+            gate('all', 'ALL algebraic data for the native norm family',
+              'Poincaré families on the finitely many Jacobians combine on their product J. Weil restriction and algebraic finite-flat pushforward then give the required additive family over K.',
+              [compactSource('R12: r12p:poincare, r12p:norm-family and r12p:degree-norm'), green('r12p:geometric-algebraic', 'Finite geometric data and norm')], [
+                node('algebraic-finite-galois-data', 'Finite curve and Chow identities over one Galois L/K', green('r12p:geometric-algebraic', 'Descent of the algebraic-equivalence witnesses'),
+                  'Start with geometric algebraic triviality. The curves, correspondences, marked points and rational-equivalence witnesses use finitely many coefficients. Enlarge once to finite Galois L/K, with rational basepoints on all curves, and obtain the finite expression for zL.', undefined, 'hypothesis'),
+                node('algebraic-poincare-family', 'A Poincaré family is additive and has fibre zL', green('r12p:poincare', 'Additive Poincaré construction'),
+                  'Define Θ=pXJ*(pXC*Γ·pCJ*c₁(P)). Refined Gysin base change gives Θt=Γ*c₁(Pt), and the rigidified Picard group law gives Θt+t′=Θt+Θt′ and Θ₀=0 in Chow. Products and sums combine the finitely many families.'),
+                node('algebraic-weil-norm', 'Evaluation and algebraic norm give Θᴺa = d z', green('r12p:norm-family', 'Native norm fibre formula'),
+                  'Set A=ResL/K J and Θᴺ=(hA)*(id×evaluation)*Θ. The finite-flat/refined-Gysin identity gives Θᴺa=h*Θt=h*zL=d z. Evaluation is a group map, so rational fibres remain additive and the zero fibre is zero.'),
+              ])),
+          node('algebraic-compact-primitive', 'Compactness produces Dβa = Ωa−Ω₀', green('r12p:compact-additive', 'Compact-family primitive'),
+            'Use a model character Ω of the additive native family on X×A. The primitive retains the restricted finite-flat traces of original scalar–curvature generators; no trace of an arbitrary primitive is required.',
+            gate('all', 'ALL actual comparison, rigidity and compactness premises',
+              'Choose m>0 with ma near zero. Rigidity gives Ωma=Ω₀, while Chow additivity makes Δ=Ωma−Ω₀−m(Ωa−Ω₀) generically Chow-zero. By (A1), D H=Δ; thus βa=−H/m has the required derivative.',
+              [compactSource('R12: r12p:compact-additive, R12.P5–7'), green('hyp:construction-calculus', 'The separate A1 and R hypotheses')], [
+                record('algebraic-a1', 'BB-ACTUAL-OBSTRUCTION', '(A1): strict actual model characters, pullback compatibility and a global actual primitive for a generic degree-r Chow-zero difference. Its registered analytic status remains draft.'),
+                record('algebraic-r', 'BB-RATIONAL-FIBRE-RIGIDITY', '(R): one ordinary neighbourhood of 0∈A(K) gives Ωb=Ω₀ on all of X. The uniform actual-form assertion remains draft.'),
+                node('algebraic-compact-multiple', 'A positive multiple ma enters that neighbourhood', green('r12p:compact-multiple', 'Compact-multiple proof'),
+                  'A(K) is compact because A is projective over the local field. Choose V with V−V inside the neighbourhood and cover A(K) by finitely many translates; two multiples of a in one translate give the required positive multiple.'),
+                node('algebraic-additive-relation', 'The difference Δ has generic Chow character zero', green('r12p:compact-additive', 'Use of Chow additivity'),
+                  'The additive native family has Θma−mΘa=0 and Θ₀=0. This is a relation of Chow classes, so (A1) applies to Δ. Merely having an abelian parameter variety would not suffice.', undefined, 'conditional', [green('r11p:generic-chow-primitive', 'Global primitive for a generic Chow-zero model character')]),
+              ], { 'BB-COMPACT-RIGIDITY': 'Compactness is the proved group-theoretic step; the actual local constancy and model-character comparison remain separately displayed premises.' })),
+          record('algebraic-a2', 'BB-SUPPORTED-GREEN-PAIR', '(A2): choose (GZ,ΩZ) for the original prescribed cycle, with ΩZ representing its actual obstruction. The pair and its all-test identity retain their draft analytic source status.'),
+          node('algebraic-original-character', 'Correct the prescribed curvature by ΨZ=(βa−Hz)/d', compactSource('R12: r12p:final-primitive'),
+            'The difference Ωa−Ω₀−dΩZ has generic Chow class Θᴺa−d z=0. By (A1), choose a GLOBAL actual Hz with DHz equal to that difference. Then D((βa−Hz)/d)=ΩZ; both the minus sign and the full d=[L:K] are retained.', undefined, 'conditional', [green('r11p:generic-chow-primitive', 'A1 supplies the global character-comparison primitive')]),
+          node('algebraic-exact-support-correction', 'γZ=GZ−ΨZ on the original support complement', green('sec:conditional-algebraic-proof', 'Final exact-support correction'),
+            'ΨZ is global on Xᵃⁿ, so restriction introduces no extra removed set. Actual Stokes cancels ΩZ in the curved identity for every compact actual test of bidegree (n−r,n−r), preserving the original cycle coefficients.', undefined, 'conditional', [compactSource('R12: conclusion of r12p:geometric-algebraic')]),
+        ], { 'BB-ALG-TRANSFER': 'This is the independent conditional compact/Poincaré route, with its actual-form inputs visible.', 'BB-GREEN-CORRECTION': 'The formal global correction preserves the exact complement once the curved pair and global actual primitive are supplied.' })),
+  };
+
   const oneCycle = {
-    id: id('one-cycle-tree'), navTitle: '2. One-cycles and original-field descent',
+    id: id('one-cycle-tree'), navTitle: '5. One-cycles and original-field descent',
     title: 'One-cycles on arbitrary smooth projective varieties',
     summary: 'A same-dimensional alteration supplies the regular model; descend the zero obstruction and correct the original prescribed cycle on X.',
     scope: 'For n≥3 let X/K be smooth projective geometrically integral and Z a rational one-cycle with zero geometric ℓ-adic class for one ℓ≠p. For n=2, the source uses the divisor endpoint input.',
@@ -326,7 +457,7 @@ function endpoints() {
   };
 
   const model = {
-    id: id('model-tree'), navTitle: '3. The regular-model curve correction',
+    id: id('model-tree'), navTitle: '6. The regular-model curve correction',
     title: 'The weighted numerical correction on a regular SNC model',
     summary: 'A divisor-kernel calculation and geometric homology annihilate the obstruction functional; numerical duality then solves the vertical correction equation.',
     scope: 'A supplied integral regular flat projective model has special fibre ΣᵢmᵢDᵢ with strict normal-crossing reduced support and smooth closed strata; n≥3. The prescribed one-cycle has zero geometric ℓ-adic class for one ℓ≠p. All mᵢ are positive and all groups rational.',
@@ -362,13 +493,15 @@ function endpoints() {
         ])),
   };
   return {
-    caseId: c, trees: [global, oneCycle, model],
+    caseId: c, trees: [global, divisor, zeroCycle, algebraicEndpoint, oneCycle, model],
     coverage: [
       { title: 'Divisors, zero-cycles and one-cycles', treeId: global.id, nodeId: id('main'), source: pairing('sec:endpoints', 'Endpoint degrees and proof') },
       { title: 'Varieties of dimension at most three', treeId: global.id, nodeId: id('low-dimension'), source: pairing('prop:endpoint-input', 'Endpoint proposition and low-dimensional consequence') },
     ],
     sourceBindings: [
       pairingBinding(['sec:endpoints', 'lem:two-degrees', 'prop:endpoint-input', 'bibitem:InternalEndpoints']),
+      greenBinding(['hyp:construction-calculus', 'thm:main-algebraic', 'sec:conditional-algebraic-proof', 'r12p:rigid-fiber', 'r12p:compact-multiple', 'r12p:compact-additive', 'r12p:poincare', 'r12p:norm-family', 'r12p:geometric-algebraic', 'r11p:generic-chow-primitive']),
+      compactBinding(['r12p:rigid-fiber', 'r12p:compact-multiple', 'r12p:compact-additive', 'r12p:poincare', 'r12p:norm-family', 'r12p:geometric-algebraic', 'r12p:degree-norm', 'r12p:final-primitive', 'r12p:picard-products', 'r12p:picard-primitive', 'r12p:top-degree']),
       { file: sourceFile(curveFile), sha256: 'd76922f35be1cca4c08686a70d65b3dcffdc31f9c4837bb790115fceb6959e15', locators: ['r12n:main', 'r12n:kernel', 'r12n:cohom-lift', 'r12n:weighted-trace', 'r12n:admissible', 'r12n:K0', 'r12n:actual-zero'] },
       { file: sourceFile(descentFile), sha256: '72ccf8d0c8700f9784d2e409645143468a3ed801251705c6f9a8b6fbec3c5b23', locators: ['r16G:dominant-witness', 'r16G:numerical-witness', 'r16G:one-cycles'] },
     ],
