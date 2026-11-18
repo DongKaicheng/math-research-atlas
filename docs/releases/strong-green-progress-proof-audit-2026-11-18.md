@@ -86,12 +86,57 @@ Completed local checks:
   missing full field degree, correction-sign change, or source-status promotion.
   Its request to make the shared tree's ambient hypotheses explicit was applied.
 
-Production deployment and browser verification follow publication. They are
-recorded separately once observed. These checks verify source fidelity, graph
-coverage, publication consistency, and reading behavior; they are not
-independent proof certification.
+These checks verify source fidelity, graph coverage, publication consistency,
+and reading behavior; they are not independent proof certification.
 
 The cloud browser's DevTools are disabled by its organization. Device emulation
 is therefore not part of this audit. An ordinary browser-zoom narrow CSS
 viewport is checked separately and must not be described as a mobile-device
 test.
+
+## Observed production verification
+
+Published code commit: `5ad8cee3d5382689fa6a7ad97c04f9091ea763b1`.
+[GitHub Actions run 44309165415](https://github.com/DongKaicheng/math-research-atlas/actions/runs/44309165415)
+completed successfully: both `build` and `deploy`, including the release and
+history guards. A separate read-only check confirmed that the run's head and
+the remote `main` head agreed with this commit before the evidence-only update.
+
+The deployed browser pages were checked directly:
+
+- The Progress diagram index reports 108 trees. The independent endpoint page
+  contains all six trees, including the three recovered arguments.
+- The divisor, zero-cycle and independent-construction fragment links resolve.
+  Tree and conclusion fragments receive focus without opening their source.
+- From the zero-cycle tree, native Tab navigation visits its componentwise
+  scope, conclusion, R12 evidence and conditional-construction evidence in
+  the visible reading order.
+- The conditional-construction link opens the actual paper heading
+  `9.1. Algebraic equivalence over the original field`; browser Back returns to
+  the independent construction tree.
+- Native pointer zoom from 110% to 120% preserved the visible centre's logical
+  vertical coordinate to within 0.004 SVG units; keyboard activation of Reset
+  preserved its pre-activation coordinate to within 0.008 SVG units. A
+  locator-driven click performed an additional scroll before the click event,
+  so that automation path was not used as evidence of native-pointer drift.
+- Ordinary Chrome zoom at 300% gave a 454 CSS-pixel window and a 449-pixel
+  document/body, with a 411-pixel graph viewport and the full 1120-pixel SVG.
+  There was no horizontal body overflow. A native horizontal scroll moved the
+  graph's `scrollLeft` from 0 to 189 without moving the body sideways. A tree
+  destination remained below the wrapping sticky toolbar. Browser zoom was
+  restored to 100% afterwards.
+- The shared feedback URL retained the current project, source edition and
+  exact graph fragment. No feedback was submitted and no new inbox was made.
+- A real SVG download matched the local built asset byte for byte (SHA-256
+  `6258acf4bdd004f363fbf2171c80ce87a9452db8a847de064d77b681f5c4947d`).
+  Its six trees and 59 nodes are present; all 56 paper/record evidence links
+  point to the frozen source edition.
+
+The final browser was left at the linked zero-cycle conclusion. The following
+unaltered screenshot records the deployed node-and-arrow view; the complete
+tree continues vertically beyond this viewport.
+
+![Deployed zero-cycle conclusion, joint-premise junction and source links](strong-green-proof-qa/endpoint-source-audit-live.jpg)
+
+Screenshot SHA-256:
+`bda3ddc33ef664cb9518313aa93afd274d614b38265cd222d00dd9954acaa28c`.
