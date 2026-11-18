@@ -81,6 +81,10 @@ async function checkLink(href,relative,{frozen=false,fragment=false}={}){
 const routes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
 const rootHtml=await text(path.join(dist,'index.html'));
 if(!rootHtml.includes('<h1>'+brand+'</h1>'))fail('Root page does not display '+brand);
+if(origin==='https://openmath-atlas.org'){
+  const head=rootHtml.match(/<head>([\s\S]*?)<\/head>/)?.[1]||'';
+  if(!head.includes('<meta name="google-site-verification" content="WE7A5abWl6z3sg4dMlvn5oj4t7cYwGbb9T7qU1ld1Sw" />'))fail('Missing owner-issued Google Search Console verification marker in homepage head');
+}
 for(const route of routes){
   const html=await text(path.join(dist,route.slice(1),'index.html'));
   if(!html.includes('<link rel="canonical" href="'+origin+route+'"'))fail('Wrong canonical: '+route);
