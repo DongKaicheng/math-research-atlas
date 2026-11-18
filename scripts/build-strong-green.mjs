@@ -1,5 +1,6 @@
 import {readFile,writeFile,mkdir,readdir,cp,access,unlink} from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
 import {createElement} from 'react';
@@ -94,6 +95,11 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   ];
 
   const url=p=>base+p;
+  const currentAssetNames=['research-map.css','research-map.js','logic-tree.css'];
+  const currentAssetVersions=new Map(await Promise.all(currentAssetNames.map(async name=>[
+    name,createHash('sha256').update(await readFile(path.join(root,'strong-green',name))).digest('hex').slice(0,16),
+  ])));
+  const currentAsset=name=>url(projectPath+'/assets/'+name)+'?v='+currentAssetVersions.get(name);
   function link(href,namespace){
     if(href.startsWith('/atlas-feedback/'))return url('/feedback/')+href.slice('/atlas-feedback/'.length);
     if(href==='/atlas-maintenance/')return url('/maintenance/');
@@ -129,8 +135,8 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
 <link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
-${archived?'':`<link rel="stylesheet" href="${url(projectPath+'/assets/research-map.css')}">`}
-${!archived&&route==='/research-map'?`<link rel="stylesheet" href="${url(projectPath+'/assets/logic-tree.css')}">`:''}
+${archived?'':`<link rel="stylesheet" href="${currentAsset('research-map.css')}">`}
+${!archived&&route==='/research-map'?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
 <div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}">Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
 <header class="site-header simple-site-header"><div class="site-shell masthead"><a class="site-brand" href="${url(namespace+'/')}"><span class="brand-title">${esc(project.title)}</span></a>
@@ -138,7 +144,7 @@ ${!archived&&route==='/research-map'?`<link rel="stylesheet" href="${url(project
 ${archived?`<div class="edition-banner"><div class="site-shell">Frozen public edition ${esc(revision)}. <a href="${url(projectPath+(route==='/'?'/':trailing(route)))}">Read the current version of this page</a>.</div></div>`:''}
 <main id="main-content">${body}</main>
 <footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}<a href="${feedback}">Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
-${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${route==='/research-map'&&!archived?`<script defer src="${url(projectPath+'/assets/research-map.js')}"></script>`:''}</body></html>\n`;
+${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${route==='/research-map'&&!archived?`<script defer src="${currentAsset('research-map.js')}"></script>`:''}</body></html>\n`;
   }
   async function save(route,html){
     const file=path.join(output,route.replace(/^\//,'').replace(/\/$/,'')||'.','index.html');
@@ -160,7 +166,7 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
   // introduce a new reading view or change an archived page's navigation.
   const currentAssets=path.join(output,projectPath.slice(1),'assets');
   await mkdir(currentAssets,{recursive:true});
-  for(const name of ['research-map.css','research-map.js','logic-tree.css'])await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
+  for(const name of currentAssetNames)await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
 
   const routes=[],indexableRoutes=[],searchIndex=[];
   for(const [route,module,params,options={}] of specs){

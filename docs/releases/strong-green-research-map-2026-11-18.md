@@ -47,6 +47,8 @@ Current-only assets and the current-only page flag in
 `scripts/build-strong-green.mjs` preserve all existing frozen URLs. Keep these
 boundaries when changing the interface. A future formal edition can separately
 include a frozen reading map if that is explicitly desired.
+Current CSS and JavaScript URLs carry a content fingerprint, so a new logical
+view cannot accidentally run the cached script from an older topic view.
 
 Validate the build, generated links, statuses, navigation, search, sitemap,
 shared feedback context and release integrity. Inspect desktop and narrow

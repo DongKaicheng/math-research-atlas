@@ -61,8 +61,8 @@ test('The map is usable static HTML and does not extend or restyle the frozen ed
   assert.ok(html.includes('<details class="map-branch"'));
   assert.ok(html.includes('<details class="map-group"'));
   assert.ok(html.includes('Based on mathematical edition'));
-  assert.ok(html.includes(`href="${prefix}/assets/research-map.css"`));
-  assert.ok(html.includes(`src="${prefix}/assets/research-map.js"`));
+  assert.ok(html.includes(`href="${prefix}/assets/research-map.css?v=`));
+  assert.ok(html.includes(`src="${prefix}/assets/research-map.js?v=`));
   await assert.rejects(read(`projects/strong-green/editions/${revision}/research-map/index.html`), { code: 'ENOENT' });
   const frozen = await read(`projects/strong-green/editions/${revision}/index.html`);
   assert.doesNotMatch(frozen, /research-map/);

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import { logicalTrees, validateLogicalMap } from '../strong-green/views/content/logical-map.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -132,4 +133,15 @@ test('Logical controls and deep hashes affect only the logical disclosures', asy
   assert.deepEqual([outer.open, inner.open, other.open], [true, true, true]);
   handlers.overview();
   assert.deepEqual([outer.open, inner.open, other.open], [false, false, false]);
+});
+
+test('Current map resources are content-versioned so cached topic assets cannot disable the logic controls', async () => {
+  const html = await read('dist/projects/strong-green/research-map/index.html');
+  for (const name of ['research-map.css', 'research-map.js', 'logic-tree.css']) {
+    const contents = await read('strong-green/' + name);
+    const fingerprint = createHash('sha256').update(contents).digest('hex').slice(0, 16);
+    assert.ok(html.includes(`${project}/assets/${name}?v=${fingerprint}`), name);
+  }
+  const frozen = await read(`dist/projects/strong-green/editions/${revision}/index.html`);
+  assert.doesNotMatch(frozen, /research-map|logic-tree/);
 });
