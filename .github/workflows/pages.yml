@@ -38,9 +38,9 @@ jobs:
       - name: Select approved deployment configuration
         id: deployment_config
         env:
-          DEPLOY_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/math-research-atlas' }}
-          DEPLOY_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://dongkaicheng.github.io/math-research-atlas' }}
-          DEPLOY_BRAND: ${{ vars.SITE_BRAND || 'Conjecture Atlas' }}
+          DEPLOY_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/' }}
+          DEPLOY_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://openmath-atlas.org' }}
+          DEPLOY_BRAND: ${{ vars.SITE_BRAND || 'OpenMath' }}
         run: |
           case "${DEPLOY_BASE_PATH}|${DEPLOY_ORIGIN}|${DEPLOY_BRAND}" in
             '/math-research-atlas|https://dongkaicheng.github.io/math-research-atlas|Conjecture Atlas')
@@ -50,7 +50,7 @@ jobs:
               printf 'artifact_path=dist\n' >> "$GITHUB_OUTPUT"
               ;;
             *)
-              echo '::error::Unapproved deployment configuration. Leave all SITE_* variables unset for the legacy site, or set SITE_BASE_PATH=/, SITE_ORIGIN=https://openmath-atlas.org and SITE_BRAND=OpenMath together for cutover.'
+              echo '::error::Unapproved deployment configuration. Leave all SITE_* variables unset for the default OpenMath site, or set all three to one complete approved combination (OpenMath or legacy rollback).'
               exit 1
               ;;
           esac
@@ -93,7 +93,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload exactly one already-checked artifact. Preparing the custom
-          # domain does not activate it while repository variables are unset.
+          # domain is activated only after the verified cutover PR is merged.
           path: ${{ steps.deployment_config.outputs.artifact_path }}
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
