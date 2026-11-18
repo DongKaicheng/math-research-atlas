@@ -1,12 +1,14 @@
-# Conjecture Atlas — GitHub edition
+# OpenMath — independent mathematical research atlas
 
-This is the GitHub-native home of **Conjecture Atlas**, an open reference and research site for mathematical foundations, conjectures, proofs, and longer programmes.
+**The former public website at `https://dongkaicheng.github.io/math-research-atlas/` is retired and no longer maintained as a separate site.** GitHub Pages automatically redirects that address to the new, active [OpenMath website](https://openmath-atlas.org/). Please update bookmarks and citations to the new URLs.
 
-Public site: https://dongkaicheng.github.io/math-research-atlas/
+**Current website:** https://openmath-atlas.org/
 
-The [Non-Archimedean Bedford–Taylor project](https://dongkaicheng.github.io/math-research-atlas/projects/bedford-taylor/) includes the complete unsigned reading edition, six main sections, 74 permanent result records, explicit definition links, and matching mathematical papers and downloads. Publication preserves the recorded mathematical statuses; it is not a new certification of the proofs.
+This GitHub repository remains the maintained source, feedback, and revision history for OpenMath. The migration changes hosting addresses; archived mathematical editions and their original source records remain immutable.
 
-The [Beilinson–Bloch project](https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/) includes its research programme, three separate routes, permanent mathematical records, and ten articles in HTML, PDF and LaTeX. The Foundations project retains its existing outline.
+The [Non-Archimedean Bedford–Taylor project](https://openmath-atlas.org/projects/bedford-taylor/) includes the complete unsigned reading edition, six main sections, 74 permanent result records, explicit definition links, and matching mathematical papers and downloads. Publication preserves the recorded mathematical statuses; it is not a new certification of the proofs.
+
+The [Beilinson–Bloch project](https://openmath-atlas.org/projects/strong-green/) includes its research programme, three separate routes, permanent mathematical records, and ten articles in HTML, PDF and LaTeX. The Foundations project retains its existing outline.
 
 ## Where the information lives
 
@@ -26,7 +28,7 @@ The public website has **no ChatGPT, Cloudflare D1, R2, or proprietary authentic
 
 ## One feedback system
 
-All projects use [one feedback board](https://dongkaicheng.github.io/math-research-atlas/feedback/) backed by this repository's GitHub Issues. General feedback accepts comments about exposition, organisation, accessibility, missing topics, and collaboration without requiring a theorem, proof, or version. Mathematical feedback optionally carries the project, permanent result ID, precise edition, and fixed page URL.
+All projects use [one feedback board](https://openmath-atlas.org/feedback/) backed by this repository's GitHub Issues. General feedback accepts comments about exposition, organisation, accessibility, missing topics, and collaboration without requiring a theorem, proof, or version. Mathematical feedback optionally carries the project, permanent result ID, precise edition, and fixed page URL.
 
 Opening a form only prepares a draft on GitHub. Readers review and submit it themselves. Comments and attachments are public. There is no second inbox, public content-write API, or automatic acceptance of proofs. Accepted changes link the original Issue to the correction and new publication version.
 
