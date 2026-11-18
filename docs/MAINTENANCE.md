@@ -274,9 +274,19 @@ explicitly pending.
 The current `/projects/strong-green/results/proof-diagrams/` and its per-result
 pages are source-bound graphical reading views, separate from frozen paper
 editions. Their coverage includes every case and application in
-`strong-green/views/content/pairing-progress.mjs`. The three
+`strong-green/views/content/pairing-progress.mjs`. The
 `progress-proof-*.mjs` source modules provide the proof trees; `progress-proofs.mjs`
 joins them to the existing Progress inventory and validates coverage.
+
+`progress-proof-required.mjs` is an independent minimum inventory of the
+reviewed proof trees and the source files required by each result family.
+Extend it after reviewing new units; do not regenerate or shrink it from the
+candidate graph merely to make a deletion pass. It protects detailed trees
+which are not themselves application entry points. Source locators are
+nonblank string arrays: existing descriptive entries are reading notes, not
+automatically parsed TeX labels. Their exact mathematical targets still need
+source review. Scope/context boxes cannot contain an inference; put every
+derivation in a drawn root, premise or related argument.
 
 Maintain the exact source file hashes and proof locators when revising a graph.
 Do not recompute a binding merely to bypass a stale-source check: reread the

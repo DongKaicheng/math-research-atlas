@@ -86,6 +86,153 @@ test('Recovered endpoints use a separate conditional compact proof without circu
   assert.ok(source.locators.includes('r12p:picard-products') && source.locators.includes('r12p:top-degree'));
 });
 
+test('Kernel-domain proofs expand finite trace, point residue, proper slices, transport and Chow descent', () => {
+  const kernel = progressProofs.find(item => item.caseId === 'kernel-domain');
+  const nodes = new Map(allNodes(kernel).map(node => [node.id, node]));
+  const units = ['finite-base-change', 'point-residue', 'proper-slice', 'principal-transport', 'chow-descent'];
+  for (const unit of units) {
+    const tree = kernel.trees.find(item => item.id === `proof-kernel-domain-${unit}-tree`);
+    assert.ok(tree, unit);
+    assert.equal(tree.root.id, `proof-kernel-domain-${unit}-conclusion`);
+    assert.equal(tree.root.status, 'conditional');
+    assert.equal(tree.root.gate.kind, 'all');
+    assert.ok(walkProofNodes(tree.root).filter(node => node.gate).length >= 2, unit + ': intermediate deductions are drawn');
+  }
+  for (const [input, target] of [
+    ['curved-slice', 'proper-slice'], ['point-coefficients', 'point-residue'],
+    ['principal-law', 'principal-transport'], ['chow-descent', 'chow-descent'],
+    ['base-changed-form', 'finite-base-change'],
+  ]) assert.equal(nodes.get('proof-kernel-domain-' + input).href, `/results/proof-diagrams/kernel-domain/#proof-kernel-domain-${target}-conclusion`);
+  const binding = kernel.sourceBindings.find(item => item.file.endsWith('/global-height-pairing.tex'));
+  for (const label of ['r16h:finite-base-change', 'r16h:base-change', 'r16h:product-trace', 'r16h:refined-residue', 'r16h:curved-slice-eq', 'r16h:source-degrees', 'r16h:upstairs-slice', 'r16h:principal'])
+    assert.ok(binding.locators.includes(label), label);
+});
+
+test('Expanded kernel arguments retain normal carriers, exact multiplicities and rational integralization', () => {
+  const kernel = progressProofs.find(item => item.caseId === 'kernel-domain');
+  const nodes = new Map(allNodes(kernel).map(node => [node.id, node]));
+  const at = suffix => nodes.get('proof-kernel-domain-' + suffix);
+  const finite = kernel.trees.find(item => item.id === 'proof-kernel-domain-finite-base-change-tree');
+  const slice = kernel.trees.find(item => item.id === 'proof-kernel-domain-proper-slice-tree');
+  assert.match(finite.scope, /finite flat.*smooth integral.*normal integral/);
+  assert.match(at('bc-cycle').note, /generic Artinian length/);
+  assert.equal(at('bc-ci-input').status, 'hypothesis');
+  assert.equal(at('bc-current-injection').status, 'hypothesis');
+  assert.match(slice.scope, /normal, integral, quasiprojective.*finite.*compact actual scalar/);
+  assert.equal(at('slice-supported-record').record, 'BB-SUPPORTED-GREEN-PAIR');
+  assert.equal(entries.find(item => item.id === 'BB-SUPPORTED-GREEN-PAIR').status, 'draft');
+  assert.match(at('slice-normal-carriers').note, /Components lying over S contribute zero to this displayed dominating-cycle pushforward/);
+  assert.match(at('slice-fibre-degree').note, /native residue degree/);
+  assert.equal(at('slice-refined-input').href, '/results/proof-diagrams/kernel-domain/#proof-kernel-domain-point-residue-conclusion');
+  assert.match(at('principal-transport-conclusion').note, /integralized data.*product of the two clearing multipliers/);
+  assert.match(at('transport-integral-data').note, /Z,Z′,B.*W.*division by mk/);
+  assert.match(at('transport-carrier').note, /normal s-fold.*finite.*unit near S.*pushforward/);
+  assert.match(at('transport-compact').note, /\|f\+1\|<1/);
+  assert.match(at('transport-completions').note, /full degrees.*same a\(B,W\)/);
+  assert.match(at('descent-simultaneous').note, /\(Z₁,W₁\)→\(Z₁,W₀\)→\(Z₂,W₀\)→\(Z₂,W₂\)/);
+});
+
+test('The low-dimensional endpoint reference opens the three local proofs, not the global conclusion', () => {
+  const endpoint = progressProofs.find(item => item.caseId === 'endpoints');
+  const node = allNodes(endpoint).find(node => node.id === 'proof-endpoints-all-endpoints');
+  assert.equal(node.href, '/results/proof-diagrams/endpoints/#proof-endpoints-divisor-conclusion');
+  assert.deepEqual(node.links.map(link => link.href), [
+    '/results/proof-diagrams/endpoints/#proof-endpoints-zero-cycle-conclusion',
+    '/results/proof-diagrams/endpoints/#proof-endpoints-one-cycle-conclusion',
+  ]);
+});
+
+test('The curve-surface product proof separates endpoints, the empty product and the DP20 range', () => {
+  const item = progressProofs.find(item => item.caseId === 'surface-products');
+  const nodes = new Map(allNodes(item).map(node => [node.id, node]));
+  const at = suffix => nodes.get('proof-surface-products-' + suffix);
+  assert.equal(at('local-products').status, 'conditional');
+  assert.equal(at('local-products').gate.kind, 'any');
+  assert.deepEqual(at('local-products').gate.children.map(node => node.id), [
+    'proof-surface-products-low-dimensional-products',
+    'proof-surface-products-empty-product',
+    'proof-surface-products-higher-dimensional-products',
+  ]);
+  assert.equal(at('low-dimensional-products').gate.kind, 'all');
+  assert.equal(at('low-dimensional-divisors').href, '/results/proof-diagrams/endpoints/#proof-endpoints-divisor-conclusion');
+  assert.equal(at('low-dimensional-zero-cycles').href, '/results/proof-diagrams/endpoints/#proof-endpoints-zero-cycle-conclusion');
+  const higher = new Set(at('higher-dimensional-products').gate.children.map(node => node.id));
+  for (const suffix of ['product-model-range', 'product-witness', 'product-exactness', 'product-weights', 'product-analytic'])
+    assert.ok(higher.has('proof-surface-products-' + suffix), suffix);
+  assert.match(at('product-model-range').title, /m≥1 and n≥3/);
+  assert.equal(at('product-model-assumption').status, 'hypothesis');
+  assert.equal(at('good-native-obstruction').status, 'conditional');
+  assert.equal(at('good-exact-support').status, 'conditional');
+  for (const suffix of ['good-numerical-calculus', 'good-constructive-primitives', 'good-composite-trace-calculus'])
+    assert.equal(at(suffix).status, 'hypothesis', suffix);
+  assert.match(at('good-finite-cover').title, /\[L:K\]/);
+  assert.match(at('good-composite-trace-calculus').note, /original Gⱼ.*original absolute value.*every compact K-actual/);
+  const native = item.sourceBindings.find(source => source.file.endsWith('R11_curvature_class_and_next_step.tex'));
+  assert.ok(native.locators.includes('r11o:finite-good-vanishing'));
+});
+
+test('Positive hosts retain signature-only and boundary-comparison routes as genuine alternatives', () => {
+  const item = progressProofs.find(item => item.caseId === 'arithmetic-families');
+  const nodes = new Map(allNodes(item).map(node => [node.id, node]));
+  const at = suffix => nodes.get('proof-arithmetic-families-' + suffix);
+  assert.equal(at('host-vanishing').gate.kind, 'any');
+  assert.deepEqual(at('host-vanishing').gate.children.map(node => node.id), [
+    'proof-arithmetic-families-host-signature-route',
+    'proof-arithmetic-families-host-cc-route',
+  ]);
+  assert.equal(at('host-signature-route').gate.kind, 'all');
+  assert.equal(at('host-cc-route').gate.kind, 'all');
+  const signatureInputs = new Set(at('host-signature-route').gate.children.map(node => node.id));
+  for (const suffix of ['host-signature', 'host-strata', 'host-signature-unramified', 'host-signature-all-finite'])
+    assert.ok(signatureInputs.has('proof-arithmetic-families-' + suffix), suffix);
+  const ccInputs = new Set(at('host-cc-route').gate.children.map(node => node.id));
+  for (const suffix of ['host-cc-signature', 'host-cc-strata', 'host-curve-input', 'host-local-input'])
+    assert.ok(ccInputs.has('proof-arithmetic-families-' + suffix), suffix);
+  assert.ok(!walkProofNodes(at('host-signature-route')).some(node => node.id === 'proof-arithmetic-families-host-curve-input'));
+  assert.equal(at('host-projective-apply').href, '#proof-arithmetic-families-host-main');
+  assert.equal(at('elliptic-fourth-model').href, '#proof-arithmetic-families-host-main');
+  assert.equal(at('host-global-height').href, '#proof-arithmetic-families-assembly-global');
+  assert.equal(at('host-global-height').status, 'hypothesis');
+  assert.ok(at('host-main').gate.children.some(node => node.id === 'proof-arithmetic-families-host-global-height'));
+  assert.equal(at('host-curve-input').status, 'hypothesis');
+  assert.match(at('host-curve-input').title, /EVERY v∣p.*EVERY finite k′\/k\(v\).*EVERY boundary i/);
+  assert.match(at('host-curve-input').note, /EVERY actual native rational 1-cycle/);
+  assert.match(at('host-local-input').note, /EACH finite valued L\/K.*EACH newly specified/);
+  assert.match(at('host-local-input').note, /full \[L′:L\].*absolute value.*exact original support.*all actual compact tests/);
+  assert.equal(at('host-boundary-cc').gate.kind, 'all');
+  assert.equal(at('host-curve-gysin').gate.kind, 'all');
+  assert.ok(item.trees.some(tree => tree.id === 'proof-arithmetic-families-positive-host-curve-gate-tree'));
+  assert.equal(at('elliptic-fourth-curve-comparison').href, '#proof-arithmetic-families-host-elliptic-curve-comparison');
+  assert.ok(item.sourceBindings.some(source => source.locators.includes('r22su:ampleCC') && source.locators.includes('r22su:gates')));
+  assert.ok(item.sourceBindings.some(source => source.locators.includes('r18rb:fourfold')));
+});
+
+test('The signature-only host proof separates numerical positivity, residuals and exact period descent', () => {
+  const item = progressProofs.find(item => item.caseId === 'arithmetic-families');
+  const nodes = new Map(allNodes(item).map(node => [node.id, node]));
+  const at = suffix => nodes.get('proof-arithmetic-families-' + suffix);
+  for (const suffix of ['positive-host-positivity', 'positive-host-ramified']) {
+    const tree = item.trees.find(tree => tree.id === 'proof-arithmetic-families-' + suffix + '-tree');
+    assert.ok(tree, suffix);
+    assert.equal(tree.root.status, 'conditional');
+    assert.equal(tree.root.gate.kind, 'all');
+  }
+  assert.equal(at('host-pc16-positive-input').href, '#proof-arithmetic-families-host-components-positive');
+  assert.equal(at('host-u2-positive-input').href, '#proof-arithmetic-families-host-components-positive');
+  assert.ok(!walkProofNodes(at('host-pc16-obstruction')).some(node => node.href === '#proof-arithmetic-families-host-full-u2'));
+  for (const suffix of ['host-canonical-residual-input', 'host-operational-lift-input', 'host-native-detector-input', 'host-exact-period-input', 'host-period-kernel-input', 'host-full-degree-injection', 'host-exact-reconstruction-input'])
+    assert.equal(at(suffix).status, 'hypothesis', suffix);
+  assert.match(at('host-canonical-residual-input').note, /r15res:canonical-residual.*r15iso:total-isotropy.*supplied historical inputs/);
+  assert.match(at('host-unramified-domain').title, /EVERY finite unramified/);
+  assert.match(at('host-all-finite-domain').title, /EVERY finite valued/);
+  assert.match(at('host-inertia-period-zero').note, /full.*\[E:K₀\]/);
+  assert.match(at('host-period-kernel-input').title, /ker ν = ker Ob/);
+  assert.match(at('host-full-degree-injection').title, /\[E:L\]/);
+  for (const label of ['r22phs:theorem', 'r22as:local', 'r16pos:local', 'r18ri:all-finite', 'r17fd:numerical-kernel', 'r17vt:model-converse'])
+    assert.ok(item.sourceBindings.some(source => source.locators.includes(label)), label);
+  assert.ok(at('host-exact-period-input').links.some(link => link.href.endsWith('/R17_vertical_tests_and_strong_green_necessity.tex')));
+});
+
 test('The complete index and all independent proof pages are fully drawn without disclosures', async () => {
   const pages = [{ path: progressProofPath, trees: progressProofTrees }, ...progressProofs];
   for (const item of pages) {

@@ -2,6 +2,8 @@
 // The frozen papers, permanent records and their statuses remain authoritative.
 // A custom intermediate conclusion is conditional on its displayed hypotheses;
 // a source theorem used as a rule retains its own registered status.
+import { kernelProofDetails } from './progress-proof-kernel.mjs';
+
 const link = (href, label) => ({ href, label });
 const paper = (slug, anchor, label) => link(`/papers/${slug}#${anchor}`, label);
 const pairing = (anchor, label) => paper('pairing-constructions', anchor, label);
@@ -86,14 +88,14 @@ function kernelDomain() {
                 node('obstruction-zero', 'Ob([Z]) = 0 over the original K', height('r16h:P', 'Local zero-obstruction premise'), 'This is the local input defining the height domain.', undefined, 'hypothesis'),
                 record('obstruction-interface', 'BB-ACTUAL-OBSTRUCTION', 'The prescribed pair has curvature representing this Chow-invariant class. This analytic interface retains its draft status.'),
               ])),
-          node('curved-slice', 'The curved pair has the exact finite-intersection residue', height('r16h:curved-slice', 'All-actual finite-intersection residue theorem'),
+          node('curved-slice', 'The curved pair has the exact finite-intersection residue', diagram(c, 'proper-slice-conclusion', 'Complete curved-slice logical tree'),
             'For a normal integral quasiprojective r-dimensional carrier a:M→X with finite S = a⁻¹|Z|, the curved slice identity holds against every compact actual scalar test on Mᵃⁿ. Its residue is precisely the refined intersection Iₐ(Z), with every point coefficient.',
             gate('all', 'ALL data in the proper-slice calculation',
               'Normalize the components dominating M, retain their Artinian lengths, sum scalar Poincaré–Lelong, identify the algebraic point cycle, and divide by the full presentation degree.',
               [height('r16h:curved-slice', 'Complete proper-slice proof'), height('r16h:source-degrees', 'Weighted source-degree identity')], [
                 record('supported-pair', 'BB-SUPPORTED-GREEN-PAIR', 'Use the specified line-complex presentation, strict curvature identity, top Chern-degree formula and actual trace. An unspecified current solution is insufficient.'),
-                node('point-coefficients', 'Localized Chern character = refined point intersection', height('r16h:algebraic-residue', 'Algebraic residue lemma'),
-                  'Arbitrary base change and graph Gysin commute with the bivariant character. CH₀ of the finite scheme is free on its points, so coefficients cannot change modulo rational equivalence.'),
+                node('point-coefficients', 'Localized Chern character = refined point intersection', diagram(c, 'point-residue-conclusion', 'Complete point-coefficient logical tree'),
+                  'Arbitrary base change and graph Gysin commute with the bivariant character. CH₀ of the finite scheme is free on its points, so coefficients cannot change modulo rational equivalence.', undefined, 'conditional', [height('r16h:algebraic-residue', 'Algebraic residue lemma')]),
                 node('scalar-trace-input', 'Scalar PL, finite trace and native top degrees', height('hyp:height-calculus', 'Actual scalar and current calculus'),
                   'Scalar PL is used on normal sources. Actual finite trace is used on the finite locus; top Chern integration is used on proper fibres. Keep residue degrees and nonreduced lengths.', undefined, 'hypothesis', [height('hyp:height-trace', 'Full trace hypotheses'), height('hyp:height-supported', 'Supported-complex hypotheses')]),
               ])),
@@ -132,7 +134,7 @@ function kernelDomain() {
                 node('spread-disjoint', 'A smooth model with disjoint closures away from finitely many places', height('r16h:global-height', 'Spreading argument'), 'Properness of the intersection over the arithmetic base and its empty generic fibre make its image finite.'),
                 node('good-model-input', 'The good-model Green and curvature calculation', height('hyp:height-model', 'Model-form hypotheses'), 'This companion analytic result is an explicit input to the finite-sum argument.', undefined, 'hypothesis'),
               ])),
-          node('principal-law', 'Rational equivalence changes λᵥ by one global logarithm', height('r16h:principal', 'Exact principal transport'),
+          node('principal-law', 'Rational equivalence changes λᵥ by one global logarithm', diagram(c, 'principal-transport-conclusion', 'Complete principal-transport logical tree'),
             'After clearing denominators in both cycles, λᵥ(∂B,W) = −log|a(B,W)|ᵥ; divide by the two multipliers. The algebraic norm element belongs to F× and is the same at every place.',
             gate('all', 'ALL moving and residue ingredients',
               'Normalize a good higher-Chow chain over F. Its faces separately avoid W; point-slice residues and scalar PL produce the prescribed product of field norms with exact multiplicities.',
@@ -141,8 +143,8 @@ function kernelDomain() {
                 node('chain-residues', 'The full point-slice identity and scalar PL', diagram(c, 'local-conclusion', 'Exact-support residue tree'), 'Pull back the concrete Green form to the normal chain carrier. This step uses the proved slice calculation, not pullback of an arbitrary distributional equation.', undefined, 'conditional', [height('r16h:P-eq', 'Point-slice identity')]),
                 node('global-norm', 'Algebraic norms and the same archimedean law', height('r16h:principal', 'Global transport element'), 'Finite tensor factors and refined coefficients retain their full degrees at completion. A possible global sign has absolute value one at every place.', undefined, 'hypothesis'),
               ])),
-          node('chow-descent', 'The product formula and common moving remove all choices', height('r16h:global-height', 'Chow descent paragraph'),
-            'Σᵥ nᵥ log|a|ᵥ = 0 gives first-slot descent; symmetry gives the second. Compare two moved pairs through one representative avoiding both first supports. Common disjoint position gives rational bilinearity.', undefined, 'hypothesis'),
+          node('chow-descent', 'The product formula and common moving remove all choices', diagram(c, 'chow-descent-conclusion', 'Complete Chow-descent logical tree'),
+            'Σᵥ nᵥ log|a|ᵥ = 0 gives first-slot descent; symmetry gives the second. Compare two moved pairs through one representative avoiding both first supports. Common disjoint position gives rational bilinearity.', undefined, 'conditional', [height('r16h:global-height', 'Chow descent paragraph')]),
           node('absolute-input', 'Finite extensions preserve the normalized global sum', diagram(c, 'absolute-conclusion', 'Absolute-normalization tree'),
             'Local value invariance and the sum of completion weights prove the finite-extension clause.', undefined, 'conditional', [height('r16h:constant-extension', 'Local absolute normalization')]),
         ], { 'BB-H16-KERNEL-DOMAIN': 'The permanent record is a conditional construction on its fixed kernel domain. Its additional finite-detector description requires the separate comparison, drawn in the period-criterion case.' })),
@@ -165,7 +167,7 @@ function kernelDomain() {
             gate('all', 'ALL finite-extension compatibilities',
               'Base-change the supported complex and its line presentation, pull back the global primitive, then cancel the full native factor in the cycle integral.',
               [height('r16h:constant-extension', 'Proof of local invariance')], [
-                node('base-changed-form', 'The supported Green choice base-changes on all actual tests', height('r16h:finite-base-change', 'Finite base-change lemma'), 'The line-sum trace is compatible on the finite locus; the same presentation degree is retained across all components.', undefined, 'hypothesis'),
+                node('base-changed-form', 'The supported Green choice base-changes on all actual tests', diagram(c, 'finite-base-change-conclusion', 'Complete finite-base-change logical tree'), 'The line-sum trace is compatible on the finite locus; the same presentation degree is retained across all components.', undefined, 'conditional', [height('r16h:finite-base-change', 'Finite base-change lemma'), height('r16h:constant-extension', 'Supported choice under finite constants')]),
                 node('native-factor', 'Native K integration is [L:K] times native L integration', height('hyp:height-trace', 'Native finite-constant comparison'), 'Use identical genuine unit presentations. Keep ramification and residue degree, rather than a geometric sheet count.', undefined, 'hypothesis'),
                 node('choice-after-extension', 'Both pulled-back classes have zero obstruction', height('hyp:height-covariance', 'Constant-extension covariance'), 'The obstruction and actual primitive pull back. Disjoint-polar Stokes then permits any strong Green choices.', undefined, 'hypothesis'),
               ])),
@@ -174,11 +176,11 @@ function kernelDomain() {
         ])),
   };
   return {
-    caseId: c, trees: [local, assembly, absolute],
+    caseId: c, trees: [local, assembly, absolute, ...kernelProofDetails({ vocabulary, gate, height, diagram })],
     coverage: [{ title: 'A height pairing when the local obstruction vanishes', treeId: assembly.id, nodeId: id('main'), source: height('r16h:global-height', 'Obstruction-zero analytic height theorem') }],
     sourceBindings: [
       pairingBinding(['sub:height-input', 'hyp:height-input', 'lem:two-degrees']),
-      heightBinding(['sec:height-hypotheses', 'hyp:height-calculus', 'hyp:height-supported', 'hyp:height-trace', 'hyp:height-covariance', 'hyp:height-model', 'r16h:algebraic-residue', 'r16h:curved-slice', 'r16h:P', 'r16h:constant-extension', 'r16h:height-domain', 'r16h:global-height', 'r16h:principal']),
+      heightBinding(['sec:height-hypotheses', 'hyp:height-calculus', 'hyp:height-supported', 'hyp:height-trace', 'hyp:height-covariance', 'hyp:height-model', 'r16h:finite-base-change', 'r16h:base-change', 'r16h:product-trace', 'r16h:algebraic-residue', 'r16h:refined-residue', 'r16h:curved-slice', 'r16h:curved-slice-eq', 'r16h:source-degrees', 'r16h:upstairs-slice', 'r16h:P', 'r16h:constant-extension', 'r16h:height-domain', 'r16h:global-height', 'r16h:principal']),
     ],
   };
 }
@@ -306,7 +308,7 @@ function endpoints() {
         'For n≤3 each admissible codimension is 1, n−1 or n. Thus the endpoint set and its complementary set cover every pair.',
         [pairing('prop:endpoint-input', 'Endpoint range'), pairing('lem:two-degrees', 'Complementary-degree criterion')], [
           node('small-dimension', 'The dimension satisfies 1≤n≤3', pairing('prop:endpoint-input', 'Dimension range'), 'Only codimensions 1 through n occur. In dimension zero the listed positive complementary range is empty.', undefined, 'hypothesis'),
-          node('all-endpoints', 'The three local endpoint inputs above', diagram(c, 'main', 'Endpoint-domain tree'), 'Use the expanded conditional divisor and zero-cycle proofs and the conditional one-cycle proof. All three retain their actual-form premises.'),
+          node('all-endpoints', 'The three local endpoint inputs above', diagram(c, 'divisor-conclusion', 'Conditional divisor proof'), 'Use the expanded conditional divisor and zero-cycle proofs and the conditional one-cycle proof. All three retain their actual-form premises.', undefined, 'conditional', [diagram(c, 'zero-cycle-conclusion', 'Conditional zero-cycle proof'), diagram(c, 'one-cycle-conclusion', 'Conditional one-cycle proof')]),
           node('small-height', 'H16 on both complementary kernels', diagram('kernel-domain', 'main', 'Kernel-domain proof diagram'), 'The same analytic and reciprocity hypotheses remain required.', undefined, 'conditional', [height('r16h:global-height', 'H16 height theorem')]),
         ]))],
   };

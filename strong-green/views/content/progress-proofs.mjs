@@ -4,6 +4,7 @@ import { pairingGroups } from './pairing-progress.mjs';
 import { progressProofCore } from './progress-proof-core.mjs';
 import { progressProofGeometry } from './progress-proof-geometry.mjs';
 import { progressProofModels } from './progress-proof-models.mjs';
+import { progressProofRequirements } from './progress-proof-required.mjs';
 
 export const progressProofEdition = 'v0.5.1';
 export const progressProofInventory = {
@@ -60,14 +61,26 @@ export function validateProgressProofs(records, revision, candidates = progressP
     if (!original || !expectedCases.includes(item.caseId)) throw Error('Unknown Progress case: ' + item.caseId);
     if (!Array.isArray(item.trees) || !item.trees.length) throw Error('Missing Progress proof tree: ' + item.caseId);
     if (!Array.isArray(item.sourceBindings) || !item.sourceBindings.length) throw Error('Missing Progress proof source binding: ' + item.caseId);
+    const required = progressProofRequirements[item.caseId];
+    if (!required) throw Error('Missing retained Progress proof inventory: ' + item.caseId);
+    const treeIds = new Set(item.trees.map(tree => tree.id));
+    const missingTrees = required.treeIds.filter(treeId => !treeIds.has(treeId));
+    if (missingTrees.length) throw Error('Required Progress proof trees missing from ' + item.caseId + ': ' + missingTrees.join(', '));
     for (const source of item.sourceBindings) {
-      if (!/^(?:content\/strong-green\/releases\/v0\.5\.1\/papers\/|public\/projects\/strong-green\/editions\/v0\.5\.1\/)/.test(source.file || '') || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !source.locators?.length)
+      if (!/^(?:content\/strong-green\/releases\/v0\.5\.1\/papers\/|public\/projects\/strong-green\/editions\/v0\.5\.1\/)/.test(source.file || '') || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !Array.isArray(source.locators) || !source.locators.length || Array.from(source.locators).some(locator => typeof locator !== 'string' || !locator.trim()))
         throw Error('Invalid Progress proof source binding: ' + item.caseId);
     }
+    const sourceFiles = new Set(item.sourceBindings.map(source => source.file));
+    const missingSources = required.sourceFiles.filter(file => !sourceFiles.has(file));
+    if (missingSources.length) throw Error('Required Progress proof source bindings missing from ' + item.caseId + ': ' + missingSources.join(', '));
     const localIds = new Map();
     for (const tree of item.trees) {
       id(tree.id);
       if (!tree.title || !tree.summary || !tree.scope || !tree.root?.gate) throw Error('Incomplete Progress proof tree: ' + tree.id);
+      // Context boxes state ambient scope; their layout has no proof children.
+      // A derivation belongs in root/related, where every child is rendered.
+      for (const context of tree.contexts || []) if (context.gate)
+        throw Error('Progress context must not contain a logical relation: ' + (context.id || context.record || tree.id));
       for (const node of [...(tree.contexts || []), ...[tree.root, ...(tree.related || [])].flatMap(walkProofNodes)]) {
         nodeCount++;
         if (node.id) { id(node.id); localIds.set(node.id, tree.id); }

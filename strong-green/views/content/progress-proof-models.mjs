@@ -332,6 +332,17 @@ function arithmeticFamilies() {
   const ci = P('thm:dense-ci', 'Successive complete-intersection sections and proof');
   const products = P('thm:dense-products', 'Dense product-ambient families and proof');
   const elliptic = P('explicit-elliptic-power-families', 'All four elliptic-power families');
+  const suspension = { href: '/editions/v0.5.1/source-files/companion/proofs/models/r22/geometry/positive_fourfold_suspensions_and_quintuple_models.tex', label: 'SU22 full proof: r22su:gates and r22su:theorem' };
+  const ampleCC = { ...suspension, label: 'SU22 ample-boundary proof: r22su:ampleCC, r22su:weakL and r22su:Gysiniso' };
+  const ellipticCC = { ...suspension, label: 'SU22 elliptic fourth-power proof: r22su:host' };
+  const ramified = { href: '/editions/v0.5.1/source-files/companion/proofs/models/r18/u2/ramified_base_change_of_positive_fourfold_models.tex', label: 'RB18 full ramified proof: r18rb:strata and r18rb:fourfold' };
+  const positiveHostSource = { href: '/editions/v0.5.1/source-files/companion/proofs/families/r22/geometry/supplied_positive_hosts_and_projective_bundle_height_families.tex', label: 'PSH22 full proof: r22phs:theorem, r22phs:bundles and r22phs:P4' };
+  const positiveLocal = { href: '/editions/v0.5.1/source-files/companion/proofs/families/r22/geometry/abelian_hosts_and_general_suspension_height_families.tex', label: 'AS22-local full proof: r22as:local and r22as:MP' };
+  const positiveComponents = { href: '/editions/v0.5.1/source-files/companion/proofs/models/r16/model_obstruction/positive_fourfold_component_activation.tex', label: 'PC16 full proof: r16pos:types, r16pos:local and r16pos:weighted-zero' };
+  const inertia = { href: '/editions/v0.5.1/source-files/companion/proofs/models/r18/u2/inertial_triviality_and_ramified_norm_detection.tex', label: 'RI18 full proof: r18ri:torus, r18ri:norm and r18ri:all-finite' };
+  const periods = { href: '/editions/v0.5.1/source-files/companion/proofs/foundations/R17_finite_actual_tests_and_height_obstruction_quotients.tex', label: 'FD17 exact-kernel proof: r17fd:numerical-kernel and r17fd:finite-tests' };
+  const verticalTests = { href: '/editions/v0.5.1/source-files/companion/proofs/foundations/R17_vertical_tests_and_strong_green_necessity.tex', label: 'VT17 full proofs: r17vt:transpose, r17vt:vertical and r17vt:model-converse' };
+  const projectiveChow = P('bib-Fulton', 'Classical input: the projective-space Chow formula; Fulton bibliography');
   const familyScope = heightScope + ' Density is in the exact stated coefficient space over one fixed number field. The supplied companion local-model theorems must treat every newly specified homological class after every further finite extension.';
   const assembly = T('assembly', 'Arithmetic families from Lefschetz pencils',
     'A fixed-field congruence construction supplies the local models; their all-new-cycle comparison gives both height factors over every further finite extension.', familyScope,
@@ -479,31 +490,167 @@ function arithmeticFamilies() {
                 N('products-surface-coefficients', 'The free embedding-polynomial module supplies the stated image', products, 'Only when these polynomials span all sections is the resulting density in the full |L⁵|.', undefined, 'hypothesis'),
                 L('products-surface-pencil', 'Apply the common fixed-field pencil argument', 'main', 'Use the exact supplied coefficient image.'),
               ])),
-          L('products-host', 'M×P¹: the full positive-fourfold-host construction', 'host-main', 'This branch requires its separate signature hypothesis over EVERY finite residue extension.'),
+          L('products-host', 'M×P¹: the full positive-fourfold-host construction', 'host-main', 'The primary PSH22/AS22-local route uses the uniform signature. A separate SU22/RB18 sufficient route also requires uniform boundary curve comparison.'),
         ])));
   const positiveHost = T('positive-host', 'The positive-fourfold-host suspension',
-    'The uniform signature condition kills the numerical residual; the actual incidence join supplies the rank, and the section module supplies density.', familyScope + ' M is a supplied smooth projective geometrically integral fourfold over the WHOLE number ring of F₀; odd p is unramified in F₀. H is sufficiently positive for very ampleness, normal generation and section base change. Let c=deg H⁴.',
-    N('host-main', 'The full |(H⊠O(1))⁵| has a dense complete-height family over a fixed field unramified above p', products,
-      'rank N⁴=4(5c−4), b₁(X)=b₁(M), b₂(X)=b₂(M)+1; full heights persist after every further finite extension.',
-      G('all', 'Uniform local vanishing AND the actual incidence/Betti calculations AND full coefficients with pencils',
-        'The rank and Betti numbers are separate consequences of the same prepared geometry; they do not replace the residual-vanishing hypothesis.', products, [
+    'PSH22 uses the uniform signature through the independent PC16 obstruction argument and RI18 norm detection. SU22/RB18 gives another sufficient route with an additional curve-comparison gate. The incidence join and section module supply the rank and density.', familyScope + ' M is a supplied smooth projective geometrically integral fourfold over the WHOLE number ring of F₀; odd p is unramified in F₀. H is sufficiently positive for very ampleness, normal generation and section base change. Let c=deg H⁴. The primary PSH22/AS22-local proof requires the displayed uniform signature, with its explicit analytic inputs. Uniform CCℓ(Fᵢ), for fixed ℓ≠p, belongs only to the alternative SU22/RB18 route.',
+    N('host-main', 'One fixed F/F₀ unramified above p supports a dense complete-height family in the full |(H⊠O(1))⁵|', products,
+      'rank N⁴=4(5c−4), b₁(X)=b₁(M), b₂(X)=b₂(M)+1. The unramified condition concerns only the initial F/F₀; full heights persist after EVERY subsequent finite F′/F, including ramified extensions.',
+      G('all', 'All-place local vanishing AND global height theory AND full-coefficient pencils AND the separate invariants',
+        'The coefficient module and prepared data feed the common dense-pencil construction. The local theorems put BOTH complementary groups in the kernels at EVERY finite place; the independent global height hypotheses then supply reciprocity and the pairing. The incidence and Betti calculations give the separate stated invariants.', [products, positiveHostSource, pencils, P('hyp:height-input', 'Independent admitted-domain height theorem')], [
           N('host-vanishing', 'The five-divisor / five-point local model has all-new-cycle vanishing', products,
-            'The residue signature must be stable under every finite residue extension, which is what the ramified new-cycle theorem uses.',
-            G('all', 'The prepared transverse strata AND the uniform signature AND the companion comparison',
-              'The signature kills the primitive numerical residual in the positive-host suspension. The uniform form supplies the ramified finite-extension statement.', [products, P('eq:host-signature', 'Uniform signature condition')], [
-                N('host-signature', 'b⁻(N²(Mₖ′)ℝ,deg xy)=ρ(Mₖ′)−1 for EVERY v∣p and EVERY finite k′/k(v)', P('eq:host-signature', 'Exact signature quantifier'), 'Everywhere-good abelian fourfolds, the stated projective-bundle hosts and P⁴ supply the listed examples.', undefined, 'hypothesis'),
-                N('host-strata', 'Five divisors and five distinct P¹ points have the stated prepared intersections', products, 'One-, two- and three-divisor intersections are smooth geometrically integral; fourfold intersections are split finite étale of degree c; fivefold intersection is empty. The smoothing cuts strata transversely and avoids zero-dimensional strata.', undefined, 'hypothesis'),
-                N('host-local-input', 'The positive-host suspension and ramified-extension comparison', products, 'The supplied theorem is applied to these actual strata and smoothing cuts.', undefined, 'hypothesis'),
+            'At each distinguished completion K, either complete source route treats EVERY finite valued L/K and EVERY newly specified geometrically homologically trivial rational cycle on X_L. No new cycle is assumed to descend to K.',
+            G('any', 'PSH22 signature-only route OR the SU22/RB18 signature-plus-CCℓ route',
+              'AS22-local explicitly proves the first route without a double-curve comparison hypothesis, using PC16 and RI18. The second route uses the separate double-comparison gate of SU22 and RB18. Each branch retains its own complete analytic inputs.', [products, positiveHostSource, positiveLocal, suspension, ramified], [
+                N('host-signature-route', 'PSH22: the uniform signature gives the full new-cycle domain', positiveHostSource,
+                  'Primitive-positive components feed PC16 directly. Its obstruction-zero result holds anew over every unramified extension; RI18 then treats every finite valued extension.',
+                  G('all', 'Prepared geometry AND uniform signature AND PC16 native obstruction zero AND RI18',
+                    'PC16 uses the canonical residual, multiplicity-weighted isotropy and pure operational numerical detection. The separate consequence U₂=0 is not the sole input to that obstruction argument.', [products, positiveHostSource, positiveLocal, positiveComponents, inertia], [
+                      N('host-signature', 'b⁻(N²(Mₖ′)ℝ,deg xy)=ρ(Mₖ′)−1 for EVERY v∣p and EVERY finite k′/k(v)', P('eq:host-signature', 'Exact signature quantifier'), 'Everywhere-good abelian fourfolds, the stated projective-bundle hosts and P⁴ supply the listed numerical signatures on the whole native numerical groups. This is the primary PSH22 hypothesis.', undefined, 'hypothesis'),
+                      N('host-strata', 'Five divisors and five distinct P¹ points have the stated prepared intersections', products, 'One-, two- and three-divisor intersections are smooth geometrically integral; fourfold intersections are split finite étale of degree c; fivefold intersection is empty. The smoothing cuts strata transversely and avoids zero-dimensional strata.', undefined, 'hypothesis'),
+                      L('host-signature-unramified', 'AS22-local and PC16 give Ob=0 for all new unramified classes', 'host-unramified-domain', 'Use the same actual ordered geometry and full numerical signature over each finite constant field.'),
+                      L('host-signature-all-finite', 'RI18 norm detection gives Ob=0 after EVERY finite valued extension', 'host-all-finite-domain', 'The exact FD17 period kernel, its analytic inputs and the complete final field degree remain explicit.'),
+                    ])),
+                N('host-cc-route', 'SU22/RB18: uniform signature plus boundary CCℓ gives the full domain', suspension,
+                  'This alternative sufficient proof requires the extra CCℓ gate; it does not restrict the preceding PSH22 route.',
+                  G('all', 'Prepared geometry AND uniform signature AND uniform boundary CCℓ AND comparison',
+                    'SU22.5 explicitly has two finite-field gates. CCℓ(Fᵢ), surface-times-P¹ comparison and smooth-curve blowup comparison give CCℓ on every actual double, closing CL17. RB18 requires both universal component positivity and universal double comparison.', [products, suspension, ramified], [
+                      L('host-cc-signature', 'The same uniform signature on the whole new numerical groups', 'host-signature', 'Retain EVERY v∣p and EVERY finite k′/k(v).', 'hypothesis'),
+                      L('host-cc-strata', 'The actual prepared geometry and smoothing cuts', 'host-strata', 'Every double is the actual prescribed smooth-curve blowup of Fᵢ or of a surface times P¹.', 'hypothesis'),
+                      N('host-curve-input', 'CCℓ(Fᵢₖ′) for EVERY v∣p, EVERY finite k′/k(v) and EVERY boundary i', '#proof-arithmetic-families-host-boundary-cc', 'For EVERY actual native rational 1-cycle z on (Fᵢ)ₖ′, numerical zero must imply clℓ(z)=0 in geometric H⁴(−,ℚℓ(2)). This is a required input of this SU22/RB18 branch only. The linked sufficient proof uses uniform CCℓ(M) and smooth ample boundaries.', undefined, 'hypothesis'),
+                      N('host-local-input', 'The supplied SU22 suspension and RB18 ramified comparison', ramified, 'Apply to these actual strata with universal component positivity and CCℓ on EVERY actual double over EVERY finite residue extension. For EACH finite valued L/K and EACH newly specified geometrically homologically trivial rational cycle on X_L, use the new model; any further unramified preparation L′/L is descended by the full [L′:L], with the absolute value extending the original one, exact original support and all actual compact tests.', undefined, 'hypothesis'),
+                    ])),
               ])),
           N('host-invariants', 'Joining five point vertices changes dim H₃=5c−4 to rank N⁴=4(5c−4)', products, 'Weak Lefschetz gives b₁(X)=b₁(M) and b₂(X)=b₂(M)+1.', undefined, 'conditional'),
           N('host-coefficients', 'Serre vanishing and a sufficiently high Veronese supply FULL coefficients and jets', products, 'Apply the congruence-pencil lemma over one fixed extension unramified above p; use ordinary comparison elsewhere.', undefined, 'hypothesis'),
+          L('host-pencil-construction', 'The prepared full coefficient system gives the fixed-field dense-pencil construction', 'pencils-main', 'PSH22 supplies the finite residue preparation and jets before choosing the pencil directions; the field remains fixed as the exceptional spreading sets vary.'),
+          L('host-other-places', 'Good or ordinary comparison holds at EVERY other finite completion', 'assembly-ordinary', 'PSH22 checks smooth replacement fibres at the prepared exceptional places and smooth or odd-characteristic one-node fibres elsewhere; residue characteristic two lies in the smooth regime. The criterion reapplies to every new class after every finite extension.', 'hypothesis'),
+          L('host-global-height', 'The independent admitted-domain analytic height and reciprocity input', 'assembly-global', 'Retain BOTH complementary local kernels, archimedean terms, absolute normalization, symmetry and rational-equivalence descent.', 'hypothesis'),
         ])), [
       N('host-projective-example', 'For M=P⁴, H=O(1), p=5: rank N⁴=4 and (b₁,b₂)=(0,2)', products,
         'These are bidegree-(5,5) fourfolds in P⁴×P¹.',
-        G('all', 'The P⁴ signature input AND substitution c=1',
-          'The host theorem then gives the full construction and the stated invariants.', products, [
+        G('all', 'The P⁴ signature/data AND the PSH22 route AND substitution c=1',
+          'PSH22:r22phs:P4 applies its signature-only construction. The separate projective-space CC calculation below also supplies the alternative route.', [products, positiveHostSource], [
             N('host-projective-data', 'P⁴ supplies the signature, good model and full coefficient system', products, 'Use H=O(1) and the distinguished prime five.', undefined, 'hypothesis'),
-            L('host-projective-apply', 'Apply the positive-host theorem', 'host-main', 'Substitute c=deg H⁴=1.'),
+            L('host-projective-apply', 'Apply the full PSH22 positive-host construction', 'host-main', 'Use its signature-only local alternative, its full coefficient/pencil proof and its global height input. Substitute c=deg H⁴=1.'),
+          ])),
+      L('host-projective-curve-input', 'P⁴ also supplies the alternative route’s boundary CCℓ input', 'host-projective-curve-comparison', 'The classical projective-space Chow calculation and SU22:ampleCC establish it over EVERY finite residue extension. This is an additional sufficient route, with the application input status retained.', 'hypothesis'),
+      L('elliptic-fourth-curve-comparison', 'E⁴ also supplies the alternative route’s uniform boundary CCℓ', 'host-elliptic-curve-comparison', 'SU22:r22su:host gives this optional comparison route through SP19 and its ample-boundary lemma.'),
+    ]);
+  const hostPositiveModel = T('positive-host-positivity', 'The AS22-local and PC16 native-obstruction proof',
+    'The actual ordered model has primitive-positive components. PC16 then uses its canonical residual and weighted isotropy to build a numerical model certificate and kill the original actual obstruction. The separate U₂ consequence is displayed below.',
+    localScope + ' Here X is the supplied fourfold smoothing at a distinguished completion K. For EACH finite unramified K′/K, rerun the argument on the whole native numerical and Chow groups of the base-changed model and on EACH newly specified geometrically homologically trivial class, in every 1≤r≤4. The uniform signature is imposed on EVERY resulting finite constant field.',
+    N('host-unramified-domain', 'Every new homological class over EVERY finite unramified K′/K has Ob=0', positiveLocal,
+      'The proof is repeated over the current K′. It does not assume that a new class or a new numerical component class descends to K.',
+      G('all', 'The actual ordered model AND primitive-positive components AND the PC16 obstruction argument',
+        'AS22-local verifies the geometric and positivity hypotheses of PC16 over each finite constant field. PC16 directly supplies native obstruction zero and the exact-support reconstruction in all four degrees.', [products, positiveLocal, positiveComponents], [
+          N('host-ordered-geometry', 'The ordered factor blowups give a regular projective reduced strict semistable model', suspension,
+            'Its components are unchanged copies of M and iterated smooth surface blowups of Fᵢ×P¹. Every closed stratum is smooth, including the genuine higher intersections.',
+            G('all', 'Prepared transverse data AND saturated local charts AND the actual center calculation',
+              'The geometric part of SU22 uses no CC hypothesis. It supplies the precise model required by AS22-local and PC16.', [products, suspension, positiveLocal], [
+                L('host-model-data', 'Use every prepared factor intersection and smoothing cut', 'host-strata', 'The generic fourfold is smooth and geometrically integral; Q avoids the zero-dimensional strata.', 'hypothesis'),
+                N('host-ordered-charts', 'At Q=0: x₁⋯xₛ=πy, s≤4; at quintuple points: x₁⋯x₅=πu', suspension, 'The saturated ordered charts are regular with reduced special fibre and no extra vertical components. At a quintuple point u is a unit, so the chart is already strict semistable.'),
+                N('host-ordered-centers', 'Each continuing H_I is blown up in H_I∩Hⱼ∩Q, in decreasing j', suspension, 'Each nonempty center has codimension two in H_I. Earlier centers meet later ones in a Cartier divisor, so the later center is unchanged; Q avoids the zero-dimensional collisions.'),
+              ])),
+          N('host-components-positive', 'Every fourfold component is primitive-positive for one actual relatively ample H', positiveLocal,
+            'All numerical forms and multiplicities use native residue degrees. No numerical-to-ℓ-adic comparison is used to calculate these signatures.',
+            G('all', 'The host signature AND the full Fᵢ×P¹ form AND the surface-blowup formula AND divisor Hodge index',
+              'The full negative middle index of each component equals its Picard rank minus one. Its H·N¹ part has exactly that negative index by divisor Hodge index, so the orthogonal primitive middle form is positive definite.', [products, positiveLocal, positiveComponents], [
+                L('host-positive-host-signature', 'The point components M satisfy the uniform signature', 'host-signature', 'Apply the hypothesis to the whole native numerical group over the current finite residue field.', 'hypothesis'),
+                N('host-hyperbolic-product', 'N²(Fᵢ×P¹)=N²(Fᵢ)⊕N¹(Fᵢ) has the full hyperbolic pairing', positiveComponents, 'The pairing is deg(αβ′+α′β). Perfect numerical duality makes its negative index dim N¹(Fᵢ), while ρ(Fᵢ×P¹)=dim N¹(Fᵢ)+1. Use all native numerical cycle classes and perfect numerical duality; no identification with the full cohomology group is needed.'),
+                N('host-surface-blowups', 'Each connected smooth surface center adds one negative direction and one Picard generator', positiveLocal, 'Its exceptional middle block is the negative of the surface divisor pairing. Apply this component by component for a disconnected center, retaining every positive native degree factor.'),
+                N('host-ample-hodge', 'One relatively ample line bundle restricts to every component', positiveLocal, 'Divisor Hodge index gives signature (1,ρ−1) on H·N¹. Numerical duality identifies its orthogonal complement with the entire primitive middle group.', undefined, 'hypothesis'),
+              ])),
+          N('host-pc16-obstruction', 'PC16 kills the actual obstruction in every degree 1≤r≤4', positiveComponents,
+            'For r=2, positive weights and primitive positive definiteness force every canonical residual component to be zero. The other three degrees use the separately established endpoint and one-cycle inputs.',
+            G('all', 'Primitive positivity AND canonical weighted residuals AND a pure operational witness AND native detection',
+              'For r=2 the imported identities give Rᵢ∈P²_H(Dᵢ) and Σmᵢdeg(Rᵢ²)=0. Hence every Rᵢ=0. The residual theorem supplies a rational model Chow lift with zero component numerical restrictions; its pure operational character gives the native obstruction-zero certificate.', [products, positiveComponents, P('prop:numerical', 'The analytic numerical-model interface')], [
+                L('host-pc16-positive-input', 'Use positivity of the entire primitive component groups', 'host-components-positive', 'This is the input to PC16. The separate statement U₂=0 is not substituted for it.'),
+                N('host-canonical-residual-input', 'Rᵢ∈P²_H(Dᵢ) and Σᵢmᵢdegₖ′(Rᵢ²)=0 for the specified homological class', positiveComponents, 'PC16 explicitly imports r15res:canonical-residual and r15iso:total-isotropy. They remain supplied historical inputs; no new proof of their original dossiers is asserted here. Each mᵢ and every residue-field degree is positive.', undefined, 'hypothesis'),
+                N('host-operational-lift-input', 'Residual zero supplies a pure operational K₀ witness for the same generic class', positiveComponents, 'Use PC16’s imported r12n:K0 construction. Its degree-two character has zero degree on EVERY integral vertical two-cycle and generic character exactly the prescribed pulled Chow class.', undefined, 'hypothesis'),
+                N('host-native-detector-input', 'Actual model-Chern detection and dominant/finite obstruction injection', positiveComponents, 'The detector kills the upstairs actual curvature in the original valued-field theory. The supplied dominant Bott–Chern injection and full finite-constant injection descend Ob=0, retaining ramification, native residue degrees and the original absolute value. These analytic interfaces remain conditional.', undefined, 'hypothesis'),
+                N('host-other-degrees-input', 'r=1,3,4 use the conditional divisor, one-cycle and zero-cycle results', P('prop:endpoint-input', 'The remaining fourfold degrees'), 'PC16 applies those inputs over the current K′ to every new homological class. The same actual curved-pair reconstruction returns the specified exact support and all actual tests.', undefined, 'hypothesis'),
+              ])),
+        ])), [
+      N('host-full-u2', 'The same primitive positivity also gives the entire U₂=0', positiveLocal,
+        'This is a parallel consequence. The PC16 obstruction proof above has its own residual and detection inputs.',
+        G('all', 'Primitive-positive components AND the supplied PU18 primitive-isotropic representative theorem',
+          'PU18 represents the whole numerator ker ρ₂∩im σ₂ by a totally isotropic primitive subspace. Positive definiteness forces that subspace to vanish, with all higher-stratum terms retained.', [products, positiveLocal], [
+            L('host-u2-positive-input', 'The entire primitive component form is positive definite', 'host-components-positive', 'Use the same actual ample class and native intersection forms.'),
+            N('host-pu18-input', 'The complete PU18 representative theorem', positiveLocal, 'AS22-local explicitly invokes this theorem for the full U₂ numerator, including genuine higher strata. It is a supplied source interface, independent of PC16’s route to Ob=0.', undefined, 'hypothesis'),
+          ])),
+    ]);
+  const hostRamifiedNorm = T('positive-host-ramified', 'RI18: from all unramified domains to every finite extension',
+    'The inertia action is a global connected-torus translation on each actual component. It fixes all numerical tests, so the norm of a new cycle detects its full period. The exact FD17 kernel then returns to the native obstruction.',
+    localScope + ' Fix ANY finite valued L/K and ANY geometrically homologically trivial rational codimension-r cycle Z on X_L, 1≤r≤4. Choose a finite Galois E/K containing L and put K₀=Eᴵ for its inertia subgroup I. In the norm step W=Z_E and p:X_E→X_K₀. E/K₀ is totally ramified Galois; all degrees include their wild, ramification and residue factors.',
+    N('host-all-finite-domain', 'Every new homological class over EVERY finite valued L/K has Ob=0', inertia,
+      'The starting class is arbitrary over L. It is pulled to E only after it has been specified, and the final argument returns to L with its original absolute value.',
+      G('all', 'The universal unramified domain AND the Galois norm calculation AND the exact period kernel AND native descent',
+        'The norm B=p_*W is homologically trivial over K₀, hence has strong G. Full finite actual ascent gives strong G for p*B over E. Necessity of the exact detector and inertia invariance imply 0=ν(p*B)=|I|ν(W). Thus ν(W)=0; FD17’s exact numerical kernel gives Ob(W)=0. Native finite-constant injection then descends to the original class over L.', [products, inertia, periods, P('sub:finite-certificates', 'The finite-period criterion')], [
+          L('host-all-finite-unramified', 'EVERY homological class over EVERY finite unramified K₀/K has Ob=0', 'host-unramified-domain', 'Use the statement for the whole new group over K₀, so it applies to the norm B even if B is not a class defined over K.'),
+          N('host-galois-preparation', 'E/K is Galois, contains L, and E/K₀ is totally ramified with group I', inertia, 'The original reduced strict semistable model remains so under K₀/K. Saito’s actual blowup gives the I-equivariant reduced strict model over E, including wild ramification.'),
+          N('host-inertia-period-zero', 'The full model period ν(W) is zero', inertia,
+            'The period is tested on every v∈ker A in the complete native numerical component space. Rational coefficients allow division by the full |I|=[E:K₀].',
+            G('all', 'Trivial numerical inertia action AND the actual norm identity AND all-test ascent AND exact period necessity',
+              'For every numerical test v, ν(gW)(v)=ν(W)(g⁻¹v)=ν(W)(v). Since p*p_*W=Σg∈I gW, the zero period of the norm pullback equals |I|ν(W). This treats the arbitrary new class rather than assuming its descent.', [products, inertia, periods, verticalTests], [
+                N('host-inertia-action', 'Every g∈I acts trivially on every Nᵃ(F) of every actual new component F', inertia,
+                  'The action is numerical, with no cycle-class comparison imposed on a special-fibre component.',
+                  G('all', 'The Galois-equivariant Saito model AND a global connected normal-torus action',
+                    'A component labelled by (D_I,(aᵢ)) has normal characters zᵢ=xᵢ/tᵃⁱ. Inertia acts by zᵢ↦c_g⁻ᵃⁱzᵢ with ∏c_g⁻ᵃⁱ=1. This is a point of a split connected torus acting on the entire projective component; its translates are numerically equivalent.', [products, inertia], [
+                      N('host-saito-action', 'The actual Saito blowup ideal and component labels are inertia-stable', inertia, 'Every old component ideal is fixed and g(t)/t is a unit. The integral unimodular charts give the genuine reduced strict model and its labelled native components, with no tame assumption.'),
+                      N('host-global-torus', 'The normal-torus action extends and glues over every boundary chart', inertia, 'The normal characters have an integral lattice basis, transition factors come from base units, and the monomial charts are homogeneous. Connected-torus translation preserves numerical classes via proper flat families. Native constant-field degrees remain intact.'),
+                    ])),
+                N('host-norm-cycle', 'B=p_*W is homologically trivial and p*B=Σg∈I gW in rational Chow', inertia, 'Over the geometric generic fibre the pushforward class is a sum of conjugate zero classes. Finite flat Galois pullback gives the actual norm identity with all cycle coefficients retained.'),
+                N('host-norm-ascent-input', 'Strong G for B ascends to p*B on ALL E-actual tests', inertia, 'Use the full finite actual trace and FG16 finite-constant comparison with the complete degree [E:K₀], its native cycle lengths and the original absolute value. This is an analytic input on the whole test space.', undefined, 'hypothesis'),
+                { ...N('host-exact-period-input', 'The supplied FD17/VT17 period detector has BOTH necessary and sufficient directions', periods, 'Its global ordinary D-closed actual tests realize the full ν coordinates. VT17 constructs the framed vertical tests, proves the transpose identity and gives the supplied-model converse. Necessity gives ν(p*B)=0 from strong G. FD17 sufficiency uses its exact numerical kernel and reconstructs strong G on the exact support with every actual test. The independent analytic audit remains unfinished.', undefined, 'hypothesis'), links: [verticalTests] },
+              ])),
+          N('host-period-kernel-input', 'FD17:r17fd:numerical-kernel gives ker ν = ker Ob', periods, 'For ν=0, perfect numerical duality supplies an actual rational vertical correction. The model detector, dominant Bott–Chern injection and full finite-constant injection give native Ob=0. This explicit conditional lemma is the bridge; no general converse is taken from the earlier R11 sufficient criterion.', undefined, 'hypothesis'),
+          N('host-final-field-descent', 'Return from E to L with the full [E:L] and reconstruct the original support', inertia,
+            'Native obstruction pullback injection descends Ob(W)=0. The finite actual trace and the supplied reconstruction preserve the complete original test space and the absolute value on L.',
+            G('all', 'Full-degree native obstruction injection AND exact-support actual reconstruction',
+              'The final cycle is the original specified Z over L. The descended zero obstruction provides a global primitive of its original curvature, which is subtracted from its own exact-support curved pair.', [products, inertia, periods, P('prop:obstruction', 'Native obstruction and exact-support reconstruction')], [
+                N('host-full-degree-injection', 'Finite-constant obstruction injection retains the complete [E:L]', P('sub:covariance', 'Native covariance and full degrees'), 'Ramification and residue degrees are not replaced by a geometric sheet count. The norm on L is the initially prescribed one.', undefined, 'hypothesis'),
+                N('host-exact-reconstruction-input', 'The original curved pair and its global actual correction', P('prop:obstruction', 'The actual obstruction input'), 'The final Green form is ordinary actual on exactly X_Lᵃⁿ∖|Z|ᵃⁿ and satisfies its identity against every compact actual complementary test.', undefined, 'hypothesis'),
+              ])),
+        ])));
+  const hostCurveComparison = T('positive-host-curve-gate', 'The uniform ample-boundary curve-comparison gate',
+    'The full SU22 proof isolates a sufficient ambient comparison and proves the Gysin cancellation needed on each boundary. Its elliptic host supplies the ambient comparison through the cited product-of-curves theorem.',
+    familyScope + ' This is the finite-field input of the selected SU22/RB18 route. Fix ℓ≠p. For EACH v∣p, EACH finite k′/k(v), EACH boundary i and EACH actual native rational 1-cycle z on (Fᵢ)ₖ′, apply the argument over k′. General uniform CCℓ(M) remains a supplied hypothesis; the numerical signature is a separate requirement.',
+    N('host-boundary-cc', 'Every smooth ample boundary Fᵢ has CCℓ over EVERY finite constant extension', ampleCC,
+      'Fix arbitrary v, k′, i and numerically zero z. The proof applies anew to the whole native curve group over k′, including curves that do not descend to k(v).',
+      G('all', 'Uniform ambient CCℓ AND smooth ample boundaries AND projection formula AND injective Gysin',
+        'The numerical projection formula makes i_*z numerically zero on M. Ambient CCℓ gives clℓ(i_*z)=0. Compatibility of cycle classes with Gysin and the displayed injection then give clℓ(z)=0. This proves the stated implication for every new native 1-cycle over every k′.', [products, ampleCC], [
+          N('host-ambient-curve-input', 'CCℓ(Mₖ′) for EVERY v∣p and EVERY finite k′/k(v)', suspension, 'For EVERY actual native rational 1-cycle on Mₖ′, numerical zero implies zero geometric ℓ-adic class. This sufficient ambient input is not supplied by the signature equation alone.', undefined, 'hypothesis'),
+          N('host-ample-boundary-input', 'Each Fᵢ is a smooth geometrically integral ample divisor in M', ampleCC, 'The prepared H-divisors satisfy this geometric condition; it persists after every finite constant extension.', undefined, 'hypothesis'),
+          N('host-curve-pushforward', 'Numerical zero of z on Fᵢ implies numerical zero of i_*z on M', ampleCC, 'For EVERY native divisor A on Mₖ′, deg_M(i_*z·A)=deg_Fᵢ(z·i^*A)=0 by the actual projection formula. Use all native divisor tests over the current k′.'),
+          N('host-curve-gysin', 'Gysin: H⁴(Fᵢ̄,ℚℓ(2)) → H⁶(M̄,ℚℓ(3)) is injective', ampleCC,
+            'The actual Gysin is an isomorphism, so its zero value on clℓ(z) can be cancelled.',
+            G('all', 'Weak Lefschetz AND Poincaré duality with the cohomological projection formula',
+              'For a smooth ample divisor in a fourfold, restriction on H² is an isomorphism. Poincaré duality identifies its dual with the Gysin from H⁴(Fᵢ) to H⁶(M); it too is an isomorphism over every geometric constant field.', [products, ampleCC], [
+                N('host-boundary-weak-lefschetz', 'Restriction: H²(M̄,ℚℓ(1)) ≅ H²(Fᵢ̄,ℚℓ(1))', ampleCC, 'SU22.1 applies ordinary weak Lefschetz to the supplied smooth ample boundary.', undefined, 'hypothesis'),
+                N('host-boundary-duality', 'The Gysin in SU22.2 is dual to that restriction', ampleCC, 'Use Poincaré duality for the smooth projective fourfold and threefold and the cohomological projection formula.', undefined, 'hypothesis'),
+              ])),
+        ])), [
+      N('host-projective-curve-comparison', 'P⁴ supplies boundary CCℓ over EVERY finite residue extension', ampleCC,
+        'For EVERY finite k′/k(v) and EVERY native rational 1-cycle, the classical projective-space calculation gives ambient CCℓ. The same sufficient ample-boundary proof then applies to each Fᵢ. In the H=O(1) example each Fᵢ is P³.',
+        G('all', 'The projective-space Chow calculation AND smooth ample boundaries AND SU22:ampleCC',
+          'Numerical zero of z=d[line] forces d=0 by intersecting one hyperplane, hence its Chow class and geometric ℓ-adic class vanish. Apply the already displayed ample-boundary Gysin argument over the same k′. This explicitly supplies the alternative route’s comparison input.', [products, projectiveChow, ampleCC], [
+            N('host-projective-ambient-cc', 'CCℓ(P⁴ₖ′) holds for EVERY finite k′ and EVERY native rational 1-cycle', projectiveChow,
+              'This calculation works over every field. It therefore treats each new native curve cycle after every finite residue extension.',
+              G('all', 'The classical Chow formula AND the degree-one hyperplane test',
+                'Write [z]=d[line]. Numerical zero gives 0=deg(z·h)=d, so [z]=0 in rational Chow. The geometric cycle-class homomorphism then gives clℓ(z)=0.', [products, projectiveChow, P('prop:closures', 'Reading-paper use of the Chow projective-bundle decomposition')], [
+                  N('host-projective-chow-formula', 'CH₁(P⁴ₖ′)ℚ=ℚ·[line] over EVERY field k′', projectiveChow, 'The classical projective-space Chow formula is an explicit input here, as used in the reading paper’s projective-bundle discussion. It is not attributed to the SU22 ample-boundary lemma.', undefined, 'hypothesis'),
+                  N('host-projective-degree-test', 'For h=c₁(O(1)), deg([line]·h)=1', projectiveChow, 'A native line meets a native hyperplane in degree one. Thus the coefficient d of a numerically zero rational 1-cycle is exactly zero.'),
+                ])),
+            N('host-projective-boundary-data', 'The prepared H-divisors on P⁴ are smooth, geometrically integral and ample', positiveHostSource, 'For H=O(1), PSH22:r22phs:P4 uses the five coordinate hyperplanes. Each is P³ and these properties persist over every finite constant field.', undefined, 'hypothesis'),
+            L('host-projective-ample-cc', 'Apply the proved ambient-to-boundary CCℓ implication', 'host-boundary-cc', 'Use the ambient CC just calculated and SU22’s weak-Lefschetz / dual-Gysin isomorphism, with fixed ℓ≠p.'),
+          ])),
+      N('host-elliptic-curve-comparison', 'The E⁴ host supplies CCℓ on every ample boundary over EVERY finite constant extension', ellipticCC,
+        'For E/𝔽₅: y²=x³−x and its finite constant extensions, this is the curve-comparison part of SU22:r22su:host. The independently required signature and the analytic hypotheses retain their existing scope and status.',
+        G('all', 'The cited SP19 comparison for E⁴ AND the ample-boundary proof',
+          'SU22 applies SP19 to E⁴ as a product of curves and then applies its proved ample-boundary lemma to each Fᵢ. Both statements apply afresh to every native curve after every finite constant extension.', [products, ellipticCC, ampleCC], [
+            N('host-elliptic-ambient-cc', 'The supplied SP19 theorem gives CCℓ(E⁴ₖ′) for EVERY finite k′/𝔽₅', ellipticCC, 'This is the comparison input explicitly invoked in the full elliptic-host proof; it concerns the whole native curve group over each k′.', undefined, 'hypothesis'),
+            L('host-elliptic-ample-cc', 'Apply the uniform ample-boundary argument to each prepared Fᵢ', 'host-boundary-cc', 'The boundary divisors are smooth, geometrically integral and ample. Use the same coefficient prime ℓ≠5 throughout.'),
           ])),
     ]);
   const ellipticPreparation = T('elliptic-preparation', 'The everywhere-good elliptic carrier and full section system',
@@ -551,14 +698,14 @@ function arithmeticFamilies() {
               ])),
           N('elliptic-fourth', 'E⁴×P¹, five divisors and five points: rank N⁴=38864 and (b₁,b₂)=(8,29)', elliptic,
             'This is the other dense profile in the same full |(H⊠O(1))⁵|.',
-            G('all', 'The positive-host theorem AND the explicit elliptic degree',
-              'The abelian host supplies the uniform signature; substitute c=1944 into 4(5c−4).', [elliptic, products], [
-                L('elliptic-fourth-model', 'The positive-fourfold-host construction', 'host-main', 'Use the five-divisor / five-point profile and its ramified new-cycle theorem.'),
+            G('all', 'The PSH22 signature-only host theorem AND the explicit elliptic degree',
+              'AS22:r22as:abelianlocal supplies the uniform signature for the abelian host. Substitute c=1944 into 4(5c−4); the separate SU22 curve-comparison route is also displayed.', [elliptic, products, positiveHostSource, positiveLocal], [
+                L('elliptic-fourth-model', 'The full PSH22 positive-fourfold-host construction', 'host-main', 'Use its signature-only local alternative and RI18 for EVERY new cycle over EVERY finite valued extension, together with the full coefficient/pencil and global height inputs.'),
                 L('elliptic-fourth-carrier', 'The prepared carrier has c=1944 and full section spanning', 'elliptic-prepared', 'The same fixed-field congruence argument gives density.'),
               ])),
         ])));
   return {
-    caseId: 'arithmetic-families', trees: [assembly, pencilConstruction, pencilPreparation, density, hypersurface, productProfile, completeIntersections, productAmbients, positiveHost, ellipticPreparation, ellipticFamilies],
+    caseId: 'arithmetic-families', trees: [assembly, pencilConstruction, pencilPreparation, density, hypersurface, productProfile, completeIntersections, productAmbients, positiveHost, hostPositiveModel, hostRamifiedNorm, hostCurveComparison, ellipticPreparation, ellipticFamilies],
     coverage: [
       C('Arithmetic families from Lefschetz pencils', 'assembly', 'main', P('sub:arithmetic-construction', 'Common arithmetic proof')),
       C('Hypersurfaces and complete intersections', 'assembly', 'hypersurface-ci-main', ci),
@@ -1329,7 +1476,18 @@ const determinantBinding = B('source-files/height-r2/sections/determinants.tex',
 const bindings = {
   'numerical-models': [pairingBinding, modelsBinding(['sec:models', 'prop:scalar-model', 'eq:two-factor-model', 'prop:positive-model', 'prop:symmetry-model'])],
   'reduction-strata': [pairingBinding, modelsBinding(['thm:ordinary', 'thm:abelian-strata', 'cor:drinfeld', 'thm:totally-degenerate'])],
-  'arithmetic-families': [pairingBinding, modelsBinding(['lem:congruence-pencils', 'thm:dense-hypersurfaces', 'thm:dense-ci', 'thm:dense-products', 'eq:host-signature', 'Explicit elliptic-power families'])],
+  'arithmetic-families': [
+    { ...pairingBinding, locators: [...pairingBinding.locators, 'prop:closures', '\\bibitem{Fulton}'] },
+    modelsBinding(['lem:congruence-pencils', 'thm:dense-hypersurfaces', 'thm:dense-ci', 'thm:dense-products', 'eq:host-signature', 'Explicit elliptic-power families']),
+    B('source-files/companion/proofs/models/r22/geometry/positive_fourfold_suspensions_and_quintuple_models.tex', '694efaacb303eed41c37a7da292f75afc55224b95197fed069f537bb5674654d', ['r22su:ampleCC', 'r22su:weakL', 'r22su:Gysiniso', 'r22su:gates', 'r22su:theorem', 'r22su:host']),
+    B('source-files/companion/proofs/models/r18/u2/ramified_base_change_of_positive_fourfold_models.tex', '81fb527a8fccbaef7bb5d35e3fa1b213474e06d6e081e3e01084aff08a6b33b8', ['r18rb:strata', 'r18rb:fourfold']),
+    B('source-files/companion/proofs/families/r22/geometry/supplied_positive_hosts_and_projective_bundle_height_families.tex', '259cb922b1778b8b2059c5dacfe43233660803f0b5e9ecb35b3d74790e9c2560', ['r22phs:theorem', 'r22phs:positivity', 'r22phs:bundles', 'r22phs:P4']),
+    B('source-files/companion/proofs/families/r22/geometry/abelian_hosts_and_general_suspension_height_families.tex', 'f453a4e7d288485a252b7725aed7b5aa64ab361037d435ab9dc50491e582c199', ['r22as:local', 'r22as:MP', 'r22as:abelianlocal', 'r22as:Ancona']),
+    B('source-files/companion/proofs/models/r16/model_obstruction/positive_fourfold_component_activation.tex', 'effea0886a1944d2d953fb4c330ab8f671bae9258195dd7ac059f3b55f255f9a', ['r16pos:types', 'r16pos:local', 'r16pos:weighted-zero']),
+    B('source-files/companion/proofs/models/r18/u2/inertial_triviality_and_ramified_norm_detection.tex', '6ee8b9811a2dac308d4102e500fcbdb26b7f03d8dc3e1817937f4e0db4de71de', ['r18ri:torus', 'r18ri:norm', 'r18ri:period-equivariance', 'r18ri:norm-identity', 'r18ri:averaging', 'r18ri:all-finite']),
+    B('source-files/companion/proofs/foundations/R17_finite_actual_tests_and_height_obstruction_quotients.tex', 'f87ec78c73824e24ea21ab435873c9d29b6a878d3021148448565f9a91529895', ['r17fd:coordinates', 'r17fd:numerical-kernel', 'r17fd:finite-tests', 'r17fd:criterion']),
+    B('source-files/companion/proofs/foundations/R17_vertical_tests_and_strong_green_necessity.tex', 'a15262f354f2ffa29c1035657bbac848e1663f99aa216a37cecac9a392ae2394', ['r17vt:transpose', 'r17vt:vertical', 'r17vt:model-converse']),
+  ],
   'classical-comparison': [
     pairingBinding,
     B('source-files/global-height/ha16-correspondence_adjunction_and_motivic_height.tex', 'bd1825f6a6edd71a80b732bc2051a7382a09dc0c2add3a2e1dd8ba4b2c97cc41', ['r16ha:moving', 'r16ha:adjunction', 'r16ha:alteration-comparison', 'r16ha:motivic-formula']),

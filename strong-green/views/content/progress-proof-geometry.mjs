@@ -28,6 +28,10 @@ const publicPaper = {
 };
 const productDossier = 'companion/proofs/products/inertia/all_factor_deletion_and_core_exactness.tex';
 const surfaceDossier = 'companion/proofs/products/families/surface_incidence_inverse_and_good_coefficients.tex';
+const goodCoverDossier = 'companion/proofs/foundations/R11_curvature_class_and_next_step.tex';
+const supportedDossier = 'companion/proofs/foundations/R11_supported_complex_green.tex';
+const compactDossier = 'companion/proofs/foundations/R12_compact_parameter_algebraic_triviality.tex';
+const GS = (anchor, label) => ({ href: `/papers/green-constructions#${anchor}`, label });
 
 function abelianRetracts() {
   const c = 'abelian-retracts', n = N(c);
@@ -229,38 +233,119 @@ function abelianRetracts() {
 function surfaceProducts() {
   const c = 'surface-products', n = N(c);
   const productInput = key => n(key, 'The conditional curve–surface product theorem', link(c, 'local-products'),
-    'Apply the product model, odd-weight comparison and native descent in every feasible shifted degree, retaining their analytic and additional model hypotheses. At every finite place T must have potentially good projective reduction.');
+    'Use the low-dimensional endpoint, empty-product good-reduction, or higher-dimensional product-model branch in its stated range. Retain its analytic hypotheses and, for the last branch, the additional model hypothesis. At every finite place T must have potentially good projective reduction.');
   const trees = [
     T(c, 'products', 'Products and the local model', 'Products of curves and surfaces',
-      'An algebraic inverse for the full model incidence supplies the two exactness conditions; weight–monodromy and native descent complete the conditional local argument.',
+      'Low-dimensional endpoints and potential good reduction cover the boundary cases. For nonempty products of dimension at least three, the model inverse, odd weights and native descent give the conditional local argument.',
       n('result', 'All complementary pairings on T × ∏Cₐ × ∏Sᵦ', 'thm:products',
         'The curves and surfaces are arbitrary smooth projective geometrically integral varieties. T may be a point; otherwise it has potentially good projective reduction at every finite place.', 'conditional',
         G('all', 'The all-degree local result + the global height hypotheses',
           'Apply the local argument in r and s=n+1−r at every finite completion; both whole homologically trivial groups are then admitted.',
           [S('thm:products', 'Full product proof'), S('lem:two-degrees', 'Both complementary degrees'), S('hyp:height-input', 'Independent global height input')], [
             n('local-products', 'All homological product classes have zero obstruction over K', 'thm:products',
-              'Run the construction anew for every newly specified cycle after every finite K′/K. No descent of that new class to K is assumed.', 'conditional',
-              G('all', 'A fixed witness + model exactness + odd weights + analytic comparison',
-                'The algebraic calculation is on the actual ordered semistable witness. Descend its obstruction through the dominant map and full finite field degree; then correct the original curved pair.',
-                [S('thm:products', 'Local proof and new-class clause'), D(productDossier, 'DP20: complete product-model and local proof')], [
-                  n('product-witness', 'One common semistable product witness', 'thm:products',
-                    'After finite extension take projective strictly semistable alterations of the curve/surface factors and a smooth projective model of T. Repair later ramified base changes before taking the ordered staircase resolution. Keep all connected intersections.', 'hypothesis'),
-                  n('product-exactness', 'Numerical-kernel lifting and actual-span saturation', 'eq:numerical-correction',
-                    'A=σρ and the actual algebraic G preserve numerical equivalence and actual algebraic class spans.', 'conditional',
-                    G('all', 'Use AᴴGᴴAᴴ=Aᴴ on FULL cohomology',
-                      'If p(x)∈ker Aᴺ, x♭=x−GᴴAᴴx has the same numerical image and Aᴴx♭=0. If α is algebraic and lies in im Aᴴ, then Gᴴα is algebraic and AᴴGᴴα=α.',
-                      [S('eq:inner-inverse', 'Additional product-model identity'), S('eq:numerical-correction', 'Kernel lifting'), S('eq:image-saturation', 'Actual-span saturation')], [
-                        n('product-model-assumption', 'The product-model inverse is an additional hypothesis', link(c, 'model-inverse'),
-                          'G is a rational Chow-correspondence matrix of codimension d−1 and A has codimension d+1 on d-dimensional components. Its identity must hold in every cohomological degree and Tate twist, including transcendental and exceptional summands.', 'hypothesis'),
+              'Write m for the number of curve/surface factors and n=dim X. For 1≤r≤n use a complete branch in its stated range. Run that branch anew for every newly specified cycle after every finite K′/K; no descent of the new class to K is assumed. If n=0 there is no codimension in the stated range.', 'conditional',
+              G('any', 'Low dimension OR empty product OR the higher-dimensional model route',
+                'The branches together cover the permitted product domain. The AK19 route is used only when m≥1 and n≥3. Empty products are handled by native finite good-cover obstruction vanishing, not by a converse from existence of a Green form.',
+                [S('thm:products', 'Product scope: empty products and new classes are permitted'), D(productDossier, 'r20dp:green: the dimension split and the m≥1 hypothesis'), D(goodCoverDossier, 'r11o:finite-good-vanishing: obstruction zero for the empty product')], [
+                  n('low-dimensional-products', 'All positive degrees are endpoint degrees when n≤2', 'prop:endpoint-input',
+                    'This branch applies to any of the permitted products with 1≤n≤2, including m=0. Both endpoint proofs retain their actual-form hypotheses.', 'conditional',
+                    G('all', 'The dimension range + the divisor and zero-cycle constructions',
+                      'When 1≤n≤2 every 1≤r≤n is either r=1 or r=n. The two endpoint theorems therefore annihilate the original obstruction in every required degree; no AK19 model criterion is used.',
+                      [D(productDossier, 'r20dp:green, first paragraph of the proof'), S('prop:endpoint-input', 'The endpoint statements'), D(compactDossier, 'r12p:picard-products; r12p:top-degree; r12p:geometric-algebraic')], [
+                        n('low-dimensional-range', '1≤n≤2 and 1≤r≤n', 'prop:endpoint-input',
+                          'For a curve r=1=n; for a surface the only positive degrees are r=1 and r=2=n.', 'hypothesis'),
+                        n('low-dimensional-divisors', 'Ob¹X vanishes on homologically trivial divisors', link('endpoints', 'divisor-conclusion'),
+                          'The linked complete proof passes from geometric homological triviality to rational algebraic triviality and then uses the independent compact/Poincaré construction under (A1), (A2) and (R). It produces a global primitive for the prescribed curvature, as well as exact-support strong G.', 'conditional', undefined,
+                          [GS('thm:main-algebraic', 'Conditional algebraic-equivalence theorem'), D(compactDossier, 'r12p:picard-products and r12p:picard-primitive')]),
+                        n('low-dimensional-zero-cycles', 'ObⁿX vanishes on homologically trivial zero-cycles', link('endpoints', 'zero-cycle-conclusion'),
+                          'The linked complete proof uses degree zero on each geometric component, geometric point-difference families, and the same compact/Poincaré theorem under (A1), (A2) and (R). The conclusion concerns the original actual model curvature, not arbitrary atomic forms.', 'conditional', undefined,
+                          [GS('thm:main-algebraic', 'Conditional algebraic-equivalence theorem'), D(compactDossier, 'r12p:top-degree and its componentwise boundary')]),
                       ])),
-                  n('product-weights', 'Odd-weight vanishing on the same witness', 'thm:products',
-                    'Weight–monodromy for all cohomological degrees of curves and surfaces, the pure unramified good coefficient, and Künneth give the companion odd-weight condition. The comparison from this condition to the actual inertia term is retained.', 'hypothesis'),
-                  n('product-analytic', 'The supplied model comparison and native descent', 'sec:analytic',
-                    'Use the stated actual-obstruction, numerical-model, dominant-detection and finite-trace interfaces; their analytic audit is unfinished. Retain full generic and field degrees and the original absolute value. The final form uses the original specified support and all actual tests.', 'hypothesis'),
+                  n('empty-product', 'The coefficient alone has zero obstruction', link(c, 'good-native-obstruction'),
+                    'For m=0 the product is X=T. The finite good-cover argument below proves vanishing of the original model-curvature class over K, so it supplies the needed domain statement directly.', 'conditional',
+                    G('all', 'Empty-product scope + a potential smooth projective good model + native vanishing',
+                      'Take the finite projection X_L→X after a valued extension admitting a smooth projective model. Apply the structured-primitive and composite-trace proof with full degree [L:K] and the original absolute value.',
+                      [S('thm:products', 'Empty products are explicitly permitted'), D(goodCoverDossier, 'r11o:finite-good-vanishing'), GS('r11p:potential-good-G', 'Potential good reduction and native finite degree')], [
+                        n('empty-product-range', 'm=0, X=T and n≥1', 'thm:products',
+                          'There are no curve or surface factors. The degree range remains 1≤r≤n; the zero-dimensional coefficient contributes no such degree.', 'hypothesis'),
+                        n('empty-product-good-model', 'T has potential smooth projective good reduction', '/papers/green-constructions#r11p:potential-good-G',
+                          'Choose a finite valued L/K and a smooth projective model of T_L. For the global height conclusion this hypothesis is required at every finite place, separately.', 'hypothesis'),
+                        n('empty-product-native-vanishing', 'The finite good-cover proof gives ObʳX([Z])=0', link(c, 'good-native-obstruction'),
+                          'The complete branch below compares the original pulled curvature with a zero good-model curvature, then descends the original permitted line sums. It uses the stated analytic interfaces and does not trace an arbitrary primitive.'),
+                      ])),
+                  n('higher-dimensional-products', 'The fixed product model gives native obstruction zero', 'thm:products',
+                    'This is the DP20 branch for a nonempty curve/surface product of dimension at least three. All original model and analytic assumptions remain in force.', 'conditional',
+                    G('all', 'm≥1 and n≥3 + fixed witness + exactness + odd weights + comparison',
+                      'Only this range invokes AK19. The algebraic calculation is on the actual ordered semistable witness; dominant detection and the full finite field degree descend its obstruction before the original curved pair is corrected.',
+                      [D(productDossier, 'r20dp:green, complete proof with its dimension hypothesis'), S('thm:products', 'The conditional local product argument')], [
+                        n('product-model-range', 'm≥1 and n≥3', '/source-files/' + productDossier,
+                          'DP20 states the product theorem for m≥1 and handles n≤2 first by endpoints. Its proof invokes the AK19 model criterion only after assuming n≥3.', 'hypothesis'),
+                        n('product-witness', 'One common semistable product witness', 'thm:products',
+                          'After finite extension take projective strictly semistable alterations of the curve/surface factors and a smooth projective model of T. Repair later ramified base changes before taking the ordered staircase resolution. Keep all connected intersections.', 'hypothesis'),
+                        n('product-exactness', 'Numerical-kernel lifting and actual-span saturation', 'eq:numerical-correction',
+                          'A=σρ and the actual algebraic G preserve numerical equivalence and actual algebraic class spans.', 'conditional',
+                          G('all', 'Use AᴴGᴴAᴴ=Aᴴ on FULL cohomology',
+                            'If p(x)∈ker Aᴺ, x♭=x−GᴴAᴴx has the same numerical image and Aᴴx♭=0. If α is algebraic and lies in im Aᴴ, then Gᴴα is algebraic and AᴴGᴴα=α.',
+                            [S('eq:inner-inverse', 'Additional product-model identity'), S('eq:numerical-correction', 'Kernel lifting'), S('eq:image-saturation', 'Actual-span saturation')], [
+                              n('product-model-assumption', 'The product-model inverse is an additional hypothesis', link(c, 'model-inverse'),
+                                'G is a rational Chow-correspondence matrix of codimension d−1 and A has codimension d+1 on d-dimensional components. Its identity must hold in every cohomological degree and Tate twist, including transcendental and exceptional summands.', 'hypothesis'),
+                            ])),
+                        n('product-weights', 'Odd-weight vanishing on the same witness', 'thm:products',
+                          'Weight–monodromy for all cohomological degrees of curves and surfaces, the pure unramified good coefficient, and Künneth give the companion odd-weight condition. The comparison from this condition to the actual inertia term is retained.', 'hypothesis'),
+                        n('product-analytic', 'The supplied model comparison and native descent', 'sec:analytic',
+                          'Use the stated actual-obstruction, numerical-model, dominant-detection and finite-trace interfaces; their analytic audit is unfinished. Retain full generic and field degrees and the original absolute value. The final form uses the original specified support and all actual tests.', 'hypothesis'),
+                      ])),
                 ])),
             n('product-global', 'Admitted-domain reciprocity at every finite completion', 'hyp:height-input',
               'The global input supplies independence, reciprocity, archimedean terms and rational-equivalence descent. Potentially good projective reduction of T is required separately at each finite place and persists after finite extension.', 'hypothesis'),
           ]))),
+    T(c, 'good-reduction', 'The empty product and native good reduction', 'The finite good-cover proof for the coefficient alone',
+      'Resolve the prescribed pulled cycle on the good model, obtain zero native curvature, compare the original curvature globally, and descend only the original permitted line sums.',
+      n('good-native-obstruction', 'ObʳX([Z])=0 over the original valued field', '/source-files/' + goodCoverDossier,
+        'This is the conditional native finite good-cover route used when m=0. Its proof constructs a global actual primitive of the ORIGINAL ΩX; it does not infer obstruction zero from the existence of another Green form.', 'conditional',
+        G('all', 'A structured global primitive upstairs + permitted composite traces downstairs',
+          'For a=[L:K] define βX=a⁻¹Σⱼqⱼdⱼ⁻¹Tr(h∘bⱼ)(Gⱼ). On each compact actual test η, the pairing is a⁻¹Σⱼqⱼ∫YΩⱼh*η=a⁻¹∫Yh*(ΩXη)=∫XΩXη. Stokes and current injectivity give DβX=ΩX.',
+          [D(goodCoverDossier, 'r11o:finite-good-vanishing, complete constructive proof'), GS('r11p:potential-good-G', 'Native good-model calculation and complete degree')], [
+            n('good-global-line-primitive', 'DβY=h*ΩX with βY=Σⱼqⱼdⱼ⁻¹Tr(bⱼ)(Gⱼ)', '/source-files/' + goodCoverDossier,
+              'Each bⱼ is finite flat on all of Y, each Gⱼ is an original global PL-scalar/model-curvature line sum, DGⱼ=bⱼ*Ωⱼ, and ΣⱼqⱼΩⱼ=h*ΩX. These stronger constructive data permit the later composite trace.', 'conditional',
+              G('all', 'Zero good-model curvature + a generic Chow-zero difference + constructive primitives',
+                'On a common projective model compare h*ΩX with the actual character of the good-model resolutions of h*Z. The latter is zero; both characters represent h*[Z], so their difference has generic degree-r Chow class zero. Use the global generically acyclic construction before tracing.',
+                [D(goodCoverDossier, 'r11o:finite-good-vanishing, construction of βY'), GS('r11p:generic-chow-primitive', 'Global primitive for a generic degree-r Chow-zero character')], [
+                  n('good-zero-native-curvature', 'The resolved pulled cycle has zero K-actual curvature', '/papers/green-constructions#r11p:potential-good-G',
+                    'The numerical detector is applied directly to the good model viewed over K°, including its nonreduced native special fiber. Equality on a smaller collection of L-tests is not substituted for the K-actual assertion.', 'conditional',
+                    G('all', 'Finite good model + fixed-model resolutions + every native vertical degree zero + detector',
+                      'Smooth proper base change annihilates the geometric special Chern class. Every integral vertical r-cycle lies on the reduction of the native special fiber; its intersection degree is zero. The native numerical model-Chern detector then annihilates the actual curvature.',
+                      [GS('r11p:good-reduction-G', 'Fixed smooth-model resolutions and numerical vanishing'), GS('r11p:potential-good-G', 'Ramification-thickened native model and full test space')], [
+                        n('good-finite-cover', 'h:Y=X_L→X is finite flat of degree a=[L:K]', '/papers/green-constructions#r11p:potential-good-G',
+                          'X/K is smooth projective geometrically integral and L/K is finite valued with a smooth projective model of X_L. Regard Y and that model natively over K. Flat pullback includes the generic scheme lengths and preserves geometric homological triviality.', 'hypothesis'),
+                        n('good-fixed-resolutions', 'Resolve the actual flat closures on the fixed smooth model', '/papers/green-constructions#r11p:good-reduction-G',
+                          'The smooth projective L°-model is regular and has an ample line bundle. Repeated surjections from sums of negative ample twists terminate in a locally free kernel, giving finite global resolutions of every prescribed component closure without modifying the good model. Their degree-r generic character is h*[Z].'),
+                        n('good-native-vertical-degrees', 'Every integral vertical r-cycle has zero Chern degree', '/papers/green-constructions#r11p:potential-good-G',
+                          'Smooth proper base change identifies the geometric special Chern class with the zero generic class. Over K° the special fiber is the e(L/K)-fold nilpotent thickening of its L° reduction. Integral cycles lie on that reduction; residue-field change multiplies degrees by f(L/K), so each degree stays zero. Retain all native multiplicities.'),
+                        n('good-numerical-calculus', 'The actual numerical model-Chern detector', 'prop:numerical',
+                          'This is an analytic input, applied on the projective flat native K°-model and tested against every integral vertical r-cycle. Its output is equality as a K-actual form, not merely vanishing of a current or a cohomology class; the independent analytic audit remains unfinished.', 'hypothesis'),
+                      ])),
+                  n('good-character-comparison', 'h*ΩX−Ωgood has generic degree-r Chow class zero', '/papers/green-constructions#r11p:generic-chow-primitive',
+                    'Choose ΩX for the original specified cycle and compare on a common model of Y. Strict Chern pullback and invariance of the original model metrics under refinement preserve h*ΩX. The resolutions have the same generic class h*[Z], and Ωgood=0 by the preceding calculation.', 'conditional'),
+                  n('good-constructive-primitives', 'The global Chow-zero primitive retains its original line sums', '/source-files/' + supportedDossier,
+                    'The Adams degree-r projector reduces a generic Chow-zero character to a generically K₀-zero virtual class. The finite K₀ relation is resolved by generically acyclic complexes, whose exact generic open is all Y. Their construction gives finite-flat bⱼ on all Y and the permitted global Gⱼ used above. The strict actual Chern and minimal-trace interfaces remain assumptions.', 'hypothesis', undefined,
+                    [GS('r11p:generic-chow-primitive', 'Adams projection and the generic K₀-zero proof'), D(goodCoverDossier, 'r11o:finite-good-vanishing: the stronger structured form of the primitive')]),
+                ])),
+            n('good-composite-trace-calculus', 'Composite minimal trace, native degree, Stokes and current injectivity', '/source-files/' + goodCoverDossier,
+              'Each h∘bⱼ is finite flat on all X with complete degree a dⱼ. Trace the original Gⱼ in the permitted module, with normalization (a dⱼ)⁻¹ and the original absolute value. The calculation uses every compact K-actual complementary test. No general trace on an arbitrary already constructed βY is assumed.', 'hypothesis'),
+          ])), {
+        scope: 'K/ℚp is finite with its original absolute value. Let X/K be smooth projective geometrically integral, n=dim X≥1, 1≤r≤n, and Z a prescribed rational cycle with zero geometric ℓ-adic class for one ℓ≠p. Assume X_L has a smooth projective model over L° for a finite valued L/K. The actual Chern, numerical detector, structured primitive, minimal trace, Stokes and current-injectivity interfaces remain explicit conditional inputs.',
+        related: [n('good-exact-support', 'The original GZ−βX is strong G on exactly Xᵃⁿ∖|Z|ᵃⁿ', 'prop:obstruction',
+          'The global primitive does not add poles or change the prescribed cycle. The original curved pair and every compact actual complementary test remain the ones used in the final identity.', 'conditional',
+          G('all', 'The global native primitive + the original exact-support curved pair',
+            'Subtract the globally defined βX with DβX=ΩX from GZ on the exact prescribed complement. The all-test Stokes identity removes only the curvature term.',
+            [D(goodCoverDossier, 'r11o:sufficient and r11o:finite-good-vanishing'), S('prop:obstruction', 'The exact-support actual-pair input')], [
+              n('good-support-primitive', 'DβX=ΩX on all Xᵃⁿ', link(c, 'good-native-obstruction'),
+                'Use the native primitive constructed above, not a primitive defined only away from the cycle.'),
+              n('good-original-pair', 'D[GZ]+δZ=[ΩX] on every compact actual test', 'prop:obstruction',
+                'Use the prescribed collected cycle, its exact support and the supplied local integrability. The curved-pair theorem remains an analytic input.', 'hypothesis'),
+            ]))],
+      }),
     T(c, 'deletion', 'Deletion and the residual core', 'The complete product-model decomposition',
       'The supplied reconstruction retains the full boundary and every exceptional copy before splitting the transcendental sectors.',
       n('model-sectors', 'Each incidence sector is a fixed t₂ tensor times an abelian carrier', 'prop:product-model',
@@ -396,10 +481,14 @@ function surfaceProducts() {
     C(c, 'Hilbert schemes of points on surfaces', 'hilbert', 'hilbert', 'thm:hilbert', 'Incidence decomposition and degree shifts'),
     C(c, 'Moduli spaces on K3 and abelian surfaces', 'moduli', 'moduli', 'thm:moduli', 'Finite specialization and Bülles application'),
   ], sourceBindings: [
-    { ...publicPaper, locators: ['Standing analytic hypotheses; sec:analytic; prop:product-model; eq:inner-inverse; eq:numerical-correction; eq:image-saturation', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; eq:hilbert-motive; thm:hilbert; lem:specialize-certificate; thm:moduli'] },
+    { ...publicPaper, locators: ['Standing analytic hypotheses; sec:analytic; prop:obstruction; prop:numerical; prop:endpoint-input; prop:product-model; eq:inner-inverse; eq:numerical-correction; eq:image-saturation', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; eq:hilbert-motive; thm:hilbert; lem:specialize-certificate; thm:moduli'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/products_moduli.tex', sha256: 'bbd62b83d09b3843fbc85bfcd3960681c19e6a84779c876a34781868232d2829', locators: ['prop:product-model and proof description', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; thm:hilbert; lem:specialize-certificate; thm:moduli, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + productDossier, sha256: 'ccd5bc7fa68826143984175e206ab9e43657c712a48ab4b3901de430fc4c461d', locators: ['Status paragraph', 'r20dp:towers; r20dp:projectors; r20dp:generator; r20dp:core', 'DP20.1–DP20.16; r20dp:model; r20dp:green, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + surfaceDossier, sha256: '14aa76f0d14f505add0af6d95aa77098945b46aec35b9f56b909357433ca887a', locators: ['r20as:numerical-inverse; r20as:cohomological-inverse; r20as:good-coefficient; r20as:full-G; r20as:height, complete proofs'] },
+    { file: 'public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex', sha256: '968f0560d434f7fb071eedff83c9d90c73a5387113975eb9e8a3a6697d56b263', locators: ['hyp:construction-calculus', 'thm:main-algebraic', 'r11p:good-reduction-G', 'r11p:potential-good-G', 'r11p:generic-chow-primitive'] },
+    { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + compactDossier, sha256: 'de1a3a130af7221532e3d860cc858ddea7b74e29316a3b854d7398512b9f0efe', locators: ['r12p:geometric-algebraic', 'r12p:picard-products', 'r12p:picard-primitive', 'r12p:top-degree'] },
+    { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + goodCoverDossier, sha256: 'd89fd326e55c711f63bb452df9e67e3250cbb2fef71d2661552d1d934bd459ca', locators: ['r11o:class', 'r11o:sufficient', 'r11o:finite-good-vanishing', 'No converse has been established.'] },
+    { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + supportedDossier, sha256: '250e905ad3f8ab6186053a24de225a46c695678ba84e77afe26d579f8feefce3', locators: ['r11p:good-reduction-G', 'r11p:potential-good-G', 'r11p:acyclic', 'r11p:generic-k-primitive', 'r11p:generic-chow-primitive'] },
   ] };
 }
 
