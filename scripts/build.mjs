@@ -119,6 +119,9 @@ function guideMarkdown(source=''){
 
 function loadPage(title,description,content,p,extraHead='',extraScripts=''){
   const pageTitle=title===brand?(brand==='OpenMath'?'OpenMath | Arithmetic and Non-Archimedean Geometry':brand+' — Open mathematics'):title+' | '+brand;
+  // Public ownership marker issued by the owner's Google Search Console account.
+  // Keep it on the canonical homepage after verification; it is not a login credential.
+  const googleVerification=p==='/'&&origin==='https://openmath-atlas.org'?'<meta name="google-site-verification" content="WE7A5abWl6z3sg4dMlvn5oj4t7cYwGbb9T7qU1ld1Sw" />':'';
   const socialMetadata=`<meta property="og:type" content="website"><meta property="og:title" content="${esc(pageTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical(p))}"><meta property="og:site_name" content="${esc(brand)}"><meta name="twitter:card" content="summary">`;
   const websiteSchema=p==='/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':canonical('/')+'#website',name:'OpenMath',url:canonical('/'),description, inLanguage:'en'})+'</script>':'';
   const collectionSchema=p==='/projects/foundations/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,url:canonical(p),description,isPartOf:{'@id':canonical('/')+'#website'},about:['Non-Archimedean geometry','Berkovich analytic spaces','Formal models','Tropical geometry','Skeleta']})+'</script>':'';
@@ -127,6 +130,7 @@ function loadPage(title,description,content,p,extraHead='',extraScripts=''){
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(pageTitle)}</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical(p))}">
+${googleVerification}
 ${socialMetadata}
 ${websiteSchema}${collectionSchema}
 <link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml">
