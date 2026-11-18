@@ -26,6 +26,7 @@ export default function HomePage() {
       <p>Turning local forms into a canonical global pairing requires reciprocity, a finite global sum, and independence of representatives and Green choices. Agreement with classical heights, positivity, and arithmetic finiteness are further steps. The programme identifies the main obstacle in each.</p>
     </section>
     <nav className="simple-home-links" aria-label="Read the research">
+      <a className="home-map-link" href="/research-map"><span>Research map <span aria-hidden="true">→</span></span><small>A linked tree of results, conjectures and the next research problems</small></a>
       <a className="home-routes-link" href="/routes"><span>Research routes <span aria-hidden="true">→</span></span><small>Logical chains, alternative approaches, and the main open steps</small></a>
       <a href="/conjectures"><span>Conjectures and plan</span><small>Statements, implications, and core difficulties</small></a>
       <a href="/results"><span>Pairing constructions and progress</span><small>Available proofs, assumptions, and remaining gaps</small></a>

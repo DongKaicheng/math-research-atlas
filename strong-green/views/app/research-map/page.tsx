@@ -1,0 +1,157 @@
+import type { Metadata } from 'next';
+import { entries, entryById, edition, label } from '@/lib/content';
+import { researchBranches, validateResearchMap } from '@/content/research-map.mjs';
+import { globalRoutes } from '@/content/routes.mjs';
+import { programmeSteps } from '@/content/programme.mjs';
+import { pairingGroups } from '@/content/pairing-progress.mjs';
+
+export const metadata: Metadata = {
+  title: 'Research map: Beilinson–Bloch heights and Green forms',
+  description: 'A linked tree of the project’s results, conditional constructions, open conjectures and research plans, from local Green forms to global heights and Northcott finiteness.',
+  alternates: { canonical: '/research-map' },
+};
+
+type Link = { href: string; label: string };
+type Group = { id: string; title: string; records: string[] };
+type Branch = {
+  id: string; title: string; description: string; scope: string;
+  plan: string[]; links: Link[]; groups: Group[]; routes?: boolean; pairingCases?: boolean;
+};
+const branches = researchBranches as Branch[];
+const plans = new Map(programmeSteps.map(step => [step.id, step]));
+const statusKey = (entry: (typeof entries)[number]) => entry.kind === 'definition' && entry.status === 'draft' ? 'definition' : entry.status;
+const statusNames = [
+  ['proved', 'Internal proof available'], ['conditional', 'Conditional'],
+  ['draft', 'Draft · audit pending'], ['open', 'Open'], ['definition', 'Definition'],
+] as const;
+
+function Record({ id }: { id: string }) {
+  const entry = entryById.get(id)!;
+  return <li className="map-record" id={'map-' + id} data-map-item="record" data-record-id={id} data-status={entry.status}>
+    <div className="map-record-heading">
+      <a className="map-record-title" href={'/entries/' + id}>{entry.title}</a>
+      <span className={'map-status map-status-' + statusKey(entry)}>{label(entry)}</span>
+    </div>
+    <p>{entry.summary}</p>
+    <span className="map-record-id">{id}</span>
+  </li>;
+}
+
+function RouteTree() {
+  return <li className="map-group-node" data-map-container="">
+    <details className="map-group" id="construction-routes" data-map-group="">
+      <summary><span>Three construction routes</span><span className="map-count">3 routes</span></summary>
+      <p className="map-group-intro">Alternative approaches to the global pairing, each with its own hypotheses.</p>
+      <ul className="map-records">
+        {globalRoutes.map(route => <li className="map-record map-route" key={route.id} data-map-item="route">
+          <a className="map-record-title" href={'/routes/' + route.slug}>{route.title}</a>
+          <p className="map-route-status">{route.status}</p>
+          <p>{route.summary}</p>
+          <a className="map-secondary-link" href={'/papers/' + route.paperSlug}>Formal article and PDF</a>
+        </li>)}
+      </ul>
+    </details>
+  </li>;
+}
+
+function PairingCaseTree() {
+  return <li className="map-group-node" data-map-container="">
+    <details className="map-group" id="geometric-cases" data-map-group="">
+      <summary><span>Pairing domains and geometric cases</span><span className="map-count">{pairingGroups.reduce((n, g) => n + g.cases.length, 0)} cases</span></summary>
+      <p className="map-group-intro">These constructions retain the Green-form and reciprocity hypotheses. Each case states its additional geometric or model assumptions.</p>
+      <ol className="map-groups map-case-groups">
+        {pairingGroups.map(group => <li key={group.id} className="map-group-node" data-map-container="">
+          <details className="map-group" data-map-group="">
+            <summary><span>{group.title.replace(/^\d+\.\s*/, '')}</span><span className="map-count">{group.cases.length} cases</span></summary>
+            <ul className="map-records">
+              {group.cases.map(item => <li key={item.id} className="map-record" data-map-item="case">
+                <a className="map-record-title" href={'/results#' + item.id}>{item.title}</a>
+                <p className="map-case-status">{item.status}</p>
+                <a className="map-secondary-link" href={item.proof.href}>{item.proof.label}</a>
+                {item.children?.length ? <details className="map-applications">
+                  <summary>Geometric applications ({item.children.length})</summary>
+                  <ul>{item.children.map(child => <li key={child.title}><a href={'/results#' + item.id}>{child.title}</a></li>)}</ul>
+                </details> : null}
+              </li>)}
+            </ul>
+          </details>
+        </li>)}
+      </ol>
+    </details>
+  </li>;
+}
+
+export default function ResearchMapPage() {
+  validateResearchMap(entries);
+  return <div className="site-shell research-map" data-research-map="">
+    <header className="map-header">
+      <p className="eyebrow">Beilinson–Bloch heights · a guide to the research</p>
+      <h1>Research map</h1>
+      <p>Explore the results, conjectures and research plans along five branches. Open a branch, then follow a title to its statement, hypotheses and available proof.</p>
+      <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {entries.length} permanent records</div>
+    </header>
+
+    <section className="map-reading-key" aria-label="How to read the map">
+      <div className="map-legend">{statusNames.map(([status, name]) => <span key={status} className={'map-status map-status-' + status}>{name}<span className="map-status-count">{entries.filter(entry => statusKey(entry) === status).length}</span></span>)}</div>
+      <p>Branches group related topics for reading. <a href="/dependencies">Proof dependencies</a> record the mathematical inputs. “Internal proof available” indicates a supplied argument; conditional results retain their stated hypotheses.</p>
+    </section>
+
+    <div className="map-controls" hidden>
+      <div className="map-search"><label htmlFor="map-search">Find in this map</label><input type="search" id="map-search" placeholder="Title, topic or permanent ID" autoComplete="off" /></div>
+      <div className="map-control-buttons"><button type="button" data-map-expand="">Expand all</button><button type="button" data-map-overview="">Overview</button></div>
+      <p className="map-match-count" role="status" aria-live="polite" aria-atomic="true">{entries.length} records in {branches.length} branches</p>
+    </div>
+
+    <div className="map-tree">
+      <div className="map-root">
+        <span className="map-root-caption">The long-term objective · open</span>
+        <a href="/entries/BB-GLOBAL">Canonical Beilinson–Bloch height pairings</a>
+        <p>Construct the pairing on the full complementary homologically trivial Chow groups, then study positivity and arithmetic finiteness.</p>
+        <a className="map-root-programme" href="/programme">Read the research programme <span aria-hidden="true">→</span></a>
+      </div>
+      <ol className="map-branches">
+        {branches.map((branch, index) => {
+          const count = branch.groups.reduce((n, group) => n + group.records.length, 0);
+          return <li className="map-branch-node" id={branch.id} key={branch.id} data-map-container="" data-map-branch-node="">
+            <details className="map-branch" data-map-branch="">
+              <summary className="map-branch-summary">
+                <span className="map-branch-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <span className="map-branch-copy"><span className="map-branch-title">{branch.title}</span><span className="map-branch-description">{branch.description}</span></span>
+                <span className="map-count">{count} records</span>
+              </summary>
+              <div className="map-branch-body">
+                <p className="map-scope">{branch.scope}</p>
+                <ol className="map-groups">
+                  {branch.groups.map(group => <li key={group.id} className="map-group-node" data-map-container="">
+                    <details className="map-group" id={group.id} data-map-group="">
+                      <summary><span>{group.title}</span><span className="map-count">{group.records.length}</span></summary>
+                      <ul className="map-records">{group.records.map(id => <Record key={id} id={id} />)}</ul>
+                    </details>
+                  </li>)}
+                  {branch.routes ? <RouteTree /> : null}
+                  {branch.pairingCases ? <PairingCaseTree /> : null}
+                  <li className="map-group-node map-plan-node" data-map-container="">
+                    <details className="map-group map-plan" data-map-group="">
+                      <summary><span>Research plan</span><span className="map-count">{branch.plan.length === 1 ? 'Next problem' : 'Next problems'}</span></summary>
+                      <ul className="map-records">{branch.plan.map(id => {
+                        const step = plans.get(id)!;
+                        if (!step) throw new Error('Missing research-map programme step: ' + id);
+                        return <li className="map-record" key={id} data-map-item="plan">
+                          <a className="map-record-title" href={'/programme#' + step.id}>{step.title}</a><p>{step.goal}</p>
+                          <a className="map-secondary-link" href={step.paper}>Precise problem and proposed argument</a>
+                        </li>;
+                      })}</ul>
+                    </details>
+                  </li>
+                </ol>
+                <nav className="map-branch-reading" aria-label={branch.title + ': further reading'}>{branch.links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav>
+              </div>
+            </details>
+          </li>;
+        })}
+      </ol>
+      <p className="map-empty" hidden>No matching item. Try a shorter title or a permanent ID.</p>
+    </div>
+    <nav className="map-footer-links" aria-label="Research map resources"><a href="/records">All permanent records</a><a href="/dependencies">Proof dependencies</a><a href="/papers">Papers and PDFs</a><a href="/programme">Research programme</a></nav>
+  </div>;
+}

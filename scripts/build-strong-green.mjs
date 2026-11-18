@@ -46,6 +46,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
 
   const pageFiles={
     home:'app/page.tsx',conjectures:'app/conjectures/page.tsx',results:'app/results/page.tsx',
+    researchMap:'app/research-map/page.tsx',
     routes:'app/routes/page.tsx',route:'app/routes/[slug]/page.tsx',programme:'app/programme/page.tsx',
     papers:'app/papers/page.tsx',paper:'app/papers/[slug]/page.tsx',records:'app/records/page.tsx',
     entry:'app/entries/[id]/page.tsx',dependencies:'app/dependencies/page.tsx',sources:'app/sources/page.tsx',about:'app/about/page.tsx',
@@ -84,6 +85,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   const {pages,papers,globalRoutes}=rendered;
   const specs=[
     ['/',pages.home],['/conjectures',pages.conjectures],['/results',pages.results],['/routes',pages.routes],
+    ['/research-map',pages.researchMap,undefined,{currentOnly:true}],
     ['/programme',pages.programme],['/papers',pages.papers],['/records',pages.records],
     ['/dependencies',pages.dependencies],['/sources',pages.sources],['/about',pages.about],
     ...globalRoutes.map(route=>['/routes/'+route.slug,pages.route,{slug:route.slug}]),
@@ -96,6 +98,9 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     if(href.startsWith('/atlas-feedback/'))return url('/feedback/')+href.slice('/atlas-feedback/'.length);
     if(href==='/atlas-maintenance/')return url('/maintenance/');
     if(href.startsWith('/projects/strong-green/'))return url(href);
+    // This reading guide follows the current records; it is not part of a
+    // previously frozen mathematical edition.
+    if(/^\/research-map(?:[/?#]|$)/.test(href))return url(projectPath+'/research-map/')+href.slice('/research-map'.length).replace(/^\//,'');
     if(base&&href.startsWith(base+'/'))return href;
     if(/^\/feedback(?:[/?#]|$)/.test(href)){
       if(href.startsWith('/feedback/guide'))return url('/feedback/guide/');
@@ -118,19 +123,21 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     const relative=namespace+(route==='/'?'/':trailing(route));
     const canonical=origin+relative;
     const feedback=url('/feedback/')+'?project=strong-green&amp;version='+revision+'&amp;page='+encodeURIComponent(canonical);
+    const projectNav=archived?nav:[nav[0],['/research-map','Research map'],...nav.slice(1)];
     return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Conjecture Atlas</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
+${archived?'':`<link rel="stylesheet" href="${url(projectPath+'/assets/research-map.css')}">`}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
 <div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}">Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
 <header class="site-header simple-site-header"><div class="site-shell masthead"><a class="site-brand" href="${url(namespace+'/')}"><span class="brand-title">${esc(project.title)}</span></a>
-<nav class="primary-nav" aria-label="Project navigation">${nav.map(([p,label])=>`<a href="${link(p,namespace)}"${route===p||(p!=='/'&&route.startsWith(p+'/'))?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
+<nav class="primary-nav" aria-label="Project navigation">${projectNav.map(([p,label])=>`<a href="${link(p,namespace)}"${route===p||(p!=='/'&&route.startsWith(p+'/'))?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
 ${archived?`<div class="edition-banner"><div class="site-shell">Frozen public edition ${esc(revision)}. <a href="${url(projectPath+(route==='/'?'/':trailing(route)))}">Read the current version of this page</a>.</div></div>`:''}
 <main id="main-content">${body}</main>
 <footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}<a href="${feedback}">Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
-${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}</body></html>\n`;
+${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${route==='/research-map'&&!archived?`<script defer src="${url(projectPath+'/assets/research-map.js')}"></script>`:''}</body></html>\n`;
   }
   async function save(route,html){
     const file=path.join(output,route.replace(/^\//,'').replace(/\/$/,'')||'.','index.html');
@@ -148,8 +155,14 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
   await frozenAsset('assets/katex.min.css',destination=>cp(path.join(root,'node_modules','katex','dist','katex.min.css'),destination));
   await frozenAsset('assets/fonts',destination=>cp(path.join(root,'node_modules','katex','dist','fonts'),destination,{recursive:true}));
 
+  // Current navigation has its own assets. Never overwrite edition assets to
+  // introduce a new reading view or change an archived page's navigation.
+  const currentAssets=path.join(output,projectPath.slice(1),'assets');
+  await mkdir(currentAssets,{recursive:true});
+  for(const name of ['research-map.css','research-map.js'])await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
+
   const routes=[],indexableRoutes=[],searchIndex=[];
-  for(const [route,module,params] of specs){
+  for(const [route,module,params,options={}] of specs){
     const props=params?{params:Promise.resolve(params)}:{};
     const metadata=module.generateMetadata?await module.generateMetadata(props):module.metadata||{};
     const title=typeof metadata.title==='string'?metadata.title:metadata.title?.absolute||project.title;
@@ -159,12 +172,14 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
     const currentRoute=projectPath+(route==='/'?'/':trailing(route));
     await save(currentRoute,frame(title,description,rewrite(body,projectPath),route,projectPath,{noindex:metadata.robots?.index===false}));
     routes.push(currentRoute);if(metadata.robots?.index!==false)indexableRoutes.push(currentRoute);
-    const fixedRoute=editionPath+(route==='/'?'/':trailing(route));
-    const frozenFile=path.join(frozenPublicRoot,route==='/'?'index.html':route.slice(1)+'/index.html');
-    if(await exists(frozenFile)){
-      const destination=path.join(output,fixedRoute.slice(1),'index.html');await mkdir(path.dirname(destination),{recursive:true});await cp(frozenFile,destination);
-    }else await save(fixedRoute,frame(title,description,rewrite(body,editionPath),route,editionPath,{archived:true}));
-    routes.push(fixedRoute);
+    if(!options.currentOnly){
+      const fixedRoute=editionPath+(route==='/'?'/':trailing(route));
+      const frozenFile=path.join(frozenPublicRoot,route==='/'?'index.html':route.slice(1)+'/index.html');
+      if(await exists(frozenFile)){
+        const destination=path.join(output,fixedRoute.slice(1),'index.html');await mkdir(path.dirname(destination),{recursive:true});await cp(frozenFile,destination);
+      }else await save(fixedRoute,frame(title,description,rewrite(body,editionPath),route,editionPath,{archived:true}));
+      routes.push(fixedRoute);
+    }
     if(route.startsWith('/entries/')){
       const record=bundle.entries.find(entry=>entry.id===params.id);
       searchIndex.push({title:record.title,summary:record.summary,keywords:[...project.keywords,record.id,record.kind,record.status],link:url(currentRoute),category:record.kind,status:record.status,id:record.id,body:[record.id,record.title,record.statement,record.proof,record.motivation,record.approach,record.status].filter(Boolean).join(' ')});
