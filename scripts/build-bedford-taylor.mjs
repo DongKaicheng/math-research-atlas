@@ -1,5 +1,6 @@
 import {readFile,writeFile,mkdir,readdir,cp,access} from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {buildBedfordTaylorMap} from './build-bedford-taylor-map.mjs';
 
 const projectPath='/projects/bedford-taylor';
@@ -74,25 +75,26 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   versions=versions.replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
   const versionFile=path.join(output,projectPath.slice(1),'versions/index.html');await mkdir(path.dirname(versionFile),{recursive:true});await writeFile(versionFile,versions);
   routes.push(projectPath+'/versions/');indexableRoutes.push(projectPath+'/versions/');
-  const map=await buildBedfordTaylorMap({root,frozenPublic,revision,currentBase,currentLink});
+  const map=await buildBedfordTaylorMap({root,frozenPublic,revision,currentBase,currentLink,mapURL:currentOrigin+'/map/'});
   let mapPage=currentHTML(await readFile(path.join(frozenPublic,'index.html'),'utf8'));
   mapPage=mapPage.replace(/<main\b[\s\S]*?<\/main>/,map.html)
     .replace('class="bt-current page-home"','class="bt-current page-map"')
-    .replace(/<title>[\s\S]*?<\/title>/,'<title>Research map · Non-Archimedean Bedford–Taylor Theory</title>')
+    .replace(/<title>[\s\S]*?<\/title>/,'<title>Logical research map · Non-Archimedean Bedford–Taylor Theory</title>')
     .replace(/(<meta name="description" content=")[^"]*(")/,'$1'+esc(map.description)+'$2')
     .replace(/(<meta property="og:description" content=")[^"]*(")/,'$1'+esc(map.description)+'$2')
-    .replace(/(<meta property="og:title" content=")[^"]*(")/,'$1Research map · Non-Archimedean Bedford–Taylor Theory$2')
+    .replace(/(<meta property="og:title" content=")[^"]*(")/,'$1Logical research map · Non-Archimedean Bedford–Taylor Theory$2')
     .replace(/(<link rel="canonical" href=")[^"]*(")/,'$1'+currentOrigin+'/map/$2')
     .replace(/(<meta property="og:url" content=")[^"]*(")/,'$1'+currentOrigin+'/map/$2')
     .replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
   mapPage=mapPage.replace(/(<nav id="primary-navigation"[^>]*>)([\s\S]*?)(<\/nav>)/,(_all,open,links,close)=>open+links.replace(/ aria-current="page"/g,'').replace(`href="${currentBase}/map/"`,`href="${currentBase}/map/" aria-current="page"`)+close);
   mapPage=mapPage.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_all,json)=>{
-    const data=JSON.parse(json);data.name='Research map';data.url=currentOrigin+'/map/';data.description=map.description;
+    const data=JSON.parse(json);data.name='Logical research map';data.url=currentOrigin+'/map/';data.description=map.description;
     return '<script type="application/ld+json">'+JSON.stringify(data)+'</script>';
   });
   const mapFeedback=base+'/feedback/?'+new URLSearchParams({project:'bedford-taylor',version:revision,page:currentOrigin+'/map/'}).toString();
   mapPage=mapPage.replace(/<a\b[^>]*data-atlas-feedback[^>]*>/g,tag=>tag.replace(/\bhref="[^"]*"/,'href="'+esc(mapFeedback)+'"'));
-  mapPage=mapPage.replace('</head>',`<script defer src="${base}/assets/bedford-taylor-map.js"></script></head>`);
+  const logicAssetHash=createHash('sha256').update(await readFile(path.join(root,'assets/bedford-taylor-logic.css'))).update(await readFile(path.join(root,'assets/bedford-taylor-logic.js'))).digest('hex').slice(0,16);
+  mapPage=mapPage.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-logic.css?v=${logicAssetHash}"><script defer src="${base}/assets/bedford-taylor-map.js"></script><script defer src="${base}/assets/bedford-taylor-logic.js?v=${logicAssetHash}"></script></head>`);
   const mapFile=path.join(output,projectPath.slice(1),'map/index.html');await mkdir(path.dirname(mapFile),{recursive:true});await writeFile(mapFile,mapPage);
   routes.push(projectPath+'/map/');indexableRoutes.push(projectPath+'/map/');
   const sourceIndex=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));

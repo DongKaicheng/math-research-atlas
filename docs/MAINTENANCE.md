@@ -197,30 +197,77 @@ release check; do not hand-edit the restored, ignored HTML copies.
 
 ### Bedford–Taylor research map
 
-The current `/projects/bedford-taylor/map/` is an editorial reading tree. Its
-source is `content/bedford-taylor/research-map.json`; the builder joins its IDs
-to the exact selected edition's topic, programme and definition registers.
-The branches organize reading and do not declare proof implications.
+The current `/projects/bedford-taylor/map/` presents a logical research map
+with three sections and 17 focused diagrams. Its source index is
+`content/bedford-taylor/research-logic.json`, with the typed node and relation
+data in `logic-core.json`, `logic-descent.json` and `logic-energy.json` beside
+it. The complete thematic register from `research-map.json` remains a secondary
+reading index, covering all 74 topics, 14 formal programme items and 26
+definition groups. Its branch membership is navigation, not an implication.
 
-Keep each topic and formal programme item in exactly one primary branch.
-Nodes may cross-reference other branches. Preserve the hypotheses when writing
-short summaries, especially actual analytic zero relations, the supplied
-normal-three model, fixed backgrounds and domain or tail assumptions. The
-full statements remain authoritative. Original titles, source statuses and
-permanent IDs are read from the edition rather than reclassified by the map.
+Maintain the logical data against the actual statements and proofs in the
+selected mathematical edition. Nodes link directly to source statements or
+proof locations. Each relation records its premises, conclusion, kind,
+additional hypotheses, mechanism and source evidence. Inputs within one
+relation are joint requirements (AND). Distinct sufficient relations with the
+same conclusion are alternatives (OR), each retaining its own hypotheses.
+A proof dependency does not become a sufficient condition merely because it
+is cited. An implication with an open premise remains conditional; an
+`open-step` or `obstruction` is not a proved implication. State exactly which
+shortcut a counterexample excludes. An open question may have a linked context
+node without an incoming arrow when no established logical connection is
+available.
 
-When selecting a new mathematical edition, review the map against its records
-and update the map's `edition` only after checking the coverage and summaries.
-The build rejects a stale edition binding or incomplete primary coverage.
-Map-only changes increment the Atlas project revision and preserve the previous
-bundle in `content/history`; Git retains each map and layout revision. Frozen
-reading editions and PDF bytes remain at their existing addresses. The map
-feedback context cites the real current map URL, including its branch anchor,
-and the selected mathematical edition.
+Keep all required hypotheses readable in the relation's text, rather than
+available only through hover. In particular, preserve actual analytic-zero
+premises, the rank bound on a union tuple, the supplied normal-three model,
+complete protected fibers, the specified background and domain, and coupled
+tail or coefficient restrictions. Retain the distinction between capacity-zero
+and pointwise conclusions, and between a completed weak solution and an actual
+classical solution. Source statuses and permanent result identities remain
+those of the edition. Diagram review does not supply new proof acceptance.
 
-After changing the map, run the full publication checks and inspect both a
-desktop viewport and a narrow reading viewport. Verify branch expansion,
-keyboard access, source links, the project navigation and homepage entry.
+The checked-in diagrams live in `content/bedford-taylor/logic-diagrams/` as
+clickable SVG files and their Graphviz `.dot` sources. Its `manifest.json`
+binds each SVG by SHA-256 to its bytes, selected edition, logical panel input
+renderer and shared logical-schema module. After changing the logical data or renderer, regenerate the
+artifacts in an environment with Graphviz's `dot` available:
+
+```sh
+npm run build:bt-logic
+npm run build
+```
+
+Commit the regenerated SVG, `.dot` and manifest together with the reviewed
+source change. The ordinary website build validates the input bindings and
+SVG hashes and consumes these checked-in artifacts; it does not require or
+invoke Graphviz. A stale diagram must be regenerated, not accepted by copying
+an old input hash onto new content.
+
+When selecting a new mathematical edition, review both logical data and the
+complete register against that edition before moving their `edition` bindings.
+The build rejects stale edition bindings and incomplete primary register
+coverage, and rejects any source topic or formal open item missing from the
+logical nodes. In the secondary register, keep each topic and formal programme item
+in exactly one primary branch; other nodes may cross-reference it. Map-only
+changes increment the Atlas project revision and preserve the exact previous
+bundle in `content/history/bedford-taylor/`. Git retains diagram, data and
+layout revisions. Frozen reading editions, their sources and PDFs retain their
+existing addresses and bytes.
+
+Map feedback continues to use the same repository Issue board. Preserve the
+actual map URL and its precise diagram, relation or register fragment together
+with the selected mathematical edition. A map fragment is page context, not a
+new theorem ID. Each logical step also has a direct contextual link to this
+shared board. General feedback remains available without a required result
+or edition.
+
+After changing the map, run the full publication checks and inspect desktop
+and narrow reading layouts. Verify arrow meanings, visible joint conditions,
+source links, keyboard access, exact feedback fragments, the secondary register,
+and the project navigation and homepage entry. Record the checks and live
+deployment actually observed in the release note; leave unfinished checks
+explicitly pending.
 
 ## Historical material and privacy
 
