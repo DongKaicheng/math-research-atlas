@@ -1,4 +1,28 @@
 (() => {
+  const forest = document.querySelector('[data-logic-forest]');
+  if (!forest) return;
+  const details = [...forest.querySelectorAll('details')];
+  const controls = forest.querySelector('[data-logic-controls]');
+  if (controls) controls.hidden = false;
+  forest.querySelector('[data-logic-expand]')?.addEventListener('click', () => details.forEach(item => { item.open = true; }));
+  forest.querySelector('[data-logic-overview]')?.addEventListener('click', () => details.forEach(item => { item.open = false; }));
+  function revealLogicHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = id && document.getElementById(id);
+    if (!target || !forest.contains(target)) return;
+    let parent = target.parentElement;
+    while (parent && parent !== forest) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  }
+  window.addEventListener('hashchange', revealLogicHash);
+  revealLogicHash();
+})();
+
+(() => {
   const root = document.querySelector('[data-research-map]');
   if (!root) return;
   const controls = root.querySelector('.map-controls');
@@ -66,7 +90,9 @@
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = document.getElementById(id);
-    if (!target || !root.contains(target)) return;
+    const index = root.closest('.map-reference-index');
+    if (!target || (!root.contains(target) && target !== index)) return;
+    if (index) index.open = true;
     if (input.value) { input.value = ''; filter(); }
     if (target.tagName === 'DETAILS') target.open = true;
     const child = target.querySelector(':scope > details');

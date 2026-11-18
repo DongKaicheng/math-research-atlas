@@ -4,10 +4,12 @@ import { researchBranches, validateResearchMap } from '@/content/research-map.mj
 import { globalRoutes } from '@/content/routes.mjs';
 import { programmeSteps } from '@/content/programme.mjs';
 import { pairingGroups } from '@/content/pairing-progress.mjs';
+import { logicalTrees, validateLogicalMap } from '@/content/logical-map.mjs';
+import { LogicForest } from '@/components/logic-tree';
 
 export const metadata: Metadata = {
-  title: 'Research map: Beilinson–Bloch heights and Green forms',
-  description: 'A linked tree of the project’s results, conditional constructions, open conjectures and research plans, from local Green forms to global heights and Northcott finiteness.',
+  title: 'Logical research map: Beilinson–Bloch heights and Green forms',
+  description: 'Proof trees showing the exact prerequisites, alternative routes, equivalences and open bridges between Green forms, global heights, positivity and Northcott finiteness.',
   alternates: { canonical: '/research-map' },
 };
 
@@ -83,17 +85,23 @@ function PairingCaseTree() {
 
 export default function ResearchMapPage() {
   validateResearchMap(entries);
-  return <div className="site-shell research-map" data-research-map="">
+  validateLogicalMap(entries);
+  return <div className="site-shell research-map">
     <header className="map-header">
-      <p className="eyebrow">Beilinson–Bloch heights · a guide to the research</p>
-      <h1>Research map</h1>
-      <p>Explore the results, conjectures and research plans along five branches. Open a branch, then follow a title to its statement, hypotheses and available proof.</p>
-      <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {entries.length} permanent records</div>
+      <p className="eyebrow">Beilinson–Bloch heights · the structure of the arguments</p>
+      <h1>Logical research map</h1>
+      <p>Which results lead to which conclusions? Follow each conclusion down to its exact premises, alternative constructions and remaining open steps.</p>
+      <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {logicalTrees.length} linked proof trees · {entries.length} permanent records</div>
     </header>
 
+    <LogicForest trees={logicalTrees} />
+
+    <details className="map-reference-index" id="complete-record-index">
+    <summary>Complete record index <span>{entries.length} records · supporting topic index</span></summary>
+    <div data-research-map="">
     <section className="map-reading-key" aria-label="How to read the map">
       <div className="map-legend">{statusNames.map(([status, name]) => <span key={status} className={'map-status map-status-' + status}>{name}<span className="map-status-count">{entries.filter(entry => statusKey(entry) === status).length}</span></span>)}</div>
-      <p>Branches group related topics for reading. <a href="/dependencies">Proof dependencies</a> record the mathematical inputs. “Internal proof available” indicates a supplied argument; conditional results retain their stated hypotheses.</p>
+      <p>This supplementary index preserves all source records. Branches group related topics for reading; the logical relations are in the proof trees above. “Internal proof available” indicates a supplied argument, not independent certification.</p>
     </section>
 
     <div className="map-controls" hidden>
@@ -103,12 +111,6 @@ export default function ResearchMapPage() {
     </div>
 
     <div className="map-tree">
-      <div className="map-root">
-        <span className="map-root-caption">The long-term objective · open</span>
-        <a href="/entries/BB-GLOBAL">Canonical Beilinson–Bloch height pairings</a>
-        <p>Construct the pairing on the full complementary homologically trivial Chow groups, then study positivity and arithmetic finiteness.</p>
-        <a className="map-root-programme" href="/programme">Read the research programme <span aria-hidden="true">→</span></a>
-      </div>
       <ol className="map-branches">
         {branches.map((branch, index) => {
           const count = branch.groups.reduce((n, group) => n + group.records.length, 0);
@@ -152,6 +154,8 @@ export default function ResearchMapPage() {
       </ol>
       <p className="map-empty" hidden>No matching item. Try a shorter title or a permanent ID.</p>
     </div>
+    </div>
+    </details>
     <nav className="map-footer-links" aria-label="Research map resources"><a href="/records">All permanent records</a><a href="/dependencies">Proof dependencies</a><a href="/papers">Papers and PDFs</a><a href="/programme">Research programme</a></nav>
   </div>;
 }

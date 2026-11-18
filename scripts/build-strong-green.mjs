@@ -130,6 +130,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
 ${archived?'':`<link rel="stylesheet" href="${url(projectPath+'/assets/research-map.css')}">`}
+${!archived&&route==='/research-map'?`<link rel="stylesheet" href="${url(projectPath+'/assets/logic-tree.css')}">`:''}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
 <div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}">Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
 <header class="site-header simple-site-header"><div class="site-shell masthead"><a class="site-brand" href="${url(namespace+'/')}"><span class="brand-title">${esc(project.title)}</span></a>
@@ -159,7 +160,7 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
   // introduce a new reading view or change an archived page's navigation.
   const currentAssets=path.join(output,projectPath.slice(1),'assets');
   await mkdir(currentAssets,{recursive:true});
-  for(const name of ['research-map.css','research-map.js'])await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
+  for(const name of ['research-map.css','research-map.js','logic-tree.css'])await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
 
   const routes=[],indexableRoutes=[],searchIndex=[];
   for(const [route,module,params,options={}] of specs){

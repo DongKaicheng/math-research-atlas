@@ -1,23 +1,28 @@
 # Beilinson–Bloch research map — 18 November 2026
 
 Adds `/projects/strong-green/research-map/` to the project's primary navigation
-and homepage. The page presents the current research as a linked, expandable
-tree with five branches: local Green forms, global height pairings, Chow groups
-and positivity, integral Northcott, and metrics and families.
+and homepage. The primary view is a logical map, not a topic classification.
+Six connected proof trees display the full global target, exact-support Green
+construction, arithmetic equivalences, fixed-field Northcott, bounded-degree
+field control, and metric/family comparison.
 
-The map includes all 54 permanent records, the three existing construction
-routes, 13 pairing cases with their 32 geometric applications, and the six
-existing programme steps. Titles, summaries and mathematical statuses are read
-from the authoritative current records. Pairing cases, route descriptions and
-programme goals reuse their existing reading metadata. Branch membership is
-topic organization; exact mathematical support remains on the record and
-dependency pages.
+Conclusions are above their connected premises. Every junction distinguishes
+joint requirements, alternative sufficient routes, equivalence, an open bridge,
+or a known failure of implication. Each relation links to the exact supporting
+paper or record. The full-domain pairing is separated from the additional
+functoriality, normalization and classical-comparison requirements. Quantifiers,
+geometric domains and height hypotheses remain explicit.
 
-Readers can open branches and subgroups, expand the entire tree, return to the
-overview, or search titles, topics and permanent IDs. Every result links to its
-full record; route, proof, case and programme links retain their existing
-destinations. Native HTML disclosures and links work without JavaScript.
-Search additionally opens the relevant branches and matches ancestor headings.
+The collapsible supplementary index preserves all 54 permanent records, the
+three existing construction routes, 13 pairing cases with their 32 geometric
+applications, and the six existing programme steps. Registered titles and
+statuses are read from the authoritative current records. Intermediate
+properties in the proof trees are reading nodes, not new theorem records.
+
+Readers can jump to a conclusion, expand its detailed premises, expand all
+arguments, or return to the first-level view. The supplementary index also
+supports searches by title, topic and permanent ID. Native HTML disclosures
+and links work without JavaScript.
 
 This is a current navigation view based on mathematical edition v0.5.1. It does
 not change any statement, proof, mathematical status, PDF, or frozen file. The
@@ -27,12 +32,16 @@ page; there is no new feedback store. Other projects are outside this change.
 
 ## Maintaining the map
 
-`strong-green/views/content/research-map.mjs` holds topic membership by permanent
-ID. The page reads actual titles, summaries and statuses from the current
-bundle. A build-time coverage check rejects missing, duplicate or unknown
-records, so a future edition with new records must update their placements.
-Keep mathematical relationships in the original records and papers rather
-than interpreting the reading tree as a proof graph.
+`strong-green/views/content/logical-map.mjs` holds explicit logical relations
+and their evidence. Do not derive implications mechanically from the generic
+dependency arrays: those arrays include context and proof ingredients. Every
+gate needs a precise scope, its full premise bundle, and a source for the
+claimed relation. Record nodes cannot override their publication status.
+Future changes to a source theorem require rechecking its displayed gates.
+
+`strong-green/views/content/research-map.mjs` holds supplementary topic
+membership by permanent ID. Build-time checks reject missing, duplicate or
+unknown records. New records therefore require deliberate placement.
 
 Current-only assets and the current-only page flag in
 `scripts/build-strong-green.mjs` preserve all existing frozen URLs. Keep these
