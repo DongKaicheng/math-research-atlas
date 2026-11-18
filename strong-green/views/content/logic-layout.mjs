@@ -123,8 +123,8 @@ export function buildLogicScene(trees, records) {
     y += 34 + titleLines.length * 35 + 16 + summaryLines.length * 23 + 13 + scopeLines.length * 20 + 34;
     const contexts = [];
     for (const [index, context] of (tree.contexts || []).entries()) {
-      const entry = known(context.record);
-      const object = box({ ...context, note: context.note || entry.summary }, 126, y,
+      const entry = context.record ? known(context.record) : undefined;
+      const object = box({ ...context, note: context.note || entry?.summary || '' }, 126, y,
         'context', `${tree.id}-context-${index}`);
       contexts.push(object); y += object.height + 22;
     }

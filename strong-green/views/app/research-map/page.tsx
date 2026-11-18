@@ -92,6 +92,7 @@ export default function ResearchMapPage() {
       <h1>Complete logical diagram</h1>
       <p>Results, exact premises and open steps, connected by explicit logical junctions. The full diagram is drawn below, with every branch visible and every result linked to its statement.</p>
       <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {logicalTrees.length} linked proof trees · {entries.length} permanent records</div>
+      <p><a href="/results/proof-diagrams">Follow the detailed proof diagrams for every Progress result →</a></p>
     </header>
 
     <LogicForest trees={logicalTrees} />

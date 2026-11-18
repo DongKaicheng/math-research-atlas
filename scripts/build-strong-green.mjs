@@ -48,6 +48,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   const pageFiles={
     home:'app/page.tsx',conjectures:'app/conjectures/page.tsx',results:'app/results/page.tsx',
     researchMap:'app/research-map/page.tsx',
+    progressProofs:'app/results/proof-diagrams/page.tsx',progressProof:'app/results/proof-diagrams/[slug]/page.tsx',
     routes:'app/routes/page.tsx',route:'app/routes/[slug]/page.tsx',programme:'app/programme/page.tsx',
     papers:'app/papers/page.tsx',paper:'app/papers/[slug]/page.tsx',records:'app/records/page.tsx',
     entry:'app/entries/[id]/page.tsx',dependencies:'app/dependencies/page.tsx',sources:'app/sources/page.tsx',about:'app/about/page.tsx',
@@ -57,7 +58,8 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     'export {globalRoutes} from '+JSON.stringify(path.join(views,'content','routes.mjs'))+';\n'+
     'export {papers} from '+JSON.stringify(path.join(views,'lib','papers.ts'))+';\n'+
     'export {CompleteLogicSVG} from '+JSON.stringify(path.join(views,'components','logic-tree.tsx'))+';\n'+
-    'export {logicalTrees} from '+JSON.stringify(path.join(views,'content','logical-map.mjs'))+';\n';
+    'export {logicalTrees} from '+JSON.stringify(path.join(views,'content','logical-map.mjs'))+';\n'+
+    'export {progressProofs,progressProofTrees,progressProofPath,progressProofSvgPath,progressProofInventory,validateProgressProofs} from '+JSON.stringify(path.join(views,'content','progress-proofs.mjs'))+';\n';
   const rendererFile=path.join(cache,'renderer-'+process.pid+'-'+Date.now()+'.mjs');
   await build({
     stdin:{contents:entryCode,resolveDir:root,sourcefile:'public-research-renderer.ts'},
@@ -85,10 +87,21 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   });
   let rendered;
   try{rendered=await import(pathToFileURL(rendererFile).href);}finally{await unlink(rendererFile);}
-  const {pages,papers,globalRoutes,CompleteLogicSVG,logicalTrees}=rendered;
+  const {pages,papers,globalRoutes,CompleteLogicSVG,logicalTrees,progressProofs,progressProofTrees,progressProofPath,progressProofSvgPath,progressProofInventory,validateProgressProofs}=rendered;
+  validateProgressProofs(bundle.entries,revision);
+  // Explicit byte bindings prevent a source update from silently reusing an
+  // older logical account. They record source fidelity, not proof acceptance.
+  const checkedProofSources=new Map();
+  for(const source of [progressProofInventory,...progressProofs.flatMap(item=>item.sourceBindings)]){
+    let actual=checkedProofSources.get(source.file);
+    if(!actual){actual=createHash('sha256').update(await readFile(path.join(root,source.file))).digest('hex');checkedProofSources.set(source.file,actual);}
+    if(actual!==source.sha256)throw Error('Progress proof source changed; review its diagram: '+source.file);
+  }
   const specs=[
     ['/',pages.home],['/conjectures',pages.conjectures],['/results',pages.results],['/routes',pages.routes],
     ['/research-map',pages.researchMap,undefined,{currentOnly:true}],
+    [progressProofPath,pages.progressProofs,undefined,{currentOnly:true}],
+    ...progressProofs.map(item=>[item.path,pages.progressProof,{slug:item.caseId},{currentOnly:true}]),
     ['/programme',pages.programme],['/papers',pages.papers],['/records',pages.records],
     ['/dependencies',pages.dependencies],['/sources',pages.sources],['/about',pages.about],
     ...globalRoutes.map(route=>['/routes/'+route.slug,pages.route,{slug:route.slug}]),
@@ -97,20 +110,24 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   ];
 
   const url=p=>base+p;
-  const currentAssetNames=['research-map.css','research-map.js','logic-tree.css'];
+  const currentAssetNames=['research-map.css','research-map.js','logic-tree.css','progress-proofs.css'];
   const currentAssetVersions=new Map(await Promise.all(currentAssetNames.map(async name=>[
     name,createHash('sha256').update(await readFile(path.join(root,'strong-green',name))).digest('hex').slice(0,16),
   ])));
   const currentAsset=name=>url(projectPath+'/assets/'+name)+'?v='+currentAssetVersions.get(name);
-  let diagramVersion;
+  const diagramAssets=new Map();
   function link(href,namespace){
     if(href.startsWith('/atlas-feedback/'))return url('/feedback/')+href.slice('/atlas-feedback/'.length);
     if(href==='/atlas-maintenance/')return url('/maintenance/');
-    if(href==='/projects/strong-green/assets/complete-logical-map.svg')return url(href)+(diagramVersion?'?v='+diagramVersion:'');
+    if(diagramAssets.has(href))return url(href)+'?v='+diagramAssets.get(href).version;
     if(href.startsWith('/projects/strong-green/'))return url(href);
     // This reading guide follows the current records; it is not part of a
     // previously frozen mathematical edition.
     if(/^\/research-map(?:[/?#]|$)/.test(href))return url(projectPath+'/research-map/')+href.slice('/research-map'.length).replace(/^\//,'');
+    if(/^\/results\/proof-diagrams(?:[/?#]|$)/.test(href)){
+      const split=href.search(/[?#]/),p=split<0?href:href.slice(0,split),suffix=split<0?'':href.slice(split);
+      return url(projectPath+trailing(p))+suffix;
+    }
     if(base&&href.startsWith(base+'/'))return href;
     if(/^\/feedback(?:[/?#]|$)/.test(href)){
       if(href.startsWith('/feedback/guide'))return url('/feedback/guide/');
@@ -129,29 +146,38 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     return href;
   }
   const rewrite=(html,namespace)=>html.replace(/\b(href|src)="([^"]*)"/g,(_all,attr,href)=>`${attr}="${link(href,namespace)}"`);
-  const linkedDiagram=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees:logicalTrees})),projectPath)
-    .replace(/href="(\/[^\"]*)"/g,(_all,href)=>`href="${new URL(href,origin).href}"`);
-  diagramVersion=createHash('sha256').update(linkedDiagram).digest('hex').slice(0,16);
+  function registerDiagram(asset,trees,title){
+    const svg=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees,title})),projectPath)
+      .replace(/href="(\/[^\"]*)"/g,(_all,href)=>`href="${new URL(href,origin).href}"`);
+    diagramAssets.set(asset,{svg,version:createHash('sha256').update(svg).digest('hex').slice(0,16)});
+  }
+  registerDiagram(projectPath+'/assets/complete-logical-map.svg',logicalTrees);
+  registerDiagram(progressProofSvgPath,progressProofTrees,'Progress: complete result and proof diagrams');
+  for(const item of progressProofs)registerDiagram(item.svgPath,item.trees,item.title+': complete proof diagram');
   function frame(title,description,body,route,namespace,{archived=false,noindex=false}={}){
     const relative=namespace+(route==='/'?'/':trailing(route));
     const canonical=origin+relative;
     const feedback=url('/feedback/')+'?project=strong-green&amp;version='+revision+'&amp;page='+encodeURIComponent(canonical);
-    const projectNav=archived?nav:[nav[0],['/research-map','Research map'],...nav.slice(1)];
+    const projectNav=archived?nav:[nav[0],['/research-map','Research map'],...nav.slice(1,3),[progressProofPath,'Proof diagrams'],...nav.slice(3)];
+    const currentNav=projectNav.filter(([p])=>route===p||(p!=='/'&&route.startsWith(p+'/'))).sort((a,b)=>b[0].length-a[0].length)[0]?.[0];
+    const proofRoute=route===progressProofPath||route.startsWith(progressProofPath+'/');
+    const logicRoute=route==='/research-map'||proofRoute;
     return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Conjecture Atlas</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
 ${archived?'':`<link rel="stylesheet" href="${currentAsset('research-map.css')}">`}
-${!archived&&route==='/research-map'?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
+${!archived&&logicRoute?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
+${!archived&&(proofRoute||route==='/results')?`<link rel="stylesheet" href="${currentAsset('progress-proofs.css')}">`:''}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
-<div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}">Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
+<div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
 <header class="site-header simple-site-header"><div class="site-shell masthead"><a class="site-brand" href="${url(namespace+'/')}"><span class="brand-title">${esc(project.title)}</span></a>
-<nav class="primary-nav" aria-label="Project navigation">${projectNav.map(([p,label])=>`<a href="${link(p,namespace)}"${route===p||(p!=='/'&&route.startsWith(p+'/'))?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
+<nav class="primary-nav" aria-label="Project navigation">${projectNav.map(([p,label])=>`<a href="${link(p,namespace)}"${currentNav===p?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
 ${archived?`<div class="edition-banner"><div class="site-shell">Frozen public edition ${esc(revision)}. <a href="${url(projectPath+(route==='/'?'/':trailing(route)))}">Read the current version of this page</a>.</div></div>`:''}
 <main id="main-content">${body}</main>
-<footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}<a href="${feedback}">Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
-${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${route==='/research-map'&&!archived?`<script defer src="${currentAsset('research-map.js')}"></script>`:''}</body></html>\n`;
+<footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}<a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
+${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${logicRoute&&!archived?`<script defer src="${currentAsset('research-map.js')}"></script>`:''}</body></html>\n`;
   }
   async function save(route,html){
     const file=path.join(output,route.replace(/^\//,'').replace(/\/$/,'')||'.','index.html');
@@ -174,7 +200,9 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
   const currentAssets=path.join(output,projectPath.slice(1),'assets');
   await mkdir(currentAssets,{recursive:true});
   for(const name of currentAssetNames)await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
-  await writeFile(path.join(currentAssets,'complete-logical-map.svg'),linkedDiagram);
+  for(const [asset,{svg}] of diagramAssets){
+    const file=path.join(output,asset.slice(1));await mkdir(path.dirname(file),{recursive:true});await writeFile(file,svg);
+  }
 
   const routes=[],indexableRoutes=[],searchIndex=[];
   for(const [route,module,params,options={}] of specs){

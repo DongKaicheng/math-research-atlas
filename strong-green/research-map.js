@@ -111,3 +111,26 @@
   controls.hidden = false;
   revealHash();
 })();
+
+// Keep a linked proof step as page context in the existing shared board.
+// A diagram anchor is not a new permanent mathematical record ID.
+(() => {
+  const links = [...(document.querySelectorAll?.('[data-logic-feedback]') || [])];
+  const canonical = document.querySelector('link[rel="canonical"]')?.href;
+  if (!links.length || !canonical) return;
+  function updateFeedbackContext() {
+    const source = new URL(canonical);
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { id = ''; }
+    const target = id && document.getElementById(id);
+    const forest = document.querySelector('[data-logic-forest]');
+    if (target && forest?.contains(target)) source.hash = location.hash;
+    for (const link of links) {
+      const destination = new URL(link.href);
+      destination.searchParams.set('page', source.href);
+      link.href = destination.href;
+    }
+  }
+  window.addEventListener('hashchange', updateFeedbackContext);
+  updateFeedbackContext();
+})();

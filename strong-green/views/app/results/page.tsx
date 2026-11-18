@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pairingGroups, pairingProgressIntroduction, pairingSourceCoverage } from "@/content/pairing-progress.mjs";
+import { progressProofPath, progressApplicationLink } from "@/content/progress-proofs.mjs";
 import MathText from "@/components/MathText";
 import "@/app/pairing-progress.css";
 
@@ -26,6 +27,7 @@ export default function Page() {
       <h1>{pairingProgressIntroduction.title}</h1>
       <p>{pairingProgressIntroduction.summary}</p>
       <div className="summary-paper-links">
+        <a className="text-link" href={progressProofPath}>Complete result and proof diagrams →</a>
         <a className="text-link" href="/papers/pairing-constructions">Geometric results and proofs →</a>
         <a className="text-link" href="/papers/global-height-pairing">Construction of the global pairing →</a>
         <a className="text-link" href="/routes">The three research routes →</a>
@@ -47,6 +49,7 @@ export default function Page() {
         <div className="pairing-domain"><MathText text={item.domain} /></div>
         <p className="pairing-evidence">{item.status}</p>
         <nav className="pairing-proof-links" aria-label={item.title + ": proofs"}>
+          <a href={progressProofPath + '/' + item.id} data-proof-page={item.id}>Read the proof diagram →</a>
           <a href={item.proof.href}>{item.proof.label} →</a>
           {item.additionalProofs?.map(link => <a key={link.href} href={link.href}>{link.label} →</a>)}
         </nav>
@@ -56,7 +59,7 @@ export default function Page() {
             <h4>Proof of the result</h4><MathText text={item.established} />
             {item.children && item.children.length > 0 && <section className="pairing-consequences">
               <h4>Applications</h4>
-              <ol>{item.children.map(child => <li key={child.title}><h5>{child.title}</h5><MathText text={child.text} /></li>)}</ol>
+              <ol>{item.children.map(child => <li key={child.title}><h5>{child.title}</h5><MathText text={child.text} /><a className="pairing-application-diagram" href={progressApplicationLink(item.id, child.title)}>View this deduction in the proof diagram →</a></li>)}</ol>
             </section>}
             <h4>Hypotheses used</h4>
             <ul>{item.dependencies.map(dep => <li key={dep}><MathText text={dep} /></li>)}</ul>

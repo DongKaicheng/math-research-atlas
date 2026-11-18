@@ -27,6 +27,7 @@ export default function HomePage() {
     </section>
     <nav className="simple-home-links" aria-label="Read the research">
       <a className="home-map-link" href="/research-map"><span>Logical research map <span aria-hidden="true">→</span></span><small>How the results fit together: implications, exact prerequisites and open steps</small></a>
+      <a className="home-map-link" href="/results/proof-diagrams"><span>Result and proof diagrams <span aria-hidden="true">→</span></span><small>Complete proof trees for the Progress results and their applications</small></a>
       <a className="home-routes-link" href="/routes"><span>Research routes <span aria-hidden="true">→</span></span><small>Logical chains, alternative approaches, and the main open steps</small></a>
       <a href="/conjectures"><span>Conjectures and plan</span><small>Statements, implications, and core difficulties</small></a>
       <a href="/results"><span>Pairing constructions and progress</span><small>Available proofs, assumptions, and remaining gaps</small></a>

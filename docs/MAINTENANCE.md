@@ -269,6 +269,31 @@ and the project navigation and homepage entry. Record the checks and live
 deployment actually observed in the release note; leave unfinished checks
 explicitly pending.
 
+## Beilinson–Bloch Progress proof diagrams
+
+The current `/projects/strong-green/results/proof-diagrams/` and its per-result
+pages are source-bound graphical reading views, separate from frozen paper
+editions. Their coverage includes every case and application in
+`strong-green/views/content/pairing-progress.mjs`. The three
+`progress-proof-*.mjs` source modules provide the proof trees; `progress-proofs.mjs`
+joins them to the existing Progress inventory and validates coverage.
+
+Maintain the exact source file hashes and proof locators when revising a graph.
+Do not recompute a binding merely to bypass a stale-source check: reread the
+changed statement and argument, check each affected inference, then record the
+new binding. Preserve ALL-premise bundles, alternative routes, equivalences,
+open bridges and blocked inferences. A source's conditional status remains
+conditional in its diagram. Intermediate diagram nodes are not newly accepted
+theorems.
+
+Every application has a stable diagram anchor and a link from Progress. Preserve
+those anchors when refactoring; give each diagram its correct SVG download,
+title, canonical URL, search record and feedback page context, including a valid
+linked diagram fragment. A fragment is not a new theorem ID. Never overwrite
+an old mathematical edition to add these reading pages. Run the complete
+repository tests and release/history checks after changing the renderer or the
+proof data, and inspect representative long diagrams and their source links.
+
 ## Historical material and privacy
 
 Import only the intended public corpus. Original private research archives and

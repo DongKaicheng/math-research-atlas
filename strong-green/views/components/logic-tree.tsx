@@ -82,11 +82,11 @@ function DiagramGate({ item }: { item: any }) {
   </g>;
 }
 
-export function CompleteLogicSVG({ trees }: { trees: readonly LogicTree[] }) {
+export function CompleteLogicSVG({ trees, title = 'Complete logical diagram: Beilinson–Bloch heights and Green forms' }: { trees: readonly LogicTree[]; title?: string }) {
   const scene = buildLogicScene(trees, entries);
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${scene.width} ${scene.height}`} width={scene.width} height={scene.height}
     className="complete-logic-svg" data-complete-logical-diagram="" role="group" aria-labelledby="complete-logic-title complete-logic-description">
-    <title id="complete-logic-title">Complete logical diagram: Beilinson–Bloch heights and Green forms</title>
+    <title id="complete-logic-title">{title}</title>
     <desc id="complete-logic-description">Every argument is fully drawn. Read from premises upward through ALL, ANY, IFF or OPEN junctions. Red blocked links do not assert an implication. Blue dashed links identify proof rules; grey dashed links give scope and definitions. All result boxes and proof sources are hyperlinks.</desc>
     <style>{`.logic-svg-link:hover > rect,.logic-svg-link:focus-visible > rect{stroke:#176e92;stroke-width:3}.logic-svg-source:hover text,.logic-svg-source:focus-visible text{fill:#aa4828;text-decoration:underline}.logic-svg-node:target > a > rect{stroke:#b76524;stroke-width:4}.logic-svg-link,.logic-svg-source{cursor:pointer}`}</style>
     <defs>{Object.entries(colors).map(([kind, color]) => <marker key={kind} id={`logic-arrow-${kind}`} markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M 0 0 L 9 4.5 L 0 9 Z" fill={color} /></marker>)}</defs>
@@ -123,13 +123,13 @@ export function CompleteLogicSVG({ trees }: { trees: readonly LogicTree[] }) {
   </svg>;
 }
 
-export function LogicForest({ trees }: { trees: readonly LogicTree[] }) {
+export function LogicForest({ trees, title, downloadPath = '/projects/strong-green/assets/complete-logical-map.svg', downloadName = 'strong-green-logical-map.svg' }: { trees: readonly LogicTree[]; title?: string; downloadPath?: string; downloadName?: string }) {
   const scene = buildLogicScene(trees, entries);
   const covered = new Set(scene.boxes.map((item: any) => item.record).filter(Boolean));
   return <div className="logical-map" data-logic-forest="">
     <div className="logic-reading-guide">
       <p>A complete node-and-arrow diagram, with every branch visible. Read upward from premises through a junction to its conclusion.</p>
-      <p className="logic-counts">{covered.size} permanent records · {scene.boxes.length} scoped node occurrences · {scene.gates.length} logical junctions</p>
+      <p className="logic-counts">{covered.size > 0 && <>{covered.size} permanent records · </>}{scene.boxes.length} scoped node occurrences · {scene.gates.length} logical junctions</p>
       <div className="logic-diagram-key" aria-label="Diagram legend">
         <span><b>ALL</b> Joint sufficient premises</span><span><b>ANY</b> Alternative complete routes</span><span><b>IFF</b> Conclusion ⇔ the whole premise bundle</span>
         <span><b>OPEN ⋯→</b> Unproved bridge</span><span><b>×</b> These inputs do not imply the target</span>
@@ -142,11 +142,11 @@ export function LogicForest({ trees }: { trees: readonly LogicTree[] }) {
     </nav>
     <div className="logic-diagram-tools">
       <div data-diagram-zoom-controls="" hidden><button type="button" data-diagram-zoom="-">−</button><output data-diagram-zoom-value="" aria-live="polite">100%</output><button type="button" data-diagram-zoom="+">+</button><button type="button" data-diagram-reset="">100%</button></div>
-      <a href="/projects/strong-green/assets/complete-logical-map.svg" download="strong-green-logical-map.svg">Download the complete linked SVG</a>
+      <a href={downloadPath} download={downloadName}>Download the complete linked SVG</a>
     </div>
     <p className="logic-pan-hint">The full diagram continues down the page. On a narrow screen, scroll sideways inside the diagram to keep the text readable.</p>
     <div className="logic-diagram-scroll" data-diagram-scroll="" tabIndex={0} role="region" aria-label="Complete logical diagram; horizontally scrollable on narrow screens">
-      <CompleteLogicSVG trees={trees} />
+      <CompleteLogicSVG trees={trees} title={title} />
     </div>
   </div>;
 }
