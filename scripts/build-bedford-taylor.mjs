@@ -89,6 +89,15 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     const source=path.join(frozenPublic,filename(route)),target=path.join(output,projectPath.slice(1),filename(route));
     let html=currentHTML(await readFile(source,'utf8'));
     if(route==='/')html=html.replace(/<div class="actions">[\s\S]*?<\/div>/,actions=>actions+`<p class="atlas-map-home-link"><a href="${currentBase}/map/">Explore the research map <span aria-hidden="true">→</span></a> <a class="atlas-map-overall-link" href="${currentBase}/map/#total-logic">Overall logical map</a></p>`);
+    if(route==='/'&&!base){
+      // The current landing projection is mutable; source editions are frozen.
+      const pageTitle='Non-Archimedean Bedford–Taylor Theory | OpenMath';
+      const snippet='Research programme for non-Archimedean Bedford–Taylor products, positive currents, psh potentials and Monge–Ampère theory on Berkovich analytic spaces.';
+      html=html.replace(/<title>[\s\S]*?<\/title>/,'<title>'+esc(pageTitle)+'</title>');
+      html=html.replace(/(<meta name="description" content=")[^"]*(")/,'$1'+esc(snippet)+'$2');
+      html=html.replace(/(<meta property="og:title" content=")[^"]*(")/,'$1'+esc(pageTitle)+'$2');
+      html=html.replace(/(<meta property="og:description" content=")[^"]*(")/,'$1'+esc(snippet)+'$2');
+    }
     const indexable=route!=='/404.html'&&route!=='/search/'&&!route.startsWith('/sources/view/');
     if(indexable)html=html.replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
     await mkdir(path.dirname(target),{recursive:true});await writeFile(target,html);
