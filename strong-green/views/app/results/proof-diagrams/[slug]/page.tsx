@@ -34,7 +34,7 @@ export default async function ProgressProofPage({ params }: Props) {
       </nav>
     </header>
     <section className="proof-domain" aria-label="Exact pairing domain"><h2>Domain of the result</h2><MathText text={item.domain} /></section>
-    <p className="proof-reading-note">The inference labels explain what each step supplies. The stated analytic, model and comparison hypotheses remain at their points of use; the linked paper contains the full argument.</p>
+    <p className="proof-reading-note">Read the diagrams from top to bottom. Select a numbered connection for its exact hypotheses and deduction, or follow a node to its source. Analytic, model and comparison assumptions retain their stated scope.</p>
     {item.coverage.length > 1 && <nav className="proof-application-navigation" aria-label="Applications within this proof diagram">
       <h2>Result and applications in this diagram</h2>
       <ul>{item.coverage.map((row: { title: string; nodeId: string }) => <li key={row.nodeId}><a href={'#' + row.nodeId}>{row.title}</a></li>)}</ul>

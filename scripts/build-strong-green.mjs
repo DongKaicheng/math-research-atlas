@@ -5,6 +5,7 @@ import {pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
 import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
+import {verifyStrongGreenLogicCache} from './render-strong-green-logic.mjs';
 
 const projectPath='/projects/strong-green';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -18,6 +19,7 @@ const nav=[['/','Overview'],['/conjectures','Conjectures'],['/results','Progress
  * Frozen HTML/assets already present in public/ are copied byte for byte.
  */
 export async function buildStrongGreen({root,output,base,origin,repository}){
+  await verifyStrongGreenLogicCache(root);
   const publicRoot=path.join(root,'public');
   const releaseRoot=path.join(root,'content','strong-green','releases');
   const publication=JSON.parse(await readFile(path.join(root,'content','strong-green','current.json'),'utf8'));
@@ -146,17 +148,17 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     return href;
   }
   const rewrite=(html,namespace)=>html.replace(/\b(href|src)="([^"]*)"/g,(_all,attr,href)=>`${attr}="${link(href,namespace)}"`);
-  function registerDiagram(asset,trees,title){
+  function registerDiagram(asset,trees,title,detailBase){
     // A saved diagram must keep opening the evidence edition it was drawn
     // from. Current-only proof-navigation links retain their explicit routing
     // above; paper, record and source evidence stays on the frozen edition.
-    const svg=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees,title})),editionPath)
+    const svg=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees,title,detailBase})),editionPath)
       .replace(/href="(\/[^\"]*)"/g,(_all,href)=>`href="${new URL(href,origin).href}"`);
     diagramAssets.set(asset,{svg,version:createHash('sha256').update(svg).digest('hex').slice(0,16)});
   }
-  registerDiagram(projectPath+'/assets/complete-logical-map.svg',logicalTrees);
-  registerDiagram(progressProofSvgPath,progressProofTrees,'Progress: complete result and proof diagrams');
-  for(const item of progressProofs)registerDiagram(item.svgPath,item.trees,item.title+': complete proof diagram');
+  registerDiagram(projectPath+'/assets/complete-logical-map.svg',logicalTrees,undefined,'/research-map');
+  registerDiagram(progressProofSvgPath,progressProofTrees,'Progress: complete result and proof diagrams',progressProofPath);
+  for(const item of progressProofs)registerDiagram(item.svgPath,item.trees,item.title+': complete proof diagram',item.path);
   function frame(title,description,body,route,namespace,{archived=false,noindex=false}={}){
     const relative=namespace+(route==='/'?'/':trailing(route));
     const canonical=origin+relative;

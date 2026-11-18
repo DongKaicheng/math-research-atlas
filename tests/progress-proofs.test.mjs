@@ -19,12 +19,122 @@ const pagePath = item => `dist/projects/strong-green${item.path}/index.html`;
 const sceneFor = item => buildLogicScene(item.trees, entries);
 const allNodes = item => item.trees.flatMap(tree => [...(tree.contexts || []), ...[tree.root, ...(tree.related || [])].flatMap(walkProofNodes)]);
 const allGates = item => allNodes(item).filter(node => node.gate).map(node => node.gate);
+const records = new Map(entries.map(entry => [entry.id, entry]));
+const normalized = value => String(value || '').replace(/\s+/g, ' ').trim();
+const decode = value => String(value).replace(/&(?:amp|lt|gt|quot|apos|#\d+|#x[\da-f]+);/gi, entity => {
+  if (/^&#x/i.test(entity)) return String.fromCodePoint(parseInt(entity.slice(3, -1), 16));
+  if (/^&#/.test(entity)) return String.fromCodePoint(Number(entity.slice(2, -1)));
+  return { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'" }[entity.toLowerCase()];
+});
+const plain = html => normalized(decode(String(html).replace(/<[^>]*>/g, ' ')));
+const hrefs = html => [...html.matchAll(/\bhref="([^"]+)"/g)].map(match => decode(match[1]));
+const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => decode(match[1]));
+const escapeRegExp = value => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Balance the real element, so a nested list or disclosure cannot make a
+// truncated excerpt pass the content-retention checks.
+function element(html, id) {
+  const matches = [...html.matchAll(new RegExp('<([a-z][\\w:-]*)\\b(?=[^>]*\\bid="' + escapeRegExp(id) + '")[^>]*>', 'g'))];
+  assert.equal(matches.length, 1, 'Exactly one rendered destination: ' + id);
+  const match = matches[0], tag = match[1];
+  const tokens = new RegExp('<\\/?' + tag + '\\b[^>]*>', 'g');
+  tokens.lastIndex = match.index;
+  let depth = 0, token;
+  while ((token = tokens.exec(html))) {
+    if (token[0].startsWith('</')) depth--;
+    else if (!token[0].endsWith('/>')) depth++;
+    if (!depth) return html.slice(match.index, tokens.lastIndex);
+  }
+  assert.fail('Unclosed rendered destination: ' + id);
+}
+
+function published(href) {
+  if (!href.startsWith('/') || href.startsWith('//')) return href;
+  if (href.startsWith('/source-files/') || /^\/papers\/[^/#?]+\.(?:tex|pdf)(?:[?#]|$)/.test(href))
+    return prefix + '/editions/' + revision + href;
+  const split = href.search(/[?#]/), pathname = split < 0 ? href : href.slice(0, split), suffix = split < 0 ? '' : href.slice(split);
+  return prefix + pathname.replace(/\/$/, '') + (/\.[A-Za-z\d]+$/.test(pathname) ? '' : '/') + suffix;
+}
+
+// Derive identities and logical incidence from the authored trees, independently
+// of either the layout or renderer. These are the already published paths.
+function expectedGraph(trees) {
+  const nodes = [], gates = [];
+  const add = (source, identity, treeId, role) => {
+    const record = source.record && records.get(source.record);
+    const node = { id: source.id || identity, treeId, role, record: source.record,
+      title: source.title || record?.title, status: record?.status || source.status,
+      note: source.note || (role === 'context' ? record?.summary || '' : ''), href: source.href || (record ? '/entries/' + record.id : undefined), links: source.links || [] };
+    nodes.push(node);
+    if (source.gate) {
+      const gate = source.gate;
+      const ruleIds = (gate.rules || []).map((record, index) => add({ record, note: gate.ruleNotes?.[record] || records.get(record).summary }, `${identity}-rule-${index}`, treeId, 'rule'));
+      const childrenIds = gate.children.map((child, index) => add(child, `${identity}-premise-${index}`, treeId, 'premise'));
+      gates.push({ ...gate, id: identity + '-gate', treeId, conclusionId: node.id, childrenIds, ruleIds });
+    }
+    return node.id;
+  };
+  for (const tree of trees) {
+    (tree.contexts || []).forEach((node, index) => add(node, `${tree.id}-context-${index}`, tree.id, 'context'));
+    add(tree.root, `${tree.id}-root`, tree.id, 'conclusion');
+    (tree.related || []).forEach((node, index) => add(node, `${tree.id}-related-${index}`, tree.id, node.gate?.kind === 'blocked' ? 'unreached target' : 'conclusion'));
+  }
+  return { nodes, gates };
+}
+
+function assertReadingDetails(html, tree, expected) {
+  const panel = element(html, tree.id);
+  assert.match(panel, /^<section\b[^>]*data-logic-panel=/, tree.id + ': an always-visible panel');
+  assert.ok(plain(panel).includes(normalized(tree.title)), tree.id + ': full proof-unit title');
+  assert.ok(plain(panel).includes(normalized(tree.summary)), tree.id + ': full reading summary');
+  assert.ok(plain(panel).includes(normalized(tree.scope)), tree.id + ': complete ambient scope');
+  assert.equal((panel.match(/data-complete-logical-diagram=""/g) || []).length, 1, tree.id + ': its own graph');
+  const details = [...panel.matchAll(/<details\b[^>]*>/g)];
+  assert.ok(details.every(match => /\bdata-logic-detail=|\bclass="[^"]*\blogic-node-register\b/.test(match[0])), tree.id + ': only textual deductions and their register use disclosures');
+  let disclosureDepth = 0;
+  for (const [tag] of panel.matchAll(/<\/?(?:details|svg)\b[^>]*>/g)) {
+    if (tag.startsWith('<details')) disclosureDepth++;
+    else if (tag.startsWith('</details')) disclosureDepth--;
+    else if (tag.startsWith('<svg')) assert.equal(disclosureDepth, 0, tree.id + ': every graph is outside every disclosure');
+  }
+  assert.equal(disclosureDepth, 0, tree.id + ': balanced text disclosures');
+  for (const node of expected.nodes.filter(node => node.treeId === tree.id)) {
+    const drawn = element(panel, node.id), detail = element(panel, node.id + '-detail');
+    assert.match(drawn, /^<g\b[^>]*data-logic-node=/, node.id + ': still drawn, not just an alias');
+    assert.ok(drawn.includes('data-logic-role="' + node.role + '"'), node.id + ': mathematical role retained');
+    assert.ok(drawn.includes('data-logic-status="' + node.status + '"'), node.id + ': status retained');
+    assert.match(detail, /^<details\b[^>]*data-logic-detail=/, node.id + ': textual deduction remains addressable');
+    assert.doesNotMatch(detail, /data-complete-logical-diagram=/, node.id + ': graph cannot be hidden in its note');
+    assert.ok(plain(detail).includes(normalized(node.note)), node.id + ': full scope and qualification');
+    assert.ok(plain(detail).includes(normalized(node.title)), node.id + ': full title');
+    if (node.href) assert.ok(hrefs(drawn + detail).includes(published(node.href)), node.id + ': original primary destination');
+    for (const link of node.links) {
+      assert.ok(hrefs(detail).includes(published(link.href)), node.id + ': related evidence ' + link.href);
+      assert.ok(plain(detail).includes(normalized(link.label)), node.id + ': evidence label');
+    }
+    assert.ok(hrefs(drawn).includes('#' + node.id + '-detail'), node.id + ': graph opens its own complete scope');
+  }
+  for (const gate of expected.gates.filter(gate => gate.treeId === tree.id)) {
+    const drawn = element(panel, gate.id), detail = element(panel, gate.id + '-detail');
+    assert.ok(drawn.includes('data-logic-gate="' + gate.kind + '"'), gate.id + ': relation kind retained');
+    assert.ok(hrefs(drawn).includes('#' + gate.id + '-detail'), gate.id + ': graph opens this inference');
+    assert.doesNotMatch(detail, /data-complete-logical-diagram=/, gate.id + ': graph cannot be hidden in a deduction');
+    assert.ok(plain(detail).includes(normalized(gate.label)), gate.id + ': complete inference label');
+    assert.ok(plain(detail).includes(normalized(gate.explanation)), gate.id + ': complete mechanism');
+    for (const id of [...gate.childrenIds, gate.conclusionId, ...gate.ruleIds])
+      assert.ok(hrefs(detail).some(href => href === '#' + id || href === '#' + id + '-detail'), gate.id + ': exact scoped participant ' + id);
+    for (const link of gate.sources) {
+      assert.ok(hrefs(detail).includes(published(link.href)), gate.id + ': source ' + link.href);
+      assert.ok(plain(detail).includes(normalized(link.label)), gate.id + ': source label');
+    }
+  }
+}
 
 test('Every Progress result and all 32 applications have a drawn proof destination', () => {
   const coverage = validateProgressProofs(entries, revision);
   assert.equal(coverage.cases, 13);
   assert.equal(coverage.applications, 32);
-  assert.ok(coverage.trees >= 13);
+  assert.ok(coverage.trees >= 117, 'The visual revision retains every reviewed proof unit');
   assert.deepEqual(progressProofs.map(item => item.caseId), cases.map(item => item.id));
   for (const item of progressProofs) {
     const scene = sceneFor(item);
@@ -233,15 +343,20 @@ test('The signature-only host proof separates numerical positivity, residuals an
   assert.ok(at('host-exact-period-input').links.some(link => link.href.endsWith('/R17_vertical_tests_and_strong_green_necessity.tex')));
 });
 
-test('The complete index and all independent proof pages are fully drawn without disclosures', async () => {
+test('Every proof unit has an always-visible compact graph and a complete linked textual deduction', async () => {
   const pages = [{ path: progressProofPath, trees: progressProofTrees }, ...progressProofs];
   for (const item of pages) {
     const html = await read(pagePath(item));
     const scene = sceneFor(item);
-    assert.equal((html.match(/data-complete-logical-diagram=""/g) || []).length, 1, item.path);
+    const expected = expectedGraph(item.trees), allIds = ids(html);
+    assert.equal(new Set(allIds).size, allIds.length, item.path + ': panel, SVG, detail and marker IDs are unique');
+    assert.equal((html.match(/data-complete-logical-diagram=""/g) || []).length, item.trees.length, item.path);
+    assert.equal((html.match(/data-logic-panel="/g) || []).length, item.trees.length, item.path);
     assert.equal((html.match(/data-logic-node=""/g) || []).length, scene.boxes.length, item.path);
     assert.equal((html.match(/data-logic-gate="/g) || []).length, scene.gates.length, item.path);
-    assert.doesNotMatch(html, /<details\b|data-logic-expand|data-logic-overview/);
+    assert.equal((html.match(/data-logic-detail="/g) || []).length, expected.nodes.length + expected.gates.length, item.path);
+    assert.doesNotMatch(html, /data-logic-expand|data-logic-overview/);
+    for (const tree of item.trees) assertReadingDetails(html, tree, expected);
     assert.match(html, /Download the complete linked SVG/);
     assert.ok(html.includes(`${prefix}/assets/research-map.js?v=`));
     assert.ok(html.includes(`${prefix}/assets/logic-tree.css?v=`));
@@ -290,19 +405,107 @@ test('New public reading pages remain unsigned and use only the shared feedback 
   }
 });
 
-test('Diagram nodes and proof explanations fit their view boxes without overlapping other nodes', () => {
+test('Compact proof geometry retains every occurrence and has no two-dimensional box or gate collisions', () => {
   const scene = buildLogicScene(progressProofTrees, entries);
+  const expected = expectedGraph(progressProofTrees);
   assert.equal(scene.anchors.length, new Set(scene.anchors).size);
+  assert.deepEqual(new Set(scene.boxes.map(node => node.id)), new Set(expected.nodes.map(node => node.id)), 'The layout cannot omit or merge a scoped occurrence');
+  assert.deepEqual(new Set(scene.gates.map(gate => gate.id)), new Set(expected.gates.map(gate => gate.id)), 'Every old inference anchor survives');
   for (const node of scene.boxes) {
-    assert.ok(node.x >= 0 && node.x + node.width <= scene.width, node.id);
-    for (const line of node.titleLines) assert.ok(textWidth(line, 19) <= node.width - 35, node.id);
-    for (const line of node.noteLines) assert.ok(textWidth(line, 14) <= node.width - 35, node.id);
+    const source = expected.nodes.find(item => item.id === node.id);
+    assert.equal(node.status, source.status, node.id + ': no display status promotion');
+    assert.equal(node.note, source.note, node.id + ': compact geometry retains full scope metadata');
+    for (const line of node.titleLines) assert.ok(textWidth(line, 17) <= node.width - 35, node.id + ': compact title');
   }
-  const ordered = [...scene.boxes].sort((a, b) => a.y - b.y);
-  for (let i = 1; i < ordered.length; i++) assert.ok(ordered[i].y >= ordered[i - 1].y + ordered[i - 1].height, ordered[i].id);
-  for (const gate of scene.gates) {
-    for (const line of gate.explanationLines) assert.ok(textWidth(line, 14) <= gate.width + 1, gate.id);
+  const rectangles = [...scene.boxes, ...scene.gates];
+  for (const [index, box] of rectangles.entries()) {
+    assert.ok([box.x, box.y, box.width, box.height].every(Number.isFinite), box.id + ': finite geometry');
+    assert.ok(box.width > 0 && box.height > 0 && box.x >= 0 && box.y >= 0 && box.x + box.width <= scene.width + 1 && box.y + box.height <= scene.height + 1, box.id + ': within the viewBox');
+    for (const other of rectangles.slice(index + 1)) {
+      const overlap = box.x < other.x + other.width && other.x < box.x + box.width && box.y < other.y + other.height && other.y < box.y + box.height;
+      assert.equal(overlap, false, box.id + ' / ' + other.id);
+    }
   }
+  for (const tree of progressProofTrees) {
+    const visualOrder = scene.gates.filter(gate => gate.treeId === tree.id).sort((a, b) => a.y - b.y || a.x - b.x);
+    assert.deepEqual(visualOrder.map(gate => gate.number), visualOrder.map((_, index) => String(index + 1).padStart(2, '0')), tree.id + ': step numbers follow top-to-bottom, left-to-right visual order');
+  }
+});
+
+test('Each authored premise joins its own inference above its conclusion, with no invented individual implication', () => {
+  const scene = buildLogicScene(progressProofTrees, entries);
+  const expected = expectedGraph(progressProofTrees);
+  const boxes = new Map(scene.boxes.map(node => [node.id, node]));
+  const expectedEdges = [];
+  const port = (point, rectangle, side, tolerance, label) => {
+    assert.ok(point && Number.isFinite(point.x) && Number.isFinite(point.y), label + ': real connector endpoint');
+    assert.ok(point.x >= rectangle.x - 2 && point.x <= rectangle.x + rectangle.width + 2, label + ': endpoint belongs to its declared participant');
+    assert.ok(Math.abs(point.y - (rectangle.y + (side === 'bottom' ? rectangle.height : 0))) <= tolerance, label + ': endpoint reaches the correct border');
+  };
+  for (const source of expected.gates) {
+    const gate = scene.gates.find(item => item.id === source.id);
+    assert.equal(gate.kind, source.kind, gate.id);
+    assert.equal(gate.conclusionId, source.conclusionId, gate.id);
+    assert.deepEqual(gate.childrenIds, source.childrenIds, gate.id + ': the whole original premise bundle');
+    assert.deepEqual(gate.ruleIds, source.ruleIds, gate.id + ': supporting rules are separate');
+    const inputEdges = scene.edges.filter(edge => edge.to === gate.id && edge.kind === 'input');
+    assert.deepEqual(new Set(inputEdges.map(edge => edge.from)), new Set(source.childrenIds), gate.id + ': exact incidence');
+    assert.equal(inputEdges.length, source.childrenIds.length, gate.id + ': no duplicate inputs');
+    for (const edge of inputEdges) {
+      assert.equal(edge.relation, source.kind, edge.id);
+      assert.ok(!edge.arrow && !edge.both && !edge.blocked, edge.id + ': a premise does not independently imply the result');
+      const input = boxes.get(edge.from);
+      assert.ok(input.y + input.height <= gate.y, edge.id + ': top-down input → junction');
+      port(edge.points?.[0], input, 'bottom', 2, edge.id);
+      port(edge.points?.at(-1), gate, 'top', 2, edge.id);
+      expectedEdges.push(edge.from + '|' + gate.id + '|input');
+    }
+    const outputs = scene.edges.filter(edge => edge.from === gate.id);
+    assert.equal(outputs.length, 1, gate.id + ': one conclusion edge for the whole bundle');
+    const output = outputs[0], conclusion = boxes.get(source.conclusionId);
+    assert.equal(output.to, source.conclusionId);
+    assert.equal(output.kind, source.kind);
+    assert.equal(Boolean(output.arrow), source.kind !== 'blocked');
+    assert.equal(Boolean(output.both), source.kind === 'iff');
+    assert.equal(Boolean(output.blocked), source.kind === 'blocked');
+    assert.ok(gate.y + gate.height <= conclusion.y, gate.id + ': top-down junction → conclusion');
+    port(output.points?.[0], gate, 'bottom', source.kind === 'iff' ? 16 : 2, output.id);
+    port(output.points?.at(-1), conclusion, 'top', 16, output.id + ': includes arrowhead clearance');
+    expectedEdges.push(gate.id + '|' + conclusion.id + '|' + source.kind);
+    const ruleEdges = scene.edges.filter(edge => edge.to === gate.id && edge.kind === 'rule');
+    assert.deepEqual(new Set(ruleEdges.map(edge => edge.from)), new Set(source.ruleIds));
+    assert.ok(source.ruleIds.every(id => !source.childrenIds.includes(id)), gate.id + ': rules are not extra AND premises');
+    for (const id of source.ruleIds) expectedEdges.push(id + '|' + gate.id + '|rule');
+  }
+  for (const edge of scene.edges.filter(edge => edge.kind === 'context')) assert.ok(!edge.arrow && !edge.both, edge.id + ': ambient scope asserts no implication');
+  for (const tree of progressProofTrees) for (const [index, context] of (tree.contexts || []).entries())
+    expectedEdges.push((context.id || `${tree.id}-context-${index}`) + '|' + (tree.root.id || `${tree.id}-root`) + '|context');
+  assert.deepEqual(scene.edges.map(edge => edge.from + '|' + edge.to + '|' + edge.kind).sort(), expectedEdges.sort(), 'No hidden bypass, duplicate input or extra mathematical implication');
+});
+
+test('A three-premise proof branches horizontally and long deductions do not turn its SVG back into a prose stack', () => {
+  const tree = {
+    id: 'proof-layout-regression-tree', title: 'Joint premises', summary: 'A compact branching fixture.', scope: 'Rendering only.',
+    root: { id: 'proof-layout-regression-result', title: 'Conclusion', href: '/papers/example', status: 'conditional', note: 'Conclusion scope.',
+      gate: { kind: 'all', label: 'All three inputs', explanation: 'Use the three inputs jointly.', sources: [{ href: '/papers/example', label: 'Fixture source' }],
+        children: ['A', 'B', 'C'].map((title, index) => ({ id: 'proof-layout-regression-input-' + index, title, href: '/papers/example', status: 'hypothesis', note: 'Exact input scope.' })),
+      },
+    },
+  };
+  const scene = buildLogicScene([tree], entries);
+  const children = tree.root.gate.children.map(node => scene.boxes.find(box => box.id === node.id));
+  assert.ok(children.every(node => Math.abs(node.y - children[0].y) < 1), 'Parallel prerequisites share a visible input rank');
+  const row = [...children].sort((a, b) => a.x - b.x);
+  for (let index = 1; index < row.length; index++) assert.ok(row[index - 1].x + row[index - 1].width < row[index].x, 'Separate horizontal branches must be visible');
+  const expanded = structuredClone(tree);
+  expanded.root.note = 'A complete qualification. '.repeat(200);
+  expanded.root.gate.explanation = 'A complete intermediate argument. '.repeat(200);
+  expanded.root.gate.children.forEach(node => { node.note = 'The full quantified premise. '.repeat(200); });
+  const expandedScene = buildLogicScene([expanded], entries);
+  const geometry = item => [...item.boxes, ...item.gates].map(({ id, x, y, width, height }) => ({ id, x, y, width, height }));
+  assert.deepEqual(geometry(expandedScene), geometry(scene), 'Full deductions live in linked readable text, not giant SVG rectangles');
+  assert.equal(expandedScene.boxes.find(node => node.id === expanded.root.id).note, expanded.root.note, 'Compactness does not discard the complete note');
+  assert.equal(expandedScene.gates[0].explanation, expanded.root.gate.explanation, 'Compactness does not discard the proof mechanism');
 });
 
 test('Every standalone SVG has a matching content fingerprint and working links', async () => {
@@ -351,10 +554,12 @@ test('Shared feedback preserves valid proof fragments without creating another i
   const item = progressProofs[0];
   const page = 'https://dongkaicheng.github.io' + prefix + item.path + '/';
   const node = { id: item.coverage[0].nodeId };
+  const detail = { id: node.id + '-detail' };
+  const outside = { id: 'outside-proof-detail' };
   const links = [1, 2].map(() => ({ href: 'https://dongkaicheng.github.io' + base + '/feedback/?project=strong-green&version=' + revision + '&page=' + encodeURIComponent(page) }));
   const events = new Map();
   let contains = false;
-  const forest = { querySelector: () => undefined, contains: target => target === node };
+  const forest = { querySelector: () => undefined, querySelectorAll: () => [], contains: target => target === node || target === detail };
   const location = { hash: '#' + node.id };
   vm.runInNewContext(await read('strong-green/research-map.js'), {
     URL, location, decodeURIComponent,
@@ -367,7 +572,7 @@ test('Shared feedback preserves valid proof fragments without creating another i
         // The first IIFE is independently tested in logical-map.test.mjs.
         return contains && selector === '[data-logic-forest]' ? forest : undefined;
       },
-      getElementById: id => id === node.id ? node : undefined,
+      getElementById: id => [node, detail, outside].find(target => target.id === id),
     },
   });
   for (const link of links) {
@@ -378,6 +583,16 @@ test('Shared feedback preserves valid proof fragments without creating another i
     assert.equal(url.searchParams.get('page'), page + '#' + node.id);
     assert.equal(url.searchParams.has('entry'), false);
   }
+  location.hash = '#' + detail.id; events.get('hashchange')();
+  for (const link of links) {
+    const url = new URL(link.href);
+    assert.equal(url.pathname, base + '/feedback/');
+    assert.equal(url.searchParams.get('page'), page + '#' + detail.id, 'The complete inference detail has exact shared-board context');
+    assert.equal(url.searchParams.get('version'), revision);
+    assert.equal(url.searchParams.has('entry'), false);
+  }
+  location.hash = '#' + outside.id; events.get('hashchange')();
+  assert.equal(new URL(links[0].href).searchParams.get('page'), page, 'An unrelated page element is not a proof fragment');
   location.hash = '#not-a-diagram-node'; events.get('hashchange')();
   assert.equal(new URL(links[0].href).searchParams.get('page'), page);
   location.hash = '#%'; events.get('hashchange')();

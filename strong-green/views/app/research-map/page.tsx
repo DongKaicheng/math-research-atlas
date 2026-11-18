@@ -9,7 +9,7 @@ import { LogicForest } from '@/components/logic-tree';
 
 export const metadata: Metadata = {
   title: 'Complete logical diagram: Beilinson–Bloch heights and Green forms',
-  description: 'A fully expanded, linked SVG proof diagram of all 54 records: exact premises, inference rules, alternative routes, equivalences and open bridges for Green forms, global heights and Northcott finiteness.',
+  description: 'Top-down, linked logical diagrams of all 54 records: parallel premises, numbered deductions, alternative routes, equivalences and open bridges for Green forms and global heights.',
   alternates: { canonical: '/research-map' },
 };
 
@@ -90,7 +90,7 @@ export default function ResearchMapPage() {
     <header className="map-header">
       <p className="eyebrow">Beilinson–Bloch heights · the structure of the arguments</p>
       <h1>Complete logical diagram</h1>
-      <p>Results, exact premises and open steps, connected by explicit logical junctions. The full diagram is drawn below, with every branch visible and every result linked to its statement.</p>
+      <p>Results, exact premises and open steps, arranged in top-down diagrams. Parallel inputs meet at numbered logical connections; each connection links to its full hypotheses, explanation and sources below the graph.</p>
       <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {logicalTrees.length} linked proof trees · {entries.length} permanent records</div>
       <p><a href="/results/proof-diagrams">Follow the detailed proof diagrams for every Progress result →</a></p>
     </header>

@@ -304,14 +304,41 @@ an old mathematical edition to add these reading pages. Run the complete
 repository tests and release/history checks after changing the renderer or the
 proof data, and inspect representative long diagrams and their source links.
 
-Keep the SVG's DOM reading order aligned with its visible vertical order,
-including junction evidence links. Diagram fragments must move keyboard focus
-as well as the viewport. When changing scale in a long diagram, preserve the
-visible diagram coordinate, not only the percentage label. The sticky scale
-controls must leave the linked node visible below them on narrow viewports.
+The current interface follows the Bedford–Taylor logical map: parallel inputs
+appear above a numbered AND/OR/IFF junction and its conclusion, with open and
+blocked links explicitly distinguished. Each authored tree has an always-visible
+graphical panel. Keep node labels compact; the complete node notes, hypotheses,
+rule notes, connection explanations and sources belong in linked HTML details
+immediately below that panel. These details supplement the drawing, not replace
+or hide its branches. Preserve the old tree, occurrence and junction IDs;
+append `-detail` for their new explanation targets.
+
+Graphviz creates the checked-in coordinate cache in
+`content/strong-green/logic-diagrams/`. Regenerate it with
+`npm run build:sg-logic` after changing a bound layout or logical source.
+The normal build verifies its manifest, source hashes and geometry hash without
+requiring Graphviz. A stale cache must fail the build; do not silently use a
+fallback layout for an existing published tree. Synthetic test fixtures may use
+the deterministic top-down fallback. The cache stores geometry, never a second
+copy of mathematical prose or statuses.
+
+Keep the SVG's DOM reading order aligned with its visible top-down order.
+Diagram fragments must move keyboard focus as well as the viewport and open
+any containing explanation details. Each panel has independent two-axis
+scrolling and zoom. Preserve its reading coordinates when changing scale,
+leaving other panels unchanged. Fit-width mode may make text small, so retain
+a 100% readable-size control and keep the diagrams visible on narrow screens.
+Explicit fit may go below the manual zoom range; label such a view as an
+overview. Reserve a stable scrollbar gutter so height-driven scrollbar changes
+cannot oscillate the fit width. Automatic resize must not restore the page's
+scroll position, and a user scroll must win over a queued automatic canvas
+adjustment. Test these cases independently from explicit zoom anchoring.
 Standalone SVG downloads pin paper and permanent-record evidence to their
 mathematical source edition; navigation between current graphical views stays
-current. Check the export separately from the inline page.
+current. Explanation links in a saved SVG must open the correct current HTML
+page and fragment, not a missing local SVG fragment. Check the export separately
+from the inline page. Both inline panels and aggregate downloads must retain
+all original mathematical occurrences, junctions, sources and statuses.
 
 An unlocated historical proof file is not evidence that the entire public
 corpus lacks the argument. Before labelling a premise as imported without a

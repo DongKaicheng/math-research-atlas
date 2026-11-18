@@ -1,44 +1,116 @@
-/* Current-only full vector proof diagram. No branch is hidden or collapsed. */
-.logical-map { min-width:0; max-width:100%; color:#244a3b; }
+/* Current-only, top-down proof maps. Mathematical edition assets stay frozen. */
+.logical-map { min-width:0; max-width:100%; color:#283f32; }
 .logical-map * { box-sizing:border-box; }
-.logical-map a { color:#25634f; text-underline-offset:.2em; }
-.logical-map a:focus-visible,.logical-map button:focus-visible,.logical-map [tabindex]:focus-visible { outline:2px solid #a3592f; outline-offset:4px; }
-.logic-reading-guide { border:1px solid #bdcbbd; padding:20px 22px; background:#f0f4eb; }
-.logic-reading-guide p { max-width:90ch; margin:0; font-size:.95rem; line-height:1.7; }
-.logic-reading-guide .logic-counts { font-size:.8rem; margin-top:8px; font-weight:600; }
-.logic-diagram-key { display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:16px; font-size:.77rem; line-height:1.6; }
-.logic-diagram-key > span { max-width:100%; }
+.logical-map a { color:#315e50; text-underline-offset:.2em; }
+.logical-map a:focus-visible,.logical-map button:focus-visible,.logical-map [tabindex]:focus-visible,.logical-map summary:focus-visible { outline:2px solid #a3592f; outline-offset:4px; }
+.logic-reading-guide { border:1px solid #c6d2c1; border-radius:12px; padding:24px 26px; background:#f2f5ec; }
+.logic-reading-guide h2 { font:500 1.35rem/1.4 var(--serif,Georgia,serif); margin:0 0 12px; }
+.logic-reading-guide p { max-width:90ch; margin:0; font-size:.93rem; line-height:1.75; }
+.logic-diagram-key { display:flex; flex-wrap:wrap; gap:10px 23px; margin:17px 0; font-size:.79rem; line-height:1.65; }
 .logic-diagram-key b { margin-right:5px; }
-.logic-rule-key { color:#507aa3; }
-.logic-context-key { color:#697476; }
-.logic-reading-guide .logic-scope-note { margin-top:15px; font-size:.8rem; color:#526359; }
-.logic-quick-nav { margin:22px 0 16px; }
-.logic-quick-nav ul { display:flex; flex-wrap:wrap; gap:10px 23px; list-style:none; padding:0; margin:0; }
-.logic-quick-nav a { display:inline-block; padding:5px 0; font-size:.86rem; font-weight:600; }
-.logic-diagram-tools { position:sticky; top:0; z-index:4; display:flex; align-items:center; flex-wrap:wrap; gap:15px 25px; padding:14px 8px; border-block:1px solid #c9d4c6; background:#fbfcf8; }
-.logic-diagram-tools > div { display:flex; align-items:center; gap:8px; }
+.logic-open-key { color:#76518c; }
+.logic-blocked-key { color:#9a4b30; }
+.logic-context-key { color:#64757c; }
+.logic-status-key { display:flex; flex-wrap:wrap; gap:7px; margin:14px 0; }
+.logic-status { display:inline-flex; align-items:center; padding:3px 8px; border:1px solid #bac8b8; border-radius:4px; background:#f4f6f2; color:#52665a; font:600 .69rem/1.5 var(--sans,Arial,sans-serif); }
+.logic-status-proved,.logic-status-published { color:#315e50; background:#eef4ec; border-color:#b0c3ad; }
+.logic-status-conditional { color:#285e87; background:#edf3f8; border-color:#b4c9d8; }
+.logic-status-hypothesis { color:#79602f; background:#faf5e8; border-color:#d7c7a1; }
+.logic-status-open,.logic-status-draft { color:#76518c; background:#f4eff8; border-color:#cdbbd8; }
+.logic-reading-guide .logic-scope-note { margin-top:12px; font-size:.81rem; color:#596a5c; }
+.logic-guide-footer { display:flex; align-items:baseline; flex-wrap:wrap; gap:12px 24px; border-top:1px solid #d0dac9; padding-top:15px; margin-top:18px; }
+.logic-guide-footer .logic-counts,.logic-guide-footer a { font-size:.77rem; line-height:1.7; }
+.logic-layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:32px; align-items:start; margin-top:36px; }
+.logic-quick-nav { position:sticky; top:22px; max-height:calc(100vh - 55px); overflow:auto; padding:0 14px 12px 0; scrollbar-width:thin; }
+.logic-quick-nav h2 { font:600 .75rem/1.5 var(--sans,Arial,sans-serif); text-transform:uppercase; letter-spacing:.09em; color:#6a7b6c; margin:3px 0 14px; }
+.logic-quick-nav ol { list-style:none; margin:0; padding:0; border-top:1px solid #d5dece; }
+.logic-quick-nav li { border-bottom:1px solid #d5dece; }
+.logic-quick-nav a { display:grid; grid-template-columns:24px minmax(0,1fr); gap:8px; padding:13px 3px; text-decoration:none; font-size:.8rem; line-height:1.55; }
+.logic-quick-nav a:hover { background:#edf3e9; }
+.logic-quick-nav a > span { color:#7c8c7d; font-size:.69rem; padding-top:2px; font-variant-numeric:tabular-nums; }
+.logic-panels,.logic-panel { min-width:0; }
+.logic-panel { margin:0 0 55px; padding-top:4px; scroll-margin-top:25px; }
+.logic-panel + .logic-panel { border-top:1px solid #b8c9b4; padding-top:32px; }
+.logic-panel-header .logic-panel-number { margin:0 0 9px; color:#71816f; font:600 .7rem/1.5 var(--sans,Arial,sans-serif); letter-spacing:.12em; }
+.logic-panel-header h3 { margin:0 0 14px; color:#263f30; font:500 clamp(1.5rem,2.6vw,1.95rem)/1.27 var(--serif,Georgia,serif); letter-spacing:-.015em; }
+.logic-panel-header > p:last-child { margin:0; max-width:85ch; font-size:.94rem; line-height:1.8; color:#546454; }
+.logic-panel-scope { font-size:.85rem; line-height:1.75; margin:18px 0; padding-left:13px; border-left:2px solid #b7c7ad; color:#5a6a59; }
+.logic-panel-scope strong { font-weight:600; }
+.logic-figure { margin:22px 0 28px; }
+.logic-figure figcaption { font-size:.73rem; font-weight:600; color:#6d7e68; letter-spacing:.035em; padding:0 0 10px; }
+.logic-diagram-tools { display:flex; align-items:center; flex-wrap:wrap; gap:12px 20px; padding:10px 12px; border:1px solid #cbd6c3; border-radius:10px 10px 0 0; background:#f0f4e9; }
+.logic-diagram-tools > div { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
 .logic-diagram-tools > div[hidden] { display:none; }
-.logic-diagram-tools button { min-width:44px; min-height:44px; padding:7px 13px; border:1px solid #98b0a0; border-radius:4px; color:#244c3c; background:#fbfcf8; font-size:1rem; cursor:pointer; }
-.logic-diagram-tools output { min-width:55px; text-align:center; font-size:.85rem; }
-.logic-diagram-tools > a { font-size:.85rem; }
-.logic-pan-hint { margin:12px 0; color:#607266; font-size:.8rem; line-height:1.6; }
-.logic-diagram-scroll { overflow-x:auto; overflow-y:clip; width:100%; max-width:100%; border:1px solid #c4d0c0; background:#fbfcf8; scroll-padding:20px; }
-.complete-logic-svg { display:block; width:calc(1120px * var(--diagram-zoom,1)); min-width:980px; max-width:none; height:auto; }
+.logic-diagram-tools:has(> div[hidden]) { display:none; }
+.logic-diagram-tools button { min-width:44px; min-height:44px; padding:7px 12px; border:1px solid #b4c5a9; border-radius:5px; color:#31553d; background:#fbfcf7; font:500 .77rem/1.4 var(--sans,Arial,sans-serif); cursor:pointer; }
+.logic-diagram-tools button:hover,.logic-diagram-tools button[aria-pressed=true] { background:#dce9d5; border-color:#79946b; }
+.logic-diagram-tools output { min-width:49px; text-align:center; font:500 .75rem/1.5 var(--sans,Arial,sans-serif); color:#5d7255; }
+.logic-diagram-scroll { overflow:auto; width:100%; max-width:100%; max-height:850px; padding:0; border:1px solid #cbd6c3; border-top:0; border-radius:0 0 10px 10px; background:#fbfcf7; scrollbar-width:thin; scrollbar-gutter:stable; scroll-padding:24px; }
+.complete-logic-svg { display:block; max-width:none; margin:0 auto; }
 .complete-logic-svg text { letter-spacing:normal; }
 .complete-logic-svg a { text-decoration:none; }
 .complete-logic-svg a:hover text { text-decoration:underline; }
-.complete-logic-svg .logic-svg-node:target > a > rect,
-.complete-logic-svg .logic-svg-node:target > rect { stroke:#b76524; stroke-width:4; }
-.complete-logic-svg [id] { scroll-margin-top:100px; }
-@media (min-width:1200px) { .research-map { max-width:1200px; } }
+.complete-logic-svg [id] { scroll-margin:35px; }
+.logic-pan-hint { color:#73806e; font-size:.73rem; line-height:1.65; margin:11px 3px 0; }
+.logic-connections h4 { font:500 1.22rem/1.4 var(--serif,Georgia,serif); margin:0 0 9px; }
+.logic-connections > p { font-size:.81rem; line-height:1.7; color:#6b7864; margin:0 0 17px; }
+.logic-connection,.logic-node-detail { margin:9px 0; border:1px solid #cbd6c3; border-radius:8px; background:#fcfdf8; overflow-wrap:anywhere; }
+.logical-map details > summary { display:flex; align-items:center; gap:11px; padding:15px 17px; list-style:none; cursor:pointer; font-size:.86rem; line-height:1.6; }
+.logical-map details > summary::-webkit-details-marker { display:none; }
+.logical-map details > summary::after { content:'+'; font-size:1.1rem; margin-left:auto; padding-left:6px; color:#7b8a70; }
+.logical-map details[open] > summary::after { content:'−'; }
+.logical-map details[open] > summary { border-bottom:1px solid #dae2d4; background:#f2f6ed; border-radius:8px 8px 0 0; }
+.logic-connection-number { align-self:flex-start; flex:none; border:1px solid #becdb5; border-radius:5px; background:#f2f5eb; color:#617455; padding:2px 7px; font-size:.71rem; font-variant-numeric:tabular-nums; }
+.logic-connection-open > summary b { color:#76518c; }
+.logic-connection-blocked > summary b { color:#9a4b30; }
+.logic-detail-body { padding:8px 22px 22px; font-size:.88rem; line-height:1.85; color:#465942; }
+.logic-detail-body h5 { font:600 .77rem/1.6 var(--sans,Arial,sans-serif); color:#6a7d60; margin:23px 0 10px; }
+.logic-detail-body p { margin:8px 0 12px; }
+.logic-detail-meta { font-size:.76rem; color:#6e7e64; }
+.logic-premise-list,.logic-rule-list { margin:0; padding:0 0 0 22px; }
+.logic-premise-list > li,.logic-rule-list > li { padding:2px 0 14px; }
+.logic-node-reference { display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 10px; }
+.logic-reference-title { font-weight:600; }
+.logic-node-reference code,.logic-detail-meta code { font-size:.69rem; color:#7b8773; overflow-wrap:anywhere; }
+.logic-node-reference p { flex-basis:100%; margin:4px 0; }
+.logic-detail-link { display:inline-flex; align-items:center; min-height:34px; font-size:.77rem; }
+.logic-deduction { padding:0 15px 2px; border-left:2px solid #b5c9a6; background:#f4f7ef; }
+.logic-deduction h5 { padding-top:12px; }
+.logic-source-links { padding-left:20px; font-size:.82rem; }
+.logic-source-links li { margin:6px 0; }
+.logic-node-register { margin:22px 0 16px; border-block:1px solid #d0dac8; }
+.logic-node-register > summary { font-size:.81rem!important; color:#5c7051; }
+.logic-node-register > div { padding:8px 0; }
+.logic-node-detail > summary .logic-status { flex:none; }
+.logic-back-link { display:inline-flex; align-items:center; min-height:36px; font-size:.75rem; margin-top:6px; }
+.logical-map [data-logic-detail]:target { outline:2px solid #aa824d; outline-offset:3px; }
+.logical-map.logic-wide .logic-layout { grid-template-columns:minmax(0,1fr); }
+.logical-map.logic-wide .logic-quick-nav { display:none; }
+.research-map:has(.logical-map.logic-wide) { max-width:1600px; }
+@media (min-width:1100px) { .research-map { max-width:1320px; } }
+@media (max-width:960px) {
+  .logic-layout { grid-template-columns:minmax(0,1fr); gap:26px; }
+  .logic-quick-nav { position:static; max-height:240px; padding-right:5px; }
+  .logic-quick-nav ol { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 18px; }
+}
 @media (max-width:600px) {
-  .logic-reading-guide { padding:16px; }
-  .logic-diagram-key { display:grid; gap:8px; }
-  .logic-diagram-tools { align-items:flex-start; }
-  .complete-logic-svg [id] { scroll-margin-top:150px; }
+  .logic-reading-guide { padding:18px; border-radius:8px; }
+  .logic-diagram-key { gap:9px 13px; }
+  .logic-quick-nav ol { grid-template-columns:minmax(0,1fr); }
+  .logic-panel { margin-bottom:38px; }
+  .logic-panel-header h3 { font-size:1.55rem; }
+  .logic-diagram-tools { padding:8px; }
+  .logic-diagram-tools button { padding:7px 9px; }
+  .logic-diagram-scroll { max-height:720px; }
+  .logic-detail-body { padding:6px 15px 18px; }
+  .logical-map details > summary { padding:13px 12px; align-items:flex-start; }
+  .logic-node-detail > summary { flex-wrap:wrap; }
+  .logic-node-detail > summary .logic-status { max-width:100%; }
 }
 @media print {
-  .logic-diagram-tools,.logic-quick-nav,.logic-pan-hint { display:none; }
-  .logic-diagram-scroll { overflow:visible; border:0; }
-  .complete-logic-svg { width:100%; min-width:0; }
+  .logic-diagram-tools,.logic-quick-nav,.logic-pan-hint,.logic-back-link { display:none; }
+  .logic-layout { display:block; }
+  .logic-diagram-scroll { overflow:visible; max-height:none; padding:0; border:0; }
+  .complete-logic-svg { width:100%!important; height:auto!important; }
+  .logic-figure { break-inside:avoid; }
 }
