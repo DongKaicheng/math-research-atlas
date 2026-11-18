@@ -64,6 +64,15 @@ well as production builds:
 5. Upload exactly one of those checked artifacts. Pull Requests never upload
    or deploy either artifact.
 
+Before an OpenMath deployment, the workflow reads the repository's existing
+Pages site with the official `actions/configure-pages@v5` action using
+`pages: read` and explicit `enablement: 'false'`. It must report host
+`openmath-atlas.org` at the domain root. This read-only preflight never enables
+Pages or changes the domain, HTTPS, DNS, or repository administration settings.
+It also runs for same-repository PRs so the binding can be checked before merge.
+Fork PRs skip this account-level read and still run both local artifact checks;
+they cannot upload or deploy.
+
 The tests that explicitly exercise the old path are not silently weakened to
 make the root build pass. The additional root-domain checks validate its own
 navigation and artifacts; neither test group is an independent mathematical
