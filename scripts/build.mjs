@@ -118,12 +118,17 @@ function guideMarkdown(source=''){
 }
 
 function loadPage(title,description,content,p,extraHead='',extraScripts=''){
-  const pageTitle=title===brand?brand+' — Open mathematics':title+' | '+brand;
+  const pageTitle=title===brand?(brand==='OpenMath'?'OpenMath | Arithmetic and Non-Archimedean Geometry':brand+' — Open mathematics'):title+' | '+brand;
+  const socialMetadata=`<meta property="og:type" content="website"><meta property="og:title" content="${esc(pageTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical(p))}"><meta property="og:site_name" content="${esc(brand)}"><meta name="twitter:card" content="summary">`;
+  const websiteSchema=p==='/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':canonical('/')+'#website',name:'OpenMath',url:canonical('/'),description, inLanguage:'en'})+'</script>':'';
+  const collectionSchema=p==='/projects/foundations/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,url:canonical(p),description,isPartOf:{'@id':canonical('/')+'#website'},about:['Non-Archimedean geometry','Berkovich analytic spaces','Formal models','Tropical geometry','Skeleta']})+'</script>':'';
   return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(pageTitle)}</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical(p))}">
+${socialMetadata}
+${websiteSchema}${collectionSchema}
 <link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml">
 <link rel="stylesheet" href="${url('/assets/style.css')}">
 <link rel="stylesheet" href="${url('/assets/github-extra.css')}">
@@ -218,6 +223,7 @@ const featured=`<main id="main-content" class="simple-home">
 <section class="simple-hero wrap">
 <h1>${esc(brand)}</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
+<p class="simple-statement" style="font-size:1rem;max-width:54rem">Explore Berkovich and non-Archimedean geometry, Bedford–Taylor pluripotential theory and positive currents, and Beilinson–Bloch heights and Arakelov geometry. Each research programme links its conjectures, proof dependencies, current status, and public references.</p>
 <nav class="simple-quick-links" aria-label="About and feedback">
 <a href="${url('/about/')}"><span>About this site</span>${externalArrow}</a>
 <a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span>${externalArrow}</a>
@@ -233,7 +239,7 @@ const featured=`<main id="main-content" class="simple-home">
 </section>
 <section class="simple-agent-bridge wrap" aria-labelledby="home-agents-title"><div><p class="eyebrow">TOOLS FOR MATHEMATICAL RESEARCH</p><h2 id="home-agents-title">Three updated research agents</h2><p>Download the mathematical maintainer, research publisher and writing editor. The latest packages include source-linked logical diagrams: joint premises, alternative proofs, open steps and readable mobile views.</p></div><a class="button button-dark" href="${url('/ai-and-math/')}">Explore AI &amp; Math ${externalArrow}</a></section>
 </main>`;
-await save('/',loadPage(brand,'Open mathematical theory, research programmes, proofs, and collaboration.',featured,'/'));
+await save('/',loadPage(brand,'OpenMath is an open research atlas for arithmetic and Arakelov geometry, Berkovich spaces, non-Archimedean Bedford–Taylor theory, Beilinson–Bloch heights, proof maps and AI for mathematics.',featured,'/'));
 
 const agentCards=agentDetails.map(agent=>{
   const info=agentManifest.agents[agent.id];
@@ -296,7 +302,8 @@ for(const bundle of bundles){
   ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
-  await save(route,loadPage(p.title,p.summary,content,route,'',legacyRedirect));
+  const searchSummary=p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
+  await save(route,loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;
@@ -420,10 +427,13 @@ const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
-const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+
- [...new Set(routes.filter(p=>p!=='/search/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))].map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
-await writeFile(path.join(output,'sitemap.xml'),sitemap);
-await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`);
+const coreRoutes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
+const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))];
+for(const route of coreRoutes)if(!indexableRoutes.includes(route))throw Error('Core Search Console entry is not indexable: '+route);
+const sitemapXML=paths=>'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+paths.map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
+await writeFile(path.join(output,'sitemap.xml'),sitemapXML([...coreRoutes,...indexableRoutes.filter(p=>!coreRoutes.includes(p))]));
+await writeFile(path.join(output,'sitemap-core.xml'),sitemapXML(coreRoutes));
+await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\nSitemap: ${canonical('/sitemap-core.xml')}\n`);
 const updateItems=bundles.filter(b=>b.revision>0).map(b=>`<item><title>${xml(b.project.title)}</title><link>${xml(canonical('/projects/'+b.project.id+'/'))}</link><description>${xml(b.changeSummary)}</description><pubDate>${new Date(b.publishedAt).toUTCString()}</pubDate></item>`).join('');
 await writeFile(path.join(output,'feed.xml'),`<?xml version="1.0"?><rss version="2.0"><channel><title>${xml(brand)} updates</title><link>${xml(canonical('/'))}</link><description>Changes to published mathematical research</description>${updateItems}</channel></rss>`);
 await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html'));
