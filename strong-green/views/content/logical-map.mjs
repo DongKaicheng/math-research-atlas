@@ -1,10 +1,16 @@
 // Proof-reading model. Gates are checked against the cited statements, not
 // inferred from the record dependency arrays. Intermediate properties are
 // reading nodes, never new permanent theorem records.
+// Tree contexts supply definitions or scope; they are not logical premises.
+// Gate rules are separately displayed registered inference/support records.
+// Their source status is independent of the status of the conclusion node.
 const source = (href, label) => ({ href, label });
 const rec = (record, note, extra = {}) => ({ record, note, ...extra });
 const node = (title, href, status, note, gate, id) => ({ title, href, status, note, ...(gate ? { gate } : {}), ...(id ? { id } : {}) });
-const gate = (kind, label, explanation, sources, children) => ({ kind, label, explanation, sources, children });
+const gate = (kind, label, explanation, sources, children, ruleNotes = {}) => ({
+  kind, label, explanation, sources, children,
+  ...(Object.keys(ruleNotes).length ? { rules: Object.keys(ruleNotes), ruleNotes } : {}),
+});
 const arithmetic = (anchor, label) => source('/papers/arithmetic-reductions#' + anchor, label);
 const determinant = (anchor, label) => source('/papers/determinant-metrics#' + anchor, label);
 const direct = (anchor, label) => source('/papers/green-height-route#' + anchor, label);
@@ -83,9 +89,13 @@ const fixedFieldNorthcott = () => node('Northcott over one fixed number field E'
                   rec('OPEN-SCALAR-DETECTION', 'Require scalar-extended injective detectors at EVERY rational prime p.'),
                   rec('R2-R3', 'Choose full ℤₚ-lattices Mₚ in the finite-dimensional targets containing the actual integral regulator images. These are local bounds.'),
                   node('Almost-everywhere saturation relative to ONE full rational lattice', '/papers/arithmetic-reductions#thm:all-prime', 'open', 'For almost all p, Dₚ⁻¹(Mₚ)=Λ₀⊗ℤₚ for that same Λ₀. This is additional to local finite generation.'),
-                ]),
+                ], {
+                  'R2-N4': 'Inference rule under finite rational dimension, injectivity at every prime, full local lattices and the stated almost-everywhere equality with ONE rational lattice. It does not provide that equality.',
+                }),
             }),
-          ])),
+          ], {
+            'R2-N3': 'The finite-rank lattice equivalence justifies this sufficient criterion. Its proved status belongs to the equivalence, not to real positivity or the existence of the required geometric lattice.',
+          })),
       node('Real positivity AND a genuine height gap AND a finite Kummer quotient', '/entries/R2-N5', 'conditional',
         'This descent criterion does not assume finite rank in advance; finite generation and Northcott are conclusions.',
         gate('all', 'ALL three weak Mordell–Weil inputs',
@@ -100,7 +110,9 @@ const fixedFieldNorthcott = () => node('Northcott over one fixed number field E'
                   rec('OPEN-SCALAR-DETECTION', 'Injectivity after extension of scalars to ℚₚ, not merely injectivity over ℚ.'),
                   rec('R2-R3', 'Use the actual integral regulator bound at that prime.'),
                 ])),
-          ])),
+          ], {
+            'R2-N5': 'The descent theorem takes real positivity, a finite Kummer quotient and a genuine uniform positive gap as premises. Finite generation is its conclusion; finite rank is not assumed in advance.',
+          })),
     ]));
 
 export const logicalTrees = [
@@ -108,6 +120,9 @@ export const logicalTrees = [
     id: 'logic-global', navTitle: 'Global height target', title: 'From a constructed pairing to the full global target',
     summary: 'A complete construction route + functoriality + normalization + comparison ⇒ the full height target.',
     scope: 'Fix a number field F, a smooth projective geometrically integral X/F and complementary r+s=dim(X)+1. The universal conjecture requires the same properties for every required variety and finite extension.',
+    contexts: [
+      rec('BB-HEIGHT-DATA', 'Defines the complete H1–H4 interface. The construction and comparison gates must establish these properties on the required domains; the definition does not establish them.'),
+    ],
     root: rec('BB-GLOBAL', 'The root is the full target, not merely the existence of a bilinear pairing.', {
       gate: gate('all', 'ALL requirements of the full target',
         'This separates the requirements in the target statement. A construction theorem must be supplemented by the additional comparison and functoriality inputs on its own domain.',
@@ -123,6 +138,9 @@ export const logicalTrees = [
     id: 'logic-green', navTitle: 'Local Green forms', title: 'How an exact-support Green form is obtained',
     summary: 'A curved Green pair + a global actual primitive ⇒ a strong Green form for the same cycle.',
     scope: 'Use BB-LOCAL-DATA: X/K is smooth projective geometrically integral, K/ℚₚ is the original finite extension, and Z is a rational codimension-r cycle with 1≤r≤dim(X). Every conclusion keeps the prescribed complement and full actual tests.',
+    contexts: [
+      rec('BB-LOCAL-DATA', 'Fixes the original absolute value, ordinary actual form sheaf, prescribed cycle coefficients and exact complement, full actual test space, integrability and native finite degrees.'),
+    ],
     root: node('A strong zero-curvature Green form for the prescribed Z', '/entries/BB-GREEN-CORRECTION', 'conditional',
       'The correction is γ=G−Ψ on the original complement. This is a sufficient construction; an arbitrary strong Green form need not arise from the selected obstruction map.',
       gate('all', 'ALL inputs of curvature correction',
@@ -149,19 +167,26 @@ export const logicalTrees = [
                     'Use abelian obstruction vanishing and the actual Chow identity for the diagonal, then descend with the full finite degree. A numerical or cohomological factorization is not enough.',
                     [construction('thm:main-abelian', 'Theorem B'), construction('def:construction-retraction', 'Chow retraction and degree shifts')], [
                       node('The analytic packages A1, A2, N and C', '/papers/green-constructions#hyp:construction-calculus', 'hypothesis', 'These include the stated obstruction, support, numerical descent and correspondence compatibilities; R is not an extra premise of this route.'),
-                      rec('BB-ABELIAN-STAGE', 'Retain the Künnemann semistable numerical input and the finite numerical-descent hypotheses.'),
+                      rec('BB-ABELIAN-STAGE', 'The abelian conclusion retains both the geometric certificate and the draft analytic descent input.', {
+                        gate: gate('all', 'BOTH the abelian numerical certificate and finite numerical descent',
+                          'After finite extension, the semistable abelian model produces a certificate for the pullback of the given geometrically homologically trivial class. Finite numerical descent returns its obstruction to zero over the original field.',
+                          [construction('thm:kunnemann-local', 'Local semistable model input'), construction('lem:abelian-lift', 'The abelian numerical certificate'), construction('thm:abelian-G', 'Conditional abelian conclusion')], [
+                            node('Künnemann’s semistable input and the abelian numerical certificate', '/papers/green-constructions#lem:abelian-lift', 'hypothesis', 'For the prescribed homologically trivial class on A, retain the semistable component exactness, cycle-class injectivity and the numerical vanishing on every vertical testing cycle.'),
+                            rec('BB-FINITE-NUMERICAL-DESCENT', 'Assume the proposed analytic descent theorem for the finite map A_F→A. Retain the numerical detector, generic-Chow-zero primitive, trace on the original scalar–curvature generators, and full degree [F:K]. A proper alteration alone is not this finite map.'),
+                          ]),
+                      }),
                       node('An actual abelian Chow retraction after finite extension', '/papers/green-constructions#def:construction-retraction', 'hypothesis', 'The rational Chow identity uses opposite Tate shifts. Z must be geometrically homologically trivial.', undefined, 'logic-chow-retraction'),
                     ]),
                   links: [source('/entries/BB-CURVE-CHOW-DIAGONAL', 'Proved diagonal for pointed products'), source('/entries/BB-CURVE-PRODUCT-DRAFT', 'Product application: draft, with regular-model premises')],
                 }),
-                node('A source-period criterion forces Ob([Z])=0', '/entries/BB-RESIDUAL-PERIODS', 'open',
-                  'Only the image of the original Chow source needs to vanish; the entire obstruction space need not vanish.',
-                  gate('all', 'BOTH detection and vanishing',
+                rec('BB-RESIDUAL-PERIODS', 'Only the image of the original Chow source needs to vanish; the entire obstruction space need not vanish. The general record concerns that whole source; this local branch applies the criterion to the fixed class [Z].', {
+                  gate: gate('all', 'BOTH detection and vanishing',
                     'A sufficient detector comparison is intersection of period kernels contained in the obstruction kernel. Equality of kernels is a stronger statement.',
                     [obstruction('obroute:period-criterion', 'Period criterion')], [
                       node('Comparison with the ORIGINAL actual obstruction', '/papers/obstruction-height-route#obroute:period-criterion', 'open', 'First identify [ΩZ]=Ob([Z]) for the chosen Green pair. Fix the period functionals and prove that their joint vanishing detects this Ob on the specified Chow source.'),
-                      node('All selected periods vanish on the required classes', '/entries/BB-RESIDUAL-PERIODS', 'open', 'Finite-dimensionality of a cohomology group alone does not prove this vanishing.'),
-                    ])),
+                      node('All selected periods vanish on the required classes', '/entries/BB-RESIDUAL-PERIODS', 'open', 'The general target requires this for EVERY original homologically trivial class; one calculation only treats that class. Finite-dimensionality of a cohomology group alone proves neither assertion.'),
+                    ]),
+                }),
                 rec('BB-TROPICAL-INTERFACE', 'An alternative construction of Ψ, not a consequence of topological inverse limits alone.', {
                   gate: gate('open', 'OPEN realization bridge',
                     'A primitive in a tropical complex becomes usable only after a comparison into global actual forms with every listed compatibility.',
@@ -172,7 +197,9 @@ export const logicalTrees = [
                 }),
               ])),
           node('Actual Stokes against every complementary test', '/entries/BB-GREEN-CORRECTION', 'hypothesis', 'The primitive is global and belongs to the actual form space, not merely to a larger current space.'),
-        ])),
+        ], {
+          'BB-GREEN-CORRECTION': 'Conditional curvature-correction rule: the prescribed curved pair and a global actual primitive, with actual Stokes, give the strong identity on the SAME complement and every stated test.',
+        })),
     related: [
       rec('BB-CURVE-PRODUCT-DRAFT', 'The product-of-curves application retains its draft status, although its Chow-diagonal ingredient has an internal proof.', {
         gate: gate('all', 'ALL premises of the model-sensitive application',
@@ -183,12 +210,28 @@ export const logicalTrees = [
             rec('BB-REGULAR-CHOW-CRITERION', 'Retain its numerical detector, finite numerical descent and supported correspondence-transfer hypotheses.'),
           ]),
       }),
+      rec('BB-ANALYTIC-INTERFACE', 'The open verification problem for the actual-form construction. These draft ingredients are obligations to establish, not a completed proof package.', {
+        id: 'logic-analytic-interface',
+        gate: gate('open', 'OPEN analytic verification obligations',
+          'Verify the numerical detector and the scalar–curvature trace with their actual relations, then the supported and Chow-invariant constructions. This verification relation does not promote any draft status or replace the stronger operations used in global height assembly.',
+          [programme('sec:programme-analytic', 'Prescribed-cycle, trace and residue obligations'), source('/entries/BB-ANALYTIC-INTERFACE', 'The exact analytic question')], [
+            rec('BB-MODEL-DETECTOR', 'Draft inference on an integral projective flat model: zero operational degree against EVERY vertical r-cycle gives strict zero actual model curvature. The vector-bundle statement also needs the stated flag-bundle descent; smooth or reduced special fibre is not assumed.'),
+            rec('BB-RESTRICTED-TRACE', 'Draft trace for finite dominant maps of normal integral separated varieties, only on the actual scalar–curvature module generated by u₀Du₁⋯Duₖ. Verify presentation independence, ordinary locality, the required differential identities, full native degree and all-test adjunction. This is not a trace of arbitrary actual forms along a proper map.'),
+            rec('BB-SUPPORTED-GREEN-PAIR', 'Verify the supported-complex residue with its lengths and rational coefficients, on the ENTIRE prescribed complement and all compact actual tests.'),
+            rec('BB-ACTUAL-OBSTRUCTION', 'Verify model and resolution independence in actual Bott–Chern cohomology, Chow invariance, and the genuine pullbacks required by A1. The selected Green curvature must represent this same obstruction.'),
+          ]),
+      }),
     ],
   },
   {
     id: 'logic-arithmetic', navTitle: 'Arithmetic equivalences', title: 'The exact arithmetic reduction for products of curves',
     summary: 'Under H1–H4: off-central vanishing + AJ injectivity + residual Northcott ⇔ the full product package.',
     scope: 'Fix the pointed products and product polarization. H1–H4 must hold on all required subproducts, source curves of correspondences and finite extensions.',
+    contexts: [
+      rec('BB-CENTRAL-DATA', 'Defines the pointed product, anchored positive integral polarization, Chow cores U, algebraic part A and quotient G. The primitive and central ranges stay fixed throughout each use.'),
+      rec('BB-HEIGHT-DATA', 'Assume H1–H4 on all involved varieties and finite extensions for conclusions involving heights. The Chow equivalence R2-L1 and the geometric projector construction do not themselves need these height axioms.'),
+      rec('BB-INTEGRAL-IMAGE', 'Defines the projected images of integral cycles and bounded-degree Northcott. Counting takes place after rational equivalence and torsion have been removed, in one geometric rational group.'),
+    ],
     root: node('Arithmetic hard Lefschetz AND primitive integral bounded-degree Northcott', '/entries/R2-L3', 'open',
       'R2-L3 proves an equivalence under the height axioms. It does not establish the three open inputs.',
       gate('iff', 'EQUIVALENT to ALL three assertions, under H1–H4',
@@ -199,7 +242,11 @@ export const logicalTrees = [
           rec('OPEN-RESIDUAL-NC', 'Bounded-height, bounded-degree finiteness for the residual INTEGRAL image.', {
             links: [source('/research-map#logic-fixed-field', 'Fixed-field criteria'), source('/research-map#logic-fields', 'The extra field-control step')],
           }),
-        ]), 'logic-product-package'),
+        ], {
+          'R2-L3': 'Main equivalence rule under H1–H4 on every required subproduct, correspondence source and finite extension. Its conditional theorem status does not resolve any of the three open inputs.',
+          'R2-L1': 'Proof ingredient: for the fixed pointed product and fixed E, off-central vanishing on ALL subproducts is equivalent to arithmetic hard Lefschetz. No height axiom is needed for this equivalence.',
+          'R2-L2': 'Proof ingredient: H1–H4 and the central Chow-block construction give the primitive sum-of-squares identity with one common denominator ∏aᵢ. Off-central vanishing is NOT a premise of that identity; it is used separately when passing to the whole product.',
+        }), 'logic-product-package'),
     related: [
       node('Central integral bounded-degree Northcott for every odd subproduct', '/entries/R2-N1', 'open',
         'The orthogonal projector separates the Néron–Tate part from the residual quotient before Northcott is tested.',
@@ -208,11 +255,17 @@ export const logicalTrees = [
           [arithmetic('thm:central-northcott', 'R2-N1: central criterion'), arithmetic('prop:central-projector', 'Projector, orthogonality and radical')], [
             rec('OPEN-AJ-KERNEL', 'Injectivity on the central algebraic part.'),
             rec('OPEN-RESIDUAL-NC', 'Finiteness on the residual integral image.'),
-          ])),
+          ], {
+            'BB-CHOW-PROJECTOR': 'Geometric construction of actual self-transpose Chow idempotents e and R after ONE fixed finite extension, valid for every further finite E. It supplies the curve-visible abelian summand independently of the height axioms.',
+            'BB-RESIDUAL-PAIRING': 'With those projectors AND H1–H4, orthogonality identifies the algebraic AJ kernel with the relevant radical and constructs the residual form on G=U/A. These are the inputs used by the central Northcott criterion.',
+            'R2-N1': 'Central Northcott equivalence rule: in the stated height setting, integral Northcott is equivalent to algebraic AJ injectivity together with residual integral Northcott. Retain the same fixed-field or bounded-degree quantifiers on both sides.',
+          })),
       rec('OPEN-REAL-POSITIVITY', 'A necessary consequence of residual Northcott on each fixed field, not an equivalent finiteness statement.', {
         gate: gate('all', 'ONE-WAY implication',
           'R2-N2 rules out real null directions from Northcott without a finite-rank hypothesis. The reverse direction still needs integral control.',
-          [arithmetic('lem:northcott-real', 'R2-N2: Northcott forces real positivity')], [rec('OPEN-RESIDUAL-NC', 'Apply the bounded-degree assertion on each fixed field.')]),
+          [arithmetic('lem:northcott-real', 'R2-N2: Northcott forces real positivity')], [rec('OPEN-RESIDUAL-NC', 'Apply the bounded-degree assertion on each fixed field.')], {
+            'R2-N2': 'Inference rule for an additive integral image spanning its rational space: finite upper height balls force positive definiteness after real scalar extension. It does not assume finite rank and has no converse without integral discreteness.',
+          }),
       }),
     ],
   },
@@ -220,15 +273,20 @@ export const logicalTrees = [
     id: 'logic-fixed-field', navTitle: 'Fixed-field Northcott', title: 'Two ways to establish fixed-field Northcott',
     summary: 'Positive height + common lattice, OR positive height + genuine gap + finite Kummer quotient.',
     scope: 'Assume H1–H4 and fix one odd central block, one finite extension E/F₀ of number fields and the projected integral image ΛG(E). Do not replace it by all rational classes.',
+    contexts: [
+      rec('BB-INTEGRAL-IMAGE', 'The group here is the image of integral cycles in the fixed residual rational quotient. Fixed-field Northcott fixes E; rational multiples with unbounded denominators are outside this target.'),
+    ],
     root: fixedFieldNorthcott(),
     related: [
-      node('A common lattice does NOT follow from separate p-adic bounds', '/entries/BB-DENOMINATOR-EXAMPLE', 'proved',
+      node('A common rational lattice for the integral image', '/entries/OPEN-INTEGRAL-LATTICE', 'open',
         'The denominator example is an abstract obstruction to an inference, not a counterexample to the geometric Northcott conjecture.',
         gate('blocked', 'INSUFFICIENT without global denominator control',
           'Even finite local modules at every prime do not supply the almost-everywhere saturation required by R2-N4.',
           [arithmetic('ex:denominators', 'The denominator obstruction')], [
             rec('R2-R3', 'Prime-by-prime local integral bounds are available, but are not a common rational lattice.'),
-          ])),
+          ], {
+            'BB-DENOMINATOR-EXAMPLE': 'Counterexample supporting the BLOCKED inference: Λ=∑ₚ(1/p)ℤ⊂ℚ has finite free local ℤₚ-modules but unbounded global denominators and arbitrarily small nonzero squared heights. This is not a counterexample to the geometric lattice conjecture.',
+          })),
       node('Finite rational dimension of the residual source over E', '/papers/arithmetic-reductions#cor:finite-rank', 'conditional',
         'This is a separate conditional reduction, not a proof of scalar detection.',
         gate('all', 'BOTH inputs, at ONE prime',
@@ -236,13 +294,18 @@ export const logicalTrees = [
           [arithmetic('cor:finite-rank', 'Finite-rank corollary'), arithmetic('prop:weight-minus-one', 'Weight −1 target theorem')], [
             rec('OPEN-SCALAR-DETECTION', 'Injectivity after tensoring with ℚₚ at one prime.'),
             rec('R2-R2', 'Finite-dimensional full rational target for the fixed field, using the residual regulator R2-R1.'),
-          ])),
+          ], {
+            'R2-R1': 'Construction used by this reduction: the actual residual projector supplies the canonical regulator G_E→H¹(E,Vₚ), independent of the curve-visible choice under the stated identification. The regulator construction alone proves neither scalar injectivity nor finite rational rank and needs no height axioms.',
+          })),
     ],
   },
   {
     id: 'logic-fields', navTitle: 'Bounded-degree Northcott', title: 'The additional step from fixed field to bounded degree',
-    summary: 'Fixed-field Northcott at every finite field + uniform class-field ramification ⇔ bounded-degree Northcott.',
+    summary: 'Fixed-field Northcott over every finite extension + uniform class-field ramification ⇔ bounded-degree Northcott.',
     scope: 'Assume H1–H4 and apply the criterion separately to EVERY odd subproduct, with the field- and Galois-invariant residual form and restriction/trace-compatible integral images. Use the minimal field of the cycle CLASS, not cohomological ramification over a fixed field.',
+    contexts: [
+      rec('BB-INTEGRAL-IMAGE', 'The same compatible projected integral images are used over all finite E. The minimal field of a rational Chow class need not already carry an integral representative of that class.'),
+    ],
     root: rec('OPEN-RESIDUAL-NC', 'The bounded-degree target needs both arithmetic finiteness and field control.', {
       gate: gate('iff', 'EQUIVALENT to BOTH requirements',
         'R2-F2 uses Hermite–Minkowski for finitely many candidate fields and R2-F1 for a bounded descent multiplier, then applies fixed-field Northcott.',
@@ -255,11 +318,14 @@ export const logicalTrees = [
                 rec('OPEN-DISCRIMINANT', 'A uniform bound in terms of height and degree gives finitely many possible discriminants at fixed bounds.'),
               ]),
           }),
-        ]),
+        ], {
+          'R2-F2': 'Ramification equivalence rule for a field- and Galois-invariant height and trace-compatible integral images. Its theorem does not establish the open ramification assertion for geometric residual classes.',
+          'R2-F1': 'Descent lemma used in the proof: for ξ represented integrally over E and class field K, [E:K]ξ lies in Λ(K), with multiplier at most the bounded field degree. It does NOT assert ξ∈Λ(K).',
+        }),
     }),
     related: [
-      node('Fixed-field estimates alone do NOT prove bounded-degree Northcott', '/papers/arithmetic-reductions#ex:quadratic-fields', 'proved',
-        'The abstract varying-quadratic-field example isolates the missing field condition.',
+      node('Bounded-degree Northcott for the residual integral image', '/entries/OPEN-RESIDUAL-NC', 'open',
+        'The abstract varying-quadratic-field example isolates a failed inference to this target. It is not a counterexample to the geometric residual Northcott conjecture.',
         gate('blocked', 'INSUFFICIENT without field control',
           'Even uniform rank, height-gap and Kummer estimates over each fixed field do not replace ramification control of the class fields.',
           [arithmetic('ex:quadratic-fields', 'Varying-field obstruction')], [
@@ -312,7 +378,11 @@ export const logicalTrees = [
 
 export function validateLogicalMap(entries, trees = logicalTrees) {
   const ids = new Set(entries.map(entry => entry.id));
+  const entryById = new Map(entries.map(entry => [entry.id, entry]));
+  const referencedRecords = new Set();
   const anchors = new Set();
+  let contextOccurrences = 0;
+  let ruleOccurrences = 0;
   const kinds = new Set(['all', 'any', 'iff', 'open', 'blocked']);
   const addAnchor = id => {
     if (anchors.has(id)) throw new Error('Repeated logical-map anchor: ' + id);
@@ -322,17 +392,36 @@ export function validateLogicalMap(entries, trees = logicalTrees) {
     if (item.id) addAnchor(item.id);
     if (item.record && !ids.has(item.record)) throw new Error('Unknown logical-map record: ' + item.record);
     if (item.record && item.status) throw new Error('A logical map must not override source status: ' + item.record);
+    if (item.record) referencedRecords.add(item.record);
     if (!item.record && (!item.title || !item.href || !item.status)) throw new Error('Incomplete logical-map property node');
     if (!item.gate) return;
     if (!kinds.has(item.gate.kind) || !item.gate.children?.length || !item.gate.explanation || !item.gate.sources?.length) throw new Error('Incomplete logical relation for ' + (item.record || item.title));
     for (const evidence of item.gate.sources) if (!evidence.href || !evidence.label) throw new Error('Missing logical relation evidence');
+    const rules = item.gate.rules || [];
+    if (!Array.isArray(rules) || new Set(rules).size !== rules.length) throw new Error('Invalid logical-map inference rules');
+    for (const record of rules) {
+      if (!ids.has(record)) throw new Error('Unknown logical-map rule: ' + record);
+      if (!item.gate.ruleNotes?.[record]) throw new Error('Missing logical-map rule scope: ' + record);
+      referencedRecords.add(record);
+      ruleOccurrences++;
+    }
+    for (const record of Object.keys(item.gate.ruleNotes || {})) {
+      if (!rules.includes(record)) throw new Error('Rule note without a logical-map rule: ' + record);
+    }
     item.gate.children.forEach(visit);
   }
   for (const tree of trees) {
     addAnchor(tree.id);
     if (!tree.scope || !tree.summary) throw new Error('Logical tree lacks its scope: ' + tree.id);
+    for (const context of tree.contexts || []) {
+      if (!context.record || entryById.get(context.record)?.kind !== 'definition' || !context.note || context.gate) throw new Error('Invalid logical-map definition context');
+      visit(context);
+      contextOccurrences++;
+    }
     visit(tree.root);
     (tree.related || []).forEach(visit);
   }
-  return { trees: trees.length, anchors: anchors.size };
+  const missing = entries.filter(entry => !referencedRecords.has(entry.id)).map(entry => entry.id);
+  if (missing.length) throw new Error('Permanent records missing from logical-map nodes: ' + missing.join(', '));
+  return { trees: trees.length, anchors: anchors.size, records: referencedRecords.size, contexts: contextOccurrences, rules: ruleOccurrences };
 }

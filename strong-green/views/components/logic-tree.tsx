@@ -1,167 +1,153 @@
-import { entryById, label } from "@/lib/content";
+import { entries } from '@/lib/content';
+import { buildLogicScene, graphGateLabels } from '@/content/logic-layout.mjs';
 
 export type LogicLink = { href: string; label: string };
 export type LogicGate = {
-  kind: "all" | "any" | "iff" | "open" | "blocked";
-  label?: string;
-  explanation: string;
-  sources: readonly LogicLink[];
-  children: readonly LogicNode[];
+  kind: 'all' | 'any' | 'iff' | 'open' | 'blocked'; label?: string;
+  explanation: string; sources: readonly LogicLink[]; children: readonly LogicNode[];
+  rules?: readonly string[]; ruleNotes?: Record<string, string>;
 };
 export type LogicNode = {
-  id?: string;
-  title?: string;
-  record?: string;
-  href?: string;
-  status?: "open" | "conditional" | "proved" | "draft" | "hypothesis" | "published";
-  note?: string;
-  links?: readonly LogicLink[];
-  gate?: LogicGate;
+  id?: string; title?: string; record?: string; href?: string; status?: string;
+  note?: string; links?: readonly LogicLink[]; gate?: LogicGate;
 };
 export type LogicTree = {
-  id: string;
-  navTitle?: string;
-  title: string;
-  summary: string;
-  scope?: string;
-  root: LogicNode;
-  related?: readonly LogicNode[];
+  id: string; navTitle?: string; title: string; summary: string; scope?: string;
+  root: LogicNode; related?: readonly LogicNode[]; contexts?: readonly LogicNode[];
 };
 
-const gateLabels = {
-  all: { pill: "ALL", label: "All premises jointly" },
-  any: { pill: "ANY", label: "Any complete alternative" },
-  iff: { pill: "IFF", label: "Equivalent conditions" },
-  open: { pill: "OPEN", label: "Open implication" },
-  blocked: { pill: "INSUFFICIENT", label: "Insufficient premises" },
-} as const;
-const nodeStatusLabels = {
-  open: "Open", conditional: "Conditional", proved: "Internal argument available",
-  draft: "Draft", hypothesis: "Hypothesis", published: "Published result",
-} as const;
+const colors: Record<string, string> = {
+  all: '#32624d', any: '#2c6279', iff: '#755692', open: '#a27013', blocked: '#ae4539',
+  rule: '#507aa3', context: '#808a8c', input: '#526b5e', bundle: '#526b5e',
+};
+const roleNames: Record<string, string> = {
+  conclusion: 'CONCLUSION / TARGET', premise: 'PREMISE', rule: 'RULE / SUPPORT',
+  context: 'SCOPE / DEFINITION', 'unreached target': 'TARGET NOT REACHED BY THESE INPUTS',
+};
 
-function Links({ links, kind = "Sources and proof" }: { links?: readonly LogicLink[]; kind?: string }) {
-  if (!links?.length) return null;
-  return <ul className="logic-links" aria-label={kind}>{links.map((link, index) =>
-    <li key={`${link.href}-${index}`}><a href={link.href}>{link.label}</a></li>
-  )}</ul>;
+function Lines({ lines, x, y, step = 20, size = 14, color = '#3f514a', serif = false, weight = 400 }: any) {
+  return <text x={x} y={y} fill={color} fontSize={size} fontFamily={serif ? 'Georgia, serif' : 'Arial, sans-serif'} fontWeight={weight}>
+    {lines.map((line: string, index: number) => <tspan key={index} x={x} dy={index ? step : 0}>{line}</tspan>)}
+  </text>;
 }
 
-function GatePill({ kind }: { kind: LogicGate["kind"] }) {
-  return <span className={`logic-gate-pill logic-gate-pill-${kind}`}>{gateLabels[kind].pill}</span>;
+function DiagramBox({ item }: { item: any }) {
+  const { x, y, width, height, role } = item;
+  const support = role === 'rule', context = role === 'context';
+  const stroke = support ? '#83a2bf' : context ? '#a2abad' : item.status === 'open' ? '#b9a273' : '#6b8d7b';
+  const fill = support ? '#edf3f9' : context ? '#f0f2f2' : role === 'conclusion' ? '#eaf2e9' : '#fffefb';
+  const titleY = y + 52;
+  const noteY = titleY + item.titleLines.length * 25 + 5;
+  let linksY = noteY + item.noteLines.length * 20 + 4;
+  const contents = <>
+    <rect x={x} y={y} width={width} height={height} rx={context ? 2 : 9} fill={fill} stroke={stroke} strokeWidth={role === 'conclusion' ? 2.3 : 1.5} />
+    <text x={x + 17} y={y + 23} fill={support ? '#436787' : '#52685c'} fontFamily="Arial, sans-serif" fontSize={10.5} fontWeight={700}>
+      {roleNames[role]}{item.record ? ' · ' + item.record : ''}{item.statusLabel ? ' · ' + item.statusLabel : ''}
+    </text>
+    <Lines lines={item.titleLines} x={x + 17} y={titleY} step={25} size={19} color="#1d4d3a" serif />
+    {item.noteLines.length > 0 && <Lines lines={item.noteLines} x={x + 17} y={noteY} />}
+  </>;
+  return <g id={item.id} data-logic-node="" data-logic-role={role} data-logic-record={item.record}
+    data-logic-status={item.status} className="logic-svg-node" aria-label={`${roleNames[role]}: ${item.title}. ${item.statusLabel}`}>
+    {item.href ? <a href={item.href} aria-label={`Read ${item.title}`} className="logic-svg-link">{contents}</a> : contents}
+    {item.links.map((link: any, index: number) => {
+      const linkY = linksY;
+      linksY += link.lines.length * 19 + 7;
+      return <a key={index} href={link.href} className="logic-svg-source" aria-label={link.label}>
+        <Lines lines={link.lines} x={x + 17} y={linkY} step={19} size={13} color="#276f89" weight={600} />
+      </a>;
+    })}
+  </g>;
 }
 
-function Premises({ gate, depth, branch, headingBase }: { gate: LogicGate; depth: number; branch: string; headingBase: number }) {
-  const relation = gate.label ?? gateLabels[gate.kind].label;
-  return <div className="logic-branch" data-logic-kind={gate.kind}>
-    <div className="logic-stem" aria-hidden="true"><span>{gate.kind === "blocked" ? "×" : gate.kind === "iff" ? "↕" : "↑"}</span></div>
-    <div className="logic-junction" data-logic-gate={gate.kind}>
-      <div className="logic-junction-heading"><GatePill kind={gate.kind} /><strong>{relation}</strong></div>
-      <p className="logic-junction-explanation">{gate.explanation}</p>
-      <Links links={gate.sources} />
-    </div>
-    <ul className="logic-children" aria-label={relation}>{gate.children.map((child, index) =>
-      <li className="logic-child" key={`${branch}-${index}`}>
-        <Node node={child} depth={depth + 1} branch={`${branch}-${index}`} headingBase={headingBase} />
-      </li>
-    )}</ul>
-  </div>;
+function DiagramGate({ item }: { item: any }) {
+  const { cx, cy, x, kind } = item;
+  let nextY = cy - 22;
+  const relationY = nextY;
+  nextY += item.relationLines.length * 22 + 10;
+  const explanationY = nextY;
+  nextY += item.explanationLines.length * 20 + 11;
+  const path = `M ${cx} ${cy - 29} L ${cx + 32} ${cy} L ${cx} ${cy + 29} L ${cx - 32} ${cy} Z`;
+  return <g id={item.id} data-logic-gate={kind} className="logic-svg-gate" aria-label={`${item.relationLines.join(' ')}. ${item.explanationLines.join(' ')}`}>
+    <path d={path} fill={kind === 'blocked' ? '#fff0eb' : kind === 'open' ? '#fff5d9' : '#f4f6f1'} stroke={colors[kind]} strokeWidth={2.3} />
+    <text x={cx} y={cy + 4} textAnchor="middle" fontFamily="Arial, sans-serif" fontSize={kind === 'blocked' ? 12 : 11} fontWeight={700} fill={colors[kind]}>{graphGateLabels[kind]}</text>
+    <Lines lines={item.relationLines} x={x} y={relationY} step={22} size={16} color={colors[kind]} weight={700} />
+    <Lines lines={item.explanationLines} x={x} y={explanationY} />
+    {item.sources.map((link: any, index: number) => {
+      const sourceY = nextY; nextY += link.lines.length * 19 + 4;
+      return <a key={index} href={link.href} aria-label={link.label} className="logic-svg-source">
+        <Lines lines={link.lines} x={x + 12} y={sourceY} step={19} size={13} color="#276f89" weight={600} />
+      </a>;
+    })}
+  </g>;
 }
 
-function Node({ node, depth, branch, headingBase = 3 }: { node: LogicNode; depth: number; branch: string; headingBase?: number }) {
-  const record = node.record ? entryById.get(node.record) : undefined;
-  if (node.record && !record) throw new Error(`Unknown logical-map record: ${node.record}`);
-  const title = node.title ?? record?.title;
-  if (!title) throw new Error(`A logical-map node requires a title or record (${branch})`);
-  const href = node.href ?? (record ? `/entries/${record.id}` : undefined);
-  // Record statuses always come from the selected publication. A display node
-  // cannot promote a registered draft by supplying a different status.
-  const status = record?.status ?? node.status;
-  const statusText = record ? label(record) : node.status ? nodeStatusLabels[node.status] : undefined;
-  const level = headingBase + depth;
-  const Heading = level <= 3 ? "h3" : level === 4 ? "h4" : level === 5 ? "h5" : "h6";
-  const gate = node.gate;
-  const relation = gate ? gate.label ?? gateLabels[gate.kind].label : "";
-  return <div className={`logic-node${depth === 0 ? " logic-node-root" : ""}`} id={node.id} data-logic-node="" data-logic-depth={depth}>
-    <article className="logic-card" data-logic-status={status}>
-      <div className="logic-node-meta">
-        <span className="logic-node-role">{depth === 0 ? "Conclusion" : "Premise"}</span>
-        {record && <span className="logic-record-id">{record.id}</span>}
-        {statusText && <span className="logic-status">{statusText}</span>}
-      </div>
-      <Heading className="logic-node-title">{href ? <a href={href}>{title}</a> : title}</Heading>
-      {node.note && <p className="logic-node-note">{node.note}</p>}
-      <Links links={node.links} kind="Statement links" />
-    </article>
-    {gate && (depth === 0
-      ? <div data-logic-root-gate=""><Premises gate={gate} depth={depth} branch={branch} headingBase={headingBase} /></div>
-      : <details className="logic-details" data-logic-details="">
-          <summary>
-            <span className="logic-disclosure" aria-hidden="true" />
-            <GatePill kind={gate.kind} />
-            <span className="logic-details-label">{relation}</span>
-            <span className="logic-premise-count">{gate.children.length} {gate.children.length === 1 ? "premise" : "premises"}</span>
-          </summary>
-          <Premises gate={gate} depth={depth} branch={branch} headingBase={headingBase} />
-        </details>)}
-  </div>;
+export function CompleteLogicSVG({ trees }: { trees: readonly LogicTree[] }) {
+  const scene = buildLogicScene(trees, entries);
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${scene.width} ${scene.height}`} width={scene.width} height={scene.height}
+    className="complete-logic-svg" data-complete-logical-diagram="" role="group" aria-labelledby="complete-logic-title complete-logic-description">
+    <title id="complete-logic-title">Complete logical diagram: Beilinson–Bloch heights and Green forms</title>
+    <desc id="complete-logic-description">Every argument is fully drawn. Read from premises upward through ALL, ANY, IFF or OPEN junctions. Red blocked links do not assert an implication. Blue dashed links identify proof rules; grey dashed links give scope and definitions. All result boxes and proof sources are hyperlinks.</desc>
+    <style>{`.logic-svg-link:hover > rect,.logic-svg-link:focus-visible > rect{stroke:#176e92;stroke-width:3}.logic-svg-source:hover text,.logic-svg-source:focus-visible text{fill:#aa4828;text-decoration:underline}.logic-svg-node:target > a > rect{stroke:#b76524;stroke-width:4}.logic-svg-link,.logic-svg-source{cursor:pointer}`}</style>
+    <defs>{Object.entries(colors).map(([kind, color]) => <marker key={kind} id={`logic-arrow-${kind}`} markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M 0 0 L 9 4.5 L 0 9 Z" fill={color} /></marker>)}</defs>
+    <rect width={scene.width} height={scene.height} fill="#fbfcf8" />
+    {scene.sections.map((section: any) => {
+      let sy = section.y + 34;
+      const titleY = sy; sy += section.titleLines.length * 35 + 16;
+      const summaryY = sy; sy += section.summaryLines.length * 23 + 13;
+      return <g id={section.id} key={section.id} data-logic-tree="" aria-label={section.titleLines.join(' ')}>
+        <path d={`M 28 ${section.y - 12} H ${scene.width - 28}`} stroke="#7d9986" strokeWidth="2" />
+        <text x="54" y={section.y + 5} fontFamily="Arial, sans-serif" fontWeight="700" fontSize="11" fill="#597260">LOGICAL TREE {section.number}</text>
+        <Lines lines={section.titleLines} x={54} y={titleY} step={35} size={28} color="#214d3c" serif />
+        <Lines lines={section.summaryLines} x={54} y={summaryY} step={23} size={16} />
+        <Lines lines={section.scopeLines} x={54} y={sy} size={14} color="#59665f" />
+      </g>;
+    })}
+    <g className="logic-svg-edges" fill="none" strokeLinejoin="round" strokeLinecap="round">
+      {scene.edges.map((edge: any) => {
+        const effective = edge.relation || edge.kind;
+        const color = colors[effective];
+        const dashed = ['open', 'rule', 'context'].includes(effective);
+        return <g key={edge.id} data-edge-from={edge.from} data-edge-to={edge.to} data-edge-kind={edge.kind} data-edge-relation={edge.relation}>
+          <path d={edge.d} stroke={color} strokeWidth={edge.kind === 'rule' || edge.kind === 'context' ? 1.5 : 2.2}
+            strokeDasharray={dashed ? '6 5' : undefined}
+            markerEnd={edge.arrow ? `url(#logic-arrow-${effective})` : undefined}
+            markerStart={edge.both ? `url(#logic-arrow-${effective})` : undefined} />
+          {edge.blocked && <text x={Number(edge.d.split(' ')[1])} y={Number(edge.d.split(' ').at(-1)) - 3} textAnchor="middle" stroke="none" fill={color} fontSize="24" fontFamily="Arial, sans-serif">×</text>}
+        </g>;
+      })}
+    </g>
+    {scene.texts.map((item: any, index: number) => <text key={index} x={item.x} y={item.y} fontSize="10.5" fontWeight="700" fill="#6e7b75" fontFamily="Arial, sans-serif">{item.text}</text>)}
+    {scene.boxes.map((item: any) => <DiagramBox key={item.identity} item={item} />)}
+    {scene.gates.map((item: any) => <DiagramGate key={item.id} item={item} />)}
+  </svg>;
 }
 
 export function LogicForest({ trees }: { trees: readonly LogicTree[] }) {
-  // Only explicit IDs are addressable nodes. A record may occur in several
-  // arguments, so its permanent record ID is never reused as a DOM anchor.
-  const ids = new Set<string>();
-  const reserve = (id: string) => {
-    if (ids.has(id)) throw new Error(`Duplicate logical-map anchor: ${id}`);
-    ids.add(id);
-  };
-  const inspect = (node: LogicNode) => {
-    if (node.id) reserve(node.id);
-    node.gate?.children.forEach(inspect);
-  };
-  trees.forEach(tree => {
-    reserve(tree.id); reserve(`${tree.id}-heading`);
-    inspect(tree.root);
-    if (tree.related?.length) {
-      reserve(`${tree.id}-related-heading`);
-      tree.related.forEach(inspect);
-    }
-  });
+  const scene = buildLogicScene(trees, entries);
+  const covered = new Set(scene.boxes.map((item: any) => item.record).filter(Boolean));
   return <div className="logical-map" data-logic-forest="">
     <div className="logic-reading-guide">
-      <p>Read upward from the connected premises to the conclusion or target. Each junction states the relation and links to its argument.</p>
-      <dl className="logic-legend">
-        <div><dt><GatePill kind="all" /></dt><dd>Joint premises</dd></div>
-        <div><dt><GatePill kind="any" /></dt><dd>Alternative sufficient premises</dd></div>
-        <div><dt><GatePill kind="iff" /></dt><dd>Equivalent conditions</dd></div>
-        <div><dt><GatePill kind="open" /></dt><dd>Proposed, unproved bridge</dd></div>
-        <div><dt><GatePill kind="blocked" /></dt><dd>Premises do not suffice</dd></div>
-      </dl>
-      <div className="logic-controls" data-logic-controls="" hidden>
-        <button type="button" data-logic-expand="">Expand all premises</button>
-        <button type="button" data-logic-overview="">Return to overview</button>
+      <p>A complete node-and-arrow diagram, with every branch visible. Read upward from premises through a junction to its conclusion.</p>
+      <p className="logic-counts">{covered.size} permanent records · {scene.boxes.length} scoped node occurrences · {scene.gates.length} logical junctions</p>
+      <div className="logic-diagram-key" aria-label="Diagram legend">
+        <span><b>ALL</b> Joint sufficient premises</span><span><b>ANY</b> Alternative complete routes</span><span><b>IFF</b> Conclusion ⇔ the whole premise bundle</span>
+        <span><b>OPEN ⋯→</b> Unproved bridge</span><span><b>×</b> These inputs do not imply the target</span>
+        <span><b className="logic-rule-key">Blue dashed</b> Rule / supporting argument</span><span><b className="logic-context-key">Grey dashed</b> Scope / definitions, not an implication</span>
       </div>
+      <p className="logic-scope-note">Repeated records retain the quantifiers and hypotheses of each occurrence. A theorem establishing a conditional implication is separate from its still-open geometric premises.</p>
     </div>
     <nav className="logic-quick-nav" aria-label="Jump to a logical tree">
-      <p>Choose a conclusion</p>
-      <ul>{trees.map(tree => <li key={tree.id}><a href={`#${tree.id}`}>{tree.navTitle ?? tree.title}</a></li>)}</ul>
+      <ul>{trees.map(tree => <li key={tree.id}><a href={`#${tree.id}`}>{tree.navTitle || tree.title}</a></li>)}</ul>
     </nav>
-    <div className="logic-trees">{trees.map(tree =>
-      <section className="logic-tree" id={tree.id} data-logic-tree="" key={tree.id} aria-labelledby={`${tree.id}-heading`}>
-        <header className="logic-tree-heading">
-          <h2 id={`${tree.id}-heading`}>{tree.title}</h2>
-          <p className="logic-tree-summary">{tree.summary}</p>
-          {tree.scope && <p className="logic-tree-scope"><strong>Scope.</strong> {tree.scope}</p>}
-        </header>
-        <Node node={tree.root} depth={0} branch={tree.id} />
-        {Boolean(tree.related?.length) && <section className="logic-related" aria-labelledby={`${tree.id}-related-heading`}>
-          <h3 id={`${tree.id}-related-heading`}>Further deductions and limits</h3>
-          <div className="logic-related-roots">{tree.related?.map((item, index) =>
-            <Node key={`${tree.id}-related-${index}`} node={item} depth={0} headingBase={4} branch={`${tree.id}-related-${index}`} />
-          )}</div>
-        </section>}
-      </section>
-    )}</div>
+    <div className="logic-diagram-tools">
+      <div data-diagram-zoom-controls="" hidden><button type="button" data-diagram-zoom="-">−</button><output data-diagram-zoom-value="" aria-live="polite">100%</output><button type="button" data-diagram-zoom="+">+</button><button type="button" data-diagram-reset="">100%</button></div>
+      <a href="/projects/strong-green/assets/complete-logical-map.svg" download="strong-green-logical-map.svg">Download the complete linked SVG</a>
+    </div>
+    <p className="logic-pan-hint">The full diagram continues down the page. On a narrow screen, scroll sideways inside the diagram to keep the text readable.</p>
+    <div className="logic-diagram-scroll" data-diagram-scroll="" tabIndex={0} role="region" aria-label="Complete logical diagram; horizontally scrollable on narrow screens">
+      <CompleteLogicSVG trees={trees} />
+    </div>
   </div>;
 }
 

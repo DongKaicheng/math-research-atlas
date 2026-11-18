@@ -2,7 +2,7 @@
 
 Adds `/projects/strong-green/research-map/` to the project's primary navigation
 and homepage. The primary view is a logical map, not a topic classification.
-Six connected proof trees display the full global target, exact-support Green
+One continuous, fully expanded SVG draws six connected proof trees for the full global target, exact-support Green
 construction, arithmetic equivalences, fixed-field Northcott, bounded-degree
 field control, and metric/family comparison.
 
@@ -19,10 +19,19 @@ applications, and the six existing programme steps. Registered titles and
 statuses are read from the authoritative current records. Intermediate
 properties in the proof trees are reading nodes, not new theorem records.
 
-Readers can jump to a conclusion, expand its detailed premises, expand all
-arguments, or return to the first-level view. The supplementary index also
-supports searches by title, topic and permanent ID. Native HTML disclosures
-and links work without JavaScript.
+All 54 permanent records now occur in the diagram itself: as scoped proposition
+nodes, inference/support rules, or definition/context nodes. The graph uses
+119 scoped node occurrences and 34 logical junctions. Solid inference lines,
+OPEN dashed bridges, blocked links ending in a cross, blue rule/support lines,
+and grey scope/definition lines are distinct. Multi-premise equivalences connect
+the conclusion to the WHOLE premise bundle, not to each premise separately.
+
+Readers can jump to a conclusion and follow the complete node-and-arrow graph;
+there are no collapsed or lazy-loaded branches. Zoom controls change only the
+display size. Narrow screens scroll horizontally inside the graph at a readable
+default size. A downloadable standalone SVG retains all nodes and absolute
+hyperlinks. The supplementary index still supports searches by title, topic
+and permanent ID. The diagram and its links work without JavaScript.
 
 This is a current navigation view based on mathematical edition v0.5.1. It does
 not change any statement, proof, mathematical status, PDF, or frozen file. The
@@ -38,6 +47,13 @@ dependency arrays: those arrays include context and proof ingredients. Every
 gate needs a precise scope, its full premise bundle, and a source for the
 claimed relation. Record nodes cannot override their publication status.
 Future changes to a source theorem require rechecking its displayed gates.
+`gate.rules` and `gate.ruleNotes` describe registered inference/support records;
+they are NOT additional mathematical premises. `tree.contexts` gives definition
+and scope nodes, with no implication arrow. Coverage validation rejects a
+permanent record omitted from the graph, even if it remains in the topic index.
+`strong-green/views/content/logic-layout.mjs` supplies deterministic SVG geometry.
+It preserves each scoped occurrence instead of merging by permanent ID. The
+SVG uses text, rectangles, junctions and paths, with no runtime layout engine.
 
 `strong-green/views/content/research-map.mjs` holds supplementary topic
 membership by permanent ID. Build-time checks reject missing, duplicate or
@@ -52,6 +68,7 @@ view cannot accidentally run the cached script from an older topic view.
 
 Validate the build, generated links, statuses, navigation, search, sitemap,
 shared feedback context and release integrity. Inspect desktop and narrow
-layouts and exercise the native disclosures, search, overview and record links
+layouts and exercise diagram navigation, zoom, source links, the complete SVG
+download, and the supplementary index
 before publication. Compare append-only history against the actual pre-change
 remote head.

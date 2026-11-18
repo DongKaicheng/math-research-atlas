@@ -8,8 +8,8 @@ import { logicalTrees, validateLogicalMap } from '@/content/logical-map.mjs';
 import { LogicForest } from '@/components/logic-tree';
 
 export const metadata: Metadata = {
-  title: 'Logical research map: Beilinson–Bloch heights and Green forms',
-  description: 'Proof trees showing the exact prerequisites, alternative routes, equivalences and open bridges between Green forms, global heights, positivity and Northcott finiteness.',
+  title: 'Complete logical diagram: Beilinson–Bloch heights and Green forms',
+  description: 'A fully expanded, linked SVG proof diagram of all 54 records: exact premises, inference rules, alternative routes, equivalences and open bridges for Green forms, global heights and Northcott finiteness.',
   alternates: { canonical: '/research-map' },
 };
 
@@ -89,8 +89,8 @@ export default function ResearchMapPage() {
   return <div className="site-shell research-map">
     <header className="map-header">
       <p className="eyebrow">Beilinson–Bloch heights · the structure of the arguments</p>
-      <h1>Logical research map</h1>
-      <p>Which results lead to which conclusions? Follow each conclusion down to its exact premises, alternative constructions and remaining open steps.</p>
+      <h1>Complete logical diagram</h1>
+      <p>Results, exact premises and open steps, connected by explicit logical junctions. The full diagram is drawn below, with every branch visible and every result linked to its statement.</p>
       <div className="map-edition">Based on mathematical edition <a href={'/editions/' + edition.revision + '/'}>{edition.revision}</a> · {logicalTrees.length} linked proof trees · {entries.length} permanent records</div>
     </header>
 

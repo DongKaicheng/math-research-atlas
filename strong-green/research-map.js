@@ -1,21 +1,24 @@
 (() => {
   const forest = document.querySelector('[data-logic-forest]');
   if (!forest) return;
-  const details = [...forest.querySelectorAll('details')];
-  const controls = forest.querySelector('[data-logic-controls]');
+  const controls = forest.querySelector('[data-diagram-zoom-controls]');
+  const canvas = forest.querySelector('[data-diagram-scroll]');
+  const output = forest.querySelector('[data-diagram-zoom-value]');
+  let zoom = 1;
   if (controls) controls.hidden = false;
-  forest.querySelector('[data-logic-expand]')?.addEventListener('click', () => details.forEach(item => { item.open = true; }));
-  forest.querySelector('[data-logic-overview]')?.addEventListener('click', () => details.forEach(item => { item.open = false; }));
+  function setZoom(value) {
+    zoom = Math.max(.9, Math.min(2, Math.round(value * 10) / 10));
+    canvas?.style.setProperty('--diagram-zoom', String(zoom));
+    if (output) output.textContent = Math.round(zoom * 100) + '%';
+  }
+  forest.querySelector('[data-diagram-zoom="-"]')?.addEventListener('click', () => setZoom(zoom - .1));
+  forest.querySelector('[data-diagram-zoom="+"]')?.addEventListener('click', () => setZoom(zoom + .1));
+  forest.querySelector('[data-diagram-reset]')?.addEventListener('click', () => setZoom(1));
   function revealLogicHash() {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = id && document.getElementById(id);
     if (!target || !forest.contains(target)) return;
-    let parent = target.parentElement;
-    while (parent && parent !== forest) {
-      if (parent.tagName === 'DETAILS') parent.open = true;
-      parent = parent.parentElement;
-    }
     requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: 'instant' }));
   }
   window.addEventListener('hashchange', revealLogicHash);

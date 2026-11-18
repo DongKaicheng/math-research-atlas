@@ -55,7 +55,9 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   const entryCode=Object.entries(pageFiles).map(([name,file])=>`import * as ${name} from ${JSON.stringify(path.join(views,file))};`).join('\n')+
     '\nexport const pages={'+Object.keys(pageFiles).join(',')+'};\n'+
     'export {globalRoutes} from '+JSON.stringify(path.join(views,'content','routes.mjs'))+';\n'+
-    'export {papers} from '+JSON.stringify(path.join(views,'lib','papers.ts'))+';\n';
+    'export {papers} from '+JSON.stringify(path.join(views,'lib','papers.ts'))+';\n'+
+    'export {CompleteLogicSVG} from '+JSON.stringify(path.join(views,'components','logic-tree.tsx'))+';\n'+
+    'export {logicalTrees} from '+JSON.stringify(path.join(views,'content','logical-map.mjs'))+';\n';
   const rendererFile=path.join(cache,'renderer-'+process.pid+'-'+Date.now()+'.mjs');
   await build({
     stdin:{contents:entryCode,resolveDir:root,sourcefile:'public-research-renderer.ts'},
@@ -83,7 +85,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   });
   let rendered;
   try{rendered=await import(pathToFileURL(rendererFile).href);}finally{await unlink(rendererFile);}
-  const {pages,papers,globalRoutes}=rendered;
+  const {pages,papers,globalRoutes,CompleteLogicSVG,logicalTrees}=rendered;
   const specs=[
     ['/',pages.home],['/conjectures',pages.conjectures],['/results',pages.results],['/routes',pages.routes],
     ['/research-map',pages.researchMap,undefined,{currentOnly:true}],
@@ -100,9 +102,11 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     name,createHash('sha256').update(await readFile(path.join(root,'strong-green',name))).digest('hex').slice(0,16),
   ])));
   const currentAsset=name=>url(projectPath+'/assets/'+name)+'?v='+currentAssetVersions.get(name);
+  let diagramVersion;
   function link(href,namespace){
     if(href.startsWith('/atlas-feedback/'))return url('/feedback/')+href.slice('/atlas-feedback/'.length);
     if(href==='/atlas-maintenance/')return url('/maintenance/');
+    if(href==='/projects/strong-green/assets/complete-logical-map.svg')return url(href)+(diagramVersion?'?v='+diagramVersion:'');
     if(href.startsWith('/projects/strong-green/'))return url(href);
     // This reading guide follows the current records; it is not part of a
     // previously frozen mathematical edition.
@@ -125,6 +129,9 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     return href;
   }
   const rewrite=(html,namespace)=>html.replace(/\b(href|src)="([^"]*)"/g,(_all,attr,href)=>`${attr}="${link(href,namespace)}"`);
+  const linkedDiagram=rewrite(renderToStaticMarkup(createElement(CompleteLogicSVG,{trees:logicalTrees})),projectPath)
+    .replace(/href="(\/[^\"]*)"/g,(_all,href)=>`href="${new URL(href,origin).href}"`);
+  diagramVersion=createHash('sha256').update(linkedDiagram).digest('hex').slice(0,16);
   function frame(title,description,body,route,namespace,{archived=false,noindex=false}={}){
     const relative=namespace+(route==='/'?'/':trailing(route));
     const canonical=origin+relative;
@@ -167,6 +174,7 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
   const currentAssets=path.join(output,projectPath.slice(1),'assets');
   await mkdir(currentAssets,{recursive:true});
   for(const name of currentAssetNames)await cp(path.join(root,'strong-green',name),path.join(currentAssets,name));
+  await writeFile(path.join(currentAssets,'complete-logical-map.svg'),linkedDiagram);
 
   const routes=[],indexableRoutes=[],searchIndex=[];
   for(const [route,module,params,options={}] of specs){
