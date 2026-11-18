@@ -64,6 +64,15 @@ well as production builds:
 5. Upload exactly one of those checked artifacts. Pull Requests never upload
    or deploy either artifact.
 
+Before an OpenMath deployment, the workflow reads the repository's existing
+Pages site with the official `actions/configure-pages@v5` action using
+`pages: read` and explicit `enablement: 'false'`. It must report host
+`openmath-atlas.org` at the domain root. This read-only preflight never enables
+Pages or changes the domain, HTTPS, DNS, or repository administration settings.
+It also runs for same-repository PRs so the binding can be checked before merge.
+Fork PRs skip this account-level read and still run both local artifact checks;
+they cannot upload or deploy.
+
 The tests that explicitly exercise the old path are not silently weakened to
 make the root build pass. The additional root-domain checks validate its own
 navigation and artifacts; neither test group is an independent mathematical
@@ -85,18 +94,22 @@ accepted by the workflow:
 
 | Mode | `SITE_BASE_PATH` | `SITE_ORIGIN` | `SITE_BRAND` | Checked artifact |
 | --- | --- | --- | --- | --- |
-| Legacy/default | `/math-research-atlas` | `https://dongkaicheng.github.io/math-research-atlas` | `Conjecture Atlas` | `dist-legacy` |
-| OpenMath cutover | `/` | `https://openmath-atlas.org` | `OpenMath` | `dist` |
+| Legacy / explicit rollback | `/math-research-atlas` | `https://dongkaicheng.github.io/math-research-atlas` | `Conjecture Atlas` | `dist-legacy` |
+| OpenMath / default after activation | `/` | `https://openmath-atlas.org` | `OpenMath` | `dist` |
 
-Unset variables use the legacy defaults. A mixed or unknown combination fails
-before building or uploading; it must not silently publish a mismatched site.
-Set all three custom-domain values together **only at the coordinated cutover**.
-Changing repository variables alone does not start a build: use the workflow's
-**Run workflow** action (`workflow_dispatch`) or an authorised subsequent
-commit. A manual run must supply the actual reviewed pre-change baseline SHA;
-do not select `HEAD` merely to make the history comparison empty. Review the
-PR, rendered desktop/narrow layouts, feedback, current and
-historical editions, and exact downloads before switching the live origin.
+**After the activation PR is merged**, unset repository variables select the
+OpenMath root artifact by default. Before the merge, unset variables select
+the legacy artifact. A mixed or unknown combination fails before building or
+uploading; it must not silently publish a mismatched site. If an existing
+repository-variable triple explicitly selects the legacy site, update all
+three variables together at cutover (or remove all three) so the new default
+takes effect. Merging the activation PR triggers a normal `main` push build;
+changing repository variables alone does not start a build. A separate manual
+**Run workflow** action (`workflow_dispatch`) requires the full SHA of the
+reviewed comparison commit in `history_base_sha`—never choose `HEAD` merely
+to make history comparison empty. Review the PR, desktop/narrow layouts,
+feedback, current and historical editions, and exact downloads before
+switching the live origin.
 
 ## Domain and GitHub Pages cutover
 
@@ -128,8 +141,12 @@ historical editions, and exact downloads before switching the live origin.
    The DNS target is technical and does not appear in the public entry URLs.
    Avoid conflicting DNS records and wildcard records. Do not alter DNS for
    the personal homepage `dongkaicheng.github.io`.
-4. After both build modes and the reviewed migration pass, set all three
-   GitHub Actions **repository variables** for this repository:
+4. After domain verification, GitHub Pages reservation, DNS changes, and the
+   reviewed migration checks, inspect this repository's **Settings → Secrets
+   and variables → Actions → Variables**. If `SITE_BASE_PATH`, `SITE_ORIGIN`,
+   and `SITE_BRAND` are all unset, the activation PR's new defaults will select
+   OpenMath. If they are explicitly set to legacy values, update the complete
+   triple to the approved OpenMath values together:
 
    ```text
    SITE_BASE_PATH=/
@@ -137,12 +154,12 @@ historical editions, and exact downloads before switching the live origin.
    SITE_BRAND=OpenMath
    ```
 
-   Trigger **Publish mathematical atlas → Run workflow** on `main` and inspect
-   the resulting deployment. Supply the reviewed comparison commit's full SHA
-   in `history_base_sha`. The workflow checks both modes, then uploads only
-   the selected OpenMath artifact. DNS, Pages settings, and deployment are not
-   an atomic change; do not promise zero downtime. Observe the actual old and
-   new URLs throughout the cutover and use rollback if they do not recover.
+   Merge the reviewed activation PR to `main`, which triggers **Publish
+   mathematical atlas** automatically. Verify the build log says it uploaded
+   `dist` and used the OpenMath triple. The workflow checks both modes but
+   uploads only the selected artifact. DNS, Pages settings, and deployment are
+   not an atomic change; do not promise zero downtime. Observe the actual old
+   and new URLs throughout cutover and use rollback if they do not recover.
 5. Wait for DNS/TLS provisioning, confirm the domain in Pages settings, and
    enable **Enforce HTTPS** when offered. Check all four canonical addresses
    and exact edition/version links in a fresh browser session, including
@@ -157,8 +174,8 @@ historical editions, and exact downloads before switching the live origin.
 ## Rollback
 
 If cutover fails, keep a record of the deployed commit, DNS settings and test
-results. Restore all three old repository-variable values (or remove all three
-custom variables to use the workflow defaults), restore the appropriate Pages
+results. Restore all three old repository-variable values (or use a reviewed corrective
+commit to restore the former defaults), restore the appropriate Pages
 custom-domain and DNS configuration, and rerun the workflow on the reviewed
 rollback commit. The workflow must select the checked `dist-legacy` artifact.
 If source changes are needed, use a new corrective commit. Recheck old and new

@@ -22,6 +22,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,9 +41,9 @@ jobs:
       - name: Select approved deployment configuration
         id: deployment_config
         env:
-          DEPLOY_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/math-research-atlas' }}
-          DEPLOY_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://dongkaicheng.github.io/math-research-atlas' }}
-          DEPLOY_BRAND: ${{ vars.SITE_BRAND || 'Conjecture Atlas' }}
+          DEPLOY_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/' }}
+          DEPLOY_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://openmath-atlas.org' }}
+          DEPLOY_BRAND: ${{ vars.SITE_BRAND || 'OpenMath' }}
         run: |
           case "${DEPLOY_BASE_PATH}|${DEPLOY_ORIGIN}|${DEPLOY_BRAND}" in
             '/math-research-atlas|https://dongkaicheng.github.io/math-research-atlas|Conjecture Atlas')
@@ -50,7 +53,7 @@ jobs:
               printf 'artifact_path=dist\n' >> "$GITHUB_OUTPUT"
               ;;
             *)
-              echo '::error::Unapproved deployment configuration. Leave all SITE_* variables unset for the legacy site, or set SITE_BASE_PATH=/, SITE_ORIGIN=https://openmath-atlas.org and SITE_BRAND=OpenMath together for cutover.'
+              echo '::error::Unapproved deployment configuration. Leave all SITE_* variables unset for the default OpenMath site, or set all three to one complete approved combination (OpenMath or legacy rollback).'
               exit 1
               ;;
           esac
@@ -88,12 +91,37 @@ jobs:
         run: npm run check:history
         env:
           HISTORY_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || inputs.history_base_sha }}
+      - name: Read existing Pages binding
+        id: pages_binding
+        if: steps.deployment_config.outputs.artifact_path == 'dist' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: actions/configure-pages@v5
+        with:
+          # Read the existing site only. Never enable or reconfigure Pages.
+          enablement: 'false'
+      - name: Require the OpenMath domain before cutover
+        if: steps.pages_binding.outcome == 'success'
+        env:
+          PAGES_HOST: ${{ steps.pages_binding.outputs.host }}
+          PAGES_BASE_PATH: ${{ steps.pages_binding.outputs.base_path }}
+        run: |
+          printf 'Configured Pages host: %s; base path: %s\n' "$PAGES_HOST" "$PAGES_BASE_PATH"
+          if [ "$PAGES_HOST" != 'openmath-atlas.org' ]; then
+            echo '::error::Set this repository Pages Custom domain to openmath-atlas.org before publishing the OpenMath artifact.'
+            exit 1
+          fi
+          case "$PAGES_BASE_PATH" in
+            ''|'/') ;;
+            *)
+              echo '::error::OpenMath must be published at the domain root.'
+              exit 1
+              ;;
+          esac
       - name: Upload checked pages
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload exactly one already-checked artifact. Preparing the custom
-          # domain does not activate it while repository variables are unset.
+          # Upload exactly one checked artifact, after verifying the live
+          # Pages host for an OpenMath root deployment.
           path: ${{ steps.deployment_config.outputs.artifact_path }}
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
