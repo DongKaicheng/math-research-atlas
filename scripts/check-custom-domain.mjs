@@ -84,6 +84,16 @@ if(!rootHtml.includes('<h1>'+brand+'</h1>'))fail('Root page does not display '+b
 for(const route of routes){
   const html=await text(path.join(dist,route.slice(1),'index.html'));
   if(!html.includes('<link rel="canonical" href="'+origin+route+'"'))fail('Wrong canonical: '+route);
+  if(!/<meta name="description" content="[^"]{65,}"/.test(html))fail('Short or missing search description: '+route);
+  if(!/<title>[^<]{20,}<\/title>/.test(html))fail('Short or missing HTML title: '+route);
+  if(/<meta name="robots" content="noindex/.test(html))fail('Priority page blocked from indexing: '+route);
+  if(route==='/'){
+    if(!html.includes('Berkovich and non-Archimedean geometry'))fail('Homepage research topics not discoverable');
+    if(!html.includes('"@type":"WebSite"'))fail('Missing website identity structured data');
+  }
+  if(route==='/projects/foundations/'&&!html.includes('"@type":"CollectionPage"'))fail('Missing foundations collection structured data');
+  if(route==='/projects/strong-green/'&&!html.includes('"@type":"CollectionPage"'))fail('Missing Strong Green collection structured data');
+
   const alias=path.join(dist,'math-research-atlas',route.slice(1),'index.html');
   if(!await isFile(alias)){fail('Missing route alias: '+route);continue;}
   const redirect=await text(alias),script=redirect.match(/<script>([\s\S]*?)<\/script>/)?.[1];
@@ -104,6 +114,15 @@ for(const route of routes){
     if(!redirect.includes('name="robots" content="noindex,follow"'))fail('Route alias is indexable: '+route);
   }catch(error){fail('Route alias failed: '+route+' -> '+error.message);}
 }
+const coreXML=await text(path.join(dist,'sitemap-core.xml'));
+const expectedCore=routes.map(route=>origin+route);
+const coreURLs=[...coreXML.matchAll(/<loc>(.*?)<\/loc>/g)].map(match=>decode(match[1]));
+if(JSON.stringify(coreURLs)!==JSON.stringify(expectedCore))fail('Core sitemap must contain exactly the four canonical entry points, in order');
+const fullXML=await text(path.join(dist,'sitemap.xml'));
+for(const page of expectedCore)if(!fullXML.includes('<loc>'+page+'</loc>'))fail('Main sitemap omits priority URL: '+page);
+const robots=await text(path.join(dist,'robots.txt'));
+for(const path of ['/sitemap.xml','/sitemap-core.xml'])if(!robots.includes('Sitemap: '+origin+path))fail('Missing Search Console sitemap discovery in robots.txt: '+path);
+
 for(const file of ['sitemap.xml','robots.txt']){
   const content=await text(path.join(dist,file));
   if(!content.includes(origin+'/'))fail('Missing domain in '+file);
