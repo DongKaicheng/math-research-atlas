@@ -4,7 +4,8 @@ Prepared: 18 November 2026, 19:18:57 Asia/Shanghai
 (2026-11-18T11:18:57Z).
 
 Atlas project revision: 3. Mathematical source edition: v1.0.1.
-Publication and live deployment verification: pending.
+Published commit: `3a2f8ddcb3cbd2f747f6e9f58964b6b652fdbed2`.
+GitHub Pages deployment and live-page verification completed successfully.
 
 ## Change
 
@@ -99,8 +100,7 @@ shared feedback workflow.
 
 The following local results were observed on the final integrated tree, which
 preserves the concurrent site updates through commit
-`761e08386e0ef1144f002df6f9e58b2c2aa285ca`. Live deployment is checked after the
-non-force branch update.
+`761e08386e0ef1144f002df6f9e58b2c2aa285ca`. The non-force branch update and subsequent live verification are recorded below.
 
 | Check | Status |
 | --- | --- |
@@ -112,10 +112,29 @@ non-force branch update.
 | Desktop and narrow-screen diagram readability, relation conditions and keyboard navigation | Passed in the managed browser: AND/OR graph, 100% scale and fit-width controls, wide layout, Enter-key expansion, 390px reading frame with no horizontal page overflow |
 | Direct source links, all formal open-item context, complete secondary register and exact map-fragment feedback | Passed: links and fragments resolve; actual shared feedback page received the exact `d-e-exact` relation and v1.0.1 without a fabricated result ID |
 | Homepage and project-navigation entries, search and sitemap | Passed by generated-page and route checks |
-| Non-force publication, GitHub Actions outcome and live Pages verification | Pending |
+| Non-force publication, GitHub Actions outcome and live Pages verification | Passed: guarded update from `761e083` to `3a2f8dd`; Pages workflow [44298757541](https://github.com/DongKaicheng/math-research-atlas/actions/runs/44298757541) succeeded; the public page displays 17 diagrams, 93 nodes and 76 relations |
 
 No new automated review or backup schedule is claimed by this release note.
 
 Desktop and narrow-layout evidence is retained in
 `docs/screenshots/bedford-taylor-logical-map-desktop.jpg` and
 `docs/screenshots/bedford-taylor-logical-map-mobile.jpg`.
+
+## Live publication check
+
+The live project homepage
+`https://dongkaicheng.github.io/math-research-atlas/projects/bedford-taylor/`
+was opened, and its independent Research map link led to the published map.
+The map retained all 74 topic rows in the complete secondary register. The
+live source-equation diagram displayed all four inputs, including the separate
+zero-defect condition. Its contextual feedback link opened the existing shared
+board with the exact relation fragment and v1.0.1; the result-ID field was empty.
+The general-comment link contained neither a theorem ID nor an edition.
+
+The published AND/OR certificate diagram was checked at readable scale and in
+the wide layout. The live screenshot is retained at
+`docs/screenshots/bedford-taylor-logical-map-live.jpg`. The final open page is
+`https://dongkaicheng.github.io/math-research-atlas/projects/bedford-taylor/map/#descent-certificates`.
+
+This follow-up records publication evidence and adds the live screenshot only;
+it does not change mathematical content, diagram data or the rendered map.
