@@ -87,6 +87,14 @@ for(const route of routes){
   const alias=path.join(dist,'math-research-atlas',route.slice(1),'index.html');
   if(!await isFile(alias)){fail('Missing route alias: '+route);continue;}
   const redirect=await text(alias),script=redirect.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  if(route==='/'){
+    if(!redirect.includes('This website address is no longer in use.'))fail('Old landing page lacks an explicit retirement notice');
+    if(!redirect.includes('<a class="action" href="'+origin+'/">Visit the current OpenMath website</a>'))fail('Old landing page lacks the new site link');
+    if(!redirect.includes('name="robots" content="noindex,follow"'))fail('Old landing page must not be indexed');
+    if(/location\.replace|http-equiv="refresh"/.test(redirect))fail('Old landing page must remain visible instead of silently redirecting');
+    if(redirect.includes('The central problem')||redirect.includes('<h1>OpenMath</h1>'))fail('Old landing page still serves current research content');
+    continue;
+  }
   let destination;
   const search='?q=capacity&version='+encodeURIComponent('v1.0.1'),hash='#thm:main-bounded';
   try{
