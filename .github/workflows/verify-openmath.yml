@@ -1,0 +1,155 @@
+name: Verify OpenMath live publication
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Publish mathematical atlas']
+    types: [completed]
+    branches: [main]
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/verify-openmath.yml
+
+permissions:
+  pages: read
+
+concurrency:
+  group: openmath-live-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check Pages metadata, DNS, TLS, pages and redirects
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { Resolver } from 'node:dns/promises';
+
+          const origin = 'https://openmath-atlas.org';
+          const domain = 'openmath-atlas.org';
+          const paths = ['/', '/projects/bedford-taylor/', '/projects/foundations/', '/projects/strong-green/'];
+          const expectedA = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153'];
+          const report = { checked_at: new Date().toISOString(), pages: null, dns: {}, https: [], old_redirects: [], http_to_https: null, warnings: [], failures: [] };
+
+          // Read only the already-enabled site. No administrative update is attempted.
+          const api = await fetch('https://api.github.com/repos/' + process.env.GITHUB_REPOSITORY + '/pages', {
+            headers: { Authorization: 'Bearer ' + process.env.GH_TOKEN, Accept: 'application/vnd.github+json' },
+            redirect: 'error',
+            signal: AbortSignal.timeout(15000)
+          });
+          if (!api.ok) throw new Error('Read-only Pages metadata request failed: HTTP ' + api.status);
+          const pages = await api.json();
+          report.pages = {
+            cname: pages.cname,
+            html_url: pages.html_url,
+            status: pages.status,
+            https_enforced: pages.https_enforced,
+            certificate_state: pages.https_certificate?.state ?? null
+          };
+          if (pages.cname !== domain) throw new Error('Unexpected Pages domain; refusing to inspect another site.');
+
+          const resolver = new Resolver({ timeout: 5000, tries: 1 });
+          try {
+            report.dns.apex_A = (await resolver.resolve4(domain)).sort();
+            if (report.dns.apex_A.length !== expectedA.length || expectedA.some(ip => !report.dns.apex_A.includes(ip))) {
+              report.failures.push('Apex A records do not yet match the four GitHub Pages addresses.');
+            }
+          } catch (e) {
+            report.dns.apex_error = e.code ?? e.message;
+            report.failures.push('Unable to verify apex DNS.');
+          }
+          try {
+            report.dns.www_CNAME = await resolver.resolveCname('www.' + domain);
+          } catch (e) {
+            report.dns.www_CNAME = null;
+            report.warnings.push('Optional www CNAME not observed: ' + (e.code ?? e.message));
+          }
+
+          // Public requests never receive GH_TOKEN. TLS verification stays enabled.
+          async function publicRequest(url, redirect = 'follow') {
+            let last;
+            for (let attempt = 1; attempt <= 3; attempt++) {
+              try {
+                const response = await fetch(url, { redirect, signal: AbortSignal.timeout(15000) });
+                if (response.status >= 500 && attempt < 3) {
+                  await response.body?.cancel();
+                  throw new Error('HTTP ' + response.status);
+                }
+                return response;
+              } catch (e) {
+                last = e;
+                if (attempt < 3) await new Promise(resolve => setTimeout(resolve, 8000));
+              }
+            }
+            throw last;
+          }
+          function errorText(e) {
+            return [e.message, e.cause?.code, e.cause?.message].filter(Boolean).join(' | ');
+          }
+          function canonical(html) {
+            const tag = (html.match(/<link\b[^>]*>/gi) ?? []).find(value => /\brel\s*=\s*["']canonical["']/i.test(value));
+            return tag?.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1] ?? null;
+          }
+
+          await Promise.all(paths.map(async path => {
+            const url = origin + path;
+            try {
+              const response = await publicRequest(url);
+              const html = await response.text();
+              const item = {
+                url, status: response.status, final_url: response.url,
+                title: html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? null,
+                canonical: canonical(html), openmath_brand: html.includes('OpenMath')
+              };
+              report.https.push(item);
+              if (item.status !== 200 || item.final_url !== url || item.canonical !== url || !item.openmath_brand) {
+                report.failures.push('HTTPS page failed status, URL, canonical or branding check: ' + path);
+              }
+            } catch (e) {
+              report.https.push({ url, error: errorText(e) });
+              report.failures.push('HTTPS request failed: ' + path);
+            }
+          }));
+
+          await Promise.all(paths.map(async path => {
+            const url = 'https://dongkaicheng.github.io/math-research-atlas' + path;
+            try {
+              const response = await publicRequest(url);
+              const finalUrl = new URL(response.url);
+              report.old_redirects.push({ url, status: response.status, final_url: response.url });
+              await response.body?.cancel();
+              if (response.status !== 200 || finalUrl.hostname !== domain || finalUrl.pathname !== path) {
+                report.failures.push('Legacy entry redirect failed: ' + path);
+              }
+            } catch (e) {
+              report.old_redirects.push({ url, error: errorText(e) });
+              report.failures.push('Legacy entry redirect could not be verified: ' + path);
+            }
+          }));
+
+          try {
+            const response = await publicRequest('http://' + domain + '/', 'manual');
+            const location = response.headers.get('location');
+            report.http_to_https = {
+              status: response.status, location,
+              observed: [301, 302, 307, 308].includes(response.status) && location === origin + '/'
+            };
+            await response.body?.cancel();
+            if (!report.http_to_https.observed) report.warnings.push('HTTP-to-HTTPS enforcement has not been observed.');
+          } catch (e) {
+            report.http_to_https = { error: errorText(e) };
+            report.warnings.push('Unable to inspect the HTTP redirect.');
+          }
+          if (!pages.https_enforced) report.warnings.push('GitHub Pages Enforce HTTPS is not enabled.');
+          console.log(JSON.stringify(report, null, 2));
+          if (report.failures.length) process.exitCode = 1;
+          NODE
