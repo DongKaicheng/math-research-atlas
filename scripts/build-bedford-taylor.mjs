@@ -55,7 +55,7 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   for(const route of manifest.routes){
     const source=path.join(frozenPublic,filename(route)),target=path.join(output,projectPath.slice(1),filename(route));
     let html=currentHTML(await readFile(source,'utf8'));
-    if(route==='/')html=html.replace(/<div class="actions">[\s\S]*?<\/div>/,actions=>actions+`<p class="atlas-map-home-link"><a href="${currentBase}/map/">Explore the research map <span aria-hidden="true">→</span></a></p>`);
+    if(route==='/')html=html.replace(/<div class="actions">[\s\S]*?<\/div>/,actions=>actions+`<p class="atlas-map-home-link"><a href="${currentBase}/map/">Explore the research map <span aria-hidden="true">→</span></a> <a class="atlas-map-overall-link" href="${currentBase}/map/#total-logic">Overall logical map</a></p>`);
     const indexable=route!=='/404.html'&&route!=='/search/'&&!route.startsWith('/sources/view/');
     if(indexable)html=html.replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
     await mkdir(path.dirname(target),{recursive:true});await writeFile(target,html);
