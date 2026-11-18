@@ -1,5 +1,6 @@
 import {readFile,writeFile,mkdir,readdir,cp,access} from 'node:fs/promises';
 import path from 'node:path';
+import {buildBedfordTaylorMap} from './build-bedford-taylor-map.mjs';
 
 const projectPath='/projects/bedford-taylor';
 const exists=async file=>{try{await access(file);return true;}catch{return false;}};
@@ -43,11 +44,17 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     text=text.replace(/(<link rel="canonical" href=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(fixedOrigin,currentOrigin)+b);
     text=text.replace(/(<meta property="og:url" content=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(fixedOrigin,currentOrigin)+b);
     text=text.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_all,json)=>'<script type="application/ld+json">'+json.replaceAll(fixedOrigin,currentOrigin)+'</script>');
+    // Navigation is current infrastructure. It is never written back into a
+    // frozen reading edition or its mathematical content.
+    text=text.replace(/<body class="([^"]*)"/,'<body class="bt-current $1"');
+    text=text.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-map.css"></head>`);
+    text=text.replace(/(<nav id="primary-navigation"[^>]*><a\b[^>]*>Overview<\/a>)/,'$1'+`<a href="${currentBase}/map/">Research map</a>`);
     return text;
   }
   for(const route of manifest.routes){
     const source=path.join(frozenPublic,filename(route)),target=path.join(output,projectPath.slice(1),filename(route));
     let html=currentHTML(await readFile(source,'utf8'));
+    if(route==='/')html=html.replace(/<div class="actions">[\s\S]*?<\/div>/,actions=>actions+`<p class="atlas-map-home-link"><a href="${currentBase}/map/">Explore the research map <span aria-hidden="true">→</span></a></p>`);
     const indexable=route!=='/404.html'&&route!=='/search/'&&!route.startsWith('/sources/view/');
     if(indexable)html=html.replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
     await mkdir(path.dirname(target),{recursive:true});await writeFile(target,html);
@@ -67,8 +74,29 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   versions=versions.replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
   const versionFile=path.join(output,projectPath.slice(1),'versions/index.html');await mkdir(path.dirname(versionFile),{recursive:true});await writeFile(versionFile,versions);
   routes.push(projectPath+'/versions/');indexableRoutes.push(projectPath+'/versions/');
+  const map=await buildBedfordTaylorMap({root,frozenPublic,revision,currentBase,currentLink});
+  let mapPage=currentHTML(await readFile(path.join(frozenPublic,'index.html'),'utf8'));
+  mapPage=mapPage.replace(/<main\b[\s\S]*?<\/main>/,map.html)
+    .replace('class="bt-current page-home"','class="bt-current page-map"')
+    .replace(/<title>[\s\S]*?<\/title>/,'<title>Research map · Non-Archimedean Bedford–Taylor Theory</title>')
+    .replace(/(<meta name="description" content=")[^"]*(")/,'$1'+esc(map.description)+'$2')
+    .replace(/(<meta property="og:description" content=")[^"]*(")/,'$1'+esc(map.description)+'$2')
+    .replace(/(<meta property="og:title" content=")[^"]*(")/,'$1Research map · Non-Archimedean Bedford–Taylor Theory$2')
+    .replace(/(<link rel="canonical" href=")[^"]*(")/,'$1'+currentOrigin+'/map/$2')
+    .replace(/(<meta property="og:url" content=")[^"]*(")/,'$1'+currentOrigin+'/map/$2')
+    .replace('<meta name="robots" content="noindex,follow">','<meta name="robots" content="index,follow">');
+  mapPage=mapPage.replace(/(<nav id="primary-navigation"[^>]*>)([\s\S]*?)(<\/nav>)/,(_all,open,links,close)=>open+links.replace(/ aria-current="page"/g,'').replace(`href="${currentBase}/map/"`,`href="${currentBase}/map/" aria-current="page"`)+close);
+  mapPage=mapPage.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_all,json)=>{
+    const data=JSON.parse(json);data.name='Research map';data.url=currentOrigin+'/map/';data.description=map.description;
+    return '<script type="application/ld+json">'+JSON.stringify(data)+'</script>';
+  });
+  const mapFeedback=base+'/feedback/?'+new URLSearchParams({project:'bedford-taylor',version:revision,page:currentOrigin+'/map/'}).toString();
+  mapPage=mapPage.replace(/<a\b[^>]*data-atlas-feedback[^>]*>/g,tag=>tag.replace(/\bhref="[^"]*"/,'href="'+esc(mapFeedback)+'"'));
+  mapPage=mapPage.replace('</head>',`<script defer src="${base}/assets/bedford-taylor-map.js"></script></head>`);
+  const mapFile=path.join(output,projectPath.slice(1),'map/index.html');await mkdir(path.dirname(mapFile),{recursive:true});await writeFile(mapFile,mapPage);
+  routes.push(projectPath+'/map/');indexableRoutes.push(projectPath+'/map/');
   const sourceIndex=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));
-  const searchIndex=sourceIndex.map(item=>({title:item.title,summary:item.excerpt||'',keywords:['Bedford–Taylor',item.id,item.type].filter(Boolean),link:currentLink(item.url),category:item.type,id:item.id,body:item.text||item.excerpt||item.title,project:'bedford-taylor',version:revision}));
+  const searchIndex=[...map.searchIndex,...sourceIndex.map(item=>({title:item.title,summary:item.excerpt||'',keywords:['Bedford–Taylor',item.id,item.type].filter(Boolean),link:currentLink(item.url),category:item.type,id:item.id,body:item.text||item.excerpt||item.title,project:'bedford-taylor',version:revision}))];
   // The detailed index primarily addresses theorem/section anchors. Keep both
   // standalone articles discoverable as pages as well, without invented claims.
   const decode=s=>s.replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');

@@ -195,6 +195,33 @@ published file, its URL or checksum. Keep the packed bytes and index immutable
 with the release. A clean checkout must run the build before the read-only
 release check; do not hand-edit the restored, ignored HTML copies.
 
+### Bedford–Taylor research map
+
+The current `/projects/bedford-taylor/map/` is an editorial reading tree. Its
+source is `content/bedford-taylor/research-map.json`; the builder joins its IDs
+to the exact selected edition's topic, programme and definition registers.
+The branches organize reading and do not declare proof implications.
+
+Keep each topic and formal programme item in exactly one primary branch.
+Nodes may cross-reference other branches. Preserve the hypotheses when writing
+short summaries, especially actual analytic zero relations, the supplied
+normal-three model, fixed backgrounds and domain or tail assumptions. The
+full statements remain authoritative. Original titles, source statuses and
+permanent IDs are read from the edition rather than reclassified by the map.
+
+When selecting a new mathematical edition, review the map against its records
+and update the map's `edition` only after checking the coverage and summaries.
+The build rejects a stale edition binding or incomplete primary coverage.
+Map-only changes increment the Atlas project revision and preserve the previous
+bundle in `content/history`; Git retains each map and layout revision. Frozen
+reading editions and PDF bytes remain at their existing addresses. The map
+feedback context cites the real current map URL, including its branch anchor,
+and the selected mathematical edition.
+
+After changing the map, run the full publication checks and inspect both a
+desktop viewport and a narrow reading viewport. Verify branch expansion,
+keyboard access, source links, the project navigation and homepage entry.
+
 ## Historical material and privacy
 
 Import only the intended public corpus. Original private research archives and
