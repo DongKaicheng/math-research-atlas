@@ -173,8 +173,9 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     const logicRoute=route==='/research-map'||proofRoute;
     return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | ${esc(process.env.SITE_BRAND||'Conjecture Atlas')}</title><meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
+<link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="${!archived&&route==='/'?'website':'article'}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
+${!archived&&route==='/'&&process.env.SITE_BRAND==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,url:canonical,description,isPartOf:{'@id':origin+'/#website'},about:['Beilinson–Bloch height pairing','Strong Green conjecture','Arakelov geometry','Berkovich spaces']})+'</script>':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
 ${archived?'':`<link rel="stylesheet" href="${currentAsset('research-map.css')}">`}
 ${!archived&&logicRoute?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
@@ -219,10 +220,12 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
     const metadata=module.generateMetadata?await module.generateMetadata(props):module.metadata||{};
     const title=typeof metadata.title==='string'?metadata.title:metadata.title?.absolute||project.title;
     const description=metadata.description||project.summary;
+    const searchTitle=route==='/'&&!base?'Beilinson–Bloch Heights and Strong Green Conjecture':title;
+    const searchDescription=route==='/'&&!base?'A research programme in Arakelov geometry: Beilinson–Bloch height pairings, the strong zero-curvature Green conjecture, Berkovich forms and arithmetic positivity.':description;
     const node=await module.default(props);
     const body=renderToStaticMarkup(node);
     const currentRoute=projectPath+(route==='/'?'/':trailing(route));
-    await save(currentRoute,frame(title,description,rewrite(body,projectPath),route,projectPath,{noindex:metadata.robots?.index===false}));
+    await save(currentRoute,frame(searchTitle,searchDescription,rewrite(body,projectPath),route,projectPath,{noindex:metadata.robots?.index===false}));
     routes.push(currentRoute);if(metadata.robots?.index!==false)indexableRoutes.push(currentRoute);
     if(!options.currentOnly){
       const fixedRoute=editionPath+(route==='/'?'/':trailing(route));
