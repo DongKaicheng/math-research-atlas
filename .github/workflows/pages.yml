@@ -32,8 +32,10 @@ jobs:
       - name: Build static pages
         run: npm run build
         env:
-          SITE_BASE_PATH: /math-research-atlas
-          SITE_ORIGIN: https://dongkaicheng.github.io/math-research-atlas
+          # Repository variables are intentionally unset until a reviewed
+          # custom-domain migration is ready. The defaults preserve Pages.
+          SITE_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/math-research-atlas' }}
+          SITE_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://dongkaicheng.github.io/math-research-atlas' }}
           GITHUB_REPOSITORY: DongKaicheng/math-research-atlas
       - name: Check generated content and links
         run: npm run check
