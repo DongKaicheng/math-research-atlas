@@ -12,10 +12,11 @@ if(!/^[a-f0-9]{40}$/.test(base))throw Error('Invalid history base SHA');
 const output=execFileSync('git',['diff','--name-status','--no-renames',base,'HEAD'],{encoding:'utf8'});
 const protectedPath=name=>/^content\/history\//.test(name)||
   /^content\/[^/]+\/(?:releases|source-receipts)\//.test(name)||
-  /^public\/projects\/[^/]+\/editions\//.test(name);
+  /^public\/projects\/[^/]+\/editions\//.test(name)||
+  /^public\/agents\/releases\/[^/]+\//.test(name);
 const rewrites=output.trim().split('\n').filter(Boolean).filter(line=>{
   const [status,...names]=line.split('\t');
   return status!=='A'&&names.some(protectedPath);
 });
 if(rewrites.length)throw Error('Published history is append-only. Add a new edition. A privacy-removal exception requires a separate authorised procedure:\n'+rewrites.join('\n'));
-console.log('History check: no existing project snapshot or frozen edition was modified or removed.');
+console.log('History check: no existing project snapshot, frozen edition or agent release was modified or removed.');

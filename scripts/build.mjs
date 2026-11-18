@@ -7,6 +7,7 @@ import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
 import {FEEDBACK_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {restorePackedAssets} from './restore-packed-assets.mjs';
+import {createHash} from 'node:crypto';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const output=path.join(root,'dist');
@@ -133,6 +134,7 @@ ${extraHead}
 <nav aria-label="Main navigation">
 <a href="${url('/foundations/')}">Foundations</a>
 <a href="${url('/research/')}">Research</a>
+<a href="${url('/ai-and-math/')}">AI &amp; Math</a>
 <a href="${url('/feedback/')}">Feedback</a>
 <a href="${url('/about/')}">About</a>
 </nav>
@@ -143,6 +145,7 @@ ${content}
 <span>Conjecture Atlas · Open mathematical research</span>
 <nav aria-label="Footer">
 <a href="${url('/about/')}">About</a><a href="${url('/manifesto/')}">Why this site?</a>
+<a href="${url('/ai-and-math/')}">AI &amp; Math</a>
 <a href="${url('/feedback/')}">Feedback</a><a href="${url('/updates/')}">Updates</a><a href="${url('/maintenance/')}">How the site is maintained</a>
 <a href="${gh}" target="_blank" rel="noopener noreferrer">GitHub</a>
 </nav></div></footer>
@@ -163,6 +166,24 @@ function breadcrumbs(labels){
   return `<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="${url('/')}">Atlas</a>${labels.map(([label,href])=>`<span><span class="crumb-separator">/</span>${href?`<a href="${url(href)}">${esc(label)}</a>`:`<span aria-current="page">${esc(label)}</span>`}</span>`).join('')}</nav>`;
 }
 const externalArrow='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>';
+const agentPointer=JSON.parse(await readFile(path.join(root,'public','agents','current.json'),'utf8'));
+if(!/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/.test(agentPointer.release))throw Error('Invalid agent release');
+const agentBase='/agents/releases/'+agentPointer.release+'/';
+const agentDirectory=path.join(root,'public','agents','releases',agentPointer.release);
+const agentManifest=JSON.parse(await readFile(path.join(agentDirectory,'manifest.json'),'utf8'));
+if(agentManifest.schema!=='math-agent-release/v1'||agentManifest.release!==agentPointer.release)throw Error('Agent release mismatch');
+const agentDetails=[
+  {id:'math-project-maintainer',title:'Math Project Maintainer',role:'Mathematical sources & proof dependencies',summary:'Maintains LaTeX corpora, stable result identities, exact hypotheses, proof support, review records and revisions. Now builds source-bound interactive logical diagrams, with explicit AND premises, valid OR alternatives and open steps.',skill:'6afb6f1142288191b50fba748e131144'},
+  {id:'math-research-publisher',title:'Math Research Publisher',role:'Research websites & public editions',summary:'Publishes foundations and research programmes with stable links, paper editions, revision history and shared feedback. Integrates a principal, complete and focused logical map with an accessible mobile reading view.',skill:'6afbf7e6e934819199b3fe2819550ba7'},
+  {id:'math-writing-editor',title:'Math Writing Editor',role:'Formal mathematical exposition',summary:'Improves definitions, theorem statements, proofs and research programmes without changing their mathematical substance. Now supports concise dependency diagrams for manuscripts and precise explanation of proof gaps.',skill:'6af6c42bc128819199ecf67841a635e5'},
+];
+if(Object.keys(agentManifest.agents).sort().join('|')!==agentDetails.map(a=>a.id).sort().join('|'))throw Error('Agent release is incomplete');
+for(const agent of agentDetails){
+  const entry=agentManifest.agents[agent.id];
+  if(entry.file!==agent.id+'.zip'||!/^[0-9a-f]{64}$/.test(entry.sha256))throw Error('Invalid agent archive manifest: '+agent.id);
+  const bytes=await readFile(path.join(agentDirectory,entry.file));
+  if(bytes.length!==entry.bytes||createHash('sha256').update(bytes).digest('hex')!==entry.sha256)throw Error('Agent archive hash mismatch: '+agent.id);
+}
 function card(p){
   return `<a href="${url('/projects/'+encodeURIComponent(p.project.id)+'/')}" class="project-row"><div><span class="micro">${p.project.category==='foundations'?'Foundations':'Research'} · ${p.edition?'Edition '+esc(p.edition):'Version '+p.revision}</span><h3>${esc(p.project.title)}</h3><p>${esc(p.project.summary)}</p></div>${externalArrow}</a>`;
 }
@@ -207,8 +228,27 @@ const featured=`<main id="main-content" class="simple-home">
 <section class="simple-projects wrap" id="projects"><h2>Projects</h2>
 <div class="simple-project-list">${bundles.map(card).join('')}</div>
 <p class="micro">Each project distinguishes open questions, conditional results, and available proofs. Outline projects are labelled separately from full research editions.</p>
-</section></main>`;
+</section>
+<section class="simple-agent-bridge wrap" aria-labelledby="home-agents-title"><div><p class="eyebrow">TOOLS FOR MATHEMATICAL RESEARCH</p><h2 id="home-agents-title">Three updated research agents</h2><p>Download the mathematical maintainer, research publisher and writing editor. The latest packages include source-linked logical diagrams: joint premises, alternative proofs, open steps and readable mobile views.</p></div><a class="button button-dark" href="${url('/ai-and-math/')}">Explore AI &amp; Math ${externalArrow}</a></section>
+</main>`;
 await save('/',loadPage('Conjecture Atlas','Open mathematical theory, research programmes, proofs, and collaboration.',featured,'/'));
+
+const agentCards=agentDetails.map(agent=>{
+  const info=agentManifest.agents[agent.id];
+  return `<article class="agent-card" id="${esc(agent.id)}"><p class="micro">${esc(agent.role)}</p><h3>${esc(agent.title)}</h3><p>${esc(agent.summary)}</p><div class="agent-actions"><a class="button button-dark" href="${url(agentBase+info.file)}" download>Download ZIP <span aria-hidden="true">↓</span></a><a class="text-link" href="https://chatgpt.com/skills?skill_id=${esc(agent.skill)}" rel="noopener noreferrer">Open skill details ${externalArrow}</a></div><p class="agent-integrity">Fixed snapshot · ${Math.ceil(info.bytes/1024)} KB · SHA-256 <code>${esc(info.sha256)}</code></p></article>`;
+}).join('');
+const agentFeedbackPage=canonical('/ai-and-math/');
+const aiMath=`<main id="main-content" class="wrap index-page ai-math-page">
+${breadcrumbs([['AI & Math']])}
+${heading('OPEN RESEARCH TOOLS','AI & Math','Download mathematical research agents, study live proof maps, and contribute through the atlas-wide feedback board.')}
+<div class="agent-release-bar"><div><span class="micro">PUBLIC SKILL SNAPSHOT</span><strong>${esc(agentManifest.release)}</strong><p>Three installable ZIPs; source-bound diagram workflow included.</p></div><a href="${url(agentBase+'manifest.json')}">Release manifest &amp; checksums ${externalArrow}</a></div>
+<section id="agents" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">01 / DOWNLOAD</p><h2>Research agents</h2><p>These are downloadable versions of the three active skill packages. They are tools for research work, not independent proof certificates or unattended background services.</p></div><div class="agent-grid">${agentCards}</div></section>
+<section id="logic-diagrams" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">02 / LOGIC MAPS</p><h2>Logical relationships, not just a list</h2><p>The common drawing workflow starts with exact statements and supporting arguments.</p></div><div class="logic-capability-grid"><div><strong>AND</strong><p>Every jointly required premise, additional hypothesis and input stays visible.</p></div><div><strong>OR</strong><p>Separate sufficient proof routes are distinguished from speculative alternatives.</p></div><div><strong>Open / blocked</strong><p>Missing inferences and invalid shortcuts never become proved arrows.</p></div><div><strong>Source &amp; scope</strong><p>Stable identifiers, detailed argument links, full and focused diagrams, and a text view on phones.</p></div></div><div class="ai-example-links"><a href="${url('/projects/bedford-taylor/map/#total-logic')}">Explore the Bedford–Taylor overall logical map ${externalArrow}</a><a href="${url('/projects/strong-green/results/proof-diagrams/')}">Explore the Strong Green proof maps ${externalArrow}</a></div></section>
+<section id="usage" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">03 / USE &amp; UPDATE</p><h2>Use a fixed version or follow updates</h2></div><ol class="ai-steps"><li>Download a ZIP and extract its single skill folder into your agent's skills directory; read its <code>SKILL.md</code>.</li><li>For portable interactive diagrams, use Python 3.10+ and Graphviz <code>dot</code>. The publisher can integrate the resulting views into an existing website.</li><li>Use the release manifest to verify SHA-256. Each future agent update receives a new immutable ZIP URL; the current download links change only after review and publication.</li></ol><p class="ai-muted">These packages are public snapshots. Updates to the personal agent do not automatically modify the website; a reviewed release must be published here.</p></section>
+<section id="research-sites" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">04 / MATHEMATICS</p><h2>Research and foundations</h2></div><div class="ai-research-links"><a href="${url('/')}"><strong>Conjecture Atlas</strong><span>The umbrella atlas of foundations, conjectures and revisions.</span>${externalArrow}</a><a href="${url('/projects/bedford-taylor/')}"><strong>Non-Archimedean Bedford–Taylor Theory</strong><span>Source-linked results, open gates, papers and the overall logic map.</span>${externalArrow}</a><a href="${url('/projects/strong-green/')}"><strong>Beilinson–Bloch / Strong Green</strong><span>Research programme, permanent records and proof diagrams.</span>${externalArrow}</a></div><p class="ai-inline">For the wider position on shared mathematical knowledge, read the <a href="${url('/manifesto/')}">manifesto</a>.</p></section>
+<section id="agent-feedback" class="ai-section ai-feedback"><div class="ai-section-heading"><p class="eyebrow">05 / DISCUSSION</p><h2>One feedback system</h2><p>Questions about the agents, accessibility, research maps, or future features use the existing Atlas GitHub Issues board. General comments need no theorem or edition number.</p></div><a class="button button-dark" href="${url('/feedback/')}">Leave general feedback ${externalArrow}</a><a class="text-link" href="${url('/feedback/')}?page=${encodeURIComponent(agentFeedbackPage)}">Discuss this tools page</a><a class="text-link" href="${url('/maintenance/')}">Publication &amp; maintenance</a></section>
+</main>`;
+await save('/ai-and-math/',loadPage('AI & Math — Research Agents','Three downloadable mathematical research agents with source-bound logical diagrams, proof links and fixed release checksums.',aiMath,'/ai-and-math/'));
 
 for(const [route,title,description,group] of [
   ['/foundations/','Foundations','Definitions, theorems, complete proofs, and stable references.',foundations],
@@ -304,6 +344,7 @@ ${heading('ABOUT THIS SITE','Math is better when we share it.','Conjecture Atlas
 <div class="simple-track-list"><a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and complete proofs.</p></div>${externalArrow}</a>
 <a href="${url('/research/')}"><div><h3>Research</h3><p>Open questions, partial results, and plans for new theories.</p></div>${externalArrow}</a></div></section>
 <section class="simple-about-section"><h2>How we work</h2><p>We use AI to read, organize, and check mathematics. Exact versions and the history of changes remain available. We also aim to use Lean for formal verification.</p><a class="text-link" href="${url('/manifesto/')}">Read more about our goals ${externalArrow}</a></section>
+<section class="simple-about-section"><h2>Research agents</h2><p>Three downloadable mathematical skills support source review, logically precise diagrams, public editions and readable exposition.</p><a class="text-link" href="${url('/ai-and-math/')}">AI &amp; Math: downloads and documentation ${externalArrow}</a></section>
 <section class="simple-about-section"><h2>Feedback and editing</h2><p>All projects share one GitHub Issues feedback board. General comments do not need a theorem ID. Mathematical revisions are reviewed separately and published with an edition history.</p><a class="button button-dark" href="${url('/feedback/')}">Read and share feedback ${externalArrow}</a> <a class="text-link" href="${url('/maintenance/')}">Publication and maintenance</a></section>
 </main>`;
 await save('/about/',loadPage('About this site','About the open mathematical atlas and how to contribute.',about,'/about/'));
@@ -343,6 +384,7 @@ const updates=`<main id="main-content" class="wrap index-page simple-track-index
 ${breadcrumbs([['Updates']])}
 ${heading('CONJECTURE ATLAS','Updates','Changes to published projects. Old versions remain available.')}
 <div class="simple-project-list">${bundles.filter(x=>x.revision>0).map(x=>`<a href="${url('/projects/'+x.project.id+'/')}"><div><span class="micro">${x.edition?'Edition '+esc(x.edition):'Version '+x.revision} · ${esc(x.publishedAt.slice(0,10))}</span><h3>${esc(x.project.title)}</h3><p>${esc(x.changeSummary)}</p></div></a>`).join('')||'<p class="simple-track-empty">No updates yet.</p>'}</div>
+<div class="agent-update-note"><span class="micro">TOOLS · ${esc(agentManifest.release.slice(0,10))}</span><a href="${url('/ai-and-math/')}">Mathematical agents: logical diagram release ${externalArrow}</a><p>Three new fixed ZIP snapshots; published research editions remain unchanged.</p></div>
 <p class="discussion-note">Every publication also has a Git commit and change history in <a href="${gh}/commits/main">GitHub</a>.</p>
 </main>`;
 await save('/updates/',loadPage('Updates','Public revision history for mathematical projects.',updates,'/updates/'));
@@ -361,7 +403,9 @@ await cp(path.join(root,'public'),output,{recursive:true});
 const strongGreen=await buildStrongGreen({root,output,base,origin,repository});
 const bedfordTaylor=await buildBedfordTaylor({root,output,base,origin,repository});
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
-  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
+  ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),
+  ...agentDetails.map(a=>({title:a.title,summary:a.summary,keywords:['agent','skill','logical diagrams','AI & Math'],link:url('/ai-and-math/#'+a.id),category:'tools',body:a.role})),
+  ...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
 await cp(path.join(root,'lib','feedback.mjs'),path.join(output,'assets','feedback-core.mjs'));
@@ -370,7 +414,7 @@ await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...bedfordTaylor.routes,...strongGreen.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...bedfordTaylor.routes,...strongGreen.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
