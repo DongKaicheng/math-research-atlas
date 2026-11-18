@@ -120,8 +120,52 @@ The inventory records reading coverage, not mathematical acceptance.
   two Bedford–Taylor editions (853 files, 1,006 source bindings, 24 PDFs and
   four ZIP inventories). The protected historical corpus is unchanged.
 
-Production publication and live browser observations will be appended after
-the checked commit is deployed.
+## Production verification
+
+The code revision was published as
+`5fbb5c7efaf1ba040d09fd64c7cb596254371b73`, with reviewed tree
+`f1a3e0a9efba783c4b04c01f7d1db37bed738ef4`.
+[Pages run 44325568095](https://github.com/DongKaicheng/math-research-atlas/actions/runs/44325568095)
+completed successfully. The history-protection check also passed against
+`6e571fa97ed5739624bd555c7665bc5f0da88e95` before publication.
+
+The following observations were made on the deployed public site, not only on
+the local preview:
+
+- The [complete Progress proof page](https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/results/proof-diagrams/)
+  shows 117 proof trees, 968 scoped node occurrences and 304 logical junctions.
+  Browser text bounds were checked against all 968 node boxes, with no overflow.
+- The independent [kernel-domain page](https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/results/proof-diagrams/kernel-domain/)
+  contains eight trees and 107 nodes; the
+  [curve–surface product page](https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/results/proof-diagrams/surface-products/)
+  contains seven trees and 69 nodes; the
+  [arithmetic-family page](https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/results/proof-diagrams/arithmetic-families/)
+  contains 14 trees and 146 nodes. All 146 arithmetic-family node boxes were
+  also checked in the browser, with no text overflow.
+- Jump links to the principal-transport tree, the native good-reduction tree
+  and the positive-host tree updated the fragment and focused the corresponding
+  diagram target. The principal-transport source link opened the
+  `r16h:principal` anchor in the global-height paper.
+- The arithmetic-family diagram visibly distinguishes the `ANY` junction for
+  the two complete local routes from the `ALL` junction for the joint inputs
+  within a route. The screenshot below records a viewport portion of this
+  longer diagram; the remaining branches continue below it.
+- At a 454 CSS-pixel viewport produced by ordinary browser zoom, the page body
+  was 449 pixels wide, the diagram viewport was 411 pixels wide, and the
+  1,120-pixel-wide diagram remained available in its own scrolling area. All
+  107 kernel node boxes retained their text without overflow. This is a narrow
+  browser-zoom check, not mobile-device emulation. Browser zoom was restored.
+- The shared feedback link retained the Strong Green project, edition v0.5.1
+  and the exact principal-transport tree fragment. No feedback was submitted.
+- The actual browser download of the complete linked SVG matched the built
+  artifact byte for byte, SHA-256
+  `4453762a68c61ee2d32613a8c7c86f402a54f1812f0259dbd9164b15bab0839a`.
+
+The unaltered live screenshot is
+[strong-green-proof-routes-live-2026-11-18.jpg](strong-green-proof-qa/strong-green-proof-routes-live-2026-11-18.jpg),
+SHA-256 `3f06d727a83dbc48780f1a44ab9c66557f15160fb84645d8011e2001626005ca`.
+This evidence-only follow-up does not change mathematical sources, statuses or
+diagram content.
 
 ## Further source-backed expansion queue
 
