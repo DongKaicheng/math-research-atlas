@@ -18,10 +18,15 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   if(pointer.project!=='bedford-taylor'||!/^v\d+\.\d+\.\d+$/.test(revision))throw Error('Invalid Bedford–Taylor current edition');
   const releaseRoot=path.join(root,'content/bedford-taylor/releases');
   const manifest=JSON.parse(await readFile(path.join(releaseRoot,revision,'manifest.json'),'utf8'));
-  if(manifest.revision!==revision||manifest.publication.basePath!==base||manifest.publication.origin!==origin)throw Error('Bedford–Taylor immutable edition origin/base mismatch');
+  // An edition manifest identifies the frozen source publication, not the
+  // hostname on which a later, mutable current-page projection is served.
+  // Preserve the original manifest and frozen bytes when moving the atlas.
+  if(manifest.revision!==revision||!manifest.publication.basePath||!manifest.publication.origin)throw Error('Invalid Bedford–Taylor immutable edition publication');
   const fixedPath=manifest.publication.fixedPath;
+  const sourceFixedBase=manifest.publication.basePath+fixedPath;
+  const sourceFixedOrigin=manifest.publication.origin+fixedPath;
   const fixedBase=base+fixedPath,currentBase=base+projectPath;
-  const fixedOrigin=origin+fixedPath,currentOrigin=origin+projectPath;
+  const currentOrigin=origin+projectPath;
   const frozenPublic=path.join(root,'public',fixedPath.slice(1));
   const releases=(await readdir(releaseRoot)).filter(v=>/^v\d+\.\d+\.\d+$/.test(v)).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
   const routes=[],indexableRoutes=[];
@@ -33,24 +38,52 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     routes.push(...oldManifest.routes.map(route=>oldPath+route));
   }
   const htmlRoutes=new Set(manifest.routes);
+  const migrated=base!==manifest.publication.basePath||origin!==manifest.publication.origin;
+  const currentAssets=currentBase+'/assets';
+  const deploymentLink=value=>{
+    let target=value;
+    if(value.startsWith(manifest.publication.basePath+'/'))target=base+value.slice(manifest.publication.basePath.length);
+    else if(value.startsWith(manifest.publication.origin+'/'))target=origin+value.slice(manifest.publication.origin.length);
+    return target.replaceAll(encodeURIComponent(manifest.publication.origin),encodeURIComponent(origin));
+  };
+  const deploymentHTML=text=>text.replace(/\b(href|src)="([^"]*)"/g,(_all,attr,value)=>attr+'="'+deploymentLink(value)+'"');
   function currentLink(href){
-    if(!href.startsWith(fixedBase))return href;
-    const suffix=href.slice(fixedBase.length),p=suffix.split(/[?#]/)[0];
-    return htmlRoutes.has(p)?currentBase+suffix:href;
+    if(!href.startsWith(sourceFixedBase))return href;
+    const suffix=href.slice(sourceFixedBase.length),p=suffix.split(/[?#]/)[0];
+    return htmlRoutes.has(p)?currentBase+suffix:fixedBase+suffix;
   }
   function currentHTML(text){
     // Work only on hyperlinks, not formula text, hidden source, or file hashes.
     text=text.replace(/<a\b[^>]*>/g,tag=>tag.includes('data-atlas-edition')?tag:tag.replace(/\bhref="([^"]*)"/,(_all,value)=>'href="'+currentLink(value)+'"'));
-    text=text.replaceAll('data-bt-page-base="'+fixedBase+'"','data-bt-page-base="'+currentBase+'"');
-    text=text.replace(/(<link rel="canonical" href=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(fixedOrigin,currentOrigin)+b);
-    text=text.replace(/(<meta property="og:url" content=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(fixedOrigin,currentOrigin)+b);
-    text=text.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_all,json)=>'<script type="application/ld+json">'+json.replaceAll(fixedOrigin,currentOrigin)+'</script>');
+    // The current reading projection is mutable site infrastructure. Route its
+    // links and assets through the deployment base, while frozen editions and
+    // the historical release manifest remain byte-for-byte unchanged.
+    text=text.replaceAll('data-bt-page-base="'+sourceFixedBase+'"','data-bt-page-base="'+currentBase+'"');
+    text=text.replace(/(<link rel="canonical" href=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(sourceFixedOrigin,currentOrigin)+b);
+    text=text.replace(/(<meta property="og:url" content=")([^"]*)(")/,(_all,a,u,b)=>a+u.replace(sourceFixedOrigin,currentOrigin)+b);
+    text=text.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_all,json)=>'<script type="application/ld+json">'+json.replaceAll(sourceFixedOrigin,currentOrigin)+'</script>');
+    text=deploymentHTML(text);
+    if(migrated)for(const name of ['site.js','atlas-feedback.js'])text=text.replaceAll('src="'+fixedBase+'/assets/'+name+'"','src="'+currentAssets+'/'+name+'"');
     // Navigation is current infrastructure. It is never written back into a
     // frozen reading edition or its mathematical content.
     text=text.replace(/<body class="([^"]*)"/,'<body class="bt-current $1"');
+    text=text.replaceAll('>Conjecture Atlas<','>'+esc(process.env.SITE_BRAND||'Conjecture Atlas')+'<');
     text=text.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-map.css"></head>`);
     text=text.replace(/(<nav id="primary-navigation"[^>]*><a\b[^>]*>Overview<\/a>)/,'$1'+`<a href="${currentBase}/map/">Research map</a>`);
     return text;
+  }
+  if(migrated){
+    // Frozen scripts/data encode the original deployment. Publish current-only
+    // infrastructure projections; never edit their frozen source counterparts.
+    const assetDirectory=path.join(output,projectPath.slice(1),'assets');
+    const dataDirectory=path.join(output,projectPath.slice(1),'data');
+    await mkdir(assetDirectory,{recursive:true});await mkdir(dataDirectory,{recursive:true});
+    const feedback=await readFile(path.join(frozenPublic,'assets/atlas-feedback.js'),'utf8');
+    await writeFile(path.join(assetDirectory,'atlas-feedback.js'),feedback.replaceAll(sourceFixedBase,fixedBase));
+    const siteScript=await readFile(path.join(frozenPublic,'assets/site.js'),'utf8');
+    await writeFile(path.join(assetDirectory,'site.js'),siteScript.replaceAll(sourceFixedBase,currentBase));
+    const data=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));
+    await writeFile(path.join(dataDirectory,'search-index.json'),JSON.stringify(data.map(item=>({...item,url:deploymentLink(currentLink(item.url))}))));
   }
   for(const route of manifest.routes){
     const source=path.join(frozenPublic,filename(route)),target=path.join(output,projectPath.slice(1),filename(route));
@@ -95,7 +128,9 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   mapPage=mapPage.replace(/<a\b[^>]*data-atlas-feedback[^>]*>/g,tag=>tag.replace(/\bhref="[^"]*"/,'href="'+esc(mapFeedback)+'"'));
   const logicAssetHash=createHash('sha256').update(await readFile(path.join(root,'assets/bedford-taylor-logic.css'))).update(await readFile(path.join(root,'assets/bedford-taylor-logic.js'))).digest('hex').slice(0,16);
   mapPage=mapPage.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-logic.css?v=${logicAssetHash}"><script defer src="${base}/assets/bedford-taylor-map.js"></script><script defer src="${base}/assets/bedford-taylor-logic.js?v=${logicAssetHash}"></script></head>`);
-  const mapFile=path.join(output,projectPath.slice(1),'map/index.html');await mkdir(path.dirname(mapFile),{recursive:true});await writeFile(mapFile,mapPage);
+  // The map is injected after currentHTML; rebase only its rendered link
+  // attributes, leaving source-bound SVGs, records and manifests untouched.
+  const mapFile=path.join(output,projectPath.slice(1),'map/index.html');await mkdir(path.dirname(mapFile),{recursive:true});await writeFile(mapFile,deploymentHTML(mapPage));
   routes.push(projectPath+'/map/');indexableRoutes.push(projectPath+'/map/');
   const sourceIndex=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));
   const searchIndex=[...map.searchIndex,...sourceIndex.map(item=>({title:item.title,summary:item.excerpt||'',keywords:['Bedford–Taylor',item.id,item.type].filter(Boolean),link:currentLink(item.url),category:item.type,id:item.id,body:item.text||item.excerpt||item.title,project:'bedford-taylor',version:revision}))];

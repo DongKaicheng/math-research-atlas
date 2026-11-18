@@ -36,6 +36,15 @@ source receipts and public/projects/<project>/editions are append-only. Create
 a new edition instead of rewriting frozen bytes. Do not copy freeze markers
 or old review hashes to changed input merely to make a check pass.
 
+The three public mathematical skill ZIPs are a separate, explicitly released
+tool publication. Their immutable archives and checksum manifest live in
+`public/agents/releases/<release>/`; `public/agents/current.json` selects the
+latest. Use `scripts/package-agents.py` with the installed owner skills to
+prepare a new release; never rebuild earlier archives or publish private Site
+bindings. The `AI & Math` page and shared feedback board are the only public
+tool navigation and discussion routes. A skills update is not automatically
+synchronized until a reviewed atlas release is deployed.
+
 For Beilinson–Bloch use `content/strong-green/current.json` and the versioned
 records and papers under `content/strong-green/releases/<edition>/`. Follow
 `docs/PAPERS.md` to rebuild matching HTML, TeX and PDF in a new draft, then use

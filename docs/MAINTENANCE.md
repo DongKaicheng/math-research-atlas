@@ -84,6 +84,37 @@ or withdrawal notice in a new revision, and links to the previous statement and
 the reason for the change. Historical versions describe their historical status;
 the current page must not present a withdrawn result as valid.
 
+## Mathematical agent releases
+
+The independent mathematical tools on [AI & Math](/ai-and-math/) have a separate
+version track from mathematical results. The current pointer is
+`public/agents/current.json`; fixed archives and their SHA-256 manifest are in
+`public/agents/releases/<release>/`. No agent update changes a research theorem
+or formal paper edition by implication.
+
+For a new agent release, first review the installed skill sources and their
+diagrams, exclude machine caches and personal Site bindings, then run:
+
+```sh
+python3 scripts/package-agents.py --source-root <absolute-installed-skills-parent> --release YYYY-MM-DD-short-name
+python3 scripts/package-agents.py --verify
+npm run build
+npm run check
+```
+
+The packaging tool refuses an existing release directory. Inspect the public
+archives, including `SKILL.md`, diagram scripts, fixed SHA-256 hashes, name/privacy
+screen, installation guidance and all three site links. Publication requires a
+normal reviewed repository update. Previous ZIP URLs remain fixed; roll back
+the current pointer in a new Git commit only after confirming the intended
+release and preserving history. No background sync from personal agents to
+GitHub Pages has been configured.
+
+Agent feedback uses the same GitHub Issues board as the mathematical atlas.
+General usability, documentation and feature comments need no theorem or
+edition; a source-specific mathematical objection should use the relevant
+project, permanent result ID and exact formal edition instead.
+
 ## Release checklist
 
 1. Review the source diff and status/dependency changes. Check other projects are
