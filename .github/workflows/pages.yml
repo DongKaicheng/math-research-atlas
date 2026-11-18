@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      history_base_sha:
+        description: Full 40-character SHA of the reviewed pre-change history baseline
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -29,25 +35,66 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
-      - name: Build static pages
+      - name: Select approved deployment configuration
+        id: deployment_config
+        env:
+          DEPLOY_BASE_PATH: ${{ vars.SITE_BASE_PATH || '/math-research-atlas' }}
+          DEPLOY_ORIGIN: ${{ vars.SITE_ORIGIN || 'https://dongkaicheng.github.io/math-research-atlas' }}
+          DEPLOY_BRAND: ${{ vars.SITE_BRAND || 'Conjecture Atlas' }}
+        run: |
+          case "${DEPLOY_BASE_PATH}|${DEPLOY_ORIGIN}|${DEPLOY_BRAND}" in
+            '/math-research-atlas|https://dongkaicheng.github.io/math-research-atlas|Conjecture Atlas')
+              printf 'artifact_path=dist-legacy\n' >> "$GITHUB_OUTPUT"
+              ;;
+            '/|https://openmath-atlas.org|OpenMath')
+              printf 'artifact_path=dist\n' >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo '::error::Unapproved deployment configuration. Leave all SITE_* variables unset for the legacy site, or set SITE_BASE_PATH=/, SITE_ORIGIN=https://openmath-atlas.org and SITE_BRAND=OpenMath together for cutover.'
+              exit 1
+              ;;
+          esac
+      - name: Build legacy publication baseline
         run: npm run build
         env:
           SITE_BASE_PATH: /math-research-atlas
           SITE_ORIGIN: https://dongkaicheng.github.io/math-research-atlas
+          SITE_BRAND: Conjecture Atlas
           GITHUB_REPOSITORY: DongKaicheng/math-research-atlas
-      - name: Check generated content and links
+      - name: Check legacy content and links
         run: npm run check
-      - name: Check frozen release integrity
+      - name: Check legacy frozen release integrity
+        run: npm run check:release
+      - name: Retain checked legacy artifact
+        run: |
+          test ! -e dist-legacy
+          mv dist dist-legacy
+      - name: Build OpenMath custom-domain publication
+        run: npm run build
+        env:
+          SITE_BASE_PATH: /
+          SITE_ORIGIN: https://openmath-atlas.org
+          SITE_BRAND: OpenMath
+          GITHUB_REPOSITORY: DongKaicheng/math-research-atlas
+      - name: Check custom-domain routes and links
+        run: npm run check:domain
+        env:
+          SITE_BASE_PATH: /
+          SITE_ORIGIN: https://openmath-atlas.org
+          SITE_BRAND: OpenMath
+      - name: Check custom-domain frozen release integrity
         run: npm run check:release
       - name: Preserve published history
         run: npm run check:history
         env:
-          HISTORY_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HISTORY_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || inputs.history_base_sha }}
       - name: Upload checked pages
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          # Upload exactly one already-checked artifact. Preparing the custom
+          # domain does not activate it while repository variables are unset.
+          path: ${{ steps.deployment_config.outputs.artifact_path }}
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build

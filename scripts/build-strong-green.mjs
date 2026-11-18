@@ -119,6 +119,10 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   const currentAsset=name=>url(projectPath+'/assets/'+name)+'?v='+currentAssetVersions.get(name);
   const diagramAssets=new Map();
   function link(href,namespace){
+    // Historical paper reference destinations retain their exact edition,
+    // while the mutable reading projection follows the active site origin.
+    const legacyOrigin='https://dongkaicheng.github.io/math-research-atlas';
+    if(href.startsWith(legacyOrigin+'/'))return origin+href.slice(legacyOrigin.length);
     if(href.startsWith('/atlas-feedback/'))return url('/feedback/')+href.slice('/atlas-feedback/'.length);
     if(href==='/atlas-maintenance/')return url('/maintenance/');
     if(diagramAssets.has(href))return url(href)+'?v='+diagramAssets.get(href).version;
@@ -168,7 +172,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     const proofRoute=route===progressProofPath||route.startsWith(progressProofPath+'/');
     const logicRoute=route==='/research-map'||proofRoute;
     return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)} | Conjecture Atlas</title><meta name="description" content="${esc(description)}">
+<title>${esc(title)} | ${esc(process.env.SITE_BRAND||'Conjecture Atlas')}</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}">
 ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
@@ -176,7 +180,7 @@ ${archived?'':`<link rel="stylesheet" href="${currentAsset('research-map.css')}"
 ${!archived&&logicRoute?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
 ${!archived&&(proofRoute||route==='/results')?`<link rel="stylesheet" href="${currentAsset('progress-proofs.css')}">`:''}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
-<div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">Conjecture Atlas</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
+<div class="atlas-project-bar"><div class="site-shell"><a href="${url('/')}">${esc(process.env.SITE_BRAND||'Conjecture Atlas')}</a><nav aria-label="Atlas navigation"><a href="${url('/research/')}">All research projects</a><a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Shared feedback</a><a href="${url('/feedback/guide/')}">Contribution guide</a></nav></div></div>
 <header class="site-header simple-site-header"><div class="site-shell masthead"><a class="site-brand" href="${url(namespace+'/')}"><span class="brand-title">${esc(project.title)}</span></a>
 <nav class="primary-nav" aria-label="Project navigation">${projectNav.map(([p,label])=>`<a href="${link(p,namespace)}"${currentNav===p?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
 ${archived?`<div class="edition-banner"><div class="site-shell">Frozen public edition ${esc(revision)}. <a href="${url(projectPath+(route==='/'?'/':trailing(route)))}">Read the current version of this page</a>.</div></div>`:''}
