@@ -166,5 +166,36 @@ Final prepublication verification:
 - Desktop and narrow screenshots are retained in
   `docs/screenshots/bedford-taylor-overall-map-{desktop,mobile}.jpg`.
 
-The non-force publication and live-page verification will be recorded below
-after the deployment has actually completed.
+## Publication and live verification
+
+The functional update was published as commit
+`0de0d8e8401df35a8f617329459d3a5eabb21418`, with the actual remote parent
+`25b978524dc52388407299a18985ca95aa8a9fe4`. The concurrent Strong Green update
+and its subsequent live-audit record were preserved. All 32 uploaded blobs
+matched their local Git object IDs; the assembled tree matched the staged
+local tree exactly. The branch update used `force: false` and the expected
+parent SHA. The history guard passed against that actual parent.
+
+[Publish mathematical atlas, run 44337069477](https://github.com/DongKaicheng/math-research-atlas/actions/runs/44337069477)
+completed successfully before the following live browser checks:
+
+- The project homepage displayed its separate **Overall logical map** link.
+  Following it reached the public map's `#total-logic` section, with 94 nodes,
+  80 explained connections, 14 formal open items, and the retained 17 focused
+  diagrams.
+- The principal view displayed 45 assertions and 35 connections. Opening the
+  complete view displayed exactly 94 SVG nodes and 80 connection gates.
+- The live quadratic-transgression bridge's direct fragment opened its
+  canonical explanation. The real constant coefficient restriction, both
+  joint inputs, degree budget, original tests and source references were
+  present.
+- Discuss the overall map reached the shared feedback form with project
+  `bedford-taylor`, edition `v1.0.1`, an empty result ID and the exact public
+  `#total-logic` URL. General feedback still opened without a theorem or
+  edition. No feedback was submitted as part of verification.
+- The principal diagram fitted the desktop canvas at 73%; page content width
+  and scroll width both measured 1348 pixels. Its live viewport was captured
+  in `docs/screenshots/bedford-taylor-overall-map-live.jpg`.
+
+The follow-up commit containing this verification record and its screenshot
+changes no rendered research content, frozen source, or mathematical status.
