@@ -1,12 +1,12 @@
 import {
-  FEEDBACK_CATEGORIES, feedbackContext, feedbackIssueDraft,
+  FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, isSiteWideCategory, feedbackContext, feedbackIssueDraft,
   issueCategory, issueProject, matchesFeedback, isRepositoryIssueUrl,
 } from './feedback-core.mjs';
 
 const repository = window.ATLAS_GITHUB_REPOSITORY;
 const list = document.getElementById('github-feedback');
 if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository)) {
-  const categories = Object.fromEntries(FEEDBACK_CATEGORIES);
+  const categories = Object.fromEntries([...FEEDBACK_CATEGORIES, ...COMMUNITY_CATEGORIES]);
   const buttons = [...document.querySelectorAll('.discussion-filters [data-category]')];
   const githubUrl = 'https://github.com/' + repository + '/issues';
   const issueLinks = [...document.querySelectorAll('a[data-feedback-kind]')];
@@ -117,7 +117,7 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
       const project = feedbackContext({project: scope.value}).project;
       if (project === context().project) return;
       lastContext = null;
-      navigate({project, entry: '', version: '', page: '', ...(project && category() === 'general' ? {category: ''} : {})},
+      navigate({project, entry: '', version: '', page: '', ...(project && isSiteWideCategory(category()) ? {category: ''} : {})},
         'Project changed. Previous result, version and page context was cleared. Add the context for this project if needed.');
     });
     contextForm.addEventListener('submit', event => {
@@ -126,7 +126,7 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
       const values = feedbackContext(raw);
       const invalid = feedbackIssueDraft(repository, 'question', raw).omitted.filter(key => !values[key]);
       lastContext = null;
-      navigate({...values, ...(values.project && category() === 'general' ? {category: ''} : {})}, contextWarning(invalid));
+      navigate({...values, ...(values.project && isSiteWideCategory(category()) ? {category: ''} : {})}, contextWarning(invalid));
       // Keep rejected values available for copying; only the form URL omits
       // them. Do not turn a long source reference into a different short one.
       for (const key of invalid) contextForm.elements.namedItem(key).value = raw[key];
@@ -210,10 +210,10 @@ if (repository && list && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository))
     finally { loading = false; draw(); }
   }
   buttons.forEach(button => button.addEventListener('click', () => {
-    if (button.dataset.category === 'general') lastContext = null;
+    if (isSiteWideCategory(button.dataset.category)) lastContext = null;
     navigate({
       category: button.dataset.category,
-      ...(button.dataset.category === 'general' ? {project: '', entry: '', version: '', page: ''} : {}),
+      ...(isSiteWideCategory(button.dataset.category) ? {project: '', entry: '', version: '', page: ''} : {}),
     });
   }));
   addEventListener('popstate', () => {contextFeedback = ''; draw();});

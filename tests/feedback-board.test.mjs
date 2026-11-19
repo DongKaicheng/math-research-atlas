@@ -38,7 +38,7 @@ const issue = (number, extra = {}) => ({
 async function board(responses, query = '', withContext = false) {
   const list = new Element('section');
   const contextHost = withContext ? new Element('div') : null;
-  const buttons = ['', 'general', 'question', 'correction'].map(category => {
+  const buttons = ['', 'general', 'question', 'correction', 'project-proposal', 'maintainer-application'].map(category => {
     const el = new Element('button'); el.dataset.category = category; return el;
   });
   const links = ['general', 'question'].map(kind => {
@@ -238,4 +238,16 @@ test('The configured repository owner is displayed as Maintainer on discussion c
   const meta = nodes(card).find(n => n.className === 'discussion-meta');
   assert.match(textOf(meta), /Maintainer/);
   assert.doesNotMatch(textOf(meta), /example/i);
+});
+
+test('Application filters clear inherited theorem context and use the same public Issue feed', async () => {
+  const b = await board([[issue(1), issue(2, {title: '[Project-proposal] A new subject'}), issue(3, {title: '[Maintainer-application] A focused contribution'})]], '?project=strong-green&entry=SG-001&version=v0.5.1', true);
+  b.buttons.find(button => button.dataset.category === 'project-proposal').click();
+  for (const key of ['project', 'entry', 'version', 'page']) assert.equal(b.location.searchParams.has(key), false);
+  assert.match(textOf(b.list), /A new subject/);
+  assert.match(textOf(b.list), /New project proposals/);
+  assert.doesNotMatch(textOf(b.list), /A focused contribution|Detail 1/);
+  b.buttons.find(button => button.dataset.category === 'maintainer-application').click();
+  assert.match(textOf(b.list), /A focused contribution/);
+  assert.equal(b.requests.length, 1);
 });

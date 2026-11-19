@@ -1,0 +1,61 @@
+name: Propose a new mathematical project
+description: "Suggest a foundations project or research programme for OpenMath."
+title: "[Project-proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New mathematical projects are welcome, including subjects beyond the current collection.
+        This proposal opens a conversation with the site owner, who decides whether to accept a project and appoint its managers.
+        This is a **public** GitHub Issue. Your GitHub username, text, links and attachments will be public. Include only material you may share; a .zip attachment is optional.
+  - type: input
+    id: project-title
+    attributes:
+      label: Proposed project title
+    validations:
+      required: true
+  - type: dropdown
+    id: track
+    attributes:
+      label: Project track
+      options:
+        - "Foundations: definitions, theorems and complete proofs"
+        - "Research: conjectures, partial results and a programme"
+        - "Both, with clearly separated parts"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Scope and mathematical purpose
+      description: "What would the project explain or investigate? Describe its main objects, intended readers and useful contribution."
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Current state of the work
+      description: "Distinguish established material, supplied proofs, partial results, conjectures and open steps. An early-stage proposal is welcome."
+    validations:
+      required: true
+  - type: textarea
+    id: materials
+    attributes:
+      label: Public materials and references
+      description: "Link to a draft, repository, notes, papers or outline that you are entitled to share. State what is available and what remains to be prepared."
+    validations:
+      required: true
+  - type: textarea
+    id: maintenance
+    attributes:
+      label: How you would contribute
+      description: "Would you help develop, review or maintain this project? Describe a realistic scope; you may also propose a project for others to develop."
+    validations:
+      required: true
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public proposal
+      options:
+        - label: "I understand that this proposal is public and that project acceptance is decided by the site owner."
+          required: true

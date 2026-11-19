@@ -5,7 +5,8 @@ import katex from 'katex';
 import {buildBedfordTaylor} from './build-bedford-taylor.mjs';
 import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
-import {FEEDBACK_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
+import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
+import {buildCommunityPages} from './build-community.mjs';
 import {restorePackedAssets} from './restore-packed-assets.mjs';
 import {createHash} from 'node:crypto';
 
@@ -147,6 +148,7 @@ ${extraHead}
 <a href="${url('/research/')}">Research</a>
 <a href="${url('/ai-and-math/')}">AI &amp; Math</a>
 <a href="${url('/feedback/')}">Feedback</a>
+<a href="${url('/contribute/')}">Contribute</a>
 <a href="${url('/about/')}">About</a>
 </nav>
 <div class="header-actions"><a class="search-link" href="${url('/search/')}" aria-label="Search">Search</a></div>
@@ -158,6 +160,7 @@ ${content}
 <a href="${url('/about/')}">About</a><a href="${url('/manifesto/')}">Why this site?</a>
 <a href="${url('/ai-and-math/')}">AI &amp; Math</a>
 <a href="${url('/feedback/')}">Feedback</a><a href="${url('/updates/')}">Updates</a><a href="${url('/maintenance/')}">How the site is maintained</a>
+<a href="${url('/contribute/')}">Contribute</a><a href="${url('/admin/')}">Management</a>
 <a href="${gh}" target="_blank" rel="noopener noreferrer">GitHub</a>
 </nav></div></footer>
 ${extraScripts}
@@ -233,6 +236,10 @@ const featured=`<main id="main-content" class="simple-home">
 <a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span>${externalArrow}</a>
 <a href="${url('/manifesto/')}"><span>Why this site?</span>${externalArrow}</a>
 </nav></section>
+<section class="community-home-invite wrap" aria-labelledby="home-contribute-title">
+<div><p class="eyebrow">GROW OPENMATH WITH US</p><h2 id="home-contribute-title">New projects and project managers are welcome.</h2><p>Bring a mathematical project in any subject, or help maintain an existing one. The site owner reviews new-project proposals and appoints managers for an agreed scope.</p></div>
+<div class="community-actions"><a class="button button-dark" href="${url('/contribute/projects/')}">Propose a project</a><a class="button button-outline" href="${url('/contribute/maintainers/')}">Become a project manager</a></div>
+</section>
 <section class="simple-tracks wrap"><h2>Two kinds of work</h2><div class="simple-track-list">
 <a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and full proofs, with clear links between results.</p></div>${externalArrow}</a>
 <a href="${url('/research/')}"><div><h3>Research</h3><p>Conjectures, partial results, and plans for new theories.</p></div>${externalArrow}</a>
@@ -259,6 +266,7 @@ ${heading('OPEN RESEARCH TOOLS','AI & Math','Download mathematical research agen
 <section id="usage" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">03 / USE &amp; UPDATE</p><h2>Use a fixed version or follow updates</h2></div><ol class="ai-steps"><li>Download a ZIP and extract its single skill folder into your agent's skills directory; read its <code>SKILL.md</code>.</li><li>For portable interactive diagrams, use Python 3.10+ and Graphviz <code>dot</code>. The publisher can integrate the resulting views into an existing website.</li><li>Use the release manifest to verify SHA-256. Each future agent update receives a new immutable ZIP URL; the current download links change only after review and publication.</li></ol><p class="ai-muted">These packages are public snapshots. Updates to the personal agent do not automatically modify the website; a reviewed release must be published here.</p></section>
 <section id="research-sites" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">04 / MATHEMATICS</p><h2>Research and foundations</h2></div><div class="ai-research-links"><a href="${url('/')}"><strong>${esc(brand)}</strong><span>The umbrella atlas of foundations, conjectures and revisions.</span>${externalArrow}</a><a href="${url('/projects/bedford-taylor/')}"><strong>Non-Archimedean Bedford–Taylor Theory</strong><span>Source-linked results, open gates, papers and the overall logic map.</span>${externalArrow}</a><a href="${url('/projects/strong-green/')}"><strong>Beilinson–Bloch / Strong Green</strong><span>Research programme, permanent records and proof diagrams.</span>${externalArrow}</a></div><p class="ai-inline">For the wider position on shared mathematical knowledge, read the <a href="${url('/manifesto/')}">manifesto</a>.</p></section>
 <section id="agent-feedback" class="ai-section ai-feedback"><div class="ai-section-heading"><p class="eyebrow">05 / DISCUSSION</p><h2>One feedback system</h2><p>Questions about the agents, accessibility, research maps, or future features use the existing Atlas GitHub Issues board. General comments need no theorem or edition number.</p></div><a class="button button-dark" href="${url('/feedback/')}">Leave general feedback ${externalArrow}</a><a class="text-link" href="${url('/feedback/')}?page=${encodeURIComponent(agentFeedbackPage)}">Discuss this tools page</a><a class="text-link" href="${url('/maintenance/')}">Publication &amp; maintenance</a></section>
+<section id="ai-management" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">MANAGE WITH YOUR AI</p><h2>Use the agents within your project scope</h2><p>Project managers can bring their AI assistant into the management workflow to review content, prepare source changes and keep the evidence with each revision.</p></div><div class="community-actions"><a class="button button-dark" href="${url('/ai-management/')}">AI management guide</a><a class="button button-outline" href="${url('/contribute/maintainers/')}">Become a project manager</a></div></section>
 </main>`;
 await save('/ai-and-math/',loadPage('AI & Math — Research Agents','Three downloadable mathematical research agents with source-bound logical diagrams, proof links and fixed release checksums.',aiMath,'/ai-and-math/'));
 
@@ -362,6 +370,12 @@ ${heading('ABOUT THIS SITE','Math is better when we share it.',brand+' is a plac
 </main>`;
 await save('/about/',loadPage('About this site','About the open mathematical atlas and how to contribute.',about,'/about/'));
 
+const management=JSON.parse(await readFile(path.join(root,'content','administration.json'),'utf8'));
+const communityPages=buildCommunityPages({brand,repository,management,esc,url,heading,breadcrumbs});
+for(const page of communityPages){
+  await save(page.route,loadPage(page.title,page.description,page.html,page.route,page.noindex?'<meta name="robots" content="noindex,follow">':''));
+}
+
 const guideSource=await readFile(path.join(root,'content','guide.md'),'utf8');
 const guide=`<main id="main-content" class="wrap index-page discussion-page discussion-guide">
 ${breadcrumbs([['Feedback','/feedback/'],['How feedback works']])}
@@ -372,7 +386,7 @@ ${heading('CONTRIBUTE','How feedback works','Read, question, correct, and build 
 await save('/feedback/guide/',loadPage('How feedback works','How to post public feedback, upload a LaTeX or Lean ZIP, and follow a GitHub discussion.',guide,'/feedback/guide/'));
 
 const categories=CATEGORIES.map(([id,label])=>`<a data-feedback-kind="${esc(id)}" href="${githubIssueUrl(id)}">${esc(label)} ${externalArrow}</a>`).join('');
-const filters=CATEGORIES.map(([id,label])=>`<button type="button" data-category="${esc(id)}">${esc(label)}</button>`).join('');
+const filters=[...CATEGORIES,...COMMUNITY_CATEGORIES].map(([id,label])=>`<button type="button" data-category="${esc(id)}">${esc(label)}</button>`).join('');
 const feedback=`<main id="main-content" class="wrap index-page discussion-page">
 ${breadcrumbs([['Feedback']])}
 ${heading('OPEN DISCUSSION','Feedback & discussion','One shared board for general comments, mathematical questions, corrections, and research ideas across the atlas.')}
@@ -384,7 +398,8 @@ ${heading('OPEN DISCUSSION','Feedback & discussion','One shared board for genera
 <p class="discussion-note">Discussions and attached ZIP files are public. You need a GitHub account to post or comment. <a href="${gh}/issues">View all issues on GitHub</a>.</p>
 <section id="new" class="discussion-form"><h2>Start a discussion</h2><p>Choose a category to continue on GitHub. Opening the form does not submit anything. You can write your message, attach a ZIP file, and review it before posting publicly.</p>
 <div class="feedback-choice-grid">${categories}</div>
-<p>Corrections and proofs do not automatically change a published mathematical claim. The owner reviews proposed changes separately.</p>
+<p>Corrections and proofs do not automatically change a published mathematical claim. Authorised project maintainers review proposed changes separately.</p>
+<p class="community-board-entry">Want to develop the atlas? <a href="${url('/contribute/projects/')}">Propose a new project</a> or <a href="${url('/contribute/maintainers/')}">apply to be a project manager</a>. Applications use this same discussion board and are reviewed by the site owner.</p>
 </section>
 </main>`;
 await save('/feedback/',loadPage('Feedback & discussion','Open GitHub-based mathematical feedback with comments, categories, and LaTeX attachments.',feedback,'/feedback/','',
@@ -418,6 +433,7 @@ const bedfordTaylor=await buildBedfordTaylor({root,output,base,origin,repository
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
   ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),
   ...agentDetails.map(a=>({title:a.title,summary:a.summary,keywords:['agent','skill','logical diagrams','AI & Math'],link:url('/ai-and-math/#'+a.id),category:'tools',body:a.role})),
+  ...communityPages.filter(p=>!p.noindex).map(p=>({title:p.title,summary:p.description,keywords:['contribute','new project','project manager','AI management'],link:url(p.route),category:'participation',body:p.description})),
   ...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
@@ -427,12 +443,12 @@ await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...bedfordTaylor.routes,...strongGreen.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
 const coreRoutes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
-const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))];
+const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&p!=='/admin/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))];
 for(const route of coreRoutes)if(!indexableRoutes.includes(route))throw Error('Core Search Console entry is not indexable: '+route);
 const sitemapXML=paths=>'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+paths.map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
 await writeFile(path.join(output,'sitemap.xml'),sitemapXML([...coreRoutes,...indexableRoutes.filter(p=>!coreRoutes.includes(p))]));
