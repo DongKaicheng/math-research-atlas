@@ -7,6 +7,12 @@ const projectPath='/projects/bedford-taylor';
 const exists=async file=>{try{await access(file);return true;}catch{return false;}};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const filename=route=>route==='/'?'index.html':route.endsWith('/')?route.slice(1)+'index.html':route.slice(1);
+const sourceDisplayTranslations = [
+  ['Round 13：失败路线、修复和第一开放门槛', 'Round 13: Failed Approaches, Repairs, and the First Open Gate'],
+  ['Non-Archimedean Bedford–Taylor theory：内部成果审计、任务清单与研究计划', 'Non-Archimedean Bedford–Taylor Theory: Internal Results Audit, Task List, and Research Plan'],
+  ['(中文)', '(Chinese original)'],
+];
+const englishDisplay = text => sourceDisplayTranslations.reduce((value,[original,english])=>value.replaceAll(original,english),text);
 
 /** Project current pages are a projection of an immutable, unsigned edition.
  * No TeX execution, mathematical regeneration or status promotion takes place.
@@ -70,7 +76,7 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     text=text.replaceAll('>Conjecture Atlas<','>'+esc(process.env.SITE_BRAND||'Conjecture Atlas')+'<');
     text=text.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-map.css"></head>`);
     text=text.replace(/(<nav id="primary-navigation"[^>]*><a\b[^>]*>Overview<\/a>)/,'$1'+`<a href="${currentBase}/map/">Research map</a>`);
-    return text;
+    return englishDisplay(text);
   }
   if(migrated){
     // Frozen scripts/data encode the original deployment. Publish current-only
@@ -83,7 +89,7 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     const siteScript=await readFile(path.join(frozenPublic,'assets/site.js'),'utf8');
     await writeFile(path.join(assetDirectory,'site.js'),siteScript.replaceAll(sourceFixedBase,currentBase));
     const data=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));
-    await writeFile(path.join(dataDirectory,'search-index.json'),JSON.stringify(data.map(item=>({...item,url:deploymentLink(currentLink(item.url))}))));
+    await writeFile(path.join(dataDirectory,'search-index.json'),JSON.stringify(data.map(item=>({...item,title:englishDisplay(item.title),url:deploymentLink(currentLink(item.url))}))));
   }
   for(const route of manifest.routes){
     const source=path.join(frozenPublic,filename(route)),target=path.join(output,projectPath.slice(1),filename(route));
@@ -142,7 +148,7 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
   const mapFile=path.join(output,projectPath.slice(1),'map/index.html');await mkdir(path.dirname(mapFile),{recursive:true});await writeFile(mapFile,deploymentHTML(mapPage));
   routes.push(projectPath+'/map/');indexableRoutes.push(projectPath+'/map/');
   const sourceIndex=JSON.parse(await readFile(path.join(frozenPublic,'data/search-index.json'),'utf8'));
-  const searchIndex=[...map.searchIndex,...sourceIndex.map(item=>({title:item.title,summary:item.excerpt||'',keywords:['Bedford–Taylor',item.id,item.type].filter(Boolean),link:currentLink(item.url),category:item.type,id:item.id,body:item.text||item.excerpt||item.title,project:'bedford-taylor',version:revision}))];
+  const searchIndex=[...map.searchIndex,...sourceIndex.map(item=>({title:englishDisplay(item.title),summary:item.excerpt||'',keywords:['Bedford–Taylor',item.id,item.type].filter(Boolean),link:currentLink(item.url),category:item.type,id:item.id,body:item.text||item.excerpt||englishDisplay(item.title),project:'bedford-taylor',version:revision}))];
   // The detailed index primarily addresses theorem/section anchors. Keep both
   // standalone articles discoverable as pages as well, without invented claims.
   const decode=s=>s.replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');

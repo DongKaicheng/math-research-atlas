@@ -8,6 +8,18 @@ const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(repo,'dist');
 const read=async p=>readFile(path.join(dist,p),'utf8');
 
+test('Current research navigation uses English source labels',async()=>{
+  for(const route of [
+    'projects/bedford-taylor/sources/index.html',
+    'projects/bedford-taylor/references/index.html',
+    'projects/bedford-taylor/results/o01/index.html',
+  ]){
+    const html=await read(route);
+    assert.doesNotMatch(html,/[\u3400-\u9fff]/u,route);
+  }
+  assert.match(await read('projects/bedford-taylor/sources/index.html'),/Round 13: Failed Approaches, Repairs, and the First Open Gate/);
+});
+
 test('Core pages, guide, and mathematical project URLs are generated',async()=>{
   for(const route of [
     'index.html','manifesto/index.html','about/index.html','feedback/index.html',
