@@ -76,6 +76,8 @@ export async function buildBedfordTaylor({root,output,base,origin,repository}){
     text=text.replaceAll('>Conjecture Atlas<','>'+esc(process.env.SITE_BRAND||'Conjecture Atlas')+'<');
     text=text.replace('</head>',`<link rel="stylesheet" href="${base}/assets/bedford-taylor-map.css"></head>`);
     text=text.replace(/(<nav id="primary-navigation"[^>]*><a\b[^>]*>Overview<\/a>)/,'$1'+`<a href="${currentBase}/map/">Research map</a>`);
+    text=text.replace(/(<nav id="primary-navigation"[^>]*>)([\s\S]*?)(<\/nav>)/,(_all,open,links,close)=>open+links.replace('<a class="nav-search"',`<a href="${currentBase}/acknowledgements/">Acknowledgements</a><a class="nav-search"`)+close);
+    text=text.replace(/(<nav class="footer-links"[^>]*>)/,'$1'+`<a href="${currentBase}/acknowledgements/">Acknowledgements</a>`);
     return englishDisplay(text);
   }
   if(migrated){

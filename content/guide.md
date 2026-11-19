@@ -56,6 +56,18 @@ An accepted change is made in a Pull Request. The author links the Issue, descri
 
 A discussion does not grant editing rights. Public readers may suggest changes; only the repository owner and approved GitHub collaborators can merge or publish them.
 
+## Acknowledgements and credit
+
+Every project has its own [acknowledgements page](/acknowledgements/). General thanks for sharing research or other support are kept separate from specific contributions adopted through feedback.
+
+When a maintainer accepts feedback and incorporates it into a published change, a short contribution record is added to the relevant project page. It links the original Issue, the acceptance record and the implementing Pull Request or commit. Closing an Issue, adding a label, or submitting a candidate proof is not sufficient. The pages are regenerated from the reviewed records with each website release; they do not make automatic acceptance decisions.
+
+The feedback form lets you ask to be contacted before being named, permit credit using your GitHub username, specify a public name, or choose not to be named on acknowledgement pages. If you leave this preference unanswered, we will ask before displaying a name or username. **GitHub Issues remain public:** choosing not to be named on an acknowledgement page does not hide your GitHub account or the original discussion.
+
+Credit describes the contribution actually made. It does not by itself imply co-authorship, endorsement, a mathematical priority claim, or independent verification of the whole project. Human and AI-assisted submissions follow the same review and attribution process. Please describe relevant AI assistance when explaining a contribution; tool use does not automatically change who receives credit.
+
+To correct a credit or change how you are named, reply to the original Issue or use [general feedback](/feedback/). Do not include sensitive personal information. We update the current acknowledgement record through a new reviewed change; ordinary changes do not erase earlier Git history or copies held elsewhere.
+
 ## How can I cite an earlier version?
 
 Use the project's version page and the exact paper edition, not only its changing current URL. Current links lead to the latest publication; version links identify a fixed mathematical text. Corrections receive a new revision and a concise change note. A withdrawn statement keeps its identity and an explanation.

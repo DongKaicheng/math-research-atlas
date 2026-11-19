@@ -38,6 +38,27 @@ body:
     attributes:
       label: Sources and references
       description: "Papers, sections, source files, or existing discussions, if useful."
+  - type: dropdown
+    id: credit_preference
+    attributes:
+      label: Public acknowledgement preference (optional)
+      description: "This controls extra credit on project acknowledgement pages, not authorship. Your GitHub username and Issue remain public even if you choose not to be named there."
+      default: 0
+      options:
+        - "Ask me before naming me"
+        - "Credit my GitHub username if this feedback is adopted"
+        - "Credit the name specified below if this feedback is adopted"
+        - "Do not name me on acknowledgement pages"
+    validations:
+      required: false
+  - type: input
+    id: credit_name
+    attributes:
+      label: Public credit name (optional)
+      description: "Complete this only if you selected the named-credit option. Use a name or pseudonym you want displayed publicly; do not include an email address or private contact details."
+      placeholder: "Name or pseudonym for public acknowledgement"
+    validations:
+      required: false
   - type: checkboxes
     id: public
     attributes:
