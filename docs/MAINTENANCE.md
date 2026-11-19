@@ -32,6 +32,76 @@ establish a theorem. A proof status changes only with appropriate proof evidence
 Labels are helpful but optional: the forms and website also identify categories
 from their title prefixes. No new editor permissions are granted by feedback.
 
+## Project acknowledgements and adopted feedback
+
+Every current project has its own `/projects/<project-id>/acknowledgements/`
+page. `/acknowledgements/` is only a directory of those separate pages. Their
+sources have their own editorial history and do not change a mathematical
+edition, source receipt, theorem status or unsigned-paper policy.
+
+- General thanks are stored in `content/acknowledgements/<project-id>.json`.
+  Each record has `schemaVersion: 1`, its exact `projectId`, an actual
+  `updatedAt` date (`YYYY-MM-DD`), and an `acknowledgements` array. Each item
+  has a stable `id`, a permitted `displayName` and the precise public `text`.
+  Do not turn sharing research into a claim that a particular result was used.
+- Contributions incorporated from feedback have one source of truth:
+  `content/feedback/adopted.json`. The normal build validates the ledger and
+  projects each contribution to its own project page. No live issue count,
+  closure, label, popularity, or model judgment creates an acknowledgement.
+- When a new project is actually accepted for publication, add its dedicated
+  acknowledgement source with an empty list if no attribution has been approved.
+  Do not invent contributors to fill an empty page.
+
+For each feedback adoption, the publishing maintainer must:
+
+1. Inspect the original Issue and record the actual scope and explicit
+   acceptance. Check any mathematical change and affected dependencies under
+   the existing project review policy.
+2. Incorporate the change in a reviewed Pull Request or commit. The same release
+   adds the credit record; acceptance for possible future work is not yet
+   incorporation. A Pull Request link may be used when the implementing commit
+   is the one currently being prepared; verify that it merges and deploys.
+3. Check the contributor's public attribution preference in the Issue or its
+   comments. Do not infer a real name from an account profile or email address.
+   `named` and `username` credit require a public `consentUrl` in that same
+   Issue. Without that permission, use `unattributed` and omit the display name.
+   The original public Issue link remains visible; this is not anonymous feedback.
+4. Append a stable ledger entry with the fields below, update the ledger's actual
+   `updatedAt` date, run the build and checks, and inspect the generated page.
+   Each record has its own stable ID. One Issue may support separate adopted
+   contributions, including contributions by different people; keep each
+   person's permission and the evidence for that contribution on its own record.
+5. After publication, link the live acknowledgement and incorporating revision
+   in the original Issue's resolution. Keep private moderation notes, contact
+   details and unpublished correspondence out of both public JSON sources.
+
+Each adopted entry has these exact fields:
+
+- `id`, `projectId`, `status` (always `incorporated`), `category`, `summary`.
+- `acceptedAt` and `incorporatedAt`, both actual `YYYY-MM-DD` dates.
+- `feedbackUrl`: this repository's canonical Issue URL.
+- `acceptanceUrl`: that Issue or its specific acceptance comment.
+- `changeUrl`: this repository's implementing Pull Request or full-SHA commit.
+- `credit`: either `{ "mode": "unattributed" }`, or `mode` (`named` or
+  `username`), the exact permitted `displayName`, and `consentUrl`.
+
+Use only supported feedback categories: general, question, correction,
+reference, suggestion, proof, counterexample, formalization. The validator
+rejects unknown projects, duplicate identities, missing acceptance or
+incorporation, inconsistent dates, unsafe or unrelated links, unknown fields,
+and named credit without a same-thread permission reference. These are
+structural checks: the maintainer must read the linked evidence. They do not
+establish mathematical correctness, novelty, authorship or endorsement.
+
+The publishing Agent follows the same protocol. The website build renders
+the accepted records automatically, but it does not monitor or adopt future
+feedback on its own. No new scheduled review service is implied.
+
+Corrections to attribution use a new reviewed commit with the same stable item
+ID and a concise explanation. Changing a current display name does not erase
+earlier Git history. Handle privacy requests under the separate privacy-removal
+procedure when ordinary public history would be inappropriate.
+
 ## Editing and review
 
 - Fetch the current branch and compare it with the version on which the work

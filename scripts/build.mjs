@@ -7,6 +7,7 @@ import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
+import {buildAcknowledgements} from './build-acknowledgements.mjs';
 import {restorePackedAssets} from './restore-packed-assets.mjs';
 import {createHash} from 'node:crypto';
 
@@ -108,6 +109,10 @@ function markdown(source=''){
 function guideMarkdown(source=''){
   const renderer=new Renderer();
   renderer.html=({text})=>esc(text);
+  renderer.heading=function({text,depth,tokens}){
+    const anchor=text==='Acknowledgements and credit'?' id="acknowledgements-and-credit"':'';
+    return `<h${depth}${anchor}>${this.parser.parseInline(tokens)}</h${depth}>\n`;
+  };
   renderer.link=function({href,title,tokens}){
     const text=this.parser.parseInline(tokens);
     if(!(/^(?:https?:\/\/|#)/i.test(href)||href.startsWith('/')&&!href.startsWith('//')))return text;
@@ -160,6 +165,7 @@ ${content}
 <a href="${url('/about/')}">About</a><a href="${url('/manifesto/')}">Why this site?</a>
 <a href="${url('/ai-and-math/')}">AI &amp; Math</a>
 <a href="${url('/feedback/')}">Feedback</a><a href="${url('/updates/')}">Updates</a><a href="${url('/maintenance/')}">How the site is maintained</a>
+<a href="${url('/acknowledgements/')}">Acknowledgements</a>
 <a href="${url('/contribute/')}">Contribute</a><a href="${url('/admin/')}">Management</a>
 <a href="${gh}" target="_blank" rel="noopener noreferrer">GitHub</a>
 </nav></div></footer>
@@ -297,6 +303,7 @@ for(const bundle of bundles){
   <div class="document-meta"><span class="outline-badge">Version ${bundle.revision}${bundle.revision===0?' · Outline':''}</span></div>
   ${bundle.revision>0?`<p class="document-meta">Earlier versions: ${histories.get(p.id).map(s=>`<a href="${url('/projects/'+p.id+'/versions/'+s.revision+'/')}">Version ${s.revision}</a>`).join(' · ')}</p>`:''}
   <div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>
+  <nav class="project-resource-nav" aria-label="Project resources"><a href="${url(route)}" aria-current="page">Overview</a><a href="${url(route+'acknowledgements/')}">Acknowledgements</a><a href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}">Project feedback</a></nav>
   </header>
   ${bundle.revision===0?alert('Source outline','Exact theorem statements and proofs will be added only from reviewed source material.'):''}
   <div class="document-grid"><aside class="document-sidebar"><p class="eyebrow">ON THIS PAGE</p><nav>
@@ -311,7 +318,7 @@ for(const bundle of bundles){
   ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',entryList(results))}
   ${section('programme','04 / PROGRAMME',isFoundation?'Further development':'A programme of proof',`<div class="prose-math">${markdown(p.programme)}</div>`)}
   ${!isFoundation&&notes.length?section('notes','NOTES','Notes & definitions',entryList(notes)):''}
-  ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a>`)}
+  ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a><p><a class="text-link" href="${url(route+'acknowledgements/')}">Acknowledgements and adopted contributions</a></p>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
   const searchSummary=p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
@@ -376,6 +383,11 @@ for(const page of communityPages){
   await save(page.route,loadPage(page.title,page.description,page.html,page.route,page.noindex?'<meta name="robots" content="noindex,follow">':''));
 }
 
+const acknowledgements=await buildAcknowledgements({root,bundles,repository,url,origin,esc,breadcrumbs});
+for(const page of acknowledgements.pages){
+  await save(page.route,loadPage(page.title,page.description,page.html,page.route,`<link rel="stylesheet" href="${url('/assets/acknowledgements.css')}">`));
+}
+
 const guideSource=await readFile(path.join(root,'content','guide.md'),'utf8');
 const guide=`<main id="main-content" class="wrap index-page discussion-page discussion-guide">
 ${breadcrumbs([['Feedback','/feedback/'],['How feedback works']])}
@@ -391,6 +403,7 @@ const feedback=`<main id="main-content" class="wrap index-page discussion-page">
 ${breadcrumbs([['Feedback']])}
 ${heading('OPEN DISCUSSION','Feedback & discussion','One shared board for general comments, mathematical questions, corrections, and research ideas across the atlas.')}
 <p class="discussion-guide-link">New here? <a href="${url('/feedback/guide/')}">How to submit feedback and upload LaTeX files.</a></p>
+<p class="discussion-guide-link">Contributions adopted into a published change are recorded on the relevant <a href="${url('/acknowledgements/')}">project acknowledgements page</a>, with permission for the displayed name or username.</p>
 <div class="outline-notice"><div><strong>General feedback is welcome.</strong><p>Comment on the site, its organization, notation, explanations, accessibility, or future directions. A theorem ID, proof, or version number is not required.</p><a class="text-link" data-feedback-kind="general" href="${githubIssueUrl('general')}">Leave a general comment →</a></div></div>
 <div id="feedback-context-controls"></div>
 <div class="discussion-filters" role="group" aria-label="Filter feedback"><button type="button" data-category="" class="active">All</button>${filters}</div>
@@ -434,6 +447,7 @@ const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.s
   ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),
   ...agentDetails.map(a=>({title:a.title,summary:a.summary,keywords:['agent','skill','logical diagrams','AI & Math'],link:url('/ai-and-math/#'+a.id),category:'tools',body:a.role})),
   ...communityPages.filter(p=>!p.noindex).map(p=>({title:p.title,summary:p.description,keywords:['contribute','new project','project manager','AI management'],link:url(p.route),category:'participation',body:p.description})),
+  ...acknowledgements.searchIndex,
   ...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
@@ -443,7 +457,7 @@ await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...acknowledgements.pages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');

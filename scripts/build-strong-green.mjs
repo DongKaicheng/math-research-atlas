@@ -167,7 +167,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
     const relative=namespace+(route==='/'?'/':trailing(route));
     const canonical=origin+relative;
     const feedback=url('/feedback/')+'?project=strong-green&amp;version='+revision+'&amp;page='+encodeURIComponent(canonical);
-    const projectNav=archived?nav:[nav[0],['/research-map','Research map'],...nav.slice(1,3),[progressProofPath,'Proof diagrams'],...nav.slice(3)];
+    const projectNav=archived?nav:[nav[0],['/research-map','Research map'],...nav.slice(1,3),[progressProofPath,'Proof diagrams'],...nav.slice(3),['/acknowledgements','Acknowledgements']];
     const currentNav=projectNav.filter(([p])=>route===p||(p!=='/'&&route.startsWith(p+'/'))).sort((a,b)=>b[0].length-a[0].length)[0]?.[0];
     const proofRoute=route===progressProofPath||route.startsWith(progressProofPath+'/');
     const logicRoute=route==='/research-map'||proofRoute;
@@ -186,7 +186,7 @@ ${!archived&&(proofRoute||route==='/results')?`<link rel="stylesheet" href="${cu
 <nav class="primary-nav" aria-label="Project navigation">${projectNav.map(([p,label])=>`<a href="${link(p,namespace)}"${currentNav===p?' aria-current="page"':''}>${label}</a>`).join('')}</nav></div></header>
 ${archived?`<div class="edition-banner"><div class="site-shell">Frozen public edition ${esc(revision)}. <a href="${url(projectPath+(route==='/'?'/':trailing(route)))}">Read the current version of this page</a>.</div></div>`:''}
 <main id="main-content">${body}</main>
-<footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}<a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
+<footer class="site-footer simple-site-footer"><div class="site-shell footer-inner"><nav class="footer-links" aria-label="Research resources">${[['/records','Permanent records'],['/dependencies','Dependencies'],['/sources','Sources'],['/versions','Versions'],['/about','Review policy']].map(([p,label])=>`<a href="${link(p,namespace)}">${label}</a>`).join('')}${archived?'':`<a href="${url(projectPath+'/acknowledgements/')}">Acknowledgements</a>`}<a href="${feedback}"${logicRoute&&!archived?' data-logic-feedback=""':''}>Feedback</a><a href="${url('/maintenance/')}">Maintenance</a></nav></div></footer>
 ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></script>`:''}${logicRoute&&!archived?`<script defer src="${currentAsset('research-map.js')}"></script>`:''}</body></html>\n`;
   }
   async function save(route,html){
