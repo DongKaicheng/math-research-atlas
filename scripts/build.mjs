@@ -8,7 +8,6 @@ import {buildStrongGreen} from './build-strong-green.mjs';
 import {buildFoundationsRelease,loadFoundationsRelease} from './build-foundations.mjs';
 import {foundationsContentsRoute,foundationsHome} from './build-foundations-reader.mjs';
 import {foundationsShell} from './foundations-layout.mjs';
-import {buildFoundationsTopics, loadFoundationsTopics} from './build-foundations-topics.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
 import {buildAcknowledgements} from './build-acknowledgements.mjs';
@@ -133,7 +132,7 @@ function loadPage(title,description,content,p,extraHead='',extraScripts=''){
   // Keep it on the canonical homepage after verification; it is not a login credential.
   const googleVerification=p==='/'&&origin==='https://openmath-atlas.org'?'<meta name="google-site-verification" content="WE7A5abWl6z3sg4dMlvn5oj4t7cYwGbb9T7qU1ld1Sw" />':'';
   const socialMetadata=`<meta property="og:type" content="website"><meta property="og:title" content="${esc(pageTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical(p))}"><meta property="og:site_name" content="${esc(brand)}"><meta name="twitter:card" content="summary">`;
-  const websiteSchema=p==='/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':canonical('/')+'#website',name:'OpenMath',alternateName:'OpenMath Atlas',url:canonical('/'),description, inLanguage:'en'})+'</script>':'';
+  const websiteSchema=p==='/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':canonical('/')+'#website',name:'OpenMath',url:canonical('/'),description, inLanguage:'en'})+'</script>':'';
   return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -217,7 +216,6 @@ if(new Set(bundles.map(x=>x.project.id)).size!==bundles.length)throw Error('Dupl
 if(bundles.some(x=>x.schemaVersion!==1||!Array.isArray(x.entries)))throw Error('Invalid project bundle');
 const foundationsRelease=await loadFoundationsRelease(root);
 const foundationsCurrent=foundationsRelease?.current;
-const foundationsTopics=await loadFoundationsTopics(root,foundationsRelease);
 if(foundationsCurrent){
   const project=bundles.find(bundle=>bundle.project.id==='foundations');
   if(!project||project.revision!==0)throw Error('Unexpected Foundations project baseline');
@@ -251,11 +249,10 @@ const featured=`<main id="main-content" class="simple-home">
 <div class="home-intro">
 <h1 id="home-title">${esc(brand)}</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
-<p class="home-mission">OpenMath Atlas brings together open-source mathematics projects, from organizing existing foundational theory to developing new theories through long-term research programmes.</p>
+<p class="home-mission">We are dedicated to open-source mathematics projects, from organizing existing foundational theory to developing new theories through long-term research programmes.</p>
 <div class="home-actions">
 <a class="button button-dark" href="#projects">Browse projects</a>
 ${foundationsCurrent?`<a class="button button-outline" href="${url(foundationsContentsRoute)}">Browse the Foundations</a>`:''}
-${foundationsTopics?`<a class="button button-outline" href="${url('/projects/foundations/topics/')}">Browse mathematical topics</a>`:''}
 </div>
 <nav class="simple-quick-links" aria-label="About and feedback">
 <a href="${url('/about/')}">About this site</a>
@@ -355,9 +352,9 @@ for(const bundle of bundles){
   ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a><p><a class="text-link" href="${url(route+'acknowledgements/')}">Acknowledgements and adopted contributions</a></p>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
-  const searchSummary=isCurrentFoundations?'Non-Archimedean geometry: Berkovich spaces, affinoid algebras, formal models, tropicalization, CLD forms and currents. Read chapters and permanent NAG Tags.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
+  const searchSummary=isCurrentFoundations?'Browse definitions, theorems and proofs in non-Archimedean geometry by chapter or permanent NAG number. Check open proof gaps in the chapter coverage register.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
   await save(route,isCurrentFoundations ? foundationsHome({release:foundationsRelease,title:p.title,description:searchSummary,
-    history:histories.get(p.id),url,canonical,redirect:legacyRedirect,topics:foundationsTopics,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
+    history:histories.get(p.id),url,canonical,redirect:legacyRedirect,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;
@@ -482,13 +479,12 @@ await cp(path.join(root,'public'),output,{recursive:true});
 const strongGreen=await buildStrongGreen({root,output,base,origin,repository});
 const bedfordTaylor=await buildBedfordTaylor({root,output,base,origin,repository});
 const foundationsEdition=await buildFoundationsRelease({release:foundationsRelease,output,url,origin,base});
-const foundationDiscovery=await buildFoundationsTopics({data:foundationsTopics,output,url,canonical});
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
   ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),
   ...agentDetails.map(a=>({title:a.title,summary:a.summary,keywords:['agent','skill','logical diagrams','AI & Math'],link:url('/ai-and-math/#'+a.id),category:'tools',body:a.role})),
   ...communityPages.filter(p=>!p.noindex).map(p=>({title:p.title,summary:p.description,keywords:['contribute','new project','project manager','AI management'],link:url(p.route),category:'participation',body:p.description})),
   ...acknowledgements.searchIndex,
-  ...bedfordTaylor.searchIndex,...strongGreen.searchIndex,...foundationsEdition.rows,...foundationDiscovery.searchIndex];
+  ...bedfordTaylor.searchIndex,...strongGreen.searchIndex,...foundationsEdition.rows];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
 if(foundationsCurrent){
@@ -500,19 +496,17 @@ await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...acknowledgements.pages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,...foundationsEdition.routes,...foundationDiscovery.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...acknowledgements.pages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,...foundationsEdition.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
 const coreRoutes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
 const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&p!=='/admin/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))&&(!foundationsEdition.routes.includes(p)||foundationsEdition.indexableRoutes.includes(p))))];
 for(const route of coreRoutes)if(!indexableRoutes.includes(route))throw Error('Core Search Console entry is not indexable: '+route);
-const sitemapXML=paths=>'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+paths.map(p=>`<url><loc>${xml(canonical(p))}</loc>${foundationDiscovery.lastmod[p]?`<lastmod>${foundationDiscovery.lastmod[p]}</lastmod>`:''}</url>`).join('\n')+'\n</urlset>\n';
+const sitemapXML=paths=>'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+paths.map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
 await writeFile(path.join(output,'sitemap.xml'),sitemapXML([...coreRoutes,...indexableRoutes.filter(p=>!coreRoutes.includes(p))]));
 await writeFile(path.join(output,'sitemap-core.xml'),sitemapXML(coreRoutes));
-await writeFile(path.join(output,'sitemap-foundations.xml'),sitemapXML(indexableRoutes.filter(p=>p.startsWith('/projects/foundations/')||p.startsWith('/r/NAG-'))));
-await writeFile(path.join(output,'sitemap-topics.xml'),sitemapXML(foundationDiscovery.routes));
-await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\nSitemap: ${canonical('/sitemap-core.xml')}\nSitemap: ${canonical('/sitemap-foundations.xml')}\nSitemap: ${canonical('/sitemap-topics.xml')}\n`);
+await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\nSitemap: ${canonical('/sitemap-core.xml')}\n`);
 const updateItems=bundles.filter(b=>b.revision>0).map(b=>`<item><title>${xml(b.project.title)}</title><link>${xml(canonical('/projects/'+b.project.id+'/'))}</link><description>${xml(b.changeSummary)}</description><pubDate>${new Date(b.publishedAt).toUTCString()}</pubDate></item>`).join('');
 await writeFile(path.join(output,'feed.xml'),`<?xml version="1.0"?><rss version="2.0"><channel><title>${xml(brand)} updates</title><link>${xml(canonical('/'))}</link><description>Changes to published mathematical research</description>${updateItems}</channel></rss>`);
 await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html'));
