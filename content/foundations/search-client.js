@@ -21,7 +21,7 @@
     function render(){
       const params=new URLSearchParams(location.search);
       const q=params.get('q')?.trim().slice(0,200)||'';
-      const scoped=params.get('project')==='foundations';
+      const scoped=form.dataset.project==='foundations' || params.get('project')==='foundations';
       input.value=q;
       if (scope) {
         scope.hidden=!scoped;
@@ -43,7 +43,7 @@
         const a=document.createElement('a');a.href=item.link;a.className='search-result';
         add(a,'span',item.project==='foundations' ? item.id+' · '+item.coverage : item.category,'micro');
         add(a,'h2',item.title);
-        add(a,'p',item.summary);
+        if (!form.dataset.project || item.summary!==item.coverage) add(a,'p',item.summary);
         results.appendChild(a);
       });
       if(!matches.length)add(results,'p','No results found.','simple-track-empty');

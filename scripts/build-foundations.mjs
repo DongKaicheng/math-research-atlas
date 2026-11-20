@@ -174,7 +174,7 @@ function fixedPath(route) {
 }
 
 function render(html, url, origin, fixed) {
-  return html
+  const rendered = html
     .replace(/(<link rel="canonical" href=")(\/[^"]*)"/g,(_,tag,route)=>
       tag+origin+(fixed ? fixed.get(route) : route)+'"')
     .replace('</head>',(fixed ? '<meta name="robots" content="noindex,follow">' : '')+'</head>')
@@ -182,6 +182,7 @@ function render(html, url, origin, fixed) {
       const [route,fragment]=href.split('#',2);
       return attr+'="'+url(fixed?.get(route) ?? route)+(fragment===undefined?'':'#'+fragment)+'"';
     });
+  return fixed ? rendered : rendered.replace(/\baction="(\/(?!\/)[^"]*)"/g,(_,route)=>`action="${url(route)}"`);
 }
 
 export async function buildFoundationsRelease({release, output, url, origin, base}) {

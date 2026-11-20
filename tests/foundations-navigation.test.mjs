@@ -11,15 +11,15 @@ const local = route => base + route;
 const read = file => readFile(path.join(dist, file.slice(1)), 'utf8');
 const graph = async () => JSON.parse(await read(fixed + 'logic/data.json'));
 
-test('The Foundations homepage points to the published reader and carries exact feedback context', async () => {
+test('The Foundations homepage has uniform project navigation and exact feedback context', async () => {
   const page = await read(project + 'index.html');
-  const nav = page.match(/<nav class="foundations-home-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  const nav = page.match(/<nav class="foundation-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(nav);
-  for (const route of ['contents/', 'coverage/', 'reader/']) {
+  for (const route of ['contents/', 'coverage/', 'guide/', 'search/', '#feedback']) {
     assert.ok(nav.includes('href="' + local(project + route) + '"'), route);
   }
-  assert.ok(!nav.includes('/logic/full/'));
-  assert.ok(nav.includes('href="#foundations-query"'));
+  assert.doesNotMatch(nav,/button|\/reader\/|\/logic\/|aria-current/);
+  assert.ok(page.includes('action="' + local(project+'search/') + '"'));
   for (const id of ['motivation', 'questions', 'results', 'programme', 'feedback']) {
     assert.ok(page.includes('id="' + id + '"'), id);
   }
@@ -33,6 +33,25 @@ test('The Foundations homepage points to the published reader and carries exact 
   assert.equal(suggestion?.searchParams.get('project'), 'foundations');
   assert.equal(suggestion.searchParams.get('version'), 'sealed-1097');
   assert.equal(suggestion.searchParams.get('target'), local(project));
+});
+
+test('Reader pages share the project navigation and explain the actual Tag labels', async () => {
+  const chrome = page => page.match(/<nav class="foundation-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1]?.replaceAll(' aria-current="page"','');
+  const home = chrome(await read(project+'index.html'));
+  for (const route of [project+'contents/',project+'guide/',project+'search/',project+'acknowledgements/',
+    project+'coverage/',project+'coverage/chapters/16/',project+'chapters/16/','/r/NAG-900298/']) {
+    const page = await read(route+'index.html');
+    assert.equal(chrome(page),home,route);
+    assert.match(page,/foundations-native\.css/);
+  }
+  const glossary = await read(project+'guide/index.html');
+  for(const status of ['closed','open','partial','conditional','comparison','pending','definition']) assert.ok(glossary.includes(`id="status-${status}"`),status);
+  assert.match(glossary,/The full statement remains open/);
+  assert.match(glossary,/specified objects, hypotheses and tests/);
+  const tag = await read('/r/NAG-900298/index.html');
+  assert.ok(tag.includes(local(project+'guide/#status-conditional')));
+  assert.ok(tag.includes(local(project+'guide/#type-external-proof-input')));
+  assert.equal([...tag.matchAll(/id="closure"/g)].length,1);
 });
 
 test('The table of contents links the numbered chapters and appendices as HTML', async () => {
@@ -106,7 +125,7 @@ test('Every permanent Tag gives its closure status and gap type where applicable
     assert.doesNotMatch(tag,diagramMarkup,row.id);
     assert.equal(tag.includes('id="open-status"'),Object.hasOwn(data.gaps,row.id),row.id);
     assert.match(tag,new RegExp('data-closure="'+row.status+'"'),row.id);
-    if (!['definition','closed'].includes(row.status)) assert.match(tag,/<dt>Problem type<\/dt><dd>[^<]+/,row.id);
+    if (!['definition','closed'].includes(row.status)) assert.match(tag,/<dt>Problem types<\/dt><dd><a /,row.id);
     const visible = tag.replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g,'').replace(/<[^>]+>/g,'');
     assert.ok(!/(?:FSevenLabelAlias:|FSevenSourceLink:|[a-z\d]+(?:Alias|Source|Ref)@|f8restoration@|dimplacement@|\uFFFD|\\(?:href|hyperref|csname|begin|end)\b)/i.test(visible),row.id);
     if (row.id.startsWith('NAG-9')) continue;
@@ -122,14 +141,14 @@ test('Every permanent Tag gives its closure status and gap type where applicable
 test('The chapter tables reconcile all registered Tags and the fixed historical subset', async () => {
   const data=await graph();
   const overview=await read(project+'coverage/index.html');
-  assert.match(overview,/1,712 permanent NAG Tags/);
+  assert.match(overview,/1,712 permanent Tags/);
   assert.doesNotMatch(overview,diagramMarkup);
   let total=0;
   const assigned=new Set();
   for (const slug of Object.keys(data.chapters)) {
     const entries=Object.entries(data.gaps).filter(([,gap])=>gap.chapter===slug);
-    const row=overview.match(new RegExp(`<tr id="chapter-${slug}">[\\s\\S]*?</tr>`))?.[0];
-    const count=type=>Number(row.match(new RegExp(`<td data-count="${type}">(.*?)</td>`))?.[1]?.replace(/<[^>]+>/g,''));
+    const row=overview.match(new RegExp(`<tr id="chapter-${slug}"[^>]*>[\\s\\S]*?</tr>`))?.[0];
+    const count=type=>Number(row.match(new RegExp(`<td data-count="${type}"[^>]*>(.*?)</td>`))?.[1]?.replace(/<[^>]+>/g,''));
     const detail=await read(project+`coverage/chapters/${slug}/index.html`);
     const ids=[...detail.matchAll(/<li data-tag-status="[^"]+"><a href="[^"]*\/r\/(NAG-\d{6})\//g)].map(([,id])=>id);
     const sealed=await read(fixed+`chapters/${slug}/index.html`);

@@ -7,6 +7,7 @@ import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
 import {buildFoundationsRelease,loadFoundationsRelease} from './build-foundations.mjs';
 import {foundationsContentsRoute,foundationsHome} from './build-foundations-reader.mjs';
+import {foundationsShell} from './foundations-layout.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
 import {buildAcknowledgements} from './build-acknowledgements.mjs';
@@ -132,7 +133,6 @@ function loadPage(title,description,content,p,extraHead='',extraScripts=''){
   const googleVerification=p==='/'&&origin==='https://openmath-atlas.org'?'<meta name="google-site-verification" content="WE7A5abWl6z3sg4dMlvn5oj4t7cYwGbb9T7qU1ld1Sw" />':'';
   const socialMetadata=`<meta property="og:type" content="website"><meta property="og:title" content="${esc(pageTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical(p))}"><meta property="og:site_name" content="${esc(brand)}"><meta name="twitter:card" content="summary">`;
   const websiteSchema=p==='/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':canonical('/')+'#website',name:'OpenMath',url:canonical('/'),description, inLanguage:'en'})+'</script>':'';
-  const collectionSchema=p==='/projects/foundations/'&&brand==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,url:canonical(p),description,isPartOf:{'@id':canonical('/')+'#website'},about:['Non-Archimedean geometry','Berkovich analytic spaces','Formal models','Tropical geometry','Skeleta']})+'</script>':'';
   return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -140,7 +140,7 @@ function loadPage(title,description,content,p,extraHead='',extraScripts=''){
 <link rel="canonical" href="${esc(canonical(p))}">
 ${googleVerification}
 ${socialMetadata}
-${websiteSchema}${collectionSchema}
+${websiteSchema}
 <link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml">
 <link rel="stylesheet" href="${url('/assets/style.css')}">
 <link rel="stylesheet" href="${url('/assets/github-extra.css')}">
@@ -311,9 +311,7 @@ for(const bundle of bundles){
   const entryList=list=>list.length?`<ul class="entry-list">${list.map(e=>`<li class="entry-row"><a href="${url('/r/'+e.id+'/')}"><span class="entry-id">${esc(e.id)} · ${esc(e.status)}</span><h3>${esc(e.title)}</h3><p>${esc(e.summary)}</p></a></li>`).join('')}</ul>`:`<div class="empty-entries"><div class="empty-rule"></div><div><h3>Source texts are being prepared.</h3><p>Exact statements and their proofs will be added after source review.</p></div></div>`;
   const category=isFoundation?'Foundations':'Research';
   const trail=breadcrumbs([[category,isFoundation?'/foundations/':'/research/'],[p.title]]);
-  const content=isCurrentFoundations
-    ? foundationsHome({release:foundationsRelease,title:p.title,trail,history:histories.get(p.id),url,repository})
-    : `<main id="main-content" class="wrap document-page">
+  const content=isCurrentFoundations ? '' : `<main id="main-content" class="wrap document-page">
   ${trail}
   <header class="document-header">
   <p class="eyebrow">${isFoundation?'FOUNDATIONAL THEORY':'CONJECTURES & NEW THEORY'}</p>
@@ -340,8 +338,8 @@ for(const bundle of bundles){
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
   const searchSummary=isCurrentFoundations?'Browse definitions, theorems and proofs in non-Archimedean geometry by chapter or permanent NAG number. Check open proof gaps in the chapter coverage register.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
-  const extraHead=isCurrentFoundations?`<link rel="stylesheet" href="${url('/assets/foundations-home.css')}">`:'';
-  await save(route,loadPage(p.title,searchSummary,content,route,extraHead,legacyRedirect));
+  await save(route,isCurrentFoundations ? foundationsHome({release:foundationsRelease,title:p.title,description:searchSummary,
+    history:histories.get(p.id),url,repository,canonical,redirect:legacyRedirect,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;
@@ -404,7 +402,9 @@ for(const page of communityPages){
 
 const acknowledgements=await buildAcknowledgements({root,bundles,repository,url,origin,esc,breadcrumbs});
 for(const page of acknowledgements.pages){
-  await save(page.route,loadPage(page.title,page.description,page.html,page.route,`<link rel="stylesheet" href="${url('/assets/acknowledgements.css')}">`));
+  await save(page.route,foundationsCurrent && page.foundationsBody ? foundationsShell(page.route,page.title,page.foundationsBody,
+    {url,canonical:canonical(page.route),description:page.description,layout:'guide-page'}) :
+    loadPage(page.title,page.description,page.html,page.route,`<link rel="stylesheet" href="${url('/assets/acknowledgements.css')}">`));
 }
 
 const guideSource=await readFile(path.join(root,'content','guide.md'),'utf8');

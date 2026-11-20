@@ -45,6 +45,11 @@ ${breadcrumbs([[project.category === 'foundations' ? 'Foundations' : 'Research',
     route, title: 'Acknowledgements — ' + project.title,
     description: 'Acknowledgements and contributions from accepted feedback for ' + project.title + '.',
     html,
+    ...(project.id==='foundations' ? {foundationsBody:`<header class="page-intro"><h1>Acknowledgements</h1></header>
+      <div class="guide-text"><section id="general-acknowledgements"><h2>Research sharing and support</h2>${thanks}</section>
+      <section id="accepted-feedback"><h2>Contributions from accepted feedback</h2>${contributions}</section>
+      <details class="tag-coverage-list"><summary>How credit is recorded</summary><p>Each adopted contribution links to its discussion, acceptance record and incorporating change. Public names are shown with permission.</p><p>Acknowledgement recognises the contribution described; it does not imply co-authorship, endorsement or a review of the project as a whole.</p></details>
+      <p><a href="${esc(feedback)}">Open project feedback</a></p></div>`} : {}),
   };
 }
 
