@@ -77,6 +77,14 @@ summary { cursor: pointer; }
 .book-bib-item { display: grid; grid-template-columns: auto 1fr; gap: 1em; margin-bottom: .65em; }
 .tag-permalink { color: var(--blue); font: 600 .9rem/1.4 ui-monospace, monospace; margin: 1rem 0 .2rem; }
 .tag-status { color: var(--muted); margin: 0; }
+.tag-status[data-closure]:is([data-closure="open"],[data-closure="partial"],[data-closure="conditional"],[data-closure="comparison"]) { color: var(--open-ink); font-weight: 650; }
+.tag-closure { max-width: 50rem; margin-block: 1.2rem 1.7rem; padding: .8rem 1rem; background: var(--paper); border-inline-start: 3px solid #62939f; }
+.tag-closure h2 { margin: 0 0 .5em; font: 650 1rem/1.4 system-ui, sans-serif; }
+.tag-closure dl { display: grid; grid-template-columns: minmax(6.3rem,auto) 1fr; gap: .25rem .65rem; margin: 0; }
+.tag-closure dt { font-weight: 600; }
+.tag-closure dd { margin: 0; }
+.tag-closure > :last-child { margin-bottom: 0; }
+.tag-coverage-list { margin-block: .8rem; }
 .tag-text .tag-argument { border-top: 1px solid var(--rule); margin-block: 1.65rem 2.25rem; padding-top: 1rem; }
 .tag-text .tag-argument h2 { margin-block: 0 .6em; }
 .tag-text .tag-statement > :first-child { margin-top: 0; }
@@ -87,7 +95,7 @@ summary { cursor: pointer; }
 .tag-gap-note p, .proof-policy-note p { margin: .4em 0 0; }
 .proof-policy-note { font: .96rem/1.6 system-ui, sans-serif; }
 .book-text .book-result-link { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .6rem; margin: 1.2rem 0 -.85rem; font: .82rem/1.4 system-ui, sans-serif; }
-.book-untagged { padding: .05rem .35rem; color: var(--muted); border: 1px solid var(--rule); border-radius: .2rem; font-size: .77rem; }
+.book-tag-status { padding: .05rem .35rem; color: var(--muted); border: 1px solid var(--rule); border-radius: .2rem; font-size: .77rem; }
 .book-source-open { color: var(--open-ink); border-color: var(--open-rule); background: var(--open-paper); }
 .book-source-open a { color: inherit; }
 .source-proof-note { margin-block: 1rem 1.4rem; padding: .7rem .9rem; border-inline-start: 3px solid var(--open-rule); background: var(--open-paper); }
@@ -101,7 +109,7 @@ p.chapter-open-count { display: inline-block; margin: 0; }
 .book-text .book-gap-marks { display: flex; flex-wrap: wrap; gap: .35rem; margin: .95rem 0 -.8rem; font: .82rem/1.4 system-ui, sans-serif; }
 .coverage-lead { font-size: 1.18rem; margin-bottom: .4rem; }
 .coverage-table-scroll { overflow-x: auto; }
-.coverage-table { border-collapse: collapse; width: min(100%, 66rem); min-width: 39rem; }
+.coverage-table { border-collapse: collapse; width: min(100%, 75rem); min-width: 51rem; }
 .coverage-table :is(td, th) { border-bottom: 1px solid var(--rule); padding: .48rem .7rem; text-align: left; vertical-align: top; }
 .coverage-table thead, .coverage-table tfoot, .coverage-table tr:target { background: var(--paper); }
 .coverage-table tbody th { font-weight: 400; }

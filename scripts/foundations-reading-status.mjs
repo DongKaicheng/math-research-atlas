@@ -16,8 +16,7 @@ const hash = html => createHash('sha256').update(html).digest('hex');
 export function foundationsCoverage({graph, rows, native, meta, contents, proofCoverageReview}, policyByBlock) {
   const chapters = new Map(Object.entries(graph.chapters).map(([slug, title]) => {
     const route = chapterPrefix + slug + '/';
-    return [slug, {slug, title, route, native: native.chapters.has(route), gaps: [], tags:[], manuscriptTags:[],
-      statements:[], missing:[], open:[], conditional:[], comparisons:[]}];
+    return [slug, {slug, title, route, native: native.chapters.has(route), gaps: [], tags:[]}];
   }));
   const byRoute = new Map([...chapters.values()].map(chapter => [chapter.route,chapter]));
   const rowById = new Map(rows.map(row => [row.id,row]));
@@ -55,8 +54,6 @@ export function foundationsCoverage({graph, rows, native, meta, contents, proofC
   }
   const tagBindings = new Map();
   for (const [id, record] of Object.entries(native.tags)) {
-    const chapter = byRoute.get(native.byKey.get(record.key).route);
-    if (chapter) chapter.manuscriptTags.push(id);
     if (record.index == null) continue;
     const key = `${record.key}:${record.index}`;
     if (!tagBindings.has(key)) tagBindings.set(key, []);
@@ -89,22 +86,19 @@ export function foundationsCoverage({graph, rows, native, meta, contents, proofC
       statements.set(key,entry);
       if (!countedKinds.has(kind)) continue;
       if (!chapter) throw Error('Foundations statement outside the chapter inventory: ' + key);
-      chapter.statements.push(entry);
       if (!entry.tags.length) {
-        chapter.missing.push(entry);
         missingByBlock.set(key, entry);
       }
     }
   }
 
   const proofFindings = new Map();
-  function recordFinding(key, chapter, fields) {
+  function recordFinding(key, fields) {
     const earlier = proofFindings.get(key);
     if (earlier && earlier.status !== fields.status) throw Error('Inconsistent proof coverage at '+key);
     if (!earlier) {
       const entry = {...fields, key, notes:[]};
       proofFindings.set(key,entry);
-      chapter[fields.status === 'open' ? 'open' : fields.status === 'conditional' ? 'conditional' : 'comparisons'].push(entry);
     }
     return proofFindings.get(key);
   }
@@ -115,13 +109,12 @@ export function foundationsCoverage({graph, rows, native, meta, contents, proofC
     const entry = note.kind === 'RC2' ? statements.get(keyAt(note.source,note.index-1)) :
       byHref.get(note.source.blocks[note.index].match(/\bhref="([^"]+)"/)?.[1]);
     if (!entry?.chapter) throw Error('Cannot locate the subject of the Foundations note ' + note.key);
-    const finding = recordFinding(entry.key,entry.chapter,{title:entry.title, href:entry.href, status:'open', statement:entry});
+    const finding = recordFinding(entry.key,{title:entry.title, href:entry.href, status:'open'});
     finding.notes.push(note);
   }
   for (const [key,finding] of policyByBlock) {
-    const chapter = byRoute.get(finding.anchor.split('#')[0]);
-    const entry = recordFinding(key,chapter,{title:finding.title, href:finding.anchor,
-      status:finding.status === 'open' ? 'open' : 'conditional', statement:statements.get(key)});
+    const entry = recordFinding(key,{title:finding.title, href:finding.anchor,
+      status:finding.status === 'open' ? 'open' : 'conditional'});
     if (!entry.notes.length) entry.summary = finding.text;
   }
   const reviewMarkers = new Map();
@@ -134,14 +127,12 @@ export function foundationsCoverage({graph, rows, native, meta, contents, proofC
         !['open','conditional','comparison'].includes(check.status)) {
       throw Error('Unbound Foundations proof coverage review at '+check.block);
     }
-    const chapter = byRoute.get(source.route);
     const href = source.route+'#'+noteAnchor(index);
-    const entry = recordFinding(check.block,chapter,{title:check.title, href, status:check.status, summary:check.summary,
-      statement:statements.get(check.block)});
+    const entry = recordFinding(check.block,{title:check.title, href, status:check.status, summary:check.summary});
     reviewMarkers.set(check.block,entry);
   }
-  return {chapters, gaps, byBlock, missingByBlock, proofFindings, sourceNotes, reviewMarkers,
-    notes:noteEntries.length, narrower:[...gaps.values()].filter(gap => gap.narrower).length};
+  return {chapters, gaps, byBlock, statements, tagBindings, missingByBlock, proofFindings, sourceNotes, reviewMarkers,
+    narrower:[...gaps.values()].filter(gap => gap.narrower).length};
 }
 
 export const gapCount = count => `${count} open ${count === 1 ? 'Tag' : 'Tags'}`;

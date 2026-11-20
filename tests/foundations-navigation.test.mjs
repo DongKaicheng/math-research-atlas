@@ -58,7 +58,7 @@ test('The web edition preserves exact source and proof links', async () => {
   assert.match(reader, /Table of contents/);
   assert.doesNotMatch(reader, /web-reader-sheet|<canvas|pdfjs/);
   const index = JSON.parse(await read(project + 'reader/tags.json'));
-  assert.equal(Object.keys(index.tags).length,1155);
+  assert.equal(Object.keys(index.tags).length,1662);
   const href = index.tags['NAG-002462'];
   assert.equal(href,index.destinations['theorem.5.56.6']);
   assert.match(href, /\/chapters\/5\/#label-/);
@@ -92,10 +92,12 @@ test('Former diagram routes forward readers to current content', async () => {
   assert.doesNotMatch(sitemap, /\/r\/NAG-\d+\/logic\/|\/foundations\/logic\//);
 });
 
-test('Every permanent Tag has English HTML and a retired diagram URL', async () => {
+test('Every permanent Tag gives its closure status and gap type where applicable', async () => {
   const rows = JSON.parse(await read('/search-index.json')).filter(row=>row.project==='foundations');
-  assert.equal(rows.length,1205);
+  assert.equal(rows.length,1712);
+  assert.equal(new Set(rows.map(row=>row.id)).size,rows.length);
   const data = await graph();
+  let historical = 0;
   for (const row of rows) {
     const route = row.link.slice(base.length);
     const tag = await read(route+'index.html');
@@ -103,112 +105,105 @@ test('Every permanent Tag has English HTML and a retired diagram URL', async () 
     assert.doesNotMatch(tag,/\p{Script=Han}|<canvas|pdfjs/u,row.id);
     assert.doesNotMatch(tag,diagramMarkup,row.id);
     assert.equal(tag.includes('id="open-status"'),Object.hasOwn(data.gaps,row.id),row.id);
+    assert.match(tag,new RegExp('data-closure="'+row.status+'"'),row.id);
+    if (!['definition','closed'].includes(row.status)) assert.match(tag,/<dt>Problem type<\/dt><dd>[^<]+/,row.id);
     const visible = tag.replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g,'').replace(/<[^>]+>/g,'');
     assert.ok(!/(?:FSevenLabelAlias:|FSevenSourceLink:|[a-z\d]+(?:Alias|Source|Ref)@|f8restoration@|dimplacement@|\uFFFD|\\(?:href|hyperref|csname|begin|end)\b)/i.test(visible),row.id);
+    if (row.id.startsWith('NAG-9')) continue;
+    historical++;
     const bookmark = await read(route+'logic/index.html');
     assert.doesNotMatch(bookmark,diagramMarkup,row.id);
     assert.match(bookmark,/noindex,follow/,row.id);
     assert.ok(bookmark.includes(`href="${row.link}"`),row.id);
   }
+  assert.equal(historical,1205);
 });
 
-test('Chapter Tag totals and historical gaps reconcile with the fixed register', async () => {
+test('The chapter tables reconcile all registered Tags and the fixed historical subset', async () => {
   const data=await graph();
-  const coverage=await read(project+'coverage/index.html');
-  assert.doesNotMatch(coverage,diagramMarkup);
-  assert.match(coverage,/<strong>82 open Tags<\/strong>/);
-  assert.match(coverage,/77 have a recorded whole-proof gap and 5 have a selected argument at a narrower scope/);
-  let total = 0;
+  const overview=await read(project+'coverage/index.html');
+  assert.match(overview,/1,712 permanent NAG Tags/);
+  assert.doesNotMatch(overview,diagramMarkup);
+  let total=0;
+  const assigned=new Set();
   for (const slug of Object.keys(data.chapters)) {
     const entries=Object.entries(data.gaps).filter(([,gap])=>gap.chapter===slug);
-    const row=coverage.match(new RegExp(`<tr id="chapter-${slug}">[\\s\\S]*?</tr>`))?.[0];
-    const count = type => Number(row.match(new RegExp(`<td data-count="${type}">(.*?)</td>`))?.[1]?.replace(/<[^>]+>/g,''));
-    const sealed = await read(fixed+`chapters/${slug}/index.html`);
-    const tagCount = [...sealed.matchAll(/<li class="entry"><small>NAG-\d{6}<\/small>/g)].length;
-    total += tagCount;
-    assert.equal(count('tags'),tagCount,slug);
-    assert.equal(count('gaps'),entries.length,slug);
-    for (const [id] of entries) assert.ok(coverage.includes(`id="open-${id}"`),id);
-    const chapter=await read(project+`chapters/${slug}/index.html`);
-    assert.doesNotMatch(chapter,diagramMarkup,slug);
-    assert.ok(chapter.includes(`href="${local(project+'coverage/chapters/'+slug+'/')}"`),slug);
+    const row=overview.match(new RegExp(`<tr id="chapter-${slug}">[\\s\\S]*?</tr>`))?.[0];
+    const count=type=>Number(row.match(new RegExp(`<td data-count="${type}">(.*?)</td>`))?.[1]?.replace(/<[^>]+>/g,''));
+    const detail=await read(project+`coverage/chapters/${slug}/index.html`);
+    const ids=[...detail.matchAll(/<li data-tag-status="[^"]+"><a href="[^"]*\/r\/(NAG-\d{6})\//g)].map(([,id])=>id);
+    const sealed=await read(fixed+`chapters/${slug}/index.html`);
+    const old=[...sealed.matchAll(/<li class="entry"><small>(NAG-\d{6})<\/small>/g)].map(([,id])=>id);
+    assert.deepEqual(ids.filter(id=>!id.startsWith('NAG-9')).sort(),old.sort(),slug);
+    assert.equal(count('tags'),ids.length,slug);
+    assert.equal(['closed','open','conditional','comparison','pending','definition'].reduce((n,g)=>n+count(g),0),ids.length,slug);
+    for (const id of ids) {
+      assert.ok(!assigned.has(id),id);
+      assigned.add(id);
+    }
+    total += ids.length;
+    for (const [id] of entries) assert.ok(overview.includes(`id="open-${id}"`),id);
   }
-  assert.equal(total,1205);
-  const chapter=await read(project+'chapters/5/index.html');
-  assert.ok(chapter.includes(`href="${local('/r/NAG-002405/#open-status')}"`));
+  assert.equal(total,1712);
 });
 
-test('Delta and harmonic chapter coverage exposes source obligations and untagged statements', async () => {
-  const c = await read(project+'coverage/index.html');
-  assert.match(c,/<strong>86 open manuscript items<\/strong>/);
-  assert.match(c,/82 explicit proof notes/);
-  for (const [slug,open,missing] of [['15',0,8],['16',3,10],['17',10,16],['18',0,1]]) {
-    const row = c.match(new RegExp(`<tr id="chapter-${slug}">[\\s\\S]*?</tr>`))?.[0];
-    assert.match(row,/<td data-count="tags"><a [^>]*>0<\/a>/);
-    assert.match(row,new RegExp(`<td data-count="open"><a [^>]*>${open}</a>`));
-    assert.match(row,new RegExp(`<td data-count="missing"><a [^>]*>${missing}</a>`));
-    const details = await read(project+`coverage/chapters/${slug}/index.html`);
-    const chapter = await read(project+`chapters/${slug}/index.html`);
-    assert.equal([...details.matchAll(/data-missing-nag=/g)].length,missing);
-    assert.match(chapter,/Without a NAG Tag/);
-    if (slug === '16' || slug === '17') assert.match(chapter,/source-proof-obligation-/);
-    if (slug === '15') assert.match(details,/The Fulton–Sturmfels input in Theorem 15\.6\.1/);
-    if (slug === '18') assert.match(details,/Comparing currents across actual test spaces/);
+test('The Delta and harmonic findings use one canonical Tag per statement or comparison', async () => {
+  const detail=await read(project+'coverage/chapters/16/index.html');
+  for (const [status,count] of [['open',3],['conditional',2],['comparison',1]]) {
+    assert.equal([...detail.matchAll(new RegExp(`data-tag-status="${status}"`,'g'))].length,count);
   }
-  const part = await read(project+'reader/part-024/index.html');
-  for (const slug of ['15','16','17','18']) assert.ok(part.includes(local(project+`coverage/chapters/${slug}/`)));
-  const chapter11 = await read(project+'coverage/chapters/11/index.html');
-  assert.match(chapter11,/Read the author’s RC3 proof note in Chapter 13/);
-  assert.match(chapter11,/theorem/i);
+  const expected = [
+    ['900291','open','Functorial detection of a generalized delta-form'],
+    ['900293','open','Piecewise smooth criterion'],
+    ['900295','conditional','Geometric inputs to the algebra of delta-forms'],
+    ['900298','conditional','Geometric detection in Proposition 16.4.1'],
+    ['900299','comparison','delta-form presentation'],
+    ['900300','open','Mihatsch’s sheaf'],
+  ];
+  for (const [id,state,label] of expected) {
+    assert.ok(detail.includes(local(`/r/NAG-${id}/`)));
+    const tag = await read(`/r/NAG-${id}/index.html`);
+    assert.ok(tag.includes(label),id);
+    assert.ok(tag.includes(`data-closure="${state}"`),id);
+    assert.match(tag,/Read in chapter|Read the source passage/);
+  }
+  const part=await read(project+'reader/part-024/index.html');
+  assert.match(part,/3 open Tags/);
+  assert.match(part,/10 open Tags/);
+  assert.match(part,/2 conditional Tags/);
+  assert.doesNotMatch(part,/open manuscript items|Without a NAG Tag/);
 });
 
-test('The chapter lists identify all 419 missing NAG bindings in the three requested statement types', async () => {
-  const data = await graph();
-  const counts = {theorem:0,lemma:0,proposition:0};
-  for (const slug of Object.keys(data.chapters)) {
-    const file = await read(project+`coverage/chapters/${slug}/index.html`);
-    for (const [,kind] of file.matchAll(/data-missing-nag="(theorem|lemma|proposition)"/g)) counts[kind]++;
-  }
-  assert.deepEqual(counts,{theorem:141,lemma:100,proposition:178});
-  const appendix = await read(project+'coverage/chapters/appendix-c/index.html');
-  assert.match(appendix,/>Proposition 3\.HS\.1<\/a>/);
-  assert.match(appendix,/coverage-statement-45/);
-});
-
-test('Each structured chapter proof starts beside a working Tag link', async () => {
+test('Chapter proof anchors remain stable and every published proof link uses a NAG Tag', async () => {
   const data=await graph();
-  let proofLinks=0;
-  let manuscriptProofs=0;
+  let anchors=0;
+  let tagged=0;
   for (const slug of Object.keys(data.chapters).filter(slug=>/^\d+$|^appendix-[a-i]$/.test(slug))) {
     const chapter=await read(project+'chapters/'+slug+'/index.html');
-    const proofs=[...chapter.matchAll(/<div class="chapter-proof-links" id="([^"]+)"[^>]*>(.*?)<\/div>\s*(<div class="proof"|<h[2-6]\b|<p>)/gs)];
-    proofLinks+=proofs.length;
-    assert.equal(proofs.filter(match=>match[3]==='<div class="proof"').length,[...chapter.matchAll(/<div class="proof"/g)].length,slug);
-    for (const [,anchor,links] of proofs) {
-      assert.match(anchor,/^manuscript-proof-[a-f0-9]{12}$/);
-      const href=links.match(/href="([^"]+)"/)?.[1];
-      assert.ok(href?.includes('/r/NAG-') || href?.includes('/proof-tags/p-'),slug);
-      if (href.includes('/proof-tags/')) manuscriptProofs++;
+    anchors += [...chapter.matchAll(/id="manuscript-proof-[a-f0-9]{12}"/g)].length;
+    for (const [,links] of chapter.matchAll(/<div class="chapter-proof-links"[^>]*>(.*?)<\/div>/gs)) {
+      assert.match(links,/\/r\/NAG-\d{6}\/#foundations-exact-proof/);
+      tagged++;
     }
+    assert.doesNotMatch(chapter,/href="[^"]*\/(?:proof-tags\/p-|results\/fnd-)/i);
   }
-  assert.ok(proofLinks>=1548);
-  assert.ok(manuscriptProofs>0);
+  assert.ok(anchors>=1548);
+  assert.ok(tagged>=1400);
 });
-
 test('Proofs retain exact paragraph locators in the text',async()=>{
   const tag=await read('/r/NAG-001831/index.html');
   assert.match(tag,/id="foundations-exact-proof"/);
   assert.match(tag,/id="proof-paragraph-1"/);
 });
 
-test('An unregistered exact book proposition keeps its result page',async()=>{
+test('The old result URLs are aliases and the proposition uses a permanent Tag',async()=>{
   const chapter=await read(project+'chapters/11/index.html');
-  const route=chapter.match(/href="([^"]*\/results\/fnd-[\da-f]+\/)"[^>]*>FND-[\dA-F]+ · Result<\/a>(?:<small[^>]*>[^<]*<\/small>)*<\/p>\s*<div class="proposition">\s*<p><strong>Proposition 11\.4\.1\./)?.[1];
+  const route=chapter.match(/href="([^"]*\/r\/NAG-9\d{5}\/)"[^>]*>NAG-9\d{5}<\/a>\s*<small[^>]*>[^<]*<\/small><\/p>\s*<div class="proposition">\s*<p><strong>Proposition 11\.4\.1\./)?.[1];
   assert.ok(route);
   const result=await read(route.slice(base.length)+'index.html');
   assert.match(result,/<strong>Proposition 11\.4\.1\.<\/strong>/);
   const alias=await read(project+'proof-tags/p-e3fb034c75ff/index.html');
-  assert.match(alias,/class="book-text tag-text"/);
+  assert.match(alias,/noindex,follow/);
   assert.doesNotMatch(alias,diagramMarkup);
 });
 
@@ -218,9 +213,11 @@ test('Stacks citations and conditional proof status are visible in the manuscrip
   for(const stacksTag of ['00IA','00IB']) {
     assert.ok(proof.includes('href="https://stacks.math.columbia.edu/tag/'+stacksTag+'"'));
   }
-  const conditional=await read(project+'proof-tags/p-a3b77345d5f0/index.html');
-  assert.match(conditional,/Conditional argument/);
-  assert.doesNotMatch(conditional,diagramMarkup);
+  const bookmark=await read(project+'proof-tags/p-a3b77345d5f0/index.html');
+  const route=bookmark.match(/href="([^"]*\/r\/NAG-9\d{5}\/)#foundations-exact-proof"/)?.[1];
+  assert.ok(route);
+  const conditional=await read(route.slice(base.length)+'index.html');
+  assert.match(conditional,/data-closure="conditional"/);
   const chapter=await read(project+'chapters/21/index.html');
   assert.match(chapter,/id="label-6e65773a626f676f6d6f6c6f765f72656475636564"><aside class="proof-policy-note"/);
   assert.ok(chapter.lastIndexOf('Theorem 21.15.1 requires tropical equidistribution')<chapter.indexOf('<strong>Theorem 21.15.1.</strong>'));

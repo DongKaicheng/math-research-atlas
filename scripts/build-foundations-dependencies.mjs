@@ -55,7 +55,7 @@ export function bindReviewedProofs(native, review) {
   return {...native,tags,byKey,chapters};
 }
 
-function adjacentProof(chapter,index) {
+export function adjacentProof(chapter,index) {
   const next=chapter.proofs.find(proof=>proof.index>index);
   if (!next) return null;
   const notes=chapter.blocks.slice(index+1,next.index);

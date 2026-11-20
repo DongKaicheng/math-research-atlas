@@ -3,10 +3,11 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {gunzipSync} from 'node:zlib';
 import katex from 'katex';
-import {linkProofParagraphs, sourcePolicyNotice} from './build-foundations-web.mjs';
+import {foundationsBookmark, linkProofParagraphs, sourcePolicyNotice} from './build-foundations-web.mjs';
 import {foundationsCoverage, gapCount} from './foundations-reading-status.mjs';
 import {editFoundationsReadingHtml, foundationsReferenceLabels, foundationsRemarkNumbers} from './foundations-reading-editor.mjs';
 import {foundationsReadingLocations} from './foundations-reading-locations.mjs';
+import {closureGroup, coverageGroups, groupLabels, registerFoundationsTags, statusLabels, tagRoute} from './foundations-tag-register.mjs';
 
 const project = '/projects/foundations/';
 export const nativeReaderRoute = project + 'reader/';
@@ -16,7 +17,6 @@ const chapterCoverageRoute = chapter => coverageRoute+'chapters/'+chapter.slug+'
 const proofTagsRoute = project + 'proof-tags/';
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const link = (href, title) => `<a href="${escape(href)}">${escape(title)}</a>`;
-const tagRoute = id => `/r/${id}/`;
 const heading = (number, title) => [number, title].filter(Boolean).join(' · ');
 const unsafeMarkup = /<(?:script|iframe|object|embed|style|form)\b|<[^>]*\son[a-z]+\s*=|(?:href|src)="(?:javascript|data):/i;
 const privateMaterial = /(?:\/workspace\/|\/home\/agent\/|[A-Z]:\\Users\\|libfile_|private_library_readback|BEGIN [A-Z ]*PRIVATE KEY)/i;
@@ -108,11 +108,11 @@ function chapterCount(entry) {
   if (!entry) return '';
   const coverage = chapterCoverageRoute(entry);
   const counts = [link(coverage,plural(entry.tags.length,'NAG Tag'))];
-  if (entry.gaps.length) counts.push(link(coverageRoute+'#gaps-'+entry.slug,plural(entry.gaps.length,'historical NAG gap')));
-  if (entry.open.length) counts.push(link(coverage+'#manuscript-findings',plural(entry.open.length,'open manuscript item')));
-  if (entry.conditional.length) counts.push(link(coverage+'#manuscript-findings',plural(entry.conditional.length,'conditional argument')));
-  if (entry.comparisons.length) counts.push(link(coverage+'#manuscript-findings',plural(entry.comparisons.length,'comparison note')));
-  return `<span class="chapter-open-count${entry.gaps.length || entry.open.length ? ' has-open' : ''}">${counts.join(' · ')}</span>`;
+  const open = entry.tagCounts.open;
+  if (open) counts.push(link(coverage+'#tags-open',plural(open,'open Tag')));
+  if (entry.tagCounts.conditional) counts.push(link(coverage+'#tags-conditional',plural(entry.tagCounts.conditional,'conditional Tag')));
+  if (entry.tagCounts.comparison) counts.push(link(coverage+'#tags-comparison',plural(entry.tagCounts.comparison,'comparison Tag')));
+  return `<span class="chapter-open-count${open ? ' has-open' : ''}">${counts.join(' · ')}</span>`;
 }
 
 function bookContents(native, fixed, route, coverage) {
@@ -157,7 +157,7 @@ function partChapterOutline(chapter, index, catalogue, coverage) {
   return `<section class="part-chapter-coverage"><h2>Chapters and proof coverage</h2><ul class="book-chapters">${entries.join('')}</ul></section>`;
 }
 
-function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locations) {
+function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locations, registry) {
   const title = heading(chapter.number, chapter.title);
   const index = catalogue.findIndex(entry => entry.key===chapter.key);
   const nav = `<nav class="book-adjacent" aria-label="Chapter navigation">${[-1,1].map(offset => {
@@ -176,87 +176,70 @@ function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locatio
   const body = chapter.blocks.map((block,i)=> {
     const key = `${chapter.key}:${i}`;
     const proof=proofs.get(i);
-    const result=dependencies.resultByBlock.get(key);
-    const missing=coverage.missingByBlock.get(key);
     const note=coverage.sourceNotes.get(key);
     const review=coverage.reviewMarkers.get(key);
     const policy=dependencies.policyByBlock.get(key);
-    const proofPolicy=proof && dependencies.byProof.get(key)?.policy;
     const locator=policy?.anchor.split('#')[1];
     const notice=policy ? `<div id="${escape(locator)}">${sourcePolicyNotice(policy)}</div>` : '';
-    const restoredTag = locations.restored.get(key);
-    const otherResultLink = restoredTag ? link(tagRoute(restoredTag), restoredTag) : result ? link(result.route,result.id+' · Result') : '';
-    const status = coverage.proofFindings.get(key);
-    const missingBadge = missing ? `<small class="book-untagged">Without a NAG Tag</small>` : '';
-    const openBadge = status?.notes.length ? `<small class="book-untagged book-source-open">${link(status.notes[0].href,'Open proof obligation')}</small>` : '';
-    const resultLink = otherResultLink || missingBadge || openBadge ? `<p class="book-result-link"${missing?.generatedAnchor ? ` id="${missing.generatedAnchor}"` : ''}>${otherResultLink}${missingBadge}${openBadge}</p>` : '';
+    const id = registry.byBlock.get(key) ?? locations.restored.get(key);
+    const sourceId = registry.sourceAliases.get(key);
+    const result = registry.tags.get(id);
+    const manuscript = registry.records.get(id);
+    const resultLink = result ? `<p class="book-result-link"${manuscript?.generatedAnchor ? ` id="${manuscript.generatedAnchor}"` : ''}>${link(result.link,result.id)}
+      <small class="book-tag-status${result.status === 'open' ? ' book-source-open' : ''}">${escape(statusLabels[result.status])}</small></p>` : '';
     const open = coverage.byBlock.get(key) ?? [];
     const gapMarks = open.length ? `<p class="book-gap-marks">${open.map(gap => link(gap.route+'#open-status', gap.id+' · '+gapLabel)).join(' ')}</p>` : '';
-    const proofLink=proof ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Tag links for this proof">${proof.tagLinks}
-      ${proofPolicy ? link(proofPolicy.anchor,'Proof assumptions and status') : ''}</div>` : '';
+    const proofLink = !proof ? '' : proof.tagLinks ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Tag links for this proof">${proof.tagLinks}</div>` : `<span id="${proof.anchor}"></span>`;
     block = suppressTags(block, locations.suppressed.get(key));
     const sourceBlock = locator ? block.replace(` id="${locator}"`,'') : block;
-    const reviewLink = review ? `<p class="reviewed-proof-passage" id="${review.href.split('#')[1]}">${link(chapterCoverageRoute(coverageEntry)+'#manuscript-findings', findingStatus[review.status])}</p>` : '';
-    const wrapped = note ? `<div class="source-proof-note" id="${note.href.split('#')[1]}">${sourceBlock}</div>` : sourceBlock;
+    const reviewLink = review ? `<p class="reviewed-proof-passage" id="${review.href.split('#')[1]}">${link(tagRoute(sourceId),sourceId+' · '+statusLabels[review.status])}</p>` : '';
+    const wrapped = note ? `<div class="source-proof-note" id="${note.href.split('#')[1]}">${sourceBlock}<p>${link(tagRoute(sourceId),sourceId+' · Proof status')}</p></div>` : sourceBlock;
     return notice+resultLink+gapMarks+reviewLink+proofLink+wrapped;
   }).join('');
   return shell(chapter.route,title,`${trail}<h1>${escape(title)}</h1>${count ? `<p class="chapter-coverage">${count}</p>` : ''}${nav}${proofIndex}
     <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${part}${nav}`);
 }
 
-const findingStatus = {open:'Open proof obligation', conditional:'Conditional argument', comparison:'Scope of the comparison'};
-
 function coveragePage(coverage, fixed) {
   const chapters = [...coverage.chapters.values()];
   const trail = crumb([[project,'Foundations'],[null,'Tag and proof coverage']]);
-  const total = key => chapters.reduce((sum,chapter) => sum + chapter[key].length,0);
+  const total = group => chapters.reduce((sum,chapter) => sum + chapter.tagCounts[group],0);
+  const count = chapters.reduce((sum,chapter) => sum + chapter.tags.length,0);
   const table = chapters.map(chapter => {
     const detail = chapterCoverageRoute(chapter);
-    return `<tr id="chapter-${chapter.slug}"><th scope="row">${link(chapter.route,chapter.title)} <small>${link(detail,'Coverage details')}</small></th>
-      <td data-count="tags">${link(detail+'#tag-inventory',String(chapter.tags.length))}</td>
-      <td data-count="gaps">${chapter.gaps.length ? link('#gaps-'+chapter.slug,String(chapter.gaps.length)) : '0'}</td>
-      <td data-count="open">${link(detail+'#manuscript-findings',String(chapter.open.length))}</td>
-      <td data-count="missing">${link(detail+'#untagged-statements',String(chapter.missing.length))}</td></tr>`;
+    return `<tr id="chapter-${chapter.slug}"><th scope="row">${link(chapter.route,chapter.title)}</th>
+      <td data-count="tags">${link(detail,String(chapter.tags.length))}</td>
+      ${coverageGroups.map(group=>`<td data-count="${group}">${chapter.tagCounts[group] ? link(detail+'#tags-'+group,String(chapter.tagCounts[group])) : '0'}</td>`).join('')}</tr>`;
   }).join('');
-  const gapSections = chapters.filter(chapter => chapter.gaps.length).map(chapter => `<section id="gaps-${chapter.slug}">
-    <h3>${escape(chapter.title)} <span class="coverage-heading-count">${gapCount(chapter.gaps.length)}</span></h3>
-    <ul class="coverage-list">${chapter.gaps.map(gap => `<li id="open-${gap.id}">${link(gap.route, `${gap.id}${gap.label === gap.id ? '' : ' · '+gap.label}`)}
-      ${gap.narrower ? '<small>A narrower scope is available.</small>' : ''}</li>`).join('')}</ul></section>`).join('');
-  const sources = chapters.filter(chapter => chapter.open.length || chapter.conditional.length || chapter.comparisons.length);
+  const historical = chapters.filter(chapter=>chapter.gaps.length).map(chapter=>`<section id="gaps-${chapter.slug}">
+    <h3>${escape(chapter.title)}</h3><ul class="coverage-list">${chapter.gaps.map(gap=>`<li id="open-${gap.id}">${link(gap.route,gap.id+' · '+gap.label)}</li>`).join('')}</ul></section>`).join('');
   return shell(coverageRoute,'Tag and proof coverage',`${trail}<h1>Tag and proof coverage</h1>
-    <p class="coverage-lead"><strong>${total('tags').toLocaleString('en-US')} permanent NAG Tags</strong>, <strong>${total('open')} open manuscript items</strong> and <strong>${total('missing')} theorems, lemmas and propositions without a NAG Tag</strong>.</p>
-    <p>Permanent Tag counts follow the fixed register’s chapter assignments. The other manuscript columns follow the location of each statement in the book. The open manuscript column counts distinct targets of explicit source notes and reviewed passages. Conditional arguments and comparison requirements are listed in the chapter details.</p>
-    <p>For the original acceptance and export records, consult the ${link(fixed+'coverage/','fixed-edition coverage register')}.</p>
-    <nav class="book-jumps" aria-label="Coverage sections">${link('#chapter-counts','Counts by chapter')}${link('#manuscript-obligations','Manuscript proof findings')}${link('#historical-proof-gaps','Historical NAG gaps')}</nav>
-    <section id="chapter-counts"><h2>Counts by chapter</h2><div class="coverage-table-scroll" role="region" aria-label="Counts by chapter" tabindex="0"><table class="coverage-table"><thead><tr><th scope="col">Chapter or supplement</th><th scope="col">NAG Tags</th><th scope="col">Historical NAG gaps</th><th scope="col">Open manuscript items</th><th scope="col">Statements without NAG</th></tr></thead>
-    <tbody>${table}</tbody><tfoot><tr><th scope="row">Total</th><td>${total('tags')}</td><td>${coverage.gaps.size}</td><td>${total('open')}</td><td>${total('missing')}</td></tr></tfoot></table></div></section>
-    <section id="manuscript-obligations"><h2>Manuscript proof findings</h2><p>The manuscript contains ${coverage.notes} explicit proof notes. Multiple notes on the same statement count as one open item. The chapter details link each recorded obligation, conditional argument and comparison to the passage that supports it.</p>
-    <ul class="coverage-list">${sources.map(chapter => `<li>${link(chapterCoverageRoute(chapter)+'#manuscript-findings',chapter.title)} <small>${plural(chapter.open.length,'open item')}${chapter.conditional.length ? ' · '+plural(chapter.conditional.length,'conditional argument') : ''}${chapter.comparisons.length ? ' · '+plural(chapter.comparisons.length,'comparison note') : ''}</small></li>`).join('')}</ul></section>
-    <section id="historical-proof-gaps"><h2>Historical NAG gaps</h2><p><strong>${gapCount(coverage.gaps.size)}</strong> at the full scope of the original statement. Of these, ${coverage.gaps.size - coverage.narrower} have a recorded whole-proof gap and ${coverage.narrower} have a selected argument at a narrower scope.</p>${gapSections}</section>`);
+    <p class="coverage-lead"><strong>${count.toLocaleString('en-US')} permanent NAG Tags</strong> across the Foundations manuscript and the historical register.</p>
+    <p>Each Tag gives its mathematical status and source. A conditional Tag states the inputs the argument assumes. A comparison Tag records what must be checked to compare the constructions. Review pending marks a statement whose available proof or proof location still needs checking.</p>
+    <nav class="book-jumps" aria-label="Coverage sections">${link('#chapter-counts','Counts by chapter')}${link(fixed+'coverage/','Fixed-edition register')}</nav>
+    <section id="chapter-counts"><h2>Counts by chapter</h2><div class="coverage-table-scroll" role="region" aria-label="Counts by chapter" tabindex="0"><table class="coverage-table"><thead><tr><th scope="col">Chapter or supplement</th><th scope="col">NAG Tags</th>${coverageGroups.map(group=>`<th scope="col">${groupLabels[group]}</th>`).join('')}</tr></thead>
+    <tbody>${table}</tbody><tfoot><tr><th scope="row">Total</th><td>${count}</td>${coverageGroups.map(group=>`<td>${total(group)}</td>`).join('')}</tr></tfoot></table></div></section>
+    <span id="manuscript-obligations"></span><section id="historical-proof-gaps"><h2>Historical Tags open at full scope</h2><p>${gapCount(coverage.gaps.size)} from the fixed edition, including ${coverage.narrower} with a narrower scope available.</p>${historical}</section>`);
 }
 
-function chapterCoveragePage(chapter, coverage, results) {
+function chapterCoveragePage(chapter) {
   const route = chapterCoverageRoute(chapter);
   const trail = crumb([[project,'Foundations'],[coverageRoute,'Tag and proof coverage'],[null,chapter.title]]);
-  const kindCounts = ['theorem','lemma','proposition'].map(kind => plural(chapter.missing.filter(entry=>entry.kind===kind).length,kind)).join(', ');
-  const findings = [...chapter.open,...chapter.conditional,...chapter.comparisons];
-  const proofList = findings.length ? `<ul class="coverage-list proof-coverage-list">${findings.map(entry => `<li>
-    <strong>${link(entry.href,entry.title)}</strong><small>${findingStatus[entry.status]}</small>
-    ${entry.summary ? `<p>${escape(entry.summary)}</p>` : ''}${entry.notes.length ? `<ul>${entry.notes.map(note=>`<li>${link(note.href, 'Read the author’s '+note.kind+' proof note'+(note.source.route===chapter.route ? '' : ' in Chapter '+note.source.number))}</li>`).join('')}</ul>` : ''}</li>`).join('')}</ul>` : '<p>No manuscript proof findings are recorded here.</p>';
-  const missing = chapter.missing.length ? `<ol class="coverage-list">${chapter.missing.map(entry=>{
-    const result = results.get(entry.key);
-    const status = coverage.proofFindings.get(entry.key)?.status;
-    return `<li data-missing-nag="${entry.kind}">${link(entry.href,entry.title)} ${result ? link(result.route, result.id) : ''}${status ? `<small>${findingStatus[status]}</small>` : ''}</li>`;
-  }).join('')}</ol>` : '<p>There are no indexed untagged theorems, lemmas or propositions in this chapter’s manuscript text.</p>';
-  return shell(route,chapter.title+' · Coverage',`${trail}<h1>${escape(chapter.title)}</h1><p>${link(chapter.route,'Read the chapter')}</p>
-    <nav class="book-jumps" aria-label="Chapter coverage sections">${link('#tag-inventory','NAG inventory')}${link('#manuscript-findings','Manuscript proof findings')}${link('#untagged-statements','Statements without a NAG Tag')}</nav>
-    <section id="tag-inventory"><h2>NAG inventory</h2><p>${plural(chapter.tags.length,'permanent NAG Tag')} assigned here by the fixed register. ${plural(chapter.manuscriptTags.length,'NAG Tag')} with a reading location in this chapter.</p>
-    ${chapter.gaps.length ? `<p>${link(coverageRoute+'#gaps-'+chapter.slug,plural(chapter.gaps.length,'historical NAG gap'))}</p>` : ''}
-    ${chapter.tags.length ? `<details><summary>List of registered Tags</summary><ul class="coverage-list">${chapter.tags.map(row=>`<li>${link(row.link,row.title===row.id ? row.id : row.id+' · '+row.title)}</li>`).join('')}</ul></details>` : ''}</section>
-    <section id="manuscript-findings"><h2>Manuscript proof findings</h2>${proofList}</section>
-    <section id="untagged-statements"><h2>Statements without a NAG Tag</h2><p>${chapter.missing.length} out of ${chapter.statements.length} indexed theorems, lemmas and propositions (${kindCounts} without a NAG Tag).</p>${missing}</section>`);
+  const groups = ['open','conditional','comparison','pending','closed','definition'];
+  const scoped = new Set(['open','conditional','comparison']);
+  const lists = groups.map(group=>{
+    const rows = chapter.tags.filter(row=>closureGroup(row.status)===group);
+    const title = groupLabels[group]+' ('+rows.length+')';
+    const list = `<ul class="coverage-list">${rows.map(row=>`<li data-tag-status="${row.status}">${link(row.link,row.title===row.id ? row.id : row.id+' · '+row.title)}
+      ${row.types.length ? `<small>${escape(row.types.join(' · '))}</small>` : ''}</li>`).join('')}</ul>`;
+    if (!rows.length) return `<span id="tags-${group}"></span>`;
+    return scoped.has(group) ? `<section id="tags-${group}"><h2>${title}</h2>${list}</section>` : `<details class="tag-coverage-list" id="tags-${group}"><summary>${title}</summary>${list}</details>`;
+  }).join('');
+  return shell(route,chapter.title+' · Tags',`${trail}<h1>${escape(chapter.title)}</h1>
+    <p id="tag-inventory">${plural(chapter.tags.length,'permanent NAG Tag')} assigned to this chapter or supplement. ${link(chapter.route,'Read the chapter')}.</p>
+    <nav class="book-jumps" aria-label="Tag status groups">${groups.filter(group=>chapter.tagCounts[group]).map(group=>link('#tags-'+group,`${groupLabels[group]} (${chapter.tagCounts[group]})`)).join('')}</nav>
+    <span id="manuscript-findings"></span><span id="untagged-statements"></span>${lists}`);
 }
-
 const gapDescriptions = new Map([
   ['Pinned English candidate. This sweep did not bind an independently signed whole proof and operative scope map for these exact spans.',
     'The edition records the statement as a candidate. A complete proof covering its full scope has not been verified.'],
@@ -265,10 +248,9 @@ const gapDescriptions = new Map([
 ]);
 const gapDescription = step => gapDescriptions.get(step) ?? step;
 
-function tagPage(row, record, chapter, fixed, gap, scopes, archivedProof, historical, proofLocation, policy, suppressed = []) {
+function tagPage(row, {record, chapter, fixed, gap, scopes, archivedProof, historical, proofLocation, policy, suppressed = [], manuscript}) {
   const title = row.title;
-  const status = policy ? (policy.status==='external-assumption' ? 'Conditional argument' : 'Open proof obligation') :
-    (record?.proof != null ? row.coverage.replace(' · HTML export unavailable','') : row.coverage);
+  const status = statusLabels[row.status];
   const trail = crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],
     ...(chapter ? [[chapter.route,heading(chapter.number,chapter.title)]] : []),
     ...(record?.section && record.section!=='*' ? [[chapter.route+'#'+record.sectionId,record.section]] : []),[null,row.id]]);
@@ -293,6 +275,14 @@ function tagPage(row, record, chapter, fixed, gap, scopes, archivedProof, histor
   const gapNote = gap ? `<aside class="tag-gap-note" id="open-status"><h2>Historical proof gap</h2><p>${escape(gapDescription(gap.step))}</p>
     ${gap.narrower ? '<p>A selected argument is available for a narrower scope.</p>' : ''}
     <p>${link(coverageRoute+'#open-'+row.id,'Find this Tag in the coverage register')}</p></aside>` : '';
+  const finding = row.finding;
+  const proofEvidence = finding?.notes.map(note => `<li>${link(note.href, 'Read the '+note.kind+' note in Chapter '+note.source.number)}</li>`).join('');
+  const kinds = row.types.length ? `<dt>Problem type</dt><dd>${escape(row.types.join(' · '))}</dd>` : '';
+  const evidence = finding ? `${finding.summary ? `<p>${escape(finding.summary)}</p>` : ''}
+    ${finding.notes.map(note=>note.source.blocks[note.index]).join('')}
+    ${proofEvidence ? `<ul>${proofEvidence}</ul>` : `<p>${link(finding.href,'Read the source passage')}</p>`}` : '';
+  const statusDetails = `<section class="tag-closure" id="closure"><h2>Proof status</h2><dl><dt>Status</dt><dd>${escape(status)}</dd>${kinds}</dl>
+    ${row.status === 'pending' ? `<p>${record?.proof != null ? 'An argument is available in the manuscript. Its proof status awaits review.' : 'Review is needed to locate or verify an argument for this statement in its full scope.'}</p>` : ''}${evidence}</section>`;
   const selected = scopes?.length ? `<section><h2>Selected scopes</h2><ul>${scopes.map(scope=> {
     const fragment=scope.href.split('#')[1];
     return `<li id="${escape(fragment)}">${link(archive+'#'+fragment,scope.label)}</li>`;
@@ -300,18 +290,19 @@ function tagPage(row, record, chapter, fixed, gap, scopes, archivedProof, histor
   const includesProof = record?.inlineProof;
   const sourceProof = archivedProof && record?.proof == null && !includesProof ? `<p class="book-note" id="foundations-exact-proof">${link(archive+'#foundations-exact-proof','Selected proof in the fixed edition')}</p>` : '';
   const statementId = includesProof ? 'foundations-exact-proof' : 'tag-statement';
-  const proofLabel = gap ? 'Argument in the manuscript' : 'Proof';
+  const proofLabel = row.status === 'closed' ? 'Proof' : 'Argument in the manuscript';
+  const renderMath = manuscript ? value => value : typesetTag;
   return shell(row.link,row.id+' · '+title,`${trail}<p class="tag-permalink">Tag ${escape(row.id)}</p><h1>${escape(title)}</h1>
-    ${gap ? `<p class="chapter-open-count has-open">${link('#open-status',gapLabel)}</p>` : `<p class="tag-status">${escape(status)}</p>`}
+    <p class="tag-status" data-closure="${row.status}">${escape(status)}</p>
     <nav class="tag-actions" aria-label="Tag links">${location}
     ${record?.proof != null || includesProof || sourceProof ? link('#foundations-exact-proof',proofLabel) : ''}
-    ${proofLocation ? link(proofLocation,'Proof in chapter') : ''}${link('#citation','Citation')}</nav>
-    ${gapNote}${sourcePolicyNotice(policy)}
-    <article class="book-text tag-text"><div class="tag-statement" id="${statementId}">${historical ? statement : typesetTag(statement)}</div>
-    ${proof ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="${proofLabel}">${gap ? `<h2>${proofLabel}</h2>` : ''}${typesetTag(proof)}</section>` : ''}</article>
+    ${proofLocation ? link(proofLocation,'Proof in chapter') : ''}${link('#closure','Proof status')}${link('#citation','Citation')}</nav>
+    ${statusDetails}${gapNote}${sourcePolicyNotice(policy)}
+    <article class="book-text tag-text"><div class="tag-statement" id="${statementId}">${historical ? statement : renderMath(statement)}</div>
+    ${proof ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="${proofLabel}">${row.status!=='closed' ? `<h2>${proofLabel}</h2>` : ''}${renderMath(proof)}</section>` : ''}</article>
     ${sourceProof}${selected}
     <section id="citation" class="tag-citation"><h2>Citation</h2><p>Non-Archimedean Geometry Foundations, Tag ${escape(row.id)}${record?.number ? ', '+escape(record.number) : ''}.</p>
-    <p>${link(row.link,'Permanent link')} · ${link(archive,'Fixed-edition record')}</p></section>`,proofStyles);
+    <p>${link(row.link,'Permanent link')} · ${manuscript ? link(record.href,'Source passage in the web edition') : link(archive,'Fixed-edition record')}</p></section>`,proofStyles);
 }
 
 function bindProofs(native, chapter, linkedTags) {
@@ -324,32 +315,10 @@ function bindProofs(native, chapter, linkedTags) {
     const title=tags[0]?.title ?? (range.title && range.title!=='Proof.' ? range.title.replace(/\.$/,'') : 'Proof in '+(section?.title ?? chapter.title));
     const tag='P-'+key.toUpperCase();
     const route=proofTagsRoute+tag.toLowerCase()+'/';
-    const tagLinks=tags.length ? tags.map(row=>link(row.link+'#foundations-exact-proof',row.id)).join(' ') : link(route,tag+' · Proof Tag');
+    const tagLinks=tags.map(row=>link(row.link+'#foundations-exact-proof',row.id)).join(' ');
     proofs.set(range.index,{...range,tag,route,href:chapter.route+'#'+anchor,anchor,title,tagLinks,tags,section});
   }
   return proofs;
-}
-
-function manuscriptTagPage(proof, chapter, review) {
-  const text = linkProofParagraphs(chapter.blocks.slice(proof.index,proof.end+1).join(''));
-  const trail = crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],[chapter.route,heading(chapter.number,chapter.title)],[null,proof.tag]]);
-  return shell(proof.route,proof.tag+' · '+proof.title,`${trail}<p class="tag-permalink">Proof Tag ${proof.tag}</p><h1>${escape(proof.title)}</h1>
-    <nav class="tag-actions" aria-label="Proof Tag links">${link(proof.href,'Read in chapter')}
-      ${proof.tags.map(row=>link(row.link,'Result '+row.id)).join('')}</nav>
-    ${sourcePolicyNotice(review?.policy)}<article class="book-text tag-text">${typesetTag(text)}</article>`,proofStyles);
-}
-
-function manuscriptResultPage(result, dependencies) {
-  const {chapter,index,proof}=result;
-  const trail=crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],[chapter.route,heading(chapter.number,chapter.title)],[null,result.id]]);
-  const state=dependencies.policyByBlock.get(`${chapter.key}:${index}`);
-  const statement=chapter.blocks[index];
-  const argument=proof ? linkProofParagraphs(chapter.blocks.slice(proof.index,proof.end+1).join('')) : '';
-  return shell(result.route,result.id+' · '+result.title,`${trail}<p class="tag-permalink">Result ${escape(result.id)}</p>
-    <h1>${escape(result.title)}</h1><nav class="tag-actions" aria-label="Result links">${link(result.book,'Read in chapter')}
-      ${proof ? link('#foundations-exact-proof','Proof') : ''}</nav>
-    ${sourcePolicyNotice(state)}<article class="book-text tag-text"><div class="tag-statement">${typesetTag(statement)}</div>
-      ${argument ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="Proof">${typesetTag(argument)}</section>` : ''}</article>`,proofStyles);
 }
 
 function supplementPage(entry, archive) {
@@ -366,12 +335,15 @@ export function createFoundationsNative(release, dependencies) {
   const {tags, destinations} = readingLocations;
   const native = {...release.native, tags};
   const coverage = foundationsCoverage({...release, native}, dependencies.policyByBlock);
+  const registry = registerFoundationsTags(release,coverage,dependencies,native);
+  const rows = [...registry.tags.values()];
+  const redirects = new Map();
   const fixed = project + 'editions/' + release.current.edition + '/';
   const pages = new Map([[nativeReaderRoute,bookContents(native,fixed,nativeReaderRoute,coverage)],
     [contentsRoute,bookContents(native,fixed,contentsRoute,coverage)],
     [coverageRoute,coveragePage(coverage,fixed)]]);
   for (const chapter of coverage.chapters.values()) {
-    pages.set(chapterCoverageRoute(chapter),chapterCoveragePage(chapter,coverage,dependencies.resultByBlock));
+    pages.set(chapterCoverageRoute(chapter),chapterCoveragePage(chapter));
     if (!chapter.native) pages.set(chapter.route,supplementPage(chapter,release.contents.get(chapter.route.slice(1)+'index.html').toString('utf8')));
   }
   const scopes = new Map();
@@ -382,8 +354,8 @@ export function createFoundationsNative(release, dependencies) {
     }
   }
   const linkedProofs = new Map();
-  for (const row of release.rows) {
-    const record=native.tags[row.id];
+  for (const row of rows) {
+    const record=registry.tagLocations[row.id];
     if (record?.proof == null) continue;
     if (!linkedProofs.has(record.key)) linkedProofs.set(record.key,new Map());
     const links=linkedProofs.get(record.key);
@@ -392,30 +364,39 @@ export function createFoundationsNative(release, dependencies) {
   }
   const locations = new Map();
   const priorProofTags=new Set(release.dependencyReview.bindings.filter(binding=>!binding.inline).map(binding=>binding.proof));
+  const oldProofs=new Set(Object.values(native.tags).filter(record=>record.proof!=null).map(record=>`${record.key}:${record.proof}`));
   for (const chapter of native.chapters.values()) {
     const proofs=bindProofs(native,chapter,linkedProofs.get(chapter.key) ?? new Map());
-    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs,dependencies,coverage,readingLocations));
+    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs,dependencies,coverage,readingLocations,registry));
     for (const proof of proofs.values()) {
       if (proof.tags.length) {
         for (const tag of proof.tags) locations.set(tag.id,proof.href);
       }
       const key=`${chapter.key}:${proof.index}`;
-      if(!proof.tags.length || priorProofTags.has(key) || readingLocations.restoredProofs.has(key)) {
-        pages.set(proof.route,manuscriptTagPage(proof,chapter,dependencies.byProof.get(key)));
+      if(!oldProofs.has(key) || priorProofTags.has(key) || readingLocations.restoredProofs.has(key)) {
+        const binding = proof.tags.length === 1 ? proof.tags[0].link+'#foundations-exact-proof' : null;
+        redirects.set(proof.route,foundationsBookmark(binding ?? proof.href, Boolean(binding)));
       }
     }
   }
-  for(const result of dependencies.results.values())pages.set(result.route,manuscriptResultPage(result,dependencies));
-  for (const row of release.rows) {
-    const record = native.tags[row.id];
-    const archivedProof = release.contents.get(row.link.slice(1)+'index.html').includes('id="foundations-exact-proof"');
-    pages.set(row.link,tagPage(row,record,native.byKey.get(record?.key),fixed,coverage.gaps.get(row.id),
-      scopes.get(row.id),archivedProof,release.historicalStatements?.[row.id],locations.get(row.id),
-      dependencies.byId.get(row.id)?.policy ?? dependencies.policyByBlock.get(`${record?.key}:${record?.index}`),
-      readingLocations.suppressed.get(`${record?.key}:${record?.index}`)));
+  for (const result of dependencies.results.values()) {
+    const id = registry.byBlock.get(`${result.chapter.key}:${result.index}`);
+    if (!id) throw Error('A former result page does not resolve to a Tag: '+result.id);
+    redirects.set(result.route,foundationsBookmark(tagRoute(id), Boolean(result.proof)));
+    const row = registry.tags.get(id);
+    row.keywords = [...new Set([...row.keywords, result.id])];
+  }
+  for (const row of rows) {
+    const record = registry.tagLocations[row.id];
+    const archivedProof = release.contents.get(row.link.slice(1)+'index.html')?.includes('id="foundations-exact-proof"');
+    const key = `${record?.key}:${record?.index}`;
+    const policy = row.finding ? null : (dependencies.byId.get(row.id)?.policy ?? dependencies.policyByBlock.get(key));
+    pages.set(row.link,tagPage(row,{record,chapter:native.byKey.get(record?.key),fixed,gap:coverage.gaps.get(row.id),
+      scopes:scopes.get(row.id),archivedProof,historical:release.historicalStatements?.[row.id],proofLocation:locations.get(row.id),
+      policy,suppressed:readingLocations.suppressed.get(key),manuscript:registry.records.get(row.id)}));
   }
   const remarkNumbers = foundationsRemarkNumbers(native.destinations);
   const referenceLabels = foundationsReferenceLabels(native);
   for (const [route, page] of pages) pages.set(route, editFoundationsReadingHtml(page, remarkNumbers, referenceLabels));
-  return {pages,tags,destinations};
+  return {pages,tags:registry.tagLocations,destinations,rows,redirects};
 }

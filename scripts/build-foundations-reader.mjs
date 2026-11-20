@@ -57,7 +57,7 @@ export function foundationsHome({release, title, trail, history, url, repository
         <ol class="foundations-home-guide">
           <li><strong>Read by chapter.</strong> Use the ${localLink(foundationsContentsRoute, 'table of contents')} to browse chapters and jump to individual sections.</li>
           <li><strong>Read or cite a result.</strong> Follow the Tag in the chapter, or ${link('#foundations-query', 'search by keyword or NAG number')}. The Tag page gives the statement, available proof and permanent citation.</li>
-          <li><strong>Check proof coverage.</strong> The ${localLink(coverage, 'coverage register')} shows each chapter’s Tag total, open proof obligations in the manuscript, and statements awaiting permanent Tags.</li>
+          <li><strong>Check proof coverage.</strong> The ${localLink(coverage, 'coverage register')} groups each chapter’s Tags by proof status. Open and conditional Tags identify the missing step or the input that the argument assumes.</li>
         </ol>
         <p>Start with ${localLink(proof.link, proof.id + ' · ' + proof.title)} to read a complete selected proof. The linked record ${localLink(gap.link, gap.id + ' · ' + gap.title)} documents a historical proof gap in the broader argument.</p>
       </div>

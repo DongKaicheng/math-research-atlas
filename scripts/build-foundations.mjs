@@ -155,8 +155,11 @@ export async function loadFoundationsRelease(root) {
     'missing or extra exact IDs');
   const dependencyReview = current ? JSON.parse(await regular(path.join(dir,'dependency-review.json'))) : null;
   const proofCoverageReview = current ? JSON.parse(await regular(path.join(dir,'proof-coverage-review.json'))) : null;
+  const [tagRegistry,manuscriptGapTypes,historicalGapTypes] = current ? await Promise.all(
+    ['manuscript-tags','manuscript-gap-types','historical-gap-types'].map(async name=>JSON.parse(await regular(path.join(dir,name+'.json'))))) : [];
   const native = current ? bindReviewedProofs(await loadFoundationsNative(path.join(dir,'native'),pdfDigest),dependencyReview) : null;
-  const loaded = await augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview, proofCoverageReview});
+  const loaded = await augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview,
+    proofCoverageReview,tagRegistry,manuscriptGapTypes,historicalGapTypes});
   if (current) loaded.historicalStatements = loadHistoricalStatements(loaded,
     await regular(path.join(dir,'historical-gap-statements.json')));
   return loaded;
@@ -183,9 +186,10 @@ function render(html, url, origin, fixed) {
 
 export async function buildFoundationsRelease({release, output, url, origin, base}) {
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
-  const {contents,current,rows}=release;
+  const {contents,current}=release;
   const native=current ? createFoundationsNative(release,createProofDependencies(release)) : null;
   const retired=native ? retiredFoundationsRoutes(release) : new Map();
+  for (const [route,page] of native?.redirects ?? []) retired.set(route,page);
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');
@@ -233,7 +237,8 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   await emit(versionRoute.slice(1)+'index.html',redirect);
   const active = native ? [publicHome,...native.pages.keys()] : [];
   return {
-    rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
+    rows:native ? native.rows.map(({id,link,title,project,category,summary,coverage,keywords,body,status})=>
+      ({id,link:url(link),title,project,category,summary,coverage,keywords,body,status})) : [],
     routes:[...fixed.values(),versionRoute,...active,...retired.keys()],
     indexableRoutes:active,
   };

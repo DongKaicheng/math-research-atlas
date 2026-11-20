@@ -18,6 +18,13 @@ export function sourcePolicyNotice(finding) {
     <p>${escape(finding.text)}</p></aside>`;
 }
 
+export function foundationsBookmark(destination, retainProofFragment = false) {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenMath Foundations</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${destination.split('#')[0]}"></head>
+    <body><main><p><a href="${escape(destination)}"${retainProofFragment ? ' data-proof-bookmark="true"' : ''}>Continue reading OpenMath Foundations</a></p></main>
+    <script type="module" src="/assets/foundations-proof-bookmark.js"></script></body></html>`;
+}
+
 export function retiredFoundationsRoutes({graph, rows}) {
   const routes = new Map([[formerMap, contents], [formerMap + 'full/', contents]]);
   for (const slug of Object.keys(graph.chapters)) {

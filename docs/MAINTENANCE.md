@@ -154,6 +154,18 @@ or withdrawal notice in a new revision, and links to the previous statement and
 the reason for the change. Historical versions describe their historical status;
 the current page must not present a withdrawn result as valid.
 
+## Foundations manuscript Tags
+
+`content/foundations/manuscript-tags.json` assigns the `NAG-9xxxxx` range to
+permanent web reading records outside the sealed Tag ledger. Entries bind to
+the exact manuscript block and its SHA-256. Keep assignments append-only.
+The frozen ledger retains its original Tag identities and proof judgments.
+
+The reading register identifies statements and open or conditional passages.
+It does not confer proof acceptance. Update gap classifications against the
+exact source passage. Route former FND and proof-bookmark URLs to the canonical
+Tag if the proof owner is known, or to the exact manuscript proof otherwise.
+
 ## Mathematical agent releases
 
 The independent mathematical tools on [AI & Math](/ai-and-math/) have a separate
