@@ -5,6 +5,7 @@ import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
 import {createFoundationsReader} from './build-foundations-reader.mjs';
 import {createFoundationsWeb, foundationsBookRoute, formerDependencyRoute} from './build-foundations-web.mjs';
 import {createFoundationsNative, loadFoundationsNative} from './build-foundations-native.mjs';
+import {bindReviewedProofs, createProofDependencies} from './build-foundations-dependencies.mjs';
 
 const edition = 'sealed-1097';
 const editionManifest = 'ca3238c1f7a5f15f97bc2d976133e07796c0a0839796731772af0f86109a0b2d';
@@ -153,8 +154,9 @@ export async function loadFoundationsRelease(root) {
   }
   requireFact(ids.size===1205 && [...names].filter(n=>n.startsWith('r/')).length===ids.size,
     'missing or extra exact IDs');
-  const native = current ? await loadFoundationsNative(path.join(dir,'native'),pdfDigest) : null;
-  return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native});
+  const dependencyReview = current ? JSON.parse(await regular(path.join(dir,'dependency-review.json'))) : null;
+  const native = current ? bindReviewedProofs(await loadFoundationsNative(path.join(dir,'native'),pdfDigest),dependencyReview) : null;
+  return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview});
 }
 
 function stablePath(name) {
@@ -180,8 +182,9 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current,rows}=release;
   const onlineReader=current ? createFoundationsReader(release) : null;
-  const web=onlineReader ? createFoundationsWeb(release,release.native.tags) : null;
-  const native=web ? createFoundationsNative(release,web.diagrams) : null;
+  const dependencies=onlineReader ? createProofDependencies(release) : null;
+  const web=dependencies ? createFoundationsWeb(release,release.native.tags,dependencies) : null;
+  const native=web ? createFoundationsNative(release,web.diagrams,dependencies) : null;
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');

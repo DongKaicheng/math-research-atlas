@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {gunzipSync} from 'node:zlib';
 import katex from 'katex';
-import {linkProofParagraphs, manuscriptDiagram, proofAnchor} from './build-foundations-web.mjs';
+import {linkProofParagraphs, manuscriptDiagram, proofAnchor, sourcePolicyNotice} from './build-foundations-web.mjs';
 
 const project = '/projects/foundations/';
 export const nativeReaderRoute = project + 'reader/';
@@ -104,7 +104,7 @@ function bookContents(native, fixed, route) {
     <p id="reader-location" hidden></p>${archive}${jumps}${body}`,script);
 }
 
-function chapterPage(chapter, catalogue, proofs) {
+function chapterPage(chapter, catalogue, proofs, dependencies) {
   const title = heading(chapter.number, chapter.title);
   const index = catalogue.findIndex(entry => entry.key===chapter.key);
   const nav = `<nav class="book-adjacent" aria-label="Chapter navigation">${[-1,1].map(offset => {
@@ -119,15 +119,25 @@ function chapterPage(chapter, catalogue, proofs) {
   const proofIndex = indexEntries ? `<details class="chapter-proof-index" id="chapter-proofs"><summary>Proofs in this chapter (${proofs.size})</summary><ol>${indexEntries}</ol></details>` : '<span id="chapter-proofs"></span>';
   const body = chapter.blocks.map((block,i)=> {
     const proof=proofs.get(i);
-    return proof ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Tag links for this proof">${proof.tagLinks}</div>${block}` : block;
+    const result=dependencies.resultByBlock.get(`${chapter.key}:${i}`);
+    const policy=dependencies.policyByBlock.get(`${chapter.key}:${i}`);
+    const proofPolicy=proof && dependencies.byProof.get(`${chapter.key}:${i}`)?.policy;
+    const locator=policy?.anchor.split('#')[1];
+    const notice=policy ? `<div id="${escape(locator)}">${sourcePolicyNotice(policy)}</div>` : '';
+    const resultLink=result ? `<p class="book-result-link">${link(result.route,result.id+' · Result')}</p>` : '';
+    const proofLink=proof ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Tag links for this proof">${proof.tagLinks}
+      ${proofPolicy ? link(proofPolicy.anchor,'Proof assumptions and status') : ''}</div>` : '';
+    return notice+resultLink+proofLink+(locator ? block.replace(` id="${locator}"`,'') : block);
   }).join('');
   return shell(chapter.route,title,`${trail}<h1>${escape(title)}</h1>${nav}${proofIndex}
-    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${nav}`);
+    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${nav}`,
+    '<link rel="stylesheet" href="/assets/foundations-web.css">');
 }
 
-function tagPage(row, record, chapter, fixed, graph, backlinks, scopes, archivedProof, diagram, proofLocation) {
+function tagPage(row, record, chapter, fixed, graph, backlinks, scopes, archivedProof, diagram, proofLocation, policy) {
   const title = row.title;
-  const status = row.coverage;
+  const status = policy ? (policy.status==='external-assumption' ? 'Conditional argument' : 'Open proof obligation') :
+    'Edition status · '+(record?.proof != null ? row.coverage.replace(' · HTML export unavailable','') : row.coverage);
   const trail = crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],
     ...(chapter ? [[chapter.route,heading(chapter.number,chapter.title)]] : []),
     ...(record?.section && record.section!=='*' ? [[chapter.route+'#'+record.sectionId,record.section]] : []),[null,row.id]]);
@@ -138,8 +148,10 @@ function tagPage(row, record, chapter, fixed, graph, backlinks, scopes, archived
     // The statement and adjacent proof come from the same English source block as the chapter.
     // Remove their self-links because this page is already the Tag permalink.
     text = chapter.blocks[record.index].replaceAll(`<a href="${row.link}">${row.id}</a>`, '');
-    if (record.proof !== null) text += linkProofParagraphs(chapter.blocks.slice(record.proof,record.proofEnd+1).join(''));
+    if (record.inlineProof) text = linkProofParagraphs(text);
+    else if (record.proof !== null) text += linkProofParagraphs(chapter.blocks.slice(record.proof,record.proofEnd+1).join(''));
     else if (record.kind !== 'definition') text += `<p class="book-note">${link(record.href,'Read the surrounding argument in the chapter')}.</p>`;
+    if (record.companion) text += `<p class="book-note">${link(record.companion,'Read the companion argument')}</p>`;
   } else {
     text = record?.excerpt != null ? chapter.blocks[record.excerpt] : '';
     text += `<p>${record ? 'This Tag identifies a passage in the book.' : 'This Tag is maintained in the coverage register.'} ${location}.</p>`;
@@ -147,7 +159,7 @@ function tagPage(row, record, chapter, fixed, graph, backlinks, scopes, archived
   const gap = graph.gaps[row.id];
   const gapNote = gap && !/\p{Script=Han}/u.test(gap.step) ? `<section class="tag-gap-note"><h2>Historical proof gap</h2><p>${escape(gap.step)}</p></section>` : '';
   const citedBy = backlinks?.length ? `<details class="tag-uses"><summary>Used by ${backlinks.length} ${backlinks.length === 1 ? 'Tag' : 'Tags'}</summary><ul>
-    ${backlinks.map(id=>`<li>${link(tagRoute(id),id+' · '+graph.nodes[id].label)}</li>`).join('')}</ul></details>` : '';
+    ${backlinks.map(id=>`<li>${link(tagRoute(id),[id,graph.nodes[id]?.label].filter(Boolean).join(' · '))}</li>`).join('')}</ul></details>` : '';
   const selected = scopes?.length ? `<section><h2>Selected scopes</h2><ul>${scopes.map(scope=> {
     const fragment=scope.href.split('#')[1];
     const target=graph.arguments[scope.key] ? '#'+proofAnchor(scope.key) : archive+'#'+fragment;
@@ -157,7 +169,7 @@ function tagPage(row, record, chapter, fixed, graph, backlinks, scopes, archived
   return shell(row.link,row.id+' · '+title,`${trail}<p class="tag-permalink">Tag ${escape(row.id)}</p><h1>${escape(title)}</h1>
     <p class="tag-status">${escape(status)}</p><nav class="tag-actions" aria-label="Tag links">${location}
     ${proofLocation ? link(proofLocation,'Proof in chapter') : ''}${link('#proof-dependencies','Proof diagram')}${link('#citation','Citation')}</nav>
-    <article class="book-text tag-text"${record?.proof != null ? ' id="foundations-exact-proof"' : ''}>${typesetTag(text)}</article>
+    <article class="book-text tag-text"${record?.proof != null ? ' id="foundations-exact-proof"' : ''}>${sourcePolicyNotice(policy)}${typesetTag(text)}</article>
     ${sourceProof}${gapNote}${diagram}${selected}${citedBy}
     <section id="citation" class="tag-citation"><h2>Citation</h2><p>Non-Archimedean Geometry Foundations, Tag ${escape(row.id)}${record?.number ? ', '+escape(record.number) : ''}.</p>
     <p>${link(row.link,'Permanent link')} · ${link(row.link+'logic/','Standalone proof diagram')} · ${link(archive,'Fixed-edition record')}</p></section>`,proofStyles);
@@ -179,20 +191,28 @@ function bindProofs(native, chapter, linkedTags) {
   return proofs;
 }
 
-function manuscriptTagPage(proof, chapter, tagsByPassage) {
-  const text = chapter.blocks.slice(proof.index,proof.end+1).join('');
-  const referenced = new Map();
-  for (const [,href] of text.matchAll(/\bhref="([^"]+)"/g)) {
-    const row=tagsByPassage.get(href);
-    if (row) referenced.set(row.id,{kind:'reference',key:row.id,title:row.title,target:row.link});
-  }
+function manuscriptTagPage(proof, chapter, review) {
+  const text = linkProofParagraphs(chapter.blocks.slice(proof.index,proof.end+1).join(''));
   const trail = crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],[chapter.route,heading(chapter.number,chapter.title)],[null,proof.tag]]);
   return shell(proof.route,proof.tag+' · '+proof.title,`${trail}<p class="tag-permalink">Proof Tag ${proof.tag}</p><h1>${escape(proof.title)}</h1>
-    <nav class="tag-actions" aria-label="Proof Tag links">${link(proof.href,'Read in chapter')}${link('#proof-dependencies','Proof diagram')}</nav>
-    <article class="book-text tag-text">${typesetTag(text)}</article>${manuscriptDiagram(proof,[...referenced.values()])}`,proofStyles);
+    <nav class="tag-actions" aria-label="Proof Tag links">${link(proof.href,'Read in chapter')}${link('#proof-dependencies','Proof diagram')}
+      ${proof.tags.map(row=>link(row.link,'Result '+row.id)).join('')}</nav>
+    ${sourcePolicyNotice(review?.policy)}<article class="book-text tag-text">${typesetTag(text)}</article>${manuscriptDiagram(proof,review)}`,proofStyles);
 }
 
-export function createFoundationsNative(release, diagrams) {
+function manuscriptResultPage(result, dependencies) {
+  const {chapter,index,proof}=result;
+  const trail=crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],[chapter.route,heading(chapter.number,chapter.title)],[null,result.id]]);
+  const state=dependencies.policyByBlock.get(`${chapter.key}:${index}`);
+  const body=chapter.blocks[index]+(proof ? linkProofParagraphs(chapter.blocks.slice(proof.index,proof.end+1).join('')) : '');
+  const graph=proof ? manuscriptDiagram({route:result.route,href:result.book},dependencies.byProof.get(`${chapter.key}:${proof.index}`)) : '';
+  return shell(result.route,result.id+' · '+result.title,`${trail}<p class="tag-permalink">Result ${escape(result.id)}</p>
+    <h1>${escape(result.title)}</h1><nav class="tag-actions" aria-label="Result links">${link(result.book,'Read in chapter')}
+      ${proof ? link('#proof-dependencies','Proof diagram') : ''}</nav>
+    ${sourcePolicyNotice(state)}<article class="book-text tag-text">${typesetTag(body)}</article>${graph}`,proofStyles);
+}
+
+export function createFoundationsNative(release, diagrams, dependencies) {
   const native = release.native;
   const fixed = project + 'editions/' + release.current.edition + '/';
   const pages = new Map([[nativeReaderRoute,bookContents(native,fixed,nativeReaderRoute)],
@@ -211,12 +231,14 @@ export function createFoundationsNative(release, diagrams) {
       predecessors.get(used).add(node.id);
     }
   }
-  const tagRows = new Map();
   const linkedProofs = new Map();
+  for(const record of dependencies.byProof.values())for(const edge of record.confirmed) {
+    if(!tagId.test(edge.node.id ?? ''))continue;
+    if(!predecessors.has(edge.node.id))predecessors.set(edge.node.id,new Set());
+    for(const id of record.owners)if(id!==edge.node.id)predecessors.get(edge.node.id).add(id);
+  }
   for (const row of release.rows) {
     const record=native.tags[row.id];
-    if (record?.href && !tagRows.has(record.href)) tagRows.set(record.href,row);
-    tagRows.set(row.link,row);
     if (record?.proof == null) continue;
     if (!linkedProofs.has(record.key)) linkedProofs.set(record.key,new Map());
     const links=linkedProofs.get(record.key);
@@ -224,20 +246,25 @@ export function createFoundationsNative(release, diagrams) {
     links.get(record.proof).push(row);
   }
   const locations = new Map();
+  const priorProofTags=new Set(release.dependencyReview.bindings.filter(binding=>!binding.inline).map(binding=>binding.proof));
   for (const chapter of native.chapters.values()) {
     const proofs=bindProofs(native,chapter,linkedProofs.get(chapter.key) ?? new Map());
-    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs));
+    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs,dependencies));
     for (const proof of proofs.values()) {
       if (proof.tags.length) {
         for (const tag of proof.tags) locations.set(tag.id,proof.href);
-      } else pages.set(proof.route,manuscriptTagPage(proof,chapter,tagRows));
+      }
+      const key=`${chapter.key}:${proof.index}`;
+      if(!proof.tags.length || priorProofTags.has(key))pages.set(proof.route,manuscriptTagPage(proof,chapter,dependencies.byProof.get(key)));
     }
   }
+  for(const result of dependencies.results.values())pages.set(result.route,manuscriptResultPage(result,dependencies));
   for (const row of release.rows) {
     const record = native.tags[row.id];
     const archivedProof = release.contents.get(row.link.slice(1)+'index.html').includes('id="foundations-exact-proof"');
     pages.set(row.link,tagPage(row,record,native.byKey.get(record?.key),fixed,release.graph,
-      [...(predecessors.get(row.id) ?? [])].sort(),scopes.get(row.id),archivedProof,diagrams.get(row.id),locations.get(row.id)));
+      [...(predecessors.get(row.id) ?? [])].sort(),scopes.get(row.id),archivedProof,diagrams.get(row.id),locations.get(row.id),
+      dependencies.byId.get(row.id)?.policy ?? dependencies.policyByBlock.get(`${record?.key}:${record?.index}`)));
   }
   return {pages,tags:native.tags};
 }

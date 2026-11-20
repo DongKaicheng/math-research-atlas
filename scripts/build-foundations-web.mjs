@@ -17,7 +17,9 @@ const standingNames = {
 
 export function linkProofParagraphs(html) {
   let index=0;
-  return html.replace(paragraph, block=>block.replace('>',`><span id="${paragraphAnchor(index++)}"></span>`));
+  let item=0;
+  return html.replace(paragraph, block=>block.replace('>',`><span id="${paragraphAnchor(index++)}"></span>`))
+    .replace(/<li(?:\s[^>]*)?>/g, tag=>`${tag}<span id="proof-item-${++item}"></span>`);
 }
 
 function shell(route, title, body, alias = false) {
@@ -52,7 +54,7 @@ function inputNode(graph, input, kind) {
 }
 
 function card({kind, key, binding, title, target, scope = [], trace}) {
-  const captions = {registered:'Proof input', standing:'Standing context', external:'External result', condition:'Hypothesis', open:'Open step', reference:'Reference in the proof'};
+  const captions = {registered:'Proof input', standing:'Standing context', external:'External result', condition:'Hypothesis', open:'Open step', reference:'Reference in the proof', reviewed:'Checked application', candidate:'Awaiting proof review'};
   return `<div class="proof-node proof-node-${kind}"${key ? ` data-input="${esc(key)}"` : ''}${binding ? ` data-input-key="${esc(binding)}"` : ''}>
     <small>${captions[kind]}${key && title!==key && kind!=='external' ? ' · '+esc(key) : ''}</small>
     <span>${target ? link(target,title) : esc(title)}</span>
@@ -106,12 +108,45 @@ function sourcePassages(native, key, output, inputs) {
   return `<div class="proof-passages">${passages.join('')}</div>`;
 }
 
-export function manuscriptDiagram(proof, references) {
-  const source = references.length ? `${fanIn(references)}${arrow('proof-input-arrow')}` : '';
+export function sourcePolicyNotice(finding) {
+  if(!finding)return '';
+  const status=finding.status==='external-assumption' ? 'Conditional argument' : 'Open proof obligation';
+  return `<aside class="proof-policy-note" aria-label="${status}"><strong>${status} · ${esc(finding.title)}</strong>
+    <p>${esc(finding.text)}</p></aside>`;
+}
+
+function reviewCards(items, source, kind) {
+  const groups=new Map();
+  for(const item of items) {
+    const key=item.paragraph ? paragraphAnchor(item.paragraph-1) : 'proof-item-'+item.listItem;
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push(item);
+  }
+  return [...groups].sort(([a],[b])=>a.localeCompare(b,'en',{numeric:true})).map(([anchor,group])=>{
+    const cards=group.map(({node,step,clause})=>({kind,key:node.id,title:node.title,target:node.route,scope:[step,clause].filter(Boolean)}));
+    const name=kind==='reviewed' ? 'Application in proof paragraph '+group[0].paragraph :
+      group[0].paragraph ? 'Reference in proof paragraph '+group[0].paragraph : 'Reference in proof list item '+group[0].listItem;
+    return `<div class="proof-passage">${fanIn(cards)}${arrow('proof-input-arrow')}
+      <div class="proof-stage">${link(source+'#'+anchor,name)}</div></div>`;
+  }).join('');
+}
+
+function proofReview(proof, source, showCandidates) {
+  if(!proof)return '';
+  const {confirmed,candidates,selfContained,policy}=proof;
+  const reviewed=confirmed.length ? `<section class="proof-reviewed" aria-label="Checked applications"><h3>Applications checked against the proof</h3>
+    <div class="proof-passages">${reviewCards(confirmed,source,'reviewed')}</div></section>` : '';
+  const pending=candidates.length ? `<details class="proof-candidates"${showCandidates ? ' open' : ''}><summary>References awaiting proof review (${candidates.length})</summary>
+    <p>Each reference points to where it occurs in the manuscript. Review determines its role and hypotheses.</p>
+    <div class="proof-passages">${reviewCards(candidates,source,'candidate')}</div></details>` : '';
+  const state=selfContained ? `<p class="proof-review-state"><strong>Self-contained proof.</strong> ${esc(selfContained)}</p>` :
+    `<p class="proof-review-state"><strong>Dependency review pending.</strong> ${confirmed.length ? 'The checked applications below cover the listed proof steps.' : 'The proof remains available for checking against the manuscript.'}</p>`;
+  return `${sourcePolicyNotice(policy)}${state}${reviewed}${pending}`;
+}
+
+export function manuscriptDiagram(proof, review) {
   return `<section class="proof-diagram" id="proof-dependencies"><h2>Proof diagram</h2>
-    ${references.length ? '<p>Dashed connectors show references appearing in this proof.</p>' : ''}
-    ${source}${stage('Manuscript proof',references.length ? '' : 'The source register supplies no separate proof-input edges for this passage.')}
-    <p>${link(proof.href,'Read the proof in context')}</p></section>`;
+    ${proofReview(review,proof.route,true)}<p>${link(proof.href,'Read the proof in context')}</p></section>`;
 }
 
 function drawArgument(graph, native, key) {
@@ -133,22 +168,24 @@ function drawArgument(graph, native, key) {
     <h3>${esc(output.label)}</h3>
     <figure aria-label="Proof relationships for ${esc(output.label)}">
       ${diagram}${diagram ? arrow(all.length && (graph.principalMethods[key] || key==='NAG-002027') ? '' : 'proof-input-arrow') : ''}
-      ${stage('Conclusion',output.label)}
+      ${stage(all.length ? 'Conclusion of the registered argument' : 'Statement in the edition',output.label)}
+      ${all.length ? '' : '<p class="proof-review-state">The edition supplied no linked inputs for this argument. See the proof review for its use sites.</p>'}
       ${unresolved.length ? `<div class="proof-open-inputs"><h4>Unresolved source references</h4>${unresolved.map(card).join('')}</div>` : ''}
       <figcaption>${esc(output.status)}${all.length ? ' · '+registered.length+' registered proof inputs' : ''} · ${link(output.href,'Read the statement and proof')}</figcaption>
     </figure></section>`;
 }
 
-function renderDiagram(row, graph, native, keys, book) {
+function renderDiagram(row, graph, native, keys, book, review) {
   const gap=graph.gaps[row.id];
   const openStep=gap ? `<div class="proof-open-inputs"><h3>Historical proof gap</h3>${card({kind:'open',title:gap.step})}</div>` : '';
   const explanation=keys.length ? `<p class="proof-legend">Dashed arrows connect registered inputs to the argument that uses them. Solid arrows show steps described in the proof.</p>` : '';
   return `<section class="proof-diagram" id="proof-dependencies"><h2>Proof diagram</h2>
     ${explanation}${keys.map(key=>drawArgument(graph,native,key)).join('')}${openStep}
-    ${keys.length || gap ? '' : `<p>The edition records no selected proof-input edges for this Tag.${book ? ' '+link(book,'Read the passage in the chapter')+'.' : ''}</p>`}</section>`;
+    ${proofReview(review,row.link,!keys.some(key=>graph.arguments[key].inputs.length))}
+    ${keys.length || gap || review ? '' : `<p>${row.coverage==='Standing definition' ? 'This Tag defines a term.' : 'The proof has no bound web passage for dependency review.'}${book ? ' '+link(book,'Read the passage in the chapter')+'.' : ''}</p>`}</section>`;
 }
 
-export function createFoundationsWeb(release, textLocations) {
+export function createFoundationsWeb(release, textLocations, dependencies) {
   const {graph} = release;
   const argumentsById = new Map();
   for (const key of Object.keys(graph.arguments)) {
@@ -163,7 +200,7 @@ export function createFoundationsWeb(release, textLocations) {
       <script type="module" src="/assets/foundations-proof-bookmark.js"></script>`,true)]]);
   for (const row of release.rows) {
     const location=textLocations[row.id]?.href;
-    const diagram=renderDiagram(row,graph,release.native,argumentsById.get(row.id) ?? [],location);
+    const diagram=renderDiagram(row,graph,release.native,argumentsById.get(row.id) ?? [],location,dependencies.byId.get(row.id));
     diagrams.set(row.id,diagram);
     pages.set(tagGraph(row.id),shell(tagGraph(row.id),'Proof diagram for '+row.id,
       `<p class="tag-permalink">${esc(row.id)}</p><h1>${esc(row.title)}</h1>

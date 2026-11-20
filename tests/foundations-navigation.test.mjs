@@ -141,3 +141,65 @@ test('Each structured chapter proof starts beside a working Tag link', async () 
   assert.ok(proofLinks>=1548);
   assert.ok(manuscriptProofs>0);
 });
+
+test('Dependent proofs surface checked applications and exact paragraph locators',async()=>{
+  const tag=await read('/r/NAG-001831/index.html');
+  const diagram=await read('/r/NAG-001831/logic/index.html');
+  for(const page of [tag,diagram]) {
+    assert.match(page,/Applications checked against the proof/);
+    assert.match(page,/data-input="NAG-001581"/);
+    assert.match(page,/data-input="NAG-001846"/);
+    assert.ok(page.includes(local('/r/NAG-001831/#proof-paragraph-1')));
+    assert.doesNotMatch(page,/records no selected proof-input edges/);
+  }
+  assert.match(tag,/id="proof-paragraph-1"/);
+  const partial=await read('/r/NAG-001860/logic/index.html');
+  assert.match(partial,/proof-node-reviewed" data-input="NAG-001832"/);
+});
+
+test('An unregistered exact book lemma has a stable result page and a checked use',async()=>{
+  const proof=await read(project+'proof-tags/p-19341fbc186f/index.html');
+  assert.match(proof,/proof-node-reviewed/);
+  const route=proof.match(/href="([^"]*\/results\/fnd-[\da-f]+\/)"[^>]*>Proposition 11\.4\.1/)?.[1];
+  assert.ok(route);
+  const result=await read(route.slice(base.length)+'index.html');
+  assert.match(result,/<strong>Proposition 11\.4\.1\.<\/strong>/);
+  const alias=await read(project+'proof-tags/p-e3fb034c75ff/index.html');
+  assert.match(alias,/proof-node-reviewed" data-input="NAG-002787"/);
+});
+
+test('Stacks citations and conditional proof status are visible in the manuscript',async()=>{
+  const result=await read('/r/NAG-001450/index.html');
+  const proof=result.match(/<article\b[^>]*>[\s\S]*?<\/article>/)?.[0];
+  for(const stacksTag of ['00IA','00IB']) {
+    assert.ok(proof.includes('href="https://stacks.math.columbia.edu/tag/'+stacksTag+'"'));
+    assert.ok(result.includes('class="proof-node proof-node-reviewed" data-input="'+stacksTag+'"'));
+  }
+  const conditional=await read(project+'proof-tags/p-a3b77345d5f0/index.html');
+  assert.match(conditional,/Conditional argument/);
+  assert.match(conditional,/proof-node-reviewed/);
+  const chapter=await read(project+'chapters/21/index.html');
+  assert.match(chapter,/id="label-6e65773a626f676f6d6f6c6f765f72656475636564"><aside class="proof-policy-note"/);
+  assert.ok(chapter.lastIndexOf('Theorem 21.15.1 requires tropical equidistribution')<chapter.indexOf('<strong>Theorem 21.15.1.</strong>'));
+});
+
+test('Reviewed proof bindings retain the former proof permalink',async()=>{
+  const tag=await read('/r/NAG-002503/index.html');
+  assert.match(tag,/id="foundations-exact-proof"/);
+  assert.match(tag,/Read the companion argument/);
+  const former=await read(project+'proof-tags/p-d52e01268beb/index.html');
+  assert.ok(former.includes(local('/r/NAG-002503/')));
+  const selfContained=await read('/r/NAG-000221/logic/index.html');
+  assert.match(selfContained,/Self-contained proof/);
+});
+
+test('The seven audited empty NAG graphs now show a proof-based review',async()=>{
+  for(const id of ['001586','001587','001831','001832','001990','002360','002484']) {
+    const page=await read('/r/NAG-'+id+'/index.html');
+    assert.match(page,/id="foundations-exact-proof"/,id);
+    assert.match(page,/Self-contained proof|Applications checked against the proof/,id);
+  }
+  const example=await read('/r/NAG-002484/index.html');
+  assert.equal([...example.matchAll(/class="example"/g)].length,1);
+  assert.match(example,/proof-node-reviewed" data-input="NAG-002480"/);
+});
