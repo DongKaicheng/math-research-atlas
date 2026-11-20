@@ -6,6 +6,7 @@ import {buildBedfordTaylor} from './build-bedford-taylor.mjs';
 import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
 import {buildFoundationsRelease,foundationsOverview,loadFoundationsRelease} from './build-foundations.mjs';
+import {foundationsContentsRoute} from './build-foundations-reader.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
 import {buildAcknowledgements} from './build-acknowledgements.mjs';
@@ -248,6 +249,7 @@ const featured=`<main id="main-content" class="simple-home">
 <h1>${esc(brand)}</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
 <p class="simple-statement" style="font-size:1rem;max-width:54rem">Explore Berkovich and non-Archimedean geometry, Bedford–Taylor pluripotential theory and positive currents, and Beilinson–Bloch heights and Arakelov geometry. Each research programme links its conjectures, proof dependencies, current status, and public references.</p>
+${foundationsCurrent?`<nav class="foundations-reading-nav" aria-label="Read Foundations"><a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse the Foundations</a><a href="${url('/search/')}?project=foundations">Search Foundations</a></nav>`:''}
 <nav class="simple-quick-links" aria-label="About and feedback">
 <a href="${url('/about/')}"><span>About this site</span>${externalArrow}</a>
 <a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span>${externalArrow}</a>
@@ -293,6 +295,7 @@ for(const [route,title,description,group] of [
 ]){
   const content=`<main id="main-content" class="wrap index-page simple-track-index">${breadcrumbs([[title]])}
   ${heading(brand.toUpperCase(),title,description)}
+  ${route==='/foundations/'&&foundationsCurrent?`<nav class="foundations-reading-nav" aria-label="Browse Foundations"><a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse chapters</a><a href="${url('/search/')}?project=foundations">Search Foundations</a></nav>`:''}
   <div class="simple-project-list">${group.map(card).join('')}</div>
   </main>`;
   await save(route,loadPage(title,description,content,route));
@@ -313,8 +316,20 @@ for(const bundle of bundles){
   <p class="eyebrow">${isFoundation?'FOUNDATIONAL THEORY':'CONJECTURES & NEW THEORY'}</p>
   <h1>${esc(p.title)}</h1><p class="document-deck">${esc(p.summary)}</p>
   <div class="document-meta"><span class="outline-badge">Version ${bundle.revision}${bundle.revision===0?' · Outline':''}</span></div>
+  ${isCurrentFoundations?`<nav class="foundations-reading-nav" aria-label="Read Foundations">
+    <a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse chapters</a>
+    <a href="${url(route+'logic/')}">Foundations proof map</a>
+    <a href="${url(route+'coverage/')}">Coverage and gaps</a>
+    <a href="${url(foundationsRelease.meta.reader.path)}">English PDF</a>
+    <a href="${url(route+'editions/'+encodeURIComponent(bundle.edition)+'/')}">Fixed edition</a>
+  </nav>
+  <form class="foundations-reading-search" action="${url('/search/')}" method="get" role="search" aria-label="Search Foundations">
+    <input type="hidden" name="project" value="foundations">
+    <label for="foundations-query">Search Foundations</label>
+    <div><input type="search" id="foundations-query" name="q" placeholder="Keyword or NAG-002462" maxlength="200" required><button class="button button-dark" type="submit">Search</button></div>
+  </form>`:''}
   ${bundle.revision>0?`<p class="document-meta">Earlier versions: ${histories.get(p.id).map(s=>`<a href="${url('/projects/'+p.id+'/versions/'+s.revision+'/')}">Version ${s.revision}</a>`).join(' · ')}</p>`:''}
-  <div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>
+  ${isCurrentFoundations?'':`<div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>`}
   <nav class="project-resource-nav" aria-label="Project resources"><a href="${url(route)}" aria-current="page">Overview</a><a href="${url(route+'acknowledgements/')}">Acknowledgements</a><a href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}">Project feedback</a></nav>
   </header>
   ${bundle.revision===0?alert('Source outline','Exact theorem statements and proofs will be added only from reviewed source material.'):''}
@@ -447,6 +462,7 @@ ${breadcrumbs([['Search']])}${heading(brand.toUpperCase(),'Search','Find a proje
 <form class="large-search" id="site-search"><label class="sr-only" for="atlas-search">Search published math</label>
 <input id="atlas-search" type="search" name="q" placeholder="Enter a topic or result ID" maxlength="200" aria-label="Search published mathematics">
 <button type="submit">Search</button></form>
+${foundationsCurrent?`<p id="foundations-search-scope" class="foundations-search-scope" hidden>Searching Foundations only. <a href="${url('/search/')}">Search the whole atlas</a></p>`:''}
 <section class="search-results" id="search-results" aria-live="polite"></section>
 </main>`;
 await save('/search/',loadPage('Search','Search public project outlines, results, and mathematical topics.',search,'/search/','',

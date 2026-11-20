@@ -1,0 +1,88 @@
+.foundations-reader-trail {
+  gap: 0.25rem 0.65rem;
+  padding: 0 0 0.85rem;
+  color: #46585a;
+  font-size: 0.875rem;
+}
+
+.foundations-reader-trail > :not(:first-child)::before {
+  content: '/';
+  padding-inline-end: 0.65rem;
+}
+
+.foundations-reader-index {
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foundations-reader-index li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid #c9d3cc;
+}
+
+.foundations-reader-index small {
+  flex: none;
+}
+
+.foundations-reader-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 1rem;
+  margin: 1rem 0 1.2rem;
+  padding: 0.65rem 0;
+  border-block: 1px solid #c9d3cc;
+}
+
+.foundations-reader-steps a {
+  display: grid;
+  gap: 0.05rem;
+  text-decoration: none;
+}
+
+.foundations-reader-steps a span {
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.foundations-reader-steps a[rel="next"] {
+  grid-column: 2;
+  text-align: end;
+}
+
+.foundations-reader-citation,
+.foundations-reader-uses {
+  margin-block: 1.3rem;
+}
+
+.foundations-reader-citation summary,
+.foundations-reader-uses summary {
+  font-weight: 600;
+}
+
+.foundations-reader-uses li + li {
+  margin-top: 0.55rem;
+}
+
+.foundations-reader-uses small {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .foundations-reader-index li {
+    flex-wrap: wrap;
+  }
+
+  .foundations-reader-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foundations-reader-steps a[rel="next"] {
+    grid-column: auto;
+    text-align: start;
+  }
+}
