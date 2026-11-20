@@ -83,6 +83,6 @@ export function foundationsGuide(release) {
     <nav class="page-links" aria-label="Guide sections">${link('#proof-statuses','Proof statuses')}${link('#problem-types','Problem types')}</nav>
     <div class="guide-text"><p>A Tag may identify a definition, a statement such as a theorem or lemma, or a specific proof question. The Tag links to the relevant passage and any available argument.</p>
     <section id="proof-statuses"><h2>Proof statuses</h2><dl class="guide-definitions">${statuses}</dl></section>
-    <section id="problem-types"><h2>Problem types</h2><p>These labels describe the work involved in a recorded gap. An entry can have several types. Read the status and the source note to see how much of the result is established.</p>${types}</section></div>`,{layout:'guide-page'});
+    <section id="problem-types"><h2>Problem types</h2><p>These labels describe the work involved in a recorded gap. An entry can have several types. Read the status and the source note to see how much of the result is established.</p>${types}</section></div>`,{layout:'guide-page',description:'How to read and cite permanent NAG Tags in OpenMath Foundations, with explanations of open, conditional and accepted-scope statements and their proof obligations.'});
   return {page,statusLink,typeLink};
 }

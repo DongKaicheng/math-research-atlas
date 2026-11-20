@@ -41,7 +41,7 @@
       add(results,'p',matches.length+(matches.length===1?' result':' results')+' for “'+q+'”','eyebrow');
       matches.forEach(item=>{
         const a=document.createElement('a');a.href=item.link;a.className='search-result';
-        add(a,'span',item.project==='foundations' ? item.id+' · '+item.coverage : item.category,'micro');
+        add(a,'span',item.project==='foundations' && item.id ? item.id+' · '+item.coverage : item.category==='topic' ? 'Foundations topic' : item.category,'micro');
         add(a,'h2',item.title);
         if (!form.dataset.project || item.summary!==item.coverage) add(a,'p',item.summary);
         results.appendChild(a);
