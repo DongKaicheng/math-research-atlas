@@ -4,7 +4,6 @@ import path from 'node:path';
 
 const project='/projects/foundations/';
 const index=project+'logic/';
-export const foundationsFullMapRoute=index+'full/';
 const fixed='/projects/foundations/editions/sealed-1097/';
 const directory='content/foundations/releases/sealed-1097-logic';
 const logicManifestPin='1361932769f29ceb2455311fbbbed1b08ced251605a122a672674b87735c8901';
@@ -58,11 +57,11 @@ function loadGraph(data, release) {
   expect(data.principal.length===2&&data.principal.every(b=>assets.includes(b.id+'.svg')&&b.targets.every(id=>data.arguments[id])),
     'invalid principal views');
 }
-function shell(title,route,body,extraHead='') {
+function shell(title,route,body) {
   return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+
     '<meta name="foundations-edition" content="sealed-1097"><meta name="description" content="Read the selected inputs of exact Foundations arguments, their scopes and unresolved historical proof steps.">'+
     '<link rel="canonical" href="'+route+'"><link rel="stylesheet" href="'+fixed+'reader.css"><link rel="stylesheet" href="'+fixed+'logic/logic.css">'+
-    '<title>'+esc(title)+' · Foundations</title>'+extraHead+'</head><body><a class="skip" href="#main">Skip to content</a>'+
+    '<title>'+esc(title)+' · Foundations</title></head><body><a class="skip" href="#main">Skip to content</a>'+
     '<header><nav aria-label="Foundations">'+ref(project,'Foundations')+' '+ref(index,'Proof map')+' '+ref(project+'coverage/','Coverage')+
     ' '+ref(fixed+'reader-en.pdf','English PDF')+' '+ref('/search/','Search')+'</nav></header>'+
     '<main class="logic-flow" id="main">'+body+'</main><footer>Foundations · sealed 1097</footer></body></html>';
@@ -77,60 +76,6 @@ function feedback(page) {
   return ref('/feedback/?project=foundations&version=sealed-1097&page='+encodeURIComponent(page),'Discuss this map');
 }
 
-export function foundationsFullMap(data) {
-  const argumentsList = Object.values(data.arguments);
-  const count = value => value.toLocaleString('en-US');
-  const edges = argumentsList.reduce((sum, argument) => sum + argument.inputs.length, 0);
-  const gapCount = Object.keys(data.gaps).length;
-  const contents = project + 'contents/';
-  const page = `
-    <div class="foundations-full-map">
-      <h1>Complete Foundations proof map</h1>
-      <p>The map covers ${count(argumentsList.length)} selected proof or scope records, ${count(edges)} registered proof-input links and ${count(gapCount)} historical whole-proof gaps in the fixed edition. Select a chapter or look up a record to read its inputs and registered uses.</p>
-      <p class="logic-links">
-        ${ref(contents, 'Table of contents')}
-        <a id="proof-map-chapters" href="${index}">Worked diagrams and chapter views</a>
-        ${ref(project + 'coverage/', 'Coverage and gaps')}
-        <a id="proof-map-source" href="${fixed}logic/data.json">Map data (JSON)</a>
-        ${feedback(foundationsFullMapRoute)}
-      </p>
-      <noscript><p>${ref(index + '#chapter-views', 'Read the proof inputs and gaps by chapter')}</p></noscript>
-      <p id="proof-map-status" role="status"></p>
-      <div id="proof-map-interactive" hidden>
-        <form id="proof-map-controls" aria-label="Find a proof record">
-          <label>Chapter<select id="proof-map-chapter" name="chapter"><option value="">All chapters</option></select></label>
-          <div class="proof-map-query"><label for="proof-map-query">NAG number or keyword</label><div><input id="proof-map-query" name="q" type="search" maxlength="160" placeholder="NAG-002462"><button type="submit">Find</button></div></div>
-          <label>Record<select id="proof-map-record" name="record"><option value="">Select a record</option></select></label>
-        </form>
-        <section id="proof-map-focus" aria-label="Selected proof record" hidden></section>
-        <section aria-labelledby="proof-map-overview">
-          <div class="proof-map-toolbar">
-            <h2 id="proof-map-overview">Map overview</h2>
-            <div aria-label="Map zoom" role="group">
-              <button type="button" id="proof-map-zoom-out">Zoom out</button>
-              <button type="button" id="proof-map-zoom-in">Zoom in</button>
-              <button type="button" id="proof-map-fit">Fit map</button>
-            </div>
-          </div>
-          <ul class="proof-map-legend" aria-label="Map legend">
-            <li class="proof-map-legend-record">Proof or scope record</li>
-            <li class="proof-map-legend-input">Additional input record</li>
-            <li class="proof-map-legend-gap">Historical gap</li>
-            <li class="proof-map-legend-edge">Registered proof input</li>
-          </ul>
-          <div id="proof-map-scroll" class="proof-map-scroll" tabindex="0" aria-label="Scrollable proof map">
-            <svg id="proof-map-svg" role="img" aria-labelledby="proof-map-drawing-title">
-              <title id="proof-map-drawing-title">Proof records grouped by chapter with their registered input connections</title>
-            </svg>
-          </div>
-          <p class="proof-map-explanation">Arrowheads on the selected links point from each registered input to the argument that uses it. The selected record shows the entire list of its inputs, including those in other chapters.</p>
-        </section>
-      </div>
-    </div>`;
-  return shell('Complete proof map', foundationsFullMapRoute, page,
-    '<link rel="stylesheet" href="/assets/foundations-full-map.css">'+
-    '<script type="module" src="/assets/foundations-full-map.js"></script>');
-}
 function windows(input) {
   if(!input.useWindows?.length) return '';
   return ' <small class="logic-context">Exact source '+(input.useWindows.length===1?'window ':'windows ')+

@@ -1,8 +1,9 @@
 import {createHash} from 'node:crypto';
 import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {augmentFoundationsLogic, foundationsFullMap, foundationsFullMapRoute} from './build-foundations-logic.mjs';
+import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
 import {createFoundationsReader, foundationsContentsRoute} from './build-foundations-reader.mjs';
+import {createFoundationsWeb, foundationsBookRoute, foundationsDependenciesRoute} from './build-foundations-web.mjs';
 
 const edition = 'sealed-1097';
 const editionManifest = 'ca3238c1f7a5f15f97bc2d976133e07796c0a0839796731772af0f86109a0b2d';
@@ -177,6 +178,7 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current,rows}=release;
   const onlineReader=current ? createFoundationsReader(release) : null;
+  const web=onlineReader ? createFoundationsWeb(release,onlineReader.chapterById) : null;
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');
@@ -201,14 +203,15 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     await emit(fixed.get(route).slice(1)+'index.html',render(text,url,origin,fixed));
     if(onlineReader && route!==publicHome) {
       const activeText = route === publicHome+'logic/'
-        ? text.replace('</h1>', `</h1><p><a href="${foundationsFullMapRoute}">Open the complete proof map</a></p>`)
+        ? text.replace('</h1>', `</h1><p><a href="${foundationsDependenciesRoute}">Browse Tag dependencies</a></p>`)
         : onlineReader.decorate(name,text);
-      await emit(name,render(activeText,url,origin,null));
+      await emit(name,render(web.decorate(route,activeText),url,origin,null));
     }
   }
   if (onlineReader) {
-    await emit(foundationsContentsRoute.slice(1)+'index.html',render(onlineReader.contentsPage,url,origin,null));
-    await emit(foundationsFullMapRoute.slice(1)+'index.html',render(foundationsFullMap(release.graph),url,origin,null));
+    await emit(foundationsContentsRoute.slice(1)+'index.html',render(web.decorate(foundationsContentsRoute,onlineReader.contentsPage),url,origin,null));
+    for (const [route,page] of web.pages) await emit(route.slice(1)+'index.html',render(page,url,origin,null));
+    await emit(foundationsBookRoute.slice(1)+'tags.json',JSON.stringify(web.book));
   }
   const versionRoute=publicHome+'versions/1/';
   const destination='/'+prefix;
@@ -218,7 +221,7 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     '<p><a href="'+url(destination)+'">Open the fixed edition</a></p></main>'+
     '<script>location.replace('+JSON.stringify(url(destination))+'+location.search+location.hash);</script></body></html>';
   await emit(versionRoute.slice(1)+'index.html',redirect);
-  const active = current ? [...fixed.keys(),foundationsContentsRoute,foundationsFullMapRoute] : [];
+  const active = web ? [...fixed.keys(),foundationsContentsRoute,...web.pages.keys()] : [];
   return {
     rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
     routes:[...fixed.values(),versionRoute,...active],

@@ -1,5 +1,5 @@
 import {feedbackIssueUrl} from '../lib/feedback.mjs';
-import {foundationsFullMapRoute} from './build-foundations-logic.mjs';
+import {foundationsBookRoute, foundationsDependenciesRoute} from './build-foundations-web.mjs';
 
 const project = '/projects/foundations/';
 export const foundationsContentsRoute = project + 'contents/';
@@ -17,14 +17,13 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => (
 const link = (href, title) => `<a href="${escapeHtml(href)}">${escapeHtml(title)}</a>`;
 
 export function foundationsHome({release, title, trail, history, url, repository}) {
-  const {current, meta, rows} = release;
+  const {current, rows} = release;
   const fixed = project + 'editions/' + current.edition + '/';
   const coverage = project + 'coverage/';
   const context = {project: current.project, version: current.edition, page: url(project)};
   const feedback = url('/feedback/') + '?' + new URLSearchParams(context);
   const suggestion = feedbackIssueUrl(repository, 'suggestion', context);
   const localLink = (route, label) => link(url(route), label);
-  const number = value => value.toLocaleString('en-US');
   const [proof, gap] = ['NAG-002462', 'NAG-002405'].map(id => rows.find(row => row.id === id));
   requireReader(proof && gap, 'the homepage examples must belong to the published edition');
   const earlier = history.map(({revision}) =>
@@ -39,9 +38,9 @@ export function foundationsHome({release, title, trail, history, url, repository
       <nav class="foundations-home-nav" aria-label="Foundations project navigation">
         <a class="button button-dark" href="${escapeHtml(url(foundationsContentsRoute))}">Table of contents</a>
         ${link('#foundations-query', 'Search')}
-        ${localLink(foundationsFullMapRoute, 'Complete proof map')}
+        ${localLink(foundationsDependenciesRoute, 'Tag dependencies')}
         ${localLink(coverage, 'Coverage and gaps')}
-        ${localLink(meta.reader.path, 'English PDF')}
+        ${localLink(foundationsBookRoute, 'Web reader')}
         ${link('#editions', 'Editions')}
         ${link('#feedback', 'Feedback')}
       </nav>
@@ -55,8 +54,8 @@ export function foundationsHome({release, title, trail, history, url, repository
     <section id="motivation" class="foundations-home-section">
       <h2>About the project</h2>
       <div>
-        <p>The chapters begin with valued fields, Banach algebras and Berkovich analytic spaces. They develop the tools of reduction and formal models, the geometry of analytic curves and skeleta, and tropical multiplicities and balancing. Supplements record arguments on integration, Stokes formulas and descent.</p>
-        <p id="questions">This edition records ${number(meta.counts.accepted)} accepted results, including ${number(meta.counts.wholeHtml)} with complete proofs available on the website. The ${localLink(coverage, 'coverage register')} documents the available sources for the other ${number(meta.counts.held)}, along with narrower results, standing definitions and historical proof gaps.</p>
+        <p id="questions">This project brings together existing mathematics in non-Archimedean geometry. It organizes definitions, results and proofs into a shared reference that readers can study, cite and build on.</p>
+        <p>We maintain the reference openly to support mathematical exchange and contributions to shared knowledge. Readers are welcome to clarify an argument, suggest a reference or contribute mathematics through the project’s public discussion.</p>
       </div>
     </section>
 
@@ -66,16 +65,16 @@ export function foundationsHome({release, title, trail, history, url, repository
         <ol class="foundations-home-guide">
           <li><strong>Read by chapter.</strong> Open the ${localLink(foundationsContentsRoute, 'table of contents')} and use the previous and next links to read through a chapter.</li>
           <li><strong>Find a result.</strong> ${link('#foundations-query', 'Search by keyword or NAG number')}. Open the record to see its status and available proof sources. The citation gives both the permanent link and the fixed-edition link.</li>
-          <li><strong>Trace an argument.</strong> Open the ${localLink(foundationsFullMapRoute, 'complete proof map')} and look up a record to see its selected proof inputs and the arguments that use it.</li>
+          <li><strong>Trace an argument.</strong> Use the ${localLink(foundationsDependenciesRoute, 'Tag dependency map')} to explore dependencies by chapter. Each Tag has a separate diagram with its registered inputs and uses.</li>
         </ol>
         <p>Start with ${localLink(proof.link, proof.id + ' · ' + proof.title)} to read a complete selected proof. The linked record ${localLink(gap.link, gap.id + ' · ' + gap.title)} documents a historical proof gap in the broader argument.</p>
       </div>
     </section>
 
     <section id="programme" class="foundations-home-section">
-      <h2 id="editions">Editions and downloads</h2>
+      <h2 id="editions">Reading edition and archive</h2>
       <div>
-        <p>${localLink(fixed, 'Open the fixed Version ' + current.revision + ' edition')} or ${localLink(meta.reader.path, 'read the English PDF')} (${number(meta.reader.pages)} pages). For a citation to this exact publication, follow the fixed-edition link on the record page.</p>
+        <p>${localLink(foundationsBookRoute, 'Read the full edition on the web')}. The ${localLink(fixed, 'fixed Version ' + current.revision + ' edition')} remains available for exact citations.</p>
         ${earlier ? `<p>Earlier edition · ${earlier}</p>` : ''}
       </div>
     </section>
@@ -183,9 +182,9 @@ function makeContentsPage(chapters, graph, fixed, edition) {
     <nav aria-label="Foundations">
       <a class="brand" href="${project}">OpenMath <span>Foundations</span></a>
       ${link(search, 'Search Foundations')}
-      ${link(foundationsFullMapRoute, 'Complete proof map')}
+      ${link(foundationsDependenciesRoute, 'Tag dependencies')}
       ${link(project + 'coverage/', 'Coverage')}
-      ${link(fixed + 'reader-en.pdf', 'English PDF')}
+      ${link(foundationsBookRoute, 'Web reader')}
     </nav>
   </header>
   <main id="main">
@@ -288,5 +287,5 @@ export function createFoundationsReader(release) {
     return decoratePage(text, breadcrumb(chapter, record), pagination, references);
   }
 
-  return {contentsRoute: foundationsContentsRoute, contentsPage: makeContentsPage(chapters, graph, fixed, edition), decorate};
+  return {contentsRoute: foundationsContentsRoute, contentsPage: makeContentsPage(chapters, graph, fixed, edition), chapterById: membership, decorate};
 }

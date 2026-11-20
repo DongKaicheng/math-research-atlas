@@ -472,7 +472,24 @@ const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.s
   ...bedfordTaylor.searchIndex,...strongGreen.searchIndex,...foundationsEdition.rows];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
-if(foundationsCurrent)await cp(path.join(root,'content','foundations','search-client.js'),path.join(output,'assets','foundations-search.js'));
+if(foundationsCurrent){
+  await cp(path.join(root,'content','foundations','search-client.js'),path.join(output,'assets','foundations-search.js'));
+  const pdfjs=path.join(root,'node_modules','pdfjs-dist');
+  const browser=path.join(output,'assets','foundations-pdfjs');
+  await mkdir(browser,{recursive:true});
+  for(const file of ['pdf.min.mjs','pdf.worker.min.mjs']){
+    await cp(path.join(pdfjs,'build',file),path.join(browser,file));
+  }
+  for(const directory of ['cmaps','standard_fonts','wasm','iccs']){
+    await cp(path.join(pdfjs,directory),path.join(browser,directory),{recursive:true});
+  }
+  await cp(path.join(pdfjs,'LICENSE'),path.join(browser,'LICENSE'));
+  const viewerCss=await readFile(path.join(pdfjs,'web','pdf_viewer.css'),'utf8');
+  const textStart=viewerCss.indexOf('.textLayer {');
+  const textEnd=viewerCss.indexOf('.textLayerImages {',textStart);
+  if(textStart<0 || textEnd<0)throw Error('PDF.js text layer styling is unavailable');
+  await writeFile(path.join(output,'assets','foundations-pdfjs-text.css'),viewerCss.slice(textStart,textEnd));
+}
 await cp(path.join(root,'lib','feedback.mjs'),path.join(output,'assets','feedback-core.mjs'));
 const katexCss=path.join(root,'node_modules','katex','dist','katex.min.css');
 await cp(katexCss,path.join(output,'assets','katex.min.css'));

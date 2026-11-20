@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
-import {indexFoundationsMap} from '../assets/foundations-full-map.js';
 
 const dist = path.resolve(import.meta.dirname, '../dist');
 const base = (process.env.SITE_BASE_PATH ?? '/math-research-atlas').replace(/\/$/, '');
@@ -16,7 +15,7 @@ test('The Foundations homepage points to the published reader and carries exact 
   const page = await read(project + 'index.html');
   const nav = page.match(/<nav class="foundations-home-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(nav);
-  for (const route of ['contents/', 'logic/full/', 'coverage/', 'editions/sealed-1097/reader-en.pdf']) {
+  for (const route of ['contents/', 'logic/full/', 'coverage/', 'reader/']) {
     assert.ok(nav.includes('href="' + local(project + route) + '"'), route);
   }
   assert.ok(nav.includes('href="#foundations-query"'));
@@ -49,25 +48,32 @@ test('The table of contents links every published chapter and each populated pro
   }
 });
 
-test('The complete graph carries every selected input and keeps historical gap records distinct', async () => {
+test('The web edition, exact proof diagrams and chapter totals bind to the frozen release', async () => {
   const data = await graph();
-  const {records, edges, uses} = indexFoundationsMap(data);
-  assert.equal(records.size, Object.keys(data.nodes).length + Object.keys(data.gaps).length);
-  const registered = Object.entries(data.arguments).flatMap(([key, arg]) => arg.inputs.map(({key: from}) => ({from, to: key})));
-  assert.deepEqual(edges, registered);
-  for (const {from, to} of edges) {
-    assert.ok(records.has(from));
-    assert.equal(records.get(to).kind, 'argument');
-    assert.ok(uses.get(from).includes(to));
+  const total = await read(project + 'logic/full/index.html');
+  assert.match(total, /5,434 registered proof-input links/);
+  assert.equal([...total.matchAll(/<small>(\d+) links<\/small>/g)].reduce((n, item) => n + Number(item[1]), 0),
+    Object.values(data.arguments).reduce((n, arg) => n + arg.inputs.length, 0));
+  const reader = await read(project + 'reader/index.html');
+  assert.match(reader, /web-reader-book-contents/);
+  const index = JSON.parse(await read(project + 'reader/tags.json'));
+  const reverseTags = new Set(Object.values(index.pages).flat().map(({id}) => id));
+  assert.deepEqual([...reverseTags].sort(), Object.keys(index.tags).sort());
+  assert.equal(index.tags['NAG-002462'], 'dest=theorem.5.56.6');
+  assert.ok(index.pages[1072].some(tag => tag.id === 'NAG-002462'));
+  const tag = await read('/r/NAG-002462/index.html');
+  assert.ok(tag.includes(local('/r/NAG-002462/logic/')));
+  assert.ok(tag.includes(local(project + 'reader/?tag=NAG-002462')));
+  assert.match(tag, /tag-proof-text/);
+  assert.match(tag, /class="katex"/);
+  const proof = await read('/r/NAG-002462/logic/index.html');
+  assert.match(proof, /14 registered inputs/);
+  assert.match(proof, /<strong>AND<\/strong>/);
+  for (const input of data.arguments['NAG-002462'].inputs) {
+    assert.ok(proof.includes(local('/r/' + data.nodes[input.key].id + '/logic/')), input.key);
   }
-  for (const [id, gap] of Object.entries(data.gaps)) {
-    const plotted = records.get('gap:' + id);
-    assert.equal(plotted.kind, 'gap');
-    assert.equal(plotted.step, gap.step);
-    assert.equal(plotted.href, gap.href);
-  }
-  const fullMap = await read(project + 'logic/full/index.html');
-  assert.ok(fullMap.includes('href="' + local(fixed + 'logic/data.json') + '"'));
-  const fixedMap = await read(fixed + 'logic/index.html');
-  assert.ok(!fixedMap.includes(project + 'logic/full/'));
+  const gap = await read('/r/NAG-002405/logic/index.html');
+  assert.match(gap, /Historical proof gap/);
+  const frozen = await read(fixed + 'r/NAG-002462/index.html');
+  assert.doesNotMatch(frozen, /tag-proof-text/);
 });
