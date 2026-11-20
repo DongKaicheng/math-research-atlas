@@ -248,7 +248,7 @@ const featured=`<main id="main-content" class="simple-home">
 <section class="simple-hero wrap">
 <h1>${esc(brand)}</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
-<p class="simple-statement" style="font-size:1rem;max-width:54rem">Explore Berkovich and non-Archimedean geometry, Bedford–Taylor pluripotential theory and positive currents, and Beilinson–Bloch heights and Arakelov geometry. Each research programme links its conjectures, proof dependencies, current status, and public references.</p>
+<p class="simple-statement" style="font-size:1rem;max-width:54rem">We are dedicated to open-source mathematics projects, from organizing existing foundational theory to developing new theories through long-term research programmes.</p>
 ${foundationsCurrent?`<nav class="foundations-reading-nav" aria-label="Read Foundations"><a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse the Foundations</a><a href="${url('/search/')}?project=foundations">Search Foundations</a></nav>`:''}
 <nav class="simple-quick-links" aria-label="About and feedback">
 <a href="${url('/about/')}"><span>About this site</span>${externalArrow}</a>
