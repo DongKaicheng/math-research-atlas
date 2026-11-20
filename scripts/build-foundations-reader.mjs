@@ -1,4 +1,4 @@
-import {contentsRoute, coverageRoute, escape, foundationsSearchForm, foundationsShell, link, project} from './foundations-layout.mjs';
+import {contentsRoute, coverageRoute, escape, foundationsPdfLink, foundationsSearchForm, foundationsShell, link, project} from './foundations-layout.mjs';
 
 export const foundationsContentsRoute = contentsRoute;
 
@@ -17,7 +17,7 @@ export function foundationsHome({release, title, description, history, url, cano
       <h1>${escape(title)}</h1>
       <p class="page-lead">An open reference for definitions, theorems and proofs in non-Archimedean geometry.</p>
       ${foundationsSearchForm({id:'foundations-query',url})}
-      <p class="home-download"><a href="${escape(url(meta.reader.path))}" download="Non-Archimedean-Geometry-Foundations.pdf">Download the English PDF</a></p>
+      ${foundationsPdfLink(url(meta.reader.path))}
     </header>
     <div class="home-information">
       <section id="motivation"><h2>About the project</h2>

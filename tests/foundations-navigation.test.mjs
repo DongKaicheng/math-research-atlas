@@ -33,10 +33,12 @@ test('The Foundations homepage has uniform project navigation and exact feedback
   assert.ok(!links.some(link => link.hostname === 'github.com'));
 });
 
-test('The homepage offers the fixed English PDF and discloses the role of AI',async()=>{
+test('The homepage and contents offer the fixed English PDF, and the homepage discloses the role of AI',async()=>{
   const page = await read(project+'index.html');
   const pdf = fixed+'reader-en.pdf';
-  assert.ok(page.includes(`href="${local(pdf)}" download="Non-Archimedean-Geometry-Foundations.pdf"`));
+  for (const html of [page,await read(project+'contents/index.html'),await read(project+'reader/index.html')]) {
+    assert.ok(html.includes(`href="${local(pdf)}" download="Non-Archimedean-Geometry-Foundations.pdf"`));
+  }
   assert.match(await read(pdf),/^%PDF-/);
   assert.match(page,/Banach and affinoid algebras, and Berkovich analytic spaces/);
   assert.match(page,/AI generated most of the mathematical content in this project/);

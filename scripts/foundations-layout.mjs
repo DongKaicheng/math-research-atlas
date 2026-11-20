@@ -33,3 +33,7 @@ export function foundationsSearchForm({id = 'atlas-search', formId, url = path=>
     <input id="${id}" name="q" type="search" maxlength="200" placeholder="Keyword or NAG number" required>
     <button type="submit">Search</button></div></form>`;
 }
+
+export function foundationsPdfLink(href) {
+  return `<p class="reader-download"><a href="${escape(href)}" download="Non-Archimedean-Geometry-Foundations.pdf">Download the English PDF</a></p>`;
+}

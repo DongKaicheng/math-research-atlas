@@ -8,7 +8,7 @@ import {foundationsCoverage, gapCount} from './foundations-reading-status.mjs';
 import {editFoundationsReadingHtml, foundationsReferenceLabels, foundationsRemarkNumbers} from './foundations-reading-editor.mjs';
 import {foundationsReadingLocations} from './foundations-reading-locations.mjs';
 import {closureGroup, coverageGroups, groupLabels, registerFoundationsTags, statusLabels, tagRoute} from './foundations-tag-register.mjs';
-import {contentsRoute, coverageRoute, escape, foundationsSearchForm, foundationsShell, guideRoute, link, project, searchRoute} from './foundations-layout.mjs';
+import {contentsRoute, coverageRoute, escape, foundationsPdfLink, foundationsSearchForm, foundationsShell, guideRoute, link, project, searchRoute} from './foundations-layout.mjs';
 import {foundationsGuide, shortStatus} from './foundations-guide.mjs';
 
 export const nativeReaderRoute = project + 'reader/';
@@ -105,7 +105,7 @@ function chapterCount(entry, detailed = false) {
   return `<span class="chapter-open-count${open ? ' has-open' : ''}">${counts.join(' · ')}</span>`;
 }
 
-function bookContents(native, route, coverage) {
+function bookContents(native, route, coverage, pdf) {
   const seen = new Set();
   let groups = [{title:'Front matter', items:[]}];
   for (const entry of native.catalogue) {
@@ -130,7 +130,7 @@ function bookContents(native, route, coverage) {
     <li>${link('/projects/foundations/chapters/appendix-a/#bibliography','Bibliography')}</li>
     <li>${link('/projects/foundations/chapters/appendix-a/#subject-index','Subject index')}</li></ul></nav></details></aside>`;
   const script = route === nativeReaderRoute ? '<script type="module" src="/assets/foundations-native-reader.js"></script>' : '';
-  return shell(route,'Table of contents',`<header class="page-intro"><h1>Table of contents</h1></header>
+  return shell(route,'Table of contents',`<header class="page-intro"><h1>Table of contents</h1>${foundationsPdfLink(pdf)}</header>
     <p id="reader-location" hidden></p><div class="book-layout has-sidebar">${jumps}<div class="contents-text">${body}</div></div>`,script,'contents-page');
 }
 
@@ -328,8 +328,9 @@ export function createFoundationsNative(release, dependencies) {
   const rows = [...registry.tags.values()];
   const redirects = new Map();
   const fixed = project + 'editions/' + release.current.edition + '/';
-  const pages = new Map([[nativeReaderRoute,bookContents(native,nativeReaderRoute,coverage)],
-    [contentsRoute,bookContents(native,contentsRoute,coverage)],
+  const pdf = release.meta.reader.path;
+  const pages = new Map([[nativeReaderRoute,bookContents(native,nativeReaderRoute,coverage,pdf)],
+    [contentsRoute,bookContents(native,contentsRoute,coverage,pdf)],
     [coverageRoute,coveragePage(coverage,fixed)],[guideRoute,guide.page],[searchRoute,searchPage()]]);
   for (const chapter of coverage.chapters.values()) {
     pages.set(chapterCoverageRoute(chapter),chapterCoveragePage(chapter));
