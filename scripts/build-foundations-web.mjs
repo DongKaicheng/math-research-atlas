@@ -1,5 +1,3 @@
-import katex from 'katex';
-
 const project = '/projects/foundations/';
 export const foundationsBookRoute = project + 'reader/';
 export const foundationsDependenciesRoute = project + 'logic/full/';
@@ -9,7 +7,6 @@ const normalizedKey = key => key.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
 const proofAnchor = key => 'proof-' + normalizedKey(key);
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const link = (href, label) => '<a href="' + esc(href) + '">' + esc(label) + '</a>';
-const decode = value => value.replace(/&(amp|lt|gt|quot|#39);/g, (_, code) => ({amp:'&',lt:'<',gt:'>',quot:'"','#39':"'"}[code]));
 const count = value => value.toLocaleString('en-US');
 
 function shell(route, title, body, fixed, head = '') {
@@ -22,102 +19,11 @@ function shell(route, title, body, fixed, head = '') {
   </nav></header><main id="main">${body}</main></body></html>`;
 }
 
-function mathHtml(source) {
-  const tex = source.replace(/\r\n?/g, '\n').replace(/\\label\{[^{}]*\}/g, '');
-  const tokens = /\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$|(?<![\\$])\$(?:\\.|[^$\n\\])+\$|\\begin\{(align\*?|equation\*?|gather\*?)\}[\s\S]*?\\end\{\1\}|\\(?:begin|end)\{(?:proof|theorem|lemma|proposition|corollary|definition|remark|example)\}(?:\[[^\]\n]*\])?|\n[ \t]*\n/g;
-  let line = '', html = '', cursor = 0;
-  const flush = () => {
-    if (line.trim()) html += '<p>' + line + '</p>';
-    line = '';
-  };
-  for (const match of tex.matchAll(tokens)) {
-    line += esc(tex.slice(cursor, match.index));
-    cursor = match.index + match[0].length;
-    const token = match[0];
-    if (token.startsWith('\n') || (token.startsWith('\\begin') && !match[1]) || token.startsWith('\\end')) {
-      flush();
-      const title = token.match(/\[([^\]]+)\]$/)?.[1];
-      if (title) line += esc(title) + '. ';
-      continue;
-    }
-    const display = Boolean(match[1]) || token.startsWith('\\[') || token.startsWith('$$');
-    let math = match[1] ? token.slice(token.indexOf('}') + 1, token.lastIndexOf('\\end')) :
-      token.startsWith('$$') || token.startsWith('\\') ? token.slice(2, -2) : token.slice(1, -1);
-    if (match[1]?.startsWith('align')) math = '\\begin{aligned}' + math + '\\end{aligned}';
-    if (match[1]?.startsWith('gather')) math = '\\begin{gathered}' + math + '\\end{gathered}';
-    let rendered;
-    try { rendered = katex.renderToString(math, {displayMode: display, trust: false, maxExpand: 400, maxSize: 10}); }
-    catch { rendered = '<code class="source-notation">' + esc(token) + '</code>'; }
-    if (display) {
-      flush();
-      html += '<div class="tag-equation">' + rendered + '</div>';
-    } else line += rendered;
-  }
-  line += esc(tex.slice(cursor));
-  flush();
-  return html;
-}
-
-function tagText(html) {
-  return html.replace(/(<details class="source"(?: id="[^"]+")?>)<summary>([^<]+)<\/summary>(\s*<pre\b[^>]*>)([\s\S]*?)(<\/pre>\s*<\/details>)/g,
-    (whole, opening, title, pre, body, end) => {
-      if (!title.includes('exact TeX')) return whole;
-      const heading = title.replace(/ · exact TeX$/, '');
-      return opening.replace(/>$/, ' open>') + '<summary>' + heading + '</summary>' +
-        '<div class="tag-proof-text">' + mathHtml(decode(body)) + '</div>' +
-        '<details class="tag-source"><summary>Exact TeX source</summary>' + pre + body + '</pre></details>' +
-        end.slice('</pre>'.length);
-    });
-}
-
 function bookTarget(href) {
   const hash = href.split('#')[1];
   if (hash?.startsWith('nameddest=')) return foundationsBookRoute + '?dest=' + hash.slice(10);
   if (hash?.startsWith('page=')) return foundationsBookRoute + '?' + hash;
   return foundationsBookRoute;
-}
-
-function locations(release, fixed) {
-  const reader = fixed + 'reader-en.pdf';
-  const tags = {};
-  const pages = {};
-  for (const row of release.rows) {
-    const html = release.contents.get(row.link.slice(1) + 'index.html').toString('utf8');
-    const anchor = [...html.matchAll(/<a href="([^"]+)"[^>]*>([^<]*)<\/a>/g)].find(([, href]) =>
-      href.startsWith(reader + '#nameddest=') || href.startsWith(reader + '#page='));
-    if (!anchor) continue;
-    const [, href, label] = anchor;
-    const dest = href.match(/#nameddest=(.+)$/)?.[1];
-    const printed = (href.match(/#page=(\d+)/) || label.match(/\bPDF page (\d+)/i))?.[1];
-    const witness = release.meta.acceptedExportHolds[row.id]?.verifiedReaderDestination;
-    const sourcePage = witness && dest === encodeURIComponent(witness.destination) ? witness.page : undefined;
-    const page = Number(printed ?? sourcePage);
-    const query = dest ? 'dest=' + dest : 'page=' + page;
-    if (!dest && (!Number.isInteger(page) || page < 1 || page > release.meta.reader.pages)) continue;
-    tags[row.id] = query;
-    if (page >= 1 && page <= release.meta.reader.pages) {
-      (pages[page] ??= []).push({id: row.id, title: row.title, href: row.link});
-    }
-  }
-  return {tags, pages};
-}
-
-function webReader(release, fixed) {
-  return shell(foundationsBookRoute, 'Web reader', `
-    <h1>Foundations web reader</h1><p>Read the complete fixed edition in the browser. Use the book contents, move by page or follow a Tag to the corresponding passage.</p>
-    <p id="web-reader-status" role="status">Loading the reading edition…</p>
-    <form id="web-reader-controls" hidden aria-label="Page navigation">
-      <button type="button" id="web-reader-prev">Previous page</button>
-      <label for="web-reader-page">Page</label><input type="number" min="1" max="${release.meta.reader.pages}" id="web-reader-page" required>
-      <button type="submit">Go</button><button type="button" id="web-reader-next">Next page</button>
-    </form>
-    <details id="web-reader-outline"><summary>Book contents</summary><div id="web-reader-book-contents"></div></details>
-    <section id="web-reader-tags" aria-label="Tags on this page" hidden><h2>Tags on this page</h2><ul></ul></section>
-    <div id="web-reader-sheet" aria-label="Page from the English edition"></div>
-    <noscript><p>JavaScript is required to lay out the book pages. ${link(project+'contents/','Browse the standalone Tag pages')}.</p></noscript>
-    <p hidden><a id="web-reader-source" href="${fixed}reader-en.pdf">Fixed edition source</a>
-      <a id="web-reader-index" href="${foundationsBookRoute}tags.json">Page to Tag index</a></p>`,
-    fixed, '<link rel="stylesheet" href="/assets/foundations-pdfjs-text.css"><script type="module" src="/assets/foundations-web-reader.js"></script>');
 }
 
 function labelNode(key, node) {
@@ -131,7 +37,7 @@ function proofPage(row, graph, argumentsForTag, consumers, book, fixed) {
   };
   const summary = `<h1>Proof dependencies for ${esc(row.id)}</h1><p>${esc(row.title)}</p>
   <nav class="tag-actions" aria-label="This Tag">${link(row.link,'Read the Tag')}
-  ${book ? link(foundationsBookRoute + '?' + book, 'Read the corresponding book page') : ''}
+  ${book ? link(book, 'Read in chapter') : ''}
   ${link(foundationsDependenciesRoute,'All Tag dependencies')}</nav>`;
   const branches = argumentsForTag.map(key => {
     const scope = graph.nodes[key];
@@ -156,10 +62,9 @@ function proofPage(row, graph, argumentsForTag, consumers, book, fixed) {
     (uses ? '<section><h2>Arguments that use this Tag</h2><ul>' + uses + '</ul></section>' : ''), fixed);
 }
 
-export function createFoundationsWeb(release, chapterById) {
+export function createFoundationsWeb(release, chapterById, textLocations) {
   const fixed = project + 'editions/' + release.current.edition + '/';
   const graph = release.graph;
-  const book = locations(release, fixed);
   const argumentsById = new Map();
   const usesById = new Map();
   const chapters = new Map();
@@ -198,23 +103,15 @@ export function createFoundationsWeb(release, chapterById) {
     <p>${link(project+'coverage/','Coverage and open steps')} · ${link('/search/?project=foundations','Find a Tag by number or topic')}</p>
     <details class="dependency-index"><summary>Jump to a chapter</summary><nav aria-label="Dependency chapters">${shortcuts}</nav></details>
     ${table}`, fixed);
-  const pages = new Map([[foundationsBookRoute, webReader(release, fixed)], [foundationsDependenciesRoute, total]]);
+  const pages = new Map([[foundationsDependenciesRoute, total]]);
   for (const row of release.rows) {
-    pages.set(tagGraph(row.id), proofPage(row, graph, argumentsById.get(row.id) ?? [], usesById.get(row.id) ?? [], book.tags[row.id], fixed));
+    pages.set(tagGraph(row.id), proofPage(row, graph, argumentsById.get(row.id) ?? [], usesById.get(row.id) ?? [], textLocations[row.id]?.href, fixed));
   }
   function decorate(route, html) {
-    let text = html.replace(/href="(\/projects\/foundations\/editions\/[^/]+\/reader-en\.pdf(?:#[^"]*)?)"/g,
+    return html.replace(/href="(\/projects\/foundations\/editions\/[^/]+\/reader-en\.pdf(?:#[^"]*)?)"/g,
       (_, href) => 'href="' + bookTarget(href) + '"')
       .replaceAll('>English PDF<', '>Web reader<')
       .replaceAll('Open in the English reader · PDF page', 'Read in the web edition · page');
-    const match = /^\/r\/(NAG-\d{6})\/$/.exec(route);
-    if (!match) return text;
-    const [, id] = match;
-    const target = book.tags[id];
-    text = tagText(text).replace('</head>', '<link rel="stylesheet" href="/assets/foundations-web.css"><link rel="stylesheet" href="/assets/katex.min.css"></head>');
-    return text.replace('</h1>', '</h1><nav class="tag-actions" aria-label="Tag reading links">' +
-      link(tagGraph(id), 'Proof dependency diagram') +
-      (target ? link(foundationsBookRoute + '?tag=' + id, 'Read the corresponding book page') : '') + '</nav>');
   }
-  return {pages, book, decorate};
+  return {pages, decorate};
 }

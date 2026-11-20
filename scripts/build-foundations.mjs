@@ -2,8 +2,9 @@ import {createHash} from 'node:crypto';
 import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
-import {createFoundationsReader, foundationsContentsRoute} from './build-foundations-reader.mjs';
+import {createFoundationsReader} from './build-foundations-reader.mjs';
 import {createFoundationsWeb, foundationsBookRoute, foundationsDependenciesRoute} from './build-foundations-web.mjs';
+import {createFoundationsNative, loadFoundationsNative} from './build-foundations-native.mjs';
 
 const edition = 'sealed-1097';
 const editionManifest = 'ca3238c1f7a5f15f97bc2d976133e07796c0a0839796731772af0f86109a0b2d';
@@ -152,7 +153,8 @@ export async function loadFoundationsRelease(root) {
   }
   requireFact(ids.size===1205 && [...names].filter(n=>n.startsWith('r/')).length===ids.size,
     'missing or extra exact IDs');
-  return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows});
+  const native = current ? await loadFoundationsNative(path.join(dir,'native'),pdfDigest) : null;
+  return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native});
 }
 
 function stablePath(name) {
@@ -178,7 +180,8 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current,rows}=release;
   const onlineReader=current ? createFoundationsReader(release) : null;
-  const web=onlineReader ? createFoundationsWeb(release,onlineReader.chapterById) : null;
+  const native=onlineReader ? createFoundationsNative(release) : null;
+  const web=onlineReader ? createFoundationsWeb(release,onlineReader.chapterById,native.tags) : null;
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');
@@ -202,16 +205,21 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     requireFact(text.includes('rel="canonical" href="'+route+'"'),'wrong canonical in frozen input '+name);
     await emit(fixed.get(route).slice(1)+'index.html',render(text,url,origin,fixed));
     if(onlineReader && route!==publicHome) {
-      const activeText = route === publicHome+'logic/'
+      const activeText = native.pages.get(route) ?? (route === publicHome+'logic/'
         ? text.replace('</h1>', `</h1><p><a href="${foundationsDependenciesRoute}">Browse Tag dependencies</a></p>`)
-        : onlineReader.decorate(name,text);
-      await emit(name,render(web.decorate(route,activeText),url,origin,null));
+        : web.decorate(route,onlineReader.decorate(name,text)));
+      await emit(name,render(activeText,url,origin,null));
     }
   }
   if (onlineReader) {
-    await emit(foundationsContentsRoute.slice(1)+'index.html',render(web.decorate(foundationsContentsRoute,onlineReader.contentsPage),url,origin,null));
+    for (const [route,page] of native.pages) {
+      if (!fixed.has(route)) await emit(route.slice(1)+'index.html',render(page,url,origin,null));
+    }
     for (const [route,page] of web.pages) await emit(route.slice(1)+'index.html',render(page,url,origin,null));
-    await emit(foundationsBookRoute.slice(1)+'tags.json',JSON.stringify(web.book));
+    const rewrite = entries => Object.fromEntries(Object.entries(entries).map(([key,href])=>[key,url(href)]));
+    const tagURLs = Object.fromEntries(Object.entries(native.tags).map(([id,record])=>[id,record.href]));
+    await emit(foundationsBookRoute.slice(1)+'tags.json',JSON.stringify({tags:rewrite(tagURLs),
+      destinations:rewrite(release.native.destinations ?? {}),pages:rewrite(release.native.pages ?? {})}));
   }
   const versionRoute=publicHome+'versions/1/';
   const destination='/'+prefix;
@@ -221,7 +229,7 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     '<p><a href="'+url(destination)+'">Open the fixed edition</a></p></main>'+
     '<script>location.replace('+JSON.stringify(url(destination))+'+location.search+location.hash);</script></body></html>';
   await emit(versionRoute.slice(1)+'index.html',redirect);
-  const active = web ? [...fixed.keys(),foundationsContentsRoute,...web.pages.keys()] : [];
+  const active = web ? [...new Set([...fixed.keys(),...native.pages.keys(),...web.pages.keys()])] : [];
   return {
     rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
     routes:[...fixed.values(),versionRoute,...active],

@@ -1,0 +1,80 @@
+:root {
+  color-scheme: light;
+  --ink: #223139;
+  --muted: #4b6069;
+  --blue: #16556b;
+  --rule: #d6e1e4;
+  --paper: #f4f8f8;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 1.5rem; }
+body { margin: 0; background: #fff; color: var(--ink); font: 17px/1.65 system-ui, sans-serif; }
+a { color: var(--blue); text-underline-offset: .16em; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.skip { position: absolute; inset: .5rem auto auto 1rem; padding: .4rem 1rem; background: white; transform: translateY(-150%); }
+.skip:focus { transform: none; }
+.site-header { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.site-header nav, main { width: min(100% - 2.5rem, 76rem); margin: auto; }
+.site-header nav { display: flex; gap: .5rem 1.5rem; flex-wrap: wrap; align-items: baseline; padding-block: .85rem; font-size: .9rem; }
+.site-header a:first-child { font-weight: 700; }
+main { padding-block: 1.7rem 4rem; }
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; line-height: 1.18; }
+h1 { max-width: 38ch; font-size: clamp(2.15rem, 6vw, 3.55rem); margin: .25em 0 .45em; }
+h2 { font-size: 1.8rem; margin-top: 1.7em; }
+h3 { font-size: 1.4rem; }
+summary { cursor: pointer; }
+.book-crumb { font-size: .85rem; margin-bottom: 1rem; color: var(--muted); }
+.book-crumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: .2rem .6rem; margin: 0; padding: 0; }
+.book-crumb li + li::before { content: '/'; margin-right: .6rem; color: #657984; }
+.book-note { color: var(--muted); font: .88rem/1.6 system-ui, sans-serif; }
+.book-jumps, .book-adjacent, .tag-actions { display: flex; align-items: flex-start; gap: .55rem 1.45rem; flex-wrap: wrap; margin: 1rem 0 2rem; padding-block: .8rem; border-block: 1px solid var(--rule); font-size: .9rem; }
+.book-adjacent a + a { margin-left: auto; }
+.book-chapters { max-width: 56rem; list-style: none; padding: 0; }
+.book-chapters > li { padding: .55rem 0; border-bottom: 1px solid var(--rule); }
+.book-chapters > li > a { font-weight: 550; }
+.book-chapters details { font-size: .9rem; padding: .25rem 0 .2rem 1rem; }
+.book-chapters details ol, .book-chapters details ul { padding-left: 1.3rem; }
+.book-layout { min-width: 0; }
+.book-layout.has-sidebar { display: grid; grid-template-columns: minmax(0, 52rem) minmax(12rem, 1fr); gap: 2.4rem; align-items: start; }
+.book-sidebar { grid-column: 2; grid-row: 1; position: sticky; top: 1rem; background: var(--paper); padding: .75rem 1rem; font-size: .85rem; }
+.book-sidebar ul { padding: 0; list-style: none; margin: .7rem 0 0; max-height: min(62vh, 38rem); overflow: auto; }
+.book-sidebar li { padding: .25em 0; }
+.book-text { font: 1.12rem/1.67 Georgia, 'Times New Roman', serif; min-width: 0; max-width: 52rem; overflow-wrap: break-word; }
+.book-layout .book-text { grid-column: 1; grid-row: 1; }
+.book-text p { margin: 0 0 1.02em; }
+.book-text section { margin-block: 1rem 2.3rem; }
+.book-text img { max-width: 100%; height: auto; }
+.book-text figure { margin: 1.25em 0; }
+.book-text hr { border: 0; border-top: 1px solid var(--rule); margin-block: 2em; }
+.book-text table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 1.3rem; font-size: .96em; }
+.book-text th, .book-text td { padding: .5rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+.book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) { padding: 1rem 1.15rem; background: var(--paper); border-inline-start: 3px solid #62939f; margin: 1.25rem 0; }
+.book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) > :last-child { margin-bottom: 0; }
+.book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) :is(em, i) { font-style: normal; }
+.book-text .proof { padding: .5rem 0 .8rem; }
+.book-text [id^="label-"] { scroll-margin-top: 1rem; }
+.book-text :is(div, span):has(> [id^="label-"]:target), .book-text :is(h2,h3):target { background: #e8f3f3; }
+.book-equation { display: block; overflow-x: auto; margin: .7em 0; padding-block: .3em; }
+.book-math-fallback { font-size: .88em; overflow-wrap: anywhere; }
+.book-bib-item { display: grid; grid-template-columns: auto 1fr; gap: 1em; margin-bottom: .65em; }
+.tag-permalink { color: var(--blue); font: 600 .9rem/1.4 ui-monospace, monospace; margin: 1rem 0 .2rem; }
+.tag-status { color: var(--muted); margin: 0; }
+.tag-citation { margin-top: 3rem; max-width: 52rem; border-top: 1px solid var(--rule); }
+.tag-citation h2 { margin-top: .75em; }
+.tag-gap-note, .tag-uses { max-width: 52rem; margin-block: 1.5rem; }
+.tag-gap-note { border-inline-start: 3px solid #927341; background: #fbf7f0; padding: .8rem 1rem; }
+.tag-gap-note h2 { margin-top: 0; }
+
+@media (max-width: 58rem) {
+  .book-layout.has-sidebar { display: block; }
+  .book-sidebar { position: static; margin-bottom: 1.5rem; }
+  .book-sidebar ul { max-height: 12rem; }
+  .book-adjacent a + a { margin-left: 0; }
+}
+
+@media (max-width: 36rem) {
+  .site-header nav, main { width: calc(100% - 1.5rem); }
+  .book-text { font-size: 1.05rem; }
+  .book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) { padding: .7rem .8rem; }
+}
