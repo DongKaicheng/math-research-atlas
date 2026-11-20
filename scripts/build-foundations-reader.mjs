@@ -1,14 +1,12 @@
-import {feedbackIssueUrl} from '../lib/feedback.mjs';
-import {contentsRoute, escape, foundationsSearchForm, foundationsShell, link, project} from './foundations-layout.mjs';
+import {contentsRoute, coverageRoute, escape, foundationsSearchForm, foundationsShell, link, project} from './foundations-layout.mjs';
 
 export const foundationsContentsRoute = contentsRoute;
 
-export function foundationsHome({release, title, description, history, url, repository, canonical, redirect, brand}) {
-  const {current} = release;
+export function foundationsHome({release, title, description, history, url, canonical, redirect, brand}) {
+  const {current, meta} = release;
   const fixed = project+'editions/'+current.edition+'/';
   const context = {project:current.project, version:current.edition, page:url(project)};
   const feedback = url('/feedback/')+'?'+new URLSearchParams(context);
-  const suggestion = feedbackIssueUrl(repository,'suggestion',context);
   const earlier = history.map(({revision}) => link(url(project+'versions/'+revision+'/'),'Version '+revision)).join(' · ');
   const schema = JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,
     url:canonical(project),description,isPartOf:{'@id':canonical('/')+'#website'},
@@ -19,19 +17,24 @@ export function foundationsHome({release, title, description, history, url, repo
       <h1>${escape(title)}</h1>
       <p class="page-lead">An open reference for definitions, theorems and proofs in non-Archimedean geometry.</p>
       ${foundationsSearchForm({id:'foundations-query',url})}
+      <p class="home-download"><a href="${escape(url(meta.reader.path))}" download="Non-Archimedean-Geometry-Foundations.pdf">Download the English PDF</a></p>
     </header>
     <div class="home-information">
       <section id="motivation"><h2>About the project</h2>
-        <p id="questions">Foundations brings together existing mathematics so readers can study, cite and build on it.</p>
-        <p id="results">Each NAG Tag gives a permanent reference to a statement or proof question and records its current status.</p>
+        <p id="questions">The book starts with valued fields, Banach and affinoid algebras, and Berkovich analytic spaces. It develops reduction, formal models, analytic curves and skeleta, then uses tropical geometry to study differential forms, currents, metrics and intersection products.</p>
+        <p id="results">Permanent NAG Tags link entries to their statements, arguments and proof status, including the hypotheses under which a result can be used.</p>
+      </section>
+      <section aria-labelledby="ai-disclosure"><h2 id="ai-disclosure">AI disclosure</h2>
+        <p>AI generated most of the mathematical content in this project. We welcome readers to use AI to develop and check proofs for ${link(url(coverageRoute),'open NAG Tags')}.</p>
+        <p>For a proposed proof, include the Tag, the exact hypotheses, an argument for the missing step and any references. Please say how you used AI.</p>
       </section>
       <section id="feedback"><h2>Feedback and corrections</h2>
-        <p>Tell us which statement or argument you are commenting on and what you would change. Include the NAG number when available.</p>
-        <p class="home-feedback-links">${link(feedback,'Open the feedback board')}${link(suggestion,'Suggest a change on GitHub')}</p>
+        <p>Send corrections, suggestions and proposed proofs through the shared OpenMath feedback page. Include the NAG number when available.</p>
+        <p class="home-feedback-links">${link(feedback,'Open project feedback')}</p>
       </section>
     </div>
     <footer class="foundation-editions" id="programme"><span id="editions"></span>
-      <span>${link(url(fixed),'Fixed edition and PDF')}</span>
+      <span>${link(url(fixed),'Fixed edition')}</span>
       ${earlier ? `<span>${earlier}</span>` : ''}
       <span>${link(url(project+'acknowledgements/'),'Acknowledgements')}</span>
     </footer>`,{url,canonical:canonical(project),description,layout:'foundations-home',extra:

@@ -339,7 +339,7 @@ for(const bundle of bundles){
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
   const searchSummary=isCurrentFoundations?'Browse definitions, theorems and proofs in non-Archimedean geometry by chapter or permanent NAG number. Check open proof gaps in the chapter coverage register.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
   await save(route,isCurrentFoundations ? foundationsHome({release:foundationsRelease,title:p.title,description:searchSummary,
-    history:histories.get(p.id),url,repository,canonical,redirect:legacyRedirect,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
+    history:histories.get(p.id),url,canonical,redirect:legacyRedirect,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;

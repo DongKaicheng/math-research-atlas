@@ -15,9 +15,10 @@ test('The Foundations homepage has uniform project navigation and exact feedback
   const page = await read(project + 'index.html');
   const nav = page.match(/<nav class="foundation-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(nav);
-  for (const route of ['contents/', 'coverage/', 'guide/', 'search/', '#feedback']) {
+  for (const route of ['contents/', 'coverage/', 'guide/', 'search/']) {
     assert.ok(nav.includes('href="' + local(project + route) + '"'), route);
   }
+  assert.ok(nav.includes('href="' + local('/feedback/?project=foundations') + '"'));
   assert.doesNotMatch(nav,/button|\/reader\/|\/logic\/|aria-current/);
   assert.ok(page.includes('action="' + local(project+'search/') + '"'));
   for (const id of ['motivation', 'questions', 'results', 'programme', 'feedback']) {
@@ -26,13 +27,20 @@ test('The Foundations homepage has uniform project navigation and exact feedback
 
   const links = [...page.matchAll(/\bhref="([^"]+)"/g)].map(([, href]) =>
     new URL(href.replaceAll('&amp;', '&'), 'https://atlas.test' + local(project)));
-  const board = links.find(link => link.pathname === local('/feedback/') && link.searchParams.get('project') === 'foundations');
+  const board = links.find(link => link.pathname === local('/feedback/') && link.searchParams.get('project') === 'foundations' && link.searchParams.has('page'));
   assert.equal(board?.searchParams.get('version'), 'sealed-1097');
   assert.equal(board.searchParams.get('page'), local(project));
-  const suggestion = links.find(link => link.searchParams.get('template') === 'suggestion.yml');
-  assert.equal(suggestion?.searchParams.get('project'), 'foundations');
-  assert.equal(suggestion.searchParams.get('version'), 'sealed-1097');
-  assert.equal(suggestion.searchParams.get('target'), local(project));
+  assert.ok(!links.some(link => link.hostname === 'github.com'));
+});
+
+test('The homepage offers the fixed English PDF and discloses the role of AI',async()=>{
+  const page = await read(project+'index.html');
+  const pdf = fixed+'reader-en.pdf';
+  assert.ok(page.includes(`href="${local(pdf)}" download="Non-Archimedean-Geometry-Foundations.pdf"`));
+  assert.match(await read(pdf),/^%PDF-/);
+  assert.match(page,/Banach and affinoid algebras, and Berkovich analytic spaces/);
+  assert.match(page,/AI generated most of the mathematical content in this project/);
+  assert.ok(page.includes(`href="${local(project+'coverage/')}"`));
 });
 
 test('Reader pages share the project navigation and explain the actual Tag labels', async () => {

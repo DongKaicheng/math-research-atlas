@@ -9,7 +9,7 @@ export const link = (href,title) => `<a href="${escape(href)}">${escape(title)}<
 
 const navigation = [
   [contentsRoute,'Table of contents'], [coverageRoute,'Tag index'], [guideRoute,'Reading guide'],
-  [searchRoute,'Search'], [project+'#feedback','Feedback'],
+  [searchRoute,'Search'], ['/feedback/?project=foundations','Feedback'],
 ];
 
 export function foundationsShell(route,title,body,{url = path=>path, canonical = route, description, extra = '', layout = ''} = {}) {
