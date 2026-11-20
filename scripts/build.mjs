@@ -5,8 +5,8 @@ import katex from 'katex';
 import {buildBedfordTaylor} from './build-bedford-taylor.mjs';
 import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
-import {buildFoundationsRelease,foundationsOverview,loadFoundationsRelease} from './build-foundations.mjs';
-import {foundationsContentsRoute} from './build-foundations-reader.mjs';
+import {buildFoundationsRelease,loadFoundationsRelease} from './build-foundations.mjs';
+import {foundationsContentsRoute,foundationsHome} from './build-foundations-reader.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
 import {buildAcknowledgements} from './build-acknowledgements.mjs';
@@ -310,26 +310,17 @@ for(const bundle of bundles){
   const notes=bundle.entries.filter(e=>['definition','note'].includes(e.kind));
   const entryList=list=>list.length?`<ul class="entry-list">${list.map(e=>`<li class="entry-row"><a href="${url('/r/'+e.id+'/')}"><span class="entry-id">${esc(e.id)} · ${esc(e.status)}</span><h3>${esc(e.title)}</h3><p>${esc(e.summary)}</p></a></li>`).join('')}</ul>`:`<div class="empty-entries"><div class="empty-rule"></div><div><h3>Source texts are being prepared.</h3><p>Exact statements and their proofs will be added after source review.</p></div></div>`;
   const category=isFoundation?'Foundations':'Research';
-  const content=`<main id="main-content" class="wrap document-page">
-  ${breadcrumbs([[category,isFoundation?'/foundations/':'/research/'],[p.title]])}
+  const trail=breadcrumbs([[category,isFoundation?'/foundations/':'/research/'],[p.title]]);
+  const content=isCurrentFoundations
+    ? foundationsHome({release:foundationsRelease,title:p.title,trail,history:histories.get(p.id),url,repository})
+    : `<main id="main-content" class="wrap document-page">
+  ${trail}
   <header class="document-header">
   <p class="eyebrow">${isFoundation?'FOUNDATIONAL THEORY':'CONJECTURES & NEW THEORY'}</p>
   <h1>${esc(p.title)}</h1><p class="document-deck">${esc(p.summary)}</p>
   <div class="document-meta"><span class="outline-badge">Version ${bundle.revision}${bundle.revision===0?' · Outline':''}</span></div>
-  ${isCurrentFoundations?`<nav class="foundations-reading-nav" aria-label="Read Foundations">
-    <a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse chapters</a>
-    <a href="${url(route+'logic/')}">Foundations proof map</a>
-    <a href="${url(route+'coverage/')}">Coverage and gaps</a>
-    <a href="${url(foundationsRelease.meta.reader.path)}">English PDF</a>
-    <a href="${url(route+'editions/'+encodeURIComponent(bundle.edition)+'/')}">Fixed edition</a>
-  </nav>
-  <form class="foundations-reading-search" action="${url('/search/')}" method="get" role="search" aria-label="Search Foundations">
-    <input type="hidden" name="project" value="foundations">
-    <label for="foundations-query">Search Foundations</label>
-    <div><input type="search" id="foundations-query" name="q" placeholder="Keyword or NAG-002462" maxlength="200" required><button class="button button-dark" type="submit">Search</button></div>
-  </form>`:''}
   ${bundle.revision>0?`<p class="document-meta">Earlier versions: ${histories.get(p.id).map(s=>`<a href="${url('/projects/'+p.id+'/versions/'+s.revision+'/')}">Version ${s.revision}</a>`).join(' · ')}</p>`:''}
-  ${isCurrentFoundations?'':`<div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>`}
+  <div class="keyword-list">${p.keywords.map(x=>`<a href="${url('/search/')}?q=${encodeURIComponent(x)}">${esc(x)}</a>`).join('')}</div>
   <nav class="project-resource-nav" aria-label="Project resources"><a href="${url(route)}" aria-current="page">Overview</a><a href="${url(route+'acknowledgements/')}">Acknowledgements</a><a href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}">Project feedback</a></nav>
   </header>
   ${bundle.revision===0?alert('Source outline','Exact theorem statements and proofs will be added only from reviewed source material.'):''}
@@ -341,15 +332,16 @@ for(const bundle of bundles){
   <a href="#feedback">05 <span>Reader contributions</span></a>
   </nav></aside><div class="document-body">
   ${section('motivation','01 / MOTIVATION',isFoundation?'Scope & organization':'Why this question?',`<div class="prose-math">${markdown(p.motivation)}</div>`)}
-  ${section('questions','02 / QUESTIONS',isFoundation?'Definitions & conventions':'Conjectures & open questions',isCurrentFoundations?'<p><a href="'+url(route+'coverage/')+'">Read the edition coverage and standing scopes</a></p>':entryList(isFoundation?notes:questions))}
-  ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',isCurrentFoundations?foundationsOverview(foundationsRelease,url):entryList(results))}
+  ${section('questions','02 / QUESTIONS',isFoundation?'Definitions & conventions':'Conjectures & open questions',entryList(isFoundation?notes:questions))}
+  ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',entryList(results))}
   ${section('programme','04 / PROGRAMME',isFoundation?'Further development':'A programme of proof',`<div class="prose-math">${markdown(p.programme)}</div>`)}
   ${!isFoundation&&notes.length?section('notes','NOTES','Notes & definitions',entryList(notes)):''}
   ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a><p><a class="text-link" href="${url(route+'acknowledgements/')}">Acknowledgements and adopted contributions</a></p>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
-  const searchSummary=isCurrentFoundations?'Read exact theorem statements, available proofs and source-bound dependencies in the first Non-Archimedean Foundations edition.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
-  await save(route,loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
+  const searchSummary=isCurrentFoundations?'Browse definitions, theorems and proofs in non-Archimedean geometry by chapter or permanent NAG number. Includes proof maps, coverage and the English PDF.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
+  const extraHead=isCurrentFoundations?`<link rel="stylesheet" href="${url('/assets/foundations-home.css')}">`:'';
+  await save(route,loadPage(p.title,searchSummary,content,route,extraHead,legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;

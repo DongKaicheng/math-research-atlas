@@ -1,7 +1,7 @@
 import {createHash} from 'node:crypto';
 import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
+import {augmentFoundationsLogic, foundationsFullMap, foundationsFullMapRoute} from './build-foundations-logic.mjs';
 import {createFoundationsReader, foundationsContentsRoute} from './build-foundations-reader.mjs';
 
 const edition = 'sealed-1097';
@@ -154,14 +154,6 @@ export async function loadFoundationsRelease(root) {
   return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows});
 }
 
-export function foundationsOverview(release, url) {
-  const n=release.meta.counts;
-  return '<p>'+n.wholeHtml.toLocaleString('en-US')+' complete HTML proofs. '+n.held+
-    ' accepted records have no complete HTML proof in this edition.</p>'+
-    '<p><a href="'+url(foundationsContentsRoute)+'">Browse chapters and entries</a> · '+
-    '<a href="'+url(publicHome+'coverage/')+'">Coverage and gaps</a></p>';
-}
-
 function stablePath(name) {
   return '/'+name.slice(0,-'index.html'.length);
 }
@@ -208,11 +200,15 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     requireFact(text.includes('rel="canonical" href="'+route+'"'),'wrong canonical in frozen input '+name);
     await emit(fixed.get(route).slice(1)+'index.html',render(text,url,origin,fixed));
     if(onlineReader && route!==publicHome) {
-      await emit(name,render(onlineReader.decorate(name,text),url,origin,null));
+      const activeText = route === publicHome+'logic/'
+        ? text.replace('</h1>', `</h1><p><a href="${foundationsFullMapRoute}">Open the complete proof map</a></p>`)
+        : onlineReader.decorate(name,text);
+      await emit(name,render(activeText,url,origin,null));
     }
   }
   if (onlineReader) {
     await emit(foundationsContentsRoute.slice(1)+'index.html',render(onlineReader.contentsPage,url,origin,null));
+    await emit(foundationsFullMapRoute.slice(1)+'index.html',render(foundationsFullMap(release.graph),url,origin,null));
   }
   const versionRoute=publicHome+'versions/1/';
   const destination='/'+prefix;
@@ -222,7 +218,7 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     '<p><a href="'+url(destination)+'">Open the fixed edition</a></p></main>'+
     '<script>location.replace('+JSON.stringify(url(destination))+'+location.search+location.hash);</script></body></html>';
   await emit(versionRoute.slice(1)+'index.html',redirect);
-  const active = current ? [...fixed.keys(),foundationsContentsRoute] : [];
+  const active = current ? [...fixed.keys(),foundationsContentsRoute,foundationsFullMapRoute] : [];
   return {
     rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
     routes:[...fixed.values(),versionRoute,...active],

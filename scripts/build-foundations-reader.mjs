@@ -1,3 +1,6 @@
+import {feedbackIssueUrl} from '../lib/feedback.mjs';
+import {foundationsFullMapRoute} from './build-foundations-logic.mjs';
+
 const project = '/projects/foundations/';
 export const foundationsContentsRoute = project + 'contents/';
 const search = '/search/?project=foundations';
@@ -12,6 +15,84 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => (
   {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]
 ));
 const link = (href, title) => `<a href="${escapeHtml(href)}">${escapeHtml(title)}</a>`;
+
+export function foundationsHome({release, title, trail, history, url, repository}) {
+  const {current, meta, rows} = release;
+  const fixed = project + 'editions/' + current.edition + '/';
+  const coverage = project + 'coverage/';
+  const context = {project: current.project, version: current.edition, page: url(project)};
+  const feedback = url('/feedback/') + '?' + new URLSearchParams(context);
+  const suggestion = feedbackIssueUrl(repository, 'suggestion', context);
+  const localLink = (route, label) => link(url(route), label);
+  const number = value => value.toLocaleString('en-US');
+  const [proof, gap] = ['NAG-002462', 'NAG-002405'].map(id => rows.find(row => row.id === id));
+  requireReader(proof && gap, 'the homepage examples must belong to the published edition');
+  const earlier = history.map(({revision}) =>
+    localLink(project + 'versions/' + revision + '/', 'Version ' + revision)).join(' · ');
+
+  return `<main id="main-content" class="wrap foundations-home">
+    ${trail}
+    <header class="foundations-home-header">
+      <h1>${escapeHtml(title)}</h1>
+      <p class="foundations-home-deck">A reference for definitions, theorems and proofs in non-Archimedean geometry, organized by chapter and searchable by permanent NAG number.</p>
+      <p class="foundations-home-version">Version ${current.revision} · ${escapeHtml(current.edition)}</p>
+      <nav class="foundations-home-nav" aria-label="Foundations project navigation">
+        <a class="button button-dark" href="${escapeHtml(url(foundationsContentsRoute))}">Table of contents</a>
+        ${link('#foundations-query', 'Search')}
+        ${localLink(foundationsFullMapRoute, 'Complete proof map')}
+        ${localLink(coverage, 'Coverage and gaps')}
+        ${localLink(meta.reader.path, 'English PDF')}
+        ${link('#editions', 'Editions')}
+        ${link('#feedback', 'Feedback')}
+      </nav>
+      <form class="foundations-reading-search" action="${escapeHtml(url('/search/'))}" method="get" role="search" aria-label="Search Foundations">
+        <input type="hidden" name="project" value="${escapeHtml(current.project)}">
+        <label for="foundations-query">Search Foundations</label>
+        <div><input type="search" id="foundations-query" name="q" placeholder="Keyword or ${proof.id}" maxlength="200" required><button class="button button-dark" type="submit">Search</button></div>
+      </form>
+    </header>
+
+    <section id="motivation" class="foundations-home-section">
+      <h2>About the project</h2>
+      <div>
+        <p>The chapters begin with valued fields, Banach algebras and Berkovich analytic spaces. They develop the tools of reduction and formal models, the geometry of analytic curves and skeleta, and tropical multiplicities and balancing. Supplements record arguments on integration, Stokes formulas and descent.</p>
+        <p id="questions">This edition records ${number(meta.counts.accepted)} accepted results, including ${number(meta.counts.wholeHtml)} with complete proofs available on the website. The ${localLink(coverage, 'coverage register')} documents the available sources for the other ${number(meta.counts.held)}, along with narrower results, standing definitions and historical proof gaps.</p>
+      </div>
+    </section>
+
+    <section id="results" class="foundations-home-section">
+      <h2>How to use the reference</h2>
+      <div>
+        <ol class="foundations-home-guide">
+          <li><strong>Read by chapter.</strong> Open the ${localLink(foundationsContentsRoute, 'table of contents')} and use the previous and next links to read through a chapter.</li>
+          <li><strong>Find a result.</strong> ${link('#foundations-query', 'Search by keyword or NAG number')}. Open the record to see its status and available proof sources. The citation gives both the permanent link and the fixed-edition link.</li>
+          <li><strong>Trace an argument.</strong> Open the ${localLink(foundationsFullMapRoute, 'complete proof map')} and look up a record to see its selected proof inputs and the arguments that use it.</li>
+        </ol>
+        <p>Start with ${localLink(proof.link, proof.id + ' · ' + proof.title)} to read a complete selected proof. The linked record ${localLink(gap.link, gap.id + ' · ' + gap.title)} documents a historical proof gap in the broader argument.</p>
+      </div>
+    </section>
+
+    <section id="programme" class="foundations-home-section">
+      <h2 id="editions">Editions and downloads</h2>
+      <div>
+        <p>${localLink(fixed, 'Open the fixed Version ' + current.revision + ' edition')} or ${localLink(meta.reader.path, 'read the English PDF')} (${number(meta.reader.pages)} pages). For a citation to this exact publication, follow the fixed-edition link on the record page.</p>
+        ${earlier ? `<p>Earlier edition · ${earlier}</p>` : ''}
+      </div>
+    </section>
+
+    <section id="feedback" class="foundations-home-section">
+      <h2>Feedback and suggestions</h2>
+      <div>
+        <p>We welcome corrections to statements and proofs, references that could help resolve an open step, and suggestions for making the chapters easier to read or navigate. For comments on a result, include its NAG number, the relevant passage or link, and the change you propose.</p>
+        <div class="foundations-home-actions">
+          <a class="button button-dark" href="${escapeHtml(feedback)}">Open the feedback board</a>
+          ${link(suggestion, 'Suggest an improvement on GitHub')}
+        </div>
+        <p>${localLink(project + 'acknowledgements/', 'Acknowledgements and adopted contributions')}</p>
+      </div>
+    </section>
+  </main>`;
+}
 
 function requireReader(condition, message) {
   if (!condition) throw Error('Foundations reading navigation: ' + message);
@@ -35,7 +116,7 @@ function indexChapters(contents, rows, chapterTitles) {
       return records.get(id);
     });
     requireReader(entries.length === Number(count), 'chapter record count for ' + slug);
-    chapters.set(slug, {href, title, entries, position: chapters.size});
+    chapters.set(slug, {slug, href, title, entries, position: chapters.size});
   }
   requireReader(chapters.size === Object.keys(chapterTitles).length, 'chapter inventory differs from the proof map');
   requireReader(membership.size === records.size, 'record inventory differs from the search index');
@@ -57,10 +138,33 @@ function indexRegisteredUses({arguments: argumentsByKey, nodes}) {
   return uses;
 }
 
-function makeContentsPage(chapters, fixed, edition) {
+function makeContentsPage(chapters, graph, fixed, edition) {
   const description = 'Browse the chapters, appendices and supplements of the Non-Archimedean geometry foundations reference.';
-  const list = [...chapters.values()].map(({href, title, entries}) => `
-    <li><a href="${escapeHtml(href)}">${escapeHtml(title)}</a><small>${entries.length} ${entries.length === 1 ? 'record' : 'records'}</small></li>`).join('');
+  const publishedChapters = [...chapters.values()];
+  const logicChapters = new Set([...Object.values(graph.arguments), ...Object.values(graph.gaps)].map(row => row.chapter));
+  const groups = [
+    ['chapters', 'Chapters', publishedChapters.filter(row => /^\d+$/.test(row.slug))],
+    ['appendices', 'Appendices', publishedChapters.filter(row => row.slug.startsWith('appendix-'))],
+    ['supplements', 'Chapter supplements', publishedChapters.filter(row => /-supplement-/.test(row.slug))],
+    ['unlocated', 'Records without a chapter binding', publishedChapters.filter(row => row.slug === 'unlocated')],
+  ];
+  requireReader(groups.reduce((count, [, , group]) => count + group.length, 0) === chapters.size,
+    'every published chapter must appear in the contents');
+  const sections = groups.filter(([, , group]) => group.length);
+  const outline = sections.map(([id, title, group]) => `
+    <section class="foundations-contents-section" id="${id}">
+      <h2>${escapeHtml(title)}</h2>
+      <ul class="foundations-reader-index">
+        ${group.map(row => {
+          const count = row.entries.length;
+          const countLabel = count ? count + (count === 1 ? ' record' : ' records') : 'Chapter outline';
+          const proofLink = logicChapters.has(row.slug)
+            ? `<a href="${project}logic/chapters/${row.slug}/" aria-label="Proof inputs for ${escapeHtml(row.title)}">Proof inputs</a>`
+            : '';
+          return `<li>${link(row.href, row.title)}<span class="foundations-contents-links"><small>${countLabel}</small>${proofLink}</span></li>`;
+        }).join('')}
+      </ul>
+    </section>`).join('');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -79,7 +183,7 @@ function makeContentsPage(chapters, fixed, edition) {
     <nav aria-label="Foundations">
       <a class="brand" href="${project}">OpenMath <span>Foundations</span></a>
       ${link(search, 'Search Foundations')}
-      ${link(project + 'logic/', 'Proof map')}
+      ${link(foundationsFullMapRoute, 'Complete proof map')}
       ${link(project + 'coverage/', 'Coverage')}
       ${link(fixed + 'reader-en.pdf', 'English PDF')}
     </nav>
@@ -91,8 +195,8 @@ function makeContentsPage(chapters, fixed, edition) {
     </nav>
     <h1>Table of contents</h1>
     <p>Non-Archimedean geometry foundations · ${link(fixed, 'Fixed edition ' + edition)}</p>
-    <ul class="foundations-reader-index">${list}
-    </ul>
+    <nav class="foundations-contents-shortcuts" aria-label="Contents sections">${sections.map(([id, title]) => link('#' + id, title)).join('')}</nav>
+    ${outline}
   </main>
   <footer>${link(project, 'OpenMath Foundations')}</footer>
 </body>
@@ -159,9 +263,7 @@ export function createFoundationsReader(release) {
   const {contents, rows} = release;
   const {edition, revision} = release.manifest;
   const fixed = project + 'editions/' + edition + '/';
-  const graphBytes = contents.get((fixed + 'logic/data.json').slice(1));
-  requireReader(graphBytes, 'the edition has no verified proof map');
-  const graph = JSON.parse(graphBytes);
+  const graph = release.graph;
   const {chapters, records, membership} = indexChapters(contents, rows, graph.chapters);
   const chapterOrder = [...chapters.values()];
   const uses = indexRegisteredUses(graph);
@@ -186,5 +288,5 @@ export function createFoundationsReader(release) {
     return decoratePage(text, breadcrumb(chapter, record), pagination, references);
   }
 
-  return {contentsRoute: foundationsContentsRoute, contentsPage: makeContentsPage(chapters, fixed, edition), decorate};
+  return {contentsRoute: foundationsContentsRoute, contentsPage: makeContentsPage(chapters, graph, fixed, edition), decorate};
 }
