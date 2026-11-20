@@ -10,7 +10,6 @@ import {foundationsReadingLocations} from './foundations-reading-locations.mjs';
 import {closureGroup, coverageGroups, groupLabels, registerFoundationsTags, statusLabels, tagRoute} from './foundations-tag-register.mjs';
 import {contentsRoute, coverageRoute, escape, foundationsPdfLink, foundationsSearchForm, foundationsShell, guideRoute, link, project, searchRoute} from './foundations-layout.mjs';
 import {foundationsGuide, shortStatus} from './foundations-guide.mjs';
-import {readingText, statementTitle} from './build-foundations-dependencies.mjs';
 
 export const nativeReaderRoute = project + 'reader/';
 const chapterCoverageRoute = chapter => coverageRoute+'chapters/'+chapter.slug+'/';
@@ -104,47 +103,7 @@ export function loadHistoricalStatements(release, bytes) {
   return statements;
 }
 
-const shorten = (text, limit) => {
-  text = String(text).replace(/\s+/g,' ').trim();
-  if (text.length <= limit) return text;
-  const prefix = text.slice(0, limit - 1);
-  return prefix.slice(0, Math.max(prefix.lastIndexOf(' '), Math.floor(limit * .7))).replace(/[\s,;:·–—-]+$/,'') + '…';
-};
-
-// These summaries describe the current reading page, not a new proof judgment.
-// MathML (including its TeX annotation) is omitted from snippets by readingText.
-const shell = (route,title,body,extra = '',layout = '',description = '') => foundationsShell(route,title,body,
-  {extra,layout,description:description || `${title}. Read the mathematical text, source links and proof-status notes in Non-Archimedean Geometry Foundations.`});
-
-const metadataStatement = html => html.replace(/<math\b[^>]*>([\s\S]*?)<\/math>/g,(_,math) =>
-  math.replace(/<annotation\b[^>]*>[\s\S]*?<\/annotation>/g,'').replace(/<[^>]+>/g,''));
-
-function chapterDescription(chapter) {
-  const topics = chapter.sections.filter(section => section.level === 2 && section.title !== '*')
-    .map(section => readingText(section.title)).slice(0, 3);
-  const subject = heading(chapter.number, readingText(chapter.title));
-  return shorten(`${subject}${topics.length ? ': ' + topics.join('; ') : ''}. Read the chapter and its permanent NAG Tags in OpenMath Foundations.`, 280);
-}
-
-function tagMetadata(row, record, chapter, statement) {
-  const generic = /^(?:(?:result|theorem|lemma|proposition|corollary|definition|example|remark|question|construction)(?:\s+[\dA-Z][\dA-Z.]*)?|NAG-\d{6})\.?$/i.test(row.title.trim());
-  const named = record?.kind ? statementTitle(metadataStatement(statement), record.kind).title : '';
-  const section = record?.section && !/^(?:\*|proof(?: of .*)?[.:]?)$/i.test(record.section) ? readingText(record.section) : '';
-  const sourceTitle = row.title.includes('[formula]') && named ? named : row.title;
-  const subject = generic ? named.includes(' · ') ? named : `${row.title}${section || chapter?.title ? ' · ' + (section || readingText(chapter.title)) : ''}` : sourceTitle;
-  const title = `${row.id} · ${shorten(subject, 140)}`;
-  const status = statusLabels[row.status];
-  // A formula-free first sentence can convey the subject more precisely without
-  // repeating TeX or treating a displayed statement as an accepted theorem.
-  const text = readingText(statement).replace(/^Historical statement\s*/, '')
-    .replace(/^(?:Theorem|Lemma|Proposition|Corollary|Definition|Example|Remark|Question|Construction)\s+[A-Z\d][A-Z\d.]*\s*/i, '')
-    .replace(/^(?:NAG-\d{6}\s*)?[.\s]*/, '')
-    .replace(/^\([^)]*\)\.\s*/, '');
-  const sentence = text.match(/^([^.!?]{35,170}[.!?])(?:\s|$)/)?.[1];
-  const excerpt = sentence && !sentence.includes('[formula]') && !sentence.includes('\\') ? sentence : '';
-  const description = `${row.id}: ${shorten(subject, 130)}. ${status}. ${excerpt ? 'Statement: ' + excerpt : 'Statement, source context and proof notes in OpenMath Foundations.'}`;
-  return {title, description:shorten(description, 320)};
-}
+const shell = (route,title,body,extra = '',layout = '') => foundationsShell(route,title,body,{extra,layout});
 
 function crumb(links) {
   return '<nav class="book-crumb" aria-label="Breadcrumb"><ol>' + links.map(([route,title]) =>
@@ -190,8 +149,7 @@ function bookContents(native, route, coverage, pdf) {
     <li>${link('/projects/foundations/chapters/appendix-a/#subject-index','Subject index')}</li></ul></nav></details></aside>`;
   const script = route === nativeReaderRoute ? '<script type="module" src="/assets/foundations-native-reader.js"></script>' : '';
   return shell(route,'Table of contents',`<header class="page-intro"><h1>Table of contents</h1>${foundationsPdfLink(pdf)}</header>
-    <p id="reader-location" hidden></p><div class="book-layout has-sidebar">${jumps}<div class="contents-text">${body}</div></div>`,script,'contents-page',
-    `${route === nativeReaderRoute ? 'Reader navigation' : 'Table of contents'} for Non-Archimedean Geometry Foundations: valued fields, Berkovich spaces, formal models, tropicalization, forms and currents.`);
+    <p id="reader-location" hidden></p><div class="book-layout has-sidebar">${jumps}<div class="contents-text">${body}</div></div>`,script,'contents-page');
 }
 
 function partChapterOutline(chapter, index, catalogue, coverage) {
@@ -245,7 +203,7 @@ function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locatio
     return notice+resultLink+gapMarks+reviewLink+proofLink+wrapped;
   }).join('');
   return shell(chapter.route,title,`${trail}<header class="page-intro"><h1>${escape(title)}</h1>${count ? `<p class="chapter-coverage">${count}</p>` : ''}</header>${menu ? '' : proofIndex}
-    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${part}${nav}`,'','reading-page',chapterDescription(chapter));
+    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${part}${nav}`,'','reading-page');
 }
 
 function coveragePage(coverage, fixed) {
@@ -265,8 +223,7 @@ function coveragePage(coverage, fixed) {
     <p class="page-actions">${link(guideRoute+'#proof-statuses','What each status means')}</p></header>
     <section id="chapter-counts"><span id="manuscript-obligations"></span><h2 class="coverage-heading">By chapter</h2><table class="coverage-table" role="table" aria-label="Tags by chapter and proof status"><thead role="rowgroup"><tr role="row"><th scope="col">Chapter or supplement</th><th scope="col">Tags</th>${coverageGroups.map(group=>`<th scope="col">${groupLabels[group]}</th>`).join('')}</tr></thead>
     <tbody role="rowgroup">${table}</tbody><tfoot role="rowgroup"><tr role="row"><th scope="row">Total</th>${cell(count,'tags','Tags')}${coverageGroups.map(group=>cell(total(group),group,groupLabels[group])).join('')}</tr></tfoot></table></section>
-    <details class="historical-register" id="historical-proof-gaps"><summary>Historical proof gaps</summary><p>${gapCount(coverage.gaps.size)} from the fixed edition, including ${coverage.narrower} with a narrower scope available. ${link(fixed+'coverage/','Fixed-edition register')}</p>${historical}</details>`,'','coverage-page',
-    `Browse ${count.toLocaleString('en-US')} permanent NAG Tags by chapter and proof status in Non-Archimedean Geometry Foundations, including open and conditional statements.`);
+    <details class="historical-register" id="historical-proof-gaps"><summary>Historical proof gaps</summary><p>${gapCount(coverage.gaps.size)} from the fixed edition, including ${coverage.narrower} with a narrower scope available. ${link(fixed+'coverage/','Fixed-edition register')}</p>${historical}</details>`,'','coverage-page');
 }
 
 function chapterCoveragePage(chapter) {
@@ -285,15 +242,13 @@ function chapterCoveragePage(chapter) {
   return shell(route,chapter.title+' · Tags',`${trail}<header class="page-intro"><h1>${escape(chapter.title)}</h1>
     <p id="tag-inventory" class="page-actions">${link(chapter.route,'Read the chapter')}<span>${plural(chapter.tags.length,'Tag')}</span></p></header>
     <nav class="page-links" aria-label="Tag status groups">${groups.filter(group=>chapter.tagCounts[group]).map(group=>link('#tags-'+group,`${groupLabels[group]} (${chapter.tagCounts[group]})`)).join('')}</nav>
-    <span id="manuscript-findings"></span><span id="untagged-statements"></span>${lists}`,'','chapter-tags-page',
-    shorten(`${chapter.title}: ${plural(chapter.tags.length,'permanent NAG Tag')} with source links and separate open, conditional, accepted-scope and definition records.`, 280));
+    <span id="manuscript-findings"></span><span id="untagged-statements"></span>${lists}`,'','chapter-tags-page');
 }
 
 function searchPage() {
   return shell(searchRoute,'Search Foundations',`<header class="page-intro"><h1>Search Foundations</h1></header>
     ${foundationsSearchForm({formId:'site-search'})}<div id="search-results" class="foundation-search-results"></div>`,
-    '<meta name="robots" content="noindex,follow"><script defer src="/assets/foundations-search.js"></script>','search-page',
-    'Search the current Non-Archimedean Geometry Foundations by mathematical keyword, statement title or permanent NAG Tag.');
+    '<script defer src="/assets/foundations-search.js"></script>','search-page');
 }
 const gapDescriptions = new Map([
   ['Pinned English candidate. This sweep did not bind an independently signed whole proof and operative scope map for these exact spans.',
@@ -343,8 +298,7 @@ function tagPage(row, {record, chapter, fixed, gap, scopes, archivedProof, histo
   const proofLabel = row.status === 'closed' ? 'Proof' : 'Argument in the manuscript';
   const hasArgument = record?.proof != null || includesProof || sourceProof;
   const citationSources = [proofLocation ? link(proofLocation,'Proof in chapter') : '', manuscript ? '' : link(archive,'Fixed-edition record')].filter(Boolean).join(' · ');
-  const metadata = tagMetadata(row,record,chapter,statement);
-  return shell(row.link,metadata.title,`${trail}<header class="page-intro tag-header"><div class="tag-heading-meta">
+  return shell(row.link,row.id+' · '+title,`${trail}<header class="page-intro tag-header"><div class="tag-heading-meta">
     <p class="tag-permalink">${escape(row.id)}</p><p class="tag-status" data-closure="${row.status}">${guide.statusLink(row.status,shortStatus[row.status])}</p></div>
     <h1>${escape(title)}</h1><nav class="tag-actions page-actions" aria-label="Tag links">
     ${hasArgument ? `<a class="reading-action" href="#foundations-exact-proof">${proofLabel}</a>` : ''}${location}
@@ -353,7 +307,7 @@ function tagPage(row, {record, chapter, fixed, gap, scopes, archivedProof, histo
     ${statusDetails}${proof ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="${proofLabel}"><h2>${proofLabel}</h2>${proof}</section>` : ''}</article>
     ${sourceProof}${selected}
     <section id="citation" class="tag-citation"><h2>Citation</h2><p>Non-Archimedean Geometry Foundations, ${link(row.link,'Tag '+row.id)}${record?.number ? ', '+escape(record.number) : ''}.</p>
-    ${citationSources ? `<p>${citationSources}</p>` : ''}</section>`,'','tag-page',metadata.description);
+    ${citationSources ? `<p>${citationSources}</p>` : ''}</section>`,'','tag-page');
 }
 
 function bindProofs(native, chapter, linkedTags) {
@@ -455,6 +409,5 @@ export function createFoundationsNative(release, dependencies) {
     const edited = editFoundationsReadingHtml(page, remarkNumbers, referenceLabels);
     pages.set(route, typesetReadingMath(edited, mathCache, route));
   }
-  const indexableRoutes = [...pages.keys()].filter(route => route !== searchRoute);
-  return {pages,tags:registry.tagLocations,destinations,rows,redirects,indexableRoutes};
+  return {pages,tags:registry.tagLocations,destinations,rows,redirects};
 }

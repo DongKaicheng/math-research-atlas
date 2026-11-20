@@ -177,8 +177,6 @@ function render(html, url, origin, fixed) {
   const rendered = html
     .replace(/(<link rel="canonical" href=")(\/[^"]*)"/g,(_,tag,route)=>
       tag+origin+(fixed ? fixed.get(route) : route)+'"')
-    .replace(/(<meta property="og:url" content=")(\/[^" ]*)"/g,(_,tag,route)=>
-      tag+origin+(fixed ? fixed.get(route) : route)+'"')
     .replace('</head>',(fixed ? '<meta name="robots" content="noindex,follow">' : '')+'</head>')
     .replace(/\b(href|src)="(\/(?!\/)[^"]*)"/g,(_,attr,href)=>{
       const [route,fragment]=href.split('#',2);
@@ -243,6 +241,6 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     rows:native ? native.rows.map(({id,link,title,project,category,summary,coverage,keywords,body,status})=>
       ({id,link:url(link),title,project,category,summary,coverage,keywords,body,status})) : [],
     routes:[...fixed.values(),versionRoute,...active,...retired.keys()],
-    indexableRoutes:native ? [publicHome,...native.indexableRoutes] : [],
+    indexableRoutes:active,
   };
 }

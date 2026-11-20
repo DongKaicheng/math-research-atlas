@@ -141,7 +141,7 @@ test('Former diagram routes forward readers to current content', async () => {
 });
 
 test('Every permanent Tag gives its closure status and gap type where applicable', async () => {
-  const rows = JSON.parse(await read('/search-index.json')).filter(row=>row.project==='foundations' && /^NAG-\d{6}$/.test(row.id));
+  const rows = JSON.parse(await read('/search-index.json')).filter(row=>row.project==='foundations');
   assert.equal(rows.length,1712);
   assert.equal(new Set(rows.map(row=>row.id)).size,rows.length);
   const data = await graph();
