@@ -108,6 +108,25 @@ test('The web edition preserves exact source and proof links', async () => {
   assert.doesNotMatch(frozen, /tag-proof-text/);
 });
 
+test('Chapters and all kinds of public Tags typeset display math and styled symbols', async () => {
+  const routes = [project+'chapters/16/', '/r/NAG-900301/', '/r/NAG-002462/', '/r/NAG-002567/'];
+  for (const route of routes) {
+    const page = await read(route+'index.html');
+    assert.ok(page.includes(`href="${local('/assets/katex.min.css')}"`),route);
+    assert.match(page, /<span class="katex-mathml"><math\b/,route);
+    assert.match(page, /class="katex-html" aria-hidden="true"/,route);
+    assert.match(page, /<span class="book-equation"><span class="katex-display">/,route);
+    assert.doesNotMatch(page, /class="(?:katex-error|book-math-fallback)"/,route);
+    if (route.startsWith('/r/')) assert.doesNotMatch(page, /class="katex"><math\b/,route);
+  }
+  const chapter = await read(project+'chapters/16/index.html');
+  assert.match(chapter, /class="mord mathbb">[CNRZ]</);
+  assert.doesNotMatch(chapter, /class="katex"><math[^>]*display="block"/);
+  const historical = await read('/r/NAG-002567/index.html');
+  assert.match(historical, /Historical statement/);
+  assert.match(historical, /class="tag"/);
+});
+
 const diagramMarkup = /class="(?:proof-diagram|logic-flow|logic-inline|proof-arrow)|href="[^"]*(?:\/logic\/|#proof-dependencies)|(?:Proof|dependency) diagram/i;
 
 test('Former diagram routes forward readers to current content', async () => {

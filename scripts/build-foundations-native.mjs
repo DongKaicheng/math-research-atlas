@@ -19,15 +19,33 @@ const unsafeMarkup = /<(?:script|iframe|object|embed|style|form)\b|<[^>]*\son[a-
 const privateMaterial = /(?:\/workspace\/|\/home\/agent\/|[A-Z]:\\Users\\|libfile_|private_library_readback|BEGIN [A-Z ]*PRIVATE KEY)/i;
 const tagId = /^NAG-\d{6}$/;
 const entities = {amp:'&',lt:'<',gt:'>',quot:'"','#x27':"'",'#39':"'"};
-const proofStyles = '<link rel="stylesheet" href="/assets/katex.min.css">';
+const mathStyles = '<link rel="stylesheet" href="/assets/katex.min.css">';
+const complexMath = /mathvariant="(?!normal")|<(?:mfrac|msqrt|mroot|mtable|mover|munder|munderover|mphantom|mpadded|mstyle)\b/;
 const chapterSlug = route => route.startsWith(project + 'chapters/') ? route.split('/').at(-2) : null;
 const gapLabel = 'Open at full scope';
 const suppressTags = (html, ids = []) => ids.reduce((text,id) => text.replaceAll(link(tagRoute(id), id), ''), html);
 
-function typesetTag(html) {
-  return html.replace(/<span class="katex"><math([^>]*)>[\s\S]*?<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation><\/semantics><\/math><\/span>/g,
-    (_,attrs,source) => katex.renderToString(source.replace(/&(amp|lt|gt|quot|#x27|#39);/g, (all,key)=>entities[key]),
-      {output:'htmlAndMathml', displayMode:attrs.includes('display="block"'),strict:'ignore',trust:false}));
+function typesetReadingMath(page, cache, route) {
+  if (!page.includes('class="katex"')) return page;
+  const tag = tagId.test(route.split('/').at(-2));
+  // A chapter can have thousands of short inline expressions. Keep its simple MathML
+  // compact and typeset the displays, font variants and layout-sensitive formulas.
+  const rendered = page.replace(/<span class="katex"><math([^>]*)>[\s\S]*?<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation><\/semantics><\/math><\/span>/g,
+    (math, attrs, source) => {
+      const displayMode = attrs.includes('display="block"');
+      if (!tag && !displayMode && !complexMath.test(math)) return math;
+      const key = (displayMode ? 'display:' : 'inline:') + source;
+      if (!cache.has(key)) {
+        const tex = source.replace(/&(amp|lt|gt|quot|#x27|#39);/g, (all, name) => entities[name]);
+        try {
+          cache.set(key, katex.renderToString(tex, {output:'htmlAndMathml', displayMode, strict:'ignore', trust:false}));
+        } catch (error) {
+          throw new Error(`Cannot typeset Foundations formula on ${route}: ${error.message}`, {cause:error});
+        }
+      }
+      return cache.get(key);
+    });
+  return rendered.replace('</head>', mathStyles + '</head>');
 }
 
 export async function loadFoundationsNative(directory, pdfDigest) {
@@ -278,7 +296,6 @@ function tagPage(row, {record, chapter, fixed, gap, scopes, archivedProof, histo
   const sourceProof = archivedProof && record?.proof == null && !includesProof ? `<p class="book-note" id="foundations-exact-proof">${link(archive+'#foundations-exact-proof','Selected proof in the fixed edition')}</p>` : '';
   const statementId = includesProof ? 'foundations-exact-proof' : 'tag-statement';
   const proofLabel = row.status === 'closed' ? 'Proof' : 'Argument in the manuscript';
-  const renderMath = manuscript ? value => value : typesetTag;
   const hasArgument = record?.proof != null || includesProof || sourceProof;
   const citationSources = [proofLocation ? link(proofLocation,'Proof in chapter') : '', manuscript ? '' : link(archive,'Fixed-edition record')].filter(Boolean).join(' · ');
   return shell(row.link,row.id+' · '+title,`${trail}<header class="page-intro tag-header"><div class="tag-heading-meta">
@@ -286,11 +303,11 @@ function tagPage(row, {record, chapter, fixed, gap, scopes, archivedProof, histo
     <h1>${escape(title)}</h1><nav class="tag-actions page-actions" aria-label="Tag links">
     ${hasArgument ? `<a class="reading-action" href="#foundations-exact-proof">${proofLabel}</a>` : ''}${location}
     ${hasContext ? link('#closure','Proof notes') : ''}</nav></header>
-    <article class="book-text tag-text${hasContext ? ' with-context' : ''}"><div class="tag-statement" id="${statementId}">${historical ? statement : renderMath(statement)}</div>
-    ${statusDetails}${proof ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="${proofLabel}"><h2>${proofLabel}</h2>${renderMath(proof)}</section>` : ''}</article>
+    <article class="book-text tag-text${hasContext ? ' with-context' : ''}"><div class="tag-statement" id="${statementId}">${statement}</div>
+    ${statusDetails}${proof ? `<section class="tag-argument" id="foundations-exact-proof" aria-label="${proofLabel}"><h2>${proofLabel}</h2>${proof}</section>` : ''}</article>
     ${sourceProof}${selected}
     <section id="citation" class="tag-citation"><h2>Citation</h2><p>Non-Archimedean Geometry Foundations, ${link(row.link,'Tag '+row.id)}${record?.number ? ', '+escape(record.number) : ''}.</p>
-    ${citationSources ? `<p>${citationSources}</p>` : ''}</section>`,proofStyles,'tag-page');
+    ${citationSources ? `<p>${citationSources}</p>` : ''}</section>`,'','tag-page');
 }
 
 function bindProofs(native, chapter, linkedTags) {
@@ -387,6 +404,10 @@ export function createFoundationsNative(release, dependencies) {
   }
   const remarkNumbers = foundationsRemarkNumbers(native.destinations);
   const referenceLabels = foundationsReferenceLabels(native);
-  for (const [route, page] of pages) pages.set(route, editFoundationsReadingHtml(page, remarkNumbers, referenceLabels));
+  const mathCache = new Map();
+  for (const [route, page] of pages) {
+    const edited = editFoundationsReadingHtml(page, remarkNumbers, referenceLabels);
+    pages.set(route, typesetReadingMath(edited, mathCache, route));
+  }
   return {pages,tags:registry.tagLocations,destinations,rows,redirects};
 }
