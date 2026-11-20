@@ -3,7 +3,7 @@ import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
 import {createFoundationsReader} from './build-foundations-reader.mjs';
-import {createFoundationsWeb, foundationsBookRoute, foundationsDependenciesRoute} from './build-foundations-web.mjs';
+import {createFoundationsWeb, foundationsBookRoute, formerDependencyRoute} from './build-foundations-web.mjs';
 import {createFoundationsNative, loadFoundationsNative} from './build-foundations-native.mjs';
 
 const edition = 'sealed-1097';
@@ -180,8 +180,8 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current,rows}=release;
   const onlineReader=current ? createFoundationsReader(release) : null;
-  const native=onlineReader ? createFoundationsNative(release) : null;
-  const web=onlineReader ? createFoundationsWeb(release,onlineReader.chapterById,native.tags) : null;
+  const web=onlineReader ? createFoundationsWeb(release,release.native.tags) : null;
+  const native=web ? createFoundationsNative(release,web.diagrams) : null;
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');
@@ -205,9 +205,7 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     requireFact(text.includes('rel="canonical" href="'+route+'"'),'wrong canonical in frozen input '+name);
     await emit(fixed.get(route).slice(1)+'index.html',render(text,url,origin,fixed));
     if(onlineReader && route!==publicHome) {
-      const activeText = native.pages.get(route) ?? (route === publicHome+'logic/'
-        ? text.replace('</h1>', `</h1><p><a href="${foundationsDependenciesRoute}">Browse Tag dependencies</a></p>`)
-        : web.decorate(route,onlineReader.decorate(name,text)));
+      const activeText = native.pages.get(route) ?? web.decorate(onlineReader.decorate(name,text));
       await emit(name,render(activeText,url,origin,null));
     }
   }
@@ -233,6 +231,6 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   return {
     rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
     routes:[...fixed.values(),versionRoute,...active],
-    indexableRoutes:active,
+    indexableRoutes:active.filter(route=>route!==formerDependencyRoute),
   };
 }

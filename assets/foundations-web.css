@@ -1,14 +1,45 @@
-.tag-actions { padding: .4rem 0; gap: .55rem 1rem; }
-.tag-junction {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .75rem;
-  padding: .8rem 1rem; border: 1px solid #c9d3cc; background: #e8ece6;
+.proof-diagram { max-width: 66rem; margin-block: 2.6rem; }
+.proof-legend { color: var(--muted); max-width: 68ch; }
+.proof-argument { margin-block: 1.4rem 2.4rem; border: 1px solid var(--rule); padding: clamp(.75rem, 2.8vw, 1.9rem); border-radius: .45rem; }
+.proof-argument h3 { margin: 0 0 .9rem; }
+.proof-argument figure { margin: 0; }
+.proof-argument figcaption { font-size: .87rem; margin-block: 1rem 0; color: var(--muted); }
+.proof-inputs { --wire: #577d86; border-inline-start: 2px dashed var(--wire); padding-inline: .7rem 0; }
+.proof-input-row { display: grid; gap: .65rem; position: relative; padding-bottom: 1.15rem; }
+.proof-columns-1 { grid-template-columns: minmax(0, 1fr); }
+.proof-columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.proof-columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.proof-input-row::after { content: ''; position: absolute; bottom: .48rem; left: -.7rem; right: 16%; border-top: 2px dashed var(--wire); }
+.proof-columns-2::after { right: 24%; }
+.proof-columns-1::after { right: 50%; }
+.proof-input-row > .proof-node::after { content: ''; position: absolute; left: 50%; top: 100%; height: .75rem; border-inline-start: 2px dashed var(--wire); }
+.proof-inputs::after { content: ''; display: block; width: calc(50% + .72rem); margin-left: -.7rem; border-bottom: 2px dashed var(--wire); }
+.proof-node { position: relative; padding: .65rem .85rem; border: 1px solid #a6c4ca; border-radius: .32rem; background: #f1f7f7; min-width: 0; overflow-wrap: anywhere; line-height: 1.4; }
+.proof-node small { display: block; font-size: .76rem; margin-bottom: .22rem; font-weight: 600; color: #365a65; }
+.proof-node small:last-child:not(:first-child) { margin: .28rem 0 0; }
+.proof-node p { margin: .35rem 0 0; font-size: .9rem; }
+.proof-node-standing, .proof-node-condition { background: #f7f7ef; border-color: #c4c19e; }
+.proof-node-open { background: #fcf5ee; border-color: #ccac91; }
+.proof-open-inputs { margin-block: 1.25rem .75rem; padding-inline-start: .8rem; border-inline-start: 2px dashed #925628; }
+.proof-open-inputs h3, .proof-open-inputs h4 { margin: 0 0 .55rem; }
+.proof-open-inputs .proof-node + .proof-node { margin-top: .55rem; }
+.proof-arrow { width: 0; height: 1.25rem; border-inline-start: 2px solid #315b65; margin-inline: auto; position: relative; }
+.proof-arrow::after { content: ''; position: absolute; left: -.35rem; bottom: 0; border-inline: .31rem solid transparent; border-top: .4rem solid #315b65; }
+.proof-input-arrow { border-inline-start-style: dashed; }
+.proof-stage { border-radius: .3rem; border: 1px solid #5c8792; padding: .6rem .95rem; background: white; width: min(100%, 42rem); margin-inline: auto; text-align: center; }
+.proof-stage p { margin: .18rem 0 0; color: var(--muted); font-size: .9rem; }
+.proof-derivations { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.proof-derivations > section { padding: .75rem .75rem 0; background: #f6f8f8; min-width: 0; display: flex; flex-direction: column; }
+.proof-derivations > section::after { content: ''; flex: 1; min-height: .75rem; align-self: center; border-inline-start: 2px solid #315b65; }
+.proof-derivations .proof-node { padding: .55rem .6rem; font-size: .94rem; }
+.proof-passages { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap: .85rem; }
+.proof-passage { display: grid; grid-template-rows: 1fr auto auto; padding: .75rem; background: #f6f8f8; min-width: 0; }
+.proof-derivations { border-bottom: 2px solid #315b65; }
+.proof-passage { border-bottom: 2px dashed #577d86; }
+
+@media (max-width: 50rem) {
+  .proof-derivations, .proof-input-row { grid-template-columns: 1fr; }
+  .proof-input-row { gap: .5rem; padding-bottom: .5rem; }
+  .proof-input-row::after { display: none; }
+  .proof-input-row > .proof-node::after { inset: 50% 100% auto auto; width: .75rem; height: 0; border: 0; border-top: 2px dashed var(--wire); }
 }
-.tag-argument, .dependency-chapter, .tag-gap {
-  margin: 1.5rem 0; border-top: 1px solid #c9d3cc; overflow-wrap: anywhere;
-}
-.tag-argument ol > li { margin: .65rem 0; }
-.tag-argument li p { margin: .2rem 0; }
-.tag-gap { border-inline-start: 4px solid #925628; padding-inline: .75rem; }
-.dependency-index nav { padding: .4rem 0; align-items: start; }
-.dependency-sources { display: grid; gap: .3rem; padding-inline-start: 1.55rem; }
-.dependency-tags { display: flex; flex-wrap: wrap; gap: .45rem 1rem; padding: 0; list-style: none; }

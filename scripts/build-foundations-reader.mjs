@@ -1,5 +1,5 @@
 import {feedbackIssueUrl} from '../lib/feedback.mjs';
-import {foundationsBookRoute, foundationsDependenciesRoute} from './build-foundations-web.mjs';
+import {foundationsBookRoute} from './build-foundations-web.mjs';
 
 const project = '/projects/foundations/';
 export const foundationsContentsRoute = project + 'contents/';
@@ -38,7 +38,6 @@ export function foundationsHome({release, title, trail, history, url, repository
       <nav class="foundations-home-nav" aria-label="Foundations project navigation">
         <a class="button button-dark" href="${escapeHtml(url(foundationsContentsRoute))}">Table of contents</a>
         ${link('#foundations-query', 'Search')}
-        ${localLink(foundationsDependenciesRoute, 'Tag dependencies')}
         ${localLink(coverage, 'Coverage and gaps')}
         ${localLink(foundationsBookRoute, 'Web reader')}
         ${link('#editions', 'Editions')}
@@ -65,7 +64,7 @@ export function foundationsHome({release, title, trail, history, url, repository
         <ol class="foundations-home-guide">
           <li><strong>Read by chapter.</strong> Open the ${localLink(foundationsContentsRoute, 'table of contents')} and use the previous and next links to read through a chapter.</li>
           <li><strong>Find a result.</strong> ${link('#foundations-query', 'Search by keyword or NAG number')}. Open the record to see its status and available proof sources. The citation gives both the permanent link and the fixed-edition link.</li>
-          <li><strong>Trace an argument.</strong> Use the ${localLink(foundationsDependenciesRoute, 'Tag dependency map')} to explore dependencies by chapter. Each Tag has a separate diagram with its registered inputs and uses.</li>
+          <li><strong>Trace an argument.</strong> Follow the Tag beside a proof to read its dependency diagram and open the results it uses.</li>
         </ol>
         <p>Start with ${localLink(proof.link, proof.id + ' · ' + proof.title)} to read a complete selected proof. The linked record ${localLink(gap.link, gap.id + ' · ' + gap.title)} documents a historical proof gap in the broader argument.</p>
       </div>
@@ -182,7 +181,6 @@ function makeContentsPage(chapters, graph, fixed, edition) {
     <nav aria-label="Foundations">
       <a class="brand" href="${project}">OpenMath <span>Foundations</span></a>
       ${link(search, 'Search Foundations')}
-      ${link(foundationsDependenciesRoute, 'Tag dependencies')}
       ${link(project + 'coverage/', 'Coverage')}
       ${link(foundationsBookRoute, 'Web reader')}
     </nav>
