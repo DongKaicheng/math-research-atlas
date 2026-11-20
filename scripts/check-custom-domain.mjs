@@ -78,9 +78,14 @@ async function checkLink(href,relative,{frozen=false,fragment=false}={}){
   }
 }
 
-const routes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
+const projectRoutes=['/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
+const routes=['/',...projectRoutes];
 const rootHtml=await text(path.join(dist,'index.html'));
-if(!rootHtml.includes('<h1>'+brand+'</h1>'))fail('Root page does not display '+brand);
+if(!rootHtml.includes('<h1 id="home-title">'+brand+'</h1>'))fail('Root page does not display '+brand);
+const projectList=rootHtml.match(/<section\b[^>]*\bid="projects"[^>]*>([\s\S]*?)<\/section>/)?.[1]??'';
+for(const route of projectRoutes){
+  if(!projectList.includes('href="'+route+'"'))fail('Homepage project link missing: '+route);
+}
 if(origin==='https://openmath-atlas.org'){
   const head=rootHtml.match(/<head>([\s\S]*?)<\/head>/)?.[1]||'';
   if(!head.includes('<meta name="google-site-verification" content="WE7A5abWl6z3sg4dMlvn5oj4t7cYwGbb9T7qU1ld1Sw" />'))fail('Missing owner-issued Google Search Console verification marker in homepage head');
@@ -92,7 +97,6 @@ for(const route of routes){
   if(!/<title>[^<]{20,}<\/title>/.test(html))fail('Short or missing HTML title: '+route);
   if(/<meta name="robots" content="noindex/.test(html))fail('Priority page blocked from indexing: '+route);
   if(route==='/'){
-    if(!html.includes('Berkovich and non-Archimedean geometry'))fail('Homepage research topics not discoverable');
     if(!html.includes('"@type":"WebSite"'))fail('Missing website identity structured data');
   }
   if(route==='/projects/foundations/'&&!html.includes('"@type":"CollectionPage"'))fail('Missing foundations collection structured data');

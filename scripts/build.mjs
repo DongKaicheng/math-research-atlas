@@ -245,29 +245,45 @@ const entries=bundles.flatMap(b=>b.entries.map(entry=>({entry,project:b.project,
 if(new Set(entries.map(e=>e.entry.id)).size!==entries.length)throw Error('Duplicate permanent entry ID');
 
 const featured=`<main id="main-content" class="simple-home">
-<section class="simple-hero wrap">
-<h1>${esc(brand)}</h1>
+<section class="simple-hero wrap" aria-labelledby="home-title">
+<div class="home-intro">
+<h1 id="home-title">${esc(brand)}</h1>
 <p class="simple-statement">We use AI to bring mathematical knowledge together, share open questions, and build new theories with others.</p>
-<p class="simple-statement" style="font-size:1rem;max-width:54rem">We are dedicated to open-source mathematics projects, from organizing existing foundational theory to developing new theories through long-term research programmes.</p>
-${foundationsCurrent?`<nav class="foundations-reading-nav" aria-label="Read Foundations"><a class="button button-dark" href="${url(foundationsContentsRoute)}">Browse the Foundations</a><a href="${url('/search/')}?project=foundations">Search Foundations</a></nav>`:''}
+<p class="home-mission">We are dedicated to open-source mathematics projects, from organizing existing foundational theory to developing new theories through long-term research programmes.</p>
+<div class="home-actions">
+<a class="button button-dark" href="#projects">Browse projects</a>
+${foundationsCurrent?`<a class="button button-outline" href="${url(foundationsContentsRoute)}">Browse the Foundations</a>`:''}
+</div>
 <nav class="simple-quick-links" aria-label="About and feedback">
-<a href="${url('/about/')}"><span>About this site</span>${externalArrow}</a>
-<a href="${url('/feedback/')}"><span>Feedback &amp; discussion</span>${externalArrow}</a>
-<a href="${url('/manifesto/')}"><span>Why this site?</span>${externalArrow}</a>
-</nav></section>
-<section class="community-home-invite wrap" aria-labelledby="home-contribute-title">
-<div><p class="eyebrow">GROW OPENMATH WITH US</p><h2 id="home-contribute-title">New projects and project managers are welcome.</h2><p>Bring a mathematical project in any subject, or help maintain an existing one. The site owner reviews new-project proposals and appoints managers for an agreed scope.</p></div>
-<div class="community-actions"><a class="button button-dark" href="${url('/contribute/projects/')}">Propose a project</a><a class="button button-outline" href="${url('/contribute/maintainers/')}">Become a project manager</a></div>
+<a href="${url('/about/')}">About this site</a>
+<a href="${url('/feedback/')}">Feedback &amp; discussion</a>
+<a href="${url('/manifesto/')}">Why this site?</a>
+</nav>
+</div>
+<nav class="home-track-links" aria-label="Browse by project type">
+<a href="${url('/foundations/')}"><span><strong>Foundations</strong><span class="home-track-summary">Definitions, theorems, and full proofs, with clear links between results.</span></span>${externalArrow}</a>
+<a href="${url('/research/')}"><span><strong>Research</strong><span class="home-track-summary">Conjectures, partial results, and plans for new theories.</span></span>${externalArrow}</a>
+</nav>
 </section>
-<section class="simple-tracks wrap"><h2>Two kinds of work</h2><div class="simple-track-list">
-<a href="${url('/foundations/')}"><div><h3>Foundations</h3><p>Definitions, theorems, and full proofs, with clear links between results.</p></div>${externalArrow}</a>
-<a href="${url('/research/')}"><div><h3>Research</h3><p>Conjectures, partial results, and plans for new theories.</p></div>${externalArrow}</a>
-</div></section>
-<section class="simple-projects wrap" id="projects"><h2>Projects</h2>
+<section class="simple-projects wrap" id="projects">
+<header class="simple-section-row"><h2>Projects</h2>
+${foundationsCurrent?`<a class="home-project-search" href="${url('/search/')}?project=foundations">Search Foundations ${externalArrow}</a>`:''}
+</header>
 <div class="simple-project-list">${bundles.map(card).join('')}</div>
-<p class="micro">Each project distinguishes open questions, conditional results, and available proofs. Outline projects are labelled separately from full research editions.</p>
+<p class="home-project-note">Each project distinguishes open questions, conditional results, and available proofs. Outline projects are labelled separately from full research editions.</p>
 </section>
-<section class="simple-agent-bridge wrap" aria-labelledby="home-agents-title"><div><p class="eyebrow">TOOLS FOR MATHEMATICAL RESEARCH</p><h2 id="home-agents-title">Three updated research agents</h2><p>Download the mathematical maintainer, research publisher and writing editor. The latest packages include source-linked logical diagrams: joint premises, alternative proofs, open steps and readable mobile views.</p></div><a class="button button-dark" href="${url('/ai-and-math/')}">Explore AI &amp; Math ${externalArrow}</a></section>
+<div class="home-resources wrap">
+<section aria-labelledby="home-contribute-title">
+<h2 id="home-contribute-title">New projects and project managers are welcome.</h2>
+<p>Bring a mathematical project in any subject, or help maintain an existing one. The site owner reviews new-project proposals and appoints managers for an agreed scope.</p>
+<div class="home-resource-links"><a href="${url('/contribute/projects/')}">Propose a project ${externalArrow}</a><a href="${url('/contribute/maintainers/')}">Become a project manager ${externalArrow}</a></div>
+</section>
+<section aria-labelledby="home-agents-title">
+<h2 id="home-agents-title">Three updated research agents</h2>
+<p>Download the mathematical maintainer, research publisher and writing editor for source review, publication and exposition.</p>
+<div class="home-resource-links"><a href="${url('/ai-and-math/')}">Explore AI &amp; Math ${externalArrow}</a></div>
+</section>
+</div>
 </main>`;
 await save('/',loadPage(brand,'OpenMath is an open research atlas for arithmetic and Arakelov geometry, Berkovich spaces, non-Archimedean Bedford–Taylor theory, Beilinson–Bloch heights, proof maps and AI for mathematics.',featured,'/'));
 
@@ -283,8 +299,7 @@ ${heading('OPEN RESEARCH TOOLS','AI & Math','Download mathematical research agen
 <section id="agents" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">01 / DOWNLOAD</p><h2>Research agents</h2><p>These are downloadable versions of the three active skill packages. They are tools for research work, not independent proof certificates or unattended background services.</p></div><div class="agent-grid">${agentCards}</div></section>
 <section id="logic-diagrams" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">02 / LOGIC MAPS</p><h2>Logical relationships, not just a list</h2><p>The common drawing workflow starts with exact statements and supporting arguments.</p></div><div class="logic-capability-grid"><div><strong>AND</strong><p>Every jointly required premise, additional hypothesis and input stays visible.</p></div><div><strong>OR</strong><p>Separate sufficient proof routes are distinguished from speculative alternatives.</p></div><div><strong>Open / blocked</strong><p>Missing inferences and invalid shortcuts never become proved arrows.</p></div><div><strong>Source &amp; scope</strong><p>Stable identifiers, detailed argument links, full and focused diagrams, and a text view on phones.</p></div></div><div class="ai-example-links"><a href="${url('/projects/bedford-taylor/map/#total-logic')}">Explore the Bedford–Taylor overall logical map ${externalArrow}</a><a href="${url('/projects/strong-green/results/proof-diagrams/')}">Explore the Strong Green proof maps ${externalArrow}</a></div></section>
 <section id="usage" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">03 / USE &amp; UPDATE</p><h2>Use a fixed version or follow updates</h2></div><ol class="ai-steps"><li>Download a ZIP and extract its single skill folder into your agent's skills directory; read its <code>SKILL.md</code>.</li><li>For portable interactive diagrams, use Python 3.10+ and Graphviz <code>dot</code>. The publisher can integrate the resulting views into an existing website.</li><li>Use the release manifest to verify SHA-256. Each future agent update receives a new immutable ZIP URL; the current download links change only after review and publication.</li></ol><p class="ai-muted">These packages are public snapshots. Updates to the personal agent do not automatically modify the website; a reviewed release must be published here.</p></section>
-<section id="research-sites" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">04 / MATHEMATICS</p><h2>Research and foundations</h2></div><div class="ai-research-links"><a href="${url('/')}"><strong>${esc(brand)}</strong><span>The umbrella atlas of foundations, conjectures and revisions.</span>${externalArrow}</a><a href="${url('/projects/bedford-taylor/')}"><strong>Non-Archimedean Bedford–Taylor Theory</strong><span>Source-linked results, open gates, papers and the overall logic map.</span>${externalArrow}</a><a href="${url('/projects/strong-green/')}"><strong>Beilinson–Bloch / Strong Green</strong><span>Research programme, permanent records and proof diagrams.</span>${externalArrow}</a></div><p class="ai-inline">For the wider position on shared mathematical knowledge, read the <a href="${url('/manifesto/')}">manifesto</a>.</p></section>
-<section id="agent-feedback" class="ai-section ai-feedback"><div class="ai-section-heading"><p class="eyebrow">05 / DISCUSSION</p><h2>One feedback system</h2><p>Questions about the agents, accessibility, research maps, or future features use the existing Atlas GitHub Issues board. General comments need no theorem or edition number.</p></div><a class="button button-dark" href="${url('/feedback/')}">Leave general feedback ${externalArrow}</a><a class="text-link" href="${url('/feedback/')}?page=${encodeURIComponent(agentFeedbackPage)}">Discuss this tools page</a><a class="text-link" href="${url('/maintenance/')}">Publication &amp; maintenance</a></section>
+<section id="agent-feedback" class="ai-section ai-feedback"><div class="ai-section-heading"><p class="eyebrow">04 / DISCUSSION</p><h2>One feedback system</h2><p>Questions about the agents, accessibility, research maps, or future features use the existing Atlas GitHub Issues board. General comments need no theorem or edition number.</p></div><a class="button button-dark" href="${url('/feedback/')}">Leave general feedback ${externalArrow}</a><a class="text-link" href="${url('/feedback/')}?page=${encodeURIComponent(agentFeedbackPage)}">Discuss this tools page</a><a class="text-link" href="${url('/maintenance/')}">Publication &amp; maintenance</a></section>
 <section id="ai-management" class="ai-section"><div class="ai-section-heading"><p class="eyebrow">MANAGE WITH YOUR AI</p><h2>Use the agents within your project scope</h2><p>Project managers can bring their AI assistant into the management workflow to review content, prepare source changes and keep the evidence with each revision.</p></div><div class="community-actions"><a class="button button-dark" href="${url('/ai-management/')}">AI management guide</a><a class="button button-outline" href="${url('/contribute/maintainers/')}">Become a project manager</a></div></section>
 </main>`;
 await save('/ai-and-math/',loadPage('AI & Math — Research Agents','Three downloadable mathematical research agents with source-bound logical diagrams, proof links and fixed release checksums.',aiMath,'/ai-and-math/'));

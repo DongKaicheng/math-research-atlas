@@ -51,6 +51,7 @@ test('Agent page links exact downloadable archives, proof maps and shared feedba
   assert.match(page,/href="\/math-research-atlas\/projects\/bedford-taylor\/map\/#total-logic"/);
   assert.match(page,/href="\/math-research-atlas\/projects\/strong-green\/results\/proof-diagrams\/"/);
   assert.match(page,/href="\/math-research-atlas\/feedback\/"/);
+  assert.doesNotMatch(page,/Research and foundations|id="research-sites"/);
   assert.doesNotMatch(page,/appgprj_|spectacularsheep\.chatgpt\.site/i);
   assert.match(await read('sitemap.xml'),/math-research-atlas\/ai-and-math\//);
   assert.match(await read('updates/index.html'),/Mathematical agents: logical diagram release/);
