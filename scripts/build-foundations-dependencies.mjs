@@ -65,7 +65,7 @@ function adjacentProof(chapter,index) {
   }) ? next : null;
 }
 
-function statementTitle(html, kind) {
+export function statementTitle(html, kind) {
   const present = html.match(/<strong>([^]*?)<\/strong>/);
   const number = readingText(present?.[1] ?? '').match(/(?:\d+|[A-Z])(?:\.\d+){1,3}/)?.[0];
   const heading = present ? readingText(html.slice(present.index+present[0].length)).match(/^(?:NAG-\d{6}\s+)*\(([^)]{3,125})\)\./)?.[1] : '';

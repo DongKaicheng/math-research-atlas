@@ -154,8 +154,9 @@ export async function loadFoundationsRelease(root) {
   requireFact(ids.size===1205 && [...names].filter(n=>n.startsWith('r/')).length===ids.size,
     'missing or extra exact IDs');
   const dependencyReview = current ? JSON.parse(await regular(path.join(dir,'dependency-review.json'))) : null;
+  const proofCoverageReview = current ? JSON.parse(await regular(path.join(dir,'proof-coverage-review.json'))) : null;
   const native = current ? bindReviewedProofs(await loadFoundationsNative(path.join(dir,'native'),pdfDigest),dependencyReview) : null;
-  const loaded = await augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview});
+  const loaded = await augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview, proofCoverageReview});
   if (current) loaded.historicalStatements = loadHistoricalStatements(loaded,
     await regular(path.join(dir,'historical-gap-statements.json')));
   return loaded;

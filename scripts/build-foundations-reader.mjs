@@ -31,7 +31,7 @@ export function foundationsHome({release, title, trail, history, url, repository
       <nav class="foundations-home-nav" aria-label="Foundations project navigation">
         <a class="button button-dark" href="${escapeHtml(url(foundationsContentsRoute))}">Table of contents</a>
         ${link('#foundations-query', 'Search')}
-        ${localLink(coverage, 'Open Tags by chapter')}
+        ${localLink(coverage, 'Tag and proof coverage')}
         ${localLink(foundationsBookRoute, 'Web reader')}
         ${link('#editions', 'Editions')}
         ${link('#feedback', 'Feedback')}
@@ -57,7 +57,7 @@ export function foundationsHome({release, title, trail, history, url, repository
         <ol class="foundations-home-guide">
           <li><strong>Read by chapter.</strong> Use the ${localLink(foundationsContentsRoute, 'table of contents')} to browse chapters and jump to individual sections.</li>
           <li><strong>Read or cite a result.</strong> Follow the Tag in the chapter, or ${link('#foundations-query', 'search by keyword or NAG number')}. The Tag page gives the statement, available proof and permanent citation.</li>
-          <li><strong>Check proof coverage.</strong> The ${localLink(coverage, 'coverage register')} lists Tags with an open step at the full scope of the original statement.</li>
+          <li><strong>Check proof coverage.</strong> The ${localLink(coverage, 'coverage register')} shows each chapter’s Tag total, open proof obligations in the manuscript, and statements awaiting permanent Tags.</li>
         </ol>
         <p>Start with ${localLink(proof.link, proof.id + ' · ' + proof.title)} to read a complete selected proof. The linked record ${localLink(gap.link, gap.id + ' · ' + gap.title)} documents a historical proof gap in the broader argument.</p>
       </div>

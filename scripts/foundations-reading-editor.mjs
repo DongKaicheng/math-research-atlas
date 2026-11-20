@@ -55,7 +55,9 @@ export function editFoundationsReadingHtml(html, remarkNumbers, referenceLabels)
   // Pandoc leaves a second period when the manuscript heading already ends in one.
   let text = html.replace(numberedStatement, '$1$2')
     .replace(supportAvoidance, '$1Lemma F.1.7.$2$3')
-    .replace(traceCover, '$1Theorem I.1.6.$2');
+    .replace(traceCover, '$1Theorem I.1.6.$2')
+    .replace(/(<div class="fthreeHStrictVal">\s*<p><strong>Proposition) 1\.1<\/strong>\./g,'$1 3.HS.1.</strong>')
+    .replace(/(<div class="fthreeHStrictGerm">\s*<p><strong>Corollary) 1\.1<\/strong>/g,'$1 3.HS.2.</strong>');
 
   // Each Pandoc chunk starts its own remark counter. Restore the compiled number
   // when the manuscript has a named destination and omit the local counter otherwise.
