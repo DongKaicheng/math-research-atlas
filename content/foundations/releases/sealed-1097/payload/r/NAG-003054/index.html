@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003054/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Common domination and the uniformizer test · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003054 · Accepted whole</p><h1>Common domination and the uniformizer test</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003054.original">Open in the English reader · PDF page 1924</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6178a9b2acaa4fbe0c591b43be30033f8dc2c88e7b25f9485ea89666bfb85262">
+\begin{proposition}[Common domination and the uniformizer test]
+\label{f9md:supportedprojection}
+Assume the four interface properties for all cycles and operations below.
+Let $p:\cY\to\cX$ be a proper common-generic-fibre domination with
+$p_*[\cY]=[\cX]$. Let $D_i$ be model pseudo-divisors with lines
+extending $L_i^{\otimes e_i}$ and specified sections $s_i^{\otimes e_i}$,
+$0\leq i\leq d$. Suppose only that
+\begin{equation}\label{eq:f9md:genericsupport}
+                    \bigcap_{i=0}^d |D_i|\cap X=\varnothing.
+\end{equation}
+No pairwise or intermediate proper intersection is required. With
+$E_0=\prod_{i=0}^d e_i$, define the supported model value by
+\[
+ J_{\cX}(D_0,\ldots,D_d)
+     =\frac{\lambda}{E_0}\deg_k(D_0\cdots D_d\cdot[\cX]).
+\]
+Then it is symmetric and
+\begin{equation}\label{eq:f9md:supportedpush}
+                  J_{\cY}(p^*D_0,\ldots,p^*D_d)
+                            =J_{\cX}(D_0,\ldots,D_d).
+\end{equation}
+Hence two model presentations have equal values if their divisor data
+pull back compatibly to a common domination satisfying the same
+properties. This requires the actual pulled-back lines, sections and
+supports, not just their generic line-bundle classes.
+
+Replacing $s_i$ by $\pi s_i$ at a fixed metric gives
+\begin{equation}\label{eq:f9md:piregression}
+ \Delta J=+\frac{\lambda}{\prod_{j\ne i}e_j}
+              \sum_V b_V\deg_{(\cL_j|_V)_{j\ne i},k}(V).
+\end{equation}
+This equals $+\lambda$ times the corresponding model-measure mass.
+It is $+\lambda$ times the generic degree only when the relevant
+specialization-of-degree identity has also been established.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6bf88d8e34489eb83a5143dc959be689cff6014b241acad5bd794a726d37f79f">
+\begin{proof}
+The support after all $d+1$ operations lies in $\bigcap_i|D_i|$.
+By \eqref{eq:f9md:genericsupport} this is vertical, so the degree in the
+definition is available, even when the total support has positive
+dimension. The operations produce a zero-dimensional class there.
+Their commutativity proves symmetry.
+Iterating the second property gives
+\[
+ p_*\bigl(p^*D_0\cdots p^*D_d\cdot[\cY]\bigr)
+            =D_0\cdots D_d\cdot p_*[\cY]
+            =D_0\cdots D_d\cdot[\cX].
+\]
+The retained vertical degree and identical root exponents prove
+\eqref{eq:f9md:supportedpush}. Applying this equality to each side of a
+common domination proves the next assertion. This proof does not
+manufacture the supported operators or their projection formula.
+
+The model divisor changes by $e_i\divi(\pi)$ when $s_i$ is
+multiplied by $\pi$. Additivity, commutativity and the third property
+turn the change in the final class into
+\[
+ e_i\sum_V b_V\left(\prod_{j\ne i}c_1(\cL_j|_V)\right)[V].
+\]
+Taking its degree and dividing by $E_0/\lambda$ proves
+\eqref{eq:f9md:piregression}. The generic support condition is unchanged;
+the model support is enlarged by the special fibre when needed.
+On a model with only the standard projective component and degrees
+$m_j$, this gives $+\lambda\prod_{j\ne i}m_j$, as required by the
+point normalization. The blowup computation gives the same mass for
+pulled-back data, so it is also a common-model regression test.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="a5e3f544fb58bf7157b8d0a9fa194675ab86a3f0f9366277eeb001620e2f6b0b">
+Let $K$ be complete and nontrivially discretely valued, with valuation
+ring $R$, residue field $k$, uniformizer $\pi$, and the fixed number
+$\lambda=-\log|\pi|&gt;0$. Let $X$ be an integral proper $K$-variety of
+dimension $d\geq2$. A model in this note is proper, flat, integral and
+normal over $R$, of finite type, with generic fibre identified with $X$.
+Retain explicitly the ordinary DVR local rings at all height-one points
+used below. Its special components have dimension $d$.
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="c19b9cb2919517bb85e76e18e043a7da855e7710f88ede679b3e6bb175f425d7">
+For a proper model $\cT$ and closed support $S$, suppose there are
+groups $C_r(\cT;S)$ of $r$-dimensional cycles modulo equivalences
+\emph{retaining that support}. Suppose model pseudo-divisors $D$ act by
+operators $D\cdot:C_r(\cT;S)\to C_{r-1}(\cT;S\cap|D|)$.
+For the objects used, require the following four properties:
+\begin{enumerate}
+\item The operators are additive and commute; the first operation on an
+integral model is its Cartier divisor cycle when that is defined.
+\item Proper pushforward retains the prescribed supports and satisfies
+$p_*(p^*D\cdot\alpha)=D\cdot p_*\alpha$.
+\item On vertical cycles, $D$ acts by the ordinary first Chern operation
+of its model line, even if its chosen section restricts identically to
+zero. Moreover $\divi(\pi)\cdot[\cT]=\sum_Vb_V[V]$.
+\item Vertical zero-cycles have degree over $k$, with actual local
+lengths and full residue-field degrees, and this degree is preserved by
+proper pushforward.
+\end{enumerate}
+These are interface hypotheses. In particular, the second property is
+the supported algebraic projection formula, not F6&#x27;s analytic theorem.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003054-reader.jpg" alt="Typeset mathematical passage from PDF page 1924" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1924">PDF page 1924 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><p class="muted">No explicit typed target in the exported bindings.</p></main><footer>Foundations · sealed 1097</footer></body></html>

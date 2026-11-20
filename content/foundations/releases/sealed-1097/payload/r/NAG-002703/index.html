@@ -1,0 +1,168 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002703/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Compact ambient separation and completion over a source · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002703 · Accepted whole</p><h1>Compact ambient separation and completion over a source</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002703.original">Open in the English reader · PDF page 1947</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b485704bf58b1d8c428121a9a2d388d0118af0342ba2c4894437e8fc16594f5b">
+\begin{theorem}[Compact ambient separation and completion over a source]
+\label{gci:ambientcompletion}
+Let \(Y=\mathcal M(A)\) be a generalized affinoid.
+Let \(U,V\subset Y\) be affinoid domains, and let
+\(g_i\in(A^\times)^{m_i}\), \(1\leq i\leq r&lt;\infty\), be
+actual unit tuples. Put \(q_i=t_{g_i}\), choose
+\(s_i\in q_i(Y)\), and define
+\[
+ K_i=q_i^{-1}(s_i),\qquad
+ G=\operatorname{Int}(Y/K)\cap
+       \operatorname{Int}_{\rm top}(U,Y)\cap
+       \operatorname{Int}_{\rm top}(V,Y),\qquad B=Y\setminus G.
+ \tag{1}\label{gci:badset}
+\]
+The following are equivalent.
+\begin{enumerate}
+\item For every \(i\), \(s_i\notin q_i(B)\), or equivalently
+      the \emph{entire} \(K_i\) is contained in \(G\).
+\item There are full-dimensional closed rectangular boxes \(P_i\),
+      with \(s_i\in\operatorname{int}(P_i)\), such that
+\[
+ C_i=q_i^{-1}(P_i)\subset U\cap V,\qquad
+                  g_i:C_i\longrightarrow\mathbb T_{P_i}
+                         \quad\hbox{is norm-admissible finite}.
+ \tag{2}\label{gci:ambientcollars}
+\]
+      The inverse image defining \(C_i\) is taken in all of \(Y\).
+\item Every \(K_i\) is contained in
+      \(\operatorname{Int}_{\rm top}(U,Y)\cap
+       \operatorname{Int}_{\rm top}(V,Y)\), and the analytic map
+      \(g_i:Y\to(\mathbb G_m^{m_i})^{\rm an}\) is finite at
+      \emph{every point of \(K_i\)} in the ordinary-neighbourhood
+      sense.
+\end{enumerate}
+When these conditions hold, the \(P_i\) may be chosen inside any
+prescribed real neighbourhoods of their centres, and one may
+require \(C_i\subset G\). In particular,
+\[
+ (q_i|_U)^{-1}(P_i)=(q_i|_V)^{-1}(P_i)=q_i^{-1}(P_i)
+ \tag{3}\label{gci:sourceequality}
+\]
+as actual analytic domains. Over every analytic target point
+of \(\mathbb T_{P_i}\), these identities retain the entire
+analytic fibres in \(Y,U,V\), including all local factors.
+Compatible finite modules on \(U\) and \(V\) give the same
+complete module on these fibres.
+
+There is a separate criterion when \(Y\) is only a domain in
+a larger intended source. More generally, let \(\Omega\) be a
+good Hausdorff analytic space, let \(Z\subset\Omega\) be an
+affinoid domain, and suppose that actual unit tuples on
+\(\Omega\) restrict to norm-admissible finite saturated collars
+over boxes \(P_i^0\) in \(Z\), with
+\(s_i\in\operatorname{int}(P_i^0)\).
+There exist smaller such boxes \(P_i\subset P_i^0\) with
+\[
+       q_i^{-1}(P_i)\ \hbox{in }\Omega
+          =(q_i|_Z)^{-1}(P_i)
+ \tag{4}\label{gci:intendedsource}
+\]
+if and only if
+\[
+              s_i\notin
+              \overline{q_i(\Omega\setminus Z)}
+                       \quad\hbox{for every }i.
+ \tag{5}\label{gci:escape}
+\]
+The closure is taken in \(\mathbb R^{m_i}\).
+The equality in (4) is again an equality of analytic domains
+and entire fibre algebras, not just of selected Gauss lifts.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="ccd18c5c775449d4c636a565246daa3b66931d8809e9a6a7ad19602b109aadea">
+\begin{proof}
+The set \(G\) is ordinary open in the compact Hausdorff space
+\(Y\). Indeed absolute interior is open, and the other two
+sets are topological interiors. Hence \(B\) and \(q_i(B)\)
+are compact. The domain-interior and composition identities
+give, as subsets of \(Y\),
+\[
+ G=\operatorname{Int}(U/K)\cap\operatorname{Int}(V/K).
+ \tag{6}\label{gci:inneridentity}
+\]
+Here \Dep{fnd:affinoiddomainordinaryinterior} identifies
+relative interior of a domain with its topological interior,
+and \Dep{fnd:affinoidinteriorcompositionequality} is applied
+to \(U\to Y\to\mathcal M(K)\) and to \(V\to Y\to\mathcal M(K)\).
+
+Assume condition 1. Since \(K_i\subset\operatorname{Int}(Y/K)\),
+the frozen whole-moment-fibre theorem
+\Dep{v037:analytic:wholemomentcollar}, applied to the tuple
+\(g_i\), supplies a finite saturated box about \(s_i\).
+Because the compact image \(q_i(B)\) misses \(s_i\), shrink
+that box to avoid \(q_i(B)\) and to lie in the prescribed real
+neighbourhood. Finite base change preserves the canonical
+finite norm. Its whole inverse image \(C_i\) is contained in
+\(G\). This can be done for all the finitely many \(i\);
+the ambient source and the two intended domains stay fixed.
+This proves condition 2 and the stated simultaneous choices.
+The finiteness theorem itself is inherited, not reproved here.
+
+Conversely assume condition 2 and let \(y\in K_i\).
+The target point \(g_i(y)\) lies in
+\(\operatorname{Int}(\mathbb T_{P_i}/K)\): all its defining
+polyannulus bounds are strict because
+\(s_i\in\operatorname{int}(P_i)\).
+A finite map is everywhere relatively interior by
+\Dep{fnd:generalizedfinitealgebras}, so composition gives
+\(y\in\operatorname{Int}(C_i/K)\).
+Since \(C_i\subset U,V\), the domain restriction theorem makes
+\(C_i\) an affinoid domain of both. Applying the composition
+identity to \(C_i\to U\to\mathcal M(K)\) and to
+\(C_i\to V\to\mathcal M(K)\) places \(y\) in both
+\(\operatorname{Int}(U/K)\) and \(\operatorname{Int}(V/K)\).
+Equation (6) gives \(y\in G\), proving condition 1.
+Thus merely placing \(K_i\) in the closed subsets \(U,V\)
+would not suffice; the necessary interior condition has been
+deduced from finiteness.
+
+We verify the ordinary-local formulation as well.
+Choose a large closed polyannulus \(\mathbb T_{R_i}\) so that
+all coordinate bounds strictly exceed the norms of \(g_i\)
+and \(g_i^{-1}\), and the whole image \(g_i(Y)\) is in its
+ordinary and absolute interior. It gives a bounded map
+\(Y\to\mathbb T_{R_i}\).
+At a point where \(g_i\) is finite in the ordinary sense,
+the frozen local criterion and ordinary local testing give
+relative interiority for this affinoid map.
+Composing with \(\mathbb T_{R_i}\to\mathcal M(K)\) gives
+absolute interiority in \(Y\). Thus condition 3 implies 1.
+Under condition 2 the whole analytic fibre over any point
+with moment \(s_i\) is a fibre of the finite map \(C_i\to
+\mathbb T_{P_i}\), and is therefore finite and discrete.
+In particular every point of \(K_i\) is isolated in its
+analytic fibre in \(Y\). The already proved condition 1
+gives absolute interiority, hence relative interiority over
+\(\mathbb T_{R_i}\). The frozen local finite criterion gives
+ordinary local finiteness at every such point.
+This proves condition 3. No flatness hypothesis was used.
+
+The set equalities (3) follow from \(C_i\subset U\cap V\)
+and saturation in \(Y\).
+The actual domain universal property and domain base change
+identify their analytic structures. Further base change to
+any analytic target point identifies the entire fibre
+algebras. For the module assertion, fix an actual isomorphism
+between the restrictions of the two finite modules to
+\(U\cap V\). Restrict it to \(C_i\), then to the fibre.
+Finite-module tensor comparison makes these the complete
+canonical modules, and every such finite-module isomorphism
+is bounded with bounded inverse.
+Nothing in these operations takes a reduction or discards a
+field or local Artinian factor.
+
+Finally consider \(\Omega\) and \(Z\).
+If (5) holds, choose \(P_i\subset\operatorname{int}(P_i^0)\)
+about \(s_i\) disjoint from
+\(\overline{q_i(\Omega\setminus Z)}\).
+Every inverse-image point then belongs to \(Z\), proving (4).
+The resulting map is finite by restriction of the given
+finite collar in \(Z\).
+Conversely, (4) implies
+\(P_i\cap q_i(\Omega\setminus Z)=\varnothing\).
+The open set \(\operatorname{int}(P_i)\) contains \(s_i\)
+and is disjoint from that image, so \(s_i\) is outside its
+closure. Domain base change gives the analytic assertion as
+before. No compactness of \(\Omega\setminus Z\) was assumed;
+this is exactly why the closure in (5) is retained.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002703-reader.jpg" alt="Typeset mathematical passage from PDF page 1948" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1948">PDF page 1948 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001626/#source_factor_interior_for_actual_affinoid_maps">CLAUSE:NAG-001626:source_factor_interior_for_actual_affinoid_maps</a> · selected scope <small>(selected native clause)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001615/">NAG-001615</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001735/">NAG-001735</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001876/">NAG-001876</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002351/">NAG-002351</a> · selected whole <small>(selected native whole)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

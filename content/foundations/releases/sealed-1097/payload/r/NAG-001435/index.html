@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001435/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite modules over a strict relation quotient · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001435 · Accepted whole</p><h1>Finite modules over a strict relation quotient</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.17.2">Open in the English reader · PDF page 168</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d47ad993f9f3b302fdd57cc8138b9cf6297813dd8bfa4aebc959dd0a0d23e791">
+\begin{theorem}[\bi{Finite modules over a strict relation quotient}{Strict 关系商上的有限模}]\label{fnd:strictquotientmodule}
+\bi{Use the notation of Lemma~\ref{fnd:strictweightedquotient}. Let $M$ be a finite $A$-module, choose a surjection $q:A^m\to M$, and give $M$ its quotient norm. Write}
+{沿用 Lemma~\ref{fnd:strictweightedquotient} 的记号。设 $M$ 为有限 $A$-模，选择满射 $q:A^m\to M$，并给 $M$ 配备相应商范数。记}
+\[
+ E=M\{\rho^{-1}X\},\qquad
+ JE=\left\{\sum_{j=1}^t h_je_j:e_j\in E\right\},\qquad Q=E/JE.
+\]
+\bi{Here $J=(h_1,\ldots,h_t)$, and $E$ has its coefficient norm. Then $E$ is a finite $D$-module with a canonical norm; $JE$ is its actual algebraic submodule, is closed, and does not depend on the chosen generators of $J$. The relation map $E^t\to E$ is norm-strict onto $JE$. The coefficient and tensor maps induce natural isometric $B$-linear isomorphisms}
+{这里 $J=(h_1,\ldots,h_t)$，$E$ 使用系数范数。则 $E$ 是配备 canonical 范数的有限 $D$-模；$JE$ 是其实际代数子模，它是闭的，且不依赖 $J$ 的所选生成元。关系映射 $E^t\to E$ 对 $JE$ 为 norm-strict。系数映射与张量映射诱导自然的等距 $B$-线性同构}
+\[
+ B\otimes_A M \ \simeq\ B\widehat\otimes_A M
+       \ \simeq\ Q,\qquad
+ \overline d\otimes m\longmapsto[d\,m].
+\]
+\bi{The algebraic tensor product carries the projective seminorm, the completed tensor product is its separated completion, and $Q$ has the quotient norm. This is also the finite-$B$-module quotient norm induced by the generators $q(e_1),\ldots,q(e_m)$. For any other uniformly equivalent canonical norm on $M$, the same maps are bounded isomorphisms with uniformly equivalent norms.}
+{代数张量积使用 projective 半范数，completed tensor product 指它的 separated completion，$Q$ 使用商范数。这也等于由生成元 $q(e_1),\ldots,q(e_m)$ 诱导的有限 $B$-模商范数。若在 $M$ 上改用另一个一致等价的 canonical 范数，则相同映射仍是有界同构，相应范数一致等价。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="ad0124823cdeb784e8870358336defca1913353a867420a638abae41f6f6ce51">
+\begin{proof}
+\bi{\textbf{Step 1: the actual relation module.} Choose a finite presentation}
+{\textbf{步骤 1：实际的关系模。} 选择有限表示}
+\[
+ A^s\xrightarrow{U}A^m\xrightarrow{q}M\longrightarrow0.
+\]
+\bi{Theorems~\ref{fnd:weightedcoefficientpresentation} and~\ref{fnd:weightedcoefficienttensor}, for the multiplicative weights $\rho^\alpha$, identify}
+{对于乘性权重 $\rho^\alpha$，Theorems~\ref{fnd:weightedcoefficientpresentation} 与~\ref{fnd:weightedcoefficienttensor} 给出识别}
+\[
+ E=D^m/U_DD^s=D\otimes_A M,
+\]
+\bi{with its coefficient norm equal to the quotient norm from $D^m$. Thus it is a finite $D$-module with a canonical norm. Lemma~\ref{fnd:strictweightedquotient} makes $D$ strict. Theorem~\ref{fnd:strictfinitemodules} applied over $D$ now shows that the map $(e_j)\mapsto\sum_jh_je_j$ has closed image and is norm-strict. Its image is the algebraic submodule $JE$, not merely its closure. If one changes generators of $J$, each new generator is a finite $D$-linear combination of the old ones, so this submodule is unchanged.}
+{其中系数范数等于来自 $D^m$ 的商范数。因此，$E$ 是配备 canonical 范数的有限 $D$-模。由 Lemma~\ref{fnd:strictweightedquotient}，$D$ 为 strict。此时对 $D$ 应用 Theorem~\ref{fnd:strictfinitemodules}，可知映射 $(e_j)\mapsto\sum_jh_je_j$ 具有闭像且为 norm-strict。它的像正是代数子模 $JE$，而非只等于其闭包。改变 $J$ 的生成元时，每个新生成元都是原生成元的有限 $D$-线性组合，因此这个子模不变。}
+
+\bi{\textbf{Step 2: the algebraic identification and the quotient norm.} Apply right exactness of the ordinary tensor product, in \cite[Tag 00DF, Lemma 10.12.10]{StacksAlg}, to the displayed finite presentation. It gives}
+{\textbf{步骤 2：代数识别与商范数。} 对所列有限表示应用普通张量积的右正合性，即 \cite[Tag 00DF, Lemma 10.12.10]{StacksAlg}，得到}
+\[
+ B\otimes_A M=B^m/U_BB^s.
+\]
+\bi{Under the surjection $D^m\to E$, the inverse image of $JE$ is exactly}
+{在满射 $D^m\to E$ 下，$JE$ 的逆像恰为}
+\[
+ U_DD^s+JD^m.
+\]
+\bi{Indeed, lift the finitely many terms of an expression $\sum_jh_je_j$ to $D^m$; their difference from any other lift lies in $U_DD^s$. The reverse inclusion is immediate. Under $D^m\to B^m$, the inverse image of $U_BB^s$ is the same submodule: lift a finite vector in $B^s$ to $D^s$ and subtract its image under $U_D$. Consequently both $Q$ and $B\otimes_A M$ are the quotient of $D^m$ by this identical actual submodule. This proves the displayed algebraic identification, including the formula $\overline d\otimes m\mapsto[d\,m]$.}
+{具体而言，将表达式 $\sum_jh_je_j$ 中有限多个 $e_j$ 提升到 $D^m$，任何其他提升与所得向量之差都属于 $U_DD^s$；反方向的包含关系直接成立。在 $D^m\to B^m$ 下，$U_BB^s$ 的逆像也是同一子模：将 $B^s$ 中的有限向量提升到 $D^s$，再减去它在 $U_D$ 下的像即可。因此，$Q$ 与 $B\otimes_A M$ 都是 $D^m$ 关于同一个实际子模的商。这证明了所列代数识别，也验证了公式 $\overline d\otimes m\mapsto[d\,m]$。}
+
+\bi{The maximum norm on $B^m$ is exactly the quotient norm from $D^m$. To check the only nontrivial inequality, lift each of the finitely many coordinates with any fixed factor $\lambda&gt;1$, then let $\lambda\downarrow1$. Successive quotient norms therefore give on both modules the infimum of the norms of all their lifts in $D^m$. They agree. This also shows that the norm on $Q$ is its indicated finite-$B$-module norm. Since $JE$ is closed, Lemma~\ref{fnd:completequotient} makes it definite and complete.}
+{$B^m$ 上的 maximum 范数正是来自 $D^m$ 的商范数。只需核对一个方向的不等式：对任意固定因子 $\lambda&gt;1$，逐个提升有限多个坐标，再令 $\lambda\downarrow1$。因此，在两个模上逐次取商范数，得到的都是它们全部 $D^m$ 提升的范数之下确界，故两者相等。这也说明 $Q$ 的范数正是所述有限 $B$-模范数。由于 $JE$ 闭，由 Lemma~\ref{fnd:completequotient}，这个范数正定且完备。}
+
+\bi{\textbf{Step 3: the projective norm.} Let $\nu$ denote this common quotient norm on $P=B\otimes_A M$, and write $m_i=q(e_i)$. Since $\|m_i\|\leq1$, every lift $(b_i)\in B^m$ of $z$ gives}
+{\textbf{步骤 3：projective 范数。} 将 $P=B\otimes_A M$ 上这个共同的商范数记为 $\nu$，并令 $m_i=q(e_i)$。由于 $\|m_i\|\leq1$，$z$ 的每个 $B^m$ 提升 $(b_i)$ 都给出}
+\[
+ z=\sum_i b_i\otimes m_i,\qquad
+ \|z\|_\pi\leq\max_i\|b_i\|.
+\]
+\bi{Taking the infimum gives $\|z\|_\pi\leq\nu(z)$. Conversely, fix a finite expression $z=\sum_jb_j\otimes v_j$ and $\lambda&gt;1$. Choose lifts $a_j=(a_{ij})\in A^m$ with $\|a_j\|\leq\lambda\|v_j\|$, using zero when $v_j=0$. The map $A\to B$ is contractive, because the constant inclusion in $D$ is isometric and $D\to B$ is a norm quotient. Thus}
+{取下确界即得 $\|z\|_\pi\leq\nu(z)$。反之，固定有限表达式 $z=\sum_jb_j\otimes v_j$ 及 $\lambda&gt;1$。选取提升 $a_j=(a_{ij})\in A^m$，使 $\|a_j\|\leq\lambda\|v_j\|$，并在 $v_j=0$ 时取零提升。映射 $A\to B$ 为 contractive，因为到 $D$ 的常数嵌入等距，而 $D\to B$ 是范数商。因此}
+\[
+ z=\sum_i\left(\sum_jb_j\overline{a_{ij}}\right)\otimes m_i,
+ \qquad
+ \nu(z)\leq
+ \lambda\max_j\bigl(\|b_j\|\|v_j\|\bigr).
+\]
+\bi{Letting $\lambda\downarrow1$ and taking the infimum over finite tensor expressions proves $\nu(z)\leq\|z\|_\pi$. The projective seminorm therefore equals the complete definite quotient norm. Its separated completion neither adds elements nor kills nonzero elements. If $B=0$ or $M=0$, the same conclusions hold on the zero module.}
+{令 $\lambda\downarrow1$，再对全部有限张量表达式取下确界，得到 $\nu(z)\leq\|z\|_\pi$。因此 projective 半范数等于完备且正定的商范数。作 separated completion 既不增添元素，也不消去非零元素。若 $B=0$ 或 $M=0$，相同结论在零模上成立。}
+
+\bi{\textbf{Step 4: functoriality and other norms.} For an $A$-linear map $u:M\to M&#x27;$, coefficientwise application is bounded by Theorem~\ref{fnd:strictfinitemodules}. It commutes with each multiplication by $h_j$, so it descends to the relation quotients. On pure tensors the resulting map is $\overline d\otimes m\mapsto\overline d\otimes u(m)$; this proves naturality for both ordinary and completed tensors. Finally, if $a\|m\|\leq\|m\|_*\leq b\|m\|$ for $0&lt;a\leq b$, then coefficient, quotient and projective norms each satisfy the same comparisons with their original norms. Thus the same identifications remain bounded isomorphisms for any other canonical norm.}
+{\textbf{步骤 4：函子性与其他范数。} 对 $A$-线性映射 $u:M\to M&#x27;$，由 Theorem~\ref{fnd:strictfinitemodules}，逐系数应用 $u$ 是 bounded 的。它与每个 $h_j$ 的乘法相容，故下降到关系商。在纯张量上所得映射为 $\overline d\otimes m\mapsto\overline d\otimes u(m)$，这就证明了普通与 completed tensor 的自然性。最后，若 $0&lt;a\leq b$ 且 $a\|m\|\leq\|m\|_*\leq b\|m\|$，则系数范数、商范数和 projective 范数分别相对于原范数满足同样的比较。因此，改用任意其他 canonical 范数后，相同识别仍为有界同构。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="0bbd6934d2e76c640da816c5bc3df80570a532f121d0a1e9c62d65c1da4109cb">
+\section{\bi{Iterated quotients and elementary Laurent diagrams}{迭代商与 elementary Laurent 图表}}\label{fnd:r1intersectioninterfaces}
+
+\bi{The preceding quotient construction permits a direct comparison of presentations. We first show that adjoining a second block of variables commutes with taking a quotient, with equality of the resulting norms. We then identify the coefficient Laurent sequence with a sequence of finite modules over explicit strict affinoid quotient algebras. These are statements about Banach algebras and modules; identifying them with sections on analytic domains requires the geometric localization theorem.}
+{前面的商构造使我们能够直接比较不同表示。先证明添入第二组变量与取商相容，并且所得范数相等；随后将系数 Laurent 序列识别为一列显式 strict affinoid 商代数上的有限模。这里的结论属于 Banach 代数与模的范畴；将它们识别为解析域上的截面，还需要几何局部化定理。}
+
+\bi{Throughout this section, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial, and $A$ is a strict $K$-affinoid algebra with the norm conventions of Lemma~\ref{fnd:strictweightedquotient}. All displayed radii belong to $|K^\times|$. A relation quotient is either a strict affinoid algebra or the zero algebra with its zero norm. The latter is allowed in this section as a separate case; it does not satisfy the normalization $\|1\|=1$ in Definition~\ref{fnd:banachalgebra}. Every unital module over it is zero. All quotients below use the actual algebraic ideals or submodules, and their indicated quotient norms.}
+{本节中，$K$ 关于固定的实值非阿基米德绝对值完备，允许赋值平凡；$A$ 为 strict $K$-affinoid algebra，采用 Lemma~\ref{fnd:strictweightedquotient} 的范数约定。所有出现的半径均属于 $|K^\times|$。关系商可能是 strict affinoid algebra，也可能是配备零范数的零代数；本节将后者作为独立情形允许在内，它并不满足 Definition~\ref{fnd:banachalgebra} 中的归一化 $\|1\|=1$。零代数上的每个含幺模均为零。以下各商均使用实际的代数理想或子模，并配备指定的商范数。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="93fe7c931bc5b70aac97ddfd2ec1f640fd0c002fca7210fd3dab23c0487f0e2f">
+% v0.29 R1.1; proof and scope review are recorded separately.
+\section{\bi{Strict quotient presentations and finite modules}{Strict 商表示与有限模}}\label{fnd:r1quotientbridge}
+\bi{The coefficient construction is useful for localization only after its relation quotients are controlled. In this section the new radii lie in the value group. This allows the finite-module theorem over strict affinoids to control the actual images of the relation maps. No statement about a structure sheaf is used.}
+{系数构造要用于局部化，还须控制加入关系后的商。本节新增变量的半径均位于值群中，因此可以利用 strict affinoid 上的有限模定理控制关系映射的实际像。这里不使用结构层的任何结论。}
+
+\bi{Fix a complete real-valued non-Archimedean field $K$, allowing the trivial absolute value. A nonzero algebra below carries the submultiplicative norm and norm-admissibility convention of Definition~\ref{fnd:banachalgebra}. We also allow a relation ideal to be the whole algebra: its quotient is the zero ring with its zero norm, and every unital module over it is zero. Statements about such a quotient have this explicit degenerate interpretation; the normalization $\|1\|=1$ is required only for nonzero algebras.}
+{固定一个关于实值非阿基米德绝对值完备的域 $K$，允许平凡绝对值。下文的非零代数采用 Definition~\ref{fnd:banachalgebra} 中的次乘范数与范数 admissibility 约定。也允许关系理想为整个代数：相应商是配备零范数的零环，其所有幺模均为零。涉及这种商的陈述均按此明确的退化意义理解；$\|1\|=1$ 的归一化只要求于非零代数。}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="51d3a22cec324277d44668584f77c0a4e0f28ac052c42b1a918d32278cddf37d">
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+{Complete extension $L/K$ 始终配备限制为指定 $K$ 上 absolute value 的 absolute value。改变 ground field 时不重新缩放它。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001435-reader.jpg" alt="Typeset mathematical passage from PDF page 168" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=168">PDF page 168 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>STACKS-00DF:right-exactness@NAG-001435 · named external application</li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001422/">NAG-001422</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(selected rule)</small></li><li>STACKS-00DF:right-exactness@NAG-001435 · named external application <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole</li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole</li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001422/">NAG-001422</a> · selected whole</li><li><a href="/r/NAG-001422/">NAG-001422</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li>STACKS-00DF:right-exactness@NAG-001435 · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000153/#context-8a59e28fbfc4652b">fnd:banachalgebra</a></li><li><a href="/r/NAG-001380/">fnd:completequotient</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001434/">fnd:strictweightedquotient</a></li><li><a href="/r/NAG-001420/">fnd:weightedcoefficientpresentation</a></li><li><a href="/r/NAG-001422/">fnd:weightedcoefficienttensor</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

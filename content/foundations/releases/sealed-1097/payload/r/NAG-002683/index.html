@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002683/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Effective descent of a supplied separated nodal curve · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002683 · Accepted whole</p><h1>Effective descent of a supplied separated nodal curve</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002683.original">Open in the English reader · PDF page 1898</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="67b73eeb5e8f59ca3ff15357aadab590879a86bbb689134918f8ad34f2078c8e">
+\begin{theorem}[Effective descent of a supplied separated nodal curve]
+\label{cand:f5glue:globaldescent}
+Assume (K). Let \(Y&#x27;\to\operatorname{Spec}O&#x27;\) be a separated,
+flat, finitely presented scheme which is at-worst-nodal of
+relative dimension one, equipped with a semilinear \(G\)-action.
+The following are equivalent:
+\begin{enumerate}
+\item \(G\) acts identically on the entire special fibre \(Y&#x27;_k\).
+\item There is a separated, flat, finitely presented nodal
+\(O\)-scheme \(Y\) of relative dimension one and a
+\(G\)-equivariant isomorphism
+\[
+                              Y\times_O O&#x27;\simeq Y&#x27;.
+ \tag{6}
+\]
+\end{enumerate}
+The descent with identification (6) is unique up to a unique
+isomorphism compatible with that identification.
+It is obtained from the invariant coordinate rings of a
+finite invariant affine cover, with the invariant overlap
+rings in (3). If \(Y&#x27;\) is proper over \(O&#x27;\), then \(Y\)
+is proper over \(O\).
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b425648149184122069394bc1ae93928186c6ec977e2cac349f5c0cf01c38fe5">
+\begin{proof}
+Assume condition 1. The generic fibre of \(Y&#x27;\) is a
+separated finite-type \(L\)-scheme of dimension one.
+Lemma~\ref{cand:f5glue:invariantaffines} gives a finite invariant
+affine cover \(Y&#x27;=\bigcup_iU&#x27;_i\). Apply
+Proposition~\ref{cand:f5glue:overlaps} and write
+\(U_i=U_{\{i\}}\), \(U_{ij}=U_{\{i,j\}}\).
+
+Each \(U_{ij}\) embeds openly in both \(U_i\) and \(U_j\).
+Use these embeddings to identify their images. Formula (4)
+identifies, inside \(U_i\), the intersection of the images of
+\(U_{ij}\) and \(U_{ik}\) with \(U_{\{i,j,k\}}\).
+The transition maps on this intersection satisfy the cocycle
+condition: their coordinate maps are the same restrictions
+to \(A_{\{i,j,k\}}\). Thus these are genuine open-gluing data.
+By \stacks{01JB} they glue to a locally ringed space \(Y\).
+Since its open pieces \(U_i\) are affine schemes, \(Y\) is
+a scheme. Their \(O\)-structure maps glue as well.
+
+The isomorphisms (5) agree on every overlap. They therefore
+glue to (6), and it is \(G\)-equivariant because each \(\mu_I\)
+is equivariant. In particular the construction uses the full
+given algebraic scheme and its action.
+
+For completeness, separatedness can be checked directly,
+without an assertion about quotients preserving it.
+On the pair of charts \(U_i,U_j\), consider
+\[
+                         A_i\otimes_O A_j\longrightarrow A_{ij}.
+ \tag{7}
+\]
+After tensoring with \(O&#x27;\), this is the restriction map
+\(A&#x27;_i\otimes_{O&#x27;}A&#x27;_j\to A&#x27;_{ij}\), which is surjective because
+\(Y&#x27;/O&#x27;\) is separated, by \stacks{01KP}.
+Faithful flatness makes (7) surjective. Hence the diagonal
+of \(Y/O\) is a closed immersion on every affine open
+\(U_i\times_O U_j\) of its target, so \(Y/O\) is separated.
+Flatness and the nodal relative-dimension-one property hold
+on the charts by Proposition~\ref{cand:f5glue:overlaps}.
+Each chart is finitely presented over \(O\); the finite cover
+makes \(Y\) quasi-compact, and separatedness makes it
+quasi-separated. Thus \(Y/O\) is finitely presented.
+
+The construction is independent of the invariant affine cover.
+For two such covers, their pairwise intersections give a common
+invariant affine refinement. Proposition~\ref{cand:f5glue:overlaps}
+identifies its invariant rings and open embeddings on both
+sides. The resulting opens cover each descended chart:
+they do so after base change, and that base change is
+surjective. They therefore produce a canonical isomorphism
+between the gluings.
+For any other effective descent \(Z/O\) with a specified
+equivariant identification \(Z_{O&#x27;}\simeq Y&#x27;\), pull back an
+affine cover of \(Z\). These are invariant affine opens of
+\(Y&#x27;\). Their invariant rings recover the original coordinate
+rings of \(Z\): this is the weight-zero recovery in
+\dep{cand:f5tame:charactercriterion} for an effective
+presentation. The same common-refinement argument identifies
+\(Z\) with \(Y\), compatibly with (6). Uniqueness follows
+because equality of maps can be checked after a faithfully
+flat base change, the faithful part of \stacks{02W0}.
+Here only faithfulness is used; a semilinear action has not
+been presumed to be an integral fpqc descent datum.
+
+If \(Y&#x27;\) is proper, (6) and \stacks{02L1} imply that \(Y/O\)
+is proper. Conversely, any effective presentation (6) has
+special fibre \(Y\times_O k\). The action on this scheme is
+the identity because the coefficient action on \(k\) is
+trivial. This proves condition 1.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002683-reader.jpg" alt="Typeset mathematical passage from PDF page 1898" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1898">PDF page 1898 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002610/">NAG-002610</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002681/">NAG-002681</a> · selected whole <small>(earlier unchanged whole in this batch)</small></li><li><a href="/r/NAG-002682/">NAG-002682</a> · selected whole <small>(earlier unchanged whole in this batch)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002681/">cand:f5glue:invariantaffines</a></li><li><a href="/r/NAG-002682/">cand:f5glue:overlaps</a></li><li><a href="/r/NAG-002610/">cand:f5tame:charactercriterion</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

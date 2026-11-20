@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002579/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A compact bump with one moment presentation · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002579 · Accepted whole</p><h1>A compact bump with one moment presentation</h1><p><a href="/projects/foundations/chapters/f7native-interior-stokes-supplement-0/">Chapter 8 supplement: Interior Stokes with coherent coefficients</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=fsevenInteriorDisplay.7">Open in the English reader · PDF page 1789</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1a7015440a61ad666d77eb32810f001d0b77eef37dc1688f0a811e44070974a1">
+\begin{lemma}[A compact bump with one moment presentation]
+\label{f7gg:bump}
+Let \(X\) be good and Hausdorff, let \(V=\mathcal M(A)\)
+be an ordinary affinoid neighborhood of \(x\), and suppose
+\[
+ x\in\Int(V/K),\qquad \ker(x)=\mathfrak p\in\Min(A).
+\]
+Given an ordinary open neighborhood \(O\) of \(x\) in \(X\),
+there exist an affinoid domain \(W\subseteq V\), containing
+an ordinary neighborhood of \(x\) in \(X\), analytic units
+\(g\) on \(W\), and a smooth real function \(\Phi\) on their
+moment space such that the scalar section \(b_W=t_g^*\Phi\)
+has the following properties:
+\[
+\begin{gathered}
+ 0\leq b_W\leq1,\qquad b_W=1\text{ near }x,\\
+ \supp_W(b_W)\subseteq C,\qquad
+ C\text{ compact},\\
+ C\subseteq O\cap\Int_{\rm top}(W,X)\cap\Int(W/K).
+\end{gathered}
+\]
+It extends by zero to a global \(b\in\A_X^{0,0}(X)\).
+The restriction of this extension to all of \(W\) is \(b_W\).
+If a form is represented by one tuple on \(V\), it remains
+represented by that tuple on \(W\).
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="df549e5e7458cbeba5ccc059cc48f3edfefca82089bb86489d8ecdf24670127a">
+\begin{proof}
+Choose \(h\in A\setminus\mathfrak p\) lying in every other
+minimal prime, using the same finite product construction;
+take \(h=1\) if there are no other minimal primes.
+Then \(|h(x)|&gt;0\).
+Choose \(0&lt;\delta&lt;|h(x)|\) and put
+\[
+                 V_0=\{y\in V:|h(y)|\geq\delta\}.
+\]
+This is an actual Laurent domain.
+Every evaluation kernel on \(V_0\) contains \(\mathfrak p\):
+it contains a minimal prime, and the other ones contain \(h\).
+Thus every element of \(\mathfrak p\) has value zero
+\emph{throughout} \(V_0\).
+
+Choose a basic ordinary neighborhood \(G\) of \(x\) in \(V\),
+given by finitely many strict upper bounds and positive
+strict lower bounds on elements of \(A\), with
+\[
+ G\subseteq O\cap\Int_{\rm top}(V,X)\cap\Int(V/K).
+\]
+The evaluation-topology neighborhood basis and openness
+of affinoid interior justify this choice.
+If a function in these conditions vanishes at \(x\), it lies
+in \(\mathfrak p\); its only possible condition is a positive
+upper bound, automatically satisfied on \(V_0\).
+Delete these conditions when working in \(V_0\).
+Every remaining function is nonzero at \(x\).
+
+Adjoin the condition \(|h|&gt;\delta\) and positive lower
+bounds smaller than the values at \(x\) for all remaining
+functions. Adding finite upper bounds larger than their
+values at \(x\), if necessary, gives a list \(g_1,\ldots,g_N\)
+of elements of \(A\), nonzero at \(x\), and real intervals
+\((l_j,u_j)\) with
+\[
+ 0&lt;l_j&lt;|g_j(x)|&lt;u_j&lt;\infty.
+\]
+Their simultaneous strict locus \(G&#x27;\) contains \(x\),
+lies in \(V_0\), and satisfies \(G&#x27;\subseteq G\).
+For each \(j\) choose
+\[
+             l_j&lt;L_j&lt;|g_j(x)|&lt;U_j&lt;u_j.
+\]
+Set
+\[
+           W=\{y\in V:L_j\leq|g_j(y)|\leq U_j
+                              \text{ for every }j\}.
+\]
+The actual rational-domain point and joint-presentation
+theorems make \(W\) an affinoid domain. It is an ordinary
+neighborhood of \(x\) in \(X\), since its inequalities
+are strict at \(x\) and \(x\in\Int_{\rm top}(V,X)\).
+Each \(g_j|_W\) is a unit, with inverse supplied by its
+Laurent presentation. Moreover \(W\subseteq G\).
+
+Choose \(0\leq\Phi_j\leq1\) smooth with compact support in
+\((-\log U_j,-\log L_j)\), equal to \(1\) near
+\(-\log|g_j(x)|\), and put \(\Phi=\prod_j\Phi_j\).
+These real profiles are those constructed in
+\src{v037:forms:smoothcutoff}.
+The compact set
+\[
+                   C=t_g^{-1}(\supp\Phi)\subseteq W
+\]
+contains the support of \(b_W=t_g^*\Phi\).
+Every point of \(C\) satisfies all defining inequalities
+of \(W\) strictly. Thus \(C\subseteq\Int_{\rm top}(W,X)\):
+use the strict locus in \(V\) and \(W\subseteq
+\Int_{\rm top}(V,X)\).
+Also \(C\subseteq\Int(V/K)\).
+The domain-interior theorem and composition give
+\(C\subseteq\Int(W/K)\).
+
+Finally glue \(b_W\) on \(\Int_{\rm top}(W,X)\) to zero on
+\(X\setminus C\). These are an ordinary open cover of \(X\)
+and the sections agree on the overlap.
+The ordinary sheaf theorem gives a global smooth moment
+function \(b\). On \(W\setminus C\) both its restriction
+and \(b_W\) are zero locally, so they agree on all of \(W\).
+Compactness of \(C\) and Hausdorffness of \(X\) are essential
+for this zero-extension argument.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002579-reader.jpg" alt="Typeset mathematical passage from PDF page 1790" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1790">PDF page 1790 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001560/">NAG-001560</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001578/">NAG-001578</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole <small>(selected native applied clause)</small></li><li><a href="/r/NAG-002427/">NAG-002427</a> · selected whole <small>(selected native applied clause)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002427/">v037:forms:smoothcutoff</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

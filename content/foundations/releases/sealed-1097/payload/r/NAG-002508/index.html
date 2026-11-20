@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002508/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Purity after an arbitrary complete extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002508 · Accepted whole</p><h1>Purity after an arbitrary complete extension</h1><p><a href="/projects/foundations/chapters/appendix-c/">C Native scalar extension and finite restriction of constants</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.C.1.3">Open in the English reader · PDF page 1759</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0f34e3b6b619ae1402a10de8e2070826671358d57c029e2bca02d16e3340386b">
+\begin{lemma}[Purity after an arbitrary complete extension]
+\label{f9cand:purity}
+If $\M_K(A)$ is nonempty and pure of analytic dimension $d$, then
+$\M_L(A_L)$ is nonempty and pure of analytic dimension $d$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5e5e1130a90e9f93229049115c7c27925bab293870a485b1e4fa9d3c38d61772">
+\begin{proof}
+\textbf{Strict integral algebras.}
+Suppose first that $A$ is strict and integral. Finite normalization
+[\ref{fnd:strictfinitenormalization}] gives a bounded finite injection
+$R=K\langle T_1,\ldots,T_d\rangle\hookrightarrow A$.
+Its finite-module norm is equivalent to the given affinoid norm, by
+the norm argument in [\ref{fnd:stricttatedimension}, \ref{fnd:strictdimensionbasechange}]: for nontrivial valuation use the
+bounded lifting theorem on a finite-generator surjection, while for
+trivial valuation both strict quotient norms take only the values zero
+and one.
+
+Put $F=\Frac(R)$. The torsion-free finite $R$-module $A$ embeds into
+$R^m$: embed it into the finite-dimensional vector space $A\otimes_R F$,
+choose a basis, and clear the finitely many denominators of the
+coordinates of a finite generating list. By the finite-module theorem
+[\ref{fnd:generalizedfinitemodules}], this embedding is norm-strict onto a closed submodule.
+Strict exactness of completed scalar tensors [\ref{fnd:grusonstrictexact}] preserves
+its injectivity. The module comparisons in [\ref{fnd:generalscalarpresentation}, \ref{fnd:generalscalarfaithful}] therefore
+give an injection
+\[
+                         A_L\hookrightarrow R_L^m .
+\]
+Consequently $A_L$ is torsion free over the domain
+$R_L=L\langle T_1,\ldots,T_d\rangle$ and is finite over it.
+
+Let $\mathfrak q$ be a minimal prime of $A_L$. No nonzero element of
+$R_L$ can lie in $\mathfrak q$. To check this without a reducedness
+assumption, localize at $\mathfrak q$. This is an Artinian local ring;
+an element of its maximal ideal is nilpotent. If a nonzero $r\in R_L$
+lay in $\mathfrak q$, some power of $r$ would annihilate a nonzero element
+after localization. Clearing its denominator would give a nonzero
+element of $A_L$ killed by that power of $r$, contradicting torsion
+freeness. Thus
+\[
+                    R_L\hookrightarrow A_L/\mathfrak q
+\]
+is a finite injection. The dimension theorem for strict normalization
+[\ref{fnd:stricttatedimension}, \ref{fnd:strictdimensionbasechange}] makes every such quotient have dimension $d$.
+
+\textbf{Strict pure algebras.}
+Now let $A$ be strict and pure, allowing nilpotents. For
+$\mathfrak q\in\Min(A_L)$, Lemma~\ref{f9cand:generic-length} makes
+$\mathfrak p=\mathfrak q\cap A$ minimal. The actual quotient identity
+\[
+                    A_L/\mathfrak pA_L=(A/\mathfrak p)_L
+\]
+is part of faithful scalar extension [\ref{fnd:generalscalarpresentation}, \ref{fnd:generalscalarfaithful}].
+The prime $\mathfrak q/\mathfrak pA_L$ is minimal there.
+The strict integral case, applied to $A/\mathfrak p$, gives dimension
+$d$ for $A_L/\mathfrak q$.
+
+\textbf{Arbitrary radii.}
+Choose a finite free-radius strictification $K_s/K$ by [\ref{fnd:simultaneousstrictification}].
+The exact component theorem [\ref{v036:analytic:freecomponents}] makes $A_{K_s}$
+pure of dimension $d$. Choose a common complete extension $E$ of $K_s$
+and $L$ by [\ref{fnd:gausscommonextension}]. The strict case shows that
+$A_E=(A_{K_s})_E$ is pure of dimension $d$.
+
+Set $B=A_L$ and fix $\mathfrak q\in\Min(B)$.
+Faithful flatness makes $(B/\mathfrak q)_E$ nonzero.
+The observation preceding this lemma shows that its minimal components
+are minimal components of $B_E=A_E$, so all have dimension $d$.
+The analytic dimension of a nonempty affinoid is the maximum of the
+dimensions of its minimal components: each analytic point kernel
+contains a minimal prime, passing to that quotient preserves its
+completed residue field, and [\ref{fnd:affinoidabhyankarmaximum}] identifies dimension with
+the maximum of residual dimensions at points.
+Hence $\dim_E\M((B/\mathfrak q)_E)=d$.
+Scalar invariance of analytic dimension [\ref{fnd:analyticdimensionindependence}] now gives
+$\dim_L\M(B/\mathfrak q)=d$. This holds for every minimal prime of $B$.
+Nonvanishing follows from faithful flatness.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="df9524d2c59043f62b4fb90dc54ef213faba4db75097e169e3dc117814c13f4e">
+Throughout, $K$ is complete for its specified real-valued non-Archimedean
+absolute value, and $L/K$ is a complete isometric extension. Trivial
+valuation and arbitrary positive affinoid radii are allowed. Write
+$p:X_L\to X$ for actual completed scalar extension. All moment coordinates
+are $-\log|f_i|$ with the given absolute value.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002508-reader.jpg" alt="Typeset mathematical passage from PDF page 1759" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1759">PDF page 1759 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001480/">NAG-001480</a> · selected whole</li><li><a href="/r/NAG-001480/">NAG-001480</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole</li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001657/">NAG-001657</a> · selected whole</li><li><a href="/r/NAG-001657/">NAG-001657</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001662/">NAG-001662</a> · selected whole</li><li><a href="/r/NAG-001662/">NAG-001662</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001663/">NAG-001663</a> · selected whole</li><li><a href="/r/NAG-001663/">NAG-001663</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole</li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001682/">NAG-001682</a> · selected whole</li><li><a href="/r/NAG-001682/">NAG-001682</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole</li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001686/">NAG-001686</a> · selected whole</li><li><a href="/r/NAG-001686/">NAG-001686</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole</li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002291/">NAG-002291</a> · selected whole</li><li><a href="/r/NAG-002291/">NAG-002291</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002506/">NAG-002506</a> · selected whole</li><li><a href="/r/NAG-002506/">NAG-002506</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-002508:flat_minimal_primes_of_actual_component_quotient · typed target unresolved in this export</li><li>SUPPORT:NAG-002508:flat_minimal_primes_of_actual_component_quotient · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002506/">f9cand:generic-length</a></li><li><a href="/r/NAG-001591/">fnd:affinoidabhyankarmaximum</a></li><li><a href="/r/NAG-001664/">fnd:analyticdimensionindependence</a></li><li><a href="/r/NAG-001663/">fnd:gausscommonextension</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001686/">fnd:generalscalarfaithful</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001682/">fnd:grusonstrictexact</a></li><li><a href="/r/NAG-001662/">fnd:strictdimensionbasechange</a></li><li><a href="/r/NAG-001451/">fnd:strictfinitenormalization</a></li><li><a href="/r/NAG-001657/">fnd:stricttatedimension</a></li><li><a href="/r/NAG-002291/">v036:analytic:freecomponents</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

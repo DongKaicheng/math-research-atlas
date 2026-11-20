@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001593/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Local analytic dimension and the Abhyankar inequality · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001593 · Accepted whole</p><h1>Local analytic dimension and the Abhyankar inequality</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.22.9">Open in the English reader · PDF page 606</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6c9f648e3e9bd038778d91116709a1e985c267150b790e2c501f2538099c6da6">
+\begin{theorem}[\bi{Local analytic dimension and the Abhyankar inequality}
+{局部解析维数与 Abhyankar 不等式}]
+\label{fnd:generalanalyticabhyankar}
+\bi{For any nonempty analytic space $X$, the supremum of the
+dimensions of its affinoid charts is independent of the chosen
+analytic atlas and equals}
+{对任意非空解析空间 $X$，其 affinoid 图的维数的上确界与解析
+图册的选择无关，且等于}
+\[
+                         \dim_KX=\sup_{x\in X}d_K(x).
+\]
+\bi{It agrees with the affinoid dimension already defined.
+An analytic domain has dimension at most that of its ambient
+space. If $\dim_xX$ is the infimum of the dimensions of the
+analytic neighborhoods of $x$, then}
+{它与此前定义的 affinoid 维数相同。解析域的维数不超过
+环境空间的维数。若 $\dim_xX$ 是 $x$ 的解析邻域维数的
+下确界，则}
+\[
+                         d_K(x)\le\dim_xX.
+\]
+\bi{These conclusions require neither goodness nor Hausdorffness.
+At a good point the infimum can be taken over affinoid
+neighborhoods. At every point $\dim_xX$ is finite.}
+{这些结论不要求 good 或 Hausdorff。
+在 good 点处，可仅对 affinoid 邻域取下确界。
+每一点处的 $\dim_xX$ 均有限。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="56707ec2198435f3b6dffe90f0ef6d8e4c8a09ea86ed0d97a81ea1813b8653b3">
+\begin{proof}
+\bi{The completed residue field attached to a point is independent
+of its affinoid chart: on a common refinement this is
+Corollary~\ref{fnd:domainresiduefields}, and the analytic-net
+construction identifies the maps on successive refinements.
+Thus $d_K(x)$ is an intrinsic point invariant. For any analytic
+atlas $(X_i)$, Theorem~\ref{fnd:affinoidabhyankarmaximum} gives}
+{一点所附的完备剩余域与其 affinoid 图无关：在共同加细上，
+这是 Corollary~\ref{fnd:domainresiduefields}；
+解析 net 的构造识别连续加细中的这些映射。
+因此 $d_K(x)$ 是点的内禀不变量。
+对任意解析图册 $(X_i)$，由
+Theorem~\ref{fnd:affinoidabhyankarmaximum}，有}
+\[
+ \sup_i\dim_KX_i
+       =\sup_i\sup_{x\in X_i}d_K(x)
+       =\sup_{x\in X}d_K(x).
+\]
+\bi{This proves atlas independence rather than assuming it in
+the definition. It also agrees with the old dimension on an
+affinoid chart, by the same theorem. For an analytic domain
+$U\subset X$, the residue-field invariance is checked on
+affinoid refinements of its domain atlas; it gives
+$\dim_KU=\sup_{x\in U}d_K(x)\le\dim_KX$.}
+{这直接证明图册独立性，而不是将其假定为定义的一部分。
+由同一定理，它也与 affinoid 图上原有的维数相同。
+对解析域 $U\subset X$，在其域图册的 affinoid 加细上核验
+剩余域不变，便得到
+$\dim_KU=\sup_{x\in U}d_K(x)\le\dim_KX$。}
+
+\bi{Every analytic neighborhood $U$ of $x$ contains that point,
+so $d_K(x)\le\dim_KU$. Taking their infimum proves the desired
+inequality. If $x$ is good, affinoid neighborhoods are cofinal
+among analytic neighborhoods: take one inside the ordinary
+open neighborhood contained in a given analytic neighborhood.
+Finally the net axiom gives finitely many affinoid charts $X_i$
+containing $x$ whose union contains an ordinary open
+neighborhood $W$ of $x$. Give $W$ its open analytic structure.
+For every $w\in W$ one of these charts contains $w$, so the
+already proved formula gives}
+{每个解析邻域 $U$ 都含有 $x$，所以 $d_K(x)\le\dim_KU$；
+取下确界即得所需不等式。
+若 $x$ 为 good，则 affinoid 邻域在解析邻域中余终：
+在给定解析邻域所含的普通开邻域中选取一个即可。
+最后，net 公理给出有限多个含 $x$ 的 affinoid 图 $X_i$，
+使其并包含 $x$ 的普通开邻域 $W$。给 $W$ 配备开解析子空间
+结构。每个 $w\in W$ 均属于某个这样的图，故已证公式给出}
+\[
+          \dim_KW=\sup_{w\in W}d_K(w)\le\max_i\dim_KX_i&lt;\infty.
+\]
+\bi{Thus $W$ is an analytic neighborhood of finite dimension.
+This proves finiteness of $\dim_xX$ without a good-space assumption.}
+{因此 $W$ 是一个有限维的解析邻域。这证明 $\dim_xX$ 有限，
+而不要求空间 good。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001593-reader.jpg" alt="Typeset mathematical passage from PDF page 607" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=607">PDF page 607</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole</li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole</li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole</li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole</li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001591/">fnd:affinoidabhyankarmaximum</a></li><li><a href="/r/NAG-001697/">fnd:domainresiduefields</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

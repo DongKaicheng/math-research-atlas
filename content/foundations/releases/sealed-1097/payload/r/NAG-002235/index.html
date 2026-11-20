@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002235/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Protection by elliptic tails · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002235 · Accepted whole</p><h1>Protection by elliptic tails</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.42.2">Open in the English reader · PDF page 756</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="df73435be3473843920b3d0b90d82f2409ac927b17b72faf2aa6ef5604bcd084">
+\begin{lemma}[Protection by elliptic tails]
+\label{v035:f5:elliptictails}
+Let $\mathcal C$ be a split nodal algebraic model with vertex set
+$W$, and let $V\subset W$ be a semistable vertex set of $X$.
+There is a proper flat finitely presented prestable family
+$\mathcal Y_0/O$ obtained by attaching three smooth elliptic tails
+at distinct smooth points on every component indexed by $V$.
+Its genus is $g(C)+3|V|$, its generic fibre is stable, and its
+stabilization $c:\mathcal Y_0\to\mathcal Y$ contracts precisely
+the original special components indexed by $W\setminus V$.
+The stable family $\mathcal Y$ is projective over $O$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4bffcadeeac04ad68126f4ec5c120bd0c018214c30fd21f4c5fd4d81b4600292">
+\begin{proof}
+First choose a smooth projective elliptic $O$-curve $\mathcal E$
+with a smooth section. If $\operatorname{char}k\ne2$, take the
+projective completion of
+\[
+                 y^2=x(x-1)(x-\lambda),
+          \qquad \overline\lambda\notin\{0,1\}.
+\]
+Its fibres are smooth by the distinct roots and the unit $2$.
+If $\operatorname{char}k=2$, take $y^2+y=x^3$. The special fibre
+has $y$-derivative one. In mixed characteristic a singular affine
+point would have $x=0$ and $y=-1/2$, which does not satisfy the
+equation; in equal characteristic the derivative is again one.
+The point at infinity is smooth in both equations.
+Lemma~\ref{cand:integralplanecubicfamily} supplies flatness,
+finite presentation, and projectivity. Each fibre is a smooth plane
+cubic, so its global functions are the constants and its genus is one by
+\cite[Tag 0BYD]{StacksAlg}. Use the infinity section.
+
+Choose three distinct smooth $k$-points on each special component
+indexed by $V$, outside its nodes. Such points exist because a
+nonempty smooth open of a curve over the algebraically closed field
+$k$ has infinitely many closed points: its closed points are dense
+and rational by \cite[Tag 00FV]{StacksAlg}, and finitely many closed
+points cannot be dense in a curve. By
+Corollary~\ref{cand:smoothpointpolydisctube}, each chosen tube contains
+a $K$-point. The valuative criterion
+\cite[Tag 0A40]{StacksAlg} extends this point uniquely to an $O$-section;
+its specialization is the chosen point. These sections are disjoint
+and lie in the relative smooth locus: an intersection, or a closed
+complement of the smooth locus meeting a section, would also meet
+its special point. Attach a separate copy of $\mathcal E$ at each
+section by Lemma~\ref{v035:f5:pinch}.
+
+Both geometric fibres of $\mathcal C$ are connected of genus $g(C)$
+by Lemma~\ref{v035:f5:connectedgenus}. On either fibre, over its
+algebraically closed ground field $F$, one elliptic attachment gives
+\[
+ 0\longrightarrow\mathcal O_{A\cup E}
+ \longrightarrow\mathcal O_A\oplus\mathcal O_E
+ \longrightarrow\mathcal O_p\longrightarrow0.
+\]
+The final map on global sections is the surjective difference
+$F\oplus F\to F$. Its cohomology sequence gives
+$H^0(A\cup E,\mathcal O)=F$ and
+$H^1(A\cup E,\mathcal O)=H^1(A,\mathcal O)\oplus H^1(E,\mathcal O)$.
+Thus the fibres remain connected and their genus is $g(C)+3|V|$.
+The set $V$ is nonempty: otherwise connected compact $X$ would itself
+be an open ball or annulus. Hence this genus is at least three.
+The connected nodal-fibre criterion
+\cite[Tags 0E6L, 0E6T]{StacksAlg} makes $\mathcal Y_0$ prestable.
+
+Apply stabilization \cite[Tag 0E8A]{StacksAlg}. Its fibre maps
+contract rational tails and then rational bridges as described in
+\cite[Tag 0E7Q]{StacksAlg}. In a component $U$ of $X\setminus V$
+containing an unwanted vertex, Lemma~\ref{v035:f5:finiteforest}
+gives a finite tree of smooth rational components with one or two
+labelled boundary ends. In a one-ended tree, successively remove
+leaves away from the boundary end. These are rational tails and
+remove the whole tree. In a two-ended tree, first remove all leaves
+away from the unique path joining its ends; then contract the
+remaining rational bridges. The two boundary ends remain distinct
+branch labels if they attach to the same component in $V$, and
+contracting the path creates a self-node on that component.
+Every unwanted vertex is thereby removed. At each stage every
+$V$-component retains its three auxiliary elliptic attachments, and
+every elliptic component retains its one attachment. The remaining
+components are stable. The uniqueness of stabilization proves that
+exactly these components survive.
+
+In the generic fibre the original smooth curve has at least three
+attachments and each elliptic tail has one, so this fibre is already
+stable. Its stabilization is therefore its identity. Finally
+\cite[Tag 0E74]{StacksAlg} makes the relative dualizing line bundle
+of $\mathcal Y$ ample over a neighborhood of the closed point of
+$\operatorname{Spec}O$, hence over the whole base. By
+\cite[Tags 0D32, 0B5N]{StacksAlg}, $\mathcal Y$ is a projective
+scheme over this local base.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="3b0d2edc8084334e67aeee38d60263eb061cbbff6f90d901766d7e763fe81fd7">
+For the rest of this section and the next, assume that $K$ is
+algebraically closed. Let $C/K$ be a smooth connected projective curve
+and put $X=C^{\an}$. A split nodal algebraic model means a projective,
+flat, finitely presented $O$-model of $C$ with reduced nodal special
+fibre and the split pointed algebraic charts of
+Theorem~\ref{cand:pointednodalvaluationchart}. The smoothing parameters
+at its nodes are nonzero. Theorems~\ref{cand:projectiveformalcompletion}
+and~\ref{cand:splitmodelskeleton} identify its completed generic fibre
+with $X$ and supply its embedded finite graph and retraction.
+The space $X$ is compact Hausdorff by
+Proposition~\ref{fnd:analytificationprojectivecompact}.</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="41801daa50b4e463e5ed1f4361679fcf0b3fe72b50ed0a8812ef930be95283c6">
+\cite[Tags 0E6L, 0E6T]{StacksAlg}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002235-reader.jpg" alt="Typeset mathematical passage from PDF page 756" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=756">PDF page 756 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002040/">NAG-002040</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002168/">NAG-002168</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002231/">NAG-002231</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002232/">NAG-002232</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002234/">NAG-002234</a> · selected whole <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002168/">cand:integralplanecubicfamily</a></li><li><a href="/r/NAG-002051/">cand:pointednodalvaluationchart</a></li><li><a href="/r/NAG-002038/">cand:projectiveformalcompletion</a></li><li><a href="/r/NAG-002040/">cand:smoothpointpolydisctube</a></li><li><a href="/r/NAG-002064/">cand:splitmodelskeleton</a></li><li><a href="/r/NAG-001714/">fnd:analytificationprojectivecompact</a></li><li><a href="/r/NAG-002231/">v035:f5:connectedgenus</a></li><li><a href="/r/NAG-002232/">v035:f5:finiteforest</a></li><li><a href="/r/NAG-002234/">v035:f5:pinch</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

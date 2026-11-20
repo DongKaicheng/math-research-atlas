@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002222/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Formal smooth and nodal tube closures · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002222 · Accepted whole</p><h1>Formal smooth and nodal tube closures</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.39.3">Open in the English reader · PDF page 746</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="859a27b46d5e3136c8c128d29e3dd06571100d4586e0700f234b5b3d09c8ad38">
+\begin{proposition}[Formal smooth and nodal tube closures]
+\label{v035:formal:tubeends}
+Let $\mathfrak X_s$ be reduced and pure one-dimensional, and
+suppose $X=\mathfrak X_\eta$ is Hausdorff. Let
+$q\in\mathfrak X_s(k)$ admit a pointed diagram
+\[
+ (\mathfrak X,q)\ \longleftarrow\ (\mathfrak U,u)
+                   \ \longrightarrow\ (\mathfrak S,o)
+\]
+of adic, topologically finitely presented, formally \&#x27;etale
+maps, with $\mathfrak U$ affine and $u$ rational over $k$.
+Assume $\mathfrak S$ is either
+\[
+ \begin{aligned}
+ &amp;\operatorname{Spf}O\langle T\rangle,
+       &amp;&amp;o=(\overline T),\\
+ \text{or}\quad
+ &amp;\operatorname{Spf}O\langle S,T\rangle/(ST-a),
+       &amp;&amp;o=(\overline S,\overline T),\quad 0&lt;|a|&lt;1.
+ \end{aligned}
+\]
+In the smooth case $]q[$ is an open unit disc. Its closure
+is the disc together with the component point above the
+unique residual component through $q$, and is its one-point
+compactification. In the nodal case $]q[$ is the annulus
+$|a|&lt;|S|&lt;1$. Its two radial ends attach to the component
+points of the corresponding two branches through $q$.
+Its closure is obtained by adjoining these ends; the two
+component points may coincide. Every neighbourhood of an
+attached endpoint in this closure contains the full
+corresponding radial tail.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6f59de352f7d5e1feb37d670a15f9aeb741e5bbb6430d71d4bbc1c9f4a713b8e">
+\begin{proof}
+Reduction of the displayed Jacobian presentations modulo
+$\mathfrak m$ gives ordinary \&#x27;etale maps on special fibres.
+Proposition~\ref{v035:formal:etaletubes}, applied to both
+arrows, identifies their entire selected tubes. On the
+standard chart, Proposition~\ref{fnd:formalstratumtubes}
+computes them as $|T|&lt;1$ and $|a|&lt;|S|&lt;1$, respectively.
+
+First work in the compact Hausdorff generic fibre of
+$\mathfrak U$. Its special fibre is smooth or nodal near
+$u$. Shrinking about $u$ preserves the tube and permits us
+to assume it is reduced and pure one-dimensional. In the
+smooth case exactly one component passes through $u$:
+the completion of the local special-fibre ring is $k[[T]]$
+by \cite[Tag 0AGX]{StacksAlg}, and the ring injects into
+this domain by \cite[Tag 00MC]{StacksAlg}. In the nodal case
+Lemma~\ref{cand:pointednodalbranches} gives exactly two
+components through $u$, corresponding to $T=0$ and $S=0$.
+Lemma~\ref{v035:formal:tubeboundary} restricts the boundary
+to their component points.
+
+The open unit disc is not compact, since $|T|$ has
+supremum one and never takes that value. Thus its compact
+closure must add the unique possible boundary point.
+A compact Hausdorff space obtained from an open locally
+compact space by adding one point is its one-point
+compactification. Its endpoint neighbourhoods contain
+the complements of the closed discs $|T|\le r$, $r&lt;1$:
+every compact subset of the open disc has $\max|T|&lt;1$.
+
+For the nodal chart, write $v_T$ for the component point
+of the branch $T=0$, and $v_S$ for that of $S=0$.
+Their reductions give
+\[
+ |S(v_T)|=1,\qquad |T(v_S)|=1,\qquad |S(v_S)|=|a|.
+\]
+A net of points of the tube with $|S|\to1$ has a cluster
+point in its compact closure. Continuity of $|S|$ and the
+boundary inclusion force every cluster point to be $v_T$.
+It therefore converges to $v_T$. The same argument treats
+$|S|\to|a|$ and $v_S$. Applying this to Gauss points proves
+that both endpoints occur. If an open neighbourhood of
+$v_T$ contained no full outer tail, its compact complement
+would contain a net with $|S|\to1$, a contradiction. The
+inner tail is treated in the same way. Equivalently, the
+complement has maximum $|S|&lt;1$ or minimum $|S|&gt;|a|$.
+
+An \&#x27;etale map of special-fibre curves sends component
+generic points to component generic points, by the
+going-down argument in
+Lemma~\ref{cand:pointednodalbranches}. All components
+through $q$ occur this way: the local map at $u$ over $q$
+is faithfully flat, and going down, \cite[Tag 00HS]{StacksAlg},
+lifts each minimal prime below the prime of $u$. Functoriality of
+specialization and uniqueness of component points identify
+the analytic images of the endpoints. The image of the
+compact tube closure in Hausdorff $X$ is closed and contains
+$]q[$. Conversely every point in that image is in
+$\overline{]q[}$, by continuity and density of the tube in
+its closure. The map is an isomorphism on the open tube,
+and an endpoint cannot map into it because its
+specialization is generic. Thus the only possible
+identification is between the two nodal endpoints.
+The endpoint-tail assertions descend through this
+compact-to-Hausdorff quotient.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="fb4eb84bb112ba1c9c1a96615d06040d0636cbaf67f51d95166e3229f96e86d2">
+Let $K$ be complete and nontrivially valued, with its given absolute
+value. Write $O=K^\circ$, $\mathfrak m=K^{\circ\circ}$ and
+$k=O/\mathfrak m$, and choose $\pi\in O$ with $0&lt;|\pi|&lt;1$.
+All formal schemes in this section are admissible and topologically
+finitely presented over $O$. They carry the $\pi$-adic topology.
+For a special-fibre point $q$, write $]q[$ for its entire inverse
+image under specialization.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002222-reader.jpg" alt="Typeset mathematical passage from PDF page 746" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=746">PDF page 746 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002055/">NAG-002055</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002220/">NAG-002220</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-002221/">NAG-002221</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-00HS · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00MC · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0AGX · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>SUPPORT:NAG-001798:affine_closed_point_absolute_value_conditions · typed target unresolved in this export <small>(sealed native zero-credit support for exact scope)</small></li><li>SUPPORT:NAG-001800:fixed_nodal_annulus_algebra · typed target unresolved in this export <small>(sealed native zero-credit support for exact scope)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(sealed native zero-credit support for exact scope)</small></li><li>SUPPORT:NAG-002016:rank_one_actual_annulus_chart · typed target unresolved in this export <small>(sealed native zero-credit support for exact scope)</small></li><li>APP-STACKS-00HS@NAG-002222:7928 · named external application</li><li>APP-STACKS-00HS@NAG-002222:7928 · named external application <small>(requires)</small></li><li>APP-STACKS-00MC@NAG-002222:6173 · named external application</li><li>APP-STACKS-00MC@NAG-002222:6173 · named external application <small>(requires)</small></li><li>APP-STACKS-0AGX@NAG-002222:6119 · named external application</li><li>APP-STACKS-0AGX@NAG-002222:6119 · named external application <small>(requires)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole</li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002055/">NAG-002055</a> · selected whole</li><li><a href="/r/NAG-002055/">NAG-002055</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002220/">NAG-002220</a> · selected whole</li><li><a href="/r/NAG-002220/">NAG-002220</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002221/">NAG-002221</a> · selected whole</li><li><a href="/r/NAG-002221/">NAG-002221</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-001798:affine_closed_point_absolute_value_conditions · typed target unresolved in this export</li><li>SUPPORT:NAG-001798:affine_closed_point_absolute_value_conditions · typed target unresolved in this export <small>(requires)</small></li><li>SUPPORT:NAG-001800:fixed_nodal_annulus_algebra · typed target unresolved in this export</li><li>SUPPORT:NAG-001800:fixed_nodal_annulus_algebra · typed target unresolved in this export <small>(requires)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export</li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(requires)</small></li><li>SUPPORT:NAG-002016:rank_one_actual_annulus_chart · typed target unresolved in this export</li><li>SUPPORT:NAG-002016:rank_one_actual_annulus_chart · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00HS">APP-STACKS-00HS@NAG-002222:7928</a></li><li><a href="https://stacks.math.columbia.edu/tag/00MC">APP-STACKS-00MC@NAG-002222:6173</a></li><li><a href="https://stacks.math.columbia.edu/tag/0AGX">APP-STACKS-0AGX@NAG-002222:6119</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002055/">cand:pointednodalbranches</a></li><li><a href="/r/NAG-001798/">fnd:formalstratumtubes</a></li><li><a href="/r/NAG-002220/">v035:formal:etaletubes</a></li><li><a href="/r/NAG-002221/">v035:formal:tubeboundary</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

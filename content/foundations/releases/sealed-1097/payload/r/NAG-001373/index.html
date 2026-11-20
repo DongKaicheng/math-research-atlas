@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001373/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Quantitative Laurent criterion · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001373 · Accepted whole</p><h1>Quantitative Laurent criterion</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.12.1">Open in the English reader · PDF page 143</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1bdd533b74c7d20da25563d56ff65054ce88a7a83a76be41b48213fa6dfaff98">
+\begin{theorem}[\bi{Quantitative Laurent criterion}{Quantitative Laurent criterion}]\label{fnd:banachlaurentcriterion}
+\bi{Suppose that there is a real number $c&gt;0$ such that}
+{假设存在实数 $c&gt;0$，使}
+\[
+ \|Lw\|\geq c\|w\|\qquad(w\in E).
+\]
+\bi{Endow $P_+=E_+/Q_+E_+$, $P_-=E_-/Q_-E_-$ and $P_0=E/LE$ with their quotient norms. They are Banach $A$-modules, and the sequence}
+{给 $P_+=E_+/Q_+E_+$、$P_-=E_-/Q_-E_-$ 和 $P_0=E/LE$ 配备 quotient norms。它们为 Banach $A$-modules，且 sequence}
+\[
+ \begin{gathered}
+ 0\longrightarrow M\xrightarrow{\ \iota\ }P_+\oplus P_-
+ \xrightarrow{\ \delta\ }P_0\longrightarrow0,\\
+ \iota(m)=([m],[m]),\quad
+ \delta([u],[v])=[u-v].
+ \end{gathered}
+\]
+\bi{is strict exact. The direct sum has its maximum norm. More precisely, with}
+{为 strict exact，其中 direct sum 使用 maximum norm。更精确地，令}
+\[
+ C=\max\left(1,\frac{\max(r,\|f\|)}{cr}\right),
+\]
+\bi{one has $C^{-1}\|m\|\leq\|\iota(m)\|\leq\|m\|$. The induced map $(P_+\oplus P_-)/\iota(M)\to P_0$ is isometric for the quotient norms.}
+{则有 $C^{-1}\|m\|\leq\|\iota(m)\|\leq\|m\|$。Induced map $(P_+\oplus P_-)/\iota(M)\to P_0$ 对 quotient norms 为 isometric。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="269ee03234ac2ada4c850725492b0872e2451a54d3eea2e9c6a0d2fd252ddcc0">
+\begin{proof}
+\bi{\emph{Step 1: the coefficient identity.} Define}
+{\emph{Step 1：coefficient identity。} 定义}
+\[
+ d_0(u,v)=u-v,\qquad d_1(a,b)=Ta-b,
+ \qquad E_+\oplus E_-\longrightarrow E.
+\]
+\bi{The kernel of $d_0$ consists of diagonal constants, since $E_+\cap E_-=M$. Splitting into nonnegative and strictly negative powers gives a right inverse for $d_0$ of norm at most one. The supports of $Ta$ and $b$ in $d_1(a,b)$ are disjoint: the former has exponents at least one, the latter exponents at most zero. Thus $d_1$ is bijective and}
+{$d_0$ 的 kernel 由 diagonal constants 组成，因为 $E_+\cap E_-=M$。分成 nonnegative powers 和 strictly negative powers，得到 $d_0$ 的一个 norm 不超过一的 right inverse。$d_1(a,b)$ 中 $Ta$ 与 $b$ 的 supports 不相交：前者的 exponents 至少为一，后者至多为零。因此 $d_1$ 为 bijective，且}
+\[
+ \|d_1(a,b)\|=\max(r\|a\|,\|b\|),
+ \qquad d_0(Q_+a,Q_-b)=Ld_1(a,b).
+\]
+\bi{Taking $b=0$ or $a=0$ gives $\|Q_+a\|\geq cr\|a\|$ and $\|Q_-b\|\geq c\|b\|$. Each of $Q_+,Q_-,L$ therefore has closed image: convergence of the images makes the original sequence Cauchy by its lower bound, and continuity identifies its limit. Lemma~\ref{fnd:completequotient} now proves completeness and definiteness of the three quotient norms. The identity also makes $\delta$ well defined.}
+{分别取 $b=0$ 和 $a=0$，得到 $\|Q_+a\|\geq cr\|a\|$ 和 $\|Q_-b\|\geq c\|b\|$。因此 $Q_+,Q_-,L$ 都具有 closed image：image sequence 收敛时，相应 lower bound 使原 sequence 为 Cauchy，再由 continuity 识别其 limit。由 Lemma~\ref{fnd:completequotient}，三个 quotient norms 均 definite 且 complete。上述 identity 也保证 $\delta$ well defined。}
+
+\bi{\emph{Step 2: exactness.} Surjectivity of $\delta$ follows from the coefficient splitting for $d_0$. Suppose $\delta([u],[v])=0$, so that $u-v=Lw$ for some $w\in E$. Write $w=Ta-b$ uniquely. Then}
+{\emph{Step 2：exactness。} $d_0$ 的 coefficient splitting 给出 $\delta$ 的 surjectivity。若 $\delta([u],[v])=0$，则存在 $w\in E$ 使 $u-v=Lw$。将 $w$ 唯一写成 $Ta-b$，得到}
+\[
+ u-Q_+a=v-Q_-b.
+\]
+\bi{The left side belongs to $E_+$ and the right side to $E_-$; hence they equal a constant $m\in M$. This proves exactness in the middle. If $\iota(m)=0$, write $m=Q_+a=Q_-b$. Then $L(Ta-b)=0$. The lower bound on $L$ gives $Ta=b$, and their disjoint supports force $a=b=0$, so $m=0$.}
+{左边属于 $E_+$，右边属于 $E_-$，故两边等于同一个 constant $m\in M$，从而证明中间的 exactness。若 $\iota(m)=0$，可写 $m=Q_+a=Q_-b$。于是 $L(Ta-b)=0$；由 $L$ 的 lower bound 得 $Ta=b$。两者 supports 不相交，故 $a=b=0$，从而 $m=0$。}
+
+\bi{\emph{Step 3: the augmentation estimate.} Representatives of the two classes of a constant $m$ have the form $u=m+Q_+a$ and $v=m+Q_-b$. Step~1 gives}
+{\emph{Step 3：augmentation estimate。} Constant $m$ 的两个 classes 的 representatives 可写成 $u=m+Q_+a$ 和 $v=m+Q_-b$。由 Step~1，}
+\[
+ \max(r\|a\|,\|b\|)
+ \leq c^{-1}\|u-v\|
+ \leq c^{-1}\max(\|u\|,\|v\|).
+\]
+\bi{Since $\|Q_+a\|\leq\max(r,\|f\|)\|a\|$, the identity $m=u-Q_+a$ gives $\|m\|\leq C\max(\|u\|,\|v\|)$. Taking infima over both representatives proves the lower bound for $\iota$; using the constant representatives proves its upper bound. Thus $\iota$ is strict. Its image is also the kernel of the continuous map $\delta$ and is closed.}
+{又有 $\|Q_+a\|\leq\max(r,\|f\|)\|a\|$，所以恒等式 $m=u-Q_+a$ 给出 $\|m\|\leq C\max(\|u\|,\|v\|)$。对两边的 representatives 分别取 infima，即得 $\iota$ 的 lower bound；取 constant representatives 得到 upper bound。因此 $\iota$ 为 strict。它的 image 同时是 continuous map $\delta$ 的 kernel，因而 closed。}
+
+\bi{\emph{Step 4: the final quotient norm.} The difference map is contractive. Conversely, each representative $z\in E$ of a class in $P_0$ has a splitting $z=u-v$ with $\max(\|u\|,\|v\|)\leq\|z\|$. The class $([u],[v])$ is a lift with no larger norm. Taking infima over representatives $z$ proves that the quotient norm induced from $P_+\oplus P_-$ is at most the norm of the given class in $P_0$. Contractivity gives the reverse inequality. The induced map is therefore isometric, which proves strictness of $\delta$.}
+{\emph{Step 4：最后的 quotient norm。} Difference map 为 contractive。反之，$P_0$ 中一个 class 的每个 representative $z\in E$ 都可分解为 $z=u-v$，且 $\max(\|u\|,\|v\|)\leq\|z\|$。Class $([u],[v])$ 是一个 norm 不增大的 lift。对 representatives $z$ 取 infimum，得到由 $P_+\oplus P_-$ 诱导的 quotient norm 不超过该 class 在 $P_0$ 中的 norm。反向 inequality 来自 contractivity。因此 induced map 为 isometric，证明了 $\delta$ 的 strictness。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="68c51bcaaaf5bc3ebad69a3a1552809f828ea82b5ab83c58076aa0a8be840efb">
+\bi{Let $A$ be a Banach $K$-algebra and let $M$ be a Banach $A$-module with $\|am\|\leq\|a\|\|m\|$, as in Section~\ref{fnd:wp02division}. Fix $f\in A$ and $r&gt;0$. Define}
+{设 $A$ 为 Banach $K$-algebra，$M$ 为满足 $\|am\|\leq\|a\|\|m\|$ 的 Banach $A$-module，如 Section~\ref{fnd:wp02division}。固定 $f\in A$ 和 $r&gt;0$。定义}
+\[
+\begin{split}
+ E_+&amp;=\left\{\sum_{n\geq0}m_nT^n:\|m_n\|r^n\longrightarrow0\right\},\\
+ E_-&amp;=\left\{\sum_{n\leq0}m_nT^n:\|m_n\|r^n\longrightarrow0\text{ as }n\to-\infty\right\},\\
+ E&amp;=\left\{\sum_{n\in\mathbb Z}m_nT^n:\|m_n\|r^n\longrightarrow0\text{ as }|n|\to\infty\right\}.
+\end{split}
+\]
+\bi{Each has norm $\max_n\|m_n\|r^n$. The coefficientwise argument of Lemma~\ref{fnd:banachseriesmodule}, with the indicated index sets, proves their completeness. We regard $E_+,E_-$ as closed submodules of $E$. Multiplication by $T$ is the shift of coefficients and rescales the norm by $r$. The following operators preserve their indicated modules:}
+{每个 module 都使用 norm $\max_n\|m_n\|r^n$。在相应 index sets 上应用 Lemma~\ref{fnd:banachseriesmodule} 的逐 coefficient 论证，即得 completeness。将 $E_+,E_-$ 视为 $E$ 的 closed submodules。乘以 $T$ 是 coefficient shift，恰好将 norm 乘以 $r$。以下 operators 保持各自指定的 modules：}
+\[
+ \begin{gathered}
+ Q_+=T-f:E_+\longrightarrow E_+,\qquad Q_-=1-fT^{-1}:E_-\longrightarrow E_-,
+ \\
+ L=1-fT^{-1}:E\longrightarrow E.
+ \end{gathered}
+\]
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001373-reader.jpg" alt="Typeset mathematical passage from PDF page 144" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=144">PDF page 144 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole</li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(required native context)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole</li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(applied native theorem)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001376/">fnd:banachseriesmodule</a></li><li><a href="/r/NAG-001380/">fnd:completequotient</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

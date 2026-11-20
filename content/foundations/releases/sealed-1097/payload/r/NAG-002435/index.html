@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002435/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A separating rational Gauss germ · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002435 · Accepted whole</p><h1>A separating rational Gauss germ</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.54.4">Open in the English reader · PDF page 813</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d090e86676a65df4bc33588ed352be65764e2d2107f916d1e7ff8095a3823de6">
+\begin{lemma}[A separating rational Gauss germ]
+\label{v038:f5:separatinggaussgerm}
+Let $K$ be as above, put $k=\widetilde K$, and let $C/K$ be a
+smooth projective geometrically connected curve. Suppose
+$v\in C^{\an}$ has residue field $l=\widetilde{\mathcal H(v)}$
+separably generated of transcendence degree one over $k$.
+For every separating transcendental element $\bar t\in l$
+there is a rational function $t\in K(C)$, defined at $v$, such
+that $|t(v)|=1$, its residue is $\bar t$, and the induced map
+to the analytic affine line is \textup{\&#x27;etale} on an ordinary
+neighbourhood of $v$. Moreover $K(C)/K(t)$ is finite separable,
+$v$ maps to the unit Gauss point, and
+\[
+               H_t\longrightarrow \mathcal H(v)
+\]
+is finite, where $H_t$ is the unit Gauss completion of $K(t)$.
+In particular $l/k(\bar t)$ is finite separable.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c349e21fb713e84c50b4d42cd3e95d59be9ae6d9ef1d6a5ecb2c8e1cc64bc869">
+\begin{proof}
+The scheme image of $v$ is the generic point. Otherwise it is a
+closed point on the curve, with residue field finite over $K$ by
+\cite[Tag 00FV]{StacksAlg}. Proposition~\ref{fnd:analytificationvaluedfibres}
+and Lemma~\ref{fnd:finiteextensionnorms} then make
+$\mathcal H(v)/K$ finite. Its residue extension is algebraic by
+Lemma~\ref{fnd:valuedfielddimensioncalculus}, a contradiction.
+The same analytification proposition identifies $K(C)$ with a
+dense valued subfield of $L=\mathcal H(v)$.
+
+Choose $t_0\in K(C)$ of norm one with residue $\bar t$.
+By \cite[Tag 054L]{StacksAlg}, a smooth affine chart at the
+generic point has a rational \textup{\&#x27;etale} coordinate $s$.
+Its invertible Jacobian subsystem expresses all differentials
+in terms of $ds$, and gives $\Omega_{K(C)/K}=K(C)\,ds$.
+Fix $0\ne\pi\in K^{\circ\circ}$. For sufficiently large $N$,
+\[
+                            t=t_0+\pi^Ns
+\]
+still has residue $\bar t$. We can also require $dt\ne0$:
+at most one of the distinct scalars $\pi^N$ can make
+$dt_0+\pi^Nds$ vanish.
+
+The residue transcendence shows that $t$ is transcendental over
+$K$. The finitely generated field $F=K(C)$ is algebraic over
+$K(t)$ and hence finite over it. The universal property of
+derivations gives
+$\Omega_{F/K(t)}=\Omega_{F/K}/Fdt=0$.
+On an affine open where $t$ is regular, the associated map to
+the affine line is of finite presentation: present its algebra
+as a quotient of a polynomial algebra over $K[T]$ and apply
+the Noetherian assertion \cite[Tag 00FO]{StacksAlg} to its kernel.
+The generic local map is a field extension, flat by the ideal
+criterion \cite[Tag 00HD]{StacksAlg}. By parts (4), (1) and (6)
+of \cite[Tag 02GU]{StacksAlg}, the map is \textup{\&#x27;etale} at
+the generic point and $F/K(t)$ is finite separable.
+Its \textup{\&#x27;etale} locus is an algebraic open containing the
+scheme image of $v$. Proposition~\ref{fnd:analytificationzariskiopens}
+and Theorem~\ref{fnd:analytificationetalepreservation} give the
+asserted ordinary analytic neighbourhood.
+
+For a nonzero polynomial $Q\in K[T]$, divide by a coefficient
+of largest absolute value and reduce at $v$. The nonzero reduced
+polynomial cannot vanish at the transcendental $\bar t$, so
+\[
+                         |Q(t)|=\max_i|Q_i|.
+\]
+This is the unit Gauss norm. Completion embeds $H_t$ isometrically
+in $L$. The image of $F\otimes_{K(t)}H_t\to L$ is a finite-dimensional
+$H_t$-subalgebra of a field. It is a field: multiplication by any
+nonzero element is an injective, hence surjective, endomorphism
+of that finite-dimensional vector space.
+By Lemma~\ref{fnd:finiteextensionnorms} it is complete and closed
+in $L$. It contains the dense field $F$, so it equals $L$.
+Finally, residue-independent lifts are linearly independent over
+$H_t$, as in Proposition~\ref{v038:f5:unitdegreeunramified}.
+Thus $[l:k(\bar t)]\leq[L:H_t]&lt;\infty$; separability was part
+of the choice of the separating element.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="045f9d54cef4098ff14b4914407c2b1e62e0a638deab957e4f231f30f049d36c">
+All valued fields in this section are complete for their specified
+nontrivial real-valued non-Archimedean absolute values. For a valued
+field $H$, write $H^\circ$, $H^{\circ\circ}$ and $\widetilde H$
+for its valuation ring, maximal ideal and residue field. The trace is
+the trace of the finite-dimensional multiplication operator.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002435-reader.jpg" alt="Typeset mathematical passage from PDF page 813" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=813">PDF page 813 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(selected native whole)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001712/">NAG-001712</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001736/">NAG-001736</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002434/">NAG-002434</a> · selected whole <small>(selected native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001736/">fnd:analytificationetalepreservation</a></li><li><a href="/r/NAG-001712/">fnd:analytificationvaluedfibres</a></li><li><a href="/r/NAG-001708/">fnd:analytificationzariskiopens</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-002434/">v038:f5:unitdegreeunramified</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

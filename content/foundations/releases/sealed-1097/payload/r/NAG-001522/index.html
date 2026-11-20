@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001522/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Bounded lifting for arbitrary finite Laurent data · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001522 · Accepted whole</p><h1>Bounded lifting for arbitrary finite Laurent data</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.28.4">Open in the English reader · PDF page 234</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="bc083921040572cde3e9e158998467c28642be3cf9f725e1156954098e02b8ad">
+\begin{lemma}[\bi{Bounded lifting for arbitrary finite Laurent data}{任意有限模 Laurent 数据的有界提升}]\label{fnd:laurentgluingcoboundary}
+\bi{For every finite Laurent gluing datum, the map}
+{对每个有限模 Laurent 粘合数据，映射}
+\[
+ \delta:N_+\oplus N_-\longrightarrow N_0,
+ \qquad (v,w)\longmapsto\rho_+(v)-\rho_-(w)
+\]
+\bi{is surjective and norm-strict. More precisely, there is a constant $C&gt;0$, depending on the datum and the chosen canonical norms, such that every $z\in N_0$ has a preimage $(v,w)$ with $\max(\|v\|,\|w\|)\leq C\|z\|$. No linear choice of preimages is asserted.}
+{满射且为 norm-strict。更精确地，存在常数 $C&gt;0$，只依赖于该数据及所选 canonical 范数，使每个 $z\in N_0$ 都有原像 $(v,w)$ 满足 $\max(\|v\|,\|w\|)\leq C\|z\|$。这里并未断言可以线性地选择原像。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4313a3218c9a0e6d41e85a93aba1447ba44bdada10c7c477c831dd3faa890ed4">
+\begin{proof}
+\bi{First, the image of $A_-$ in $A_0$ is dense. The identity $TU-1=(T-f)U+(fU-1)$ shows that the ideals $(T-f,TU-1)$ and $(T-f,fU-1)$ coincide. Lemma~\ref{fnd:iteratedstrictquotients} therefore identifies $A_0$ with $A_-\{T\}/(T-f)$. Polynomials in $T$ are dense before taking this quotient by Lemma~\ref{fnd:weightedcoefficientcompleteness}, and their classes belong to the image of $A_-$ because $T=f$ there. Second, Theorem~\ref{fnd:laurentlocalizationmodules} for $M=A$ gives the following scalar estimate: for each fixed $\beta&gt;1$ and every $a\in A_0$, one can write}
+{首先，$A_-$ 在 $A_0$ 中的像稠密。恒等式 $TU-1=(T-f)U+(fU-1)$ 说明理想 $(T-f,TU-1)$ 与 $(T-f,fU-1)$ 相等。因此 Lemma~\ref{fnd:iteratedstrictquotients} 将 $A_0$ 与 $A_-\{T\}/(T-f)$ 识别。由 Lemma~\ref{fnd:weightedcoefficientcompleteness}，在取商前关于 $T$ 的多项式稠密；由于商中 $T=f$，这些多项式的像都来自 $A_-$。其次，将 Theorem~\ref{fnd:laurentlocalizationmodules} 应用于 $M=A$，得到如下标量估计：对每个固定的 $\beta&gt;1$ 及任意 $a\in A_0$，均可写为}
+\[
+ a=b|_0-d|_0,\qquad b\in A_+,\ d\in A_-,\qquad
+ \max(\|b\|,\|d\|)\leq\beta\|a\|.
+\]
+\bi{If $N_0=0$, the conclusion is immediate. Otherwise choose generators $e_1,\ldots,e_m$ of $N_+$ and $w_1,\ldots,w_n$ of $N_-$. In this proof use their quotient norms, and give $N_0$ the quotient norm from the generators $\bar e_i=\rho_+(e_i)$. Changing back to any stipulated canonical norms only changes constants. The elements $\bar w_j=\rho_-(w_j)$ also generate $N_0$. Choose $c_{ji}\in A_0$ such that}
+{若 $N_0=0$，结论直接成立。否则选择 $N_+$ 的生成元 $e_1,\ldots,e_m$ 以及 $N_-$ 的生成元 $w_1,\ldots,w_n$。本证明采用这两组生成元的商范数，并给 $N_0$ 配备由生成元 $\bar e_i=\rho_+(e_i)$ 诱导的商范数。改回任意指定的 canonical 范数只会改变常数。元素 $\bar w_j=\rho_-(w_j)$ 也生成 $N_0$。选择 $c_{ji}\in A_0$ 使}
+\[
+ \bar e_i=\sum_{j=1}^n c_{ji}\bar w_j,
+ \qquad H=\max(1,\|\bar w_1\|,\ldots,\|\bar w_n\|).
+\]
+\bi{Fix $0&lt;\eta&lt;1$. By density choose $c&#x27;_{ji}\in A_-$ whose images in $A_0$ satisfy}
+{固定 $0&lt;\eta&lt;1$。由稠密性，选择 $c&#x27;_{ji}\in A_-$，使其在 $A_0$ 中的像满足}
+\[
+ \max_{j,i}\|c_{ji}-c&#x27;_{ji}|_0\|
+       \leq\frac{\eta}{\beta^2H},
+ \qquad C_0=\beta^2\max(1,\max_{j,i}\|c&#x27;_{ji}\|).
+\]
+\bi{These are finitely many choices, made once for the datum. For $z\in N_0$, choose $a_i\in A_0$ with $z=\sum_i a_i\bar e_i$ and $\max_i\|a_i\|\leq\beta\|z\|$; for $z=0$ take all coefficients zero. Split each $a_i=b_i|_0-d_i|_0$ by the scalar estimate and put}
+{这些选择只有有限个，而且对该数据一次固定。对 $z\in N_0$，选择 $a_i\in A_0$，使 $z=\sum_i a_i\bar e_i$ 且 $\max_i\|a_i\|\leq\beta\|z\|$；当 $z=0$ 时全部取零。用标量估计将每个 $a_i$ 写成 $b_i|_0-d_i|_0$，并令}
+\[
+ v=\sum_i b_i e_i,\qquad
+ w=\sum_{i,j}d_i c&#x27;_{ji}w_j.
+\]
+\bi{The quotient module norms satisfy $\|av\|\leq\|a\|\|v\|$. Hence}
+{商模范数满足 $\|av\|\leq\|a\|\|v\|$。因此}
+\[
+ \max(\|v\|,\|w\|)\leq C_0\|z\|,
+ \qquad
+ z-\delta(v,w)
+   =-\sum_{i,j}d_i|_0\,(c_{ji}-c&#x27;_{ji}|_0)\bar w_j,
+\]
+\bi{and the last expression has norm at most $\beta^2\|z\|\cdot\eta/(\beta^2H)\cdot H=\eta\|z\|$. We have therefore obtained a uniformly bounded approximate lift with a fixed contraction of the error.}
+{最后一个表达式的范数至多为 $\beta^2\|z\|\cdot\eta/(\beta^2H)\cdot H=\eta\|z\|$。因此得到了具有统一界的近似提升，且误差按固定比例收缩。}
+
+\bi{Apply this construction successively to $z_0=z$ and $z_{q+1}=z_q-\delta(v_q,w_q)$. Then $\|z_q\|\leq\eta^q\|z\|$ and $\max(\|v_q\|,\|w_q\|)\leq C_0\eta^q\|z\|$. Completeness of the finite canonical modules, from Theorem~\ref{fnd:strictfinitemodules}, implies convergence of $v=\sum_{q\geq0}v_q$ and $w=\sum_{q\geq0}w_q$. Boundedness of $\delta$ gives $\delta(v,w)=z$, and the ultrametric inequality gives $\max(\|v\|,\|w\|)\leq C_0\|z\|$. The kernel of the bounded map $\delta$ is closed. The lift bound and boundedness of $\delta$ identify its quotient norm with the target norm up to fixed constants, proving norm-strictness. The argument also works for trivial valuation; neither small scalars nor an open mapping theorem have been used.}
+{依次将该构造应用于 $z_0=z$ 及 $z_{q+1}=z_q-\delta(v_q,w_q)$，则 $\|z_q\|\leq\eta^q\|z\|$，且 $\max(\|v_q\|,\|w_q\|)\leq C_0\eta^q\|z\|$。由 Theorem~\ref{fnd:strictfinitemodules}，有限 canonical 模完备，因此 $v=\sum_{q\geq0}v_q$ 与 $w=\sum_{q\geq0}w_q$ 收敛。映射 $\delta$ 有界，故 $\delta(v,w)=z$；超度量不等式给出 $\max(\|v\|,\|w\|)\leq C_0\|z\|$。有界映射 $\delta$ 的核闭。提升界与 $\delta$ 的有界性说明其商范数与目标范数相差固定的乘法常数，故为 norm-strict。这个论证也适用于平凡赋值；其中既未使用小标量，也未使用开映射定理。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="4366c7edece1c01f10db2d1d0d28d67c64580124b3e0c1c872d121116e4f98bc">
+\bi{For the next three results fix $f\in A$ and use the following actual quotient algebras with their quotient norms:}
+{在下面三个结果中固定 $f\in A$，并使用下列实际商代数及其商范数：}
+\[
+ \begin{aligned}
+ A_+&amp;=A\{T\}/(T-f),&amp; A_-&amp;=A\{U\}/(1-fU),\\
+ A_0&amp;=A\{T,U\}/(T-f,TU-1).
+ \end{aligned}
+\]
+\bi{A finite Laurent gluing datum means finite modules $N_+$ over $A_+$ and $N_-$ over $A_-$, together with an $A_0$-linear isomorphism between $A_0\otimes_{A_+}N_+$ and $A_0\otimes_{A_-}N_-$. Denote the common module by $N_0$, the two maps by $\rho_+,\rho_-$, and their difference by $\delta$. Equip the finite modules with canonical norms. A morphism of such data is a pair of local module maps commuting with the given overlap isomorphisms.}
+{有限模 Laurent 粘合数据是指 $A_+$ 上的有限模 $N_+$、$A_-$ 上的有限模 $N_-$，以及 $A_0\otimes_{A_+}N_+$ 与 $A_0\otimes_{A_-}N_-$ 之间的一个 $A_0$-线性同构。将共同的模记作 $N_0$，将两个映射记作 $\rho_+,\rho_-$，其差记作 $\delta$。给各有限模配备 canonical 范数。这类数据之间的态射，是与给定交叠同构交换的一对局部模映射。}
+\end{definition}
+
+\bi{The gluing isomorphism and its inverse are bounded by Theorem~\ref{fnd:strictfinitemodules}. Thus boundedness follows from the finite canonical module structure.}
+{由 Theorem~\ref{fnd:strictfinitemodules}，粘合同构及其逆有界。因此有界性由有限 canonical 模结构推出。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001522-reader.jpg" alt="Typeset mathematical passage from PDF page 234" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=234">PDF page 234 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001437/">NAG-001437</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001439/">NAG-001439</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001437/">NAG-001437</a> · selected whole</li><li><a href="/r/NAG-001437/">NAG-001437</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001439/">NAG-001439</a> · selected whole</li><li><a href="/r/NAG-001439/">NAG-001439</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001437/">fnd:iteratedstrictquotients</a></li><li><a href="/r/NAG-001439/">fnd:laurentlocalizationmodules</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

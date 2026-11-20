@@ -1,0 +1,313 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002970/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Native top-form measures; F8CR-M · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002970 · Accepted whole</p><h1>Native top-form measures; F8CR-M</h1><p><a href="/projects/foundations/chapters/8/">8 Intrinsic smooth forms, integration and Stokes</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.8.4.4">Open in the English reader · PDF page 1145</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="ca519822803ae3f2efa4b379b7ec2fc9d333ede8f6ac7bb1a05c596cfd7cd7ec">
+\begin{proposition}[Native top-form measures; F8CR-M]
+\label{prop:measure}
+Let \(Y\) be good, Hausdorff, and pure of dimension \(d\). For every
+real ordinary compact \((d,d)\)-form \(\omega\), there is a unique
+finite signed Radon measure \(\mu_{Y,\omega}\), supported in
+\(S=\Supp\omega\), with
+\begin{equation}\label{eq:measure}
+ \int_Y\phi\,d\mu_{Y,\omega}=\int_Y\phi\omega
+ \quad\text{for every ordinary smooth scalar }\phi.
+\end{equation}
+The construction is linear in \(\omega\) and positive for positive
+\(\omega\). If its compact support is contained in an open subspace,
+the measure on \(Y\) is the zero extension of the measure there. It defines a separate
+Borel-measure extension; it does not enlarge the class of coefficients
+admitted by the frozen grid integral. Empty support gives the zero
+measure.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="dee7fbb9f34f559acb952c35d45c65651fb0c0478ecef02b510600e2b5b0b9c7">
+\begin{proof}
+We spell out the boundedness and representation steps.
+
+\emph{Density and cutoffs on a compact set.}
+For \(h\in C(S,\R)\) and \(\epsilon&gt;0\), take finitely many ordinary
+open sets covering \(S\) on each of which the oscillation of \(h\)
+on \(S\) is less than \(\epsilon\). Choose a point \(x_j\) of each
+nonempty piece. By \tagg{NAG-002428} there are nonnegative compact
+ordinary smooth \(\chi_j\) subordinate to these sets, summing to one
+near \(S\). Then \(\sum_jh(x_j)\chi_j\) approximates \(h\) uniformly
+on \(S\) to error \(\epsilon\), and is nonnegative on all of \(Y\)
+when \(h\geq0\). Thus ordinary smooth scalar restrictions are dense
+in \(C(S)\). Moreover for a compact \(F\subset U\subset S\) with
+\(U\) relatively open, there is a continuous function on \(S\) equal
+to one on \(F\), between zero and one, and with support contained in
+\(U\). Lift \(U\) to an open set of \(Y\), use finitely many point
+cutoffs from \tagg{NAG-002427}, and take
+\(1-\prod_j(1-\chi_j)\). Finite partitions on compact supports follow
+from the same frozen partition theorem restricted to \(S\).
+
+\emph{A positive domination.}
+Choose finitely many moment representatives \(\alpha_j\) near the
+compact support and a nonnegative ordinary partition \(\rho_j\)
+with compact supports inside those chart opens, summing to one near
+\(S\). In the ambient real coordinates \(t_1,\ldots,t_r\) of a chart,
+put
+\[
+ \Theta_j=\frac1{d!}\left(\sum_{k=1}^r d&#x27;t_k\wedge d&#x27;&#x27;t_k\right)^d.
+\]
+For \(d=0\) take \(\Theta_j=1\). On a \(d\)-plane the coefficient
+of \(\Theta_j\) is the Euclidean Gram square and is positive. Replace
+\(\alpha_j\) by
+\((\alpha_j+(-1)^dJ\alpha_j)/2\); this does not change its restriction
+to any \(d\)-plane, since the top generator has \(J\)-sign
+\((-1)^d\). On the compact moment image of \(\Supp\rho_j\), its
+coefficient matrix on \(\bigwedge^d\R^r\) is bounded. The elementary
+finite-dimensional inequality \(|v^TCv|\leq c_j|v|^2\), for a
+sufficiently large constant \(c_j\), therefore shows that
+\(c_j\Theta_j\pm\alpha_j\) are nonnegative on all \(d\)-planes
+there. This remains true on the tangent planes of every joint moment
+refinement, including rank-deficient ones. If \(r&lt;d\), both
+restrictions are zero.
+
+The zero extensions of \(\rho_jc_jt_g^*\Theta_j\) define a positive
+compact form \(\theta\) satisfying \(-\theta\leq\omega\leq\theta\).
+For \(M=\sup_S|\phi|\), the forms \(M\theta\pm\phi\omega\)
+are positive: on \(S\) use the displayed bound and outside \(S\)
+use \(\omega=0\). Positivity of \tagg{NAG-002425} gives
+\begin{equation}\label{eq:bound}
+ \left|\int_Y\phi\omega\right|\leq C_\omega\sup_S|\phi|,
+ \qquad C_\omega=\int_Y\theta&lt;\infty.
+\end{equation}
+Hence the native functional depends only on \(\phi|_S\) and extends
+uniquely by uniform limits to a bounded linear functional
+\(\Lambda_\omega:C(S)\to\R\). For positive \(\omega\) the positive
+approximants above prove that this extension is positive.
+
+\emph{Representation of a positive functional, with the construction.}
+For any positive bounded \(\Lambda:C(S)\to\R\), define, for open
+\(U\subset S\) and arbitrary \(E\subset S\),
+\begin{align*}
+ a(U)&amp;=\sup\{\Lambda(g):g\in C(S),\ 0\leq g\leq1,
+                                      \ \Supp g\subset U\},\\
+ a^*(E)&amp;=\inf\{a(U):E\subset U,\ U\text{ open in }S\}.
+\end{align*}
+Here \(a(S)=\Lambda(1)\), and every quantity is finite. If an open
+set is covered by countably many open sets, the compact support of
+any test \(g\) is covered by finitely many of them. A finite partition
+on that support splits \(g\) into admissible summands, proving
+countable subadditivity for \(a\) on open sets. Choosing open
+supersets with errors \(\epsilon2^{-j}\) proves that \(a^*\) is
+an outer measure; it agrees with \(a\) on open sets.
+
+Every open \(U\) is measurable for this outer measure. Indeed, fix
+\(E\) and choose open \(V\supset E\) with
+\(a(V)\leq a^*(E)+\epsilon\). Choose a test \(g\) supported on a
+compact \(F\subset V\cap U\) with
+\(\Lambda(g)\geq a(V\cap U)-\epsilon\). For a test \(h\) supported
+in \(V\setminus F\), the function \(g+h\) is still between zero
+and one and supported in \(V\). Thus
+\(a(V\setminus F)\leq a(V)-\Lambda(g)\), and
+\[
+ a^*(E\cap U)+a^*(E\setminus U)
+ \leq a(V\cap U)+a(V\setminus F)
+ \leq a^*(E)+2\epsilon.
+\]
+Outer subadditivity supplies the reverse inequality. Let
+\(\epsilon\downarrow0\). The sets satisfying this splitting equality
+form a sigma-algebra. Complements are immediate. For disjoint measurable
+\(E_j\), finite iteration gives, for every \(H\),
+\[
+ a^*(H)\geq\sum_{j=1}^N a^*(H\cap E_j)
+                  +a^*\left(H\setminus\bigcup_{j\geq1}E_j\right).
+\]
+Pass to the supremum over \(N\) and use outer subadditivity on
+\(H\cap\bigcup E_j\) to obtain measurability of the union. General
+countable unions reduce to disjoint ones by differences. The same
+finite-iteration inequality and outer subadditivity prove countable
+additivity of the restricted outer measure. Hence
+\(\mu=a^*|_{\text{Borel}(S)}\) is a finite Borel measure.
+
+For a test \(g\) above, \(\Lambda(g)\leq\mu(\Supp g)\), since
+every open set containing that support admits \(g\) in its defining
+supremum. It follows that the measure of an open set is the supremum
+of the measures of its compact subsets. Outer regularity is built
+into \(a^*\). Inner regularity for every Borel set follows by taking
+complements and using finiteness of \(\mu(S)\). Thus \(\mu\) is
+Radon. Integrals of nonnegative Borel functions are defined by the
+supremum over dominated nonnegative simple functions; bounded
+functions may equivalently be approximated uniformly by their
+finite dyadic step functions.
+
+To verify representation without importing it, let \(u\geq0\) be
+continuous, \(0\leq u\leq m\delta\). Tests supported in
+\(\{u&gt;k\delta\}\), \(k=1,\ldots,m\), give
+\[
+ \delta\sum_{k=1}^m\mu\{u&gt;k\delta\}\leq\Lambda(u).
+\]
+For the upper bound put
+\(v_k=\min(1,\max(0,(u-k\delta)/\delta))\),
+\(k=0,\ldots,m-1\). Then \(u=\delta\sum v_k\), and for \(k\geq1\)
+the support of \(v_k\) is contained in
+\(\{u&gt;(k-1)\delta\}\). Consequently
+\[
+ \Lambda(u)\leq\delta\mu(S)
+                  +\delta\sum_{k=1}^{m-1}\mu\{u&gt;(k-1)\delta\}.
+\]
+The lower simple sum differs from \(u\) by at most \(\delta\), and
+the upper one by at most \(2\delta\). Let \(\delta\to0\), choosing
+\(m\delta\geq\|u\|_\infty\). Both bounds tend to \(\int u\,d\mu\).
+Linearity gives \(\Lambda(u)=\int u\,d\mu\) for all continuous \(u\).
+Uniqueness follows from the cutoff formula for open sets and Radon
+inner regularity.
+
+\emph{Signed functionals and locality.}
+For a bounded real \(\Lambda\), define on \(u\geq0\)
+\[
+ \Lambda^+(u)=\sup_{0\leq v\leq u}\Lambda(v).
+\]
+This is finite, nonnegative, positively homogeneous, and additive:
+for one inequality split any \(v\leq u_1+u_2\) into
+\(\min(v,u_1)\) and \(v-\min(v,u_1)\); for the other add two
+nearly maximizing choices. Extend linearly to all of \(C(S)\).
+It is bounded, since \(\Lambda^+(u)\leq\|\Lambda\|\|u\|_\infty\)
+for \(u\geq0\). The functional \(\Lambda^-:=\Lambda^+-\Lambda\)
+is positive and bounded. The positive construction gives
+\(\mu=\mu^+-\mu^-\). Any two finite signed Radon representations
+are equal by comparing the positive measures in their two
+decompositions and using positive uniqueness. Apply this construction
+to \(\Lambda_\omega\) on \(S\), then extend by zero along the closed
+inclusion \(S\hookrightarrow Y\). This yields \eqref{eq:measure}.
+The same uniqueness, density on a compact union of supports, and
+locality of the frozen integral prove linearity and compatibility
+with open restrictions wherever the form has compact support.
+
+\paragraph{Cutoffs and the order-zero bound (lines 296--348).}
+For compact $F\subset O\subset S$ with $O$ relatively open, lift
+$O$ to an ordinary open of $Y$. Finitely many point cutoffs there
+give $1-\prod_j(1-\chi_j)$ restricted to $S$, equal to one on $F$
+and supported in $O$. More generally a finite relatively open cover
+of $F$ lifts to ambient opens; apply 002428 on $F$ and restrict.
+For $u\in C(S)$, a finite such cover of $S$ by sets of oscillation
+less than $\epsilon$ gives an approximant $\sum_j u(x_j)\chi_j$ of
+uniform error at most $\epsilon$. If $u\ge0$ the approximant is
+nonnegative. No continuous extension of $u$ to $Y$ is required.
+
+In each moment presentation on a neighbourhood of $S$, use the
+interleaved form $\Theta=(\sum_k d&#x27;t_k\wedge d&#x27;&#x27;t_k)^d/d!$.
+In interleaved coordinates a tangent $d$-frame with Pl\&quot;ucker vector
+$v$ evaluates $\Theta$ to $\sum_I v_I^2$ and the given coefficient
+matrix to $v^{\mathsf t}A v$ (absorbing the fixed coordinate sign
+in $A$). The latter has absolute value bounded by
+$c\sum_I v_I^2$ on the compact chart region used by its cutoff.
+Projection of a frame under refinement uses the same calculation,
+including $v=0$. In dimension zero take $\Theta=1$. With the finite
+nonnegative partition, sum the cutoff multiples of $c\Theta$, extended
+by zero, to get a compact positive form $\theta$ bounding $\pm\omega$.
+
+Here is a way to use precisely $M=\sup_S|\phi|$ even if $\phi$ is much
+larger just outside $S$. For $\epsilon&gt;0$ choose a smooth real
+scalar truncation $\beta$ equal to the identity on
+$[-M-\epsilon/2,M+\epsilon/2]$ and bounded in modulus by $M+\epsilon$.
+For example multiply the identity by the cutoff profile of 002427
+applied to $2(M+\epsilon-|t|)/\epsilon$; this factor is constant
+near zero. Then $\beta(\phi)\omega=\phi\omega$ as sections.
+Nonnegativity in common charts and 002425 give
+\[
+ \left|\int_Y\phi\omega\right|
+ \le (M+\epsilon)\int_Y\theta.
+\]
+Let $\epsilon$ decrease to zero. For empty $S$ take the zero
+measure. Otherwise the estimate and the approximants above extend
+the functional uniquely to a bounded linear $\Lambda$ on $C(S)$:
+use limits of the real integrals of uniform approximants. Positivity
+is preserved for positive $\omega$.
+
+\paragraph{Positive representation (lines 350--425).}
+For $\Lambda\ge0$ let $a(O)$ be the supremum of $\Lambda(g)$ over
+$0\le g\le1$ continuous with support in an open $O\subset S$, and put
+$m(H)=\inf_{O\supset H}a(O)$ over open supersets. An open cover of
+$\operatorname{supp}g$ admits a finite subordinate partition there as
+above. Splitting $g$ by the partition gives countable subadditivity
+of $a$ on open covers. Taking open supersets of $H_j$ within
+$\epsilon 2^{-j}$ of $m(H_j)$ gives countable subadditivity of $m$.
+It is monotone, $m(\varnothing)=0$, $m(O)=a(O)$ for open $O$, and
+$m(S)=\Lambda(1)&lt;\infty$. For arbitrary $H$ and open $O$, choose
+open $V\supset H$ within $\epsilon$ of $m(H)$ and an admissible $g$
+in $V\cap O$ within $\epsilon$ of $a(V\cap O)$. Put
+$F=\operatorname{supp}g$. Any admissible test in $V\setminus F$
+can be added to $g$ without exceeding one. Thus
+$m(H\cap O)+m(H\setminus O)\le m(H)+2\epsilon$.
+Subadditivity gives the reverse inequality after passage to the limit.
+
+The finite-intersection step implicit at lines 379--392 is as follows.
+Call $A$ splitting if $m(H)=m(H\cap A)+m(H\setminus A)$ for every $H$.
+Complements split. For splitting $A,B$, split $H$ by $A$, then
+$H\cap A$ by $B$. The last two pieces
+$(H\cap A)\setminus B$ and $H\setminus A$ have union
+$H\setminus(A\cap B)$. Subadditivity yields the splitting inequality
+for $A\cap B$, and the opposite inequality always holds. Hence
+splitting sets form an algebra. For disjoint splitting $A_j$,
+$A=\bigcup_j A_j$, finite iteration and monotonicity give
+\[
+ m(H)\ \ge\ \sum_{j\le N}m(H\cap A_j)+m(H\setminus A).
+\]
+Taking the supremum over $N$ and using countable subadditivity on
+$H\cap A$ proves $A$ splits. Finite differences in the algebra now
+disjointify any countable union. Taking $H=A$ gives countable
+additivity on disjoint splitting sets by the same inequalities.
+Since all opens split, $\mu=m|_{\rm Borel}$ is a finite measure.
+
+For an admissible $g$, $\Lambda(g)\le m(\operatorname{supp}g)$
+by taking the infimum over open supersets of its support. This
+gives inner regularity on opens; outer regularity is by construction.
+For any Borel $A$, an open outer approximation to $S\setminus A$
+has compact complement inside $A$, giving inner regularity there too.
+To check representation, fix $u\ge0$ continuous, $0\le u\le m_0\delta$.
+Put $O_k=\{u&gt;k\delta\}$. For $1\le k\le m_0$ choose near-maximizing
+tests $g_k$ in $O_k$. The pointwise inequality
+$\delta\sum_k g_k\le u$ gives the lower sum
+$\delta\sum_{k=1}^{m_0}\mu(O_k)\le\Lambda(u)$ by finite approximation.
+For the upper sum, $u=\delta\sum_{k=0}^{m_0-1}
+\min(1,\max(0,u/\delta-k))$. For $k\ge1$ each summand has support
+in $O_{k-1}$. Thus the upper sum is
+$\delta\mu(S)+\delta\sum_{k=1}^{m_0-1}\mu(O_{k-1})$.
+The two simple functions approximate $u$ uniformly to within
+$2\delta$. Finiteness gives $\Lambda(u)=\int u\,d\mu$; differences
+give the identity on $C(S)$. Any positive Radon representation
+$\lambda$ satisfies $\lambda(O)=a(O)$: use compact inner approximation
+and a cutoff equal to one on each chosen compact. Outer regularity
+then gives uniqueness on Borel sets.
+
+\paragraph{Signed measures and locality (lines 427--446).}
+For arbitrary bounded real $\Lambda$ use the source construction
+$\Lambda^+(u)=\sup_{0\le v\le u}\Lambda(v)$ on continuous $u\ge0$.
+Splitting $v\le u_1+u_2$ into $\min(v,u_1)$ and the remainder, and
+adding nearly maximizing tests in the other direction, prove additivity.
+Positive homogeneity gives a linear extension by differences, since
+$u-v=u&#x27;-v&#x27;$ implies $u+v&#x27;=u&#x27;+v$. Both $\Lambda^+$ and
+$\Lambda^-=\Lambda^+-\Lambda$ are positive and bounded; for the
+first use $|\Lambda^+(w)|\le\Lambda^+(|w|)\le\|\Lambda\|\|w\|_\infty$.
+Let $\mu_\pm$ be their positive Radon representatives. Then
+$\sigma=\mu_+-\mu_-$ represents $\Lambda$.
+
+For conventions requiring regular \emph{total variation}, the following
+argument is internal to this proof. Put $\nu=\mu_++\mu_-$.
+It is regular: for any Borel $A$, take the union of two compact inner
+approximants and the intersection of two open outer approximants.
+Define $v(A)$ by the supremum of $\sum_i|\sigma(A_i)|$ over finite
+Borel partitions of $A$. Then $v\le\nu$. On disjoint Borel $A_j$,
+intersecting any finite partition of their union with each $A_j$
+gives $v(\bigcup_j A_j)\le\sum_jv(A_j)$ by countable additivity of
+$\sigma$ and the triangle inequality. Conversely combine near-optimal
+finite partitions on the first $N$ pieces, adding the remainder as
+one block; take the supremum and then let $N$ increase. Thus $v$
+is a finite measure. Compact and open approximants $F\subset A\subset O$
+with $\nu(O\setminus F)&lt;\epsilon$ give $v(O\setminus F)&lt;\epsilon$,
+so $v=|\sigma|$ is Radon. Conversely, any candidate signed measure
+with regular finite variation decomposes as
+$(|\sigma|+\sigma)/2-(|\sigma|-\sigma)/2$ into positive measures
+dominated by its variation and hence regular by the same estimate.
+Signed uniqueness therefore reduces, by adding the opposite positive
+parts, to positive uniqueness. This proves what is needed here
+without borrowing the downstream NAG-002973.
+
+The compact carrier $S$ is closed in Hausdorff $Y$. Push each
+positive measure forward along $S\hookrightarrow Y$; compact inner
+approximants stay compact, and an outer open of $S$ lifts to an open
+of $Y$ to which $Y\setminus S$ may be added. This gives the claimed
+signed Radon measure on $Y$. For linearity compare on the compact
+union of the carriers by density. For support inside an open, the
+local integral equals the ambient integral on every multiplier by
+002425 and 002428. Uniqueness on the same compact carrier proves
+the zero-extension assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002970-reader.jpg" alt="Typeset mathematical passage from PDF page 1145" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1145">PDF page 1145 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002428/#compact_partition_only">CLAUSE:NAG-002428:compact_partition_only</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002427/">NAG-002427</a> · selected whole <small>(explicit current dependencies)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001444/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Points of a strict rational quotient · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001444 · Accepted whole</p><h1>Points of a strict rational quotient</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.19.3">Open in the English reader · PDF page 179</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6aa8e75967cdbdcd6694290e71a092cdbbdf96ce286d3ed0c8c513d4414e6800">
+\begin{theorem}[\bi{Points of a strict rational quotient}{Strict rational quotient 的 points}]\label{fnd:strictrationalpointtopology}
+\bi{With $A,g,f_i,\rho,B$ as in Corollary~\ref{fnd:strictpowercontrolledrational}, the map induced by $A\to B$ is a homeomorphism}
+{设 $A,g,f_i,\rho,B$ 如 Corollary~\ref{fnd:strictpowercontrolledrational}。由 $A\to B$ 诱导的 map 为 homeomorphism}
+\[
+ \mathcal M(B)\xrightarrow{\sim}
+ V=\{x\in\mathcal M(A): |f_i|_x\leq\rho_i|g|_x
+                       \text{ for }1\leq i\leq s\},
+\]
+\bi{where both spectra carry the evaluation topology and $V$ the subspace topology. The subset $V$ is closed. This includes $B=0$ and an empty spectrum; it does not assert that an algebra with empty spectrum must be zero.}
+{其中两个 spectra 均配备 evaluation topology，$V$ 配备 subspace topology。Subset $V$ 为 closed。该断言包括 $B=0$ 及 spectrum 为空的情形；它并未断言 spectrum 为空的 algebra 必须为零。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0eea39af2bd6db92fd8c16d34efba18098d1167aa22f8deb4a5faa6484317cc2">
+\begin{proof}
+\bi{\textbf{Step 1: construct the point over $x$.} The unit-ideal identity in the preceding proof shows that $|g|_x&gt;0$ for every $x\in V$. By Lemma~\ref{new:seminormcontractive}, $x$ defines an absolute value on the field $F_x=\operatorname{Frac}(A/\ker x)$, with $|a|_x\leq\|a\|$ for $a\in A$. Evaluate polynomials at $X_i=f_i/g$ in $F_x$. The resulting multiplicative seminorm $\alpha_x$ on $A[X]$ satisfies}
+{\textbf{Step 1：构造 $x$ 之上的 point。} 前一证明中的 unit-ideal identity 表明，每个 $x\in V$ 都有 $|g|_x&gt;0$。由 Lemma~\ref{new:seminormcontractive}，$x$ 在 field $F_x=\operatorname{Frac}(A/\ker x)$ 上定义 absolute value，且对 $a\in A$ 有 $|a|_x\leq\|a\|$。在 $F_x$ 中令 $X_i=f_i/g$，对 polynomials 作 evaluation。所得 $A[X]$ 上的 multiplicative seminorm $\alpha_x$ 满足}
+\[
+ \alpha_x\left(\sum_\nu a_\nu X^\nu\right)
+ \leq\max_\nu |a_\nu|_x\prod_i|f_i/g|_x^{\nu_i}
+ \leq\max_\nu\|a_\nu\|\rho^\nu.
+\]
+\bi{For polynomials $P,Q$, the ultrametric inequality also gives}
+{对 polynomials $P,Q$，ultrametric inequality 还给出}
+\[
+ |\alpha_x(P)-\alpha_x(Q)|\leq\alpha_x(P-Q)\leq\|P-Q\|.
+\]
+\bi{Given $F\in D=A\{\rho^{-1}X\}$, choose polynomial truncations $P_n\to F$. The displayed estimate makes $\alpha_x(P_n)$ a Cauchy sequence of real numbers and makes its limit independent of the truncations. Define $\alpha_x(F)$ to be this limit. Polynomial density follows from Lemma~\ref{fnd:weightedcoefficientcompleteness}. Addition, multiplication and the scalar rule pass to the limit: for multiplication, polynomial approximations are norm-bounded and their products converge by submultiplicativity. Thus the extension is a multiplicative seminorm with}
+{给定 $F\in D=A\{\rho^{-1}X\}$，取 polynomial truncations $P_n\to F$。上述 estimate 使 $\alpha_x(P_n)$ 成为实数的 Cauchy sequence，并使其 limit 与 truncations 无关。将该 limit 定义为 $\alpha_x(F)$。Polynomial density 来自 Lemma~\ref{fnd:weightedcoefficientcompleteness}。Addition、multiplication 与 scalar rule 均可传到 limit；对 multiplication，polynomial approximations 在 norm 下 bounded，且由 submultiplicativity，其 products 收敛。因此，延拓后仍为 multiplicative seminorm，满足}
+\[
+ \alpha_x(F)\leq\|F\|,\qquad
+ |\alpha_x(F)-\alpha_x(G)|\leq\|F-G\|.
+\]
+\bi{It kills every $gX_i-f_i$ and therefore the actual ideal $J$. If $F-G\in J$, the ultrametric inequality gives $\alpha_x(F)=\alpha_x(G)$. The induced seminorm on $B$ is bounded by its quotient norm, by taking the infimum over lifts. It extends the fixed absolute value on $K$ and defines a point $y_x$ over $x$. In particular, when $B=0$, this construction rules out any $x\in V$. It uses no completion of $F_x$.}
+{它消去每个 $gX_i-f_i$，因而消去实际 ideal $J$。若 $F-G\in J$，则由 ultrametric inequality，$\alpha_x(F)=\alpha_x(G)$。对 lifts 取 infimum，可见 $B$ 上诱导的 seminorm 被 quotient norm 控制。它延拓 $K$ 上指定的 absolute value，定义 $x$ 之上的 point $y_x$。特别地，当 $B=0$ 时，此构造排除了 $V$ 中存在 point 的可能性。这里没有使用 $F_x$ 的 completion。}
+
+\bi{\textbf{Step 2: image and uniqueness.} A bounded multiplicative seminorm on the nonzero strict affinoid algebra $B$ is contractive by Lemma~\ref{new:seminormcontractive}. Hence $|x_i|_y\leq\rho_i$, and the relations show that its restriction belongs to $V$. For a polynomial $P$ of total degree at most $N$, write}
+{\textbf{Step 2：image 与 uniqueness。} 由 Lemma~\ref{new:seminormcontractive}，非零 strict affinoid algebra $B$ 上的 bounded multiplicative seminorm 为 contractive。因此 $|x_i|_y\leq\rho_i$，由 relations 可见其 restriction 属于 $V$。对 total degree 至多为 $N$ 的 polynomial $P$，写出}
+\[
+ Q_P=\sum_\nu a_\nu f^\nu g^{N-|\nu|}\in A,
+ \qquad g^N P(x_1,\ldots,x_s)=Q_P\quad\text{in }B.
+\]
+\bi{For every point $y$ over $x$, this gives $|P|_y=|Q_P|_x/|g|_x^N$. Thus its values on polynomial images are fixed. These images are dense in $B$, and contractivity gives the same continuity estimate used in Step 1. Therefore $y=y_x$. Restriction is continuous because each evaluation on $A$ is an evaluation on $B$.}
+{对每个 $x$ 之上的 point $y$，此式给出 $|P|_y=|Q_P|_x/|g|_x^N$。因此其在 polynomial images 上的值已被确定。这些 images 在 $B$ 中 dense，contractivity 给出与 Step 1 相同的 continuity estimate，故 $y=y_x$。Restriction 为 continuous，因为对 $A$ 的每个 evaluation 都是对 $B$ 的一个 evaluation。}
+
+\bi{\textbf{Step 3: continuity of the inverse.} For each polynomial $P$, the function $x\mapsto|Q_P|_x/|g|_x^N$ is continuous on $V$. Fix $v\in B$ and any lift $F\in D$. Polynomial truncations satisfy, uniformly for $x\in V$,}
+{\textbf{Step 3：inverse 的 continuity。} 对每个 polynomial $P$，function $x\mapsto|Q_P|_x/|g|_x^N$ 在 $V$ 上 continuous。固定 $v\in B$ 及其任意 lift $F\in D$。Polynomial truncations 满足对 $x\in V$ 一致成立的 estimate：}
+\[
+ \bigl||v|_{y_x}-|P_n|_{y_x}\bigr|\leq\|F-P_n\|\longrightarrow0.
+\]
+\bi{It follows that $x\mapsto|v|_{y_x}$ is continuous. Explicitly, given a point of $V$ and $\varepsilon&gt;0$, choose a truncation with error less than $\varepsilon/3$ and use continuity of its evaluation to bound the difference of its values by $\varepsilon/3$ on a neighborhood. The two approximation errors then bound the difference for $v$ by $\varepsilon$. Since the evaluation topology is the weakest topology making all these functions continuous, $x\mapsto y_x$ is continuous. Finally, the finitely many inequalities defining $V$ are closed conditions on continuous real-valued functions.}
+{因此 $x\mapsto|v|_{y_x}$ continuous。具体地，给定 $V$ 中的点及 $\varepsilon&gt;0$，选择 error 小于 $\varepsilon/3$ 的 truncation，再利用其 evaluation 的 continuity，在某个 neighborhood 上将两个函数值之差控制在 $\varepsilon/3$ 内。加上两端的 approximation errors，$v$ 的函数值之差即小于 $\varepsilon$。Evaluation topology 是使全部这些 functions 连续的最弱 topology，故 $x\mapsto y_x$ continuous。最后，定义 $V$ 的有限个 inequalities 是 continuous real-valued functions 上的 closed conditions。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001444-reader.jpg" alt="Typeset mathematical passage from PDF page 179" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=179">PDF page 179 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001443/">NAG-001443</a> · selected whole</li><li><a href="/r/NAG-001443/">NAG-001443</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="strict_actual_quotient_point_set"><h3>strict actual quotient point set</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.19.3">Scope in the English reader · PDF page 179</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6aa8e75967cdbdcd6694290e71a092cdbbdf96ce286d3ed0c8c513d4414e6800">
+\begin{theorem}[\bi{Points of a strict rational quotient}{Strict rational quotient 的 points}]\label{fnd:strictrationalpointtopology}
+\bi{With $A,g,f_i,\rho,B$ as in Corollary~\ref{fnd:strictpowercontrolledrational}, the map induced by $A\to B$ is a homeomorphism}
+{设 $A,g,f_i,\rho,B$ 如 Corollary~\ref{fnd:strictpowercontrolledrational}。由 $A\to B$ 诱导的 map 为 homeomorphism}
+\[
+ \mathcal M(B)\xrightarrow{\sim}
+ V=\{x\in\mathcal M(A): |f_i|_x\leq\rho_i|g|_x
+                       \text{ for }1\leq i\leq s\},
+\]
+\bi{where both spectra carry the evaluation topology and $V$ the subspace topology. The subset $V$ is closed. This includes $B=0$ and an empty spectrum; it does not assert that an algebra with empty spectrum must be zero.}
+{其中两个 spectra 均配备 evaluation topology，$V$ 配备 subspace topology。Subset $V$ 为 closed。该断言包括 $B=0$ 及 spectrum 为空的情形；它并未断言 spectrum 为空的 algebra 必须为零。}
+\end{theorem}</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="0eea39af2bd6db92fd8c16d34efba18098d1167aa22f8deb4a5faa6484317cc2">
+\begin{proof}
+\bi{\textbf{Step 1: construct the point over $x$.} The unit-ideal identity in the preceding proof shows that $|g|_x&gt;0$ for every $x\in V$. By Lemma~\ref{new:seminormcontractive}, $x$ defines an absolute value on the field $F_x=\operatorname{Frac}(A/\ker x)$, with $|a|_x\leq\|a\|$ for $a\in A$. Evaluate polynomials at $X_i=f_i/g$ in $F_x$. The resulting multiplicative seminorm $\alpha_x$ on $A[X]$ satisfies}
+{\textbf{Step 1：构造 $x$ 之上的 point。} 前一证明中的 unit-ideal identity 表明，每个 $x\in V$ 都有 $|g|_x&gt;0$。由 Lemma~\ref{new:seminormcontractive}，$x$ 在 field $F_x=\operatorname{Frac}(A/\ker x)$ 上定义 absolute value，且对 $a\in A$ 有 $|a|_x\leq\|a\|$。在 $F_x$ 中令 $X_i=f_i/g$，对 polynomials 作 evaluation。所得 $A[X]$ 上的 multiplicative seminorm $\alpha_x$ 满足}
+\[
+ \alpha_x\left(\sum_\nu a_\nu X^\nu\right)
+ \leq\max_\nu |a_\nu|_x\prod_i|f_i/g|_x^{\nu_i}
+ \leq\max_\nu\|a_\nu\|\rho^\nu.
+\]
+\bi{For polynomials $P,Q$, the ultrametric inequality also gives}
+{对 polynomials $P,Q$，ultrametric inequality 还给出}
+\[
+ |\alpha_x(P)-\alpha_x(Q)|\leq\alpha_x(P-Q)\leq\|P-Q\|.
+\]
+\bi{Given $F\in D=A\{\rho^{-1}X\}$, choose polynomial truncations $P_n\to F$. The displayed estimate makes $\alpha_x(P_n)$ a Cauchy sequence of real numbers and makes its limit independent of the truncations. Define $\alpha_x(F)$ to be this limit. Polynomial density follows from Lemma~\ref{fnd:weightedcoefficientcompleteness}. Addition, multiplication and the scalar rule pass to the limit: for multiplication, polynomial approximations are norm-bounded and their products converge by submultiplicativity. Thus the extension is a multiplicative seminorm with}
+{给定 $F\in D=A\{\rho^{-1}X\}$，取 polynomial truncations $P_n\to F$。上述 estimate 使 $\alpha_x(P_n)$ 成为实数的 Cauchy sequence，并使其 limit 与 truncations 无关。将该 limit 定义为 $\alpha_x(F)$。Polynomial density 来自 Lemma~\ref{fnd:weightedcoefficientcompleteness}。Addition、multiplication 与 scalar rule 均可传到 limit；对 multiplication，polynomial approximations 在 norm 下 bounded，且由 submultiplicativity，其 products 收敛。因此，延拓后仍为 multiplicative seminorm，满足}
+\[
+ \alpha_x(F)\leq\|F\|,\qquad
+ |\alpha_x(F)-\alpha_x(G)|\leq\|F-G\|.
+\]
+\bi{It kills every $gX_i-f_i$ and therefore the actual ideal $J$. If $F-G\in J$, the ultrametric inequality gives $\alpha_x(F)=\alpha_x(G)$. The induced seminorm on $B$ is bounded by its quotient norm, by taking the infimum over lifts. It extends the fixed absolute value on $K$ and defines a point $y_x$ over $x$. In particular, when $B=0$, this construction rules out any $x\in V$. It uses no completion of $F_x$.}
+{它消去每个 $gX_i-f_i$，因而消去实际 ideal $J$。若 $F-G\in J$，则由 ultrametric inequality，$\alpha_x(F)=\alpha_x(G)$。对 lifts 取 infimum，可见 $B$ 上诱导的 seminorm 被 quotient norm 控制。它延拓 $K$ 上指定的 absolute value，定义 $x$ 之上的 point $y_x$。特别地，当 $B=0$ 时，此构造排除了 $V$ 中存在 point 的可能性。这里没有使用 $F_x$ 的 completion。}
+
+\bi{\textbf{Step 2: image and uniqueness.} A bounded multiplicative seminorm on the nonzero strict affinoid algebra $B$ is contractive by Lemma~\ref{new:seminormcontractive}. Hence $|x_i|_y\leq\rho_i$, and the relations show that its restriction belongs to $V$. For a polynomial $P$ of total degree at most $N$, write}
+{\textbf{Step 2：image 与 uniqueness。} 由 Lemma~\ref{new:seminormcontractive}，非零 strict affinoid algebra $B$ 上的 bounded multiplicative seminorm 为 contractive。因此 $|x_i|_y\leq\rho_i$，由 relations 可见其 restriction 属于 $V$。对 total degree 至多为 $N$ 的 polynomial $P$，写出}
+\[
+ Q_P=\sum_\nu a_\nu f^\nu g^{N-|\nu|}\in A,
+ \qquad g^N P(x_1,\ldots,x_s)=Q_P\quad\text{in }B.
+\]
+\bi{For every point $y$ over $x$, this gives $|P|_y=|Q_P|_x/|g|_x^N$. Thus its values on polynomial images are fixed. These images are dense in $B$, and contractivity gives the same continuity estimate used in Step 1. Therefore $y=y_x$. Restriction is continuous because each evaluation on $A$ is an evaluation on $B$.}
+{对每个 $x$ 之上的 point $y$，此式给出 $|P|_y=|Q_P|_x/|g|_x^N$。因此其在 polynomial images 上的值已被确定。这些 images 在 $B$ 中 dense，contractivity 给出与 Step 1 相同的 continuity estimate，故 $y=y_x$。Restriction 为 continuous，因为对 $A$ 的每个 evaluation 都是对 $B$ 的一个 evaluation。}
+
+\bi{\textbf{Step 3: continuity of the inverse.} For each polynomial $P$, the function $x\mapsto|Q_P|_x/|g|_x^N$ is continuous on $V$. Fix $v\in B$ and any lift $F\in D$. Polynomial truncations satisfy, uniformly for $x\in V$,}
+{\textbf{Step 3：inverse 的 continuity。} 对每个 polynomial $P$，function $x\mapsto|Q_P|_x/|g|_x^N$ 在 $V$ 上 continuous。固定 $v\in B$ 及其任意 lift $F\in D$。Polynomial truncations 满足对 $x\in V$ 一致成立的 estimate：}
+\[
+ \bigl||v|_{y_x}-|P_n|_{y_x}\bigr|\leq\|F-P_n\|\longrightarrow0.
+\]
+\bi{It follows that $x\mapsto|v|_{y_x}$ is continuous. Explicitly, given a point of $V$ and $\varepsilon&gt;0$, choose a truncation with error less than $\varepsilon/3$ and use continuity of its evaluation to bound the difference of its values by $\varepsilon/3$ on a neighborhood. The two approximation errors then bound the difference for $v$ by $\varepsilon$. Since the evaluation topology is the weakest topology making all these functions continuous, $x\mapsto y_x$ is continuous. Finally, the finitely many inequalities defining $V$ are closed conditions on continuous real-valued functions.}
+{因此 $x\mapsto|v|_{y_x}$ continuous。具体地，给定 $V$ 中的点及 $\varepsilon&gt;0$，选择 error 小于 $\varepsilon/3$ 的 truncation，再利用其 evaluation 的 continuity，在某个 neighborhood 上将两个函数值之差控制在 $\varepsilon/3$ 内。加上两端的 approximation errors，$v$ 的函数值之差即小于 $\varepsilon$。Evaluation topology 是使全部这些 functions 连续的最弱 topology，故 $x\mapsto y_x$ continuous。最后，定义 $V$ 的有限个 inequalities 是 continuous real-valued functions 上的 closed conditions。}
+\end{proof}</pre></details><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(native applications)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(native applications)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(native applications)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

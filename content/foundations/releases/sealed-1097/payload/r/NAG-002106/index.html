@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002106/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Pure dimension of initial schemes · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002106 · Accepted whole</p><h1>Pure dimension of initial schemes</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.19.2">Open in the English reader · PDF page 882</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="17cf9192d75e78049f6304a2188697b686df12127f6946e482876a26ab474ff7">
+\begin{proposition}[\bi{Pure dimension of initial schemes}{初始概形的纯维性}]
+\label{cand:initialpuredimension}
+\bi{Let $X\subset\operatorname{Spec}K[M]$ be pure of dimension $d$. For every $w\in\operatorname{Trop}(X)$, every initial scheme $\operatorname{in}_{w,t,L}(X)$ is pure of dimension $d$.}
+{设 $X\subset\operatorname{Spec}K[M]$ 纯 $d$ 维。对每个 $w\in\operatorname{Trop}(X)$，每个初始概形 $\operatorname{in}_{w,t,L}(X)$ 均纯 $d$ 维。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c0b0f88157891318336abf29da48c0c906da29415647096f806b03ae04a41107">
+\begin{proof}
+\bi{By \cite[Tag 02NK]{StacksAlg}, extension from $K$ to $L$ preserves pure dimension. Translate by $t$ and work at weight zero over $L$. Write $R=L^\circ$, $k=\widetilde L$ and $I\subset L[M]$ for the translated ideal. Its finitely many minimal primes are $P_1,\ldots,P_s$. Let}
+{由 \cite[Tag 02NK]{StacksAlg}，从 $K$ 到 $L$ 的扩域保持纯维性。以 $t$ 平移后，在 $L$ 上的零权重处工作。记 $R=L^\circ$、$k=\widetilde L$，并以 $I\subset L[M]$ 表示平移后的理想。设其有限个极小素理想为 $P_1,\ldots,P_s$，令}
+\[
+ B=R[M]/(I\cap R[M]),\qquad
+ B_i=R[M]/(P_i\cap R[M]).
+\]
+\bi{Each $B_i$ is a domain of finite type containing $R$, and its generic fibre is the dimension-$d$ domain $L[M]/P_i$. The exact valuation-ring dimension theorem \cite[Tag 00QK]{StacksAlg} says that, whenever $B_i\otimes_R k$ is nonzero, its spectrum is equidimensional of dimension $d$. Its hypotheses require finite type, not finite presentation or a discrete valuation.}
+{每个 $B_i$ 是包含 $R$ 的有限型整环，其一般纤维为 $d$ 维整环 $L[M]/P_i$。赋值环维数定理 \cite[Tag 00QK]{StacksAlg} 说明：只要 $B_i\otimes_R k$ 非零，其谱便等维且维数为 $d$。该定理要求有限型，不要求有限表示或离散赋值。}
+
+\bi{The identity}
+{恒等式}
+\[
+ \sqrt{I\cap R[M]}=\sqrt I\cap R[M]
+     =\bigcap_i(P_i\cap R[M])
+\]
+\bi{shows that $\operatorname{Spec}B$ is the union of the closed subsets $\operatorname{Spec}B_i$. Taking the inverse image of this finite union in the closed fibre shows that $\operatorname{Spec}(B\otimes_Rk)$ is the union of the nonempty pure dimension-$d$ special fibres just described. A finite union of pure dimension-$d$ closed subsets is pure of dimension $d$: every irreducible component is a maximal irreducible component among them, and a proper containment of irreducible closed subsets strictly lowers their finite dimensions. The closed fibre is nonempty by Theorem~\ref{cand:realinitialdegeneration}.}
+{说明 $\operatorname{Spec}B$ 是闭子集 $\operatorname{Spec}B_i$ 的并。在闭纤维中取此有限并的逆像，得到 $\operatorname{Spec}(B\otimes_Rk)$ 是上述非空纯 $d$ 维特殊纤维的并。有限个纯 $d$ 维闭子集之并仍纯 $d$ 维：其每个不可约分支是这些闭子集的不可约分支中的极大者，而不可约闭子集的真包含会严格降低有限维数。由 Theorem~\ref{cand:realinitialdegeneration}，该闭纤维非空。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="05c5dbc4cc9fa53a6482d85b1b6e256eb12a88298d6aee03d458f8d96afc4b6e">
+{初始概形采用 Theorem~\ref{cand:realinitialdegeneration} 的定义。称概形纯 $d$ 维，是指其底空间的每个不可约分支均为 $d$ 维；允许嵌入分支。}
+
+\begin{lemma}[\bi{Finite filtrations and zero-dimensional algebras}{有限滤过与零维代数}]
+\label{cand:finiteprimefiltration}
+\bi{Every finite module over a Noetherian ring has a finite filtration whose nonzero successive quotients are $A/\mathfrak p$ for prime ideals $\mathfrak p$. A zero-dimensional algebra of finite type over a field $k$ is finite-dimensional over $k$.}
+{Noetherian 环上的每个有限模具有有限滤过，其非零相继商均形如 $A/\mathfrak p$，其中 $\mathfrak p$ 为素理想。域 $k$ 上的有限型零维代数在 $k$ 上有限维。}
+\end{lemma}
+</pre></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole <small>(newly sealed native whole since the 358 math review)</small></li><li>STACKS-00QK · named external application <small>(matched frozen Stacks application)</small></li><li>STACKS-02NK · named external application <small>(matched frozen Stacks application)</small></li><li>APP-STACKS-00QK@NAG-002106:original-382-site-4 · named external application</li><li>APP-STACKS-00QK@NAG-002106:original-382-site-4 · named external application <small>(requires)</small></li><li>APP-STACKS-02NK@NAG-002106:original-382-site-1 · named external application</li><li>APP-STACKS-02NK@NAG-002106:original-382-site-1 · named external application <small>(requires)</small></li><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole</li><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00QK">APP-STACKS-00QK@NAG-002106:original-382-site-4</a></li><li><a href="https://stacks.math.columbia.edu/tag/02NK">APP-STACKS-02NK@NAG-002106:original-382-site-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002085/">cand:realinitialdegeneration</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

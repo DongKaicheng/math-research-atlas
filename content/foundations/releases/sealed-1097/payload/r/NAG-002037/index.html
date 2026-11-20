@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002037/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Affine algebraic models · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002037 · Accepted whole</p><h1>Affine algebraic models</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.13.1">Open in the English reader · PDF page 653</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="7c2edc22cd56a08aec2af50405184913d57fdc17a47e8c692f03bb2ce5232bff">
+\begin{lemma}[\bi{Affine algebraic models}{仿射代数模型}]
+\label{cand:affineflatformalcompletion}
+\bi{Let $B$ be a finitely presented flat $O$-algebra, with a
+presentation}
+{设 $B$ 为有限表示的平坦 $O$-代数，并给定表示}
+\[
+ B=O[T_1,\ldots,T_n]/(f_1,\ldots,f_s).
+\]
+\bi{Its completion $\widehat B$ is an admissible $O$-algebra, and
+the natural maps give}
+{其完备化 $\widehat B$ 是 admissible $O$-代数，自然映射给出}
+\[
+ \begin{aligned}
+ \widehat B&amp;=O\langle T_1,\ldots,T_n\rangle/(f_1,\ldots,f_s),\\
+ \widehat B[1/\pi]
+   &amp;=K\langle T_1,\ldots,T_n\rangle/(f_1,\ldots,f_s),\\
+ B/\pi^m B&amp;\simeq\widehat B/\pi^m\widehat B\qquad(m\geq1).
+ \end{aligned}
+\]
+\bi{The generic fibre of $\operatorname{Spf}\widehat B$ is
+canonically the analytic domain $|T_i|\leq1$ in
+$(\operatorname{Spec}B[1/\pi])^{\an}$, with the displayed affinoid
+algebra. For $b\in B$, the completion of $B[1/b]$ is the principal
+formal-open algebra}
+{形式概形 $\operatorname{Spf}\widehat B$ 的泛纤维典范地等于
+$(\operatorname{Spec}B[1/\pi])^{\an}$ 中的解析域 $|T_i|\leq1$，
+其 affinoid 代数为上式所列代数。对 $b\in B$，
+$B[1/b]$ 的完备化为主形式开集的代数}
+\[
+ \widehat{B[1/b]}
+   \simeq\widehat B\langle U\rangle/(bU-1).
+\]
+\bi{Its generic fibre is the domain $|b|=1$ in the preceding
+bounded-coordinate domain. These identifications respect the
+polynomial coordinate maps and their restrictions.}
+{其泛纤维为上述有界坐标域中的 $|b|=1$ 域。这些识别与
+多项式坐标映射及其限制相容。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="1c03d560e5dd1beb17a6cbaaabcc080abd0b27b493eb7a0a7e75f6c1f42eaa49">
+\begin{proof}
+\bi{The completion of $O[T]$ is $P=O\langle T\rangle$:
+a compatible polynomial system modulo $\pi^m$ gives one coefficient
+in the complete ring $O$ at each monomial, and for every $m$ only
+finitely many coefficients survive modulo $\pi^m$. Conversely such
+a restricted coefficient family gives the compatible polynomial
+system. The powers of $\pi$ define the given topology on $O$.}
+{$O[T]$ 的完备化为 $P=O\langle T\rangle$：模 $\pi^m$ 的
+相容多项式族在每个单项式处给出完备环 $O$ 中的一个系数，
+且对每个 $m$ 只有有限个系数在模 $\pi^m$ 后非零。反之，
+这样的受限系数族给出相容多项式族。$\pi$ 的各次幂定义
+$O$ 上给定的拓扑。}
+
+\bi{Apply Lemma~\ref{fnd:adicquotientcompletion} to
+$O[T]\twoheadrightarrow B$. It makes $P\to\widehat B$ surjective,
+with kernel the closure of $(f_1,\ldots,f_s)$ from $O[T]$.
+The ideal $(f_1,\ldots,f_s)P$ is closed by
+Proposition~\ref{fnd:formalmoduletopology}. Polynomial approximation
+of the finitely many coefficients in a sum $\sum_i f_i g_i$ shows
+that this ideal is exactly the stated closure. This proves the
+restricted quotient presentation.}
+{对 $O[T]\twoheadrightarrow B$ 应用
+Lemma~\ref{fnd:adicquotientcompletion}，得到满射
+$P\to\widehat B$，其核为 $O[T]$ 中理想
+$(f_1,\ldots,f_s)$ 的闭包。由
+Proposition~\ref{fnd:formalmoduletopology}，
+$(f_1,\ldots,f_s)P$ 是闭理想。对有限和 $\sum_i f_i g_i$
+中的各 $g_i$ 作多项式逼近，说明该理想恰为上述闭包，
+从而得到受限级数商表示。}
+
+\bi{Flatness of $B$ preserves injectivity of multiplication by
+$\pi$ on $O$. Hence $B$ has no $\pi$-torsion.
+Lemma~\ref{fnd:adicquotientcompletion} gives the same assertion
+for $\widehat B$ and gives all the reduction isomorphisms.
+The displayed quotient is topologically of finite type;
+Theorem~\ref{fnd:formaltorsionfreepresentation} makes it
+topologically finitely presented, so it is admissible.
+By Proposition~\ref{fnd:affineformalpresentations}, inverting
+$\pi$ gives the displayed strict affinoid algebra.
+Theorem~\ref{fnd:affineanalytificationconstruction}, with all
+radii equal to one, identifies it with the asserted analytic
+domain, including its analytic structure.}
+{$B$ 的平坦性保持 $O$ 上乘以 $\pi$ 的单射性，故 $B$
+无 $\pi$-挠。Lemma~\ref{fnd:adicquotientcompletion}
+给出 $\widehat B$ 的同一无挠性，以及全部约化同构。
+所列商拓扑有限型，由
+Theorem~\ref{fnd:formaltorsionfreepresentation} 为拓扑有限表示，
+因此是 admissible 代数。由
+Proposition~\ref{fnd:affineformalpresentations}，逆转 $\pi$
+得到所列 strict affinoid 代数。对
+Theorem~\ref{fnd:affineanalytificationconstruction} 取全部半径
+为一，即将它连同解析结构识别为所述解析域。}
+
+\bi{Localization preserves $O$-flatness. Apply the quotient
+calculation to $B[1/b]=B[U]/(bU-1)$ to obtain the last
+presentation. Equivalently, its reductions modulo every
+$\pi^m$ are $(B/\pi^mB)[1/b]$, so it is the principal open
+restriction of $\operatorname{Spf}\widehat B$.
+Proposition~\ref{fnd:formalprincipalopenflat} identifies its
+generic domain by $|b|\geq1$; every $b\in\widehat B$ already
+has absolute value at most one there, giving $|b|=1$.
+All these maps agree on polynomial coordinates and their
+inverses, hence agree on the completions by continuity.}
+{局部化保持 $O$-平坦性。对
+$B[1/b]=B[U]/(bU-1)$ 应用上述商计算，得到最后一个表示。
+等价地，它对每个 $\pi^m$ 的约化为
+$(B/\pi^mB)[1/b]$，所以就是
+$\operatorname{Spf}\widehat B$ 的主开集限制。
+Proposition~\ref{fnd:formalprincipalopenflat}
+将其泛纤维识别为 $|b|\geq1$ 域；而
+$b\in\widehat B$ 的绝对值在原泛纤维上已经至多为一，
+故该域为 $|b|=1$。这些映射在多项式坐标及其逆上相同，
+因而由连续性在完备化上相同。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002037-reader.jpg" alt="Typeset mathematical passage from PDF page 653" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=653">PDF page 653 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(earlier reviewed original candidate in this packet)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable</li><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole</li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole</li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole</li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole</li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole</li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="formal_completion_and_principal_localization"><h3>formal completion and principal localization</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001919/">fnd:adicquotientcompletion</a></li><li><a href="/r/NAG-001707/">fnd:affineanalytificationconstruction</a></li><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001916/">fnd:formalmoduletopology</a></li><li><a href="/r/NAG-001943/">fnd:formalprincipalopenflat</a></li><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

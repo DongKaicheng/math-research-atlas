@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001770/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Countable exponent-one extensions · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001770 · Accepted whole</p><h1>Countable exponent-one extensions</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.35.33">Open in the English reader · PDF page 338</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d3e84216cdf178f2eb0643bd564c3b23bd0ad6c3d19ccf1564f652ce9e7959fd">
+\begin{theorem}[\bi{Countable exponent-one extensions}{可数指数一扩张}]
+\label{fnd:topologicalpbasis}
+\bi{Let $F$ be a complete non-Archimedean field of characteristic $p&gt;0$. Let $E$ be a complete intermediate field $F\subset E\subset F^{1/p}$ which has a countable dense $F$-linear span. There is a finite or countable family $(a_i)_{i\in I}$ in $E$ such that the monomials}
+{设 $F$ 为特征 $p&gt;0$ 的完备非阿基米德域，$E$ 为完备中间域 $F\subset E\subset F^{1/p}$，且存在可数集合，其 $F$-线性张成在 $E$ 中稠密。则存在有限或可数族 $(a_i)_{i\in I}\subset E$，使单项式}
+\[
+ a^\nu=\prod_{i\in I}a_i^{\nu_i},
+ \qquad 0\leq \nu_i&lt;p,\qquad
+ \#\{i:\nu_i\ne0\}&lt;\infty,
+\]
+\bi{form a topological $F$-basis of $E$. More precisely, the summation map from the weighted $c_0$-space with weights $|a^\nu|$ onto $E$ is a bounded linear isomorphism with bounded inverse.}
+{组成 $E$ 的拓扑 $F$-基。更精确地，以 $|a^\nu|$ 为权的 $c_0$ 空间到 $E$ 的求和映射为有界线性同构，其逆也有界。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4ae3b8df357203bdb74df200d91514ef03f5b4f60ba48318540aa583c0a7b41c">
+\begin{proof}
+\bi{We first treat a single extension $L=H(x)$ of degree $p$, with $x^p\in H$ and $H$ complete. The $H$-derivation $D=d/dx$ is well defined on $L$, and is bounded by finite-dimensional norm equivalence, Lemma~\ref{fnd:finiteextensionnorms}. Suppose first that $|H^\times|$ is dense in $\mathbb R_{&gt;0}$. Given $0&lt;\theta&lt;1$, choose $0&lt;\eta&lt;1$ with $\eta^{2(p-1)}&gt;\theta$. Put $C=\sup_{y\ne0}|Dy|/|y|$, which is finite and positive. Choose $y$ with $|Dy|&gt;\eta C|y|$, and multiply it by an element of $H$ so that $a=\lambda y$ satisfies $\eta&lt;|a|\leq1$. Then $|Da|&gt;\eta^2C$. Thus the derivation $\partial=D/(Da)$ satisfies $\partial a=1$ and $\|\partial\|&lt;\eta^{-2}$.}
+{先处理单步次数 $p$ 的扩张 $L=H(x)$，其中 $x^p\in H$ 且 $H$ 完备。$H$-导子 $D=d/dx$ 在 $L$ 上良定义，并由有限维范数等价 Lemma~\ref{fnd:finiteextensionnorms} 有界。先假设 $|H^\times|$ 在 $\mathbb R_{&gt;0}$ 中稠密。给定 $0&lt;\theta&lt;1$，选择 $0&lt;\eta&lt;1$ 使 $\eta^{2(p-1)}&gt;\theta$。令 $C=\sup_{y\ne0}|Dy|/|y|$，它有限且为正。选择 $y$ 满足 $|Dy|&gt;\eta C|y|$，再乘以 $H$ 的元素，使 $a=\lambda y$ 满足 $\eta&lt;|a|\leq1$。于是 $|Da|&gt;\eta^2C$，导子 $\partial=D/(Da)$ 满足 $\partial a=1$ 且 $\|\partial\|&lt;\eta^{-2}$。}
+
+\bi{For $z=\sum_{i=0}^{p-1}c_i a^i$, Taylor&#x27;s finite identity gives}
+{对 $z=\sum_{i=0}^{p-1}c_i a^i$，有限 Taylor 恒等式给出}
+\[
+ c_i=\sum_{j=i}^{p-1}\frac{(-a)^{j-i}}{i!(j-i)!}\,\partial^jz .
+\]
+\bi{All factorials here are nonzero elements of the prime field and have absolute value one. Hence}
+{这里的各阶乘都是素域中的非零元素，绝对值为一。因此}
+\[
+ \theta\max_i|c_i|\leq
+ \eta^{2(p-1)}\max_i|c_i|
+ \leq |z|\leq\max_i|c_i|.
+\]
+\bi{In particular, $a$ generates $L/H$ and its power basis has a coefficient bound as close to one as desired.}
+{特别地，$a$ 生成 $L/H$，其幂基的系数界可以任意接近一。}
+
+\bi{If $H$ is discretely valued, the value group of $L\subset H^{1/p}$ is discrete as well. The bounded set $\{|Dz|:|z|\leq1\}$ therefore has a positive maximum. Choose $a$ in the unit ball attaining it. The derivation $\partial=D/(Da)$ preserves that unit ball. The same finite Taylor identity shows that the coefficients of every $z$ in the unit ball, expressed in $1,a,\ldots,a^{p-1}$, lie in $H^\circ$. Consequently}
+{若 $H$ 离散赋值，则 $L\subset H^{1/p}$ 的值群也离散。有界集合 $\{|Dz|:|z|\leq1\}$ 因而有正的最大值。选择单位球中达到最大值的 $a$；导子 $\partial=D/(Da)$ 保持单位球。同一个有限 Taylor 恒等式说明：单位球中每个 $z$ 关于 $1,a,\ldots,a^{p-1}$ 的系数均属于 $H^\circ$。因此}
+\[
+                   L^\circ=\bigoplus_{i=0}^{p-1}H^\circ a^i .
+\]
+\bi{For a trivial absolute value all these assertions follow directly from the algebraic power basis.}
+{若绝对值平凡，则这些断言直接来自代数幂基。}
+
+\bi{Choose a sequence generating a dense subfield $E&#x27;\subset E$ over $F$, and write $E&#x27;=\bigcup_n F_n$, where each nontrivial step $F_n/F_{n-1}$ has degree $p$. Each $F_n$ is complete and contained in $F^{1/p}$. If $F$ is nondiscretely and nontrivially valued, choose numbers $\theta_n\in(0,1)$ with $\theta_*=\prod_n\theta_n&gt;0$, and use the first construction at the $n$th step. Iteration of its coefficient estimate gives, for every finite linear combination of the resulting $p$-monomials,}
+{选择一个在 $F$ 上生成稠密子域 $E&#x27;\subset E$ 的序列，并写 $E&#x27;=\bigcup_nF_n$，其中每个非平凡步骤 $F_n/F_{n-1}$ 的次数为 $p$。每个 $F_n$ 均完备且包含于 $F^{1/p}$。若 $F$ 的赋值非离散且非平凡，选择 $\theta_n\in(0,1)$，使 $\theta_*=\prod_n\theta_n&gt;0$，并在第 $n$ 步使用第一种构造。反复使用系数估计，对所获 $p$-单项式的任意有限线性组合得到}
+\[
+       \theta_*\max_\nu|c_\nu|
+          \leq\left|\sum_\nu c_\nu a^\nu\right|
+          \leq\max_\nu|c_\nu|.
+\]
+\bi{If $F$ is discretely valued, use the integral power bases instead. They give $(E&#x27;)^\circ=\bigoplus_\nu F^\circ a^\nu$. For a uniformizer $\pi\in F$, scaling a nonzero sum into the interval $(|\pi|,1]$ gives the same estimate with $\theta_*=|\pi|$. For trivial $F$, take $\theta_*=1$. In all cases $\theta_*\leq|a^\nu|\leq1$, so the displayed norm is equivalent to the weighted maximum norm. Completing this finite-support direct sum gives exactly the indicated weighted $c_0$-space. Its image is closed by the lower estimate and dense because it contains $E&#x27;$. It is therefore all of $E$, and both continuity assertions follow.}
+{若 $F$ 离散赋值，则改用整幂基，得到 $(E&#x27;)^\circ=\bigoplus_\nu F^\circ a^\nu$。取 $F$ 的一致化参数 $\pi$，将非零和的范数缩放到区间 $(|\pi|,1]$，便得到相同估计，其中 $\theta_*=|\pi|$。若 $F$ 赋值平凡，取 $\theta_*=1$。在所有情形下，$\theta_*\leq|a^\nu|\leq1$，所以所列范数与加权最大值范数等价。完成这个有限支撑直和，恰得指定的加权 $c_0$ 空间；其像由下界估计闭，又因包含 $E&#x27;$ 而稠密，故等于整个 $E$，两个连续性断言亦随之成立。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001770-reader.jpg" alt="Typeset mathematical passage from PDF page 338" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=338">PDF page 338 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

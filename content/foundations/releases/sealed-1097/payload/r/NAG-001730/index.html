@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001730/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>An algebraic thickening captures analytic support · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001730 · Accepted whole</p><h1>An algebraic thickening captures analytic support</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.34.5">Open in the English reader · PDF page 301</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="fc722b4810126f25b668305ed8c113d911519e95cedf53d44ab462aadb26ede7">
+\begin{lemma}[\bi{An algebraic thickening captures analytic support}
+{代数增厚承载解析支撑}]
+\label{fnd:analyticcoherentsupportthickening}
+\bi{Let $X$ be proper over $K$, let $Z\hookrightarrow X$
+be a closed subscheme with ideal $\mathcal I$, and let
+$\mathcal F$ be a coherent module on $X^{\an}_G$.
+If $\mathcal F$ vanishes on $X^{\an}\setminus Z^{\an}$,
+then $(\mathcal I^{\an})^N\mathcal F=0$ for some integer
+$N\ge1$. Hence $\mathcal F$ is the closed direct image of a
+coherent module on the analytification of
+$Z_N=(X,\mathcal O_X/\mathcal I^N)$.}
+{设 $X$ 在 $K$ 上适当，$Z\hookrightarrow X$ 是理想为
+$\mathcal I$ 的闭子概形，$\mathcal F$ 是 $X^{\an}_G$ 上的
+凝聚模。如果 $\mathcal F$ 在 $X^{\an}\setminus Z^{\an}$
+上为零，则对某个整数 $N\ge1$ 有
+$(\mathcal I^{\an})^N\mathcal F=0$。
+因此 $\mathcal F$ 是
+$Z_N=(X,\mathcal O_X/\mathcal I^N)$ 的解析化上某个凝聚模
+的闭直接像。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3328f24b858bb6a1c336a48ca425afa0297cfa24609f808b61da2684714cbaed">
+\begin{proof}
+\bi{Use a finite affinoid cover from
+Lemma~\ref{fnd:properanalyticfinitecovers}. On one member
+$V=\mathcal M(A)$ write $M=\mathcal F(V)$ and
+$J=\mathcal I^{\an}(V)$; both are finite over $A$.
+For $x\in V$, with prime $\mathfrak p=\ker|\cdot|_x$,
+the fibre $M\otimes_A\mathcal H(x)$ is zero exactly when
+$M_{\mathfrak p}=0$. Indeed, the residue-field extension
+$\kappa(\mathfrak p)\subset\mathcal H(x)$ is faithful,
+and Nakayama&#x27;s lemma applies to the finite module
+$M_{\mathfrak p}$. Moreover
+$M_{\mathfrak p}=0$ exactly when
+$\operatorname{Ann}_A(M)\not\subset\mathfrak p$:
+if the localization vanishes, the product of finitely many
+denominators killing a generating list of $M$ lies in the
+annihilator and outside $\mathfrak p$; the converse is immediate.}
+{取 Lemma~\ref{fnd:properanalyticfinitecovers} 的有限
+affinoid 覆盖。在其中一个成员 $V=\mathcal M(A)$ 上记
+$M=\mathcal F(V)$、$J=\mathcal I^{\an}(V)$；两者都在
+$A$ 上有限。对 $x\in V$，记
+$\mathfrak p=\ker|\cdot|_x$。纤维
+$M\otimes_A\mathcal H(x)$ 为零当且仅当 $M_{\mathfrak p}=0$：
+剩余域扩张 $\kappa(\mathfrak p)\subset\mathcal H(x)$
+忠实，再对有限模 $M_{\mathfrak p}$ 使用 Nakayama 引理。
+此外，$M_{\mathfrak p}=0$ 当且仅当
+$\operatorname{Ann}_A(M)\not\subset\mathfrak p$。
+确实，若局部化为零，可分别选择分母消灭 $M$ 的有限组生成元，
+其乘积属于消灭理想而不属于 $\mathfrak p$；反向显然。}
+
+\bi{Put $B=A/\operatorname{Ann}_A(M)$ with its affinoid
+quotient norm. Every point of $\mathcal M(B)$ gives a
+nonzero fibre of $M$, so the support hypothesis forces every
+element of $J$ to vanish there. By the spectral-radius formula
+and Proposition~\ref{fnd:spectralnilradicalinternal}, its
+image in $B$ is nilpotent. If $a_1,\ldots,a_s$ generate $J$
+and $a_i^{e_i}$ annihilates $M$, then
+$J^{1+\sum_i(e_i-1)}M=0$: each monomial of this total degree
+has some exponent at least $e_i$. Take the maximum of these
+finitely many exponents over the cover. The resulting global
+annihilation and Lemma~\ref{fnd:closedanalyticcoherentextension}
+give the stated factorization through $Z_N^{\an}$.}
+{给 $B=A/\operatorname{Ann}_A(M)$ 配备 affinoid 商范数。
+$\mathcal M(B)$ 的每个点都给出 $M$ 的非零纤维，所以支撑
+假设迫使 $J$ 的每个元素在其上取值为零。
+由谱半径公式及 Proposition~\ref{fnd:spectralnilradicalinternal}，
+它在 $B$ 中的像幂零。若 $a_1,\ldots,a_s$ 生成 $J$，且
+$a_i^{e_i}$ 消灭 $M$，则
+$J^{1+\sum_i(e_i-1)}M=0$：每个具有这个总次数的单项式
+都有某个指数至少为 $e_i$。在有限覆盖上取这些指数的最大值，
+得到全局消灭关系。再由
+Lemma~\ref{fnd:closedanalyticcoherentextension}，便得经过
+$Z_N^{\an}$ 的所述分解。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001730-reader.jpg" alt="Typeset mathematical passage from PDF page 301" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=301">PDF page 301 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001660/">NAG-001660</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001729/">NAG-001729</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001897/">NAG-001897</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001897/">fnd:closedanalyticcoherentextension</a></li><li><a href="/r/NAG-001729/">fnd:properanalyticfinitecovers</a></li><li><a href="/r/NAG-001660/">fnd:spectralnilradicalinternal</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

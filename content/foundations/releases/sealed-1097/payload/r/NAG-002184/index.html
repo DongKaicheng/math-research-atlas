@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002184/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Balancing and commutation of corners · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002184 · Accepted whole</p><h1>Balancing and commutation of corners</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.14.5">Open in the English reader · PDF page 863</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9fd1e756413be563b5ed1856b77991070765e82a48bb36481faec0262b0c8296">
+\begin{theorem}[\bi{Balancing and commutation of corners}
+{角点的平衡性与交换性}]
+\label{cand:cornerbalancecommute}
+\bi{For every balanced real cycle $C$ and continuous piecewise
+affine functions $\varphi,\psi$ on it, $D_\varphi C$ is balanced
+and}
+{对每个平衡实循环 $C$ 及其上的连续分片仿射函数
+$\varphi,\psi$，循环 $D_\varphi C$ 平衡，且}
+\[
+ D_\psi D_\varphi C=D_\varphi D_\psi C.
+\]
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="ceccbd3214940659035f4bced823563137d9cf3db9237c2fa146d78b050715f4">
+\begin{proof}
+\bi{Both assertions are local at an original face of codimension
+two. Take its star and quotient by its direction space. Subtract
+linear extensions of the two functions along that face. By
+Proposition~\ref{cand:cornerwelldefined}, this changes neither
+corner. We have reduced to a two-dimensional balanced rational
+fan, with both functions homogeneous and linear on its cones.
+Cut cones with lineality by rational hyperplanes if necessary,
+so that the cones are pointed; their two-dimensional cones then
+have two extreme rays. Let the distinct primitive ray vectors be
+$v_1,\ldots,v_s$. For a cone with extreme rays $v_i,v_j$ put}
+{两个断言均可在原复形的余维二面处局部验证。取其星形复形
+并商去该面的方向空间，再减去两个函数沿该面的线性延拓。
+由 Proposition~\ref{cand:cornerwelldefined}，这不改变角点。
+于是归约到二维平衡有理扇，两函数均齐次且逐锥线性。必要时
+以有理超平面切割含直线的锥，使锥成为尖锥；此时每个二维锥
+有两条极射线。设互异本原射线向量为 $v_1,\ldots,v_s$。
+对由 $v_i,v_j$ 生成的锥，置}
+\[
+ d_{ij}=[N_{\langle v_i,v_j\rangle}:\mathbf Zv_i+\mathbf Zv_j],
+ \qquad a_{ij}=a_{ji}=w_{ij}/d_{ij};
+\]
+\bi{put $a_{ij}=0$ if there is no such cone. Modulo
+$\mathbf Rv_i$, its primitive normal is the class of $v_j/d_{ij}$.
+Indeed $v_i$ is primitive in the rank-two saturated lattice;
+Lemma~\ref{cand:elementarylatticesplitting} completes it to a
+basis, in which $v_j=bv_i+d_{ij}e$ with
+the appropriate sign of $e$. Balancing at $v_i$ therefore says}
+{若不存在该锥则令 $a_{ij}=0$。模 $\mathbf Rv_i$ 后，其本原
+法向是 $v_j/d_{ij}$ 的类。事实上，$v_i$ 在秩二饱和格中
+本原，由 Lemma~\ref{cand:elementarylatticesplitting} 补成格基
+后可写 $v_j=bv_i+d_{ij}e$，其中 $e$ 的符号
+取向正确。因此，沿 $v_i$ 的平衡性给出}
+\[
+ \sum_j a_{ij}v_j=\lambda_i v_i
+ \quad\text{for some }\lambda_i\in\mathbf R.
+\]
+\bi{The weight of the first corner on the ray $i$ is consequently}
+{因而第一次角点在第 $i$ 条射线上的权重为}
+\[
+ b_i(\varphi)=\sum_j a_{ij}\varphi(v_j)-\lambda_i\varphi(v_i).
+ \tag{R}\label{eq:candtwodcorner}
+\]
+\bi{One may use $v_j/d_{ij}$ instead of a lattice lift in
+\eqref{eq:candcornerweight}, since their difference is tangential.
+Symmetry of $a_{ij}$ and the displayed balancing equations give}
+{在~\eqref{eq:candcornerweight} 中可用 $v_j/d_{ij}$ 代替格
+提升，因为二者之差为切向向量。由 $a_{ij}$ 的对称性及所示
+平衡等式，得到}
+\[
+ \sum_i b_i(\varphi)v_i
+ =\sum_j\varphi(v_j)\sum_i a_{ij}v_i
+       -\sum_i\lambda_i\varphi(v_i)v_i=0.
+\]
+\bi{This is balancing for the corner at the origin. The coefficient
+of the second corner at that origin is}
+{这正是角点在原点处的平衡性。第二次角点在原点的系数为}
+\[
+ \sum_i b_i(\varphi)\psi(v_i)
+ =\sum_{i,j}a_{ij}\varphi(v_j)\psi(v_i)
+       -\sum_i\lambda_i\varphi(v_i)\psi(v_i),
+\]
+\bi{which is symmetric in $\varphi,\psi$. Hence the two orders
+agree. For a cycle of dimension one, its corner is a zero-cycle,
+whose further corner is zero; in dimension zero both assertions
+are immediate. The local calculation and refinement invariance
+prove the theorem in every dimension.}
+{此式关于 $\varphi,\psi$ 对称，故两个次序相同。一维循环的
+角点为零循环，再取角点为零；零维情形的两个断言直接成立。
+局部计算及细分不变性由此证明任意维数的结论。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002184-reader.jpg" alt="Typeset mathematical passage from PDF page 863" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=863">PDF page 863 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole</li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002183/">NAG-002183</a> · selected whole</li><li><a href="/r/NAG-002183/">NAG-002183</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002183/">cand:cornerwelldefined</a></li><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

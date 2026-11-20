@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001422/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Ordinary and completed coefficient tensor products · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001422 · Accepted whole</p><h1>Ordinary and completed coefficient tensor products</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.14.4">Open in the English reader · PDF page 157</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="85642e9ae6d7580510f99a5bb491201af437db919c117d3fcdde168ebada0867">
+\begin{theorem}[\bi{Ordinary and completed coefficient tensor products}{Ordinary 与 completed coefficient tensor products}]\label{fnd:weightedcoefficienttensor}
+\bi{Let $A,M,q,D$ be as in Theorem~\ref{fnd:weightedcoefficientpresentation}, and let $B=\mathcal C_w(A)$ have the convolution structure above. The natural map}
+{设 $A,M,q,D$ 如 Theorem~\ref{fnd:weightedcoefficientpresentation}，并给 $B=\mathcal C_w(A)$ 配备上述 convolution structure。Natural map}
+\[
+ \Phi:B\otimes_A M\longrightarrow\mathcal C_w(M),
+ \qquad
+ b\otimes m\longmapsto(b_\gamma m)_{\gamma\in\Gamma},
+\]
+\bi{is a $B$-linear isomorphism. Give the algebraic tensor product its projective seminorm}
+{为 $B$-linear isomorphism。在 algebraic tensor product 上使用 projective seminorm}
+\[
+ \|z\|_\pi=
+ \inf_{z=\sum_{j=1}^{l}b_j\otimes m_j}
+       \max_{1\leq j\leq l}\bigl(\|b_j\|_w\|m_j\|\bigr),
+\]
+\bi{where only finite tensor expressions occur. Then}
+{其中只使用 finite tensor expressions。则}
+\[
+ \|z\|_\pi=\|\Phi(z)\|_w.
+\]
+\bi{In particular this seminorm is definite and complete, and the canonical map to its separated completion is an isometric isomorphism:}
+{特别地，此 seminorm 为 definite 且 complete；到其 separated completion 的 canonical map 为 isometric isomorphism：}
+\[
+ B\otimes_A M\simeq B\widehat\otimes_A M
+       \simeq\mathcal C_w(M).
+\]
+\bi{These identifications are natural in finite $A$-modules. No strictness or Noetherianity assumption on $B$ is required.}
+{这些 identifications 对 finite $A$-modules natural。无需假设 $B$ strict 或 Noetherian。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="71dd11147387ea147cc2bb729837e31079979a0250ed32770d9329660fdb48d7">
+\begin{proof}
+\bi{Write $e_1,\ldots,e_m$ for the images of the standard generators under $q$. To see the algebraic presentation without assuming exactness of any completed tensor functor, put $Q=B^m/D_BB^s$, where $D_B$ is the same matrix with its entries regarded as constants in $B$. Sending a vector $(b_i)$ to $\sum_i b_i\otimes e_i$ defines a map}
+{记 $e_1,\ldots,e_m$ 为 $q$ 下 standard generators 的 images。为在不假设任何 completed tensor functor exactness 的前提下确定 algebraic presentation，令 $Q=B^m/D_BB^s$，其中 $D_B$ 是同一个 matrix，只将其 entries 视为 $B$ 中的 constants。将 vector $(b_i)$ 送到 $\sum_i b_i\otimes e_i$，得到 map}
+\[
+ Q\longrightarrow B\otimes_A M.
+\]
+\bi{Conversely, given $b\in B$ and $m\in M$, choose $a\in A^m$ with $q(a)=m$ and send $(b,m)$ to the class of $ba$ in $Q$. Two such lifts differ by $Dc$ for some $c\in A^s$, so their classes differ by $D_B(bc)$ and agree. Sums of lifts and scalar multiples of lifts show additivity and $A$-balancedness. The defining property of the algebraic tensor product therefore gives an inverse map. Thus $B\otimes_A M=Q$ by an explicit generators-and-relations argument.}
+{反之，给定 $b\in B$ 和 $m\in M$，选择满足 $q(a)=m$ 的 $a\in A^m$，并将 $(b,m)$ 送到 $Q$ 中 $ba$ 的 class。两个 lifts 的差可写成 $Dc$，其中 $c\in A^s$；相应 classes 的差为 $D_B(bc)$，所以它们相等。对 lifts 作加法与 scalar multiplication，得到 additivity 和 $A$-balancedness。由 algebraic tensor product 的定义性质，得到 inverse map。因此，显式的 generators-and-relations argument 给出 $B\otimes_A M=Q$。}
+
+\bi{Under the coefficient identifications, $D_B$ and the generator map $B^m\to\mathcal C_w(M)$ are exactly $D_w$ and $q_w$. This is first checked on finitely supported families; continuity and Lemma~\ref{fnd:weightedcoefficientconvolution} give $B$-linearity on all families. Theorem~\ref{fnd:weightedcoefficientpresentation} identifies $Q$ with $\mathcal C_w(M)$, with its coefficient norm equal to the quotient norm from $B^m$. The resulting map is precisely $\Phi$. This proves its algebraic bijectivity and shows why its relation image is closed.}
+{在 coefficient identifications 下，$D_B$ 以及 generator map $B^m\to\mathcal C_w(M)$ 正是 $D_w$ 与 $q_w$。先在 finitely supported families 上核对，再由 continuity 及 Lemma~\ref{fnd:weightedcoefficientconvolution}，得到全部 families 上的 $B$-linearity。Theorem~\ref{fnd:weightedcoefficientpresentation} 将 $Q$ 与 $\mathcal C_w(M)$ 识别，并说明其 coefficient norm 等于来自 $B^m$ 的 quotient norm。所得 map 正是 $\Phi$。这证明了它的 algebraic bijectivity，同时说明 relation image 的 closedness 来自何处。}
+
+\bi{For every tensor expression, contractivity of the $A$-action on $M$ gives}
+{对每个 tensor expression，$M$ 上 $A$-action 的 contractivity 给出}
+\[
+ \left\|\Phi\left(\sum_jb_j\otimes m_j\right)\right\|_w
+       \leq\max_j\|b_j\|_w\|m_j\|.
+\]
+\bi{Taking infima proves $\|\Phi(z)\|_w\leq\|z\|_\pi$. For the reverse inequality, $\|e_i\|\leq1$ because $M$ has the quotient norm. Every lift $(b_i)\in B^m$ of $\Phi(z)$ gives the tensor expression $z=\sum_i b_i\otimes e_i$, and hence}
+{取 infima，得到 $\|\Phi(z)\|_w\leq\|z\|_\pi$。为证明反向 inequality，注意 $M$ 使用 quotient norm，故 $\|e_i\|\leq1$。$\Phi(z)$ 在 $B^m$ 中的每个 lift $(b_i)$ 都给出 tensor expression $z=\sum_i b_i\otimes e_i$，因而}
+\[
+ \|z\|_\pi\leq\max_i\|b_i\|_w.
+\]
+\bi{The infimum of the right side is $\|\Phi(z)\|_w$ by the quotient-norm assertion already proved. This establishes isometry. Completeness and definiteness follow from Lemma~\ref{fnd:weightedcoefficientcompleteness}, so separated completion adds no elements and removes no nonzero elements.}
+{由已经证明的 quotient-norm assertion，右边的 infimum 就是 $\|\Phi(z)\|_w$，从而得到 isometry。由 Lemma~\ref{fnd:weightedcoefficientcompleteness}，此 norm definite 且 complete，所以 separated completion 既不增添元素，也不消去任何非零元素。}
+
+\bi{For an $A$-linear map $u:M\to N$, coefficientwise application of $u$ sends $(b_\gamma m)_\gamma$ to $(b_\gamma u(m))_\gamma$. Thus the identifications commute with $1\otimes u$ on pure tensors, and hence on the whole algebraic tensor product. The maps are bounded by Theorem~\ref{fnd:strictfinitemodules}, so the same assertion holds after completion.}
+{对 $A$-linear map $u:M\to N$，逐 coefficient 应用 $u$ 将 $(b_\gamma m)_\gamma$ 送到 $(b_\gamma u(m))_\gamma$。因此，identifications 在 pure tensors 上与 $1\otimes u$ 相容，从而在整个 algebraic tensor product 上相容。由 Theorem~\ref{fnd:strictfinitemodules}，这些 maps 均 bounded，所以同一断言也对 completion 成立。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="51d3a22cec324277d44668584f77c0a4e0f28ac052c42b1a918d32278cddf37d">
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+{Complete extension $L/K$ 始终配备限制为指定 $K$ 上 absolute value 的 absolute value。改变 ground field 时不重新缩放它。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="97d4644755c58b2dfec226d62d5141697739fe19268eab03328b2e6c71d7fec3">
+\bi{Throughout, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial. A Banach $K$-space has a definite, complete, non-Archimedean, $K$-homogeneous norm. Banach algebras are commutative and unital, with a submultiplicative norm and $\|1\|=1$; Banach module actions satisfy $\|am\|\leq\|a\|\|m\|$. All finite powers have the maximum norm; the maximum over an empty family is zero. Norm-strictness has the quantitative meaning of Definition~\ref{fnd:normstrictconvention}.}
+{本节中，$K$ 关于固定的 real-valued non-Archimedean absolute value 完备，允许该 absolute value 平凡。Banach $K$-space 的 norm 为 definite、complete、non-Archimedean 且 $K$-homogeneous。Banach algebras 均 commutative、unital，其 norm submultiplicative 且 $\|1\|=1$；Banach module actions 满足 $\|am\|\leq\|a\|\|m\|$。所有 finite powers 使用 maximum norm，并约定空 family 的 maximum 为零。Norm-strictness 采用 Definition~\ref{fnd:normstrictconvention} 的定量含义。}
+
+\bi{For a countable set $I$ and positive weights $w=(w_i)_{i\in I}$, write $\mathcal C_w(I,E)=c_0(I,E;w)$ as in Lemma~\ref{fnd:weightedcoefficientcompleteness}; thus}
+{对可数集合 $I$ 和正权重 $w=(w_i)_{i\in I}$，按照 Lemma~\ref{fnd:weightedcoefficientcompleteness} 的定义，记 $\mathcal C_w(I,E)=c_0(I,E;w)$，即}
+\[
+ \begin{gathered}
+ \mathcal C_w(I,E)=
+ \left\{(e_i)_{i\in I}:
+   \text{for every }\varepsilon&gt;0,
+   \#\{i:w_i\|e_i\|\geq\varepsilon\}&lt;\infty\right\},\\
+ \|(e_i)\|_w=\sup_{i\in I}w_i\|e_i\|.
+ \end{gathered}
+\]
+\bi{We put $\sup\varnothing=0$. The cited lemma, with coefficient algebra $K$ if necessary, proves completeness and density of finite-support families. A bounded linear map $u:E\to F$ with bound $U$ induces a coefficient map with the same bound, since $w_i\|u(e_i)\|\leq U w_i\|e_i\|$. There is also a canonical isometry}
+{约定 $\sup\varnothing=0$。上述引理给出完备性以及有限支撑族的稠密性；对 Banach $K$-space，只需取系数代数为 $K$。若有界线性映射 $u:E\to F$ 的界为 $U$，则逐系数映射保持同一个界，因为 $w_i\|u(e_i)\|\leq U w_i\|e_i\|$。此外，对有限 $m$，有 canonical isometry}
+\[
+ \mathcal C_w(I,E^m)\simeq\mathcal C_w(I,E)^m
+ \qquad(m&lt;\infty).
+\]
+\bi{It merely rearranges coefficients: a supremum commutes with a finite maximum, and a finite union of finite sets is finite, so both the norms and the finite-tail conditions agree.}
+{该映射只重新排列系数：supremum 与有限 maximum 可交换，且有限个有限集的并仍有限，所以两种范数相等，有限尾条件也等价。}
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="bf86f20fa1edecb7ba4b93a606b000d5758d1dc456a08a494a93bd77df0a793b">
+\subsection{\bi{Power-series and Laurent coefficient algebras}{Power-series 与 Laurent coefficient algebras}}
+\bi{To interpret the preceding presentation as scalar extension, the coefficient space must carry multiplication. Let $\Gamma=\mathbb N^p\times\mathbb Z^q$, where $p,q\geq0$ are finite. Choose a weight $w:\Gamma\to\mathbb R_{&gt;0}$ satisfying}
+{为将上述 presentation 解释为 scalar extension，需要在 coefficient space 上定义 multiplication。令 $\Gamma=\mathbb N^p\times\mathbb Z^q$，其中 $p,q\geq0$ 有限。选择 weight $w:\Gamma\to\mathbb R_{&gt;0}$，满足}
+\[
+ w_0=1,\qquad w_{\gamma+\delta}\leq w_\gamma w_\delta
+       \quad(\gamma,\delta\in\Gamma).
+\]
+\bi{For a Banach $A$-module $M$, abbreviate $\mathcal C_w(M)=\mathcal C_w(\Gamma,M)$ and write its elements as $\sum_\gamma m_\gamma X^\gamma$. The symbols denote coefficient families; convergence refers to the weighted norm just defined.}
+{对 Banach $A$-module $M$，简记 $\mathcal C_w(M)=\mathcal C_w(\Gamma,M)$，并将其元素写成 $\sum_\gamma m_\gamma X^\gamma$。这些符号表示 coefficient families；convergence 均指刚定义的 weighted norm。}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="09f46aa04b5fb09f9e344369c53fcc2fee68d8bf1af995c60b1b0d9f139002c5">
+\bi{The isometry uses the specified quotient norm on $M$. With another uniformly equivalent norm $\|\cdot\|_*$, choose $0&lt;a\leq b$ such that $a\|m\|\leq\|m\|_*\leq b\|m\|$. The corresponding coefficient and projective norms each satisfy the same comparisons with the original ones. Consequently}
+{上述 isometry 使用 $M$ 上指定的 quotient norm。若改用另一 uniformly equivalent norm $\|\cdot\|_*$，取 $0&lt;a\leq b$ 使 $a\|m\|\leq\|m\|_*\leq b\|m\|$。相应的 coefficient norms 和 projective norms 相对于原 norms 都满足同样的 comparisons。因此}
+\[
+ \frac{a}{b}\|\Phi(z)\|_{w,*}
+       \leq\|z\|_{\pi,*}
+       \leq\frac{b}{a}\|\Phi(z)\|_{w,*}.
+\]
+\bi{Thus the bounded isomorphism and completeness are independent of the chosen canonical norm. Uniform equivalence, rather than equality of topologies, is the relevant hypothesis.}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001422-reader.jpg" alt="Typeset mathematical passage from PDF page 158" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=158">PDF page 158 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole</li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(actual native theorem application)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole</li><li><a href="/r/NAG-001420/">NAG-001420</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li><li><a href="/r/NAG-001421/">fnd:weightedcoefficientconvolution</a></li><li><a href="/r/NAG-001420/">fnd:weightedcoefficientpresentation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

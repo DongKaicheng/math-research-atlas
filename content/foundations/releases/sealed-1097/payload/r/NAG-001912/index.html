@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001912/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A coefficient ring with a uniform gap · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001912 · Accepted whole</p><h1>A coefficient ring with a uniform gap</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.14.1">Open in the English reader · PDF page 516</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="16dd303732abbdc5e3f787d297b8b3d413f31ce37129863da6e8604419ba1798">
+\begin{lemma}[\bi{A coefficient ring with a uniform gap}
+{具有一致间隙的系数环}]
+\label{fnd:baldcoefficientring}
+\bi{Let $K$ be a complete non-Archimedean field. For every sequence
+$(a_i)$ in $K^\circ$ tending to zero, there is a closed subring
+$S\subset K^\circ$ containing all $a_i$, such that every element of
+$S$ of absolute value one is a unit in $S$ and there is a real
+$\theta&lt;1$ with $|s|\leq\theta$ for every $s\in S$ satisfying $|s|&lt;1$.}
+{设 $K$ 为完备非阿基米德域。对 $K^\circ$ 中每个趋于零的序列
+$(a_i)$，存在包含全部 $a_i$ 的闭子环 $S\subset K^\circ$，使
+$S$ 中绝对值为一的元素均可逆，且存在实数 $\theta&lt;1$，满足
+$s\in S$、$|s|&lt;1$ 时总有 $|s|\leq\theta$。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="dbf265d55f069e6f1ff1362433b6a94641f915d511a8071955d8a83b87af88f3">
+\begin{proof}
+\bi{Call a subring with the latter gap property a gap ring. The prime
+subring is a gap ring: in positive characteristic its induced absolute
+value is trivial, while in characteristic zero its elements of size
+less than one form a principal ideal of $\mathbf Z$. Localizing a gap
+ring at its elements of size one preserves the gap and makes its
+residue ring a field.}
+{将具有后一间隙性质的子环称为间隙环。素子环具有此性质：正特征时
+其诱导绝对值平凡；特征零时，$\mathbf Z$ 中绝对值小于一的元素构成
+主理想。将间隙环的所有大小为一的元素局部化，不改变间隙，且其剩余环
+成为域。}
+
+\bi{Suppose $S_0$ is such a localized gap ring and $|a|=1$. If the
+residue of $a$ is transcendental over $\widetilde S_0$, a polynomial
+$f\in S_0[Z]$ can have $|f(a)|&lt;1$ only when all its coefficients have
+size less than one, so the same gap works. If the residue is algebraic,
+lift its monic minimal polynomial to $g\in S_0[Z]$. Choose
+$\theta&lt;1$ bounding both $|g(a)|$ and the old gap. For $f\in S_0[Z]$
+divide by the monic $g$, obtaining $f=qg+r$ with $\deg r&lt;\deg g$.
+If $|f(a)|&lt;1$, then $|r(a)|&lt;1$; the minimality of the residual
+polynomial forces every coefficient of $r$ to have size less than one.
+Hence $|f(a)|\leq\theta$. Thus adjoining one element of size one
+preserves the gap.}
+{设 $S_0$ 是这样局部化后的间隙环，且 $|a|=1$。若 $a$ 的剩余类在
+$\widetilde S_0$ 上超越，则多项式 $f\in S_0[Z]$ 只有在全部系数大小
+都小于一时才可能满足 $|f(a)|&lt;1$，故原间隙仍适用。若该剩余类为代数
+元素，将其首一最小多项式提升为 $g\in S_0[Z]$，并取 $\theta&lt;1$
+同时控制 $|g(a)|$ 与原间隙。对 $f\in S_0[Z]$ 作首一除法，写成
+$f=qg+r$、$\deg r&lt;\deg g$。若 $|f(a)|&lt;1$，则 $|r(a)|&lt;1$；
+剩余最小多项式的最小性迫使 $r$ 的每个系数大小均小于一。因此
+$|f(a)|\leq\theta$。所以添入一个大小为一的元素仍保留间隙。}
+
+\bi{Only finitely many of the $a_i$ have size one; adjoin these first.
+The remaining sequence is bounded by some $\varepsilon&lt;1$. In any
+polynomial in those remaining elements, every nonconstant monomial has
+size at most $\varepsilon$. Its constant term lies in the already
+constructed gap ring. Consequently the enlarged ring has gap bounded
+by the maximum of the old gap and $\varepsilon$. Localize once more
+at the size-one elements and take its closure in $K$. The gap survives
+closure. A size-one element of the closure differs by size less than
+one from a size-one element of the uncompleted ring; its inverse is
+obtained by a convergent geometric series. The resulting $S$ has all
+the stated properties.}
+{序列中只有有限个 $a_i$ 大小为一，先添入这些元素。其余序列由某个
+$\varepsilon&lt;1$ 一致控制。在这些剩余元素的任意多项式中，每个非恒定
+单项式的大小至多为 $\varepsilon$，而常数项属于已构造的间隙环。
+因此新环的间隙由原间隙与 $\varepsilon$ 的最大值控制。再次局部化
+所有大小为一的元素，再在 $K$ 中取闭包。间隙在闭包中保留；闭包中
+任一大小为一的元素，与原环某个大小为一的元素之差小于一，其逆元
+由收敛几何级数给出。所得 $S$ 满足全部要求。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001912-reader.jpg" alt="Typeset mathematical passage from PDF page 516" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=516">PDF page 516</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

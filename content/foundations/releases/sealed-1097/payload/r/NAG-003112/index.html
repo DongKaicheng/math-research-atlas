@@ -1,0 +1,209 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003112/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Refined operations on every prescribed support · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003112 · Accepted whole</p><h1>Refined operations on every prescribed support</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003112.original">Open in the English reader · PDF page 2143</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9d34299a0d32ce6ce4b7da75276b0aeda77b949312931eee819f41c10eb98275">
+\begin{theorem}[Refined operations on every prescribed support]
+\label{f9sc:refined}
+The maps $G_{(\cL,s),T}$ are well-defined on Chow groups and satisfy
+all the following assertions.
+\begin{enumerate}
+\item For an integral $W\subset T$, if $s|_W$ is nonzero, the result
+is the divisor cycle of $s|_W$, with its actual local lengths. If
+$s|_W=0$, it is the image of $c_1(\cL|_W)\cap[W]$ in the stated
+target, not an instruction to discard $W$.
+\item Let $p:\cY\to\cX$ be proper, let $T&#x27;\subset\cY$ and
+$T\subset\cX$ be closed with $p(T&#x27;)\subset T$, and pull back the
+actual line and section. Then
+\begin{equation}\label{ex68:support:eq:projection}
+ p_*G_{(p^*\cL,p^*s),T&#x27;}(\alpha)
+       =G_{(\cL,s),T}(p_*\alpha)
+       \quad\text{in }C_{r-1}(\cX;T\cap|D|).
+\end{equation}
+This includes naturality under enlargement of the prescribed support.
+\item Two such operations commute in the group on
+$T\cap|Z(s)|\cap|Z(t)|$. No proper-intersection hypothesis is needed.
+\item For $(\cM,t)$ a second pair, set
+$B=|Z(s)|\cup|Z(t)|$. After pushing the three targets into $T\cap B$,
+\begin{equation}\label{ex68:support:eq:tensor}
+            G_{(\cL\otimes\cM,s\otimes t),T}
+                     =G_{(\cL,s),T}+G_{(\cM,t),T}.
+\end{equation}
+After pushing into $T$, the operation is
+$c_1(\cL|_T)\cap-$. If a coherent $\mathcal F$ on $\cX$ is supported in $T$, has
+$\dim_\delta\operatorname{Supp}(\mathcal F)\leq r$, and
+$s:\mathcal F\otimes\cL^{-1}\to\mathcal F$ is injective, then
+\[
+ G_{(\cL,s),T}[\mathcal F]_r
+   =[\mathcal F/s(\mathcal F\otimes\cL^{-1})]_{r-1}
+             \quad\text{in }C_{r-1}(\cX;T\cap|D|).
+\]
+All generic and quotient lengths are retained.
+\end{enumerate}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="020255dbcb1299e081b77fd847fea5b7361022b8bbd4e53051176a4833ffe505">
+\begin{proof}
+The definition gives (1), and \st{02TO} proves descent through
+rational equivalence. Apply \st{02TA} to the proper map
+$T&#x27;_{\mathrm{red}}\to T_{\mathrm{red}}$ and the restricted line and
+section. Its target is the zero scheme of the restricted section on
+$T$, so its pushforward identity is exactly \eqref{ex68:support:eq:projection}
+after reduction. Applying this also to closed immersions proves the
+support-enlargement statement. It does not pass through the image of
+$\CH(T)$ in the ambient Chow group.
+
+For clarity, the proper-pushforward calculation retains the factor
+$[K(W&#x27;):K(p(W&#x27;))]$ when dimensions agree. If an integral $W&#x27;$ is
+contracted, choose a rational section of the relevant line on its
+integral image $W$. Its pullback divisor is supported over a proper
+closed subset of $W$. Every component then has image dimension less
+than $\dim_\delta W&#x27;-1$, and its cycle pushforward is zero. This also
+handles the contained-component Chern term by its divisor representative.
+Thus dimension-decreasing images do not create an unrecorded coefficient.
+
+Apply \st{0B73} on $T_{\mathrm{red}}$. The rational equivalence in
+its proof lies on the intersection of both zero schemes; in particular
+its target is precisely the support in (3). Reduction and the naturality
+just proved identify the successive targets used here with those of
+that lemma.
+
+To prove (4), work on an integral cycle $[W]$. If neither restricted
+section is zero, divisors of their tensor product add as cycles. Locally
+this is $\ord(fg)=\ord(f)+\ord(g)$; at a one-dimensional local domain
+one can see the length equality from
+$0\to A/(f)\xrightarrow{\,g\,}A/(fg)\to A/(g)\to0$.
+If one or both sections vanish identically on $W$, then $W\subset B$.
+The product contributes $c_1((\cL\otimes\cM)|_W)[W]$; each
+nonzero restricted section represents its own first Chern class on
+$W$. Additivity of that class, \st{02SP}, proves equality already
+in $\CH(W)$, and hence in the required target. Linearity proves
+\eqref{ex68:support:eq:tensor}. Finally \st{02T9} identifies the push into $T$
+with the first Chern operation, and the coherent assertion uses the actual annihilator scheme
+\(Z=V(\operatorname{Ann}\mathcal F)\), with \(|Z|\subset T\).
+Keep the full coherent module on \(Z\). Tensor the asserted injection
+with the invertible line so that \st{02TB}(2), with \(k=r-1\),
+applies to the actual module and its restriction to the zero scheme.
+This restriction is exactly
+\(\mathcal F/s(\mathcal F\otimes\cL^{-1})\).
+The closed inclusion \(Z_{\mathrm{red}}\to Z\) and its base-changed
+zero scheme give the canonical identifications of the Chow groups:
+the cycle and rational-function generators are unchanged.
+Apply \st{02TA} to these inclusions and then apply \st{02TA} to the proper closed
+map \(Z_{\mathrm{red}}\to T_{\mathrm{red}}\) with its actual zero
+support. The coherent cycles are computed on the full modules
+before these reduction identifications, so all lengths are retained.
+Injectivity remains essential.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003112-reader.jpg" alt="Typeset mathematical passage from PDF page 2143" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2143">PDF page 2143 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-003111/">NAG-003111</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li>NAG-003112</li></ul></details><h2>Selected scopes</h2><article id="supported_gysin_1_4"><h3>supported gysin 1 4</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003112.supported-gysin-1-4">Scope in the English reader · PDF page 1927</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="2ab752c66d3fd04f518413ecc72c2db3a4ed8af49dae9d4a8d860dc7c35b41cc">
+\begin{theorem}[Supported Gysin operations on Chow groups]
+\label{f9sc:refined-supported}
+The maps $G_{(\cL,s),T}$ are well-defined on Chow groups and satisfy
+all the following assertions.
+\begin{enumerate}
+\item For an integral $W\subset T$, if $s|_W$ is nonzero, the result
+is the divisor cycle of $s|_W$, with its actual local lengths. If
+$s|_W=0$, it is the image of $c_1(\cL|_W)\cap[W]$ in the stated
+target, not an instruction to discard $W$.
+\item Let $p:\cY\to\cX$ be proper, let $T&#x27;\subset\cY$ and
+$T\subset\cX$ be closed with $p(T&#x27;)\subset T$, and pull back the
+actual line and section. Then
+\begin{equation}\label{eq:f9sc:projection}
+ p_*G_{(p^*\cL,p^*s),T&#x27;}(\alpha)
+       =G_{(\cL,s),T}(p_*\alpha)
+       \quad\text{in }C_{r-1}(\cX;T\cap|D|).
+\end{equation}
+This includes naturality under enlargement of the prescribed support.
+\item Two such operations commute in the group on
+$T\cap|Z(s)|\cap|Z(t)|$. No proper-intersection hypothesis is needed.
+\item For $(\cM,t)$ a second pair, set
+$B=|Z(s)|\cup|Z(t)|$. After pushing the three targets into $T\cap B$,
+\begin{equation}\label{eq:f9sc:tensor}
+            G_{(\cL\otimes\cM,s\otimes t),T}
+                     =G_{(\cL,s),T}+G_{(\cM,t),T}.
+\end{equation}
+After pushing into $T$, the operation is
+$c_1(\cL|_T)\cap-$.
+\end{enumerate}
+\end{theorem}</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="ed61473a814c1fae7ef0f522c8b50aea06a4539d796ee1949522f0c079c94f51">
+\begin{proof}
+The definition gives (1), and \st{02TO} proves descent through
+rational equivalence. Apply \st{02TA} to the proper map
+$T&#x27;_{\mathrm{red}}\to T_{\mathrm{red}}$ and the restricted line and
+section. Its target is the zero scheme of the restricted section on
+$T$, so its pushforward identity is exactly \eqref{eq:f9sc:projection}
+after reduction. Applying this also to closed immersions proves the
+support-enlargement statement. It does not pass through the image of
+$\CH(T)$ in the ambient Chow group.
+
+For clarity, the proper-pushforward calculation retains the factor
+$[K(W&#x27;):K(p(W&#x27;))]$ when dimensions agree. If an integral $W&#x27;$ is
+contracted, choose a rational section of the relevant line on its
+integral image $W$. Its pullback divisor is supported over a proper
+closed subset of $W$. Every component then has image dimension less
+than $\dim_\delta W&#x27;-1$, and its cycle pushforward is zero. This also
+handles the contained-component Chern term by its divisor representative.
+Thus dimension-decreasing images do not create an unrecorded coefficient.
+
+Apply \st{0B73} on $T_{\mathrm{red}}$. The rational equivalence in
+its proof lies on the intersection of both zero schemes; in particular
+its target is precisely the support in (3). Reduction and the naturality
+just proved identify the successive targets used here with those of
+that lemma.
+
+To prove (4), work on an integral cycle $[W]$. If neither restricted
+section is zero, divisors of their tensor product add as cycles. Locally
+this is $\ord(fg)=\ord(f)+\ord(g)$; at a one-dimensional local domain
+one can see the length equality from
+$0\to A/(f)\xrightarrow{\,g\,}A/(fg)\to A/(g)\to0$.
+If one or both sections vanish identically on $W$, then $W\subset B$.
+The product contributes $c_1((\cL\otimes\cM)|_W)[W]$; each
+nonzero restricted section represents its own first Chern class on
+$W$. Additivity of that class, \st{02SP}, proves equality already
+in $\CH(W)$, and hence in the required target. Linearity proves
+\eqref{eq:f9sc:tensor}. Finally \st{02T9} identifies the push into $T$
+with the first Chern operation.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="041cabfa3528869919ff6e2adfe1c00b57eb19c197564598d8f02319686f6727">
+Let $R$ be a DVR, $S=\operatorname{Spec}R$, $\eta$ its generic point,
+and $k$ its residue field. For analytic assertions assume that $R$ is
+the valuation ring of a complete nontrivially discretely valued field
+$K$ with its fixed absolute value. Use the dimension function
+$\delta(\eta)=1$, $\delta(s)=0$ at the closed point. A DVR is
+Noetherian and Cohen--Macaulay: its uniformizer is a regular sequence
+of length one, and its only other localization is its fraction field.
+Thus \st{00NM} gives the universally catenary hypothesis of
+\st{02QL}. On a finite-type $S$-scheme, dimensions below are
+$\delta$-dimensions. In particular, a horizontal integral model of
+relative dimension $d$ has dimension $d+1$, and a vertical integral
+$k$-scheme has its usual dimension.
+
+For a closed subset $T$ of a finite-type $S$-scheme $\cX$ set
+\[
+                  C_r(\cX;T)=\CH_r(T_{\mathrm{red}}).
+\]
+Rational equivalences use integral subschemes \emph{inside $T$}.
+This group is not defined as the image in $\CH_r(\cX)$. Reduction
+identifies Chow groups: integral subschemes, their rational functions,
+and their divisor relations are unchanged. This observation does not
+replace the fundamental cycle of a nonreduced scheme by that of its
+reduction; its generic lengths remain coefficients of the cycle.
+We freely use a scheme-theoretic intersection to construct a cycle
+and the canonical reduction identification to place its class in the
+group on its closed support.
+
+Proper pushforward uses the full function-field degree on an integral
+cycle whose image has the same dimension, and zero when the image has
+smaller dimension (\st{02R4}). It descends to Chow groups by
+\st{02S2}. Its composition law follows on prime cycles from the tower
+law for field degrees; a dimension decrease remains a decrease under
+further pushforward. All field degrees include their inseparable parts.
+If $T$ is vertical and proper over $R$, then $T_{\mathrm{red}}$ is
+proper over $k$. Its zero-cycle degree is pushforward to
+$\operatorname{Spec}k$ (\st{0AZ1}); on closed points it is
+$\sum n_x[\kappa(x):k]$ (\st{0AZ2}). Hence proper pushforward
+preserves this degree while retaining the prescribed vertical support.
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="5cda9b595e026beaf9a9b6fa5b211cd155356609f8478724e16186a7d15c999e">
+For an invertible sheaf $\cL$ and a global section $s$ on $\cX$,
+let $D=Z(s)$. A section here is allowed to be zero or a zero-divisor;
+``global section&#x27;&#x27; does not mean a regular section in the
+non-zero-divisor sense. Apply the Gysin construction of \st{02T8}
+on $T_{\mathrm{red}}$ and then identify its target with the reduced
+support. Write the resulting operation as
+\[
+ G_{(\cL,s),T}:C_r(\cX;T)\longrightarrow
+                         C_{r-1}(\cX;T\cap|D|).
+\]
+</pre></details><p class="muted">No explicit typed target in the exported bindings.</p></article></main><footer>Foundations · sealed 1097</footer></body></html>

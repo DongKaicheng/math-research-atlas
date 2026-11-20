@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001501/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Flattening a rational presentation by exact fractions · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001501 · Accepted whole</p><h1>Flattening a rational presentation by exact fractions</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.25.3">Open in the English reader · PDF page 212</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="452943ddc41936180c8dd7818a925182a8c12bef8e03fe46187b7b3925a33136">
+\begin{lemma}[\bi{Flattening a rational presentation by exact fractions}{用精确分式展开 rational 表示}]\label{fnd:rationalfractionflattening}
+\bi{Let $B=A\langle f/g\rangle$ and fix certificates}
+{设 $B=A\langle f/g\rangle$，并固定单位理想证书}
+\[
+ c_0g+\sum_{i=1}^s c_if_i=1\quad\text{in }A,
+ \qquad \sum_{j=0}^t b_ja_j=1\quad\text{in }B.
+\]
+\bi{Suppose $a_j=g^{-N}p_j$ in $B$ for one integer $N\geq0$ and $p_j\in A$. Put}
+{假设对某个整数 $N\geq0$ 及 $p_j\in A$，在 $B$ 中有 $a_j=g^{-N}p_j$。记}
+\[
+ L=\max(1,\|c_0\|,\ldots,\|c_s\|),\qquad
+ H=\max(1,\|b_0\|,\ldots,\|b_t\|),
+\]
+\bi{and choose $\gamma\in K^\times$ satisfying $|\gamma|L^{N+1}H\leq1$. Set $d=gp_0$. Then}
+{并选择满足 $|\gamma|L^{N+1}H\leq1$ 的 $\gamma\in K^\times$。令 $d=gp_0$。则}
+\[
+ \begin{aligned}
+ C&#x27;&amp;=B\{S_1,\ldots,S_t\}/(a_0S_j-a_j)_j,\\
+ D&amp;=A\{Y_1,\ldots,Y_s,Z_1,\ldots,Z_t,V\}/
+       (dY_i-p_0f_i,\ dZ_j-gp_j,\ dV-\gamma)_{i,j}
+ \end{aligned}
+\]
+\bi{are canonically isometric as $A$-algebras. The tuple defining $D$ generates the unit ideal because it contains $\gamma$; thus $D$ is a rational presentation over $A$. The isometry identifies its variables by}
+{作为 $A$-代数具有典范等距同构。定义 $D$ 的 tuple 包含 $\gamma$，因而生成单位理想，所以 $D$ 是 $A$ 上的 rational 表示。该等距同构将变量识别为}
+\[
+ Y_i\longmapsto\overline X_i,\qquad
+ Z_j\longmapsto\overline S_j,\qquad
+ V\longmapsto\gamma g^{-(N+1)}a_0^{-1}
+ \quad\text{in }C&#x27;.
+\]
+\bi{Zero quotients are included. No unit-ideal condition on $(p_0,\ldots,p_t)$ in $A$ is required.}
+{结论包括零商。这里不要求 $(p_0,\ldots,p_t)$ 在 $A$ 中生成单位理想。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="830870174afdb9cf89108bc53c09fea9cefc67d460d7dd139cba1ac2661da2ef">
+\begin{proof}
+\bi{All displayed ideals are actual closed ideals by Lemma~\ref{fnd:strictweightedquotient}. In $C&#x27;$, the two certificates give}
+{由 Lemma~\ref{fnd:strictweightedquotient}，所列理想均为实际闭理想。在 $C&#x27;$ 中，两个证书给出}
+\[
+ g^{-1}=c_0+\sum_i c_i\overline X_i,
+ \qquad a_0^{-1}=b_0+\sum_{j=1}^t b_j\overline S_j.
+\]
+\bi{Their norms are at most $L$ and $H$, respectively. Since $p_0=g^Na_0$, the element $d=g^{N+1}a_0$ is a unit and $\|\gamma d^{-1}\|\leq |\gamma|L^{N+1}H\leq1$. The proposed images of $Y_i,Z_j,V$ all have norm at most one. The relations for the first two blocks follow from $g\overline X_i=f_i$ and $a_0\overline S_j=a_j=g^{-N}p_j$; the last relation follows from the definition of $\gamma d^{-1}$. Proposition~\ref{fnd:strictquotientboundedup} therefore gives a contractive map $D\to C&#x27;$.}
+{它们的范数分别不超过 $L$ 与 $H$。由于 $p_0=g^Na_0$，元素 $d=g^{N+1}a_0$ 为单位，且 $\|\gamma d^{-1}\|\leq |\gamma|L^{N+1}H\leq1$。所指定的 $Y_i,Z_j,V$ 的像范数均至多为一。前两组关系来自 $g\overline X_i=f_i$ 以及 $a_0\overline S_j=a_j=g^{-N}p_j$，最后一个关系来自 $\gamma d^{-1}$ 的定义。因此由 Proposition~\ref{fnd:strictquotientboundedup} 得到 contractive 映射 $D\to C&#x27;$。}
+
+\bi{Conversely, in $D$ the equation $d\overline V=\gamma$ makes $d$ a unit. Therefore $g$ and $p_0$ are units separately. Dividing $d\overline Y_i=p_0f_i$ by $p_0$ gives $g\overline Y_i=f_i$. The images of the $Y_i$ have norm at most one, so Proposition~\ref{fnd:strictquotientboundedup} gives a contractive coefficient map $B\to D$. Under this map the equality $a_j=g^{-N}p_j$ persists. Dividing $d\overline Z_j=gp_j$ by $g$ and multiplying by $g^{-N}$ gives $a_0\overline Z_j=a_j$. The same proposition now gives a contractive map $C&#x27;\to D$.}
+{反方向，在 $D$ 中，等式 $d\overline V=\gamma$ 使 $d$ 成为单位，因而 $g$ 与 $p_0$ 分别为单位。将 $d\overline Y_i=p_0f_i$ 除以 $p_0$，得到 $g\overline Y_i=f_i$。各 $Y_i$ 的像范数至多为一，故由 Proposition~\ref{fnd:strictquotientboundedup}，得到 contractive 系数映射 $B\to D$。等式 $a_j=g^{-N}p_j$ 在此映射下保持成立。将 $d\overline Z_j=gp_j$ 除以 $g$，再乘以 $g^{-N}$，便得到 $a_0\overline Z_j=a_j$。再次应用同一 proposition，得到 contractive 映射 $C&#x27;\to D$。}
+
+\bi{The composites fix $A$, $X_i$, $S_j$, $Y_i$ and $Z_j$. They also fix $V$: the relation $dV=\gamma$ and the invertibility of $d$ uniquely determine this element. Polynomial density then makes the composites identities, proving the isometry. If $B=0$, the already constructed unital map $B\to D$ forces $D=0$, and $C&#x27;=0$ directly; the second universal-property step is then replaced by the unique map of zero algebras. All other zero-quotient cases are covered by the same calculations. Thus the proof never identifies an empty spectrum with a zero ring without an algebraic argument.}
+{两个复合固定 $A$、$X_i$、$S_j$、$Y_i$ 及 $Z_j$。它们也固定 $V$，因为关系 $dV=\gamma$ 及 $d$ 的可逆性唯一确定该元素。再由多项式稠密性，复合均为恒等映射，从而得到等距同构。若 $B=0$，已经构造的含幺映射 $B\to D$ 迫使 $D=0$，而 $C&#x27;=0$ 也直接成立；此时第二次 universal-property 步骤改用零代数之间的唯一映射。其他零商情形由相同计算处理。因此，证明中没有未经代数论证便将空谱与零环识别。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="f3ef65f81ca507cfe93f57f4d6188b53d8dc0b292238f430a8abdbc9ba215c40">
+\bi{Throughout, $K$ is a complete real-valued non-Archimedean field; trivial valuation is allowed. Nonzero affinoid algebras are strict and norm-admissible, with submultiplicative norm and unit of norm one. Quotients use their actual quotient norms. The zero algebra and its zero modules have the separate zero-norm interpretation of Section~\ref{fnd:r1quotientbridge}. A rational presentation has a unit-ideal tuple. We use unit radii in the lemmas; radii in $|K^\times|$ are reduced to this case by scaling variables.}
+{全文固定完备实值非阿基米德域 $K$，允许平凡赋值。非零 affinoid 代数均为 strict 且 norm-admissible，范数次乘，单位元范数为一。商配备实际商范数。零代数及其零模按 Section~\ref{fnd:r1quotientbridge} 的约定单独使用零范数。Rational 表示的定义 tuple 必须生成单位理想。各引理使用单位半径；属于 $|K^\times|$ 的半径通过缩放变量化为这一情形。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001501-reader.jpg" alt="Typeset mathematical passage from PDF page 213" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=213">PDF page 213</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001442/#strict_actual_quotient_bounded_substitution">CLAUSE:NAG-001442:strict_actual_quotient_bounded_substitution</a> · selected scope <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001442/#strict_actual_quotient_bounded_substitution">CLAUSE:NAG-001442:strict_actual_quotient_bounded_substitution</a> · selected scope</li><li><a href="/r/NAG-001442/#strict_actual_quotient_bounded_substitution">CLAUSE:NAG-001442:strict_actual_quotient_bounded_substitution</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001434/">fnd:strictweightedquotient</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

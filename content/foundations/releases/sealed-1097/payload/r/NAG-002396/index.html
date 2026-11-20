@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002396/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Inclusion--exclusion on interior fibre covers · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002396 · Accepted whole</p><h1>Inclusion--exclusion on interior fibre covers</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.47.2">Open in the English reader · PDF page 1023</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0339c69a9dc61419a9f0be51380759b2151cdf94f35921b6adc4cf778de66842">
+\begin{theorem}[Inclusion--exclusion on interior fibre covers]
+\label{v037:localization:fibrecover}
+Let $X=\mathcal M(A)$ be pure of analytic dimension $d$, let
+$f_1,\ldots,f_n\in A^\times$, and put
+$t=(-\log|f_1|,\ldots,-\log|f_n|)$. Fix $w\in t(X)$ and a
+saturated rank-$d$ lattice $N\subset\mathbb Z^n$. Suppose that
+\[
+ F_w=t^{-1}(w)\subset\operatorname{Int}(X/K),\qquad
+ t(X)\cap W\subset w+N_{\mathbb R}
+\]
+for an open neighborhood $W$ of $w$.
+Let $V_1,\ldots,V_q\subseteq X$ be affinoid domains such that
+\[
+ F_w\subseteq\bigcup_{i=1}^q V_i,
+ \qquad
+ F_w\cap V_i\subseteq\operatorname{Int}(V_i/K)
+                      \quad(1\leq i\leq q).
+\]
+For nonempty $I\subseteq\{1,\ldots,q\}$, write
+$V_I=\bigcap_{i\in I}V_i$, $A_I=\mathcal O(V_I)$ and
+$F_I=F_w\cap V_I$. Let $D$ and $D_I$ be the actual algebras of
+$F_w$ and $F_I$.
+
+Each $F_I$ is an open and closed affinoid domain of $F_w$.
+There are unique idempotents $e_i\in D$ such that, with
+$e_I=\prod_{i\in I}e_i$, restriction gives bounded isomorphisms
+\begin{equation}
+\label{v037:localization:eqfactors}
+ D_I\simeq e_ID,
+ \qquad
+ \prod_{i=1}^q(1-e_i)=0.
+\end{equation}
+For every integral $Q:\mathbb Z^n\to\mathbb Z^d$ injective on $N$,
+let $R_Q$ be the exact-radius polytorus algebra at $Qw$, let $H_Q$
+be its Gauss field, and put
+\[
+ E_Q=D\widehat\otimes_{R_Q}H_Q,
+ \qquad E_{Q,I}=D_I\widehat\otimes_{R_Q}H_Q,
+ \qquad c_Q=[\mathbb Z^d:Q(N)].
+\]
+Then $E_{Q,I}=e_IE_Q$. For every finite $D$-module $P$,
+\begin{equation}
+\label{v037:localization:eqmoduledegree}
+ \dim_{H_Q}(P\otimes_D E_Q)
+ =\sum_{\varnothing\ne I\subseteq\{1,\ldots,q\}}
+       (-1)^{|I|+1}
+             \dim_{H_Q}(P\otimes_D E_{Q,I}).
+\end{equation}
+All these tensors also agree with their completed tensors for the
+canonical finite-module norms.
+
+In particular, let $M$ be a finite $A$-module and set
+$M_I=M\otimes_A A_I$. Write $m_{M_I,f}(w)=0$ if $F_I$ is empty.
+For a nonempty $F_I$, its whole fibre is interior in $V_I$ and
+its module weight is defined by
+Theorem~\ref{v037:degree:moduleweight}. Then
+\begin{equation}
+\label{v037:localization:eqmoduleweight}
+ m_{M,f}(w)=
+ \sum_{\varnothing\ne I\subseteq\{1,\ldots,q\}}
+              (-1)^{|I|+1}m_{M_I,f}(w).
+\end{equation}
+For $M=A$ this is the same identity for the intrinsic weights
+$m_{X,f}$ and $m_{V_I,f}$. If the selected parts $F_w\cap V_i$
+are pairwise disjoint, it reduces to the sum of their weights.
+
+There is an open neighborhood $W&#x27;$ of $w$ on which the same domains
+cover every whole fibre. For every
+$v\in t(X)\cap W&#x27;=(w+N_{\mathbb R})\cap W&#x27;$, all the preceding
+assertions apply at $v$. The empty intersections remain empty, and
+each module weight in \eqref{v037:localization:eqmoduleweight}
+is constant on this neighborhood in the indicated plane.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="95b21ea05ed583cc800ab4013d00603d83566bf59a086e02400a0cba3b4cc1f8">
+\begin{proof}
+Finite intersections are actual affinoid domains by
+Corollary~\ref{fnd:generalizeddomainintersections}. Every nonempty
+one is pure of analytic dimension $d$ by
+Theorem~\ref{v036:analytic:domainpurity}.
+If $x\in F_w\cap V_i$, the composition equality
+\ref{fnd:affinoidinteriorcompositionequality} makes $x$ interior
+in $V_i/X$. The domain interior theorem
+\ref{fnd:affinoiddomainordinaryinterior} says that it is an ordinary
+interior point of $V_i$ in $X$. Consequently, if $x\in F_I$, the
+intersection of these finitely many neighborhoods is a neighborhood
+of $x$ contained in $V_I$. The same domain theorem, followed by
+the composition inclusion in
+Proposition~\ref{fnd:affinoidinteriorcalculus}, gives
+\[
+                        F_I\subset\operatorname{Int}(V_I/K).
+\]
+Thus no extra boundary condition on the intersections is required.
+
+The whole flat-germ theorem \ref{v036:flatgermweight} makes $D$
+and every nonzero $D_I$ finite canonical modules over the same
+$R_Q$. It applies to $V_I$ because its moment image is contained
+in that of $X$, and hence in the same affine plane near $w$.
+An empty $F_I$ has zero algebra by
+Theorem~\ref{fnd:generalizedpointunitcriterion}.
+The domain base-change theorem
+\ref{fnd:generalizeddomainbasechange} identifies $D\to D_I$
+with the actual domain restriction to $F_I\subset F_w$.
+
+This restriction is also finite with its canonical $D$-module
+norm. Indeed, any finite $R_Q$-generating family of $D_I$ also
+generates it over $D$. Controlled lifts through its canonical
+$R_Q$-presentation, followed by the bounded map $R_Q\to D$,
+bound the quotient norm from the corresponding $D$-presentation
+by a constant times the given norm of $D_I$. Conversely the
+bounded $D$-action bounds its given norm by that quotient norm.
+These are exactly the two finite-generator norm comparisons of
+Theorem~\ref{fnd:generalizedfinitemodules}.
+
+Lemma~\ref{v037:localization:finiteclopen}, first for each singleton
+$I$, supplies the unique $e_i$. Domain intersections and their
+completed tensor presentations identify
+\[
+ D_I\simeq\widehat\bigotimes_{i\in I,D}e_iD
+            \simeq e_ID.
+\]
+Here completion changes nothing by
+Proposition~\ref{fnd:generalizedfinitetensor}; multiplication gives
+the last algebraic identification. If
+$h=\prod_i(1-e_i)$ were nonzero, the nonzero affinoid quotient
+$hD$ would have a point by
+Theorem~\ref{fnd:generalizedpointunitcriterion}. Its image in
+$F_w$ would belong to none of the $V_i$, a contradiction.
+This proves \eqref{v037:localization:eqfactors} with the actual
+algebras, including their nilpotents.
+
+Finite base change, Proposition~\ref{fnd:generalizedfinitebasechange},
+gives $E_{Q,I}=e_IE_Q$. Put $L=P\otimes_D E_Q$, a finite-dimensional
+$H_Q$-vector space. For each $J\subseteq\{1,\ldots,q\}$ set
+\[
+ a_J=\prod_{j\in J}e_j\prod_{j\notin J}(1-e_j).
+\]
+These are pairwise orthogonal idempotents with sum $1$, and
+$a_{\varnothing}=0$. Therefore
+$L=\bigoplus_{J\ne\varnothing}a_JL$. On the summand $a_JL$,
+$e_I$ acts as $1$ precisely when $I\subseteq J$, and otherwise
+as $0$. Its coefficient in the right side of
+\eqref{v037:localization:eqmoduledegree} is
+\[
+ \sum_{\varnothing\ne I\subseteq J}(-1)^{|I|+1}=1,
+\]
+as follows by expanding $\prod_{j\in J}(1-1)=0$.
+This proves that formula.
+
+The finite $D$-module $P$ is finite over $R_Q$. Composing finite
+free quotient presentations gives equivalent canonical norms for
+this restriction of scalars. Proposition
+\ref{fnd:generalizedfinitetensor} consequently identifies every
+tensor just used with its complete canonical finite-dimensional
+tensor. In particular, if $P=M\otimes_A D$, associativity identifies
+its factor $P\otimes_D E_{Q,I}$ with
+$M_I\otimes_{A_I}E_{Q,I}$. Dividing
+\eqref{v037:localization:eqmoduledegree} by $c_Q$ and applying
+Theorem~\ref{v037:degree:moduleweight} to $X$ and the nonempty
+$V_I$ proves \eqref{v037:localization:eqmoduleweight}, independently
+of $Q$. The structure-module case agrees with
+Theorem~\ref{v036:flatgermweight}. Pairwise disjoint parts make
+every intersection of size at least two empty.
+
+We finally choose the neighborhood uniformly. The ordinary
+interiors of the $V_i$ cover $F_w$, as proved above. The complement
+of their union in compact $X$ is compact, and its moment image
+misses $w$. Also the compact sets $\partial_KX$ and
+$\partial_KV_i$ have moment images missing $w$. Shrink $W$ to
+avoid all these images. Compactness and openness of interior are
+Propositions~\ref{fnd:boundedspectrumcompact} and
+\ref{fnd:affinoidinteriorcalculus}. The resulting neighborhood
+has whole fibres covered by the same $V_i$, and each selected
+fibre is interior in its own domain. The intersection argument
+above applies unchanged. Every $V_I$ whose fibre at $w$ is empty
+has compact moment image missing $w$; shrinking again keeps it
+empty throughout the neighborhood.
+
+Theorem~\ref{v036:flatgermlocalconstancy} makes the image of $X$
+equal to the indicated plane nearby. For each fixed $V_I$, apply
+the finite generic-component formula in
+Theorem~\ref{v037:degree:moduleweight} to $M_I$. A component with
+empty fibre at $w$ remains absent nearby by compactness. Every
+other component has a whole interior flat fibre, as verified in
+that theorem&#x27;s proof, and its intrinsic weight is locally constant
+by Theorem~\ref{v036:flatgermlocalconstancy}. There are only finitely
+many components and intersections. One final shrinking gives
+their simultaneous local constancy and all the stated assertions.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002396-reader.jpg" alt="Typeset mathematical passage from PDF page 1024" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1024">PDF page 1024 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001626/#source_factor_interior_for_actual_affinoid_maps">CLAUSE:NAG-001626:source_factor_interior_for_actual_affinoid_maps</a> · selected scope <small>(accepted native clause)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001847/">NAG-001847</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002395/">NAG-002395</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001628/">fnd:affinoiddomainordinaryinterior</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001847/">fnd:generalizeddomainintersections</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li><li><a href="/r/NAG-002293/">v036:analytic:domainpurity</a></li><li><a href="/r/NAG-002306/">v036:flatgermweight</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li><li><a href="/r/NAG-002395/">v037:localization:finiteclopen</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

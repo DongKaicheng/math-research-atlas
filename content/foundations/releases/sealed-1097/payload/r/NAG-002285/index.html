@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002285/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A residual moment cycle independent of the projection · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002285 · Accepted whole</p><h1>A residual moment cycle independent of the projection</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.34.1">Open in the English reader · PDF page 946</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="78f9a2789bf2650ccc9757818198d8ad0235073a3bc6f5cd7110a18e391beaf0">
+\begin{theorem}[A residual moment cycle independent of the projection]
+\label{v036:projection:intrinsiccycle}
+Suppose at least one such finite projection $Q$ exists.
+For any actual model $D_0$ compatible with $h$, the residual
+moment morphism
+\[
+ \phi_0:\operatorname{Spec}\overline D_0\longrightarrow\mathbb T_N
+\]
+is finite, and the effective cycle
+\[
+             \mathcal C_d(D,h)=(\phi_0)_*
+                                   [\operatorname{Spec}\overline D_0]_d
+\]
+is independent of the model and of the finite projection used
+to construct it. If
+$\mathcal C_d(D,h)=\sum_Z c_Z[Z]$, then every finite projection
+$Q$ restricts to a finite dominant map
+$q_Z:Z\to\mathbb T_{\mathbf Z^d}$, and
+\begin{equation}
+\label{v036:projection:eqdegreecycle}
+              \delta_Q=\sum_Z c_Z
+                    [k(Z):k(U_1,\ldots,U_d)].
+\end{equation}
+
+The cycles also respect monomial changes of moment coordinates.
+Precisely, let $a:N\to N&#x27;$ and $h&#x27;=h\circ a^*$, and suppose
+that $h&#x27;$ admits a finite projection to a $d$-dimensional unit
+polytorus for the same actual algebra $D$. The residual monomial
+map is finite on every component of $\mathcal C_d(D,h)$ and
+\[
+                  \mathcal C_d(D,h&#x27;)=a_*\mathcal C_d(D,h).
+\]
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4830790694141dd44b53206ce15f0dca95595668b47156681dc1c8a6e390638d">
+\begin{proof}
+Proposition~\ref{v036:projection:commonmodel} supplies compatible
+models and makes every such model finite over the formal target
+of every finite projection. Fix one projection $Q$. The map
+$k[U^{\pm1}]\to\overline D_0$ factors through the residual
+moment homomorphism $k[M]\to\overline D_0$. Its finite module
+generators therefore also generate $\overline D_0$ over
+$k[M]$. This proves that $\phi_0$ is finite.
+
+For two compatible models, the same proposition gives a common
+model $C_0$ containing both and finite over both. All three
+models are finite over the target of the fixed $Q$.
+Proposition~\ref{v036:projection:componentcomparison} identifies
+the pushforwards of the top-dimensional cycle of
+$\operatorname{Spec}\overline C_0$ with those of both models.
+Their residual moment maps agree. Pushforwards of these finite
+cycles compose because degrees of finite extensions of function
+fields multiply. Pushing to $\mathbb T_N$ proves the asserted
+independence, including comparison of models initially constructed
+using different projections.
+
+For any other finite projection, use the same compatible model.
+Each $d$-dimensional component of its special fibre dominates
+$\mathbb T_{\mathbf Z^d}$ by the dimension argument in
+Proposition~\ref{v036:projection:componentcomparison}.
+Its residual moment image $Z$ is also $d$-dimensional. The
+coordinate ring of $Z$ lies between the image of
+$k[U^{\pm1}]$ and the coordinate domain of the source
+component. The latter is finite over $k[U^{\pm1}]$.
+Every generator of the intermediate ring is consequently
+integral over $k[U^{\pm1}]$, and finitely many generators
+satisfying monic equations make it finite. Thus $q_Z$ is
+finite and dominant.
+
+By Lemma~\ref{v035:degreegaussrank} and the Artinian length
+formula in Theorem~\ref{v035:analytic:finitequotientmodel},
+\[
+ \delta_Q
+    =\sum_{\dim(\overline D_0/\mathfrak p)=d}
+       \operatorname{length}((\overline D_0)_{\mathfrak p})
+       [\kappa(\mathfrak p):k(U)].
+\]
+Group the terms having the same residual moment image $Z$.
+The definition of $c_Z$ and the field-degree tower formula
+give exactly \eqref{v036:projection:eqdegreecycle}.
+
+For the last assertion, a model compatible with $h$ is also
+compatible with $h&#x27;$. It is finite over a target of a finite
+projection for $h&#x27;$. On every component, the coordinate ring
+of the residual $h$-image is intermediate between the ring of
+the residual $h&#x27;$-image and a finite algebra over the latter.
+The same monic-equation argument proves finiteness of the
+induced map of image components. The two residual moment maps
+now compose through $a$, and multiplication of the full field
+degrees proves the cycle identity.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="bfb5382de405594713d50c8ae6bf958dc47b197319e297c6d41187047c635fe7">
+Let $N$ be a lattice, $M=N^\vee$, and
+$\mathbb T_N=\operatorname{Spec}k[M]$. A normalized moment tuple
+on $D$ is a homomorphism
+\[
+                     h:M\longrightarrow D^\times
+\]
+such that every character value and its inverse are power
+bounded. A basis and its inverses suffice for this condition.
+For $Q:N\to\mathbf Z^d$, put
+\[
+ A_Q=K\langle U_1^{\pm1},\ldots,U_d^{\pm1}\rangle,
+ \qquad U_j\longmapsto h(Q^*e_j).
+\]
+We consider those $Q$ for which this map is finite and the given
+norm on $D$ is equivalent to the canonical finite-$A_Q$-module
+norm. Write $H_Q$ for the completed residue field of the Gauss
+point of $\mathcal M(A_Q)$, and put
+\[
+                 \delta_Q=\dim_{H_Q}(D\widehat\otimes_{A_Q}H_Q).
+\]
+An actual model is \emph{compatible with $h$} if it contains
+the values of a basis of $M$ and their inverses.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002285-reader.jpg" alt="Typeset mathematical passage from PDF page 946" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=946">PDF page 946 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002259/">NAG-002259</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-002280/">NAG-002280</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-002282/">NAG-002282</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole</li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002259/">NAG-002259</a> · selected whole</li><li><a href="/r/NAG-002259/">NAG-002259</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002280/">NAG-002280</a> · selected whole</li><li><a href="/r/NAG-002280/">NAG-002280</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002282/">NAG-002282</a> · selected whole</li><li><a href="/r/NAG-002282/">NAG-002282</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002259/">v035:analytic:finitequotientmodel</a></li><li><a href="/r/NAG-002242/">v035:degreegaussrank</a></li><li><a href="/r/NAG-002280/">v036:projection:commonmodel</a></li><li><a href="/r/NAG-002282/">v036:projection:componentcomparison</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

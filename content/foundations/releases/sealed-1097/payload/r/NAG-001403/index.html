@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001403/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite modules over strict affinoids · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001403 · Accepted whole</p><h1>Finite modules over strict affinoids</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.11.5">Open in the English reader · PDF page 73</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e09e873c46d90b4823dab629d62b1549f6d5d0d7ca95c142ccc8407a7b440065">
+\begin{theorem}[\bi{Finite modules over strict affinoids}{Strict affinoids 上的 finite modules}]\label{fnd:strictfinitemodules}
+\bi{Let $A$ be a strict $K$-affinoid algebra, with admissibility understood as equivalence to the quotient norm. Then $A$ is Noetherian and its ideals are closed. Every finite $A$-module has a complete norm, canonical up to uniform equivalence, induced by a finite free presentation. Its submodules are finite and closed. Every $A$-linear map between finite modules is bounded, has closed image, and is norm-strict onto its image.}
+{设 $A$ 为 strict $K$-affinoid algebra，其中 admissibility 指与 quotient norm 的 uniform equivalence。则 $A$ 为 Noetherian，且其 ideals 为 closed。每个 finite $A$-module 都有由 finite free presentation 诱导的 complete norm，并且该 norm 在 uniform equivalence 意义下 canonical。其 submodules 为 finite 且 closed。Finite modules 之间的每个 $A$-linear map 都是 bounded、具有 closed image，且对其 image 为 norm-strict。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="10f7d90bfbfefcac4d6d18d48ca19c25a8e4a28df6b9749bff4e4e0ba174e349">
+\begin{proof}
+\bi{\textbf{Step 1: construct the norm.} Write $A=R_n/I$. Theorem~\ref{fnd:strictcontrolledgeneration} makes $I$ closed, and Lemma~\ref{fnd:completequotient} makes the quotient complete. First use this quotient norm on $A$; replacing it by a uniformly equivalent norm changes only constants. For a finite $A$-module $M$, choose a surjection $R_n^m\to M$. Its kernel is a finitely generated closed submodule by the same theorem. The quotient therefore equips $M$ with a complete norm. It agrees with the successive quotient through $A^m$.}
+{\textbf{Step 1：构造 norm。} 写成 $A=R_n/I$。Theorem~\ref{fnd:strictcontrolledgeneration} 保证 $I$ 为 closed，Lemma~\ref{fnd:completequotient} 保证 quotient complete。先在 $A$ 上使用此 quotient norm；换成 uniformly equivalent norm 只改变常数。对 finite $A$-module $M$，选取 surjection $R_n^m\to M$。同一定理说明其 kernel 是 finitely generated closed submodule，故 quotient 为 $M$ 提供 complete norm；此 norm 与经过 $A^m$ 的 successive quotient 一致。}
+
+\bi{For clarity, the equality of successive quotient norms follows by taking the infimum first over lifts from $A^m$ to $R_n^m$ and then over lifts of an element of $M$; the resulting set is exactly all its lifts in $R_n^m$. Approximating lifts of both $a\in A$ and $m\in M$ gives $\|am\|\leq\|a\|\|m\|$. Coefficients in $R_n$ pass to $A$ without increasing their quotient norms.}
+{具体地，先对从 $A^m$ 到 $R_n^m$ 的 lifts 取 infimum，再对 $M$ 中元素的 lifts 取 infimum，得到的集合正是该元素在 $R_n^m$ 中的全部 lifts；因此 successive quotient norms 与 direct quotient norm 相等。同时逼近 $a\in A$ 与 $m\in M$ 的 lifts，得到 $\|am\|\leq\|a\|\|m\|$。$R_n$ 中的 coefficients 送入 $A$ 后，其 quotient norms 不增加。}
+
+\bi{For two presentations of $M$, lift each finite list of generators to the other free module. The resulting matrices define bounded maps. Lifting an element of $M$ with norm less than twice its quotient norm, and applying the corresponding matrix, bounds one quotient norm by a constant times the other. Reversing the roles proves uniform equivalence. This also proves independence of the chosen presentation of $A$.}
+{对 $M$ 的两种 presentations，将各自有限的 generator list 提升到另一 free module。所得 matrices 定义 bounded maps。将 $M$ 中的一个元素提升到 norm 小于其 quotient norm 两倍的元素，再施加相应 matrix，就得到一个 quotient norm 被另一个乘以常数控制。交换两种 presentations 即得 uniform equivalence；同样也证明了结果与 $A$ 的 presentation 选择无关。}
+
+\bi{\textbf{Step 2: submodules.} For $N\subset M$, take its inverse image $E\subset R_n^m$. It has controlled generators $e_i$. Given $v\in N$, choose a lift $e\in E$ with $\|e\|&lt;2\|v\|$ when $v\ne0$, and expand it using the $e_i$. Their images generate $N$, with a uniform coefficient bound in its induced norm. Lemma~\ref{fnd:controlledclosed}, applied with coefficient algebra $R_n$, makes $N$ closed. These generators also generate over $A$. In particular, all ideals of $A$ are finitely generated, so $A$ is Noetherian.}
+{\textbf{Step 2：submodules。} 对 $N\subset M$，取其 inverse image $E\subset R_n^m$，并选取 controlled generators $e_i$。给定非零 $v\in N$，取 lift $e\in E$ 满足 $\|e\|&lt;2\|v\|$，再用 $e_i$ 展开。它们的 images 生成 $N$，并对 induced norm 具有统一的 coefficient bound。以 $R_n$ 为 coefficient algebra 应用 Lemma~\ref{fnd:controlledclosed}，得到 $N$ closed。这些 generators 也在 $A$ 上生成 $N$。特别地，$A$ 的全部 ideals 均 finitely generated，故 $A$ 为 Noetherian。}
+
+\bi{\textbf{Step 3: maps.} An $A$-linear map $u:M\to M&#x27;$ is bounded: express an element using a controlled lift to a finite free presentation, and bound its image by the maximum norm of the images of the generators. Its image $P$ is a finite closed submodule of $M&#x27;$. Choose controlled generators $p_i$ of $P$ and any lifts $m_i\in M$. If $p=\sum a_ip_i$ with $\max_i\|a_i\|\leq C\|p\|$, then $\sum a_im_i$ is a lift of norm at most $C\max_i\|m_i\|\|p\|$. This is the required quotient-norm bound. The kernel is a finite closed submodule, and the quotient is complete by Lemma~\ref{fnd:completequotient}.}
+{\textbf{Step 3：maps。} $A$-linear map $u:M\to M&#x27;$ 为 bounded：使用到 finite free presentation 的 controlled lift 来表示一个元素，再用 generators 的 images 的最大 norm 控制其 image。其 image $P$ 是 $M&#x27;$ 中的 finite closed submodule。选择 $P$ 的 controlled generators $p_i$ 及任意 lifts $m_i\in M$。若 $p=\sum a_ip_i$ 且 $\max_i\|a_i\|\leq C\|p\|$，则 $\sum a_im_i$ 是 norm 不超过 $C\max_i\|m_i\|\|p\|$ 的 lift。这就是所需 quotient-norm bound。Kernel 为 finite closed submodule，而 quotient 的 completeness 来自 Lemma~\ref{fnd:completequotient}。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="d8b1c6f8ec70ecd0a9b6090e608202416d44b228caf3c0dcdff05951e3d9c48d">
+\chapter{\bi{Valued fields, Banach algebras and analytic points}{Valued fields、Banach algebras 与 analytic points}}\label{ch:1}\label{vol:I}\label{part:tropical}\label{fnd:algebras}
+\bi{A non-Archimedean analytic space is locally described by convergent functions, but its points need not be evaluations at elements of the ground field. The purpose of this chapter is to construct both parts of this description: the algebras of functions and the valued fields in which their values lie. The next chapter supplies domains and sheaves. This order is important for multiplicities: a seminorm detects the value of a function, whereas the algebra also retains nilpotents and finite-module lengths.}
+{Non-Archimedean analytic space 局部由 convergent functions 描述，但其 points 未必来自 ground field 中元素的 evaluation。本章构造这一描述的两部分：functions 的 algebras，以及函数值所在的 valued fields。下一章再建立 domains 与 sheaves。这个顺序对 multiplicities 很重要：seminorm 检测函数值，而 algebra 还保留 nilpotents 与 finite-module lengths。}
+
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="6ea2c0bb8faa98558245a1b435f008c0365c1ba10767182d02639e5e3d9dee3c">
+\begin{definition}\label{fnd:tatereal}
+\bi{For $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$, the generalized Tate algebra is}
+{对 $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$，定义 generalized Tate algebra}
+\[
+ K\{r^{-1}T\}=
+ \left\{\sum_{\nu\in\N^n}a_\nu T^\nu:
+       |a_\nu|r^\nu\longrightarrow0\text{ as }|\nu|\to\infty\right\}.
+\]
+\[
+ \|f\|_r=\max_\nu |a_\nu|r^\nu.
+\]
+\bi{Here $r^\nu=\prod_i r_i^{\nu_i}$. When all $r_i=1$, write $K\langle T_1,\ldots,T_n\rangle$.}
+{这里 $r^\nu=\prod_i r_i^{\nu_i}$。当所有 $r_i=1$ 时，记作 $K\langle T_1,\ldots,T_n\rangle$。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="453c75099497848aecc5710681ced658273649a6f32617e65657be3fbf4297eb">
+\begin{definition}\label{fnd:affinoiddefinition}
+\bi{A $K$-affinoid algebra is a Banach $K$-algebra admitting an admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$ for some finite tuple of positive radii. It is strictly $K$-affinoid if such a presentation exists with all radii equal to one. Morphisms are bounded $K$-algebra homomorphisms.}
+{$K$-affinoid algebra 是一个 Banach $K$-algebra，它对某个有限的 positive-radii tuple 存在 admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$。若可取所有 radii 等于一，则称为 strictly $K$-affinoid。Morphisms 为 bounded $K$-algebra homomorphisms。}
+\end{definition}
+
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="92b63802dc03b1c832fa8ed92d15c890688fabf94d4fb725402470af8c5b11f0">
+\begin{definition}\label{fnd:spectrum}
+\bi{For a $K$-affinoid algebra $A$, its Berkovich spectrum $\mathcal M(A)$ is the set of bounded multiplicative seminorms extending $|\cdot|_K$. Its topology is the weakest topology making every evaluation $x\mapsto|a(x)|$ continuous. The algebra $A$, not just this topological space, is part of the affinoid object.}
+{对 $K$-affinoid algebra $A$，其 Berkovich spectrum $\mathcal M(A)$ 为延拓 $|\cdot|_K$ 的 bounded multiplicative seminorms 的集合。其 topology 是使所有 evaluation $x\mapsto|a(x)|$ continuous 的最弱 topology。Affinoid object 的数据包括 algebra $A$，而不只是这个 topological space。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="fed8c5acf3fca8b35671e3fabc07c2dd9a819b319577b3935db6cdcff55561c7">
+\section{\bi{Norm conventions and bounded localization}{Norm conventions 与 bounded localization}}\label{fnd:wp01norms}
+\bi{Before constructing localization maps, we fix the quantitative meaning of admissibility. This matters when the field is trivially valued. The correction below replaces the topology-only wording in version 0.26; its original wording is retained in the version record. All later uses of ``admissible&#x27;&#x27; refer to equivalent quotient norms.}
+{构造 localization maps 之前，先固定 admissibility 的定量含义。当基域赋值平凡时，这一区别不可省略。下述修正替换 v0.26 中仅用 topology 表述的约定；原措辞保留在 version record 中。此后 ``admissible&#x27;&#x27; 均指 equivalent quotient norms。}
+
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+\source{\cite[Definition/Exercise 2.1.1.1(ii)--(iii), p.~4]{TemIntro}.}
+</pre></details><details class="source"><summary>Standing context 7 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 8 · exact TeX</summary><pre data-sha256="83a917bb9e8d9cab131bd125fb59111e41342ddadac1c47cb5cce2ea4fe340f7">
+\section{\bi{Controlled generation in strict Tate algebras}{Strict Tate algebras 中带控制的有限生成}}\label{fnd:wp02strict}
+\bi{Division over a Banach coefficient algebra supplies an induction in the number of variables. We carry out that induction with estimates: finite generation alone would not prove that an algebraic submodule is closed. Put $R_n=K\langle X_1,\ldots,X_n\rangle$, with the unit Gauss norm, and $R_0=K$. Finite powers carry the maximum norm. The field may be trivially valued. Every constant below is independent of the element being represented.}
+{Banach coefficient algebra 上的 division 可以用于按变量个数归纳。下面在归纳中同时保留 estimates，因为仅有 finite generation 并不能证明 algebraic submodule 为 closed。记 $R_n=K\langle X_1,\ldots,X_n\rangle$，配备 unit Gauss norm，并令 $R_0=K$。Finite powers 配备 maximum norm。允许基域的赋值平凡。下文各常数均不依赖所表示的元素。}
+</pre></details><details class="source"><summary>Standing context 9 · exact TeX</summary><pre data-sha256="0e4cf62aac370440c7a27a455da5584d4e8b202673b067384561c68accc069af">
+\begin{remark}\label{fnd:strictclusterboundary}
+\bi{For arbitrary polyradii, the coefficient description of a free-radius extension replaces the strict coordinate changes used here. Theorems~\ref{fnd:generalizedclosedsubmodules} and~\ref{fnd:generalizedfinitemodules} descend closedness and the canonical finite-module topology through that extension, giving the general affinoid statements.}
+{对任意多半径，自由半径扩张的系数描述替代这里使用的 strict 坐标变换。Theorems~\ref{fnd:generalizedclosedsubmodules} 与~\ref{fnd:generalizedfinitemodules} 沿该扩张下降闭性及有限模的典范拓扑，得到一般 affinoid 陈述。}
+\end{remark}
+\source{\bi{Classical Tate algebra and finite-module theory; compare \cite[3.1.2.1 and 3.1.3.2(i)]{TemIntro}. The proofs in this section reconstruct the strict case from the preceding division estimates; those source facts are attribution, not proof inputs.}{Classical Tate algebra 与 finite-module theory；参见 \cite[3.1.2.1 及 3.1.3.2(i)]{TemIntro}。本节由前面的 division estimates 重建 strict case 的证明；这些来源仅用于 attribution，不作为 proof inputs。}}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001403-reader.jpg" alt="Typeset mathematical passage from PDF page 73" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=73">PDF page 73 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001381/">NAG-001381</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001402/">NAG-001402</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001380/">fnd:completequotient</a></li><li><a href="/r/NAG-001381/">fnd:controlledclosed</a></li><li><a href="/r/NAG-001560/">fnd:generalizedclosedsubmodules</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li><li><a href="/r/NAG-001402/">fnd:strictcontrolledgeneration</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

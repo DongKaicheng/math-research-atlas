@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002033/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A uniform implicit-function domain · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002033 · Accepted whole</p><h1>A uniform implicit-function domain</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.11.1">Open in the English reader · PDF page 648</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="714bad567c7cceaac3d520a7bc40aa8243fd0a2d7977f398c8beeae53935bfb3">
+\begin{proposition}[\bi{A uniform implicit-function domain}{一致隐函数域}]
+\label{cand:uniformhenseldomain}
+\bi{Let $A$ be a $K$-affinoid algebra over a complete non-Archimedean
+field, with an admissible submultiplicative Banach norm. Let $n\geq1$,
+let $F=(F_1,\ldots,F_n)\in A\langle Z_1,\ldots,Z_n\rangle^n$
+have coefficients of norm at most one, and fix $z_0\in(K^\circ)^n$.
+Write $J(Z)=(\partial F_i/\partial Z_j)$ and put}
+{设 $A$ 是完备非阿基米德域 $K$ 上的 affinoid 代数，配备
+admissible 次乘性 Banach 范数。设 $n\geq1$，
+$F=(F_1,\ldots,F_n)\in A\langle Z_1,\ldots,Z_n\rangle^n$
+的系数范数至多为一，并固定 $z_0\in(K^\circ)^n$。
+记 $J(Z)=(\partial F_i/\partial Z_j)$，并令}
+\[
+ \begin{gathered}
+ e=F(z_0),\qquad J_0=J(z_0),\qquad d=\det J_0,\\
+ B=A\langle Z_1,\ldots,Z_n,Q\rangle/
+               (F_1,\ldots,F_n,Q\det J(Z)-1),\\
+ p:\mathcal M(B)\longrightarrow\mathcal M(A).
+ \end{gathered}
+\]
+\bi{Give the following subsets their analytic-domain structures:}
+{为下列子集配备其解析域结构：}
+\[
+ \begin{aligned}
+ W&amp;=\{x:|d(x)|=1,\ \max_i|e_i(x)|&lt;1\},\\
+ Y&amp;=\{y\in p^{-1}(W):\max_i|Z_i(y)-z_{0i}|&lt;1\}.
+ \end{aligned}
+\]
+\bi{Then $p:Y\to W$ is an analytic isomorphism. Its inverse has
+$Z$-coordinate equal to the unique vector of analytic functions
+$z$ on $W$ satisfying $F(z)=0$ and
+$\max_i|z_i(x)-z_{0i}|&lt;1$ at every $x\in W$.}
+{则 $p:Y\to W$ 是解析同构。其逆的 $Z$ 坐标为 $W$ 上唯一的
+解析函数向量 $z$，满足 $F(z)=0$，且对每个 $x\in W$ 有
+$\max_i|z_i(x)-z_{0i}|&lt;1$。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a5bc0d99dd488831d1fe754c484e4b5a2d006c3a8a7eff76105b00e9145123f6">
+\begin{proof}
+\bi{Translation by $z_0$ is a contractive endomorphism of the unit
+Tate algebra. Indeed, expand each monomial by the integer binomial
+formula. Its coefficients have norm at most the norm of the original
+coefficient. For any positive threshold, only finitely many original
+coefficients exceed that threshold, and each associated monomial has
+finitely many terms. The series criterion
+\ref{fnd:seriescriterion} therefore permits the sums to be interchanged
+and gives a restricted series with the same bound. Termwise
+differentiation is also bounded, since integer coefficients have
+absolute value at most one. Consequently}
+{按 $z_0$ 平移是单位 Tate 代数的压缩自同态。确实，按整数
+二项式公式展开每个单项式，所得各系数的范数至多为原系数
+范数。对任意正阈值，超过该阈值的原系数只有有限个，每个
+对应单项式的展开又只有有限项。因此级数判据
+\ref{fnd:seriescriterion} 允许交换求和次序，得到具有同一界的
+受限级数。逐项求导也有界，因为整数系数的绝对值至多为一。
+于是}
+\[
+ F(z_0+H)=e+J_0H+N(H),\qquad
+ N_i(H)=\sum_{|\alpha|\geq2}a_{i\alpha}H^\alpha,
+ \qquad \|a_{i\alpha}\|\leq1.
+\]
+\bi{The coefficients of each displayed series tend to zero.
+In particular all entries of $J_0$, its adjugate, and $d$ have
+norm at most one.}
+{各所列级数的系数均趋于零。特别地，$J_0$、其伴随矩阵以及
+$d$ 的所有系数范数均至多为一。}
+
+\bi{The equation $|d|=1$ defines the Laurent affinoid domain
+$D=\{|d|\geq1\}$, because $\|d\|\leq1$. The set $W$ is open
+in $D$, and $Y$ is open in $p^{-1}(W)$; domain calculus and base
+change, Proposition~\ref{fnd:generalnetdomaincalculus}, give their
+analytic structures. For $0&lt;\delta&lt;1$, put}
+{因 $\|d\|\leq1$，等式 $|d|=1$ 定义 Laurent affinoid 域
+$D=\{|d|\geq1\}$。集合 $W$ 在 $D$ 中开，$Y$ 在
+$p^{-1}(W)$ 中开；Proposition~\ref{fnd:generalnetdomaincalculus}
+的域运算及基变换给出其解析结构。对 $0&lt;\delta&lt;1$，令}
+\[
+ \begin{aligned}
+ W_\delta&amp;=\{x\in D:\max_i|e_i(x)|\leq\delta\},\\
+ A_\delta&amp;=A\langle D_1,\delta^{-1}E_1,\ldots,
+                         \delta^{-1}E_n\rangle/
+                (dD_1-1,E_1-e_1,\ldots,E_n-e_n).
+ \end{aligned}
+\]
+\bi{In the defining quotient norm, the original coefficients and
+$d^{-1}=D_1$ have norm at most one, $\|e\|\leq\delta$, and
+$\|J_0^{-1}\|\leq1$ by the adjugate formula. These domains cover
+$W$ admissibly: every point lies in the relative interior of some
+$W_\delta$, by choosing $\max_i|e_i(x)|&lt;\delta&lt;1$.}
+{在定义商范数下，原有系数及 $d^{-1}=D_1$ 的范数至多为一，
+$\|e\|\leq\delta$，并且伴随矩阵公式给出
+$\|J_0^{-1}\|\leq1$。这些域 admissibly 覆盖 $W$：对任一点
+选择 $\max_i|e_i(x)|&lt;\delta&lt;1$，该点便属于某个
+$W_\delta$ 的相对内部。}
+
+\bi{For vectors $h,h&#x27;$ with norms at most $\delta$, telescoping
+each monomial gives}
+{对范数至多为 $\delta$ 的向量 $h,h&#x27;$，逐个单项式作差得到}
+\[
+ \|N(h)\|\leq\delta^2,\qquad
+ \|N(h)-N(h&#x27;)\|\leq\delta\|h-h&#x27;\|.
+\]
+\bi{The same bounds pass to restricted series by convergence.
+Thus $\Phi(h)=-J_0^{-1}e-J_0^{-1}N(h)$ preserves the closed
+radius-$\delta$ ball in $A_\delta^n$ and has contraction constant
+$\delta&lt;1$. The iteration from zero used in
+Lemma~\ref{fnd:analyticcompletedroots} gives a fixed point
+$h_\delta$ with $\|h_\delta\|\leq\delta$.
+Set $z_\delta=z_0+h_\delta$; then $F(z_\delta)=0$ and}
+{由收敛性，同一估计适用于受限级数。因此
+$\Phi(h)=-J_0^{-1}e-J_0^{-1}N(h)$ 保持 $A_\delta^n$ 中
+半径为 $\delta$ 的闭球，且压缩常数为 $\delta&lt;1$。
+Lemma~\ref{fnd:analyticcompletedroots} 中从零开始的迭代
+给出不动点 $h_\delta$，满足 $\|h_\delta\|\leq\delta$。
+令 $z_\delta=z_0+h_\delta$，则 $F(z_\delta)=0$，且}
+\[
+ J(z_\delta)=J_0(I+V_\delta),\qquad
+ \|V_\delta\|\leq\delta&lt;1.
+\]
+\bi{The matrix geometric inverse gives $J(z_\delta)^{-1}$ of
+norm at most one. Its determinant therefore has norm at most one.
+Hence $Z\mapsto z_\delta$ and
+$Q\mapsto\det J(z_\delta)^{-1}$ define a bounded map
+$B\to A_\delta$ and an analytic section $s_\delta:W_\delta\to Y$.}
+{矩阵几何级数给出范数至多为一的逆矩阵
+$J(z_\delta)^{-1}$，其行列式范数也至多为一。因此
+$Z\mapsto z_\delta$、$Q\mapsto\det J(z_\delta)^{-1}$
+定义有界同态 $B\to A_\delta$，以及解析截面
+$s_\delta:W_\delta\to Y$。}
+
+\bi{For later use, the monomial telescoping also gives a matrix
+difference identity}
+{为后面使用，单项式逐变量作差还给出矩阵恒等式}
+\[
+ \begin{gathered}
+ F(z_0+h)-F(z_0+h&#x27;)=(J_0+R(h,h&#x27;))(h-h&#x27;),\\
+ \|R(h,h&#x27;)\|\leq\max(\|h\|,\|h&#x27;\|).
+ \end{gathered}
+\]
+\bi{whenever both norms are less than one. Each entry of the
+remainder contains a monomial of positive degree in $h,h&#x27;$;
+the restricted-series tails converge, so this is an identity
+in the Banach algebra, not only at its analytic points.}
+{其中要求两个范数都小于一。余项的每个矩阵项至少含一个
+关于 $h,h&#x27;$ 的正次数单项式；受限级数尾项收敛，所以这是
+Banach 代数内的恒等式，而不只是解析点处的等式。}
+
+\bi{If $0&lt;\delta_1\leq\delta_2&lt;1$, the defining presentations
+give a contractive restriction $A_{\delta_2}\to A_{\delta_1}$.
+Apply the difference identity to $h_{\delta_1}$ and the restricted
+$h_{\delta_2}$. The factor
+$J_0+R=J_0(I+J_0^{-1}R)$ is invertible, since
+$\|J_0^{-1}R\|\leq\delta_2&lt;1$. Hence the roots agree.
+Analytic morphism gluing gives a section $s:W\to Y$.}
+{若 $0&lt;\delta_1\leq\delta_2&lt;1$，定义表示给出压缩的限制
+映射 $A_{\delta_2}\to A_{\delta_1}$。将差恒等式应用于
+$h_{\delta_1}$ 及限制后的 $h_{\delta_2}$；由于
+$\|J_0^{-1}R\|\leq\delta_2&lt;1$，因子
+$J_0+R=J_0(I+J_0^{-1}R)$ 可逆，故两个根相等。
+解析态射粘合给出截面 $s:W\to Y$。}
+
+\bi{We check the other inverse identity on analytic functions.
+The domains of $Y$ defined by $p(y)\in W_\delta$ and
+$\max_i|Z_i(y)-z_{0i}|\leq\gamma$, for $0&lt;\delta,\gamma&lt;1$,
+form an admissible affinoid cover. In their defining quotient norms,
+$\|Z-z_0\|\leq\gamma$ and the pulled-back $h_\delta$ has norm
+at most $\delta$. The difference identity becomes}
+{下面在解析函数层面验证另一个逆恒等式。在 $Y$ 中，由
+$p(y)\in W_\delta$ 及
+$\max_i|Z_i(y)-z_{0i}|\leq\gamma$ 定义的域组成 admissible
+affinoid 覆盖，其中 $0&lt;\delta,\gamma&lt;1$。在其定义商范数下，
+$\|Z-z_0\|\leq\gamma$，且 $h_\delta$ 的拉回范数至多为
+$\delta$。差恒等式变为}
+\[
+ 0=F(Z)-F(z_\delta)=(J_0+R)(Z-z_\delta),\qquad
+ \|J_0^{-1}R\|\leq\max(\delta,\gamma)&lt;1.
+\]
+\bi{Thus $Z=z_\delta$ in the affinoid algebra, and
+$Q\det J(Z)=1$ identifies the $Q$ coordinate as well.
+The base coordinates already agree, so $s\circ p$ is the identity
+as an analytic morphism. The argument preserves nilpotents.}
+{所以在 affinoid 代数中有 $Z=z_\delta$，而
+$Q\det J(Z)=1$ 也识别 $Q$ 坐标。底空间坐标本已相等，
+故 $s\circ p$ 作为解析态射为恒等；论证同时保留幂零元。}
+
+\bi{Finally, let $z&#x27;$ be another analytic solution with the stated
+strict bound. On $W_\delta$, restrict further to the Weierstrass
+domains $\max_i|z&#x27;_i-z_{0i}|\leq\gamma$, where $0&lt;\gamma&lt;1$.
+As $\delta$ and $\gamma$ vary, these domains cover $W$ admissibly.
+Their defining quotient norms make the map from $A_\delta$
+contractive and give $\|z&#x27;-z_0\|\leq\gamma$; thus all the restricted
+series substitutions converge. The same difference identity has an
+invertible matrix factor, since its error has norm at most
+$\max(\delta,\gamma)&lt;1$. It follows in each domain algebra that
+$z&#x27;=z_\delta$, and sheaf gluing proves uniqueness on $W$.}
+{最后，设 $z&#x27;$ 是满足所列严格界的另一个解析解。在 $W_\delta$
+上进一步限制到 Weierstrass 域
+$\max_i|z&#x27;_i-z_{0i}|\leq\gamma$，其中 $0&lt;\gamma&lt;1$。
+当 $\delta$、$\gamma$ 变化时，这些域 admissibly 覆盖 $W$。
+其定义商范数使来自 $A_\delta$ 的映射压缩，并保证
+$\|z&#x27;-z_0\|\leq\gamma$，因而全部受限级数代入收敛。
+同一差恒等式的矩阵因子可逆，因为其误差范数至多为
+$\max(\delta,\gamma)&lt;1$。所以在每个域的代数中
+$z&#x27;=z_\delta$；层的粘合给出 $W$ 上的唯一性。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="ed0093c0fd045b53a88c59a506006e43660731b10ed92698bf6887e4b046a292">
+\bi{The simple-root argument of Lemma~\ref{fnd:analyticcompletedroots}
+extends to a square system of restricted power series and can be made
+uniform on increasing affinoid domains. We use its contraction
+construction and the geometric inversion of
+Lemma~\ref{fnd:geometricinverse}, with the maximum norm for vectors
+and matrices.}
+{Lemma~\ref{fnd:analyticcompletedroots} 的单根论证可推广到受限
+幂级数的方程数等于变量数的系统，并在递增的 affinoid 域上一致
+进行。下面复用其中的不动点构造，以及
+Lemma~\ref{fnd:geometricinverse} 的几何级数求逆；向量及矩阵
+均使用最大范数。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002033-reader.jpg" alt="Typeset mathematical passage from PDF page 648" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=648">PDF page 648 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001578/">NAG-001578</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001693/">NAG-001693</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole</li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole</li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001578/">NAG-001578</a> · selected whole</li><li><a href="/r/NAG-001578/">NAG-001578</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole</li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001693/">NAG-001693</a> · selected whole</li><li><a href="/r/NAG-001693/">NAG-001693</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole</li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001669/">fnd:analyticcompletedroots</a></li><li><a href="/r/NAG-001609/">fnd:generalnetdomaincalculus</a></li><li><a href="/r/NAG-000184/">fnd:geometricinverse</a></li><li><a href="/r/NAG-000221/">fnd:seriescriterion</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

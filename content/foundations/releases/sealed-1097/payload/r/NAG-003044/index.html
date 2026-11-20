@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003044/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A principal divisor with no presentation on its support · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003044 · Accepted whole</p><h1>A principal divisor with no presentation on its support</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003044.original">Open in the English reader · PDF page 1921</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0ee021162ee4dd632a5d5b5c439c8dc1b16b54e65b3a44185d915ccf2d71a6d4">
+\begin{proposition}[A principal divisor with no presentation on its support]
+\label{f9cn:obstruction}
+Over any field $K$, let
+\[
+ X=\{ad-bc=0\}\subset\mathbf P^4_K,
+ \qquad [a:b:c:d:t],\qquad o=[0:0:0:0:1].
+\]
+This is a normal integral proper threefold. Put
+\[
+ P_0=\{a=b=0\},\qquad P_1=\{c=d=0\},\qquad Z=P_0\cup P_1.
+\]
+The rational section $f=a/c$ of $\cO_X$ has Cartier divisor with
+Weil cycle $P_0-P_1$ and is a regular unit off $Z$.
+It has no signed presentation on $Z$, even in a neighbourhood of $o$.
+Hence no proper generic-identity modification of any normal DVR model
+carrying this datum can acquire such a presentation on the inverse
+image of the prescribed support. In particular this obstruction applies
+to the constant equation $ad-bc=0$ over a complete DVR.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="136520c6ee97a532a4f6f62292606048409f95a20f97fbc115503052d939d860">
+\begin{proof}
+On the chart $t=1$ the coordinate algebra is
+$A=K[a,b,c,d]/(ad-bc)$. It identifies with the weight-zero subring
+of $B=K[u_0,u_1,v_0,v_1]$, where $u_0,u_1$ have weight $1$,
+$v_0,v_1$ have weight $-1$, and
+\[
+ a=u_0v_0,\quad b=u_0v_1,\quad c=u_1v_0,\quad d=u_1v_1.
+\]
+Every weight-zero monomial is a product of these four generators.
+Their only relation is the displayed determinant: after inverting $a$
+one solves $d=bc/a$, and $a,b,c$ are algebraically independent under
+this substitution. The determinant polynomial is prime by its
+primitive linear form in $d$ and unique factorization, so this
+localization is injective.
+
+The polynomial ring $B$ is normal by \st{0BC1} and \st{0AFV}.
+If $z\in\Frac(A)$ is integral over $A$, it is integral over $B$,
+so belongs to $B$. Under the weight substitution with an independent
+Laurent variable, $z$ is fixed because it is a fraction of weight-zero
+elements. Comparing Laurent powers shows that its polynomial expression
+has weight zero, hence lies in $A$. Thus $A$ is normal. Its
+localizations are normal by \st{00GY}. The remaining projective
+charts, where one of $a,b,c,d$ is nonzero, solve for a variable and
+are polynomial three-dimensional charts. This proves normality and
+integrality of $X$; projectivity gives properness.
+
+The hyperplane sections satisfy
+$\divi(a)=P_0+Q$ and $\divi(c)=P_1+Q$, where $Q=\{a=c=0\}$.
+Each coefficient is one, as is seen by solving the determinant equation
+at the corresponding generic point. Their difference is $P_0-P_1$.
+Off $Z$, the two rows are nonzero; where $a/c$ is not directly a unit,
+it equals $b/d$, which is a unit there. Thus the support is exactly
+as claimed. The presentation using the two hyperplane sections adds
+$Q$, which is not contained in $Z$, and is not an allowed presentation.
+
+We prove the obstruction without a class-group computation. Over the
+affine chart $t=1$, consider the incidence variety
+\[
+ Y=\{((a,b,c,d),[u_0:u_1]):
+                   au_1=cu_0,\ bu_1=du_0\}
+                 \longrightarrow\Spec A.
+\]
+It is closed in $\Spec A\times\mathbf P^1$ and hence proper over
+$\Spec A$. Its two charts are
+\[
+ (a,b,z),\quad c=za,\ d=zb;
+ \qquad (c,d,w),\quad a=wc,\ b=wd.
+\]
+They are affine three-spaces. The map is an isomorphism off the
+origin, since a nonzero rank-one matrix determines its column line.
+Its exceptional fibre is the zero section $C\simeq\mathbf P^1$,
+which has codimension two. In particular there is no exceptional
+prime divisor. The strict transforms $F_0,F_1$ of $P_0,P_1$ are
+fibres of $Y\to\mathbf P^1$, over $[0:1]$ and $[1:0]$.
+
+Suppose an effective Cartier divisor $H$ near $o$ is supported in
+$P_0\cup P_1$, with multiplicities $m,n\geq0$. Shrink to an affine
+neighbourhood of $o$ on which $H$ is principal. Its pullback to $Y$
+over that neighbourhood has divisor $mF_0+nF_1$: off $C$ this
+follows from the isomorphism, and no prime divisor is contained in
+$C$. Equality of these Cartier divisors follows on the local UFD
+charts. The associated line bundle restricts to the trivial line on
+$C$, because it was pulled back from a principal divisor. But the
+restriction of $\cO_Y(mF_0+nF_1)$ is
+$\cO_{\mathbf P^1}(m+n)$. In the standard two affine
+trivializations its transition function is $z^{m+n}$. A trivialization
+of the line on each affine chart can change this only by invertible
+polynomials, which are constants. Thus triviality forces $m+n=0$,
+and hence $m=n=0$.
+Both effective factors of a hypothetical signed presentation would
+therefore have zero coefficients at $P_0,P_1$ near $o$, contradicting
+the coefficients $1,-1$ of $\divi(f)$.
+
+The same weight-zero argument over the UFD $R$ shows that the
+constant affine cone is normal over $R$; the other charts are
+polynomial rings over $R$. This gives a normal proper model, flat
+by torsion-freeness. The ratio $a/c$ is a unit outside the two
+corresponding closed row planes, so defines the prescribed model datum.
+Any proposed generic-identity presentation would restrict to the
+impossible presentation on $X$, by
+Theorem~\ref{f9cn:presentation}.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003044-reader.jpg" alt="Typeset mathematical passage from PDF page 1921" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1921">PDF page 1921 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-003043/">NAG-003043</a> · selected whole <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003043/">f9cn:presentation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

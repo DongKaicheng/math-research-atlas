@@ -1,0 +1,228 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002154/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Intrinsic residual curve and geometric metric · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002154 · Accepted whole</p><h1>Intrinsic residual curve and geometric metric</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.33.2">Open in the English reader · PDF page 721</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9aead738a174882c76e4bc22f15f177d39c8dd922c5858d4f918583c4a980584">
+\begin{theorem}[\bi{Intrinsic residual curve and geometric metric}
+{内禀剩余曲线与几何度量}]
+\label{cand:intrinsiccharzeroresidualcurve}
+\bi{Let $K$ be complete, nontrivially valued and of
+characteristic zero. Suppose that $x$ is a component
+vertex of a proper curve model satisfying
+Corollary~\ref{cand:charzerosplitmodelskeleton}.
+There is a canonical smooth proper residual curve $C_x$
+over $k$ with function field $\widetilde{\mathcal H(x)}$.
+For every such model of the same analytic curve $X$
+having $x$ as a component vertex, it identifies canonically
+with the normalization of the component corresponding to $x$.}
+{设 $K$ 完备、非平凡赋值且特征为零。假设 $x$ 是满足
+Corollary~\ref{cand:charzerosplitmodelskeleton} 的某个
+适当曲线模型的分量顶点。存在典范光滑适当剩余曲线
+$C_x/k$，其函数域为 $\widetilde{\mathcal H(x)}$。
+对同一解析曲线 $X$ 的每个以 $x$ 为分量顶点的
+这样的模型，它都典范地识别为与 $x$ 对应分量的正规化。}
+
+\bi{The correspondence between the intrinsic outgoing
+directions $T_xX$ and the closed points of $C_x$ is
+independent of the model. So are the geometric radius
+germ $R_p$, the Gauss-ray germ and its parameter
+$\ell=-\log r$ in every direction. For every analytic
+germ $f$ nonzero at $x$, the intrinsic geometric slopes
+are}
+{内禀出射方向 $T_xX$ 与 $C_x$ 闭点之间的对应与模型
+无关。每个方向的几何半径芽 $R_p$、Gauss 射线芽
+及其参数 $\ell=-\log r$ 也与模型无关。对每个在
+$x$ 处非零的解析芽 $f$，内禀几何斜率为}
+\[
+ \sigma_p(f)=[\kappa(p):k]_{\mathrm{insep}}\,
+            \operatorname{ord}_p(\widetilde{cf}_x),
+ \qquad |cf(x)|=1 ,
+\]
+\bi{and satisfy the finite sum}
+{且满足有限和恒等式}
+\[
+        \sum_{p\in C_x\ {\rm closed}}
+                [\kappa(p):k]_{\mathrm{sep}}\,
+                     \sigma_p(f)=0.
+\]
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3777fabec9c722940f80f4ad40067eb04e52e91e9d93f03955dd8d8227cdf6dd">
+\begin{proof}
+\bi{The component-residue identification
+Proposition~\ref{cand:componentvaluedresiduefield} gives
+the function field. The finite normalization of a
+proper residual component is proper by
+\cite[Tags 0BXR, 01WM, 01W3]{StacksAlg};
+Lemma~\ref{cand:smoothnodalnormalizationbasechange}
+makes it smooth. The normal proper curve/function-field
+equivalence \cite[Tag 0BY1]{StacksAlg} identifies these
+curves uniquely by the identity of
+$\widetilde{\mathcal H(x)}$. Call the common curve $C_x$.}
+{Proposition~\ref{cand:componentvaluedresiduefield} 的
+分量剩余域识别给出所需函数域。由
+\cite[Tags 0BXR, 01WM, 01W3]{StacksAlg}，适当
+剩余分量的有限正规化仍适当；由
+Lemma~\ref{cand:smoothnodalnormalizationbasechange}，
+它还光滑。正规适当曲线与函数域之间的等价
+\cite[Tag 0BY1]{StacksAlg}，通过
+$\widetilde{\mathcal H(x)}$ 上的恒等映射唯一识别
+这些曲线。将公共曲线记为 $C_x$。}
+
+\bi{Use the inverse limit of connected components of
+punctured ordinary open neighborhoods to define $T_xX$.
+The cofinal branch stars in
+Corollary~\ref{cand:charzerosplitmodelskeleton} identify
+this set, for either model, with its residual points.
+Fix one intrinsic direction, and let $p,p&#x27;$ be its two
+labels on $C_x$. We first identify these labels without
+presupposing equality of the two metric parameters.}
+{用去点通常开邻域连通分支的逆极限定义 $T_xX$。
+Corollary~\ref{cand:charzerosplitmodelskeleton} 中的
+共尾分支星形邻域，将这个集合分别识别为两个模型的
+剩余点集。固定一个内禀方向，以 $p,p&#x27;$ 表示它在
+$C_x$ 上的两个标记。先识别这些标记，而不预设两个
+度量参数已经相同。}
+
+\bi{Every $\psi\in k(C_x)^\times$ lifts to a norm-one
+analytic unit germ $g$ at $x$: the proof of
+Proposition~\ref{cand:componentvaluedresiduefield}
+represents it by an affinoid fraction $P/Q$ with
+$P(x)Q(x)\ne0$, and Proposition~\ref{fnd:localunit} makes
+$P,Q$ invertible near $x$. By
+Lemma~\ref{cand:geometriccollarnormprofile}, the sign
+of $-\log|g|$ on a sufficiently thin collar in the first
+model is the sign of $\operatorname{ord}_p(\psi)$.
+Cofinality of the two branch-star systems puts every
+sufficiently thin collar in the second model inside
+that collar. Its Gauss ray therefore has the same
+sign, and its slope formula gives}
+{每个 $\psi\in k(C_x)^\times$ 都可提升为 $x$ 处范数
+为一的解析单位芽 $g$：
+Proposition~\ref{cand:componentvaluedresiduefield} 的
+证明将它表示为满足 $P(x)Q(x)\ne0$ 的 affinoid
+分式 $P/Q$，再由 Proposition~\ref{fnd:localunit} 使 $P,Q$ 在 $x$ 附近
+可逆。由 Lemma~\ref{cand:geometriccollarnormprofile}，
+在第一个模型的充分薄领形域上，$-\log|g|$ 的符号就是
+$\operatorname{ord}_p(\psi)$ 的符号。两组分支星形
+邻域的共尾性，将第二个模型中每个充分薄领形域都放入
+这个领形域。因此其 Gauss 射线具有相同符号，再由
+其斜率公式得到}
+\[
+ \operatorname{sgn}\operatorname{ord}_p(\psi)
+      =\operatorname{sgn}\operatorname{ord}_{p&#x27;}(\psi)
+                 \qquad(\psi\in k(C_x)^\times).
+\]
+\bi{Thus the two valuation rings in the common function
+field are identical. Their centres on the separated
+proper curve $C_x$ are equal, by the closed-diagonal
+argument in Theorem~\ref{cand:intrinsicresidualcurve}.
+Consequently $p=p&#x27;$, and their residue fields, separable
+degrees and inseparable degrees coincide.}
+{因此，公共函数域中的两个赋值环相同。由
+Theorem~\ref{cand:intrinsicresidualcurve} 中的闭对角线
+论证，它们在分离适当曲线 $C_x$ 上的中心相同。
+故 $p=p&#x27;$，且其剩余域、可分次数与不可分次数均相同。}
+
+\bi{Choose now a uniformizer
+$\psi\in k(C_x)^\times$ at this common point $p$, and
+lift it to a norm-one unit germ $g$. Write
+$e=[\kappa(p):k]_{\mathrm{insep}}$.
+The all-point collar formula gives, on the intersection
+of sufficiently thin collars,}
+{现在选择这个公共点 $p$ 处的一致化元
+$\psi\in k(C_x)^\times$，并提升为范数为一的单位芽
+$g$。写 $e=[\kappa(p):k]_{\mathrm{insep}}$。
+对所有点成立的领形域公式在充分薄领形域之交上给出}
+\[
+                       |g|=R_p^e=(R&#x27;_p)^e.
+\]
+\bi{Hence $R_p=R&#x27;_p$ there. By alternating the two
+cofinal stars one can choose a collar of each contained
+in a fixed collar of the other. After increasing both
+inner radii beyond these bounds, the equality of radius
+functions gives equality of every thinner collar as a
+subset of $X$. Their analytic structures agree by the
+analytic-domain universal property. Thus the entire
+radius germ is intrinsic.}
+{故其上 $R_p=R&#x27;_p$。交替使用两组共尾星形邻域，
+可分别选择一个领形域，使其包含于另一组的某个固定
+领形域。将两侧内半径提高到这些界之上，半径函数的
+相等便给出每个更薄领形域作为 $X$ 子集的相等。由
+解析域的泛性质，它们的解析结构也相同。因此整个
+半径芽是内禀的。}
+
+\bi{Finally choose a common finite Galois extension
+rationalizing the residual-point supports in both
+models. The inverse image of an agreed thin collar is,
+in either presentation, a finite disjoint union of
+standard open annuli. These annuli are path connected,
+so their decomposition is the intrinsic connected
+component decomposition. Corresponding components are
+therefore the same analytic domains. On each, the two
+annular coordinates have the same radius function, namely
+the pullback of $R_p$. Their identity is a
+radius-preserving annular isomorphism, and
+Corollary~\ref{cand:openannuluscoordinateisometry}
+identifies the Gauss points of every radius. Projection
+gives the same Gauss-ray germ on $X$, with the same
+parameter $-\log r$.}
+{最后，选择一个共同有限 Galois 扩张，使两个模型的
+剩余点支撑均有理化。已识别的薄领形域之逆像，在任一
+表示下都是有限个标准开圆环的不交并。这些圆环道路
+连通，故该分解就是内禀的连通分支分解。因此，对应
+分支是同一个解析域。在每个分支上，两个圆环坐标具有
+相同半径函数，即 $R_p$ 的拉回。其恒等映射为保持
+半径的圆环同构，而
+Corollary~\ref{cand:openannuluscoordinateisometry}
+将每个半径的 Gauss 点识别起来。投影便在 $X$ 上
+给出同一个 Gauss 射线芽及同一个参数 $-\log r$。}
+
+\bi{The slope formula is
+Theorem~\ref{cand:charzeroresidualslope}, now with all
+its geometric data intrinsic. The finite-support
+weighted identity is
+Corollary~\ref{cand:charzeroweightedslopebalance}.
+All constructions use the given absolute value.}
+{斜率公式来自 Theorem~\ref{cand:charzeroresidualslope}，
+其中全部几何数据现在均已成为内禀对象。有限支撑加权
+恒等式来自 Corollary~\ref{cand:charzeroweightedslopebalance}。
+全部构造均使用给定绝对值。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="9aead738a174882c76e4bc22f15f177d39c8dd922c5858d4f918583c4a980584">
+\begin{theorem}[\bi{Intrinsic residual curve and geometric metric}
+{内禀剩余曲线与几何度量}]
+\label{cand:intrinsiccharzeroresidualcurve}
+\bi{Let $K$ be complete, nontrivially valued and of
+characteristic zero. Suppose that $x$ is a component
+vertex of a proper curve model satisfying
+Corollary~\ref{cand:charzerosplitmodelskeleton}.
+There is a canonical smooth proper residual curve $C_x$
+over $k$ with function field $\widetilde{\mathcal H(x)}$.
+For every such model of the same analytic curve $X$
+having $x$ as a component vertex, it identifies canonically
+with the normalization of the component corresponding to $x$.}
+{设 $K$ 完备、非平凡赋值且特征为零。假设 $x$ 是满足
+Corollary~\ref{cand:charzerosplitmodelskeleton} 的某个
+适当曲线模型的分量顶点。存在典范光滑适当剩余曲线
+$C_x/k$，其函数域为 $\widetilde{\mathcal H(x)}$。
+对同一解析曲线 $X$ 的每个以 $x$ 为分量顶点的
+这样的模型，它都典范地识别为与 $x$ 对应分量的正规化。}
+
+\bi{The correspondence between the intrinsic outgoing
+directions $T_xX$ and the closed points of $C_x$ is
+independent of the model. So are the geometric radius
+germ $R_p$, the Gauss-ray germ and its parameter
+$\ell=-\log r$ in every direction. For every analytic
+germ $f$ nonzero at $x$, the intrinsic geometric slopes
+are}
+{内禀出射方向 $T_xX$ 与 $C_x$ 闭点之间的对应与模型
+无关。每个方向的几何半径芽 $R_p$、Gauss 射线芽
+及其参数 $\ell=-\log r$ 也与模型无关。对每个在
+$x$ 处非零的解析芽 $f$，内禀几何斜率为}
+\[
+ \sigma_p(f)=[\kappa(p):k]_{\mathrm{insep}}\,
+            \operatorname{ord}_p(\widetilde{cf}_x),
+ \qquad |cf(x)|=1 ,
+\]
+\bi{and satisfy the finite sum}
+{且满足有限和恒等式}
+\[
+        \sum_{p\in C_x\ {\rm closed}}
+                [\kappa(p):k]_{\mathrm{sep}}\,
+                     \sigma_p(f)=0.
+\]
+\end{theorem}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002154-reader.jpg" alt="Typeset mathematical passage from PDF page 721" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=721">PDF page 721 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01W3@NAG-002154:live-5 · named external application <small>(existing named Stacks call)</small></li><li>APP-STACKS-01WM@NAG-002154:live-4 · named external application <small>(existing named Stacks call)</small></li><li>APP-STACKS-0BXR@NAG-002154:live-3 · named external application <small>(existing named Stacks call)</small></li><li>APP-STACKS-0BY1@NAG-002154:live-6 · named external application <small>(existing named Stacks call)</small></li><li><a href="/r/NAG-000150/">NAG-000150</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-000197/">NAG-000197</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001612/">NAG-001612</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002024/">NAG-002024</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002032/">NAG-002032</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002098/">NAG-002098</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002131/">NAG-002131</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002133/">NAG-002133</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002134/">NAG-002134</a> · selected whole <small>(earlier same-batch whole candidate)</small></li><li><a href="/r/NAG-002153/">NAG-002153</a> · selected whole <small>(earlier same-batch whole candidate)</small></li><li>SUPPORT:NAG-002129:separated_centre_uniqueness · typed target unresolved in this export <small>(exact approved scoped replay)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/01W3">APP-STACKS-01W3@NAG-002154:live-5</a></li><li><a href="https://stacks.math.columbia.edu/tag/01WM">APP-STACKS-01WM@NAG-002154:live-4</a></li><li><a href="https://stacks.math.columbia.edu/tag/0BXR">APP-STACKS-0BXR@NAG-002154:live-3</a></li><li><a href="https://stacks.math.columbia.edu/tag/0BY1">APP-STACKS-0BY1@NAG-002154:live-6</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002133/">cand:charzeroresidualslope</a></li><li><a href="/r/NAG-002098/">cand:charzerosplitmodelskeleton</a></li><li><a href="/r/NAG-002134/">cand:charzeroweightedslopebalance</a></li><li><a href="/r/NAG-002070/">cand:componentvaluedresiduefield</a></li><li><a href="/r/NAG-002153/">cand:geometriccollarnormprofile</a></li><li><a href="/r/NAG-002129/">cand:intrinsicresidualcurve</a></li><li><a href="/r/NAG-002032/">cand:openannuluscoordinateisometry</a></li><li><a href="/r/NAG-002131/">cand:smoothnodalnormalizationbasechange</a></li><li><a href="/r/NAG-000197/">fnd:localunit</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

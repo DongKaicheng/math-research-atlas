@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001573/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Scaled power bounds for arbitrary positive radii · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001573 · Accepted whole</p><h1>Scaled power bounds for arbitrary positive radii</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.20.2">Open in the English reader · PDF page 121</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="10e91755ea209474cc0981cd336560678b5bff1f23181b91cf31ce5184ff424f">
+\begin{theorem}[\bi{Scaled power bounds for arbitrary positive radii}{任意正半径的缩放幂界}]
+\label{fnd:generalizedpointwisepowerbound}
+\bi{Let $A$ be any norm-admissible $K$-affinoid algebra, let $f\in A$, and let $s&gt;0$ be any real number. Then}
+{设 $A$ 为任意 norm-admissible $K$-affinoid 代数，$f\in A$，且 $s&gt;0$ 为任意实数。则}
+\[
+ \begin{aligned}
+ &amp;\bigl(|f(x)|\leq s\text{ for every }x\in\mathcal M(A)\bigr)\\
+ &amp;\qquad\Longleftrightarrow\quad
+ \bigl(\exists C\geq1\ \forall m\geq0:\ \|f^m\|\leq Cs^m\bigr).
+ \end{aligned}
+\]
+\bi{The constant may depend on $A$, its chosen norm, $f$ and $s$. It is not asserted to be uniform in $s$. Neither reducedness nor a restriction on the residue characteristic is needed.}
+{常数可以依赖于 $A$、所选范数、$f$ 和 $s$；并不要求它关于 $s$ 一致。不要求约化性，也不限制剩余特征。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="670520f8b6bcb7591ab047d70910341f87c18c64ee0f017674cac42b0a61f690">
+\begin{proof}
+\bi{The zero algebra is immediate. Otherwise choose, by Lemma~\ref{fnd:finitebatchradiuschoice} and Theorem~\ref{fnd:simultaneousstrictification}, a single free extension $L=K_r$ for which $A_r$ is strict and $s\in\sqrt{|L^\times|}$. Thus there are $n\geq1$ and $c\in L^\times$ with $|c|=s^n$. Give $A_r$ its actual coefficient norm, which is admissible for its strict structure. Every point $y$ of $\mathcal M_L(A_r)$ restricts to a point of $\mathcal M_K(A)$. If the left-hand condition holds, $h=(f\otimes1)^n/c$ has $|h(y)|\leq1$ for every such $y$. Theorem~\ref{fnd:strictpointwisepowerbounded} supplies $C_0\geq1$ with $\|h^q\|\leq C_0$ for all $q\geq0$, also for this equivalent admissible norm. Homogeneity and the isometric constant embedding give}
+{零代数的情形直接成立。否则，由 Lemma~\ref{fnd:finitebatchradiuschoice} 及 Theorem~\ref{fnd:simultaneousstrictification}，选择同一个自由扩域 $L=K_r$，使 $A_r$ 为 strict，且 $s\in\sqrt{|L^\times|}$。因此，存在 $n\geq1$ 及 $c\in L^\times$，满足 $|c|=s^n$。给 $A_r$ 使用实际系数范数；该范数相对于其 strict 结构为 admissible。$\mathcal M_L(A_r)$ 的每个点 $y$ 都限制为 $\mathcal M_K(A)$ 的点。若左侧条件成立，则 $h=(f\otimes1)^n/c$ 在每个这样的 $y$ 上均满足 $|h(y)|\leq1$。由 Theorem~\ref{fnd:strictpointwisepowerbounded}，存在 $C_0\geq1$，使所有 $q\geq0$ 都满足 $\|h^q\|\leq C_0$；这一结论也适用于此处等价的 admissible 范数。由齐次性及常系数嵌入的等距性，得到}
+\[
+ \|f^{nq}\|\leq C_0s^{nq}.
+\]
+\bi{Write $m=nq+j$, where $0\leq j&lt;n$. Submultiplicativity gives $\|f^m\|\leq C_0s^{nq}\|f^j\|$, so the required bound holds with}
+{写 $m=nq+j$，其中 $0\leq j&lt;n$。次乘性给出 $\|f^m\|\leq C_0s^{nq}\|f^j\|$，因此可取}
+\[
+ C=C_0\max_{0\leq j&lt;n}s^{-j}\|f^j\|.
+\]
+\bi{Conversely, contractivity of bounded multiplicative seminorms, proved by the elementary power argument in Lemma~\ref{new:seminormcontractive}, gives $|f(x)|^m\leq Cs^m$. Taking $m$th roots and letting $m$ increase proves $|f(x)|\leq s$. All absolute values used on auxiliary fields restrict to the specified one on $K$.}
+{反之，Lemma~\ref{new:seminormcontractive} 中的初等取幂论证说明有界乘性半范数为 contractive，故 $|f(x)|^m\leq Cs^m$。取 $m$ 次方根并令 $m$ 增大，即得 $|f(x)|\leq s$。所有辅助域上的绝对值都限制为 $K$ 上原先指定的绝对值。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001573-reader.jpg" alt="Typeset mathematical passage from PDF page 122" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=122">PDF page 122</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001457/#1_implies_4">CLAUSE:NAG-001457:1_implies_4</a> · selected scope</li><li><a href="/r/NAG-001457/#1_implies_4">CLAUSE:NAG-001457:1_implies_4</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001556/">NAG-001556</a> · selected whole</li><li><a href="/r/NAG-001556/">NAG-001556</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="positive_radius_scaled_bound"><h3>positive radius scaled bound</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.20.2">Scope in the English reader · PDF page 121</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="da3c47d7dd4ba8990b398bb478c688ef96fd034200ff35d05fd2415f1a998527">
+\begin{theorem}[\bi{Scaled power bounds for arbitrary positive radii}{任意正半径的缩放幂界}]
+\label{fnd:generalizedpointwisepowerbound}
+\bi{Let $A$ be any norm-admissible $K$-affinoid algebra, let $f\in A$, and let $s&gt;0$ be any real number. Then}
+{设 $A$ 为任意 norm-admissible $K$-affinoid 代数，$f\in A$，且 $s&gt;0$ 为任意实数。则}
+\[
+ \begin{aligned}
+ &amp;\bigl(|f(x)|\leq s\text{ for every }x\in\mathcal M(A)\bigr)\\
+ &amp;\qquad\Longleftrightarrow\quad
+ \bigl(\exists C\geq1\ \forall m\geq0:\ \|f^m\|\leq Cs^m\bigr).
+ \end{aligned}
+\]
+\bi{The constant may depend on $A$, its chosen norm, $f$ and $s$. It is not asserted to be uniform in $s$. Neither reducedness nor a restriction on the residue characteristic is needed.}
+{常数可以依赖于 $A$、所选范数、$f$ 和 $s$；并不要求它关于 $s$ 一致。不要求约化性，也不限制剩余特征。}
+\end{theorem}
+\begin{proof}
+\bi{The zero algebra is immediate. Otherwise choose, by Lemma~\ref{fnd:finitebatchradiuschoice} and Theorem~\ref{fnd:simultaneousstrictification}, a single free extension $L=K_r$ for which $A_r$ is strict and $s\in\sqrt{|L^\times|}$. Thus there are $n\geq1$ and $c\in L^\times$ with $|c|=s^n$. Give $A_r$ its actual coefficient norm, which is admissible for its strict structure. Every point $y$ of $\mathcal M_L(A_r)$ restricts to a point of $\mathcal M_K(A)$. If the left-hand condition holds, $h=(f\otimes1)^n/c$ has $|h(y)|\leq1$ for every such $y$. Theorem~\ref{fnd:strictpointwisepowerbounded} supplies $C_0\geq1$ with $\|h^q\|\leq C_0$ for all $q\geq0$, also for this equivalent admissible norm. Homogeneity and the isometric constant embedding give}
+{零代数的情形直接成立。否则，由 Lemma~\ref{fnd:finitebatchradiuschoice} 及 Theorem~\ref{fnd:simultaneousstrictification}，选择同一个自由扩域 $L=K_r$，使 $A_r$ 为 strict，且 $s\in\sqrt{|L^\times|}$。因此，存在 $n\geq1$ 及 $c\in L^\times$，满足 $|c|=s^n$。给 $A_r$ 使用实际系数范数；该范数相对于其 strict 结构为 admissible。$\mathcal M_L(A_r)$ 的每个点 $y$ 都限制为 $\mathcal M_K(A)$ 的点。若左侧条件成立，则 $h=(f\otimes1)^n/c$ 在每个这样的 $y$ 上均满足 $|h(y)|\leq1$。由 Theorem~\ref{fnd:strictpointwisepowerbounded}，存在 $C_0\geq1$，使所有 $q\geq0$ 都满足 $\|h^q\|\leq C_0$；这一结论也适用于此处等价的 admissible 范数。由齐次性及常系数嵌入的等距性，得到}
+\[
+ \|f^{nq}\|\leq C_0s^{nq}.
+\]
+\bi{Write $m=nq+j$, where $0\leq j&lt;n$. Submultiplicativity gives $\|f^m\|\leq C_0s^{nq}\|f^j\|$, so the required bound holds with}
+{写 $m=nq+j$，其中 $0\leq j&lt;n$。次乘性给出 $\|f^m\|\leq C_0s^{nq}\|f^j\|$，因此可取}
+\[
+ C=C_0\max_{0\leq j&lt;n}s^{-j}\|f^j\|.
+\]
+\bi{Conversely, contractivity of bounded multiplicative seminorms, proved by the elementary power argument in Lemma~\ref{new:seminormcontractive}, gives $|f(x)|^m\leq Cs^m$. Taking $m$th roots and letting $m$ increase proves $|f(x)|\leq s$. All absolute values used on auxiliary fields restrict to the specified one on $K$.}
+{反之，Lemma~\ref{new:seminormcontractive} 中的初等取幂论证说明有界乘性半范数为 contractive，故 $|f(x)|^m\leq Cs^m$。取 $m$ 次方根并令 $m$ 增大，即得 $|f(x)|\leq s$。所有辅助域上的绝对值都限制为 $K$ 上原先指定的绝对值。}
+</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="da3c47d7dd4ba8990b398bb478c688ef96fd034200ff35d05fd2415f1a998527">
+\begin{theorem}[\bi{Scaled power bounds for arbitrary positive radii}{任意正半径的缩放幂界}]
+\label{fnd:generalizedpointwisepowerbound}
+\bi{Let $A$ be any norm-admissible $K$-affinoid algebra, let $f\in A$, and let $s&gt;0$ be any real number. Then}
+{设 $A$ 为任意 norm-admissible $K$-affinoid 代数，$f\in A$，且 $s&gt;0$ 为任意实数。则}
+\[
+ \begin{aligned}
+ &amp;\bigl(|f(x)|\leq s\text{ for every }x\in\mathcal M(A)\bigr)\\
+ &amp;\qquad\Longleftrightarrow\quad
+ \bigl(\exists C\geq1\ \forall m\geq0:\ \|f^m\|\leq Cs^m\bigr).
+ \end{aligned}
+\]
+\bi{The constant may depend on $A$, its chosen norm, $f$ and $s$. It is not asserted to be uniform in $s$. Neither reducedness nor a restriction on the residue characteristic is needed.}
+{常数可以依赖于 $A$、所选范数、$f$ 和 $s$；并不要求它关于 $s$ 一致。不要求约化性，也不限制剩余特征。}
+\end{theorem}
+\begin{proof}
+\bi{The zero algebra is immediate. Otherwise choose, by Lemma~\ref{fnd:finitebatchradiuschoice} and Theorem~\ref{fnd:simultaneousstrictification}, a single free extension $L=K_r$ for which $A_r$ is strict and $s\in\sqrt{|L^\times|}$. Thus there are $n\geq1$ and $c\in L^\times$ with $|c|=s^n$. Give $A_r$ its actual coefficient norm, which is admissible for its strict structure. Every point $y$ of $\mathcal M_L(A_r)$ restricts to a point of $\mathcal M_K(A)$. If the left-hand condition holds, $h=(f\otimes1)^n/c$ has $|h(y)|\leq1$ for every such $y$. Theorem~\ref{fnd:strictpointwisepowerbounded} supplies $C_0\geq1$ with $\|h^q\|\leq C_0$ for all $q\geq0$, also for this equivalent admissible norm. Homogeneity and the isometric constant embedding give}
+{零代数的情形直接成立。否则，由 Lemma~\ref{fnd:finitebatchradiuschoice} 及 Theorem~\ref{fnd:simultaneousstrictification}，选择同一个自由扩域 $L=K_r$，使 $A_r$ 为 strict，且 $s\in\sqrt{|L^\times|}$。因此，存在 $n\geq1$ 及 $c\in L^\times$，满足 $|c|=s^n$。给 $A_r$ 使用实际系数范数；该范数相对于其 strict 结构为 admissible。$\mathcal M_L(A_r)$ 的每个点 $y$ 都限制为 $\mathcal M_K(A)$ 的点。若左侧条件成立，则 $h=(f\otimes1)^n/c$ 在每个这样的 $y$ 上均满足 $|h(y)|\leq1$。由 Theorem~\ref{fnd:strictpointwisepowerbounded}，存在 $C_0\geq1$，使所有 $q\geq0$ 都满足 $\|h^q\|\leq C_0$；这一结论也适用于此处等价的 admissible 范数。由齐次性及常系数嵌入的等距性，得到}
+\[
+ \|f^{nq}\|\leq C_0s^{nq}.
+\]
+\bi{Write $m=nq+j$, where $0\leq j&lt;n$. Submultiplicativity gives $\|f^m\|\leq C_0s^{nq}\|f^j\|$, so the required bound holds with}
+{写 $m=nq+j$，其中 $0\leq j&lt;n$。次乘性给出 $\|f^m\|\leq C_0s^{nq}\|f^j\|$，因此可取}
+\[
+ C=C_0\max_{0\leq j&lt;n}s^{-j}\|f^j\|.
+\]
+\bi{Conversely, contractivity of bounded multiplicative seminorms, proved by the elementary power argument in Lemma~\ref{new:seminormcontractive}, gives $|f(x)|^m\leq Cs^m$. Taking $m$th roots and letting $m$ increase proves $|f(x)|\leq s$. All absolute values used on auxiliary fields restrict to the specified one on $K$.}
+{反之，Lemma~\ref{new:seminormcontractive} 中的初等取幂论证说明有界乘性半范数为 contractive，故 $|f(x)|^m\leq Cs^m$。取 $m$ 次方根并令 $m$ 增大，即得 $|f(x)|\leq s$。所有辅助域上的绝对值都限制为 $K$ 上原先指定的绝对值。}
+</pre></details><ul class="records"><li><a href="/r/NAG-001457/#1_implies_4">CLAUSE:NAG-001457:1_implies_4</a> · selected scope</li><li><a href="/r/NAG-001457/#1_implies_4">CLAUSE:NAG-001457:1_implies_4</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001556/">NAG-001556</a> · selected whole</li><li><a href="/r/NAG-001556/">NAG-001556</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001556/">fnd:finitebatchradiuschoice</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

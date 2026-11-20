@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001567/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Descending finite Banach generation · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001567 · Accepted whole</p><h1>Descending finite Banach generation</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.18.9">Open in the English reader · PDF page 116</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="2a59380f7551faea27142ed2ee3d3a70aba923ce51b0544588763a7d63447e34">
+\begin{theorem}[\bi{Descending finite Banach generation}{有限 Banach 生成元的下降}]\label{fnd:freebanachfinitegenerationdescent}
+\bi{Let $A$ be a generalized $K$-affinoid algebra, let $M$ be any Banach $A$-module with contractive action, and let $r$ be finite and free over $K$. Put $M_r=M\widehat\otimes_KK_r$. Suppose that there are $u_1,\ldots,u_n\in M_r$ and $C&gt;0$ such that every $y\in M_r$ has an expression}
+{设 $A$ 为 generalized $K$-affinoid 代数，$M$ 为作用 contractive 的任意 Banach $A$-模，$r$ 为在 $K$ 上自由的有限元组。令 $M_r=M\widehat\otimes_KK_r$。假设存在 $u_1,\ldots,u_n\in M_r$ 和 $C&gt;0$，使每个 $y\in M_r$ 都有表示}
+\[
+ y=\sum_{i=1}^n b_i u_i,
+ \qquad b_i\in A_r,\qquad
+ \max_i\|b_i\|\leq C\|y\|.
+\]
+\bi{Then there are finitely many $m_1,\ldots,m_t\in M$ and $D&gt;0$ such that every $m\in M$ has an expression $m=\sum_j a_jm_j$ with $\max_j\|a_j\|\leq D\|m\|$. In particular, $M$ is algebraically finite and its given norm is uniformly equivalent to its canonical finite-module norm. If the absolute value on $K_r$ is nontrivial, it is enough to assume that $M_r$ is algebraically finite over $A_r$: the required constant $C$ is then automatic. For trivially valued $K_r$, the displayed lifting hypothesis is retained.}
+{则存在有限个 $m_1,\ldots,m_t\in M$ 和 $D&gt;0$，使每个 $m\in M$ 都有表示 $m=\sum_j a_jm_j$，其中 $\max_j\|a_j\|\leq D\|m\|$。特别地，$M$ 在代数意义下有限，且其给定范数与典范有限模范数一致等价。若 $K_r$ 的绝对值非平凡，则只需假设 $M_r$ 在 $A_r$ 上代数有限，所需常数 $C$ 自动存在。对赋值平凡的 $K_r$，仍保留所列提升假设。}
+\end{theorem}
+\begin{proof}
+\bi{If $M_r=0$, the isometric constant embedding gives $M=0$. Otherwise let $Q:A_r^n\twoheadrightarrow M_r$ send the standard generators to $u_i$. Choose $\varepsilon&gt;0$ with $\theta=C\varepsilon&lt;1$. By the coefficient description, choose finite Laurent families $v_i$ with $\|u_i-v_i\|\leq\varepsilon$, and let $Q&#x27;$ be the generator map for the $v_i$. Its difference from $Q$ has norm at most $\varepsilon$.}
+{若 $M_r=0$，则由常系数嵌入等距可知 $M=0$。否则，令 $Q:A_r^n\twoheadrightarrow M_r$ 将标准生成元送到 $u_i$。选择 $\varepsilon&gt;0$，使 $\theta=C\varepsilon&lt;1$。由系数描述，存在有限 Laurent 族 $v_i$，满足 $\|u_i-v_i\|\leq\varepsilon$。以 $Q&#x27;$ 表示 $v_i$ 的生成映射，则 $Q&#x27;-Q$ 的范数至多为 $\varepsilon$。}
+
+\bi{The perturbation still has actual lifts with bound $C$. Indeed, given $y$, put $y_0=y$. Choose $b_k\in A_r^n$ with $Qb_k=y_k$ and $\|b_k\|\leq C\|y_k\|$, and set $y_{k+1}=y_k-Q&#x27;b_k$. Then}
+{扰动后仍有界为 $C$ 的实际提升。事实上，给定 $y$，令 $y_0=y$。选取 $b_k\in A_r^n$，使 $Qb_k=y_k$ 且 $\|b_k\|\leq C\|y_k\|$，并令 $y_{k+1}=y_k-Q&#x27;b_k$。于是}
+\[
+ \|y_{k+1}\|\leq\varepsilon\|b_k\|
+       \leq\theta\|y_k\|,
+ \qquad \|b_k\|\leq C\theta^k\|y\|.
+\]
+\bi{The series $b=\sum_{k\geq0}b_k$ converges in $A_r^n$, has norm at most $C\|y\|$, and satisfies $Q&#x27;b=y$ by the telescoping identity. No linear choice of lifts is needed.}
+{级数 $b=\sum_{k\geq0}b_k$ 在 $A_r^n$ 中收敛，范数至多为 $C\|y\|$，并由望远镜恒等式满足 $Q&#x27;b=y$。这里不需要线性地选择提升。}
+
+\bi{Write $v_i=\sum_{\nu\in F_i}\iota_M(m_{i\nu})T^\nu$ with finite $F_i$, omitting zero coefficients. The union of these lists is nonempty because $Q&#x27;$ surjects onto $M_r\ne0$. These finitely many coefficients will generate $M$. Thus $H=\max_{i,\nu\in F_i}r^\nu$ is finite and positive. For $m\in M$, choose a lift $b=(b_i)$ of $\iota_M(m)$ through $Q&#x27;$ with norm at most $C\|m\|$. Taking the zeroth coefficient gives, by Lemma~\ref{fnd:freecoefficientretraction},}
+{写成 $v_i=\sum_{\nu\in F_i}\iota_M(m_{i\nu})T^\nu$，其中 $F_i$ 有限，并省去零系数。由于 $Q&#x27;$ 满射到 $M_r\ne0$，这些列表的并非空。这些有限个系数将生成 $M$，因此 $H=\max_{i,\nu\in F_i}r^\nu$ 有限且为正。对 $m\in M$，通过 $Q&#x27;$ 为 $\iota_M(m)$ 选择范数至多为 $C\|m\|$ 的提升 $b=(b_i)$。由 Lemma~\ref{fnd:freecoefficientretraction}，取零次系数得到}
+\[
+ m=\sum_{i,\nu\in F_i}p_0^A(b_iT^\nu)m_{i\nu},
+ \qquad
+ \|p_0^A(b_iT^\nu)\|
+       \leq r^\nu\|b_i\|\leq HC\|m\|.
+\]
+\bi{This proves finite generation with bound $D=HC$. The generator map from the corresponding finite free $A$-module is bounded, while this bound controls its quotient norm from above by the given norm. The two norms are therefore uniformly equivalent. Theorem~\ref{fnd:generalizedfinitemodules} identifies the quotient norm as canonical and complete.}
+{这给出有限生成及界 $D=HC$。相应有限自由 $A$-模的生成映射有界，而上述提升界将其商范数从上方控制为给定范数的常数倍。因此两个范数一致等价。Theorem~\ref{fnd:generalizedfinitemodules} 说明该商范数为典范且完备的范数。}
+
+\bi{Finally, if $K_r$ is nontrivially valued and $M_r$ is algebraically finite, choose algebraic generators. The resulting surjection $A_r^n\to M_r$ is bounded by the module inequality. Both sides are Banach $K_r$-spaces with their homogeneous norms by Lemma~\ref{fnd:freecoefficientretraction} and Theorem~\ref{fnd:freepolyradiuscoefficients}. Lemma~\ref{fnd:nonarchopenmapping}, applied over $K_r$, supplies the constant $C$. This use of the open-mapping theorem is confined to the stated nontrivial valuation case. The proof never replaced $M_r$ by $A_r\otimes_A M$ before proving that $M$ is finite.}
+{最后，若 $K_r$ 的赋值非平凡且 $M_r$ 代数有限，则选取代数生成元。由模作用不等式，所得满射 $A_r^n\to M_r$ 有界。由 Lemma~\ref{fnd:freecoefficientretraction} 和 Theorem~\ref{fnd:freepolyradiuscoefficients}，两端都是具有齐次范数的 Banach $K_r$-空间。在 $K_r$ 上应用 Lemma~\ref{fnd:nonarchopenmapping}，即得常数 $C$。这个开映射定理的使用仅限于所述非平凡赋值情形。在证明 $M$ 有限之前，整个论证从未将 $M_r$ 替换为 $A_r\otimes_A M$。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001567-reader.jpg" alt="Typeset mathematical passage from PDF page 116" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=116">PDF page 116 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001480/">NAG-001480</a> · selected whole</li><li><a href="/r/NAG-001480/">NAG-001480</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001559/">NAG-001559</a> · selected whole</li><li><a href="/r/NAG-001559/">NAG-001559</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001559/">fnd:freecoefficientretraction</a></li><li><a href="/r/NAG-001549/">fnd:freepolyradiuscoefficients</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001480/">fnd:nonarchopenmapping</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

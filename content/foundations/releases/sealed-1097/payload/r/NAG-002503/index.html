@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002503/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Native scalar-extension invariance · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002503 · Accepted whole</p><h1>Native scalar-extension invariance</h1><p><a href="/projects/foundations/chapters/appendix-c/">C Native scalar extension and finite restriction of constants</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.C.1.1">Open in the English reader · PDF page 1758</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="690955d59826f85656526c7afdbdb2dc89e1ecc0240f81cc0b8d8293549df9bb">
+\begin{theorem}[Native scalar-extension invariance]
+\label{f9cand:native-global}
+Let $X$ be a good Hausdorff $K$-analytic space pure of analytic dimension
+$d$, and let $\F$ be coherent on $X_G$. Then $X_L$ is good, Hausdorff and
+pure of analytic dimension $d$. Coherent pullback $\F_L=p^*\F$ and
+ordinary moment pullback are defined on actual completed scalar
+extensions, and for every $\alpha\in\A^{d,d}_{X/K,c}(X)$,
+\begin{equation}\label{eq:native}
+ \int_{X_L/L,\F_L}p^*\alpha=\int_{X/K,\F}\alpha .
+\end{equation}
+The pullback has compact support. These assertions respect complete
+extension towers, coherent short exact sequences, and ordinary open
+restriction containing the support.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="810640eb1e1e2c7b78d752a6e4277d7b4761ce6f01b4a0111e8ab1300fdc68b3">
+\begin{proof}[Proof of Theorem~\ref{f9cand:native-global}]
+\textbf{Spaces and coefficients.}
+Actual scalar extension and inverse images of domains are supplied by
+[\ref{fnd:generalanalyticscalarextension}, \ref{fnd:generalizeddomainbasechange}]. If $V$ is an ordinary affinoid
+neighbourhood of $x$, $p^{-1}(V)=V_L$ is affinoid and contains the open
+set $p^{-1}(\Int_{\rm top}(V,X))$. Hence these inverse images give
+affinoid neighbourhoods at every point upstairs, proving goodness.
+Points with different images can be separated downstairs. Points
+with the same image lie in the open interior of one such affinoid
+neighbourhood and can be separated there. Thus $X_L$ is Hausdorff.
+Lemma~\ref{f9cand:purity} proves its local purity.
+
+On $V=\M(A)$, set $\F_L|_{V_L}$ to be the coherent module represented
+by $A_L\otimes_A\Gamma(V,\F)$. The exact finite-module equivalence
+[\ref{fnd:fullgkiehltheoremb}] and actual iterated tensors [\ref{fnd:iteratedaffinoidbasechange}] make these
+constructions agree on restrictions; hence they glue. Faithful
+flatness [\ref{fnd:generalscalarpresentation}, \ref{fnd:generalscalarfaithful}] preserves coherent exact sequences.
+
+\textbf{Ordinary form pullback.}
+Pull a representative $(V,f,\eta)$ back to
+$(V_L,p^*f,\eta)$ near any point over $\Int_{\rm top}(V,X)$.
+If two representatives agree on a smaller ordinary affinoid
+neighbourhood $W$, their joint moment images after extension equal
+the original joint images, by [\ref{fnd:scalarextensionspectralsurjective}].
+Tangential equality therefore remains true on $W_L$.
+These local representatives define $p^*\alpha$ independently of
+choices and glue on ordinary opens. The same description proves
+compatibility with $d&#x27;,d&#x27;&#x27;,J$, wedge and composition of extensions.
+This is also the mixed-ground-field version of the representative
+argument in [\ref{v037:forms:germsheaf}, \ref{v037:forms:compactintegral}].
+
+\textbf{Support and integration.}
+Put $S=\supp(\alpha)$.
+Vanishing near $x$ pulls back to vanishing near every point above $x$,
+so $\supp(p^*\alpha)\subset p^{-1}(S)$.
+Choose finitely many ordinary affinoid neighbourhoods $V_i$ whose
+interiors cover $S$, and put $Q=\bigcup_iV_i$.
+The full inverse image $Q_L=\bigcup_i(V_i)_L$ is a finite union of
+compact affinoids. Since $S$ is closed in the Hausdorff space $X$,
+$p^{-1}(S)$ is a closed subset of $Q_L$, hence compact.
+It contains the closed support of $p^*\alpha$.
+The interiors of the $(V_i)_L$ cover that support.
+
+Use the finite chart data induced by $\alpha$ on $Q$ in
+[\ref{v037:forms:germsheaf}, \ref{v037:forms:compactintegral}, \ref{v037:integration:separatedintersections}, \ref{v037:integration:puritylocality}, \ref{v037:integration:coherentcoverdata}, \ref{v037:integration:compactintegral}]. Refine the cover so each member has one
+presenting unit tuple and ambient form. Its complete inverse-image
+cover gives the pulled-back data on $Q_L$.
+Every intersection satisfies $(V_I)_L=\bigcap_{i\in I}(V_i)_L$, with
+the actual algebra and coefficient module supplied by [\ref{fnd:generalizeddomainbasechange}].
+Proposition~\ref{f9cand:chain} applies on every such affinoid
+intersection. It equates the corresponding terms in the two finite
+inclusion--exclusion formulas [\ref{v037:integration:separatedintersections}, \ref{v037:integration:puritylocality}, \ref{v037:integration:coherentcoverdata}, \ref{v037:integration:compactintegral}]. Thus their compact
+integrals agree. The compact-support theorem [\ref{v037:forms:germsheaf}, \ref{v037:forms:compactintegral}] identifies
+these with \eqref{eq:native}. The finite unions need not themselves
+be good; they lie in the good Hausdorff pure ambient spaces just
+established.
+
+For a tower $K\subset L\subset E$, all local pullbacks compose by
+[\ref{fnd:iteratedaffinoidbasechange}]. Applying \eqref{eq:native} twice gives its assertion
+for $E/K$, with factor one at each step. Exact-sequence compatibility
+uses the flat coherent pullback and additivity of the given integral.
+Ordinary restriction containing the support uses the same compact
+neighbourhoods and the support independence in [\ref{v037:forms:germsheaf}, \ref{v037:forms:compactintegral}].
+\end{proof}</pre></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001616/">NAG-001616</a> · selected whole</li><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole</li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole</li><li><a href="/r/NAG-001686/">NAG-001686</a> · selected whole</li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole</li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-002411/">NAG-002411</a> · selected whole</li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole</li><li><a href="/r/NAG-002414/">NAG-002414</a> · selected whole</li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole</li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole</li><li><a href="/r/NAG-002508/">NAG-002508</a> · selected whole</li><li><a href="/r/NAG-002514/">NAG-002514</a> · selected whole</li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002514/">NAG-002514</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002514/">f9cand:chain</a></li><li><a href="/r/NAG-002508/">f9cand:purity</a></li><li><a href="/r/NAG-001616/">fnd:generalanalyticscalarextension</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001686/">fnd:generalscalarfaithful</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001689/">fnd:iteratedaffinoidbasechange</a></li><li><a href="/r/NAG-001694/">fnd:scalarextensionspectralsurjective</a></li><li><a href="/r/NAG-002425/">v037:forms:compactintegral</a></li><li><a href="/r/NAG-002424/">v037:forms:germsheaf</a></li><li><a href="/r/NAG-002414/">v037:integration:coherentcoverdata</a></li><li><a href="/r/NAG-002416/">v037:integration:compactintegral</a></li><li><a href="/r/NAG-002413/">v037:integration:puritylocality</a></li><li><a href="/r/NAG-002411/">v037:integration:separatedintersections</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

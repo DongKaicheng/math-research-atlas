@@ -1,0 +1,140 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002357/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite polyhedral upper bounds without an interior hypothesis · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002357 · Accepted whole</p><h1>Finite polyhedral upper bounds without an interior hypothesis</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.39.2">Open in the English reader · PDF page 982</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="797ff7e62ea241440403a83e2e08a7123c91ca893e966b31f20a7307d341fd61">
+\begin{theorem}[Finite polyhedral upper bounds without an interior hypothesis]
+\label{v037:globaltrop:upperbound}
+Let $X=\mathcal M(A)$ be a nonempty generalized affinoid
+space of analytic dimension $d$, and let analytic units
+$f_1,\ldots,f_n$ define $t:X\to\mathbb R^n$.
+For every $w\in t(X)$ there are a finite rational polyhedral
+fan $C$ of dimension at most $d$ and a neighbourhood $V$ of
+$w$ such that
+\[
+                         t(X)\cap V\subset(w+|C|)\cap V.
+\]
+Consequently $t(X)$ is contained in the support of a finite
+integral affine polyhedral complex of dimension at most $d$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b1df1343d00cb7f04c807005302503872c7bbe872125067d5e2f1172c1a4866a">
+\begin{proof}
+Choose a complete isometric extension $L/K$ containing
+elements with sizes equal to every radius in a fixed
+presentation of $A$, and elements $c_i$ with
+$|c_i|=e^{-w_i}$; require also that $L$ be nontrivially valued.
+Such a field is explicit: take the completion of a rational
+function field with weighted Gauss norms assigning these
+finitely many positive radii to its variables, and add a
+variable of size strictly between zero and one.
+The Gauss construction is
+Proposition~\ref{fnd:gaussnorm}; its valued completion is
+the one in Lemma~\ref{fnd:gaussvaluedfielddimension}.
+The actual scalar presentation
+\ref{fnd:generalscalarpresentation}, followed by rescaling
+the finitely many presentation variables, makes $X_L$ strict.
+Its dimension is $d$ by
+Theorem~\ref{fnd:analyticdimensionindependence}.
+
+Put $h_i=f_i/c_i$. Scalar spectral surjectivity
+\ref{fnd:scalarextensionspectralsurjective} gives
+\[
+                         t_h(X_L)=t(X)-w.
+\]
+It suffices to prove the upper bound at zero for this
+actual strict space. Its whole fibre $F=t_h^{-1}(0)$ is
+a nonempty strict affinoid domain by
+Theorem~\ref{fnd:generalizedrationaluniversal}.
+Let $D$ be its algebra. It has an admissible integral model
+$D_0$ by Proposition~\ref{fnd:affineformalpresentations}.
+The elements $h_i^{\pm1}$ are power-bounded in $D$, since
+their values on $F$ are one and
+Theorem~\ref{fnd:generalizedpointwisepowerbound} applies.
+Adjoin them to $D_0$ by
+Theorem~\ref{fnd:powerboundedmodelblowup}. The resulting
+algebra is still an actual admissible model of the same
+$D$, and contains all these elements. Use this enlarged
+model in what follows.
+
+Write $k=\widetilde L$, $\mathfrak m=L^{\circ\circ}$, and
+\[
+ J=\ker\bigl(k[T_1^{\pm1},\ldots,T_n^{\pm1}]
+                         \longrightarrow D_0/\mathfrak mD_0\bigr),
+ \qquad R=k[T^{\pm1}]/J.
+\]
+Thus $R$ injects into the actual special-fibre algebra.
+For every minimal prime $\mathfrak p$ of $R$, localization
+preserves this injection, by \cite[Tag 00HT]{StacksAlg}.
+The algebra
+$(D_0/\mathfrak mD_0)\otimes_RR_{\mathfrak p}$ is nonzero,
+so it has a prime by \cite[Tag 00E0(1)]{StacksAlg}.
+Its contraction is the unique prime of $R_{\mathfrak p}$.
+It therefore gives a prime $\mathfrak q$ of the special
+fibre lying above $\mathfrak p$; no finiteness of the
+injection $R\to D_0/\mathfrak mD_0$ is required here.
+Actual specialization surjectivity,
+Theorem~\ref{fnd:affineformalspecializationsurjective}, supplies
+$x\in F$ specializing to $\mathfrak q$. The induced
+injections give
+\[
+                    \operatorname{Frac}(R/\mathfrak p)
+                         \hookrightarrow\widetilde{\mathcal H(x)}.
+\]
+By \cite[Tag 00P0]{StacksAlg} and
+Theorem~\ref{fnd:affinoidabhyankarmaximum},
+\[
+ \dim(R/\mathfrak p)
+   =\operatorname{trdeg}_k\operatorname{Frac}(R/\mathfrak p)
+   \leq d_L(x)\leq d.
+\]
+The residue field here is the same as for $x\in X_L$, by
+Corollary~\ref{fnd:domainresiduefields}.
+
+The finite-type $k$-algebra $R$ is Noetherian by
+\cite[Tag 00FO]{StacksAlg}, and has finitely many minimal primes, by
+\cite[Tag 00FR]{StacksAlg}. Its tropical support is the
+union of the supports of the corresponding integral
+quotients: every analytic prime kernel contains a minimal
+prime by \cite[Tag 00E0(4)]{StacksAlg}.
+Theorem~\ref{cand:tropicalpuredimension} bounds the dimension
+of each of these algebraic tropicalizations by $d$.
+Lemma~\ref{v037:analytic:finitetropicalbasis} gives a finite
+rational fan $C$ with support $\operatorname{Trop}(\operatorname{Spec}R)$
+and finitely many nonzero $p_j\in J$ cutting out that
+support tropically. Its dimension is therefore at most $d$.
+
+Lift every nonzero coefficient of each $p_j$ to an element
+of $L^\circ$ of absolute value one, obtaining a Laurent
+polynomial $P_j$. Since $p_j\in J$,
+$P_j(h)\in\mathfrak mD_0$. Express this membership as a
+finite sum $\sum_\ell b_{j\ell}d_{j\ell}$ with
+$|b_{j\ell}|&lt;1$ and $d_{j\ell}\in D_0$.
+Every $d_{j\ell}$ has absolute value at most one on $F$,
+by the actual model presentation. Hence there is a real
+$c_j&lt;1$ with $|P_j(h)|&lt;c_j$ throughout $F$.
+The compact subset of $X_L$ where $|P_j(h)|\geq c_j$ has
+compact moment image missing zero. Avoiding these finitely
+many images gives a neighbourhood $V_0$ of zero where
+all these strict inequalities hold on the entire inverse
+image. This uses the compact spectrum of
+Proposition~\ref{fnd:boundedspectrumcompact}.
+
+Shrink $V_0$ further so that, for every monomial of every
+$P_j$, its norm at a weight $v\in V_0$ is greater than
+$c_j$. At zero all these finitely many norms equal one,
+so continuity permits the simultaneous choice. If an
+actual moment value $v\in V_0$ lay outside $|C|$, some
+$p_j$ would have a unique least-weight term there.
+The same term of $P_j(h)$ would have strictly largest
+absolute value at any point over $v$, and that value
+would exceed $c_j$. The non-Archimedean triangle equality
+would give $|P_j(h)|&gt;c_j$, a contradiction.
+Thus $t_h(X_L)\cap V_0\subset |C|$. Translating back proves
+the local assertion over the original field and norm.
+
+Finally, at every $w\in t(X)$ choose a closed rectangular
+box centred at $w$ inside its upper-bound neighbourhood.
+Finitely many box interiors cover the compact set $t(X)$.
+The union of the intersections of these boxes with the
+corresponding translated finite fans contains $t(X)$.
+It is a finite union of integral affine polytopes, all
+of dimension at most $d$. Cutting by their finitely many
+defining hyperplanes gives a finite common complex, as
+in Lemma~\ref{cand:polyhedralrefinementproduct}.
+This proves the final assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002357-reader.jpg" alt="Typeset mathematical passage from PDF page 982" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=982">PDF page 982 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002349/">NAG-002349</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-00E0 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00FO · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00FR · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00HT · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00P0 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>SUPPORT:NAG-001932:finite_admissible_model_enlargement · typed target unresolved in this export <small>(sealed native support)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole</li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole</li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole</li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole</li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole</li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole</li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole</li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole</li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole</li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole</li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002349/">NAG-002349</a> · selected whole</li><li><a href="/r/NAG-002349/">NAG-002349</a> · selected whole <small>(requires)</small></li><li>STACKS-00E0 · named external application</li><li>STACKS-00E0 · named external application <small>(requires)</small></li><li>STACKS-00FO · named external application</li><li>STACKS-00FO · named external application <small>(requires)</small></li><li>STACKS-00FR · named external application</li><li>STACKS-00FR · named external application <small>(requires)</small></li><li>STACKS-00HT · named external application</li><li>STACKS-00HT · named external application <small>(requires)</small></li><li>STACKS-00P0 · named external application</li><li>STACKS-00P0 · named external application <small>(requires)</small></li><li>SUPPORT:NAG-001932:finite_admissible_model_enlargement · typed target unresolved in this export</li><li>SUPPORT:NAG-001932:finite_admissible_model_enlargement · typed target unresolved in this export <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="minimal_level_residual_prime_lift"><h3>minimal level residual prime lift</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002180/">cand:polyhedralrefinementproduct</a></li><li><a href="/r/NAG-002109/">cand:tropicalpuredimension</a></li><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001939/">fnd:affineformalspecializationsurjective</a></li><li><a href="/r/NAG-001591/">fnd:affinoidabhyankarmaximum</a></li><li><a href="/r/NAG-001664/">fnd:analyticdimensionindependence</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001697/">fnd:domainresiduefields</a></li><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001588/">fnd:gaussvaluedfielddimension</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001932/">fnd:powerboundedmodelblowup</a></li><li><a href="/r/NAG-001694/">fnd:scalarextensionspectralsurjective</a></li><li><a href="/r/NAG-002349/">v037:analytic:finitetropicalbasis</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

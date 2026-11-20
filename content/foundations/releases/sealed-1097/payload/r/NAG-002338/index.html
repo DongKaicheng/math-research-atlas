@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002338/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Result 4.51.2 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002338 · Accepted whole</p><h1>Result 4.51.2</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.51.2">Open in the English reader · PDF page 801</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="32393686b20819f0878a2f6db820e2962dfcd3de0efae5483832f589888004a9">
+\begin{lemma}[Finite \texorpdfstring{\&#x27;etale}{etale} integral lifting]
+\label{v037:f5:finiteetaleintegrallift}
+Let $R_0\to A_0$ be as in
+Lemma~\ref{v037:f5:residualfiniteintegral}. Suppose in addition
+that $A_0/\pi A_0$ is an \textup{\&#x27;etale}
+$R_0/\pi R_0$-algebra. Then $A_0$ is finite projective as an
+$R_0$-module and is an \textup{\&#x27;etale} $R_0$-algebra.
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="53ba30935b06e4279dfafd44f27708c55cb82da8db28e83316f56f6f85c46b5f">
+\begin{proof}
+The preceding lemma makes $A_0$ a finite $R_0$-module.
+It has no $O$-torsion, so
+Theorem~\ref{fnd:formaltorsionfreepresentation} makes this
+module finitely presented. Its reduction modulo $\pi$ is
+therefore a finitely presented module. It is flat by
+\cite[Tag 02GS]{StacksAlg}, and hence finite projective by
+\cite[Tag 00NX]{StacksAlg}. Choose an idempotent matrix
+$\bar e\in M_m(R_0/\pi R_0)$ whose image is this module.
+
+Lift $\bar e$ to a matrix $e_0$ over $R_0$. If
+$\delta=e^2-e\in\pi M_m(R_0)$, then
+$(2e-I)^2=I+4\delta$ is invertible by its convergent geometric
+series. The Newton correction
+\[
+                 e&#x27;=e-(2e-I)^{-1}(e^2-e)
+\]
+has error $e&#x27;^2-e&#x27;$ divisible by $\delta^2$.
+All matrices in this calculation commute, being convergent
+expressions in $e$. Starting at $e_0$ gives a convergent
+sequence with an idempotent limit $e\equiv\bar e\pmod\pi$.
+This works in every characteristic. Put $P=eR_0^m$.
+It is a complete separated direct summand of $R_0^m$.
+
+Lift the images of the standard basis under the map
+$(R_0/\pi R_0)^m\to A_0/\pi A_0$ to $A_0$, and restrict
+the resulting map $R_0^m\to A_0$ to $P$.
+The map $\varphi:P\to A_0$ is an isomorphism modulo $\pi$.
+For $a\in A_0$, lift its class modulo $\pi$ to $p_0\in P$,
+write $a-\varphi(p_0)=\pi a_1$, and repeat. Completeness
+shows that $\sum_{n\geq0}\pi^np_n$ maps to $a$.
+Thus $\varphi$ is surjective. If $\varphi(p)=0$, the
+modulo-$\pi$ isomorphism gives $p=\pi p_1$ in $P$.
+Since $A_0$ has no $\pi$-torsion, $\varphi(p_1)=0$.
+Iteration puts $p$ in $\bigcap_n\pi^nP=0$.
+Thus $A_0\simeq P$ is finite projective over $R_0$.
+
+The algebra $A_0$ is finitely presented over $R_0$.
+For completeness, choose a finite module presentation with
+generators $b_1,\ldots,b_m$. Express $1$ and all products
+$b_ib_j$ in these generators. The finite module relations,
+the relation for $1$, and these product relations present
+$A_0$ as an algebra: they reduce every polynomial to a
+linear combination of the $b_i$, whose kernel is exactly
+the module relation space.
+It follows from the same polynomial presentation that
+$\Omega_{A_0/R_0}$ is a finite $R_0$-module and that its
+reduction modulo $\pi$ is
+$\Omega_{(A_0/\pi A_0)/(R_0/\pi R_0)}=0$.
+For every $a\in R_0$, $1-\pi a$ is invertible by a
+geometric series. Thus $\pi$ belongs to the Jacobson
+radical of $R_0$, and \cite[Tag 00DV]{StacksAlg} gives
+$\Omega_{A_0/R_0}=0$. Finite projectivity implies flatness
+by \cite[Tag 00NX]{StacksAlg}; the flat, finitely presented,
+zero-differential criterion \cite[Tag 02GU]{StacksAlg}
+now proves ordinary \textup{\&#x27;etaleness}.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002338-reader.jpg" alt="Typeset mathematical passage from PDF page 801" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=801">PDF page 801</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00DV@NAG-002338:ordinary-differentials-vanish · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-00NX@NAG-002338:lifted-projective-flat · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-00NX@NAG-002338:reduced-finite-projective · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-02GS@NAG-002338:reduced-etale-flat · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-02GU@NAG-002338:lifted-etaleness · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-02GU@NAG-002338:reduced-zero-differentials · named external application <small>(verified Stacks application)</small></li><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li>CONTEXT:integral-section-data · standing context or base <small>(literal context)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(whole proof)</small></li><li><a href="/r/NAG-002337/">NAG-002337</a> · selected whole <small>(whole proof)</small></li><li>APP-STACKS-00DV@NAG-002338:ordinary-differentials-vanish · named external application</li><li>APP-STACKS-00DV@NAG-002338:ordinary-differentials-vanish · named external application <small>(requires)</small></li><li>APP-STACKS-00NX@NAG-002338:lifted-projective-flat · named external application</li><li>APP-STACKS-00NX@NAG-002338:lifted-projective-flat · named external application <small>(requires)</small></li><li>APP-STACKS-00NX@NAG-002338:reduced-finite-projective · named external application</li><li>APP-STACKS-00NX@NAG-002338:reduced-finite-projective · named external application <small>(requires)</small></li><li>APP-STACKS-02GS@NAG-002338:reduced-etale-flat · named external application</li><li>APP-STACKS-02GS@NAG-002338:reduced-etale-flat · named external application <small>(requires)</small></li><li>APP-STACKS-02GU@NAG-002338:lifted-etaleness · named external application</li><li>APP-STACKS-02GU@NAG-002338:lifted-etaleness · named external application <small>(requires)</small></li><li>APP-STACKS-02GU@NAG-002338:reduced-zero-differentials · named external application</li><li>APP-STACKS-02GU@NAG-002338:reduced-zero-differentials · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>CONTEXT:integral-section-data · standing context or base</li><li>CONTEXT:integral-section-data · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole</li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002337/">NAG-002337</a> · selected whole</li><li><a href="/r/NAG-002337/">NAG-002337</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-002337/">v037:f5:residualfiniteintegral</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002242/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite formal models at the Gauss point · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002242 · Accepted whole</p><h1>Finite formal models at the Gauss point</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.28.2">Open in the English reader · PDF page 922</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1ef8799fc442b1d52c97d881de4df2d98e0174ac048f4e8ceb9a883c22b2e030">
+\begin{lemma}[Finite formal models at the Gauss point]
+\label{v035:degreegaussrank}
+Let
+\[
+ A_0=R\langle U_1^{\pm1},\ldots,U_d^{\pm1}\rangle,
+ \qquad A=A_0[1/\pi],
+\]
+and let $A_0\to B_0$ be a formal homomorphism to an admissible
+topologically finitely presented $R$-algebra. Suppose that
+$\overline B_0=B_0/\mathfrak mB_0$ is finite over
+$k[U_1^{\pm1},\ldots,U_d^{\pm1}]$.
+Then $B_0$ is finite over $A_0$, and the generic algebra
+$B=B_0[1/\pi]$ has its canonical finite-$A$-module topology.
+If $H$ is the completed residue field of the Gauss point of
+$\mathcal M(A)$, then
+\begin{equation}
+ \dim_H(B\widehat\otimes_A H)
+  =\dim_{k(U)}\left(
+     \overline B_0\otimes_{k[U^{\pm1}]}k(U)\right).
+ \label{v035:eqdegreegaussrank}
+\end{equation}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6cc00edbf755e545180ba4eba2ed9ab9bff63e63e073a4d800f2b90d7a83b366">
+\begin{proof}
+Choose bounded formal generators $y_1,\ldots,y_s$ of $B_0$,
+giving a surjection $A_0\langle Y_1,\ldots,Y_s\rangle\to B_0$.
+Each $\overline y_i$ satisfies a monic polynomial over the
+residual Laurent ring. Lift its coefficients to obtain
+$P_i\in A_0[Y_i]$, monic of degree $r_i&gt;0$, with all lower
+coefficients of Gauss norm at most one. Since
+$P_i(y_i)\in\mathfrak mB_0$, this element is a finite sum of
+scalars in $\mathfrak m$ times elements of $B_0$. Lift those
+elements through the formal presentation. This produces
+$G_i\in A_0\langle Y\rangle$ with
+\[
+ G_i(y)=P_i(y_i),\qquad \|G_i\|&lt;1.
+\]
+There are finitely many equations, so
+$\theta=\max_i\|G_i\|&lt;1$ is a common contraction bound.
+
+Apply Lemma~\ref{fnd:simultaneousmonicperturbation} over $A$.
+Its convergent division formula expresses every bounded
+restricted series, modulo the $P_i-G_i$, as a linear combination
+of the monomials $Y^\nu$ with $0\leq\nu_i&lt;r_i$. The coefficient
+maps have norm at most one, so a series in
+$A_0\langle Y\rangle$ has all its remainder coefficients in
+$A_0$. The images of these finitely many monomials therefore
+generate $B_0$ over $A_0$.
+
+The same calculation compares the generic norms. Give $B$ the
+quotient norm from $A\langle Y\rangle$ and let $\|\cdot\|_{\rm fin}$
+be the quotient norm from the finite free $A$-module on the
+remainder monomials. A finite remainder expression gives
+$\|b\|_B\leq\|b\|_{\rm fin}$. Conversely, apply the bounded
+division formula to each representative of $b$ and take the
+infimum of its norms. It gives
+$\|b\|_{\rm fin}\leq\|b\|_B$. Hence these quotient norms agree;
+the equivalent admissible norms give the same Banach topology.
+
+Let $S\subset A_0$ consist of the elements of Gauss norm one,
+and put $V=S^{-1}A_0$. The Gauss norm is multiplicative by
+Proposition~\ref{fnd:gaussnorm}. Every nonzero restricted
+Laurent series $a$ has a coefficient $c\in K^\times$ of
+maximal absolute value, so that $a=c s$ with $s\in S$.
+Every element of $\operatorname{Frac}(A)^\times$ is consequently
+of the form $c s/t$, where $c\in K^\times$ and $s,t\in S$.
+It belongs to $V$ exactly when $|c|\leq1$. Thus $V$ is the
+Gauss valuation ring in $\operatorname{Frac}(A)$, with residue
+field $k(U)$: the reductions of $S$ are all the nonzero Laurent
+polynomials. Its completion is $H^\circ$. Indeed, an element of
+norm at most one in the completion of $\operatorname{Frac}(A)$
+can be approximated, with error less than one, by elements of
+norm at most one, which belong to $V$.
+
+The finite $V$-module $M=S^{-1}B_0$ is torsion-free. Every
+nonzero element of $V$ is a nonzero scalar from $R$ times a
+unit; multiplication by that scalar is injective on $B_0$ and
+remains injective after localization. A finite torsion-free
+module over a valuation ring is free. One can see this directly
+by choosing a generating set of minimal size: a nonzero
+relation has a coefficient dividing all the others, and
+torsion-freeness then expresses the corresponding generator
+in terms of the rest. This contradicts minimality.
+
+The rank of $M$ is therefore its residue dimension over
+$k(U)$, which is the right-hand side of
+\eqref{v035:eqdegreegaussrank}. Tensoring its free basis with
+$H$ computes $\dim_H(B\otimes_A H)$ with the same value.
+The norm comparison above and
+Proposition~\ref{fnd:generalizedfinitebasechange} identify this
+algebraic tensor product with $B\widehat\otimes_AH$.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="d0ab002843a879702ab9e396d5c2472e2dbfa5fc75e3744a368ad4ef08ded636">
+% v0.35 English revision of the five excluded v0.34 degree candidates.
+% Author/reviser: /root/f6_degree. Mathematical status is assigned by the gate.
+\section{Geometric degrees and tropical lattice indices}
+\label{v035:degreesection}
+
+Write $R=K^\circ$, $\mathfrak m=K^{\circ\circ}$ and
+$k=\widetilde K$. In the first two lemmas, $K$ is complete and
+nontrivially valued, and $\pi\in R$ satisfies $0&lt;|\pi|&lt;1$.
+The formal algebras carry their quotient $\pi$-adic topologies.
+For a lattice $M$, the notation $R\langle M\rangle$ denotes
+the Gauss unit ball in $K\langle M\rangle$.
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002242-reader.jpg" alt="Typeset mathematical passage from PDF page 922" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=922">PDF page 922 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole</li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole</li><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001928/">NAG-001928</a> · selected whole</li><li><a href="/r/NAG-001928/">NAG-001928</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001928/">fnd:simultaneousmonicperturbation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

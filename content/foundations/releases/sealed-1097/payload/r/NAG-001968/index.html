@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001968/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The reduction of an active Weierstrass inequality · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001968 · Accepted whole</p><h1>The reduction of an active Weierstrass inequality</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.19.5">Open in the English reader · PDF page 565</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="ce6f93047205e17599126770ab3765f34edda3d9f153cf26c8eb0df59844fe7c">
+\begin{lemma}[\bi{The reduction of an active Weierstrass inequality}
+{有效 Weierstrass 不等式的约化}]
+\label{fnd:gradedweierstrassgerm}
+\bi{For a good germ $(X,x)$, let $f_1,\ldots,f_m$ be analytic
+near $x$, with $r_i=|f_i(x)|&gt;0$, and write $\lambda_i\in F_x$
+for their initial values. Then}
+{对 good 芽 $(X,x)$，设 $f_1,\ldots,f_m$ 在 $x$ 附近解析，
+$r_i=|f_i(x)|&gt;0$，并以 $\lambda_i\in F_x$ 记其首项值。则}
+\[
+ \mathscr R\bigl(X\{r^{-1}f\},x\bigr)
+          =\mathscr R(X,x)\{\lambda_1,\ldots,\lambda_m\}.
+\]
+\bi{Every subdomain germ of a good germ has a finite cover
+by germs of this form. Every nonzero homogeneous element
+of $F_x$ is the initial value of an invertible analytic
+function on some neighbourhood of $x$.}
+{Good 芽的每个子域芽都可由有限个这种芽覆盖。
+$F_x$ 的每个非零齐次元素，都是 $x$ 的某个邻域上一可逆解析
+函数的首项值。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="d65637befd32d302089bfa91f9714c22a2f51a2573b5a08c8003d64200aaa9d3">
+\begin{proof}
+\bi{Take an affinoid representative $A$ on which the functions
+are defined and put $D=A\{r^{-1}f\}$. Choose an admissible absolute
+weighted Tate presentation of $A$. Combine it with the actual
+quotient $A\{r^{-1}T\}\twoheadrightarrow D$ by
+Proposition~\ref{fnd:closedweightedpresentation} to obtain an absolute
+presentation of $D$. In the free-polyradius comparisons used for
+this presentation, Proposition~\ref{fnd:generalizedquotientbasechange}
+identifies the extended quotients naturally for the given
+bounded maps. Apply
+\hyperref[fnd:gradedfixedabsolutepresentation]{the fixed absolute presentation result}
+and evaluate at $x$ in the original field $F_x$.
+The old variables give evaluated classes from $R_{A,x}$ in
+their assigned degrees. The new variable for $f_i$ has assigned
+radius $r_i=|f_i(x)|$ and evaluates in that degree to $\lambda_i$.
+The resulting evaluated polynomial image is contained in
+$R_{A,x}[\lambda_1,\ldots,\lambda_m]\subset R_{D,x}$.
+The finite module generators obtained by evaluation therefore
+make $R_{D,x}$ finite over $R_{A,x}[\lambda_1,\ldots,\lambda_m]$.
+Lemma~\ref{fnd:gradedvaluationintegrality} gives the formula.}
+{取一个定义全部函数的 affinoid 代表 $A$，置 $D=A\{r^{-1}f\}$。
+选取 $A$ 的一个 admissible 绝对加权 Tate 表示，用
+Proposition~\ref{fnd:closedweightedpresentation} 将其与实际商
+$A\{r^{-1}T\}\twoheadrightarrow D$ 合并，得到 $D$ 的绝对表示。
+在此表示所用的自由多半径比较中，
+Proposition~\ref{fnd:generalizedquotientbasechange} 对给定有界映射
+自然地识别扩张后的商。应用
+\hyperref[fnd:gradedfixedabsolutepresentation]{固定绝对表示的结果}，
+在原来的域 $F_x$ 中于 $x$ 求值。旧变量在指定次数的求值类来自
+$R_{A,x}$。对应于 $f_i$ 的新变量的指定半径是 $r_i=|f_i(x)|$，
+在该次数求值为 $\lambda_i$。求值后的多项式像包含于
+$R_{A,x}[\lambda_1,\ldots,\lambda_m]\subset R_{D,x}$。
+因此求值所得的有限模生成元使 $R_{D,x}$ 在
+$R_{A,x}[\lambda_1,\ldots,\lambda_m]$ 上有限。
+Lemma~\ref{fnd:gradedvaluationintegrality} 给出公式。}
+
+\bi{Theorem~\ref{fnd:generalizedgerritzengrauert} gives a finite rational
+cover of any affinoid subdomain, and a subdomain germ is
+covered by finitely many affinoid subdomain germs.
+Discard rational members not containing $x$ after shrinking
+the ambient neighbourhood. Every remaining denominator is
+nonzero at $x$, so becomes invertible after another shrinking.
+The rational inequalities then become Weierstrass inequalities.
+Those strict at $x$ can be omitted on a neighbourhood, leaving
+precisely the displayed active inequalities.
+Finally $\operatorname{Frac}(A/\ker x)$ is dense in
+$\mathcal H(x)$. Approximate a lift of a nonzero homogeneous
+element with relative error less than one. It has the same
+initial value as a fraction $a/b$, with $b(x)\ne0$ and
+$a(x)\ne0$; on a smaller neighbourhood this fraction is
+analytic and invertible.}
+{Theorem~\ref{fnd:generalizedgerritzengrauert} 给出每个 affinoid 子域的有限
+rational 覆盖，而一个子域芽由有限个 affinoid 子域芽覆盖。
+缩小环境邻域后可丢弃不包含 $x$ 的 rational 成员。
+剩余分母在 $x$ 处非零，进一步缩小后都可逆；因此 rational
+不等式变为 Weierstrass 不等式。在 $x$ 处严格的不等式可在
+邻域上省略，剩下的正是所列有效不等式。
+最后，$\operatorname{Frac}(A/\ker x)$ 在
+$\mathcal H(x)$ 中稠密。以相对误差小于一逼近一个非零齐次
+元素的提升，便得到具有同一首项的分式 $a/b$，其中
+$b(x)\ne0$ 且 $a(x)\ne0$；在较小邻域上，此分式解析且可逆。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001968-reader.jpg" alt="Typeset mathematical passage from PDF page 565" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=565">PDF page 565 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001580/#actual_quotient_algebra_existing_map_naturality">CLAUSE:NAG-001580:actual_quotient_algebra_existing_map_naturality</a> · selected scope, text unavailable <small>(reviewed scope binding proposal)</small></li><li><a href="/r/NAG-001959/#fixed_absolute_admissible_tate">CLAUSE:NAG-001959:fixed_absolute_admissible_tate</a> · selected scope, text unavailable <small>(selected exact clause)</small></li><li><a href="/r/NAG-001968/#fixed_actual_homogeneous_unit_lift">CLAUSE:NAG-001968:fixed_actual_homogeneous_unit_lift</a> · selected scope, text unavailable <small>(selected exact clause)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001843/">NAG-001843</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001967/">NAG-001967</a> · selected whole <small>(conditional earlier candidate)</small></li></ul><h2>Selected scopes</h2><article id="fixed_actual_homogeneous_unit_lift"><h3>fixed actual homogeneous unit lift</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001554/">fnd:closedweightedpresentation</a></li><li><a href="/r/NAG-001843/">fnd:generalizedgerritzengrauert</a></li><li><a href="/r/NAG-001580/">fnd:generalizedquotientbasechange</a></li><li><a href="/r/NAG-001964/">fnd:gradedvaluationintegrality</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

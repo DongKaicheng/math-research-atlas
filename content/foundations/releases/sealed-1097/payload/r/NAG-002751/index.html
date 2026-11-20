@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002751/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Identity (M) on all continuous analytic tests · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002751 · Accepted whole</p><h1>Identity (M) on all continuous analytic tests</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002751.original">Open in the English reader · PDF page 2132</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="5b1d6856562e1d5fccb4cbce55fa3b78988a9f85959e96e11b2576d96efe2e26">
+\begin{theorem}[Identity (M) on all continuous analytic tests]
+\label{f9fm:alltests}
+Under the standing hypotheses, for every $u\in\mathcal A$,
+\begin{equation}\label{ex68:full:eq:fullsmooth}
+ L_K(u)=\int_{\mathbf R^d}u(\rho(t))W(t)\,dt,
+ \qquad |L_K(u)|\leq D\sup_{\rho(S)}|u|.
+\end{equation}
+It has a unique continuous extension to all $u\in C(X^\an)$ in the
+uniform norm. For every such test, including nonradial tests, this
+extension and the primary smooth Gubler--K\&quot;unnemann measure satisfy
+\begin{equation}\label{ex68:full:eq:fullM}
+ \overline L_K(u)=\int_{X^\an}u\,d\mu_{\rm GK}
+       =\int_{X^\an}u\,d\mu_\Gamma
+       =\int_{\mathbf R^d}u(\rho(t))W(t)\,dt.
+\end{equation}
+The measures have support exactly $\rho(S)$ and mass
+$D=\prod_i m_i$, the explicit algebraic mixed degree. The product line
+$L_1\otimes\cdots\otimes L_d$ has self-measure $d!\mu_\Gamma$ and
+self-degree $d!D$. No logarithmic test with a zero or pole is asserted
+to be integrable by this theorem.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="97b050d2829f3536cb9e2da5ce9b786422d12a964916deeb459fb100c80ffd85">
+\begin{proof}
+First recover the needed radial calculation directly. On a whole
+interior fibre of the polyannulus $Q$, the actual Laurent algebra is
+$T_w=K\{e^wT,e^{-w}T^{-1}\}$, with its quotient norm
+(NAG-001553 and NAG-002081). For the identity projection of the
+saturated lattice $\mathbf Z^d$, its actual Gauss algebra is
+$T_w\widehat\otimes_{T_w}H_w=H_w$. Thus the full module dimension and
+lattice index in NAG-002362 are both one. The frozen chain integral
+NAG-002405, with NAG-002389&#x27;s positive generator, gives
+\begin{equation}\label{ex68:full:eq:radialbase}
+ L_K(F\circ\bar t)=\int F(t)W(t)dt\qquad(F\in C_c^\infty(\mathbf R^d)).
+\end{equation}
+The same calculation gives $L_K(1)=D$, since
+$\int\phi_i&#x27;&#x27;=\phi_i&#x27;(+\infty)-\phi_i&#x27;(-\infty)=m_i$.
+The primary torus chart has defining ideal zero, hence initial Laurent
+torus of generic length one, with the same saturated lattice and positive
+normalization. Its defining smooth pairing gives the identical formulas.
+There is no factorial in these mixed calculations.
+
+Let $u\in\mathcal A$. The trace $u\circ\rho$ is continuous on
+$\mathbf R^d$. On a compact neighbourhood of $S$, convolution and a
+smooth compact cutoff give $F_\epsilon\in C_c^\infty(\mathbf R^d)$
+with
+\[
+       \sup_{t\in S}|u(\rho(t))-F_\epsilon(t)|&lt;\epsilon.
+\]
+For example, first multiply the trace by a cutoff equal to one near
+$S$, convolve with a sufficiently small smooth approximate identity,
+and multiply by a second cutoff equal to one on that neighbourhood.
+The function $v=u-F_\epsilon\circ\bar t$ is globally ordinary smooth.
+It satisfies $|v|&lt;\epsilon$ on $\rho(S)$ and hence on an open
+neighbourhood of this compact set. By Lemma~\ref{f9fm:gausssupport},
+$\theta$ has zero germ outside $\rho(S)$. Therefore both
+$(\epsilon+v)\theta$ and $(\epsilon-v)\theta$ are globally positive
+sections: on that neighbourhood their scalar coefficients are positive,
+and on its complement they are zero germs. Positivity of NAG-002425
+and $L_K(1)=D$ imply
+\[
+ |L_K(u)-L_K(F_\epsilon\circ\bar t)|\leq\epsilon D.
+\]
+Using \eqref{ex68:full:eq:radialbase} and the same error bound for the real
+integral proves \eqref{ex68:full:eq:fullsmooth}. This proof uses the trace only
+in the approximation, without pretending that $u\circ\rho\circ\bar t$
+is itself smooth.
+
+The ordinary smooth algebra is uniformly dense by
+Lemma~\ref{f9fm:smoothdensity}; the bound in \eqref{ex68:full:eq:fullsmooth}
+is at most $D\|u\|_\infty$. Thus $L_K$ has a unique continuous
+extension. The explicit functional $u\mapsto\int u\,d\mu_\Gamma$
+already extends it, so the first and last expressions in
+\eqref{ex68:full:eq:fullM} agree for every continuous $u$. This constructs the
+full measure in the frozen class without invoking a general Riesz
+existence result for all smooth forms.
+
+For a common smooth function $u\in\mathcal A_{\rm com}$, apply exactly
+the same approximation to the primary smooth pairing. The primary
+zero-germ statement was proved separately in
+Lemma~\ref{f9fm:gausssupport}. Its smooth chart integral is nonnegative
+on a nonnegative smooth top form: after restriction to faces its
+coefficients are integrated against the nonnegative tropical
+multiplicities, with the fixed positive normalization. This is the
+chart definition, and is all the positivity required here. Its radial
+value and mass were computed above. Hence its value at $u\theta$ is
+$\int u\circ\rho\,Wdt$. The defining smooth action of the given finite
+signed measure $\mu_{\rm GK}$ has these values. The common algebra is
+uniformly dense, and integration against either finite signed Radon
+measure is continuous in that norm. Thus the equality extends to every
+continuous $u$, proving \eqref{ex68:full:eq:fullM} and, in particular, positivity
+and support of $\mu_{\rm GK}$ in this class. The nonnegative continuous
+density $W$ has support exactly $S$: every product neighbourhood of a
+point of $\prod_i\supp(\phi_i&#x27;&#x27;)$ contains a product of points where
+all factors are positive. Thus its measure has support $S$, and the
+section homeomorphism gives measure support exactly $\rho(S)$.
+
+For the degree normalization choose $a_i\in K^\times$ and the divisors
+$m_i\{T_i=a_i\}$. They meet at one point with regular sequence
+$z_1^{m_1},\ldots,z_d^{m_d}$ in the local polynomial ring, where
+$z_i=T_i-a_i$. The quotient basis is $\prod_i z_i^{e_i}$ with
+$0\leq e_i&lt;m_i$, so its full length is $D$, including nilpotent
+layers; its residue degree is one. This computes the mixed degree.
+Finally $\theta_i\wedge\theta_i=0$ and the $(1,1)$-factors commute,
+so $(\sum_i\theta_i)^d=d!\theta$. The Hilbert polynomial of the
+product line is $\prod_i(m_i k+1)$, confirming self-degree $d!D$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002751-reader.jpg" alt="Typeset mathematical passage from PDF page 2132" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2132">PDF page 2132 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002081/">NAG-002081</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002744/">NAG-002744</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002749/">NAG-002749</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002744/">f9fm:gausssupport</a></li><li><a href="/r/NAG-002749/">f9fm:smoothdensity</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

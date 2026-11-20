@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003131/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The supported comparison rules needed here · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003131 · Accepted whole</p><h1>The supported comparison rules needed here</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003131.original">Open in the English reader · PDF page 1930</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="984c861accef990b226fa138adaa321e66916fafdaa54c351e3416e6c3888831">
+\begin{lemma}[The supported comparison rules needed here]
+\label{f9mi:operations}
+For computing data, the following changes leave \eqref{eq:f9mi:value}
+unchanged:
+\begin{enumerate}
+\item pullback of the actual data along a proper generic-identity
+      map of integral models, using the inverse-image supports;
+\item replacement of $(\cA_i,\sigma_i,e_i)$ by
+      $(\cA_i^{\otimes m_i},\sigma_i^{\otimes m_i},m_i e_i)$,
+      with $m_i\geq1$;
+\item replacement of signed presentations on one common support;
+\item enlargement of model supports, provided their total generic
+      intersection is still empty.
+\end{enumerate}
+In (1), before degree one has equality in
+$\CH_0(T_{\rm red})$ under the proper map of the final supports.
+The source need not be normal.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0bcbbfbcb649f0c44adac130f75481b75cc147b4c9e306d4def865a620218ef0">
+\begin{proof}
+Let $q:\cY\to\cT$ be as in (1). Repeated supported projection gives
+\[
+ q_*\bigl(I_{q^*0}\cdots I_{q^*d}[\cY]\bigr)
+       =I_0\cdots I_d q_*[\cY]
+       =I_0\cdots I_d[\cT].
+\]
+The last equality uses the actual function-field degree one.
+At every step the target is the prescribed intersection, and the
+final map is between proper vertical supports. Its zero-cycle
+pushforward preserves degree over $k$, including residue degrees.
+This proves (1).
+
+Signed tensor additivity on the same support gives
+$I_{\sigma_i^{m_i}}=m_i I_{\sigma_i}$. The factors $\prod_i m_i$
+in the numerator and denominator of \eqref{eq:f9mi:value} cancel,
+proving (2).
+
+For (3), present one datum as $(A,a)/(B,b)$ and $(A&#x27;,a&#x27;)/(B&#x27;,b&#x27;)$.
+The actual line identities and equality of their rational ratios
+give the global equality $a\otimes b&#x27;=a&#x27;\otimes b$ on the integral
+model. Supported Gysin additivity therefore gives
+\[
+                   G_a+G_{b&#x27;}=G_{a&#x27;}+G_b
+\]
+in the group on the common prescribed support, and subtraction
+identifies the signed operations. Naturality for each intermediate
+closed support permits their iteration with all other operations.
+The comparison precedes degree; it is not merely equality of
+ambient Chow classes. Finally the same naturality proves (4).
+The larger final support is still proper over $k$, so its inclusion
+also preserves degree.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="f09be050b584d1d4540758d7bfaa2219fe2de3480d5c42e06a2b3666ffdbbcb5">
+Let $R$ be a complete DVR, with uniformizer $\pi$, fraction field $K$,
+and residue field $k$. Equip $K$ with a nontrivial non-Archimedean
+absolute value whose valuation ring is $R$. Put
+$\lambda=-\log|\pi|&gt;0$. Let $X$ be a normal integral proper
+$K$-variety of dimension $d\geq2$. A model is a proper flat
+finite-type $R$-scheme with a specified identification of its generic
+fibre with $X$. Maps called generic-identity respect these
+identifications. Such models are integral by Theorem~\ref{f9cn:common};
+their special fibres may be nonreduced.
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="560748f7b4dac3bf72898d9647ab4e397c4ac0039099edcd9d07e11d3a5baa9c">
+A root model presentation of a metric $h$ on a line bundle $L$ is
+$(\cT,\cL,e,\alpha)$, with $e\geq1$ and
+$\alpha:\cL|_X\xrightarrow{\sim}L^{\otimes e}$ specified. If $s$
+is a nonzero rational section of $L$, its model section is
+$\sigma=\alpha^{-1}(s^{\otimes e})$. The identification $\alpha$ is
+part of the datum. An abstract isomorphism of the underlying line
+bundles does not replace it.
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="c0f29d9ffedd4f6c09decba330da25c6e49e651324b63bb1971b7e3cc5b6cb9c">
+Fix line bundles $L_i$, root algebraic model metrics $h_i$, nonzero
+rational sections $s_i$, and prescribed closed subsets $S_i\subset X$,
+for $0\leq i\leq d$. Require that $s_i$ is a regular generator off
+$S_i$ and
+\begin{equation}\label{eq:f9mi:empty}
+                         \bigcap_{i=0}^d S_i=\varnothing.
+\end{equation}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="4724fad7cb3e0503ea21fc440a20a7883a1f27f5057c84b10dadd96ff6d3b80a">
+A computing datum consists of an integral model $\cT$, extensions
+$\cA_i|_X\simeq L_i^{\otimes e_i}$ inducing $h_i$, and signed
+presentations of their model sections on closed sets $Z_i\subset\cT$
+such that $Z_i\cap X=S_i$. Every factor zero support must lie in its
+own $Z_i$. A support is not replaced by the image of its Chow group
+in the Chow group of $\cT$.
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="388326f2c09df2de59f1592b967a22ef5a5a7f3b793a4a429b8ecdf7fd7f6010">
+Use the dimension function of the supported-calculus packet:
+$\delta(\Spec K)=1$ and $\delta(\Spec k)=0$. Thus $[\cT]$
+has dimension $d+1$. For a closed support $Z$ put
+$C_r(\cT;Z)=\CH_r(Z_{\rm red})$. Write $I_i$ for the signed
+operation supplied by Theorem~\ref{f9sc:refined-supported} and Proposition~\ref{f9sc:signed}.
+Then
+\[
+ \beta_{\cT}=I_0\cdots I_d[\cT]\in
+       \CH_0(T_{\rm red}),\qquad T=\bigcap_i Z_i.
+\]
+By \eqref{eq:f9mi:empty}, $T_{\rm red}$ is vertical and proper over $k$,
+even if it has positive dimension. Define
+\begin{equation}\label{eq:f9mi:value}
+ J_{\cT}=\frac{\lambda}{\prod_{i=0}^d e_i}
+                            \deg_k(\beta_{\cT}).
+\end{equation}
+Degree is proper pushforward to $\Spec k$: a closed point contributes
+its full residue degree, including its inseparable part. The original
+coherent and divisor lengths stay in the cycle coefficients.
+There is no extra factorial and no normalization of $\lambda$ to one.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003131-reader.jpg" alt="Typeset mathematical passage from PDF page 1931" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1931">PDF page 1931</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-003112/#supported_gysin_1_4">CLAUSE:NAG-003112:supported_gysin_1_4</a> · selected scope <small>(exact native application)</small></li><li><a href="/r/NAG-003036/">NAG-003036</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-003116/">NAG-003116</a> · selected whole <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003036/">f9cn:common</a></li><li><a href="/r/NAG-003112/#supported_gysin_1_4">f9sc:refined-supported</a></li><li><a href="/r/NAG-003116/">f9sc:signed</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

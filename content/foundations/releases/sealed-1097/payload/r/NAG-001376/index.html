@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001376/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Complete coefficient modules · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001376 · Accepted whole</p><h1>Complete coefficient modules</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.1.10.1">Open in the English reader · PDF page 65</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="2840d93d73406daa001e776c3736d882794c97c8e5bbd6a79b8c3054a2ccd5eb">
+\begin{lemma}[\bi{Complete coefficient modules}{Complete coefficient modules}]\label{fnd:banachseriesmodule}
+\bi{The normed module $E_r(M)$ is complete, $M[T]$ is dense in it, and $P_{&lt;d}(M)$ is complete. Coefficient convolution defines a continuous action of the Banach algebra $E_r(A)$ on $E_r(M)$, satisfying}
+{$E_r(M)$ 为 complete normed module，$M[T]$ 在其中 dense，且 $P_{&lt;d}(M)$ complete。Coefficient convolution 定义 Banach algebra $E_r(A)$ 在 $E_r(M)$ 上的 continuous action，并满足}
+\[
+ \|fg\|_r\leq\|f\|_r\|g\|_r.
+\]
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3c0de1bb4a9328052ee344732523eb3575db5b6b7ed5374506c7eb7e361d2911">
+\begin{proof}
+\bi{Let $g_n=\sum_jm_{n,j}T^j$ be Cauchy. Each coefficient sequence is Cauchy because}
+{设 $g_n=\sum_jm_{n,j}T^j$ 为 Cauchy sequence。每个 coefficient sequence 都是 Cauchy，因为}
+\[
+ \|m_{n,j}-m_{n&#x27;,j}\|\leq r^{-j}\|g_n-g_{n&#x27;}\|_r.
+\]
+\bi{Let $m_j$ be its limit. Given $\varepsilon&gt;0$, choose $n$ so that $\|g_n-g_{n&#x27;}\|_r&lt;\varepsilon/2$ for every sufficiently large $n&#x27;$. Choose $J$ so that $\|m_{n,j}\|r^j&lt;\varepsilon/2$ for $j&gt;J$. Passage to the coefficientwise limit gives}
+{记其 limit 为 $m_j$。给定 $\varepsilon&gt;0$，选取 $n$，使每个充分大的 $n&#x27;$ 都满足 $\|g_n-g_{n&#x27;}\|_r&lt;\varepsilon/2$；再取 $J$，使 $j&gt;J$ 时 $\|m_{n,j}\|r^j&lt;\varepsilon/2$。逐 coefficient 取 limit 后得到}
+\[
+ \|m_j-m_{n,j}\|r^j\leq\varepsilon/2,
+ \qquad \|m_j\|r^j\leq\varepsilon/2\quad(j&gt;J).
+\]
+\bi{Thus $g=\sum_jm_jT^j$ belongs to $E_r(M)$, and the first estimate gives $\|g-g_n\|_r\leq\varepsilon/2$. This proves completeness. Truncation proves density. The same argument on the first $d$ coordinates proves completeness of $P_{&lt;d}(M)$.}
+{因此 $g=\sum_jm_jT^j$ 属于 $E_r(M)$，而第一个 estimate 给出 $\|g-g_n\|_r\leq\varepsilon/2$，从而证明 completeness。Truncation 证明 density；将同一论证限制到前 $d$ 个 coordinates，得到 $P_{&lt;d}(M)$ 的 completeness。}
+
+\bi{For polynomial products, convolution and the ultrametric inequality give the asserted norm bound. For general $f,g$, choose polynomial truncations $f_n,g_n$. They are bounded and Cauchy. The identity}
+{对 polynomial products，convolution 与 ultrametric inequality 给出所述 norm bound。对一般 $f,g$，取 polynomial truncations $f_n,g_n$；这两个 sequences 都 bounded 且 Cauchy。恒等式}
+\[
+ f_ng_n-f_mg_m=(f_n-f_m)g_n+f_m(g_n-g_m)
+\]
+\bi{shows that the products are Cauchy. Their limit defines $fg$ and is independent of the truncations by the same estimate. Each coefficient is the finite convolution sum. The norm bound passes to the limit; associativity and the module law follow from their polynomial versions by continuity. Taking $M=A$ also proves that $E_r(A)$ is a Banach algebra.}
+{说明 products 为 Cauchy。其 limit 定义 $fg$，且由同一 estimate 可知与 truncations 的选择无关。每个 coefficient 就是相应的 finite convolution sum。Norm bound 保持到 limit；associativity 与 module law 由 polynomial 情形通过 continuity 得到。取 $M=A$ 也就证明 $E_r(A)$ 为 Banach algebra。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="d8b1c6f8ec70ecd0a9b6090e608202416d44b228caf3c0dcdff05951e3d9c48d">
+\chapter{\bi{Valued fields, Banach algebras and analytic points}{Valued fields、Banach algebras 与 analytic points}}\label{ch:1}\label{vol:I}\label{part:tropical}\label{fnd:algebras}
+\bi{A non-Archimedean analytic space is locally described by convergent functions, but its points need not be evaluations at elements of the ground field. The purpose of this chapter is to construct both parts of this description: the algebras of functions and the valued fields in which their values lie. The next chapter supplies domains and sheaves. This order is important for multiplicities: a seminorm detects the value of a function, whereas the algebra also retains nilpotents and finite-module lengths.}
+{Non-Archimedean analytic space 局部由 convergent functions 描述，但其 points 未必来自 ground field 中元素的 evaluation。本章构造这一描述的两部分：functions 的 algebras，以及函数值所在的 valued fields。下一章再建立 domains 与 sheaves。这个顺序对 multiplicities 很重要：seminorm 检测函数值，而 algebra 还保留 nilpotents 与 finite-module lengths。}
+
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="6ea2c0bb8faa98558245a1b435f008c0365c1ba10767182d02639e5e3d9dee3c">
+\begin{definition}\label{fnd:tatereal}
+\bi{For $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$, the generalized Tate algebra is}
+{对 $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$，定义 generalized Tate algebra}
+\[
+ K\{r^{-1}T\}=
+ \left\{\sum_{\nu\in\N^n}a_\nu T^\nu:
+       |a_\nu|r^\nu\longrightarrow0\text{ as }|\nu|\to\infty\right\}.
+\]
+\[
+ \|f\|_r=\max_\nu |a_\nu|r^\nu.
+\]
+\bi{Here $r^\nu=\prod_i r_i^{\nu_i}$. When all $r_i=1$, write $K\langle T_1,\ldots,T_n\rangle$.}
+{这里 $r^\nu=\prod_i r_i^{\nu_i}$。当所有 $r_i=1$ 时，记作 $K\langle T_1,\ldots,T_n\rangle$。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="453c75099497848aecc5710681ced658273649a6f32617e65657be3fbf4297eb">
+\begin{definition}\label{fnd:affinoiddefinition}
+\bi{A $K$-affinoid algebra is a Banach $K$-algebra admitting an admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$ for some finite tuple of positive radii. It is strictly $K$-affinoid if such a presentation exists with all radii equal to one. Morphisms are bounded $K$-algebra homomorphisms.}
+{$K$-affinoid algebra 是一个 Banach $K$-algebra，它对某个有限的 positive-radii tuple 存在 admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$。若可取所有 radii 等于一，则称为 strictly $K$-affinoid。Morphisms 为 bounded $K$-algebra homomorphisms。}
+\end{definition}
+
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="92b63802dc03b1c832fa8ed92d15c890688fabf94d4fb725402470af8c5b11f0">
+\begin{definition}\label{fnd:spectrum}
+\bi{For a $K$-affinoid algebra $A$, its Berkovich spectrum $\mathcal M(A)$ is the set of bounded multiplicative seminorms extending $|\cdot|_K$. Its topology is the weakest topology making every evaluation $x\mapsto|a(x)|$ continuous. The algebra $A$, not just this topological space, is part of the affinoid object.}
+{对 $K$-affinoid algebra $A$，其 Berkovich spectrum $\mathcal M(A)$ 为延拓 $|\cdot|_K$ 的 bounded multiplicative seminorms 的集合。其 topology 是使所有 evaluation $x\mapsto|a(x)|$ continuous 的最弱 topology。Affinoid object 的数据包括 algebra $A$，而不只是这个 topological space。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="73b4dc84df7956e8936a9c34335f6222242fc6a66bc9341f0ffb2de76de6b719">
+\bi{Throughout this section, $A$ is a commutative unital Banach $K$-algebra as in Definition~\ref{fnd:banachalgebra}. A Banach $A$-module $M$ means an $A$-module with a complete, definite, non-Archimedean norm, homogeneous over $K$, such that $\|am\|\leq\|a\|\|m\|$. No algebraic finiteness is assumed. Fix $r&gt;0$ and put}
+{本节中，$A$ 为 Definition~\ref{fnd:banachalgebra} 中的 commutative unital Banach $K$-algebra。Banach $A$-module $M$ 指具有 complete、definite、non-Archimedean norm 的 $A$-module；该 norm 在 $K$ 上 homogeneous，且满足 $\|am\|\leq\|a\|\|m\|$。不要求 $M$ algebraically finite。固定 $r&gt;0$，记}
+\[
+\begin{split}
+ E_r(M)&amp;=\left\{\sum_{j\geq0}m_jT^j:\|m_j\|r^j\longrightarrow0\right\},\\
+ \left\|\sum_{j\geq0}m_jT^j\right\|_r&amp;=\sup_j\|m_j\|r^j.
+\end{split}
+\]
+\bi{For a nonzero series the supremum is attained. Write $P_{&lt;d}(M)$ for the polynomials of degree less than $d$, with the same norm; $P_{&lt;0}(M)=0$. The field may be trivially valued, and $r$ need not belong to $|K^\times|$.}
+{对 nonzero series，上述 supremum 可达到。以 $P_{&lt;d}(M)$ 记 degree 小于 $d$ 的 polynomials，并使用同一 norm；约定 $P_{&lt;0}(M)=0$。允许 $K$ trivially valued，也不要求 $r\in|K^\times|$。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001376-reader.jpg" alt="Typeset mathematical passage from PDF page 65" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=65">PDF page 65 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000153/#context-8a59e28fbfc4652b">fnd:banachalgebra</a></li><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

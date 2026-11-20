@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001938/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Prescribing the center in an integral extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001938 · Accepted whole</p><h1>Prescribing the center in an integral extension</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.16.14">Open in the English reader · PDF page 531</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="39802ab0a5bc4da9110ace94662811255ec617512db192184335499baa54e0ae">
+\begin{lemma}[\bi{Prescribing the center in an integral extension}
+{在整扩张中指定中心}]
+\label{fnd:normalbaseprescribedcenter}
+\bi{Let $R$ be an integrally closed domain with fraction field $F$,
+and let $B$ be an integral domain finite over $R$.
+Suppose a real-valued non-Archimedean absolute value on $F$
+is at most one on $R$, with center
+$\mathfrak p=\{r\in R:|r|&lt;1\}$.
+For every prime $\mathfrak q\subset B$ above $\mathfrak p$,
+the absolute value extends to $\operatorname{Frac}(B)$ with
+center exactly $\mathfrak q$.}
+{设 $R$ 为整闭整环，分式域为 $F$，而 $B$ 为 $R$ 上有限的整环。
+设 $F$ 上的实值非阿基米德绝对值在 $R$ 上不超过一，中心为
+$\mathfrak p=\{r\in R:|r|&lt;1\}$。
+对 $\mathfrak p$ 上方的每个素理想 $\mathfrak q\subset B$，
+该绝对值都延拓到 $\operatorname{Frac}(B)$，使其中心恰为
+$\mathfrak q$。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b9274cb3eed8f192b8ebdf8bbdf132f3dc07004d2db96ea6abf1694f28c185e9">
+\begin{proof}
+\bi{Let $E=\operatorname{Frac}(B)$ and choose a finite normal
+extension $N/F$ containing $E$, by taking a splitting field
+of finitely many minimal polynomials; see \cite[Tag 09HU]{StacksAlg}.
+Let $C$ be the integral closure of $R$ in $N$.
+There is a prime $Q$ of $C$ above $\mathfrak q$, since
+$B\subset C$ is integral and lying-over applies
+\cite[Tag 00GQ]{StacksAlg}.
+An extension of the absolute value to $N$ exists without a
+completeness assumption on $F$: complete $F$ to $H$, choose
+a maximal ideal of the nonzero finite $H$-algebra
+$N\otimes_F H$, and use Lemma~\ref{fnd:finiteextensionnorms}
+on its residue field. The resulting map from the field $N$
+is injective. Denote the extended absolute value by $|\cdot|_0$.
+Every element of $C$ has norm at most one, by its monic equation
+over $R$. Thus it has a center $Q_0$ in $C$, also above
+$\mathfrak p$.}
+{令 $E=\operatorname{Frac}(B)$，取有限个最小多项式的分裂域，
+便得到包含 $E$ 的有限正规扩张 $N/F$；参见
+\cite[Tag 09HU]{StacksAlg}。令 $C$ 为 $R$ 在 $N$ 中的整闭包。
+由于 $B\subset C$ 是整扩张，由 lying-over
+\cite[Tag 00GQ]{StacksAlg}，存在位于 $\mathfrak q$ 上方的
+$C$ 的素理想 $Q$。
+绝对值到 $N$ 的延拓不要求 $F$ 完备：将 $F$ 完备化为 $H$，
+取非零有限 $H$-代数 $N\otimes_F H$ 的一个极大理想，
+再对其剩余域应用 Lemma~\ref{fnd:finiteextensionnorms}。
+从域 $N$ 出发的所得映射为单射，故定义一个延拓绝对值
+$|\cdot|_0$。由 $C$ 中元素在 $R$ 上的首一方程可知，它们的
+绝对值均不超过一。因此该绝对值在 $C$ 中有中心 $Q_0$，
+同样位于 $\mathfrak p$ 上方。}
+
+\bi{Put $G=\operatorname{Aut}_F(N)$. The fixed field $N^G/F$
+is purely inseparable by \cite[Tag 030M]{StacksAlg}.
+Every element $z\in C^G$ consequently has a power
+$z^{p^e}\in R$ in positive characteristic, and already lies
+in $R$ in characteristic zero: the power lies in $F$ and
+is integral over the normal ring $R$.
+It follows that $Q$ and $Q_0$ have the same contraction to $C^G$,
+because membership of $z$ is determined by membership of that power.
+By \cite[Tag 0BRI]{StacksAlg}, some $\sigma\in G$ satisfies
+$\sigma(Q)=Q_0$. The absolute value $|z|=|\sigma(z)|_0$
+then has center $Q$ on $C$. Its restriction to $E$ has center
+$\mathfrak q$ on $B$, as required.}
+{令 $G=\operatorname{Aut}_F(N)$。由 \cite[Tag 030M]{StacksAlg}，
+不动域 $N^G/F$ 为纯不可分扩张。因此在正特征情形，每个
+$z\in C^G$ 的某个幂 $z^{p^e}$ 属于 $R$；在特征零情形
+它本身就属于 $R$。确实，这个幂属于 $F$ 且在正规环 $R$ 上整。
+所以 $Q$ 和 $Q_0$ 到 $C^G$ 的收缩相同：$z$ 的归属由该幂的
+归属决定。由 \cite[Tag 0BRI]{StacksAlg}，存在
+$\sigma\in G$ 使 $\sigma(Q)=Q_0$。
+于是 $|z|=|\sigma(z)|_0$ 在 $C$ 中的中心为 $Q$，
+其在 $E$ 上的限制在 $B$ 中的中心就是 $\mathfrak q$。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001938-reader.jpg" alt="Typeset mathematical passage from PDF page 531" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=531">PDF page 531 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00GQ@NAG-001938:2 · named external application</li><li>APP-STACKS-00GQ@NAG-001938:2 · named external application <small>(requires)</small></li><li>APP-STACKS-030M@NAG-001938:3 · named external application</li><li>APP-STACKS-030M@NAG-001938:3 · named external application <small>(requires)</small></li><li>APP-STACKS-09HU@NAG-001938:1 · named external application</li><li>APP-STACKS-09HU@NAG-001938:1 · named external application <small>(requires)</small></li><li>APP-STACKS-0BRI@NAG-001938:4 · named external application</li><li>APP-STACKS-0BRI@NAG-001938:4 · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

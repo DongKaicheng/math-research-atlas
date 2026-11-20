@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002581/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite single-representative decomposition · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002581 · Accepted whole</p><h1>Finite single-representative decomposition</h1><p><a href="/projects/foundations/chapters/f7native-interior-stokes-supplement-0/">Chapter 8 supplement: Interior Stokes with coherent coefficients</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=fsevenInteriorDisplay.9">Open in the English reader · PDF page 1792</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d54a859e4644507509026e1757179434169c749a771cd68a3988ae68c8016def">
+\begin{proposition}[Finite single-representative decomposition]
+\label{f7gg:decomposition}
+Let \(X\) be good, Hausdorff and pure of analytic dimension
+\(d\geq1\), and let \(\beta\in\A_c^{d-1,d}(X)\) have support
+\(S\subseteq\Int(X/K)\).
+There exist finitely many affinoid domains \(W_i\subseteq X\)
+and global functions \(0\leq b_i\leq1\) such that:
+\begin{enumerate}
+\item the loci on which \(b_i=1\) cover an ordinary
+neighborhood of \(S\);
+\item on \(W_i\), both \(\beta\) and \(b_i\) have one global
+unit-moment representative, and
+\(\supp(b_i)\subseteq C_i\) for a compact
+\(C_i\subseteq\Int_{\rm top}(W_i,X)\cap\Int(X/K)\);
+\item for \(W_I=\bigcap_{i\in I}W_i\), \(I\ne\varnothing\),
+the section
+\[
+       \theta_I=\left(\prod_{i\in I}b_i|_{W_I}\right)\beta|_{W_I}
+\]
+has one global unit-moment representative, with compact support
+in both ordinary interior and absolute analytic interior:
+\[
+\supp(\theta_I)\subseteq\Int_{\rm top}(W_I,X)\cap\Int(W_I/K).
+\]
+\item as ordinary sections on \(X\),
+\begin{equation}\label{eq:decompose}
+      \beta=\sum_{\varnothing\ne I\subseteq\{1,\ldots,m\}}
+                       (-1)^{|I|+1}e_!\theta_I .
+\end{equation}
+Empty domains and zero terms are omitted.
+\end{enumerate}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="22df55aee6aba382f0186a7dc88785c4a1224e0e0a3e7def4626669d7d2f6060">
+\begin{proof}
+If \(S=\varnothing\), use the empty sum.
+For \(x\in S\), choose an ordinary affinoid neighborhood
+\(V_x\) on which \(\beta=t_{f_x}^*\alpha_x\).
+It is pure of dimension \(d\) by
+\src{v037:integration:puritylocality}.
+The point is interior in \(V_x/K\) by
+\src{fnd:goodinteriorlocaltesting}, since it is interior
+in \(X/K\) and \(V_x\) is an ordinary neighborhood.
+The germ is nonzero, so Lemma~\ref{f7gg:minimal} applies.
+Choose the bump of Lemma~\ref{f7gg:bump}, with its ordinary
+support neighborhood contained in \(\Int(X/K)\).
+Compactness of \(S\) gives finitely many such bumps,
+with domains \(W_i\), which equal one on neighborhoods
+covering \(S\). Write
+\[
+       \beta|_{W_i}=t_{f_i}^*\alpha_i,\qquad
+       b_i|_{W_i}=t_{g_i}^*\Phi_i.
+\]
+
+Each \(W_I\) is an actual affinoid domain by
+\src{v037:integration:separatedintersections}, and every
+nonempty \(W_I\) is pure of dimension \(d\).
+Choose any \(i_0\in I\). The joint tuple
+\[
+                     F_I=(f_{i_0},(g_i)_{i\in I})|_{W_I}
+\]
+consists of units on \(W_I\).
+A single ambient representative of \(\theta_I\) is
+\begin{equation}\label{eq:onechart}
+       \alpha_I=
+       \left(\prod_{i\in I}\pi_{g_i}^*\Phi_i\right)
+                                      \pi_{f_{i_0}}^*\alpha_{i_0},
+\end{equation}
+defined near its actual compact image.
+No extension of an analytic unit from one domain to another
+has been made; all tuples are restricted to the intersection.
+The ordinary sheaf and unit-adjunction faithfulness ensure
+that this representative is the displayed section, independently
+of the choice of \(i_0\).
+
+Put \(C_I=\bigcap_{i\in I}C_i\).
+It is compact and contains \(\supp_{W_I}(\theta_I)\).
+Every point of \(C_I\) lies in all the ordinary interiors of
+the \(W_i\), and hence in \(\Int_{\rm top}(W_I,X)\).
+It is also interior in \(X/K\). Applying
+\src{fnd:goodinteriorlocaltesting} to this ordinary affinoid
+neighborhood gives
+\[
+                           C_I\subseteq\Int(W_I/K).
+\]
+Consequently \(\theta_I\) is zero on an ordinary neighborhood
+of \(\partial_KW_I\). Indeed \(C_I\) is compact and closed
+and is disjoint from that boundary.
+
+The function
+\[
+                         P=1-\prod_{i=1}^m(1-b_i)
+\]
+equals one on an ordinary neighborhood of \(S\).
+Thus \(\beta=P\beta\) everywhere as an ordinary section:
+off \(S\) its germs are zero.
+Expand the finite product to obtain \eqref{eq:decompose}.
+The global product \((\prod_{i\in I}b_i)\beta\) is
+\(e_!\theta_I\), by Lemma~\ref{f7gg:zeroextension}.
+This proves all four assertions.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002581-reader.jpg" alt="Typeset mathematical passage from PDF page 1792" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1792">PDF page 1792 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002392/">NAG-002392</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002406/">NAG-002406</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002411/">NAG-002411</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002578/">NAG-002578</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002579/">NAG-002579</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002580/">NAG-002580</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002579/">f7gg:bump</a></li><li><a href="/r/NAG-002578/">f7gg:minimal</a></li><li><a href="/r/NAG-002580/">f7gg:zeroextension</a></li><li><a href="/r/NAG-001631/">fnd:goodinteriorlocaltesting</a></li><li><a href="/r/NAG-002413/">v037:integration:puritylocality</a></li><li><a href="/r/NAG-002411/">v037:integration:separatedintersections</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

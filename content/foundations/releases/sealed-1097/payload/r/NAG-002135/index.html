@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002135/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>An affine neighborhood of finitely many projective points · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002135 · Accepted whole</p><h1>An affine neighborhood of finitely many projective points</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.27.1">Open in the English reader · PDF page 917</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e5a8863d1e76ade5f2d452ea208a550b146b34918dde4336863d2344c97e3ad2">
+\begin{lemma}[\bi{An affine neighborhood of finitely many projective points}
+{有限个射影点的仿射邻域}]
+\label{cand:finiteprojectiveaffineneighborhood}
+\bi{Let $Z$ be a projective scheme over any field $k$ and let
+$q_1,\ldots,q_m$ be distinct closed points. They lie in a common
+affine open of $Z$. If $C$ is a projective integral curve and
+$p_1,\ldots,p_m$ are distinct closed points of its normalization,
+there are functions $u_i\in k(C)^\times$ satisfying}
+{设 $Z$ 为任意域 $k$ 上的射影概形，$q_1,\ldots,q_m$
+为互异闭点。它们包含于 $Z$ 的同一个仿射开集中。若 $C$
+为射影整曲线，$p_1,\ldots,p_m$ 为其正规化上的互异闭点，
+则存在函数 $u_i\in k(C)^\times$ 满足}
+\[
+ \operatorname{ord}_{p_j}(u_i)=\delta_{ij}.
+\]
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="40b623277ce2be5268c6564d796bc2d15bf40ad8773ee0ac8bdbcd805a515f6a">
+\begin{proof}
+\bi{Embed $Z$ in $\mathbf P^n_k$ and let $P_i$ be the homogeneous
+prime defining $q_i$. The $P_i$ are pairwise incomparable. For
+each $j\ne i$, choose a homogeneous element of $P_j\setminus P_i$,
+and let $g_i$ be their product; if $m=1$, put $g_1=1$. Then
+$g_i$ vanishes at the other selected points and not at $q_i$.
+Choose a coordinate $x_{a_i}\notin P_i$ and an integer
+$D\geq\max(1,\max_i\deg g_i)$. The homogeneous polynomial}
+{将 $Z$ 嵌入 $\mathbf P^n_k$，以 $P_i$ 记定义 $q_i$ 的
+齐次素理想。这些理想两两不可比较。对每个 $j\ne i$，
+选择 $P_j\setminus P_i$ 中的齐次元素，并以其乘积为
+$g_i$；若 $m=1$，令 $g_1=1$。于是 $g_i$ 在其余所选
+点上消失，而在 $q_i$ 不消失。选择坐标
+$x_{a_i}\notin P_i$ 及整数
+$D\geq\max(1,\max_i\deg g_i)$。齐次多项式}
+\[
+ F=\sum_i g_i x_{a_i}^{D-\deg g_i}
+\]
+\bi{is outside every $P_i$: modulo $P_i$ its only nonzero
+summand is the $i$-th. The standard affine open $D_+(F)$ in
+projective space therefore gives the required affine open on $Z$.
+This construction works over finite fields as well.}
+{不属于任何 $P_i$：模 $P_i$ 后，唯一非零的加项就是第
+$i$ 项。因此射影空间的标准仿射开集 $D_+(F)$ 在 $Z$ 上
+给出所需仿射邻域。此构造也适用于有限域。}
+
+\bi{Apply this to the finitely many distinct images of the $p_j$
+on $C$. Its inverse image under normalization is affine, because
+normalization is finite by \cite[Tag 0BXR]{StacksAlg}. Write
+it as $\operatorname{Spec}B$, and let $\mathfrak m_j$ correspond
+to $p_j$. By \cite[Tag 0B8Y]{StacksAlg}, $B_{\mathfrak m_i}$
+is a discrete valuation ring. A local uniformizer is $a_i/b_i$
+with $a_i,b_i\in B$ and $b_i\notin\mathfrak m_i$, so $a_i$
+has order one at $p_i$. The ideals $\mathfrak m_i^2$ and
+$\mathfrak m_j$, $j\ne i$, are pairwise comaximal. The elementary
+Chinese remainder construction in Lemma~\ref{cand:residualfiniteorders}
+uses only these comaximalities, not any assumption on $k$:
+for $I+J=B$ and $a+b=1$ with $a\in I,b\in J$, the element
+$br+as$ has prescribed residues $r$ modulo $I$ and $s$ modulo
+$J$, and induction treats finitely many ideals. Choose $u_i$
+congruent to $a_i$ modulo $\mathfrak m_i^2$ and to $1$ modulo
+every other $\mathfrak m_j$. This gives precisely the displayed
+orders, regardless of the residue degrees of the $p_j$.}
+{将上述构造用于 $p_j$ 在 $C$ 上的有限个互异像。
+由 \cite[Tag 0BXR]{StacksAlg}，正规化有限，所以此仿射
+邻域的逆像仍仿射。写作 $\operatorname{Spec}B$，并以
+$\mathfrak m_j$ 对应 $p_j$。由 \cite[Tag 0B8Y]{StacksAlg}，
+$B_{\mathfrak m_i}$ 为离散赋值环。其局部一致化参数可写为
+$a_i/b_i$，其中 $a_i,b_i\in B$ 且
+$b_i\notin\mathfrak m_i$，故 $a_i$ 在 $p_i$ 的阶数为一。
+理想 $\mathfrak m_i^2$ 及 $j\ne i$ 的 $\mathfrak m_j$
+两两互素。Lemma~\ref{cand:residualfiniteorders} 中的初等
+中国剩余构造仅使用这些互素关系，不需要关于 $k$ 的假设：
+若 $I+J=B$，写 $a+b=1$、$a\in I,b\in J$，则 $br+as$
+模 $I$、模 $J$ 分别给出指定剩余类 $r,s$，归纳即可处理
+有限个理想。选择 $u_i$，使它模 $\mathfrak m_i^2$ 同余于
+$a_i$，且模其余每个 $\mathfrak m_j$ 同余于 $1$。
+所得阶数恰如所列，与各 $p_j$ 的剩余次数无关。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002135-reader.jpg" alt="Typeset mathematical passage from PDF page 918" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=918">PDF page 918</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01MB@NAG-002135:single-standard-affine-open · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-0B8Y@NAG-002135:actual-normal-local-dvr · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-0BXR@NAG-002135:actual-integral-normalization · named external application <small>(verified Stacks application)</small></li><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li>CONTEXT:002200-crt · standing context or base <small>(literal context)</small></li><li>APP-STACKS-01MB@NAG-002135:single-standard-affine-open · named external application</li><li>APP-STACKS-01MB@NAG-002135:single-standard-affine-open · named external application <small>(requires)</small></li><li>APP-STACKS-0B8Y@NAG-002135:actual-normal-local-dvr · named external application</li><li>APP-STACKS-0B8Y@NAG-002135:actual-normal-local-dvr · named external application <small>(requires)</small></li><li>APP-STACKS-0BXR@NAG-002135:actual-integral-normalization · named external application</li><li>APP-STACKS-0BXR@NAG-002135:actual-integral-normalization · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>CONTEXT:002200-crt · standing context or base</li><li>CONTEXT:002200-crt · standing context or base <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002200/">cand:residualfiniteorders</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

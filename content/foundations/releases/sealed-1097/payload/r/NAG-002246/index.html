@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002246/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The algebraic tropical degree formula · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002246 · Accepted whole</p><h1>The algebraic tropical degree formula</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.28.5">Open in the English reader · PDF page 925</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="19bb420cc554969ac98eb99d9ff7ea245ac055c2de101932c3f1850c350ec637">
+\begin{theorem}[The algebraic tropical degree formula]
+\label{v035:degreeformula}
+Let $\varphi:T_N\to T_{N&#x27;}$ be a homomorphism of split tori
+over a complete real-valued non-Archimedean field $K$, and write $a:N\to N&#x27;$ for
+its lattice map. Let $X\subset T_N$ be a pure
+$d$-dimensional closed subscheme and $Y\subset T_{N&#x27;}$ an
+integral $d$-dimensional closed subscheme. Suppose that
+$\varphi|_X:X\to Y$ is dominant with nonempty zero-dimensional
+generic fibre of scheme degree $\delta$.
+
+There is a finite union $E_{\mathrm{trop}}$ of polyhedra of
+dimension less than $d$ in $\operatorname{Trop}(Y)$ such that,
+for $w&#x27;\notin E_{\mathrm{trop}}$, its tropical preimages form
+a finite set $\{w_i\}_i$. Each $w_i$ lies in the relative
+interior of a maximal initial cell $\sigma_i$, while $w&#x27;$
+lies in the relative interior of a maximal initial cell
+$\sigma&#x27;$, and
+\begin{equation}
+ \delta\,m_Y(\sigma&#x27;)
+   =\sum_i m_X(\sigma_i)
+       [N&#x27;_{\sigma&#x27;}:a(N_{\sigma_i})].
+ \label{v035:eqdegreeformula}
+\end{equation}
+For the polyhedral pushforward of
+Theorem~\ref{cand:balancedpolyhedralpushforward}, this is the
+weighted-cycle identity
+\[
+ a_*\operatorname{Trop}(X)=\delta\operatorname{Trop}(Y).
+\]
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3e4d5951f0a3e7bdec2101196184d455d02bf0d0c6a0a1c192eac6819689305d">
+\begin{proof}
+\emph{Step 1: choose the finite free locus and the regular weights.}
+Choose $h$ by Lemma~\ref{v035:degreefinitefreelocus}, and let
+$E=Y\setminus Y_h$ have its reduced closed structure. Every
+irreducible component of $E$ has dimension less than $d$:
+a chain of primes above a nonzero prime of the domain
+$\Gamma(Y,\mathcal O_Y)$ becomes one step longer after
+adjoining its zero prime. Apply
+Theorem~\ref{cand:tropicalpuredimension} to the finitely many
+components of $E$. Their tropicalizations form a finite union
+of lower-dimensional polyhedra.
+
+Also exclude the nonmaximal cells of $\operatorname{Trop}(Y)$,
+the images of nonmaximal cells of $\operatorname{Trop}(X)$,
+and the images of maximal source cells on which $a$ has rank
+less than $d$. Intersect these images with the target complex.
+The finite polyhedral elimination and refinement in
+Theorem~\ref{cand:balancedpolyhedralpushforward} give a finite
+union $E_{\mathrm{trop}}$ of polyhedra of dimension less than
+$d$. It cannot contain the relative interior of a maximal
+target cell.
+
+Fix $w&#x27;\notin E_{\mathrm{trop}}$. Each of its tropical
+preimages is in the relative interior of a maximal source
+cell on whose direction space $a$ is injective. Each of
+finitely many such cells contributes at most one point.
+Thus the preimage set is finite. Near each $w_i$, the image
+of its full-dimensional source cell is contained in the
+local tropical support at $w&#x27;$, which is the direction space
+of $\sigma&#x27;$. The dimensions are equal, so
+\[
+ a(N_{\sigma_i})_{\mathbf R}=N&#x27;_{\sigma&#x27;,\mathbf R}.
+\]
+The indices in \eqref{v035:eqdegreeformula} are therefore finite.
+
+\emph{Step 2: decompose the actual inverse-image algebra.}
+Use Theorem~\ref{cand:realinitialdegeneration} to make one
+complete isometric extension $L/K$ realizing $w&#x27;$ and all
+the $w_i$, with nontrivial valuation. The finite free algebra
+on $Y_h$ remains free of rank $\delta$ after extension, and
+Proposition~\ref{cand:tropicalweightlocalconstancy} preserves
+all the weights. In particular, the subsequent argument uses
+the same finite free module even if $Y_L$ is reducible or
+nonreduced.
+
+Write $Y_{w&#x27;}=\mathcal M(C)$ for the actual target tropical
+fibre over $L$. Since $w&#x27;\notin\operatorname{Trop}(E)$,
+$h$ has no zero on this fibre. It is therefore a unit in $C$
+by Theorem~\ref{fnd:generalizedpointunitcriterion}, and
+$Y_{w&#x27;}\subset(Y_h)^{\an}$. The explicit tensor description
+in Theorem~\ref{fnd:analytificationfiniteclosed} shows that
+the inverse image is $\mathcal M(D)$, where $D$ is a finite
+$C$-algebra free of rank $\delta$.
+
+Every point of this inverse image has tropical weight one
+of the $w_i$. Its subset of weight $w_i$ is the actual
+affinoid domain $X_{w_i}=\mathcal M(B_i)$ of
+Proposition~\ref{cand:torusfibrealgebra}. These subsets are
+open and closed: they are fibres of a continuous map with
+values in a finite Hausdorff set. Applying the structure
+sheaf property of Theorem~\ref{fnd:affinoidfullgcomparison}
+to this finite disjoint cover gives
+\begin{equation}
+ D\simeq\prod_i B_i.
+ \label{v035:eqdegreefibreproduct}
+\end{equation}
+The inverse image is nonempty. Indeed, $C\ne0$ and
+$\delta&gt;0$, so $D\ne0$; the affinoid nonemptiness theorem
+\ref{fnd:generalizedpointunitcriterion} gives a point of
+$\mathcal M(D)$. Consequently the set of $w_i$ is nonempty.
+
+\emph{Step 3: compare all degrees over one Gauss field.}
+The saturated lattice $N&#x27;_{\sigma&#x27;}$ is a direct summand
+of $N&#x27;$ by Lemma~\ref{cand:elementarylatticesplitting}.
+Choose $q:N&#x27;\to\mathbf Z^d$ whose restriction to it is an
+isomorphism. Divide the corresponding target monomials by
+their values at a translating point of weight $w&#x27;$. This
+gives one unit-polycircle algebra
+$A=L\langle U_1^{\pm1},\ldots,U_d^{\pm1}\rangle$ mapping to
+$C$ and to every $B_i$.
+After the respective source translations, the induced
+monomials differ from those for $q\circ a$ by constants
+of absolute value one, because $a(w_i)=w&#x27;$.
+
+Let $H$ be the completed Gauss residue field of $A$.
+Proposition~\ref{v035:degreeinitialweight} gives
+\[
+ \begin{aligned}
+ \dim_H(C\widehat\otimes_A H)&amp;=m_Y(\sigma&#x27;),\\
+ \dim_H(B_i\widehat\otimes_A H)
+   &amp;=m_X(\sigma_i)[N&#x27;_{\sigma&#x27;}:a(N_{\sigma_i})].
+ \end{aligned}
+\]
+All the maps are finite with the canonical finite-module
+norms, so Proposition~\ref{fnd:generalizedfinitebasechange}
+identifies these completed tensors with the algebraic ones.
+Since $D$ is free of rank $\delta$ over $C$, tensoring its
+free basis over $A$ with $H$ gives
+\[
+ \dim_H(D\otimes_AH)=\delta\dim_H(C\otimes_AH).
+\]
+Taking dimensions in \eqref{v035:eqdegreefibreproduct}
+proves \eqref{v035:eqdegreeformula}.
+
+Theorem~\ref{cand:tropicalbalancing} makes both weighted
+tropicalizations balanced cycles. Choose compatible source
+and target subdivisions as in the polyhedral pushforward
+theorem. The equality holds on a
+dense relative open subset of every maximal target cell.
+Both weights are constant on each such cell by
+Proposition~\ref{cand:tropicalweightlocalconstancy} and the
+definition of polyhedral pushforward. This proves the
+weighted-cycle identity.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002246-reader.jpg" alt="Typeset mathematical passage from PDF page 926" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=926">PDF page 926 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002081/">NAG-002081</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002112/">NAG-002112</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002120/">NAG-002120</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002188/">NAG-002188</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002245/">NAG-002245</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole</li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole</li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole</li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002081/">NAG-002081</a> · selected whole</li><li><a href="/r/NAG-002081/">NAG-002081</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole</li><li><a href="/r/NAG-002085/">NAG-002085</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole</li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002112/">NAG-002112</a> · selected whole</li><li><a href="/r/NAG-002112/">NAG-002112</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002120/">NAG-002120</a> · selected whole</li><li><a href="/r/NAG-002120/">NAG-002120</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002188/">NAG-002188</a> · selected whole</li><li><a href="/r/NAG-002188/">NAG-002188</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole</li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002245/">NAG-002245</a> · selected whole</li><li><a href="/r/NAG-002245/">NAG-002245</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002188/">cand:balancedpolyhedralpushforward</a></li><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li><li><a href="/r/NAG-002085/">cand:realinitialdegeneration</a></li><li><a href="/r/NAG-002081/">cand:torusfibrealgebra</a></li><li><a href="/r/NAG-002120/">cand:tropicalbalancing</a></li><li><a href="/r/NAG-002109/">cand:tropicalpuredimension</a></li><li><a href="/r/NAG-002112/">cand:tropicalweightlocalconstancy</a></li><li><a href="/r/NAG-001622/">fnd:affinoidfullgcomparison</a></li><li><a href="/r/NAG-001710/">fnd:analytificationfiniteclosed</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002245/">v035:degreefinitefreelocus</a></li><li><a href="/r/NAG-002244/">v035:degreeinitialweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

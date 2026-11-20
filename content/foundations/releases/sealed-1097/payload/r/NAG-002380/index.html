@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002380/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Pushforward after adding analytic unit coordinates · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002380 · Accepted whole</p><h1>Pushforward after adding analytic unit coordinates</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.44.1">Open in the English reader · PDF page 1009</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="14f88bbf611d1d309757a4567b59861e65af8e4ce5787ac71dbbb5355bb4afed">
+\begin{theorem}[Pushforward after adding analytic unit coordinates]
+\label{v037:analytic:momentaugmentation}
+In the setting above let $g_1,\ldots,g_m\in B^\times$ and put
+\[
+ \widehat t=(t,(-\log|g_j|)_j):X\longrightarrow\mathbb R^{n+m},
+ \qquad \pi:\mathbb Z^{n+m}\longrightarrow\mathbb Z^n.
+\]
+Let $\Omega\subset\mathbb R^n$ be open and convex and avoid
+$t(\partial_KX)$. Suppose finite pure $d$-dimensional integral
+affine complexes $\mathcal C$ and $\widehat{\mathcal C}$ satisfy
+\[
+ \begin{aligned}
+ t(X)\cap\Omega&amp;=|\mathcal C|\cap\Omega,\\
+ \widehat t(X)\cap\pi^{-1}(\Omega)
+       &amp;=|\widehat{\mathcal C}|\cap\pi^{-1}(\Omega).
+ \end{aligned}
+\]
+Equip both with their analytic weights from
+Theorem~\ref{v037:analytic:polyhedralcycle}. Then on $\Omega$
+\[
+                  \pi_*[\widehat{\mathcal C}]=[\mathcal C].
+\]
+More explicitly, outside a finite union of polyhedra of dimension
+at most $d-1$, each $v\in|\mathcal C|\cap\Omega$ lies in the
+relative interior of a $d$-cell $\sigma$, its full inverse image
+in $\widehat t(X)$ is finite, and
+\begin{equation}
+\label{v037:eq:augmentationweight}
+ m_\sigma=
+ \sum_{\substack{u\in\widehat t(X)\\\pi(u)=v}}
+       m_{\widehat\sigma(u)}
+             [N_\sigma:\pi(N_{\widehat\sigma(u)})].
+\end{equation}
+Here $u$ lies in the relative interior of a unique $d$-cell
+$\widehat\sigma(u)$, and $\pi$ is injective on its tangent space.
+The equality uses all source moment fibres over $v$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="2376f33a610b1ba3cb34fc784a9e4f4d58d17a550b998510830474913bd50f77">
+\begin{proof}
+The set $\pi^{-1}(\Omega)$ is open and convex and misses
+$\widehat t(\partial_KX)$. Thus the indicated weights exist on
+both complexes and are balanced by
+Theorem~\ref{v037:analytic:polyhedralcycle}.
+
+Remove from $\Omega$ the cells of $\mathcal C$ of dimension
+less than $d$, the images of all cells of
+$\widehat{\mathcal C}$ of dimension less than $d$, and the
+images of those $d$-cells on whose tangent space $\pi$ has rank
+less than $d$. Each removed set is contained in a finite union
+of affine subspaces of dimension at most $d-1$. The images are
+polyhedra: eliminating one real coordinate from a finite list
+of linear inequalities replaces the upper and lower bounds for
+that coordinate by their pairwise comparisons, and preserves
+the inequalities not involving it; iterating gives a finite
+inequality presentation of a linear image. Rational coefficients
+remain rational. This also supplies a finite polyhedral
+refinement adapted to all these images, by cutting along the
+finitely many resulting supporting hyperplanes.
+
+The complement is dense in the relative interior of every
+$d$-cell meeting $\Omega$. To verify this directly, in its affine
+span choose a line direction outside the finitely many proper
+linear subspaces parallel to the excluded affine subspaces.
+A line in that direction meets each of them at at most one
+point. Arbitrarily short segments therefore contain points of
+the complement. Such a direction exists, for example by the
+finite-polynomial argument in the proof of
+Theorem~\ref{v037:analytic:wallbalance}.
+
+Fix $v$ in this complement and in the target support. Every
+$u\in\widehat t(X)$ above $v$ is in
+$\pi^{-1}(\Omega)$, so it lies in the relative interior of a
+unique $d$-cell of $\widehat{\mathcal C}$, and $\pi$ has full
+rank on that cell. The affine restriction is injective, so there
+is at most one such point for each of the finitely many cells.
+There is at least one, since $t=\pi\circ\widehat t$. This proves
+finiteness and nonemptiness of the full inverse image.
+
+Near $v$ the target image is contained in its affine $d$-plane,
+and near every $u$ the joint image is contained in its affine
+$d$-plane. The whole target fibre is interior because
+$v\notin t(\partial_KX)$; the whole source fibres are contained
+in it. Apply Theorem~\ref{v036:analyticgeometricpushforward} to
+the identity morphism $X\to X$, with source moment tuple $(f,g)$,
+target moment tuple $f$, and lattice map $\pi$. Its algebra is
+finite free of rank one over itself, with its original Banach
+structure. All its full-fibre hypotheses have just been checked.
+The resulting formula is exactly
+\eqref{v037:eq:augmentationweight}.
+
+The restriction of $\pi$ to the actual joint support over
+$\Omega$ is proper: above a compact subset of $\Omega$ its
+inverse image is a closed subset of the compact set
+$\widehat t(X)$. On the finite refinement constructed above,
+the weight defining $\pi_*$ at a generic point of a target
+$d$-cell is the finite sum in
+\eqref{v037:eq:augmentationweight}; cells with smaller-dimensional
+image contribute no $d$-weight. The formula agrees with the
+analytic target weight on a dense subset of every such cell.
+Both are constant there, so the weighted cycles are equal.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002380-reader.jpg" alt="Typeset mathematical passage from PDF page 1009" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1009">PDF page 1009 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-002308/">NAG-002308</a> · selected whole</li><li><a href="/r/NAG-002376/">NAG-002376</a> · selected whole</li><li><a href="/r/NAG-002378/">NAG-002378</a> · selected whole</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002308/">NAG-002308</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002376/">NAG-002376</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002378/">NAG-002378</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002308/">v036:analyticgeometricpushforward</a></li><li><a href="/r/NAG-002378/">v037:analytic:polyhedralcycle</a></li><li><a href="/r/NAG-002376/">v037:analytic:wallbalance</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001907/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Generic points of graded reduction · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001907 · Accepted whole</p><h1>Generic points of graded reduction</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.12.7">Open in the English reader · PDF page 513</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="2afec4c78b9611295f135ebc99e0b2b4246383f9df9369ed3bd88b0acc9cec4c">
+\begin{theorem}[\bi{Generic points of graded reduction}
+{分次约化的泛点}]
+\label{fnd:gradedgenericshilov}
+\bi{Let $A$ be a nonzero affinoid algebra, let $\Gamma_A$ be its Shilov
+boundary, and let $\widetilde A^{\mathrm{gr}}$ be its graded spectral
+reduction. Evaluation at $\xi\in\Gamma_A$ induces a homogeneous prime}
+{设 $A$ 为非零 affinoid 代数，$\Gamma_A$ 为其 Shilov 边界，
+$\widetilde A^{\mathrm{gr}}$ 为其谱分次约化。在 $\xi\in\Gamma_A$
+处取值诱导齐次素理想}
+\[
+ P_\xi=\ker\bigl(\widetilde A^{\mathrm{gr}}
+             \longrightarrow\widetilde{\mathcal H(\xi)}^{\mathrm{gr}}\bigr).
+\]
+\bi{The ideals $P_\xi$ are precisely the minimal homogeneous prime ideals
+of $\widetilde A^{\mathrm{gr}}$. They are distinct, their intersection
+is zero, and each has exactly one analytic preimage under reduction,
+namely $\xi$.}
+{这些 $P_\xi$ 恰为 $\widetilde A^{\mathrm{gr}}$ 的极小齐次素理想。
+它们两两不同，交为零，且每个在约化映射下都只有唯一的解析原像，
+即 $\xi$ 本身。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f0380e2f62e785bd4223120019ca0bcfae519a2f51facf86cb1a35c8cccbd646">
+\begin{proof}
+\bi{Evaluation preserves each filtered piece and its strictly smaller
+subspace, so it defines the displayed map. A graded valued-field reduction
+has no homogeneous zero divisors. Since the positive real grading group
+is totally ordered, the largest nonzero components of two finite graded
+sums have nonzero product; thus the graded ring is also an ordinary
+domain, and the kernel is a homogeneous prime.
+If a homogeneous class of degree $r$ belongs to all $P_\xi$, its lift $a$
+satisfies $|a(\xi)|&lt;r$ for all $\xi\in\Gamma_A$. The boundary is finite,
+so $\rho(a)=\max_{\Gamma_A}|a|&lt;r$ and the class vanishes. Thus the
+intersection is zero.}
+{取值保持各滤过子空间及其严格较小子空间，故定义所列映射。
+赋值域的分次约化没有齐次零因子。正实数分次群全序，故两个有限分次和
+的最大非零分量之积不为零；因此该分次环也是普通意义的整环，
+所列核为齐次素理想。
+若某个次数为 $r$ 的齐次类属于所有 $P_\xi$，则其提升 $a$ 满足
+对所有 $\xi\in\Gamma_A$ 均有 $|a(\xi)|&lt;r$。
+边界有限，所以 $\rho(a)=\max_{\Gamma_A}|a|&lt;r$，该类为零。
+故这些素理想之交为零。}
+
+\bi{For each $\xi$, minimality of the finite boundary (Corollary~\ref{fnd:affinoidshilovinternal}) supplies $a_\xi$
+whose maximum on $\Gamma_A$ occurs only at $\xi$. Its initial class lies
+in every $P_\eta$ for $\eta\ne\xi$, but not in $P_\xi$.
+Thus these primes are pairwise incomparable. Any homogeneous prime
+containing zero contains one of them: otherwise choose a homogeneous
+element of each $P_\xi$ outside that prime and multiply the finitely many
+choices, contradicting their zero intersection. Pairwise incomparability
+then shows that these are exactly the minimal homogeneous primes.}
+{对每个 $\xi$，有限边界的极小性（Corollary~\ref{fnd:affinoidshilovinternal}）给出函数 $a_\xi$，使其在
+$\Gamma_A$ 上的最大值只在 $\xi$ 处达到。
+它的首项类属于所有 $\eta\ne\xi$ 对应的 $P_\eta$，但不属于
+$P_\xi$，故这些素理想两两不可比较。
+任何包含零的齐次素理想都包含其中一个：否则，可从每个 $P_\xi$
+中选择一个不属于该素理想的齐次元素，有限相乘后与交为零矛盾。
+再由两两不可比较性，可知它们恰为全部极小齐次素理想。}
+
+\bi{It remains to identify the fibre. Suppose that an analytic point $y$
+has reduction kernel $P_\xi$, and choose $a=a_\xi$ as above with
+$m=|a(\xi)|&gt;q=\max_{\eta\ne\xi}|a(\eta)|$. Since the initial class
+of $a$ is not in $P_\xi$, we have $|a(y)|=m$.
+If $|b(\xi)|&gt;0$, then, for sufficiently large $n$,
+$\rho(a^n b)=m^n|b(\xi)|$. The initial class of $a^n b$ does not lie
+in $P_\xi$, so its value at $y$ equals this radius. Dividing by $m^n$
+gives $|b(y)|=|b(\xi)|$.
+If $b(\xi)=0$, the estimate
+$m^n|b(y)|\leq q^n\max_{\eta\ne\xi}|b(\eta)|$ for all $n$
+forces $b(y)=0$. Thus all evaluations agree and $y=\xi$.}
+{最后识别纤维。设解析点 $y$ 的约化核为 $P_\xi$，取上述
+$a=a_\xi$，使 $m=|a(\xi)|&gt;q=\max_{\eta\ne\xi}|a(\eta)|$。
+由于 $a$ 的首项类不属于 $P_\xi$，有 $|a(y)|=m$。
+若 $|b(\xi)|&gt;0$，则对足够大的 $n$ 有
+$\rho(a^n b)=m^n|b(\xi)|$。$a^n b$ 的首项类不属于 $P_\xi$，
+所以它在 $y$ 处的取值恰为该半径。除以 $m^n$ 得
+$|b(y)|=|b(\xi)|$。
+若 $b(\xi)=0$，则对所有 $n$ 的估计
+$m^n|b(y)|\leq q^n\max_{\eta\ne\xi}|b(\eta)|$
+迫使 $b(y)=0$。因此全部取值一致，即 $y=\xi$。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001907-reader.jpg" alt="Typeset mathematical passage from PDF page 513" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=513">PDF page 513 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000648/">NAG-000648</a> · selected whole</li><li><a href="/r/NAG-001905/">NAG-001905</a> · selected whole</li><li><a href="/r/NAG-000648/">NAG-000648</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001905/">NAG-001905</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001905/">fnd:affinoidshilovinternal</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

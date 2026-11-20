@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002372/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite-module pushforward and composition · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002372 · Accepted whole</p><h1>Finite-module pushforward and composition</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.42.2">Open in the English reader · PDF page 999</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="c86f57e0243b0a40173db16c13b45def372c9137ac187bb46ca786706acc0129">
+\begin{theorem}[Finite-module pushforward and composition]
+\label{v037:degree:modulefunctoriality}
+Keep the finite morphism $p:X=\mathcal M(B)\to Y=\mathcal M(A)$,
+the moment tuples, the lattice map $a$, and the given complexes
+over $\Omega$ in Theorem~\ref{v037:degree:modulecycle}.
+For every finite $B$-module $M$, regarded also as a finite
+$A$-module, one has
+\[
+ a_*\operatorname{Trop}_{f_X,a^{-1}(\Omega)}(M)
+                   =\operatorname{Trop}_{f_Y,\Omega}(M).
+\]
+Its target generic coefficients are
+\[
+ \operatorname{length}_{A_{\mathfrak p}}(M_{\mathfrak p})
+ =\sum_{\substack{\mathfrak q\in\operatorname{Min}(B)\\
+                   \mathfrak q\cap A=\mathfrak p}}
+       \operatorname{length}_{B_{\mathfrak q}}(M_{\mathfrak q})
+                         [\kappa(\mathfrak q):\kappa(\mathfrak p)]
+       \qquad(\mathfrak p\in\operatorname{Min}(A)).
+\]
+
+These pushforwards respect finite composition. More precisely,
+let $Z=\mathcal M(C)\to X$ also be finite with $Z$ pure of
+analytic dimension $d$, and let a unit tuple $f_Z$ and an
+integral map $b$ satisfy the corresponding character identity.
+Assume a finite pure integral complex presents the actual
+$f_Z$-image on $(ab)^{-1}(\Omega)$. For every finite $C$-module
+$L$,
+\[
+ (ab)_*\operatorname{Trop}_{f_Z,(ab)^{-1}(\Omega)}(L)
+   =a_*b_*\operatorname{Trop}_{f_Z,(ab)^{-1}(\Omega)}(L)
+   =\operatorname{Trop}_{f_Y,\Omega}(L).
+\]
+Here $ab$ means $a\circ b$, and the middle pushforwards use
+the indicated inverse open sets.
+
+If $P$ is a finite locally free $A$-module of constant rank $r$,
+then the tensor projection formula is
+\[
+ a_*\operatorname{Trop}_{f_X,a^{-1}(\Omega)}(M\otimes_AP)
+       =\operatorname{Trop}_{f_Y,\Omega}(M\otimes_AP)
+       =r\,\operatorname{Trop}_{f_Y,\Omega}(M).
+\]
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="00e608b1962f2218f2a3798fea85708a1ae9cad12161e2a6f5b6605d614dcc68">
+\begin{proof}
+The square-zero algebra $B\oplus M$ is finite over $B$ and
+over $A$, with the canonical finite-module norm, by
+Theorem~\ref{fnd:generalizedfinitealgebras}.
+It has the same analytic points, moment image, and pure
+analytic dimension as $B$, as proved in
+Theorem~\ref{v037:degree:modulecycle}.
+Apply that theorem to its finite map to $Y$. Its source cycle
+is the sum of the structure cycle of $X$ and the module cycle
+of $M$. Its target module cycle is the sum of the cycles of
+$B$ and $M$ as $A$-modules. The theorem for $B\to A$ and
+subtraction give the asserted equality. Subtraction is valid
+on a common finite refinement because each lattice-index
+coefficient is a finite linear sum of source coefficients.
+The same compact actual support gives properness for the
+square-zero source, including modules with zero generic weight.
+
+For a minimal prime $\mathfrak p$ of $A$, decompose the
+finite Artinian algebra $B_{\mathfrak p}$ into its local
+factors $B_{\mathfrak q}$, as in the proof of
+Theorem~\ref{v037:degree:finitecyclepushforward}.
+The finite module $M_{\mathfrak p}$ decomposes into the
+corresponding $M_{\mathfrak q}$. A composition series of each
+factor as a $B_{\mathfrak q}$-module has residue field
+$\kappa(\mathfrak q)$ as every simple quotient.
+Its length over $A_{\mathfrak p}$ is the full field degree
+$[\kappa(\mathfrak q):\kappa(\mathfrak p)]$.
+Adding these lengths proves the displayed coefficient formula.
+
+The composite of two finite canonical affinoid maps is finite
+and canonical: finite module generators compose, and composing
+their finite free quotient presentations gives the same Banach
+topology. Apply the first assertion to $C\to B$, then to
+$B\to A$ with $L$ as a finite $B$-module, and finally to
+$C\to A$. All source support above the stated open sets is
+interior by finite relative interior and
+Proposition~\ref{fnd:affinoidinteriorcalculus}.
+The given complexes therefore meet the same hypotheses at
+each step. The three equalities give the composition formula.
+
+Finally, tensor $P$ with an actual Artinian Gauss algebra
+$E_Q$ used to compute any of the target module weights.
+On a local factor $E_j$, the map from $A$ factors through
+the local ring at the contracted prime. A local free basis
+of $P$ of rank $r$ therefore gives
+$P\otimes_AE_j\simeq E_j^r$. Consequently
+\[
+ \dim_{H_Q}\bigl((M\otimes_AP)\otimes_AE_Q\bigr)
+                       =r\,\dim_{H_Q}(M\otimes_AE_Q).
+\]
+Divide by the common lattice index and apply
+Theorem~\ref{v037:degree:moduleweight}. This proves the target
+tensor equality on every generic cell. The first assertion,
+applied to the finite $B$-module $M\otimes_AP$, gives its
+pushforward equality. All these tensors have their canonical
+complete finite-module norms by
+Proposition~\ref{fnd:generalizedfinitetensor}.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002372-reader.jpg" alt="Typeset mathematical passage from PDF page 1000" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1000">PDF page 1000 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002365/">NAG-002365</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002370/">NAG-002370</a> · selected whole <small>(exact native proof input)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li><li><a href="/r/NAG-002365/">v037:degree:finitecyclepushforward</a></li><li><a href="/r/NAG-002370/">v037:degree:modulecycle</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002385/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Analytic cycles on whole interior weight domains · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002385 · Accepted whole</p><h1>Analytic cycles on whole interior weight domains</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.45.3">Open in the English reader · PDF page 1012</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="858ead6b3900c65cab793c845f8b58c0d2338139ca663b252be8140395dae209">
+\begin{theorem}[Analytic cycles on whole interior weight domains]
+\label{v037:analytic:interiorcycle}
+Let $Y=\mathcal M(A)$ be a generalized affinoid space, pure
+of analytic dimension $d$, over any complete non-Archimedean
+field with its specified absolute value. Let $f_Y$ be a finite
+tuple of analytic units, let $t_Y:Y\to\mathbb R^{n&#x27;}$ be its
+moment map, and put
+\[
+                  U_Y=\mathbb R^{n&#x27;}\setminus t_Y(\partial_KY).
+\]
+There is a unique local positive integral balanced $d$-cycle
+\[
+                         \operatorname{Trop}_{f_Y}(Y)|_{U_Y}
+\]
+whose support is $t_Y(Y)\cap U_Y$ and whose weights at flat
+$d$-dimensional germs are the actual Gauss-degree weights.
+For every finite $A$-module $M$ there is a local nonnegative
+integral balanced cycle $\operatorname{Trop}_{f_Y}(M)|_{U_Y}$
+with the module weights of
+Theorem~\ref{v037:degree:moduleweight}. It is additive in short
+exact sequences and is unchanged by common subdivision.
+The structure module gives the preceding positive cycle.
+
+Let $p:X=\mathcal M(B)\to Y$ be finite, with $X$ pure of
+analytic dimension $d$. Let $f_X$ be a unit tuple and let
+$a:\mathbb Z^n\to\mathbb Z^{n&#x27;}$ satisfy the actual character
+identities $p^*f_{Y,j}=\prod_i f_{X,i}^{a_{ji}}$, so that
+$t_Y\circ p=a\circ t_X$. The entire source support over $U_Y$
+lies in its whole interior weight domain, and
+\begin{equation}
+\label{v037:eq:interiorcyclepushforward}
+ a_*\bigl(\operatorname{Trop}_{f_X}(X)|_{a^{-1}(U_Y)}\bigr)
+                   =\operatorname{Trop}_{f_Y}(B)|_{U_Y}.
+\end{equation}
+In particular, adjoining any finite list of analytic unit
+coordinates to a moment tuple and projecting back to that
+tuple preserves its local analytic cycle.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="8f72ecdd4dddea8e04181c484d1b114e8432156e6d8088f8d5a0239b45c1fb24">
+\begin{proof}
+The set $U_Y$ is open: the absolute boundary is closed in the
+compact affinoid spectrum by
+Propositions~\ref{fnd:affinoidinteriorcalculus} and
+\ref{fnd:boundedspectrumcompact}. At a point of
+$t_Y(Y)\cap U_Y$, Theorem~\ref{v037:analytic:interiorlocalstar}
+gives a translated finite pure rational fan presenting the
+actual image on a sufficiently small open convex neighbourhood
+$W\subset U_Y$. Theorem~\ref{v037:analytic:polyhedralcycle}
+gives its positive integral balanced weights. At a point of
+$U_Y\setminus t_Y(Y)$ take a neighbourhood disjoint from the
+compact image and use the zero cycle.
+
+These local presentations agree on overlaps. Cut along the
+finitely many defining hyperplanes of two presentations. On
+the relative interior of every resulting $d$-cell meeting the
+overlap, the actual image has the same flat germ and saturated
+tangent lattice. Both weights are therefore
+$m_{Y,f_Y}$ of that same whole fibre. The common refinement
+has equal weights, which is the required agreement. This also
+proves uniqueness. Theorem~\ref{v037:degree:modulecycle} on
+each of these neighbourhoods gives the module cycles.
+Their weights agree on overlaps by
+Theorem~\ref{v037:degree:moduleweight}; its exact-sequence
+formula proves the stated additivity.
+
+For the finite morphism, any point $x$ with
+$a(t_X(x))\in U_Y$ maps to an absolute interior point of $Y$.
+Finite morphisms are everywhere relatively inner by
+Theorem~\ref{fnd:generalizedfinitealgebras}. Composition in
+Proposition~\ref{fnd:affinoidinteriorcalculus} makes $x$ an
+absolute interior point of $X$. Thus
+\[
+                  a^{-1}(U_Y)\cap t_X(\partial_KX)=\varnothing.
+\]
+Every whole source moment fibre above this set is interior.
+Theorem~\ref{v037:analytic:interiorlocalstar} therefore applies
+at each of its weights.
+
+Fix $w\in U_Y$. Apply
+Lemma~\ref{v037:analytic:finitepolyhedralpatching} to the compact
+set $S=t_X(X)$ and its complete inverse image over $w$.
+It supplies a finite pure source complex on $a^{-1}(W)$ for
+some open convex neighbourhood $W\subset U_Y$ of $w$.
+If $w\in t_Y(Y)$, shrink $W$ inside one target fan neighbourhood
+already constructed. The two finite complexes then satisfy
+exactly the hypotheses of
+Theorem~\ref{v037:degree:modulecycle}. Its equality proves
+\eqref{v037:eq:interiorcyclepushforward} over $W$.
+If the source inverse image over $w$ is empty, the compactness
+part of the lemma allows $W$ to miss $a(t_X(X))$; the empty-fibre
+argument in that same theorem makes the module cycle zero
+there. If $w\notin t_Y(Y)$, both sides are zero on a smaller
+neighbourhood disjoint from $t_Y(Y)$.
+
+The map on the actual source support is proper over $U_Y$:
+the inverse image of a compact subset of $U_Y$ is closed in
+the compact set $t_X(X)$. These finite local presentations
+therefore define the lattice-index pushforward, and their
+equalities glue to the displayed identity. Finally take
+$p=\operatorname{id}_Y$, $B=A$, and the coordinate projection
+from the enlarged moment tuple. Its finite module is the
+structure module, giving the last assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002385-reader.jpg" alt="Typeset mathematical passage from PDF page 1013" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1013">PDF page 1013 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002353/">NAG-002353</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002370/">NAG-002370</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002378/">NAG-002378</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002383/">NAG-002383</a> · selected whole <small>(exact native proof input)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-002383/">v037:analytic:finitepolyhedralpatching</a></li><li><a href="/r/NAG-002353/">v037:analytic:interiorlocalstar</a></li><li><a href="/r/NAG-002378/">v037:analytic:polyhedralcycle</a></li><li><a href="/r/NAG-002370/">v037:degree:modulecycle</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

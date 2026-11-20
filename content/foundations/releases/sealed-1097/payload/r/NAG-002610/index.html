@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002610/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Character modules give an exact integral test · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002610 · Accepted whole</p><h1>Character modules give an exact integral test</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002610.recovered-proof">Open in the English reader · PDF page 1856</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8e937df7daa889b137d8f7930ab1069370c0d86e105118a2f9e77b433c12b599">
+\begin{theorem}[Character modules give an exact integral test]
+\label{cand:f5tame:charactercriterion}
+Assume (K), and let \(B&#x27;\) be flat over \(O&#x27;\). Set
+\[
+ B=(B&#x27;)^G,\qquad
+ M_i=\{b\in B&#x27;:\sigma(b)=\zeta^i b\},\qquad
+ \Lambda_i=s^{-i}M_i\subset B_K,\quad B_K=K\otimes_O B .
+ \tag{3}
+\]
+The displayed inclusion is well-defined. In the expression
+\(I_iB\subset B_K\), products mean \emph{finite sums} of \(ab\)
+with \(a\in I_i\) and \(b\in B\).
+Then multiplication
+\[
+ \mu:O&#x27;\otimes_O B\longrightarrow B&#x27;
+ \tag{4}
+\]
+is injective, and the following conditions are equivalent:
+\begin{enumerate}
+\item the given semilinear algebra \(B&#x27;\) has effective descent;
+\item \(\mu\) is an isomorphism;
+\item \(\Lambda_i=I_iB\) for every \(0\leq i&lt;e\).
+\end{enumerate}
+If \(B&#x27;\) is generated as an \(O&#x27;\)-algebra by \(z_1,\ldots,z_r\),
+condition 3 can equivalently be checked by the finitely many
+membership conditions
+\[
+        s^{-i}P_i(z_j)\in I_iB\qquad(0\leq i&lt;e,\ 1\leq j\leq r),
+ \tag{4a}
+\]
+where \(P_i\) is the Fourier projector defined in the proof.
+When these conditions hold, \(B\) is the uniquely identified
+invariant descent. It is flat over \(O\). If \(B&#x27;\) is finitely
+presented over \(O&#x27;\), then \(B\) is finitely presented over \(O\);
+if its structural morphism is a nodal curve, so is that of \(B\).
+Effective descent necessarily makes the action on
+\(B&#x27;/\mathfrak m&#x27;B&#x27;\) the identity.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="1675a04f989badadcd736ef7e5ec6b0c16d5bed2bad5f4bea9caf587a30410d0">
+\begin{proof}
+The Fourier operators
+\[
+ P_i=\frac1e\sum_{j=0}^{e-1}\zeta^{-ij}\sigma^j
+\]
+are \(O\)-linear orthogonal idempotents summing to the identity.
+The usual finite geometric sums prove
+\(B&#x27;=\bigoplus_iM_i\) and \(M_0=B\).
+Flatness of \(B&#x27;\) over the domain \(O&#x27;\) makes \(B&#x27;\), and hence
+\(B\), torsion free over \(O\). Thus \(B\) is \(O\)-flat by
+\stacks{0539}.
+
+Localizing \(O&#x27;\) at \(O\setminus\{0\}\) gives \(L\): multiply any
+element of \(L\) by a sufficiently high power of a fixed positive
+element of \(O\). Invariants commute with this localization.
+Explicitly, if \(b/d\in B&#x27;_L\), with \(b\in B&#x27;\) and
+\(d\in O\setminus\{0\}\), is invariant, then
+\((\sigma(b)-b)/d=0\), so torsion-freeness gives \(\sigma(b)=b\).
+Consequently \((B&#x27;_L)^G=B_K\). For \(m\in M_i\),
+\(s^{-i}m\) is invariant in \(B&#x27;_L\), proving (3).
+
+Tensor (2) with \(B\). Flatness of \(B\) makes
+\(I_i\otimes_O B\longrightarrow K\otimes_OB=B_K\) injective,
+with image exactly \(I_iB\). Under this identification, (4) on
+the \(i\)-th summand is multiplication by \(s^i\), with image
+\(s^iI_iB\subset M_i\). This is injective since \(B&#x27;\) embeds in
+\(B&#x27;_L\). Images of different summands are independent by the
+Fourier decomposition. This proves injectivity of \(\mu\) and
+the equivalence of conditions 2 and 3. Each test (4a) says that
+\(P_i(z_j)\) belongs to the image of \(\mu\). If all the tests
+hold, their sums put every \(z_j\) in that image. The image is
+an \(O&#x27;\)-subalgebra, so then equals \(B&#x27;\). Necessity is immediate.
+
+Condition 2 is an effective descent, so implies condition 1.
+Conversely, for any effective presentation \(O&#x27;\otimes_OD\simeq B&#x27;\),
+the Fourier projectors on the left act on \(O&#x27;\) alone. Their
+weight-zero summand is \(I_0\otimes_OD=D\). Thus the isomorphism
+identifies \(D\) with \(B\), and its multiplication map is (4).
+This proves condition 2, including the asserted uniqueness.
+
+The valuation-ring extension \(O\to O&#x27;\) is faithfully flat:
+it is torsion free and hence flat by \stacks{0539}, and
+\(\mathfrak mO&#x27;\subset\mathfrak m&#x27;\) makes this local flat
+extension faithful. Its affine spectrum map is quasi-compact,
+so it is an fpqc cover. Once (4) is an isomorphism, finite
+presentation descends by \stacks{02L0}, and the nodal relative
+dimension-one property descends by \stacks{0C5E}.
+Finally the special fibre of an effective presentation is
+\(k\otimes_OD\); the action on \(k=O&#x27;/\mathfrak m&#x27;\) is the
+identity. Thus its entire special-fibre algebra has trivial action.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002610-reader.jpg" alt="Typeset mathematical passage from PDF page 1856" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1856">PDF page 1856 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-02L0@NAG-002610:3 · named external application <small>(exact named Stacks application)</small></li><li>APP-STACKS-0539@NAG-002610:1 · named external application <small>(exact named Stacks application)</small></li><li>APP-STACKS-0539@NAG-002610:2 · named external application <small>(exact named Stacks application)</small></li><li>APP-STACKS-0C5E@NAG-002610:4 · named external application <small>(exact named Stacks application)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/02L0">APP-STACKS-02L0@NAG-002610:3</a></li><li><a href="https://stacks.math.columbia.edu/tag/0539">APP-STACKS-0539@NAG-002610:1</a></li><li><a href="https://stacks.math.columbia.edu/tag/0539">APP-STACKS-0539@NAG-002610:2</a></li><li><a href="https://stacks.math.columbia.edu/tag/0C5E">APP-STACKS-0C5E@NAG-002610:4</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

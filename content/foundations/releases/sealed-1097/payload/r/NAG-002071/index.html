@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002071/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Bounded expansions on pointed tubes · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002071 · Accepted whole</p><h1>Bounded expansions on pointed tubes</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.24.3">Open in the English reader · PDF page 685</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="3963766433415d932e33954f216ccb969b1b5b1d6160e2b993e55ed87b6dc90c">
+\begin{lemma}[\bi{Bounded expansions on pointed tubes}
+{带点管域上的有界展开}]
+\label{cand:boundedetaletubeexpansion}
+\bi{Let $\mathcal U$ be a flat finitely presented $O$-scheme
+with a rational special-fibre point $u$, and let
+$\mathcal U\to\mathbb A^1_O$ be \&#x27;etale at $u$, sending $u$
+to the special-fibre origin. Shrink $\mathcal U$ around $u$ and
+write $z$ for the target coordinate. Every integral function on
+its formal completion restricts to its tube as a power series}
+{设 $\mathcal U$ 为平坦有限表示的 $O$-概形，$u$ 为其
+特殊纤维上的有理点，且 $\mathcal U\to\mathbb A^1_O$
+在 $u$ 处 \&#x27;etale，并将 $u$ 送到特殊纤维原点。在 $u$
+附近收缩 $\mathcal U$，以 $z$ 表示靶坐标。其形式完备化
+上的每个整函数，在管域上均有幂级数表示}
+\[
+ g(z)=\sum_{j\geq0}b_jz^j,\qquad b_j\in O,
+ \quad |z|&lt;1.
+\]
+\bi{Reducing the coefficients gives the expansion of
+$\overline g$ in the completed local ring $k[[\overline z]]$
+of the special fibre at $u$.}
+{逐系数约化得到 $\overline g$ 在特殊纤维 $u$ 处的完备
+局部环 $k[[\overline z]]$ 中的展开。}
+
+\bi{For an \&#x27;etale pointed chart}
+{对于带点 \&#x27;etale 坐标片}
+\[
+ (\mathcal U,u)\longrightarrow
+ \bigl(\operatorname{Spec}O[s,t]/(st-a),o\bigr),
+ \qquad 0&lt;|a|&lt;1,
+\]
+\bi{with $u,o$ rational, the corresponding assertion is that
+the restriction to $]u[$ is represented by}
+{其中 $u,o$ 均为有理点，相应结论是：函数在 $]u[$ 上
+具有表示}
+\[
+ g=\sum_{i,j\geq0}c_{ij}s^it^j,\qquad c_{ij}\in O,
+ \qquad |s|&lt;1,\quad |t|&lt;1,\quad st=a.
+\]
+\bi{On the normalization branch $t=0$, the reduction of $g$
+has completed expansion $\sum_{i\geq0}\overline c_{i0}s^i$;
+on $s=0$, it has expansion
+$\sum_{j\geq0}\overline c_{0j}t^j$.}
+{在正规化分支 $t=0$ 上，$g$ 的约化具有完备展开
+$\sum_{i\geq0}\overline c_{i0}s^i$；在 $s=0$ 上则为
+$\sum_{j\geq0}\overline c_{0j}t^j$。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="28451610c63f3896fc94f9952eeb7f783a83dbe43718f84c4acf7553591d9ad9">
+\begin{proof}
+\bi{After a Zariski shrinking preserving the entire tube, the
+square Jacobian presentation of \cite[Tag 02GU]{StacksAlg}
+expresses the chart by a system $F(Z,W)=0$ with coefficients in
+$O$, where $Z=z$ in the smooth case and $Z=(s,t)$ in the nodal
+case. Include the inverses of all localized functions as extra
+variables and equations. The Jacobian with respect to $W$ is
+invertible at the selected residual point. In the nodal case take
+polynomial representatives of the coefficients before imposing
+$st=a$.}
+{作保持整个管域的 Zariski 收缩后，
+\cite[Tag 02GU]{StacksAlg} 的方阵 Jacobian 表示将坐标片
+写为系数属于 $O$ 的方程组 $F(Z,W)=0$；光滑情形中
+$Z=z$，节点情形中 $Z=(s,t)$。将全部局部化函数的逆作为
+附加变量和方程。关于 $W$ 的 Jacobian 在所选剩余点处
+可逆。节点情形中，先选取系数的多项式代表，再施加
+$st=a$。}
+
+\bi{At $Z=0$, the residual solution of $F(0,W)=0$ has
+invertible Jacobian. Lemma~\ref{cand:completevaluationhenselian}
+gives a solution $w_0\in O^n$ lifting it. There is a unique
+formal solution $W(Z)\in O[[Z]]^n$ with constant term $w_0$.
+Indeed, after coefficients of degrees less than $m$ have been
+chosen, the equations in degree $m$ are linear equations with
+coefficient matrix $J_WF(0,w_0)\in\mathrm{GL}_n(O)$; solve
+them for every monomial of degree $m$. This recursive construction
+also proves uniqueness.}
+{在 $Z=0$ 处，$F(0,W)=0$ 的剩余解具有可逆 Jacobian。
+由 Lemma~\ref{cand:completevaluationhenselian}，它提升为
+解 $w_0\in O^n$。存在唯一常数项为 $w_0$ 的形式解
+$W(Z)\in O[[Z]]^n$：若次数小于 $m$ 的系数已经选定，
+则 $m$ 次方程是系数矩阵为
+$J_WF(0,w_0)\in\mathrm{GL}_n(O)$ 的线性方程组；对每个
+$m$ 次单项式求解即可。此递归构造也证明唯一性。}
+
+\bi{All coefficients lie in $O$, so these series converge on
+every closed polydisc of radii strictly less than one. Their values
+reduce to the prescribed point. The uniqueness in
+Corollary~\ref{cand:standardetaletubeisomorphism} identifies this
+analytic solution with the inverse of the pointed tube map.
+Choose a polynomial representative for each regular function in
+the presentation, including the inverse variables. Substitution
+gives its bounded-coefficient expansion. For an element of the
+$\pi$-adic completion, choose successively regular functions
+$g_n$ such that $g=\sum_{n\geq0}\pi^ng_n$. Expand each $g_n$
+in this way and sum the resulting series with the factors $\pi^n$.
+The coefficients converge in $O$, uniformly on every closed
+smaller polydisc. On the nodal tube the imposed relation $st=a$
+ensures equality with the original function, regardless of the
+polynomial representatives used.}
+{所有系数均在 $O$ 中，所以这些级数在每个半径严格小于一
+的闭多圆盘上收敛，其值约化到指定点。由
+Corollary~\ref{cand:standardetaletubeisomorphism} 中的
+唯一性，此解析解正是带点管域映射的逆。在包含逆变量的
+表示中，为每个正则函数选择多项式代表，代入便得到其有界
+系数展开。对 $\pi$-进完备化中的元素，逐次选择正则函数
+$g_n$，使 $g=\sum_{n\geq0}\pi^ng_n$。按此方式展开各
+$g_n$，再带着因子 $\pi^n$ 求和。所得系数在 $O$ 中
+收敛，并在每个较小闭多圆盘上一致收敛。在节点管域上施加
+$st=a$ 后，无论使用哪一组多项式代表，所得函数都等于原函数。}
+
+\bi{Reduction commutes with this construction. The reduced
+recursive solution is the inverse of the pointed \&#x27;etale map on
+completed special-fibre local rings. In the smooth case this is
+$k[[z]]$. In the nodal case impose $st=0$ and then restrict to
+either branch, giving the two stated expansions. Equivalently,
+these are the corresponding expansions on the normalization;
+normalization commutes with \&#x27;etale base change by
+\cite[Tag 03GV]{StacksAlg}.}
+{约化与此构造相容。约化后的递归解，是特殊纤维完备局部环
+上带点 \&#x27;etale 映射的逆。光滑情形中此环为 $k[[z]]$；
+节点情形中先施加 $st=0$，再限制到任一分支，得到所列两种
+展开。等价地，它们就是正规化上的相应展开，因为
+\cite[Tag 03GV]{StacksAlg} 保证正规化与 \&#x27;etale 基变换相容。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="05d6d45b9d2790ee7f35ec59c22435d0fad6d4cbdcf60575639cbe0119ccbc46">
+\bi{Let $K$ be complete and nontrivially valued. We retain its given
+absolute value and write $O=K^\circ$, $\mathfrak m=K^{\circ\circ}$,
+and $k=O/\mathfrak m$.}
+{设 $K$ 完备且非平凡赋值。始终保持给定绝对值，并记
+$O=K^\circ$、$\mathfrak m=K^{\circ\circ}$、$k=O/\mathfrak m$。}
+
+\begin{lemma}[\bi{Normalization points and model branches}
+{正规化点与模型分支}]
+\label{cand:normalizedmodelbranches}
+\bi{Let $D$ be a reduced finite-type curve over a field $k$,
+with at-worst-nodal singularities. Its normalization is the
+disjoint union of the normalizations $C^\nu$ of its irreducible
+components $C$. A smooth closed point $q$ of $D$ has one
+preimage on the normalization, on the unique component through
+$q$, with the same residue field. A split node $q$ has precisely
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002071-reader.jpg" alt="Typeset mathematical passage from PDF page 686" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=686">PDF page 686 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole <small>(earlier original whole proposal)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(sealed native whole proof)</small></li><li>STACKS-02GU · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-03GV · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(sealed zero-credit support on its exact scope)</small></li><li>APP-STACKS-02GU@NAG-002071:11803 · named external application</li><li>APP-STACKS-02GU@NAG-002071:11803 · named external application <small>(requires)</small></li><li>APP-STACKS-03GV@NAG-002071:15295 · named external application</li><li>APP-STACKS-03GV@NAG-002071:15295 · named external application <small>(requires)</small></li><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable</li><li><a href="/r/NAG-002037/#formal_completion_and_principal_localization">CLAUSE:NAG-002037:formal_completion_and_principal_localization</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole</li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole</li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole</li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export</li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/02GU">APP-STACKS-02GU@NAG-002071:11803</a></li><li><a href="https://stacks.math.columbia.edu/tag/03GV">APP-STACKS-03GV@NAG-002071:15295</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002049/">cand:completevaluationhenselian</a></li><li><a href="/r/NAG-002034/">cand:standardetaletubeisomorphism</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

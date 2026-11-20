@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002373/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Pushforward on a relative interior weight domain · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002373 · Accepted whole</p><h1>Pushforward on a relative interior weight domain</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.42.3">Open in the English reader · PDF page 1001</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1246a0b24ad7d8f7de3a41fa2c5ffcd04da3681bb01898bfd7dcc8d66ff0e95f">
+\begin{theorem}[Pushforward on a relative interior weight domain]
+\label{v037:degree:relativeinteriorcycle}
+Let $p:X=\mathcal M(B)\to Y=\mathcal M(A)$ be an affinoid
+morphism, with $X$ and $Y$ pure of analytic dimension $d$.
+Let a unit tuple $f_Y$ define $t_Y:Y\to\mathbb R^{n&#x27;}$.
+Write $\partial(X/Y)=X\setminus\operatorname{Int}(X/Y)$ and put
+\[
+ U_p=\mathbb R^{n&#x27;}\setminus
+       \bigl(t_Y(\partial_KY)\cup
+                    (t_Y\circ p)(\partial(X/Y))\bigr).
+\]
+This is open. There is a canonical local nonnegative integral
+balanced $d$-cycle $\mathcal C_{p,f_Y}$ on $U_p$, with support
+$(t_Y\circ p)(X)\cap U_p$. It is the local analytic cycle
+\[
+              \mathcal C_{p,f_Y}
+                   =\operatorname{Trop}_{p^*f_Y}(X)|_{U_p}.
+\]
+
+Every $w\in U_p\cap t_Y(Y)$ has a closed target moment box
+$P$ about $w$, with $w$ in its interior, such that
+\[
+ Y_0=t_Y^{-1}(P),\qquad X_0=p^{-1}(Y_0),\qquad
+                         p_0:X_0\longrightarrow Y_0
+\]
+is an actual finite canonical affinoid map.
+Writing $A_0=\mathcal O(Y_0)$ and $B_0=\mathcal O(X_0)$,
+there is an open neighbourhood $W\subset\operatorname{int}(P)$
+of $w$ on which
+\[
+            \mathcal C_{p,f_Y}|_W
+                    =\operatorname{Trop}_{f_Y|Y_0}(B_0)|_W.
+\]
+These finite-module descriptions agree on overlaps and under
+further target-box restriction. At a flat target germ
+$v\in W\cap t_Y(Y)$ their weight is
+\[
+ m_{\mathcal C_{p,f_Y}}(v)
+   =\sum_{\mathfrak p\in\operatorname{Min}(A_0)}
+       \operatorname{length}_{(A_0)_{\mathfrak p}}
+                                  ((B_0)_{\mathfrak p})
+                        m_{(Y_0)_{\mathfrak p},f_Y}(v),
+\]
+where an empty component fibre has weight zero.
+
+Suppose a unit tuple $f_X$ and an integral map
+$a:\mathbb Z^n\to\mathbb Z^{n&#x27;}$ satisfy the character identity
+$p^*f_Y=f_X^{a^*}$. All source weights in
+$a^{-1}(U_p)\cap t_X(X)$ have whole interior fibres, and
+\[
+ a_*\bigl(\operatorname{Trop}_{f_X}(X)|_{a^{-1}(U_p)}\bigr)
+                              =\mathcal C_{p,f_Y}.
+\]
+The pushforward uses the entire actual source support and is
+proper over $U_p$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0810c903b3ce55db27b4668c01ba2015de38fbcfa6a7f23a347d84e1e3c84a24">
+\begin{proof}
+The absolute boundary of $Y$ and the relative boundary of $X$
+are closed, by Proposition~\ref{fnd:affinoidinteriorcalculus},
+and compact, by Proposition~\ref{fnd:boundedspectrumcompact}.
+Their moment images are compact, so $U_p$ is open.
+If $(t_Y\circ p)(x)\in U_p$, then $x$ is interior relative
+to $Y$ and $p(x)$ is interior over $K$.
+The composition inclusion in
+Proposition~\ref{fnd:affinoidinteriorcalculus} makes $x$
+interior over $K$. Consequently
+\[
+                    U_p\cap(t_Y\circ p)(\partial_KX)
+                                      =\varnothing.
+\]
+Theorem~\ref{v037:analytic:interiorcycle}, applied on $X$ to
+the pullback unit tuple $p^*f_Y$, defines the asserted local
+cycle and its support.
+
+Fix $w\in U_p\cap t_Y(Y)$. The entire inverse image of its
+target moment fibre is relatively interior by definition of
+$U_p$. Theorem~\ref{v037:degree:finitelevelneighborhood}
+therefore supplies the stated actual finite map, and permits
+$P$ to be chosen inside $U_p$. Choose an open box
+$W\subset\operatorname{int}(P)$ about $w$.
+The whole target fibre at every $v\in W$ satisfies the box
+inequalities strictly. It is interior in $Y_0$ relative to
+$Y$, by the actual rational presentation, and interior in
+$Y$ over $K$, by $P\subset U_p$. Composition makes it
+interior in $Y_0$ over $K$. Thus $W$ belongs to the whole
+interior weight domain of $Y_0$.
+Theorem~\ref{v036:analytic:domainpurity} gives purity of
+$Y_0$ and of every nonempty $X_0$.
+
+The finite-map assertion of
+Theorem~\ref{v037:analytic:interiorcycle}, with the same
+moment tuple on source and target and the identity lattice
+map, now gives
+\[
+ \operatorname{Trop}_{p_0^*(f_Y|Y_0)}(X_0)|_W
+                      =\operatorname{Trop}_{f_Y|Y_0}(B_0)|_W.
+\]
+The whole pullback moment fibre at every $v\in W$ is the
+same in $X_0$ and $X$, and it is absolute interior in both.
+For $X_0$ this follows from finite relative interior and
+the target interior just checked. The flat-germ restriction
+assertion of Theorem~\ref{v036:flatgermlocalconstancy}
+identifies their weights on every local generic cell.
+Hence the source cycle in this display is
+$\mathcal C_{p,f_Y}|_W$. If $X_0$ is empty, its algebra and
+module cycle are zero by
+Theorem~\ref{fnd:generalizedpointunitcriterion}, and the same
+identity holds.
+
+For completeness, the finite-module descriptions also compare
+directly. Intersect two boxes at a weight in the overlap of
+their open interiors. The intersection has that weight in
+its interior and retains the whole target fibre and its
+entire inverse image. The actual domain and finite tensor
+comparisons, Theorem~\ref{fnd:generalizeddomainbasechange} and
+Proposition~\ref{fnd:generalizedfinitebasechange}, identify
+both restricted finite algebras with the algebra of this
+same inverse-image domain. The whole-fibre restriction
+assertion of Theorem~\ref{v037:degree:moduleweight} gives
+equal module weights on all generic cells of a common local
+refinement. This proves the overlap and restriction statements.
+The generic-length expression is the formula of that theorem
+for the actual finite $A_0$-module $B_0$.
+
+Finally, the equality $t_Y\circ p=a\circ t_X$ and the first
+paragraph show that every whole $f_X$-fibre above $U_p$ is
+absolute interior. Apply the finite-map theorem
+\ref{v037:analytic:interiorcycle} to the identity map of $X$,
+with source tuple $f_X$, target tuple $p^*f_Y$, and lattice
+map $a$, and restrict its equality to $U_p$.
+Its target module is the structure module of $X$, so the
+result is exactly the asserted pushforward.
+For a compact subset $C\subset U_p$, the complete inverse
+image $t_X(X)\cap a^{-1}(C)$ is closed in the compact set
+$t_X(X)$. This proves the stated properness on the actual
+support.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002373-reader.jpg" alt="Typeset mathematical passage from PDF page 1002" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1002">PDF page 1002 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>CLAUSE:NAG-002368:finite_neighborhood_only · typed target unresolved in this export <small>(exact native proof input)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002385/">NAG-002385</a> · selected whole <small>(exact native proof input)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002293/">v036:analytic:domainpurity</a></li><li><a href="/r/NAG-002385/">v037:analytic:interiorcycle</a></li><li><a href="/r/NAG-002368/">v037:degree:finitelevelneighborhood</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

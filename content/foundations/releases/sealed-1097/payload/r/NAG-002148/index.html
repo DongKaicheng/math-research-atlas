@@ -1,0 +1,155 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002148/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Gauss discs and fractional linear maps · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002148 · Accepted whole</p><h1>Gauss discs and fractional linear maps</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.35.1">Open in the English reader · PDF page 727</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="5b8557d9948b2cc574677cc31fa02eb8c7d99e0996d0aa22e05fca1573a33a1e">
+\begin{lemma}[\bi{Gauss discs and fractional linear maps}
+{Gauss 圆盘与分式线性变换}]
+\label{cand:gaussdiscmetriccalculus}
+\bi{Let $F$ be a complete nontrivially valued field.
+For $a\in F$ and $r&gt;0$, let $\zeta_{a,r}$ be the Gauss
+seminorm with centre $a$ and radius $r$. The set}
+{设 $F$ 为完备非平凡赋值域。
+对 $a\in F$、$r&gt;0$，记 $\zeta_{a,r}$ 为中心为 $a$、
+半径为 $r$ 的 Gauss 半范数。集合}
+\[
+             \mathcal B_F=\{\zeta_{a,r}:a\in F,\ r&gt;0\}
+\]
+\bi{has the following tree metric: if $x=\zeta_{a,r}$,
+$y=\zeta_{b,s}$, and $R=\max(r,s,|a-b|)$, then}
+{具有以下树度量：若 $x=\zeta_{a,r}$、
+$y=\zeta_{b,s}$，且 $R=\max(r,s,|a-b|)$，则}
+\[
+ d(x,y)=2\log R-\log r-\log s.
+\]
+\bi{Their interval is obtained by increasing the first
+radius from $r$ to $R$ and the second from $s$ to $R$,
+with the common endpoint
+$\zeta_{a,R}=\zeta_{b,R}$ identified.
+Every finite hull is a finite compact metric tree,
+embedded with its metric topology in
+$(\mathbf P^1_F)^{\an}$.
+Fractional linear maps and semilinear maps induced by
+isometric field automorphisms preserve $\mathcal B_F$,
+its metric, and its intervals.
+They carry points with radius in $|F^\times|$ to points
+of that same kind.}
+{其区间通过将第一半径从 $r$ 增到 $R$、
+第二半径从 $s$ 增到 $R$ 得到，并将公共端点
+$\zeta_{a,R}=\zeta_{b,R}$ 识别。
+每个有限凸包都是有限紧度量树，
+其度量拓扑与在 $(\mathbf P^1_F)^{\an}$ 中的子空间拓扑
+相同。分式线性变换以及由等距域自同构诱导的半线性
+变换，保持 $\mathcal B_F$、其度量和区间，
+并将半径属于 $|F^\times|$ 的点映到同类点。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="693dc13257e32b68bd347d1eb19b765b33e97d3bc8b97981b1ee4f5fc540e654">
+\begin{proof}
+\bi{The weighted Gauss formula gives}
+{加权 Gauss 公式给出}
+\[
+ \zeta_{a,r}=\zeta_{b,s}
+       \ \Longleftrightarrow\
+       r=s\ \hbox{and}\ |a-b|\leq r.
+\]
+\bi{For the forward implication evaluate $T-a$ and $T-b$.
+For the converse expand a polynomial about either centre:
+translation by an element of norm at most $r$ is
+contractive for the radius-$r$ Gauss norm, as is its inverse.
+Define $\zeta_{a,r}\leq\zeta_{b,s}$ by
+$r\leq s$ and $|a-b|\leq s$. The displayed equality shows
+that this is well defined and that the least common upper
+bound is the point of radius $R$ above.}
+{正向只需计算 $T-a$ 和 $T-b$。
+反向则将多项式分别在两个中心展开：
+按范数不超过 $r$ 的元素平移，对半径 $r$ 的
+Gauss 范数是压缩映射，其逆也如此。
+以 $r\leq s$ 且 $|a-b|\leq s$ 定义
+$\zeta_{a,r}\leq\zeta_{b,s}$。
+上述等式说明其定义良好，
+而最小公共上界恰为半径 $R$ 的上述点。}
+
+\bi{For finitely many such points choose one upper bound
+$\zeta_{0,R_0}$. Their upward intervals to that point
+intersect in terminal intervals, beginning at their pairwise
+least upper bounds. They therefore form a finite tree:
+after subdividing at those finitely many upper bounds,
+each added interval meets the preceding tree in a terminal
+interval and cannot create a circuit.
+Remove any terminal part beyond the last join to obtain
+the hull. Assign length $\log(v/u)$ to a radial interval
+$u\leq r\leq v$. The unique path just described has the
+stated length, proving the metric formula and tree assertion.
+Each radial map is continuous by the Gauss formula, and
+is injective because evaluation of its centred coordinate
+recovers $r$. The finite tree maps continuously and
+injectively into the Hausdorff analytic projective line.
+Compactness then identifies its metric and subspace topologies.}
+{对有限个这样的点，选择一个公共上界
+$\zeta_{0,R_0}$。它们到该点的向上区间相交于末端区间，
+交集从两两最小公共上界开始。因此它们构成有限树：
+在有限个公共上界处细分后，
+每添入一个区间，它与此前的树相交于一个末端区间，
+不可能产生回路。删去最后一个连接点以上多余的末端
+部分，即得到凸包。赋予径向区间 $u\leq r\leq v$
+长度 $\log(v/u)$，上述唯一路径就具有所列长度，
+证明度量公式和树性质。
+由 Gauss 公式，每条径向映射连续；
+对其中心坐标求值可恢复 $r$，故其单射。
+所得有限树连续单射地映入 Hausdorff 解析射影直线，
+由紧性知度量拓扑与子空间拓扑相同。}
+
+\bi{Translations and nonzero scalings plainly preserve the
+formula. Inversion $I(T)=1/T$ satisfies}
+{平移与非零数乘显然保持该公式。
+反演 $I(T)=1/T$ 满足}
+\[
+ I(\zeta_{a,r})=
+ \begin{cases}
+   \zeta_{a^{-1},\,r/|a|^2},&amp;r&lt;|a|,\\
+   \zeta_{0,\,r^{-1}},&amp;r\geq|a|.
+ \end{cases}
+\]
+\bi{In the second case $\zeta_{a,r}=\zeta_{0,r}$, and
+reversing the coefficients of $T^nP(1/T)$ proves the formula.
+For $r&lt;|a|$, write $T=a+U$ and expand
+$(a+U)^{-1}-a^{-1}$.
+Its linear term has norm $r/|a|^2$, and each higher term
+has strictly smaller norm on the radius-$r$ Gauss algebra.
+This substitution is contractive into the algebra of radius
+$r/|a|^2$ in the inverse coordinate; the inverse substitution
+has the same property. Applying both inequalities to each
+polynomial proves equality of the Gauss norms and the formula.}
+{在第二种情形，$\zeta_{a,r}=\zeta_{0,r}$，
+将 $T^nP(1/T)$ 的系数倒序即可证明公式。
+当 $r&lt;|a|$ 时，写 $T=a+U$ 并展开
+$(a+U)^{-1}-a^{-1}$。
+其一次项在半径 $r$ 的 Gauss 代数上的范数为
+$r/|a|^2$，每个高次项均严格更小。
+此代换在逆坐标中半径为 $r/|a|^2$ 的代数与原代数之间
+给出压缩映射，逆代换亦如此。
+将两个不等式依次作用于每个多项式，
+即得 Gauss 范数的相等及上述公式。}
+
+\bi{On a radial interval the first formula preserves
+logarithmic lengths until $r=|a|$; the second reverses the
+logarithmic parameter afterwards.
+If both parts occur, their images meet only at
+$\zeta_{0,|a|^{-1}}$, since their smaller discs have centres
+separated by $|a|^{-1}$. Thus no backtracking occurs, and
+inversion maps every interval isometrically to the interval
+between its endpoints. Every fractional linear map is a
+composition of affine maps and inversion, so it preserves
+the metric and the intervals. An isometric field
+automorphism sends $\zeta_{a,r}$ to $\zeta_{\sigma(a),r}$,
+which has the same properties.
+The displayed formulas also preserve radii in the value group.}
+{在径向区间上，第一个公式在 $r=|a|$ 之前保持对数
+长度，第二个公式在其后反转对数参数。
+若两部分同时出现，其像只在
+$\zeta_{0,|a|^{-1}}$ 相交，
+因为较小圆盘的两个中心间距为 $|a|^{-1}$。
+故路径不会折返，反演将每个区间等距地映到
+其端点之间的区间。每个分式线性变换均为仿射变换
+与反演的复合，故保持度量和区间。
+等距域自同构将 $\zeta_{a,r}$ 映到
+$\zeta_{\sigma(a),r}$，也具有相同性质。
+所列公式还保持半径属于值群这一条件。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002148-reader.jpg" alt="Typeset mathematical passage from PDF page 728" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=728">PDF page 728 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole</li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

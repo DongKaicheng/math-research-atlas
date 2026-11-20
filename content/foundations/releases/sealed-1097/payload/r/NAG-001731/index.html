@@ -1,0 +1,140 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001731/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Cohomology comparison for proper schemes · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001731 · Accepted whole</p><h1>Cohomology comparison for proper schemes</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.34.6">Open in the English reader · PDF page 302</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8384904073617ad316f296a76a63a3d67cb33944fac195145f1c2c13fc7828d1">
+\begin{theorem}[\bi{Cohomology comparison for proper schemes}
+{适当概形的上同调比较}]
+\label{fnd:propercoherentcomparison}
+\bi{For every proper finite-type $K$-scheme $X$ and every
+coherent $\mathcal F$ on $X$, the natural maps are isomorphisms}
+{对每个适当的有限型 $K$-概形 $X$ 及其上每个凝聚层
+$\mathcal F$，下列自然映射均为同构：}
+\[
+ H^q(X,\mathcal F)\ \longrightarrow\
+ H^q(X^{\an}_G,\mathcal F^{\an})\qquad(q\ge0).
+\]
+\bi{The same comparison is a quasi-isomorphism for every
+bounded complex with coherent cohomology sheaves.}
+{对每个具有凝聚上同调层的有界复形，相应比较也是拟同构。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3e85b51c91861eae78a080a6dcbe07af4d00952f810997f1b150bcb42754dd6b">
+\begin{proof}
+\bi{We first record how to use a comparison already known
+for the cohomology sheaves of a bounded complex $C$.
+The canonical truncation triangles
+\cite[Tag 08J5]{StacksAlg} express $C$ by finitely many
+successive extensions of $\mathcal H^j(C)[-j]$.
+Flatness of $\alpha_X^*$ preserves these triangles and
+their cohomology sheaves. Applying derived global sections
+and the long exact sequences shows, by induction on the
+number of nonzero cohomology sheaves, that comparison for
+each $\mathcal H^j(C)$ implies comparison for $C$.
+The comparison maps here are the maps induced by regular
+sections mapping to analytic sections, or equivalently the
+adjunction maps for the flat morphism $\alpha_X$.
+They are natural in distinguished triangles.}
+{先说明怎样从有界复形 $C$ 的上同调层的比较推出 $C$ 的比较。
+\cite[Tag 08J5]{StacksAlg} 中的典范截断三角把 $C$ 表示成
+有限多个 $\mathcal H^j(C)[-j]$ 的逐次扩张。
+$\alpha_X^*$ 的平坦性保持这些三角及其上同调层。
+应用导出全局截面和相应长正合列，再对非零上同调层的个数归纳，
+即知每个 $\mathcal H^j(C)$ 的比较蕴含 $C$ 的比较。
+这里的比较映射来自正则截面到解析截面的映射，等价地来自
+平坦态射 $\alpha_X$ 的伴随映射；它们与区别三角自然相容。}
+
+\bi{Fix $X$ and perform Noetherian induction on closed
+subsets $Z\subset|X|$. The induction assertion is the
+comparison for every coherent module on $X$ supported in
+$Z$. It is clear for the empty set. Let $\mathcal F$ have
+support contained in $Z$. If its support is a proper closed
+subset, the induction hypothesis applies. Otherwise let
+$T\hookrightarrow X$ be defined by
+$\operatorname{Ann}(\mathcal F)$; its underlying space
+is $Z$. The module $\mathcal F$ is the closed direct image
+of a coherent module $\mathcal F_T$ on $T$, and
+Lemma~\ref{fnd:properanalyticfinitecovers} identifies the
+two comparison problems.}
+{固定 $X$，对闭子集 $Z\subset|X|$ 作 Noetherian 归纳。
+归纳命题是：$X$ 上每个支撑包含在 $Z$ 内的凝聚模均满足比较。
+空集情形显然。设 $\mathcal F$ 的支撑包含在 $Z$ 内。
+若其支撑是 $Z$ 的真闭子集，直接应用归纳假设。
+否则，令 $T\hookrightarrow X$ 由
+$\operatorname{Ann}(\mathcal F)$ 定义，其底空间就是 $Z$。
+$\mathcal F$ 是 $T$ 上某个凝聚模 $\mathcal F_T$ 的闭直接像；
+Lemma~\ref{fnd:properanalyticfinitecovers} 将两处比较问题等同。}
+
+\bi{Apply the algebraic Chow lemma
+\cite[Tag 0200]{StacksAlg} to the proper scheme $T$.
+It supplies a proper surjection $\pi:Y\to T$, an
+isomorphism above a dense open $U\subset T$, and an
+immersion $Y\to\mathbf P^n_K$. Since $Y$ is proper
+over $K$, the immersion is closed: its map to
+$\mathbf P^n_K$ is proper by \cite[Tag 01W6]{StacksAlg},
+and a proper immersion is closed by its open--closed
+factorization. Thus $Y$ is projective over $K$.
+The graph of $\pi$ is closed because $T$ is separated;
+combining it with $Y\hookrightarrow\mathbf P^n_K$
+gives a closed immersion $Y\hookrightarrow\mathbf P^n_T$.
+Consequently $\pi$ is also projective. Put
+$\mathcal E=\pi^*\mathcal F_T$ and $D=R\pi_*\mathcal E$.
+Its cohomology sheaves are coherent by
+\cite[Tag 02O5]{StacksAlg} and vanish in sufficiently
+large degrees, as the finite standard relative-projective
+cover computes them.}
+{对适当概形 $T$ 应用代数 Chow 引理
+\cite[Tag 0200]{StacksAlg}，得到适当满射 $\pi:Y\to T$、
+$T$ 的一个稠密开集 $U$ 上的同构，以及浸入
+$Y\to\mathbf P^n_K$。由于 $Y$ 在 $K$ 上适当，
+此浸入是闭的：由 \cite[Tag 01W6]{StacksAlg}，
+它到 $\mathbf P^n_K$ 的映射适当，而适当浸入的开--闭分解
+说明它为闭浸入。所以 $Y$ 在 $K$ 上射影。
+$T$ 分离，故 $\pi$ 的图像闭；将其与
+$Y\hookrightarrow\mathbf P^n_K$ 组合得到闭浸入
+$Y\hookrightarrow\mathbf P^n_T$，所以 $\pi$ 也射影。
+令 $\mathcal E=\pi^*\mathcal F_T$、$D=R\pi_*\mathcal E$。
+由 \cite[Tag 02O5]{StacksAlg}，$D$ 的上同调层凝聚；
+有限的标准相对射影覆盖计算它们，因此充分高次时为零。}
+
+\bi{Take the cone $C$ in the natural triangle}
+{取自然三角中的锥 $C$：}
+\[
+ \mathcal F_T\longrightarrow D\longrightarrow C
+                 \longrightarrow\mathcal F_T[1].
+\]
+\bi{The first map is adjunction, followed by the map to
+the derived direct image. On $U$ it is the identity,
+because $\pi$ is an isomorphism there. Hence every
+$\mathcal H^j(C)$ is coherent and supported in the
+proper closed subset $T\setminus U$ of $Z$.
+Closed direct image to $X$, the induction hypothesis,
+and the first paragraph give comparison for $C$.}
+{第一箭头是伴随映射与通向导出直接像的映射之复合。
+在 $U$ 上，$\pi$ 是同构，因此该箭头是恒等映射。
+于是每个 $\mathcal H^j(C)$ 都凝聚，且支撑在 $Z$ 的真闭子集
+$T\setminus U$ 中。先闭直接像到 $X$，再用归纳假设与
+第一段，即得 $C$ 的比较。}
+
+\bi{For $D$, the derived composition of global sections
+and direct image \cite[Tag 0D6E]{StacksAlg}, together
+with Theorem~\ref{fnd:relativeprojectivecomparison},
+identifies its comparison with}
+{对 $D$，由导出全局截面与直接像的复合公式
+\cite[Tag 0D6E]{StacksAlg} 及
+Theorem~\ref{fnd:relativeprojectivecomparison}，
+其比较被识别为}
+\[
+ R\Gamma(Y,\mathcal E)\longrightarrow
+ R\Gamma(Y^{\an}_G,\mathcal E^{\an}).
+\]
+\bi{This is a quasi-isomorphism by
+Corollary~\ref{fnd:projectiveschemegaga}. Compatibility
+with adjunction in the relative comparison identifies
+the maps in the two triangles, not only their objects.
+The long exact cohomology sequences of these triangles
+therefore give comparison for $\mathcal F_T$ and hence
+for $\mathcal F$. Noetherian induction proves the assertion
+for all coherent sheaves. The first paragraph then proves
+the assertion for every bounded coherent complex.}
+{由 Corollary~\ref{fnd:projectiveschemegaga}，这是拟同构。
+相对比较与伴随映射的相容性同时识别两个三角中的箭头，
+而不只是对象。因此，两个三角的上同调长正合列给出
+$\mathcal F_T$、进而给出 $\mathcal F$ 的比较。
+Noetherian 归纳证明了全部凝聚层的断言，再由第一段
+推出每个有界凝聚复形的断言。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001731-reader.jpg" alt="Typeset mathematical passage from PDF page 302" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=302">PDF page 302 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01W6@NAG-001731:existing-5-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-0200@NAG-001731:existing-4-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-02O5@NAG-001731:existing-6-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-08J5@NAG-001731:existing-2-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-0D6E@NAG-001731:existing-9-1 · named external application <small>(existing exact named Stacks authority)</small></li><li><a href="/r/NAG-001726/">NAG-001726</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001728/">NAG-001728</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001729/">NAG-001729</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001899/">NAG-001899</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/01W6">APP-STACKS-01W6@NAG-001731:existing-5-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/0200">APP-STACKS-0200@NAG-001731:existing-4-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/02O5">APP-STACKS-02O5@NAG-001731:existing-6-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/08J5">APP-STACKS-08J5@NAG-001731:existing-2-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/0D6E">APP-STACKS-0D6E@NAG-001731:existing-9-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001899/">fnd:projectiveschemegaga</a></li><li><a href="/r/NAG-001729/">fnd:properanalyticfinitecovers</a></li><li><a href="/r/NAG-001728/">fnd:relativeprojectivecomparison</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

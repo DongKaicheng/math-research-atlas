@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001888/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Relative polydisc flatness on ordinary stalks · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001888 · Accepted whole</p><h1>Relative polydisc flatness on ordinary stalks</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.48.2">Open in the English reader · PDF page 428</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="bfb8072f6b09316af0e306d318f50f85090d6f2d270af258eae4a9a845aeaa1d">
+\begin{theorem}[\bi{Relative polydisc flatness on ordinary stalks}
+{相对多圆盘的茎平坦性}]
+\label{fnd:relativepolydiscstalkflat}
+\bi{Let $P=\mathcal M(A\{r^{-1}T\})\to X=\mathcal M(A)$ be the
+relative closed polydisc, and let $y\mapsto x$. Then the local map
+$\mathcal O_{X,x}\to\mathcal O_{P,y}$ is faithfully flat.}
+{设 $P=\mathcal M(A\{r^{-1}T\})\to X=\mathcal M(A)$ 为相对闭多圆盘，
+且 $y\mapsto x$。则局部同态
+$\mathcal O_{X,x}\to\mathcal O_{P,y}$ 忠实平坦。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5d9709c060b0b30516da0a78e8b715efe740adf23abff2ad4293bd0a2212cc63">
+\begin{proof}
+\bi{Write $R=\mathcal O_{X,x}$ and $S=\mathcal O_{P,y}$.
+Fix a rational domain $V$ in $X$ containing an ordinary neighborhood
+of $x$. By the bounded tensor universal property, the inverse image
+$P_V$ has algebra $A_V\{r^{-1}T\}$. It contains an ordinary
+neighborhood of $y$. The affinoid neighborhoods $W$ of $y$ in $P$
+contained in $P_V$ therefore form a cofinal system. Each is an
+affinoid domain of $P_V$, by the domain restriction calculus.
+The preceding proposition and Proposition~\ref{fnd:generalizeddomainflatness}
+give flat maps}
+{记 $R=\mathcal O_{X,x}$、$S=\mathcal O_{P,y}$。
+固定 $X$ 中包含 $x$ 的通常邻域的 rational 域 $V$。
+由有界张量的泛性质，逆像 $P_V$ 的代数为
+$A_V\{r^{-1}T\}$，并且 $P_V$ 包含 $y$ 的通常邻域。
+所以 $P$ 中包含于 $P_V$ 的、$y$ 的 affinoid 邻域 $W$ 构成余终系统。
+由域的限制运算，每个 $W$ 均为 $P_V$ 的 affinoid 域。
+前一命题及 Proposition~\ref{fnd:generalizeddomainflatness} 给出平坦映射}
+\[
+ A_V\longrightarrow A_V\{r^{-1}T\}\longrightarrow A_W.
+\]
+\bi{Their composite is flat because the two consecutive tensor
+functors preserve injections. Ordinary stalks are the filtered
+colimits of these $A_W$ by Proposition~\ref{fnd:ordinaryaffinoidstalks}.
+For a finitely generated ideal $J\subset A_V$, any element of
+$J\otimes_{A_V}S$ is a finite sum represented at one stage.
+If its image in $S$ is zero, that image vanishes after shrinking
+$W$ once more. Flatness of the new stage then makes the tensor
+itself zero. The finite-ideal criterion proves that $S$ is flat
+over each fixed $A_V$.}
+{两个相继的张量函子均保持单射，因此复合映射平坦。由
+Proposition~\ref{fnd:ordinaryaffinoidstalks}，通常茎是这些 $A_W$
+的滤过直极限。给定有限生成理想 $J\subset A_V$，
+$J\otimes_{A_V}S$ 的任一元素可由一个阶段上的有限和表示。
+若其在 $S$ 中的像为零，再缩小一次 $W$ 后其像就为零。
+新阶段的平坦性使该张量本身为零。由有限理想判别准则，
+$S$ 在每个固定的 $A_V$ 上平坦。}
+
+\bi{Finally, take a finitely generated ideal $I\subset R$ and
+$z\in I\otimes_R S$ whose image in $S$ is zero. Choose generators
+$a_1,\ldots,a_m$ of $I$ and write $z=\sum_i a_i\otimes s_i$ with
+$s_i\in S$. Lift the $a_i$ to elements $\widetilde a_i$ of one
+$A_V$, and put $J=(\widetilde a_1,\ldots,\widetilde a_m)$.
+Then $z_V=\sum_i\widetilde a_i\otimes s_i\in J\otimes_{A_V}S$
+maps to $z$ and has zero image in $S$. The flatness just proved
+gives $z_V=0$, hence $z=0$.
+Again \cite[Tag 00HD]{StacksAlg} gives $R$-flatness. Evaluations
+at $x$ and $y$ are compatible through the isometric map
+$\mathcal H(x)\hookrightarrow\mathcal H(y)$, so the map is local.
+A nonzero module contains a cyclic submodule $R/I$ with $I$ proper;
+its tensor $S/IS$ is nonzero because $IS$ lies in the maximal ideal
+of $S$. Flatness preserves the cyclic injection and therefore
+proves faithful flatness.}
+{最后，取有限生成理想 $I\subset R$ 以及在 $S$ 中的像为零的
+$z\in I\otimes_R S$。选择 $I$ 的生成元 $a_1,\ldots,a_m$，并写成
+$z=\sum_i a_i\otimes s_i$，其中 $s_i\in S$。将 $a_i$ 提升为同一个
+$A_V$ 中的元素 $\widetilde a_i$，并令
+$J=(\widetilde a_1,\ldots,\widetilde a_m)$。于是
+$z_V=\sum_i\widetilde a_i\otimes s_i\in J\otimes_{A_V}S$
+映到 $z$，且其在 $S$ 中的像为零。刚才的平坦性给出 $z_V=0$，
+从而 $z=0$。再次应用
+\cite[Tag 00HD]{StacksAlg}，得到 $R$-平坦性。在 $x,y$ 处的取值
+通过等距映射 $\mathcal H(x)\hookrightarrow\mathcal H(y)$ 相容，
+因此该同态为局部同态。每个非零模包含一个循环子模 $R/I$，
+其中 $I$ 为真理想；其张量积 $S/IS$ 非零，因为 $IS$ 位于 $S$
+的极大理想中。平坦性保持此循环子模的单射，因而给出忠实平坦性。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001888-reader.jpg" alt="Typeset mathematical passage from PDF page 428" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=428">PDF page 428 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope</li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole</li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole</li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole</li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-001887/">NAG-001887</a> · selected whole</li><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001887/">NAG-001887</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001698/">fnd:ordinaryaffinoidstalks</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001733/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Proper analytic GAGA · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001733 · Accepted whole</p><h1>Proper analytic GAGA</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.34.8">Open in the English reader · PDF page 304</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="87bc77c4d7602175a01afa11fb412bdcaacc9602f8c32e88ba70d62f28344f67">
+\begin{theorem}[\bi{Proper analytic GAGA}
+{适当解析 GAGA}]
+\label{fnd:propergagainternal}
+\bi{For every proper finite-type scheme $X$ over a complete
+non-Archimedean field $K$, analytification is an exact tensor
+equivalence}
+{对完备非阿基米德域 $K$ 上每个适当的有限型概形 $X$，
+解析化给出正合张量范畴等价}
+\[
+ \operatorname{Coh}(X)\ \xrightarrow{\ \sim\ }\
+ \operatorname{Coh}(X^{\an}_G).
+\]
+\bi{It preserves coherent cohomology and restricts to an
+equivalence on vector bundles, and hence on line bundles.}
+{它保持凝聚上同调，并限制为向量丛的范畴等价，
+特别地给出线丛的等价。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="8cc2895b2598a4eeb74b17e9bbdb0d3ac5e2d6ce51e86e4a270fa6b024d49199">
+\begin{proof}
+\bi{Full faithfulness is Proposition~\ref{fnd:properextcomparison}.
+Exactness and compatibility with tensor products are
+Theorem~\ref{fnd:coherentanalytificationexact}; cohomology
+comparison is Theorem~\ref{fnd:propercoherentcomparison}.
+It remains to prove essential surjectivity. We do this by
+Noetherian induction on closed subsets $Z\subset|X|$, with
+the assertion that every analytic coherent module supported
+in $Z^{\an}$ is algebraizable on $X$. For a closed subset,
+$Z^{\an}$ means the analytification of its reduced closed
+subscheme; this underlying set is unchanged by a thickening.
+The empty case is immediate.}
+{全忠实性来自 Proposition~\ref{fnd:properextcomparison}；
+正合性及与张量积的相容性来自
+Theorem~\ref{fnd:coherentanalytificationexact}；
+上同调比较来自 Theorem~\ref{fnd:propercoherentcomparison}。
+只需证明本质满射。对闭子集 $Z\subset|X|$ 作 Noetherian
+归纳，断言为：每个支撑在 $Z^{\an}$ 中的解析凝聚模都能在
+$X$ 上代数化。这里闭子集的 $Z^{\an}$ 指相应约化闭子概形
+的解析化；增厚不改变其底集。空集情形显然。}
+
+\bi{Let $\mathcal F$ be supported in $Z^{\an}$.
+Lemma~\ref{fnd:analyticcoherentsupportthickening} realizes
+it as the closed direct image of a coherent module
+$\mathcal F_T$ on $T^{\an}$, for a closed subscheme
+$T\hookrightarrow X$ with underlying space $Z$.
+Apply Chow as in the preceding proof: there is a projective
+surjection $\pi:Y\to T$ with $Y$ projective over $K$,
+which is an isomorphism above a dense open $U\subset T$.
+The coherent module $(\pi^{\an})^*\mathcal F_T$ is
+algebraizable on $Y$ by Corollary~\ref{fnd:projectiveschemegaga};
+choose an algebraization $\mathcal E$ and its identifying
+isomorphism. Relative projective comparison in degree zero
+identifies}
+{设 $\mathcal F$ 支撑在 $Z^{\an}$ 中。
+Lemma~\ref{fnd:analyticcoherentsupportthickening} 将其表示为
+某个底空间为 $Z$ 的闭子概形 $T\hookrightarrow X$ 的解析化上
+凝聚模 $\mathcal F_T$ 的闭直接像。
+按前一证明使用 Chow 引理，得到射影满射 $\pi:Y\to T$，
+其中 $Y$ 在 $K$ 上射影，且 $\pi$ 在稠密开集 $U\subset T$
+上为同构。由 Corollary~\ref{fnd:projectiveschemegaga}，
+凝聚模 $(\pi^{\an})^*\mathcal F_T$ 可在 $Y$ 上代数化；
+选择其代数化 $\mathcal E$ 及相应同构。
+零次相对射影比较给出识别}
+\[
+ \mathcal G:=\pi^{\an}_*(\pi^{\an})^*\mathcal F_T
+       \simeq (\pi_*\mathcal E)^{\an}.
+\]
+\bi{In particular $\mathcal G$ is coherent. The kernel
+$\mathcal K$ and cokernel $\mathcal C$ of the adjunction
+$\mathcal F_T\to\mathcal G$ are coherent and vanish
+on $U^{\an}$. Their closed direct images on $X^{\an}$
+are supported in the proper closed subset $Z&#x27;=T\setminus U$
+of $Z$. By the induction hypothesis they are algebraizations
+of coherent modules $K_X,C_X$ on $X$. These algebraizations
+are annihilated by the ideal of $T$: the respective
+multiplication maps by this ideal analytify to zero, so
+full faithfulness makes them zero already on $X$.
+Thus they descend to coherent $K_T,C_T$ on $T$, whose
+analytifications are $\mathcal K,\mathcal C$.}
+{特别地，$\mathcal G$ 凝聚。伴随映射
+$\mathcal F_T\to\mathcal G$ 的核 $\mathcal K$ 和余核
+$\mathcal C$ 凝聚，且在 $U^{\an}$ 上为零。
+它们在 $X^{\an}$ 上的闭直接像支撑在 $Z$ 的真闭子集
+$Z&#x27;=T\setminus U$ 中。由归纳假设，它们分别是 $X$ 上凝聚模
+$K_X,C_X$ 的解析化。这些代数化均被 $T$ 的理想消灭：
+相应的理想乘法映射解析化后为零，由全忠实性，它们在 $X$
+上已经为零。因此它们下降为 $T$ 上的凝聚模 $K_T,C_T$，
+解析化分别为 $\mathcal K,\mathcal C$。}
+
+\bi{The map $\mathcal G\to\mathcal C$ algebraizes by
+full faithfulness on the proper scheme $T$. Let $J_T$
+be the kernel of the resulting map
+$\pi_*\mathcal E\to C_T$. Exactness gives an exact
+analytic sequence}
+{由适当概形 $T$ 上的全忠实性，映射
+$\mathcal G\to\mathcal C$ 可代数化。
+令 $J_T$ 为所得映射 $\pi_*\mathcal E\to C_T$ 的核。
+正合性给出解析短正合列}
+\[
+ 0\longrightarrow K_T^{\an}\longrightarrow\mathcal F_T
+       \longrightarrow J_T^{\an}\longrightarrow0.
+\]
+\bi{Proposition~\ref{fnd:properextcomparison} in degree one
+lifts its class to $\operatorname{Ext}^1_T(J_T,K_T)$.
+By \cite[Tag 06XV]{StacksAlg} this class is represented
+by an algebraic short exact sequence
+$0\to K_T\to F_T\to J_T\to0$; its middle term is coherent.
+Indeed, locally take a finite free surjection $P\to J_T$
+and lift its finitely many basis sections into $F_T$ after
+shrinking. Then $K_T\oplus P\to F_T$ is surjective and
+its kernel, by projection to $P$, is isomorphic to the
+coherent kernel of $P\to J_T$. Thus $F_T$ is a cokernel
+of a map between coherent modules. The analytic extension is isomorphic to
+the displayed sequence with identity on its ends.
+Hence $F_T^{\an}\simeq\mathcal F_T$.
+Closed direct image to $X$ algebraizes $\mathcal F$.
+This completes the Noetherian induction and proves the
+equivalence.}
+{将 Proposition~\ref{fnd:properextcomparison} 用于一次 Ext，
+可将该扩张类提升到 $\operatorname{Ext}^1_T(J_T,K_T)$。
+由 \cite[Tag 06XV]{StacksAlg}，此类由代数短正合列
+$0\to K_T\to F_T\to J_T\to0$ 表示，其中间项凝聚。
+确实，局部取有限自由满射 $P\to J_T$，并在缩小后将其有限个
+基截面提升到 $F_T$。则 $K_T\oplus P\to F_T$ 满射，
+其核通过投影到 $P$ 与 $P\to J_T$ 的凝聚核同构。
+所以 $F_T$ 是凝聚模间态射的余核。所得解析扩张与所列序列同构，
+且在两端为恒等映射，所以 $F_T^{\an}\simeq\mathcal F_T$。
+再闭直接像到 $X$ 即代数化 $\mathcal F$。
+Noetherian 归纳完成，范畴等价得证。}
+
+\bi{Finally finite local freeness descends along a
+faithfully flat local map. Here is the elementary argument
+in the form needed. If $R\to S$ is such a map, $M$ is
+finite over the Noetherian local ring $R$, and $S\otimes_R M$
+is free of rank $r$, then the residue-field extension shows
+$\dim_{\kappa(R)}M/\mathfrak m_RM=r$. Lift a basis;
+Nakayama gives a surjection $R^r\to M$. After tensoring
+with $S$ this is a surjection between two rank-$r$ free
+modules over the local ring $S$, and hence an isomorphism
+(reduce its determinant modulo the maximal ideal).
+Faithful flatness kills its kernel, so $M$ is free.}
+{最后，有限局部自由性沿忠实平坦局部映射下降。
+所需的初等论证如下。设 $R\to S$ 为这样的映射，
+$M$ 是 Noetherian 局部环 $R$ 上的有限模，且
+$S\otimes_R M$ 自由、秩为 $r$。
+由剩余域扩张可知
+$\dim_{\kappa(R)}M/\mathfrak m_RM=r$。
+提升一组基，Nakayama 引理给出满射 $R^r\to M$。
+与 $S$ 张量后，它是局部环 $S$ 上两个秩为 $r$ 的自由模之间
+的满射，因而为同构：将其行列式模极大理想约化即可。
+忠实平坦性检测其核为零，所以 $M$ 自由。}
+
+\bi{For completeness, local freeness in the analytic
+$G$-topology also yields free ordinary stalks here.
+On an affinoid $\mathcal M(A)$ representing a finite
+module $M$, choose a trivializing affinoid domain
+$\mathcal M(B)$ containing the point in question.
+The domain map $A\to B$ is flat; localizing at the
+corresponding primes gives a faithfully flat local map.
+The preceding argument makes $M$ free at that prime of
+$A$. A finite presentation then makes it free after
+inverting one element not in the prime: lift the basis
+and clear the finitely many relations for the kernel
+and cokernel. A small rational neighbourhood on which
+that element is invertible gives the same free ordinary
+analytic stalk. Now every scheme point has an analytic
+lift by Lemma~\ref{fnd:analytificationsurjectivity},
+and its local map is faithfully flat by
+Theorem~\ref{fnd:coherentanalytificationexact}.
+Applying the local descent argument shows that an
+algebraization of an analytic vector bundle is locally
+free of the same rank. The converse follows by tensoring
+a local basis. Rank one gives the line-bundle assertion.}
+{补充说明，这里的解析 $G$-拓扑局部自由性也给出通常茎的
+自由性。在表示有限模 $M$ 的 affinoid $\mathcal M(A)$ 上，
+选择一个包含所考察点且使模平凡化的 affinoid 域
+$\mathcal M(B)$。域映射 $A\to B$ 平坦；在相应素理想处
+局部化得到忠实平坦局部映射。前述论证说明 $M$ 在 $A$ 的
+该素理想处自由。有限表示进一步说明，反演某个不属于该素理想
+的元素后 $M$ 已经自由：提升一组基，再清除核与余核的有限多个
+关系所需的分母。在使该元素可逆的一个小 rational 邻域上，
+所得通常解析茎因而自由。
+由 Lemma~\ref{fnd:analytificationsurjectivity}，每个概形点
+有解析提升；由 Theorem~\ref{fnd:coherentanalytificationexact}，
+相应局部映射忠实平坦。应用局部下降论证，解析向量丛的
+代数化局部自由且秩相同。反向只需将局部基张量。
+秩一情形即线丛的断言。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001733-reader.jpg" alt="Typeset mathematical passage from PDF page 305" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=305">PDF page 305 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01W6@NAG-001733:implicit-actual-Chow-cover · named external application <small>(reviewed exact repeated Chow use)</small></li><li>APP-STACKS-0200@NAG-001733:implicit-actual-Chow-cover · named external application <small>(reviewed exact repeated Chow use)</small></li><li>APP-STACKS-06XV@NAG-001733:existing-10-1 · named external application <small>(existing exact named Stacks authority)</small></li><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001727/">NAG-001727</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001728/">NAG-001728</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001729/">NAG-001729</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001730/">NAG-001730</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001731/">NAG-001731</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001732/">NAG-001732</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable <small>(accepted native whole)</small></li><li><a href="/r/NAG-001899/">NAG-001899</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/01W6">APP-STACKS-01W6@NAG-001733:implicit-actual-Chow-cover</a></li><li><a href="https://stacks.math.columbia.edu/tag/0200">APP-STACKS-0200@NAG-001733:implicit-actual-Chow-cover</a></li><li><a href="https://stacks.math.columbia.edu/tag/06XV">APP-STACKS-06XV@NAG-001733:existing-10-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001730/">fnd:analyticcoherentsupportthickening</a></li><li><a href="/r/NAG-001727/">fnd:analytificationsurjectivity</a></li><li><a href="/r/NAG-001719/">fnd:coherentanalytificationexact</a></li><li><a href="/r/NAG-001899/">fnd:projectiveschemegaga</a></li><li><a href="/r/NAG-001731/">fnd:propercoherentcomparison</a></li><li><a href="/r/NAG-001732/">fnd:properextcomparison</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

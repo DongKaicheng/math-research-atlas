@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001419/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Strict exactness with unchanged lifting bounds · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001419 · Accepted whole</p><h1>Strict exactness with unchanged lifting bounds</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.14.1">Open in the English reader · PDF page 154</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6a69d602ea6c4f0fd1dc66b719dc14cf93c4526d75ab0267722ff59e6018e134">
+\begin{proposition}[\bi{Strict exactness with unchanged lifting bounds}{保持 lifting bounds 的 strict exactness}]\label{fnd:weightedc0exact}
+\bi{Let}
+{设}
+\[
+ 0\longrightarrow E&#x27;\xrightarrow{\iota}E
+   \xrightarrow{p}E&#x27;&#x27;\longrightarrow0
+\]
+\bi{be an exact sequence of Banach $K$-spaces with bounded maps. Suppose there are $D,C&gt;0$ such that}
+{为 Banach $K$-spaces 的 exact sequence，其中 maps bounded。假设存在 $D,C&gt;0$，满足}
+\[
+ \|x\|\leq D\|\iota(x)\|\quad(x\in E&#x27;),
+ \qquad
+ \forall z\in E&#x27;&#x27;\quad\exists y\in E:
+       p(y)=z,\quad\|y\|\leq C\|z\|.
+\]
+\bi{For every countable $I$ and positive $w$, the coefficient sequence is exact and norm-strict:}
+{则对每个可数 $I$ 及正权重 $w$，coefficient sequence exact 且 norm-strict：}
+\[
+ 0\longrightarrow\mathcal C_w(I,E&#x27;)
+  \xrightarrow{\iota_w}\mathcal C_w(I,E)
+  \xrightarrow{p_w}\mathcal C_w(I,E&#x27;&#x27;)\longrightarrow0.
+\]
+\bi{The inverse bound $D$, the lifting bound $C$, and the upper bounds of the original maps remain valid. In particular, these constants do not depend on $I$ or $w$. If the norm on $E&#x27;&#x27;$ is the quotient norm induced by $p$, the induced map}
+{原 maps 的 inverse bound $D$、lifting bound $C$ 和 upper bounds 均保持不变。特别地，这些常数不依赖 $I$ 或 $w$。若 $E&#x27;&#x27;$ 的 norm 是由 $p$ 诱导的 quotient norm，则 induced map}
+\[
+ \mathcal C_w(I,E)/\iota_w\mathcal C_w(I,E&#x27;)
+       \longrightarrow\mathcal C_w(I,E&#x27;&#x27;)
+\]
+\bi{is isometric for the quotient norm. The same assertions hold for bounded maps of Banach modules over a fixed Banach algebra.}
+{对 quotient norm 为 isometric。同样的结论适用于固定 Banach algebra 上的 Banach modules 及其 bounded maps。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="1c2601f9d958d41f0a062f9e642182800c2a6c3023052b34b7fd39e10f3790ec">
+\begin{proof}
+\bi{Injectivity and the inclusion $\operatorname{im}\iota_w\subseteq\ker p_w$ hold coefficientwise. If $y=(y_i)\in\ker p_w$, exactness gives unique $x_i\in E&#x27;$ with $\iota(x_i)=y_i$. The bound $w_i\|x_i\|\leq D w_i\|y_i\|$ proves that $(x_i)$ lies in the required coefficient space and gives the inverse bound for $\iota_w$.}
+{Injectivity 与 inclusion $\operatorname{im}\iota_w\subseteq\ker p_w$ 逐 coefficient 成立。若 $y=(y_i)\in\ker p_w$，由 exactness，存在唯一 $x_i\in E&#x27;$ 使 $\iota(x_i)=y_i$。Bound $w_i\|x_i\|\leq D w_i\|y_i\|$ 保证 $(x_i)$ 属于所需 coefficient space，并给出 $\iota_w$ 的 inverse bound。}
+
+\bi{For $z=(z_i)\in\mathcal C_w(I,E&#x27;&#x27;)$, choose a lift $y_i$ satisfying $\|y_i\|\leq C\|z_i\|$, taking $y_i=0$ when $z_i=0$. Then $(y_i)$ has a vanishing weighted tail and $\|(y_i)\|_w\leq C\|z\|_w$. This proves surjectivity and its lifting bound. Only countably many coordinate choices are involved. No linear section of $p$ is asserted or needed. The coefficientwise estimate preceding the proposition gives the upper map bounds. Thus the maps are norm-strict; the middle kernel is closed because $p_w$ is continuous.}
+{对 $z=(z_i)\in\mathcal C_w(I,E&#x27;&#x27;)$，逐项选择满足 $\|y_i\|\leq C\|z_i\|$ 的 lift $y_i$，并在 $z_i=0$ 时取 $y_i=0$。于是 $(y_i)$ 的 weighted tail 趋于零，且 $\|(y_i)\|_w\leq C\|z\|_w$。这证明了 surjectivity 及其 lifting bound。这里只涉及可数个坐标选择。这里既不声称也不需要 $p$ 的 linear section。命题前的逐系数估计给出 upper map bounds，从而 maps 均 norm-strict；由于 $p_w$ continuous，中间的 kernel 为 closed。}
+
+\bi{Now assume that $E&#x27;&#x27;$ has the quotient norm. The map $p_w$ is contractive, so its quotient norm is at least $\|z\|_w$. For each fixed $\lambda&gt;1$, choose lifts coefficientwise with $\|y_i\|\leq\lambda\|z_i\|$. They give a lift of $z$ with norm at most $\lambda\|z\|_w$. Taking the infimum over lifts and then letting $\lambda\downarrow1$ proves equality of the norms. For module maps, the coefficient maps remain $A$-linear, and the same argument proves exactness and all the estimates. The selected lifts only establish these bounds; they are not asserted to depend linearly on the data.}
+{再假设 $E&#x27;&#x27;$ 使用 quotient norm。Map $p_w$ 为 contractive，所以其 quotient norm 至少为 $\|z\|_w$。对每个固定的 $\lambda&gt;1$，逐 coefficient 选择满足 $\|y_i\|\leq\lambda\|z_i\|$ 的 lifts，即得到 $z$ 的一个 norm 不超过 $\lambda\|z\|_w$ 的 lift。先对 lifts 取 infimum，再令 $\lambda\downarrow1$，即得两种 norms 相等。在 module 版本中，逐系数映射仍为 $A$-linear，同一论证给出 exactness 和全部 estimates。所选 lifts 只用于证明这些 bounds；这里并未断言 lifts 线性地依赖原数据。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="f73229f4ff5f0f90e7e9e608be341322b26d777818fe387f57238427ba31b79a">
+\bi{Throughout, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial. A Banach $K$-space has a definite, complete, non-Archimedean, $K$-homogeneous norm. Banach algebras are commutative and unital, with a submultiplicative norm and $\|1\|=1$; Banach module actions satisfy $\|am\|\leq\|a\|\|m\|$. All finite powers have the maximum norm; the maximum over an empty family is zero. Norm-strictness has the quantitative meaning of Definition~\ref{fnd:normstrictconvention}.}
+{本节中，$K$ 关于固定的 real-valued non-Archimedean absolute value 完备，允许该 absolute value 平凡。Banach $K$-space 的 norm 为 definite、complete、non-Archimedean 且 $K$-homogeneous。Banach algebras 均 commutative、unital，其 norm submultiplicative 且 $\|1\|=1$；Banach module actions 满足 $\|am\|\leq\|a\|\|m\|$。所有 finite powers 使用 maximum norm，并约定空 family 的 maximum 为零。Norm-strictness 采用 Definition~\ref{fnd:normstrictconvention} 的定量含义。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="e97b535b195ccf949e8bd5abad1c629c3618a478794454cb3914661405a041c8">
+
+\bi{For a countable set $I$ and positive weights $w=(w_i)_{i\in I}$, write $\mathcal C_w(I,E)=c_0(I,E;w)$ as in Lemma~\ref{fnd:weightedcoefficientcompleteness}; thus}
+{对可数集合 $I$ 和正权重 $w=(w_i)_{i\in I}$，按照 Lemma~\ref{fnd:weightedcoefficientcompleteness} 的定义，记 $\mathcal C_w(I,E)=c_0(I,E;w)$，即}
+\[
+ \begin{gathered}
+ \mathcal C_w(I,E)=
+ \left\{(e_i)_{i\in I}:
+   \text{for every }\varepsilon&gt;0,
+   \#\{i:w_i\|e_i\|\geq\varepsilon\}&lt;\infty\right\},\\
+ \|(e_i)\|_w=\sup_{i\in I}w_i\|e_i\|.
+ \end{gathered}
+\]
+\bi{We put $\sup\varnothing=0$. The cited lemma, with coefficient algebra $K$ if necessary, proves completeness and density of finite-support families. A bounded linear map $u:E\to F$ with bound $U$ induces a coefficient map with the same bound, since $w_i\|u(e_i)\|\leq U w_i\|e_i\|$. There is also a canonical isometry}
+{约定 $\sup\varnothing=0$。上述引理给出完备性以及有限支撑族的稠密性；对 Banach $K$-space，只需取系数代数为 $K$。若有界线性映射 $u:E\to F$ 的界为 $U$，则逐系数映射保持同一个界，因为 $w_i\|u(e_i)\|\leq U w_i\|e_i\|$。此外，对有限 $m$，有 canonical isometry}
+\[
+ \mathcal C_w(I,E^m)\simeq\mathcal C_w(I,E)^m
+ \qquad(m&lt;\infty).
+\]
+\bi{It merely rearranges coefficients: a supremum commutes with a finite maximum, and a finite union of finite sets is finite, so both the norms and the finite-tail conditions agree.}
+{该映射只重新排列系数：supremum 与有限 maximum 可交换，且有限个有限集的并仍有限，所以两种范数相等，有限尾条件也等价。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001419-reader.jpg" alt="Typeset mathematical passage from PDF page 154" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=154">PDF page 154</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(applied native theorem)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002772/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Cartier coefficient transport with scoped gluing; F8ST-C-R1 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002772 · Accepted whole</p><h1>Cartier coefficient transport with scoped gluing; F8ST-C-R1</h1><p><a href="/projects/foundations/chapters/appendix-f/">F Descent of an algebraized polarized tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002772.original">Open in the English reader · PDF page 1997</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="050ada13e93423545cc2fd13cc81666969a3488f526d0f18b9ae1bcac7dec942">
+\begin{theorem}[Cartier coefficient transport with scoped gluing; F8ST-C-R1]
+\label{fnd:nag002772:cartier}
+Let \(A\) be generalized affinoid and \(f\in A\) a regular element.
+Put \(B=A/(f)\), with its actual quotient analytic structure. For a
+component \(Y=\cM(A/\mathfrak p)\) of the Cartier zero space,
+\(\mathfrak p\) minimal over \((f)\), its coefficient is
+\begin{equation}\label{fnd:nag002772:effective-coefficient}
+ c_Y(f)=\length_{A_{\mathfrak p}}(A_{\mathfrak p}/fA_{\mathfrak p})
+       =\length_{\cO_{X,x}}(\cO_{X,x}/f\cO_{X,x}),
+ \qquad X=\cM(A),
+\end{equation}
+where \(x\) can be chosen on \(Y\), away from the other zero-space
+components, of maximal Abhyankar dimension in \(Y\). Equivalently,
+the right side is the generic length of the analytic quotient sheaf.
+The lengths are finite positive integers. The assertion applies in
+particular to every codimension-one Cartier component. It makes no
+claim about an arbitrary closed integral subspace of the zero locus.
+
+The effective coefficients are compatible with actual affinoid-domain
+restriction and ordinary gluing. For regular \(a,b\), product additivity
+is asserted when \(\Min_A(a)\cup\Min_A(b)\) is an antichain: no two
+distinct primes in this union contain one another. Here \(\Min_A(a)\)
+means primes of the actual common ring \(A\) minimal over \((a)\),
+with the empty set for a unit. A sufficient condition is that the two
+actual zero spaces are empty or pure of one common analytic dimension.
+
+For regular meromorphic presentations, the differences
+\(\divis(a)-\divis(b)\) are independent and glue among atlases for
+which this antichain condition holds for the cross-products on every
+actual common affinoid refinement. In particular this holds when all
+local numerator and denominator zero spaces are empty or pure of one
+fixed analytic dimension. The effective coefficient formula above
+needs no such purity assumption. No reduction of \(A\), \(B\), or their
+finite fibres is permitted. The previously unrestricted product and
+meromorphic clauses are not claimed closed in this induced revision.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="835a8653ba148d4e85a31535d0f7ef4287cdc4ded34f7ab95a8dc654692a2b3e">
+\begin{proof}
+The prime \(\mathfrak p/(f)\) is minimal in \(B\), so
+\(B_{\mathfrak p/(f)}=A_{\mathfrak p}/(f)\) is Artinian. Its length
+as a module over itself is its length as an \(A_{\mathfrak p}\)-module.
+Choose \(x\) on the integral component \(Y\) of maximal Abhyankar
+dimension. It has kernel \(\mathfrak p/(f)\) on \(B\) and is on no
+other component, by the dimension-drop argument in
+Proposition~\ref{fnd:nag002769:generic-length}. Shrink to an affinoid ordinary
+neighbourhood in the zero space avoiding the other components.
+It is pure of dimension \(\dim_KY\) by the \hyperref[fnd:nag002772:mixed-neighbourhood-purity]{mixed-neighbourhood argument} above and domain purity
+\tagg{NAG-002413}. The proof of Proposition~\ref{fnd:nag002769:generic-length} makes
+its ordinary stalk at \(x\), hence \(\cO_{\cM(B),x}\), Artinian.
+The regular comparison \tagg{NAG-001782} for \(B\), followed by
+Lemma~\ref{lem:length}, gives its length as
+\(\length B_{\mathfrak p/(f)}\).
+The finite closed-immersion case of \tagg{NAG-001735} identifies
+\[
+ \cO_{\cM(B),x}=\cO_{X,x}\otimes_A B
+                 =\cO_{X,x}/f\cO_{X,x}.
+\]
+Length over a local ring is unchanged when computed over a quotient
+annihilating the module, proving \eqref{fnd:nag002772:effective-coefficient}. The same argument
+on the pointed domain colimit proves the generic-length interpretation.
+
+\phantomsection\label{fnd:nag002772:effective-domain-transport}
+For a domain \(\cM(C)\subset\cM(B)\) and
+\(\mathfrak q\in\Min C\), its contraction \(\mathfrak r\) is
+minimal in \(B\) by flat going down (\href{https://stacks.math.columbia.edu/tag/00HS}{Stacks 00HS}). Choose an analytic point of
+\(\cM(C)\) with kernel \(\mathfrak q\), using
+\tagg{NAG-001860}. The upper arrow of \tagg{NAG-001791} gives a
+regular local map \(B_{\mathfrak r}\to C_{\mathfrak q}\).
+Both rings are Artinian, so their lengths agree. The same calculation
+holds for any finite coherent module. Actual domain/quotient base
+change, \tagg{NAG-001702}/\tagg{001846}, identifies this quotient
+with the restriction of \(A/(f)\). Flatness preserves the injectivity
+of multiplication by \(f\), so the restricted equation is still
+regular. This proves compatibility on every actual domain and hence
+on affinoid refinements of overlaps.
+
+We first supply the missing component inclusion under the stated
+antichain hypothesis. In any Noetherian ring, \(\Min_A(ab)\) is the
+set of inclusion-minimal members of \(\Min_A(a)\cup\Min_A(b)\).
+Indeed a prime containing \(ab\) contains a factor and therefore a
+prime minimal over that factor by \href{https://stacks.math.columbia.edu/tag/00E0}{Stacks 00E0(4)}. A prime minimal over \(ab\) must
+equal that smaller prime. Conversely, if \(p\) is inclusion-minimal
+in the union and \(q\subset p\) contains \(ab\), choose by \href{https://stacks.math.columbia.edu/tag/00E0}{Stacks 00E0(4)} a factor-minimal
+prime \(r\subset q\). Then \(r\subset q\subset p\) forces \(r=q=p\).
+Thus, for an antichain, every factor component occurs in the product:
+\[
+             \Min_A(ab)=\Min_A(a)\cup\Min_A(b).
+\]
+
+The analytic purity criterion for this hypothesis uses only frozen
+\tagg{NAG-002374}. If the factor zero spaces are empty or pure of
+one common dimension \(d\), all primes in the union define integral
+affinoids of dimension \(d\). A strict inclusion \(q\subsetneq p\)
+would make the nonzero ideal \(p/q\) in \(A/q\) cut out
+\(\cM(A/p)\) of dimension at most \(d-1\), or the empty space when
+\(d=0\). This is impossible. Their union is therefore an antichain,
+and the product zero space is also empty or pure of dimension \(d\).
+
+For regular \(a,b\), multiplication by \(b\) gives the exact sequence
+\[
+ 0\longrightarrow A/(a)\xrightarrow{\,b\,} A/(ab)
+       \longrightarrow A/(b)\longrightarrow0.
+\]
+At each prime in the now identified component union, each factor
+quotient is either zero (a unit after localization) or Artinian.
+A prime in the union containing a factor is minimal over that factor;
+otherwise a smaller factor-minimal prime would violate the antichain
+condition. Add localized finite lengths to get the coefficient
+identity on every component, including all factor components.
+
+For meromorphic representatives in the stated scope, equality
+\(a/b=c/e\) gives \(ae=bc\) on an actual common affinoid restriction:
+localization at regular elements is injective. The cross-product
+antichain hypotheses hold there by assumption. In the common
+pure-zero-space case they hold by the preceding dimension-drop
+argument: quotient/domain base change identifies the restricted zero
+spaces with actual domains in the original zero spaces, and
+\tagg{NAG-002413} preserves their purity. Additivity yields
+\(\divis(a)-\divis(b)=\divis(c)-\divis(e)\).
+\phantomsection\label{fnd:nag002772:ordinary-quotient-shrinking}
+On a good space, local quotient representatives may be taken on
+ordinary neighbourhoods. If regularity is initially known only at a
+germ, the kernel of multiplication is coherent, so it vanishes after
+shrinking. For a unit of the local total quotient ring, a representative
+numerator is regular as well: multiplying by an inverse shows that it
+divides a regular element. These observations justify regular numerator
+and denominator representatives after the necessary restrictions.
+Domain compatibility just proved makes their local cycles glue.
+\end{proof}</pre></details><h2>Typed proof inputs</h2><p class="muted">No explicit typed target in the exported bindings.</p><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002769/">fnd:nag002769:generic-length</a></li><li><a href="/r/NAG-002761/">lem:length</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

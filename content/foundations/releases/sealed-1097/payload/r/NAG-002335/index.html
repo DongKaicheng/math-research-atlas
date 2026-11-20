@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002335/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Integral Gauss charts give branch certificates · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002335 · Accepted whole</p><h1>Integral Gauss charts give branch certificates</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.50.4">Open in the English reader · PDF page 797</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="77ea423c05b3d5ec55add274967ab0a33f49854b6dfe8810ac4b72f43d02e0b8">
+\begin{theorem}[Integral Gauss charts give branch certificates]
+\label{v037:f5:gausschartcertificate}
+Suppose $U$ is an actual affinoid domain of $C^{\an}$ as
+in Lemma~\ref{v037:f5:gausschartpointlifts}. Every component
+point $v_E$ of $Y$ has an unramified branch certificate.
+If $C$ admits a semistable algebraic model over the original
+$O$, then every $v_E$ occurs as a component vertex of such
+a model. Finitely many points obtained from finitely many
+such integral charts can be retained simultaneously on one
+original-field semistable algebraic model.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="04f2ad2347ed99b31ae5021af6235cc0051b574dac287b08dc9624f84d426b78">
+\begin{proof}
+Fix the algebraically closed comparison field $\Omega$ of
+Lemma~\ref{v036:f5:comparisonfield}. Put
+\[
+ R_{\Omega,0}=\Omega^\circ\langle T,Z\rangle/(g(T)Z-1),
+ \qquad A_{\Omega,0}=A_0\otimes_{R_0}R_{\Omega,0}.
+\]
+The first algebra is admissible by
+Proposition~\ref{fnd:formalprincipalopenflat}.
+The second is finite projective over it, hence complete:
+an idempotent makes it a closed direct summand of a finite
+free complete module. It is $\pi$-torsion-free and
+topologically of finite type, and is therefore admissible
+by Theorem~\ref{fnd:formaltorsionfreepresentation}.
+For the finite-type assertion, finite module generators
+give finitely many algebra generators; reducing monomials
+by their integral equations bounds all their products in
+a finite module, so restricted series converge.
+\textup{\&#x27;Etaleness} is preserved by
+\cite[Tag 02GO]{StacksAlg}.
+
+The actual scalar presentation
+\ref{fnd:generalscalarpresentation} identifies
+$R_{\Omega,0}[1/\pi]=R\widehat\otimes_K\Omega$.
+Finite tensor comparison
+\ref{fnd:generalizedfinitetensor} consequently identifies
+$A_{\Omega,0}[1/\pi]=A\widehat\otimes_K\Omega$.
+The domain base-change theorem
+\ref{fnd:generalizeddomainbasechange} makes its spectrum
+the actual domain $U_\Omega\subset C_\Omega^{\an}$.
+Its special fibre is $Y_{\widetilde\Omega}$. Proposition
+\ref{v037:f5:integralgaussdegree}, applied over $\Omega$,
+makes it a reduced pure curve.
+
+Choose a component $E&#x27;$ of $Y_{\widetilde\Omega}$ above
+$E$. Such a component exists, and the component fibres
+are exactly those described in
+Lemma~\ref{v037:f5:geometriccomponentorbits}.
+Let $w$ be its component point. Functoriality of
+specialization in Proposition~\ref{fnd:formalglobalgenericfaithful}
+and uniqueness in
+Proposition~\ref{cand:reducedmodelcomponentpoints}
+show that $w$ maps to $v_E$.
+
+Choose three closed separable points $q_i$ of $Y$ and
+geometric lifts $q_i&#x27;$ lying on $E&#x27;$, with the $q_i$
+pairwise distinct. Here is a construction over the
+original residue field. Inside $\widetilde\Omega$ take
+the separable closure $k^{\mathrm{sep}}$ of $k$.
+The purely inseparable step in
+Lemma~\ref{v037:f5:geometriccomponentorbits} identifies
+the components over these two fields. In the component
+corresponding to $E&#x27;$, take a nonempty open subset avoiding
+the other components and any finitely many previously
+selected Galois orbits. Its \textup{\&#x27;etale} map to the
+principal open of $\mathbb A^1_{k^{\mathrm{sep}}}$ has
+open image by \cite[Tag 03WT]{StacksAlg}.
+The field $k^{\mathrm{sep}}$ is infinite: a finite field
+of cardinality $q$ has the separable polynomial
+$X^q-X-1$ without a root. Thus that image contains a
+rational point. Its nonempty \textup{\&#x27;etale} fibre has
+a rational point by \cite[Tag 02GL]{StacksAlg}.
+It is defined over a finite separable extension of $k$,
+because the algebra has finitely many generators. Its
+image in $Y$ is a closed separable point. Repeating this
+three times gives the required distinct $q_i$ and $q_i&#x27;$.
+
+Use Lemma~\ref{v037:f5:gausschartpointlifts} to form the
+unramified marking datum $P=\coprod_i\operatorname{Spec}L_i^\circ$.
+Each prescribed residue embedding
+$\widetilde L_i\to\widetilde\Omega$ lifts to an isometric
+$K$-embedding $L_i\to\Omega$. Indeed, in the monic
+presentation of
+Lemma~\ref{cand:unramifiedmodelbasechange}, the prescribed
+residual root is simple. The henselian root construction
+\ref{cand:completevaluationhenselian} in $\Omega^\circ$
+lifts it to a root of the same polynomial. Irreducibility
+over $K$ gives the embedding, and uniqueness in
+Lemma~\ref{fnd:finiteextensionnorms} makes it isometric.
+The resulting member of $P_K(\Omega)$ specializes to $q_i&#x27;$.
+
+Let $B_i=]q_i&#x27;[$ in $\operatorname{Spf}A_{\Omega,0}$.
+The formal map to the principal open of the unit disc
+is adic, topologically finitely presented and formally
+\textup{\&#x27;etale}. Composition with the formal open
+immersion into the disc has the same properties: unique
+lifting composes, and the relative presentation is obtained
+by adjoining $Z$ with $g(T)Z=1$ to a finite presentation.
+Completion gives the restricted-series presentation by
+Lemma~\ref{fnd:adicquotientcompletion}.
+Translate the disc coordinate by a lift of $t(q_i&#x27;)$.
+Proposition~\ref{v035:formal:tubeends} now makes $B_i$
+an actual open unit disc whose closure in $U_\Omega$ is
+$B_i\cup\{w\}$. In particular the selected marked point
+lies in $B_i$, and the three tubes are disjoint.
+
+These discs are open also in $C_\Omega^{\an}$.
+To verify this ordinary-topological assertion, fix
+$x\in B_i$ and an ambient affinoid neighbourhood $W$ of
+$x$. The disc is an analytic domain and is absolutely
+boundaryless: in its disc coordinate, every point belongs
+to the strict interior of some smaller closed disc.
+Since $W$ is an ambient ordinary neighbourhood, $B_i\cap W$
+is an ordinary neighbourhood of $x$ in $B_i$. Choose an
+affinoid neighbourhood $V$ of $x$ in $B_i$ with
+$V\subset B_i\cap W$. Proposition~\ref{fnd:goodinteriorlocaltesting}
+gives $x\in\operatorname{Int}(V/\Omega)$.
+The composition formula
+\ref{fnd:affinoidinteriorcompositionequality} for
+$V\to W\to\mathcal M(\Omega)$ then gives
+$x\in\operatorname{Int}(V/W)$. The domain-interior
+theorem \ref{fnd:affinoiddomainordinaryinterior}
+makes $V$ a neighbourhood of $x$ in $W$, and hence in
+$C_\Omega^{\an}$. This proves openness.
+Finally $U_\Omega$ is compact and closed in the Hausdorff
+curve $C_\Omega^{\an}$, by
+Propositions~\ref{fnd:boundedspectrumcompact} and
+\ref{fnd:analytificationseparatedtopology}. Thus the same
+closure formula holds in the ambient curve.
+The data $w,P,B_1,B_2,B_3$ form the certificate of
+Definition~\ref{v037:f5:branchcertificate}.
+
+If an original-field semistable model exists, the two
+remaining assertions are precisely the realization and
+finite simultaneous-insertion assertions of
+Theorem~\ref{v037:f5:vertexcertificate}.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002335-reader.jpg" alt="Typeset mathematical passage from PDF page 797" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=797">PDF page 797 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001626/#source_factor_interior_for_actual_affinoid_maps">CLAUSE:NAG-001626:source_factor_interior_for_actual_affinoid_maps</a> · selected scope <small>(accepted native clause)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001713/">NAG-001713</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002060/">NAG-002060</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002222/">NAG-002222</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002321/">NAG-002321</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002326/">NAG-002326</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002333/">NAG-002333</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002334/">NAG-002334</a> · selected whole <small>(accepted native whole)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(retained native support)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002049/">cand:completevaluationhenselian</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-002060/">cand:unramifiedmodelbasechange</a></li><li><a href="/r/NAG-001919/">fnd:adicquotientcompletion</a></li><li><a href="/r/NAG-001628/">fnd:affinoiddomainordinaryinterior</a></li><li><a href="/r/NAG-001713/">fnd:analytificationseparatedtopology</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-001943/">fnd:formalprincipalopenflat</a></li><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001631/">fnd:goodinteriorlocaltesting</a></li><li><a href="/r/NAG-002222/">v035:formal:tubeends</a></li><li><a href="/r/NAG-002270/">v036:f5:comparisonfield</a></li><li><a href="/r/NAG-002320/#context-cf87d7bd24096dce">v037:f5:branchcertificate</a></li><li><a href="/r/NAG-002334/">v037:f5:gausschartpointlifts</a></li><li><a href="/r/NAG-002326/">v037:f5:geometriccomponentorbits</a></li><li><a href="/r/NAG-002333/">v037:f5:integralgaussdegree</a></li><li><a href="/r/NAG-002321/">v037:f5:vertexcertificate</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

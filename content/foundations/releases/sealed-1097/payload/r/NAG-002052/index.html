@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002052/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Lifting a finite Galois residue extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002052 · Accepted whole</p><h1>Lifting a finite Galois residue extension</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.18.1">Open in the English reader · PDF page 667</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6e0ba996972fe5f6b5c9f36808670061ff9e373da28b44471b99c8561ebc3459">
+\begin{lemma}[\bi{Lifting a finite Galois residue extension}
+{有限 Galois 剩余域扩张的提升}]
+\label{cand:galoisresidueextensionlift}
+\bi{For every finite Galois extension $l/k$, there is a finite
+Galois extension $L/K$ and a specified $k$-isomorphism
+$\widetilde L\simeq l$ such that}
+{对每个有限 Galois 扩张 $l/k$，存在有限 Galois 扩张
+$L/K$ 及指定的 $k$-同构 $\widetilde L\simeq l$，使}
+\[
+ \begin{gathered}
+ [L:K]=[l:k],\qquad |L^\times|=|K^\times|,\\
+ \operatorname{Gal}(L/K)\xrightarrow{\ \sim\ }
+                  \operatorname{Gal}(l/k).
+ \end{gathered}
+\]
+\bi{The last map is induced by reduction.}
+{最后一个映射由约化诱导。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7da6484770bca65beb69d7e8fb9f1b79b45b1cb93c38618e4e01f10741f723b5">
+\begin{proof}
+\bi{Use the construction in Lemma~\ref{cand:residueextensionlift}.
+Write $l=k(\beta)$, let $p\in k[T]$ be its monic minimal
+polynomial of degree $d$, and lift $p$ to a monic $P\in O[T]$.
+That proof constructs $L=K(\alpha)$, with $P(\alpha)=0$,
+$[L:K]=d$, $\widetilde L=l$, and $\overline\alpha=\beta$.
+It also proves that $P$ is separable and that the value groups
+are equal. We retain these identifications.}
+{使用 Lemma~\ref{cand:residueextensionlift} 证明中的构造。
+写成 $l=k(\beta)$，记其次数为 $d$ 的首一极小多项式为
+$p\in k[T]$，并将 $p$ 提升为首一多项式 $P\in O[T]$。
+该证明构造 $L=K(\alpha)$，其中 $P(\alpha)=0$、
+$[L:K]=d$、$\widetilde L=l$ 且 $\overline\alpha=\beta$；
+它还证明 $P$ 可分以及值群相同。以下保持这些识别。}
+
+\bi{Normality and separability of $l/k$ give the $d$ distinct
+roots $\beta_1,\ldots,\beta_d$ of $p$ in $l$. Apply the
+simple-root construction of
+Lemma~\ref{cand:completevaluationhenselian} in the complete
+field $L$ to each $\beta_j$. It gives a root
+$\alpha_j\in L^\circ$ of $P$ with reduction $\beta_j$.
+Distinct reductions make these roots distinct. Thus $P$ splits
+in $L$, and $L=K(\alpha)$ is its splitting field. By
+\cite[Tag 09HU]{StacksAlg}, $L/K$ is normal; it was already
+separable, so it is Galois.}
+{$l/k$ 的正规性与可分性保证 $p$ 的 $d$ 个不同根
+$\beta_1,\ldots,\beta_d$ 均属于 $l$。在完备域 $L$ 中，
+对每个 $\beta_j$ 应用
+Lemma~\ref{cand:completevaluationhenselian} 的单根提升，
+得到 $P$ 的根 $\alpha_j\in L^\circ$，其约化为 $\beta_j$。
+不同约化保证这些根两两不同。因此 $P$ 在 $L$ 中分裂，
+而 $L=K(\alpha)$ 就是其分裂域。由
+\cite[Tag 09HU]{StacksAlg}，$L/K$ 正规；此前已经可分，
+故它为 Galois 扩张。}
+
+\bi{Every $K$-automorphism of $L$ preserves its absolute value
+by uniqueness in Lemma~\ref{fnd:finiteextensionnorms}.
+It therefore induces a $k$-automorphism of $l$.
+Each $\alpha\mapsto\alpha_j$ defines a $K$-embedding of $L$
+into itself. Its image has degree $d$ over $K$, so it is an
+automorphism. On the residue generator it induces
+$\beta\mapsto\beta_j$. These are precisely the $d$
+automorphisms of $l/k$, and a $K$-automorphism of $L$ is
+determined by the image of $\alpha$. The $d$ constructed roots
+exhaust all roots of $P$ and have distinct reductions; thus an
+automorphism inducing the identity on $l$ fixes $\alpha$.
+Reduction is therefore
+a bijective homomorphism, as claimed.}
+{由 Lemma~\ref{fnd:finiteextensionnorms} 中延拓绝对值的
+唯一性，$L$ 的每个 $K$-自同构均保持绝对值，因此诱导
+$l$ 的 $k$-自同构。每个 $\alpha\mapsto\alpha_j$ 给出
+$L$ 到自身的 $K$-嵌入；其像在 $K$ 上的次数为 $d$，
+所以它是自同构。在剩余生成元上，该自同构诱导
+$\beta\mapsto\beta_j$，这些恰为 $l/k$ 的全部 $d$ 个
+自同构。另一方面，$L$ 的 $K$-自同构由 $\alpha$ 的像
+确定。所构造的 $d$ 个根穷尽 $P$ 的全部根，且约化两两不同，
+所以在 $l$ 上诱导恒等的自同构必固定 $\alpha$。
+因此约化给出双射群同态，证明所述结论。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002052-reader.jpg" alt="Typeset mathematical passage from PDF page 667" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=667">PDF page 667 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-09HU@002052:normality-actual-lifted-splitting-field · named external application</li><li>APP-STACKS-09HU@002052:normality-actual-lifted-splitting-field · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>CONTEXT:NODAL:002049.simple_root · standing context or base</li><li>CONTEXT:NODAL:002049.simple_root · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole</li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002049/">cand:completevaluationhenselian</a></li><li><a href="/r/NAG-002050/">cand:residueextensionlift</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

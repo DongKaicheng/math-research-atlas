@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001549/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The coefficient description of completed scalar extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001549 · Accepted whole</p><h1>The coefficient description of completed scalar extension</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.16.2">Open in the English reader · PDF page 96</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="119eb647696d82f112b32722dbae764f5955f3596b4a144145e1d51da65ea51d">
+\begin{theorem}[\bi{The coefficient description of completed scalar extension}{完备标量扩张的系数描述}]\label{fnd:freepolyradiuscoefficients}
+\bi{Let $r$ be finite and free over $K$, and let $E$ be any Banach $K$-space with its given definite homogeneous ultrametric norm. There is a canonical isometric $K$-linear isomorphism}
+{设 $r$ 为在 $K$ 上自由的有限元组，$E$ 为任意 Banach $K$-空间，采用其给定的正定、齐次超度量范数。存在典范等距 $K$-线性同构}
+\[
+ \Phi_E:E\widehat\otimes_K K_r
+ \xrightarrow{\ \sim\ }c_0(\mathbf Z^s,r;E),
+ \qquad e\otimes\sum_\nu a_\nu T^\nu\longmapsto(a_\nu e)_\nu.
+\]
+\bi{It gives $E\widehat\otimes_K K_r$ its complete $K_r$-space norm. The constant-coefficient embedding $\iota_E:E\to E\widehat\otimes_K K_r$ is isometric and has a contractive $K$-linear retraction $p_0$ taking the coefficient of $T^0$. For every bounded $K$-linear map $u:E\to F$, scalar extension acts coefficientwise and commutes with $\iota$ and $p_0$. The retraction is not asserted to be $K_r$-linear.}
+{该同构给出 $E\widehat\otimes_K K_r$ 的完备 $K_r$-空间范数。常系数嵌入 $\iota_E:E\to E\widehat\otimes_K K_r$ 等距，并具有取 $T^0$ 系数的 contractive $K$-线性收缩 $p_0$。对每个有界 $K$-线性映射 $u:E\to F$，标量扩张逐系数作用，并与 $\iota$ 及 $p_0$ 交换。这里不声称收缩为 $K_r$-线性。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="53510034af6a16596b64a73acdcfaabd363d38d2fc3a73cb680fef8d4489e6f9">
+\begin{proof}
+\bi{A finite tensor sum $z=\sum_{j=1}^m e_j\otimes f_j$, with $f_j=\sum_\nu a_{j\nu}T^\nu$, has coefficient family $c_\nu=\sum_j a_{j\nu}e_j$. It satisfies the vanishing condition and}
+{设有限张量和 $z=\sum_{j=1}^m e_j\otimes f_j$，其中 $f_j=\sum_\nu a_{j\nu}T^\nu$。其系数族为 $c_\nu=\sum_j a_{j\nu}e_j$，满足趋零条件，且}
+\[
+ \sup_\nu\|c_\nu\|r^\nu
+ \leq\max_j\|e_j\|\|f_j\|.
+\]
+\bi{The bilinear rule is balanced, hence defined on the algebraic tensor product. Taking the infimum over every finite tensor representation gives a contraction for the projective seminorm. It kills the null space, so the completeness proved in Lemma~\ref{fnd:freepolyradiusfield} extends it to a contraction $\Phi_E$ on the separated completion.}
+{该双线性规则平衡，所以定义在普通张量积上。对全部有限张量表示取下确界，得到关于 projective 半范数的 contraction。它消去零半范数子空间，故由 Lemma~\ref{fnd:freepolyradiusfield} 中证明的完备性，延拓为 separated completion 上的 contraction $\Phi_E$。}
+
+\bi{Conversely, a finite-support family $(e_\nu)$ maps to $\sum_\nu e_\nu\otimes T^\nu$ in the separated completed tensor. The projective estimate bounds its norm by $\max_\nu\|e_\nu\|r^\nu$. Density of finite-support families therefore gives a contraction $\Psi_E$ in the opposite direction. On finite-support families, $\Phi_E\Psi_E$ is the identity. On a pure tensor $e\otimes f$, finite Laurent truncations $f_J$ converge to $f$ and}
+{反之，将有限支撑族 $(e_\nu)$ 送到 separated completed tensor 中的 $\sum_\nu e_\nu\otimes T^\nu$。由 projective 估计，其范数至多为 $\max_\nu\|e_\nu\|r^\nu$。有限支撑族的稠密性于是给出反向的 contraction $\Psi_E$。在有限支撑族上，$\Phi_E\Psi_E$ 为恒等映射。对纯张量 $e\otimes f$，有限 Laurent 截断 $f_J$ 收敛于 $f$，且}
+\[
+ \|e\otimes(f-f_J)\|_\pi\leq\|e\|\|f-f_J\|\longrightarrow0.
+\]
+\bi{Thus $\Psi_E\Phi_E$ is the identity on pure tensors, hence on their finite sums and, by density, on the completion. Two mutually inverse contractions are isometries. This proves the displayed isomorphism without assuming that an arbitrary Banach tensor map is injective.}
+{所以 $\Psi_E\Phi_E$ 在纯张量上为恒等映射，继而在其有限和上也如此，并由稠密性在完备化上为恒等映射。两个互逆 contraction 均等距。由此证明所列同构，且没有假设任意 Banach 张量映射为单射。}
+
+\bi{Multiplication on the second tensor factor extends to a bounded $K_r$-action: multiplication by $b\in K_r$ has bound $|b|$ already on every finite tensor representation. For $b\ne0$, applying the same bound to $b^{-1}$ gives equality of norms, so the action is homogeneous. The constant-family inclusion is isometric and the zeroth coefficient has norm at most the family norm, with $p_0\iota_E=\mathrm{id}_E$. A bounded map $u$ takes each coefficient to $u(e_\nu)$ and has the same available bound; this identity holds first on pure tensors and then by continuity. It also proves the two asserted commutation relations.}
+{第二张量因子上的乘法延拓为有界 $K_r$-作用：对每个有限张量表示，乘以 $b\in K_r$ 的界已经是 $|b|$。当 $b\ne0$ 时，再对 $b^{-1}$ 应用同一界便得到范数等号，故该作用齐次。常系数族的包含等距，而零次系数范数至多为整个族的范数，并且 $p_0\iota_E=\mathrm{id}_E$。有界映射 $u$ 将每个系数送到 $u(e_\nu)$，保有原先的界；这个恒等式先在纯张量上成立，再由连续性延拓。它也证明所述两个交换关系。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001549-reader.jpg" alt="Typeset mathematical passage from PDF page 97" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=97">PDF page 97</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(direct operational uses)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole</li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001548/">fnd:freepolyradiusfield</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

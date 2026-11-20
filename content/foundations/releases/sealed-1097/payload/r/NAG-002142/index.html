@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002142/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The maximum-parameter composition law · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002142 · Accepted whole</p><h1>The maximum-parameter composition law</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.15.3">Open in the English reader · PDF page 867</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1345f6c566f8624d8302d2e1f2db0cc067b003cdf3b1185c6ef9e6b82325ee9c">
+\begin{proposition}[\bi{The maximum-parameter composition law}
+{参数取最大值的复合律}]
+\label{cand:standardhomotopysemigroup}
+\bi{For all $x\in V$ and $s,t\in[0,1]$,}
+{对所有 $x\in V$ 及 $s,t\in[0,1]$，有}
+\[
+ H(H(x,s),t)=H(x,\max(s,t)).
+\]
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="d80a26fe3622bf04d13310e7b97f4720b5dd3b30b21d6be95638ad46c015662e">
+\begin{proof}
+\bi{When one parameter is zero the assertion is immediate.
+For positive parameters, realize the completed residue field
+of $H(x,s)$ inside the completed Gauss rational field used
+in its definition. The injection comes from its actual
+evaluation homomorphism, after quotienting its kernel,
+taking fractions, and completing. Gauss extension preserves
+the norm of every coefficient. Iterating the construction
+therefore uses independent variables $(S,Z)$ of radius $s$
+and $(S&#x27;,Z&#x27;)$ of radius $t$, and substitutes}
+{若某个参数为零，断言立即成立。对于正参数，将
+$H(x,s)$ 的完备剩余域实现为其定义所用完备 Gauss
+有理函数域的子域：先由实际取值同态商去核，再取分式
+并完备化，即得此等距嵌入。Gauss 扩张保持每个系数的
+范数。因此迭代构造使用半径为 $s$ 的独立变量 $(S,Z)$
+和半径为 $t$ 的独立变量 $(S&#x27;,Z&#x27;)$，并作代换}
+\[
+ X_i\mapsto\xi_i(1+S_i)(1+S&#x27;_i),\qquad
+ T_j\mapsto b_j+Z_j+Z&#x27;_j.
+\]
+\bi{The two sets of variables are symmetric, so assume
+$s\leq t$. Set}
+{两组变量对称，故可设 $s\leq t$。置}
+\[
+ W_i=S_i+S&#x27;_i+S_iS&#x27;_i,\qquad V_j=Z_j+Z&#x27;_j.
+\]
+\bi{The rational coordinate change from $(S,Z,S&#x27;,Z&#x27;)$ to
+$(S,Z,W,V)$ is an isometry of Gauss fields with radii
+$(s,s,t,t)$. To see this directly, its inverse formulas are}
+{从 $(S,Z,S&#x27;,Z&#x27;)$ 到 $(S,Z,W,V)$ 的有理坐标变换，是
+半径为 $(s,s,t,t)$ 的 Gauss 域之间的等距映射。直接
+证明如下，其逆公式为}
+\[
+ S&#x27;_i=(W_i-S_i)/(1+S_i),\qquad Z&#x27;_j=V_j-Z_j.
+\]
+\bi{The displayed images have their assigned norm bounds,
+because $s\leq t$ and $|1+S_i|=1$, including when $s=t=1$.
+Hence substitution of an old polynomial has norm at most its
+original Gauss norm. Its image is a new polynomial divided
+by a product of powers of $1+S_i$, of norm one. Applying
+the reverse substitution to that numerator gives the reverse
+bound. This proves equality for polynomials and then for
+their fractions. The same argument for $V=Z+Z&#x27;$ is linear
+and has no denominator.}
+{由于 $s\leq t$ 且 $|1+S_i|=1$，所列各像均满足指定
+范数界，$s=t=1$ 时也成立。因此，原多项式经代换后的
+范数至多为其原 Gauss 范数。其像是新多项式除以若干
+$(1+S_i)$ 的幂之积，此分母范数为一。对分子作反向
+代换即得反向估计。由此得到多项式上的等式，再得到
+分式上的等式。对于 $V=Z+Z&#x27;$，同样论证为线性的，
+且没有分母。}
+
+\bi{After this isometry the iterated substitution is simply
+$X_i\mapsto\xi_i(1+W_i)$ and $T_j\mapsto b_j+V_j$.
+It does not involve $(S,Z)$; its Gauss norm is the single
+displacement norm of radius $t$. This proves the identity
+on Laurent polynomials, and uniform approximation proves it
+on all of $A$.}
+{经过此等距变换后，迭代代换就是
+$X_i\mapsto\xi_i(1+W_i)$、$T_j\mapsto b_j+V_j$，
+不再使用 $(S,Z)$。其 Gauss 范数就是半径为 $t$ 的
+单次位移范数。这在 Laurent 多项式上证明恒等式，
+再由一致逼近得到整个 $A$ 上的恒等式。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="bc00eef42b67c25518c2a2f614e6790ae8386c2319fc294508d5a4e88a999960">
+\bi{Let $K$ be complete and nontrivially valued, with its original
+absolute value. Fix $0&lt;|a|&lt;1$ and integers $r,q\geq0$. Put}
+{设 $K$ 关于原绝对值完备且非平凡赋值。固定
+$0&lt;|a|&lt;1$ 及整数 $r,q\geq0$，置}
+\[
+ A=K\langle X_0,\ldots,X_r,T_1,\ldots,T_q\rangle
+                /(X_0\cdots X_r-a),\qquad V=\mathcal M(A).
+\]
+\bi{Proposition~\ref{fnd:standardmonomialchartgeometry} gives
+the continuous Gauss section $s:\Delta_a\to V$, where}
+{Proposition~\ref{fnd:standardmonomialchartgeometry} 给出
+连续 Gauss 截面 $s:\Delta_a\to V$，其中}
+\[
+ \Delta_a=\{(w_0,\ldots,w_r)\in\mathbb R_{\geq0}^{r+1}:
+                         \sum_iw_i=v(a)\}.
+\]
+\bi{After eliminating $X_0=a/(X_1\cdots X_r)$, $s(w)$ is the
+Gauss point of radii $e^{-w_i}$ in $X_i$, $1\leq i\leq r$,
+and radius $1$ in every $T_j$. Let $\Sigma_a=s(\Delta_a)$ and
+write $\operatorname{val}:V\to\Delta_a$ for the values of
+$X_0,\ldots,X_r$.}
+{消去 $X_0=a/(X_1\cdots X_r)$ 后，$s(w)$ 是在
+$X_i$、$1\leq i\leq r$ 上半径为 $e^{-w_i}$、在每个
+$T_j$ 上半径为 $1$ 的 Gauss 点。令
+$\Sigma_a=s(\Delta_a)$，并以
+$\operatorname{val}:V\to\Delta_a$ 记
+$X_0,\ldots,X_r$ 的赋值映射。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002142-reader.jpg" alt="Typeset mathematical passage from PDF page 867" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=867">PDF page 867 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope <small>(sealed retained clause)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002140/">NAG-002140</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope</li><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole</li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002140/">NAG-002140</a> · selected whole</li><li><a href="/r/NAG-002140/">NAG-002140</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002016/">fnd:standardmonomialchartgeometry</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

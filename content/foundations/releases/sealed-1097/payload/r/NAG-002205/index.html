@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002205/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Normalizing a nodal chart over a valuation ring · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002205 · Accepted whole</p><h1>Normalizing a nodal chart over a valuation ring</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.37.2">Open in the English reader · PDF page 739</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f3da3da40d3d6019642f9c7c6f375a13f5965599e15f8b9934ff8358bb430a35">
+\begin{lemma}[\bi{Normalizing a nodal chart over a valuation ring}
+{赋值环上结点坐标片的正规化}]
+\label{cand:valuationnodenormalization}
+\bi{Let $O$ be a valuation ring with fraction field $F$, and let
+$a\in O$. Put $R_a=O[u,v]/(uv-a)$. The integral closure of $R_a$
+in the normalization of $(R_a)_F$ is}
+{设 $O$ 为分式域为 $F$ 的赋值环，$a\in O$，
+并令 $R_a=O[u,v]/(uv-a)$。
+$R_a$ 在 $(R_a)_F$ 的正规化中的整闭包为}
+\[
+ R_a&#x27;=
+ \begin{cases}
+ R_a,&amp;a\ne0,\\
+ O[u]\oplus O[v],&amp;a=0.
+ \end{cases}
+\]
+\bi{The ring $R_a&#x27;$ is normal, finite and finitely presented over
+$R_a$, and flat and finitely presented over $O$.
+Its geometric fibres over $O$ are smooth or nodal curves.}
+{环 $R_a&#x27;$ 正规，在 $R_a$ 上有限且有限呈示，在 $O$ 上平坦且
+有限呈示；其在 $O$ 上的几何纤维为光滑曲线或结点曲线。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="52238e6fdb0b7d653c45e266cc2a51c9c1693ea0f5606711cd770fc1f266e880">
+\begin{proof}
+\bi{A valuation ring is integrally closed in its fraction field:
+if $x\notin O$ satisfied a monic equation over $O$, divide it by its
+leading power of $x$; all other terms lie in the maximal ideal,
+whereas the constant term is one. For $a\ne0$, substitution
+$v=a/u$ identifies $R_a$ with the Laurent polynomials
+$\sum_nc_nu^n$ satisfying}
+{赋值环在其分式域中整闭：若 $x\notin O$ 满足 $O$ 上的首一方程，
+用 $x$ 的最高次幂相除，则其余各项都属于极大理想，而常数项为一，
+矛盾。对 $a\ne0$，代入 $v=a/u$ 将 $R_a$ 识别为满足以下条件
+的 Laurent 多项式 $\sum_nc_nu^n$：}
+\[
+ c_n\in O\quad(n\geq0),\qquad
+ c_n\in a^{-n}O\quad(n&lt;0).
+\]
+\bi{Indeed the monomials $1,u,u^2,\ldots,v,v^2,\ldots$
+span the quotient and their Laurent images are linearly independent
+over $O$. Inside $F[u,u^{-1}]$ we therefore have}
+{事实上，单项式 $1,u,u^2,\ldots,v,v^2,\ldots$
+张成商环，其 Laurent 像在 $O$ 上线性无关。
+因此在 $F[u,u^{-1}]$ 内有}
+\[
+ R_a=O[u,u^{-1}]\cap O[v,v^{-1}],\qquad v=a/u.
+\]
+\bi{Both rings on the right are normal domains by
+\cite[Tags 030A, 00GY]{StacksAlg}; their intersection is integrally
+closed in the common fraction field $F(u)$, since a monic equation
+with coefficients in the intersection is a monic equation over
+each ring. Hence $R_a$ is normal and is already integrally closed
+in its generic ring $F[u,u^{-1}]$. The displayed monomial basis
+also proves its $O$-flatness.}
+{由 \cite[Tags 030A, 00GY]{StacksAlg}，右侧两个环均为正规整环。
+它们的交在共同分式域 $F(u)$ 中整闭，因为系数在交中的首一方程
+同时也是每个环上的首一方程。因此 $R_a$ 正规，在其泛环
+$F[u,u^{-1}]$ 中已经整闭。所示单项式基还证明其 $O$-平坦性。}
+
+\bi{For $a=0$, identify $R_0$ with the pairs in
+$O[u]\oplus O[v]$ having the same constant term.
+The larger ring is generated as an $R_0$-module by the two
+idempotents $(1,0),(0,1)$, and has the finite presentation}
+{对 $a=0$，将 $R_0$ 识别为 $O[u]\oplus O[v]$ 中常数项相同
+的有序对。较大的环作为 $R_0$-模由两个幂等元
+$(1,0),(0,1)$ 生成，并具有有限呈示}
+\[
+ R_0&#x27;=R_0[e]/\bigl(e^2-e,(1-e)u,ev\bigr),
+          \qquad e=(1,0).
+\]
+\bi{It is normal, as a product of two normal polynomial rings.
+If an element of $F[u]\oplus F[v]$ is integral over $R_0$,
+each projection is integral over the corresponding polynomial
+ring over $O$, so belongs to that ring. This proves the asserted
+integral-closure identity. It is free as an $O$-module and has an
+explicit finite presentation over $O$. Finally the fibres of
+$R_a$ are $uv=\overline a$, and those of $R_0&#x27;$ are two disjoint
+affine lines. These equations prove the geometric-fibre assertion.}
+{它是两个正规多项式环的积，故正规。若
+$F[u]\oplus F[v]$ 中的元素在 $R_0$ 上整，则每个投影都在
+对应的 $O$ 上多项式环上整，因而属于该多项式环。
+这证明所述整闭包等式。它作为 $O$-模自由，并在 $O$ 上具有
+显式有限呈示。最后，$R_a$ 的纤维为 $uv=\overline a$，
+$R_0&#x27;$ 的纤维为两条不交仿射直线；这些方程证明几何纤维断言。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002205-reader.jpg" alt="Typeset mathematical passage from PDF page 739" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=739">PDF page 739</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00GY@NAG-002205:both-variable-localizations · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-030A@NAG-002205:a-zero-product-factors · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-030A@NAG-002205:both-polynomial-factors · named external application <small>(verified Stacks application)</small></li><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li>CONTEXT:split-nodal-fibre · standing context or base <small>(literal context)</small></li><li>APP-STACKS-00GY@NAG-002205:both-variable-localizations · named external application</li><li>APP-STACKS-00GY@NAG-002205:both-variable-localizations · named external application <small>(requires)</small></li><li>APP-STACKS-030A@NAG-002205:a-zero-product-factors · named external application</li><li>APP-STACKS-030A@NAG-002205:a-zero-product-factors · named external application <small>(requires)</small></li><li>APP-STACKS-030A@NAG-002205:both-polynomial-factors · named external application</li><li>APP-STACKS-030A@NAG-002205:both-polynomial-factors · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>CONTEXT:split-nodal-fibre · standing context or base</li><li>CONTEXT:split-nodal-fibre · standing context or base <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

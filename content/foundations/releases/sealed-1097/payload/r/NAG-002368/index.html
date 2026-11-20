@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002368/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite neighborhoods of a relative interior level · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002368 · Accepted whole</p><h1>Finite neighborhoods of a relative interior level</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.41.3">Open in the English reader · PDF page 994</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="df51e99d9e4ca0d31b1be79534e8226fdde52d56b6e332021279ed1d86edfc3a">
+\begin{theorem}[Finite neighborhoods of a relative interior level]
+\label{v037:degree:finitelevelneighborhood}
+Let $p:X=\mathcal M(B)\to Y=\mathcal M(A)$ be any affinoid
+morphism, and let a unit moment tuple on $Y$ define
+$t_Y:Y\to\mathbb R^{n&#x27;}$. Fix $w&#x27;\in t_Y(Y)$ and suppose
+\[
+                   p^{-1}(t_Y^{-1}(w&#x27;))\subset\operatorname{Int}(X/Y).
+\]
+There is a closed rectangular box $P$ about $w&#x27;$, with
+$w&#x27;$ in its interior, for which
+\[
+ Y_0=t_Y^{-1}(P),\qquad X_0=p^{-1}(Y_0),\qquad
+                              p_0:X_0\longrightarrow Y_0
+\]
+are actual affinoid domains and a finite morphism with
+the canonical module Banach structure. The box may be
+chosen inside any prescribed neighborhood of $w&#x27;$.
+
+Suppose in addition that $X$ and $Y$ are pure of analytic
+dimension $d$, that $w&#x27;$ is a whole interior flat germ of
+$t_Y$ with saturated lattice $N_Y$, and that unit moment
+coordinates on $X$ and an integral lattice map $a$ satisfy
+the character identity $t_Y\circ p=a\circ t_X$. Suppose
+\[
+                 a^{-1}(w&#x27;)\cap t_X(X)=\{w_1,\ldots,w_s\}
+\]
+is finite and nonempty, and that the local source image
+at each $w_i$ lies in $w_i+(N_i)_{\mathbb R}$ for a
+saturated rank-$d$ lattice $N_i$. Write $A_0$ and $B_0$
+for the actual algebras of $Y_0$ and $X_0$. For a sufficiently
+small box as above, all the original source weights are
+defined and
+\[
+\begin{aligned}
+ \sum_i m_{X,f_X}(w_i)[N_Y:a(N_i)]
+   &amp;=m_{B_0,f_Y}(w&#x27;)\\
+   &amp;=\sum_{\mathfrak p\in\operatorname{Min}(A_0)}
+              \operatorname{length}_{(A_0)_{\mathfrak p}}
+                              ((B_0)_{\mathfrak p})
+                     m_{(Y_0)_{\mathfrak p},f_Y}(w&#x27;).
+\end{aligned}
+\]
+The component weight is zero for an empty fibre. The resulting
+integer is independent of the chosen box. If the displayed
+generic module lengths are $\Delta$ times those of $A_0$
+on all components meeting the fibre, then the middle term
+is $\Delta m_{Y,f_Y}(w&#x27;)$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="83be5cc0820e41a04fd15502ec4f381ac3c73c312fd1829e33174b8e710f714e">
+\begin{proof}
+By Proposition~\ref{fnd:affinoidinteriorcalculus}, the
+relative boundary
+$Z=X\setminus\operatorname{Int}(X/Y)$ is closed.
+It is compact by Proposition~\ref{fnd:boundedspectrumcompact}.
+The compact set $(t_Y\circ p)(Z)$ does not contain $w&#x27;$,
+so choose a closed box $P$ about $w&#x27;$ avoiding it and
+inside the prescribed neighborhood. The simultaneous
+coordinate bounds give the actual domain $Y_0$ by
+Theorem~\ref{fnd:generalizedrationaluniversal}.
+Theorem~\ref{fnd:generalizeddomainbasechange} gives the
+actual domain $X_0$, with algebra
+$B\widehat\otimes_AA_0$.
+
+Every point of $X_0$ comes from
+$\operatorname{Int}(X/Y)$. Base change of relative interior
+in Proposition~\ref{fnd:affinoidinteriorcalculus} makes
+$p_0$ everywhere interior. Theorem
+\ref{fnd:affinoidboundarylessfinite} proves that $B_0$
+is finite over $A_0$ and has its canonical module norm.
+This proves the first assertion over the original field
+and absolute value.
+
+For the remaining assertions choose $P$ also inside the
+target flat-germ neighborhood. Purity of $X_0$ and $Y_0$
+follows from Theorem~\ref{v036:analytic:domainpurity}.
+The whole target fibre is contained in $Y_0$; all its
+defining inequalities are strict at that fibre.
+The relative domain presentation and the composition
+inclusion \ref{fnd:affinoidinteriorcalculus} therefore make
+it interior over $K$ in $Y_0$. Its weight is the original
+one by Theorem~\ref{v036:flatgermlocalconstancy}.
+
+Each entire original source fibre at $w_i$ is contained
+in $X_0$, because $a(w_i)=w&#x27;$. It is interior over $K$
+in $X$ by the assumed relative interior and the target
+absolute interior. It is also interior in $X_0$ by the
+finite relative interior of $p_0$ and composition.
+The local flat containment persists under restriction.
+Theorem~\ref{v036:flatgermweight} defines these weights;
+Theorem~\ref{v036:flatgermlocalconstancy} identifies their
+values before and after restriction. The complete set
+of source moment values over $w&#x27;$ is unchanged.
+Theorem~\ref{v037:degree:finitecyclepushforward}, applied
+to the actual finite map $p_0$, now gives the displayed
+formula and the assertion involving $\Delta$.
+
+For independence of the box, intersect any two sufficiently
+small boxes. Their intersection is again a closed box
+with $w&#x27;$ in its interior. The associated finite maps
+restrict to the same actual map on this intersection,
+by Theorem~\ref{fnd:generalizeddomainbasechange} and
+Proposition~\ref{fnd:generalizedfinitebasechange}.
+The finite module over either target restricts to this
+same module, and the intersection contains the whole
+target moment fibre. The restriction assertion in
+Theorem~\ref{v037:degree:moduleweight} proves equality of
+the two middle terms. This proves the claimed independence.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002368-reader.jpg" alt="Typeset mathematical passage from PDF page 995" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=995">PDF page 995 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>CLAUSE:NAG-002368:finite_neighborhood_only · typed target unresolved in this export <small>(exact native proof input)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002365/">NAG-002365</a> · selected whole <small>(exact native proof input)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001997/">fnd:affinoidboundarylessfinite</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002293/">v036:analytic:domainpurity</a></li><li><a href="/r/NAG-002306/">v036:flatgermweight</a></li><li><a href="/r/NAG-002365/">v037:degree:finitecyclepushforward</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

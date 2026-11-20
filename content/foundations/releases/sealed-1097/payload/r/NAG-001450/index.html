@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001450/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite-dimensional norms and finite field extensions · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001450 · Accepted whole</p><h1>Finite-dimensional norms and finite field extensions</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.1.12.1">Open in the English reader · PDF page 75</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a3e3d7adf6549c1d8729d242506dd3ee35c881fbf5d3a764717abd4b4ddd25eb">
+\begin{lemma}[\bi{Finite-dimensional norms and finite field extensions}{有限维范数与有限域扩张}]\label{fnd:finiteextensionnorms}
+\bi{Every non-Archimedean norm on a finite-dimensional $K$-vector space, homogeneous for the fixed absolute value, is uniformly equivalent to a coordinate maximum norm and is complete. Every finite field extension $L/K$ admits exactly one non-Archimedean real-valued absolute value extending that of $K$. It makes $L$ complete and is uniformly equivalent to every such vector-space norm. No separability assumption is required.}
+{有限维 $K$-向量空间上每个关于给定绝对值齐次的非阿基米德范数，都与坐标最大范数一致等价且完备。每个有限域扩张 $L/K$ 都恰有一个延拓 $K$ 上绝对值的实值非阿基米德绝对值。它使 $L$ 完备，并与上述每个向量空间范数一致等价。不要求扩张可分。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a0a88dead3be5aabbc769f5c3d86ae69f23160e2b4eb717f837273c259d9c12c">
+\begin{proof}
+\bi{For the norm assertion, induct on a basis $e_1,\ldots,e_n$. The upper bound by a coordinate norm follows from the ultrametric inequality. By induction the subspace $F=\langle e_1,\ldots,e_{n-1}\rangle$ is complete, hence closed: any sequence in $F$ converging in the ambient norm is Cauchy, converges in $F$, and has the same limit. Therefore}
+{范数断言按基 $e_1,\ldots,e_n$ 的长度归纳。由超度量不等式，给定范数被坐标范数乘以常数控制。归纳假设说明子空间 $F=\langle e_1,\ldots,e_{n-1}\rangle$ 完备，因而闭：其中在环境范数下收敛的序列为 Cauchy 序列，在 $F$ 内收敛，且极限相同。因此}
+\[
+ \delta=\inf_{u\in F}\|e_n-u\|&gt;0.
+\]
+\bi{Writing $x=u+ae_n$ gives $|a|\leq\delta^{-1}\|x\|$ and $\|u\|\leq\max(1,\|e_n\|/\delta)\|x\|$. The inductive bound on the coordinates of $u$ proves the reverse norm inequality. Coordinatewise completeness of $K^n$ now proves completeness. The cases $n=0,1$ follow directly.}
+{写成 $x=u+ae_n$，便有 $|a|\leq\delta^{-1}\|x\|$，以及 $\|u\|\leq\max(1,\|e_n\|/\delta)\|x\|$。对 $u$ 的坐标应用归纳假设，即得反向范数估计。由 $K^n$ 的逐坐标完备性得到完备性。$n=0,1$ 的情形直接成立。}
+
+\bi{Put $O=\{a\in K:|a|\leq1\}$ and $\mathfrak m_O=\{a:|a|&lt;1\}$. This is a local subring of $L$. By \cite[Tag 00IA, Lemma 10.50.2]{StacksAlg}, choose a valuation ring $V\subset L$ with fraction field $L$ dominating $O$. Then $V\cap K=O$: if $|a|&gt;1$, its inverse belongs to $\mathfrak m_O\subset\mathfrak m_V$, so $a$ cannot belong to $V$. By \cite[Tag 00IB, Lemma 10.50.4]{StacksAlg}, for every $b\in L^\times$ either $b$ or $b^{-1}$ belongs to $V$. Thus}
+{令 $O=\{a\in K:|a|\leq1\}$，$\mathfrak m_O=\{a:|a|&lt;1\}$。这是 $L$ 的局部子环。由 \cite[Tag 00IA, Lemma 10.50.2]{StacksAlg}，选择分式域为 $L$ 且支配 $O$ 的赋值环 $V\subset L$。此时 $V\cap K=O$：若 $|a|&gt;1$，则 $a^{-1}\in\mathfrak m_O\subset\mathfrak m_V$，所以 $a$ 不可能属于 $V$。由 \cite[Tag 00IB, Lemma 10.50.4]{StacksAlg}，对每个 $b\in L^\times$，$b$ 或 $b^{-1}$ 属于 $V$。因而}
+\[
+ \Gamma=L^\times/V^\times,\qquad
+ v(b)\geq v(c)\ \Longleftrightarrow\ b/c\in V
+\]
+\bi{is an ordered abelian group, written additively. The order is well-defined under multiplication by units, total by the cited lemma, and antisymmetric because an element and its inverse are both in $V$ exactly when it is a unit. Its positive elements are represented by $\mathfrak m_V\setminus\{0\}$. For a nonzero sum, division by a term of smaller value proves $v(b+c)\geq\min(v(b),v(c))$. The subgroup from $K^\times$ is therefore identified, with its order, with $-\log|K^\times|\subset\mathbb R$.}
+{这是一个以加法记号书写的有序阿贝尔群。乘以单位元不改变此关系，所引引理给出全序；一个元素及其逆同时属于 $V$ 当且仅当它是单位元，故此关系反对称。其正元素恰由 $\mathfrak m_V\setminus\{0\}$ 表示。对非零的和，除以赋值较小的一项即可得到 $v(b+c)\geq\min(v(b),v(c))$。因此，来自 $K^\times$ 的子群及其序可识别为 $-\log|K^\times|\subset\mathbb R$。}
+
+\bi{For $b\in L^\times$, take a nonzero polynomial relation $\sum_i c_i b^i=0$ over $K$, omitting zero terms. The smallest of the values $v(c_i)+iv(b)$ is attained at least twice. Otherwise, division by its unique minimizing term would give $1$ plus elements of $\mathfrak m_V$ equal to zero. Hence, for some $i\ne j$,}
+{对 $b\in L^\times$，取一个非零的 $K$ 上多项式关系 $\sum_i c_i b^i=0$，删去零项。各 $v(c_i)+iv(b)$ 中的最小值至少取得两次；否则除以唯一的最小项，就会得到 $1$ 加上若干 $\mathfrak m_V$ 中的元素等于零。因此，存在 $i\ne j$ 使}
+\[
+ (i-j)v(b)=v(c_j)-v(c_i).
+\]
+\bi{Every $\gamma\in\Gamma$ consequently has a positive integer multiple $n\gamma$ in the subgroup from $K$. Define $w(\gamma)=w_K(n\gamma)/n$, where $w_K(v(a))=-\log|a|$. Common multiples show that this is independent of $n$ and additive; the order on the subgroup shows that it preserves and reflects positivity. Thus $|b|_L=\exp(-w(v(b)))$, with $|0|_L=0$, is the required absolute value. This construction also covers trivial valuation, when the ordered group has to be zero.}
+{因此，每个 $\gamma\in\Gamma$ 都有正整数倍 $n\gamma$ 属于来自 $K$ 的子群。定义 $w(\gamma)=w_K(n\gamma)/n$，其中 $w_K(v(a))=-\log|a|$。取公倍数可知该定义与 $n$ 无关且具有加法性；子群上的序说明它保持并反映正性。于是，以 $|b|_L=\exp(-w(v(b)))$、$|0|_L=0$ 定义所需绝对值。该构造也涵盖平凡赋值，此时有序群必为零。}
+
+\bi{This absolute value is a vector-space norm on finite-dimensional $L$, so the first paragraph proves its equivalence to every other such norm and its completeness. Two extending absolute values are therefore bounded by constant multiples of one another. Apply both inequalities to $b^n$ and take $n$th roots; the constants tend to one, proving equality.}
+{该绝对值是有限维 $L$ 上的向量空间范数，因此第一段证明它与每个其他此类范数一致等价且完备。任意两个延拓绝对值于是互相被常数倍控制。将两个不等式应用于 $b^n$ 并取 $n$ 次方根，常数趋于一，故两个绝对值相等。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001450-reader.jpg" alt="Typeset mathematical passage from PDF page 75" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=75">PDF page 75 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><p class="muted">No explicit typed target in the exported bindings.</p></main><footer>Foundations · sealed 1097</footer></body></html>

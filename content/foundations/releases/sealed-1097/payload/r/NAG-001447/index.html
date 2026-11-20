@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001447/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Elementary flatness and strict finite-module exactness · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001447 · Accepted whole</p><h1>Elementary flatness and strict finite-module exactness</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.20.2">Open in the English reader · PDF page 182</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="06a4fc415cdde87829b27a15e7bc11f2f5b62ea902342d01441ef480c6169306">
+\begin{theorem}[\bi{Elementary flatness and strict finite-module exactness}{Elementary 平坦性与有限模的严格正合性}]\label{fnd:elementarystrictflatness}
+\bi{Let $A$ be as above, fix $f\in A$ and $r\in|K^\times|$, and put}
+{设 $A$ 如上，固定 $f\in A$ 及 $r\in|K^\times|$，记}
+\[
+ B_+=A\{r^{-1}T\}/(T-f),\qquad
+ B_-=A\{rU\}/(1-fU),
+\]
+\bi{with their quotient norms and the explicit zero-quotient convention. For either sign $\epsilon\in\{+,-\}$ the ring map $A\to B_\epsilon$ is flat. For every short exact sequence of finite $A$-modules with canonical norms,}
+{两个商均配备商范数，并采用明确的零商约定。对任一符号 $\epsilon\in\{+,-\}$，环映射 $A\to B_\epsilon$ 为平坦映射。对配备 canonical 范数的有限 $A$-模的每个短正合列}
+\[
+ 0\longrightarrow M&#x27;\longrightarrow M\longrightarrow M&#x27;&#x27;\longrightarrow0,
+\]
+\bi{its ordinary tensor sequence and its separated completed tensor sequence with $B_\epsilon$ are exact and norm-strict. The resulting modules have their canonical finite-$B_\epsilon$-module norms, equivalently the corresponding projective norms. Flatness here concerns ordinary algebraic tensor products on all $A$-modules; the Banach assertion is restricted to finite modules with these norms.}
+{其与 $B_\epsilon$ 的普通张量积序列和 separated completed tensor 序列均正合且 norm-strict。所得模配备 canonical 的有限 $B_\epsilon$-模范数，等价地可以使用相应的 projective 范数。这里的平坦性涉及所有 $A$-模上的普通代数张量积；Banach 结论则限制在带上述范数的有限模上。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="90bfb16d19489d821a603e0ae9c8ed5a03370ade2000b440b83a5d5f17876470">
+\begin{proof}
+\bi{\textbf{Step 1: exactness before imposing the relation.} Choose quotient norms from finite free presentations of $M&#x27;,M,M&#x27;&#x27;$. All maps remain bounded and norm-strict by Theorem~\ref{fnd:strictfinitemodules}. Corollary~\ref{fnd:weightedfiniteexact}, with the one-sided multiplicative weights $r^n$ or $r^{-n}$, gives an exact coefficient sequence for either sign. Multiplication by the chosen relation commutes with its arrows, since the original maps are $A$-linear. We therefore have the following diagram of underlying $A$-modules, with exact rows:}
+{\textbf{步骤 1：施加关系之前的正合性。} 为 $M&#x27;,M,M&#x27;&#x27;$ 选取有限自由表示的商范数。由 Theorem~\ref{fnd:strictfinitemodules}，所有映射仍然有界且 norm-strict。对单边乘性权重 $r^n$ 或 $r^{-n}$ 应用 Corollary~\ref{fnd:weightedfiniteexact}，得到每个符号对应的正合系数序列。由于原映射为 $A$-线性，乘以所选关系的算子与这些箭头交换。因此有如下底层 $A$-模图表，其两行均正合：}
+\[
+ \begin{array}{ccccccccc}
+ 0&amp;\longrightarrow&amp;E_\epsilon(M&#x27;)&amp;\longrightarrow&amp;E_\epsilon(M)
+   &amp;\longrightarrow&amp;E_\epsilon(M&#x27;&#x27;)&amp;\longrightarrow&amp;0\\
+ &amp;&amp;\downarrow Q_\epsilon&amp;&amp;\downarrow Q_\epsilon
+   &amp;&amp;\downarrow Q_\epsilon\\
+ 0&amp;\longrightarrow&amp;E_\epsilon(M&#x27;)&amp;\longrightarrow&amp;E_\epsilon(M)
+   &amp;\longrightarrow&amp;E_\epsilon(M&#x27;&#x27;)&amp;\longrightarrow&amp;0 .
+ \end{array}
+\]
+
+\bi{\textbf{Step 2: pass to the actual cokernels.} The right vertical map is injective by Lemma~\ref{fnd:elementaryrelationinjectivity}. The snake lemma, \cite[Tag 010H, Lemma 12.5.17(2)]{StacksAlg}, applied in the abelian category of algebraic $A$-modules, now gives the exact sequence}
+{\textbf{步骤 2：转到实际余核。} 由 Lemma~\ref{fnd:elementaryrelationinjectivity}，右侧纵向映射为单射。在代数 $A$-模的阿贝尔范畴中应用蛇引理 \cite[Tag 010H, Lemma 12.5.17(2)]{StacksAlg}，得到正合列}
+\[
+ \begin{split}
+ 0\longrightarrow&amp;
+ E_\epsilon(M&#x27;)/Q_\epsilon E_\epsilon(M&#x27;)
+ \longrightarrow E_\epsilon(M)/Q_\epsilon E_\epsilon(M)\\
+ &amp;\longrightarrow E_\epsilon(M&#x27;&#x27;)/Q_\epsilon E_\epsilon(M&#x27;&#x27;)
+ \longrightarrow0 .
+ \end{split}
+\]
+\bi{The zero at the left comes from $\ker(Q_\epsilon|_{E_\epsilon(M&#x27;&#x27;)})=0$ in the snake sequence; the rightmost surjectivity comes from the surjectivity in the bottom row. Theorem~\ref{fnd:strictquotientmodule} identifies each actual cokernel naturally with $B_\epsilon\otimes_A$ the corresponding finite module, and with its separated completed tensor. That theorem also proves that the displayed relation images are closed and that the quotient norms are canonical. This is where the condition $r\in|K^\times|$ is used.}
+{左端的零来自蛇引理序列中 $\ker(Q_\epsilon|_{E_\epsilon(M&#x27;&#x27;)})=0$，最右端的满射性来自图表下行的满射。由 Theorem~\ref{fnd:strictquotientmodule}，每个实际余核都自然地识别为 $B_\epsilon$ 与相应有限模的普通张量积，也识别为其 separated completed tensor。该定理还证明了所列关系像是闭的，商范数是 canonical 的。这一步使用条件 $r\in|K^\times|$。}
+
+\bi{The induced arrows are $B_\epsilon$-linear by the same naturality. If $B_\epsilon\ne0$, it is strict by Lemma~\ref{fnd:strictweightedquotient}, so Theorem~\ref{fnd:strictfinitemodules} over $B_\epsilon$ makes these arrows bounded with closed images and norm-strict. If $B_\epsilon=0$, all terms are zero. Uniformly equivalent choices of the original canonical norms preserve these conclusions. We have used the snake lemma only on algebraic modules, not on a category of Banach spaces.}
+{由同一自然性，诱导箭头为 $B_\epsilon$-线性。若 $B_\epsilon\ne0$，由 Lemma~\ref{fnd:strictweightedquotient}，它为 strict；于是对 $B_\epsilon$ 应用 Theorem~\ref{fnd:strictfinitemodules}，可知这些箭头有界、具有闭像且为 norm-strict。若 $B_\epsilon=0$，所有项均为零。原 canonical 范数的一致等价替换保持这些结论。这里仅在代数模上使用蛇引理，并未在 Banach 空间的某个范畴中套用它。}
+
+\bi{\textbf{Step 3: test algebraic flatness.} Let $I\subset A$ be a finitely generated ideal. Both $I$ and $A/I$ are finite $A$-modules, with the canonical norms supplied by Theorem~\ref{fnd:strictfinitemodules}. Apply the exactness just proved to}
+{\textbf{步骤 3：检验代数平坦性。} 设 $I\subset A$ 为有限生成理想。$I$ 与 $A/I$ 均为有限 $A$-模，可由 Theorem~\ref{fnd:strictfinitemodules} 配备 canonical 范数。对下列序列应用刚证明的正合性：}
+\[
+ 0\longrightarrow I\longrightarrow A\longrightarrow A/I\longrightarrow0.
+\]
+\bi{It gives injectivity of $I\otimes_A B_\epsilon\to A\otimes_A B_\epsilon=B_\epsilon$, with the natural multiplication map. The finitely generated ideal criterion \cite[Tag 00HD, Lemma 10.39.5(4)]{StacksAlg} proves that $B_\epsilon$ is a flat $A$-module. This criterion upgrades the verified finite-module statement to algebraic flatness on all modules; it adds no assertion about completed tensors of arbitrary Banach modules.}
+{于是自然乘法映射 $I\otimes_A B_\epsilon\to A\otimes_A B_\epsilon=B_\epsilon$ 为单射。由有限生成理想判别准则 \cite[Tag 00HD, Lemma 10.39.5(4)]{StacksAlg}，$B_\epsilon$ 是平坦 $A$-模。这个准则将已经验证的有限模结论提升为所有模上的代数平坦性；它没有增添关于任意 Banach 模的 completed tensor 的断言。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="2b762cff874aa27371bdc4d182a69508c230049b1ab17336ab75e704ac3e5bd0">
+\bi{Here an algebraic $R$-module $N$ is flat if the ordinary tensor functor $-\otimes_R N$ preserves exact sequences; a ring map $R\to S$ is flat when $S$ is flat as an $R$-module. These are the definitions in \cite[Tag 00HB, Definition 10.39.1(1),(3)]{StacksAlg}. No completion or norm is part of this definition.}
+{这里称代数 $R$-模 $N$ 为平坦的，是指普通张量积函子 $-\otimes_R N$ 保持正合列；称环映射 $R\to S$ 平坦，是指 $S$ 作为 $R$-模平坦。这采用 \cite[Tag 00HB, Definition 10.39.1(1),(3)]{StacksAlg} 的定义。该定义不涉及完备化或范数。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="fc0e5aebc3723f939bed13679ca9e71036c1a373b8952ae53eb01c0cfe9c3b11">
+\begin{lemma}[\bi{One-sided relation operators}{单边关系算子}]\label{fnd:elementaryrelationinjectivity}
+\bi{Let $A$ be a nonzero strict norm-admissible $K$-affinoid algebra, let $M$ be a finite $A$-module with a canonical Banach norm, and let $f\in A$ and $r&gt;0$. On the one-sided coefficient spaces}
+{设 $A$ 为非零 strict norm-admissible $K$-affinoid 代数，$M$ 为配备 canonical Banach 范数的有限 $A$-模，且 $f\in A$、$r&gt;0$。在单边系数空间}
+\[
+ E_+(M)=M\{r^{-1}T\},\qquad
+ E_-(M)=M\{rU\}
+\]
+\bi{the bounded $A$-linear operators}
+{上，有界 $A$-线性算子}
+\[
+ Q_+=T-f:E_+(M)\to E_+(M),\qquad
+ Q_-=1-fU:E_-(M)\to E_-(M)
+\]
+\bi{are injective. No value-group restriction on $r$ is needed for this injectivity statement.}
+{均为单射。这个单射性结论不需要 $r$ 属于值群。}
+\end{lemma}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001447-reader.jpg" alt="Typeset mathematical passage from PDF page 182" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=182">PDF page 182 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00HD@NAG-001447:original-proof · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>APP-STACKS-010H@NAG-001447:original-proof · named external application <small>(exact existing frozen Stacks consumer)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001423/">NAG-001423</a> · selected whole <small>(ordered native whole proposal)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001435/">NAG-001435</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001446/">NAG-001446</a> · selected whole <small>(ordered native whole proposal)</small></li><li>STACKS-00HD · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>STACKS-010H · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>APP-STACKS-00HD@NAG-001447:original-proof · named external application</li><li>APP-STACKS-00HD@NAG-001447:original-proof · named external application <small>(requires)</small></li><li>APP-STACKS-010H@NAG-001447:original-proof · named external application</li><li>APP-STACKS-010H@NAG-001447:original-proof · named external application <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001423/">NAG-001423</a> · selected whole</li><li><a href="/r/NAG-001423/">NAG-001423</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001435/">NAG-001435</a> · selected whole</li><li><a href="/r/NAG-001435/">NAG-001435</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001446/">NAG-001446</a> · selected whole</li><li><a href="/r/NAG-001446/">NAG-001446</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001446/">fnd:elementaryrelationinjectivity</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001435/">fnd:strictquotientmodule</a></li><li><a href="/r/NAG-001434/">fnd:strictweightedquotient</a></li><li><a href="/r/NAG-001423/">fnd:weightedfiniteexact</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

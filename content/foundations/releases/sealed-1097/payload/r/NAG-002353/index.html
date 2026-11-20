@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002353/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The local tropical star of a whole interior fibre · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002353 · Accepted whole</p><h1>The local tropical star of a whole interior fibre</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.38.6">Open in the English reader · PDF page 977</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="feabded15df7703c75f39fae48adda175fe3424f7f7570b63e2c58095b80b859">
+\begin{theorem}[The local tropical star of a whole interior fibre]
+\label{v037:analytic:interiorlocalstar}
+Let $X=\mathcal M(B)$ be nonempty and pure of analytic dimension
+$d$ over a complete non-Archimedean field $K$ with its specified
+absolute value. Let $f_1,\ldots,f_n\in B^\times$, put $t=t_f$,
+and suppose
+\[
+       w\in t(X),\qquad F_w=t^{-1}(w)
+                                  \subset\operatorname{Int}(X/K).
+\]
+Choose a complete nontrivially valued isometric extension $L/K$
+and elements $a_i\in L^\times$ with $|a_i|=e^{-w_i}$.
+Let $D_w$ be the actual algebra of $F_w$, put
+$D=(D_w)_L$, and set $h_i=f_i/a_i$.
+There is an actual admissible model $D_0\subset D$, finite over
+$L^\circ\langle T_1^{\pm1},\ldots,T_n^{\pm1}\rangle$ by
+$T_i\mapsto h_i$. For any such model set
+\[
+ Z=\operatorname{Spec}\operatorname{im}\left(
+    \widetilde L[T^{\pm1}]
+       \longrightarrow D_0/L^{\circ\circ}D_0\right).
+\]
+Then $C=\operatorname{Trop}(Z)$ is the support of a finite pure
+$d$-dimensional rational polyhedral fan, and there is an open
+neighbourhood $V$ of $w$ such that
+\[
+                    t(X)\cap V=(w+C)\cap V.
+\]
+Its support $C$ is independent of the extension, normalizing
+elements, and compatible model. The theorem allows the trivial
+absolute value on $K$, arbitrary real $w$, and nonreduced $B$.
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="2991db1f309f7833c178d256c78073f0a58a4665d989ab7fbf8709174bdb402a">
+\begin{proof}
+Proposition~\ref{v037:analytic:wholemomentcollar}, restricted to
+the exact level at $w$, makes $D_w$ finite with its canonical
+norm over the $n$-dimensional exact-radius polytorus.
+Theorem~\ref{v036:gaussmodeldescent} constructs an extension
+realizing all the radii, and gives the indicated actual finite
+model over every such $L$.
+The actual domain base-change theorem
+\ref{fnd:generalizeddomainbasechange} identifies $\mathcal M(D)$
+with the whole normalized zero fibre in $X_L$.
+It is contained in $\operatorname{Int}(X_L/L)$ by the base-change
+assertion of Proposition~\ref{fnd:affinoidinteriorcalculus}.
+Moreover
+\[
+ t_h(X_L)=t(X)-w,\qquad \dim_LX_L=\dim_KX=d,
+\]
+by Theorems~\ref{fnd:scalarextensionspectralsurjective}
+and~\ref{fnd:analyticdimensionindependence}.
+No purity assertion after this scalar extension is used.
+
+Apply Proposition~\ref{v037:analytic:residualfan} to $X_L$.
+It gives a nonempty finite rational fan $C$ of dimension at most
+$d$, an inclusion of $t(X)-w$ in $C$ near $0$, and actual moment
+values approaching $w$ in every strict rational sector meeting
+$C$. The last assertion means sectors containing a specified
+point of $C$ with all their defining inequalities strict.
+The boundary $\partial_KX$ is compact, by
+Propositions~\ref{fnd:affinoidinteriorcalculus}
+and~\ref{fnd:boundedspectrumcompact}. Its moment image is compact
+and avoids $w$. Choose $\varepsilon&gt;0$ such that in the open
+Euclidean ball $B_\varepsilon(w)$ one has
+\[
+ t(X)\cap B_\varepsilon(w)\subset w+C,
+ \qquad t(\partial_KX)\cap B_\varepsilon(w)=\varnothing.
+\]
+
+Fix a maximal cone $\sigma$ of this fan and put $r=\dim\sigma$.
+The set
+\[
+ E_\sigma=t(X)\cap
+       \bigl(w+\operatorname{relint}\sigma\bigr)
+                     \cap B_\varepsilon(w)
+\]
+is nonempty. If $\sigma=\{0\}$ this follows from $w\in t(X)$.
+Otherwise choose a nonzero rational vector
+$u\in\operatorname{relint}\sigma$.
+There is a strict rational sector containing $u$ which meets
+$C$ only in $\operatorname{relint}\sigma$.
+To see this, choose an integral linear form $\ell$ with
+$\ell(u)&gt;0$ and use the slice $\ell(v)=1$.
+In this slice a sufficiently small rational open box around
+$u/\ell(u)$ avoids the finitely many other cones and the proper
+faces of $\sigma$. Its defining inequalities, after multiplication
+by the positive $\ell(v)$ and clearing denominators, together
+with $\ell(v)&gt;0$, define the required strict sector.
+Sector lifting from the preceding proposition, followed by
+$t_h(X_L)=t(X)-w$, gives points of $E_\sigma$ arbitrarily close
+to $w$.
+
+Take $v\in E_\sigma$ and put
+$N_\sigma=\mathbf Z^n\cap\operatorname{span}_{\mathbf R}\sigma$.
+This is saturated of rank $r$: a rational basis of the span
+becomes integral after clearing denominators. Since the fan is finite and
+$v-w$ belongs to the relative interior of a maximal cone, the
+moment image in a sufficiently small neighbourhood of $v$ lies
+in $v+(N_\sigma)_{\mathbf R}$.
+Choose a closed rectangular box $P_v$ in that neighbourhood,
+with $v$ in its interior, and put $Y_v=t^{-1}(P_v)$.
+Choose an integral projection
+$Q:\mathbf Z^n\to\mathbf Z^r$ that is injective on
+$N_\sigma$, using Lemma~\ref{cand:elementarylatticesplitting}.
+Its monomials are analytic units on $Y_v$.
+The entire level of $Q\circ t|_{Y_v}$ at $Qv$ is exactly
+$F_v=t^{-1}(v)$, since $Q$ is injective on this affine plane.
+
+Every point of $F_v$ is interior over $K$, because the chosen
+ball avoids $t(\partial_KX)$. The defining inequalities of
+$Y_v$ are strict on $F_v$, so its actual rational presentation
+puts $F_v\subset\operatorname{Int}(Y_v/X)$.
+Composition in Proposition~\ref{fnd:affinoidinteriorcalculus}
+therefore gives $F_v\subset\operatorname{Int}(Y_v/K)$.
+Theorem~\ref{v035:analytic:levelisfinite} now makes the actual
+algebra of $F_v$ finite over the $r$-dimensional exact-radius
+polytorus at $Qv$.
+The rational universal property
+\ref{fnd:generalizedrationaluniversal} identifies this level
+algebra with the original full fibre algebra in $X$.
+By Theorem~\ref{v036:analytic:domainpurity} its analytic dimension
+is $d$. Lemma~\ref{v037:analytic:finiteimage} and
+Proposition~\ref{v036:analytic:polyannulusdegree} give
+\[
+                                  d\leq r.
+\]
+The residual fan bound gives $r\leq d$. Thus every maximal
+cone has dimension $d$.
+
+At every point of $E_\sigma$, the hypotheses of
+Theorem~\ref{v036:flatgermlocalconstancy} are now satisfied over
+the original field: $X$ is pure of analytic dimension $d$,
+the whole fibre is interior, and the local image lies in the
+rank-$d$ saturated tangent plane. That theorem makes
+$E_\sigma$ relatively open in
+\[
+ U_\sigma=\bigl(w+\operatorname{relint}\sigma\bigr)
+                                      \cap B_\varepsilon(w).
+\]
+It is relatively closed there because $t(X)$ is compact.
+The set $U_\sigma$ is convex and nonempty.
+Starting at a point of $E_\sigma$, join it to any point of
+$U_\sigma$ by its line segment. The inverse image of
+$E_\sigma$ on $[0,1]$ is open and closed and contains $0$.
+If it were not all of $[0,1]$, the supremum of the initial
+interval it contains would contradict either its closedness
+or its openness. Thus $E_\sigma=U_\sigma$.
+This applies also to the zero-dimensional case, where
+$U_\sigma=\{w\}$.
+The relative interiors of the maximal cones are dense in their
+union. Closedness of $t(X)$ therefore fills all their faces
+inside the ball. Together with the opposite inclusion already
+proved, this yields
+\[
+          t(X)\cap B_\varepsilon(w)
+                    =(w+C)\cap B_\varepsilon(w).
+\]
+
+Finally, two choices of normalizers, extension, or model give
+conical supports with the same germ at $0$ by this equality.
+Multiplying any vector by a sufficiently small positive real
+number puts it in that common neighbourhood. Homogeneity of the
+two supports then makes them equal everywhere.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002353-reader.jpg" alt="Typeset mathematical passage from PDF page 977" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=977">PDF page 977 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole</li><li><a href="/r/NAG-001693/">NAG-001693</a> · selected whole</li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002256/">NAG-002256</a> · selected whole</li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole</li><li><a href="/r/NAG-002294/">NAG-002294</a> · selected whole</li><li><a href="/r/NAG-002302/">NAG-002302</a> · selected whole</li><li><a href="/r/NAG-002350/">NAG-002350</a> · selected whole</li><li><a href="/r/NAG-002351/">NAG-002351</a> · selected whole</li><li><a href="/r/NAG-002352/">NAG-002352</a> · selected whole</li><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001693/">NAG-001693</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002256/">NAG-002256</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002294/">NAG-002294</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002302/">NAG-002302</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002350/">NAG-002350</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002351/">NAG-002351</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002352/">NAG-002352</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001664/">fnd:analyticdimensionindependence</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001694/">fnd:scalarextensionspectralsurjective</a></li><li><a href="/r/NAG-002256/">v035:analytic:levelisfinite</a></li><li><a href="/r/NAG-002293/">v036:analytic:domainpurity</a></li><li><a href="/r/NAG-002294/">v036:analytic:polyannulusdegree</a></li><li><a href="/r/NAG-002302/">v036:gaussmodeldescent</a></li><li><a href="/r/NAG-002350/">v037:analytic:finiteimage</a></li><li><a href="/r/NAG-002352/">v037:analytic:residualfan</a></li><li><a href="/r/NAG-002351/">v037:analytic:wholemomentcollar</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

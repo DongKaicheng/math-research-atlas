@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002174/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Intrinsic bounds on displacement coefficients · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002174 · Accepted whole</p><h1>Intrinsic bounds on displacement coefficients</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.23.2">Open in the English reader · PDF page 900</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="3262304ebe3dad0afb4ec8549b04026d1819bafddb46edfa50ec0cb5c7e5bc4f">
+\begin{lemma}[\bi{Intrinsic bounds on displacement coefficients}
+{位移系数的内禀界}]
+\label{cand:intrinsicdisplacementbounds}
+\bi{For a bounded presentation (J), every analytic unit
+$v\in B^\times$ satisfies}
+{对于有界表示 (J)，每个解析单位元 $v\in B^\times$
+满足}
+\[
+ |v(H_B(x,t))|=|v(x)|,\qquad
+ |D_\nu(v)(x)|\leq|v(x)|
+                   \quad(x\in\mathcal M(B),\ 0\leq t\leq1).
+\]
+\bi{If $b\in B$ satisfies $|b(y)|\leq1$ at every
+$y\in\mathcal M(B)$, then $|D_\nu(b)(x)|\leq1$ for all
+$\nu,x$. Consequently, for $0&lt;\delta&lt;1$ and
+$E=\mathcal H(x)$, the evaluated displacement has}
+{若 $b\in B$ 在每个 $y\in\mathcal M(B)$ 处满足
+$|b(y)|\leq1$，则对全部 $\nu,x$ 有
+$|D_\nu(b)(x)|\leq1$。因此，当 $0&lt;\delta&lt;1$ 且
+$E=\mathcal H(x)$ 时，取值后的位移满足}
+\[
+ \left\|\frac{\sigma_{\delta,x}(v)}{v(x)}-1\right\|_\delta
+       \leq\delta,
+ \qquad
+ \|\sigma_{\delta,x}(b)-b(x)\|_\delta\leq\delta.
+\]
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0ffd73fe931b2bf6ef271a8781dbbea18e3abf12ed0fad8beaa5cb9e281d0cf4">
+\begin{proof}
+\bi{The constant coefficient in the displacement expansion
+gives $|c(H_B(x,t))|\geq|c(x)|$ for every $c\in B$.
+Apply this to $v$ and $v^{-1}$. Multiplicativity makes the
+product of the two left sides and the product of the two
+right sides both equal to one, so both inequalities are
+equalities. For each coefficient,}
+{位移展开的常数系数说明，对每个 $c\in B$ 有
+$|c(H_B(x,t))|\geq|c(x)|$。把它用于 $v$ 及
+$v^{-1}$。由乘性，两左侧之积及两右侧之积都为一，
+故两个不等式都是等式。对每个系数，}
+\[
+ |D_\nu(v)(x)|t^{|\nu|}\leq |v(x)|\qquad(0&lt;t&lt;1).
+\]
+\bi{Letting $t$ increase to one proves the coefficient
+bound for a unit. For the second assertion,
+$H_B(x,t)$ is an actual point of $\mathcal M(B)$, so
+$|b(H_B(x,t))|\leq1$; the same limiting argument gives
+the coefficient bound. Since $D_0$ is the identity, the
+remaining terms have positive total degree, and their
+Gauss norms at radius $\delta$ are at most $\delta$.
+These arguments use only the values of the functions on
+the analytic space, not a comparison of quotient norms.}
+{令 $t$ 递增到一，得到单位元的系数界。对于第二项，
+$H_B(x,t)$ 是 $\mathcal M(B)$ 中的实际点，所以
+$|b(H_B(x,t))|\leq1$；同样的极限论证给出系数界。
+由于 $D_0$ 为恒等，其余项的总次数为正，在半径
+$\delta$ 处的 Gauss 范数至多为 $\delta$。这些论证
+只使用函数在解析空间上的取值，不比较商范数。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="f4e7b66f6d361f065576faf40a82204f58f71a6f2125330e3ff739e025f04fe6">
+\bi{Throughout this section $K$ is complete and nontrivially
+valued, $O=K^\circ$, and $\pi\in O$ satisfies
+$0&lt;|\pi|&lt;1$. Formal algebras carry their $\pi$-adic
+topology. A formally \etale map below has the unique
+lifting property for square-zero extensions of discrete
+algebras annihilated by a power of $\pi$.}
+{本节中 $K$ 完备且非平凡赋值，$O=K^\circ$，并取
+$\pi\in O$ 满足 $0&lt;|\pi|&lt;1$。形式代数配备
+$\pi$-进拓扑。下文的形式 \etale 映射具有以下唯一
+提升性质：对于被 $\pi$ 的某个幂消灭的离散代数，
+可沿平方零扩张唯一提升。}
+
+\begin{lemma}[\bi{A bounded presentation for a formal \etale chart}
+{形式 \etale 坐标片的有界表示}]
+\label{cand:formaletaleboundedpresentation}
+\bi{Let $A_0\to B_0$ be an adic, topologically finitely
+presented, formally \etale homomorphism of complete
+admissible $O$-algebras. There are polynomials
+$F_1,\ldots,F_m\in A_0[Y_1,\ldots,Y_m]$ and an isomorphism}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002174-reader.jpg" alt="Typeset mathematical passage from PDF page 900" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=900">PDF page 900</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole</li><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole</li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole</li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

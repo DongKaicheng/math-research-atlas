@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001841/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Rational inverse images under a Gauss section · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001841 · Accepted whole</p><h1>Rational inverse images under a Gauss section</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.36.4">Open in the English reader · PDF page 364</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="550012aa20488d0d4c38618257f57a3eabad4d980b72761c5b81b031f95c3f90">
+\begin{lemma}[\bi{Rational inverse images under a Gauss section}{Gauss 截面下的 rational 逆像}]
+\label{fnd:gaussrationalfinitecover}
+\bi{Let $A$ be a generalized $K$-affinoid algebra, let $r$ be a finite free tuple, and put $A_r=A\widehat\otimes_K K_r$. For every rational domain $R&#x27;$ of $\mathcal M_{K_r}(A_r)$, the subset $\sigma_{r,A}^{-1}(R&#x27;)$ is a finite union of rational domains defined over the original algebra $A$, with positive real radii.}
+{设 $A$ 为 generalized $K$-affinoid 代数，$r$ 为有限自由元组，令 $A_r=A\widehat\otimes_K K_r$。对 $\mathcal M_{K_r}(A_r)$ 中的每个 rational 域 $R&#x27;$，子集 $\sigma_{r,A}^{-1}(R&#x27;)$ 都是定义在原代数 $A$ 上、允许正实半径的有限个 rational 域的并。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c411585c3cbc3af53ac55f3d75c906804c4a447639bb51aa201ccc474591c3db">
+\begin{proof}
+\bi{The zero algebra gives the empty case. Otherwise choose a rational presentation}
+{零代数对应空情形。否则，选择 rational 表示}
+\[
+ R&#x27;=\{z:|f_i(z)|\leq\rho_i|g(z)|\ (1\leq i\leq m)\},
+ \qquad h_0g+\sum_{i=1}^m h_if_i=1
+\]
+\bi{in $A_r$, with $\rho_i&gt;0$. Use the coefficient norm of Theorem~\ref{fnd:freepolyradiuscoefficients} and set}
+{其中各 $\rho_i&gt;0$。采用 Theorem~\ref{fnd:freepolyradiuscoefficients} 的系数范数，并令}
+\[
+ C=\max\bigl(\|h_0\|,\rho_1\|h_1\|,\ldots,\rho_m\|h_m\|\bigr)&gt;0,
+ \qquad \delta=C^{-1}.
+\]
+\bi{For $x\in\sigma_{r,A}^{-1}(R&#x27;)$, evaluating the unit identity gives}
+{对 $x\in\sigma_{r,A}^{-1}(R&#x27;)$，将单位恒等式取值，得到}
+\[
+ 1\leq C\,\sigma_{r,A}(x)(g),
+ \qquad \sigma_{r,A}(x)(g)\geq\delta.
+\]
+\bi{Write $g=\sum_{\nu}g_\nu T^\nu$ and $f_i=\sum_\nu f_{i\nu}T^\nu$. Choose finite index sets $G,F_i\subset\mathbf Z^s$ such that the omitted coefficient weights satisfy}
+{写作 $g=\sum_{\nu}g_\nu T^\nu$ 及 $f_i=\sum_\nu f_{i\nu}T^\nu$。选择有限指标集 $G,F_i\subset\mathbf Z^s$，使省去的系数权重满足}
+\[
+ \|g_\nu\|r^\nu&lt;\delta/2\quad(\nu\notin G),\qquad
+ \|f_{i\nu}\|r^\nu&lt;\rho_i\delta/2\quad(\nu\notin F_i).
+\]
+\bi{Such sets exist by coefficient convergence. For each $\nu\in G$, define $R_\nu\subseteq\mathcal M_K(A)$ by}
+{由系数收敛性，这些有限集存在。对每个 $\nu\in G$，用下列条件定义 $R_\nu\subseteq\mathcal M_K(A)$：}
+\[
+ \begin{split}
+ \delta&amp;\leq r^\nu|g_\nu(x)|,\\
+ r^\mu|g_\mu(x)|&amp;\leq r^\nu|g_\nu(x)|\quad(\mu\in G),\\
+ r^\mu|f_{i\mu}(x)|&amp;\leq\rho_i r^\nu|g_\nu(x)|
+       \quad(1\leq i\leq m,\ \mu\in F_i).
+ \end{split}
+\]
+\bi{This is an original-$A$ rational presentation with denominator $g_\nu$: its numerators are $1$, the $g_\mu$, and the $f_{i\mu}$, with respective radii $r^\nu/\delta$, $r^{\nu-\mu}$, and $\rho_i r^{\nu-\mu}$. The numerator $1$ guarantees the unit-ideal condition. Empty members, including those with $g_\nu=0$, are allowed.}
+{这是原 $A$ 上的 rational 表示，以 $g_\nu$ 为分母，分子依次为 $1$、各 $g_\mu$ 及各 $f_{i\mu}$，相应半径为 $r^\nu/\delta$、$r^{\nu-\mu}$ 及 $\rho_i r^{\nu-\mu}$。分子中包含 $1$，保证单位理想条件。允许空成员，包括 $g_\nu=0$ 的情形。}
+
+\bi{At a point of $\sigma_{r,A}^{-1}(R&#x27;)$, the denominator value is at least $\delta$. The omitted $g$-coefficients have smaller value, so some retained coefficient $g_\nu$ attains its Gauss maximum. The rational inequalities and the same Gauss formula then put the point in $R_\nu$. Conversely, on $R_\nu$, the first two conditions and the omitted-coefficient bound give $\sigma_{r,A}(x)(g)=r^\nu|g_\nu(x)|\geq\delta$. The retained $f_i$-coefficients satisfy the required bound by the third condition, while the omitted coefficients are smaller than $\rho_i\delta$. Therefore $\sigma_{r,A}(x)(f_i)\leq\rho_i\sigma_{r,A}(x)(g)$ for every $i$. This proves the exact set equality}
+{在 $\sigma_{r,A}^{-1}(R&#x27;)$ 的点处，分母取值至少为 $\delta$。省去的 $g$-系数取值更小，因此某个保留的系数 $g_\nu$ 达到其 Gauss 最大值。由 rational 不等式与同一 Gauss 公式，该点属于 $R_\nu$。反之，在 $R_\nu$ 上，前两组条件及省去系数的界给出 $\sigma_{r,A}(x)(g)=r^\nu|g_\nu(x)|\geq\delta$。第三组条件控制全部保留的 $f_i$-系数，而省去的系数小于 $\rho_i\delta$。因此，对每个 $i$ 都有 $\sigma_{r,A}(x)(f_i)\leq\rho_i\sigma_{r,A}(x)(g)$。于是得到精确的集合等式}
+\[
+ \sigma_{r,A}^{-1}(R&#x27;)=\bigcup_{\nu\in G}R_\nu.
+\]
+\bi{The proof also allows an empty tuple $r$, zero retained coefficients and an empty inverse image.}
+{此证明也允许 $r$ 为空元组、保留的系数为零，以及逆像为空。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001841-reader.jpg" alt="Typeset mathematical passage from PDF page 364" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=364">PDF page 364 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole</li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001549/">fnd:freepolyradiuscoefficients</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

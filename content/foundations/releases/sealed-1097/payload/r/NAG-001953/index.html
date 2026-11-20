@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001953/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Localization at the spectral maximum · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001953 · Accepted whole</p><h1>Localization at the spectral maximum</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.3.18.1">Open in the English reader · PDF page 548</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8b4eb690cdb60a8586ee143fb387a5198311782ce231cf4d670652a068dd29f0">
+\begin{proposition}[\bi{Localization at the spectral maximum}
+{在谱最大值处的局部化}]
+\label{fnd:spectralmaximumlocalization}
+\bi{Let $A$ be affinoid, let $f\in A$, and suppose
+$r=\rho_A(f)&gt;0$. Set $B=A\{rf^{-1}\}$ and write $\bar f$
+for the initial form of $f$. For $a\in A$,}
+{设 $A$ 为 affinoid，$f\in A$，且 $r=\rho_A(f)&gt;0$。
+令 $B=A\{rf^{-1}\}$，以 $\bar f$ 记 $f$ 的首项。
+对 $a\in A$，有}
+\[
+ \rho_B(a)=\lim_{n\longrightarrow\infty}r^{-n}\rho_A(f^na).
+\]
+\bi{If this value is positive, the sequence is eventually constant.
+The canonical homomorphism is an isomorphism}
+{若这个值为正，则此序列最终常值。典范同态为同构}
+\[
+ (\widetilde A^{\rm gr})_{\bar f}
+       \xrightarrow{\ \sim\ }\widetilde B^{\rm gr}.
+\]
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c12388042bdda6916463bf01ad2bc63d6b00cb6742944c5f8ebd28ad11e12504">
+\begin{proof}
+\bi{Let $\Gamma$ be the finite Shilov boundary from
+Corollary~\ref{fnd:affinoidshilovinternal}, and set
+$\Gamma_f=\{x\in\Gamma:|f(x)|=r\}$. This set is nonempty.
+The rational point theorem identifies $\mathcal M(B)$ with
+$\{|f|=r\}\subset\mathcal M(A)$. For every $n$ its points satisfy}
+{取 Corollary~\ref{fnd:affinoidshilovinternal} 的有限 Shilov
+边界 $\Gamma$，令 $\Gamma_f=\{x\in\Gamma:|f(x)|=r\}$。
+这个集合非空。Rational 谱点定理将 $\mathcal M(B)$ 识别为
+$\mathcal M(A)$ 中的 $\{|f|=r\}$。对任意 $n$，其谱点满足}
+\[
+ |a(x)|\leq r^{-n}\rho_A(f^na)
+   =\max_{y\in\Gamma}\left(\frac{|f(y)|}{r}\right)^n|a(y)|.
+\]
+\bi{The finite maximum on the right decreases to
+$m=\max_{\Gamma_f}|a|$. Conversely $\Gamma_f$ consists of points
+of $B$, so $\rho_B(a)\geq m$. This proves the formula.
+If $m&gt;0$, every term with $|f(y)|&lt;r$ is smaller than $m$
+for all sufficiently large $n$, giving eventual equality.}
+{右端的有限最大值递减到 $m=\max_{\Gamma_f}|a|$。
+反之，$\Gamma_f$ 中的点都是 $B$ 的谱点，故 $\rho_B(a)\geq m$。
+这证明公式。若 $m&gt;0$，则当 $n$ 充分大时，全部
+$|f(y)|&lt;r$ 的项都小于 $m$，从而得到最终恒等式。}
+
+\bi{On $B$ one has $|f|=r$, hence
+$\rho_B(f^jb)=r^j\rho_B(b)$ for all integers $j$.
+If a homogeneous class represented by $a$ dies in $\widetilde B^{\rm gr}$,
+the limit formula gives $\rho_A(f^na)&lt;r^n\rho_A(a)$ for some $n$.
+Thus it is already killed by a power of $\bar f$, proving
+injectivity after localization. Every nonzero homogeneous class in
+$\widetilde B^{\rm gr}$ has a representative of the form $a/f^j$:
+the polynomial algebra $A[f^{-1}]$ is dense in $B$, so approximate
+a representative with error strictly below its positive spectral
+size. Increase $j$ if necessary. Eventual equality gives
+$\rho_A(f^na)=r^n\rho_B(a)$, and the initial class of
+$f^na/f^{j+n}$ then comes from the displayed localization.
+This proves surjectivity.}
+{在 $B$ 上 $|f|=r$，故对所有整数 $j$ 有
+$\rho_B(f^jb)=r^j\rho_B(b)$。
+若 $a$ 所代表的齐次类在 $\widetilde B^{\rm gr}$ 中消失，
+极限公式给出某个 $n$ 满足
+$\rho_A(f^na)&lt;r^n\rho_A(a)$。因此这个类已被 $\bar f$ 的
+某个幂消去，证明局部化后的单射性。
+$\widetilde B^{\rm gr}$ 中每个非零齐次类都可以由 $a/f^j$
+代表：因为 $A[f^{-1}]$ 在 $B$ 中稠密，可以把代表元逼近到
+误差严格小于其正谱大小。必要时增加 $j$。最终恒等式给出
+$\rho_A(f^na)=r^n\rho_B(a)$，于是
+$f^na/f^{j+n}$ 的首项类来自所列局部化。这证明满射性。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001953-reader.jpg" alt="Typeset mathematical passage from PDF page 549" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=549">PDF page 549</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001905/">NAG-001905</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001905/">fnd:affinoidshilovinternal</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

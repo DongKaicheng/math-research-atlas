@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001438/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The completed tensor product of two quotient presentations · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001438 · Accepted whole</p><h1>The completed tensor product of two quotient presentations</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.18.2">Open in the English reader · PDF page 172</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="5a80451783c6a601c7ef81e26fee00d333633605b59adf1b32c77e02b569c629">
+\begin{theorem}[\bi{The completed tensor product of two quotient presentations}{两个商表示的完备张量积}]\label{fnd:strictpresentationpushout}
+\bi{Let}
+{设}
+\[
+ \begin{aligned}
+ B&amp;=A\{\rho^{-1}X\}/I,\\
+ C&amp;=A\{\sigma^{-1}Y\}/J,\\
+ H&amp;=A\{\rho^{-1}X,\sigma^{-1}Y\}/(I,J).
+ \end{aligned}
+\]
+\bi{where $(I,J)$ denotes the sum of the two extended ideals. Use the stated quotient norms on $B,C,H$, and the projective seminorm on $B\otimes_A C$. The multiplication of the two canonical maps into $H$ induces an isometric algebra isomorphism}
+{其中 $(I,J)$ 表示两个延伸理想之和。给 $B,C,H$ 配备所列商范数，并给 $B\otimes_A C$ 配备 projective seminorm。将两个到 $H$ 的典范映射的像相乘，诱导等距代数同构}
+\[
+ B\widehat\otimes_A C\ \xrightarrow{\ \sim\ }\ H.
+\]
+\bi{This is a statement about the separated completion; it does not assert that the algebraic tensor product is already complete or has definite projective seminorm. The isomorphism commutes with the two maps from $B,C$.}
+{这里的结论涉及分离完备化；并未断言代数张量积已经完备，也未断言其 projective seminorm 正定。该同构与从 $B,C$ 出发的两个映射相容。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="46f74a461760d2733c41262e12e4b362f83482c8f05136d8cafc4b32469805d0">
+\begin{proof}
+\bi{If either $B$ or $C$ is zero, $H$ is zero as well and the assertion follows. Assume otherwise, and put $G=B\widehat\otimes_A C$. To make the analytic construction explicit, the seminorm on the algebraic tensor product is}
+{若 $B$ 或 $C$ 为零，则 $H$ 也为零，结论成立。以下设二者均非零，记 $G=B\widehat\otimes_A C$。为明确其解析构造，代数张量积上的半范数为}
+\[
+ \|z\|_\pi=
+ \inf_{z=\sum_{j=1}^n b_j\otimes c_j}
+       \max_j\|b_j\|\|c_j\|.
+\]
+\bi{Multiplying two finite tensor expressions and taking infima gives $\|zz&#x27;\|_\pi\leq\|z\|_\pi\|z&#x27;\|_\pi$. Thus its seminorm-zero subspace is an ideal, multiplication descends to the separated quotient and extends continuously to $G$. The maps $b\mapsto b\otimes1$ and $c\mapsto1\otimes c$ are contractive. The unit has norm at most one; if $G\ne0$, submultiplicativity then forces its norm to be one. The construction also gives a commutative unital Banach algebra when nonzero.}
+{将两个有限张量表达式相乘并取下确界，得到 $\|zz&#x27;\|_\pi\leq\|z\|_\pi\|z&#x27;\|_\pi$。因此半范数为零的子空间是理想，乘法可下降到分离商，并连续延伸到 $G$。映射 $b\mapsto b\otimes1$ 与 $c\mapsto1\otimes c$ 均为 contractive。单位元的范数至多为一；若 $G\ne0$，次乘性又迫使其范数等于一。因此当它非零时，该构造给出交换含幺 Banach 代数。}
+
+\bi{The canonical maps $B\to H$ and $C\to H$ are contractive: the maps from their coefficient algebras preserve their weights and then pass to quotient norms. Their product is an $A$-balanced bilinear map with bound one. On a finite tensor expression its image consequently has norm at most $\max_j\|b_j\|\|c_j\|$. Taking the infimum and then completing gives a contractive algebra homomorphism $\mu:G\to H$.}
+{典范映射 $B\to H$ 与 $C\to H$ 为 contractive：从其系数代数出发的映射保持权重，再传到商范数。将两者的像相乘，得到界为一的 $A$-平衡双线性映射。故一个有限张量表达式的像的范数至多为 $\max_j\|b_j\|\|c_j\|$。取下确界后再完备化，即得到 contractive 代数同态 $\mu:G\to H$。}
+
+\bi{In the other direction, let $\bar X_i\in B$ and $\bar Y_j\in C$ denote the variable classes. Their powers satisfy}
+{反方向，记变量的像为 $\bar X_i\in B$ 与 $\bar Y_j\in C$。其幂满足}
+\[
+ \|\bar X_i^n\otimes1\|_G\leq\rho_i^n,
+ \qquad \|1\otimes\bar Y_j^n\|_G\leq\sigma_j^n
+ \qquad(n\geq0).
+\]
+\bi{The two maps from $A$ agree by the balancing relation. Proposition~\ref{fnd:powerboundedsubstitution}, with all bounds equal to one, therefore defines a contractive map from $A\{\rho^{-1}X,\sigma^{-1}Y\}$ to $G$, sending the variables to these tensors. If $G=0$, the zero map has the same properties directly. Its restriction to the first coefficient algebra factors through $B$, as can first be checked on polynomials and then on convergent series. Its restriction to the second factors through $C$. It therefore kills $I$ and $J$ and induces a contractive map $\nu:H\to G$.}
+{由平衡关系，从 $A$ 出发的两个映射相同。因此在所有界均为一时应用 Proposition~\ref{fnd:powerboundedsubstitution}，得到从 $A\{\rho^{-1}X,\sigma^{-1}Y\}$ 到 $G$ 的 contractive 映射，将变量送到上述张量。若 $G=0$，零映射直接具有同样的性质。其在第一组系数代数上的限制通过 $B$ 分解，这可先对多项式核对，再推广到收敛级数；同理，第二组限制通过 $C$ 分解。因此该映射零化 $I$ 和 $J$，诱导 contractive 映射 $\nu:H\to G$。}
+
+\bi{The composite $\mu\nu$ fixes every coefficient and variable, hence fixes the dense polynomial image in $H$ and is the identity. Likewise $\nu\mu$ fixes the images of $B$ and $C$, since each is a quotient of a coefficient algebra with dense polynomial image. It fixes every pure tensor and hence the dense algebraic tensor image in $G$. It is therefore the identity. Two inverse contractive maps are isometric, proving the assertion.}
+{复合 $\mu\nu$ 固定每个系数和变量，因而固定 $H$ 中稠密的多项式像，所以为恒等映射。同理，$\nu\mu$ 固定 $B$ 和 $C$ 的像，因为它们各自都是系数代数的商，多项式像在其中稠密。于是它固定每个纯张量，从而固定 $G$ 中稠密的代数张量像，故也是恒等映射。互逆的两个 contractive 映射必为等距同构，结论得证。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="0bbd6934d2e76c640da816c5bc3df80570a532f121d0a1e9c62d65c1da4109cb">
+\section{\bi{Iterated quotients and elementary Laurent diagrams}{迭代商与 elementary Laurent 图表}}\label{fnd:r1intersectioninterfaces}
+
+\bi{The preceding quotient construction permits a direct comparison of presentations. We first show that adjoining a second block of variables commutes with taking a quotient, with equality of the resulting norms. We then identify the coefficient Laurent sequence with a sequence of finite modules over explicit strict affinoid quotient algebras. These are statements about Banach algebras and modules; identifying them with sections on analytic domains requires the geometric localization theorem.}
+{前面的商构造使我们能够直接比较不同表示。先证明添入第二组变量与取商相容，并且所得范数相等；随后将系数 Laurent 序列识别为一列显式 strict affinoid 商代数上的有限模。这里的结论属于 Banach 代数与模的范畴；将它们识别为解析域上的截面，还需要几何局部化定理。}
+
+\bi{Throughout this section, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial, and $A$ is a strict $K$-affinoid algebra with the norm conventions of Lemma~\ref{fnd:strictweightedquotient}. All displayed radii belong to $|K^\times|$. A relation quotient is either a strict affinoid algebra or the zero algebra with its zero norm. The latter is allowed in this section as a separate case; it does not satisfy the normalization $\|1\|=1$ in Definition~\ref{fnd:banachalgebra}. Every unital module over it is zero. All quotients below use the actual algebraic ideals or submodules, and their indicated quotient norms.}
+{本节中，$K$ 关于固定的实值非阿基米德绝对值完备，允许赋值平凡；$A$ 为 strict $K$-affinoid algebra，采用 Lemma~\ref{fnd:strictweightedquotient} 的范数约定。所有出现的半径均属于 $|K^\times|$。关系商可能是 strict affinoid algebra，也可能是配备零范数的零代数；本节将后者作为独立情形允许在内，它并不满足 Definition~\ref{fnd:banachalgebra} 中的归一化 $\|1\|=1$。零代数上的每个含幺模均为零。以下各商均使用实际的代数理想或子模，并配备指定的商范数。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="93fe7c931bc5b70aac97ddfd2ec1f640fd0c002fca7210fd3dab23c0487f0e2f">
+% v0.29 R1.1; proof and scope review are recorded separately.
+\section{\bi{Strict quotient presentations and finite modules}{Strict 商表示与有限模}}\label{fnd:r1quotientbridge}
+\bi{The coefficient construction is useful for localization only after its relation quotients are controlled. In this section the new radii lie in the value group. This allows the finite-module theorem over strict affinoids to control the actual images of the relation maps. No statement about a structure sheaf is used.}
+{系数构造要用于局部化，还须控制加入关系后的商。本节新增变量的半径均位于值群中，因此可以利用 strict affinoid 上的有限模定理控制关系映射的实际像。这里不使用结构层的任何结论。}
+
+\bi{Fix a complete real-valued non-Archimedean field $K$, allowing the trivial absolute value. A nonzero algebra below carries the submultiplicative norm and norm-admissibility convention of Definition~\ref{fnd:banachalgebra}. We also allow a relation ideal to be the whole algebra: its quotient is the zero ring with its zero norm, and every unital module over it is zero. Statements about such a quotient have this explicit degenerate interpretation; the normalization $\|1\|=1$ is required only for nonzero algebras.}
+{固定一个关于实值非阿基米德绝对值完备的域 $K$，允许平凡绝对值。下文的非零代数采用 Definition~\ref{fnd:banachalgebra} 中的次乘范数与范数 admissibility 约定。也允许关系理想为整个代数：相应商是配备零范数的零环，其所有幺模均为零。涉及这种商的陈述均按此明确的退化意义理解；$\|1\|=1$ 的归一化只要求于非零代数。}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="51d3a22cec324277d44668584f77c0a4e0f28ac052c42b1a918d32278cddf37d">
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+{Complete extension $L/K$ 始终配备限制为指定 $K$ 上 absolute value 的 absolute value。改变 ground field 时不重新缩放它。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001438-reader.jpg" alt="Typeset mathematical passage from PDF page 172" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=172">PDF page 172 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole</li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000153/#context-8a59e28fbfc4652b">fnd:banachalgebra</a></li><li><a href="/r/NAG-001398/">fnd:powerboundedsubstitution</a></li><li><a href="/r/NAG-001434/">fnd:strictweightedquotient</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

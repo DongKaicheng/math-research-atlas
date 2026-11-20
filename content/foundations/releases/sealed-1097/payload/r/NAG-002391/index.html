@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002391/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Integration and closedness of a local balanced cycle · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002391 · Accepted whole</p><h1>Integration and closedness of a local balanced cycle</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.46.3">Open in the English reader · PDF page 1018</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d1b453d8ef8c0a35c538fc3d9cd1cc2ef134824627bd138df70a4b5c582ee2a8">
+\begin{theorem}[Integration and closedness of a local balanced cycle]
+\label{v037:integration:balancedcurrent}
+Let $C$ be a local weighted integral $d$-cycle on an open
+subset $U\subset N_{\mathbb R}$ in the sense of
+Definition~\ref{v037:analytic:localcycledefinition}.
+For smooth superforms with compact support on $C$, the
+cell formula
+\[
+                         I_C(\alpha)=\sum_\sigma m_\sigma
+                                                 \int_\sigma\alpha
+\]
+defines a linear functional in bidegree $(d,d)$, independent
+of finite local presentations and subdivisions. It is
+nonnegative on forms whose tangential top coefficients are
+nonnegative whenever all weights are nonnegative.
+If $C$ is balanced, then
+\[
+                      I_C(d&#x27;\beta)=0,
+                     \qquad I_C(d&#x27;&#x27;\gamma)=0
+\]
+for compactly supported forms of bidegrees $(d-1,d)$ and
+$(d,d-1)$, respectively. For $d=0$ the functional is the
+weighted sum of values and both differential assertions are
+empty.
+
+If an integral affine map $a$ is proper on the support of
+$C$, has finite source presentations near the target support,
+and defines the lattice-index pushforward $a_*C$, then
+\[
+                            I_C(a^*\alpha)=I_{a_*C}(\alpha)
+\]
+for every smooth $\alpha$ with compact ambient support in the target
+open set.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f02b3314ec9c567bb388884b864353038e978d41caa1417e77b3c5416b5dc007">
+\begin{proof}
+Let $K$ be the support of the form on $C$. Around each point
+of this compact set choose a finite presentation and a
+smaller closed rectangular box contained in its open domain.
+Finitely many box interiors cover $K$. Intersect the finitely
+many presented cells with these boxes and take a common
+hyperplane refinement. On overlaps their weights agree by
+the definition of a local cycle. Count each resulting cell
+once with that weight. This gives a finite polyhedral
+description on an open neighbourhood of $K$ in the support.
+Cells or artificial faces outside that neighbourhood meet
+no nonzero tangential coefficient of the form. The integral
+may therefore be computed on this finite description.
+
+Two such descriptions have a common refinement near $K$.
+The first assertion of
+Lemma~\ref{v037:integration:polyhedralcalculus} proves that
+the two sums coincide. Linearity and nonnegativity follow
+from the corresponding inequalities for real grid sums.
+
+For $\beta$, use such a finite description around its support.
+Any artificial exterior facet lies outside that support; all
+the adjacent tangential coefficients of $\beta$ vanish in
+a relative neighbourhood, so their boundary contractions
+vanish there as well. On a genuine $(d-1)$-face $\tau$,
+formula~\eqref{v037:eq:superstokes} adds the normal lifts
+with their weights. Its contribution is
+\[
+ (-1)^{d(d+1)/2}\int_\tau
+   \beta(v_1&#x27;,\ldots,v_{d-1}&#x27;;v_1&#x27;&#x27;,\ldots,v_{d-1}&#x27;&#x27;,
+                    (\sum_{\sigma\supset\tau}
+                             m_\sigma u_{\sigma/\tau})&#x27;&#x27;)
+                                                    \,d\mu_\tau.
+\]
+Balancing puts the vector in the last slot in
+$(N_\tau)_{\mathbb R}$. The double-primed factor alternates,
+so this expression is zero. Summing the finitely many faces
+gives $I_C(d&#x27;\beta)=0$.
+The identities $d&#x27;&#x27;=Jd&#x27;J$ and $J\omega_{N_\sigma}=(-1)^d
+\omega_{N_\sigma}$ give the assertion for $\gamma$ by
+exchanging the two exterior factors. This verifies both
+closedness statements with the stated normalization.
+
+For the projection formula, properness makes the support of
+the pullback on $C$ compact. Choose finite source and target
+presentations near these compact sets and refine along all
+cell images. On a source $d$-cell of full rank, the affine
+map is injective on its affine span. The change-of-variables
+formula of Lemma~\ref{v037:integration:polyhedralcalculus}
+multiplies its contribution by
+$[N_\tau:a(N_\sigma)]$. On a source cell of rank less than
+$d$ the pullback vanishes. Grouping the remaining finitely
+many contributions over each target cell gives exactly its
+lattice-index pushforward weight. This is the asserted
+identity.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002391-reader.jpg" alt="Typeset mathematical passage from PDF page 1018" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1018">PDF page 1018 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole</li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole</li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002389/">v037:integration:polyhedralcalculus</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

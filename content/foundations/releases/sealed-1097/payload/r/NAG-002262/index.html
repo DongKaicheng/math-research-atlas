@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002262/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Integral Galois descent for unramified coefficients · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002262 · Accepted whole</p><h1>Integral Galois descent for unramified coefficients</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.43.1">Open in the English reader · PDF page 761</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e77ea640f279748bd12c160d1224ed7ebe2cb73d3943cbe611a438e0f92b5661">
+\begin{lemma}[Integral Galois descent for unramified coefficients]
+\label{v036:f5:unramifiedcoefficients}
+Suppose $l/k$ is finite Galois, take its Galois lift $L/K$, and
+write $O&#x27;=L^\circ$ and $G=\operatorname{Gal}(L/K)$.
+Then $O&#x27;/O$ is finite free and \textup{\&#x27;etale}, and
+\[
+ O&#x27;\otimes_O O&#x27;\xrightarrow{\sim}\prod_{g\in G}O&#x27;,
+ \qquad a\otimes b\longmapsto(a\,g(b))_g.
+\]
+For every $O$-module $M$, the coefficient inclusion identifies
+\[
+                  M=(M\otimes_O O&#x27;)^G.
+\]
+If $A_0$ is an admissible formal $O$-algebra, its coefficient
+extension is the complete admissible algebra
+$A_0\otimes_O O&#x27;$. Its generic algebra is
+$A_0[1/\pi]\widehat\otimes_K L$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="fc78aa4967de6f45430f8748f6d07e63bcedd6a24c4998f3ad6e78e7286de6c9">
+\begin{proof}
+Write $O&#x27;=O[\alpha]=O[T]/(P)$ as in
+Lemma~\ref{cand:unramifiedmodelbasechange}, with
+$1,\alpha,\ldots,\alpha^{d-1}$ an orthonormal $O$-basis.
+The polynomial $P$ is monic, and $P&#x27;(\alpha)$ has nonzero
+reduction. For a square-zero ideal, a lift $b$ of a root is
+corrected uniquely to a root by $b-P(b)/P&#x27;(b)$; successive
+square-zero quotients give the same assertion for a nilpotent
+ideal. Thus the finite presentation is formally \textup{\&#x27;etale},
+hence \textup{\&#x27;etale} by \cite[Tag 00UR]{StacksAlg}.
+Lemma~\ref{cand:galoisresidueextensionlift}
+gives all its roots $g(\alpha)$ in $O&#x27;$, with pairwise different
+residues. Evaluation on these roots is an isomorphism: its matrix
+on $1,T,\ldots,T^{d-1}$ has Vandermonde determinant
+$\prod_{g&lt;h}(h(\alpha)-g(\alpha))\in(O&#x27;)^\times$.
+This proves the tensor-product assertion, as well as faithful
+flatness.
+
+The fixed module assertion holds without dividing by $d$.
+Here is an explicit descent argument. Let
+$z=\sum_i m_i\otimes b_i\in M\otimes_O O&#x27;$ be invariant.
+Under the displayed product isomorphism, the two elements
+\[
+ \sum_i m_i\otimes b_i\otimes1,
+ \qquad \sum_i m_i\otimes1\otimes b_i
+ \quad\text{in }M\otimes_O O&#x27;\otimes_O O&#x27;
+\]
+have equal $g$-coordinates for every $g$, so are equal.
+Apply the $O$-linear coefficient map $\lambda:O&#x27;\to O$
+which takes the coefficient of $1$ in the indicated basis;
+it satisfies $\lambda(1)=1$. Applying $\lambda$ on the first
+coefficient factor gives
+$z=(\sum_i\lambda(b_i)m_i)\otimes1$.
+Injectivity of $m\mapsto m\otimes1$ follows from the same
+coefficient map. This proves the equality of modules.
+
+A finite free sum commutes with $\pi$-adic completion.
+The extended ring is $\pi$-torsion-free, and its finite
+presentation follows by extending an admissible presentation
+of $A_0$.
+For the generic algebra put $A=A_0[1/\pi]$. Inverting $\pi$
+identifies $(A_0\otimes_O O&#x27;)[1/\pi]$ with $A\otimes_K L$ by
+the coefficient maps. In Proposition~\ref{fnd:generalizedfinitebasechange}
+take the finite algebra to be $L$ over $K$ and the target to be
+$A$. The actual absolute value on $L$ is its finite-module
+maximum norm in the displayed basis. The resulting maximum
+norm on $A\otimes_K L$ and the defining quotient norm of
+$(A_0\otimes_O O&#x27;)[1/\pi]$ given by
+Proposition~\ref{fnd:affineformalpresentations} have the same
+closed unit ball $A_0\otimes_O O&#x27;$. Scaling by powers of
+$\pi$ compares the norms in both directions with constant
+$|\pi|^{-1}$, giving the required bounded isomorphism with
+$A\widehat\otimes_K L$. All these identifications
+preserve the chosen inclusion of $K$ and its absolute value.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002262-reader.jpg" alt="Typeset mathematical passage from PDF page 762" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=762">PDF page 762</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00UR@NAG-002262:integral_monic_formal_etale · named external application</li><li>APP-STACKS-00UR@NAG-002262:integral_monic_formal_etale · named external application <small>(requires)</small></li><li><a href="/r/NAG-002060/#actual_monic_coefficients">CLAUSE:NAG-002060:actual_monic_coefficients</a> · selected scope, text unavailable</li><li><a href="/r/NAG-002060/#actual_monic_coefficients">CLAUSE:NAG-002060:actual_monic_coefficients</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-001483/">NAG-001483</a> · selected whole</li><li><a href="/r/NAG-001483/">NAG-001483</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole</li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002052/">NAG-002052</a> · selected whole</li><li><a href="/r/NAG-002052/">NAG-002052</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00UR">APP-STACKS-00UR@NAG-002262:integral_monic_formal_etale</a></li></ul></details><h2>Selected scopes</h2><article id="integral_galois_equalizer"><h3>integral galois equalizer</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002052/">cand:galoisresidueextensionlift</a></li><li><a href="/r/NAG-002060/">cand:unramifiedmodelbasechange</a></li><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

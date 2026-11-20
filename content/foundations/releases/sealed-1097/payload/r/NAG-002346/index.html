@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002346/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Rational Gauss degree criterion · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002346 · Accepted whole</p><h1>Rational Gauss degree criterion</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.53.1">Open in the English reader · PDF page 809</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="dcd2845209b8ea439277b43562c1e3127bdefa3602b7fc28d6f9cc8aa00a6696">
+\begin{theorem}[Rational Gauss degree criterion]
+\label{v037:f5:rationalgausscriterion}
+Assume that $C$ admits one semistable algebraic model over
+the original $O$. A point $v\in C^{\an}$ occurs as a
+component vertex of such a model if and only if there is
+a rational function $t\in F$, defined at $v$, satisfying
+the following conditions. Write $L=\mathcal H(v)$ and
+$l=\widetilde L$.
+\begin{enumerate}
+\item $|t(v)|=1$, and its residue $\bar t\in l$ is
+transcendental over $k$.
+\item $F/K(t)$ and $l/k(\bar t)$ are finite separable
+field extensions.
+\item If $H_t$ is the completion of $K(t)$ for the norm
+induced by $v$, then the actual extension $H_t\to L$ is
+finite and
+\[
+                         [L:H_t]=[l:k(\bar t)].
+\]
+\end{enumerate}
+Here $H_t$ is the unit Gauss completion for the coordinate
+$t$. The criterion applies without a discreteness or
+characteristic-zero assumption on $K$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4584a2b1114b8e308067b4ffedfeafa4f21477d33b1d8a0292ced7d94c5bc99b">
+\begin{proof}
+Suppose first that $v$ is the component vertex of a model
+$\mathcal C$, corresponding to the generic point $\eta_E$
+of its special component $E$.
+Use the construction in
+Theorem~\ref{v037:f5:gausschartrecognition}, retaining its
+original algebraic coordinate. More explicitly, that
+construction chooses an actual affine Zariski open of
+$\mathcal C$ at $\eta_E$ with an \textup{\&#x27;etale} map
+to $\mathbf A^1_O$. It removes the other special
+components by a principal open, makes the residual map
+finite by a principal shrink of the affine-line base,
+and completes that same algebraic open.
+The coordinate $T$ therefore restricts to a rational
+function $t\in F$; it is not a newly chosen analytic
+coordinate. The resulting completed algebra is finite
+projective and \textup{\&#x27;etale} over
+\[
+                   O\langle T,Z\rangle/(g(T)Z-1),
+                           \qquad \bar g\ne0,
+\]
+its special fibre is an open of $E$, and its actual
+component point in $C^{\an}$ is the original $v$.
+
+By Proposition~\ref{v037:f5:integralgaussdegree}, the
+point $v$ lies above the unit Gauss point in coordinate
+$t$, its residual function field $l=k(E)$ is finite
+separable over $k(\bar t)$, and its actual completed
+field degree is precisely this residual degree.
+In particular $|t(v)|=1$ and $\bar t$ is transcendental.
+The retained algebraic coordinate is also
+\textup{\&#x27;etale} on the generic fibre by
+\cite[Tag 02GO]{StacksAlg}.
+Localizing its integral generic coordinate ring by all
+nonzero polynomials in $t$ gives a nonzero domain which
+is \textup{\&#x27;etale} of finite type over $K(t)$.
+By \cite[Tag 02GL]{StacksAlg} it is a finite separable
+field, necessarily $F$. This proves all three conditions
+with the actual original-field rational function $t$.
+
+Conversely, suppose the conditions hold.
+The scheme image of $v$ is generic: otherwise it is
+a closed point of the integral curve, its residue field
+is finite over $K$ by \cite[Tag 00FV]{StacksAlg}, and
+Proposition~\ref{fnd:analytificationvaluedfibres} and
+Lemma~\ref{fnd:finiteextensionnorms} identify $L$ with
+that finite complete field. Its residual field would
+be algebraic over $k$ by
+Lemma~\ref{fnd:valuedfielddimensioncalculus}, contrary
+to the transcendence of $\bar t$.
+Thus all of $F$ embeds into $L$ with its specified norm.
+
+On an affine algebraic open where $t$ is regular, the
+rational map to $\mathbf A^1_K$ has finite presentation:
+the coordinate rings are finite type over $K$ and
+Noetherian by \cite[Tag 00FO]{StacksAlg}.
+At the generic point its local map is $K(t)\to F$.
+This field map is flat by the ideal criterion
+\cite[Tag 00HD]{StacksAlg}, its maximal ideals are zero,
+and its residue extension is finite separable by hypothesis.
+The criterion \cite[Tag 02GU]{StacksAlg} therefore makes
+the map \textup{\&#x27;etale} at the generic point.
+Shrink to that algebraic \textup{\&#x27;etale} open.
+Proposition~\ref{fnd:analytificationzariskiopens} and
+Theorem~\ref{fnd:analytificationetalepreservation}
+give an actual analytic \textup{\&#x27;etale} germ at $v$.
+
+For any nonzero polynomial $Q\in K[T]$, divide by a
+coefficient of maximal absolute value and reduce at $v$.
+Transcendence of $\bar t$ gives
+\[
+                         |Q(t)(v)|=\max_i|Q_i|.
+\]
+Consequently this germ sends $v$ to the unit Gauss point,
+and its actual completed-residue-field map is $H_t\to L$.
+Condition (3) and the finite separable residual extension
+in (2) are exactly the hypotheses of
+Proposition~\ref{v037:f5:gaussgermintegralchart}.
+It supplies an integral \textup{\&#x27;etale} Gauss chart
+whose generic fibre is an actual affinoid domain of
+$C^{\an}$ and whose component point is $v$.
+The equivalence in
+Theorem~\ref{v037:f5:gausschartrecognition}, using the
+assumed existence of one original-field model, realizes
+$v$ as a component vertex of such a model.
+Every norm and every field embedding in the degree
+identity is the one induced by the original point $v$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002346-reader.jpg" alt="Typeset mathematical passage from PDF page 810" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=810">PDF page 810 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(accepted native whole)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001712/">NAG-001712</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001736/">NAG-001736</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002333/">NAG-002333</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002339/">NAG-002339</a> · selected whole <small>(earlier same packet whole if selected)</small></li><li><a href="/r/NAG-002343/">NAG-002343</a> · selected whole <small>(earlier same packet whole if selected)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001736/">fnd:analytificationetalepreservation</a></li><li><a href="/r/NAG-001712/">fnd:analytificationvaluedfibres</a></li><li><a href="/r/NAG-001708/">fnd:analytificationzariskiopens</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-002339/">v037:f5:gausschartrecognition</a></li><li><a href="/r/NAG-002343/">v037:f5:gaussgermintegralchart</a></li><li><a href="/r/NAG-002333/">v037:f5:integralgaussdegree</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

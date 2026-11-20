@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002446/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A potential smooth model with an original-field obstruction · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002446 · Accepted whole</p><h1>A potential smooth model with an original-field obstruction</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.57.2">Open in the English reader · PDF page 826</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="c2f9126750f54ca22afc1085dd3dc8a6b79cfda8d8ee1d724976cb875159168d">
+\begin{theorem}[A potential smooth model with an original-field obstruction]
+\label{v038:f5:cubicramificationobstruction}
+Assume $\operatorname{char}k\notin\{2,3\}$, and choose
+$a\in K$ with $0&lt;|a|&lt;1$. Let $C_a$ be the projective curve
+\[
+                       y^2z=x^3+a z^3.
+\]
+It is smooth and geometrically connected. If
+\[
+          |a|^{1/2}\notin|K^\times|
+                 \quad\text{or}\quad
+          |a|^{1/3}\notin|K^\times|,
+\]
+then $C_a$ has no semistable algebraic model over the
+original valuation ring $O$.
+
+Nevertheless, if $b\in\Omega$ satisfies $b^6=a$ and
+$L=K(b)$, the curve has the smooth projective model
+\[
+                \mathcal E/L^\circ:\quad Y^2Z=X^3+Z^3,
+                \qquad
+                [x:y:z]=[b^2X:b^3Y:Z].
+\]
+The unique component vertex of
+$\mathcal E_{\Omega^\circ}$ is fixed by every isometric
+$K$-automorphism of $\Omega$.
+In particular, for $K=\mathbf Q_p$, $p\geq5$, with the
+specified absolute value $|p|=p^{-1}$, the choice $a=p$
+gives the stated nonexistence over $\mathbf Z_p$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5716c598fe6cfc9df79c67f33158b2c21c895581f33799625b5c91a968024836">
+\begin{proof}
+We first verify the actual model and its special curve.
+The integers $2$ and $3$ are units in $O$, and hence in
+$L^\circ$. The two affine charts $Z\ne0$ and $Y\ne0$
+cover $\mathcal E$: the equation rules out a projective
+point with $Y=Z=0$. Their coordinate rings are
+\[
+ \begin{gathered}
+ L^\circ[X,Y]/(Y^2-X^3-1),\\
+ L^\circ[u,v]/(v-u^3-v^3).
+ \end{gathered}
+\]
+Each is free over the polynomial algebra in the first
+variable, since its equation is monic, up to a unit, in
+the second. They are therefore flat over $L^\circ$.
+They have finite algebra presentations; the projective
+closed embedding makes the resulting morphism separated
+and quasi-compact, so it is finitely presented.
+
+On the first chart, $Y^2-X^3=1$ makes $D(X)$ and $D(Y)$
+a cover; the corresponding partial derivatives
+$-3X^2$ and $2Y$ are units. On the second chart, a point
+with $v\ne0$ belongs to the first chart, whereas a point
+with $v=0$ has $1-3v^2$ invertible. These are actual
+standard smooth presentations by
+\cite[Tag 01V9(6)]{StacksAlg}. Thus $\mathcal E/L^\circ$
+is smooth of relative dimension one.
+
+Over any extension field of $\widetilde L$, the polynomial
+$X^3+1$ is not a square in the rational function field
+in $X$: its order at infinity is $-3$, whereas the order
+of a square is even. Therefore $Y^2-X^3-1$ is irreducible.
+Its quotient ring injects into the corresponding quadratic
+field over that rational function field, by its monic
+degree-two basis, so the affine chart is integral.
+The only point of its projective complement is
+$[0:1:0]$. Every fibre is smooth of relative dimension
+one; in particular this point is on a one-dimensional
+component and cannot be an additional component by itself.
+The affine chart is consequently dense, and the fibre
+is connected. It is geometrically reduced and regular
+by \cite[Tag 056T]{StacksAlg}. This verifies the exact
+semistable-model conditions, including geometric
+connectedness, over $L^\circ$.
+
+The same calculation with $a\ne0$ over any extension of
+$K$ proves that $C_a$ is smooth and geometrically
+connected: the affine chart has equation
+$y^2=x^3+a$, with partial derivatives $2y$ and $-3x^2$,
+which cannot both vanish on it; the unique point at
+infinity has a unit partial derivative in the chart
+$y\ne0$. Its affine polynomial is irreducible by the
+same odd-order calculation.
+The root $b$ exists in the chosen algebraically closed
+$\Omega$. The extension $L/K$ has its actual degree
+$[K(b):K]\leq6$ and is complete with the extending
+absolute value by Lemma~\ref{fnd:finiteextensionnorms}.
+The displayed coordinate change identifies the generic
+fibre of $\mathcal E$ with $C_{a,L}$, and
+$|b|=|a|^{1/6}$ for this unchanged extending value.
+
+Write $E$ for the special curve after extension to
+$\overline k$. Its function field is not rational.
+Here is a direct verification. On the affine chart
+the differential
+\[
+                              \omega=\frac{dX}{2Y}
+\]
+extends across a zero of $Y$ as $dY/(3X^2)$, since
+$2Y\,dY=3X^2\,dX$ and $X\ne0$ there. Near infinity
+put $u=X/Y$ and $v=Z/Y$, so $v=u^3+v^3$.
+The affine coordinates are $u/v$ and $1/v$; differentiating
+the equation gives
+\[
+ (1-3v^2)\,dv=3u^2\,du,\qquad
+ \omega=\frac{v\,du-u\,dv}{2v}
+                          =-\frac{du}{1-3v^2}.
+\]
+This is regular at infinity. The differential is nonzero:
+on the affine function field the derivation
+$\delta(X)=2Y$, $\delta(Y)=3X^2$ respects the equation
+and evaluates $\omega$ to $1$.
+
+If $\overline k(E)$ were $\overline k(t)$,
+\cite[Tag 0BY1]{StacksAlg}, applied to the smooth
+projective curve $E$ and $\mathbf P^1_{\overline k}$,
+would identify these curves. But a regular differential
+on $\mathbf P^1$ has the form $f(t)\,dt$ on its affine
+line, with $f\in\overline k[t]$; at $s=t^{-1}$ it is
+$-f(s^{-1})s^{-2}\,ds$, which is regular at $s=0$
+only when $f=0$. The nonzero $\omega$ is a contradiction.
+
+Complete $\mathcal E_{\Omega^\circ}$ along any fixed
+$0\ne\pi\in K^{\circ\circ}$.
+Theorem~\ref{cand:projectiveformalcompletion} identifies
+its actual analytic generic fibre with $C_{a,\Omega}^{\an}$.
+Proposition~\ref{cand:reducedmodelcomponentpoints} supplies
+the unique component vertex $w$ over the generic point
+of $E$. Put $v=p(w)$.
+The reduction identification in
+Proposition~\ref{cand:componentvaluedresiduefield}
+shows that the affine functions $X$ and $Y$ have
+norm one at $w$, since both have nonzero residues at
+the generic point of $E$. Hence the original rational
+functions $x/z$ and $y/z$ satisfy
+\[
+             |(x/z)(v)|=|a|^{1/3},\qquad
+             |(y/z)(v)|=|a|^{1/2}.
+\]
+They are nonzero elements of $\mathcal H(v)$, so either
+failure in the hypothesis makes its value group strictly
+larger than $|K^\times|$.
+Proposition~\ref{v038:f5:essentialcomponentobstruction}
+now rules out every original-field semistable model.
+
+Finally, let $\sigma$ be an isometric $K$-automorphism
+of $\Omega$. Then $\sigma(b)=\zeta b$ with
+$\zeta^6=1$, and $|\zeta|=1$.
+The canonical semilinear action on $C_{a,\Omega}$
+transforms the displayed integral coordinates by
+\[
+                    X\longmapsto\zeta^{-2}X,
+                    \qquad Y\longmapsto\zeta^{-3}Y,
+                    \qquad Z\longmapsto Z.
+\]
+These substitutions and their inverses preserve the
+equation over $\Omega^\circ$, so give an actual
+semilinear automorphism of the smooth model. Its unique
+special component, and thus its component vertex $w$,
+is preserved. For $K=\mathbf Q_p$ and $a=p$, the two
+displayed values are $p^{-1/3}$ and $p^{-1/2}$, neither
+of which lies in $|\mathbf Q_p^\times|=p^{\mathbf Z}$.
+Throughout, the absolute value was extended and never
+rescaled.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002446-reader.jpg" alt="Typeset mathematical passage from PDF page 826" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=826">PDF page 826 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002038/">NAG-002038</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002445/">NAG-002445</a> · selected whole <small>(earlier same packet whole if selected)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002070/">cand:componentvaluedresiduefield</a></li><li><a href="/r/NAG-002038/">cand:projectiveformalcompletion</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-002445/">v038:f5:essentialcomponentobstruction</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

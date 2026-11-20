@@ -5,6 +5,7 @@ import katex from 'katex';
 import {buildBedfordTaylor} from './build-bedford-taylor.mjs';
 import {marked, Renderer} from 'marked';
 import {buildStrongGreen} from './build-strong-green.mjs';
+import {buildFoundationsRelease,foundationsOverview,loadFoundationsRelease} from './build-foundations.mjs';
 import {FEEDBACK_CATEGORIES, COMMUNITY_CATEGORIES, feedbackIssueUrl} from '../lib/feedback.mjs';
 import {buildCommunityPages} from './build-community.mjs';
 import {buildAcknowledgements} from './build-acknowledgements.mjs';
@@ -212,6 +213,14 @@ const projectFiles=(await readdir(path.join(root,'content','projects'))).filter(
 const bundles=await Promise.all(projectFiles.map(async f=>JSON.parse(await readFile(path.join(root,'content','projects',f),'utf8'))));
 if(new Set(bundles.map(x=>x.project.id)).size!==bundles.length)throw Error('Duplicate project ID');
 if(bundles.some(x=>x.schemaVersion!==1||!Array.isArray(x.entries)))throw Error('Invalid project bundle');
+const foundationsRelease=await loadFoundationsRelease(root);
+const foundationsCurrent=foundationsRelease?.current;
+if(foundationsCurrent){
+  const project=bundles.find(bundle=>bundle.project.id==='foundations');
+  if(!project||project.revision!==0)throw Error('Unexpected Foundations project baseline');
+  Object.assign(project,{revision:foundationsCurrent.revision,edition:foundationsCurrent.edition,
+    publishedAt:foundationsCurrent.releaseDate+'T00:00:00Z',changeSummary:foundationsCurrent.changeSummary});
+}
 const histories=new Map();
 for(const current of bundles){
   let files=[];
@@ -220,11 +229,13 @@ for(const current of bundles){
   catch(e){if(e.code!=='ENOENT')throw e;}
   const records=await Promise.all(files.map(async file=>JSON.parse(await readFile(path.join(dir,file),'utf8'))));
   records.sort((a,b)=>a.revision-b.revision);
+  const preservedFoundationBaseline=current.project.id==='foundations'&&!foundationsCurrent&&
+    current.revision===0&&records.length===1&&JSON.stringify(records[0])===JSON.stringify(current);
   for(const snapshot of records){
-    if(snapshot.project?.id!==current.project.id||snapshot.revision>=current.revision)throw Error('Invalid historical snapshot: '+current.project.id);
+    if(snapshot.project?.id!==current.project.id||(!preservedFoundationBaseline&&snapshot.revision>=current.revision))throw Error('Invalid historical snapshot: '+current.project.id);
     if(!files.includes('v'+snapshot.revision+'.json'))throw Error('Version filename does not match revision');
   }
-  if(records.length!==current.revision)throw Error('Missing one or more immutable revision snapshots for '+current.project.id);
+  if(!preservedFoundationBaseline&&records.length!==current.revision)throw Error('Missing one or more immutable revision snapshots for '+current.project.id);
   histories.set(current.project.id,records);
 }
 const projects=bundles.filter(x=>x.project.category==='research');
@@ -289,6 +300,7 @@ for(const [route,title,description,group] of [
 
 for(const bundle of bundles){
   const p=bundle.project,isFoundation=p.category==='foundations';
+  const isCurrentFoundations=p.id==='foundations'&&foundationsCurrent;
   const route='/projects/'+encodeURIComponent(p.id)+'/';
   const questions=bundle.entries.filter(e=>['conjecture','question'].includes(e.kind));
   const results=bundle.entries.filter(e=>e.kind==='result');
@@ -314,14 +326,14 @@ for(const bundle of bundles){
   <a href="#feedback">05 <span>Reader contributions</span></a>
   </nav></aside><div class="document-body">
   ${section('motivation','01 / MOTIVATION',isFoundation?'Scope & organization':'Why this question?',`<div class="prose-math">${markdown(p.motivation)}</div>`)}
-  ${section('questions','02 / QUESTIONS',isFoundation?'Definitions & conventions':'Conjectures & open questions',entryList(isFoundation?notes:questions))}
-  ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',entryList(results))}
+  ${section('questions','02 / QUESTIONS',isFoundation?'Definitions & conventions':'Conjectures & open questions',isCurrentFoundations?'<p><a href="'+url(route+'coverage/')+'">Read the edition coverage and standing scopes</a></p>':entryList(isFoundation?notes:questions))}
+  ${section('results','03 / RESULTS',isFoundation?'Theorems & complete proofs':'Partial results & proofs',isCurrentFoundations?foundationsOverview(foundationsRelease,url):entryList(results))}
   ${section('programme','04 / PROGRAMME',isFoundation?'Further development':'A programme of proof',`<div class="prose-math">${markdown(p.programme)}</div>`)}
   ${!isFoundation&&notes.length?section('notes','NOTES','Notes & definitions',entryList(notes)):''}
   ${section('feedback','05 / CONTRIBUTE','Questions and general feedback',`<p class="section-lead">Use the atlas-wide feedback board for this project, or leave a general comment without choosing a mathematical result.</p><a class="button button-dark" href="${url('/feedback/')}?project=${encodeURIComponent(p.id)}&amp;version=${encodeURIComponent(bundle.edition||String(bundle.revision))}">Discuss this project</a> <a class="text-link" href="${url('/feedback/guide/')}">How feedback works</a><p><a class="text-link" href="${url(route+'acknowledgements/')}">Acknowledgements and adopted contributions</a></p>`)}
   </div></div></main>`;
   const legacyRedirect=`<script>(function(){const v=new URLSearchParams(location.search).get('v');if(v!==null&&/^\\d+$/.test(v)){location.replace(${JSON.stringify(url('/projects/'+p.id+'/versions/'))}+v+'/');}})();</script>`;
-  const searchSummary=p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
+  const searchSummary=isCurrentFoundations?'Read exact theorem statements, available proofs and source-bound dependencies in the first Non-Archimedean Foundations edition.':p.id==='foundations'?'Non-Archimedean geometry foundations: Berkovich analytic spaces, formal models, skeleta and tropical geometry. An evolving reference of definitions, research questions and proof plans.':p.summary;
   await save(route,loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
@@ -438,31 +450,33 @@ ${breadcrumbs([['Search']])}${heading(brand.toUpperCase(),'Search','Find a proje
 <section class="search-results" id="search-results" aria-live="polite"></section>
 </main>`;
 await save('/search/',loadPage('Search','Search public project outlines, results, and mathematical topics.',search,'/search/','',
-  `<script defer src="${url('/assets/search.js')}"></script>`));
+  `<script defer src="${url(foundationsCurrent?'/assets/foundations-search.js':'/assets/search.js')}"></script>`));
 
 await cp(path.join(root,'public'),output,{recursive:true});
 const strongGreen=await buildStrongGreen({root,output,base,origin,repository});
 const bedfordTaylor=await buildBedfordTaylor({root,output,base,origin,repository});
+const foundationsEdition=await buildFoundationsRelease({release:foundationsRelease,output,url,origin,base});
 const searchIndex=[...bundles.map(b=>({title:b.project.title,summary:b.project.summary,keywords:b.project.keywords,link:url('/projects/'+b.project.id+'/'),category:b.project.category,body:[b.project.motivation,b.project.programme].join(' ')})),
   ...entries.map(({entry:e,project:p})=>({title:e.title,summary:e.summary,keywords:p.keywords,link:url('/r/'+e.id+'/'),category:e.kind,body:[e.statement,e.proof,e.motivation].filter(Boolean).join(' ')})),
   ...agentDetails.map(a=>({title:a.title,summary:a.summary,keywords:['agent','skill','logical diagrams','AI & Math'],link:url('/ai-and-math/#'+a.id),category:'tools',body:a.role})),
   ...communityPages.filter(p=>!p.noindex).map(p=>({title:p.title,summary:p.description,keywords:['contribute','new project','project manager','AI management'],link:url(p.route),category:'participation',body:p.description})),
   ...acknowledgements.searchIndex,
-  ...bedfordTaylor.searchIndex,...strongGreen.searchIndex];
+  ...bedfordTaylor.searchIndex,...strongGreen.searchIndex,...foundationsEdition.rows];
 await writeFile(path.join(output,'search-index.json'),JSON.stringify(searchIndex));
 await cp(path.join(root,'assets'),path.join(output,'assets'),{recursive:true});
+if(foundationsCurrent)await cp(path.join(root,'content','foundations','search-client.js'),path.join(output,'assets','foundations-search.js'));
 await cp(path.join(root,'lib','feedback.mjs'),path.join(output,'assets','feedback-core.mjs'));
 const katexCss=path.join(root,'node_modules','katex','dist','katex.min.css');
 await cp(katexCss,path.join(output,'assets','katex.min.css'));
 await cp(path.join(root,'node_modules','katex','dist','fonts'),path.join(output,'assets','fonts'),{recursive:true});
 await writeFile(path.join(output,'.nojekyll'),'');
 
-const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...acknowledgements.pages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,
+const routes=['/','/about/','/manifesto/','/foundations/','/research/','/ai-and-math/','/feedback/','/feedback/guide/','/updates/','/search/','/maintenance/',...communityPages.map(p=>p.route),...acknowledgements.pages.map(p=>p.route),...bedfordTaylor.routes,...strongGreen.routes,...foundationsEdition.routes,
  ...bundles.map(b=>'/projects/'+b.project.id+'/'),...entries.map(x=>'/r/'+x.entry.id+'/'),
  ...bundles.flatMap(b=>histories.get(b.project.id).map(s=>'/projects/'+b.project.id+'/versions/'+s.revision+'/'))];
 const xml=s=>esc(s).replace(/'/g,'&apos;');
 const coreRoutes=['/','/projects/bedford-taylor/','/projects/foundations/','/projects/strong-green/'];
-const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&p!=='/admin/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))))];
+const indexableRoutes=[...new Set(routes.filter(p=>p!=='/search/'&&p!=='/admin/'&&(!bedfordTaylor.routes.includes(p)||bedfordTaylor.indexableRoutes.includes(p))&&(!strongGreen.routes.includes(p)||strongGreen.indexableRoutes.includes(p))&&(!foundationsEdition.routes.includes(p)||foundationsEdition.indexableRoutes.includes(p))))];
 for(const route of coreRoutes)if(!indexableRoutes.includes(route))throw Error('Core Search Console entry is not indexable: '+route);
 const sitemapXML=paths=>'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+paths.map(p=>`<url><loc>${xml(canonical(p))}</loc></url>`).join('\n')+'\n</urlset>\n';
 await writeFile(path.join(output,'sitemap.xml'),sitemapXML([...coreRoutes,...indexableRoutes.filter(p=>!coreRoutes.includes(p))]));
@@ -491,4 +505,4 @@ if(!base){
     await mkdir(path.dirname(target),{recursive:true});await writeFile(target,legacy);
   }
 }
-process.stdout.write(`Built ${new Set(routes).size} page routes, ${bundles.length} projects and ${entries.length+bedfordTaylor.recordCount+strongGreen.recordCount} permanent entries into dist/.\n`);
+process.stdout.write(`Built ${new Set(routes).size} page routes, ${bundles.length} projects and ${entries.length+bedfordTaylor.recordCount+strongGreen.recordCount+foundationsEdition.rows.length} permanent entries into dist/.\n`);

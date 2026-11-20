@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002287/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The degree of a subtorus-invariant residual cycle · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002287 · Accepted whole</p><h1>The degree of a subtorus-invariant residual cycle</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.34.2">Open in the English reader · PDF page 947</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="bae01b9035ea24df4be5a0b22288de4feacd1e684510d0a013b5bd5fe0d79466">
+\begin{theorem}[The degree of a subtorus-invariant residual cycle]
+\label{v036:projection:invariantweight}
+In the preceding theorem let $L\subset N$ be a saturated
+sublattice of rank $d$. Suppose every reduced integral support
+$Z$ of $\mathcal C_d(D,h)$ is stable, as a closed subscheme,
+under translation by the split subtorus $\mathbb T_L$.
+Let $\rho:\mathbb T_N\to\mathbb T_{N/L}$ be the quotient map.
+There are distinct closed points $s_1,\ldots,s_t$ of
+$\mathbb T_{N/L}$ and positive integers $c_1,\ldots,c_t$ with
+\[
+                  \mathcal C_d(D,h)
+                     =\sum_{j=1}^t c_j[\rho^{-1}(s_j)].
+\]
+The empty sum is allowed. For every finite projection $Q$ for
+which $Q|_L$ is injective, put
+\[
+                         e_Q=[\mathbf Z^d:Q(L)].
+\]
+Then
+\begin{equation}
+\label{v036:projection:eqinvariantweight}
+        \delta_Q=e_Q\mu,
+        \qquad \mu=\sum_{j=1}^t c_j[\kappa(s_j):k]\in\mathbf Z_{\geq0}.
+\end{equation}
+In particular, $\delta_Q/e_Q$ is independent of all these
+projections and is positive exactly when the residual cycle
+is nonzero.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c4ab39c07f0e9996ca21bc04b66f824266ea6fbc6c704f699552f9b6136def36">
+\begin{proof}
+Lemma~\ref{cand:elementarylatticesplitting} gives a splitting
+$N=L\oplus N_1$. Put $M_0=(N/L)^\vee$ and $M_L=L^\vee$.
+Then $k[M]=k[M_0][M_L]$, and translation by $\mathbb T_L$
+is the character grading by $M_L$.
+
+Let $I\subset k[M]$ be the prime ideal of an integral support
+$Z$. The scheme-theoretic invariance hypothesis says that
+the coaction sends $I$ to $I\otimes_k k[M_L]$. If
+$f=\sum_\alpha f_\alpha\chi^\alpha\in I$, with
+$f_\alpha\in k[M_0]$, independence of the characters in the
+second tensor factor shows that each
+$f_\alpha\chi^\alpha$ belongs to $I$. Multiplication by the
+inverse character then puts $f_\alpha$ in $I\cap k[M_0]$.
+Thus
+\[
+ I=(I\cap k[M_0])k[M],\qquad
+ k[Z]=(k[M_0]/(I\cap k[M_0]))[M_L].
+\]
+The coefficient algebra is a finite-type domain. Since
+$\dim Z=d$, the dimension--transcendence-degree equality
+\cite[Tag 00P0]{StacksAlg} makes its fraction field algebraic
+over $k$. Its finitely many algebra generators are therefore
+algebraic over $k$. They span a finite-dimensional domain by
+their monic equations, and this domain is a field. It is
+$\kappa(s)$ for a closed point $s$ of $\mathbb T_{N/L}$.
+This proves that $Z=\rho^{-1}(s)$. Distinct integral supports
+give distinct points, establishing the first formula.
+
+Fix one of these points, and write $k&#x27;=\kappa(s)$.
+Under the splitting its fibre has coordinate ring $k&#x27;[M_L]$.
+The target characters for $Q$ have the form
+\[
+                         U_i\longmapsto d_i\chi^{a_i},
+                  \qquad d_i\in(k&#x27;)^\times.
+\]
+The $a_i$ generate a sublattice of $M_L$ of index $e_Q$;
+equivalently, this is the dual index of the injective
+map $Q|_L$. Choose one representative for each coset.
+Every character has a unique expression as a representative
+times a product of the $\chi^{a_i}$, and the units $d_i$
+can be absorbed into its coefficient. These representatives
+are therefore a basis of $k&#x27;[M_L]$ over $k&#x27;[U^{\pm1}]$.
+A $k$-basis of $k&#x27;$ gives a basis of size $e_Q[k&#x27;:k]$
+over $k[U^{\pm1}]$. This is the same character-coset
+calculation as in Proposition~\ref{v035:degreeinitialweight}.
+The generic field degree of $\rho^{-1}(s)\to
+\mathbb T_{\mathbf Z^d}$ is consequently $e_Q[k&#x27;:k]$.
+Substitution in \eqref{v036:projection:eqdegreecycle} of Theorem~\ref{v036:projection:intrinsiccycle} gives
+\eqref{v036:projection:eqinvariantweight}. Full residue-field
+degrees, including inseparable degrees, enter this computation.
+The positive coefficients $c_j$ already contain the unreduced
+generic lengths from the actual models.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="bfb5382de405594713d50c8ae6bf958dc47b197319e297c6d41187047c635fe7">
+Let $N$ be a lattice, $M=N^\vee$, and
+$\mathbb T_N=\operatorname{Spec}k[M]$. A normalized moment tuple
+on $D$ is a homomorphism
+\[
+                     h:M\longrightarrow D^\times
+\]
+such that every character value and its inverse are power
+bounded. A basis and its inverses suffice for this condition.
+For $Q:N\to\mathbf Z^d$, put
+\[
+ A_Q=K\langle U_1^{\pm1},\ldots,U_d^{\pm1}\rangle,
+ \qquad U_j\longmapsto h(Q^*e_j).
+\]
+We consider those $Q$ for which this map is finite and the given
+norm on $D$ is equivalent to the canonical finite-$A_Q$-module
+norm. Write $H_Q$ for the completed residue field of the Gauss
+point of $\mathcal M(A_Q)$, and put
+\[
+                 \delta_Q=\dim_{H_Q}(D\widehat\otimes_{A_Q}H_Q).
+\]
+An actual model is \emph{compatible with $h$} if it contains
+the values of a basis of $M$ and their inverses.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002287-reader.jpg" alt="Typeset mathematical passage from PDF page 948" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=948">PDF page 948</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002285/">NAG-002285</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li>STACKS-00P0 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>APP-STACKS-00P0@NAG-002287:15670 · named external application</li><li>APP-STACKS-00P0@NAG-002287:15670 · named external application <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole</li><li><a href="/r/NAG-002244/">NAG-002244</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002285/">NAG-002285</a> · selected whole</li><li><a href="/r/NAG-002285/">NAG-002285</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00P0">APP-STACKS-00P0@NAG-002287:15670</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li><li><a href="/r/NAG-002244/">v035:degreeinitialweight</a></li><li><a href="/r/NAG-002285/">v036:projection:intrinsiccycle</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

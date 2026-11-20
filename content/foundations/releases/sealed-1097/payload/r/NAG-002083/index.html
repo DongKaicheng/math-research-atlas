@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002083/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Initial ideals and scalar extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002083 · Accepted whole</p><h1>Initial ideals and scalar extension</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.13.4">Open in the English reader · PDF page 858</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9a282750e5b5964d7972335e3010d7ba29a2de8f74aafb4f89c289a66f009527">
+\begin{proposition}[\bi{Initial ideals and scalar extension}{初始理想与标量扩张}]
+\label{cand:unitinitialbasechange}
+\bi{Put $R=K^\circ$ and $k=\widetilde K$. Let $J=I\cap R[M]$ and let $\overline J$ be its image in $k[M]$. For any complete isometric extension $L/K$, with residue field $l$, one has}
+{记 $R=K^\circ$、$k=\widetilde K$。令 $J=I\cap R[M]$，以 $\overline J$ 记其在 $k[M]$ 中的像。对任意完备等距扩张 $L/K$，剩余域记为 $l$，有}
+\[
+ \overline{I L[M]\cap L^\circ[M]}=\overline J\,l[M].
+\]
+\bi{Moreover, $R[M]/J$ is flat over $R$, its special fibre is $k[M]/\overline J$, and this special fibre is nonempty exactly when $0\in\operatorname{Trop}(X)$.}
+{此外，$R[M]/J$ 在 $R$ 上平坦，特殊纤维为 $k[M]/\overline J$；此特殊纤维非空当且仅当 $0\in\operatorname{Trop}(X)$。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7f7751b061398e8038244c422d23f2a78e9f8cbb9f0a7230a68ba80a0a073b30">
+\begin{proof}
+\bi{For a finite set $F\subset M$, let $V_F$ be its coordinate span and $W_F=I\cap V_F$. Every vector space over $K$ is torsion-free and therefore flat by \cite[Tag 0539]{StacksAlg}, applied to the valuation ring $K$ itself. Tensoring the kernel sequence $W_F\to V_F\to K[M]/I$ thus gives}
+{对有限集 $F\subset M$，令 $V_F$ 为其坐标张成空间，$W_F=I\cap V_F$。每个 $K$-向量空间均无挠，故将 \cite[Tag 0539]{StacksAlg} 用于赋值环 $K$ 本身，得其平坦性。因此张量核序列 $W_F\to V_F\to K[M]/I$ 给出}
+\[
+ (I L[M])\cap(V_F\otimes_KL)=W_F\otimes_KL.
+\]
+\bi{Apply Lemma~\ref{cand:weightedcoordinatesubspace} with unit weights. The reductions of the unit balls on the two sides therefore differ exactly by scalar extension from $k$ to $l$. Taking the union over finite supports proves the ideal identity.}
+{对单位权重应用 Lemma~\ref{cand:weightedcoordinatesubspace}，两侧单位球的约化恰好相差从 $k$ 到 $l$ 的标量扩张。对所有有限支集取并，即得理想等式。}
+
+\bi{The closure algebra injects into $K[M]/I$, hence has no $R$-torsion. It is flat by the valuation-ring criterion, \cite[Tag 0539]{StacksAlg}. Its special fibre has the stated presentation. If $\overline J$ contains a monomial, lifting the equality expressing this monomial as a finite sum of reduced relations gives an element of $I$ whose reduction is that monomial. It has a unique active term. Conversely, normalize an element of $I$ having a unique active term by its largest coefficient; its reduction is a unit monomial in $\overline J$. Thus $\overline J$ is proper exactly when every relation has at least two active terms. Theorem~\ref{cand:tropicalfundamental} finishes the proof.}
+{Closure algebra 嵌入 $K[M]/I$，故没有 $R$-挠元；由赋值环判据 \cite[Tag 0539]{StacksAlg}，它平坦。其特殊纤维具有所述表示。若 $\overline J$ 包含某个单项式，将表达此单项式的有限个约化关系提升，便得 $I$ 中一个约化恰为该单项式的元素，它具有唯一活跃项。反过来，将 $I$ 中具有唯一活跃项的元素除以最大系数，其约化就是 $\overline J$ 中的可逆单项式。因此 $\overline J$ 真，当且仅当每个关系有至少两个活跃项；再应用 Theorem~\ref{cand:tropicalfundamental}。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="fabb40aea151ebf09ef32bf7ec4f026ce5dec8c22eba99a30c354acce81cc109">
+\section{\bi{Initial ideals and analytic tropical fibres}{初始理想与解析热带纤维}}
+\label{cand:initialfibressection}
+
+\bi{Let $K$ be a complete non-Archimedean field, put $v=-\log|\cdot|$, and write $M=\mathbf Z^n$. For $w\in\mathbf R^n$ and $f=\sum_m a_m\chi^m\in K[M]$, put}
+{设 $K$ 为完备非阿基米德域，记 $v=-\log|\cdot|$、$M=\mathbf Z^n$。对 $w\in\mathbf R^n$ 及 $f=\sum_m a_m\chi^m\in K[M]$，置}
+\[
+ \|f\|_w=\max_m |a_m|e^{-\langle m,w\rangle},
+ \qquad
+ \mu_w(f)=\min_{a_m\ne0}\bigl(v(a_m)+\langle m,w\rangle\bigr).
+\]
+\bi{A term is active if it attains this maximum, or equivalently this minimum. Denote by $\mathcal T_w$ the completion of $K[M]$ for $\|\cdot\|_w$. The multilaurent presentation of Theorem~\ref{fnd:multilaurentactualpresentation} identifies it, as a normed algebra, with}
+{达到上述最大值（等价地，最小值）的项称为活跃项。记 $\mathcal T_w$ 为 $K[M]$ 关于 $\|\cdot\|_w$ 的完备化。由 Theorem~\ref{fnd:multilaurentactualpresentation} 的多重 Laurent 表示，它作为赋范代数等于}
+\[
+ K\{r_1^{-1}T_1,r_1S_1,\ldots,r_n^{-1}T_n,r_nS_n\}/(T_iS_i-1)_i,
+ \qquad r_i=e^{-w_i}.
+\]
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002083-reader.jpg" alt="Typeset mathematical passage from PDF page 858" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=858">PDF page 858 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002080/">NAG-002080</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002082/">NAG-002082</a> · selected whole <small>(earlier independently reviewed whole proposal)</small></li><li>STACKS-0539 · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>APP-STACKS-0539@NAG-002083:exact-original-358-site-1 · named external application</li><li>APP-STACKS-0539@NAG-002083:exact-original-358-site-1 · named external application <small>(requires)</small></li><li>APP-STACKS-0539@NAG-002083:exact-original-358-site-3 · named external application</li><li>APP-STACKS-0539@NAG-002083:exact-original-358-site-3 · named external application <small>(requires)</small></li><li><a href="/r/NAG-002080/">NAG-002080</a> · selected whole</li><li><a href="/r/NAG-002080/">NAG-002080</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002082/">NAG-002082</a> · selected whole</li><li><a href="/r/NAG-002082/">NAG-002082</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002082/">cand:tropicalfundamental</a></li><li><a href="/r/NAG-002080/">cand:weightedcoordinatesubspace</a></li><li><a href="/r/NAG-001553/">fnd:multilaurentactualpresentation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

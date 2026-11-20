@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002161/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The pointwise endpoint · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002161 · Accepted whole</p><h1>The pointwise endpoint</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.18.5">Open in the English reader · PDF page 880</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4a6855074c246c08cd53427dc7386f2f349ad6536542d96d2afe54c7194957be">
+\begin{lemma}[\bi{The pointwise endpoint}
+{逐点终点}]
+\label{cand:etaledisplacementpointwiseendpoint}
+\bi{For every $x\in\mathcal M(B)$, the formula}
+{对于每个 $x\in\mathcal M(B)$，公式}
+\[
+ |b(H_B(x,1))|=\sup_\nu|D_\nu(b)(x)|
+             =\lim_{t\uparrow1}|b(H_B(x,t))|
+\]
+\bi{defines a point of $\mathcal M(B)$ and extends its
+trajectory continuously to $[0,1]$. Each endpoint evaluation
+is lower semicontinuous as a function of $x$. The endpoint
+commutes with all strict-time maps and is idempotent:}
+{定义 $\mathcal M(B)$ 中的点，并将该点的轨迹连续
+延拓到 $[0,1]$。每个终点取值作为 $x$ 的函数下半
+连续。终点与全部严格小于一时刻的映射相容，且为
+幂等映射：}
+\[
+ H_B(H_B(x,1),t)=H_B(x,1)=H_B(H_B(x,t),1),
+                 \qquad 0\leq t\leq1.
+\]
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="fac970f1c9d17312344b23a37335b70c1007c4d447d538e8a2303e04496db475">
+\begin{proof}
+\bi{For each $b$, the strict-time value is nondecreasing
+and bounded by $\|b\|$. Its limit is the displayed
+coefficient supremum: each fixed coefficient is attained in
+the limit, and their supremum bounds every time value.
+Passing to limits in the multiplicative, ultrametric, and
+scalar identities proves that this is a bounded multiplicative
+seminorm extending the given absolute value. Evaluation
+topology gives convergence to its point, hence continuity
+of the trajectory at time one. A supremum of continuous
+coefficient evaluations is lower semicontinuous.}
+{对每个 $b$，严格小于一时刻的取值单调不减，且被
+$\|b\|$ 控制。其极限等于所列系数上确界：每个固定
+系数都在极限中达到，而这些系数的上确界控制每个
+时刻的值。在乘性、超度量及标量恒等式中取极限，
+得到延拓原绝对值的有界乘性半范数。取值拓扑给出
+向其对应点的收敛，故轨迹在时刻一连续。连续系数
+取值的上确界为下半连续函数。}
+
+\bi{Fix $t&lt;1$. Continuity of the strict-time map in $x$
+and Proposition~\ref{cand:etaledisplacementfunctoriality}
+allow $s\uparrow1$ in
+$H_B(H_B(x,s),t)=H_B(x,\max(s,t))$. The resulting identity
+is $H_B(H_B(x,1),t)=H_B(x,1)$. In the opposite order,
+pointwise convergence applied to the fixed point $H_B(x,t)$
+gives $H_B(H_B(x,t),1)=H_B(x,1)$. Finally let $t\uparrow1$
+in the first equality, again using the continuous trajectory
+of the fixed point $H_B(x,1)$, to get idempotence.}
+{固定 $t&lt;1$。严格小于一时刻的映射关于 $x$ 连续，
+故可在 Proposition~\ref{cand:etaledisplacementfunctoriality}
+的等式 $H_B(H_B(x,s),t)=H_B(x,\max(s,t))$ 中令
+$s\uparrow1$，得到 $H_B(H_B(x,1),t)=H_B(x,1)$。
+对反向次序，将逐点收敛用于固定点 $H_B(x,t)$，得到
+$H_B(H_B(x,t),1)=H_B(x,1)$。最后在第一个等式中
+令 $t\uparrow1$，利用固定点 $H_B(x,1)$ 的轨迹
+连续性，得到幂等性。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="7d82cfae96b627fabe008e92f8b274a70cc02312729a45ded39d3c9dfb79233b">
+\bi{Retain the standard algebra $A$ and its integral coordinates
+from Lemma~\ref{cand:mixedgaussdisplacement}. Let
+$F=(F_1,\ldots,F_m)$ be represented by restricted series in
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ with coefficients in
+$K^\circ$. Write $J=\partial F/\partial Y$ and consider the
+nonzero affinoid algebra}
+{保留 Lemma~\ref{cand:mixedgaussdisplacement} 中的标准代数
+$A$ 及其整坐标。设 $F=(F_1,\ldots,F_m)$ 由变量
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ 的受限级数表示，
+系数属于 $K^\circ$。写 $J=\partial F/\partial Y$，并考虑
+非零 affinoid 代数}
+\[
+ B=A\langle Y_1,\ldots,Y_m,Q\rangle/
+                  (F_1,\ldots,F_m,Q\det J-1).
+ \tag{J}\label{eq:candetalejacobianpresentation}
+\]
+\bi{We use its displayed quotient norm. In particular the
+coordinate images and $J^{-1}=Q\operatorname{adj}(J)$ have
+norm at most one. All the statements below keep this
+presentation over the original valued field.}
+{使用所列表示的商范数。特别地，坐标像及
+$J^{-1}=Q\operatorname{adj}(J)$ 的范数至多为一。下述
+全部陈述保留原赋值域上的这个表示。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002161-reader.jpg" alt="Typeset mathematical passage from PDF page 880" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=880">PDF page 880 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole</li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole</li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002160/">cand:etaledisplacementfunctoriality</a></li><li><a href="/r/NAG-002139/">cand:mixedgaussdisplacement</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

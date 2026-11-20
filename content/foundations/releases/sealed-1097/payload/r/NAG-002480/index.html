@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002480/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A logarithmic current in the retraction scope · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002480 · Accepted whole</p><h1>A logarithmic current in the retraction scope</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002480.original">Open in the English reader · PDF page 2026</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e58c0e0146f35e63bf1ed98260bddc1e5f2401fa3d62c070f9ccf7513071b34b">
+\begin{theorem}[A logarithmic current in the retraction scope]
+\label{f8cont:log}
+Let $X$ be good, Hausdorff and pure of analytic dimension $n\geq1$,
+and let $\mathcal F$ be a coherent $\mathcal O_{X_G}$-module.
+Let $g,h\in\mathcal O_X(X)$ be non-zero-divisors in every local ring
+and put
+\[
+       Z=\{|g|=0\}\cup\{|h|=0\},\qquad
+       u=\log|g/h|\quad\text{on }X\setminus Z.
+\]
+Assume $(\mathrm R_{n-1})$ for $Z$. Then
+\begin{equation}\label{f8cont:eq:logcurrent}
+       T_{g/h,\mathcal F}(\alpha)=
+              \int_{X\setminus Z,\,\mathcal F|_{X\setminus Z}}u\alpha
+\end{equation}
+is well-defined and continuous on
+$(\E^{n,n}(X),\tau_{\mathrm{cut}})=
+ (\E^{n,n}(X),\tau_{\mathrm{ord}})$.
+The displayed functional is independent of the representatives of the
+ordinary test form. It is a current of bidimension $(n,n)$ for this
+fixed regular quotient.
+
+For each cutoff presentation $Q_i$, there is $C_i&lt;\infty$ with
+\begin{equation}\label{f8cont:eq:C0}
+ |T_{g/h,\mathcal F}(Q_i\eta)|
+ \leq C_i\max_{I,J}\sup_{t_{f_i}(V_i)}|\eta_{I,J}|.
+\end{equation}
+There are smooth functions $u_M\in\A^{0,0}(X)$, $M\geq0$, formed by
+constant smooth truncation of $\log|g|$ and $\log|h|$ near their zeros,
+such that for each $i$ one number $M_i$ satisfies
+\begin{equation}\label{f8cont:eq:stationary}
+ \int_{X,\mathcal F}u_M Q_i\eta=T_{g/h,\mathcal F}(Q_i\eta)
+       \quad(M\geq M_i,\ \eta\in E^{n,n}(\Omega_i)).
+\end{equation}
+The threshold is uniform over the whole fixed presentation, with no
+bound on $\eta$ required.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="73f3eacd78158079ad41e923e71e257515e6eb94943984c759e23c3b8879f7f5">
+\begin{proof}
+Fix a cutoff presentation $Q_i$ and put $K=\supp\chi_i$.
+For each $z\in K\cap Z$, Lemma~\ref{f8cont:retraction} applied to
+its fixed tuple makes every pulled-back $(n,n)$-form zero on one
+ordinary neighbourhood of $z$. A finite union $O$ of these
+neighbourhoods covers $K\cap Z$. Therefore
+$K_i=K\setminus O$ is compact in $X\setminus Z$ and contains
+$\supp Q_i\eta$ for every $\eta$. The cutoff presentations span the
+test space, so every test has compact support in the complement.
+There $g$ and $h$ are locally analytic units, using
+\base{fnd:generalizedpointunitcriterion} on smaller affinoids as in
+\base{v037:forms:smoothcutoff}. Thus $u$ is an ordinary smooth moment
+function. The product $u\alpha$ has compact support in the complement.
+The integral exists and is independent of its chart representatives by
+\base{v037:forms:compactintegral}. Open restrictions are pure of dimension
+$n$ by \base{v037:integration:puritylocality}. These facts also prove
+linearity of \eqref{f8cont:eq:logcurrent}.
+
+For the fixed $i$ and $K_i$, by
+\base{v037:forms:finitepartition}, choose $\theta\in\A_c^{0,0}(X)$
+supported in $X\setminus Z$ and equal to one near $K_i$.
+The function $b=\ext(\theta u)$ is ordinary smooth on $X$, and locality
+of the baseline integral gives
+\[
+       T_{g/h,\mathcal F}(Q_i\eta)=\int_{X,\mathcal F}b\,Q_i\eta.
+\]
+Compute this integral on a finite affinoid cover of the fixed support
+of $\chi_i$ inside $\Int(V_i,X)$, adjoining $f_i$ to representatives
+of $b\chi_i$. The finite inclusion--exclusion formula
+\base{v037:integration:eqcompactintegral} and
+\base{v037:integration:globalchain} give fixed cells, actual coherent
+module weights and fixed coefficient multipliers. On each cell, the
+absolute integral is at most its lattice-normalized volume times the
+absolute weight times a fixed constant times the right-hand coefficient
+supremum in \eqref{f8cont:eq:C0}, by
+\base{v037:integration:polyhedralcalculus}. The projected coefficient
+arguments lie in $t_{f_i}(V_i)$. Summing these finitely many bounds proves
+\eqref{f8cont:eq:C0} and continuity by the definition of the final topology.
+No positivity or integration by parts enters this estimate.
+
+Choose a smooth real function $\rho$ with $\rho=0$ on $(-\infty,0]$
+and $\rho=1$ on $[1,\infty)$, as explicitly constructed in
+\base{v037:forms:smoothcutoff}. Put
+\[
+ \lambda(s)=s\rho(s+1),\qquad
+ \lambda_M(t)=-M+\lambda(t+M).
+\]
+Thus $\lambda_M(t)=t$ for $t\geq-M$ and is $-M$ for $t\leq-M-1$.
+For an analytic function $a$ set
+\[
+ \ell_M(a)(x)=
+ \begin{cases}
+   \lambda_M(\log|a(x)|),&amp; |a(x)|&gt;0,\\
+   -M,&amp; |a(x)|=0.
+ \end{cases}
+\]
+This is an ordinary smooth function: near a zero it is constant on
+$\{|a|&lt;e^{-M-1}\}$, and on the nonzero locus it is a smooth function of
+a unit moment coordinate. The scalar sheaf in
+\base{v037:forms:smoothcutoff} glues these representatives.
+Set $u_M=\ell_M(g)-\ell_M(h)$.
+
+If $K_i$ is empty, every $Q_i\eta$ is zero and stationarity is immediate.
+Otherwise, the positive continuous functions $|g|$ and $|h|$ have positive minima
+on $K_i$. Choose $M_i\geq0$ strictly larger than both negatives of the
+minimum logarithms there. For $M\geq M_i$, $u_M=u$ on a neighbourhood
+of $K_i$. Since every $Q_i\eta$ is supported in $K_i$, the two products
+agree as ordinary forms after extension by zero. This proves
+\eqref{f8cont:eq:stationary}.
+It also gives absolute finiteness on every finite cell presentation:
+all coefficients and the logarithms are bounded on the relevant compact
+supports. No separate representation by Radon measures is required.
+
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002480-reader.jpg" alt="Typeset mathematical passage from PDF page 2027" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2027">PDF page 2027 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002427/">NAG-002427</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002473/">NAG-002473</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002478/">NAG-002478</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002478/">f8cont:retraction</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

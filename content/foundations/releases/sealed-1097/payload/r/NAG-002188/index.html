@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002188/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Balanced pushforward · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002188 · Accepted whole</p><h1>Balanced pushforward</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.17.2">Open in the English reader · PDF page 874</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e612dc542d8a0235cb0ae691392a5bc2ecdffbcc55a22aab12ead4eebcf73cde">
+\begin{theorem}[\bi{Balanced pushforward}{平衡推前}]
+\label{cand:balancedpolyhedralpushforward}
+\bi{Let $C$ be a finite balanced real $d$-cycle in $N_{\mathbf R}$
+and let $f:N_{\mathbf R}\to N&#x27;_{\mathbf R}$ be an integral affine
+map. There is a well-defined balanced $d$-cycle $f_*C$. After
+subdivision so that images are cells, its weight on a
+$d$-dimensional target cell $\sigma&#x27;$ is}
+{设 $C$ 为 $N_{\mathbf R}$ 中有限平衡实 $d$-循环，
+$f:N_{\mathbf R}\to N&#x27;_{\mathbf R}$ 为整仿射映射。存在
+良定义的平衡 $d$-循环 $f_*C$。经细分使像成为胞腔后，
+它在 $d$ 维目标胞腔 $\sigma&#x27;$ 上的权重为}
+\[
+ w_{f_*C}(\sigma&#x27;)=
+   \sum_{\substack{\dim\sigma=d\,,\ f(\sigma)=\sigma&#x27;}}
+       w_C(\sigma)[N&#x27;_{\sigma&#x27;}:f(N_\sigma)].
+ \tag{P}\label{eq:candpushforwardweight}
+\]
+\bi{Facets on which the dimension drops contribute zero.
+Pushforward is linear and functorial under composition of
+integral affine maps.}
+{维数下降的极大胞腔贡献为零。推前线性，并与整仿射映射的
+复合相容。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="bef427fdae570cdfb5a234f319758a18112d3271c68b5676c2576143adcc523e">
+\begin{proof}
+\bi{Images of rational polyhedra are rational polyhedra: eliminate
+one coordinate at a time from their finite systems of affine
+inequalities, pairing a lower and an upper bound for that
+coordinate. Equalities are eliminated by substitution. This
+finite elimination also permits real constants. Choose a common
+target subdivision of all images and pull its defining
+hyperplanes back to the source. On every facet where $f$ is
+injective, source cells correspond bijectively to the target
+cells lying in its image. Formula~\eqref{eq:candpushforwardweight}
+therefore defines a finite weighted complex. Adding more
+hyperplanes merely subdivides it with the same generic weights;
+two choices are compared by their combined hyperplanes. This
+also proves invariance under a source subdivision.}
+{有理多面体的线性像仍为有理多面体：在有限个仿射不等式中
+逐一消去坐标，将该坐标的每个下界与上界配对；等式则以代入
+消去。此有限消元也允许实常数。为全部像选择共同目标细分，
+再将其定义超平面拉回源空间。在 $f$ 单射的每个极大胞腔上，
+源胞腔与其像中包含的目标胞腔一一对应。因此
+公式~\eqref{eq:candpushforwardweight} 定义有限带权复形。
+增加超平面只产生保持一般权重的细分；合并两组超平面即可
+比较不同选择。这同时证明了源复形细分下的不变性。}
+
+\bi{Fix a target face $\tau&#x27;$ of dimension $d-1$ and sum over
+all source faces $\tau$ of dimension $d-1$ with $f(\tau)=\tau&#x27;$.
+Multiply the balancing equation at $\tau$, after applying the
+linear part of $f$, by
+$a_\tau=[N&#x27;_{\tau&#x27;}:f(N_\tau)]$. For an incident full-rank
+facet $\sigma$, Lemma~\ref{cand:facetindexidentity} replaces its
+term by $w_C(\sigma)a_\sigma u_{f(\sigma)/\tau&#x27;}$. If $f$
+has rank less than $d$ on $\sigma$, its normal maps into
+$N&#x27;_{\tau&#x27;,\mathbf R}$ and gives zero in the normal quotient.
+Each full-rank $\sigma$ with $f(\sigma)\supset\tau&#x27;$ occurs
+exactly once: the inverse image of the target facet is its
+unique facet mapping to $\tau&#x27;$. The sum is consequently the
+balancing equation for the weights~\eqref{eq:candpushforwardweight}.
+This proves balancedness, including faces bordering a zero-weight
+region.}
+{固定维数为 $d-1$ 的目标面 $\tau&#x27;$，对满足
+$f(\tau)=\tau&#x27;$ 的全部源余维一面 $\tau$ 求和。先对
+$\tau$ 处的平衡等式施加 $f$ 的线性部分，再乘以
+$a_\tau=[N&#x27;_{\tau&#x27;}:f(N_\tau)]$。对相邻满秩极大胞腔
+$\sigma$，Lemma~\ref{cand:facetindexidentity} 将其项化为
+$w_C(\sigma)a_\sigma u_{f(\sigma)/\tau&#x27;}$。若 $f$ 在
+$\sigma$ 上的秩小于 $d$，其法向映入
+$N&#x27;_{\tau&#x27;,\mathbf R}$，故在法向商空间中贡献为零。
+满足 $f(\sigma)\supset\tau&#x27;$ 的每个满秩 $\sigma$ 恰好
+出现一次，因为目标余维一面的逆像是其中唯一映到 $\tau&#x27;$
+的余维一面。故总和正是权重~\eqref{eq:candpushforwardweight}
+的平衡等式。这也覆盖与零权区域相邻的面。}
+
+\bi{Linearity follows from the sum. For a second map $g$, a
+facet contributing to $(g\circ f)_*C$ has full rank at both
+stages, while a dimension drop cannot be reversed. On a
+contributing facet the two finite indices multiply, since $g$
+is injective on the relevant direction space. After a common
+subdivision, summing these products proves
+$(g\circ f)_*=g_*f_*$.}
+{线性性来自求和公式。对第二个映射 $g$，向
+$(g\circ f)_*C$ 作贡献的极大胞腔在两个阶段均满秩，而已
+下降的维数不可能恢复。在有贡献的胞腔上，$g$ 在有关方向
+空间上单射，故两个有限格指数相乘。取共同细分后对这些乘积
+求和，即得 $(g\circ f)_*=g_*f_*$。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002188-reader.jpg" alt="Typeset mathematical passage from PDF page 874" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=874">PDF page 874 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole</li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002187/">NAG-002187</a> · selected whole</li><li><a href="/r/NAG-002187/">NAG-002187</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002187/">cand:facetindexidentity</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

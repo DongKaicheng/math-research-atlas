@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001507/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Power presentations for rational inequalities · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001507 · Accepted whole</p><h1>Power presentations for rational inequalities</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.26.2">Open in the English reader · PDF page 220</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6d70c7e30305a2280e94752adc9e7f76a83b3e84611f167d38557a38881b2d9f">
+\begin{proposition}[\bi{Power presentations for rational inequalities}{Rational 不等式的幂表示}]\label{fnd:radicalrationalpresentation}
+\bi{Let $(g,f_1,\ldots,f_s)=A$ and let $r_i\in\Gamma_K^{\mathrm{div}}$. Choose a common integer $n\geq1$ and $c_i\in K^\times$ with $|c_i|=r_i^n$. Then}
+{设 $(g,f_1,\ldots,f_s)=A$，且 $r_i\in\Gamma_K^{\mathrm{div}}$。选择共同整数 $n\geq1$ 及 $c_i\in K^\times$，使 $|c_i|=r_i^n$。则}
+\[
+ Q=A\{r^{-1}T\}/(gT_i-f_i)_i,
+ \qquad
+ P=A\{W_1,\ldots,W_s\}/(g^nW_i-c_i^{-1}f_i^n)_i
+\]
+\bi{are canonically isomorphic by bounded inverse $A$-algebra maps. The tuple defining $P$ generates the unit ideal. Thus $Q$ is a strict affinoid, and its spectrum identifies homeomorphically with}
+{之间存在典范的有界互逆 $A$-代数映射。定义 $P$ 的 tuple 生成单位理想。因此 $Q$ 为 strict affinoid，且其谱同胚识别为}
+\[
+ \{x\in\mathcal M(A):|f_i(x)|\leq r_i|g(x)|\text{ for all }i\}.
+\]
+\bi{It has the strict-target domain universal property of Theorem~\ref{fnd:strictrationaldomainup}. These conclusions concern the stated actual quotient norms, with bounded comparison; an isometry with the power presentation is not asserted.}
+{它具有 Theorem~\ref{fnd:strictrationaldomainup} 的 strict 目标域泛性质。这些结论涉及所述实际商范数，比较映射有界；并不声称它与幂表示之间等距。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="16b9a3688a8d4503d553302afd0a38c818848236f6f6730d4cd064ad2e7275e2">
+\begin{proof}
+\bi{Raise a unit-ideal identity for $(g,f_1,\ldots,f_s)$ to the exponent $(s+1)(n-1)+1$. In every term, at least one of these $s+1$ elements occurs to an exponent at least $n$. Thus $(g^n,f_1^n,\ldots,f_s^n)=A$, and multiplying individual entries by $c_i^{-1}$ preserves that ideal. Lemma~\ref{fnd:radicalradiusaffinoid} makes $Q$ a strict actual quotient; the ordinary strict quotient theorem does the same for $P$. In $Q$ the element $g$ is a unit by the original certificate. Sending $W_i$ to $T_i^n/c_i$, which has norm at most one, gives a contractive map $P\to Q$.}
+{将 $(g,f_1,\ldots,f_s)$ 的单位理想恒等式取 $(s+1)(n-1)+1$ 次幂。每一项中，这 $s+1$ 个元素至少有一个出现次数不小于 $n$，故 $(g^n,f_1^n,\ldots,f_s^n)=A$。将相应元素乘以 $c_i^{-1}$ 不改变这一理想。由 Lemma~\ref{fnd:radicalradiusaffinoid}，$Q$ 为 strict 实际商；通常的 strict 商定理对 $P$ 给出相同结论。由原单位理想证书，$g$ 在 $Q$ 中为单位。将 $W_i$ 送到范数至多为一的 $T_i^n/c_i$，便得到 contractive 映射 $P\to Q$。}
+
+\bi{In $P$, its unit-ideal certificate makes $g^n$, and hence $g$, a unit. Put $b_i=f_i/g$. The relation gives $b_i^n=c_iW_i$. If $m=qn+j$ with $0\leq j&lt;n$, then}
+{在 $P$ 中，由其单位理想证书可知 $g^n$ 为单位，因而 $g$ 也为单位。令 $b_i=f_i/g$，则定义关系给出 $b_i^n=c_iW_i$。若 $m=qn+j$、$0\leq j&lt;n$，则}
+\[
+ \|b_i^m\|\leq |c_i|^q\|b_i^j\|
+    \leq C_i r_i^m,
+ \qquad C_i=\max_{0\leq j&lt;n}r_i^{-j}\|b_i^j\|.
+\]
+\bi{Proposition~\ref{fnd:powerboundedsubstitution} therefore defines a bounded map $A\{r^{-1}T\}\to P$ sending $T_i$ to $b_i$. It kills the actual relation ideal and descends boundedly to $Q$ by taking infima over lifts. The two composites fix the variables: in $P$, $f_i^n/(c_ig^n)=W_i$, and in $Q$, $f_i/g=T_i$. Polynomial density proves that they are inverse. Zero targets and zero quotients satisfy the same conclusion directly.}
+{因此由 Proposition~\ref{fnd:powerboundedsubstitution}，得到将 $T_i$ 送到 $b_i$ 的有界映射 $A\{r^{-1}T\}\to P$。它零化实际关系理想，对提升取下确界后便有界地下降到 $Q$。两个复合固定变量：在 $P$ 中有 $f_i^n/(c_ig^n)=W_i$，在 $Q$ 中有 $f_i/g=T_i$。多项式稠密性证明两映射互逆。零目标与零商的结论直接成立。}
+
+\bi{The point theorem and the strict-target universal property for the unit-radius presentation $P$ now apply. Its inequalities are $|f_i|^n\leq|c_i|\,|g|^n$, exactly the displayed inequalities for $Q$. Transferring across the bounded inverse isomorphism proves both assertions. In particular, every such domain also has a unit-radius rational presentation over the original field.}
+{现在可对单位半径表示 $P$ 应用谱点定理及 strict 目标泛性质。它的不等式为 $|f_i|^n\leq|c_i|\,|g|^n$，恰好等价于 $Q$ 的所列不等式。通过有界互逆同构传递，即得两个断言。特别地，每个这样的域在原基域上都具有单位半径 rational 表示。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001507-reader.jpg" alt="Typeset mathematical passage from PDF page 220" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=220">PDF page 220 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole <small>(earlier whole in this proposal)</small></li><li><a href="/r/NAG-001506/">NAG-001506</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope</li><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole</li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001506/">NAG-001506</a> · selected whole</li><li><a href="/r/NAG-001506/">NAG-001506</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="fixed_denominator_one_two_bounded_maps"><h3>fixed denominator one two bounded maps</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.26.2">Scope in the English reader · PDF page 220</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e6c8e142662d247918811f7f9e6e53fdaf1775289c0f65216996936c483d9824">
+\begin{proposition}[\bi{Power presentations for rational inequalities}{Rational 不等式的幂表示}]\label{fnd:radicalrationalpresentation}
+\bi{Let $(g,f_1,\ldots,f_s)=A$ and let $r_i\in\Gamma_K^{\mathrm{div}}$. Choose a common integer $n\geq1$ and $c_i\in K^\times$ with $|c_i|=r_i^n$. Then}
+{设 $(g,f_1,\ldots,f_s)=A$，且 $r_i\in\Gamma_K^{\mathrm{div}}$。选择共同整数 $n\geq1$ 及 $c_i\in K^\times$，使 $|c_i|=r_i^n$。则}
+\[
+ Q=A\{r^{-1}T\}/(gT_i-f_i)_i,
+ \qquad
+ P=A\{W_1,\ldots,W_s\}/(g^nW_i-c_i^{-1}f_i^n)_i
+\]
+\bi{are canonically isomorphic by bounded inverse $A$-algebra maps. The tuple defining $P$ generates the unit ideal. Thus $Q$ is a strict affinoid, and its spectrum identifies homeomorphically with}
+{之间存在典范的有界互逆 $A$-代数映射。定义 $P$ 的 tuple 生成单位理想。因此 $Q$ 为 strict affinoid，且其谱同胚识别为}
+\[
+ \{x\in\mathcal M(A):|f_i(x)|\leq r_i|g(x)|\text{ for all }i\}.
+\]
+\bi{It has the strict-target domain universal property of Theorem~\ref{fnd:strictrationaldomainup}. These conclusions concern the stated actual quotient norms, with bounded comparison; an isometry with the power presentation is not asserted.}
+{它具有 Theorem~\ref{fnd:strictrationaldomainup} 的 strict 目标域泛性质。这些结论涉及所述实际商范数，比较映射有界；并不声称它与幂表示之间等距。}
+\end{proposition}
+\begin{proof}
+\bi{Raise a unit-ideal identity for $(g,f_1,\ldots,f_s)$ to the exponent $(s+1)(n-1)+1$. In every term, at least one of these $s+1$ elements occurs to an exponent at least $n$. Thus $(g^n,f_1^n,\ldots,f_s^n)=A$, and multiplying individual entries by $c_i^{-1}$ preserves that ideal. Lemma~\ref{fnd:radicalradiusaffinoid} makes $Q$ a strict actual quotient; the ordinary strict quotient theorem does the same for $P$. In $Q$ the element $g$ is a unit by the original certificate. Sending $W_i$ to $T_i^n/c_i$, which has norm at most one, gives a contractive map $P\to Q$.}
+{将 $(g,f_1,\ldots,f_s)$ 的单位理想恒等式取 $(s+1)(n-1)+1$ 次幂。每一项中，这 $s+1$ 个元素至少有一个出现次数不小于 $n$，故 $(g^n,f_1^n,\ldots,f_s^n)=A$。将相应元素乘以 $c_i^{-1}$ 不改变这一理想。由 Lemma~\ref{fnd:radicalradiusaffinoid}，$Q$ 为 strict 实际商；通常的 strict 商定理对 $P$ 给出相同结论。由原单位理想证书，$g$ 在 $Q$ 中为单位。将 $W_i$ 送到范数至多为一的 $T_i^n/c_i$，便得到 contractive 映射 $P\to Q$。}
+
+\bi{In $P$, its unit-ideal certificate makes $g^n$, and hence $g$, a unit. Put $b_i=f_i/g$. The relation gives $b_i^n=c_iW_i$. If $m=qn+j$ with $0\leq j&lt;n$, then}
+{在 $P$ 中，由其单位理想证书可知 $g^n$ 为单位，因而 $g$ 也为单位。令 $b_i=f_i/g$，则定义关系给出 $b_i^n=c_iW_i$。若 $m=qn+j$、$0\leq j&lt;n$，则}
+\[
+ \|b_i^m\|\leq |c_i|^q\|b_i^j\|
+    \leq C_i r_i^m,
+ \qquad C_i=\max_{0\leq j&lt;n}r_i^{-j}\|b_i^j\|.
+\]
+\bi{Proposition~\ref{fnd:powerboundedsubstitution} therefore defines a bounded map $A\{r^{-1}T\}\to P$ sending $T_i$ to $b_i$. It kills the actual relation ideal and descends boundedly to $Q$ by taking infima over lifts. The two composites fix the variables: in $P$, $f_i^n/(c_ig^n)=W_i$, and in $Q$, $f_i/g=T_i$. Polynomial density proves that they are inverse. Zero targets and zero quotients satisfy the same conclusion directly.}
+</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="e6c8e142662d247918811f7f9e6e53fdaf1775289c0f65216996936c483d9824">
+\begin{proposition}[\bi{Power presentations for rational inequalities}{Rational 不等式的幂表示}]\label{fnd:radicalrationalpresentation}
+\bi{Let $(g,f_1,\ldots,f_s)=A$ and let $r_i\in\Gamma_K^{\mathrm{div}}$. Choose a common integer $n\geq1$ and $c_i\in K^\times$ with $|c_i|=r_i^n$. Then}
+{设 $(g,f_1,\ldots,f_s)=A$，且 $r_i\in\Gamma_K^{\mathrm{div}}$。选择共同整数 $n\geq1$ 及 $c_i\in K^\times$，使 $|c_i|=r_i^n$。则}
+\[
+ Q=A\{r^{-1}T\}/(gT_i-f_i)_i,
+ \qquad
+ P=A\{W_1,\ldots,W_s\}/(g^nW_i-c_i^{-1}f_i^n)_i
+\]
+\bi{are canonically isomorphic by bounded inverse $A$-algebra maps. The tuple defining $P$ generates the unit ideal. Thus $Q$ is a strict affinoid, and its spectrum identifies homeomorphically with}
+{之间存在典范的有界互逆 $A$-代数映射。定义 $P$ 的 tuple 生成单位理想。因此 $Q$ 为 strict affinoid，且其谱同胚识别为}
+\[
+ \{x\in\mathcal M(A):|f_i(x)|\leq r_i|g(x)|\text{ for all }i\}.
+\]
+\bi{It has the strict-target domain universal property of Theorem~\ref{fnd:strictrationaldomainup}. These conclusions concern the stated actual quotient norms, with bounded comparison; an isometry with the power presentation is not asserted.}
+{它具有 Theorem~\ref{fnd:strictrationaldomainup} 的 strict 目标域泛性质。这些结论涉及所述实际商范数，比较映射有界；并不声称它与幂表示之间等距。}
+\end{proposition}
+\begin{proof}
+\bi{Raise a unit-ideal identity for $(g,f_1,\ldots,f_s)$ to the exponent $(s+1)(n-1)+1$. In every term, at least one of these $s+1$ elements occurs to an exponent at least $n$. Thus $(g^n,f_1^n,\ldots,f_s^n)=A$, and multiplying individual entries by $c_i^{-1}$ preserves that ideal. Lemma~\ref{fnd:radicalradiusaffinoid} makes $Q$ a strict actual quotient; the ordinary strict quotient theorem does the same for $P$. In $Q$ the element $g$ is a unit by the original certificate. Sending $W_i$ to $T_i^n/c_i$, which has norm at most one, gives a contractive map $P\to Q$.}
+{将 $(g,f_1,\ldots,f_s)$ 的单位理想恒等式取 $(s+1)(n-1)+1$ 次幂。每一项中，这 $s+1$ 个元素至少有一个出现次数不小于 $n$，故 $(g^n,f_1^n,\ldots,f_s^n)=A$。将相应元素乘以 $c_i^{-1}$ 不改变这一理想。由 Lemma~\ref{fnd:radicalradiusaffinoid}，$Q$ 为 strict 实际商；通常的 strict 商定理对 $P$ 给出相同结论。由原单位理想证书，$g$ 在 $Q$ 中为单位。将 $W_i$ 送到范数至多为一的 $T_i^n/c_i$，便得到 contractive 映射 $P\to Q$。}
+
+\bi{In $P$, its unit-ideal certificate makes $g^n$, and hence $g$, a unit. Put $b_i=f_i/g$. The relation gives $b_i^n=c_iW_i$. If $m=qn+j$ with $0\leq j&lt;n$, then}
+{在 $P$ 中，由其单位理想证书可知 $g^n$ 为单位，因而 $g$ 也为单位。令 $b_i=f_i/g$，则定义关系给出 $b_i^n=c_iW_i$。若 $m=qn+j$、$0\leq j&lt;n$，则}
+\[
+ \|b_i^m\|\leq |c_i|^q\|b_i^j\|
+    \leq C_i r_i^m,
+ \qquad C_i=\max_{0\leq j&lt;n}r_i^{-j}\|b_i^j\|.
+\]
+\bi{Proposition~\ref{fnd:powerboundedsubstitution} therefore defines a bounded map $A\{r^{-1}T\}\to P$ sending $T_i$ to $b_i$. It kills the actual relation ideal and descends boundedly to $Q$ by taking infima over lifts. The two composites fix the variables: in $P$, $f_i^n/(c_ig^n)=W_i$, and in $Q$, $f_i/g=T_i$. Polynomial density proves that they are inverse. Zero targets and zero quotients satisfy the same conclusion directly.}
+</pre></details><ul class="records"><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001398/">fnd:powerboundedsubstitution</a></li><li><a href="/r/NAG-001506/">fnd:radicalradiusaffinoid</a></li><li><a href="/r/NAG-001470/">fnd:strictrationaldomainup</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002370/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Module cycles and finite geometric pushforward · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002370 · Accepted whole</p><h1>Module cycles and finite geometric pushforward</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.42.1">Open in the English reader · PDF page 996</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="75d3a297b3e96ac83559aebcaac96236b84068d7be099d1da929f6369c486852">
+\begin{theorem}[Module cycles and finite geometric pushforward]
+\label{v037:degree:modulecycle}
+Let $Y=\mathcal M(A)$ be pure of analytic dimension $d$, with
+a unit moment tuple $f_Y$ and moment map $t_Y$.
+Let $\Omega\subset\mathbb R^{n&#x27;}$ be open and convex, with
+$\Omega\cap t_Y(\partial_KY)=\varnothing$. Suppose a finite
+pure $d$-dimensional integral affine polyhedral complex
+$\mathcal C_Y$ has
+\[
+                    t_Y(Y)\cap\Omega=|\mathcal C_Y|\cap\Omega.
+\]
+For every finite $A$-module $M$, the values $m_{M,f_Y}(v)$
+are constant on
+$\operatorname{relint}(\sigma)\cap\Omega$ for each
+$d$-cell $\sigma$. They define a nonnegative integral
+balanced $d$-cycle, denoted $\operatorname{Trop}_{f_Y,\Omega}(M)$.
+These cycles are additive in short exact sequences and
+independent of the chosen polyhedral subdivision.
+For $M=A$ this is the analytic cycle of
+Theorem~\ref{v037:analytic:polyhedralcycle}.
+
+Let $p:X=\mathcal M(B)\to Y$ be finite, with $X$ pure of
+analytic dimension $d$. Suppose unit moment coordinates
+on $X$ and an integral map
+$a:\mathbb Z^n\to\mathbb Z^{n&#x27;}$ satisfy the corresponding
+character identity $t_Y\circ p=a\circ t_X$.
+Suppose also that a finite pure $d$-dimensional integral
+affine complex $\mathcal C_X$ satisfies
+\[
+ t_X(X)\cap a^{-1}(\Omega)
+                          =|\mathcal C_X|\cap a^{-1}(\Omega).
+\]
+Then lattice-index pushforward on these open sets gives
+\begin{equation}
+\label{v037:degree:eqmodulecyclepushforward}
+ a_*\operatorname{Trop}_{f_X,a^{-1}(\Omega)}(B)
+                         =\operatorname{Trop}_{f_Y,\Omega}(B).
+\end{equation}
+On the left $B$ is the structure module of $X$; on the right
+it is its finite $A$-module. If $\Delta\in\mathbb Q_{\geq0}$ satisfies
+\[
+ \beta_{\mathfrak p}(B)
+        =\Delta\,\operatorname{length}(A_{\mathfrak p})
+                    \qquad(\mathfrak p\in\operatorname{Min}(A)),
+\]
+then the right side is
+$\Delta\,\operatorname{Trop}_{f_Y,\Omega}(A)$.
+The same statement allows a positive rational $\Delta$
+for a nonreduced target.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b488f7969a7a0e31f423a75c12eb5ab09a1c47be3dd456583a71449272c73178">
+\begin{proof}
+Form the finite $A$-algebra
+\[
+                         A\oplus M,\qquad
+             (a,m)(a&#x27;,m&#x27;)=(aa&#x27;,am&#x27;+a&#x27;m),
+\]
+with its canonical Banach structure from
+Theorem~\ref{fnd:generalizedfinitealgebras}.
+The ideal $0\oplus M$ has square zero. Every multiplicative
+seminorm annihilates it, so projection and the coefficient
+inclusion identify its spectrum with that of $A$.
+Its minimal primes are $\mathfrak p\oplus M$, and the
+corresponding integral quotients are $A/\mathfrak p$.
+Consequently $Y_M=\mathcal M(A\oplus M)$ is pure of
+analytic dimension $d$ and has the same moment image
+under the units $(f_{Y,j},0)$.
+
+Every point of $Y_M$ above a fibre over $\Omega$ is interior
+over $K$: the map $Y_M\to Y$ is finite and hence relatively
+interior, and all points of $Y$ with moment value in
+$\Omega$ are interior by hypothesis. Apply the composition
+inclusion \ref{fnd:affinoidinteriorcalculus}.
+Theorem~\ref{v037:analytic:polyhedralcycle} therefore gives
+positive balanced analytic cycles for both $Y$ and $Y_M$
+on the same complex over $\Omega$.
+
+At an interior point $v$ of a $d$-cell, let $E_Q$ be the
+actual target Gauss algebra for a transverse projection.
+
+For the domain comparison at $v$, use $f_i=f_{Y,i}$ and
+$r_i=\exp(-v_i)$ in the following exact-level calculation.
+
+Let \(A\) be a generalized affinoid over the fixed complete
+non-Archimedean field \(K\), let \(M\) be finite over \(A\), and give
+the idealization \(A_M=A\oplus M\) its canonical finite-algebra
+Banach structure from Theorem~\ref{fnd:generalizedfinitealgebras}. For units \(f_i\in A^\times\)
+and positive radii \(r_i\), put
+\[
+ D=A\{r^{-1}T,rS\}/(T_i-f_i,S_i-f_i^{-1})_i,\qquad
+ D_M=A_M\{r^{-1}T,rS\}/(T_i-(f_i,0),S_i-(f_i^{-1},0))_i .
+\]
+These use actual ideals and the displayed quotient norms. The
+rational point and geometric factorization clauses of
+Theorems~\ref{fnd:generalizedrationalpoints}
+and~\ref{fnd:generalizedrationaluniversal}, with denominator \(1\) and the
+simultaneous upper bounds \(r_i,r_i^{-1}\), identify the algebras
+with the whole exact-radius domains below and above, respectively.
+The lifted unit has inverse \((f_i^{-1},0)\). Thus the inequalities
+upstairs describe exactly the inverse image of the whole domain.
+The same descriptions include the empty domain.
+
+There is a canonical bounded isomorphism, with bounded inverse,
+\[
+                      D_M\simeq D\widehat\otimes_A A_M .
+\]
+Indeed, for a commutative Banach \(K\)-algebra \(C\) with a bounded
+unital map \(\phi:A_M\to C\), the bounded factorization clause of
+Theorem~\ref{fnd:generalizedrationaluniversal} says that extending \(\phi\) across \(D_M\) requires
+exactly the estimates
+\[
+ \|\phi((f_i,0))^m\|\leq c_i^+r_i^m,\qquad
+ \|\phi((f_i^{-1},0))^m\|\leq c_i^-r_i^{-m}\quad(m\geq0)
+\]
+for some constants \(c_i^\pm\). The factorization is unique. These
+are precisely the estimates for extending \(\phi|_A\) across \(D\).
+Thus \(D_M\) represents the pairs of bounded maps from \(A_M\) and
+\(D\) agreeing on \(A\). Their balanced product on finite sums
+\(\sum_j d_j\otimes b_j\) has norm bounded by the product of the
+two operator bounds times \(\max_j\|d_j\|\|b_j\|\).
+Taking the projective infimum and passing through separation and
+completion gives the unique bounded map from
+\(D\widehat\otimes_A A_M\). The two universal factorizations are
+inverse because their composites fix both structural maps. This
+comparison preserves the actual algebras over \(A_M\), hence also
+the maps from the exact-radius target torus defined by the common
+projecting monomials in the units.
+
+Proposition~\ref{fnd:generalizedfinitebasechange} gives the
+Gauss algebra of $Y_M$ as
+\[
+                (A\oplus M)\otimes_AE_Q
+                         =E_Q\oplus(M\otimes_AE_Q).
+\]
+Thus its dimension is the sum of the two dimensions.
+Theorem~\ref{v037:degree:moduleweight} and the common
+lattice divisor give
+\[
+                    m_{Y_M}(v)=m_Y(v)+m_{M,f_Y}(v).
+\]
+Subtracting the two balanced cycles proves constancy and
+balancing for the module weights. Their nonnegativity
+and integrality are
+\eqref{v037:degree:eqmoduleweight}. Additivity follows
+from the exact-sequence assertion of that theorem, and
+common-refinement invariance follows from the same
+property of the two analytic cycles. This proves the
+first part.
+
+For the finite map $p$, every point of $X$ whose moment
+value lies in $a^{-1}(\Omega)$ is interior over $K$,
+again by finite relative interior and composition.
+Thus the stated source analytic cycle is defined.
+Exclude from the target the lower-dimensional cells of
+$\mathcal C_Y$, the images of all cells of $\mathcal C_X$
+of dimension less than $d$, and the images of those
+$d$-cells on whose tangent space $a$ has rank less than
+$d$. Linear images of the finitely many polyhedra are
+polyhedra, by the finite elimination and refinement
+construction in
+Theorem~\ref{cand:balancedpolyhedralpushforward}.
+Each excluded set has dimension at most $d-1$.
+For $d=0$ the nonempty cells are points and every restriction
+has rank zero. The exclusions therefore remove no point, so
+every target point in the support is already in the complement.
+For $d&gt;0$ the complement is dense in the relative interior of
+every target $d$-cell: a line in its affine span with
+direction outside the finitely many excluded proper
+direction subspaces meets those affine subspaces in
+at most finitely many points. Such a line direction
+exists by the finite-polynomial argument in
+Theorem~\ref{v037:analytic:wallbalance}.
+
+Fix a target point $v$ in this complement and in the
+target support. Every source moment value above it
+lies in the relative interior of a $d$-cell on which
+$a$ is injective. There is at most one such point per
+cell, so the full inverse image in $t_X(X)$ is finite.
+If it is nonempty, all the hypotheses of
+Theorem~\ref{v037:degree:finitecyclepushforward} hold:
+the target and source germs are flat at cell interiors,
+and the target whole fibre is interior. The theorem
+identifies the lattice-index sum of source weights
+with $m_{B,f_Y}(v)$.
+
+If this finite inverse image is empty, the actual
+inverse image of the entire target moment fibre is
+empty. Its algebra is $B\otimes_AD_v$, by finite base
+change and
+Theorem~\ref{fnd:generalizeddomainbasechange}.
+Theorem~\ref{fnd:generalizedpointunitcriterion} makes this
+algebra zero. Hence $B\otimes_AE_Q=0$ and
+$m_{B,f_Y}(v)=0$, which is also the empty lattice-index
+sum.
+
+The map $a$ on the actual source support over $\Omega$
+is proper. For a compact subset $C\subset\Omega$, its
+inverse image is the closed subset
+$t_X(X)\cap a^{-1}(C)$ of the compact set $t_X(X)$.
+Refine the target along the finitely many cell images
+and pull the defining hyperplanes back to the source,
+as in
+Theorem~\ref{cand:balancedpolyhedralpushforward}.
+The lattice-index sum then defines the local pushforward;
+facets with smaller-dimensional image contribute zero.
+On the generic part of every resulting target $d$-cell,
+this sum equals the module weight just computed.
+Both are constant there, so the cycles agree. This
+proves \eqref{v037:degree:eqmodulecyclepushforward}.
+The last assertion follows on every such cell from
+Theorem~\ref{v037:degree:moduleweight} and its formula
+for the structure module $A$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002370-reader.jpg" alt="Typeset mathematical passage from PDF page 997" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=997">PDF page 997 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002188/">NAG-002188</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002365/">NAG-002365</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002376/">NAG-002376</a> · selected whole <small>(exact native proof input)</small></li><li><a href="/r/NAG-002378/">NAG-002378</a> · selected whole <small>(exact native proof input)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002188/">cand:balancedpolyhedralpushforward</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002378/">v037:analytic:polyhedralcycle</a></li><li><a href="/r/NAG-002376/">v037:analytic:wallbalance</a></li><li><a href="/r/NAG-002365/">v037:degree:finitecyclepushforward</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001894/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Cohomology comparison for algebraic coherent sheaves · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001894 · Accepted whole</p><h1>Cohomology comparison for algebraic coherent sheaves</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.42.4">Open in the English reader · PDF page 403</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8c14e1e39d07f9d25ab81f52c9c8516b58fdbe04121a500352e714a5d7333da0">
+\begin{theorem}[\bi{Cohomology comparison for algebraic coherent sheaves}
+{代数凝聚层的上同调比较}]
+\label{fnd:projectivecoherentcomparison}
+\bi{For every coherent sheaf \(\mathcal F\) on \(\mathbf P^n_K\),
+analytification induces natural isomorphisms}
+{对 \(\mathbf P^n_K\) 上的每个凝聚层 \(\mathcal F\)，
+解析化诱导自然同构}
+\[
+ H^q(\mathbf P^n_K,\mathcal F)
+   \ \simeq\ H^q((\mathbf P^n_K)^{\an}_G,\mathcal F^{\an})
+ \qquad(q\geq0).
+\]
+\bi{They respect connecting homomorphisms of short exact sequences.}
+{这些同构与短正合列的连接同态相容。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a890661a92ac4e2141717165b5909b036b1f449f6b234b5fb4232ee8ef72c697">
+\begin{proof}
+\bi{Use the algebraic standard affine cover \(D_+(X_i)\) and the
+analytic unit cover \(U_i\subset D_+(X_i)^{\an}\). Restriction and
+scalar extension on each intersection give a map of their ordered
+\v Cech complexes. The algebraic complex computes cohomology by
+affine acyclicity, and the analytic complex does so by
+Proposition~\ref{fnd:finiteaffinoidcohomology}. On every intersection,
+sections preserve short exact sequences of coherent sheaves:
+on the algebraic side this is the module description on an affine;
+on the analytic side it follows from
+Theorem~\ref{fnd:coherentanalytificationexact} and affinoid
+Theorem B. The resulting comparison therefore commutes with
+connecting homomorphisms. These constructions give the usual
+cohomology map induced by analytification, since in degree zero
+they are restriction of sections and the acyclic resolutions give
+their derived maps.}
+{使用代数标准仿射覆盖 \(D_+(X_i)\) 与解析单位覆盖
+\(U_i\subset D_+(X_i)^{\an}\)。在每个交叠上，限制及扩标量
+给出两个有序 \v Cech 复形之间的映射。由仿射无环性，代数
+复形计算上同调；由 Proposition~\ref{fnd:finiteaffinoidcohomology}，
+解析复形也计算上同调。在每个交叠上，取截面保持凝聚层的
+短正合列：代数一侧由仿射上的模描述给出，解析一侧由
+Theorem~\ref{fnd:coherentanalytificationexact} 与 affinoid
+Theorem B 给出。因此所得比较与连接同态相容。零次时这些映射
+就是截面限制，而无环解消给出其导出映射，所以这正是解析化
+诱导的通常上同调比较。}
+
+\bi{We prove bijectivity by descending induction on \(q\),
+simultaneously for all coherent \(\mathcal F\). Both groups vanish
+for \(q&gt;n\), by \cite[Tag 01YS, Lemma 30.14.1(2)]{StacksAlg}
+and Proposition~\ref{fnd:finiteaffinoidcohomology}. Choose a
+surjection \(\mathcal L\twoheadrightarrow\mathcal F\), where
+\(\mathcal L\) is a finite direct sum of twists, using
+\cite[Tag 01YS, Lemma 30.14.1(1)]{StacksAlg}, and let
+\(\mathcal R\) be its coherent kernel. Analytification preserves
+this short exact sequence. In its two long exact sequences,
+the comparison maps for \(H^q(\mathcal L)\),
+\(H^{q+1}(\mathcal R)\), and \(H^{q+1}(\mathcal L)\) are
+isomorphisms, by Theorem~\ref{fnd:analyticprojectivetwists}
+and the induction hypothesis.}
+{对所有凝聚层同时按 \(q\) 作下降归纳。由
+\cite[Tag 01YS, Lemma 30.14.1(2)]{StacksAlg}
+及 Proposition~\ref{fnd:finiteaffinoidcohomology}，
+当 \(q&gt;n\) 时两边均为零。使用
+\cite[Tag 01YS, Lemma 30.14.1(1)]{StacksAlg}，选取满射
+\(\mathcal L\twoheadrightarrow\mathcal F\)，其中
+\(\mathcal L\) 是有限个扭转层的直和，并记其凝聚核为
+\(\mathcal R\)。解析化保持这个短正合列。在相应的两个长
+正合列中，由 Theorem~\ref{fnd:analyticprojectivetwists}
+及归纳假设，\(H^q(\mathcal L)\)、
+\(H^{q+1}(\mathcal R)\)、\(H^{q+1}(\mathcal L)\)
+上的比较均为同构。}
+
+\bi{Here is the required diagram chase. Given an analytic class
+\(a\) in degree \(q\) for \(\mathcal F\), lift its connecting
+class to the algebraic \(H^{q+1}(\mathcal R)\). Its image in
+\(H^{q+1}(\mathcal L)\) is zero by injectivity there, so it
+comes from an algebraic class \(b\) of \(\mathcal F\).
+The difference between \(a\) and the image of \(b\) comes from
+analytic \(H^q(\mathcal L)\), hence from algebraic
+\(H^q(\mathcal L)\). This proves surjectivity for every
+\(\mathcal F\). Apply that surjectivity also to \(\mathcal R\).
+If an algebraic class of \(\mathcal F\) maps to zero analytically,
+injectivity in degree \(q+1\) makes it the image of a class
+of \(H^q(\mathcal L)\). Analytically this latter class comes
+from \(H^q(\mathcal R)\). Lift that class by the surjectivity
+just proved and subtract it; injectivity for \(\mathcal L\)
+then proves that the original class is zero. This completes
+the induction.}
+{下面写出所需的图追踪。对 \(\mathcal F\) 的解析 \(q\) 次类
+\(a\)，将其连接类提升到代数 \(H^{q+1}(\mathcal R)\)。
+由 \(H^{q+1}(\mathcal L)\) 上的单射性，该提升在此群中的像为零，
+故来自 \(\mathcal F\) 的一个代数类 \(b\)。
+\(a\) 与 \(b\) 的解析像之差来自解析 \(H^q(\mathcal L)\)，
+因而也来自代数 \(H^q(\mathcal L)\)，这就证明了对每个
+\(\mathcal F\) 的满射性。再将此满射性用于 \(\mathcal R\)。
+若 \(\mathcal F\) 的一个代数类在解析一侧为零，由 \(q+1\) 次的
+单射性，它来自 \(H^q(\mathcal L)\) 的某个类；后一个类的解析像
+来自 \(H^q(\mathcal R)\)。用刚证的满射性提升这一类并相减，
+再用 \(\mathcal L\) 上的单射性，就说明原代数类为零。
+归纳完成。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001894-reader.jpg" alt="Typeset mathematical passage from PDF page 403" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=403">PDF page 403 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-001836/">NAG-001836</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-001893/">NAG-001893</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole</li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole</li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001836/">NAG-001836</a> · selected whole</li><li><a href="/r/NAG-001836/">NAG-001836</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole</li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001893/">NAG-001893</a> · selected whole</li><li><a href="/r/NAG-001893/">NAG-001893</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001893/">fnd:analyticprojectivetwists</a></li><li><a href="/r/NAG-001719/">fnd:coherentanalytificationexact</a></li><li><a href="/r/NAG-001891/">fnd:finiteaffinoidcohomology</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

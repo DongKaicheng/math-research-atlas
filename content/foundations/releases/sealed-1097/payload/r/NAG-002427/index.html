@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002427/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Compact smooth cutoffs · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002427 · Accepted whole</p><h1>Compact smooth cutoffs</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.53.1">Open in the English reader · PDF page 1049</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6b7c8eb6650f7f025b66960c73399fc2ea2267dd33ef3dd0618aeac0bb6da4c0">
+\begin{lemma}[Compact smooth cutoffs]
+\label{v037:forms:smoothcutoff}
+Let $X$ be a good Hausdorff analytic space over the specified
+complete field. The sheaf $\mathcal A_X^{0,0}$ identifies
+with a subsheaf of continuous real-valued functions.
+For every point $x$ and ordinary open neighbourhood
+$O\subseteq X$, there is a section
+$\chi\in\mathcal A_X^{0,0}(X)$ such that
+\[
+ \begin{gathered}
+ 0\leq\chi\leq1,\qquad
+ \chi=1\ \hbox{on an ordinary neighbourhood of }x,\\
+ \operatorname{supp}(\chi)\ \hbox{is compact in }O.
+ \end{gathered}
+\]
+The assertion allows a trivially valued ground field.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a18e016490a9f8b0e6c0609a49fccf1b0c299fed926e3828e0ed848302d40a32">
+\begin{proof}
+A degree-zero representative evaluates to the continuous
+function $\alpha\circ t_f$. Two representatives have
+equal functions near a point exactly when their joint
+degree-zero form vanishes at every point of the actual
+joint image on a smaller ordinary neighbourhood.
+This is precisely the germ relation of
+Definition~\ref{v037:forms:ordinarysmoothgerm}.
+Thus evaluation is injective on germs and identifies
+the indicated sheaf with a subsheaf of continuous
+functions. It is closed under composition with a
+smooth real function: in a representative, compose
+that function with the smooth ambient coefficient.
+
+We use a smooth real profile $\rho$ with values in
+$[0,1]$, equal to zero on $(-\infty,0]$ and to one
+on $[1,\infty)$. Here is an elementary construction.
+The power series $e^u=\sum_{n\geq0}u^n/n!$ and all
+its termwise derivatives converge uniformly on each
+bounded interval: after any fixed number of
+derivatives, their tails are bounded by a constant
+times a geometric series, once the index exceeds
+twice the interval bound. Applying the fundamental
+theorem from Lemma~\ref{v037:integration:polyhedralcalculus}
+to the partial sums proves termwise differentiation.
+The derivative of $e^u e^{-u}$ is zero, so this product
+equals its value $1$ at zero. Hence $e^{-u}=1/e^u$;
+positivity follows for $u\geq0$ from the series and
+for $u&lt;0$ from this reciprocal identity.
+For $t&gt;0$ put $E(t)=e^{-1/t}$, and put $E(t)=0$
+for $t\leq0$. Each right derivative is a polynomial
+in $1/t$ times $e^{-1/t}$. Every such expression tends
+to zero at zero, since
+$e^u\geq u^{m+1}/(m+1)!$ for $u&gt;0$.
+Induction with difference quotients therefore proves
+that $E$ is smooth with every derivative zero at zero.
+The function
+\[
+                 \rho(t)=\frac{E(t)}{E(t)+E(1-t)}
+\]
+has the required properties; its denominator is positive.
+
+Choose an ordinary affinoid neighbourhood
+$W=\mathcal M(A)$ of $x$. In its evaluation topology,
+choose finitely many strict upper and positive lower
+bounds on absolute values of functions $a_j\in A$
+whose intersection contains $x$ and is contained in
+$O\cap\operatorname{Int}_{\rm top}(W,X)$.
+The neighbourhood basis used in
+Theorem~\ref{v037:forms:germsheaf} permits this choice.
+For each upper condition $|a_j|&lt;b_j$, choose
+\[
+                    |a_j(x)|&lt;b_{j,0}&lt;b_{j,1}&lt;b_j.
+\]
+Use the factor
+\[
+ 1-\rho\left(
+       \frac{\log|a_j|-\log b_{j,0}}
+            {\log b_{j,1}-\log b_{j,0}}\right),
+\]
+with value one where $a_j=0$.
+For each lower condition $|a_j|&gt;c_j&gt;0$, choose
+\[
+                    c_j&lt;c_{j,0}&lt;c_{j,1}&lt;|a_j(x)|
+\]
+and use the factor
+\[
+ \rho\left(
+       \frac{\log|a_j|-\log c_{j,0}}
+            {\log c_{j,1}-\log c_{j,0}}\right),
+\]
+with value zero where $a_j=0$.
+
+Each factor is a smooth moment section on $W$.
+At a zero of $a_j$ it is constant on an ordinary
+neighbourhood, hence has a constant representative.
+At a point where $a_j$ is nonzero, choose a smaller
+ordinary affinoid neighbourhood where $|a_j|$ is
+bounded below by a positive real constant.
+The unit criterion
+\ref{fnd:generalizedpointunitcriterion} makes its
+restriction an analytic unit. The displayed expression
+is then a smooth function of the moment coordinate
+$-\log|a_j|$. These representatives agree as continuous
+functions, and hence as germs by the first paragraph.
+The sheaf theorem \ref{v037:forms:germsheaf} glues them.
+
+Multiply the finitely many factors. The resulting
+$\chi_W$ lies between zero and one and equals one
+on an ordinary neighbourhood of $x$.
+Its support is contained in the subset $C\subseteq W$
+defined by the weak upper bounds $|a_j|\leq b_{j,1}$
+and weak lower bounds $|a_j|\geq c_{j,0}$.
+This subset is compact by
+Proposition~\ref{fnd:boundedspectrumcompact}, is closed
+in the Hausdorff space $X$, and is contained in
+$O\cap\operatorname{Int}_{\rm top}(W,X)$ by the
+strictly nested choices of bounds.
+On the open cover
+\[
+             X=\operatorname{Int}_{\rm top}(W,X)
+                                     \cup(X\setminus C)
+\]
+glue $\chi_W$ on the first member and zero on the
+second. They agree on the overlap. The resulting
+section has all the stated properties. All thresholds
+were positive real numbers; the construction never
+required them to be absolute values of ground-field
+constants.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002427-reader.jpg" alt="Typeset mathematical passage from PDF page 1049" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1049">PDF page 1049 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole <small>(earlier original in this reviewer packet)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-002424/">v037:forms:germsheaf</a></li><li><a href="/r/NAG-002389/">v037:integration:polyhedralcalculus</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

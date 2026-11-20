@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002352/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A residual fan bounds and meets the actual germ · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002352 · Accepted whole</p><h1>A residual fan bounds and meets the actual germ</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.38.5">Open in the English reader · PDF page 973</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="6517a83d85ea99e9d653eedc9b40105a2651d6590aaea8a2577d0d73dc30318f">
+\begin{proposition}[A residual fan bounds and meets the actual germ]
+\label{v037:analytic:residualfan}
+Let $K$ be complete and nontrivially valued, put
+$O=K^\circ$ and $k=\widetilde K$, and let
+$X=\mathcal M(B)$ be a generalized affinoid space.
+Let $h_1,\ldots,h_n\in B^\times$, and suppose the nonempty
+whole fibre $F_0=t_h^{-1}(0)$ belongs to
+$\operatorname{Int}(X/K)$.
+Let $D$ be its actual affinoid algebra, and let
+$D_0\subset D$ be an actual admissible model, finite over
+\[
+       O\langle T_1^{\pm1},\ldots,T_n^{\pm1}\rangle,
+                         \qquad T_i\longmapsto h_i.
+\]
+Set
+\[
+ \begin{aligned}
+ \overline D_0&amp;=D_0/K^{\circ\circ}D_0,
+ &amp; J&amp;=\ker(k[T^{\pm1}]\longrightarrow\overline D_0),\\
+ R&amp;=k[T^{\pm1}]/J,
+ &amp; Z&amp;=\operatorname{Spec}R.
+ \end{aligned}
+\]
+Then $C=\operatorname{Trop}(Z)$ is the nonempty support of a
+finite rational polyhedral fan of dimension at most $\dim_K X$.
+There is a neighbourhood $V$ of $0$ such that
+\[
+                         t_h(X)\cap V\subset C.
+\]
+For every $u\in C$ and every finite list
+$m_j\in\mathbf Z^n$ with $\langle m_j,u\rangle&gt;0$, the strict
+sector $\{v:\langle m_j,v\rangle&gt;0\text{ for all }j\}$
+contains points of $t_h(X)$ arbitrarily close to $0$.
+\end{proposition}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="dfc336a16c70d50cf9c3d7a97cbebe5b37b3a85272c4c84ab84fb39602f49faa">
+\begin{proof}
+The algebra $\overline D_0$ is finite over its subalgebra $R$.
+Thus $R\hookrightarrow\overline D_0$ is integral by
+\cite[Tag 00GK]{StacksAlg}, and lying over,
+\cite[Tag 00GQ]{StacksAlg}, applies to every prime of $R$.
+Formal specialization
+\ref{fnd:affineformalspecializationsurjective} is surjective
+on $\operatorname{Spec}\overline D_0$.
+If $\mathfrak q$ lies above $\mathfrak p\subset R$ and
+$x\in F_0$ specializes to $\mathfrak q$, evaluation gives
+injections
+\[
+ R/\mathfrak p\hookrightarrow
+ \overline D_0/\mathfrak q\hookrightarrow
+                  \widetilde{\mathcal H(x)}.
+\]
+Indeed a model element has zero residue at $x$ exactly when its
+class belongs to $\mathfrak q$; every nonzero residue consequently
+has absolute value one before reduction. These injections extend
+to the fraction fields.
+
+The finite-type algebra $R$ is Noetherian, by
+\cite[Tag 00FO]{StacksAlg}, and has finitely many minimal primes,
+by \cite[Tag 00FR]{StacksAlg}. For any such prime $\mathfrak p$,
+the preceding injection and Theorem~\ref{fnd:affinoidabhyankarmaximum}
+give
+\[
+ \dim(R/\mathfrak p)
+    =\operatorname{trdeg}_k\operatorname{Frac}(R/\mathfrak p)
+    \leq\operatorname{trdeg}_k\widetilde{\mathcal H(x)}
+    \leq d_K(x)\leq\dim_KX,
+\]
+where the equality is \cite[Tag 00P0]{StacksAlg}.
+Apply Theorem~\ref{cand:tropicalpuredimension} to each reduced
+irreducible component of $Z$ and take a common refinement of
+their finite fans. The tropicalization of their finite union is
+their union, since every analytic seminorm has a prime kernel
+containing one minimal prime by \cite[Tag 00E0(4)]{StacksAlg}.
+This proves the fan and dimension
+assertions. Nonemptiness also follows from specialization of
+any point of the nonempty fibre.
+
+Take a finite tropical basis $p_1,\ldots,p_a$ for $J$ from
+Lemma~\ref{v037:analytic:finitetropicalbasis}. Lift each nonzero
+coefficient to an element of $O$ of absolute value one, and let
+$P_j(T)\in O[T^{\pm1}]$ be the resulting polynomial.
+Its value $P_j(h)$ belongs to $K^{\circ\circ}D_0$.
+By the definition of this ideal it is a finite sum
+$\sum_\ell c_\ell d_\ell$, with $|c_\ell|&lt;1$ and
+$d_\ell\in D_0$. Model elements have absolute value at most one
+at every point of $F_0$, as in
+Theorem~\ref{fnd:affineformalspecializationsurjective}.
+It follows that
+\[
+                    \max_{x\in F_0}|P_j(h)(x)|&lt;1.
+\]
+Choose a real number $c_j&lt;1$ strictly larger than this maximum.
+The closed subset of $X$ on which $|P_j(h)|\geq c_j$ is compact
+by Proposition~\ref{fnd:boundedspectrumcompact} and has moment
+image avoiding $0$.
+After shrinking a common neighbourhood $V$ of $0$, one therefore
+has $|P_j(h)(x)|&lt;c_j$ whenever $t_h(x)\in V$.
+Shrink $V$ again so that
+$e^{-\langle m,v\rangle}&gt;c_j$ for every exponent $m$ occurring
+in $p_j$ and every $v\in V$.
+If $v\notin C$, the last assertion of
+Lemma~\ref{v037:analytic:finitetropicalbasis} supplies an index
+$j$ for which the least value of $\langle m,v\rangle$ among
+these exponents occurs exactly once.
+At a point $x$ with $t_h(x)=v$, that term is the unique largest
+term of $P_j(h)(x)$, so
+$|P_j(h)(x)|=e^{-\langle m,v\rangle}&gt;c_j$.
+This contradiction proves the asserted inclusion in $C$.
+
+Finally let $u\in C$ and choose an actual analytic point of $Z$
+with moment value $u$, with kernel $\mathfrak p$.
+Choose $\mathfrak q$ above $\mathfrak p$ and $x\in F_0$
+specializing to $\mathfrak q$, as in the first paragraph.
+The subalgebra generated by the residues of the $h_i^{\pm1}$
+in $\widetilde{\mathcal H(x)}$ is exactly $R/\mathfrak p$.
+The chosen analytic point factors through this algebra.
+If the list of inequalities is empty, the assertion is immediate.
+Otherwise the chosen point induces a valuation ring in
+\(\operatorname{Frac}(R/\mathfrak p)\). The residue injection already
+constructed identifies this ring with a local subring of
+\(\widetilde{\mathcal H(x)}\). By \cite[Tag 00IA]{StacksAlg}, a
+valuation ring of that field dominates this local subring. Each
+residue of \(h^{m_j}\) lies in its maximal ideal, because its value at
+the chosen residual point is \(e^{-\langle m_j,u\rangle}&lt;1\).
+Lemma~\ref{fnd:gradeddegreeonevaluation} extends the dominating
+valuation ring to a graded valuation ring \(W\) containing
+\(\widetilde K^{\rm gr}\) and with that ring as its degree-one part.
+Put \(g_j=h^{-m_j}\), and let \(\gamma_j\) be its degree-one initial
+value at \(x\). Thus no \(\gamma_j\) belongs to \(W\).
+
+For an arbitrary prescribed neighbourhood
+of \(x\), choose an actual smaller rational
+neighbourhood \(N\) by Lemma~\ref{fnd:strictrationalinteriorneighborhood}, with all
+its defining inequalities strict at \(x\).
+The strict inequalities give relative interior
+and Proposition~\ref{fnd:affinoidinteriorcalculus} composes it with the original
+analytic interior. Thus \(x\in\operatorname{Int}(N/K)\).
+Take the bounded coordinate maps from the actual
+rational presentations. The residue field at
+\(x\) is unchanged by Proposition~\ref{fnd:rationalresiduefields}. For an inner
+presentation of \(N/K\), the finite-generation
+part of Theorem~\ref{fnd:gradedfixedabsolutepresentation} for the actual absolute
+admissible weighted Tate quotient makes the
+evaluated graded ring finite over
+\(\widetilde K^{\rm gr}\): all new variables
+vanish at their assigned degrees. Every
+homogeneous element of that image therefore
+belongs to \(W\). Indeed it satisfies a
+homogeneous monic equation, and dividing by its
+leading power would otherwise put \(1\) in the
+maximal homogeneous ideal of \(W\).
+
+Suppose the desired strict sector has no
+point in \(N\). Then for each \(y\in N\)
+one has \(|g_j(y)|\le1\) for at least one \(j\).
+For each \(i\) form the actual domain
+\[
+ V_i=\{y\in N: |g_i/g_j(y)|\le1
+                         \text{ for every }j\}.
+\]
+All ratios are units, so these are actual
+denominator-one radius-one domains containing
+\(x\). Total comparability in the graded
+valuation ring orders the finitely many
+\(\gamma_i\) by divisibility. Choose \(i\)
+with \(\gamma_i/\gamma_j\in W\) for all \(j\).
+The graded reduction image of the actual
+\(V_i\) at \(x\) is finite over the image
+generated by the reduction of \(N\) and
+these degree-one ratios. For this use
+present \(N\) by an absolute weighted Tate
+algebra, append the ratios by the actual
+coefficientwise quotient of Proposition~\ref{fnd:closedweightedpresentation}, and
+invoke only the admissible Tate-presentation
+clause of Theorem~\ref{fnd:gradedfixedabsolutepresentation}. Any surviving class of
+an original coordinate comes from its class
+in \(N\) by spectral contraction, and any
+surviving appended class is the stated ratio.
+The residue identification along \(V_i\to N\)
+is the rational Proposition~\ref{fnd:rationalresiduefields}. Graded integral
+closedness (Lemma~\ref{fnd:gradedvaluationintegrality}) puts the image of
+\(V_i\) in \(W\). On \(V_i\), however,
+\(|g_i(y)|\le |g_j(y)|\le1\) for some \(j\)
+at each point. Thus \(g_i\) has spectral
+seminorm at most one on \(V_i\), by the
+spectral maximum formula \ref{fnd:generalizedspectralradiusformula}. Its class at \(x\)
+is \(\gamma_i\in W\), a contradiction.
+This proves realization of the strict signs in every neighbourhood of $x$.
+Continuity of $t_h$ proves the assertion about values approaching
+$0$. The choice of $x$ used the whole fibre; it did not restrict
+to the fibre above one target Gauss point.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002352-reader.jpg" alt="Typeset mathematical passage from PDF page 973" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=973">PDF page 973 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001959/#fixed_absolute_admissible_tate">CLAUSE:NAG-001959:fixed_absolute_admissible_tate</a> · selected scope, text unavailable</li><li><a href="/r/NAG-002352/#finite_level_residual_prime_lift">CLAUSE:NAG-002352:finite_level_residual_prime_lift</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole</li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole</li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole</li><li><a href="/r/NAG-001691/">NAG-001691</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole</li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole</li><li><a href="/r/NAG-001983/">NAG-001983</a> · selected whole</li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole</li><li><a href="/r/NAG-002349/">NAG-002349</a> · selected whole</li><li>STACKS-00E0 · named external application</li><li>STACKS-00FO · named external application</li><li>STACKS-00FR · named external application</li><li>STACKS-00GK · named external application</li><li>STACKS-00GQ · named external application</li><li>STACKS-00P0 · named external application</li><li><a href="/r/NAG-001959/#fixed_absolute_admissible_tate">CLAUSE:NAG-001959:fixed_absolute_admissible_tate</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-002352/#finite_level_residual_prime_lift">CLAUSE:NAG-002352:finite_level_residual_prime_lift</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001691/">NAG-001691</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001983/">NAG-001983</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002109/">NAG-002109</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002349/">NAG-002349</a> · selected whole <small>(requires)</small></li><li>STACKS-00E0 · named external application <small>(requires)</small></li><li>STACKS-00FO · named external application <small>(requires)</small></li><li>STACKS-00FR · named external application <small>(requires)</small></li><li>STACKS-00GK · named external application <small>(requires)</small></li><li>STACKS-00GQ · named external application <small>(requires)</small></li><li>STACKS-00P0 · named external application <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="finite_level_residual_prime_lift"><h3>finite level residual prime lift</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002109/">cand:tropicalpuredimension</a></li><li><a href="/r/NAG-001939/">fnd:affineformalspecializationsurjective</a></li><li><a href="/r/NAG-001591/">fnd:affinoidabhyankarmaximum</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001554/">fnd:closedweightedpresentation</a></li><li><a href="/r/NAG-001574/">fnd:generalizedspectralradiusformula</a></li><li><a href="/r/NAG-001983/">fnd:gradeddegreeonevaluation</a></li><li><a href="/r/NAG-001964/">fnd:gradedvaluationintegrality</a></li><li><a href="/r/NAG-001691/">fnd:rationalresiduefields</a></li><li><a href="/r/NAG-001641/">fnd:strictrationalinteriorneighborhood</a></li><li><a href="/r/NAG-002349/">v037:analytic:finitetropicalbasis</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

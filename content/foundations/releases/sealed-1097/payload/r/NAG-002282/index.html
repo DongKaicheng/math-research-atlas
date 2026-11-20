@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002282/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Component lengths under a finite model comparison · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002282 · Accepted whole</p><h1>Component lengths under a finite model comparison</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.33.3">Open in the English reader · PDF page 944</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="c34515bb868a0c98530dad6413f104c3b25272681eb5c7e213b88d46a357c498">
+\begin{proposition}[Component lengths under a finite model comparison]
+\label{v036:projection:componentcomparison}
+Let $D_0\subset C_0\subset D$ be actual admissible models of the
+same affinoid algebra, both finite over
+\[
+ A_0=O\langle U_1^{\pm1},\ldots,U_d^{\pm1}\rangle.
+\]
+The inclusion induces a finite morphism
+$\nu:\operatorname{Spec}\overline C_0\to
+\operatorname{Spec}\overline D_0$, and
+\[
+              \nu_*[\operatorname{Spec}\overline C_0]_d
+                  =[\operatorname{Spec}\overline D_0]_d.
+\]
+More precisely, for every $d$-dimensional minimal prime
+$\mathfrak p$ of $\overline D_0$,
+\begin{equation}
+\label{v036:projection:eqcomponentlength}
+ \operatorname{length}((\overline D_0)_{\mathfrak p})
+   =\sum_{\mathfrak q\mapsto\mathfrak p}
+      \operatorname{length}((\overline C_0)_{\mathfrak q})
+      [\kappa(\mathfrak q):\kappa(\mathfrak p)],
+\end{equation}
+where the sum is over the $d$-dimensional minimal primes of
+$\overline C_0$ above $\mathfrak p$.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="bbd82769a0b47541285430b47d914a872acf8ada9517c7671a5a174a681a94da">
+\begin{proof}
+Finite $A_0$-module generators of $C_0$ also generate it over
+$D_0$, so $\nu$ is finite. Both special algebras are finite
+over $k[U^{\pm1}]$ and are Noetherian by
+\cite[Tag 00FN]{StacksAlg}. Their components have dimension at
+most $d$. By \cite[Tag 00P0]{StacksAlg}, a component has
+dimension $d$ exactly when it dominates
+$\operatorname{Spec}k[U^{\pm1}]$: its function field is finite
+over the fraction field of the corresponding prime quotient
+of $k[U^{\pm1}]$, and a nonzero prime imposes a nonzero
+polynomial relation on its $d$ Laurent generators.
+
+Let $S\subset A_0$ be the elements of Laurent Gauss norm one.
+The Gauss-localization argument of
+Lemma~\ref{v035:degreegaussrank} identifies
+\[
+ V=S^{-1}A_0,\qquad F=\operatorname{Frac}(A_0),\qquad
+ \kappa(V)=k(U).
+\]
+Here $V$ is a valuation ring, and every nonzero element of $V$
+is a nonzero scalar from $O$ times a unit. The finite modules
+$M=S^{-1}D_0$ and $N=S^{-1}C_0$ are therefore torsion free
+over $V$ and free by the finite-generator argument in that
+lemma. They are subalgebras of the same generic algebra
+\[
+                         E=D\otimes_{A_0[1/\pi]}F.
+\]
+Both span $E$ over $F$. They consequently have the same rank
+$n$. Their residue algebras are
+\[
+ B=\overline D_0\otimes_{k[U^{\pm1}]}k(U),\qquad
+ C=\overline C_0\otimes_{k[U^{\pm1}]}k(U).
+\]
+They retain the full generic local rings of the corresponding
+special fibres. If $n=0$, there are no components to compare.
+
+By \cite[Tag 00JB]{StacksAlg}, $B$ and $C$ are products of
+their Artinian local factors. Fix a maximal ideal
+$\mathfrak p$ of $B$, and let $\overline b\in B$ be the
+idempotent which is one on $B_{\mathfrak p}$ and zero on the
+other factors. Choose any lift $b\in M$. Multiplication by
+$b$ on the two free $V$-modules $M$ and $N$ has the same
+characteristic polynomial: after scalar extension to $F$,
+both operators are multiplication by the same element on
+$E$. Equality over $V$ follows from $V\subset F$.
+
+Reducing this equality to $k(U)$ gives
+\[
+ t^{n-a}(t-1)^a=t^{n-a&#x27;}(t-1)^{a&#x27;},\qquad
+ a=\dim_{k(U)} B_{\mathfrak p},\quad
+ a&#x27;=\dim_{k(U)}(\overline b C).
+\]
+The factors $t$ and $t-1$ are relatively prime in every
+characteristic, so $a=a&#x27;$. The idempotent $\overline b$
+selects exactly the local factors $C_{\mathfrak q}$ whose
+maximal ideals contract to $\mathfrak p$ in $B$.
+Taking a composition series of each Artinian local factor
+therefore gives
+\[
+ \operatorname{length}(B_{\mathfrak p})
+          [\kappa(\mathfrak p):k(U)]
+ =\sum_{\mathfrak q\mapsto\mathfrak p}
+     \operatorname{length}(C_{\mathfrak q})
+          [\kappa(\mathfrak q):k(U)].
+\]
+Divide by the positive integer $[\kappa(\mathfrak p):k(U)]$
+and use the tower formula for field degrees.
+Localization identifies these local rings with those in
+\eqref{v036:projection:eqcomponentlength}, proving that
+formula and the cycle identity. No local factor has been
+replaced by its reduced quotient.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="549e60902c493575e83f07fbf37716e1b15c65eab62395e62122ad3af5251180">
+% Author: /root/f6_degree. English candidate; status is assigned by review and gate.
+\section{Common models for finite moment projections}
+\label{v036:projection:section}
+
+Fix a complete nontrivially valued field $K$ with its given real-valued
+absolute value, and write
+\[
+ O=K^\circ,\qquad \mathfrak m=K^{\circ\circ},\qquad
+ k=O/\mathfrak m.
+\]
+Choose $\pi\in O$ with $0&lt;|\pi|&lt;1$. An \emph{actual admissible model}
+of a $K$-affinoid algebra $D$ is an admissible topologically finitely
+presented $O$-subalgebra $D_0\subset D$ for which $D_0[1/\pi]=D$
+and the generic-fibre Banach topology is the given topology of $D$.
+The special algebra is always the actual quotient
+$\overline D_0=D_0/\mathfrak mD_0$.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002282-reader.jpg" alt="Typeset mathematical passage from PDF page 944" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=944">PDF page 944 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00FN@NAG-002282:Gauss-original-site-1 · named external application</li><li>APP-STACKS-00FN@NAG-002282:Gauss-original-site-1 · named external application <small>(requires)</small></li><li>APP-STACKS-00JB@NAG-002282:Gauss-original-site-4 · named external application</li><li>APP-STACKS-00JB@NAG-002282:Gauss-original-site-4 · named external application <small>(requires)</small></li><li>APP-STACKS-00P0@NAG-002282:Gauss-original-site-2 · named external application</li><li>APP-STACKS-00P0@NAG-002282:Gauss-original-site-2 · named external application <small>(requires)</small></li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole</li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00FN">APP-STACKS-00FN@NAG-002282:Gauss-original-site-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/00JB">APP-STACKS-00JB@NAG-002282:Gauss-original-site-4</a></li><li><a href="https://stacks.math.columbia.edu/tag/00P0">APP-STACKS-00P0@NAG-002282:Gauss-original-site-2</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002242/">v035:degreegaussrank</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

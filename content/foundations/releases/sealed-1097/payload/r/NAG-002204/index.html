@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002204/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The stable double of a genus-one curve · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002204 · Accepted whole</p><h1>The stable double of a genus-one curve</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.37.1">Open in the English reader · PDF page 737</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="62f66a017015b46c054374be5342d040c66efad59f800f2903b5d569a1ed1e7d">
+\begin{lemma}[\bi{The stable double of a genus-one curve}
+{亏格一曲线的稳定倍接}]
+\label{cand:genusonestabledouble}
+\bi{Let $K$ be a characteristic-zero field and let $C/K$ be a
+smooth projective geometrically connected curve of genus one.
+There is a stable curve $Y/K$ of genus $d+1\geq2$ whose normalization
+is the disjoint union of two labelled copies $C_1,C_2$ of $C$.
+The construction is defined over $K$; consequently every scalar-extension
+Galois action preserves the two labels.}
+{设 $K$ 为特征零域，$C/K$ 为光滑射影几何连通的亏格一曲线。
+存在亏格 $d+1\geq2$ 的稳定曲线 $Y/K$，其正规化为 $C$ 的两个
+带标签副本 $C_1,C_2$ 的不交并。构造在 $K$ 上定义，故每个
+标量扩张所带的 Galois 作用均保持这两个标签。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0dda5986bdea87d86ebd5cdef7eae3094c2eb9027573eac06f13271faaf6c112">
+\begin{proof}
+\bi{Choose a closed point $q\in C$ with residue field $E$ finite
+over $K$, using \cite[Tag 00FV]{StacksAlg} on a nonempty affine open.
+Put $d=[E:K]$. The extension is separable, since $K$ has
+characteristic zero. Glue the two copies of $q$ by the identity on
+$\operatorname{Spec}E$. This is the pushout of}
+{在一个非空仿射开集上使用 \cite[Tag 00FV]{StacksAlg}，选取
+闭点 $q\in C$，使剩余域 $E/K$ 有限。令 $d=[E:K]$。
+由于 $K$ 特征零，此扩张可分。沿 $\operatorname{Spec}E$ 的恒等映射
+粘合 $q$ 的两个副本；这给出以下图的推出：}
+\[
+ \operatorname{Spec}E\amalg\operatorname{Spec}E
+ \longrightarrow C_1\amalg C_2,
+ \qquad
+ \operatorname{Spec}E\amalg\operatorname{Spec}E
+ \longrightarrow\operatorname{Spec}E.
+\]
+\bi{The first map is a closed immersion and the second is finite.
+An affine neighborhood of $q$ in each copy supplies the affine-neighborhood
+condition of \cite[Tag 0E25]{StacksAlg}, so the pushout is a scheme.
+It is separated and of finite type over $K$ by
+\cite[Tags 0E26, 0E27]{StacksAlg}. The natural map
+$\nu:C_1\amalg C_2\to Y$ is finite and surjective: on the glued
+affine chart it is the inclusion}
+{第一个映射为闭浸入，第二个为有限态射。每个副本中 $q$ 的一个
+仿射邻域满足 \cite[Tag 0E25]{StacksAlg} 的仿射邻域条件，故推出
+是概形。由 \cite[Tags 0E26, 0E27]{StacksAlg}，它在 $K$ 上分离且
+有限型。自然映射 $\nu:C_1\amalg C_2\to Y$ 有限满射：
+在粘合仿射片上，它对应于包含映射}
+\[
+ R=A\times_E A\ \longrightarrow\ A\oplus A,
+ \qquad A\oplus A=R(1,0)+R(0,1).
+\]
+\bi{Properness of $C_1\amalg C_2$ and
+\cite[Tag 03GN]{StacksAlg} show that $Y$ is proper.
+The fibre-product description commutes with field extensions, since
+tensoring over $K$ is exact. Over an algebraic closure the construction
+therefore glues the two smooth connected copies at $d$ distinct pairs
+of rational points. At each glued point the completed local ring is}
+{由 $C_1\amalg C_2$ 的 properness 及 \cite[Tag 03GN]{StacksAlg}，
+$Y$ proper。因为在 $K$ 上张量是正合的，纤维积描述与域扩张相容。
+故在代数闭包上，此构造将两个光滑连通副本沿 $d$ 对互异有理点粘合。
+每个粘合点处的完备局部环为}
+\[
+ \overline K[[u]]\times_{\overline K}\overline K[[v]]
+       \simeq\overline K[[u,v]]/(uv),
+\]
+\bi{by \cite[Tag 0E36]{StacksAlg} and the smooth rational-point
+completion calculation already used in
+Lemma~\ref{cand:smoothrationaltubeclosure};
+\cite[Tag 0CBW]{StacksAlg} identifies these as split nodes.
+Thus $Y$ is geometrically connected and nodal. The finite map $\nu$
+is an isomorphism off the glued points and has normal source, so
+it is the normalization: an element of the common total function
+ring integral over a target affine ring is also integral over its
+finite normal source ring, and hence belongs to the latter.}
+{这里使用 \cite[Tag 0E36]{StacksAlg}，以及
+Lemma~\ref{cand:smoothrationaltubeclosure} 已使用的光滑有理点
+完备化计算；\cite[Tag 0CBW]{StacksAlg} 将这些点识别为分裂结点。
+因此 $Y$ 几何连通且只有结点。有限映射 $\nu$
+在粘合点外为同构，且其源正规，因此它是正规化：共同全函数环
+中的元素若在目标仿射环上整，也在对应的有限正规源环上整，
+故属于后者。}
+
+\bi{The ring description gives the exact sequence}
+{由环的描述得到正合列}
+\[
+ 0\longrightarrow\mathcal O_Y\longrightarrow
+ \nu_*(\mathcal O_{C_1}\oplus\mathcal O_{C_2})
+ \xrightarrow{\ \mathrm{res}_1-\mathrm{res}_2\ }
+ \mathcal O_{\operatorname{Spec}E}\longrightarrow0.
+\]
+\bi{Here the last sheaf is extended by zero along the closed immersion.
+The cohomology of the finite pushforward equals that on $C_1\amalg C_2$
+by \cite[Tag 089W]{StacksAlg}; the same result and affine
+acyclicity, \cite[Tag 01XB]{StacksAlg}, give vanishing of higher
+cohomology of the last sheaf.
+The smooth geometrically connected curve $C$ is geometrically integral:
+its geometric local rings are normal domains by Tag 033C, so distinct
+geometric irreducible components cannot meet, and connectedness
+leaves just one component. Hence $H^0(C,\mathcal O_C)=K$ by
+\cite[Tag 04L2, part (4)]{StacksAlg}, the cohomology sequence is}
+{末项沿闭浸入作零延拓。由 \cite[Tag 089W]{StacksAlg}，
+有限推前的上同调等于 $C_1\amalg C_2$ 上的上同调；
+同一结论及 \cite[Tag 01XB]{StacksAlg} 的仿射非循环性
+给出末项的高阶上同调消失。
+光滑几何连通曲线 $C$ 几何整：由 Tag 033C，其几何局部环
+为正规整环，所以互异几何不可约分量不相交；连通性说明只有
+一个分量。因此由 \cite[Tag 04L2, part (4)]{StacksAlg}，
+$H^0(C,\mathcal O_C)=K$，故上同调列为}
+\[
+ 0\longrightarrow H^0(Y,\mathcal O_Y)\longrightarrow K^2
+ \xrightarrow{(a,b)\mapsto a-b}E
+ \longrightarrow H^1(Y,\mathcal O_Y)\longrightarrow K^2
+ \longrightarrow0.
+\]
+\bi{It follows that $H^0(Y,\mathcal O_Y)=K$ and
+$\dim_KH^1(Y,\mathcal O_Y)=d+1$.
+Every geometric irreducible component has genus one, so there is no
+rational tail or bridge. Hence $Y$ is stable by
+\cite[Tag 0E75]{StacksAlg}. All maps and both component labels are
+defined over $K$, which proves the equivariance assertion.}
+{因此 $H^0(Y,\mathcal O_Y)=K$ 且
+$\dim_KH^1(Y,\mathcal O_Y)=d+1$。
+每个几何不可约分量的亏格均为一，故不存在有理尾或有理桥。
+由 \cite[Tag 0E75]{StacksAlg}，$Y$ 稳定。
+全部映射与两个分量标签都在 $K$ 上定义，由此得到等变断言。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002204-reader.jpg" alt="Typeset mathematical passage from PDF page 737" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=737">PDF page 737 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-00FV · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-01XB · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-033C · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-03GN · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-04L2 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-089W · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0CBW · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0E25 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0E26 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0E27 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-0E36 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole</li><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole <small>(requires)</small></li><li>STACKS-00FV · named external application</li><li>STACKS-00FV · named external application <small>(requires)</small></li><li>STACKS-01XB · named external application</li><li>STACKS-01XB · named external application <small>(requires)</small></li><li>STACKS-033C · named external application</li><li>STACKS-033C · named external application <small>(requires)</small></li><li>STACKS-03GN · named external application</li><li>STACKS-03GN · named external application <small>(requires)</small></li><li>STACKS-04L2 · named external application</li><li>STACKS-04L2 · named external application <small>(requires)</small></li><li>STACKS-089W · named external application</li><li>STACKS-089W · named external application <small>(requires)</small></li><li>STACKS-0CBW · named external application</li><li>STACKS-0CBW · named external application <small>(requires)</small></li><li>STACKS-0E25 · named external application</li><li>STACKS-0E25 · named external application <small>(requires)</small></li><li>STACKS-0E26 · named external application</li><li>STACKS-0E26 · named external application <small>(requires)</small></li><li>STACKS-0E27 · named external application</li><li>STACKS-0E27 · named external application <small>(requires)</small></li><li>STACKS-0E36 · named external application</li><li>STACKS-0E36 · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002058/">cand:smoothrationaltubeclosure</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

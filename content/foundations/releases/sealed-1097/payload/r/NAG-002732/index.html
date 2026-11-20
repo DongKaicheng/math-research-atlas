@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002732/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Identity (M) on every continuous radial test · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002732 · Accepted whole</p><h1>Identity (M) on every continuous radial test</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002732.original">Open in the English reader · PDF page 2127</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="bb27ce63205368ef69cc1c7621c4e1b206fc5d93d019ee35b14cf8a7c1ebe628">
+\begin{theorem}[Identity (M) on every continuous radial test]
+\label{f9tm:radialcomparison}
+For the class in Section~\ref{ex68:radial:sec:class}, Identity $(M_{\rm tor})$ holds
+for every $F\in\mathcal S$:
+\begin{equation}\label{ex68:radial:eq:Mtor}
+ I_K(u_F\theta)=J_{\rm GK}(u_F\theta)
+       =\int_{X^\an}u_F\,d\mu_{\rm GK}
+       =\int_{\mathbf R^d}F(t)W(t)\,dt.
+\end{equation}
+Both restricted functionals have a unique continuous extension from
+$\mathcal S$ to all $F\in C(\overline{\mathbf R}^{,d})$ in the uniform
+norm, and \eqref{ex68:radial:eq:Mtor} holds for every such $F$, with $I_K$ understood
+as this extension. These tests belong to the uniform closure of the
+ordinary smooth moment functions on $X^\an$. The common functional is
+positive, vanishes if $F|_S=0$, and satisfies
+\begin{equation}\label{ex68:radial:eq:bound}
+ |I_K(u_F\theta)|\leq D\|F\|_\infty,\qquad I_K(\theta)=D.
+\end{equation}
+Here $D$ is the algebraic mixed degree of $L_1,\ldots,L_d$ on $X$,
+including the local intersection lengths. If
+$L=L_1\otimes\cdots\otimes L_d$ has the product metric, then
+$c_1(L)^d=d!\theta$, so its mass and algebraic self-degree are $d!D$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="d0ff39b2cddc7a62dc17a5b0d22cbf5377ce8017f7364b3fd669f327df382db9">
+\begin{proof}
+The local weights and their affine frame transitions give the same
+curvature representative $\dd\phi_i$ in each of the two smooth chart
+conventions. Multiplication and wedge product therefore represent
+$u_F\theta$ on $T$ by $F W\omega_d$. This representative has support in
+$S\subset\Int B$ even when $F$ is not compactly supported. On $X^\an$
+the whole form has support inside the ordinary interior of $Q$.
+NAG-002425 consequently permits its frozen integral to be computed on
+this one affinoid neighbourhood. Lemma~\ref{f9tm:torusweight} computes
+it as $\int F W\,dt$. In the primary definition, $T$ is already a very
+affine chart of integration for the very same compact representative;
+the same lemma computes its defining pairing. The equality with the
+smooth action of $\mu_{\rm GK}$ is its specified definition.
+
+Since each $\phi_i&#x27;&#x27;$ is nonnegative and compactly supported,
+ordinary one-variable calculus and \eqref{ex68:radial:eq:tails} give
+\[
+ \int_{\mathbf R}\phi_i&#x27;&#x27;(t)\,dt
+       =\phi_i&#x27;(+\infty)-\phi_i&#x27;(-\infty)=m_i.
+\]
+Iterated integration gives $\int W\,dt=D$. This proves positivity,
+the support assertion for radial tests, and \eqref{ex68:radial:eq:bound}.
+
+For completeness, the density required for the declared continuous
+tests is explicit. Identify $\overline{\mathbf R}$ with $[-1,1]$
+by $t\mapsto\tanh t$. For any $F\in C(\overline{\mathbf R}^{,d})$,
+its restriction to $\mathbf R^d$ is bounded and uniformly continuous.
+Convolution with a compactly supported smooth approximate identity
+gives smooth bounded $F_\epsilon$ with
+$\|F_\epsilon-F\|_{\infty,\mathbf R^d}\to0$. Choose a smooth clamp
+$c_R:\mathbf R\to\mathbf R$ equal to the identity on $[-R,R]$ and
+constant on both ends outside $[-R-1,R+1]$, with $c_R(t)\geq R$ for
+$t\geq R$ and $c_R(t)\leq-R$ for $t\leq-R$. Such a clamp is obtained
+by integrating a smooth cutoff of the derivative from one to zero
+on each end. Let $C_R$ be its coordinatewise product. The function
+$F_\epsilon\circ C_R$ belongs to $\mathcal S$. Moreover
+\[
+ \|F_\epsilon\circ C_R-F\|_\infty
+ \leq\|F_\epsilon-F\|_\infty+\|F\circ C_R-F\|_\infty.
+\]
+The last term tends to zero as $R\to\infty$, because each of
+$\tanh(c_R(t))$ and $\tanh t$ lies in the same end interval of length
+$1-\tanh R$ whenever $|t|&gt;R$. This estimate holds at the endpoints
+as well. Uniform continuity on $[-1,1]^d$ proves the assertion.
+Composing with $\bar t$ now gives uniform approximation on $X^\an$
+by the specified globally smooth functions.
+
+The bound \eqref{ex68:radial:eq:bound} gives unique extensions of the two restricted
+functionals. The right real integral has the same bound, so their
+extensions still equal it. The action of the given finite signed
+primary measure is also continuous in the uniform norm, hence it has
+the same values on these limits. If the previously reviewed bounded
+extension is subsequently adopted, uniqueness identifies it with this
+extension on $\mathcal C_{\rm rad}$; no further density theorem is
+being assumed.
+
+Finally choose $a_i\in K^\times$ and the effective divisor
+$m_i\{T_i=a_i\}$ representing $L_i$. These divisors meet properly at
+one point. Writing $z_i=T_i-a_i$, their local intersection quotient is
+\[
+ K[z_1,\ldots,z_d]_{(z_1,\ldots,z_d)}/(z_1^{m_1},\ldots,z_d^{m_d}).
+\]
+The equations are a regular sequence, since successively the next
+variable is a polynomial variable over the previous quotient. The
+residue monomials $z_1^{e_1}\cdots z_d^{e_d}$ with $0\leq e_i&lt;m_i$
+form a $K$-basis. The quotient has length $D$ and residue degree one;
+this computes the mixed degree in this explicit complete intersection.
+It retains all the nilpotent layers. Since $\theta_i\wedge\theta_i=0$
+and $(1,1)$-forms commute with one another, expansion gives
+$(\sum_i\theta_i)^d=d!\theta$. Independently, the Hilbert polynomial
+of $L$ is $\prod_i(m_i k+1)$, whose leading coefficient is $D$;
+the algebraic self-degree is $d!D$. This verifies both normalizations.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002732-reader.jpg" alt="Typeset mathematical passage from PDF page 2127" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2127">PDF page 2127 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002731/">NAG-002731</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002731/">f9tm:torusweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002408/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>An integral independent of finite affinoid chart data · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002408 · Accepted whole</p><h1>An integral independent of finite affinoid chart data</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.49.4">Open in the English reader · PDF page 1032</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a21d2726314def7f5fb89322c0d8c0baddc2f5ce16c76e6db775025fe8a0198f">
+\begin{theorem}[An integral independent of finite affinoid chart data]
+\label{v037:integration:finitechartintegral}
+Fix a finite $A$-module $M$. For finite moment-chart data
+of bidegree $(d,d)$ on $X$, put $V_I=\bigcap_{i\in I}V_i$,
+$A_I=\mathcal O(V_I)$ and $M_I=M\otimes_A A_I$.
+Choose any $i\in I$ to represent the restricted form on
+$V_I$, and set
+\begin{equation}
+\label{v037:eq:finitechartintegral}
+ \mathcal I_M(\alpha)
+   =\sum_{\varnothing\ne I\subseteq\{1,\ldots,s\}}
+       (-1)^{|I|+1}
+       \mathcal I_{M_I,f_i|_{V_I}}(\alpha_i).
+\end{equation}
+An empty intersection contributes zero. The expression
+is independent of each chosen $i$, of the finite cover,
+of the unit tuples and of the representatives within
+the equivalence of
+Definition~\ref{v037:integration:finitechartdata}.
+It is linear in the form and additive in short exact
+sequences of finite $A$-modules. It is nonnegative if
+all chart representatives have nonnegative tangential
+top coefficients. For a single global
+moment presentation it is exactly the global integral
+given by the \hyperref[fnd:nag002405:finite-cell-functional]{finite-cell functional}.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="25f8ed27e25c8dfd5f643988e39782bb980f2938ee5964c2adc16cab0d422024">
+\begin{proof}
+Finite intersections are actual affinoid domains by
+Corollary~\ref{fnd:generalizeddomainintersections}; their
+algebras and restriction maps are the actual domain
+ones. Every nonempty intersection is pure of analytic
+dimension $d$ by
+Theorem~\ref{v036:analytic:domainpurity}. Thus all the
+displayed integrals exist by the \hyperref[fnd:nag002405:finite-cell-functional]{finite-cell functional}. Compatibility of the chart
+data restricts to further intersections by
+Theorem~\ref{v037:integration:globalchartfaithfulness}.
+On $V_I$, the \hyperref[fnd:nag002405:same-affinoid-coordinate-augmentation]{same-affinoid coordinate augmentation} identifies the
+integrals of any two chosen representatives with
+the integral of their equal joint pullbacks. This
+proves independence of the choice of $i$.
+
+First suppose the data come from a single tuple on
+$X$. The domain-cover identity of
+Theorem~\ref{v037:localization:globalcoveradditivity}
+gives exactly \eqref{v037:eq:finitechartintegral}.
+The same identity holds after restricting a single
+chart presentation to any of its affinoid subdomains.
+
+Now compare compatible data on two finite covers
+$(V_i)_{i=1}^s$ and $(W_j)_{j=1}^t$.
+The module on every overlap is the restriction of the
+same $M$, by the actual domain tensor identifications
+of Proposition~\ref{fnd:generalizedfinitetensor} and
+Theorem~\ref{fnd:generalizeddomainbasechange}.
+For each nonempty $I$, cover $V_I$ by the
+$V_I\cap W_j$ and apply the preceding single-chart
+identity to its chosen representative. Substitution
+in \eqref{v037:eq:finitechartintegral} gives
+\[
+ \sum_{I\ne\varnothing}\sum_{J\ne\varnothing}
+       (-1)^{|I|+|J|}
+       \mathcal I_{M|_{V_I\cap W_J}}(\alpha|_{V_I\cap W_J}).
+\]
+The two representatives on each of these intersections
+have equal integrals by their joint-coordinate comparison.
+Interchange the two finite sums and apply the domain-cover
+identity to each $W_J$. This recovers precisely the
+expression for the second cover. Thus the value is
+unchanged under compatible replacement or refinement.
+For data identified after a common refinement, apply
+this comparison to each of the two original covers
+and that common refinement. This proves all claimed
+independences.
+
+Linearity is termwise. For a short exact sequence of
+finite $A$-modules, domain flatness
+\hyperref[fnd:nag001832:ordinary-single-domain-flatness]{on a single actual domain} keeps it exact on
+every $V_I$. The global module-chain additivity of
+the \hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain and weights} gives additivity
+of each integral, and hence of the finite alternating
+sum. The assertion about a single global presentation
+was proved in the second paragraph.
+
+To verify positivity, order the cover and group the
+alternating sum by the largest index $j$ in $I$.
+The $j$-th group uses the single representative
+$\alpha_j$ and is the integral of the chain
+\[
+ C_j=\sum_{J\subseteq\{1,\ldots,j-1\}}(-1)^{|J|}
+       \mathcal T_{f_j|_{V_j\cap V_J}}
+                     (M|_{V_j\cap V_J}),
+\]
+with the empty intersection in this formula understood
+to be $V_j$. Each $C_j$ is nonnegative. Indeed, choose
+a common finite subdivision of these actual moment
+images and their boundary images by the \hyperref[cand:polyhedralrefinementproduct]{common finite subdivision lemma}. The latter have
+dimension at most $d-1$ by
+Theorem~\ref{v037:globaltrop:finiteimage}. At a generic
+point of a $d$-cell, apply
+Theorem~\ref{v037:localization:fibrecover} on $V_j$ to
+the family consisting of $V_j$ itself and the domains
+$V_j\cap V_i$ for $i&lt;j$. It supplies idempotents $e_i$
+in the actual whole-fibre algebra; the member $V_j$
+ensures the cover hypothesis. For a transverse Gauss
+algebra $E_Q$ and its common lattice divisor $c_Q$,
+the weight of $C_j$ is
+\[
+ \frac{1}{c_Q}\dim_{H_Q}
+       \left(\prod_{i&lt;j}(1-e_i)\right)
+                \bigl(M|_{V_j}\otimes_{A_{V_j}}E_Q\bigr)
+                                      \geq0.
+\]
+This is the elementary expansion of the product of
+the complementary idempotents, with all module
+structures retained. It is already an integer because
+it is the displayed alternating sum of integer module
+weights. Thus every generic coefficient of $C_j$ is
+nonnegative. Its integral against $\alpha_j$ is
+nonnegative by the \hyperref[v037:integration:polyhedralcalculus]{nonnegative cell integral} on each cell. Summing
+these finitely many groups proves positivity.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002408-reader.jpg" alt="Typeset mathematical passage from PDF page 1032" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1032">PDF page 1032 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(selected clause, selected native clause)</small></li><li><a href="/r/NAG-002405/#finite_cell_functional">CLAUSE:NAG-002405:finite_cell_functional</a> · selected scope <small>(proposed scope, preceding target in detached batch)</small></li><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(signed unselected, selected native clause)</small></li><li><a href="/r/NAG-002405/#same_affinoid_coordinate_augmentation">CLAUSE:NAG-002405:same_affinoid_coordinate_augmentation</a> · selected scope <small>(proposed scope, preceding target in detached batch)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-001847/">NAG-001847</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(signed exact distinct production site, selected native whole)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole</li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(signed exact distinct production site, selected native whole)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole</li><li><a href="/r/NAG-002396/">NAG-002396</a> · selected whole <small>(selected whole, selected native whole)</small></li><li><a href="/r/NAG-002401/">NAG-002401</a> · selected whole <small>(earlier original, preceding target in detached batch)</small></li><li><a href="/r/NAG-002406/">NAG-002406</a> · selected whole <small>(selected whole, selected native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001847/">fnd:generalizeddomainintersections</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li><li><a href="/r/NAG-002293/">v036:analytic:domainpurity</a></li><li><a href="/r/NAG-002358/">v037:globaltrop:finiteimage</a></li><li><a href="/r/NAG-002406/">v037:integration:globalchartfaithfulness</a></li><li><a href="/r/NAG-002396/">v037:localization:fibrecover</a></li><li><a href="/r/NAG-002401/">v037:localization:globalcoveradditivity</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,156 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002073/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Residual order on a model branch · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002073 · Accepted whole</p><h1>Residual order on a model branch</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.24.5">Open in the English reader · PDF page 687</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e0c095f97ed6f43bd59546e943f63a5d5dfa14e41c2c03ba6cd1dd50277ad3e3">
+\begin{theorem}[\bi{Residual order on a model branch}
+{模型分支上的剩余阶数}]
+\label{cand:residualbranchslope}
+\bi{Let $\mathcal X$ be a flat finitely presented $O$-curve
+with reduced nodal special fibre and smooth generic fibre. Assume
+that its formal generic fibre $X$ is Hausdorff. Let $C$ be a
+special-fibre component, $x=x_C$ its component point, and
+$\nu:C^\nu\to C$ its normalization. Let $p\in C^\nu(k)$
+lie over either a smooth point of $\mathcal X_s$, or a split
+node admitting a pointed chart as in
+Proposition~\ref{cand:pointednodalannulustube}. The pointed
+disc or annulus chart determines an outgoing Gauss segment
+$\gamma_p:[0,\epsilon)\to X$, with $\gamma_p(0)=x$ and
+parameter $\tau=-\log|z|$, where $z$ is the coordinate
+of the corresponding normalization branch and $|z(x)|=1$.}
+{设 $\mathcal X$ 为平坦有限表示的 $O$-曲线，其特殊纤维
+约化且只有节点，泛纤维光滑。假设其形式泛纤维 $X$ 为
+Hausdorff 空间。设 $C$ 为特殊纤维的一个分量，$x=x_C$
+为分量点，$\nu:C^\nu\to C$ 为正规化。设
+$p\in C^\nu(k)$ 位于 $\mathcal X_s$ 的光滑点之上，或位于
+具有 Proposition~\ref{cand:pointednodalannulustube} 所述
+带点坐标片的分裂节点之上。带点圆盘或圆环坐标片确定出射
+Gauss 线段 $\gamma_p:[0,\epsilon)\to X$，其中
+$\gamma_p(0)=x$，参数为 $\tau=-\log|z|$；$z$ 是相应
+正规化分支的坐标，并满足 $|z(x)|=1$。}
+
+\bi{Let $f$ be an analytic germ at $x$ with $f(x)\ne0$.
+Choose $c\in K^\times$ such that $|cf(x)|=1$, and let
+$\widetilde f_x\in k(C)^\times$ be the residue of $cf(x)$
+under Proposition~\ref{cand:componentvaluedresiduefield}.
+For all sufficiently small $\tau\geq0$,}
+{设 $f$ 为 $x$ 处的解析函数芽，且 $f(x)\ne0$。选择
+$c\in K^\times$，使 $|cf(x)|=1$；通过
+Proposition~\ref{cand:componentvaluedresiduefield}，将
+$cf(x)$ 的剩余类记为 $\widetilde f_x\in k(C)^\times$。
+则对所有充分小的 $\tau\geq0$，}
+\[
+ -\log|f(\gamma_p(\tau))|
+   =-\log|f(x)|+\operatorname{ord}_p(\widetilde f_x)\,\tau.
+\]
+\bi{In particular the outgoing slope equals
+$\operatorname{ord}_p(\widetilde f_x)$, independently of the
+scalar $c$ and of the pointed chart.}
+{特别地，出射斜率等于 $\operatorname{ord}_p(\widetilde f_x)$，
+与标量 $c$ 及带点坐标片的选择无关。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="85c56dd0c1dbe46bd66800b19d3de70d40457a77fb9d59349681e053f14d049b">
+\begin{proof}
+\bi{We first treat an actual pointed chart on a formal affine
+neighborhood of the residual point. Its generic fibre is
+$\mathcal M(A)$, with reduced integral model $A_0$. The Gauss
+segment has endpoint $x$ by
+Propositions~\ref{cand:nodaltubeendpoints} and
+\ref{cand:smoothrationaltubeclosure}. Choose $P,Q\in A$ with
+$Q(x)\ne0$ such that the element $r(x)=P(x)/Q(x)$ of
+$\mathcal H(x)$ satisfies}
+{先考虑剩余点的形式仿射邻域上实际给定的带点坐标片。
+其泛纤维为 $\mathcal M(A)$，约化整模型为 $A_0$。由
+Propositions~\ref{cand:nodaltubeendpoints} 和
+\ref{cand:smoothrationaltubeclosure}，Gauss 线段的端点为
+$x$。选择 $P,Q\in A$，其中 $Q(x)\ne0$，使
+$\mathcal H(x)$ 中的元素 $r(x)=P(x)/Q(x)$ 满足}
+\[
+ |f(x)-r(x)|&lt;|f(x)|.
+\]
+\bi{This is possible because the fraction field of
+$A/\ker x$ is dense in $\mathcal H(x)$. The strict
+inequality persists on a neighborhood of $x$ on which $f$ and
+$P/Q$ are analytic. The ultrametric inequality then gives
+$|f|=|r|$ there. Moreover $cf(x)$ and $cr(x)$ have the same
+residue. It therefore suffices to prove the formula for $P/Q$.}
+{这是因为 $A/\ker x$ 的分式域在 $\mathcal H(x)$ 中稠密。
+该严格不等式在 $x$ 的某个邻域上仍成立，而 $f$ 和 $P/Q$
+在那里都是解析的。由超度量不等式，该邻域上有
+$|f|=|r|$。此外，$cf(x)$ 与 $cr(x)$ 具有相同剩余类。
+故只需证明 $P/Q$ 的公式。}
+
+\bi{Apply the separator construction in the proof of
+Proposition~\ref{cand:componentvaluedresiduefield} to $P$ and
+$Q$, using the same function $h$ and the same exponent $N$.
+For suitable $c_P,c_Q\in K^\times$, the functions}
+{将 Proposition~\ref{cand:componentvaluedresiduefield} 证明
+中的分离函数构造同时应用于 $P,Q$，使用同一函数 $h$ 及
+同一指数 $N$。对适当的 $c_P,c_Q\in K^\times$，函数}
+\[
+ P&#x27;=Ph^N/c_P,\qquad Q&#x27;=Qh^N/c_Q
+\]
+\bi{belong to $A_0$ and satisfy $|P&#x27;(x)|=|Q&#x27;(x)|=1$.
+Their restrictions to $C$ are nonzero regular functions near the
+selected residual point. Write $d_P,d_Q$ for their orders at
+$p$ on $C^\nu$. By Lemmas~\ref{cand:boundedetaletubeexpansion}
+and \ref{cand:boundarycoefficientorder}, near the endpoint of
+the corresponding Gauss segment we have}
+{属于 $A_0$，并满足 $|P&#x27;(x)|=|Q&#x27;(x)|=1$。它们在 $C$ 上
+的限制，是所选剩余点附近的非零正则函数。记它们在
+$C^\nu$ 的 $p$ 处阶数为 $d_P,d_Q$。由
+Lemmas~\ref{cand:boundedetaletubeexpansion} 和
+\ref{cand:boundarycoefficientorder}，在相应 Gauss 线段的
+端点附近有}
+\[
+ |P&#x27;(\gamma_p(\tau))|=e^{-d_P\tau},\qquad
+ |Q&#x27;(\gamma_p(\tau))|=e^{-d_Q\tau}.
+\]
+\bi{In the nodal case use the branch coordinate that has
+absolute value one at $x$; at the other end this exchanges $s$
+and $t=a/s$. Since
+$P/Q=(c_P/c_Q)P&#x27;/Q&#x27;$, subtracting the two logarithms proves
+the displayed formula. The quotient of the two reductions is
+$\widetilde f_x$ up to a nonzero constant, so its order is
+$d_P-d_Q$.}
+{节点情形中，使用在 $x$ 处绝对值为一的分支坐标；在另一
+端即交换 $s$ 与 $t=a/s$。因
+$P/Q=(c_P/c_Q)P&#x27;/Q&#x27;$，将两式的对数相减即可得到公式。
+两约化之商与 $\widetilde f_x$ 只相差非零常数，故其阶数
+为 $d_P-d_Q$。}
+
+\bi{For a pointed \textup{\&#x27;etale} diagram, pull the calculation back
+to its source $\mathcal U$. The component point selected by
+the chosen branch maps to $x$: its reduction is the corresponding
+generic point, whose analytic inverse image is unique by
+Proposition~\ref{cand:reducedmodelcomponentpoints}. Normalization
+commutes with this \textup{\&#x27;etale} map by \cite[Tag 03GV]{StacksAlg}.
+On the normalized curves the local map at the rational branch
+point is therefore \textup{\&#x27;etale}. Its fibre is a finite separable residue
+field by \cite[Tag 02GL]{StacksAlg}, so the upstairs maximal
+ideal is generated by the downstairs maximal ideal. A uniformizer
+downstairs is consequently a uniformizer upstairs. Thus the order
+of the pulled-back residual function
+is exactly $\operatorname{ord}_p(\widetilde f_x)$. The pointed
+tube map is an analytic isomorphism, so the calculated norm is the
+original norm along $\gamma_p$.}
+{对带点 \textup{\&#x27;etale} 图，将计算拉回其源 $\mathcal U$。所选
+分支的分量点映到 $x$：其约化为相应泛点，而由
+Proposition~\ref{cand:reducedmodelcomponentpoints}，该泛点
+只有一个解析逆像。由 \cite[Tag 03GV]{StacksAlg}，正规化
+与此 \textup{\&#x27;etale} 映射相容。因此，在正规化曲线的有理分支点处，
+相应局部映射仍是 \textup{\&#x27;etale}。由 \cite[Tag 02GL]{StacksAlg}，
+其纤维为有限可分剩余域，故上方极大理想由下方极大理想的
+像生成。因此下方的一致化参数在上方仍为一致化参数。
+故拉回剩余函数的
+阶数恰为 $\operatorname{ord}_p(\widetilde f_x)$。带点管域
+映射为解析同构，因而所得范数正是沿 $\gamma_p$ 的原范数。}
+
+\bi{Multiplying $c$ by a scalar of absolute value one multiplies
+the residue by an element of $k^\times$, which has order zero.
+The right hand side is intrinsic to the normalized residual point;
+the same computation in any other pointed chart gives that same
+number. The logarithmic parameter is the annular length parameter
+of Proposition~\ref{cand:openannuluscoordinateisometry}.}
+{将 $c$ 乘以绝对值为一的标量，只将剩余类乘以
+$k^\times$ 中的元素，其阶数为零。右边仅取决于正规化
+剩余点；在另一带点坐标片中进行同一计算，仍得到相同
+数值。对数参数正是
+Proposition~\ref{cand:openannuluscoordinateisometry} 中的
+圆环长度参数。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002073-reader.jpg" alt="Typeset mathematical passage from PDF page 688" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=688">PDF page 688 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002032/">NAG-002032</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002041/">NAG-002041</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002056/">NAG-002056</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002069/">NAG-002069</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole <small>(native proof input)</small></li><li><a href="/r/NAG-002071/">NAG-002071</a> · selected whole <small>(native proof input)</small></li><li>STACKS-02GL · named external application <small>(external Stacks proof application)</small></li><li>STACKS-03GV · named external application <small>(external Stacks proof application)</small></li><li>SUPPORT:NAG-002072:integral_disc_and_annulus_tail_order · typed target unresolved in this export <small>(native proof input)</small></li><li><a href="/r/NAG-002032/">NAG-002032</a> · selected whole</li><li><a href="/r/NAG-002032/">NAG-002032</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole</li><li><a href="/r/NAG-002034/">NAG-002034</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole</li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002041/">NAG-002041</a> · selected whole</li><li><a href="/r/NAG-002041/">NAG-002041</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002056/">NAG-002056</a> · selected whole</li><li><a href="/r/NAG-002056/">NAG-002056</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole</li><li><a href="/r/NAG-002058/">NAG-002058</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002069/">NAG-002069</a> · selected whole</li><li><a href="/r/NAG-002069/">NAG-002069</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole</li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002071/">NAG-002071</a> · selected whole</li><li><a href="/r/NAG-002071/">NAG-002071</a> · selected whole <small>(requires)</small></li><li>STACKS-02GL · named external application</li><li>STACKS-02GL · named external application <small>(requires)</small></li><li>STACKS-03GV · named external application</li><li>STACKS-03GV · named external application <small>(requires)</small></li><li>SUPPORT:NAG-002072:integral_disc_and_annulus_tail_order · typed target unresolved in this export</li><li>SUPPORT:NAG-002072:integral_disc_and_annulus_tail_order · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002071/">cand:boundedetaletubeexpansion</a></li><li><a href="/r/NAG-002070/">cand:componentvaluedresiduefield</a></li><li><a href="/r/NAG-002056/">cand:nodaltubeendpoints</a></li><li><a href="/r/NAG-002032/">cand:openannuluscoordinateisometry</a></li><li><a href="/r/NAG-002041/">cand:pointednodalannulustube</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-002058/">cand:smoothrationaltubeclosure</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

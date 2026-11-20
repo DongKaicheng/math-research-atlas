@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001885/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The valuation space of punctured affine space · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001885 · Accepted whole</p><h1>The valuation space of punctured affine space</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.23.1">Open in the English reader · PDF page 608</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="26097efe5ea51c791302c32cf7ccc74e6d9b1456a9f8d0ff6b78cc3c68188775">
+\begin{lemma}[\bi{The valuation space of punctured affine space}
+{去掉原点的仿射空间的赋值空间}]
+\label{fnd:puncturedaffinevaluationsnonaffine}
+\bi{Let $k$ be a field, let $n\ge2$, and put
+$R=k[t_1,\ldots,t_n]$, $F=\operatorname{Frac}(R)$.
+Inside the space of valuation rings of $F$ containing $k$, set}
+{设 $k$ 为域，$n\ge2$，并记
+$R=k[t_1,\ldots,t_n]$、$F=\operatorname{Frac}(R)$。
+在 $F$ 中包含 $k$ 的赋值环空间内，置}
+\[
+ Q=\bigcup_{i=1}^n
+       \{V:R[t_i^{-1}]\subset V\}.
+\]
+\bi{Then $Q$ is not affine as a birational space. In fact,
+$\bigcap_{V\in Q}V=R$, but $Q$ does not contain every valuation
+ring of $F$ containing $R$.}
+{则 $Q$ 作为 birational 空间并不仿射。更精确地，
+$\bigcap_{V\in Q}V=R$，但 $Q$ 不包含 $F$ 中所有包含 $R$
+的赋值环。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="8c898cf0331fee7bf2042fe40d4e05569430235ebb39cbe544066babf14c7d63">
+\begin{proof}
+\bi{Regard $k$ as a complete trivially valued field. Its strict
+Tate algebra in $n$ variables is exactly $R$: a convergent
+series has only finitely many nonzero coefficients.
+Theorem~\ref{fnd:stricttatefactorial} therefore proves that
+$R$ is a unique factorization domain. If $h\in F\setminus R$,
+write it as a reduced fraction and choose an irreducible
+factor $P$ of its denominator. The exponent of $P$ in a
+nonzero fraction defines a discrete valuation $v_P$ of $F$;
+its valuation ring $V_P$ contains $R$ and does not contain $h$.
+The irreducible $P$ cannot divide both $t_1$ and $t_2$.
+Hence some $t_i$ is a unit of $V_P$, and $V_P\in Q$.
+Every member of $Q$ contains $R$, so this proves}
+{将 $k$ 视为完备的平凡赋值域。其 $n$ 元 strict Tate 代数
+恰为 $R$，因为收敛级数只能有有限个非零系数。因此
+Theorem~\ref{fnd:stricttatefactorial} 证明 $R$ 是唯一分解整环。
+若 $h\in F\setminus R$，将其写成既约分式，并取分母的一个
+不可约因子 $P$。非零分式中 $P$ 的指数给出 $F$ 上的离散赋值
+$v_P$；其赋值环 $V_P$ 包含 $R$ 而不包含 $h$。
+不可约元 $P$ 不可能同时整除 $t_1$ 与 $t_2$，所以某个
+$t_i$ 在 $V_P$ 中可逆，从而 $V_P\in Q$。又因为 $Q$ 的每个
+成员都包含 $R$，故}
+\[
+                         \bigcap_{V\in Q}V=R.
+\]
+
+\bi{For a nonzero polynomial $f$, let $w(f)$ be the least total
+degree of a nonzero homogeneous component of $f$.
+The product of the lowest homogeneous components is nonzero,
+so $w(fg)=w(f)+w(g)$, and
+$w(f+g)\ge\min(w(f),w(g))$ whenever the sum is nonzero.
+Thus $w$ extends by subtraction to a valuation of $F$.
+Its valuation ring $V_0$ contains $R$, while
+$w(t_i)=1$ for every $i$. Consequently $V_0\notin Q$.}
+{对非零多项式 $f$，以 $w(f)$ 记其非零齐次分量的最低总次数。
+最低齐次分量的乘积非零，所以
+$w(fg)=w(f)+w(g)$，且当 $f+g\ne0$ 时
+$w(f+g)\ge\min(w(f),w(g))$。因此，通过取差，$w$ 延伸为
+$F$ 上的赋值。其赋值环 $V_0$ 包含 $R$，而每个
+$w(t_i)=1$，故 $V_0\notin Q$。}
+
+\bi{If $Q$ were affine, its inclusion in the fixed valuation
+space would identify it with
+$\{V:S\subset V\}$ for a finitely generated $k$-subalgebra
+$S\subset F$. Every element of $S$ would belong to
+$\bigcap_{V\in Q}V=R$. But then $S\subset R\subset V_0$,
+which would force $V_0\in Q$, a contradiction.}
+{若 $Q$ 仿射，其在固定赋值空间中的嵌入将它识别为
+$\{V:S\subset V\}$，其中 $S\subset F$ 是有限生成的
+$k$-子代数。此时 $S$ 的每个元素均属于
+$\bigcap_{V\in Q}V=R$。于是 $S\subset R\subset V_0$，
+迫使 $V_0\in Q$，矛盾。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001885-reader.jpg" alt="Typeset mathematical passage from PDF page 608" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=608">PDF page 608</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001454/">NAG-001454</a> · selected whole</li><li><a href="/r/NAG-001454/">NAG-001454</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001454/">fnd:stricttatefactorial</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

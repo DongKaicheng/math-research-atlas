@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001553/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The actual multi-Laurent relation quotient · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001553 · Accepted whole</p><h1>The actual multi-Laurent relation quotient</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.17.2">Open in the English reader · PDF page 101</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b74ab3d19f03a12a935ae00f71bd1970bc7bf8f6e90a2165b587e640d215256e">
+\begin{theorem}[\bi{The actual multi-Laurent relation quotient}{多 Laurent 关系的实际商}]\label{fnd:multilaurentactualpresentation}
+\bi{Let $r=(r_1,\ldots,r_d)$ be any finite tuple of positive real numbers, without a freeness assumption, and let $E$ be a Banach $K$-space. Put}
+{设 $r=(r_1,\ldots,r_d)$ 为任意有限正实数元组，不要求自由，且 $E$ 为 Banach $K$-空间。记}
+\[
+ \begin{aligned}
+ D_r(E)&amp;=E\{r^{-1}T,rU\}
+   =\mathcal C_{r^{\alpha-\beta}}(\mathbf N^d\times\mathbf N^d,E),\\
+ L_r(E)&amp;=\mathcal C_{r^\nu}(\mathbf Z^d,E),
+ \qquad P_i=T_iU_i-1.
+ \end{aligned}
+\]
+\bi{There are $K$-linear contractions $N:D_r(E)\to L_r(E)$ and $Q_i:D_r(E)\to D_r(E)$, and a $K$-linear isometric section $S:L_r(E)\to D_r(E)$, such that}
+{存在 $K$-线性 contractions $N:D_r(E)\to L_r(E)$、$Q_i:D_r(E)\to D_r(E)$ 以及 $K$-线性等距截面 $S:L_r(E)\to D_r(E)$，满足}
+\[
+ \begin{gathered}
+ N(T^\alpha U^\beta e)=Z^{\alpha-\beta}e,
+ \qquad
+ S\left(\sum_\nu e_\nu Z^\nu\right)
+       =\sum_\nu e_\nu T^{\nu_+}U^{\nu_-},\\
+ NS=1,\qquad NP_i=0,\qquad
+ F-SNF=\sum_{i=1}^d P_iQ_iF.
+ \end{gathered}
+\]
+\bi{Here $(\nu_+)_i=\max(\nu_i,0)$ and $(\nu_-)_i=\max(-\nu_i,0)$. In particular,}
+{其中 $(\nu_+)_i=\max(\nu_i,0)$、$(\nu_-)_i=\max(-\nu_i,0)$。特别地，}
+\[
+ \ker N=\sum_{i=1}^d P_iD_r(E),
+ \qquad
+ D_r(E)\Big/\sum_{i=1}^d P_iD_r(E)\ \simeq\ L_r(E)
+\]
+\bi{with an actual finite sum of relation images and the exact quotient norm. This relation sum is closed. The map $D_r(E)^d\to\ker N$, $(F_i)\mapsto\sum_iP_iF_i$, has a contractive linear right inverse. The quotient norm is attained at $SNF$. These maps are natural for bounded coefficient maps. For a Banach algebra $A$ and a contractive Banach $A$-module $E$, they are $A$-linear; the quotient identification respects the corresponding algebra map and module action. If $r$ is free over $K$, they give, in particular, the actual presentations}
+{这里的关系像为实际有限和，商范数恰好相等。这个关系和为闭子空间。映射 $D_r(E)^d\to\ker N$、$(F_i)\mapsto\sum_iP_iF_i$ 具有 contractive 线性右逆。商范数在 $SNF$ 处达到。这些映射对有界系数映射自然。若 $A$ 为 Banach 代数，$E$ 为 contractive Banach $A$-模，则这些映射 $A$-线性；商的识别与相应代数映射及模作用相容。若 $r$ 在 $K$ 上自由，则特别得到实际表示}
+\[
+ \begin{aligned}
+ K_r&amp;\simeq K\{r^{-1}T,rU\}/(P_1,\ldots,P_d),\\
+ E\widehat\otimes_K K_r
+   &amp;\simeq E\{r^{-1}T,rU\}\Big/\sum_iP_iE\{r^{-1}T,rU\},
+ \end{aligned}
+\]
+\bi{isometrically, with the field and module structures of Lemma~\ref{fnd:freepolyradiusfield} and Theorem~\ref{fnd:freepolyradiuscoefficients}. For $d=0$ the relations are absent and all assertions reduce to the identity on $E$.}
+{这些同构等距，采用 Lemma~\ref{fnd:freepolyradiusfield} 与 Theorem~\ref{fnd:freepolyradiuscoefficients} 的域及模结构。当 $d=0$ 时没有关系，所有断言均化为 $E$ 上的恒等映射。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="97b989370cdd12f1a0d3d22af879306b71f5795a80a5b9948482e520b7b18388">
+\begin{proof}
+\bi{Lemma~\ref{fnd:weightedc0rearrangement} permits us to regard all pairs except $(T_i,U_i)$ as coefficients. Apply Theorem~\ref{fnd:laurentcoefficientnormalform} to this remaining pair with $a=b=r_i$. Its operators have bounds $\|\mathcal N_i\|\leq1$, $\|\mathcal H_i\|\leq1$, and $\mathcal S_i$ is isometric. On the original space $D_r(E)$ put $R_i=\mathcal S_i\mathcal N_i$ and $H_i=\mathcal H_i$, leaving the other indices unchanged. Then}
+{由 Lemma~\ref{fnd:weightedc0rearrangement}，可将除 $(T_i,U_i)$ 以外的各对变量视为系数。对剩下这一对应用 Theorem~\ref{fnd:laurentcoefficientnormalform}，取 $a=b=r_i$。其算子满足 $\|\mathcal N_i\|\leq1$、$\|\mathcal H_i\|\leq1$，且 $\mathcal S_i$ 等距。在原空间 $D_r(E)$ 上令 $R_i=\mathcal S_i\mathcal N_i$、$H_i=\mathcal H_i$，其余指标保持不动。于是}
+\[
+ 1-R_i=P_iH_i,\qquad \|R_i\|,\|H_i\|\leq1.
+\]
+\bi{Operators belonging to distinct pairs commute. On finite coefficient polynomials this follows directly from their separate-index formulas; their bounds extend that equality to the complete space. Iterating the normal-form maps and applying the coefficient rearrangement lemma gives a contraction $N$ with the asserted substitution on polynomials. The displayed axis formula defines $S$: it preserves every coefficient and its weight, so it is isometric and has $NS=1$. On polynomials, and then by continuity,}
+{属于不同变量对的算子彼此交换。对有限系数多项式，这直接来自它们分别作用于不同指标的公式；由有界性将该等式延拓到完备空间。迭代正规形映射，再应用系数重排引理，得到在多项式上作所述代入的 contraction $N$。所列坐标轴公式定义 $S$：它保持每个系数及其权重，故等距，并满足 $NS=1$。先在多项式上，再由连续性，得到}
+\[
+ SN=R_1\cdots R_d,\qquad NP_i=0.
+\]
+\bi{The finite telescoping identity}
+{有限逐项相消恒等式}
+\[
+ 1-R_1\cdots R_d
+    =\sum_{i=1}^d R_1\cdots R_{i-1}(1-R_i)
+    =\sum_{i=1}^d P_iR_1\cdots R_{i-1}H_i
+\]
+\bi{therefore proves the claimed decomposition with $Q_i=R_1\cdots R_{i-1}H_i$. Each $Q_i$ is contractive. If $NF=0$, the decomposition represents $F$ as an actual finite sum of relation multiples, with $\max_i\|Q_iF\|\leq\|F\|$. The reverse inclusion in the kernel follows from $NP_i=0$. Thus the relation sum equals the closed kernel of $N$, and $F\mapsto(Q_iF)_i$ on that kernel is the asserted right inverse. No uniqueness of the individual relation coefficients is claimed.}
+{因此以 $Q_i=R_1\cdots R_{i-1}H_i$ 得到所述分解。每个 $Q_i$ 都为 contraction。若 $NF=0$，该分解将 $F$ 表示为关系倍数的实际有限和，并满足 $\max_i\|Q_iF\|\leq\|F\|$。由 $NP_i=0$ 得到反向包含。所以关系和恰为 $N$ 的闭核，而在此核上的 $F\mapsto(Q_iF)_i$ 就是所述右逆。这里不声称各个关系系数唯一。}
+
+\bi{For every representative of a quotient class, the contraction $N$ bounds the norm of its image by the norm of that representative. The representative $SNF$ lies in the same class and has norm exactly $\|NF\|$. Taking the infimum proves the isometric quotient assertion and attainment. Naturality follows from the one-pair naturality in Proposition~\ref{fnd:laurentcoefficientfunctoriality} and the rearrangement lemma. Products and actions are bounded coefficient convolutions by Lemma~\ref{fnd:weightedcoefficientconvolution}. Substitution preserves them on finite polynomials, hence on their completions. For a free tuple, the resulting coefficient algebra is exactly the field already constructed in Lemma~\ref{fnd:freepolyradiusfield}; the module comparison is exactly Theorem~\ref{fnd:freepolyradiuscoefficients}. This proves the final assertions without any affinoid finiteness input.}
+{对商类的每个代表元，contraction $N$ 都将其像的范数控制在该代表元的范数之下。代表元 $SNF$ 属于同一商类，且范数恰为 $\|NF\|$。取下确界即得商等距性及下确界可达。自然性来自 Proposition~\ref{fnd:laurentcoefficientfunctoriality} 中单变量对的自然性以及重排引理。由 Lemma~\ref{fnd:weightedcoefficientconvolution}，乘法及作用均为有界系数卷积。代入在有限多项式上保持它们，故在其完备化上也保持。对自由元组，所得系数代数正是 Lemma~\ref{fnd:freepolyradiusfield} 已构造的域；模的比较恰由 Theorem~\ref{fnd:freepolyradiuscoefficients} 给出。这证明最后各项断言，且没有使用 affinoid 有限性结论。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001553-reader.jpg" alt="Typeset mathematical passage from PDF page 101" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=101">PDF page 101 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole</li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001416/">NAG-001416</a> · selected whole</li><li><a href="/r/NAG-001416/">NAG-001416</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole</li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole</li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001552/">NAG-001552</a> · selected whole</li><li><a href="/r/NAG-001552/">NAG-001552</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001549/">fnd:freepolyradiuscoefficients</a></li><li><a href="/r/NAG-001548/">fnd:freepolyradiusfield</a></li><li><a href="/r/NAG-001416/">fnd:laurentcoefficientfunctoriality</a></li><li><a href="/r/NAG-001415/">fnd:laurentcoefficientnormalform</a></li><li><a href="/r/NAG-001552/">fnd:weightedc0rearrangement</a></li><li><a href="/r/NAG-001421/">fnd:weightedcoefficientconvolution</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

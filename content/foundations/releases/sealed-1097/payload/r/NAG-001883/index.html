@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001883/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Domain base change can destroy naive flatness · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001883 · Accepted whole</p><h1>Domain base change can destroy naive flatness</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=corollary.2.60.5">Open in the English reader · PDF page 479</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="48c8cd5895b7a075126f87c1c2df91d73710f0375b30727027ef59a4e53010e4">
+\begin{corollary}[\bi{Domain base change can destroy naive flatness}
+{解析域基变换可以破坏朴素平坦性}]
+\label{fnd:naivecounterexampleinternal}
+\bi{Choose $\pi\in K$ with $0&lt;|\pi|&lt;1$ and set}
+{选择 $\pi\in K$，满足 $0&lt;|\pi|&lt;1$，并令}
+\[
+ f(T)=\sum_{n\geq0}\pi^{\lfloor\sqrt n\rfloor}T^n,
+ \qquad\phi:D\longrightarrow\mathbb A_K^{2,\mathrm{an}},
+ \qquad t\longmapsto(t,f(t)).
+\]
+\bi{The morphism $\phi$ is naively flat at the unit Gauss
+point $\eta$. Its base change by the analytic domain
+$X=\{|T_1|\leq1\}$ is not naively flat at that point.}
+{态射 $\phi$ 在单位 Gauss 点 $\eta$ 处朴素平坦。
+沿解析域 $X=\{|T_1|\leq1\}$ 的基变换，在同一点处不朴素平坦。}
+\end{corollary}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7f956f146fda404a27c55a3ed58c25364b612a04c80659c09b81d47fb1036dc8">
+\begin{proof}
+\bi{The coefficients tend to zero, whereas their $n$th-root
+absolute values tend to one. Thus $f\in K\langle T\rangle$
+has convergence radius exactly one.
+Theorem~\ref{fnd:exactradiusgraphfield} makes the ordinary
+target local ring at $x=\phi(\eta)$ a field. Every module
+over a field is flat, so $\phi$ is naively flat at $\eta$.}
+{这些系数趋于零，但其绝对值的 $n$ 次方根趋于一，所以
+$f\in K\langle T\rangle$ 的收敛半径恰好为一。
+Theorem~\ref{fnd:exactradiusgraphfield} 说明目标在
+$x=\phi(\eta)$ 处的通常局部环为域。域上的每个模均平坦，
+因此 $\phi$ 在 $\eta$ 处朴素平坦。}
+
+\bi{Because $\phi$ factors through the domain $X$, its
+base change to $X$ is its closed graph immersion, with
+equation $g=T_2-f(T_1)$. The ordinary local ring
+$R=\mathcal O_{X,x}$ is a domain by
+Theorem~\ref{fnd:affinespacedomainregular} and
+\cite[Tag 00NP]{StacksAlg}, using an affinoid neighborhood
+of $x$ in $X$. The germ $g$ is nonzero: differentiation
+in the second coordinate gives $\partial g/\partial T_2=1$.
+This derivation on convergent series restricts to the germ
+by Theorem~\ref{fnd:boundeduniversaldifferentials} and
+Theorem~\ref{fnd:analyticdifferentialdomains}.
+It vanishes at $x$, so $R/(g)$ is nonzero.
+Tensoring the injective multiplication map
+$R\xrightarrow{g}R$ with $R/(g)$ gives the zero map on
+the nonzero module $R/(g)$. This quotient is therefore not
+$R$-flat. The graph local ring is exactly $R/(g)$ by the
+coherent closed-subspace restriction formula, proving the assertion.}
+{因为 $\phi$ 因子分解经过解析域 $X$，它到 $X$ 的基变换
+就是其闭图像浸入，方程为 $g=T_2-f(T_1)$。
+在 $X$ 中取 $x$ 的 affinoid 邻域，应用
+Theorem~\ref{fnd:affinespacedomainregular} 及
+\cite[Tag 00NP]{StacksAlg}，得到通常局部环
+$R=\mathcal O_{X,x}$ 为整环。
+芽 $g$ 非零，因为对第二坐标求导得到
+$\partial g/\partial T_2=1$。
+根据 Theorem~\ref{fnd:boundeduniversaldifferentials} 与
+Theorem~\ref{fnd:analyticdifferentialdomains}，此收敛级数
+上的导子可限制到通常芽。另一方面，$g$ 在 $x$ 处消失，
+故 $R/(g)$ 非零。将单射乘法映射
+$R\xrightarrow{g}R$ 与 $R/(g)$ 张量，得到非零模
+$R/(g)$ 上的零映射。因此此商不在 $R$ 上平坦。
+凝聚闭子空间的限制公式将图像局部环恰好识别为 $R/(g)$，
+于是得到结论。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001883-reader.jpg" alt="Typeset mathematical passage from PDF page 479" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=479">PDF page 479</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001643/">NAG-001643</a> · selected whole</li><li><a href="/r/NAG-001645/">NAG-001645</a> · selected whole</li><li><a href="/r/NAG-001760/">NAG-001760</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-001882/">NAG-001882</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001760/">fnd:affinespacedomainregular</a></li><li><a href="/r/NAG-001643/">fnd:boundeduniversaldifferentials</a></li><li><a href="/r/NAG-001882/">fnd:exactradiusgraphfield</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

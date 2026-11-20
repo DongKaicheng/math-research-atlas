@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002333/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The actual Gauss fibres of an integral chart · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002333 · Accepted whole</p><h1>The actual Gauss fibres of an integral chart</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.50.2">Open in the English reader · PDF page 794</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a8380e3a74ac36c88a0241d8342976e5b07b268f4b32621bdb5ed05e00f774c8">
+\begin{proposition}[The actual Gauss fibres of an integral chart]
+\label{v037:f5:integralgaussdegree}
+The special fibre $Y$ is a reduced pure curve. For each
+irreducible component $E$ of $Y$, its function field $k(E)$
+is finite separable over $k(t)$. Let $\eta$ be the unit
+Gauss point of $\mathcal M(R)$ and let
+$H=\mathcal H(\eta)$ with its specified absolute value.
+The actual fibre of $U\to\mathcal M(R)$ over $\eta$ consists
+exactly of the component points $v_E$. For every such point,
+\[
+ \begin{aligned}
+ [\mathcal H(v_E):H]&amp;=[k(E):k(t)],\\
+ \widetilde{\mathcal H(v_E)}&amp;=k(E),\qquad
+ |\mathcal H(v_E)^\times|=|K^\times|.
+ \end{aligned}
+\]
+More precisely, its actual integral fibre algebra satisfies
+\[
+ A_0\otimes_{R_0}H^\circ
+       \simeq\prod_E H_E^\circ,
+\]
+where $H_E/H$ is a finite unramified lift of $k(E)/k(t)$.
+After inverting $\pi$, this is the decomposition of the
+actual analytic fibre algebra into its completed residue fields.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a6383a06b1570ef2082aede3c2c39033b51c7fcb4607446fc1d75d8d2565efa1">
+\begin{proof}
+Put $B=A_0/K^{\circ\circ}A_0$. It is finite projective and
+\textup{\&#x27;etale} over the domain $\bar R$; \textup{\&#x27;etaleness}
+commutes with base change by \cite[Tag 02GO]{StacksAlg}.
+As a direct summand of a finite free module, $B$ injects
+into its localization
+\[
+        B\otimes_{\bar R}k(t)=\prod_{i=1}^r l_i,
+\]
+where the $l_i/k(t)$ are finite separable fields by
+\cite[Tag 02GL]{StacksAlg}. Thus $B$ is reduced.
+Let $P_i$ be the kernel of its map to $l_i$. These prime
+ideals have intersection zero and are pairwise incomparable:
+localization gives the distinct factor primes in the displayed
+product. Every prime of $B$ contains one of the $P_i$,
+because the product of these finitely many ideals is zero.
+They are consequently exactly the minimal primes. Moreover
+$\operatorname{Frac}(B/P_i)=l_i$: localization by the
+nonzero elements of $\bar R$ already gives $l_i$.
+By \cite[Tag 00P0]{StacksAlg}, every component has dimension
+one. This proves the special-fibre assertions and identifies
+the index $i$ with its component $E$.
+
+The weighted Gauss calculation of
+Proposition~\ref{fnd:gaussnorm} gives $|g(\eta)|=1$.
+The field $H$ is the completion of $K(T)$ for its unit
+Gauss norm. Indeed, polynomials and their fractions are
+dense in the completed residue field; adjoining $1/g$
+does not change that dense rational subfield. A quotient
+of two polynomials has norm in $|K^\times|$. If it has
+norm one, dividing numerator and denominator by coefficients
+of their respective maximal sizes identifies its residue
+with a rational function of $t$. Conversely every rational
+function of $t$ arises this way. Completion changes neither
+values nor residues by
+Lemma~\ref{fnd:valuedfielddimensioncalculus}. Hence
+\[
+                  \widetilde H=k(t),\qquad
+                         |H^\times|=|K^\times|.
+\]
+Evaluation gives an $O$-homomorphism $R_0\to H^\circ$.
+
+Set $D_0=A_0\otimes_{R_0}H^\circ$. This algebra is
+finite projective and \textup{\&#x27;etale} over $H^\circ$.
+By \cite[Tag 00NX]{StacksAlg}, its module is free, because
+$H^\circ$ is local. Its reduction is
+\[
+                D_0/H^{\circ\circ}D_0=\prod_E k(E).
+\]
+For each factor, Lemma~\ref{cand:residueextensionlift}
+provides a complete finite extension $H_E/H$ with residue
+field $k(E)$, unchanged value group, and degree
+$[k(E):k(t)]$. Lemma~\ref{cand:unramifiedmodelbasechange}
+makes $H_E^\circ$ finite free over $H^\circ$ with that rank.
+The projection of the displayed product to $k(E)$ is a
+rational point of the special fibre of
+$\operatorname{Spec}(D_0\otimes_{H^\circ}H_E^\circ)$.
+The henselian section lemma
+\ref{cand:completevaluationhenselian} gives a homomorphism
+$D_0\to H_E^\circ$ reducing to that projection. Combining
+these homomorphisms gives
+\[
+                        D_0\longrightarrow\prod_E H_E^\circ.
+\]
+Both sides are finite free of rank
+$\sum_E[k(E):k(t)]$: on the left this rank is read by
+reduction of a basis. Its matrix has invertible reduction,
+so its determinant is a unit of the local ring $H^\circ$.
+The adjugate matrix proves that it is an isomorphism.
+
+Choose an $R_0$-linear splitting
+$A_0\longrightarrow R_0^m\longrightarrow A_0$.
+The integral presentations of
+Proposition~\ref{fnd:affineformalpresentations} identify
+$A_0$ and $R_0$ with the closed unit balls of their
+presentation norms. Both split maps preserve these unit
+balls. Scaling by powers of $\pi$ makes both maps bounded
+after inversion, so the given norm on $A$ is equivalent
+to its canonical finite-$R$-module quotient norm.
+Proposition~\ref{fnd:generalizedfinitetensor} identifies
+\[
+ A\widehat\otimes_RH=A\otimes_RH=D_0[1/\pi]
+                                      =\prod_E H_E.
+\]
+Theorem~\ref{fnd:allpointaffinoidfibres} identifies this
+with the actual fibre over $\eta$, including its completed
+residue fields. Each factor has just its specified valued
+point, by uniqueness of the absolute value in
+Lemma~\ref{fnd:finiteextensionnorms}. Its specialization
+in $Y$ is the component generic point of $E$, by the
+reduction of the map just constructed. Proposition
+\ref{cand:reducedmodelcomponentpoints} identifies that
+point with $v_E$, and gives uniqueness above each component
+generic point. The degree, residue-field and value-group
+equalities follow from the construction of $H_E$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002333-reader.jpg" alt="Typeset mathematical passage from PDF page 794" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=794">PDF page 794 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002060/#actual_monic_coefficients">CLAUSE:NAG-002060:actual_monic_coefficients</a> · selected scope, text unavailable <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-002060/#actual_monic_coefficients">CLAUSE:NAG-002060:actual_monic_coefficients</a> · selected scope, text unavailable</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole</li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(sealed native whole)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole</li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole</li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole</li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole</li><li>STACKS-00NX · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00NX · named external application</li><li>STACKS-00P0 · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-00P0 · named external application</li><li>STACKS-02GL · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-02GL · named external application</li><li>STACKS-02GO · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>STACKS-02GO · named external application</li><li><a href="/r/NAG-002060/#actual_monic_coefficients">CLAUSE:NAG-002060:actual_monic_coefficients</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole <small>(requires)</small></li><li>STACKS-00NX · named external application <small>(requires)</small></li><li>STACKS-00P0 · named external application <small>(requires)</small></li><li>STACKS-02GL · named external application <small>(requires)</small></li><li>STACKS-02GO · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002049/">cand:completevaluationhenselian</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-002050/">cand:residueextensionlift</a></li><li><a href="/r/NAG-002060/">cand:unramifiedmodelbasechange</a></li><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001692/">fnd:allpointaffinoidfibres</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002819/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Cofinal pointed weighted germs · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002819 · Accepted whole</p><h1>Cofinal pointed weighted germs</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002819.original">Open in the English reader · PDF page 1965</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d4703662ef2b6cf38136a383d26c4141d14e323322e435c28569ddea6f8f5262">
+\begin{theorem}[Cofinal pointed weighted germs]
+\label{sgo:pointedoverlap}
+Let $x\in\operatorname{Int}(X/K)$ and $w=t(x)$.
+There is an ordinary affinoid neighbourhood $Y_0$ of $x$
+such that the germs at $w$ of
+\[
+                 \mathcal T_{f|U}(M_U)
+ \qquad(x\in\operatorname{Int}_{\rm top}(U,X),\ U\subset Y_0)
+\]
+are identical for all ordinary affinoid neighbourhoods $U$.
+They define a germ $\mathcal C_{x,f}(M)$, independent of all
+auxiliary admissible generic projections and their finite
+Gauss neighbourhoods. It is additive in $M$.
+If $r_f(x)&lt;d$, this germ is zero. If $r_f(x)=d$, it is a
+nonnegative integral weighted rational $d$-fan germ on the
+pure pointed fan $w+C_x$ of
+\Dep{v038:pointed:fullstabilization}; for $M=A$ its support
+is the whole of that fan germ.
+
+In the case $r_f(x)=d$, a projection $Q:\mathbb Z^n\to\mathbb Z^d$ is admissible
+for this proof if it is injective on the span of every
+$d$-cone of $C_x$. For each such $Q$ a finite ordinary Gauss
+chart as in Lemma~\ref{sgo:gaussbranches} exists at $x$ for
+$\psi=f^Q$. In each such chart $Y_Q$, for every ordinary affinoid
+neighbourhood $U\subset Y_Q$ of $x$, there are a real
+neighbourhood $B$ of $w$ and finitely many proper affine
+hyperplanes $H\subset\mathbf R^d$ such that
+\[
+ t^{-1}(v)\cap Y_Q=t^{-1}(v)\cap U
+ \quad(v\in B,\ Qv\notin H).
+\]
+Both full fibres are then interior in their respective
+source domains. The inverse images of $H$ have dimension
+at most $d-1$ on each $d$-cone.
+
+If $C_x$ is the $d$-plane $N_{\mathbb R}$ for a saturated
+rank-$d$ lattice $N\subset\mathbb Z^n$, the germ has constant
+weight
+\begin{equation}
+ \mu_{x,f}(M)=\frac{\delta_{f^Q}(M,x)}{[\mathbb Z^d:Q(N)]}
+                         \in\mathbb Z_{\geq0}
+ \label{sgo:flatcalibration}
+\end{equation}
+for every integral $Q$ injective on $N$. No analogous single
+quotient of the total projected degree is asserted at a
+nonflat fan.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b180f29f6c015ce18fa7f2b0cc1f9178e8b6a5fa82194bc192c20c456ed038fe">
+\begin{proof}
+Write $r=r_f(x)$. The full pointed-fan theorem supplies
+$W_0$ such that every ordinary neighbourhood of $x$ inside
+$W_0$ has moment-image germ $w+C_x$, of pure dimension $r$.
+If $r&lt;d$, no such image has a $d$-dimensional cell near $w$,
+and the support clause of \mbox{\hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain support}} proves
+that the chain germ is zero. This includes the case $n&lt;d$.
+
+Suppose $r=d$. Choose an integral $Q$ injective on the span
+of every maximal cone: the failure for each of the finitely
+many rational $d$-planes is a proper determinant-zero condition
+on a $d\times n$ matrix; a rational matrix outside their finite
+union exists, and clearing denominators gives the required
+integer matrix. For every sufficiently small ordinary
+neighbourhood of $x$, its $f$-image contains the pointed
+$d$-cones, and their $Q$-images have dimension $d$.
+Apply the full pointed-fan theorem again, now to the $d$ units
+$f^Q$. It follows that $r_{f^Q}(x)=d$.
+As in the last paragraph of Lemma~\ref{sgo:gaussbranches}, this
+means $f^Q(x)=\eta_{Qw}$.
+
+That lemma gives a finite ordinary affinoid chart
+$\psi:Y_0\to N_0$, with central Gauss fibre $\{x\}$.
+Choose it inside $W_0$ and inside the inverse image of a
+sufficiently small real ball where the pointed upper bound
+holds. Consequently
+\begin{equation}
+                         t(Y_0)\subset w+C_x.
+ \label{sgo:globalconecontainment}
+\end{equation}
+These source restrictions are allowed by the arbitrarily
+small neighbourhood clause of the local finite criterion.
+They do not replace $N_0$ by the entire central polytorus.
+
+Fix an ordinary affinoid neighbourhood $U\subset Y_0$ of $x$.
+The compact set
+\[
+ D=Y_0\setminus\operatorname{Int}_{\rm top}(U,Y_0)
+\]
+does not meet the Gauss fibre. Its image is compact and closed
+in the Hausdorff torus, so
+\[
+ O=\operatorname{Int}_{\rm top}(N_0,T^d)\setminus\psi(D)
+\]
+is an ordinary open neighbourhood of $\eta_{Qw}$.
+Choose a compact full polyannulus with $Qw$ in the interior
+of its weight box. Apply the frozen whole-torus overlap lemma
+\Dep{mpw:torusoverlap} to $O$ intersected with this polyannulus.
+There are a real neighbourhood $B&#x27;$ of $Qw$ and finitely many
+proper affine hyperplanes $H$ such that
+\begin{equation}
+ \mathbb T_s\subset O,\qquad
+ \psi^{-1}(\mathbb T_s)\cap Y_0
+              \subset\operatorname{Int}_{\rm top}(U,Y_0)
+       \quad(s\in B&#x27;\setminus H).
+ \label{sgo:capture}
+\end{equation}
+This assertion retains every analytic point over every such
+$\mathbb T_s$, including all of its Gauss lifts in $Y_0$.
+
+For $v$ near $w$ with $Qv\in B&#x27;\setminus H$, equation
+\eqref{sgo:capture} identifies the entire $f$-fibre in $Y_0$
+with the entire $f$-fibre in $U$. These are identical analytic
+domains, and the restricted modules are identical.
+The target polytorus is contained in the ordinary interior
+of $N_0$ in the boundaryless torus. Its inverse image is
+therefore absolutely interior in $Y_0$, by finite relative
+interior and composition. Its points lie in the ordinary
+interior of $U$ in $Y_0$, so they are absolutely interior in
+$U$ as well. The precise locality inputs are
+\Dep{fnd:generalizedfinitealgebras},
+\Dep{fnd:affinoiddomainordinaryinterior}, and
+\mbox{\hyperref[fnd:affinoidinteriorcalculus]{forward composition}} with \mbox{\hyperref[fnd:goodinteriorlocaltesting]{ordinary target testing}}.
+
+The inverse image of every hyperplane in $H$ cuts each
+$d$-cone of $C_x$ in dimension at most $d-1$, since $Q$ is
+injective on its span. Make a common finite subdivision of
+the two image germs, these cuts, and their faces. At generic
+points of every $d$-cell, the local image lies in its affine
+$d$-plane and the whole fibre is interior on both sides.
+The exact-domain identification above and
+\Dep{v037:degree:moduleweight} therefore give identical
+weights, using the saturated tangent lattice of that cell.
+This proves equality of the two $d$-chain germs. Finite
+polyhedrality makes each germ a weighted rational fan after
+shrinking at $w$; for the structure module, positivity in
+\mbox{\hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain positivity}} and full stabilization give
+exactly the asserted support. Restriction $M\mapsto M_U$ is exact by \mbox{\hyperref[fnd:nag001832:ordinary-single-domain-flatness]{ordinary single-domain flatness}}. Additivity then follows from \mbox{\hyperref[fnd:nag002405:global-finite-module-chain-weights]{the finite-module chain}}.
+
+For clarity, the comparison just proved first compares each
+$U\subset Y_0$ with $Y_0$. Two such $U$&#x27;s can be compared
+through a common ordinary affinoid neighbourhood of $x$ inside
+their ordinary interiors. Charts constructed using a different
+admissible projection can likewise be compared through a
+common smaller ordinary affinoid neighbourhood, applying the
+same argument in each chart. Thus both the cofinal germ and
+the full-fibre comparison off the indicated cuts are independent
+of the chosen projection. Different nearby Gauss lifts have
+not been identified or removed; they occur in the same whole
+fibre being compared.
+
+Finally suppose $C_x=N_{\mathbb R}$. Use the free direct-image
+shrinking in Lemma~\ref{sgo:gaussbranches}, retaining
+\eqref{sgo:globalconecontainment}. For $s=Qv$ near $Qw$
+outside the hyperplanes, the finite inverse image of
+$\mathbb T_s$ in this chart equals the single original moment
+fibre at $v$: $Q$ is injective on the entire plane containing
+the moment image. Its actual Gauss module has dimension
+$\delta_{f^Q}(M,x)$, because the direct image is free of that
+rank. The interior flat-germ formula
+\Dep{v037:degree:moduleweight} divides this number by exactly
+$[\mathbb Z^d:Q(N)]$. It determines the weight on a dense
+subset of every $d$-cell, and hence the constant weight germ.
+Equation~\eqref{sgo:localdegree} keeps the actual local length
+and full field degree, while \eqref{sgo:genericlengths} keeps
+the generic component lengths.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002819-reader.jpg" alt="Typeset mathematical passage from PDF page 1966" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1966">PDF page 1966</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(selected native clause)</small></li><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(detached reviewed clause)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001711/">NAG-001711</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001752/">NAG-001752</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001834/">NAG-001834</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001847/">NAG-001847</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002455/">NAG-002455</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002586/">NAG-002586</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002816/">NAG-002816</a> · selected whole <small>(detached reviewed whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002816/">sgo:gaussbranches</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

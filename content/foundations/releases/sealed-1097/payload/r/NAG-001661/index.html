@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001661/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Completeness of the reduced spectral norm · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001661 · Accepted whole</p><h1>Completeness of the reduced spectral norm</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.21.5">Open in the English reader · PDF page 597</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="627c5e487877f24c21ca95d708547e219e7aad683effc45d326a9a6de6ae3568">
+\begin{theorem}[\bi{Completeness of the reduced spectral norm}
+{约化谱范数的完备性}]
+\label{fnd:reducedspectralcomplete}
+\bi{Let $A$ be a reduced generalized $K$-affinoid algebra with its
+given norm-admissible affinoid norm. Then $\rho_A$ is a complete
+norm, uniformly equivalent to the given norm. The statement holds
+for arbitrary positive radii and for a trivially valued ground field.}
+{设 $A$ 为约化 generalized $K$-affinoid 代数，配备给定的
+norm-admissible affinoid 范数，则 $\rho_A$ 为完备范数，且与
+给定范数一致等价。此结论允许任意正半径及平凡赋值基域。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="2c2dd7241ea11c30e1a051098a4769e3b9ac0578253546a7d39e662357720a6b">
+\begin{proof}
+\bi{First let $A$ be a nonzero strict domain. Choose a finite
+normalization $R\hookrightarrow A$, put $F=\operatorname{Frac}(R)$,
+and let $H$ be its Gauss completion. Write $E=A\otimes_R F$.
+By Theorem~\ref{fnd:gaussfractionseparable}, the finite-dimensional
+algebra $D=E\otimes_F H$ is reduced. Every prime of a
+finite-dimensional algebra over a field is maximal, and there are
+finitely many maximal ideals; the Chinese remainder theorem and
+the nilradical formula therefore give
+$D=\prod_{s=1}^t L_s$ with finite field extensions $L_s/H$.
+Its maximum absolute-value norm is complete and equivalent to
+every $H$-coordinate norm by Lemma~\ref{fnd:finiteextensionnorms}.}
+{先设 $A$ 为非零 strict 整环。选择有限正规化 $R\hookrightarrow A$，
+令 $F=\operatorname{Frac}(R)$，以 $H$ 记其 Gauss 完备化，并写
+$E=A\otimes_R F$。由 Theorem~\ref{fnd:gaussfractionseparable}，
+有限维代数 $D=E\otimes_F H$ 约化。域上的有限维代数的素理想
+均极大，且只有有限个极大理想；所以中国剩余定理及幂零根公式给出
+$D=\prod_{s=1}^tL_s$，其中 $L_s/H$ 均为有限扩域。
+由 Lemma~\ref{fnd:finiteextensionnorms}，其最大绝对值范数完备，
+且与任一 $H$-坐标范数等价。}
+
+\bi{Choose an $F$-basis $e_1,\ldots,e_m$ of $E$. Since $A$ is
+finite over $R$, one common nonzero denominator $b\in R$ makes
+all coordinates of $bA$ belong to $R$. We obtain an injective
+$R$-linear map $j:A\to R^m$. The canonical finite-module theorem,
+and its compatibility with the affinoid norm in
+Proposition~\ref{fnd:strictfinitealgebras}, imply}
+{选择 $E$ 的一组 $F$-基 $e_1,\ldots,e_m$。由于 $A$ 在 $R$ 上
+有限，可选取同一个非零分母 $b\in R$，使 $bA$ 的全部坐标属于 $R$。
+于是得到单射 $R$-线性映射 $j:A\to R^m$。典范有限模定理，以及
+Proposition~\ref{fnd:strictfinitealgebras} 给出的与 affinoid
+范数的相容性，说明}
+\[
+ \|a\|_A\leq C\|j(a)\|_{R^m}
+       \leq C&#x27;\max_s|a|_{L_s}\qquad(a\in A)
+\]
+\bi{for constants independent of $a$. The second inequality is
+the finite-dimensional coordinate bound on $D$, including the fixed
+factor $|b|$. Proposition~\ref{fnd:normalizationfiniteboundary}
+identifies the last maximum with $\rho_A(a)$. The reverse inequality
+$\rho_A(a)\leq\|a\|_A$ is the spectral-radius formula. This proves
+norm equivalence for a strict domain.}
+{其中常数与 $a$ 无关。第二个不等式来自 $D$ 上的有限维坐标界，
+并计入固定因子 $|b|$。
+Proposition~\ref{fnd:normalizationfiniteboundary} 将最后的最大值
+识别为 $\rho_A(a)$。反向不等式
+$\rho_A(a)\leq\|a\|_A$ 来自谱半径公式。这证明 strict 整环情形
+的范数等价性。}
+
+\bi{For a reduced strict $A$, the diagonal map into the finite product
+of its minimal-prime quotients is an injection of finite $A$-modules.
+It is norm-strict by Theorem~\ref{fnd:strictfinitemodules}.
+The domain case on the factors and the fact that every point kills
+a minimal prime give the same two-sided estimate for $A$.
+For arbitrary radii choose a free strictification $A_r$.
+It is reduced by Proposition~\ref{fnd:spectralnilradicalinternal}.
+Apply the strict estimate upstairs and restrict to the isometric
+coefficient inclusion $A\hookrightarrow A_r$.
+The Gauss section again gives
+$\rho_{A_r}(a\otimes1)=\rho_A(a)$, proving the desired estimate.
+Completeness and definiteness follow from equivalence with the given
+Banach norm. The zero algebra has the zero Banach space and causes
+no exception.}
+{对约化 strict $A$，它到有限个极小素理想商之乘积的对角映射
+是有限 $A$-模的单射，由 Theorem~\ref{fnd:strictfinitemodules}
+为 norm-strict。在各因子上使用整环情形，并利用每个谱点均消去
+某个极小素理想，即得 $A$ 的相同双向估计。
+对任意半径，选择自由 strictification $A_r$。由
+Proposition~\ref{fnd:spectralnilradicalinternal}，它约化。
+在上层应用 strict 估计，再限制到等距系数包含
+$A\hookrightarrow A_r$。Gauss 截面再次给出
+$\rho_{A_r}(a\otimes1)=\rho_A(a)$，从而得到所需估计。
+完备性与正定性来自与给定 Banach 范数的等价性。零代数对应零
+Banach 空间，同样满足结论。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001661-reader.jpg" alt="Typeset mathematical passage from PDF page 597" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=597">PDF page 597 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00E0@NAG-001661:original-proof · named external application</li><li>APP-STACKS-00E0@NAG-001661:original-proof · named external application <small>(requires)</small></li><li>APP-STACKS-00FR@NAG-001661:original-proof · named external application</li><li>APP-STACKS-00FR@NAG-001661:original-proof · named external application <small>(requires)</small></li><li>APP-STACKS-00JB@NAG-001661:original-proof · named external application</li><li>APP-STACKS-00JB@NAG-001661:original-proof · named external application <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001483/">NAG-001483</a> · selected whole</li><li><a href="/r/NAG-001483/">NAG-001483</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole</li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001659/">NAG-001659</a> · selected whole</li><li><a href="/r/NAG-001659/">NAG-001659</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001660/">NAG-001660</a> · selected whole</li><li><a href="/r/NAG-001660/">NAG-001660</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001902/">NAG-001902</a> · selected whole</li><li><a href="/r/NAG-001902/">NAG-001902</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-001574:spectral_limit_and_bounded_point_max · typed target unresolved in this export</li><li>SUPPORT:NAG-001574:spectral_limit_and_bounded_point_max · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00E0">APP-STACKS-00E0@NAG-001661:original-proof</a></li><li><a href="https://stacks.math.columbia.edu/tag/00FR">APP-STACKS-00FR@NAG-001661:original-proof</a></li><li><a href="https://stacks.math.columbia.edu/tag/00JB">APP-STACKS-00JB@NAG-001661:original-proof</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-001659/">fnd:gaussfractionseparable</a></li><li><a href="/r/NAG-001902/">fnd:normalizationfiniteboundary</a></li><li><a href="/r/NAG-001660/">fnd:spectralnilradicalinternal</a></li><li><a href="/r/NAG-001483/">fnd:strictfinitealgebras</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

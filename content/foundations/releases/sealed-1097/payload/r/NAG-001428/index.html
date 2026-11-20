@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001428/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Scalar recurrence over a normed residue field · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001428 · Accepted whole</p><h1>Scalar recurrence over a normed residue field</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.16.1">Open in the English reader · PDF page 162</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0c477f95d06be370ae27e8c72446062cf41875177f56004d1a085a0bbba8a885">
+\begin{lemma}[\bi{Scalar recurrence over a normed residue field}{赋范剩余域上的标量递推}]\label{fnd:residuefieldlaurentinjective}
+\bi{Let $F$ be a field which is a Banach $K$-algebra with a definite submultiplicative norm. Let $V$ be a finite-dimensional $F$-vector space with a Banach $K$-norm uniformly equivalent to the maximum coordinate norm for an $F$-basis. For every $\lambda\in F$ and every $r&gt;0$, the operator $L_\lambda$ on $E_r(V)$ is bounded and injective. No multiplicativity of the norm on $F$, and no finiteness of $F/K$, is assumed.}
+{设 $F$ 为一个域，同时为带有正定次乘范数的 Banach $K$-代数。设 $V$ 为有限维 $F$-向量空间，配备 Banach $K$-范数，并且该范数与某个 $F$-基对应的最大坐标范数 uniformly equivalent。则对每个 $\lambda\in F$ 和每个 $r&gt;0$，$E_r(V)$ 上的算子 $L_\lambda$ 有界且单射。不要求 $F$ 的范数具有乘法性，也不要求扩张 $F/K$ 有限。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="caef7e6f681870d08361f13df06f42f5134e5d997235add7b537be9c94fe7051">
+\begin{proof}
+\bi{Choose a basis and comparison constants $C,D&gt;0$ such that, for $v=\sum_j a_je_j$,}
+{选择一个基以及比较常数 $C,D&gt;0$，使对 $v=\sum_j a_je_j$ 有}
+\[
+ \max_j\|a_j\|_F\leq C\|v\|,
+ \qquad
+ \|v\|\leq D\max_j\|a_j\|_F .
+\]
+\bi{These inequalities identify $E_r(V)$, by a bounded isomorphism with bounded inverse, with a finite power of $E_r(F)$. Multiplication by $\lambda$ has bound $DC\|\lambda\|_F$, so $L_\lambda$ is bounded. If $\lambda=0$, it is the identity. Suppose $\lambda\ne0$ and $L_\lambda v=0$. Each coordinate sequence then satisfies}
+{这些不等式将 $E_r(V)$ 与 $E_r(F)$ 的一个有限次幂识别为具有有界逆的有界同构。乘以 $\lambda$ 的界为 $DC\|\lambda\|_F$，所以 $L_\lambda$ 有界。若 $\lambda=0$，该算子为恒等算子。设 $\lambda\ne0$ 且 $L_\lambda v=0$。每个坐标序列于是满足}
+\[
+ a_n=\lambda a_{n+1},
+ \qquad a_n=\lambda^{-n}a_0 \quad(n\in\mathbb Z).
+\]
+\bi{If $a_0\ne0$, then $a_na_{-n}=a_0^2\ne0$, whereas submultiplicativity gives}
+{若 $a_0\ne0$，则 $a_na_{-n}=a_0^2\ne0$，而由次乘性得到}
+\[
+ 0&lt;\|a_0^2\|_F
+ \leq
+   \bigl(\|a_n\|_Fr^n\bigr)
+   \bigl(\|a_{-n}\|_Fr^{-n}\bigr)
+ \longrightarrow0
+ \qquad(n\longrightarrow+\infty).
+\]
+\bi{This is impossible. Thus every coordinate has $a_0=0$, and the recurrence makes every coefficient zero. The argument also covers $V=0$.}
+{这不可能。因此每个坐标均有 $a_0=0$，再由递推关系得到所有系数均为零。该论证也包括 $V=0$。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="51d3a22cec324277d44668584f77c0a4e0f28ac052c42b1a918d32278cddf37d">
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+{Complete extension $L/K$ 始终配备限制为指定 $K$ 上 absolute value 的 absolute value。改变 ground field 时不重新缩放它。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="ac27614767aac623abc5ff3cf64d6f77a1f7c7b679c518b1d8e5927a94fa7592">
+\bi{Keep the fixed complete non-Archimedean field $K$, with trivial valuation permitted. For a Banach $K$-space $V$ and $r&gt;0$, put}
+{保持固定的完备非阿基米德域 $K$，允许赋值平凡。对 Banach $K$-space $V$ 和 $r&gt;0$，记}
+\[
+ E_r(V)=
+ \left\{(v_n)_{n\in\mathbb Z}:
+       \|v_n\|r^n\longrightarrow0\ \text{as }|n|\longrightarrow\infty\right\},
+ \qquad
+ \|v\|_r=\sup_{n\in\mathbb Z}\|v_n\|r^n .
+\]
+\bi{We also write its elements as Laurent series $\sum_n v_nT^n$. Lemma~\ref{fnd:weightedcoefficientcompleteness} gives completeness. For a bounded operator $f$ on $V$, the operator $L_f=1-fT^{-1}$ is defined by}
+{也将其元素写为 Laurent series $\sum_n v_nT^n$。Lemma~\ref{fnd:weightedcoefficientcompleteness} 给出完备性。对 $V$ 上的有界算子 $f$，定义算子 $L_f=1-fT^{-1}$ 为}
+\[
+ (L_fv)_n=v_n-fv_{n+1}.
+\]
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="97d4644755c58b2dfec226d62d5141697739fe19268eab03328b2e6c71d7fec3">
+\bi{Throughout, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial. A Banach $K$-space has a definite, complete, non-Archimedean, $K$-homogeneous norm. Banach algebras are commutative and unital, with a submultiplicative norm and $\|1\|=1$; Banach module actions satisfy $\|am\|\leq\|a\|\|m\|$. All finite powers have the maximum norm; the maximum over an empty family is zero. Norm-strictness has the quantitative meaning of Definition~\ref{fnd:normstrictconvention}.}
+{本节中，$K$ 关于固定的 real-valued non-Archimedean absolute value 完备，允许该 absolute value 平凡。Banach $K$-space 的 norm 为 definite、complete、non-Archimedean 且 $K$-homogeneous。Banach algebras 均 commutative、unital，其 norm submultiplicative 且 $\|1\|=1$；Banach module actions 满足 $\|am\|\leq\|a\|\|m\|$。所有 finite powers 使用 maximum norm，并约定空 family 的 maximum 为零。Norm-strictness 采用 Definition~\ref{fnd:normstrictconvention} 的定量含义。}
+
+\bi{For a countable set $I$ and positive weights $w=(w_i)_{i\in I}$, write $\mathcal C_w(I,E)=c_0(I,E;w)$ as in Lemma~\ref{fnd:weightedcoefficientcompleteness}; thus}
+{对可数集合 $I$ 和正权重 $w=(w_i)_{i\in I}$，按照 Lemma~\ref{fnd:weightedcoefficientcompleteness} 的定义，记 $\mathcal C_w(I,E)=c_0(I,E;w)$，即}
+\[
+ \begin{gathered}
+ \mathcal C_w(I,E)=
+ \left\{(e_i)_{i\in I}:
+   \text{for every }\varepsilon&gt;0,
+   \#\{i:w_i\|e_i\|\geq\varepsilon\}&lt;\infty\right\},\\
+ \|(e_i)\|_w=\sup_{i\in I}w_i\|e_i\|.
+ \end{gathered}
+\]
+\bi{We put $\sup\varnothing=0$. The cited lemma, with coefficient algebra $K$ if necessary, proves completeness and density of finite-support families. A bounded linear map $u:E\to F$ with bound $U$ induces a coefficient map with the same bound, since $w_i\|u(e_i)\|\leq U w_i\|e_i\|$. There is also a canonical isometry}
+{约定 $\sup\varnothing=0$。上述引理给出完备性以及有限支撑族的稠密性；对 Banach $K$-space，只需取系数代数为 $K$。若有界线性映射 $u:E\to F$ 的界为 $U$，则逐系数映射保持同一个界，因为 $w_i\|u(e_i)\|\leq U w_i\|e_i\|$。此外，对有限 $m$，有 canonical isometry}
+\[
+ \mathcal C_w(I,E^m)\simeq\mathcal C_w(I,E)^m
+ \qquad(m&lt;\infty).
+\]
+\bi{It merely rearranges coefficients: a supremum commutes with a finite maximum, and a finite union of finite sets is finite, so both the norms and the finite-tail conditions agree.}
+{该映射只重新排列系数：supremum 与有限 maximum 可交换，且有限个有限集的并仍有限，所以两种范数相等，有限尾条件也等价。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001428-reader.jpg" alt="Typeset mathematical passage from PDF page 162" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=162">PDF page 162</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(required native coefficient context)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

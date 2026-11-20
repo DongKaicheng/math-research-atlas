@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002172/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Result 5.23.1 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002172 · Accepted whole</p><h1>Result 5.23.1</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.23.1">Open in the English reader · PDF page 899</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f6939770d6c00a121e89f410407a8def9172760bbaf8a287fed064380d0271fe">
+\begin{lemma}[\bi{A bounded presentation for a formal \etale chart}
+{形式 \etale 坐标片的有界表示}]
+\label{cand:formaletaleboundedpresentation}
+\bi{Let $A_0\to B_0$ be an adic, topologically finitely
+presented, formally \etale homomorphism of complete
+admissible $O$-algebras. There are polynomials
+$F_1,\ldots,F_m\in A_0[Y_1,\ldots,Y_m]$ and an isomorphism}
+{设 $A_0\to B_0$ 为完备 admissible $O$-代数之间的
+进、拓扑有限表示、形式 \etale 同态。存在多项式
+$F_1,\ldots,F_m\in A_0[Y_1,\ldots,Y_m]$ 及同构}
+\[
+ B_0\simeq
+ \widehat{A_0[Y_1,\ldots,Y_m,Q]/
+             (F_1,\ldots,F_m,Q\det(\partial F/\partial Y)-1)}.
+ \tag{FJ}\label{eq:candformaljacobianpresentation}
+\]
+\bi{Here completion is $\pi$-adic. If $A_0$ is a standard
+semistable algebra, the generic fibre has a presentation
+\eqref{eq:candetalejacobianpresentation}, with all
+coefficients integral and all coordinates bounded by one.}
+{这里取 $\pi$-进完备化。若 $A_0$ 为标准半稳定代数，
+则其泛纤维具有
+\eqref{eq:candetalejacobianpresentation} 型表示，全部
+系数为整，全部坐标的范数至多为一。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="104a244ae89f020ef13a708a12bfa59f5f6b9a10fdca865ea3d86b49ad622914">
+\begin{proof}
+\bi{Put $\bar A=A_0/\pi A_0$ and
+$\bar B=B_0/\pi B_0$. Topological finite presentation
+makes $\bar B$ finitely presented over $\bar A$.
+Its unique square-zero lifting property follows from that
+of $B_0$: a target $\bar A$-algebra is annihilated by
+$\pi$, and every lifted $A_0$-map therefore factors through
+$\bar B$. By \cite[Tag 00UR]{StacksAlg},
+$\bar A\to\bar B$ is \etale. The global presentation
+\cite[Tag 00U9]{StacksAlg} gives}
+{置 $\bar A=A_0/\pi A_0$ 及
+$\bar B=B_0/\pi B_0$。拓扑有限表示说明 $\bar B$
+在 $\bar A$ 上有限表示。其唯一平方零提升性质来自
+$B_0$：目标 $\bar A$-代数被 $\pi$ 消灭，因此提升后的
+$A_0$-映射因子分解经过 $\bar B$。由
+\cite[Tag 00UR]{StacksAlg}，$\bar A\to\bar B$ 为
+\etale。全局表示 \cite[Tag 00U9]{StacksAlg} 给出}
+\[
+ \bar B=\bar A[Y_1,\ldots,Y_m]/
+                  (\bar F_1,\ldots,\bar F_m),
+ \qquad \det(\partial\bar F/\partial Y)\in\bar B^\times.
+\]
+\bi{Lift the finitely many polynomial coefficients to
+$A_0$, and write $C$ for the uncompleted algebra on the
+right of \eqref{eq:candformaljacobianpresentation}.
+Then $C/\pi C\simeq\bar B$. We check its algebraic
+unique lifting property directly. Across a square-zero ideal
+$I$ in a target ring, choose any lifts $y$ of a prescribed
+solution modulo $I$. Its determinant is a unit: a lift of
+a unit modulo a nilpotent ideal is a unit, by a finite
+geometric inverse. The error $F(y)$ lies in $I^m$.
+The correction}
+{把有限个多项式系数提升到 $A_0$，以 $C$ 记
+\eqref{eq:candformaljacobianpresentation} 右侧尚未
+完备化的代数。于是 $C/\pi C\simeq\bar B$。
+直接检验其代数唯一提升性质。在目标环的平方零理想
+$I$ 上，任取所给模 $I$ 解的提升 $y$。其行列式是
+单位元：模幂零理想的单位元提升仍为单位元，这由
+有限几何求逆可见。误差 $F(y)$ 属于 $I^m$，修正}
+\[
+                   h=-F&#x27;(y)^{-1}F(y)\in I^m
+\]
+\bi{gives $F(y+h)=0$, since all terms quadratic in $h$
+vanish. The same linear identity proves uniqueness; $Q$
+must be the inverse determinant at the corrected root.
+Thus $C$ has the required unique lifting property.}
+{使 $F(y+h)=0$，因为关于 $h$ 的二次及以上项全为零。
+同一线性恒等式证明唯一性，而 $Q$ 必须取为修正后
+根处的逆行列式。因此 $C$ 具有所需唯一提升性质。}
+
+\bi{The identity modulo $\pi$ now lifts successively to
+mutually inverse maps}
+{模 $\pi$ 的恒等识别现在逐次提升为互逆映射}
+\[
+             C/\pi^n C\ \simeq\ B_0/\pi^n B_0
+                         \qquad(n\geq1).
+\]
+\bi{Indeed the kernels of the maps from level $n+1$ to
+level $n$ are square-zero. The lifting properties of $C$
+and $B_0$ respectively lift the two directions, and
+uniqueness makes both composites the identity and makes
+the isomorphisms compatible in $n$. Taking inverse limits,
+and using the assumed completeness of $B_0$, proves
+\eqref{eq:candformaljacobianpresentation}. Finally
+Proposition~\ref{fnd:affineformalpresentations} and
+Lemma~\ref{fnd:adicquotientcompletion} identify the generic
+algebra with the stated restricted-series quotient.
+Coefficients in a standard $A_0$ have integral
+restricted-series lifts in its defining coordinates, so
+this is exactly a bounded presentation of type (J).}
+{从第 $n+1$ 层到第 $n$ 层的核为平方零。分别用
+$C$ 及 $B_0$ 的提升性质提升两个方向，唯一性使两种
+复合都是恒等映射，并使这些同构关于 $n$ 相容。
+取逆极限，并使用 $B_0$ 的完备性，得到
+\eqref{eq:candformaljacobianpresentation}。最后由
+Proposition~\ref{fnd:affineformalpresentations} 及
+Lemma~\ref{fnd:adicquotientcompletion}，泛纤维代数
+就是所称受限级数商。标准 $A_0$ 中的系数在其定义
+坐标中具有整受限级数提升，故这恰为 (J) 型有界表示。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="5c4788a8ab70fb282b00c70f50889652f2cf008433bc877591233051470a7a0c">
+% Author: /root/f6_tropical. Independent mathematical review pending.
+\section{\bi{The homotopy of a strictly semistable formal model}
+{严格半稳定形式模型的同伦}}
+
+\bi{Throughout this section $K$ is complete and nontrivially
+valued, $O=K^\circ$, and $\pi\in O$ satisfies
+$0&lt;|\pi|&lt;1$. Formal algebras carry their $\pi$-adic
+topology. A formally \etale map below has the unique
+lifting property for square-zero extensions of discrete
+algebras annihilated by a power of $\pi$.}
+{本节中 $K$ 完备且非平凡赋值，$O=K^\circ$，并取
+$\pi\in O$ 满足 $0&lt;|\pi|&lt;1$。形式代数配备
+$\pi$-进拓扑。下文的形式 \etale 映射具有以下唯一
+提升性质：对于被 $\pi$ 的某个幂消灭的离散代数，
+可沿平方零扩张唯一提升。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002172-reader.jpg" alt="Typeset mathematical passage from PDF page 899" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=899">PDF page 899</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00U9@NAG-002172:Gauss-original-site-2 · named external application</li><li>APP-STACKS-00U9@NAG-002172:Gauss-original-site-2 · named external application <small>(requires)</small></li><li>APP-STACKS-00UR@NAG-002172:Gauss-original-site-1 · named external application</li><li>APP-STACKS-00UR@NAG-002172:Gauss-original-site-1 · named external application <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole</li><li><a href="/r/NAG-001919/">NAG-001919</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00U9">APP-STACKS-00U9@NAG-002172:Gauss-original-site-2</a></li><li><a href="https://stacks.math.columbia.edu/tag/00UR">APP-STACKS-00UR@NAG-002172:Gauss-original-site-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001919/">fnd:adicquotientcompletion</a></li><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

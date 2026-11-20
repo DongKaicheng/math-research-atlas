@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002461/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Moment chains on compact analytic domains · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002461 · Accepted whole</p><h1>Moment chains on compact analytic domains</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.56.5">Open in the English reader · PDF page 1069</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f1def4db862d328f788384bceb057265265285dc38a4c776c6f0d8238afdd95a">
+\begin{theorem}[Moment chains on compact analytic domains]
+\label{v038:degree:compactchain}
+Let $Z$ be a compact good Hausdorff analytic space pure of
+dimension $d$, let $\mathcal F$ be coherent on $Z_G$, and let
+$f$ be a global unit tuple. There is a canonical finite
+nonnegative integral $d$-chain $\mathcal T_{Z,f}(\mathcal F)$,
+with support contained in the actual compact image $t_f(Z)$.
+For any finite affinoid-domain cover $(U_i)_{i=1}^r$, it is
+given by
+\[
+ \mathcal T_{Z,f}(\mathcal F)=
+ \sum_{\varnothing\ne I\subseteq\{1,\ldots,r\}}
+       (-1)^{|I|+1}
+       \mathcal T_{f|_{U_I}}\bigl(\Gamma(U_I,\mathcal F)\bigr),
+ \qquad U_I=\bigcap_{i\in I}U_i.
+\]
+Empty intersections contribute zero. This chain is additive in
+short exact sequences of coherent modules. For every smooth
+$(d,d)$-superform $\alpha$ defined near $t_f(Z)$,
+\[
+             \int_{\mathcal T_{Z,f}(\mathcal F)}\alpha
+                         =\mathcal I_{Z,\mathcal F}(t_f^*\alpha).
+\]
+Here the right side is the compact finite-chart integral.
+
+The same construction applies to a finite union of affinoid
+domains in a good Hausdorff pure $d$-dimensional ambient space,
+even if the union is not good. It is additive by finite
+inclusion--exclusion for covers by such compact analytic domains.
+The analogous inclusion--exclusion identity holds for compatible
+finite moment-chart integrals, without requiring one global tuple.
+
+If $Z_P=t_f^{-1}(P)$ is an affinoid moment domain, then
+\[
+ \mathcal T_{Z,f}(\mathcal F)|_{\operatorname{int}(P)}
+   =\mathcal T_{f|_{Z_P}}\bigl(\Gamma(Z_P,\mathcal F)\bigr)
+                                      |_{\operatorname{int}(P)}.
+\]
+If global unit tuples $g,f$ on $Z$ satisfy $t_f=a\circ t_g$
+for an integral lattice map $a$, then
+\[
+                a_*\mathcal T_{Z,g}(\mathcal F)
+                                      =\mathcal T_{Z,f}(\mathcal F).
+\]
+This pushforward is proper on the actual support. Cells on which
+$a$ drops rank contribute zero.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9d2bf9b30bceeaf319da2e644a0949e1f69bfbd67407e8e57338b5c05499b121">
+\begin{proof}
+All finite intersections are actual affinoid domains by
+Lemma~\ref{v037:integration:separatedintersections}, and every
+nonempty one is pure of dimension $d$ by
+Lemma~\ref{v037:integration:puritylocality}. Its sections of
+$\mathcal F$ form a finite module by
+Theorem~\ref{fnd:fullgkiehltheoremb}. Thus the displayed finite
+sum is a well-defined integral $d$-chain. By
+Theorem~\ref{v037:globaltrop:finiteimage}, the actual image of
+$Z$ is the finite union of the polyhedral images of the $U_i$,
+so it is compact and finite polyhedral of dimension at most $d$.
+
+To compare covers $(U_i)$ and $(V_j)$, apply
+Theorem~\ref{v037:localization:globalcoveradditivity} on each
+$U_I$ to its affinoid cover $(U_I\cap V_j)_j$. The first
+display becomes
+\[
+ \sum_{I\ne\varnothing}\sum_{J\ne\varnothing}
+       (-1)^{|I|+|J|}
+       \mathcal T_{f|_{U_I\cap V_J}}
+                     \bigl(\Gamma(U_I\cap V_J,\mathcal F)\bigr).
+\]
+Interchanging the finite sums and applying the same theorem on
+each $V_J$ gives the expression for the second cover. This also
+proves independence under further refinement. Exact sequences
+remain exact on every affinoid intersection by the coherent
+equivalence, and the affinoid chains are additive by
+the \hyperref[fnd:nag002405:global-finite-module-chain-weights]{additivity of finite-module chains}; hence so is this chain.
+
+For nonnegativity, order the cover and group each term by its
+largest index $j$. Use the supporting-hyperplane construction
+of Lemma~\ref{cand:polyhedralrefinementproduct} to subdivide
+all images and boundary images together. Consider the relative interior of a
+$d$-cell. All occurring full fibres and their overlaps are
+interior. The complementary-idempotent calculation in
+Theorem~\ref{v037:integration:compactintegral}, using
+Theorem~\ref{v037:localization:fibrecover}, identifies the
+coefficient of the $j$-th group with
+\[
+  \frac{1}{e_Q}\dim_{H_Q}
+   \left(\prod_{i&lt;j}(1-e_i)\right)
+        \bigl(M_j\otimes_{\mathcal O(U_j)}E_Q\bigr).
+\]
+Here $M_j=\Gamma(U_j,\mathcal F)$, $E_Q$ is the actual
+transverse Artinian Gauss algebra, $e_Q$ is its lattice index,
+and the $e_i$ are the idempotents of the overlap domains.
+Expanding the product gives exactly that group&#x27;s alternating
+sum of module dimensions. The displayed coefficient is
+nonnegative, and the chain coefficient is an integer because
+it was defined as an alternating sum of integral weights.
+This proves positivity, including all module nilpotents.
+The integral identity is precisely the same finite sum as
+the defining formula of
+Theorem~\ref{v037:integration:compactintegral}.
+
+For a finite affinoid union in a good Hausdorff ambient space,
+the domain, intersection, purity and coherence statements are
+the ones verified in the last paragraph of that theorem.
+The preceding double-cover argument therefore applies verbatim
+to the chains and to compatible finite chart data.
+We give the finite-union bookkeeping explicitly. In the
+commutative ring generated by symbols $[U]$ for the finitely
+many affinoid domains involved, impose
+$[U][V]=[U\cap V]$; all these symbols are idempotent.
+A finite covering family is represented by
+\[
+                        1-\prod_i(1-[U_i]).
+\]
+Expanding gives its inclusion--exclusion expression.
+Products represent intersection covers: the Boolean identity
+\[
+ (1-\prod_i(1-x_i))(1-\prod_j(1-y_j))
+                       =1-\prod_{i,j}(1-x_i y_j)
+\]
+holds for commuting idempotents. To verify it, expand the
+identity decomposition into the products which choose either
+each variable or its complement. On every such product the
+two sides are the same zero or one. A union of compact domains
+represented by such covering expressions is consequently
+represented by $1-\prod_l(1-P_l)$. Expansion first by the
+$P_l$, or first by their affinoid constituents, gives the same
+finite sum of intersection symbols. Cover independence just
+proved permits either presentation of any intersection.
+Applying its chain or compatible-integral value proves the
+asserted finite inclusion--exclusion formula.
+
+For the restriction assertion, intersect the chosen cover
+with $Z_P$. On the interior of $P$, the whole moment fibre in
+every $U_I$ is unchanged. Refine by the finitely many boundary
+images of both $U_I$ and $U_I\cap Z_P$. At every remaining
+generic $d$-cell, the whole-fibre module restriction assertion
+of Theorem~\ref{v037:degree:moduleweight} identifies their
+weights. Equality on these generic cells is equality of
+$d$-chains. The restricted inclusion--exclusion sum is the
+affinoid cover expression on $Z_P$, proving the claim.
+
+Finally apply the
+\hyperref[fnd:nag002405:same-affinoid-coordinate-augmentation]{same-affinoid chain projection} to the identity map
+of each $U_I$, with its two restricted tuples. It gives the
+claimed lattice pushforward on each term. Finite linearity of
+the lattice-index formula gives the equality for their sum.
+The actual source support is compact, so the pushforward is
+proper. The rank-dropping convention is the one in that
+affinoid theorem and is unchanged by finite summation.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002461-reader.jpg" alt="Typeset mathematical passage from PDF page 1070" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1070">PDF page 1070 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002405/#same_affinoid_coordinate_augmentation">CLAUSE:NAG-002405:same_affinoid_coordinate_augmentation</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002396/">NAG-002396</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002401/">NAG-002401</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002411/">NAG-002411</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002180/">cand:polyhedralrefinementproduct</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li><li><a href="/r/NAG-002358/">v037:globaltrop:finiteimage</a></li><li><a href="/r/NAG-002416/">v037:integration:compactintegral</a></li><li><a href="/r/NAG-002413/">v037:integration:puritylocality</a></li><li><a href="/r/NAG-002411/">v037:integration:separatedintersections</a></li><li><a href="/r/NAG-002396/">v037:localization:fibrecover</a></li><li><a href="/r/NAG-002401/">v037:localization:globalcoveradditivity</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,170 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002816/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Gauss branches and the finite maximal-rank set · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002816 · Accepted whole</p><h1>Gauss branches and the finite maximal-rank set</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002816.original">Open in the English reader · PDF page 1963</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="7ce1674aeb7cd8d48df183490c79c05e0a3ede015b80c9a456491ee745633e01">
+\begin{lemma}[Gauss branches and the finite maximal-rank set]
+\label{sgo:gaussbranches}
+For any analytic map $\psi:X\to T^d$, the underlying set of
+$\psi^{-1}(\eta_s)$ is finite. If $x$ belongs to this fibre and
+$x\in\operatorname{Int}(X/K)$, there are arbitrarily small
+ordinary affinoid neighbourhoods $Y=\mathcal M(B)$ of $x$
+and $N=\mathcal M(C)$ of $\eta_s$ such that
+$\psi:Y\to N$ is norm-admissible finite and
+$\psi^{-1}(\eta_s)\cap Y=\{x\}$.
+One can take $C$ integral. The ordinary stalk
+$\kappa_s:=\mathcal O_{T^d,\eta_s}$ is a field, and, with
+\[
+ E=B\widehat\otimes_C H_s=B\otimes_C H_s,\qquad
+ P=M\otimes_A E,
+\]
+$E$ is the actual local Artinian fibre algebra at $x$, with
+residue field $\mathcal H(x)$. There are natural identifications
+\[
+ E=\mathcal O_{X,x}\otimes_{\kappa_s}H_s,\qquad
+ P=\mathcal F_x\otimes_{\kappa_s}H_s,
+\]
+and the finite integer
+\begin{equation}
+ \delta_\psi(M,x):=\dim_{H_s}P
+ =\dim_{\kappa_s}\mathcal F_x
+ =\operatorname{length}_E(P)[\mathcal H(x):H_s]
+ \label{sgo:localdegree}
+\end{equation}
+is independent of the isolating neighbourhoods.
+After shrinking $N$ ordinarily and taking the inverse image in
+$Y$, the direct images of $\mathcal O_Y$ and $\mathcal F|Y$
+are free, of ranks $\delta_\psi(A,x)&gt;0$ and
+$\delta_\psi(M,x)$ respectively.
+Moreover, writing
+$\beta_{\mathfrak p}(M)=\operatorname{length}_{A_{\mathfrak p}}
+M_{\mathfrak p}$, one has
+\begin{equation}
+ \delta_\psi(M,x)=
+ \sum_{\mathfrak p\in\operatorname{Min}(A)}
+       \beta_{\mathfrak p}(M)\dim_{H_s}(E/\mathfrak pE).
+ \label{sgo:genericlengths}
+\end{equation}
+For every unit tuple $f$ and every $w$, the set $S_w$ is finite,
+without an interior assumption on its points.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="97e10d2a299db3e1f82faede60b536944d4cf1c95501d42a0aef0085197680d0">
+\begin{proof}
+Choose a compact polyannulus containing $\psi(X)$.
+The actual fibre over $\eta_s$ is affinoid over $H_s$;
+\Dep{fnd:allpointaffinoidfibres} identifies its points and
+completed residue fields with the points over $\eta_s$ and
+their original completed residue fields. The Gauss dimension,
+tower formula, and Abhyankar bound give
+\[
+ 0\leq d_{H_s}(y)=d_K(y)-d_K(\eta_s)\leq d-d=0
+\]
+for every such point. Here the dependencies are
+\Dep{fnd:gaussvaluedfielddimension},
+\Dep{fnd:valuedfielddimensioncalculus}, and
+\Dep{fnd:affinoidabhyankarmaximum}.
+The maximum formula therefore makes the fibre
+zero-dimensional. A zero-dimensional generalized affinoid
+has finitely many points: strictify it, use dimension
+invariance and strict finite normalization to make the
+strictified algebra finite over its field, and project its
+finite spectrum surjectively back. These are exactly
+\Dep{fnd:simultaneousstrictification},
+\Dep{fnd:analyticdimensionindependence},
+\Dep{fnd:strictfinitenormalization},
+\Dep{fnd:stricttatedimension},
+\Dep{fnd:strictfinitealgebras},
+\Dep{fnd:finiteanalyticbranchseparation}, and
+\Dep{fnd:scalarextensionspectralsurjective}.
+No finiteness assertion over the whole $\mathbb T_s$ follows.
+
+We give the field-stalk argument over the original $K$.
+If a generalized affinoid $D$ has analytic dimension at most
+$d$ and $z\in\mathcal M(D)$ has $d_K(z)=d$, then
+$\mathfrak p=\ker(D\to\mathcal H(z))$ is minimal.
+Otherwise choose a minimal prime $\mathfrak q\subsetneq\mathfrak p$.
+Simultaneously strictify $D/\mathfrak q$ and $D/\mathfrak p$
+by a finite $K$-free extension, making the new field nontrivially
+valued as well. The domain-preservation and quotient statements
+of \Dep{v036:analytic:freecomponents}, together with faithful
+flatness \Dep{fnd:freeextensionfaithfullyflat}, preserve the
+strict inclusion of these primes. The strictified domain has
+Krull dimension at most $d$; quotienting by a nonzero prime
+lowers it to at most $d-1$, since every prime chain in the
+quotient can be preceded by the zero prime of the domain.
+Analytic dimension invariance gives
+$\dim(D/\mathfrak p)\leq d-1$, contradicting the Abhyankar
+bound applied to $z$ on that quotient.
+Here equality of strict analytic and Krull dimensions is the
+strict dimension theory in \Dep{fnd:analyticdimensionindependence}
+and \Dep{fnd:strictfinitenormalization}.
+
+An affinoid neighbourhood of $\eta_s$ in $T^d$ is an affinoid
+domain of affine $d$-space. It is regular by
+\Dep{fnd:affinespacedomainregular}, and is a finite product of
+integral affinoid algebras by \Dep{fnd:regularaffinoidcomponents}.
+Pass to the open-and-closed component containing $\eta_s$.
+It is still an ordinary neighbourhood. Its evaluation kernel
+is minimal by the preceding paragraph, hence zero.
+If a germ at $\eta_s$ evaluates to zero, represent it on such
+an integral neighbourhood inside its domain of definition.
+It is zero there. Evaluation on the ordinary stalk is therefore
+injective. The description of its maximal ideal in
+\Dep{fnd:ordinaryaffinoidstalks} makes that ideal zero, so this
+local ring is the asserted field $\kappa_s$.
+This argument does not identify $\kappa_s$ with its completion.
+
+The torus is boundaryless over $K$ by
+\Dep{fnd:algebraicmorphismboundaryless}, and absolute interior at
+$x$ implies relative interior for $\psi$ there: test on ordinary
+affinoid neighbourhoods and use
+\Dep{fnd:goodinteriorlocaltesting} and
+\mbox{\hyperref[fnd:nag001626:source-factor-interior]{the source-factor implication}}.
+The finite set already proved makes $x$ isolated in its analytic
+fibre. The local finite criterion
+\Dep{fnd:isolatedinteriorlocalfinite}, applied inside an
+ordinary neighbourhood disjoint from the other fibre points,
+gives ordinary open finite neighbourhoods. Restrict the target
+to an ordinary affinoid neighbourhood, and then to its integral
+component at $\eta_s$. Finite base change gives the asserted
+$Y\to N$; $Y$ remains an ordinary neighbourhood of $x$.
+
+The finite direct-image and stalk identities
+\Dep{fnd:finitecoherentdirectimagebasechange} and
+\Dep{fnd:finitepushforwardflatness} give
+\[
+ B\otimes_C\kappa_s=\mathcal O_{X,x},\qquad
+ (M\otimes_A B)\otimes_C\kappa_s=\mathcal F_x.
+\]
+There is only one summand because the isolated analytic fibre
+has only $x$. The finite tensor comparison
+\Dep{fnd:generalizedfinitebasechange} then gives the displayed
+identifications with $E$ and $P$, retaining their actual
+canonical complete norms. A finite algebra over the complete
+field $H_s$ has one analytic point for each local Artinian
+factor. Thus $E$ is local, and its residue field is precisely
+$\mathcal H(x)$ by \Dep{fnd:allpointaffinoidfibres}.
+A composition series of $P$ has copies of this residue field
+as its simple factors, proving \eqref{sgo:localdegree}.
+Since $\kappa_s$ is a field, both finite direct-image stalks
+are free. Apply \Dep{fnd:coherentflatstalkfree} to each, and
+intersect the resulting ordinary neighbourhoods. This derives
+freeness from the Gauss stalk; no generic-flatness assumption
+has been made.
+
+For \eqref{sgo:genericlengths}, \mbox{\hyperref[fnd:nag002360:fraction-field-flatness]{the fraction-field argument}} applies: $C\hookrightarrow H_s$ factors
+through $\operatorname{Frac}(C)$, so $H_s$ is flat over $C$.
+The domain map $A\to B$ is flat by
+\mbox{\hyperref[fnd:nag001832:ordinary-single-domain-flatness]{ordinary single-domain flatness}}; hence $A\to E$ is flat.
+The algebraic composition-series argument of
+\mbox{\hyperref[fnd:nag002360:artin-composition-series]{the local Artinian calculation}} now applies verbatim to this
+actual Artinian algebra: flat going down makes its prime
+contract to a minimal prime of $A$, and tensoring a composition
+series at that prime gives the displayed sum. Every other
+minimal-prime quotient of $E$ is zero. In particular neither
+nilpotent length nor the full residue-field degree is discarded.
+
+Finally, if $r_f(x)=d$, some $d$ of the $n$ homogeneous elements
+$\widetilde{f_i(x)}$ are algebraically independent. For that
+coordinate subset $I$, the map $\psi_I=(f_i)_{i\in I}$ sends
+$x$ to $\eta_{w_I}$: for every Laurent polynomial the nonzero
+initial terms of maximal norm cannot cancel, which is exactly
+the weighted Gauss norm. There are finitely many choices of
+$I$, and each $\psi_I^{-1}(\eta_{w_I})$ is finite by the first
+paragraph. Their union contains $S_w$. If $n&lt;d$, $S_w$ is empty.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002816-reader.jpg" alt="Typeset mathematical passage from PDF page 1963" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1963">PDF page 1963 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001626/#source_factor_interior_for_actual_affinoid_maps">CLAUSE:NAG-001626:source_factor_interior_for_actual_affinoid_maps</a> · selected scope <small>(selected clause)</small></li><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(selected clause)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001483/">NAG-001483</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001566/">NAG-001566</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(selected whole)</small></li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001657/">NAG-001657</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001694/">NAG-001694</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001711/">NAG-001711</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001735/">NAG-001735</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001752/">NAG-001752</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001753/">NAG-001753</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001754/">NAG-001754</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001760/">NAG-001760</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001861/">NAG-001861</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-001876/">NAG-001876</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-002291/">NAG-002291</a> · selected whole <small>(selected whole)</small></li><li><a href="/r/NAG-002360/">NAG-002360</a> · selected whole, export unavailable <small>(selected proof argument reuse)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

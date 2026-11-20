@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001578/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Joint presentations and completed pushouts · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001578 · Accepted whole</p><h1>Joint presentations and completed pushouts</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.31.3">Open in the English reader · PDF page 260</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="bdc3d672b7c213b47a459aeb44ef33e4a68e0e8542ee33a7d36768dce27a6a4b">
+\begin{proposition}[\bi{Joint presentations and completed pushouts}{联合表示与完备 pushout}]
+\label{fnd:generalizedjointpresentations}
+\bi{For any two arbitrary-radius affinoid quotient presentations over $A$, put}
+{对 $A$ 上任意两个允许任意半径的 affinoid 商表示，记}
+\[
+ \begin{aligned}
+ B&amp;=A\{\rho^{-1}T\}/I,\qquad C=A\{\tau^{-1}S\}/J,\\
+ H&amp;=A\{\rho^{-1}T,\tau^{-1}S\}/(I,J),
+ \end{aligned}
+\]
+\bi{where $(I,J)$ is the sum of the actual extended ideals. With the displayed quotient norms there is a canonical isometric algebra isomorphism $B\widehat\otimes_A C\simeq H$. This is the separated completed tensor product, not an assertion that the ordinary algebraic tensor is already complete. It has the bounded pushout universal property for commutative Banach targets.}
+{其中 $(I,J)$ 为实际延伸理想之和。对所列商范数，存在典范等距代数同构 $B\widehat\otimes_A C\simeq H$。这里使用分离完备张量积，并不断言普通代数张量积已经完备。它对交换 Banach 目标具有有界 pushout 泛性质。}
+
+\bi{If $I=(gT_i-f_i)$ and $J=(hS_j-e_j)$ are rational relation ideals, then $H$ is isometric to the rational presentation with denominator $gh$ and the following numerator-radius pairs:}
+{若 $I=(gT_i-f_i)$、$J=(hS_j-e_j)$ 为 rational 关系理想，则 $H$ 与如下 rational 表示等距：其分母为 $gh$，分子与半径分别为}
+\[
+ (hf_i,\rho_i),\qquad (ge_j,\tau_j),\qquad
+ (f_ie_j,\rho_i\tau_j).
+\]
+\bi{Its spectrum is the intersection of the two original rational subsets. Finite iteration gives all intersections, including repeated members, with compatible restriction maps. Empty intersections have zero algebra.}
+{它的谱是原来两个 rational 子集的交。有限次迭代给出全部有限交叠，包括重复成员，并给出相容的限制映射。空交叠具有零代数。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="dcbb98c13a8abcb4a325bbab46ef08714ca8a11fb23a20785cfce43a3ede73c8">
+\begin{proof}
+\bi{All weighted coefficient algebras here are affinoid by Proposition~\ref{fnd:closedweightedpresentation}; their actual ideals are closed and their quotients are complete by Corollary~\ref{fnd:generalizedaffinoidquotients}. On the ordinary balanced tensor product, the projective seminorm is submultiplicative by multiplying finite representations and taking their two infima. Its null space is an ideal. Separation and completion thus give a Banach algebra $G=B\widehat\otimes_A C$, or zero. The structural maps are contractive. The two contractive maps into $H$ give a contractive map $G\to H$ by their balanced product.}
+{由 Proposition~\ref{fnd:closedweightedpresentation}，这里全部加权系数代数均为 affinoid；由 Corollary~\ref{fnd:generalizedaffinoidquotients}，其实际理想闭，商完备。在普通平衡张量积上，将有限表示相乘并对两个表示分别取下确界，可知 projective 半范数为次乘的，且零半范数子空间为理想。因此分离并完备化得到 Banach 代数 $G=B\widehat\otimes_A C$，或零代数。结构映射为 contractive。通过两个到 $H$ 的 contractive 映射的平衡乘积，得到 contractive 映射 $G\to H$。}
+
+\bi{Conversely the elements $\bar T_i\otimes1$ and $1\otimes\bar S_j$ have all powers bounded by $\rho_i^m$ and $\tau_j^m$. Proposition~\ref{fnd:powerboundedsubstitution} gives a contractive map from the joint coefficient algebra to $G$. It kills $I$ and $J$, first on each whole coefficient algebra by bounded polynomial approximation, hence on their extended ideals. It descends to a contractive $H\to G$. The composites fix all coefficients and variables in $H$ and all pure tensors in $G$. Density makes them identities, proving the isometry. More generally, two bounded maps from $B,C$ to a Banach algebra agreeing on $A$ have a bounded balanced product; its finite-representation bound extends it uniquely to $G$. This proves the bounded pushout property.}
+{反方向，元素 $\bar T_i\otimes1$、$1\otimes\bar S_j$ 的全部幂，范数分别至多为 $\rho_i^m$、$\tau_j^m$。由 Proposition~\ref{fnd:powerboundedsubstitution}，得到从联合系数代数到 $G$ 的 contractive 映射。利用有界的多项式逼近，它在每个整体系数代数上零化 $I$、$J$，因而零化它们的延伸理想，并下降为 contractive 映射 $H\to G$。两个复合固定 $H$ 中的全部系数与变量，以及 $G$ 中的全部纯张量；由稠密性，它们均为恒等映射，故所得同构等距。更一般地，若来自 $B,C$ 的两个有界映射在 $A$ 上相同，则其乘积为有界平衡双线性映射；有限张量表示的估计将其唯一延拓到 $G$。这证明有界 pushout 泛性质。}
+
+\bi{For the rational assertion, multiply the two unit-ideal identities. They show that $gh$ and the listed numerators generate the unit ideal. Call their rational algebra $P$, with variables $Y_i,Z_j,W_{ij}$ of the listed radii. In $H$, both $g$ and $h$ are units. The assignments}
+{对 rational 断言，将两个单位理想恒等式相乘，可知 $gh$ 及所列分子生成单位理想。记相应 rational 代数为 $P$，变量 $Y_i,Z_j,W_{ij}$ 采用所列半径。在 $H$ 中，$g,h$ 均为单位。代入}
+\[
+ Y_i\longmapsto\bar T_i,\qquad Z_j\longmapsto\bar S_j,
+ \qquad W_{ij}\longmapsto\bar T_i\bar S_j
+\]
+\bi{respect all bounds and relations and give a contractive $P\to H$. In $P$, the product $gh$ is a unit, so both factors are units. Dividing its relations gives $gY_i=f_i$, $hZ_j=e_j$, and $W_{ij}=Y_iZ_j$. Sending $T_i$ to $Y_i$ and $S_j$ to $Z_j$ therefore gives a contractive $H\to P$, inverse on all variables. The point theorem identifies the resulting inequalities with the two original sets: divide the $hf_i$ and $ge_j$ inequalities by the nonzero factors; conversely the two original sets imply all product inequalities.}
+{保持全部范数界与关系，因此给出 contractive 映射 $P\to H$。在 $P$ 中，乘积 $gh$ 为单位，所以每个因子均为单位。对其关系作除法，得到 $gY_i=f_i$、$hZ_j=e_j$、$W_{ij}=Y_iZ_j$。因此 $T_i\mapsto Y_i$、$S_j\mapsto Z_j$ 给出 contractive 映射 $H\to P$，且两个映射在所有变量上互逆。由谱点定理，所得不等式与原来的两组不等式相同：将 $hf_i$、$ge_j$ 的不等式除以非零因子的值；反之，两组原不等式蕴含全部乘积不等式。}
+
+\bi{Iteration gives finite intersections. Their comparison and restriction maps agree by the uniqueness in Theorem~\ref{fnd:generalizedrationaluniversal}; a repeated member is consequently redundant by bounded inverse maps. Theorem~\ref{fnd:generalizedpointunitcriterion} makes an empty intersection algebra zero. Every zero-quotient case in the pushout assertion also follows directly: if one factor ideal contains one, so does the joint ideal.}
+{迭代即得有限交叠。由 Theorem~\ref{fnd:generalizedrationaluniversal} 的唯一性，各比较与限制映射相容；特别地，重复成员可通过有界互逆映射删去。由 Theorem~\ref{fnd:generalizedpointunitcriterion}，空交叠的代数为零。Pushout 断言中的零商情形也可直接处理：若某个因子理想包含一，则联合理想也包含一。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001578-reader.jpg" alt="Typeset mathematical passage from PDF page 261" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=261">PDF page 261 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole</li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole</li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole</li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="actual_two_block_joint_and_restrictions"><h3>actual two block joint and restrictions</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.31.3">Scope in the English reader · PDF page 260</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="e885e583ea766ca7ac5e9bc18496c525a9fa02d76f4a86ae49ed455b314ee99f">
+\begin{proposition}[\bi{Joint presentations and completed pushouts}{联合表示与完备 pushout}]
+\label{fnd:generalizedjointpresentations}
+\bi{For any two arbitrary-radius affinoid quotient presentations over $A$, put}
+{对 $A$ 上任意两个允许任意半径的 affinoid 商表示，记}
+\[
+ \begin{aligned}
+ B&amp;=A\{\rho^{-1}T\}/I,\qquad C=A\{\tau^{-1}S\}/J,\\
+ H&amp;=A\{\rho^{-1}T,\tau^{-1}S\}/(I,J),
+ \end{aligned}
+\]
+\bi{where $(I,J)$ is the sum of the actual extended ideals. With the displayed quotient norms there is a canonical isometric algebra isomorphism $B\widehat\otimes_A C\simeq H$. This is the separated completed tensor product, not an assertion that the ordinary algebraic tensor is already complete. It has the bounded pushout universal property for commutative Banach targets.}
+{其中 $(I,J)$ 为实际延伸理想之和。对所列商范数，存在典范等距代数同构 $B\widehat\otimes_A C\simeq H$。这里使用分离完备张量积，并不断言普通代数张量积已经完备。它对交换 Banach 目标具有有界 pushout 泛性质。}
+
+\bi{If $I=(gT_i-f_i)$ and $J=(hS_j-e_j)$ are rational relation ideals, then $H$ is isometric to the rational presentation with denominator $gh$ and the following numerator-radius pairs:}
+{若 $I=(gT_i-f_i)$、$J=(hS_j-e_j)$ 为 rational 关系理想，则 $H$ 与如下 rational 表示等距：其分母为 $gh$，分子与半径分别为}
+\[
+ (hf_i,\rho_i),\qquad (ge_j,\tau_j),\qquad
+ (f_ie_j,\rho_i\tau_j).
+\]
+\bi{Its spectrum is the intersection of the two original rational subsets. Finite iteration gives all intersections, including repeated members, with compatible restriction maps. Empty intersections have zero algebra.}
+{它的谱是原来两个 rational 子集的交。有限次迭代给出全部有限交叠，包括重复成员，并给出相容的限制映射。空交叠具有零代数。}
+\end{proposition}
+\begin{proof}
+\bi{All weighted coefficient algebras here are affinoid by Proposition~\ref{fnd:closedweightedpresentation}; their actual ideals are closed and their quotients are complete by Corollary~\ref{fnd:generalizedaffinoidquotients}. On the ordinary balanced tensor product, the projective seminorm is submultiplicative by multiplying finite representations and taking their two infima. Its null space is an ideal. Separation and completion thus give a Banach algebra $G=B\widehat\otimes_A C$, or zero. The structural maps are contractive. The two contractive maps into $H$ give a contractive map $G\to H$ by their balanced product.}
+{由 Proposition~\ref{fnd:closedweightedpresentation}，这里全部加权系数代数均为 affinoid；由 Corollary~\ref{fnd:generalizedaffinoidquotients}，其实际理想闭，商完备。在普通平衡张量积上，将有限表示相乘并对两个表示分别取下确界，可知 projective 半范数为次乘的，且零半范数子空间为理想。因此分离并完备化得到 Banach 代数 $G=B\widehat\otimes_A C$，或零代数。结构映射为 contractive。通过两个到 $H$ 的 contractive 映射的平衡乘积，得到 contractive 映射 $G\to H$。}
+
+\bi{Conversely the elements $\bar T_i\otimes1$ and $1\otimes\bar S_j$ have all powers bounded by $\rho_i^m$ and $\tau_j^m$. Proposition~\ref{fnd:powerboundedsubstitution} gives a contractive map from the joint coefficient algebra to $G$. It kills $I$ and $J$, first on each whole coefficient algebra by bounded polynomial approximation, hence on their extended ideals. It descends to a contractive $H\to G$. The composites fix all coefficients and variables in $H$ and all pure tensors in $G$. Density makes them identities, proving the isometry. More generally, two bounded maps from $B,C$ to a Banach algebra agreeing on $A$ have a bounded balanced product; its finite-representation bound extends it uniquely to $G$. This proves the bounded pushout property.}
+{反方向，元素 $\bar T_i\otimes1$、$1\otimes\bar S_j$ 的全部幂，范数分别至多为 $\rho_i^m$、$\tau_j^m$。由 Proposition~\ref{fnd:powerboundedsubstitution}，得到从联合系数代数到 $G$ 的 contractive 映射。利用有界的多项式逼近，它在每个整体系数代数上零化 $I$、$J$，因而零化它们的延伸理想，并下降为 contractive 映射 $H\to G$。两个复合固定 $H$ 中的全部系数与变量，以及 $G$ 中的全部纯张量；由稠密性，它们均为恒等映射，故所得同构等距。更一般地，若来自 $B,C$ 的两个有界映射在 $A$ 上相同，则其乘积为有界平衡双线性映射；有限张量表示的估计将其唯一延拓到 $G$。这证明有界 pushout 泛性质。}
+
+\bi{For the rational assertion, multiply the two unit-ideal identities. They show that $gh$ and the listed numerators generate the unit ideal. Call their rational algebra $P$, with variables $Y_i,Z_j,W_{ij}$ of the listed radii. In $H$, both $g$ and $h$ are units. The assignments}
+{对 rational 断言，将两个单位理想恒等式相乘，可知 $gh$ 及所列分子生成单位理想。记相应 rational 代数为 $P$，变量 $Y_i,Z_j,W_{ij}$ 采用所列半径。在 $H$ 中，$g,h$ 均为单位。代入}
+\[
+ Y_i\longmapsto\bar T_i,\qquad Z_j\longmapsto\bar S_j,
+ \qquad W_{ij}\longmapsto\bar T_i\bar S_j
+\]
+\bi{respect all bounds and relations and give a contractive $P\to H$. In $P$, the product $gh$ is a unit, so both factors are units. Dividing its relations gives $gY_i=f_i$, $hZ_j=e_j$, and $W_{ij}=Y_iZ_j$. Sending $T_i$ to $Y_i$ and $S_j$ to $Z_j$ therefore gives a contractive $H\to P$, inverse on all variables. The point theorem identifies the resulting inequalities with the two original sets: divide the $hf_i$ and $ge_j$ inequalities by the nonzero factors; conversely the two original sets imply all product inequalities.}
+{保持全部范数界与关系，因此给出 contractive 映射 $P\to H$。在 $P$ 中，乘积 $gh$ 为单位，所以每个因子均为单位。对其关系作除法，得到 $gY_i=f_i$、$hZ_j=e_j$、$W_{ij}=Y_iZ_j$。因此 $T_i\mapsto Y_i$、$S_j\mapsto Z_j$ 给出 contractive 映射 $H\to P$，且两个映射在所有变量上互逆。由谱点定理，所得不等式与原来的两组不等式相同：将 $hf_i$、$ge_j$ 的不等式除以非零因子的值；反之，两组原不等式蕴含全部乘积不等式。}
+
+\bi{Iteration gives finite intersections. Their comparison and restriction maps agree by the uniqueness in Theorem~\ref{fnd:generalizedrationaluniversal}; a repeated member is consequently redundant by bounded inverse maps. Theorem~\ref{fnd:generalizedpointunitcriterion} makes an empty intersection algebra zero. Every zero-quotient case in the pushout assertion also follows directly: if one factor ideal contains one, so does the joint ideal.}
+{迭代即得有限交叠。由 Theorem~\ref{fnd:generalizedrationaluniversal} 的唯一性，各比较与限制映射相容；特别地，重复成员可通过有界互逆映射删去。由 Theorem~\ref{fnd:generalizedpointunitcriterion}，空交叠的代数为零。Pushout 断言中的零商情形也可直接处理：若某个因子理想包含一，则联合理想也包含一。}
+\end{proof}
+</pre></details><ul class="records"><li><a href="/r/NAG-001572/#nonempty_if_nonzero_actual_quotient">CLAUSE:NAG-001572:nonempty_if_nonzero_actual_quotient</a> · selected scope</li><li><a href="/r/NAG-001572/#nonempty_if_nonzero_actual_quotient">CLAUSE:NAG-001572:nonempty_if_nonzero_actual_quotient</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001576/#actual_one_row_and_bounded_points">CLAUSE:NAG-001576:actual_one_row_and_bounded_points</a> · selected scope</li><li><a href="/r/NAG-001576/#actual_one_row_and_bounded_points">CLAUSE:NAG-001576:actual_one_row_and_bounded_points</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001577/#actual_bounded_and_affinoid_test">CLAUSE:NAG-001577:actual_bounded_and_affinoid_test</a> · selected scope</li><li><a href="/r/NAG-001577/#actual_bounded_and_affinoid_test">CLAUSE:NAG-001577:actual_bounded_and_affinoid_test</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole</li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001554/">fnd:closedweightedpresentation</a></li><li><a href="/r/NAG-001562/">fnd:generalizedaffinoidquotients</a></li><li><a href="/r/NAG-001398/">fnd:powerboundedsubstitution</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

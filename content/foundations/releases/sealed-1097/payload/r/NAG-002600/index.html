@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002600/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Exact arithmetic subdivisions · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002600 · Accepted whole</p><h1>Exact arithmetic subdivisions</h1><p><a href="/projects/foundations/chapters/appendix-f/">F Descent of an algebraized polarized tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002600.original">Open in the English reader · PDF page 1985</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d522e21a79c6449f2206e07724791232b1ea9825ff038d99050762fb5b65600b">
+\begin{theorem}[Exact arithmetic subdivisions]
+\label{cand:f5sub:exactsubdivision}
+Every compatible cut datum \(S=(S_e)\) has a model \(\mathcal X[S]\),
+preserving \(D\), with geometric vertices exactly
+\[
+ p^{-1}(V(\mathcal X))\ \cup\
+       \bigcup_e\{\zeta_e(\exp(-s)):s\in S_e\}.             \tag{*}
+\]
+It dominates \(\mathcal X\) and is unique up to the unique marked
+generic-identity isomorphism. It is independent of the splitting
+field and coordinates when the prescribed analytic points are fixed.
+
+If \(S_e\subset T_e\) for all \(e\), there is a unique compatible
+morphism \(\mathcal X[T]\to\mathcal X[S]\).
+The model \(\mathcal X[S\cup T]\) is the least common dominating
+model of \(\mathcal X[S]\) and \(\mathcal X[T]\), even among models
+with vertices outside the original skeleton.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="d53cfb6844b236257c1be9b9d5c2695bfabd86c76aab185100adff9e9525f714">
+\begin{proof}
+First form the reflection closure
+\(S_e^\#=S_e\cup(\ell_e-S_e)\).
+For nodes above one original closed node, these are the same finite
+numerical set independently of branch ordering: \(G\) acts
+transitively above that node, and reflection no longer changes
+the set.
+
+We construct an original-ring model \(\mathcal X^\#\) with exactly
+these extra cuts. For a nonempty reflection-invariant set in
+\((0,\ell)\), let \(d\) be its smallest member.
+Then \(d\in\Gamma\) and \(d\leq\ell/2\).
+Apply Lemma~\ref{cand:f5sub:originalsymmetric}.
+If \(d&lt;\ell/2\), all remaining cuts lie in the central annulus,
+of length \(\ell-2d\); their new coordinates \(s-d\) again form a
+reflection-invariant set. If \(d=\ell/2\), there was just one cut.
+
+Over \(l\), the new central nodes are rational and split by the
+displayed charts. They form a \(G\)-invariant collection, hence
+are the full inverse image of a collection of closed nodes of the
+actual current \(k\)-model. Perform the same original-ring operation
+at these nodes. At each nonempty step at least one member of the
+finite list is removed. All new distances are differences in
+\(\Gamma\), so the required scalars belong to \(K\).
+This finite process, applied at the finitely many original nodes,
+constructs \(\mathcal X^\#\) and its actual map to \(\mathcal X\).
+It uses no least positive value and no discreteness assumption.
+
+Retain all old geometric components and exactly the new components
+labelled by \(S_e\), discarding those in \(S_e^\#\setminus S_e\).
+This selection is \(G\)-invariant. The new components and their
+attachment points are split over \(l\): they are the exceptional
+projective lines in the accepted chart calculation, and the
+pointed etale maps induce isomorphisms on the exceptional fibres.
+Thus the action of \(\operatorname{Aut}(\overline k/k)\) on the new
+components factors through \(\operatorname{Gal}(l/k)\).
+All old geometric components are retained. The selection is
+therefore invariant under the full residual action.
+By \dep{v037:f5:geometriccomponentorbits}, it is the entire inverse
+image of a subset \(V\subset V(\mathcal X^\#)\) of actual
+original-field component vertices.
+
+Each connected collection of discarded geometric components is a
+chain of smooth projective lines with no marking and two attaching
+branches on retained components. It cannot be a cycle: every
+original edge has retained endpoints, including the retained old
+vertex at both ends of a self-loop. If the two attaching branches
+meet the same retained component, they are counted twice.
+This is exactly the marked forest condition
+\dep{v036:f5:forestcondition}, with \(b=2,m=0\).
+The actual original-ring theorem \dep{v036:f5:markedcontraction}
+now gives a projective model \(\mathcal X[S]\) with precisely (*).
+
+All old vertices remain, so \dep{v037:f5:algebraicdomination} gives
+\(\mathcal X[S]\to\mathcal X\).
+That accepted theorem and \dep{v037:f5:intrinsicuniqueness}
+also give uniqueness, marking compatibility and the morphisms for
+\(S\subset T\). They prove independence of auxiliary choices,
+using \dep{v036:f5:vertexarithmetic} to identify original vertex
+sets from their entire geometric inverse images.
+
+The union datum is compatible. Every model dominating both
+\(\mathcal X[S]\) and \(\mathcal X[T]\) contains both vertex sets,
+hence their union, which is \(V(\mathcal X[S\cup T])\).
+Applying \dep{v037:f5:algebraicdomination} gives its unique morphism
+to \(\mathcal X[S\cup T]\), as required.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002600-reader.jpg" alt="Typeset mathematical passage from PDF page 1985" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1985">PDF page 1985 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002032/">NAG-002032</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002099/">NAG-002099</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002220/">NAG-002220</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002222/">NAG-002222</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002262/">NAG-002262</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002274/">NAG-002274</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002311/">NAG-002311</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002312/">NAG-002312</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002326/">NAG-002326</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002599/">NAG-002599</a> · selected whole <small>(selected native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002599/">cand:f5sub:originalsymmetric</a></li><li><a href="/r/NAG-002273/#context-91a7d74ee4c6dc52">v036:f5:forestcondition</a></li><li><a href="/r/NAG-002274/">v036:f5:markedcontraction</a></li><li><a href="/r/NAG-002271/">v036:f5:vertexarithmetic</a></li><li><a href="/r/NAG-002311/">v037:f5:algebraicdomination</a></li><li><a href="/r/NAG-002326/">v037:f5:geometriccomponentorbits</a></li><li><a href="/r/NAG-002312/">v037:f5:intrinsicuniqueness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

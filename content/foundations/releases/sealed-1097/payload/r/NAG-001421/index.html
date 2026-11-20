@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001421/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Convolution with two-sided exponents · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001421 · Accepted whole</p><h1>Convolution with two-sided exponents</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.14.3">Open in the English reader · PDF page 156</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8a25122e42db244ef9968781eccebbf2c4ba05dd5aa2e181262c1698d61ef0a2">
+\begin{lemma}[\bi{Convolution with two-sided exponents}{Two-sided exponents 的 convolution}]\label{fnd:weightedcoefficientconvolution}
+\bi{Convolution makes $B=\mathcal C_w(A)$ a Banach $A$-algebra and $\mathcal C_w(M)$ a Banach $B$-module. The constant embedding $A\to B$ is isometric, and}
+{Convolution 使 $B=\mathcal C_w(A)$ 成为 Banach $A$-algebra，并使 $\mathcal C_w(M)$ 成为 Banach $B$-module。Constant embedding $A\to B$ isometric，且}
+\[
+ \|bm\|_w\leq\|b\|_w\|m\|_w,
+ \qquad
+ (bm)_\eta=\sum_{\gamma+\delta=\eta}b_\gamma m_\delta.
+\]
+\bi{The coefficient sum converges even when it is infinite, and its value is independent of its enumeration.}
+{即使 coefficient sum 为无限和，它也收敛，且其值与 enumeration 无关。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="34df9fe00ed4d01801c3b0f516a0375ece88f60cd10d1d0abb0df808170c0ae5">
+\begin{proof}
+\bi{For finitely supported families, convolution is a finite sum. The module inequality and the weight inequality give}
+{对 finitely supported families，convolution 是有限和。由 module inequality 与 weight inequality，}
+\[
+ w_\eta\left\|\sum_{\gamma+\delta=\eta}b_\gamma m_\delta\right\|
+ \leq\max_{\gamma+\delta=\eta}
+       (w_\gamma\|b_\gamma\|)(w_\delta\|m_\delta\|)
+ \leq\|b\|_w\|m\|_w.
+\]
+\bi{Choose finite-support approximations $b^{(n)}\to b$ and $m^{(n)}\to m$. These sequences are bounded, and}
+{选择 finite-support approximations $b^{(n)}\to b$、$m^{(n)}\to m$。这些 sequences 都 bounded，且}
+\[
+ b^{(n)}m^{(n)}-b^{(k)}m^{(k)}
+ = (b^{(n)}-b^{(k)})m^{(n)}
+       +b^{(k)}(m^{(n)}-m^{(k)}).
+\]
+\bi{The finite-product estimate makes their products Cauchy. Lemma~\ref{fnd:weightedcoefficientcompleteness} gives a limit independent of the approximations, with the same norm bound. Associativity, commutativity for $B$, the unit identity and the module law pass from finite supports to limits by this estimate. The constant embedding is isometric because $w_0=1$.}
+{Finite-product estimate 保证 products 为 Cauchy。由 Lemma~\ref{fnd:weightedcoefficientcompleteness}，products 具有与 approximations 无关的 limit，并保持同一个 norm bound。Associativity、$B$ 的 commutativity、unit identity 和 module law 均通过此 estimate 从 finite supports 保持到 limits。由于 $w_0=1$，constant embedding isometric。}
+
+\bi{To identify the coefficient formula, fix $\eta$. The two nonnegative real families $w_\gamma\|b_\gamma\|$ and $w_\delta\|m_\delta\|$ are bounded and tend to zero outside finite subsets. For every $\varepsilon&gt;0$, only finitely many pairs have product at least $\varepsilon$: if both supremums are nonzero, each factor must be at least $\varepsilon$ divided by the other supremum. For pairs with $\gamma+\delta=\eta$,}
+{为识别 coefficient formula，固定 $\eta$。两个非负实数 families $w_\gamma\|b_\gamma\|$ 与 $w_\delta\|m_\delta\|$ 都 bounded，并在有限集之外趋于零。对每个 $\varepsilon&gt;0$，只有有限个 pairs 的 product 至少为 $\varepsilon$：若两个 supremums 均非零，则每个 factor 都至少等于 $\varepsilon$ 除以另一个 supremum。对满足 $\gamma+\delta=\eta$ 的 pairs，又有}
+\[
+ w_\eta\|b_\gamma m_\delta\|
+       \leq(w_\gamma\|b_\gamma\|)(w_\delta\|m_\delta\|).
+\]
+\bi{The summability criterion of Lemma~\ref{fnd:seriescriterion} therefore applies. Coordinate evaluation is continuous, so the sum equals the coefficient of the product constructed by finite-support approximation. If either family is zero, this assertion is immediate.}
+{因此可以应用 Lemma~\ref{fnd:seriescriterion} 的 summability criterion。Coordinate evaluation 为 continuous，所以该 sum 等于通过 finite-support approximation 构造的 product 的相应 coefficient。若其中一个 family 为零，结论直接成立。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="f73229f4ff5f0f90e7e9e608be341322b26d777818fe387f57238427ba31b79a">
+\bi{Throughout, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial. A Banach $K$-space has a definite, complete, non-Archimedean, $K$-homogeneous norm. Banach algebras are commutative and unital, with a submultiplicative norm and $\|1\|=1$; Banach module actions satisfy $\|am\|\leq\|a\|\|m\|$. All finite powers have the maximum norm; the maximum over an empty family is zero. Norm-strictness has the quantitative meaning of Definition~\ref{fnd:normstrictconvention}.}
+{本节中，$K$ 关于固定的 real-valued non-Archimedean absolute value 完备，允许该 absolute value 平凡。Banach $K$-space 的 norm 为 definite、complete、non-Archimedean 且 $K$-homogeneous。Banach algebras 均 commutative、unital，其 norm submultiplicative 且 $\|1\|=1$；Banach module actions 满足 $\|am\|\leq\|a\|\|m\|$。所有 finite powers 使用 maximum norm，并约定空 family 的 maximum 为零。Norm-strictness 采用 Definition~\ref{fnd:normstrictconvention} 的定量含义。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="498618ff3a68d3854ee9334a2e9df826b52f4174164c3987cc203bc069f39a0f">
+\bi{To interpret the preceding presentation as scalar extension, the coefficient space must carry multiplication. Let $\Gamma=\mathbb N^p\times\mathbb Z^q$, where $p,q\geq0$ are finite. Choose a weight $w:\Gamma\to\mathbb R_{&gt;0}$ satisfying}
+{为将上述 presentation 解释为 scalar extension，需要在 coefficient space 上定义 multiplication。令 $\Gamma=\mathbb N^p\times\mathbb Z^q$，其中 $p,q\geq0$ 有限。选择 weight $w:\Gamma\to\mathbb R_{&gt;0}$，满足}
+\[
+ w_0=1,\qquad w_{\gamma+\delta}\leq w_\gamma w_\delta
+       \quad(\gamma,\delta\in\Gamma).
+\]
+\bi{For a Banach $A$-module $M$, abbreviate $\mathcal C_w(M)=\mathcal C_w(\Gamma,M)$ and write its elements as $\sum_\gamma m_\gamma X^\gamma$. The symbols denote coefficient families; convergence refers to the weighted norm just defined.}
+{对 Banach $A$-module $M$，简记 $\mathcal C_w(M)=\mathcal C_w(\Gamma,M)$，并将其元素写成 $\sum_\gamma m_\gamma X^\gamma$。这些符号表示 coefficient families；convergence 均指刚定义的 weighted norm。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001421-reader.jpg" alt="Typeset mathematical passage from PDF page 156" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=156">PDF page 156 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(applied native theorem)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(applied native theorem)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000221/">fnd:seriescriterion</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

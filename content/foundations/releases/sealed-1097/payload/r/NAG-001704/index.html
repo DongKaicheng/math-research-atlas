@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001704/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Presentation calculus for relative interior · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001704 · Accepted whole</p><h1>Presentation calculus for relative interior</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.33.21">Open in the English reader · PDF page 282</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="383b5f7e46eac59e985a78e74175ec4b96da8fa08f5127f0a6b734bf37d5d209">
+\begin{proposition}[\bi{Presentation calculus for relative interior}{相对内部的表示计算}]
+\label{fnd:affinoidinteriorcalculus}
+\bi{For affinoid morphisms, the relative interior of Definition~\ref{fnd:relativeinterior} is open and is unchanged by bounded isomorphisms of the given Banach-algebra presentations. For composable affinoid morphisms $Z\xrightarrow{g}Y\xrightarrow{f}X$,}
+{对 affinoid 态射，Definition~\ref{fnd:relativeinterior} 的相对内部为开集，且在给定 Banach 代数表示的有界同构下保持。对可复合的 affinoid 态射 $Z\xrightarrow{g}Y\xrightarrow{f}X$，}
+\[
+ \operatorname{Int}(Z/Y)\cap g^{-1}\operatorname{Int}(Y/X)
+        \subseteq\operatorname{Int}(Z/X).
+\]
+\bi{If $Y=\mathcal M(B)$, $X=\mathcal M(A)$ and $X&#x27;=\mathcal M_L(C)$ for a bounded $A\to C$ over a complete extension $L/K$, then, with $Y&#x27;=\mathcal M_L(B\widehat\otimes_A C)$ and projection $p:Y&#x27;\to Y$,}
+{若 $Y=\mathcal M(B)$、$X=\mathcal M(A)$，且 $X&#x27;=\mathcal M_L(C)$ 来自在完备扩域 $L/K$ 上的有界映射 $A\to C$，记 $Y&#x27;=\mathcal M_L(B\widehat\otimes_A C)$，投影为 $p:Y&#x27;\to Y$，则}
+\[
+ p^{-1}\operatorname{Int}(Y/X)
+          \subseteq\operatorname{Int}(Y&#x27;/X&#x27;).
+\]
+\end{proposition}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5b9784e8a3c1f4721c5d92ace7f7428d4f13d79ce57689f108f91c7c9ddd4a08">
+\begin{proof}
+\bi{For each norm-admissible relative presentation, the locus defined by its finitely many strict inequalities is open in the evaluation topology. Relative interior is the union of these loci over all presentations, so it is open. A bounded algebra isomorphism with bounded inverse transports norm-admissible surjections to such surjections and preserves the pointwise inequalities. This proves the invariance assertion.}
+{对每个 norm-admissible 相对表示，它的有限个严格不等式在取值拓扑中定义开集。相对内部就是所有表示的这些开集之并，因此为开集。有界且逆有界的代数同构，将 norm-admissible 满射搬运为同类满射，并保持逐点不等式，故得到不变性。}
+
+\bi{For composition, write $X=\mathcal M(A)$, $Y=\mathcal M(B)$, $Z=\mathcal M(D)$. At a point in the left side choose presentations $A\{r^{-1}T\}\twoheadrightarrow B$ and $B\{s^{-1}S\}\twoheadrightarrow D$ whose coordinate values there satisfy the strict inequalities. Coefficientwise controlled lifts, Proposition~\ref{fnd:weightedc0exact}, give a norm-strict surjection}
+{对复合，写成 $X=\mathcal M(A)$、$Y=\mathcal M(B)$、$Z=\mathcal M(D)$。在左边的一个点处，选择表示 $A\{r^{-1}T\}\twoheadrightarrow B$ 及 $B\{s^{-1}S\}\twoheadrightarrow D$，使相应坐标值满足严格不等式。逐系数的受控提升，即 Proposition~\ref{fnd:weightedc0exact}，给出 norm-strict 满射}
+\[
+ A\{r^{-1}T,s^{-1}S\}
+      \longrightarrow B\{s^{-1}S\}\longrightarrow D .
+\]
+\bi{The iterated coefficient algebra equals the displayed joint algebra by Lemma~\ref{fnd:weightedc0rearrangement}. Composition multiplies the lifting bounds, so the composite is norm-strict. Both lists of coordinates satisfy the required strict inequalities at the original point, proving the inclusion.}
+{由 Lemma~\ref{fnd:weightedc0rearrangement}，迭代系数代数等于所列联合代数。复合映射的提升界为两个提升界的乘积，因此仍为 norm-strict。两组坐标在原点处均满足所需严格不等式，故得到此包含。}
+
+\bi{For base change, use a relative presentation witnessing that $p(y&#x27;)\in\operatorname{Int}(Y/X)$. Proposition~\ref{fnd:generalizedrelativepushout} identifies its base change with the norm-admissible presentation $C\{r^{-1}T\}\twoheadrightarrow B\widehat\otimes_A C$. The values of every coordinate at $y&#x27;$ equal its values at $p(y&#x27;)$. The same strict inequalities therefore witness that $y&#x27;$ is interior over $X&#x27;$.}
+{对基变换，选取一个证明 $p(y&#x27;)\in\operatorname{Int}(Y/X)$ 的相对表示。Proposition~\ref{fnd:generalizedrelativepushout} 将其基变换识别为 norm-admissible 表示 $C\{r^{-1}T\}\twoheadrightarrow B\widehat\otimes_A C$。每个坐标在 $y&#x27;$ 的值都等于其在 $p(y&#x27;)$ 的值。因此同样的严格不等式证明 $y&#x27;$ 在 $X&#x27;$ 上为内点。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001704-reader.jpg" alt="Typeset mathematical passage from PDF page 282" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=282">PDF page 282 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>NAG-000214 · typed target unresolved in this export</li><li>NAG-000214 · typed target unresolved in this export <small>(requires)</small></li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole</li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001552/">NAG-001552</a> · selected whole</li><li><a href="/r/NAG-001552/">NAG-001552</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole</li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001688/">fnd:generalizedrelativepushout</a></li><li><a href="/r/NAG-001419/">fnd:weightedc0exact</a></li><li><a href="/r/NAG-001552/">fnd:weightedc0rearrangement</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

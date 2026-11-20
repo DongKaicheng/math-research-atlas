@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001955/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Graded extension by arbitrary Gauss fields · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001955 · Accepted whole</p><h1>Graded extension by arbitrary Gauss fields</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.18.3">Open in the English reader · PDF page 550</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4830c1504c0d6681465f98d78d5e697d7d3a4e475662090343e0f6ed5425a148">
+\begin{theorem}[\bi{Graded extension by arbitrary Gauss fields}
+{任意 Gauss 域扩张的分次相容性}]
+\label{fnd:generalgaussgradedbasechange}
+\bi{Let $A$ be affinoid and let $L$ be an iterated Gauss-field
+extension of $K$, with finitely many arbitrary positive radii.
+There are canonical isomorphisms}
+{设 $A$ 为 affinoid，$L$ 为使用有限个任意正半径从 $K$ 得到的
+迭代 Gauss 域扩张。存在典范同构}
+\[
+ \widetilde A^{\rm gr}\otimes_{\widetilde K^{\rm gr}}
+      \widetilde L^{\rm gr}
+       \simeq\widetilde{A\widehat\otimes_KL}^{\rm gr}.
+\]
+\bi{If $(e_i)$ is the resulting orthogonal basis of $L/K$,
+then for every coefficient expansion,}
+{若 $(e_i)$ 为所得的 $L/K$ 正交基，则对每个系数展开有}
+\[
+ \rho_{A_L}\left(\sum_i a_i e_i\right)
+           =\max_i\rho_A(a_i)|e_i|.
+\]
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c32ebd61924f2a4e827b243e24a2c978d3c27f91c76b8b91837b5216b7ad31a5">
+\begin{proof}
+At each stage of the iterated Gauss extension, the scalar algebra
+is the actual affinoid scalar extension of
+Proposition~\ref{fnd:generalscalarpresentation}.
+
+Let \(K\) be complete, \(r&gt;0\), and
+\(L=\widehat{K(t)}_r\). Use the orthogonal Banach basis
+\((e_i)_{i\in I}\) from Lemma~\ref{fnd:generalgaussfieldbasis} and put \(w_i=|e_i|\).
+Here \(c_0(I,w;A)\) consists of all families for which only
+finitely many \(\|a_i\|w_i\) exceed any fixed positive threshold.
+Let \(A\) carry its given admissible Banach algebra norm. At this
+step the scalar algebra is the actual separated completed
+projective product \(A_L=A\widehat\otimes_K L\).
+
+The coefficient functionals of the basis are bounded maps
+\(\ell_i:L\to K\) of norm at most \(w_i^{-1}\). On \(A\otimes_K L\)
+they give
+\[
+ w_i\|(1\otimes\ell_i)(z)\|\leq \|z\|_\pi .
+\]
+Indeed for every finite representation
+\(z=\sum_j a_j\otimes\lambda_j\) the ultrametric inequality bounds
+the left side by \(\max_j\|a_j\||\lambda_j|\). Take the infimum
+over all such representations. For a finite coefficient family,
+the representation \(\sum_i a_i\otimes e_i\) gives the reverse
+bound for \(\|z\|_\pi\), hence equality with the weighted maximum.
+Finite basis expansions approximate all scalar factors of every
+finite tensor in the projective seminorm. Thus finite coefficient
+families are dense in the separated completion. They are also
+dense in the complete weighted \(c_0\)-space, so that
+\[
+ A_L \simeq c_0(I,w;A)
+\]
+isometrically as Banach spaces, via the actual coefficient maps.
+This argument uses finite truncations for each family and places
+no countability condition on \(I\).
+
+For \(x\in\mathcal M_K(A)\) set \(F=\mathcal H(x)\) and
+\(L_x=\widehat{F(t)}_r\). The Gauss absolute value is
+multiplicative on polynomials by Proposition~\ref{fnd:gaussnorm}, hence extends by
+ratios to the rational function field. The inclusion
+\(K(t)\hookrightarrow F(t)\) is isometric for these Gauss norms
+and extends to \(L\hookrightarrow L_x\). The map
+\(a\otimes l\mapsto a(x)l\) is contractive for each finite tensor
+representation, by Lemma~\ref{new:seminormcontractive} and the isometric scalar
+inclusion. It therefore extends to a bounded \(L\)-algebra map
+\(A_L\to L_x\) and gives a bounded point \(x_r\) of \(A_L\).
+By the extension-stability in Lemma~\ref{fnd:generalgaussfieldbasis}, the value of a finite
+coefficient family at this point is
+\(\max_i|a_i(x)|w_i\). The same equality holds for every weighted
+\(c_0\)-family by truncation and contractivity.
+
+Every bounded point of \(A_L\) restricts along the constant
+inclusion to a bounded point of \(A\) and has scalar values
+\(|e_i|=w_i\). The ultrametric inequality and truncation bound
+its evaluation above by \(\max_i \rho_A(a_i)w_i\).
+Conversely, for each \(i\) use the points \(x_r\) as \(x\)
+ranges through \(\mathcal M_K(A)\) to bound the upper spectral
+seminorm from below by \(\rho_A(a_i)w_i\). Consequently
+\[
+ \rho_{A_L}\Bigl(\sum_i a_i e_i\Bigr)=
+       \max_i \rho_A(a_i)w_i .
+\]
+Here \(\rho_A(a_i)\leq\|a_i\|\), so a positive supremum is a
+maximum. If all weights of the evaluated coefficients vanish
+the same inequalities give zero. The zero algebra gives both
+sides zero with the usual zero convention.
+
+Assume the one-step coefficient and spectral formulas for the chosen
+positive Gauss radius, including the actual coefficient expansion
+on \(A_L=A\widehat\otimes_K L\). Write \(L\) in the orthogonal Banach
+basis \((e_i)\) of Lemma~\ref{fnd:generalgaussfieldbasis} and put \(w_i=|e_i|\). For a
+submultiplicative spectral seminorm \(\rho\), use the positive
+degree \(q\) quotient \(\{\rho\leq q\}/\{\rho&lt;q\}\).
+
+The bounded structural maps from \(A\) and \(L\) into \(A_L\) are
+filtered for these seminorms. For \(A\) this follows by restricting
+points and for \(L\) by their scalar absolute values. The same
+inequalities apply to the zero algebra. Hence multiplication
+of homogeneous representatives induces the canonical graded
+algebra homomorphism
+\[
+ \widetilde A^{\rm gr}\otimes_{\widetilde K^{\rm gr}}
+     \widetilde L^{\rm gr}\longrightarrow\widetilde{A_L}^{\rm gr}.
+\]
+For \(z=\sum_i a_i e_i\) with \(\rho_{A_L}(z)\leq q\), only
+finitely many indices satisfy \(\rho_A(a_i)w_i=q&gt;0\).
+Indeed \(\rho_A(a_i)\leq\|a_i\|\), and the coefficient weights
+tend to zero in the weighted \(c_0\) sense. Among the remaining
+indices the supremum of the spectral weights is strictly
+below \(q\): all but finitely many are smaller than \(q/2\), and
+every retained nonleading weight is strictly below \(q\). The
+spectral formula therefore identifies the degree \(q\) class of
+\(z\) with the finite sum of the classes
+\(\operatorname{in}_{q/w_i}(a_i)\operatorname{in}_{w_i}(e_i)\)
+at equality indices. For a finite sum of homogeneous coefficients
+in degree \(q\), choose representatives of size at most \(q/w_i\).
+If some coefficient class is nonzero, the formula gives spectral
+size exactly \(q\), so its image class is nonzero.
+
+Applying the same argument to \(L\) with its orthogonal coefficient
+norm shows that the \(\operatorname{in}_{w_i}(e_i)\) freely generate
+\(\widetilde L^{\rm gr}\) over \(\widetilde K^{\rm gr}\) as a
+graded module. The preceding surjectivity and injectivity in each
+degree prove that the displayed map is an isomorphism. Its
+multiplication is the one induced by multiplying actual lifts.
+
+For iteration, let \(K\subset L\subset L&#x27;\) be successive stages,
+and let \((f_j)\) be the next orthogonal basis, of weights
+\(v_j=|f_j|\). In the actual scalar algebra write
+\(z=\sum_j b_j f_j\), \(b_j=\sum_i a_{ij}e_i\). Each column is a
+weighted \(c_0\)-family and the numbers
+\((\sup_i\|a_{ij}\|w_i)v_j\) tend to zero. This is equivalent to
+the single weighted \(c_0\) condition on
+\((\|a_{ij}\|w_iv_j)_{i,j}\): above any positive threshold only
+finitely many columns can occur and each contributes finitely
+many entries. Conversely the single condition implies both
+column conditions by testing at half the given threshold.
+The same norm calculation with \(A=K\) gives the product
+orthogonal basis \((e_i f_j)\) of \(L&#x27;/K\).
+
+The scalar-tower comparison of Corollary~\ref{fnd:iteratedaffinoidbasechange} identifies
+\((A_L)_{L&#x27;}\) with \(A_{L&#x27;}\), compatibly with structural maps.
+On finite coefficient sums it sends the two-stage expressions
+to \(\sum_{i,j}a_{ij}(e_i f_j)\). The weighted \(c_0\) description
+and continuity give the same equality for limits. The two
+spectral formulas give
+\[
+ \rho_{A_{L&#x27;}}(z)
+ =\max_j v_j\rho_{A_L}(b_j)
+ =\max_{i,j}v_jw_i\,\rho_A(a_{ij}).
+\]
+The graded maps compose by the usual algebraic tensor associator,
+since each is induced by multiplication of representatives.
+Iteration proves the claim for any finite tower, including the
+empty tower, whose comparison is the identity.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001955-reader.jpg" alt="Typeset mathematical passage from PDF page 550" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=550">PDF page 550 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole</li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole</li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001954/">NAG-001954</a> · selected whole</li><li><a href="/r/NAG-001954/">NAG-001954</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001954/">fnd:generalgaussfieldbasis</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001689/">fnd:iteratedaffinoidbasechange</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

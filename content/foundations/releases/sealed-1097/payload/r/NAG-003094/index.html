@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003094/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Strong truncation in the frozen retraction scope · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003094 · Accepted whole</p><h1>Strong truncation in the frozen retraction scope</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003094.original">Open in the English reader · PDF page 2096</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="58766f6c5b1d99fa6a6623557b864cfbf88288ecbb06926cacdf5f3504a4438c">
+\begin{theorem}[Strong truncation in the frozen retraction scope]\label{thm:log}
+Under the preceding exact hypotheses, $T_M$ and $T$ are continuous for
+$\tau_a$, and $T_M=T$ on each $\tau_a$-bounded test set for all
+sufficiently large real $M$.
+
+More quantitatively, every cutoff presentation admits constants
+$C_i,H_{i,g},H_{i,h}\geq0$, with $H_i=\max(H_{i,g},H_{i,h})$, such that
+\begin{equation}\label{eq:logtail}
+ |D_M Q_i\eta|\leq A_i(M)p_i(\eta),\qquad
+ A_i(M)\leq C_i\bigl((H_{i,g}-M)_++(H_{i,h}-M)_+\bigr),
+\end{equation}
+where $p_i(\eta)=\max_{I,J}\sup_{t_{f_i}(V_i)}|\eta_{I,J}|$.
+For each $a&gt;0$, the weights
+\[
+ w_i=1+C_i(H_{i,g}+H_{i,h})e^{aH_i}
+\]
+define a continuous gauge $P_a$ by \eqref{eq:gauge} and give
+\begin{equation}\label{eq:logstrong}
+ \sup_{\alpha\in B}|(T_M-T)(\alpha)|
+       \leq e^{-aM}\sup_{\alpha\in B}P_a(\alpha)
+\end{equation}
+on every $\tau_a$-bounded set $B$.
+All coherent-cycle weights, lattice volumes, cutoff coefficients,
+pullback minors and finite inclusion--exclusion terms enter $C_i$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="fc54314723b40da415fc8c787ddb7ef5f82dbc24e32fea705b09a7306ef67d9e">
+\begin{proof}
+The frozen \tagref{NAG-002480} supplies $T$, its continuity, and a compact
+$K_i\subset U\setminus Z$ containing the supports of all $Q_i\eta$.
+It also supplies eventual equality on the whole presentation, uniformly
+in its unrestricted coefficients. Multiplication by the fixed smooth
+$u_M$ and the finite native cell formula give continuity of $T_MQ_i$;
+hence $T_M$ is continuous by finality. Theorem~\ref{thm:stationarity}
+already proves uniform eventual equality on bounded sets.
+
+For the explicit constants, choose a fixed smooth cutoff equal to one
+near $K_i$ and supported where $g,h$ are units. Use finitely many actual
+joint moment charts there, adjoining $f_i,g,h$ and representations of
+this cutoff and $\chi_i$. The native finite cell formula has the form
+\begin{equation}\label{eq:cellerror}
+ D_MQ_i\eta=\sum_{\sigma,I,J}\epsilon_\sigma m_\sigma
+ \int_\sigma b_{\sigma,I,J}(w)\eta_{I,J}(P_\sigma w)
+       \bigl(\delta_M(l_{g,\sigma}(w))
+                   -\delta_M(l_{h,\sigma}(w))\bigr)\,d\lambda_\sigma,
+\end{equation}
+where $\delta_M(t)=\lambda_M(t)-t$, the cells are fixed and compact,
+$\epsilon_\sigma\in\{1,-1\}$ are the finite cover signs,
+$m_\sigma$ are the actual integer coherent-cycle multiplicities,
+$\lambda_\sigma$ is lattice-normalized volume, and the smooth fixed
+coefficients $b$ include the covector pullback minors.
+The maps $P_\sigma$ are the coefficient-coordinate projections, with
+images in $t_{f_i}(V_i)$, and $l_{g,\sigma},l_{h,\sigma}$ are the finite
+affine logarithms of the adjoined unit coordinates.
+The formula uses only the frozen native integration leaves
+\tagref{NAG-002389}, \tagref{NAG-002405}, \tagref{NAG-002416} and
+\tagref{NAG-002425}, on the fixed zero-avoiding support.
+
+Writing $s=t+M$ shows directly that
+\[
+ 0\leq\delta_M(t)\leq(-t-M)_+.
+\]
+Indeed it vanishes for $s\geq0$, and for $s&lt;0$ it is
+$(-s)(1-\rho(s+1))$. Define
+\begin{align*}
+ A_i(M)&amp;=\sum_{\sigma,I,J}|m_\sigma|
+ \int_\sigma |b_{\sigma,I,J}|
+ \bigl((-l_{g,\sigma}-M)_++(-l_{h,\sigma}-M)_+\bigr)d\lambda_\sigma,\\
+ C_i&amp;=\sum_{\sigma,I,J}|m_\sigma|
+                  \int_\sigma |b_{\sigma,I,J}|d\lambda_\sigma,\qquad
+ H_{i,a}=\max_{\sigma,w\in\sigma}(-l_{a,\sigma}(w))_+
+ \quad(a=g,h).
+\end{align*}
+Empty sums have $C_i=H_{i,g}=H_{i,h}=0$.
+Every integrand in these definitions is continuous on a compact cell.
+Thus these are legitimate frozen real integrals; no measure extension
+or cancellation of total variations is needed. Taking absolute values
+term by term in \eqref{eq:cellerror} proves \eqref{eq:logtail}.
+If $M&gt;H_i$ the bound is zero. If $M\leq H_i$, then
+\[
+ A_i(M)e^{aM}\leq C_i(H_{i,g}+H_{i,h})e^{aH_i}&lt;w_i.
+\]
+Proposition~\ref{prop:gauge} with $\varepsilon(M)=e^{-aM}$ gives
+\eqref{eq:logstrong}. The constants use actual multiplicities rather
+than an unweighted support or a claimed uniform comparison of charts.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003094-reader.jpg" alt="Typeset mathematical passage from PDF page 2096" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2096">PDF page 2096 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002405/#finite_cell_functional">CLAUSE:NAG-002405:finite_cell_functional</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002405/#same_affinoid_coordinate_augmentation">CLAUSE:NAG-002405:same_affinoid_coordinate_augmentation</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002473/">NAG-002473</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002480/">NAG-002480</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003086/">NAG-003086</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003090/">NAG-003090</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003090/">prop:gauge</a></li><li><a href="/r/NAG-003086/">thm:stationarity</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002392/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Analytic moment integrals and finite change of charts · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002392 · Accepted whole</p><h1>Analytic moment integrals and finite change of charts</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.46.4">Open in the English reader · PDF page 1019</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8a1a22d31f6baa49e2f7ff4c0f03e691eab1356468ede6fc1c452c8194c6871d">
+\begin{theorem}[Analytic moment integrals and finite change of charts]
+\label{v037:integration:momenttests}
+Let $X=\mathcal M(B)$ be a generalized affinoid space, pure
+of analytic dimension $d$, over a complete non-Archimedean
+field with its specified absolute value. For a unit tuple
+$f$ write $t_f:X\to\mathbb R^n$ and
+$U_f=\mathbb R^n\setminus t_f(\partial_KX)$.
+For every finite $B$-module $M$, the formula
+\[
+ I_{M,f}(\alpha)
+       =I_{\operatorname{Trop}_f(M)|_{U_f}}(\alpha)
+\]
+defines a linear functional on smooth top forms whose
+tangential support is compact in $U_f$. It is nonnegative
+when their tangential top coefficients are nonnegative.
+It is additive in short exact sequences of modules and
+satisfies
+\[
+                       I_{M,f}(d&#x27;\beta)=0,
+                       \qquad I_{M,f}(d&#x27;&#x27;\gamma)=0
+\]
+for smooth compactly supported tests of the indicated
+complementary bidegrees in $U_f$.
+
+Let $p:X=\mathcal M(B)\to Y=\mathcal M(A)$ be finite, with
+$Y$ also pure of analytic dimension $d$. Suppose unit tuples
+$f_X,f_Y$ and an integral map $a$ satisfy
+$t_{f_Y}\circ p=a\circ t_{f_X}$. For every finite $B$-module
+$M$, regarded also as a finite $A$-module, and every smooth
+top form $\alpha$ with compact ambient support in $U_{f_Y}$,
+\begin{equation}
+\label{v037:eq:analyticintegralprojection}
+                         I_{M,f_X}(a^*\alpha)=I_{M,f_Y}(\alpha).
+\end{equation}
+The support of the left-hand test on its actual source cycle
+is compact and lies in its whole interior weight domain;
+there $\alpha$ is understood to be extended by zero outside
+$U_{f_Y}$.
+
+In particular, let $f,g$ be two unit tuples on the same $X$,
+let $\pi_f,\pi_g$ be the projections from the joint tuple
+$(f,g)$, and let $\alpha,\beta$ be top forms with compact
+ambient support in $U_f,U_g$, respectively. Extend them by zero
+outside these open sets. If
+\[
+                         \pi_f^*\alpha=\pi_g^*\beta
+\]
+on every tangential $d$-plane of the actual joint local
+moment image over
+$\pi_f^{-1}(U_f)\cup\pi_g^{-1}(U_g)$, then
+$I_{B,f}(\alpha)=I_{B,g}(\beta)$.
+
+Adjoining unit coordinates is faithful on tangential
+superforms in every bidegree: on $t_f(X)\cap U_f$, a smooth
+superform is zero on all tangential faces if and only if its
+pullback is zero on all tangential faces of the actual
+joint image over $U_f$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="fd614508a2ae884db75244ed64bb447c2adb765ffccb02779788e8e7b000a289">
+\begin{proof}
+Theorem~\ref{v037:analytic:interiorcycle} constructs the local
+balanced module cycles with nonnegative integral weights.
+Their definition uses the actual Gauss algebras and generic
+local lengths of Theorem~\ref{v037:degree:moduleweight}.
+The functional, its positivity, and both differential
+identities are therefore
+Theorem~\ref{v037:integration:balancedcurrent}.
+The exact-sequence equality of module weights gives the
+corresponding equality of these finite cell integrals.
+
+First assume that the target units pull back to the actual
+monomials in the source units prescribed by $a$.
+For this finite map, every point whose target weight belongs
+to $U_{f_Y}$ is interior in $X$, by finite relative interior
+and composition, as proved in
+Theorem~\ref{v037:analytic:interiorcycle}. The complete source
+moment support over a compact subset of $U_{f_Y}$ is compact.
+Near each target weight,
+Lemma~\ref{v037:analytic:finitepolyhedralpatching} supplies a
+finite source presentation retaining the entire inverse
+support; the target has the local fan presentation of
+Theorem~\ref{v037:analytic:interiorlocalstar}.
+Theorem~\ref{v037:degree:modulefunctoriality} on these finite
+presentations gives
+\[
+ a_*\bigl(\operatorname{Trop}_{f_X}(M)|_{a^{-1}(U_{f_Y})}\bigr)
+                      =\operatorname{Trop}_{f_Y}(M)|_{U_{f_Y}}.
+\]
+The local identities agree after refinement because the
+module weights refer to the same actual fibres. The
+projection formula of
+Theorem~\ref{v037:integration:balancedcurrent} proves
+\eqref{v037:eq:analyticintegralprojection}. Notice that its
+real factor is the lattice index, whereas the target
+coefficients are the full finite-module generic lengths.
+Both appear in the proved cycle formula.
+
+For a general equality of moment maps as in the statement,
+use the joint source tuple $(f_X,p^*f_Y)$. Its actual image
+is the graph of $a$. The case just proved applies both
+to its projection onto $f_X$ with the identity morphism
+and to its projection onto $f_Y$ with the morphism $p$.
+The first graph projection is an integral isomorphism,
+with inverse $u\mapsto(u,a(u))$. It identifies saturated
+tangent lattices and has index one on every cell.
+The second projection is $a$ after this identification.
+The corresponding finite lattice-index sums therefore
+give the same cycle formula for the stated moment-map
+equality, and its integral follows from the same real
+projection formula. All these comparisons are over
+$U_{f_Y}$; finite relative interior and composition give
+the required absolute interior on the whole source fibres.
+
+Apply this result to $p=\operatorname{id}_X$ with source
+tuple $(f,g)$ and target tuple $f$, and then with target
+tuple $g$. The source structure module is $B$ in both cases.
+A compactly supported smooth form on $U_f$ extends smoothly
+by zero to $\mathbb R^n$: near the complement of $U_f$ its
+support is absent. The support of its pullback on the joint
+actual image is a closed subset of the compact set
+$t_{(f,g)}(X)\cap\pi_f^{-1}(\operatorname{supp}\alpha)$.
+Every point of that set lies over a whole interior $f$-fibre,
+so the joint cycle is defined there. The same holds for
+$\beta$. Their tangential equality gives equal cell
+integrals on a common finite presentation. The two identity
+projection formulas now give the asserted equality of
+original integrals.
+
+Finally consider a form $\eta$ of any bidegree on the
+target moment image over $U_f$. If its tangential
+restrictions vanish, refine the joint and target local
+presentations so that every source cell maps into one target
+cell. Pullback on tangent spaces then gives zero on the
+source. Conversely suppose the joint pullback vanishes.
+Near any target point take the finite presentations supplied
+above, and remove the lower-dimensional target cells and
+the images of lower-dimensional or rank-dropping source
+cells, exactly as in
+Theorem~\ref{v037:analytic:momentaugmentation}.
+On the dense remaining part of every target $d$-cell,
+the positive target weight is the sum of the positive
+source weights times their lattice indices. Hence at least
+one full-rank source cell lies above every such point.
+Its tangent map is a real linear isomorphism onto the
+target tangent plane, so pullback is injective on both
+exterior factors. The tangential value of $\eta$ is zero
+there. Continuity of its smooth coefficients extends this
+vanishing over the entire target $d$-cell. Every smaller
+face is contained in such a cell, and restriction to its
+tangent space preserves zero. This proves the converse,
+including the bidegrees above $d$, where all these
+restrictions are already zero.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002392-reader.jpg" alt="Typeset mathematical passage from PDF page 1020" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1020">PDF page 1020 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002353/">NAG-002353</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002370/">NAG-002370</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002372/">NAG-002372</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002380/">NAG-002380</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002383/">NAG-002383</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002385/">NAG-002385</a> · selected whole <small>(selected native whole scoped use)</small></li><li><a href="/r/NAG-002391/">NAG-002391</a> · selected whole <small>(selected native whole scoped use)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002383/">v037:analytic:finitepolyhedralpatching</a></li><li><a href="/r/NAG-002385/">v037:analytic:interiorcycle</a></li><li><a href="/r/NAG-002353/">v037:analytic:interiorlocalstar</a></li><li><a href="/r/NAG-002380/">v037:analytic:momentaugmentation</a></li><li><a href="/r/NAG-002372/">v037:degree:modulefunctoriality</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li><li><a href="/r/NAG-002391/">v037:integration:balancedcurrent</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002289/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Projection comparison at a flat analytic tropical germ · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002289 · Accepted whole</p><h1>Projection comparison at a flat analytic tropical germ</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.34.3">Open in the English reader · PDF page 949</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f45befca2a4cedebe10a49d1f9d4b9a9179144061bd34c0c175670d0bc663be7">
+\begin{theorem}[Projection comparison at a flat analytic tropical germ]
+\label{v036:projection:flatgermcomparison}
+Let $X=\mathcal M(B)$ be a generalized $K$-affinoid space and
+let $f_1,\ldots,f_n\in B^\times$ define the moment map
+\[
+ t:X\longrightarrow\mathbf R^n,\qquad
+ t(x)=(-\log|f_1(x)|,\ldots,-\log|f_n(x)|).
+\]
+Let $w\in\mathbf R^n$, and choose $b_j\in K^\times$ with
+$|b_j|=\exp(-w_j)$. Put $h_j=f_j/b_j$, let $D=B_w$ be the
+actual algebra of $F_w=t^{-1}(w)$, and set $N=\mathbf Z^n$.
+Suppose there are a saturated rank-$d$ sublattice $L\subset N$
+and a neighborhood $W$ of $w$ such that
+\[
+ t(X)\cap W\subset w+L_{\mathbf R},\qquad
+ F_w\cap\partial_KX=\varnothing.
+\]
+Assume that the normalized moment tuple on $D$ admits a finite
+projection to a $d$-dimensional unit polytorus with its canonical
+finite-module norm.
+
+Every integral support of $\mathcal C_d(D,h)$ is a fibre of
+$\mathbb T_N\to\mathbb T_{N/L}$ over a closed point.
+Consequently, for any finite projections $Q_0,Q_1$ of this same
+actual algebra with $Q_i|_L$ injective,
+\[
+ \frac{\dim_{H_{Q_0}}(D\widehat\otimes_{A_{Q_0}}H_{Q_0})}
+      {[\mathbf Z^d:Q_0(L)]}
+ =\frac{\dim_{H_{Q_1}}(D\widehat\otimes_{A_{Q_1}}H_{Q_1})}
+      {[\mathbf Z^d:Q_1(L)]}
+ =\sum_s c_s[\kappa(s):k]\in\mathbf Z_{\geq0},
+\]
+where $\mathcal C_d(D,h)=\sum_s c_s[\rho^{-1}(s)]$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="48ce00109cc6bb4fc1d0468079ddc02c93fff09c58d1dc085cd147e5057bc865">
+\begin{proof}
+The functions $h_j$ and $h_j^{-1}$ have absolute value one
+on $F_w$, so they are power bounded in $D$ by
+Theorem~\ref{fnd:generalizedpointwisepowerbound}.
+Theorem~\ref{v036:projection:intrinsiccycle} therefore applies.
+If its cycle is zero, its support assertion is empty and the
+degree formula follows from
+Theorem~\ref{v036:projection:invariantweight}.
+
+Choose $\varepsilon&gt;0$ so small that the closed box
+$\{v:|v_j-w_j|\leq\varepsilon\text{ for all }j\}$ is contained
+in $W$. Let $Y\subset X$ be its inverse image, the actual
+rational affinoid domain
+\[
+       e^{-\varepsilon}\leq|h_j|\leq e^{\varepsilon}
+                         \quad(1\leq j\leq n).
+\]
+Its presentation by the $h_j$ and $h_j^{-1}$ is the actual
+joint Laurent presentation of
+Theorem~\ref{fnd:generalizedrationaluniversal}.
+At every $x\in F_w$, all the relative coordinate inequalities
+are strict, since $1&lt;e^{\varepsilon}$. Thus
+$x\in\operatorname{Int}(Y/X)$.
+The boundary hypothesis and the composition inclusion in
+Proposition~\ref{fnd:affinoidinteriorcalculus} give
+\[
+                        F_w\subset\operatorname{Int}(Y/K).
+\]
+Imposing the equalities $|h_j|=1$ on $Y$ gives the same actual
+algebra $D$ as imposing them on $X$, again by the rational
+universal property.
+
+Put $M_0=M\cap L_{\mathbf R}^{\perp}$. For $u\in M_0$,
+the unit $h_u=\prod_j h_j^{u_j}$ has absolute value one at
+every point of $Y$, because $t(Y)-w\subset L_{\mathbf R}$.
+Theorem~\ref{fnd:generalizedpointwisepowerbound} and bounded
+substitution, Proposition~\ref{fnd:powerboundedsubstitution},
+give a morphism
+\[
+          h_u:Y\longrightarrow\mathcal M(K\langle T^{\pm1}\rangle).
+\]
+For \(x\in F_w\), apply the
+\hyperref[fnd:gradedabsoluteevaluationforward]{forward implication for absolute evaluation}
+to the actual collar \(Y\), using \(x\in\operatorname{Int}(Y/K)\). The image \(S_x\) of
+\(\widetilde{\mathcal O(Y)}^{\rm gr}\) in
+\(\widetilde{\mathcal H(x)}^{\rm gr}\) is finite over
+\(\widetilde K^{\rm gr}\).
+Choose finitely many homogeneous module generators for \(S_x\).
+The component of \(\widetilde K^{\rm gr}\) that takes any given
+generator to degree one has dimension at most one over \(k\).
+Thus \((S_x)_1\) is a finite-dimensional \(k\)-algebra.
+The identity \(\lvert h_u\rvert=1\) on \(Y\) gives spectral radius one,
+and \(\lvert h_u(x)\rvert=1\) makes its degree-one initial image the
+nonzero residue of \(h_u(x)\) in \(\widetilde{\mathcal H(x)}\).
+This residue lies in \((S_x)_1\) and is therefore algebraic over \(k\).
+
+Choose an actual model $D_0$ compatible with $h$ and a
+$d$-dimensional minimal prime $\mathfrak p$ of
+$\overline D_0$. The formal specialization theorem
+\ref{fnd:affineformalspecializationsurjective} supplies
+$x\in\mathcal M(D)=F_w$ specializing to $\mathfrak p$.
+By the definition of specialization, evaluation induces an
+injection
+\[
+              \overline D_0/\mathfrak p
+                   \hookrightarrow\widetilde{\mathcal H(x)},
+\]
+and hence an injection of its fraction field. The preceding
+paragraph shows that the residue of every $h_u$, $u\in M_0$,
+is algebraic over $k$ in this fraction field.
+
+Let $Z$ be the residual moment image of this component.
+Its coordinate ring is the image of $k[M]$ in that field,
+and $\dim Z=d$ by finiteness of the residual moment map.
+The image of $k[M_0]$ is a finitely generated algebraic
+domain over $k$, hence a finite field $k&#x27;$ by monic equations
+and finite-dimensional linear algebra. It corresponds to a
+closed point $s$ of $\mathbb T_{N/L}$.
+Split $N=L\oplus N_1$ using
+Lemma~\ref{cand:elementarylatticesplitting}. The coordinate
+ring of $Z$ is then an integral quotient of $k&#x27;[L^\vee]$.
+A nonzero kernel would give a nonzero Laurent polynomial
+relation on its $d$ character generators and lower the
+transcendence degree below $d$. This contradicts
+$\dim Z=d$ and \cite[Tag 00P0]{StacksAlg}. The quotient map
+is therefore an isomorphism. Thus $Z=\rho^{-1}(s)$ as a
+closed subscheme. This treats every support of the residual
+cycle, and Theorem~\ref{v036:projection:invariantweight}
+now gives the displayed degree comparison.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002289-reader.jpg" alt="Typeset mathematical passage from PDF page 949" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=949">PDF page 949 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001962/#absolute_evaluation_forward">CLAUSE:NAG-001962:absolute_evaluation_forward</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002285/">NAG-002285</a> · selected whole</li><li><a href="/r/NAG-002287/">NAG-002287</a> · selected whole</li><li>STACKS-00P0 · named external application</li><li><a href="/r/NAG-001962/#absolute_evaluation_forward">CLAUSE:NAG-001962:absolute_evaluation_forward</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002285/">NAG-002285</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002287/">NAG-002287</a> · selected whole <small>(requires)</small></li><li>STACKS-00P0 · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li><li><a href="/r/NAG-001939/">fnd:affineformalspecializationsurjective</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001398/">fnd:powerboundedsubstitution</a></li><li><a href="/r/NAG-002285/">v036:projection:intrinsiccycle</a></li><li><a href="/r/NAG-002287/">v036:projection:invariantweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

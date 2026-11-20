@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002606/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Normalization does not repair the generic graph · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002606 · Accepted whole</p><h1>Normalization does not repair the generic graph</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002606.original">Open in the English reader · PDF page 1890</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="59795690cd0f4b0a0a63e69698c0f64966acf1d32787bffb2fc64b5966943c4b">
+\begin{proposition}[Normalization does not repair the generic graph]
+\label{cand:f5sub:normalgraphcounterexample}
+Let \(k\) be any field, \(O=k[[\pi]]\), and \(K=k((\pi))\),
+with its usual complete discrete absolute value.
+On \(\mathbf P^1_O\), with affine coordinate \(T\), set
+\[
+ \mathcal X_1=\operatorname{Bl}_{(T,\pi^2)}\mathbf P^1_O,
+ \qquad
+ \mathcal X_2=\operatorname{Bl}_{(T-\pi,\pi^2)}\mathbf P^1_O, \tag{4}
+\]
+extending each ideal by the unit ideal near infinity.
+These are projective semistable models of \(\mathbf P^1_K\).
+The schematic closure \(\mathcal G\) of their generic identity graph
+has an open neighbourhood of the pair of special nodes equal to
+\(\operatorname{Spec}R\), with
+\[
+ R=\frac{O[T,u,v]}
+ {(Tu-\pi^2,\ (T-\pi)v-\pi^2,\ uv+\pi u-\pi v)}.          \tag{5}
+\]
+The domain \(R\) is normal, but
+\[
+                   R/\pi R=k[T,u,v]/(Tu,Tv,uv).         \tag{6}
+\]
+At the origin this special fibre has three geometric branches
+and is not nodal. The normalization of \(\mathcal G\) is therefore
+not a semistable model.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="457b27e4f2293ccae6be0ad4e373d6467a6c14c344faf95627462bf113b590ac">
+\begin{proof}
+The actual charts of the first blowup are
+\(O[T,u]/(Tu-\pi^2)\), with \(u=\pi^2/T\), and \(O[z]\),
+with \(T=\pi^2z\). These are the blowup subrings
+\(A[\pi^2/T]\) and \(A[T/\pi^2]\).
+The first embeds in \(K[T,T^{-1}]\) using its normal-form
+monomials \(1,T^i,u^j\) for \(i,j&gt;0\).
+Both charts are flat and finitely presented, with smooth generic
+fibres. Their special fibres form two projective lines meeting
+at the split node \(Tu=\pi^2\).
+Replace \(T\) by \(T-\pi\) for the second model.
+Both ideals are units where their first generators are units,
+so the extension near infinity is valid. Projectivity follows
+from \stacks{02NS} and \stacks{0C4P}.
+
+On the product of the node charts, the generic diagonal has ring
+\[
+ K[T,T^{-1},(T-\pi)^{-1}],\qquad
+                  u=\pi^2/T,\quad v=\pi^2/(T-\pi).
+\]
+The coordinate ring of its schematic closure is the image of the
+product chart ring in this domain. The relations (5) vanish there.
+They reduce every mixed monomial to an \(O\)-linear combination of
+\[
+                  1,\quad T^i,\quad u^j,\quad v^h
+                          \qquad (i,j,h\geq1),          \tag{7}
+\]
+since \(Tu=\pi^2\), \(Tv=\pi v+\pi^2\) and
+\(uv=\pi v-\pi u\) decrease total degree in \(T,u,v\).
+The elements (7) are linearly independent in \(K(T)\):
+the \(u\)-terms have sole poles at \(0\), the \(v\)-terms at
+\(\pi\), and the polynomial part is regular at both.
+Comparing principal parts at these distinct points eliminates
+all \(u\)- and \(v\)-coefficients, and then the polynomial
+coefficients. Thus (5) is exactly the image ring, a domain
+free over \(O\) on (7). Reduction gives (6).
+
+Put \(\mathfrak n=(\pi,T,u,v)\).
+After inverting \(\pi\) we have the displayed smooth \(K\)-algebra.
+At a prime containing \(\pi\) but not \(T\), the local ring is
+a localization of \(O[T,T^{-1},(T-\pi)^{-1}]\).
+At a prime containing \(\pi\) but not \(u\), the elements \(u,u-\pi\)
+are units, and
+\[
+                   T=\pi^2/u,\qquad v=-\pi u/(u-\pi).
+\]
+The local ring is a localization of
+\(O[u,u^{-1},(u-\pi)^{-1}]\).
+For a prime containing \(\pi\) but not \(v\), use
+\[
+                   T=\pi+\pi^2/v,\qquad u=\pi v/(v+\pi).
+\]
+Every local ring outside \(\mathfrak n\) is therefore regular,
+by regularity of localized polynomial rings over a DVR
+(or \stacks{07NF}).
+
+At \(\mathfrak n\), the element \(\pi\) is a nonzerodivisor.
+In (6), \(T+u+v\) is a nonzerodivisor: that ring injects into
+\(k[T]\times k[u]\times k[v]\), and multiplication restricts
+to multiplication by \(T,u,v\) in the respective factors.
+Thus \(\pi,T+u+v\) is a regular sequence in \(R_{\mathfrak n}\).
+Its depth is at least two. The strict chain of primes
+\[
+                  (0)\subsetneq(\pi,u,v)\subsetneq\mathfrak n
+\]
+shows that \(\mathfrak n\) has height at least two:
+\(R/(\pi,u,v)=k[T]\).
+Every height-one prime is outside \(\mathfrak n\), where
+regularity was proved. Regular local rings are Cohen--Macaulay by \stacks{00NQ}.
+The Noetherian ring \(R\) therefore satisfies \(R_1\) and \(S_2\), so is normal by \stacks{031S}.
+
+Over an algebraic closure of \(k\), the three axes in (6)
+remain distinct. The special local ring at the origin has
+dimension one and embedding dimension three, so is neither
+smooth nor an ordinary double point.
+Normalization is the identity on the normal open
+\(\operatorname{Spec}R\) and cannot remove this three-branch point.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002606-reader.jpg" alt="Typeset mathematical passage from PDF page 1890" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1890">PDF page 1890 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><p class="muted">No explicit typed target in the exported bindings.</p></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002686/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Explicit base collars and their whole Gauss fibre · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002686 · Accepted whole</p><h1>Explicit base collars and their whole Gauss fibre</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002686.original">Open in the English reader · PDF page 1846</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f6eb2d6c317d12d9064f064ed73850c31df3876b3cacda44d5853f8f38250a13">
+\begin{lemma}[Explicit base collars and their whole Gauss fibre]
+\label{psc:basecollars}
+The domain \(Y_\varepsilon\) is a nonempty generalized affinoid,
+pure of dimension \(d\), and \(\eta\in\operatorname{Int}(Y_\varepsilon/K)\).
+For every positive array \(a\), \(q_a\) is finite, with
+\[
+ q_a^{-1}(\mathbb T_P)
+  =\mathcal M\!\left(
+       R_P[T_1,\ldots,T_p]/
+       (P_{\ell,a}(T_\ell)-S_\ell)_{\ell=1}^p\right),
+ \tag{1}\label{psc:monic}
+\]
+where \(S_\ell\) are the first \(p\) target coordinates.
+The displayed algebra is free of rank \(D_a\) over \(R_P\)
+and has its canonical finite-module norm.
+
+Put \(b_\ell=\min_j a_{\ell j}\).
+If \(P\) satisfies
+\[
+ |u_\ell|&lt;b_\ell\varepsilon\ (1\leq\ell\leq p),
+ \qquad |u_{p+b}|&lt;\varepsilon\ (1\leq b\leq k)
+                    \quad\hbox{for every }u\in P,
+ \tag{2}\label{psc:boxbounds}
+\]
+then the \emph{entire} inverse image in (1) lies in the ordinary
+interior of \(Y_\varepsilon\) in \(Z^{\rm an}\).
+Consequently it is exactly the saturated collar
+\((Q_at_g|_{Y_\varepsilon})^{-1}(P)\).
+
+If \(\eta_a\) is the target unit Gauss point, then
+\[
+                         q_a^{-1}(\eta_a)=\{\eta\}.
+ \tag{3}\label{psc:commongauss}
+\]
+For its actual Artinian fibre algebra \(E_a\),
+\[
+ \dim_{\mathcal H(\eta_a)}E_a=D_a
+  =\sum_{\mathfrak m\in\operatorname{Max}E_a}
+       \operatorname{length}((E_a)_{\mathfrak m})
+       [\kappa(\mathfrak m):\mathcal H(\eta_a)] .
+ \tag{4}\label{psc:basedegree}
+\]
+Equation (3) concerns points; (4) retains all length and field-degree
+data and does not replace \(E_a\) by its reduction.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c0e7b56022f0dde30afab9e379b2fc69e051b6c202f2cb36ded445ecd5cecc87">
+\begin{proof}
+Set \(R=e^\varepsilon&gt;1\). A presentation of \(Y_\varepsilon\)
+uses \(t_\ell,z_b,z_b^{-1},(t_\ell-c_{\ell j})^{-1}\),
+all with radius \(R\), and their polynomial inverse relations.
+Indeed \(|t_\ell|\leq R\) and \(|c_{\ell j}|\leq1&lt;R\)
+give every upper bound \(|t_\ell-c_{\ell j}|\leq R\);
+conversely one such upper bound gives \(|t_\ell|\leq R\).
+The inverse coordinates give the lower bounds.
+This is an actual generalized affinoid presentation.
+All its coordinates have value \(1&lt;R\) at \(\eta\), so the
+presentation witnesses absolute interiority there.
+It is an affinoid domain of the closed polyannulus in
+\((t_\ell-c_{\ell1},z_b)\), cut out by the additional puncture
+bounds. That polyannulus is integral and pure of dimension \(d\)
+by \Dep{v036:analytic:polyannulusdegree}; domain purity
+\Dep{v036:analytic:domainpurity} proves the assertion for
+\(Y_\varepsilon\).
+
+The algebraic coordinate ring of \(Z\) is
+\[
+ K[S_1^{\pm1},\ldots,S_p^{\pm1},Z_1^{\pm1},\ldots,Z_k^{\pm1}]
+ [T_1,\ldots,T_p]/(P_{\ell,a}(T_\ell)-S_\ell)_\ell .
+\]
+To check the inverse coordinates in this identity, use
+\[
+ (T_\ell-c_{\ell j})^{-1}
+ =S_\ell^{-1}(T_\ell-c_{\ell j})^{a_{\ell j}-1}
+                 \prod_{h\ne j}(T_\ell-c_{\ell h})^{a_{\ell h}}.
+\]
+Successive division by the separate monic polynomials gives
+the free basis \(\prod_\ell T_\ell^{i_\ell}\),
+\(0\leq i_\ell&lt;A_\ell\).
+The frozen analytification theorem
+\Dep{fnd:analytificationfiniteclosed} identifies the \emph{whole}
+inverse image of any target affinoid with its ordinary tensor
+algebra and canonical finite-module norm. It gives (1).
+
+Here is the estimate which supplies saturation.
+At any analytic point, fix a block \(\ell\).
+If \(|t_\ell|&gt;1\), all its puncture distances are equal to
+\(|t_\ell|\). If \(|t_\ell|\leq1\), all those distances are
+at most \(1\), and at most one is less than \(1\), because
+the difference of two punctures has norm \(1\).
+Thus its weight vector belongs to
+\[
+ F_\ell=\bigcup_{j=1}^{m_\ell}\mathbb R_{\geq0}e_{\ell j}
+       \ \cup\
+       \mathbb R_{\geq0}(-e_{\ell1}-\cdots-e_{\ell m_\ell}).
+ \tag{5}\label{psc:star}
+\]
+On the positive ray \(j\), \(u_\ell=a_{\ell j}v_{\ell j}\);
+on the last ray, \(u_\ell=-A_\ell s\) with all
+\(v_{\ell j}=-s\).
+In either case
+\[
+               |v_{\ell j}|\leq |u_\ell|/b_\ell.
+ \tag{6}\label{psc:coercive}
+\]
+The final \(k\) weights are unchanged. Bounds (2) therefore
+put every inverse-image point in the strict moment inequalities.
+This proves the collar assertion without selecting any branch.
+
+We prove (3) over the original field. The unit Gauss point
+maps to \(\eta_a\): after reduction, the separate nonconstant
+monic polynomials \(\overline P_{\ell,a}(\overline t_\ell)\),
+together with the \(\overline z_b\), are algebraically
+independent over \(\widetilde K\).
+For example, their distinct leading multidegrees prove the
+injectivity of polynomial substitution.
+Scaling a largest coefficient of any Laurent polynomial
+then proves the unit Gauss norm identity.
+
+Conversely let \(y\) map to \(\eta_a\).
+Equation (6), with \(u=0\), gives
+\(|t_\ell-c_{\ell j}|=|z_b|=1\) at \(y\), hence
+\(|t_\ell|\leq1\).
+In the residue field of \(\mathcal H(y)\), the elements
+\(\overline P_{\ell,a}(\overline t_\ell),\overline z_b\)
+are algebraically independent: any relation would contradict
+the target Gauss seminorm after lifting its finitely many
+coefficients. Each \(\overline t_\ell\) is integral over the
+field generated by these elements. Consequently the field
+generated by \(\overline t_1,\ldots,\overline t_p,\overline z_1,
+\ldots,\overline z_k\) has transcendence degree \(d\).
+These \(d\) elements are therefore algebraically independent.
+For any nonzero polynomial in \(t,z\), divide by a largest
+coefficient. Its reduction is nonzero at \(y\), so its value
+is the maximum coefficient norm. The same holds at \(\eta\).
+Inverting the puncture coordinates and the \(z_b\) proves
+equality on the entire algebraic coordinate ring, hence
+equality of the analytic points \(y=\eta\).
+No separability or defectlessness assertion enters this argument.
+
+Finally the finite tensor comparison
+\Dep{fnd:generalizedfinitetensor} identifies \(E_a\) with the
+ordinary base change of the free module in (1).
+Its dimension is \(D_a\). An Artinian composition series gives
+the second equality in (4), with full residue-field degrees.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002686-reader.jpg" alt="Typeset mathematical passage from PDF page 1847" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1847">PDF page 1847 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-002294/">NAG-002294</a> · selected whole <small>(sealed whole native proof)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole</li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole</li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole</li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole</li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002294/">NAG-002294</a> · selected whole</li><li><a href="/r/NAG-002294/">NAG-002294</a> · selected whole <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

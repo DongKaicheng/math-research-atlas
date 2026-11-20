@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002060/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The integral algebra of a residue-field lift · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002060 · Accepted whole</p><h1>The integral algebra of a residue-field lift</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.22.1">Open in the English reader · PDF page 677</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f3bb944f99c4357aa48fb8da912b763ab67c2250fe2dd6320a730a62b6b6d6b7">
+\begin{lemma}[\bi{The integral algebra of a residue-field lift}
+{剩余扩张提升的整系数代数}]
+\label{cand:unramifiedmodelbasechange}
+\bi{Let $l/k$ be finite separable and let
+$L=K(\alpha)$ be the lift constructed in
+Lemma~\ref{cand:residueextensionlift}: the minimal polynomial
+$P\in O[T]$ of $\alpha$ is monic and reduces to the separable
+minimal polynomial of a generator of $l/k$. Put $d=[l:k]$.
+Then}
+{设 $l/k$ 有限可分，并令 $L=K(\alpha)$ 为
+Lemma~\ref{cand:residueextensionlift} 构造的提升：$\alpha$ 的
+极小多项式 $P\in O[T]$ 首一，且约化为 $l/k$ 的一个生成元的
+可分极小多项式。令 $d=[l:k]$，则}
+\[
+ \left|\sum_{i=0}^{d-1}c_i\alpha^i\right|=\max_i|c_i|,
+ \qquad L^\circ=\bigoplus_{i=0}^{d-1}O\alpha^i=O[T]/(P),
+ \qquad L^{\circ\circ}=K^{\circ\circ}L^\circ.
+\]
+\bi{For every flat finitely presented $O$-scheme $\mathcal X$, its
+formal completion and analytic generic fibre commute with this
+coefficient extension. On a completed affine algebra $A_0$ the
+corresponding formulas are}
+{对每个平坦有限表示 $O$-概形 $\mathcal X$，其形式完备化和
+解析泛纤维与此系数扩张相容。在完成后的仿射代数 $A_0$ 上，
+对应公式为}
+\[
+ \begin{aligned}
+ B_0&amp;=A_0\otimes_O L^\circ=\bigoplus_{i=0}^{d-1}A_0\alpha^i,\\
+ B_0[1/\pi]&amp;=A\widehat\otimes_K L,\\
+ B_0/L^{\circ\circ}B_0&amp;=(A_0/K^{\circ\circ}A_0)\otimes_k l.
+ \end{aligned}
+\]
+\bi{If the original special fibre is reduced, so is the extended
+special fibre. Specialization commutes with the projection, and
+the inverse image of a closed-point tube is the disjoint union of
+the tubes of the points above that closed point.}
+{若原特殊纤维约化，则扩张后的特殊纤维也约化。特化与投影
+相容，且闭点管域的逆像为该闭点上方各点的管域的不交并。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5d3d50f252edb8e711df599a1cd34349dca47e6ff7b0a04f0a1477f434dc45ab">
+\begin{proof}
+\bi{For a nonzero coefficient vector, divide by a coefficient of
+largest absolute value. All normalized coefficients lie in $O$,
+and at least one has nonzero reduction. Linear independence of
+$1,\bar\alpha,\ldots,\bar\alpha^{d-1}$ over $k$ makes the
+reduction of this normalized sum nonzero, hence its absolute value
+is one. This proves the norm formula. It proves the two integral
+identifications as well, since membership in the closed or open
+unit ball is equivalent to that property for every coefficient.}
+{对非零系数向量，用绝对值最大的一个系数相除。全部归一化
+系数属于 $O$，且至少一个约化非零。由
+$1,\bar\alpha,\ldots,\bar\alpha^{d-1}$ 在 $k$ 上线性无关，
+归一化之和的约化非零，所以其绝对值等于一。这证明范数公式。
+闭单位球或开单位球中的归属逐系数判定，因而也证明两个
+整系数识别。}
+
+\bi{A finite free direct sum commutes with every quotient by
+$\pi^n$ and with the inverse limit defining completion. Thus for
+an affine algebraic chart, completing its base change gives
+exactly $B_0$; Lemma~\ref{cand:affineflatformalcompletion} makes
+this an admissible model. After inverting $\pi$, the finite
+coordinate comparison in the proof of
+Lemma~\ref{cand:finitegaloisfibres}, which uses only finiteness of
+$L/K$, identifies the algebraic tensor with the completed tensor.
+The displayed special-fibre formula follows from
+$L^{\circ\circ}=K^{\circ\circ}L^\circ$. These constructions
+respect affine restriction, so they glue.}
+{有限自由直和与每个模 $\pi^n$ 商及定义完备化的逆极限相容。
+因此对仿射代数坐标片，基变换后的完备化恰为 $B_0$；由
+Lemma~\ref{cand:affineflatformalcompletion}，它为 admissible
+模型。逆转 $\pi$ 后，Lemma~\ref{cand:finitegaloisfibres} 证明中
+只使用 $L/K$ 有限性的有限坐标比较，将代数张量积识别为
+完备张量积。特殊纤维公式来自
+$L^{\circ\circ}=K^{\circ\circ}L^\circ$。这些构造与仿射限制
+相容，故可粘合。}
+
+\bi{For completeness, separability preserves the required
+reducedness directly. A reduced finite-type $k$-algebra $R$ injects
+into the finite product of the fraction fields of its minimal-prime
+quotients. Tensoring with $l$, which is flat over $k$, preserves
+this injection. Each field tensor with $l=k[T]/(p)$ is reduced:
+$p$ remains relatively prime to its derivative and hence factors
+into distinct irreducible factors. Thus $R\otimes_k l$ embeds in
+a product of reduced rings and is reduced. Finally, specialization
+is defined by the elements of absolute value less than one.
+The displayed algebra maps therefore make it commute with the
+projection. Taking inverse images of a singleton residual point
+gives the asserted tube decomposition.}
+{为完整起见，可直接验证可分性保持所需约化性。约化有限型
+$k$-代数 $R$ 注入其有限个极小素商的分式域之积。与 $k$ 上
+平坦的 $l$ 作张量积保持此单射。每个域与 $l=k[T]/(p)$ 的
+张量积都约化：$p$ 与其导数在扩张后仍互素，故分解为互异
+不可约因子。因此 $R\otimes_k l$ 嵌入约化环之积，从而约化。
+最后，特化由绝对值小于一的元素定义，所列代数映射因此使
+特化与投影相容。对单个剩余点取逆像即得所述管域分解。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002060-reader.jpg" alt="Typeset mathematical passage from PDF page 677" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=677">PDF page 677 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002023/">NAG-002023</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002037/">NAG-002037</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002050/">NAG-002050</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002094/">NAG-002094</a> · selected whole <small>(selected native whole at 700)</small></li></ul><h2>Selected scopes</h2><article id="actual_monic_coefficients"><h3>actual monic coefficients</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><article id="supplied_affine_coefficient_comparison"><h3>supplied affine coefficient comparison</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002037/">cand:affineflatformalcompletion</a></li><li><a href="/r/NAG-002023/">cand:finitegaloisfibres</a></li><li><a href="/r/NAG-002050/">cand:residueextensionlift</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

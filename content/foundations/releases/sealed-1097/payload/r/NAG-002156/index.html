@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002156/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Hensel lifting at a Banach-algebra center · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002156 · Accepted whole</p><h1>Hensel lifting at a Banach-algebra center</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.18.1">Open in the English reader · PDF page 877</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9a81e00ddc6b964d69d46a58a0d42516ee1fd151ed36e7ec366e0363c2d5db30">
+\begin{lemma}[\bi{Hensel lifting at a Banach-algebra center}
+{Banach 代数中心处的 Hensel 提升}]
+\label{cand:banachcenterhensel}
+\bi{Let $C$ be a complete non-Archimedean Banach algebra,
+let $G\in C\langle V_1,\ldots,V_m\rangle^m$ have norm at
+most one, and let $v\in C^m$ have norm at most one. Suppose
+$D=G&#x27;(v)$ is invertible with $\|D^{-1}\|\leq1$ and
+$\|G(v)\|\leq\delta&lt;1$. There is a unique root $v+h$ with
+$\|h\|&lt;1$, and it satisfies $\|h\|\leq\delta$. Its Jacobian
+inverse has norm at most one. Moreover, if two such systems
+differ in coefficient norm by at most $\epsilon$, and their
+roots both lie at distance less than one from the same center
+with an inverse Jacobian of norm at most one for the first
+system at that center, their roots differ by at most
+$\epsilon$.}
+{设 $C$ 为完备非阿基米德 Banach 代数，
+$G\in C\langle V_1,\ldots,V_m\rangle^m$ 的范数至多为
+一，$v\in C^m$ 的范数也至多为一。假设
+$D=G&#x27;(v)$ 可逆，$\|D^{-1}\|\leq1$，且
+$\|G(v)\|\leq\delta&lt;1$。存在唯一满足 $\|h\|&lt;1$ 的
+根 $v+h$，并且 $\|h\|\leq\delta$；该根处 Jacobian
+的逆范数至多为一。此外，若两个这样的方程组在系数
+范数下相差至多 $\epsilon$，其根都距离同一中心严格
+小于一，且第一个方程组在该中心的 Jacobian 逆范数
+至多为一，则两个根相差至多 $\epsilon$。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0a5871fde38c99a548ad8b0e6be3cf074b733f63c71308c5a088ed3217118003">
+\begin{proof}
+\bi{Translation by the bounded tuple $v$ is a contractive
+substitution. Expanding gives}
+{按有界元组 $v$ 平移是压缩代换。展开得到}
+\[
+ G(v+H)=e+DH+N(H),\qquad e=G(v),
+\]
+\bi{where $N$ has terms of degree at least two and coefficient
+norms at most one. This assertion follows first for polynomials
+by the binomial formula, then for restricted series by uniform
+truncation. For $\|h\|,\|k\|\leq\rho&lt;1$, telescoping each
+monomial gives}
+{其中 $N$ 的项次数至少为二，系数范数至多为一。这先由
+二项式公式对多项式成立，再由一致截断对受限级数成立。
+若 $\|h\|,\|k\|\leq\rho&lt;1$，逐单项式作望远镜分解
+得到}
+\[
+ \|N(h)\|\leq\|h\|^2,\qquad
+ \|N(h)-N(k)\|\leq\rho\|h-k\|.
+\]
+\bi{Consequently $h\mapsto-D^{-1}e-D^{-1}N(h)$ maps the
+closed ball of radius $\delta$ to itself and is a contraction
+of ratio at most $\delta$. Starting at zero, successive
+differences tend to zero geometrically; completeness gives
+a fixed point. Any other root at distance less than one lies
+with it in a ball of some radius $\rho&lt;1$, where the same
+estimate proves equality. The Jacobian changes by a matrix
+of norm at most $\delta$, so a matrix geometric series gives
+the asserted inverse bound.}
+{因此映射 $h\mapsto-D^{-1}e-D^{-1}N(h)$ 将半径
+$\delta$ 的闭球映入自身，压缩比至多为 $\delta$。
+从零开始迭代，相邻差按几何速度趋于零，完备性给出
+不动点。另一距离中心小于一的根与此根共同落在某个
+半径 $\rho&lt;1$ 的球中，同一估计说明二者相等。
+Jacobian 的变化矩阵范数至多为 $\delta$，故矩阵几何
+级数给出所述逆范数界。}
+
+\bi{For the perturbation assertion, let the two roots be $z,w$,
+and write the first system as $G$. Telescoping its translated
+monomials gives}
+{对于扰动断言，设两根为 $z,w$，第一个方程组为 $G$。
+对其平移后的单项式作望远镜分解，得到}
+\[
+ G(z)-G(w)=(D+E)(z-w),\qquad
+ \|E\|\leq\max(\|z-v\|,\|w-v\|)&lt;1.
+\]
+\bi{The matrix $D+E$ has inverse norm at most one. One term
+on the left is zero; the other has norm at most $\epsilon$
+because $w$ is a root of the second system. This proves the
+bound. All constructions use Banach-algebra operations, so
+nilpotents are retained.}
+{矩阵 $D+E$ 的逆范数至多为一。左侧一项为零，另一项
+由于 $w$ 是第二个方程组的根而范数至多为 $\epsilon$。
+由此得到所需界。全部构造都使用 Banach 代数运算，
+因此保留幂零元。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002156-reader.jpg" alt="Typeset mathematical passage from PDF page 877" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=877">PDF page 877</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

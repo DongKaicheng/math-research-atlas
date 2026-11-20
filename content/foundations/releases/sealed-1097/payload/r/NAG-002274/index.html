@@ -1,0 +1,223 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002274/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Exact marked contraction over the original field · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002274 · Accepted whole</p><h1>Exact marked contraction over the original field</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.45.5">Open in the English reader · PDF page 770</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0d34e39bf0094baa72225fb1738c95a31dc4e001060956e47903033eff77b911">
+\begin{theorem}[Exact marked contraction over the original field]
+\label{v036:f5:markedcontraction}
+Let $(\mathcal C_0,D)$ be a marked semistable algebraic
+model of $C$, and let $\varnothing\ne V\subset W$ satisfy
+the marked forest condition. There is a marked semistable
+algebraic model $(\mathcal C_V,D_V)$ and a proper morphism
+\[
+                         q_V:\mathcal C_0\longrightarrow\mathcal C_V
+\]
+inducing the identity on $C$, with $D\xrightarrow{\sim}D_V$
+and with component vertices exactly the original points
+of $V$ in $C^{\an}$.
+
+On a geometric special fibre, the positive-dimensional
+fibres of $q_V$ are exactly the trees $T$ in
+Definition~\ref{v036:f5:forestcondition}. A tree with
+$b(T)=1$ maps to a smooth point, and a tree with $b(T)=2$
+maps to a node with the indicated attaching branches.
+Outside these fibres the special-fibre map is an
+isomorphism. Moreover
+$(q_V)_*\mathcal O_{\mathcal C_0}=\mathcal O_{\mathcal C_V}$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5485a5dca5bd877cf77dc9e16ba46784cfc0bcd4a9b63414e555a3889e2264eb">
+\begin{proof}
+\emph{Protect the desired components and markings.}
+Lemma~\ref{v036:f5:multisections} gives a finite
+\textup{\&#x27;etale} multisection $A$ on the protected special
+components, disjoint from $D$ and from the nodes, meeting
+each protected geometric component at least three times.
+There exists a smooth projective elliptic curve
+$\mathcal E/O$ with a section. If $\operatorname{char}k\ne2$,
+use $y^2=x(x-1)(x-\lambda)$ with
+$\overline\lambda\notin\{0,1\}$; such a residue exists
+even when $k=\mathbf F_3$. If $\operatorname{char}k=2$,
+use $y^2+y=x^3$. The distinct-root and derivative calculations
+in the proof of Lemma~\ref{v035:f5:elliptictails} show
+smoothness of both fibres and of the infinity section.
+Lemma~\ref{cand:integralplanecubicfamily} gives flatness,
+finite presentation and projectivity, and
+\cite[Tag 0BYD]{StacksAlg} gives geometric genus one.
+
+Put $Z=A\amalg D$. Attach $\mathcal E\times_O Z$ to
+$\mathcal C_0$ along $Z$ and its infinity section.
+Lemma~\ref{v036:f5:multisectionpinch} produces a proper
+flat finitely presented nodal family $\mathcal Y_0/O$.
+On either geometric fibre, each attachment adds a smooth
+elliptic tail at one point. The exact sequence
+\[
+ 0\longrightarrow\mathcal O_{F\cup E}
+ \longrightarrow\mathcal O_F\oplus\mathcal O_E
+ \longrightarrow\mathcal O_p\longrightarrow0
+\]
+has a surjective difference map on constants. Its cohomology
+therefore preserves geometric connectedness and adds one
+to the genus. The original fibres have the same genus
+$g(C)$ by \cite[Tag 0E6L]{StacksAlg}, applied to the proper
+flat family with geometrically reduced connected fibres.
+Consequently $\mathcal Y_0$ is prestable of genus
+$g(C)+\deg(Z/O)\geq3$. Its generic fibre is stable:
+the original smooth component has at least three
+attachments, and each elliptic component has one.
+
+\emph{Stabilize and separate the generic components.}
+Apply \cite[Tag 0E8A]{StacksAlg} to obtain the stabilization
+$c:\mathcal Y_0\to\mathcal Y$. Its generic map is an
+isomorphism. On the geometric special fibre it contracts
+rational tails and bridges as in
+\cite[Tag 0E7Q]{StacksAlg}. In a removed tree, regard its
+$b(T)$ attachments to protected components and its $m(T)$
+elliptic marking tails as distinguished ends. There are
+one or two such ends. With one end, successively remove
+leaves away from it. With two ends, first remove the
+leaves off their unique joining path and then contract
+the rational bridges on that path. Every removed vertex
+disappears. Every protected component keeps its three
+auxiliary elliptic attachments, and every elliptic component
+keeps its attachment; all these components are stable.
+Uniqueness of stabilization consequently identifies these
+as exactly the surviving components. In the two-ended
+case the ends retain separate branch labels even if they
+lie on the same protected component.
+
+The stable family $\mathcal Y$ is projective over $O$:
+\cite[Tag 0E74]{StacksAlg} makes its dualizing line bundle
+ample over a neighborhood of the closed point, hence
+over the entire local base, and
+\cite[Tags 0D32, 0B5N]{StacksAlg} give projectivity.
+Apply Proposition~\ref{v036:f5:genericnormalization} to
+$\mathcal Y$. Its generic normalization has the distinguished
+component $C$ and the elliptic components attached along
+$Z_K$. Let $\mathcal C_V$ be its open-and-closed
+$C$-labelled piece. It is normal, projective, flat and
+finitely presented with nodal geometric fibres.
+
+The source $\mathcal C_0$ is normal and integral by the same
+proposition. The morphism
+$\mathcal C_0\to\mathcal Y_0\to\mathcal Y$ has its specified
+generic lift to $C$. Lemma~\ref{v035:f5:normalizationlift}
+therefore gives an actual proper morphism
+$q_V:\mathcal C_0\to\mathcal C_V$ inducing the identity
+on $C$.
+
+\emph{Identify the fibres, marks, and original vertices.}
+The normalization calculation is the identity at smooth
+points and at nodes with nonzero smoothing parameter;
+at a node with zero parameter it separates the two
+generic branches. Hence it introduces no vertical
+component. Each surviving auxiliary or marking elliptic
+component belongs to its own generic-normalization piece:
+apply the same normalization-lift lemma to its smooth
+normal elliptic model after an unramified coefficient
+extension splitting $Z$. Thus $\mathcal C_V$ contains
+precisely the protected original components.
+
+The geometric fibre maps of stabilization are compositions
+of the elementary rational-tail and rational-bridge
+contractions. They identify an unmarked one-ended tree
+with its smooth attaching point. A two-ended tree without
+marks gives a node joining its two original branches.
+For a one-ended tree with one mark, its second distinguished
+end is the marking elliptic tail. Stabilization joins
+that tail to the protected component, and generic
+normalization separates this horizontal node. The mark
+therefore lands at the resulting smooth point of
+$\mathcal C_V$. These descriptions also cover marks on
+protected components. Distinct marks remain distinct:
+each removed one-ended tree contains at most one, different
+such trees have different attaching points, and the
+original protected marks avoid those nodal attachments.
+They show that the claimed trees are exactly the
+positive-dimensional geometric fibres and that the map
+is an isomorphism away from them. In particular the
+special fibre of $\mathcal C_V$ is geometrically connected.
+
+The map $D\to\mathcal C_V$ is finite by the closed-graph
+argument, since $D/O$ is finite. After a finite unramified
+cover splitting $D$, it is the union of the just identified
+disjoint smooth sections, hence a closed immersion. On
+an affine open of $\mathcal C_V$, its ring map is therefore
+surjective after the faithfully flat coefficient extension;
+the cokernel vanishes already over $O$. This proves the
+closed immersion. Its image is smooth because all its
+generic and geometric special points are smooth in the
+nodal family.
+
+At the generic point $\eta_v$ of any protected original
+component, stabilization is an isomorphism and generic
+normalization is the identity. Thus $q_V(\eta_v)$ is
+the generic point of the corresponding new component.
+Complete the projective models as in
+Theorem~\ref{cand:projectiveformalcompletion}.
+Functoriality of specialization in
+Proposition~\ref{fnd:formalglobalgenericfaithful} gives
+\[
+ \operatorname{sp}_{\mathcal C_V}(v)=q_V(\eta_v).
+\]
+Proposition~\ref{cand:reducedmodelcomponentpoints} identifies
+its singleton analytic fibre with the original point $v$.
+Every surviving component has just been accounted for,
+so the vertex set is exactly $V$. Finally apply
+Lemma~\ref{v036:f5:properquotient} to the proper birational
+map $q_V$ and its normal target.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="6ccc31fd4d6e4a84620ff723e62cc5124ee6d70854cfab6e6ce1b44de01f19b0">
+\begin{definition}[Marked semistable models over the original field]
+\label{v036:f5:modelclass}
+Let $C/K$ be smooth, projective and geometrically connected.
+A \emph{semistable algebraic model} of $C$
+means a projective flat finitely presented nodal $O$-curve
+with generic fibre identified with $C$ and geometrically
+connected special fibre. Its special fibre is geometrically
+reduced. A \emph{marking} is a finite \textup{\&#x27;etale}
+$O$-scheme $D$ embedded as a closed subscheme of the relative
+smooth locus. An empty marking is allowed. Write $W$ for
+the component vertex set of the model. A morphism of marked
+models carries a specified isomorphism of its marking with
+the target marking, compatible with the curve morphism
+and with the specified generic identifications.
+
+The \emph{geometric marked dual graph} has one vertex for
+each component over $\overline k$, one edge for each
+geometric node, and one labelled leg for each point of
+$D_{\overline k}$. The two branches of a self-node give the
+two ends of its loop.
+\end{definition}</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="e2ff44d2c79b5306269640e0dcaf1267358d0d96a09dcb2d7ca72ee3dc63ff0e">
+Fix a nonempty subset $V\subset W$,
+and let $\overline V$ denote all geometric vertices over
+its special components. For a connected component $T$ of
+the subgraph induced by the vertices outside $\overline V$,
+let $b(T)$ count its incident edges leading to
+$\overline V$, with multiplicity, and let $m(T)$ count
+its marked legs.
+
+\begin{definition}[The marked forest condition]
+\label{v036:f5:forestcondition}
+The subset $V$ satisfies the marked forest condition if
+every such $T$ is a tree, all the geometric special
+components at its vertices are smooth $\mathbf P^1_{\overline k}$,
+and
+\[
+                         b(T)+m(T)\leq2.
+\]
+Connectedness and $V\ne\varnothing$ give $b(T)\geq1$.
+Thus a tree with one attaching branch carries at most one
+mark, and a tree with two attaching branches carries none.
+The two attaching branches may end on the same protected
+component.
+\end{definition}</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="a738963efee0a28cad46cfb451ebeb3f55acb81a0c6f8cb4058e33ea06d58f77">
+\begin{definition}[Semistable formal curve models with pointed charts]
+\label{v035:formal:modelclass}
+Suppose $K$ is algebraically closed and $C/K$ is a smooth
+connected projective curve. A point of $C^{\an}$ is of
+\emph{type II} when its completed residue field has residual
+transcendence degree one and relative rational value-group
+rank zero. A \emph{pointedly semistable
+formal model} of $C^{\an}$ is a quasi-compact admissible
+formal $O$-scheme with an identification of its generic
+fibre with $C^{\an}$, reduced pure one-dimensional special
+fibre, and a diagram as in
+Proposition~\ref{v035:formal:tubeends} at each closed
+special-fibre point. Morphisms induce the identity on
+$C^{\an}$. Its vertex set consists of its component
+points $v_\eta$.
+\end{definition}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002274-reader.jpg" alt="Typeset mathematical passage from PDF page 771" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=771">PDF page 771 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002038/">NAG-002038</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002168/">NAG-002168</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002236/">NAG-002236</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002262/">NAG-002262</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002265/">NAG-002265</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002266/">NAG-002266</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002267/">NAG-002267</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002268/">NAG-002268</a> · selected whole <small>(exact native application)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(exact native application)</small></li><li>SUPPORT:NAG-002235:smooth_integral_cubic_with_infinity · typed target unresolved in this export <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002168/">cand:integralplanecubicfamily</a></li><li><a href="/r/NAG-002038/">cand:projectiveformalcompletion</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-002235/">v035:f5:elliptictails</a></li><li><a href="/r/NAG-002236/">v035:f5:normalizationlift</a></li><li><a href="/r/NAG-002222/">v035:formal:tubeends</a></li><li><a href="/r/NAG-002273/#context-91a7d74ee4c6dc52">v036:f5:forestcondition</a></li><li><a href="/r/NAG-002267/">v036:f5:genericnormalization</a></li><li><a href="/r/NAG-002266/">v036:f5:multisectionpinch</a></li><li><a href="/r/NAG-002265/">v036:f5:multisections</a></li><li><a href="/r/NAG-002268/">v036:f5:properquotient</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

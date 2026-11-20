@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002337/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Lifting residual finiteness · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002337 · Accepted whole</p><h1>Lifting residual finiteness</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.51.1">Open in the English reader · PDF page 799</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="577b12b228e77c465ed98489a7f22d96e052cf6e02885d3c98fd53a982dde925">
+\begin{lemma}[Lifting residual finiteness]
+\label{v037:f5:residualfiniteintegral}
+Let $R_0\to A_0$ be a continuous homomorphism of admissible
+$O$-algebras. Suppose that $A_0$ is topologically of finite type
+over $R_0$ and that
+\[
+ A_0/K^{\circ\circ}A_0
+       \quad\hbox{is finite over}\quad
+ R_0/K^{\circ\circ}R_0.
+\]
+Then $A_0$ is a finite $R_0$-module.
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6d3a06df645a30866722cbd4ec8a953a11ab3942c37ed28ef8f382722e3253a9">
+\begin{proof}
+Choose a continuous surjection
+$P=R_0\langle Y_1,\ldots,Y_s\rangle\twoheadrightarrow A_0$,
+and write $y_i$ for the image of $Y_i$. Each $\bar y_i$ satisfies
+a monic polynomial over $\bar R=R_0/K^{\circ\circ}R_0$.
+Indeed, write multiplication by $\bar y_i$ on a finite list of
+module generators as a matrix over $\bar R$. Multiplication by
+the adjugate of $X I-M$ shows that its monic determinant
+annihilates every generator, hence also $1$.
+Choose such a polynomial of positive degree $d_i$, and lift its
+coefficients to a monic $P_i(X)\in R_0[X]$. Then
+$P_i(y_i)\in K^{\circ\circ}A_0$.
+
+Each of these finitely many memberships is a finite sum of
+elements of $A_0$ multiplied by scalars in $K^{\circ\circ}$.
+Choose one nonzero $\theta\in K^{\circ\circ}$ whose absolute
+value is at least those of all these scalars; if they all vanish,
+take $\theta=\pi$. Divisibility in $O$ gives
+$P_i(y_i)=\theta q_i$ with $q_i\in A_0$.
+Lift $q_i$ to $Q_i\in P$ and put
+\[
+                 F_i=P_i(Y_i)-\theta Q_i.
+\]
+These elements map to zero in $A_0$.
+
+Give $R=R_0[1/\pi]$ the complete presentation norm whose
+closed unit ball is $R_0$, as in
+Proposition~\ref{fnd:affineformalpresentations}.
+On polynomials over $R$, division by the monic $P_i(Y_i)$
+does not increase the coefficient norm: its lower coefficients
+belong to $R_0$. Perform these divisions in the order
+$Y_1,\ldots,Y_s$. Their quotient and remainder operators are
+$R$-linear of norm at most one. Polynomial density and
+completeness extend them to $R\langle Y_1,\ldots,Y_s\rangle$,
+and they preserve $P$. Thus there are continuous $R_0$-linear
+operators $D_i$ and $r$ such that
+\[
+ h=\sum_i P_i(Y_i)D_i(h)+r(h),\qquad
+ r(h)\in L:=\sum_{0\leq\alpha_i&lt;d_i}R_0Y^\alpha.
+\]
+The displayed finite direct sum $L$ is complete.
+Set $E(h)=\theta\sum_i Q_iD_i(h)$. Its norm is at most
+$|\theta|\,\|h\|$, so
+\[
+ h=\sum_i F_iD_i(h)+r(h)+E(h).
+\]
+Iteration and convergence give
+\[
+ h=\sum_i F_i\left(\sum_{j\geq0}D_i(E^j(h))\right)
+                  +\sum_{j\geq0}r(E^j(h)).
+\]
+Both sums converge in the indicated integral modules: their
+terms have norms at most $|\theta|^j\|h\|$, and powers of
+$\theta$ eventually lie in every prescribed power of $\pi O$.
+The last sum belongs to $L$. Consequently the finitely many
+images of $Y^\alpha$, $0\leq\alpha_i&lt;d_i$, generate $A_0$
+over $R_0$.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002337-reader.jpg" alt="Typeset mathematical passage from PDF page 800" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=800">PDF page 800</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li><a href="/r/NAG-001918/#attained_quotient_norm_and_unit_ball_forward">CLAUSE:NAG-001918:attained_quotient_norm_and_unit_ball_forward</a> · selected scope, text unavailable <small>(accepted exact clause)</small></li><li>CONTEXT:integral-section-data · standing context or base <small>(literal context)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(whole proof)</small></li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(whole proof)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001918/#attained_quotient_norm_and_unit_ball_forward">CLAUSE:NAG-001918:attained_quotient_norm_and_unit_ball_forward</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001918/#attained_quotient_norm_and_unit_ball_forward">CLAUSE:NAG-001918:attained_quotient_norm_and_unit_ball_forward</a> · selected scope, text unavailable <small>(requires)</small></li><li>CONTEXT:integral-section-data · standing context or base</li><li>CONTEXT:integral-section-data · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole</li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002311/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Algebraic domination from vertex inclusion · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002311 · Accepted whole</p><h1>Algebraic domination from vertex inclusion</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.46.2">Open in the English reader · PDF page 778</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f09d3ca996b9cfafc6c58e3a83f0e00593d3056e7b3b2e42fa2c634f4bfbc4d9">
+\begin{theorem}[Algebraic domination from vertex inclusion]
+\label{v037:f5:algebraicdomination}
+For two semistable algebraic models $\mathcal X_1,\mathcal X_2$
+of $C$, there is an $O$-morphism
+\[
+                       f:\mathcal X_1\longrightarrow\mathcal X_2
+\]
+inducing the identity on $C$ if and only if
+$V(\mathcal X_2)\subset V(\mathcal X_1)$ in $C^{\an}$.
+When it exists, it is unique and proper, and
+$f_*\mathcal O_{\mathcal X_1}=\mathcal O_{\mathcal X_2}$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="797db49680007d8a19a37ca9d29809856c8da5a1af6c92232f257d601b574e39">
+\begin{proof}
+A morphism of the indicated models is proper by its closed
+graph and the properness of the source over $O$. Its completion
+induces the analytic identity, so
+Lemma~\ref{v035:f5:dominationvertices} proves the necessary
+vertex inclusion.
+
+Suppose conversely that the inclusion holds. Form
+$\mathcal G$ and its two projections as in
+Lemma~\ref{v037:f5:graphmodel}. Both targets are normal and
+integral by Proposition~\ref{v036:f5:genericnormalization}.
+We show that $p_2$ is constant on every set-theoretic fibre
+of $p_1$.
+
+Choose the isometric comparison field $\Omega$ of
+Lemma~\ref{v036:f5:comparisonfield}, with residue field
+$\overline k$. The two base-changed target models are
+semistable algebraic models over $\Omega^\circ$. Their nodes
+have the split rational pointed charts of
+Theorem~\ref{cand:simultaneousnodalsplitting}, since $\Omega$
+is algebraically closed. Completing these charts gives the
+pointedly semistable formal models of
+Definition~\ref{v035:formal:modelclass}. By
+Corollary~\ref{v035:formal:partition}, the fibres of their
+specialization maps are their singleton component vertices
+and the connected components of the complements of those
+vertex sets. Proposition~\ref{v036:f5:vertexarithmetic}
+identifies their vertex sets with the entire inverse images
+of the original vertex sets, so
+\[
+        V(\mathcal X_{2,\Omega^\circ})
+                    \subset V(\mathcal X_{1,\Omega^\circ}).
+\]
+
+Consequently $\operatorname{sp}_2$ is constant on every
+fibre of $\operatorname{sp}_1$ on $C_\Omega^{\an}$.
+For a component generic point the latter fibre is a
+singleton. For a closed point it is a connected component
+of the complement of the larger vertex set. It avoids the
+smaller vertex set, and lies in one connected component of
+its complement, which is one fibre of
+$\operatorname{sp}_2$.
+
+Let $z_1,z_2\in\mathcal G_{\overline k}$ have the same
+$(p_1)_{\overline k}$-image. The surjective specialization
+in Lemma~\ref{v037:f5:graphmodel} supplies
+$x_1,x_2\in C_\Omega^{\an}$ with
+$\operatorname{sp}_{\mathcal G}(x_j)=z_j$.
+Functoriality gives
+$\operatorname{sp}_1(x_1)=\operatorname{sp}_1(x_2)$.
+The preceding constancy gives
+$\operatorname{sp}_2(x_1)=\operatorname{sp}_2(x_2)$, hence
+$(p_2)_{\overline k}(z_1)=(p_2)_{\overline k}(z_2)$.
+
+Here is the descent of this actual fibre relation. A field
+extension is flat by \cite[Tag 00HD]{StacksAlg}, since
+the only ideals of a field are zero and the whole field;
+its nonzero closed fibre makes it faithfully flat by
+\cite[Tag 00HP]{StacksAlg}. If $t_1,t_2\in\mathcal G_s$
+have the same $p_1$-image $y$, the tensor product
+$\kappa(t_1)\otimes_{\kappa(y)}\kappa(t_2)$ is therefore
+nonzero. A prime of it, supplied by
+\cite[Tag 00E0(2)]{StacksAlg}, gives a point of
+$\mathcal G_s\times_{\mathcal X_{1,s}}\mathcal G_s$
+with projections $t_1,t_2$. Faithful flatness of
+$\overline k/k$ and surjectivity on spectra,
+\cite[Tag 00HQ]{StacksAlg}, lift this point to the
+base-changed fibre product. Its two projections have the
+same $(p_1)_{\overline k}$-image, and thus the same
+$(p_2)_{\overline k}$-image. Projection back shows
+$p_2(t_1)=p_2(t_2)$. On the generic fibre both projections
+are identities. The generic and special fibres exhaust
+the rank-one base, and their images cannot meet. This proves
+the required constancy on every fibre of $p_1$.
+
+Lemma~\ref{v036:f5:properquotient}, applied to the proper
+birational map $p_1$ and its normal target, gives a unique
+algebraic factorization $p_2=f\circ p_1$. It induces the
+identity on $C$. Any two morphisms $\mathcal X_1\to
+\mathcal X_2$ inducing that identity are equal: their
+equalizer is closed because $\mathcal X_2/O$ is separated,
+and contains the schematically dense generic fibre of the
+flat integral source. Finally the same proper-quotient
+lemma applied to $f$ gives
+$f_*\mathcal O_{\mathcal X_1}=\mathcal O_{\mathcal X_2}$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002311-reader.jpg" alt="Typeset mathematical passage from PDF page 778" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=778">PDF page 778 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00E0@NAG-002311:original-11 · named external application <small>(existing exact named Stacks proof input)</small></li><li>APP-STACKS-00HD@NAG-002311:original-9 · named external application <small>(existing exact named Stacks proof input)</small></li><li>APP-STACKS-00HP@NAG-002311:original-10 · named external application <small>(existing exact named Stacks proof input)</small></li><li>APP-STACKS-00HQ@NAG-002311:original-12 · named external application <small>(existing exact named Stacks proof input)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002224/">NAG-002224</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002229/">NAG-002229</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002267/">NAG-002267</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002268/">NAG-002268</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002310/">NAG-002310</a> · selected whole <small>(earlier original in this reviewer packet)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00E0">APP-STACKS-00E0@NAG-002311:original-11</a></li><li><a href="https://stacks.math.columbia.edu/tag/00HD">APP-STACKS-00HD@NAG-002311:original-9</a></li><li><a href="https://stacks.math.columbia.edu/tag/00HP">APP-STACKS-00HP@NAG-002311:original-10</a></li><li><a href="https://stacks.math.columbia.edu/tag/00HQ">APP-STACKS-00HQ@NAG-002311:original-12</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002053/">cand:simultaneousnodalsplitting</a></li><li><a href="/r/NAG-002229/">v035:f5:dominationvertices</a></li><li><a href="/r/NAG-002223/#context-5a8c94205fb0091b">v035:formal:modelclass</a></li><li><a href="/r/NAG-002224/">v035:formal:partition</a></li><li><a href="/r/NAG-002270/">v036:f5:comparisonfield</a></li><li><a href="/r/NAG-002267/">v036:f5:genericnormalization</a></li><li><a href="/r/NAG-002268/">v036:f5:properquotient</a></li><li><a href="/r/NAG-002271/">v036:f5:vertexarithmetic</a></li><li><a href="/r/NAG-002310/">v037:f5:graphmodel</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

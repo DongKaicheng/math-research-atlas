@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002169/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The Legendre model when two is a unit · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002169 · Accepted whole</p><h1>The Legendre model when two is a unit</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.36.3">Open in the English reader · PDF page 734</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="11fa224f362a2db8f237449c79086f54909ba4d2a0c638d28aed50999e1bed32">
+\begin{proposition}[\bi{The Legendre model when two is a unit}
+{二可逆时的 Legendre 模型}]
+\label{cand:legendresemistablevaluation}
+\bi{Let $F$ be complete of characteristic zero with
+nontrivial absolute value and residue characteristic
+different from two. Every pointed smooth projective
+genus-one curve over $F$ has, after a finite extension,
+a projective nodal model over the resulting valuation ring.
+Its special fibre is either smooth or an irreducible cubic
+with one ordinary double point.}
+{设 $F$ 完备、特征零、绝对值非平凡，
+且剩余特征不为二。
+每条带点光滑射影亏格一曲线在有限扩域后，
+都在所得赋值环上具有射影结点模型。
+其特殊纤维或光滑，或为具有一个普通二重点的不可约
+三次曲线。}
+\end{proposition}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a9cb5f1ca642962c1055b64b0be81f4d5e30327432a35b3e2309ec792873c354">
+\begin{proof}
+\bi{Use Lemma~\ref{cand:shortweierstrassreconstruction}
+and split its cubic as
+$(x-e_1)(x-e_2)(x-e_3)$ after a finite extension.
+The roots are distinct.
+Choose the pair labelled $e_1,e_2$ to have maximal
+pairwise distance. After scaling $x-e_1$ by $e_2-e_1$
+and adjoining a square root for the corresponding
+$y$-scaling, the equation becomes}
+{使用 Lemma~\ref{cand:shortweierstrassreconstruction}，
+有限扩域后将三次式分解为
+$(x-e_1)(x-e_2)(x-e_3)$，其中根互异。
+选取两两距离最大的一对作为 $e_1,e_2$。
+用 $e_2-e_1$ 缩放 $x-e_1$，
+并添入相应 $y$ 缩放所需的平方根后，
+方程变为}
+\[
+ Y^2=X(X-1)(X-\lambda),\qquad
+ \lambda=\frac{e_3-e_1}{e_2-e_1},\qquad
+ |\lambda|\leq1,\quad|1-\lambda|\leq1 .
+\]
+\bi{At least one of the last two norms is one.
+If both are one, the three residual roots are distinct.
+Since two is a unit, the affine partial derivatives then
+have no common zero on the cubic.
+The point at infinity is smooth as in
+Lemma~\ref{cand:integralplanecubicfamily}.}
+{最后两个范数至少一个等于一。
+若二者均为一，则三个剩余根互异。
+由于二可逆，仿射偏导数在三次曲线上没有公共零点。
+无穷远点由 Lemma~\ref{cand:integralplanecubicfamily}
+知其光滑。}
+
+\bi{If $|\lambda|&lt;1$, the residual equation is
+$v^2=u^2(u-1)$, with its sole singular point at the origin.
+There the derivative ideal is
+$(u(2-3u),2v)=(u,v)$.
+The local hypersurface ring has depth one: $u$ is a
+nonzerodivisor since the equation is not divisible by $u$,
+and its dimension is one.
+Its first differential Fitting ideal is the derivative
+ideal just computed. Its residue field is the base field,
+so \cite[Tag 0C4D(5)]{StacksAlg} proves that this point
+is a node.
+If $|1-\lambda|&lt;1$, translate $u=X-1$; the same computation
+uses $v^2=u^2(u+1)$ and derivative
+$u(-2-3u)$.
+The quadratic terms have two distinct linear factors over
+a separable extension, because the characteristic is not two.
+The residual cubic is irreducible over the algebraic closure:
+in the first case $u-1$ is not a square in $\overline k(u)$,
+so $v^2-u^2(u-1)$ is irreducible, and the
+second case is identical with $u+1$.
+The integral-family lemma now supplies the required model.}
+{若 $|\lambda|&lt;1$，剩余方程为
+$v^2=u^2(u-1)$，唯一奇点为原点。
+此处的导数理想为
+$(u(2-3u),2v)=(u,v)$。
+局部超曲面环深度为一：
+方程不被 $u$ 整除，所以 $u$ 为非零因子，
+而环的维数为一。
+微分模的第一个 Fitting 理想就是上述导数理想。
+剩余域为基域，故
+\cite[Tag 0C4D(5)]{StacksAlg} 说明该点为结点。
+若 $|1-\lambda|&lt;1$，令 $u=X-1$，
+对 $v^2=u^2(u+1)$ 作同样计算，
+此时导数为 $u(-2-3u)$。
+因为特征不是二，二次项在某个可分扩域后
+分成两个不同线性因子。
+剩余三次式在代数闭包上不可约：
+第一种情形中，$u-1$ 在 $\overline k(u)$ 中不是平方，
+所以 $v^2-u^2(u-1)$ 不可约；
+第二种情形将 $u-1$ 换成 $u+1$ 即可。
+整三次曲线族引理现在给出所需模型。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002169-reader.jpg" alt="Typeset mathematical passage from PDF page 734" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=734">PDF page 734</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00T7@NAG-002169:residual-smooth-opens · named external application</li><li>APP-STACKS-00T7@NAG-002169:residual-smooth-opens · named external application <small>(requires)</small></li><li>APP-STACKS-0C4D@NAG-002169:lambda-one · named external application</li><li>APP-STACKS-0C4D@NAG-002169:lambda-one · named external application <small>(requires)</small></li><li>APP-STACKS-0C4D@NAG-002169:lambda-zero · named external application</li><li>APP-STACKS-0C4D@NAG-002169:lambda-zero · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002167/">NAG-002167</a> · selected whole</li><li><a href="/r/NAG-002167/">NAG-002167</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002168/">NAG-002168</a> · selected whole</li><li><a href="/r/NAG-002168/">NAG-002168</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002168/">cand:integralplanecubicfamily</a></li><li><a href="/r/NAG-002167/">cand:shortweierstrassreconstruction</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001589/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Residual dimension under free scalar extension · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001589 · Accepted whole</p><h1>Residual dimension under free scalar extension</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.3.22.5">Open in the English reader · PDF page 603</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="d2de2b19ce25189c6870d8080f9b5595d2dc58be9532f9b8db8c5abdea9c9cc4">
+\begin{proposition}[\bi{Residual dimension under free scalar extension}
+{自由扩标量时的剩余维数}]
+\label{fnd:freegaussresidualdimension}
+\bi{Let $A$ be a generalized $K$-affinoid algebra, let $r$ be a
+finite tuple of $m$ radii free over $K$, and put $L=K_r$.
+For $x\in\mathcal M(A)$ and its Gauss lift $\sigma_r(x)$,}
+{设 $A$ 为广义 $K$-affinoid 代数，$r$ 为在 $K$ 上自由的
+$m$ 个半径组成的有限元组，令 $L=K_r$。
+对 $x\in\mathcal M(A)$ 及其 Gauss 提升 $\sigma_r(x)$，有}
+\[
+ d_L(\sigma_r(x))=d_K(x).
+\]
+\bi{For every $y\in\mathcal M_L(A_L)$ above $x$,}
+{对 $x$ 上方的每个 $y\in\mathcal M_L(A_L)$，有}
+\[
+ d_L(y)\le d_K(x).
+\]
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9b026c64e32f6ecade609ed9526c06c229a5c939d1b32e50c97fe7fef1fae6e5">
+\begin{proof}
+\bi{Write $F=\mathcal H_A(x)$ and $E=\mathcal H_{A_L}(y)$.
+The residue-field universal property embeds $F$ and $L$
+isometrically in $E$. Denote the images of the $m$ Gauss
+parameters by $t_1,\ldots,t_m$. The field $E$ is the completion
+of $F(t_1,\ldots,t_m)$ with the induced absolute value.
+Here the density assertion is essential: finite Laurent
+polynomials with coefficients in $A$ are dense in $A_L$ by
+Theorem~\ref{fnd:freepolyradiuscoefficients}; bounded evaluation
+therefore puts the entire image of $A_L$ in the closure of
+$F(t_1,\ldots,t_m)$. Conversely the completion defining $E$
+contains $F$, the parameters, and the closure of their fraction
+field. Inverting nonzero limits is continuous, so these two
+closures are the same complete valued field.}
+{记 $F=\mathcal H_A(x)$、$E=\mathcal H_{A_L}(y)$。
+剩余域的泛性质将 $F,L$ 等距嵌入 $E$。记 $m$ 个 Gauss
+参数的像为 $t_1,\ldots,t_m$。域 $E$ 是
+$F(t_1,\ldots,t_m)$ 关于诱导绝对值的完备化。
+这里必须核验稠密性：由
+Theorem~\ref{fnd:freepolyradiuscoefficients}，$A$-系数的有限
+Laurent 多项式在 $A_L$ 中稠密；有界求值因而将 $A_L$ 的
+整个像置于 $F(t_1,\ldots,t_m)$ 的闭包中。反过来，定义 $E$
+的完备化包含 $F$、这些参数及其分式域的闭包。
+非零极限的求逆连续，所以这两个闭包为同一个完备赋值域。}
+
+\bi{Lemma~\ref{fnd:valuedfieldabhyankar} gives $d(E/F)\le m$.
+The free-polyradius field $L$ is the completion of the Gauss
+rational field over $K$: the unique dominant term expands every
+rational inverse as a convergent Laurent geometric series.
+Thus Lemma~\ref{fnd:gaussvaluedfielddimension} gives $d(L/K)=m$.
+The two tower formulas yield}
+{Lemma~\ref{fnd:valuedfieldabhyankar} 给出 $d(E/F)\le m$。
+自由多半径域 $L$ 是 $K$ 上 Gauss 有理函数域的完备化：
+唯一占优项使每个有理逆元展开为收敛的 Laurent 几何级数。
+因此 Lemma~\ref{fnd:gaussvaluedfielddimension} 给出
+$d(L/K)=m$。两个塔式等式给出}
+\[
+ m+d(E/L)=d(E/K)=d(F/K)+d(E/F).
+\]
+\bi{If $d(F/K)$ is infinite, the asserted inequality is automatic;
+otherwise all terms are finite and cancellation of $m$ proves it.}
+{若 $d(F/K)$ 无限，则所需不等式自动成立；否则所有项均有限，
+消去 $m$ 即得不等式。}
+
+\bi{At the canonical point $\sigma_r(x)$ the norm of a finite
+Laurent polynomial is precisely its weighted Gauss norm over
+$F$, by Theorem~\ref{fnd:freepolyradiusgausssection}.
+The same density argument identifies its completed residue field
+with the completion of $F(T_1,\ldots,T_m)$ for that norm.
+In particular the parameters are algebraically independent here,
+even if their radii are no longer free over $F$.
+Lemma~\ref{fnd:gaussvaluedfielddimension} gives $d(E/F)=m$,
+and the displayed tower equality proves
+$d(E/L)=d(F/K)$, with infinity allowed.}
+{在典范点 $\sigma_r(x)$ 处，由
+Theorem~\ref{fnd:freepolyradiusgausssection}，有限 Laurent
+多项式的范数正是在 $F$ 上的加权 Gauss 范数。
+相同的稠密性论证将其完备剩余域识别为
+$F(T_1,\ldots,T_m)$ 关于此范数的完备化。
+特别地，这里的参数代数无关，即使其半径在 $F$ 上不再自由。
+Lemma~\ref{fnd:gaussvaluedfielddimension} 给出 $d(E/F)=m$，
+所列塔式等式遂给出 $d(E/L)=d(F/K)$，也允许无穷大的情形。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001589-reader.jpg" alt="Typeset mathematical passage from PDF page 603" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=603">PDF page 603 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope</li><li><a href="/r/NAG-000648/#arbitrary_complete_valued_target">CLAUSE:NAG-000648:arbitrary_complete_valued_target</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole</li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole</li><li><a href="/r/NAG-001569/">NAG-001569</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001587/">NAG-001587</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001587/">NAG-001587</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole</li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole</li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001549/">fnd:freepolyradiuscoefficients</a></li><li><a href="/r/NAG-001588/">fnd:gaussvaluedfielddimension</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

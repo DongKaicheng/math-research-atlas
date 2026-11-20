@@ -1,0 +1,182 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003121/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Supported projection and horizontal--vertical induction · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003121 · Accepted whole</p><h1>Supported projection and horizontal--vertical induction</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003121.original">Open in the English reader · PDF page 2145</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8925897a030e7609a763459a24653130ceb9d31e026df02900e488c3dfc4f358">
+\begin{theorem}[Supported projection and horizontal--vertical induction]
+\label{f9sc:induction}
+The value \eqref{ex68:support:eq:J} is independent of the permitted signed
+presentations and symmetric in all $d+1$ inputs. Let
+$p:\cY\to\cX$ be a supplied proper dominant map of integral proper
+flat models of the same relative dimension, and put
+$N=[K(\cY):K(\cX)]$. With the actual pulled-back factor data and
+supports on $\cY$, one has
+\begin{equation}\label{ex68:support:eq:Jprojection}
+                         J_{\cY}=N J_{\cX}.
+\end{equation}
+Normality of $\cY$ is not needed for this supported equality.
+
+At the ordinary height-one DVRs of $\cX$, write
+\[
+ \divi_{\cL_0}(\sigma_0)=\sum_{H\ \mathrm{horizontal}}a_H[H]
+                  +\sum_{V\ \mathrm{vertical}}a_V[V].
+\]
+Let $J_H$ be the construction \eqref{ex68:support:eq:J} on $H$ using the remaining
+$d$ pulled-back presentations and denominator $\prod_{i=1}^d e_i$.
+Put $\delta_V=\delta(V;\cL_1|_V,\ldots,\cL_d|_V)$. Then
+\begin{equation}\label{ex68:support:eq:induction}
+ J_{\cX}=\frac1{e_0}\sum_Ha_H J_H
+       +\frac{\lambda}{e_0\prod_{i=1}^d e_i}\sum_Va_V\delta_V.
+\end{equation}
+Thus the horizontal coefficients are exactly those of
+$\divi(s_0)$ on the generic fibre. For the root model metric and the
+specified finite model measure, the second summand is
+\begin{equation}\label{ex68:support:eq:log}
+ \int-\log\|s_0\|\,d\mu,\qquad
+ -\log\|s_0(\xi_V)\|=\frac{\lambda a_V}{e_0b_V},\qquad
+ \mu=\sum_V\frac{b_V\delta_V}{\prod_{i=1}^d e_i}\delta_{\xi_V}.
+\end{equation}
+It is a finite total-variation integral, regardless of signs of the
+mixed degrees. At fixed metrics, replacing any $s_i$ by $\pi s_i$
+changes $J$ by $+\lambda$ times the corresponding model-measure mass.
+Only \eqref{ex68:support:eq:totalempty} is required; no pairwise proper intersection
+or generic nonvanishing on every intermediate cycle is imposed.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="40a638a9df056129c3a19b58521c0ab7787bc21de362ba17532a0230be27b82f">
+\begin{proof}
+The operations produce a zero-class on $T$ after $d+1$ steps.
+Condition~\eqref{ex68:support:eq:totalempty} makes $T_{\mathrm{red}}$ a proper
+$k$-scheme, so its degree is defined even if $T$ has positive dimension.
+Presentation independence and commutation prove the first assertions.
+For the supplied proper map, repeated supported projection gives
+\[
+ p_*(I_{p^*0}\cdots I_{p^*d}[\cY])
+       =I_0\cdots I_d p_*[\cY]
+       =N I_0\cdots I_d[\cX].
+\]
+The supports remain the displayed inverse images; degree compatibility
+proves \eqref{ex68:support:eq:Jprojection}. This proves a statement about a supplied
+map and compatible data, not existence of a common model.
+
+Apply $I_0$ first. Each factor section in its signed presentation is
+nonzero on $\cX$. Its Gysin image of $[\cX]$ is therefore its divisor
+cycle, and subtraction gives the displayed cycle of $\sigma_0$ on
+$Z_0$. A positive coefficient at a height-one point is the length of
+the quotient by a local equation in the ordinary DVR; differences give
+the signed coefficient. Apply the remaining operators to each component,
+using proper compatibility for its closed immersion. On a horizontal
+$H$, the remaining generic supports have empty total intersection:
+$H\subset Z_0$ and \eqref{ex68:support:eq:totalempty} applies. This contribution is
+$(a_H/e_0)J_H$. The value $J_H$ uses the restricted factor presentations,
+not a purported restriction of a rational section that vanishes
+identically on $H$.
+
+On a vertical $V$, push the remaining supported intersection class
+into $\CH_0(V)$. The last assertion of Theorem~\ref{f9sc:refined-supported},
+its signed extension, and proper compatibility show that the result is
+$c_1(\cL_1|_V)\cdots c_1(\cL_d|_V)[V]$. This push stays inside
+the proper vertical scheme $V$, so it preserves the relevant degree.
+It gives $a_V\delta_V$ and proves \eqref{ex68:support:eq:induction}. Localization
+at $\pi$ identifies the horizontal DVR with its generic-fibre DVR.
+Since $\sigma_0=s_0^{e_0}$, its horizontal coefficient is $e_0$
+times the coefficient of $\divi(s_0)$.
+
+For \eqref{ex68:support:eq:log}, the point $\xi_V$ has norm
+$|f(\xi_V)|=|\pi|^{\ord_V(f)/b_V}$ and generic scheme support.
+A model frame gives the stated root norm. Multiplying its negative
+logarithm by the mass cancels $b_V$, giving exactly the vertical
+summand of \eqref{ex68:support:eq:induction}. All these finitely many values are
+finite; the zero/pole locus is null for the finite atomic measure.
+This proves the integral assertion by a finite sum, without a limit.
+
+Finally $s_i\mapsto\pi s_i$ changes the model divisor by
+$e_i\divi(\pi)$ and may enlarge its support by the special fibre.
+Its first supported operation on $[\cX]$ gives
+$e_i\sum_Vb_V[V]$. Commutation and the same vertical calculation give
+\[
+ \Delta J=\frac{\lambda}{\prod_{j\ne i}e_j}
+              \sum_V b_V\delta(V;(\cL_j|_V)_{j\ne i}),
+\]
+with positive sign. This is the stated model mass; identifying it with
+a generic-fibre degree would require the separate specialization result.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003121-reader.jpg" alt="Typeset mathematical passage from PDF page 2146" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2146">PDF page 2146 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000136/">NAG-000136</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002830/">NAG-002830</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003111/">NAG-003111</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003116/">NAG-003116</a> · selected whole <small>(explicit current dependencies)</small></li></ul><h2>Selected scopes</h2><article id="algebraic_supported_induction"><h3>algebraic supported induction</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003121.algebraic-supported-induction">Scope in the English reader · PDF page 1943</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4b2ea8640d537c8e7d19a028de575be2a4a1c4c4cbe179c0979c0ce73810f520">
+\begin{theorem}[Supported projection and algebraic horizontal--vertical induction]
+\label{f9sc:induction-algebraic}
+The value \eqref{eq:f9sc:induction-value} is independent of the permitted signed
+presentations and symmetric in all $d+1$ inputs. Let
+$p:\cY\to\cX$ be a supplied proper dominant map of integral proper
+flat models of the same relative dimension, and put
+$N=[K(\cY):K(\cX)]$. With the actual pulled-back factor data and
+supports on $\cY$, one has
+\begin{equation}\label{eq:f9sc:induction-projection}
+                         J_{\cY}=N J_{\cX}.
+\end{equation}
+Normality of $\cY$ is not needed for this supported equality.
+
+At the ordinary height-one DVRs of $\cX$, write
+\[
+ \divi_{\cL_0}(\sigma_0)=\sum_{H\ \mathrm{horizontal}}a_H[H]
+                  +\sum_{V\ \mathrm{vertical}}a_V[V].
+\]
+Let $J_H$ be the construction \eqref{eq:f9sc:induction-value} on $H$ using the remaining
+$d$ pulled-back presentations and denominator $\prod_{i=1}^d e_i$.
+Put $\delta_V=\delta(V;\cL_1|_V,\ldots,\cL_d|_V)$. Then
+\begin{equation}\label{eq:f9sc:algebraic-induction}
+ J_{\cX}=\frac1{e_0}\sum_Ha_H J_H
+       +\frac{\lambda}{e_0\prod_{i=1}^d e_i}\sum_Va_V\delta_V.
+\end{equation}
+Thus the horizontal coefficients are exactly those of
+$\divi(s_0)$ on the generic fibre. At fixed model lines, identifications and root exponents, replacing
+$s_i$ by $\pi s_i$ and enlarging its support by the special fibre when
+needed changes the supported value by
+\[
+ \Delta J=\frac{\lambda}{\prod_{j\ne i}e_j}
+              \sum_V b_V\,\delta\bigl(V;(\cL_j|_V)_{j\ne i}\bigr).
+\]
+Only \eqref{eq:f9sc:induction-total-empty} is required; no pairwise proper intersection
+or generic nonvanishing on every intermediate cycle is imposed.
+\end{theorem}</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="8b195b8ad139d7898c272aa1d6bb4572cbed8a886fbf6099e04112d2a8a4bc01">
+\begin{proof}
+The operations produce a zero-class on $T$ after $d+1$ steps.
+Condition~\eqref{eq:f9sc:induction-total-empty} makes $T_{\mathrm{red}}$ a proper
+$k$-scheme, so its degree is defined even if $T$ has positive dimension.
+Presentation independence and commutation prove the first assertions.
+For the supplied proper map, repeated supported projection gives
+\[
+ p_*(I_{p^*0}\cdots I_{p^*d}[\cY])
+       =I_0\cdots I_d p_*[\cY]
+       =N I_0\cdots I_d[\cX].
+\]
+The supports remain the displayed inverse images; degree compatibility
+proves \eqref{eq:f9sc:induction-projection}. This proves a statement about a supplied
+map and compatible data, not existence of a common model.
+
+Apply $I_0$ first. Each factor section in its signed presentation is
+nonzero on $\cX$. Its Gysin image of $[\cX]$ is therefore its divisor
+cycle, and subtraction gives the displayed cycle of $\sigma_0$ on
+$Z_0$. A positive coefficient at a height-one point is the length of
+the quotient by a local equation in the ordinary DVR; differences give
+the signed coefficient. Apply the remaining operators to each component,
+using proper compatibility for its closed immersion. On a horizontal
+$H$, the remaining generic supports have empty total intersection:
+$H\subset Z_0$ and \eqref{eq:f9sc:induction-total-empty} applies. This contribution is
+$(a_H/e_0)J_H$. The value $J_H$ uses the restricted factor presentations,
+not a purported restriction of a rational section that vanishes
+identically on $H$.
+
+On a vertical $V$, push the remaining supported intersection class
+into $\CH_0(V)$. The support-forgetting first Chern assertion of
+Theorem~\ref{f9sc:refined-supported}, its signed extension in Proposition~\ref{f9sc:signed},
+and proper compatibility show that the result is
+$c_1(\cL_1|_V)\cdots c_1(\cL_d|_V)[V]$. This push stays inside
+the proper vertical scheme $V$, so it preserves the relevant degree.
+It gives $a_V\delta_V$ and proves \eqref{eq:f9sc:algebraic-induction}. Localization
+at $\pi$ identifies the horizontal DVR with its generic-fibre DVR.
+Since $\sigma_0=s_0^{e_0}$, its horizontal coefficient is $e_0$
+times the coefficient of $\divi(s_0)$.
+
+Finally $s_i\mapsto\pi s_i$ changes the model divisor by
+$e_i\divi(\pi)$ and may enlarge its support by the special fibre.
+Its first supported operation on $[\cX]$ gives
+$e_i\sum_Vb_V[V]$. Commutation and the same vertical calculation give
+\[
+ \Delta J=\frac{\lambda}{\prod_{j\ne i}e_j}
+              \sum_V b_V\delta(V;(\cL_j|_V)_{j\ne i}),
+\]
+with positive sign.
+\end{proof}</pre></details><ul class="records"><li><a href="/r/NAG-003112/#supported_gysin_1_4">CLAUSE:NAG-003112:supported_gysin_1_4</a> · selected scope <small>(exact native application)</small></li><li><a href="/r/NAG-003117/#algebraic_component_degree">CLAUSE:NAG-003117:algebraic_component_degree</a> · selected scope <small>(exact native application)</small></li><li><a href="/r/NAG-003111/">NAG-003111</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-003116/">NAG-003116</a> · selected whole <small>(exact native application)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003112/#supported_gysin_1_4">f9sc:refined-supported</a></li><li><a href="/r/NAG-003116/">f9sc:signed</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

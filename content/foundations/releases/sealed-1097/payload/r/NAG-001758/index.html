@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001758/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Henselian ordinary local rings · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001758 · Accepted whole</p><h1>Henselian ordinary local rings</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=corollary.2.35.21">Open in the English reader · PDF page 325</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="3c3420320d0b4b4b73e6c5a7108cdf470dfa0316b2a544cd08be5ba355c4a804">
+\begin{corollary}[\bi{Henselian ordinary local rings}{Hensel 通常局部环}]
+\label{fnd:ordinaryanalyticstalkhenselian}
+\bi{Every ordinary local ring $R$ of a good analytic space has the following properties: every finite $R$-algebra is a finite product of local rings, and every simple residue-field root of a monic polynomial over $R$ lifts uniquely to a root in $R$. In particular $R$ is henselian.}
+{Good 解析空间的每个通常局部环 $R$ 均有以下性质：每个有限 $R$-代数是有限个局部环的乘积；$R$ 上首一多项式的每个单剩余域根都唯一提升为 $R$ 中的根。特别地，$R$ 是 Hensel 环。}
+\end{corollary}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="2ee6a57e08adf801271b3b1f62ee375fa6a2cac3d887351007ea35c0a20d58a4">
+\begin{proof}
+\bi{The first assertion is Theorem~\ref{fnd:finiteordinarygermrealization}. To prove the second directly, let $P\in R[T]$ be monic and let $a\in R/\mathfrak m_R$ be a simple root of $\overline P$. Apply the first assertion to the finite free algebra $B=R[T]/(P)$. Every local factor is finite over $R$ and hence has its maximal ideal over $\mathfrak m_R$: a field integral over the image of $R$ forces that image to be a field. The factor $C$ corresponding to the maximal ideal $(\mathfrak m_R,T-a)$ therefore satisfies $C/\mathfrak m_RC\simeq R/\mathfrak m_R$. Here simplicity of the root ensures that the associated local factor of $(R/\mathfrak m_R)[T]/(\overline P)$ has dimension one and no nilpotents; factor $\overline P=(T-a)Q$ with $Q(a)\ne0$ and use the Chinese remainder identity.}
+{第一项即 Theorem~\ref{fnd:finiteordinarygermrealization}。为直接证明第二项，设 $P\in R[T]$ 首一，且 $a\in R/\mathfrak m_R$ 是 $\overline P$ 的单根。将第一项用于有限自由代数 $B=R[T]/(P)$。每个局部因子都在 $R$ 上有限，其极大理想必位于 $\mathfrak m_R$ 上方：若一个域在 $R$ 的像上整，则该像也是域。因此，对应于极大理想 $(\mathfrak m_R,T-a)$ 的因子 $C$ 满足 $C/\mathfrak m_RC\simeq R/\mathfrak m_R$。这里单根性使 $(R/\mathfrak m_R)[T]/(\overline P)$ 的相应局部因子为一维且无幂零元；将 $\overline P$ 分解为 $(T-a)Q$、其中 $Q(a)\ne0$，再用中国剩余恒等式即可。}
+
+\bi{Let \(\epsilon:R\to C\) be the structure map and put \(k=R/\mathfrak m_R\).
+Its cokernel \(Q_C\) is finite. The isomorphism \(k\to C/\mathfrak m_RC\)
+gives \(Q_C/\mathfrak m_RQ_C=0\) by right exactness. Apply
+\cite[Tag 00DV(2)]{StacksAlg} with \(M=Q_C\) and \(I=\mathfrak m_R\)
+to see that \(\epsilon\) is surjective.
+
+Let \(p_C:B\to C\) be the projection. Lift the images under \(p_C\)
+of the standard free \(R\)-basis of \(B\) along \(\epsilon\).
+These lifts define an \(R\)-linear map \(B\to R\). Its restriction to
+the direct summand \(C\) splits \(\epsilon\) as a map of \(R\)-modules.
+Thus \(N=\ker\epsilon\) is a direct summand of \(R\), hence finite,
+and reduction of this split sequence identifies \(N/\mathfrak m_RN\)
+with the kernel of \(k\to C/\mathfrak m_RC\). That kernel is zero.
+Apply \cite[Tag 00DV(2)]{StacksAlg} with \(M=N\) and
+\(I=\mathfrak m_R\) to get \(N=0\).
+The image of $T$ in $C=R$ is the desired lifted root. If $b,c\in R$ were two lifts, then $P(b)-P(c)=(b-c)Q_1(b,c)$, where $Q_1(b,c)$ reduces to $\overline P&#x27;(a)\ne0$; hence $Q_1(b,c)$ is a unit and $b=c$.}
+{因子 $C$ 是有限自由 $R$-模 $B$ 的直和因子，所以平坦。Nakayama 使 $R\to C$、$1\mapsto1$ 满射。其核 $N$ 有限；把 $0\to N\to R\to C\to0$ 与剩余域张量，由 $C$ 平坦且剩余映射为同构，得到 $N/\mathfrak m_RN=0$，再用 Nakayama 即得 $N=0$。$T$ 在 $C=R$ 中的像就是所求根。若 $b,c\in R$ 是两个提升，则 $P(b)-P(c)=(b-c)Q_1(b,c)$，其中 $Q_1(b,c)$ 模极大理想等于 $\overline P&#x27;(a)\ne0$；故 $Q_1(b,c)$ 为单位，$b=c$。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001758-reader.jpg" alt="Typeset mathematical passage from PDF page 325" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=325">PDF page 325 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001757/">NAG-001757</a> · selected whole</li><li><a href="/r/NAG-001757/">NAG-001757</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001757/">fnd:finiteordinarygermrealization</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

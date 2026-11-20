@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002249/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite piecewise-affine values · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002249 · Accepted whole</p><h1>Finite piecewise-affine values</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.29.1">Open in the English reader · PDF page 929</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b2f9c0a0db70f1a96a786d7a22ea8baacb9b0c92a898789cccb6c63b4149014f">
+\begin{proposition}[Finite piecewise-affine values]
+\label{v035:faithfulanalyticpl}
+Let $g\in B$ be nonzero at every point of $\Sigma$.
+Then $v(g)|_\Sigma$ is finite piecewise
+$\Gamma$-integral-affine. One finite hyperplane subdivision of
+the standard simplex induces a suitable subdivision on every
+skeletal cell.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="72e731521109b2dbd8660852fd3a9f7a58dd84b6e36eb79a91b71b790bbbc916">
+\begin{proof}
+Assume that $\Sigma$ is nonempty. Compactness gives
+$\alpha=\min_\Sigma|g|&gt;0$. Use the bounded square-Jacobian
+presentation of Lemma~\ref{cand:formaletaleboundedpresentation},
+with root coordinates $Y_1,\ldots,Y_m$, inverse determinant $Q$,
+and integral polynomial equations $F(Y)=0$ whose coefficients
+belong to $A_0$. Give its generic algebra the quotient Banach
+norm in which all these coordinates have norm at most one.
+Choose a polynomial $P(X,T,Y,Q)$ such that
+\[
+ \|g-P(X,T,Y,Q)\|&lt;\varepsilon&lt;\alpha.
+\]
+Let $M\geq1$ bound the absolute values of its coefficients.
+The difference of two monomials, expanded one factor at a time,
+shows that $P$ is $M$-Lipschitz on tuples of norm at most one.
+
+Approximate the finitely many restricted coefficients of $F$
+by integral polynomials in $X,T$, with error
+$\delta&lt;1$ and $M\delta&lt;\varepsilon$, obtaining $G$.
+At the original root, both $G(Y)$ and $G&#x27;(Y)-F&#x27;(Y)$ have norm
+at most $\delta$. The inverse of $F&#x27;(Y)$ has norm at most one,
+since its adjugate is integral and $Q$ has norm at most one.
+The geometric inverse gives the same bound for $G&#x27;(Y)^{-1}$.
+Lemma~\ref{cand:banachcenterhensel} produces $Y_G\in B^m$ with
+\[
+ G(Y_G)=0,\qquad \|Y_G-Y\|\leq\delta,\qquad \|Y_G\|\leq1.
+\]
+The determinant and reciprocal identities imply that
+$Q_G=(\det G&#x27;(Y_G))^{-1}$ has norm at most one and
+$\|Q_G-Q\|\leq\delta$. Hence
+\[
+ g_G=P(X,T,Y_G,Q_G),\qquad \|g_G-g\|&lt;\alpha,
+ \qquad |g_G(x)|=|g(x)|\quad(x\in\Sigma).
+\]
+
+Put
+\[
+ \begin{aligned}
+ R&amp;=K[X_0,\ldots,X_r,T]/(X_0\cdots X_r-a),\\
+ C&amp;=R[Y,Q]/(G,Q\det G&#x27;-1),\qquad F_0=\operatorname{Frac}(R).
+ \end{aligned}
+\]
+Eliminating $X_0$ identifies $R$ with a Laurent polynomial ring
+in $X_1,\ldots,X_r$ and a polynomial ring in $T$, so it is a
+domain. The square-zero correction by the inverse Jacobian
+proves that $C/R$ is formally \etale. It is finitely presented,
+and therefore \etale by \cite[Tag 00UR]{StacksAlg}. Its affine
+generic fibre is a finite product of finite separable extensions
+of $F_0$ by \cite[Tag 02GL]{StacksAlg}; finiteness here follows
+from quasi-compactness of this discrete fibre. Thus the image
+of $P$ satisfies a polynomial over $F_0$.
+
+At a skeletal point, evaluation on $R$ is its standard Gauss
+norm and has zero kernel. The evaluation $C\to\mathcal H(x)$
+therefore extends to $C\otimes_R F_0$. In particular this generic
+fibre is nonzero. Clear the denominators of an annihilating
+polynomial and remove its largest common power of the variable.
+Because $g_G(x)\ne0$, the resulting relation holds at every
+skeletal point and has nonzero constant and leading coefficients:
+\[
+             \sum_{i=0}^{s}A_i g_G^i=0,\qquad A_i\in R.
+\]
+There are at least two nonzero terms. Write
+$\lambda_i(w)=v(A_i(z_w))$ for each nonzero $A_i$. A Laurent
+polynomial Gauss norm makes $\lambda_i$ the minimum of finitely
+many $\Gamma$-integral-affine functions. At least two terms of
+the displayed relation have the smallest valuation, whence
+\[
+ v(g(x_{\eta,w}))\in
+ \left\{\frac{\lambda_i(w)-\lambda_j(w)}{j-i}:
+                 i&lt;j,\ A_iA_j\ne0\right\}.
+\]
+Subdivide the standard simplex by comparisons of coefficient
+monomials and then by comparisons of the resulting affine
+candidates. Multiplying the equations by positive integers
+leaves integral hyperplanes with constants in $\Gamma$.
+On a connected relative open piece the distinct candidates
+have a fixed strict order. A continuous selection from them
+must select one throughout that piece. This gives finitely
+many rational-affine formulas, with a common subdivision on
+all the skeletal cells.
+
+To establish integrality, fix a relative open cell. The proof
+of Theorem~\ref{cand:etalecellunitsaffine}, before its use of
+the unit hypothesis, constructs a single coefficient field
+$L_0$ with $v(L_0^\times)=\Gamma$ and an open polyannulus
+parametrizing this cell&#x27;s Gauss points. Pull back $g$ to that
+polyannulus. The Laurent expansion constructed in
+Lemma~\ref{cand:openpolyannulusunits} gives
+\[
+ \log|g(z_w)|=\max_m\{\log|c_m|-\langle m,w\rangle\}.
+\]
+On a full-dimensional open piece where the left side is
+affine, choose a Laurent term attaining the maximum at an
+interior point. The difference between the left side and this term is affine,
+nonnegative, and zero at an interior point, so it is identically
+zero there. That piece consequently has an integral slope
+and a constant in $\Gamma$. Continuity gives the same assertion
+on its faces. Each lower-dimensional piece is a face of a
+full-dimensional piece in its original cell. An original
+zero-dimensional cell is evaluated in $L_0$ itself. This proves
+the assertion on every cell.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="330a4e4c2482275f41105723ada854048202c88fba1d67d5ff371a90c9753e64">
+Let $K$ be complete and nontrivially valued, with its specified
+real-valued absolute value. Put $O=K^\circ$, $k=\widetilde K$,
+$v=-\log|\cdot|$, and $\Gamma=v(K^\times)$.
+Consider a topologically finitely presented formally \etale map
+of admissible algebras
+\[
+ A_0=O\langle X_0,\ldots,X_r,T_1,\ldots,T_q\rangle/
+              (X_0\cdots X_r-a)\longrightarrow B_0,
+ \qquad 0&lt;|a|&lt;1.
+\]
+Write $B=B_0\otimes_O K$, $Y=\mathcal M(B)$, and
+$\Sigma\subset Y$ for the inverse image of the standard skeleton.
+The notation $\Delta_I$, $Q_I$, and $x_{\eta,w}$ is that of
+Proposition~\ref{cand:actualskeletalfibrestrata} and
+Theorem~\ref{cand:etaleskeletonfinitefaces}. In particular, $\Sigma$
+is a compact finite complex, and a point over the relative interior
+of $\Delta_I$ is specified by $w$ and $\eta\in Q_I$.
+A finite piecewise $\Gamma$-integral-affine function has integral
+linear parts and constants in $\Gamma$ on a finite subdivision
+defined by integral linear inequalities with constants in $\Gamma$.</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002249-reader.jpg" alt="Typeset mathematical passage from PDF page 929" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=929">PDF page 929 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002172/">NAG-002172</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002212/">NAG-002212</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002214/">NAG-002214</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002215/">NAG-002215</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002217/">NAG-002217</a> · selected whole <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002212/">cand:actualskeletalfibrestrata</a></li><li><a href="/r/NAG-002156/">cand:banachcenterhensel</a></li><li><a href="/r/NAG-002217/">cand:etalecellunitsaffine</a></li><li><a href="/r/NAG-002214/">cand:etaleskeletonfinitefaces</a></li><li><a href="/r/NAG-002172/">cand:formaletaleboundedpresentation</a></li><li><a href="/r/NAG-002215/">cand:openpolyannulusunits</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

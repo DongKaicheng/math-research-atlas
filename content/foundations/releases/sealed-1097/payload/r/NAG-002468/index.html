@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002468/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A weighted chart with one residual component · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002468 · Accepted whole</p><h1>A weighted chart with one residual component</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.57.2">Open in the English reader · PDF page 1079</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f39f64f92a5b3b348ae5e210740895e93e9514322a117f2b60fed4ce4ca94e86">
+\begin{proposition}[A weighted chart with one residual component]
+\label{v038:faithful:weightedchart}
+Fix a chart $\operatorname{Spec}C$, a label $\eta\in Q_I$,
+and its separator $h$, and put $E=(S_I)_{\bar h}$.
+Let $w\in\operatorname{relint}\Delta_I$ and
+$s=x_{\eta,w}$. Let $L/K$ be a complete isometric extension
+in whose value group all $w_i$ occur. Choose $c_i\in L^\times$
+with $v(c_i)=w_i$ and $\prod_i c_i=a$, taking $c_j=1$ for
+$j\notin I$. Write $l=\widetilde L$.
+
+There is an admissible $L^\circ$-model $B_0$ of the actual
+domain in the completed chart over $L$ given by
+\[
+                   |X_i|=|c_i|\quad(0\leq i\leq r),
+                         \qquad |h|=1.
+\]
+Its special fibre is
+\[
+              \operatorname{Spec}(B_0/\mathfrak m_LB_0)
+                    \simeq E_l\times\mathbf G_{m,l}^{|I|-1}.
+\]
+This fibre is smooth and geometrically reduced, and $B_0$
+is the spectral unit ball of $B=B_0[1/\pi]$.
+Every Shilov point of $\mathcal M_L(B)$ restricts to $s$.
+Consequently, for every $g\in C$ nonzero as a rational
+function on $X$,
+\[
+       \rho_B(g)=|g(s)|&gt;0,
+       \qquad |g(\xi)|=|g(s)|
+                    \quad(\xi\in\Gamma_B).
+\]
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="474a0d07929e070179518e84733f9b8a9935b751937d555d50a0712d7608b540">
+\begin{proof}
+Use the separator supplied by
+Lemma~\ref{v038:faithful:chartpreparation}.
+Choose $i_0\in I$. Choose the $c_i$ for $i\ne i_0$ first
+and then put $c_{i_0}=a/\prod_{i\ne i_0}c_i$.
+The relation $\sum_iw_i=v(a)$ gives its required norm.
+Consider the algebraic base change
+\[
+ \begin{aligned}
+ A_w&amp;=L^\circ[U_0^{\pm1},\ldots,U_r^{\pm1},T_1,\ldots,T_q]
+                                      /(\prod_iU_i-1),\\
+ C_w&amp;=(C\otimes_R A_w)[1/h],\\
+ B_0&amp;=\widehat{C_w},
+ \end{aligned}
+\]
+where $X_i\mapsto c_iU_i$ and completion is $\pi$-adic.
+Eliminating $U_{i_0}$ makes $A_w$ a Laurent polynomial
+algebra with polynomial variables over $L^\circ$; it is
+flat by the coefficientwise ideal criterion
+\cite[Tag 00HD]{StacksAlg}. The map $A_w\to C_w$ is
+\etale by \cite[Tag 00U2]{StacksAlg}. Thus $C_w$ is
+finitely presented and flat over $L^\circ$, and
+Lemma~\ref{cand:affineflatformalcompletion} applies.
+
+Its explicit bounded-coordinate presentation imposes the
+original chart bounds, $|U_i|=1$, and $|h^{-1}|\leq1$.
+As $h$ was already integral, these are exactly the displayed
+domain conditions. This proves the assertion about the
+actual analytic domain, with its analytic structure.
+On reduction, $c_i$ vanishes for $i\in I$ and equals one
+for $i\notin I$. The coordinates $U_j$ for $j\notin I$
+are therefore the invertible stratum coordinates $X_j$.
+After eliminating $U_{i_0}$, the remaining $U_i$, $i\in
+I\setminus\{i_0\}$, are independent invertible variables.
+Reducing the displayed finite presentation gives precisely
+$E_l\times\mathbf G_{m,l}^{|I|-1}$, also for nondiscrete
+valuations: integral restricted series reduce to polynomials.
+Smoothness and geometric reducedness follow from
+\cite[Tags 00U2, 036U, 056T]{StacksAlg}.
+Lemma~\ref{cand:reducedspecialcanonical} identifies $B_0$
+with $B^\circ$ and its special fibre with $\widetilde B$.
+
+Let $\xi\in\Gamma_B$. Its reduction is a component generic
+point by Theorem~\ref{fnd:canonicalgenericshilov}.
+The reduced algebra is \etale, hence flat, over
+$l[U_i^{\pm1}:i\ne i_0,T]$ after the above identification.
+Flat going down, \cite[Tag 00HS]{StacksAlg}, makes its
+minimal prime contract to the zero prime of this Laurent
+polynomial algebra. The image of $\xi$ in its analytic
+unit polytorus times polydisc therefore reduces to the
+generic point. It is the Gauss point: divide any nonzero
+restricted series by a coefficient of maximum norm; its
+nonzero polynomial reduction cannot vanish at that generic
+point. Polynomial approximation, or
+Proposition~\ref{fnd:gaussnorm}, gives the Gauss value for
+every series.
+
+Restriction to $K$ gives the standard point $z_w$.
+Moreover the reduction of $\xi$ contracts to $\eta$ in
+the original stratum. Indeed the field extension $k\to l$
+is flat by \cite[Tag 00HD]{StacksAlg}, and going down
+applied to $E_l\to E$ contracts a minimal prime to the
+unique minimal prime of $E$; adjoining the independent
+Laurent variables has the same property. Compatibility
+of algebraic completion, scalar extension and specialization
+is the explicit presentation comparison of
+Lemma~\ref{cand:algebraicmodelscalar}.
+Proposition~\ref{cand:actualskeletalfibrestrata} now says
+that the restricted point is exactly $x_{\eta,w}=s$.
+Taking maxima on the finite Shilov boundary gives the
+last formula. Its value is positive by
+Proposition~\ref{v035:faithfulrationalpl}.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="a5a51e8678f23969e75032c983abc328bbc438438077ec0324cee322fad12bff">
+Let $K$ be complete for its specified nontrivial real-valued
+absolute value. Write $O=K^\circ$, $k=\widetilde K$, and
+$v=-\log|\cdot|$, and fix $\pi\in O$ with $0&lt;|\pi|&lt;1$.
+We use the algebraic model setting of
+Theorem~\ref{v035:faithfulglobal}: $\mathcal X$ is a given
+projective, flat, finitely presented $O$-scheme, its generic
+fibre $X$ is smooth and integral, and a finite collection of
+affine opens covering $\mathcal X_s$ has \etale maps to
+\[
+ \operatorname{Spec}R_\lambda,\qquad
+ R_\lambda=
+ O[X_0,\ldots,X_{r_\lambda},T_1,\ldots,T_{q_\lambda}]/
+                 (X_0\cdots X_{r_\lambda}-a_\lambda),
+ \quad 0&lt;|a_\lambda|&lt;1.
+\]
+Let $S\subset X^{\an}$ be the compact skeleton of the completed
+model. All rational functions below belong to the original
+field $K(X)$.
+
+For such a chart $\mathcal V=\operatorname{Spec}C$ and a
+nonempty $I\subset\{0,\ldots,r\}$, write $S_I$ for its
+residual stratum over
+\[
+ D_I=\{X_i=0\ (i\in I),\ X_j\ne0\ (j\notin I)\}
+\]
+and $Q_I$ for the finite set of generic points of $S_I$.
+These are the strata and labels of
+Proposition~\ref{cand:actualskeletalfibrestrata}. If
+$s=x_{\eta,w}$, then $I=\{i:w_i&gt;0\}$ and
+$\eta\in Q_I$. An irreducible residual component in this
+section is a component of this locally closed stratum.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002468-reader.jpg" alt="Typeset mathematical passage from PDF page 1080" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1080">PDF page 1080 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001931/">NAG-001931</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002035/">NAG-002035</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002037/">NAG-002037</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002094/">NAG-002094</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002212/">NAG-002212</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002253/">NAG-002253</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002467/">NAG-002467</a> · selected whole <small>(earlier same family whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002212/">cand:actualskeletalfibrestrata</a></li><li><a href="/r/NAG-002037/">cand:affineflatformalcompletion</a></li><li><a href="/r/NAG-002094/">cand:algebraicmodelscalar</a></li><li><a href="/r/NAG-002035/">cand:reducedspecialcanonical</a></li><li><a href="/r/NAG-001931/">fnd:canonicalgenericshilov</a></li><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-002254/">v035:faithfulglobal</a></li><li><a href="/r/NAG-002253/">v035:faithfulrationalpl</a></li><li><a href="/r/NAG-002467/">v038:faithful:chartpreparation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

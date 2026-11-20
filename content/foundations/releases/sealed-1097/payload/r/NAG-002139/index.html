@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002139/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Mixed Gauss displacement · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002139 · Accepted whole</p><h1>Mixed Gauss displacement</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.15.1">Open in the English reader · PDF page 865</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="2cb047f14b2159139b759f1cc9059ab6369625dcf1c7af4b47a766e2196d13ff">
+\begin{lemma}[\bi{Mixed Gauss displacement}
+{混合 Gauss 位移}]
+\label{cand:mixedgaussdisplacement}
+\bi{For $x\in V$, write $E=\mathcal H(x)$,
+$\xi_i=X_i(x)\in E^\times$ and $b_j=T_j(x)\in E$.
+For $0&lt;t\leq1$, take the Gauss absolute value of radius $t$
+in all variables $S_1,\ldots,S_r,Z_1,\ldots,Z_q$ over $E$,
+and extend it to the completed rational function field $E_t$.
+The substitutions}
+{对 $x\in V$，写 $E=\mathcal H(x)$、
+$\xi_i=X_i(x)\in E^\times$ 及 $b_j=T_j(x)\in E$。
+当 $0&lt;t\leq1$ 时，在 $E$ 上对全部变量
+$S_1,\ldots,S_r,Z_1,\ldots,Z_q$ 取半径 $t$ 的 Gauss
+绝对值，并延拓到完备有理函数域 $E_t$。代换}
+\[
+ \begin{aligned}
+ X_i&amp;\longmapsto\xi_i(1+S_i) &amp;&amp;(1\leq i\leq r),\\
+ X_0&amp;\longmapsto\xi_0\prod_{i=1}^r(1+S_i)^{-1},\\
+ T_j&amp;\longmapsto b_j+Z_j &amp;&amp;(1\leq j\leq q).
+ \end{aligned}
+\]
+\bi{define a bounded homomorphism $A\to E_t$ and hence a
+point $H(x,t)\in V$. Set $H(x,0)=x$. For every $t\in[0,1]$,}
+{定义有界同态 $A\to E_t$，从而定义点 $H(x,t)\in V$。
+置 $H(x,0)=x$。对每个 $t\in[0,1]$，有}
+\[
+ |X_i(H(x,t))|=|X_i(x)|\quad(0\leq i\leq r),\qquad
+ |T_j(H(x,t))|=\max\{|T_j(x)|,t\}.
+\]
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9ddf5de2fa6b8e745e4f2e3c46b875e55200a888c34d56be3fc83a9c9b08ecf1">
+\begin{proof}
+\bi{The Gauss absolute value is multiplicative by
+Proposition~\ref{fnd:gaussnorm}. For $t&gt;0$ the polynomial
+$1+S_i$ has norm $1$, so it is nonzero and invertible in the
+rational function field, also when $t=1$. All displayed
+coordinate images have norm at most one, and their product
+in the first $r+1$ coordinates is $a$. Convergent restricted
+series can therefore be evaluated in the complete field $E_t$.
+This yields a homomorphism from the Tate algebra, contractive
+for its Gauss norm, which kills the defining relation. It
+descends contractively for the quotient norm on $A$.
+Multiplicativity and the exact Gauss norms of $1+S_i$ and
+$b_j+Z_j$ give the stated coordinate values. At $t=0$ they
+are the values at $x$, as required.}
+{由 Proposition~\ref{fnd:gaussnorm}，Gauss 绝对值具有
+乘性。当 $t&gt;0$ 时，多项式 $1+S_i$ 的范数为 $1$，
+故它在有理函数域中非零且可逆，$t=1$ 时也如此。
+所列坐标像的范数均至多为一，且前 $r+1$ 个坐标之积
+等于 $a$。因此收敛受限级数可在完备域 $E_t$ 中取值，
+得到从 Tate 代数出发、关于其 Gauss 范数压缩的同态，
+并消去定义关系。它下降为关于 $A$ 的商范数压缩的同态。
+乘性及 $1+S_i$、$b_j+Z_j$ 的精确 Gauss 范数给出所述
+坐标值。当 $t=0$ 时，它们就是 $x$ 处的值。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="bc00eef42b67c25518c2a2f614e6790ae8386c2319fc294508d5a4e88a999960">
+\bi{Let $K$ be complete and nontrivially valued, with its original
+absolute value. Fix $0&lt;|a|&lt;1$ and integers $r,q\geq0$. Put}
+{设 $K$ 关于原绝对值完备且非平凡赋值。固定
+$0&lt;|a|&lt;1$ 及整数 $r,q\geq0$，置}
+\[
+ A=K\langle X_0,\ldots,X_r,T_1,\ldots,T_q\rangle
+                /(X_0\cdots X_r-a),\qquad V=\mathcal M(A).
+\]
+\bi{Proposition~\ref{fnd:standardmonomialchartgeometry} gives
+the continuous Gauss section $s:\Delta_a\to V$, where}
+{Proposition~\ref{fnd:standardmonomialchartgeometry} 给出
+连续 Gauss 截面 $s:\Delta_a\to V$，其中}
+\[
+ \Delta_a=\{(w_0,\ldots,w_r)\in\mathbb R_{\geq0}^{r+1}:
+                         \sum_iw_i=v(a)\}.
+\]
+\bi{After eliminating $X_0=a/(X_1\cdots X_r)$, $s(w)$ is the
+Gauss point of radii $e^{-w_i}$ in $X_i$, $1\leq i\leq r$,
+and radius $1$ in every $T_j$. Let $\Sigma_a=s(\Delta_a)$ and
+write $\operatorname{val}:V\to\Delta_a$ for the values of
+$X_0,\ldots,X_r$.}
+{消去 $X_0=a/(X_1\cdots X_r)$ 后，$s(w)$ 是在
+$X_i$、$1\leq i\leq r$ 上半径为 $e^{-w_i}$、在每个
+$T_j$ 上半径为 $1$ 的 Gauss 点。令
+$\Sigma_a=s(\Delta_a)$，并以
+$\operatorname{val}:V\to\Delta_a$ 记
+$X_0,\ldots,X_r$ 的赋值映射。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002139-reader.jpg" alt="Typeset mathematical passage from PDF page 865" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=865">PDF page 865</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(sealed native whole)</small></li><li>SUPPORT:NAG-002016:actual_normal_form_gauss_section_and_completed_field · typed target unresolved in this export <small>(exact uncounted original support to select first)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole</li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-002016:actual_normal_form_gauss_section_and_completed_field · typed target unresolved in this export</li><li>SUPPORT:NAG-002016:actual_normal_form_gauss_section_and_completed_field · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-002016/">fnd:standardmonomialchartgeometry</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

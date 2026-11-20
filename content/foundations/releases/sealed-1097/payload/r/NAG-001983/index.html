@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001983/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Restriction to degree one · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001983 · Accepted whole</p><h1>Restriction to degree one</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.19.20">Open in the English reader · PDF page 578</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b040fd3e93d3fcadadf6001db23102adec73086b9917d104b875a36bc7210e70">
+\begin{lemma}[\bi{Restriction to degree one}
+{限制到次数一}]
+\label{fnd:gradeddegreeonevaluation}
+\bi{For an extension of graded fields $k\subset F$, the map}
+{对分次域扩张 $k\subset F$，映射}
+\[
+ \pi:\mathscr P_k(F)\longrightarrow\mathscr P_{k_1}(F_1),
+                         \qquad V\longmapsto V\cap F_1
+\]
+\bi{is surjective. If $Q_0$ is an ordinary birational space
+with field $F_1$, its pullback $Q$ along $\pi$ is affine
+if and only if $Q_0$ is affine.}
+{为满射。若 $Q_0$ 是具有域 $F_1$ 的通常 birational 空间，
+而 $Q$ 是它沿 $\pi$ 的拉回，则 $Q$ 仿射当且仅当 $Q_0$
+仿射。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="086d22ed3d06ca77b55f0b1c0c15c9aacd0d69ef1ed572bd5a4396815bf630c0">
+\begin{proof}
+\bi{Let $V_0\subset F_1$ be a valuation ring containing $k_1$.
+In the graded subring $C=kV_0\subset F$, its degree-$r$
+part, for $r$ in the support of $k$, is $c_rV_0$ for any
+nonzero $c_r\in k_r$. Distinct degrees are independent.
+Consequently $\mathfrak m_{V_0}C$ is proper and its contraction
+to $V_0$ is $\mathfrak m_{V_0}$.
+Choose an ordinary maximal ideal above it by
+\cite[Tag 00E0(2)]{StacksAlg}, take its homogeneous part,
+and localize homogeneously. Lemma~\ref{fnd:gradedvaluationintegrality}
+gives a graded valuation ring $V$ dominating this local ring.
+It contains $k$ and contracts to $V_0$: if $a\in F_1\setminus V_0$,
+then $a^{-1}\in\mathfrak m_{V_0}$ lies in the maximal ideal
+of $V$, so $a\notin V$. This proves surjectivity.}
+{设 $V_0\subset F_1$ 为包含 $k_1$ 的赋值环。
+在分次子环 $C=kV_0\subset F$ 中，对 $k$ 支撑内的次数
+$r$，其次数 $r$ 部分为 $c_rV_0$，其中任取非零
+$c_r\in k_r$。不同次数独立，因此
+$\mathfrak m_{V_0}C$ 是真理想，且收缩到 $V_0$ 为
+$\mathfrak m_{V_0}$。由 \cite[Tag 00E0(2)]{StacksAlg}
+选取其上方的通常极大理想，取齐次部分并作齐次局部化。
+Lemma~\ref{fnd:gradedvaluationintegrality} 给出支配此局部环
+的分次赋值环 $V$。它包含 $k$，且收缩为 $V_0$：
+若 $a\in F_1\setminus V_0$，则
+$a^{-1}\in\mathfrak m_{V_0}$ 属于 $V$ 的极大理想，
+从而 $a\notin V$。这证明满射性。}
+
+\bi{If $Q_0=\mathscr P_{k_1}(F_1)\{b_1,\ldots,b_m\}$,
+then $Q=\mathscr P_k(F)\{b_1,\ldots,b_m\}$, proving
+one direction. Conversely suppose $Q$ is affine.
+Surjectivity of $\pi$ shows that the structural local
+homeomorphism of $Q_0$ is injective; hence $Q_0$ is an
+open subspace of $\mathscr P_{k_1}(F_1)$.
+Write $Q=\mathscr P_k(F)\{a_1,\ldots,a_n\}$ with
+nonzero homogeneous $a_i$.
+Let $H$ be the subgroup of degrees whose positive powers
+belong to the support of $k$. If $\deg(a_i)\notin H$,
+then $F_H[a_i^{-1}]$ is a polynomial graded algebra over
+the graded subfield $F_H$: distinct powers have distinct
+degree classes modulo $H$. Localize at the homogeneous
+prime $(a_i^{-1})$ and use graded domination.
+The resulting valuation contains $F_H$, hence $F_1$ and $k$,
+but excludes $a_i$. Its restriction is the trivial valuation
+$F_1$, which belongs to every nonempty open $Q_0$.
+This contradicts $Q=\pi^{-1}(Q_0)$.
+Thus $\deg(a_i)^{d_i}=\deg(c_i)$ for some $d_i&gt;0$ and
+nonzero homogeneous $c_i\in k$. Put $b_i=a_i^{d_i}/c_i\in F_1$.
+A valuation containing $k$ contains $a_i$ exactly when
+it contains $b_i$. Hence}
+{若 $Q_0=\mathscr P_{k_1}(F_1)\{b_1,\ldots,b_m\}$，
+则 $Q=\mathscr P_k(F)\{b_1,\ldots,b_m\}$，证明一个方向。
+反之设 $Q$ 仿射。由 $\pi$ 满射，$Q_0$ 的结构局部同胚
+单射，因此 $Q_0$ 是 $\mathscr P_{k_1}(F_1)$ 的开子空间。
+写成 $Q=\mathscr P_k(F)\{a_1,\ldots,a_n\}$，其中
+$a_i$ 非零齐次。令 $H$ 为某个正整数次幂属于 $k$ 支撑的
+全部次数组成的子群。若 $\deg(a_i)\notin H$，则
+$F_H[a_i^{-1}]$ 是分次子域 $F_H$ 上的多项式分次代数，
+因为不同幂在模 $H$ 的次数类中不同。
+在齐次素理想 $(a_i^{-1})$ 处局部化，再应用分次支配。
+所得赋值包含 $F_H$，因而包含 $F_1$ 与 $k$，却不包含
+$a_i$。其限制为平凡赋值 $F_1$，它属于每个非空开集 $Q_0$，
+这与 $Q=\pi^{-1}(Q_0)$ 矛盾。
+因此存在 $d_i&gt;0$ 及非零齐次 $c_i\in k$，满足
+$\deg(a_i)^{d_i}=\deg(c_i)$。置
+$b_i=a_i^{d_i}/c_i\in F_1$。包含 $k$ 的赋值包含 $a_i$
+当且仅当它包含 $b_i$。于是}
+\[
+ Q=\pi^{-1}\bigl(\mathscr P_{k_1}(F_1)\{b_1,\ldots,b_n\}\bigr).
+\]
+\bi{Surjectivity gives the same expression for $Q_0$,
+proving that it is affine.}
+{由满射性，$Q_0$ 等于括号中的集合，因此仿射。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001983-reader.jpg" alt="Typeset mathematical passage from PDF page 578" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=578">PDF page 578 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00E0@NAG-001983:1 · named external application</li><li>APP-STACKS-00E0@NAG-001983:1 · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole</li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001964/">fnd:gradedvaluationintegrality</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001732/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Hom and extension comparison on proper schemes · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001732 · Accepted whole</p><h1>Hom and extension comparison on proper schemes</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.34.7">Open in the English reader · PDF page 303</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="12da1470645df18764696f05ab3af9731f553deaf894c68c0926800e1b8a6906">
+\begin{proposition}[\bi{Hom and extension comparison on proper schemes}
+{适当概形上的同态与扩张比较}]
+\label{fnd:properextcomparison}
+\bi{Let $X$ be proper over $K$, and let $\mathcal E,\mathcal F$
+be coherent modules on $X$. For every $q\ge0$, exact
+analytification induces an isomorphism}
+{设 $X$ 在 $K$ 上适当，$\mathcal E,\mathcal F$ 是 $X$ 上的
+凝聚模。对每个 $q\ge0$，正合解析化诱导同构}
+\[
+ \operatorname{Ext}^q_{\mathcal O_X}(\mathcal E,\mathcal F)
+ \ \simeq\
+ \operatorname{Ext}^q_{\mathcal O_{X^{\an}_G}}
+                    (\mathcal E^{\an},\mathcal F^{\an}).
+\]
+\bi{For $q=1$ this is the map which analytifies short exact
+sequences; for $q=0$ it gives full faithfulness.}
+{当 $q=1$ 时，此映射就是将短正合列解析化；当 $q=0$ 时，
+它给出全忠实性。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="3fd70d65b485aeeb9d961f7cd2c9f59f2e93059662cc21c0d3398dd51744d98a">
+\begin{proof}
+\bi{We first compare sheaf Ext locally. On an affine open
+$\operatorname{Spec}(R)$ choose a resolution of the finite
+module representing $\mathcal E$ by finite free $R$-modules,
+continuing as far as necessary. Each successive kernel is
+finite because $R$ is Noetherian. Flat analytification makes
+this an exact resolution by finite free analytic modules.
+Applying Hom into $\mathcal F$ and its analytification gives
+complexes which agree after pullback, since each free term
+is finite. In each fixed degree only finitely many terms are
+needed to compute kernel modulo image. Exact pullback thus
+gives}
+{先局部比较层 Ext。在仿射开集 $\operatorname{Spec}(R)$ 上，
+用有限自由 $R$-模解消表示 $\mathcal E$ 的有限模，并按需
+延长解消。由于 $R$ Noetherian，每一步的核仍有限。
+平坦解析化把它变成由有限自由解析模组成的正合解消。
+分别对 $\mathcal F$ 及其解析化取 Hom；各自由项有限，
+故所得复形在拉回后相同。在每个固定次数，只需有限多个项
+就能计算核模去像。因此正合拉回给出}
+\[
+ (\mathcal E\!xt_X^j(\mathcal E,\mathcal F))^{\an}
+   \simeq \mathcal E\!xt_{X^{\an}_G}^j
+                         (\mathcal E^{\an},\mathcal F^{\an}).
+\]
+\bi{The algebraic Ext sheaves are coherent by the same
+finite-free calculation. These local identifications are
+independent of the resolution: they are the cohomology maps
+of the canonical derived-Hom pullback morphism
+\cite[Tag 08JF]{StacksAlg}. They therefore glue to a
+quasi-isomorphism}
+{相同的有限自由计算说明代数 Ext 层凝聚。
+这些局部识别与所选解消无关：它们是
+\cite[Tag 08JF]{StacksAlg} 中典范导出 Hom 拉回映射的
+上同调映射，因此粘合为拟同构}
+\[
+ \alpha_X^*R\mathcal H\!om_X(\mathcal E,\mathcal F)
+  \simeq R\mathcal H\!om_{X^{\an}_G}
+                      (\mathcal E^{\an},\mathcal F^{\an}).
+\]
+\bi{Put $C=R\mathcal H\!om_X(\mathcal E,\mathcal F)$.
+It has coherent cohomology in nonnegative degrees, although
+it need not be bounded above. Fix $q$. The truncation
+$\tau_{\le q}C$ is a bounded coherent complex.
+The complementary truncation belongs to $D^{\ge q+1}$;
+its derived global sections also belong to $D^{\ge q+1}$,
+as a bounded below injective resolution may be chosen to
+start in that degree. Thus $H^qR\Gamma(C)$ is computed
+by $\tau_{\le q}C$. The same holds after exact pullback.
+Theorem~\ref{fnd:propercoherentcomparison} and the
+truncation triangle now give equality in degree $q$ of
+the two derived global Hom complexes. By
+\cite[Tag 08JA]{StacksAlg}, applied after shifting the
+second argument by $q$, these groups are the stated Ext
+groups. Finally \cite[Tag 06XV]{StacksAlg} identifies
+derived Ext in degree one with short exact extensions.
+Its identification takes an extension to its connecting
+morphism. Exact pullback preserves that triangle and
+connecting morphism, proving the claimed compatibility.}
+{记 $C=R\mathcal H\!om_X(\mathcal E,\mathcal F)$。
+它的上同调集中在非负次数且凝聚，但未必有上界。
+固定 $q$，则 $\tau_{\le q}C$ 是有界凝聚复形。
+互补截断属于 $D^{\ge q+1}$，其导出全局截面也属于
+$D^{\ge q+1}$，因为可选择从该次数开始的有下界内射解消。
+因此 $H^qR\Gamma(C)$ 可由 $\tau_{\le q}C$ 计算；
+正合拉回后同样如此。
+Theorem~\ref{fnd:propercoherentcomparison} 与截断三角
+给出两个导出全局 Hom 复形在 $q$ 次的同构。
+将 \cite[Tag 08JA]{StacksAlg} 用于第二个变量的 $q$ 次移位，
+即将这些群识别为所列 Ext 群。
+最后，\cite[Tag 06XV]{StacksAlg} 将一次导出 Ext 与短正合扩张
+等同，其对应把扩张送到连接态射。正合拉回保持该三角及其
+连接态射，因而得到所需相容性。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001732-reader.jpg" alt="Typeset mathematical passage from PDF page 303" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=303">PDF page 303 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-06XV@NAG-001732:existing-5-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-08JA@NAG-001732:existing-4-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-08JF@NAG-001732:existing-2-1 · named external application <small>(existing exact named Stacks authority)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001731/">NAG-001731</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/06XV">APP-STACKS-06XV@NAG-001732:existing-5-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/08JA">APP-STACKS-08JA@NAG-001732:existing-4-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/08JF">APP-STACKS-08JF@NAG-001732:existing-2-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001731/">fnd:propercoherentcomparison</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003145/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A Galois-normal sequence of exact Kummer steps · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003145 · Accepted whole</p><h1>A Galois-normal sequence of exact Kummer steps</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag003145.pdf-derived">Open in the English reader · PDF page 2036</a></p><p class="muted">Source provenance: transcription from the printed reader.</p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="f1f9ede4e025c34de3a2fee030b3e05e1f07651e92fd4f680db9e4e6d0b5aedb">
+\NextLinkTarget{foundations.nag003145.pdf-derived}
+\begin{theorem}[A Galois-normal sequence of exact Kummer steps]
+\label{f5gt:pdf-derived:inertiafiltration}
+Let \(L/K\) be finite Galois satisfying \eqref{eq:f5gt:pdf-derived:tame-hypotheses}, with group \(G\).
+Put \(k=\widetilde K\) and \(l=\widetilde L\). Then \(l/k\) is Galois, and
+its actual unramified lift \(M\subset L\) satisfies
+% @formula 18 229
+\begin{equation}\label{eq:f5gt:pdf-derived:inertia-sequence}
+ 1\longrightarrow I=\Gal(L/M)\longrightarrow G
+ \longrightarrow\Gal(l/k)\longrightarrow1,\qquad |I|=e.
+\end{equation}
+Here \(I\) is exactly the kernel of the action on \(l\). It is abelian,
+and every subgroup of \(I\) is normal in \(G\). There is consequently a chain
+% @formula 19 229
+\begin{equation}\label{eq:f5gt:pdf-derived:normal-series}
+ 1=J_0\subset J_1\subset\cdots\subset J_r=I,\qquad
+ F_j=L^{J_j},\qquad L=F_0\supset\cdots\supset F_r=M,
+\end{equation}
+whose nontrivial factors \(J_j/J_{j-1}\) have prime order and whose steps
+\(F_{j-1}/F_j\) are exact Kummer. All fields in \eqref{eq:f5gt:pdf-derived:normal-series} have residue field \(l\).
+No roots of unity are assumed in \(K\), and no cyclicity of \(I\) or
+splitting of \eqref{eq:f5gt:pdf-derived:inertia-sequence} is assumed.
+\end{theorem}
+\par\smallskip\noindent{\small\textit{Direct inputs} \hyperref[fnd:finiteextensionnorms]{\texttt{NAG-001450}}, \hyperref[cand:galoisresidueextensionlift]{\texttt{NAG-002052}}, \hyperref[f5gt:pdf-derived:radicalsteps]{\texttt{NAG-003143}}, \hyperref[f5gt:pdf-derived:unramifiedbridge]{\texttt{NAG-003144}}.}\par\smallskip
+\begin{proof}
+Take the embedded \(M=K(\alpha)\) constructed in Proposition~\ref{f5gt:pdf-derived:unramifiedbridge}; let
+\(P\) be its lifted polynomial of degree \(f\). It is minimal by the degree
+calculation there. Since \(L/K\) is normal, \(P\) splits in \(L\). Every
+root is integral, by the unique extending absolute value and conjugacy.
+Reducing this factorization shows that the separable minimal polynomial
+of \(\bar\alpha\) splits in \(l\). Thus \(l/k\) is Galois.
+Every root of its polynomial lifts inside \(M\), since
+\(\widetilde M=l\); these lifts exhaust the roots of \(P\).
+Consequently \(M/K\) is Galois, with reduction identifying its group with
+\(\Gal(l/k)\), just as in \hyperref[cand:galoisresidueextensionlift]{\texttt{NAG-002052}}.
+Restriction and \stacks{09DW} give \eqref{eq:f5gt:pdf-derived:inertia-sequence}. An element fixing \(M\) fixes
+\(l\). Conversely an element acting trivially on \(l\) fixes \(\alpha\)
+by \stacks{06RR}, hence fixes \(M\). This identifies inertia and proves
+\(|I|=[L:M]=e\).
+
+We give the needed ramification argument to avoid importing a DVR-only
+cyclicity theorem. For \(i\in I\) define
+% @formula 20 229
+\begin{equation}\label{eq:f5gt:pdf-derived:inertia-character}
+ \theta_i:\Gamma_L/\Gamma_M\longrightarrow l^\times,\qquad
+ \theta_i(v(a))=\overline{i(a)/a}.
+\end{equation}
+This is well defined: changing \(a\) by an element of the same value
+changes the ratio by \(i(u)/u\) for a unit \(u\), whose residue is one;
+changing the value by \(v(b)\), \(b\in M^\times\), has no effect.
+Multiplication shows that \(\theta_i\) is a character. Since \(I\) fixes
+\(l\), composition gives a homomorphism \(I\to\Hom(\Gamma_L/\Gamma_M,l^\times)\).
+It is injective. Indeed use the radical tower of Lemma~\ref{f5gt:pdf-derived:radicalsteps} for \(L/M\).
+If \(\theta_i=1\) and \(i\) fixes the previous field, then \(i(s_j)/s_j\)
+is an \(n_j\)-th root of unity with residue one. It equals one by
+\stacks{06RR}. Induction fixes every radical and hence all of \(L\).
+The target of \eqref{eq:f5gt:pdf-derived:inertia-character} is abelian, so \(I\) is abelian.
+
+All values of \eqref{eq:f5gt:pdf-derived:inertia-character} lie in \(\mu_e(l)\), since the value quotient has order
+\(e\). This finite group is cyclic by \stacks{09HX}. For \(g\in G\),
+valuation preservation gives
+% @formula 21 229
+\begin{equation}\label{eq:f5gt:pdf-derived:conjugation}
+ \theta_{gig^{-1}}(\gamma)=\bar g(\theta_i(\gamma)).
+\end{equation}
+To see this directly, represent \(\gamma\) by \(a\) and apply \(g\) to
+\(i(g^{-1}a)/(g^{-1}a)\); the value of \(g^{-1}a\) is still \(\gamma\).
+If \(t=|\mu_e(l)|\), the automorphism \(\bar g\) of this cyclic group
+is exponentiation by some integer \(q_g\)
+% @witness proof_continued 230:4-15
+coprime to \(t\). Thus injectivity of \eqref{eq:f5gt:pdf-derived:inertia-character} implies \(gig^{-1}=i^{q_g}\).
+Also \eqref{eq:f5gt:pdf-derived:inertia-character} implies \(i^t=1\) for every \(i\).
+Exponentiation by \(q_g\) therefore preserves every subgroup of \(I\),
+proving its normality in \(G\).
+
+A finite abelian group has a series with prime cyclic factors: take a
+maximal proper subgroup and induct on its order; the quotient is simple
+abelian, so any nonidentity element generates it and its order is prime.
+All groups in the resulting series are \(G\)-normal by the preceding paragraph.
+The correspondence \stacks{09DW} gives \eqref{eq:f5gt:pdf-derived:normal-series} and its cyclic prime-degree
+extensions. Their residue fields all equal \(l\), since they lie between
+\(M\) and \(L\). The product of their degrees and the product of their
+value indices both equal \(e\). Each index is at most its degree by
+\stacks{0ASH}, so equality holds at every step.
+For a prime-degree step its value quotient has prime order, hence is cyclic.
+The first radical in Lemma~\ref{f5gt:pdf-derived:radicalsteps} already generates that step; its Galois clause
+supplies a primitive root with primitive reduction. This is exactly \eqref{eq:f5gt:pdf-derived:exact-kummer} for
+each step.
+\end{proof}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003145-reader.jpg" alt="Typeset mathematical passage from PDF page 2036" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2036">PDF page 2036 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-002052/">NAG-002052</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-003143/">NAG-003143</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-003144/">NAG-003144</a> · selected whole <small>(prerequisites)</small></li><li>STACKS-06RR · named external application</li><li>STACKS-09DW · named external application</li><li>STACKS-09DW-GALOIS-CORRESPONDENCE-SCOPE · named external application</li><li>STACKS-09HX · named external application</li><li>STACKS-0ASH · named external application</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002052/">NAG-002052</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003143/">NAG-003143</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-003144/">NAG-003144</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003143/">f5gt:pdf-derived:radicalsteps</a></li><li><a href="/r/NAG-003144/">f5gt:pdf-derived:unramifiedbridge</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002575/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Persistence under covers and perturbations; F8GP-7 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002575 · Accepted whole</p><h1>Persistence under covers and perturbations; F8GP-7</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002575.original">Open in the English reader · PDF page 2022</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="caf68f1a21f103158e422fc6914a391d56aff3dba649789fdd47f855111c8078">
+\begin{theorem}[Persistence under covers and perturbations; F8GP-7]
+\label{thm:cover}
+Let \(p:V=\M(B)\to V_0=\M(A_0)\) be finite with its canonical
+module norm, and suppose \(B\) is a locally free \(A_0\)-module
+of constant positive rank \(e\). Assume \(V\) is pure of dimension
+\(n\). Let \(u_0,u_1,\ldots,u_r\in B^\times\) satisfy
+\[
+                         |u_j(z)|=1
+                  \quad\text{for every }z\in V.             \tag{5.1}
+\]
+For
+\[
+ f=p^*f_0\,u_0,\qquad
+ g_\ell=p^*g_{0,\ell}\,u_\ell,\qquad
+ V_S=\{|f|\geq e^{-S}\},
+\]
+the function \(f\) is regular, every nonempty \(V_S\) is pure of
+dimension \(n\), and one single chain
+\[
+                              C=eC_0                      \tag{5.2}
+\]
+satisfies
+\[
+ \boxed{\quad
+ \Trop_{(g,f),V_S}(\mathcal O_{V_S})
+                        =C|_{\{t\leq S\}}
+ \quad}                                                    \tag{5.3}
+\]
+for every real \(S\).
+The same bound (4.2) applies. Neither separability, reducedness of
+\(V\), nor global freeness of \(B\) is required.
+
+A concrete sufficient condition for (5.1) is
+\(u_j=1+\varepsilon_j\) with
+\(\norm{\varepsilon_j}&lt;1\) in a specified complete submultiplicative
+affinoid norm on \(B\).
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="1bbbb1a71b5e69eb1797be055c06646efb458d12017ddc4d69d0499c5e1fde2f">
+\begin{proof}
+The norm identities give, on all points,
+\[
+ |f|=|p^*f_0|,\qquad |g_\ell|=|p^*g_{0,\ell}|,\qquad
+ V_S=p^{-1}(V_{0,S}).                                     \tag{5.4}
+\]
+Thus no source sheets are selected or omitted.
+The map on \(V_S\) is the actual finite base change; its direct-image
+module is still locally free of rank \(e\).
+Purity of \(V_S\) follows from domain purity applied to \(V\).
+Flatness of \(B\) over \(A_0\) preserves injectivity of multiplication
+by \(f_0\). Multiplication by \(u_0\) is invertible, proving
+regularity of \(f\).
+
+If \(V_{0,S}\) is empty, (5.4) makes \(V_S\) empty and
+\hyperref[fnd:nag002568:closed-cutoff-identity]{(1.9)} gives (5.3).
+Otherwise apply \hyperref[v037:analytic:interiorcycle]{whole-interior projection}
+to \(p|_{V_S}\) over the original field, using the literal pullbacks
+of the target tuple and the identity map on the moment coordinates.
+By (5.4) the norm-one twists have the same moment map and the same
+whole analytic level domains as those literal pullbacks. The relative interiors of target top cells avoid the target absolute
+boundary image after a common subdivision. The \hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain and weights}
+give equality of the closed finite chains from the generic equalities.
+This gives
+\[
+ \Trop_{(g,f),V_S}(\mathcal O_{V_S})
+       =\Trop_{(g_0,f_0),V_{0,S}}(p_*\mathcal O_{V_S}).
+ \tag{5.5}
+\]
+At a generic target cell, let \(E_Q\) be its complete transverse
+Gauss algebra. The tensor of the locally free module
+\(p_*\mathcal O_{V_S}\) with \(E_Q\) has constant rank \(e\).
+The finite-dimensional Artinian algebra \(E_Q\) is a product of
+local factors; on each factor a finite locally free module of
+constant rank \(e\) is free of that rank. Consequently
+\[
+ \dim_{H_Q}\bigl(p_*\mathcal O_{V_S}\otimes E_Q\bigr)
+                           =e\,\dim_{H_Q}E_Q.
+\]
+The same lattice divisor occurs in both module-weight formulas.
+Therefore the right side of (5.5) is
+\(e\,\Trop_{(g_0,f_0),V_{0,S}}(\mathcal O)\).
+Equation \hyperref[fnd:nag002568:closed-cutoff-identity]{(1.9)} proves (5.3).
+This dimension calculation retains all Artinian lengths and full
+residue degrees, including inseparable degrees.
+
+A positive-rank locally free algebra has zero structural kernel,
+and the finite-image theorem makes \(p\) surjective. Thus the
+bounded unit-moment base in (1.10) is still the actual moment image
+of \(V\). The scalar \(e\) changes weights, not that base or the
+height bound in \hyperref[prop:coeff]{(4.2)}.
+
+Finally, if \(\norm{\varepsilon}&lt;1\), the Neumann series
+\(\sum_{\ell\geq0}(-\varepsilon)^\ell\) converges to the inverse
+of \(1+\varepsilon\). Every bounded multiplicative seminorm satisfies
+\(|\varepsilon(z)|\leq\norm{\varepsilon}&lt;1\); this follows directly
+by applying boundedness to powers and taking roots.
+The strong triangle inequality then gives
+\(|1+\varepsilon(z)|=1\), proving the sufficient condition.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002575-reader.jpg" alt="Typeset mathematical passage from PDF page 2023" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2023">PDF page 2023</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002575/">NAG-002575</a> · selected whole</li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

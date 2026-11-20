@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002276/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Algebraic uniqueness of an exact contraction · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002276 · Accepted whole</p><h1>Algebraic uniqueness of an exact contraction</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.45.7">Open in the English reader · PDF page 774</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="ae1622af95a05b5bb26ed53fa0aeaa8a5141de2efb9a835f7b2a2693e9c917b8">
+\begin{proposition}[Algebraic uniqueness of an exact contraction]
+\label{v036:f5:contractionuniqueness}
+Let $q_i:\mathcal C_0\to\mathcal C_i$, $i=1,2$, be
+morphisms of semistable algebraic models inducing the
+identity on $C$. If the targets have the same component
+vertices in $C^{\an}$, there is a unique algebraic
+isomorphism $h:\mathcal C_1\to\mathcal C_2$ with
+$q_2=h\circ q_1$. It induces the identity on $C$.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="009346ae61433bc0dacf203c3e346cd11734c96cbeaafb84602e6a2d5b718887">
+\begin{proof}
+After extension to $\Omega$, the target vertex sets are
+the same by Proposition~\ref{v036:f5:vertexarithmetic}.
+The split pointed charts supplied by
+Theorem~\ref{cand:simultaneousnodalsplitting} complete to
+the charts of Definition~\ref{v035:formal:modelclass}, as
+in the proof of Corollary~\ref{v035:f5:formalcorrespondence}.
+Corollary~\ref{v035:formal:partition} gives the connected
+open tubes and their exact component-incidence boundaries.
+Their completed models are isomorphic over $C_\Omega^{\an}$
+by Proposition~\ref{v035:f5:vertexuniqueness}. Write $h_s$
+for the resulting special-fibre isomorphism. It intertwines
+their specialization maps. Functoriality of specialization
+and its surjectivity on the source, both in
+Proposition~\ref{fnd:formalglobalgenericfaithful}, give
+\[
+                 h_s\circ(q_1)_{\overline k}
+                        =(q_2)_{\overline k}
+\]
+on the underlying geometric special-fibre points.
+Consequently $(q_2)_{\overline k}$ is constant on every
+set-theoretic fibre of $(q_1)_{\overline k}$.
+
+We descend this assertion about actual fibres. Every field
+extension is faithfully flat: its only base ideals are zero
+and the whole field, so \cite[Tag 00HD]{StacksAlg} gives
+flatness, and its nonzero closed fibre gives faithful
+flatness by \cite[Tag 00HP]{StacksAlg}. If
+$t_1,t_2\in\mathcal C_{0,s}$ have the same image $y$
+under $(q_1)_s$, the tensor product
+$\kappa(t_1)\otimes_{\kappa(y)}\kappa(t_2)$ is nonzero
+by the same faithful-flatness criterion.
+By \cite[Tag 00E0(2)]{StacksAlg}, a prime of this tensor
+product supplies a point of
+$\mathcal C_{0,s}\times_{\mathcal C_{1,s}}\mathcal C_{0,s}$
+whose two projections are $t_1,t_2$. The extension
+$\overline k/k$ is faithfully flat by the preceding
+argument. On an affine base change, its tensor functor
+on modules is the original coefficient tensor functor,
+so remains faithfully flat. Surjectivity on spectra,
+\cite[Tag 00HQ]{StacksAlg}, lifts the chosen point to the
+base-changed fibre product. The lifted projections have the same
+$(q_1)_{\overline k}$-image, hence the same
+$(q_2)_{\overline k}$-image. Projecting back gives
+$(q_2)_s(t_1)=(q_2)_s(t_2)$. On the generic fibre $q_1$
+and $q_2$ are identities. These two fibres exhaust the
+rank-one base, and their images cannot meet. Thus $q_2$
+is constant on every fibre of $q_1$.
+
+The morphisms $q_i$ are proper: their graphs are closed
+in the products over $O$, and projection from those
+products is proper. Their targets are normal and integral
+by Proposition~\ref{v036:f5:genericnormalization}.
+Lemma~\ref{v036:f5:properquotient} gives an actual
+algebraic factorization $h$. Interchanging the indices
+gives its inverse; uniqueness of factorization shows that
+the composites are the identity. This proves both the
+assertion and its uniqueness.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="6ccc31fd4d6e4a84620ff723e62cc5124ee6d70854cfab6e6ce1b44de01f19b0">
+\begin{definition}[Marked semistable models over the original field]
+\label{v036:f5:modelclass}
+Let $C/K$ be smooth, projective and geometrically connected.
+A \emph{semistable algebraic model} of $C$
+means a projective flat finitely presented nodal $O$-curve
+with generic fibre identified with $C$ and geometrically
+connected special fibre. Its special fibre is geometrically
+reduced. A \emph{marking} is a finite \textup{\&#x27;etale}
+$O$-scheme $D$ embedded as a closed subscheme of the relative
+smooth locus. An empty marking is allowed. Write $W$ for
+the component vertex set of the model. A morphism of marked
+models carries a specified isomorphism of its marking with
+the target marking, compatible with the curve morphism
+and with the specified generic identifications.
+
+The \emph{geometric marked dual graph} has one vertex for
+each component over $\overline k$, one edge for each
+geometric node, and one labelled leg for each point of
+$D_{\overline k}$. The two branches of a self-node give the
+two ends of its loop.
+\end{definition}</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="e2ff44d2c79b5306269640e0dcaf1267358d0d96a09dcb2d7ca72ee3dc63ff0e">
+Fix a nonempty subset $V\subset W$,
+and let $\overline V$ denote all geometric vertices over
+its special components. For a connected component $T$ of
+the subgraph induced by the vertices outside $\overline V$,
+let $b(T)$ count its incident edges leading to
+$\overline V$, with multiplicity, and let $m(T)$ count
+its marked legs.
+
+\begin{definition}[The marked forest condition]
+\label{v036:f5:forestcondition}
+The subset $V$ satisfies the marked forest condition if
+every such $T$ is a tree, all the geometric special
+components at its vertices are smooth $\mathbf P^1_{\overline k}$,
+and
+\[
+                         b(T)+m(T)\leq2.
+\]
+Connectedness and $V\ne\varnothing$ give $b(T)\geq1$.
+Thus a tree with one attaching branch carries at most one
+mark, and a tree with two attaching branches carries none.
+The two attaching branches may end on the same protected
+component.
+\end{definition}</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="a738963efee0a28cad46cfb451ebeb3f55acb81a0c6f8cb4058e33ea06d58f77">
+\begin{definition}[Semistable formal curve models with pointed charts]
+\label{v035:formal:modelclass}
+Suppose $K$ is algebraically closed and $C/K$ is a smooth
+connected projective curve. A point of $C^{\an}$ is of
+\emph{type II} when its completed residue field has residual
+transcendence degree one and relative rational value-group
+rank zero. A \emph{pointedly semistable
+formal model} of $C^{\an}$ is a quasi-compact admissible
+formal $O$-scheme with an identification of its generic
+fibre with $C^{\an}$, reduced pure one-dimensional special
+fibre, and a diagram as in
+Proposition~\ref{v035:formal:tubeends} at each closed
+special-fibre point. Morphisms induce the identity on
+$C^{\an}$. Its vertex set consists of its component
+points $v_\eta$.
+\end{definition}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002276-reader.jpg" alt="Typeset mathematical passage from PDF page 774" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=774">PDF page 774 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002224/">NAG-002224</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002228/">NAG-002228</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002267/">NAG-002267</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002268/">NAG-002268</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole <small>(exact native application)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(exact native application)</small></li><li>SUPPORT:NAG-002239:pointed_completion_discrete_test_lifting · typed target unresolved in this export <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002053/">cand:simultaneousnodalsplitting</a></li><li><a href="/r/NAG-002239/">v035:f5:formalcorrespondence</a></li><li><a href="/r/NAG-002228/">v035:f5:vertexuniqueness</a></li><li><a href="/r/NAG-002223/#context-5a8c94205fb0091b">v035:formal:modelclass</a></li><li><a href="/r/NAG-002224/">v035:formal:partition</a></li><li><a href="/r/NAG-002222/">v035:formal:tubeends</a></li><li><a href="/r/NAG-002267/">v036:f5:genericnormalization</a></li><li><a href="/r/NAG-002268/">v036:f5:properquotient</a></li><li><a href="/r/NAG-002271/">v036:f5:vertexarithmetic</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002837/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Norm integration under a component-degree criterion · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002837 · Accepted whole</p><h1>Norm integration under a component-degree criterion</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002837.original">Open in the English reader · PDF page 2012</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="1f288c1a8bcabe91583d8c86132967c90c41ee4692ee5666857ff72ca54c77b0">
+\begin{theorem}[Norm integration under a component-degree criterion]
+\label{f9ml:normcriterion}
+Let $q:\cY\to\cX$ be finite locally free of constant rank $N\geq1$,
+with both models in the class of \hyperref[f9ml:finite-model-data]{the standing finite-model data} and with integral generic
+fibres $Y,X$. Give $q^*L_i$ and $q^*M$ their pulled-back model metrics.
+For each $V$, set
+\[
+ B_V=(q_*\cO_{\cY})_{\eta_V},\qquad A_V=\cO_{\cX,\eta_V}.
+\]
+Retain the ordinary algebraic local descriptions: $B_V$ is the whole
+finite free rank-$N$ algebra, and all its maximal localizations are the
+DVRs $\cO_{\cY,\eta_W}$ for the components $W$ over $V$.
+Let $t_V$ be a uniformizer of $A_V$, and put
+\[
+ r_W=\ord_W(t_V),\quad
+ f_W=[\kappa(W):\kappa(V)],\quad
+ \delta_W=\deg_{q^*\cL_1|_W,\ldots,q^*\cL_d|_W,k}(W).
+\]
+Assume the finite list of component-degree identities
+\begin{equation}\label{eq:f9ml:degreecriterion}
+                         \delta_W=f_W\delta_V\quad(W\mid V).
+\end{equation}
+For a nonzero rational section $s$ of $q^*M$, use the determinant section
+$\Nm_q(s)$ of $\Nm_q(q^*M)\simeq M^{\otimes N}$, with the metric
+induced by the model line $\cM^{\otimes N}$ and root exponent $e_0$.
+Then
+\begin{align}
+ q^\an_*\mu_{\cY}&amp;=N\mu_{\cX},\label{eq:f9ml:modelprojection}\\
+ \int_{X^\an}-\log\|\Nm_q(s)\|\,d\mu_{\cX}
+   &amp;=\int_{Y^\an}-\log\|s\|\,d\mu_{\cY}.\label{eq:f9ml:normintegral}
+\end{align}
+Both logarithmic integrals are absolutely convergent with respect to
+total variation. All components, full residue degrees and unreduced
+DVR quotients are retained, including in inseparable cases.
+The criterion holds for the coordinate power map
+$T_i=S_i^{n_i}$ on $(\mathbf P^1_R)^d$, with $n_i\geq1$,
+$\cL_i=\operatorname{pr}_i^*\cO(1)$, and $e_i=1$.
+\end{theorem}
+\par\smallskip\noindent{\small\textit{Direct inputs} \hyperref[f9ds:lengthprojection]{\texttt{NAG-002543}}, \hyperref[f9nm:dvrlength]{\texttt{NAG-002552}}, Theorem~\ref{f9ml:atomiclog}, \hyperref[f9ml:finite-model-mixed-degree]{the mixed algebraic degree convention}.}\par\smallskip
+\begin{proof}
+Each local DVR extension gives
+\begin{equation}\label{eq:f9ml:ramification}
+ b_W=r_Wb_V,
+ \qquad \sum_{W\mid V}f_Wr_W=N.
+\end{equation}
+The first equality follows by writing $\pi=u t_V^{b_V}$ with $u$ a
+unit. For the second, apply \hyperref[f9ds:lengthprojection]{\texttt{NAG-002543}} to the regular sequence $(t_V)$
+in $A_V$ and the full algebra $B_V$. Its summand at $W$ is $f_Wr_W$
+because $\length_{\cO_{\cY,\eta_W}}
+(\cO_{\cY,\eta_W}/t_V)=r_W$. This proof does not require a separable
+residue extension. Equations \eqref{eq:f9ml:point} and
+\eqref{eq:f9ml:ramification} give $q^\an(\xi_W)=\xi_V$.
+Thus the mass pushed to $\xi_V$ is
+\[
+ \sum_{W\mid V}\frac{b_W\delta_W}{E}
+       =\frac{b_V\delta_V}{E}\sum_{W\mid V}r_Wf_W
+       =N\frac{b_V\delta_V}{E},
+\]
+which proves \eqref{eq:f9ml:modelprojection}.
+
+Let $F=K(X)$ and $L=K(Y)$. The generic algebra $B_V\otimes_{A_V}F$
+is $L$, a field extension of full degree $N$. For $a\in L^\times$,
+\hyperref[f9nm:dvrlength]{\texttt{NAG-002552}} gives
+\begin{equation}\label{eq:f9ml:ordnorm}
+              \ord_V\Nm_{L/F}(a)=\sum_{W\mid V}f_W\ord_W(a).
+\end{equation}
+To include a rational $a$, choose a nonzero $z\in A_V$ with
+$za\in B_V$, possible because $B_V$ spans $L$ over $F$. Apply that
+lemma to $za$ and to $z$, and subtract. Multiplication by $a$ on $L$
+is invertible even for an inseparable extension; its determinant, rather
+than a product over distinct embeddings, is the norm used here.
+
+In a local frame $e$ of $\cM$, write $s^{\otimes e_0}=a q^*e$.
+The coefficient of $(\Nm_qs)^{\otimes e_0}$ in $e^{\otimes N}$ is
+$\Nm_{L/F}(a)$. Indeed, exterior multiplication on the rank-$N$
+module gives $\det(m_a)$, while changing $e$ by a unit $u$ multiplies
+the determinant frame by $u^N$. These changes are exactly those of
+$\cM^{\otimes N}$, so the construction glues and has the stated
+pulled-back tensor-power metric. Consequently, if $c_W=\ord_W(a)$,
+then the downstairs coefficient is $\sum_{W\mid V}f_Wc_W$.
+Theorem~\ref{f9ml:atomiclog} now gives
+\[
+ \int-\log\|\Nm_q(s)\|\,d\mu_{\cX}
+ =\frac{\lambda}{e_0E}\sum_V\delta_V\sum_{W\mid V}f_Wc_W
+ =\frac{\lambda}{e_0E}\sum_W\delta_Wc_W.
+\]
+The last expression is the upstairs integral. Absolute convergence is
+part of the same finite-sum theorem.
+
+For the coordinate power map, the exponent classes
+$\prod_iS_i^{a_i}$, $0\leq a_i&lt;n_i$, are a free basis on every
+coordinate chart. They give finite flat rank $N=\prod_i n_i$ and
+the full special-fibre field degree $N$, including inseparable degrees.
+The single reduced component has mixed degree one downstairs. Upstairs
+the pullback of the $i$th coordinate line is
+$\operatorname{pr}_i^*\cO(n_i)$. Choose the coordinate section with
+divisor $n_i\{S_i=0\}$ for each $i$. Their proper intersection at
+the rational product origin has local algebra
+\[
+                 k[S_1,\ldots,S_d]/(S_1^{n_1},\ldots,S_d^{n_d}),
+\]
+whose monomial basis has length $N$. This computes the mixed degree
+as $N$ and verifies \eqref{eq:f9ml:degreecriterion} in the stated example.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002837-reader.jpg" alt="Typeset mathematical passage from PDF page 2012" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2012">PDF page 2012 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002837/">NAG-002837</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002830/">f9ml:atomiclog</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

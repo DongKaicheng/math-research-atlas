@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002374/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The exceptional image of a generically free module · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002374 · Accepted whole</p><h1>The exceptional image of a generically free module</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.42.4">Open in the English reader · PDF page 1003</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="34dcbad7ffc5fb57bdd393e684a250c5148ce15cd9c24888fda83ded9c466129">
+\begin{theorem}[The exceptional image of a generically free module]
+\label{v037:degree:exceptionalimage}
+Let $Y=\mathcal M(A)$ be nonempty and pure of analytic
+dimension $d$, and let $I\subset A$ be an ideal contained
+in no minimal prime. Put $Z=\mathcal M(A/I)$, with its
+actual closed-subspace structure. If $d=0$, then $Z$ is
+empty. If $Z$ is nonempty, then
+\[
+                              \dim_K Z\leq d-1.
+\]
+
+For any unit tuple $f$ defining $t:Y\to\mathbb R^n$, the
+entire actual image $t(Z)$ is the support of a finite
+integral affine polyhedral complex of dimension at most
+$d-1$; for $d=0$ it is empty.
+Put $U_Y=\mathbb R^n\setminus t(\partial_KY)$.
+The intersection $t(Z)\cap U_Y$ is relatively closed
+in $t(Y)\cap U_Y$, and its complement is relatively
+open and dense there.
+
+In particular, let $M$ be a finite $A$-module which is free
+at every minimal prime, and let $I_M$ define its nonfree
+locus as in Proposition~\ref{v037:degree:freelocus}.
+For every
+\[
+ w\in\bigl(t(Y)\cap U_Y\bigr)
+                           \setminus t(\mathcal M(A/I_M)),
+\]
+there is a closed moment box $P$ about $w$ such that the
+whole domain $Y_P=t^{-1}(P)$ is in the analytic free locus
+and $M\otimes_A\mathcal O(Y_P)$ is finite locally free.
+If $A$ is integral and the generic rank of $M$ is $r$, this
+local rank is constantly $r$ on $\operatorname{Spec}\mathcal O(Y_P)$.
+These conclusions apply to every finite module over reduced
+$A$. For a finite algebra $M=B$, the corresponding actual
+finite map over $Y_P$ is finite locally free, with the
+same constant rank in the integral-target case.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0a639eff3589f9753c3ca94bcf384659b69f2bdfba4b525b5deae4be4eb85969">
+\begin{proof}
+The finite quotient $A/I$ has its actual generalized
+affinoid structure by
+Theorem~\ref{fnd:generalizedfinitealgebras}.
+Choose a free-radius extension $L=K_s$ making $A$ and $A/I$
+strict, by Theorem~\ref{fnd:simultaneousstrictification}.
+The quotient comparison of
+Theorem~\ref{fnd:freeextensionfaithfullyflat} gives
+\[
+                          (A/I)_L=A_L/IA_L.
+\]
+Lemma~\ref{v036:analytic:freecomponents} identifies the
+minimal primes of $A_L$ with $\mathfrak pA_L$ for
+$\mathfrak p\in\operatorname{Min}(A)$, and their
+contractions are $\mathfrak p$.
+Thus $IA_L$ is contained in no minimal prime of $A_L$.
+The analytic-dimension theorem
+\ref{fnd:analyticdimensionindependence} gives
+$\dim A_L=d$, since $A_L$ is strict.
+
+Every chain of primes of $A_L/IA_L$ lifts to a chain
+$\mathfrak q_0\subsetneq\cdots\subsetneq\mathfrak q_\ell$
+of primes of $A_L$ containing $IA_L$.
+By \cite[Tag 00E0(4)]{StacksAlg} applied to the zero ideal
+in $A_L$ and the prime $\mathfrak q_0$, there is a minimal
+prime $\mathfrak p_L\subseteq\mathfrak q_0$ of $A_L$.
+The inclusion $\mathfrak p_L\subset\mathfrak q_0$ is
+strict, because $IA_L$ is not contained in $\mathfrak p_L$.
+Prepending $\mathfrak p_L$ therefore gives a chain of
+length $\ell+1$ in $A_L$. Hence $\ell+1\leq d$.
+Put $R=A_L/IA_L$. If $R\ne0$, then
+\cite[Tag 00E0(2)]{StacksAlg} gives a maximal ideal
+$\mathfrak m$ of $R$. The quotient $R/\mathfrak m$ is a field,
+so $\mathfrak m$ is prime. There is thus a chain of length zero
+in this case, and the bound on all chains gives $\dim R\leq d-1$.
+The quotient is zero when $d=0$. The faithful quotient
+comparison detects zero before extension, and
+Theorem~\ref{fnd:analyticdimensionindependence} identifies
+the dimension of every nonzero quotient with that of
+$\mathcal M(A/I)$ over the original $K$.
+
+If $Z$ is empty, its image has the empty complex.
+Otherwise apply Theorem~\ref{v037:globaltrop:finiteimage}
+to $Z$ and the restrictions of the original units.
+The dimension inequality just proved gives the asserted
+finite complex of dimension at most $d-1$ for the entire
+actual image. Compactness of $Z$ and its image,
+Proposition~\ref{fnd:boundedspectrumcompact}, proves
+relative closedness on $U_Y$.
+
+At every point of $t(Y)\cap U_Y$,
+Theorem~\ref{v037:analytic:interiorlocalstar} presents
+the ambient actual image by a finite pure $d$-dimensional
+fan.
+The exceptional complex is contained in a finite union of
+affine subspaces of dimension at most $d-1$.
+No such finite union contains a relatively open part
+of a $d$-cell.
+For example, choose a line direction in its tangent plane
+outside the finitely many proper direction subspaces;
+the finite-polynomial construction in
+Theorem~\ref{v037:analytic:wallbalance} supplies one.
+Every short line segment in that direction meets each
+excluded affine subspace at most once.
+Since a pure finite complex is the closure of the union
+of its maximal-cell interiors, this proves density of
+the complement at every point. Openness follows from
+the relative closedness already proved. For $d=0$ the
+exceptional set is empty and the assertion is immediate.
+
+For the module $M$, Proposition~\ref{v037:degree:freelocus}
+makes $I_M$ an ideal avoiding every minimal prime, and
+identifies its analytic zero set with the nonfree locus.
+Its image under $t$ is compact. Choose a closed box $P$
+about the given $w$, with $w$ in its interior, contained
+in $U_Y$ and disjoint from that compact image.
+The actual domain $Y_P$ is given by
+Theorem~\ref{fnd:generalizedrationaluniversal}.
+It lies entirely in the analytic free locus, so the
+analytic restriction assertion of
+Proposition~\ref{v037:degree:freelocus} makes the restricted
+module finite locally free.
+
+If $A$ is integral, a free basis of $M_{\mathfrak p}$ at
+any prime of the free locus becomes a basis over
+$\operatorname{Frac}(A)$ after further localization.
+Its rank is therefore the same integer $r$ at every such
+prime. The principal free bases in the proof of that
+proposition consequently all have rank $r$. They base
+change to the indicated cover of
+$\operatorname{Spec}\mathcal O(Y_P)$, proving the
+constant-rank assertion. Reduced $A$ has the required
+generic freeness by the same proposition.
+For a finite algebra $B$, finite base change and its
+canonical complete norm, Proposition
+\ref{fnd:generalizedfinitebasechange}, identify the
+restricted algebra with $B\otimes_A\mathcal O(Y_P)$.
+The module assertion is exactly finite local freeness
+of this actual morphism.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002374-reader.jpg" alt="Typeset mathematical passage from PDF page 1004" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1004">PDF page 1004 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00E0@NAG-002374:nonzero-quotient-maximal-ideal · named external application</li><li>APP-STACKS-00E0@NAG-002374:strict-prime-below · named external application</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001566/">NAG-001566</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole</li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-002291/">NAG-002291</a> · selected whole</li><li><a href="/r/NAG-002353/">NAG-002353</a> · selected whole</li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole</li><li><a href="/r/NAG-002367/">NAG-002367</a> · selected whole</li><li><a href="/r/NAG-002376/">NAG-002376</a> · selected whole</li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00E0">APP-STACKS-00E0@NAG-002374:nonzero-quotient-maximal-ideal</a></li><li><a href="https://stacks.math.columbia.edu/tag/00E0">APP-STACKS-00E0@NAG-002374:strict-prime-below</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001664/">fnd:analyticdimensionindependence</a></li><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001566/">fnd:freeextensionfaithfullyflat</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002291/">v036:analytic:freecomponents</a></li><li><a href="/r/NAG-002353/">v037:analytic:interiorlocalstar</a></li><li><a href="/r/NAG-002376/">v037:analytic:wallbalance</a></li><li><a href="/r/NAG-002367/">v037:degree:freelocus</a></li><li><a href="/r/NAG-002358/">v037:globaltrop:finiteimage</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

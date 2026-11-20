@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001681/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Isometric tensor embeddings · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001681 · Accepted whole</p><h1>Isometric tensor embeddings</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.33.2">Open in the English reader · PDF page 269</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9ff23c87b2ef164d085015a6642c42e851aa93fb5762ef085deafc471160f4ff">
+\begin{theorem}[\bi{Isometric tensor embeddings}{张量积的等距嵌入}]
+\label{fnd:grusonisometrictensor}
+\bi{For any normed $K$-spaces $E,F$, the projective seminorm on $E\otimes_K F$ is a norm and satisfies $\|e\otimes f\|_\pi=\|e\|\|f\|$. If $E\hookrightarrow E&#x27;$ and $F\hookrightarrow F&#x27;$ are isometric linear embeddings, then}
+{对任意赋范 $K$-空间 $E,F$，$E\otimes_K F$ 上的 projective 半范数为范数，且满足 $\|e\otimes f\|_\pi=\|e\|\|f\|$。若 $E\hookrightarrow E&#x27;$、$F\hookrightarrow F&#x27;$ 为等距线性嵌入，则}
+\[
+ E\otimes_K F\longrightarrow E&#x27;\otimes_K F&#x27;,
+ \qquad
+ E\widehat\otimes_K F\longrightarrow E&#x27;\widehat\otimes_K F&#x27;
+\]
+\bi{are isometric embeddings; the image of the second map is closed.}
+{均为等距嵌入；第二个映射的像闭。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="46d3eeec1c10d319470dcd58e4e421cf373cf95de31317f9e8ce04f6630e5c0d">
+\begin{proof}
+\bi{Algebraic injectivity follows by extending vector-space bases. We first compare seminorms. Fix $z\in E\otimes_K F$ and finite-dimensional subspaces $U\subset E$, $V\subset F$ containing the factors of one expression for $z$. An arbitrary competing expression}
+{代数单射性可由延长向量空间基得到。先比较半范数。固定 $z\in E\otimes_K F$，选择有限维子空间 $U\subset E$、$V\subset F$，包含 $z$ 的某个表达式中的全部因子。任取另一个表达式}
+\[
+ z=\sum_{j=1}^m e&#x27;_j\otimes f&#x27;_j
+       \quad\text{in }E&#x27;\otimes_K F&#x27;.
+\]
+\bi{Let $U&#x27;\subset E&#x27;$ be spanned by $U$ and the $e&#x27;_j$, and let $V&#x27;\subset F&#x27;$ be spanned by $V$ and the $f&#x27;_j$. The equality holds already in $U&#x27;\otimes_K V&#x27;$, by algebraic injectivity. For a fixed $c&gt;1$, Lemma~\ref{fnd:finitealmostprojection} gives projections $P:U&#x27;\to U$, $Q:V&#x27;\to V$ of norm at most $c$. Applying $P\otimes Q$ yields}
+{令 $U&#x27;\subset E&#x27;$ 由 $U$ 及全部 $e&#x27;_j$ 张成，令 $V&#x27;\subset F&#x27;$ 由 $V$ 及全部 $f&#x27;_j$ 张成。由代数单射性，此等式已在 $U&#x27;\otimes_K V&#x27;$ 中成立。固定 $c&gt;1$，由 Lemma~\ref{fnd:finitealmostprojection}，存在范数至多为 $c$ 的投影 $P:U&#x27;\to U$、$Q:V&#x27;\to V$。应用 $P\otimes Q$ 得}
+\[
+ z=\sum_jP(e&#x27;_j)\otimes Q(f&#x27;_j),
+ \qquad
+ \|z\|_{\pi,E,F}
+ \leq c^2\max_j\|e&#x27;_j\|\|f&#x27;_j\|.
+\]
+\bi{Taking the infimum over competing expressions and then letting $c\downarrow1$ gives $\|z\|_{\pi,E,F}\leq\|z\|_{\pi,E&#x27;,F&#x27;}$. The reverse inequality follows from the inclusion of the sets of expressions. Only projections between the displayed finite-dimensional spaces have been used.}
+{对所有候选表达式取下确界，再令 $c\downarrow1$，得到 $\|z\|_{\pi,E,F}\leq\|z\|_{\pi,E&#x27;,F&#x27;}$。反向不等式来自两类表达式集合的包含关系。这里使用的投影均位于所列有限维空间之间。}
+
+\bi{On a finite-dimensional tensor $U\otimes_K V$, choose bases and their coordinate functionals. These functionals are bounded by Lemma~\ref{fnd:finiteextensionnorms}. If the $(i,j)$-coordinate of $z$ is nonzero, their tensor gives}
+{在有限维张量积 $U\otimes_K V$ 上，选择两组基及其坐标泛函。由 Lemma~\ref{fnd:finiteextensionnorms}，这些泛函有界。若 $z$ 的第 $(i,j)$ 个坐标非零，则两个坐标泛函的张量给出}
+\[
+ 0&lt;|(\lambda_i\otimes\mu_j)(z)|
+       \leq\|\lambda_i\|_{\rm op}\|\mu_j\|_{\rm op}\|z\|_\pi.
+\]
+\bi{Thus the finite-dimensional projective seminorm is definite. Every nonzero tensor lies in such a subspace, whose inclusion is isometric by the preceding argument; this proves definiteness in general. For one-dimensional factors the norm is the product norm, and the same isometric inclusion proves the pure-tensor formula. An isometry extends to an isometry of metric completions. Its image is complete, hence closed.}
+{因此有限维 projective 半范数正定。每个非零张量都位于这样的子空间中，而前面的论证说明其包含映射等距，所以一般情形也正定。一维因子的张量积具有乘积范数，同样的等距包含给出纯张量公式。等距映射延拓为度量完备化之间的等距映射；其像完备，因而闭。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001681-reader.jpg" alt="Typeset mathematical passage from PDF page 269" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=269">PDF page 269</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001680/">NAG-001680</a> · selected whole</li><li><a href="/r/NAG-001680/">NAG-001680</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001680/">fnd:finitealmostprojection</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

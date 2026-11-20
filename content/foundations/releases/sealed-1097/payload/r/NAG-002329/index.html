@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002329/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The least contraction retaining specified vertices · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002329 · Accepted whole</p><h1>The least contraction retaining specified vertices</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.49.4">Open in the English reader · PDF page 790</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9906383a294428c702640d91da468e35846be0ca3c0a82aab324f80edd465ee7">
+\begin{proposition}[The least contraction retaining specified vertices]
+\label{v037:f5:leastcontraction}
+Let $(\mathcal X,D)$ be a marked semistable algebraic model, with
+vertex set $W$, and let $\varnothing\ne S\subset W$.
+There is a marked semistable algebraic model $\mathcal X_S$ and
+a morphism $\mathcal X\to\mathcal X_S$ retaining $S$ such that
+every marked contraction $\mathcal X\to\mathcal Y$ retaining $S$
+has a unique factorization
+\[
+                   \mathcal X\longrightarrow\mathcal Y
+                                      \longrightarrow\mathcal X_S.
+\]
+Its geometric marked graph is the terminal graph of
+Definition~\ref{v037:f5:protectedgraph}, with protected set equal
+to the entire inverse image of $S$ and with $R$ the vertices whose
+normalized residual component is $\mathbf P^1_{\overline k}$.
+The construction uses finitely many actual contractions over $O$.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="deb1fda6300e494c45ba9ed0f6a5169a85a5d04ddef384b0caaf5ad36846333e">
+\begin{proof}
+Use the actual coefficient extension to $\Omega$ from
+Lemma~\ref{cand:algebraicmodelscalar} and the geometric marked dual graph of
+Definition~\ref{v036:f5:modelclass}. Its vertex set is the entire
+inverse image of $W$ by Proposition~\ref{v036:f5:vertexarithmetic}.
+The normalized residual component at a retained geometric vertex
+is unchanged under a model morphism: it is the intrinsic normal
+proper curve of Theorem~\ref{cand:intrinsicresidualcurve}.
+This makes the decoration $R$ independent of subsequent
+contractions.
+
+A geometric component is itself a smooth projective line exactly
+when its normalization is a projective line and it has no
+self-node. Here a self-node is precisely a loop of the dual graph.
+Indeed the actual normalization squares of
+Lemma~\ref{cand:normalizedmodelbranches} separate exactly the two
+branches of each node. At a node joining different components,
+the selected component has just one smooth branch: in a pointed
+\textup{\&#x27;etale} chart it is one of the two axes. Smooth locality
+on the source, \cite[Tag 036U]{StacksAlg}, descends this assertion
+to that component. Away from the nodes normalization is already
+an isomorphism, as in
+Lemma~\ref{cand:smoothnodalnormalizationbasechange}.
+Thus a component without self-nodes is its smooth normalization;
+the assertion follows.
+
+Let $A$ be the set of all currently deletable geometric vertices.
+It is invariant under $\operatorname{Aut}(\overline k/k)$:
+the action preserves incidence, loops, the marked-leg set, the
+normalized component isomorphism class, and the protected set.
+Lemma~\ref{v037:f5:geometriccomponentorbits} makes $A$ the entire
+inverse image of a subset of original components.
+
+Every vertex of the graph induced by $A$ has degree at most two
+in the full graph. A connected component $T$ of it cannot contain
+a cycle: all vertices of that cycle would already have full degree
+two and no edge leaving it. It would be the whole connected graph,
+contrary to the nonempty protected complement. Thus $T$ is a
+tree. Put $a=|T|$. Counting its internal edges gives
+\[
+ b(T)+m(T)
+   =\sum_{v\in T}\bigl(\deg_G(v)+m(v)\bigr)-2(a-1)
+   \leq2.
+\]
+All its actual geometric components are smooth projective lines
+by the preceding paragraph. Therefore the complement of $A$
+satisfies the exact marked forest condition, and
+Theorem~\ref{v036:f5:markedcontraction} constructs an actual
+original-$O$ contraction deleting precisely $A$.
+Its fibre description gives exactly the graph operations in
+Lemma~\ref{v037:f5:pruningconfluence}, including the transfer of
+a mark and the creation of a self-node from two coincident ends.
+The whole marking remains the original finite \textup{\&#x27;etale}
+$O$-scheme.
+
+Repeat with all deletable vertices of the new model. Each nonempty
+round removes original components and retains $S$, so after
+finitely many rounds the process stops at a model $\mathcal X_S$
+with no deletable geometric vertex. Each round is a forest
+contraction and hence decomposes combinatorially into elementary
+prunings by Lemma~\ref{v037:f5:pruningconfluence}.
+That lemma identifies the resulting graph with its unique terminal
+graph. Single geometric deletions in this combinatorial comparison
+need not descend individually; every algebraic round used the
+entire invariant forest and the original-field contraction theorem.
+
+Now let $q:\mathcal X\to\mathcal Y$ be any marked contraction
+retaining $S$. Proposition~\ref{v036:f5:forestnecessity} says that
+its removed components satisfy the marked forest condition.
+The target has the graph of that forest contraction: the exact
+contraction of Theorem~\ref{v036:f5:markedcontraction} to the same
+vertex set has the stated fibres and is identified with $q$ by
+Proposition~\ref{v036:f5:contractionuniqueness}.
+It is consequently a sequence of elementary prunings on the
+geometric graph. Continuing to a terminal graph and applying
+confluence shows that every retained vertex of $\mathcal X_S$
+is a vertex of $\mathcal Y$. The entire-fibre identification
+of Proposition~\ref{v036:f5:vertexarithmetic} gives the same
+inclusion for original analytic vertices.
+Theorem~\ref{v037:f5:algebraicdomination} now supplies the actual
+map $\mathcal Y\to\mathcal X_S$, and
+Corollary~\ref{v037:f5:intrinsicuniqueness} makes it marked.
+Uniqueness of the morphisms inducing the generic identity proves
+the factorization and its uniqueness.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002329-reader.jpg" alt="Typeset mathematical passage from PDF page 791" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=791">PDF page 791 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002069/">NAG-002069</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002094/">NAG-002094</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002129/">NAG-002129</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002131/">NAG-002131</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002274/">NAG-002274</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002275/">NAG-002275</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002276/">NAG-002276</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002311/">NAG-002311</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002312/">NAG-002312</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002326/">NAG-002326</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002328/">NAG-002328</a> · selected whole <small>(selected native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002094/">cand:algebraicmodelscalar</a></li><li><a href="/r/NAG-002129/">cand:intrinsicresidualcurve</a></li><li><a href="/r/NAG-002069/">cand:normalizedmodelbranches</a></li><li><a href="/r/NAG-002131/">cand:smoothnodalnormalizationbasechange</a></li><li><a href="/r/NAG-002276/">v036:f5:contractionuniqueness</a></li><li><a href="/r/NAG-002275/">v036:f5:forestnecessity</a></li><li><a href="/r/NAG-002274/">v036:f5:markedcontraction</a></li><li><a href="/r/NAG-002272/#context-86f7d90a55678502">v036:f5:modelclass</a></li><li><a href="/r/NAG-002271/">v036:f5:vertexarithmetic</a></li><li><a href="/r/NAG-002311/">v037:f5:algebraicdomination</a></li><li><a href="/r/NAG-002326/">v037:f5:geometriccomponentorbits</a></li><li><a href="/r/NAG-002312/">v037:f5:intrinsicuniqueness</a></li><li><a href="/r/NAG-002328/">v037:f5:pruningconfluence</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

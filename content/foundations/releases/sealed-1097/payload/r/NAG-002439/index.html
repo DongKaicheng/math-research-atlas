@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002439/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Result 4.55.2 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002439 · Accepted whole</p><h1>Result 4.55.2</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.55.2">Open in the English reader · PDF page 817</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="728b7585ad174c38497df55323edc62f7aa155b657a1d0a5b0984409ba6c405c">
+\begin{proposition}[An explicit immediate extension of degree $p$]
+\label{v038:f5:explicitimmediateextension}
+Fix a prime $p$, a real number $0&lt;\rho&lt;1$, and symbols
+$q_0,q_1,\ldots$ with $q_{m+1}^p=q_m$. Put
+\[
+ K_m=\mathbf F_p((q_m)),\qquad |q_m|=\rho^{1/p^m},
+ \qquad K=\widehat{\bigcup_{m\geq0}K_m},\qquad q=q_0.
+\]
+Then $K$ is a complete field with a nondiscrete real-valued
+absolute value and
+\[
+        |K^\times|=\rho^{\mathbf Z[1/p]},\qquad
+                         \widetilde K=\mathbf F_p.
+\]
+The polynomial $P(S)=S^p-S-q^{-1}$ is irreducible over $K$.
+For a root $\alpha$ and $L=K(\alpha)$, the unique extending
+absolute value makes $L/K$ a degree-$p$ immediate extension.
+\end{proposition}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="0c4f5eafdb7c1618270ed121a2466b82bc11ea05c6d8cc99ad6cc4694ca88dfc">
+\begin{proof}
+In $K_m$, addition and multiplication are coefficientwise Laurent
+series operations. Every nonzero series has an invertible lowest
+term, and its inverse is obtained by a geometric series after
+factoring that term. Lowest nonzero terms prove multiplicativity
+of the indicated absolute value. A Cauchy sequence has eventually
+constant coefficients in every bounded exponent range and a
+common lower bound for its nonzero exponents, which proves
+completeness. Substitution $q_m=q_{m+1}^p$ gives compatible
+isometric embeddings. Their union has precisely the displayed
+value group and residue field. Completion retains both by
+Lemma~\ref{fnd:valuedfielddimensioncalculus}.
+
+Let
+\[
+                  a_m=\sum_{i=1}^m q_i^{-1},\qquad a_0=0.
+\]
+Then $P(a_m)=-q_m^{-1}$. For $b\in K_m$, write $b=a_m+c$.
+If $|c|\leq1$, the term $-q_m^{-1}$ strictly dominates
+$c^p-c$. If $|c|&gt;1$, its additive valuation is a negative
+integer multiple of $1/p^m$, so
+\[
+                    v(c^p-c)=p\,v(c)\leq-p/p^m&lt;-1/p^m.
+\]
+Here $v(q)=1$ is used only to name the exponents; the absolute
+value remains $|q|=\rho$. It follows in either case that
+\[
+                         |P(b)|\geq\rho^{-1/p^m}&gt;1.
+\]
+If $P$ had a root $\beta\in K$, density would give $b\in K_m$
+with $|b-\beta|&lt;1$. But then
+$P(b)=(b-\beta)^p-(b-\beta)$ would have norm less than one,
+a contradiction.
+
+Choose a root $\alpha$ in an algebraic closure supplied by
+\cite[Tag 09GT]{StacksAlg}. All roots of $P$ are the distinct
+elements $\alpha+c$, $c\in\mathbf F_p$. If the minimal
+polynomial of $\alpha$ had degree $d$ with $0&lt;d&lt;p$, its
+next-to-leading coefficient would be
+$-d\alpha-\sum_{i=1}^d c_i\in K$ for some $c_i\in\mathbf F_p$.
+Since $d\ne0$ in $\mathbf F_p$, this would give $\alpha\in K$.
+Thus $P$ is irreducible of degree $p$.
+Equip $L$ with its unique complete extending absolute value by
+Lemma~\ref{fnd:finiteextensionnorms}.
+
+Write $\beta_m=\alpha-a_m$. Its equation is
+\[
+                  \beta_m^p-\beta_m=q_m^{-1}.
+\]
+The right side has norm greater than one. Hence
+$|\beta_m|=\rho^{-1/p^{m+1}}$.
+The norm-one element $y_m=q_{m+1}\beta_m$ satisfies
+\[
+                 y_m^p-q_{m+1}^{p-1}y_m=1.
+\]
+Its residue therefore satisfies $\bar y_m^p=1$, and equals
+one in the residue field of characteristic $p$.
+
+Take $0\ne x\in L$. Write it in the basis
+$1,\alpha,\ldots,\alpha^{p-1}$. Approximate its finitely many
+coefficients by elements of one $K_m$, obtaining
+$x_m=\sum_{j&lt;p}d_j\alpha^j$ with $d_j\in K_m$ and
+$|x-x_m|&lt;|x|$. Expanding $\alpha=a_m+\beta_m$ writes
+$x_m=\sum_{j&lt;p}b_j\beta_m^j$ with $b_j\in K_m$.
+The nonzero terms have pairwise different valuations:
+\[
+                  v(b_j\beta_m^j)=v(b_j)-j/p^{m+1},
+                    \qquad v(b_j)\in p^{-m}\mathbf Z.
+\]
+Indeed their numerators modulo $p$ distinguish the indices
+$0\leq j&lt;p$. Let $j$ index the unique term of largest norm,
+and put $h=b_jq_{m+1}^{-j}\in K^\times$.
+Then $|h|=|x_m|=|x|$, while the residue of $x_m/h$ is
+$\bar y_m^j=1$. The strict approximation gives the same
+residue for $x/h$. Every nonzero element of $L$ consequently
+has a value already in $K$, and every norm-one element has
+residue in $\mathbf F_p$. This proves immediacy.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002439-reader.jpg" alt="Typeset mathematical passage from PDF page 817" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=817">PDF page 817 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-09GT@NAG-002439:actual-field-algebraic-closure · named external application <small>(verified Stacks application)</small></li><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(declared elementary base)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(whole proof)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(whole proof)</small></li><li>APP-STACKS-09GT@NAG-002439:actual-field-algebraic-closure · named external application</li><li>APP-STACKS-09GT@NAG-002439:actual-field-algebraic-closure · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

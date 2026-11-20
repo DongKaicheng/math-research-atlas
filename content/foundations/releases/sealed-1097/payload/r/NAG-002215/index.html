@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002215/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Units on an open polyannulus · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002215 · Accepted whole</p><h1>Units on an open polyannulus</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.25.1">Open in the English reader · PDF page 908</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b8b0f92c2fc460cd4b6a82a2ed2e9a9ab93dc282d2d0976f797af5c1f04a7edd">
+\begin{lemma}[\bi{Units on an open polyannulus}
+{开多圆环上的单位元}]
+\label{cand:openpolyannulusunits}
+\bi{Let $L$ be a complete non-Archimedean field and let
+$\Omega\subset\mathbf R^d$ be a nonempty convex open set.
+Let $P_\Omega\subset(\mathbf G_{m,L}^d)^{\an}$ be the
+analytic domain defined by $v(Z)\in\Omega$, and denote its
+Gauss section by $w\mapsto z_w$. For every analytic unit
+$g\in\mathcal O(P_\Omega)^\times$ there are
+$c\in v(L^\times)$ and $m\in\mathbf Z^d$ such that}
+{设 $L$ 为完备非阿基米德域，$\Omega\subset\mathbf R^d$
+为非空凸开集。以 $P_\Omega\subset(\mathbf G_{m,L}^d)^{\an}$
+记由 $v(Z)\in\Omega$ 定义的解析域，并以 $w\mapsto z_w$
+记其 Gauss 截面。对每个解析单位元
+$g\in\mathcal O(P_\Omega)^\times$，存在
+$c\in v(L^\times)$ 及 $m\in\mathbf Z^d$，使}
+\[
+                    v(g(z_w))=c+\langle m,w\rangle
+                              \qquad(w\in\Omega).
+\]
+\bi{The assertion includes $d=0$, when $P_\Omega=\mathcal M(L)$.}
+{此结论包括 $d=0$，此时 $P_\Omega=\mathcal M(L)$。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="e9281ac646c96ec574f685175e56558b6d8df9b7b251201e7070bf7e8d76cb82">
+\begin{proof}
+\bi{Suppose first that $d&gt;0$. On the inverse image of a
+closed rectangular box $W=\prod_j[\alpha_j,\beta_j]$
+contained in $\Omega$, the arbitrary-radius domain
+presentations of Theorem~\ref{fnd:generalizedrationaluniversal}
+give the product of closed annulus algebras; their actual
+analytic sections are these algebras by
+Theorem~\ref{fnd:affinoidfullgcomparison}. Iterate
+Theorem~\ref{fnd:laurentcoefficientnormalform}, with the
+other coordinates as Banach coefficients. This gives a
+unique Laurent expansion $\sum_{m\in\mathbf Z^d}c_mZ^m$,
+and the norm is}
+{先设 $d&gt;0$。对于包含于 $\Omega$ 的闭长方体
+$W=\prod_j[\alpha_j,\beta_j]$，由
+Theorem~\ref{fnd:generalizedrationaluniversal} 的任意半径
+域表示，其逆像具有各闭圆环代数的乘积表示；由
+Theorem~\ref{fnd:affinoidfullgcomparison}，其实际解析截面
+就是这些代数。反复应用
+Theorem~\ref{fnd:laurentcoefficientnormalform}，每次把其余
+坐标作为 Banach 系数，得到唯一 Laurent 展开
+$\sum_{m\in\mathbf Z^d}c_mZ^m$，范数为}
+\[
+ \max_m |c_m|\max_{w\in W}\exp(-\langle m,w\rangle).
+\]
+\bi{The weighted coefficients tend to zero outside finite
+subsets. To check the multivariable assertion directly,
+apply the one-coordinate normal-form operators successively
+to polynomial families. Their bounds and commuting actions
+on different exponent pairs extend them to the complete
+weighted coefficient space. Their composite kernel is the
+sum of the coordinate relations, and their common section
+is the Laurent monomial representative. The finite-tail
+condition is exactly the weighted $c_0$ condition of
+Lemma~\ref{fnd:weightedcoefficientcompleteness}. Thus this
+iteration also proves uniqueness and all restriction formulas.}
+{加权系数在有限子集之外趋于零。为直接核对多变量断言，
+先对多项式族逐次应用单坐标的正规形算子。它们的范数界，
+以及不同指数对上的作用可交换这一事实，将它们延拓到完备
+加权系数空间。复合算子的核为各坐标关系之和，其公共截面
+为 Laurent 单项式代表元。有限尾条件恰为
+Lemma~\ref{fnd:weightedcoefficientcompleteness} 中的加权
+$c_0$ 条件。因此此次迭代同时证明唯一性及全部限制公式。}
+
+\bi{Use boxes with nonempty interior. On overlapping
+interiors, uniqueness makes their coefficients equal.
+Every two such boxes can be connected by a finite chain
+of overlapping smaller boxes inside the convex set
+$\Omega$. Hence a function on $P_\Omega$ has a single
+Laurent coefficient family, converging on every compact
+box, and}
+{使用具有非空内部的长方体。在相交的内部上，唯一性使其
+系数相同。在凸集 $\Omega$ 内，任意两个这样的长方体都可由
+有限条内部相交的较小长方体链连接。因此 $P_\Omega$ 上的
+函数具有一个统一的 Laurent 系数族，在每个紧长方体上
+收敛，且}
+\[
+       \log|g(z_w)|=\max_m\{\log|c_m|-\langle m,w\rangle\}.
+\]
+\bi{This is convex in $w$. Apply the same argument to
+$g^{-1}$. Multiplicativity of the Gauss seminorm says that
+its logarithm is the negative of the displayed function.
+A function both convex and concave on an open convex set
+is affine: equality in the two convexity inequalities
+gives its affine interpolation on every line segment.
+At an interior point $w_0$, a nonzero coefficient $c_m$
+attains the maximum. The difference between the affine
+function and this one affine term is nonnegative on
+$\Omega$ and zero at $w_0$; an affine function with these
+properties is zero, by varying a small distance in both
+directions along every vector. Thus
+$v(g(z_w))=v(c_m)+\langle m,w\rangle$. If $d=0$, the
+unit is an element of $L^\times$, which proves the same
+claim.}
+{此函数关于 $w$ 凸。对 $g^{-1}$ 使用同一论证。
+Gauss 半范数的乘法性说明其对数恰为上述函数的相反数。
+在凸开集上同时凸且凹的函数为仿射函数：两个凸性不等式
+迫使每条线段上的仿射插值取等号。在内部点 $w_0$，某个
+非零系数 $c_m$ 达到最大值。该仿射函数与这一仿射项之差
+在 $\Omega$ 上非负，并在 $w_0$ 为零；沿每个向量作正反
+两个方向的小变动，即知此差恒为零。因此
+$v(g(z_w))=v(c_m)+\langle m,w\rangle$。若 $d=0$，
+单位元属于 $L^\times$，结论相同。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002215-reader.jpg" alt="Typeset mathematical passage from PDF page 909" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=909">PDF page 909</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole</li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole</li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001622/">fnd:affinoidfullgcomparison</a></li><li><a href="/r/NAG-001415/">fnd:laurentcoefficientnormalform</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

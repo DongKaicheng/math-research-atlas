@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002132/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Residual tensor lengths and orders · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002132 · Accepted whole</p><h1>Residual tensor lengths and orders</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.31.2">Open in the English reader · PDF page 715</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f8650e866bab0e602dec8cf665684b17c6af58aab4e71ea751a30a6e8d32ac10">
+\begin{lemma}[\bi{Residual tensor lengths and orders}
+{剩余张量积的长度与阶数}]
+\label{cand:inseparableresidualordermultiplicity}
+\bi{Let $C$ be a smooth integral curve over an arbitrary
+field $k$, let $p$ be a closed point, and write}
+{设 $C$ 为任意域 $k$ 上的光滑整曲线，$p$ 为闭点，并记}
+\[
+ \kappa=\kappa(p),\qquad
+ s=[\kappa:k]_{\mathrm{sep}},\qquad
+ e=[\kappa:k]_{\mathrm{insep}}.
+\]
+\bi{Choose a field extension $l/k$ containing the images
+of all $k$-embeddings of $\kappa$ into an algebraic closure
+of $k$. Then $p_l$ has exactly $s$ distinct support points,
+all $l$-rational, and its local ring at each support point
+has length $e$. If $p&#x27;$ is any such point of the smooth
+curve $C_l$, then for every $\varphi\in k(C)^\times$,}
+{选择域扩张 $l/k$，使其包含 $\kappa$ 到 $k$ 的某个
+代数闭包中的全部 $k$-嵌入像。则 $p_l$ 的支撑恰有
+$s$ 个不同的点，均为 $l$-有理点，且它在每个支撑点处
+的局部环长度均为 $e$。若 $p&#x27;$ 为光滑曲线 $C_l$ 上
+这样的任一点，则对每个 $\varphi\in k(C)^\times$，有}
+\[
+                \operatorname{ord}_{p&#x27;}(\varphi)
+                    =e\,\operatorname{ord}_p(\varphi).
+\]
+\bi{Here $\varphi$ is pulled back to the component of $C_l$
+through $p&#x27;$.}
+{这里将 $\varphi$ 拉回到 $C_l$ 中经过 $p&#x27;$ 的分量。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9e9f57ef0b8ad2b788d080992d400c1614c384171133e975e2a9a69df6dbe9cc">
+\begin{proof}
+\bi{Let $\kappa_s$ be the maximal separable subextension;
+then $\kappa/\kappa_s$ is purely inseparable by
+\cite[Tag 030K]{StacksAlg}. Since $l$ contains all the
+embeddings of $\kappa_s$, the usual factorization of a
+separable minimal polynomial gives}
+{令 $\kappa_s$ 为最大可分子扩张。由
+\cite[Tag 030K]{StacksAlg}，$\kappa/\kappa_s$ 纯不可分。
+因为 $l$ 包含 $\kappa_s$ 的全部嵌入，分解可分极小
+多项式即得}
+\[
+ \kappa\otimes_k l
+   =\prod_{\sigma:\kappa_s\hookrightarrow l}
+       \bigl(\kappa\otimes_{\kappa_s,\sigma}l\bigr).
+\]
+\bi{Each factor has dimension $e$ over $l$. Let
+$\widehat\sigma:\kappa\hookrightarrow l$ be the unique
+extension of $\sigma$. It gives a surjection from that
+factor to $l$. In positive characteristic, choose finitely
+many generators $\beta_i$ of $\kappa/\kappa_s$ and powers
+$\beta_i^{p^{n_i}}\in\kappa_s$. The kernel is generated
+by $\beta_i\otimes1-1\otimes\widehat\sigma(\beta_i)$,
+each of which is nilpotent. Thus this is the unique
+maximal ideal. In characteristic zero each factor is
+simply $l$. Every composition factor of the resulting
+Artin local ring is $l$, so its length is its
+$l$-dimension $e$. There are precisely $s$ factors.}
+{每个因子在 $l$ 上的维数为 $e$。令
+$\widehat\sigma:\kappa\hookrightarrow l$ 为 $\sigma$
+的唯一延伸。它给出该因子到 $l$ 的满射。在正特征时，
+选择 $\kappa/\kappa_s$ 的有限个生成元 $\beta_i$ 及满足
+$\beta_i^{p^{n_i}}\in\kappa_s$ 的幂。满射之核由
+$\beta_i\otimes1-1\otimes\widehat\sigma(\beta_i)$ 生成，
+而这些元素均幂零，因此该核是唯一极大理想。特征零时，
+每个因子就是 $l$。所得 Artin 局部环的每个合成因子
+都是 $l$，故其长度等于 $l$-维数 $e$。因子数恰为 $s$。}
+
+\bi{Put $R=\mathcal O_{C,p}$ and
+$R&#x27;=\mathcal O_{C_l,p&#x27;}$. Both rings are discrete valuation
+rings, since the two curves are smooth. If $u$ is a
+uniformizer of $R$, then}
+{令 $R=\mathcal O_{C,p}$、
+$R&#x27;=\mathcal O_{C_l,p&#x27;}$。两条曲线光滑，故这两个环
+均为离散赋值环。若 $u$ 是 $R$ 的一致化元，则}
+\[
+ R&#x27;/uR&#x27;=(\kappa\otimes_k l)_{p&#x27;},\qquad
+ \operatorname{ord}_{R&#x27;}(u)
+       =\operatorname{length}_{R&#x27;}(R&#x27;/uR&#x27;)=e.
+\]
+\bi{The local ring map $R\to R&#x27;$ carries units to units
+and is injective by flatness. Writing
+$\varphi=u^m v$ with $v\in R^\times$ therefore gives
+$\operatorname{ord}_{p&#x27;}(\varphi)=em$ for every
+$m\in\mathbf Z$, as asserted.}
+{局部环映射 $R\to R&#x27;$ 将单位映为单位，并由平坦性为
+单射。将 $\varphi$ 写为 $u^m v$，其中
+$v\in R^\times$，便对每个 $m\in\mathbf Z$ 得到
+$\operatorname{ord}_{p&#x27;}(\varphi)=em$，即所需公式。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002132-reader.jpg" alt="Typeset mathematical passage from PDF page 715" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=715">PDF page 715</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-030K@NAG-002132:1 · named external application</li><li>APP-STACKS-030K@NAG-002132:1 · named external application <small>(requires)</small></li><li>APP-STACKS-030N@NAG-002132:finite-maximal-separable-subextension · named external application</li><li>APP-STACKS-030N@NAG-002132:finite-maximal-separable-subextension · named external application <small>(requires)</small></li><li>APP-STACKS-056T@NAG-002132:2 · named external application</li><li>APP-STACKS-056T@NAG-002132:2 · named external application <small>(requires)</small></li><li>APP-STACKS-0B8Y@NAG-002132:3 · named external application</li><li>APP-STACKS-0B8Y@NAG-002132:3 · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

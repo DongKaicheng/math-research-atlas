@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001416/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Multiplication, module actions and naturality · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001416 · Accepted whole</p><h1>Multiplication, module actions and naturality</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.13.3">Open in the English reader · PDF page 150</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a8e743760b32d8492577f300c3291377d748ab39a264d83dfd710b63be8f5c78">
+\begin{proposition}[\bi{Multiplication, module actions and naturality}{乘法、模作用与自然性}]\label{fnd:laurentcoefficientfunctoriality}
+\leavevmode\par
+\bi{Coefficient convolution makes $D_{a,b}(A)$ and $L_{a,b}(A)$ Banach $K$-algebras, and makes $D_{a,b}(M)$ and $L_{a,b}(M)$ contractive modules over them. The map $\mathcal N_A$ is an algebra homomorphism, and}
+{系数卷积在 $D_{a,b}(A)$ 与 $L_{a,b}(A)$ 上给出 Banach $K$-代数结构；$D_{a,b}(M)$ 与 $L_{a,b}(M)$ 分别成为其上的压缩模。映射 $\mathcal N_A$ 是代数同态，且}
+\[
+ \mathcal N_M(fg)=\mathcal N_A(f)\mathcal N_M(g)
+ \qquad(f\in D_{a,b}(A),\ g\in D_{a,b}(M)).
+\]
+\bi{Consequently, the preceding quotient isomorphism is compatible with the isometric algebra isomorphism}
+{因此，前述商同构与下列等距代数同构相容：}
+\[
+ D_{a,b}(A)/(TU-1)D_{a,b}(A)\ \simeq\ L_{a,b}(A).
+\]
+\bi{All the maps and the quotient identification are natural for bounded coefficient maps. More precisely, let $\phi:A\to A&#x27;$ be a bounded homomorphism of Banach $K$-algebras, let $M&#x27;$ be a contractive Banach $A&#x27;$-module, and let $v:M\to M&#x27;$ be a $K$-linear map satisfying}
+{所有这些映射以及商的识别都对有界系数映射自然。更精确地，设 $\phi:A\to A&#x27;$ 为 Banach $K$-代数的有界同态，$M&#x27;$ 为压缩的 Banach $A&#x27;$-模，且 $v:M\to M&#x27;$ 为 $K$-线性映射，满足}
+\[
+ v(am)=\phi(a)v(m),\qquad
+ \|v(m)\|\leq C\|m\|
+\]
+\bi{for some fixed $C&gt;0$. Applying $v$ to coefficients gives maps $D(v)$ and $L(v)$ bounded by $C$, commuting with $P,\mathcal N,\mathcal S,\mathcal H$ in their appropriate source and target spaces. The induced map on the relation quotients also has bound $C$.}
+{其中 $C&gt;0$ 固定。逐系数应用 $v$ 得到界为 $C$ 的映射 $D(v)$、$L(v)$；它们与相应源、目标空间上的 $P,\mathcal N,\mathcal S,\mathcal H$ 交换。关系商上的诱导映射同样具有界 $C$。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="889bfbd8f32918993f565552343a04c59257d80cbfa4d65dfd9d879f69fe2daa">
+\begin{proof}
+\bi{For $D$, the weight of a product monomial is the product of its weights. For $L$, write $w_n=\max(a^n,b^n)$; then}
+{对 $D$，两个单项式乘积的权重等于各自权重之积。对 $L$，写成 $w_n=\max(a^n,b^n)$，便有}
+\[
+ w_{n+m}\leq w_nw_m\qquad(n,m\in\mathbb Z).
+\]
+\bi{Finite coefficient convolution and the ultrametric inequality therefore give $\|fg\|\leq\|f\|\|g\|$ for the polynomial products and actions in both cases. To construct a product of general elements, take polynomial approximations $f_\nu,g_\nu$. They are bounded and Cauchy. The identity}
+{因此有限系数卷积与超度量不等式给出两种情况下多项式乘法及模作用的估计 $\|fg\|\leq\|f\|\|g\|$。为构造一般元素的乘积，选取多项式逼近 $f_\nu,g_\nu$。它们有界且为 Cauchy 序列。恒等式}
+\[
+ f_\nu g_\nu-f_\mu g_\mu
+  =(f_\nu-f_\mu)g_\nu+f_\mu(g_\nu-g_\mu)
+\]
+\bi{and the product bound make the products Cauchy. Completeness defines their limit; applying the same estimate to two choices of approximations proves independence. The bound persists under limits, and associativity, the identity and the module law follow from the polynomial identities by continuity.}
+{与乘积估计说明这些乘积为 Cauchy 序列。完备性给出其极限；对两组逼近使用同一估计，证明定义与选择无关。取极限后保留范数界，并由多项式恒等式的连续延拓得到结合律、单位元性质与模作用律。}
+
+\bi{For $D$, each coefficient is a finite convolution sum. For $L$, the coefficient of $Z^n$ is the convergent sum}
+{在 $D$ 中，每个系数都是有限卷积和。在 $L$ 中，$Z^n$ 的系数为收敛级数}
+\[
+ \sum_{k\in\mathbb Z} f_k g_{n-k}.
+\]
+\bi{Indeed,}
+{事实上，}
+\[
+ \|f_k g_{n-k}\|w_n
+ \leq(\|f_k\|w_k)(\|g_{n-k}\|w_{n-k})
+ \leq(\|f_k\|w_k)\|g\|,
+\]
+\bi{so the terms tend to zero as $|k|\to\infty$. Lemma~\ref{fnd:seriescriterion} gives convergence independent of enumeration. Bounded coordinate evaluation identifies this sum with the coefficient of the product constructed by truncation.}
+{故当 $|k|\to\infty$ 时，各项趋于零。Lemma~\ref{fnd:seriescriterion} 保证与枚举顺序无关的收敛。有界坐标取值将该和识别为通过截断构造的乘积系数。}
+
+\bi{On polynomials, $\mathcal N_A$ is substitution $T\mapsto Z$, $U\mapsto Z^{-1}$; it preserves multiplication, and the corresponding module identity holds. Its boundedness and the product bounds extend both identities to the complete spaces. Theorem~\ref{fnd:laurentcoefficientnormalform} identifies its kernel and quotient norm, proving the algebra and module assertions. The axis section $\mathcal S$ is only asserted to be $A$-linear; it need not preserve multiplication.}
+{在多项式上，$\mathcal N_A$ 是代入 $T\mapsto Z$、$U\mapsto Z^{-1}$，因而保持乘法，并满足相应的模恒等式。其有界性与乘积估计将两个恒等式延拓到完备空间。Theorem~\ref{fnd:laurentcoefficientnormalform} 确定其核与商范数，由此得到代数与模的断言。这里只断言坐标轴截面 $\mathcal S$ 为 $A$-线性映射；它不必保持乘法。}
+
+\bi{Finally, the coefficient bound for $v$ preserves the finite-tail conditions and gives $\|D(v)\|,\|L(v)\|\leq C$. On polynomials, commutation with the four displayed operators follows from their finite coefficient formulas; continuity extends it to all series. The relation image is therefore preserved, so there is an induced map on quotients. For every representative $g$ its image has a representative of norm at most $C\|g\|$. Taking the infimum over representatives gives the asserted quotient bound. Semilinearity of the coefficient maps gives the corresponding compatibility with algebra maps and module actions.}
+{最后，$v$ 的系数界保持有限尾条件，并给出 $\|D(v)\|,\|L(v)\|\leq C$。在多项式上，与四个所列算子的交换性来自有限系数公式；由连续性延拓到所有级数。因此关系映射的像被保持，并诱导商上的映射。对每个代表元 $g$，其像有一个范数不超过 $C\|g\|$ 的代表元；对所有代表元取下确界，便得到所述商界。系数映射的半线性给出与代数映射和模作用的相容性。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="cdf8f4c4d32fbc5283a5b5560d5e3fc13811d03da663021fb3999dfcfbbb0b3d">
+\bi{In particular, if $a=b=r$, then $w_n=r^n$, $\lambda=1$, and the theorem gives}
+{特别地，当 $a=b=r$ 时，$w_n=r^n$、$\lambda=1$，该定理给出}
+\[
+ \begin{gathered}
+ M\{r^{-1}T,rU\}/(TU-1)M\{r^{-1}T,rU\}
+       \simeq L_{r,r}(M),\\
+ L_{r,r}(M)=\left\{\sum_{n\in\mathbb Z}c_nZ^n:
+          \|c_n\|r^n\longrightarrow0\text{ as }|n|\to\infty\right\},\\
+ \|(TU-1)q\|=\|q\|.
+ \end{gathered}
+\]
+\bi{Here the isomorphism is isometric. Neither the equal-radius assertion nor the two-radius assertion requires a radius in $|K^\times|$.}
+{这里的同构等距。等半径与双半径两个结论都不要求半径属于 $|K^\times|$。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="5f412ea2d22e3bab061ba8411f9188929bf29d11540d64b7f3a9035cf13b4977">
+\section{\bi{Laurent coefficient normal forms}{Laurent 系数的正规形}}\label{fnd:t01normalforms}
+
+\bi{The Laurent coefficient module in Theorem~\ref{fnd:banachlaurentcriterion} was defined directly. We now identify it with a quotient of a two-variable coefficient module, including the quotient norm and the actual image of the relation map. The same construction treats two boundary radii $0&lt;a\leq b$; setting $a=b=r$ gives the equal-radius module used in that theorem.}
+{Theorem~\ref{fnd:banachlaurentcriterion} 直接定义了 Laurent 系数模。下面将它与一个双变量系数模的商相识别，同时确定商范数以及关系映射的实际像。同一个构造适用于两个边界半径 $0&lt;a\leq b$；取 $a=b=r$，即得到该定理使用的等半径系数模。}
+
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="eab0c8131260d629136f3fa2da7fe3733d7c5a380161b855a3b5148dd6cdd0e0">
+{在某个有限集合之外，有 $\|m_i^{(j)}\|w_i&lt;\varepsilon/2$，因而 $\|m_i\|w_i\leq\varepsilon/2$。所以 $x=(m_i)$ 属于上述空间，同一个估计证明原序列收敛到 $x$。最后，保留所有加权范数至少为 $\varepsilon/2$ 的坐标，便得到误差不超过 $\varepsilon/2$ 的有限截断。这证明稠密性和完备性。坐标映射的界直接来自上确界范数的定义。}
+\end{proof}
+
+\bi{Fix $0&lt;a\leq b$ and write $\lambda=b/a$. We use $T,U$ for two independent variables, and $Z$ for the Laurent variable. Define}
+{固定 $0&lt;a\leq b$，记 $\lambda=b/a$。以 $T,U$ 表示两个独立变量，以 $Z$ 表示 Laurent 变量。定义}
+\[
+ \begin{split}
+ D_{a,b}(M)
+   &amp;=M\{b^{-1}T,aU\}\\
+   &amp;=\left\{\sum_{i,j\geq0}m_{ij}T^iU^j:
+       \|m_{ij}\|b^ia^{-j}\longrightarrow0\right\},\\
+ \|g\|_D&amp;=\sup_{i,j\geq0}\|m_{ij}\|b^ia^{-j},\\
+ w_n&amp;=\begin{cases}b^n&amp;n\geq0,\\a^n&amp;n&lt;0,\end{cases}\\
+ L_{a,b}(M)
+   &amp;=\left\{\sum_{n\in\mathbb Z}c_nZ^n:
+       \|c_n\|w_n\longrightarrow0\text{ as }|n|\to\infty\right\},\\
+ \|c\|_L&amp;=\sup_{n\in\mathbb Z}\|c_n\|w_n .
+ \end{split}
+\]
+\bi{In the definition of $D_{a,b}(M)$, convergence to zero means convergence outside finite subsets of $\mathbb N^2$. This is a definition by coefficients, not a tensor-product assertion. The preceding lemma proves completeness and polynomial density for both spaces. Multiplication by $TU$ shifts both indices up by one and multiplies the norm by $\lambda$. Consequently}
+{在 $D_{a,b}(M)$ 的定义中，趋于零指在 $\mathbb N^2$ 的有限子集之外趋于零。该记号按系数定义，不包含任何张量积断言。前一引理证明两个空间的完备性与多项式稠密性。乘以 $TU$ 将两个指标同时增加一，并将范数恰好乘以 $\lambda$。因此}
+\[
+ P=TU-1:D_{a,b}(M)\longrightarrow D_{a,b}(M),
+ \qquad \|Pg\|_D\leq\lambda\|g\|_D
+\]
+\bi{is a bounded $A$-linear operator.}
+{是有界的 $A$-线性算子。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001416-reader.jpg" alt="Typeset mathematical passage from PDF page 150" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=150">PDF page 150 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(direct native theorem)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(direct native theorem)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(direct native theorem)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole</li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001373/">fnd:banachlaurentcriterion</a></li><li><a href="/r/NAG-001415/">fnd:laurentcoefficientnormalform</a></li><li><a href="/r/NAG-000221/">fnd:seriescriterion</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

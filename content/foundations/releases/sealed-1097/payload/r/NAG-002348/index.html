@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002348/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Lifting strict sectors from a residue field · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002348 · Accepted whole</p><h1>Lifting strict sectors from a residue field</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.38.1">Open in the English reader · PDF page 969</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8d45440fb573cc81443d7187a00f613f590cf08bc73a774393d55c32bae82ae9">
+\begin{lemma}[Lifting strict sectors from a residue field]
+\label{v037:analytic:residuesectors}
+Let $K$ be a complete non-Archimedean field with its specified
+absolute value, let $(X,x)$ be a good $K$-analytic germ, and suppose
+that $x\in\operatorname{Int}(X/K)$.
+Let $h_1,\ldots,h_n$ be invertible analytic functions near $x$
+such that $|h_i(x)|=1$.
+Put $k=\widetilde K$, and let
+\[
+ R=k[\widetilde h_1^{\pm1},\ldots,\widetilde h_n^{\pm1}]
+       \subset\widetilde{\mathcal H(x)},
+ \qquad Z=\operatorname{Spec}R\subset\mathbf G_{m,k}^n.
+\]
+If $u\in\operatorname{Trop}(Z)$ and
+$m_1,\ldots,m_s\in\mathbf Z^n$ satisfy
+$\langle m_j,u\rangle&gt;0$ for every $j$, then every neighbourhood
+of $x$ contains a point $y$ for which
+\[
+                 |h^{m_j}(y)|&lt;1\qquad(1\leq j\leq s).
+\]
+In particular the corresponding strict rational sector contains
+moment values arbitrarily close to $0=t_h(x)$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7facc323c318262ad6408a82f7e44b50d874f3408f58add0c8ceafd9faaab1c7">
+\begin{proof}
+Choose an analytic point of $Z$ whose moment value is $u$.
+Its kernel is a prime $\mathfrak p\subset R$, and its absolute
+value induces a valuation ring $V_{\mathfrak p}$ in
+$\kappa(\mathfrak p)$ containing the trivially valued field $k$.
+Let $B\subset R_{\mathfrak p}$ be the inverse image of
+$V_{\mathfrak p}$ under the residue map.
+This is a local subring of
+$\operatorname{Frac}(R)\subset\widetilde{\mathcal H(x)}$.
+Indeed, its maximal ideal is the inverse image of the maximal
+ideal of $V_{\mathfrak p}$, and an element outside that inverse
+image is a unit of $R_{\mathfrak p}$ whose inverse again lies in
+$B$.
+The character $\widetilde h^{m_j}$ is a unit of
+$R_{\mathfrak p}$, and its image in $\kappa(\mathfrak p)$ has
+absolute value $e^{-\langle m_j,u\rangle}&lt;1$.
+It therefore belongs to the maximal ideal of $B$.
+
+By \cite[Tag 00IA]{StacksAlg}, there is a valuation ring
+$V\subset\widetilde{\mathcal H(x)}$ dominating $B$.
+It contains $k$, and each $\widetilde h^{m_j}$ belongs to its
+maximal ideal. Consequently $\widetilde h^{-m_j}\notin V$.
+Lemma~\ref{fnd:gradeddegreeonevaluation} extends $V$ to a graded
+valuation ring
+\[
+ W\subset F_x:=\widetilde{\mathcal H(x)}^{\rm gr}
+ \quad\hbox{containing }\widetilde K^{\rm gr},
+ \qquad W_1=V.
+\]
+No assertion about the rank of this valuation is needed.
+
+Choose an ordinary affinoid neighbourhood of $x$ on which the
+$h_i$ are units. The
+\mbox{\hyperref[fnd:goodinteriorlocaltesting]{ordinary local test}}
+preserves interiority over $\mathcal M(K)$ on this neighbourhood.
+The \mbox{\hyperref[fnd:gradedabsoluteevaluationforward]{absolute evaluation}}
+clause makes the image of its graded algebra in $F_x$ finite over
+$\widetilde K^{\rm gr}$.
+Every graded valuation ring containing $\widetilde K^{\rm gr}$
+contains this image: apply the integral-closedness assertion
+of Lemma~\ref{fnd:gradedvaluationintegrality} to its homogeneous
+elements. Thus
+\[
+       \mathscr R(X,x)
+          =\mathscr P_{\widetilde K^{\rm gr}}(F_x),
+\]
+using the actual germ reduction of
+Proposition~\ref{fnd:gradedaffinoidgerminvariance}.
+In particular $W\in\mathscr R(X,x)$.
+
+Suppose that a neighbourhood of $x$ contains no point satisfying
+all the strict inequalities in the statement.
+Choose a smaller ordinary affinoid neighbourhood of $x$ inside it
+on which all $h_i$ are units. The finitely many Weierstrass domains
+\[
+               |h^{-m_j}|\leq1\qquad(1\leq j\leq s)
+\]
+cover this representative. They are a finite closed cover, hence
+admissible by Lemma~\ref{fnd:quasinetcalculus}, and all contain $x$.
+Each inequality is active at $x$.
+Proposition~\ref{fnd:gradedgermcovercomparison} says that their
+germ reductions cover $\mathscr R(X,x)$.
+By Lemma~\ref{fnd:gradedweierstrassgerm}, the $j$-th reduction
+consists of the valuation rings containing
+$\widetilde h^{-m_j}$. None contains $W$, a contradiction.
+The case $s=0$ is immediate. Finally continuity of $t_h$ allows
+the neighbourhood to be chosen inside the inverse image of any
+prescribed neighbourhood of $0$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002348-reader.jpg" alt="Typeset mathematical passage from PDF page 969" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=969">PDF page 969 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001962/#absolute_evaluation_forward">CLAUSE:NAG-001962:absolute_evaluation_forward</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001968/#fixed_actual_homogeneous_unit_lift">CLAUSE:NAG-001968:fixed_actual_homogeneous_unit_lift</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole</li><li><a href="/r/NAG-001631/">NAG-001631</a> · selected whole</li><li><a href="/r/NAG-001697/">NAG-001697</a> · selected whole</li><li><a href="/r/NAG-001964/">NAG-001964</a> · selected whole</li><li><a href="/r/NAG-001967/">NAG-001967</a> · selected whole</li><li><a href="/r/NAG-001969/">NAG-001969</a> · selected whole</li><li><a href="/r/NAG-001983/">NAG-001983</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001967/">fnd:gradedaffinoidgerminvariance</a></li><li><a href="/r/NAG-001983/">fnd:gradeddegreeonevaluation</a></li><li><a href="/r/NAG-001969/">fnd:gradedgermcovercomparison</a></li><li><a href="/r/NAG-001964/">fnd:gradedvaluationintegrality</a></li><li><a href="/r/NAG-001968/">fnd:gradedweierstrassgerm</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

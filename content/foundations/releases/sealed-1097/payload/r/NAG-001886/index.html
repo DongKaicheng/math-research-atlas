@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001886/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A punctured closed polydisc is not good · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001886 · Accepted whole</p><h1>A punctured closed polydisc is not good</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.23.2">Open in the English reader · PDF page 608</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a394948855b20c3abb13bae595e59f062b743b97de163c05f41a9cf5704d15cb">
+\begin{theorem}[\bi{A punctured closed polydisc is not good}
+{去掉开多圆盘后的闭多圆盘不是 good 的}]
+\label{fnd:puncturedpolydiscnongood}
+\bi{Let $K$ be any complete non-Archimedean field, possibly
+trivially valued, let $n\ge2$, and let $r_1,\ldots,r_n&gt;0$.
+In}
+{设 $K$ 为任意完备非阿基米德域，允许平凡赋值，$n\ge2$，
+且 $r_1,\ldots,r_n&gt;0$。在}
+\[
+ X=\mathcal M(K\{r_1^{-1}T_1,\ldots,r_n^{-1}T_n\})
+\]
+\bi{consider the subset}
+{中考虑子集}
+\[
+ \begin{aligned}
+ U&amp;=X\setminus\{z:|T_i(z)|&lt;r_i\text{ for every }i\}
+   =\bigcup_{i=1}^n U_i,\\
+ U_i&amp;=\{z\in X:|T_i(z)|=r_i\}.
+ \end{aligned}
+\]
+\bi{Then $U$ is a compact Hausdorff analytic domain of $X$.
+At the weighted Gauss point
+$x(\sum_\nu a_\nu T^\nu)=\max_\nu|a_\nu|r^\nu$,
+the space $U$ has no affinoid neighbourhood.}
+{则 $U$ 是 $X$ 的紧 Hausdorff 解析域。在加权 Gauss 点
+$x(\sum_\nu a_\nu T^\nu)=\max_\nu|a_\nu|r^\nu$ 处，
+空间 $U$ 不具有 affinoid 邻域。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a742a9a44487af4ee14fdd9de093b3a3f0e036955b24df3cbbb6d0efd3c4c974">
+\begin{proof}
+\bi{\emph{Step 1: the domain structure.}
+Each $U_i$ is the Laurent domain $|T_i|\ge r_i$ in $X$;
+the opposite inequality already holds throughout $X$.
+All finite intersections are Laurent affinoid domains.
+Their finite cover of $U$ is an analytic net: at a point
+$z\in U$, remove the finitely many closed members which do
+not contain $z$. The remaining relative open neighbourhood
+is covered by the members containing $z$.
+The domain and net constructions in
+Proposition~\ref{fnd:affinoidanalyticdomaincalculus} and
+Proposition~\ref{fnd:generalnetdomaincalculus} therefore give the
+analytic-domain structure on $U$. The displayed complement
+is open in $X$, so $U$ is closed in the compact Hausdorff
+space $X$, hence compact Hausdorff.}
+{\emph{第一步：解析域结构。}
+每个 $U_i$ 都是 $X$ 中由 $|T_i|\ge r_i$ 定义的 Laurent
+域，因为相反的不等式在整个 $X$ 上已经成立。其有限交仍为
+Laurent affinoid 域。这组有限覆盖构成解析 net：在
+$z\in U$ 处，删去不包含 $z$ 的有限个闭成员，剩下的相对开邻域
+由包含 $z$ 的成员覆盖。于是
+Proposition~\ref{fnd:affinoidanalyticdomaincalculus} 及
+Proposition~\ref{fnd:generalnetdomaincalculus} 中的域与 net
+构造给出 $U$ 的解析域结构。被删去的多圆盘在 $X$ 中开，
+所以 $U$ 在紧 Hausdorff 空间 $X$ 中闭，因而紧且 Hausdorff。}
+
+\bi{\emph{Step 2: unit radii.}
+Assume first that every $r_i=1$, put $k=\widetilde K$,
+and let $x$ be the unit Gauss point.
+Polynomials are dense in the Tate algebra. Approximating
+the numerator and denominator of a fraction, with error
+smaller than the nonzero denominator, shows that
+$\mathcal H(x)$ is the completion of $K(T_1,\ldots,T_n)$
+for the Gauss absolute value.
+Every nonzero Gauss norm of a polynomial belongs to
+$|K^\times|$. For a norm-one fraction, divide its numerator
+and denominator by coefficients of their maximal norms.
+Reduction then identifies the residue field with
+$k(t_1,\ldots,t_n)$; completion has the same residue field
+by Lemma~\ref{fnd:valuedfielddimensioncalculus}. The graded
+image of the Tate algebra in
+$F_x=\widetilde{\mathcal H(x)}^{\,\mathrm{gr}}$ is
+$\widetilde K^{\,\mathrm{gr}}[t_1,\ldots,t_n]$:
+only finitely many terms of a convergent series can have
+its maximal norm, and these give precisely its initial form.}
+{\emph{第二步：单位半径。}
+先设所有 $r_i=1$，记 $k=\widetilde K$，并令 $x$ 为单位
+Gauss 点。多项式在 Tate 代数中稠密；将分式的分子与分母以小于
+非零分母绝对值的误差逼近，可知 $\mathcal H(x)$ 是
+$K(T_1,\ldots,T_n)$ 关于 Gauss 绝对值的完备化。
+非零多项式的 Gauss 范数均属于 $|K^\times|$。
+对范数一的分式，将分子与分母分别除以具有最大绝对值的系数，
+取约化即可将剩余域识别为 $k(t_1,\ldots,t_n)$；由
+Lemma~\ref{fnd:valuedfielddimensioncalculus}，完备化保持剩余域。
+Tate 代数在
+$F_x=\widetilde{\mathcal H(x)}^{\,\mathrm{gr}}$ 中的分次像为
+$\widetilde K^{\,\mathrm{gr}}[t_1,\ldots,t_n]$：收敛级数只有
+有限项能够取得最大范数，这些项恰好给出其首项形式。}
+
+\bi{All the $U_i$ contain $x$. Near $x$, $T_i$ is invertible;
+the additional active inequality defining $U_i$ is
+$|T_i^{-1}|\le1$. By
+Lemma~\ref{fnd:gradedweierstrassgerm}, its reduction adds
+$t_i^{-1}$ to the graded image just computed. Gluing the
+domain germs by
+Theorem~\ref{fnd:allgradedgermreduction} and
+Theorem~\ref{fnd:allgermdomainclassification}, the reduction
+of $(U,x)$ is therefore the union of the graded valuation
+subspaces containing}
+{所有 $U_i$ 都包含 $x$。在 $x$ 附近，$T_i$ 可逆，而定义
+$U_i$ 的新增有效不等式为 $|T_i^{-1}|\le1$。由
+Lemma~\ref{fnd:gradedweierstrassgerm}，其约化将
+$t_i^{-1}$ 加入刚才计算的分次像。应用
+Theorem~\ref{fnd:allgradedgermreduction} 与
+Theorem~\ref{fnd:allgermdomainclassification} 粘合这些域芽，
+可知 $(U,x)$ 的约化为包含下列分次子环的赋值子空间之并：}
+\[
+ \widetilde K^{\,\mathrm{gr}}
+                  [t_1,\ldots,t_n,t_i^{-1}],\qquad 1\le i\le n.
+\]
+\bi{It is exactly the pullback, by restriction to degree one,
+of the ordinary birational space $Q$ in
+Lemma~\ref{fnd:puncturedaffinevaluationsnonaffine}.
+That lemma says $Q$ is not affine.
+Lemma~\ref{fnd:gradeddegreeonevaluation} shows that its
+graded pullback is not affine either, including when the
+valuation of $K$ is trivial.
+Theorem~\ref{fnd:goodgermiffaffinereduction} now shows that
+$x$ has no affinoid neighbourhood in $U$.}
+{它恰为
+Lemma~\ref{fnd:puncturedaffinevaluationsnonaffine} 中通常
+birational 空间 $Q$ 沿限制到次数一的映射之拉回。该引理说明
+$Q$ 不仿射；Lemma~\ref{fnd:gradeddegreeonevaluation} 则说明
+其分次拉回也不仿射，包括 $K$ 平凡赋值的情形。于是
+Theorem~\ref{fnd:goodgermiffaffinereduction} 表明 $x$
+在 $U$ 中没有 affinoid 邻域。}
+
+\bi{\emph{Step 3: arbitrary radii.}
+Equip the rational function field $K(S_1,\ldots,S_n)$
+with the Gauss absolute value of polyradius $r$ and let
+$L$ be its completion. Multiplicativity and completion are
+the Gauss-field construction used in
+Lemma~\ref{fnd:generalgaussfieldbasis}; no independence of
+the radii is required. The images $c_i$ of $S_i$ satisfy
+$|c_i|=r_i$. Scalar extension identifies}
+{\emph{第三步：任意半径。}
+赋予有理函数域 $K(S_1,\ldots,S_n)$ 多半径为 $r$ 的
+Gauss 绝对值，并记其完备化为 $L$。这里的乘法性及完备化正是
+Lemma~\ref{fnd:generalgaussfieldbasis} 所使用的 Gauss
+域构造，不要求半径无关。$S_i$ 的像 $c_i$ 满足
+$|c_i|=r_i$。标量扩张给出}
+\[
+ X_L=\mathcal M(L\{r^{-1}T\})
+       \simeq\mathcal M(L\{Z_1,\ldots,Z_n\}),
+                 \qquad T_i=c_iZ_i .
+\]
+\bi{The exact scalar presentation and domain base-change
+statements
+(\ref{fnd:generalscalarpresentation},
+\ref{fnd:generalizeddomainbasechange},
+\ref{fnd:generalanalyticscalarextension})
+identify $(U_i)_L$ with $|T_i|=r_i$, hence with $|Z_i|=1$.
+Since the finite domain cover and its intersections base
+change, $U_L=\bigcup_i(U_i)_L$ is exactly the unit-radius
+punctured polydisc. Equivalently its underlying set is the
+inverse image of $U$: the projection preserves every
+number $|T_i|$, so it preserves the displayed complement
+condition as well.}
+{精确的标量表示及解析域基变换结论
+(\ref{fnd:generalscalarpresentation},
+\ref{fnd:generalizeddomainbasechange},
+\ref{fnd:generalanalyticscalarextension})
+将 $(U_i)_L$ 识别为 $|T_i|=r_i$，即 $|Z_i|=1$。
+由于该有限域覆盖及其交都可基变换，
+$U_L=\bigcup_i(U_i)_L$ 恰为单位半径的去开多圆盘。
+等价地，其底层集合就是 $U$ 的逆像：投影保持每个数
+$|T_i|$，所以也保持所显示的补集条件。}
+
+\bi{Let $y$ be its unit Gauss point in the $Z$-coordinates.
+For a polynomial with coefficients in $K$, evaluation at
+$y$ is $\max_\nu|a_\nu c^\nu|
+=\max_\nu|a_\nu|r^\nu$; by continuity the same holds for
+every element of $K\{r^{-1}T\}$. Thus $y$ lies over $x$.
+If $x$ had an affinoid neighbourhood $W$ in $U$, then
+$W_L$ would be an affinoid domain of $U_L$. Moreover,
+an ordinary open neighbourhood of $x$ contained in $W$
+has an open inverse image containing $y$ and contained
+in $W_L$. Hence $W_L$ would be an affinoid neighbourhood
+of $y$, contradicting Step 2 over $L$. This proves the
+assertion for every positive polyradius.}
+{令 $y$ 为 $Z$ 坐标中的单位 Gauss 点。对系数属于 $K$ 的
+多项式，在 $y$ 处的值为
+$\max_\nu|a_\nu c^\nu|=\max_\nu|a_\nu|r^\nu$；
+由连续性，这对 $K\{r^{-1}T\}$ 的所有元素成立。因此 $y$
+位于 $x$ 上方。若 $x$ 在 $U$ 中具有 affinoid 邻域 $W$，
+则 $W_L$ 是 $U_L$ 中的 affinoid 域。此外，包含于 $W$
+的 $x$ 的通常开邻域，其逆像为包含 $y$ 且包含于 $W_L$
+的开集。因此 $W_L$ 将是 $y$ 的 affinoid 邻域，
+与在 $L$ 上应用第二步所得结论矛盾。这就处理了每个正多半径。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001886-reader.jpg" alt="Typeset mathematical passage from PDF page 609" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=609">PDF page 609 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001959/#fixed_absolute_admissible_tate">CLAUSE:NAG-001959:fixed_absolute_admissible_tate</a> · selected scope, text unavailable <small>(selected native clause)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(selected native whole)</small></li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001616/">NAG-001616</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001621/">NAG-001621</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001685/">NAG-001685</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001885/">NAG-001885</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001954/">NAG-001954</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001967/">NAG-001967</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001968/">NAG-001968</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001972/">NAG-001972</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001973/">NAG-001973</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001983/">NAG-001983</a> · selected whole <small>(selected native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001621/">fnd:affinoidanalyticdomaincalculus</a></li><li><a href="/r/NAG-001973/">fnd:allgermdomainclassification</a></li><li><a href="/r/NAG-001972/">fnd:allgradedgermreduction</a></li><li><a href="/r/NAG-001616/">fnd:generalanalyticscalarextension</a></li><li><a href="/r/NAG-001954/">fnd:generalgaussfieldbasis</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001609/">fnd:generalnetdomaincalculus</a></li><li><a href="/r/NAG-001685/">fnd:generalscalarpresentation</a></li><li><a href="/r/NAG-001983/">fnd:gradeddegreeonevaluation</a></li><li><a href="/r/NAG-001968/">fnd:gradedweierstrassgerm</a></li><li><a href="/r/NAG-001885/">fnd:puncturedaffinevaluationsnonaffine</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

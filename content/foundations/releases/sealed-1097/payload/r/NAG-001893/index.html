@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001893/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Twists on analytic projective space · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001893 · Accepted whole</p><h1>Twists on analytic projective space</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.42.3">Open in the English reader · PDF page 402</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="31405975d433809945f0bca3f603bcc051244c398c2a29b54cf7d8f16f89cd8d">
+\begin{theorem}[\bi{Twists on analytic projective space}
+{解析射影空间上的扭转层}]
+\label{fnd:analyticprojectivetwists}
+\bi{Let \(P=(\mathbf P^n_K)^{\an}\), and let
+\(\mathcal O_P(m)\) be the line bundle obtained by analytifying
+the usual homogeneous transition functions. For every integer
+\(m\), the canonical map}
+{设 \(P=(\mathbf P^n_K)^{\an}\)，并令 \(\mathcal O_P(m)\)
+为将通常齐次过渡函数解析化所得的线丛。对每个整数 \(m\)，
+典范映射}
+\[
+ H^q(\mathbf P^n_K,\mathcal O(m))
+       \longrightarrow H^q(P_G,\mathcal O_P(m))
+\]
+\bi{is an isomorphism for every \(q\geq0\), compatibly with
+complete extensions of \(K\). If \(n\geq1\), the only possible
+nonzero groups have bases}
+{对每个 \(q\geq0\) 都是同构，且与 \(K\) 的完备扩域相容。
+若 \(n\geq1\)，可能非零的群及其基为}
+\[
+\begin{aligned}
+ H^0(P_G,\mathcal O_P(m))
+   &amp;=\bigoplus_{\substack{\nu_j\geq0\\\sum_j\nu_j=m}}KX^\nu,\\
+ H^n(P_G,\mathcal O_P(m))
+   &amp;=\bigoplus_{\substack{\nu_j&lt;0\\\sum_j\nu_j=m}}KX^\nu.
+\end{aligned}
+\]
+\bi{For \(n=0\), \(H^0=K\) for all \(m\), and all higher groups
+are zero. In the standard finite affinoid \v Cech complex, the
+projection onto these finite-dimensional representatives and a
+homotopy on its complement can be chosen with norm at most one.}
+{若 \(n=0\)，对所有 \(m\) 都有 \(H^0=K\)，且高次群为零。
+在标准有限 affinoid \v Cech 复形中，可以选择到这些有限维
+代表元的投影及其补部上的同伦，使范数均至多为一。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f0c231849459a2b845107c64347e90fd4e1e9aa4053f5c12c603c75882853a2d">
+\begin{proof}
+\bi{Use the finite affinoid covering
+\(U_i=\{|X_j|\leq|X_i|\text{ for all }j\}\), constructed in
+Proposition~\ref{fnd:analytificationprojectivecompact}. On
+\(U_I=\bigcap_{i\in I}U_i\), fix \(i\in I\). The ratios
+\(X_j/X_i\) have norm at most one, and the ratios with
+\(j\in I\) are units with inverse of norm at most one.
+Lemma~\ref{fnd:unitlaurentnormalform}, using the frame \(X_i^m\),
+identifies the section space of \(\mathcal O_P(m)\) with the
+maximum-norm space of coefficient families tending to zero on}
+{使用 Proposition~\ref{fnd:analytificationprojectivecompact}
+构造的有限 affinoid 覆盖
+\(U_i=\{|X_j|\leq|X_i|\text{ 对所有 }j\}\)。
+在 \(U_I=\bigcap_{i\in I}U_i\) 上固定 \(i\in I\)。
+比值 \(X_j/X_i\) 的范数至多为一，其中 \(j\in I\) 的比值
+还是逆元范数至多为一的单位。以 \(X_i^m\) 为标架，
+Lemma~\ref{fnd:unitlaurentnormalform} 将
+\(\mathcal O_P(m)\) 的截面空间识别为下述指标集上趋于零的
+系数族，并配备最大范数：}
+\[
+ \Lambda_I(m)=
+ \{\nu\in\mathbf Z^{n+1}:\textstyle\sum\nu_j=m,\
+                              \nu_j\geq0\text{ if }j\notin I\}.
+\]
+\bi{Restrictions are the inclusions of these coefficient spaces.
+Every \(U_I\) is affinoid, so
+Proposition~\ref{fnd:finiteaffinoidcohomology} computes the
+required cohomology by this ordered complex.}
+{限制就是这些系数空间的包含。每个 \(U_I\) 都是 affinoid，
+故由 Proposition~\ref{fnd:finiteaffinoidcohomology}，
+所需上同调由这个有序复形计算。}
+
+\bi{For a fixed exponent vector \(\nu\), put
+\(N(\nu)=\{j:\nu_j&lt;0\}\). Its coefficient occurs exactly in the
+components indexed by nonempty \(I\) containing \(N(\nu)\).
+The differential is the alternating simplex differential. If
+\(N(\nu)\) is nonempty and proper, choose the least index
+\(k\notin N(\nu)\). The insertion operator
+\((hc)_I=(-1)^{\#\{i\in I:i&lt;k\}}c_{I\cup\{k\}}\) when
+\(k\notin I\), and zero otherwise, satisfies \(dh+hd=1\).
+The identity follows by cancelling the two terms deleting and
+inserting each index different from \(k\); the term deleting
+\(k\) has positive sign and equals \(c_I\).
+The condition on \(N(\nu)\) is preserved on both sides because
+\(k\notin N(\nu)\).}
+{对固定指数向量 \(\nu\)，记
+\(N(\nu)=\{j:\nu_j&lt;0\}\)。其系数恰好出现在包含
+\(N(\nu)\) 的非空指标集 \(I\) 所对应的分量中；微分为
+单纯形的交错微分。若 \(N(\nu)\) 非空且不是全部指标，
+取不属于 \(N(\nu)\) 的最小指标 \(k\)。
+当 \(k\notin I\) 时令
+\((hc)_I=(-1)^{\#\{i\in I:i&lt;k\}}c_{I\cup\{k\}}\)，
+否则令其为零，则 \(dh+hd=1\)。
+事实上，对每个不等于 \(k\) 的指标，先删后插与先插后删的
+两项符号相反而消去；删去 \(k\) 的项符号为正，恰为
+\(c_I\)。因为 \(k\notin N(\nu)\)，两边都保留包含
+\(N(\nu)\) 的条件。}
+
+\bi{If \(N(\nu)\) is empty, the full simplex complex has just
+the constant degree-zero class; the same insertion at \(k=0\)
+contracts the kernel of evaluation at its zeroth vertex.
+If \(N(\nu)\) is the entire vertex set, only the degree-\(n\)
+component remains. All the insertion maps have norm at most
+one. Applied simultaneously to the coefficient vectors, they
+preserve convergence to zero and therefore define bounded maps
+on the completed analytic complex. Their homotopy identities hold
+first on finite Laurent sums and then by continuity.}
+{若 \(N(\nu)\) 为空，则完整单纯形复形只有常值的零次
+上同调；在 \(k=0\) 处作同样的插入，收缩在第零顶点取值
+之核。若 \(N(\nu)\) 为全部顶点，则只剩第 \(n\) 次分量。
+所有插入映射的范数都至多为一，同时作用于各指数的系数时
+保持趋于零的条件，故定义完备解析复形上的有界映射。
+同伦恒等式先在有限 Laurent 和上成立，再由连续性处处成立。}
+
+\bi{The surviving exponent vectors are exactly the two finite
+sets in the statement. For \(n=0\), the single exponent is \(m\)
+and the complex has one term. The algebraic computation
+\cite[Tag 01XT, Lemma 30.8.1]{StacksAlg} uses the same coefficient
+complex with finite-support families. The natural map is its
+inclusion in the analytic complex. Since the surviving finite
+representatives and their projections are identical, it induces
+the asserted canonical isomorphism. The formulas have coefficients
+\(0,1,-1\); scalar extension therefore preserves all projections,
+representatives and comparison maps.}
+{存留下来的指数向量恰为陈述中的两个有限集合。若 \(n=0\)，
+唯一的指数为 \(m\)，复形只有一项。代数计算
+\cite[Tag 01XT, Lemma 30.8.1]{StacksAlg} 使用相同的系数
+复形，但只取有限支撑的系数族；自然映射就是它到解析复形的
+包含。两边存留的有限代表元及投影完全相同，故诱导所需典范
+同构。各公式的系数均为 \(0,1,-1\)，因此扩标量保留全部
+投影、代表元与比较映射。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001893-reader.jpg" alt="Typeset mathematical passage from PDF page 402" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=402">PDF page 402 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole <small>(earlier independently reviewed whole original in batch)</small></li><li><a href="/r/NAG-001892/">NAG-001892</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-01XT · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole</li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole</li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole</li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole</li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole</li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001892/">NAG-001892</a> · selected whole</li><li><a href="/r/NAG-001892/">NAG-001892</a> · selected whole <small>(requires)</small></li><li>STACKS-01XT · named external application</li><li>STACKS-01XT · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001714/">fnd:analytificationprojectivecompact</a></li><li><a href="/r/NAG-001891/">fnd:finiteaffinoidcohomology</a></li><li><a href="/r/NAG-001892/">fnd:unitlaurentnormalform</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

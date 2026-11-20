@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002308/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Geometric pushforward under a finite locally free map · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002308 · Accepted whole</p><h1>Geometric pushforward under a finite locally free map</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.37.3">Open in the English reader · PDF page 966</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="23e2443c5be8f40fa2017eddcd054300875cd3d5757aebad7ba31b12c4877ecc">
+\begin{theorem}[Geometric pushforward under a finite locally free map]
+\label{v036:analyticgeometricpushforward}
+Let $p:X\to Y$ be a finite morphism of generalized $K$-affinoid
+spaces, both pure of analytic dimension $d$. Suppose its algebra
+is finite locally free of constant rank $\Delta&gt;0$ over the target
+algebra, with the canonical module Banach structure. Let unit moment
+tuples $f_X$ and $f_Y$ define $t_X:X\to\mathbb R^n$ and
+$t_Y:Y\to\mathbb R^{n&#x27;}$, and suppose that
+\[
+                         t_Y\circ p=a\circ t_X
+\]
+comes from the corresponding identity of characters for an integral
+map $a:\mathbb Z^n\to\mathbb Z^{n&#x27;}$.
+Let $w&#x27;\in t_Y(Y)$ have its whole fibre in
+$\operatorname{Int}(Y/K)$, and suppose that the local tropical image
+at $w&#x27;$ is contained in
+$w&#x27;+(N_Y)_{\mathbb R}$ for a saturated rank-$d$ lattice
+$N_Y\subset\mathbb Z^{n&#x27;}$.
+Assume
+\[
+                   a^{-1}(w&#x27;)\cap t_X(X)=\{w_1,\ldots,w_s\}
+\]
+is finite and nonempty, and that the local tropical image at each
+$w_i$ is contained in $w_i+(N_i)_{\mathbb R}$ for a saturated
+rank-$d$ lattice $N_i\subset\mathbb Z^n$.
+
+Then $a(N_i)\subset N_Y$ has finite index for every $i$, all the
+weights in Theorem~\ref{v036:flatgermweight} are defined, and
+\[
+              \Delta\,m_{Y,f_Y}(w&#x27;)
+                   =\sum_{i=1}^s m_{X,f_X}(w_i)
+                                      [N_Y:a(N_i)].
+\]
+The locally free rank, the fibre algebras, and their lengths are
+taken before reduction. No restriction on the real weights or on
+the characteristic or value group of $K$ is imposed.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4d47076fc3ad0012851a60ad6f7ad7eed86568213558fecca9e48030d1ecbfdd">
+\begin{proof}
+Theorem~\ref{fnd:generalizedfinitealgebras} makes $p$ everywhere
+interior relative to $Y$. The composition inclusion in
+Proposition~\ref{fnd:affinoidinteriorcalculus} therefore gives
+\[
+                p^{-1}(t_Y^{-1}(w&#x27;))\subset\operatorname{Int}(X/K).
+\]
+In particular the whole fibre at every $w_i$ is interior.
+Theorem~\ref{v036:flatgermweight} defines its positive intrinsic
+weight and that at $w&#x27;$. Theorem~\ref{v036:flatgermlocalconstancy}
+shows that the local images fill neighborhoods in their stated
+planes.
+
+For $v$ sufficiently near $w_i$ in $w_i+(N_i)_{\mathbb R}$, one
+has $v\in t_X(X)$ and $a(v)\in t_Y(Y)$ sufficiently near $w&#x27;$.
+It follows that $a((N_i)_{\mathbb R})\subset(N_Y)_{\mathbb R}$.
+Saturation of $N_Y$ implies $a(N_i)\subset N_Y$. If the restriction
+of $a$ to $(N_i)_{\mathbb R}$ had nonzero kernel, a small interval
+through $w_i$ in that kernel would give infinitely many elements
+of $a^{-1}(w&#x27;)\cap t_X(X)$. This contradicts the finite-set
+hypothesis. Hence this restriction is injective, and $a(N_i)$ has
+finite index in $N_Y$.
+
+Choose an integral $Q:\mathbb Z^{n&#x27;}\to\mathbb Z^d$ transverse to
+$N_Y$. Take a small closed box in the target moment space, with
+$w&#x27;$ in its interior and with its inverse image
+$Y_0\subset Y$ contained in the specified flat-germ neighborhood.
+As in the proof of Theorem~\ref{v036:flatgermweight}, the entire
+level of $Q\circ t_Y|_{Y_0}$ at $Qw&#x27;$ is $t_Y^{-1}(w&#x27;)$ and is
+interior over $K$ in $Y_0$. Put $X_0=p^{-1}(Y_0)$.
+Theorem~\ref{fnd:generalizeddomainbasechange} gives its actual
+affinoid algebra, and Proposition~\ref{fnd:generalizedfinitebasechange}
+preserves the finite canonical module structure. Ordinary base
+change of a locally free module preserves its rank: its local
+bases base change to local bases.
+
+The entire level of $Q a\circ t_X|_{X_0}$ at $Qw&#x27;$ is
+$p^{-1}(t_Y^{-1}(w&#x27;))$. Indeed, the target moment image in $Y_0$
+lies in the plane on which $Q$ is injective. This level is interior
+in $X_0$ by finite relative interior and composition. Its moment
+values are exactly $w_1,\ldots,w_s$. Proposition
+\ref{v035:analytic:projectedfibrefactors} therefore identifies its
+actual algebra with
+\[
+                               \prod_{i=1}^s D_{w_i}.
+\]
+Each factor is the original whole moment-fibre algebra on $X$,
+since that whole fibre already belongs to $X_0$.
+
+Let $D&#x27;_{w&#x27;}$ be the actual whole target-fibre algebra, $A$ the
+exact-radius target polytorus at $Qw&#x27;$, and $H$ its Gauss field.
+The algebra of the displayed source level is also the actual
+finite base change of the algebra of $X$ along the algebra map
+from $Y$ to $D&#x27;_{w&#x27;}$. It is consequently finite locally free of
+rank $\Delta$ over $D&#x27;_{w&#x27;}$. After tensoring over $A$ with $H$,
+it is finite locally free of that rank over the Artinian algebra
+\[
+                              E&#x27;=D&#x27;_{w&#x27;}\widehat\otimes_A H.
+\]
+All these finite tensors are ordinary tensors with their complete
+canonical norms by Proposition~\ref{fnd:generalizedfinitebasechange}.
+
+By \cite[Tag 00JB]{StacksAlg}, $E&#x27;$ is a finite product of Artinian
+local algebras. On each factor, a local basis of the finite locally
+free module at its unique maximal ideal is a global basis: a
+principal open neighborhood of that ideal is the entire spectrum,
+and its defining element is a unit. Its $H$-dimension is therefore
+$\Delta$ times the $H$-dimension of that factor. Summing the
+dimensions and using the actual product of source fibres gives
+\[
+                            \Delta\,\delta_Q(w&#x27;)
+                                =\sum_{i=1}^s\delta_{Qa}(w_i).
+\]
+Apply Theorem~\ref{v036:flatgermweight} to every term. Since $Q$
+is injective on $N_Y$, counting representatives in the subgroup
+chain $Qa(N_i)\subset Q(N_Y)\subset\mathbb Z^d$ gives
+\[
+ [\mathbb Z^d:Qa(N_i)]
+      =[\mathbb Z^d:Q(N_Y)]\,[N_Y:a(N_i)].
+\]
+Cancel the common positive first factor. This proves the stated
+geometric pushforward formula with all lengths and full field
+degrees already incorporated in the intrinsic weights.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002308-reader.jpg" alt="Typeset mathematical passage from PDF page 967" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=967">PDF page 967 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002257/">NAG-002257</a> · selected whole</li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole</li><li>STACKS-00JB · named external application</li><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002257/">NAG-002257</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole <small>(requires)</small></li><li>STACKS-00JB · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002257/">v035:analytic:projectedfibrefactors</a></li><li><a href="/r/NAG-002306/">v036:flatgermweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

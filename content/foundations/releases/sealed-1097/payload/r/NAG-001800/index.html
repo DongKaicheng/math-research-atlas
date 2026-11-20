@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001800/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Canonical reduction of the standard annulus · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001800 · Accepted whole</p><h1>Canonical reduction of the standard annulus</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.20.3">Open in the English reader · PDF page 592</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="8ee32a4aa1459e7feb86eb82650b575c2247bee7b406daebc3069ed252ef8508">
+\begin{lemma}[\bi{Canonical reduction of the standard annulus}
+{标准圆环的典范约化}]
+\label{fnd:standardannuluscanonical}
+\bi{Let $a\in K$ satisfy $0&lt;|a|&lt;1$, and put}
+{设 $a\in K$ 满足 $0&lt;|a|&lt;1$，令}
+\[
+ A_0=O\langle U,V\rangle/(UV-a),\qquad
+ A=K\langle U,V\rangle/(UV-a).
+\]
+\bi{Then $A_0$ is admissible, $A_0=A^\circ$, and}
+{则 $A_0$ 为 admissible，$A_0=A^\circ$，且}
+\[
+ \widetilde A=A_0\otimes_O k=k[u,v]/(uv).
+\]
+\bi{The Shilov boundary consists of the Gauss points with
+$|U|=1$ and $|U|=|a|$. Likewise the unit-circle algebra
+$K\langle T,T^{-1}\rangle$ has canonical reduction
+$k[t,t^{-1}]$ and a single Shilov point.}
+{其 Shilov 边界由 $|U|=1$ 及 $|U|=|a|$ 处的 Gauss 点
+组成。同样，单位圆环代数 $K\langle T,T^{-1}\rangle$ 的
+典范约化为 $k[t,t^{-1}]$，且只有一个 Shilov 点。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f6ffa9b33b204b6019322100094e746a4dfdc1dce0ef8eb9c0f9c8334b053035">
+\begin{proof}
+\bi{Apply Theorem~\ref{fnd:laurentcoefficientnormalform} to
+the interval $[|a|,1]$, rescaling its inverse coordinate by $a$.
+Every element of $A$ has a unique expression}
+{对区间 $[|a|,1]$ 应用
+Theorem~\ref{fnd:laurentcoefficientnormalform}，并将其逆坐标
+乘以 $a$。每个 $A$ 中元素都具有唯一表示}
+\[
+ f=\sum_{n\geq0}c_nU^n+\sum_{n\geq1}d_nV^n,
+ \qquad c_n\longrightarrow0,\quad d_n\longrightarrow0.
+\]
+\bi{Its quotient norm is
+$N(f)=\max\{\max_n|c_n|,\max_{n\geq1}|d_n|\}$.
+The same normal-form operators preserve integral coefficients:
+on a monomial one replaces $U^iV^j$ by
+$a^{\min(i,j)}U^{i-j}$ or $a^{\min(i,j)}V^{j-i}$; the
+corresponding quotient by $UV-a$ has integral coefficients.
+The operators are contractive after this rescaling, so the
+polynomial identities pass to restricted series. Hence $A_0$
+embeds in $A$ and is exactly the subset $N(f)\leq1$. In
+particular it has no $O$-torsion and is admissible by
+Theorem~\ref{fnd:formaltorsionfreepresentation}.}
+{其商范数为
+$N(f)=\max\{\max_n|c_n|,\max_{n\geq1}|d_n|\}$。
+同一正规形算子保留整系数：对单项式，将 $U^iV^j$ 替换为
+$a^{\min(i,j)}U^{i-j}$ 或 $a^{\min(i,j)}V^{j-i}$；相应差
+除以 $UV-a$ 后仍有整系数。上述缩放后的算子压缩范数，
+故多项式恒等式延拓到受限级数。因此 $A_0$ 嵌入 $A$，
+且恰为 $N(f)\leq1$ 的元素集合。特别地它没有 $O$-挠，
+由 Theorem~\ref{fnd:formaltorsionfreepresentation} 为
+admissible。}
+
+\bi{At any analytic point, $|U|,|V|\leq1$, so $|f|\leq N(f)$.
+At the two endpoint Gauss points, the respective values are}
+{在任意解析点处，$|U|,|V|\leq1$，故 $|f|\leq N(f)$。
+在两个端点 Gauss 点处，相应取值为}
+\[
+ \max\{\max_n|c_n|,\max_{n\geq1}|d_n||a|^n\},\qquad
+ \max\{\max_n|c_n||a|^n,\max_{n\geq1}|d_n|\}.
+\]
+\bi{Their maximum is $N(f)$. Thus $N=\rho_A$ and
+$A_0=A^\circ$. A nonzero element with $N(f)&lt;1$ has a
+coefficient attaining this maximum, so it is an element of
+$K^{\circ\circ}A_0$; the converse is immediate. Therefore
+$A^{\circ\circ}=K^{\circ\circ}A_0$. Reducing the unique
+normal forms gives $k[u,v]/(uv)$. The endpoint pair is a
+boundary, and neither point can be omitted from this pair:
+$U$ attains its maximum only at the outer endpoint of the pair,
+and $V$ only at the inner one. Lemma~\ref{fnd:minimalfiniteboundary}
+therefore makes the pair the Shilov boundary. For the unit circle
+the same normal form, now with interval $[1,1]$, gives the
+multiplicative Laurent Gauss norm and reduction
+$k[t,t^{-1}]$. Proposition~\ref{new:shilov_singleton} gives
+its single Shilov point.}
+{两者的最大值为 $N(f)$，所以 $N=\rho_A$ 且
+$A_0=A^\circ$。若非零元素满足 $N(f)&lt;1$，则有一个系数
+达到此最大值，因此该元素属于 $K^{\circ\circ}A_0$；
+反向包含显然。故 $A^{\circ\circ}=K^{\circ\circ}A_0$。
+将唯一正规形约化，得到 $k[u,v]/(uv)$。端点对构成边界，
+且其中任一点都不能省去：在此二点集中，$U$ 仅在外端点
+达到最大值，$V$ 仅在内端点达到最大值。于是
+Lemma~\ref{fnd:minimalfiniteboundary} 说明该端点对正是
+Shilov 边界。对单位圆环，在区间 $[1,1]$ 上使用同一正规形，
+得到具有乘性的 Laurent Gauss 范数及约化 $k[t,t^{-1}]$。
+Proposition~\ref{new:shilov_singleton} 给出其唯一 Shilov 点。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001800-reader.jpg" alt="Typeset mathematical passage from PDF page 592" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=592">PDF page 592 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000657/">NAG-000657</a> · selected whole <small>(earlier candidate whole in this reviewer batch)</small></li><li><a href="/r/NAG-001415/">NAG-001415</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001904/">NAG-001904</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-001415/">fnd:laurentcoefficientnormalform</a></li><li><a href="/r/NAG-001904/">fnd:minimalfiniteboundary</a></li><li><a href="/r/NAG-000657/">new:shilov_singleton</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

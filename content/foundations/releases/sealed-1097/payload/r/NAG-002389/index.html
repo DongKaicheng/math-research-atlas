@@ -1,0 +1,218 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002389/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The real polyhedral integration calculation · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002389 · Accepted whole</p><h1>The real polyhedral integration calculation</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.46.2">Open in the English reader · PDF page 1014</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="01db9ff1529c188c4e291c6369d9e8297e4bb22d58433aba3e96cff817187a83">
+\begin{lemma}[The real polyhedral integration calculation]
+\label{v037:integration:polyhedralcalculus}
+Lattice-normalized integration of smooth top superforms with
+compact support is well-defined and additive under finite
+polyhedral subdivision. Let $F:\sigma\to\tau$ be an affine
+isomorphism of $d$-dimensional polyhedra whose linear part maps
+the tangent lattice $N_\sigma$ into $N_\tau$. If that lattice
+map is injective, then
+\[
+ \int_\sigma F^*\alpha
+       =[N_\tau:F(N_\sigma)]\int_\tau\alpha.
+\]
+A linear map of rank less than $d$ has zero pullback in
+bidegree $(d,d)$.
+
+Suppose $d\geq1$, and let $\beta$ have bidegree $(d-1,d)$
+near a $d$-polyhedron $\sigma$, with compact tangential support
+on $\sigma$. For each facet $\tau$ choose
+a basis $v_1,\ldots,v_{d-1}$ of $N_\tau$ and a primitive
+lift $u_{\sigma/\tau}\in N_\sigma$ pointing into $\sigma$.
+Write $d\mu_\tau$ for the real measure giving this basis
+covolume one. Then
+\begin{equation}
+\label{v037:eq:superstokes}
+ \int_\sigma d&#x27;\beta
+  =(-1)^{d(d+1)/2}\sum_{\tau\prec\sigma}
+       \int_\tau
+       \beta(v_1&#x27;,\ldots,v_{d-1}&#x27;;
+             v_1&#x27;&#x27;,\ldots,v_{d-1}&#x27;&#x27;,u_{\sigma/\tau}&#x27;&#x27;)
+                         \,d\mu_\tau.
+\end{equation}
+The facet expression is independent of the chosen basis and
+of the lift modulo $N_\tau$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4b3e11bbd69c8a831bd045462dac964a06984f0af1d6c8b227415553c8ceed60">
+\begin{proof}
+We first give the elementary real integration facts used in
+the calculation. A closed bounded box in $\mathbb R^r$ is
+sequentially compact: repeatedly bisect its sides, retain a
+closed subbox containing infinitely many terms of a sequence,
+and choose terms with increasing indices in the nested boxes.
+Their diameters tend to zero, so completeness of the real
+coordinates gives a convergent subsequence in the original box.
+A continuous function on a compact subset is bounded and
+uniformly continuous. Otherwise a sequence witnessing failure
+of either assertion has a convergent subsequence; in the second
+case take pairs at distance tending to zero. Continuity at the
+common limit is a contradiction.
+
+Let $P$ be a bounded polytope in $\mathbb R^r$, and let $c$
+be continuous on a neighbourhood of $P$. In a fixed bounding
+box use a cubical grid of side length $h$. The grid boxes
+meeting a given affine
+hyperplane have total volume at most $C h$. To see this,
+choose a nonzero coordinate coefficient in an equation for
+the hyperplane. For each box in the other $r-1$ coordinates,
+the possible remaining coordinate ranges over an interval of
+length at most a constant times $h$, so only boundedly many
+of the remaining grid intervals are met. There are at most
+$C&#x27; h^{-(r-1)}$ such boxes in the fixed bounding region.
+The boundary of $P$ is contained in finitely many such
+hyperplanes. Its grid boxes therefore have total volume
+tending to zero.
+
+The upper and lower grid sums for $c$ on the boxes wholly
+inside $P$ differ by at most the bounding volume times the
+modulus of continuity of $c$ at distance $\sqrt r h$.
+The boundary boxes add an error bounded by $C h\sup|c|$.
+Both errors tend to zero. Refining two grids gives the same
+limit, which defines the integral. The same bounds allow
+signed functions and prove additivity under a finite
+polyhedral dissection: its additional faces lie in finitely
+many hyperplanes and contribute zero. They also prove that
+lower-dimensional polyhedra have zero $r$-dimensional integral.
+For unbounded polyhedra, intersect with a box containing the
+compact support in its interior; a larger box gives the same
+value.
+
+We will use iterated integration in these coordinates. The
+same construction proves it for the functions just considered.
+On each line parallel to a coordinate axis, the characteristic
+function of a polytope times a continuous function is
+piecewise continuous on finitely many intervals. The upper
+and lower step functions of a rectangular grid bound its
+one-dimensional integrals. Integrating these step functions
+in the remaining variables gives exactly their rectangular
+grid sums. Their difference tends to zero by the preceding
+estimates. Thus both orders of integration have the same
+limit. This argument also proves existence of the required
+outer integrals; it does not assume an interchange theorem.
+
+One-dimensional translation and scaling follow directly by
+translating or scaling interval subdivisions. Interchanging
+coordinates follows from the equality of iterated integrals.
+A shear $x_i\mapsto x_i+c x_j$ preserves the integral, because
+after fixing all other coordinates it is a translation in
+$x_i$. Every invertible real matrix is a product of shears,
+coordinate interchanges and nonzero diagonal scalings, by
+Gaussian elimination. Hence ordinary real change of variables
+for an invertible affine map with linear matrix $L$ has factor
+$|\det L|$. All the intermediate regions are polyhedra, so
+the preceding integral constructions apply at every step.
+
+In integral bases, pullback of a top superform contributes
+$(\det L)^2$, one determinant from each exterior factor.
+The scalar change of variables contributes $|\det L|^{-1}$.
+Their product is $|\det L|$. For a full-rank integral lattice
+map this is $[N_\tau:F(N_\sigma)]$, by the integer basis
+calculation in Lemma~\ref{cand:elementarylatticesplitting}.
+A change of integral basis has determinant $\pm1$, proving
+independence of the normalization. If the rank is less than
+$d$, the pullback on $\bigwedge^d$ is zero. This proves the
+first assertions.
+
+For completeness, the one-dimensional derivative formula
+also follows from the same integral. If $g$ is continuous,
+the difference quotient of $G(t)=\int_a^t g(s)\,ds$ lies
+between the minimum and maximum of $g$ on the intervening
+interval; hence $G&#x27;=g$. A function with zero derivative is
+constant by the mean value argument: a continuous function
+on a closed interval attains its extrema by the compactness
+just proved, an interior extremum of a differentiable function
+has derivative zero, and subtraction of the line through
+the endpoint values gives Rolle&#x27;s argument. Applying this to
+a $C^1$ function minus the primitive of its derivative gives
+\[
+                       \int_a^b h&#x27;(s)\,ds=h(b)-h(a).
+\]
+
+Apply this identity on the coordinate lines through a
+polyhedron, followed by the established iterated integration.
+For a coordinate $x_j$, almost every such line meets a bounded
+convex polytope in an interval. Its endpoints lie on facets;
+the projections of intersections of distinct facets have
+dimension at most $r-2$ and have zero $(r-1)$-dimensional
+integral by the grid estimate. On a facet written
+$x_j=\ell(\widehat x_j)$ the endpoint sign is the sign of
+the $j$-th outward normal component. Give the facet its
+Euclidean measure in orthonormal affine coordinates; the
+proved linear change of variables computes this measure in
+any other affine parametrization. The graph&#x27;s Euclidean
+area factor is $\sqrt{1+|\nabla\ell|^2}$, obtained by taking
+the determinant of the Gram matrix
+$I+\nabla\ell\,\nabla\ell^{\mathsf t}$.
+The absolute value of the corresponding unit-normal component
+is its reciprocal. Thus the endpoint integral is exactly
+the facet integral of that normal component times the
+coefficient. Facets parallel to these lines have zero normal
+component and give no term. Summing over $j$ proves the
+divergence formula on a polytope for a $C^1$ vector field.
+The argument applies to an unbounded polyhedron with compact
+support by cutting with a box outside the support; all the
+new facet terms vanish.
+
+We now apply this coefficient formula to $\beta$. Put
+$s_d=(-1)^{d(d-1)/2}$. In coordinates for any integral basis
+of $N_\sigma$, write its tangential restriction uniquely as
+\[
+ \beta=s_d\sum_{j=1}^d(-1)^{j-1}b_j\,
+       d&#x27;x_1\wedge\cdots\widehat{d&#x27;x_j}\cdots\wedge d&#x27;x_d
+          \wedge d&#x27;&#x27;x_1\wedge\cdots\wedge d&#x27;&#x27;x_d.
+\]
+Direct differentiation gives
+$d&#x27;\beta=(\sum_j\partial_j b_j)\omega_{N_\sigma}$.
+At a facet, the chosen basis of $N_\tau$ followed by
+$u_{\sigma/\tau}$ is an integral basis of $N_\sigma$:
+the quotient is free of rank one and its indicated element
+is primitive. This is again
+Lemma~\ref{cand:elementarylatticesplitting}.
+Use its affine coordinates $(t_1,\ldots,t_{d-1},s)$, with
+the facet in $s=0$ and the polyhedron locally in $s\geq0$.
+The divergence contribution of this facet is
+$-b_d(t,0)\,dt_1\cdots dt_{d-1}$. On the other hand,
+\[
+ \beta(v_1&#x27;,\ldots,v_{d-1}&#x27;;
+          v_1&#x27;&#x27;,\ldots,v_{d-1}&#x27;&#x27;,u_{\sigma/\tau}&#x27;&#x27;)
+                   =s_d(-1)^{d-1}b_d(t,0).
+\]
+The ratio of these two expressions is
+$(-1)^d s_d=(-1)^{d(d+1)/2}$. A unimodular change of
+cell coordinates has absolute determinant one; the two
+exterior factors and the scalar change of variables above
+therefore preserve this facet calculation. This proves
+\eqref{v037:eq:superstokes} for all facets with one common
+sign. A basis change in $N_\tau$ contributes its determinant
+twice, and a change of the lift by a tangent vector gives
+a repeated vector in the double-primed alternating factor.
+These observations prove the last assertion.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="b97f965e5da225c8e76e3d5d8a54d84ffef5c335f5d3f62cd84983b183e9c8d7">
+\begin{definition}[Lattice normalization for real superforms]
+\label{v037:integration:conventions}
+On an open subset of $N_{\mathbb R}$, a real superform of
+bidegree $(p,q)$ is a smooth function with values in
+$\bigwedge^pN_{\mathbb R}^{\prime *}\otimes
+ \bigwedge^qN_{\mathbb R}^{\prime\prime *}$.
+All one-form generators anticommute. The operators $d&#x27;$ and
+$d&#x27;&#x27;$ differentiate coefficients and wedge the corresponding
+primed or double-primed differential on the left.
+The involution $J$ exchanges the two copies and fixes functions.
+In particular $d&#x27;&#x27;=Jd&#x27;J$, as is checked on a coefficient and
+on the constant one-form generators.
+
+For an affine $d$-plane with tangent lattice $M$, choose an
+integral basis and its affine coordinates $x_1,\ldots,x_d$.
+Use the positive top generator
+\[
+ \omega_M=d&#x27;x_1\wedge d&#x27;&#x27;x_1\wedge\cdots\wedge d&#x27;x_d\wedge d&#x27;&#x27;x_d.
+\]
+The lattice-normalized integral of $c\omega_M$ on a polyhedron
+is the ordinary real integral of $c$ in these coordinates.
+A form is restricted to a polyhedron by restricting both
+cotangent factors to its affine span. Its support on a weighted
+complex is the closure, in that complex, of the points in the
+relative interiors of its maximal cells where this restriction
+is nonzero, after discarding cells of weight zero. Compact
+support below refers to this support.
+\end{definition}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002389-reader.jpg" alt="Typeset mathematical passage from PDF page 1015" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1015">PDF page 1015 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

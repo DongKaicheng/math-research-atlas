@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002207/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Stable extension of a nodal generic curve · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002207 · Accepted whole</p><h1>Stable extension of a nodal generic curve</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.37.4">Open in the English reader · PDF page 741</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a94df47c79e6ee89e90a7365556d048891f36295c8f3bafc40bf04a38d1e7015">
+\begin{lemma}[\bi{Stable extension of a nodal generic curve}
+{结点泛曲线的稳定延拓}]
+\label{cand:stablenodalgenericextension}
+\bi{Let $K$ be a complete nontrivially valued characteristic-zero
+field, and let $Y/K$ be a stable curve of genus $g\geq2$.
+There is a finite Galois extension $L/K$, with the original
+absolute value uniquely extended, and a projective stable
+model $\mathcal Y/L^\circ$ carrying the canonical semilinear
+$\operatorname{Gal}(L/K)$-action on its generic fibre.
+After enlarging $L$ finitely and Galois, all special nodes admit
+split pointed charts over $L^\circ$.}
+{设 $K$ 为完备非平凡赋值的特征零域，$Y/K$ 为亏格
+$g\geq2$ 的稳定曲线。存在配备原绝对值唯一延拓的有限
+Galois 扩张 $L/K$，以及射影稳定模型 $\mathcal Y/L^\circ$，
+其上带有泛纤维典范半线性 $\operatorname{Gal}(L/K)$-作用的延拓。
+将 $L$ 再作有限 Galois 扩张后，可使全部特殊结点在
+$L^\circ$ 上具有分裂带点坐标。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7375787f0740e0190d56a2435fab699ba654f6c823482d424506bf8afb083a0f">
+\begin{proof}
+\bi{Apply Lemma~\ref{cand:properstackfinitevaluation} to the
+$K$-object $Y$ of the proper stack
+$\overline{\mathcal M}_{g,K^\circ}$,
+using \cite[Tags 0E9C, 0CL6]{StacksAlg}.
+This gives a stable family after a finite extension.
+The projectivity argument in the proof of
+Theorem~\ref{cand:stablevaluationextension} applies without change:
+Tag 0E74 makes the dualizing line bundle relatively ample over
+an open neighborhood of the closed point of the local base;
+that neighborhood is the whole base. Tags 0D32 and 0B5N then give
+a projective scheme. This argument uses stability of the fibres,
+not smoothness of the generic fibre.}
+{对 proper 模叠 $\overline{\mathcal M}_{g,K^\circ}$ 的
+$K$-对象 $Y$ 应用 Lemma~\ref{cand:properstackfinitevaluation}，
+其中使用 \cite[Tags 0E9C, 0CL6]{StacksAlg}，得到有限扩域后的
+稳定族。Theorem~\ref{cand:stablevaluationextension} 的证明中
+射影性论证原样适用：Tag 0E74 使对偶化线丛在局部基底闭点的
+某个开邻域上相对 ample，而该邻域就是整个基底。
+随后 Tags 0D32 与 0B5N 给出射影概形。
+此论证使用纤维的稳定性，并不要求泛纤维光滑。}
+
+\bi{Take a finite normal closure as in
+Corollary~\ref{cand:stablecompletevaluation}; characteristic zero
+makes it Galois, and uniqueness of the absolute-value extension
+preserves the specified valuation. Apply
+Lemma~\ref{cand:stableisomvaluation} to the semilinear twists of
+the model. Its statement already permits nodal generic fibres.
+The twist construction and uniqueness argument of
+Corollary~\ref{cand:stablegaloisaction} therefore supply the group
+action and its composition law. Finally use
+Theorem~\ref{cand:simultaneousnodalsplitting} and take a further
+normal closure. Stability persists under this base change; the
+same uniqueness argument supplies the action of the enlarged group.
+Parameters $a=0$ are permitted in the pointed charts.}
+{如 Corollary~\ref{cand:stablecompletevaluation}，取有限正规包；
+特征零使其成为 Galois 扩张，绝对值延拓的唯一性保持指定赋值。
+对模型的半线性扭曲应用 Lemma~\ref{cand:stableisomvaluation}；
+它的陈述已经允许结点泛纤维。因此
+Corollary~\ref{cand:stablegaloisaction} 的扭曲构造和唯一性论证
+给出群作用与复合律。最后使用
+Theorem~\ref{cand:simultaneousnodalsplitting}，再取正规包。
+此基变换保持稳定性，同一个唯一性论证给出扩大后的群作用。
+带点坐标中允许参数 $a=0$。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="6bd0b552260a6c546f90914dced0ceae77cb4b37318ba8bd1d98f58159bc84f2">
+% v0.34 candidate. Author: /root/f5_skeleton. Independent review required.
+\section{\bi{Equivariant genus-one models by doubling}
+{由倍接构造等变亏格一模型}}
+
+\bi{We use stable reduction of an auxiliary nodal curve and then
+separate its two labelled generic components. The local normalization
+calculation works over a valuation ring without a discreteness assumption.}
+{我们对一个辅助结点曲线应用稳定约化，再分离其两个带标签的泛分量。
+所用的局部正规化计算适用于赋值环，无需离散性假设。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002207-reader.jpg" alt="Typeset mathematical passage from PDF page 741" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=741">PDF page 741 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002043/">NAG-002043</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002044/">NAG-002044</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002045/">NAG-002045</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002046/">NAG-002046</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002047/">NAG-002047</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-0B5N · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>STACKS-0CL6 · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>STACKS-0D32 · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>STACKS-0E74 · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>STACKS-0E9C · named external application <small>(exact existing frozen Stacks consumer)</small></li><li>APP-STACKS-0B5N@NAG-002207:exact-original-358-site-7 · named external application</li><li>APP-STACKS-0B5N@NAG-002207:exact-original-358-site-7 · named external application <small>(requires)</small></li><li>APP-STACKS-0CL6@NAG-002207:exact-original-358-site-3 · named external application</li><li>APP-STACKS-0CL6@NAG-002207:exact-original-358-site-3 · named external application <small>(requires)</small></li><li>APP-STACKS-0D32@NAG-002207:exact-original-358-site-6 · named external application</li><li>APP-STACKS-0D32@NAG-002207:exact-original-358-site-6 · named external application <small>(requires)</small></li><li>APP-STACKS-0E74@NAG-002207:exact-original-358-site-5 · named external application</li><li>APP-STACKS-0E74@NAG-002207:exact-original-358-site-5 · named external application <small>(requires)</small></li><li>APP-STACKS-0E9C@NAG-002207:exact-original-358-site-2 · named external application</li><li>APP-STACKS-0E9C@NAG-002207:exact-original-358-site-2 · named external application <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002043/">NAG-002043</a> · selected whole</li><li><a href="/r/NAG-002043/">NAG-002043</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002044/">NAG-002044</a> · selected whole</li><li><a href="/r/NAG-002044/">NAG-002044</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002045/">NAG-002045</a> · selected whole</li><li><a href="/r/NAG-002045/">NAG-002045</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002046/">NAG-002046</a> · selected whole</li><li><a href="/r/NAG-002046/">NAG-002046</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002047/">NAG-002047</a> · selected whole</li><li><a href="/r/NAG-002047/">NAG-002047</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole</li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002043/">cand:properstackfinitevaluation</a></li><li><a href="/r/NAG-002053/">cand:simultaneousnodalsplitting</a></li><li><a href="/r/NAG-002045/">cand:stablecompletevaluation</a></li><li><a href="/r/NAG-002047/">cand:stablegaloisaction</a></li><li><a href="/r/NAG-002046/">cand:stableisomvaluation</a></li><li><a href="/r/NAG-002044/">cand:stablevaluationextension</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

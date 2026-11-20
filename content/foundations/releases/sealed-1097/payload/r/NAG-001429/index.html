@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001429/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Laurent injectivity for finite strict affinoid modules · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001429 · Accepted whole</p><h1>Laurent injectivity for finite strict affinoid modules</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.16.2">Open in the English reader · PDF page 163</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="651d4bc3b4501f038e1d4fadb96dbd2cca1bd7ede82bfc1ae58d481d9de01bf4">
+\begin{theorem}[\bi{Laurent injectivity for finite strict affinoid modules}{Strict affinoid 有限模上的 Laurent 单射性}]\label{fnd:strictlaurentinjectivity}
+\bi{Let $A$ be a strict $K$-affinoid algebra with a submultiplicative Banach norm uniformly equivalent to its defining quotient norm. Let $M$ be a finite $A$-module with a canonical Banach norm and contractive $A$-action. For every $f\in A$ and every real $r&gt;0$,}
+{设 $A$ 为 strict $K$-affinoid algebra，其次乘 Banach 范数与定义它的商范数 uniformly equivalent。设 $M$ 为有限 $A$-模，配备 canonical Banach 范数且 $A$ 的作用为 contractive。则对每个 $f\in A$ 和每个实数 $r&gt;0$，}
+\[
+ L_f=1-fT^{-1}:E_r(M)\longrightarrow E_r(M)
+\]
+\bi{is injective. This assertion concerns injectivity alone; it does not assert a lower norm bound for every $r$.}
+{为单射。此处结论仅为单射性，并未断言每个 $r$ 都具有范数下界。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="bb3457285f3819bffff8de9befee26e9250b90f33ddc5fe417edb8c7026331f6">
+\begin{proof}
+\bi{\emph{Residue-field quotients.} By Theorem~\ref{fnd:strictfinitemodules}, $A$ is Noetherian, its ideals are closed, and finite modules and their subquotients have canonical complete norms. Fix a maximal ideal $\mathfrak m$. The field $F=A/\mathfrak m$, with the quotient norm, is a Banach $K$-algebra. Indeed, definiteness and completeness follow from Lemma~\ref{fnd:completequotient}; approximating representatives in a product proves submultiplicativity. Also $\|1_F\|\leq1$ and $0&lt;\|1_F\|\leq\|1_F\|^2$, so $\|1_F\|=1$. The scalar homogeneity follows from the quotient definition.}
+{\emph{剩余域商。} 由 Theorem~\ref{fnd:strictfinitemodules}，$A$ 为 Noetherian，ideals 为 closed，有限模及其子商均有 canonical complete norms。固定一个极大理想 $\mathfrak m$。域 $F=A/\mathfrak m$ 配备商范数后成为 Banach $K$-代数：正定性和完备性来自 Lemma~\ref{fnd:completequotient}；在乘积中逼近代表元可得次乘性。又有 $\|1_F\|\leq1$ 和 $0&lt;\|1_F\|\leq\|1_F\|^2$，故 $\|1_F\|=1$。标量齐次性直接来自商范数的定义。}
+
+\bi{Every finite $A$-module $V$ annihilated by $\mathfrak m$ is a finite-dimensional $F$-vector space. An $F$-basis gives an $A$-linear isomorphism $F^d\to V$. Applying Theorem~\ref{fnd:strictfinitemodules} to this isomorphism and its inverse proves uniform equivalence of the canonical norm on $V$ and the maximum coordinate norm. Lemma~\ref{fnd:residuefieldlaurentinjective} therefore proves injectivity on $E_r(V)$ for the action of $f\bmod\mathfrak m$.}
+{每个被 $\mathfrak m$ 零化的有限 $A$-模 $V$ 都是有限维 $F$-向量空间。选择一个 $F$-基，得到 $A$-线性同构 $F^d\to V$。对该同构及其逆应用 Theorem~\ref{fnd:strictfinitemodules}，即知 $V$ 的 canonical norm 与最大坐标范数 uniformly equivalent。因此 Lemma~\ref{fnd:residuefieldlaurentinjective} 给出 $f\bmod\mathfrak m$ 在 $E_r(V)$ 上作用时的单射性。}
+
+\bi{\emph{Powers of a maximal ideal.} We prove injectivity on $E_r(M/\mathfrak m^kM)$ by induction on $k\geq1$. The case $k=1$ is the preceding case. For $k&gt;1$, use}
+{\emph{极大理想的幂。} 对 $k\geq1$ 归纳证明 $E_r(M/\mathfrak m^kM)$ 上的单射性。$k=1$ 正是前述情形。对 $k&gt;1$，使用}
+\[
+ 0\longrightarrow
+ \mathfrak m^{k-1}M/\mathfrak m^kM
+ \longrightarrow M/\mathfrak m^kM
+ \longrightarrow M/\mathfrak m^{k-1}M
+ \longrightarrow0 .
+\]
+\bi{All three modules are finite; their maps are bounded and norm-strict by Theorem~\ref{fnd:strictfinitemodules}. Proposition~\ref{fnd:weightedc0exact}, with weights $r^n$, makes the corresponding coefficient sequence exact. The left term is annihilated by $\mathfrak m$, so the residue-field argument applies to it. If a coefficient family in the middle is killed by $L_f$, its image on the right is zero by induction. It comes from the left, and injectivity of the coefficient inclusion shows that this preimage is also killed by $L_f$. Injectivity on the left makes the preimage zero. This proves the induction.}
+{三个模均有限；由 Theorem~\ref{fnd:strictfinitemodules}，各映射有界且 norm-strict。对权重 $r^n$ 应用 Proposition~\ref{fnd:weightedc0exact}，得到相应系数序列的正合性。左端模被 $\mathfrak m$ 零化，故可用剩余域上的论证。若中间项的系数族被 $L_f$ 零化，则由归纳假设，它在右端的像为零。因此它来自左端；系数包含映射为单射，故其原像也被 $L_f$ 零化。左端的单射性使此原像为零，从而完成归纳。}
+
+\bi{\emph{Separation of coefficients.} Let $v\in E_r(M)$ satisfy $L_fv=0$. Its image in every $E_r(M/\mathfrak m^kM)$ is zero by the induction. Each coefficient $v_n$ thus belongs to $\mathfrak m^kM$ for every maximal $\mathfrak m$ and every $k\geq1$. Corollary~\ref{fnd:maximaladicseparation} gives $v_n=0$. Hence $v=0$. At no point did we use finite-dimensionality of $F$ over $K$, a multiplicative quotient norm, or a point of the analytic spectrum.}
+{\emph{系数的分离。} 设 $v\in E_r(M)$ 满足 $L_fv=0$。由上述归纳，它在每个 $E_r(M/\mathfrak m^kM)$ 中的像均为零。因此每个系数 $v_n$ 都属于所有极大理想 $\mathfrak m$ 和所有 $k\geq1$ 对应的 $\mathfrak m^kM$。Corollary~\ref{fnd:maximaladicseparation} 给出 $v_n=0$，从而 $v=0$。整个论证没有使用 $F$ 在 $K$ 上的有限维性、商范数的乘法性或解析谱上的点。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="51d3a22cec324277d44668584f77c0a4e0f28ac052c42b1a918d32278cddf37d">
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+{Complete extension $L/K$ 始终配备限制为指定 $K$ 上 absolute value 的 absolute value。改变 ground field 时不重新缩放它。}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="ac27614767aac623abc5ff3cf64d6f77a1f7c7b679c518b1d8e5927a94fa7592">
+\bi{Keep the fixed complete non-Archimedean field $K$, with trivial valuation permitted. For a Banach $K$-space $V$ and $r&gt;0$, put}
+{保持固定的完备非阿基米德域 $K$，允许赋值平凡。对 Banach $K$-space $V$ 和 $r&gt;0$，记}
+\[
+ E_r(V)=
+ \left\{(v_n)_{n\in\mathbb Z}:
+       \|v_n\|r^n\longrightarrow0\ \text{as }|n|\longrightarrow\infty\right\},
+ \qquad
+ \|v\|_r=\sup_{n\in\mathbb Z}\|v_n\|r^n .
+\]
+\bi{We also write its elements as Laurent series $\sum_n v_nT^n$. Lemma~\ref{fnd:weightedcoefficientcompleteness} gives completeness. For a bounded operator $f$ on $V$, the operator $L_f=1-fT^{-1}$ is defined by}
+{也将其元素写为 Laurent series $\sum_n v_nT^n$。Lemma~\ref{fnd:weightedcoefficientcompleteness} 给出完备性。对 $V$ 上的有界算子 $f$，定义算子 $L_f=1-fT^{-1}$ 为}
+\[
+ (L_fv)_n=v_n-fv_{n+1}.
+\]
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="97d4644755c58b2dfec226d62d5141697739fe19268eab03328b2e6c71d7fec3">
+\bi{Throughout, $K$ is complete for its fixed real-valued non-Archimedean absolute value, which may be trivial. A Banach $K$-space has a definite, complete, non-Archimedean, $K$-homogeneous norm. Banach algebras are commutative and unital, with a submultiplicative norm and $\|1\|=1$; Banach module actions satisfy $\|am\|\leq\|a\|\|m\|$. All finite powers have the maximum norm; the maximum over an empty family is zero. Norm-strictness has the quantitative meaning of Definition~\ref{fnd:normstrictconvention}.}
+{本节中，$K$ 关于固定的 real-valued non-Archimedean absolute value 完备，允许该 absolute value 平凡。Banach $K$-space 的 norm 为 definite、complete、non-Archimedean 且 $K$-homogeneous。Banach algebras 均 commutative、unital，其 norm submultiplicative 且 $\|1\|=1$；Banach module actions 满足 $\|am\|\leq\|a\|\|m\|$。所有 finite powers 使用 maximum norm，并约定空 family 的 maximum 为零。Norm-strictness 采用 Definition~\ref{fnd:normstrictconvention} 的定量含义。}
+
+\bi{For a countable set $I$ and positive weights $w=(w_i)_{i\in I}$, write $\mathcal C_w(I,E)=c_0(I,E;w)$ as in Lemma~\ref{fnd:weightedcoefficientcompleteness}; thus}
+{对可数集合 $I$ 和正权重 $w=(w_i)_{i\in I}$，按照 Lemma~\ref{fnd:weightedcoefficientcompleteness} 的定义，记 $\mathcal C_w(I,E)=c_0(I,E;w)$，即}
+\[
+ \begin{gathered}
+ \mathcal C_w(I,E)=
+ \left\{(e_i)_{i\in I}:
+   \text{for every }\varepsilon&gt;0,
+   \#\{i:w_i\|e_i\|\geq\varepsilon\}&lt;\infty\right\},\\
+ \|(e_i)\|_w=\sup_{i\in I}w_i\|e_i\|.
+ \end{gathered}
+\]
+\bi{We put $\sup\varnothing=0$. The cited lemma, with coefficient algebra $K$ if necessary, proves completeness and density of finite-support families. A bounded linear map $u:E\to F$ with bound $U$ induces a coefficient map with the same bound, since $w_i\|u(e_i)\|\leq U w_i\|e_i\|$. There is also a canonical isometry}
+{约定 $\sup\varnothing=0$。上述引理给出完备性以及有限支撑族的稠密性；对 Banach $K$-space，只需取系数代数为 $K$。若有界线性映射 $u:E\to F$ 的界为 $U$，则逐系数映射保持同一个界，因为 $w_i\|u(e_i)\|\leq U w_i\|e_i\|$。此外，对有限 $m$，有 canonical isometry}
+\[
+ \mathcal C_w(I,E^m)\simeq\mathcal C_w(I,E)^m
+ \qquad(m&lt;\infty).
+\]
+\bi{It merely rearranges coefficients: a supremum commutes with a finite maximum, and a finite union of finite sets is finite, so both the norms and the finite-tail conditions agree.}
+{该映射只重新排列系数：supremum 与有限 maximum 可交换，且有限个有限集的并仍有限，所以两种范数相等，有限尾条件也等价。}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="0e4cf62aac370440c7a27a455da5584d4e8b202673b067384561c68accc069af">
+\begin{remark}\label{fnd:strictclusterboundary}
+\bi{For arbitrary polyradii, the coefficient description of a free-radius extension replaces the strict coordinate changes used here. Theorems~\ref{fnd:generalizedclosedsubmodules} and~\ref{fnd:generalizedfinitemodules} descend closedness and the canonical finite-module topology through that extension, giving the general affinoid statements.}
+{对任意多半径，自由半径扩张的系数描述替代这里使用的 strict 坐标变换。Theorems~\ref{fnd:generalizedclosedsubmodules} 与~\ref{fnd:generalizedfinitemodules} 沿该扩张下降闭性及有限模的典范拓扑，得到一般 affinoid 陈述。}
+\end{remark}
+\source{\bi{Classical Tate algebra and finite-module theory; compare \cite[3.1.2.1 and 3.1.3.2(i)]{TemIntro}. The proofs in this section reconstruct the strict case from the preceding division estimates; those source facts are attribution, not proof inputs.}{Classical Tate algebra 与 finite-module theory；参见 \cite[3.1.2.1 及 3.1.3.2(i)]{TemIntro}。本节由前面的 division estimates 重建 strict case 的证明；这些来源仅用于 attribution，不作为 proof inputs。}}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001429-reader.jpg" alt="Typeset mathematical passage from PDF page 163" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=163">PDF page 163 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole</li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(required native coefficient context)</small></li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole</li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001426/">NAG-001426</a> · selected whole <small>(actual native theorem application)</small></li><li><a href="/r/NAG-001428/">NAG-001428</a> · selected whole <small>(actual native theorem application)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001426/">NAG-001426</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001428/">NAG-001428</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001380/">NAG-001380</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001419/">NAG-001419</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001426/">NAG-001426</a> · selected whole</li><li><a href="/r/NAG-001426/">NAG-001426</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001428/">NAG-001428</a> · selected whole</li><li><a href="/r/NAG-001428/">NAG-001428</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001380/">fnd:completequotient</a></li><li><a href="/r/NAG-001560/">fnd:generalizedclosedsubmodules</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001426/">fnd:maximaladicseparation</a></li><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li><li><a href="/r/NAG-001428/">fnd:residuefieldlaurentinjective</a></li><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001419/">fnd:weightedc0exact</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

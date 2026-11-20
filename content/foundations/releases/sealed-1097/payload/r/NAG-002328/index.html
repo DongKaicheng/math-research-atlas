@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002328/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Confluence and finite forests · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002328 · Accepted whole</p><h1>Confluence and finite forests</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.49.3">Open in the English reader · PDF page 789</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="0c1c281689cec9caaa687242c8c4db1a00b88fe610e40d8952b27701817388b3">
+\begin{lemma}[Confluence and finite forests]
+\label{v037:f5:pruningconfluence}
+Every sequence of elementary pruning terminates. Any sequence
+continued until no deletable vertex remains has the same labelled
+terminal graph, up to an incidence isomorphism fixing its retained
+vertices and its labelled legs.
+
+Suppose $A$ is a subset of the unprotected vertices such that each
+connected component $T$ of the induced subgraph on $A$ is a tree,
+all its vertices belong to $R$, and
+\[
+                         b(T)+m(T)\leq2,
+\]
+where $b(T)$ counts edges from $T$ to its complement and $m(T)$
+counts its marked legs. Contracting each such tree, transferring
+its possible mark in the one-ended case and joining its two ends
+in the two-ended case, is a sequence of elementary prunings.
+In particular it does not change the terminal graph.
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="bae851a4b2f2dcaa024f934b45f78860f7f335f32c458ed18f579cee4b227459">
+\begin{proof}
+Every pruning removes one vertex and retains the nonempty set
+$S$, so a sequence is finite. We verify a local commutation
+property. If two distinct deletable vertices are not adjacent,
+their operations commute. Their incident edges are disjoint;
+even when they have a common neighbour, the transferred labelled
+legs and the replacement edges give the same result in either
+order. Each vertex remains deletable after the other operation.
+
+Suppose instead that the two vertices are adjacent. They have
+only one edge between them. Two parallel edges would exhaust
+both degrees, making them the whole connected graph, contrary
+to the existence of a protected vertex. For the same reason they
+cannot both have degree one. If one is a leaf and the other has
+degree two, deleting the leaf leaves a leaf with at most one
+marked leg at the second vertex. Deleting the second vertex first
+joins the original leaf directly to the remaining neighbour.
+Both orders remove the pair and transfer the same possible leg
+to that neighbour. If both vertices have degree two, neither has
+a mark, and both orders suppress the same two-vertex path.
+Their other neighbours may coincide: both orders then give the
+same loop at that common neighbour. In all cases both second
+deletions remain permissible and the results agree.
+
+Induct on the number of vertices to prove confluence. For two
+terminal sequences with the same first deletion, apply induction
+to the smaller graph. For different first deletions, the preceding
+commutation property gives a common graph after two deletions.
+Induction applied to each of the two one-deletion graphs identifies
+its terminal graph with the terminal graph of this common graph.
+Thus the two original terminal graphs agree. This also proves
+that their retained labels and transferred marked-leg labels agree.
+
+For the forest assertion, each $T$ has $b(T)\geq1$, because the
+whole graph is connected and its complement contains $S$.
+A one-vertex tree is immediately deletable. If $T$ has more than
+one vertex, it has at least two leaves: take the two ends of a
+longest simple path. Since its total number of external ends and
+marks is at most two, some leaf carries at most one of these
+external ends or marks. Its one internal edge therefore gives
+$\deg_G(v)+m(v)\leq2$.
+Delete it. If it carries an external edge, that edge is joined
+to its internal neighbour; if it carries a mark, that mark is
+transferred to that neighbour. The remaining tree has the same
+external ends and marked legs, and its vertices still belong to
+$R$. Continue until the tree disappears. Its final operation is
+exactly the prescribed one-ended or two-ended contraction,
+including a loop when the two external ends have the same
+neighbour. Different connected components of $A$ have no edge
+between them, so this procedure applies to all of them.
+Confluence proves the last assertion.
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002328-reader.jpg" alt="Typeset mathematical passage from PDF page 789" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=789">PDF page 789 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-SETS · standing context or base <small>(declared elementary base)</small></li><li>CONTEXT:002327-pruning-definition · standing context or base <small>(literal context)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>CONTEXT:002327-pruning-definition · standing context or base</li><li>CONTEXT:002327-pruning-definition · standing context or base <small>(requires)</small></li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

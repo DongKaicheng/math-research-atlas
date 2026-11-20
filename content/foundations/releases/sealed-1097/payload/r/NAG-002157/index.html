@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002157/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The bounded displacement expansion · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002157 · Accepted whole</p><h1>The bounded displacement expansion</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.5.18.2">Open in the English reader · PDF page 878</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4bafe6bd51447d8a24922db23dd06293d1255c88beba4f64dbc6742bf391ae4c">
+\begin{proposition}[\bi{The bounded displacement expansion}
+{有界位移展开}]
+\label{cand:etaledisplacementexpansion}
+\bi{Put $U=(S_1,\ldots,S_r,Z_1,\ldots,Z_q)$.
+There are bounded $K$-linear maps $D_\nu:B\to B$,
+$\nu\in\mathbb N^{r+q}$, with $D_0=\mathrm{id}$ and
+$\|D_\nu b\|\leq\|b\|$, such that for every
+$0&lt;\delta&lt;1$ the series}
+{置 $U=(S_1,\ldots,S_r,Z_1,\ldots,Z_q)$。
+存在有界 $K$-线性映射 $D_\nu:B\to B$，
+$\nu\in\mathbb N^{r+q}$，满足 $D_0=\mathrm{id}$ 及
+$\|D_\nu b\|\leq\|b\|$，使得对每个
+$0&lt;\delta&lt;1$，级数}
+\[
+ \sigma_\delta(b)=\sum_\nu D_\nu(b)U^\nu
+             \in B\{\delta^{-1}U\}
+\]
+\bi{defines a contractive homomorphism, extending the base
+displacement}
+{定义压缩同态，并延拓基底上的位移}
+\[
+ X_i\mapsto X_i(1+S_i)\ (i\geq1),\quad
+ X_0\mapsto X_0\prod_i(1+S_i)^{-1},\quad
+ T_j\mapsto T_j+Z_j.
+\]
+\bi{It is characterized by this base formula and
+$\|\sigma_\delta(Y)-Y\|&lt;1$. In fact}
+{它由该基底公式及 $\|\sigma_\delta(Y)-Y\|&lt;1$ 唯一
+刻画。事实上有}
+\[
+ \|\sigma_\delta(b)-b\|\leq\delta\|b\|,
+ \qquad
+ D_\nu(bc)=\sum_{\alpha+\beta=\nu}D_\alpha(b)D_\beta(c).
+\]
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="7a6960802f144ac8950059f93e89196cbf231e508ebed3f4fb4e0cb412929800">
+\begin{proof}
+\bi{Work in $C_\delta=B\{\delta^{-1}U\}$. The base
+formulas define a contractive homomorphism by geometric
+inversion and bounded substitution. On each integral
+coordinate the difference from its original image has norm
+at most $\delta$. Telescoping monomials, passing to restricted
+series, and taking quotient infima therefore give
+$\|\sigma_\delta(a)-a\|\leq\delta\|a\|$ for $a\in A$.}
+{在 $C_\delta=B\{\delta^{-1}U\}$ 中工作。由几何求逆
+及有界代换，基底公式定义压缩同态。每个整坐标与其
+原像之差的范数至多为 $\delta$。逐单项式作望远镜
+分解，再传到受限级数并取商下确界，得到对 $a\in A$
+有 $\|\sigma_\delta(a)-a\|\leq\delta\|a\|$。}
+
+\bi{Apply the base displacement to the coefficients of $F$.
+At the center $Y\in B^m$ the new error has norm at most
+$\delta$, since $F(Y)=0$. Its Jacobian differs from $J(Y)$
+by a matrix of norm at most $\delta$. As
+$J(Y)^{-1}=Q\operatorname{adj}(J(Y))$ has norm at most one,
+the new Jacobian also has inverse norm at most one.
+Lemma~\ref{cand:banachcenterhensel} gives the unique root
+$Y+h_\delta$, with $\|h_\delta\|\leq\delta$.
+The determinant at that root has an inverse $Q_\delta$ of
+norm at most one and $\|Q_\delta-Q\|\leq\delta$, again by
+the geometric inverse formula. These images kill all
+relations in \eqref{eq:candetalejacobianpresentation} and
+give a contractive homomorphism $B\to C_\delta$.
+The same telescoping and quotient-infimum argument gives
+its displayed difference bound on every $b\in B$.}
+{对 $F$ 的系数施加基底位移。由于 $F(Y)=0$，新方程组
+在中心 $Y\in B^m$ 的误差范数至多为 $\delta$；其
+Jacobian 与 $J(Y)$ 的差范数也至多为 $\delta$。
+由于 $J(Y)^{-1}=Q\operatorname{adj}(J(Y))$ 的范数至多
+为一，新 Jacobian 的逆范数也至多为一。由
+Lemma~\ref{cand:banachcenterhensel}，得到唯一的根
+$Y+h_\delta$，满足 $\|h_\delta\|\leq\delta$。
+该根处行列式有范数至多为一的逆 $Q_\delta$，且几何
+求逆公式还给出 $\|Q_\delta-Q\|\leq\delta$。
+这些像消去 \eqref{eq:candetalejacobianpresentation} 的
+全部关系，定义压缩同态 $B\to C_\delta$。同样的
+望远镜分解及商下确界论证，对每个 $b\in B$ 给出
+所列差值界。}
+
+\bi{If $\delta&#x27;\leq\delta&lt;1$, restriction from radius
+$\delta$ to radius $\delta&#x27;$ carries this root to a root
+at distance less than one from $Y$. Uniqueness identifies it
+with the root constructed at radius $\delta&#x27;$. Thus all
+coefficient expansions agree. Evaluation at $U=0$ is the
+identity, by the same uniqueness. Write their coefficients
+as $D_\nu(b)$. Contractivity at every radius gives}
+{若 $\delta&#x27;\leq\delta&lt;1$，从半径 $\delta$ 限制到
+半径 $\delta&#x27;$ 将上述根送到一个与 $Y$ 距离小于一
+的根；唯一性将其与半径 $\delta&#x27;$ 的构造识别。
+因此各系数展开一致。同样由唯一性，在 $U=0$ 处取值
+为恒等映射。以 $D_\nu(b)$ 记其系数。每个半径下的
+压缩性给出}
+\[
+ \|D_\nu(b)\|\delta^{|\nu|}\leq\|b\|.
+\]
+\bi{Letting $\delta$ increase to one proves
+$\|D_\nu(b)\|\leq\|b\|$. The homomorphism identity at any
+positive radius, together with uniqueness of coefficients,
+gives the convolution identity and $K$-linearity.}
+{令 $\delta$ 增至一，得到
+$\|D_\nu(b)\|\leq\|b\|$。任一正半径下的同态
+恒等式及系数的唯一性，给出卷积恒等式和 $K$-线性。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="7d82cfae96b627fabe008e92f8b274a70cc02312729a45ded39d3c9dfb79233b">
+\bi{Retain the standard algebra $A$ and its integral coordinates
+from Lemma~\ref{cand:mixedgaussdisplacement}. Let
+$F=(F_1,\ldots,F_m)$ be represented by restricted series in
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ with coefficients in
+$K^\circ$. Write $J=\partial F/\partial Y$ and consider the
+nonzero affinoid algebra}
+{保留 Lemma~\ref{cand:mixedgaussdisplacement} 中的标准代数
+$A$ 及其整坐标。设 $F=(F_1,\ldots,F_m)$ 由变量
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ 的受限级数表示，
+系数属于 $K^\circ$。写 $J=\partial F/\partial Y$，并考虑
+非零 affinoid 代数}
+\[
+ B=A\langle Y_1,\ldots,Y_m,Q\rangle/
+                  (F_1,\ldots,F_m,Q\det J-1).
+ \tag{J}\label{eq:candetalejacobianpresentation}
+\]
+\bi{We use its displayed quotient norm. In particular the
+coordinate images and $J^{-1}=Q\operatorname{adj}(J)$ have
+norm at most one. All the statements below keep this
+presentation over the original valued field.}
+{使用所列表示的商范数。特别地，坐标像及
+$J^{-1}=Q\operatorname{adj}(J)$ 的范数至多为一。下述
+全部陈述保留原赋值域上的这个表示。}
+
+</pre></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole</li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole</li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole</li><li><a href="/r/NAG-002139/">NAG-002139</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole</li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002156/">cand:banachcenterhensel</a></li><li><a href="/r/NAG-002139/">cand:mixedgaussdisplacement</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

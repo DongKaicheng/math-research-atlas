@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001457/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Pointwise boundedness and power boundedness · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001457 · Accepted whole</p><h1>Pointwise boundedness and power boundedness</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.13.4">Open in the English reader · PDF page 81</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="e1fa67ac94f4e4c26fd2e3cf01c8dc9aac70b3697d5a3053a5bee9817cefbca3">
+\begin{theorem}[\bi{Pointwise boundedness and power boundedness}{逐点有界与幂有界}]\label{fnd:strictpointwisepowerbounded}
+\bi{Let $A$ be a strict norm-admissible $K$-affinoid algebra, with the zero algebra allowed. Fix a bounded admissible strict presentation $q:R_n\twoheadrightarrow A$, and write $\|\cdot\|_q$ for its quotient norm. For $f\in A$, the following conditions are equivalent:}
+{设 $A$ 为 strict norm-admissible $K$-affinoid 代数，允许零代数。固定一个有界 admissible strict 表示 $q:R_n\twoheadrightarrow A$，并以 $\|\cdot\|_q$ 表示其商范数。对 $f\in A$，以下条件等价：}
+\begin{enumerate}
+\item \bi{$|f(x)|\leq1$ for every $x\in\mathcal M(A)$.}{每个 $x\in\mathcal M(A)$ 都满足 $|f(x)|\leq1$。}
+\item \bi{$|f\bmod\mathfrak m|\leq1$ for every maximal ideal $\mathfrak m$ of $A$, with its extending residue absolute value.}{对 $A$ 的每个极大理想 $\mathfrak m$，使用其剩余域延拓绝对值都有 $|f\bmod\mathfrak m|\leq1$。}
+\item \bi{There are an integer $r\geq1$ and elements $b_1,\ldots,b_r\in A$ satisfying}{存在整数 $r\geq1$ 以及元素 $b_1,\ldots,b_r\in A$，使}
+\[
+ f^r+b_1f^{r-1}+\cdots+b_r=0,
+ \qquad \|b_i\|_q\leq1\quad(1\leq i\leq r).
+\]
+\item \bi{There is a real $C\geq1$ such that $\|f^m\|_q\leq C$ for every integer $m\geq0$.}{存在实数 $C\geq1$，使每个整数 $m\geq0$ 都满足 $\|f^m\|_q\leq C$。}
+\end{enumerate}
+\bi{Condition (4) is unchanged if the norm is replaced by any uniformly equivalent norm. In particular, it holds for the given admissible norm on $A$. The statement requires neither reducedness nor nontrivial valuation.}
+{用任意一致等价的范数替换原范数后，条件 (4) 不变。特别地，它对 $A$ 上给定的 admissible 范数也成立。该结论不要求约化性，也不要求赋值非平凡。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f6a6abb2fa0aaaaa2fed62fd9d5c5347572648cd0ff540ffd41432d2dd4f9d7e">
+\begin{proof}
+\bi{If $A=0$, conditions (1) and (2) are vacuous, the polynomial $T$ gives (3), and every power has norm zero. Assume $A\ne0$. Theorem~\ref{fnd:strictpointunitcriterion} identifies each maximal residue absolute value with a bounded point, proving (1)$\Rightarrow$(2).}
+{若 $A=0$，条件 (1)、(2) 均为空真，多项式 $T$ 给出 (3)，且每个幂的范数都为零。以下设 $A\ne0$。由 Theorem~\ref{fnd:strictpointunitcriterion}，每个极大剩余域绝对值都给出一个有界谱点，从而得到 (1)$\Rightarrow$(2)。}
+
+\bi{\textbf{Step 1: an equation on each irreducible quotient.} By Theorem~\ref{fnd:strictfinitemodules}, $A$ is Noetherian and every prime ideal is closed. It has finitely many minimal primes $\mathfrak p_1,\ldots,\mathfrak p_t$ by \cite[Tag 00FR, Lemma 10.31.6]{StacksAlg}. Put $B_j=A/\mathfrak p_j$ and write $f_j$ for the image of $f$. Every maximal residue field of $B_j$ is a maximal residue field of $A$, so condition (2) holds for $f_j$.}
+{\textbf{步骤 1：在各不可约商上构造方程。} 由 Theorem~\ref{fnd:strictfinitemodules}，$A$ 为 Noetherian，且每个素理想都闭。由 \cite[Tag 00FR, Lemma 10.31.6]{StacksAlg}，它只有有限多个极小素理想 $\mathfrak p_1,\ldots,\mathfrak p_t$。令 $B_j=A/\mathfrak p_j$，以 $f_j$ 表示 $f$ 的像。$B_j$ 的每个极大剩余域也是 $A$ 的极大剩余域，所以条件 (2) 对 $f_j$ 成立。}
+
+\bi{Apply the presentation-compatible form of Theorem~\ref{fnd:strictfinitenormalization} to $R_n\twoheadrightarrow B_j$. It supplies a contractive homomorphism $\iota_j:R_{d_j}\to R_n$ whose composite into $B_j$ is a finite injection. Lemma~\ref{fnd:strictminimalpolynomialbounds} gives a monic equation for $f_j$ with coefficients $a_{j,i}\in R_{d_j}$ of Gauss norm at most one. Map these coefficients into $A$ by $q\iota_j$. The resulting monic polynomial $P_j\in A[T]$ has all coefficients of quotient norm at most one and satisfies $P_j(f)\in\mathfrak p_j$. This is why the lift to the specified presentation is needed: it controls the coefficients in $A$, not merely their images in $B_j$.}
+{对 $R_n\twoheadrightarrow B_j$ 应用 Theorem~\ref{fnd:strictfinitenormalization} 的与表示相容形式，得到压缩同态 $\iota_j:R_{d_j}\to R_n$，其与到 $B_j$ 的映射复合后为有限单射。由 Lemma~\ref{fnd:strictminimalpolynomialbounds}，$f_j$ 有一个首一方程，其系数 $a_{j,i}\in R_{d_j}$ 的 Gauss 范数不超过一。通过 $q\iota_j$ 将这些系数映入 $A$，得到首一多项式 $P_j\in A[T]$，其全部系数的商范数不超过一，且 $P_j(f)\in\mathfrak p_j$。这里需要提升到指定表示，正是为了控制 $A$ 中的系数，而不只是它们在 $B_j$ 中的像。}
+
+\bi{\textbf{Step 2: remove the nilpotent error.} Let $P=\prod_{j=1}^tP_j$. This is monic, and every coefficient has norm at most one by submultiplicativity and the ultrametric inequality. Moreover $P(f)$ belongs to every minimal prime. By \cite[Tag 00E0(4),(7), Lemma 10.17.2]{StacksAlg}, the intersection of the minimal primes is the nilradical: every prime contains a minimal prime, and the intersection of all primes is the radical of zero. Thus $P(f)^e=0$ for some integer $e\geq1$. The monic polynomial $P(T)^e$ still has all coefficients of norm at most one and annihilates $f$. This proves (2)$\Rightarrow$(3), including nonreduced $A$.}
+{\textbf{步骤 2：消去幂零误差。} 令 $P=\prod_{j=1}^tP_j$。由次乘性与超度量不等式，$P$ 为首一多项式，且各系数范数不超过一。此外，$P(f)$ 属于每个极小素理想。由 \cite[Tag 00E0(4),(7), Lemma 10.17.2]{StacksAlg}，极小素理想的交是幂零根：每个素理想包含一个极小素理想，而所有素理想的交为零理想的根。因此，存在整数 $e\geq1$ 使 $P(f)^e=0$。首一多项式 $P(T)^e$ 的全部系数范数仍不超过一，且它零化 $f$。这就证明了 (2)$\Rightarrow$(3)，并包括非约化的 $A$。}
+
+\bi{\textbf{Step 3: control all powers.} Suppose (3) holds and set}
+{\textbf{步骤 3：控制全部幂。} 假设 (3) 成立，并令}
+\[
+ C=\max(1,\|f\|_q,\ldots,\|f^{r-1}\|_q).
+\]
+\bi{Multiplication of the monic equation by $f^{m-r}$ gives, for $m\geq r$,}
+{对 $m\geq r$，将首一方程乘以 $f^{m-r}$，得到}
+\[
+ f^m=-\sum_{i=1}^r b_i f^{m-i},
+ \qquad
+ \|f^m\|_q\leq\max_{1\leq i\leq r}\|f^{m-i}\|_q.
+\]
+\bi{Induction proves (4). Finally, a bounded multiplicative seminorm is contractive for $\|\cdot\|_q$ by Lemma~\ref{new:seminormcontractive}; hence (4) gives $|f(x)|^m=|f^m(x)|\leq C$ for every $m\geq1$. Taking $m$th roots proves (1). Uniformly equivalent norms have the same bounded subsets, proving the last assertion.}
+{归纳即得 (4)。最后，由 Lemma~\ref{new:seminormcontractive}，有界乘性半范数相对于 $\|\cdot\|_q$ 为压缩的；因此 (4) 给出每个 $m\geq1$ 都满足 $|f(x)|^m=|f^m(x)|\leq C$。取 $m$ 次方根即得 (1)。一致等价的范数具有相同的有界子集，从而得到最后的断言。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001457-reader.jpg" alt="Typeset mathematical passage from PDF page 81" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=81">PDF page 81 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001456/">NAG-001456</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-00E0 · named external application <small>(exact existing named Stacks use)</small></li><li>STACKS-00FR · named external application <small>(exact existing named Stacks use)</small></li><li>APP-STACKS-00E0@NAG-001457:R2-site-6 · named external application</li><li>APP-STACKS-00E0@NAG-001457:R2-site-6 · named external application <small>(requires)</small></li><li>APP-STACKS-00FR@NAG-001457:R2-site-3 · named external application</li><li>APP-STACKS-00FR@NAG-001457:R2-site-3 · named external application <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole</li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001456/">NAG-001456</a> · selected whole</li><li><a href="/r/NAG-001456/">NAG-001456</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li>APP-STACKS-00E0@NAG-001457:R2-site-6</li><li>APP-STACKS-00FR@NAG-001457:R2-site-3</li></ul></details><h2>Selected scopes</h2><article id="1_implies_4"><h3>1 implies 4</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.13.4">Scope in the English reader · PDF page 81</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1c8d6ed9539341891a89d7bf54aafff39015b1d7648f1b37dfd95ec47c46896c">
+\begin{theorem}[\bi{Pointwise boundedness and power boundedness}{逐点有界与幂有界}]\label{fnd:strictpointwisepowerbounded}
+\bi{Let $A$ be a strict norm-admissible $K$-affinoid algebra, with the zero algebra allowed. Fix a bounded admissible strict presentation $q:R_n\twoheadrightarrow A$, and write $\|\cdot\|_q$ for its quotient norm. For $f\in A$, the following conditions are equivalent:}
+{设 $A$ 为 strict norm-admissible $K$-affinoid 代数，允许零代数。固定一个有界 admissible strict 表示 $q:R_n\twoheadrightarrow A$，并以 $\|\cdot\|_q$ 表示其商范数。对 $f\in A$，以下条件等价：}
+\begin{enumerate}
+\item \bi{$|f(x)|\leq1$ for every $x\in\mathcal M(A)$.}{每个 $x\in\mathcal M(A)$ 都满足 $|f(x)|\leq1$。}
+\item \bi{$|f\bmod\mathfrak m|\leq1$ for every maximal ideal $\mathfrak m$ of $A$, with its extending residue absolute value.}{对 $A$ 的每个极大理想 $\mathfrak m$，使用其剩余域延拓绝对值都有 $|f\bmod\mathfrak m|\leq1$。}
+\item \bi{There are an integer $r\geq1$ and elements $b_1,\ldots,b_r\in A$ satisfying}{存在整数 $r\geq1$ 以及元素 $b_1,\ldots,b_r\in A$，使}
+\[
+ f^r+b_1f^{r-1}+\cdots+b_r=0,
+ \qquad \|b_i\|_q\leq1\quad(1\leq i\leq r).
+\]
+\item \bi{There is a real $C\geq1$ such that $\|f^m\|_q\leq C$ for every integer $m\geq0$.}{存在实数 $C\geq1$，使每个整数 $m\geq0$ 都满足 $\|f^m\|_q\leq C$。}
+\end{enumerate}
+\bi{Condition (4) is unchanged if the norm is replaced by any uniformly equivalent norm. In particular, it holds for the given admissible norm on $A$. The statement requires neither reducedness nor nontrivial valuation.}
+{用任意一致等价的范数替换原范数后，条件 (4) 不变。特别地，它对 $A$ 上给定的 admissible 范数也成立。该结论不要求约化性，也不要求赋值非平凡。}
+\end{theorem}
+</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="cde5d0d04d14f199fa3c01ef35f9a453055034312734a0f6eabfa86b2f808a46">
+\begin{proof}
+\bi{If $A=0$, conditions (1) and (2) are vacuous, the polynomial $T$ gives (3), and every power has norm zero. Assume $A\ne0$. Theorem~\ref{fnd:strictpointunitcriterion} identifies each maximal residue absolute value with a bounded point, proving (1)$\Rightarrow$(2).}
+{若 $A=0$，条件 (1)、(2) 均为空真，多项式 $T$ 给出 (3)，且每个幂的范数都为零。以下设 $A\ne0$。由 Theorem~\ref{fnd:strictpointunitcriterion}，每个极大剩余域绝对值都给出一个有界谱点，从而得到 (1)$\Rightarrow$(2)。}
+
+\bi{\textbf{Step 1: an equation on each irreducible quotient.} By Theorem~\ref{fnd:strictfinitemodules}, $A$ is Noetherian and every prime ideal is closed. It has finitely many minimal primes $\mathfrak p_1,\ldots,\mathfrak p_t$ by \cite[Tag 00FR, Lemma 10.31.6]{StacksAlg}. Put $B_j=A/\mathfrak p_j$ and write $f_j$ for the image of $f$. Every maximal residue field of $B_j$ is a maximal residue field of $A$, so condition (2) holds for $f_j$.}
+{\textbf{步骤 1：在各不可约商上构造方程。} 由 Theorem~\ref{fnd:strictfinitemodules}，$A$ 为 Noetherian，且每个素理想都闭。由 \cite[Tag 00FR, Lemma 10.31.6]{StacksAlg}，它只有有限多个极小素理想 $\mathfrak p_1,\ldots,\mathfrak p_t$。令 $B_j=A/\mathfrak p_j$，以 $f_j$ 表示 $f$ 的像。$B_j$ 的每个极大剩余域也是 $A$ 的极大剩余域，所以条件 (2) 对 $f_j$ 成立。}
+
+\bi{Apply the presentation-compatible form of Theorem~\ref{fnd:strictfinitenormalization} to $R_n\twoheadrightarrow B_j$. It supplies a contractive homomorphism $\iota_j:R_{d_j}\to R_n$ whose composite into $B_j$ is a finite injection. Lemma~\ref{fnd:strictminimalpolynomialbounds} gives a monic equation for $f_j$ with coefficients $a_{j,i}\in R_{d_j}$ of Gauss norm at most one. Map these coefficients into $A$ by $q\iota_j$. The resulting monic polynomial $P_j\in A[T]$ has all coefficients of quotient norm at most one and satisfies $P_j(f)\in\mathfrak p_j$. This is why the lift to the specified presentation is needed: it controls the coefficients in $A$, not merely their images in $B_j$.}
+{对 $R_n\twoheadrightarrow B_j$ 应用 Theorem~\ref{fnd:strictfinitenormalization} 的与表示相容形式，得到压缩同态 $\iota_j:R_{d_j}\to R_n$，其与到 $B_j$ 的映射复合后为有限单射。由 Lemma~\ref{fnd:strictminimalpolynomialbounds}，$f_j$ 有一个首一方程，其系数 $a_{j,i}\in R_{d_j}$ 的 Gauss 范数不超过一。通过 $q\iota_j$ 将这些系数映入 $A$，得到首一多项式 $P_j\in A[T]$，其全部系数的商范数不超过一，且 $P_j(f)\in\mathfrak p_j$。这里需要提升到指定表示，正是为了控制 $A$ 中的系数，而不只是它们在 $B_j$ 中的像。}
+
+\bi{\textbf{Step 2: remove the nilpotent error.} Let $P=\prod_{j=1}^tP_j$. This is monic, and every coefficient has norm at most one by submultiplicativity and the ultrametric inequality. Moreover $P(f)$ belongs to every minimal prime. By \cite[Tag 00E0(4),(7), Lemma 10.17.2]{StacksAlg}, the intersection of the minimal primes is the nilradical: every prime contains a minimal prime, and the intersection of all primes is the radical of zero. Thus $P(f)^e=0$ for some integer $e\geq1$. The monic polynomial $P(T)^e$ still has all coefficients of norm at most one and annihilates $f$. This proves (2)$\Rightarrow$(3), including nonreduced $A$.}
+{\textbf{步骤 2：消去幂零误差。} 令 $P=\prod_{j=1}^tP_j$。由次乘性与超度量不等式，$P$ 为首一多项式，且各系数范数不超过一。此外，$P(f)$ 属于每个极小素理想。由 \cite[Tag 00E0(4),(7), Lemma 10.17.2]{StacksAlg}，极小素理想的交是幂零根：每个素理想包含一个极小素理想，而所有素理想的交为零理想的根。因此，存在整数 $e\geq1$ 使 $P(f)^e=0$。首一多项式 $P(T)^e$ 的全部系数范数仍不超过一，且它零化 $f$。这就证明了 (2)$\Rightarrow$(3)，并包括非约化的 $A$。}
+
+\bi{\textbf{Step 3: control all powers.} Suppose (3) holds and set}
+{\textbf{步骤 3：控制全部幂。} 假设 (3) 成立，并令}
+\[
+ C=\max(1,\|f\|_q,\ldots,\|f^{r-1}\|_q).
+\]
+\bi{Multiplication of the monic equation by $f^{m-r}$ gives, for $m\geq r$,}
+{对 $m\geq r$，将首一方程乘以 $f^{m-r}$，得到}
+\[
+ f^m=-\sum_{i=1}^r b_i f^{m-i},
+ \qquad
+ \|f^m\|_q\leq\max_{1\leq i\leq r}\|f^{m-i}\|_q.
+\]
+</pre></details><ul class="records"><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole</li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001456/">NAG-001456</a> · selected whole</li><li><a href="/r/NAG-001456/">NAG-001456</a> · selected whole <small>(requires)</small></li><li>STACKS-00FR@NAG-001457 · named external application</li><li>STACKS-00FR@NAG-001457 · named external application <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001403/">fnd:strictfinitemodules</a></li><li><a href="/r/NAG-001451/">fnd:strictfinitenormalization</a></li><li><a href="/r/NAG-001456/">fnd:strictminimalpolynomialbounds</a></li><li><a href="/r/NAG-001452/">fnd:strictpointunitcriterion</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

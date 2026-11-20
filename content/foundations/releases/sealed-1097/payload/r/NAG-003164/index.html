@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003164/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Scalar-test certificates for multiplication, symmetry, and a limit · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003164 · Accepted whole</p><h1>Scalar-test certificates for multiplication, symmetry, and a limit</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003164.original">Open in the English reader · PDF page 1874</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="fb091c041efd2bf2207c0df329887c2457b7c8c9496a129ec5488321fa337c06">
+\begin{proposition}[Scalar-test certificates for multiplication, symmetry, and a limit]\label{f9si:certificate}
+Suppose real scalar pairings $B_j(u,S;\alpha)$ are supplied, trilinear in $u$, $S$, and compact tests $\alpha\in\E^{r-j,r-j}$, and compatible with ordinary restriction. Require smooth normalization
+\begin{equation}\label{eq:smoothnormalization}
+ B_j(h,S;\alpha)=S(h\alpha)\qquad(h\in\A^{0,0}).
+\end{equation}
+Then these pairings define actual native currents $M_j(u,S)$ if and only if, for every fixed $u,S$ and every cutoff stage, a continuous coefficient seminorm bound holds. Equivalently, one may require, for suitable compact $L_i\Subset\Omega_i$, integer $m_i\geq0$, and constant $A_i$,
+\begin{equation}\label{eq:Bbound}
+ |B_j(u,S;Q_i\eta)|\leq A_i p_{L_i,m_i}(\eta).
+\end{equation}
+All these choices may depend on $u,S,i$. The raw current $R_j(u,S)$ is then closed. To iterate, require separately $R_j(u,S)\in\C_{j+1}$.
+
+For such currents, the exact adjacent symmetry identity is equivalent to the following equality on \emph{every} $\alpha\in\E^{r-j-2,r-j-2}$:
+\begin{equation}\label{eq:Bcommutator}
+ B_{j+1}(u,R_j(v,S);\DD\alpha)
+ =B_{j+1}(v,R_j(u,S);\DD\alpha).
+\end{equation}
+Testing only a terminal measure, selected radial functions, or one order of multiplication does not supply this criterion.
+
+A sufficient, stronger certificate for \eqref{eq:Bbound} is a family of finite signed Radon measures $\nu_{S,\alpha}$, linear in $S,\alpha$, supported in $\supp\alpha$, compatible with restriction, and satisfying
+\[
+ S(h\alpha)=\int h\,d\nu_{S,\alpha}\quad(h\text{ ordinary smooth}),
+ \qquad
+ \int |u|\,d|\nu_{S,Q_i\eta}|\leq A_i p_{L_i,m_i}(\eta).
+\]
+In that case $B_j(u,S;\alpha)=\int u\,d\nu_{S,\alpha}$ works.
+
+For a limit through such measures on a fixed compact set $C$, the following is a sufficient tested convergence condition: $u_a\to u$ uniformly on $C$, $\nu_a\to\nu$ weakly against \emph{every} continuous function on $C$, and $\sup_a|\nu_a|(C)&lt;\infty$. Then
+\begin{equation}\label{eq:measurelimit}
+ \int_Cu_a\,d\nu_a\longrightarrow\int_Cu\,d\nu.
+\end{equation}
+To obtain a native current from a family of limits, require in addition linearity, locality and a bound \eqref{eq:Bbound} uniform in $a$ on each fixed stage. To pass symmetry from approximants, verify convergence of \emph{both} ordered pairings in \eqref{eq:Bcommutator} on every indicated test.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="67dcbae69b18f0c32f1d2fb1796acde1c5df004605adb225b88304136df414a5">
+\begin{proof}
+For fixed $u,S$, the scalar functional $\alpha\mapsto B_j(u,S;\alpha)$ is continuous exactly when each composition with $Q_i$ is continuous, by the final topology of \NAG{002473}. A continuous scalar functional on the ambient coefficient space is bounded by a finite maximum of defining seminorms. Taking the union of their compact sets and the maximum of their derivative orders gives \eqref{eq:Bbound}, after absorbing finitely many constants. The converse follows directly from that inequality. Thus it is an exact continuity criterion, not a demand for an unnecessarily stronger variation norm on all intermediate currents.
+
+The differential check in the native conventions makes $\DD M_j(u,S)$ a current. The identities $(d&#x27;)^2=(d&#x27;&#x27;)^2=0$ and $d&#x27;d&#x27;&#x27;=-d&#x27;&#x27;d&#x27;$ show that it is closed; they do not imply membership in a stronger supplied class. The positive double-transpose sign gives
+\[
+ R_{j+1}(u,R_j(v,S))(\alpha)
+ =B_{j+1}(u,R_j(v,S);\DD\alpha).
+\]
+Equality of currents is equality on all tests, proving the stated equivalence. The measure certificate gives finiteness, smooth normalization, trilinearity and locality, while its absolute-integral bound implies \eqref{eq:Bbound}.
+
+For the convergence assertion use the explicit estimate
+\[
+ \left|\int_C u_a\,d\nu_a-\int_Cu\,d\nu\right|
+ \leq \|u_a-u\|_{C}\,|\nu_a|(C)
+       +\left|\int_Cu\,d(\nu_a-\nu)\right|.
+\]
+Its first term tends to zero by the uniform variation bound; its second does so by the stated continuous-test weak convergence. This proof works for a sequence or a net with the given uniform bound. For current-valued limits, the additional fixed-stage bound passes to the pointwise limit and proves continuity by finality; the stated linearity and locality assumptions pass the appropriate identities. If both ordered scalar pairings converge, their equality for every approximant passes to their two limits. Without those two convergence assertions there is no argument identifying the limits with the desired products.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="2e1b8327561a26ec4e307960737c2c64b75e9d1ddc7369b65784e48903b57e67">
+% BEGIN CONTEXT native
+\paragraph{Native tests, support, and signs.}
+Fix a complete field $K$ with its specified real-valued non-Archimedean absolute value, possibly trivial. Spaces are good and Hausdorff. Purity means analytic pure dimension; generalized-affinoid radii, quotient norms, and finite-module norms retain their frozen conventions. Use the ordinary smooth moment sheaf of \NAG{002424} and
+\[
+ \E^{p,q}(W)=\A_c^{p,q}(W),\qquad
+ \tau=\tau_{\rm cut}=\tau_{\rm ord}
+\]
+from \NAG{002473}. A generating cutoff stage is
+\[
+ Q_i\eta=\ext(\chi t_f^*\eta),\qquad
+ i=(V,f,\Omega,\chi),\qquad t_f=-\log|f|,
+\]
+where $V$ is affinoid, the tuple $f$ consists of analytic units, $\Omega\supset t_f(V)$ is open in $\R^N$, and $C_i=\supp\chi$ is compact inside the ordinary interior of $V$ in $W$. The coefficient seminorms are
+\[
+ p_{L,m}(\eta)=\max_{I,J,\,|a|\leq m}\sup_L|\partial^a\eta_{I,J}|,
+ \qquad L\Subset\Omega.
+\]
+The ordinary stages use a fixed finite compatible chart family and a fixed compact support. Scalar continuity is equivalent to continuity after every $Q_i$, or every ordinary stage. No estimate uniform over changing stages is implied.
+
+Write $\D_{r,s}(W)=\E^{r,s}(W)&#x27;$ for the continuous real dual, of bidimension $(r,s)$. On a pure $n$-space its bidegree is $(n-r,n-s)$. All one-form generators anticommute; the positive top generator is $\bigwedge_{k=1}^d(d&#x27;x_k\wedge d&#x27;&#x27;x_k)$. Put
+\begin{equation}\label{eq:transpose}
+ (d&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;\alpha),\qquad
+ (d&#x27;&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;&#x27;\alpha).
+\end{equation}
+Negative test degrees are zero. Successive transpositions and $d&#x27;&#x27;d&#x27;=-d&#x27;d&#x27;&#x27;$ give $(\DD T)(\alpha)=T(\DD\alpha)$. Ordinary differential maps are continuous: on a fixed ordinary stage they differentiate the same ambient coefficients, keep the same support and overlap relations, and increase the required coefficient order by one. This argument uses \NAG{002424} and \NAG{002473}, not the pending Chern-interface packet. Compactly supported ordinary forms on an open subspace extend smoothly by zero; the sheaf property and their closed compact support give this extension, with commuting differentials. On cutoff stages it is the same stage in the ambient space, so it is continuous.
+% END CONTEXT native</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="fcfaf6d7cce83accd4ca6674cd8596bfa8ae35d448e8657339b755eb21b92df5">
+% BEGIN CONTEXT interface
+\paragraph{Restricted class for the next step.}
+Fix a pure-dimensional starting structure current or a supplied cycle, of bidimension $(r,r)$. Let $\PP$ be a specified sheaf of real vector spaces of continuous functions generated by the actual continuous model potentials to be used and by ordinary smooth scalars. For $0\leq j\leq p\leq r$, supply sheaves $\C_j$ of real vector spaces of closed currents of bidimension $(r-j,r-j)$ containing the required reachable currents. The word ``reachable&#x27;&#x27; restricts the multiplier problem to this supplied class; it is not an assertion that arbitrary continuous functions multiply arbitrary currents. Write $M_j(u,S)$ for a proposed multiplier of $S\in\C_j$ by $u\in\PP$, and $R_j(u,S)=\DD M_j(u,S)$. Closedness of the raw differentiated current and membership in a class on which the next multiplication is defined are different statements.
+% END CONTEXT interface</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003164-reader.jpg" alt="Typeset mathematical passage from PDF page 1875" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1875">PDF page 1875 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-002473/">NAG-002473</a> · selected whole</li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

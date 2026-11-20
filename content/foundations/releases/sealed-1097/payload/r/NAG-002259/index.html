@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002259/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A finite formal model containing prescribed bounded elements · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002259 · Accepted whole</p><h1>A finite formal model containing prescribed bounded elements</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.32.1">Open in the English reader · PDF page 939</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a6e033ca6f5af996f05808b05d85a815c1640084799723c1729c20286c88abe4">
+\begin{theorem}[A finite formal model containing prescribed bounded elements]
+\label{v035:analytic:finitequotientmodel}
+Let $A\to D$ be a bounded map of generalized $K$-affinoid
+algebras. Assume that $D$ is finite over $A$ and its given norm
+is equivalent to its canonical finite-$A$-module norm. Let
+$h_1,\ldots,h_m\in D$ be power-bounded elements.
+There is an admissible topologically finitely presented
+$O$-algebra $D_0\subset D$, finite over $A_0$, such that
+\[
+                 D_0[1/\pi]=D,
+                 \qquad h_1,\ldots,h_m\in D_0.
+\]
+It can be chosen as the actual image of a finite restricted-series
+presentation $A_0\langle Y\rangle\to D$. Its generic-fibre
+Banach structure is the given one on $D$.
+
+Let $\xi$ be the Gauss point of $\mathcal M(A)$ and
+$H=\mathcal H(\xi)$. For this model put
+\[
+ C_0=(D_0/\mathfrak mD_0)
+          \otimes_{k[T^{\pm1}]} k(T_1,\ldots,T_d).
+\]
+Then $C_0$ is a finite-dimensional algebra, and
+\begin{equation}
+\label{v035:eq:analyticgaussdegree}
+ \begin{aligned}
+ \dim_H(D\widehat\otimes_AH)
+   &amp;=\dim_{k(T)}C_0\\
+   &amp;=\sum_{\mathfrak n\in\operatorname{Max}C_0}
+       \operatorname{length}_{(C_0)_{\mathfrak n}}
+                              ((C_0)_{\mathfrak n})
+       [\kappa(\mathfrak n):k(T)].
+ \end{aligned}
+\end{equation}
+For fixed $A\to D$, this total degree is independent of the
+chosen presentation and of the chosen admissible finite
+$A_0$-model with generic algebra $D$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c44016d5cb093b863dcd1c356468ed036da86782988f489a8857509a1a961775">
+\begin{proof}
+For $D=0$ use $D_0=0$. Otherwise choose finite $A$-module
+generators $b_1,\ldots,b_\ell$. Multiplying each by a sufficiently
+small nonzero power of $\pi$, obtain generators $e_1,\ldots,e_\ell$
+with $\|e_j\|\leq1$. Append the prescribed $h_i$ to this list,
+and denote the resulting power-bounded elements by
+$z_1,\ldots,z_N$. By Proposition~\ref{fnd:powerboundedsubstitution},
+evaluation defines a bounded surjection
+\[
+             q:P=A\langle Y_1,\ldots,Y_N\rangle\longrightarrow D,
+             \qquad Y_i\longmapsto z_i.
+\]
+It is norm-admissible. Indeed the first $\ell$ images still
+generate $D$ as an $A$-module, and
+Theorem~\ref{fnd:generalizedfinitemodules} gives uniformly
+controlled coefficients for a linear lift in these generators.
+That linear polynomial is a lift through $q$. Consequently the
+quotient norm from $P$ is equivalent to the given norm on $D$.
+This presentation also proves that $D$ is strict over $K$.
+
+Put $P_0=A_0\langle Y_1,\ldots,Y_N\rangle$, $J=\ker q$, and
+\[
+                         D_0=P_0/(J\cap P_0)\subset D.
+\]
+The map on the right is injective by construction. In particular
+$D_0$ has no $O$-torsion. Since $P_0$ is topologically finite type
+over $O$, Proposition~\ref{fnd:formalmoduletopology}, applied to
+the finite $P_0$-module $P_0/(J\cap P_0)$, proves that its quotient
+$\pi$-adic topology is complete and separated. Theorem~
+\ref{fnd:formaltorsionfreepresentation} makes it topologically
+finitely presented. Also $P_0[1/\pi]=P$, by bounding the
+coefficients of a restricted series, whence $D_0[1/\pi]=D$.
+All the $h_i$ lie in $D_0$.
+
+It remains to prove finiteness over $A_0$. The finite map
+$A\to D$ is a map of strict affinoids. By
+Theorem~\ref{fnd:strictcanonicalfinitecriterion},
+$\widetilde D$ is finite over $\widetilde A$. For each $z_i$
+choose a monic relation for its residue over
+$k[T^{\pm1}]$, and lift its coefficients to a monic
+$p_i(Z)\in A_0[Z]$. Then
+\[
+                        w_i=p_i(z_i)\in D^{\circ\circ}.
+\]
+In the quotient norm from $q$, $\|w_i^n\|\to0$; topological
+nilpotence is unchanged by the equivalent norm just established.
+For each of the finitely many $i$, choose $a_i\geq1$ and an
+actual lift $G_i\in P$ of $w_i^{a_i}$ with $\|G_i\|&lt;1$.
+Such a lift exists by the definition of the quotient infimum
+once $\|w_i^{a_i}\|&lt;1$. Since there are finitely many lifts,
+\[
+                    \theta=\max_i\|G_i\|&lt;1.
+\]
+In particular $G_i\in P_0$ and
+$p_i(Y_i)^{a_i}-G_i\in J\cap P_0$.
+The strict Laurent coefficient norm of a nonzero $G_i$ attains
+its maximum at a coefficient in $K$. Choosing such a coefficient
+$c_i$ gives $G_i=c_iG&#x27;_i$ with $G&#x27;_i\in P_0$ and
+$c_i\in\mathfrak m$. The zero lift has the same conclusion.
+Thus every $G_i$ vanishes modulo $\mathfrak mD_0$.
+
+Reduction of $P_0$ is the polynomial algebra
+$k[T^{\pm1},Y_1,\ldots,Y_N]$, since restricted coefficients
+are eventually smaller than one. The images of the $Y_i$ in
+$D_0/\mathfrak mD_0$ satisfy the monic equations
+$\overline p_i(Y_i)^{a_i}=0$. The bounded powers below their
+degrees span this quotient over $k[T^{\pm1}]$.
+Lemma~\ref{v035:degreegaussrank} now applies to the actual
+admissible quotient $A_0\to D_0$. It proves that $D_0$ is finite
+over $A_0$, compares its generic norm with the canonical finite
+module norm, and gives the first equality in
+\eqref{v035:eq:analyticgaussdegree}.
+
+For the second equality, decompose the finite-dimensional
+Artinian algebra $C_0$ into its local factors by
+\cite[Tag 00JB]{StacksAlg}. A composition
+series of the factor $(C_0)_{\mathfrak n}$ has
+$\operatorname{length}_{(C_0)_{\mathfrak n}}((C_0)_{\mathfrak n})$
+successive quotients equal to $\kappa(\mathfrak n)$.
+Taking vector-space dimensions proves the formula. In particular
+the local lengths are those of the actual quotient algebra.
+Finally any admissible finite $A_0$-model of the same $D$ has
+finite reduction, so Lemma~\ref{v035:degreegaussrank} identifies
+its total degree with the same left side. This proves independence.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="e85122c5687954c5bec42b141bd97bf806bb1f7b8755c77535ed56288673bfc2">
+Now assume that $K$ is nontrivially valued, and put
+$O=K^\circ$, $\mathfrak m=K^{\circ\circ}$, $k=O/\mathfrak m$.
+Choose $\pi\in O$ with $0&lt;|\pi|&lt;1$ and set
+\[
+ A_0=O\langle T_1^{\pm1},\ldots,T_d^{\pm1}\rangle,
+ \qquad A=A_0[1/\pi].
+\]
+The integral algebra $A_0$ is the unit ball for the Laurent Gauss
+norm, and $\widetilde A=k[T_1^{\pm1},\ldots,T_d^{\pm1}]$.
+These identifications follow from the actual Laurent normal form
+\ref{fnd:multilaurentactualpresentation} and the multiplicative
+Gauss norm \ref{fnd:gaussnorm}.
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002259-reader.jpg" alt="Typeset mathematical passage from PDF page 940" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=940">PDF page 940 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001929/">NAG-001929</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole <small>(sealed native whole)</small></li><li>STACKS-00JB · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li>APP-STACKS-00JB@NAG-002259:11589 · named external application</li><li>APP-STACKS-00JB@NAG-002259:11589 · named external application <small>(requires)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole</li><li><a href="/r/NAG-001553/">NAG-001553</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole</li><li><a href="/r/NAG-001573/">NAG-001573</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole</li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole</li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole</li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001929/">NAG-001929</a> · selected whole</li><li><a href="/r/NAG-001929/">NAG-001929</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole</li><li><a href="/r/NAG-002242/">NAG-002242</a> · selected whole <small>(requires)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00JB">APP-STACKS-00JB@NAG-002259:11589</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001916/">fnd:formalmoduletopology</a></li><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001553/">fnd:multilaurentactualpresentation</a></li><li><a href="/r/NAG-001398/">fnd:powerboundedsubstitution</a></li><li><a href="/r/NAG-001929/">fnd:strictcanonicalfinitecriterion</a></li><li><a href="/r/NAG-002242/">v035:degreegaussrank</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

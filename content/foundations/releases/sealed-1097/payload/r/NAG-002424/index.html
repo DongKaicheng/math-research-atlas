@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002424/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The sheaf of ordinary smooth moment forms · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002424 · Accepted whole</p><h1>The sheaf of ordinary smooth moment forms</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.52.3">Open in the English reader · PDF page 1045</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="15477368b7f11fa1bcd3e4caa3f2b470e3649221b4fd8e9ed3d6d7dd5718ca02">
+\begin{theorem}[The sheaf of ordinary smooth moment forms]
+\label{v037:forms:germsheaf}
+The relation in Definition~\ref{v037:forms:ordinarysmoothgerm}
+is an equivalence relation. The spaces
+$\mathcal A_X^{p,q}$ form sheaves on the ordinary topology,
+with well-defined wedge product, $J$, $d&#x27;$ and $d&#x27;&#x27;$.
+These operations satisfy the usual exterior-algebra rules,
+\[
+          (d&#x27;)^2=(d&#x27;&#x27;)^2=0,\qquad d&#x27;d&#x27;&#x27;+d&#x27;&#x27;d&#x27;=0.
+\]
+Every analytic morphism between good Hausdorff spaces over
+the specified field induces a functorial pullback on these
+sheaves, commuting with all these operations.
+
+For any affinoid domain $V\subseteq U$, a section on $U$
+determines finite moment-chart data on $V$, canonically up
+to common refinement and tangential equality. This assignment
+commutes with further affinoid restriction and all the
+displayed operations. If the section has zero germ at every
+point of $V$, the induced finite chart data are zero.
+The same assertions hold on a finite union of affinoid
+domains contained in $U$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="ddc1962c81f0f163b813451271726c486d0aa05f11a7c6ef4e40913454161444">
+\begin{proof}
+We first record the neighbourhood choices used below.
+In an affinoid spectrum its evaluation topology has a
+basis of finitely many strict bounds on absolute values.
+At a point satisfying such bounds, replace each upper
+bound by a slightly smaller positive real bound still
+strict at the point, and each positive lower bound by
+a slightly larger one still strict there. Their weak
+inequalities define an actual affinoid domain by
+Theorem~\ref{fnd:generalizedrationaluniversal} and
+Corollary~\ref{fnd:generalizeddomainintersections}.
+It contains an ordinary neighbourhood of the point
+and is contained in the prescribed open set. Goodness
+and domain transitivity
+\ref{fnd:generalnetdomaincalculus} therefore give a
+basis of ordinary affinoid neighbourhoods in $X$.
+Intersections of two such neighbourhoods are affinoid
+by Lemma~\ref{v037:integration:separatedintersections}
+and remain ordinary neighbourhoods of the common point.
+No choice of a ground-field element with a prescribed
+real absolute value is needed for these inequalities.
+
+Reflexivity and symmetry of the relation are immediate.
+For transitivity, restrict three representatives to a
+common smaller ordinary affinoid neighbourhood and
+adjoin all three tuples. The two given equalities pull
+back to that joint image and imply equality of the
+first and third forms there. Faithfulness under adding
+coordinates, Theorem~\ref{v037:integration:globalchartfaithfulness},
+descends this equality to their two-tuple joint image.
+This proves transitivity. The same argument shows that
+one may shrink a representative or add unit coordinates
+without changing its germ.
+
+Sums and wedge products are computed on a common smaller
+neighbourhood with the joint tuple. The preceding
+faithfulness and transitivity make the result independent
+of the representatives. Apply $J$, $d&#x27;$ and $d&#x27;&#x27;$ to
+the ambient forms. Lemma~\ref{v037:forms:finitecoverfaithfulness}
+shows that these operations preserve all the germ
+relations, so they descend. Their algebraic identities
+can be checked on the coefficients and constant
+one-form generators of a representative. Equality of
+mixed partial derivatives follows from the real calculus
+proved in Lemma~\ref{v037:integration:polyhedralcalculus}:
+the two iterated fundamental-theorem expressions for a
+rectangular second difference are equal; dividing by
+the two side lengths and letting them tend to zero
+identifies the continuous mixed derivatives. With the
+anticommuting one-form generators, the stated differential
+identities and the graded product rules follow.
+
+The sheaf axiom is pointwise. Families agreeing on
+overlaps give one family of germs, and its local
+representatives are the given local representatives.
+This proves both existence and uniqueness of gluing.
+All the operations commute with restriction, as their
+representative constructions do.
+
+Let $h:Y\to X$ be such a morphism and let $y\in Y$.
+Choose a representative $(V,f,\alpha)$ at $h(y)$ and
+an ordinary affinoid neighbourhood $W$ of $y$ mapping
+into $V$. Continuity of $h$ and the affinoid basis
+give $W$. The analytic-domain universal property
+\ref{fnd:generalnetmorphismgluing} makes the restriction
+an actual morphism $W\to V$. Use
+$(W,h^*f,\alpha)$ as the pulled-back representative.
+Its actual moment image is contained in $t_f(V)$.
+Both sets are finite polyhedral by
+Theorem~\ref{v037:globaltrop:finiteimage}.
+Tangential vanishing restricts to any finite polyhedral
+subset: a common subdivision puts each of its cells
+inside a cell of the larger set, where restriction
+of alternating covectors preserves zero.
+Thus an equality on a smaller target germ gives an
+equality on a smaller source germ. This proves
+well-defined pullback. Composition is checked on the
+pulled-back unit functions, and the ambient form is
+unchanged in these coordinates. Pullback consequently
+commutes with the displayed operations and is functorial.
+
+Now let $V\subseteq U$ be affinoid and let $\alpha$
+be a section on $U$. At every point of $V$ choose
+a representing neighbourhood $W$ and then an affinoid
+neighbourhood $W&#x27;$ contained in the ordinary interior
+of $W$. The preceding basis construction permits this
+choice. Finitely many of the ordinary interiors of
+these $W&#x27;$ cover the compact set $V$, by
+Proposition~\ref{fnd:boundedspectrumcompact}.
+The intersections $V\cap W&#x27;$ are affinoid domains by
+Lemma~\ref{v037:integration:separatedintersections}.
+Restrict the chosen tuples and ambient forms to them.
+
+These representatives agree on every entire overlap.
+Indeed, each point of an overlap lies in the ordinary
+interiors of the two original representing neighbourhoods
+$W$, so equality of its germs supplies a smaller ordinary
+affinoid neighbourhood on which the joint forms agree.
+Finitely many such neighbourhoods cover the compact
+overlap by their interiors. Intersect them with the
+overlap and apply
+Lemma~\ref{v037:forms:finitecoverfaithfulness} to the
+fixed joint tuple there. It upgrades the local
+equalities to tangential equality on the whole joint
+image of the overlap. Thus the restricted representatives
+are finite moment-chart data on $V$.
+
+The same argument applied to two choices shows that
+they agree on the finite common refinement by all
+pairwise intersections. It proves independence and
+compatibility with further restriction. The operations
+are computed on these same refinements, so commute
+with the assignment. If every germ on $V$ is zero,
+apply the overlap argument to each presenting chart
+and the zero representative. A finite cover suffices
+by compactness, and
+Lemma~\ref{v037:forms:finitecoverfaithfulness} makes
+each entire chart representative tangentially zero.
+
+For a finite union of affinoid domains, perform the
+construction on its finitely many members. The same
+compact-overlap argument proves compatibility and
+independence on their union. This also proves the
+zero-germ assertion there. Its analytic-domain structure
+is supplied by the finite closed-cover quasi-net in
+Lemma~\ref{fnd:quasinetcalculus} and the analytic-domain
+definition \ref{fnd:generalnetanalyticdomain}.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002424-reader.jpg" alt="Typeset mathematical passage from PDF page 1045" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1045">PDF page 1045 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001612/">NAG-001612</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-001847/">NAG-001847</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002406/">NAG-002406</a> · selected whole <small>(earlier original in this reviewer packet)</small></li><li><a href="/r/NAG-002411/">NAG-002411</a> · selected whole <small>(selected native whole at 700)</small></li><li><a href="/r/NAG-002422/">NAG-002422</a> · selected whole <small>(earlier original in this reviewer packet)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001496/">fnd:boundedspectrumcompact</a></li><li><a href="/r/NAG-001847/">fnd:generalizeddomainintersections</a></li><li><a href="/r/NAG-001608/#context-e5dd7e44fd516e7e">fnd:generalnetanalyticdomain</a></li><li><a href="/r/NAG-001609/">fnd:generalnetdomaincalculus</a></li><li><a href="/r/NAG-001612/">fnd:generalnetmorphismgluing</a></li><li><a href="/r/NAG-002422/">v037:forms:finitecoverfaithfulness</a></li><li><a href="/r/NAG-002358/">v037:globaltrop:finiteimage</a></li><li><a href="/r/NAG-002406/">v037:integration:globalchartfaithfulness</a></li><li><a href="/r/NAG-002389/">v037:integration:polyhedralcalculus</a></li><li><a href="/r/NAG-002411/">v037:integration:separatedintersections</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

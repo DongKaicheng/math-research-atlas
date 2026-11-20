@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001653/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Result 2.53.2 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001653 · Accepted whole</p><h1>Result 2.53.2</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.53.2">Open in the English reader · PDF page 445</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="c31002aa8dacd5af3223dd800dd7a31cf7fb2f13b0ca5ee0c698dfe0a7371ef6">
+\begin{lemma}[\bi{Closed immersions are target $G$-local}
+{闭浸入在目标上 $G$-局部}]
+\label{fnd:closedimmersiontargetglocal}
+\bi{Let $h:W\to P$ be an analytic morphism and let
+$(P_i)$ be an admissible covering of $P$ by analytic domains.
+If every pullback $h_i:W\times_PP_i\to P_i$ is a closed
+immersion, then $h$ is a closed immersion.}
+{设 $h:W\to P$ 为解析态射，$(P_i)$ 为 $P$ 的一个由解析域
+组成的 admissible 覆盖。若每个拉回
+$h_i:W\times_PP_i\to P_i$ 均为闭浸入，则 $h$ 为闭浸入。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="ac425a38159361c808fad274ba3959d7757a190dab68c763d294fe8d0fea9ff6">
+\begin{proof}
+\bi{The underlying map is injective: two points with the same
+image belong to a common inverse-image domain, where $h_i$ is
+injective. Write its image as $S\subset P$.
+On each $P_i$ the intersection $S\cap P_i$ is closed.
+Refine the covering by affinoid domains. The net topology,
+Lemma~\ref{fnd:nettopologyboundedgluing}, tests a set&#x27;s closedness
+on this chart quasi-net, so $S$ is closed in $P$.
+The same test proves that $W\to S$ is a homeomorphism.
+Indeed the pullbacks of the chart quasi-net form a quasi-net of
+$W$, and intersecting it on the target with $S$ gives a quasi-net
+of $S$. On every such pair the map is a homeomorphism.}
+{底层映射为单射：像相同的两个点属于同一个逆像域，而该域上
+的 $h_i$ 单射。以 $S\subset P$ 记其像，则每个
+$S\cap P_i$ 在 $P_i$ 中闭。将覆盖加细为 affinoid 域后，
+Lemma~\ref{fnd:nettopologyboundedgluing} 的 net 拓扑判据可在
+此 chart quasi-net 上检验闭性，因此 $S$ 在 $P$ 中闭。
+同一判据说明 $W\to S$ 为同胚：chart quasi-net 的逆像构成
+$W$ 的 quasi-net，在目标中与 $S$ 相交则构成 $S$ 的
+quasi-net，而在各对应块上映射均为同胚。}
+
+\bi{Let $\mathcal I_i$ be the coherent ideal defining $h_i$.
+Choose an affinoid chart $U=\mathcal M(A)$ in $P_i$ on which
+the inverse image is the actual quotient $\mathcal M(B)$,
+where $B=A/I$ and $I=\Gamma(U,\mathcal I_i)$.
+For any affinoid domain $V=\mathcal M(C)$ of $U$, the map
+$A\to C$ is a bounded domain restriction. By
+Corollary~\ref{fnd:generalizedaffinoidquotients}, $I$ is finite
+and closed and the quotient norm on $B$ is the canonical
+finite-$A$-module norm for the cyclic presentation $A\to B$.
+With canonical finite-module norms on the terms,
+Proposition~\ref{fnd:generalizeddomainflatness} restricts
+$0\to I\to A\to B\to0$ to a norm-strict exact sequence over
+$C$. Its left map identifies $I\otimes_A C$ with the ideal
+$IC$ in $C$, since its image consists of sums of products of
+images of elements of $I$ with elements of $C$. The canonical
+identification $B\otimes_A C=C/IC$ is the algebraic quotient
+identity. The same corollary over $C$ gives closedness of $IC$
+and the actual complete quotient norm; this is the canonical
+norm for the cyclic $C$-module presentation. Applying
+Proposition~\ref{fnd:generalizedfinitebasechange} with $L=K$
+identifies $B\widehat\otimes_A C$ with this actual quotient
+by a bounded isomorphism with bounded inverse. If $V$ or the
+quotient is empty, the corresponding zero algebra gives the
+same assertions directly.
+
+The bounded pushout property of the completed affinoid tensor
+product, Proposition~\ref{fnd:generalizedrelativepushout},
+represents the analytic inverse image over $V$: on each
+affinoid chart of a test space the compatible maps are exactly
+the compatible bounded algebra maps, and these identifications
+agree on refinements and glue. This uses the given quotient
+chart over $U$, not closed-immersion locality for the morphism
+being proved. On a common affinoid refinement of $P_i\cap P_j$,
+the two restricted quotients thus represent the same inverse
+image over the refinement. Their canonical isomorphism over
+$C$ makes their kernels in $C$ equal. Consequently the ideals
+glue to a coherent ideal $\mathcal I\subset\mathcal O_{P_G}$.
+One may construct this sheaf directly as compatible families
+of local sections, as in
+Theorem~\ref{fnd:generalnetstructuresheaf}; finite presentation
+and coherence are local on the given admissible covering.}
+{以 $\mathcal I_i$ 记定义 $h_i$ 的凝聚理想。取 $P_i$ 中一个
+affinoid 图表 $U=\mathcal M(A)$，其逆像是实际商
+$\mathcal M(B)$，其中 $B=A/I$、$I=\Gamma(U,\mathcal I_i)$。
+设 $V=\mathcal M(C)$ 为 $U$ 中的 affinoid 域，则 $A\to C$
+是有界的域限制映射。由 Corollary~\ref{fnd:generalizedaffinoidquotients}，
+$I$ 有限且闭，$B$ 的商范数正是循环表示 $A\to B$ 的典范有限
+$A$-模范数。各项配备典范有限模范数后，
+Proposition~\ref{fnd:generalizeddomainflatness} 将短正合列
+$0\to I\to A\to B\to0$ 限制为 $C$ 上范数严格正合列。左侧映射
+将 $I\otimes_A C$ 与 $C$ 中的理想 $IC$ 识别：其像由 $I$ 中元素
+的像与 $C$ 中元素的乘积之和组成。代数商恒等式给出
+$B\otimes_A C=C/IC$。将同一推论用于 $C$，得到 $IC$ 闭，
+且实际商范数完备；该范数正是循环 $C$-模表示的典范范数。
+在 Proposition~\ref{fnd:generalizedfinitebasechange} 中取 $L=K$，
+得到 $B\widehat\otimes_A C$ 与此实际商之间具有有界逆的有界同构。
+若 $V$ 或商空间为空，由相应的零代数直接得到同样的结论。
+
+由 Proposition~\ref{fnd:generalizedrelativepushout} 中完备 affinoid
+张量积的有界推出泛性质，所得对象表示 $V$ 上的解析逆像：
+对检验空间的每个 affinoid 图表，相容的态射恰对应相容的有界
+代数同态；这些识别在加细上相容并可粘合。这里只用到 $U$ 上
+给定的商图表，不调用待证态射的闭浸入局部性。在
+$P_i\cap P_j$ 的共同 affinoid 加细上，两个限制商因而表示同一
+解析逆像。二者在 $C$ 上的典范同构说明它们在 $C$ 中的核相等。
+故各理想粘合为凝聚理想 $\mathcal I\subset\mathcal O_{P_G}$。
+与 Theorem~\ref{fnd:generalnetstructuresheaf} 一样，也可用局部截面
+的相容族直接构造该层；有限表示及凝聚性均在给定 admissible
+覆盖上局部成立。}
+
+\bi{Fix an arbitrary affinoid domain $Q=\mathcal M(A)$ in $P$.
+Theorem~\ref{fnd:fullgkiehltheoremb} identifies
+$\mathcal I|_Q$ with the finite ideal
+$I=\Gamma(Q,\mathcal I)\subset A$.
+By Corollary~\ref{fnd:generalizedaffinoidquotients},
+$A/I$ is an affinoid quotient with its actual quotient norm.
+The space $\mathcal M(A/I)$ and $W\times_PQ$ become the same
+closed subspace after an affinoid refinement subordinate to the
+$P_i$. Their quotient maps and their inverses agree on overlaps,
+so Theorem~\ref{fnd:generalnetmorphismgluing} glues those
+identifications. Hence $h$ is represented on every such $Q$ by
+the admissible quotient $A\twoheadrightarrow A/I$.
+Together with the closed topological embedding, this is a closed
+immersion.}
+{任取 $P$ 中的 affinoid 域 $Q=\mathcal M(A)$。
+Theorem~\ref{fnd:fullgkiehltheoremb} 将
+$\mathcal I|_Q$ 识别为有限理想
+$I=\Gamma(Q,\mathcal I)\subset A$ 所给的层。
+由 Corollary~\ref{fnd:generalizedaffinoidquotients}，
+$A/I$ 带实际商范数成为 affinoid 商。
+在从属于 $P_i$ 的 affinoid 加细上，
+$\mathcal M(A/I)$ 与 $W\times_PQ$ 给出同一个闭子空间。
+这些商映射及其逆在交叠上相容，因此
+Theorem~\ref{fnd:generalnetmorphismgluing} 将它们粘合为同构。
+故 $h$ 在每个这样的 $Q$ 上均由 admissible 商
+$A\twoheadrightarrow A/I$ 表示。结合闭的拓扑嵌入，即得
+闭浸入。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="324e08a2090d546354f4dce036e6ccb50a56abc25f29f96e2ab1b7612e024213">
+\begin{definition}[\bi{Compact analytic spaces and morphisms}
+{紧解析空间与紧态射}]
+\label{fnd:compactmorphismconvention}
+\bi{In the properness discussion, a compact analytic space or
+domain means a quasi-compact Hausdorff space; quasi-compact alone
+means the finite-subcover property. A morphism $f:Y\to X$ is
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001653-reader.jpg" alt="Typeset mathematical passage from PDF page 445" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=445">PDF page 445 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001624/#finite_equivalence_and_actual_restrictions">CLAUSE:NAG-001624:finite_equivalence_and_actual_restrictions</a> · selected scope <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001606/">NAG-001606</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-001610/">NAG-001610</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-001612/">NAG-001612</a> · selected whole <small>(earlier original whole proof in this batch)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001624/#finite_equivalence_and_actual_restrictions">CLAUSE:NAG-001624:finite_equivalence_and_actual_restrictions</a> · selected scope</li><li><a href="/r/NAG-001624/#finite_equivalence_and_actual_restrictions">CLAUSE:NAG-001624:finite_equivalence_and_actual_restrictions</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable</li><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001606/">NAG-001606</a> · selected whole</li><li><a href="/r/NAG-001606/">NAG-001606</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001610/">NAG-001610</a> · selected whole</li><li><a href="/r/NAG-001610/">NAG-001610</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001612/">NAG-001612</a> · selected whole</li><li><a href="/r/NAG-001612/">NAG-001612</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole</li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole</li><li><a href="/r/NAG-001688/">NAG-001688</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001562/">fnd:generalizedaffinoidquotients</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001688/">fnd:generalizedrelativepushout</a></li><li><a href="/r/NAG-001612/">fnd:generalnetmorphismgluing</a></li><li><a href="/r/NAG-001610/">fnd:generalnetstructuresheaf</a></li><li><a href="/r/NAG-001606/">fnd:nettopologyboundedgluing</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

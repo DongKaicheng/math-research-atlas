@@ -1,0 +1,175 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001415/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The Laurent coefficient normal form · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001415 · Accepted whole</p><h1>The Laurent coefficient normal form</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.13.2">Open in the English reader · PDF page 147</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="227388c748b6ac1818677557070a7bd6b200134499a6ca3b943038be5cb25230">
+\begin{theorem}[\bi{The Laurent coefficient normal form}{Laurent 系数正规形}]\label{fnd:laurentcoefficientnormalform}
+\bi{For the data just specified, there are $A$-linear maps}
+{对上述数据，存在 $A$-线性映射}
+\[
+ \begin{aligned}
+ \mathcal N&amp;:D_{a,b}(M)\longrightarrow L_{a,b}(M),\\
+ \mathcal S&amp;:L_{a,b}(M)\longrightarrow D_{a,b}(M),\\
+ \mathcal H&amp;:D_{a,b}(M)\longrightarrow D_{a,b}(M).
+ \end{aligned}
+\]
+\bi{given by the convergent coefficient formulas}
+{由以下收敛的系数公式给出：}
+\[
+ \begin{split}
+ (\mathcal Ng)_n
+   &amp;=\sum_{k\geq0}m_{n_++k,n_-+k},
+       \qquad n_+=\max(n,0),\quad n_-=\max(-n,0),\\
+ \mathcal Sc
+   &amp;=\sum_{n\geq0}c_nT^n+\sum_{n&lt;0}c_nU^{-n},\\
+ (\mathcal Hg)_{ij}
+   &amp;=\sum_{k\geq1}m_{i+k,j+k}.
+ \end{split}
+\]
+\bi{They satisfy}
+{它们满足}
+\[
+ \begin{gathered}
+ \|\mathcal Ng\|_L\leq\|g\|_D,\qquad
+ \|\mathcal Sc\|_D=\|c\|_L,\qquad
+ \|\mathcal Hg\|_D\leq\lambda^{-1}\|g\|_D,\\
+ P\mathcal H=1-\mathcal S\mathcal N,\qquad
+ \mathcal HP=1,\qquad
+ \mathcal NP=0,\qquad
+ \mathcal N\mathcal S=1,\qquad
+ \mathcal H\mathcal S=0 .
+ \end{gathered}
+\]
+\bi{In particular, every $g$ has a unique decomposition}
+{特别地，每个 $g$ 都有唯一分解}
+\[
+ \begin{gathered}
+ g=Pq+\mathcal Sc,\qquad q=\mathcal Hg,\quad c=\mathcal Ng,\\
+ \|g\|_D=\max\{\lambda\|q\|_D,\|c\|_L\}.
+ \end{gathered}
+\]
+\bi{The relation map satisfies $\|Pq\|_D=\lambda\|q\|_D$ and has closed image. Its image is the actual kernel of $\mathcal N$, so}
+{关系映射满足 $\|Pq\|_D=\lambda\|q\|_D$，且具有闭像。其像恰为 $\mathcal N$ 的核，因此}
+\[
+ \begin{gathered}
+ \ker\mathcal N=(TU-1)D_{a,b}(M),\\
+ D_{a,b}(M)/(TU-1)D_{a,b}(M)
+       \xrightarrow{\ \overline{\mathcal N}\ }L_{a,b}(M)
+ \end{gathered}
+\]
+\bi{is an isometric isomorphism of Banach $A$-modules. The quotient norm of $[g]$ is $\|\mathcal Ng\|_L$, attained at its unique representative supported on the two coordinate axes, with the origin counted once. The associated short exact sequence is split as a sequence of Banach $A$-modules.}
+{是 Banach $A$-模的等距同构。$[g]$ 的商范数为 $\|\mathcal Ng\|_L$，并在其唯一的两坐标轴支撑代表元处达到，其中原点只计一次。相应的短正合列作为 Banach $A$-模序列分裂。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="fe86df999a34a0e13c695d5707b132973ac94f6147a3b49f8becb890cc6f3ef9">
+\begin{proof}
+\bi{\emph{Step 1: polynomial reduction and its bounds.} On a monomial $mT^iU^j$, put $d=\min(i,j)$ and define}
+{\emph{第一步：多项式约化及其估计。} 对单项式 $mT^iU^j$，记 $d=\min(i,j)$，定义}
+\[
+ \mathcal N(mT^iU^j)=mZ^{i-j},\qquad
+ \mathcal H(mT^iU^j)
+       =m\sum_{\ell=0}^{d-1}T^{i-1-\ell}U^{j-1-\ell},
+\]
+\bi{where the sum is zero if $d=0$. Extend these formulas $A$-linearly to polynomials, and define $\mathcal S$ by the displayed axis formula. The weights satisfy}
+{当 $d=0$ 时，右侧和为零。将这些公式 $A$-线性延拓到多项式，并按所列坐标轴公式定义 $\mathcal S$。权重满足}
+\[
+ b^ia^{-j}=\lambda^d w_{i-j}.
+\]
+\bi{Thus $\mathcal N$ does not increase the norm of a monomial. Every monomial in its $\mathcal H$-image has weight at most $\lambda^{-1}b^ia^{-j}$, because its weight relative to the original one is $\lambda^{-1-\ell}$. Applying the ultrametric inequality to finite sums proves}
+{所以 $\mathcal N$ 不增加单项式的范数。其 $\mathcal H$-像中每个单项式的权重与原权重之比为 $\lambda^{-1-\ell}$，故至多为 $\lambda^{-1}b^ia^{-j}$。对有限和应用超度量不等式，得到}
+\[
+ \|\mathcal Ng\|_L\leq\|g\|_D,\qquad
+ \|\mathcal Hg\|_D\leq\lambda^{-1}\|g\|_D
+ \qquad(g\in M[T,U]).
+\]
+\bi{The axis formula preserves each nonzero coefficient and its weight, so $\mathcal S$ is isometric, on Laurent polynomials and on the full coefficient space.}
+{坐标轴公式保留每个非零系数及其权重，因此 $\mathcal S$ 在 Laurent 多项式以及整个系数空间上都等距。}
+
+\bi{\emph{Step 2: completion and the explicit sums.} Choose finite polynomial truncations $g_\nu$ converging to $g$. The preceding bounds make $\mathcal Ng_\nu$ and $\mathcal Hg_\nu$ Cauchy in their respective complete coefficient spaces. Their limits define $\mathcal Ng$ and $\mathcal Hg$. Applying the same bounds to differences of two approximations proves independence of the truncations, linearity and the asserted bounds. This constructs the extensions directly.}
+{\emph{第二步：完备化与显式求和。} 选取收敛到 $g$ 的有限多项式截断 $g_\nu$。前述估计使 $\mathcal Ng_\nu$、$\mathcal Hg_\nu$ 在各自完备的系数空间中成为 Cauchy 序列。以其极限定义 $\mathcal Ng$、$\mathcal Hg$。对两组逼近之差使用同样估计，即得定义与截断无关、线性以及所述范数界。这直接构造了所需延拓。}
+
+\bi{For a fixed $n$, the terms in the claimed formula for $(\mathcal Ng)_n$ satisfy}
+{固定 $n$，$(\mathcal Ng)_n$ 的所列公式中的各项满足}
+\[
+ \|m_{n_++k,n_-+k}\|w_n
+   =\lambda^{-k}
+     \|m_{n_++k,n_-+k}\|b^{n_++k}a^{-(n_-+k)}
+   \longrightarrow0 .
+\]
+\bi{For fixed $i,j$, the terms in the formula for $(\mathcal Hg)_{ij}$ satisfy}
+{固定 $i,j$，$(\mathcal Hg)_{ij}$ 的公式中的各项满足}
+\[
+ \|m_{i+k,j+k}\|b^ia^{-j}
+   =\lambda^{-k}\|m_{i+k,j+k}\|b^{i+k}a^{-(j+k)}
+   \longrightarrow0 .
+\]
+\bi{Both series therefore converge in $M$ by Lemma~\ref{fnd:seriescriterion}. The bounded coordinate maps of Lemma~\ref{fnd:weightedcoefficientcompleteness} identify their sums with the limits constructed from polynomial truncations. In particular, the formulas define families with the required uniform finite-tail condition; this also follows by approximating their images by the corresponding finite polynomial images.}
+{由 Lemma~\ref{fnd:seriescriterion}，这两个级数都在 $M$ 中收敛。Lemma~\ref{fnd:weightedcoefficientcompleteness} 中有界的坐标映射将其和识别为多项式截断所构造的极限。特别地，这些公式给出的系数族满足所需的统一有限尾条件；也可由相应的有限多项式像逼近它们直接看出。}
+
+\bi{\emph{Step 3: the identities.} For a polynomial monomial, telescoping gives}
+{\emph{第三步：算子恒等式。} 对多项式单项式，逐项相消给出}
+\[
+ \begin{split}
+ (TU-1)m\sum_{\ell=0}^{d-1}T^{i-1-\ell}U^{j-1-\ell}
+     &amp;=mT^iU^j-mT^{i-d}U^{j-d},\\
+ \mathcal H(mT^{i+1}U^{j+1})-\mathcal H(mT^iU^j)
+     &amp;=mT^iU^j .
+ \end{split}
+\]
+\bi{Summing over monomials proves $P\mathcal H=1-\mathcal S\mathcal N$ and $\mathcal HP=1$ on polynomials. Substitution of $Z,Z^{-1}$ gives $\mathcal NP=0$. The axis formula gives $\mathcal N\mathcal S=1$ and $\mathcal H\mathcal S=0$. Every map in these identities is bounded. Taking limits of polynomial truncations proves all five identities on the complete spaces.}
+{对单项式求和，便在多项式上得到 $P\mathcal H=1-\mathcal S\mathcal N$ 和 $\mathcal HP=1$。代入 $Z,Z^{-1}$ 得到 $\mathcal NP=0$。坐标轴公式给出 $\mathcal N\mathcal S=1$ 和 $\mathcal H\mathcal S=0$。这些恒等式中的每个映射都有界，因此对多项式截断取极限，五个恒等式都在完备空间上成立。}
+
+\bi{\emph{Step 4: the relation image and the quotient norm.} The identities give the displayed decomposition. Applying $\mathcal H$ and $\mathcal N$ to any such decomposition proves uniqueness. Their bounds, together with the bound for $P$, imply}
+{\emph{第四步：关系映射的像与商范数。} 上述恒等式给出所列分解。对任意这样的分解应用 $\mathcal H$ 和 $\mathcal N$，即得唯一性。结合它们的界与 $P$ 的界，得到}
+\[
+ \begin{split}
+ \|Pq+\mathcal Sc\|_D
+   &amp;\leq\max\{\lambda\|q\|_D,\|c\|_L\},\\
+ \lambda\|q\|_D
+   &amp;=\lambda\|\mathcal H(Pq+\mathcal Sc)\|_D
+     \leq\|Pq+\mathcal Sc\|_D,\\
+ \|c\|_L
+   &amp;=\|\mathcal N(Pq+\mathcal Sc)\|_L
+     \leq\|Pq+\mathcal Sc\|_D.
+ \end{split}
+\]
+\bi{These are the asserted norm equality. Taking $c=0$ gives $\|Pq\|_D=\lambda\|q\|_D$, and hence injectivity of $P$. If $Pq_\nu$ converges, this equality makes $q_\nu$ Cauchy. Completeness gives a limit $q$, and boundedness of $P$ identifies the original limit as $Pq$. Thus $PD_{a,b}(M)$ is closed.}
+{这便证明所述范数等式。取 $c=0$ 得到 $\|Pq\|_D=\lambda\|q\|_D$，从而 $P$ 单射。若 $Pq_\nu$ 收敛，该等式使 $q_\nu$ 为 Cauchy 序列。由完备性得到极限 $q$，再由 $P$ 的有界性可知原极限为 $Pq$。因此 $PD_{a,b}(M)$ 闭。}
+
+\bi{We have $\mathcal NP=0$, while $\mathcal Ng=0$ implies $g=P\mathcal Hg$. This proves the kernel equality with the algebraic image, without first taking its closure. For every $h\in D_{a,b}(M)$,}
+{已有 $\mathcal NP=0$；反之，$\mathcal Ng=0$ 蕴含 $g=P\mathcal Hg$。这证明核等于代数意义下的像，不需要预先取闭包。对每个 $h\in D_{a,b}(M)$，}
+\[
+ \|\mathcal Ng\|_L=\|\mathcal N(g+Ph)\|_L\leq\|g+Ph\|_D.
+\]
+\bi{The choice $h=-\mathcal Hg$ gives $g+Ph=\mathcal S\mathcal Ng$ and attains equality. Hence the quotient norm is exactly $\|\mathcal Ng\|_L$. The target is complete, so the quotient is a Banach module. The right inverse $\mathcal S$, the left inverse $\mathcal H$ and the decomposition prove the splitting and norm-strictness. A representative supported on the two axes equals $\mathcal Sc$ for a unique $c$; applying $\mathcal N$ identifies $c$ with the class, proving the final uniqueness assertion.}
+{取 $h=-\mathcal Hg$，则 $g+Ph=\mathcal S\mathcal Ng$，并达到等号。因此商范数恰为 $\|\mathcal Ng\|_L$。目标空间完备，所以商也是 Banach 模。右逆 $\mathcal S$、左逆 $\mathcal H$ 以及所列分解证明分裂性与范数严格性。支撑在两坐标轴上的代表元唯一写成 $\mathcal Sc$；应用 $\mathcal N$ 即将 $c$ 与商类相识别，从而得到最后的唯一性。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="5f412ea2d22e3bab061ba8411f9188929bf29d11540d64b7f3a9035cf13b4977">
+\section{\bi{Laurent coefficient normal forms}{Laurent 系数的正规形}}\label{fnd:t01normalforms}
+
+\bi{The Laurent coefficient module in Theorem~\ref{fnd:banachlaurentcriterion} was defined directly. We now identify it with a quotient of a two-variable coefficient module, including the quotient norm and the actual image of the relation map. The same construction treats two boundary radii $0&lt;a\leq b$; setting $a=b=r$ gives the equal-radius module used in that theorem.}
+{Theorem~\ref{fnd:banachlaurentcriterion} 直接定义了 Laurent 系数模。下面将它与一个双变量系数模的商相识别，同时确定商范数以及关系映射的实际像。同一个构造适用于两个边界半径 $0&lt;a\leq b$；取 $a=b=r$，即得到该定理使用的等半径系数模。}
+
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="eab0c8131260d629136f3fa2da7fe3733d7c5a380161b855a3b5148dd6cdd0e0">
+{在某个有限集合之外，有 $\|m_i^{(j)}\|w_i&lt;\varepsilon/2$，因而 $\|m_i\|w_i\leq\varepsilon/2$。所以 $x=(m_i)$ 属于上述空间，同一个估计证明原序列收敛到 $x$。最后，保留所有加权范数至少为 $\varepsilon/2$ 的坐标，便得到误差不超过 $\varepsilon/2$ 的有限截断。这证明稠密性和完备性。坐标映射的界直接来自上确界范数的定义。}
+\end{proof}
+
+\bi{Fix $0&lt;a\leq b$ and write $\lambda=b/a$. We use $T,U$ for two independent variables, and $Z$ for the Laurent variable. Define}
+{固定 $0&lt;a\leq b$，记 $\lambda=b/a$。以 $T,U$ 表示两个独立变量，以 $Z$ 表示 Laurent 变量。定义}
+\[
+ \begin{split}
+ D_{a,b}(M)
+   &amp;=M\{b^{-1}T,aU\}\\
+   &amp;=\left\{\sum_{i,j\geq0}m_{ij}T^iU^j:
+       \|m_{ij}\|b^ia^{-j}\longrightarrow0\right\},\\
+ \|g\|_D&amp;=\sup_{i,j\geq0}\|m_{ij}\|b^ia^{-j},\\
+ w_n&amp;=\begin{cases}b^n&amp;n\geq0,\\a^n&amp;n&lt;0,\end{cases}\\
+ L_{a,b}(M)
+   &amp;=\left\{\sum_{n\in\mathbb Z}c_nZ^n:
+       \|c_n\|w_n\longrightarrow0\text{ as }|n|\to\infty\right\},\\
+ \|c\|_L&amp;=\sup_{n\in\mathbb Z}\|c_n\|w_n .
+ \end{split}
+\]
+\bi{In the definition of $D_{a,b}(M)$, convergence to zero means convergence outside finite subsets of $\mathbb N^2$. This is a definition by coefficients, not a tensor-product assertion. The preceding lemma proves completeness and polynomial density for both spaces. Multiplication by $TU$ shifts both indices up by one and multiplies the norm by $\lambda$. Consequently}
+{在 $D_{a,b}(M)$ 的定义中，趋于零指在 $\mathbb N^2$ 的有限子集之外趋于零。该记号按系数定义，不包含任何张量积断言。前一引理证明两个空间的完备性与多项式稠密性。乘以 $TU$ 将两个指标同时增加一，并将范数恰好乘以 $\lambda$。因此}
+\[
+ P=TU-1:D_{a,b}(M)\longrightarrow D_{a,b}(M),
+ \qquad \|Pg\|_D\leq\lambda\|g\|_D
+\]
+\bi{is a bounded $A$-linear operator.}
+{是有界的 $A$-线性算子。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001415-reader.jpg" alt="Typeset mathematical passage from PDF page 147" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=147">PDF page 147 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole</li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(direct native theorem)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(direct native theorem)</small></li><li>BASE-LINEAR · standing context or base <small>(selected rule)</small></li><li>BASE-REAL · standing context or base <small>(selected rule)</small></li><li>BASE-RINGS · standing context or base <small>(selected rule)</small></li><li>BASE-SETS · standing context or base <small>(selected rule)</small></li><li>BASE-TOPOLOGY · standing context or base <small>(selected rule)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(selected rule)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(selected rule)</small></li><li>BASE-LINEAR · standing context or base</li><li>BASE-LINEAR · standing context or base <small>(requires)</small></li><li>BASE-REAL · standing context or base</li><li>BASE-REAL · standing context or base <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>BASE-SETS · standing context or base</li><li>BASE-SETS · standing context or base <small>(requires)</small></li><li>BASE-TOPOLOGY · standing context or base</li><li>BASE-TOPOLOGY · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001373/">fnd:banachlaurentcriterion</a></li><li><a href="/r/NAG-000221/">fnd:seriescriterion</a></li><li><a href="/r/NAG-001414/">fnd:weightedcoefficientcompleteness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

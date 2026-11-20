@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002232/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite forests outside a semistable vertex set · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002232 · Accepted whole</p><h1>Finite forests outside a semistable vertex set</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.4.41.2">Open in the English reader · PDF page 753</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="82c3396f22afafb9bc609aa4b7135963cea9ea25270d96bb7155a7593944f913">
+\begin{lemma}[Finite forests outside a semistable vertex set]
+\label{v035:f5:finiteforest}
+Let $\mathcal C$ be a split nodal algebraic model with vertex set $W$,
+skeleton $\Sigma$, and retraction $r:X\to\Sigma$. Let
+$V\subset W$ be a semistable vertex set, and let $U$ be a connected
+component of $X\setminus V$ meeting $W$. Then
+$S=\Sigma\cap U=r(U)$ is a nonempty finite tree with its boundary
+endpoints removed. It has one boundary end if $U$ is an open ball
+and two if $U$ is an open annulus. Each end has a unique limit in $V$;
+the two annular ends are counted separately when their limits coincide.
+Every special component indexed by $W\cap U$ is a smooth
+$\mathbf P^1_k$.
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="2b7fddab769a35b72ae1f138627387f7d3fbe32d2e74b2e8e7b0b70f30545f2e">
+\begin{proof}
+We first record the topology of the complement of $\Sigma$.
+Its components are open balls $B$, and
+\[
+                      \overline B=B\cup\{r(B)\}.
+\]
+For a smooth residual tube this is
+Proposition~\ref{cand:separablesmoothtubehomotopy}.
+Inside a nodal tube the annular Gauss retraction leaves residue-disc
+components. In an annular coordinate each such disc is
+$|T-a|&lt;|a|$, attached at $\zeta_{0,|a|}$. Its closure in a compact
+closed subannulus is the disc together with this Gauss point, by the
+Gauss seminorm formula and polynomial factorization. This subannulus
+is compact and hence closed in $X$, so the same is its closure in $X$.
+
+\emph{The retraction stays in $U$.}
+The set $U$ is open in $X$ and closed in $X\setminus V$, so its
+boundary lies in $V$. If $y\in U$ retracted to $v\in V$, then $y$
+would lie in a smooth residual $W$-tube attached to $v$: residue discs
+inside a nodal tube retract to interior edge points, not vertices.
+That smooth tube is open and closed in $X\setminus V$ and therefore
+would equal $U$. It contains no vertex of $W$, a contradiction.
+Consequently $r(U)$ avoids $V$. It is connected and contains every
+$w\in W\cap U$, so it lies in $U$. Since $r$ fixes $\Sigma$, this
+proves $r(U)=\Sigma\cap U$. It is a connected part of a finite graph
+obtained by deleting vertices in $V$.
+
+\emph{There are no circuits.}
+Use an actual ball or annulus coordinate on $U$.
+Theorem~\ref{fnd:classification} describes every type II or III
+point as a Gauss point $\zeta_{a,t}$. At a type II point, removal
+partitions the analytic projective line into the inward residue
+discs and the outward disc. To check exhaustiveness, if
+$|T-a|(x)=t$ and $x\ne\zeta_{a,t}$, there is $b$ with
+$|b-a|\leq t$ and $|T-b|(x)&lt;t$. Otherwise every linear factor would
+have its Gauss value at $x$, and factorization over $K$ would give
+$x=\zeta_{a,t}$. At a type III point, the inward and outward pieces
+give the analogous two-sided separation. These are disjoint open
+sets and distinguish the two sides of a radial interval.
+
+The Gauss interval between two points of $U$ lies in $U$.
+In a ball its joining radius is still smaller than the outer radius.
+In an annulus the value of $|T|$ on the interval is between the two
+endpoint values, or is their common value. Every interior point of
+this interval separates its endpoints. Therefore every path between
+the endpoints contains the interval. An embedded compact arc must
+equal the interval, since an interval contained in an arc with the
+same endpoints is the whole arc. This also agrees with the explicit
+interval calculation of Lemma~\ref{cand:gaussdiscmetriccalculus}.
+A circuit in $S$ would give two different arcs between two of its
+Gauss points. Thus $S$ is a tree.
+
+\emph{Radial ends have limits in $V$.}
+For a ball $U=\{|T|&lt;R\}$, the connected outer tails
+$E_t=\{t&lt;|T|&lt;R\}$ have nested nonempty compact connected closures
+in $X$. Their intersection is nonempty and connected. It misses $U$
+and is contained in its finite boundary $V$, hence is a singleton
+$\{v_U\}$. Every neighborhood of $v_U$ contains a whole tail:
+otherwise the nested compact sets outside that neighborhood would
+have a common point. The closed disc $|T|\leq t$ is compact in $U$
+and closed in $X$. It follows that every boundary point lies in every
+$\overline E_t$, so $\partial_XU=\{v_U\}$.
+For an annulus, the same argument applies to each of its two radial
+ends. A compact middle subannulus shows that its boundary consists
+of the two resulting limits $v_-,v_+$; they may be equal.
+
+\emph{Each radial end occurs exactly once in the finite tree.}
+Choose a compact disc or middle annulus containing the finite set
+$W\cap U$. Every graph end of $S$ leaves all compact subsets of $U$,
+because its endpoint in the compact graph $\Sigma$ lies in $V$.
+Its final portion therefore approaches one coordinate end. The
+cut-point separation just proved forces this portion to contain a
+sufficiently short radial Gauss tail. Two different graph ends
+cannot approach the same coordinate end, since they would share
+a nonempty Gauss interval.
+
+Suppose a coordinate end were unrepresented. Some sufficiently far
+tail $E$ would then miss $S$. Indeed, if all tails met $S$, one of
+its finitely many edges would have points escaping toward that end;
+compactness of the closed edge would produce its endpoint in $V$
+and a graph end approaching the chosen coordinate end.
+The connected set $E$ lies in one ball component $B$ of
+$X\setminus\Sigma$. Because $B$ meets $U$ and avoids $V$, we have
+$B\subset U$. Also $r(B)\in r(U)\subset U$, so the compact closure
+$B\cup\{r(B)\}$ misses $V$. All shorter tails lie in $B$, contrary
+to the nonempty limiting set in $V$ proved above. Every coordinate
+end is therefore represented. This gives exactly one or two ends.
+
+\emph{The unwanted components are smooth rational curves.}
+For $w\in W\cap U$, translation and scaling identify its type II
+Gauss field with the unit Gauss field. Its residue field is $k(t)$
+by Proposition~\ref{new:gauss_residue_formula}.
+Proposition~\ref{cand:componentvaluedresiduefield} identifies this
+with the function field of the special component $D_w$.
+The normalization $D_w^\nu\to D_w$ is finite by
+\cite[Tag 0BXR]{StacksAlg}. It is therefore proper, and $D_w^\nu$
+is proper over $k$ by \cite[Tags 01WM, 01W3]{StacksAlg}.
+The normal proper curve equivalence \cite[Tag 0BY1]{StacksAlg}
+now identifies $D_w^\nu$ with $\mathbf P^1_k$.
+A self-node of $D_w$ would give a loop based at $w$
+in $\Sigma$. Its interior is connected, avoids $V$, and meets the
+open set $U$ near $w$, so the entire loop lies in $U$. This contradicts
+acyclicity. Thus $D_w$ has no self-node. At a node shared with another
+component, its own branch is smooth, by the pointed branch calculation
+in Lemma~\ref{cand:pointednodalbranches}. Hence $D_w$ itself is smooth
+and equals its normalization, as asserted.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002232-reader.jpg" alt="Typeset mathematical passage from PDF page 753" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=753">PDF page 753 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01W3@NAG-002232:existing-13-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-01WM@NAG-002232:existing-12-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-0BXR@NAG-002232:existing-11-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-0BY1@NAG-002232:existing-14-1 · named external application <small>(existing exact named Stacks authority)</small></li><li><a href="/r/NAG-000160/">NAG-000160</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-000464/">NAG-000464</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001714/">NAG-001714</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002055/">NAG-002055</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002056/">NAG-002056</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002061/">NAG-002061</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002064/">NAG-002064</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002070/">NAG-002070</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002148/">NAG-002148</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/01W3">APP-STACKS-01W3@NAG-002232:existing-13-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/01WM">APP-STACKS-01WM@NAG-002232:existing-12-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/0BXR">APP-STACKS-0BXR@NAG-002232:existing-11-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/0BY1">APP-STACKS-0BY1@NAG-002232:existing-14-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002070/">cand:componentvaluedresiduefield</a></li><li><a href="/r/NAG-002148/">cand:gaussdiscmetriccalculus</a></li><li><a href="/r/NAG-002055/">cand:pointednodalbranches</a></li><li><a href="/r/NAG-002061/">cand:separablesmoothtubehomotopy</a></li><li><a href="/r/NAG-000160/">fnd:classification</a></li><li><a href="/r/NAG-000464/">new:gauss_residue_formula</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

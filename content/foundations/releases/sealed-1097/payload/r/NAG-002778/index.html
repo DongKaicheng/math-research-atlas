@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002778/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Result G.0.17 · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002778 · Accepted whole</p><h1>Result G.0.17</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002778.original">Open in the English reader · PDF page 2031</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="80523c42115299922916fb585bde1b26880c26161a228f7d70b44e8bde210ad9">
+\clearpage
+\begingroup
+\def\cM{\mathcal M}\def\Min{\operatorname{Min}}
+\def\length{\operatorname{length}}\def\Int{\operatorname{Int}}
+\noindent In the local Cartier setting of
+\hyperref[fnd:nag002772:cartier]{NAG-002772}, use the full quotient
+\(B=A/(f)\) by the given regular equation on the actual affinoid
+chart. The
+\hyperref[fnd:nag002772:effective-coefficient]{effective Cartier coefficients}
+are those of that quotient. The purity of the zero space is supplied
+as stated below.
+\NextLinkTarget{foundations.nag-002778.original}
+\begin{theorem}[Cartier integration comparison in the pure-zero-space scope; F8ST-I-R1]
+\label{thm:integration}
+Let \(D=\cM(B)\) be a nonempty pure \(d\)-dimensional Cartier zero
+space as above, and let \(g=(g_1,\ldots,g_r)\) be analytic units
+on a neighbourhood of the chart. Put \(t_g=-\log|g|\).
+For \(\mathfrak p\in\Min B\), let
+\(D_{\mathfrak p}=\cM(B/\mathfrak p)\) and
+\(c_{\mathfrak p}=\length_{B_{\mathfrak p}}B_{\mathfrak p}\).
+Then the frozen integral chains and all their smooth top-form pairings
+satisfy
+\begin{align}\label{eq:chains}
+ \mathcal T_g(B)&amp;=\sum_{\mathfrak p\in\Min B}
+                   c_{\mathfrak p}\mathcal T_{g|D_{\mathfrak p}}(B/\mathfrak p),\\
+ \mathcal I_{B,g}(\alpha)&amp;=\sum_{\mathfrak p\in\Min B}
+                c_{\mathfrak p}\mathcal I_{B/\mathfrak p,g}(\alpha).
+ \label{eq:integrals}
+\end{align}
+Here \(\alpha\) is a smooth \((d,d)\)-superform near the compact
+moment image. The same equality holds for ordinary compactly supported
+forms after chart localization and a finite partition.
+The coefficient \(c_{\mathfrak p}\) is exactly the analytic Cartier
+coefficient of Theorem~\ref{fnd:nag002772:cartier}.
+
+In particular, on a good Hausdorff pure \(n\)-dimensional space,
+for a regular meromorphic \(f\) whose local numerator and denominator
+zero spaces are empty or pure of dimension \(n-1\), the cycles formed
+from these presentations are independent among such presentations
+and glue. Their analytic Cartier-cycle pairing agrees with the frozen
+coherent-cycle pairing on every ordinary \((n-1,n-1)\)-test with compact support in
+\(\Int(X/K)\). This purity condition is retained explicitly to match
+the frozen integrator; it is not deduced here from a relative-dimension
+theorem. The local coefficient result in Theorem~\ref{fnd:nag002772:cartier}
+does not require it.
+\end{theorem}
+
+\begin{proof}
+Take a common finite subdivision of the actual moment images and their boundary images for \(D\) and the \(D_{\mathfrak p}\), using the \hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain and weights}. At a relative interior point \(w\) of a top-dimensional cell, the full analytic moment fibre is interior to \(D\). The local moment image is contained in the affine plane \(w+N_{\mathbb R}\) for the saturated rank-\(d\) tangent lattice \(N\). The boundary images have dimension at most \(d-1\), so they miss these relative interiors.
+For an integral projection \(Q\) injective on the tangent lattice
+\(N\), put
+\[
+ E_Q=D_w\widehat\otimes_{R_Q}H_Q,\qquad
+ e_Q=[\mathbb Z^d:Q(N)].
+\]
+Here \(D_w\) is the \emph{actual algebra of the entire moment fibre}
+and \(H_Q\) is the projected polytorus Gauss field, precisely as in
+\hyperref[v037:degree:moduleweight]{NAG-002362}. That theorem, with structure module \(B\), gives
+\begin{equation}\label{eq:weights}
+ m_{D,g}(w)=\frac{\dim_{H_Q}E_Q}{e_Q}
+       =\sum_{\mathfrak p\in\Min B}c_{\mathfrak p}\,
+                                m_{D_{\mathfrak p},g}(w).
+\end{equation}
+For an empty component fibre its weight is zero. This formula includes
+all local Artin lengths and residue degrees in \(E_Q\); no separate
+residue-degree multiplier is attached to \(c_{\mathfrak p}\).
+The lattice index is divided out exactly once.
+
+The equality holds on every top cell. Lower-dimensional cells carry
+no \(d\)-chain term, so the \hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain and weights} give \eqref{eq:chains}.
+By the \hyperref[fnd:nag002405:finite-cell-functional]{finite-cell functional}, integration of the same tangential smooth coefficients on a common subdivision gives \eqref{eq:integrals}. This is a finite sum; no
+limiting or measurable-integration extension occurs.
+The \hyperref[v037:forms:compactintegral]{ordinary compact integral} and \hyperref[v037:forms:compactpartition]{compact partitions} give the ordinary-form assertion. Actual domain restriction of the coefficients is the \hyperref[fnd:nag002772:effective-domain-transport]{effective domain transport} in the Cartier theorem, so the local formulas agree on overlaps.
+For a regular meromorphic function in the stated pure-zero-space scope,
+subtract the two effective formulas. On each actual common affinoid
+refinement, \hyperref[fnd:generalizeddomainbasechange]{quotient/domain base change} and \hyperref[v037:integration:puritylocality]{domain purity} preserve
+the empty-or-pure dimension \(n-1\) condition for all four equations.
+The \hyperref[fnd:nag002772:cartier]{antichain clause of the Cartier theorem} therefore
+applies to both cross-products and proves representation independence.
+A compact test needs finitely many such representatives and partition
+terms, whose sum is consequently independent of these choices. Closed immersions have compact inverse support on compact sets and are finite and everywhere relatively interior (\hyperref[fnd:generalizedfinitealgebras]{NAG-001701}); interior composition (\hyperref[fnd:affinoidinteriorcalculus]{NAG-001704}) therefore shows that a test supported in
+\(\Int(X/K)\) has the required interior support on its zero spaces.
+\end{proof}
+\endgroup
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002778-reader.jpg" alt="Typeset mathematical passage from PDF page 2031" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2031">PDF page 2031 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-002769/">NAG-002769</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-002772/">NAG-002772</a> · selected whole <small>(prerequisites)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002769/">NAG-002769</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002772/">NAG-002772</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002772/">fnd:nag002772:cartier</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

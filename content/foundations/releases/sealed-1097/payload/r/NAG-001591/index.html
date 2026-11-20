@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001591/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Dimension as a maximum over analytic points · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001591 · Accepted whole</p><h1>Dimension as a maximum over analytic points</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.22.7">Open in the English reader · PDF page 605</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9e582780a29e41d4bc45238c7d5103901d67d823484a8671bf8e684b2356099e">
+\begin{theorem}[\bi{Dimension as a maximum over analytic points}
+{由解析点的最大值恢复维数}]
+\label{fnd:affinoidabhyankarmaximum}
+\bi{For every nonempty generalized affinoid space $X=\mathcal M(A)$
+over any complete non-Archimedean field with its specified absolute
+value,}
+{对任意完备非阿基米德域上的非空广义 affinoid 空间
+$X=\mathcal M(A)$，保持基域上指定的绝对值，有}
+\[
+             \dim_K X=\max_{x\in X}d_K(x).
+\]
+\bi{In particular every $d_K(x)$ is finite. This includes
+nonreduced algebras, trivial valuations, and arbitrary real radii.}
+{特别地，每个 $d_K(x)$ 均有限。该结论包括非约化代数、
+平凡赋值及任意实半径。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="e3002c67646e0ba2cf9aa87ed998368ec7e4bfa370cd985a2fd42de023960c6a">
+\begin{proof}
+\bi{\textbf{Step 1: the strict upper bound.}
+Suppose $A$ is strict and fix $x$. Its kernel $\mathfrak p$ is
+prime, and $B=A/\mathfrak p$ is a strict integral affinoid algebra.
+The evaluated fraction fields of $A$ and $B$ at this point
+coincide, so their completed residue fields coincide.
+Choose a finite normalization}
+{\textbf{步骤 1：strict 情形的上界。}
+设 $A$ 为 strict，并固定 $x$。其核 $\mathfrak p$ 是素理想，
+$B=A/\mathfrak p$ 为 strict affinoid 整环。
+$A,B$ 在该点求值后的分式域相同，故其完备剩余域相同。
+选择有限正规化}
+\[
+ R=K\langle T_1,\ldots,T_e\rangle\hookrightarrow B,\qquad
+ e=\dim B\le\dim A
+\]
+\bi{using Theorem~\ref{fnd:strictfinitenormalization} and
+Proposition~\ref{fnd:stricttatedimension}. Let $z$ be the image of $x$ in
+$\mathcal M(R)$. Lemma~\ref{fnd:finitemorphismresiduefinite}
+gives $d_K(x)=d_K(z)$.}
+{其中使用 Theorem~\ref{fnd:strictfinitenormalization} 及
+Proposition~\ref{fnd:stricttatedimension}。以 $z$ 记 $x$ 在
+$\mathcal M(R)$ 中的像。由
+Lemma~\ref{fnd:finitemorphismresiduefinite}，
+$d_K(x)=d_K(z)$。}
+
+\bi{The field $\mathcal H_R(z)$ is the completion of
+$\operatorname{Frac}(K[T_1,\ldots,T_e]/\mathfrak q)$,
+where $\mathfrak q$ is the kernel on the polynomial subalgebra.
+Indeed polynomials are dense in $R$ for its Gauss norm and
+evaluation at $z$ is contractive. After approximating numerator
+and denominator, with denominator error smaller than its
+nonzero value, the same assertion holds for fractions.
+This proves the claimed density in the completed residue field.
+The polynomial fraction field has transcendence degree at most
+$e$. Lemma~\ref{fnd:valuedfieldabhyankar} therefore gives
+$d_K(z)\le e\le\dim A$. This argument uses the polynomial
+fraction field, not the generally much larger fraction field
+of the Tate algebra.}
+{域 $\mathcal H_R(z)$ 是
+$\operatorname{Frac}(K[T_1,\ldots,T_e]/\mathfrak q)$ 的完备化，
+其中 $\mathfrak q$ 是在多项式子代数上的求值核。
+事实上，多项式相对于 Gauss 范数在 $R$ 中稠密，
+而在 $z$ 处求值为 contractive。对分子、分母分别逼近，
+并使分母误差小于其非零值，同样得到分式的逼近。
+这证明了它在完备剩余域中的稠密性。
+该多项式分式域的超越次数至多为 $e$。
+由 Lemma~\ref{fnd:valuedfieldabhyankar}，
+$d_K(z)\le e\le\dim A$。这里使用的是多项式分式域，
+而不是通常大得多的 Tate 代数分式域。}
+
+\bi{\textbf{Step 2: a strict point attaining the bound.}
+Choose a prime quotient $B=A/\mathfrak p$ with
+$\dim B=\dim A=d$. Such a quotient exists: a prime chain
+of maximal length starts at such a prime. The dimension is finite:
+a strict presentation $R_n\twoheadrightarrow A$ identifies every
+prime chain of $A$ with a prime chain of $R_n$, whose dimension
+is $n$ by Proposition~\ref{fnd:stricttatedimension}.
+Normalize $B$ finitely over $R_d$. Proposition
+\ref{fnd:normalizationfiniteboundary} gives a point $x$ above
+the unit Gauss point $\eta$ of $R_d$.
+Polynomial density identifies $\mathcal H(\eta)$ with the
+completion of the unit Gauss field $K(T_1,\ldots,T_d)$.
+Lemma~\ref{fnd:gaussvaluedfielddimension} gives $d_K(\eta)=d$,
+and Lemma~\ref{fnd:finitemorphismresiduefinite} gives
+$d_K(x)=d$. Its image in $\mathcal M(A)$ has the same residue
+field, proving attainment.}
+{\textbf{步骤 2：达到上界的 strict 点。}
+选择素商 $B=A/\mathfrak p$，使 $\dim B=\dim A=d$。
+这样的商存在：一条最大长度的素理想链的起点即满足此条件。
+其维数有限：strict 表示 $R_n\twoheadrightarrow A$
+将 $A$ 中的每条素理想链识别为 $R_n$ 中的素理想链，
+而由 Proposition~\ref{fnd:stricttatedimension}，后者的维数为 $n$。
+将 $B$ 有限正规化到 $R_d$ 上。
+Proposition~\ref{fnd:normalizationfiniteboundary} 给出
+$R_d$ 的单位 Gauss 点 $\eta$ 上方的点 $x$。
+多项式稠密性将 $\mathcal H(\eta)$ 识别为
+单位 Gauss 域 $K(T_1,\ldots,T_d)$ 的完备化。
+由 Lemma~\ref{fnd:gaussvaluedfielddimension}，
+$d_K(\eta)=d$，再由
+Lemma~\ref{fnd:finitemorphismresiduefinite}，
+$d_K(x)=d$。它在 $\mathcal M(A)$ 中的像具有相同剩余域，
+因此上界实际取到。}
+
+\bi{\textbf{Step 3: arbitrary radii.}
+Choose $L=K_r$ making $A_L$ strict by
+Theorem~\ref{fnd:simultaneousstrictification}. Its dimension
+is $d=\dim_KX$ by
+Theorem~\ref{fnd:analyticdimensionindependence}.
+For every $x\in X$, the Gauss-section equality in
+Proposition~\ref{fnd:freegaussresidualdimension} and Step 1 give}
+{\textbf{步骤 3：任意半径。}
+由 Theorem~\ref{fnd:simultaneousstrictification}，
+选择 $L=K_r$ 使 $A_L$ 为 strict。
+根据 Theorem~\ref{fnd:analyticdimensionindependence}，
+其维数为 $d=\dim_KX$。
+对每个 $x\in X$，由
+Proposition~\ref{fnd:freegaussresidualdimension} 的 Gauss
+截面等式及步骤 1，得到}
+\[
+             d_K(x)=d_L(\sigma_r(x))\le d.
+\]
+\bi{By Step 2 choose $y\in\mathcal M_L(A_L)$ with $d_L(y)=d$,
+and let $x$ be its image. The other inequality in that same
+proposition gives $d\le d_K(x)$. Combining both bounds gives
+$d_K(x)=d$. Every construction used the original absolute values.}
+{由步骤 2，选择 $y\in\mathcal M_L(A_L)$，使 $d_L(y)=d$，
+并以 $x$ 记其像。同一命题中的另一不等式给出
+$d\le d_K(x)$。结合两边即得 $d_K(x)=d$。
+所有构造均使用原来的绝对值。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001591-reader.jpg" alt="Typeset mathematical passage from PDF page 605" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=605">PDF page 605 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole</li><li><a href="/r/NAG-001557/">NAG-001557</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001587/">NAG-001587</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001587/">NAG-001587</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole</li><li><a href="/r/NAG-001588/">NAG-001588</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001589/">NAG-001589</a> · selected whole</li><li><a href="/r/NAG-001589/">NAG-001589</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001590/">NAG-001590</a> · selected whole</li><li><a href="/r/NAG-001590/">NAG-001590</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001657/">NAG-001657</a> · selected whole</li><li><a href="/r/NAG-001657/">NAG-001657</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole</li><li><a href="/r/NAG-001664/">NAG-001664</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001902/">NAG-001902</a> · selected whole</li><li><a href="/r/NAG-001902/">NAG-001902</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001664/">fnd:analyticdimensionindependence</a></li><li><a href="/r/NAG-001590/">fnd:finitemorphismresiduefinite</a></li><li><a href="/r/NAG-001589/">fnd:freegaussresidualdimension</a></li><li><a href="/r/NAG-001588/">fnd:gaussvaluedfielddimension</a></li><li><a href="/r/NAG-001902/">fnd:normalizationfiniteboundary</a></li><li><a href="/r/NAG-001451/">fnd:strictfinitenormalization</a></li><li><a href="/r/NAG-001657/">fnd:stricttatedimension</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

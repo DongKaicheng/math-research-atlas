@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001735/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Separating the branches of a finite morphism · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001735 · Accepted whole</p><h1>Separating the branches of a finite morphism</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.2.35.1">Open in the English reader · PDF page 307</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="591174570601985a2ab4687de0a29ec6eed9a5e80c2ac0b87c97abd5fbb77a51">
+\begin{lemma}[\bi{Separating the branches of a finite morphism}
+{分离有限态射的分支}]
+\label{fnd:finiteanalyticbranchseparation}
+\bi{Let $f:Y\to X$ be a norm-admissible finite morphism of
+good analytic spaces. Its fibre over any $x\in X$ is a
+finite set $\{y_1,\ldots,y_m\}$. Given neighbourhoods
+$N_i$ of these points, there is an ordinary open
+neighbourhood $U$ of $x$ such that}
+{设 $f:Y\to X$ 是 good 解析空间之间 norm-admissible 的有限
+态射。它在任意 $x\in X$ 上的纤维为有限集
+$\{y_1,\ldots,y_m\}$。给定这些点的邻域 $N_i$，存在
+$x$ 的通常开邻域 $U$，使}
+\[
+ f^{-1}(U)=\coprod_{i=1}^m W_i,\qquad
+ y_i\in W_i\subset N_i,
+\]
+\bi{where each $W_i$ is open and closed in $f^{-1}(U)$,
+and $W_i\to U$ is finite. On ordinary local rings there
+is a canonical product decomposition}
+{其中每个 $W_i$ 在 $f^{-1}(U)$ 中开闭，且 $W_i\to U$
+有限。在通常局部环上，有典范乘积分解}
+\[
+ (f_*\mathcal O_Y)_x
+      \simeq \prod_{i=1}^m\mathcal O_{Y,y_i}.
+\]
+\bi{If $X=\mathcal M(A)$ and $Y=\mathcal M(B)$, its
+left side is $B\otimes_A\mathcal O_{X,x}$.}
+{若 $X=\mathcal M(A)$、$Y=\mathcal M(B)$，则左边为
+$B\otimes_A\mathcal O_{X,x}$。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4fb785c3072f60b23dcb9242749824f9328b31dd79eeafcf2295b14c828da4fa">
+\begin{proof}
+\bi{Work over an affinoid neighbourhood $V$ of $x$.
+The fibre has algebra $D=B\otimes_A\mathcal H(x)$,
+finite dimensional over the complete field $\mathcal H(x)$,
+by Proposition~\ref{fnd:generalizedfinitebasechange} and
+Theorem~\ref{fnd:allpointaffinoidfibres}.
+Every prime of a finite-dimensional algebra over a field
+is maximal, since a finite-dimensional domain is a field:
+multiplication by a nonzero element is injective and hence
+surjective. There are only finitely many maximal ideals.
+Indeed, the Chinese remainder map for any finite collection
+of distinct maximal ideals is surjective onto their residue
+fields, so their number is at most $\dim_{\mathcal H(x)}D$.
+Each residue field is finite over $\mathcal H(x)$ and
+has exactly one extending absolute value by
+Lemma~\ref{fnd:finiteextensionnorms}; the quotient map
+is bounded for the canonical finite-dimensional norms.
+Consequently $\mathcal M(D)$ has exactly one point for
+each of these finitely many maximal ideals.}
+{在 $x$ 的一个 affinoid 邻域 $V$ 上工作。由
+Proposition~\ref{fnd:generalizedfinitebasechange} 和
+Theorem~\ref{fnd:allpointaffinoidfibres}，纤维代数为
+$D=B\otimes_A\mathcal H(x)$，在完备域 $\mathcal H(x)$
+上有限维。域上有限维代数的每个素理想都是极大理想：
+有限维整环中的非零元素乘法单射，故满射，所以该整环为域。
+极大理想也只有有限个。确实，对任意有限组不同的极大理想，
+中国剩余映射满射到其剩余域的乘积，所以个数至多为
+$\dim_{\mathcal H(x)}D$。每个剩余域在 $\mathcal H(x)$
+上有限，由 Lemma~\ref{fnd:finiteextensionnorms}，其绝对值
+延拓唯一；商映射对典范有限维范数有界。因此，
+$\mathcal M(D)$ 的点恰好与这有限个极大理想一一对应。}
+
+\bi{The space $f^{-1}(V)$ is affinoid, hence compact
+Hausdorff, and its map to $V$ is closed. Choose pairwise
+disjoint ordinary open neighbourhoods $O_i\subset N_i$
+of its fibre points. The complement of their union is
+compact and has closed image not containing $x$.
+Remove that image and intersect with the ordinary interior
+of $V$ to obtain $U$. Then
+$W_i=O_i\cap f^{-1}(U)$ give the stated open-and-closed
+partition. For any affinoid domain $V&#x27;\subset U$,
+$f^{-1}(V&#x27;)=\mathcal M(B&#x27;)$ is affinoid and finite
+over $V&#x27;$. The function equal to one on
+$W_i\cap f^{-1}(V&#x27;)$ and zero on its complement is
+analytic by sheaf gluing on this ordinary open partition.
+It is an idempotent $e_i\in B&#x27;$, since the global
+sections on an affinoid are its algebra.
+Thus $W_i\cap f^{-1}(V&#x27;)=\mathcal M(e_iB&#x27;)$.
+The summand $e_iB&#x27;$ is a finite module with its canonical
+norm: projection by $e_i$ is bounded and finite-module
+maps are norm-strict. This proves finiteness of $W_i\to U$.}
+{$f^{-1}(V)$ 为 affinoid，因而紧 Hausdorff，且到 $V$ 的映射
+闭。为纤维中的各点选择两两不交的通常开邻域
+$O_i\subset N_i$。它们的并的补集紧，其像闭且不含 $x$。
+去掉此像，再与 $V$ 的通常内部相交，得到 $U$。
+于是 $W_i=O_i\cap f^{-1}(U)$ 给出所需的开闭分拆。
+对任意 affinoid 域 $V&#x27;\subset U$，
+$f^{-1}(V&#x27;)=\mathcal M(B&#x27;)$ 为 affinoid 且在 $V&#x27;$ 上有限。
+在 $W_i\cap f^{-1}(V&#x27;)$ 上等于一、在其补集上等于零的函数，
+由此通常开分拆上的层粘合而解析。Affinoid 上的全局截面就是
+其代数，因此该函数是 $B&#x27;$ 中的幂等元 $e_i$。
+从而 $W_i\cap f^{-1}(V&#x27;)=\mathcal M(e_iB&#x27;)$。
+此直和因子 $e_iB&#x27;$ 带有典范有限模范数：乘以 $e_i$ 的投影
+有界，而有限模映射为 norm-strict。这证明 $W_i\to U$ 有限。}
+
+\bi{Restriction of germs defines the displayed product
+map on local rings. Given a germ at each $y_i$, choose
+representatives on $N_i$, separate the neighbourhoods,
+and shrink $U$ as just done. Their restrictions glue on
+the disjoint $W_i$ to a section over $f^{-1}(U)$.
+This proves surjectivity. If all germs of such a section
+vanish, choose neighbourhoods where they vanish and
+shrink once more; the section then vanishes on an entire
+inverse-image neighbourhood. This proves injectivity.
+In the affinoid case, take the filtered colimit over
+affinoid neighbourhoods $V&#x27;$ of $x$. Finite base change
+gives $\mathcal O(f^{-1}(V&#x27;))=B\otimes_A A_{V&#x27;}$;
+ordinary tensor commutes with this colimit, which is
+$\mathcal O_{X,x}$ by
+Proposition~\ref{fnd:ordinaryaffinoidstalks}.
+This gives the final identification.}
+{芽的限制给出所列局部环乘积映射。对每个 $y_i$ 给定一个芽，
+在 $N_i$ 上选代表元，分离这些邻域，再按上述方法缩小 $U$。
+它们在不交的 $W_i$ 上的限制粘合成 $f^{-1}(U)$ 上的截面，
+故映射满。若一个截面在各 $y_i$ 的芽都为零，则选择使其为零
+的邻域，再次缩小后，该截面在整个逆像邻域上为零，故映射单。
+Affinoid 情形，对 $x$ 的 affinoid 邻域 $V&#x27;$ 取滤过余极限。
+有限基变换给出
+$\mathcal O(f^{-1}(V&#x27;))=B\otimes_A A_{V&#x27;}$；
+普通张量与此余极限交换，而由
+Proposition~\ref{fnd:ordinaryaffinoidstalks}，余极限为
+$\mathcal O_{X,x}$，得到最后的识别。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001735-reader.jpg" alt="Typeset mathematical passage from PDF page 307" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=307">PDF page 307 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole</li><li><a href="/r/NAG-001621/">NAG-001621</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001621/">NAG-001621</a> · selected whole</li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole</li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole</li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001831/">NAG-001831</a> · selected whole, export unavailable <small>(sealed native whole)</small></li><li><a href="/r/NAG-001831/">NAG-001831</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001621/">NAG-001621</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001622/">NAG-001622</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001692/">NAG-001692</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001698/">NAG-001698</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001831/">NAG-001831</a> · selected whole, export unavailable <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001692/">fnd:allpointaffinoidfibres</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001698/">fnd:ordinaryaffinoidstalks</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

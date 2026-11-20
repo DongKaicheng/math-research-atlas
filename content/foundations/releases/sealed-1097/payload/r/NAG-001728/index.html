@@ -1,0 +1,146 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001728/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Relative projective cohomology comparison · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001728 · Accepted whole</p><h1>Relative projective cohomology comparison</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.34.3">Open in the English reader · PDF page 299</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="df40b05d7c74550bc514bbdbf14b62238ee233e546a0b82af6e6c0cb94044659">
+\begin{theorem}[\bi{Relative projective cohomology comparison}
+{相对射影上同调比较}]
+\label{fnd:relativeprojectivecomparison}
+\bi{Let $f:Y\to X$ be a projective morphism of finite-type
+$K$-schemes, and let $\mathcal E$ be coherent on $Y$.
+There is a natural quasi-isomorphism}
+{设 $f:Y\to X$ 是有限型 $K$-概形之间的射影态射，
+$\mathcal E$ 为 $Y$ 上的凝聚层，则有自然拟同构}
+\[
+ \alpha_X^* Rf_*\mathcal E
+       \ \simeq\ Rf^{\an}_*(\mathcal E^{\an}).
+\]
+\bi{In particular
+$(R^qf_*\mathcal E)^{\an}\simeq R^qf^{\an}_*\mathcal E^{\an}$
+for every $q$. If $X=\operatorname{Spec}(R)$ and
+$V=\mathcal M(A)\subset X^{\an}$ is an affinoid domain, the
+corresponding comparison is}
+{特别地，对所有 $q$ 有
+$(R^qf_*\mathcal E)^{\an}\simeq R^qf^{\an}_*\mathcal E^{\an}$。
+若 $X=\operatorname{Spec}(R)$ 且
+$V=\mathcal M(A)\subset X^{\an}$ 为 affinoid 域，则相应比较为}
+\[
+ A\otimes_R H^q(Y,\mathcal E)
+       \ \simeq\ H^q(f^{\an,-1}(V)_G,\mathcal E^{\an}).
+\]
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4ff7bfc8cca980b1873b7f29d204448c95c8c67af7c90dce200afb0ebc11b734">
+\begin{proof}
+\bi{\textbf{Projective space.} First take $Y=\mathbf P^n_R$.
+For $\mathcal O(m)$ the standard unit-affinoid covering above
+$V$ has coordinate algebras consisting of convergent Laurent
+series with coefficients in $A$. The proof of
+Lemma~\ref{fnd:unitlaurentnormalform} works coefficient by
+coefficient over the complete Banach algebra $A$: its reduction,
+isometric section, and convergent ideal multipliers have norm
+at most one. The exponent sets and the simplex insertion
+operators in Theorem~\ref{fnd:analyticprojectivetwists} are
+unchanged. They yield a bounded contraction onto the finite free
+$A$-modules indexed by the same surviving monomials.
+The algebraic computation \cite[Tag 01XT]{StacksAlg} over $R$
+has the same representatives. Hence the displayed comparison
+holds for every twist, and respects all restriction maps in $V$.}
+{\textbf{射影空间。} 先取 $Y=\mathbf P^n_R$。
+对 $\mathcal O(m)$，$V$ 上方的标准单位 affinoid 覆盖的
+坐标代数由系数属于 $A$ 的收敛 Laurent 级数组成。
+Lemma~\ref{fnd:unitlaurentnormalform} 的证明可逐系数用于
+完备 Banach 代数 $A$：约化、等距截面及收敛的理想倍数的
+范数均至多为一。Theorem~\ref{fnd:analyticprojectivetwists}
+中的指数集和单纯形插入算子不变，给出到由同一组存留单项式
+标记的有限自由 $A$-模的有界收缩。
+\cite[Tag 01XT]{StacksAlg} 在 $R$ 上的代数计算具有相同代表元，
+因此所列比较对每个扭转层成立，且保持 $V$ 的全部限制映射。}
+
+\bi{For an arbitrary coherent $\mathcal E$, choose, by
+\cite[Tag 01YS(1)--(2)]{StacksAlg}, an exact sequence
+$0\to\mathcal R\to\mathcal L\to\mathcal E\to0$, where
+$\mathcal L$ is a finite sum of twists and $\mathcal R$ is coherent.
+Both the algebraic standard affine cover and the analytic unit
+cover have length $n$, so all cohomology above $n$ vanishes,
+using \cite[Tag 01XB]{StacksAlg} and
+Proposition~\ref{fnd:finiteaffinoidcohomology}.
+Tensor the algebraic long exact sequence with $A$; it stays exact
+by Proposition~\ref{fnd:analytificationgsiteflat}.
+Analytification and restriction to $f^{\an,-1}(V)$ also preserve
+the short exact sequence. Descend on $q$, simultaneously for
+all coherent sheaves. The exact diagram first lifts an analytic
+$q$-class of $\mathcal E$ by lifting its connecting
+$(q+1)$-class of $\mathcal R$ and correcting by a class of
+$\mathcal L$; this proves surjectivity for all $\mathcal E$.
+Apply this surjectivity to $\mathcal R$ to lift the correction
+of a class of $\mathcal L$ mapping to zero analytically.
+Injectivity for $\mathcal L$ and the $(q+1)$-term then proves
+injectivity for $\mathcal E$. This is the exact diagram chase
+of Theorem~\ref{fnd:projectivecoherentcomparison}, now with
+the flat coefficient extension $R\to A$.}
+{对任意凝聚层 $\mathcal E$，由
+\cite[Tag 01YS(1)--(2)]{StacksAlg} 选择正合列
+$0\to\mathcal R\to\mathcal L\to\mathcal E\to0$，
+其中 $\mathcal L$ 是扭转层的有限直和，$\mathcal R$ 凝聚。
+代数标准仿射覆盖及解析单位覆盖的长度均为 $n$，
+所以由 \cite[Tag 01XB]{StacksAlg} 和
+Proposition~\ref{fnd:finiteaffinoidcohomology}，
+$n$ 次以上的上同调均为零。将代数长正合列与 $A$ 张量；
+由 Proposition~\ref{fnd:analytificationgsiteflat}，它仍正合。
+解析化及向 $f^{\an,-1}(V)$ 的限制也保持短正合列。
+对所有凝聚层同时按 $q$ 递降归纳：先提升
+$\mathcal E$ 的解析 $q$ 次类所对应的
+$\mathcal R$ 的连接 $(q+1)$ 次类，再用 $\mathcal L$
+的类修正，得到对所有 $\mathcal E$ 的满射性。
+将此满射性用于 $\mathcal R$，便能提升在解析一侧消去
+$\mathcal L$ 中原像所需的修正；$\mathcal L$ 及
+$(q+1)$ 次项上的单射性随后给出 $\mathcal E$ 的单射性。
+这正是 Theorem~\ref{fnd:projectivecoherentcomparison}
+的图追踪，只是增加了平坦的系数扩张 $R\to A$。}
+
+\bi{\textbf{Closed projective subspaces and direct images.}
+Factor a general projective $f$ as a closed immersion into
+$\mathbf P^n_X$ followed by projection. Closed direct image
+is exact and coherent on both sides, by finite quotient modules
+and Lemma~\ref{fnd:closedanalyticcoherentextension}; it commutes
+with analytification on each chart. The same affinoid and affine
+\v Cech complexes compute cohomology before and after this closed
+direct image. Thus the preceding argument applies to $i_*\mathcal E$.
+The algebraic modules $H^q(Y,\mathcal E)$ are finite over $R$
+by \cite[Tag 02O5]{StacksAlg}; their localizations are the
+sections of $R^qf_*\mathcal E$, as also follows by localizing
+the finite affine \v Cech complex. On the analytic side,
+\cite[Tag 072W]{StacksAlg} identifies the higher direct image
+as the sheafification of the cohomology on inverse images of
+objects. The displayed isomorphisms, compatible with affinoid
+restriction, therefore give the asserted isomorphisms of
+cohomology sheaves.}
+{\textbf{闭射影子空间与直接像。}
+一般射影 $f$ 分解为到 $\mathbf P^n_X$ 的闭浸入及投影。
+由有限商模及 Lemma~\ref{fnd:closedanalyticcoherentextension}，
+两边的闭直接像都正合、保持凝聚性，并逐片与解析化相容。
+闭直接像前后的仿射及 affinoid \v Cech 复形相同，
+所以前述论证适用于 $i_*\mathcal E$。
+由 \cite[Tag 02O5]{StacksAlg}，代数模
+$H^q(Y,\mathcal E)$ 在 $R$ 上有限；其局部化为
+$R^qf_*\mathcal E$ 的截面，也可直接将有限仿射
+\v Cech 复形局部化得到。
+解析一侧，\cite[Tag 072W]{StacksAlg} 将高次直接像识别为
+各对象逆像的上同调所组成预层的层化。因此，与 affinoid
+限制相容的所列同构给出所需上同调层同构。}
+
+\bi{Finally the commutative analytification square of ringed
+topoi has the canonical derived comparison map of
+\cite[Tag 07A7]{StacksAlg}. Proposition~\ref{fnd:analytificationgsiteflat}
+makes its derived pullbacks ordinary pullbacks.
+The cohomology maps just calculated are those of this map:
+on \v Cech resolutions they send a regular section to its
+analytic section, which is the adjunction map used in its
+construction. They are isomorphisms in every degree on an
+affinoid basis, so the comparison is a quasi-isomorphism.
+This also proves its compatibility with the adjunction
+$\mathcal F\to Rf_*f^*\mathcal F$ and with restriction.}
+{最后，赋环拓扑斯的交换解析化方块具有
+\cite[Tag 07A7]{StacksAlg} 的典范导出比较映射。
+由 Proposition~\ref{fnd:analytificationgsiteflat}，
+其中导出拉回就是普通拉回。刚才计算的上同调映射正是此映射：
+在 \v Cech 解消上，它将正则截面送到相应解析截面，
+也就是构造中的伴随映射。它在 affinoid 基上每次均为同构，
+故导出比较为拟同构。这也证明其与伴随映射
+$\mathcal F\to Rf_*f^*\mathcal F$ 以及限制的相容性。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001728-reader.jpg" alt="Typeset mathematical passage from PDF page 299" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=299">PDF page 299 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-01XB@NAG-001728:existing-5-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-01XT@NAG-001728:existing-3-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-01YS@NAG-001728:existing-4-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-02O5@NAG-001728:existing-11-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-072W@NAG-001728:existing-12-1 · named external application <small>(existing exact named Stacks authority)</small></li><li>APP-STACKS-07A7@NAG-001728:existing-14-1 · named external application <small>(existing exact named Stacks authority)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001726/">NAG-001726</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001891/">NAG-001891</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001892/">NAG-001892</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001893/">NAG-001893</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001894/">NAG-001894</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001897/">NAG-001897</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/01XB">APP-STACKS-01XB@NAG-001728:existing-5-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/01XT">APP-STACKS-01XT@NAG-001728:existing-3-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/01YS">APP-STACKS-01YS@NAG-001728:existing-4-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/02O5">APP-STACKS-02O5@NAG-001728:existing-11-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/072W">APP-STACKS-072W@NAG-001728:existing-12-1</a></li><li><a href="https://stacks.math.columbia.edu/tag/07A7">APP-STACKS-07A7@NAG-001728:existing-14-1</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001893/">fnd:analyticprojectivetwists</a></li><li><a href="/r/NAG-001726/">fnd:analytificationgsiteflat</a></li><li><a href="/r/NAG-001897/">fnd:closedanalyticcoherentextension</a></li><li><a href="/r/NAG-001891/">fnd:finiteaffinoidcohomology</a></li><li><a href="/r/NAG-001894/">fnd:projectivecoherentcomparison</a></li><li><a href="/r/NAG-001892/">fnd:unitlaurentnormalform</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

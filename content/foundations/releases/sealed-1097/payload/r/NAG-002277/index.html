@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002277/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The ordered category of marked contractions · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002277 · Accepted whole</p><h1>The ordered category of marked contractions</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.45.8">Open in the English reader · PDF page 775</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="84d502a4a25a0de2f47ae58090be6c6b6d04bb113632e2711e2844cb65fe2750">
+\begin{theorem}[The ordered category of marked contractions]
+\label{v036:f5:contractioncategory}
+Fix a marked semistable algebraic model $(\mathcal C_0,D)$.
+The category of its marked semistable algebraic contractions
+over $C$ is equivalent to the following partially ordered
+set: its objects are the nonempty subsets $V$ of
+$V(\mathcal C_0)$ satisfying the geometric marked forest
+condition, and there is one arrow $V&#x27;\to V$ precisely
+when $V\subset V&#x27;$. A contraction here includes its actual
+morphism from $\mathcal C_0$, and arrows commute with these
+morphisms.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="70057e5a7cc88830904ac04f7dfa7c5e8a34499277be5a15379920a55ec384bd">
+\begin{proof}
+Existence is Theorem~\ref{v036:f5:markedcontraction},
+necessity is Proposition~\ref{v036:f5:forestnecessity},
+and uniqueness for each object is
+Proposition~\ref{v036:f5:contractionuniqueness}.
+
+Suppose $V\subset V&#x27;$. On the geometric special fibre,
+every tree removed for $V&#x27;$ lies in a tree removed for
+$V$: its vertices are still removed, and its connected
+edges remain in the induced removed graph. The fibre
+description in Theorem~\ref{v036:f5:markedcontraction}
+therefore shows that $q_V$ is constant on every geometric
+fibre of $q_{V&#x27;}$. The fibre-product argument in the proof
+of Proposition~\ref{v036:f5:contractionuniqueness} descends
+this to the original special fibre. The generic assertion
+is immediate. Lemma~\ref{v036:f5:properquotient} gives the
+unique factorization
+\[
+                \mathcal C_0\xrightarrow{q_{V&#x27;}}
+                \mathcal C_{V&#x27;}\longrightarrow\mathcal C_V.
+\]
+It preserves the markings because its composite with
+$D\hookrightarrow\mathcal C_0$ does. Conversely, every
+such arrow gives $V\subset V&#x27;$ by
+Lemma~\ref{v035:f5:dominationvertices}. Composites are
+forced by uniqueness, giving the claimed equivalence.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="6ccc31fd4d6e4a84620ff723e62cc5124ee6d70854cfab6e6ce1b44de01f19b0">
+\begin{definition}[Marked semistable models over the original field]
+\label{v036:f5:modelclass}
+Let $C/K$ be smooth, projective and geometrically connected.
+A \emph{semistable algebraic model} of $C$
+means a projective flat finitely presented nodal $O$-curve
+with generic fibre identified with $C$ and geometrically
+connected special fibre. Its special fibre is geometrically
+reduced. A \emph{marking} is a finite \textup{\&#x27;etale}
+$O$-scheme $D$ embedded as a closed subscheme of the relative
+smooth locus. An empty marking is allowed. Write $W$ for
+the component vertex set of the model. A morphism of marked
+models carries a specified isomorphism of its marking with
+the target marking, compatible with the curve morphism
+and with the specified generic identifications.
+
+The \emph{geometric marked dual graph} has one vertex for
+each component over $\overline k$, one edge for each
+geometric node, and one labelled leg for each point of
+$D_{\overline k}$. The two branches of a self-node give the
+two ends of its loop.
+\end{definition}</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="e2ff44d2c79b5306269640e0dcaf1267358d0d96a09dcb2d7ca72ee3dc63ff0e">
+Fix a nonempty subset $V\subset W$,
+and let $\overline V$ denote all geometric vertices over
+its special components. For a connected component $T$ of
+the subgraph induced by the vertices outside $\overline V$,
+let $b(T)$ count its incident edges leading to
+$\overline V$, with multiplicity, and let $m(T)$ count
+its marked legs.
+
+\begin{definition}[The marked forest condition]
+\label{v036:f5:forestcondition}
+The subset $V$ satisfies the marked forest condition if
+every such $T$ is a tree, all the geometric special
+components at its vertices are smooth $\mathbf P^1_{\overline k}$,
+and
+\[
+                         b(T)+m(T)\leq2.
+\]
+Connectedness and $V\ne\varnothing$ give $b(T)\geq1$.
+Thus a tree with one attaching branch carries at most one
+mark, and a tree with two attaching branches carries none.
+The two attaching branches may end on the same protected
+component.
+\end{definition}</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="a738963efee0a28cad46cfb451ebeb3f55acb81a0c6f8cb4058e33ea06d58f77">
+\begin{definition}[Semistable formal curve models with pointed charts]
+\label{v035:formal:modelclass}
+Suppose $K$ is algebraically closed and $C/K$ is a smooth
+connected projective curve. A point of $C^{\an}$ is of
+\emph{type II} when its completed residue field has residual
+transcendence degree one and relative rational value-group
+rank zero. A \emph{pointedly semistable
+formal model} of $C^{\an}$ is a quasi-compact admissible
+formal $O$-scheme with an identification of its generic
+fibre with $C^{\an}$, reduced pure one-dimensional special
+fibre, and a diagram as in
+Proposition~\ref{v035:formal:tubeends} at each closed
+special-fibre point. Morphisms induce the identity on
+$C^{\an}$. Its vertex set consists of its component
+points $v_\eta$.
+\end{definition}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002277-reader.jpg" alt="Typeset mathematical passage from PDF page 775" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=775">PDF page 775</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002229/">NAG-002229</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002268/">NAG-002268</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002274/">NAG-002274</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002275/">NAG-002275</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002276/">NAG-002276</a> · selected whole <small>(whole object uniqueness)</small></li><li>SUPPORT:NAG-002276:geometric_fibre_constancy_descent · typed target unresolved in this export <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002229/">v035:f5:dominationvertices</a></li><li><a href="/r/NAG-002222/">v035:formal:tubeends</a></li><li><a href="/r/NAG-002276/">v036:f5:contractionuniqueness</a></li><li><a href="/r/NAG-002275/">v036:f5:forestnecessity</a></li><li><a href="/r/NAG-002274/">v036:f5:markedcontraction</a></li><li><a href="/r/NAG-002268/">v036:f5:properquotient</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

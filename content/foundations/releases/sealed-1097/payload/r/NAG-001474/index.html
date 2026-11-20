@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001474/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A standard refinement of a finite rational cover · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001474 · Accepted whole</p><h1>A standard refinement of a finite rational cover</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.22.8">Open in the English reader · PDF page 202</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4d4ea1930d8c9016b1520415eb1d09f9c43b8fea68ee23592bf32bee86dddc22">
+\begin{proposition}[\bi{A standard refinement of a finite rational cover}{有限 rational 覆盖的标准加细}]\label{fnd:finiterationalstandardrefinement}
+\bi{Let $\mathcal U=(U_i)_{1\leq i\leq n}$ be a finite cover of $\mathcal M(A)$, where}
+{设 $\mathcal U=(U_i)_{1\leq i\leq n}$ 为 $\mathcal M(A)$ 的有限覆盖，其中}
+\[
+ U_i=\{x:|f^{(i)}_j(x)|\leq|f^{(i)}_0(x)|, 1\leq j\leq r_i\},
+ \qquad (f^{(i)}_0,\ldots,f^{(i)}_{r_i})=A.
+\]
+\bi{Write $B_i$ for the associated rational presentation. Put}
+{记相应 rational 表示为 $B_i$。令}
+\[
+ \Lambda=\prod_{i=1}^n\{0,\ldots,r_i\},\qquad
+ \Lambda_0=\{\lambda\in\Lambda:\lambda_i=0\text{ for some }i\},
+ \qquad F_\lambda=\prod_{i=1}^n f^{(i)}_{\lambda_i}.
+\]
+\bi{The tuple $(F_\lambda)_{\lambda\in\Lambda_0}$ generates the unit ideal. Its standard rational family $(S_\lambda)_{\lambda\in\Lambda_0}$ covers $\mathcal M(A)$. For any choice $i(\lambda)$ with $\lambda_{i(\lambda)}=0$, the point set of $S_\lambda$ is contained in $U_{i(\lambda)}$, and there is a unique bounded map $B_{i(\lambda)}\to S_\lambda$ over $A$. These maps give a compatible refinement of all finite intersection diagrams.}
+{Tuple $(F_\lambda)_{\lambda\in\Lambda_0}$ 生成单位理想。其标准 rational 族 $(S_\lambda)_{\lambda\in\Lambda_0}$ 覆盖 $\mathcal M(A)$。任意选择满足 $\lambda_{i(\lambda)}=0$ 的 $i(\lambda)$，则 $S_\lambda$ 的谱点集合包含于 $U_{i(\lambda)}$，并且存在唯一的有界 $A$-代数映射 $B_{i(\lambda)}\to S_\lambda$。这些映射给出与全部有限交叠图表相容的加细。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b35aa147b58617fb3efc92d271c8ead4c25ca4e7281c8a39b467ecf512407940">
+\begin{proof}
+\bi{Suppose all $F_\lambda$, $\lambda\in\Lambda_0$, vanished at $x$. Choose $i$ with $x\in U_i$. The unit-ideal identity for row $i$ implies $f^{(i)}_0(x)\ne0$. In every other row, at least one entry is nonzero at $x$, again by its unit-ideal identity. Choosing such entries and taking $\lambda_i=0$ gives a nonzero $F_\lambda(x)$, a contradiction. Theorem~\ref{fnd:strictpointunitcriterion} now implies that these $F_\lambda$ generate the unit ideal. The standard family covers because at each point one of the finitely many nonzero values $|F_\lambda|$ is maximal; Theorem~\ref{fnd:strictrationalpointtopology} identifies its quotient point sets.}
+{假设某个 $x$ 使所有 $\lambda\in\Lambda_0$ 对应的 $F_\lambda$ 为零。选取满足 $x\in U_i$ 的 $i$。由第 $i$ 行的单位理想恒等式，$f^{(i)}_0(x)\ne0$。对其余每一行，由相应的单位理想恒等式，都至少有一个条目在 $x$ 处非零。选择这样的条目，并取 $\lambda_i=0$，即得到非零的 $F_\lambda(x)$，矛盾。因此由 Theorem~\ref{fnd:strictpointunitcriterion}，这些 $F_\lambda$ 生成单位理想。标准族构成覆盖，因为在每个点，有限个 $|F_\lambda|$ 中有一个非零最大值；Theorem~\ref{fnd:strictrationalpointtopology} 将对应商的谱点集合作出识别。}
+
+\bi{Fix $\lambda\in\Lambda_0$, write $k=i(\lambda)$, and let $x$ be a point of its standard rational set. Here $F_\lambda(x)\ne0$. Choose $j$ with $x\in U_j$. If $j=k$, the desired inclusion holds. Otherwise, for $0\leq m\leq r_k$, replace the $j$th slot of $\lambda$ by zero and the $k$th slot by $m$, leaving the others unchanged. The resulting index $\mu$ belongs to $\Lambda_0$, and}
+{固定 $\lambda\in\Lambda_0$，记 $k=i(\lambda)$，并取其标准 rational 集合中的一点 $x$。此时 $F_\lambda(x)\ne0$。选择 $x\in U_j$。若 $j=k$，所需包含已经成立。否则，对每个 $0\leq m\leq r_k$，将 $\lambda$ 的第 $j$ 个条目替换为零、第 $k$ 个条目替换为 $m$，其余条目不变。所得 $\mu$ 属于 $\Lambda_0$，且}
+\[
+ \left|\frac{F_\mu(x)}{F_\lambda(x)}\right|
+ =\left|\frac{f^{(j)}_0(x)}{f^{(j)}_{\lambda_j}(x)}\right|
+  \left|\frac{f^{(k)}_m(x)}{f^{(k)}_0(x)}\right|\leq1.
+\]
+\bi{The first factor is at least one because $x\in U_j$. Thus the second factor is at most one for every $m$, proving $x\in U_k$. All divisions are legitimate: the factors of $F_\lambda(x)$ are nonzero, and $f^{(j)}_0(x)$ is nonzero on $U_j$.}
+{第一个因子因 $x\in U_j$ 而至少为一，故对每个 $m$，第二个因子至多为一，得到 $x\in U_k$。所有除法都有意义：$F_\lambda(x)$ 的各因子均非零，且 $f^{(j)}_0(x)$ 在 $U_j$ 上非零。}
+
+\bi{Theorem~\ref{fnd:strictrationaldomainup} now gives the bounded map $B_k\to S_\lambda$ and its uniqueness. In particular, this step uses the pointwise-to-power-bound theorem: a numerator with the only zero slot replaced need not occur in $\Lambda_0$, so its ratio is not directly one of the norm-one variables of $S_\lambda$. We have proved its pointwise bound and then used precisely the analytic interface required to obtain a bounded map. Uniqueness and Proposition~\ref{fnd:strictrationalintersectionpresentation} give compatibility on every finite intersection.}
+{现在由 Theorem~\ref{fnd:strictrationaldomainup}，得到有界映射 $B_k\to S_\lambda$ 及其唯一性。特别地，这一步使用了逐点界转化为幂界的定理：将唯一的零条目替换后得到的分子，可能不属于 $\Lambda_0$，所以其比值并不直接对应 $S_\lambda$ 中某个范数至多为一的变量。这里先证明其逐点界，再调用所需的准确解析接口得到有界映射。由唯一性及 Proposition~\ref{fnd:strictrationalintersectionpresentation}，得到每个有限交叠上的相容性。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001474-reader.jpg" alt="Typeset mathematical passage from PDF page 203" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=203">PDF page 203</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope <small>(sealed exact native clause)</small></li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole <small>(earlier whole in this proposal)</small></li><li><a href="/r/NAG-001471/">NAG-001471</a> · selected whole <small>(earlier whole in this proposal)</small></li><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope</li><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole</li><li><a href="/r/NAG-001452/">NAG-001452</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole</li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001471/">NAG-001471</a> · selected whole</li><li><a href="/r/NAG-001471/">NAG-001471</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="fixed_unit_products_two_slot_and_assigned_bounded_map"><h3>fixed unit products two slot and assigned bounded map</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.22.8">Scope in the English reader · PDF page 202</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="25bec78a326a52ead9401b08a6633cd54762522a63a74b6f8796fd22236fe535">
+\begin{proposition}[\bi{A standard refinement of a finite rational cover}{有限 rational 覆盖的标准加细}]\label{fnd:finiterationalstandardrefinement}
+\bi{Let $\mathcal U=(U_i)_{1\leq i\leq n}$ be a finite cover of $\mathcal M(A)$, where}
+{设 $\mathcal U=(U_i)_{1\leq i\leq n}$ 为 $\mathcal M(A)$ 的有限覆盖，其中}
+\[
+ U_i=\{x:|f^{(i)}_j(x)|\leq|f^{(i)}_0(x)|, 1\leq j\leq r_i\},
+ \qquad (f^{(i)}_0,\ldots,f^{(i)}_{r_i})=A.
+\]
+\bi{Write $B_i$ for the associated rational presentation. Put}
+{记相应 rational 表示为 $B_i$。令}
+\[
+ \Lambda=\prod_{i=1}^n\{0,\ldots,r_i\},\qquad
+ \Lambda_0=\{\lambda\in\Lambda:\lambda_i=0\text{ for some }i\},
+ \qquad F_\lambda=\prod_{i=1}^n f^{(i)}_{\lambda_i}.
+\]
+\bi{The tuple $(F_\lambda)_{\lambda\in\Lambda_0}$ generates the unit ideal. Its standard rational family $(S_\lambda)_{\lambda\in\Lambda_0}$ covers $\mathcal M(A)$. For any choice $i(\lambda)$ with $\lambda_{i(\lambda)}=0$, the point set of $S_\lambda$ is contained in $U_{i(\lambda)}$, and there is a unique bounded map $B_{i(\lambda)}\to S_\lambda$ over $A$. These maps give a compatible refinement of all finite intersection diagrams.}
+{Tuple $(F_\lambda)_{\lambda\in\Lambda_0}$ 生成单位理想。其标准 rational 族 $(S_\lambda)_{\lambda\in\Lambda_0}$ 覆盖 $\mathcal M(A)$。任意选择满足 $\lambda_{i(\lambda)}=0$ 的 $i(\lambda)$，则 $S_\lambda$ 的谱点集合包含于 $U_{i(\lambda)}$，并且存在唯一的有界 $A$-代数映射 $B_{i(\lambda)}\to S_\lambda$。这些映射给出与全部有限交叠图表相容的加细。}
+\end{proposition}
+\begin{proof}
+\bi{Suppose all $F_\lambda$, $\lambda\in\Lambda_0$, vanished at $x$. Choose $i$ with $x\in U_i$. The unit-ideal identity for row $i$ implies $f^{(i)}_0(x)\ne0$. In every other row, at least one entry is nonzero at $x$, again by its unit-ideal identity. Choosing such entries and taking $\lambda_i=0$ gives a nonzero $F_\lambda(x)$, a contradiction. Theorem~\ref{fnd:strictpointunitcriterion} now implies that these $F_\lambda$ generate the unit ideal. The standard family covers because at each point one of the finitely many nonzero values $|F_\lambda|$ is maximal; Theorem~\ref{fnd:strictrationalpointtopology} identifies its quotient point sets.}
+{假设某个 $x$ 使所有 $\lambda\in\Lambda_0$ 对应的 $F_\lambda$ 为零。选取满足 $x\in U_i$ 的 $i$。由第 $i$ 行的单位理想恒等式，$f^{(i)}_0(x)\ne0$。对其余每一行，由相应的单位理想恒等式，都至少有一个条目在 $x$ 处非零。选择这样的条目，并取 $\lambda_i=0$，即得到非零的 $F_\lambda(x)$，矛盾。因此由 Theorem~\ref{fnd:strictpointunitcriterion}，这些 $F_\lambda$ 生成单位理想。标准族构成覆盖，因为在每个点，有限个 $|F_\lambda|$ 中有一个非零最大值；Theorem~\ref{fnd:strictrationalpointtopology} 将对应商的谱点集合作出识别。}
+
+\bi{Fix $\lambda\in\Lambda_0$, write $k=i(\lambda)$, and let $x$ be a point of its standard rational set. Here $F_\lambda(x)\ne0$. Choose $j$ with $x\in U_j$. If $j=k$, the desired inclusion holds. Otherwise, for $0\leq m\leq r_k$, replace the $j$th slot of $\lambda$ by zero and the $k$th slot by $m$, leaving the others unchanged. The resulting index $\mu$ belongs to $\Lambda_0$, and}
+{固定 $\lambda\in\Lambda_0$，记 $k=i(\lambda)$，并取其标准 rational 集合中的一点 $x$。此时 $F_\lambda(x)\ne0$。选择 $x\in U_j$。若 $j=k$，所需包含已经成立。否则，对每个 $0\leq m\leq r_k$，将 $\lambda$ 的第 $j$ 个条目替换为零、第 $k$ 个条目替换为 $m$，其余条目不变。所得 $\mu$ 属于 $\Lambda_0$，且}
+\[
+ \left|\frac{F_\mu(x)}{F_\lambda(x)}\right|
+ =\left|\frac{f^{(j)}_0(x)}{f^{(j)}_{\lambda_j}(x)}\right|
+  \left|\frac{f^{(k)}_m(x)}{f^{(k)}_0(x)}\right|\leq1.
+\]
+\bi{The first factor is at least one because $x\in U_j$. Thus the second factor is at most one for every $m$, proving $x\in U_k$. All divisions are legitimate: the factors of $F_\lambda(x)$ are nonzero, and $f^{(j)}_0(x)$ is nonzero on $U_j$.}
+{第一个因子因 $x\in U_j$ 而至少为一，故对每个 $m$，第二个因子至多为一，得到 $x\in U_k$。所有除法都有意义：$F_\lambda(x)$ 的各因子均非零，且 $f^{(j)}_0(x)$ 在 $U_j$ 上非零。}
+
+\bi{Theorem~\ref{fnd:strictrationaldomainup} now gives the bounded map $B_k\to S_\lambda$ and its uniqueness. In particular, this step uses the pointwise-to-power-bound theorem: a numerator with the only zero slot replaced need not occur in $\Lambda_0$, so its ratio is not directly one of the norm-one variables of $S_\lambda$. We have proved its pointwise bound and then used precisely the analytic interface required to obtain a bounded map. Uniqueness and Proposition~\ref{fnd:strictrationalintersectionpresentation} give compatibility on every finite intersection.}
+{现在由 Theorem~\ref{fnd:strictrationaldomainup}，得到有界映射 $B_k\to S_\lambda$ 及其唯一性。特别地，这一步使用了逐点界转化为幂界的定理：将唯一的零条目替换后得到的分子，可能不属于 $\Lambda_0$，所以其比值并不直接对应 $S_\lambda$ 中某个范数至多为一的变量。这里先证明其逐点界，再调用所需的准确解析接口得到有界映射。由唯一性及 Proposition~\ref{fnd:strictrationalintersectionpresentation}，得到每个有限交叠上的相容性。}
+\end{proof}
+</pre></details><ul class="records"><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope</li><li><a href="/r/NAG-001444/#strict_actual_quotient_point_set">CLAUSE:NAG-001444:strict_actual_quotient_point_set</a> · selected scope <small>(requires)</small></li><li>CLAUSE:NAG-001470:actual_fixed_strict_target_from_supplied_powers · typed target unresolved in this export</li><li>CLAUSE:NAG-001470:actual_fixed_strict_target_from_supplied_powers · typed target unresolved in this export <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001452/">fnd:strictpointunitcriterion</a></li><li><a href="/r/NAG-001470/">fnd:strictrationaldomainup</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

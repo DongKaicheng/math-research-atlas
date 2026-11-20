@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001576/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Points of an arbitrary-radius rational presentation · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001576 · Accepted whole</p><h1>Points of an arbitrary-radius rational presentation</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.31.1">Open in the English reader · PDF page 258</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="28949fdf3521c805f8b2c101af551fada0d0e87c3c0d0fa93fef1b062c7bdc32">
+\begin{theorem}[\bi{Points of an arbitrary-radius rational presentation}{任意半径 rational 表示的谱点}]
+\label{fnd:generalizedrationalpoints}
+\bi{Let $A$ be a norm-admissible $K$-affinoid algebra, let $\rho_1,\ldots,\rho_s&gt;0$, and suppose $(g,f_1,\ldots,f_s)=A$. With the coefficient norm and its quotient norm, put}
+{设 $A$ 为 norm-admissible $K$-affinoid 代数，$\rho_1,\ldots,\rho_s&gt;0$，且 $(g,f_1,\ldots,f_s)=A$。采用系数范数及其商范数，记}
+\[
+ \begin{aligned}
+ D&amp;=A\{\rho^{-1}T\},\qquad
+ B=D/(gT_i-f_i)_{i=1}^s,\\
+ V&amp;=\{x\in\mathcal M(A):|f_i(x)|\leq\rho_i|g(x)|\ \forall i\}.
+ \end{aligned}
+\]
+\bi{Then $B$ is a norm-admissible $K$-affinoid algebra, possibly zero, and restriction gives a homeomorphism $\mathcal M(B)\simeq V$. Moreover $B=0$ if and only if $V$ is empty. The case $s=0$ is allowed and gives $B=A$, since $g$ is then a unit.}
+{则 $B$ 为 norm-admissible $K$-affinoid 代数，允许为零；限制映射给出同胚 $\mathcal M(B)\simeq V$。此外，$B=0$ 当且仅当 $V$ 为空。允许 $s=0$，此时 $g$ 为单位，且 $B=A$。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9a1c5890874cc21e8a4ad3a586af880e0ba9eed4aaa6ef88dbb321fa9aff9b69">
+\begin{proof}
+\bi{Proposition~\ref{fnd:closedweightedpresentation} makes $D$ affinoid, and Corollary~\ref{fnd:generalizedaffinoidquotients} gives the asserted complete actual quotient $B$. Choose a unit-ideal identity $a_0g+\sum_i a_if_i=1$. In $B$ it becomes}
+{由 Proposition~\ref{fnd:closedweightedpresentation}，$D$ 为 affinoid；Corollary~\ref{fnd:generalizedaffinoidquotients} 给出所述完备的实际商 $B$。选择单位理想恒等式 $a_0g+\sum_i a_if_i=1$。它在 $B$ 中变为}
+\[
+ g\left(a_0+\sum_i a_i\bar T_i\right)=1.
+\]
+\bi{Thus $g$ is a unit in $B$, with the usual zero-ring interpretation. At every $x\in V$, the same identity and the inequalities force $|g(x)|&gt;0$.}
+{所以 $g$ 在 $B$ 中为单位；零环按通常约定理解。在每个 $x\in V$ 上，同一恒等式及相应不等式迫使 $|g(x)|&gt;0$。}
+
+\bi{For $x\in V$, Lemma~\ref{new:seminormcontractive} gives the valued fraction field $F_x=\operatorname{Frac}(A/\ker x)$. Polynomial evaluation at $T_i=f_i/g$ in this field has multiplicative seminorm $p_x$ bounded by the weighted coefficient norm:}
+{对 $x\in V$，由 Lemma~\ref{new:seminormcontractive}，可取赋值分式域 $F_x=\operatorname{Frac}(A/\ker x)$。在该域中令 $T_i=f_i/g$，多项式取值所给的乘性半范数 $p_x$ 被加权系数范数控制：}
+\[
+ p_x\left(\sum_\alpha a_\alpha T^\alpha\right)
+ \leq\max_\alpha |a_\alpha(x)|\prod_i|f_i/g|_x^{\alpha_i}
+ \leq\max_\alpha\|a_\alpha\|\rho^\alpha.
+\]
+\bi{For polynomials $P,Q$, $|p_x(P)-p_x(Q)|\leq\|P-Q\|$. Hence norm-convergent polynomial truncations extend $p_x$ uniquely to a seminorm on $D$. Addition, multiplication and its scalar values pass to the limit, because products of bounded convergent sequences converge. It kills all $gT_i-f_i$ and their ideal. Taking the infimum over representatives gives a contractive multiplicative seminorm $y_x$ on $B$ extending $x$. No completion of $F_x$ is needed here.}
+{对多项式 $P,Q$，有 $|p_x(P)-p_x(Q)|\leq\|P-Q\|$。因此通过范数收敛的多项式截断，将 $p_x$ 唯一延拓为 $D$ 上的半范数。由于有界收敛列的乘积仍收敛，加法、乘法及标量取值均可传到极限。该半范数零化全部 $gT_i-f_i$ 及其生成的理想。对代表元取下确界，便得到 $B$ 上延拓 $x$ 的 contractive 乘性半范数 $y_x$。这里不需要对 $F_x$ 作完备化。}
+
+\bi{Conversely, a point $y$ of $B$ is contractive for its quotient norm, so $|\bar T_i(y)|\leq\rho_i$. Its restriction belongs to $V$. To prove uniqueness over a given $x$, take a polynomial $P=\sum a_\alpha T^\alpha$ of total degree at most $N$ and form}
+{反之，$B$ 的谱点 $y$ 对商范数为 contractive，故 $|\bar T_i(y)|\leq\rho_i$，其限制属于 $V$。为证明给定 $x$ 上方的唯一性，取总次数不超过 $N$ 的多项式 $P=\sum a_\alpha T^\alpha$，并令}
+\[
+ Q_P=\sum_\alpha a_\alpha f^\alpha g^{N-|\alpha|}\in A.
+\]
+\bi{In $B$ one has $g^NP(\bar T)=Q_P$, so every point over $x$ must satisfy $|P(\bar T)(y)|=|Q_P(x)|/|g(x)|^N$. The polynomial image is dense in $B$, and contractivity determines the remaining values uniquely. This proves the bijection. For a polynomial, the displayed value is a continuous function of $x\in V$. For any $b\in B$, choose a lift $F\in D$ and polynomial truncations $P_n\to F$. Uniformly in $x\in V$,}
+{在 $B$ 中有 $g^NP(\bar T)=Q_P$，所以位于 $x$ 上方的每个点都必须满足 $|P(\bar T)(y)|=|Q_P(x)|/|g(x)|^N$。多项式像在 $B$ 中稠密，contractivity 唯一确定其余元素的值。因此限制映射双射。对多项式，上述取值是 $x\in V$ 的连续函数。对任意 $b\in B$，选取提升 $F\in D$ 及多项式截断 $P_n\to F$，则关于 $x\in V$ 一致有}
+\[
+ \bigl||b(y_x)|-|P_n(\bar T)(y_x)|\bigr|\leq\|F-P_n\|.
+\]
+\bi{Thus all evaluations along $x\mapsto y_x$ are continuous. Restriction is also continuous by its definition, proving the homeomorphism. Theorem~\ref{fnd:generalizedpointunitcriterion} applied to $B$ proves the assertion about emptiness. Zero algebras and an empty $V$ require no exceptional point construction.}
+{因此，沿 $x\mapsto y_x$ 的全部取值函数都连续。限制映射按定义也连续，故为同胚。对 $B$ 应用 Theorem~\ref{fnd:generalizedpointunitcriterion}，得到关于空集的断言。零代数和空 $V$ 不需要额外的点构造。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001576-reader.jpg" alt="Typeset mathematical passage from PDF page 258" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=258">PDF page 258 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole</li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole</li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="actual_one_row_and_bounded_points"><h3>actual one row and bounded points</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.2.31.1">Scope in the English reader · PDF page 258</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="e367857c639da268092eb808ea44a3928b2793aa41fc1f19b07dc20acc132a8c">
+\begin{theorem}[\bi{Points of an arbitrary-radius rational presentation}{任意半径 rational 表示的谱点}]
+\label{fnd:generalizedrationalpoints}
+\bi{Let $A$ be a norm-admissible $K$-affinoid algebra, let $\rho_1,\ldots,\rho_s&gt;0$, and suppose $(g,f_1,\ldots,f_s)=A$. With the coefficient norm and its quotient norm, put}
+{设 $A$ 为 norm-admissible $K$-affinoid 代数，$\rho_1,\ldots,\rho_s&gt;0$，且 $(g,f_1,\ldots,f_s)=A$。采用系数范数及其商范数，记}
+\[
+ \begin{aligned}
+ D&amp;=A\{\rho^{-1}T\},\qquad
+ B=D/(gT_i-f_i)_{i=1}^s,\\
+ V&amp;=\{x\in\mathcal M(A):|f_i(x)|\leq\rho_i|g(x)|\ \forall i\}.
+ \end{aligned}
+\]
+\bi{Then $B$ is a norm-admissible $K$-affinoid algebra, possibly zero, and restriction gives a homeomorphism $\mathcal M(B)\simeq V$. Moreover $B=0$ if and only if $V$ is empty. The case $s=0$ is allowed and gives $B=A$, since $g$ is then a unit.}
+{则 $B$ 为 norm-admissible $K$-affinoid 代数，允许为零；限制映射给出同胚 $\mathcal M(B)\simeq V$。此外，$B=0$ 当且仅当 $V$ 为空。允许 $s=0$，此时 $g$ 为单位，且 $B=A$。}
+\end{theorem}
+\begin{proof}
+\bi{Proposition~\ref{fnd:closedweightedpresentation} makes $D$ affinoid, and Corollary~\ref{fnd:generalizedaffinoidquotients} gives the asserted complete actual quotient $B$. Choose a unit-ideal identity $a_0g+\sum_i a_if_i=1$. In $B$ it becomes}
+{由 Proposition~\ref{fnd:closedweightedpresentation}，$D$ 为 affinoid；Corollary~\ref{fnd:generalizedaffinoidquotients} 给出所述完备的实际商 $B$。选择单位理想恒等式 $a_0g+\sum_i a_if_i=1$。它在 $B$ 中变为}
+\[
+ g\left(a_0+\sum_i a_i\bar T_i\right)=1.
+\]
+\bi{Thus $g$ is a unit in $B$, with the usual zero-ring interpretation. At every $x\in V$, the same identity and the inequalities force $|g(x)|&gt;0$.}
+{所以 $g$ 在 $B$ 中为单位；零环按通常约定理解。在每个 $x\in V$ 上，同一恒等式及相应不等式迫使 $|g(x)|&gt;0$。}
+
+\bi{For $x\in V$, Lemma~\ref{new:seminormcontractive} gives the valued fraction field $F_x=\operatorname{Frac}(A/\ker x)$. Polynomial evaluation at $T_i=f_i/g$ in this field has multiplicative seminorm $p_x$ bounded by the weighted coefficient norm:}
+{对 $x\in V$，由 Lemma~\ref{new:seminormcontractive}，可取赋值分式域 $F_x=\operatorname{Frac}(A/\ker x)$。在该域中令 $T_i=f_i/g$，多项式取值所给的乘性半范数 $p_x$ 被加权系数范数控制：}
+\[
+ p_x\left(\sum_\alpha a_\alpha T^\alpha\right)
+ \leq\max_\alpha |a_\alpha(x)|\prod_i|f_i/g|_x^{\alpha_i}
+ \leq\max_\alpha\|a_\alpha\|\rho^\alpha.
+\]
+\bi{For polynomials $P,Q$, $|p_x(P)-p_x(Q)|\leq\|P-Q\|$. Hence norm-convergent polynomial truncations extend $p_x$ uniquely to a seminorm on $D$. Addition, multiplication and its scalar values pass to the limit, because products of bounded convergent sequences converge. It kills all $gT_i-f_i$ and their ideal. Taking the infimum over representatives gives a contractive multiplicative seminorm $y_x$ on $B$ extending $x$. No completion of $F_x$ is needed here.}
+{对多项式 $P,Q$，有 $|p_x(P)-p_x(Q)|\leq\|P-Q\|$。因此通过范数收敛的多项式截断，将 $p_x$ 唯一延拓为 $D$ 上的半范数。由于有界收敛列的乘积仍收敛，加法、乘法及标量取值均可传到极限。该半范数零化全部 $gT_i-f_i$ 及其生成的理想。对代表元取下确界，便得到 $B$ 上延拓 $x$ 的 contractive 乘性半范数 $y_x$。这里不需要对 $F_x$ 作完备化。}
+
+\bi{Conversely, a point $y$ of $B$ is contractive for its quotient norm, so $|\bar T_i(y)|\leq\rho_i$. Its restriction belongs to $V$. To prove uniqueness over a given $x$, take a polynomial $P=\sum a_\alpha T^\alpha$ of total degree at most $N$ and form}
+{反之，$B$ 的谱点 $y$ 对商范数为 contractive，故 $|\bar T_i(y)|\leq\rho_i$，其限制属于 $V$。为证明给定 $x$ 上方的唯一性，取总次数不超过 $N$ 的多项式 $P=\sum a_\alpha T^\alpha$，并令}
+\[
+ Q_P=\sum_\alpha a_\alpha f^\alpha g^{N-|\alpha|}\in A.
+\]
+\bi{In $B$ one has $g^NP(\bar T)=Q_P$, so every point over $x$ must satisfy $|P(\bar T)(y)|=|Q_P(x)|/|g(x)|^N$. The polynomial image is dense in $B$, and contractivity determines the remaining values uniquely. This proves the bijection. For a polynomial, the displayed value is a continuous function of $x\in V$. For any $b\in B$, choose a lift $F\in D$ and polynomial truncations $P_n\to F$. Uniformly in $x\in V$,}
+{在 $B$ 中有 $g^NP(\bar T)=Q_P$，所以位于 $x$ 上方的每个点都必须满足 $|P(\bar T)(y)|=|Q_P(x)|/|g(x)|^N$。多项式像在 $B$ 中稠密，contractivity 唯一确定其余元素的值。因此限制映射双射。对多项式，上述取值是 $x\in V$ 的连续函数。对任意 $b\in B$，选取提升 $F\in D$ 及多项式截断 $P_n\to F$，则关于 $x\in V$ 一致有}
+\[
+ \bigl||b(y_x)|-|P_n(\bar T)(y_x)|\bigr|\leq\|F-P_n\|.
+\]
+\bi{Thus all evaluations along $x\mapsto y_x$ are continuous. Restriction is also continuous by its definition, proving the homeomorphism. Theorem~\ref{fnd:generalizedpointunitcriterion} applied to $B$ proves the assertion about emptiness. Zero algebras and an empty $V$ require no exceptional point construction.}
+{因此，沿 $x\mapsto y_x$ 的全部取值函数都连续。限制映射按定义也连续，故为同胚。对 $B$ 应用 Theorem~\ref{fnd:generalizedpointunitcriterion}，得到关于空集的断言。零代数和空 $V$ 不需要额外的点构造。}
+\end{proof}
+</pre></details><ul class="records"><li><a href="/r/NAG-001572/#nonempty_if_nonzero_actual_quotient">CLAUSE:NAG-001572:nonempty_if_nonzero_actual_quotient</a> · selected scope</li><li><a href="/r/NAG-001572/#nonempty_if_nonzero_actual_quotient">CLAUSE:NAG-001572:nonempty_if_nonzero_actual_quotient</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole</li><li><a href="/r/NAG-001554/">NAG-001554</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li></ul></article><article id="fixed_point_uniqueness_on_given_actual_rational_quotient"><h3>fixed point uniqueness on given actual rational quotient</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001554/">fnd:closedweightedpresentation</a></li><li><a href="/r/NAG-001562/">fnd:generalizedaffinoidquotients</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

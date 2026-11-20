@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002362/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Weights of finite modules on an interior flat germ · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002362 · Accepted whole</p><h1>Weights of finite modules on an interior flat germ</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.40.2">Open in the English reader · PDF page 988</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4d919abc832fd4055e22a37a76ec97f714d6b6f51bdbcf89e1066e20df41b2e5">
+\begin{theorem}[Weights of finite modules on an interior flat germ]
+\label{v037:degree:moduleweight}
+Let $Y=\mathcal M(A)$ be nonempty and pure of analytic
+dimension $d$. Let a unit moment tuple $f$ define
+$t:Y\to\mathbb R^n$, and let $w\in t(Y)$. Suppose that
+the entire fibre $F_w=t^{-1}(w)$ lies in
+$\operatorname{Int}(Y/K)$ and that, for some neighborhood $W$
+of $w$ and a saturated rank-$d$ lattice $N\subset\mathbb Z^n$,
+\[
+                         t(Y)\cap W\subset w+N_{\mathbb R}.
+\]
+For $\mathfrak p\in\operatorname{Min}(A)$, put
+$Y_{\mathfrak p}=\mathcal M(A/\mathfrak p)$. Set
+$m_{\mathfrak p}(w)=0$ if its moment fibre at $w$ is empty;
+otherwise this fibre satisfies the same flat-germ hypotheses,
+and let $m_{\mathfrak p}(w)$ be its positive intrinsic weight.
+
+Let $M$ be a finite $A$-module. For any integral
+$Q:\mathbb Z^n\to\mathbb Z^d$ injective on $N$, let $D_w$
+be the actual algebra of $F_w$, let $R_Q$ be the polytorus
+algebra at $Qw$, and let $H_Q$ be its Gauss field. Put
+\[
+ E_Q=D_w\widehat\otimes_{R_Q}H_Q,\qquad
+ e_Q=[\mathbb Z^d:Q(N)],\qquad
+ \delta_Q(M,w)=\dim_{H_Q}(M\otimes_AE_Q).
+\]
+Then
+\begin{equation}
+\label{v037:degree:eqmoduleweight}
+ \frac{\delta_Q(M,w)}{e_Q}
+       =\sum_{\mathfrak p\in\operatorname{Min}(A)}
+                    \beta_{\mathfrak p}(M)m_{\mathfrak p}(w)
+       \in\mathbb Z_{\geq0}.
+\end{equation}
+In particular this integer, denoted $m_{M,f}(w)$, is independent
+of $Q$ and is additive in short exact sequences of finite
+$A$-modules. For $M=A$ it is the intrinsic weight of $Y$:
+\[
+ m_{Y,f}(w)=
+ \sum_{\mathfrak p\in\operatorname{Min}(A)}
+       \operatorname{length}(A_{\mathfrak p})m_{\mathfrak p}(w).
+\]
+These module weights are unchanged by restriction to an
+affinoid domain containing the whole fibre, whenever the
+two underlying pure-dimensional germs satisfy the stated
+flat-germ hypotheses.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="745e706d66fb4c768d789efdeb82e482e83ff10dbda5af3ca34e494e80920c4d">
+\begin{proof}
+Theorem~\ref{v036:flatgermweight} gives every finite map
+$R_Q\to D_w$, with its canonical norm and actual Gauss fibre.
+Apply Proposition~\ref{v037:degree:genericgauss} to the domain
+$F_w\subset Y$.
+
+The quotient $A\to A/\mathfrak p$ is finite with its canonical
+norm. Its spectral map is everywhere interior relative to $Y$
+by Theorem~\ref{fnd:generalizedfinitealgebras}. The composition
+inclusion in Proposition~\ref{fnd:affinoidinteriorcalculus}
+therefore makes every point over $F_w$ interior over $K$.
+The affinoid $Y_{\mathfrak p}$ is pure of analytic dimension
+$d$ by the assumed purity of $A$, and its moment image is
+contained in that of $Y$. If its fibre at $w$ is nonempty,
+Theorem~\ref{v036:flatgermweight} applies with the same lattice
+$N$.
+
+The actual domain base-change theorem
+\ref{fnd:generalizeddomainbasechange} and finite tensor comparison
+\ref{fnd:generalizedfinitebasechange} identify its full fibre
+algebra with $D_w/\mathfrak pD_w$. This is finite over $R_Q$.
+Its actual Gauss algebra is
+\[
+ (D_w/\mathfrak pD_w)\widehat\otimes_{R_Q}H_Q
+                         =E_Q/\mathfrak pE_Q.
+\]
+For a nonempty fibre its dimension is
+$e_Qm_{\mathfrak p}(w)$ by the flat-germ weight theorem.
+For an empty fibre the actual algebra is zero, by
+Theorem~\ref{fnd:generalizedpointunitcriterion}, and the same
+identity holds with $m_{\mathfrak p}(w)=0$.
+Substitution in
+\eqref{v037:degree:eqgenericmeasurement} proves
+\eqref{v037:degree:eqmoduleweight}.
+
+All tensors in this argument also have their canonical
+analytic meaning for $M$. The finite module
+$M\otimes_AD_w$ has its complete canonical norm by
+Proposition~\ref{fnd:generalizedfinitetensor}. A quotient of
+a finite sum of copies of the finite canonical $R_Q$-module
+$D_w$ gives its canonical finite-$R_Q$-module topology:
+compose the two finite free quotient presentations.
+Applying the same tensor comparison over $R_Q$ shows that
+$M\otimes_AE_Q$ is already complete. Thus no separated
+completion discards a submodule in the length calculation.
+
+Flatness of $A\to E_Q$ makes its tensor functor exact, proving
+additivity. For $M=A$ the numerator is the ordinary Gauss
+degree of $D_w$, so the formula gives exactly $m_{Y,f}(w)$.
+
+Finally let $A\to A_V$ represent a domain containing $F_w$,
+and replace $M$ by $M\otimes_AA_V$. The actual full fibre
+algebra is still $D_w$, by
+Theorem~\ref{fnd:generalizeddomainbasechange}. The saturated
+tangent lattice is unchanged by
+Theorem~\ref{v036:flatgermlocalconstancy}. For a common $Q$,
+associativity gives
+\[
+ (M\otimes_AA_V)\otimes_{A_V}E_Q=M\otimes_AE_Q.
+\]
+Both the Gauss dimension and its lattice divisor are the same,
+which proves the restriction assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002362-reader.jpg" alt="Typeset mathematical passage from PDF page 989" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=989">PDF page 989</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole</li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole</li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole</li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole</li><li><a href="/r/NAG-002360/">NAG-002360</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002360/">NAG-002360</a> · selected whole, export unavailable <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001565/">fnd:generalizedfinitetensor</a></li><li><a href="/r/NAG-002306/">v036:flatgermweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

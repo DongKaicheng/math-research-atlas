@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001378/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Division and strictness over Banach coefficients · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001378 · Accepted whole</p><h1>Division and strictness over Banach coefficients</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.10.3">Open in the English reader · PDF page 67</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="863571cad698812919ea85d6f7cd4df8c350f35172638d526364fe916f1725fa">
+\begin{theorem}[\bi{Division and strictness over Banach coefficients}{Banach coefficients 上的 division 与 strictness}]\label{fnd:banachweierstrassdivision}
+\bi{With $P$ as in Lemma~\ref{fnd:banachpolynomialdivision}, let $h\in E_r(A)$ satisfy $\|h\|_r&lt;r^d$, and set}
+{设 $P$ 如 Lemma~\ref{fnd:banachpolynomialdivision}，$h\in E_r(A)$ 满足 $\|h\|_r&lt;r^d$，并记}
+\[
+ f=P+h,\qquad \theta=r^{-d}\|h\|_r&lt;1.
+\]
+\bi{Every $g\in E_r(M)$ has a unique decomposition $g=fq+s$, where $q\in E_r(M)$ and $s\in P_{&lt;d}(M)$, with}
+{每个 $g\in E_r(M)$ 都有唯一 decomposition $g=fq+s$，其中 $q\in E_r(M)$、$s\in P_{&lt;d}(M)$，且}
+\[
+ \|q\|_r\leq r^{-d}\|g\|_r,
+ \qquad \|s\|_r\leq\|g\|_r.
+\]
+\bi{Multiplication by $f$ rescales norms by $r^d$ and has closed image. The remainder map $R_f(g)=s$ gives a split exact sequence of Banach $A$-modules}
+{乘以 $f$ 将 norm 恰好放大 $r^d$ 倍，并具有 closed image。Remainder map $R_f(g)=s$ 给出 Banach $A$-modules 的 split exact sequence}
+\[
+ 0\longrightarrow E_r(M)\xrightarrow{\ f\ }E_r(M)
+ \xrightarrow{\ R_f\ }P_{&lt;d}(M)\longrightarrow0.
+\]
+\bi{The maps are strict. More precisely, the quotient norm of the class of $g$ is $\|R_f(g)\|_r$, attained at its unique polynomial representative.}
+{这些 maps 为 strict。更精确地，$g$ 的 class 的 quotient norm 等于 $\|R_f(g)\|_r$，并由其唯一 polynomial representative 达到。}
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="9d02019eccd5a2df7d794a9fc4689ce65293c5feea7577c48212de55dbf0d07d">
+\begin{proof}
+\bi{Put $U(q)=Q_P(hq)$. The previous two lemmas give $\|U(q)\|_r\leq\theta\|q\|_r$. For each $v\in E_r(M)$, the finite partial sums of $\sum_{n\geq0}(-U)^nv$ are Cauchy, since their terms have norms at most $\theta^n\|v\|_r$. Completeness therefore defines an $A$-linear map}
+{令 $U(q)=Q_P(hq)$。前两个 lemmas 给出 $\|U(q)\|_r\leq\theta\|q\|_r$。对每个 $v\in E_r(M)$，series $\sum_{n\geq0}(-U)^nv$ 的 terms 的 norms 不超过 $\theta^n\|v\|_r$，故其 finite partial sums 为 Cauchy。由 completeness 得到 $A$-linear map}
+\[
+ S(v)=\sum_{n\geq0}(-U)^nv,\qquad \|S(v)\|_r\leq\|v\|_r.
+\]
+\bi{Multiplying a finite partial sum by $I+U$ leaves $v$ and one final term whose norm tends to zero. Passing to the limit proves $(I+U)S=S(I+U)=I$. This constructs the inverse directly; it does not appeal to an operator inverse theorem.}
+{有限 partial sum 乘以 $I+U$ 后，只留下 $v$ 和一个 norm 趋于零的末项。取 limit 得 $(I+U)S=S(I+U)=I$。这里直接构造了 inverse，没有调用 operator inverse theorem。}
+
+\bi{Set $q=S(Q_P(g))$ and $s=R_P(g-hq)$. Then $Q_P(g-hq)=q$, and the polynomial division identity gives $g-hq=Pq+s$. The bounds on $S,Q_P,R_P$ imply the asserted estimates. Any other decomposition must satisfy $(I+U)q=Q_P(g)$, so it has the same quotient and remainder.}
+{令 $q=S(Q_P(g))$、$s=R_P(g-hq)$。于是 $Q_P(g-hq)=q$，由 polynomial division identity 得 $g-hq=Pq+s$。$S,Q_P,R_P$ 的 bounds 给出所述 estimates。任何其他 decomposition 都必须满足 $(I+U)q=Q_P(g)$，因此 quotient 与 remainder 均相同。}
+
+\bi{For $q\ne0$, Lemma~\ref{fnd:banachpolynomialdivision} and the perturbation bound give}
+{对 $q\ne0$，Lemma~\ref{fnd:banachpolynomialdivision} 与 perturbation bound 给出}
+\[
+ \|Pq\|_r=r^d\|q\|_r,
+ \qquad \|hq\|_r\leq\theta r^d\|q\|_r&lt;\|Pq\|_r.
+\]
+\bi{Thus $\|fq\|_r=r^d\|q\|_r$. If $fq_n$ converges, this equality makes $q_n$ Cauchy; its limit $q$ satisfies $fq=\lim_nfq_n$. The image is therefore closed.}
+{因此 $\|fq\|_r=r^d\|q\|_r$。若 $fq_n$ 收敛，则此 equality 说明 $q_n$ 为 Cauchy；其 limit $q$ 满足 $fq=\lim_nfq_n$，从而 image closed。}
+
+\bi{Finally, $R_f$ is $A$-linear and contractive, vanishes on $fE_r(M)$, and restricts to the identity on $P_{&lt;d}(M)$. For every $q&#x27;\in E_r(M)$,}
+{最后，$R_f$ 为 $A$-linear、contractive，在 $fE_r(M)$ 上为零，并在 $P_{&lt;d}(M)$ 上为 identity。因此对每个 $q&#x27;\in E_r(M)$，}
+\[
+ \|R_f(g)\|_r\leq\|g+fq&#x27;\|_r.
+\]
+\bi{Taking $q&#x27;=-q$, where $g=fq+R_f(g)$, attains equality. This proves the quotient-norm statement, strictness and exactness. The inclusion of $P_{&lt;d}(M)$ is a bounded right inverse for $R_f$. Equivalently, the division map identifies $E_r(M)$ isometrically with $E_r(M)\oplus P_{&lt;d}(M)$ when the latter carries the norm $\max(r^d\|q\|_r,\|s\|_r)$.}
+{取 $q&#x27;=-q$，其中 $g=fq+R_f(g)$，即可达到 equality。这证明 quotient-norm assertion、strictness 和 exactness。$P_{&lt;d}(M)$ 的 inclusion 是 $R_f$ 的 bounded right inverse。等价地，若在 $E_r(M)\oplus P_{&lt;d}(M)$ 上使用 norm $\max(r^d\|q\|_r,\|s\|_r)$，则 division map 将 $E_r(M)$ 与此 direct sum isometrically 识别。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="d8b1c6f8ec70ecd0a9b6090e608202416d44b228caf3c0dcdff05951e3d9c48d">
+\chapter{\bi{Valued fields, Banach algebras and analytic points}{Valued fields、Banach algebras 与 analytic points}}\label{ch:1}\label{vol:I}\label{part:tropical}\label{fnd:algebras}
+\bi{A non-Archimedean analytic space is locally described by convergent functions, but its points need not be evaluations at elements of the ground field. The purpose of this chapter is to construct both parts of this description: the algebras of functions and the valued fields in which their values lie. The next chapter supplies domains and sheaves. This order is important for multiplicities: a seminorm detects the value of a function, whereas the algebra also retains nilpotents and finite-module lengths.}
+{Non-Archimedean analytic space 局部由 convergent functions 描述，但其 points 未必来自 ground field 中元素的 evaluation。本章构造这一描述的两部分：functions 的 algebras，以及函数值所在的 valued fields。下一章再建立 domains 与 sheaves。这个顺序对 multiplicities 很重要：seminorm 检测函数值，而 algebra 还保留 nilpotents 与 finite-module lengths。}
+
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="6ea2c0bb8faa98558245a1b435f008c0365c1ba10767182d02639e5e3d9dee3c">
+\begin{definition}\label{fnd:tatereal}
+\bi{For $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$, the generalized Tate algebra is}
+{对 $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$，定义 generalized Tate algebra}
+\[
+ K\{r^{-1}T\}=
+ \left\{\sum_{\nu\in\N^n}a_\nu T^\nu:
+       |a_\nu|r^\nu\longrightarrow0\text{ as }|\nu|\to\infty\right\}.
+\]
+\[
+ \|f\|_r=\max_\nu |a_\nu|r^\nu.
+\]
+\bi{Here $r^\nu=\prod_i r_i^{\nu_i}$. When all $r_i=1$, write $K\langle T_1,\ldots,T_n\rangle$.}
+{这里 $r^\nu=\prod_i r_i^{\nu_i}$。当所有 $r_i=1$ 时，记作 $K\langle T_1,\ldots,T_n\rangle$。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="453c75099497848aecc5710681ced658273649a6f32617e65657be3fbf4297eb">
+\begin{definition}\label{fnd:affinoiddefinition}
+\bi{A $K$-affinoid algebra is a Banach $K$-algebra admitting an admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$ for some finite tuple of positive radii. It is strictly $K$-affinoid if such a presentation exists with all radii equal to one. Morphisms are bounded $K$-algebra homomorphisms.}
+{$K$-affinoid algebra 是一个 Banach $K$-algebra，它对某个有限的 positive-radii tuple 存在 admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$。若可取所有 radii 等于一，则称为 strictly $K$-affinoid。Morphisms 为 bounded $K$-algebra homomorphisms。}
+\end{definition}
+
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="92b63802dc03b1c832fa8ed92d15c890688fabf94d4fb725402470af8c5b11f0">
+\begin{definition}\label{fnd:spectrum}
+\bi{For a $K$-affinoid algebra $A$, its Berkovich spectrum $\mathcal M(A)$ is the set of bounded multiplicative seminorms extending $|\cdot|_K$. Its topology is the weakest topology making every evaluation $x\mapsto|a(x)|$ continuous. The algebra $A$, not just this topological space, is part of the affinoid object.}
+{对 $K$-affinoid algebra $A$，其 Berkovich spectrum $\mathcal M(A)$ 为延拓 $|\cdot|_K$ 的 bounded multiplicative seminorms 的集合。其 topology 是使所有 evaluation $x\mapsto|a(x)|$ continuous 的最弱 topology。Affinoid object 的数据包括 algebra $A$，而不只是这个 topological space。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="fed8c5acf3fca8b35671e3fabc07c2dd9a819b319577b3935db6cdcff55561c7">
+\section{\bi{Norm conventions and bounded localization}{Norm conventions 与 bounded localization}}\label{fnd:wp01norms}
+\bi{Before constructing localization maps, we fix the quantitative meaning of admissibility. This matters when the field is trivially valued. The correction below replaces the topology-only wording in version 0.26; its original wording is retained in the version record. All later uses of ``admissible&#x27;&#x27; refer to equivalent quotient norms.}
+{构造 localization maps 之前，先固定 admissibility 的定量含义。当基域赋值平凡时，这一区别不可省略。下述修正替换 v0.26 中仅用 topology 表述的约定；原措辞保留在 version record 中。此后 ``admissible&#x27;&#x27; 均指 equivalent quotient norms。}
+
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+\source{\cite[Definition/Exercise 2.1.1.1(ii)--(iii), p.~4]{TemIntro}.}
+</pre></details><details class="source"><summary>Standing context 7 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 8 · exact TeX</summary><pre data-sha256="73b4dc84df7956e8936a9c34335f6222242fc6a66bc9341f0ffb2de76de6b719">
+\bi{Throughout this section, $A$ is a commutative unital Banach $K$-algebra as in Definition~\ref{fnd:banachalgebra}. A Banach $A$-module $M$ means an $A$-module with a complete, definite, non-Archimedean norm, homogeneous over $K$, such that $\|am\|\leq\|a\|\|m\|$. No algebraic finiteness is assumed. Fix $r&gt;0$ and put}
+{本节中，$A$ 为 Definition~\ref{fnd:banachalgebra} 中的 commutative unital Banach $K$-algebra。Banach $A$-module $M$ 指具有 complete、definite、non-Archimedean norm 的 $A$-module；该 norm 在 $K$ 上 homogeneous，且满足 $\|am\|\leq\|a\|\|m\|$。不要求 $M$ algebraically finite。固定 $r&gt;0$，记}
+\[
+\begin{split}
+ E_r(M)&amp;=\left\{\sum_{j\geq0}m_jT^j:\|m_j\|r^j\longrightarrow0\right\},\\
+ \left\|\sum_{j\geq0}m_jT^j\right\|_r&amp;=\sup_j\|m_j\|r^j.
+\end{split}
+\]
+\bi{For a nonzero series the supremum is attained. Write $P_{&lt;d}(M)$ for the polynomials of degree less than $d$, with the same norm; $P_{&lt;0}(M)=0$. The field may be trivially valued, and $r$ need not belong to $|K^\times|$.}
+{对 nonzero series，上述 supremum 可达到。以 $P_{&lt;d}(M)$ 记 degree 小于 $d$ 的 polynomials，并使用同一 norm；约定 $P_{&lt;0}(M)=0$。允许 $K$ trivially valued，也不要求 $r\in|K^\times|$。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001378-reader.jpg" alt="Typeset mathematical passage from PDF page 68" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=68">PDF page 68</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000221/">NAG-000221</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001374/">NAG-001374</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001376/">NAG-001376</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001378/">NAG-001378</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-000153/#context-8a59e28fbfc4652b">fnd:banachalgebra</a></li><li><a href="/r/NAG-001374/">fnd:banachpolynomialdivision</a></li><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

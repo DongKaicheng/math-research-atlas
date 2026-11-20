@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002164/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Joint continuity for restricted-series Jacobian charts · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002164 · Accepted whole</p><h1>Joint continuity for restricted-series Jacobian charts</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.21.3">Open in the English reader · PDF page 891</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f82bfb2211fd428f27eedf361bea637ad0741d5fa2b6b3c7211f9f927762e27f">
+\begin{theorem}[\bi{Joint continuity for restricted-series Jacobian charts}
+{受限级数 Jacobian 坐标片上的联合连续性}]
+\label{cand:etaleendpointjointcontinuity}
+\bi{For every presentation
+\eqref{eq:candetalejacobianpresentation}, the pointwise
+endpoint of Lemma~\ref{cand:etaledisplacementpointwiseendpoint}
+makes}
+{对每个 \eqref{eq:candetalejacobianpresentation} 型表示，
+Lemma~\ref{cand:etaledisplacementpointwiseendpoint} 的
+逐点终点使映射}
+\[
+ H_B:\mathcal M(B)\times[0,1]\longrightarrow\mathcal M(B)
+\]
+\bi{jointly continuous. Its full homotopy commutes with the
+contractive morphisms, integral Laurent restrictions and complete
+isometric extensions of
+Proposition~\ref{cand:etaledisplacementfunctoriality}.}
+{联合连续。其整个同伦与
+Proposition~\ref{cand:etaledisplacementfunctoriality}
+中的压缩态射、整 Laurent 限制及完备等距扩张相容。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="35db994dfbb396415fa9b5e6128e0c04e058cca6bb22eacad9611d222bdce4be">
+\begin{proof}
+\bi{We first treat a polynomial representative
+$b=P(X,T,Y,Q)\in B$. Choose polynomial systems
+$F^{(n)}\in K^\circ[X,T,Y]^m$ with
+$\|F^{(n)}-F\|\leq\epsilon_n&lt;1$ and
+$\epsilon_n\to0$, using the fixed restricted-series
+representatives. Differentiation is contractive for the
+unit-radius Gauss norms, so the Jacobians are within the
+same bound. At the original tuple $Y\in B^m$, the system
+$F^{(n)}$ has error at most $\epsilon_n$ and an inverse
+Jacobian of norm at most one. Thus
+Lemma~\ref{cand:banachcenterhensel}, now in $B$, gives
+an exact root $Y_n$ with}
+{先考虑一个多项式代表 $b=P(X,T,Y,Q)\in B$。
+利用固定的受限级数代表，选择多项式方程组
+$F^{(n)}\in K^\circ[X,T,Y]^m$，使
+$\|F^{(n)}-F\|\leq\epsilon_n&lt;1$，且
+$\epsilon_n\to0$。对单位半径 Gauss 范数，微分算子
+压缩，故 Jacobian 之差也满足同样的界。在原元组
+$Y\in B^m$ 处，$F^{(n)}$ 的误差至多为
+$\epsilon_n$，Jacobian 的逆范数至多为一。因此在
+$B$ 中应用 Lemma~\ref{cand:banachcenterhensel}，
+得到精确根 $Y_n$，满足}
+\[
+ \begin{gathered}
+ \|Y_n-Y\|\leq\epsilon_n,
+ \qquad Q_n=\det((F^{(n)})&#x27;(Y_n))^{-1},\\
+ \|Q_n\|\leq1,\qquad \|Q_n-Q\|\leq\epsilon_n.
+ \end{gathered}
+\]
+
+\bi{Displace the base and lift the two roots, obtaining
+$Y_\delta$ and $Y_{n,\delta}$ in
+$B\{\delta^{-1}U\}$ for $\delta&lt;1$.
+Both roots lie at distance at most
+$\max(\delta,\epsilon_n)&lt;1$ from the original tuple $Y$.
+Their displaced systems differ by at most $\epsilon_n$,
+since base substitution is contractive. The perturbation
+part of Lemma~\ref{cand:banachcenterhensel} therefore gives,
+uniformly for every $\delta&lt;1$,}
+{对基底作位移并提升这两个根，当 $\delta&lt;1$ 时，
+在 $B\{\delta^{-1}U\}$ 中得到 $Y_\delta$ 与
+$Y_{n,\delta}$。两根距原元组 $Y$ 都至多为
+$\max(\delta,\epsilon_n)&lt;1$。基底代换压缩，故其
+位移后的方程组相差至多 $\epsilon_n$。于是
+Lemma~\ref{cand:banachcenterhensel} 的扰动部分对
+每个 $\delta&lt;1$ 一致给出}
+\[
+ \|Y_{n,\delta}-Y_\delta\|\leq\epsilon_n.
+\]
+\bi{The determinant difference has the same bound, by
+telescoping and the derivative bound. Both inverses have
+norm at most one, so the identity
+$u^{-1}-v^{-1}=u^{-1}(v-u)v^{-1}$ gives
+$\|Q_{n,\delta}-Q_\delta\|\leq\epsilon_n$.
+Let $P_n(U)$ denote $P$ evaluated on the displaced base,
+$Y_{n,\delta}$ and $Q_{n,\delta}$. This definition is
+compatible with all radii. If $C_P$ is the maximum absolute
+value of the coefficients of $P$, telescoping its finitely
+many monomials yields}
+{由望远镜分解及导数界，行列式之差满足同样的界。
+两个逆元的范数都至多为一，因此恒等式
+$u^{-1}-v^{-1}=u^{-1}(v-u)v^{-1}$ 给出
+$\|Q_{n,\delta}-Q_\delta\|\leq\epsilon_n$。
+以 $P_n(U)$ 记把 $P$ 在位移后的基底、
+$Y_{n,\delta}$ 及 $Q_{n,\delta}$ 处取值的结果；
+其定义与全部半径相容。若 $C_P$ 是 $P$ 的系数
+绝对值最大值，则对其有限个单项式作望远镜分解得到}
+\[
+ \|P_n(U)-\sigma_\delta(b)\|_\delta
+                          \leq C_P\epsilon_n
+                       \qquad(0&lt;\delta&lt;1).
+ \tag{A}\label{eq:canduniformjacobianapproximation}
+\]
+
+\bi{By Lemma~\ref{cand:polynomialimplicitendpoint}, the
+norm functions defined by $P_n(U)$, with coefficient
+suprema at time one, are jointly continuous on the full
+product. Inequality~\eqref{eq:canduniformjacobianapproximation}
+bounds the differences of their real-valued norms from
+$|b(H_B(x,t))|$ by $C_P\epsilon_n$ for all $x$ and $t&lt;1$.
+Passing to the already established pointwise limits gives
+the same bound at $t=1$. Thus $|b(H_B(x,t))|$ is a uniform
+limit of continuous functions on the full product and is
+continuous there.}
+{由 Lemma~\ref{cand:polynomialimplicitendpoint}，
+$P_n(U)$ 所定义的范数函数在时刻一取系数上确界后，
+在整个直积上联合连续。
+不等式 \eqref{eq:canduniformjacobianapproximation}
+将它们的实值范数与 $|b(H_B(x,t))|$ 之差，对全部
+$x$ 及 $t&lt;1$ 一致控制在 $C_P\epsilon_n$ 内。
+传到已经建立的逐点极限后，在 $t=1$ 仍有同样的界。
+因此 $|b(H_B(x,t))|$ 是整个直积上的连续函数的一致
+极限，故在其上连续。}
+
+\bi{Finally polynomial representatives are dense in the
+quotient Banach algebra $B$. Contractivity of every
+strict-time evaluation and of the endpoint seminorm gives}
+{最后，多项式代表在商 Banach 代数 $B$ 中稠密。
+每个严格小于一时刻的取值及终点半范数都压缩，故}
+\[
+ \bigl||b(H_B(x,t))|-|b&#x27;(H_B(x,t))|\bigr|
+                                  \leq\|b-b&#x27;\|
+                              \quad(0\leq t\leq1).
+\]
+\bi{Uniform polynomial approximation proves continuity
+for every $b\in B$, hence joint continuity into its
+spectrum. The previously proved strict-time functorial
+identities pass to the endpoint by pointwise convergence.}
+{一致多项式逼近对每个 $b\in B$ 给出连续性，从而
+给出到其谱的联合连续性。此前严格小于一时刻的函子
+恒等式，由逐点收敛传到终点。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="7d82cfae96b627fabe008e92f8b274a70cc02312729a45ded39d3c9dfb79233b">
+\bi{Retain the standard algebra $A$ and its integral coordinates
+from Lemma~\ref{cand:mixedgaussdisplacement}. Let
+$F=(F_1,\ldots,F_m)$ be represented by restricted series in
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ with coefficients in
+$K^\circ$. Write $J=\partial F/\partial Y$ and consider the
+nonzero affinoid algebra}
+{保留 Lemma~\ref{cand:mixedgaussdisplacement} 中的标准代数
+$A$ 及其整坐标。设 $F=(F_1,\ldots,F_m)$ 由变量
+$X_0,\ldots,X_r,T,Y_1,\ldots,Y_m$ 的受限级数表示，
+系数属于 $K^\circ$。写 $J=\partial F/\partial Y$，并考虑
+非零 affinoid 代数}
+\[
+ B=A\langle Y_1,\ldots,Y_m,Q\rangle/
+                  (F_1,\ldots,F_m,Q\det J-1).
+ \tag{J}\label{eq:candetalejacobianpresentation}
+\]
+\bi{We use its displayed quotient norm. In particular the
+coordinate images and $J^{-1}=Q\operatorname{adj}(J)$ have
+norm at most one. All the statements below keep this
+presentation over the original valued field.}
+{使用所列表示的商范数。特别地，坐标像及
+$J^{-1}=Q\operatorname{adj}(J)$ 的范数至多为一。下述
+全部陈述保留原赋值域上的这个表示。}
+
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002164-reader.jpg" alt="Typeset mathematical passage from PDF page 891" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=891">PDF page 891 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole <small>(earlier independently reviewed original whole in this tier)</small></li><li><a href="/r/NAG-002163/">NAG-002163</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole</li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole</li><li><a href="/r/NAG-001434/">NAG-001434</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole</li><li><a href="/r/NAG-002156/">NAG-002156</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole</li><li><a href="/r/NAG-002157/">NAG-002157</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole</li><li><a href="/r/NAG-002158/">NAG-002158</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole</li><li><a href="/r/NAG-002160/">NAG-002160</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole</li><li><a href="/r/NAG-002161/">NAG-002161</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002163/">NAG-002163</a> · selected whole</li><li><a href="/r/NAG-002163/">NAG-002163</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002156/">cand:banachcenterhensel</a></li><li><a href="/r/NAG-002160/">cand:etaledisplacementfunctoriality</a></li><li><a href="/r/NAG-002161/">cand:etaledisplacementpointwiseendpoint</a></li><li><a href="/r/NAG-002139/">cand:mixedgaussdisplacement</a></li><li><a href="/r/NAG-002163/">cand:polynomialimplicitendpoint</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

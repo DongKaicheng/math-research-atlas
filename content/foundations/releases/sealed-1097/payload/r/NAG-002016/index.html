@@ -1,0 +1,202 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002016/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The monomial simplex and its residual data · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002016 · Accepted whole</p><h1>The monomial simplex and its residual data</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.3.26.1">Open in the English reader · PDF page 620</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="f6350d06a60cc1e67084cbf7f4be4478bd7b6d2bb7e6906071743436a3162de6">
+\begin{proposition}[\bi{The monomial simplex and its residual data}
+{单项式单纯形及其剩余数据}]
+\label{fnd:standardmonomialchartgeometry}
+\bi{Let $K$ be complete and nontrivially valued, let
+$0&lt;|a|&lt;1$, and let $0\leq r\leq d$. Put}
+{设 $K$ 完备且非平凡赋值，$0&lt;|a|&lt;1$，$0\leq r\leq d$。
+令}
+\[
+ A_0=K^\circ\langle X_0,\ldots,X_r,T_1,\ldots,T_{d-r}\rangle
+             /(X_0\cdots X_r-a),\qquad A=A_0[1/a].
+\]
+\bi{Then $A_0$ is admissible and $\mathcal M(A)$ is the
+rational domain $|a|\leq|X_1\cdots X_r|$ in the unit
+$d$-dimensional polydisc with coordinates $X_1,\ldots,X_r,T$.
+The monomial points parametrized by}
+{则 $A_0$ 为 admissible，且 $\mathcal M(A)$ 是以
+$X_1,\ldots,X_r,T$ 为坐标的 $d$ 维单位多圆盘中的 rational
+域 $|a|\leq|X_1\cdots X_r|$。由下列集合参数化的单项式点}
+\[
+ \Delta_a=\{(u_0,\ldots,u_r)\in\mathbb R_{\geq0}^{r+1}:
+                         u_0+\cdots+u_r=v(a)\}
+\]
+\bi{form a subspace homeomorphic to $\Delta_a$. At every
+such point $x_u$, the completed residue field is the completion
+of $K(X_1,\ldots,X_r,T)$ for its Gauss valuation of weights
+$u_1,\ldots,u_r,0,\ldots,0$, and}
+{组成一个与 $\Delta_a$ 同胚的子空间。在每个这样的点
+$x_u$ 处，完备剩余域是 $K(X_1,\ldots,X_r,T)$ 对权
+$u_1,\ldots,u_r,0,\ldots,0$ 的 Gauss 赋值的完备化，且}
+\[
+ s_K(x_u)+t_K(x_u)=\dim_{x_u}\mathcal M(A)=d.
+\]
+\bi{If all $u_i&gt;0$, specialization is the generic point of
+the stratum $X_0=\cdots=X_r=0$, of dimension $d-r$.
+Any finite family of Laurent monomials in the $X_i$ with
+coefficients in $K$ and value one at $x_u$ becomes integral on
+a formal affine neighborhood of its specialization after an
+admissible formal modification. Its nonzero residues there are
+the original residues in $\widetilde{\mathcal H(x_u)}$.}
+{若所有 $u_i&gt;0$，则特化为分层 $X_0=\cdots=X_r=0$ 的
+泛点，该分层维数为 $d-r$。任意有限个系数属于 $K$、在
+$x_u$ 处绝对值为一的 $X_i$ 的 Laurent 单项式，在某个
+admissible 形式修正后，都在其特化点的一个形式仿射邻域
+上成为整系数元素；它们在那里得到的非零剩余类就是原来
+在 $\widetilde{\mathcal H(x_u)}$ 中的剩余类。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c6e98b813c4c8878c3d2273b320cdc5b6a046fa11c475360e6efc382af87300a">
+\begin{proof}
+\bi{\emph{Integral normal form.} Write $M=X_0\cdots X_r$.
+In a restricted series replace a monomial $X^\nu T^\mu$ by
+$a^qX^{\nu-q\mathbf1}T^\mu$, where $q=\min_i\nu_i$.
+There is a unique resulting series supported on exponent
+vectors whose minimum $X$-exponent is zero. Its coefficient
+at such a vector $(\lambda,\mu)$ is}
+{\emph{整系数正规形。} 记 $M=X_0\cdots X_r$。在受限
+级数中，将单项式 $X^\nu T^\mu$ 替换为
+$a^qX^{\nu-q\mathbf1}T^\mu$，其中 $q=\min_i\nu_i$。
+所得级数唯一支撑在最小 $X$-指数为零的指数向量上；在
+这样的向量 $(\lambda,\mu)$ 处，其系数为}
+\[
+          \sum_{q\geq0}a^q c_{\lambda+q\mathbf1,\mu}.
+\]
+\bi{These sums converge and preserve integral coefficients.
+The identity}
+{这些和收敛并保留整系数。恒等式}
+\[
+ M^q-a^q=(M-a)\sum_{j=0}^{q-1}a^jM^{q-1-j}
+\]
+\bi{gives a contractive division operator on polynomials.
+The coefficients of its value on a restricted series are
+$\sum_{q\geq1}a^{q-1}c_{\nu+q\mathbf1,\mu}$;
+the finite-tail condition makes this a restricted series again.
+Thus the polynomial division identities extend continuously,
+and their kernel is exactly $(M-a)$, not just its closure.
+The quotient is the torsion-free module of these normal
+forms. Hence $A_0$ is admissible by
+Theorem~\ref{fnd:formaltorsionfreepresentation}. Inverting
+$a$ gives its complete strict affinoid algebra by
+Proposition~\ref{fnd:affineformalpresentations}. Eliminating
+$X_0=a/(X_1\cdots X_r)$ is exactly the rational-localization
+presentation asserted in the statement. For $r=0$ the empty
+product is one and the domain is the whole $d$-polydisc.}
+{在多项式上给出压缩范数的除法算子。对受限级数，其像的
+系数为 $\sum_{q\geq1}a^{q-1}c_{\nu+q\mathbf1,\mu}$；
+有限尾条件保证所得仍为受限级数。因此多项式除法恒等式
+连续延拓，其核恰为 $(M-a)$，不只是该理想的闭包。商为
+上述正规形组成的无挠模。于是由
+Theorem~\ref{fnd:formaltorsionfreepresentation}，$A_0$
+为 admissible。由 Proposition~\ref{fnd:affineformalpresentations}，
+逆转 $a$ 得到其完备 strict affinoid 代数。消去
+$X_0=a/(X_1\cdots X_r)$，正好给出陈述中的 rational
+局部化表示。当 $r=0$ 时，空乘积为一，该域就是整个
+$d$ 维多圆盘。}
+
+\bi{\emph{Points and topology.} At $u\in\Delta_a$, give
+$X_i$ value $u_i$ and each $T_j$ value zero. After eliminating
+$X_0$, the Gauss norm is multiplicative by
+Proposition~\ref{fnd:gaussnorm}, and all original coordinates
+have norm at most one. It therefore extends to a bounded
+multiplicative seminorm on $A$. A polynomial becomes a finite
+Laurent polynomial after elimination; its value is a maximum
+of finitely many continuous functions of $u$. Restricted-series
+tails tend to zero uniformly on $\Delta_a$, because all original
+coordinates have norm at most one. Thus the same continuity
+holds for every element of $A$. The inverse on the image is
+$x\mapsto(v(X_0(x)),\ldots,v(X_r(x)))$; the coordinates are
+invertible in $A$, so these functions are continuous. This proves
+the claimed homeomorphism.}
+{\emph{点与拓扑。} 对 $u\in\Delta_a$，赋予 $X_i$ 值
+$u_i$，赋予每个 $T_j$ 值零。消去 $X_0$ 后，由
+Proposition~\ref{fnd:gaussnorm}，Gauss 范数具有乘性，
+且所有原坐标的范数至多为一，因此它延拓为 $A$ 上的有界
+乘性半范数。消元后，多项式变为有限 Laurent 多项式，
+其取值为有限个 $u$ 的连续函数的最大值。由于原坐标的
+范数都至多为一，受限级数的尾项在 $\Delta_a$ 上一致趋于
+零，因此每个 $A$ 中元素的取值也连续。像上的逆映射为
+$x\mapsto(v(X_0(x)),\ldots,v(X_r(x)))$；因这些坐标在
+$A$ 中可逆，各函数都连续，故得到所述同胚。}
+
+\bi{\emph{Residue fields and dimension.} The Laurent
+polynomial algebra $K[X_1^{\pm1},\ldots,X_r^{\pm1},T]$ is
+dense in $A$ and its evaluation at $x_u$ is injective. Indeed
+distinct normal-form monomials give distinct Laurent exponents,
+so their Gauss values cannot cancel. Passing to fractions and
+then completion identifies $\mathcal H(x_u)$ with the stated
+completed Gauss field; density is preserved on taking fractions
+because inversion is continuous at every nonzero element.
+Proposition~\ref{new:gauss_residue_formula} gives $d_K(x_u)=d$.
+The rational-domain description and
+Corollary~\ref{fnd:affinoiddimensiondomaincover} give
+$\dim\mathcal M(A)\leq d$. The local Abhyankar inequality
+in Theorem~\ref{fnd:generalanalyticabhyankar} now gives}
+{\emph{剩余域与维数。} Laurent 多项式代数
+$K[X_1^{\pm1},\ldots,X_r^{\pm1},T]$ 在 $A$ 中稠密，
+且在 $x_u$ 处的取值为单射。事实上，不同正规形单项式
+给出不同 Laurent 指数，其 Gauss 取值不能抵消。取分式
+再完备化，就将 $\mathcal H(x_u)$ 识别为所述完备 Gauss
+域；因为逆运算在每个非零元素处连续，取分式保持这里的
+稠密性。Proposition~\ref{new:gauss_residue_formula}
+给出 $d_K(x_u)=d$。由 rational 域表示及
+Corollary~\ref{fnd:affinoiddimensiondomaincover}，有
+$\dim\mathcal M(A)\leq d$。再用
+Theorem~\ref{fnd:generalanalyticabhyankar} 的局部
+Abhyankar 不等式，得到}
+\[
+ d=d_K(x_u)\leq\dim_{x_u}\mathcal M(A)
+                  \leq\dim\mathcal M(A)\leq d.
+\]
+
+\bi{If all $u_i&gt;0$, every $X_i$ reduces to zero, whereas
+the reductions of the $T_j$ are algebraically independent by
+the same Gauss calculation. The kernel of special-fibre
+evaluation is consequently $(x_0,\ldots,x_r)$. The stratum
+is affine $(d-r)$-space, and its dimension is $d-r$ by
+\cite[Tag 00P0]{StacksAlg}. This proves the specialization
+assertion.}
+{若所有 $u_i&gt;0$，则每个 $X_i$ 都约化为零，而由同一
+Gauss 计算，各 $T_j$ 的约化代数独立。因此特殊纤维取值
+的核为 $(x_0,\ldots,x_r)$。该分层是 $d-r$ 维仿射空间，
+由 \cite[Tag 00P0]{StacksAlg}，其维数为 $d-r$。
+这证明特化断言。}
+
+\bi{\emph{Making a residue visible on a model.} Write one
+of the specified monomials as $h=f/g$ with $f,g\in A_0$
+monomials having integral coefficients. This is possible after
+multiplication of numerator and denominator by a scalar.
+The denominator $g=cX^\nu$ divides a nonzero element of
+$K^\circ$: choose $N\geq\max_i\nu_i$ and use
+$gX^{N\mathbf1-\nu}=ca^N$. Hence $(f,g)$ is an open ideal.
+The $g$-chart of its admissible blowup has $f/g$ integral by
+Theorem~\ref{fnd:formalblowupcharts}, and contains the unique
+generic lift of $x_u$ since $|f(x_u)|=|g(x_u)|$. For a finite
+family of monomials, blow up the product of these open ideals.
+Lemma~\ref{fnd:formalglobalblowupcalculus} makes the resulting
+modification dominate all the individual blowups. The
+intersection of the inverse images of their $g$-charts is a
+formal open containing the specialization of the lifted point,
+by functoriality of specialization and
+Proposition~\ref{fnd:formalglobalgenericfaithful}. Take a
+formal affine neighborhood inside that intersection. All the
+chosen monomials are integral there, and their value one at
+the point makes their reductions nonzero. Generic-fibre
+invariance and evaluation identify them with the original
+residues.}
+{\emph{在模型上显现剩余类。} 将指定单项式之一写为
+$h=f/g$，其中 $f,g\in A_0$ 是具有整系数的单项式；
+同时以某个标量乘分子、分母即可做到。分母
+$g=cX^\nu$ 整除 $K^\circ$ 的某个非零元素：选择
+$N\geq\max_i\nu_i$，便有
+$gX^{N\mathbf1-\nu}=ca^N$。所以 $(f,g)$ 为开理想。
+由 Theorem~\ref{fnd:formalblowupcharts}，其 admissible
+blowup 的 $g$-图中 $f/g$ 为整系数元素；因为
+$|f(x_u)|=|g(x_u)|$，该图包含 $x_u$ 的唯一泛纤维提升。
+对有限个单项式，blow up 这些开理想的乘积。由
+Lemma~\ref{fnd:formalglobalblowupcalculus}，所得修正
+支配各个单独的 blowup。由特化的函子性及
+Proposition~\ref{fnd:formalglobalgenericfaithful}，各
+$g$-图逆像的交为包含提升点特化的形式开集。在此交内取
+形式仿射邻域，所选单项式都成为整系数元素；其在该点的
+绝对值为一，故约化非零。泛纤维不变性及取值将它们识别
+为原来的剩余类。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002016-reader.jpg" alt="Typeset mathematical passage from PDF page 620" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=620">PDF page 620 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00P0@NAG-002016:residual-polynomial-domain · named external application</li><li><a href="/r/NAG-001945/#formal_existence_restriction_product_pullback">CLAUSE:NAG-001945:formal_existence_restriction_product_pullback</a> · selected scope</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000464/">NAG-000464</a> · selected whole</li><li><a href="/r/NAG-001470/">NAG-001470</a> · selected whole</li><li><a href="/r/NAG-001592/">NAG-001592</a> · selected whole</li><li><a href="/r/NAG-001593/">NAG-001593</a> · selected whole</li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole</li><li><a href="/r/NAG-001918/">NAG-001918</a> · selected whole</li><li><a href="/r/NAG-001921/">NAG-001921</a> · selected whole</li><li><a href="/r/NAG-001922/">NAG-001922</a> · selected whole</li><li><a href="/r/NAG-001939/">NAG-001939</a> · selected whole</li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole</li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export</li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00P0">APP-STACKS-00P0@NAG-002016:residual-polynomial-domain</a></li></ul></details><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001592/">fnd:affinoiddimensiondomaincover</a></li><li><a href="/r/NAG-001921/">fnd:formalblowupcharts</a></li><li><a href="/r/NAG-001945/#formal_existence_restriction_product_pullback">fnd:formalglobalblowupcalculus</a></li><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-000182/">fnd:gaussnorm</a></li><li><a href="/r/NAG-001593/">fnd:generalanalyticabhyankar</a></li><li><a href="/r/NAG-000464/">new:gauss_residue_formula</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

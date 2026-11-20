@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001939/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Surjectivity of formal specialization · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001939 · Accepted whole</p><h1>Surjectivity of formal specialization</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.16.15">Open in the English reader · PDF page 532</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="69326b276395f028361289c36c18336b363e835b736544fc9e2095b6624653aa">
+\begin{theorem}[\bi{Surjectivity of formal specialization}{形式特化的满射性}]
+\label{fnd:affineformalspecializationsurjective}
+\bi{Let $A_0$ be an admissible $K^\circ$-algebra and
+$A=A_0[1/\pi]$. The map}
+{设 $A_0$ 为 admissible $K^\circ$-代数，$A=A_0[1/\pi]$。
+映射}
+\[
+ \operatorname{sp}:\mathcal M(A)\longrightarrow
+       \operatorname{Spec}(A_0/K^{\circ\circ}A_0),\qquad
+ x\longmapsto\{a\in A_0:|a(x)|&lt;1\}/K^{\circ\circ}A_0
+\]
+\bi{is well defined and surjective onto all prime ideals.}
+{良定义，且满射到全部素理想。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f7037a8b58914b75059dd48b3209e828e77bcd43aaaa7c72491760e781a117bf">
+\begin{proof}
+\bi{Every analytic point has value at most one on $A_0$,
+by Proposition~\ref{fnd:affineformalpresentations} and
+Lemma~\ref{new:seminormcontractive}. Its elements of value
+less than one form a prime ideal containing
+$K^{\circ\circ}A_0$, which proves well-definedness.}
+{由 Proposition~\ref{fnd:affineformalpresentations} 和
+Lemma~\ref{new:seminormcontractive}，每个解析点在 $A_0$
+上的值都不超过一。值严格小于一的元素构成一个包含
+$K^{\circ\circ}A_0$ 的素理想，故映射良定义。}
+
+\bi{First suppose $A_0$ is a domain, and let
+$\mathfrak q\subset A_0$ represent a given special-fibre point.
+By Lemma~\ref{fnd:integralformalnormalization}, choose
+a finite injection $R_0=K^\circ\langle Y\rangle\hookrightarrow A_0$.
+The contraction of $\mathfrak q$ defines a prime of
+$\widetilde K[Y]$. Lemma~\ref{fnd:polydiscprimecenter}
+gives a multiplicative norm on $K\langle Y\rangle$ centered
+there. Extend it to the fraction field of $R_0$ by quotients.
+Lemma~\ref{fnd:normalbaseprescribedcenter} extends this
+absolute value to $\operatorname{Frac}(A_0)$ with center
+$\mathfrak q$. It is bounded on $A$: every element of $A_0$
+is integral over $R_0$, hence has value at most one, and
+the quotient-unit-ball description gives contractivity on $A$.
+It therefore defines an analytic point specializing to
+$\mathfrak q$.}
+{先设 $A_0$ 为整环，令 $\mathfrak q\subset A_0$ 表示给定的
+特殊纤维点。由 Lemma~\ref{fnd:integralformalnormalization}，
+选取有限单射
+$R_0=K^\circ\langle Y\rangle\hookrightarrow A_0$。
+$\mathfrak q$ 的收缩定义 $\widetilde K[Y]$ 的一个素理想。
+Lemma~\ref{fnd:polydiscprimecenter} 给出以它为中心的
+$K\langle Y\rangle$ 上的乘性范数。通过取商把它延拓到
+$R_0$ 的分式域，再由
+Lemma~\ref{fnd:normalbaseprescribedcenter} 延拓到
+$\operatorname{Frac}(A_0)$，使中心为 $\mathfrak q$。
+所得绝对值在 $A$ 上有界：$A_0$ 的每个元素在 $R_0$ 上整，
+因而其值不超过一，商单位球的描述于是给出有界性。
+它定义一个特化到 $\mathfrak q$ 的解析点。}
+
+\bi{For general $A_0$, let $P_1,\ldots,P_t$ be the finitely
+many minimal primes of the Noetherian algebra $A$, and put
+$Q_i=P_i\cap A_0$. Their intersection is the nilradical of $A_0$,
+since $A_0\hookrightarrow A$. A prime $\mathfrak q$ of $A_0$
+therefore contains some $Q_i$: otherwise a product of elements
+of the $Q_i$ outside $\mathfrak q$ gives a contradiction.
+The quotient $A_0/Q_i$ is complete by
+Proposition~\ref{fnd:formalmoduletopology}, topologically finite type,
+and torsion free as a subring of $A/P_i$. It is admissible by
+Theorem~\ref{fnd:formaltorsionfreepresentation}.
+Apply the domain case to $\mathfrak q/Q_i$, then compose
+the resulting point with $A\to A/P_i$. The zero algebra
+has empty source and target.}
+{对一般 $A_0$，令 $P_1,\ldots,P_t$ 为 Noetherian 代数 $A$
+的有限个极小素理想，记 $Q_i=P_i\cap A_0$。
+由于 $A_0\hookrightarrow A$，这些 $Q_i$ 的交为 $A_0$ 的幂零根。
+故 $A_0$ 的素理想 $\mathfrak q$ 至少包含一个 $Q_i$：否则从
+各 $Q_i$ 中取不属于 $\mathfrak q$ 的元素并相乘即得矛盾。
+由 Proposition~\ref{fnd:formalmoduletopology}，商 $A_0/Q_i$ 完备；
+它拓扑有限型，且作为 $A/P_i$ 的子环无挠，因此由
+Theorem~\ref{fnd:formaltorsionfreepresentation} 为 admissible。
+对 $\mathfrak q/Q_i$ 应用整环情形，并把所得点与
+$A\to A/P_i$ 复合即可。零代数的源和目标都为空。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001939-reader.jpg" alt="Typeset mathematical passage from PDF page 532" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=532">PDF page 532</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00E0@NAG-001939:generic-prime-contains-minimal · named external application</li><li>APP-STACKS-00E0@NAG-001939:generic-prime-contains-minimal · named external application <small>(requires)</small></li><li>APP-STACKS-00E0@NAG-001939:generic-zero-ideal-nilradical · named external application</li><li>APP-STACKS-00E0@NAG-001939:generic-zero-ideal-nilradical · named external application <small>(requires)</small></li><li>APP-STACKS-00FR@NAG-001939:generic-minimal-prime-finiteness · named external application</li><li>APP-STACKS-00FR@NAG-001939:generic-minimal-prime-finiteness · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li>CONTEXT:NAG-001939:domain_case · standing context or base</li><li>CONTEXT:NAG-001939:domain_case · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole</li><li><a href="/r/NAG-001915/">NAG-001915</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole</li><li><a href="/r/NAG-001916/">NAG-001916</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="center_defined"><h3>center defined</h3><p>The ledger retains this scope. Its exact text or reader anchor is unavailable in this edition.</p></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001918/">fnd:affineformalpresentations</a></li><li><a href="/r/NAG-001916/">fnd:formalmoduletopology</a></li><li><a href="/r/NAG-001915/">fnd:formaltorsionfreepresentation</a></li><li><a href="/r/NAG-001935/">fnd:integralformalnormalization</a></li><li><a href="/r/NAG-001938/">fnd:normalbaseprescribedcenter</a></li><li><a href="/r/NAG-001937/">fnd:polydiscprimecenter</a></li><li><a href="/r/NAG-000655/">new:seminormcontractive</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

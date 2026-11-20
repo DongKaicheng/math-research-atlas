@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002844/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Uniform logarithmic tails suffice · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002844 · Accepted whole</p><h1>Uniform logarithmic tails suffice</h1><p><a href="/projects/foundations/chapters/appendix-g/">G Stable inertia and original-field models</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002844.original">Open in the English reader · PDF page 2014</a></p><details class="source"><summary>Statement and full selected proof · exact TeX</summary><pre data-sha256="7bae6a89b2d41f26f05c96482e8f3683f5976a658ecac813b585b670eea38c3d">
+\begin{theorem}[Uniform logarithmic tails suffice]
+\label{f9ml:uniformtails}
+In the preceding setup write
+\[
+ T_j(R)=\int(g_j-R)_+\,d\mu_j
+       =\sum_V a_{j,V}\bigl(g_j(\xi_{j,V})-R\bigr)_+,
+ \qquad a_{j,V}=\mu_j(\{\xi_{j,V}\})\geq0.
+\]
+Suppose
+\begin{equation}\label{eq:f9ml:tailcondition}
+                      \lim_{R\to\infty}\sup_j T_j(R)=0.
+\end{equation}
+Then $\mu(D^\an)=0$, $g\in L^1(\mu)$ and
+\begin{equation}\label{eq:f9ml:loglimit}
+                        \int g\,d\mu
+                         =\lim_{j\to\infty}\int g_j\,d\mu_j.
+\end{equation}
+If $h_j$ and the metrics defining $\mu_j$ have the common model data of
+\hyperref[f9ml:finite-model-data]{the standing finite-model data}, the hypothesis is the explicit coefficient condition
+\begin{equation}\label{eq:f9ml:computabletail}
+ \lim_{R\to\infty}\sup_j
+  \sum_V\frac{\delta_{j,V}}{e_{0,j}E_j}
+       \bigl(\lambda c_{j,V}-e_{0,j}b_{j,V}R\bigr)_+=0.
+\end{equation}
+In particular a common upper bound on
+$c_{j,V}/(e_{0,j}b_{j,V})$ suffices. More generally, if $g_j\geq C$
+at all atoms and for some $\alpha&gt;0$ and $A&lt;\infty$ one has
+\begin{equation}\label{eq:f9ml:momentbound}
+                 \sup_j\sum_V a_{j,V}
+                 (g_j(\xi_{j,V})-C)^{1+\alpha}\leq A,
+\end{equation}
+then $T_j(R)\leq A/(R-C)^\alpha$ for $R&gt;C$, so the conclusion holds.
+\end{theorem}
+\par\smallskip\noindent{\small\textit{Direct inputs} Theorem~\ref{f9ml:atomiclog}, \hyperref[fnd:analytificationprojectivecompact]{\texttt{NAG-001714}}.}\par\smallskip
+\begin{proof}
+Because $\|s\|_h$ is continuous and bounded on the compact space,
+$g$ is bounded below. Each function $g_R=\min(g,R)$ is a finite
+continuous function, including at $D^\an$: it is the continuous capped
+function of the nonnegative quantity $\|s\|_h$. Metric convergence
+implies $|g_j-g|\leq\varepsilon_j$ off $D^\an$ and hence at every
+model atom by Theorem~\ref{f9ml:atomiclog}. The sequence
+$\varepsilon_j$ is bounded. Thus all these atom values have a common
+lower bound $C$, and $g$ can also be taken at least $C$.
+Let $m_j=\mu_j(X^\an)$. Weak convergence tested on $1$ makes $m_j$
+bounded. The map $u\mapsto\min(u,R)$ is $1$-Lipschitz, so
+\begin{equation}\label{eq:f9ml:truncbound}
+ \left|\int\min(g_j,R)\,d\mu_j-\int g_R\,d\mu_j\right|
+                         \leq\varepsilon_jm_j.
+\end{equation}
+For fixed $R$, its left integrals therefore have common limit
+$I_R=\int g_R\,d\mu$.
+
+Put $I_j=\int g_j\,d\mu_j$ and $T(R)=\sup_jT_j(R)$. The exact
+identity
+\[
+               I_j=\int\min(g_j,R)\,d\mu_j+T_j(R)
+\]
+gives
+\begin{equation}\label{eq:f9ml:sandwich}
+ I_R\leq\liminf_j I_j\leq\limsup_j I_j\leq I_R+T(R).
+\end{equation}
+For some fixed sufficiently large $R_0$, $T(R_0)$ is finite. Since
+$g_{R_0}$ is bounded and the $m_j$ are bounded, the $I_j$ are bounded
+above; their lower bound follows from $C m_j$. Hence $I_R$ is bounded
+above as $R$ grows. By the definition of the positive integral,
+$\sup_R\int(g_R-C)\,d\mu=\int(g-C)\,d\mu$: every bounded
+nonnegative simple function below $g-C$ lies below $g_R-C$ once
+$R-C$ exceeds its largest value. Thus $g$ has finite integral.
+The simple functions $n\,1_{D^\an}\leq g-C$ then force
+$\mu(D^\an)=0$, and the lower bound gives $g\in L^1(\mu)$.
+Letting $R\to\infty$ in
+\eqref{eq:f9ml:sandwich} proves \eqref{eq:f9ml:loglimit}.
+
+On a common model, substitute
+$a_{j,V}=b_{j,V}\delta_{j,V}/E_j$ and
+$g_j(\xi_{j,V})=\lambda c_{j,V}/(e_{0,j}b_{j,V})$.
+Since $b_{j,V},e_{0,j}&gt;0$ and $\delta_{j,V}\geq0$, the expression
+for $T_j(R)$ becomes exactly the sum in \eqref{eq:f9ml:computabletail}.
+A uniform upper bound on the indicated ratios makes it zero for large
+$R$. Finally, for $x\geq C$ and $R&gt;C$,
+\[
+                  (x-R)_+\leq\frac{(x-C)^{1+\alpha}}{(R-C)^\alpha}.
+\]
+Summing proves the final sufficient condition.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002844-reader.jpg" alt="Typeset mathematical passage from PDF page 2015" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2015">PDF page 2015 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002844/">NAG-002844</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002830/">f9ml:atomiclog</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

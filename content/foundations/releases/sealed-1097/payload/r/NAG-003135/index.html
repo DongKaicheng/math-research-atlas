@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003135/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Continuous test operations and gluing of currents · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003135 · Accepted whole</p><h1>Continuous test operations and gluing of currents</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003135.original">Open in the English reader · PDF page 1868</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="fd3c34d19eb2be4722dd56daa30d59326cdf393ac7082966308d87634699160e">
+\begin{theorem}[Continuous test operations and gluing of currents]\label{f9cp:operators}
+On every ordinary open $U\subset X$, the maps $d&#x27;$, $d&#x27;&#x27;$ and multiplication $\eta\mapsto\beta\wedge\eta$ by a fixed ordinary smooth form $\beta$ are continuous on the native compact-support test spaces in their indicated degrees. Extension by zero from an ordinary open subset is continuous.
+
+The spaces $\D_{r,s}$ form sheaves of real vector spaces. Formula~\eqref{eq:signs} defines currents and gives
+\[
+ (d&#x27;)^2=(d&#x27;&#x27;)^2=0,\qquad d&#x27;d&#x27;&#x27;+d&#x27;&#x27;d&#x27;=0,\qquad
+ (\DD T)(\alpha)=T(\DD\alpha).
+\]
+For smooth $h$, $(hT)(\alpha)=T(h\alpha)$ defines a current. For a smooth form $\beta$ of bidegree $(a,a)$, set
+\[
+                 (\beta\wedge T)(\alpha)=T(\beta\wedge\alpha).
+\]
+These operations commute with ordinary restriction. Differentiation does not enlarge support; multiplication has support contained in $\supp T\cap\supp\beta$ (with $\beta=h$ for scalar multiplication). The statement concerns fixed smooth multipliers; it asserts no product of arbitrary currents or joint continuity on varying coefficient stages.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a4611a15258c168a93379cf592c20bd109e7adac5971c3fbd703319198d1b8a6">
+\begin{proof}
+The algebraic operations and support locality exist by \NAG{002424}. On an ordinary stage $H_s$, differentiation of each ambient representative maps continuously to the corresponding ordinary stage in the new degree: compatibility and vanishing off the fixed support are preserved. Coefficient order $m$ is bounded by order $m+1$. The final topology of \NAG{002473} therefore makes both differentials continuous.
+
+For multiplication, fix a cutoff stage $i$ and put $C=\supp\chi$. Cover $C$ by finitely many affinoid neighborhoods $W_j$ inside $\operatorname{Int}(V,X)$ on which the fixed forms $\chi$ and $\beta$ have ordinary smooth representatives in fixed tuples $g_j$. This uses the neighborhood and restriction construction in \NAG{002424}. Adjoin $f|_{W_j}$ to $g_j$. On the joint ambient open, the output is represented by
+\[
+                  L_j\eta=c_j\,\pi_g^*\beta_j\wedge\pi_f^*\eta,
+\]
+where $c_j$ represents $\chi$. For every compact $L$ and integer $m$,
+\[
+ p_{L,m}(L_j\eta)\leq C_{j,L,m}\,p_{\pi_f(L),m}(\eta).
+\]
+The constant involves only the fixed coefficient functions and their derivatives. The representatives agree on ordinary overlaps and vanish off $C$. Thus they belong to one fixed ordinary stage in the output degree, and depend continuously on $\eta$. The final-topology criterion proves continuity. All refinements and constants were chosen before the variable $\eta$.
+
+For an open inclusion $j:W\hookrightarrow U$, a compactly supported cutoff on $W$ extends smoothly by zero to $U$: its support is closed in the Hausdorff space and is contained in $W$. The extended cutoff gives exactly the same generating stage on $U$. This proves continuity of $j_!$ and defines restriction of a current by $T|_W(\eta)=T(j_!\eta)$.
+
+To glue compatible currents $T_j$ on an open cover, choose for each compact test support a finite subcover and a finite smooth partition $\chi_j$ equal to one in sum near that support, as supplied by \NAG{002428}. Define
+\[
+                         T(\alpha)=\sum_j T_j(\chi_j\alpha).
+\]
+Independence follows by multiplying two such partitions: each double term is supported compactly in an overlap, where the two currents agree. This also proves linearity, restriction and uniqueness. For continuity on one cutoff stage, its support is fixed, so choose the finite subcover and partition once. Each map $\eta\mapsto\chi_jQ_i\eta$, viewed as a test on the corresponding open set, has the fixed joint-chart factorization just proved. Each summand is continuous, so the glued current is continuous. No locally finite partition on all of $X$ is required.
+
+The transposed maps are continuous linear functionals because the test maps are continuous. If $r+s=N$, successive transpositions give the sign $(-1)^{N+1}(-1)^N=-1$. The test identity $d&#x27;&#x27;d&#x27;=-d&#x27;d&#x27;&#x27;$ therefore gives $(\DD T)(\alpha)=T(\DD\alpha)$; the other differential identities follow in the same way. The multiplication formulas are transposes of continuous fixed test multipliers. Locality gives restriction compatibility and the support assertions.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="b46a1b7fa3350e8b7597698f5e202f977545b8385ff56b463ecd314ccd8eda6c">
+% BEGIN CONTEXT native
+\paragraph{Native conventions.}
+Let $K$ be complete for its specified real-valued non-Archimedean absolute value, and let $X$ be good and Hausdorff. The valuation may be trivial. Use the ordinary smooth moment sheaf $\A_X^{p,q}$ of \NAG{002424} and its compactly supported test space
+\[
+ \E^{p,q}(U)=\A_{X,c}^{p,q}(U),\qquad
+ \tau=\tau_{\rm cut}=\tau_{\rm ord}
+\]
+on every ordinary open $U\subset X$, with the equality and fixed-stage descriptions of \NAG{002473}. A cutoff stage is
+\[
+ Q_i\eta=\ext(\chi t_f^*\eta),\quad
+ i=(V,f,\Omega,\chi),\quad t_f=-\log|f|,
+\]
+where $V$ is affinoid, $f$ is a tuple of analytic units, $\Omega$ contains the actual compact image $t_f(V)$, and $\chi$ has compact support inside $\operatorname{Int}(V,X)$. Ambient seminorms are
+\[
+ p_{L,m}(\eta)=\max_{I,J,\,|a|\leq m}\sup_L|\partial^a\eta_{I,J}|,
+ \qquad L\Subset\Omega.
+\]
+Ordinary stages $R_s:H_s\to\E^{p,q}$ use a fixed finite compatible chart family and a fixed compact support. All one-form generators anticommute, and $d&#x27;,d&#x27;&#x27;$ differentiate coefficients and wedge on the left. The positive top generator is $\bigwedge_{j=1}^n(d&#x27;x_j\wedge d&#x27;&#x27;x_j)$.
+
+Write $\D_{r,s}(U)=\E^{r,s}(U)&#x27;$ for the continuous real dual, called currents of bidimension $(r,s)$. Negative test degrees and their current spaces are zero. If a pure analytic dimension $n$ is specified, this is bidegree $(n-r,n-s)$. We use the transposition signs
+\begin{equation}\label{eq:signs}
+ (d&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;\alpha),\qquad
+ (d&#x27;&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;&#x27;\alpha).
+\end{equation}
+A current is closed when both transposed differentials vanish. Its support is the complement of the largest ordinary open set on which its restriction is zero. We do not identify closedness of the native integration current with a coefficientwise identity.
+% END CONTEXT native</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003135-reader.jpg" alt="Typeset mathematical passage from PDF page 1868" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1868">PDF page 1868 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002428/#compact_partition_only">CLAUSE:NAG-002428:compact_partition_only</a> · selected scope</li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole</li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-002473/">NAG-002473</a> · selected whole</li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

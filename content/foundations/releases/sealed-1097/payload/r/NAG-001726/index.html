@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001726/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The flat analytification morphism of ringed sites · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001726 · Accepted whole</p><h1>The flat analytification morphism of ringed sites</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.34.1">Open in the English reader · PDF page 298</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="4d2eba6ba461128a9e11cd4d707eb1ff76dbd3fe2130e6f56bff415bfbadfe11">
+\begin{proposition}[\bi{The flat analytification morphism of ringed sites}
+{解析化给出的平坦赋环 site 态射}]
+\label{fnd:analytificationgsiteflat}
+\bi{For a finite-type $K$-scheme $X$, inverse image of Zariski opens
+defines a flat morphism of ringed topoi
+$\alpha_X:X^{\an}_G\to X_{\mathrm{Zar}}$.
+If $W=\operatorname{Spec}(R)\subset X$ and $V=\mathcal M(A)$ is any
+affinoid domain in $W^{\an}$, then $R\to A$ is flat.
+On coherent modules $\alpha_X^*$ is the analytification already
+constructed, and $\alpha_X^*$ is exact on all modules.}
+{对有限型 $K$-概形 $X$，Zariski 开集的逆像定义平坦的赋环拓扑斯态射
+$\alpha_X:X^{\an}_G\to X_{\mathrm{Zar}}$。
+若 $W=\operatorname{Spec}(R)\subset X$，且
+$V=\mathcal M(A)$ 是 $W^{\an}$ 中任意 affinoid 域，则
+$R\to A$ 平坦。在凝聚模上，$\alpha_X^*$ 就是已构造的解析化；
+它在全部模上都是正合的。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="18a27bc315a38869d262a76bcb68af813f85261bd9973f40876d785b7ee9d827">
+\begin{proof}
+\bi{The rule $W\mapsto W^{\an}$ preserves finite intersections, the
+final object and coverings, by Proposition~\ref{fnd:analytificationzariskiopens}.
+It therefore defines the stated morphism of sites, with structural
+ring map given by evaluation of regular functions. Choose a finite
+generating list of $R$ over $K$. Its values on the compact space $V$
+are bounded. Consequently $V$ lies in a sufficiently large radius
+affinoid $X_{R,r}$. It is an affinoid domain there by the domain
+restriction property. The factorization}
+{由 Proposition~\ref{fnd:analytificationzariskiopens}，
+对应 $W\mapsto W^{\an}$ 保持有限交、终对象和覆盖，因而定义所述
+site 态射，其结构环映射由正则函数的解析取值给出。
+取 $R$ 在 $K$ 上的一组有限生成元。它们在紧空间 $V$ 上的取值有界，
+所以 $V$ 包含在足够大的半径 affinoid $X_{R,r}$ 中。
+由域的限制性质，$V$ 也是其中的 affinoid 域。因此分解}
+\[
+ R\longrightarrow A_r\longrightarrow A
+\]
+\bi{is flat by Theorem~\ref{fnd:polynomialtateflatness} and
+Proposition~\ref{fnd:generalizeddomainflatness}.}
+{由 Theorem~\ref{fnd:polynomialtateflatness} 与
+Proposition~\ref{fnd:generalizeddomainflatness} 平坦。}
+
+\bi{Here is a sheaf-level verification of flatness, including modules
+which are not coherent. A finite relation with coefficients in
+$\alpha_X^{-1}\mathcal O_X$ and values in $\mathcal O_{X^{\an}_G}$
+can, locally for the analytic site, be represented by coefficients
+$r_1,\ldots,r_t$ in one affine ring $R$ and values $a_1,\ldots,a_t$
+in one affinoid ring $A$, with $\sum r_i a_i=0$. To obtain this
+representation, first use the local definition of an inverse-image
+sheaf for the finitely many coefficients, and then refine to affinoids.
+Since $R$ is Noetherian, the relation module
+$N=\ker(R^t\to R)$ is finite. Flatness of $R\to A$ gives
+$\ker(A^t\to A)=A\otimes_R N$. Thus the vector $(a_i)$ is a finite
+$A$-linear combination of relations already over $R$. This is the
+finite-relation criterion for flatness, equivalently the finite-ideal
+criterion \cite[Tag 00HD]{StacksAlg}, applied locally to the ring
+sheaves. It proves that $\mathcal O_{X^{\an}_G}$ is flat over
+$\alpha_X^{-1}\mathcal O_X$. Inverse image of sheaves is exact;
+tensoring with this flat ring sheaf is exact as well. On finite
+presentations the result is $A\otimes_R M$, agreeing with
+Theorem~\ref{fnd:coherentanalytificationexact}.}
+{以下在层的层面核验平坦性，也包括非凝聚模。
+系数属于 $\alpha_X^{-1}\mathcal O_X$、取值属于
+$\mathcal O_{X^{\an}_G}$ 的有限关系，在解析 site 上局部可表示为
+同一仿射环 $R$ 中的系数 $r_1,\ldots,r_t$，以及同一 affinoid
+环 $A$ 中的元素 $a_1,\ldots,a_t$，满足 $\sum r_i a_i=0$。
+具体地，先对有限个系数使用逆像层的局部定义，再加细到 affinoid。
+因为 $R$ Noetherian，关系模 $N=\ker(R^t\to R)$ 有限；
+$R\to A$ 的平坦性给出 $\ker(A^t\to A)=A\otimes_R N$。
+因此向量 $(a_i)$ 是原来 $R$ 上关系的有限 $A$-线性组合。
+这就是局部应用于环层的有限关系平坦判据，等价于
+\cite[Tag 00HD]{StacksAlg} 中的有限理想判据。
+故 $\mathcal O_{X^{\an}_G}$ 在
+$\alpha_X^{-1}\mathcal O_X$ 上平坦。层的逆像正合，再与此平坦
+环层张量仍正合。对有限表示，结果为 $A\otimes_R M$，
+与 Theorem~\ref{fnd:coherentanalytificationexact} 一致。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001726-reader.jpg" alt="Typeset mathematical passage from PDF page 298" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=298">PDF page 298</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001613/">NAG-001613</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(earlier reviewed original candidate in this packet)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(earlier reviewed original candidate in this packet)</small></li><li><a href="/r/NAG-001718/">NAG-001718</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(earlier reviewed original candidate in this packet)</small></li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable <small>(sealed native whole)</small></li><li>STACKS-00HD · named external application <small>(existing frozen Stacks authority and named consumer)</small></li><li><a href="/r/NAG-001613/">NAG-001613</a> · selected whole</li><li><a href="/r/NAG-001613/">NAG-001613</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole</li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole</li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001718/">NAG-001718</a> · selected whole</li><li><a href="/r/NAG-001718/">NAG-001718</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole</li><li><a href="/r/NAG-001719/">NAG-001719</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001832/">NAG-001832</a> · selected whole, export unavailable <small>(requires)</small></li><li>STACKS-00HD · named external application</li><li>STACKS-00HD · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001708/">fnd:analytificationzariskiopens</a></li><li><a href="/r/NAG-001719/">fnd:coherentanalytificationexact</a></li><li><a href="/r/NAG-001718/">fnd:polynomialtateflatness</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

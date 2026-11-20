@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002985/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Full faithfulness for polarized isomorphisms · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002985 · Accepted whole</p><h1>Full faithfulness for polarized isomorphisms</h1><p><a href="/projects/foundations/chapters/appendix-d/">D Polarized towers with compatible cyclic actions</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.D.0.2">Open in the English reader · PDF page 1976</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="fe905b621e602a68f2afb718cc733bf50b1b2ce9747a55038780b6790400a22a">
+\begin{lemma}[Full faithfulness for polarized isomorphisms]
+\label{cand:f5eq:polarizedfullfaithfulness}
+Let $R$ be a ring, let $\pi\in R$, and suppose that the canonical
+map $R\to\varprojlim_{n\geq1}R/\pi^nR$ is an isomorphism.
+Write $R_n=R/\pi^nR$. Let $X,Y$ be proper, flat, finitely presented
+$R$-schemes, and let $\mathcal L,\mathcal M$ be relatively ample
+invertible sheaves on them. Reduction gives a bijection
+\[
+ \operatorname{Isom}^{\rm pol}_R((X,\mathcal L),(Y,\mathcal M))
+ \xrightarrow{\ \sim\ }
+ \varprojlim_n\operatorname{Isom}^{\rm pol}_{R_n}
+ ((X_n,\mathcal L_n),(Y_n,\mathcal M_n)).
+ \tag{1}
+\]
+Here the inverse limit means compatible polarized isomorphisms with
+respect to the specified reduction maps. The analogous statement
+holds for polarized isomorphisms covering a fixed automorphism
+$b$ of $\operatorname{Spec}R$ that preserves the closed subscheme
+$\operatorname{Spec}R_n$ for every $n$. No Noetherian hypothesis
+on $R$ is imposed.
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="44e08d7c1ac63869a60e7700bf27b5b1d49bd93abf1115b69566600361491dcd">
+\begin{proof}
+Apply \stacks{0D4F} to each polarized scheme, allowing the identity
+thickening of its affine base, and enlarge the two bounds to a
+common $d_0\geq1$. For every $d\geq d_0$, the modules
+\[
+ P_d=H^0(X,\mathcal L^{\otimes d}),\qquad
+ Q_d=H^0(Y,\mathcal M^{\otimes d})
+\]
+are finite projective over $R$. The arbitrary-base-change assertion
+in the proof of that lemma identifies their reductions with
+$H^0(X_n,\mathcal L_n^{\otimes d})$ and
+$H^0(Y_n,\mathcal M_n^{\otimes d})$. Moreover the graded algebras
+\[
+ A_X=R\oplus\bigoplus_{d\geq d_0}P_d,
+ \qquad A_Y=R\oplus\bigoplus_{d\geq d_0}Q_d
+ \tag{2}
+\]
+functorially reconstruct the pairs as
+$(\operatorname{Proj}A_X,\mathcal O(1))$ and
+$(\operatorname{Proj}A_Y,\mathcal O(1))$.
+
+For any finite projective $R$-module $P$, the canonical map
+$P\to\varprojlim_n P/\pi^nP$ is an isomorphism. Indeed, write
+$P$ as the image of an idempotent matrix $E$ on $R^m$.
+The assertion becomes
+$E R^m=\varprojlim_n\overline E R_n^m$, which follows from the
+assumed identity for $R$. This is the finite-projective completeness
+argument in the proof of \stacks{0D4B}.
+
+Let $(f_n,\lambda_n)$ be a compatible system on the right of (1).
+For every $d\geq d_0$, its maps on sections are
+\[
+ u_{n,d}:Q_d/\pi^nQ_d\longrightarrow P_d/\pi^nP_d,
+ \qquad s\longmapsto\lambda_n^{\otimes d}(f_n^*s).
+ \tag{3}
+\]
+Taking the inverse limit in each degree gives $u_d:Q_d\to P_d$.
+The same construction applied to the inverse polarized isomorphisms
+gives inverse maps. The $u_d$ preserve products: after reduction
+modulo every $\pi^n$ the required equality holds by (3), and its
+values lie in the separated module $P_{d+d&#x27;}$.
+Together with the identity on degree zero, they therefore give a
+graded isomorphism $A_Y\simeq A_X$.
+
+Functoriality of Proj, including the maps on all twists in
+\stacks{01MY}, gives an isomorphism of schemes and an isomorphism
+of their $\mathcal O(1)$ sheaves. The canonical identifications
+from \stacks{0D4F} turn this into $(f,\lambda)$ on the original
+pairs. Its reductions are exactly $(f_n,\lambda_n)$, by the
+functoriality of those identifications. Conversely, any polarized
+isomorphism inducing the prescribed reductions has the same maps
+(3), hence the same $u_d$ by completeness and separation. The same
+functorial reconstruction makes it equal to $(f,\lambda)$.
+This proves both directions of (1).
+
+The limit was taken degree by degree; it was not interchanged with
+an infinite direct sum. All degrees $d\geq d_0$ were retained,
+so the reconstruction recovers the actual invertible sheaf and
+its map, not merely a selected tensor power.
+Finally, an isomorphism covering $b$ is an $R$-isomorphism to
+the pullback pair $b^*(Y,\mathcal M)$. This twist commutes with
+reduction by the stated hypothesis on $b$. Applying (1) to the
+twisted target proves the last assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002985-reader.jpg" alt="Typeset mathematical passage from PDF page 1976" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1976">PDF page 1976 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><p class="muted">No explicit typed target in the exported bindings.</p></main><footer>Foundations · sealed 1097</footer></body></html>

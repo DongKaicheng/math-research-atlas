@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002237/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Exact realization by a split nodal model · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002237 · Accepted whole</p><h1>Exact realization by a split nodal model</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.42.4">Open in the English reader · PDF page 759</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a72d71b896bfec5a3a8c07aeff5e77360f2626f24fd1110adbeb8637592ad41e">
+\begin{theorem}[Exact realization by a split nodal model]
+\label{v035:f5:exactrealization}
+Let $K$ be algebraically closed, complete and nontrivially valued,
+with its original absolute value. Let $C/K$ be a smooth connected
+projective curve and let $V$ be a semistable vertex set of $C^{\an}$.
+There is a split nodal algebraic model $\mathcal C_V/O$ whose
+component vertices are exactly the original points of $V$.
+More precisely, from every split nodal algebraic model
+$\mathcal C_0$ with vertex set containing $V$, there is a proper
+morphism $\mathcal C_0\to\mathcal C_V$ inducing the identity on $C$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b46e89801c16eaa87637b7d5dfe66ffc6100f1d6e662fcf42d9d78b1df8d0069">
+\begin{proof}
+Theorem~\ref{cand:algebraicallyclosedmarkedmodels}, with empty
+marking, supplies a split nodal model, and
+Theorem~\ref{cand:finitetypeiirealization} supplies one whose
+vertex set $W$ contains $V$. Start with any such $\mathcal C_0$.
+Apply Lemma~\ref{v035:f5:elliptictails}, obtaining
+$\mathcal C_0\to\mathcal Y_0\to\mathcal Y$.
+The generic normalization of the stable curve $\mathcal Y_K$ is
+the disjoint union of $C$ and the labelled auxiliary elliptic curves.
+The special nodes of $\mathcal Y$ have the required split pointed
+charts: apply Theorem~\ref{cand:simultaneousnodalsplitting}; its
+finite extension of the algebraically closed field $K$ is $K$.
+Proposition~\ref{cand:nodalmodelgenericnormalization} therefore
+gives a finite relative normalization
+\[
+             \mathcal N=\mathcal C_V\amalg\coprod_j\mathcal E_j
+                         \longrightarrow\mathcal Y.
+\]
+The $C$-labelled piece $\mathcal C_V$ is projective, flat and
+finitely presented with split reduced nodal special fibre.
+
+The source $\mathcal C_0$ is integral and normal. Flatness embeds
+the ring of each nonempty affine open into its generic ring, the
+ring of a nonempty open of the integral curve $C$; this proves
+integrality. Smooth points are normal over the normal valuation
+ring by \cite[Tag 033C]{StacksAlg}. At a special node, the smoothing
+parameter is nonzero, so Lemma~\ref{cand:valuationnodenormalization}
+gives normality of its standard ring $O[u,v]/(uv-a)$.
+Normality ascends along the pointed \textup{\&#x27;etale} chart and
+descends to the model local ring by
+\cite[Tags 033C, 033G]{StacksAlg}. These loci cover $\mathcal C_0$.
+
+The generic restriction of $\mathcal C_0\to\mathcal Y$ has its
+specified lift to the $C$-labelled generic normalization, since the
+generic stabilization is the identity. Lemma~\ref{v035:f5:normalizationlift}
+gives a proper morphism $q:\mathcal C_0\to\mathcal C_V$ inducing
+the identity on $C$.
+
+By Lemma~\ref{v035:f5:elliptictails}, the original surviving special
+components are precisely those indexed by $V$. At their generic
+points $\mathcal Y$ is relatively smooth, so relative normalization
+is the identity there. The local normalization formula of
+Lemma~\ref{cand:valuationnodenormalization} introduces no extra
+vertical components: at $a\ne0$ it is the identity, and at $a=0$
+it separates the two branches. Each auxiliary elliptic model is
+normal by smoothness over the normal base and is integral by flatness
+and its integral generic fibre. The same normalization-lift lemma
+puts its surviving special
+component in its own generic-labelled piece $\mathcal E_j$.
+Thus these auxiliary components belong to none of the other pieces,
+and $\mathcal C_{V,s}$ has exactly the surviving original components.
+
+For $v\in V$, let $\eta_v$ be its original component generic point.
+The point $q_s(\eta_v)$ is the generic point of its surviving
+component in $\mathcal C_{V,s}$. Functoriality of specialization
+for the completed morphism gives
+\[
+       \operatorname{sp}_{\mathcal C_V}(v)=q_s(\eta_v).
+\]
+The singleton-fibre theorem
+\ref{cand:reducedmodelcomponentpoints} identifies the new component
+vertex with the original point $v$. Thus the vertex set is exactly
+$V$ as a subset of $C^{\an}$.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="3b0d2edc8084334e67aeee38d60263eb061cbbff6f90d901766d7e763fe81fd7">
+For the rest of this section and the next, assume that $K$ is
+algebraically closed. Let $C/K$ be a smooth connected projective curve
+and put $X=C^{\an}$. A split nodal algebraic model means a projective,
+flat, finitely presented $O$-model of $C$ with reduced nodal special
+fibre and the split pointed algebraic charts of
+Theorem~\ref{cand:pointednodalvaluationchart}. The smoothing parameters
+at its nodes are nonzero. Theorems~\ref{cand:projectiveformalcompletion}
+and~\ref{cand:splitmodelskeleton} identify its completed generic fibre
+with $X$ and supply its embedded finite graph and retraction.
+The space $X$ is compact Hausdorff by
+Proposition~\ref{fnd:analytificationprojectivecompact}.</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002237-reader.jpg" alt="Typeset mathematical passage from PDF page 759" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=759">PDF page 759 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002036/">NAG-002036</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002037/">NAG-002037</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002038/">NAG-002038</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002053/">NAG-002053</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002102/">NAG-002102</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002205/">NAG-002205</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002206/">NAG-002206</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002210/">NAG-002210</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002235/">NAG-002235</a> · selected whole <small>(exact native application)</small></li><li><a href="/r/NAG-002236/">NAG-002236</a> · selected whole <small>(exact native application)</small></li><li>SUPPORT:NAG-001944:given_atlas_open_preimages_and_contraction · typed target unresolved in this export <small>(exact native application)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002210/">cand:algebraicallyclosedmarkedmodels</a></li><li><a href="/r/NAG-002102/">cand:finitetypeiirealization</a></li><li><a href="/r/NAG-002206/">cand:nodalmodelgenericnormalization</a></li><li><a href="/r/NAG-002051/">cand:pointednodalvaluationchart</a></li><li><a href="/r/NAG-002038/">cand:projectiveformalcompletion</a></li><li><a href="/r/NAG-002036/">cand:reducedmodelcomponentpoints</a></li><li><a href="/r/NAG-002053/">cand:simultaneousnodalsplitting</a></li><li><a href="/r/NAG-002064/">cand:splitmodelskeleton</a></li><li><a href="/r/NAG-002205/">cand:valuationnodenormalization</a></li><li><a href="/r/NAG-001714/">fnd:analytificationprojectivecompact</a></li><li><a href="/r/NAG-002235/">v035:f5:elliptictails</a></li><li><a href="/r/NAG-002236/">v035:f5:normalizationlift</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

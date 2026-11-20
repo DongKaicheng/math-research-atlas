@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001569/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The Gauss section · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001569 · Accepted whole</p><h1>The Gauss section</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.19.1">Open in the English reader · PDF page 118</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="48ad8e60c3193f8be0ed75dbadef116a4a8900948e25e38a612c75a4455db9c4">
+\begin{theorem}[\bi{The Gauss section}{Gauss 截面}]
+\label{fnd:freepolyradiusgausssection}
+\bi{Let $K$ be a complete real-valued non-Archimedean field, possibly trivially valued, and let $A$ be a commutative unital Banach $K$-algebra with a homogeneous submultiplicative norm. Let $r=(r_1,\ldots,r_s)$ be finite and free over $K$, allowing the empty tuple. Put $A_r=A\widehat\otimes_K K_r$, using separated completed projective tensor products. In the coefficient description of Theorem~\ref{fnd:freepolyradiuscoefficients}, the formula}
+{设 $K$ 为完备实值非阿基米德域，允许平凡赋值；$A$ 为带齐次次乘范数的交换含幺 Banach $K$-代数。设有限元组 $r=(r_1,\ldots,r_s)$ 在 $K$ 上自由，允许空元组。令 $A_r=A\widehat\otimes_K K_r$，其中采用分离完备 projective 张量积。在 Theorem~\ref{fnd:freepolyradiuscoefficients} 的系数描述下，公式}
+\[
+ \sigma_r(x)\left(\sum_{\nu\in\mathbf Z^s}a_\nu T^\nu\right)
+     =\max_{\nu\in\mathbf Z^s}|a_\nu(x)|r^\nu
+\]
+\bi{defines a bounded multiplicative seminorm on $A_r$ extending the specified absolute value of $K_r$, for every $x\in\mathcal M_K(A)$; the value is zero when all coefficients have value zero. It gives a continuous section}
+{对每个 $x\in\mathcal M_K(A)$ 定义 $A_r$ 上的有界乘性半范数，延拓 $K_r$ 的指定绝对值；全部系数取值为零时，公式的值为零。它给出连续截面}
+\[
+ \sigma_r:\mathcal M_K(A)\longrightarrow\mathcal M_{K_r}(A_r)
+ \quad\text{of}\quad
+ \pi_r:\mathcal M_{K_r}(A_r)\longrightarrow\mathcal M_K(A).
+\]
+\bi{Thus $\pi_r$ is surjective. The sections commute with bounded unital $K$-algebra homomorphisms. No affinoid, reducedness, spherical-completeness or residue-field freeness assumption is imposed. For the zero algebra both spectra are empty.}
+{因此 $\pi_r$ 满射。截面与有界保单位 $K$-代数同态相容。这里不要求 affinoid 性、约化性、球完备性，或剩余域上的自由性。零代数对应的两个谱均为空。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a66b9c3d437d53ab0f95e9d3e99b86927d3bc9e9a68e8b0b7f9cacda636d7489">
+\begin{proof}
+\bi{\textbf{Step 1: convergence and multiplication.} A bounded multiplicative seminorm $x$ on any such Banach algebra is contractive. Indeed, if its bound is $C$, then $|a(x)|^n\leq C\|a^n\|\leq C\|a\|^n$; taking $n$th roots proves $|a(x)|\leq\|a\|$. This also gives $\bigl||a(x)|-|b(x)|\bigr|\leq\|a-b\|$. Consequently the coefficient weights in the formula tend to zero. A positive supremum is attained, and only finitely many terms attain it. The formula is ultrametric, bounded by the coefficient norm, and agrees with $x$ on constants.}
+{\textbf{步骤 1：收敛与乘法。} 上述任意 Banach 代数上的有界乘性半范数 $x$ 均为 contractive。事实上，若其有界常数为 $C$，则 $|a(x)|^n\leq C\|a^n\|\leq C\|a\|^n$；取 $n$ 次方根即得 $|a(x)|\leq\|a\|$。这也给出 $\bigl||a(x)|-|b(x)|\bigr|\leq\|a-b\|$。因此公式中的系数权重趋于零。若上确界为正，则最大值实际取到，且只有有限多个项取到它。该公式满足超度量不等式，被系数范数控制，并在常系数上等于 $x$。}
+
+\bi{For finite tensor representations $z=\sum_i a_i\otimes u_i$ and $w=\sum_j b_j\otimes v_j$, multiplication gives}
+{对有限张量表示 $z=\sum_i a_i\otimes u_i$、$w=\sum_j b_j\otimes v_j$，乘法给出}
+\[
+ \|zw\|_\pi\leq\max_{i,j}\|a_i\|\|b_j\||u_i||v_j|.
+\]
+\bi{Taking both infima proves submultiplicativity of the projective seminorm. Its zero-seminorm subspace is an ideal, so multiplication passes to separation and completion. Finite Laurent families are dense by Theorem~\ref{fnd:freepolyradiuscoefficients}. Their products therefore show that multiplication in $A_r$ is convergent coefficient convolution. In particular, if $F=\sum a_\alpha T^\alpha$ and $G=\sum b_\beta T^\beta$, then}
+{对两个表示分别取下确界，得到 projective 半范数的次乘性。其零半范数子空间为理想，所以乘法可下降到分离商并延拓到完备化。由 Theorem~\ref{fnd:freepolyradiuscoefficients}，有限 Laurent 族稠密；对其乘积取极限，可知 $A_r$ 的乘法就是收敛的系数卷积。特别地，若 $F=\sum a_\alpha T^\alpha$、$G=\sum b_\beta T^\beta$，则}
+\[
+ (FG)_\kappa=\sum_{\alpha+\beta=\kappa}a_\alpha b_\beta.
+\]
+\bi{For fixed $\kappa$, the terms converge to zero in $A$: their norms, multiplied by $r^\kappa$, are bounded by $(\|a_\alpha\|r^\alpha)(\|b_{\kappa-\alpha}\|r^{\kappa-\alpha})$, the product of a vanishing family and a bounded family. Completeness makes this sum converge independently of its enumeration. Continuous coefficient projection identifies it with the limit of finite products.}
+{对固定的 $\kappa$，这些项在 $A$ 中趋于零：其范数乘以 $r^\kappa$ 后，至多为 $(\|a_\alpha\|r^\alpha)(\|b_{\kappa-\alpha}\|r^{\kappa-\alpha})$，即一个趋零族与一个有界族的乘积。完备性保证该和收敛且与排列无关；连续的系数投影将它与有限乘积的极限识别。}
+
+\bi{\textbf{Step 2: multiplicativity with tied maximal terms.} Write $M=\sigma_r(x)(F)$ and $N=\sigma_r(x)(G)$. Every term of every product coefficient has weighted $x$-value at most $MN$. The preceding convergence and continuity of $x$ give $\sigma_r(x)(FG)\leq MN$, including the case $MN=0$. Suppose $M,N&gt;0$, and let $D,E$ be the finite sets where the respective maxima are attained. There are $0\leq\lambda_F,\lambda_G&lt;1$ bounding all other weights by $\lambda_FM$, respectively $\lambda_GN$: among the finitely many weights at least half the maximum, the nonmaximal ones have a strictly smaller maximum, and all remaining weights are at most half the maximum.}
+{\textbf{步骤 2：允许最大项并列的乘法性。} 记 $M=\sigma_r(x)(F)$、$N=\sigma_r(x)(G)$。每个乘积系数的每一项，其加权 $x$-值均至多为 $MN$。由刚才的收敛及 $x$ 的连续性，得到 $\sigma_r(x)(FG)\leq MN$；这也处理了 $MN=0$ 的情形。设 $M,N&gt;0$，令 $D,E$ 分别为达到最大值的有限指标集。存在 $0\leq\lambda_F,\lambda_G&lt;1$，使其余权重分别至多为 $\lambda_FM$、$\lambda_GN$：至少为最大值一半的项只有有限个，其中非最大项具有严格更小的最大值，而其他项至多为最大值的一半。}
+
+\bi{Choose the lexicographically greatest indices $\mu\in D$ and $\nu\in E$. The pair $(\mu,\nu)$ is the only pair in $D\times E$ summing to $\kappa=\mu+\nu$: if $\alpha&lt;\mu$, translation invariance forces $\kappa-\alpha&gt;\nu$. Every other summand of $(FG)_\kappa$ therefore has weighted $x$-value at most $\lambda MN$, where $\lambda=\max(\lambda_F,\lambda_G)&lt;1$. The entire convergent remainder satisfies this same bound. The distinguished term has weighted value $MN$, so the ultrametric inequality in both directions gives}
+{取 $D,E$ 中字典序最大的指标 $\mu,\nu$。$D\times E$ 中只有 $(\mu,\nu)$ 的和为 $\kappa=\mu+\nu$：若 $\alpha&lt;\mu$，由序的平移不变性，有 $\kappa-\alpha&gt;\nu$。因此 $(FG)_\kappa$ 的其余各项，加权 $x$-值至多为 $\lambda MN$，其中 $\lambda=\max(\lambda_F,\lambda_G)&lt;1$。整个收敛的余项仍满足这个界。指定项的加权值为 $MN$，所以向两个方向应用超度量不等式，得到}
+\[
+ |(FG)_\kappa(x)|r^\kappa=MN.
+\]
+\bi{This proves the reverse inequality and hence multiplicativity. Only an order on a finite set of maximal terms was used; no freeness over the field attached to $x$ was needed. For the empty tuple the only index is zero.}
+{这给出反向不等式，从而证明乘法性。这里仅对有限的最大项集合使用了次序，没有要求在 $x$ 所附的域上自由。空元组的情形只有零指标。}
+
+\bi{\textbf{Step 3: scalars and topology.} On the scalar copy of $K_r$, the coefficients lie in $K$, and the formula is its specified absolute value from Lemma~\ref{fnd:freepolyradiusfield}. Thus it is a $K_r$-spectral point. For a finite Laurent polynomial $P$, the function $x\mapsto\sigma_r(x)(P)$ is a finite maximum of continuous evaluation functions. For every $F\in A_r$ and every such $P$, uniformly in $x$,}
+{\textbf{步骤 3：标量与拓扑。} 在 $K_r$ 的标量副本上，系数属于 $K$，公式正是 Lemma~\ref{fnd:freepolyradiusfield} 中指定的绝对值，所以得到的是 $K_r$-谱点。对有限 Laurent 多项式 $P$，函数 $x\mapsto\sigma_r(x)(P)$ 是有限多个连续取值函数的最大值。对每个 $F\in A_r$ 及这样的 $P$，关于所有 $x$ 一致有}
+\[
+ \bigl|\sigma_r(x)(F)-\sigma_r(x)(P)\bigr|\leq\|F-P\|_r.
+\]
+\bi{Finite truncations approximate $F$ in norm. Its evaluation is therefore a uniform limit of continuous functions, hence continuous. This is the required continuity for the evaluation topology. Constants give $\pi_r\sigma_r=\mathrm{id}$. A bounded homomorphism acts coefficientwise after extension; applying a point to each coefficient proves the asserted naturality. If $A=0$, the coefficient space is zero and the statement is vacuous.}
+{有限截断在范数下逼近 $F$，所以其取值函数为连续函数的一致极限，因而连续。这正是取值拓扑所要求的连续性。常系数给出 $\pi_r\sigma_r=\mathrm{id}$。有界同态的扩张逐系数作用；对各系数应用谱点，即得所述自然性。若 $A=0$，系数空间为零，结论为空真。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001569-reader.jpg" alt="Typeset mathematical passage from PDF page 118" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=118">PDF page 118 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>BASE-RINGS · standing context or base <small>(elementary project base)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(sealed native whole)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole</li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li></ul><h2>Selected scopes</h2><article id="free_gauss_point_lift_restricts_to_constants"><h3>free gauss point lift restricts to constants</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.1.19.1">Scope in the English reader · PDF page 118</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="7eaa11be4095bde219cdaa6c7a2a999fb581d97ba4c8b9bec98a61e3bf6179d8">
+\begin{theorem}[\bi{The Gauss section}{Gauss 截面}]
+\label{fnd:freepolyradiusgausssection}
+\bi{Let $K$ be a complete real-valued non-Archimedean field, possibly trivially valued, and let $A$ be a commutative unital Banach $K$-algebra with a homogeneous submultiplicative norm. Let $r=(r_1,\ldots,r_s)$ be finite and free over $K$, allowing the empty tuple. Put $A_r=A\widehat\otimes_K K_r$, using separated completed projective tensor products. In the coefficient description of Theorem~\ref{fnd:freepolyradiuscoefficients}, the formula}
+{设 $K$ 为完备实值非阿基米德域，允许平凡赋值；$A$ 为带齐次次乘范数的交换含幺 Banach $K$-代数。设有限元组 $r=(r_1,\ldots,r_s)$ 在 $K$ 上自由，允许空元组。令 $A_r=A\widehat\otimes_K K_r$，其中采用分离完备 projective 张量积。在 Theorem~\ref{fnd:freepolyradiuscoefficients} 的系数描述下，公式}
+\[
+ \sigma_r(x)\left(\sum_{\nu\in\mathbf Z^s}a_\nu T^\nu\right)
+     =\max_{\nu\in\mathbf Z^s}|a_\nu(x)|r^\nu
+\]
+\bi{defines a bounded multiplicative seminorm on $A_r$ extending the specified absolute value of $K_r$, for every $x\in\mathcal M_K(A)$; the value is zero when all coefficients have value zero. It gives a continuous section}
+{对每个 $x\in\mathcal M_K(A)$ 定义 $A_r$ 上的有界乘性半范数，延拓 $K_r$ 的指定绝对值；全部系数取值为零时，公式的值为零。它给出连续截面}
+\[
+ \sigma_r:\mathcal M_K(A)\longrightarrow\mathcal M_{K_r}(A_r)
+ \quad\text{of}\quad
+ \pi_r:\mathcal M_{K_r}(A_r)\longrightarrow\mathcal M_K(A).
+\]
+\bi{Thus $\pi_r$ is surjective. The sections commute with bounded unital $K$-algebra homomorphisms. No affinoid, reducedness, spherical-completeness or residue-field freeness assumption is imposed. For the zero algebra both spectra are empty.}
+{因此 $\pi_r$ 满射。截面与有界保单位 $K$-代数同态相容。这里不要求 affinoid 性、约化性、球完备性，或剩余域上的自由性。零代数对应的两个谱均为空。}
+\end{theorem}
+</pre></details><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="74791e89cd5837db4bd788f9598b6737112e3c8378047ce343c71453f7d39faa">
+\begin{proof}
+\bi{\textbf{Step 1: convergence and multiplication.} A bounded multiplicative seminorm $x$ on any such Banach algebra is contractive. Indeed, if its bound is $C$, then $|a(x)|^n\leq C\|a^n\|\leq C\|a\|^n$; taking $n$th roots proves $|a(x)|\leq\|a\|$. This also gives $\bigl||a(x)|-|b(x)|\bigr|\leq\|a-b\|$. Consequently the coefficient weights in the formula tend to zero. A positive supremum is attained, and only finitely many terms attain it. The formula is ultrametric, bounded by the coefficient norm, and agrees with $x$ on constants.}
+{\textbf{步骤 1：收敛与乘法。} 上述任意 Banach 代数上的有界乘性半范数 $x$ 均为 contractive。事实上，若其有界常数为 $C$，则 $|a(x)|^n\leq C\|a^n\|\leq C\|a\|^n$；取 $n$ 次方根即得 $|a(x)|\leq\|a\|$。这也给出 $\bigl||a(x)|-|b(x)|\bigr|\leq\|a-b\|$。因此公式中的系数权重趋于零。若上确界为正，则最大值实际取到，且只有有限多个项取到它。该公式满足超度量不等式，被系数范数控制，并在常系数上等于 $x$。}
+
+\bi{For finite tensor representations $z=\sum_i a_i\otimes u_i$ and $w=\sum_j b_j\otimes v_j$, multiplication gives}
+{对有限张量表示 $z=\sum_i a_i\otimes u_i$、$w=\sum_j b_j\otimes v_j$，乘法给出}
+\[
+ \|zw\|_\pi\leq\max_{i,j}\|a_i\|\|b_j\||u_i||v_j|.
+\]
+\bi{Taking both infima proves submultiplicativity of the projective seminorm. Its zero-seminorm subspace is an ideal, so multiplication passes to separation and completion. Finite Laurent families are dense by Theorem~\ref{fnd:freepolyradiuscoefficients}. Their products therefore show that multiplication in $A_r$ is convergent coefficient convolution. In particular, if $F=\sum a_\alpha T^\alpha$ and $G=\sum b_\beta T^\beta$, then}
+{对两个表示分别取下确界，得到 projective 半范数的次乘性。其零半范数子空间为理想，所以乘法可下降到分离商并延拓到完备化。由 Theorem~\ref{fnd:freepolyradiuscoefficients}，有限 Laurent 族稠密；对其乘积取极限，可知 $A_r$ 的乘法就是收敛的系数卷积。特别地，若 $F=\sum a_\alpha T^\alpha$、$G=\sum b_\beta T^\beta$，则}
+\[
+ (FG)_\kappa=\sum_{\alpha+\beta=\kappa}a_\alpha b_\beta.
+\]
+\bi{For fixed $\kappa$, the terms converge to zero in $A$: their norms, multiplied by $r^\kappa$, are bounded by $(\|a_\alpha\|r^\alpha)(\|b_{\kappa-\alpha}\|r^{\kappa-\alpha})$, the product of a vanishing family and a bounded family. Completeness makes this sum converge independently of its enumeration. Continuous coefficient projection identifies it with the limit of finite products.}
+{对固定的 $\kappa$，这些项在 $A$ 中趋于零：其范数乘以 $r^\kappa$ 后，至多为 $(\|a_\alpha\|r^\alpha)(\|b_{\kappa-\alpha}\|r^{\kappa-\alpha})$，即一个趋零族与一个有界族的乘积。完备性保证该和收敛且与排列无关；连续的系数投影将它与有限乘积的极限识别。}
+
+\bi{\textbf{Step 2: multiplicativity with tied maximal terms.} Write $M=\sigma_r(x)(F)$ and $N=\sigma_r(x)(G)$. Every term of every product coefficient has weighted $x$-value at most $MN$. The preceding convergence and continuity of $x$ give $\sigma_r(x)(FG)\leq MN$, including the case $MN=0$. Suppose $M,N&gt;0$, and let $D,E$ be the finite sets where the respective maxima are attained. There are $0\leq\lambda_F,\lambda_G&lt;1$ bounding all other weights by $\lambda_FM$, respectively $\lambda_GN$: among the finitely many weights at least half the maximum, the nonmaximal ones have a strictly smaller maximum, and all remaining weights are at most half the maximum.}
+{\textbf{步骤 2：允许最大项并列的乘法性。} 记 $M=\sigma_r(x)(F)$、$N=\sigma_r(x)(G)$。每个乘积系数的每一项，其加权 $x$-值均至多为 $MN$。由刚才的收敛及 $x$ 的连续性，得到 $\sigma_r(x)(FG)\leq MN$；这也处理了 $MN=0$ 的情形。设 $M,N&gt;0$，令 $D,E$ 分别为达到最大值的有限指标集。存在 $0\leq\lambda_F,\lambda_G&lt;1$，使其余权重分别至多为 $\lambda_FM$、$\lambda_GN$：至少为最大值一半的项只有有限个，其中非最大项具有严格更小的最大值，而其他项至多为最大值的一半。}
+
+\bi{Choose the lexicographically greatest indices $\mu\in D$ and $\nu\in E$. The pair $(\mu,\nu)$ is the only pair in $D\times E$ summing to $\kappa=\mu+\nu$: if $\alpha&lt;\mu$, translation invariance forces $\kappa-\alpha&gt;\nu$. Every other summand of $(FG)_\kappa$ therefore has weighted $x$-value at most $\lambda MN$, where $\lambda=\max(\lambda_F,\lambda_G)&lt;1$. The entire convergent remainder satisfies this same bound. The distinguished term has weighted value $MN$, so the ultrametric inequality in both directions gives}
+{取 $D,E$ 中字典序最大的指标 $\mu,\nu$。$D\times E$ 中只有 $(\mu,\nu)$ 的和为 $\kappa=\mu+\nu$：若 $\alpha&lt;\mu$，由序的平移不变性，有 $\kappa-\alpha&gt;\nu$。因此 $(FG)_\kappa$ 的其余各项，加权 $x$-值至多为 $\lambda MN$，其中 $\lambda=\max(\lambda_F,\lambda_G)&lt;1$。整个收敛的余项仍满足这个界。指定项的加权值为 $MN$，所以向两个方向应用超度量不等式，得到}
+\[
+ |(FG)_\kappa(x)|r^\kappa=MN.
+\]
+\bi{This proves the reverse inequality and hence multiplicativity. Only an order on a finite set of maximal terms was used; no freeness over the field attached to $x$ was needed. For the empty tuple the only index is zero.}
+{这给出反向不等式，从而证明乘法性。这里仅对有限的最大项集合使用了次序，没有要求在 $x$ 所附的域上自由。空元组的情形只有零指标。}
+
+\bi{\textbf{Step 3: scalars and topology.} On the scalar copy of $K_r$, the coefficients lie in $K$, and the formula is its specified absolute value from Lemma~\ref{fnd:freepolyradiusfield}. Thus it is a $K_r$-spectral point. For a finite Laurent polynomial $P$, the function $x\mapsto\sigma_r(x)(P)$ is a finite maximum of continuous evaluation functions. For every $F\in A_r$ and every such $P$, uniformly in $x$,}
+{\textbf{步骤 3：标量与拓扑。} 在 $K_r$ 的标量副本上，系数属于 $K$，公式正是 Lemma~\ref{fnd:freepolyradiusfield} 中指定的绝对值，所以得到的是 $K_r$-谱点。对有限 Laurent 多项式 $P$，函数 $x\mapsto\sigma_r(x)(P)$ 是有限多个连续取值函数的最大值。对每个 $F\in A_r$ 及这样的 $P$，关于所有 $x$ 一致有}
+\[
+ \bigl|\sigma_r(x)(F)-\sigma_r(x)(P)\bigr|\leq\|F-P\|_r.
+\]
+\bi{Finite truncations approximate $F$ in norm. Its evaluation is therefore a uniform limit of continuous functions, hence continuous. This is the required continuity for the evaluation topology. Constants give $\pi_r\sigma_r=\mathrm{id}$. A bounded homomorphism acts coefficientwise after extension; applying a point to each coefficient proves the asserted naturality. If $A=0$, the coefficient space is zero and the statement is vacuous.}
+{有限截断在范数下逼近 $F$，所以其取值函数为连续函数的一致极限，因而连续。这正是取值拓扑所要求的连续性。常系数给出 $\pi_r\sigma_r=\mathrm{id}$。有界同态的扩张逐系数作用；对各系数应用谱点，即得所述自然性。若 $A=0$，系数空间为零，结论为空真。}
+\end{proof}
+</pre></details><ul class="records"><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole</li><li><a href="/r/NAG-000655/">NAG-000655</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole</li><li><a href="/r/NAG-001421/">NAG-001421</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole</li><li><a href="/r/NAG-001548/">NAG-001548</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole</li><li><a href="/r/NAG-001549/">NAG-001549</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001549/">fnd:freepolyradiuscoefficients</a></li><li><a href="/r/NAG-001548/">fnd:freepolyradiusfield</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

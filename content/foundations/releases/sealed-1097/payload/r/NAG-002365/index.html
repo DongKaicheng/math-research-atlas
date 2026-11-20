@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002365/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite pushforward with full generic lengths · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002365 · Accepted whole</p><h1>Finite pushforward with full generic lengths</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.41.1">Open in the English reader · PDF page 990</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="5619de3f29ab76f3412cd1ef15ed2c04a194e8a0152b57a3748cac88a5f31499">
+\begin{theorem}[Finite pushforward with full generic lengths]
+\label{v037:degree:finitecyclepushforward}
+Let $p:X=\mathcal M(B)\to Y=\mathcal M(A)$ be finite, with
+the canonical finite-$A$-module norm on $B$. Suppose that
+$X$ and $Y$ are pure of analytic dimension $d$. Let unit
+moment tuples define $t_X:X\to\mathbb R^n$ and
+$t_Y:Y\to\mathbb R^{n&#x27;}$, and let
+$a:\mathbb Z^n\to\mathbb Z^{n&#x27;}$ be integral. Assume the
+corresponding identity of characters, so that
+$t_Y\circ p=a\circ t_X$.
+
+Let $w&#x27;\in t_Y(Y)$ have its whole fibre in
+$\operatorname{Int}(Y/K)$, and suppose that the local target
+image is contained in $w&#x27;+(N_Y)_{\mathbb R}$ for a saturated
+rank-$d$ lattice $N_Y$. Assume that
+\[
+                 a^{-1}(w&#x27;)\cap t_X(X)=\{w_1,\ldots,w_s\}
+\]
+is finite and nonempty and that the local image at each $w_i$
+is contained in $w_i+(N_i)_{\mathbb R}$ for a saturated
+rank-$d$ lattice $N_i$.
+
+For every $i$, the lattice $a(N_i)$ is contained in $N_Y$
+with finite index. Write $m_{\mathfrak p}(w&#x27;)$ for the
+component weights of $Y$ in
+Theorem~\ref{v037:degree:moduleweight}. Then
+\begin{equation}
+\label{v037:degree:eqcyclepushforward}
+ \sum_{i=1}^s m_{X,f_X}(w_i)[N_Y:a(N_i)]
+   =m_{B,f_Y}(w&#x27;)
+   =\sum_{\mathfrak p\in\operatorname{Min}(A)}
+                         \beta_{\mathfrak p}(B)m_{\mathfrak p}(w&#x27;).
+\end{equation}
+The coefficients are the full generic pushforward lengths:
+\[
+ \beta_{\mathfrak p}(B)=
+ \sum_{\substack{\mathfrak q\in\operatorname{Min}(B)\\
+                 \mathfrak q\cap A=\mathfrak p}}
+       \operatorname{length}_{B_{\mathfrak q}}(B_{\mathfrak q})
+                          [\kappa(\mathfrak q):\kappa(\mathfrak p)].
+\]
+
+Consequently, if a positive rational number $\Delta$ satisfies
+\[
+ \beta_{\mathfrak p}(B)=
+                \Delta\,\operatorname{length}(A_{\mathfrak p})
+\]
+for every component with nonempty moment fibre at $w&#x27;$, then
+\[
+             \Delta\,m_{Y,f_Y}(w&#x27;)
+                =\sum_{i=1}^s m_{X,f_X}(w_i)[N_Y:a(N_i)].
+\]
+For a reduced integral target, $\Delta$ is the positive integer
+$\dim_{\operatorname{Frac}(A)}
+(B\otimes_A\operatorname{Frac}(A))$. If $B$ is also integral,
+it is $[\operatorname{Frac}(B):\operatorname{Frac}(A)]$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f8f61d0c1231962ad8ae6472da24d27281e267c9d1254209ce82f7bca0b5e9b5">
+\begin{proof}
+Finite relative interior, Theorem~\ref{fnd:generalizedfinitealgebras},
+and the composition inclusion
+\ref{fnd:affinoidinteriorcalculus} put every whole source fibre
+over $w&#x27;$ in $\operatorname{Int}(X/K)$.
+Theorem~\ref{v036:flatgermweight} therefore defines all source
+and target weights. Their local images fill relative
+neighborhoods in the specified planes by
+Theorem~\ref{v036:flatgermlocalconstancy}.
+The equality of moment maps then gives
+$a((N_i)_{\mathbb R})\subset(N_Y)_{\mathbb R}$.
+Saturation gives $a(N_i)\subset N_Y$. A nonzero vector in
+the kernel of $a|_{(N_i)_{\mathbb R}}$ would produce a small
+interval of source moment weights above $w&#x27;$, contrary to
+the stated finite set. Thus $a|_{N_i}$ is injective, and
+its image has finite index in $N_Y$.
+
+Choose an integral $Q:\mathbf Z^{n&#x27;}\to\mathbf Z^d$ injective
+on $N_Y$ by Lemma~\ref{cand:elementarylatticesplitting}.
+Inside the target flat-germ neighbourhood choose a closed box
+$P=\prod_j[\alpha_j,\beta_j]$ with $w&#x27;$ in its interior.
+Write $g_j=f_{Y,j}$ and $Y_0=t_Y^{-1}(P)$. The inequalities
+\[
+      |g_j|\leq e^{-\alpha_j},\qquad
+      |g_j^{-1}|\leq e^{\beta_j}
+\]
+give a single rational presentation over $A$ with denominator $1$.
+Theorems~\ref{fnd:generalizedrationalpoints}
+and~\ref{fnd:generalizedrationaluniversal} identify its quotient,
+with its quotient norm, as the affinoid domain algebra of $Y_0$.
+At every $y$ in the full fibre $F&#x27;=t_Y^{-1}(w&#x27;)$, the two
+coordinates for each $j$ are strictly below their displayed
+presentation radii. Thus $y\in\operatorname{Int}(Y_0/Y)$ by
+Definition~\ref{fnd:relativeinterior}. Since
+$F&#x27;\subset\operatorname{Int}(Y/K)$ by hypothesis,
+Proposition~\ref{fnd:affinoidinteriorcalculus} gives
+$F&#x27;\subset\operatorname{Int}(Y_0/K)$.
+
+The image of $Y_0$ lies in $w&#x27;+(N_Y)_{\mathbf R}$, on which
+$Q$ is injective. Its entire projected level at $Qw&#x27;$ is therefore
+$F&#x27;$. For every norm-admissible affinoid test over $Y$, mapping
+into $F&#x27;$ is equivalent to mapping into $Y_0$ and then into this
+projected level. The rational domain universal property gives
+inverse bounded maps between the two representing algebras.
+Denote this algebra by $D&#x27;_{w&#x27;}$ with its original characters.
+
+By Theorem~\ref{fnd:generalizeddomainbasechange},
+$X_0=p^{-1}(Y_0)$ and $p^{-1}(F&#x27;)$ are the actual pullbacks of
+the two target domains. Proposition~\ref{fnd:generalizedfinitebasechange}
+preserves the finite canonical module structure of $X_0\to Y_0$.
+Theorem~\ref{fnd:generalizedfinitealgebras} and the composition
+inclusion put every point above $F&#x27;$ in $\operatorname{Int}(X_0/K)$.
+By the character identities, the whole $Qa$-level on $X_0$ at
+$Qw&#x27;$ is $p^{-1}(F&#x27;)$. Its source moment values are precisely the
+$w_i$: every original source point with $t_X=w_i$ already maps
+into $F&#x27;$. The same universal property identifies the projected
+source level with the pulled-back domain over $X$, and each
+exact $w_i$-domain in $X_0$ with the original whole domain in $X$.
+Proposition~\ref{v035:analytic:projectedfibrefactors} now splits
+the projected level algebra into the product of their actual algebras.
+Consequently there are bounded algebra isomorphisms
+\[
+       \prod_iD_{w_i}\ \simeq\
+       B\widehat\otimes_A D&#x27;_{w&#x27;}\ \simeq\ B\otimes_A D&#x27;_{w&#x27;} .
+\]
+The last isomorphism uses the given finite canonical norm and
+Proposition~\ref{fnd:generalizedfinitebasechange}. The maps
+respect the projected target characters, since they come from
+restriction and pullback of the specified character identity.
+
+Let $R_Q$ be the exact-radius target at $Qw&#x27;$ and $H_Q$
+its Gauss field. All finite tensors are ordinary complete
+canonical tensors by
+Proposition~\ref{fnd:generalizedfinitebasechange}.
+Tensoring the preceding product with $H_Q$ and taking
+dimensions gives
+\[
+ \dim_{H_Q}(B\otimes_AE_Q)
+                          =\sum_i\delta_{Qa}(w_i).
+\]
+Theorem~\ref{v037:degree:moduleweight} evaluates the left
+side as $[\mathbb Z^d:Q(N_Y)]m_{B,f_Y}(w&#x27;)$.
+Theorem~\ref{v036:flatgermweight} evaluates each right-hand
+term as
+$[\mathbb Z^d:Qa(N_i)]m_{X,f_X}(w_i)$.
+Counting representatives in
+$Qa(N_i)\subset Q(N_Y)\subset\mathbb Z^d$ gives
+\[
+ [\mathbb Z^d:Qa(N_i)]
+    =[\mathbb Z^d:Q(N_Y)]\,[N_Y:a(N_i)].
+\]
+Cancellation proves \eqref{v037:degree:eqcyclepushforward}.
+
+For the coefficient formula, fix a minimal prime
+$\mathfrak p$ of $A$. The ring $A_{\mathfrak p}$ is
+Artinian by the first proposition. Its finite algebra
+$B_{\mathfrak p}=B\otimes_AA_{\mathfrak p}$ has finite
+length as an $A_{\mathfrak p}$-module, and hence is
+Artinian as a ring. Decompose it into its local factors
+by \cite[Tag 00JB]{StacksAlg}. They are $B_{\mathfrak q}$
+for primes $\mathfrak q$ of $B$ over $\mathfrak p$.
+Such primes are minimal in $B$: a smaller prime would
+have the same contraction, contradicting incomparability
+\cite[Tag 00GT]{StacksAlg} for the finite, hence integral,
+map \cite[Tag 00GK]{StacksAlg}.
+Every simple quotient in a composition series of
+$B_{\mathfrak q}$ is $\kappa(\mathfrak q)$, whose length
+over $A_{\mathfrak p}$ is its full finite dimension over
+$\kappa(\mathfrak p)$. Adding these lengths gives the
+asserted coefficient formula.
+
+The target formula in Theorem~\ref{v037:degree:moduleweight}
+now proves the assertion with $\Delta$. If $A$ is an
+integral domain, its unique generic local ring is
+$\operatorname{Frac}(A)$ and has length one. Thus
+$\beta_{(0)}(B)$ is the displayed vector-space dimension.
+It is positive because
+\eqref{v037:degree:eqcyclepushforward} has a positive
+left side. If $B$ is integral, this positivity first makes
+$A\to B$ injective: a nonzero element of its kernel would
+become invertible and annihilate the generic algebra.
+Localizing the domain $B$ at the nonzero elements of $A$
+is therefore injective. The resulting finite-dimensional
+domain is a field and hence is precisely
+$\operatorname{Frac}(B)$. This proves the last assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002365-reader.jpg" alt="Typeset mathematical passage from PDF page 991" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=991">PDF page 991 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole</li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole</li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole</li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole</li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole</li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole</li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole</li><li><a href="/r/NAG-002257/">NAG-002257</a> · selected whole</li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole</li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole</li><li><a href="/r/NAG-002360/">NAG-002360</a> · selected whole, export unavailable</li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole</li><li>STACKS-00GK · named external application</li><li>STACKS-00GT · named external application</li><li>STACKS-00JB · named external application</li><li><a href="/r/NAG-001576/">NAG-001576</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002257/">NAG-002257</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002306/">NAG-002306</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002307/">NAG-002307</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002360/">NAG-002360</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(requires)</small></li><li>STACKS-00GK · named external application <small>(requires)</small></li><li>STACKS-00GT · named external application <small>(requires)</small></li><li>STACKS-00JB · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002179/">cand:elementarylatticesplitting</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-002257/">v035:analytic:projectedfibrefactors</a></li><li><a href="/r/NAG-002306/">v036:flatgermweight</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

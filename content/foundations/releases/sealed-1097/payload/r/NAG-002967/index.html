@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002967/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Weighted component formula for native integrals; F8CR-N · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002967 · Accepted whole</p><h1>Weighted component formula for native integrals; F8CR-N</h1><p><a href="/projects/foundations/chapters/appendix-i/">I Descent of the polarized mixed tower</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-002967.original">Open in the English reader · PDF page 2070</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="272b36552147bff30a6f609323d5a2fd3e927514873f961ab533634dff39c137">
+\begin{proposition}[Weighted component formula for native integrals; F8CR-N]
+\label{prop:native}
+For every ordinary compact \((n,n)\)-form \(\omega\) on the affinoid
+\(X\) of \eqref{eq:components},
+\begin{equation}\label{fnd:nag002967:weighted-native-integrals}
+ \int_X\omega=\sum_{i=1}^s m_i\int_{X_i}i_i^*\omega.
+\end{equation}
+The same formula holds with \(\omega\) replaced by \(\phi\omega\)
+for every ordinary smooth scalar \(\phi\) on \(X\). No boundary
+support assumption, zero-space purity, or scalar PL is used.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b683dba18622ef0287efa655250c3a4952be740342b1438808343f0786423c99">
+\begin{proof}
+Here is the restriction check needed to keep the original \(m_i\)
+when different moment representatives are used. Let \(V=\cM(B)\)
+be an actual affinoid domain of \(X\). The map \(A\to B\) is flat
+by \hyperref[fnd:nag001832:ordinary-single-domain-flatness]{ordinary single-domain flatness}. If \(\mathfrak r\in\Min B\), then
+\(\mathfrak q=\mathfrak r\cap A\) is minimal in \(A\): flat going
+down (the already registered algebraic input \href{https://stacks.math.columbia.edu/tag/00HS}{Stacks 00HS}) would
+otherwise give a prime properly below \(\mathfrak r\). The local
+flat map \(A_{\mathfrak q}\to B_{\mathfrak r}\) has Artinian source
+and target. Tensor a composition series of \(A_{\mathfrak q}\) with
+\(B_{\mathfrak r}\). Exactness gives
+\begin{equation}\label{eq:restriction-length}
+ \length_{B_{\mathfrak r}}B_{\mathfrak r}
+ =m_{\mathfrak q}\,
+   \length_{B_{\mathfrak r}}(B_{\mathfrak r}/\mathfrak qB_{\mathfrak r}).
+\end{equation}
+For every other \(\mathfrak q_i\in\Min A\), choose an element of
+\(\mathfrak q_i\setminus\mathfrak q\). It is invertible in
+\(B_{\mathfrak r}\), so
+\((B/\mathfrak q_iB)_{\mathfrak r}=0\). Consequently
+\eqref{eq:restriction-length} is exactly
+\[
+ \length_{B_{\mathfrak r}}B_{\mathfrak r}
+ =\sum_i m_i\length_{B_{\mathfrak r}}
+                         (B/\mathfrak q_iB)_{\mathfrak r}.
+\]
+In particular no assertion that a flat fibre has length one has
+entered this calculation.
+
+Apply the generic finite-module weight formula \hyperref[v037:degree:moduleweight]{NAG-002362}
+to these modules on \(V\), and then its global chain construction
+\hyperref[fnd:nag002405:global-finite-module-chain-weights]{closed finite-module chain}. For any chosen unit tuple \(g\) on \(V\), it gives
+\[
+ \mathcal T_g(B)=\sum_i m_i\mathcal T_g(B/\mathfrak q_iB).
+\]
+Actual domain base change \hyperref[fnd:generalizeddomainbasechange]{NAG-001846} and finite tensor
+comparison \hyperref[fnd:generalizedfinitetensor]{NAG-001565} identify
+\(\cM(B/\mathfrak q_iB)\) with \(V\times_X X_i\), retaining its
+full structure. This is an actual domain of \(X_i\), hence pure of
+dimension \(n\) when nonempty by \hyperref[v036:analytic:domainpurity]{NAG-002293}. The \hyperref[v037:integration:compactfinitepushforward]{compact finite-pushforward formula}, on this single actual affinoid domain and for this closed immersion and the identity
+map on the common moment coordinates, identifies its integral with
+the target finite-module integral. There is no lattice or residue
+factor in addition to the recorded chain weights.
+
+Represent \(\omega\) on a finite actual affinoid cover of a compact
+neighbourhood of its support. Use the same cover pulled back to each
+\(X_i\), discarding empty pieces. All actual intersections have the
+same calculation. The finite inclusion--exclusion integral
+\hyperref[v037:integration:compactintegral]{NAG-002416}, followed by \hyperref[v037:forms:compactintegral]{NAG-002425}, gives
+\eqref{fnd:nag002967:weighted-native-integrals}. No unit tuple is extended beyond its chart;
+joint tuples and their projection pullbacks are used only on actual
+overlaps. The argument applies verbatim to the compact form
+\(\phi\omega\).
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002967-reader.jpg" alt="Typeset mathematical passage from PDF page 2070" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=2070">PDF page 2070 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001832/#ordinary_single_domain_flatness">CLAUSE:NAG-001832:ordinary_single_domain_flatness</a> · selected scope, text unavailable <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-001565/">NAG-001565</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002419/">NAG-002419</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li>STACKS-00HS · named external application <small>(explicit current dependencies)</small></li></ul><details><summary>Named external registrations</summary><ul class="records"><li><a href="https://stacks.math.columbia.edu/tag/00HS">NAG-002967</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

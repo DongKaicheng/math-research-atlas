@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002114/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Lengths on a curve and on its normalization · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002114 · Accepted whole</p><h1>Lengths on a curve and on its normalization</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.5.22.1">Open in the English reader · PDF page 893</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="7a4fe349a308dd4b9c086e9e864db86209e009e40649639b33cf5b7668d6535e">
+\begin{lemma}[\bi{Lengths on a curve and on its normalization}{曲线及其正规化上的长度}]
+\label{cand:curvenormalizationlength}
+\bi{Let $B$ be a pure one-dimensional finite-type algebra over a field $k$. Let $s\in B$ be a nonzerodivisor such that $B/sB$ is finite-dimensional over $k$. For each minimal prime $P_i$, put}
+{设 $B$ 为域 $k$ 上纯一维有限型代数，$s\in B$ 为非零因子，且 $B/sB$ 在 $k$ 上有限维。对每个极小素理想 $P_i$，置}
+\[
+ \nu_i=\operatorname{length}_{B_{P_i}}(B_{P_i}),\qquad
+ B_i=B/P_i,
+\]
+\bi{and let $\overline B_i$ be the normalization of $B_i$ in its fraction field. Then}
+{并以 $\overline B_i$ 记 $B_i$ 在其分式域中的正规化，则}
+\[
+ \dim_k(B/sB)
+ =\sum_i\nu_i
+   \sum_{\substack{q\in\operatorname{Spec}\overline B_i\ \mathrm{closed}\\s(q)=0}}
+       [\kappa(q):k]\operatorname{ord}_q(s).
+ \tag{L}\label{eq:candcurvenormlength}
+\]
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6bd33be83a8937627db17220afdf56aa22ae2f3787d89ef8f9052ba075a9c86e">
+\begin{proof}
+\bi{For every finite $B$-module $M$, the kernel and cokernel of multiplication by $s$ are finite over the finite-dimensional algebra $B/sB$. Define}
+{对每个有限 $B$-模 $M$，乘以 $s$ 的核与余核均在有限维代数 $B/sB$ 上有限。定义}
+\[
+ \chi_s(M)=\dim_k(M/sM)-\dim_k\ker(s:M\to M).
+\]
+\bi{The six-term kernel-cokernel sequence for a short exact sequence shows that $\chi_s$ is additive. Apply the prime filtration of Lemma~\ref{cand:finiteprimefiltration} to $B$. A factor $B/P$ with nonminimal $P$ has dimension zero, hence is finite over $k$, and its kernel and cokernel have equal dimensions. It contributes zero. Localizing the filtration at a minimal prime $P_i$ counts exactly $\nu_i$ copies of its residue field. The nonzerodivisor $s$ avoids each minimal prime: in the finite-length local ring $B_{P_i}$ every element of its maximal ideal is nilpotent, whereas multiplication by $s$ remains injective. Thus}
+{短正合列的六项核—余核正合列说明 $\chi_s$ 可加。将 Lemma~\ref{cand:finiteprimefiltration} 的素滤过用于 $B$。若因子 $B/P$ 中的 $P$ 非极小，则该因子零维，故在 $k$ 上有限；其乘法核与余核维数相等，贡献为零。在极小素理想 $P_i$ 处局部化此滤过，恰好计算其剩余域的 $\nu_i$ 个副本。非零因子 $s$ 避开每个极小素理想：有限长度局部环 $B_{P_i}$ 的极大理想中的每个元素均幂零，而乘以 $s$ 仍单射。因此}
+\[
+ \dim_k(B/sB)=\sum_i\nu_i\dim_k(B_i/sB_i).
+\]
+
+\bi{The normalization $\overline B_i$ is a finite $B_i$-module by \cite[Tag 0BXR]{StacksAlg}. Its quotient $Q_i=\overline B_i/B_i$ is annihilated by a nonzero element of $B_i$, obtained by clearing denominators of finitely many module generators. Hence $Q_i$ has zero-dimensional support and is finite over $k$, by the same prime-filtration argument. Therefore $\chi_s(Q_i)=0$. Multiplication by $s$ is injective on $B_i$ and on $\overline B_i$, so additivity gives}
+{由 \cite[Tag 0BXR]{StacksAlg}，正规化 $\overline B_i$ 在 $B_i$ 上有限。将有限个模生成元的分母清除，得到消去商 $Q_i=\overline B_i/B_i$ 的非零 $B_i$ 元素。因此 $Q_i$ 的支集零维，再用同一素滤过论证，得其在 $k$ 上有限。于是 $\chi_s(Q_i)=0$。乘以 $s$ 在 $B_i$ 及 $\overline B_i$ 上均单射，故由可加性，}
+\[
+ \dim_k(B_i/sB_i)=\dim_k(\overline B_i/s\overline B_i).
+\]
+\bi{Every closed local ring of the normal curve $\operatorname{Spec}\overline B_i$ is a discrete valuation ring by \cite[Tag 0B8Y]{StacksAlg}. Its quotient by $s$ has length $\operatorname{ord}_q(s)$, as is seen from the powers of a uniformizer. A composition series of the finite-dimensional quotient, localized at its finitely many maximal ideals, gives the residue-degree-weighted sum in~\eqref{eq:candcurvenormlength}.}
+{由 \cite[Tag 0B8Y]{StacksAlg}，正规曲线 $\operatorname{Spec}\overline B_i$ 的每个闭点局部环均为离散赋值环。用一致化元的幂滤过，可见其模 $s$ 的商长度为 $\operatorname{ord}_q(s)$。将有限维商的组成列在有限个极大理想处局部化，即得~\eqref{eq:candcurvenormlength} 中带剩余次数的总和。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002114-reader.jpg" alt="Typeset mathematical passage from PDF page 894" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=894">PDF page 894</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00FN@NAG-002114:actual-finite-type-base · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-0B8Y@NAG-002114:actual-normal-local-dvr · named external application <small>(verified Stacks application)</small></li><li>APP-STACKS-0BXR@NAG-002114:actual-integral-normalization · named external application <small>(verified Stacks application)</small></li><li>BASE-RINGS · standing context or base <small>(declared elementary base)</small></li><li><a href="/r/NAG-002105/">NAG-002105</a> · selected whole <small>(whole proof)</small></li><li>APP-STACKS-00FN@NAG-002114:actual-finite-type-base · named external application</li><li>APP-STACKS-00FN@NAG-002114:actual-finite-type-base · named external application <small>(requires)</small></li><li>APP-STACKS-0B8Y@NAG-002114:actual-normal-local-dvr · named external application</li><li>APP-STACKS-0B8Y@NAG-002114:actual-normal-local-dvr · named external application <small>(requires)</small></li><li>APP-STACKS-0BXR@NAG-002114:actual-integral-normalization · named external application</li><li>APP-STACKS-0BXR@NAG-002114:actual-integral-normalization · named external application <small>(requires)</small></li><li>BASE-RINGS · standing context or base</li><li>BASE-RINGS · standing context or base <small>(requires)</small></li><li><a href="/r/NAG-002105/">NAG-002105</a> · selected whole</li><li><a href="/r/NAG-002105/">NAG-002105</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002105/">cand:finiteprimefiltration</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

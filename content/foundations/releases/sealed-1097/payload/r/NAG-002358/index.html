@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002358/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Global polyhedrality and the tropicalized boundary · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002358 · Accepted whole</p><h1>Global polyhedrality and the tropicalized boundary</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.39.3">Open in the English reader · PDF page 984</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="15186af09038e42e7e20857f425a6b30efb7faec54e1cfc89174f4121420f36b">
+\begin{theorem}[Global polyhedrality and the tropicalized boundary]
+\label{v037:globaltrop:finiteimage}
+Let $X$ be a nonempty generalized affinoid space of
+analytic dimension $d$ over $K$, and let $t$ be the
+moment map of any finite tuple of analytic units.
+The actual image $t(X)$ is the support of a finite integral
+affine polyhedral complex of dimension at most $d$.
+The actual boundary image $t(\partial_KX)$ is likewise
+finite polyhedral, of dimension at most $d-1$; it is
+empty when $d=0$.
+
+If $X$ is pure of analytic dimension $d$, every point of
+$t(X)\setminus t(\partial_KX)$ has the pure $d$-dimensional
+local fan of Theorem~\ref{v037:analytic:interiorlocalstar}.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6fca7fd71db157e155f70cf0144bcf13f4e127a33252f9bc6fa8893c762ee3d0">
+\begin{proof}
+We induct on the analytic dimension, simultaneously for
+all complete specified ground fields, all positive real
+radii, and all unit tuples. Theorem
+\ref{v037:globaltrop:upperbound} gives a finite polyhedral
+upper bound of dimension zero when $d=0$, hence a finite
+set containing $t(X)$. Any subset of a finite set is a
+finite zero-dimensional complex. Theorem
+\ref{v037:globaltrop:boundarycover} makes the boundary empty.
+This establishes the induction base.
+
+Assume the assertion for every analytic dimension less
+than $d$. First suppose $X$ is pure of dimension $d$.
+Use Theorem~\ref{v037:globaltrop:boundarycover} to cover
+its actual boundary by the finitely many actual affinoid
+fibres $X_j$ over their specified fields $H_j$, each of
+dimension at most $d-1$. The restrictions of all original
+moment functions remain analytic units there. The
+homeomorphisms and residue-field identifications in that
+theorem preserve their absolute values. By induction,
+\[
+                       B=t(\partial_KX)=\bigcup_j t(X_j)
+\]
+is a finite union of integral affine polytopes of dimension
+at most $d-1$. In particular it admits a finite complex
+structure of that dimension.
+
+Put $S=t(X)$. By Theorem~\ref{v037:globaltrop:upperbound},
+choose a finite complex $\mathcal P$ of dimension at most
+$d$ whose support contains $S$. The upper-bound construction
+uses bounded boxes, so all its cells may be taken to be
+polytopes. Since $B\subset S$, cutting by the defining
+hyperplanes of both complexes gives a common refinement
+of $\mathcal P$ in which $B$ is a subcomplex.
+
+For a $d$-cell $\sigma$ of this refinement, its relative
+interior misses $B$. The set
+$S\cap\operatorname{relint}(\sigma)$ is relatively closed
+because $S$ is compact. It is also relatively open.
+Indeed, near one of its points no other cell of the
+finite complex meets that point, so the actual moment
+image is contained in the affine span of $\sigma$.
+The whole moment fibre is interior, since its value
+does not belong to $B$. Theorem
+\ref{v036:flatgermlocalconstancy}, with the saturated
+rank-$d$ tangent lattice of $\sigma$, fills a neighbourhood
+in that affine plane. This proves relative openness.
+The relative interior of $\sigma$ is convex and therefore
+connected, by the line-segment open-and-closed argument
+used in Theorem~\ref{v037:analytic:interiorlocalstar}.
+Thus the intersection is either empty or all of
+$\operatorname{relint}(\sigma)$.
+
+Select the cells for which it is nonempty and let $T$ be
+their union with all their faces. Closedness of $S$ shows
+$T\subset S$. We claim $S=B\cup T$.
+If $v\in S\setminus(B\cup T)$, choose a neighbourhood
+missing the closed sets $B$ and $T$. The whole fibre at
+$v$ is interior, so Theorem
+\ref{v037:analytic:interiorlocalstar} presents $S$ there
+by a pure $d$-dimensional translated fan. A relatively
+open part of a $d$-cone in this fan cannot lie in the
+finitely many affine spans of the lower-dimensional
+cells of $\mathcal P$. To check this, choose a line
+direction in its span outside the finitely many proper
+direction subspaces; each remaining proper affine span
+meets a line in that direction at at most one point.
+Such a direction exists: in a basis of the $d$-plane,
+the vectors $(1,b,\ldots,b^{d-1})$, for integers $b$,
+avoid each fixed proper linear subspace except at finitely
+many $b$, by applying a nonzero linear equation for that
+subspace.
+Consequently arbitrarily close to $v$ there is a point
+of $S$ in the relative interior of a $d$-cell of
+$\mathcal P$. That cell is selected, contradicting the
+chosen neighbourhood&#x27;s disjointness from $T$.
+This proves the claim. The finite union $B\cup T$ is
+polyhedral of dimension at most $d$.
+
+For a general $X=\mathcal M(A)$ of dimension $d$, the
+Noetherian algebra $A$ has finitely many minimal primes,
+by Theorem~\ref{fnd:generalizedfinitemodules} and
+\cite[Tag 00FR]{StacksAlg}. The actual quotient affinoids of
+Corollary~\ref{fnd:generalizedaffinoidquotients}
+$\mathcal M(A/\mathfrak p)$ cover $X$, because every
+analytic prime kernel contains a minimal prime,
+\cite[Tag 00E0(4)]{StacksAlg}. Each quotient is a domain,
+and is pure of its analytic dimension. This dimension
+is at most $d$: its points have the same completed
+residue fields as their images in $X$, so apply
+Theorem~\ref{fnd:affinoidabhyankarmaximum}.
+The pure case just proved handles the components of
+dimension $d$, and induction handles the others.
+Their finite union of moment images proves the assertion
+for $t(X)$. The boundary assertion for this general $X$
+follows directly from its own finite Gauss-fibre cover
+and the induction hypothesis, exactly as in the pure
+case. No purity after a coefficient extension is used.
+
+Finally, the stated local purity off the boundary image
+is precisely Theorem~\ref{v037:analytic:interiorlocalstar},
+whose full-fibre hypothesis holds at every such value.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002358-reader.jpg" alt="Typeset mathematical passage from PDF page 984" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=984">PDF page 984 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole</li><li><a href="/r/NAG-002353/">NAG-002353</a> · selected whole</li><li><a href="/r/NAG-002356/">NAG-002356</a> · selected whole</li><li><a href="/r/NAG-002357/">NAG-002357</a> · selected whole</li><li>STACKS-00E0 · named external application</li><li>STACKS-00FR · named external application</li><li><a href="/r/NAG-002307/#set_filling">CLAUSE:NAG-002307:set_filling</a> · selected scope <small>(requires)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001561/">NAG-001561</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001591/">NAG-001591</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002353/">NAG-002353</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002356/">NAG-002356</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002357/">NAG-002357</a> · selected whole <small>(requires)</small></li><li>STACKS-00E0 · named external application <small>(requires)</small></li><li>STACKS-00FR · named external application <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001591/">fnd:affinoidabhyankarmaximum</a></li><li><a href="/r/NAG-001562/">fnd:generalizedaffinoidquotients</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-002353/">v037:analytic:interiorlocalstar</a></li><li><a href="/r/NAG-002356/">v037:globaltrop:boundarycover</a></li><li><a href="/r/NAG-002357/">v037:globaltrop:upperbound</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003174/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>A scalar-measure construction with explicit domination · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003174 · Accepted whole</p><h1>A scalar-measure construction with explicit domination</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003174.original">Open in the English reader · PDF page 1878</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="a3db0b5e9c6cb463f72d60f76f343d81acb5385b6d6d5915b84fef4a3128b58d">
+\begin{theorem}[A scalar-measure construction with explicit domination]\label{f9tf:measure}
+Let $S:\E^{p,p}(U)\to\R$ be linear and nonnegative on every compact form nonnegative on $p$-planes. Then $S$ is a native current. For every $\alpha\in\E^{p,p}(U)$ there is a unique finite signed Radon measure $\nu_{S,\alpha}$ with compact support in $\supp\alpha$, such that
+\begin{equation}\label{eq:scalar}
+ \int h\,d\nu_{S,\alpha}=S(h\alpha)
+ \quad\text{for every ordinary smooth scalar }h.
+\end{equation}
+It is linear in $\alpha$, positive when $\alpha$ is nonnegative on $p$-planes, local under ordinary open restriction, and supported in $\supp S\cap\supp\alpha$.
+
+For each cutoff stage there are a fixed compact form $\theta_i$ nonnegative on $p$-planes and a constant $c_i\geq0$ such that
+\begin{equation}\label{eq:measurebound}
+ |\nu_{S,Q_i\eta}|\leq c_i p_{t_f(V),0}(\eta)\nu_{S,\theta_i}.
+\end{equation}
+The assertions extend linearly and canonically to a linear functional whose ordinary local restrictions are finite signed sums of such $S$. In that case the right side is replaced locally by the sum of the absolute coefficients times the corresponding positive measures.
+
+For such an $S$ and any continuous real $v$, the formula
+\[
+ (vS)(\alpha)=\int v\,d\nu_{S,\alpha}
+\]
+defines a native current, independently of its signed presentation, with support contained in $\supp S\cap\supp v$. This conclusion is derived from the stated sign and domination hypotheses; order zero alone is not a premise sufficient for it.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="6d5498c59cea7de173f1657c14ef584a86a3d187e5e959955631e9a18e802e5c">
+\begin{proof}
+Fix a stage with $N$ moment coordinates. By \NAG{002428}, choose $0\leq\rho\leq1$ compactly supported in $\Int_{\rm top}(V,U)$ and equal to one near $C_i$. Put $M=\sup|\chi|$ and
+\[
+ \Theta_p=\frac1{p!}\left(\sum_{k=1}^N d&#x27;x_k\wedge d&#x27;&#x27;x_k\right)^p,
+ \qquad \theta_i=M\ext(\rho t_f^*\Theta_p).
+\]
+For $p=0$ put $\Theta_0=1$; for $N&lt;p$ the stage is zero. On a projected decomposable $p$-vector $z$, $\Theta_p$ has coefficient $|z|^2$ and an arbitrary representative $\eta$ has coefficient $z^{\mathsf t}A_\eta z$ in the positive convention. The antisymmetric part contributes zero. A finite matrix bound gives, on every actual joint refinement, including rank drop,
+\begin{equation}\label{eq:gram}
+ c_i p_{t_f(V),0}(\eta)\theta_i\pm Q_i\eta\ \geq0
+ \quad\text{on }p\text{-planes}.
+\end{equation}
+The scalar cutoffs cause no difficulty: $\rho=1$ on $C_i$, $|\chi|\leq M$, and $Q_i\eta$ vanishes off $C_i$. Positivity of $S$ gives
+$|S(Q_i\eta)|\leq c_iS(\theta_i)p_{t_f(V),0}(\eta)$.
+Finality in \NAG{002473} proves continuity.
+
+Every compact form $\alpha$ is a finite sum of cutoff-stage images, by \NAG{002428} and the ordinary sheaf. Applying \eqref{eq:gram} to these fixed summands gives a compact form $\theta$ nonnegative on $p$-planes with $\theta\pm\alpha\geq0$. Let $C=\supp\theta\cup\supp\alpha$. For every ordinary smooth $h$, the forms $\|h\|_C\theta\pm h\alpha$ are nonnegative on $p$-planes. Therefore
+\begin{equation}\label{eq:scalarbound}
+ |S(h\alpha)|\leq S(\theta)\|h\|_C.
+\end{equation}
+This is a bound by one scalar supremum on a fixed compact set, stronger than an abstract ambient-stage order-zero statement.
+
+We give the measure argument explicitly. Restrictions of ordinary smooth scalars are uniformly dense in $C(C,\R)$: cover $C$ by finitely many opens on which a given continuous function oscillates by less than $\delta$, and combine sample values with the nonnegative finite partition from \NAG{002428}. For a nonnegative target the approximants may be chosen nonnegative. Thus \eqref{eq:scalarbound} extends $h\mapsto S(h\alpha)$ uniquely to a bounded real linear functional $\Lambda$ on $C(C)$.
+
+Here is the elementary representation construction, so no abstract measure assertion is being inferred from the word ``current.&#x27;&#x27; For a positive bounded functional $P$ on $C(C)$ define
+\[
+ a(O)=\sup\{P(f):0\leq f\leq1,\ \supp f\subset O\},\qquad
+ a^*(E)=\inf_{O\supset E\text{ open}}a(O).
+\]
+Continuous compact cutoffs and finite partitions on $C$ are obtained by restricting the native cutoffs just used. Partitions on the compact support of $f$ prove countable subadditivity of $a$ on opens; disjoint opens give the reverse finite inequality by summing disjointly supported $f$. Hence $a^*$ is an outer measure. To check that an open $O$ is measurable, choose $V\supset E$ with $a(V)\leq a^*(E)+\delta$ and $0\leq g\leq1$ supported in $V\cap O$, with $P(g)\geq a(V\cap O)-\delta$. Write $F=\supp g$. Tests supported in $V\setminus F$ have disjoint support from $g$, so
+\[
+ a(V\setminus F)\leq a(V)-P(g),\qquad
+ a^*(E\cap O)+a^*(E\setminus O)\leq a^*(E)+2\delta.
+\]
+Let $\delta$ decrease to zero. The reverse inequality is subadditivity. The sets satisfying this splitting identity form a sigma-algebra: for disjoint such sets, iterate the identity finitely, then use the supremum of the finite sums and outer subadditivity for the countable union. The same argument proves countable additivity on that sigma-algebra. Thus $a^*$ restricts to a finite Borel measure $\mu$ on $C$.
+
+If $f$ is an admissible test for $a(O)$, then $P(f)\leq\mu(\supp f)$ by taking the infimum over open neighborhoods of its support. It follows that $\mu(O)=a(O)$ is the supremum of $\mu(F)$ over compact $F\subset O$. Outer regularity is built into $a^*$; inner regularity on all Borel sets follows by complements and finiteness. Hence $\mu$ is Radon. To verify $P(u)=\int u\,d\mu$ for continuous $u\geq0$, use lower step sums
+$\delta\sum_{k=1}^{m}\mu\{u&gt;k\delta\}$ when $u\leq m\delta$. For the upper estimate use the continuous functions
+$v_k=\min(1,\max(0,(u-k\delta)/\delta))$ with $u=\delta\sum_{k=0}^{m-1}v_k$.
+The resulting upper and lower bounds differ from the corresponding integral by at most $2\delta\mu(C)$. Let $\delta\downarrow0$. Linearity gives the representation, and compact cutoffs give uniqueness.
+
+For a bounded real $\Lambda$, put
+$\Lambda^+(u)=\sup_{0\leq v\leq u}\Lambda(v)$ for $u\geq0$.
+This is bounded, positive and additive: split $v\leq u_1+u_2$ into $\min(v,u_1)$ and its remainder for one inequality, and add near maximizing choices for the other. Extend linearly; both $\Lambda^+$ and $\Lambda^+-\Lambda$ are positive. Their Radon representations give a signed representation of $\Lambda$. Positive uniqueness implies signed uniqueness. Extending by zero from $C$ gives \eqref{eq:scalar} on $U$.
+
+Tests supported outside $\supp\alpha$, or in an open where $S$ vanishes, have zero scalar pairing. Smooth density and Radon regularity on compact subsets of such opens prove the claimed support. The same uniqueness on a compact union of supports proves linearity, locality and independence from $C$ or $\theta$. If $\alpha\geq0$ on $p$-planes, nonnegative smooth scalar tests give a positive measure. Apply this positivity to \eqref{eq:gram}; the measure inequalities imply \eqref{eq:measurebound}. Indeed $-a\lambda\leq\nu\leq a\lambda$ implies $|\nu|\leq a\lambda$ by summing over finite Borel partitions.
+
+Finite signed sums inherit scalar measures, the variation bound, and uniqueness. For local signed presentations, choose a fixed finite partition near each compact test support; summing the measures for the partitioned tests gives the same representation and hence the same measure on overlaps. For continuous $v$, compactness and \eqref{eq:measurebound} give on each stage
+\[
+ |(vS)(Q_i\eta)|\leq c_i\sup_{C_i}|v|\,\nu_{S,\theta_i}(U)
+                         p_{t_f(V),0}(\eta)
+\]
+in the positive case, and the corresponding finite sum in the signed case. A fixed local partition gives the same kind of bound. This proves native continuity, and locality proves the stated support.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="b35042a4f7340b7db23b436be0e99dc1cc5fe47e1001a85cb91cdbcf161966a0">
+% BEGIN CONTEXT native
+\paragraph{Native scope and signs.}
+Let $K$ be complete for its specified real-valued non-Archimedean absolute value. The analytic arguments allow trivial valuation and generalized radii. Let $X$ be good, Hausdorff, and pure of analytic dimension $n\geq2$, and work on ordinary opens $U\subseteq\Int(X/K)$. Use the ordinary moment sheaf of \NAG{002424} and the topology $\tau_{\rm cut}=\tau_{\rm ord}$ of \NAG{002473}. For $0\leq p\leq n$, write
+\[
+ \E^{p,p}(U)=\A_c^{p,p}(U),\qquad \D_{p,p}(U)=\E^{p,p}(U)&#x27;.
+\]
+A cutoff stage is $Q_i\eta=\ext(\chi t_f^*\eta)$, with $V$ affinoid, $f$ a tuple of units, $t_f=-\log|f|$, an ambient open $\Omega\supset t_f(V)$, and $C_i=\supp\chi\Subset\Int_{\rm top}(V,U)$. Put
+\[
+ p_{L,m}(\eta)=\max_{I,J,\,|a|\leq m}\sup_L|\partial^a\eta_{I,J}|.
+\]
+All constants and refinements in a stage estimate are fixed before $\eta$. A scalar linear functional is continuous exactly when its compositions with all cutoff stages are continuous.
+
+All one-form generators anticommute; the positive top generator on a real $d$-plane is $\bigwedge_{k=1}^d(d&#x27;x_k\wedge d&#x27;&#x27;x_k)$. Currents have bidimension $(r,s)$ and transpose signs $(-1)^{r+s+1}$ for both differentials. Thus
+\begin{equation}\label{eq:dual}
+ (\DD T)(\alpha)=T(\DD\alpha).
+\end{equation}
+The exact frozen theorem \NAG{003135} supplies continuous test differentiation, fixed smooth multiplication, open zero extension, the transpose signs, support locality and finite-partition gluing of currents. Its scope is the ordinary topology above. Its fixed-stage mechanism differentiates coefficients with one extra derivative, or adjoins the fixed multiplier moments, and chooses compact partitions before variable coefficients. No varying-stage uniform bound, nonsmooth multiplier, or arbitrary current product is part of that input.
+
+A real $(p,p)$-form will be called nonnegative on $p$-planes if its restriction to every $p$-plane inside every actual tangent plane in a common moment refinement has nonnegative coefficient in the indicated positive generator. Tangential equality and pullback make this criterion independent of representatives. Only this explicit criterion, including its lineality, is used below; no equivalence of external positivity conventions is assumed. For $p=0$ it means a nonnegative scalar.
+% END CONTEXT native</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003174-reader.jpg" alt="Typeset mathematical passage from PDF page 1878" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1878">PDF page 1878 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002428/#compact_partition_only">CLAUSE:NAG-002428:compact_partition_only</a> · selected scope</li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-002473/">NAG-002473</a> · selected whole</li><li><a href="/r/NAG-003135/">NAG-003135</a> · selected whole</li></ul></main><footer>Foundations · sealed 1097</footer></body></html>

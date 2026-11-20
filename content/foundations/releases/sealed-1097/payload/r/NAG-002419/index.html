@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002419/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite pushforward on compact analytic domains · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002419 · Accepted whole</p><h1>Finite pushforward on compact analytic domains</h1><p><a href="/projects/foundations/chapters/5/">5 Tropicalization, multiplicities and balancing</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.51.1">Open in the English reader · PDF page 1040</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="3f8ac779a8b8eb88d81f488923a4850eaf792d5567c77cff7c4511301b1fbb48">
+\begin{theorem}[Finite pushforward on compact analytic domains]
+\label{v037:integration:compactfinitepushforward}
+Let $p:Y\to X$ be a norm-admissible finite morphism of
+good Hausdorff analytic spaces pure of the same analytic
+dimension $d$, over a complete field with its specified
+real-valued absolute value. Let $Q\subseteq X$ be a finite
+union of affinoid domains, and put $R=p^{-1}(Q)$.
+Let $\mathcal F$ be coherent on $Y_G$.
+Then $R$ is a finite union of affinoid domains of $Y$,
+and both $Q$ and $R$ are compact analytic domains.
+Neither is required to be good.
+
+Pulling back the unit tuples defines a pullback of finite
+moment-chart data on $Q$ to such data on $R$.
+For every top-degree datum $\alpha$,
+\begin{equation}
+\label{v037:integration:eqcompactfinitepushforward}
+ \mathcal I_{R,\mathcal F|_R}(p^*\alpha)
+       =\mathcal I_{Q,(p_*\mathcal F)|_Q}(\alpha).
+\end{equation}
+Successive applications agree for composable finite
+morphisms between spaces of the same pure analytic
+dimension. If $(p_*\mathcal F)|_Q$ is locally free of
+constant rank $\rho$, then
+\[
+ \mathcal I_{R,\mathcal F|_R}(p^*\alpha)
+                   =\rho\,\mathcal I_{Q,\mathcal O_Q}(\alpha).
+\]
+All conclusions allow trivial valuation, arbitrary
+positive affinoid radii, and nonreduced spaces and modules.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="62d5574abb1cbfca1e0e8726cc590a52c3142fbc778acbf91583f0cb0338cbbf">
+\begin{proof}
+Choose a finite affinoid-domain cover $(V_i)$ of $Q$.
+Each $V_i$ is an affinoid domain of $X$ by the domain
+transitivity of
+Proposition~\ref{fnd:generalnetdomaincalculus}.
+Finiteness of $p$ makes $W_i=p^{-1}(V_i)$ an actual
+affinoid domain of $Y$, whose algebra is a finite
+canonical module over $\mathcal O(V_i)$.
+These domains cover $R$. The finite-union assertion
+of Theorem~\ref{v037:integration:compactintegral}
+therefore gives the indicated compact analytic-domain
+structures. By
+Lemma~\ref{v037:integration:separatedintersections},
+every finite intersection $V_I$ is affinoid, and
+\[
+                       W_I=\bigcap_{i\in I}W_i=p^{-1}(V_I)
+\]
+is its full finite affinoid inverse image.
+Every nonempty such domain is pure of dimension $d$
+by Lemma~\ref{v037:integration:puritylocality}.
+
+Suppose that $(f_i,\alpha_i)$ presents the given
+chart data on the $V_i$. Its proposed pullback has
+tuple $p^*f_i$ and the same ambient superform $\alpha_i$
+on $W_i$. Units remain units. On $W_i\cap W_j$ the
+actual joint moment image is contained in the joint
+moment image on $V_i\cap V_j$. Both are finite
+polyhedral sets by Theorem~\ref{v037:globaltrop:finiteimage}.
+Refine their complexes by their finitely many defining
+hyperplanes, using
+Lemma~\ref{cand:polyhedralrefinementproduct}.
+Each cell of the source image lies in a cell of the
+target image, and its tangent space is a subspace of
+that cell&#x27;s tangent space. Tangential equality on
+the target consequently restricts to tangential
+equality on the source. This proves compatibility
+of the pulled-back data in every bidegree.
+The same argument applies to a common refinement
+of two representatives. Inverse images of its domains
+are actual finite affinoid domains, and pullback
+commutes with adjoining units. Thus the pullback
+depends only on the equivalence class of the data.
+
+Proposition~\ref{fnd:finitecoherentdirectimagebasechange}
+makes $p_*\mathcal F$ coherent and identifies, for
+each nonempty $I$,
+\[
+ \Gamma(V_I,p_*\mathcal F)=\Gamma(W_I,\mathcal F).
+\]
+Write $A_I=\mathcal O(V_I)$, $B_I=\mathcal O(W_I)$
+and $M_I=\Gamma(W_I,\mathcal F)$.
+The module $M_I$ is finite over $B_I$ by
+Theorem~\ref{fnd:fullgkiehltheoremb}, and finite over
+$A_I$ because $B_I$ is finite over $A_I$.
+The cited direct-image theorem gives precisely this
+restriction of scalars, with its compatible canonical
+norms and domain restrictions.
+
+Assume first that $W_I$ is nonempty and put $f=f_i|_{V_I}$.
+The two tuples are $f$ and its literal pullback $p^*f$ on
+the full inverse domain. The character identity therefore holds
+with the identity map on the moment lattice.
+
+By Theorem~\ref{v037:globaltrop:finiteimage}, both actual moment
+images are finite polyhedral sets. The absolute boundary image of
+$V_I$ has dimension at most $d-1$ and is empty if $d=0$.
+Use Lemma~\ref{cand:polyhedralrefinementproduct} to subdivide the two
+images and that boundary image together. At a relative-interior
+point $w$ of a target $d$-cell, choose a small convex open
+neighbourhood in moment space disjoint from the boundary image
+and the other cells. The target image is presented there by the
+given cell. If the source image contains $w$, it contains that
+cell and has the same local presentation. The whole target fibre
+is absolutely interior there. Finiteness gives relative interior
+everywhere on the actual source affinoid by
+Theorem~\ref{fnd:generalizedfinitealgebras}, so
+Proposition~\ref{fnd:affinoidinteriorcalculus} gives absolute
+interior of the whole source fibre there. With these pure local
+presentations, Theorem~\ref{v037:degree:modulefunctoriality} compares
+the same finite module $M_I$ over $B_I$ and $A_I$. The index
+on the common saturated tangent lattice is one.
+
+If the source image misses $w$, its compactness lets us avoid
+it on a neighbourhood of $w$. For the entire target simultaneous
+level algebra $D_w$, the inverse level algebra
+$B_I\otimes_{A_I}D_w$ is the actual finite pullback by
+Theorems~\ref{fnd:generalizedfinitebasechange}
+and~\ref{fnd:generalizeddomainbasechange}. It is zero by
+Theorem~\ref{fnd:generalizedpointunitcriterion}, since its spectrum
+is empty. Thus $M_I\otimes_{A_I}D_w=0$, and further tensoring
+with the transverse Gauss field gives zero. The target module
+weight is zero by Theorem~\ref{v037:degree:moduleweight}, in
+agreement with the empty source coefficient.
+
+These generic coefficients determine the
+\hyperref[fnd:nag002405:global-finite-module-chain-weights]{closed finite-module chains}
+on the common subdivision. Pairing the same ambient form with
+these equal chains by the
+\hyperref[fnd:nag002405:finite-cell-functional]{finite-cell integral}
+gives
+\[
+ \mathcal I_{M_I,p^*f_i|_{W_I}}(\alpha_i)
+       =\mathcal I_{M_I,f_i|_{V_I}}(\alpha_i),
+\]
+where the right side regards $M_I$ as an $A_I$-module.
+An empty inverse image has zero module on both sides.
+Multiply by $(-1)^{|I|+1}$ and sum over the nonempty
+index sets. The two finite sums are exactly the
+compact chart integrals in
+Theorem~\ref{v037:integration:compactintegral}, including
+its non-good-domain variant. This proves
+\eqref{v037:integration:eqcompactfinitepushforward}.
+
+For a further finite map $q:Z\to Y$, the inverse
+image of every $W_i$ is again the full finite
+affinoid inverse image. Apply the same equality
+first to $q$ and then to $p$.
+Pullback of unit functions is associative, and
+\[
+                   p_*(q_*\mathcal G)=(p\circ q)_*\mathcal G
+\]
+on sections of every analytic domain, since both
+sides take sections on its full inverse image.
+These identities prove the stated compatibility
+for successive applications.
+
+Finally suppose the indicated direct image is
+locally free of constant rank $\rho$ on $Q_G$.
+Refine its local trivializing cover by affinoid
+domains and intersect them with the presenting
+chart domains. The quasi-net and compactness
+assertions of Lemma~\ref{fnd:quasinetcalculus}
+give a finite such refinement. The compact integral
+is unchanged by this refinement. On every new $V_I$
+its finite module $N_I$ is free of rank $\rho$.
+At each minimal prime
+$\mathfrak p$ of $A_I$,
+$\operatorname{length}((N_I)_{\mathfrak p})
+=\rho\operatorname{length}((A_I)_{\mathfrak p})$.
+The exact module-weight formula of
+Theorem~\ref{v037:degree:moduleweight} therefore
+multiplies every top-dimensional global-chain
+coefficient by $\rho$. Lower-dimensional cells
+give no top-dimensional term. Applying the
+\hyperref[fnd:nag002405:finite-cell-functional]{finite-cell integral}
+to the scaled
+\hyperref[fnd:nag002405:global-finite-module-chain-weights]{finite-module chain}
+gives
+\[
+ \mathcal I_{N_I,f_i}(\alpha_i)
+                     =\rho\,\mathcal I_{A_I,f_i}(\alpha_i).
+\]
+The same finite cover sum proves the last formula.
+In particular the argument preserves all generic
+Artinian lengths before multiplying by $\rho$.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002419-reader.jpg" alt="Typeset mathematical passage from PDF page 1041" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1041">PDF page 1041 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002405/#finite_cell_functional">CLAUSE:NAG-002405:finite_cell_functional</a> · selected scope <small>(proof use)</small></li><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(proof use)</small></li><li><a href="/r/NAG-002419/#finite_affinoid_inverse_images">CLAUSE:NAG-002419:finite_affinoid_inverse_images</a> · selected scope <small>(proof use)</small></li><li><a href="/r/NAG-001572/">NAG-001572</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001609/">NAG-001609</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001620/">NAG-001620</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001701/">NAG-001701</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001752/">NAG-001752</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-001846/">NAG-001846</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002180/">NAG-002180</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002372/">NAG-002372</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002411/">NAG-002411</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002416/">NAG-002416</a> · selected whole <small>(proof use)</small></li><li><a href="/r/NAG-002419/">NAG-002419</a> · selected whole</li></ul><h2>Selected scopes</h2><article id="finite_affinoid_inverse_images"><h3>finite affinoid inverse images</h3><p><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.5.51.1">Scope in the English reader · PDF page 1040</a></p><details class="source"><summary>Selected scope proof · exact TeX</summary><pre data-sha256="d598c3c8d338f8a2e5ef4629cd47f067f1709d02d2934a41cebc4e06abd706a3">
+Each $V_i$ is an affinoid domain of $X$ by the domain
+transitivity of
+Proposition~\ref{fnd:generalnetdomaincalculus}.
+Finiteness of $p$ makes $W_i=p^{-1}(V_i)$ an actual
+affinoid domain of $Y$, whose algebra is a finite
+</pre></details><ul class="records"><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole</li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(requires)</small></li></ul></article><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002180/">cand:polyhedralrefinementproduct</a></li><li><a href="/r/NAG-001704/">fnd:affinoidinteriorcalculus</a></li><li><a href="/r/NAG-001752/">fnd:finitecoherentdirectimagebasechange</a></li><li><a href="/r/NAG-001846/">fnd:generalizeddomainbasechange</a></li><li><a href="/r/NAG-001701/">fnd:generalizedfinitealgebras</a></li><li><a href="/r/NAG-001702/">fnd:generalizedfinitebasechange</a></li><li><a href="/r/NAG-001609/">fnd:generalnetdomaincalculus</a></li><li><a href="/r/NAG-002372/">v037:degree:modulefunctoriality</a></li><li><a href="/r/NAG-002362/">v037:degree:moduleweight</a></li><li><a href="/r/NAG-002358/">v037:globaltrop:finiteimage</a></li><li><a href="/r/NAG-002416/">v037:integration:compactintegral</a></li><li><a href="/r/NAG-002413/">v037:integration:puritylocality</a></li><li><a href="/r/NAG-002411/">v037:integration:separatedintersections</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

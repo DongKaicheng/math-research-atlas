@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001417/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Gluing coefficient series at an intermediate radius · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001417 · Accepted whole</p><h1>Gluing coefficient series at an intermediate radius</h1><p><a href="/projects/foundations/chapters/2/">2 Analytic spaces, morphisms and fibres</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.2.13.4">Open in the English reader · PDF page 152</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="63ccce89a90f846c72a2e895947610fdfb4e311bd53120c73c91f36d1e73daa1">
+\begin{proposition}[\bi{Gluing coefficient series at an intermediate radius}{在中间半径拼接系数级数}]\label{fnd:coefficientannulargluing}
+\bi{Let $A$ and $M$ satisfy the standing Banach hypotheses, and let $0&lt;a\leq b$. Write $E_c(M)=M\{c^{-1}X\}$ for $c=a,b$, and write $L_{a,b}(M)$ for the annular Laurent coefficient space, with weight $b^n$ for $n\geq0$ and $a^n$ for $n&lt;0$. The coefficient-preserving maps give a strict exact sequence}
+{设 $A,M$ 满足本节的 Banach 假设，且 $0&lt;a\leq b$。对 $c=a,b$，记 $E_c(M)=M\{c^{-1}X\}$；以 $L_{a,b}(M)$ 记环域 Laurent 系数空间，其中 $n\geq0$ 的权为 $b^n$，$n&lt;0$ 的权为 $a^n$。保持系数的映射给出严格正合列}
+\[
+ \begin{gathered}
+ 0\longrightarrow E_b(M)\xrightarrow{j}
+ E_a(M)\oplus L_{a,b}(M)\xrightarrow{\delta}
+ L_{a,a}(M)\longrightarrow0,\\
+ j(h)=(h,h),\qquad\delta(u,v)=u-v.
+ \end{gathered}
+\]
+\bi{Here the middle term has its maximum norm. The map $j$ is isometric, and $\delta$ has an $A$-linear right inverse of norm at most one. Consequently, the norm on $L_{a,a}(M)$ equals the quotient norm induced by $\delta$. For $M=A$, Proposition~\ref{fnd:laurentcoefficientfunctoriality} identifies the Laurent coefficient spaces with the corresponding quotient algebras.}
+{中间项使用最大范数。映射 $j$ 等距，$\delta$ 有范数至多为一的 $A$-线性右逆。因此 $L_{a,a}(M)$ 上的范数等于 $\delta$ 诱导的商范数。取 $M=A$ 时，Proposition~\ref{fnd:laurentcoefficientfunctoriality} 将 Laurent 系数空间识别为相应的商代数。}
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="c4f8344bb6339f90c37e0818db457358457bf4a5fc210737adb31c9bf521a09c">
+\begin{proof}
+\bi{For $n\geq0$, the inequality $a^n\leq b^n$ shows that both restriction maps to the smaller coefficient space are contractive. The map from $E_b(M)$ to the nonnegative part of $L_{a,b}(M)$ is isometric, so $j$ is isometric. The difference map $\delta$ is contractive.}
+{当 $n\geq0$ 时，$a^n\leq b^n$，所以两个到较小系数空间的限制映射都不增加范数。由 $E_b(M)$ 到 $L_{a,b}(M)$ 非负次数部分的映射等距，因此 $j$ 等距。差映射 $\delta$ 也不增加范数。}
+
+\bi{If $w=\sum_{n\in\mathbb Z}m_nX^n\in L_{a,a}(M)$, set}
+{对 $w=\sum_{n\in\mathbb Z}m_nX^n\in L_{a,a}(M)$，令}
+\[
+ s(w)=\left(\sum_{n\geq0}m_nX^n,-\sum_{n&lt;0}m_nX^n\right).
+\]
+\bi{The first series belongs to $E_a(M)$. The second belongs to $L_{a,b}(M)$ because its negative-degree weights are still $a^n$. These two series have disjoint coefficient supports and their maximum norm is $\|w\|$. Thus $s$ is an $A$-linear right inverse of $\delta$ with norm at most one.}
+{第一个级数属于 $E_a(M)$。第二个级数属于 $L_{a,b}(M)$，因为负次数的权仍为 $a^n$。两个级数的系数支集不相交，二者范数的最大值为 $\|w\|$。因此 $s$ 是 $\delta$ 的 $A$-线性右逆，且范数至多为一。}
+
+\bi{Suppose $u-v=0$ in $L_{a,a}(M)$. Equality means equality of every coefficient. Since $u$ has no negative powers, neither does $v$. The nonnegative coefficients of $v$ tend to zero with weights $b^n$, so they define a unique $h\in E_b(M)$ satisfying $(u,v)=j(h)$. This proves exactness in the middle; injectivity of $j$ is already part of its isometry. Finally, contractivity of $\delta$ makes the target norm no larger than its quotient norm, while $s$ gives the reverse inequality. All asserted norm statements follow.}
+{若 $u-v=0$ 于 $L_{a,a}(M)$，则每个次数的系数都相等。由于 $u$ 没有负次幂，$v$ 也没有。$v$ 的非负次数系数在权 $b^n$ 下趋于零，故它们定义唯一的 $h\in E_b(M)$，满足 $(u,v)=j(h)$。这证明中间项的正合性；$j$ 的单射性已包含在等距性中。最后，由 $\delta$ 不增加范数，目标范数不超过其商范数；右逆 $s$ 给出反向不等式。全部范数断言随之成立。}
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="1b55c1f7cec20561c5b371ed14be83e9c77689cec35ad8a0c0a0104223f6bebd">
+\bi{Let $K$ be complete for its specified real-valued non-Archimedean absolute value, which may be trivial. Let $A$ be a commutative unital Banach $K$-algebra, and let $M$ be a unital Banach $A$-module: its norm is definite, non-Archimedean, complete and homogeneous over $K$, and $\|am\|\leq\|a\|\|m\|$. No finiteness hypothesis is imposed on $A$ or $M$. All coefficient spaces below use these specified norms.}
+{设 $K$ 关于指定的实值非阿基米德绝对值完备，允许该绝对值平凡。设 $A$ 为交换含幺 Banach $K$-代数，$M$ 为含幺 Banach $A$-模：其范数正定、非阿基米德、完备，在 $K$ 上齐次，并满足 $\|am\|\leq\|a\|\|m\|$。不对 $A$ 或 $M$ 作有限性假设。以下系数空间均使用这些指定范数。}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001417-reader.jpg" alt="Typeset mathematical passage from PDF page 152" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=152">PDF page 152</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001416/">NAG-001416</a> · selected whole <small>(sealed native whole)</small></li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole</li><li><a href="/r/NAG-001414/">NAG-001414</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001416/">NAG-001416</a> · selected whole</li><li><a href="/r/NAG-001416/">NAG-001416</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001416/">fnd:laurentcoefficientfunctoriality</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001929/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The strict reduction criterion for finiteness · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001929 · Accepted whole</p><h1>The strict reduction criterion for finiteness</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.3.16.5">Open in the English reader · PDF page 526</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="93904607b45c72bc5f9fb4f457cf161d4517a7886442f0d35cba02337575b920">
+\begin{theorem}[\bi{The strict reduction criterion for finiteness}
+{有限性的 strict 约化判据}]
+\label{fnd:strictcanonicalfinitecriterion}
+\bi{A bounded homomorphism $A\to B$ of strict $K$-affinoid
+algebras is finite if and only if the induced homomorphism
+$\widetilde A\to\widetilde B$ is finite.}
+{strict $K$-affinoid 代数之间的有界同态 $A\to B$ 为有限同态，
+当且仅当诱导同态 $\widetilde A\to\widetilde B$ 为有限同态。}
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="46bbded1d4211549dca744e00986265b862244bd06288533c85e6ae66c68f262">
+\begin{proof}
+\bi{Suppose first that $B$ is finite over $A$. For each minimal
+prime $\mathfrak q$ of $B$, the domain $B/\mathfrak q$ is finite
+over $A/(A\cap\mathfrak q)$. Normalize the latter using a fixed
+strict presentation of $A$. The resulting normalizing Tate algebra
+$R_{\mathfrak q}$ lifts contractively to that presentation, and
+$B/\mathfrak q$ is finite over $R_{\mathfrak q}$.
+Proposition~\ref{fnd:normalizationcanonicalfinite} shows that
+$\widetilde{B/\mathfrak q}$ is finite over
+$\widetilde R_{\mathfrak q}$, hence finite over $\widetilde A$.
+The injection
+$\widetilde B\hookrightarrow\prod_{\mathfrak q}
+\widetilde{B/\mathfrak q}$ and the Noetherian property of
+$\widetilde A$ (Theorem~\ref{fnd:strictcanonicalfinitegeneration}) prove this direction.}
+{先设 $B$ 在 $A$ 上有限。对 $B$ 的每个极小素理想
+$\mathfrak q$，整环 $B/\mathfrak q$ 在
+$A/(A\cap\mathfrak q)$ 上有限。使用 $A$ 的一个固定 strict
+表示对后者正规化，所得正规化 Tate 代数 $R_{\mathfrak q}$
+可压缩地提升到该表示，且 $B/\mathfrak q$ 在
+$R_{\mathfrak q}$ 上有限。
+Proposition~\ref{fnd:normalizationcanonicalfinite} 说明
+$\widetilde{B/\mathfrak q}$ 在 $\widetilde R_{\mathfrak q}$ 上有限，
+因而在 $\widetilde A$ 上有限。再使用单射
+$\widetilde B\hookrightarrow\prod_{\mathfrak q}
+\widetilde{B/\mathfrak q}$ 及 $\widetilde A$ 的 Noetherian 性（Theorem~\ref{fnd:strictcanonicalfinitegeneration}），
+即得此方向。}
+
+\bi{Conversely assume $\widetilde B$ is finite over $\widetilde A$.
+Choose the images $b_1,\ldots,b_m$ of the coordinates in a strict
+presentation of $B$; they belong to $B^\circ$. Each residue
+$\widetilde b_i$ satisfies a monic equation over $\widetilde A$:
+one may obtain it by applying the determinant trick to multiplication
+by $\widetilde b_i$ on a finite generating module. Lift its
+coefficients to $c_{ij}\in A^\circ$. Then}
+{反之，设 $\widetilde B$ 在 $\widetilde A$ 上有限。
+选取 $B$ 的 strict 表示中各坐标的像 $b_1,\ldots,b_m$，它们
+属于 $B^\circ$。每个剩余类 $\widetilde b_i$ 都满足
+$\widetilde A$ 上的首一方程：在有限生成模上对
+$\widetilde b_i$ 的乘法应用行列式技巧即可。将其系数提升为
+$c_{ij}\in A^\circ$，于是}
+\[
+ w_i=b_i^{d_i}+\sum_{j&lt;d_i}c_{ij}b_i^j,
+ \qquad \rho_B(w_i)&lt;1.
+\]
+\bi{Append variables mapping to the finitely many power-bounded
+$c_{ij}$ to a strict presentation of $A$. Bounded substitution
+gives an admissible surjection $R\twoheadrightarrow A$ from a
+Tate algebra for which these coefficients have lifts of norm at
+most one. The induced map
+$q:R\langle Y_1,\ldots,Y_m\rangle\twoheadrightarrow B$ is
+admissible: the chosen presentation of $B$, using the $Y_i$ alone,
+already supplies uniformly bounded lifts. Let
+$W_i\in R[Y_i]$ be the lifted monic polynomial. Since $w_i$ is
+topologically nilpotent, choose $e_i&gt;0$ and $G_i$ of norm less
+than one with $q(G_i)=w_i^{e_i}$. Thus
+$W_i^{e_i}-G_i\in\ker q$.}
+{在 $A$ 的 strict 表示中添入映到有限个幂有界元素 $c_{ij}$
+的变量。有界代换给出 Tate 代数的 admissible 满射
+$R\twoheadrightarrow A$，使这些系数具有范数至多为一的提升。
+诱导映射
+$q:R\langle Y_1,\ldots,Y_m\rangle\twoheadrightarrow B$
+也是 admissible，因为仅用 $Y_i$ 的既定 $B$ 的表示已经提供
+一致有界的提升。以 $W_i\in R[Y_i]$ 记提升的首一多项式。
+由于 $w_i$ 拓扑幂零，可取 $e_i&gt;0$ 及范数小于一的 $G_i$，使
+$q(G_i)=w_i^{e_i}$，从而
+$W_i^{e_i}-G_i\in\ker q$。}
+
+\bi{Apply Lemma~\ref{fnd:simultaneousmonicperturbation} to the
+univariate polynomials $W_i^{e_i}$. It shows that their perturbed
+quotient, and hence $B$, is finite over $R$. The action of $R$
+on $B$ factors through $A$, so the same finite list of generators
+generates $B$ as an $A$-module.}
+{对单变量多项式 $W_i^{e_i}$ 应用
+Lemma~\ref{fnd:simultaneousmonicperturbation}，可知相应扰动商，
+因而 $B$，在 $R$ 上有限。由于 $R$ 在 $B$ 上的作用经过
+$A$ 分解，同一组有限生成元也在 $A$ 上生成 $B$。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001929-reader.jpg" alt="Typeset mathematical passage from PDF page 526" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=526">PDF page 526 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001926/">NAG-001926</a> · selected whole <small>(sealed native whole proof)</small></li><li><a href="/r/NAG-001927/">NAG-001927</a> · selected whole <small>(earlier original whole proposal)</small></li><li><a href="/r/NAG-001928/">NAG-001928</a> · selected whole <small>(sealed native whole proof)</small></li><li>STACKS-00E0 · named external application <small>(exact additional metadata-only named-use binding to existing frozen Stacks authority)</small></li><li>SUPPORT:NAG-001906:strict_subunit_and_reduced_degree_one · typed target unresolved in this export <small>(earlier original support slice needing exact selection)</small></li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole</li><li><a href="/r/NAG-001398/">NAG-001398</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole</li><li><a href="/r/NAG-001403/">NAG-001403</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole</li><li><a href="/r/NAG-001451/">NAG-001451</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole</li><li><a href="/r/NAG-001562/">NAG-001562</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole</li><li><a href="/r/NAG-001574/">NAG-001574</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001926/">NAG-001926</a> · selected whole</li><li><a href="/r/NAG-001926/">NAG-001926</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001927/">NAG-001927</a> · selected whole</li><li><a href="/r/NAG-001927/">NAG-001927</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001928/">NAG-001928</a> · selected whole</li><li><a href="/r/NAG-001928/">NAG-001928</a> · selected whole <small>(requires)</small></li><li>SUPPORT:NAG-001906:strict_subunit_and_reduced_degree_one · typed target unresolved in this export</li><li>SUPPORT:NAG-001906:strict_subunit_and_reduced_degree_one · typed target unresolved in this export <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001926/">fnd:normalizationcanonicalfinite</a></li><li><a href="/r/NAG-001928/">fnd:simultaneousmonicperturbation</a></li><li><a href="/r/NAG-001927/">fnd:strictcanonicalfinitegeneration</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

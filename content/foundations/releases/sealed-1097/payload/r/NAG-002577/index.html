@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002577/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Global Stokes with interior compact support · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002577 · Accepted whole</p><h1>Global Stokes with interior compact support</h1><p><a href="/projects/foundations/chapters/f7native-interior-stokes-supplement-0/">Chapter 8 supplement: Interior Stokes with coherent coefficients</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=fsevenInteriorDisplay.1">Open in the English reader · PDF page 1782</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b1248eeda31be11eba7b43e6c99dc9f51b951c375a886b835d2806da43a59e94">
+\begin{theorem}[Global Stokes with interior compact support]
+\label{f7gg:global}
+Let \(X\) be a good Hausdorff analytic space, pure of analytic
+dimension \(d\geq1\), and let \(\mathcal F\) be coherent on \(X_G\).
+For ordinary smooth moment sections
+\[
+ \beta\in\A_c^{d-1,d}(X),\qquad
+ \gamma\in\A_c^{d,d-1}(X)
+\]
+with
+\[
+ \supp(\beta),\ \supp(\gamma)\ \subseteq\Int(X/K),
+\]
+one has
+\[
+       \int_{X,\mathcal F}d&#x27;\beta=0,
+       \qquad
+       \int_{X,\mathcal F}d&#x27;&#x27;\gamma=0.
+\]
+In particular the assertion holds for every such compactly
+supported section if \(\partial_KX=\varnothing\).
+No global paracompactness, reducedness, strictness, or connected-fiber
+hypothesis is added.
+\end{theorem}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="4624fa2c3388330fcf752ba56c7aee6ccee0250333f174f2d8503deb836dcfd0">
+\begin{proof}[Proof of Theorem~\ref{f7gg:global}]
+Put \(S=\supp(\beta)\) and apply
+Proposition~\ref{f7gg:decomposition}. On each nonempty intersection
+\(W_I\), the resulting \(\theta_I=t_{F_I}^*\alpha_I\) has compact
+support inside both the ordinary interior in \(X\) and the absolute
+analytic interior of \(W_I\). Locality keeps the support of
+\(d&#x27;\theta_I\) in the same collar. All sums are finite. The
+commutation in Lemma~\ref{f7gg:zeroextension} gives
+\[
+ d&#x27;\beta=\sum_{I\ne\varnothing}(-1)^{|I|+1}e_!(d&#x27;\theta_I).
+\]
+Let \(M_I=\Gamma(W_I,\mathcal F|_{(W_I)_G})\).
+The affinoid coherent-module equivalence
+\src{fnd:fullgkiehltheoremb} makes this a finite module
+with its actual restriction interpretation.
+Each \(W_I\) is a compact carrier for its extended derivative.
+The compact-carrier and single-chart comparisons in
+\src{v037:forms:compactintegral}, with these same restricted
+coefficients, give
+\[
+ \int_{X,\mathcal F}d&#x27;\beta
+   =\sum_{I\ne\varnothing}(-1)^{|I|+1}
+          \int_{W_I,\widetilde M_I}d&#x27;\theta_I
+   =\sum_{I\ne\varnothing}(-1)^{|I|+1}
+                          \I_{M_I,F_I}(d&#x27;\alpha_I).
+\]
+Every summand is zero by Theorem~\ref{f7v38:annihilation}
+(\(\mathrm{AFF}\)). The compact support of \(\theta_I\) in
+\(\Int(W_I/K)\) gives an ordinary zero neighborhood of the
+\emph{actual absolute analytic boundary} of \(W_I\).
+Here \(W_I\) is pure of dimension \(d\), \(F_I\) is the restricted
+unit tuple, and \(\alpha_I\) is defined near its actual compact
+moment image. All generic module lengths are retained.
+
+Put \(P=1-\prod_i(1-b_i)\). If \(b_I=\prod_{i\in I}b_i\),
+the scalar product rule gives
+\[
+ d&#x27;(b_I\beta)=d&#x27;b_I\wedge\beta+b_I\,d&#x27;\beta .
+\]
+The scalar \(b_I\) has degree zero, so the sign is plus.
+Summing with \((-1)^{|I|+1}\) gives
+\(d&#x27;P\wedge\beta+P\,d&#x27;\beta\).
+Near \(S\), \(P=1\) and \(d&#x27;P=0\); off \(S\), both
+\(\beta\) and \(d&#x27;\beta\) are locally zero.
+This is exactly \(d&#x27;\beta\), as used above.
+The same check applies to \(d&#x27;&#x27;\).
+
+For the second assertion use the frozen convention
+\src{v037:integration:conventions}:
+all one-form generators anticommute, \(J\) exchanges
+the two copies and fixes functions, and \(d&#x27;&#x27;=Jd&#x27;J\).
+The positive interleaved top generator
+\[
+        \omega_N=d&#x27;x_1\wedge d&#x27;&#x27;x_1\wedge\cdots
+                            \wedge d&#x27;x_d\wedge d&#x27;&#x27;x_d
+\]
+satisfies \(J\omega_N=(-1)^d\omega_N\).
+On each top cell \(J\) changes the coefficient in this same
+generator by \((-1)^d\) and leaves its weight and lattice measure
+fixed. Thus the finite-chart integral satisfies
+\(\int J\zeta=(-1)^d\int\zeta\) for top forms \(\zeta\).
+The section \(J\gamma\) has bidegree \((d-1,d)\)
+and the same support as \(\gamma\).
+The proved assertion yields
+\[
+ 0=\int_{X,\mathcal F}d&#x27;(J\gamma)
+   =\int_{X,\mathcal F}J(d&#x27;&#x27;\gamma)
+   =(-1)^d\int_{X,\mathcal F}d&#x27;&#x27;\gamma.
+\]
+This proves the \(d&#x27;&#x27;\) formula with the exact frozen sign.
+\end{proof}
+</pre></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001624/">NAG-001624</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002389/">NAG-002389</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002413/">NAG-002413</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002425/">NAG-002425</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002495/">NAG-002495</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002580/">NAG-002580</a> · selected whole <small>(explicit current dependencies)</small></li><li><a href="/r/NAG-002581/">NAG-002581</a> · selected whole <small>(explicit current dependencies)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002581/">f7gg:decomposition</a></li><li><a href="/r/NAG-002580/">f7gg:zeroextension</a></li><li><a href="/r/NAG-002495/">f7v38:annihilation</a></li><li><a href="/r/NAG-002425/">v037:forms:compactintegral</a></li><li><a href="/r/NAG-002388/#context-cf7dfc67a524e5f1">v037:integration:conventions</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

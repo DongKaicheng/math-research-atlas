@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002823/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Excision of lower-rank central loci in top degree · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002823 · Accepted whole</p><h1>Excision of lower-rank central loci in top degree</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag002823.original">Open in the English reader · PDF page 1968</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9500f3a28c7114b29787b5a5be5069ac17c24cbd4dfba2e0e4617dce60f18456">
+\begin{theorem}[Excision of lower-rank central loci in top degree]
+\label{sgo:skeletalexcision}
+Let $w\in t(X)$ and suppose only that
+\begin{equation}
+                         S_w\subset\operatorname{Int}(X/K).
+ \label{sgo:skeletoninterior}
+\end{equation}
+Choose pairwise disjoint ordinary affinoid neighbourhoods
+$U_x$ of all $x\in S_w$, sufficiently small for
+Theorem~\ref{sgo:pointedoverlap}, and contained in
+$\operatorname{Int}(X/K)$. Then
+\begin{equation}
+ [\mathcal T_f(M)]_w=\sum_{x\in S_w}\mathcal C_{x,f}(M).
+ \label{sgo:excision}
+\end{equation}
+More precisely, there are a real neighbourhood $B$ of $w$
+and a finite union $E$ of rational polyhedral fan germs
+translated to $w$, each of dimension at most $d-1$, such that
+for $v\in B\setminus E$ the entire original source fibre
+satisfies
+\begin{equation}
+ F_v=\coprod_{x\in S_w}(F_v\cap U_x)
+       \subset\bigcup_{x\in S_w}\operatorname{Int}_{\rm top}(U_x,X).
+ \label{sgo:fullnearbyfibres}
+\end{equation}
+The assertion permits positive-dimensional analytic projection
+fibres and boundary points elsewhere in the central fibre
+$F_w$. If $S_w$ is empty, the entire image germ has dimension
+at most $d-1$ and the $d$-chain germ is zero.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="a242af5512553e216c767bb14f3fc545e208e6f6bb361a675eac1128fc41b4a4">
+\begin{proof}
+Lemma~\ref{sgo:gaussbranches} makes $S_w$ finite. Hausdorffness,
+the ordinary affinoid-neighbourhood basis, and the openness
+of analytic interior allow the indicated disjoint $U_x$.
+Their ordinary interiors in $X$ cover every point of $S_w$.
+The residual compact set
+\[
+ C=F_w\setminus\bigcup_{x\in S_w}
+                         \operatorname{Int}_{\rm top}(U_x,X)
+\]
+consists entirely of points $y$ with $r_f(y)&lt;d$.
+For each such $y$, the pointed upper bound
+\Dep{v038:pointed:pointedupper} supplies an ordinary affinoid
+neighbourhood $V_y$, a real neighbourhood of $w=t(y)$, and a
+finite rational fan $C_y$ of dimension $r_f(y)$ such that
+$t(V_y)$ in that neighbourhood is contained in $w+C_y$.
+This bound requires neither interior nor purity at $y$.
+Choose finitely many $V_y$ whose ordinary interiors cover $C$,
+and let $E$ be the union of their translated fans near $w$.
+It has dimension at most $d-1$.
+
+Let $G$ be the union of these ordinary interiors and the
+ordinary interiors of all $U_x$. It is an ordinary open set
+containing $F_w$. The complement $X\setminus G$ is compact;
+its image under $t$ is compact and does not contain $w$.
+Shrink a real neighbourhood $B$ to miss that image and to
+satisfy all the finitely many pointed upper bounds. Every
+point of $F_v$, for $v\in B\setminus E$, must then lie in
+an ordinary interior of some $U_x$. Pairwise disjointness
+gives \eqref{sgo:fullnearbyfibres}. Notice that this is a
+statement about the whole fibre in the fixed original $X$,
+not merely an inverse image within one selected local branch.
+
+At such a weight the partition into $F_v\cap U_x$ is a
+finite disjoint partition by relatively open and closed
+analytic domains. The \mbox{\hyperref[fnd:nag001831:degree-zero-equalizer]{degree-zero equalizer}} on this disjoint cover and the
+actual domain restrictions give
+\[
+ \mathcal O(F_v)=\prod_{x\in S_w}\mathcal O(F_v\cap U_x),
+ \qquad
+ M|_{F_v}=\bigoplus_{x\in S_w}M|_{F_v\cap U_x},
+\]
+with zero factors omitted. These are the actual fibre algebras
+and modules, including every local Artinian factor. Each
+point of the fibre is absolutely interior in $X$, since
+$U_x\subset\operatorname{Int}(X/K)$, and in $U_x$, since it
+is ordinarily interior there. The last assertion uses \mbox{\hyperref[fnd:affinoiddomainordinaryinterior]{the ordinary domain test}} and \mbox{\hyperref[fnd:affinoidinteriorcalculus]{forward composition}}.
+
+Take a common finite polyhedral subdivision for $t(X)$,
+the images of the $U_x$, the exceptional set $E$, and their
+faces, and then work at generic points of its $d$-cells.
+All applicable local image germs lie in the same affine
+$d$-plane, with the same saturated tangent lattice $N$;
+absent local images contribute zero. Choose an integral
+projection injective on $N$. The interior module-weight
+theorem \Dep{v037:degree:moduleweight} applies to $X$ and
+every nonempty $U_x$ fibre. Tensoring the displayed finite
+product decomposition with the projected Gauss field retains
+all factors, so the dimensions of the actual Gauss modules
+add. Dividing every term by the common index
+$[\mathbb Z^d:Q(N)]$ proves equality of the generic weights.
+By \mbox{\hyperref[fnd:nag002405:global-finite-module-chain-weights]{the finite-module chain}}, this proves the chain-germ equality \eqref{sgo:excision} by
+Theorem~\ref{sgo:pointedoverlap}.
+If $S_w$ is empty, the same compact-cover argument puts the
+whole image near $w$ inside $E$, giving the final assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002823-reader.jpg" alt="Typeset mathematical passage from PDF page 1969" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1969">PDF page 1969 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002405/#global_finite_module_chain_weights">CLAUSE:NAG-002405:global_finite_module_chain_weights</a> · selected scope <small>(detached reviewed clause)</small></li><li><a href="/r/NAG-001496/">NAG-001496</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001577/">NAG-001577</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001628/">NAG-001628</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001641/">NAG-001641</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001702/">NAG-001702</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001704/">NAG-001704</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001831/">NAG-001831</a> · selected whole, export unavailable <small>(selected native whole)</small></li><li><a href="/r/NAG-001834/">NAG-001834</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-001847/">NAG-001847</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002179/">NAG-002179</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002293/">NAG-002293</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002358/">NAG-002358</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002362/">NAG-002362</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002454/">NAG-002454</a> · selected whole <small>(selected native whole)</small></li><li><a href="/r/NAG-002816/">NAG-002816</a> · selected whole <small>(detached reviewed whole)</small></li><li><a href="/r/NAG-002819/">NAG-002819</a> · selected whole <small>(conditional downstream whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002816/">sgo:gaussbranches</a></li><li><a href="/r/NAG-002819/">sgo:pointedoverlap</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003138/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Frame descent and the ordinary smooth class · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003138 · Accepted whole</p><h1>Frame descent and the ordinary smooth class</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003138.original">Open in the English reader · PDF page 1871</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b4f5f91b00c8c0bd7b9217cfd02a76379c3787c6b7db5c44d3ec4c4a9462da0f">
+\begin{theorem}[Frame descent and the ordinary smooth class]\label{f9cp:recursion}
+Under the multiplication interface, the ordered recursion
+\[
+ S_0=T\in\C_0,\qquad S_{j+1}=R_j(u_{j+1},S_j)
+\]
+is multilinear and depends on each $u_i$ only modulo $\HH$. If local potentials of metrized analytic line bundles lie in $\PP$, these ordered currents glue independently of all local frames. They are symmetric in the metrized factors provided, in addition, the successive commutator identities
+\begin{equation}\label{eq:commutator}
+ R_{j+1}(u,R_j(v,S))=R_{j+1}(v,R_j(u,S))
+\end{equation}
+hold for every indicated $S\in\C_j$ and $j+1&lt;p$.
+
+There is an unconditional realization of this interface for $\PP=\A^{0,0}$ and $\C_j$ equal to all closed currents of the stated bidimension: take $M_j(u,S)=uS$. For a supplied closed $T$, it gives a symmetric, multilinear, frame-independent product for ordinary smooth metric potentials on every native test, locally equal to
+\begin{equation}\label{eq:smoothproduct}
+           (\DD u_p)\wedge\cdots\wedge(\DD u_1)\wedge T.
+\end{equation}
+It respects ordinary restriction. For positive integers $e_i$, replacing a power-metric potential $u_i$ by its positive real root potential $u_i/e_i$ scales the result by $\prod_i e_i^{-1}$. No closedness of a native integration current is assumed unless that particular current is supplied as the closed input $T$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="5d899598a939afe310115335fd69476a941c6030e6c6d5e1a02a75e2e0746df8">
+\begin{proof}
+Theorem~\ref{f9cp:harmonic} gives
+\[
+ R_j(u+h,S)-R_j(u,S)=\DD M_j(h,S)=\DD(hS)=0
+                         \qquad(h\in\HH).
+\]
+Induction proves independence modulo $\HH$ in every slot, including those preceding further multiplications. Bilinearity gives multilinearity. Local frames $e_a=g_{ab}e_b$ have potentials
+\[
+            u_a=-\log\|e_a\|=u_b-\log|g_{ab}|.
+\]
+Their differences are in $\HH$ by Theorem~\ref{f9cp:harmonic}. Restriction compatibility therefore identifies the ordered currents on all overlaps; Theorem~\ref{f9cp:operators} glues them. Adjacent transpositions using \eqref{eq:commutator} prove symmetry when that extra condition holds.
+
+In the ordinary smooth class, Theorem~\ref{f9cp:operators} constructs $uS$, and $\DD(uS)$ is closed because $(d&#x27;)^2=(d&#x27;&#x27;)^2=0$ and the differentials anticommute. Theorem~\ref{f9cp:harmonic} identifies it with $(\DD u)\wedge S$. Iteration gives \eqref{eq:smoothproduct}. The even-degree forms $\DD u$ commute in the frozen exterior algebra; their fixed test actions are associative, proving \eqref{eq:commutator}. The resulting product is a current by the same fixed-multiplier continuity. Restriction is built into the construction. Finally the power metric has potential $e_i$ times its root potential. Multilinearity yields the stated factor, with no extraction of roots in $K$ and no change of its absolute value.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="b46a1b7fa3350e8b7597698f5e202f977545b8385ff56b463ecd314ccd8eda6c">
+% BEGIN CONTEXT native
+\paragraph{Native conventions.}
+Let $K$ be complete for its specified real-valued non-Archimedean absolute value, and let $X$ be good and Hausdorff. The valuation may be trivial. Use the ordinary smooth moment sheaf $\A_X^{p,q}$ of \NAG{002424} and its compactly supported test space
+\[
+ \E^{p,q}(U)=\A_{X,c}^{p,q}(U),\qquad
+ \tau=\tau_{\rm cut}=\tau_{\rm ord}
+\]
+on every ordinary open $U\subset X$, with the equality and fixed-stage descriptions of \NAG{002473}. A cutoff stage is
+\[
+ Q_i\eta=\ext(\chi t_f^*\eta),\quad
+ i=(V,f,\Omega,\chi),\quad t_f=-\log|f|,
+\]
+where $V$ is affinoid, $f$ is a tuple of analytic units, $\Omega$ contains the actual compact image $t_f(V)$, and $\chi$ has compact support inside $\operatorname{Int}(V,X)$. Ambient seminorms are
+\[
+ p_{L,m}(\eta)=\max_{I,J,\,|a|\leq m}\sup_L|\partial^a\eta_{I,J}|,
+ \qquad L\Subset\Omega.
+\]
+Ordinary stages $R_s:H_s\to\E^{p,q}$ use a fixed finite compatible chart family and a fixed compact support. All one-form generators anticommute, and $d&#x27;,d&#x27;&#x27;$ differentiate coefficients and wedge on the left. The positive top generator is $\bigwedge_{j=1}^n(d&#x27;x_j\wedge d&#x27;&#x27;x_j)$.
+
+Write $\D_{r,s}(U)=\E^{r,s}(U)&#x27;$ for the continuous real dual, called currents of bidimension $(r,s)$. Negative test degrees and their current spaces are zero. If a pure analytic dimension $n$ is specified, this is bidegree $(n-r,n-s)$. We use the transposition signs
+\begin{equation}\label{eq:signs}
+ (d&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;\alpha),\qquad
+ (d&#x27;&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;&#x27;\alpha).
+\end{equation}
+A current is closed when both transposed differentials vanish. Its support is the complement of the largest ordinary open set on which its restriction is zero. We do not identify closedness of the native integration current with a coefficientwise identity.
+% END CONTEXT native</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="9daff48088160f144339047d81c80a0f7f3aceb9abb5616430f800266e4a4aad">
+% BEGIN CONTEXT multiplication
+\paragraph{An admissible multiplication interface.}
+Fix $r,s$ and $p\leq\min(r,s)$. Let $\PP$ be a sheaf of real vector spaces of continuous functions containing $\A^{0,0}$. For $0\leq j\leq p$, supply sheaves $\C_j$ of real vector spaces consisting of closed native currents of bidimension $(r-j,s-j)$. For $j&lt;p$, suppose there are bilinear maps, commuting with ordinary restrictions,
+\[
+ M_j:\PP\times\C_j\longrightarrow\D_{r-j,s-j},\qquad
+                         R_j(u,S)=\DD M_j(u,S),
+\]
+with the following exact requirements: $M_j(h,S)=hS$ for every ordinary smooth $h$, and $R_j(u,S)\in\C_{j+1}$. Thus $M_j$ supplies an actual continuous native functional on all tests, not only a candidate pairing or values on radial tests. Its existence and representative independence are hypotheses of this interface. Closedness of $R_j$ as a raw current follows automatically from Theorem~\ref{f9cp:operators}; membership in any more restrictive admissible class remains a separate hypothesis.
+% END CONTEXT multiplication</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003138-reader.jpg" alt="Typeset mathematical passage from PDF page 1871" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1871">PDF page 1871 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-003135/">NAG-003135</a> · selected whole</li><li><a href="/r/NAG-003136/">NAG-003136</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003136/">f9cp:harmonic</a></li><li><a href="/r/NAG-003135/">f9cp:operators</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

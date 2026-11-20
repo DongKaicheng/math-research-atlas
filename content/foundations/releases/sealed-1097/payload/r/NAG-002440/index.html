@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002440/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>The weak numerical conditions do not characterize vertices · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002440 · Accepted whole</p><h1>The weak numerical conditions do not characterize vertices</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=theorem.4.55.3">Open in the English reader · PDF page 819</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1309f0c9473a6fd68a9817abed80440fde2d1de2942dd0f48f1f84a3762df479">
+\begin{theorem}[The weak numerical conditions do not characterize vertices]
+\label{v038:f5:wildnonmodelvertex}
+Use $K$, $q$, $L$ and $\alpha$ from
+Proposition~\ref{v038:f5:explicitimmediateextension}.
+Let $J=G_L(Y)$ and put $X=\alpha+qY$ in $J$.
+Restriction of this absolute value to $K(X)$ defines a point
+$v\in(\mathbf P^1_K)^{\an}$ satisfying
+\[
+ \begin{aligned}
+       \mathcal H(v)&amp;=G_L(Y),\\
+       |\mathcal H(v)^\times|&amp;=|K^\times|,\qquad
+       \widetilde{\mathcal H(v)}=\mathbf F_p(y).
+ \end{aligned}
+\]
+Nevertheless $v$ is not a component vertex of any semistable
+algebraic model over the original $K^\circ$ in
+Definition~\ref{v036:f5:modelclass}.
+
+The actual rational Gauss coordinate
+\[
+                         u=\frac{X^p-X-q^{-1}}q
+\]
+has $|u(v)|=1$ and residue $-y$, and $K(X)/K(u)$ is finite
+separable. Its completed extension satisfies
+\[
+           [\mathcal H(v):G_K(u)]=p,
+           \qquad [\widetilde{\mathcal H(v)}:\mathbf F_p(\bar u)]=1.
+\]
+Thus the obstruction occurs on a curve which already has the
+smooth original model $\mathbf P^1_{K^\circ}$.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="25f452bd20fce4acaccda88fdb6932e4c660444572ff513dcc1481a67579b0a6">
+\begin{proof}
+The element $X$ is transcendental over $K$, since $Y$ is
+transcendental over $L$. Its induced multiplicative seminorm on
+$K[X]$ gives an affine analytic point by
+Theorem~\ref{fnd:affineanalytificationconstruction}, and hence a
+point of the analytic projective line by
+Proposition~\ref{fnd:analytificationzariskiopens}.
+Proposition~\ref{fnd:analytificationvaluedfibres} identifies its
+completed residue field with the closure of $K(X)$ in $J$.
+Set
+\[
+                  b=X^p-X-q^{-1}=q^pY^p-qY.
+\]
+The Gauss norm gives $|b|=|q|=\rho&lt;1$.
+The series $z=\sum_{i\geq0}b^{p^i}$ converges in
+$\mathcal H(v)$, satisfies $z^p-z=-b$, and has norm at most
+$\rho$. Hence $X+z$ is a root of $P$. Its difference from
+$\alpha$ has norm at most $\rho&lt;1$, whereas every other root
+$\alpha+c$, $0\ne c\in\mathbf F_p$, is at distance one from
+$\alpha$. Therefore $X+z=\alpha$.
+It follows that $\mathcal H(v)$ contains $L$ and
+$Y=(X-\alpha)/q$. Since $L(Y)$ is dense in $J$, it equals $J$.
+The unit Gauss calculation of
+Proposition~\ref{v037:f5:integralgaussdegree}, applied over $L$,
+now gives the displayed value group and residue field.
+
+We have $u=q^{p-1}Y^p-Y$, so $|u|=1$ and $\bar u=-y$.
+Reduction of a normalized nonzero polynomial in $u$ shows that
+its induced norm is the unit Gauss norm, over both $K$ and $L$.
+In $G_L(u)$ iterate
+\[
+                   Y_0=-u,\qquad Y_{r+1}=q^{p-1}Y_r^p-u.
+\]
+All iterates have norm at most one. Their successive differences
+decrease to zero, since the map has Lipschitz constant at most
+$|q|^{p-1}&lt;1$ on that ball. The element $Y\in J$ is its fixed
+point, and the same estimate shows $Y_r\to Y$ in $J$.
+The complete subfield $G_L(u)$ is closed, so it contains $Y$.
+Consequently $J=G_L(u)$, and
+Lemma~\ref{v038:f5:finitegaussconstants} gives
+$[J:G_K(u)]=[L:K]=p$.
+The residual degree is one because $\bar u=-y$.
+The equation $X^p-X-q^{-1}-qu=0$ makes $K(X)/K(u)$ finite,
+and its derivative $-1$ makes the extension separable.
+
+It remains to exclude all original models, not just this
+particular coordinate. Choose the comparison field $\Omega$
+of Lemma~\ref{v036:f5:comparisonfield}, using an algebraic
+closure containing $L$. For every $c\in\mathbf F_p$ let $w_c$
+be the Gauss point over $\Omega$ of the disc
+\[
+                         |X-(\alpha+c)|\leq|q|.
+\]
+The map $\alpha\mapsto\alpha+c$ defines a $K$-automorphism of
+$L$, and is isometric by Lemma~\ref{fnd:finiteextensionnorms}.
+Applied coefficientwise to any polynomial in $K[X]$, it shows
+that every $w_c$ restricts to $v$.
+These points are distinct: at $w_c$, the function
+$X-(\alpha+c)$ has norm $|q|$, while at $w_{c&#x27;}$ for
+$c&#x27;\ne c$ it has norm one.
+
+Suppose $v$ were a model component vertex, with special component
+$E$. Proposition~\ref{v036:f5:vertexarithmetic} gives
+$k(E)=\mathbf F_p(y)$ and identifies the entire geometric
+inverse image of $v$ with the component generic points above $E$.
+That set has one element. Indeed,
+\[
+              \mathbf F_p(y)\otimes_{\mathbf F_p}
+                           \overline{\mathbf F}_p
+                         =\overline{\mathbf F}_p(y)
+\]
+is a field. To verify the equality, every finite coefficient
+extension $k&#x27;/\mathbf F_p$ stays linearly independent over
+$\mathbf F_p(y)$, by clearing polynomial denominators.
+The tensor with $k&#x27;$ is therefore a finite-dimensional domain
+and hence a field; it contains the inverses of all nonzero
+polynomials with coefficients in $k&#x27;$. Taking the union over
+these finite coefficient fields proves the equality.
+The comparison-field residue is $\overline{\mathbf F}_p$ by
+Lemma~\ref{v036:f5:comparisonfield}.
+The $p$ distinct points $w_c$ above $v$ contradict this
+singleton-fibre conclusion. Thus no such original model can
+have $v$ as a component vertex.
+Finally, the standard model $\mathbf P^1_{K^\circ}$ has its
+two polynomial affine charts, flat by the coefficientwise ideal
+criterion \cite[Tag 00HD]{StacksAlg} and smooth with their
+displayed coordinates. It is projective and its special fibre
+is the geometrically integral projective line. It belongs to
+the stated model category.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002440-reader.jpg" alt="Typeset mathematical passage from PDF page 819" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=819">PDF page 819 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole</li><li><a href="/r/NAG-000464/">NAG-000464</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole</li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole</li><li><a href="/r/NAG-001712/">NAG-001712</a> · selected whole</li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole</li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole</li><li><a href="/r/NAG-002438/">NAG-002438</a> · selected whole</li><li><a href="/r/NAG-002439/">NAG-002439</a> · selected whole</li><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-000464/">NAG-000464</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001707/">NAG-001707</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001712/">NAG-001712</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002270/">NAG-002270</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002271/">NAG-002271</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002438/">NAG-002438</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-002439/">NAG-002439</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001707/">fnd:affineanalytificationconstruction</a></li><li><a href="/r/NAG-001712/">fnd:analytificationvaluedfibres</a></li><li><a href="/r/NAG-001708/">fnd:analytificationzariskiopens</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-002270/">v036:f5:comparisonfield</a></li><li><a href="/r/NAG-002272/#context-86f7d90a55678502">v036:f5:modelclass</a></li><li><a href="/r/NAG-002271/">v036:f5:vertexarithmetic</a></li><li><a href="/r/NAG-002333/">v037:f5:integralgaussdegree</a></li><li><a href="/r/NAG-002439/">v038:f5:explicitimmediateextension</a></li><li><a href="/r/NAG-002438/">v038:f5:finitegaussconstants</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

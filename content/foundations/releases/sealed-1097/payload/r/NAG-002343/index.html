@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-002343/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>An unramified Gauss germ gives an actual integral chart · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-002343 · Accepted whole</p><h1>An unramified Gauss germ gives an actual integral chart</h1><p><a href="/projects/foundations/chapters/4/">4 Analytic curves and skeleta</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=proposition.4.52.3">Open in the English reader · PDF page 805</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="76e37cd5780e58ac6bce890664ffe35f04308da4197218630ffe1f4ec5c4528b">
+\begin{proposition}[An unramified Gauss germ gives an actual integral chart]
+\label{v037:f5:gaussgermintegralchart}
+Let $X$ be a good $K$-analytic space, let $v\in X$, and suppose
+that an analytic morphism from an ordinary neighbourhood of $v$
+to the analytic affine line is \textup{\&#x27;etale} at $v$ and sends
+$v$ to $\eta$. Put $L=\mathcal H(v)$, with the induced map
+$H\to L$. Suppose that $L/H$ is finite, that
+$l=\widetilde L$ is finite separable over $k(t)$, and that
+\[
+                           [L:H]=[l:k(t)].
+\]
+Then $v$ belongs to an actual affinoid domain of $X$ carrying
+an integral \textup{\&#x27;etale} Gauss chart. Its special fibre is
+integral and $v$ is its unique component point.
+\end{proposition}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="b7d13d71cc356204fc13402c7bff3bbf8671ff023434402d53be829e2aa07820">
+\begin{proof}
+Choose a primitive element $\alpha$ of $l/k(t)$ by
+\cite[Tag 030N]{StacksAlg}, and let $\bar P\in k(t)[S]$
+be its monic minimal polynomial of degree $f$.
+Choose $g_0\in O[T]$ with nonzero reduction so that all
+coefficients of $\bar P$ lie in $k[t,1/\bar g_0]$.
+Lift them to $O[T,1/g_0]$, obtaining a monic polynomial $P$.
+On the free module $O[T,1/g_0][S]/(P)$ with its monic
+remainder basis, let $\Delta\in O[T,1/g_0]$ be the
+determinant of multiplication by $P&#x27;$.
+Its reduction is nonzero in $k(t)$, because $\bar P$ is
+separable. Write $\Delta=a(T)/g_0(T)^m$ with $a\in O[T]$;
+then $\bar a\ne0$. Put $g=g_0a$.
+The adjugate matrix makes $P&#x27;$ a unit in
+\[
+       B^{\mathrm{alg}}_0=O[T,1/g][S]/(P).
+\]
+For an arbitrary square-zero ideal, a lifted root is corrected
+uniquely by $b\mapsto b-P(b)/P&#x27;(b)$. Thus this finite free
+algebra is formally \textup{\&#x27;etale}, and is ordinarily
+\textup{\&#x27;etale} by \cite[Tag 00UR]{StacksAlg}.
+
+Let
+\[
+ R_0=O\langle T,Z\rangle/(g(T)Z-1),\qquad
+ B_0=R_0[S]/(P).
+\]
+The algebra $B^{\mathrm{alg}}_0$ is flat over $O$:
+coefficientwise injectivity in the ideal criterion
+\cite[Tag 00HD]{StacksAlg} makes $O[T]$ flat over $O$;
+localization is flat by \cite[Tag 00HT]{StacksAlg}, and
+the final extension is finite free.
+The actual completion calculation in
+Lemma~\ref{cand:affineflatformalcompletion} identifies $B_0$
+with the completion of $B^{\mathrm{alg}}_0$, coefficient by
+coefficient in its finite free monic basis. It is admissible,
+finite free and \textup{\&#x27;etale} over $R_0$.
+Its special algebra is finite free over $k[t,1/\bar g]$
+and injects into its generic fibre $l$, so it is a domain.
+Consequently Proposition~\ref{v037:f5:integralgaussdegree}
+gives exactly one point $w$ over $\eta$ in
+$B=\mathcal M(B_0[1/\pi])$, with
+$[\mathcal H(w):H]=f$ and residual extension $l/k(t)$.
+Here $0\ne\pi\in K^{\circ\circ}$ is any choice used for
+the completion.
+
+The residue element $\alpha\in\widetilde L$ is a simple
+root of $\bar P$. The complete-valuation henselian lemma
+\ref{cand:completevaluationhenselian} lifts it to a root
+of $P$ in $L^\circ$. It gives an $H$-homomorphism
+$\mathcal H(w)=H[S]/(P)\to L$.
+Both fields have degree $f$ over $H$, so it is an isomorphism;
+it is isometric by Lemma~\ref{fnd:finiteextensionnorms}.
+
+Use the full algebraic generic cover
+\[
+ \operatorname{Spec}B^{\mathrm{alg}}_0[1/\pi]
+                       \longrightarrow\operatorname{Spec}K[T,1/g].
+\]
+Its analytification $\mathcal B$ is \textup{\&#x27;etale} over
+the ordinary open $g\ne0$ in the analytic line by
+Proposition~\ref{fnd:analytificationzariskiopens} and
+Theorem~\ref{fnd:analytificationetalepreservation}.
+Theorem~\ref{fnd:analytificationfiniteclosed} identifies $B$
+with its entire inverse image of the affinoid domain $D_g$.
+In particular its entire fibre at $\eta$ is $\{w\}$.
+
+By the ordinary-open local definition of an analytic
+\textup{\&#x27;etale} map, the map near $v$ restricts to a finite
+flat map with zero relative differentials. Finite branch
+separation in Lemma~\ref{fnd:finiteanalyticbranchseparation}
+then gives a finite \textup{\&#x27;etale} germ with fibre field $L$.
+The completed-residue-field
+equivalence of Theorem~\ref{fnd:goodetalegermresidueequivalence}
+therefore gives an isomorphism over the analytic line between
+ordinary neighbourhoods of $v$ in $X$ and of $w$ in
+$\mathcal B$. Write $W$ for the latter neighbourhood.
+
+By Proposition~\ref{new:affinoidcompact}, the compact set
+$B\setminus W$ has closed image in the Hausdorff affinoid
+$D_g$. Its image avoids $\eta$ because
+the full fibre is the singleton $w\in W$.
+Lemma~\ref{v037:f5:gaussprincipalshrink} supplies a polynomial
+$h\in O[T]$ with nonzero reduction such that the domain
+$D_{gh}$ avoids that image. Its full inverse image in $B$
+is therefore contained in $W$. It is the actual affinoid
+generic fibre of the principal formal restriction
+\[
+                  B_0\langle U\rangle/(h(T)U-1)
+\]
+by Proposition~\ref{fnd:formalprincipalopenflat}.
+This restriction is finite projective and \textup{\&#x27;etale}
+over the principal base chart for $gh$, by ordinary base
+change and \cite[Tag 02GO]{StacksAlg}. Its special algebra
+is the corresponding nonzero localization of the integral
+special algebra of $B_0$.
+The ordinary-neighbourhood isomorphism transports its actual
+affinoid domain into $X$. Its unique component point is
+transported from $w$ to $v$, proving the assertion.
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-002343-reader.jpg" alt="Typeset mathematical passage from PDF page 805" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=805">PDF page 805 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000305/">NAG-000305</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001671/">NAG-001671</a> · selected whole <small>(selected exact finite etale germ application)</small></li><li><a href="/r/NAG-001708/">NAG-001708</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001710/">NAG-001710</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001735/">NAG-001735</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001736/">NAG-001736</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-001943/">NAG-001943</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002037/">NAG-002037</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002049/">NAG-002049</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002333/">NAG-002333</a> · selected whole <small>(accepted native whole)</small></li><li><a href="/r/NAG-002342/">NAG-002342</a> · selected whole <small>(accepted native whole)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-002037/">cand:affineflatformalcompletion</a></li><li><a href="/r/NAG-002049/">cand:completevaluationhenselian</a></li><li><a href="/r/NAG-001736/">fnd:analytificationetalepreservation</a></li><li><a href="/r/NAG-001710/">fnd:analytificationfiniteclosed</a></li><li><a href="/r/NAG-001708/">fnd:analytificationzariskiopens</a></li><li><a href="/r/NAG-001735/">fnd:finiteanalyticbranchseparation</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-001943/">fnd:formalprincipalopenflat</a></li><li><a href="/r/NAG-001671/">fnd:goodetalegermresidueequivalence</a></li><li><a href="/r/NAG-000305/">new:affinoidcompact</a></li><li><a href="/r/NAG-002342/">v037:f5:gaussprincipalshrink</a></li><li><a href="/r/NAG-002333/">v037:f5:integralgaussdegree</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

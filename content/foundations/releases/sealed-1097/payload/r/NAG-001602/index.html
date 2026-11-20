@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001602/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Uniformization after a finite extension of constants · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001602 · Accepted whole</p><h1>Uniformization after a finite extension of constants</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.24.8">Open in the English reader · PDF page 614</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="9d86b232a373150dfb1b7f18ef3cef86a5f5059c35240b47c8b8971fc3c6ad61">
+\begin{lemma}[\bi{Uniformization after a finite extension of constants}
+{有限常数扩张后的一致化}]
+\label{fnd:laurentconstantuniformization}
+\bi{Let $F$ be any field, endowed with the trivial absolute
+value, let $0&lt;s&lt;1$, and let $L/F_s=F((t))$ be finite
+separable. There are a finite extension $K/F$, a number
+$0&lt;r&lt;1$, and a surjective $F$-algebra homomorphism}
+{设 $F$ 为任意域，赋予平凡绝对值；令 $0&lt;s&lt;1$，
+并设 $L/F_s=F((t))$ 为有限可分扩张。
+则存在有限扩张 $K/F$、数 $0&lt;r&lt;1$ 及满的 $F$-代数同态}
+\[
+                     L\otimes_F K\twoheadrightarrow K_r
+\]
+\bi{whose restriction to $L$ is isometric for its given
+absolute value. The restriction to $K$ is the constant-field
+embedding. Here the tensor product is the ordinary algebraic
+tensor product.}
+{其在 $L$ 上的限制保持给定绝对值，并在 $K$ 上限制为
+常数域嵌入。这里的张量积是普通代数张量积。}
+\end{lemma}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f0d181995facfea900210f05efcbfa7fffb3d866c6d1cf763ad73f96d0a5faa5">
+\begin{proof}
+\bi{\emph{Step 1: algebraize the discrete valuation.}
+The dense-coefficient lemma
+\ref{fnd:separablecoefficientapproximation} supplies
+$Q\in F(t)[U]$ such that
+$L=F((t))[U]/(Q)$. Let $E=F(t)[U]/(Q)$, identified
+with its image in $L$. It is a field, since $Q$ is
+irreducible even over $F((t))$. Moreover $E$ is dense
+in $L$: approximate the finitely many coefficients of
+an expression in the basis $1,U,\ldots,U^{\deg Q-1}$.}
+{\emph{第一步：代数化离散赋值。}
+稠密系数引理 \ref{fnd:separablecoefficientapproximation}
+给出 $Q\in F(t)[U]$，使
+$L=F((t))[U]/(Q)$。令 $E=F(t)[U]/(Q)$，
+并将其识别为 $L$ 中的像。因为 $Q$ 甚至在 $F((t))$
+上不可约，$E$ 是域。并且 $E$ 在 $L$ 中稠密：
+只须对基 $1,U,\ldots,U^{\deg Q-1}$ 下的有限个系数作逼近。}
+
+\bi{Let $B$ be the integral closure of $F[t]$ in $E$.
+It is finite over $F[t]$, by
+\cite[Tag 0335]{StacksAlg} and the definition of a
+Japanese domain, \cite[Tag 032F]{StacksAlg}.
+Thus $Y=\operatorname{Spec}(B)$ is a
+normal affine curve; its dimension is one by
+\cite[Tag 00OK]{StacksAlg}. Every $b\in B$ has $|b|\le1$,
+since it satisfies a monic equation whose coefficients
+have norm at most one. Hence
+$P=\{b\in B:|b|&lt;1\}$ is a prime over $(t)$ and is
+maximal, with residue field finite over $F$.
+By \cite[Tag 0B8Y]{StacksAlg}, $B_P$ is a discrete
+valuation ring. Its units have norm one and its
+uniformizer has norm less than one. Consequently its
+valuation, scaled by the prescribed value $|t|=s$,
+is exactly the restriction of the given absolute value
+on $L$. In particular $L$ is the completion of $E$
+at this closed point $P$.}
+{令 $B$ 为 $F[t]$ 在 $E$ 中的整闭包。
+由 \cite[Tag 0335]{StacksAlg} 及
+\cite[Tag 032F]{StacksAlg} 中 Japanese 整环的定义，
+$B$ 在 $F[t]$ 上有限。因此
+$Y=\operatorname{Spec}(B)$ 为正规仿射曲线；
+由 \cite[Tag 00OK]{StacksAlg}，其维数为一。
+每个 $b\in B$ 都满足 $|b|\le1$，因为它满足一个系数范数
+至多为一的首一方程。因此
+$P=\{b\in B:|b|&lt;1\}$ 是 $(t)$ 上方的素理想，
+并为极大理想，其剩余域在 $F$ 上有限。
+由 \cite[Tag 0B8Y]{StacksAlg}，$B_P$ 是离散赋值环。
+其单位范数为一，一致化元范数小于一。所以用给定值
+$|t|=s$ 确定尺度后，其赋值恰为 $L$ 上给定绝对值的限制。
+特别地，$L$ 是 $E$ 在闭点 $P$ 处的完备化。}
+
+\bi{\emph{Step 2: obtain a smooth rational center.}
+Apply \cite[Tag 0GK5]{StacksAlg} to $Y$.
+After a finite purely inseparable extension $F&#x27;/F$,
+the normalization of $Y_{F&#x27;}$ is a finite disjoint union
+of curves smooth and geometrically irreducible over
+finite extensions of $F&#x27;$. The normalization is finite
+and surjective, by \cite[Tag 0BXR]{StacksAlg}; choose
+a closed point $Q_0$ above $P$ on one component $Z$.
+Write $F_0$ for its field of definition in that statement
+and put $K=\kappa(Q_0)$, which is finite over $F_0$ by
+\cite[Tag 00FV]{StacksAlg}, and hence finite over $F$.
+The base change $Z_K$ is a smooth integral
+$K$-curve, and $Q_0$ gives a $K$-rational point $Q$ on it.}
+{\emph{第二步：获得光滑有理中心。}
+把 \cite[Tag 0GK5]{StacksAlg} 应用于 $Y$。
+经过某个有限纯不可分扩张 $F&#x27;/F$ 后，$Y_{F&#x27;}$ 的
+正规化是有限条曲线的不交并，各曲线在 $F&#x27;$ 的某个有限
+扩张上光滑且几何不可约。由 \cite[Tag 0BXR]{StacksAlg}，
+此正规化有限且满射；在某分支 $Z$ 上选择位于 $P$ 上方的
+闭点 $Q_0$。将该分支在上述定理中的定义域记为 $F_0$，
+并令 $K=\kappa(Q_0)$，由 \cite[Tag 00FV]{StacksAlg}，
+它在 $F_0$ 上有限，因而在 $F$ 上有限。
+基变换 $Z_K$ 为光滑整 $K$-曲线，且 $Q_0$ 在其中给出
+一个 $K$-有理点 $Q$。}
+
+\bi{The function field $E&#x27;$ of $Z_K$ is generated as a field
+by the images of $E$ and $K$. Indeed normalization does
+not change the function field of the chosen irreducible
+component of $Y_{F&#x27;}$; this field is a quotient of
+$E\otimes_F F&#x27;$. After the indicated base change its
+function field is the corresponding quotient of
+$E\otimes_F K$. Since this tensor product is finite
+over $E$, its domain quotient is already a field.
+Thus $E&#x27;$ is precisely the compositum of those two images.}
+{曲线 $Z_K$ 的函数域 $E&#x27;$ 由 $E$ 与 $K$ 的像作为域生成。
+事实上，正规化不改变 $Y_{F&#x27;}$ 所选不可约分支的函数域，
+后者是 $E\otimes_F F&#x27;$ 的商。在所列基变换后，其函数域
+是 $E\otimes_F K$ 的相应商。由于此张量积在 $E$ 上有限，
+其整商已是域。因此 $E&#x27;$ 恰为这两个像的合成域。}
+
+\bi{\emph{Step 3: complete and check algebraic surjectivity.}
+The local ring at the smooth rational point $Q$ is a
+discrete valuation ring by \cite[Tag 0B8Y]{StacksAlg},
+with residue field $K$. Choose a uniformizer $\tau$ and
+normalize its real absolute value so that the image of
+$t$ still has value $s$. Let $M$ be the completion
+of $E&#x27;$ for this valuation. Completion changes neither
+the value group nor the residue field, as proved in
+Lemma~\ref{fnd:valuedfielddimensioncalculus}. Therefore
+Lemma~\ref{fnd:discretecoefficientlaurent} identifies
+$M$ with $K_r$, where $r=|\tau|$.}
+{\emph{第三步：完备化并检查代数满射。}
+由 \cite[Tag 0B8Y]{StacksAlg}，光滑有理点 $Q$ 的局部环
+是剩余域为 $K$ 的离散赋值环。选择一致化元 $\tau$，
+并正规化实绝对值，使 $t$ 的像仍具有值 $s$。
+令 $M$ 为 $E&#x27;$ 关于此赋值的完备化。
+由 Lemma~\ref{fnd:valuedfielddimensioncalculus}，
+完备化不改变值群或剩余域。所以
+Lemma~\ref{fnd:discretecoefficientlaurent}
+将 $M$ 识别为 $K_r$，其中 $r=|\tau|$。}
+
+\bi{The valuation on $E&#x27;$ restricts to the one centered
+at $P$ on $E$: the local map $B_P\to\mathcal O_{Z_K,Q}$
+sends units to units and the maximal ideal into the maximal
+ideal, and the normalization of $|t|$ fixes the scale.
+It consequently extends to an isometric embedding
+$L\hookrightarrow M$. Together with the constant inclusion
+$K\hookrightarrow M$ it gives
+$L\otimes_F K\to M$. Its image is a finite-dimensional
+$L$-algebra and a domain, hence a field: multiplication
+by a nonzero element is an injective endomorphism of a
+finite-dimensional vector space and is therefore surjective.
+By Lemma~\ref{fnd:finiteextensionnorms}, this image is
+complete for its restricted absolute value and hence closed
+in $M$. It contains $E&#x27;$, which is dense in $M$.
+The image is therefore all of $M=K_r$, proving the assertion
+for the algebraic tensor product itself.}
+{$E&#x27;$ 上的赋值限制到 $E$ 后，等于以 $P$ 为中心的赋值：
+局部映射 $B_P\to\mathcal O_{Z_K,Q}$ 将单位送到单位、
+极大理想送入极大理想，而 $|t|$ 的正规化确定了尺度。
+因此它延拓为等距嵌入 $L\hookrightarrow M$。
+将其与常数嵌入 $K\hookrightarrow M$ 结合，
+得到 $L\otimes_F K\to M$。其像是有限维 $L$-代数且为整环，
+所以是域：非零元素的乘法是有限维向量空间上的单射自同态，
+因而满射。由 Lemma~\ref{fnd:finiteextensionnorms}，
+此像对于限制绝对值完备，故在 $M$ 中闭。
+但它又包含在 $M$ 中稠密的 $E&#x27;$，
+所以其像为整个 $M=K_r$。
+这就对普通代数张量积本身证明了满射断言。}
+\end{proof}</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001602-reader.jpg" alt="Typeset mathematical passage from PDF page 615" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=615">PDF page 615 · excerpt continues in the reader</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li>APP-STACKS-00FV@NAG-001602:packet-site-8 · named external application</li><li>APP-STACKS-00FV@NAG-001602:packet-site-8 · named external application <small>(requires)</small></li><li>APP-STACKS-00GQ@NAG-001602:normalization-over-P · named external application</li><li>APP-STACKS-00GQ@NAG-001602:normalization-over-P · named external application <small>(requires)</small></li><li>APP-STACKS-00OK@NAG-001602:packet-site-4 · named external application</li><li>APP-STACKS-00OK@NAG-001602:packet-site-4 · named external application <small>(requires)</small></li><li>APP-STACKS-032F@NAG-001602:packet-site-3 · named external application</li><li>APP-STACKS-032F@NAG-001602:packet-site-3 · named external application <small>(requires)</small></li><li>APP-STACKS-0335@NAG-001602:packet-site-2 · named external application</li><li>APP-STACKS-0335@NAG-001602:packet-site-2 · named external application <small>(requires)</small></li><li>APP-STACKS-0B8Y@NAG-001602:packet-site-5 · named external application</li><li>APP-STACKS-0B8Y@NAG-001602:packet-site-5 · named external application <small>(requires)</small></li><li>APP-STACKS-0B8Y@NAG-001602:packet-site-9 · named external application</li><li>APP-STACKS-0B8Y@NAG-001602:packet-site-9 · named external application <small>(requires)</small></li><li>APP-STACKS-0BXR@NAG-001602:packet-site-7 · named external application</li><li>APP-STACKS-0BXR@NAG-001602:packet-site-7 · named external application <small>(requires)</small></li><li>APP-STACKS-0GK5@NAG-001602:packet-site-6 · named external application</li><li>APP-STACKS-0GK5@NAG-001602:packet-site-6 · named external application <small>(requires)</small></li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole</li><li><a href="/r/NAG-001450/">NAG-001450</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable</li><li><a href="/r/NAG-001586/">NAG-001586</a> · selected whole, export unavailable <small>(requires)</small></li><li><a href="/r/NAG-001601/">NAG-001601</a> · selected whole</li><li><a href="/r/NAG-001601/">NAG-001601</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001670/">NAG-001670</a> · selected whole</li><li><a href="/r/NAG-001670/">NAG-001670</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001601/">fnd:discretecoefficientlaurent</a></li><li><a href="/r/NAG-001450/">fnd:finiteextensionnorms</a></li><li><a href="/r/NAG-001670/">fnd:separablecoefficientapproximation</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

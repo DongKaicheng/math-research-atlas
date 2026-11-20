@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001957/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Finite admissible maps descend from Gauss fields · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001957 · Accepted whole</p><h1>Finite admissible maps descend from Gauss fields</h1><p><a href="/projects/foundations/chapters/3/">3 Reduction, formal models and residual geometry</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.3.18.5">Open in the English reader · PDF page 554</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="da6454db0c6ea51ce4e9c684a7b9876276771d4b7738256dff6a7f610539e2a1">
+\begin{lemma}[\bi{Finite admissible maps descend from Gauss fields}
+{有限 admissible 映射的 Gauss 域下降}]
+\label{fnd:gaussfiniteadmissibledescent}
+\bi{Let $A\to B$ be a bounded affinoid homomorphism and
+$L/K$ a finite iterated Gauss-field extension. Then $A\to B$
+is finite and admissible if and only if $A_L\to B_L$ is finite
+and admissible.}
+{设 $A\to B$ 为有界 affinoid 同态，$L/K$ 为有限次迭代的
+Gauss 域扩张。则 $A\to B$ 有限且 admissible 当且仅当
+$A_L\to B_L$ 有限且 admissible。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="79f5fd739c9b5a5492d58fb2c46105b43a36d8e172ca2c95b7c891bcadc1c26c">
+\begin{proof}
+\bi{In an orthogonal scalar basis, all completed tensor products
+are weighted coefficient $c_0$-spaces. A bounded admissible
+surjection $A^m\to B$ therefore remains such a surjection:
+lift each coefficient with a fixed common norm bound, which
+preserves coefficient decay. This proves the forward direction.}
+{选取正交标量基后，各完备张量积都是加权系数 $c_0$-空间。
+因此，有界 admissible 满射 $A^m\to B$ 扩张后仍为同类满射：
+逐系数以同一个范数界作提升即可，且系数衰减保持。
+这证明正向结论。}
+
+\bi{Conversely let $b_1&#x27;,\ldots,b_m&#x27;$ generate $B_L$ over $A_L$
+with a bounded lifting constant $C$. Approximate these generators
+by finite scalar sums $b_i&#x27;&#x27;$ so closely that
+$C\max_i\|b_i&#x27;-b_i&#x27;&#x27;\|&lt;1$.
+Let \(M\) be a bound for the action \(A_L\times B_L\to B_L\).
+In choosing the approximations require \(MC\max_i\|b_i&#x27;-b_i&#x27;&#x27;\|&lt;1\).
+They still generate with a bounded
+lifting constant. Indeed lift an element using the original
+generators, replace them by the approximations, and repeat on
+the resulting error. The errors decrease geometrically, and
+the coefficient corrections converge in $A_L^m$.
+Collect the finitely many elements $b_j\in B$ occurring in
+the finite scalar expansions of the $b_i&#x27;&#x27;$. They generate
+$B_L$, again with a bounded lifting constant.
+For $b\in B$ write $b=\sum_j c_jb_j$, $c_j\in A_L$, with
+$\max\|c_j\|\leq C&#x27;\|b\|$. Let $p_0=p_{A,0}:A_L\to A$ be the constant-coordinate projection
+from Lemma~\ref{fnd:generalgaussfieldbasis}. It is $A$-linear,
+has norm at most one, and fixes $A$. The corresponding projection
+$p_{B,0}:B_L\to B$ fixes $B$.
+In the final equality \(b=\sum_j\varphi_L(c_j)(b_j\otimes 1)\),
+apply the \(B\)-valued constant-coordinate projection \(p_{B,0}\).
+On each product it equals \(\varphi(p_{A,0}(c_j))b_j\) by the
+coefficient formula, first on finite sums and then by continuity.
+Hence}
+{反之，设 $b_1&#x27;,\ldots,b_m&#x27;$ 在 $A_L$ 上生成 $B_L$，并具有
+有界提升常数 $C$。以有限标量和 $b_i&#x27;&#x27;$ 充分逼近这些生成元，
+使 $C\max_i\|b_i&#x27;-b_i&#x27;&#x27;\|&lt;1$。新元素仍生成，并具有有界
+提升常数：先用原生成元提升一个元素，再换成逼近元素，然后
+对误差重复这一过程。误差按几何级数衰减，系数修正在
+$A_L^m$ 中收敛。收集各 $b_i&#x27;&#x27;$ 的有限标量展开中出现的有限个
+$b_j\in B$，它们在 $A_L$ 上生成 $B_L$，且仍有有界提升常数。
+对 $b\in B$ 写成 $b=\sum_jc_jb_j$，其中 $c_j\in A_L$，
+且 $\max\|c_j\|\leq C&#x27;\|b\|$。应用由
+Lemma~\ref{fnd:generalgaussfieldbasis} 逐系数延拓的常数坐标
+投影 $p_0:A_L\to A$。它是 $A$-线性的，范数至多一，并在
+$A$ 上为恒等映射。因此}
+\[
+ b=\sum_jp_0(c_j)b_j,\qquad
+       \max_j\|p_0(c_j)\|\leq C&#x27;\|b\|.
+\]
+\bi{This proves finite generation and admissibility over $A$.
+Only linearity of $p_0$ is used.}
+{这同时证明在 $A$ 上的有限生成性与 admissibility。
+这里仅使用 $p_0$ 的线性性质。}
+\end{proof}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001957-reader.jpg" alt="Typeset mathematical passage from PDF page 554" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=554">PDF page 554</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole</li><li><a href="/r/NAG-001954/">NAG-001954</a> · selected whole</li><li><a href="/r/NAG-001689/">NAG-001689</a> · selected whole <small>(requires)</small></li><li><a href="/r/NAG-001954/">NAG-001954</a> · selected whole <small>(requires)</small></li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001954/">fnd:generalgaussfieldbasis</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

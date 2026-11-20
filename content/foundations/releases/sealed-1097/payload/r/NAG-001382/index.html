@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-001382/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Distinguished coordinates · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-001382 · Accepted whole</p><h1>Distinguished coordinates</h1><p><a href="/projects/foundations/chapters/1/">1 Valued fields, Banach algebras and analytic points</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=lemma.1.11.3">Open in the English reader · PDF page 71</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="b004b250134f81b4a18f029be04114b6b704339ea558bb0d13fd8ea6e60cbd20">
+\begin{lemma}[\bi{Distinguished coordinates}{Distinguished coordinates}]\label{fnd:distinguishedcoordinates}
+\bi{For every nonzero $g\in R_n$, $n\geq1$, there is an isometric triangular $K$-algebra automorphism $\phi$ such that $\phi(g)$, multiplied by a nonzero scalar and a unit of $R_{n-1}$, has the form}
+{对每个非零 $g\in R_n$，$n\geq1$，存在 isometric triangular $K$-algebra automorphism $\phi$，使 $\phi(g)$ 乘以一个非零 scalar 和一个 $R_{n-1}$ 中的 unit 后具有如下形式：}
+\[
+ f=T^d+\sum_{i&lt;d}b_iT^i+h,\qquad T=X_n,\quad
+ \|b_i\|\leq1,\quad \|h\|&lt;1,
+\]
+\bi{where $h$ contains only powers of $T$ greater than $d$.}
+{其中 $h$ 只含 $T$ 的高于 $d$ 次的项。}
+\end{lemma}
+</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="f08d2ba13912f895e2bbd0f9ed45b233e78f8004fc1b4525458ac5dd654e783d">
+\begin{proof}
+\bi{Divide $g$ by a coefficient attaining its nonzero Gauss norm, so that $\|g\|=1$. The set $S$ of exponents with coefficient norm one is finite and nonempty. Let $P$ be the sum of these terms and write $g=P+h_0$. Then $\|h_0\|&lt;1$: only finitely many coefficients have norm at least $1/2$, and those among them that are less than one, if any, have a maximum less than one. Taking the maximum with $1/2$ bounds all remaining coefficients strictly below one.}
+{将 $g$ 除以一个达到其非零 Gauss norm 的 coefficient，使 $\|g\|=1$。Coefficient norm 为一的 exponents 构成有限非空集合 $S$。令 $P$ 为这些项之和，写成 $g=P+h_0$。此时 $\|h_0\|&lt;1$：norm 至少为 $1/2$ 的 coefficients 只有有限个，其中严格小于一的 norms 若存在，则具有严格小于一的最大值。再与 $1/2$ 取 maximum，即为其余 coefficients 给出严格小于一的统一 bound。}
+
+\bi{Choose an integer $B\geq2$ larger than every coordinate of every exponent in $S$, and put $N_i=B^i$ for $1\leq i&lt;n$. The integers $w(\nu)=\nu_n+\sum_{i&lt;n}N_i\nu_i$ are distinct on $S$ by uniqueness of base-$B$ expansions. Make the substitution}
+{取整数 $B\geq2$，使其大于 $S$ 中所有 exponents 的每个坐标，并对 $1\leq i&lt;n$ 令 $N_i=B^i$。由 $B$ 进位表示的唯一性，整数 $w(\nu)=\nu_n+\sum_{i&lt;n}N_i\nu_i$ 在 $S$ 上互不相同。作 substitution}
+\[
+ X_i\longmapsto X_i+T^{N_i}\quad(i&lt;n),\qquad T\longmapsto T.
+\]
+\bi{Both this map and the substitution with minus signs are contractive by Proposition~\ref{fnd:substitution}; they are inverse on polynomials and therefore on their completions. Hence $\phi$ is isometric. Regrouping coefficients identifies $R_n$ isometrically with $R_{n-1}\langle T\rangle$: vanishing of the joint coefficient tails is equivalent to vanishing in each row and convergence to zero of the row norms.}
+{由 Proposition~\ref{fnd:substitution}，此 map 及将加号改为减号的 substitution 均为 contractive；它们在 polynomials 上互逆，故在 completions 上也互逆。因此 $\phi$ 为 isometric。将 coefficients 按 $T$ 的次数分组，得到 $R_n$ 与 $R_{n-1}\langle T\rangle$ 的 isometric identification：joint coefficient tails 趋于零，等价于每一行的 coefficients 趋于零且 row norms 趋于零。}
+
+\bi{Set $d=\max_{\nu\in S}w(\nu)$. The coefficient of $T^d$ in $\phi(P)$ is the scalar $a$ attached to the unique maximizing exponent. Every other term has smaller $T$-degree, and all coefficient norms are at most one, since the binomial coefficients have absolute value at most one. The coefficient of $T^d$ in $\phi(g)$ is thus $c=a+e$ with $|a|=1$ and $\|e\|&lt;1$. Geometric inversion gives $c^{-1}\in R_{n-1}$ and $\|c\|=\|c^{-1}\|=1$. Multiplying by $c^{-1}$ gives the required lower-coefficient bounds and strictly small higher tail.}
+{令 $d=\max_{\nu\in S}w(\nu)$。$\phi(P)$ 中 $T^d$ 的 coefficient 正是唯一 maximizing exponent 对应的 scalar $a$。其他各项的 $T$-degree 更低，且全部 coefficient norms 不超过一，因为 binomial coefficients 的 absolute values 不超过一。因此 $\phi(g)$ 中 $T^d$ 的 coefficient 为 $c=a+e$，其中 $|a|=1$、$\|e\|&lt;1$。Geometric inversion 给出 $c^{-1}\in R_{n-1}$，且 $\|c\|=\|c^{-1}\|=1$。乘以 $c^{-1}$ 即得到所需的 lower-coefficient bounds 与严格小的 higher tail。}
+\end{proof}
+</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="d8b1c6f8ec70ecd0a9b6090e608202416d44b228caf3c0dcdff05951e3d9c48d">
+\chapter{\bi{Valued fields, Banach algebras and analytic points}{Valued fields、Banach algebras 与 analytic points}}\label{ch:1}\label{vol:I}\label{part:tropical}\label{fnd:algebras}
+\bi{A non-Archimedean analytic space is locally described by convergent functions, but its points need not be evaluations at elements of the ground field. The purpose of this chapter is to construct both parts of this description: the algebras of functions and the valued fields in which their values lie. The next chapter supplies domains and sheaves. This order is important for multiplicities: a seminorm detects the value of a function, whereas the algebra also retains nilpotents and finite-module lengths.}
+{Non-Archimedean analytic space 局部由 convergent functions 描述，但其 points 未必来自 ground field 中元素的 evaluation。本章构造这一描述的两部分：functions 的 algebras，以及函数值所在的 valued fields。下一章再建立 domains 与 sheaves。这个顺序对 multiplicities 很重要：seminorm 检测函数值，而 algebra 还保留 nilpotents 与 finite-module lengths。}
+
+\section{\bi{The ground field and convergence}{Ground field 与 convergence}}\label{fnd:valuedfields}
+\begin{definition}\label{fnd:fieldconventions}
+\bi{Throughout the foundations, $K$ is a field complete for a real-valued non-Archimedean absolute value. We permit the trivial absolute value unless a statement explicitly excludes it. Set}
+{基础篇中，$K$ 是关于 real-valued non-Archimedean absolute value 完备的 field。除非明确排除，否则允许 trivial absolute value。记}
+\[
+\begin{gathered}
+v(a)=-\log|a|,\qquad \Gamma=v(K^\times),\\
+K^\circ=\{a\in K:|a|\leq1\},\qquad K^{\circ\circ}=\{a\in K:|a|&lt;1\},\\
+\widetilde K=K^\circ/K^{\circ\circ}.
+\end{gathered}
+\]
+\bi{A complete extension $L/K$ always carries an absolute value restricting to the specified one on $K$. We do not rescale it when changing the ground field.}
+</pre></details><details class="source"><summary>Standing context 2 · exact TeX</summary><pre data-sha256="d2bf8e3eac092b9f68f40fe45a0b9b66f3040e9edbd1c1cb594a6137bbcbccaa">
+\begin{definition}\label{fnd:banachalgebra}
+\bi{A Banach $K$-algebra is a commutative unital $K$-algebra $A$ with a complete non-Archimedean norm satisfying $\|ca\|=|c|\|a\|$, $\|1\|=1$, and $\|ab\|\leq\|a\|\|b\|$. A homomorphism is bounded if $\|\phi(a)\|\leq C\|a\|$ for some constant $C$. Equivalent norms define the same Banach topology. A surjective bounded map is admissible if its target norm is uniformly equivalent to the quotient norm; equivalently, it admits lifts with a uniform norm bound. Equality of topologies alone is insufficient at trivial valuation; see Definition~\ref{fnd:normstrictconvention} and Example~\ref{fnd:normtopologycounterexample}.}
+{Banach $K$-algebra 是 commutative unital $K$-algebra $A$，配备一个 complete norm。此 norm 为 non-Archimedean，且满足 $\|ca\|=|c|\|a\|$、$\|1\|=1$ 和 $\|ab\|\leq\|a\|\|b\|$。若存在常数 $C$ 使 $\|\phi(a)\|\leq C\|a\|$，则 homomorphism 称为 bounded。Equivalent norms 定义相同的 Banach topology。Surjective bounded map 若使 target norm 与 quotient norm uniformly equivalent，则称为 admissible；等价地，它具有 uniform norm bound 的 lifts。赋值平凡时，仅有 topologies 相同还不够；见 Definition~\ref{fnd:normstrictconvention} 及 Example~\ref{fnd:normtopologycounterexample}。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 3 · exact TeX</summary><pre data-sha256="6ea2c0bb8faa98558245a1b435f008c0365c1ba10767182d02639e5e3d9dee3c">
+\begin{definition}\label{fnd:tatereal}
+\bi{For $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$, the generalized Tate algebra is}
+{对 $r=(r_1,\ldots,r_n)\in\R_{&gt;0}^n$，定义 generalized Tate algebra}
+\[
+ K\{r^{-1}T\}=
+ \left\{\sum_{\nu\in\N^n}a_\nu T^\nu:
+       |a_\nu|r^\nu\longrightarrow0\text{ as }|\nu|\to\infty\right\}.
+\]
+\[
+ \|f\|_r=\max_\nu |a_\nu|r^\nu.
+\]
+\bi{Here $r^\nu=\prod_i r_i^{\nu_i}$. When all $r_i=1$, write $K\langle T_1,\ldots,T_n\rangle$.}
+{这里 $r^\nu=\prod_i r_i^{\nu_i}$。当所有 $r_i=1$ 时，记作 $K\langle T_1,\ldots,T_n\rangle$。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 4 · exact TeX</summary><pre data-sha256="453c75099497848aecc5710681ced658273649a6f32617e65657be3fbf4297eb">
+\begin{definition}\label{fnd:affinoiddefinition}
+\bi{A $K$-affinoid algebra is a Banach $K$-algebra admitting an admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$ for some finite tuple of positive radii. It is strictly $K$-affinoid if such a presentation exists with all radii equal to one. Morphisms are bounded $K$-algebra homomorphisms.}
+{$K$-affinoid algebra 是一个 Banach $K$-algebra，它对某个有限的 positive-radii tuple 存在 admissible surjection $K\{r^{-1}T\}\twoheadrightarrow A$。若可取所有 radii 等于一，则称为 strictly $K$-affinoid。Morphisms 为 bounded $K$-algebra homomorphisms。}
+\end{definition}
+
+</pre></details><details class="source"><summary>Standing context 5 · exact TeX</summary><pre data-sha256="92b63802dc03b1c832fa8ed92d15c890688fabf94d4fb725402470af8c5b11f0">
+\begin{definition}\label{fnd:spectrum}
+\bi{For a $K$-affinoid algebra $A$, its Berkovich spectrum $\mathcal M(A)$ is the set of bounded multiplicative seminorms extending $|\cdot|_K$. Its topology is the weakest topology making every evaluation $x\mapsto|a(x)|$ continuous. The algebra $A$, not just this topological space, is part of the affinoid object.}
+{对 $K$-affinoid algebra $A$，其 Berkovich spectrum $\mathcal M(A)$ 为延拓 $|\cdot|_K$ 的 bounded multiplicative seminorms 的集合。其 topology 是使所有 evaluation $x\mapsto|a(x)|$ continuous 的最弱 topology。Affinoid object 的数据包括 algebra $A$，而不只是这个 topological space。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 6 · exact TeX</summary><pre data-sha256="fed8c5acf3fca8b35671e3fabc07c2dd9a819b319577b3935db6cdcff55561c7">
+\section{\bi{Norm conventions and bounded localization}{Norm conventions 与 bounded localization}}\label{fnd:wp01norms}
+\bi{Before constructing localization maps, we fix the quantitative meaning of admissibility. This matters when the field is trivially valued. The correction below replaces the topology-only wording in version 0.26; its original wording is retained in the version record. All later uses of ``admissible&#x27;&#x27; refer to equivalent quotient norms.}
+{构造 localization maps 之前，先固定 admissibility 的定量含义。当基域赋值平凡时，这一区别不可省略。下述修正替换 v0.26 中仅用 topology 表述的约定；原措辞保留在 version record 中。此后 ``admissible&#x27;&#x27; 均指 equivalent quotient norms。}
+
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+\source{\cite[Definition/Exercise 2.1.1.1(ii)--(iii), p.~4]{TemIntro}.}
+</pre></details><details class="source"><summary>Standing context 7 · exact TeX</summary><pre data-sha256="791fc9a53cc3df1e8f39d92cbf033e32daa1674b7a706fc36d2d31e190c56c51">
+\begin{definition}\label{fnd:normstrictconvention}
+\bi{For a bounded linear map $u:E\to F$, give $\operatorname{im}u$ both its induced norm from $F$ and its quotient seminorm from $E$. The map is norm-strict, or admissible, when these are uniformly equivalent. Since $u$ is bounded, the additional requirement is a constant $C&gt;0$ such that every $y\in\operatorname{im}u$ has a lift $x$ with $\|x\|\leq C\|y\|$. The constant may be enlarged by any fixed factor greater than one to approximate an unattained infimum.}
+{对 bounded linear map $u:E\to F$，在 $\operatorname{im}u$ 上同时考虑来自 $F$ 的 induced norm 与来自 $E$ 的 quotient seminorm。当两者 uniformly equivalent 时，称该 map 为 norm-strict，或 admissible。由于 $u$ 已 bounded，额外条件等价于存在常数 $C&gt;0$，使每个 $y\in\operatorname{im}u$ 都有 lift $x$ 满足 $\|x\|\leq C\|y\|$。当 infimum 不取到时，可将常数乘以任意固定的大于一的因子。}
+\end{definition}
+</pre></details><details class="source"><summary>Standing context 8 · exact TeX</summary><pre data-sha256="83a917bb9e8d9cab131bd125fb59111e41342ddadac1c47cb5cce2ea4fe340f7">
+\section{\bi{Controlled generation in strict Tate algebras}{Strict Tate algebras 中带控制的有限生成}}\label{fnd:wp02strict}
+\bi{Division over a Banach coefficient algebra supplies an induction in the number of variables. We carry out that induction with estimates: finite generation alone would not prove that an algebraic submodule is closed. Put $R_n=K\langle X_1,\ldots,X_n\rangle$, with the unit Gauss norm, and $R_0=K$. Finite powers carry the maximum norm. The field may be trivially valued. Every constant below is independent of the element being represented.}
+{Banach coefficient algebra 上的 division 可以用于按变量个数归纳。下面在归纳中同时保留 estimates，因为仅有 finite generation 并不能证明 algebraic submodule 为 closed。记 $R_n=K\langle X_1,\ldots,X_n\rangle$，配备 unit Gauss norm，并令 $R_0=K$。Finite powers 配备 maximum norm。允许基域的赋值平凡。下文各常数均不依赖所表示的元素。}
+</pre></details><details class="source"><summary>Standing context 9 · exact TeX</summary><pre data-sha256="0e4cf62aac370440c7a27a455da5584d4e8b202673b067384561c68accc069af">
+\begin{remark}\label{fnd:strictclusterboundary}
+\bi{For arbitrary polyradii, the coefficient description of a free-radius extension replaces the strict coordinate changes used here. Theorems~\ref{fnd:generalizedclosedsubmodules} and~\ref{fnd:generalizedfinitemodules} descend closedness and the canonical finite-module topology through that extension, giving the general affinoid statements.}
+{对任意多半径，自由半径扩张的系数描述替代这里使用的 strict 坐标变换。Theorems~\ref{fnd:generalizedclosedsubmodules} 与~\ref{fnd:generalizedfinitemodules} 沿该扩张下降闭性及有限模的典范拓扑，得到一般 affinoid 陈述。}
+\end{remark}
+\source{\bi{Classical Tate algebra and finite-module theory; compare \cite[3.1.2.1 and 3.1.3.2(i)]{TemIntro}. The proofs in this section reconstruct the strict case from the preceding division estimates; those source facts are attribution, not proof inputs.}{Classical Tate algebra 与 finite-module theory；参见 \cite[3.1.2.1 及 3.1.3.2(i)]{TemIntro}。本节由前面的 division estimates 重建 strict case 的证明；这些来源仅用于 attribution，不作为 proof inputs。}}
+</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-001382-reader.jpg" alt="Typeset mathematical passage from PDF page 71" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=71">PDF page 71</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-000182/">NAG-000182</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-000184/">NAG-000184</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-000232/">NAG-000232</a> · selected whole <small>(native proof application)</small></li><li><a href="/r/NAG-001382/">NAG-001382</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-001560/">fnd:generalizedclosedsubmodules</a></li><li><a href="/r/NAG-001561/">fnd:generalizedfinitemodules</a></li><li><a href="/r/NAG-001387/">fnd:normtopologycounterexample</a></li><li><a href="/r/NAG-000232/">fnd:substitution</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>

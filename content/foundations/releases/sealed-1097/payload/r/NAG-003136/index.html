@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="foundations-edition" content="sealed-1097"><link rel="canonical" href="/r/NAG-003136/"><link rel="stylesheet" href="/projects/foundations/editions/sealed-1097/reader.css"><title>Closed-current harmonic annihilation · OpenMath</title></head><body><a class="skip" href="#main">Skip to content</a><header><nav aria-label="Main"><a class="brand" href="/projects/foundations/">OpenMath <span>Foundations</span></a><a href="/search/">Search</a><a href="/projects/foundations/coverage/">Coverage</a><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf">English PDF</a></nav></header><main id="main"><p class="kicker">NAG-003136 · Accepted whole</p><h1>Closed-current harmonic annihilation</h1><p><a href="/projects/foundations/chapters/f8-reader-t4-di-supplement-0/">Proper direct image on historical ordinary compact tests</a></p><p class="reader"><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#nameddest=foundations.nag-003136.original">Open in the English reader · PDF page 1869</a></p><details class="source"><summary>Statement · exact TeX</summary><pre data-sha256="1d5801b7641dfa5bb4a6f836ff1f5eeb076321bd7550bfdd28a447e5d753e770">
+\begin{theorem}[Closed-current harmonic annihilation]\label{f9cp:harmonic}
+Let $r,s\geq1$, let $T\in\D_{r,s}(U)$ be closed, and let $h\in\A^{0,0}(U)$. Then
+\begin{equation}\label{eq:harmonic}
+                     \DD(hT)=(\DD h)\wedge T
+                     \quad\hbox{in }\D_{r-1,s-1}(U).
+\end{equation}
+In particular $\DD(hT)=0$ for every smooth harmonic function
+\[
+             h\in\HH(U):=\ker(\DD:\A^{0,0}(U)\to\A^{1,1}(U)).
+\]
+If $g$ is an analytic unit, then $\log|g|\in\HH(U)$ and hence $\DD(\log|g|\,T)=0$. This applies to an intermediate closed current without any Bedford--Taylor assumption or comparison of current sheaves.
+\end{theorem}</pre></details><details class="source"><summary>Full selected proof · exact TeX</summary><pre data-sha256="646eb482b10c0220376f68192182686a4bce51757110903e5b3f9e768dc0f6f1">
+\begin{proof}
+All terms are currents by Theorem~\ref{f9cp:operators}. For $\alpha\in\E^{r-1,s-1}(U)$, closedness and the ordinary graded Leibniz rules imply
+\begin{align*}
+ T(d&#x27;&#x27;h\wedge d&#x27;\alpha)&amp;=T(\DD h\wedge\alpha),
+       &amp;&amp;\text{from }T(d&#x27;(d&#x27;&#x27;h\wedge\alpha))=0,\\
+ T(d&#x27;h\wedge d&#x27;&#x27;\alpha)&amp;=-T(\DD h\wedge\alpha),
+       &amp;&amp;\text{from }T(d&#x27;&#x27;(d&#x27;h\wedge\alpha))=0.
+\end{align*}
+Every test here has compact support contained in $\supp\alpha$. Also
+\[
+ \DD(h\alpha)=\DD h\wedge\alpha-d&#x27;&#x27;h\wedge d&#x27;\alpha
+                      +d&#x27;h\wedge d&#x27;&#x27;\alpha+h\DD\alpha.
+\]
+Applying $T$ gives zero on the left, and the two preceding identities yield
+$T(h\DD\alpha)=T(\DD h\wedge\alpha)$. By the positive double-transpose sign in Theorem~\ref{f9cp:operators}, this is precisely \eqref{eq:harmonic}. This proof uses closedness of $T$ and algebra on tests, not integration by parts on $X$.
+
+For an analytic unit $g$, take the ordinary moment coordinate $t_g=-\log|g|$ on sufficiently small affinoid neighborhoods. The function $\log|g|$ has ambient representative $-x$, whose second derivatives vanish. The frozen differential sheaf \NAG{002424} gives $\DD\log|g|=0$ on $U$. The first assertion now supplies the distributional conclusion for closed $T$.
+\end{proof}</pre></details><details class="source"><summary>Standing context 1 · exact TeX</summary><pre data-sha256="b46a1b7fa3350e8b7597698f5e202f977545b8385ff56b463ecd314ccd8eda6c">
+% BEGIN CONTEXT native
+\paragraph{Native conventions.}
+Let $K$ be complete for its specified real-valued non-Archimedean absolute value, and let $X$ be good and Hausdorff. The valuation may be trivial. Use the ordinary smooth moment sheaf $\A_X^{p,q}$ of \NAG{002424} and its compactly supported test space
+\[
+ \E^{p,q}(U)=\A_{X,c}^{p,q}(U),\qquad
+ \tau=\tau_{\rm cut}=\tau_{\rm ord}
+\]
+on every ordinary open $U\subset X$, with the equality and fixed-stage descriptions of \NAG{002473}. A cutoff stage is
+\[
+ Q_i\eta=\ext(\chi t_f^*\eta),\quad
+ i=(V,f,\Omega,\chi),\quad t_f=-\log|f|,
+\]
+where $V$ is affinoid, $f$ is a tuple of analytic units, $\Omega$ contains the actual compact image $t_f(V)$, and $\chi$ has compact support inside $\operatorname{Int}(V,X)$. Ambient seminorms are
+\[
+ p_{L,m}(\eta)=\max_{I,J,\,|a|\leq m}\sup_L|\partial^a\eta_{I,J}|,
+ \qquad L\Subset\Omega.
+\]
+Ordinary stages $R_s:H_s\to\E^{p,q}$ use a fixed finite compatible chart family and a fixed compact support. All one-form generators anticommute, and $d&#x27;,d&#x27;&#x27;$ differentiate coefficients and wedge on the left. The positive top generator is $\bigwedge_{j=1}^n(d&#x27;x_j\wedge d&#x27;&#x27;x_j)$.
+
+Write $\D_{r,s}(U)=\E^{r,s}(U)&#x27;$ for the continuous real dual, called currents of bidimension $(r,s)$. Negative test degrees and their current spaces are zero. If a pure analytic dimension $n$ is specified, this is bidegree $(n-r,n-s)$. We use the transposition signs
+\begin{equation}\label{eq:signs}
+ (d&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;\alpha),\qquad
+ (d&#x27;&#x27;T)(\alpha)=(-1)^{r+s+1}T(d&#x27;&#x27;\alpha).
+\end{equation}
+A current is closed when both transposed differentials vanish. Its support is the complement of the largest ordinary open set on which its restriction is zero. We do not identify closedness of the native integration current with a coefficientwise identity.
+% END CONTEXT native</pre></details><details class="typeset"><summary>Typeset reader excerpt</summary><figure><img class="proof-image" src="/projects/foundations/editions/sealed-1097/proofs/NAG-003136-reader.jpg" alt="Typeset mathematical passage from PDF page 1870" loading="lazy"><figcaption><a href="/projects/foundations/editions/sealed-1097/reader-en.pdf#page=1870">PDF page 1870</a></figcaption></figure></details><h2>Typed proof inputs</h2><ul class="records"><li><a href="/r/NAG-002424/">NAG-002424</a> · selected whole</li><li><a href="/r/NAG-003135/">NAG-003135</a> · selected whole</li></ul><details><summary>Reader cross-references</summary><ul class="records"><li><a href="/r/NAG-003135/">f9cp:operators</a></li></ul></details></main><footer>Foundations · sealed 1097</footer></body></html>
