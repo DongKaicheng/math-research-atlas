@@ -2,9 +2,8 @@ import {createHash} from 'node:crypto';
 import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
-import {createFoundationsReader} from './build-foundations-reader.mjs';
-import {createFoundationsWeb, foundationsBookRoute, formerDependencyRoute} from './build-foundations-web.mjs';
-import {createFoundationsNative, loadFoundationsNative} from './build-foundations-native.mjs';
+import {foundationsBookRoute, retiredFoundationsRoutes} from './build-foundations-web.mjs';
+import {createFoundationsNative, loadFoundationsNative, loadHistoricalStatements} from './build-foundations-native.mjs';
 import {bindReviewedProofs, createProofDependencies} from './build-foundations-dependencies.mjs';
 
 const edition = 'sealed-1097';
@@ -156,7 +155,10 @@ export async function loadFoundationsRelease(root) {
     'missing or extra exact IDs');
   const dependencyReview = current ? JSON.parse(await regular(path.join(dir,'dependency-review.json'))) : null;
   const native = current ? bindReviewedProofs(await loadFoundationsNative(path.join(dir,'native'),pdfDigest),dependencyReview) : null;
-  return augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview});
+  const loaded = await augmentFoundationsLogic(root,{current, manifest, manifestBytes, meta, contents, rows, native, dependencyReview});
+  if (current) loaded.historicalStatements = loadHistoricalStatements(loaded,
+    await regular(path.join(dir,'historical-gap-statements.json')));
+  return loaded;
 }
 
 function stablePath(name) {
@@ -181,10 +183,8 @@ function render(html, url, origin, fixed) {
 export async function buildFoundationsRelease({release, output, url, origin, base}) {
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current,rows}=release;
-  const onlineReader=current ? createFoundationsReader(release) : null;
-  const dependencies=onlineReader ? createProofDependencies(release) : null;
-  const web=dependencies ? createFoundationsWeb(release,release.native.tags,dependencies) : null;
-  const native=web ? createFoundationsNative(release,web.diagrams,dependencies) : null;
+  const native=current ? createFoundationsNative(release,createProofDependencies(release)) : null;
+  const retired=native ? retiredFoundationsRoutes(release) : new Map();
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);
   requireFact((await inventory(pages)).every(n=>allowedExisting.has(n)),'unexpected Foundations output collision');
@@ -207,20 +207,20 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     const text=bytes.toString('utf8');
     requireFact(text.includes('rel="canonical" href="'+route+'"'),'wrong canonical in frozen input '+name);
     await emit(fixed.get(route).slice(1)+'index.html',render(text,url,origin,fixed));
-    if(onlineReader && route!==publicHome) {
-      const activeText = native.pages.get(route) ?? web.decorate(onlineReader.decorate(name,text));
+    if(native && route!==publicHome) {
+      const activeText = native.pages.get(route) ?? retired.get(route);
+      requireFact(activeText, 'missing current reading page for '+route);
       await emit(name,render(activeText,url,origin,null));
     }
   }
-  if (onlineReader) {
-    for (const [route,page] of native.pages) {
+  if (native) {
+    for (const [route,page] of [...native.pages,...retired]) {
       if (!fixed.has(route)) await emit(route.slice(1)+'index.html',render(page,url,origin,null));
     }
-    for (const [route,page] of web.pages) await emit(route.slice(1)+'index.html',render(page,url,origin,null));
     const rewrite = entries => Object.fromEntries(Object.entries(entries).map(([key,href])=>[key,url(href)]));
     const tagURLs = Object.fromEntries(Object.entries(native.tags).map(([id,record])=>[id,record.href]));
     await emit(foundationsBookRoute.slice(1)+'tags.json',JSON.stringify({tags:rewrite(tagURLs),
-      destinations:rewrite(release.native.destinations ?? {}),pages:rewrite(release.native.pages ?? {})}));
+      destinations:rewrite(native.destinations),pages:rewrite(release.native.pages ?? {})}));
   }
   const versionRoute=publicHome+'versions/1/';
   const destination='/'+prefix;
@@ -230,10 +230,10 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     '<p><a href="'+url(destination)+'">Open the fixed edition</a></p></main>'+
     '<script>location.replace('+JSON.stringify(url(destination))+'+location.search+location.hash);</script></body></html>';
   await emit(versionRoute.slice(1)+'index.html',redirect);
-  const active = web ? [...new Set([...fixed.keys(),...native.pages.keys(),...web.pages.keys()])] : [];
+  const active = native ? [publicHome,...native.pages.keys()] : [];
   return {
     rows:current ? rows.map(row=>({...row,link:url(row.link)})) : [],
-    routes:[...fixed.values(),versionRoute,...active],
-    indexableRoutes:active.filter(route=>route!==formerDependencyRoute),
+    routes:[...fixed.values(),versionRoute,...active,...retired.keys()],
+    indexableRoutes:active,
   };
 }

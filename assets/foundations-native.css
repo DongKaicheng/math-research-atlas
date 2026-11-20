@@ -5,6 +5,9 @@
   --blue: #16556b;
   --rule: #d6e1e4;
   --paper: #f4f8f8;
+  --open-ink: #674309;
+  --open-rule: #c49a53;
+  --open-paper: #fff8eb;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -32,7 +35,8 @@ summary { cursor: pointer; }
 .book-adjacent a + a { margin-left: auto; }
 .book-chapters { max-width: 56rem; list-style: none; padding: 0; }
 .book-chapters > li { padding: .55rem 0; border-bottom: 1px solid var(--rule); }
-.book-chapters > li > a { font-weight: 550; }
+.book-chapter-entry { display: flex; flex-wrap: wrap; gap: .2rem 1rem; align-items: baseline; justify-content: space-between; }
+.book-chapter-entry > a { font-weight: 550; }
 .book-chapters details { font-size: .9rem; padding: .25rem 0 .2rem 1rem; }
 .book-chapters details ol, .book-chapters details ul { padding-left: 1.3rem; }
 .book-layout { min-width: 0; }
@@ -40,7 +44,7 @@ summary { cursor: pointer; }
 .book-sidebar { grid-column: 2; grid-row: 1; position: sticky; top: 1rem; background: var(--paper); padding: .75rem 1rem; font-size: .85rem; }
 .book-sidebar ul { padding: 0; list-style: none; margin: .7rem 0 0; max-height: min(62vh, 38rem); overflow: auto; }
 .book-sidebar li { padding: .25em 0; }
-.book-text { font: 1.12rem/1.67 Georgia, 'Times New Roman', serif; min-width: 0; max-width: 52rem; overflow-wrap: break-word; }
+.book-text { font: 1.13rem/1.68 Georgia, 'Times New Roman', serif; min-width: 0; max-width: 50rem; overflow-wrap: break-word; }
 .book-layout .book-text { grid-column: 1; grid-row: 1; }
 .book-text p { margin: 0 0 1.02em; }
 .book-text section { margin-block: 1rem 2.3rem; }
@@ -53,11 +57,16 @@ summary { cursor: pointer; }
 .book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) > :last-child { margin-bottom: 0; }
 .book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark) :is(em, i) { font-style: normal; }
 .book-text .proof { padding: .5rem 0 .8rem; }
+.book-text :is(ol, ul) { padding-inline-start: 1.6em; }
+.book-text li + li { margin-top: .4em; }
+.book-text :is(h2, h3, h4, h5, h6) { margin-block: 1.6em .65em; line-height: 1.3; }
 .book-text [id^="label-"] { scroll-margin-top: 1rem; }
 .book-text :is(div, span):has(> [id^="label-"]:target), .book-text :is(h2,h3):target { background: #e8f3f3; }
-.book-equation { display: block; overflow-x: auto; margin: .7em 0; padding-block: .3em; }
+.book-equation { display: block; max-width: 100%; overflow-x: auto; margin: .7em 0; padding-block: .3em; }
 .tag-text .book-equation .katex-display { margin: .35em 0; }
 .tag-text .katex-html .base { max-width: 100%; }
+.tag-text .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-block: .12em; }
+.tag-text .book-equation .katex-display { overflow: visible; }
 .chapter-proof-index { border: 1px solid var(--rule); padding: .75rem 1rem; max-width: 52rem; margin-block: -1rem 1.5rem; font-size: .9rem; }
 .chapter-proof-index li { margin-block: .35rem; }
 .chapter-proof-index li > a:first-child { margin-inline-end: .5rem; }
@@ -68,11 +77,33 @@ summary { cursor: pointer; }
 .book-bib-item { display: grid; grid-template-columns: auto 1fr; gap: 1em; margin-bottom: .65em; }
 .tag-permalink { color: var(--blue); font: 600 .9rem/1.4 ui-monospace, monospace; margin: 1rem 0 .2rem; }
 .tag-status { color: var(--muted); margin: 0; }
+.tag-text .tag-argument { border-top: 1px solid var(--rule); margin-block: 1.65rem 2.25rem; padding-top: 1rem; }
+.tag-text .tag-argument h2 { margin-block: 0 .6em; }
+.tag-text .tag-statement > :first-child { margin-top: 0; }
 .tag-citation { margin-top: 3rem; max-width: 52rem; border-top: 1px solid var(--rule); }
 .tag-citation h2 { margin-top: .75em; }
-.tag-gap-note, .tag-uses { max-width: 52rem; margin-block: 1.5rem; }
-.tag-gap-note { border-inline-start: 3px solid #927341; background: #fbf7f0; padding: .8rem 1rem; }
-.tag-gap-note h2 { margin-top: 0; }
+.tag-gap-note, .proof-policy-note { max-width: 50rem; margin-block: 1.2rem; padding: .85rem 1rem; border-inline-start: 3px solid var(--open-rule); background: var(--open-paper); }
+.tag-gap-note h2 { font: 650 1rem/1.4 system-ui, sans-serif; margin: 0 0 .5em; }
+.tag-gap-note p, .proof-policy-note p { margin: .4em 0 0; }
+.proof-policy-note { font: .96rem/1.6 system-ui, sans-serif; }
+.book-text .book-result-link { margin: 1.2rem 0 -.85rem; font: .82rem/1.4 system-ui, sans-serif; }
+.chapter-open-count { color: var(--muted); font: .83rem/1.4 system-ui, sans-serif; }
+.chapter-open-count a { color: inherit; }
+.chapter-open-count.has-open, .book-gap-marks a { color: var(--open-ink); background: var(--open-paper); border: 1px solid var(--open-rule); border-radius: .2rem; padding: .18rem .42rem; }
+p.chapter-open-count { display: inline-block; margin: 0; }
+.chapter-coverage { margin-block: .45rem; }
+.book-text .book-gap-marks { display: flex; flex-wrap: wrap; gap: .35rem; margin: .95rem 0 -.8rem; font: .82rem/1.4 system-ui, sans-serif; }
+.coverage-lead { font-size: 1.18rem; margin-bottom: .4rem; }
+.coverage-table { border-collapse: collapse; width: min(100%, 46rem); }
+.coverage-table :is(td, th) { border-bottom: 1px solid var(--rule); padding: .48rem .7rem; text-align: left; vertical-align: top; }
+.coverage-table thead, .coverage-table tfoot, .coverage-table tr:target { background: var(--paper); }
+.coverage-table tbody th { font-weight: 400; }
+.coverage-table :is(th, td):last-child { text-align: end; min-width: 5rem; font-variant-numeric: tabular-nums; }
+.coverage-heading-count { display: inline-block; color: var(--muted); font: .85rem/1.3 system-ui, sans-serif; margin-inline-start: .35em; }
+.coverage-list, .supplement-records .entries { max-width: 50rem; padding-inline-start: 1.25rem; }
+.coverage-list li, .supplement-records .entries li { padding-block: .32rem; }
+.coverage-list li:target { background: var(--open-paper); }
+.coverage-list small, .supplement-records .entries :is(.badge, small) { color: var(--muted); display: inline-block; margin-inline: .35em; }
 
 @media (max-width: 58rem) {
   .book-layout.has-sidebar { display: block; }

@@ -1,216 +1,32 @@
 const project = '/projects/foundations/';
 export const foundationsBookRoute = project + 'reader/';
-export const formerDependencyRoute = project + 'logic/full/';
 const contents = project + 'contents/';
-const tagPath = id => '/r/' + id + '/';
-const tagGraph = id => tagPath(id) + 'logic/';
-const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const link = (href, label) => '<a href="' + esc(href) + '">' + esc(label) + '</a>';
-export const proofAnchor = key => 'proof-' + key.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
-const paragraphAnchor = index => 'proof-paragraph-' + (index+1);
-const paragraph = /<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g;
-const standingNames = {
-  'BASE-RINGS':'Basic ring theory', 'BASE-TOPOLOGY':'Basic topology', 'BASE-LINEAR':'Linear algebra',
-  'BASE-SETS':'Basic set theory', 'BASE-REAL':'Properties of the real numbers',
-  'DEF-FORMAL-ETALE-RING-MAP':'Formally étale ring maps',
-};
+const formerMap = project + 'logic/';
+const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
 export function linkProofParagraphs(html) {
-  let index=0;
-  let item=0;
-  return html.replace(paragraph, block=>block.replace('>',`><span id="${paragraphAnchor(index++)}"></span>`))
-    .replace(/<li(?:\s[^>]*)?>/g, tag=>`${tag}<span id="proof-item-${++item}"></span>`);
-}
-
-function shell(route, title, body, alias = false) {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(title)} · OpenMath Foundations</title><link rel="canonical" href="${alias ? contents : route}">
-  ${alias ? '<meta name="robots" content="noindex,follow">' : ''}
-  <link rel="stylesheet" href="/assets/foundations-native.css"><link rel="stylesheet" href="/assets/foundations-web.css"></head>
-  <body><a class="skip" href="#main">Skip to content</a><header class="site-header"><nav aria-label="Foundations">
-  ${link(project,'OpenMath Foundations')}${link(contents,'Table of contents')}${link('/search/?project=foundations','Find a Tag')}
-  </nav></header><main id="main">${body}</main></body></html>`;
-}
-
-function bookTarget(href) {
-  const hash = href.split('#')[1];
-  if (hash?.startsWith('nameddest=')) return foundationsBookRoute + '?dest=' + hash.slice(10);
-  if (hash?.startsWith('page=')) return foundationsBookRoute + '?' + hash;
-  return foundationsBookRoute;
-}
-
-function inputNode(graph, input, kind) {
-  const source = graph.nodes[input.key] ?? graph.contexts[input.key];
-  const [bookHref] = source?.href.split('#') ?? [];
-  const target = kind === 'standing' ? bookHref : source?.href ?? input.href;
-  const externalTag = input.href?.split('/').at(-1);
-  const name = kind==='standing' ? standingNames[input.key] ?? input.key.replace(/^CONTEXT:/i,'').replace(/[_-]/g,' ') : input.key;
-  return {
-    kind, key:source?.id ?? externalTag, binding:input.key, target,
-    title:externalTag ? 'Stacks Project, Tag '+externalTag : source?.label ?? name,
-    scope:input.scopes ?? [],
-    trace:graph.arguments[input.key] ? tagGraph(source.id)+'#'+proofAnchor(input.key) : null,
-  };
-}
-
-function card({kind, key, binding, title, target, scope = [], trace}) {
-  const captions = {registered:'Proof input', standing:'Standing context', external:'External result', condition:'Hypothesis', open:'Open step', reference:'Reference in the proof', reviewed:'Checked application', candidate:'Awaiting proof review'};
-  return `<div class="proof-node proof-node-${kind}"${key ? ` data-input="${esc(key)}"` : ''}${binding ? ` data-input-key="${esc(binding)}"` : ''}>
-    <small>${captions[kind]}${key && title!==key && kind!=='external' ? ' · '+esc(key) : ''}</small>
-    <span>${target ? link(target,title) : esc(title)}</span>
-    ${scope.map(text=>`<p>${esc(text)}</p>`).join('')}${trace ? `<small>${link(trace,'Trace this input')}</small>` : ''}</div>`;
-}
-
-function fanIn(inputs) {
-  const rows = [];
-  for (let i=0;i<inputs.length;i+=3) rows.push(inputs.slice(i,i+3));
-  return `<div class="proof-inputs" aria-label="Inputs into this argument">${rows.map(row =>
-    `<div class="proof-input-row proof-columns-${row.length}">${row.map(card).join('')}</div>`).join('')}</div>`;
-}
-
-const arrow = (type = '') => `<div class="proof-arrow${type ? ' '+type : ''}" aria-hidden="true"></div>`;
-const stage = (title, text) => `<div class="proof-stage"><strong>${esc(title)}</strong>${text ? `<p>${esc(text)}</p>` : ''}</div>`;
-
-function annularUnitProof(inputs) {
-  const get = ids => inputs.filter(node=>ids.includes(node.key));
-  const normalForm = get(['NAG-001415','NAG-001416','NAG-000152','NAG-002026']);
-  return `<div class="proof-derivations">
-    <section aria-label="Forward implication">
-    ${fanIn(normalForm)}${arrow('proof-input-arrow')}
-    ${stage('From an inverse to the normal form','For fg = 1, the extreme-exponent widths of f and g add to zero at each radius. Finitely many possible maximizers and connectedness give one exponent m over the entire annulus.')}${arrow()}
-    ${stage('Normalize the leading term','Take c to be the coefficient of Tᵐ. At the two endpoint radii the remaining coefficient terms are strictly smaller and tend to zero, giving a remainder of norm less than one.')}
-    </section><section aria-label="Reverse implication">
-    ${fanIn(get(['NAG-000184']))}${arrow('proof-input-arrow')}
-    ${stage('From the normal form to an inverse','The strict norm bound makes the geometric series invert 1 + h. The monomial cTᵐ is already a unit.')}
-    </section><section aria-label="Pointwise norm and uniqueness">
-    ${fanIn(get(['NAG-000655']))}${arrow('proof-input-arrow')}
-    ${stage('Pointwise norm and uniqueness','Pointwise domination gives |h(x)| < 1, so |1 + h(x)| = 1. The exponent in any normal form is the unique maximizing exponent.')}
-    </section></div>`;
-}
-
-function sourcePassages(native, key, output, inputs) {
-  const record = native.tags[key];
-  if (key!==output.id || record?.proof==null) return null;
-  const html = native.byKey.get(record.key).blocks.slice(record.proof,record.proofEnd+1).join('');
-  const paragraphs = [...html.matchAll(paragraph)].map(([body])=>new Set(Array.from(body.matchAll(/\bhref="([^"]+)"/g),match=>match[1])));
-  const groups = new Map();
-  for (const input of inputs) {
-    const locator = native.tags[input.key]?.href;
-    const index = paragraphs.findIndex(hrefs=>hrefs.has(input.target) || (locator && hrefs.has(locator)));
-    if (!groups.has(index)) groups.set(index,[]);
-    groups.get(index).push(input);
-  }
-  if ([...groups.keys()].filter(index=>index>=0).length<2) return null;
-  const ordered = [...groups].filter(([index])=>index>=0).sort(([a],[b])=>a-b);
-  const passages = ordered.map(([index,items])=>`<div class="proof-passage">${fanIn(items)}${arrow('proof-input-arrow')}
-    <div class="proof-stage">${link(output.href+'#'+paragraphAnchor(index),'Proof paragraph '+(index+1))}</div></div>`);
-  if (groups.has(-1)) passages.push(`<div class="proof-passage">${fanIn(groups.get(-1))}${arrow('proof-input-arrow')}${stage('Other registered inputs','')}</div>`);
-  return `<div class="proof-passages">${passages.join('')}</div>`;
+  let paragraph = 0;
+  let item = 0;
+  return html.replace(/<p(?:\s[^>]*)?>/g, tag => `${tag}<span id="proof-paragraph-${++paragraph}"></span>`)
+    .replace(/<li(?:\s[^>]*)?>/g, tag => `${tag}<span id="proof-item-${++item}"></span>`);
 }
 
 export function sourcePolicyNotice(finding) {
-  if(!finding)return '';
-  const status=finding.status==='external-assumption' ? 'Conditional argument' : 'Open proof obligation';
-  return `<aside class="proof-policy-note" aria-label="${status}"><strong>${status} · ${esc(finding.title)}</strong>
-    <p>${esc(finding.text)}</p></aside>`;
+  if (!finding) return '';
+  const status = finding.status === 'external-assumption' ? 'Conditional argument' : 'Open proof obligation';
+  return `<aside class="proof-policy-note" aria-label="${status}"><strong>${status} · ${escape(finding.title)}</strong>
+    <p>${escape(finding.text)}</p></aside>`;
 }
 
-function reviewCards(items, source, kind) {
-  const groups=new Map();
-  for(const item of items) {
-    const key=item.paragraph ? paragraphAnchor(item.paragraph-1) : 'proof-item-'+item.listItem;
-    if(!groups.has(key))groups.set(key,[]);
-    groups.get(key).push(item);
+export function retiredFoundationsRoutes({graph, rows}) {
+  const routes = new Map([[formerMap, contents], [formerMap + 'full/', contents]]);
+  for (const slug of Object.keys(graph.chapters)) {
+    routes.set(formerMap + 'chapters/' + slug + '/', project + 'chapters/' + slug + '/');
   }
-  return [...groups].sort(([a],[b])=>a.localeCompare(b,'en',{numeric:true})).map(([anchor,group])=>{
-    const cards=group.map(({node,step,clause})=>({kind,key:node.id,title:node.title,target:node.route,scope:[step,clause].filter(Boolean)}));
-    const name=kind==='reviewed' ? 'Application in proof paragraph '+group[0].paragraph :
-      group[0].paragraph ? 'Reference in proof paragraph '+group[0].paragraph : 'Reference in proof list item '+group[0].listItem;
-    return `<div class="proof-passage">${fanIn(cards)}${arrow('proof-input-arrow')}
-      <div class="proof-stage">${link(source+'#'+anchor,name)}</div></div>`;
-  }).join('');
-}
-
-function proofReview(proof, source, showCandidates) {
-  if(!proof)return '';
-  const {confirmed,candidates,selfContained,policy}=proof;
-  const reviewed=confirmed.length ? `<section class="proof-reviewed" aria-label="Checked applications"><h3>Applications checked against the proof</h3>
-    <div class="proof-passages">${reviewCards(confirmed,source,'reviewed')}</div></section>` : '';
-  const pending=candidates.length ? `<details class="proof-candidates"${showCandidates ? ' open' : ''}><summary>References awaiting proof review (${candidates.length})</summary>
-    <p>Each reference points to where it occurs in the manuscript. Review determines its role and hypotheses.</p>
-    <div class="proof-passages">${reviewCards(candidates,source,'candidate')}</div></details>` : '';
-  const state=selfContained ? `<p class="proof-review-state"><strong>Self-contained proof.</strong> ${esc(selfContained)}</p>` :
-    `<p class="proof-review-state"><strong>Dependency review pending.</strong> ${confirmed.length ? 'The checked applications below cover the listed proof steps.' : 'The proof remains available for checking against the manuscript.'}</p>`;
-  return `${sourcePolicyNotice(policy)}${state}${reviewed}${pending}`;
-}
-
-export function manuscriptDiagram(proof, review) {
-  return `<section class="proof-diagram" id="proof-dependencies"><h2>Proof diagram</h2>
-    ${proofReview(review,proof.route,true)}<p>${link(proof.href,'Read the proof in context')}</p></section>`;
-}
-
-function drawArgument(graph, native, key) {
-  const argument = graph.arguments[key];
-  const output = graph.nodes[key];
-  const registered = argument.inputs.map(item=>inputNode(graph,item,'registered'));
-  const standing = argument.standing.map(item=>inputNode(graph,item,'standing'));
-  const external = argument.external.map(item=>inputNode(graph,item,'external'));
-  const conditions = (graph.principalConditions[key] ?? []).map(title=>({kind:'condition',title}));
-  const unresolved = argument.unresolved.map(pointer=>({kind:'open',title: pointer.replace(/^(?:SUPPORT|CONTEXT):/, '').replace(/_/g,' ')}));
-  const all = [...registered,...standing,...external,...conditions];
-  const passages = sourcePassages(native,key,output,registered);
-  const context = [...standing,...external,...conditions];
-  const jointTitle = all.length>1 ? 'AND · Joint proof inputs' : 'Input to the proof';
-  const diagram = key==='NAG-002027' ? `${fanIn(standing)}${arrow('proof-input-arrow')}${annularUnitProof(registered)}` :
-    passages ? `${context.length ? fanIn(context)+arrow('proof-input-arrow') : ''}${passages}${arrow('proof-input-arrow')}${stage(jointTitle,graph.principalMethods[key])}` :
-    (all.length ? `${fanIn(all)}${arrow('proof-input-arrow')}${stage(jointTitle,graph.principalMethods[key])}` : '');
-  return `<section class="proof-argument" id="${proofAnchor(key)}" aria-label="${esc(output.label)}">
-    <h3>${esc(output.label)}</h3>
-    <figure aria-label="Proof relationships for ${esc(output.label)}">
-      ${diagram}${diagram ? arrow(all.length && (graph.principalMethods[key] || key==='NAG-002027') ? '' : 'proof-input-arrow') : ''}
-      ${stage(all.length ? 'Conclusion of the registered argument' : 'Statement in the edition',output.label)}
-      ${all.length ? '' : '<p class="proof-review-state">The edition supplied no linked inputs for this argument. See the proof review for its use sites.</p>'}
-      ${unresolved.length ? `<div class="proof-open-inputs"><h4>Unresolved source references</h4>${unresolved.map(card).join('')}</div>` : ''}
-      <figcaption>${esc(output.status)}${all.length ? ' · '+registered.length+' registered proof inputs' : ''} · ${link(output.href,'Read the statement and proof')}</figcaption>
-    </figure></section>`;
-}
-
-function renderDiagram(row, graph, native, keys, book, review) {
-  const gap=graph.gaps[row.id];
-  const openStep=gap ? `<div class="proof-open-inputs"><h3>Historical proof gap</h3>${card({kind:'open',title:gap.step})}</div>` : '';
-  const explanation=keys.length ? `<p class="proof-legend">Dashed arrows connect registered inputs to the argument that uses them. Solid arrows show steps described in the proof.</p>` : '';
-  return `<section class="proof-diagram" id="proof-dependencies"><h2>Proof diagram</h2>
-    ${explanation}${keys.map(key=>drawArgument(graph,native,key)).join('')}${openStep}
-    ${proofReview(review,row.link,!keys.some(key=>graph.arguments[key].inputs.length))}
-    ${keys.length || gap || review ? '' : `<p>${row.coverage==='Standing definition' ? 'This Tag defines a term.' : 'The proof has no bound web passage for dependency review.'}${book ? ' '+link(book,'Read the passage in the chapter')+'.' : ''}</p>`}</section>`;
-}
-
-export function createFoundationsWeb(release, textLocations, dependencies) {
-  const {graph} = release;
-  const argumentsById = new Map();
-  for (const key of Object.keys(graph.arguments)) {
-    const id=graph.nodes[key].id;
-    if (!argumentsById.has(id)) argumentsById.set(id,[]);
-    argumentsById.get(id).push(key);
-  }
-  const diagrams=new Map();
-  // Keep the former overview URL available to existing bookmarks.
-  const pages = new Map([[formerDependencyRoute,
-    shell(formerDependencyRoute,'Foundations table of contents',`<h1>Foundations table of contents</h1><p>${link(contents,'Read the chapters and their proofs')}</p>
-      <script type="module" src="/assets/foundations-proof-bookmark.js"></script>`,true)]]);
-  for (const row of release.rows) {
-    const location=textLocations[row.id]?.href;
-    const diagram=renderDiagram(row,graph,release.native,argumentsById.get(row.id) ?? [],location,dependencies.byId.get(row.id));
-    diagrams.set(row.id,diagram);
-    pages.set(tagGraph(row.id),shell(tagGraph(row.id),'Proof diagram for '+row.id,
-      `<p class="tag-permalink">${esc(row.id)}</p><h1>${esc(row.title)}</h1>
-       <nav class="tag-actions" aria-label="This Tag">${link(row.link,'Read the Tag')}${location ? link(location,'Read in chapter') : ''}</nav>${diagram}`));
-  }
-  function decorate(html) {
-    return html.replace(/href="(\/projects\/foundations\/editions\/[^/]+\/reader-en\.pdf(?:#[^"]*)?)"/g,
-      (_, href) => 'href="' + bookTarget(href) + '"')
-      .replaceAll('>English PDF<', '>Web reader<')
-      .replaceAll('Open in the English reader · PDF page', 'Read in the web edition · page');
-  }
-  return {pages, diagrams, decorate};
+  for (const row of rows) routes.set(row.link + 'logic/', row.link);
+  return new Map([...routes].map(([route, destination]) => [route,
+    `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenMath Foundations</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${destination}"></head>
+    <body><main><p><a href="${destination}">Continue reading OpenMath Foundations</a></p></main>
+    <script type="module" src="/assets/foundations-proof-bookmark.js"></script></body></html>`]));
 }
