@@ -12,7 +12,12 @@
     "check:history": "node scripts/check-history.mjs",
     "import:bedford-taylor": "node scripts/import-bedford-taylor.mjs",
     "build:bt-logic": "node scripts/render-bedford-taylor-logic.mjs && node scripts/render-bedford-taylor-overview.mjs",
-    "build:sg-logic": "node scripts/render-strong-green-logic.mjs"
+    "build:sg-logic": "node scripts/render-strong-green-logic.mjs",
+    "management:build": "node management/scripts/build-web.mjs",
+    "management:start": "node --env-file-if-exists=management/.env management/server/start.mjs",
+    "management:demo": "node management/scripts/demo.mjs",
+    "management:test": "node --test management/tests/*.test.mjs",
+    "management:check": "npm run management:build && npm run management:test"
   },
   "dependencies": {
     "esbuild": "0.28.0",

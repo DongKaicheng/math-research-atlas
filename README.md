@@ -43,6 +43,16 @@ Never accept a proof solely because it was submitted or because automated checks
 
 ## Access control
 
+The [independent management service](management/README.md) implements GitHub
+login, project-scoped Manager/Editor/Reviewer roles, private source revisions,
+exact-version review, and owner-approved public pull requests. It has a separate
+portable Node/SQLite deployment and needs no ChatGPT account. See its runbook
+for OAuth configuration, persistent storage, backups, and verified domain
+cutover. Adding this source does not itself deploy the service or change the
+existing management hostname.
+
+Project roles in that service do not grant repository-wide GitHub access.
+
 Only the repository owner and GitHub collaborators granted appropriate write access can merge or directly modify repository content. Public readers can open Issues and Pull Requests but cannot publish site changes. `CODEOWNERS` identifies the owner; it does not enforce review by itself. A branch ruleset requiring Pull Requests, code-owner review, and passing checks is recommended, but is not silently enabled by this publication.
 
 Manage editors under **Settings → Collaborators and teams** (or **Settings → Access → Collaborators**). Never share a common password or a ChatGPT account.
