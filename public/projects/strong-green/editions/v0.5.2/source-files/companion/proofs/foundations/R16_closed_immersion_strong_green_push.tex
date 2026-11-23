@@ -1,0 +1,193 @@
+% Round 16. Root construction, independently checked and written by higher_trace.
+% ACTIVATED after independent higher-trace and global-height reviews.
+\section{Direct exact-support strong Green push through a smooth closed immersion}
+\label{r16gp:section}
+
+The following result starts from a supplied strong Green form on the
+subvariety.  It does not require its obstruction class to vanish, and
+does not deduce that vanishing from the supplied form.  Its output
+is an ordinary actual form on the exact pushed support complement.
+The global-height branch independently passed the complete source
+at SHA256
+\texttt{3d24b5c7fbe83c319df93c013a1ba0fbfd76400a8f51f913c88a0b40f620eedb}.
+Only this activation notice differs from that mathematical source.
+
+\begin{lemma}[Degreewise extension and cutoffs on a smooth algebraic open]
+\label{r16gp:open-extension}
+Let $V/K$ be smooth quasiprojective and let $C_0\hookrightarrow V$
+be a smooth algebraic closed immersion.  Every ordinary actual form
+on $C_0^{\mathrm{an}}$ extends degreewise to an ordinary actual form
+on $V^{\mathrm{an}}$.  If its extension has $D$-closed restriction,
+its $D$ vanishes on an ordinary neighborhood of $C_0^{\mathrm{an}}$.
+For every ordinary neighborhood $N$ of $C_0^{\mathrm{an}}$ there
+exists an ordinary smooth scalar $\lambda$ equal to one on a
+neighborhood of $C_0^{\mathrm{an}}$, with
+$\operatorname{Supp}\lambda\subset N$.  The support need not be compact.
+\end{lemma}
+
+\begin{proof}
+The frozen local analytic retraction and actual germ lemmas apply
+to smooth algebraic closed immersions without a projectivity
+restriction.  The only compactness use in the frozen degreewise
+extension proof was to select finitely many retractions.  Here
+replace that finite cover by a locally finite one.
+
+For completeness, $V^{\mathrm{an}}$ is paracompact in the present
+setting.  A finite affine cover of $V$, followed by closed coordinate
+polydiscs with radii tending to infinity, gives a countable compact
+affinoid exhaustion of its analytification by sets whose ordinary
+interiors cover it.  It is locally compact and Hausdorff, hence
+paracompact.  The same facts apply to the closed analytic subspace.
+Use ordinary smooth locally finite partitions of unity, in the
+same Chambert--Loir--Ducros interface as the frozen proof.
+Take retraction neighborhoods of $C_0$, add $V^{\mathrm{an}}\setminus
+C_0^{\mathrm{an}}$, and choose a subordinate locally finite smooth
+partition.  On every retraction neighborhood pull the form back,
+multiply by its smooth coefficient, and extend by zero.  The
+locally finite sum is actual, since each point sees a finite sum
+of ordinary actual representatives, and its restriction is the
+original form.  No derivative-preserving extension is asserted.
+The germ lemma applied to its $D$ gives the second statement.
+
+To construct $\lambda$, first choose an ordinary open $N_1$ with
+$C_0^{\mathrm{an}}\subset N_1$ and $\overline{N_1}\subset N$,
+using normality of the paracompact Hausdorff space.  A smooth
+partition subordinate to $\{N,V^{\mathrm{an}}\setminus
+\overline{N_1}\}$, with all pieces of the first type summed,
+gives the required function.  That sum remains locally finite.
+It is one on $N_1$ and has closed support inside $N$.
+\end{proof}
+
+\begin{lemma}[Localization of a curved Green pair on an ordinary open]
+\label{r16gp:localized-pair}
+Let $i:C\hookrightarrow X$ be smooth integral projective of
+codimension $c\geq1$, and let $(\Gamma_C,\Omega_C)$ be the frozen
+exact-support curved actual Green pair for the cycle $[C]$ on $X$.
+Let $U\subset X^{\mathrm{an}}$ be an algebraic ordinary open,
+let $N\subset U$ be an ordinary neighborhood of $C^{\mathrm{an}}\cap U$,
+and choose $\lambda$ as in Lemma~\ref{r16gp:open-extension}.
+There is an ordinary actual separately closed form $\Omega_N$ on
+$U$ and an actual form $\Gamma_N$ on $U\setminus C$ with
+\[
+ \Gamma_N=\lambda\Gamma_C,\qquad
+ \Omega_N=\Omega_C+D\bigl((\lambda-1)\Gamma_C\bigr),
+ \tag{GP16.1}\label{r16gp:local-pair}
+\]
+where $(\lambda-1)\Gamma_C$ is extended by zero near $C\cap U$.
+Both supports are contained in $N$, in their respective domains,
+and for every compact complementary actual test $\beta$ on $U$,
+\[
+ \int_{U\setminus C}\Gamma_N\wedge D\beta
+   =\int_U\Omega_N\wedge\beta
+                       -\int_{C\cap U}\beta|_C.
+ \tag{GP16.2}\label{r16gp:local-green}
+\]
+No extension of $\Omega_N$ across $X\setminus U$ is claimed.
+\end{lemma}
+
+\begin{proof}
+The product $(\lambda-1)\Gamma_C$ is zero on an ordinary
+neighborhood of $C\cap U$ before its zero extension.  It is
+therefore a genuine global actual form on $U$.  The formula for
+$\Omega_N$ makes it actual and separately closed.  Away from $C$,
+the original Green equation gives the actual identity
+$D\Gamma_C=\Omega_C$, so $\Omega_N=D(\lambda\Gamma_C)$ there.
+It consequently has zero germ outside $\operatorname{Supp}\lambda$.
+Near $C$ it equals $\Omega_C$, and that part of $U$ lies in $N$.
+This proves the support assertion; the assertion for $\Gamma_N$
+is immediate.  A compact actual test on $U$ can be extended by
+zero to $X$.  Apply the original curved Green identity and actual
+Stokes to the added global actual form
+$(\lambda-1)\Gamma_C$ on $U$.  Every paired product is compactly
+supported, although that added form need not be.  This gives
+\eqref{r16gp:local-green} on the full stated test class.
+\end{proof}
+
+\begin{theorem}[Exact-support strong Green push through a smooth closed immersion]
+\label{r16gp:push}
+Let $i:C\hookrightarrow X$ be a smooth integral projective closed
+immersion over the original $K$, of codimension $c\geq1$.
+Let $Z$ be a specified rational codimension-$u$ cycle on $C$,
+where $1\leq u\leq\dim C$, and suppose a strong Green form
+\[
+ \gamma_Z\in B^{u-1,u-1}(C^{\mathrm{an}}\setminus|Z|^{\mathrm{an}})
+\]
+is supplied for this exact cycle and every compact complementary
+actual test on $C$.  Then there is a strong Green form
+\[
+ \gamma_{i_*Z}\in
+ B^{u+c-1,u+c-1}(X^{\mathrm{an}}\setminus|i_*Z|^{\mathrm{an}})
+ \tag{GP16.3}\label{r16gp:output}
+\]
+with its prescribed identity against every compact complementary
+actual test on $X$, using the original field and native weights.
+No vanishing of $\mathfrak o_C([Z])$ is required as an additional
+assumption.
+\end{theorem}
+
+\begin{proof}
+Put $n=\dim X$, $m=\dim C=n-c$, and
+$U=X^{\mathrm{an}}\setminus|i_*Z|^{\mathrm{an}}$.
+The smooth closed subvariety in $U$ is
+$C_0=C^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}$.
+Lemma~\ref{r16gp:open-extension} extends $\gamma_Z$ degreewise
+to an actual form $\widetilde\gamma$ on all of $U$.
+The supplied strong Green identity implies
+$D\gamma_Z=0$ as an actual form on $C_0$: test on ordinary opens
+disjoint from $Z$ and use actual-current injectivity.
+Thus $D\widetilde\gamma$ has zero germ near $C_0$.
+Choose an ordinary neighborhood $N$ of $C_0$ in $U$ where it
+vanishes, and the localized pair of
+Lemma~\ref{r16gp:localized-pair}.  Define
+\[
+                   \gamma_{i_*Z}=\Omega_N\wedge\widetilde\gamma.
+ \tag{GP16.4}\label{r16gp:construction}
+\]
+This is ordinary actual of degree $(u+c-1,u+c-1)$ on exactly
+$U$.  In particular it is not merely a current defined on a
+smaller complement.  The support condition and separate closedness
+of $\Omega_N$ give $D\gamma_{i_*Z}=0$ on $U$ as well.
+
+Let $\eta\in B_c^{n-u-c,n-u-c}(X^{\mathrm{an}})$ be arbitrary
+actual.  Its derivative $D\eta$ has degree
+$(n-u-c+1,n-u-c+1)$, one greater than
+$\dim|i_*Z|=n-u-c$.  Mihatsch Corollary 4.9 makes its support
+disjoint from $|i_*Z|$.  It is therefore a compact actual form
+on $U$.  The product
+\[
+                    \beta=\widetilde\gamma\wedge D\eta
+\]
+is compact actual on $U$ of degree $(n-c,n-c)=(m,m)$, exactly
+the test degree in \eqref{r16gp:local-green}.  Moreover
+$D\beta=D\widetilde\gamma\wedge D\eta$, since both first
+derivatives of $D\eta$ vanish.  It is zero on $N$, so the
+left side of \eqref{r16gp:local-green} is zero by the support
+of $\Gamma_N$.  That identity consequently gives
+\[
+\begin{split}
+ \int_U\gamma_{i_*Z}\wedge D\eta
+  &=\int_{C_0}\gamma_Z\wedge D(i^*\eta)\\
+  &=-\int_{Z^{\mathrm{an}}}i^*\eta
+   =-\int_{(i_*Z)^{\mathrm{an}}}\eta.
+\end{split}
+ \tag{GP16.5}\label{r16gp:pairing}
+\]
+The pulled test on $C$ is compact because the immersion is proper,
+and it has degree $(m-u,m-u)$, as required by the input strong G.
+The last equality is the native integration of the pushed cycle;
+it changes neither residue-field weights nor rational multiplicities.
+This proves the full all-actual identity.
+\end{proof}
+
+\paragraph{Scope and separation from obstruction covariance.}
+The new output may use a localized curvature $\Omega_N$ which is
+defined only on the exact complement $U$; this is sufficient for
+the claimed Green form.  No globally smooth continuation through
+$i|Z|$ is inferred.  Thus this direct theorem does not by itself
+identify the resulting curvature with the global obstruction map,
+nor prove the reverse implication from strong G to obstruction zero.
+It also does not justify changing a cycle by rational equivalence
+when adding Green forms leaves canceled polar supports.  The
+independent deformation proof in Section~\ref{r16gi:section}
+addresses obstruction-zero Chow classes and is the appropriate
+input for such global Chow consequences.

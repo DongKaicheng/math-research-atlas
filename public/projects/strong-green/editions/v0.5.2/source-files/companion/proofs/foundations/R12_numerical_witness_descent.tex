@@ -1,0 +1,431 @@
+% Round 12. Owner: r12_alteration_descent.
+% This section gives algebraic descent of numerical witnesses, then applies
+% the actual model-Chern and exact-support results of Rounds 10 and 11.
+\section{Descent of numerical witnesses and actual Green forms}
+\label{r12a:section}
+
+\paragraph{Scope and provenance.}
+The supported algebraic projection argument below was already isolated
+in the Round 9 foundations audit.  We give its proof, including the
+support on which a finite-field degree is taken, and connect it to the
+actual model-Chern detector and exact-support Green-pair construction.
+The resulting implication is stronger than the finite good-cover
+criterion of Round 11: a numerical witness on a proper alteration is
+enough when a regular model of the original variety is supplied.
+It does not construct a proper pushforward of analytic forms.
+
+Fix the original finite extension $K/\mathbf Q_p$, put $R=K^\circ$,
+and write $k$ for its residue field.  A regular model below is integral,
+regular, projective and flat over $R$, with a smooth integral generic
+fiber.  Models over the integers $R'$ of a finite extension $K'/K$
+may be regarded as $R$-models.  Their scheme-theoretic special fibers,
+including all multiplicities, are retained.  Degrees on a vertical
+proper scheme are degrees over $k$ unless a larger residue field is
+explicitly specified.  All Chow groups and $K$-groups are rational.
+Every actual Green-form and model-curvature-obstruction conclusion below
+is in the range $1\le r\le\dim X$.  The smooth integral generic fibers
+need not be geometrically integral over $K$: the exact-support and global
+primitive constructions have this native integral scope by
+Lemma~\ref{r12i:integral-PC}.
+
+\subsection{Pure operational representatives and supported projection}
+
+For a regular model $\mathcal X$ and a homogeneous class
+$\Theta\in\operatorname{CH}^r(\mathcal X)_{\mathbf Q}$, denote by
+$\xi_\Theta\in K_0(\operatorname{Vect}(\mathcal X))_{\mathbf Q}$
+the unique class with
+\[
+                 \operatorname{ch}(\xi_\Theta)\cap[\mathcal X]
+                              =\Theta.
+\tag{ND1}\label{r12a:pure-preimage}
+\]
+Its existence and uniqueness follow from Stacks, Section 42.58,
+Lemma 42.58.1 (Tags 0FEX and 0FEY).  This statement applies to the
+complete DVR base; it does not require the model to be smooth over $R$.
+The operation
+\[
+                  c_\Theta:=\operatorname{ch}_r(\xi_\Theta)
+                          \in A^r(\mathcal X)_{\mathbf Q}
+\]
+is a genuine operational class.  In fact all other components of
+$\operatorname{ch}(\xi_\Theta)$ vanish operationally.  To see this,
+apply $2^{-r}\psi^2$ to \eqref{r12a:pure-preimage}.  It gives the same
+Chow class, so uniqueness gives
+$\psi^2\xi_\Theta=2^r\xi_\Theta$.  The Adams identity then gives
+$(2^j-2^r)\operatorname{ch}_j(\xi_\Theta)=0$ for $j\ne r$.
+This is the purity argument immediately following Lemma 42.58.1.
+Thus purity is available on every vertical support, not just after
+capping with $[\mathcal X]$.
+
+Call $\Theta$ \emph{vertically numerically zero} if
+\[
+          \deg_k\bigl(c_\Theta\cap[V]\bigr)=0
+       \quad\text{for every integral }r\text{-dimensional }
+                    V\subset\mathcal X_s.
+\tag{ND2}\label{r12a:vertical-zero}
+\]
+The zero-cycle class inside the degree is a class on the proper
+$k$-scheme $V$.  We never take an unweighted degree on
+$\operatorname{CH}_0(\mathcal X)$.
+
+\begin{lemma}[Supported numerical pushdown]
+\label{r12a:supported-pushdown}
+Let $f:\mathcal Y\to\mathcal X$ be a projective morphism between
+regular models, of dimensions $M$ and $N$.  Put $\delta=M-N$.
+For $\Theta\in\operatorname{CH}^p(\mathcal Y)_{\mathbf Q}$, put
+$q=p-\delta$ and assume $0\le q\le N-1$.
+For every integral $q$-dimensional $V\subset\mathcal X_s$, there is
+an identity
+\[
+ c_{f_*\Theta}\cap[V]
+   =f_{V*}\bigl(c_\Theta\cap f^![V]\bigr)
+                         \quad\text{in }\operatorname{CH}_0(V)_{\mathbf Q},
+\tag{ND3}\label{r12a:supported-projection}
+\]
+where $f_V:f^{-1}V\to V$ and the refined Gysin class $f^![V]$ belongs
+to $\operatorname{CH}_p(f^{-1}V)_{\mathbf Q}$.
+Consequently $f_*\Theta$ is vertically numerically zero whenever
+$\Theta$ is.
+\end{lemma}
+
+\begin{proof}
+A morphism between these regular schemes is lci.  Because $f$ is
+projective, its factorization through a projective bundle gives the
+factorable Gysin operation $f^!$, of virtual relative dimension
+$\delta$, with $f^![\mathcal X]=[\mathcal Y]$.
+These are the hypotheses used in Stacks, Lemma 42.59.13 (Tag 0FFA).
+
+The coherent sheaf $\mathcal O_V$ is perfect on the regular ambient
+$\mathcal X$.  Its localized leading character supplies a supported
+bivariant operation
+\[
+ \lambda_V=
+  \operatorname{ch}^{V}_{N-q}(\mathcal O_V)
+          \in A^{N-q}(V\longrightarrow\mathcal X)_{\mathbf Q},
+              \qquad \lambda_V\cap[\mathcal X]=[V].
+\]
+The last equality holds on $V$, by Stacks, Proposition 42.57.1
+(Tag 0FEW).  Neither $V$ nor its inverse image is required to be regular.
+
+Ordinary Chern operations are central.  Proper pushforward commutes
+with a bivariant operation, and a factorable lci Gysin operation
+commutes with an arbitrary supported bivariant operation by Stacks,
+Lemma 42.59.7 (Tag 0FF6).  Applying these facts gives
+\[
+\begin{aligned}
+ c_{f_*\Theta}\cap[V]
+ &=\lambda_V\cap\bigl(c_{f_*\Theta}\cap[\mathcal X]\bigr)\\
+ &=\lambda_V\cap f_*\Theta\\
+ &=f_{V*}\bigl((f^*\lambda_V)\cap\Theta\bigr)\\
+ &=f_{V*}\bigl(c_\Theta\cap
+               ((f^*\lambda_V)\cap f^![\mathcal X])\bigr)\\
+ &=f_{V*}\bigl(c_\Theta\cap
+                          f^!(\lambda_V\cap[\mathcal X])\bigr)\\
+ &=f_{V*}\bigl(c_\Theta\cap f^![V]\bigr).
+\end{aligned}
+\]
+Every term is supported on $V$ or $f^{-1}V$.  In particular this
+argument proves \eqref{r12a:supported-projection}, which is stronger
+than the projection formula after forgetting the support.
+
+The refined class $f^![V]$ has dimension $q+\delta=p$ and is supported
+on the special fiber.  Choose a cycle representative, a finite rational
+sum of integral vertical $p$-cycles.  The degrees after applying
+$c_\Theta$ vanish termwise by \eqref{r12a:vertical-zero}.  Taking
+degree in \eqref{r12a:supported-projection} proves the assertion.
+\end{proof}
+
+\begin{lemma}[Numerical pullback]
+\label{r12a:numerical-pullback}
+For a projective morphism $f:\mathcal Y\to\mathcal X$ between regular
+models, the class $f^!\Theta$ has operational representative
+$f^*c_\Theta$.  If $\Theta$ is vertically numerically zero, then so
+is $f^!\Theta$.
+\end{lemma}
+
+\begin{proof}
+The class $f^*\xi_\Theta$ has pure operational Chern character
+$f^*c_\Theta$.  Chern operations commute with $f^!$, hence
+\[
+ (f^*c_\Theta)\cap[\mathcal Y]
+       = f^!(c_\Theta\cap[\mathcal X])=f^!\Theta.
+\]
+Uniqueness in \eqref{r12a:pure-preimage} proves the first assertion.
+For an integral vertical $p$-cycle $W$ on $\mathcal Y$, with
+$p=\operatorname{codim}\Theta$, proper operational projection gives
+\[
+ \deg_k\bigl((f^*c_\Theta)\cap[W]\bigr)
+       =\deg_k\bigl(c_\Theta\cap f_*[W]\bigr)=0.
+\]
+Here $f_*[W]$ is a vertical $p$-cycle or zero.  This proves the second
+assertion, without flatness of the morphism on special fibers.
+\end{proof}
+
+\paragraph{Constant fields.}
+If the source is originally a model over $R'$ with residue field $k'$,
+vertical numerical vanishing computed over $k'$ implies the same
+vanishing over $k$: the two degrees differ by $[k':k]$.  Refined Gysin
+classes and proper pushforwards retain their scheme-theoretic
+multiplicities.  In particular no ramification multiplicity is replaced
+by one when the model is viewed over $R$.
+
+\subsection{The alteration witness descends to a regular original model}
+
+\begin{theorem}[A regular original model accepts proper numerical witnesses]
+\label{r12a:regular-target}
+Let $X/K$ be smooth integral projective, and suppose a regular
+projective $R$-model $\mathcal X$ of $X$ is supplied.  Let
+$f:\mathcal Y\to\mathcal X$ be a projective dominant generically finite
+morphism from a regular model, with generic map $h:Y\to X$ of native
+degree $d=[K(Y):K(X)]$.  Let $a\in\operatorname{CH}^r(X)_{\mathbf Q}$,
+where $1\le r\le\dim X$.
+If there is a vertically numerically zero
+$\Theta\in\operatorname{CH}^r(\mathcal Y)_{\mathbf Q}$ with
+\[
+                              \Theta|_Y=h^*a,
+\tag{ND4}\label{r12a:witness-generic}
+\]
+then $\mathfrak o_X^r(a)=0$.  Every prescribed cycle representing
+$a$ has a strong zero-curvature actual Green form over the original
+$K$, on its exact complement, against all actual tests.
+\end{theorem}
+
+\begin{proof}
+Set
+\[
+                           \Lambda=\frac1d f_*\Theta
+                      \in\operatorname{CH}^r(\mathcal X)_{\mathbf Q}.
+\tag{ND5}\label{r12a:descended-class}
+\]
+The generic projection formula on the smooth varieties gives
+\[
+          \Lambda|_X=\frac1d h_*h^*a=a.
+\]
+By Lemma~\ref{r12a:supported-pushdown}, $\Lambda$ is vertically
+numerically zero.  Choose its pure virtual vector-bundle representative
+$\xi_\Lambda$ from \eqref{r12a:pure-preimage}.
+Then
+\[
+ \operatorname{ch}_r(\xi_\Lambda|_X)=a,
+ \qquad
+ \deg_k\bigl(\operatorname{ch}_r(\xi_\Lambda|_{\mathcal X_s})
+                                          \cap[V]\bigr)=0
+\]
+for every integral vertical $r$-cycle $V$.
+
+The Round 10 numerical model-Chern detector gives the strict actual
+identity $\operatorname{ch}_r(\bar\xi_\Lambda)=0$ on $X^{\rm an}$.
+Round 11's well-defined model-curvature class gives
+$\mathfrak o_X^r(a)=0$, and its exact-support Green-pair theorem then
+gives the stated zero-curvature form for each prescribed representative.
+The virtual class need not be supported on that representative: the
+global generic-Chow-zero correction in Round 11 is exactly what removes
+that unnecessary condition.
+
+Only algebraic classes were pushed through $f$.  The analytic form is
+constructed on the original $X$ after \eqref{r12a:descended-class};
+there is no proper pushforward of a Green form or a primitive.
+\end{proof}
+
+\begin{corollary}[A supplied witness need not map to the chosen model]
+\label{r12a:generic-witness}
+In Theorem~\ref{r12a:regular-target}, it suffices to have a proper
+generically finite morphism $h:Y\to X$ of smooth projective generic
+fibers, a regular projective model $\mathcal Y$ of $Y$ over a finite
+extension of $R$, and a vertically numerically zero lift of $h^*a$
+on $\mathcal Y$.  A model morphism to $\mathcal X$ is not required
+as part of the supplied data.
+\end{corollary}
+
+\begin{proof}
+Take the closure of the generic graph of $h$ in
+$\mathcal Y\times_R\mathcal X$.  It is integral, projective and flat
+over $R$, and maps to both models.  A regular projective alteration
+$\mathcal W$ of this closure exists by the projective case of
+de Jong's Theorem 6.5; its constant field may be a further finite
+extension.  Regard all schemes as $R$-schemes.
+Write $b:\mathcal W\to\mathcal Y$ and
+$g:\mathcal W\to\mathcal X$ for the resulting maps.
+They are projective between regular schemes, and
+$b^!\Theta$ is vertically numerically zero by
+Lemma~\ref{r12a:numerical-pullback}.  On generic fibers its restriction
+is $g_K^*a$.  Apply Theorem~\ref{r12a:regular-target} to $g$.
+The degree used there is the total function-field degree of $g$,
+including its constant-field factor.
+\end{proof}
+
+Thus the numerical-witness property is independent of which supplied
+regular projective original model is chosen: use a common regular
+alteration and the two preceding lemmas.  This is a statement about
+numerical witnesses.  It does not establish birational invariance or
+pullback injectivity for the whole actual Bott--Chern quotient.
+
+\subsection{Finite numerical covers without an original regular model}
+
+\begin{theorem}[A finite numerical-model cover]
+\label{r12a:finite-numerical-cover}
+Let $h:Y\to X$ be finite dominant between smooth integral projective
+$K$-varieties, and let $a\in\operatorname{CH}^r(X)_{\mathbf Q}$,
+where $1\le r\le\dim X$.
+Suppose an integral projective flat model $\mathcal Y$ of $Y$ carries
+a virtual vector bundle $\xi$ with
+\[
+ \operatorname{ch}_r(\xi|_Y)=h^*a,
+ \qquad
+ \deg_k\bigl(\operatorname{ch}_r(\xi|_{\mathcal Y_s})\cap[V]\bigr)=0
+\tag{ND6}\label{r12a:finite-numerical-data}
+\]
+for every integral vertical $r$-cycle $V$.
+Then $\mathfrak o_X^r(a)=0$ and every prescribed cycle in class $a$
+satisfies strong G on its exact complement, over $K$, on all actual
+tests.  No regular model of $X$ is assumed.
+
+The same statement holds when $Y$ is smooth integral over a finite
+extension $K'/K$, its model is over $R'$, and $h$ is a finite dominant
+$K$-morphism.  In that case the vanishing condition may be checked
+using degrees over the residue field of $R'$.
+\end{theorem}
+
+\begin{proof}
+The numerical detector gives
+$\Omega_Y:=\operatorname{ch}_r(\bar\xi)=0$ as a $K$-actual form.
+For the extension-field version, view the $R'$-model over $R$;
+every integral cycle on the thickened special fiber lies on its
+reduction, and the degree changes by the residue-field degree.
+Thus this conclusion is again obtained directly in the original
+$K$-actual theory, without comparing test spaces over different fields.
+Lemma~\ref{r12i:integral-PC} supplies the exact-support and global
+primitive constructions in this smooth integral, possibly
+nongeometrically integral, $K$-scope.
+
+Choose a model character $\Omega_X$ representing $a$.  On a common
+model of $Y$, the character $h^*\Omega_X-\Omega_Y=h^*\Omega_X$ has
+generic degree-$r$ Chow class zero.  The constructive proof of Round
+11's generic-Chow-zero primitive theorem writes a primitive as
+\[
+\begin{gathered}
+ \beta_Y=\sum_j q_j e_j^{-1}
+                  \operatorname{Tr}^{\mathscr M}_{b_j}(G_j),\\
+ DG_j=b_j^*\Omega_j,\qquad
+ \sum_j q_j\Omega_j=h^*\Omega_X.
+\end{gathered}
+\tag{ND7}\label{r12a:primitive-generators}
+\]
+Here each $b_j:T_j\to Y$ is finite flat on all of $Y$, of degree
+$e_j$, and each $G_j$ is an original global sum of PL scalars times
+model curvature polynomials.  These properties follow because the
+complexes used for a generic $K_0$ relation are acyclic on the full
+generic fiber.  Adams projection handles a relation in only the
+specified Chow degree.
+
+Since $h$ is finite between smooth varieties of the same dimension,
+it is flat.  Put $d=\deg_K h$ and define directly
+\[
+ \beta_X=\frac1d\sum_jq_j e_j^{-1}
+                 \operatorname{Tr}^{\mathscr M}_{h\circ b_j}(G_j).
+\tag{ND8}\label{r12a:finite-primitive}
+\]
+All traces are permitted by the Round 11 minimal-trace theorem.
+We never trace the possibly larger-class form $\beta_Y$ itself.
+For every compact complementary actual test $\eta$, trace pairing,
+actual Stokes, and the native degree formula give
+\[
+\begin{aligned}
+ \int_X\beta_XD\eta
+ &=\frac1d\sum_jq_j e_j^{-1}
+                  \int_{T_j}G_j(hb_j)^*D\eta\\
+ &=\frac1d\sum_jq_j\int_Y\Omega_jh^*\eta\\
+ &=\frac1d\int_Yh^*(\Omega_X\eta)
+  =\int_X\Omega_X\eta.
+\end{aligned}
+\]
+Current injectivity gives $D\beta_X=\Omega_X$ as actual forms.
+Hence $\mathfrak o_X^r(a)=0$, and the exact-support theorem proves G.
+\end{proof}
+
+\begin{corollary}[A finite cover with a regular model]
+\label{r12a:finite-regular-cover}
+Let $h:Y\to X$ be as in Theorem~\ref{r12a:finite-numerical-cover}.
+Suppose $Y$ has a supplied regular projective model.  If $h^*a$ has
+a vertically numerically zero lift on a regular projective proper
+alteration of $Y$, then $\mathfrak o_X^r(a)=0$ and strong G holds for
+every prescribed representative of $a$.
+
+In particular, a supplied regular model after a finite constant-field
+extension is enough for this implication, provided the stated numerical
+witness has been established on an alteration.
+\end{corollary}
+
+\begin{proof}
+The proof of Theorem~\ref{r12a:regular-target} and
+Corollary~\ref{r12a:generic-witness} gives an actual virtual model
+class $\xi_\Lambda$ on the supplied regular model of $Y$, with the
+two properties in \eqref{r12a:finite-numerical-data}.
+Apply Theorem~\ref{r12a:finite-numerical-cover}.
+\end{proof}
+
+\subsection{Why an arbitrary alteration is still different}
+
+\begin{proposition}[No finite dominating cover of a nontrivial smooth blowup]
+\label{r12a:no-finite-blowup-cover}
+Let $X$ be a smooth integral variety over a field, and let
+$C\subset X$ be a nonempty smooth closed subscheme of codimension
+at least two.  Put $p:Y=\operatorname{Bl}_C X\to X$.
+There is no finite dominant morphism $q:T\to X$ from an integral
+variety that factors as $q=p\circ u$ for a morphism $u:T\to Y$.
+\end{proposition}
+
+\begin{proof}
+Let $E=p^{-1}C$ be the exceptional effective Cartier divisor.
+The blowup property is Stacks, Lemmas 31.33.4--31.33.5
+(in particular Tag 0806).  If such a factorization existed,
+$u$ would be dominant: over $X\setminus C$, the map $p$ is an
+isomorphism and the image of $q$ is dense.
+Since $T$ is integral and $u$ is dominant, a local equation of $E$
+pulls back to a nonzero element of a domain.  Thus $u^{-1}E$ is an
+effective Cartier divisor.  It is nonempty, since the finite dominant
+$q$ is surjective.  It has dimension $\dim T-1=\dim X-1$.
+
+On the other hand, scheme-theoretically $u^{-1}E=q^{-1}C$.
+The latter is finite over $C$, so has dimension at most
+$\dim C\le\dim X-2$.  This contradiction proves the claim.
+\end{proof}
+
+The proposition rules out a direct replacement of a general alteration
+by a finite multisection over the original target.  The finite
+multisection in the supported-complex construction works because its
+chosen smooth flag fibration has constant positive fiber dimension;
+the blowup has no such property.  Stein factorization does not repair
+the problem either: the finite factor of a proper birational morphism
+to a normal target is the target itself, leaving the whole modification
+in the connected-fiber factor.
+
+Theorems~\ref{r12a:regular-target} and
+\ref{r12a:finite-numerical-cover} avoid this obstruction by two distinct
+verified mechanisms: algebraic supported pushdown to a regular model,
+or analytic minimal trace along an actually finite generic morphism.
+Neither mechanism proves descent from an arbitrary proper alteration
+when no regular model of the original variety, or of a finite smooth
+cover, is supplied.  Nor does a merely existing primitive upstairs
+automatically have the special generator presentation
+\eqref{r12a:primitive-generators}.
+
+\paragraph{Primary sources checked for this section.}
+\begin{itemize}
+\item Stacks, rational intersection on regular schemes and the pure
+operational $K_0$ representative:
+\url{https://stacks.math.columbia.edu/tag/0FEX}.
+\item Stacks, supported leading Chern character:
+\url{https://stacks.math.columbia.edu/tag/0FEW}.
+\item Stacks, arbitrary supported bivariant commutation with lci Gysin,
+and the regular-scheme projection formula:
+\url{https://stacks.math.columbia.edu/tag/0FF6},
+\url{https://stacks.math.columbia.edu/tag/0FFA}.
+\item A. J. de Jong, \emph{Smoothness, semi-stability and alterations},
+Theorem 6.5, printed p.83:
+\url{https://www.numdam.org/item/PMIHES_1996__83__51_0.pdf}.
+For a projective input, properness makes the open projective
+compactification in the theorem equal to its source.
+\item Stacks, the exceptional Cartier divisor and blowup universal
+property: \url{https://stacks.math.columbia.edu/tag/0806}.
+\end{itemize}

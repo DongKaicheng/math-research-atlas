@@ -1,0 +1,576 @@
+% Round 18. ci_global branch. Independent review required.
+\section{Ample-cut curve comparison and surface ambient Green families}
+\label{r18sc:section}
+
+PG18's numerical $U_2$ theorem does not require the whole ambient
+$H^2$ to be algebraic.  Its separate representative gate can also
+be closed by a curve-comparison property of the ambient variety.
+The new closure operation in this section is propagation of that
+property through smooth ample cuts of final dimension at least
+three.  The projective-bundle and smooth-blowup curve comparisons
+themselves are already frozen in CD17 and are not reopened.
+
+\subsection{The native curve property and its ample-cut propagation}
+
+Let $k$ be a finite field, fix $\ell\ne\operatorname{char}k$,
+and let $T/k$ be smooth projective geometrically integral.
+Say that $T$ has the curve comparison property $\mathrm{CC}_\ell$
+if every actual native rational curve cycle which is numerically
+zero has zero class in
+\[
+ H^{2\dim T-2}(T_{\bar k},\mathbf Q_\ell(\dim T-1)).
+ \tag{SC18.1}\label{r18sc:CC}
+\]
+This is a statement about actual cycles and their geometric
+classes.  It does not start by postulating a class map on
+an arbitrary numerical quotient.
+
+\begin{lemma}[Smooth ample cuts preserve curve comparison]
+\label{r18sc:ample-cuts}
+Let
+\[
+ Y=T_0\supset T_1\supset\cdots\supset T_c=E
+ \tag{SC18.2}\label{r18sc:cuts}
+\]
+be native smooth projective geometrically integral varieties,
+each $T_j$ a smooth ample Cartier divisor in $T_{j-1}$.
+Suppose $\dim E\ge3$.  If $Y$ has $\mathrm{CC}_\ell$,
+then $E$ has $\mathrm{CC}_\ell$.
+If the ambient property holds afresh after every finite
+extension of $k$, the conclusion does too.
+\end{lemma}
+
+\begin{proof}
+Write $m=\dim Y$, $e=\dim E$, so $c=m-e$, and let
+$i:E\hookrightarrow Y$ be the actual closed immersion.
+At each cut the target dimension is at least three,
+so geometric etale weak Lefschetz gives an isomorphism
+in degree two.  Their composite is therefore
+\[
+ i^*:H^2(Y_{\bar k},\mathbf Q_\ell(1))
+               \xrightarrow{\sim}H^2(E_{\bar k},\mathbf Q_\ell(1)).
+ \tag{SC18.3}\label{r18sc:H2iso}
+\]
+Poincare duality and the actual cohomological Gysin
+adjunction identify the dual map as
+\[
+ i_*:H^{2e-2}(E_{\bar k},\mathbf Q_\ell(e-1))
+               \xrightarrow{\sim}
+          H^{2m-2}(Y_{\bar k},\mathbf Q_\ell(m-1)).
+ \tag{SC18.4}\label{r18sc:Gysin-iso}
+\]
+In particular this particular Gysin map is injective;
+the injection has been proved by duality, not inferred
+by cancelling an ambient pushforward equality.
+
+Let $z$ be an actual native numerically zero rational
+curve on $E$.  For every native divisor $L$ on $Y$,
+the proper degree projection formula gives
+\[
+                  \deg_Y(i_*z\cdot L)=\deg_E(z\cdot i^*L)=0.
+\]
+Thus $i_*z$ is numerically zero as a curve on $Y$.
+The ambient hypothesis gives
+$\operatorname{cl}_\ell(i_*z)=0$.
+Cycle-class functoriality and the established injection
+\eqref{r18sc:Gysin-iso} force
+$\operatorname{cl}_\ell(z)=0$.
+All degrees were native degrees on the proper strata.
+The same proof works after any finite residue extension
+to which the ambient hypothesis is reapplied.
+\end{proof}
+
+\begin{lemma}[The edge blowups introduce only zero-cycle coefficients]
+\label{r18sc:edge-blowups}
+If $E$ has $\mathrm{CC}_\ell$, then its specified
+codimension-two smooth blowups in geometrically
+integral centers have $\mathrm{CC}_\ell$ as well.
+\end{lemma}
+
+\begin{proof}
+This is the relevant case of frozen CD17's
+smooth-modification theorem.  An explicit coefficient
+check is useful here.  If $d=\dim E$,
+$q:\widetilde E=\operatorname{Bl}_ZE\to E$,
+$j:J\hookrightarrow\widetilde E$ and $p:J\to Z$,
+the actual Chow decomposition in curve degree is
+\[
+ z=q^*z_0+j_*p^*\beta,
+ \qquad z_0\in\operatorname{CH}^{d-1}(E)_{\mathbf Q},
+ \quad\beta\in\operatorname{CH}^{d-2}(Z)_{\mathbf Q}.
+ \tag{SC18.5}\label{r18sc:edge-decomposition}
+\]
+The second coefficient is a zero-cycle.
+Here $q_*z=z_0$, while $\beta=-p_*j^*z$:
+$j^*q^*z_0=p^*i^*z_0=0$ by dimension, and
+$j^*j_*=-\xi$, $p_*\xi=1$ give the latter formula.
+These actual extraction operations preserve numerical
+equivalence by the projection formula.  A numerically
+zero $z$ therefore has numerically zero $z_0$ and
+a degree-zero $\beta$.  The first has zero geometric
+class by hypothesis, and the second has zero top
+class on the smooth geometrically integral center.
+Functoriality applied to the actual decomposition
+gives $\operatorname{cl}_\ell(z)=0$.
+Iteration proves the assertion.  The proof holds
+over every further finite native residue field.
+\end{proof}
+
+\begin{theorem}[The ambient curve gate in PG18]
+\label{r18sc:PG-gate}
+Assume all of PG18's native product-smoothing
+hypotheses on a smooth projective ambient
+$\mathcal Y/R$ of relative dimension $n+1\ge5$,
+with a relatively very ample $\mathcal L$ and
+the specified transverse factors and smoothing
+section.  If its special fiber $Y$ has
+$\mathrm{CC}_\ell$, then every specified
+geometrically homologically trivial rational
+codimension-two cycle on the generic fiber
+has strong G.  In dimension $n=4$ this is
+full G in all codimensions.
+
+If the ambient curve property holds after
+every finite residue extension, the theorem
+applies afresh to all new cycles after every
+unramified valued extension.  With RI18 this
+gives the corresponding full fourfold assertion
+after every finite valued extension.
+\end{theorem}
+
+\begin{proof}
+Each starting double $H_i\cap H_j$ is obtained
+from $Y$ by two smooth ample cuts, with final
+dimension $n-1\ge3$.  Lemma~\ref{r18sc:ample-cuts}
+gives its curve comparison.  PG18's actual
+ordered model makes the final double its
+specified codimension-two blowups in smooth
+geometrically integral centers of dimension
+$n-3$.  Lemma~\ref{r18sc:edge-blowups} gives
+the needed comparison on each final double.
+
+Thus the exact curve hypothesis of PG18's
+Green corollary is satisfied.  Its numerical
+theorem gives $U_2=0$; CL17 gives
+$K_{n-2}=B_{n-2}$ from the comparison; DQ17
+and ER17 annihilate the specified-cycle
+obstruction.  VT17 and frozen reconstruction
+give the ordinary actual form on the complement
+of the original precise support and the identity
+against every original compact ordinary actual
+test.  The frozen endpoint and one-cycle
+theorems finish the other fourfold degrees.
+
+An unramified extension preserves the native
+model equations and geometric conditions.
+Reapply the ambient property and the two
+lemmas over the new residue field and to
+its entire new cycle groups.  RI18's
+separate theorem then gives the full
+fourfold assertion under arbitrary finite
+valued extension.  No claim that those
+new cycles are original-field pullbacks
+is made.
+\end{proof}
+
+\subsection{Good surfaces and their projective bundles}
+
+\begin{corollary}[Projective bundles over arbitrary good surfaces]
+\label{r18sc:surface-bundle}
+Let $\mathcal S/R$ be smooth projective with
+geometrically integral surface fibers, and
+let $\mathcal V$ be a rank-$n$ vector bundle
+on it, where $n\ge4$.  Set
+$\mathcal Y=\mathbf P_{\mathcal S}(\mathcal V)$,
+of relative dimension $n+1$.
+Every product smoothing on this ambient
+with all PG18 hypotheses has codimension-two
+strong G.  For $n=4$ it has full G in
+every codimension and, using RI18, the
+same full conclusion for all cycles over
+every finite extension of the valued field.
+No algebraicity assumption on the whole
+geometric $H^2(\mathcal S_k)$ is required.
+\end{corollary}
+
+\begin{proof}
+CD17's projective-bundle curve comparison
+is uniform after every finite residue
+extension.  It applies to the actual
+special fiber of this projective bundle.
+Theorem~\ref{r18sc:PG-gate} therefore
+applies with precisely its stated hypotheses.
+\end{proof}
+
+For the product $Y=S\times\mathbf P^{n-1}$
+the native curve comparison can be seen
+without any bundle coefficient shorthand.
+Writing $h$ for the projective-factor class,
+every actual rational curve class has the
+unique decomposition
+\[
+ z=p_S^*D\,h^{n-1}+p_S^*z_0\,h^{n-2},
+ \quad D\in\operatorname{CH}^1(S)_{\mathbf Q},
+ \quad z_0\in\operatorname{CH}^2(S)_{\mathbf Q}.
+ \tag{SC18.6}\label{r18sc:product-curves}
+\]
+If $z$ is numerically zero, testing against
+every $p_S^*L$ makes $D$ numerically zero
+on the surface.  Testing against $h$ gives
+$\deg z_0=0$.  The divisor comparison and
+the top-degree class of a zero-cycle make
+both geometric coefficient classes zero.
+Their pullback products therefore make
+$\operatorname{cl}_\ell(z)=0$.
+This proof reapplies over every finite
+extension of the native finite field and
+uses no divisor Tate conjecture for $S$.
+
+\begin{lemma}[Local examples exist after an explicitly allowed unramified extension]
+\label{r18sc:local-existence}
+For any supplied $\mathcal S/R$ as above,
+choose a relatively very ample line bundle
+$\mathcal A$ on it and put
+\[
+ \mathcal Y=\mathcal S\times_R\mathbf P_R^{n-1},
+       \qquad\mathcal L=\mathcal A\boxtimes\mathcal O(1).
+ \tag{SC18.7}\label{r18sc:product-polarization}
+\]
+For any $s\ge3$ and positive factor degrees,
+there is a finite unramified $R'/R$ over
+which actual factor and smoothing sections
+satisfying every PG18 hypothesis exist.
+The generic field retains the extension
+of the original absolute value.
+\end{lemma}
+
+\begin{proof}
+Use an actual relative projective embedding
+given by $\mathcal L$ and the spaces of
+ambient homogeneous polynomials of the
+specified degrees.  Over $\bar k$, choose
+the factor sections successively by Bertini
+on the finite collection of prior smooth
+strata, avoiding the prior zero-dimensional
+strata.  Choose the smoothing section
+transverse to all positive-dimensional
+factor strata and avoiding their zero-
+dimensional intersections.  These are
+finitely many nonempty open conditions.
+Every resulting positive-dimensional
+intersection, including one with the
+smoothing section, is geometrically
+connected by successive weak Lefschetz
+in degree zero, and smoothness makes
+it integral.
+
+The nonempty parameter open over $\bar k$
+has a point over some finite $k'/k$.
+Take the corresponding finite unramified
+extension $R'/R$ and lift the ambient
+polynomial coefficients.  Lifting those
+coefficients uses their free parameter
+module; it does not assume surjectivity
+of a possibly varying section-cohomology
+base-change map.  The special geometric
+conditions are now fixed.
+
+Fix lifts of the factors and one smoothing
+section $Q_0$.  The other lifts of that
+section are $Q_0+\pi T$ in ambient
+polynomial coefficients.  The generic
+divisor equations are consequently
+$\prod_i f_i+\pi Q_0+\pi^2T$.
+This affine coefficient coset is Zariski
+dense over $\operatorname{Frac}(R')$:
+each coefficient ranges over an infinite
+arithmetic coset in that infinite field.
+It therefore meets the nonempty generic
+smooth-section open, by Bertini for the
+supplied very ample system.  Such a
+smooth ample divisor is geometrically
+connected, hence integral.  This fixes
+all the hypotheses, including generic
+smoothness, without changing the special
+data.
+\end{proof}
+
+The constructed variety may be defined only
+over $\operatorname{Frac}(R')$.  That is
+the field over which this existence result
+asserts its full cycle domain; it does not
+silently descend the variety.  If an
+already specified original-field variety
+acquires this supplied model over a finite
+auxiliary extension, the frozen full-degree
+finite actual detector descends G for its
+original cycles with the original absolute
+value.  This is a separate, already proved
+descent use.
+
+\subsection{A concrete example with a nonalgebraic ambient degree two}
+
+\begin{proposition}[The ambient algebraic-$H^2$ condition is unnecessary]
+\label{r18sc:elliptic-example}
+Let $K=\mathbf Q_5$ and take the good
+elliptic curve $E_0:y^2=x^3-x$.
+Let $\mathcal S=\mathcal E_0\times_R\mathcal E_0$,
+$\mathcal A=\mathcal O_{\mathcal E_0}(3[0])
+\boxtimes\mathcal O_{\mathcal E_0}(3[0])$,
+and $\mathcal Y=\mathcal S\times\mathbf P_R^3$
+with the polarization \eqref{r18sc:product-polarization}.
+After a finite unramified extension there are
+five-factor, degree-one product smoothings
+whose generic fourfold has full G and
+\[
+             b_2(X)=7,\qquad\operatorname{rank}N^4=179.
+ \tag{SC18.8}\label{r18sc:example-invariants}
+\]
+The ambient geometric $H^2(1)$ is not spanned
+by divisor classes, even after further finite
+residue extension.  Thus this example uses
+the curve-comparison gate rather than the
+stronger algebraic-$H^2$ sufficient condition.
+\end{proposition}
+
+\begin{proof}
+The discriminant of the displayed integral
+elliptic equation is $64$, a $5$-adic unit.
+Its reduction has eight points over
+$\mathbf F_5$: the affine point counts
+for $x=0,1,2,3,4$ are respectively
+$1,1,2,2,1$, followed by the point
+at infinity.  Its Frobenius polynomial
+on $H^1$ is therefore $T^2+2T+5$,
+with roots $\alpha=-1+2i$ and
+$\beta=-1-2i$.
+The Kunneth decomposition of the product
+surface has two eigenvalues
+\[
+                    \alpha^2/5=(-3-4i)/5,
+                    \qquad\beta^2/5=(-3+4i)/5
+\]
+on its Tate-twisted degree-two cohomology.
+They are not roots of unity: the roots
+of unity in $\mathbf Q(i)$ are
+$1,-1,i,-i$.  Every geometric divisor
+over a finite field is defined over a
+finite extension, so some power of
+Frobenius fixes its Tate-twisted class.
+Divisor classes cannot span these two
+eigenspaces.  Raising the eigenvalues
+to any positive residue-extension power
+does not make them roots of unity.
+Adding the projective factor only adds
+an algebraic hyperplane line.
+
+Nevertheless the product surface ambient
+has the uniform curve comparison
+\eqref{r18sc:product-curves}.
+The local existence lemma supplies all
+five-factor PG18 data after one finite
+unramified extension, and
+Corollary~\ref{r18sc:surface-bundle}
+gives full G for its entire fourfold
+cycle group, and then RI18 gives all
+finite extensions as well.
+
+On the surface $\deg(A^2)=2\cdot3\cdot3=18$.
+On $Y=S\times\mathbf P^3$, write
+$h=A+b$.  Its top degree is
+\[
+                        \deg_Y(h^5)=\binom52\deg_S(A^2)=180.
+\]
+The fivefold factor stratum therefore
+has 180 geometric points, while every
+lower positive-dimensional stratum is
+connected.  The HM18/NG18 extreme
+calculation gives rank $N^4=180-1$.
+All points and their native residue
+degrees are retained.
+Finally weak Lefschetz identifies
+$H^2(X)$ with $H^2(Y)$; an elliptic
+product surface has $b_2=1+4+1=6$,
+and $\mathbf P^3$ adds one, giving
+$b_2(X)=7$.  In particular this is
+not geometrically a projective-space
+complete-intersection fourfold, whose
+second Betti number is one.
+The positive fourth monodromy also
+excludes potential good reduction
+and crossing depth less than four
+for strict semistable dominant
+witnesses, by NM17.
+\end{proof}
+
+\subsection{A global theorem when a good surface model is supplied}
+
+\begin{theorem}[Surface ambient full-height families under a supplied global model]
+\label{r18sc:global-input}
+Let $F$ be a number field and let
+$\mathcal S/\mathcal O_F$ be a supplied
+smooth projective scheme with geometrically
+integral surface fibers.  Fix a relatively
+very ample $\mathcal A$ and a relative
+projective embedding of
+$\mathcal Y=\mathcal S\times\mathbf P^3$
+given by $\mathcal L=\mathcal A\boxtimes\mathcal O(1)$.
+Then, over one fixed finite extension
+$E/F$, there is a Zariski-dense family
+in the linear system supplied by degree-five
+polynomials of that embedding whose smooth
+generic divisors have full local G at every
+finite place and complete complementary
+homological Chow-group BB heights over
+every finite extension of $E$.
+At a specified good rational prime,
+their product degeneration has
+\[
+                         \operatorname{rank}N^4=10\deg(A^2)-1>0.
+ \tag{SC18.9}\label{r18sc:global-monodromy}
+\]
+If the supplied degree-five polynomials
+span $H^0(Y_E,\mathcal L^5)$, the density
+is in that full linear system.
+\end{theorem}
+
+\begin{proof}
+All fibers of the ambient are smooth
+and geometrically integral.  The fixed-
+member pencil proof of CG18 uses only
+the first and second jets and separated
+two-point first jets of a degree at
+least three in a projective embedding,
+so it applies to this degree-five
+section system on the actual ambient.
+The special smooth-section opens are
+geometrically nonempty by the same
+first-jet incidence argument.
+
+Their smooth and one-node members are
+geometrically integral for a direct
+reason which does not require $S$
+to be a projective complete intersection.
+For every geometric fiber,
+\[
+ H^1\bigl(S\times\mathbf P^3,
+                  A^{-5}\boxtimes\mathcal O(-5)\bigr)=0
+\]
+by Kunneth: both possible terms have
+either $H^0(\mathbf P^3,\mathcal O(-5))$
+or $H^1(\mathbf P^3,\mathcal O(-5))$,
+which vanish.  The divisor sequence
+therefore gives $H^0(X,\mathcal O_X)=\bar k$.
+A smooth or isolated-node Cartier
+fourfold is $S_2$ and $R_1$, so it
+is connected normal and integral.
+
+Choose a smooth generic reference
+section.  Let $S_0$ be the finite set
+of rational primes under its bad
+places, together with $2$, and select
+every place $v$ of $F$ over every
+$p\in S_0$, including the places
+where the reference happens to be good.
+Write $\kappa(v)=\mathbf F_{p^{f_v}}$.
+The geometrically nonempty smooth-section
+open has a point over some
+$\mathbf F_{p^{f_vt_v}}$.
+Take $N$ divisible by all $f_vt_v$,
+and choose a monic polynomial over
+$\mathbf Z$ whose reductions at all
+$p\in S_0$ are irreducible of degree
+$N$.  It defines a number field $L$
+unramified and inert of degree $N$
+at these primes.  In $E=FL$, every
+residue field above $v$ contains
+$\mathbf F_{p^{f_vt_v}}$ and hence
+the chosen smooth section.  These
+congruences are imposed at every
+prime of $E$ over $S_0$.
+This saturation is necessary because
+the rational product $B$ below vanishes
+at all of them.  Choose five generic
+degree-one factors and a degree-five
+smoothing section on the smooth
+generic ambient; by Bertini and
+degree-zero weak Lefschetz they
+satisfy all the geometric PG18
+conditions.  Spread those data and
+choose a rational $q$ unramified
+in $E$ outside their finite bad
+set and the reference bad set.
+
+Put $B=\prod_{p\in S_0}p$,
+including the prime $2$, and
+impose $F_1\equiv P+qQ\pmod{q^2}$
+and the chosen smooth-section
+congruences at the other selected
+prime ideals.  Their solution
+lattice meets the fixed-reference
+Lefschetz open.  After that
+pencil is fixed, spread it and
+choose integers $a\equiv1\pmod{q^2}$,
+$a\equiv1\pmod B$, and $a\equiv0$
+at the remaining rational bad
+primes.  The forms $q^2BF_0+aF_1$
+give the exact product equation
+$P+qQ_a$ with $\bar Q_a=\bar Q$
+at $q$, smooth reductions at
+the other exceptional places,
+and good or ordinary quadratic
+reductions elsewhere.  The
+nonzero special Cartier equations
+give flat integral projective
+models, exactly as checked in
+PA18; the connectedness argument
+above handles their special
+one-node fibers.
+
+At $q$, apply the uniform surface
+curve gate and PG18, then RI18
+for every finite extension.
+At the other places apply the
+frozen good-reduction theorem
+or ON17, both with all their
+new-cycle extension conclusions.
+All finite places and complementary
+degrees now satisfy PH16; GA17
+supplies the admissible lifts on
+this full height domain.
+The polynomial-on-each-line
+argument of CG18 proves density
+in precisely the supplied linear
+system.  Finally five degree-one
+factors have $\deg_Y(h^5)=10\deg(A^2)$
+top points; the extreme weight
+calculation proves
+\eqref{r18sc:global-monodromy}.
+\end{proof}
+
+\paragraph{Boundaries and literature.}
+The new ample-cut propagation uses geometric
+weak Lefschetz and Poincare duality in their
+explicit degree-two ranges; it proves the
+needed Gysin injectivity before using it.
+The curve property on projective bundles
+over surfaces and its smooth-modification
+stability were already frozen in CD17.
+PG18 supplies numerical local exactness;
+CL17/DQ17/ER17/VT17 retain their precise
+ordinary-actual reconstruction scope.
+RI18, ON17, PH16 and GA17 are used only
+where their stated extension and global
+hypotheses have been checked.
+
+A local good surface alone does not prove
+the global theorem's hypothesis: its
+surface must have the supplied smooth
+projective model at every finite place.
+The separate SG18 example constructs
+such an input and checks its literature
+dependencies.  The present section
+neither proves the general finite-field
+curve comparison nor the general G
+conjecture or arbitrary-variety full
+unconditional heights.

@@ -1,0 +1,422 @@
+\section{A product-torus tail homotopy in the actual two-colour complex}
+\label{sec:r12-product-torus-tail-homotopy}
+
+\paragraph{Status and scope.}
+This source is submitted as \textbf{PROVED THIS ROUND}, pending
+independent review of its exact bytes.  The construction contributors
+are \texttt{/root} and \texttt{/root/r11\_challenge}.  Its new interface
+is a restricted, explicitly represented integration operator on actual
+forms, followed by a finite actual homotopy.  It is not an arbitrary
+proper analytic pushforward theorem, not a descent theorem, and not
+a homotopy on every analytic family on a torus.  The analytic base
+below is an ordinary open in a smooth space over the original field
+$K$; no calculus on a nonreduced norm-parameter base is used.
+
+\subsection{Objects, equivalence and the precise parameter restriction}
+
+Let $Y$ be a smooth pure-dimensional good $K$-analytic space without
+boundary.  Put $\mathcal T=\mathbf G_{m,K}^{\mathrm{an}}$, let $t$
+be its coordinate, let $\tau=v(t)$, and write
+$\pi:Y\times\mathcal T\to Y$ and $i_1:Y\to Y\times\mathcal T$
+for projection and the section $t=1$.  All absolute values and
+weights have their original-$K$ normalization.
+
+A form $u\in B(Y\times\mathcal T)$ is \emph{product-presented on
+bounded parameter slabs} if for each $y\in Y$ and each compact
+interval $I\subset\mathbb R$ there are an ordinary neighborhood
+$V$ of $y$, base analytic units $f=(f_1,\ldots,f_a)$ on $V$, and
+a finite native $\delta$-form $\gamma$ such that
+\[
+ u|_{V\times\{\tau\in I\}}=t_{(f,t)}^\star\gamma.
+ \tag{PTH1}
+\]
+The equality is required on a neighborhood of the displayed slab.
+One may restrict the native form to an ambient open neighborhood
+of its image and use a finite partition there.  Enlarging the unit
+tuple and subdividing is permitted.  Units $t^b f_j$, $b\in\mathbb Z$,
+are permitted because their valuations are integral affine functions
+of $(v(f),\tau)$.  General units depending on $t$, such as $1-t$,
+are \emph{not} permitted unless a separate presentation (PTH1) is
+actually supplied on the whole slab in question.
+
+Equality and zero mean equality and zero in Mihatsch's actual
+$B$ on the whole analytic product, not merely equality on one
+chosen tropicalization.  Thus this is a subsheaf of actual forms,
+not a free native coefficient space or its completion.  Finite sums,
+wedge products, and both full differentials preserve this class.
+An analytic change of base preserves it by actual pullback.
+
+We call such a form \emph{locally slab-supported} if every $y$ has
+an ordinary neighborhood $V$ and a compact interval $I$ such that
+\[
+                 \operatorname{Supp}(u|_{V\times\mathcal T})
+                        \subseteq\{\tau\in I\}.
+ \tag{PTH2}
+\]
+We call it \emph{positive-tail zero} if every $y$ has such a $V$
+and a constant $M$ for which $u=0$ on $V\times\{\tau>M\}$.
+These are local conditions on the \emph{whole actual form}; they
+do not assert that a chosen native expression vanishes coefficient
+by coefficient outside a slab.
+
+\subsection{Finite native integration and affine base change}
+
+Let $p_a:\mathbb R^a\times\mathbb R\to\mathbb R^a$ be projection,
+with standard multiplicity one in the last direction.  For a native
+$\delta$-form $\gamma$ supported in a compact $\tau$-slab, define
+$p_{a,*}\gamma$ by finite polyhedral fiber integration.  In a
+subordinate finite complex, if
+$\gamma=\sum_\sigma\alpha_\sigma\wedge[\sigma,\mu_\sigma]$,
+its formula is
+\[
+ p_{a,*}\gamma=
+ \sum_\sigma
+ p_{a,\mu_\sigma/\nu_\sigma,*}\alpha_\sigma
+                  \wedge[p_a(\sigma),\nu_\sigma].
+ \tag{PTH3}
+\]
+Here $\nu_\sigma$ is any positive weight on the image, and the
+quotient weight is the one determined by the exact sequence of
+linear spans.  Each coefficient is an actual finite fiber integral,
+not an abstract dual functional.  Polyhedral subdivision gives
+piecewise smooth coefficients.  Affine pushforward commutes with
+$d'$ and $d''$ as currents, so both derivatives of (PTH3) are
+polyhedral.  Therefore (PTH3) is a native $\delta$-form.  Its total
+bidegree is lower by $(1,1)$, irrespective of the dimensions of
+the individual carriers.  This uses the definition and affine
+functoriality of native $\delta$-forms, not a pushforward on an
+arbitrary tropical or analytic space.
+
+\begin{lemma}[Affine product base change]
+For every affine map $a:\mathbb R^b\to\mathbb R^a$ and every
+such $\gamma$,
+\[
+ a^*p_{a,*}\gamma
+       =p_{b,*}(a\times\mathrm{id})^*\gamma.
+ \tag{PTH4}
+\]
+All pullbacks in this identity are the native graph pullbacks.
+\end{lemma}
+
+\begin{proof}
+Factor $a$ as a surjective affine map followed by an affine closed
+embedding.  In the surjective case, linear changes of coordinates
+make it a coordinate projection.  Its pullback is product with the
+standard fiber space, and (PTH4) follows directly from (PTH3) by
+Fubini, with the product quotient weights.
+
+For an embedding $j$, put $J=j\times\mathrm{id}$ and let
+$C=j_*1$ be its weighted affine image cycle.  The native graph
+pullback and projection formula give
+\[
+ \begin{split}
+ j_*p_{b,*}J^*\gamma
+ &=p_{a,*}J_*J^*\gamma
+   =p_{a,*}(p_a^*C\wedge\gamma)\\
+ &=C\wedge p_{a,*}\gamma
+   =j_*j^*p_{a,*}\gamma.
+ \end{split}
+ \tag{PTH5}
+\]
+Pushforward by an affine embedding is injective on polyhedral
+currents: a smooth compactly supported test form on the image
+extends to an ambient tubular neighborhood.  Cancelling this
+injective map proves (PTH4).  Functoriality gives the general case.
+The invoked native projection and graph formulas are Theorem 4.1
+and Proposition/Definition 4.2 of
+\texttt{arXiv:2107.12067v3}.  No non-surjective pullback for an
+arbitrary tropical space has been used.
+\end{proof}
+
+\subsection{The product-cycle test and actual zero relations}
+
+We use the following original-field product fact.  If $K_0\subset Y$
+is an affinoid domain, $g$ is any finite tuple of its analytic units,
+and $A_I$ is a closed standard annulus with valuation interval $I$,
+then, away from the analytic boundaries,
+\[
+ T(K_0\times A_I,(g,t))=T(K_0,g)\times[I,1].
+ \tag{PTH6}
+\]
+Here $K_0$ is an affinoid domain, not an extension of the ground
+field.  A direct verification also fixes the normalization.  Above
+a point of $\Sigma(K_0,g)$ the maximal-dimensional skeleton for
+$(g,t)$ consists of the Gauss extensions
+\[
+ \left|\sum_j a_jt^j\right|_{x,\tau}
+                 =\max_j |a_j(x)|\exp(-j\tau).
+ \tag{PTH7}
+\]
+Indeed maximal graded transcendence degree forces the reduction
+of $t$ to be transcendental over the graded residue field of the
+base point; this is precisely the Gauss extension.  Conversely
+(PTH7) has the required extra transcendence degree.  Thus the
+weighted skeleton is the product skeleton.  Locally, a finite flat
+toric coordinate projection of base degree $e$ becomes, after
+adjoining $t$, a coordinate projection of the same degree $e$.
+The parameter coordinate is primitive and contributes weight one.
+This proves (PTH6), also with nonrational radii.  It is the
+one-center product case of the skeleton computation in the proof
+of Proposition 3.21 of \texttt{arXiv:2112.10018v4}.  The boundary
+images to exclude are the base boundary image times $I$ and the
+two annulus endpoints; we will choose $I$ larger than the parameter
+support.  Dimension-deficient base images contribute zero on both
+sides and cause no change to this argument.
+
+\begin{lemma}[Entire actual zero preservation]
+If $t_{(f,t)}^\star\gamma=0$ on $V\times\mathcal T$ and $\gamma$
+is supported in a compact parameter slab, then
+\[
+                       t_f^\star(p_{a,*}\gamma)=0
+                                   \quad\hbox{in }B(V).
+ \tag{PTH8}
+\]
+\end{lemma}
+
+\begin{proof}
+Let $K_0\subset V$ be \emph{any} affinoid domain and let
+$g$ be \emph{any} unit refinement of $f|_{K_0}$, say
+$f|_{K_0}=a\circ g$ on valuation coordinates.  Choose a standard
+annulus whose interval strictly contains the parameter support.
+The forward implication of the actual zero criterion, Lemma 4.4
+of \texttt{arXiv:2112.10018v4}, applied to this affinoid product
+and the refinement $(g,t)$, gives
+\[
+ (T(K_0,g)\times\mathbb R)
+                \wedge(a\times\mathrm{id})^*\gamma=0
+ \tag{PTH9}
+\]
+away from the base boundary image.  The annulus endpoints make
+no contribution because of the strictly smaller support slab.
+Apply the native parameter projection.  The native projection
+formula and (PTH4) turn (PTH9) into
+\[
+                T(K_0,g)\wedge a^*p_{a,*}\gamma=0
+ \tag{PTH10}
+\]
+away from that boundary image.  Since $K_0$ and $g$ were arbitrary,
+the reverse implication of the same Lemma 4.4 proves (PTH8).
+
+This checks the entire actual relation kernel, not just the
+initial chart, Gauss chambers, separated exterior products, or a
+probe topology.  Additional units depending on $t$ are not being
+declared unnecessary for testing input zero: input zero is
+\emph{already an actual equality}.  Product refinements suffice
+to deduce the required equalities for \emph{all base refinements}
+of the proposed output.
+\end{proof}
+
+\begin{theorem}[Restricted actual product integration]
+There is a well-defined linear operator on locally slab-supported,
+product-presented actual forms,
+\[
+ \Pi:B^{p,q}_{\mathrm{prod,slab}}(Y\times\mathcal T)
+                                  \longrightarrow B^{p-1,q-1}(Y),
+ \qquad
+ \Pi(t_{(f,t)}^\star\gamma)=t_f^\star p_{a,*}\gamma.
+ \tag{PTH11}
+\]
+It commutes with restriction to ordinary base opens, with both
+full differentials, and with analytic base change whenever both
+spaces satisfy the stated hypotheses.  It satisfies the actual
+projection formula with every actual base form.  No claim is
+made for forms not supplied with the product presentation.
+\end{theorem}
+
+\begin{proof}
+First work on a base neighborhood with one support slab.  Choose
+a smooth scalar $\chi(\tau)$, equal to one near that slab and
+zero outside a slightly larger compact slab.  Choose (PTH1) on
+a neighborhood of the larger slab, multiply the native expression
+by $\chi$, and extend it by zero beyond the slab.  In the native
+base variables one may work locally and then use a finite smooth
+partition subordinate to the ambient presentation neighborhoods.
+Formula (PTH3) supplies a finite native output.
+
+For two presentations use a common base unit refinement and
+pull back their native expressions to it.  Formula (PTH4) compares
+the two native outputs on that common chart.  The difference of
+the two cut-off inputs is actual zero, so (PTH8) makes the
+outputs equal in actual $B$.  The same argument proves
+independence of the cutoff and of ambient subdivisions and
+partitions.  On ordinary base overlaps it proves equality of
+the outputs, which therefore glue as actual forms.  Notice that
+this construction does not infer native support from actual
+support: the cutoff makes native support proper explicitly.
+
+Native pushforward commutes with $d'$ and $d''$.  Cutoff derivative
+terms are actual zero because their support is outside the
+actual support of the form; (PTH8) kills their outputs.  This
+proves differential compatibility.  For a base form, include
+its finitely many presenting units in the common chart and
+use the native projection formula.  Finally analytic base
+change replaces the tuple $f$ by its actual analytic pullback
+and leaves the displayed native integral unchanged.  The actual
+pullback theorem is Theorem 4.5 of the same v4 source.  Thus
+all the asserted compatibilities hold as actual identities.
+\end{proof}
+
+For clarity about topology, fix a finite unit tuple, finite
+carrier complexes, a compact parameter slab and compact base
+coefficient sets.  On the corresponding finite smooth coefficient
+Fr\'echet spaces, (PTH3) is continuous into one fixed finite
+image subdivision.  This follows by differentiating the finitely
+many fiber integrals with affine endpoints; each target seminorm
+is bounded by finitely many source seminorms of bounded order.
+The quotient by entire actual zero relations is permitted by
+(PTH8).  One may therefore give the represented source the
+coefficient-final topology of these specified stages and obtain
+a continuous map into the actual coefficient-final target.
+This statement neither identifies that source topology with
+the topology inherited from all $B(Y\times\mathcal T)$ nor
+asserts a closed range, strictness, Hausdorff stage comparison,
+or a full OPEN-KERNEL result.  No completion occurs in (PTH11).
+
+\subsection{The section identity and the homotopy}
+
+Put $h=\tau_+=\max(\tau,0)$.  Its native double derivative is
+the multiplicity-one hyperplane $\{\tau=0\}$.
+
+\begin{lemma}[Section identity in exactly the product class]
+For every product-presented actual $u$,
+\[
+                             \Pi(Dh\wedge u)=i_1^*u.
+ \tag{PTH12}
+\]
+\end{lemma}
+
+\begin{proof}
+The left side is locally slab-supported, and only a neighborhood
+of the zero slab is needed.  Present $u=t_{(f,t)}^\star\gamma$
+there.  Let $j_0:\mathbb R^a\to\mathbb R^a\times\mathbb R$
+be the affine section at zero.  In native $\delta$-forms,
+the full graph-pullback projection formula gives
+\[
+ p_{a,*}(D\tau_+\wedge\gamma)
+       =p_{a,*}(j_{0,*}1\wedge\gamma)
+       =p_{a,*}j_{0,*}j_0^*\gamma=j_0^*\gamma.
+ \tag{PTH13}
+\]
+This is valid for all carriers, including normal first-form
+components and corner terms; it is not a restriction of their
+coefficients by hand.  On the other hand, the genuine analytic
+section $t=1$ takes the entire unit presentation $(f,t)$ to
+$(f,1)$, so actual pullback gives
+$i_1^*u=t_f^\star j_0^*\gamma$.  This proves (PTH12).
+For a general analytic family the last sentence has no such
+native product description, and (PTH12) need not hold.
+\end{proof}
+
+Use the exact array complex and the operators $J_k$ from HCT1--6:
+\[
+ L_k^s=\bigoplus_{i=0}^k B^{s-i,s-k+i},\qquad
+ (\partial_k u)_i=d''u_i+d'u_{i+1}.
+ \tag{PTH14}
+\]
+For a positive-tail-zero product-presented $u\in L_k^s$, define
+\[
+                         \mathcal H_k u=\Pi J_k(h,u).
+ \tag{PTH15}
+\]
+Every component of $J_k(h,u)$ vanishes on $\tau<0$, and on
+the given positive tail because $u$ and its derivatives vanish
+there.  Thus (PTH15) is a legitimate locally slab-supported
+actual integration, not a divergent formal integral.  Its
+degree is
+\[
+                        \mathcal H_k u\in L_{k+1}^s(Y).
+ \tag{PTH16}
+\]
+In particular for a closed triple in the original order
+$q=(A,B,M)$, (PTH15) uses the literal QHT expression
+\[
+             K_h(q)=(d''h\wedge A,-d'h\wedge B,
+                         -h\wedge d''M,-d'h\wedge M),
+ \tag{PTH17}
+\]
+with its original quadruple ordering and no discarded mixed term.
+
+\begin{theorem}[Actual tail homotopy, with its nonclosed defect]
+For every $k\ge1$ and every such $u$,
+\[
+ \partial_{k+1}\mathcal H_k u
+        =i_1^*u-\mathcal H_{k-1}(\partial_k u).
+ \tag{PTH18}
+\]
+Consequently an independently verified closed family gives the
+explicit actual primitive
+\[
+               i_1^*u=\partial_{k+1}\mathcal H_k u.
+ \tag{PTH19}
+\]
+At degree zero the precise endpoint is
+\[
+             \partial_1\mathcal H_0 g
+                         =i_1^*g-\Pi(h\wedge Dg).
+ \tag{PTH20}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply (PTH11) to the entire HCT5 identity
+$\partial J_k(h,u)=Dh\wedge u-J_{k-1}(h,\partial u)$
+and then use (PTH12).  Both terms are locally slab-supported;
+$\partial u$ inherits the same zero tail.  Equivalently one may
+insert a native cutoff equal to one on $[0,M]$ and with its
+derivatives in a strictly larger positive tail.  All derivative
+terms of that cutoff are actual zero, not merely negligibly
+small, and vanish under (PTH11).  HCT6 proves the endpoint.
+No assertion that closedness by itself implies a primitive has
+entered the argument: the genuine product family and its entire
+uniform zero tail are explicit additional data.
+\end{proof}
+
+\subsection{Pressure tests and the external-row application interface}
+
+The base unit tuple is unrestricted: it may include
+$(T_1,T_2,T_1+T_2)$ on its unit locus, or the units defining a
+relative curve with moving punctures and any number of passive
+directions.  Their actual zero relations are retained because
+(PTH8) tests every base affinoid refinement.  Nothing translates
+these base coordinates independently or replaces their whole
+relation kernel by product probes.  Real intercept walls and
+mixed parameter jets are part of the finite native integral.
+Nonrational analytic points participate in (PTH7) and in the
+actual zero criterion.  No field extension, rational-point
+density argument, division by a domain degree, or unproved
+high-order actual descent is used.
+
+For the closed external-row family $\mathcal T^t$ of EFT2--4,
+once that family's exact finite product-presentation and tail
+certificate is independently verified, the precise substitution
+in (PTH19) is
+\[
+ H(S,v;g)=\Pi K_{\tau_+}(\mathcal T^t),\qquad
+              \partial_3H(S,v;g)=\mathcal T(S,v;g).
+ \tag{PTH21}
+\]
+This would close the specific ECR10 primitive requirement with
+zero extending error, for this specified defect only.  It does
+not demand a strict witness for ASP's diagonal symbol cycles.
+The construction of the whole family is essential; an arbitrary
+closed actual triple has not been given such a family here.
+Further Gaussian chart triangles still need their literal
+pair/triple comparisons and the frozen RAG/RSP hypotheses before
+one can claim an actual Green form for a new original cycle.
+
+\paragraph{Exact inputs and primary-source audit.}
+HCT:
+\path{27af6c36a7819874f2a3137bf4ee6db4b8f8d4f7ffd99fc37d419b2144790549}.
+QHT:
+\path{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0}.
+The native formulas used above were read in
+\texttt{arXiv:2107.12067v3} (28 August 2022), Sections 2.3 and 3,
+Theorem 4.1 and Proposition/Definition 4.2.  The analytic interfaces
+were read in \texttt{arXiv:2112.10018v4} (7 September 2024),
+Proposition 2.17, the product case in Proposition 3.21,
+Definition 4.2, Lemma 4.4 and Theorem 4.5.  Example 2.45(3)
+of the latter explicitly warns against an unrestricted
+$\delta$-form pushforward on tropical spaces.  The finite ambient
+native construction and all-refinement argument above are the
+additional restricted bridge, not an assertion that this warning
+has been removed in general.

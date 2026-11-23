@@ -1,0 +1,316 @@
+\section{The native Weyl relation, including the zero-pivot boundary}
+\label{sec:r11-native-weyl}
+
+\paragraph{Status and construction.}
+\textbf{PROVED THIS ROUND}, subject to exact-hash independent review.
+The construction contributor is \texttt{/root/r11\_challenge}.
+This is a literal relation between specified native paths, not a
+classification of arbitrary matrix words.  It treats the elementary
+Weyl identity, where the opposite-root parameter product is $-1$.
+The Gauss-pivot theorem requiring $1+ab$ to be a unit cannot be used
+at this parameter, and is not used in the proof below.
+
+Let $N$ be an ordinary analytic open over the original $K$, let $a$
+be an analytic unit on $N$, and write $A=v(a)$.  Use the actual
+line-bundle metric and norm conventions of frozen SHT/CS, with
+$R=c_1(\overline L)$.  Fix distinct indices $i,j$ in an $r$-tuple
+$f$, where $r\ge2$, and put $W=N\setminus|f=0|$, $s=r-1$.
+Define
+\[
+ P=E_{ij}(a),\qquad Q=E_{ji}(-a^{-1}),\qquad
+ W_0|_{\{i,j\}}=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \tag{WNR1}
+\]
+and let $W_0$ be the identity on the other rows.  Then
+\[
+             PQP=D_j(a^{-1})D_i(a)W_0.
+ \tag{WNR2}
+\]
+The rightmost matrix acts first.  The matrix $W_0$ is a two-sided
+norm isometry over the original $K$, in every residual characteristic.
+Its raw norm Green expression is unchanged, so its primitive pair
+in the right-hand path is specified to be zero.
+
+Let $\mathcal P$ denote the frozen native shear pair, and let
+$\mathcal U_{i,a}(g)$ denote the frozen antisymmetric unit-row pair
+for $g\to D_i(a)g$.  Consider exactly
+\[
+ \begin{split}
+ \mathscr W={}&\mathcal P_{ij,a}(f)
+  +\mathcal P_{ji,-a^{-1}}(Pf)+\mathcal P_{ij,a}(QPf)\\
+ &-\mathcal U_{i,a}(W_0f)
+  -\mathcal U_{j,a^{-1}}(D_i(a)W_0f).
+ \end{split}
+ \tag{WNR3}
+\]
+The curvature contributions of the two diagonal edges are $A R^s$
+and $-A R^s$ and cancel.  Both paths have the same endpoint tuple,
+so $\partial_1\mathscr W=0$ literally.  Closedness alone will not
+be used to infer a primitive.
+
+\subsection{All eight edges and two fixed norm isometries}
+
+Write the full potentials as
+\[
+ \begin{array}{llll}
+ F=\Phi_f,& S=\Phi_{D_i(a)^{-1}f},& U=\Phi_{Pf},
+    & L_2=\Phi_{D_j(-a^{-1})^{-1}Pf},\\
+ V=\Phi_{QPf},& S_3=\Phi_{D_i(a)^{-1}QPf},
+    &H=\Phi_{PQPf},& L=\Phi_{D_i(a)W_0f}.
+ \end{array}
+ \tag{WNR4}
+\]
+The complete oriented unit-edge expansion is
+\[
+\begin{array}{c|c|c}
+ \text{edge}&\text{ordered potentials}&\text{weight}\\\hline
+ 1&(F,S)&-A\\
+ 2&(S,U)&A\\
+ 3&(U,L_2)&A\\
+ 4&(L_2,V)&-A\\
+ 5&(V,S_3)&-A\\
+ 6&(S_3,H)&A\\
+ 7&(H,L)&A\\
+ 8&(L,F)&-A.
+\end{array}
+\tag{WNR5}
+\]
+The middle representatives in each native shear are precisely those
+of SHT; their unchanged rows remain unchanged.  No norm-equivalent
+replacement path has been substituted.
+
+\begin{lemma}[Whole-domain middle norm identities]
+On all of $W$ one has $L_2=L$ and $S_3=S$, including points where
+one or both of the active tuple entries vanish.
+\end{lemma}
+
+\begin{proof}
+In a local line-bundle frame put $X=f_i$, $Y=f_j$, retaining the
+same passive entries in every tuple.  The active entries of the
+relevant tuples are
+\[
+ \begin{array}{c|c}
+ L_2&(X+aY,-aY)\\
+ L&(aY,-X)\\
+ S_3&(X/a+Y,-X/a)\\
+ S&(X/a,Y).
+ \end{array}
+ \tag{WNR6}
+\]
+Each pair of rows in this table is related by a constant matrix
+with entries in $\{0,1,-1\}$ whose inverse has the same norm bound.
+For example the last pair is related by
+$\left(\begin{smallmatrix}1&1\\-1&0\end{smallmatrix}\right)$.
+These are two-sided maximum-norm isometries in every completed
+residue field.  The same metric and passive rows give the stated
+whole-domain equalities.  They identify full actual derivatives and
+mixed jets, not only values at a selected tropical chamber.
+\end{proof}
+
+For $A\ge0$, the first and last shears are norm isometries, so
+$F=U$ and $V=H$.  Using (WNR6), the edge pairs
+$(1,2),(5,6),(3,8),(4,7)$ are inverse pairs.  For $A\le0$ the
+middle shear is a norm isometry, so $U=V$.  Edges $(2,5)$ and
+$(3,4)$ then cancel, leaving the four-edge cycle
+\[
+       (F,S;-A),\quad(S,H;A),\quad(H,L;A),\quad(L,F;-A).
+ \tag{WNR7}
+\]
+These assertions on closed sign regions mean identities of their
+finite actual coefficient presentations and restricted tangential
+jets.  No multiplication by a discontinuous chamber indicator is
+performed.
+
+\subsection{The full degree-one residual on a two-entry region}
+
+Write
+\[
+ \mathfrak s(x,y)
+    =(x\,d''y-y\,d''x,-x\,d'y+y\,d'x).
+ \tag{WNR8}
+\]
+For one normalized unit edge $(p,q;c)$ the complete CS degree-one
+residual is
+\[
+ S_{e,1}=\mathfrak s(p,q)+\mathfrak s(c_+,q)
+                              +\mathfrak s(c_-,p).
+ \tag{WNR9}
+\]
+Suppose that all eight norm vertices are determined by the two
+active entries.  Then the active tuples defining $L$ and $S$ in
+(WNR6) differ by multiplication by $a$ and a constant norm isometry.
+Consequently, for any one common actual scalar shift of all vertices,
+\[
+                              L=S+A.
+ \tag{WNR10}
+\]
+For $A\ge0$ the inverse-edge pairing gives $\sum_eS_{e,1}=0$.
+For $A\le0$, apply (WNR9) to the four edges (WNR7).  By (WNR10)
+their sum is
+\[
+ \begin{split}
+ \sum_eS_{e,1}
+ &=\mathfrak s(F-A,S)+\mathfrak s(S,H-A)
+                         +\mathfrak s(H,S)+\mathfrak s(S,F)\\
+ &=-\mathfrak s(A,S)-\mathfrak s(S,A)=0.
+ \end{split}
+ \tag{WNR11}
+\]
+This is bilinearity and antisymmetry of the entire pair, including
+both differential colours.  At $A=0$, all edge weights and their
+restricted tangential derivatives vanish, and each edge's endpoint
+norm potentials agree with their restricted first jets.  Thus (WNR9)
+is zero on every face of the weight wall and every intersection with
+the other walls.  The degree-one pairs have no positive-codimension
+carrier component.  Equations (WNR9)--(WNR11), on a common finite
+presentation, therefore prove the actual identity on the entire
+two-entry region, including the weight wall.  No minimum of arbitrary
+smooth actual functions, generic noncancellation assumption, or
+auxiliary perturbation of $f$ is needed.
+
+\subsection{One whole-presentation cap in arbitrary rank}
+
+For $r\ge3$ let $P_{\rm pas}$ be the norm of the unchanged $r-2$
+passive entries, and set
+\[
+ \psi=-\log P_{\rm pas},\qquad
+ \kappa=8|A|,\qquad
+ \Psi=\min(\psi,F+\kappa+\varepsilon),\qquad
+ R_*=R-D\Psi,
+ \tag{WNR12}
+\]
+with $\psi=+\infty$ at passive zeros and $\varepsilon>0$.  Every
+edge in (WNR5) changes one row by a unit of valuation $\pm A$;
+hence every whole norm vertex $\Phi$ satisfies
+$|\Phi-F|\le8|A|$.  On the ordinary open
+\[
+ W_{\rm two}=\{\psi>F+\kappa\}
+ \tag{WNR13}
+\]
+all its norm vertices are therefore strictly below the passive
+potential.  They are determined by the active two entries, with
+their full analytic values rather than a generic-minimum model.
+On
+\[
+ W_{\rm pas}=\{\psi<F+\kappa+\varepsilon\}
+ \tag{WNR14}
+\]
+the cap is exactly $\psi$.  These two ordinary opens cover $W$.
+Near a passive-zero point the second cap branch holds, so the cap
+is actual throughout $W$.  All its affine walls and their mixed
+curvatures are retained.
+
+On $W_{\rm pas}$ the frozen full CS passive-block proof gives
+$S_{e,s}=0$ edgewise: $R_*^{r-2}=0$ because the common passive
+map lands in $\mathbf P^{r-3}$; the remaining carrier alternatives
+are changed active row, passive active row, or the unique other
+active row.  On $W_{\rm two}$ the edgewise proof of frozen CS17
+gives $S_{e,s}=R_*^{s-1}S_{e,1}$.  It uses the single edge support
+identities and not any square-specific group relation.  Equation
+(WNR11) thus gives
+\[
+                           \sum_eS_{e,s}=0\quad\hbox{on all }W.
+ \tag{WNR15}
+\]
+This does not split an arbitrary low-degree block into closed pairs.
+
+\subsection{The actual witness and original-support interface}
+
+Let $\mathcal K_s(e;R_*)$ be the exact finite triple in frozen
+CS6 and CS8--CS10, evaluated at the two potentials of each edge
+after the common shift $-\Psi$.  Its scalar term and tetrahedron
+term, including $D|A|$, are both retained.  Let $Q_{\rm met}$ be
+the entire frozen MT16 triple for precisely the eight original
+edges (WNR5), with $h=-\Psi$ and $R_*=R+Dh$.  In particular, in
+the notation of that source it is
+\[
+ Q_{\rm met}=
+ \sum_{k=1}^{s-1}\left(\sum_{j=0}^{s-k-1}R_*^jR^{s-k-1-j}\right)
+                      \mathcal H_h(f_k)
+ -\left(0,0,h\sum_{k=1}^s\Gamma_{k-1}R_*^{s-k}\right).
+ \tag{WNR16}
+\]
+The $f_k$ and $\Gamma_k$ are the full oriented edge sums, not
+separately closed truncated pieces.  For $r\ge3$ set
+\[
+                         q_{\rm W}=\sum_e\mathcal K_s(e;R_*)-Q_{\rm met}.
+ \tag{WNR17}
+\]
+For $r=2$ no passive cap is needed: use the original reference $R$
+and set $q_{\rm W}=\sum_e\mathcal K_1(e;R)$.  Here each edge
+triple has only its scalar mixed component, and (WNR11) applies
+directly on all of $W$.
+
+\begin{theorem}[Native all-rank Weyl relation]
+For every $r\ge2$ and every analytic unit $a$ on the stated whole
+original-$K$ ordinary open, the above finite expressions give an
+actual $q_{\rm W}\in L_2^{r-1}(W)$ with
+\[
+                              \mathscr W=\partial_2q_{\rm W}.
+ \tag{WNR18}
+\]
+The extending error is zero.  No bound on $|a|$ on $N$ and no
+nonvanishing condition on the individual tuple entries is imposed.
+\end{theorem}
+
+\begin{proof}
+For $r\ge3$, CS10 and (WNR15) show that the shifted pair is
+$\partial_2\sum_e\mathcal K_s(e;R_*)$.  Full MT16 transports
+it back to the original common metric, giving the minus sign in
+(WNR17).  For $r=2$ use (WNR11) and CS10 without metric transport.
+All expressions are finite actual formulas on $W$; the norm
+isometries, carrier arguments and actual locality prove the identity
+through all tuple-zero and intercept-wall strata.  The unit $a$
+is never extended across a zero, since the prescribed word itself
+contains $a^{-1}$ and its domain explicitly requires a unit.
+\end{proof}
+
+For the original regular same-line-bundle CI difference, this
+provides the following precise representative bridge.  Suppose an
+ordinary neighborhood of the cancelled part inside the original
+$U=X^{\rm an}\setminus|[Y_1]-[Y_0]|$ has a two-open cover whose
+supplied native path pairs $p_0,p_1$ differ on the whole overlap
+by one (WNR3), possibly inside identical prefixes and suffixes.
+Then $p_1-p_0=\partial_2q_{\rm W}$ is an actual overlap witness.
+Frozen RAG6, with every mixed partition term, constructs a global
+actual pair $(\alpha,\beta)$ on the punctured neighborhood and
+its supplied extending residue $E$.  With the RSP cutoff $\chi$
+on $U$ equal to one near the cancelled set, set
+\[
+ g_Z=G_1-G_0-d'(\chi\alpha)-d''(\chi\beta)
+ \quad\hbox{on }V=X^{\rm an}\setminus(|Y_0|\cup|Y_1|),
+ \tag{WNR19}
+\]
+and glue it to the actual $E$ near the cancelled part.  This gives
+an actual form on exactly $U$.  The frozen support lemma places
+$D\eta$ compactly in $V$ for every actual compact test $\eta$;
+full actual Stokes kills the two corrections, so
+\[
+             \int_Ug_Z\wedge D\eta=-\int_{[Y_1]-[Y_0]}\eta.
+ \tag{WNR20}
+\]
+This is a certificate consequence, not an automatic overlap
+statement for all Gaussian pivot covers.
+
+\paragraph{Presentation and scope safeguards.}
+The output is an explicitly supplied actual triple.  On a fixed
+whole presentation it uses finitely many norm vertices, unit
+valuations, derivatives, products and the one cap, and it respects
+their common analytic refinements.  The non-product unit relation
+$(T_1,T_2,T_1+T_2)$ and moving-puncture families impose no excluded
+independence assumption.  All norm arguments work at non-rational
+points and with arbitrary extra passive base directions.  No field
+extension or degree normalization occurs.  No full actual topology
+comparison, quotient lifting, general matrix-word factorization,
+arbitrary ordinary-open higher coherence, or new general cycle
+existence class is claimed.
+
+\paragraph{Exact frozen dependencies.}
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+MT: \path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+RAG: \path{34c1f00070f1e6ad596d9c8de58a20145a3670e1be7890710d5a4285733f9f82}.
+RSP: \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+CI: \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+The argument is independent of the new GPR, ST and AP proofs.
+Internal review is not formal verification or external peer review.

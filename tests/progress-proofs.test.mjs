@@ -168,6 +168,33 @@ test('Progress proof views remain bound to the exact inspected public source byt
   }
 });
 
+test('Reviewed H22 constructions are proved and source-bound while source vanishing and height interfaces remain open', async () => {
+  const sourcePath = `public/projects/strong-green/editions/${revision}/source-files/companion/chow-obstruction-green-pairs.tex`;
+  const source = await readFile(path.join(root, sourcePath));
+  const digest = createHash('sha256').update(source).digest('hex');
+  const labels = new Set([...source.toString('utf8').matchAll(/\\label(?:\[[^\]]+\])?\{([^}]+)\}/g)].map(match => match[1]));
+  const paper = JSON.parse(await read(`content/strong-green/releases/${revision}/papers/chow-obstruction-green-pairs.json`));
+  assert.equal(paper.sourceSha256, digest, 'The theorem article and published proof use the same exact source');
+  for (const [id, locator] of [
+    ['BB-CHOW-GREEN-PAIRS', 'h22:main'],
+    ['BB-ACTUAL-OBSTRUCTION', 'r11p:generic-chow-primitive'],
+    ['BB-SUPPORTED-GREEN-PAIR', 'r11p:complex-green'],
+    ['BB-RESTRICTED-TRACE', 'r11p:minimal-trace-theorem'],
+    ['BB-MODEL-DETECTOR', 'h22c:numerical-zero'],
+  ]) {
+    const entry = records.get(id);
+    assert.ok(entry, id);
+    assert.equal(entry.status, 'proved', id);
+    assert.equal(entry.proofMode, 'proof', id);
+    assert.equal(entry.source.url, '/source-files/companion/chow-obstruction-green-pairs.tex', id);
+    assert.equal(entry.source.sha256, digest, id + ': status is tied to the inspected proof bytes');
+    assert.ok(entry.source.locator.includes(locator) && labels.has(locator), id + ': its exact proof locator exists');
+  }
+  for (const id of ['BB-RESIDUAL-PERIODS', 'BB-ANALYTIC-INTERFACE', 'STRONG-G', 'BB-GLOBAL'])
+    assert.equal(records.get(id).status, 'open', id + ': H22 does not discharge this remaining assertion');
+  assert.equal(records.get('BB-RATIONAL-FIBRE-RIGIDITY').status, 'draft');
+});
+
 test('Recovered endpoints use a separate conditional compact proof without circular curve transfer', () => {
   const endpoint = progressProofs.find(item => item.caseId === 'endpoints');
   const byId = new Map(allNodes(endpoint).map(node => [node.id, node]));
@@ -181,9 +208,13 @@ test('Recovered endpoints use a separate conditional compact proof without circu
   }
   const independent = endpoint.trees.find(item => item.id === 'proof-endpoints-algebraic-endpoint-tree');
   const actualInputs = new Set(walkProofNodes(independent.root).map(node => node.record).filter(Boolean));
-  for (const record of ['BB-ACTUAL-OBSTRUCTION', 'BB-SUPPORTED-GREEN-PAIR', 'BB-RATIONAL-FIBRE-RIGIDITY']) {
+  for (const [record, status] of [
+    ['BB-ACTUAL-OBSTRUCTION', 'proved'],
+    ['BB-SUPPORTED-GREEN-PAIR', 'proved'],
+    ['BB-RATIONAL-FIBRE-RIGIDITY', 'draft'],
+  ]) {
     assert.ok(actualInputs.has(record), record);
-    assert.equal(entries.find(item => item.id === record).status, 'draft', record);
+    assert.equal(entries.find(item => item.id === record).status, status, record);
   }
   const independentLinks = walkProofNodes(independent.root).flatMap(node => [node.href, ...(node.links || []).map(link => link.href), ...(node.gate?.sources || []).map(link => link.href)]).filter(Boolean);
   assert.ok(independentLinks.every(href => !/pairing-constructions#(?:prop|sub):algebraic-triviality/.test(href)), 'Endpoint cannot depend on the curve-transfer proof which uses that endpoint');
@@ -230,7 +261,7 @@ test('Expanded kernel arguments retain normal carriers, exact multiplicities and
   assert.equal(at('bc-current-injection').status, 'hypothesis');
   assert.match(slice.scope, /normal, integral, quasiprojective.*finite.*compact actual scalar/);
   assert.equal(at('slice-supported-record').record, 'BB-SUPPORTED-GREEN-PAIR');
-  assert.equal(entries.find(item => item.id === 'BB-SUPPORTED-GREEN-PAIR').status, 'draft');
+  assert.equal(entries.find(item => item.id === 'BB-SUPPORTED-GREEN-PAIR').status, 'proved');
   assert.match(at('slice-normal-carriers').note, /Components lying over S contribute zero to this displayed dominating-cycle pushforward/);
   assert.match(at('slice-fibre-degree').note, /native residue degree/);
   assert.equal(at('slice-refined-input').href, '/results/proof-diagrams/kernel-domain/#proof-kernel-domain-point-residue-conclusion');
@@ -273,7 +304,9 @@ test('The curve-surface product proof separates endpoints, the empty product and
   assert.equal(at('product-model-assumption').status, 'hypothesis');
   assert.equal(at('good-native-obstruction').status, 'conditional');
   assert.equal(at('good-exact-support').status, 'conditional');
-  for (const suffix of ['good-numerical-calculus', 'good-constructive-primitives', 'good-composite-trace-calculus'])
+  assert.equal(at('good-numerical-calculus').status, 'proved');
+  assert.equal(at('good-numerical-calculus').href, '/papers/chow-obstruction-green-pairs#h22c:numerical-zero');
+  for (const suffix of ['good-constructive-primitives', 'good-composite-trace-calculus'])
     assert.equal(at(suffix).status, 'hypothesis', suffix);
   assert.match(at('good-finite-cover').title, /\[L:K\]/);
   assert.match(at('good-composite-trace-calculus').note, /original Gⱼ.*original absolute value.*every compact K-actual/);
@@ -330,8 +363,10 @@ test('The signature-only host proof separates numerical positivity, residuals an
   assert.equal(at('host-pc16-positive-input').href, '#proof-arithmetic-families-host-components-positive');
   assert.equal(at('host-u2-positive-input').href, '#proof-arithmetic-families-host-components-positive');
   assert.ok(!walkProofNodes(at('host-pc16-obstruction')).some(node => node.href === '#proof-arithmetic-families-host-full-u2'));
-  for (const suffix of ['host-canonical-residual-input', 'host-operational-lift-input', 'host-native-detector-input', 'host-exact-period-input', 'host-period-kernel-input', 'host-full-degree-injection', 'host-exact-reconstruction-input'])
+  for (const suffix of ['host-canonical-residual-input', 'host-operational-lift-input', 'host-native-detector-input', 'host-exact-period-input', 'host-period-kernel-input', 'host-full-degree-injection'])
     assert.equal(at(suffix).status, 'hypothesis', suffix);
+  assert.equal(at('host-exact-reconstruction-input').status, 'proved');
+  assert.equal(at('host-exact-reconstruction-input').href, '/papers/chow-obstruction-green-pairs#h22:correction');
   assert.match(at('host-canonical-residual-input').note, /r15res:canonical-residual.*r15iso:total-isotropy.*supplied historical inputs/);
   assert.match(at('host-unramified-domain').title, /EVERY finite unramified/);
   assert.match(at('host-all-finite-domain').title, /EVERY finite valued/);
@@ -393,7 +428,11 @@ test('Independent diagrams enter sitemap and search, not the frozen mathematical
   }
   const frozen = `projects/strong-green/editions/${revision}/results/index.html`;
   assert.equal(await read('dist/' + frozen), await read('public/' + frozen));
-  assert.doesNotMatch(await read('dist/' + frozen), /proof-diagrams|progress-proofs\.css/);
+  // Ordinary links to maintained diagrams do not embed their current runtime.
+  const frozenHtml = await read('dist/' + frozen);
+  const resources = [...frozenHtml.matchAll(/<(?:link|script)\b[^>]*\b(?:href|src)=["']([^"']+)["']/gi)].map(match => match[1]);
+  assert.deepEqual(resources.filter(url => /\/(?:research-map|logic-tree|progress-proofs)\.(?:css|js)(?:[?#]|$)/.test(url)), [], 'Frozen results do not load current diagram CSS or JavaScript');
+  assert.deepEqual([...frozenHtml.matchAll(/\bdata-(?:research-map|logic-forest|logic-tree|logic-panel|complete-logical-diagram|diagram-scroll|diagram-zoom-controls)\b/g)].map(match => match[0]), [], 'Frozen results do not embed current diagram surfaces');
 });
 
 test('New public reading pages remain unsigned and use only the shared feedback route', async () => {

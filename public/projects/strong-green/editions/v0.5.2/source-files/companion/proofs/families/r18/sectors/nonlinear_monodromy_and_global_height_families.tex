@@ -1,0 +1,373 @@
+% Round 18. New-sectors branch. New appendix; independent review required.
+\section{Nonlinear-factor monodromy and new full-height families}
+\label{r18ng:section}
+
+This appendix treats the geometric points of the deepest
+nonlinear strata individually.  Their number changes the
+extreme monodromy rank and gives an invariant distinguishing
+some of the new generic fibers from every hyperplane model
+of HP18.  The local Green input is the separately reviewed
+nonlinear-factor theorem NF18.
+
+\subsection{The full geometric top-stratum count}
+
+Use all hypotheses and notation of NF18: $n\ge4$, $m\ge3$,
+factor degrees $d_1,\ldots,d_m\ge1$, total degree
+$D=\sum_i d_i$, a native smooth normal-crossings arrangement
+of the factor hypersurfaces, a degree-$D$ form transverse
+to every positive-dimensional stratum and avoiding every
+zero-dimensional stratum, and a smooth geometrically
+integral generic fiber of $\prod_i f_i+\pi Q$.
+Let $\mathcal X/R$ be the explicit NF18 model.
+Put
+\[
+ \mu_I=\prod_{i\in I}d_i,\qquad
+ b_n(d_1,\ldots,d_m)
+   =\sum_{|I|=n+1}\mu_I-\binom{m-1}{n}.
+ \tag{NG18.1}\label{r18ng:rank-number}
+\]
+An empty sum and a binomial coefficient with upper index
+less than its lower index are zero.
+
+\begin{theorem}[Exact top monodromy rank]
+\label{r18ng:monodromy}
+For every prime $\ell\ne p$, the logarithmic monodromy
+operator on $H^n(X_{\overline K},\mathbf Q_\ell)$ satisfies
+\[
+ \operatorname{rank}N^n=b_n(d_1,\ldots,d_m).
+ \tag{NG18.2}\label{r18ng:rank}
+\]
+More precisely, the extreme terms of the Rapoport--Zink
+weight spectral sequence satisfy
+\[
+ N^n:E_2^{-n,2n}\xrightarrow{\ \sim\ }E_2^{n,0}(-n),
+ \qquad
+ \dim E_2^{n,0}=b_n(d_1,\ldots,d_m).
+ \tag{NG18.3}\label{r18ng:extreme}
+\]
+This number is positive exactly in the following cases:
+$m\ge n+2$, or $m=n+1$ and at least one $d_i>1$.
+When it is positive, $X$ has no potential good reduction,
+and every strict semistable smooth projective dominant
+witness has crossing depth at least $n$.
+The rank in \eqref{r18ng:rank} is unchanged by every finite
+extension of $K$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: which strata are connected.}
+Every positive-dimensional original complete-intersection
+stratum $H_I$ is geometrically connected, and its specified
+blowups remain so.  For $|I|=n$ the original stratum is a
+smooth geometrically integral curve.  The NF18 blowup
+centers on it are empty, because they would be intersections
+of $Q$ with zero-dimensional original strata.  Thus this
+curve is unchanged.  For $|I|=n+1$, the stratum is the
+unchanged smooth zero-dimensional complete intersection
+of the factor degrees $d_i$, $i\in I$; by Bezout its
+geometric length is exactly $\mu_I$.  Its geometric
+points need not be rational over $k$, and none of them
+is suppressed in the following complex.
+
+\emph{Step 2: the row of weight zero.}
+Let $Y^{[s]}$ be the disjoint union of the $s$-fold
+geometric intersections.  The row $b=0$ of the weight
+spectral sequence is the alternating restriction complex
+$H^0(Y^{[a+1]})$.  In degrees $0\le a\le n-1$, its
+basis is the subsets $I$ of cardinality $a+1$, because
+all these strata are geometrically connected.  In degree
+$n$ its basis has $\mu_I$ points for each subset $I$ of
+cardinality $n+1$.  Each such point restricts to the
+same list of incident connected curves with the usual
+orientation signs.  Thus the last differential is the
+ordinary simplex cochain map
+\[
+ \delta_{n-1}:\mathbf Q^{\binom mn}
+                     \longrightarrow\mathbf Q^{\binom m{n+1}}
+\]
+followed by the injective map that repeats its $I$-coordinate
+$\mu_I$ times.  All these statements first make sense as
+maps of rational vector spaces on the finite geometric
+component sets, with their natural permutation action;
+tensoring with $\mathbf Q_\ell$ gives the stated row.
+
+The augmented cochain complex of the full $(m-1)$-simplex
+is exact.  Its differential in degree $j$ has rank
+$\binom{m-1}{j+1}$: starting with the rank-one augmentation,
+this follows inductively from
+$\binom m{j+1}-\binom{m-1}j=\binom{m-1}{j+1}$.
+The injective coordinate repetition does not change the
+rank.  Hence the restriction map into the top geometric
+point space has rank $\binom{m-1}n$, and its cokernel
+has dimension exactly \eqref{r18ng:rank-number}.
+There are no outgoing terms, so this cokernel is
+$E_2^{n,0}$.  The convention for $m<n+1$ gives both
+spaces zero in this extreme degree.
+
+This argument may also be described using a semisimplicial
+dual complex: there is one simplex for every connected
+positive-dimensional stratum and $\mu_I$ top simplices
+with the same boundary for each $I$ of size $n+1$.
+Calling this a single ordinary simplex for each such
+$I$ would give an incorrect rank.
+
+\emph{Step 3: the opposite term and the transpose.}
+At the other extreme the only $E_1$ summand is
+$H^0(Y^{[n+1]},\mathbf Q_\ell)(-n)$; there is no incoming
+term.  Its outgoing map is the alternating Gysin map to
+$H^2(Y^{[n]},\mathbf Q_\ell)(-(n-1))$.
+Each geometric curve in $Y^{[n]}$ is smooth and connected,
+so trace identifies its $H^2(1)$ with $\mathbf Q_\ell$.
+Pushing forward one of its geometric points has trace
+one.  Consequently the Gysin matrix is the transpose,
+up to the harmless uniform sign convention, of the
+restriction matrix just computed.
+
+Give the rational vector space on all deepest geometric
+points the positive definite pairing in which those
+points are orthonormal.  It is invariant under the native
+Frobenius permutation.  Thus the Gysin kernel is the
+orthogonal complement of the restriction image, and
+the entire point space is their direct sum.  This is
+rational positive-definite linear algebra before tensoring
+with $\mathbf Q_\ell$, not an ordering or positivity
+claim over $\mathbf Q_\ell$.
+
+For a native closed point of degree $e$, its invariant
+fundamental vector is the sum of its $e$ geometric
+point vectors; its squared norm and its curve-pushforward
+degree are both $e$.  The geometric calculation therefore
+retains the full native degrees.  It does not replace
+native degree by one for a non-rational closed point.
+No analytic descent or assertion that all cycles descend
+is used in this cohomology calculation.
+
+\emph{Step 4: the filtered monodromy operator.}
+The construction and filtered properties of the weight
+spectral sequence are the same primary Saito inputs
+verified in HM18.  The map $N^n$ is the identity on the
+common extreme $E_1$ point summand, with twist $(-n)$.
+It therefore induces the projection of the Gysin kernel
+onto the restriction cokernel, which is an isomorphism
+by the preceding direct sum.  This proves
+\eqref{r18ng:extreme}.  All strata are proper and smooth
+over a finite field, so the same purity-of-weights
+argument gives degeneration at $E_2$.
+
+For completeness, the weights on the abutment $H^n$
+lie in $[0,2n]$.  Indeed a nonzero summand in bidegree
+$(a,b)$ with $a+b=n$ has $i\ge\max(0,-a)=\max(0,b-n)$
+and $b-2i\ge0$, whence $0\le b\le2n$.
+Since $N$ lowers that filtration by two, $N^n$ kills
+the piece of weights at most $2n-1$ and has image in
+the weight-zero piece.  The latter is its own graded
+piece, and \eqref{r18ng:extreme} is an isomorphism
+from the top graded piece to it.  Thus its actual rank
+is precisely the displayed dimension, proving
+\eqref{r18ng:rank} rather than only a lower bound.
+
+Finally, if $m\ge n+1$, then $\mu_I\ge1$ gives
+\[
+ b_n\ge\binom m{n+1}-\binom{m-1}n
+             =\binom{m-1}{n+1}.
+\]
+This is positive for $m\ge n+2$.  If $m=n+1$, the
+number is $\prod_i d_i-1$, positive exactly when
+some degree exceeds one.  For $m<n+1$ it is zero.
+Finite extension scales normalized logarithmic monodromy
+by a nonzero ramification scalar and does not change
+the geometric cohomology vector space, hence preserves
+this rank.  Potential good reduction and a dominant
+witness of depth less than $n$ are excluded by the
+already frozen NM17 monodromy argument when the rank
+is positive.
+\end{proof}
+
+\subsection{A rank distinction from every hyperplane model}
+
+\begin{corollary}[Two explicit fourfold profiles]
+\label{r18ng:distinction}
+In relative dimension four, five quadratic factors give
+total degree ten and
+\[
+                  \operatorname{rank}N^4=2^5-1=31.
+ \tag{NG18.4}\label{r18ng:quadrics}
+\]
+Five sextic factors give total degree thirty and
+\[
+                  \operatorname{rank}N^4=6^5-1=7775.
+ \tag{NG18.5}\label{r18ng:sextics}
+\]
+Neither such generic fiber can, even after a finite valued
+extension, be isomorphic to a generic fiber of any
+four-dimensional hyperplane model HP18 at that same
+place, regardless of the hyperplane model's degree.
+Both profiles nevertheless have full local ordinary
+actual G by NF18.
+\end{corollary}
+
+\begin{proof}
+The rank formula with $m=n+1=5$ gives the displayed
+values.  For a hyperplane model, the exact same rank
+formula, with every factor degree one, gives
+$\operatorname{rank}N^4=\binom{d-1}5$; it also shows
+that HM18's extreme rank is the actual rank.
+This sequence is zero for $d\le5$ and strictly increasing
+for $d\ge6$.  Its neighboring values around $31$ are
+$\binom75=21$ and $\binom85=56$; its neighboring
+values around $7775$ are $\binom{17}5=6188$ and
+$\binom{18}5=8568$.  Neither required rank occurs.
+Rank of logarithmic monodromy is preserved by isomorphism
+and finite valued extension, proving the assertion.
+The final Green assertion is NF18 in dimension four.
+This does not purport to exclude overlap with every
+earlier motivic or other proved-G mechanism, or to
+exclude all possible dominant witnesses.
+\end{proof}
+
+\subsection{The nonlinear arithmetic pencil}
+
+\begin{theorem}[Dense global families for every positive-rank profile]
+\label{r18ng:global}
+Fix $n\ge4$ and a degree profile $d_1,\ldots,d_m$ for
+which $b_n(d_1,\ldots,d_m)>0$.  There is a prime $q$
+and a Zariski dense family of rational degree-$D$
+hypersurface coefficient classes in $\mathbf P^{n+1}$
+with all the following properties.
+Every member is smooth and geometrically integral;
+at $q$ it has the native NF18 model with those factor
+degrees and the exact rank \eqref{r18ng:rank}; at every
+other finite place it has the frozen good or
+ordinary-quadratic coverage of GP17.  For every number
+field $F$ unramified at $q$, its complete Chow groups
+carry the height pairing
+\[
+ \operatorname{CH}^2(X_F)_{\mathbf Q,\mathrm{geom\,hom}}
+ \ \times\
+ \operatorname{CH}^{n-1}(X_F)_{\mathbf Q,\mathrm{geom\,hom}}
+                   \longrightarrow\mathbf R.
+ \tag{NG18.6}\label{r18ng:height}
+\]
+For $n=4$, full local G holds in every codimension and
+the complete complementary-degree height pairings
+are defined for every $r$.  The prime $q$ may avoid
+any prescribed finite set; in particular a family
+over any prescribed number field $F$ can be obtained
+with $q$ unramified in $F$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: produce and spread the nonlinear data.}
+Over $\mathbf Q$ choose general hypersurface forms
+$f_1,\ldots,f_m$ of their prescribed degrees.  The
+finite list of all intersection conditions in NF18
+is a nonempty open condition: successive Bertini
+cuts give smooth complete intersections of every
+nonnegative expected dimension, and the intersections
+of $n+2$ factors are empty.  Choose a degree-$D$ form
+$Q$ transverse to all positive-dimensional members
+of this finite list and avoiding the zero-dimensional
+ones.  This is another nonempty open Bertini and
+avoidance condition.  Rational points exist in these
+nonempty opens of coefficient spaces.
+After clearing denominators, the data are integral.
+The finitely many geometric smoothness, transversality
+and avoidance conditions persist modulo every prime
+outside a finite set.  Write $P=\prod_i f_i$ and
+choose $q>D$, $q\nmid2D$, outside that set and the
+prescribed finite set.
+
+\emph{Step 2: impose the exact local congruence.}
+Put
+\[
+ F_0=\sum_{i=0}^{n+1}X_i^D,\qquad
+ J_D=\sum_{i=0}^{n}X_i^{D-1}X_{i+1}+X_{n+1}^D,
+ \qquad b_D=\prod_{p\mid D}p.
+\]
+Take $F_1$ in the full affine coefficient lattice
+\[
+        F_1\equiv P-D F_0+qQ\pmod{q^2},
+        \qquad F_1\equiv J_D\pmod{b_D},
+ \tag{NG18.7}\label{r18ng:coefficient-congruences}
+\]
+and in the nonempty fixed-$F_0$ Lefschetz open of
+GP17.  This intersection is nonempty and Zariski
+dense.  With $F_1$ fixed, choose the finite spreading
+set $S$ as in GF18, containing $q$ and every divisor
+of $2D$.  Choose the infinite parameter progression
+\[
+ \begin{split}
+ a&\equiv1\pmod{q^2},\qquad a\equiv1\pmod{b_D},\\
+ a&\equiv0\pmod p\quad(p\in S,\ p\nmid D,\ p\ne q).
+ \end{split}
+ \tag{NG18.8}\label{r18ng:parameter-congruences}
+\]
+Exclude the finitely many singular characteristic-zero
+members of $X_a=V(D F_0+aF_1)$.  GP17 supplies smoothness
+and geometric integrality of all remaining members.
+
+At $q$ define $Q_a=(D F_0+aF_1-P)/q$.  It is integral
+and satisfies $\bar Q_a=\bar Q$, since both congruences
+at $q$ were imposed modulo $q^2$.  The exact local
+equation is therefore $\prod_i f_i+qQ_a$, with native
+uniformizer exponent one and precisely the prescribed
+reduced nonlinear data.  NF18 gives codimension-two
+G, and Theorem~\ref{r18ng:monodromy} gives its rank.
+In dimension four NF18 gives full G.
+
+\emph{Step 3: other places and every new cycle.}
+At $p\mid D$ the reduced member is the smooth $J_D$;
+at $p\in S$ other than $q$ and not dividing $D$ it
+is the smooth Fermat member.  Outside $S$, the
+frozen GP17 ordinary-quadratic argument applies with
+its allowed arbitrary thickness.  Consequently all
+finite places have full codimension-two G.  For a
+number-field extension unramified at $q$, the same
+native nonlinear model applies anew at each place
+above $q$, to every cycle over that completion.
+At every other place the good or ordinary-quadratic
+theorem is reapplied after base change, with all its
+native-degree conventions.  No new cycle is assumed
+to be a pullback from the original field.
+
+The complementary one-cycle degree is already
+unconditionally covered by the frozen results.
+PH16 therefore gives \eqref{r18ng:height} on the
+entire displayed groups, and in dimension four gives
+all complementary-degree pairings.  GA17 supplies
+admissible model lifts on these established domains.
+
+\emph{Step 4: coefficient density with fixed local rank.}
+Allow $F_1$ to vary in the fixed lattice and Lefschetz
+open in Step 2, making its finite spreading set and
+parameter progression only after it is fixed.
+If a rational coefficient polynomial $g$ vanishes
+on all resulting forms, then for each such $F_1$
+the polynomial $g(D F_0+tF_1)$ has infinitely many
+integer roots and is identically zero.  At $t=1$
+this makes $g$ vanish on the translate of a Zariski
+dense lattice-open set.  Hence $g=0$.  This proves
+affine coefficient density and therefore projective
+coefficient density.  The local factor arrangement,
+$q^2$ congruence and monodromy rank are fixed across
+this union.  Avoiding the discriminant of a prescribed
+number field when choosing $q$ proves the last claim.
+\end{proof}
+
+\paragraph{Scope and dependencies.}
+For five quadratic or five sextic factors in dimension
+four, this theorem gives dense full-height families
+whose distinguished local rank is, respectively, $31$
+or $7775$.  The rank distinction concerns the actual
+generic representation and survives finite extensions;
+it is not a change of model of a good generic fiber.
+The conclusions do not cover every degree-$D$
+hypersurface or arbitrary ramified extensions at $q$,
+and no general $U_2$ vanishing is asserted.
+The nonlinear geometry and Green theorem are NF18;
+the filtered spectral-sequence inputs are the primary
+Saito construction cited in HM18; the point count
+uses ordinary Bezout and the connectedness input
+checked in NF18; the arithmetic and height dependencies
+are precisely GP17, PH16 and GA17.  No priority claim
+is made for the classical degeneration or pencil methods.

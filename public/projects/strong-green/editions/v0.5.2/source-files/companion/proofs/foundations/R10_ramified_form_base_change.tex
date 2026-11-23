@@ -1,0 +1,295 @@
+% Round 10. Agent: g10_trace_audit.
+% New deduction, conditional only on the separately audited R6 full finite trace.
+% NEEDS_HUMAN_REVIEW=YES. Does not claim general strong G.
+
+\section{Ramified finite trace commutes with restriction as an actual form}
+\label{g10t:ramified-base-change}
+
+\paragraph{Status and scope.}
+We work over a complete nontrivially valued field $K$ of
+characteristic zero. All spaces are analytifications of separated
+finite-type $K$-schemes, and all forms and pullbacks below are
+Mihatsch's actual $\delta$-forms. The input from the earlier research
+is the full finite trace for finite dominant maps between
+\emph{normal integral} varieties. This trace accepts arbitrary
+actual source forms, is a sheaf map, commutes with $d',d''$, and
+satisfies the projection formula and adjunction against every compact
+actual test. Its normal, possibly singular, source hypothesis is
+essential to the objects below. We do not assume a trace on a
+nonreduced fiber product.
+
+The public analytic inputs are Mihatsch, \emph{$\delta$-forms on
+Lubin--Tate spaces}, arXiv:2112.10018v4, Definition~4.2,
+Theorem~4.5, Lemma~3.14, Corollary~4.9, Proposition~4.11,
+and Theorem~5.5. The result proved here strengthens the earlier
+top-degree cycle pairing to an equality of actual forms in every
+bidegree, including when the testing cycle lies in the branch locus.
+
+\begin{lemma}[Local lifting of actual forms from a closed subspace]
+\label{g10t:actual-test-lifting}
+Let $i:Z\hookrightarrow X$ be a closed immersion of pure-dimensional
+analytic spaces without boundary. Every germ of an actual form on
+$Z$ is the pullback of a germ of an actual form on $X$. More
+precisely, an expression
+\[
+                 \eta=t_f^*\gamma,
+       \qquad \gamma\in\mathcal B^{a,b}(\mathbf R^s),
+\]
+near a point $z\in Z$ lifts to the expression $t_F^*\gamma$ near
+$i(z)$, with exactly the same Euclidean $\delta$-form $\gamma$.
+On paracompact analytic opens, every compactly supported actual
+form on $Z$ is a finite sum of restrictions of compactly supported
+actual forms on prescribed sufficiently small ambient opens.
+\end{lemma}
+
+\begin{proof}
+Definition~4.2 supplies the stated presentation. In particular,
+$\gamma$ is a $\delta$-form on the ambient Euclidean space; it is
+not merely a current balanced on the tropical image of $Z$.
+Choose an affinoid neighborhood $U=\mathcal M(A)$ of $i(z)$
+small enough that $Z\cap U=\mathcal M(A/I)$ lies in the
+presentation open. Each analytic unit $f_j$ on $Z\cap U$ lifts
+through $A\twoheadrightarrow A/I$ to an analytic function $F_j$.
+Since $F_j(i(z))\ne0$, after shrinking to an ordinary ambient
+open all the $F_j$ are units. Thus $t_F^*\gamma$ is a genuine
+actual form by Definition~4.2. Theorem~4.5 gives
+\[
+                    i^*(t_F^*\gamma)=t_f^*\gamma.
+\]
+This also proves independence of the chosen presentation after
+restriction; no new ambient balancing assertion is required.
+
+For the compact statement, cover the compact support by finitely
+many such opens. Original-smooth partitions of unity give a finite
+decomposition into actual forms whose supports are compactly
+contained in the respective restricted opens. Lift each local
+piece as above and multiply its lift by an original-smooth ambient
+cutoff equal to one near its support on $Z$. The restricted piece
+is zero away from that support, so its restriction is unchanged
+everywhere on the restricted open. Zero extension of the resulting
+compact ambient form gives the assertion. These cutoffs are used
+only for extension and are never differentiated in the argument
+below.
+\end{proof}
+
+\begin{lemma}[Actual forms are determined on a dense algebraic open]
+\label{g10t:dense-restriction}
+Let $V$ be a pure $m$-dimensional variety and let $S\subset V$
+be a closed algebraic subset of dimension at most $m-1$.
+The restriction map
+\[
+        \mathcal B^{p,q}(V^{\rm an})
+          \longrightarrow
+        \mathcal B^{p,q}((V\setminus S)^{\rm an})
+\]
+is injective.
+\end{lemma}
+
+\begin{proof}
+Suppose $\alpha$ restricts to zero. For each compact complementary
+original-smooth test $\eta$, the product $\alpha\wedge\eta$ is
+an actual $(m,m)$-form. It is zero off $S$, whereas Corollary~4.9
+says that its support is disjoint from $S$. Hence the product is
+zero. All original-smooth current pairings of $\alpha$ vanish,
+and Proposition~4.11 implies $\alpha=0$.
+\end{proof}
+
+\begin{lemma}[Top-degree cycle restriction, with scheme lengths]
+\label{g10t:cycle-trace}
+Let $q:Y\to X$ be finite flat with $X,Y$ smooth of dimension
+$n$. Let $i:Z\hookrightarrow X$ be a smooth integral closed
+subvariety of dimension $m=n-r$, where $r\geq1$, and put
+$W=Y\times_X Z$. For every compact actual
+$\beta\in\mathcal B_c^{m,m}(Y^{\rm an})$,
+\[
+                  \int_Z i^*\operatorname{Tr}_q\beta
+                    =\int_W \beta|_W.
+\tag{G10.T1}\label{g10t:cycle-trace-eq}
+\]
+The right side uses the fundamental cycle of the possibly
+nonreduced scheme $W$.
+\end{lemma}
+
+\begin{proof}
+This argument also independently reconstructs the earlier scalar
+restriction formula. Work first on an open on which $Z$ is cut
+out by a regular sequence $f_1,\ldots,f_r$. Set
+\[
+ \phi=\min_i v(f_i),\qquad
+ g_Z=(-1)^{r-1}\phi(D\phi)^{r-1},\qquad D=d'd''.
+\]
+Theorem~5.5 gives
+\[
+ \int g_Z\wedge D\theta=-\int_Z\theta|_Z
+\]
+for every compact actual $(m,m)$-test $\theta$. Flatness preserves
+the regular sequence. The corresponding explicit Green form of
+$W$ is therefore $q^*g_Z$, and the same theorem gives
+\[
+                  \int q^*g_Z\wedge D\beta=-\int_W\beta|_W.
+\]
+This theorem has no reducedness condition on the complete
+intersection. Lemma~3.14 supplies exactly its generic-length
+multiplicities in the integration weights.
+
+The support of $D\beta$, of bidegree $(m+1,m+1)$, is disjoint
+from $W$ by Corollary~4.9. Hence
+$C=q(\operatorname{Supp}D\beta)$ is a compact subset of
+$X\setminus Z$. Locality of trace and its commutation with $D$
+give
+\[
+ \operatorname{Supp}(D\operatorname{Tr}_q\beta)
+       =\operatorname{Supp}(\operatorname{Tr}_qD\beta)\subseteq C.
+\]
+Choose an original-smooth compact cutoff $\chi$ on $X\setminus Z$
+which is one near $C$. The all-actual trace adjunction applies to
+the legitimate compact form $\chi g_Z$, so
+\[
+ \begin{split}
+ \int g_Z\wedge D\operatorname{Tr}_q\beta
+  &=\int \chi g_Z\wedge\operatorname{Tr}_q(D\beta)\\
+  &=\int q^*(\chi g_Z)\wedge D\beta
+   =\int q^*g_Z\wedge D\beta.
+ \end{split}
+\]
+The cutoff is not differentiated. Comparing the two
+complete-intersection identities proves
+\eqref{g10t:cycle-trace-eq} on this open. A finite
+original-smooth partition near $q(\operatorname{Supp}\beta)$,
+pulled back to $Y$, reduces the general situation to these opens
+and the complement of $Z$. The projection formula then permits
+summing the local equalities.
+\end{proof}
+
+\begin{theorem}[Form-valued ramified base change along a smooth cycle]
+\label{g10t:form-base-change}
+Let $q:Y\to X$ be a finite flat surjective map between smooth
+integral $n$-dimensional varieties. Let $i:Z\hookrightarrow X$
+be a smooth integral closed subvariety of dimension $m$. Write
+\[
+        [W]=[Y\times_X Z]=\sum_j\ell_j[W_j],
+\]
+where $W_j$ has its reduced integral structure and
+$\ell_j=\operatorname{length}_{\mathcal O_{W,\xi_j}}
+\mathcal O_{W,\xi_j}$ is its generic length. Let
+$\widetilde W_j\to W_j$ be its normalization, and denote the
+induced maps by
+\[
+             q_j:\widetilde W_j\to Z,
+        \qquad \rho_j:\widetilde W_j\to Y.
+\]
+Then, for every actual $\omega\in\mathcal B^{p,q}(Y^{\rm an})$,
+\[
+ \boxed{\quad
+ i^*\operatorname{Tr}_q\omega
+       =\sum_j\ell_j\operatorname{Tr}_{q_j}(\rho_j^*\omega)
+       \quad}
+\tag{G10.T2}\label{g10t:form-base-change-eq}
+\]
+as actual forms on $Z^{\rm an}$. The statement is local on
+ordinary opens. It permits $Z$ to be contained in the branch
+locus and permits every $W_j$ to be singular and $W$ to be
+nonreduced.
+\end{theorem}
+
+\begin{proof}
+If $m=n$, the integral closed subvariety $Z$ is $X$ and the
+assertion is tautological; assume $m<n$ in the following argument.
+All objects on the right exist before testing. Varieties over
+a field have finite normalization. Flatness implies that every
+irreducible component of $W$ dominates the integral $Z$, so
+each $q_j$ is finite dominant with normal integral source and
+normal integral target. Thus the stated finite trace theorem
+applies to $q_j$. The map $\rho_j$ is an actual morphism
+between pure-dimensional boundaryless analytic spaces, so
+Theorem~4.5 defines $\rho_j^*\omega$. There is no invocation
+of a trace on the nonreduced scheme $W$.
+
+For a compact actual test
+$\eta\in\mathcal B_c^{m-p,m-q}(Z^{\rm an})$, use
+Lemma~\ref{g10t:actual-test-lifting} to reduce by a finite sum
+to $\eta=i^*\widetilde\eta$ for a compact ambient actual
+form $\widetilde\eta$. The form
+\[
+                  \beta=\omega\wedge q^*\widetilde\eta
+\]
+is a compact actual $(m,m)$-form on $Y$; compactness follows
+from finiteness of $q$. By the projection formula and
+Lemma~\ref{g10t:cycle-trace},
+\[
+ \begin{split}
+ \int_Z (i^*\operatorname{Tr}_q\omega)\wedge\eta
+   &=\int_Z i^*\operatorname{Tr}_q
+                        (\omega\wedge q^*\widetilde\eta)\\
+   &=\int_W(\omega\wedge q^*\widetilde\eta)|_W\\
+   &=\sum_j\ell_j\int_{\widetilde W_j}
+                        \rho_j^*\omega\wedge q_j^*\eta\\
+   &=\int_Z\left(\sum_j\ell_j
+                  \operatorname{Tr}_{q_j}(\rho_j^*\omega)\right)
+                         \wedge\eta.
+ \end{split}
+\]
+For the normalization step, Lemma~3.14 first decomposes the
+integral on $W$ with the coefficients $\ell_j$. An actual
+top-degree form on $W_j$ is supported away from any proper
+algebraic closed subset by Corollary~4.9. We may therefore
+remove the locus where normalization is not an isomorphism,
+without changing either integral. This proves that step
+without a trace theorem for a nonnormal target.
+
+All compact actual tests have now been covered. In particular
+all original-smooth tests have been covered, and actual-current
+injectivity on $Z$ proves the claimed equality of forms.
+If a complementary degree is negative, both sides vanish by
+the dimension bound for actual forms, so there is no omitted
+bidegree.
+\end{proof}
+
+\begin{corollary}[Normal testing varieties and normalization of cycles]
+\label{g10t:normal-cycle-base-change}
+The same equality holds when $Z$ is normal integral, with
+$i:Z\hookrightarrow X$ a closed immersion. More generally,
+if $Z_0\subset X$ is any integral closed subvariety and
+$h:\overline Z_0\to X$ is the composite of its normalization
+with its inclusion, then the equality holds with $i$ replaced
+by $h$, using the generic-length components of
+$Y\times_X\overline Z_0$.
+\end{corollary}
+
+\begin{proof}
+In the first case compare both actual forms on the smooth
+locus of $Z$. In the second, compare them on the dense open
+of $\overline Z_0$ identified with the smooth locus of $Z_0$.
+The previous theorem applies there, since that smooth locus
+is a closed subvariety of $X\setminus (Z_0)_{\rm sing}$.
+The finite traces on the normal components exist globally,
+and they commute with restriction to this open. Both sides
+are therefore actual forms on the normal testing variety
+which agree on a dense algebraic open. Apply
+Lemma~\ref{g10t:dense-restriction}.
+\end{proof}
+
+\paragraph{Ramification check.}
+For $q:\mathbf A^1_t\times Z\to\mathbf A^1_x\times Z$,
+$x=t^e$, and the zero section $i:Z\hookrightarrow
+\mathbf A^1_x\times Z$, the fiber product is
+$\operatorname{Spec}(\mathcal O_Z[t]/(t^e))$. It has one
+reduced component, normalization $Z$, and generic length $e$.
+Formula~\eqref{g10t:form-base-change-eq} becomes
+\[
+                i^*\operatorname{Tr}_q\omega
+                        =e\,\omega|_{\{t=0\}\times Z}.
+\]
+Keeping only reduced components with coefficient one would
+already fail on the constant actual form $\omega=1$.
+
+\paragraph{Consequence for the strong-G program.}
+This is a compatibility result for arbitrary actual coefficients,
+all test forms, original-field degrees, and cycle restriction.
+It supplies the form-valued branch-inclusive interface that a
+top-degree scalar projection formula alone does not supply.
+It does not construct a zero-curvature Green form for an
+arbitrary homologically trivial cycle, and it does not give
+an actual pushforward for a map with positive-dimensional
+fibers. Its only nonpublic theorem input remains the separately
+audited full finite actual trace.

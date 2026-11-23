@@ -2,7 +2,7 @@
 // Exact statements and proofs are in the linked programme and companion papers.
 export const programmeOverview = {
   title: 'From Green forms to height pairings',
-  summary: 'The principal-push theorem (PH16; Theorem 7.5) proves the passage from Strong G to the full Beilinson–Bloch height pairing within the stated analytic foundations. The central general existence problem is to supply the required strong Green forms. Classical comparisons, positivity and finiteness for integral classes have their own hypotheses and research questions.',
+  summary: 'The Chow obstruction and prescribed curved Green pairs are now established in the full scope of Hypothesis 2.2. Vanishing of this obstruction on all homologically trivial classes remains the general local problem on this route. The principal-push theorem (PH16; Theorem 7.5) proves that Strong G at every finite completion gives the full Beilinson–Bloch height pairing within the stated analytic foundations. Classical comparisons, positivity and finiteness have their own hypotheses and research questions.',
   target: String.raw`For a smooth, projective and geometrically integral variety \(X/F\) of dimension \(n\) over a number field, construct a canonical pairing
 \[
 h_X:\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\times\operatorname{CH}^{n+1-r}(X)_{\mathbb Q,\mathrm{hom}}\longrightarrow\mathbb R.
@@ -13,10 +13,17 @@ h_X:\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\times\operatorname{CH}^{n+1-
 
 export const programmeImplications = [
   {
+    id: 'chow-green-construction',
+    assumptions: 'A smooth integral projective variety over the original finite valued extension of ℚₚ, and a prescribed rational cycle in any positive codimension up to its dimension.',
+    conclusion: 'A Chow-invariant actual Bott–Chern obstruction, compatible with genuine pullbacks, and an actual curved Green pair on the exact support complement against all compact actual tests.',
+    href: '/papers/chow-obstruction-green-pairs#h22:main',
+    label: 'Established construction: Hypothesis 2.2',
+  },
+  {
     id: 'curvature-correction',
-    assumptions: 'A Green pair on the prescribed complement and a global actual primitive of its curvature.',
+    assumptions: 'Vanishing of the actual obstruction of the prescribed cycle; the preceding theorem supplies its curved Green pair.',
     conclusion: 'A zero-curvature Green form for that prescribed cycle, against all actual tests.',
-    href: '/papers/strong-g-programme#thm:source-reduction',
+    href: '/papers/chow-obstruction-green-pairs#h22:correction',
     label: 'Curvature correction',
   },
   {
@@ -37,22 +44,24 @@ export const programmeImplications = [
 
 export const programmeSteps = [
   {
-    id: 'analytic', number: '1', title: 'Green forms and finite trace',
-    goal: 'Construct a Green pair for every prescribed cycle over the original non-Archimedean field.',
+    id: 'analytic', number: '1', title: 'Chow obstructions and curved Green pairs',
+    goal: 'Established: the full construction in Hypothesis 2.2 for smooth integral projective varieties over the original non-Archimedean field, including varieties that are not geometrically integral.',
     formula: String.raw`\(D[G_Z]+\delta_Z=[\Omega_Z]\), where \(D=d'd''\) and \(G_Z\in\mathcal B^{r-1,r-1}(X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}})\).`,
-    method: 'Prove the supported construction and its trace identities on the actual form space. Trace must preserve differential relations and adjunction against every compact actual test, with the full field-degree normalization.',
-    output: 'Once the curvature has a global actual primitive, subtracting it gives Strong G on the same support complement.',
-    depends: 'The actual differential calculus and the supported Chern-form construction.',
-    records: ['BB-SUPPORTED-GREEN-PAIR', 'BB-RESTRICTED-TRACE', 'BB-GREEN-CORRECTION'],
-    paper: '/papers/strong-g-programme#sec:programme-analytic',
+    methodLabel: 'Proved construction',
+    method: 'Strict actual model Chern characters and the restricted scalar–curvature finite trace give the supported-complex identity. Global primitives for generic Chow-zero characters make the obstruction independent of model and presentation and compatible with genuine pullbacks. Summing the component constructions retains the prescribed cycle coefficients and exact complement, against all compact actual tests.',
+    output: 'The pair exists for every rational cycle. Zero obstruction then supplies a global actual primitive; subtracting it gives Strong G on the same support complement.',
+    depends: 'The published actual calculus and the analytic and algebraic arguments proved in the new construction paper. The restricted trace is used on its specified scalar–curvature module; broader trace, intersection and reciprocity statements remain separate.',
+    records: ['BB-CHOW-GREEN-PAIRS', 'BB-ACTUAL-OBSTRUCTION', 'BB-SUPPORTED-GREEN-PAIR', 'BB-RESTRICTED-TRACE', 'BB-GREEN-CORRECTION'],
+    paper: '/papers/chow-obstruction-green-pairs#h22:main',
+    linkLabel: 'The theorem and complete proof',
   },
   {
     id: 'source', number: '2', title: 'Vanishing of the Bott–Chern class',
-    goal: 'Show that homologically trivial cycles have zero curvature class in the actual Bott–Chern quotient.',
+    goal: 'Open in general: show that homologically trivial cycles have zero curvature class in the actual Bott–Chern quotient.',
     formula: String.raw`\(\mathfrak o^r_{X,K}\bigl(\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\bigr)=0\).`,
     method: 'First apply the algebraic-equivalence and Chow-correspondence arguments on their stated domains. For the remaining classes, seek a comparison theorem showing that vanishing of the cohomological cycle class forces every actual obstruction period to vanish.',
-    output: 'Together with Step 1, this is a sufficient route to Strong G. The tropical approach is an alternative method for constructing the required actual primitives, with its own descent and integration comparisons.',
-    depends: 'Step 1 for the passage from obstruction vanishing to a Green form.',
+    output: 'Together with the established construction in Step 1, this gives Strong G. The tropical approach is an alternative method for constructing the required global actual primitives, with its own descent and integration comparisons.',
+    depends: 'The established Chow obstruction and curvature correction in Step 1. The geometric routes retain their separate rigidity, numerical and correspondence hypotheses.',
     records: ['BB-ALG-TRANSFER', 'BB-MOTIVIC-TRANSFER', 'BB-RESIDUAL-PERIODS', 'BB-TROPICAL-INTERFACE'],
     paper: '/papers/strong-g-programme#sec:programme-source',
   },

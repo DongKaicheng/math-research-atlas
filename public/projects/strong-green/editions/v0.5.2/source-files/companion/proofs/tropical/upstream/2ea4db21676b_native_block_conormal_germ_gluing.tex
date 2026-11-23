@@ -1,0 +1,554 @@
+\section{Native block primitives are invariant as punctured germs under conormal lifts}
+\label{sec:r11-native-conormal-germ-gluing}
+
+\paragraph{Status and construction.}
+\textbf{PROVED THIS ROUND}, submitted for exact-source independent
+review.  The construction contributors are \texttt{/root} and
+\texttt{/root/r11\_challenge}.  This section removes the single
+affine-neighborhood hypothesis from the shared-tail theorem AST.
+It first proves literal equality of prescribed actual primitive
+germs, not equality of abstract relative cohomology classes.
+The essential extra comparison controls every \emph{capped passive
+subtuple norm}, in addition to whole intermediate norms.
+
+The exact GB, SHT, SAR, WNR, MX, NSC, SL, CS and MT sources are
+\textbf{FROZEN INPUT} within this round.  SAR remains a recovery
+revalidation of its historical facet, not a newly counted result.
+No automatic factorization of an arbitrary matrix is used.
+
+\subsection{Fixed native choices and an ordinary-open stability lemma}
+
+All analytic spaces and functions below are over the original $K$
+and absolute value.  Fix the original metric on the common line
+bundle, write $R=c_1(\overline L)$, and use the literal native
+SHT pair for each elementary shear and diagonal unit edge.
+In every nested call to a capped witness fix the same real
+constant $\varepsilon>0$ once and for all.  The formulas may
+contain additional specified absolute-value sums of unit weights;
+these are not replaced by bounds or by new primitives.
+
+For a vector over a completed residue field use the sup norm;
+for a matrix use the maximum of the absolute values of its entries.
+Its operator norm is bounded by that maximum without a rank factor.
+Let $S$ be any subset of an ordinary open $O$, and suppose analytic
+matrix functions $F,\widetilde F\in\mathrm{GL}_r(\mathcal O(O))$
+have the same value in $\mathscr H(x)$ for every $x\in S$.
+Other matrices denoted $H,\widetilde H$ below are allowed to be
+rectangular.  Their entries also have the same values on $S$.
+
+\begin{lemma}[Finite whole-norm and positive-floor stability]
+Fix $x\in S$ and a finite list of such matrices.  Suppose also
+that a finite list of analytic units $u,\widetilde u$ have equal
+values at $x$.  There is an ordinary neighborhood $O_x$ of $x$
+on which all of the following hold simultaneously.
+\begin{enumerate}
+\item Every unit pair has exactly the same absolute value,
+      hence the same valuation scalar and all actual derivatives.
+\item For every section vector $f$ of the common line bundle,
+\[
+                         \|Ff\|=\|\widetilde Ff\|.
+ \tag{GIC1}
+\]
+\item Suppose a specified capped norm in the list has the form
+\[
+ M_H(f)=\max\{\|Hf\|,\lambda\|Ff\|\},\qquad
+ \widetilde M_H(f)=
+       \max\{\|\widetilde Hf\|,\lambda\|\widetilde Ff\|\},
+ \tag{GIC2}
+\]
+where $\lambda=e^{-\kappa-\varepsilon}>0$ and $\kappa$ is a
+fixed continuous finite expression in the equal unit valuations.
+Then $M_H(f)=\widetilde M_H(f)$ on $O_x$, including where
+the passive subtuple itself is zero.  The same conclusion holds
+for finitely many such capped norms at once.
+\end{enumerate}
+The neighborhoods may depend on $x$ and the finite presentation;
+no global uniform lower bound or growth hypothesis is asserted.
+\end{lemma}
+
+\begin{proof}
+For a unit pair, shrink to
+$|\widetilde u-u|<|u|$.  The ultrametric inequality gives
+$|\widetilde u|=|u|$ everywhere on this ordinary open.
+For each whole matrix shrink to
+\[
+           \|\widetilde F F^{-1}-I_r\|<1.
+ \tag{GIC3}
+\]
+The multiplicative comparison $\widetilde F F^{-1}$ and its
+inverse are sup-norm isometries pointwise; equivalently the perturbation of any vector
+is strictly smaller than that vector.  This proves (GIC1).
+The conditions hold near $x$ because their differences vanish
+at $x$ and their right sides are strictly positive and continuous.
+
+For (GIC2), impose in addition
+\[
+                  \|(\widetilde H-H)F^{-1}\|<\lambda.
+ \tag{GIC4}
+\]
+The value $\lambda(x)$ is positive and finite, so (GIC4) holds
+on an ordinary neighborhood.  At every point of it,
+\[
+       \|(\widetilde H-H)f\|<\lambda\|Ff\|
+                    \quad\hbox{when }f\ne0.
+ \tag{GIC5}
+\]
+If $\|Hf\|$ exceeds the common floor $\lambda\|Ff\|$,
+the ultrametric inequality says the two passive norms agree.
+If it does not exceed that floor, neither perturbed passive norm
+exceeds the floor, so both maxima equal it.  This includes
+the equality case at the floor.  At $f=0$ both sides are zero.
+A finite intersection gives all required inequalities together.
+The common metric contributes the same scalar factor to both
+norms, so the statement is independent of its local frame.
+\end{proof}
+
+For the capped potentials in the exact witnesses, (GIC2) is
+precisely the exponentiated form of
+\[
+        \Psi=\min\{\psi_{Hf},\Phi_{Ff}+\kappa+\varepsilon\}.
+ \tag{GIC6}
+\]
+The equality is on a whole ordinary neighborhood, not merely
+pointwise on $S$ or on an angular skeleton.  The same actual
+scalar, all of its first jets, every corner form and every
+mixed metric derivative are therefore equal there.  Equality
+of the whole norms alone would not prove this passive-cap claim;
+(GIC4) is the additional argument.
+
+\subsection{A canonical ordinary partition for each two-row block}
+
+Fix a smooth real function $\chi:\mathbb R\to[0,1]$ with
+\[
+          \chi(t)=0\ (t\le-\varepsilon),\qquad
+          \chi(t)=1\ (t\ge\varepsilon).
+ \tag{GIC7}
+\]
+For an analytic invertible block
+$A=\left(\begin{smallmatrix}\alpha&\beta\\
+\gamma&\delta\end{smallmatrix}\right)$ put
+$\Delta=\alpha\delta-\beta\gamma$.  Use the following specific
+partition in GB22:
+\[
+ \vartheta_\alpha=\chi\bigl(v(\gamma)-v(\alpha)\bigr)
+       \quad\hbox{on }\{\alpha\gamma\ne0\},\qquad
+ \vartheta_\gamma=1-\vartheta_\alpha.
+ \tag{GIC8}
+\]
+Extend $\vartheta_\alpha$ by zero near $\alpha=0$, and by
+one near $\gamma=0$.  This is well defined: the determinant
+unit excludes simultaneous pivot zeros; where one pivot vanishes,
+the ratio of its norm to the other tends to zero on an ordinary
+neighborhood, so (GIC7) already makes the function constant.
+It is an ordinary smooth actual partition.  Its supports are
+closed in the block domain and contained in the respective
+pivot opens, and
+\[
+       \operatorname{supp}d'\vartheta_\alpha,
+       \operatorname{supp}d''\vartheta_\alpha
+                              \subset\{\alpha\gamma\ne0\}.
+ \tag{GIC9}
+\]
+Here these supports are also closed in the full block domain.
+Thus every singular-looking overlap expression is multiplied by
+a coefficient which is identically zero on an ordinary neighborhood
+of either pivot-zero locus, not just zero at its points.
+
+Denote by $p_A(f)$ and $E_A$ the actual pair and residue in
+GB22, with exactly (GIC8), its explicit GB16 overlap triple,
+and all of the fixed native choices above.  They satisfy
+\[
+     G_{(A\oplus I)f}-G_f=\partial_1p_A(f)+E_A,
+                         \qquad \partial_1(p',p'')=d'p'+d''p''.
+ \tag{GIC10}
+\]
+The pair is defined off the common zero set; the residue is
+defined on the entire block domain.  The residue depends on
+the unit valuations, the chosen partition and $R$, not on a
+choice of coordinates on the zero scheme.
+
+\subsection{Literal conormal-germ invariance of the complete GB formula}
+
+We compare two blocks $A,\widetilde A$, whose entries have the
+same values at a point $x$, and two input tuples $Ff,\widetilde Ff$
+with $F(x)=\widetilde F(x)$ invertible.  All block determinants
+are units near $x$.  No assumption is made that the entries of
+$f$ are units, nonzero at $x$, or independent tropical coordinates.
+
+\begin{theorem}[Complete block-pair germ invariance]
+On an ordinary neighborhood $O_x$ of $x$,
+\[
+ \begin{split}
+ p_A(Ff)&=p_{\widetilde A}(\widetilde Ff)
+                    &&\hbox{off the common zero set of }f,\\
+ E_A&=E_{\widetilde A}
+                    &&\hbox{on all of }O_x.
+ \end{split}
+ \tag{GIC11}
+\]
+These are equalities of the literal full actual formulas,
+not merely equal boundaries or equal quotient classes.
+\end{theorem}
+
+\begin{proof}
+There are three exhaustive cases at $x$.
+
+If $\alpha(x)=0$, then $\gamma(x)\ne0$ and the same holds
+for the corresponding values of the other block.  Shrink so
+both $\vartheta_\alpha$ vanish identically.  Formula GB22
+then reduces to its second Gaussian word and residue
+$v(\Delta)R^{r-1}$, with every differentiated-partition and
+overlap-triple term identically absent.  The units $\gamma$
+and $\Delta/\gamma$ have exactly equal norms for the two
+blocks by the stability lemma.  In the second Gaussian word
+the shear coefficient $-\alpha/\gamma$ vanishes at $x$;
+both native pairs are identically zero near $x$ by SHT11.
+The other shear coefficient $\delta/\gamma$ either vanishes
+at $x$, when SHT11 again applies, or is a unit near $x$.
+In the latter case its native middle normalizer and all the
+other intermediate matrices are analytic and invertible near
+$x$, with identical values for the two data sets.  Their
+whole norms and all unit weights agree by (GIC1).
+The entire SHT pair formulas are consequently identical.
+The residue is also identical by the determinant valuation.
+The case $\gamma(x)=0$ is the same argument with
+$\vartheta_\alpha=1$ and the first Gaussian word; its possible
+zero coefficients are $\gamma/\alpha$ and $\beta/\alpha$.
+
+It remains to consider $\alpha(x)\gamma(x)\ne0$.
+On a neighborhood put, exactly as in GB13,
+\[
+ t=\gamma/\alpha,\quad h=\Delta/\alpha,\quad
+ u=\beta/\alpha,\quad z=\Delta/(\alpha\gamma),\quad
+                         u+z=\delta/\gamma.
+ \tag{GIC12}
+\]
+The six functions $\alpha,\gamma,\Delta,t,h,z$
+are units.  Their versions for the other block have the same
+values at $x$, and hence exactly equal valuations on an
+ordinary neighborhood.  In particular the two partitions
+(GIC8) and all their derivatives agree there.
+
+We check every call in the fixed GB16 overlap expression.
+The pivot subword GB10 and the remaining terms use the following
+parameters, with the input tuples specified literally in GB10
+and GB15:
+\[
+\begin{array}{c|c|c}
+ \text{call}&\text{unit or shear parameters}&
+             \text{possible zero at }x\\\hline
+ Q^{\rm W}_{21;t}&t&\text{none}\\
+ Q^{\rm src}_{21;-t,t}&-t,t&\text{none}\\
+ Q^{\rm tar}_{21;-1,t^{-1}}&-1,t^{-1}&\text{none}\\
+ Q^{\rm tar}_{12;(\alpha t)^{-1},\alpha}
+       &(\alpha t)^{-1},\alpha&\text{none}\\
+ Q^{\rm src}_{12;z,h}&z,h&\text{none}\\
+ Q^{\rm sl}_{1;\alpha,t}&\alpha,t&\text{none}\\
+ Q^{\rm cs}_{1,\gamma;2,t^{-1}}&\gamma,t^{-1}&\text{none}\\
+ Q^{\rm sl}_{2;h,t^{-1}}&h,t^{-1}&\text{none}\\
+ Q^{\rm add}_{12;u,z}&u,z,u+z&u\text{ or }u+z.
+\end{array}
+ \tag{GIC13}
+\]
+The table includes the three nested pivot calls separately.
+Every full tuple vertex in a nonzero-parameter call is
+$Hf$ for an analytic invertible matrix $H$ obtained by a
+finite rational expression in these parameters, the block
+entries and the initial matrix $F$.  The corresponding
+matrix for the other data set has exactly the same value
+at $x$.  The same assertion holds for the matrix before
+every passive-row projection used in a cap.
+
+The only zero-parameter exception inside the overlap triple
+is the last line.  If $u(x)=0$ or $(u+z)(x)=0$, the whole
+SAR triple, not just its boundary, is identically zero near
+$x$ for each data set: use respectively the proved ordinary
+zero-gluing sets $|u|<1$ and $|u+z|<1$ in SAR7--SAR8.
+In this case it is never necessary to form a singular
+normalizer for that term.  Otherwise $u,z,u+z$ are all
+units near $x$, and this last call is another finite
+nonzero-parameter call.  The native first-level shear pairs
+with coefficients $u$ or $u+z$ obey the same dichotomy,
+using SHT11 when their coefficient vanishes at $x$.
+
+It remains to check that the finite input data of all those
+calls really agree, including their passive terms.  The
+exact CS, SL, NSC, WNR and SAR cap definitions all have
+the form (GIC6): their references are whole invertible
+intermediate tuples; their passive terms are fixed row
+projections; and their $\kappa$ are fixed finite sums,
+absolute values or maxima of the unit valuations in the
+nonzero-parameter call.  MX is a difference of two such
+SL calls.  MT uses only the same complete vertices,
+unit weights, reference and cap, including their full
+derivatives.  Thus all unit weights agree by the first
+part of the stability lemma, all whole norms agree by
+(GIC1), and all caps agree by the positive-floor statement
+(GIC2)--(GIC6).  This applies also at passive-subtuple
+zeros.  There are only finitely many matrices and cap
+floors, so one ordinary neighborhood suffices for all of
+them.  The same $\varepsilon$ was fixed for corresponding
+calls before making this comparison.
+
+Each exact witness is a finite expression in these actual
+scalars, their derivatives and $R$.  Therefore the whole
+GB16 triple is identical there, with every metric term,
+absolute-value wall and mixed coefficient retained.  Both
+native Gaussian pairs are identical by the same full-norm
+comparison.  Formula GB22, with the identical partitions,
+proves the first equality in (GIC11).
+Its extending error is exactly
+$e_{v(\gamma),-v(t)}R^{r-2}$, so its determinant and
+partition formula also gives the second equality on the
+whole neighborhood.  No argument from a dense punctured
+subset is being used for that residue.
+\end{proof}
+
+\begin{corollary}[One supplied finite word]
+Fix a finite ordered word of analytic two-row invertible blocks,
+elementary shears, and diagonal units, with the same row labels
+and factor types for two data sets.  Suppose corresponding
+coefficient functions have equal values at $x$, and corresponding
+initial invertible input matrices have equal values at $x$.
+Use the canonical GB pair above for each block and the prescribed
+SHT pair for each other factor.  The chronological sums of their
+actual pairs are literally equal as punctured germs at $x$, and
+the sums of their extending residues are equal as unpunctured
+actual germs.
+\end{corollary}
+
+\begin{proof}
+All intermediate word matrices are analytic invertible and have
+the same values at $x$.  For each block apply (GIC11) at that
+intermediate tuple.  For a diagonal unit, use exact unit-weight
+and whole-norm equality in SHT4.  For a shear, if its coefficient
+has nonzero value use its analytic inverse normalizer and (GIC1);
+if it has zero value, both entire pairs are zero on $|b|<1$
+near $x$ by SHT11.  Sum the finitely many literal equalities.
+This compares lifts of one fixed word, not arbitrary different
+word decompositions of the same matrix.
+\end{proof}
+
+\subsection{Actual gluing from equal punctured germs}
+
+Let $N$ be an ordinary open, $C\subset N$ relatively closed,
+and $W=N\setminus C$.  Let $\omega$ be an actual diagonal
+form on $W$.  Supply an ordinary cover $N=\bigcup_iN_i$ and
+actual forms $p_i=(p_i',p_i'')$ on $N_i\cap W$ and $E_i$
+on $N_i$ satisfying
+\[
+                          \omega=\partial_1p_i+E_i.
+ \tag{GIC14}
+\]
+Assume that for every $x\in C\cap N_i\cap N_j$ there is
+an ordinary neighborhood of $x$ on whose punctured part
+$p_i=p_j$ literally.  This is a stronger input than pairwise
+equality modulo a relative boundary.  It has just been proved
+for congruent lifts of the prescribed finite native words.
+
+Choose an ordinary smooth locally finite partition
+$\sum_i\rho_i=1$ with supports closed in $N$ and contained
+in $N_i$, using the frozen ordinary partition interface.
+On $W$ define
+\[
+ p=\sum_i\rho_i p_i,\qquad
+ H=\sum_i\bigl(d'\rho_i\wedge p_i'
+                         +d''\rho_i\wedge p_i''\bigr).
+ \tag{GIC15}
+\]
+Closed-support zero extension gives actual forms; locally these
+are finite sums.  The following lemma specifies the extension
+of $H$ rather than assuming an abstract sheaf descent.
+
+\begin{lemma}[Literal-germ gluing]
+The form $H$ is identically zero on a punctured ordinary
+neighborhood of each point of $C$.  Its zero extension
+$\widetilde H$ across $C$ is actual on $N$, and
+\[
+        E=\sum_i\rho_iE_i-\widetilde H\in B(N),\qquad
+                        \omega=\partial_1p+E|_W.
+ \tag{GIC16}
+\]
+No triple-overlap witness or chosen quotient inverse is needed.
+\end{lemma}
+
+\begin{proof}
+Fix $x\in C$.  Local finiteness first restricts to a neighborhood
+meeting only finitely many partition supports.  Those finitely
+many supports not containing $x$ can then be excluded by
+shrinking.  Every remaining index contains $x$ in $N_i$.
+Intersect the finitely many neighborhoods on which the pairs
+are literally equal; write their common pair as $p_0$ there.
+On its punctured part, the two sums of differentiated partition
+coefficients vanish, so
+\[
+               H=d'\Bigl(\sum_i\rho_i\Bigr)\wedge p_0'
+                   +d''\Bigl(\sum_i\rho_i\Bigr)\wedge p_0''=0.
+ \tag{GIC17}
+\]
+Thus the actual form $H$ on $W$ glues with the actual zero
+form on the union of these neighborhoods of $C$.  This
+constructs $\widetilde H$ on an ordinary open cover of $N$.
+Taking the full differentials of the finite local sum in
+(GIC15), then using (GIC14), gives (GIC16) on all of $W$.
+This proof does not infer equality of two extensions from
+their agreement on a dense complement.
+\end{proof}
+
+\subsection{The shared-tail theorem without a single affine neighborhood}
+
+Retain $X,L,s_0,s_1,Z,U,W_0,C_U$ of AST1--AST2, in every
+$n\ge r\ge2$, but replace AST3 by the weaker hypothesis:
+there is a Zariski open $V_{\rm alg}\subset X$, not assumed
+affine, with
+\[
+ C_U\subset V_{\rm alg}^{\rm an},\qquad
+ \mathcal I_{Y_0}|_{V_{\rm alg}}
+        =\mathcal I_{Y_1}|_{V_{\rm alg}}=:\mathcal I.
+ \tag{GIC18}
+\]
+The last $r-2$ global sections are still literally shared.
+The common zero scheme on $V_{\rm alg}$ may be nonreduced.
+
+Choose a finite affine open cover $V_{\rm alg}=\bigcup_iV_i$.
+This is possible because $V_{\rm alg}$ is an open in a
+noetherian algebraic variety.  The exact affine module argument
+of AST6 gives on each $V_i$ a matrix
+\[
+    s_1=T_i s_0,\qquad
+    T_i=\begin{pmatrix}A_i&B_i\\0&I_{r-2}\end{pmatrix}.
+ \tag{GIC19}
+\]
+The frozen ICC regular-sequence relation calculation, applied
+locally in a common frame of $L$, proves two precise facts:
+\[
+ \begin{split}
+ &\det A_i\text{ is a unit modulo }\mathcal I,\\
+ &(T_i-T_j)_{ab}\in\mathcal I
+                          \quad\hbox{on }V_i\cap V_j.
+ \end{split}
+ \tag{GIC20}
+\]
+For the second fact, every row of $(T_i-T_j)s_0=0$ is a
+relation among a regular sequence, whose coefficients are in
+the generated ideal.  This holds before taking a reduction.
+In particular corresponding entries have equal values at every
+analytic point of the common zero scheme on an overlap.
+
+Set
+\[
+ N_i=\bigl(V_i\setminus V(\det A_i)\bigr)^{\rm an}\cap U,
+                            \qquad N=\bigcup_iN_i.
+ \tag{GIC21}
+\]
+These are ordinary opens, $N\subset U$, and $N$ contains
+all of $C_U$.  On each $N_i$ execute the same finite word
+\[
+ T_i=\left(\prod_{a=1}^2\prod_{b=3}^r
+                   E_{ab}((B_i)_{a,b-2})\right)(A_i\oplus I),
+ \tag{GIC22}
+\]
+with the fixed lexicographic order.  Direct multiplication
+proves (GIC22); no general factorization theorem is invoked.
+Use the canonical GB block pair and the native tail-shear
+pairs to construct $p_i,E_i$ as in (GIC14), for
+$\omega=G_1-G_0$ and $W=N\cap W_0$.
+
+The matrix congruence (GIC20) and the fixed-word corollary of
+(GIC11) give literal equality of the punctured $p_i$ germs at
+every point of $C_U\cap N_i\cap N_j$.  Apply (GIC15)--(GIC16).
+This constructs one actual pair $p$ on $N\cap W_0$ and one
+actual residue $E$ on $N$, with the complete identity
+\[
+                         G_1-G_0=\partial_1p+E.
+ \tag{GIC23}
+\]
+The finite algebraic cover is used only to produce local
+coefficient matrices; no global lift of their coefficients
+on $V_{\rm alg}$ was required.
+
+\begin{theorem}[Nonseparated common-ideal cancellation with a shared tail]
+For the original regular same-line-bundle, same-metric tuples
+with a literally shared tail and (GIC18), there is an actual
+\[
+                  g_Z\in B^{r-1,r-1}
+                          (X^{\rm an}\setminus|Z|)
+ \tag{GIC24}
+\]
+over the original $K$ and absolute value such that
+\[
+       \int_Ug_Z\wedge d'd''\eta=-\int_Z\eta
+           \qquad\text{for every }
+                    \eta\in B_c^{n-r,n-r}(X^{\rm an}).
+ \tag{GIC25}
+\]
+Neither a single affine cancellation neighborhood nor closedness
+of $C_U$ in $X^{\rm an}$ is assumed.  In rank $r=2$ the
+shared-tail condition is empty: any such regular CI pair whose
+ideals agree on a Zariski neighborhood of its canceled part has
+this original-support construction, in every ambient dimension.
+\end{theorem}
+
+\begin{proof}
+Apply the frozen RSP construction to (GIC23).  More explicitly,
+choose its ordinary smooth actual cutoff $\zeta$ on $U$, with
+support closed in $U$ and contained in $N$, equal to one near
+$C_U$.  On $W_0$ put
+\[
+      g_Z=G_1-G_0-d'(\zeta p')-d''(\zeta p'').
+ \tag{GIC26}
+\]
+The standard closed-support extensions make this actual.
+Near $C_U$ it is the actual form $E$ by (GIC23), so it
+glues to (GIC24) on the original exact $U$.
+For every actual compact test in (GIC25), the frozen support
+lemma makes $\operatorname{supp}D\eta$ compactly disjoint
+from $|Y_0|\cup|Y_1|$.  Both correction products are compact
+on $W_0$, and actual Stokes annihilates them.  The two individual
+CI identities have the same curvature term, which cancels.
+Their difference is exactly (GIC25), with the original cycles
+and multiplicities.  No cutoff across $|Z|$ on $X$ was used.
+\end{proof}
+
+\paragraph{Actual relations, topology and remaining boundaries.}
+The stability comparisons are literal scalar equalities on whole
+ordinary neighborhoods.  Thus they retain nonproduct units such
+as $(T_1,T_2,T_1+T_2)$, all affine intercept walls, arbitrary
+passive directions and mixed derivatives.  No property of
+separated test products is used.  The estimates are over every
+completed residue field, including non-rational analytic points;
+they make no field extension or degree normalization.  The moving
+curve calibration AST13--AST24 continues to apply and is not
+recounted as a new example theorem.
+
+All local expressions and all sums on a compact test support have
+finite actual presentations.  The frozen support lemma gives the
+usual full coefficient-final continuity interface for $I(g_Z)$.
+There is no new auxiliary topology, completed representative,
+or universal continuous linear primitive selection.
+
+For $r\ge3$ the shared-tail hypothesis remains substantive.
+The finite-word germ theorem compares lifts of one supplied word;
+it does not factor an arbitrary conormal matrix into such a word.
+Different ideals at the cancellation locus are not covered here.
+General homologically trivial cycles, arbitrary high-order
+original-field descent, the whole lower-middle kernel topology,
+and the complete Beilinson--Bloch height axioms remain \textbf{OPEN}.
+
+\paragraph{Exact proof dependencies.}
+GB: \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9}.
+AST: \path{738f930bbba89532072dd102c7a24d6bf7bd6a813eb2427442b630db468d70da}.
+SAR: \path{b01895d9d8a52e0c5e2a2e37ef6ed9d3a77ef654d10928b0193b91606ba625ec}.
+WNR: \path{e0f23e1d1b0a6042a0e7f5b848126c712589684b179f36a4753362b3d3a884c6}.
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+MX: \path{ba5eebf4b312b7df4f3a7beceacaafbfaa171cbe97eb2614af7e717197d450fa}.
+NSC: \path{9046f887d8c95ab5e07d0798f46d23be47a969c36cdbb56209df31ee4d12b739}.
+SL: \path{4e98a9bf26bbfb5e27ad48de2b8ac8d1b147ebad9d1fe9dbaaced0e1eb2883b0}.
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+MT: \path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+ICC: \path{6836e2a945bfbf49faf41bef2d31a9d11c2af1434ada08048616069b906f4e49}.
+RAG: \path{34c1f00070f1e6ad596d9c8de58a20145a3670e1be7890710d5a4285733f9f82}.
+RSP: \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+CI: \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+Exact-hash internal review is not formal verification, external
+peer review, or a novelty assertion.

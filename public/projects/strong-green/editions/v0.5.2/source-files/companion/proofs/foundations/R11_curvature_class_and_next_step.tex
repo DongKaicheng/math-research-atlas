@@ -1,0 +1,226 @@
+% Round 11. A precise sufficient obstruction, with no converse asserted.
+\section{The remaining curvature class and the next research target}
+\label{r11o:section}
+
+The supported-complex construction changes the form of the remaining
+problem.  For every prescribed cycle it provides an actual Green pair
+on the exact complement.  The issue in the general homologically
+trivial, bad-reduction case is now the removal of an actual model
+curvature.  The following formulation records only implications that
+have been proved.
+
+For a smooth projective integral $X/K$ set
+\[
+ H_{\mathrm{BC,act}}^{r,r}(X)=
+ \frac{\{\omega\in\mathcal B^{r,r}(X^{\rm an}):
+                  d'\omega=d''\omega=0\}}
+      {D\mathcal B^{r-1,r-1}(X^{\rm an})},\qquad D=d'd''.
+\tag{OC1}\label{r11o:BC}
+\]
+This is an algebraic quotient of actual global form spaces.  No
+Hausdorff topology, finite-dimensionality, or comparison with a
+different cohomology theory is assumed.
+
+\begin{proposition}[A model-curvature class of a generic Chow class]
+\label{r11o:class}
+The constructions of this round give a well-defined homomorphism
+\[
+  \mathfrak o_X^r:\operatorname{CH}^r(X)_{\mathbb Q}
+                       \longrightarrow H_{\mathrm{BC,act}}^{r,r}(X).
+\tag{OC2}\label{r11o:map}
+\]
+If $\xi$ is a model virtual vector bundle whose generic degree-$r$
+Chern character is $a$, then
+\[
+                  \mathfrak o_X^r(a)=[\operatorname{ch}_r(\bar\xi)].
+\]
+It is independent of the model, model metrics, and virtual-bundle
+presentation.  It is compatible with pullback by morphisms between
+smooth projective integral varieties.
+\end{proposition}
+
+\begin{proof}
+The rational Chern character of the smooth projective generic fiber
+is an isomorphism from $K_0(X)_{\mathbb Q}$ onto its graded Chow ring.
+Choose a generic virtual bundle with degree-$r$ character $a$ and
+extend its finitely many bundles to a projective flat model as in
+Corollary~\ref{r11p:any-cycle-pair}.  The actual Chern form is
+separately closed, so defines a class in \eqref{r11o:BC}.
+
+Two such choices pull back to a common projective model refinement.
+Their difference has generic degree-$r$ Chow character zero.
+Proposition~\ref{r11p:generic-chow-primitive} supplies a global actual
+$D$-primitive for the difference of their degree-$r$ model characters.
+Pulling model bundles to a refinement preserves their original model
+metrics on $X^{\rm an}$.  This proves independence and additivity.
+
+For a morphism $f:X\to Y$, extend it after choosing a projective
+graph model and a common refinement.  Model Chern functoriality gives
+$c(f^*\bar E)=f^*c(\bar E)$ strictly.  Mihatsch's actual pullback
+commutes with $D$, so the equality passes to the quotient.  The
+pullback on Chow groups is the usual operational pullback for smooth
+varieties.  This proves the claimed compatibility.
+\end{proof}
+
+\begin{corollary}[A sufficient route to strong G]
+\label{r11o:sufficient}
+For any prescribed codimension-$r$ cycle $Z$, if
+$\mathfrak o_X^r([Z])=0$, then strong G holds for $Z$ on exactly
+$X^{\rm an}\setminus|Z|^{\rm an}$, over the original field and on
+all actual tests.
+\end{corollary}
+
+\begin{proof}
+Use the exact-support pair $(G_Z,\Omega_Z)$ from
+Corollary~\ref{r11p:any-cycle-pair}.  Vanishing of
+\eqref{r11o:map} means precisely that there is a global actual
+$\Psi$ with $D\Psi=\Omega_Z$.  Subtract $\Psi$ from $G_Z$ on the
+exact complement.  Stokes subtracts its curvature on every actual
+test and does not change the cycle term or introduce a new pole.
+\end{proof}
+
+\begin{corollary}[A numerical model lift gives strong G]
+\label{r11o:numerical-model-lift}
+Let $Z$ be a prescribed cycle.  Suppose an integral projective flat
+model of the original $X/K$ carries a virtual model vector bundle
+$\xi\in K_0(\mathcal X)_{\mathbb Q}$ such that
+\[
+ \operatorname{ch}_r(\xi|_X)=[Z],\qquad
+ \deg_V\bigl(\operatorname{ch}_r(\xi|_{\mathcal X_s})\cap[V]\bigr)=0
+\tag{OC4}\label{r11o:numerical-lift}
+\]
+for every integral $r$-dimensional subvariety
+$V\subset\mathcal X_s$.  Then $\mathfrak o_X^r([Z])=0$, and
+strong G holds on the exact complement of the prescribed $Z$.
+No good-reduction hypothesis is required for this implication.
+\end{corollary}
+
+\begin{proof}
+The second condition is precisely operational numerical triviality
+in the degree needed by the Round 10 model-Chern detector.
+It gives $\operatorname{ch}_r(\bar\xi)=0$ as an actual form.
+Proposition~\ref{r11o:class} then gives
+$\mathfrak o_X^r([Z])=0$, and
+Corollary~\ref{r11o:sufficient} supplies the exact-support form.
+\end{proof}
+
+This is the precise interface to a numerical-admissibility approach
+to heights.  On a regular model, a pure operational Chern-character
+representative of a numerically vertical-orthogonal Chow lift has
+the properties in \eqref{r11o:numerical-lift}.  The present
+corollary does not prove that such a lift exists for every cycle.
+If a lift has only been obtained on a generically finite alteration,
+one must still produce the stated model data on the original $X$,
+or justify a suitable analytic descent.  A general proper actual-form
+pushforward cannot be inserted into that step without proof.
+
+\begin{proposition}[Vanishing through a finite good cover]
+\label{r11o:finite-good-vanishing}
+Under the finite good-cover hypothesis of
+Corollary~\ref{r11p:potential-good-G}, the class
+$\mathfrak o_X^r([Z])$ vanishes for every geometrically
+homologically trivial $Z$.
+\end{proposition}
+
+\begin{proof}
+Write $h:Y\to X$ for the finite flat map, of native degree $a$.
+Choose any model character $\Omega_X$ representing $[Z]$.
+On a common model of $Y$, compare $h^*\Omega_X$ with the
+character of the resolutions of the closures of $h^*Z$ on its
+good model.  The latter character is zero as an actual form by
+the numerical argument in Corollary~\ref{r11p:potential-good-G}.
+The difference has generic degree-$r$ Chow character zero.
+
+The proof of Proposition~\ref{r11p:generic-chow-primitive}
+provides more than abstract existence: its primitive is a finite
+linear combination
+\[
+ \beta_Y=\sum_j q_jd_j^{-1}
+             \operatorname{Tr}^{\mathscr M}_{b_j}(G_j),
+          \qquad D\beta_Y=h^*\Omega_X,
+\]
+where $b_j:T_j\to Y$ is finite flat on all of $Y$ and $G_j$ is
+a global PL-scalar/model-curvature line sum.  Indeed its construction
+uses only generically acyclic complexes, whose prescribed generic
+open is $Y$ itself.  Each has separately closed actual curvature
+$\Omega_j$, with $DG_j=b_j^*\Omega_j$ and
+$\sum_jq_j\Omega_j=h^*\Omega_X$.
+
+One does not take the trace of an arbitrary already constructed
+primitive.  Instead use the permitted original line sums and define
+\[
+ \beta_X=a^{-1}\sum_jq_jd_j^{-1}
+                    \operatorname{Tr}^{\mathscr M}_{h\circ b_j}(G_j).
+\]
+Every composite is finite flat on the whole $X$.  The minimal-trace
+pairing, Stokes, and the native finite-degree formula give, for
+each compact actual test $\eta$ of degree $(n-r,n-r)$,
+\[
+ \begin{split}
+ \int_X\beta_XD\eta
+ &=a^{-1}\sum_jq_j\int_Y\Omega_jh^*\eta\\
+ &=a^{-1}\int_Yh^*(\Omega_X\eta)
+ =\int_X\Omega_X\eta.
+ \end{split}
+\]
+Current injectivity gives $D\beta_X=\Omega_X$ as actual forms.
+Thus its class in \eqref{r11o:BC} is zero.  This argument retains
+the original field and uses no general trace on source primitives.
+\end{proof}
+
+\paragraph{No converse has been established.}
+If another zero-curvature Green form exists, subtracting it from
+$G_Z$ gives a primitive only on $X\setminus|Z|$.  Such a difference
+need not extend as an actual form across the cycle.  Thus the argument
+does not identify strong G with the vanishing of
+$\mathfrak o_X^r([Z])$.  It gives a concrete sufficient target.
+Likewise the normal-Chern obstruction in Section~\ref{r11n:section}
+tests one specified distance kernel; it is not an obstruction to all
+possible Green representatives.
+
+\paragraph{The next precise question.}
+Let $X/K$ be smooth projective with arbitrary reduction, and let
+$Z$ have zero geometric $\ell$-adic class.  The new target is to prove
+\[
+             \mathfrak o_X^r([Z])=0,
+\tag{OC3}\label{r11o:target}
+\]
+or to produce a different exact-support construction that bypasses
+this sufficient condition.  The current proofs establish the
+vanishing for a fixed smooth good model, a finite good cover, and
+generic Chow-zero classes.  In top degree the weighted vertical-component
+calculation provides an actual primitive when the stated
+$\mathbb Q$-Cartier model exists.  None of these arguments proves
+\eqref{r11o:target} in arbitrary middle codimension at bad reduction.
+
+An important test case for the present actual-form route is
+codimension two on a threefold with bad reduction.  In that case
+the desired global correction has degree $(1,1)$, while the curvature
+has degree $(2,2)$.  A scalar component-graph calculation by itself
+controls top-degree measures and does not supply this middle-degree
+primitive.  Any proposed proof should identify the actual global
+form that supplies it, or the precise descent complex used to glue
+local primitives.  This is not a withdrawal of the distinct Round 9
+numerical-admissibility/real-height candidate for threefolds.  That
+construction and an actual Green form on the prescribed analytic
+complement have different final requirements.  No implication from
+the former to the latter is assumed without the analytic comparison
+and descent it would require.
+
+\paragraph{Two secondary interfaces that remain open here.}
+For arbitrary nonreduced isolated complete intersections, equality
+of lengths has not been proved to determine the local polar Aeppli
+class.  The parameter-power theorem resolves a substantial explicit
+class, and model truncation resolves the cancellation problem under
+a separate common-model hypothesis.  For a general regular immersion,
+vanishing of the lower actual normal Chern forms is necessary for
+the canonical distance kernel to work; sufficiency has been proved
+only for the projective-bundle zero-section family.  Neither missing
+interface may be replaced by equality of ordinary currents alone.
+
+\paragraph{What this means for the height project.}
+The present results concern the local non-archimedean strong Green
+input.  They do not by themselves prove a canonical height pairing,
+independence of all choices, global reciprocity, or a full
+unconditional Beilinson--Bloch height in arbitrary codimension.
+Those assertions require their own constructions and comparisons.

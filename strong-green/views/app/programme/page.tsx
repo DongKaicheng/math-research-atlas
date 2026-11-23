@@ -26,6 +26,7 @@ export default function Page() {
       <h2 id="target-heading">The main objective</h2>
       <MathText text={programmeOverview.target} />
       <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem 7.5 (PH16)</a> establishes the finite sum of local terms, independence of Green choices and descent to both Chow groups from Strong G at every finite completion in both complementary codimensions, within the <a href="/papers/global-height-pairing#sec:height-hypotheses">stated analytic foundations</a>. This identifies the significance of the local conjecture for the global height problem.</p>
+      <p>The <a href="/papers/chow-obstruction-green-pairs#h22:main">Chow obstruction and prescribed Green-pair theorem</a> now establishes Hypothesis 2.2 over the original valued field, for smooth integral projective varieties and every prescribed rational cycle. On the obstruction route, the remaining general local task is vanishing of this class on homologically trivial cycles.</p>
     </section>
 
     <section className="programme-logic" aria-labelledby="logic-heading">
@@ -42,7 +43,7 @@ export default function Page() {
     </section>
 
     <section className="programme-objectives" aria-labelledby="objectives-heading">
-      <header><h2 id="objectives-heading">The construction and further research</h2><p>Steps 1–2 address local existence. Step 3 is the proved conditional passage to a full height pairing. Step 4 concerns comparison with classical constructions. Steps 5–6 ask for additional arithmetic properties.</p></header>
+      <header><h2 id="objectives-heading">The construction and further research</h2><p>Step 1 is the established curved Green construction. Step 2 is the remaining general source-vanishing problem. Step 3 is the proved conditional passage to a full height pairing. Step 4 concerns comparison with classical constructions. Steps 5–6 ask for additional arithmetic properties.</p></header>
       <nav className="programme-section-links" aria-label="Research problems">{programmeSteps.map(step => <a key={step.id} href={"#" + step.id}>{step.number}. {step.title}</a>)}</nav>
       {programmeSteps.map(step => <section className="programme-problem" id={step.id} key={step.id}>
         <h3><span>{step.number}.</span> {step.title}</h3>

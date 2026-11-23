@@ -1,0 +1,249 @@
+\section{Independent review of the binary surface product extension}
+\label{r20audit:PX20supported}
+
+\paragraph{Verdict and exact version.}
+\textbf{PASS relative to the explicitly frozen actual Green,
+alteration, inertia, and descent interfaces.}
+The reviewed source is
+\texttt{inertia/product\_extension\_probe.tex}, SHA--256
+\texttt{b618a9e134f13e78b19f1e8a90c7a566e2f87f6138caf93765bbf3500accee91}.
+The reviewer is the supported20 branch. This is an internal independent
+derivation check; the author and reviewer communicated about two
+precision corrections, both present in this version. It is not external
+peer review. No result for three or more bad surface factors is certified.
+Historical R9 sources were used only to identify the old candidate and
+its scope; none is imported here as a frozen authority.
+
+\subsection{The chosen global projective subdivision}
+
+The product local lattice has rank $r+s-1$, with the integral height
+function $\sum a=\sum b$. Its rays $n_{ij}$ are primitive and have
+height one. Along a monotone path, the first ray and the successive
+differences are an integral basis: the differences supply all adjacent
+first-factor differences and all adjacent second-factor differences,
+and the first ray supplies the height direction. Thus every maximal
+cone is unimodular and its local model is reduced strictly semistable.
+No new ray, hence no new vertical component, is introduced.
+
+The source does not use an unspecified Hartl blowup order. The heights
+$-ij$ give a coherent staircase subdivision. For incomparable vertices,
+the replacement by their coordinatewise ordered pair lowers the sum
+of the heights by $(i'-i)(j'-j)>0$, while preserving the marginal
+coordinates. Hence every lower face has chain support. Monotone
+coupling of marginals gives the reverse implication, and generic
+marginals realize all maximal paths. The heights are defined from
+global component orders, so their restrictions agree on common faces.
+The resulting integral relatively strictly convex support function
+gives projectivity of this toroidal modification. This supplies the
+projectivity needed later; unimodularity alone would not do so.
+
+The reviewer independently opened Hartl's primary paper, including
+Proposition~2.1 and the two monomial blowup charts on printed
+pp.~218--219, and Proposition~2.2 for ramified base change. The charts
+match the product cone calculation. They are not used as a substitute
+for the additional component-tower calculation proved in PX20.
+
+\subsection{Component blowup towers and genuine higher strata}
+
+Modulo the ray $n_{ij}$, the rays from the first and second coordinate
+directions become $u_a,v_b$, and the other ray becomes $u_a+v_b$.
+A monotone path containing $(i,j)$ has vertices only in the lower and
+upper coordinate rectangles. The lower and upper ray sets are
+disjoint. On either rectangle the elementary star-subdivision
+induction is valid: after inserting $u_m+v_n$, its two maximal regions
+are the problems of sizes $(m,n-1)$ and $(m-1,n)$ with that final ray
+adjoined. A remaining original two-face is still a face until it is
+itself subdivided. Thus every subsequent center is a smooth
+codimension-two stratum.
+
+Reversing the lower coordinate orders gives the stated ascending lower
+and descending upper lists. These operations globalize as the strict
+transforms of the indicated products of boundary curves. Their
+reduced boundary remains SNC at every stage. In particular the
+intersection of the relevant two strict-transform divisors is the
+strict transform of the original center, with its connected components
+treated separately; it does not acquire an unlisted codimension-two
+center over a higher stratum.
+
+The component map is therefore an actual sequence of smooth
+codimension-two blowups of $S_i\times T_j$. Each center maps properly
+birationally to a curve product. The reviewer separately checked
+Stacks Project, Tag~0C5R: a proper birational morphism between regular
+integral surfaces factors into closed-point blowups, with no
+characteristic-zero assumption. Consequently each center has a
+curve-product motive plus point-motive corrections. The ordinary
+smooth blowup formula yields
+\[
+ h(P_{ij})\simeq h(S_i\times T_j)\oplus K_{ij}
+\]
+as a Chow-motive decomposition, with actual algebraic inclusion and
+projection maps and base projector $f_{ij}^*f_{ij*}$.
+
+As an additional finite verification, the reviewer wrote
+\texttt{supported/verify\_binary\_component\_fans.py}. It independently
+enumerates all monotone paths and compares their component stars
+with the stated two-face subdivisions for every $1\le r,s\le3$ and
+every component label. It checks $36$ stars and $70$
+positive-dimensional maximal cones, including all nine stars of
+triple times triple, and verifies each determinant is $\pm1$.
+This is a check of the local calculation, not a replacement for the
+global gluing proof. At triple times triple the product has actual
+higher intersections; no ordinary-node assumption has entered.
+
+\subsection{Same-label edges and full exceptional transport}
+
+For a double joining $P_{ij}$ and $P_{il}$, the first-factor
+coordinates belonging to every other component have valuation zero
+on both generating rays. They are invertible on the generic orbit
+of the two-cone. Therefore no extra double component can lie wholly
+over the first-factor boundary. Over the complement of that boundary
+the model is the unchanged product, including at old triple points
+in the second factor. This proves the single degree-one birational
+map to the relevant component of $S_i\times(T_j\cap T_l)$.
+An edge changing the first label maps into that label's boundary.
+The symmetric statements hold for the second label.
+
+The supported-cohomology transport lemma treats all inputs. For
+$\beta=f^*f_*\beta+\beta_0$, the base summand follows from
+$h^*p=p'h^*$. On the second summand, $f_*\beta_0=0$ and
+$\beta_0$ vanishes off $f^{-1}Z$. Localization makes its restriction
+and subsequent pushforward supported on $Z'$, where $p'$ kills it.
+Thus $g^*P=P'g^*$ on full cohomology, not only on the base summand.
+Poincare transposition gives the Gysin formula. It is essential here
+that the support-annihilation hypothesis is imposed on $p'$ too.
+
+For the surface projector $p_S$, its only nonzero realization is the
+orthogonal complement of the geometric divisor classes in $H^2(S)$.
+The degree-two supported image of an SNC curve boundary is generated
+by its divisor classes; point intersections have no such contribution.
+Restriction of $H^2(S)$ to that boundary is detected on its smooth
+curve components and is the same divisor pairing. Therefore both
+annihilations in (PX20.9) hold. Kunneth with supports carries this to
+the product coefficient. No statement that all Chow maps from
+$t_2(S)$ to arbitrary curve motives vanish is used.
+
+\subsection{The four sectors are sufficient without Chow commutation}
+
+The reviewer checked the surface projectors in Kahn--Murre--Pedrini,
+Propositions~7.2.1 and~7.2.3, directly in the primary author manuscript.
+They give self-dual rational Chow projectors. The geometric
+Neron--Severi summand is Artin--Tate over the native field. The final
+PX20 version explicitly allows a further finite unramified extension
+splitting these finitely many actions and the finite point-motive
+corrections. Thus the source's later description by Tate and
+Picard/Albanese pieces is justified over the working residue field.
+It is not inferred merely from splitting component constants.
+
+Since $f_*f^*=1$ as correspondences, $P^S$ and $P^T$ are commuting
+Chow idempotents. Their product and complementary products therefore
+define genuine Chow summands. Boundary transport is required only on
+cohomology: edges changing a factor label kill that factor's
+transcendental projector; same-label edges have the common transported
+projector on the double. This proves cohomological commutation with
+the full incidence operator $A$, which is all the splitting argument
+requires. It does not silently assert Chow-level commutation.
+
+On a same-label double with map $f'$ and endpoint embeddings $h_j,h_l$,
+the transported off-diagonal entry is
+\[
+ f_{ij*}g_{j*}g_l^*f_{il}^*
+     =h_{j*}f'_*f'^*h_l^*=h_{j*}h_l^*.
+\]
+The middle equality uses the actual degree-one birational map.
+The diagonal is the negative sum of the corresponding
+$g_*g^*$ terms, so the identical calculation includes it.
+Changing-label terms vanish on the selected transcendental sector.
+This proves (PX20.12) with the full surface incidence operator,
+including its signs and all boundary terms.
+
+The double-transcendental sector is zero for $A$. On either
+single-transcendental sector, PI20's surface inverse supplies the
+inverse in the other factor; inserting its complementary projector
+preserves $AGA=A$ because the surface incidence annihilates $p_S$
+on both sides. The exceptional summand is killed by $P^S$ and $P^T$
+as Chow projectors, and hence lies in $Q$. Its motive is already
+identified by the actual blowup tower. The base of $Q$ is the tensor
+product of the two nontranscendental surface parts. Consequently
+$Q$ is an explicitly identified abelian-type Chow summand; it is not
+an unspecified complement in a conjectural semisimple homological
+category.
+
+\subsection{One prime, numerical comparison, and actual correction}
+
+The finitely many abelian carriers of $Q$ may be combined into one
+product. Its powers, Tate twists, and finite direct sums contain all
+correspondence corners needed for $QAQ$ and an opposite-degree inverse.
+Deligne--Clozel, Theorem~1 and Remark~(b), were read in the primary
+paper: a single suitable invertible prime works for every power of
+this one fixed abelian variety. This avoids an unjustified
+intersection of several unrelated positive-density prime sets.
+
+Jannsen is applied only in numerical motives, giving a numerical
+inner inverse of the corner $QAQ$. Choose actual Chow representatives
+for its entries. Their error is a numerical-zero correspondence in
+the same corner. Transporting it into the selected abelian carrier,
+using the actual summand inclusion and projection, makes its
+geometric class zero at the selected prime. Transport back kills
+the entire corner error. No comparison for all correspondences on
+the unrestricted fourfold component products is assumed.
+
+The native-to-geometric numerical step is also valid. A geometric
+test cycle descends to some finite constant extension. For a native
+numerical-zero class, intersection with the norm of this test is
+zero; projection formula identifies this with the full extension
+degree times the geometric intersection. Therefore the class remains
+numerically zero geometrically. All these intersections are on proper
+finite-field varieties. No arithmetic-model $\operatorname{CH}_0$
+degree is used.
+
+Summing the three sector inverses yields an actual degree-minus-one
+correspondence $G$ with $A^HG^HA^H=A^H$ on all cohomology.
+If auxiliary representatives require a further finite residue
+extension of the fixed model, normalized Galois averaging is valid
+because this equation is linear in $G$. Field changes of the model
+itself are handled separately by the final valued-field descent.
+Only one suitable prime is asserted for the abelian core.
+
+For a native numerical kernel vector with actual representative $x$,
+the class $A^Hx$ is numerically zero. Every actual correspondence
+preserves numerical equivalence, so $G^HA^Hx$ is still numerically
+zero. The correction
+\[
+             x^\flat=x-G^HA^Hx
+\]
+has the original numerical class and $A^Hx^\flat=0$. This is exactly
+the AK19 actual lifting requirement. Tensoring the correspondence
+identity with $\Delta_{V_0}$ retains full cohomology, so arbitrary
+mixed actual classes are included. No generation of their Chow groups
+by external products is assumed.
+
+\subsection{The local theorem and the uncrossed boundary}
+
+After a common finite valued extension, the good coefficient model
+survives the later extensions. Hartl's ramified base-change repair is
+applied to the two surface factors before their staircase product.
+All surface cohomology degrees satisfy the required
+weight--monodromy input; the good factor has pure unramified
+cohomology. Kunneth and the tensor rule for monodromy filtrations
+give precisely OW19's odd-degree hypothesis for this witness.
+Thus the actual inertia image is zero. Combining this with the
+actual-lift correction makes the pulled-back cycle's periods zero.
+
+The dominant alteration step and the finite constant-field descent
+are distinct frozen interfaces. The latter uses the full extension
+degree and the original extending norm. FD17/VT17 then recover the
+ordinary actual Green form on the originally specified complement
+with every actual compact test. No proper actual-form pushforward
+and no finiteness on that complement is asserted. The final version
+states $1\le r\le\dim(V\times S\times T)$ explicitly. Fresh
+applications after finite valued extensions include new cycles that
+need not descend.
+
+The reviewed new proof does not enlarge the already frozen
+four-dimensional result for two surfaces alone. Its good-coefficient
+extension verifies the higher-dimensional mixed-cycle candidate
+under the present interfaces, with honest R9 provenance. It does
+not prove that a resolved product of three bad factors has the
+same tower or residual core, nor does it turn its incidence map
+into a naive tensor sum. General strong G and the full height
+domain for arbitrary varieties remain open.

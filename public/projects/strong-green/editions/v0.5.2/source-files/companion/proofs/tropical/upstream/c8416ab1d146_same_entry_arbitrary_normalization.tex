@@ -1,0 +1,238 @@
+\section{Same-entry loops under an arbitrary common normalization}
+\label{sec:r12-same-entry-arbitrary-normalization}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND, submitted for independent exact-source review.}
+The construction contributor is \texttt{/root/r11\_challenge}, acting
+as the R12 matrix agent.  The existence of a strict same-entry witness
+is frozen SL and is not counted again.  The new statement is the full
+all-degree residual identity for an \emph{arbitrary} common actual
+normalization, and the resulting explicit comparison of the original
+SL witness with the normalization-free edge sum.  This supplies a
+specific compatibility operation for later whole-matrix formulas; it
+does not solve arbitrary matrix-word coherence or Strong G.
+
+\subsection{The exact one-edge identity}
+
+Work over the original fixed $K$ and absolute value.  Let $f$ be an
+$r$-tuple of sections of the same actual metrized line bundle on an
+ordinary open $N$, where $r\ge2$, and put $W=N\setminus|f=0|$,
+$R=c_1(\overline L)$ and $D=d'd''$.  One unit edge changes only
+entry $i$ by an analytic unit of valuation $c$.  Denote its original
+norm potentials by $\Phi_p,\Phi_q$.  On the ordinary open where the
+unchanged $(r-1)$-tuple is nonzero, let $\psi$ be its actual norm
+potential and put $C_\psi=R-D\psi$.
+
+Supply \emph{any} actual scalar $\Psi$ on $W$.  Set
+\[
+ R_*=R-D\Psi,\qquad p=\Phi_p-\Psi,\qquad
+ q=\Phi_q-\Psi,\qquad w=\psi-\Psi,
+ \qquad g=c+p-q=c+\Phi_p-\Phi_q.
+ \tag{SAN1}
+\]
+The original projective curvatures $C_p=R_*-Dp$ and
+$C_q=R_*-Dq$ do not depend on $\Psi$.  Retain exactly the complete
+CS residual, including its absolute-value walls:
+\[
+\begin{split}
+ S_{e,k}={}&\mathfrak a(p,q;h_{k-1}(R_*,C_p,C_q))\\
+ &+\mathfrak a(c_+,q;h_{k-1}(R_*,C_q))
+   +\mathfrak a(c_-,p;h_{k-1}(R_*,C_p)),
+ \tag{SAN2}
+\end{split}
+\]
+where $\mathfrak a(a,b;Q)=((a\,d''b-b\,d''a)Q,
+-(a\,d'b-b\,d'a)Q)$ and $h_j$ is the complete homogeneous
+polynomial, with $h_0=1$ and $h_j=0$ for $j<0$.
+
+\begin{lemma}[Entire one-entry residual]
+For every $k\ge1$, on the unchanged-tuple nonzero open one has
+the actual identity
+\[
+ \boxed{\qquad
+ S_{e,k}=\mathfrak a(g,w;h_{k-1}(R_*,C_\psi)).
+ \qquad}
+ \tag{SAN3}
+\]
+It holds with the full derivatives of $\Psi$, even when $D\Psi\ne0$.
+It also holds coefficientwise after the finite formal two-colour
+parameter extension CT1--CT3, provided all original edge data are
+constant in that formal parameter.
+\end{lemma}
+
+\begin{proof}
+First take $c\ge0$.  The original CS15 carrier identity eliminates
+the $C_p$-containing monomials and leaves
+\[
+ S_{e,k}=\mathfrak a(p+c,q;h_{k-1}(R_*,C_q)).
+ \tag{SAN4}
+\]
+This carrier identity remains valid after any common normalization:
+the original old-corner relation $\Phi_p=\Phi_q$ is unchanged by
+subtracting $\Psi$, including its tangential first jets.
+
+On a unit presentation for the changed entry, write its valuation
+relative to the unchanged norm as $x$.  Then
+$p=w+\min(x,0)$ and $q=w+\min(x+c,0)$.  The finite full-wall
+minimum identity gives, in each colour,
+\[
+ \mathfrak a(p+c,q;1)=\mathfrak a(g,w;1),\qquad
+ g=(x+c)_+-x_+=c+\min(x,0)-\min(x+c,0).
+ \tag{SAN5}
+\]
+Indeed the additional term
+$\mathfrak a(\min(x,0)+c,\min(x+c,0);1)$ vanishes: for
+$x\le0$ it is the homogeneous minimum identity, and for $x\ge0$
+the second argument is zero.  These statements agree with their
+restricted first jets on all the indicated walls.
+
+On every new projective-curvature carrier where the changed entry
+is active, $x+c=0$ after comparison with an active unchanged entry.
+Thus $g=0$ and its tangential first jet is zero there.  On the part
+where the changed entry is strictly inactive, the new norm is
+literally the unchanged norm on an ordinary neighborhood, so
+$C_q=C_\psi$.  Consequently, after wedging with the displayed
+first-form coefficient, every power $C_q^j$ in (SAN4) can be
+replaced by $C_\psi^j$.  On the open where the changed entry is
+strictly winning, $x+c<0$ and (SAN5) gives $g=0$ identically;
+thus the right-hand passive-curvature terms vanish there as well.
+This statement retains all intersections
+and boundary carriers: any component meeting a changed-active
+corner has the zero restricted coefficient just proved.  It does
+not cancel a curvature factor or assert a mixed-power nilpotence.
+Together with (SAN5) it proves (SAN3) for $c\ge0$.
+
+Reverse the whole edge for $c\le0$; both $S_{e,k}$ and $g$ change
+sign, while $w,C_\psi,R_*$ do not.  The wall $c=0$ retains the
+full CS restricted-jet identity.  At a zero of the changed entry,
+all relevant old and new norms equal the unchanged norm on an
+ordinary neighborhood.  There $p=q=w$, $g=c$, and (SAN2) gives
+(SAN3) directly; no value of $v(0)$ is assigned.
+
+For the formal assertion, $g$ and all original corner differences
+are independent of the formal parameter.  On a killed carrier,
+both $g$ and its full actual tangential first jet are zero, so its
+product with every single or double formal coefficient of $w$ or
+$R_*$ is zero.  The common-shift relations in (SAN4)--(SAN5) are
+finite graded differential identities.  Hence the same proof holds
+for every coefficient of CT3, not merely at numerical parameter
+values.
+\end{proof}
+
+\subsection{The whole loop and the finite cap-change witness}
+
+Consider a finite loop changing only entry $i$, with unit weights
+$c_e$, initial and final norm potentials equal, and $\sum_e c_e=0$.
+For example its analytic unit product may be one, as in frozen SL.
+Every edge has the same unchanged tuple and the same $\Psi$.
+The scalars (SAN1) telescope exactly:
+\[
+                     \sum_e g_e=0.
+ \tag{SAN6}
+\]
+Thus (SAN3) proves, for every $k\ge1$,
+\[
+                     \sum_e S_{e,k}=0.
+ \tag{SAN7}
+\]
+Where the unchanged tuple is zero, the changed entry is nonzero.
+The finitely many unit factors are locally bounded with locally
+bounded inverses.  On one ordinary neighborhood all intermediate
+norms are therefore determined by this single changed entry.
+There $C_p=C_q=0$ and $q=p+c$ for every edge; the full CS formula
+gives $S_{e,k}=R_*^{k-1}S_{e,1}=0$.  This proves (SAN7) on all
+of $W$ without density or extension of a singular unchanged norm.
+
+Let $s=r-1$, and let $\mathcal K_s(e;R_*)$ be exactly CS6--CS10.
+Use the complete MT15 expression $Q_{\rm met}[-\Psi]$ for the
+whole zero-weight loop, not for an individual edge.  Define
+\[
+ q[\Psi]=\sum_e\mathcal K_s(e;R_*)-Q_{\rm met}[-\Psi].
+ \tag{SAN8}
+\]
+All vertex potentials in the edge sum are normalized by the same
+$\Psi$.  Equations (SAN7), CS10 and MT16 prove
+\[
+              P=\partial_2q[\Psi],\qquad
+              q[0]=\sum_e\mathcal K_s(e;R).
+ \tag{SAN9}
+\]
+In particular the latter is a specified normalization-free actual
+witness, not a selection from a closed-range theorem.
+
+For any two supplied actual scalars $\Psi_0,\Psi_1$ on $W$, use
+\[
+ \rho(t)=3t^2-2t^3,\qquad
+ \widetilde\Psi=\Psi_0+\rho(t)(\Psi_1-\Psi_0)
+ \tag{SAN10}
+\]
+in every term of (SAN8), with the full formal differentials CT2.
+The formal version of (SAN7), together with the full CS and MT
+identities, gives $\widetilde\partial_2\widetilde q=P$ with no
+parameter coefficients on the right.  The flat endpoint derivative
+$\rho'(0)=0$ gives CT6.  Therefore the exact finite coefficient
+recipe CT7, including its $-d''J$ correction, supplies an actual
+quadruple $H_{01}$ satisfying
+\[
+               q[\Psi_1]-q[\Psi_0]=\partial_3H_{01}.
+ \tag{SAN11}
+\]
+This applies to the old SL cap and to a later common two-target cap;
+it does not infer arbitrary cross-passive-block cap independence.
+The reason is the independently proved all-normalization loop
+identity (SAN7), specific to one changed entry.
+
+\begin{corollary}[Prescribed same-target norm-isometric insertions]
+The same statements hold when successive unit edges are joined by
+supplied norm-isometric steps which leave every entry other than
+the same fixed target $i$ literally unchanged.  Require that those
+steps carry the prescribed \emph{zero} primitive pair, that the
+full norm loop closes, and that its total unit weight is zero.
+The unchanged tuple must be the very same tuple at every step;
+no unproved identification of merely norm-equivalent presentations
+is allowed.  Then (SAN7)--(SAN11) hold for the whole unit-edge sum.
+\end{corollary}
+
+\begin{proof}
+The zero primitive for each inserted step is part of the stated
+native data, not deduced for arbitrary chosen primitives from equal
+endpoints.  All unit edges have the identical unchanged norm
+$\psi$.  Their potential endpoints telescope because the inserted
+steps have exactly equal norms.  Thus (SAN6) still holds, and the
+proof of (SAN7)--(SAN11) is unchanged.
+
+For the precise application to frozen SAR3, the inserted steps are
+the native SHT constant shears $E_{ij}(1)$ (or their inverse
+representatives), with their prescribed pair zero.  They change
+only target $i$ and preserve the full unchanged tuple literally.
+All six unit edges have this same target, their weights sum to
+zero, and their norm loop closes.  Hence SAR7 also has arbitrary
+common-normalization transport (SAN11).  The strict existence of
+same-root additivity remains the previously marked recovery
+revalidation; neither missing CG/RA source bytes nor their other
+historical conclusions are recovered by this corollary.
+\end{proof}
+
+\paragraph{Actual and branch interfaces.}
+All objects belong to the frozen actual $L_2^s,L_3^s$ spaces on
+the original $W$.  Formal integration is finite polynomial
+coefficient integration in actual $B$, exactly as in CT, not a
+pushforward along a real interval.  The formulas respect every
+actual relation and refinement, nonproduct units, all real walls,
+the original metric and arbitrary passive parameter directions.
+Only the original fixed-stage finite differential and wedge
+interfaces are used.  No full inherited-topology comparison,
+finite-height theorem, field descent, extra growth condition,
+general Green representative or BB-height is inferred.
+
+\paragraph{Exact frozen inputs.}
+SL: \path{4e98a9bf26bbfb5e27ad48de2b8ac8d1b147ebad9d1fe9dbaaced0e1eb2883b0}.
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+MT: \path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+CT: \path{0c10e28336f9c779cc3dc4a35393b1fc52d1f6d7d154a4ec466c13d7c6514e95}.
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+SAR recovery revalidation:
+\path{b01895d9d8a52e0c5e2a2e37ef6ed9d3a77ef654d10928b0193b91606ba625ec}.
+The exact current-source reviews of these inputs remain their
+authority; this new argument is not formal verification or an
+external novelty claim.

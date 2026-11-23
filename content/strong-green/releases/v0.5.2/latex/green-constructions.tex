@@ -1,0 +1,2837 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\usepackage{xcolor}
+\definecolor{LinkBlue}{HTML}{1F4E79}
+\definecolor{CiteGreen}{HTML}{2F6B3C}
+\definecolor{UrlBrown}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=LinkBlue,citecolor=CiteGreen,urlcolor=UrlBrown,breaklinks=true]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\numberwithin{equation}{section}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\B}{\mathcal B}
+\newcommand{\Ob}{\mathfrak o}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\BC}{\mathrm{BC,act}}
+\newcommand{\homol}{\mathrm{hom}}
+\newcommand{\alg}{\mathrm{alg}}
+\title{Local Green Forms and Chow Correspondences\\Conditional Reductions and Construction Draft}
+\author{}
+\date{23 November 2026}
+\hypersetup{pdftitle={Local Green Forms and Chow Correspondences},pdfauthor={}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We organize two geometric reductions for actual non-Archimedean Green forms. The Chow obstruction and curved Green pairs on prescribed support complements are established in the companion construction theorem. Algebraically trivial classes are treated through additive Poincar\'e families, rational-fibre rigidity and compactness of $p$-adic abelian groups. Homologically trivial classes on abelian varieties are treated through vertical corrections on semistable models; Chow correspondences then transport the resulting numerical certificates. These vanishing deductions retain their rigidity and numerical-transfer hypotheses. The available construction arguments are included: model Chern forms, scalar--curvature finite trace, exact-support Green pairs, compact-parameter primitives, abelian numerical descent and the regular-model Chow criterion. Products of curves and abelian varieties occur as consequences of the latter structure.
+\end{abstract}
+
+\tableofcontents
+
+\section{The two geometric reductions}\label{sec:construction-introduction}
+
+Fix a finite extension $K/\mathbf Q_p$ and its absolute value. Let $X/K$ be smooth, projective and geometrically integral of dimension $n$. We seek a Green form for a prescribed rational cycle $Z$ of codimension $r$ on the exact open set
+\[
+ U_Z=X^{\an}\setminus |Z|^{\an},\qquad 1\le r\le n.
+\]
+Here $|Z|$ is the union of the components with nonzero coefficient. Let $\B^{p,q}$ denote the ordinary actual $\delta$-form sheaf of Mihatsch \cite{M}, and write $D=d'd''$. The desired identity is
+\begin{equation}\label{eq:main-green}
+ \int_{U_Z}\gamma_Z\wedge D\eta
+ =-\int_{Z^{\an}}\eta,
+ \qquad \eta\in\B_c^{n-r,n-r}(X^{\an}).
+\end{equation}
+Its integral on the right retains the rational coefficients and cycle multiplicities. The form on the left belongs to $\B^{r-1,r-1}(U_Z)$, and the identity includes the existence of the displayed pairings.
+
+There are two geometric ways to remove the curvature from a Green pair. Algebraic equivalence supplies a compact parameter group on which the obstruction becomes locally constant. A homologically trivial class on an abelian variety instead supplies a numerical special-fibre correction. The latter is transported through a Chow diagonal factorization. We state these reductions before developing the local constructions they require.
+
+\begin{definition}[Actual obstruction space]\label[definition]{def:construction-obstruction}
+Set
+\[
+ H^{r,r}_{\BC}(X)=
+ \frac{\{\omega\in\B^{r,r}(X^{\an}):d'\omega=d''\omega=0\}}
+ {D\B^{r-1,r-1}(X^{\an})}.
+\]
+A prescribed curved Green pair for $Z$ consists of $G_Z\in\B^{r-1,r-1}(U_Z)$ and a global separately closed $\Omega_Z\in\B^{r,r}(X^{\an})$ satisfying
+\begin{equation}\label{eq:main-pair}
+ \int_{U_Z}G_Z\wedge D\eta+\int_{Z^{\an}}\eta
+ =\int_{X^{\an}}\Omega_Z\wedge\eta
+ \qquad\left(\eta\in\B_c^{n-r,n-r}(X^{\an})\right).
+\end{equation}
+\end{definition}
+
+\begin{hypothesis}[Actual curvatures and geometric transfer]\label[hypothesis]{hyp:construction-calculus}
+We retain names for the following properties. Properties (A1) and (A2) are established in \cite[Theorem 1.1]{ChowGreenPairs}. The geometric deductions below assume the further properties (R), (N) and (C) only where indicated.
+\begin{description}
+\item[(A1)] A rational-linear, Chow-invariant map
+$\Ob^r_{V,K}:\CH^r(V)_{\mathbf Q}\to H^{r,r}_{\BC}(V)$ is computed by actual degree-$r$ Chern characters of virtual bundles on projective flat models. It is functorial for the genuine analytic pullbacks used below. Two model characters with the same generic degree-$r$ Chow class differ by $D$ of a global actual form.
+\item[(A2)] Every prescribed rational cycle has a curved Green pair as in \eqref{eq:main-pair}, with $[\Omega_Z]=\Ob^r_{X,K}([Z])$.
+\item[(R)] Actual forms on $(X\times S)^{\an}$ have the uniform rational-fibre constancy of \Cref{r12p:rigid-fiber}: for smooth separated $S/K$ and $a_0\in S(K)$, the pulled-back actual form is constant for all $a\in S(K)$ in one ordinary neighbourhood of $a_0$.
+\item[(N)] Let $h:V\to X$ be finite dominant between smooth integral projective $K$-varieties. If a projective flat model of $V$ carries $\xi\in K_0(\mathcal V)_{\mathbf Q}$ such that
+\[
+ \operatorname{ch}_r(\xi|_V)=h^*z,\qquad
+ \deg\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)=0
+\]
+for every integral vertical $r$-cycle $T$, then $\Ob^r_{X,K}(z)=0$. A variety over a finite larger constant field may be regarded as a $K$-variety; the special-fibre multiplicities, residue degrees and full native degree are retained.
+\item[(C)] The kernels of the obstruction maps are preserved by algebraic Chow correspondences of the specified degree, including proper algebraic pushforward. For a finite extension $L/K$, this is interpreted in the native $K$-theory and the algebraic projection $\pi:X_L\to X$ satisfies $\pi_*\pi^*=[L:K]$.
+\end{description}
+These properties are considered for every smooth projective integral variety occurring in the relevant argument, componentwise after geometric base change when its constant field is larger.
+\end{hypothesis}
+
+\begin{theorem}[Algebraic equivalence]\label[theorem]{thm:main-algebraic}
+Assume (R). If $[Z]$ is algebraically equivalent to zero over $\overline K$, then $\Ob^r_{X,K}([Z])=0$. Consequently there exists $\gamma_Z\in\B^{r-1,r-1}(U_Z)$ satisfying \eqref{eq:main-green} over the original valued field and against every compact actual complementary test.
+\end{theorem}
+
+The proof is completed in \Cref{sec:conditional-algebraic-proof}. The Poincar\'e family converts the cycle into an additive family on a Jacobian. Its algebraic norm gives a family over $K$ with one fibre equal to $[L:K][Z]$. The obstruction-valued map is locally constant by (R), and compactness annihilates it.
+
+For the second reduction, a degree-$a$ correspondence $V\rightsquigarrow W$ means a class in $\CH^{\dim V+a}(V\times W)_{\mathbf Q}$, acting from codimension $r$ to codimension $r+a$.
+
+\begin{definition}[Potential abelian Chow retraction]\label[definition]{def:construction-retraction}
+The variety $X$ has a potential abelian Chow retraction if there are a finite extension $L/K$, abelian varieties $A_j/L$, integers $a_j$, and correspondences
+\[
+ u_j\in\CH^{n+a_j}(X_L\times_LA_j)_{\mathbf Q},\qquad
+ v_j\in\CH^{\dim A_j-a_j}(A_j\times_LX_L)_{\mathbf Q}
+\]
+such that
+\begin{equation}\label{eq:construction-retraction}
+ \Delta_{X_L}=\sum_jv_j\circ u_j
+ \quad\text{in }\CH^n(X_L\times_LX_L)_{\mathbf Q}.
+\end{equation}
+The zero-dimensional abelian variety $\Spec L$ is allowed.
+\end{definition}
+
+\begin{theorem}[Abelian correction and Chow transfer]\label[theorem]{thm:main-abelian}
+Assume (N), (C), and the semistable abelian model theorem recalled in \Cref{thm:kunnemann-local}. If $X$ has a potential abelian Chow retraction, then
+\[
+ \Ob^r_{X,K}\bigl(\CH^r(X)_{\mathbf Q,\homol}\bigr)=0.
+\]
+For $1\le r\le n$, every prescribed cycle in this group therefore has a Green form satisfying \eqref{eq:main-green}. In a fixed codimension, it is enough that the right-hand side of \eqref{eq:construction-retraction} act on the homologically trivial group as a fixed nonzero rational multiple of the identity.
+\end{theorem}
+
+Here $\CH^r(X)_{\mathbf Q,\homol}$ is the kernel of the geometric rational $\ell$-adic cycle class for a fixed $\ell\ne p$. The proof, completed in \Cref{sec:conditional-abelian-proof}, first produces a vertically numerical extension on a semistable abelian model. Property (N) converts that extension into zero obstruction. Property (C) then applies the actual Chow identity term by term.
+
+\begin{corollary}[Products of curves and abelian varieties]\label[corollary]{cor:main-products}
+Under the hypotheses of \Cref{thm:main-abelian}, let
+\[
+ X=A\times_KC_1\times_K\cdots\times_KC_s,
+\]
+where $A/K$ is abelian and the $C_i/K$ are smooth projective geometrically integral curves. Every prescribed geometrically homologically trivial cycle of codimension $1\le r\le\dim X$ satisfies \eqref{eq:main-green} over $K$.
+\end{corollary}
+\begin{proof}
+After a finite extension choose rational points on all the curves. The actual Chow diagonal factorization of \Cref{lem:curve-product-diagonal} factors through the single abelian variety $A\times\prod_i\operatorname{Jac}(C_i)$ with Tate shifts. Apply \Cref{thm:main-abelian}.
+\end{proof}
+
+The available construction of correspondence transfer also has a model-sensitive form. \Cref{thm:chow-abelian-criterion} requires a regular integral projective flat target model after finite extension, together with a regular semistable abelian model and the Chow identity. \Cref{lem:product-model} supplies the models for products. This realizes the product argument through concrete numerical certificates, rather than assuming the abstract kernel property (C) for every correspondence.
+
+\subsection{How the local construction is assembled}\label{sec:construction-strategy}
+
+The curvature construction precedes the support construction. Model Chern forms and the numerical detector are developed in \Cref{r10c:section}. The restricted trace in \Cref{r11p:minimal-trace} then handles original scalar--curvature generators; its one-parameter formula recovers the scalar potential without expanding its domain to arbitrary actual forms. In \Cref{r11p:supported-complex}, supported perfect complexes and finite-flat multisections produce the prescribed residue and exact-open Green pair. The proof assembled in \cite[Theorem 1.1]{ChowGreenPairs} supplies the model-Chern and trace interfaces and derives (A1) by producing global primitives for generic Chow-zero characters. It establishes (A1) and (A2) for smooth integral projective $K$-varieties, without requiring geometric integrality or good reduction. The remaining source-image vanishing is the issue addressed by the geometric reductions.
+
+These operations are applied in two ways. \Cref{r12p:section} constructs primitives from compact additive families. \Cref{sec:abelian-numerical} constructs them from semistable numerical certificates and traces the original generator expressions along composite finite maps. Finally, \Cref{sec:correspondences} transports certificates by algebraic intersection theory on regular models and proves the product consequences.
+
+\section{Conventions and cited foundations}\label{sec:foundations}
+
+For a projective flat model $\mathcal X/K^\circ$, a model line bundle $\mathcal L$ determines a PL metric on its generic fibre. Its actual curvature $c_1(\overline L)=D(-\log\|e\|)$ has pure tridegree $(0,0,1)$; pure tridegree $(0,0,r)$ has bidegree $(r,r)$. Special-fibre intersections are rational and operational. Native tropical calibrations and multiplicities are retained in integration. Finite extensions carry the extension of the fixed absolute value.
+
+The local arguments use Mihatsch's ordinary sheaf and analytic pullback \cite[Definition 4.2 and Theorem 4.5]{M}, the witnessing-skeleton, restriction and support statements \cite[Lemma 4.4, Corollary 4.9 and Proposition 4.11]{M}, native finite-flat top-degree integration \cite[Lemma 3.15 and Definition 4.10]{M}, and scalar Poincar\'e--Lelong \cite[Theorem 5.5 and Corollary 5.6]{M}. Polyhedral projection and pullback use \cite[Section 2 and Proposition/Definition 4.2]{MTrop} and \cite[Proposition 2.38 and Definition 2.41]{M}. The analytifications in these applications are pure-dimensional and boundaryless.
+
+The model detector uses scalar uniform density of rational model functions on proper analytifications \cite[Proposition 2.15]{GM}. Its measure calculation uses the recursive model intersections and component-mass formula of Chambert-Loir--Ducros \cite[Sections 8.7--8.8 and Theorem 18.5.5]{CLD}. The localized Riemann--Roch calculation is the Cartier case of \cite[Corollary 18.1.2]{Fulton}.
+
+The algebraic arguments use rational Chern characters on regular schemes, vector-bundle resolutions on smooth projective varieties, supported proper and refined Gysin identities, Bertini, miracle flatness and characteristic-zero resolution. The relevant references are \cite{Stacks,StacksFEY,StacksFEW,StacksGysin}. Curve-parameter generation of algebraic equivalence is used as in \cite{ACMV}, and normalized Poincar\'e bundles as in \cite{MilneJV}. The precise semistable component statement needed for abelian varieties is recalled in \Cref{thm:kunnemann-local}.
+
+
+% Source: research-sources/green-draft/model_chern.tex
+\section{Actual Chern forms of model vector bundles}
+\label{r10c:section}
+
+Let $K$ be a complete nontrivially discretely valued field, let
+$R=K^\circ$, and let $\mathcal X$ be an integral projective flat
+$R$-scheme with smooth projective generic fiber $X$ of pure dimension $n$.
+All analytic forms below are Mihatsch actual delta-forms on the ordinary
+topology of $X^{\rm an}$; their sheaf is denoted $\mathcal B$ and
+$D=d'd''$.  In the intrinsic trigrading, a form in
+$\mathcal B^{0,0,r}$ has bidegree $(r,r)$.
+The special fiber and its components need not be smooth, reduced, or
+normal.  All Chow operations are rational and operational unless
+otherwise stated.
+
+\subsection{A scalar-density detector for pure delta forms}
+
+\begin{lemma}[Detection with model Hessians]
+\label{r10c:detector}
+Let $\Omega\in\mathcal B^{0,0,r}(X^{\rm an})$ satisfy
+$d'\Omega=d''\Omega=0$, with $0\leq r\leq n$, and put $q=n-r$.  Suppose that for every
+tuple of global rational model functions $\phi_1,\ldots,\phi_q$,
+\[
+                 \Omega\wedge D\phi_1\wedge\cdots\wedge D\phi_q=0
+\]
+as a signed Radon measure.  Then $\Omega=0$ as an actual form.
+For $q=0$, the hypothesis is the vanishing of the measure of $\Omega$.
+\end{lemma}
+
+\begin{proof}
+An actual top-degree form has a locally finite signed measure: in finitely
+many polyhedral charts over a compact set this follows by integration of
+its smooth coefficient densities.  A partition of unity gives the same
+measure as actual integration.  If that measure is zero, Mihatsch
+Proposition 4.11 implies that the top form is zero.  This deals with $q=0$.
+
+Assume that vanishing of the displayed measure has already been proved
+with $k$ model-function slots replaced by arbitrary global original-smooth
+functions.  Fix those $k$ functions and all but one of the remaining
+model functions, and denote their product with $\Omega$ by $T$.
+Then $T$ has bidegree $(n-1,n-1)$ and is separately closed.  For every
+model function $\phi$ and every global original-smooth scalar $\psi$,
+two applications of actual Stokes give
+\[
+ \int_{X^{\rm an}}\phi\,T\wedge D\psi
+     =\int_{X^{\rm an}}\psi\,T\wedge D\phi=0.
+\]
+For fixed $T,\psi$, the left-hand side tests the single fixed finite
+signed measure $T\wedge D\psi$ against $\phi$.  Scalar uniform density
+therefore implies $T\wedge D\psi=0$.  Repeating this argument proves
+\[
+          \Omega\wedge D\chi_1\wedge\cdots\wedge D\chi_q=0
+\tag{D}\label{r10c:smooth-hessians}
+\]
+for arbitrary global original-smooth functions $\chi_i$.
+The density step concerns the continuous function \(\phi\) against one fixed signed measure, and consequently requires no convergence of Hessians.
+
+If $\Omega$ is nonzero, choose an $n$-dimensional witnessing skeleton
+in a moment chart, using Mihatsch Definition 3.8 and Lemma 4.4.
+On an open polyhedron $\sigma$ of dimension $q$ its pure tridegree
+means that the nonzero coefficient is scalar.  Refine the chart and
+subdivide so that its moment coordinates $u_a=-\log|h_a|$ have
+injective tangent map on $\sigma$; this follows from the finite-fiber
+property of skeleton tropicalization.  At a point in the relative
+interior of $\sigma$, choose a smooth cutoff equal to one nearby and
+supported in the moment-chart open set.  It globalizes
+\[
+                         \chi=\tfrac12\sum_a u_a^2
+\]
+to an original-smooth scalar on $X^{\rm an}$.  Near the chosen point,
+$D\chi=\sum_a d'u_a\wedge d''u_a$ is positive definite on the tangent
+space of $\sigma$.  Thus $(D\chi)^q$ is a nonzero volume form there.
+Coefficientwise wedge with smooth forms now shows that
+$\Omega\wedge(D\chi)^q$ is a nonzero actual top form.  This contradicts
+\eqref{r10c:smooth-hessians} and Proposition 4.11.
+\end{proof}
+
+\subsection{From operational numerical triviality to actual zero curvature}
+
+For clarity, the CLD top measure agrees with the measure of the actual
+wedge used above.  Locally let $u$ be a PWS model metric weight and let
+$T$ be a product of previously treated actual model curvatures.  Such a
+current is locally of order zero by its polyhedral description, so
+coefficientwise multiplication by the continuous function $u$ is defined
+and $[uT]=u[T]$. This equality is tested against original-smooth forms
+and follows directly from the same order-zero polyhedral integrals
+on both sides. Separate closedness and Mihatsch Proposition 4.11 give
+\[
+                  [Du\wedge T]=D[uT]=D\bigl(u[T]\bigr).
+\]
+Induction first identifies the actual wedge with the CLD recursive
+product for semipositive model factors. For signed model metrics,
+express them as differences of psh model
+metrics and use multilinearity.  This establishes the comparison over
+$K$ itself, before any scalar extension.
+
+\begin{theorem}[Numerical model curvature vanishing]
+\label{r10c:numerical-zero}
+Let $P$ be a homogeneous polynomial of degree $r$ in the first Chern
+classes of model line bundles $\mathcal L_1,\ldots,\mathcal L_t$ on
+$\mathcal X$.  Suppose that
+\[
+       \xi=P\bigl(c_1(\mathcal L_{1,s}),\ldots,
+                    c_1(\mathcal L_{t,s})\bigr)\in A^r(\mathcal X_s)_{\mathbb Q}
+\]
+has degree zero against every integral $r$-dimensional closed subvariety
+of $\mathcal X_s$.  Then
+\[
+        P\bigl(c_1(\overline L_1),\ldots,c_1(\overline L_t)\bigr)=0
+                 \quad\hbox{in }\mathcal B^{0,0,r}(X^{\rm an}).
+\]
+\end{theorem}
+
+\begin{proof}
+Let $\Omega$ be the displayed actual model polynomial.  Given $q=n-r$
+model functions, choose a common proper model refinement
+$f:\mathcal Y\to\mathcal X$ on which they are represented, after
+clearing denominators, by vertical Cartier divisors $D_1,\ldots,D_q$.
+One may work with formal completions; algebraic models and projective
+common refinements suffice here.  The induced metrics of the original
+bundles are unchanged by pullback.
+
+For a point $x$ reducing to the generic point of a special component
+$V\subset\mathcal Y_s$, the top wedge
+$\Omega\wedge\prod_jD\phi_j$ has mass equal to the native CLD weight
+$w_{\mathcal Y}(x)$ times
+\[
+ \deg\left(f_s^*\xi\cap
+       \prod_{j=1}^{q}c_1(\mathcal O(D_j)|_V)\cap[V]\right).
+\]
+The proper operational projection formula identifies this degree with
+\[
+ \deg\left(\xi\cap f_{s*}
+       \left(\prod_{j=1}^{q}c_1(\mathcal O(D_j)|_V)\cap[V]\right)\right)=0.
+\]
+The pushed-forward class has dimension $r$.  Terms whose images have
+smaller dimension have zero proper pushforward; all remaining terms are
+annihilated by the numerical hypothesis.  Operational pullback of a
+Cartier polynomial is available for arbitrary $f_s$: neither flatness of
+$f_s$ nor smoothness of $V$ has been used.  The CLD support and mass
+formula now gives a zero measure, with all native multiplicities and
+defect factors retained.  Lemma~\ref{r10c:detector} concludes the proof.
+\end{proof}
+
+\subsection{Descent along locally split morphisms}
+
+\begin{lemma}[Descent for a locally split morphism]
+\label{r10c:split-descent}
+Let $a:Y\to X$ be a morphism of pure-dimensional boundaryless analytic
+spaces.  Suppose $X$ has an ordinary open cover $(U_i)$ and morphisms
+$s_i:U_i\to Y$ with $a\circ s_i=\operatorname{id}_{U_i}$.
+For $\Theta\in\mathcal B(Y)$ the following are equivalent:
+\begin{enumerate}
+\item There is an actual form $\theta$ on $X$ with $a^*\theta=\Theta$.
+\item On $Y\times_XY$, $p_1^*\Theta=p_2^*\Theta$.
+\end{enumerate}
+When the fiber product is pure-dimensional and the displayed pullbacks
+are defined, the descended form is unique and is given by
+$\theta|_{U_i}=s_i^*\Theta$.
+\end{lemma}
+
+\begin{proof}
+The forward implication is functoriality.  Conversely pull the equality
+back along $(s_i,s_j):U_i\cap U_j\to Y\times_XY$ to obtain equality
+of the two local forms.  They glue by the sheaf property.  Pulling the
+same equality along
+$(\operatorname{id}_Y,s_i\circ a):a^{-1}(U_i)\to Y\times_XY$ proves
+$\Theta=a^*s_i^*\Theta$ on $a^{-1}(U_i)$, hence $\Theta=a^*\theta$.
+The local sections also prove uniqueness and injectivity of $a^*$ on
+actual forms.  
+\end{proof}
+
+\begin{theorem}[Actual model Chern forms by local flag sections]
+\label{r10c:chern}
+Let $\mathcal E_1,\ldots,\mathcal E_s$ be vector bundles on
+$\mathcal X$ and $P$ a homogeneous rational polynomial of degree $r$
+in their Chern classes.  There is a unique actual form
+\[
+              c_{\mathcal X}(P)\in\mathcal B^{0,0,r}(X^{\rm an})
+\]
+whose pullback to the simultaneous full flag bundle equals the
+corresponding symmetric polynomial in the model first Chern forms of
+the tautological line quotients.  The form is separately closed,
+independent of the chosen splitting presentation, and functorial under
+morphisms of projective flat models with smooth projective generic
+fibers.  Universal operational identities, in particular Whitney and
+the additivity of the Chern character in exact sequences of model
+bundles, hold as strict identities of actual forms.
+
+If the special-fiber operational class $P(c(\mathcal E_{j,s}))$ is
+numerically zero against every $r$-cycle, then $c_{\mathcal X}(P)=0$.
+\end{theorem}
+
+\begin{proof}
+Put $a:\mathcal F=\prod_{\mathcal X}\operatorname{Flag}(\mathcal E_j)
+\to\mathcal X$ and denote its generic fiber by $a:F\to X$.
+Let $\Omega_F$ be the symmetric model-root polynomial.  On
+$\mathcal F\times_{\mathcal X}\mathcal F$, the two root polynomials
+represent the same operational Chow class by the two tautological
+filtrations and Whitney's identity.  Their difference is therefore
+operationally zero on the special fiber, before taking a degree or
+capping with the fundamental class.  Theorem~\ref{r10c:numerical-zero},
+applied to the smooth projective generic fiber $F\times_XF$, gives
+\[
+                         p_1^*\Omega_F=p_2^*\Omega_F
+\]
+as actual forms.
+
+Simultaneously trivialize the finitely many generic bundles $E_j$ on
+a Zariski open cover of $X$.  Their standard full flags give algebraic
+sections $s_i:U_i\to F$, hence analytic sections on ordinary opens
+$U_i^{\rm an}$.  These sections need not extend to all of the model
+and need not preserve a model trivialization.  This is harmless:
+they pull back an already defined global actual form, and Mihatsch
+Theorem 4.5 applies to arbitrary analytic morphisms.  Applying
+Lemma~\ref{r10c:split-descent} defines
+$c_{\mathcal X}(P)|_{U_i^{\rm an}}=s_i^*\Omega_F$ and proves its
+characterizing pullback equality and uniqueness.  Pullback preserves
+the intrinsic trigrading and the differential operators, which proves
+purity and separate closedness.
+
+For any operational identity among finitely many model bundles, use
+their simultaneous flag bundle.  The difference of the root polynomials
+is operationally zero, so the numerical detector kills it upstairs.
+Faithfulness supplied by local sections gives the identity downstairs.
+The same argument on the product of two flag presentations proves
+independence of presentation.  Functoriality follows by pulling the
+model flags back and then using their characteristic equality and the
+faithfulness of the new flag pullback.
+
+Finally suppose $\xi=P(c(\mathcal E_{j,s}))$ is numerically zero.
+For every integral $r$-cycle $W$ on $\mathcal F_s$, the operational
+projection formula gives
+\[
+                 \deg(a_s^*\xi\cap[W])=
+                 \deg(\xi\cap a_{s*}[W])=0.
+\]
+If the image drops dimension then $a_{s*}[W]=0$; otherwise the numerical
+hypothesis applies.  Thus the root polynomial is numerically zero on
+the whole flag special fiber.  Theorem~\ref{r10c:numerical-zero}
+gives $\Omega_F=0$, and local sections give $c_{\mathcal X}(P)=0$.
+Although $a_s$ happens to be smooth and flat here, the projection
+argument is the operational one and does not use a smooth special fiber.
+\end{proof}
+
+The construction gives a homomorphism
+\[
+ K_0(\mathcal X)_{\mathbb Q}\longrightarrow
+      \bigoplus_{r=0}^{n}\mathcal B^{0,0,r}(X^{\rm an}),
+                  \qquad [\mathcal E]\longmapsto
+                       \sum_r c_{\mathcal X}(\operatorname{ch}_r\mathcal E).
+\]
+Each degree factors through its special-fiber operational numerical
+class.  This statement concerns classes of model bundles.  The dependence on the model is controlled by the numerical class of its special fiber.
+
+
+
+% Source: research-sources/green-draft/finite_trace.tex
+\section{Finite traces of scalar--curvature forms}
+\label{r11p:minimal-trace}
+
+The trace will be constructed for the scalar--curvature module generated by products
+\[
+  u_0\,Du_1\cdots Du_k,\qquad D=d'd'',
+\tag{MT1}\label{r11p:module-generators}
+\]
+where the $u_i$ are piecewise linear analytic potentials.
+
+Throughout this section $K$ is a complete nontrivially valued field of
+characteristic zero, and all analytic spaces are the analytifications of
+normal integral separated $K$-varieties, with their ordinary topology.
+All forms are Mihatsch actual delta-forms.  A PL scalar means a function
+locally presented by a finite piecewise affine function of logarithms of
+analytic units.  Its $D$ is a pure form of tridegree $(0,0,1)$.
+Let $\mathscr M^k$ be the actual image sheaf of finite sums of
+\eqref{r11p:module-generators}.  Relations in $\mathscr M^k$ are actual-form
+relations; no chosen presentation is part of a section.
+
+\subsection{Native degree under finite maps}
+
+For a finite dominant map $q:Y\to X$ of generic degree $d$ and any compact
+actual top form $\tau$ on $X$, these inputs give
+\[
+                            \int_Yq^*\tau=d\int_X\tau.
+\tag{MT2}\label{r11p:native-degree}
+\]
+Indeed remove a proper closed subset outside which $q$ is finite flat of
+constant degree $d$.  The support of $\tau$ avoids this subset by
+Corollary 4.9; so does the support of its pullback above it.
+Lemma 3.15 and the native skeletal integration formula apply on the
+remaining open.    It also proves that finite dominant pullback on
+actual forms is faithful: pair a putatively zero pullback with pulled-back
+original-smooth complementary tests, use \eqref{r11p:native-degree}, and
+apply Proposition 4.11.
+
+\subsection{Descent of scalar PL functions through finite quotients}
+
+\begin{lemma}[Ordinary local scalar PL descent]
+\label{r11p:pl-descent}
+Let $q:Y\to X$ be finite Galois between normal integral varieties, with
+group $G$.  A $G$-invariant source PL scalar descends to a PL scalar on
+$X$.  If finitely many invariant potentials on
+$Y^{\rm an}\times(\mathbf G_m)^{\rm an}$ are jointly PL in fixed source
+unit logarithms and the parameter $t=v(z)$, their descended potentials
+are locally jointly PL in a fixed finite tuple of base-unit logarithms
+and $t$.  The base tuple and base shrinking are independent of $t$.
+\end{lemma}
+
+\begin{proof}
+Work around a whole finite analytic fiber.  Choose disjoint ordinary
+neighborhoods of its points on which the finitely many source potentials
+have moment presentations.  Properness permits shrinking the base so
+that its full inverse image lies in their union.  The corresponding
+source pieces are then clopen.  Analytic units can be pasted on these
+pieces.  Add constant units with distinct valuations as markers; after
+shrinking compact neighborhoods, their moment images lie in separated
+compact polyhedral boxes.  Finite PL extension on these boxes
+combines the presentations.  A smooth cutoff of a PL potential is
+neither required nor used.
+
+Include the full $G$-orbit of the resulting source-unit tuple.  Its
+logarithms $\ell\in\mathbf R^s$ then carry a coordinate-permutation
+$G$-action; add a constant unit if necessary so that $s\geq1$.
+If an ambient PL presentation $\varphi(\ell)$ is
+invariant only after restriction to the actual source moment image,
+replace it by $|G|^{-1}\sum_{g\in G}\varphi(g\ell)$.  This is an
+ambient invariant PL function with the same source restriction.
+For ordered orbit potentials the sorting itself already gives this
+ambient invariance.  The same operation leaves an independent
+parameter fixed.  Put $d=|G|$ and $N=d(s-1)+1$.  For distinct integers $a_j$
+take the Vandermonde directions
+\[
+                     m_j=(1,a_j,\ldots,a_j^{s-1})\in\mathbf Z^s.
+\]
+Define $J(\ell)$ by recording, for each $j$, the ordered multiset
+$\{\langle m_j,g\ell\rangle:g\in G\}$.  It separates $G$-orbits.
+In fact if $J(x)=J(y)$, for each $j$ one can choose $g_j$ with
+$\langle m_j,x\rangle=\langle m_j,g_jy\rangle$.  One $g$ occurs for
+at least $s$ indices.  The resulting polynomial of degree at most $s-1$
+has $s$ roots, hence $x=gy$.
+
+The map $J$ is proper: any $s$ independent Vandermonde directions bound
+$\ell$ when all the displayed coordinates are bounded.  It is finite
+piecewise linear.  On a common polyhedral subdivision its linearity
+cells map affinely and injectively to their images; a noninjective
+tangent direction would produce an infinite fiber.  For the finite
+ambient PL presentations used here, the orbit-quotient estimate and
+extension argument of \cite[Lemma 4.2]{ChowGreenPairs} show that every
+invariant scalar factors as a finite PL scalar through $J$, after a
+common image subdivision and ambient PL extension.  The same lemma
+applies to $J\times\operatorname{id}_{\mathbf R}$ and a finite
+collection of jointly PL potentials with the fixed parameter $t$.
+The compact-parameter argument in \cite[Section 5]{ChowGreenPairs}
+also suffices for the parameter ranges used by the trace below.
+
+It remains to realize $J$ downstairs without an illicit nonlinear
+pullback of forms.  For each source monomial $F_j=f^{m_j}$ take its monic
+orbit polynomial
+\[
+                          \prod_{g\in G}(T-gF_j).
+\]
+Its coefficients are invariant analytic functions, hence analytic
+functions on the normal finite quotient.  Algebraically the quotient
+is $X$; analytically this follows on affinoids from finite coherent
+base change and the Reynolds idempotent in characteristic zero.
+With the convention that the coefficient of $T^i$ gives the point
+$(i,v(a_i))$, the ordered root valuations are the negatives of the
+lower Newton polygon's slopes, with multiplicity.  They are therefore
+PL in the valuations of the coefficients that contribute to that
+polygon.
+
+At a fixed base point retain the nonzero coefficients and shrink so
+that they are units.  The constant coefficient $a_0$ is a unit because
+it is a product of source units; the leading coefficient is one.
+Choose a uniform upper bound $B$ for $v(a_0)$ on the shrunken base.
+Every coefficient vanishing at the fixed point can, by continuity and
+a further common shrinking, be made to have valuation greater than
+$\max(B,0)+1$.  Its point is then above the endpoint chord of the
+Newton polygon and cannot affect the lower hull.  Such coefficients
+can be omitted uniformly.
+Thus $J$ is PL in finitely many base-unit logarithms.  These
+coefficients involve source units alone, so their choice and shrinking
+are independent of $t$.  Substitution is only a substitution into a
+scalar PL function.  Taking its actual derivatives happens afterwards;
+no nonlinear PL pullback of a general delta-form has been postulated.
+\end{proof}
+
+\subsection{Sorting gives a pure-curvature trace}
+
+\begin{lemma}[Max/min identities]
+\label{r11p:sorting}
+For source PL scalars $u,v$, put $M=\max(u,v)$ and $m=\min(u,v)$.
+For every $k\geq0$ there are actual identities
+\[
+ (DM)^k+(Dm)^k=(Du)^k+(Dv)^k,
+\tag{MT3}\label{r11p:sorting-powers}
+\]
+\[
+ M(DM)^k+m(Dm)^k=u(Du)^k+v(Dv)^k.
+\tag{MT4}\label{r11p:sorting-energies}
+\]
+\end{lemma}
+
+\begin{proof}
+Write $h=u-v$, $h_+=\max(h,0)$, $h_-=\min(h,0)$, and
+$A=Dh_+$, $B=Dh_-$.  Coefficientwise multiplication on support
+polyhedra gives $h_+B=h_-A=0$: on one open side the appropriate
+function is zero, and on the common wall its continuous scalar
+coefficient is zero.  Applying $D$ and using separate closedness gives
+$AB=0$.  Since
+\[
+ M=v+h_+,\quad m=v+h_-,\quad u=v+h_++h_-,
+\]
+expansion proves \eqref{r11p:sorting-powers}.  The same expansion,
+now using both $AB=0$ and the two scalar-weighted zero identities,
+proves \eqref{r11p:sorting-energies}.
+\end{proof}
+
+The second identity is useful but has a definite limitation:
+polarizing $u(Du)^k$ recovers symmetrized energies, not an arbitrary
+ordered scalar-curvature monomial $u_0Du_1\cdots Du_k$.
+The parameter argument below supplies precisely that missing step.
+
+\begin{lemma}[Trace of pure PL curvature polynomials]
+\label{r11p:pure-trace}
+For finite dominant $q:Y\to X$ between normal integral varieties, a
+finite sum $C$ of products $Du_1\cdots Du_k$ has an intrinsic actual
+trace $\operatorname{Tr}^{\rm curv}_q(C)$, characterized by
+\[
+ \int_X\operatorname{Tr}^{\rm curv}_q(C)\wedge\eta
+                         =\int_YC\wedge q^*\eta
+\tag{MT5}\label{r11p:pure-pairing}
+\]
+for all compact complementary actual tests.  With a parameter, jointly
+PL source potentials in fixed source logarithms and $t$ yield a trace
+with a product-moment presentation using fixed base logarithms and $t$.
+\end{lemma}
+
+\begin{proof}
+First let $q$ be Galois.  Sort the orbit of a scalar $u$ by a finite
+sorting network.  Repeated use of \eqref{r11p:sorting-powers} gives
+\[
+                     \sum_{g\in G}(Dg^*u)^k
+                            =\sum_{j=1}^d(Du_{(j)})^k.
+\]
+The ordered potentials $u_{(j)}$ are invariant and descend by
+Lemma~\ref{r11p:pl-descent}.  The right side is consequently the
+pullback of a downstairs actual form.  Define it to be the trace of
+$(Du)^k$.  Polarization,
+\[
+ Du_1\cdots Du_k
+   =\frac1{k!}\sum_{I\subset\{1,\ldots,k\}}
+           (-1)^{k-|I|}\left(D\sum_{i\in I}u_i\right)^k,
+\]
+does the same for all mixed products.  For $k=0$ set
+$\operatorname{Tr}^{\rm curv}_q(1)=d$.
+
+This construction satisfies the actual orbit identity
+\[
+                 q^*\operatorname{Tr}^{\rm curv}_q(C)
+                                      =\sum_{g\in G}g^*C.
+\]
+Wedge with $q^*\eta$, integrate, and use
+\eqref{r11p:native-degree} and invariance of native integration under
+automorphisms.  Division by $d$ proves \eqref{r11p:pure-pairing}.
+Finite pullback faithfulness proves independence of every actual
+relation.  Current injectivity gives gluing on ordinary overlaps.
+The pairing permits arbitrary actual downstairs multipliers; they
+have not been treated as arbitrary source coefficients.
+
+For a general separable finite map take a normal Galois closure
+$\widetilde Y\to X$ factoring through $r:\widetilde Y\to Y$, and divide
+the Galois trace of $r^*C$ by $e=\deg r$.  Applied to the top form
+$Cq^*\eta$, \eqref{r11p:native-degree} proves the required pairing and
+independence of the closure.  Characteristic zero covers every map
+used here.  All spaces and parameter tori remain over the original
+$K$; native generic degrees are not normalized away.
+
+For the last assertion use the parameter version of
+Lemma~\ref{r11p:pl-descent} at the sorting step.  The descended
+potentials have fixed base moments, so their Hessians and products
+have the required product-moment presentation.
+\end{proof}
+
+\subsection{Integration along a parameter torus}
+
+\paragraph{The boundary issue.}
+Compact analytic support does not imply that an ambient moment
+coefficient avoids the tropicalized analytic boundary of an affinoid
+chart.  We do not use the single-chart integral formula with that
+unverified hypothesis.  Instead we first prove a pushforward identity
+for polyhedral currents on the product skeleton, retaining the boundary
+exclusion of Proposition 2.38 at every chart calculation.  The
+intrinsic skeletal definition of integration then gives the analytic
+pairing.  In this subsection $f^\star$ denotes tropical-space pullback
+in that proposition, distinguished from the notation $t_c^*$ for the
+resulting actual analytic form.
+
+\begin{lemma}[The coordinate product skeleton, including its structures]
+\label{r11p:coordinate-product-skeleton}
+Let $V$ be a boundaryless ordinary analytic open of pure dimension $n$,
+let $b$ be a tuple of analytic units on $V$, and put $S=\Sigma(V,b)$.
+The relative Gauss section identifies
+\[
+ \begin{split}
+ \iota_b:S\times\mathbf R&\ \xrightarrow{\ \sim\ }\
+       \Sigma(V\times(\mathbf G_m)^{\rm an},(b,z)),\\
+                  (y,t)&\longmapsto \nu_t(y),
+ \end{split}
+\tag{PS1}\label{r11p:product-skeleton-identity}
+\]
+where $\nu_t(y)$ is the Gauss point of radius $e^{-t}$ in the torus
+over $\mathcal H(y)$.  This is an isomorphism of weighted pwl spaces
+and of tropical spaces.  Its weight is the product of the native
+weight on $S$ and the standard weight on $\mathbf R$, and its linear
+function sheaf is generated by the base linear functions and $t$.
+The identification is compatible with every ordinary base shrinking
+and every additional base moment refinement.
+\end{lemma}
+
+\begin{proof}
+Let $x$ lie above $y$ in the analytic product.  The graded field
+generated by $b$ and $z$ has transcendence degree $n+1$ precisely
+when the graded field generated by $b$ at $y$ has transcendence
+degree $n$ and $\widetilde z$ is transcendental over
+$\widetilde{\mathcal H(y)}$.  Indeed adjoining $z$ increases that
+degree by at most one; in the degree-$n$ case
+$\widetilde{\mathcal H(y)}$ is algebraic over the graded field
+generated by $b$.  This is the graded-transcendence calculation in
+(3.27) of the cited proof, here with the single coordinate $z$.
+
+The condition on $\widetilde z$ characterizes the Gauss valuation
+over $\mathcal H(y)$: no cancellation among leading monomials is
+possible, and for every Laurent polynomial one has
+\[
+ \left|\sum_i a_i z^i\right|_{\nu_t(y)}
+                         =\max_i |a_i|e^{-it}.
+\]
+Conversely these Gauss valuations have the required graded
+transcendence degree.  Thus Definition 3.8 and the absence of analytic
+boundary give the claimed bijection.  No valued extension of $K$,
+or rationality of the radius in its value group, is needed.
+
+The inverse is $(p,v(z))$ on the displayed skeleton.  It is pwl:
+a base skeleton chart is described by an affinoid domain and
+valuations of its analytic units; their pullbacks are valuations of
+the same units on the product, and $v(z)$ is the extra coordinate.
+The corresponding closed chart domains pull back to closed pwl
+domains.  This inverse is also proper.  A compact subset of
+$S\times\mathbf R$ is contained in a finite union of compact base
+analytic domains times a bounded interval.  Its inverse image is
+closed in the corresponding finite union of products with compact
+analytic annuli, and is therefore compact.  It follows that the
+continuous bijective inverse is a homeomorphism.  Subdivision into
+local polyhedral charts makes its injective affine pieces invertible
+onto their images, so both directions are pwl.  This is the
+coordinate specialization of the topology and atlas argument
+following (3.31), now without its changes of field or center.
+
+For the weights, take a top-dimensional base cell and a local toric
+projection used in Definition 3.8(2) to compute its native degree
+$e$.  Its product with the identity on $\mathbf G_m$ is finite flat
+of the same degree $e$.  Hence its induced weight is the base weight
+times the standard parameter weight.  This calculation retains
+residue-field degrees and is exactly the last weight calculation
+in the proof of Proposition 3.21.  It is local on cells and hence
+determines the entire product weight.
+
+Under the bijection the moments are $(t_b,t)$.
+Definition 3.8(3) therefore gives precisely the product linear
+function sheaf, not merely a set-theoretic identification.
+For additional base moments $b'$, the same Gauss section applies.
+The inclusions of base and product skeletons agree under it, and
+their weights agree by Remark 3.9.  The new linear functions are the
+new base ones together with the same $t$.  This proves the stated
+compatibility for all refinements and ordinary restrictions.
+\end{proof}
+
+\begin{lemma}[Tropical projection with boundary control]
+\label{r11p:tropical-product-push}
+Let $S$ be a pure-dimensional tropical space and
+$f:S\to\mathbf R^N$ a linear map.  Give $S\times\mathbf R$ the
+product weight and linear functions.  Write $p_S$ for its projection
+and $\pi:\mathbf R^N\times\mathbf R\to\mathbf R^N$ for the coordinate
+projection.  If $\Gamma$ is a Euclidean delta-form with support in
+a fixed compact set of parameter values, then
+\[
+ (p_S)_*\bigl((f,\operatorname{id})^\star\Gamma\bigr)
+                                      =f^\star(\pi_*\Gamma)
+\tag{PS2}\label{r11p:tropical-product-push-identity}
+\]
+as polyhedral currents on $S$.  The left side uses only the
+proper-on-support pwl-current pushforward of Proposition 2.17.
+\end{lemma}
+
+\begin{proof}
+The product is a tropical space: on a product polyhedral subdivision,
+the vertical balancing conditions are those of $S$, and horizontal
+internal facets cancel in pairs with the standard parameter weight.
+The support of
+$B=(f,\operatorname{id})^\star\Gamma$ is contained in
+$S\times J_0$ for a compact interval $J_0$.  Thus it is proper over
+$S$, and Proposition 2.17 supplies the polyhedral current
+$P=(p_S)_*B$ before any assertion that it is a delta-form.
+
+Work in a polyhedral neighborhood carrying a finite-fiber linear
+map $h$ to $\mathbf R^m$, as supplied by the axioms of a sheaf of
+linear functions.
+Append $f$ and put $g=(f,h)$.  Then $g$ has finite fibers and
+$f=A\circ g$, where $A$ is a literal coordinate projection.
+Let $H$ be any compact polyhedral subset of the interior of this
+neighborhood, and put
+\[
+ E_H=g(\partial_S H),\qquad
+ W_H=\mathbf R^{N+m}\setminus E_H,\qquad
+ H_g^\circ=H\setminus g^{-1}(E_H).
+\]
+The restricted $g:H_g^\circ\to W_H$ is proper.  Write
+$C_H=g_*[H_{\dim S},\mu_S]|_{W_H}$.
+It is a tropical cycle on $W_H$ by Corollary 2.35.
+
+Choose an interval $J=[a,b]$ containing $J_0$ in its interior.
+The boundary of $H\times J$ is contained in
+\[
+        (\partial_S H\times J)\ \cup\ (H\times\{a,b\}).
+\]
+Apply the characterizing identity (2.40) of Proposition 2.38 to
+this compact product and the refinement $g\times\operatorname{id}$.
+On the boundary-free region $W_H\times(a,b)$ it gives
+\[
+ (g\times\operatorname{id})_*
+       \bigl(B|_{H_g^\circ\times(a,b)}\bigr)
+       =(C_H\times\mathbf R)\wedge
+                             (A\times\operatorname{id})^*\Gamma.
+\tag{PS3}\label{r11p:boundary-chart-product}
+\]
+Both sides vanish near the artificial parameter endpoints because
+$\Gamma$ does.  They may therefore be viewed on $W_H\times\mathbf R$,
+but the exclusion of $E_H$ in the base remains in force.  There
+is no assertion of this chart identity across $g(\partial_S H)$.
+
+Let $\pi_g:W_H\times\mathbf R\to W_H$ be projection.  Functoriality
+of pwl-current pushforward and the Euclidean projection formula
+give, entirely on $W_H$,
+\[
+\begin{split}
+  g_*\bigl(P|_{H_g^\circ}\bigr)
+   &=\pi_{g,*}\!\left((C_H\times\mathbf R)\wedge
+                          (A\times\operatorname{id})^*\Gamma\right)\\
+   &=C_H\wedge
+                  \pi_{g,*}(A\times\operatorname{id})^*\Gamma\\
+   &=C_H\wedge A^*(\pi_*\Gamma).
+\end{split}
+\tag{PS4}\label{r11p:boundary-chart-push}
+\]
+The last step needs only coordinate Fubini.  For a coordinate
+projection $A$, its Euclidean delta-pullback adds free standard
+coordinates.  On each weighted carrier of $\Gamma$, fiber
+integration in $t$ before or after adding those coordinates
+has the same fibers, coefficient integral and quotient weights.
+Thus
+$\pi_{g,*}(A\times\operatorname{id})^*\Gamma=A^*(\pi_*\Gamma)$.
+This carrierwise argument applies to an arbitrary Euclidean
+delta-form, with compact parameter support; it does not invoke a
+general affine base-change lemma.
+
+The last expression in \eqref{r11p:boundary-chart-push} is exactly
+the characterizing expression (2.40) for
+$f^\star(\pi_*\Gamma)$.  Varying the compact polyhedral set $H$
+inside the fixed finite-fiber $g$-chart, Lemma 2.37 shows that
+$P=f^\star(\pi_*\Gamma)$ on that chart.  These charts cover $S$,
+which proves \eqref{r11p:tropical-product-push-identity}.
+In particular the polyhedral pushforward has the asserted
+delta-form representative; this is a conclusion of the calculation.
+\end{proof}
+
+\begin{lemma}[Integration on the product-moment subspace]
+\label{r11p:product-integration}
+Let $p:U\times(\mathbf G_m)^{\rm an}\to U$ be projection.  Suppose
+\[
+                   \beta=t_{(c,z)}^*\Gamma
+\]
+for a fixed base analytic-unit tuple $c$, $t=v(z)$, and a Euclidean
+delta-form $\Gamma(u,t)$ supported in a fixed compact set of $t$.
+With $\pi(u,t)=u$, define
+\[
+                       I_p(\beta)=t_c^*(\pi_*\Gamma).
+\tag{MT6}\label{r11p:product-definition}
+\]
+This is intrinsic among product-moment presentations and satisfies
+\[
+             \int_UI_p(\beta)\wedge\eta
+                    =\int_{U\times\mathbf G_m}\beta\wedge p^*\eta
+\tag{MT7}\label{r11p:product-pairing}
+\]
+for every compact actual complementary test.  It commutes with
+$d',d''$ on these presentations.
+\end{lemma}
+
+\begin{proof}
+\textit{1. A skeletal identity before integration.}
+Euclidean pushforward supplies the actual candidate
+$\theta=t_c^*(\pi_*\Gamma)$.
+On an arbitrary ordinary $V\subseteq U$, refine the base moments
+by tuple concatenation, $b=(c,h)$, and put $S=\Sigma(V,b)$.
+Under \eqref{r11p:product-skeleton-identity}, the restriction of
+$\beta$ to the product skeleton is
+$(t_c|_S,\operatorname{id})^\star\Gamma$.
+Lemma~\ref{r11p:tropical-product-push} therefore gives
+\[
+       \theta|_S
+        =(p_S)_*\bigl(\beta|_{S\times\mathbf R}\bigr).
+\tag{PS5}\label{r11p:actual-product-skeletal}
+\]
+This is an equality of intrinsic polyhedral currents on $S$ for
+every base refinement.  Its proof used the boundary-excluded chart
+identities \eqref{r11p:boundary-chart-product}--\eqref{r11p:boundary-chart-push},
+not an integral over a global tropicalization of $V$.
+
+If two product-moment presentations define the same actual $\beta$,
+concatenate both base tuples and any further test tuple.  Their
+restrictions to every resulting product skeleton agree by Definition
+4.2.  Equation \eqref{r11p:actual-product-skeletal} makes their
+candidate outputs agree on every corresponding base skeleton.
+Lemma 4.4, using all refinements, gives actual equality.  This proves
+independence of presentations and their relations, and also their
+compatibility on ordinary overlaps, before any current pairing.
+
+\textit{2. Products with arbitrary actual base forms.}
+On an open $V$ where an actual form $\eta$ has a moment presentation,
+take $b$ to be the concatenation of its moments and $c$, and write
+$\eta=t_b^*\eta_b$.  Let $A$ be the coordinate projection selecting
+$c$.  The product $\beta\wedge p^*\eta$ has Euclidean coefficient
+\[
+           (A\times\operatorname{id})^*\Gamma\wedge\pi_b^*\eta_b
+\]
+in the fixed moments $(b,z)$, with the same compact parameter support.
+Euclidean projection and coordinate Fubini give
+\[
+ \pi_{b,*}\!\left(
+      (A\times\operatorname{id})^*\Gamma\wedge\pi_b^*\eta_b\right)
+                         = A^*(\pi_*\Gamma)\wedge\eta_b.
+\]
+Apply \eqref{r11p:actual-product-skeletal} to this coefficient.
+For $S=\Sigma(V,b)$ it gives
+\[
+ (p_S)_*
+     \left((\beta\wedge p^*\eta)|_{S\times\mathbf R}\right)
+                         =(\theta\wedge\eta)|_S.
+\tag{PS6}\label{r11p:product-test-skeletal}
+\]
+The coefficient $\eta_b$ here is an arbitrary Euclidean delta-form.
+No restriction to smooth tests or to products of model curvatures
+has occurred.
+
+\textit{3. Intrinsic skeletal integration and ordinary partitions.}
+Now let $\eta$ be compact and of complementary bidegree.  Cover its
+support by finitely many ordinary opens $V_i$ on which it has the
+presentations used in the preceding step, and choose an
+original-smooth partition $(\lambda_i)$ subordinate to this cover
+on a neighborhood of the support.  Put
+$S_i=\Sigma(V_i,b_i)$.
+On $V_i$ the unweighted form $\theta\wedge\eta$ is top-degree
+and is presented in $b_i$; on $V_i\times\mathbf G_m$ the
+unweighted form $\beta\wedge p^*\eta$ is top-degree and is
+presented in $(b_i,z)$.  Corollary 4.9(2) puts their supports in
+$S_i$ and $S_i\times\mathbf R$, respectively.
+
+Multiplication by $\lambda_i$ or $p^*\lambda_i$ cannot enlarge
+these supports.  Their paired supports are compact: the relevant
+base support is compact inside $V_i$, and the parameter values lie
+in a fixed compact interval, hence in a compact analytic annulus.
+Finitely many affinoid neighborhoods of the base support give
+compact total paired support.  This compactness justifies the
+integrals; it is not used to exclude any tropicalized base boundary.
+
+The restriction $\lambda_i|_{S_i}$ need only be PWS.  Remark 4.3(1)
+makes its multiplication coefficientwise, and Proposition 2.17
+gives the coefficientwise projection formula
+\[
+ (p_{S_i})_*\!\left(p_{S_i}^*(\lambda_i|_{S_i})\,T\right)
+                  =(\lambda_i|_{S_i})(p_{S_i})_*T
+\]
+for the relevant polyhedral current $T$.
+Use Definition 4.10(1) to evaluate the analytic top integrals on
+these containing skeletons, followed by (2.17) and the integrable
+current pushforward formula in Definition 4.10(4).  With
+\eqref{r11p:product-test-skeletal}, this gives
+\[
+\begin{split}
+ \int_{U\times\mathbf G_m}p^*\lambda_i\,\beta\wedge p^*\eta
+ &=\int_{S_i\times\mathbf R}
+      p_{S_i}^*(\lambda_i|_{S_i})
+          (\beta\wedge p^*\eta)|_{S_i\times\mathbf R}\\
+ &=\int_{S_i}(\lambda_i|_{S_i})(\theta\wedge\eta)|_{S_i}\\
+ &=\int_U\lambda_i\,\theta\wedge\eta.
+\end{split}
+\]
+Definition 4.10(2) permits summing this identity over the ordinary
+partition.  It proves \eqref{r11p:product-pairing} for every
+compact actual test.  The partition is not required to have a
+single Euclidean presentation in the preassigned tuple $b_i$.
+
+Finally, Euclidean proper-on-support pushforward commutes with
+$d',d''$, and differentiation retains the compact parameter support.
+Applying this to \eqref{r11p:product-definition}, whose actual
+independence is already proved, gives the asserted differential
+compatibility.  Equivalently it follows from the linear-map
+current identity of Definition 2.29(3) in
+\eqref{r11p:actual-product-skeletal}.
+\end{proof}
+
+\begin{lemma}[One-parameter evaluation of a nonlinear PL scalar]
+\label{r11p:one-parameter}
+Let $u$ be a bounded PL scalar on an ordinary open $V$.  Choose
+$\chi\in C_c^\infty(\mathbf R)$ equal to one near its range.  On
+$V\times(\mathbf G_m)^{\rm an}$ put
+\[
+                         H=\max(u-t,0).
+\]
+For every actual form $C$ on $V$ with a common moment presentation,
+\[
+                  I_p\bigl(\chi(t)t\,DH\wedge p^*C\bigr)=uC.
+\tag{MT8}\label{r11p:graph-evaluation}
+\]
+Only one parameter occurs, independently of the number of source
+moments needed to present $u$.
+\end{lemma}
+
+\begin{proof}
+Write $u=\varphi(\ell)$ for a finite Euclidean PL scalar.  Work first
+on its Euclidean moment domain with $H(x,t)=\max(\varphi(x)-t,0)$.
+On each cell where $\varphi$ is affine, the graph face $t=\varphi(x)$
+in $DH$ has projection weight one.  The coefficient of $t$ in the
+defining affine difference is $-1$, so projection of its calibrated
+divisor measure is the standard base measure.  Weighting by $\chi(t)t$
+gives $\chi(\varphi(x))\varphi(x)$.
+
+There are also vertical faces above walls of $\varphi$, in the region
+$t<\varphi(x)$.  It would be false to identify $DH$ with the graph
+alone.  On every such vertical face, however, projection drops the
+dimension of its pure carrier; its pure Euclidean pushforward is
+zero, exactly as in Mihatsch's Example 2.5.  Thus
+\[
+               \pi_*\bigl(\chi(t)t\,D\max(\varphi-t,0)\bigr)
+                                  =\chi(\varphi)\varphi.
+\]
+The affine-cell equality extends across walls as an equality of
+actual scalar functions; the right side is continuous and the
+Euclidean pushforward is a delta-form of bidegree zero.
+
+The affine projection formula now permits an arbitrary delta-form
+$C$:
+\[
+ \pi_*\bigl(\chi(t)t\,DH\wedge\pi^*C\bigr)
+       =\pi_*(\chi(t)t\,DH)\wedge C.
+\]
+Apply Lemma~\ref{r11p:product-integration} after moment refinement.
+Only after actual moment pullback do we use the cutoff choice:
+$\chi(\varphi(\ell))\varphi(\ell)=\chi(u)u=u$.
+The ambient extension $\varphi$ need not be bounded, so
+$\chi(\varphi)\varphi=\varphi$ is not asserted on its entire
+Euclidean domain.
+This argument has not pulled $C$ through the nonlinear PL graph;
+only the affine projection pullback and projection formula are used.
+\end{proof}
+
+\subsection{The minimal finite trace theorem}
+
+\begin{theorem}[Finite trace on the scalar-curvature module]
+\label{r11p:minimal-trace-theorem}
+Let $q:Y\to X$ be finite dominant between normal integral separated
+varieties over $K$.  Every $\omega\in\mathscr M^k(Y^{\rm an})$ has a
+unique actual trace on $X^{\rm an}$ satisfying
+\[
+                 \int_X\operatorname{Tr}^{\mathscr M}_q(\omega)
+                                      \wedge\eta
+                          =\int_Y\omega\wedge q^*\eta
+\tag{MT9}\label{r11p:minimal-pairing}
+\]
+for all compact complementary actual tests.  It is local on the
+ordinary topology, respects actual relations, and retains the full
+native generic degree.  For a locally presented generator
+$\omega=u_0Du_1\cdots Du_k$, a local formula is
+\[
+ \boxed{\displaystyle
+ \operatorname{Tr}^{\mathscr M}_q(\omega)
+ = I_{p_X}\!\left(
+     \chi(t)t\,
+     \operatorname{Tr}^{\rm curv}_{q\times\operatorname{id}}
+       \left(D\max(u_0-t,0)\wedge\prod_{i=1}^kDu_i\right)
+                         \right).}
+\tag{MT10}\label{r11p:trace-formula}
+\]
+\end{theorem}
+
+\begin{proof}
+Shrink around an entire finite source fiber so that finitely many
+generator presentations are combined as in
+Lemma~\ref{r11p:pl-descent}, and $u_0$ is bounded there.  Choose
+$\chi=1$ near that whole range.  The curvature trace inside
+\eqref{r11p:trace-formula} exists by Lemma~\ref{r11p:pure-trace}.
+Its parameter-uniform assertion supplies a product-moment presentation,
+so multiplication by $\chi(t)t$ and application of $I_{p_X}$ are
+legitimate.
+
+Pair with an arbitrary compact actual test $\eta$.  First
+Lemma~\ref{r11p:product-integration}, then
+\eqref{r11p:pure-pairing} with the actual downstairs multiplier
+$\chi(t)t\,p_X^*\eta$, and finally
+Lemma~\ref{r11p:one-parameter}, give
+\[
+\begin{split}
+ \int_X\operatorname{Tr}^{\mathscr M}_q(\omega)\eta
+ &=\int_{X\times\mathbf G_m}\chi(t)t\,
+     \operatorname{Tr}^{\rm curv}_{q\times\operatorname{id}}
+        (DH\prod_iDu_i)\,p_X^*\eta\\
+ &=\int_{Y\times\mathbf G_m}\chi(t)t\,DH\prod_iDu_i\,
+                                          p_Y^*q^*\eta\\
+ &=\int_Yu_0\prod_iDu_i\,q^*\eta.
+\end{split}
+\]
+All these integrals have compact paired support.  The identity is
+proved for all actual tests, not merely for model or original-smooth
+tests.  Add generators.  If an expression represents zero as an
+actual source form, its trace has zero pairing with every test, and
+is zero by Proposition 4.11.  The same argument removes dependence
+on the cutoff, source moments, quotient moments, Galois closure, and
+all local choices.  It also glues the local answers in the ordinary
+topology and proves uniqueness.
+\end{proof}
+
+
+
+
+% Source: research-sources/green-draft/supported_green.tex
+\section{Supported perfect complexes and exact-support Green forms}
+\label{r11p:supported-complex}
+
+Let $K$ be complete discretely valued of characteristic zero, $R=K^\circ$,
+and let $\mathcal X/R$ be integral, flat and projective, with smooth
+integral projective generic fiber $X$ of dimension $n$.
+The special fiber may be singular or nonreduced.  Let
+\[
+       C=(0\longrightarrow C_N\longrightarrow\cdots
+                             \longrightarrow C_0\longrightarrow0)
+\]
+be a bounded complex of model vector bundles, exact on
+$\mathcal U=\mathcal X\setminus\mathcal Z$, with generic open
+$U=X\setminus Z$.  Assume $Z$ is pure of codimension $r$, $1\leq r\leq n$.
+The same construction is linear in finite rational combinations of
+such complexes.  Define
+\[
+ \Omega_C=\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)
+                              \in\mathcal B^{0,0,r}(X^{\rm an}),
+ \qquad
+ z_C=\operatorname{ch}^{Z}_r(C|_X)\cap[X]
+                              \in\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC1}\label{r11p:omega-and-cycle}
+\]
+The first expression is an actual form by Theorem~\ref{r10c:chern}.
+The second is a cycle with coefficients, because
+$\operatorname{CH}_{n-r}(Z)$ is the free group on the top-dimensional
+components of $Z$.  It is not merely an ambient Chow class.
+
+\subsection{Finite multisections of flag bundles}
+
+\begin{lemma}[A smooth finite flat multisection]
+\label{r11p:multisection}
+Let $F\to Y$ be a smooth projective surjection of smooth projective
+integral varieties over the infinite field $K$, of pure relative
+dimension $d$.  There is a smooth projective integral closed subscheme
+$T_0\subset F$ whose map to $Y$ is finite flat surjective.
+It may be taken as a connected component of a smooth complete intersection.
+If the source is geometrically integral and $\dim Y\geq1$, $T_0$
+can be chosen geometrically integral.
+\end{lemma}
+
+\begin{proof}
+Choose a very ample $H$ on $F$ and use $M=H^m$ with
+$m\geq\max(\dim Y,1)$.  For any positive-dimensional integral component
+$A$ of any intermediate fiber complete intersection, two sections
+$a_0,a_1$ of $H$ have nonconstant ratio on $A$.  Consequently
+\[
+                    a_0^m,a_0^{m-1}a_1,\ldots,a_1^m
+\]
+are linearly independent on $A$.  In the parameter space
+$V=H^0(F,M)$, the sections vanishing identically on $A$ therefore
+have codimension at least $m+1$.
+
+Fix a geometric fiber, which is pure Cohen--Macaulay of dimension $d$.
+Induct on $j\leq d$ to see that the bad $j$-tuples, whose common
+zero locus has dimension greater than $d-j$, have codimension at least
+$m+1$ in $V^j$.  Above a good prefix, a bad next section vanishes
+on one of the finitely many components just considered; above a bad
+prefix the inductive bound applies.  Upper semicontinuity of fiber
+dimension makes the universal bad locus closed.  Adding $\dim Y$
+still leaves its dimension strictly smaller than $\dim V^d$.
+Properness of $Y$ makes its projection to $V^d$ closed.  Thus a
+nonempty open of $d$-tuples has zero-dimensional fibers everywhere.
+The fibers are nonempty, because $d$ ample divisors meet every
+nonempty pure $d$-dimensional projective fiber.
+
+Smooth Bertini supplies a second nonempty open on which the total
+intersection is smooth of dimension $\dim Y$.  Geometric irreducibility
+Bertini supplies the stated refinement when relevant.  Their intersection
+has a $K$-rational point since $K$ is infinite.  The resulting proper
+quasi-finite morphism is finite and surjective.  Its source is
+Cohen--Macaulay and its target regular of the same dimension, so
+miracle flatness applies.  If necessary choose a connected component;
+it is integral, finite flat, and still surjective.
+\end{proof}
+
+The bound $m+1>\dim Y$, not just Bertini, is what rules out a
+positive-dimensional fiber anywhere on the base.  The primary
+ingredients are Stacks Tags 0D4I, 0FD6, 0G4C and 00R4.
+
+\begin{lemma}[Relative diagonalization with the original open fixed]
+\label{r11p:relative-lines}
+There is a projective morphism of integral flat models
+$f:\mathcal T\to\mathcal X$ with smooth projective generic fiber $T$,
+such that $f:T\to X$ is generically finite of degree $d$ and finite
+flat over the \emph{entire} prescribed open $U$.  There are model
+line maps $s_\alpha:L_\alpha\to M_\alpha$, isomorphisms above
+$\mathcal U$, and signs $\epsilon_\alpha$, satisfying
+\[
+                 [f^*C]
+                   =\sum_\alpha\epsilon_\alpha[L_\alpha\to M_\alpha]
+\tag{PC2}\label{r11p:supported-k-equality}
+\]
+in supported perfect $K_0$.  Their generic divisors
+$D_\alpha=\operatorname{div}(s_\alpha|_T)$ are supported in $f^{-1}Z$.
+\end{lemma}
+
+\begin{proof}
+On $\mathcal U$, exactness of a bounded vector-bundle complex is locally
+split.  Hence $S_i^\circ=\ker d_i=\operatorname{im}d_{i+1}$ are
+subbundles, with $S_0^\circ=C_0$ and $S_N^\circ=0$.  Close the graph
+of this section in the product of the corresponding Grassmann bundles.
+This gives a projective birational integral model
+$\mathcal Y\to\mathcal X$, an isomorphism over $\mathcal U$, with
+tautological subbundles $S_i\subset C_i$ and quotient bundles $Q_i$.
+Every asserted vanishing of a bundle map that holds on the dense open
+holds on this integral model.  The differential therefore factors as
+\[
+                            a_i:Q_i\longrightarrow S_{i-1},
+\]
+an equal-rank map that is an isomorphism over $\mathcal U$.
+
+There is an actual filtration by subcomplexes: its $p$th term has
+$C_i$ for $i>p$, $S_p$ in degree $p$, and zero below $p$.
+The successive two-term quotients are
+$Q_{p+1}\to S_p$ in degrees $p+1,p$.  They are exact on the given
+open, and yield
+\[
+                     [C]=\sum_i(-1)^{i-1}[Q_i\to S_{i-1}]
+\]
+in supported $K_0$, rather than only in ordinary $K_0$.
+
+Resolve the generic $\mathcal Y_K$ in characteristic zero, without
+changing its smooth open $U$, and extend the projective resolution by
+graph closure over $R$.  This uses resolution over the field $K$ only,
+not mixed-characteristic resolution of a model.  Call the resulting
+smooth projective generic fiber $Y$.
+
+Take the product of the full source flag bundles of \emph{all} $Q_i$
+over $Y$.  Before extending the transported target flags, choose a
+smooth finite flat multisection $T_0\to Y$ by
+Lemma~\ref{r11p:multisection}.  Take its flat model closure.  Over
+$\mathcal U$, the isomorphisms $a_i$ transport every source flag to a
+target flag.  Close the graph of these target flags, and resolve the
+resulting generic fiber without changing its smooth inverse image of
+$U$.  Its final generic fiber $T$ is therefore still exactly $T_0$
+over $U$.  In particular $T\to X$ is finite flat over all of $U$;
+the successive modifications have introduced no new excluded image.
+
+The maps $a_i$ preserve the two full flags.  Their associated graded
+maps are model line maps $L_\alpha\to M_\alpha$, isomorphisms on the
+original model open.  Termwise filtration of the two-term complexes
+gives \eqref{r11p:supported-k-equality}.  A nonzero map of line bundles
+on the integral model is injective and defines an effective Cartier
+divisor.  Its generic divisor can only lie above $Z$.  Empty generic
+divisors are allowed, for instance for a purely vertical line map.
+\end{proof}
+
+\subsection{Localized characters and cycle coefficients}
+
+For degree-one variables $l,m$ put
+\[
+ B_{r-1}(l,m)=\frac1{r!}\sum_{a=0}^{r-1}m^{r-1-a}l^a,
+ \qquad
+                  (m-l)B_{r-1}(l,m)=\frac{m^r-l^r}{r!}.
+\tag{PC3}\label{r11p:B-polynomial}
+\]
+For a nonzero line map $s:L\to M$ on $T$, with divisor $D$, the
+all-degree Cartier localized character formula is
+\[
+ \operatorname{ch}^{D}_r([L\to M])\cap[T]
+         =B_{r-1}(c_1L,c_1M)\cap[D].
+\tag{PC4}\label{r11p:cartier-localized}
+\]
+Here $L$ has degree one and $M$ degree zero.  To check the full
+polynomial, the complex resolves $M|_D$ and the normal bundle of
+$D\hookrightarrow T$ is $(M\otimes L^{-1})|_D$.  Localized
+Riemann--Roch for this regular immersion gives
+\[
+ e^m\,\frac{1-e^{-(m-l)}}{m-l}\cap[D]
+                         =\frac{e^m-e^l}{m-l}\cap[D].
+\]
+Its homogeneous degree $r-1$ is exactly \eqref{r11p:cartier-localized}.
+This is Fulton, \emph{Intersection Theory}, Corollary 18.1.2,
+specialized to a Cartier immersion; the proof uses deformation to the
+normal bundle.  A leading-term statement alone, such as Stacks 0FEH,
+would not justify this all-degree polynomial.
+
+Additivity on supported perfect $K_0$, compatibility with arbitrary
+base change, and the proper bivariant projection formula now give
+\[
+ \sum_\alpha\epsilon_\alpha
+    (f|_{D_\alpha})_*
+       \left(B_{r-1}(c_1L_\alpha,c_1M_\alpha)\cap[D_\alpha]\right)
+                              =d\,z_C
+       \quad\hbox{in }\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC5}\label{r11p:source-equality}
+\]
+The underlying equality is
+$f_*(\operatorname{ch}^{f^{-1}Z}(f^*C)\cap[T])
+=\operatorname{ch}^Z(C)\cap f_*[T]$, and $f_*[T]=d[X]$.
+These are supported identities; one has not first forgotten the
+support and then attempted to recover coefficients.  Nilpotent
+thickenings can be used to make every indicated factorization through
+$Z$ scheme-theoretic.  Chow groups are unchanged by those thickenings.
+Since the target Chow group is top-dimensional on $Z$,
+\eqref{r11p:source-equality} is equality of actual cycle coefficients.
+See Stacks 0FB3 (base change), 0FBE (additivity), and 0FET (supported
+perfect $K_0$).
+
+\subsection{Chern degrees and actual top-degree tests}
+
+\begin{lemma}[Chern degree against an arbitrary actual top test]
+\label{r11p:proper-chern-degree}
+Let $h:B\to A$ be proper between integral projective $K$-varieties,
+$\dim A=m$, $\dim B=m+t$.  Let $P$ be a homogeneous degree-$t$
+polynomial in first Chern forms of algebraic line bundles on $B$
+with PWS metrics.  For every compact actual top form $\eta$ on $A$,
+\[
+              \int_BP\wedge h^*\eta
+                =\int_{h_*(P_{\rm alg}\cap[B])}\eta.
+\tag{PC6}\label{r11p:proper-top-pairing}
+\]
+The statement is linear in cycles and includes their generic lengths.
+\end{lemma}
+
+\begin{proof}
+Write each algebraic line bundle as a quotient of two very ample ones.
+Choose PWS metrics on those factors so that their quotient is the
+given metric.  Expand $P$ by multilinearity.  For each resulting
+monomial, choose a section of each very ample factor successively,
+meeting the finitely many current integral cycle components properly.
+The infinite field $K$ supplies such choices.  Work componentwise
+when an intermediate divisor is reducible or nonreduced.
+
+At every step apply scalar strong Poincare--Lelong, Mihatsch
+Corollary 5.6, with the remaining closed curvature factors and the
+pullback of $\eta$ as test.  The latter is separately closed because
+$\eta$ is top-degree on $A$.  The Green correction is therefore zero.
+One is left with the pullback of $\eta$ integrated on a cycle of
+dimension $m$.
+
+A component mapping to a lower-dimensional subset of $A$ contributes
+zero, because the support of the actual top test avoids that subset.
+For a dominating component, remove a proper closed subset of $A$
+so that the component maps finite flat of its native generic degree.
+The top test again avoids the removed subset.  The native finite
+degree formula evaluates the integral with exactly that degree.
+This is precisely algebraic proper pushforward of the terminal
+intersection cycle, proving \eqref{r11p:proper-top-pairing}.
+\end{proof}
+
+This scalar equality applies to
+each $D_\alpha\to Z_j$ in \eqref{r11p:source-equality}, with
+$m=n-r$ and $t=r-1$.  Components whose image has smaller dimension
+contribute zero by the same support argument.
+
+\subsection{The exact-open Green construction}
+
+\begin{theorem}[A strong Green pair for a supported model complex]
+\label{r11p:complex-green}
+Under the assumptions of \eqref{r11p:omega-and-cycle}, there is an
+actual form
+\[
+                       G_C\in\mathcal B^{r-1,r-1}(U^{\rm an})
+\]
+such that, for every compact actual
+$\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})$,
+\[
+                 \int_UG_C\wedge D\eta+\int_{z_C}\eta
+                                     =\int_X\Omega_C\wedge\eta.
+\tag{PC7}\label{r11p:complex-green-equation}
+\]
+The domain is the prescribed $U=X\setminus Z$, with no auxiliary
+closed subset removed.  If a tube is disjoint from the full model
+support $\mathcal Z$, the construction can be chosen zero on that tube.
+\end{theorem}
+
+\begin{proof}
+Use Lemma~\ref{r11p:relative-lines} and give the line bundles their
+model metrics.  Write
+\[
+ l_\alpha=c_1(\overline L_\alpha),\qquad
+ m_\alpha=c_1(\overline M_\alpha),\qquad
+ g_\alpha=-\log\|s_\alpha\|.
+\]
+On $f^{-1}U$ each $g_\alpha$ is a PL scalar.  Put
+\[
+       G_T=\sum_\alpha\epsilon_\alpha
+                    g_\alpha B_{r-1}(l_\alpha,m_\alpha),
+       \qquad
+       G_C=\frac1d\operatorname{Tr}^{\mathscr M}_{f|_{f^{-1}U}}(G_T).
+\tag{PC8}\label{r11p:complex-green-formula}
+\]
+Every summand lies in the scalar-curvature module of
+Theorem~\ref{r11p:minimal-trace-theorem}.  Source and target of the
+finite restriction are smooth, hence normal; all its assumptions hold.
+The resulting form is actual on the full ordinary open $U$.
+
+Strict model Chern additivity and functoriality from Theorem~\ref{r10c:chern} convert
+\eqref{r11p:supported-k-equality}, after forgetting support, into
+the actual identity on $T$
+\[
+ \sum_\alpha\epsilon_\alpha
+             (m_\alpha-l_\alpha)B_{r-1}(l_\alpha,m_\alpha)
+                                      =f^*\Omega_C.
+\tag{PC9}\label{r11p:actual-curvature-equality}
+\]
+
+
+Apply scalar strong Poincare--Lelong to each $s_\alpha$ with test
+$B_{r-1}(l_\alpha,m_\alpha)f^*\eta$.  These tests are compact because
+$f$ is proper.  Curvature factors are separately closed.  Summation
+and \eqref{r11p:actual-curvature-equality} yield
+\[
+ \int_{T\setminus f^{-1}Z}G_Tf^*D\eta
+ +\sum_\alpha\epsilon_\alpha
+       \int_{[D_\alpha]}B_{r-1}(l_\alpha,m_\alpha)f^*\eta
+                         =\int_Tf^*(\Omega_C\eta).
+\tag{PC10}\label{r11p:upstairs-complex-PL}
+\]
+For the first term, extending each off-divisor integral to the
+displayed common open changes nothing: $D\eta$ has bidegree
+$(n-r+1,n-r+1)$, so its closed support avoids $Z$ by
+Mihatsch Corollary 4.9.  Properness puts its pulled-back support
+inside the finite locus $f^{-1}U$.  The minimal trace pairing identifies
+this first term with $d\int_UG_CD\eta$.
+
+The form $\Omega_C\eta$ is top-degree on $X$, so its support also
+avoids $Z$.  On that support $f$ is finite flat of degree $d$;
+the last term is $d\int_X\Omega_C\eta$ by the native degree formula.
+The middle term equals $d\int_{z_C}\eta$ by
+Lemma~\ref{r11p:proper-chern-degree} and
+\eqref{r11p:source-equality}.  Divide by $d$.
+
+All tests defining the off-$Z$ integration functional of $G_C$
+have bidegree $(n-r+1,n-r+1)$ and therefore support away from $Z$.
+Thus its canonical extension and the all-actual meaning of
+\eqref{r11p:complex-green-equation} require no integrability
+assumption near $Z$ beyond those already encoded by support avoidance.
+
+Finally, above the model open $\mathcal U$ each $s_\alpha$ is a model
+isomorphism of line bundles, so its model norm is one and $g_\alpha=0$.
+The local trace then vanishes over every tube avoiding $\mathcal Z$.
+This concerns the full model support, including possible vertical
+cohomology, not just the closure of its generic support.
+\end{proof}
+
+\paragraph{Support of the prescribed representative.}
+The source of a supported complex can have more components than its
+associated cycle after coefficient cancellation.  Choosing one complex
+for each nonzero integral component of a prescribed cycle gives the
+form on its exact complement, as follows.
+
+\subsection{Arbitrary prescribed cycles and the good-reduction sector}
+
+\begin{corollary}[Every prescribed cycle has a strong model-curvature pair]
+\label{r11p:any-cycle-pair}
+Let $X/K$ be smooth geometrically integral projective and let
+$Z=\sum_j a_j[Z_j]$ be a rational codimension-$r$ cycle, written with
+distinct integral components and nonzero coefficients.  After choosing
+projective model data, there are an actual model Chern form $\Omega_Z$
+and an actual
+\[
+                  G_Z\in\mathcal B^{r-1,r-1}
+                           (X^{\rm an}\setminus|Z|^{\rm an})
+\]
+satisfying $D[G_Z]_\delta+\delta_Z=[\Omega_Z]_\delta$ on all compact
+actual tests.  No generic cycle representative is moved.
+\end{corollary}
+
+\begin{proof}
+On the regular projective generic fiber, $\mathcal O_{Z_j}$ has a
+finite globally locally free resolution.  Its degree-$r$ supported
+character is $[Z_j]$, including the leading coefficient; this is
+Stacks 0FEW, or the leading-term part of localized Riemann--Roch.
+It is not necessary for $Z_j$ to be a regular immersion.
+
+These finitely many generic bundle complexes extend to a common
+projective model after a vertical modification.  For completeness,
+extend each bundle coherently, twist to obtain finitely many generators,
+and close the graph of its generic quotient in a Grassmann bundle.
+Its tautological quotient is a model vector bundle with the original
+generic fiber.  Use the product of the finitely many Grassmann bundles.
+Every generic differential extends after multiplying by a common
+power of a uniformizer; the resulting successive products are zero
+because they vanish on the dense generic fiber.  The scaled generic
+complex is chain-isomorphic to the original one by degreewise scalar
+rescaling.  Its full model cohomology support has generic support
+exactly $Z_j$.
+
+Apply Theorem~\ref{r11p:complex-green} to each complex and sum with
+coefficients $a_j$.  The union of the removed sets is exactly
+$|Z|$, because the prescribed cycle was first written with distinct
+nonzero components.  The zero cycle is handled by the zero form.
+\end{proof}
+
+\begin{corollary}[Strong G for arbitrary cycles on a smooth good model]
+\label{r11p:good-reduction-G}
+Suppose $X$ admits a smooth projective $R$-model $\mathcal X$.
+For every rational codimension-$r$ cycle $Z$ on $X$ whose geometric
+$\ell$-adic class is zero, $\ell\ne\operatorname{char}(k)$, the form
+in Corollary~\ref{r11p:any-cycle-pair} can be chosen with
+$\Omega_Z=0$:
+\[
+                  \int_{X\setminus|Z|}G_ZD\eta=-\int_Z\eta
+       \qquad
+       \bigl(\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})\bigr).
+\tag{PC11}\label{r11p:good-reduction-zero}
+\]
+This includes arbitrary singular or non-complete-intersection cycle
+components and retains the exact support and original field.
+\end{corollary}
+
+\begin{proof}
+For each prescribed component take its scheme-theoretic flat closure
+$\mathcal Z_j\subset\mathcal X$.  The smooth model over a DVR is regular
+of finite dimension and has an ample line bundle.  Hence
+$\mathcal O_{\mathcal Z_j}$ has a finite globally locally free
+resolution on this fixed model.  One explicit justification is to
+surject finite sums of negative ample twists onto a coherent sheaf
+and its successive coherent kernels.  After at most $\dim\mathcal X$
+steps the remaining kernel is locally free, since every regular
+local ring has global dimension its Krull dimension.  Thus the
+global assertion is not inferred from perfectness without using the
+resolution property.  No modification of the good model
+is needed.  Use those model complexes in the preceding construction.
+
+Their alternating degree-$r$ Chern character on the generic fiber
+is $[Z]$ in $\operatorname{CH}^r(X)_{\mathbb Q}$.  Smooth proper
+base change and compatibility of etale Chern classes identify its
+geometric special-fiber Chern class with the zero generic class.
+Its degree against every integral $r$-cycle on the smooth special
+fiber is therefore zero by the etale trace pairing.
+
+Theorem~\ref{r10c:numerical-zero} now gives
+$\Omega_Z=0$ as an actual form, not just as a current or a
+cohomology class.  Substitute into the strong equation already
+proved against every actual test.
+\end{proof}
+
+\begin{corollary}[Finite good covers and potential good reduction]
+\label{r11p:potential-good-G}
+Let $X/K$ be smooth integral projective.  Suppose there are a finite
+valued extension $K'/K$, a smooth integral projective $K'$-variety
+$Y$ with a smooth projective $R'=K'^\circ$-model, and a finite
+dominant $K$-morphism $h:Y\to X$.  Then every rational geometrically
+homologically trivial codimension-$r$ cycle $Z$ on $X$ admits a
+zero-curvature strong Green form on exactly
+$X^{\rm an}\setminus|Z|^{\rm an}$, over the original field $K$,
+against every compact $K$-actual complementary test.
+
+In particular this holds when $X$ has potential good reduction:
+take $Y=X_{K'}$ and its finite projection to $X$, working componentwise
+if the base change is disconnected.
+It also holds for a finite dominant smooth projective good-reduction
+cover over $K$ itself.
+\end{corollary}
+
+\begin{proof}
+Regard $Y$ as a $K$-variety.  It is smooth and integral, though it
+need not be geometrically integral over $K$.  This is enough for
+the preceding supported-complex theorem and the minimal trace:
+the multisection proof permits choosing a smooth connected component
+finite flat over an integral base.  Since $Y$ is Cohen--Macaulay
+and $X$ is regular of the same dimension, the finite dominant $h$
+is flat by miracle flatness.  Write $a=\deg_K h$ and set $Z'=h^*Z$,
+with the scheme-theoretic generic lengths in flat pullback.
+Its support is exactly $h^{-1}|Z|$, its geometric cohomology class
+is zero, and
+\[
+                                  h_*Z'=aZ.
+\tag{PC12}\label{r11p:finite-cover-cycle-degree}
+\]
+
+Resolve the closures of the distinct components of $Z'$ on the
+fixed smooth $R'$-model $\mathcal Y$, with their rational
+coefficients.  View $\mathcal Y$ also as a projective flat
+$R$-model of the $K$-variety $Y$.  If $e$ is the ramification index,
+its special fiber over $R$ is the $e$th nilpotent thickening of its
+good special fiber over $R'$: locally a uniformizer of $R$ is a
+unit times the $e$th power of one of $R'$.
+
+Every integral $r$-cycle on this thickened special fiber lies on
+its reduction.  The restriction of the alternating operational
+degree-$r$ Chern class there is geometrically homologically zero
+by smooth proper base change over $R'$.  Thus it has degree zero
+against every such cycle.  Computing degrees over the smaller
+residue field only multiplies them by $[k':k]$, so they remain zero.
+Apply Theorem~\ref{r10c:numerical-zero} directly to the $R$-model
+$\mathcal Y$.  It gives
+\[
+              \Omega_{Z'}=0
+                       \quad\hbox{as a $K$-actual form on $Y^{\rm an}$}.
+\]
+Native special-fiber multiplicities, including $e$, are retained;
+none has been replaced by one.  This step does not infer the
+$K$-actual statement from equality on a smaller collection of
+$K'$-tests.
+
+Perform the relative line construction over this $R$-model
+simultaneously for the finitely many chosen resolutions.  Close the
+joint kernel-Grassmann graph over their common exact open, then take
+the product of all source flag bundles before choosing one smooth
+finite multisection.  Transport and close all target flags on that
+same multisection.  This gives one common map carrying the rationally
+weighted sum of all the line complexes; it does not use a fiber
+product of separately chosen branched finite multisections.
+Keep its line sum $G_T$ before applying any trace.  Let $b:T\to Y$
+be the resulting map of generic degree $d$, finite flat over
+$Y\setminus h^{-1}|Z|$.  The composite
+$f=h\circ b:T\to X$ is finite flat of degree $ad$ above the whole
+$U=X\setminus|Z|$.  Define directly over $K$
+\[
+                   G_Z=\frac1{ad}
+                       \operatorname{Tr}^{\mathscr M}_{f|_{f^{-1}U}}
+                                      (G_T|_{f^{-1}U}).
+\tag{PC13}\label{r11p:potential-good-formula}
+\]
+This is a permitted trace: $G_T$ is the original finite sum of
+PL scalars times model curvature polynomials.  We have not assumed
+that an already constructed $G_{Z'}$ lies in the trace module.
+
+Repeat the scalar Poincare--Lelong proof of
+Theorem~\ref{r11p:complex-green} with an arbitrary compact actual
+test $\eta$ on $X$.  The source curvature is
+$b^*\Omega_{Z'}=0$.  Its residue pushed to $Y$ is $dZ'$, hence
+pushed to $X$ is $daZ$ by
+\eqref{r11p:finite-cover-cycle-degree}.  The support of $D\eta$
+avoids $|Z|$, so the first term is evaluated entirely on the
+finite open for the composite $f$.  Its minimal-trace pairing
+is $ad\int_U G_ZD\eta$.  Division by $ad$ proves
+$\int_U G_ZD\eta=-\int_Z\eta$ on all the stated tests and on the
+exact final complement.
+
+For potential good reduction with geometrically integral $X$, the
+native degree of the projection $X_{K'}\to X$ is $[K':K]$.
+If that base change is disconnected, a smooth integral connected
+component and its good-model component may instead be used, with its
+actual native degree over $X$.  The possible ramification factor is
+already part of the degree and of the model calibrations; no
+additional normalization is inserted.
+\end{proof}
+
+\subsection{Global primitives for generic Chow-zero model characters}
+
+\begin{corollary}[Generically acyclic complexes]
+\label{r11p:acyclic}
+If a bounded model complex is exact on all of $X$, then
+$\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)$ has a global actual
+$D$-primitive on $X^{\rm an}$.
+\end{corollary}
+
+\begin{proof}
+The same relative construction is made with generic open $U=X$;
+its final generic multisection is finite flat over all of $X$ and all
+generic line divisors are empty.  Formula \eqref{r11p:complex-green-formula}
+is global, and \eqref{r11p:complex-green-equation} has zero residue.
+Actual current injectivity identifies its $D$ with the displayed
+actual curvature.
+\end{proof}
+
+\begin{proposition}[A generic $K_0$ relation has an actual primitive]
+\label{r11p:generic-k-primitive}
+Let $\xi\in K_0(\mathcal X)_{\mathbb Q}$.  If $\xi|_X=0$ in
+$K_0(X)_{\mathbb Q}$, then every positive-degree actual
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+A relation in $K_0(X)$ is a finite combination of short exact sequence
+relations and differences of isomorphic vector bundles.  Extend the
+finitely many bundles to a common vertical model refinement, which
+does not change any original model metric on the generic fiber.
+For a generic exact sequence $0\to A\to B\to C\to0$, close the graph
+of the subbundle $A\subset B$ in a Grassmann bundle of the already
+chosen model extension of $B$.  This produces a model exact sequence
+\[
+                         0\to S\to B\to Q\to0
+\]
+with $S|_X\simeq A$ and $Q|_X\simeq C$.  Strict model Whitney gives
+\[
+      \operatorname{ch}_r(B-A-C)
+       =\operatorname{ch}_r(S-A)+\operatorname{ch}_r(Q-C).
+\]
+After clearing uniformizer powers, the two generic isomorphisms are
+model maps giving two-term generically acyclic complexes.  Their
+global primitives exist by Corollary~\ref{r11p:acyclic}.
+The same handles the isomorphic-bundle differences in the chosen
+finite presentation of the $K_0$ relation.  Add the primitives and
+divide by the cleared integer denominator.
+\end{proof}
+
+\begin{proposition}[Only the generic degree-$r$ Chow class matters]
+\label{r11p:generic-chow-primitive}
+If $\xi\in K_0(\mathcal X)_{\mathbb Q}$ satisfies
+$\operatorname{ch}_r(\xi|_X)=0$ in
+$\operatorname{CH}^r(X)_{\mathbb Q}$, then its actual model
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+Let $\psi^2$ be the Adams operation on model vector-bundle $K_0$ and set
+\[
+ e_r(T)=\prod_{\substack{0\leq j\leq n\\j\ne r}}
+                  \frac{T-2^j}{2^r-2^j},
+ \qquad
+                            \xi_r=e_r(\psi^2)\xi.
+\]
+On the smooth projective generic fiber the rational Chern character
+$K_0(X)_{\mathbb Q}\simeq\bigoplus_{j=0}^n
+\operatorname{CH}^j(X)_{\mathbb Q}$ is an isomorphism, and
+$\operatorname{ch}_j(\psi^2\zeta)=2^j\operatorname{ch}_j(\zeta)$.
+All generic Chern components of $\xi_r$ are zero, so $\xi_r|_X=0$.
+
+The same Adams identity is strict for actual model Chern forms:
+it is a universal symmetric-root identity, hence follows from
+Theorem~\ref{r10c:chern}.
+Therefore $\operatorname{ch}_r(\xi_r)=\operatorname{ch}_r(\xi)$
+as actual forms.  Apply Proposition~\ref{r11p:generic-k-primitive}
+to $\xi_r$.
+\end{proof}
+
+\begin{corollary}[Chow-zero cycles without a reduction hypothesis]
+\label{r11p:chow-zero-G}
+For every prescribed rational codimension-$r$ cycle $Z$ with
+$[Z]=0$ in $\operatorname{CH}^r(X)_{\mathbb Q}$, strong G holds
+on exactly $X^{\rm an}\setminus|Z|^{\rm an}$, over $K$, without
+a good-reduction assumption.
+\end{corollary}
+
+\begin{proof}
+Construct the exact-support pair $(G_Z,\Omega_Z)$ above.
+Its model curvature is $\operatorname{ch}_r(\xi)$ for a model
+virtual class with generic degree-$r$ character $[Z]=0$.
+Choose a global actual $\Psi$ with $D\Psi=\Omega_Z$ by the preceding
+proposition.  Then $G_Z-\Psi|_{X\setminus|Z|}$ has zero curvature
+and the same source cycle, with no new poles.
+\end{proof}
+
+
+
+
+% Source: research-sources/green-draft/algebraic_equivalence.tex
+\section{Algebraic equivalence and compact parameters}
+\label{r12p:section}
+
+Throughout this section $K/\mathbf Q_p$ is finite and $X/K$ is smooth,
+projective and geometrically integral.  Write $D=d'd''$ and let
+$\mathcal B$ be the actual delta-form sheaf.
+
+Recall the algebraic quotient
+\[
+ H_{\mathrm{BC,act}}^{r,r}(X)=
+ \frac{\{\omega\in\mathcal B^{r,r}(X^{\rm an}):
+                    d'\omega=d''\omega=0\}}
+      {D\mathcal B^{r-1,r-1}(X^{\rm an})}.
+\]
+The preceding theorems define the model-independent class
+\[
+ \mathfrak o_X^r:\operatorname{CH}^r(X)_{\mathbb Q}
+       \longrightarrow H_{\mathrm{BC,act}}^{r,r}(X),
+ \qquad
+ \mathfrak o_X^r(a)=[\operatorname{ch}_r(\bar\xi)],
+ \quad \operatorname{ch}_r(\xi|_X)=a.
+\tag{R12.P1}\label{r12p:obstruction}
+\]
+
+
+\subsection{Actual forms are locally constant in a rigid parameter}
+
+\begin{lemma}[Uniform rigid-fiber constancy]
+\label{r12p:rigid-fiber}
+Let $S/K$ be smooth and separated, let $a_0\in S(K)$, and let
+$\omega\in\mathcal B((X\times S)^{\rm an})$.  Denote by
+$s_a:X^{\rm an}\to(X\times S)^{\rm an}$ the section with parameter
+$a\in S(K)$.  There is an ordinary analytic open neighborhood $V$ of
+$a_0$ in $S^{\rm an}$ such that
+\[
+                    s_a^*\omega=s_{a_0}^*\omega
+       \quad\text{for every }a\in V\cap S(K),
+\tag{R12.P2}\label{r12p:literal-constancy}
+\]
+as actual forms on the whole $X^{\rm an}$.
+\end{lemma}
+
+\begin{proof}
+Put $p:(X\times S)^{\rm an}\to X^{\rm an}$ and
+$q:(X\times S)^{\rm an}\to S^{\rm an}$.  The analytic section
+$s=s_{a_0}$ is closed and $ps=\operatorname{id}$.  We first check
+the retracted germ argument directly.
+
+Near a point of $s(X^{\rm an})$, write
+$\omega=t_f^\star\gamma$ for a finite tuple $f_i$ of analytic units
+and a Euclidean delta-form $\gamma$.  Shrink to where both $f_i$ and
+$f_i^0=p^*s^*f_i$ are defined.  Each $f_i-f_i^0$ vanishes along the
+section.  The inequalities
+\[
+                         |f_i-f_i^0|<|f_i^0|
+\]
+therefore define an ordinary open neighborhood of that part of the
+section.  On it $|f_i|=|f_i^0|$.  On every common refining skeleton
+the corresponding valuation tuples are equal as linear functions,
+so their intrinsic tropical pullbacks of $\gamma$ agree.  Mihatsch's
+Definition 4.2 and Lemma 4.4 identify the actual forms, and Theorem 4.5
+gives the compatibility with analytic pullback \cite{M}.  Taking the
+union of the resulting neighborhoods gives an ordinary open $W$
+containing the entire section, on which
+\[
+                         \omega=p^*s^*\omega.
+\]
+
+The projection $q$ is proper because $X$ is proper.  In particular it
+is closed on the ordinary topology.  Its closed set
+$q((X\times S)^{\rm an}\setminus W)$ does not contain $a_0$:
+the analytic fiber over a $K$-rational point is exactly the image of
+the corresponding section.  Its complement $V$ is an ordinary open
+with $q^{-1}(V)\subset W$.  Pull the displayed equality back by
+$s_a$ for $a\in V\cap S(K)$ to obtain
+\eqref{r12p:literal-constancy}.
+
+This argument uses properness of the analytic projection, not an
+identification of the underlying analytic product with a Cartesian
+product of point sets.  All pullbacks are of actual forms by genuine
+analytic morphisms, including the closed section.
+\end{proof}
+
+\begin{lemma}[A multiple enters a prescribed identity neighborhood]
+\label{r12p:compact-multiple}
+Let $A/K$ be an abelian variety.  For every $a\in A(K)$ and every
+open neighborhood $U$ of $0$ in $A(K)$, there is an integer $m>0$
+such that $ma\in U$.
+\end{lemma}
+
+\begin{proof}
+The group $A(K)$ is compact: a projective embedding realizes it as
+a closed subset of compact $\mathbf P^N(K)$.  Choose a neighborhood
+$V$ of $0$ with $V-V\subset U$.  Finitely many translates of $V$
+cover $A(K)$.  Two of sufficiently many points $0,a,2a,\ldots,Na$
+belong to one translate; their difference is $ma\in U$ for some
+$m>0$.  This remains valid when $a$ is torsion.
+\end{proof}
+
+\subsection{Additive parameter families and global primitives}
+
+\begin{definition}[Additive cycle family]
+For an abelian variety $A/K$, a class
+$\Theta\in\operatorname{CH}^r(X\times A)_{\mathbb Q}$ is called
+additive on rational fibers if its refined Gysin fibers satisfy
+$\Theta_0=0$ and
+\[
+       \Theta_{a+b}=\Theta_a+\Theta_b
+       \quad\text{in }\operatorname{CH}^r(X)_{\mathbb Q}
+       \qquad(a,b\in A(K)).
+\tag{R12.P3}\label{r12p:additive}
+\]
+The requirement is about Chow classes.  An arbitrary family on an
+abelian parameter variety is not presumed to satisfy it.
+\end{definition}
+
+\begin{theorem}[Compact additive parameters]
+\label{r12p:compact-additive}
+Let $\Theta$ be as in \eqref{r12p:additive}.  For every $a\in A(K)$,
+\[
+                          \mathfrak o_X^r(\Theta_a)=0.
+\tag{R12.P4}\label{r12p:additive-zero}
+\]
+More precisely, any actual degree-$r$ model character representing
+$\Theta_a$ has a global actual $D$-primitive that is a finite rational
+linear combination of the restricted finite-flat traces of global
+original PL-scalar/model-curvature line sums from Theorem~\ref{r11p:minimal-trace-theorem}.
+\end{theorem}
+
+\begin{proof}
+Choose a virtual bundle on $X\times A$ whose degree-$r$ generic
+Chern character is $\Theta$, and extend its finitely many bundles
+to a common projective flat model.  This uses the rational Chern
+character isomorphism on the smooth projective generic fiber and
+the model-extension argument of Corollary~\ref{r11p:any-cycle-pair}.
+Let $\Omega$ be its actual degree-$r$ model character and write
+$\Omega_b=s_b^*\Omega$.  Each $\Omega_b$ is a model character on a
+graph model of $X$.  For any finite list of parameters, all of these
+model bundles can be compared on one projective flat refinement.
+
+Lemma~\ref{r12p:rigid-fiber} gives a neighborhood $U$ of $0$ in
+$A(K)$ on which $\Omega_b=\Omega_0$ literally.  Fix $a$, and choose
+$m>0$ with $ma\in U$ by Lemma~\ref{r12p:compact-multiple}.  On a
+common model the actual character
+\[
+ \Delta=\Omega_{ma}-\Omega_0-m(\Omega_a-\Omega_0)
+                 =-m(\Omega_a-\Omega_0)
+\tag{R12.P5}\label{r12p:delta}
+\]
+has generic degree-$r$ Chow class
+$\Theta_{ma}-m\Theta_a=0$.  Proposition~\ref{r11p:generic-chow-primitive} supplies a global actual $H$ with $DH=\Delta$.
+Consequently
+\[
+                 \beta_a=-\frac{1}{m}H,
+                 \qquad D\beta_a=\Omega_a-\Omega_0.
+\tag{R12.P6}\label{r12p:beta}
+\]
+
+If $\Omega_a'$ is any other actual degree-$r$ model character with
+generic class $\Theta_a$, then
+$\Omega_a'-(\Omega_a-\Omega_0)$ has generic class zero.  Give this
+difference a global primitive by the same proposition and add it to
+$\beta_a$.  This proves \eqref{r12p:additive-zero} and independence
+of the chosen model metric at the level of actual primitives.
+
+For the asserted form of the primitive, the generic-Chow-zero proof
+first applies an Adams projector, then expresses a generic $K_0$
+relation by finitely many generically acyclic model complexes.
+Their prescribed generic open is the whole $X$.  Each primitive is
+therefore of the form
+\[
+       \sum_j q_jd_j^{-1}\operatorname{Tr}^{\mathscr M}_{b_j}(G_j),
+       \qquad q_j\in\mathbb Q,
+\tag{R12.P7}\label{r12p:certificate}
+\]
+where $b_j:T_j\to X$ is finite flat on all of $X$, $d_j$ is its
+native degree, and $G_j$ is a global original line sum on $T_j$.
+Taking the finite rational linear combinations in
+\eqref{r12p:beta} and in the final correction preserves this
+description.  No trace of an arbitrary already constructed actual
+primitive is used.
+\end{proof}
+
+\begin{remark}[A shorter quotient argument]
+By Lemma~\ref{r12p:rigid-fiber}, the map
+$a\mapsto\mathfrak o_X^r(\Theta_a)$ is locally constant as a map
+from the compact space $A(K)$ to an abstract set.  It therefore has
+finite image.  Additivity makes that image a finite subgroup of a
+real vector space, hence zero.  This proves the vanishing without
+putting any topology on $H_{\mathrm{BC,act}}^{r,r}(X)$.
+The proof above additionally retains the composable representation
+\eqref{r12p:certificate}.
+\end{remark}
+
+\subsection{The Poincare correspondence and descent over the original field}
+
+\begin{lemma}[An additive family attached to a pointed curve]
+\label{r12p:poincare}
+Let $F/K$ be a finite extension, let $C/F$ be a smooth projective
+geometrically integral curve with $c_0\in C(F)$, and let
+$\Gamma\in\operatorname{CH}^r(X_F\times C)_{\mathbb Q}$.
+Put $J=\operatorname{Pic}^0_{C/F}$.  There is a class
+$\Theta\in\operatorname{CH}^r(X_F\times J)_{\mathbb Q}$ such that
+\[
+ \Theta_t=\Gamma_*c_1(\mathcal P_t),\qquad
+ \Theta_0=0,\qquad \Theta_{t+t'}=\Theta_t+\Theta_{t'}
+ \quad(t,t'\in J(F)),
+\tag{R12.P8}\label{r12p:poincare-fiber}
+\]
+where $\mathcal P$ is the Poincare bundle normalized along
+$c_0\times J$ and $C\times\{0\}$.
+\end{lemma}
+
+\begin{proof}
+The pointed Picard functor has this normalized universal line bundle;
+see Milne's Theorem 1.2 and Lemma 1.3 \cite{MilneJV}.  On
+$X_F\times C\times J$ define
+\[
+ \Theta=(p_{XJ})_*\bigl(p_{XC}^*\Gamma\cdot
+                              p_{CJ}^*c_1(\mathcal P)\bigr).
+\tag{R12.P9}\label{r12p:poincare-family}
+\]
+Here $p_{XJ}$ has relative dimension one, so the codimension is $r$.
+Every pushforward in this formula is the usual algebraic proper
+pushforward on Chow groups.  Refined Gysin compatibility with that
+pushforward and with intersection gives the fiber formula.
+The rigidified Picard law identifies
+$\mathcal P_{t+t'}$ with $\mathcal P_t\otimes\mathcal P_{t'}$,
+and $\mathcal P_0$ is trivial.  First Chern classes and correspondence
+action are additive, proving all of \eqref{r12p:poincare-fiber}.
+\end{proof}
+
+\begin{lemma}[Algebraic norm of an additive family]
+\label{r12p:norm-family}
+Let $L/K$ be finite Galois, let $J/L$ be an abelian variety, and let
+$\Theta\in\operatorname{CH}^r(X_L\times J)_{\mathbb Q}$ be
+additive on $J(L)$.  Put $A=\operatorname{Res}_{L/K}J$.
+There is a class
+$\Theta^N\in\operatorname{CH}^r(X\times A)_{\mathbb Q}$,
+additive on $A(K)$, whose fiber at the point $a$ corresponding to
+$t\in J(L)=A(K)$ is
+\[
+                    (\Theta^N)_a=h_*\Theta_t,
+                    \qquad h:X_L\longrightarrow X.
+\tag{R12.P10}\label{r12p:norm-fiber}
+\]
+\end{lemma}
+
+\begin{proof}
+For completeness, $A$ can be constructed by descending the product
+$\prod_{\sigma\in\operatorname{Gal}(L/K)}{}^\sigma J$ with its
+canonical semilinear permutation datum.  Finite Galois descent for
+projective varieties gives a smooth projective group, geometrically
+connected, hence an abelian variety over $K$; see
+\cite[Proposition 1.8]{MilneJV}.  Its $K$-points are the conjugate
+tuples determined by a point of $J(L)$.  Let $e:A_L\to J$ be the
+evaluation morphism, which is a group morphism.  With
+$h_A:(X\times A)_L\to X\times A$, set
+\[
+ \Theta^N=(h_A)_*(\operatorname{id}_{X_L}\times e)^*\Theta.
+\tag{R12.P11}\label{r12p:norm-family-formula}
+\]
+The pullback here is an algebraic Chow pullback between smooth
+schemes, and $h_A$ is finite flat.  The proper-pushforward/refined-
+Gysin base-change formula gives \eqref{r12p:norm-fiber}.
+Since $e$ is additive and $h_*$ is a homomorphism, these fibers are
+additive; their zero fiber is zero.  This proof only uses algebraic
+norms.  It neither pulls actual forms back to $L$ nor descends them
+through an analytic finite trace.
+\end{proof}
+
+\begin{theorem}[Geometrically algebraically trivial curvature]
+\label{r12p:geometric-algebraic}
+Let $1\leq r\leq n$ and let
+$z\in\operatorname{CH}^r(X)_{\mathbb Q}$ become algebraically
+trivial over $\overline K$.  Then
+\[
+                              \mathfrak o_X^r(z)=0.
+\tag{R12.P12}\label{r12p:alg-zero}
+\]
+Every actual degree-$r$ model character representing $z$ has a
+global actual $D$-primitive of the form
+\eqref{r12p:certificate}.  No reduction assumption is needed.
+For every prescribed rational cycle $Z$ representing $z$, strong G
+holds on exactly $X^{\rm an}\setminus|Z|^{\rm an}$, over the
+original $K$, and on every compact actual test.
+\end{theorem}
+
+\begin{proof}
+Over $\overline K$, algebraically trivial Chow classes are generated
+by degree-zero divisor correspondences on smooth projective curves.
+This is also a consequence of the curve case of
+\cite[Theorems 1--2, Proposition 3.14]{ACMV}.  Write $z_{\overline K}$
+as a finite rational sum of such expressions.  All curves,
+correspondences, marked points, divisor classes and rational
+equivalence witnesses involve finitely many algebraic coefficients.
+They therefore descend, after enlarging once, to a finite Galois
+extension $L/K$.  Enlarge $L$ also so that each curve has a chosen
+$L$-point.  Rational coefficients can either be retained throughout
+or cleared by one positive integer at this step.
+
+Lemma~\ref{r12p:poincare}, followed by taking a product of the
+finitely many Jacobians and adding the pullbacks of their families,
+gives an abelian variety $J/L$, a class $\Theta$ additive on $J(L)$,
+and $t\in J(L)$ such that
+\[
+                              \Theta_t=z_L.
+\]
+Form the native family $\Theta^N$ from
+Lemma~\ref{r12p:norm-family}.  Its fiber at the corresponding
+$a\in A(K)$ is
+\[
+        (\Theta^N)_a=h_*z_L=[L:K]z
+                 \quad\text{in }\operatorname{CH}^r(X)_{\mathbb Q},
+\tag{R12.P13}\label{r12p:degree-norm}
+\]
+by the algebraic flat-pullback/proper-pushforward degree formula.
+Apply Theorem~\ref{r12p:compact-additive} entirely over $K$ and
+divide by $d=[L:K]$ to obtain \eqref{r12p:alg-zero}.
+
+Here is the primitive with every correction exposed.  Choose a
+model character $\Omega$ for $\Theta^N$ on $X\times A$, and let
+$\beta_a$ be \eqref{r12p:beta}.  If $\Omega_z$ is the prescribed
+model character for $z$, then
+$\Omega_a-\Omega_0-d\Omega_z$ has generic Chow character zero.
+Give it a global primitive $H_z$ by Proposition~\ref{r11p:generic-chow-primitive}.  Then
+\[
+             \Psi_z=\frac{\beta_a-H_z}{d},
+             \qquad D\Psi_z=\Omega_z.
+\tag{R12.P14}\label{r12p:final-primitive}
+\]
+Every term retains \eqref{r12p:certificate}.
+
+Finally take the exact-support pair $(G_Z,\Omega_Z)$ supplied by
+the supported-complex construction, and apply the preceding result
+to its model curvature.  Put
+\[
+       \gamma_Z=G_Z-\Psi_Z\big|_{X^{\rm an}\setminus|Z|^{\rm an}}.
+\]
+The correction is global, so introduces no additional pole.  Stokes
+and actual-current injectivity give, for every
+$\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})$,
+\[
+ \int_{X^{\rm an}\setminus|Z|^{\rm an}}\gamma_ZD\eta
+                         =-\int_{Z^{\rm an}}\eta.
+\]
+This is the required exact-support, all-actual-test statement.
+
+\end{proof}
+
+
+
+% Source: research-sources/green-draft/abelian_numerical.tex
+\section{Finite numerical certificates and abelian varieties}
+\label{sec:abelian-numerical}
+
+In this section $K/\mathbf Q_p$ is finite, with valuation ring $R$
+and finite residue field $k$.  For a smooth integral projective
+$K$-variety $V$ of dimension $d$, write
+\[
+ \CH^r(V)_{\mathbf Q,\homol}
+ =\ker\bigl(\CH^r(V)_{\mathbf Q}\longrightarrow
+          H^{2r}(V_{\overline K},\mathbf Q_\ell(r))\bigr),
+ \qquad \ell\ne p.
+\]
+When $V$ is not geometrically integral, the geometric class is
+understood on every component.  The construction of the preceding
+sections applies to smooth integral $V$ with this convention: the
+finite multisection argument, model Chern forms, finite trace, and
+supported-complex Green construction use integrality over $K$;
+geometric integrality enters the algebraic-equivalence theorem only.
+
+\subsection{A finite numerical certificate}
+
+\begin{definition}\label{def:numerical-certificate}
+Let $\mathcal V/R$ be integral, projective and flat, with smooth
+integral generic fiber $V$.  A virtual model bundle
+$\xi\in K_0(\mathcal V)_{\mathbf Q}$ is an
+\emph{$r$-numerical certificate} for
+$b\in\CH^r(V)_{\mathbf Q}$ if
+\[
+  \operatorname{ch}_r(\xi|_V)=b
+\quad\text{and}\quad
+  \deg_k\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)=0
+\]
+for every integral $r$-dimensional closed subscheme
+$T\subset\mathcal V_s$.  The degree is that of the resulting
+zero-cycle on the proper $k$-scheme $T$.
+\end{definition}
+
+\begin{lemma}[Model refinements preserve numerical certificates]
+\label{lem:refine-certificate}
+If $\rho:\mathcal V'\to\mathcal V$ is a projective morphism of
+integral projective flat $R$-models that is an isomorphism on
+generic fibers, then $\rho^*\xi$ is an $r$-numerical certificate
+for the same generic class whenever $\xi$ is.
+\end{lemma}
+
+\begin{proof}
+The equality on the generic fiber is immediate.  For an integral
+vertical $r$-cycle $T'$ on $\mathcal V'$, the operational projection
+formula gives
+\[
+ \deg_k\bigl(\operatorname{ch}_r(\rho^*\xi_s)\cap[T']\bigr)
+ =\deg_k\bigl(\operatorname{ch}_r(\xi_s)\cap\rho_{s*}[T']\bigr).
+\]
+The proper pushforward on the right is zero if the image has
+dimension smaller than $r$; otherwise it is a positive integer
+multiple of an integral $r$-cycle on $\mathcal V_s$.  The numerical
+certificate makes its degree zero.
+\end{proof}
+
+\begin{theorem}[Finite numerical descent]\label{thm:finite-numerical}
+Let $h:V\to X$ be finite dominant between smooth integral
+projective $K$-varieties, and let $1\le r\le\dim X$.  If $h^*z$
+has an $r$-numerical certificate on a projective flat model of $V$,
+then
+\[
+                     \Ob^r_{X,K}(z)=0
+                     \qquad(z\in\CH^r(X)_{\mathbf Q}).
+\]
+Each prescribed rational cycle $Z$ in class $z$ consequently has
+an ordinary actual zero-curvature Green form on
+$X^{\an}\setminus|Z|^{\an}$ satisfying \eqref{eq:main-green}
+for every compact actual complementary test.
+
+The assertion also applies when $V$ is the underlying $K$-variety
+of a smooth integral projective variety over a finite extension
+$F/K$, and its model is projective flat over $F^\circ$.
+\end{theorem}
+
+\begin{proof}
+Put $e=\deg_K(h)$.  A finite map between smooth integral varieties
+of the same dimension is flat, so $h$ is finite flat of rank $e$.
+Choose a projective flat model $\mathcal X$ and a virtual bundle
+representing $z$; let $\Omega_X$ be its actual degree-$r$ character.
+The existence of this model character and its dependence only on
+the generic Chow class in actual Bott--Chern cohomology were proved
+in Proposition~\ref{r11p:generic-chow-primitive}.
+
+Let $\xi$ be the supplied certificate on $\mathcal V$.  Form the
+closure of the generic graph of $h$ in
+$\mathcal V\times_R\mathcal X$.  It is a projective flat model
+$\mathcal V'$ of $V$, with morphisms to both original models.
+By Lemma~\ref{lem:refine-certificate}, the pullback of $\xi$ remains
+numerically trivial on vertical $r$-cycles.  Replacing
+$\mathcal V$ by this model makes the two model characters
+comparable.
+
+The numerical vanishing theorem \Cref{r10c:numerical-zero,r10c:chern}
+gives the \emph{strict equality of actual forms}
+\[
+                     \operatorname{ch}_r(\bar\xi)=0
+                                \quad\text{on }V^{\an}.
+\]
+The virtual bundles $h^*\xi_X$ and $\xi$ have the same generic
+degree-$r$ Chow character.  Thus
+$h^*\Omega_X-\operatorname{ch}_r(\bar\xi)=h^*\Omega_X$
+has a global actual $D$-primitive by the generic-Chow-zero theorem
+Proposition~\ref{r11p:generic-chow-primitive}.  We use its constructive form:
+\begin{equation}\label{eq:certificate-primitive}
+ h^*\Omega_X=\sum_jc_j\,\Omega_j,
+ \qquad
+ \beta_V=\sum_j\frac{c_j}{e_j}
+        \Tr^{\mathscr M}_{b_j}(G_j),
+ \qquad
+ DG_j=b_j^*\Omega_j.
+\end{equation}
+Here $c_j\in\mathbf Q$, each $b_j:T_j\to V$ is finite flat of
+native degree $e_j$, and $G_j$ is a global sum of the original
+PL scalar--curvature generators.  In particular the composite
+$h b_j$ is finite flat on the \emph{whole} generic fiber $X$.
+
+The finite trace of \Cref{r11p:minimal-trace-theorem} therefore
+defines the following actual form on the original $X^{\an}$:
+\begin{equation}\label{eq:descent-primitive}
+ \beta_X=\frac1e\sum_j\frac{c_j}{e_j}
+                  \Tr^{\mathscr M}_{h b_j}(G_j).
+\end{equation}
+For an arbitrary compact complementary actual test $\eta$, the
+finite-trace pairing and actual Stokes give
+\[
+ \begin{aligned}
+ \int_X\beta_X\wedge D\eta
+   &=\frac1e\sum_j\frac{c_j}{e_j}
+                   \int_{T_j}G_j\wedge(hb_j)^*D\eta\\
+   &=\frac1e\sum_jc_j\int_V\Omega_j\wedge h^*\eta\\
+   &=\frac1e\int_Vh^*(\Omega_X\wedge\eta)
+     =\int_X\Omega_X\wedge\eta.
+ \end{aligned}
+\]
+The last equality uses the full native degree $e$, and the first
+three equalities hold for \emph{every} compact actual test by the
+finite-trace theorem.  Mihatsch's injectivity of the map from
+actual forms to currents now yields $D\beta_X=\Omega_X$.
+The obstruction class vanishes; subtracting $\beta_X$ from the
+exact-support curved pair of Corollary~\ref{r11p:any-cycle-pair} yields
+the asserted Green form.
+
+For a model over $F^\circ$, regard it as a model over $R$.
+The scheme-theoretic special fiber retains its ramification
+multiplicity.  Each vertical numerical degree over $k$ is the
+corresponding degree over the residue field of $F$ multiplied
+by that residue-field degree.  The same proof uses the complete
+native generic degree of $h$, including the constant-field factor.
+\end{proof}
+
+\subsection{The special fiber of a semistable abelian model}
+
+Let $R'$ be a complete discrete valuation ring with finite residue
+field $k'$ and fraction field $F$.  Let $\mathcal A/R'$ be a regular
+projective strictly semistable model of an abelian variety $A/F$
+of dimension $d$, and let $Y=\bigcup_iD_i$ be its reduced special
+fiber.  With $Y^{(1)}=\coprod_iD_i$ and
+$Y^{(2)}=\coprod_{i<j}(D_i\cap D_j)$, define
+\[
+ A^s(D)=\operatorname{im}\bigl(\CH^s(D)_{\mathbf Q}
+           \to H^{2s}(D_{\bar k'},\mathbf Q_\ell(s))\bigr)
+\]
+for each smooth projective stratum $D$ and set
+\begin{equation}\label{eq:kun-strata}
+ A^s(Y)=\ker\bigl(A^s(Y^{(1)})\xrightarrow{\rho}A^s(Y^{(2)})\bigr),
+ \qquad
+ A_s(Y)=\operatorname{coker}\bigl(
+ A^{d-s-1}(Y^{(2)})\xrightarrow{\gamma}A^{d-s}(Y^{(1)})\bigr).
+\end{equation}
+The two arrows are the signed restrictions and Gysin maps.
+The natural map $\CH_s(Y)_{\mathbf Q}\twoheadrightarrow A_s(Y)$
+is surjective.
+
+\begin{theorem}[K\"unnemann's local semistable theorem]
+\label{thm:kunnemann-local}
+After a finite extension of any finite $p$-adic field $K$, every
+abelian variety over $K$ admits a regular projective strictly
+semistable model $\mathcal A/R'$ for which, in all degrees, the
+cycle-class map
+\[
+ A_s(Y)\longrightarrow
+ H^{\mathrm{\acute et}}_{2s}(Y_{\bar k'},\mathbf Q_\ell(-s))
+\]
+is injective, and the middle term of
+\begin{equation}\label{eq:kun-complex}
+ A_{d+1-r}(Y)\xrightarrow{i^*i_*} A^r(Y)
+                   \xrightarrow{\cap[Y]} A_{d-r}(Y)
+\end{equation}
+is exact, where $i:Y\hookrightarrow\mathcal A$.
+\end{theorem}
+
+\begin{proof}[Source of the published theorem]
+This is the complete-DVR construction and special-fiber theorem
+of \cite[Theorems~5.6 and~6.6]{Kunnemann}.
+The base ring is complete and has finite residue field, as in
+Section~6.2 of the cited work.  The groups in
+\eqref{eq:kun-strata} are defined using the geometric
+cycle-class images on the individual strata.
+\end{proof}
+
+\begin{lemma}[A pure, vertically numerical extension]
+\label{lem:abelian-lift}
+Let $A/F$ have a model furnished by
+\Cref{thm:kunnemann-local}.  For every geometrically homologically
+trivial class $z\in\CH^r(A)_{\mathbf Q}$,
+$1\le r\le d$, there is $\Theta_0\in\CH^r(\mathcal A)_{\mathbf Q}$
+restricting to $z$, such that its refined restriction to
+every $D_i$ is homologically trivial.  In particular $z$ has
+an $r$-numerical certificate on $\mathcal A$.
+\end{lemma}
+
+\begin{proof}
+Choose a Chow extension $\Theta$ of $z$ by taking closures of
+cycle representatives.  Its tuple $a$ of component restriction
+classes belongs to $A^r(Y)$.  The class of
+$a\cap[Y]\in A_{d-r}(Y)$ is the specialization of $z$.
+Compatibility of proper specialization with geometric
+$\ell$-adic cycle classes makes its image in geometric homology
+zero.  By the injectivity in \Cref{thm:kunnemann-local},
+$a\cap[Y]=0$.
+
+Exactness of \eqref{eq:kun-complex} gives
+$b\in A_{d+1-r}(Y)$ with $i^*i_*b=a$.
+Choose $\beta\in\CH_{d+1-r}(Y)_{\mathbf Q}$ mapping to $b$
+and set
+\[
+                           \Theta_0=\Theta-i_*\beta.
+\]
+The generic fiber of $i_*\beta$ is empty, so $\Theta_0|_A=z$.
+The tuple of its component restrictions is
+$a-i^*i_*b=0$ in $A^r(Y)$.  Since $A^r(Y)$ is a subspace of
+$\bigoplus_i A^r(D_i)$, each component restriction has zero
+geometric $\ell$-adic class and is numerically trivial.
+
+The regularity of $\mathcal A$ and the rational Chern-character
+isomorphism on regular schemes
+\cite[Tag 0FEY]{StacksFEY} supply a unique
+$\xi\in K_0(\mathcal A)_{\mathbf Q}$ satisfying
+\begin{equation}\label{eq:pure-ch}
+                    \operatorname{ch}(\xi)\cap[\mathcal A]
+                              =\Theta_0.
+\end{equation}
+For completeness, applying the Adams operation $2^{-r}\psi^2$
+to \eqref{eq:pure-ch} yields the same codimension-$r$ class.
+Uniqueness therefore gives $\psi^2\xi=2^r\xi$.
+Because $\operatorname{ch}_j(\psi^2\xi)=2^j\operatorname{ch}_j(\xi)$,
+all operational character components except $j=r$ vanish.
+
+Every integral vertical $r$-cycle $T\subset\mathcal A_s$
+is contained in a component $D_i$.  The projection formula for
+the refined restriction gives
+\[
+ \deg_{k'}\bigl(\operatorname{ch}_r(\xi_s)\cap[T]\bigr)
+ =\deg_{k'}\bigl((\Theta_0|_{D_i})\cap[T]\bigr)=0.
+\]
+The last equality follows from numerical triviality of the
+component restriction.  Thus $\xi$ is a numerical certificate.
+\end{proof}
+
+\subsection{Zero-curvature Green forms on abelian targets}
+
+\begin{theorem}[Full actual strong Green forms for abelian varieties]
+\label{thm:abelian-G}
+Let $A/K$ be an abelian variety of arbitrary dimension.  For
+every $1\le r\le\dim A$ and every prescribed rational cycle $Z$
+whose Chow class is geometrically homologically trivial, there is
+an actual form
+\[
+ \gamma_Z\in\B^{r-1,r-1}
+                    (A^{\an}\setminus|Z|^{\an})
+\]
+satisfying \eqref{eq:main-green} for all compact actual tests
+over the original $K$.
+\end{theorem}
+
+\begin{proof}
+Choose a finite field extension $F/K$ for which $A_F$ has the
+semistable model of \Cref{thm:kunnemann-local}.  Its $r$-numerical
+certificate for $Z_F$ is supplied by
+Lemma~\ref{lem:abelian-lift}.  The finite dominant map
+$h:A_F\to A$ has native degree $[F:K]$ and is finite flat as
+a map of smooth integral $K$-varieties.  Apply
+\Cref{thm:finite-numerical} to $h$.  It supplies a global actual
+primitive for the obstruction of $Z$ on the original
+$A^{\an}$, and hence the asserted Green form on the prescribed
+support complement.
+\end{proof}
+
+\begin{corollary}[Finite abelian domination]
+\label{cor:finite-abelian}
+Let $X/K$ be smooth projective geometrically integral, and assume
+there is a finite surjective morphism $f:A\to X$ from an abelian
+variety $A/K$.  Every geometrically homologically trivial rational
+cycle on $X$ satisfies the strong Green identity in all
+codimensions, with prescribed exact support and all compact
+original-field actual tests.
+\end{corollary}
+
+\begin{proof}
+For $z\in\CH^r(X)_{\mathbf Q,\homol}$, the class
+$f^*z$ is geometrically homologically trivial by functoriality
+of the geometric cycle-class map.  Extend $K$ to $F$ as in
+\Cref{thm:abelian-G}; Lemma~\ref{lem:abelian-lift} gives a
+numerical certificate for its pullback to $A_F$.
+The composite finite dominant map $A_F\to A\to X$ has
+degree $[F:K]\deg f$.  Apply \Cref{thm:finite-numerical}
+directly to this composite.
+\end{proof}
+
+
+
+% Source: research-sources/green-draft/chow_correspondence.tex
+\section{Numerical certificates under Chow correspondences}
+\label{sec:correspondences}
+
+This section uses ordinary rational intersection theory on regular
+projective models.  The only analytic input is the finite numerical
+descent theorem already proved in \Cref{thm:finite-numerical}.
+
+\subsection{A supported numerical projection formula}
+
+Let $\mathcal V/R$ be a regular, integral, projective and flat model,
+and let $\Theta\in\CH^p(\mathcal V)_{\mathbf Q}$ be homogeneous.
+By the rational Chern-character isomorphism for regular schemes
+\cite[Tag~0FEY]{StacksFEY}, there is a unique
+$\xi_\Theta\in K_0(\mathcal V)_{\mathbf Q}$ such that
+\begin{equation}\label{eq:op-pure-character}
+       \operatorname{ch}(\xi_\Theta)\cap[\mathcal V]=\Theta.
+\end{equation}
+The Adams identity, applied to \eqref{eq:op-pure-character}, gives
+$\psi^2\xi_\Theta=2^p\xi_\Theta$ and hence
+$\operatorname{ch}_j(\xi_\Theta)=0$ as an operational class
+for $j\ne p$.  We write
+$c_\Theta=\operatorname{ch}_p(\xi_\Theta)$.  It is an
+operational class on every closed support and satisfies
+$c_\Theta\cap[\mathcal V]=\Theta$.
+
+We call $\Theta$ \emph{vertically $p$-numerically trivial} if
+\begin{equation}\label{eq:vertical-numerical-def}
+ \deg_k(c_\Theta\cap[T])=0
+ \quad\text{for every integral vertical $p$-cycle}
+ \quad T\subset\mathcal V_s.
+\end{equation}
+Equivalently, $\xi_\Theta$ is a $p$-numerical certificate for
+$\Theta$ on the generic fiber.
+
+\begin{lemma}[Numerical pullback]\label{lem:operational-pullback}
+Let $f:\mathcal W\to\mathcal V$ be a projective morphism between
+regular integral projective flat $R$-models.  If $\Theta$ is
+vertically $p$-numerically trivial, then its refined pullback
+$f^!\Theta=(f^*c_\Theta)\cap[\mathcal W]$ is vertically
+$p$-numerically trivial.
+\end{lemma}
+
+\begin{proof}
+The schemes are regular, so $f$ is a local complete intersection
+morphism, and the projective factorization supplies its refined
+Gysin operation.  For any integral vertical $p$-cycle
+$T\subset\mathcal W_s$, the proper projection formula gives
+\[
+ \deg_k((f^*c_\Theta)\cap[T])
+       =\deg_k(c_\Theta\cap f_*[T])=0.
+\]
+Indeed $f_*[T]$ is a rational linear combination of vertical
+$p$-cycles, or zero.  The displayed refined pullback has pure
+operational representative $f^*c_\Theta$ by
+\eqref{eq:op-pure-character} and Gysin compatibility.
+\end{proof}
+
+\begin{lemma}[Supported numerical projection]
+\label{lem:supported-numerical-projection}
+Let $f:\mathcal W\to\mathcal V$ be a projective morphism between
+regular integral projective flat $R$-models of total dimensions
+$M$ and $N$.  Let $\Theta\in\CH^p(\mathcal W)_{\mathbf Q}$ be
+vertically $p$-numerically trivial.  Put
+$\delta=M-N$, $q=p-\delta$, and assume $0\le q\le N-1$.
+Then $f_*\Theta\in\CH^q(\mathcal V)_{\mathbf Q}$ is vertically
+$q$-numerically trivial.
+More precisely, for every integral vertical $q$-cycle
+$T\subset\mathcal V_s$ one has the supported projection identity
+\begin{equation}\label{eq:supported-identity}
+ (f_*\Theta)\cdot[T]
+   = f_*\bigl(\Theta\cdot f^![T]\bigr)
+                      \qquad\text{in }\CH_0(\mathcal V)_{\mathbf Q}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $\mathcal V$ and $\mathcal W$ are regular, the projective
+morphism $f$ is a local complete intersection morphism: factor it
+through a projective bundle over $\mathcal V$, then use the
+regular embedding of the regular source into that regular bundle.
+The fundamental class $[T]$ has codimension $N-q$ in the regular
+scheme $\mathcal V$.  Its refined pullback
+\[
+       f^![T]\in\CH_{M-(N-q)}(\mathcal W)_{\mathbf Q}
+                   =\CH_p(\mathcal W)_{\mathbf Q}
+\]
+is supported on $f^{-1}(T)$, hence is a rational combination of
+vertical $p$-cycles.  The bivariant projection formula for the
+lci pullback on regular schemes
+\cite[Chapter~17]{Fulton} and \cite[Tags~0FF6 and 0FFA]{StacksGysin}
+gives \eqref{eq:supported-identity}.
+The degree of $\Theta\cdot f^![T]$ is zero by the numerical
+hypothesis on $\Theta$.  Since $c_{f_*\Theta}\cap[T]$ is the
+intersection product $(f_*\Theta)\cdot[T]$, the degree required
+for vertical numerical triviality vanishes.
+\end{proof}
+
+\begin{lemma}[Products of numerical and operational classes]
+\label{lem:numerical-times-class}
+Let $\mathcal W$ be a regular projective flat model.  Suppose
+$\alpha\in\CH^p(\mathcal W)_{\mathbf Q}$ is vertically
+$p$-numerically trivial and
+$\beta\in\CH^t(\mathcal W)_{\mathbf Q}$.
+If $p+t$ lies between zero and the relative dimension of
+$\mathcal W$, then $\alpha\cdot\beta$ is vertically
+$(p+t)$-numerically trivial.
+\end{lemma}
+
+\begin{proof}
+For an integral vertical $(p+t)$-cycle $T$, the operational
+intersection $c_\beta\cap[T]$ is a rational combination of
+vertical $p$-cycles.  The degrees of
+$c_\alpha\cap(c_\beta\cap[T])$ vanish termwise.  Purity of
+the rational operational representatives identifies
+$c_{\alpha\beta}=c_\alpha c_\beta$.
+\end{proof}
+
+\subsection{Transfer along algebraic correspondences}
+
+Let $V$ and $X$ be smooth projective geometrically integral
+$F$-varieties of dimensions $m$ and $n$.  A correspondence
+$\Gamma\in\CH^{m+a}(V\times_F X)_{\mathbf Q}$ acts by
+\[
+ \Gamma_*b=(\operatorname{pr}_X)_*
+             (\operatorname{pr}_V^*b\cdot\Gamma)
+       \in\CH^{r+a}(X)_{\mathbf Q},
+       \qquad b\in\CH^r(V)_{\mathbf Q}.
+\]
+
+\begin{proposition}[Algebraic correspondence transfer]
+\label{prop:correspondence-transfer}
+Assume that $V$ and $X$ have regular integral projective flat
+$R_F$-models $\mathcal V$ and $\mathcal X$.  Suppose that
+$b\in\CH^r(V)_{\mathbf Q}$ has an $r$-numerical certificate
+on $\mathcal V$.  For every correspondence
+$\Gamma\in\CH^{m+a}(V\times X)_{\mathbf Q}$ with
+$1\le r+a\le n$, its image $\Gamma_*b$ has an
+$(r+a)$-numerical certificate on $\mathcal X$.
+\end{proposition}
+
+\begin{proof}
+Write $R'=R_F$.  The projective flat product
+$\mathcal V\times_{R'}\mathcal X$ is integral: its generic
+fiber $V\times_F X$ is geometrically integral, and flatness
+excludes any additional irreducible component supported on the
+special fiber.  By the projective semistable alteration theorem
+of de Jong \cite[Theorem~6.5]{deJong}, there is a projective
+generically finite morphism
+\[
+ g:\mathcal W\longrightarrow
+                  \mathcal V\times_{R'}\mathcal X
+\]
+from a regular integral projective flat model (possibly over a
+finite extension of $R'$).  The native degree of its generic
+map $g_F:W\to V\times_F X$ is a positive integer $d$.
+Indeed, de Jong first constructs a semistable open source inside
+a projective compactification.  Since the target here is proper,
+the alteration source is proper over the base, so this open
+immersion is closed as well.  The integral compactification
+therefore equals the source.
+Let $f_V$ and $f_X$ be the composite model morphisms to the
+respective factors.
+
+Choose a pure vertically numerical class
+$\Theta\in\CH^r(\mathcal V)_{\mathbf Q}$ with
+$\Theta|_V=b$.  The generic class $g_F^*\Gamma$ has a Chow
+extension $\widetilde\Gamma\in\CH^{m+a}(\mathcal W)_{\mathbf Q}$;
+the closure of cycle representatives gives such an extension.
+Set
+\[
+ \Xi=(f_V^!\Theta)\cdot\widetilde\Gamma
+      \in\CH^{r+m+a}(\mathcal W)_{\mathbf Q}.
+\]
+By Lemmas~\ref{lem:operational-pullback}
+and~\ref{lem:numerical-times-class},
+$\Xi$ is vertically $(r+m+a)$-numerically trivial.  Since
+$\dim\mathcal W-\dim\mathcal X=m$, the supported numerical
+projection lemma applies to $f_X$, and gives the vertically
+$(r+a)$-numerically trivial class
+\[
+          \Lambda=\frac1d(f_X)_*\Xi
+                     \in\CH^{r+a}(\mathcal X)_{\mathbf Q}.
+\]
+
+On smooth generic fibers, pullback is an ordinary lci Chow
+pullback, and the projection formula for the generically finite
+$g_F$ gives
+\[
+ \begin{aligned}
+ \Lambda|_X
+  &=\frac1d(\operatorname{pr}_X)_*
+       (g_F)_*g_F^*(\operatorname{pr}_V^*b\cdot\Gamma)\\
+  &=(\operatorname{pr}_X)_*
+                      (\operatorname{pr}_V^*b\cdot\Gamma)
+   =\Gamma_*b.
+ \end{aligned}
+\]
+The pure virtual model bundle $\xi_\Lambda$ defined by
+\eqref{eq:op-pure-character} is the required numerical
+certificate.
+\end{proof}
+
+\begin{theorem}[A Chow-correspondence criterion for actual Green forms]
+\label{thm:chow-abelian-criterion}
+Let $X/K$ be smooth projective geometrically integral.  Suppose
+there exists a finite extension $F/K$ for which the following
+properties hold:
+\begin{enumerate}
+\item $X_F$ has a regular integral projective flat $R_F$-model;
+\item there is an abelian variety $B/F$ with a regular projective
+  semistable model satisfying \Cref{thm:kunnemann-local};
+\item there are finitely many correspondences
+  $u_j:X_F\rightsquigarrow B$ and
+  $v_j:B\rightsquigarrow X_F$ of opposite degree shifts
+  with
+  \begin{equation}\label{eq:abelian-diagonal}
+                \sum_jv_j\circ u_j=\Delta_{X_F}
+       \qquad\text{in }\CH^{\dim X}(X_F\times X_F)_{\mathbf Q}.
+  \end{equation}
+\end{enumerate}
+Then every prescribed rational cycle $Z$ on $X$ with
+geometrically homologically trivial class admits an actual
+zero-curvature Green form on the exact complement
+$X^{\an}\setminus |Z|^{\an}$ satisfying
+\eqref{eq:main-green} against every compact actual test over $K$.
+\end{theorem}
+
+\begin{proof}
+Write $z=[Z]$ and $z_F=[Z_F]$.  Equation
+\eqref{eq:abelian-diagonal} gives
+\[
+             z_F=\sum_j(v_j)_*(u_j)_*z_F.
+\]
+Each $(u_j)_*z_F$ is geometrically homologically trivial, by
+compatibility of algebraic correspondences with geometric
+$\ell$-adic cycle classes.  Terms of codimension outside
+$1,\ldots,\dim B$ vanish (in codimension zero this follows
+from homological triviality); for the remaining terms
+Lemma~\ref{lem:abelian-lift} supplies a numerical certificate on
+the regular semistable model of $B$.
+
+Apply Proposition~\ref{prop:correspondence-transfer} to $v_j$, taking the
+given regular model of $X_F$ as the target.  Its resulting
+numerical certificates add to a certificate for $z_F$.
+Finally, $X_F\to X$ is finite flat of native degree $[F:K]$.
+The finite numerical descent theorem \Cref{thm:finite-numerical}
+produces the asserted actual Green form on the original $X$.
+\end{proof}
+
+\subsection{Products of curves and abelian varieties}
+
+\begin{lemma}[Chow diagonal of a product of curves]
+\label{lem:curve-product-diagonal}
+Let $F$ have characteristic zero, let $A/F$ be an abelian variety,
+and let $C_1,\ldots,C_s/F$ be smooth projective geometrically
+integral curves with $F$-rational points.  Put
+$X=A\times_F C_1\times_F\cdots\times_F C_s$.
+Then the diagonal of $X$ admits a finite decomposition
+\eqref{eq:abelian-diagonal}, where every intermediate variety
+is the single abelian variety
+$B=A\times_F\prod_i\operatorname{Jac}(C_i)$,
+and all correspondences are defined over $F$.
+\end{lemma}
+
+\begin{proof}
+Choose points $P_i\in C_i(F)$.  The three mutually orthogonal
+Chow projectors
+\[
+ \pi_{0,i}=[P_i\times C_i],\qquad
+ \pi_{2,i}=[C_i\times P_i],\qquad
+ \pi_{1,i}=\Delta_{C_i}-\pi_{0,i}-\pi_{2,i}
+\]
+split the motive of each curve into $\mathbf 1$, its
+degree-one motive, and the Lefschetz motive $\mathbb L$.
+Idempotence follows from $\deg(P_i)=1$ and the mixed
+compositions vanish because $[P_i]^2=0$ on the curve.
+The Abel--Jacobi map and the Poincar\'e correspondence identify
+the degree-one motive with the degree-one direct summand of
+the Chow motive of $J_i=\operatorname{Jac}(C_i)$.  The latter
+is split by the rational Chow--K\"unneth projector of the
+abelian variety, so the inverse correspondences exist in the
+category of rational Chow motives.  These standard identities
+are established in \cite[Sections~3 and~5]{Scholl}.
+
+Take the tensor product of the finitely many splittings, including
+the identity motive of $A$.  Every resulting summand factors
+through the motive of $A$ times a product of some $J_i$, with
+an integral Tate twist recording the number of Lefschetz factors.
+The projection $\pi$ from $B=A\times\prod_i J_i$ onto any such
+subproduct admits a zero-section $i$.  The identity
+$i^*\pi^*=\operatorname{id}$, implemented by transpose-graph
+correspondences, splits the motive of the subproduct from
+the motive of $B$.  Thus every summand can be
+factored through this one abelian variety, with the same Tate
+shift.
+Express the inclusion and retraction morphisms as algebraic
+correspondences $u_j$ and $v_j$; their composition is the tensor
+product of the chosen projectors.  Summing over all choices of
+the three projectors on each curve gives
+$\sum_jv_j\circ u_j=\Delta_X$ in rational Chow groups.
+\end{proof}
+
+\begin{lemma}[Regular models for products]
+\label{lem:product-model}
+Let $A/K$ be an abelian variety and let $C_1,\ldots,C_s/K$
+be smooth projective geometrically integral curves.  After
+one finite extension $F/K$ there are simultaneously:
+\begin{enumerate}
+\item rational points on all the $C_{i,F}$;
+\item regular projective strictly semistable models of the
+  $C_{i,F}$, and a regular projective strictly semistable
+  model of $A_F\times\prod_i C_{i,F}$;
+\item a regular projective semistable model of the abelian
+  variety $B=A_F\times\prod_i\operatorname{Jac}(C_{i,F})$
+  satisfying \Cref{thm:kunnemann-local}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Each curve acquires a rational point and a projective regular
+strictly semistable model after finite extension, by the
+semistable reduction theorem for curves.  Enlarge this initial
+field so that $A$ has a regular projective strictly semistable
+model by \Cref{thm:kunnemann-local}.  Now apply that theorem to
+the single abelian variety
+$B=A\times\prod_i\operatorname{Jac}(C_i)$, obtaining a
+possibly larger field on which $B$ has the required model.
+The earlier models of $A$ and the curves are carried to this
+final field by the ramified base-change regularization below.
+Semistable
+curve and abelian models remain regular and strictly semistable
+after an unramified extension.  After ramified extension,
+Hartl's explicit sequence of blowups recovers such a model
+without changing the generic fiber
+\cite[Proposition~2.2]{Hartl}.  Finally, his regularization of
+the product of two strict semistable models
+\cite[Proposition~2.1]{Hartl} can be iterated over the finite
+family.  All operations are projective blowups of projective
+schemes; thus the resulting model is projective, regular and
+flat, with the prescribed smooth generic fiber.
+\end{proof}
+
+\begin{theorem}[Products of curves and abelian varieties]
+\label{thm:curve-products-G}
+Let $A/K$ be an abelian variety and let $C_1,\ldots,C_s/K$
+be smooth projective geometrically integral curves, with
+$K/\mathbf Q_p$ finite.  On
+\[
+                       X=A\times_K C_1\times_K\cdots\times_K C_s,
+\]
+every prescribed rational cycle of codimension
+$1\le r\le\dim X$ whose class is geometrically homologically
+trivial has an actual zero-curvature Green form satisfying
+\eqref{eq:main-green} on its exact support complement over the
+original field, against all compact actual tests.
+\end{theorem}
+
+\begin{proof}
+Choose $F/K$ and the regular semistable models of
+Lemma~\ref{lem:product-model}.  The Chow-diagonal identity of
+Lemma~\ref{lem:curve-product-diagonal} meets every hypothesis of
+\Cref{thm:chow-abelian-criterion}.  Apply that theorem.
+\end{proof}
+
+\begin{corollary}[Finite domination by products]
+\label{cor:finite-curve-product}
+Let $Y/K$ be smooth projective geometrically integral, and
+suppose that there is a finite surjective morphism
+$A\times\prod_i C_i\to Y$ from a product as in
+\Cref{thm:curve-products-G}.  Then the conclusion of that
+theorem holds for every geometrically homologically trivial
+rational cycle on $Y$.
+\end{corollary}
+
+\begin{proof}
+Pull a cycle back through the finite map and choose the common
+extension and models of Lemma~\ref{lem:product-model}.  The proof
+of \Cref{thm:chow-abelian-criterion} constructs an actual
+numerical certificate for the pullback on a regular model of
+the product after that extension.  The composite map from
+the base-changed product to $Y$ is finite flat and has degree
+$[F:K]$ times the degree of the original finite map.  Apply
+\Cref{thm:finite-numerical} directly to this composite.
+\end{proof}
+
+
+
+\section{The conditional geometric conclusions}\label{sec:conditional-conclusions}
+
+\subsection{Algebraic equivalence over the original field}\label{sec:conditional-algebraic-proof}
+
+\begin{proof}[Proof of \Cref{thm:main-algebraic}]
+Write $z=[Z]$. Choose a finite Galois extension $L/K$ over which the curves, degree-zero divisors and correspondence identities expressing $z_L$ by algebraic equivalence are defined. \Cref{r12p:poincare} provides an additive family $\Theta$ on $X_L\times J$, for a product of Jacobians $J/L$, with a fibre $\Theta_t=z_L$.
+
+Let $A=\operatorname{Res}_{L/K}J$. Evaluation $A_L\to J$ and algebraic finite-flat pushforward give the norm family of \Cref{r12p:norm-family}. It is additive and has a $K$-rational fibre
+\[
+ (\Theta^N)_a=[L:K]z.
+\]
+By (A1), the family defines the additive obstruction map
+\[
+ \varphi:A(K)\longrightarrow H^{r,r}_{\BC}(X),
+ \qquad b\longmapsto\Ob^r_{X,K}((\Theta^N)_b).
+\]
+Represent the family obstruction by a global model Chern form. Property (R) makes its pulled-back form constant near zero, so $\ker\varphi$ contains an identity neighbourhood. Compactness of $A(K)$ implies that a positive multiple of any point lies in that neighbourhood, as in \Cref{r12p:compact-multiple}. The target is torsion-free, hence $\varphi=0$. Thus $[L:K]\Ob^r_{X,K}(z)=0$, and division gives $\Ob^r_{X,K}(z)=0$.
+
+Use (A2) for the original representative $Z$, not a moved cycle. Since $[\Omega_Z]=0$, choose a global actual $\Psi_Z$ with $D\Psi_Z=\Omega_Z$. Set $\gamma_Z=G_Z-\Psi_Z|_{U_Z}$. Actual Stokes and \eqref{eq:main-pair} give \eqref{eq:main-green} for every stated test, on the same open set $U_Z$.
+\end{proof}
+
+\subsection{Abelian correction and diagonal transfer}\label{sec:conditional-abelian-proof}
+
+\begin{proof}[Proof of \Cref{thm:main-abelian}]
+First let $A$ be an abelian variety over a finite extension of $K$. Choose a further finite extension with the semistable model of \Cref{thm:kunnemann-local}. For a geometrically homologically trivial class, \Cref{lem:abelian-lift} gives a pure virtual model bundle whose special-fibre character is numerically trivial on all vertical cycles of the required dimension. Property (N), applied to the native finite map to the original $K$-variety, gives zero obstruction. This uses the entire degree of the extension.
+
+Now fix the retraction data \eqref{eq:construction-retraction} and $z\in\CH^r(X)_{\mathbf Q,\homol}$. Every $(u_j)_*z_L$ is geometrically homologically trivial by compatibility of correspondences with cycle classes. Terms outside positive codimension on the abelian variety vanish; in codimension zero this follows from homological triviality. The first paragraph therefore annihilates the obstruction of each remaining term. Property (C) annihilates the obstruction of its image under $v_j$. Summing the Chow identity gives zero obstruction for $z_L$.
+
+Apply the algebraic pushforward $\pi_*:X_L\to X$ and (C). Since $\pi_*z_L=[L:K]z$, rational linearity gives $\Ob^r_{X,K}(z)=0$. If the correspondences act as $\lambda\id$ rather than the identity in the chosen codimension, the same argument gives $\lambda[L:K]\Ob^r_{X,K}(z)=0$, and $\lambda\ne0$ permits division. Finally apply (A2) and the global correction used in the preceding proof.
+\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{ChowGreenPairs} \emph{Chow Obstructions and Prescribed Actual Green Pairs}, companion manuscript, 23 November 2026, Theorem~1.1; \url{https://openmath-atlas.org/projects/strong-green/editions/v0.5.2/papers/chow-obstruction-green-pairs/}.
+\bibitem{M} A. Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces}, arXiv:2112.10018, version 4 (2024), \url{https://arxiv.org/abs/2112.10018v4}.
+\bibitem{MTrop} A. Mihatsch, \emph{On tropical intersection theory}, Selecta Math. (N.S.) \textbf{29} (2023), art. 17, \url{https://doi.org/10.1007/s00029-022-00818-7}.
+\bibitem{CLD} A. Chambert-Loir and A. Ducros, \emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de Berkovich}, arXiv:1204.6277, version 2 (2025), \url{https://arxiv.org/abs/1204.6277}.
+\bibitem{GM} W. Gubler and F. Martin, \emph{On Zhang's semipositive metrics}, Doc. Math. \textbf{24} (2019), 331--372, \url{https://doi.org/10.4171/DM/683}.
+\bibitem{Fulton} W. Fulton, \emph{Intersection Theory}, second edition, Ergebnisse der Mathematik, Springer, 1998.
+\bibitem{Kunnemann} K. K\"unnemann, \emph{Height pairings for algebraic cycles on abelian varieties}, Ann. Sci. \'Ecole Norm. Sup. (4) \textbf{34} (2001), 503--523, \url{https://www.numdam.org/article/ASENS_2001_4_34_4_503_0.pdf}.
+\bibitem{StacksFEY} The Stacks Project Authors, \emph{Lemma 42.58.1}, Tag 0FEY, \url{https://stacks.math.columbia.edu/tag/0FEY}.
+\bibitem{StacksFEW} The Stacks Project Authors, \emph{Proposition 42.57.1}, Tag 0FEW, \url{https://stacks.math.columbia.edu/tag/0FEW}.
+\bibitem{StacksGysin} The Stacks Project Authors, \emph{Lemmas 42.59.7 and 42.59.13}, Tags 0FF6 and 0FFA, \url{https://stacks.math.columbia.edu/tag/0FF6}, \url{https://stacks.math.columbia.edu/tag/0FFA}.
+\bibitem{deJong} A. J. de Jong, \emph{Smoothness, semi-stability and alterations}, Publ. Math. Inst. Hautes \'Etudes Sci. \textbf{83} (1996), 51--93, \url{https://www.numdam.org/item/PMIHES_1996__83__51_0.pdf}.
+\bibitem{Hartl} U. T. Hartl, \emph{Semi-stability and base change}, Arch. Math. (Basel) \textbf{77} (2001), 215--221, \url{https://doi.org/10.1007/PL00000484}.
+\bibitem{Scholl} A. J. Scholl, \emph{Classical motives}, in \emph{Motives}, Proc. Sympos. Pure Math. \textbf{55}, Part 1 (1994), 163--187, \url{https://www.dpmms.cam.ac.uk/~ajs1005/preprints/classical_motives.pdf}.
+\bibitem{Stacks} The Stacks Project Authors, \emph{Stacks Project}, particularly Tags 0FB3, 0FBE, 0FET, 0FEW, 0D4I, 0FD6, 0G4C and 00R4, \url{https://stacks.math.columbia.edu}.
+\bibitem{MilneJV} J. S. Milne, \emph{Jacobian varieties}, in \emph{Arithmetic Geometry}, G. Cornell and J. H. Silverman (eds.), Springer, 1986, \url{https://www.jmilne.org/math/xnotes/JVs.pdf}.
+\bibitem{ACMV} J. D. Achter, S. Casalaina-Martin and C. Vial, \emph{Parameter spaces for algebraic equivalence}, Int. Math. Res. Not. IMRN (2019), no. 6, 1863--1893.
+\end{thebibliography}
+\end{document}

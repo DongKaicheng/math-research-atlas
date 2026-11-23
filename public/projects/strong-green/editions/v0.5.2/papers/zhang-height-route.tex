@@ -1,0 +1,424 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\usepackage{xcolor,xurl}
+\definecolor{LinkBlue}{HTML}{1F4E79}
+\definecolor{CiteGreen}{HTML}{2F6B3C}
+\definecolor{UrlBrown}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=LinkBlue,citecolor=CiteGreen,urlcolor=UrlBrown,breaklinks=true]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{problem}[theorem]{Problem}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\crefname{hypothesis}{hypothesis}{hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\numberwithin{equation}{section}
+\setlength{\emergencystretch}{3em}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\homol}{\mathrm{hom}}
+\newcommand{\ad}{\mathrm{ad}}
+\newcommand{\hdeg}{\widehat{\operatorname{deg}}}
+\title{Admissible Arithmetic Liftings and\newline Beilinson--Bloch Height Pairings}
+\author{}
+\date{18 November 2026}
+\hypersetup{pdftitle={Admissible Arithmetic Liftings and Beilinson--Bloch Height Pairings},pdfauthor={}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A homologically trivial cycle can be assigned a height by lifting it to an arithmetic model and making the lift orthogonal to vertical cycles. We give a precise lifting criterion for the resulting pairing, prove independence of the lifts, and express the local correction problem as a linear equation on the special fibre. This identifies the point at which Zhang's results on standard conjectures and admissible cycles enter the construction. We also give the degree calculation required for descent from an alteration, distinguish this construction from the stronger problem of producing actual non-Archimedean Green forms, and formulate the remaining problems for general varieties. The product of a curve and a surface is a known case of this route.
+\end{abstract}
+
+\tableofcontents
+
+\section{The height pairing and the lifting problem}\label{sec:zhang-introduction}
+
+Let $F$ be a number field and let $X/F$ be a smooth, projective, geometrically integral variety of dimension $n$. All algebraic cycles have rational coefficients. For $1\leq r\leq n$, put
+\[
+ V^r(X)=\CH^r(X)_{\Q,\homol},\qquad s=n+1-r.
+\]
+Here homological triviality means vanishing of the geometric cycle class; over a number field one may use Betti cohomology after an embedding in $\C$, or the equivalent geometric $\ell$-adic condition. The aim is a geometrically defined pairing
+\begin{equation}\label{eq:zhang-target}
+ h_X:V^r(X)\times V^s(X)\longrightarrow\R.
+\end{equation}
+The codimensions add to $n+1$. Consequently, the intersection of two such cycles is a secondary invariant: it is obtained on a model of arithmetic dimension $n+1$, with a Green current at each infinite place.
+
+Fix initially a regular, flat, projective model
+\[
+ \pi:\mathcal X\longrightarrow\Spec\mathcal O_F
+\]
+with generic fibre $X$. Existence of this model is an assumption whenever it is used. Write $i_v:Y_v\hookrightarrow\mathcal X$ for a finite fibre. A class $a\in\CH^r(\mathcal X)_\Q$ is called a \emph{numerically admissible lifting} of $\alpha\in V^r(X)$ if $a|_X=\alpha$ and
+\begin{equation}\label{eq:zhang-vertical-orthogonality}
+ \deg_{\kappa(v)}\bigl(i_v^*a\cap t\bigr)=0
+ \qquad\bigl(t\in\CH_r(Y_v)_\Q,\ v\text{ finite}\bigr).
+\end{equation}
+The pullback in this formula is the restriction of the operational Chow class determined by $a$ on the regular scheme $\mathcal X$. Thus the definition also applies when $Y_v$ is singular. The test $t$ has dimension $r$, so the displayed degree is the degree of a zero-cycle on $Y_v$.
+
+Zhang's approach obtains these liftings through the algebraic cohomology of degenerate fibres. Its sufficient input is a standard-conjecture statement on the strata of a semistable model. The resulting construction takes place in arithmetic intersection theory; its finite-place data are vertical cycles. The following criterion gives the last step of this route without requiring a canonical choice of lifting.
+
+\begin{theorem}[Pairing from numerically admissible liftings]\label[theorem]{thm:zhang-main}
+Suppose that $\mathcal X$ is as above and that every class of $V^r(X)$ and every class of $V^s(X)$ admits a numerically admissible lifting. Choose such liftings $a,b$ and Green currents at the infinite places with zero curvature, and denote the resulting arithmetic Chow classes by $\widehat a,\widehat b$. Then
+\begin{equation}\label{eq:zhang-arithmetic-height}
+ h_{\mathcal X}(\alpha,\beta)
+ =\frac{1}{[F:\Q]}\hdeg_{\mathcal X}
+       (\widehat a\cdot\widehat b)
+\end{equation}
+is independent of all these choices. It is a rational-bilinear pairing on $V^r(X)\times V^s(X)$, symmetric under interchange of the two complementary factors.
+\end{theorem}
+
+The proof is given in \Cref{sec:zhang-proof-main}. The argument has two parts. Zero archimedean curvature removes the ambiguity in the Green currents, and \eqref{eq:zhang-vertical-orthogonality} removes the ambiguity in the algebraic liftings. The remaining existence problem is therefore to make a lifting satisfy \eqref{eq:zhang-vertical-orthogonality}. \Cref{sec:zhang-correction} expresses this as an explicit equation; \Cref{sec:zhang-standards} explains the input supplied by Zhang's theorems. Model comparison and alteration descent are treated in \Cref{sec:zhang-alterations}.
+
+\section{Arithmetic intersection and independence of liftings}\label{sec:zhang-arithmetic}
+
+We use the arithmetic Chow groups of Gillet--Soul\'e with rational coefficients. Their product is commutative and associative. Write
+\[
+ \zeta:\widehat{\CH}^{\bullet}(\mathcal X)_\Q
+       \longrightarrow\CH^{\bullet}(\mathcal X)_\Q,
+ \qquad
+ \omega_\infty:\widehat{\CH}^{\bullet}(\mathcal X)_\Q
+       \longrightarrow A^{\bullet,\bullet}(X(\C))
+\]
+for the algebraic class and curvature maps, with the usual conjugation condition on the complex forms. For a smooth form $\eta$ modulo $\partial$- and $\bar\partial$-exact forms, the class $a(\eta)$ has zero algebraic component. The facts used below are the exactness at the last two terms of
+\begin{equation}\label{eq:zhang-arithmetic-exact}
+ \widetilde A^{r-1,r-1}(X(\C))
+ \xrightarrow{a}\widehat{\CH}^r(\mathcal X)_\Q
+ \xrightarrow{\zeta}\CH^r(\mathcal X)_\Q\longrightarrow0,
+\end{equation}
+and the identity
+\begin{equation}\label{eq:zhang-form-product}
+ a(\eta)\cdot\widehat b=a\bigl(\eta\wedge\omega_\infty(\widehat b)\bigr).
+\end{equation}
+These are the exact sequence and product properties in \cite[Theorem 3.3.5, Theorem 4.2.3 and \S4.2.11]{GS}. On a projective complex fibre, the $\partial\bar\partial$-lemma gives a Green current with zero curvature for a homologically trivial cycle; the corresponding surjectivity is also contained in \cite[Theorem 3.3.5(iii)]{GS}.
+
+Our convention is
+\[
+ dd^c=\frac{i}{2\pi}\partial\bar\partial,
+ \qquad \omega_\infty(\widehat a)=dd^cg_a+\delta_{a_\C}.
+\]
+Zero curvature therefore means $dd^cg_a=-\delta_{a_\C}$. A scalar principal Green function in this convention is $-\log|f|^2$. The arithmetic degree uses one half of the integral over all complex embeddings: for a top-degree arithmetic cycle $(\xi,g)$,
+\begin{equation}\label{eq:zhang-degree-convention}
+ \hdeg(\xi,g)
+ =\sum_{x\text{ finite}}m_x\log\#\kappa(x)
+   +\frac12\sum_{\sigma:F\hookrightarrow\C}
+      \int_{X_\sigma(\C)}g_\sigma.
+\end{equation}
+This is the degree convention of \cite[\S3.4.3]{GS}. Thus the principal local term at an infinite place is $\tfrac12(-\log|f|^2)=-\log|f|$, with the ordinary, unsquared absolute value. A complex place has two embeddings and hence local degree two.
+
+At a finite place $v\mid p$, let $e_v,f_v$ be its ramification and residue degrees, let $\varpi_v$ be a uniformizer, and use $|p|_p=p^{-1}$. If $I_v$ is a finite intersection degree over $\kappa(v)$, then
+\[
+ \frac{I_v\log\#\kappa(v)}{[F:\Q]}
+ =\frac{[F_v:\Q_p]}{[F:\Q]}
+      I_v(-\log|\varpi_v|_v),
+\]
+since $[F_v:\Q_p]=e_vf_v$. These conventions reconcile \eqref{eq:zhang-arithmetic-height} with a weighted local sum. Its factor $[F:\Q]^{-1}$ gives ground-field invariance under the comparison hypotheses of \Cref{prop:zhang-degree-descent}.
+
+\begin{lemma}[The kernel of restriction to the generic fibre]\label[lemma]{lem:zhang-lift-difference}
+Let $\widehat a,\widehat a'\in\widehat{\CH}^r(\mathcal X)_\Q$ have the same generic algebraic class and zero archimedean curvature. Then
+\[
+ \widehat a'-\widehat a=\widehat u+a(\eta),
+\]
+where $u$ is a finite sum of vertical cycle classes, $\widehat u=(u,0)$, and $dd^c\eta=0$.
+\end{lemma}
+
+\begin{proof}
+The localization sequence for Chow groups shows that $\zeta(\widehat a'-\widehat a)$ is represented by a finite sum of classes supported on finite fibres. Choose such a representative $u$. Its arithmetic lift $(u,0)$ has zero archimedean curvature because $u_\C$ is empty. The difference $\widehat a'-\widehat a-\widehat u$ is in $\ker\zeta$, so \eqref{eq:zhang-arithmetic-exact} represents it as $a(\eta)$. Applying $\omega_\infty$ gives $dd^c\eta=0$.
+\end{proof}
+
+\begin{lemma}[Vanishing against a vertical class]\label[lemma]{lem:zhang-vertical-product}
+If $b\in\CH^s(\mathcal X)_\Q$ is numerically admissible and $u\in\CH^r(\mathcal X)_\Q$ is vertical, then, for any arithmetic lifting $\widehat b$ of $b$,
+\[
+ \hdeg_{\mathcal X}(\widehat u\cdot\widehat b)=0,
+ \qquad \widehat u=(u,0).
+\]
+\end{lemma}
+
+\begin{proof}
+It suffices to consider $u=i_{v*}t$, where $t\in\CH_s(Y_v)_\Q$. The archimedean contribution is zero. By the projection formula on the finite fibre, the finite contribution is
+\[
+ \deg_{\kappa(v)}(i_v^*b\cap t)\log\#\kappa(v),
+\]
+which vanishes by \eqref{eq:zhang-vertical-orthogonality} applied in codimension $s$.
+\end{proof}
+
+\subsection{Proof of the pairing criterion}\label{sec:zhang-proof-main}
+
+\begin{proof}[Proof of \Cref{thm:zhang-main}]
+Choose numerically admissible algebraic liftings of $\alpha$ and $\beta$. Their complex cycle classes vanish, so zero-curvature Green currents exist. This produces $\widehat a$ and $\widehat b$ as in the statement.
+
+If $\widehat a'$ is a second choice, \Cref{lem:zhang-lift-difference} writes its difference from $\widehat a$ as $\widehat u+a(\eta)$. The contribution of $\widehat u$ to the arithmetic degree vanishes by \Cref{lem:zhang-vertical-product}. Since $\omega_\infty(\widehat b)=0$, equation \eqref{eq:zhang-form-product} shows that $a(\eta)\cdot\widehat b=0$. This proves independence in the first factor. Commutativity of the arithmetic product proves independence in the second factor by the same argument.
+
+For additivity, if $\widehat a_1$ and $\widehat a_2$ lift $\alpha_1$ and $\alpha_2$, then $\widehat a_1+\widehat a_2$ is an admissible zero-curvature lifting of $\alpha_1+\alpha_2$. The product is additive and the value is independent of the chosen lift. Rational homogeneity follows in the same way. The inputs are already classes in the generic Chow groups: replacing a cycle representative by a rationally equivalent one changes neither $\alpha$ nor $\beta$. Finally, commutativity of the arithmetic product gives symmetry under interchange of complementary factors.
+\end{proof}
+
+The proof shows why uniqueness of the lifting is unnecessary. The possible differences of two liftings lie in subspaces that pair trivially with the chosen complementary lift. The height is canonical even when the lift itself is not.
+
+\section{The equation for a vertical correction}\label{sec:zhang-correction}
+
+We now work over a discrete valuation ring $R$ with fraction field $K$ and residue field $k$. Let $\mathcal Y/R$ be regular, flat and projective of relative dimension $n$, let $j:Y\hookrightarrow\mathcal Y$ be the generic fibre, and let $i:Y_0\hookrightarrow\mathcal Y$ be the special fibre. Fix $r$ and set $s=n+1-r$.
+
+For $a\in\CH^r(\mathcal Y)_\Q$, define its intersection functional on the special fibre by
+\[
+ \ell_a:\CH_r(Y_0)_\Q\longrightarrow\Q,
+ \qquad
+ \ell_a(t)=\deg_k(i^*a\cap t).
+\]
+A vertical correction to $a$ is $i_*u$ with $u\in\CH_s(Y_0)_\Q$. Let
+\begin{equation}\label{eq:zhang-correction-map}
+ M_r:\CH_s(Y_0)_\Q\longrightarrow
+       \Hom_\Q(\CH_r(Y_0)_\Q,\Q),
+ \qquad
+ M_r(u)=\ell_{i_*u}.
+\end{equation}
+Then $a+i_*u$ is numerically admissible precisely when
+\begin{equation}\label{eq:zhang-correction-equation}
+ M_r(u)=-\ell_a.
+\end{equation}
+This is an equality of functionals on all vertical tests of the required dimension.
+
+\begin{proposition}[An obstruction independent of the extension]\label[proposition]{prop:zhang-numerical-obstruction}
+For $\alpha\in\CH^r(Y)_\Q$, choose any extension $a\in\CH^r(\mathcal Y)_\Q$. The coset
+\begin{equation}\label{eq:zhang-numerical-obstruction}
+ \kappa^r_{\mathcal Y}(\alpha)
+ :=[\ell_a]\ \in\
+ \Hom_\Q(\CH_r(Y_0)_\Q,\Q)/\im M_r
+\end{equation}
+is independent of $a$ and is rational-linear in $\alpha$. It vanishes if and only if $\alpha$ has a numerically admissible extension on $\mathcal Y$.
+\end{proposition}
+
+\begin{proof}
+An extension exists by taking the closure of a cycle representative. If $a'$ is another extension, localization gives $a'-a=i_*u$ for some $u\in\CH_s(Y_0)_\Q$. Hence $\ell_{a'}-\ell_a=M_r(u)$ and the coset is unchanged. For a sum or a rational multiple of generic classes, the corresponding sum or multiple of extensions computes the sum or multiple of the cosets. Finally, \eqref{eq:zhang-correction-equation} is solvable exactly when the coset is zero.
+\end{proof}
+
+This obstruction concerns numerical intersection on the special fibre of the chosen model. Its target and defining map differ from the actual Bott--Chern obstruction used in the Green-form route. A relation between them requires a comparison construction.
+
+The correction can sometimes be computed in finite-dimensional quotients of the cycle groups. The next criterion records exactly what a matrix calculation then proves.
+
+\begin{lemma}[Solvability of a finite intersection system]\label[lemma]{lem:zhang-linear-system}
+Let $U,W$ be finite-dimensional rational vector spaces, let $B:U\times W\to\Q$ be bilinear, and let $\ell\in W^\vee$. There exists $u\in U$ with $B(u,w)=-\ell(w)$ for every $w\in W$ if and only if
+\[
+ \ell(w)=0\quad\text{for every }w\in W
+ \text{ such that }B(U,w)=0.
+\]
+When a solution exists, its set of solutions is one coset of $\{u\in U:B(u,W)=0\}$.
+\end{lemma}
+
+\begin{proof}
+Let $M:U\to W^\vee$ be the map induced by $B$. Its transpose is $M^\vee:W\to U^\vee$. Finite-dimensional duality gives
+\[
+ \im M=(\ker M^\vee)^\perp.
+\]
+Indeed, the inclusion follows by evaluation, and both sides have dimension $\operatorname{rank}M$. Thus $-\ell$ belongs to $\im M$ exactly under the stated annihilation condition. The difference of any two solutions belongs to $\ker M$, and adding an element of $\ker M$ to a solution gives another solution.
+\end{proof}
+
+To apply this lemma to \eqref{eq:zhang-correction-equation}, the functionals and intersection map must factor through the chosen finite-dimensional spaces, and those spaces must retain every required test. A nondegenerate matrix for selected components alone settles only the equation on their span. The geometric issue is to identify a quotient that computes the full correction problem.
+
+\section{Standard conjectures and the harmonic decomposition}\label{sec:zhang-standards}
+
+The local sufficient input in Zhang's construction is a statement about algebraic cohomology classes, not a positivity assumption on the desired height. For a smooth projective variety $T/k$ of dimension $d$, let $A^q(T)$ be the image of its rational cycle-class map, and let $L$ be intersection with an ample class. The relevant standard conjectures assert
+\begin{equation}\label{eq:zhang-standard-lefschetz}
+ L^{d-2q}:A^q(T)\xrightarrow{\sim}A^{d-q}(T)
+ \qquad(2q\leq d)
+\end{equation}
+and positivity of
+\begin{equation}\label{eq:zhang-standard-hodge}
+ (-1)^q\deg_T(x\cdot L^{d-2q}x)
+ \qquad
+ \left(0\ne x\in\ker\bigl(L^{d-2q+1}:A^q(T)\to A^{d-q+1}(T)\bigr)\right).
+\end{equation}
+These conditions concern smooth projective varieties over residue fields. The Lefschetz operator on the generic Chow group of $X$ and positivity of the global height are separate questions.
+
+\begin{theorem}[Zhang's local lifting theorem]\label[theorem]{thm:zhang-local-input}
+Let $R$ be the completion of the maximal unramified extension of a complete discrete valuation ring $R_0$ whose residue field is of finite type over its prime field. Let $\mathcal Y/R$ be regular, flat and projective with smooth generic fibre, descended from a model over $R_0$. If $\mathcal Y$ is strictly semistable and the standard conjectures \eqref{eq:zhang-standard-lefschetz}--\eqref{eq:zhang-standard-hodge} hold on every geometric stratum of its special fibre, then the base change of every homologically trivial generic cycle defined over $\operatorname{Frac}(R_0)$ has a zero-curvature lifting in the algebraic-cohomology cycle theory, and hence a numerically admissible lifting on $\mathcal Y$.
+\end{theorem}
+
+This is the combination of \cite[Theorem 1.5.1 and Proposition 1.6.3]{ZhangStandard}, applied to the descended cycle data needed here. The first result supplies the local duality and Lefschetz properties; the second supplies the zero-curvature lifting. The general alteration statement is \cite[Theorem 1.6.4]{ZhangStandard}. These are external inputs to the present article.
+
+The linear mechanism can be isolated without reproducing the local cohomology theory. In the following lemma $C$ is a curvature space, $U$ parametrizes vertical corrections, and the quotient $C/\im M$ measures the part not changed by such corrections.
+
+\begin{lemma}[Correction using a harmonic complement]\label[lemma]{lem:zhang-harmonic-correction}
+Let $E,U,C,H$ be rational vector spaces with maps
+\[
+ i_*:U\to E,\qquad \omega:E\to C,\qquad
+ \rho:E\to H.
+\]
+Put $M=\omega i_*$ and assume $\rho i_*=0$. Suppose
+\[
+ C=\im M\oplus C_{\mathrm{har}}
+\]
+and that there are maps $\operatorname{sp}:C\to H$ and $j:C_{\mathrm{har}}\to H$ such that $\operatorname{sp}$ vanishes on $\im M$, its restriction is $j$, $j$ is injective, and $\operatorname{sp}\omega=\rho$. Then every $e\in E$ with $\rho(e)=0$ can be corrected by $i_*u$ to have zero curvature.
+\end{lemma}
+
+\begin{proof}
+Decompose $\omega(e)=c_\varphi+c_{\mathrm{har}}$. Choose $u\in U$ with $M(u)=-c_\varphi$. Then $\omega(e+i_*u)=c_{\mathrm{har}}$. Applying $\operatorname{sp}$ gives
+\[
+ j(c_{\mathrm{har}})=\rho(e+i_*u)=\rho(e)=0.
+\]
+Injectivity of $j$ implies $c_{\mathrm{har}}=0$.
+\end{proof}
+
+This calculation separates two necessities: a decomposition that allows removal of the vertical part, and detection of the remaining part by the geometric generic cycle class. Establishing a decomposition alone does not prove that a homologically trivial cycle has zero curvature. In the local theory these properties are supplied together by the cited results.
+
+At a finite place of a number field, the generic cycle and its initial closure are defined over the original local field. The vertical correction is represented by cycles on the geometric special fibre. These representatives descend to a finite extension of the residue field. Averaging over a finite Galois extension and dividing by its degree gives a descended rational vertical correction; Galois compatibility of the curvature equation preserves its vanishing. This is the passage to invariant cycle classes used in \cite[\S2.1]{ZhangStandard}.
+
+\section{Alterations and normalization of the height}\label{sec:zhang-alterations}
+
+The use of an alteration has two distinct purposes. It can provide a regular semistable model on which the local correction equation is solvable, and it can allow the height of a class on $X$ to be computed upstairs. The second purpose requires compatibility of the pairing with pushforward and pullback.
+
+\begin{hypothesis}[Projection formula on the models used]\label[hypothesis]{hyp:zhang-model-projection}
+For each proper generically finite morphism of regular arithmetic models used in the construction, suppose that pullback, pushforward and intersection are defined in the applicable arithmetic intersection theory, preserve zero archimedean curvature where required, satisfy the projection formula, and have $f_*f^*=D$ on the relevant classes, where $D$ is the generic degree as a morphism over $F$. Suppose also that a vertical class pushes forward to a vertical class, and that pullback preserves numerical admissibility by this projection formula.
+\end{hypothesis}
+
+These are the precise functorial operations needed in the next calculation. They may be supplied by the classical model height theory on its domain. For a proposed new class of models they must be checked there, especially when a morphism is not flat.
+
+\begin{proposition}[Degree-normalized descent]\label[proposition]{prop:zhang-degree-descent}
+Let $F'/F$ be finite and let $f:Y\to X_{F'}$ be a proper generically finite morphism of smooth projective geometrically integral varieties of geometric degree $d$. Assume compatible regular models for the resulting morphism $Y\to X$, the lifting hypotheses of \Cref{thm:zhang-main} on these models, and \Cref{hyp:zhang-model-projection}. Then
+\begin{equation}\label{eq:zhang-degree-scaling}
+ h_Y(f^*\alpha,f^*\beta)=d\,h_X(\alpha,\beta)
+ \qquad(\alpha\in V^r(X),\ \beta\in V^s(X)),
+\end{equation}
+where both heights use the normalization by the degree of their own ground number field. In particular, a finite extension of the ground field with $d=1$ leaves the normalized height unchanged.
+\end{proposition}
+
+\begin{proof}
+Choose admissible zero-curvature arithmetic liftings $\widehat a,\widehat b$ downstairs. By the hypothesis their pullbacks are admissible liftings upstairs. The generic degree of the composite $Y\to X$ as an $F$-morphism is
+\[
+ D=d[F':F].
+\]
+The arithmetic projection formula gives
+\[
+ \hdeg_{\mathcal Y}(f^*\widehat a\cdot f^*\widehat b)
+ =\hdeg_{\mathcal X}(\widehat a\cdot f_*f^*\widehat b)
+ =D\hdeg_{\mathcal X}(\widehat a\cdot\widehat b).
+\]
+Divide by $[F':\Q]=[F':F][F:\Q]$. This yields \eqref{eq:zhang-degree-scaling}.
+\end{proof}
+
+One can also define the height on $X$ using a class of alterations for which the pairing is already known, without assuming a regular model of $X$ itself.
+
+\begin{proposition}[Independence of a dominating alteration]\label[proposition]{prop:zhang-common-alteration}
+Suppose a nonempty collection of proper generically finite maps $f:Y\to X_{F'}$, with $F'/F$ finite, has the following properties. Each $Y$ has a rational-bilinear height pairing on the relevant homologically trivial Chow groups. Any two maps admit a third map in the collection that dominates them after a common finite extension. The pairings are invariant under ground-field extension and obey the degree-scaling formula for each dominating map. Then
+\begin{equation}\label{eq:zhang-alteration-definition}
+ h_X(\alpha,\beta)=\frac{1}{\deg(f:Y\to X_{F'})}
+ h_Y(f^*\alpha,f^*\beta)
+\end{equation}
+is independent of the alteration and is rational-bilinear. Symmetry descends if it holds upstairs.
+\end{proposition}
+
+\begin{proof}
+Base-change invariance allows us to put two choices $f_i:Y_i\to X$ over the same field. Let $q_i:Z\to Y_i$ be a common dominating choice and put $h=f_iq_i$. Write $d_i=\deg f_i$ and $e_i=\deg q_i$. Degree multiplicativity gives $\deg h=d_ie_i$. Therefore
+\[
+ \frac{1}{d_i}h_{Y_i}(f_i^*\alpha,f_i^*\beta)
+ =\frac{1}{d_ie_i}h_Z(h^*\alpha,h^*\beta).
+\]
+The right side is independent of $i$. This proves choice independence. Pullback and the upstairs pairing are rational-linear, which proves bilinearity; symmetry follows by interchanging the two arguments.
+\end{proof}
+
+This proposition isolates the comparison needed when a regular model is reached by alteration. Producing an upstairs intersection number supplies a candidate; the projection formula and a common dominating alteration establish that it depends only on the original cycle classes.
+
+\section{The product of a curve and a surface}\label{sec:zhang-known-case}
+
+\begin{theorem}[Zhang]\label[theorem]{thm:zhang-curve-surface}
+Let $C/F$ be a smooth projective geometrically connected curve and $S/F$ a smooth projective geometrically connected surface, with $F$ a number field. For $X=C\times_F S$, the classical construction gives a Beilinson--Bloch height pairing
+\[
+ \CH^2(X)_{\Q,\homol}\times\CH^2(X)_{\Q,\homol}\longrightarrow\R.
+\]
+\end{theorem}
+
+The source is \cite[\S5, Theorem 5.1 and the alteration argument following Remark 5.2]{ZhangProduct}. In the semistable case, the special-fibre components are controlled by the product geometry and suitable blow-ups; the required standard conjectures hold. The general case is obtained by finite extension, alterations of the two factors, and the normalized projection formula. These results provide a worked instance of the route, with the geometric input established rather than assumed.
+
+For the general existence problem, this example suggests a concrete method: identify a class of smooth varieties that can occur as strata of a useful model, prove the required intersection-theoretic assertions for that class, and verify stability under the blow-ups used in the model construction. The difficulty lies in the algebraic cohomology of the resulting strata. Dimension and smoothness alone do not supply the inverse Lefschetz maps in \eqref{eq:zhang-standard-lefschetz}.
+
+\section{A research programme for general varieties}\label{sec:zhang-programme}
+
+The final target remains \eqref{eq:zhang-target} for all smooth projective $X/F$ and all complementary codimensions. The local and global tasks below have different outputs and can be pursued separately.
+
+\begin{problem}[Numerically admissible liftings]\label[problem]{problem:zhang-liftings}
+For each relevant regular projective model $\mathcal Y/R$ and each $\alpha\in V^r(Y)$, prove
+\[
+ \kappa^r_{\mathcal Y}(\alpha)=0,
+\]
+with $\kappa^r_{\mathcal Y}$ defined by \eqref{eq:zhang-numerical-obstruction}; impose the same requirement in the complementary codimension $s=n+1-r$. If the construction is performed after alteration or finite extension, establish the descent hypotheses of \Cref{prop:zhang-common-alteration} for the chosen class of alterations.
+\end{problem}
+
+This is the direct lifting problem. A solution in both degrees supplies the algebraic input of \Cref{thm:zhang-main}. The zero-curvature complex Green currents then exist by the classical $\partial\bar\partial$-lemma. No choice of a preferred lifting is needed for the resulting pairing.
+
+\begin{problem}[Standard conjectures on the required strata]\label[problem]{problem:zhang-strata}
+Construct semistable alterations for the varieties under consideration and establish \eqref{eq:zhang-standard-lefschetz} and \eqref{eq:zhang-standard-hodge} for every geometric stratum needed in \Cref{thm:zhang-local-input}. Track the polarizations and prove that the assertions remain valid under the modifications used to obtain the model.
+\end{problem}
+
+This is a sufficient approach to \Cref{problem:zhang-liftings}. The residual difficulty is an algebraicity and intersection problem on the strata. One may instead try to solve \eqref{eq:zhang-correction-equation} directly for the curvatures arising from homologically trivial generic cycles. By \Cref{prop:zhang-numerical-obstruction}, that restricted vanishing suffices even if one has not established a full decomposition for every algebraic cohomology class.
+
+\begin{problem}[An explicit description of the correction]\label[problem]{problem:zhang-calculation}
+Find finite-dimensional quotients through which the full intersection functional $\ell_a$ and correction map $M_r$ factor, and determine their kernels and images. Prove that the generic homological-triviality condition annihilates the right kernel in \Cref{lem:zhang-linear-system}. Give the correction in a form compatible with pullback, proper pushforward and change of the model whenever those operations are used.
+\end{problem}
+
+This formulation distinguishes computing the relevant linear system from assuming its solvability. The right-kernel condition is the part that must follow from geometry. A presentation of the matrix without that vanishing leaves the existence problem unchanged.
+
+For the following comparison, let $\mathcal B^{p,q}$ be the ordinary sheaf of actual $\delta$-forms used in the direct Green-form programme \cite[\S1]{GreenRoute}. The word actual specifies a section on the ordinary Berkovich topology, with equality tested against all forms in the indicated sheaf.
+
+\begin{problem}[Comparison with actual Green forms]\label[problem]{problem:zhang-green-comparison}
+Fix the original valued field $K/\Q_p$, a smooth projective $X/K$, and a prescribed homologically trivial cycle $Z$ of codimension $r$. Starting from a numerically admissible model lifting, construct a form
+\[
+ \gamma_Z\in\mathcal B^{r-1,r-1}
+ \bigl(X^{\an}\setminus|Z|^{\an}\bigr)
+\]
+such that the following integrals exist and satisfy
+\[
+ \int_{X^{\an}\setminus|Z|^{\an}}\gamma_Z\wedge d'd''\eta
+ =-\int_{Z^{\an}}\eta
+ \qquad
+ \bigl(\eta\in\mathcal B_c^{n-r,n-r}(X^{\an})\bigr).
+\]
+Prove the identity over the original absolute value and show that the resulting local intersection agrees with the model local height, with the same normalization.
+\end{problem}
+
+This comparison is an additional analytic problem. The lifting criterion establishes a number by arithmetic intersection; it does not supply a representative in $\mathcal B$ or its identity on all actual tests. Conversely, a form construction must still satisfy the arithmetic transformation and reciprocity laws before its global sum can be compared with \eqref{eq:zhang-arithmetic-height}.
+
+Finally, Zhang's $L$-lifting of general Chow classes is a stronger, polarization-dependent construction. His splitting theorem \cite[Theorem 2.2.1]{ZhangStandard} uses additional arithmetic standard-conjecture hypotheses. The existence programme here concerns the homologically trivial factors in \eqref{eq:zhang-target}. Once their pairing exists, arithmetic Lefschetz, positivity and finiteness can be formulated as further problems for that pairing.
+
+\begin{thebibliography}{9}
+
+\bibitem{GS}
+H. Gillet and C. Soul\'e,
+\emph{Arithmetic intersection theory},
+Publications Math\'ematiques de l'IH\'ES \textbf{72} (1990), 93--174.
+\url{https://doi.org/10.1007/BF02699132}.
+
+\bibitem{ZhangStandard}
+S.-W. Zhang,
+\emph{Standard conjectures and height pairings},
+Pure and Applied Mathematics Quarterly \textbf{18} (2022), no. 5, 2221--2278.
+Numbered references in this article use arXiv:2009.07089v3.
+\url{https://arxiv.org/abs/2009.07089v3}.
+
+\bibitem{ZhangProduct}
+S.-W. Zhang,
+\emph{Height pairings for algebraic cycles on the product of a curve and a surface},
+Tunisian Journal of Mathematics \textbf{6} (2024), no. 3, 481--501.
+\url{https://doi.org/10.2140/tunis.2024.6.481}.
+The cited preprint version is arXiv:2111.10276v4.
+\url{https://arxiv.org/abs/2111.10276v4}.
+
+\bibitem{GreenRoute}
+\emph{Zero-Curvature Green Forms and Beilinson--Bloch Height Pairings},
+companion research programme, 18 November 2026.
+\url{https://dongkaicheng.github.io/math-research-atlas/projects/strong-green/editions/v0.5.1/papers/green-height-route/}.
+
+\end{thebibliography}
+\end{document}

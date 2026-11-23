@@ -74,6 +74,14 @@ function published(href) {
   return project + pathname.replace(/\/$/, '') + (/\.[A-Za-z\d]+$/.test(pathname) ? '' : '/') + suffix;
 }
 
+function assertNoCurrentMapRuntime(html) {
+  // A frozen introduction can cite the maintained reading map. It must not
+  // load that map's current assets or embed its interactive diagram surface.
+  const resources = [...html.matchAll(/<(?:link|script)\b[^>]*\b(?:href|src)=["']([^"']+)["']/gi)].map(match => match[1]);
+  assert.deepEqual(resources.filter(url => /\/(?:research-map|logic-tree|progress-proofs)\.(?:css|js)(?:[?#]|$)/.test(url)), [], 'No current-only map CSS or JavaScript in the frozen edition');
+  assert.deepEqual([...html.matchAll(/\bdata-(?:research-map|logic-forest|logic-tree|logic-panel|complete-logical-diagram|diagram-scroll|diagram-zoom-controls)\b/g)].map(match => match[0]), [], 'No current map or logic canvas embedded in the frozen edition');
+}
+
 test('Logical map has six scoped, source-backed trees and does not promote registered statuses', () => {
   assert.equal(validateLogicalMap(entries).trees, 6);
   assert.ok(gates.length >= 20);
@@ -178,7 +186,7 @@ test('Six top-down graphs remain visible before the index with complete linked d
   assert.doesNotMatch(html.slice(html.indexOf('data-logic-forest'),html.indexOf('<details class="map-reference-index"')), /data-logic-expand|data-logic-overview/);
   assert.ok(html.includes(`${project}/assets/logic-tree.css`));
   const frozen = await read(`dist/projects/strong-green/editions/${revision}/index.html`);
-  assert.doesNotMatch(frozen, /logic-tree\.css|logical-map/);
+  assertNoCurrentMapRuntime(frozen);
 });
 
 test('A supplementary record hash opens the enclosing index as well as its branch', async () => {
@@ -264,7 +272,7 @@ test('Current map resources are content-versioned so cached topic assets cannot 
     assert.ok(html.includes(`${project}/assets/${name}?v=${fingerprint}`), name);
   }
   const frozen = await read(`dist/projects/strong-green/editions/${revision}/index.html`);
-  assert.doesNotMatch(frozen, /research-map|logic-tree/);
+  assertNoCurrentMapRuntime(frozen);
 });
 
 test('The complete SVG contains every permanent record as a scoped node, rule or definition', async () => {

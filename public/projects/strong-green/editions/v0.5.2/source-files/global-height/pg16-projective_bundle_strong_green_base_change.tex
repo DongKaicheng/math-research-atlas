@@ -1,0 +1,269 @@
+% Round 16. New actual-base-change and exact-support strong-G statements.
+% Activated after independent trace-branch review; no converse G => obstruction zero.
+\section{Projective-bundle base change and exact strong Green stability}
+\label{r16pg:section}
+
+The coordinate base-change theorem OUT16.16 extends to an arbitrary
+algebraic testing map from a smooth variety. The finite-flat identity
+H16.1, rather than a base-change rule for arbitrary currents, supplies
+the additional descent step. This yields a statement about an arbitrary
+strong Green form; its hypothesis need not be certified by a vanishing
+actual Bott--Chern obstruction.
+The mathematical source passed independent trace-branch review at
+SHA256 \texttt{2a917991d0511756587e8a834feeb586fd509346bcc5a9230b259101dd9e219e};
+the audit is
+\path{round16/higher_trace/projective_strong_green_base_change_independent_audit.md}.
+Only this activation notice differs from that reviewed version.
+
+\begin{theorem}[Actual projective-bundle integration under a smooth testing map]
+\label{r16pg:base-change}
+Let $X/K$ be smooth geometrically integral, let $N$ be an algebraic
+vector bundle of rank $m+1$, and let $\pi:E=\mathbf P_X(N)\to X$.
+Let $a:M\to X$ be any algebraic morphism with $M$ smooth integral,
+and form the Cartesian square with $E_M$, $\pi_M$ and $a_E$.
+For every ordinary open $U\subset X^{\rm an}$ and every
+$\alpha\in B^{p,q}(E_U)$, $p,q\geq0$, one has
+\[
+ a^*(I_\pi\alpha)=I_{\pi_M}(a_E^*\alpha)
+ \quad\text{on }(a^{\rm an})^{-1}U.
+ \tag{PG16.1}\label{r16pg:bc}
+\]
+Both sides are ordinary actual forms; negative output degrees mean
+zero. The map $a$ need not be smooth, flat, dominant or an immersion.
+The construction retains the original $K$-weights and full degrees.
+\end{theorem}
+
+\begin{proof}
+First take $E=X\times\mathbf P^1$. Fix $y\in M^{\rm an}$ and
+choose one original AD construction for $\alpha$ around $a(y)$.
+Keep its entire finite etale splitting cover
+$q:U'\to U_0$, of full degree $e$, all its root functions and
+difference units, its neutral horizontal cutoff $\rho$, and its
+supplied split presentation
+\[
+ \rho\alpha'=t_{(b,w)}^\star\omega,
+ \qquad
+ \beta'=t_b^\star\operatorname{pr}_*(\Gamma_s\wedge\omega).
+ \tag{PG16.2}\label{r16pg:supplied}
+\]
+The ordinary opens here are restrictions of the algebraic finite
+etale cover in AD. If that cover is disconnected, retain each of
+its integral components and sum their traces. Its total degree
+is $e$. Its output downstairs is $e^{-1}\operatorname{Tr}_q\beta'$.
+
+Pull this entire data to $M$. Around $y$ choose a compact working
+neighborhood inside $a^{-1}U_0$; there is no claim that the full
+inverse image of the original compact neighborhood is compact.
+The pulled cover is finite etale, hence its components are smooth
+and already normal, and its total degree is still $e$.
+Every difference unit remains a unit, every strict numerical
+domain margin is preserved, and the pulled roots remain distinct.
+The actual identity in \eqref{r16pg:supplied} pulls back literally.
+The same cutoff removes tubes on which the pulled input is a
+pullback from the new base: this follows by pulling the original
+retraction-germ identity. Its neutral-excision proof therefore
+works with every actual target factor on that new base, by OUT16.2.
+
+Apply the supplied-presentation UG theorem on each component of
+the pulled cover. It computes the output using exactly the same
+Euclidean coefficient $\operatorname{pr}_*(\Gamma_s\wedge\omega)$,
+now pulled through the base units $a^*b$. No full-rank condition
+on this initially supplied unit tuple is required. Append all
+new target test and localization moments before the refined-cycle
+calculation. The refined base cycle lies in the same universal
+root-difference fan times the extra base-coordinate space; UG15.4
+applies to every such cycle with its native weight. The source
+has relative weight one by FT15.7. Thus the identical coefficient
+has all the prescribed smooth-test pairings on the new base, and
+OUT16.1--OUT16.6 give the full actual-test and target-factor
+identities there. This is an actual representative construction,
+not restriction of a pushforward current to the image of $a$.
+The degree-zero-output case uses the same ambient formula and
+is covered by OUT16.3.
+
+It remains to descend. Apply H16.1 to each integral component of
+the original finite etale cover and the smooth testing map $a$.
+Every pulled component has generic length one; the sum of all
+its native degrees is the original degree. Consequently
+\[
+ a^*\bigl(e^{-1}\operatorname{Tr}_q\beta'\bigr)
+   =e^{-1}\sum_j\operatorname{Tr}_{q_j}(a_j^*\beta').
+ \tag{PG16.3}\label{r16pg:descent}
+\]
+The right side is exactly the local AD/UG formula for the new
+projective-line output. This proves \eqref{r16pg:bc} locally for
+the line, hence everywhere by ordinary actual uniqueness.
+
+For $X\times\mathbf P^m$, use the same finite symmetric map
+$(\mathbf P^1)^m\to\mathbf P^m$ of full degree $m!$ and iterate
+the line construction OUT16.12. At each stage the testing map
+is $a$ times the identity on the remaining projective factors.
+Its target is geometrically integral and its source is smooth
+integral, so the proved line identity applies. Pullback commutes
+with the symmetric map as a genuine algebraic Cartesian diagram;
+the normalizing degree is unchanged. The rank-one case is the
+identity. Algebraic local trivializations of $N$, restriction
+compatibility, and actual uniqueness give the asserted bundle
+formula. No step selects one sheet of a finite cover.
+\end{proof}
+
+\begin{lemma}[Restriction of the actual output to a cycle]
+\label{r16pg:cycle}
+Assume $X$ and $E$ are projective. For a specified rational
+codimension-$r$ cycle $Z$ on $X$, put $Z_E=\pi^*Z$ (flat
+algebraic pullback). Then for every actual form
+$\eta\in B^{n+m-r,n+m-r}(E^{\rm an})$, where $n=\dim X$,
+\[
+                  \int_Z I_\pi\eta=\int_{Z_E}\eta.
+ \tag{PG16.4}\label{r16pg:cycle-eq}
+\]
+The formula uses the specified prime coefficients, including
+native constant-field degrees. It does not posit a projective-
+bundle actual operator on a singular base.
+\end{lemma}
+
+\begin{proof}
+It suffices to take $Z$ integral. Let $Z^\circ$ be its dense
+smooth algebraic locus. The restriction of $I_\pi\eta$ to $Z$
+is an actual top form; the restriction of $\eta$ to
+$E_Z=E\times_X Z$ is also top degree. By top-degree support
+avoidance both forms vanish on ordinary neighborhoods of the
+respective proper algebraic closed subsets $Z\setminus Z^\circ$
+and $E_Z\setminus E_{Z^\circ}$. Their supports are therefore
+compact subsets of the displayed smooth loci, since $Z$ and
+$E_Z$ are proper. The map $Z^\circ\to X$ is a testing map
+permitted by Theorem~\ref{r16pg:base-change}; it identifies the
+first top form with the actual projective-bundle output of the
+second on $Z^\circ$. Use OUT16.11 there, inserting a compact
+ordinary smooth scalar equal to one near the proper projection
+of the second support and the first support. This gives
+\eqref{r16pg:cycle-eq}. Smooth geometrically integral projective
+fibers make $E_Z$ integral, with generic flat multiplicity one.
+Linearity proves the statement for rational cycles. No removal
+changes a top integral or a native cycle coefficient.
+\end{proof}
+
+\begin{theorem}[Exact strong G is stable in both directions under a projective bundle]
+\label{r16pg:strong-G}
+Let $X/K$ be smooth projective geometrically integral of dimension
+$n$, let $\pi:E=\mathbf P_X(N)\to X$ have relative dimension $m$,
+and let $Z$ be a specified rational cycle of codimension
+$1\leq r\leq n$. Put $Z_E=\pi^*Z$. Then
+\[
+                         G_X(Z)\quad\Longleftrightarrow\quad G_E(Z_E).
+ \tag{PG16.5}\label{r16pg:G-equivalence}
+\]
+Here both statements mean ordinary actual Green forms on the exact
+specified support complement, with zero curvature against every
+compact actual test over the original $K$. No obstruction-vanishing
+hypothesis is imposed.
+
+More precisely, if $\gamma_Z$ is any such form downstairs, then
+$\pi^*\gamma_Z$ is one upstairs. Conversely, choose any PWS metric
+on $\mathcal O_E(1)$, put $\xi=c_1(\overline{\mathcal O_E(1)})$,
+and, for any strong form $\gamma_{Z_E}$ upstairs, put
+\[
+      \gamma_Z=I_{\pi|_{X\setminus|Z|}}
+                         (\xi^m\wedge\gamma_{Z_E}).
+ \tag{PG16.6}\label{r16pg:descent-G}
+\]
+This is a strong form downstairs. For $m=0$ both constructions are
+the identity, with $\xi^0=1$.
+\end{theorem}
+
+\begin{proof}
+The flat inverse image of an integral prime cycle is integral,
+and inverse images of distinct primes are distinct. Hence
+$|Z_E|=\pi^{-1}|Z|$ even for signed rational coefficients written
+after cancellation. This proves that genuine actual pullback and
+the displayed bundle operator have exactly the required domains.
+
+For ascent take an arbitrary compact actual test
+$\eta\in B_c^{n+m-r,n+m-r}(E^{\rm an})$. The support of $D\eta$
+avoids $|Z_E|$ by degree. Its proper image is a compact subset of
+$X\setminus|Z|$, and the support property of the actual operator
+places $I_\pi D\eta$ there. The projection formula, full actual
+adjunction and differential commutation give
+\[
+ \begin{split}
+ \int_{E\setminus|Z_E|}\pi^*\gamma_Z\wedge D\eta
+   &=\int_{X\setminus|Z|}\gamma_Z\wedge I_\pi D\eta\\
+   &=\int_{X\setminus|Z|}\gamma_Z\wedge D(I_\pi\eta)\\
+   &=-\int_Z I_\pi\eta
+    =-\int_{Z_E}\eta.
+ \end{split}
+ \tag{PG16.7}\label{r16pg:ascent-pairing}
+\]
+For the first equality insert an ordinary smooth compact scalar
+equal to one near the projection of $\operatorname{supp}D\eta$;
+this makes the target factor a permitted compact actual test.
+The strong identity downstairs applies to the global compact
+actual form $I_\pi\eta$. The last equality is
+Lemma~\ref{r16pg:cycle}. Thus the assertion is on the full actual
+test space, not just tests pulled back from $X$.
+
+For descent, the frozen Chern-degree lemma PC6 applied to the
+projective map $\pi$ and $\xi^m$ gives
+\[
+                             I_\pi(\xi^m)=1.
+ \tag{PG16.8}\label{r16pg:unit}
+\]
+Indeed, its pairing with every compact actual top test is the
+algebraic pushforward
+$\pi_*(c_1(\mathcal O_E(1))^m\cap[E])=[X]$, and actual-current
+injectivity identifies the scalar output with one. Both $d'\xi$
+and $d''\xi$ vanish. For an arbitrary
+$\eta\in B_c^{n-r,n-r}(X^{\rm an})$, bundle adjunction and the
+upstairs strong identity therefore give
+\[
+ \begin{split}
+ \int_{X\setminus|Z|}\gamma_Z\wedge D\eta
+   &=\int_{E\setminus|Z_E|}\gamma_{Z_E}
+                                  \wedge D(\xi^m\wedge\pi^*\eta)\\
+   &=-\int_{Z_E}\xi^m\wedge\pi^*\eta\\
+   &=-\int_Z I_\pi(\xi^m\wedge\pi^*\eta)
+    =-\int_Z\eta.
+ \end{split}
+ \tag{PG16.9}\label{r16pg:descent-pairing}
+\]
+The source test in the first line has degree
+$(n+m-r,n+m-r)$ and is compact by projectivity. Its derivative
+has support outside the polar set. The last two equalities use
+Lemma~\ref{r16pg:cycle}, the all-actual projection formula, and
+\eqref{r16pg:unit}. This also verifies every degree and support
+requirement for the displayed actual representative.
+\end{proof}
+
+\begin{corollary}[Preservation of the finite-intersection P property by flat pullback]
+\label{r16pg:P}
+In Theorem~\ref{r16pg:strong-G}, suppose the chosen $\gamma_Z$
+satisfies the finite-intersection identity H16.7 for every normal
+integral quasiprojective $r$-dimensional testing map to $X$.
+Then $\pi^*\gamma_Z$ satisfies the same property for $Z_E$ on $E$.
+The same assertion holds for the stronger proper-intersection
+identity HP16.2 whenever that identity is supplied for $\gamma_Z$.
+\end{corollary}
+
+\begin{proof}
+For a testing map $a:M\to E$, compose with $\pi$. Its inverse
+image of $|Z|$ is exactly $a^{-1}|Z_E|$. Pullback of the Green
+form is literally $(\pi a)^*\gamma_Z$. Refined Gysin composition
+and smooth flat pullback identify
+$I_a(\pi^*Z)=I_{\pi a}(Z)$, with the same scheme lengths. Apply
+the supplied identity to the composite. This proof does not
+deduce a P property from a bare strong current equation.
+\end{proof}
+
+\paragraph{Dependencies and limitations.}
+The only new base-change interface used is H16.1 for finite flat
+actual trace. The supplied ambient construction is Round 15
+\path{root/universal_graphic_tree_kernel.tex}, UG15.4 and UG15.8,
+with \path{actual_local/finite_ambient_delta_atlas.tex}, AD15.3.
+The full actual outputs, arbitrary actual target-factor projection,
+zero-output convention, and full test comparison are OUT16.1--16
+in Round 16 \path{higher_trace/all_actual_projective_bundle_output.tex}.
+PC6 is the frozen Round 11 supported-complex Chern-degree theorem.
+No general proper actual pushforward, arbitrary current pullback,
+or implication from G to obstruction vanishing is used. These
+projective-bundle statements alone do not resolve the remaining
+primitive classes on a general variety.

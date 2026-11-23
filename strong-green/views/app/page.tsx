@@ -4,7 +4,7 @@ import { edition } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: { absolute: "Beilinson–Bloch Heights and the Strong Zero-Curvature Green Conjecture" },
-  description: "The principal-push theorem constructs full Beilinson–Bloch heights from the strong Green conjecture under stated analytic foundations. Read the theorem, proof and remaining local existence problem.",
+  description: "Chow obstructions and prescribed curved Green pairs are established. Strong G supplies the remaining local existence input for full Beilinson–Bloch heights under the stated analytic foundations.",
   alternates: { canonical: "/" },
 };
 
@@ -22,6 +22,15 @@ export default function HomePage() {
       <p>The proof establishes independence of Green choices, reciprocity, finiteness of the sum over places, and descent through rational equivalence in both variables. Thus solving the general strong Green conjecture supplies the local existence input for this full height construction.</p>
       <p>General Strong G remains open. Classical comparisons, positivity, nondegeneracy and arithmetic finiteness retain their own hypotheses and research questions. The analytic foundations retain their stated <a href="/about">mathematical review status</a>.</p>
       <p><a href="/papers/global-height-pairing#r16ph:general-height">Read Theorem 7.5 and its proof →</a> · <a href="/routes/green-forms">Follow the construction →</a></p>
+    </section>
+    <section className="simple-home-question" aria-labelledby="chow-green-theorem">
+      <p className="eyebrow">Hypothesis 2.2 · internal proof completed</p>
+      <h2 id="chow-green-theorem">Chow obstructions and prescribed Green pairs</h2>
+      <p>The <a href="/papers/chow-obstruction-green-pairs#h22:main">Chow obstruction and prescribed Green-pair theorem</a> establishes the local construction over the original finite extension of the p-adic numbers. For every smooth integral projective variety, every positive codimension up to its dimension, and every prescribed rational cycle, it constructs a Chow-invariant actual Bott–Chern class and an actual Green form with that curvature on the exact support complement. The variety need not be geometrically integral, and the cycle need not be homologically trivial.</p>
+      <MathText text={String.raw`Writing \(U_Z=X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}\), the pair satisfies`} />
+      <MathText className="simple-home-equation" text={String.raw`\[\int_{U_Z}G_Z\wedge d'd''\eta+\int_{Z^{\mathrm{an}}}\eta=\int_{X^{\mathrm{an}}}\Omega_Z\wedge\eta,\qquad [\Omega_Z]=\mathfrak o^r_{X,K}([Z]).\]`} />
+      <p>The identity holds for every compact complementary actual test form, with the original cycle coefficients and absolute value. If the obstruction vanishes, a global actual primitive removes the curvature. The remaining general problem on this route is to prove that the obstruction vanishes on every homologically trivial Chow class.</p>
+      <p><a href="/papers/chow-obstruction-green-pairs#h22:main">Read the theorem and complete proof →</a> · <a href="/programme#source">The remaining vanishing problem →</a></p>
     </section>
     <section className="simple-home-question" aria-labelledby="green-question">
       <h2 id="green-question">The local conjecture</h2>

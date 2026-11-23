@@ -1,0 +1,312 @@
+% Round 18, root branch. Independently reviewed; see the bound audit.
+\section{Smoothings of products of nonlinear hypersurfaces}
+\label{r18nf:section}
+
+The divisor-generation argument for the resolved hyperplane model
+extends to smooth hypersurface factors of arbitrary positive degree.
+It is useful that this proof does not require middle positivity on
+the components: in dimension four the original components can
+themselves be high-degree fourfold hypersurfaces.
+
+\subsection{Input and the model}
+
+Fix a finite valued extension $K/\mathbf Q_p$ with valuation ring
+$R$, uniformizer $\pi$ and finite residue field $k$.  Let $n\ge4$,
+let $m\ge3$, and choose forms
+\[
+ f_i\in R[X_0,\ldots,X_{n+1}]_{d_i},\qquad d_i\ge1,
+ \quad 1\le i\le m,
+ \qquad D=\sum_{i=1}^m d_i.
+ \tag{NF18.1}\label{r18nf:factors}
+\]
+Assume that the hypersurfaces $H_i=V(\bar f_i)$ form a simple
+normal-crossings divisor in $\mathbf P^{n+1}_k$: every intersection
+$H_I$ with $1\le |I|\le n+1$ is a smooth complete intersection of
+the expected dimension, and every intersection of $n+2$ factors is
+empty.  In particular all positive-dimensional $H_I$ are geometrically
+integral; zero-dimensional intersections are finite etale schemes
+and need not consist of rational points.
+
+Choose a degree-$D$ form $Q$ over $R$ whose reduction cuts every
+positive-dimensional $H_I$ transversely and avoids every
+zero-dimensional $H_I$.  Assume that
+\[
+              X=V(f_1\cdots f_m+\pi Q)\subset\mathbf P^{n+1}_K
+ \tag{NF18.2}\label{r18nf:generic}
+\]
+is smooth and geometrically integral.  All conditions are geometric
+conditions on the displayed actual reductions and on this generic
+fiber.  No unspecified alteration or auxiliary extension is part
+of the hypothesis.
+
+Blow up the ambient $\mathbf P^{n+1}_R$ successively along the
+strict transforms of the special divisors $H_1,\ldots,H_{m-1}$,
+and let $\mathcal X$ be the strict transform of the hypersurface.
+This is the identical ordered construction used in HP18, with
+smooth equations $f_i$ in place of linear equations.
+
+\begin{lemma}[Strata and connected centers]
+\label{r18nf:model}
+The resulting $\mathcal X$ is a regular integral projective
+strictly semistable model of $X$, with reduced fiber
+$\bigcup_{i=1}^m D_i$ and no additional components.
+For every nonempty $I$ and $h=\max I$, its closed stratum $D_I$
+is obtained from $H_I$ by the reverse-order blowups, for
+$j=m,m-1,\ldots,h+1$, of the strict transforms of
+\[
+                    Z_{I,j}=H_I\cap H_j\cap V(\bar Q).
+ \tag{NF18.3}\label{r18nf:centers}
+\]
+Empty centers are omitted.  Each occurring center is smooth,
+and each of its successive strict transforms is isomorphic to
+the original center.  In particular, for an edge $i<j$, every
+center $Z_{ij,k}$ with $k>j$ has dimension $n-3\ge1$ and is
+geometrically integral.
+\end{lemma}
+
+\begin{proof}
+At a point of the reduced fiber the factor equations passing
+through it are part of an etale coordinate system, by the
+normal-crossings hypothesis.  If $\bar Q$ vanishes there,
+transversality to their common stratum supplies one further
+coordinate $y=-Q/u$, with $u$ the product of the unit factors.
+The actual local equation is $x_1\cdots x_s=\pi y$.
+If $\bar Q$ is nonzero, the equation is already a regular
+strict crossing.  HP18's saturated ordered charts therefore
+apply word for word; their derivation uses the independent
+local parameters, not the linearity of the global $f_i$.
+They prove regularity, reducedness, smoothness of all closed
+strata and absence of new components.  Integrality, flatness
+and projectivity follow as in that calculation.
+
+On $H_I$ the reverse-order chart ideals are
+$(\bar Q,\bar f_j)$.  At an overlap, changing trivializations
+of their line bundles multiplies these generators by units,
+so the local identifications glue to the global blowups in
+\eqref{r18nf:centers}.  Each center is a smooth complete
+intersection of dimension $n-|I|-1$ by hypothesis.
+A previously blown center induces on a later center the
+Cartier equation of the additional $H_j$.  That equation is
+a nonzerodivisor whenever the intersection is nonempty,
+because the positive-dimensional complete intersections are
+geometrically integral and have the stated dimensions.
+The strict transform is its blowup in a Cartier ideal,
+hence is unchanged as a variety.  The local coordinate
+calculation also proves it is still a regular codimension-two
+center in the successive stratum.  Zero-dimensional centers
+are disjoint from the other centers, since $Q$ avoids all
+zero-dimensional $H_I$.
+
+For an edge the center is a smooth positive-dimensional
+complete intersection in projective space.  Such a complete
+intersection is geometrically connected, and smoothness then
+makes it geometrically integral.  This connectedness matters:
+it gives exactly one exceptional divisor class per triple,
+rather than an unaccounted collection of classes.
+\end{proof}
+
+\subsection{The native divisor matrix}
+
+Let $h_{ij}$ be the pullback of the hyperplane class to
+$E_{ij}=D_i\cap D_j$, $i<j$.  Let $e_{ij,k}$ be the total
+transform of the exceptional divisor of the blowup along
+$Z_{ij,k}$, for $k>j$.  The later centers are not contained
+in this exceptional divisor, so this is also its strict
+transform class.  Weak Lefschetz gives
+$H^2((H_i\cap H_j)_{\bar k},\mathbf Q_\ell(1))
+=\mathbf Q_\ell h$ because $\dim(H_i\cap H_j)=n-1\ge3$.
+For any native divisor class, its geometric cycle class is a scalar
+multiple of $h$.  Pairing with $h^{n-2}$ shows that this scalar
+is rational.  Subtract that rational multiple of the actual
+hyperplane divisor; the difference is homologically zero and
+therefore numerically zero.  The ample class is numerically
+nonzero.  Consequently the native numerical divisor group
+is exactly $\mathbf Qh$.  The blowup divisor formula now gives
+\[
+ N^1(E_{ij})_{\mathbf Q}
+   =\mathbf Q h_{ij}\oplus
+                 \bigoplus_{k>j}\mathbf Q e_{ij,k}.
+ \tag{NF18.4}\label{r18nf:picard}
+\]
+This equality is native: the centers are geometrically integral
+and defined over $k$, and all listed divisor classes are native.
+
+\begin{lemma}[The triple relations remove every exceptional divisor]
+\label{r18nf:triple}
+For $i<j<k$, DG18's actual triple relation has coordinates
+\[
+ \tau_{ijk}=
+ \bigl(d_k h_{ij}-e_{ij,k},\ -d_j h_{ik},\ d_i h_{jk}\bigr)
+ \tag{NF18.5}\label{r18nf:triple-formula}
+\]
+on its three incident edges, and zero elsewhere.  The images
+of all $h_{ij}$ form a basis of
+\[
+              W^1/\operatorname{im}\tau.
+ \tag{NF18.6}\label{r18nf:quotient-basis}
+\]
+In particular this quotient has dimension $\binom m2$.
+\end{lemma}
+
+\begin{proof}
+On $H_i\cap H_j$, the triple divisor is $H_k$ and has
+class $d_kh$.  The center $Z_{ij,k}$ is contained in this
+divisor with multiplicity one.  Its blowup therefore changes
+the strict-transform divisor class to $d_kh-e_{ij,k}$.
+For the earlier steps, indexed by $l>k$, the center meets
+that divisor properly and is not contained in it.  For a later
+step $j<l<k$, the local ideals before the $k$-step are
+$(x_k,y)$ and $(x_l,y)$.  In the blowup of $(x_k,y)$, the
+strict divisor $x_k=0$ lies in the $y$-chart, with equation
+$x_k/y=0$; the strict later center lies in the $x_k$-chart,
+with equations $(x_l,y/x_k)=0$.  These loci are disjoint,
+since the two displayed ratios are inverse on the overlap.
+They remain disjoint under the subsequent center blowups.
+Thus no other step subtracts an additional exceptional
+divisor term.  These are identities of actual Cartier divisor
+classes, with multiplicities checked by the independent
+local parameters $f_k,Q$.
+
+On $H_i\cap H_k$, no center indexed by $j<k$ is blown up.
+All centers actually blown up meet $H_j$ properly, so its
+strict-transform divisor class is just $d_jh_{ik}$.
+The same reasoning on $H_j\cap H_k$ gives $d_ih_{jk}$.
+The orientation signs are $+,-,+$, as fixed in DG18.
+This proves \eqref{r18nf:triple-formula}.
+
+In the direct sum of the bases
+\eqref{r18nf:picard}, each triple column has exceptional
+coefficient $-1$ at its unique $e_{ij,k}$ and zero at
+every other exceptional basis element.  The exceptional
+block is thus $-I_{\binom m3}$.  Eliminating these columns
+removes all exceptional generators and introduces no
+relation among the $h_{ij}$.  This proves the claimed basis.
+The cancellation $\sigma_2\tau=0$ is the actual triple
+Gysin cancellation of DG18 and does not discard higher strata.
+\end{proof}
+
+Let $\mathcal L$ be any relatively ample line bundle on
+$\mathcal X$, and let $h$ denote the pullback of the ambient
+$\mathcal O(1)$.  For every sufficiently large integer $M$,
+the rational divisor class
+\[
+                         H_M=c_1(\mathcal L)+Mh
+ \tag{NF18.7}\label{r18nf:ample}
+\]
+is relatively ample.  One may use a relatively ample bundle
+from the projective blowup construction; no independently
+chosen polarizations on different components are needed.
+In the basis \eqref{r18nf:quotient-basis}, the classes given
+by $H_M$ supported on each separate edge are the columns
+of $M I+C$, for a fixed rational matrix $C$.
+Its determinant is monic of degree $\binom m2$, and hence
+is nonzero for all sufficiently large integers $M$.
+It follows that, for such one global ample $H_M$,
+\[
+                       W^1=H_M W^0+\operatorname{im}\tau.
+ \tag{NF18.8}\label{r18nf:generation}
+\]
+
+\subsection{Local Green consequences}
+
+\begin{theorem}[Nonlinear-factor local exactness and strong G]
+\label{r18nf:theorem}
+For the model in Lemma~\ref{r18nf:model},
+\[
+                       U_2=0,
+ \qquad
+ K_{\mathrm{comp},\ell}^{\,n-2}=\ker\rho_{n-2}.
+ \tag{NF18.9}\label{r18nf:vanishing}
+\]
+Consequently every specified geometrically homologically
+trivial rational codimension-two cycle on $X$ satisfies
+strong G in the precise ordinary-actual sense of the question.
+If $n=4$, every geometrically homologically trivial rational
+cycle satisfies G in every codimension.
+The assertions reapply to all new cycles after each
+unramified finite valued extension.
+\end{theorem}
+
+\begin{proof}
+Equation \eqref{r18nf:generation} and the actual inclusion
+$\operatorname{im}\tau\subseteq\ker\sigma_2$ verify the
+divisor-generation hypothesis of DG18.  Its proof gives
+$U_2=0$ using only divisor Hodge index.  In particular it
+uses no middle numerical Hodge-standard hypothesis on
+the possibly high-degree components $H_i$ or $D_i$.
+
+We check the separate representative-lifting gate.  On the
+smooth complete-intersection threefold or higher-dimensional
+variety $H_i\cap H_j$ of dimension $s=n-1\ge3$, weak
+Lefschetz gives $H^2=\mathbf Q_\ell h$.  Poincare duality
+then makes $H^{2s-2}$ one-dimensional; the nonzero degree of
+$h^s$ identifies its generator, so
+$H^{2s-2}(s-1)=\mathbf Q_\ell h^{s-1}$.
+A rational one-cycle has zero geometric class if and only if
+its degree against $h$ is zero, because the top-degree
+trace of $h^s$ is nonzero.  Numerical triviality therefore
+implies zero geometric cycle class.  CD17's actual
+curve-degree blowup decomposition preserves this implication
+under every specified smooth blowup, including centers of
+dimension greater than two: the only new curve-degree
+coefficient is a zero-cycle on the center, whose class is
+its degree.  Thus every resolved double $E_{ij}$ has the
+required curve comparison.  CL17 proves the second
+equality in \eqref{r18nf:vanishing}.
+
+DQ17 now makes the refined quotient in adjoint degree
+$a=n-2$ zero.  ER17 and VT17 give obstruction zero, and
+the frozen reconstruction produces the form for the
+original specified cycle on its exact support complement
+against every compact ordinary actual test.  The ambient
+resolution is not used as an analytic pushforward.
+
+For $n=4$, codimension two was the only missing degree
+beyond the frozen divisor, one-cycle and zero-cycle
+theorems.  Equivalently, on every threefold double all
+degrees needed by CL17 have the just-proved curve comparison
+or the standard divisor and degree comparisons.  The
+complete local conclusion follows.  Under an unramified
+extension, the same equations, smooth strata and model
+calculations apply after residue extension.  Reapply the
+theorem to each cycle over the new field; there is no
+assumption that it was pulled back from $K$.
+\end{proof}
+
+\paragraph{Exact range and comparison with the signature route.}
+The theorem is valid for each specified product degeneration
+meeting all the stated smoothness and transversality conditions.
+It does not assert that an arbitrary hypersurface can be put
+in that form by a permitted operation on its cycles.
+For $n\ge5$ the conclusion here is codimension two, with
+the already known complementary one-cycle degree; it does
+not supply all middle codimensions.  A number-field variety
+with this local coverage and the frozen coverage at all
+other finite places has the full pairing on
+$CH^2_{\mathrm{geom\,hom},\mathbf Q}\times
+CH^{n-1}_{\mathrm{geom\,hom},\mathbf Q}$ by PH16.
+No such global placewise hypothesis is omitted.
+
+The new mechanism is the actual exceptional-divisor block
+in \eqref{r18nf:triple-formula} and its elimination by
+literal triple relations.  The broad signature criterion
+S18 remains useful independently, but is unnecessary for
+this theorem.  General $U_2$ and the residual homological
+period map on arbitrary varieties remain open.
+
+\paragraph{Dependencies and primary inputs.}
+The resolution uses HP18's explicitly checked etale charts,
+with the substitution justified above.  DG18 supplies the
+unconditional degree-one lemma and its injection for $U_2$.
+The separate cycle comparison uses CD17, CL17, classical
+weak Lefschetz and Poincare duality in geometric $\ell$-adic
+cohomology; it does not assume divisor Tate.  A primary
+reference for the complete-intersection cohomology used here
+is S.~Ghorpade and G.~Lachaud, \emph{Etale cohomology,
+Lefschetz theorems and number of points of singular varieties
+over finite fields}, corrected arXiv version 0808.2169,
+Propositions 3.1--3.2; in the smooth case its nonmiddle
+cohomology statement includes the required $H^0$ and $H^2$.
+The remaining analytic
+and height inputs are the final frozen ER17, VT17 and PH16
+interfaces.  No historical priority claim is made.

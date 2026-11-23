@@ -1,0 +1,430 @@
+% Round 20. PI20. Author: supported20. Independent review required.
+\section{A finite correspondence error and a surface certificate}
+\label{r20pi:section}
+
+\paragraph{Scope.}
+This section replaces a universal component comparison hypothesis by a
+single, chosen, numerically trivial matrix correspondence.  It gives an
+exact presentation of AK19's defect in terms of that correspondence.
+For a native semistable surface model the error is a curve on a product
+of two surfaces, so the frozen SP19 curve-comparison theorem makes its
+geometric cohomology class zero.  An inverse can then be certified by a
+finite rational linear system in actual divisor representatives.
+The general-dimensional error is not proved homologically zero.
+
+Throughout, $R$ is a complete discrete valuation ring with finite residue
+field $k$, $\mathcal Y/R$ is an integral regular flat projective reduced
+strictly semistable model of relative dimension $d\ge1$, and its generic
+fiber is smooth projective and geometrically integral.  Write
+$D=\coprod_iD_i$ for the disjoint union of its native smooth proper
+components.  All intersections and connected pieces are retained,
+including genuine higher strata.  We initially assume the $D_i$ are
+geometrically integral; the final paragraph explains finite constant
+extensions.  Let $\ell\ne\operatorname{char}k$ and
+$\Lambda=\mathbf Q_\ell$.
+
+\subsection{The incidence map as an actual correspondence}
+
+Use the frozen signs
+\[
+ (\rho v)_{i\to j}=v_j|_{E}-v_i|_{E},\qquad
+ \sigma w=(+j_{i*}w,-j_{j*}w),\qquad A=\sigma\rho.
+\]
+For a degree-$s$ correspondence from $D_j$ to $D_i$ we use
+$\operatorname{CH}^{d+s}(D_j\times_kD_i)_{\mathbf Q}$.
+It acts by pullback, intersection and proper pushforward on Chow
+groups and on geometric cohomology, increasing codimension by $s$.
+
+For $i\ne j$, let $E_{ij}$ denote the full native intersection, with its
+actual closed immersions into $D_i$ and $D_j$, and put
+\[
+ \begin{split}
+ A_{ij}&=(j_{j},j_i)_*[E_{ij}]
+        \in\operatorname{CH}^{d+1}(D_j\times D_i)_{\mathbf Q},\\
+ A_{ii}&=(\Delta_i)_*c_1(N_{D_i/\mathcal Y})
+       =-(\Delta_i)_*\sum_{j\ne i}[E_{ij}].
+ \end{split}
+ \tag{PI20.1}\label{r20pi:actualA}
+\]
+An empty intersection contributes zero and a disconnected one
+contributes the sum of its native pieces.  The last equality holds
+in the actual divisor Chow group of $D_i$: the reduced total fiber
+is principal, so its restriction has trivial line bundle.
+
+The action of the matrix $A=(A_{ij})$ on actual component Chow
+classes is precisely $\sigma\rho$.  Indeed an off-diagonal entry is
+the indicated restriction followed by Gysin, whereas the diagonal
+entry is minus the sum of the boundary-divisor self contributions.
+Thus it gives simultaneously the full cohomological maps $A^H_u$
+and the numerical maps $A^N_u$ of AK19/CR19.  No passage from a
+numerical class to a cohomology class occurs in this construction.
+The relation (PI20.1) includes every boundary component; higher
+intersections do not require deleting any summand.
+
+For later reference, the composition of actual correspondences is
+\[
+ \beta\circ\alpha
+   =(p_{13})_*\bigl(p_{12}^*\alpha\cdot p_{23}^*\beta\bigr)
+ \tag{PI20.2}\label{r20pi:composition}
+\]
+on the appropriate product of smooth proper strata.  Numerical
+equivalence is adequate for these operations.  Every intersection
+number below is a native degree on a smooth proper $k$-variety,
+never a degree on the absolute $\operatorname{CH}_0(\mathcal Y)$.
+
+\subsection{A numerical generalized inverse}
+
+\begin{lemma}[Existence at the correspondence level]
+\label{r20pi:numericalinverse}
+There is a matrix of actual rational correspondences
+\[
+ G_{ij}\in\operatorname{CH}^{d-1}(D_j\times D_i)_{\mathbf Q}
+ \tag{PI20.3}\label{r20pi:G}
+\]
+such that
+\[
+                         AGA=A
+       \quad\hbox{modulo numerical equivalence of correspondences}.
+ \tag{PI20.4}\label{r20pi:numidentity}
+\]
+In particular
+\[
+                         E=A-AGA
+ \tag{PI20.5}\label{r20pi:error}
+\]
+is a numerically trivial actual matrix correspondence, each of whose
+entries has codimension $d+1$ on $D_j\times D_i$.
+\end{lemma}
+
+\begin{proof}
+Take rational coefficients in the category of numerical motives and
+put $M=\bigoplus_i h(D_i)$.  With Jannsen's explicit convention
+\[
+ \operatorname{Hom}((X,p,m),(Y,q,n))
+       =q\,N^{\dim X-m+n}(X\times Y)_{\mathbf Q}\,p,
+\]
+the incidence correspondence is a morphism $A:M\to M(1)$.
+Jannsen's Theorem~1 makes this category semisimple abelian without
+assuming a standard conjecture.  Choose splittings
+$M=\ker A\oplus M'$ and $M(1)=\operatorname{im}A\oplus N'$.
+The restriction $A:M'\to\operatorname{im}A$ is an isomorphism.
+Define the numerical $G:M(1)\to M$ to be its inverse on
+$\operatorname{im}A$ and zero on $N'$.  This gives (PI20.4).
+
+The indicated morphism group consists of matrices in
+$N^{d-1}(D_j\times D_i)_{\mathbf Q}$, each of which has an
+actual rational Chow representative.  Choose such representatives
+to obtain (PI20.3).  Their actual compositions need not satisfy
+(PI20.4) in Chow or in cohomology; only the displayed numerical
+identity has been proved at this point.  The composition degrees
+in $AGA$ add to $1-1+1=1$, giving (PI20.5) in the stated Chow
+groups.
+\end{proof}
+
+\paragraph{The precise comparison input.}
+For a chosen $G$, the sufficient cohomological input is
+\[
+ \operatorname{cl}_{\ell}(E_{ij})=0
+ \quad\hbox{in }
+ H^{2d+2}((D_j\times D_i)_{\bar k},\Lambda(d+1))
+ \quad\hbox{for every }i,j.
+ \tag{PI20.6}\label{r20pi:errorzero}
+\]
+This is a finite comparison statement about the actual cycles
+(PI20.5).  It is stronger than needed for the actual generic-cycle
+image.  It does not follow from the action of $E$ on numerical
+groups, and it is not asserted for arbitrary-dimensional models.
+
+\subsection{An exact presentation of the actual lifting defect}
+
+Retain AK19's canonical actual-span projection
+\[
+ \begin{gathered}
+ \mathscr A_C^u=
+ \operatorname{span}_{\Lambda}\operatorname{cl}_{\ell}
+      \left(\bigoplus_i\operatorname{CH}^u(D_i)_{\mathbf Q}\right),
+ \qquad p_u:\mathscr A_C^u\twoheadrightarrow C^u\otimes\Lambda,\\
+ \mathscr T_C^u=\ker p_u,\qquad
+ \Delta_{A,u,\ell}
+ =\frac{\mathscr T_C^{u+1}\cap A^H_u\mathscr A_C^u}
+              {A^H_u\mathscr T_C^u}.
+ \end{gathered}
+ \tag{PI20.7}\label{r20pi:delta}
+\]
+Actual correspondences preserve these actual spans and commute with
+their numerical projections.  In particular $G^H$ preserves the
+corresponding kernels $\mathscr T$ with the degree decreased by one.
+
+\begin{theorem}[The single-error presentation]
+\label{r20pi:exacterror}
+For every $u$ in the component degree range, the inclusion in the
+numerator of (PI20.7) induces a canonical isomorphism, relative to
+the chosen actual $G$,
+\[
+ \boxed{\quad
+ \Delta_{A,u,\ell}\simeq
+ \frac{E^H_u\mathscr A_C^u}
+ {E^H_u\mathscr A_C^u\cap A^H_u\mathscr T_C^u}.
+ \quad}
+ \tag{PI20.8}\label{r20pi:errorpresentation}
+\]
+Consequently
+\[
+ \dim_\Lambda\Delta_{A,u,\ell}
+ \le\operatorname{rank}\bigl(E^H_u|_{\mathscr A_C^u}\bigr)
+ \le\operatorname{rank}\bigl(E^H_u|_{H_C^u}\bigr).
+ \tag{PI20.9}\label{r20pi:errorrank}
+\]
+If (PI20.6) holds, then $\Delta_{A,u,\ell}=0$ simultaneously
+in every degree, and hence all the corresponding CR19 supported
+defects vanish.
+\end{theorem}
+
+\begin{proof}
+Because $E$ is numerically trivial as a correspondence, its action
+on every numerical group is zero.  Hence
+$E^H_u\mathscr A_C^u\subset\mathscr T_C^{u+1}$.
+The identity $E=A(1-GA)$ gives the further inclusion
+\[
+ E^H_u\mathscr A_C^u
+       \subseteq A^H_u\mathscr A_C^u,
+\]
+since $1-GA$ preserves actual algebraic classes.  The inclusion
+therefore defines a map to $\Delta_{A,u,\ell}$ with the kernel
+displayed in (PI20.8).
+
+For surjectivity take $\alpha=A^H_ux\in\mathscr T_C^{u+1}$,
+where $x\in\mathscr A_C^u$.  The class $G^H\alpha$ lies in
+$\mathscr T_C^u$, since $G$ is an actual correspondence and
+preserves numerical zero.  Thus
+\[
+ \alpha-E^H_ux=A^H_uG^H\alpha\in A^H_u\mathscr T_C^u.
+ \tag{PI20.10}\label{r20pi:erroronto}
+\]
+So every quotient class is represented by $E^H_ux$.
+This proves (PI20.8), and taking dimensions gives (PI20.9).
+Under (PI20.6) the action of $E$ on all geometric cohomology is
+zero, so the presentation gives every stated vanishing.
+The map onto CR19's dual defect is the frozen exact sequence
+(CR19.9).
+\end{proof}
+
+\begin{corollary}[An actual corrected kernel lift]
+\label{r20pi:correctedlift}
+Assume (PI20.6).  If $v\in\ker A^N_u$ and
+$x\in\mathscr A_C^u$ is any actual-span lift, then
+\[
+                         x^{\flat}=x-G^HA^H_ux
+ \tag{PI20.11}\label{r20pi:lift}
+\]
+is an actual-span lift of the same $v$ and belongs to $\ker A^H_u$.
+Also, every actual algebraic class in the full cohomological
+incidence image has an actual algebraic preimage:
+\[
+ \mathscr A_C^{u+1}\cap\operatorname{im}A^H_u
+                        =A^H_u\mathscr A_C^u.
+ \tag{PI20.12}\label{r20pi:imageexact}
+\]
+\end{corollary}
+
+\begin{proof}
+The class $A^H_ux$ is numerically zero because $A^N_uv=0$.
+Therefore $G^HA^H_ux$ is numerically zero, proving
+$p_u(x^{\flat})=v$.  Meanwhile
+$A^H_ux^{\flat}=(A^H- A^HG^HA^H)x=E^Hx=0$.
+For the second assertion write an actual class
+$\alpha=A^H_u\beta$ with arbitrary $\beta\in H_C^u$.
+Then $G^H\alpha$ is actual and
+$A^HG^H\alpha=A^HG^HA^H\beta=A^H\beta=\alpha$.
+No algebraicity of the originally chosen $\beta$ is used.
+\end{proof}
+
+\paragraph{Why this is a correspondence-class statement.}
+The implication (PI20.6) to the correction formula uses the action
+on full cohomology, including nonalgebraic classes.  An equality
+of operators only on numerical groups is not enough.  Nor is
+nilpotence of a numerically trivial error enough: in the abstract
+algebra $\mathbf Q[\epsilon]/(\epsilon^2)$, modulo the ideal
+$(\epsilon)$, the element $A=\epsilon$ has numerical image zero,
+but $AGA=0\ne A$ for every $G$ in that algebra.  Its error is
+nilpotent and nonzero.  This is only an algebraic limitation, not
+a geometric example or a counterexample to G.
+
+\subsection{A finite divisor certificate for a surface model}
+
+\begin{theorem}[Surface incidence admits an algebraic cohomological inverse]
+\label{r20pi:surface}
+Suppose $d=2$.  Every choice of $G$ satisfying (PI20.4) satisfies
+(PI20.6) for every prime $\ell\ne\operatorname{char}k$.
+Consequently
+\[
+                         A^HG^HA^H=A^H
+ \tag{PI20.13}\label{r20pi:surfaceinverse}
+\]
+on all geometric component cohomology.  The same actual rational
+divisor matrix $G$ works for every such $\ell$.
+\end{theorem}
+
+\begin{proof}
+Each product $D_j\times D_i$ is a smooth projective fourfold
+which is a product of two arbitrary smooth projective surfaces.
+The error $E_{ij}$ has codimension three, hence is an actual
+rational one-cycle.  It is numerically zero by (PI20.4).
+The frozen SP19 finite-field surface-product comparison proves
+that its geometric $\ell$-adic class is zero, for every invertible
+$\ell$.  Recall the precise classical reason behind that input:
+Lefschetz $B$ is known for surfaces and stable under products;
+its algebraic inverse in degree two sends a numerically zero
+curve to a numerically zero divisor; divisor numerical and
+homological equivalence coincide.  No Tate surjectivity for
+surface $H^2$ or middle-degree Hodge positivity is assumed.
+Thus every (PI20.6) holds, and the action identity follows.
+\end{proof}
+
+\begin{proposition}[A rational linear certificate]
+\label{r20pi:certificate}
+Still let $d=2$.  For every ordered pair $(k,l)$ choose actual
+rational divisors
+\[
+ g_{kl,\mu}\in\operatorname{CH}^1(D_l\times D_k)_{\mathbf Q}
+ \tag{PI20.14}\label{r20pi:basis}
+\]
+whose numerical classes form a supplied basis of
+$N^1(D_l\times D_k)_{\mathbf Q}$.
+For every ordered pair $(i,j)$ choose actual divisor representatives
+$\eta_{ij,\nu}$ of such a basis on $D_j\times D_i$.
+There is a solution over $\mathbf Q$ to the finite linear system
+\[
+ \sum_{k,l,\mu} M_{(i,j,\nu),(k,l,\mu)}\lambda_{kl,\mu}
+                           =b_{i,j,\nu},
+ \tag{PI20.15}\label{r20pi:linearsystem}
+\]
+where the entries are the native intersection numbers
+\[
+ \begin{split}
+ M_{(i,j,\nu),(k,l,\mu)}
+   &=\deg_{D_j\times D_i}
+       \left((A_{ik}\circ g_{kl,\mu}\circ A_{lj})
+                                      \cdot\eta_{ij,\nu}\right),\\
+ b_{i,j,\nu}
+   &=\deg_{D_j\times D_i}(A_{ij}\cdot\eta_{ij,\nu}).
+ \end{split}
+ \tag{PI20.16}\label{r20pi:matrix}
+\]
+Every rational solution, with
+$G_{kl}=\sum_\mu\lambda_{kl,\mu}g_{kl,\mu}$, certifies
+(PI20.13) for every invertible $\ell$.
+The existence statement does not assert an algorithm that finds
+complete Neron--Severi bases for arbitrary input surfaces.
+\end{proposition}
+
+\begin{proof}
+The correspondence $A$ is fixed, so $AGA$ is linear in the
+coefficients of $G$.  The entry
+$(AGA-A)_{ij}$ is a curve class on the fourfold $D_j\times D_i$.
+It is numerically zero exactly when it has zero intersection
+with every numerical divisor class there.  The supplied basis
+is therefore a complete set of tests, and expanding those
+equalities gives (PI20.15)--(PI20.16).
+
+Lemma~\ref{r20pi:numericalinverse} gives a numerical divisor
+matrix $G$.  Expand it in the supplied rational bases; its
+coefficients solve the linear system.  Conversely a solution
+gives actual divisors and proves numerical triviality of every
+error entry by the same perfect numerical pairing.  Apply
+Theorem~\ref{r20pi:surface}.  The products and compositions in
+(PI20.16) are actual Chow operations before degrees are taken.
+\end{proof}
+
+\subsection{The arbitrary-coefficient bridge and its scope}
+
+\begin{corollary}[Tensoring a certified incidence correspondence]
+\label{r20pi:coefficient}
+Suppose (PI20.6) is verified at an invertible prime $\ell$.
+Let $T/k$ be any smooth projective geometrically integral variety,
+without a numerical--homological comparison assumption on $T$
+or on $T\times D_i$.  On the component diagram
+$D_i^T=T\times D_i$, with edges $T\times E_{ij}$, one has
+\[
+ A_T=\Delta_T\boxtimes A,\qquad
+ G_T=\Delta_T\boxtimes G,\qquad
+ A_T^HG_T^HA_T^H=A_T^H.
+ \tag{PI20.17}\label{r20pi:tensor}
+\]
+Consequently all actual-span $A_T$-kernel defects and supported
+CR19 defects vanish in every degree, including for mixed actual
+cycle classes on the products.
+\end{corollary}
+
+\begin{proof}
+Reorder the factors in the displayed exterior correspondences
+to view them as correspondences on
+$(T\times D_j)\times(T\times D_i)$.
+The codimensions are respectively $\dim T+d+1$ and
+$\dim T+d-1$, so their degrees are still $+1$ and $-1$.
+Flat base change and the projection formula identify the actual
+restriction and Gysin maps of this product diagram with
+$\Delta_T\boxtimes A$.  Composition gives
+\[
+ A_TG_TA_T-A_T
+              =\Delta_T\boxtimes(AGA-A)
+\]
+as actual correspondences.  Its geometric cohomology class is
+zero by (PI20.6), compatibility with exterior products, and
+Kunneth.  This proves the identity on all geometric cohomology.
+
+The corrected-lift and actual-image arguments of
+Corollary~\ref{r20pi:correctedlift} apply verbatim.  They apply
+$G_T$ directly to the supplied actual cycle class and hence
+do not require that class to be an exterior product.  Moreover
+$A_TG_TA_T-A_T$ is numerically zero, either by the adequacy of
+numerical equivalence for exterior products or by its zero
+cohomology class, so the numerical part of the correction is
+also valid.
+\end{proof}
+
+\paragraph{Native fields and final analytic use.}
+All constructions above are native.  If finitely many components
+are not geometrically integral, pass to one finite constant
+extension that splits them, and retain the full degree in all
+native norm and intersection formulas.  A native numerically
+zero correspondence remains numerically zero after such an
+extension: pair with any new complementary cycle and apply the
+proper finite norm and projection formula.  Geometric cohomology
+vanishing is then unchanged by that constant extension.
+
+The arbitrary-coefficient bridge becomes a local Green theorem
+only after its separate actual inertia-zero input and the
+supplied model/alteration hypotheses have been checked.  The
+AS20 application makes those checks for a good-reduction
+coefficient and a surface factor, including all finite-extension
+new cycles.  This section itself constructs no analytic pushforward
+and no Green form by pushing along an arbitrary proper map.
+Conversion from zero actual periods uses the frozen FD17/VT17
+interfaces, preserving exact original support and all compact
+ordinary actual tests.
+
+\paragraph{What remains open in general dimension.}
+Jannsen's theorem always gives (PI20.4), but in dimension $d>2$
+its error has codimension $d+1$ on a $2d$-dimensional component
+product.  The surface curve-comparison argument no longer
+applies.  Vanishing of its geometric class is a stronger finite
+sufficient input, not a necessary reformulation of G.  The
+actual period image could vanish with a nonzero error action or
+a nonzero $\Delta_A$.  No general vanishing, no universal
+algebraic incidence inverse, and no new counterexample is
+claimed here.
+
+\paragraph{Dependencies and source record.}
+The actual incidence signs, actual-span projections, and the
+original-field Green bridge are frozen DQ17/ER17 and AK19/CR19.
+The numerical generalized inverse uses U.~Jannsen,
+\emph{Motives, numerical equivalence, and semi-simplicity},
+Invent. Math.\ 107 (1992), 447--452, Theorem~1; the twist and
+correspondence convention is stated on pp.~447--448 of that
+primary paper.  Its numerical semisimplicity is not interpreted
+as a cohomological comparison theorem.  The surface comparison
+is SP19, ultimately using Kleiman's Proposition~4.3 for Lefschetz
+$B$ of surfaces and their products.  All remaining assertions
+are the actual Chow calculations and finite-dimensional arguments
+written above.  No external priority claim is made.

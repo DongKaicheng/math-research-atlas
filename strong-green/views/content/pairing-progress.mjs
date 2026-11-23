@@ -6,9 +6,9 @@ const local = (anchor, label) => ({ href: `/papers/green-constructions#${anchor}
 
 export const pairingProgressIntroduction = {
   title: 'Results on Beilinson–Bloch height pairings',
-  summary: 'The principal-push theorem (PH16; Theorem 7.5) constructs a canonical real height on both full geometrically homologically trivial rational Chow groups from Strong G at every finite completion in both complementary codimensions, within the stated analytic foundations. A second construction gives the pairing on the kernels of the local Bott–Chern obstructions; the geometric cases below establish vanishing on specific domains. Companion analytic proofs are available and retain their separate independent-review status.',
+  summary: 'Hypothesis 2.2 is established: the Chow obstruction and prescribed actual curved Green pairs exist in every positive codimension up to the dimension over the original valued field. General vanishing on homologically trivial cycles remains open. The principal-push theorem (PH16; Theorem 7.5) constructs the full height from Strong G at every finite completion in both complementary codimensions, within the stated analytic foundations. The obstruction-kernel route and geometric cases below retain their additional hypotheses.',
   convention: String.raw`Let \(X/F\) be a smooth projective geometrically integral variety of dimension \(n\) over a number field. Write \(V^r(X)=\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{hom}}\) for geometrically homologically trivial rational Chow classes, and set \[\mathcal H^r(X)=\{z\in V^r(X):\mathfrak o^r_{X_{F_v}}(z_{F_v})=0\text{ for every finite place }v\},\] where \(\mathfrak o^r_{X_{F_v}}\) is the local Bott–Chern obstruction and \(r+s=n+1\). The kernel-domain route gives \(h_X:\mathcal H^r(X)\times\mathcal H^s(X)\to\mathbf R\); it has full domain when local vanishing holds in both degrees. PH16 directly gives \(h_X:V^r(X)\times V^s(X)\to\mathbf R\) from its Strong G hypothesis, without requiring that obstruction-vanishing criterion.`,
-  evidence: 'The geometric arguments are proved under explicit hypotheses on Green forms, the Bott–Chern obstruction and its functoriality, and local reciprocity. Their companion analytic proofs are available but have not completed independent mathematical review. Additional model or comparison hypotheses are specified in each case; the linked papers give the full statements and proofs.',
+  evidence: 'The Chow-invariant actual obstruction, its genuine pullbacks and the prescribed curved Green pair are established by the new construction theorem, after internal source-bound AI cross-review. The theorem includes smooth integral varieties that are not geometrically integral, every positive codimension up to the dimension, the exact support complement and all compact actual tests. Geometric deductions and global heights still use their stated rigidity, numerical, broader trace, Chow-correspondence, intersection and reciprocity hypotheses. Each linked paper specifies the additional inputs.',
   paper: '/papers/pairing-constructions',
 };
 
@@ -248,10 +248,17 @@ export const pairingGroups = [
 
 export const pairingSourceCoverage = [
   {
+    title: 'Chow obstructions and prescribed curved Green pairs',
+    scope: 'The complete proof of Hypothesis 2.2: strict model Chern characters, restricted scalar–curvature finite trace, supported-complex Green forms, global primitives for generic Chow relations, genuine pullbacks and the original integral-variety scope.',
+    source: 'The assembled construction theorem and its model-Chern and finite-trace supplements.',
+    status: 'Internal proof completed after source-bound AI cross-review. The remaining general local problem is vanishing of the obstruction on homologically trivial Chow classes.',
+    href: '/papers/chow-obstruction-green-pairs#h22:main',
+  },
+  {
     title: 'Local Green forms: constructions and proofs',
     scope: 'Model Chern forms, finite traces, Green forms on prescribed support complements, algebraic equivalence, numerical corrections on abelian models, and Chow correspondences.',
     source: 'research-sources/green-draft/',
-    status: 'The available construction proofs are included. Their draft and conditional mathematical status is retained.',
+    status: 'The Chow obstruction and prescribed-pair construction are established in the new theorem. The rigidity, numerical descent and correspondence-transfer arguments retain their separately stated status.',
     href: '/papers/green-constructions',
   },
   {

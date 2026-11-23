@@ -9,7 +9,7 @@ import { LogicForest } from '@/components/logic-tree';
 
 export const metadata: Metadata = {
   title: 'Complete logical diagram: Beilinson–Bloch heights and Green forms',
-  description: 'Top-down, linked logical diagrams of all 54 records: parallel premises, numbered deductions, alternative routes, equivalences and open bridges for Green forms and global heights.',
+  description: 'Top-down, linked logical diagrams of all permanent records: parallel premises, numbered deductions, alternative routes, equivalences and open bridges for Green forms and global heights.',
   alternates: { canonical: '/research-map' },
 };
 
@@ -99,6 +99,7 @@ export default function ResearchMapPage() {
       <h2 id="strong-green-height-theorem">Why Strong G matters: a full height construction</h2>
       <p><strong>Theorem 7.5 (PH16) proves the implication from Strong G to the full Beilinson–Bloch height pairing, within the stated analytic foundations.</strong> Strong G is required at every finite completion in both complementary codimensions, for every specified geometrically homologically trivial rational cycle. The proof includes reciprocity, a finite sum over places and descent through rational equivalence.</p>
       <p>The first tree keeps the analytic and global inputs together at its AND connection. General Strong G remains open; positivity, nondegeneracy and arithmetic finiteness are further questions.</p>
+      <p>The local tree now uses the <a href="/papers/chow-obstruction-green-pairs#h22:main">proved Chow obstruction and prescribed Green-pair theorem</a>. Its curved identity and genuine pullbacks are established on the full scope of Hypothesis 2.2. The source-vanishing problem and the additional operations required for global heights remain distinct inputs.</p>
       <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem and complete proof →</a> · <a href="/papers/global-height-pairing#sec:height-hypotheses">Analytic foundations</a> · <a href="/about">Review status</a></p>
     </section>
 
@@ -142,13 +143,13 @@ export default function ResearchMapPage() {
                   {branch.pairingCases ? <PairingCaseTree /> : null}
                   <li className="map-group-node map-plan-node" data-map-container="">
                     <details className="map-group map-plan" data-map-group="">
-                      <summary><span>Research plan</span><span className="map-count">{branch.plan.length === 1 ? 'Next problem' : 'Next problems'}</span></summary>
+                      <summary><span>Research plan</span><span className="map-count">{branch.plan.length === 1 ? 'Programme step' : 'Programme steps'}</span></summary>
                       <ul className="map-records">{branch.plan.map(id => {
                         const step = plans.get(id)!;
                         if (!step) throw new Error('Missing research-map programme step: ' + id);
                         return <li className="map-record" key={id} data-map-item="plan">
                           <a className="map-record-title" href={'/programme#' + step.id}>{step.title}</a><p>{step.goal}</p>
-                          <a className="map-secondary-link" href={step.paper}>Precise problem and proposed argument</a>
+                          <a className="map-secondary-link" href={step.paper}>{step.linkLabel || 'Precise problem and proposed argument'}</a>
                         </li>;
                       })}</ul>
                     </details>

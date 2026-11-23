@@ -1,0 +1,373 @@
+\section{The actual cubic unit residue in every rank}
+\label{sec:r11-cubic-unit-residue}
+
+\paragraph{Status.}
+This module is constructed by \texttt{/root/r11\_cube} and is submitted
+for independent exact-source review.  It identifies the full raw CS
+cube on an explicitly specified ordinary domination open, and constructs
+its actual quadruple and extending triple there.  It also gives an
+all-rank counterexample to a \emph{strict} third witness for that raw
+cube.  The general cube modulo an extending triple is not solved, and
+neither the domination hypothesis nor a general finite-cover certificate
+is asserted near a regular complete-intersection cancellation locus.
+
+\subsection{A full two-colour bilinear homotopy}
+
+Use the exact actual complexes CPT1 and QH1.  For an even diagonal
+actual form $h$ and an independently closed pair $p=(p',p'')$, write
+\[
+ \mathcal H_h(p)=(d''h\wedge p',-d'h\wedge p'',h\wedge d'p').
+ \tag{CU1}
+\]
+Let $w=(\sigma,\tau)\in L_1^k$ and $p\in L_1^a$ satisfy
+$\partial_1p=0$.  Define the actual quadruple
+\[
+ \mathcal J(w,p)=
+ (-d''\sigma\wedge p',\ d'\tau\wedge p'',\
+                  \sigma\wedge d'p',\ \tau\wedge d'p')
+                                      \in L_3^{a+k+1}.
+ \tag{CU2}
+\]
+Then the exact finite identity is
+\[
+       \partial_3\mathcal J(w,p)=\mathcal H_{\partial_1w}(p).
+ \tag{CU3}
+\]
+In particular no separate closedness of $\sigma$ or $\tau$ is required.
+
+\begin{proof}
+Closedness of $p$ gives $d''p''=-d'p'$ and $Dp'=0$.  Since
+$\sigma,\tau$ have odd total degree, full differentiation of the
+first entry of $\partial_3\mathcal J$ gives
+\[
+ -D\sigma\wedge p'-d''\sigma\wedge d'p'
+          +d''\sigma\wedge d'p'-\sigma\wedge d''d'p'
+                  =-D\sigma\wedge p'.
+ \tag{CU4}
+\]
+The second is
+\[
+ -D\tau\wedge p''+d'\tau\wedge(d''p''+d'p')
+                  =-D\tau\wedge p''.
+ \tag{CU5}
+\]
+The third is $(d'\sigma+d''\tau)\wedge d'p'$.
+These are exactly the three entries of the right side of (CU3),
+because $d''\partial_1w=-D\sigma$ and $d'\partial_1w=D\tau$.
+All identities are in actual $B$ before refinement.
+\end{proof}
+
+For units $\lambda_a,\lambda_b,\lambda_c$ on an ordinary open $N$,
+put $a=v(\lambda_a)$, $b=v(\lambda_b)$, $c=v(\lambda_c)$.
+The extending pair $e_{ab}=(a\,d''b,b\,d'a)$ is independently
+closed on $N$.  Since $Dc=0$, CPT gives
+\[
+ E_{abc}=\mathcal H_c(e_{ab})
+     =(-a\,d''b\wedge d''c,\ b\,d'a\wedge d'c,
+                                      c\,d'a\wedge d''b),
+       \qquad \partial_2 E_{abc}=0.
+ \tag{CU6}
+\]
+This is a genuine actual extending triple.  In particular its first
+entry satisfies
+\[
+                 d''(E_{abc})_A=-d''a\wedge d''b\wedge d''c.
+ \tag{CU7}
+\]
+Thus allowing extending triples at the cube level is substantive.
+
+\subsection{An exact all-rank raw-cube identity on a domination open}
+
+Let $f=(f_1,\ldots,f_r)$, $r\ge3$, be a tuple of analytic sections
+of the same metrized line bundle on $N$.  Put $W=N\setminus|f=0|$,
+$s=r-1$ and $\ell=r-3$.  The commuting matrices $A,B,C$ multiply
+the first, second, and third entries by $\lambda_a,\lambda_b,
+\lambda_c$, respectively.  Fix the same positive real cap constant
+$\varepsilon$ in all six raw CS36 triples.  Let $R$ be the original
+metric curvature and put
+\[
+                P=\|(f_3,\ldots,f_r)\|_\infty.
+ \tag{CU8}
+\]
+All norms use that same metric.  Define the ordinary open $\Omega$
+inside $W$ by the following two strict inequalities:
+\[
+ \begin{split}
+ \max(\|f_1\|,\|\lambda_a f_1\|)
+                   &<e^{-(|b|+|c|+\varepsilon)}P,\\
+ \max(\|f_2\|,\|\lambda_b f_2\|)
+                   &<e^{-(|a|+|c|+\varepsilon)}P.
+ \end{split}
+ \tag{CU9}
+\]
+In particular $P>0$ on $\Omega$.  The exact raw cube is
+\[
+ \begin{split}
+ \mathcal Q={}&q_{a,b}(f)+q_{a,c}(Bf)+q_{b,c}(f)\\
+              &-q_{b,c}(Af)-q_{a,c}(f)-q_{a,b}(Cf),
+ \end{split}
+ \tag{CU10}
+\]
+where every $q$ means the frozen full CS36 expression, not merely
+an unspecified primitive with the same boundary.
+
+Let $f^{\rm pas}=(f_3,\ldots,f_r)$, of rank $k=r-2$, and let
+$Cf^{\rm pas}=(\lambda_cf_3,f_4,\ldots,f_r)$.  On $\Omega$ put
+\[
+ \phi_i=-\log\|C^i f^{\rm pas}\|,\qquad
+ C_i=R-D\phi_i,\qquad
+ G_i^{\rm pas}=\phi_i\sum_{j=0}^{\ell} C_i^jR^{\ell-j}
+                         \quad(i=0,1).
+ \tag{CU11}
+\]
+The use of $C_i$ as a curvature is local to (CU11); the matrix $C$
+has already been specified.  These are literal lower-rank CI scalar
+expressions on the same original analytic domain, not currents.
+
+\begin{theorem}[Full cubic residue on the specified domination open]
+The whole raw cube (CU10), with all six caps and metric terms retained,
+satisfies on all of $\Omega$
+\[
+       \mathcal Q=\mathcal H_{G_1^{\rm pas}-G_0^{\rm pas}}(e_{ab}).
+ \tag{CU12}
+\]
+There is an explicitly specified actual pair
+$w\in L_1^\ell(\Omega)$, given below, such that
+\[
+       G_1^{\rm pas}-G_0^{\rm pas}
+                         =\partial_1w+cR^\ell.
+ \tag{CU13}
+\]
+Consequently the actual quadruple and actual extending triple
+\[
+       T=\mathcal J(w,e_{ab}),\qquad e_2=R^\ell E_{abc}\in L_2^s(N)
+ \tag{CU14}
+\]
+give the full relative identity
+\[
+                   \mathcal Q|_\Omega=\partial_3T+e_2|_\Omega.
+ \tag{CU15}
+\]
+For $r=3$, take $w=0$ and the equality is
+$\mathcal Q=E_{abc}$ on $\Omega$ itself.
+\end{theorem}
+
+\begin{proof}
+The norm of $C f^{\rm pas}$ is at least $e^{-|c|}P$.  Equations
+(CU9) therefore make entries $1,2$ strictly inactive in every one
+of the eight full tuple norms, even after either is scaled.  The
+eight potentials are consequently $\phi_0$ or $\phi_1$, depending
+only on whether $C$ has been applied.
+
+We must compare the caps as well, not just those vertex potentials.
+For the $a,c$ face, the common-cap norm is
+\[
+ \max\{\|f_2\|,\|(f_4,\ldots,f_r)\|,
+                           e^{-(|a|+|c|+\varepsilon)}P\}.
+ \tag{CU16}
+\]
+For the face based at $Bf$, replace only $\|f_2\|$ by
+$\|\lambda_b f_2\|$.  The second inequality in (CU9) makes both
+of those entries strictly smaller than the displayed final term.
+Thus the two cap scalars are literally identical on the whole
+$\Omega$.  All normalized potentials, original metric terms,
+CS edge triples, and MT source sums therefore agree, proving
+$q_{a,c}(Bf)=q_{a,c}(f)$ as entire actual triples.  The first
+inequality proves $q_{b,c}(Af)=q_{b,c}(f)$ in the same manner.
+Empty passive subtuples in (CU16) have norm zero; this includes $r=3$.
+
+Only the two $a,b$ faces remain.  On the face based at $C^i f$,
+all four full norms equal the corresponding passive norm, and its
+CS cap is exactly $\phi_i$.  All normalized vertex potentials are
+zero.  Hence the entire CS edge triple sum is zero.  The MT source
+sums $f_j$ and $\Gamma_j$ are zero as well: the endpoint differences
+are zero, the vertex curvatures are identical, and the unit weights
+sum to zero.  The passive projective map takes values in
+$\mathbf P^{k-1}=\mathbf P^\ell$, so $C_i^{s-1}=C_i^{\ell+1}=0$.
+The scalar correction in CS36 is therefore also zero.  Its remaining
+curvature homotopy is
+\[
+ q_{a,b}(C^i f)=\mathcal H_{h_i}(e_{ab}),\qquad
+ h_i=-\phi_i\sum_{j=0}^{\ell}C_i^jR^{\ell-j}=-G_i^{\rm pas}.
+ \tag{CU17}
+\]
+Subtracting proves (CU12), including its sign.
+
+If $r=3$, the passive rank is one, $\phi_1-\phi_0=c$ and
+$G_i^{\rm pas}=\phi_i$, giving (CU13) with $w=0$.
+For $r\ge4$, apply the exact frozen RAT11--RAT12 construction to
+the \emph{actual passive tuple of rank $r-2$} and its one-entry
+unit change.  It gives (CU13) with every mixed term retained.
+The complete formula for $w$ is specified next.  Finally apply
+the independently proved (CU3) and the linearity of $\mathcal H$.
+Since $R$ is closed in both colours,
+$\mathcal H_{cR^\ell}(e_{ab})=R^\ell\mathcal H_c(e_{ab})$.
+This proves (CU14)--(CU15).  Its extending triple is defined on
+all of $N$ from the original $R,a,b,c$, regardless of whether the
+passive tuple is nonzero outside $\Omega$.
+\end{proof}
+
+For clarity, when $\ell\ge1$, set $v=\phi_1-\phi_0$ and
+\[
+ B_j=-v\sum_{t=0}^{j-1}C_1^tC_0^{j-1-t}\quad(1\le j\le\ell),
+ \qquad P_0=\phi_0\sum_{t=0}^{\ell-1}C_0^tR^{\ell-1-t},
+ \qquad c_+=\max(c,0).
+ \tag{CU18}
+\]
+The exact pair in (CU13) is
+\[
+ \begin{split}
+ \sigma&=\sum_{j=1}^{\ell}\phi_0\,d''B_j R^{\ell-j}
+                       +c_+d''B_\ell-c\,d''P_0,\\
+ \tau&=\sum_{j=1}^{\ell}d'\phi_0\wedge B_j R^{\ell-j}
+                       +d'c_+\wedge B_\ell-d'c\wedge P_0.
+ \end{split}
+ \tag{CU19}
+\]
+The full wall term at $c=0$ is handled by RAT8, not by dropping
+an absolute-value derivative.  This displays every actual form
+used in $T$.
+
+\paragraph{The unresolved region.}
+The ordinary open $\Omega$ in (CU9) is not asserted to cover
+$W$.  In a free normal model it omits, for example, points where
+the passive tuple is zero but $f_1$ is nonzero, and regions where
+all three changed entries compete.  One cannot extend $T$ from
+$\Omega$ by zero or by declaring its boundary correct.  Thus
+(CU15) is a complete all-rank calibration and a conditional
+whole-overlap certificate, not a proof of the general QH10 cube.
+It does not create a new independent cycle-existence class.
+
+If separately supplied three-open actual gluing data satisfy
+the precise earlier recovered FG11 interface and their triple
+defect is exactly (CU10) on an overlap contained in $\Omega$,
+(CU14) supplies its $t_{012}$ and extending $f_{012}$.  The
+already proved FG12--FG16 formula, followed by RSP5--RSP8,
+then constructs the original-$U$ actual Green form and verifies
+all actual compact tests.  This is a reference to the exact
+reviewed earlier FG source, SHA256
+\texttt{4175a690d78ecd1d38364584d292c615f4a1f7512fad2b1ce2ccfa8cf0328234},
+not a new R11 gluing theorem, not restoration of the missing
+selected-final FG source, and not an automatic construction of
+the required local frame paths or overlaps.
+
+\subsection{A strict raw-cube obstruction in every rank}
+
+The extending triple in (CU15) cannot in general be deleted.
+Here is a proper-fibre actual test proving this for every $r\ge3$.
+Let $\ell=r-3$ and take
+\[
+ B=\{1<v(T_a)<2,\ 1<v(T_b)<2,\ 1<v(T_c)<2\}
+                         \subset(\mathbb G_m^3)^{\rm an},
+ \qquad N=B\times\mathbf P^\ell_K.
+ \tag{CU20}
+\]
+The inequalities define ordinary analytic opens; Gauss points
+give their nonemptiness over the original $K$ even if those real
+intervals contain no valuations of elements of $K^\times$.
+Let $L$ be the pullback of $\mathcal O(1)$ with its standard
+projective metric, and write $z_0,\ldots,z_\ell$ for its homogeneous
+sections.  Choose an integer $M$ sufficiently large that
+$|\pi|^M<e^{-(4+\varepsilon)}$ for a fixed original-$K$ uniformizer
+$\pi$.  Put
+\[
+ f=(\pi^M z_0,\pi^M z_0,z_0,z_1,\ldots,z_\ell),
+ \qquad (\lambda_a,\lambda_b,\lambda_c)=(T_a,T_b,T_c).
+ \tag{CU21}
+\]
+There are $\ell+3=r$ entries.  The passive tuple generates $L$,
+so $f$ has no common zero on $N$ and its norm is one.  The two
+strict inequalities (CU9) hold on all of $N$: the units have
+norm less than one, $|a|+|c|<4$ and $|b|+|c|<4$.  Thus (CU15)
+holds globally with $\Omega=W=N$.
+
+Let $R$ be the pullback of the projective standard form and let
+$\pi_B:N\to B$ denote the projection.  The original-field calibration
+is $\int_{\mathbf P^\ell}R^\ell=1$, also for $\ell=0$.
+Choose a nonnegative smooth function
+$\chi\in C_c^\infty((1,2)^3)$ with nonzero integral, and set
+\[
+ \alpha=\chi(a,b,c)\,d'a\wedge d'b\wedge d'c
+                                  \in B_c^{3,0}(B).
+ \tag{CU22}
+\]
+The faithful unit-torus presentation gives
+\[
+ \int_B d''a\wedge d''b\wedge d''c\wedge\alpha\ne0.
+ \tag{CU23}
+\]
+Only nonvanishing matters; orientation fixes its sign.  Since
+$\dim B=3$, the actual form $D\alpha\in B^{4,1}(B)$ is zero.
+
+Suppose for contradiction that the specified raw cube had a strict
+actual witness $\mathcal Q=\partial_3(U,V,P,Q)$ on $N$.
+Its first entry would satisfy
+\[
+                       d''\mathcal Q_A=-DU.
+ \tag{CU24}
+\]
+The product with $\pi_B^*\alpha$ has compact support because the
+projective factor is proper.  Two full actual Stokes operations and
+$D\pi_B^*\alpha=0$ therefore give
+\[
+                   \int_N d''\mathcal Q_A\wedge\pi_B^*\alpha=0.
+ \tag{CU25}
+\]
+For $r=3$, $U$ has negative primed degree and is zero; the same
+conclusion follows directly.
+
+On the other hand, (CU15), the same Stokes calculation for its
+explicit $T$, (CU7), and the proper product calibration give
+\[
+ \begin{split}
+ \int_N d''\mathcal Q_A\wedge\pi_B^*\alpha
+ &=-\int_N R^\ell\wedge d''a\wedge d''b\wedge d''c
+                                            \wedge\pi_B^*\alpha\\
+ &=-\int_B d''a\wedge d''b\wedge d''c\wedge\alpha\ne0.
+ \end{split}
+ \tag{CU26}
+\]
+This contradicts (CU25).  Every form used is actual; in particular
+no assertion that arbitrary proper pushforward preserves actual
+forms is used.  The test is an external product only to detect a
+particular obstruction, not to replace the full actual test class.
+
+This proves only that the raw CS cube need not be a strict third
+boundary.  The very same model has the explicit extending-triple
+solution (CU15).  It is not a counterexample to relative cube
+solvability, to Green existence, to OPEN-KERNEL, or to the original
+regular-CI support problem.  The example concerns the specified
+local cube identity, for which no regularity of $f$ was required.
+Products with arbitrary additional passive directions preserve the
+mechanism after inserting compact actual tests in those directions.
+
+\paragraph{Presentations, topology, and fixed-field checks.}
+The positive theorem uses finite actual norm presentations, full
+two-colour operations, and ordinary strict-norm opens.  All original
+real intercepts, non-product unit relations and mixed jets remain in
+CS36 and (CU19).  No generic valuation of a sum, rational-point
+density, compact-angular-support extrapolation, completion, curvature
+factor cancellation or separate low-block closedness is used.
+The polynomial expressions commute with actual restrictions and
+refinements; their continuity is only the fixed-presentation finite
+Leibniz continuity in the actual inherited spaces.  The proper-fibre
+calibration above uses the original $K$ and its absolute value and
+does not introduce or divide by an extension degree.
+
+\paragraph{Exact dependencies.}
+CS is used at SHA256
+\texttt{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf};
+MT at
+\texttt{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4};
+QHT at
+\texttt{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0};
+CPT at
+\texttt{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6};
+RAT at
+\texttt{4b21385df7d9727a3a011afc667320dc0e9bbed11b1584c8cd2ca568105c4333};
+and the standard projective calibration AAT7--AAT10 at
+\texttt{bd9f22da3a13de7e3b6bf77f7d00b487d57e9f4630fbfb014ceade7acf5abb1e}.
+The conditional original-support paragraph additionally uses only
+the exact earlier FG source identified there and frozen RAG/RSP/CI.
+No missing selected-final R10 theorem is inferred or reconstructed
+from its old result-register prose.

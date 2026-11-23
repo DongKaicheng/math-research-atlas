@@ -1,0 +1,283 @@
+\section{Products of curves and surfaces and their Chow summands}\label{sec:products}
+
+\subsection{The product-model input}
+
+The product theorem uses a numerical calculation on a particular
+semistable model. We state its algebraic content before applying the
+companion comparison with actual-form obstructions.
+
+Let $R$ be a complete discrete valuation ring with finite residue field.
+Take regular projective reduced strictly semistable models of finitely
+many curves and surfaces. Fix orders on their components and form the
+ordered staircase resolution of their product. Write its special fiber
+as $D=\bigcup_iD_i$, with $\dim D_i=d$, retaining each connected
+intersection separately. For an oriented edge $i\to j$, let
+$j_i:E_{ij}\to D_i$ and $j_j:E_{ij}\to D_j$ be the inclusions. Set
+\[
+ (\rho x)_{ij}=j_j^*x_j-j_i^*x_i,\qquad
+ \sigma y=(j_{i*}y,-j_{j*}y),\qquad A=\sigma\rho.
+\]
+These are cohomological actions of actual rational Chow correspondences.
+The off-diagonal entries of $A$ have codimension $d+1$; its diagonal
+entry on $D_i$ is
+\[
+ (\Delta_i)_*c_1(N_{D_i/\mathcal D})
+       =-(\Delta_i)_*\sum_{j\ne i}[E_{ij}].
+\]
+
+\begin{proposition}[Companion product-model theorem]\label{prop:product-model}
+For this ordered model there is an invertible prime $\ell$ and a
+matrix of rational Chow correspondences $G$, with entries of
+codimension $d-1$, for which
+\begin{equation}\label{eq:inner-inverse}
+ A^H G^H A^H=A^H
+\end{equation}
+on full geometric $\ell$-adic cohomology, in every degree and with
+its Tate twist. This remains true after product with a smooth
+projective $R$-scheme, by replacing $A,G$ with the exterior products
+of their correspondences and the coefficient's diagonal.
+\end{proposition}
+
+The proof is \cite[model splitting theorem]{InternalProducts}, whose
+actual deletion and residual-core constructions are included in the
+proof dossier. The essential structure is as follows. Each component
+is a tower of blowups of closed strata in the full reduced boundary
+of a product of smooth curve and surface components. For a subset
+$I$ of the surface indices, coordinate deletion gives an actual
+proper birational map
+\begin{equation}\label{eq:deletion-map}
+ f_I:D_{\boldsymbol i}\longrightarrow
+ \left(\prod_{j\in I}X_{j,i_j}\right)\times W_{-I,\boldsymbol i_{-I}},
+\end{equation}
+where $W_{-I}$ is the staircase component of the remaining factors.
+The refined surface projectors $p_j$ onto $H^2_{\rm tr}$ annihilate
+cohomology supported on the boundary curves. Consequently the transported
+projectors
+\[
+ P_I=f_I^*((\boxtimes_{j\in I}p_j)\boxtimes1)f_{I*}
+\]
+satisfy $P_I=\prod_{j\in I}P_{\{j\}}$, commute with the incidence,
+and do so on exceptional summands as well. The proof of commutation
+uses support localization for the kernel of a birational pull-push
+operator in \eqref{eq:deletion-map}.
+
+The simultaneous sectors retain the tensor factors $t_2$ selected by
+these projectors. The residual projector annihilates each generator
+which still contains a full-surface $t_2$ factor; the deletion proof
+establishes this equality in relative Chow before passing to
+localization. The surviving blowup and localization generators
+in the complementary factor are of abelian type. Thus the incidence
+operator on a sector is the identity on its retained transcendental
+factor tensored with an operator on one abelian carrier. Numerical
+semisimplicity and the one-prime comparison for that carrier give its
+inner inverse, which is tensored back with the retained factor.
+Finite-field choices descend by normalized averaging: the equation
+\eqref{eq:inner-inverse} is linear in $G$. This is the algebraic
+product-model statement used here.
+
+Two consequences of \eqref{eq:inner-inverse} explain its role in the
+height problem. Let $\mathscr A^u$ be the space of actual algebraic
+cycle classes on the disjoint union of the $D_i$, and let
+$p:\mathscr A^u\twoheadrightarrow N^u(D^{(0)})_\Q\otimes\Q_\ell$
+be the quotient to numerical classes. If $p(x)$ is in the numerical
+kernel of $A$, then
+\begin{equation}\label{eq:numerical-correction}
+ x^\flat=x-G^HA^Hx
+\end{equation}
+has the same numerical image and belongs to $\ker A^H$. Also,
+if an algebraic class $\alpha$ is in $\im A^H$, then $G^H\alpha$
+is algebraic and $A^HG^H\alpha=\alpha$. Hence
+\begin{equation}\label{eq:image-saturation}
+ \mathscr A^{u+1}\cap\im A^H=A^H\mathscr A^u.
+\end{equation}
+The numerical-kernel lifting and actual-span saturation are the two
+inputs to the companion model criterion \cite{InternalModel}.
+
+\begin{theorem}[Arbitrary curve and surface products]\label{thm:products}
+Let $X_1,\ldots,X_m/K$ be arbitrary smooth projective geometrically
+integral curves or surfaces. Let $T/K$ be smooth projective
+geometrically integral with potentially good projective reduction. Then
+\[
+ X=T\times\prod_{a=1}^mX_a
+\]
+has $\mathsf V$. The assertion holds over every finite extension of
+$K$ for every newly specified geometrically homologically trivial
+cycle there. Empty products and a point as coefficient are permitted.
+\end{theorem}
+
+\begin{proof}
+After a common finite extension choose projective strictly semistable
+alterations of the low-dimensional factors and a smooth projective
+model of $T$. Semistable repair after any intermediate ramified
+extension is part of the ordered-model construction in
+\cite{InternalProducts}. Apply \propref{prop:product-model} to the
+resulting witness. Weight--monodromy for curves and surfaces, the
+purity of the good coefficient, and K\"unneth give the odd-weight
+condition in the companion model criterion. Equations
+\eqref{eq:numerical-correction} and \eqref{eq:image-saturation}
+supply its two exactness conditions. The pulled-back obstruction
+therefore vanishes. Dominant and finite-degree descent give zero
+obstruction over $K$; the original curved pair gives the requested
+form.
+
+For an arbitrary finite $K'/K$, the factors still have the same
+dimensions and the coefficient remains potentially good. Reapply
+the construction over $K'$ to its newly specified cycle. This proves
+the assertion for new classes, as well as for pullbacks of old ones.
+\end{proof}
+
+Over a number field, the curves and surfaces are unrestricted. If a
+coefficient $T$ is present, it is required to have potentially good
+projective reduction at every finite place. Applying
+\thmref{thm:products} at all completions and using
+\lemref{lem:two-degrees} gives the full height in every complementary
+degree, also after every finite number-field extension.
+
+\subsection{Abelian factors and the surface-generated Chow domain}
+
+\begin{lemma}\label{lem:abelian-curve-source}
+Over a characteristic-zero field, an abelian variety becomes a
+rational Chow-motive retract of a product of curves after a finite
+extension.
+\end{lemma}
+
+\begin{proof}
+For an abelian variety of dimension $g\geq2$, choose a smooth
+complete-intersection curve and a point $c_0$ on it after a finite
+extension. Translate by $-c_0$ and call the resulting pointed curve
+$C$; choose the complete intersection so that $C-C$ generates $A$.
+The addition map $C^g\to A$ is dominant. Indeed,
+the successive sums of $C$ increase in dimension until they fill
+$A$: stabilization at a proper subvariety would make that subvariety
+stable under the group generated by $C$. Since source and target
+have dimension $g$, the map is generically finite, of some degree
+$d>0$. Its graph satisfies $f_*f^*=d\Delta_A$, and
+$d^{-1}f_*$ is a Chow retraction. Dimension one is immediate;
+dimension zero gives the unit motive.
+\end{proof}
+
+\begin{corollary}\label{cor:surface-envelope}
+Suppose that after a finite extension the rational Chow motive of
+$X$ is a direct summand of a finite direct sum of Tate twists of
+products of curves and surfaces. Then $\mathsf V(X)$ holds. It also
+holds for $T\times X$ with a potentially good projective coefficient.
+These conclusions include products with arbitrary abelian factors.
+\end{corollary}
+
+\begin{proof}
+Choose the inclusion and retraction correspondences. Their composites
+sum to the diagonal. Tensor with the coefficient's diagonal when
+needed, apply \thmref{thm:products} to each intermediate variety,
+and use \lemref{lem:general-transfer}. An abelian factor may first be
+replaced by its curve-product retraction from
+\lemref{lem:abelian-curve-source}.
+\end{proof}
+
+\subsection{Hilbert schemes of points on arbitrary surfaces}
+
+Let $S$ be a smooth projective geometrically integral surface and
+let $H=S^{[m]}$. For a
+partition $\lambda=1^{a_1}\cdots m^{a_m}$, put
+$l(\lambda)=\sum_i a_i$, $s_\lambda=m-l(\lambda)$, and
+$G_\lambda=\prod_i\mathfrak S_{a_i}$. On the smooth power
+$S^{l(\lambda)}$, use the rational projector
+\[
+ e_\lambda=|G_\lambda|^{-1}\sum_{g\in G_\lambda}\Gamma_g.
+\]
+The theorem of de Cataldo--Migliorini
+\cite[Theorem 6.2.1 and Remark 6.2.2]{DCM} gives
+\begin{equation}\label{eq:hilbert-motive}
+ h(S^{[m]})\simeq\bigoplus_{\lambda\vdash m}
+       (h(S^{l(\lambda)}),e_\lambda)\otimes\LL^{s_\lambda}.
+\end{equation}
+We use the covariant twist convention
+$\CH_a(h(V)(s))=\CH_{a-s}(V)_\Q$.
+
+\begin{theorem}\label{thm:hilbert}
+For arbitrary smooth projective geometrically integral surfaces
+$S_i$, curves $C_j$, and
+positive integers $m_i$, the variety
+\[
+ T\times\prod_j C_j\times\prod_i S_i^{[m_i]}
+\]
+has $\mathsf V$ if $T$ is smooth projective geometrically integral
+and has potentially good projective reduction.
+Over a number field, it has a full height domain when this reduction
+condition holds at every finite place.
+\end{theorem}
+
+\begin{proof}
+Tensor the actual incidence correspondences in
+\eqref{eq:hilbert-motive}. For a tuple of partitions they factor
+through $T\times\prod_j C_j\times\prod_i S_i^{l(\lambda_i)}$.
+If $s=\sum_i s_{\lambda_i}$, this intermediate variety has
+dimension $\dim X-2s$ and an original codimension-$r$ class maps
+to codimension $r-s$. Its homological class is zero. Apply
+\thmref{thm:products} in every feasible degree and then
+\lemref{lem:general-transfer}. The group in degree zero has no
+homological kernel, and out-of-range groups vanish. The global
+assertion follows at all completions. The correspondences commute
+with base change, so the same proof applies to all new classes
+after finite extension.
+\end{proof}
+
+\subsection{Finite specialization of Chow certificates}
+
+\begin{lemma}\label{lem:specialize-certificate}
+Let $X/k$ be smooth projective in characteristic zero. Suppose that
+over a field extension $\Omega/k$ its diagonal factors in rational
+Chow through finitely many products of smooth projective curves and
+surfaces. Then such a factorization exists over a finite extension
+$E/k$, with auxiliary curves and surfaces allowed to change.
+\end{lemma}
+
+\begin{proof}
+Choose cycle representatives for the correspondences and finitely
+many principal divisors witnessing the diagonal equality. All these
+data, together with the auxiliary varieties and their projective
+embeddings, descend to a field finitely generated over $k$. Spread
+them over a smooth integral finite-type $k$-scheme $B$. Shrink $B$
+so that the auxiliary families are smooth projective with
+geometrically integral fibers, the cycles have their expected
+codimensions, and the relative Chow equality holds. The last step
+follows either by spreading its principal-divisor certificate or by
+the direct-limit description of Chow groups over the function field.
+
+Choose a closed point $b\in B$. Its residue field $E$ is finite over
+$k$. Since $B$ is smooth, refined pullback to $b$ commutes with
+the smooth pullbacks, proper projections and diagonal intersections
+which define correspondence composition. The constant family
+$X\times B$ specializes to $X_E$, while the auxiliary families
+specialize to smooth curves and surfaces. Thus the diagonal
+certificate specializes with all its degree shifts.
+\end{proof}
+
+\begin{theorem}[Complex certificates and surface moduli]\label{thm:moduli}
+Let $X/F$ be smooth projective over a number field. If for one complex
+embedding $h(X_\C)$ retracts through products of curves and surfaces
+in rational Chow motives, then $X$ has a full height domain, also
+after every finite number-field extension. In particular this holds
+if $X_\C$ is a smooth projective moduli space appearing in
+B\"ulles's theorem: Gieseker-stable twisted sheaves, or stable objects
+for a generic stability condition, on a complex projective K3 or
+abelian surface. Finite products of these spaces and the varieties
+in \thmref{thm:hilbert} are allowed, with an everywhere potentially
+good projective coefficient.
+\end{theorem}
+
+\begin{proof}
+By \lemref{lem:specialize-certificate}, a finite extension $E/F$
+carries an actual diagonal certificate of the required kind.
+Complete it at a place above each finite place of $F$ and apply
+\corref{cor:surface-envelope}; full-degree descent gives the
+original local kernel vanishing. The same construction over a
+compositum treats every new cycle after finite extension. Apply
+\lemref{lem:two-degrees}.
+
+For the moduli spaces, \cite[Theorem 0.1]{Bulles} supplies precisely
+an actual rational Chow retraction through powers of the underlying
+surface. The first assertion applies. For products, tensor the
+certificates; the intermediate varieties remain products of curves
+and surfaces. The surface's finite-dimensionality is not an
+assumption of the cited retraction theorem.
+\end{proof}

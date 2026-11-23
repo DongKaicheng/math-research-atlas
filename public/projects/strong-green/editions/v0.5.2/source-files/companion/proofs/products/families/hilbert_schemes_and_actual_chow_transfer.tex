@@ -1,0 +1,222 @@
+% Round 20. HM20. family20. Depends on final DP20 activation and independent review.
+\section{All surface Hilbert schemes through actual Chow transfer}
+\label{r20hm:section}
+
+\paragraph{Historical and logical status.}
+The R9 source \texttt{root\_chow\_envelope\_and\_hilbert\_schemes.tex}
+already states this application conditionally on its product
+candidate.  This section verifies the application using the
+present DP20 product theorem and the frozen CV16 obstruction-kernel
+covariance.  It does not change the old source's candidate status
+or claim bibliographic novelty.  Its activation depends on the
+final independent acceptance of DP20 and of this transfer.
+
+\subsection{The exact previously proved transfer mechanism}
+
+For a smooth projective $V/K$, let
+$\mathcal K_K^r(V)=\ker\mathfrak o_{V,K}^r$ be the frozen
+intrinsic obstruction kernel.  CV16 proves that every rational
+algebraic correspondence between smooth projective varieties
+sends this kernel to the kernel in the degree prescribed by
+its codimension.  Its proof uses supported operations,
+projective-space integration and the smooth blowup formula;
+it is not an assertion of arbitrary proper pushforward of
+actual forms.
+
+Suppose smooth projective $X,V_1,\ldots,V_t/K$ have actual
+rational Chow correspondences $u_i:X\dashrightarrow V_i$,
+$v_i:V_i\dashrightarrow X$ of opposite degree shifts with
+\[
+ \sum_i v_i\circ u_i=[\Delta_X]
+ \quad\text{in }\operatorname{CH}^{\dim X}(X\times X)_{\mathbf Q}.
+ \tag{HM20.1}\label{r20hm:diagonal}
+\]
+If every geometrically homologically trivial class on every
+$V_i$ has zero obstruction, the same holds on $X$.
+Indeed for $z\in\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\ hom}}$
+each $u_{i*}z$ is geometrically homologically trivial, since
+cycle classes commute with the actual correspondences.
+It belongs to $\mathcal K(V_i)$; CV16 sends $v_{i*}u_{i*}z$
+into $\mathcal K(X)$.  Equation~\eqref{r20hm:diagonal}
+and additivity give $z\in\mathcal K(X)$.  A term with
+impossible Chow degree is zero; a term in geometric
+homological codimension zero is also zero, component by
+component.  This is the exact diagonal-factorization
+corollary CV16.4, restated to identify the required input.
+
+VT17 now constructs the Green form for the original specified
+cycle, using its own curved pair and the zero obstruction.
+Thus no support inherited from a correspondence image replaces
+the original support.  No cohomological or numerical diagonal
+identity can substitute for \eqref{r20hm:diagonal}.
+
+\subsection{The native de Cataldo--Migliorini certificate}
+
+Let $S/K$ be a smooth projective geometrically integral surface
+over a characteristic-zero field, and put $H=S^{[m]}$, $m\geq1$.
+The Hilbert scheme is smooth projective geometrically integral
+of dimension $2m$.  For a partition
+\[
+ \lambda=1^{a_1}\cdots m^{a_m}\vdash m,
+ \qquad l=l(\lambda)=\sum a_i,
+ \qquad s_\lambda=m-l,
+\]
+let $G_\lambda=\prod_i\mathfrak S_{a_i}$ act on $S^l$, and set
+\[
+ e_\lambda=\frac1{|G_\lambda|}
+       \sum_{g\in G_\lambda}[\Gamma_g]
+ \in\operatorname{CH}^{2l}(S^l\times S^l)_{\mathbf Q}.
+ \tag{HM20.2}\label{r20hm:averaging}
+\]
+This is an actual idempotent since multiplication in the
+finite group ring gives $e_\lambda^2=e_\lambda$.
+
+The primary theorem of de Cataldo--Migliorini gives
+\[
+ h(H)\simeq\bigoplus_{\lambda\vdash m}
+       (h(S^{l(\lambda)}),e_\lambda)
+                              \otimes\mathbb L^{s_\lambda}.
+ \tag{HM20.3}\label{r20hm:dcm}
+\]
+The precise source is M. A. de Cataldo and L. Migliorini,
+\emph{The Chow Groups and the Motive of the Hilbert Scheme
+of Points on a Surface}, J. Algebra 251 (2002), 824--848,
+Theorem 6.2.1, printed p.~846, and Remark 6.2.2; the latter
+explicitly permits any ground field.  Proposition 6.1.5
+provides the diagonal identity.  The primary author PDF is
+\url{https://www.math.stonybrook.edu/~mde/MyPublishedPapers/MotiveHilbSchJournOfAlg.pdf}.
+In particular this is an actual Chow-motive theorem over $K$,
+not a theorem restricted to complex cohomology.
+
+For clarity, its incidence cycle before quotienting is
+\[
+ \Gamma_\lambda=
+ \bigl\{((x_1,\ldots,x_l),\xi):
+       \pi(\xi)=\lambda_1x_1+\cdots+\lambda_lx_l\bigr\}_{\rm red}
+ \subset S^l\times H,
+ \tag{HM20.4}\label{r20hm:incidence}
+\]
+where $\pi:H\to S^{(m)}$ is Hilbert--Chow.  Its dimension
+is $m+l$, so its codimension in $S^l\times H$ is $m+l$.
+The theorem normalizes these cycles, their transposes and
+the finite averages \eqref{r20hm:averaging} to give actual
+maps $u_\lambda,v_\lambda$ with
+\[
+ \sum_\lambda v_\lambda\circ u_\lambda=\Delta_H,
+ \quad
+ u_{\lambda*}:\operatorname{CH}^r(H)\longrightarrow
+                  \operatorname{CH}^{r-s_\lambda}(S^l),
+ \quad
+ v_{\lambda*}:\operatorname{CH}^{r-s_\lambda}(S^l)
+                    \longrightarrow\operatorname{CH}^r(H).
+ \tag{HM20.5}\label{r20hm:degrees}
+\]
+The degree calculation is $m+l-2m=-s_\lambda$ for the
+transpose and $m+l-2l=s_\lambda$ for the forward map.
+The maps in \eqref{r20hm:degrees} are the mutually inverse
+maps of the cited Chow theorem, including its rational
+normalization constants.  The singular quotient
+$S^l/G_\lambda$ is represented by its projector on the
+smooth power; it is never used as a smooth Green target.
+Every construction is defined over $K$ and commutes with
+field extension.
+
+\subsection{The local and global full-domain consequence}
+
+\begin{theorem}[Products of all point Hilbert schemes of arbitrary surfaces]
+\label{r20hm:main}
+Fix a finite valued $K/\mathbf Q_p$ with its original absolute value.
+Let $S_1,\ldots,S_b/K$ be arbitrary smooth projective geometrically
+integral surfaces, and let $m_i\geq1$.  Let $C_1,\ldots,C_c/K$
+be arbitrary smooth projective geometrically integral curves.
+Let $T/K$ be smooth projective geometrically integral with
+potentially good projective reduction; a point is permitted.
+Then
+\[
+ X=T\times\prod_{j=1}^{c}C_j\times
+                    \prod_{i=1}^{b}S_i^{[m_i]}
+ \tag{HM20.6}\label{r20hm:family}
+\]
+has strong G for every specified geometrically homologically
+trivial rational cycle in every $1\leq r\leq\dim X$.
+The conclusion holds over every finite extension of $K$ for
+all its new geometrically homologically trivial cycles.
+If $b=c=0$, the assertion is the frozen potentially-good case.
+\end{theorem}
+
+\begin{proof}
+Tensor the finitely many actual identities
+\eqref{r20hm:degrees} with each other and with the diagonals
+of $T$ and the curves.  For every tuple of partitions
+$\boldsymbol\lambda$, this yields maps through the smooth
+projective variety
+\[
+ V_{\boldsymbol\lambda}
+   =T\times\prod_j C_j\times\prod_i S_i^{l(\lambda_i)}
+\]
+with shift $s=\sum_i(m_i-l(\lambda_i))$, and their composites
+sum to $\Delta_X$ in rational Chow.  These are actual
+cycles and an actual rational-equivalence certificate.
+DP20 proves full homological obstruction vanishing on
+every $V_{\boldsymbol\lambda}$, using its allowed arbitrary
+potentially-good coefficient.  The transfer argument above
+then gives zero obstruction on $X$ in every degree, and
+VT17 gives the desired exact-support actual Green solution.
+
+To check the shift, write $n=\dim X$.  Then
+$\dim V_{\boldsymbol\lambda}=n-2s$, and the image of a
+codimension-$r$ cycle is in codimension $r-s$.  Homological
+triviality is preserved.  If this degree is outside the
+Chow range, or is zero, the image is zero as explained
+above; otherwise it is in precisely DP20's asserted range.
+
+For any finite $L/K$, base change the actual diagonal
+identity and reapply DP20 to the varieties over $L$ and to
+the new image cycles.  This does not assume they are old
+pullbacks.  DP20's auxiliary alterations and field extensions
+are internal to that theorem, with the frozen full-degree
+actual descent.  The final VT17 construction remains on
+the originally specified support over $L$, with all actual
+compact tests and its prescribed absolute value.
+\end{proof}
+
+\begin{corollary}[Full complementary Beilinson--Bloch heights]
+\label{r20hm:global}
+Let $F$ be a number field.  Let the curves and surfaces in
+\eqref{r20hm:family} be arbitrary smooth projective
+geometrically integral varieties over $F$, and suppose that
+$T/F$ has potentially good projective reduction at every
+finite place.  For $n=\dim X$ and $1\leq r\leq n$, PH16
+is defined on the full groups
+\[
+ \operatorname{CH}^{r}(X)_{\mathbf Q,\mathrm{geom\ hom}}
+ \times
+ \operatorname{CH}^{n+1-r}(X)_{\mathbf Q,\mathrm{geom\ hom}}
+ \longrightarrow\mathbf R.
+ \tag{HM20.7}\label{r20hm:height}
+\]
+The same holds after every finite number-field extension.
+\end{corollary}
+
+\begin{proof}
+Apply the local theorem at every finite completion, and
+after every finite extension of those completions.
+All local obstructions on both full homological Chow groups
+vanish.  PH16 and GA17 give the full intrinsic height
+domain and the regular-model admissible Chow lifts.
+No direct semistable model of the Hilbert scheme is required.
+\end{proof}
+
+\paragraph{A concrete middle range and the exact limit.}
+For an arbitrary surface $S/F$, the sixfold $S^{[3]}$ has
+the full pairing in codimensions $3$ and $4$.  Its three
+partitions have lengths $3,2,1$ and shifts $0,1,2$, so the
+correspondence images of the two arguments have respective
+codimensions $(3,4)$ on $S^3$, $(2,3)$ on $S^2$ and $(1,2)$
+on $S$.  In every row the sum is the target dimension plus
+one.  This is a nonproduct geometry reached by the actual
+diagonal identity.  Neither a cohomological motive splitting,
+general finite-dimensionality of Chow motives, positivity
+of heights, nor all-prime local-link comparison is inferred.
+The general G and arbitrary-variety full-height problems
+remain open.

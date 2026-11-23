@@ -1,0 +1,396 @@
+% Round 22 / geometry branch. Candidate; independent review required.
+\section{A second complete-height family with maximal fourfold crossing depth}
+\label{r22sq:section}
+
+\paragraph{Scope.}
+SU22 produces a second explicit family in the same ambient linear
+system as DG22.  The local divisor arrangement now has genuine
+quintuple points.  We compute the entire top and bottom weight
+pieces and obtain exact fourth monodromy of rank $38864$.
+Consequently these generic fibers are distinct from the DG22
+family, where $N^3=0$.  Both families have full strong G and
+complete height domains after every finite extension.  The
+top weight coefficient is therefore not a Green obstruction.
+
+\subsection{The actual five-divisor arrangement}
+
+Work first over a finite field extension of $\mathbf F_5$.
+Let $E:y^2=x^3-x$, $S=E^2$, $M=S\times S=E^4$, and put
+\[
+ A_0=\mathcal O_E(3[0])\boxtimes\mathcal O_E(3[0]),\qquad
+ H=A_0\boxtimes A_0\quad\text{on }M.
+ \tag{SQ22.1}\label{r22sq:H}
+\]
+Choose five smooth ample divisors $F_1,\ldots,F_5\in|H|$
+meeting transversely, with all their intersections of one,
+two or three distinct members geometrically integral and
+with no fivefold intersection.  Every fourfold intersection
+is a finite etale set.  After a further finite constant
+extension split all of those sets into native points.
+Such an arrangement exists: successive very ample Bertini
+conditions, transversality to the finite list of old strata,
+and avoidance of the old zero-dimensional intersections
+define a nonempty open over the algebraic closure and hence
+over a finite constant field.  The stated geometric
+integrality is part of these Bertini conditions.
+
+Each fourfold intersection consists of exactly
+\[
+                 c:=\deg_M(H^4)=4!\,3^4=1944
+ \tag{SQ22.2}\label{r22sq:count}
+\]
+native points.  Indeed $c_1(H)$ is the sum of the four
+degree-three point classes of the elliptic factors; only
+their product survives in the fourth power.  The transversality
+makes every local multiplicity one.
+
+Choose five distinct native points of $\mathbf P^1$.
+The ten factor divisors on $M\times\mathbf P^1$ are
+\[
+ F_i\times\mathbf P^1\quad(1\le i\le5),\qquad
+ M\times\{p_j\}\quad(1\le j\le5),
+ \tag{SQ22.3}\label{r22sq:factors}
+\]
+ordered with the first five before the point factors.  Choose
+$Q\in H^0(M\times\mathbf P^1,H^5\boxtimes\mathcal O(5))$
+with all the transverse-cut hypotheses of SU22, in particular
+avoiding the zero-dimensional fivefold strata.  The same
+simultaneous Bertini argument supplies it after another finite
+constant extension.  The positive-dimensional center cuts are
+geometrically integral componentwise.  Zero-dimensional center
+cuts are only required to be finite etale.
+
+Lift this datum to a good mixed-characteristic trait and
+assume the resulting generic divisor
+\[
+          X=V\left((\prod_{i=1}^5 f_i)(\prod_{j=1}^5 l_j)
+                                      +\pi Q\right)
+ \tag{SQ22.4}\label{r22sq:smoothing}
+\]
+is smooth and geometrically integral.  SU22 supplies full G
+in every degree and after every finite valued extension.
+The actual ordered resolution keeps the ten components,
+and each stratum is the codimension-two smooth blowup
+prescribed there.  The quadruple strata are unchanged curves:
+either a disjoint union of $c$ copies of $\mathbf P^1$
+(four $F$ factors), or one smooth geometrically integral
+curve $F_i\cap F_j\cap F_k$ (three $F$ factors and a point).
+They have no center of codimension two.  The quintuple
+strata are exactly the $c$ native points for each choice
+of four $F$ factors and one point factor.  Thus there are
+$25c$ such points and no sixfold strata.
+
+\subsection{The whole extreme coefficient complex}
+
+Let $A$ denote the finite incidence complex of the five
+divisors on $M$.  It has five vertices, ten edges, ten
+triangular faces, and $c$ distinct tetrahedral cells for
+each of the five four-element subsets of $\{1,\ldots,5\}$.
+Every such cell has the ordinary oriented boundary of its
+four-element subset.  These repeated cells record the
+distinct native intersection points.  This is an incidence
+or delta-complex; it is not incorrectly treated as a simple
+abstract simplicial complex with only five tetrahedra.
+
+\begin{lemma}[Exact top incidence dimension]
+\label{r22sq:incidence}
+The reduced rational homology of $A$ is zero below degree
+three, and
+\[
+                         \dim H_3(A,\mathbf Q)=5c-4.
+ \tag{SQ22.5}\label{r22sq:H3}
+\]
+The dual incidence complex $\Delta$ of the actual model
+\eqref{r22sq:smoothing} is the join of $A$ with five discrete
+vertices.  Consequently its reduced rational cohomology is
+concentrated in degree four and
+\[
+                     \dim H^4(\Delta,\mathbf Q)=4(5c-4)=38864.
+ \tag{SQ22.6}\label{r22sq:H4}
+\]
+\end{lemma}
+
+\begin{proof}
+Through dimension two the complex $A$ is the full
+two-skeleton of the simplex on five vertices.  Its
+tetrahedral boundary map has $5c$ columns, consisting of
+$c$ copies of each of the five usual columns for the
+boundary of the four-simplex.  That usual boundary map
+has rank four: the single relation is the oriented
+boundary of the four-simplex itself, and the full simplex
+chain complex is exact.  Repeating columns changes neither
+this rank nor its image.  The image is exactly the kernel
+of the triangular boundary map, and the lower reduced
+homology is zero by the same simplex exactness.  There
+are no four-cells in $A$.  Hence its third homology has
+dimension $5c-4$.
+
+For a stratum indexed only by $F$ factors, its old form
+is $F_I\times\mathbf P^1$; for a stratum also containing
+one point factor, it is $F_I$.  There is no stratum with
+two point factors.  The geometric connected components
+and every incidence map are therefore precisely the join
+data.  The actual smooth blowups do not change connected
+components, and the resolution adds no components or
+incidences; its local charts and the explicit SU22 stratum
+formula give the same join.  In particular the $c$ labels
+of each fourfold $F$ intersection remain identified under
+all five point-face maps.
+
+The join is a union of five cones on $A$ with the same
+common base.  Its reduced chain complex is equivalently
+the suspended reduced chain complex of $A$ tensor the
+four-dimensional reduced degree-zero complex of five
+points.  Thus
+$\widetilde H_j(\Delta)=\widetilde H_{j-1}(A)^{\oplus4}$.
+This proves the asserted entire reduced homology and
+cohomology statement.  As a count check its cell numbers
+are
+\[
+                (c_0,c_1,c_2,c_3,c_4)
+                      =(10,35,60,5c+50,25c),
+\]
+whose Euler characteristic is $1+4(5c-4)$.
+\end{proof}
+
+\begin{theorem}[Exact fourth monodromy, SQ22-local]
+\label{r22sq:N4}
+For every supplied smoothing \eqref{r22sq:smoothing}, the
+actual generic cohomology satisfies
+\[
+                 \operatorname{rank}(N^4|H^4)=38864,\qquad N^5=0.
+ \tag{SQ22.7}\label{r22sq:monodromy}
+\]
+The minimum strict semistable dominance depth, taken over
+all finite valued extensions and all smooth projective
+dominant witnesses, is exactly four.  The lower bound
+holds over each fixed finite valued extension.
+\end{theorem}
+
+\begin{proof}
+Use the Saito convention explicitly displayed in DW22.
+There are no sixfold strata.  The whole lower extreme is
+the last cohomology of the $H^0$ incidence row:
+\[
+ E_2^{4,0}=\operatorname{coker}
+   \{\delta_3:H^0(D^{[4]})\longrightarrow H^0(D^{[5]})\}
+                    =H^4(\Delta,\mathbf Q_\ell).
+ \tag{SQ22.8}\label{r22sq:lower}
+\]
+All $H^0$ groups here are indexed by actual geometric
+connected components, which are native in the chosen
+preparation.  The entire upper extreme is
+\[
+ E_2^{-4,8}=\ker\{H^0(D^{[5]})(-4)
+                         \longrightarrow H^2(D^{[4]})(-3)\}.
+ \tag{SQ22.9}\label{r22sq:upper}
+\]
+There is no incoming upper quotient.  Every quadruple
+component is one of the smooth geometrically integral
+curves listed above.  Its $H^2$ has the trace-normalized
+point generator.  Every quintuple point is native and
+has degree one on that curve.  The upper Gysin map is
+therefore exactly $\delta_3^t$ under these generators,
+with the common incidence sign convention.  No ambient
+Gysin was cancelled in reaching this assertion.
+
+The common-stratum rule for $N$ makes $N^4$ the identity
+on the quintuple $H^0$ summands, between the two extreme
+positions.  It induces
+\[
+ \ker\delta_3^t\longrightarrow
+                    \mathbf Q_\ell^{25c}/\operatorname{im}\delta_3.
+ \tag{SQ22.10}\label{r22sq:harmonic}
+\]
+This map is an isomorphism.  Over $\mathbf Q$, the
+ordinary positive dot product on the native-point basis
+gives
+$\mathbf Q^{25c}=\operatorname{im}\delta_3\oplus
+\ker\delta_3^t$.  Tensoring with $\mathbf Q_\ell$ preserves
+that direct sum.  Thus its dimension is exactly the one
+computed in \eqref{r22sq:H4}.  The argument does not assign
+a positive ordering to an $\ell$-adic form.
+
+Finite-field purity gives degeneration at $E_2$ exactly
+as in DW22.  The abutment on $H^4$ has weights in $[0,8]$;
+$N^4$ kills $W_7$ and lands in $W_0(-4)$, while $W_{-1}=0$.
+Hence the actual operator's rank is precisely the rank
+of \eqref{r22sq:harmonic}.  A fifth application is zero.
+No general weight--monodromy theorem is needed.
+
+Finite extension changes the normalized monodromy by a
+nonzero ramification scalar, or leaves it unchanged with
+the transported tame character; its rank is invariant.
+A smooth projective dominant witness of depth at most
+three would have $N^4=0$ on $H^4$, because its spectral
+sequence has no columns outside $[-3,3]$.  Its pullback
+on $H^4$ from $X$ is injective by the positive-degree
+ample trace calculation DW22.12.  This contradicts
+\eqref{r22sq:monodromy}.  The actual model itself has
+depth four and gives a witness over the original field.
+The stated minimum is therefore four.
+\end{proof}
+
+\subsection{A separate all-place arithmetic construction}
+
+\begin{theorem}[Quintuple complete-height family, SQ22]
+\label{r22sq:global}
+For the everywhere-good global data of DG22,
+$\mathcal Y=\mathcal E^4\times\mathbf P^1$ and
+$\mathcal L_0=(\mathcal A_0\boxtimes\mathcal A_0)
+\boxtimes\mathcal O(1)$, there is one fixed finite field
+extension $F/F_0$, unramified over $5$, and a Zariski-dense
+family in $|\mathcal L_0^5|_{Y_F}$ such that:
+\begin{enumerate}
+\item every specified geometrically homologically trivial
+rational cycle, in every codimension, has full strong G
+at every finite place after every finite $F'/F$, including
+every new cycle over the corresponding completion;
+\item PH16 defines the complete complementary BB height
+pairings on
+\[
+ \operatorname{CH}^r(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+ \times\operatorname{CH}^{5-r}(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}},
+                         \qquad1\le r\le4,
+ \tag{SQ22.11}\label{r22sq:height}
+\]
+and GA17 gives admissible regular-model Chow lifts on
+these full proved domains;
+\item at every distinguished place above $5$ its exact
+fourth monodromy has rank $38864$ and its minimum strict
+semistable dominance depth is four in the scope of
+Theorem~\ref{r22sq:N4};
+\item no member is geometrically isomorphic to a member
+of DG22, even after a common finite extension.  It is
+also distinct from the named SG18/MG21 families and
+projective-space complete-intersection fourfolds by
+$b_1=8,b_2=29$.
+\end{enumerate}
+The family is dense over one fixed $F$; the whole linear
+system and arbitrary varieties are not claimed to satisfy G.
+\end{theorem}
+
+\begin{proof}
+We specify the local replacement and recheck the arithmetic
+steps, so that a theorem about one completion is not
+mistaken for a complete height construction.
+
+Use DG22's full-section coefficient module $V_5$ for this
+same ambient.  Choose a smooth generic integral reference
+$H_0$ and the finite rational-prime set $S_0$ of all its
+bad reductions other than $5$, together with $2$.
+At every place over every prime in $S_0$ choose a smooth
+residue replacement $G_v$.  At every place over $5$ choose
+the actual five-divisor arrangement above, split all its
+fourfold intersection points, choose the five projective
+points, and choose $Q_v$ with all SU22 hypotheses.  These
+are finitely many conditions over finite residue
+extensions.  A monic irreducible CRT polynomial of one
+degree divisible by all their degrees gives a single
+fixed extension $F/F_0$ unramified and inert at all the
+selected places, exactly as proved in DG22.
+
+Positive elliptic cohomology on $M=E^4$ makes sections
+of $H=\mathcal A_0\boxtimes\mathcal A_0$ commute with
+base change.  CRT therefore lifts each of the five
+divisor sections and each of the five point forms.
+Their actual product is
+\[
+ P=(\prod_{i=1}^5 f_i)(\prod_{j=1}^5l_j)
+                 \in H^0(\mathcal Y,\mathcal L_0^5).
+ \tag{SQ22.12}\label{r22sq:globalP}
+\]
+Relative to $H$ and $\mathcal O(1)$ it has bidegree
+$(5,5)$, hence has a degree-five ambient polynomial
+representative by DG22's coefficient lemma.  The
+individual $f_i$ and $l_j$ are not incorrectly treated
+as degree-one Segre forms.  Lift the $Q_v$ and the
+smooth replacements in the same free polynomial module.
+
+Put $B=\prod_{p\in S_0}p$, $M_0=25B$, and require
+\[
+ H_1\equiv P+5Q\pmod{25\mathcal O_F},\qquad
+ H_1\equiv G_v\pmod{\mathfrak p_v}\quad(v\text{ above }S_0).
+ \tag{SQ22.13}\label{r22sq:H1}
+\]
+The solution lattice is dense.  Intersect it with the
+same nonempty fixed-reference Lefschetz pencil open of
+DG22; the ambient, degree and jet surjectivity are
+unchanged.  After fixing $H_1$, spread this pencil and
+let $T_0$ contain all exceptional rational primes.
+Choose infinitely many integers $a$ with
+$a\equiv1\pmod{25B}$ and $a\equiv0\pmod p$ for
+$p\in T_0\setminus(S_0\cup\{5\})$, omitting the
+finitely many singular generic parameters, and set
+\[
+                            X_a=V(M_0H_0+aH_1).
+ \tag{SQ22.14}\label{r22sq:Xa}
+\]
+
+At every place over $5$, dividing by the unit $a$
+gives $P+5Q_a$ with
+$Q_a=Q+5R_1+5B a^{-1}H_0$ and $\bar Q_a=\bar Q$.
+It is precisely the supplied SU22/SQ22 model, since
+$5$ is a native uniformizer.  At places over $S_0$ the
+special section is $G_v$.  At any other exceptional
+place it is a nonzero multiple of the smooth reference
+$H_0$.  At every remaining place the spread pencil
+has a smooth or one-node special divisor.  All
+characteristic-two places were included in $S_0$.
+Thus there is no omitted finite place.
+
+The relative Cartier and geometric integrality checks
+of DG22 apply literally: the ambient and line bundle
+are identical, each defining special section is
+nonzero, and $H^0(\mathcal L_0^{-5})=
+H^1(\mathcal L_0^{-5})=0$ on every geometric fiber.
+Smooth or isolated-node fourfold divisors are connected
+and normal and hence integral.  The flat closures are
+actual projective integral models.
+
+At $5$, SU22 applies to every new cycle after every
+finite valued extension; at other places the frozen
+good-reduction and ON17 all-finite-extension theorems
+apply.  Consequently for an arbitrary finite $F'/F$
+all local cycle groups on all completions satisfy G
+anew.  The full exact supports, all ordinary actual
+tests, full field degrees and extending original
+absolute values are those of the frozen interfaces.
+PH16 and its closed archimedean input now give
+\eqref{r22sq:height}; GA17 gives the admissible lifts.
+
+The fixed field and residue lattice were chosen before
+varying $H_1$.  For every allowed direction there are
+infinitely many allowed $a$.  The affine-line vanishing
+argument in DG22 therefore proves density over this
+one fixed $F$ in the full coefficient space and then
+in the full section space.  Changing the finite
+exceptional set with the direction causes no problem.
+
+Finally Theorem~\ref{r22sq:N4} gives the exact local
+rank.  DG22 has $N^3=0$ and hence $N^4=0$ at every
+place over $5$.  A geometric isomorphism descends to
+a finite extension and would identify these Galois
+representations over a common finite valued extension;
+nonzero versus zero $N^4$ contradicts that possibility.
+Weak Lefschetz gives $b_1=8,b_2=29$ exactly as in
+DG22 and makes the other named distinctions.
+The proof establishes a genuinely different family
+of generic fibers, not merely another model of DG22.
+\end{proof}
+
+\paragraph{Contribution and dependencies.}
+The complete numerical fourfold gate is proved here
+on actual models with maximal possible crossing depth.
+The full final Green test space is unchanged.  The
+new local input is SU22; the exact top-incidence and
+monodromy calculation is given above.  The all-place
+arithmetic construction uses the explicitly verified
+DG22 coefficient and pencil mechanism with a different
+local residue target.  The retained frozen dependencies
+are FP21, SP19, PU18, CD17/CL17, MZ20, RI18, VT17,
+ON17, PH16 and GA17.  Saito's spectral sequence and
+Deligne's purity are used with the exact conventions
+and primary-source checks of DW22.  General G and
+arbitrary-variety complete heights remain open;
+no literature-priority claim is made.

@@ -1,0 +1,326 @@
+% Round 16, global_height_audit. Independently reviewed by model_obstruction.
+\section{Chow-correspondence adjunction and the abelian-motive height formula}
+\label{r16ha:section}
+
+The full mathematical source, including the supplied-alteration
+and abelian-motive formulas, passed independent model-branch
+review at SHA256
+\path{09e3a701dcfb85898bd6a0c31a66d7ebe689fd1c18ad1bd502f7094dee76ba46}.
+Only this activation notice differs from that reviewed source.
+
+This section concerns the proved obstruction-zero domains
+$\mathcal H$ and their canonical normalized real height. It makes
+the correspondence compatibility explicit using the proper-intersection
+height projection theorem, rather than assigning a pushforward to an
+arbitrary actual form along a correspondence. The needed position
+conditions are obtained over the ground number field.
+
+\begin{lemma}[Moving with two maps, including all fiber dimensions]
+\label{r16ha:moving}
+Let $T,V,X$ be smooth projective geometrically integral varieties
+over a number field $F$, and let $a:T\to V$, $b:T\to X$ be
+morphisms. Put $\ell=\dim T$, and let $r,q\geq1$ satisfy
+$r+q=\ell+1$, $r\leq\dim V$, $q\leq\dim X$.
+Every pair of rational Chow classes $z\in\operatorname{CH}^r(V)$,
+$w\in\operatorname{CH}^q(X)$ has representatives $Z,W$ such that
+\[
+ \begin{split}
+ \dim a^{-1}|Z|&\leq\ell-r,\qquad
+ \dim b^{-1}|W|\leq\ell-q,\\
+ a^{-1}|Z|\cap b^{-1}|W|&=\varnothing.
+ \end{split}
+ \tag{HA16.1}\label{r16ha:position}
+\]
+The same assertion holds simultaneously for a finite list of pairs
+of morphisms with common targets and the same complementary
+source dimension. No extension of $F$ is needed for this movement.
+\end{lemma}
+
+\begin{proof}
+For a proper morphism $a$, the sets on which its fiber dimension
+equals $k$ are locally closed, by upper semicontinuity of fiber
+dimension (Stacks 0D4I). Only finitely many $k$ occur. Decompose
+each such set into finitely many irreducible locally closed strata
+$S$, so that every fiber over $S$ has dimension $k(S)$.
+The dimension formula gives
+\[
+                        \dim S+k(S)\leq\ell.
+ \tag{HA16.2}\label{r16ha:dimension-bound}
+\]
+Indeed an irreducible component of the inverse image over the
+generic point of $S$ attaining the fiber dimension has total
+dimension $\dim S+k(S)$ and lies in $T$.
+
+Apply the degree-zero part of Gorchinskiy's good moving-complex
+Lemma~2.1 to the finite family of closures $\overline S\subset V$.
+Its quasi-isomorphism is surjective on $H_0$, so it supplies a
+cycle representative $Z$ of the given Chow class, with each
+prime of $|Z|$ meeting every $\overline S$ properly. In particular,
+\[
+ \dim(|Z|\cap S)\leq\dim S-r,
+ \qquad
+ \dim a^{-1}(|Z|\cap S)
+       \leq\dim S-r+k(S)\leq\ell-r.
+\]
+A negative upper bound means the intersection is empty.
+The finite union over the strata proves the first bound in
+\eqref{r16ha:position}. This argument also applies to strata of
+the image when $a$ is not dominant; empty fibers contribute nothing.
+
+Since $b$ is proper, the image
+$B=b(a^{-1}|Z|)$ is a closed algebraic subset of $X$ and
+$\dim B\leq\ell-r=q-1$. Apply the same good moving lemma on
+$X$ to the closures of the fiber-dimension strata for $b$,
+together with every irreducible component of $B$. It gives a
+representative $W$ of $w$ meeting all those closed subvarieties
+properly. The strata argument proves the second bound in
+\eqref{r16ha:position}. For every component $B_j$ of $B$,
+proper intersection with a codimension-$q$ cycle has dimension
+at most $\dim B_j-q<0$, so $|W|\cap B=\varnothing$.
+This is exactly the required inverse-support disjointness.
+
+For a finite list of maps, take the finite union of the first
+families when moving $Z$, and then the union of their closed
+images $B$ and the second families when moving $W$. The same
+dimension inequalities apply. Rational coefficients are handled
+by clearing denominators and dividing after the movement.
+\end{proof}
+
+\begin{theorem}[Adjunction for every rational Chow correspondence]
+\label{r16ha:adjunction}
+Let $V/F$ and $X/F$ be smooth projective geometrically integral,
+of dimensions $m,n$. Let
+$\Gamma\in\operatorname{CH}^{m+d}(V\times_FX)_{\mathbf Q}$
+be a rational Chow correspondence of degree $d$. Suppose
+$z\in\mathcal H^r(V)$ and $w\in\mathcal H^q(X)$, with
+\[
+ 1\leq r\leq m,\qquad 1\leq q\leq n,\qquad
+                         r+d+q=n+1.
+ \tag{HA16.3}\label{r16ha:degrees}
+\]
+Then the correspondence images belong to the required height
+domains and
+\[
+ h_X^{\rm an}(\Gamma_*z,w)
+              =h_V^{\rm an}(z,{}^t\Gamma_*w).
+ \tag{HA16.4}\label{r16ha:adjunction-eq}
+\]
+This is an identity of the canonical global heights on Chow
+classes. It includes singular correspondence cycles and maps
+with arbitrary jumps in fiber dimension.
+\end{theorem}
+
+\begin{proof}
+Membership of the two image classes follows from
+Corollary~\ref{r16h:domain-functoriality}. Choose a cycle representing
+$\Gamma$. By rational linearity it is enough to treat a prime
+component. First suppose this component is geometrically integral.
+Take a smooth projective resolution
+$j:T\to\Gamma\subset V\times X$, with projections
+$a:T\to V$, $b:T\to X$. Such a projective resolution is obtained
+by the characteristic-zero embedded resolution theorem on the
+smooth projective ambient $V\times X$; see W\l odarczyk,
+\emph{Simple Hironaka resolution in characteristic zero},
+Theorem~1.0.2. Its restriction to the strict transform is
+projective and generically of degree one. Here
+$\ell=\dim T=n-d$, so \eqref{r16ha:degrees} gives
+$r+q=\ell+1$ and in particular $r,q\leq\ell$.
+
+Choose representatives satisfying Lemma~\ref{r16ha:moving} and put
+\[
+                 A=a^!Z,\qquad B=b^!W.
+ \tag{HA16.5}\label{r16ha:refined-cycles}
+\]
+The expected inverse-image dimension bounds make these the
+specified top-dimensional refined cycles on their respective
+inverse supports. Their coefficients are the refined Gysin
+coefficients. They are not replaced by those of a reduced
+inverse image. In Chow groups they represent $a^*z,b^*w$,
+which belong to $\mathcal H^r(T),\mathcal H^q(T)$ by the
+proved pullback property. Their supporting envelopes are
+disjoint by \eqref{r16ha:position}.
+
+Apply Theorem~\ref{r16hp:height-projection} to $b:T\to X$,
+the source cycle $A$, and the target cycle $W$. Its numerical
+condition is $r+q=\ell+1$; its proper-intersection condition
+is the second bound in \eqref{r16ha:position}; and its disjointness
+condition follows from the last condition there. It gives
+\[
+                  h_X^{\rm an}(b_*A,W)=h_T^{\rm an}(A,B).
+ \tag{HA16.6}\label{r16ha:first-projection}
+\]
+Next apply that theorem to $a:T\to V$, the source cycle $B$,
+and target cycle $Z$. Now use the first dimension bound and
+the same disjointness. With the already proved symmetry, this gives
+\[
+                  h_T^{\rm an}(A,B)=h_V^{\rm an}(Z,a_*B).
+ \tag{HA16.7}\label{r16ha:second-projection}
+\]
+These applications use the proved all-actual proper-slice
+residue for the concrete obstruction-zero choices and the
+precise classical logarithmic Green pullback at infinity.
+They do not pull back an arbitrary complex current or infer
+an excess-intersection formula outside the displayed position.
+
+Since $j_*[T]=[\Gamma]$, algebraic refined projection gives
+$[b_*A]=\Gamma_*z$ and $[a_*B]={}^t\Gamma_*w$.
+Equations \eqref{r16ha:first-projection} and
+\eqref{r16ha:second-projection}, together with Chow independence
+of the heights, prove \eqref{r16ha:adjunction-eq}.
+For finitely many geometrically integral components, either use
+the simultaneous movement in the lemma or sum the individual
+Chow identities.
+
+For a prime correspondence which is not geometrically integral,
+choose a finite extension $E/F$ over which its finitely many
+geometric components are defined and geometrically integral.
+Characteristic zero makes its flat base change generically
+reduced. Apply the preceding argument to every component with
+its flat cycle coefficient. Chow pullback, proper push and
+correspondence composition commute with this flat base change.
+The source classes remain in $\mathcal H$ after extension by
+the native constant-extension theorem, and the normalized
+heights on their pullbacks are unchanged. Thus the identity
+over $E$ is exactly the identity over $F$; no unrecorded
+$[E:F]$ factor is introduced. Finally linearity handles every
+rational representative of the correspondence class.
+\end{proof}
+
+\begin{corollary}[Scalar comparison through a supplied admissible alteration]
+\label{r16ha:alteration-comparison}
+Let $X/F$ be smooth projective geometrically integral of dimension
+$n$, and let $z,w$ be geometrically homologically trivial rational
+Chow classes of codimensions $r,s\geq1$, with $r+s=n+1$.
+Suppose that for some finite extension $E/F$ there is a
+generically finite dominant morphism
+\[
+                      f:Y\longrightarrow X_E
+\]
+of degree $d$, with $Y/E$ smooth projective geometrically integral,
+and a supplied regular flat projective model
+$\mathcal Y/\mathcal O_E$ on which $f^*z_E$ and $f^*w_E$
+admit numerically admissible rational Chow lifts $\Theta,\Phi$.
+Then $z\in\mathcal H^r(X)$, $w\in\mathcal H^s(X)$, and
+\[
+ h_X^{\rm an}(z,w)
+       =\frac1d h_Y^{\rm an}(f^*z_E,f^*w_E)
+       =\frac1{d[E:\mathbf Q]}
+                     \widehat{\deg}(\widehat\Theta\cdot\widehat\Phi).
+ \tag{HA16.10}\label{r16ha:alteration-height}
+\]
+The arithmetic lifts on the right have zero archimedean curvature.
+The right side is independent of the supplied alteration, model
+and admissible lifts whenever those data satisfy these hypotheses.
+No extension of $f$ to a morphism of the chosen arithmetic models
+is required.
+\end{corollary}
+
+\begin{proof}
+The numerical model theorem gives
+$f^*z_E\in\mathcal H^r(Y)$ and
+$f^*w_E\in\mathcal H^s(Y)$. At every finite place of $E$,
+the actual obstruction of a pulled class is the pullback of the
+target obstruction. The all-degree dominant Bott--Chern
+injectivity \texttt{r16pb:dominant} makes the latter zero.
+Thus $z_E,w_E$ lie in the two height domains on $X_E$.
+Finite constant-extension injectivity, with the native actual
+sheaf and complete field degrees, then gives the stated
+memberships over $F$. This is a descent of obstruction zero;
+it is not a converse inferred from a bare strong Green form.
+
+Apply Theorem~\ref{r16ha:adjunction} to the graph correspondence
+of $f$, with source class $f^*z_E$ and target class $w_E$.
+The algebraic projection formula gives
+$f_*f^*z_E=d z_E$, since $f_*[Y]=d[X_E]$.
+Consequently
+\[
+                 h_Y^{\rm an}(f^*z_E,f^*w_E)
+                         =d\,h_{X_E}^{\rm an}(z_E,w_E).
+\]
+Native number-field invariance identifies the last height with
+$h_X^{\rm an}(z,w)$. Theorem~\ref{r16mm:global}, applied only
+on the supplied model of $Y$, gives the second equality in
+\eqref{r16ha:alteration-height}. Every set of supplied data
+produces the same canonical left side, which proves the
+independence assertion.
+
+This argument does not use an arithmetic-model projection
+formula for $f$. Its degree calculation is the ordinary generic
+Chow identity followed by the already proved analytic height
+adjunction. In particular it never assumes an alteration is
+finite outside the specified cycle. Existence of such an
+admissible model lift for general classes remains open.
+\end{proof}
+
+\begin{corollary}[An explicit height formula for a supplied abelian Chow factorization]
+\label{r16ha:motivic-formula}
+Let $X/F$ be smooth projective geometrically integral of
+dimension $n$. Suppose that after a finite extension $E/F$
+there is a rational Chow identity
+\[
+                 [\Delta_{X_E}]=\sum_j v_j\circ u_j,
+ \tag{HA16.8}\label{r16ha:factorization}
+\]
+where $u_j:X_E\rightsquigarrow A_j$ has degree $d_j$,
+$v_j:A_j\rightsquigarrow X_E$ has degree $-d_j$, and
+$A_j/E$ is an abelian variety of dimension $a_j$.
+For every pair of geometric homological classes
+$z\in\operatorname{CH}^r(X)_{\mathbf Q}$,
+$w\in\operatorname{CH}^{n+1-r}(X)_{\mathbf Q}$, one has
+\[
+ h_X^{\rm an}(z,w)
+   =\sum_j h_{A_j}^{\rm an}
+                   (u_{j*}z_E,{}^tv_{j*}w_E)
+   =\frac1{[E:\mathbf Q]}\sum_j
+        \bigl\langle u_{j*}z_E,{}^tv_{j*}w_E\bigr\rangle_{A_j,\mathrm{Kun}}.
+ \tag{HA16.9}\label{r16ha:motivic-height}
+\]
+The two codimensions in the $j$-th term are
+$r+d_j$ and $a_j+1-r-d_j$. Terms outside the Chow range, or
+in codimension zero, are zero on the geometric homological
+kernel and are omitted. The last pairing is K\"unnemann's
+published classical pairing in the fixed scalar sign convention.
+
+The value is independent of the supplied factorization and its
+finite field of definition. No regular arithmetic model of
+$X$ is required for this formula.
+\end{corollary}
+
+\begin{proof}
+Theorem~\texttt{r16ab:motivic} puts both complete geometric
+homological groups in $\mathcal H$, including after the indicated
+finite extension. Native field invariance lets us work over $E$.
+Apply \eqref{r16ha:factorization} to $z_E$, use rational
+bilinearity, and apply Theorem~\ref{r16ha:adjunction} to each
+$v_j$. This gives the first equality in
+\eqref{r16ha:motivic-height}. Geometric homological triviality
+is preserved by all the correspondences, so their abelian
+image classes lie in the full abelian height domains.
+The second equality is Corollary~\ref{r16mm:abelian}.
+If a degree leaves the Chow range the corresponding image
+vanishes; if it is zero its geometric cycle class detects its
+rank, so its geometric homological image is zero as well.
+
+Every factorization produces the same previously defined
+canonical analytic height on the left. This proves independence
+of the factorization and field without imposing a uniqueness
+axiom on arbitrary scalar pairings. The comparison invokes
+regular admissible models only for the abelian varieties,
+where the published theorem supplies them after finite constant
+extension. It is not a general arithmetic alteration comparison
+for $X$ and is not a new classical abelian existence theorem.
+\end{proof}
+
+\paragraph{Primary and internal inputs.}
+The finite-family movement is Gorchinskiy, Lemma~2.1,
+\url{https://arxiv.org/pdf/0802.1437}. Fiber-dimension
+upper semicontinuity is
+\url{https://stacks.math.columbia.edu/tag/0D4I}.
+Projective resolution is obtained from the embedded theorem
+in W\l odarczyk's published paper, Theorem~1.0.2,
+\url{https://www.math.purdue.edu/~wlodarcz/singularities/Resolution.pdf}.
+The analytic inputs are the independently reviewed
+\path{global_height/proper_intersection_extension.tex},
+\path{global_height/obstruction_zero_reciprocity_and_height.tex},
+and the separate abelian comparison in
+\path{global_height/regular_admissible_model_comparison.tex}.

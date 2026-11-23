@@ -1,0 +1,215 @@
+\section{Actual curvature transport for closed two-colour pairs}
+\label{sec:r9-closed-pair-curvature-transport}
+
+The closedness of the entire PPD defect does not make its individual
+summands closed.  The following finite homotopy identifies exactly
+when a curvature factor can be moved to an extending reference form.
+It also isolates a sufficient factorization of overlap defects that
+would give an actual gluing witness.  That factorization is not
+asserted for arbitrary analytic matrix paths.
+
+\subsection{The pair complex and its finite actual homotopy}
+
+Let $W$ be an analytic open over the original $K$.  For $s\ge1$ set
+\[
+ \begin{split}
+ L_1^s(W)&=B^{s-1,s}(W)\oplus B^{s,s-1}(W),\\
+ L_2^s(W)&=B^{s-2,s}(W)\oplus B^{s,s-2}(W)
+                         \oplus B^{s-1,s-1}(W),\\
+ \partial_1(p',p'')&=d'p'+d''p'',\\
+ \partial_2(A,B,M)&=(d'A+d''M,\ d''B+d'M).
+ \end{split}
+ \tag{CPT1}
+\]
+Negative bidegree means zero.  All spaces are actual Mihatsch
+spaces; the derivatives are the full derivatives.  The two-colour
+signs give $\partial_1\partial_2=0$.  Write $Z_1^s(W)$ for
+$\ker\partial_1$.  Objects are closed pairs, and equivalence is
+difference by an actual displayed $\partial_2$ boundary.  One may
+form the algebraic quotient $Z_1^s/\operatorname{im}\partial_2$,
+but the formulas below construct the actual boundary witness and
+never use a quotient element as a Green form.
+
+Take an actual $h\in B^{k,k}(W)$, $k\ge0$, and
+$p=(p',p'')\in Z_1^s(W)$.  Define the actual finite triple
+\[
+ H_h(p)=\bigl(d''h\wedge p',\ -d'h\wedge p'',\
+                                  h\wedge d'p'\bigr)
+                         \in L_2^{s+k+1}(W).
+ \tag{CPT2}
+\]
+There is the literal actual identity
+\[
+                \partial_2 H_h(p)=(Dh\wedge p',\ Dh\wedge p'').
+ \tag{CPT3}
+\]
+Indeed $h$ has even total degree, while $d'h,d''h$ have odd
+degree.  The first component expands as
+\[
+ \begin{split}
+ d'(d''h\wedge p')+d''(h\wedge d'p')
+   &=Dh\wedge p'-d''h\wedge d'p'
+                +d''h\wedge d'p'+h\wedge d''d'p'\\
+   &=Dh\wedge p'-h\wedge Dp'.
+ \end{split}
+ \tag{CPT4}
+\]
+Closedness gives $d'p'=-d''p''$ and hence $Dp'=0$.
+The second component is
+\[
+ d''(-d'h\wedge p'')+d'(h\wedge d'p')
+  =Dh\wedge p''+d'h\wedge(d''p''+d'p')=Dh\wedge p''.
+ \tag{CPT5}
+\]
+These are identities in the actual differential algebra, so no
+test restriction, integration argument or current-to-form
+injectivity is required.
+
+All terms in (CPT2) have finite local actual presentations on
+every common refinement.  Addition, actual restriction and
+further refinement preserve (CPT3).  The pair spaces retain the
+subspace topology from their own actual coefficient-final spaces,
+and a quotient, if used, has its quotient topology.  No Hausdorff
+or closed-image assertion about that quotient is made.  On a fixed
+finite common coefficient presentation, with the support and
+carriers fixed, the full Leibniz estimates control every mixed
+coefficient derivative in (CPT2) by finitely many seminorms of
+$h$ and $p$.  This is only a fixed-presentation operation statement;
+it is not a global joint wedge-continuity theorem or a comparison
+of a colimit image topology with an ambient inherited topology.
+
+\subsection{Transport of closed curvature polynomials}
+
+Suppose on $W$ that $R$ and $C_1,\ldots,C_a$ are actual
+forms of degree $(1,1)$, closed under both full differentials,
+and that actual scalar potentials satisfy
+\[
+                         C_j=R-D\Phi_j.
+ \tag{CPT6}
+\]
+For a multi-index $\nu$ of total degree $d\ge1$, define
+\[
+ h_\nu=-\sum_{j:\nu_j>0}\Phi_j
+   \left(\sum_{\ell=0}^{\nu_j-1}C_j^\ell R^{\nu_j-1-\ell}\right)
+   \left(\prod_{i<j}C_i^{\nu_i}\right)
+                            R^{\sum_{i>j}\nu_i}.
+ \tag{CPT7}
+\]
+It is an actual form of degree $(d-1,d-1)$.  Every curvature
+factor is closed, so telescoping gives
+\[
+                           Dh_\nu=C_1^{\nu_1}\cdots C_a^{\nu_a}-R^d.
+ \tag{CPT8}
+\]
+For a homogeneous real polynomial $P=\sum_\nu t_\nu X^\nu$
+of degree $d$, put $h_P=\sum_\nu t_\nu h_\nu$.  Then
+\[
+ Dh_P=P(C_1,\ldots,C_a)-P(1,\ldots,1)R^d.
+ \tag{CPT9}
+\]
+For every closed pair $e\in Z_1^s(W)$, (CPT3) therefore gives
+\[
+ P(C_1,\ldots,C_a)e-P(1,\ldots,1)R^d e
+                             =\partial_2 H_{h_P}(e).
+ \tag{CPT10}
+\]
+Products in this formula multiply both components of the pair.
+For degree zero the corresponding difference is zero.
+
+Now let $W=N\setminus C$ and assume $R$ and $e$ are restrictions
+of actual forms on all of $N$, with $e$ closed on $N$.
+The second term in (CPT10) then actually extends over $C$.
+Thus (CPT10) supplies an explicit boundary-plus-extending-pair
+representation for the first term.  Neither the $\Phi_j$ nor
+the $C_j$ need extend.  We do not claim that multiplication by
+such a nonextending $C_j$ defines an endomorphism of a relative
+quotient modulo extending pairs: that would require an extra
+preservation assertion.  The result is the literal equation
+(CPT10) for the specified inputs.
+
+For the unit-symbol pair
+\[
+                 e_{a,b}=(a\,d''b,\ b\,d'a),
+           \qquad Da=Db=0,
+ \tag{CPT11}
+\]
+one has $\partial_1e_{a,b}=0$.  This follows from
+$d'a\wedge d''b+d''b\wedge d'a=0$; the terms involving
+$Da,Db$ vanish.  In particular $a=v(\lambda)$ and
+$b=v(\mu)$ for original analytic units on $N$ give an
+actual extending closed pair.  For $s\ge2$, setting
+\[
+ h=\Phi_0\sum_{\ell=0}^{s-2}C_0^\ell R^{s-2-\ell},
+                \qquad Dh=R^{s-1}-C_0^{s-1},
+ \tag{CPT12}
+\]
+gives the concrete transport
+\[
+       e_{a,b}R^{s-1}-e_{a,b}C_0^{s-1}=\partial_2H_h(e_{a,b}).
+ \tag{CPT13}
+\]
+It identifies two candidate representatives of the known
+commuting-square period.  It does not identify either of them
+with the entire PPD defect modulo $\partial_2$.
+
+\subsection{A checkable overlap consequence and the remaining gap}
+
+Retain the actual CI data and open-cover setup of RAG.  Suppose
+on a whole punctured overlap a proposed primitive difference
+has the verified finite factorization
+\[
+         p_1-p_0=\partial_2q+
+               \sum_{j=1}^t P_j(C_{j,1},\ldots,C_{j,a_j})e_j,
+ \tag{CPT14}
+\]
+where each $e_j$ is an actual closed pair extending over the
+unpunctured overlap, all bidegrees match, and each displayed
+curvature admits a potential relative to one extending closed
+reference $R$.  The equality in (CPT14) is an actual equality
+on the entire overlap, not only a period identity or equality
+in an unspecified quotient.  Then the explicit formulas above
+produce
+\[
+ \begin{split}
+ q_{\rm new}&=q+\sum_jH_{h_{P_j}}(e_j),\\
+ e_{\rm new}&=\sum_jP_j(1,\ldots,1)R^{\deg P_j}e_j,\\
+                       p_1-p_0&=\partial_2q_{\rm new}+e_{\rm new}|_W.
+ \end{split}
+ \tag{CPT15}
+\]
+RAG now applies with these actual witnesses and its full
+partition-of-unity correction, followed by RSP to construct
+the original-support actual Green form.  For more than two
+opens, the RAG requirement of a verified witness on the whole
+sequential overlap remains; pairwise witnesses are not silently
+substituted for that data.
+
+The conditional datum (CPT14) is finite and can be verified for
+an explicitly supplied factorization independently of a Green
+existence assertion.  It is not automatically present for an
+arbitrary frame cover.  In PPD the complete defect is closed,
+but the individual triangle, wall and metric-transport pairs
+are not asserted separately closed.  Applying (CPT3) to them
+term by term would retain the nonzero remainder $-hDp'$ in
+(CPT4), or the second-component remainder in (CPT5).
+Consequently this computation isolates the missing
+factorization rather than removing it.  It proves no general
+coherence, full lower-middle kernel comparison, actual descent
+or Beilinson--Bloch height theorem.
+
+One must also not cancel a curvature factor from
+$\partial_1(C_jp)=0$ to conclude $\partial_1p=0$.
+Actual wedge multiplication has dimension and support zero
+divisors.  A regular-variable argument in a free polynomial
+algebra does not supply such cancellation in the actual
+quotient.  Closedness of each coefficient pair used in
+(CPT10) or (CPT14) is an independent retained hypothesis.
+
+For a direct calibration on a two-unit torus, let
+$x=v(T_1)$, $y=v(T_2)$,
+$C=D(x^2/2)=d'x\wedge d''x$, and $p=(x\,d''y,0)$.
+Then $\partial_1p=d'x\wedge d''y\ne0$, whereas
+$C\wedge\partial_1p=0$.  Thus $Cp$ is a closed actual
+pair but $p$ is not.  This elementary wedge-zero-divisor
+example is a warning about that inference, not a new
+counterexample to strong G or to the frozen wedge statements.

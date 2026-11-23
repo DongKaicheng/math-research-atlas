@@ -27,6 +27,7 @@ export default function Page() {
       <h1>{pairingProgressIntroduction.title}</h1>
       <p>{pairingProgressIntroduction.summary}</p>
       <div className="summary-paper-links">
+        <a className="text-link" href="/papers/chow-obstruction-green-pairs#h22:main">Hypothesis 2.2: theorem and complete proof →</a>
         <a className="text-link" href="/papers/global-height-pairing#r16ph:general-height">Strong G gives the full height: Theorem 7.5 →</a>
         <a className="text-link" href={progressProofPath}>Complete result and proof diagrams →</a>
         <a className="text-link" href="/papers/pairing-constructions">Geometric results and proofs →</a>
@@ -36,7 +37,7 @@ export default function Page() {
     </header>
     <section className="pairing-convention" aria-label="Domain and proof conventions">
       <MathText text={pairingProgressIntroduction.convention} />
-      <details className="pairing-foundations"><summary>Hypotheses of the construction</summary><p>{pairingProgressIntroduction.evidence}</p><a href="/papers/global-height-pairing#sec:height-hypotheses">Precise analytic hypotheses →</a></details>
+      <details className="pairing-foundations"><summary>Established local construction and remaining hypotheses</summary><p>{pairingProgressIntroduction.evidence}</p><a href="/papers/chow-obstruction-green-pairs#h22:main">The Chow obstruction and prescribed Green pairs →</a><br /><a href="/papers/global-height-pairing#sec:height-hypotheses">Precise analytic hypotheses of the height construction →</a></details>
     </section>
     <nav className="pairing-jumps" aria-label="Pairing domains">
       {groups.map(group => <a key={group.id} href={"#" + group.id}>{group.title}</a>)}

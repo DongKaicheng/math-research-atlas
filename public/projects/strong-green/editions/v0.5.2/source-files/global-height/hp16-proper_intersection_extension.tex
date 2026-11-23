@@ -1,0 +1,222 @@
+% Round 16. Independently reviewed extension of the point-slice route.
+% No historical claim is changed.
+\section{Positive-dimensional proper-intersection residues}
+\label{r16hp:section}
+
+The point-slice theorem admits the following extension. Its only extra
+analytic calculation is a compact-test version of the frozen Chern-degree
+lemma PC6. The complete mathematical source, including the precise
+archimedean pullback input, passed independent model-branch review at
+SHA256 \path{de3d54cc4c04fa3b11f9c8de9c2ac71706dd1323ae88974fea8e9af56308550a},
+recorded in
+\path{round16/audits/proper_intersection_height_model_review.md}.
+The corollary below additionally uses the subsequently reviewed proper
+kernel covariance theorem to deduce its two image-domain memberships.
+
+\begin{lemma}[Proper Chern degree for quasiprojective varieties]
+\label{r16hp:degree}
+Let $h:B\to A$ be a proper morphism of integral quasiprojective
+$K$-varieties, with $\dim A=a$ and $\dim B=a+t$, $t\geq0$. Let $P$
+be a homogeneous polynomial of degree $t$ in first Chern forms of
+algebraic line bundles on $B$ with PWS metrics. For every compact actual
+$\eta\in B_c^{a,a}(A^{\rm an})$,
+\[
+ \int_B P\wedge h^*\eta
+      =\int_{h_*(P_{\rm alg}\cap[B])}\eta.
+ \tag{HP16.1}\label{r16hp:degree-eq}
+\]
+The assertion is linear in cycles with their scheme multiplicities.
+\end{lemma}
+
+\begin{proof}
+A quasiprojective variety has an ample invertible sheaf. Stacks 01Q3,
+condition (7), implies that each of the finitely many line bundles in
+$P$ is a quotient of two globally generated line bundles: for a large
+ample power $H$, both $H$ and $L\otimes H$ are globally generated.
+Choose a PWS metric on $H$ and the product metric on $L\otimes H$.
+Their quotient is the original given metric on $L$, so this replacement
+is an actual Chern identity. Expand $P$ by multilinearity.
+
+For a resulting monomial, choose global sections of its globally
+generated line factors successively, avoiding the generic points of
+all the finitely many current cycle components. A finite-dimensional
+space of sections generates at those points; over the infinite field
+$K$, a finite union of proper linear subspaces cannot exhaust it.
+Every divisor intersection is therefore proper. At each step use
+scalar strong Poincare--Lelong with the remaining closed Chern factors
+times $h^*\eta$. This test is compact, since $h$ is proper, and is
+separately closed, since $\eta$ is top degree on $A$. The Green
+correction consequently vanishes. Normalize a component first if
+necessary; normalization does not change its actual top integral,
+and divisor coefficients retain the generic lengths. The same argument
+applies recursively to the resulting integral cycles.
+
+The terminal cycle has dimension $a$. A component with lower-dimensional
+image contributes zero, because the actual top test is zero on an
+ordinary neighborhood of that algebraic image. On a dominating
+component remove a proper algebraic closed subset of $A$ so that the
+map is finite flat between smooth dense loci. Top-degree support
+avoidance does not change either integral. The native finite degree
+formula then gives its algebraic pushforward coefficient. Summing the
+terminal components proves \eqref{r16hp:degree-eq}. Properness, rather
+than projectivity over $K$, is the property needed for compact tests;
+global generation is the only replacement required in the PC6 proof.
+\end{proof}
+
+\begin{theorem}[Curved residue under a proper intersection]
+\label{r16hp:residue}
+Use the supported-model-complex data $(G_C,\Omega_C,z_C)$ of
+Theorem~\ref{r16h:curved-slice}, where $X$ is smooth projective
+geometrically integral and $Z$ has pure codimension $r$. Let
+$a:M\to X$ be a morphism from a normal integral quasiprojective
+$K$-variety of dimension $m\geq r$. Suppose
+\[
+                   S=a^{-1}Z,\qquad \dim S\leq m-r.
+\]
+Then the ordinary actual form $a^*G_C$ on $M\setminus S$ satisfies
+\[
+ \int_{M\setminus S}a^*G_C\wedge D\eta
+       +\int_{I_a(z_C)}\eta
+       =\int_M a^*\Omega_C\wedge\eta,
+ \qquad \eta\in B_c^{m-r,m-r}(M^{\rm an}),
+ \tag{HP16.2}\label{r16hp:residue-eq}
+\]
+where $I_a(z_C)=\Delta_X^!([M]\times z_C)$ is the specified
+top-dimensional cycle in $\operatorname{CH}_{m-r}(S)_{\mathbf Q}$.
+For a global actual primitive $D\Psi=\Omega_C$, the form
+$a^*(G_C-\Psi)$ has strong zero-curvature residue $-\delta_{I_a(z_C)}$
+on all actual tests, with polar envelope $S$.
+\end{theorem}
+
+\begin{proof}
+Use the same proper generically finite $f:T\to X$, the same supported
+line-complex decomposition, and the same normalized finite trace on
+$X\setminus Z$ as in Theorem~\ref{r16h:curved-slice}. Take the weighted
+normalizations $N_j$ of the components of $T\times_X M$ dominating
+$M$, with proper maps $b_j:N_j\to M$ and $\rho_j:N_j\to T$.
+They are finite over $M\setminus S$, have dimension $m$, and
+$\sum_j e_j(b_j)_*[N_j]=d[M]$. The pulled line maps have Cartier
+divisors $D_{\alpha j}$ over $S$.
+
+Scalar strong Poincare--Lelong on $N_j$ now uses the compact test
+$\rho_j^*B_{r-1}(l_\alpha,m_\alpha)b_j^*\eta$, whose degree is
+$(m-1,m-1)$. It gives exactly H16.6 with this new test degree.
+The support of $D\eta$, of degree $(m-r+1,m-r+1)$, avoids $S$.
+The finite-flat form base-change lemma H16.1 therefore identifies
+the first term with $d\int a^*G_C D\eta$. The right term is the
+pullback of an actual top form on $M$, so the native finite degree
+formula identifies it with $d\int a^*\Omega_C\eta$.
+
+For the residue terms, a divisor component has dimension $m-1$.
+If its image in $S$ has dimension below $m-r$, the test vanishes
+on an ordinary neighborhood of that image and its contribution is
+zero. Otherwise its image is an integral component $A\subset S$
+of dimension $m-r$. The map from that divisor component to $A$
+is proper, and its Chern polynomial has degree $r-1$.
+Lemma~\ref{r16hp:degree} identifies the analytic residue integral
+with its algebraic Chern pushforward paired with the restricted
+top actual test on $A$.
+
+The supported Cartier-character identity, arbitrary localized base
+change and the proper bivariant projection formula give the sum
+of those algebraic cycles as
+\[
+ d\,\operatorname{ch}_r^S(La^*C)\cap[M]
+                  =d\,\Delta_X^!([M]\times z_C).
+\]
+The last equality is the same regular-graph proof as H16.3; its
+proof does not require $\dim M=r$. Because $\dim S\leq m-r$,
+$\operatorname{CH}_{m-r}(S)$ is freely generated by the components
+of that dimension. Thus this identifies the actual cycle
+coefficients, not merely their image after forgetting support.
+Divide by $d$, and then subtract the pulled global primitive.
+\end{proof}
+
+\paragraph{Support qualification.}
+The displayed form is defined on exactly $M\setminus a^{-1}|Z|$.
+The refined cycle can have vanishing coefficients or smaller support.
+No removability across such canceled components is asserted. The
+conclusion is deliberately a strong Green presentation with polar
+envelope $a^{-1}|Z|$, which is precisely what disjoint-polar Stokes
+needs when the other cycle avoids this set. It is not an exact-support
+strong $G$ theorem for every possible refined pullback cycle.
+
+\begin{corollary}[Projection formula on the proved height domains]
+\label{r16hp:height-projection}
+Let $f:M\to X$ be a morphism of smooth projective geometrically
+integral varieties over a number field, of dimensions $m,n$.
+Let $Z$ be a codimension-$a$ cycle on $M$, $W$ a codimension-$q$
+cycle on $X$, with $a+q=m+1$, and suppose
+\[
+ |Z|\cap f^{-1}|W|=\varnothing,\qquad
+ \dim f^{-1}|W|\leq m-q.
+\]
+Put $p=a+n-m$ and require $1\leq p\leq n$ and $1\leq q\leq m$.
+Assume $[Z]\in\mathcal H^a(M)$ and $[W]\in\mathcal H^q(X)$,
+for the domains of Theorem~\ref{r16h:global-height}. Then
+\[
+             h_X^{\rm an}([f_*Z],[W])
+                       =h_M^{\rm an}([Z],[f^!W]).
+ \tag{HP16.3}\label{r16hp:height-projection-eq}
+\]
+Here $f^!W$ denotes the specified proper refined-intersection cycle.
+\end{corollary}
+
+\begin{proof}
+The new proper-kernel covariance theorem
+\texttt{r16cov:proper-push} implies
+$[f_*Z]\in\mathcal H^p(X)$ place by place. Frozen
+contravariant functoriality of the obstruction, together with
+$[f^!W]=f^*[W]$ in the Chow ring, implies
+$[f^!W]\in\mathcal H^q(M)$. Geometric homological triviality
+is preserved by these algebraic operations. Thus all four
+classes needed for the two heights lie in their specified domains.
+
+At each finite place choose the concrete Green form for $W$ from
+the obstruction-zero construction. The preceding theorem makes its
+pullback a strong Green presentation for $f^!W$ with envelope
+$f^{-1}|W|$, disjoint from $|Z|$. Disjoint-polar Stokes compares
+it with any chosen exact-support Green form for $f^!W$. The
+ordinary cycle integration projection identity, using the already
+proved local symmetry, gives
+\[
+ \lambda_v(f_*Z,W)=\int_{f_*Z}\gamma_W
+                  =\int_Z f^*\gamma_W
+                  =\lambda_v(Z,f^!W).
+\]
+For the middle equality, a component with lower-dimensional image
+contributes zero by actual degree. A component with equal-dimensional
+image is generically finite; top-degree support avoidance and the
+native finite degree formula prove the identity with its full
+pushforward coefficient. This is also the $t=0$ case of
+Lemma~\ref{r16hp:degree}.
+
+At an infinite place one uses a logarithmic-type Green form, rather
+than pulling back an arbitrary current. Gillet--Soul\'e,
+\emph{Arithmetic intersection theory}, Theorem~1.3.5, supplies a
+logarithmic-type Green form for $W$ with smooth curvature. Its
+curvature is cohomologically zero; the compact K\"ahler
+$dd^c$ lemma in their Theorem~1.2.1 supplies a smooth global
+primitive. Subtracting that primitive preserves logarithmic type
+and gives zero curvature. Their Theorem~2.1.4(ii) applies to the
+map $f$ and this chosen form: its pullback has the proper refined
+intersection cycle as residue, together with a possible excess
+current supported on the components of $f^{-1}|W|$ of codimension
+strictly less than $q$. Our dimension hypothesis excludes all such
+components, so the excess current is zero. Thus its pullback is a
+Green presentation with envelope $f^{-1}|W|$, and classical
+disjoint-polar Stokes and cycle integration give the same local
+equality. The harmless scalar normalization of $dd^c$ is chosen
+throughout to make the principal Green function $-\log|f|$.
+The cited pullback theorem is the precise archimedean input;
+no pullback of an arbitrary Green current is asserted.
+
+All sums are finite by the preceding height theorem, so summation
+proves \eqref{r16hp:height-projection-eq}.
+\end{proof}
+
+This corollary uses the independently proved proper covariance of
+the obstruction \emph{kernel}, not a form-valued pushforward along
+an arbitrary proper map. The new proper-intersection residue statement is an
+identity tested against all actual forms, obtained from the concrete
+supported-complex construction.

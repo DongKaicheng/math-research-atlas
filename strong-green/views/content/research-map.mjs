@@ -4,13 +4,13 @@
 export const researchBranches = [
   {
     id: 'local-green', title: 'Local Green forms',
-    description: 'Construct actual Green forms on the prescribed support complement.',
-    scope: 'The local problem uses the original valued field, ordinary actual forms and every compact complementary actual test. Finite descent retains the full field degree.',
+    description: 'The prescribed curved construction is established; vanishing of its Chow obstruction remains the general local problem.',
+    scope: 'The construction theorem applies to smooth integral projective varieties over the original finite valued extension of ℚₚ, in every positive codimension up to the dimension, with ordinary actual forms, exact support and all compact complementary actual tests. The vanishing and transfer routes retain their additional hypotheses and full finite degrees.',
     plan: ['analytic', 'source'],
-    links: [{ href: '/papers/green-constructions', label: 'Green constructions and transfer' }],
+    links: [{ href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'The Chow obstruction and prescribed Green-pair theorem' }, { href: '/papers/green-constructions', label: 'Green constructions and transfer' }],
     groups: [
       { id: 'local-target', title: 'The local setting and conjecture', records: ['BB-LOCAL-DATA', 'STRONG-G'] },
-      { id: 'green-pairs', title: 'Green pairs, trace and curvature', records: ['BB-MODEL-DETECTOR', 'BB-RESTRICTED-TRACE', 'BB-SUPPORTED-GREEN-PAIR', 'BB-ACTUAL-OBSTRUCTION', 'BB-GREEN-CORRECTION'] },
+      { id: 'green-pairs', title: 'Established curved construction and curvature correction', records: ['BB-CHOW-GREEN-PAIRS', 'BB-MODEL-DETECTOR', 'BB-RESTRICTED-TRACE', 'BB-SUPPORTED-GREEN-PAIR', 'BB-ACTUAL-OBSTRUCTION', 'BB-GREEN-CORRECTION'] },
       { id: 'algebraic-equivalence', title: 'Algebraically trivial cycles', records: ['BB-COMPACT-RIGIDITY', 'BB-RATIONAL-FIBRE-RIGIDITY', 'BB-ALG-TRANSFER'] },
       { id: 'abelian-transfer', title: 'Abelian varieties and Chow transfer', records: ['BB-FINITE-NUMERICAL-DESCENT', 'BB-ABELIAN-STAGE', 'BB-MOTIVIC-TRANSFER'] },
       { id: 'curve-products', title: 'Products of curves', records: ['BB-CURVE-CHOW-DIAGONAL', 'BB-REGULAR-PRODUCT-MODELS', 'BB-REGULAR-CHOW-CRITERION', 'BB-CURVE-PRODUCT-DRAFT'] },

@@ -1,0 +1,271 @@
+\section{Both row-unit multiplication relations for the entire Gaussian pair}
+\label{sec:r12-gaussian-row-unit-multiplication}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND, submitted for exact-source independent review.}
+The sole construction contributor is the R12 matrix agent
+\texttt{/root/r11\_challenge}.  The finite common-cap construction
+of TML and the full TCT transport are frozen inputs here.  The new
+point is an actual gauge for the second-row scaling whose first-pivot
+logarithm cancels at its zero set.  We do not replace a relative
+matrix relation by equality in a quotient.
+
+\subsection{Statement and explicit formulas}
+
+Use the exact GB data and fixed ordinary partitions of TML, with
+the same two selected rows and arbitrary $r\ge2$.  Supply an original
+analytic unit $\lambda$ on the whole $N$, put $L=v(\lambda)$,
+and fix $i\in\{1,2\}$.  Set
+\[
+ A'=D_i(\lambda)A,\qquad d=r-2,
+ \qquad \theta=\chi(v\gamma-v\alpha),\quad
+       \theta'=\chi(v\gamma'-v\alpha').
+ \tag{GMU1}
+\]
+The function $\chi$ has the same constant tails as in TML; it need
+not be symmetric.  Let $p_A,p_{A'}$ be the entire \emph{original}
+GB pairs, including their original cap choices.  Then there are
+explicit finite actual $q_i\in L_2^{r-1}(W)$ and
+$e_i\in L_1^{r-1}(N)$ such that
+\[
+         p_A+p_{i,\lambda}(Af)-p_{A'}
+                            =\partial_2q_i+e_i|_W.
+ \tag{GMU2}
+\]
+No growth assumption on $\lambda$ or $\lambda^{-1}$ is made.
+
+Here are the formulas, whose ordinary zero extensions are proved
+below.  On a first-pivot overlap put
+\[
+ a=v(\alpha),\quad C=v(\gamma),\quad
+ a'=v(\alpha'),\quad C'=v(\gamma'),\quad
+ \epsilon_A=e_{C,a-C},\quad
+ \epsilon_{A'}=e_{C',a'-C'},
+ \tag{GMU3}
+\]
+where $e_{x,y}=(x\,d''y,y\,d'x)$.  For $i=1$ set
+$\epsilon^{\rm first}_1=0$ and $\rho_1=0$.
+For $i=2$ set
+\[
+ \epsilon^{\rm first}_2=-e_{L,a},\qquad
+ \rho_2=(0,0,aL R_*^d/2)-H_h(e_{L,a}),\qquad
+ h=-\Psi\sum_{j=0}^{d-1}R_*^jR^{d-1-j},\quad R_*=R-D\Psi.
+ \tag{GMU4}
+\]
+All inputs of $H_h$ are independently closed unit-valuation pairs;
+external partition coefficients will be inserted afterwards.
+The desired extending pair is
+\[
+ e_i=\bigl(\epsilon^{\rm first}_i
+          -(1-\theta)\epsilon_A
+          +(1-\theta')\epsilon_{A'}\bigr)R^d.
+ \tag{GMU5}
+\]
+
+Use one actual common cap $\Psi$ constructed as follows.  In TML5
+replace the matrix data by $A,A'$ and include both $|\lambda|$ and
+$|\lambda^{-1}|$ in $M$, omitting $|z|$.  Retain
+$B=1+\varepsilon+\log M$, $c_0=\max(|\alpha|,|\gamma|)$,
+\[
+ N_{\rm main}=\{|\alpha|>e^{-4B}c_0\},\qquad
+ N_{\rm small}=\{|\alpha|<e^{-3B}c_0\}.
+ \tag{GMU6}
+\]
+On the first region $|\alpha|^{-1}<e^{5B}$ and
+$|\alpha'|^{-1}<e^{6B}$.  Wherever the corresponding second-chart
+weight or partition derivative is active, its second-pivot inverse
+is bounded by $e^{9B}$, using the same $2\varepsilon$ ordinary
+buffer.  On the second region $c_0=|\gamma|$,
+$\theta=\theta'=0$, and the second pivots and their inverses have
+norm at most $e^{2B}$.  The unit $\lambda$ and its inverse have
+bound $e^B$.  Apply exactly the finite exponent recipe TML6--TML8
+to the nine GB calls for $A,A'$, the first-pivot substitutions
+(GMU10)--(GMU11), and the two second-pivot substitution lists
+following (GMU12) and (GMU14).  Replace the pivot bound $7$ by $9$ and
+include the extra unit bounds just stated.  The remaining
+coefficients and inverses are controlled by the same whole-call
+zero neighborhoods of MX/NSC/SAR.  This supplies one finite integer
+$C_i$ and the actual common cap
+\[
+       \Psi=\min(\psi,\Phi_f+(C_i+1)B)
+ \tag{GMU7}
+\]
+on $W$, admissible on the respective ordinary regions for every
+retained call.  The whole finite recipe, not a coefficient-by-
+coefficient choice, is used.  For $r=2$ omit the cap and $H_h$;
+every exponent $R_*^d$ is then $1$.
+
+With $\mathcal J=\mathcal J_\Psi$ denoting TCT1, put
+\[
+ \begin{gathered}
+ \sigma_A=(0,0,C(C-a)R_*^d/2)+H_h(\epsilon_A),\\
+ \sigma_{A'}=(0,0,C'(C'-a')R_*^d/2)+H_h(\epsilon_{A'}),\\
+ \begin{split}
+ \widetilde q_i={}&\mathcal J(D_i(\lambda);Af)
+       +\theta\mathcal J(w_\alpha;f)
+       +(1-\theta)\mathcal J(w_\gamma;f)\\
+ &-\theta'\mathcal J(w'_{\alpha'};f)
+       -(1-\theta')\mathcal J(w'_{\gamma'};f)
+       +\rho_i-(1-\theta)\sigma_A+(1-\theta')\sigma_{A'}.
+ \end{split}
+ \end{gathered}
+ \tag{GMU8}
+\]
+Finally form the explicit TCT quadruples on ordinary neighborhoods
+of the closed supports of the partition derivatives and set
+\[
+       q_i=\widetilde q_i
+              +K_3(\theta)\mathcal H_A
+              -K_3(\theta')\mathcal H_{A'}.
+ \tag{GMU9}
+\]
+They are the same full CT formulas, including the mixed
+$-d''J$ term, as in TML19--TML20.  These derivative-supported
+products have their closed-support zero extensions; no singular
+unweighted overlap form is extended by zero.
+
+\subsection{First-pivot word comparisons and the second-row gauge}
+
+Write $t=\gamma/\alpha$, $u=\beta/\alpha$ and
+$h_0=\Delta/\alpha$, so that
+$w_\alpha=E_{21}(t)D_1(\alpha)D_2(h_0)E_{12}(u)$.
+For $i=1$ the successive exact substitutions are
+\[
+ D_1(\lambda)E_{21}(t)
+      \rightsquigarrow E_{21}(t/\lambda)D_1(\lambda),
+ \qquad
+ D_1(\lambda)D_1(\alpha)\rightsquigarrow D_1(\lambda\alpha).
+ \tag{GMU10}
+\]
+They are NSC and SL, both strict.  Their full common-cap triples
+sum to the companion of the closed word, by SAN/TCT and literal
+edge linearity.  Thus there is no first-chart base correction.
+
+For $i=2$ the successive substitutions are
+\[
+ \begin{split}
+ D_2(\lambda)E_{21}(t)&\rightsquigarrow
+                      E_{21}(\lambda t)D_2(\lambda),\\
+ D_2(\lambda)D_1(\alpha)&\rightsquigarrow
+                      D_1(\alpha)D_2(\lambda),\\
+ D_2(\lambda)D_2(h_0)&\rightsquigarrow D_2(\lambda h_0).
+ \end{split}
+ \tag{GMU11}
+\]
+These are MX, the positive CS square of temporal weights $a,L$,
+and SL.  The standard CS formula gives the companion correction
+$-(0,0,aL R_*^d/2)+H_h(e_{a,L})$ and the error $e_{a,L}R^d$.
+We use instead precisely (GMU4).  This change is legitimate as a
+full actual formula: since
+\[
+ e_{a,L}+e_{L,a}=\partial_2(0,0,aL),\qquad
+ Dh=R_*^d-R^d,\qquad
+ \partial_2H_h(e_{x,y})=Dh\,e_{x,y},
+\]
+the differential of the difference of the two triples equals
+$(e_{a,L}+e_{L,a})R^d$.  Hence the new error is
+$-e_{L,a}R^d$, exactly as claimed.  No cancellation of a curvature
+factor and no separately closed low-degree block of a path is
+used here.  All displayed $e$ pairs are independently closed
+before this calculation.
+
+Insert these two first-word identities into TML15 for $A,A'$.
+The same literal companion cancellation gives (GMU8) and (GMU5)
+on all of $N_{\rm main}$.  In particular the entire derivatives
+of the two distinct partitions remain in the product formulas.
+
+\subsection{Direct identities on the zero-first-pivot neighborhood}
+
+On $N_{\rm small}$ the two partitions are identically zero.
+For $i=1$ one has $a'=a+L$, $C'=C$.  Therefore, as entire
+actual expressions on the punctured pivot overlap,
+\[
+ \begin{split}
+ \epsilon_1^{\rm first}-\epsilon_A+\epsilon_{A'}&=e_{C,L},\\
+ \rho_1-\sigma_A+\sigma_{A'}
+               &=-(0,0,CL R_*^d/2)+H_h(e_{C,L}).
+ \end{split}
+ \tag{GMU12}
+\]
+The right sides are defined on the whole $N_{\rm small}$ because
+$\gamma$ and $\lambda$ are units there.  For a direct verification
+through $\alpha=0$, move $D_1(\lambda)$ past $J$ by
+$D_1(\lambda)J=JD_2(\lambda)$.  In the second Gaussian word use
+MX to move $D_2(\lambda)$ past $E_{21}(-\alpha/\gamma)$,
+then the positive CS square to move it past $D_1(\gamma)$,
+and SL to merge it with $D_2(\Delta/\gamma)$.
+The CS weights are $C,L$, so its full companion correction and
+error are exactly (GMU12).  This proves (GMU2) on this whole
+ordinary neighborhood, including zero shear coefficients.
+
+For $i=2$ one has $a'=a$, $C'=C+L$.  Set
+\[
+                        k=CL+L^2/2,
+                         M_k=(0,0,k).
+ \tag{GMU13}
+\]
+Full bilinearity, with the mixed terms retained, gives
+\[
+ \begin{split}
+ \epsilon_2^{\rm first}-\epsilon_A+\epsilon_{A'}
+       &=-e_{L,C}-e_{C,L}-e_{L,L}=-\partial_2M_k,\\
+ \rho_2-\sigma_A+\sigma_{A'}
+       &=M_kR_*^d-H_h(\partial_2M_k).
+ \end{split}
+ \tag{GMU14}
+\]
+The logarithm $a$ has disappeared from both formulas.  These
+are therefore actual extensions to $N_{\rm small}$, not just
+vanishing singular parts in a quotient.
+
+The second-pivot matrix comparison is now strict: move
+$D_2(\lambda)J=JD_1(\lambda)$, then use NSC to move
+$D_1(\lambda)$ past $E_{21}(-\alpha/\gamma)$, and SL to
+merge it with $D_1(\gamma)$.  The other factors already agree
+with the second word for $A'$, since
+$\Delta'/\gamma'=\Delta/\gamma$ and
+$\delta'/\gamma'=\delta/\gamma$.
+The whole companion therefore has boundary the second-word pair
+discrepancy, with no error.  On the other hand
+\[
+ \partial_2\bigl(M_kR_*^d-H_h(\partial_2M_k)\bigr)
+                    =(\partial_2M_k)R^d.
+ \tag{GMU15}
+\]
+The negative error in (GMU14) cancels this differential exactly.
+This directly verifies (GMU2) on $N_{\rm small}$.
+
+All the weighted companions in (GMU8) have closed-support zero
+extensions at their discarded pivots.  Their whole native shear
+contributions extend through zero coefficients by inverse pairing.
+Equations (GMU12) and (GMU14) extend the remaining combined
+terms and the errors.  Thus $\widetilde q_i$ is actual on $W$
+and $e_i$ is actual on $N$.  The two ordinary regions cover $N$;
+there is no passage from a dense unit locus.  Finally (GMU9)
+restores the precise old GB caps by TCT11, completing the proof.
+
+\paragraph{Finite compositions and the remaining obstruction.}
+The relations (GMU2) and TML3 may be inserted at the exact
+intermediate matrix and tuple of any supplied finite word of
+lower shears and row units in these same two rows.  Their finite
+actual triples add, and their errors add as actual pairs on $N$.
+This is a literal word-by-word statement and requires no
+continuous linear selector.
+
+These relations address multiplication of a coefficient matrix
+inside one block.  They do not supply a comparison under a shear
+of an \emph{external} row of the input tuple.  In a three-pivot
+Schur calculation that external-row input change is a separate
+full native relation, whose passive block changes.  Neither
+TCT nor the present theorem identifies its higher defect with
+the fixed AGC commuting-diagonal cube.  An original-$U$ Green
+application still requires all of the finite transition data
+of RAG/RSP; no new class of arbitrary cycles is asserted here.
+
+\paragraph{Exact proof inputs.}
+TML: \path{327b233fe982c1692eba9603cfd50f0ff35932682fff182322343bc57ff6fddd}.
+TCT: \path{effdf9332b6fa606237a99a25217cdfdd44b7fd09cd685f654ff221201d68c2c}.
+SAN: \path{c8416ab1d14618f8f23724bcdad19db08a36928cb19b590a46d2306701a7a3b6}.
+GB and all exact CS/CPT/SL/MX/NSC/MT/CT sources are those frozen
+in these inputs.  No change of the original field, absolute value,
+cycle or prescribed support is used.

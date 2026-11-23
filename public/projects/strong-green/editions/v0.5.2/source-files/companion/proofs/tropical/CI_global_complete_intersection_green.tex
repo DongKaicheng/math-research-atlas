@@ -1,0 +1,229 @@
+\section{A global complete-intersection formula with actual Green regularity}
+\label{sec:global-complete-intersection-green}
+
+The complete-intersection formula of Mihatsch admits the following
+explicit globalization when all sections belong to the same line bundle.
+The proof is included to check its actual-test scope and its regularity
+on the complement of the original cycle.  This is a consequence of known
+local formulas, not a claim of a new general solution of strong G.
+
+\begin{proposition}[Two complete intersections of a common line bundle]
+\label{prop:global-complete-intersection-strong-green}
+Let $X/K$ be smooth projective of pure dimension $n$, and let
+$1\le r\le n$ and $q=n-r$.  Let $L$ be a line bundle and let
+\[
+ s_0=(s_{0,1},\ldots,s_{0,r}),\qquad
+ s_1=(s_{1,1},\ldots,s_{1,r})
+\]
+be two tuples of global sections of $L$.  Suppose that each zero scheme $Z_i$ is purely of codimension $r$
+and that the local functions in a trivialization form a regular
+sequence at every point of $Z_i$.  Put
+$Z=[Z_1]-[Z_0]$, with all generic scheme lengths included, and assume
+\[
+             |Z|=|Z_0|\cup|Z_1|.                    \tag{CI0}
+\]
+For example, (CI0) holds if the two cycles have no common irreducible
+component.  There is an actual form
+\[
+       g_Z\in B^{r-1,r-1}(X^{\an}\setminus|Z|)
+\]
+over the original fixed $K$ such that
+\[
+       \int_{X^{\an}\setminus|Z|}g_Z\wedge d'd''\eta
+                             =-\int_Z\eta
+       \qquad\text{for every actual }\eta\in B_c^{q,q}(X^{\an}).
+                                                        \tag{CI1}
+\]
+It defines a continuous functional on full actual target tests of
+bidegree $(q+1,q+1)$ for the coefficient-final topology, and an
+ordinary CLD current.  The conclusion is an actual off-cycle form,
+not merely a current solution.
+\end{proposition}
+
+\begin{proof}
+Choose a piecewise smooth metric on $L$, and put
+$\omega=c_1(L)$ in the actual delta complex.  Such a metric exists
+over $K$ without a field extension: choose a sufficiently high power
+$H^m$ of an ample bundle so that both $H^m$ and $L\otimes H^m$ are
+globally generated, give each the pullback of the standard model
+metric on projective space under its section morphism, and take the
+quotient metric.  These standard metrics have piecewise smooth
+potentials given by finite maxima of logarithms of absolute values;
+tensor products and duals preserve the property.  One could instead
+use an ordinary smooth metric, whose existence is recalled in
+\cite[Section 5.1]{Mih24}.  The argument permits either choice.
+
+For one of the tuples $s=(s_1,\ldots,s_r)$ with zero scheme $Y$, set,
+on $U=X^{\an}\setminus|Y|$,
+\[
+ \varphi=\min_i\{-\log\|s_i\|\},\qquad
+ A=\omega-d'd''\varphi,\qquad
+ G_s=\varphi\sum_{j=0}^{r-1} A^j\wedge\omega^{r-1-j}.
+                                                        \tag{CI2}
+\]
+The minimum is finite and piecewise smooth on $U$: locally one may
+omit sections of strictly smaller norm, and the remaining relevant
+ratios are analytic units.  Thus all expressions in (CI2) are actual
+forms.  Write $s_i=f_i e$ in a local frame, and put
+\[
+          \psi=-\log\|e\|,\qquad
+          u=\min_i(-\log|f_i|).
+\]
+Then $\varphi=u+\psi$, $\omega=d'd''\psi$ and $A=-d'd''u$ on $U$.
+The morphism $F_s:U\to\mathbf P^{r-1}$ given by the sections identifies
+$A$ with the pullback of the standard metric's first Chern form:
+the potential in the frame $e$ is $\log\max_i|f_i|=-u$.
+In particular $A^r=0$ by dimension and actual pullback.  Both $A$
+and $\omega$ are closed under $d'$ and $d''$.  Therefore
+\[
+ d'd''G_s=(\omega-A)\sum_{j=0}^{r-1}A^j\omega^{r-1-j}
+                              =\omega^r\quad\hbox{on }U.       \tag{CI3}
+\]
+
+We now check the extension identity against all actual tests; (CI3)
+alone would not suffice.  Work on a trivializing analytic open $V$
+with compactly supported tests, and keep $q=\dim Y=n-r$.
+For $0\le j<r$, the functional denoted by $[A^j]$ is defined on an
+actual complementary test $\beta$ by
+\[
+                 [A^j](\beta)=\int_{V\setminus Y}A^j\wedge\beta.
+\]
+It is well-defined because both degrees of $\beta$ are $n-j>q$,
+so its compact support avoids $Y$ by \cite[Corollary 4.9]{Mih24}.
+The first-derivative tests for $[A^j]$ have bidegree
+$(n-j-1,n-j)$ or $(n-j,n-j-1)$.  Their maximum degree is still
+$n-j>q$, so they also have compact support away from $Y$.
+Actual Stokes and the actual closure of $A$ on $U$ consequently give
+\[
+                         d'[A^j]=d''[A^j]=0
+                         \qquad(0\le j<r)              \tag{CI4}
+\]
+on all these actual tests.
+
+These statements also justify a module operation by a globally defined
+actual form: it means wedging that form into the actual test before
+evaluating, not multiplying two arbitrary currents.  More explicitly,
+for a compact actual test $\beta$ of bidegree
+$(n-j-1,n-j-1)$, two applications of Stokes yield
+\[
+       \int_{V\setminus Y}\psi A^j\wedge d'd''\beta
+          =\int_{V\setminus Y} A^j\wedge\omega\wedge\beta.
+                                                        \tag{CI5}
+\]
+The support issue even at $j=r-1$ is worth making explicit.  The first
+Stokes integral uses $\psi A^j\wedge d''\beta$; the test
+$d''\beta$ has maximum degree $n-j>q$.  The second uses
+$A^j\wedge d'\psi\wedge\beta$; the actual form
+$d'\psi\wedge\beta$, defined on all of $V$, has the same maximum
+degree $n-j>q$.  Thus both expressions have compact support on
+$V\setminus Y$.  Likewise $\omega\wedge\beta$ has degrees
+$n-j>q$.  Formula (CI5) does not assume that an arbitrary off-cycle
+form of bidegree $(r,r)$ has a canonical extension across $Y$.
+
+For $j<r-1$, every compact test of bidegree
+$(n-j-1,n-j-1)$ itself avoids $Y$.  Stokes applied directly to
+$uA^j$ therefore gives
+\[
+                    d'd''[uA^j]=-[A^{j+1}]
+                                \qquad(0\le j<r-1).     \tag{CI6}
+\]
+At the top index the degree argument no longer applies.  Instead
+\[
+                  uA^{r-1}=(-1)^{r-1}u(d'd''u)^{r-1}
+\]
+is exactly the complete-intersection Green form in
+\cite[Theorem 5.5]{Mih24}.  That theorem is explicitly valid for all
+actual delta tests, and gives
+\[
+                       d'd''[uA^{r-1}]=-\delta_Y.        \tag{CI7}
+\]
+It includes the scheme-theoretic multiplicities of the regular sequence.
+
+Test (CI5)--(CI7), for the $j$th summand, against
+$\omega^{r-1-j}\wedge\eta$, where
+$\eta\in B_c^{q,q}(V)$.  Since $\omega$ is closed, its exterior
+powers commute with the differential in these test identities.
+The terms telescope:
+\[
+ \begin{split}
+ d'd''[G_s]
+   &= -\delta_Y
+      -\sum_{j=0}^{r-2}[A^{j+1}\omega^{r-1-j}]
+      +\sum_{j=0}^{r-1}[A^j\omega^{r-j}]\\
+   &= -\delta_Y+[\omega^r].
+ \end{split}                                                   \tag{CI8}
+\]
+Every mixed expression in this display is the just-defined functional
+obtained by inserting the globally defined power of $\omega$ into an
+actual test.  Thus (CI8) is a shorthand for the proved all-actual-test
+integral identity and uses no product or pullback of arbitrary currents.
+A smooth partition of unity on the compact support of an arbitrary test
+glues the local calculation to all of $X$.
+
+Apply (CI8) to the two tuples using the same metric.  Their curvature
+terms are the identical actual form $\omega^r$.  Set
+$g_Z=G_{s_1}-G_{s_0}$.  Condition (CI0) says exactly that its domain of
+actual definition is $X^{\an}\setminus|Z|$.  Subtracting the identities
+proves (CI1) with the original cycle, not a cycle having only its class.
+
+Finally, a compact target test of bidegree $(q+1,q+1)$ has support away
+from $|Z|$.  On each fixed finite coefficient presentation this
+separation is uniform.  These tests need not be top-degree on $X$,
+so one uses the degree version of the same argument as Lemma
+\ref{lem:uniform-family-support-separation}: near $y\in|Z|$, each
+fixed moment map has a sufficiently small affinoid neighborhood whose
+tropical image has dimension at most $d(y)\le q<q+1$.
+Lemma 4.8(1) of \cite{Mih24} therefore annihilates every test in
+that presentation there, independently of its coefficients.
+The finite compact localization data and compactness of $|Z|$ give
+one common neighborhood of vanishing.  On its compact complement
+the fixed actual form $g_Z$ has a finite presentation.  Refining
+that presentation with the fixed presentation of the varying test,
+wedge product and integration are finite polyhedral coefficient
+operations.  Their absolute value is bounded by a finite sum of compact
+coefficient seminorms, with fixed finite derivative orders when needed.
+This proves continuity on each presentation and hence on the full
+coefficient-final space.  The ordinary-current assertion also follows
+from \cite[Lemma 5.1]{Mih24}.
+\end{proof}
+
+\paragraph{Support and scope.}
+The cycles of two regular sections of $L^{\oplus r}$ have the same
+Chow class $c_r(L^{\oplus r})\cap[X]=c_1(L)^r\cap[X]$, by the
+regular-section formula for the top Chern class (Stacks Project,
+Lemma 42.44.1, Tag \texttt{0FA9},
+\url{https://stacks.math.columbia.edu/tag/0FA9}).  Their difference is
+therefore rationally, and hence geometrically homologically, trivial.
+That class equality is only a verification of the hypothesis class:
+the formula (CI1) is for the original difference of schemes with its
+multiplicities.  If a common component cancels completely so that
+(CI0) fails, the same calculation yields a form only on the complement
+of the union.  Extension across the canceled component has not been
+proved and is not asserted as a solution of the original-support problem.
+Finite rational linear combinations of the proved differences give the
+same conclusion only when their combined prescribed support is still
+the union of the supports on which the summand forms are defined.
+
+In particular, taking $L=\pi_2^*\mathcal O_{\mathbf P^r}(1)$ on
+$\mathbf P^q\times\mathbf P^r$ recovers actual Green forms for the two
+fibers used in the nonrepresentation example.  The specific family
+functional there has no actual representative off the cycle when
+$r\ge2$, while this different solution does.  Their difference is a
+$d'd''$-closed current; this illustrates the regularization issue without
+solving it for arbitrary families or arbitrary homologically trivial
+cycles.
+
+\paragraph{The resulting limited Arakelov pairing.}
+For the specified actual $g_Z$ and an original rational algebraic cycle
+$W$ of dimension $r-1$ disjoint from $|Z|$, the number
+\[
+                       h_{g_Z}(Z,W)=\int_{W^{\an}}g_Z|_W
+\]
+is well-defined by actual pullback and top-degree integration, with
+the original multiplicities of $W$. Properness of $W$ gives compact
+support. The actual projection and finite base-change formulas proved
+earlier apply, after choosing a cutoff equal to one near $W$ if needed.
+This is a local height contribution for the chosen Green object; no
+independence of the choice of metric, section tuple, or Green form is
+asserted. It does not define products of arbitrary Green currents or
+a general height pairing for cycles meeting $|Z|$.

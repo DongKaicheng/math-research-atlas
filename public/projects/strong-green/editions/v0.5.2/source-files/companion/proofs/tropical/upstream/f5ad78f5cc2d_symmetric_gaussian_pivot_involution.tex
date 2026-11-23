@@ -1,0 +1,353 @@
+\section{A strict actual witness for the symmetric Gaussian pivot involution}
+\label{sec:r12-symmetric-gaussian-involution}
+
+\paragraph{Status and provenance.}
+\textbf{PROVED THIS ROUND, submitted for independent exact-source review.}
+The constructor is \texttt{/root}.  The objects compared here are the
+two complete prescribed GB pairs, with their original nested caps and
+all differentiated-partition terms.  The result is an explicit actual
+second witness, not literal equality of the pairs and not an inference
+from equality of their matrix endpoints.  It uses a new, specified
+\emph{symmetric} choice of the GIC partition function.  Frozen GIC7
+did not impose that symmetry; no assertion for its arbitrary previous
+choice is retroactively strengthened.
+
+Let $N$, $L$, $f$, $W=N\setminus|f=0|$, $R=c_1(\overline L)$,
+$r\ge2$ and $s=r-1$ be the original-field data of GB.  Only the
+first two entries are affected.  Write
+\[
+ A=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix},
+ \qquad \Delta=\alpha\delta-\beta\gamma\in\mathcal O(N)^\times,
+ \qquad J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+ \tag{SGI1}
+\]
+Matrices are extended by the identity on the passive $r-2$ rows.
+Choose once and for all a smooth real function $\chi$ such that
+\[
+ \chi(t)=0\ (t\le-\varepsilon),\qquad
+ \chi(t)=1\ (t\ge\varepsilon),\qquad
+ \chi(-t)=1-\chi(t),\qquad \varepsilon>0.
+ \tag{SGI2}
+\]
+For instance choose a nonnegative even smooth density supported in
+$(-\varepsilon,\varepsilon)$ with integral one and take its
+cumulative integral.  This is an ordinary real coefficient choice,
+not an integration of forms along an analytic parameter space.
+
+Denote by $p_A$ the GB22 pair with this partition, but retain
+\emph{all original} GB16 nested cap choices.  Use exactly the same
+native conventions for $p_{JA}$.  No new primitive replaces a
+native edge or a frozen nested relation.
+
+\subsection{Whole native words and an automatically available common cap}
+
+On $N_{\alpha\gamma}=\{\alpha\gamma\ne0\}$ put
+\[
+ a=v(\alpha),\qquad c=v(\gamma),\qquad t=c-a,
+ \qquad \theta=\chi(t),\qquad d=r-2.
+ \tag{SGI3}
+\]
+The GIC ordinary extensions of $\theta$ are used on $N$: it is zero
+near $\alpha=0$ and one near $\gamma=0$.  Its differentiated
+supports are closed in $N$ and contained in $N_{\alpha\gamma}$.
+Since the first column of $JA$ is $(-\gamma,\alpha)$, its specified
+partition is exactly $1-\theta$, including these ordinary extensions.
+
+Write $w_\alpha(A),w_\gamma(A)$ for GB4--GB5, and write
+$p_\alpha(A),p_\gamma(A)$ for their literal native pairs.  We first
+need the stronger, presentation-level identities
+\[
+ \begin{split}
+ p_\alpha(JA)&=p_\gamma(A),&
+ p_\gamma(JA)&=p_\alpha(A),\\
+ \mathcal J_\Psi(w_\alpha(JA);f)&=
+                  \mathcal J_\Psi(w_\gamma(A);f),&
+ \mathcal J_\Psi(w_\gamma(JA);f)&=
+                  \mathcal J_\Psi(w_\alpha(A);f)
+ \end{split}
+ \tag{SGI4}
+\]
+for the same arbitrary supplied normalization $\Psi$.  The second
+line refers to the complete TCT1 companion, not to the boundary of
+that companion.
+
+\begin{proof}[Verification of (SGI4)]
+The first word for $JA$ is
+\[
+ E_{21}(-\alpha/\gamma)
+ D_1(-\gamma)D_2(-\Delta/\gamma)E_{12}(\delta/\gamma).
+ \tag{SGI5}
+\]
+The word for the right-hand side is
+$J E_{21}(-\alpha/\gamma)D_1(\gamma)D_2(\Delta/\gamma)
+E_{12}(\delta/\gamma)$.
+The initial shear is the same.  Each diagonal weight is the same,
+since $|-1|=1$ in every completed residue field.  Before the first
+and second diagonal steps, the differing tuples are related by
+the indicated diagonal signs, so every endpoint norm agrees.
+Before the last shear, the two selected rows are both negated;
+this simultaneous sign change commutes with its shear and preserves
+the norm of its native middle normalizer.  Thus all three SHT shear
+potentials and both weights agree.  The final $J$ has its prescribed
+zero pair and does not change a norm vertex.
+
+The second Gaussian word for $JA$ is literally $Jw_\alpha(A)$,
+so it has the same chronological nonzero native contributions as
+$w_\alpha(A)$.  This proves the first line, including arbitrary zero
+shear coefficients through the SHT ordinary zero extension.  The
+complete CS edge companion and each MT15 summand depend on these
+same norm potentials, weights, reference metric and common $\Psi$.
+They therefore agree term by term as well, proving the second line.
+This argument does not assert equivariance under a general
+norm-isometric matrix.
+\end{proof}
+
+We now construct, rather than assume, the common cap needed to use
+TCT9 simultaneously for $A$ and $JA$.  When $r=2$ no cap is needed.
+Assume $r\ge3$.  In GIC13, the genuine two-target calls are the
+listed WNR, NSC and CS calls.  Their pivot parameters
+$\alpha,\gamma,\Delta,\gamma/\alpha,\Delta/\alpha,
+\Delta/(\alpha\gamma)$ and their nonzero signed products are units
+on the entire $N_{\alpha\gamma}$.  Their full unit-edge vertices,
+including all intermediate normalizers and their exact prefixes,
+are consequently
+\[
+                    V_1f,\ldots,V_Mf,
+       \qquad V_j\in\mathrm{GL}_r(\mathcal O(N_{\alpha\gamma})),
+ \tag{SGI6}
+\]
+for one explicitly finite list obtained by expanding those two GB
+tables.  Include both $A$ and $JA$ tables and, if desired, any
+additional whole analytic invertible word vertices.  No inverse of
+$\beta$ or $\delta$ is required in (SGI6).  The SAR call involving
+$\beta/\alpha$ or $\delta/\gamma$ and the SL/MX calls are instead
+covered by SAN for \emph{arbitrary} normalization; they require no
+admissibility bound.  Their coefficient-zero gluing is the entire
+inverse-edge cancellation in TCT, not a discarded summand.
+
+Let $\|V_j^{-1}\|$ be its maximum entry norm and define
+\[
+ B=\log\max(1,\|V_1^{-1}\|,\ldots,\|V_M^{-1}\|),
+ \qquad b=\Phi_f+B+\varepsilon,
+ \qquad \Psi=\min(\psi,b),
+ \tag{SGI7}
+\]
+where $\psi$ is the common passive-subtuple potential.  At a
+passive zero, the minimum means the finite second branch on its
+ordinary neighborhood.  Matrix inversion is analytic on the stated
+pivot overlap.  The maxima in $B$ are logarithms of norms of one
+finite nowhere-zero analytic tuple (including the constant $1$),
+so $B$ has a finite actual valuation presentation.  Both entries
+of the minimum share the same original metric term; after that
+term is removed the formula is a finite piecewise affine norm
+formula.  Hence $\Psi$ is actual.  No closure of arbitrary smooth
+functions under minimum is invoked.
+
+For each analytic point and each nonzero section vector, the
+ultrametric operator bound gives
+\[
+ \|f\|\le\|V_j^{-1}\|\,\|V_jf\|,
+ \qquad \Phi_{V_jf}\le\Phi_f+\log\|V_j^{-1}\|<b.
+ \tag{SGI8}
+\]
+This includes nonrational points and has no rank factor or global
+boundedness hypothesis.  It proves precisely the all-vertex
+admissibility required by TCT4.  Thus the complete finite TCT
+transport construction supplies quadruples $\mathcal H_A$ and
+$\mathcal H_{JA}$ with
+\[
+ Q_A^{\rm com}-Q_A^{\rm old}=\partial_3\mathcal H_A,
+ \qquad Q_{JA}^{\rm com}-Q_{JA}^{\rm old}
+                                    =\partial_3\mathcal H_{JA}.
+ \tag{SGI9}
+\]
+They exist on the whole punctured pivot overlap with every original
+metric term, wall and mixed coefficient.  For $r=2$ the quadruple
+space is zero and both differences in (SGI9) are zero, by the
+rank-two clause of TCT.
+
+\subsection{The exact full overlap sum}
+
+For a scalar $F$ write $M_F=(0,0,F)$ in the original triple order
+$(A_2,B_2,M_2)$.  Set
+\[
+ F=-\frac{(a-c)^2}{2},\qquad
+ \epsilon_A=e_{c,a-c},\qquad
+ \epsilon_{JA}=e_{a,c-a}.
+ \tag{SGI10}
+\]
+Here the $e$ have no curvature factor yet.  Direct full product
+differentiation gives
+\[
+                   \epsilon_A+\epsilon_{JA}=\partial_2M_F.
+ \tag{SGI11}
+\]
+For example the first component is
+$c\,d''(a-c)+a\,d''(c-a)
+=-(a-c)d''(a-c)=d''F$; the second is $d'F$.
+Only $Da=Dc=0$ and actual multiplication are used.
+
+Put $R_*=R-D\Psi$ and, when $d\ge1$, put
+\[
+        h=-\Psi\sum_{j=0}^{d-1}R_*^jR^{d-1-j},
+                 \qquad Dh=R_*^d-R^d.
+ \tag{SGI12}
+\]
+The companion terms in the two TCT10 formulas cancel by (SGI4).
+Their scalar coefficients satisfy
+$c(c-a)/2+a(a-c)/2=(a-c)^2/2=-F$.
+Consequently the \emph{full actual triples}, not merely their
+boundaries, satisfy
+\[
+ Q_A^{\rm com}+Q_{JA}^{\rm com}
+      =-M_F R_*^d+H_h(\partial_2M_F)
+      =-M_F R^d-\partial_3K_h(M_F).
+ \tag{SGI13}
+\]
+The last equality is exactly the nonclosed-triple QHT identity.
+It is essential to retain $H_h(\partial_2M_F)$; $M_F$ is not
+declared closed.  Both original coefficient pairs in TCT are
+independently closed because they are pairs of unit logarithms,
+so the CPT use inside that formula is valid before they are added.
+
+Define
+\[
+ T_A=-K_h(M_F)-\mathcal H_A-\mathcal H_{JA}
+                         \in L_3^s(W\cap N_{\alpha\gamma}).
+ \tag{SGI14}
+\]
+For $d=0$, omit the $h$ and $K_h$ terms and set $T_A=0$.
+Equations (SGI9)--(SGI13) give
+\[
+                  Q_A^{\rm old}+Q_{JA}^{\rm old}
+                      =\partial_3T_A-M_F R^d.
+ \tag{SGI15}
+\]
+This comparison has restored every original nested cap, rather
+than replacing the GB pair by a new cap-dependent choice.
+
+\subsection{The partition term is an explicit extending boundary}
+
+Recall $K_j(\theta)=\partial_j(\theta\,\cdot)
+-\theta\partial_j$, with the full two-colour insertion of FHD2.
+In particular
+\[
+ K_2(\theta)(A_2,B_2,M_2)
+ =(d'\theta\wedge A_2+d''\theta\wedge M_2,
+   d''\theta\wedge B_2+d'\theta\wedge M_2).
+ \tag{SGI16}
+\]
+Using (SGI4), the weighted first-level pairs in GB22 cancel in
+$p_{JA}-p_A$.  Since the new partition is $1-\theta$, the entire
+remaining difference is
+\[
+ \begin{split}
+ p_{JA}-p_A
+  &=-K_2(\theta)(Q_{JA}^{\rm old}+Q_A^{\rm old})\\
+  &=\partial_2\bigl(K_3(\theta)T_A\bigr)
+                           +K_2(\theta)(M_F R^d).
+ \end{split}
+ \tag{SGI17}
+\]
+Here the sign uses $\partial_2K_3+K_2\partial_3=0$, including
+all $D\theta$ and mixed-colour terms before cancellation.
+
+Choose the explicit smooth real function
+\[
+       H(t)=-\frac12\int_0^t u^2\chi'(u)\,du.
+ \tag{SGI18}
+\]
+It is constant on each of the two tails outside
+$[-\varepsilon,\varepsilon]$, with possibly different constants.
+Since $\alpha$ and $\gamma$ do not vanish simultaneously, the
+scalar $H(c-a)$ on the pivot overlap therefore glues to these
+constants near the two pivot-zero loci.  This is an actual ordinary
+smooth scalar $\widehat H_A$ on \emph{all} of $N$, including the
+common section-zero set.  It needs neither bounded pivot logarithms
+nor an asymptotic extension theorem.
+
+The ordinary chain rule, the full closure of $R$, and
+$F=-t^2/2$ show
+\[
+ \begin{split}
+ K_2(\theta)(M_F R^d)
+   &=(F\chi'(t)d''t,F\chi'(t)d't)R^d\\
+   &=\partial_2(M_{\widehat H_A}R^d)
+                        \quad\hbox{on }W\cap N_{\alpha\gamma}.
+ \end{split}
+ \tag{SGI19}
+\]
+Both sides vanish on the ordinary constant-partition neighborhoods,
+so the equality holds on all of $W$ after the stated extensions.
+
+The factors $d'\theta,d''\theta$ in $K_3(\theta)T_A$ have
+supports closed in $N$ and contained in $N_{\alpha\gamma}$.
+Their product with the overlap quadruple is consequently an actual
+triple on $W$ by closed-support zero extension.  The unweighted
+$T_A$ is not extended.  Define
+\[
+ \boxed{\quad
+ q_J(A;f)=\operatorname{ext}_0\bigl(K_3(\theta)T_A\bigr)
+                         +M_{\widehat H_A}R^{r-2}\big|_W.
+ \quad}
+ \tag{SGI20}
+\]
+
+\begin{theorem}[Strict symmetric-pivot involution witness]
+For every $r\ge2$ and every original analytic invertible block
+(SGI1), the explicit actual triple (SGI20) satisfies
+\[
+                         p_{JA}(f)-p_A(f)=\partial_2q_J(A;f)
+                         \qquad\hbox{on all of }W.
+ \tag{SGI21}
+\]
+All primitive pairs on the left are the complete original GB
+formulas with the newly specified symmetric partition (SGI2).
+\end{theorem}
+
+\begin{proof}
+On the pivot overlap combine (SGI17) and (SGI19).
+Near $\alpha=0$ or $\gamma=0$, the partition is constant and the
+selected Gaussian native pairs agree by (SGI4).  The first term
+of (SGI20) is zero there and the second has constant scalar
+coefficient times the jointly closed $R^{r-2}$, so its boundary
+is zero.  This proves the equality on an ordinary cover of the
+whole original $W$, not by density.  The constructions above
+also cover an empty pivot chart, where the differentiated terms
+are absent and the same constant-tail argument applies.
+\end{proof}
+
+\paragraph{Scope, actual interface and remaining gap.}
+The equality is of actual pairs and an actual finite triple, over
+the original field and absolute value.  Signed permutations do
+not require field extensions, including in residue characteristic
+two.  All formulas commute with analytic restriction and
+refinement.  Nonproduct units, coefficient-zero loci, arbitrary
+real intercept walls, passive directions and the complete metric
+transport are retained.  On each fixed whole finite presentation
+the displayed operations have the usual finite mixed-coefficient
+estimates; no new full kernel or inherited-topology identification
+is inferred.
+
+This supplies one concrete second-level coherence for the original
+two-chart construction.  It can be substituted into a separately
+verified finite word comparison by the literal GB substitution rule.
+It does not solve the external-row shear equivariance of a Schur
+block whose passive input has changed, and does not supply a full
+three-chart Gaussian overlap or arbitrary $\mathrm{GL}_r$ coherence.
+No new independent regular-CI existence class is counted from this
+identity alone; the actual original-$U$ and all-test bridge remains
+the separately checked RAG/RSP construction when its complete data
+are supplied.  An asymmetric frozen choice of $\chi$ is outside
+the strict theorem (SGI21).
+
+\paragraph{Exact direct inputs.}
+GB: \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9}.
+GIC: \path{2ea4db21676b04cc4f2bbebfe168fec80c405f228e546f16550b9445d707c056}.
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+SAN: \path{c8416ab1d14618f8f23724bcdad19db08a36928cb19b590a46d2306701a7a3b6}.
+TCT: \path{effdf9332b6fa606237a99a25217cdfdd44b7fd09cd685f654ff221201d68c2c}.
+QHT: \path{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0}.
+FHD: \path{c747f64b332027c5eea26dde22b7144e67c613ea96d4f2f1ff35a71b322fd37e}.
+Internal exact-source reviews are not formal verification, external
+peer review, or external novelty certification.

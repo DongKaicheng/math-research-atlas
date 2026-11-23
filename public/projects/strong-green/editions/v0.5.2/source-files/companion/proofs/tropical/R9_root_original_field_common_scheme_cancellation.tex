@@ -1,0 +1,159 @@
+\section{The original-field common-scheme cancellation theorem}
+\label{sec:r9-original-field-common-scheme-cancellation}
+
+The preceding angular transgression and analytic constant-field
+lift give an original-field actual existence theorem without the
+matrix-certificate restrictions of ICC, SCL, or CFC.  Those earlier
+certificates still classify particular constant-normalization
+procedures, but are not hypotheses for the present construction.
+
+\begin{theorem}[Actual cancellation of separated identical CI germs]
+\label{thm:r9-original-field-common-scheme-cancellation}
+Fix the original finite $K/\mathbf Q_p$ and absolute value.  Let
+$X/K$ be smooth projective geometrically integral of dimension $n$,
+let $2\le r\le n$, and let $s_0,s_1$ be regular $r$-tuples of
+global sections of one line bundle $\mathcal L$, whose zero schemes
+$Y_0,Y_1$ are pure of codimension $r$.  Put
+\[
+ Z=[Y_1]-[Y_0],\quad T=|Z|,\quad
+ C=(|Y_0|\cup|Y_1|)\setminus T,\quad q=n-r.
+ \tag{OFC1}
+\]
+Assume that $C$ is closed in $X$, disjoint from $T$, and that
+the ideal sheaves of $Y_0$ and $Y_1$ agree on a Zariski
+neighborhood of $C$.  No reducedness of the common zero scheme,
+geometric connectedness of $C$, common invariant lattice,
+or determinant compatibility is required.
+
+For any one common piecewise smooth metric on $\mathcal L$,
+there is a displayed construction of an actual form
+\[
+ g_Z\in B^{r-1,r-1}(X^{\mathrm{an}}\setminus T),\qquad
+ \int_{X^{\mathrm{an}}\setminus T}g_Z\wedge D\eta=-\int_Z\eta
+ \quad\bigl(\eta\in B_c^{q,q}(X^{\mathrm{an}})
+                                  \text{ arbitrary actual}\bigr).
+ \tag{OFC2}
+\]
+The cycle, its full multiplicities, its exact support complement,
+the common metric, and the original field are unchanged.
+\end{theorem}
+
+\begin{proof}
+Give $C$ its reduced closed subscheme structure and decompose it
+into its finitely many connected components $C_j$.  These are
+proper reduced connected schemes.  The standard proper-global-
+functions result (Stacks Project, Lemma 33.9.3, Tag 0BUG,
+parts (1)--(3)) gives a finite field
+$F_j=H^0(C_j,\mathcal O_{C_j})$ over $K$; characteristic zero
+makes it separable.  This is a known algebraic input, not a new
+claim about connectedness implying $F_j=K$.
+
+The regular-sequence argument of ICC gives a canonical conormal
+matrix $A_j\in\operatorname{GL}_r(F_j)$.  Apply CFN to embed
+$F_j$ as analytic functions on a neighborhood of $C_j$ inside
+the original $X^{\mathrm{an}}$.  Shrink to pairwise disjoint
+neighborhoods $N_j$ disjoint from $T$, whose only original
+zero support is $C_j$.  Exact freezing (CFN6) makes the local
+norm of $s_1$ equal to the norm of $A_js_0$ on $N_j$.
+The latter notation uses the lifted analytic entries only on
+$N_j$, and is not a global tuple with coefficients in a
+new ground field.
+
+Put $R=c_1(\mathcal L)$ and $c_j=v(\det A_j)$, using the
+unique extension of the original valuation.  Diagonalize
+$A_j=U_j\operatorname{diag}(\lambda_{j,i})V_j$ over $F_j$.
+In the angular formulas take the real constants
+$a_{j,i}=v(\lambda_{j,i})$.  For arbitrary such real constants,
+$u_a=\min(x_i+a_i)$ defines an actual weighted projective
+metric, even if no element of $K$ has the prescribed value.
+The finite coefficient construction of AAT gives
+$\sigma_a$ with its literal differential identity.  Its
+pullback by the ratios of the components of $V_js_0$ is
+the original-$K$ unit presentation (CFN7).
+Consequently the entire AAT22 identity, with every mixed
+metric term, gives actual forms on $N_j\setminus C_j$:
+\[
+ \alpha_j\in B^{r-2,r-1},\quad
+ \beta_j\in B^{r-1,r-2},\qquad
+ G_{s_1}-G_{s_0}=d'\alpha_j+d''\beta_j+c_jR^{r-1}.
+ \tag{OFC3}
+\]
+Every term is defined by finitely many analytic units on the
+original neighborhood.  No descent theorem for forms on
+$X_{F_j}$ is used.
+
+Choose ordinary smooth cutoffs $\chi_j$ compactly supported
+in $N_j$, equal to one on smaller neighborhoods $N'_j$ of
+$C_j$.  On
+$V=X^{\mathrm{an}}\setminus(|Y_0|\cup|Y_1|)$ define
+\[
+ g_V=G_{s_1}-G_{s_0}
+       -\sum_j\bigl(d'(\chi_j\alpha_j)+d''(\chi_j\beta_j)\bigr).
+ \tag{OFC4}
+\]
+The cutoff products are extended by zero outside $N_j$ on
+$V$ before their full derivatives are taken.  Their supports
+may approach $C_j$, where no extension of the primitives is
+claimed.  On $N'_j\cap V$, (OFC3) makes $g_V=c_jR^{r-1}$.
+Glue it with this actual extending form on $N'_j$ to obtain
+the actual $g_Z$ on precisely $X^{\mathrm{an}}\setminus T$.
+
+For any actual test in (OFC2), the frozen degree support lemma
+makes $D\eta$ compactly supported away from both $Y_i$.
+The products $\chi_j\alpha_j\wedge D\eta$ and
+$\chi_j\beta_j\wedge D\eta$ are therefore actual compact
+forms of degrees $(n-1,n)$ and $(n,n-1)$ on $V$.
+Actual Stokes and $d'D\eta=d''D\eta=0$ show that every
+correction in (OFC4) has zero integral against $D\eta$.
+The original two all-actual CI8 formulas have equal curvature
+$R^r$, so their difference gives the remaining term
+$-\int_Z\eta$.  This proves (OFC2) entirely on the original
+$K$-analytic $X$.  There is no field-degree adjustment.
+\end{proof}
+
+\subsection{Actual objects and independently checkable inputs}
+
+The proof supplies the actual representative, not merely its
+class modulo $\operatorname{Ann}(\operatorname{im}D)$:
+equations (OFC3)--(OFC4) and the local extending values are its
+definition.  The annihilator calculation verifies that explicit
+representative.  The equality of local ideals is an algebraic
+condition on the given schemes; the finite connected support
+decomposition and the conormal matrices can be checked without
+assuming strong G, OPEN-KERNEL, FT, or bornologicality.
+Hensel root lifting supplies the needed constants rather than
+assuming an arbitrary high-degree actual descent.
+
+Objects are the displayed actual presentations, identified by
+the usual all-refinement relation of $B$.  All transitions are
+restrictions, common unit refinements, and actual sheaf gluing.
+On each whole fixed target-test presentation, support avoidance
+is uniform.  A finite actual presentation of the fixed $g_Z$
+on the complementary compact set gives complete mixed
+coefficient seminorm estimates for the integral.  Its Green
+functional is therefore continuous for the full coefficient-
+final topology.  There is no new comparison of the full
+lower-middle analytic kernel with a native model.
+
+For $n=r$, the separation condition is automatic, because
+the zero supports are finite.  Thus arbitrary closed, not
+necessarily $K$-rational, common points with identical local
+CI ideals are covered.  In particular differences of reduced
+zero-dimensional regular complete intersections of the same
+line bundle are covered even when their supports overlap.
+For every $n\ge r$, the theorem covers positive-dimensional
+proper connected clusters of cancelled components, including
+intersections among those cancelled components, provided
+the entire cluster is separated from the remaining support
+and the local ideal equality holds.
+
+Equality of cycle coefficients alone is not that ideal
+condition.  Different nonreduced transverse CI ideals may
+have the same generic length; CMC/EMR and HNF treat further
+explicit norm classes, not all such ideals.  Components
+meeting the remaining support require a separate relative
+construction on the original open $U$; their exclusion here
+does not assert their nonexistence.  The general homologically
+trivial-cycle period problem, general actual representation,
+arbitrary actual descent and full unconditional BB height
+are not solved by this theorem.

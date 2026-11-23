@@ -1,0 +1,179 @@
+{
+  "project": "Beilinson--Bloch height properties on products of curves",
+  "round": 2,
+  "date": "2026-11-16",
+  "author": "",
+  "manuscript": "Arithmetic_Lefschetz_Residual_Regulators_and_Northcott.tex",
+  "baseline": "BB_Height_Properties_Round1_2026-11-16.zip",
+  "status_policy": {
+    "proved": "Complete internal proof written, with named classical inputs; not formally verified or externally certified.",
+    "conditional_height": "Requires the height system H1--H4 in Definition 2.1, including full correspondence adjunction and the stated curve normalization.",
+    "prior_analytic_inputs": "Internal actual-form R11 and related trace/covariance/gluing interfaces remain uncertified; no status upgrade is made here.",
+    "priority": "No first-discovery or literature-exhaustiveness claim. The underlying conjectural framework is classical Bloch--Beilinson/arithmetic standard conjectures."
+  },
+  "results": [
+    {
+      "id": "R2-L1",
+      "label": "thm:main-lefschetz",
+      "status": "proved_unconditional_chow_reduction",
+      "statement": "Off-central all-h1 homologically trivial Chow vanishing on every subproduct is equivalent to arithmetic hard Lefschetz on the fixed product for ell=sum a_i[o_i].",
+      "hypotheses": ["Smooth projective pointed curves over a number field", "Actual degree-one points o_i", "Positive integer weights a_i", "All subproducts, not only the top all-h1 core"],
+      "proof": "sections/lefschetz.tex",
+      "restriction": "The displayed anchored product polarization; arbitrary ample divisors are not covered by this calculation."
+    },
+    {
+      "id": "R2-L2",
+      "label": "thm:primitive-squares",
+      "status": "proved_conditional_height",
+      "statement": "For k=2c-1, m=n-k and t=r-c, the primitive signed height is (m-2t)! times product(a_i for i omitted) times the sum of central signed coefficient heights.",
+      "dependencies": ["H1--H4", "lem:square-zero", "actual pointed Chow decomposition"],
+      "uniform_denominator": "product_i a_i, independent of the field and the cycle",
+      "proof": "sections/lefschetz.tex"
+    },
+    {
+      "id": "R2-N1",
+      "label": "thm:central-northcott",
+      "status": "proved_conditional_height_equivalence",
+      "statement": "Central integral bounded-degree Northcott is equivalent to vanishing of the algebraic rational Abel--Jacobi kernel over every finite field extension and residual integral bounded-degree Northcott.",
+      "dependencies": ["H1--H4", "prop:central-projector", "classical Neron--Tate Northcott with fixed correspondence denominators"],
+      "proof": "sections/central_northcott.tex"
+    },
+    {
+      "id": "R2-N2",
+      "label": "lem:northcott-real",
+      "status": "proved_elementary",
+      "statement": "Northcott on an additive subgroup spanning a rational vector space forces real positive definiteness; no finite-rank hypothesis is required.",
+      "proof_mechanism": "Negative real directions give negative integer directions; rounding multiples of a real null vector gives infinitely many bounded-height integer points.",
+      "proof": "sections/lattices.tex"
+    },
+    {
+      "id": "R2-L3",
+      "label": "thm:program-equivalence",
+      "status": "proved_conditional_height_equivalence",
+      "statement": "For the fixed pointed product, arithmetic hard Lefschetz plus primitive integral bounded-degree Northcott is equivalent to off-central vanishing, odd-core algebraic AJ injectivity, and residual integral bounded-degree Northcott on all subproducts. Either package implies real primitive positivity and nondegeneracy.",
+      "dependencies": ["H1--H4", "R2-L1", "R2-L2", "R2-N1", "R2-N2"],
+      "proof": "sections/program.tex"
+    },
+    {
+      "id": "R2-R1",
+      "label": "prop:residual-regulator",
+      "status": "proved_with_classical_continuous_cohomology",
+      "statement": "An actual central residual Chow projector gives a canonical arithmetic l-adic regulator on the Griffiths quotient, independent of the curve-visible lift under the common cohomological identification.",
+      "proof_mechanism": "One-row Hochschild--Serre, F1=H and F2=0; curve generation kills algebraically trivial classes; trace descends the vanishing.",
+      "dependencies": ["actual central Chow projector", "continuous etale cycle map", "Hochschild--Serre functoriality"],
+      "height_axioms_required": false,
+      "proof": "sections/regulators.tex"
+    },
+    {
+      "id": "R2-R2",
+      "label": "prop:weight-minus-one",
+      "status": "proved_with_classical_purity_and_arithmetic_cohomology",
+      "statement": "The full H1(E,V_l), not merely the cycle image, equals H1(G_E,S,V_l) and is finite-dimensional. The corresponding H1 for a stable Z_l lattice is finitely generated; local rational H1 vanishes at good places away from l.",
+      "dependencies": ["Deligne purity, weight -1", "Milne Corollary I.4.15", "continuous cocycle inflation"],
+      "quantifiers": "For each finite E and prime l; a single geometric bad-reduction set works after base extension, with places above l and archimedean places included.",
+      "not_implied": "No bound on the ramification of E over F0 or on real height denominators.",
+      "proof": "sections/regulators.tex"
+    },
+    {
+      "id": "R2-R3",
+      "label": "prop:local-lattice",
+      "status": "proved_integral_image_bound_with_conditional_injectivity_consequence",
+      "statement": "For each fixed E,l, integral residual cycle images lie in a finitely generated Z_l module. Scalar-extended regulator injectivity implies finite Q-rank and finite generation of Lambda_G(E) tensor Z_l.",
+      "dependencies": ["Kahn Theorem 2.4", "fixed Chow projector denominator", "R-summand intersection before the one-row edge"],
+      "unproved_hypothesis": "Injectivity of G_E tensor_Q Q_l -> H1(E,V_l)",
+      "proof": "sections/regulators.tex"
+    },
+    {
+      "id": "R2-N3",
+      "label": "thm:lattice-equivalence",
+      "status": "proved_elementary",
+      "statement": "In finite rational rank with real positivity, Northcott, a positive gap, finite generation, uniform rational denominators, and finite-adelic relative compactness are equivalent.",
+      "proof": "sections/lattices.tex"
+    },
+    {
+      "id": "R2-N4",
+      "label": "thm:all-prime",
+      "status": "proved_conditional_arithmetic_criterion",
+      "statement": "Injective local detectors with integral images and almost-everywhere saturation relative to one rational lattice give a global uniform denominator and hence Northcott under real positivity.",
+      "unproved_geometric_input": "Common-lattice almost-everywhere saturation for the residual arithmetic regulators.",
+      "proof": "sections/lattices.tex"
+    },
+    {
+      "id": "R2-N5",
+      "label": "thm:weak-mw-gap",
+      "status": "proved_elementary_descent_criterion",
+      "statement": "Finite Lambda/mLambda plus a real positive height and a positive integral height gap imply finite generation; if m^(2j)epsilon>4B, the height-B ball has at most |Lambda/mLambda|^j elements.",
+      "proof": "sections/lattices.tex"
+    },
+    {
+      "id": "R2-F1",
+      "label": "lem:class-trace",
+      "status": "proved_trace_descent",
+      "statement": "If an integral quotient class xi is represented over E and K is its minimal geometric class field, then K is contained in E and [E:K]xi is integral over K.",
+      "constant": "The multiplier is at most [E:F0], rather than a factorial or a field-dependent uncontrolled denominator.",
+      "proof": "sections/fields.tex"
+    },
+    {
+      "id": "R2-F2",
+      "label": "thm:ramification",
+      "status": "proved_equivalence_assuming_fixed_field_northcott",
+      "statement": "With fixed-field Northcott over every finite extension, bounded-degree Northcott is equivalent to one finite ramification set for all minimal class fields at bounded degree and height.",
+      "dependencies": ["R2-F1", "Hermite--Minkowski"],
+      "proof": "sections/fields.tex"
+    },
+    {
+      "id": "R2-M1",
+      "label": "thm:quillen-isometry",
+      "status": "proved_metric_comparison_with_classical_BGS",
+      "statement": "For a fixed pointed complex curve, a fixed smooth projective X and a perfect complex on C times X, the origin-normalized Quillen determinant is exactly isometric to that of its derived projection to C, on the whole Jacobian.",
+      "hypotheses": ["Canonical axis-rigidified Poincare metric", "Fixed product Kahler metrics", "Fixed hermitian perfect representatives pulled back from the varieties"],
+      "constant": "Exactly one after origin normalization; curvature is (rank K)/2 times integral_C Omega^2.",
+      "height_axioms_required": false,
+      "proof": "sections/determinants.tex"
+    },
+    {
+      "id": "R2-M2",
+      "labels": ["thm:deligne-isometry", "cor:cycle-determinant"],
+      "status": "proved_metric_comparison",
+      "statement": "Virtual rank zero gives a unique rigidified isometry with the Deligne pairing. Filtered GRR identifies arbitrary-codimension curve-correspondence determinants with the flat Poincare metric of the transposed divisor class.",
+      "dependencies": ["R2-M1", "K0 of a smooth curve", "filtered Grothendieck--Riemann--Roch"],
+      "proof": "sections/determinants.tex"
+    },
+    {
+      "id": "R2-M3",
+      "label": "prop:good-reduction",
+      "status": "proved_smooth_source_model_comparison",
+      "statement": "For a smooth proper source curve over a complete DVR with a section, the normalized determinant model metric in rank zero and determinant degree zero equals the canonical rigidified Poincare metric.",
+      "proof_mechanism": "The quotient model divisor is a multiple of the integral special fibre; the integral zero-section rigidification forces that multiple to vanish.",
+      "open_extension": "Bad-reduction corrections and comparison with internal actual Green-form metrics.",
+      "proof": "sections/determinants.tex"
+    }
+  ],
+  "counterexamples": [
+    "The squarefree-denominator subgroup sum_p Z*(1/p) of Q has a finite free Z_p tensor at every prime but no real Northcott.",
+    "The positive-on-Q form (a-sqrt(2)b)^2 is not real positive definite and has infinite bounded-height lattice sets.",
+    "The direct sum of quadratic-character lattices has uniform degree-dependent ranks, gaps and Kummer bounds but fails bounded-degree Northcott.",
+    "The weighted direct-sum lattice with q=sum 2^i a_i^2 has Northcott and infinite rational rank."
+  ],
+  "counterexample_scope": "These are abstract arithmetic-group examples, not counterexamples to the geometric conjectures.",
+  "open_targets": [
+    {"id": "OPEN-OFFCENTRAL", "label": "conj:offcentral", "status": "conjecture"},
+    {"id": "OPEN-AJ-KERNEL", "label": "conj:AJ", "status": "conjecture"},
+    {"id": "OPEN-RESIDUAL-NC", "label": "conj:residual-northcott", "status": "conjecture"},
+    {"id": "OPEN-REAL-POSITIVITY", "status": "weaker_conjecture_implied_by_residual_Northcott"},
+    {"id": "OPEN-SCALAR-DETECTION", "label": "conj:detection", "status": "conjecture"},
+    {"id": "OPEN-INTEGRAL-LATTICE", "label": "conj:lattice", "status": "conjecture"},
+    {"id": "OPEN-CLASS-RAMIFICATION", "label": "conj:ramification", "status": "conjecture"},
+    {"id": "OPEN-QUANTITATIVE-DISCRIMINANT", "label": "eq:discriminant-target", "status": "stronger_research_question"},
+    {"id": "OPEN-BAD-REDUCTION-METRIC", "status": "open_comparison_problem"},
+    {"id": "OPEN-ACTUAL-G-COMPARISON", "status": "requires_uncertified_internal_analytic_interfaces"}
+  ],
+  "review": {
+    "kind": "Internal model-assisted mathematical cross-audit plus root proof review",
+    "reports": ["audit_final_algebra.txt", "audit_final_arithmetic.txt", "audit_final_metrics.txt"],
+    "editor": "Existing math-writing-editor skill, applied by root; research audits were not delegated exposition editing.",
+    "finite_checks": "FORMULA_CHECKS.json; 25 exact square-zero cases through m=8",
+    "external_peer_review": false,
+    "formal_verification": false
+  }
+}

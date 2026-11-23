@@ -1,0 +1,194 @@
+\section{Integral discreteness and height gaps}\label{sec:lattices}
+
+\subsection{Real positivity forced by finiteness}\label{sec:northcott-real}
+
+\begin{lemma}\label[lemma]{lem:northcott-real}
+Let \(\Lambda\) be a subgroup spanning a rational vector space
+\(V\), and let \(q\) be a real-valued quadratic form on \(V\).
+If \(q\) has Northcott on \(\Lambda\), its extension to
+\(V\otimes_\Q\R\) is positive definite.
+\end{lemma}
+
+\begin{proof}
+It suffices to consider a finite-dimensional rational subspace
+and choose a rational basis \(v_1,\ldots,v_s\) in \(\Lambda\).
+Let \(Q\) be the Gram matrix. A negative real direction would,
+by rational approximation and clearing denominators, give a
+nonzero \(v\in\sum_i\Z v_i\) with \(q(v)<0\). Its integer
+multiples contradict Northcott. Thus \(Q\) is positive semidefinite.
+
+If \(0\ne u\in\ker Q\), round the coordinates of \(tu\) to
+integers, obtaining \(z_t\in\Z^s\) with uniformly bounded
+\(z_t-tu\). Then
+\[
+ q\Bigl(\sum_i(z_t)_iv_i\Bigr)
+       =(z_t-tu)^tQ(z_t-tu)
+\]
+is uniformly bounded. The rounded vectors are unbounded as
+\(t\to\infty\), hence take infinitely many distinct values.
+This again contradicts Northcott. Therefore every such finite
+Gram matrix is positive definite, which proves the assertion.
+\end{proof}
+
+In particular, residual integral Northcott already contains the
+real-positivity assertion for \(q_G\). The converse requires an
+arithmetic condition on the integral image.
+
+\subsection{Finite-rank lattices}\label{sec:finite-rank-lattices}
+
+\begin{theorem}\label[theorem]{thm:lattice-equivalence}
+Let \(\Lambda\) be torsion-free of finite rank,
+\(V=\Lambda\otimes\Q\), and suppose that \(q\) is real positive
+definite on \(V\otimes\R\). The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \(q\) has Northcott on \(\Lambda\).
+\item There is \(\varepsilon>0\) such that
+\(q(\lambda)\ge\varepsilon\) for every nonzero \(\lambda\in\Lambda\).
+\item \(\Lambda\) is finitely generated.
+\item For a rational basis \(v_1,\ldots,v_s\) of \(V\), there is
+an integer \(N\ge1\) such that
+\(\Lambda\subset N^{-1}\sum_i\Z v_i\).
+\item The diagonal image of \(\Lambda\) in \(V(\A_f)\) is
+relatively compact.
+\end{enumerate}
+The zero group satisfies these statements with the gap condition
+interpreted vacuously.
+\end{theorem}
+
+\begin{proof}
+Finiteness in a unit height ball gives a positive minimum, or the
+bound \(1\) if that ball contains no nonzero point. This proves
+(i) implies (ii). The gap makes \(\Lambda\) uniformly discrete
+for the Euclidean norm \(\sqrt q\). Choose a rational basis in
+\(\Lambda\) and reduce elements of \(\Lambda\) modulo its
+\(\Z\)-span into a bounded fundamental parallelepiped. Uniform
+discreteness makes the set of representatives finite. Hence this
+span has finite index in \(\Lambda\), proving (iii) and (iv).
+Conversely, a bounded subset of a Euclidean lattice is finite,
+so (iv) implies (i). Finite generation gives (iv) for any rational
+basis by clearing the finitely many coefficients.
+
+Every compact subset of \(V(\A_f)\) is contained in
+\(N^{-1}\Lambda_0\otimes\widehat\Z\) for some integer \(N\)
+and a fixed reference lattice \(\Lambda_0\). This follows by a
+finite subcover from the open compact sets of that form. Conversely
+each such set is compact. Intersecting with \(V(\Q)\) proves the
+equivalence with (v).
+\end{proof}
+
+If \(\Lambda\subset N^{-1}\Lambda_0\), and the least eigenvalue
+of the Gram matrix in a basis of \(\Lambda_0\) is \(\mu>0\),
+one obtains the explicit estimate
+\begin{equation}\label{eq:lattice-count}
+ \#\{\lambda\in\Lambda:q(\lambda)\le B\}
+ \le\left(1+2\left\lfloor N\sqrt{B/\mu}\right\rfloor\right)^s
+ \qquad(B\ge0).
+\end{equation}
+
+\subsection{An all-prime saturation criterion}\label{sec:all-prime}
+
+\begin{theorem}\label[theorem]{thm:all-prime}
+Let \(V\) be a finite-dimensional rational vector space,
+\(\Lambda_0\subset V\) a full lattice, and \(\Lambda\subset V\)
+a subgroup. For every prime \(p\), let
+\[
+ D_p:V\otimes\Q_p\hookrightarrow W_p
+\]
+be an injective linear map to a finite-dimensional space, and let
+\(M_p\subset W_p\) be a full \(\Z_p\)-lattice. Assume
+\[
+ D_p(\Lambda)\subseteq M_p\quad\text{for every }p,
+ \qquad D_p^{-1}(M_p)=\Lambda_0\otimes\Z_p
+               \quad\text{for almost every }p.
+\]
+Then \(\Lambda\subset N^{-1}\Lambda_0\) for one integer \(N\).
+Every real positive definite quadratic form has Northcott on
+\(\Lambda\).
+\end{theorem}
+
+\begin{proof}
+Injectivity makes \(L_p=D_p^{-1}(M_p)\) a \(\Z_p\)-lattice:
+it is open and compact in \(V\otimes\Q_p\). For each exceptional
+prime choose \(b_p\ge0\) with
+\(L_p\subset p^{-b_p}\Lambda_0\otimes\Z_p\), and put
+\(N=\prod p^{b_p}\). The coordinates of \(N\lambda\) lie in
+\(\Z_p\) for every \(p\). Since
+\(\Q\cap\prod_p\Z_p=\Z\), they are integers. Apply
+\Cref{thm:lattice-equivalence}.
+\end{proof}
+
+For the residual regulator, a common multiple of the projector
+denominators can first be absorbed into \(D_p\). Once scalar
+injectivity is available, \Cref{prop:local-lattice} supplies local
+integral modules. The almost-everywhere saturation condition in
+\Cref{thm:all-prime} is the additional comparison with one common
+rational lattice.
+
+\begin{example}\label[example]{ex:denominators}
+Let
+\[
+ \Lambda=\sum_{p\ {m prime}}\Z\,\frac1p\subset\Q,
+ \qquad q(x)=x^2.
+\]
+Its elements have squarefree denominators. For every prime \(p\),
+\(\Lambda\otimes\Z_p=p^{-1}\Z_p\), which is finite free of
+rank one. Nevertheless \(q(1/p)=p^{-2}\to0\), so Northcott
+fails. The integral maps \(D_p(x)=px\) have inverse lattices
+larger than \(\Z_p\) at infinitely many primes. Thus local
+finite generation at every prime does not provide the common
+denominator required by \Cref{thm:lattice-equivalence}.
+\end{example}
+
+Already \(\Z[1/p]\), with \(q(x)=x^2\), defeats any finite
+collection of integral detectors at primes different from \(p\).
+Another distinction is real definiteness: the form
+\((a-\sqrt2b)^2\) on \(\Z^2\) is positive on nonzero rational
+vectors, but rounding along its real kernel produces infinitely
+many bounded-height lattice vectors.
+
+\subsection{A quantitative descent criterion}\label{sec:weak-mw}
+
+\begin{theorem}\label[theorem]{thm:weak-mw-gap}
+Let \(\Lambda\) be torsion-free and let \(\sqrt q\) be the norm
+of a real positive quadratic form on \(\Lambda\otimes\R\).
+Suppose, for some integer \(m\ge2\),
+\[
+ s=|\Lambda/m\Lambda|<\infty,\qquad
+ q(\lambda)\ge\varepsilon>0\quad(0\ne\lambda\in\Lambda).
+\]
+Then \(\Lambda\) is finitely generated and \(q\) has Northcott.
+More precisely, if \(B\ge0\), \(j\in\Z_{\ge0}\), and
+\(m^{2j}\varepsilon>4B\), then
+\begin{equation}\label{eq:kummer-count}
+ \#\{\lambda\in\Lambda:q(\lambda)\le B\}\le s^j.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If \(x,y\) are in the height-\(B\) ball and
+\(x-y=m^jz\), then
+\(\|z\|\le2\sqrt B/m^j<\sqrt\varepsilon\), so \(z=0\).
+Reduction modulo \(m^j\Lambda\) is injective on that ball.
+Torsion-freeness identifies the successive quotients
+\(m^i\Lambda/m^{i+1}\Lambda\) with \(\Lambda/m\Lambda\),
+proving \MathEqref{eq:kummer-count}.
+
+Choose a finite set \(T\) of representatives modulo
+\(m\Lambda\), and let \(C=\max_{t\in T}\|t\|\).
+Writing \(x=my+t\) gives
+\(\|y\|\le(\|x\|+C)/m\). Repetition brings \(y\) into
+any fixed ball of radius greater than \(C/(m-1)\). This ball
+is finite by the first part; together with \(T\), it generates
+\(\Lambda\). This is the height-descent argument underlying
+weak Mordell--Weil; compare \cite[Section~10.3]{ConradFeng}.
+\end{proof}
+
+Northcott by itself need not give finite rational rank. For example,
+\(\Lambda=\bigoplus_{i\ge1}\Z e_i\) with
+\(q(\sum a_ie_i)=\sum2^ia_i^2\) has finite height balls and
+infinite rank. Rational detection, integral discreteness and real
+positivity therefore retain distinct roles in the general program.
+
+The examples in this section are examples of abstract groups and
+quadratic forms. Their purpose is to identify the exact arithmetic
+hypotheses in a proof of geometric Northcott.
