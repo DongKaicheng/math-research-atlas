@@ -17,6 +17,7 @@ const direct = (anchor, label) => source('/papers/green-height-route#' + anchor,
 const obstruction = (anchor, label) => source('/papers/obstruction-height-route#' + anchor, label);
 const construction = (anchor, label) => source('/papers/green-constructions#' + anchor, label);
 const programme = (anchor, label) => source('/papers/strong-g-programme#' + anchor, label);
+const height = (anchor, label) => source('/papers/global-height-pairing#' + anchor, label);
 
 const fullChowPairing = node(
   'A symmetric pairing on both full homologically trivial Chow groups',
@@ -25,14 +26,14 @@ const fullChowPairing = node(
   gate('any', 'ANY complete construction route',
     'One route may construct a pairing for the varieties and classes satisfying all of its premises. A result for one geometric family does not settle the universal target.',
     [programme('sec:programme-global', 'Global construction'), source('/routes', 'Compare the three routes')], [
-      node('Direct actual-form construction', '/routes/green-forms', 'conditional',
-        'The principal transformation law and the product formula give descent through rational equivalence in both variables.',
+      node('Strong Green forms give the full pairing (PH16)', '/papers/global-height-pairing#r16ph:general-height', 'conditional',
+        'Theorem 7.5 proves the full canonical real pairing on both geometrically homologically trivial rational Chow groups, under the displayed analytic foundations.',
         gate('all', 'ALL analytic and global inputs',
-          'Strong G alone supplies neither the principal-divisor calculus nor the finite global sum.',
-          [direct('groute:global-height', 'Local-to-global theorem'), direct('groute:principal-law', 'Principal transformation law')], [
+          'The principal-push theorem (PH16; Theorem 7.5) proves this implication under the stated analytic foundations. Its proof establishes the principal norm law, Green-choice independence and reciprocity; good-place vanishing and the product formula give a finite sum that descends to both Chow groups. Strong G supplies the forms for every representative.',
+          [height('r16ph:general-height', 'PH16 · Theorem 7.5 and proof'), height('sec:height-hypotheses', 'Standing analytic foundations'), direct('groute:global-height', 'Local-to-global summary'), height('r16ph:principal-law', 'Principal transformation law')], [
             rec('STRONG-G', 'Required at every finite completion, in BOTH complementary codimensions, over the original valued field.'),
-            node('Restriction, principal-cycle operations and reciprocity', '/papers/green-height-route#groute:principal-push', 'hypothesis', 'Use the stated current, intersection and principal-divisor calculus, including the auxiliary varieties and both ordered degrees.'),
-            node('Moving, archimedean identities and good-place vanishing', '/papers/green-height-route#groute:global-height', 'hypothesis', 'Moving handles representatives; the archimedean identities and almost-everywhere vanishing make the normalized sum well-defined.'),
+            node('Restriction, principal-cycle operations and reciprocity', '/papers/global-height-pairing#r16ph:principal-push', 'hypothesis', 'Use the stated current, intersection and principal-divisor calculus, including the auxiliary varieties and both ordered degrees. The source arguments are available; the analytic foundations retain their stated mathematical review status.'),
+            node('Moving, archimedean identities and good-place vanishing', '/papers/global-height-pairing#r16ph:general-height', 'hypothesis', 'These are inputs used in the supplied PH16 proof: moving handles representatives; the classical archimedean identities and good-model vanishing make the normalized sum well-defined. Their role in assembly is proved there, within the standing foundations.'),
           ])),
       node('Enlarge the obstruction-kernel pairing', '/routes/obstruction-vanishing', 'conditional',
         'Vanishing must hold on localizations of GLOBAL classes in BOTH degrees. This target can be weaker than Strong G for every local Chow class.',

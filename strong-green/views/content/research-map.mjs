@@ -19,10 +19,10 @@ export const researchBranches = [
   },
   {
     id: 'global-heights', title: 'Global height pairings',
-    description: 'Assemble the local terms and determine the domain of the pairing.',
-    scope: 'The kernel-domain construction is conditional on its Green-form and reciprocity hypotheses. Extending it to the full homologically trivial Chow groups requires local vanishing in both complementary codimensions.',
+    description: 'PH16 constructs the full pairing from Strong G; the obstruction route gives a second account of its domain.',
+    scope: 'Within the stated analytic foundations, PH16 (Theorem 7.5) constructs the full height from Strong G at every finite completion in both complementary codimensions. The kernel-domain route instead enlarges its pairing by proving local obstruction vanishing in both degrees. These are separate sufficient routes; the direct theorem does not require vanishing of a preselected obstruction.',
     plan: ['global'],
-    links: [{ href: '/papers/global-height-pairing', label: 'The global construction' }, { href: '/papers/pairing-constructions', label: 'Geometric pairing domains' }],
+    links: [{ href: '/papers/global-height-pairing#r16ph:general-height', label: 'Strong G gives the full height: Theorem 7.5' }, { href: '/papers/global-height-pairing', label: 'The global construction' }, { href: '/papers/pairing-constructions', label: 'Geometric pairing domains' }],
     groups: [
       { id: 'pairing-domain', title: 'The pairing and its domain', records: ['BB-H16-KERNEL-DOMAIN', 'BB-GLOBAL'] },
     ],

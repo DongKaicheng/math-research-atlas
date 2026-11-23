@@ -27,6 +27,7 @@ export default function Page() {
       <h1>{pairingProgressIntroduction.title}</h1>
       <p>{pairingProgressIntroduction.summary}</p>
       <div className="summary-paper-links">
+        <a className="text-link" href="/papers/global-height-pairing#r16ph:general-height">Strong G gives the full height: Theorem 7.5 →</a>
         <a className="text-link" href={progressProofPath}>Complete result and proof diagrams →</a>
         <a className="text-link" href="/papers/pairing-constructions">Geometric results and proofs →</a>
         <a className="text-link" href="/papers/global-height-pairing">Construction of the global pairing →</a>

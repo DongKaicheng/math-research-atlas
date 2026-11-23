@@ -2,7 +2,7 @@
 // Exact statements and proofs are in the linked programme and companion papers.
 export const programmeOverview = {
   title: 'From Green forms to height pairings',
-  summary: 'The first aim is to construct Beilinson–Bloch height pairings from local Green forms. The further aims are to identify these pairings with classical constructions, prove positivity, and establish finiteness for integral classes. Each passage has its own hypotheses.',
+  summary: 'The principal-push theorem (PH16; Theorem 7.5) proves the passage from Strong G to the full Beilinson–Bloch height pairing within the stated analytic foundations. The central general existence problem is to supply the required strong Green forms. Classical comparisons, positivity and finiteness for integral classes have their own hypotheses and research questions.',
   target: String.raw`For a smooth, projective and geometrically integral variety \(X/F\) of dimension \(n\) over a number field, construct a canonical pairing
 \[
 h_X:\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\times\operatorname{CH}^{n+1-r}(X)_{\mathbb Q,\mathrm{hom}}\longrightarrow\mathbb R.
@@ -28,10 +28,10 @@ export const programmeImplications = [
   },
   {
     id: 'direct-assembly',
-    assumptions: 'Strong G in both degrees, together with the hypotheses on proper intersections, principal divisors, reciprocity and good reduction in the direct construction.',
-    conclusion: 'A symmetric Chow pairing with the stated base-extension and biextension properties. Correspondence adjunction and classical comparison have separate proofs.',
+    assumptions: 'Strong G at every finite completion for every specified geometrically homologically trivial rational cycle in both complementary codimensions, within the standing analytic foundations of the global height paper.',
+    conclusion: 'A canonical real pairing on both full Chow groups, with Green-choice independence, symmetry, finite summation, rational-equivalence descent and the stated base-extension and Bloch-biextension properties.',
     href: '/papers/global-height-pairing#r16ph:general-height',
-    label: 'Direct construction of the pairing',
+    label: 'Proved implication: Theorem 7.5 (PH16)',
   },
 ];
 
@@ -57,14 +57,16 @@ export const programmeSteps = [
     paper: '/papers/strong-g-programme#sec:programme-source',
   },
   {
-    id: 'global', number: '3', title: 'Construction of the global height pairing',
-    goal: 'Establish a local sum which is independent of Green representatives and descends through rational equivalence in both variables.',
+    id: 'global', number: '3', title: 'The proved height construction from Strong G',
+    goal: 'Apply Theorem 7.5 (PH16): within the standing analytic foundations, Strong G gives a local sum independent of Green choices that descends through rational equivalence in both variables.',
     formula: String.raw`\(h_X(Z,W)=\sum_v \dfrac{[F_v:\mathbb Q_v]}{[F:\mathbb Q]}\,\lambda_v(Z_v,W_v)\).`,
-    method: 'Use the existing construction on the intersection of the obstruction kernels at all finite completions, then prove vanishing on localizations of global classes in both degrees. Alternatively, use directly supplied strong Green forms with proper-intersection formulas, compatibility with principal divisors under pushforward, reciprocity and vanishing at good places.',
-    output: 'A symmetric pairing on the desired Chow groups, with the specified field normalization. A finite-detector description requires its own comparison theorem.',
-    depends: 'The local calculus and global reciprocity. The second route assumes Strong G directly and need not prove vanishing of the chosen obstruction map.',
+    methodLabel: 'Proved construction',
+    method: 'The principal-push proof computes the principal-cycle norm from −log|u| on a normal carrier. Reciprocity transfers the calculation to arbitrary supplied strong Green forms. Good-place vanishing makes the sum finite, and the product formula gives Chow descent. The alternative obstruction-kernel route reaches full domain by vanishing on localized global classes in both degrees.',
+    output: 'A canonical real symmetric pairing on both full geometrically homologically trivial rational Chow groups, with the prescribed normalization and Bloch-biextension interpretation. Positivity and finiteness remain separate questions.',
+    depends: 'Strong G at every finite completion in both complementary codimensions, and the stated analytic foundations, whose review status is retained. The direct theorem does not require vanishing of a chosen obstruction map.',
     records: ['BB-H16-KERNEL-DOMAIN', 'BB-GLOBAL'],
-    paper: '/papers/strong-g-programme#sec:programme-global',
+    paper: '/papers/global-height-pairing#r16ph:general-height',
+    linkLabel: 'Theorem 7.5 and its complete proof',
   },
   {
     id: 'comparison', number: '4', title: 'Correspondence adjunction and classical heights',

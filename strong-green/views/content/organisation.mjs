@@ -16,15 +16,15 @@ export const conjectureFamilies = [
   },
   {
     id: "global-heights", number: "02", title: "Canonical global height pairings",
-    lead: "Assemble the local theory into a canonical Beilinson–Bloch pairing on the complete complementary homologically trivial Chow groups.",
+    lead: "The principal-push theorem (PH16; Theorem 7.5) proves that Strong G supplies a canonical real pairing on the full complementary geometrically homologically trivial rational Chow groups, within the stated analytic foundations.",
     principal: "BB-GLOBAL", paper: "/papers/strong-g-programme",
     scope: "The global sum, normalization, correspondence adjunction, and independence of representatives belong to the construction.",
     branches: [
       { title: "The admitted global kernel", relation: "Intermediate domain", text: "H16 assembles the pairing on the intersection of local obstruction kernels. A fixed FD17 witness is an additional finite-detector presentation. Vanishing on localized global classes in both complementary degrees enlarges the domain.", records: ["BB-H16-KERNEL-DOMAIN", "BB-HEIGHT-DATA"] },
       { title: "Metrics and variation", relation: "Further research questions", text: "Compare admissible corrections at bad reduction, then identify the geometric input for height domination and boundary estimates in families.", records: ["OPEN-BAD-REDUCTION-METRIC", "BB-FAMILY-HEIGHTS"] },
     ],
-    implication: "Source-obstruction vanishing supplies strong Green forms. With the principal-push and assembly hypotheses, strong Green forms in complementary degrees give the global pairing. The weaker target of vanishing only on localized global classes is useful in its own right.",
-    obstacle: "A complete source-bound assembly/comparison theorem on the desired domain. Positivity and finiteness are separate arithmetic targets below.",
+    implication: "Theorem 7.5 proves the full height construction from Strong G at every finite completion in both complementary codimensions. Its proof includes reciprocity, the principal norm formula, finite summation and Chow descent. The obstruction-kernel construction is a separate route, enlarged by vanishing on localized global classes in both degrees.",
+    obstacle: "General Strong G remains open. The standing analytic foundations retain their separate review status, and classical comparison retains its own model hypotheses. Positivity and finiteness are separate arithmetic targets below.",
   },
   {
     id: "lefschetz-positivity", number: "03", title: "Lefschetz theory and central positivity",

@@ -26,6 +26,7 @@ export default function RoutesPage() {
           <p className="route-index-difficulty"><strong>Main difficulty.</strong> {route.difficulty}</p>
           <nav className="route-actions" aria-label={route.title}>
             <a className="route-source-link" href={"/routes/" + route.slug}>Read this route →</a>
+            {route.proof && <a className="route-source-link" href={route.proof.href}>{route.proof.label} →</a>}
             <a className="route-source-link" href={"/papers/" + route.paperSlug}>Mathematical article →</a>
             <a className="route-source-link" href={"/papers/" + route.paperSlug + ".pdf"} download>PDF ↓</a>
           </nav>
