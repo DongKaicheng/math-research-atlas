@@ -1,0 +1,415 @@
+% Round 20, family20 branch. Candidate for exact independent review.
+\section{A surface incidence inverse and arbitrary good-reduction coefficients}
+\label{r20as:section}
+
+\paragraph{Scope.}
+The result of this section concerns \emph{all} mixed homological cycles
+on $T\times S$, where $T$ has potentially good projective reduction and
+$S$ is an arbitrary smooth projective surface.  Neither a Chow
+decomposition of $T$ nor a numerical--homological comparison on its
+reduction is required.  The all-degree abelian, supplied abelian-motive,
+and good-factor-times-abelian cases were already frozen in R16 and
+are not counted as new here.  The same good-coefficient-times-surface
+scope was proposed in R9; the present section gives an independent
+proof and verifies it through the current AK19/CR19/VT17 interfaces.
+It is not presented as a new family idea.  The source of the new proof is a
+correspondence identity on the \emph{special-fiber surfaces}; it is
+not a proposed arbitrary proper pushforward of actual forms.
+
+All Chow groups have rational coefficients.  Numerical equivalence
+and degrees on special fibers are native over their finite residue
+field.  Cohomology means geometric $\ell$-adic cohomology, with the
+indicated Tate twists, and $\ell$ is different from the residue
+characteristic.
+
+\subsection{The actual incidence correspondence}
+
+Let $R$ be a complete discrete valuation ring with finite residue
+field $k$, and let $\mathcal S/R$ be a regular projective reduced
+strictly semistable model of a smooth projective surface.  After a
+finite unramified extension, we may and do assume that the finitely
+many special-fiber components $D_i$ are geometrically integral.
+Write $D=\coprod_iD_i$.  Each $D_i$ is a smooth projective surface.
+For each double component $E_e\subset D_i\cap D_j$, let
+$j_{e,i}:E_e\hookrightarrow D_i$ and $j_{e,j}:E_e\hookrightarrow D_j$
+be its two embeddings.  Orienting $e$ from $i$ to $j$, use the
+frozen signs
+\[
+ \rho(x)_e=j_{e,j}^*x_j-j_{e,i}^*x_i,
+ \qquad
+ \sigma(y)_i=\sum_{e\text{ out of }i}j_{e,i*}y_e
+              -\sum_{e\text{ into }i}j_{e,i*}y_e.
+ \tag{AS20.1}
+\]
+Thus $A=\sigma\rho$ is represented by an actual rational
+correspondence
+\[
+             \mathcal A\in\operatorname{CH}^{3}(D\times_kD).
+ \tag{AS20.2}\label{r20as:Acorrespondence}
+\]
+Its entry from $D_i$ to a different $D_j$ is
+$\sum_{e:i\leftrightarrow j}(j_{e,i},j_{e,j})_*[E_e]$.
+Its diagonal entry is
+\[
+       -\Delta_{D_i*}\left(\sum_{e\text{ incident to }i}[E_e]\right).
+ \tag{AS20.3}
+\]
+The principal total special fiber gives the equivalent normal-bundle
+description of the diagonal.  The formulas hold on actual Chow
+groups, on their numerical quotients, and on full geometric
+cohomology.  They do not delete triple points.  A double curve may
+meet other double curves; these are precisely the permitted higher
+strata of a surface model.
+
+\begin{lemma}[Numerical generalized inverse as a correspondence]
+\label{r20as:numerical-inverse}
+There is an actual rational divisor correspondence
+\[
+             \mathcal G\in\operatorname{CH}^{1}(D\times_kD)
+\]
+for which
+\[
+          \mathcal A\circ\mathcal G\circ\mathcal A-\mathcal A
+                    \quad\text{is numerically zero}
+ \tag{AS20.4}\label{r20as:numerical-identity}
+\]
+as a correspondence, entry by entry.  The assertion is about
+correspondence classes, not merely their action on numerical
+cycles of the individual components.
+\end{lemma}
+
+\begin{proof}
+Use Jannsen's semisimplicity theorem for rational numerical motives
+over $k$ \cite[Theorem~1]{AS20Jannsen}.  With the convention that a
+degree-one correspondence is a morphism $M\to M(1)$, the numerical
+class of $\mathcal A$ is such a morphism for
+$M=\bigoplus_i h(D_i)$.  In a semisimple abelian category, split its
+source as its kernel plus a complement, and its target as its image
+plus a complement.  Invert the resulting isomorphism from the source
+complement to the image, and extend this inverse by zero on the target
+complement.  The resulting numerical morphism $G_N$ satisfies
+$A_NG_NA_N=A_N$.
+
+A morphism of degree minus one between these surface motives is a
+numerical class of a divisor on $D_i\times D_j$.  Each such numerical
+class has an actual rational Chow representative by definition of
+the numerical quotient.  Choosing representatives of the finitely
+many entries of $G_N$ gives $\mathcal G$.  Their composition has
+exactly the claimed numerical class.  No cycle-class map from a
+numerical group is used.
+\end{proof}
+
+\begin{proposition}[One rational inverse on full component cohomology]
+\label{r20as:cohomological-inverse}
+The correspondence $\mathcal G$ of
+Lemma~\ref{r20as:numerical-inverse} satisfies
+\[
+                   A^H G^H A^H=A^H
+ \tag{AS20.5}\label{r20as:full-inverse}
+\]
+on all geometric cohomology of $D$, simultaneously for every
+$\ell\ne\operatorname{char}k$.  Its numerical action satisfies the
+same identity in every degree.  In particular this is an inverse
+on the entire cohomological image of $A$, including odd-degree
+cohomology; no algebraicity assertion about all of $H^2(D_i)$ is
+made.
+\end{proposition}
+
+\begin{proof}
+Each entry of the error in \eqref{r20as:numerical-identity} belongs
+to $\operatorname{CH}^3(D_i\times D_j)$ and is numerically zero.
+The product $D_i\times D_j$ has dimension four, so this error is
+an actual \emph{one-cycle}.  By the curve-comparison lemma of SP19,
+a numerically zero native one-cycle on a product of two smooth
+projective surfaces has zero geometric $\ell$-adic class for every
+invertible $\ell$.
+
+For completeness, that comparison uses the known algebraicity of
+the inverse of $L^2:H^2\to H^6$ on a product of surfaces.  The
+Lefschetz standard conjecture is known for surfaces and is stable
+under products \cite[Proposition~4.3]{AS20Kleiman}.  Applying the
+inverse correspondence to a numerical-zero curve gives a divisor;
+the polarized divisor-index pairing shows that this divisor is
+numerically zero, hence geometrically homologically zero.  Applying
+$L^2$ again kills the original curve class.  Native numerical zero
+continues to pair to zero against geometric divisors after finite
+constant extension, by the full-degree norm and projection formula.
+
+Consequently the error correspondence has zero class, rather than
+only zero action on an algebraic subspace.  Compatibility of
+correspondence composition with geometric cycle classes gives
+\eqref{r20as:full-inverse} on every cohomological degree.
+The numerical identity is already \eqref{r20as:numerical-identity}.
+\end{proof}
+
+\paragraph{A finite rational certificate.}
+After choosing rational divisor representatives of bases of each
+$N^1(D_i\times D_j)$, write the entries of $\mathcal G$ as unknown
+rational combinations of these representatives.  Test every entry
+of $\mathcal A\mathcal G\mathcal A-\mathcal A$ against a basis of
+the corresponding numerical divisor space.  The equations
+\[
+ \deg_k\left(
+   (\mathcal A\mathcal G\mathcal A-\mathcal A)_{ji}
+                  \cdot H_{ji,\mu}\right)=0
+ \tag{AS20.6}
+\]
+form a finite \emph{linear} rational system in the coefficients of
+$\mathcal G$: $\mathcal A$ is fixed.  Its solvability follows from
+Lemma~\ref{r20as:numerical-inverse}, and the perfect numerical
+curve--divisor pairing makes its vanishing equivalent to
+\eqref{r20as:numerical-identity}.  All degrees in this certificate
+are on proper finite-field fourfolds.  This is a finite certificate
+once complete bases are supplied, not a claimed algorithm for
+finding a complete Neron--Severi basis on every input.
+
+\subsection{Arbitrary good-reduction coefficients, including mixed classes}
+
+\begin{proposition}[Tensoring the inverse with a good coefficient]
+\label{r20as:good-coefficient}
+Let $\mathcal T/R$ be any smooth projective model with geometrically
+integral generic fiber.  Then
+$\mathcal X=\mathcal T\times_R\mathcal S$ is regular projective
+strictly semistable.  On its components $T_0\times D_i$, the
+AK19 lifting defect and the CR19 supported defect vanish in every
+degree:
+\[
+                 \Delta_{A,a,\ell}(\mathcal X)=0,
+       \qquad \mathscr R_{A,r,\ell}(\mathcal X)=0.
+ \tag{AS20.7}\label{r20as:coefficient-defects}
+\]
+There is no condition on numerical versus homological equivalence
+on $T_0$ or on $T_0\times D_i$.
+\end{proposition}
+
+\begin{proof}
+The projection of $\mathcal X$ to $\mathcal S$ is smooth, so
+regularity and strict semistability follow by smooth base change.
+Its double embeddings and normal line bundles are the products of
+the original ones with $T_0$.  Under the reordering of the four
+factors, its actual incidence correspondence and the chosen inverse
+are
+\[
+        \mathcal A'=\Delta_{T_0}\boxtimes\mathcal A,
+        \qquad
+        \mathcal G'=\Delta_{T_0}\boxtimes\mathcal G.
+ \tag{AS20.8}
+\]
+External products commute with composition of correspondences.
+The cycle class of
+$\mathcal A'\mathcal G'\mathcal A'-\mathcal A'$
+is zero by Proposition~\ref{r20as:cohomological-inverse}; equivalently,
+\[
+                    A'{}^H G'{}^H A'{}^H=A'{}^H
+ \tag{AS20.9}\label{r20as:product-inverse}
+\]
+on \emph{all} cohomology of the product components.  This includes
+the mixed Kunneth summands.  No claim that actual Chow classes on
+the product are external products is required.
+
+Let $p_u:\mathscr A_C^u\to C^u\otimes\mathbf Q_\ell$ be AK19's
+canonical projection from the actual algebraic class span to native
+numerical classes.  A genuine Chow correspondence preserves
+numerical equivalence, by the correspondence projection formula.
+It therefore commutes with $p_u$ in its stated degree, including
+for $\mathcal G'$.
+
+For $v\in\ker A'{}^N_a$, choose any actual algebraic cohomology
+lift $x\in\mathscr A_C^a$ with $p_a(x)=v$.  The correction
+\[
+                         x^{\mathrm{corr}}=x-G'{}^H A'{}^H x
+ \tag{AS20.10}\label{r20as:actual-correction}
+\]
+is again in that actual algebraic span.  Its numerical image is
+$v-G'{}^N A'{}^N v=v$, and its cohomological $A'$-image is zero
+by \eqref{r20as:product-inverse}.  Thus every numerical $A'$-kernel
+test has an actual algebraic $A'$-kernel lift.  This proves
+$\Delta_A=0$ by AK19's exact connecting description.
+
+One may also check the smaller defect directly.  If
+$\alpha\in\mathscr A_C^r\cap\operatorname{im}A'{}^H_{r-1}$,
+then $G'{}^H\alpha$ is actual algebraic and
+$A'{}^H G'{}^H\alpha=\alpha$.  Applying $p_r$ puts its numerical
+class in $\operatorname{im}A'{}^N_{r-1}$, proving
+$\mathscr R_A=0$.  This argument uses actual correspondences on
+the finite-field components only; no actual analytic form is pushed
+along an arbitrary proper map.
+\end{proof}
+
+\begin{theorem}[A potentially good factor times any surface]
+\label{r20as:full-G}
+Fix a finite valued extension $K/\mathbf Q_p$ and its absolute
+value.  Let $T/K$ be smooth projective geometrically integral and
+suppose that after some finite extension it has a \emph{smooth
+projective} model over the valuation ring.  Let $S/K$ be an arbitrary
+smooth projective geometrically integral surface.  Put
+$n=\dim(T\times S)$.  Then, for every $1\le r\le n$, every
+geometrically homologically trivial rational codimension-$r$
+Chow class on $T\times S$ has zero actual obstruction.
+Consequently every specified such cycle has an ordinary-actual
+strong Green form on the complement of its exact original support,
+with the identity against every compactly supported actual test.
+
+The conclusion holds afresh for every finite valued extension of
+$K$ and every new cycle over that extension.
+\end{theorem}
+
+\begin{proof}
+If $\dim T=0$, geometric integrality makes $T=\operatorname{Spec}K$,
+and the assertion is the frozen surface endpoint theorem.  Assume
+henceforth $\dim T\ge1$, so the product dimension is at least three,
+as required by the AK19/CR19 geometric application.
+
+Choose first a finite extension on which $T$ has its smooth
+projective model.  Apply the frozen projective semistable alteration
+theorem to $S$ over that field.  After a further finite extension
+$L/K$, it supplies a smooth projective geometrically integral surface
+$S'/L$, a dominant generically finite morphism $S'\to S_L$, and a
+regular projective strictly semistable model $\mathcal S'/L^\circ$.
+The smooth projective model of $T$ remains smooth projective under
+every further finite base change.  A further unramified extension
+splits the finitely many component constants of $\mathcal S'$.
+The product model for $Y=T_L\times S'$ therefore has the vanishing
+defects of Proposition~\ref{r20as:good-coefficient}.
+
+All degrees of geometric cohomology of a surface satisfy
+weight--monodromy: the known degrees at most two and Poincare
+duality cover all degrees; see the recorded known cases following
+Conjecture~0.5 in \cite{AS20Saito}.  For $T_L$ the smooth proper
+model gives pure cohomology with trivial monodromy.  Kunneth and
+the tensor rule for the monodromy filtration thus give
+weight--monodromy for every degree of $Y$, in particular for each
+$H^{2r-1}(Y_{\bar L},\mathbf Q_\ell(r))$ needed here.  Recovered
+OW19 makes the actual inertia term zero.  Together with
+\eqref{r20as:coefficient-defects}, AK19 (or CR19) makes every
+homological cycle obstruction on $Y$ zero.
+
+For a newly specified class $z$ on $T\times S$, its pullback along
+$g:Y\to(T\times S)_L$ is homological, so has zero obstruction.
+Frozen R16 dominant Bott--Chern detection over $L$ first gives zero
+obstruction for $z_L$.  Finite-constant descent along
+$(T\times S)_L\to T\times S$, with the full degree $[L:K]$ and
+the extending original absolute value, gives zero obstruction over
+the original valued $K$.  VT17 then reconstructs the Green form for
+the \emph{originally specified cycle}.  The alteration is not
+assumed finite on the support complement.  There is no arbitrary
+proper actual-form pushforward and no restriction to exterior-product
+tests.
+
+For an arbitrary finite valued extension $K'/K$, the variety $T_{K'}$
+still has potentially good projective reduction: base change a
+chosen model to a compositum.  The variety $S_{K'}$ is again an
+arbitrary smooth projective geometrically integral surface.  Apply
+the same argument, including a fresh surface alteration if needed,
+to every newly given class.  No assertion that the class descends
+from $K$ is used.
+\end{proof}
+
+\begin{corollary}[Full complementary real heights]
+\label{r20as:height}
+Let $F$ be a number field.  Let $T/F$ be smooth projective
+geometrically integral with potentially good projective reduction
+at every finite place, and let $S/F$ be any smooth projective
+geometrically integral surface.  Put $X=T\times S$ and
+$n=\dim X$.  The frozen PH16 canonical real pairing has the full
+domains
+\[
+ \operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^{n+1-r}(X)_{\mathbf Q,\mathrm{geom\,hom}}
+                    \longrightarrow\mathbf R
+ \tag{AS20.11}\label{r20as:full-height}
+\]
+for every complementary positive degree.  The same conclusion
+holds over every finite number-field extension for all new cycles.
+In particular, when $\dim T=3$, this includes the complete middle
+self-pairing on $\operatorname{CH}^3(T\times S)_{\mathbf Q,\mathrm{geom\,hom}}$.
+\end{corollary}
+
+\begin{proof}
+At every finite completion apply Theorem~\ref{r20as:full-G} in
+both complementary degrees.  The complete local homological groups
+lie in the exact FD17/VT17 obstruction kernels.  Frozen PH16 and
+its archimedean construction give \eqref{r20as:full-height}; GA17
+supplies admissible Chow lifts on the specified regular arithmetic
+models or alteration witnesses.  After a finite number-field
+extension, potential good projective reduction persists at every
+finite completion, and the theorem is reapplied to all new classes.
+No positivity, nondegeneracy, or $L$-value identity is asserted.
+\end{proof}
+
+\paragraph{Further closure with an abelian factor.}
+For an abelian variety $B/F$ and an arbitrary surface $S/F$, the
+same full height conclusion follows if at each finite place at
+least one of the following holds: $B$ has potentially good
+reduction, or $S$ has potentially good \emph{projective} reduction.
+The first alternative is the new theorem with $T=B$; the second
+is the frozen R16 good-factor-times-abelian theorem.  This is a
+place-by-place assertion, so no global common local model is being
+postulated.  The corresponding finite-extension quantifier follows
+by reapplication at the new completions.
+
+\paragraph{Limits and the next product gate.}
+The argument proves no general vanishing theorem for an arbitrary
+variety.  For a $d$-dimensional bad factor, the incidence error would
+be a cycle of dimension $d-1$ on $D_i\times D_j$; only for $d=2$
+is this the curve-comparison case just used.  Further, a product of
+two bad semistable models is singular before resolution.  Its
+resolved component incidence operator is not asserted to be the
+naive tensor sum of the two original $A$ operators.  A compatible
+splitting of the full stratum system would be additional input.
+The present theorem therefore does not, by iteration alone, give
+all-degree G on arbitrary products of several bad surfaces.
+
+\paragraph{Sources and historical scope.}
+The primary numerical-motive input was read in
+\cite[Theorem~1]{AS20Jannsen}.  Curve comparison and its precise
+Lefschetz input are the frozen SP19 proof and its two independent
+reviews, using \cite[Proposition~4.3]{AS20Kleiman}.  The odd
+weight--monodromy implication is recovered OW19, not a new
+weight--monodromy theorem.  The ordinary-actual reconstruction,
+finite trace, dominant detection, PH16 and GA17 remain frozen
+dependencies.  R16 already proves arbitrary correspondence-kernel
+covariance, abelian full G, supplied abelian-motive transfer,
+nilpotence certificates, and the good-factor-times-abelian family.
+The exact earlier candidate is R9,
+\texttt{advance/obstruction\_good\_factor\_lowdim\_degenerations.tex},
+especially (GS.2)--(GS.4) and its complete local admissibility theorem.
+Its surface argument decomposed the incidence map into Tate blocks
+and a Picard/Albanese block.  That source and the final R9 README
+were extracted without modification and retained in the present
+history-evidence directory.  The README labels the geometric claims
+as internal research candidates.  R14's final report did not revise
+those flags.  R16's continuation explicitly warns that historical
+ideas are not activated merely by appearing in old files, while its
+general numerical-model and dominant-detection bridges can of course
+be applied to any independently verified earlier construction.
+R17's release bridge is limited to its listed scope/status changes;
+it is not a blanket certification of R9's product argument.
+These facts do not justify declaring a new geometric domain merely
+from the absence of its name in later registers.  Accordingly AS20
+is recorded as an independent new proof and current-interface
+verification, without a claim that the displayed family was outside
+every previously established or logically implied domain.
+It establishes this particular scope with the numerical-motive/curve-error
+argument and the current frozen analytic bridge; it does not rely
+on the earlier candidate proof.  It does not activate the separate
+R9 multiple-bad-surface or Hilbert-scheme candidates.  No external
+first-discovery claim is made for the present application.
+
+\begin{thebibliography}{AS20}
+\bibitem{AS20Jannsen}
+U.~Jannsen, \emph{Motives, numerical equivalence, and semi-simplicity},
+Invent. Math. \textbf{107} (1992), 447--452, Theorem~1.
+\url{https://epub.uni-regensburg.de/26642/1/jannsen10.pdf}.
+\bibitem{AS20Kleiman}
+S.~L.~Kleiman, \emph{The standard conjectures}, in
+\emph{Motives}, Proc. Sympos. Pure Math. \textbf{55}, Part~1
+(1994), 3--20, Proposition~4.3.
+\url{https://mishap.sdf.org/temp/Kleiman_Standard_Conjectures.pdf}.
+\bibitem{AS20Saito}
+T.~Saito, \emph{Weight spectral sequences and independence of $\ell$},
+J. Inst. Math. Jussieu \textbf{2} (2003), 583--634,
+Introduction, Conjecture~0.5 and the following known-case paragraph.
+\url{https://www.ms.u-tokyo.ac.jp/~t-saito/pp/wmr2r.pdf}.
+\end{thebibliography}

@@ -1,0 +1,312 @@
+\section{Complete metric transport for finite potential loops}
+\label{sec:r10-complete-loop-metric-transport}
+
+The top-degree SHT primitive contains lower-degree coefficient pairs
+which need not be closed.  R9 LTF makes that failure explicit.  There
+is nevertheless a finite metric-transport identity for the entire
+loop.  Its proof uses the exact boundaries of those coefficient pairs,
+which telescope, rather than cancelling a curvature factor or applying
+the closed-pair homotopy to a nonclosed pair.
+
+This is an identity of actual forms.  It removes the common metric
+from a specified loop whenever a single actual change of potential is
+available on the whole stated domain.  It does not solve the remaining
+flat-metric commuting-square problem, construct unspecified overlap
+witnesses, or assert that a line bundle has a global metric potential.
+
+\subsection{The finite loop and its full coefficient pairs}
+
+Let $W$ be an analytic open in the original setting, let $s\ge1$, and
+let $R\in B^{1,1}(W)$ be closed under both full differentials.  Supply
+finitely many actual scalar potentials $\Phi_i$ and put
+\[
+ C_i=R-D\Phi_i,\qquad
+ h_k(C_i,C_j)=\sum_{a+b=k}C_i^aC_j^b,\qquad D=d'd''.
+ \tag{MT1}
+\]
+Every $C_i$ is closed under both differentials.  Supply a finite
+oriented cycle of edges $e=(i,j)$ with signed multiplicities, and for
+each oriented edge an actual pluriharmonic scalar $c_e$.  Reverse
+orientation changes both the multiplicity convention and the sign of
+$c_e$ in the usual way.  More concretely one may simply list a closed
+edge path and use its displayed edge weights.  Require
+\[
+ \sum_e (\Phi_j-\Phi_i)=0,\qquad
+ \sum_e c_e=0,
+ \tag{MT2}
+\]
+and require endpoint telescoping for every function of a vertex;
+equivalently the signed sum of oriented endpoints is zero.  Write
+$v_e=\Phi_j-\Phi_i$ and $\overline\Phi_e=(\Phi_i+\Phi_j)/2$.
+
+For an actual scalar $u$ and an even diagonal-degree form $Q$, set
+\[
+ \mathcal L(u,Q)=(u\,d''Q,\ d'u\wedge Q).
+ \tag{MT3}
+\]
+All occurrences below have scalar first argument; expressions with
+an even first argument are written componentwise when needed.  The
+full two-colour identity is
+\[
+ \partial_1\mathcal L(u,Q)=uDQ-Du\wedge Q.
+ \tag{MT4}
+\]
+The pair and triple spaces and the operators $\partial_1,\partial_2$
+are precisely R9 CPT1.  For $k\ge0$ define actual diagonal forms
+\[
+ \Omega_k=\sum_e v_eh_k(C_i,C_j),\qquad
+ \Gamma_k=\frac12\sum_e c_e(C_i^k+C_j^k),\qquad
+ V_k=\Gamma_{k-1}-\Omega_{k-1}\quad(k\ge1).
+ \tag{MT5}
+\]
+In particular $V_1=\Gamma_0=\Omega_0=0$ by (MT2).  For $k\ge1$
+define an actual pair of degree $L_1^k$ by
+\[
+ f_k=-\sum_e\left\{
+ \mathcal L\bigl(\overline\Phi_e,
+                         v_eh_{k-1}(C_i,C_j)\bigr)
+ +\mathcal L\left(c_e,
+             \frac{\Phi_iC_i^{k-1}+\Phi_jC_j^{k-1}}2\right)
+                      \right\}.
+ \tag{MT6}
+\]
+The entire SHT loop of degree $s$, including its wall terms, is
+\[
+ \begin{split}
+ P_s&=\sum_{k=1}^s f_kR^{s-k}+W_s,\\
+ W_s&=-\frac12\sum_e
+                 \mathcal L\bigl(|c_e|,v_eh_{s-1}(C_i,C_j)\bigr).
+ \end{split}
+ \tag{MT7}
+\]
+Thus (MT7) is the literal sum of R9 SHT6 on the finite oriented loop,
+not a replacement primitive convention.  The absolute-value scalars
+are actual for the unit weights used in SHT; more generally their
+actual availability is part of the finite data.  No ordering chamber
+is selected and no wall derivative is suppressed.
+
+\begin{lemma}[The coefficient boundary chain]
+For every $k\ge1$,
+\[
+                 \partial_1f_k=V_{k+1}-RV_k.
+ \tag{MT8}
+\]
+Consequently these pairs are not asserted to be separately closed.
+\end{lemma}
+
+\begin{proof}
+Since $D\Phi_i=R-C_i$ and $Dc_e=0$, (MT4) gives, edge by edge,
+\[
+ \begin{split}
+ \partial_1\{-\mathcal L(\overline\Phi_e,v_eh_{k-1})\}
+    &=Rv_eh_{k-1}
+             +(\Phi_iC_j-\Phi_jC_i)h_{k-1},\\
+ \partial_1\left\{-\mathcal L\left(c_e,
+             \frac{\Phi_iC_i^{k-1}+\Phi_jC_j^{k-1}}2\right)\right\}
+    &=-\frac{Rc_e}{2}(C_i^{k-1}+C_j^{k-1})
+                        +\frac{c_e}{2}(C_i^k+C_j^k).
+ \end{split}
+ \tag{MT9}
+\]
+Here $h_{k-1}=h_{k-1}(C_i,C_j)$.  The finite polynomial identity
+\[
+ (\Phi_iC_j-\Phi_jC_i)h_{k-1}
+       +v_eh_k(C_i,C_j)=\Phi_jC_j^k-\Phi_iC_i^k
+ \tag{MT10}
+\]
+follows by multiplying out $h_k$.  Endpoint telescoping kills the
+sum of the right side.  Summing (MT9) therefore gives
+$R(\Omega_{k-1}-\Gamma_{k-1})-\Omega_k+\Gamma_k$, which is (MT8).
+No actual curvature factor has been cancelled.
+\end{proof}
+
+\subsection{The homotopy with its nonclosed remainder}
+
+For any actual scalar $h$ and any actual pair $p=(p',p'')\in L_1^k(W)$,
+define the same finite triple as in R9 CPT2,
+\[
+ H_h(p)=\bigl(d''h\wedge p',\ -d'h\wedge p'',\ h\,d'p'\bigr).
+ \tag{MT11}
+\]
+It lies in $L_2^{k+1}(W)$, including the negative-degree conventions
+at the endpoints.  Without any closedness assumption on $p$,
+\[
+          \partial_2H_h(p)=Dh\wedge p+
+                                  \mathcal L(h,\partial_1p).
+ \tag{MT12}
+\]
+Indeed, writing $w=\partial_1p$, the first component is
+$Dh\wedge p'-hDp'$.  Since $d''w=-Dp'$, this is
+$Dh\wedge p'+h\,d''w$.  The second component is
+$Dh\wedge p''+d'h\wedge(d''p''+d'p')
+ =Dh\wedge p''+d'h\wedge w$.  These are exactly the two
+components of (MT12).  R9 CPT3 is recovered when $w=0$.
+The retained remainder in (MT12) is essential below.
+
+\subsection{The full finite transport formula}
+
+Choose one actual scalar $h$ on the whole $W$ and make the simultaneous
+change
+\[
+          R'=R+Dh,\qquad \Phi'_i=\Phi_i+h.
+ \tag{MT13}
+\]
+Then every projective curvature remains the same:
+$R'-D\Phi'_i=C_i$.  Keep every edge weight $c_e$ unchanged.  Denote
+the resulting literal SHT loop by $P'_s$.  Define
+\[
+ S_t(R',R)=\sum_{\ell=0}^t(R')^\ell R^{t-\ell}\quad(t\ge0),
+ \tag{MT14}
+\]
+and set a sum with upper index less than its lower index equal to zero.
+
+\begin{theorem}[Finite actual metric transport of the whole loop]
+The actual triple
+\[
+ \boxed{\quad
+ Q_{s,h}=\sum_{k=1}^{s-1}S_{s-k-1}(R',R)H_h(f_k)
+ -\left(0,0,
+          h\sum_{k=1}^s\Gamma_{k-1}(R')^{s-k}\right)
+ \quad}
+ \tag{MT15}
+\]
+belongs to $L_2^s(W)$ and satisfies the literal full identity
+\[
+                         P'_s-P_s=\partial_2Q_{s,h}.
+ \tag{MT16}
+\]
+The statement holds for every $s\ge1$ and for the entire finite
+presentation, including all valuation walls and mixed metric jets.
+It does not require the individual $f_k$ to be closed.
+\end{theorem}
+
+\begin{proof}
+The $v_e,C_i,\Omega_k,\Gamma_k$ are unchanged under (MT13), and
+therefore the entire wall term $W_s$ is unchanged.  Expansion of (MT6)
+gives the exact pair identity
+\[
+ f'_k-f_k=\mathcal L(h,V_k)
+                         -\partial_2(0,0,h\Gamma_{k-1}).
+ \tag{MT17}
+\]
+For example, the raw change is
+$-\mathcal L(h,\Omega_{k-1})
+ -(\Gamma_{k-1}d''h,h\,d'\Gamma_{k-1})$.
+The identity
+\[
+ (\Gamma d''h,h\,d'\Gamma)+\mathcal L(h,\Gamma)
+                      =\partial_2(0,0,h\Gamma)
+ \tag{MT18}
+\]
+for any even diagonal form $\Gamma$ proves (MT17), with all signs
+and derivatives retained.
+
+Because $R,R'$ are closed, the scalar curvature telescope is
+\[
+             (R')^t-R^t=Dh\wedge S_{t-1}(R',R)\quad(t\ge1).
+ \tag{MT19}
+\]
+Substitute (MT17)--(MT19) in (MT7), and apply (MT12) to each $f_k$.
+The terms which are immediately $\partial_2$ boundaries give
+exactly (MT15).  The remaining pair is
+\[
+ \begin{split}
+ &\sum_{k=1}^s(R')^{s-k}\mathcal L(h,V_k)\\
+ &\hspace{7mm}-\sum_{k=1}^{s-1}S_{s-k-1}(R',R)
+                                      \mathcal L(h,V_{k+1}-RV_k).
+ \end{split}
+ \tag{MT20}
+\]
+Since $R$ is closed, multiplication by $R$ commutes with
+$\mathcal L(h,\cdot)$.  The coefficient of
+$\mathcal L(h,V_k)$ for $2\le k\le s-1$ is
+\[
+              (R')^{s-k}+R S_{s-k-1}-S_{s-k}=0.
+ \tag{MT21}
+\]
+The same cancellation at $k=s$ reads $1-S_0=0$.
+The possible $k=1$ endpoint vanishes because $V_1=0$.
+Thus (MT20) is zero.  This proves (MT16).  At $s=1$ the first
+sum in (MT15) is empty and $\Gamma_0=0$, so the complete loop
+is literally invariant under the common change; this also follows
+directly from SHT6.
+\end{proof}
+
+One can alternatively set $R_t=R+tDh$, $\Phi_i(t)=\Phi_i+th$.
+The resulting $P_s(t)$ is a finite polynomial in the numerical
+parameter $t$ with actual coefficients.  Its derivative is
+\[
+ \frac{dP_s(t)}{dt}=\partial_2\left\{
+ \sum_{k=1}^{s-1}(s-k)R_t^{s-k-1}H_h(f_k(t))
+ -\left(0,0,h\sum_{k=1}^s\Gamma_{k-1}R_t^{s-k}\right)
+                                  \right\}.
+ \tag{MT22}
+\]
+Integration in this formula means only integrating the finitely many
+real polynomial coefficients.  It introduces no actual-form
+completion, analytic pushforward, or parameterwise choice of a
+source layer.  The finite formula (MT15) already suffices.
+
+\subsection{Exact scope and the flat-metric reduction}
+
+For the two commuting distinct-entry changes in R9 PPD, take the
+oriented loop $0\to A\to T\to B\to0$ with weights
+$a,b,-a,-b$.  Then $P_s$ is exactly the PPD8 full chosen-primitive
+defect.  The theorem gives its complete common-metric transport,
+including all four triangle, absolute-wall, and metric-transport
+contributions of PPD9.  It does not replace that residual by its
+projective-fibre period.
+
+If on one whole neighborhood $N$ of the cancelled set the line bundle
+has a specified analytic frame and its chosen metric has an actual
+potential $h$, let $P_s^{\rm flat}$ be the same full loop computed
+with the norm-one frame metric.  On $W=N\setminus|f=0|$ the theorem
+constructs $Q_{s,h}$ with
+\[
+                  P_s^{\rm metric}-P_s^{\rm flat}
+                                            =\partial_2Q_{s,h}.
+ \tag{MT23}
+\]
+Thus any actual relative witness
+$P_s^{\rm flat}=\partial_2q+e|_W$, with $e$ defined on all of $N$,
+transports explicitly to the original metric by replacing $q$ with
+$q+Q_{s,h}$.  Conversely subtracting $Q_{s,h}$ transports a supplied
+witness in the other direction.  This is a reduction of an overlap
+problem; it is not a proof that the flat-metric witness exists.
+
+When the expected extending pair is
+$e_{a,b}R^{s-1}$, with
+$e_{a,b}=(a\,d''b,b\,d'a)$, its change under a supplied common
+metric potential is also an explicit $\partial_2$ boundary by
+R9 CPT, since $e_{a,b}$ is independently closed.  Hence the full-loop
+metric transport is consistent with the ASP period normalization
+and does not attempt to remove that genuine extending-pair term.
+
+A cover by frame domains is not one global $h$.  Applying (MT23)
+on each frame domain does not by itself glue the resulting triples;
+the separate RAG whole-overlap hypotheses remain necessary.  Nor
+does the theorem supply a finite elementary factorization of an
+arbitrary analytic matrix.  In particular the general distinct-entry
+flat-metric square, arbitrary frame-path coherence, full lower-middle
+OPEN-KERNEL, general strong G, arbitrary higher actual descent and
+complete Beilinson--Bloch height theory remain open unless settled
+by separate arguments.
+
+Every expression above uses finite actual addition, multiplication,
+full differentiation and one fixed finite collection of scalar
+potentials.  It commutes with actual restriction and refinement.
+The pair and triple spaces carry their own inherited coefficient-final
+topologies.  On one fixed whole coefficient presentation all formulas
+retain the complete mixed jets, and the finite Leibniz estimates give
+finite-stage continuity into one common finite refinement.  No global
+wedge-continuity assertion, Hausdorff quotient, strict image theorem,
+or comparison with a probe topology is inferred.
+
+\paragraph{Status and provenance.}
+The finite identity (MT16), its nonclosed remainder calculation and
+the conditional reduction (MT23) are proved in R10.  The actual SHT
+primitive convention, CPT pair complex, and LTF failure are frozen
+R9 inputs at their indexed hashes.  The root and the diagonal
+constructor independently found the same telescope and are both
+construction contributors; neither is an independent reviewer of
+this module.  No literature-novelty claim is made.

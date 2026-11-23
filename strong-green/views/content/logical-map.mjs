@@ -18,6 +18,7 @@ const obstruction = (anchor, label) => source('/papers/obstruction-height-route#
 const construction = (anchor, label) => source('/papers/green-constructions#' + anchor, label);
 const programme = (anchor, label) => source('/papers/strong-g-programme#' + anchor, label);
 const height = (anchor, label) => source('/papers/global-height-pairing#' + anchor, label);
+const chowGreen = (anchor, label) => source('/papers/chow-obstruction-green-pairs#' + anchor, label);
 
 const fullChowPairing = node(
   'A symmetric pairing on both full homologically trivial Chow groups',
@@ -137,7 +138,7 @@ export const logicalTrees = [
   },
   {
     id: 'logic-green', navTitle: 'Local Green forms', title: 'How an exact-support Green form is obtained',
-    summary: 'A curved Green pair + a global actual primitive ⇒ a strong Green form for the same cycle.',
+    summary: 'The curved Green pair and its Chow obstruction are established. A global actual primitive gives a strong Green form for the same cycle.',
     scope: 'Use BB-LOCAL-DATA: X/K is smooth projective geometrically integral, K/ℚₚ is the original finite extension, and Z is a rational codimension-r cycle with 1≤r≤dim(X). Every conclusion keeps the prescribed complement and full actual tests.',
     contexts: [
       rec('BB-LOCAL-DATA', 'Fixes the original absolute value, ordinary actual form sheaf, prescribed cycle coefficients and exact complement, full actual test space, integrability and native finite degrees.'),
@@ -147,9 +148,9 @@ export const logicalTrees = [
       gate('all', 'ALL inputs of curvature correction',
         'Subtract the actual Stokes identity for the global primitive from the curved Green identity. No additional support is removed.',
         [obstruction('obroute:curvature-correction', 'Curvature-correction proof'), source('/entries/BB-GREEN-CORRECTION', 'Permanent reduction record')], [
-          rec('BB-SUPPORTED-GREEN-PAIR', 'The exact-support construction remains a draft analytic input.'),
+          rec('BB-SUPPORTED-GREEN-PAIR', 'The new construction theorem establishes the prescribed pair on the exact complement, against all compact actual tests, with curvature representing the Chow obstruction.'),
           node('A global actual primitive DΨ=Ω', '/papers/obstruction-height-route#obroute:bott-chern', 'open',
-            'When the obstruction construction identifies [ΩZ] with Ob([Z]), zero obstruction is equivalent to this primitive. A directly constructed primitive does not require that obstruction construction. Each method below keeps its own premises.',
+            'The construction theorem identifies [ΩZ] with Ob([Z]), so zero obstruction is equivalent to this global actual primitive. Its existence for every homologically trivial class remains open. Each method below keeps its own additional premises.',
             gate('any', 'ANY applicable method for the primitive',
               'Geometric cases do not exhaust all homologically trivial cycles. The general source-vanishing and tropical interfaces remain open.',
               [obstruction('obroute:bott-chern', 'Actual Bott–Chern quotient'), programme('sec:programme-source', 'Source-vanishing programme')], [
@@ -158,7 +159,7 @@ export const logicalTrees = [
                     'Rational-fibre rigidity makes the additive Jacobian map locally constant; compactness and torsion-freeness force its image to vanish.',
                     [construction('thm:main-algebraic', 'Theorem A'), construction('hyp:construction-calculus', 'Construction calculus')], [
                       node('Z is geometrically algebraically trivial', '/entries/BB-ALG-TRANSFER', 'hypothesis', 'This domain is smaller than the full homologically trivial Chow group.'),
-                      rec('BB-ACTUAL-OBSTRUCTION', 'Assume the Chow-invariant actual obstruction (A1), together with the curved Green construction (A2).'),
+                      rec('BB-ACTUAL-OBSTRUCTION', 'The new theorem establishes the Chow-invariant actual obstruction (A1), genuine pullbacks and the curved Green construction (A2).'),
                       rec('BB-RATIONAL-FIBRE-RIGIDITY', 'The rational-fibre rigidity input R is still a draft.'),
                       rec('BB-COMPACT-RIGIDITY', 'This is the proved compact-group step, not a substitute for the analytic rigidity input.'),
                     ]),
@@ -167,7 +168,7 @@ export const logicalTrees = [
                   gate: gate('all', 'ALL Theorem B premises',
                     'Use abelian obstruction vanishing and the actual Chow identity for the diagonal, then descend with the full finite degree. A numerical or cohomological factorization is not enough.',
                     [construction('thm:main-abelian', 'Theorem B'), construction('def:construction-retraction', 'Chow retraction and degree shifts')], [
-                      node('The analytic packages A1, A2, N and C', '/papers/green-constructions#hyp:construction-calculus', 'hypothesis', 'These include the stated obstruction, support, numerical descent and correspondence compatibilities; R is not an extra premise of this route.'),
+                      node('Established A1–A2 and the additional N and C hypotheses', '/papers/green-constructions#hyp:construction-calculus', 'hypothesis', 'The Chow obstruction and prescribed pairs are established. The numerical descent and Chow-correspondence compatibilities N and C remain separate premises; R is not an extra premise of this route.'),
                       rec('BB-ABELIAN-STAGE', 'The abelian conclusion retains both the geometric certificate and the draft analytic descent input.', {
                         gate: gate('all', 'BOTH the abelian numerical certificate and finite numerical descent',
                           'After finite extension, the semistable abelian model produces a certificate for the pullback of the given geometrically homologically trivial class. Finite numerical descent returns its obstruction to zero over the original field.',
@@ -184,7 +185,7 @@ export const logicalTrees = [
                   gate: gate('all', 'BOTH detection and vanishing',
                     'A sufficient detector comparison is intersection of period kernels contained in the obstruction kernel. Equality of kernels is a stronger statement.',
                     [obstruction('obroute:period-criterion', 'Period criterion')], [
-                      node('Comparison with the ORIGINAL actual obstruction', '/papers/obstruction-height-route#obroute:period-criterion', 'open', 'First identify [ΩZ]=Ob([Z]) for the chosen Green pair. Fix the period functionals and prove that their joint vanishing detects this Ob on the specified Chow source.'),
+                      node('Comparison with the ORIGINAL actual obstruction', '/papers/obstruction-height-route#obroute:period-criterion', 'open', 'The construction theorem identifies [ΩZ]=Ob([Z]) for the prescribed pair. Fix the period functionals and prove that their joint vanishing detects this Ob on the specified Chow source.'),
                       node('All selected periods vanish on the required classes', '/entries/BB-RESIDUAL-PERIODS', 'open', 'The general target requires this for EVERY original homologically trivial class; one calculation only treats that class. Finite-dimensionality of a cohomology group alone proves neither assertion.'),
                     ]),
                 }),
@@ -211,15 +212,28 @@ export const logicalTrees = [
             rec('BB-REGULAR-CHOW-CRITERION', 'Retain its numerical detector, finite numerical descent and supported correspondence-transfer hypotheses.'),
           ]),
       }),
-      rec('BB-ANALYTIC-INTERFACE', 'The open verification problem for the actual-form construction. These draft ingredients are obligations to establish, not a completed proof package.', {
+      rec('BB-ANALYTIC-INTERFACE', 'The broader analytic interface remains open beyond the precise construction of Hypothesis 2.2. Its additional trace and intersection operations are not consequences of the restricted theorem.', {
         id: 'logic-analytic-interface',
-        gate: gate('open', 'OPEN analytic verification obligations',
-          'Verify the numerical detector and the scalar–curvature trace with their actual relations, then the supported and Chow-invariant constructions. This verification relation does not promote any draft status or replace the stronger operations used in global height assembly.',
-          [programme('sec:programme-analytic', 'Prescribed-cycle, trace and residue obligations'), source('/entries/BB-ANALYTIC-INTERFACE', 'The exact analytic question')], [
-            rec('BB-MODEL-DETECTOR', 'Draft inference on an integral projective flat model: zero operational degree against EVERY vertical r-cycle gives strict zero actual model curvature. The vector-bundle statement also needs the stated flag-bundle descent; smooth or reduced special fibre is not assumed.'),
-            rec('BB-RESTRICTED-TRACE', 'Draft trace for finite dominant maps of normal integral separated varieties, only on the actual scalar–curvature module generated by u₀Du₁⋯Duₖ. Verify presentation independence, ordinary locality, the required differential identities, full native degree and all-test adjunction. This is not a trace of arbitrary actual forms along a proper map.'),
-            rec('BB-SUPPORTED-GREEN-PAIR', 'Verify the supported-complex residue with its lengths and rational coefficients, on the ENTIRE prescribed complement and all compact actual tests.'),
-            rec('BB-ACTUAL-OBSTRUCTION', 'Verify model and resolution independence in actual Bott–Chern cohomology, Chow invariance, and the genuine pullbacks required by A1. The selected Green curvature must represent this same obstruction.'),
+        gate: gate('open', 'OPEN operations beyond the established construction',
+          'The prescribed Green pair and Chow obstruction are available. Further uses must establish the enlarged trace domains, separate d′ and d″ compatibilities, intersection identities and functoriality required by the particular argument.',
+          [chowGreen('h22:main', 'Established construction'), source('/entries/BB-ANALYTIC-INTERFACE', 'The remaining analytic interface'), height('sec:height-hypotheses', 'Additional foundations for global heights')], [
+            rec('BB-MODEL-DETECTOR', 'Established: strict actual model Chern characters and their numerical detector on integral projective flat models.'),
+            rec('BB-RESTRICTED-TRACE', 'Established on the actual scalar–curvature image module with all-test adjunction and native degrees. The enlarged differential trace domain remains a further question.'),
+            rec('BB-SUPPORTED-GREEN-PAIR', 'Established: the prescribed curved identity on the entire exact complement, with original coefficients and all compact actual tests.'),
+            rec('BB-ACTUAL-OBSTRUCTION', 'Established: rational linearity, Chow invariance, model independence and genuine pullbacks. Broader correspondence covariance remains separate.'),
+            node('The broader trace, differential and intersection interface', '/entries/BB-ANALYTIC-INTERFACE', 'open', 'On enlarged form domains, establish trace with separate d′ and d″ compatibilities and all-test adjunction. Retain the further projection, supported-intersection, Chow-correspondence and reciprocity assumptions used in each geometric or global deduction.'),
+          ]),
+      }),
+      rec('BB-CHOW-GREEN-PAIRS', 'Hypothesis 2.2 is established for every smooth integral projective X over the original finite valued extension of ℚₚ, including non-geometrically-integral X, and every prescribed rational cycle in 1≤r≤dim X.', {
+        id: 'logic-chow-green-pairs',
+        gate: gate('all', 'ALL parts of the proved construction',
+          'Strict model characters and the restricted scalar–curvature trace give supported curved pairs. Generic Chow-zero primitives make their curvature class independent of model and presentation and compatible with genuine pullbacks. Sum over the original cycle components on their exact common complement.',
+          [chowGreen('h22:main', 'Theorem 1.1: Chow obstruction and prescribed Green pairs')], [
+            rec('BB-MODEL-DETECTOR', 'Strict model Chern characters follow from the actual numerical detector and flag-bundle descent, independently of finite trace.', { links: [chowGreen('h22c:chern', 'Strict actual model Chern characters')] }),
+            rec('BB-RESTRICTED-TRACE', 'The proved trace acts on the actual scalar–curvature image module, with presentation independence and adjunction on all compact actual tests. Native degrees and the original absolute value are retained.', { links: [chowGreen('r11p:minimal-trace-theorem', 'Restricted finite trace and all-test adjunction')] }),
+            rec('BB-SUPPORTED-GREEN-PAIR', 'The supported-complex identity retains the original localized cycle coefficients and the entire prescribed complement.', { links: [chowGreen('r11p:complex-green', 'Supported-complex Green identity')] }),
+            node('Generic Chow-zero model characters have global actual primitives', '/papers/chow-obstruction-green-pairs#r11p:generic-chow-primitive', 'proved', 'An everywhere generically exact complex gives a global primitive. K₀ relations and the rational Adams projector reduce a degree-r Chow-zero character to this case. These are Chow-zero relations, not all homologically trivial classes.'),
+            rec('BB-ACTUAL-OBSTRUCTION', 'Global primitives give model and presentation independence, rational linearity and compatibility with genuine analytic pullbacks. The prescribed curvature represents the same Chow obstruction.', { links: [chowGreen('h22:main', 'Construction and pullback proof')] }),
           ]),
       }),
     ],

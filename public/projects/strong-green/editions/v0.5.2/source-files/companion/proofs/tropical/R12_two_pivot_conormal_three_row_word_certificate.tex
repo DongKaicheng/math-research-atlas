@@ -1,0 +1,322 @@
+\section{Reduced conormal words with two-pivot three-row factors}
+\label{sec:r12-two-pivot-conormal-word}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND, submitted for independent exact-source review.}
+The constructor of this corollary is
+\texttt{/root/r11\_challenge}.  Its new input is the exact TPG
+three-row relative pair and the coefficient-uniform literal-germ
+theorem UTG.  The conormal algebra, the small final norm-isometry,
+and the actual locally finite germ-gluing method are frozen CBW
+and GIC inputs, not counted as new constructions here.
+
+The conclusion concerns original regular CI differences satisfying
+an independently supplied finite coefficient certificate.  No
+factorization of a general matrix and no primitive of the full
+three-pivot Gaussian defect are asserted.  In particular, this is
+not a theorem for arbitrary rank-three same-ideal differences.
+
+\subsection{The coefficient certificate on a reduced scheme}
+
+Keep the original finite extension $K/\mathbf Q_p$ and its original
+absolute value.  Let $X/K$ be smooth, projective and geometrically
+integral of dimension $n$, and let $n\ge r\ge3$.  Let $s_0,s_1$ be
+regular rank-$r$ tuples of global sections of the same actually
+metrized line bundle $\overline L$ allowed by frozen CI.  Put
+\[
+ \begin{gathered}
+ Y_i=V(s_i),\qquad Z=[Y_1]-[Y_0],\qquad
+ U=X^{\rm an}\setminus|Z|,\\
+ W=X^{\rm an}\setminus(|Y_0|\cup|Y_1|),\qquad
+ C_U=(|Y_0|\cup|Y_1|)\cap U.
+ \end{gathered}
+ \tag{C3W1}
+\]
+Suppose a Zariski open $V\subset X$ is supplied with
+\[
+ C_U\subset V^{\rm an},\qquad
+ \mathcal I_{Y_0}|_V=\mathcal I_{Y_1}|_V=:\mathcal I.
+ \tag{C3W2}
+\]
+The open $V$ is not required to be affine.  Write
+$Y=V(\mathcal I)$ and $Y_{\rm red}=V(\sqrt{\mathcal I})$ inside
+$V$.  The regular-sequence calculation in ICC and CBW gives the
+canonical conormal comparison
+\[
+ \overline M\in\operatorname{GL}_r\Gamma(Y,\mathcal O_Y),
+ \qquad
+ \overline M_{\rm red}\in\operatorname{GL}_r A,
+ \quad A=\Gamma(Y_{\rm red},\mathcal O_{Y_{\rm red}}).
+ \tag{C3W3}
+\]
+Both conormal frames have the same scalar line-bundle twist, which
+cancels in their comparison.  Thus (C3W3) does not require a
+trivialization of $L$ on $V$.  The reduction is used only for a
+coefficient certificate; the schemes $Y_i$ and their original
+cycle multiplicities are not replaced by reductions.
+
+Supply one finite matrix word, executed from right to left,
+\[
+              \overline M_{\rm red}
+                    =\overline F_m\cdots\overline F_1
+                                      \quad\hbox{over }A.
+ \tag{C3W4}
+\]
+Each factor is one of the following, with its row labels and
+all its coefficient data fixed:
+\begin{enumerate}
+\item a shear $E_{ij}(b)$, where $b\in A$;
+\item a one-entry unit multiplication $D_i(\lambda)$, where
+      $\lambda\in A^\times$;
+\item an invertible two-row block, with determinant in $A^\times$;
+\item an invertible three-row block, the identity on all other
+      rows, with determinant in $A^\times$ and two specified
+      first-column entries $\overline a,\overline d$ satisfying
+\[
+    C_U\subset
+       D_{Y_{\rm red}}(\overline a)^{\rm an}
+          \cup D_{Y_{\rm red}}(\overline d)^{\rm an}.
+ \tag{C3W5}
+\]
+\end{enumerate}
+In (C3W5), $C_U$ is identified with its subset of
+$Y_{\rm red}^{\rm an}$; the two zero schemes have the same support
+on $V$.  Requiring the two principal opens to cover all of
+$Y_{\rm red}$ is a stronger purely algebraic sufficient condition.
+Only the displayed condition on $C_U$ is used below.
+For a three-row factor, fix an ordering of its three rows and use
+that ordering to relabel the entire TPG construction.  This is a
+definition of one prescribed program, not an equivariance claim
+about arbitrary independently chosen primitives.
+
+The inverses of every unit and block determinant are part of the
+finite coefficient data.  Equations (C3W4)--(C3W5) are independent
+of the desired Green form: they ask for a finite identity of
+matrices over a specified ring and a specified two-open covering.
+No actual-form calculus is imposed on the possibly singular
+scheme $Y_{\rm red}$.  Coefficients are evaluated at its analytic
+points only to test vanishing and invertibility.
+
+\begin{theorem}[Original-support Green form from a certified conormal word]
+Under (C3W1)--(C3W5), there is a constructed actual form
+\[
+                         g_Z\in B^{r-1,r-1}(U)
+ \tag{C3W6}
+\]
+over the original $K$ satisfying
+\[
+ \int_U g_Z\wedge d'd''\eta=-\int_Z\eta
+       \qquad\hbox{for every actual }
+       \eta\in B_c^{n-r,n-r}(X^{\rm an}).
+ \tag{C3W7}
+\]
+The canceled part $C_U$ need not be closed in $X^{\rm an}$ or
+separated there from the remaining support.  The local lifts of
+the word need not agree as analytic matrices away from the reduced
+common zero set.  No global analytic lift or affine common
+neighborhood is required.
+\end{theorem}
+
+\subsection{Executing local lifts without changing the original cycle}
+
+\begin{proof}
+Lift all coefficients of the finite word locally through the
+surjection of sheaves
+$\mathcal O_V\twoheadrightarrow\mathcal O_{Y_{\rm red}}$.
+There are simultaneous lifts on an affine cover near $Y$; one
+does not use surjectivity on the global sections of the possibly
+nonaffine $V$.  Invert the lifted unit and determinant functions
+on ordinary analytic neighborhoods of $C_U$.  For every
+three-row factor also restrict to the union of its two specified
+nonzero pivot opens.  By (C3W5) these restrictions do not remove
+any point of $C_U$.  Since the word is finite, all restrictions
+can be made simultaneously.  Denote the local factors by
+$F_{i,j}$ and their product by
+\[
+                         T_i=F_{i,m}\cdots F_{i,1}.
+ \tag{C3W8}
+\]
+
+Independently choose a local exact comparison $s_1=M_i s_0$;
+it exists by (C3W2).  Regularity gives uniqueness of its reduction
+modulo $\mathcal I$ and invertibility along $Y$, by the precise
+ICC regular-sequence relation calculation.  Hence $M_i$ and
+$T_i$ have the same reduction over $Y_{\rm red}$, namely
+$\overline M_{\rm red}$ in (C3W3).  In particular
+\[
+       H_i=M_iT_i^{-1}=I_r+E_i^{\rm mat},\qquad
+                  E_i^{\rm mat}|_{Y_{\rm red}}=0.
+ \tag{C3W9}
+\]
+Shrink the ordinary neighborhoods $N_i\subset U$ around $C_U$
+so that every entry of $E_i^{\rm mat}$ has norm less than one.
+This is possible at every analytic point of $C_U$, including
+nonrational points.  In each completed residue field both
+$H_i$ and its inverse preserve the sup norm.  Consequently
+\[
+                 G_{s_1}=G_{T_i s_0}
+                           \quad\hbox{on }N_i\cap W.
+ \tag{C3W10}
+\]
+Here only the complete fixed CI expression is compared, using
+its dependence on the tuple norm and the common metric.  No
+norm-isometry invariance of an arbitrary primitive is assumed.
+
+Execute (C3W8) at its actual intermediate tuples.  Use the frozen
+SHT primitive for a shear, the frozen unit primitive for a diagonal
+unit, the canonical GB pair for a two-row block, and the full
+TPG7 pair and residue for a three-row block.  Fix all cap offsets
+and all inner and outer smooth partition functions once for each
+position in the word, and use these same choices on every local
+lift.  In particular, each three-row call retains all four terms
+of its G3F face, its strict EFC crossing, and its full differentiated
+inner and outer partitions.  The local telescoping sum and
+(C3W10) give
+\[
+ \begin{gathered}
+ p_i=(p_i',p_i'')\in
+ B^{r-2,r-1}(N_i\cap W)\oplus B^{r-1,r-2}(N_i\cap W),\\
+ E_i\in B^{r-1,r-1}(N_i),\qquad
+ G_{s_1}-G_{s_0}=\partial_1p_i+E_i|_W.
+ \end{gathered}
+ \tag{C3W11}
+\]
+The differential form $E_i$ is not the small matrix error in
+(C3W9).  All intermediate matrices are invertible, so the
+punctured domain stays exactly $N_i\cap W$ at every word step.
+
+\subsection{Literal primitive germs, not just equal boundaries}
+
+For two local lifts and $x\in C_U\cap N_i\cap N_j$, corresponding
+coefficient values agree in $\mathscr H(x)$ because their
+restrictions to $Y_{\rm red}$ agree.  So do the prefix matrices
+preceding each word factor.  UTG14 and its finite-word consequence,
+together with GIC for the old factor types, therefore give one
+ordinary neighborhood of $x$ on whose punctured part
+\[
+                              p_i=p_j.
+ \tag{C3W12}
+\]
+This is literal equality of the full actual pairs, including all
+mixed coefficients.  UTG proves it for the integrated EFC terms
+by a coefficient-only tail bound, independent of the direction
+in which $s_0$ approaches zero, followed by a uniform comparison
+of the entire product presentation on a bounded parameter slab.
+The positive floor of every capped subtuple norm is included.
+Thus (C3W12) does not follow merely from agreement of endpoint
+norms, equal second boundaries, or pointwise limits on $C_U$.
+
+Let $N=\bigcup_iN_i$.  Choose an ordinary smooth locally finite
+partition $(\rho_i)$ on $N$, with each support closed in $N$
+and contained in its indicated domain.  With closed-support zero
+extensions, set on $N\cap W$
+\[
+ p=\sum_i\rho_i p_i,\qquad
+ H=\sum_i\bigl(d'\rho_i\wedge p_i'
+                       +d''\rho_i\wedge p_i''\bigr).
+ \tag{C3W13}
+\]
+Near $x\in C_U$ only finitely many supports meet.  Shrink to avoid
+the closed supports not containing $x$, and then intersect the
+finitely many neighborhoods from (C3W12) for the remaining
+indices.  Their pairs are one common pair on the punctured part
+of this neighborhood.  Since $\sum_i d'\rho_i=\sum_i d''\rho_i=0$,
+the entire form $H$ is zero there.  Therefore $H$ has a genuine
+actual zero extension $\widetilde H$ to $N$.  Define
+\[
+                    E=\sum_i\rho_iE_i-\widetilde H.
+ \tag{C3W14}
+\]
+The complete Leibniz calculation in the actual sheaf gives
+\[
+                G_{s_1}-G_{s_0}=d'p'+d''p''+E|_{N\cap W}.
+ \tag{C3W15}
+\]
+All sums are locally finite in ordinary neighborhoods and finite
+on a fixed compact set.  No completion or quotient-class
+representative is substituted for an actual form.
+
+\subsection{Original-support cutoff and all actual compact tests}
+
+Apply the exact RSP cutoff on $U$: choose an ordinary smooth
+actual $\zeta$ with support closed in $U$ and contained in $N$,
+equal to one on a neighborhood of $C_U$.  On $W$ define
+\[
+ g_W=G_{s_1}-G_{s_0}
+              -d'\operatorname{ext}_0(\zeta p')
+              -d''\operatorname{ext}_0(\zeta p'').
+ \tag{C3W16}
+\]
+Equation (C3W15) makes this equal to $E$ near $C_U$.  Actual
+sheaf gluing therefore constructs (C3W6) on precisely the
+original complement $U$.
+
+For a test $\eta$ as in (C3W7), the frozen support lemma places
+$D\eta$ compactly inside $W$.  It is the products of the two
+correction forms with $D\eta$, not necessarily the correction
+forms themselves, that have compact support.  Since
+$d'D\eta=d''D\eta=0$, full actual Stokes makes both correction
+pairings in (C3W16) vanish.  The two original actual CI formulas
+have identical curvature; subtracting them proves (C3W7).
+Neither the cycle nor its support, multiplicities, metric, field
+or absolute value has been changed.
+\end{proof}
+
+\subsection{Consequences and exact limits}
+
+For $r=3$, one may take the word to be the canonical conormal
+matrix itself if two specified entries in its first column
+satisfy (C3W5).  It then gives an original-support actual Green
+form even without a global analytic lift and even when the
+canceled part accumulates on the remaining support.  This is
+an additional checkable two-pivot hypothesis, not an automatic
+property of an arbitrary conormal matrix.  Changing a constant
+frame is not assumed to make that hypothesis hold.
+
+In any rank, a supplied word can mix old two-row factors with
+these new certified three-row factors, acting on different
+selected rows.  This remains a theorem about one fixed word.
+The construction compares its congruent local lifts, not different
+words or different three-pivot programs.  It requires neither a
+literal shared tail of the original tuples nor a global section
+surjectivity assertion on $V$.
+
+Nonreduced common schemes are allowed: the reduced scheme is
+used only for coefficient lifting and norm-small differences.
+Its finite constant fields, when present, need not equal $K$.
+All lifts are nevertheless original-$K$ analytic coefficients;
+no higher actual form is descended from an auxiliary field.
+The proof applies at all analytic points, including irrational
+Gauss radii, and does not replace the full actual relation space
+by product probes.  The nonproduct unit triple
+$(T_1,T_2,T_1+T_2)$, moving punctures and additional passive
+directions are retained through the exact TPG, UTG and PTH
+interfaces.
+
+The relevant object is the supplied finite word with an ordinary
+primitive-germ construction.  Its equivalence here is equality
+of corresponding coefficient restrictions on $Y_{\rm red}$.
+Restrictions, affine unit refinements and subdivisions commute
+with the finite native formulas and the restricted product-torus
+integration.  On each fixed compact whole presentation the
+frozen coefficient-final estimates and support lemma give the
+usual continuous integration interface.  No topology on the
+set of words, continuous choice of lifts, full-space linear
+retraction, or full inherited-kernel comparison is asserted.
+
+The old-word specializations are recoveries of CBW, not counted
+as new existence classes.  The full three-pivot native defect
+of NFG, general conormal factorization, different-ideal
+cancellation, general strong G and the additional unconditional
+Beilinson--Bloch height axioms remain \textbf{OPEN}.
+
+\paragraph{Exact dependencies.}
+TPG: \path{7fc1508b7ecbcb7ae21ae8cf2be4f5f8712b3bec77e12a43018847e8e87c611e}.
+UTG: \path{8f08701fcf6d3bdc091a500094abadd4ad02a21353673b1ebabcb871f4ccdc8d}.
+CBW: \path{ff400431eaa125fa2264fbf82c92ffea60395c9b7ee8b4a17889237e0c599d40}.
+GIC: \path{2ea4db21676b04cc4f2bbebfe168fec80c405f228e546f16550b9445d707c056}.
+ICC: \path{6836e2a945bfbf49faf41bef2d31a9d11c2af1434ada08048616069b906f4e49},
+only its exact local regular-sequence conormal calculation.
+RSP: \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+CI: \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+No other research branch is imported and no parent source is changed.

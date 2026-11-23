@@ -1,5 +1,6 @@
 // Current-only proof-reading diagrams for the model, family and arithmetic cases.
-// Statements and source statuses remain those of the immutable v0.5.1 papers.
+// Model and descent arguments retain their immutable v0.5.1 source bindings.
+// The precise prescribed-pair correction also cites the new v0.5.2 theorem.
 // Every edge is a stated inference with its full local scope, not a dependency-array edge.
 const paper = (slug, anchor, label) => ({ href: `/papers/${slug}${anchor ? '#' + anchor : ''}`, label });
 const P = (anchor, label) => paper('pairing-constructions', anchor, label);
@@ -193,7 +194,7 @@ function reductionStrata() {
                 L('ordinary-even-n', 'Residue two, even n≥4: the explicit degenerate-node chain', 'node-chain', 'The separate tree retains the actual étale equation, the finite order q and the q blowups.'),
               ])),
           N('ordinary-native-descent', 'Descent divides by the COMPLETE common field degree', P('sub:covariance', 'Native finite and dominant detection'),
-            'The original curved pair is corrected on the specified exact support complement. No replacement of the original field or absolute value is made.', undefined, 'hypothesis'),
+            'The descent hypothesis returns zero obstruction to the original field with its fixed absolute value. The established prescribed Green-pair theorem then supplies the exact-support correction.', undefined, 'hypothesis'),
         ])), [
       N('ordinary-new-cycles', 'The construction reapplies to all new cycles after every finite extension', ordinary,
         'This statement is stronger than compatibility only for pullbacks of old cycles.',
@@ -610,7 +611,7 @@ function arithmeticFamilies() {
             G('all', 'Full-degree native obstruction injection AND exact-support actual reconstruction',
               'The final cycle is the original specified Z over L. The descended zero obstruction provides a global primitive of its original curvature, which is subtracted from its own exact-support curved pair.', [products, inertia, periods, P('prop:obstruction', 'Native obstruction and exact-support reconstruction')], [
                 N('host-full-degree-injection', 'Finite-constant obstruction injection retains the complete [E:L]', P('sub:covariance', 'Native covariance and full degrees'), 'Ramification and residue degrees are not replaced by a geometric sheet count. The norm on L is the initially prescribed one.', undefined, 'hypothesis'),
-                N('host-exact-reconstruction-input', 'The original curved pair and its global actual correction', P('prop:obstruction', 'The actual obstruction input'), 'The final Green form is ordinary actual on exactly X_Lᵃⁿ∖|Z|ᵃⁿ and satisfies its identity against every compact actual complementary test.', undefined, 'hypothesis'),
+                N('host-exact-reconstruction-input', 'Zero obstruction gives the original exact-support Green form', { href: '/papers/chow-obstruction-green-pairs#h22:correction', label: 'Proved curvature correction' }, 'Once the preceding descent gives zero obstruction, the established pair and a global actual primitive give a form on exactly X_Lᵃⁿ∖|Z|ᵃⁿ against every compact actual complementary test.', undefined, 'proved'),
               ])),
         ])));
   const hostCurveComparison = T('positive-host-curve-gate', 'The uniform ample-boundary curve-comparison gate',
@@ -1473,10 +1474,16 @@ const B = (file, sha256, locators) => ({ file: 'public/projects/strong-green/edi
 const pairingBinding = B('papers/pairing-constructions.tex', '246716570c7476e2ccac6f9b3c19eb55941aca9cf265e431e1f14502272311f1', ['sec:analytic', 'prop:numerical', 'sub:covariance', 'hyp:height-input', 'lem:two-degrees', 'sec:models', 'sec:heights']);
 const modelsBinding = (locators) => B('source-files/pairing-cases/sections/models_families.tex', '34cfba218bf4653f55cf09aae936c3c3acc7047dd051b7561a0432a4b73e7138', locators);
 const determinantBinding = B('source-files/height-r2/sections/determinants.tex', 'b2d1a9edb46fe597686acc287641fca8c8ea3ffa1c40f88950b0473747169a1c', ['sec:poincare-metric', 'thm:quillen-isometry', 'thm:deligne-isometry', 'eq:grr-leading', 'cor:cycle-determinant', 'prop:good-reduction']);
+const chowGreenBinding = {
+  file: 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex',
+  sha256: '631e594925498df62e14f69e3776f6a5c29575fbc0b9d9b88dca1f2a4a05b920',
+  locators: ['h22:main', 'h22:correction'],
+};
 const bindings = {
   'numerical-models': [pairingBinding, modelsBinding(['sec:models', 'prop:scalar-model', 'eq:two-factor-model', 'prop:positive-model', 'prop:symmetry-model'])],
-  'reduction-strata': [pairingBinding, modelsBinding(['thm:ordinary', 'thm:abelian-strata', 'cor:drinfeld', 'thm:totally-degenerate'])],
+  'reduction-strata': [chowGreenBinding, pairingBinding, modelsBinding(['thm:ordinary', 'thm:abelian-strata', 'cor:drinfeld', 'thm:totally-degenerate'])],
   'arithmetic-families': [
+    chowGreenBinding,
     { ...pairingBinding, locators: [...pairingBinding.locators, 'prop:closures', '\\bibitem{Fulton}'] },
     modelsBinding(['lem:congruence-pencils', 'thm:dense-hypersurfaces', 'thm:dense-ci', 'thm:dense-products', 'eq:host-signature', 'Explicit elliptic-power families']),
     B('source-files/companion/proofs/models/r22/geometry/positive_fourfold_suspensions_and_quintuple_models.tex', '694efaacb303eed41c37a7da292f75afc55224b95197fed069f537bb5674654d', ['r22su:ampleCC', 'r22su:weakL', 'r22su:Gysiniso', 'r22su:gates', 'r22su:theorem', 'r22su:host']),

@@ -1,0 +1,333 @@
+\section{An actual scalar primitive for the three-pivot extending error}
+\label{sec:r12-three-pivot-error-primitive}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND, submitted for exact-source independent
+review.}  The construction contributors are conservatively
+\texttt{/root} and the R12 matrix agent
+\texttt{/root/r11\_challenge}.  The exact G3F face formulas and
+the frozen low-degree Steinberg identity in USR are inputs.
+The result removes the unpunctured coefficient error of the
+specified three-face defect.  It does not yet provide a primitive
+of the remaining closed actual triple.
+
+\subsection{The original analytic triangle behind the three faces}
+
+Work on the entire ordinary three-pivot overlap $N_{adg}$ of G3F,
+with arbitrary ambient rank $r\ge3$, $d_0=r-2$, and the original
+closed metric curvature $R=c_1(\overline L)$.  To distinguish a
+matrix minor from this curvature, put
+\[
+ P=ae-bd,\qquad Q=ah-bg,\qquad R_m=dh-eg.
+ \tag{G3S1}
+\]
+The first two columns of an invertible matrix have rank two at
+every analytic point.  Thus these three minors never vanish
+simultaneously.  They satisfy the original analytic identity
+\[
+             aR_m=dQ-gP.
+ \tag{G3S2}
+\]
+Define analytic functions and an analytic unit on $N_{adg}$ by
+\[
+ \alpha=P/a,\qquad \beta=Q/g,\qquad \gamma=R_m/g,
+ \qquad \lambda=d/a.
+ \tag{G3S3}
+\]
+Consequently
+\[
+        \alpha+\gamma=\lambda\beta,
+        \qquad (\alpha,\beta,\gamma)\text{ has no common zero}.
+ \tag{G3S4}
+\]
+This is a genuine analytic relation in the original field,
+including its cancellation branch, not a freely imposed tropical
+three-ray relation.  None of $\alpha,\beta,\gamma$ is required
+to be a unit on all of $N_{adg}$.
+
+On their common unit locus use the notation
+\[
+ x=v(\alpha),\quad y=v(\beta),\quad z=v(\gamma),\quad
+ T=v(\lambda),\quad U=v(g/a).
+ \tag{G3S5}
+\]
+The functions $T,U$ are actual unit logarithms on the whole
+$N_{adg}$.  For unit logarithms $p,q$, use the original pair order
+and write
+\[
+ e_{p,q}=(p\,d''q,q\,d'p),\qquad
+ M_f=(0,0,f),\qquad
+ \mathfrak F(p,q)=(1-\chi(q-p))e_{q,p-q},
+ \qquad \mathfrak K(p,q)=\mathfrak F(p,q)-\mathfrak F(q,p).
+ \tag{G3S6}
+\]
+The function $\chi$ is the same symmetric, constant-tail function
+specified in G3F and SGI; its offset is denoted $\varepsilon>0$.
+No separate extension of a singular term in (G3S6) is assumed.
+
+\subsection{Reduction of the whole coefficient error}
+
+The first-column valuation pairs of the Schur matrices in G3F are
+exactly as follows, with signs ignored only because $|-1|=1$:
+\[
+\begin{array}{c|c}
+\text{matrix}&\text{valuations of its two first-column entries}\\\hline
+S_a&(x,y+U)\\
+S_d&(x-T,z+U-T)\\
+S_g&(z,y)\\
+S_1=D_3((g/a)^{-1})S_a&(x,y)\\
+J_{23}^{-1}S_1&(y,x)\\
+J_{23}^{-1}S_g&(y,z)\\
+S_1^{(2)}\text{ in the }d\text{-to-}g\text{ algorithm}&(x-T,z)\\
+J_{23}^{-1}S_1^{(2)}&(z,x-T)\\
+J_{23}^{-1}(J_{23}^{-1}S_g)&(z,y).
+\end{array}
+ \tag{G3S7}
+\]
+The last three rows are obtained by applying G3F22 to
+$J_{12}^{-1}M$, whose first-column entries are $d,-a,g$.
+This retains the alternate-chart identification in G3F27; it
+contributes no extending error.
+
+Let $E_{adg}=e_{ad}+e_{dg}-e_{ag}$ be the \emph{entire}
+unpunctured actual pair defined by G3F29.  Substitution of the
+full G3F17 and G3F23 errors, followed only by literal bilinearity,
+gives on the common unit locus
+\[
+ E_{adg}=\mathcal E\,R^{d_0},\qquad
+ \mathcal E=-e_{T,x}+\mathfrak K(x-T,z)
+                         -\mathfrak K(x,y)+\mathfrak K(z,y).
+ \tag{G3S8}
+\]
+This is not division or cancellation of $R^{d_0}$: the coefficient
+pair on the right is computed from the displayed coefficient
+formulas before the common closed curvature is wedged.
+
+Here is a useful check on all outer-unit and GMU-gauge terms.
+Write $A=v(a)$, $D=v(d)$, $G=v(g)$ and $p=v(P)$.
+The three outside CS errors have sum $e_{D-G,A-D}$.
+The two row-two GMU gauge terms have sum
+$e_{G-D,p-D}-e_{G-A,p-A}$.  Since $T=D-A$, $U=G-A$ and
+$x=p-A$, their total is
+\[
+ e_{U-T,T}+e_{U-T,x-T}-e_{U,x}=-e_{T,x}.
+ \tag{G3S9}
+\]
+The remaining six $\mathfrak F$ terms are exactly the three
+$\mathfrak K$ terms in (G3S8).  Thus neither a row-unit gauge
+nor an outside CS correction has been dropped.
+
+\subsection{The scalar formula on the whole unit locus}
+
+Define the ordinary smooth function
+\[
+ H_\chi(t)=\int_0^t s\chi(s)\,ds.
+ \tag{G3S10}
+\]
+It satisfies $H_\chi'(t)=t\chi(t)$ and, by symmetry of $\chi$,
+\[
+ H_\chi(t)+H_\chi(-t)=t^2/2.
+ \tag{G3S11}
+\]
+There is a constant $h_-$ with $H_\chi(t)=h_-$ for
+$t\le-\varepsilon$ and $H_\chi(t)=t^2/2-h_-$ for
+$t\ge\varepsilon$.
+An exact first-form product computation gives
+\[
+ \mathfrak K(p,q)=e_{q,p-q}+\partial_2M_{H_\chi(q-p)}.
+ \tag{G3S12}
+\]
+Indeed $e_{q,p-q}+e_{p,q-p}=\partial_2M_{-(p-q)^2/2}$;
+insert this in (G3S6) and use the chain rule in (G3S10).
+This is a first-form identity with all two-colour derivatives,
+not a claim that the weighted summands are individually closed.
+
+On the common unit locus set
+\[
+ a_0=x-T-y,\qquad b_0=z-T-y,
+ \qquad c_0=\min(a_0,0)=\min(b_0,0).
+ \tag{G3S13}
+\]
+The equality of the two minima follows from the two analytic units
+$\alpha/(\lambda\beta)$ and $\gamma/(\lambda\beta)$, whose sum
+is one by (G3S4).  The entire actual Steinberg identity USR15 gives
+$e_{b_0,a_0}=\partial_2M_{c_0^2/2}$ on all its valuation walls.
+Inserting (G3S12) in (G3S8), the remaining unit-symbol part is
+\[
+ \begin{split}
+ &-e_{T,x}+e_{z,x-T-z}-e_{y,x-y}+e_{y,z-y}\\
+ &\hspace{10mm}=e_{b_0,a_0}-e_{b_0,b_0}
+                                    -\partial_2M_{Tz}.
+ \end{split}
+ \tag{G3S14}
+\]
+All cross terms are retained: the last correction comes from
+$e_{b_0,T}+e_{T,b_0}+e_{T+y,T}+e_{T,T+y}$.
+Consequently the explicit scalar
+\[
+ F=\frac{c_0^2-b_0^2}{2}-Tz
+       +H_\chi(z-x+T)-H_\chi(y-x)+H_\chi(y-z)
+ \tag{G3S15}
+\]
+satisfies $\mathcal E=\partial_2M_F$ on the entire common unit
+locus, including the complete nonproduct triangle and all its
+intercept walls.  In particular no verification only on strict
+Gauss chambers is being used.
+
+\subsection{Actual extension through every zero minor}
+
+The formula has a direct finite ordinary extension, not an assigned
+value to an infinite valuation.  Put
+\[
+ B=1+\varepsilon+2(|T|+|U|)
+ \tag{G3S16}
+\]
+and consider the ordinary opens
+\[
+ \begin{split}
+ O_\alpha&=\{|\alpha|<e^{-B}|\gamma|\},\\
+ O_\beta&=\{|\lambda\beta|<e^{-B}|\alpha|\},\\
+ O_\gamma&=\{|\gamma|<e^{-B}|\alpha|\}.
+ \end{split}
+ \tag{G3S17}
+\]
+Their defining norms are continuous at every analytic point;
+$B$ has a finite actual unit-valuation presentation.  These opens
+contain the respective zero loci because of (G3S4).  The other
+two entries are units on each such open.  Together with the common
+unit locus they cover $N_{adg}$.
+
+On $O_\alpha$, the ultrametric relation gives $z=T+y$ on the whole
+ordinary open.  Where $\alpha\ne0$, both $z-x+T$ and $y-x$ are
+below $-\varepsilon$, $b_0=c_0=0$, and (G3S15) simplifies to
+\[
+                 F_\alpha=-Tz+H_\chi(-T).
+ \tag{G3S18}
+\]
+The right side is actual on all of $O_\alpha$.
+On $O_\beta$, one has $x=z$ and $a_0=b_0=c_0$ on its unit part;
+the two large-$y$ terms cancel as whole functions.  Thus
+\[
+                 F_\beta=-Tz+H_\chi(T)
+                           \quad\hbox{on }O_\beta.
+ \tag{G3S19}
+\]
+On $O_\gamma$, one has $x=T+y$, $a_0=c_0=0$ and
+$b_0=z-x>\varepsilon+2|T|$.  Use both exact tails in (G3S11):
+\[
+ \begin{split}
+ F&=-b_0^2/2-Tz+(b_0+T)^2/2-H_\chi(-T)\\
+  &=-Tx+H_\chi(T).
+ \end{split}
+ \tag{G3S20}
+\]
+The constants $h_-$ cancel, so this is an exact scalar identity,
+not a statement modulo a constant.  Define $F_\gamma$ by the last
+expression on all of $O_\gamma$.
+
+These explicit finite functions agree with (G3S15) on their whole
+ordinary intersections with its domain.  Hence they glue to one
+actual $F\in B^{0,0}(N_{adg})$.  No simultaneous-zero point or
+pole has been silently added to the domain.
+
+It remains important to check the pair identity at a zero minor
+itself, rather than infer it by restriction injectivity.  The
+positive $|U|$ buffer in (G3S16) puts every singular first-pivot
+term in the original table (G3S7) in the corresponding constant
+tail of its GB partition.  Inserting those constant tails into the
+\emph{combined} GMU12--GMU15 and TML4 ordinary extensions gives
+the following direct coefficient computations.
+On $O_\alpha$, the $x$ terms cancel before any extension, and
+\[
+ \begin{split}
+ \mathcal E
+   &=-e_{T,x}+e_{z,x-T-z}-e_{y,x-y}+\mathfrak K(z,y)\\
+   &=-\partial_2M_{Tz}+\partial_2M_{H_\chi(-T)}
+                       =\partial_2M_{F_\alpha}.
+ \end{split}
+ \tag{G3S21}
+\]
+The second line contains only the two finite unit logarithms
+$T,z$ and is the prescribed whole extension at $\alpha=0$.
+On $O_\beta$, $x=z$ makes the entire two singular terms
+$-\mathfrak K(x,y)+\mathfrak K(z,y)$ cancel, including their
+partition derivatives.  The remaining expression is
+\[
+ \mathcal E=-e_{T,x}+\mathfrak K(x-T,x)
+                =\partial_2M_{-Tx+H_\chi(T)}.
+ \tag{G3S22}
+\]
+On $O_\gamma$, the two tails give
+$\mathfrak K(x-T,z)=-e_{y,z-y}$ and
+$\mathfrak K(z,y)=e_{y,z-y}$, since $x-T=y$.
+They cancel as whole expressions.  Thus
+\[
+ \begin{split}
+ \mathcal E&=-e_{T,x}-\mathfrak K(x,y)\\
+   &=-\partial_2M_{Tx}+\partial_2M_{T^2/2-H_\chi(-T)}
+                      =\partial_2M_{F_\gamma}.
+ \end{split}
+ \tag{G3S23}
+\]
+In each case the disappearing logarithm is eliminated by a literal
+unit-logarithm identity on the ordinary zero neighborhood before
+the original whole-call extension is applied.  No singular scalar
+or pair has been extended separately, and no unpunctured equality
+is deduced merely from a punctured equality.
+
+\begin{theorem}[Whole-neighborhood coefficient-error primitive]
+The scalar $F$ in (G3S15), (G3S18)--(G3S20) is actual on the entire
+ordinary $N_{adg}$ and satisfies
+\[
+          E_{adg}=\partial_2(M_F R^{d_0})
+                      \quad\hbox{on all of }N_{adg}.
+ \tag{G3S24}
+\]
+Consequently the prescribed whole triple
+\[
+           \mathcal C_{adg}=T_{adg}+M_FR^{d_0}
+ \tag{G3S25}
+\]
+is actual and $\partial_2$-closed on the punctured three-chart
+overlap.  Equivalently, the actual extending triple
+$F_{adg}=-M_FR^{d_0}$ solves the stronger unpunctured target
+$\partial_2F_{adg}=-E_{adg}$ of G3F31.
+\end{theorem}
+
+\begin{proof}
+Equations (G3S8)--(G3S15) prove (G3S24) on the common unit locus
+using the complete actual Steinberg relation.  Equations
+(G3S21)--(G3S23) verify exactly the same identity on all three
+ordinary zero neighborhoods, in their prescribed whole extensions.
+These opens cover.  Since $R$ is independently closed in both
+colours, wedging the displayed scalar primitive with $R^{d_0}$
+commutes with the actual boundary, without canceling that factor.
+G3F30 then gives (G3S25).
+\end{proof}
+
+\paragraph{The remaining actual, not formal, task.}
+An actual $H$ with $\mathcal C_{adg}=\partial_3H$, or more
+generally an explicit relative third witness with a further actual
+extending closed triple, has not been supplied by this theorem.
+The closed triple in (G3S25) still contains every original native
+word and cap term and EFC's product-torus integrals.  It is not
+automatically an AGC cube or an arbitrary family to which PTH can
+be applied.  A genuine product-presented tail certificate for that
+\emph{whole} triple, or a direct complete higher identity, is still
+required.  Therefore the general three-row block Green application
+remains conditional on the remaining part of G3F31.
+
+\paragraph{Exact inputs and boundaries.}
+G3F: \path{c1574d77ea47992a02f5ebc80fce519dbad5927223f00622a1eddc33cbf8dd44}.
+USR: \path{d7225979dee2fba900e590f725754ab4c59054caa674d1d2ad749b86b81b5acd}.
+GMU: \path{a70b10906ebf4c3259df5d69131a3726f3b14aa8040f9df319a3e03bf8338fcb}.
+TML: \path{327b233fe982c1692eba9603cfd50f0ff35932682fff182322343bc57ff6fddd}.
+The actual triple and first-form conventions are their frozen CPT
+conventions.  The low-degree Steinberg identity is a derived
+interface to frozen GPR13, not claimed anew here.  The new result
+is the full three-face error reduction and its all-zero-domain
+scalar primitive.  It holds in every original residue
+characteristic, for nonrational points and nonproduct base units,
+with no field extension, new growth condition or probe-topology
+substitution.  It does not close the full actual kernel or general
+Strong G.

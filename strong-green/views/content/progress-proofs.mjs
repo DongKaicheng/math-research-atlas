@@ -6,10 +6,10 @@ import { progressProofGeometry } from './progress-proof-geometry.mjs';
 import { progressProofModels } from './progress-proof-models.mjs';
 import { progressProofRequirements } from './progress-proof-required.mjs';
 
-export const progressProofEdition = 'v0.5.1';
+export const progressProofEdition = 'v0.5.2';
 export const progressProofInventory = {
   file: 'strong-green/views/content/pairing-progress.mjs',
-  sha256: 'b53862e700bbb393e19501381e7e0181fedba737b3475ca3c690dcf9cec9283d',
+  sha256: '286275e99eb294c21ed9348cc03a68fff529d503427eeacbb33584f25e2ac252',
 };
 export const progressProofPath = '/results/proof-diagrams';
 const authored = [...progressProofCore, ...progressProofGeometry, ...progressProofModels];
@@ -67,7 +67,9 @@ export function validateProgressProofs(records, revision, candidates = progressP
     const missingTrees = required.treeIds.filter(treeId => !treeIds.has(treeId));
     if (missingTrees.length) throw Error('Required Progress proof trees missing from ' + item.caseId + ': ' + missingTrees.join(', '));
     for (const source of item.sourceBindings) {
-      if (!/^(?:content\/strong-green\/releases\/v0\.5\.1\/papers\/|public\/projects\/strong-green\/editions\/v0\.5\.1\/)/.test(source.file || '') || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !Array.isArray(source.locators) || !source.locators.length || Array.from(source.locators).some(locator => typeof locator !== 'string' || !locator.trim()))
+      const historicalSource = /^(?:content\/strong-green\/releases\/v0\.5\.1\/papers\/|public\/projects\/strong-green\/editions\/v0\.5\.1\/)/.test(source.file || '');
+      const constructionSource = source.file === 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex';
+      if (!(historicalSource || constructionSource) || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !Array.isArray(source.locators) || !source.locators.length || Array.from(source.locators).some(locator => typeof locator !== 'string' || !locator.trim()))
         throw Error('Invalid Progress proof source binding: ' + item.caseId);
     }
     const sourceFiles = new Set(item.sourceBindings.map(source => source.file));

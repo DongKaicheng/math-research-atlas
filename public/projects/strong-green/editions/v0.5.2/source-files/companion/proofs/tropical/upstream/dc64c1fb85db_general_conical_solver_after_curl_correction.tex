@@ -1,0 +1,296 @@
+\section{A conical solver without a pure-carrier restriction}
+\label{sec:r11-general-conical-solver}
+
+\paragraph{Status and construction.}
+\textbf{PROVED THIS ROUND}, submitted for independent exact-source
+review.  The constructor is \texttt{/root/r11\_kernel}.
+The new formula permits a nonzero first quadruple component and
+therefore removes the pure-carrier assumptions of CE5--CE8.
+It retains the exact finite native conical algebra, the two Euler
+weights, and the two independently verified curl hypotheses.
+It does not construct the missing global higher-rank curl primitives.
+
+\subsection{The supplied finite native algebra}
+
+Use precisely CE1--CE4: finitely many continuous homogeneous
+piecewise-linear functions on a connected conical open, one finite
+common central refinement, and their finite actual differential
+polynomials.  The odd operations $I',I''$ are evaluated by
+\[
+ I'(d'h)=h,\qquad I''(d''h)=h,
+ \qquad I'h=I''h=I'(d''h)=I''(d'h)=I'Dh=I''Dh=0,
+ \tag{CGS1}
+\]
+with the total graded Leibniz rule.  They preserve all native
+actual relations by the exact CE carrier proof.  $N$ is the
+even prime-to-double-prime exterior derivation.
+The identities needed here are
+\[
+ \begin{gathered}
+ d'I'+I'd'=E',\qquad d''I''+I''d''=E'',\qquad
+ d''I'+I'd''=N,\qquad [N,d']=d'',\qquad[N,d'']=0.
+ \end{gathered}
+ \tag{CGS2}
+\]
+The weight conventions are those of CE3: a homogeneous scalar
+has weight $(1,1)$, its prime and double-prime first derivatives
+have weights $(1,0)$ and $(0,1)$, and a corner factor has weight
+$(0,0)$.  These are not total bidegrees.
+
+Fix $\ell\ge0$ and supply an actual triple
+\[
+ u=(A,B,M)\in L_2^{\ell+2},\qquad
+ \deg(A,B,M)=
+ ((\ell,\ell+2),(\ell+2,\ell),(\ell+1,\ell+1)).
+ \tag{CGS3}
+\]
+Assume that all three entries lie in the stated finite algebra,
+are simultaneous Euler eigenvectors with weights
+\[
+                    (1,3),\qquad(3,1),\qquad(2,2),
+ \tag{CGS4}
+\]
+and satisfy the four entire actual identities
+\[
+ d'A+d''M=0,\qquad d''B+d'M=0,
+                     \qquad d''A=0,\qquad d'B=0.
+ \tag{CGS5}
+\]
+No restriction is made on their carrier codimensions or
+tangential coefficient degrees beyond their actual bidegrees.
+
+\begin{theorem}[Finite general conical third witness]
+Define
+\[
+\begin{gathered}
+ P_0=\frac13 I''A,\qquad Q_0=\frac13 I'B,
+ \qquad M_0=M-d'P_0-d''Q_0,\\
+ P_1=\frac12 I'M_0,\qquad
+ U_1=-\frac12 I'NM_0.
+\end{gathered}
+ \tag{CGS6}
+\]
+Then every entry is a finite actual expression, and
+\[
+ \boxed{\qquad
+ u=\partial_3\bigl(U_1,0,P_0+P_1,Q_0\bigr),
+ \qquad
+ \partial_3(U,V,P,Q)=(d'U+d''P,d''V+d'Q,d'P+d''Q).
+ \qquad}
+ \tag{CGS7}
+\]
+The denominators are independent of the dimension, rank and
+carrier codimension.
+\end{theorem}
+
+\begin{proof}
+The first two identities in (CGS2), the last two assumptions in
+(CGS5), and the weights give
+\[
+                   d''P_0=A,\qquad d'Q_0=B.
+ \tag{CGS8}
+\]
+The first two assumptions in (CGS5) then imply, with the full
+anticommutation signs,
+\[
+                          d'M_0=d''M_0=0.
+ \tag{CGS9}
+\]
+Its Euler weights remain $(2,2)$: $I''$ raises the first
+weight by one, $I'$ raises the second by one, $d'$ lowers
+the second by one, and $d''$ lowers the first by one.
+
+Apply (CGS2) to $M_0$ to obtain
+\[
+                   d'P_1=M_0,\qquad d''P_1=\frac12 NM_0.
+ \tag{CGS10}
+\]
+The second expression need not be zero.  Instead use
+\[
+ d'NM_0=Nd'M_0-d''M_0=0,
+                       \qquad E'(NM_0)=NM_0.
+ \tag{CGS11}
+\]
+The latter follows because $N$ lowers the prime Euler weight
+by one.  Cartan's identity therefore yields
+\[
+                          d'U_1=-\frac12 NM_0.
+ \tag{CGS12}
+\]
+The first component of (CGS7) is the sum of (CGS12), the first
+identity of (CGS8), and the second identity of (CGS10).  The
+two $NM_0/2$ terms cancel, leaving $A$.  The second component
+is the second identity of (CGS8), and the third is the
+definition of $M_0$ together with the first identity of
+(CGS10).  This proves all three components.
+
+In the pure-carrier setting of CE, $I'NM_0=0$, and the
+additional component $U_1$ vanishes.  Thus the exact CE
+formula is recovered, not contradicted.  If $\ell=0$,
+$U_1$ has negative prime degree and is automatically zero.
+No negative-degree primitive is supplied at that endpoint.
+\end{proof}
+
+The new term $U_1$ is essential to the statement without a
+pure-carrier restriction.  Simply using the older $U_1=0$
+formula after a correction has introduced lower-codimension
+terms would leave the nonzero first component $NM_0/2$.
+
+\subsection{What an actual curl correction must supply}
+
+Suppose now that $u$ satisfies the finite-algebra and weight
+conditions (CGS3)--(CGS4) and is $\partial_2$-closed, but that
+its two curls have not been shown to vanish.  The following
+is a precise \textbf{CONDITIONAL} interface.
+
+Supply actual forms in the same finite conical algebra
+\[
+ \begin{array}{c|c|c}
+       &\text{bidegree}&\text{Euler weights}\\\hline
+ F&(\ell-1,\ell+2)&(1,4)\\
+ G&(\ell+2,\ell-1)&(4,1)
+ \end{array}
+ \tag{CGS13}
+\]
+with the two literal full identities
+\[
+                         d''A=DF,\qquad d'B=DG.
+ \tag{CGS14}
+\]
+Their construction, not merely closedness or a finite-period
+test, is required.  Define
+\[
+ u^\circ=u-\partial_3(-F,G,0,0)
+                       =(A+d'F,\ B-d''G,\ M).
+ \tag{CGS15}
+\]
+Since $d''d'=-D$, both curls of $u^\circ$ vanish.  It remains
+$\partial_2$-closed, and (CGS13) ensures exactly the weights
+(CGS4) after correction.  Apply (CGS6) to $u^\circ$, writing
+its outputs $U_1^\circ,P_0^\circ,P_1^\circ,Q_0^\circ$.
+Then
+\[
+ \boxed{\quad
+ u=\partial_3\left(
+ U_1^\circ-F,\ G,\ P_0^\circ+P_1^\circ,\ Q_0^\circ
+                  \right).
+ \quad}
+ \tag{CGS16}
+\]
+Unlike the pure-carrier version, this formula permits the
+correction $d'F$ or $d''G$ to add lower-codimension terms.
+
+For $\ell=0$ both forms in (CGS13) have a negative component
+of their bidegree and are zero; this interface then requires
+the original curls themselves to vanish.  For $\ell>0$
+there is no assertion that (CGS14) is solvable.  A supplied
+native current primitive without a verified finite actual
+expression would not satisfy the hypotheses.
+
+For a raw-cube application, one may take
+$u=\mathcal Q-R^\ell E_{abc}$ only after placing this
+\emph{entire} expression in the supplied finite conical
+algebra with the stated weights.  Formula (CGS16) would then
+give a relative third witness with the actual extending
+triple $R^\ell E_{abc}$.  It is not an existence proof for
+the two missing curl primitives or for the required native
+substitution interface.
+
+\subsection{The small nonzero curl has a local actual primitive}
+
+There is a concrete useful calibration of the distinction
+between nonzero curl and obstructed curl correction.  Use
+exactly the rank-four ordinary box $O$ of CF13--CF18 and
+the original-$K$ coordinates there.  Put
+\[
+            u_0=\min(x_1,x_2),\qquad k=b-a,
+                        \qquad C_0=-Du_0.
+ \tag{CGS17}
+\]
+On the carrier $H=\{x_1=x_2\}$, write
+$dx=d''x_1|_H=d''x_2|_H$.  The explicitly constructed actual
+form
+\[
+ F_{\rm loc}
+   =x_1\,d''u_0\wedge d''k\wedge d''c
+       -u_0\,d''a\wedge d''b\wedge d''c
+                             \in B^{0,3}(O)
+ \tag{CGS18}
+\]
+satisfies
+\[
+ \begin{split}
+ DF_{\rm loc}
+  &=C_0\wedge\left[
+       dx\wedge(d''b-d''a)\wedge d''c
+                     +d''a\wedge d''b\wedge d''c\right]\\
+  &=d''\bigl(E_{\rm glob}-C_0E_{abc}\bigr)_A\big|_O.
+ \end{split}
+ \tag{CGS19}
+\]
+
+\begin{proof}
+All of $x_1,a,b,c,k$ are original unit valuations, so their
+$D$ is zero.  Direct full Leibniz differentiation gives
+\[
+ D(x_1\,d''u_0\wedge d''k\wedge d''c)
+      =-d''x_1\wedge Du_0\wedge d''k\wedge d''c,
+ \tag{CGS20}
+\]
+and
+\[
+ D(-u_0\,d''a\wedge d''b\wedge d''c)
+      =-Du_0\wedge d''a\wedge d''b\wedge d''c.
+ \tag{CGS21}
+\]
+Use $C_0=-Du_0$ and restrict the first coefficient to its
+actual carrier $H$.  This yields the first line of (CGS19).
+The second line is exactly the full CF21 calculation.
+\end{proof}
+
+This primitive is only on the displayed ordinary native box;
+it is not a global form on the whole projective angular model.
+For example its individual $x_1$ has not been extended across
+the corresponding homogeneous-coordinate zero locus.
+The correction $A\mapsto A+d'F_{\rm loc}$ removes the first
+curl there, but includes lower-codimension terms such as
+$d'x_1\wedge d''u_0\wedge d''k\wedge d''c$.  It does not
+preserve the pure-carrier hypothesis of the older CE theorem.
+The general formula above explains exactly how to accommodate
+such terms \emph{if both complete curl corrections are supplied
+in one admissible finite conical presentation}.  No second
+curl primitive, global continuation, cap overlap gluing or
+universal higher-rank certificate is inferred from (CGS18).
+
+\paragraph{Actual operations, refinement and topology.}
+The algebra and its equality relation are the native actual
+ones of CE, and the final rules in (CGS1)--(CGS16) are finite
+scalar, exterior and differential operations.  The CE proof
+ensures their compatibility with central refinements and
+native actual zero relations.  On each fixed finite whole
+presentation they have the corresponding finite coefficient
+seminorm bounds.  This is not a topology comparison or a
+continuous global section on arbitrary Berkovich forms.
+
+To use a native identity on original analytic data, one must
+eliminate every occurrence of $I',I''$ by the finite rules
+(CGS1), so that only the supplied actual scalar arguments
+and their differentials remain.  Proper-entry zeros and
+positive auxiliary caps then require their separately
+verified NCP interface, and arbitrary original real cap
+constants require the exact same-passive-block CT comparison.
+Neither restriction is removed by the algebraic theorem.
+
+\paragraph{Exact dependencies and exclusions.}
+The finite conical algebra and Cartan identities are the exact
+CE source
+\path{68a14ad23c956c211aaae0c188aebb672332181b0a13a269e21cda595a0b6f1d}.
+The local calibration uses only CF13--CF21 from
+\path{90bc9837cf43de60a2e20c494374b412bb36d68a6d5deb61697fb04bc68d2e52}.
+The optional original-field substitution interface is NCP
+\path{144df3e33ec6beeefa7907b1292edc31855d289727da777082c5015d33676743},
+and the cap comparison is CT
+\path{0c10e28336f9c779cc3dc4a35393b1fc52d1f6d7d154a4ec466c13d7c6514e95}.
+No MG/FT input, full actual kernel theorem, general matrix-path
+classification, field extension, completed form space or
+representability from an abstract functional is invoked.

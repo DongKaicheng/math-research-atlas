@@ -1,0 +1,404 @@
+% Round 16. Author: model_obstruction.
+% Activated after independent reviews of r16pb:dominant and this composition.
+\section{One-cycles in every dimension and all-degree dominant witnesses}
+\label{r16G:section}
+
+\paragraph{Activation status.}
+The deductions below use the all-degree dominant Bott--Chern
+injectivity statement \texttt{r16pb:dominant} in
+\path{round16/root/all_degree_projective_cohomology_and_descent.tex}.
+This source was first drafted as a conditional composition.
+The projective-bundle output, the all-degree projective
+cohomology/descent theorem, and this composition subsequently
+passed independent review during Round 16.  The conclusions
+are now activated relative to the expressly frozen actual
+foundations.  The named theorem remains visible as a precise
+dependency in each statement.  No historical claim is changed
+by this file.
+
+\begin{proposition}[All-degree dominant obstruction detection]
+\label{r16G:dominant-witness}
+Assume \texttt{r16pb:dominant}.  Let $X/K$ be smooth integral
+projective, $1\leq r\leq\dim X$, and let $f:V\to X$ be a
+projective dominant morphism with $V/K$ smooth integral.
+For $z\in\operatorname{CH}^r(X)_{\mathbf Q}$, suppose
+\[
+                         \mathfrak o_{V,K}^r(f^*z)=0.
+\tag{GC16.1}\label{r16G:upstairs}
+\]
+Then $\mathfrak o_{X,K}^r(z)=0$.  Every specified rational
+cycle $Z$ representing $z$ has an ordinary actual form
+\[
+ \gamma_Z\in B^{r-1,r-1}
+          (X^{\mathrm{an}}\setminus |Z|^{\mathrm{an}})
+\]
+such that, writing $n=\dim X$,
+\[
+ \int_{X^{\mathrm{an}}\setminus |Z|^{\mathrm{an}}}
+                     \gamma_Z\wedge D\eta
+       =-\int_{Z^{\mathrm{an}}}\eta,
+       \qquad \eta\in B_c^{n-r,n-r}(X^{\mathrm{an}}).
+\tag{GC16.2}\label{r16G:exact-G}
+\]
+\end{proposition}
+
+\begin{proof}
+The obstruction is functorial for morphisms between smooth
+varieties: the exact frozen source is Round 11's curvature
+criterion, retained in
+\path{round12/inherited/r11_curvature_full.tex}, together
+with the graded-ring statement \texttt{r12p:ring} in
+\path{round12/foundations_audit/compact_parameter_algebraic_triviality.tex}.
+Thus \eqref{r16G:upstairs} is the vanishing of
+$f^*\mathfrak o_{X,K}^r(z)$.  The assumed all-degree dominant
+injectivity makes the original class zero.
+
+To retain the specified support, take the frozen curved
+Green pair $(\Gamma_Z,\Omega_Z)$ for this actual cycle $Z$.
+Zero obstruction gives a global ordinary actual
+$\Psi\in B^{r-1,r-1}(X^{\mathrm{an}})$ with
+$D\Psi=\Omega_Z$.  Set
+\[
+              \gamma_Z=\Gamma_Z-
+                        \Psi|_{X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}}.
+\]
+The frozen Green-pair identity and actual Stokes give
+\eqref{r16G:exact-G} on every compact actual test.
+The correction is global and adds no deleted locus.
+No representative of $f^*z$ is pushed forward analytically.
+\end{proof}
+
+\begin{corollary}[A numerical model on an arbitrary dominant witness]
+\label{r16G:numerical-witness}
+Assume \texttt{r16pb:dominant}.  In
+Proposition~\ref{r16G:dominant-witness}, it suffices that
+$V$ be smooth integral projective over some finite extension
+$F/K$, mapped dominantly to $X$ over $K$, and possess a
+flat integral projective model $\mathcal V/F^\circ$ with
+a rational virtual vector bundle $\xi$ satisfying
+\[
+ \operatorname{ch}_r(\xi|_V)=f^*z,\qquad
+ \deg_{k_F}\bigl(\operatorname{ch}_r(\xi|_W)\cap[W]\bigr)=0
+\tag{GC16.3}\label{r16G:model-witness}
+\]
+for every integral vertical $r$-dimensional $W$.
+The map $f$ need not be generically finite or finite on a
+specified complement.  No regular model of $X$ is assumed.
+\end{corollary}
+
+\begin{proof}
+Regard $\mathcal V$ as a model over $K^\circ$.  It is still
+integral, flat, and projective.  Every integral subvariety
+of its thickened special fiber lies on the same reduction;
+the degree in \eqref{r16G:model-witness} is multiplied by
+the positive residue-field degree.  The frozen model-Chern
+detector therefore applies in the original $K$-actual
+theory and gives $\operatorname{ch}_r(\bar\xi)=0$.
+The integral-scope generic-Chow-zero primitive theorem
+then gives $\mathfrak o_{V,K}^r(f^*z)=0$.
+These are precisely the native-field steps in frozen
+Theorem \texttt{r12a:finite-numerical-cover}, although
+its later finite descent step is not used here.
+
+Now apply Proposition~\ref{r16G:dominant-witness}.
+The finite maps inside \texttt{r16pb:dominant}'s flattened
+diagram use their complete native function-field degrees.
+Any constant-field factor is retained.  This obtains the
+identity on the original actual test class, without an
+assumed equality of test categories over $F$ and $K$.
+\end{proof}
+
+\begin{theorem}[Full strong G for geometrically homologically trivial one-cycles]
+\label{r16G:one-cycles}
+Assume \texttt{r16pb:dominant}, and retain the frozen
+actual model-Chern and exact-support foundations.  Let
+$X/K$ be smooth projective geometrically integral of
+dimension $n\geq2$.  Let $Z$ be any specified rational
+one-cycle satisfying, for one prime $\ell\ne p$,
+\[
+ \operatorname{cl}_\ell(Z)=0
+     \quad\text{in }H^{2n-2}(X_{\bar K},\mathbf Q_\ell(n-1)).
+\tag{GC16.4}\label{r16G:curve-homology}
+\]
+Then
+\[
+                       \mathfrak o_{X,K}^{n-1}([Z])=0.
+\tag{GC16.5}\label{r16G:curve-obstruction}
+\]
+There is an ordinary actual form
+\[
+ \gamma_Z\in B^{n-2,n-2}
+      (X^{\mathrm{an}}\setminus |Z|^{\mathrm{an}})
+\]
+with
+\[
+ \int_{X^{\mathrm{an}}\setminus |Z|^{\mathrm{an}}}
+                \gamma_Z\wedge D\eta
+             =-\int_{Z^{\mathrm{an}}}\eta
+       \qquad(\eta\in B_c^{1,1}(X^{\mathrm{an}})).
+\tag{GC16.6}\label{r16G:curve-G}
+\]
+No supplied regular model of $X$ and no finite cover with
+a regular model are required.
+
+The same assertion holds for smooth integral projective
+$X/K$ if geometric cycle-class vanishing is required on
+every geometric component.  All conclusions then remain
+in the original $K$-actual theory.
+\end{theorem}
+
+\begin{proof}
+For $n=2$ this is the frozen native divisor theorem.  Suppose
+$n\geq3$.  In the possibly nongeometrically integral case,
+regard $X$ as geometrically integral over its finite field
+of constants $K_0=H^0(X,\mathcal O_X)$; smoothness and
+properness give this usual constant-field reduction.
+In the original geometric case put $K_0=K$.
+Take an integral projective flat model of $X$ over
+$K_0^\circ$, with no regularity assumption.  The same
+de Jong semistable-alteration input already audited in
+Round 12 supplies a finite valued extension $F/K_0$, hence
+also a finite extension $F/K$, a smooth
+projective geometrically integral $F$-variety $V$ of
+dimension exactly $n$, a projective dominant generically
+finite $K$-morphism $f:V\to X$, and a regular projective
+strictly semistable model $\mathcal V/F^\circ$.
+The properness check is unchanged: the altered source is
+proper over the finite trait, so its open immersion into
+the integral projective semistable compactification is
+proper and hence surjective.  Thus the entire required
+model is available.
+
+Since the generic varieties are smooth, their operational
+Chow pullback is defined.  Cycle-map functoriality shows
+that $f^*[Z]$ is geometrically $\ell$-homologically trivial.
+Its codimension remains $n-1$ and $\dim V=n$, so it is
+exactly a one-cycle class on $V$.  This dimension equality
+is why the regular-model curve theorem applies; an
+arbitrary positive-dimensional dominant witness would
+not retain the one-cycle condition.
+
+Frozen Theorem \texttt{r12n:main}, in
+\path{round12/numerical_lift/curve_lifts_and_actual_green.tex},
+constructs a rational virtual bundle $\xi$ on
+$\mathcal V$ with generic Chern character $f^*[Z]$ in
+degree $n-1$ and zero supported degree on every vertical
+$(n-1)$-dimensional subvariety.  Its proof uses geometric
+homological vanishing, the weighted divisor kernel,
+compatible divisor cohomology lifts, the multiplicity
+trace, and the pure operational $K_0$ representative.
+It does not assume a higher-codimension numerical-to-
+homological comparison.
+
+Apply Corollary~\ref{r16G:numerical-witness} with $r=n-1$.
+It retains the original-field numerical detector and then
+uses all-degree dominant Bott--Chern descent.  This proves
+\eqref{r16G:curve-obstruction}.  The original prescribed
+Green pair construction in
+Proposition~\ref{r16G:dominant-witness} proves
+\eqref{r16G:curve-G} on all original actual tests and on
+the exact prescribed complement.  There is no proper
+analytic pushforward of an upstairs Green form and no
+assertion that the alteration becomes finite away from
+$Z$.
+\end{proof}
+
+\paragraph{The gain over the frozen theorem.}
+Round 12 proved the same one-cycle conclusion on a
+supplied regular model, or after a genuinely finite
+numerical cover.  Round 15 removed that model hypothesis
+in dimension three using its degree-two dominant
+injectivity.  The activated Theorem~\ref{r16G:one-cycles}
+removes it in every dimension.  It still does not treat
+all middle-codimension cycles in dimension at least four.
+
+\begin{theorem}[Dominant images of projective-bundle towers]
+\label{r16G:towers}
+Assume \texttt{r16pb:dominant}.  Let $X/K$ be smooth
+projective geometrically integral.  Suppose that after a
+finite extension $F/K$ there is a smooth projective
+geometrically integral $F$-variety $V$, a projective
+dominant morphism $f:V\to X_F$, and a supplied finite
+projective-bundle tower
+\[
+ V=V_t\longrightarrow V_{t-1}\longrightarrow\cdots
+             \longrightarrow V_0=S,
+            \qquad V_j=\mathbf P_{V_{j-1}}(N_j),
+\tag{GC16.7}\label{r16G:tower}
+\]
+with $\dim S\leq3$ and every $N_j$ of positive rank.
+Then every geometrically homologically trivial rational
+cycle on $X$, in every codimension, has zero obstruction
+and satisfies strong G on its exact support complement
+against all original actual tests.
+\end{theorem}
+
+\begin{proof}
+Regard the whole tower as smooth integral projective
+$K$-varieties.  Frozen Theorem \texttt{r15tower:full-G},
+in \path{round15/exceptional_classes/all_degree_projective_bundle_cycles.tex},
+proves $\mathcal V_{*,K}(V)$ in this exact native-field
+scope.  For a geometric homologically trivial class $z$
+on $X$, pullback along the dominant $K$-morphism
+$V\to X_F\to X$ remains homologically trivial on every
+geometric component.  Its upstairs obstruction is zero
+in every degree.  Apply
+Proposition~\ref{r16G:dominant-witness} degree by degree.
+The finite maps used inside the dominant theorem retain
+their original native degrees.
+\end{proof}
+
+\paragraph{Morphism versus rational-map scope.}
+Theorem~\ref{r16G:towers} assumes an everywhere defined
+dominant morphism.  Replacing it by an arbitrary rational
+map would require control of new homologically trivial
+exceptional classes on a resolution of the source.
+The frozen Round 15 codimension-two rational-dominance
+argument treats those exceptional classes by divisor
+algebraic triviality; that argument does not automatically
+extend to every codimension.  No all-degree stable
+birational invariance is asserted here.
+
+\begin{corollary}[Full strong G on geometrically uniruled fourfolds]
+\label{r16G:uniruled-fourfolds}
+Assume the independently accepted
+\texttt{r16pb:dominant}.  Let $X/K$ be smooth projective
+geometrically integral of dimension four and suppose
+$X_{\bar K}$ is uniruled.  Then
+\[
+                         \mathcal V_{*,K}(X)
+\tag{GC16.8}\label{r16G:uniruled-all}
+\]
+holds: every specified rational cycle with zero geometric
+homology class, in every codimension, satisfies strong G
+on its exact prescribed complement and against all
+original actual tests.
+
+The same full-kernel assertion holds on every supplied
+projective-bundle tower over such a fourfold and on every
+smooth projective dominant morphism image of such a tower.
+\end{corollary}
+
+\begin{proof}
+Frozen Corollary \texttt{r15pbG:uniruled-fourfolds}, in
+\path{round15/exceptional_classes/projective_bundle_dominated_cycles.tex},
+already gives zero obstruction on the complete
+codimension-two geometric homological kernel.  Its
+codimension-two rational-dominance proof is used in its
+original verified scope.  The new one-cycle theorem
+gives degree three.  The frozen endpoint results give
+degrees one and four.  These exhaust the positive
+codimensions on a fourfold.
+
+Frozen \texttt{r15tower:propagation} transfers the
+all-degree vanishing up the projective-bundle tower.
+Proposition~\ref{r16G:dominant-witness} transfers it
+through an everywhere defined dominant morphism.  This
+does not resolve a new rational map in higher degree
+or assert a proper Gysin law for the obstruction.
+\end{proof}
+
+\begin{corollary}[Fourfolds with the new symmetry criterion]
+\label{r16G:symmetric-fourfolds}
+Assume \texttt{r16pb:dominant} and the independently
+reviewed symmetry criterion
+Corollary~\ref{r16sym:fourfold} of this round.
+Let $X/K$ be a smooth projective geometrically integral
+fourfold satisfying that criterion, or dominated after
+a finite extension by a fourfold with such a supplied
+model.  Then $\mathcal V_{*,K}(X)$ holds.
+
+Every supplied projective-bundle tower over such an $X$
+also has zero obstruction on its complete geometric
+homological kernel in every degree.  The same is true
+of every smooth projective dominant image of such a
+tower, with finite constant extensions interpreted in
+the original-field model-witness scope.
+\end{corollary}
+
+\begin{proof}
+For $X$ of dimension four, degree two is the symmetry
+criterion and its frozen degree-two dominant propagation.
+Degree three is Theorem~\ref{r16G:one-cycles}.  Degrees
+one and four are the frozen endpoint theorems for
+geometrically homologically trivial divisors and
+geometric degree-zero zero-cycles.  These are all positive
+codimensions on a fourfold.
+
+The all-degree projective-bundle propagation proposition
+\texttt{r15tower:propagation} uses the Chow and geometric
+cohomology projective-bundle decompositions and the
+frozen graded obstruction ring.  Apply it along the
+tower.  The last assertion follows from
+Proposition~\ref{r16G:dominant-witness}.  Over a finite
+constant extension, first use the model numerical
+witness for the codimension-two assertion in the
+original-field theory, the explicitly stated native
+integral scope of the one-cycle theorem, and the
+native endpoint statements already used in Round 15.
+No current identity is relabeled as an identity on
+another test category.
+\end{proof}
+
+\begin{corollary}[A concrete five-dimensional illustration]
+\label{r16G:cubic-fivefold}
+Let $X/K$ be a smooth cubic hypersurface of dimension five.
+Then every specified geometrically homologically trivial
+rational cycle on $X$, in every positive codimension, has
+zero actual obstruction and satisfies strong G on its exact
+support complement against all original actual tests.
+
+If $X/F$ is a smooth cubic fivefold over a number field, the
+separately reviewed height theorem of this round therefore
+gives a canonical real bilinear pairing on the full group
+\[
+ \operatorname{CH}^3(X)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^3(X)_{\mathbf Q,\mathrm{geom\,hom}}.
+\]
+This is a concrete instance of the present local activation
+and height bridge; no novelty of the corresponding classical
+height, positivity, or nondegeneracy is asserted.
+\end{corollary}
+
+\begin{proof}
+Choose a closed point of $X$ and pass to its finite residue
+extension $L/K$.  Koll\'ar's primary theorem says that a
+smooth cubic hypersurface of dimension at least two with
+an $L$-point is $L$-unirational.  His Lemma 11 identifies
+unirationality with a dominant rational map from affine
+space of the same dimension; projective compactification
+gives $\mathbf P^5_L\dashrightarrow X_L$.
+Apply Corollary~\ref{r16cov:unirational}, whose proof uses
+the independently established smooth-center obstruction
+kernel theorem to handle the exceptional classes of the
+resolution.  That corollary retains the original $K$-theory
+and its native finite degrees, so no $L$-rational point
+over $K$ itself is required.
+
+At every completion of a number field the same argument
+gives vanishing in all degrees, in particular degree three.
+Theorem~\ref{r16h:global-height} now applies to the full
+complementary groups, since $3+3=5+1$.
+\end{proof}
+
+The primary geometric input in the last proof is
+J.~Koll\'ar, \emph{Unirationality of cubic hypersurfaces},
+Theorem 1 and Lemma 11, \url{https://arxiv.org/abs/math/0005146}.
+The primary manuscript was checked directly; the geometric
+unirationality theorem is not a new result of this report.
+
+\paragraph{Remaining general gap.}
+The independently accepted new analytic injectivity transports
+every supplied global curvature primitive through a
+dominant map.  It does not manufacture the upstairs
+primitive for a general middle-dimensional cycle.
+The numerical residual in codimension two on arbitrary
+fourfold components, and the corresponding higher
+codimension model-lift problems, remain genuine
+separate existence questions.  The symmetry criterion
+supplies one additional vanishing mechanism, not a
+universal one.  The general unconditional BB-height
+construction requires its separately audited global
+interfaces and is not concluded from these local
+statements alone.

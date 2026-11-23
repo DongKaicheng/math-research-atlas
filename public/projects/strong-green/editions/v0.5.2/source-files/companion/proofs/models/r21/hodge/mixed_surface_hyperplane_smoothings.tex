@@ -1,0 +1,496 @@
+% Round 21 / Hodge branch. New candidate; independent review required.
+\section{Mixed surface--hyperplane smoothings with full local Green theory}
+\label{r21mx:section}
+
+\paragraph{Scope and relation to the frozen families.}
+We give an actual fourfold smoothing whose central factors lie in
+different line bundles and are not ample divisors in the ambient
+fivefold.  Its component and double-stratum geometry closes both the
+middle numerical gate and the native curve-comparison gate.  A separate
+weight calculation produces members with no potential good reduction.
+This supplies a newly verified local presentation in this archive; it
+does not claim disjointness from every earlier abstract motivic
+criterion.  No new global number-field coefficient family or complete
+height family is asserted without the required witnesses at all places.
+
+The ordered local resolution calculation is the one used in the frozen
+HP18/NF18/PG18 sources.  We explain why its geometric part applies to
+these different factor line bundles.  We do not apply PG18's numerical
+theorem outside its common-ample-power hypotheses.  Instead the
+numerical argument uses the full component intersection forms and the
+reviewed PU18/FP21 criterion.
+
+\subsection{The supplied native datum and the actual resolution}
+
+Let $R$ be the ring of integers of a finite $K/\mathbf Q_p$, with its
+fixed absolute value and uniformizer $\pi$, and let $k$ be its finite
+residue field.  Let $\mathcal S/R$ be smooth projective with
+geometrically integral surface fibers.  Choose a relatively very ample
+line bundle $\mathcal A$ and a section $f_0\in H^0(\mathcal S,\mathcal A)$
+whose special zero locus $C\subset S=\mathcal S_k$ is a smooth
+geometrically integral curve.  Fix $d\ge4$ and linear forms
+$l_1,\ldots,l_d$ on $\mathbf P_R^3$ whose special hyperplanes are in
+geometric general position: any at most three meet in the expected
+projective linear space and any four have empty intersection.
+
+Put $\mathcal Y=\mathcal S\times_R\mathbf P_R^3$ and
+$\mathcal L=\mathcal A\boxtimes\mathcal O(d)$.  Let
+$Q\in H^0(\mathcal Y,\mathcal L)$.  On $Y=\mathcal Y_k$ set
+\[
+ H_0=C\times\mathbf P_k^3,\qquad
+ H_j=S\times V(\bar l_j)\quad(1\le j\le d),
+ \qquad H_I=\bigcap_{i\in I}H_i.
+ \tag{MX21.1}\label{r21mx:central}
+\]
+Assume that $\bar Q$ cuts every nonempty $H_I$ transversely, that
+its positive-dimensional intersections with these strata are
+geometrically integral, and that all zero-dimensional intersections
+are finite etale.  Assume also that
+\[
+ X=V\left(f_0\prod_{j=1}^d l_j+\pi Q\right)
+                         \subset\mathcal Y_K
+ \tag{MX21.2}\label{r21mx:generic}
+\]
+is smooth and geometrically integral.  These are explicit geometric
+hypotheses on the chosen sections.  Their simultaneous realizability
+after a finite unramified extension is proved below.
+
+The nonempty central strata are exactly
+\[
+ \begin{array}{ll}
+ H_I\simeq S\times\mathbf P^{3-|I|},
+       &0\notin I,\quad1\le |I|\le3,\\[2pt]
+ H_I\simeq C\times\mathbf P^{4-|I|},
+       &0\in I,\quad1\le |I|\le4.
+ \end{array}
+ \tag{MX21.3}\label{r21mx:strata}
+\]
+They are smooth and geometrically integral of dimension $5-|I|$.
+In particular triple and quadruple strata are nonempty.  There are
+no quintuple strata.
+
+Blow up the smooth ambient $\mathcal Y$ successively in the strict
+transforms of the special subvarieties $H_0,H_1,\ldots,H_{d-1}$,
+and take the strict transform $\mathcal X$ of the flat closure of
+\eqref{r21mx:generic}.
+
+\begin{proposition}[Actual ordered-resolution geometry]
+\label{r21mx:resolution}
+The scheme $\mathcal X/R$ is regular, flat and projective, with
+generic fiber $X$ and reduced strict semistable special fiber
+$\bigcup_{i=0}^dD_i$.  No additional vertical irreducible component
+occurs.  For a nonempty index set $I$, its actual closed stratum
+$D_I=\bigcap_{i\in I}D_i$ is the iterated smooth blowup of $H_I$ in
+the reverse-order centers
+\[
+          Z_{I,j}=H_I\cap H_j\cap V(\bar Q),
+                    \qquad j=d,d-1,\ldots,\max(I)+1.
+ \tag{MX21.4}\label{r21mx:centers}
+\]
+Empty centers are omitted.  Every occurring center has codimension
+two in $H_I$, and its strict transform in the indicated sequence is
+isomorphic to the original center.  Thus each component is obtained
+from $C\times\mathbf P^3$ or $S\times\mathbf P^2$ by smooth surface
+blowups, and each double stratum from $C\times\mathbf P^2$ or
+$S\times\mathbf P^1$ by smooth curve blowups.
+\end{proposition}
+
+\begin{proof}
+At a special point on $s$ central factors the local defining functions
+of these factors are part of a regular relative parameter system,
+by \eqref{r21mx:strata}.  If $\bar Q$ is a unit, the equation is
+$x_1\cdots x_s=\pi u$ with $u$ a unit.  It is already strict
+semistable, and each ideal $(\pi,x_i)$ becomes principal on this
+model; the stated ambient blowups restrict to isomorphisms there.
+
+At a point where $\bar Q=0$, transversality supplies one additional
+relative parameter $y$ and, after absorbing a unit, the actual etale
+equation is
+\[
+                         x_1\cdots x_s=\pi y.
+ \tag{MX21.5}\label{r21mx:chart0}
+\]
+The relative dimension is four, so at most five displayed parameters
+are needed.  At the first blowup in $(\pi,x_1)$, the saturated
+$x_1$-chart has $\pi=x_1t_1$ and
+$x_2\cdots x_s=t_1y$; the other chart has $x_1=\pi u_1$ and
+$y=u_1x_2\cdots x_s$.  Repeating the first chart with the next
+ideal $(t_1,x_2)$, and continuing, gives the saturated charts
+\[
+ \pi=x_1\cdots x_{a-1}t_{a-1},\qquad
+ x_a=t_{a-1}u_a,\qquad
+ y=u_ax_{a+1}\cdots x_s.
+ \tag{MX21.6}\label{r21mx:charts}
+\]
+The final continuing chart is strict semistable as well.  Eliminating
+$x_a,y$ leaves regular parameters with $\pi$ a square-free product.
+These charts prove regularity and reduced strict semistability and
+show that the vertical components are precisely the old factor
+components.  Projectivity follows from the actual ambient blowups.
+The closure and its strict transform are integral, since the smooth
+geometrically integral generic fiber is dense, and they are flat over
+the trait.  The local charts also verify flatness directly.
+
+For completeness the stratum calculation in these same charts has
+the following global description.  The component belonging to an
+earlier factor is modified by a later factor at the ideal
+$(\bar f_j,\bar Q)$ on that component; the later component is
+unchanged by this step.  On an intersection of factors indexed by
+$I$, a factor already in $I$ gives a Cartier ideal and has no effect.
+The remaining nontrivial ideals are exactly those with $j>\max(I)$,
+and the induced order on this intersection is the reverse order in
+\eqref{r21mx:centers}.  The two affine Rees charts of each such ideal
+are the corresponding restrictions of \eqref{r21mx:charts}.
+
+These local ideals glue: replacing any defining section by a local
+unit multiple does not change the ideal of its zero divisor together
+with the zero divisor of $\bar Q$.  Equality of the line bundles of
+different factors is not used.  Every $Z_{I,j}$ is smooth of the
+asserted codimension by the given transverse-cut hypotheses.  A
+preceding center induces on a subsequent $Z_{I,j}$ the ideal of the
+remaining factor, because $\bar Q$ already vanishes there.  This is
+Cartier, so its blowup is the identity.  On zero-dimensional centers
+the additional intersections are empty: they would require four
+distinct outer hyperplanes.  This proves the assertion about strict
+transforms and completes the actual stratum calculation.
+\end{proof}
+
+\subsection{Full component positivity and the native double gate}
+
+\begin{lemma}[The full middle form on the resulting components]
+\label{r21mx:positive}
+For every component $D_i$, its native numerical middle intersection
+form on $N^2(D_i)_{\mathbf R}$ is nondegenerate with negative index
+$\rho(D_i)-1$.  For every ample class $H_i$ its primitive part
+$\ker(H_i:N^2(D_i)\to N^3(D_i))$ is positive definite.
+\end{lemma}
+
+\begin{proof}
+On $S\times\mathbf P^2$, write $h$ for the projective-factor class.
+The actual projective-bundle formula, followed by numerical duality,
+gives the orthogonal decomposition
+\[
+ N^2(S\times\mathbf P^2)
+    =\bigl(N^2(S)\oplus\mathbf Qh^2\bigr)\ \perp\ N^1(S)h.
+ \tag{MX21.7}\label{r21mx:product-form}
+\]
+The first summand is a hyperbolic plane, and the form on the second
+is the surface divisor intersection form, of signature
+$(1,\rho(S)-1)$.  The total negative index is $\rho(S)$, equal to
+$\rho(S\times\mathbf P^2)-1$.  On $C\times\mathbf P^3$ the middle
+group has basis $[\mathrm{point}]h,h^2$ after choosing a rational
+degree-one zero-cycle class; it is one hyperbolic plane and its
+negative index is $1=\rho(C\times\mathbf P^3)-1$.
+Native rational zero-cycle degrees justify these statements even
+without a native rational point.
+
+If $f:\widetilde D=\operatorname{Bl}_ZD\to D$ blows up a smooth
+surface in a smooth fourfold, with exceptional diagram
+$j:E\hookrightarrow\widetilde D$, $p:E\to Z$, the actual Chow
+decomposition is
+\[
+ \operatorname{CH}^2(\widetilde D)_{\mathbf Q}
+    =f^*\operatorname{CH}^2(D)_{\mathbf Q}
+       \oplus j_*p^*\operatorname{CH}^1(Z)_{\mathbf Q}.
+ \tag{MX21.8}\label{r21mx:blowup}
+\]
+The two summands are orthogonal: the putative mixed pairing is a
+codimension-three intersection on the surface $Z$.  The exceptional
+pairing is
+\[
+     \deg(j_*p^*a\cdot j_*p^*b)=-\deg_Z(ab),
+ \tag{MX21.9}\label{r21mx:exceptional}
+\]
+by $j^*j_*=-\xi$ and $p_*\xi=1$.
+The numerical decomposition is therefore the same direct sum, since
+both summand pairings are nondegenerate.  Surface divisor Hodge index
+shows that a connected center adds exactly one negative direction,
+and the Picard rank increases by one.  Disjoint connected centers
+are treated componentwise, retaining their native degree pairings.
+Induction through \eqref{r21mx:centers} proves the stated index.
+
+For an arbitrary ample $H_i$, divisor Hodge index makes the pairing
+on $H_iN^1(D_i)$ have signature $(1,\rho(D_i)-1)$, and makes
+multiplication by $H_i$ on $N^1$ injective.  Its orthogonal complement
+is precisely the displayed primitive middle group, by numerical
+duality.  Since all negative directions have already occurred in
+$H_iN^1$, that complement is positive definite.  This last argument
+permits the restrictions of any one genuinely relatively ample
+line bundle on the projective model; a pulled-back nef class is not
+silently used as ample.
+\end{proof}
+
+\begin{lemma}[Curve comparison on every native double]
+\label{r21mx:double}
+Every double stratum of $\mathcal X$ satisfies the frozen CD17
+assertion that an actual native rational curve numerically equivalent
+to zero has zero geometric $\ell$-adic class.  This assertion holds
+anew after every finite residue-field extension.
+\end{lemma}
+
+\begin{proof}
+The original doubles are $S\times\mathbf P^1$ and
+$C\times\mathbf P^2$.  CD17's projective-bundle comparison applies
+to both: the only base numerical comparisons needed are surface
+divisors and zero-cycle degree, or curve zero-cycle degree.  It does
+not require divisor Tate for $S$.  By
+Proposition~\ref{r21mx:resolution} every transformed double is an
+iterated blowup in the actual smooth curves $Z_{I,j}$.  The frozen
+CD17 smooth-blowup comparison applies to each such curve center.
+The same argument includes all new cycles after a finite residue
+extension; no descent of those cycles is assumed.
+\end{proof}
+
+\begin{theorem}[Complete local Green domain for the mixed smoothing]
+\label{r21mx:green}
+For every datum \eqref{r21mx:central}--\eqref{r21mx:generic}, the
+actual model above has $U_2=0$.  Its generic fourfold has full strong G
+in every codimension.  After every finite valued extension $L/K$ the
+same complete assertion holds for every new specified geometrically
+homologically trivial rational cycle on $X_L$.
+\end{theorem}
+
+\begin{proof}
+Choose one relatively ample line bundle on $\mathcal X$.  PU18
+identifies the full $U_2$ with its unique primitive representative
+subspace in $\ker\rho_2\cap\operatorname{im}\sigma_2$ and proves that
+subspace totally isotropic.  By Lemma~\ref{r21mx:positive} the ambient
+primitive middle form is positive definite.  Hence the subspace is
+zero.  Equivalently apply FP21 with the identity projector on every
+component: its stronger full-$L_2$ confinement is then automatic.
+This retains the genuine triple and quadruple strata; it does not
+assert $\ker A=\ker\rho$ or $K_{\rm comp}=\ker A$.
+
+Lemma~\ref{r21mx:double} closes the CD17/CL17 representative gate.
+The frozen exact detector, or the MZ20 consequence of $U_2=0$,
+then gives codimension-two strong G for every actual original
+homological Chow class.  The frozen divisor, one-cycle and zero-cycle
+theorems give all other fourfold codimensions.
+
+Every finite unramified extension preserves the smooth strata and
+the ordered charts.  Reapply the complete component positivity and
+double-comparison arguments there to its entire new Chow groups.
+The model is reduced strict semistable, so the frozen RI18
+Corollary \texttt{r18ri:all-finite}, from
+\texttt{inertial\_triviality\_and\_ramified\_norm\_detection.tex},
+propagates the full theorem from all unramified fields to every finite
+valued extension.  Its ramified norm argument and final finite trace
+retain the complete field degrees, including wild and residue factors.
+No new cycle over $L$ is assumed to be pulled back from $K$.
+
+Finally VT17 returns, for each specified final cycle $Z$, an ordinary
+actual Green form on exactly $X_L^{\rm an}\setminus|Z|^{\rm an}$,
+with its identity against all actual compact complementary tests and
+the extending original absolute value.  This is a class-kernel
+argument followed by exact-support reconstruction, not an arbitrary
+proper actual pushforward.
+\end{proof}
+
+\subsection{A full weight-row calculation excluding potential good reduction}
+
+Let
+\[
+ A_\ell^1(S)=\operatorname{im}\left(
+ \operatorname{NS}(S_{\bar k})\otimes\mathbf Q_\ell(-1)
+          \xrightarrow{c_1}H^2(S_{\bar k},\mathbf Q_\ell)\right),
+ \qquad T=A_\ell^1(S)^\perp,
+ \tag{MX21.10}\label{r21mx:T}
+\]
+where the orthogonal complement is taken in $H^2(S_{\bar k},\mathbf Q_\ell)$
+for its degree pairing.  The Tate twist in the divisor subspace is
+displayed to retain its Frobenius weight two.  Its intersection form
+is nondegenerate by divisor Hodge
+index and the divisor numerical/homological comparison, so this is a
+direct complement.  Both summands are Frobenius stable.  The statement
+does not assume that every Frobenius-invariant class is algebraic.
+
+\begin{theorem}[A nonzero weight-two subquotient]
+\label{r21mx:bad}
+If $T\ne0$, the weight spectral sequence for the actual model
+$\mathcal X$ has a Frobenius-stable direct summand
+\[
+      T\otimes_{\mathbf Q_\ell}\mathbf Q_\ell^{\binom{d-1}{3}}
+                             \subset E_2^{2,2}.
+ \tag{MX21.11}\label{r21mx:weight2}
+\]
+It survives in the weight-two graded piece of
+$H^4(X_{\bar K},\mathbf Q_\ell)$.  Consequently $X$ has no potential
+good reduction.  No general weight--monodromy conjecture, and no
+claim that the entire $E_2^{2,2}$ equals this summand, is used.
+\end{theorem}
+
+\begin{proof}
+Use the Rapoport--Zink convention already frozen in HM18:
+\[
+ E_1^{a,b}=\bigoplus_{i\ge\max(0,-a)}
+ H^{b-2i}(D^{[a+2i+1]}_{\bar k},\mathbf Q_\ell)(-i)
+       \Longrightarrow H^{a+b}(X_{\bar K},\mathbf Q_\ell).
+ \tag{MX21.12}\label{r21mx:rz}
+\]
+Here $D^{[s]}$ is the disjoint union of the actual $s$-fold strata.
+The differential is the sum of alternating restrictions and Gysins.
+The entire row $b=2$ is
+\[
+ E_1^{-1,2}=H^0(D^{[2]})(-1),\qquad
+ E_1^{a,2}=H^2(D^{[a+1]})\oplus H^0(D^{[a+3]})(-1)
+                                      \quad(a\ge0),
+ \tag{MX21.13}\label{r21mx:row}
+\]
+with empty-stratum and impossible-degree terms zero.  There are no
+terms for $a<-1$.  In this model $D^{[5]}=\varnothing$, but the
+formula retains the Gysin summands in the preceding terms.
+
+Every smooth blowup in \eqref{r21mx:centers} adds to $H^2$ only
+$H^0$ of its center with Tate twist $(-1)$, represented by exceptional
+divisors.  Thus it adds only algebraic divisor classes.  For a stratum
+not containing index $0$, its old $H^2$ is
+$H^2(S)\oplus H^2(\mathbf P^{3-|I|})$, and its unique nondivisor
+summand is a copy of $T$, pulled back from $S$.  Such strata exist
+exactly for $1\le |I|\le3$.  Every stratum containing $0$ starts from
+$C\times\mathbf P^{4-|I|}$, whose $H^2$ is generated by divisor
+classes, and remains so after the indicated blowups.
+
+The pullback of $T$ to $C$ is zero: its trace on the curve is its
+intersection with $[C]$, which is zero by definition of $T$, and
+$H^2(C)$ is the degree line.  Therefore a face restriction between
+two strata with indices outside $0$ is the identity on these pulled
+back copies of $T$, and a face restriction into a stratum containing
+$0$ is zero.  Algebraic divisor classes restrict to algebraic
+divisor classes.  Every Gysin from the $H^0(-1)$ summands of
+\eqref{r21mx:row} also has algebraic divisor image.  Hence projection
+onto the copies of $T$ commutes with the entire row differential;
+the pullbacks from $S$ give a splitting as a complex.  This checks
+both the restriction terms and all extra Gysin terms, rather than
+discarding the latter on a dimension guess.
+
+The resulting direct subcomplex is
+\[
+ T^{\oplus d}\xrightarrow{\delta}
+ T^{\oplus\binom d2}\xrightarrow{\delta}
+ T^{\oplus\binom d3}\longrightarrow0,
+ \tag{MX21.14}\label{r21mx:Tcomplex}
+\]
+in columns $a=0,1,2$.  It is $T$ tensored with the cochain complex
+of the two-skeleton of the $(d-1)$-simplex.  The augmented full-simplex
+complex is exact.  Truncation at degree two leaves
+\[
+ \dim H^2\bigl(\operatorname{skel}_2\Delta^{d-1},\mathbf Q_\ell\bigr)
+   =\binom d3-\binom d2+d-1=\binom{d-1}{3}.
+ \tag{MX21.15}\label{r21mx:binomial}
+\]
+This proves the claimed direct summand on $E_2$.
+
+Every term $E_1^{a,b}$ is pure of weight $b$, because the strata are
+smooth projective over the finite field.  The higher differentials
+$d_r$, $r\ge2$, connect different weights and are zero.  Thus the
+summand survives in the abutment filtration of $H^4$ and its
+Frobenius eigenvalues have weight two.  This uses finite-field Weil
+purity and the weight spectral sequence, not weight--monodromy.
+
+If $X$ acquired good reduction over a finite extension of residue
+degree $f$, proper smooth base change and Weil purity would make
+every eigenvalue on $H^4$ have complex absolute value $q^{2f}$.
+On the above nonzero graded piece the eigenvalues instead have
+absolute value $q^f$.  The discrepancy survives every finite
+extension: inertia acts trivially on the graded pieces of
+\eqref{r21mx:rz}, and a new Frobenius acts there by the $f$th power
+of the old Frobenius.  This contradiction excludes potential good
+reduction, including after a ramified extension.
+\end{proof}
+
+\paragraph{Primary source for the spectral sequence.}
+The conventions and differential description are in T.~Saito,
+\emph{Weight spectral sequences and independence of $\ell$},
+Proposition 2.2.3 and Corollary 2.2.4, author manuscript
+\url{https://www.ms.u-tokyo.ac.jp/~t-saito/pp/wmr2r.pdf}.
+The finite-field purity input is Deligne's Weil theorem.  This is
+the same foundational input as frozen HM18; the coefficient-$T$
+row calculation above is supplied explicitly.
+
+\subsection{Nonempty local families and exact limits of the extension}
+
+\begin{proposition}[Existence after a finite unramified preparation]
+\label{r21mx:existence}
+For every supplied good surface $\mathcal S/R$ and every $d\ge4$,
+one may choose $\mathcal A$ sufficiently relatively ample and make a
+finite unramified extension so that all the above hypotheses hold.
+For fixed prepared central factors, the smooth admissible $Q$ lifts
+form a Zariski-dense set in the corresponding affine coefficient
+space over the prepared fraction field.  If $T\ne0$, every one of
+these admissible smooth fibers has the obstruction-free complete
+local Green domain and has no potential good reduction.
+\end{proposition}
+
+\begin{proof}
+Take a sufficiently large tensor power of a relatively ample line
+bundle so that it is relatively very ample and its sections commute
+with reduction.  Serre vanishing supplies this last condition.
+Over $\bar k$, classical Bertini supplies a smooth geometrically
+integral $C$ and the finite hyperplane arrangement in general
+position.  The line bundle $\mathcal A\boxtimes\mathcal O(d)$ is
+very ample, including on each smooth central stratum.  Its ambient
+linear system restricts to a very ample system there.  Simultaneous
+Bertini and transversality for the finitely many strata give a
+nonempty open set of $\bar Q$.  A general section cuts a curve
+stratum in a reduced finite set and a stratum of dimension at least
+two in a smooth geometrically integral divisor.
+
+All these finitely many choices are defined over a finite residue
+extension, hence over a finite unramified extension of $R$.
+The selected $f_0,Q$ lift because of the chosen cohomology-and-base-
+change surjectivity; for $Q$ the projective-factor cohomology adds
+no obstruction.  Hyperplane forms lift directly.  Fix those residue
+choices.  The lifts of $Q$ form an open residue coset in a full
+integral coefficient lattice.  Such a coset is Zariski dense over
+the infinite fraction field: a polynomial vanishing on it is zero,
+by induction in the number of variables.
+
+Over that fraction field the map $Q\mapsto f_0\prod l_j+\pi Q$
+is an affine isomorphism of the full section space.  The smooth
+geometrically integral divisors of the very ample linear system
+form a nonempty Zariski open set.  It therefore meets the residue
+coset densely, giving exactly the required generic smooth fibers.
+Apply Theorems~\ref{r21mx:green} and \ref{r21mx:bad}.
+\end{proof}
+
+For a concrete nonzero-$T$ good surface, take
+$\mathcal S=\mathcal E\times\mathcal E$ over $\mathbf Z_5$ with
+$\mathcal E:y^2=x^3+x$.  Its special elliptic curve has four points,
+Frobenius polynomial $t^2-2t+5$, and the native order-four
+automorphism $(x,y)\mapsto(-x,2y)$.  The same elementary CM calculation
+used in FP21 gives $\rho(S_{\bar k})=4$, $\dim H^2(S)=6$, so
+$\dim T=2$.  One can also see the upper bound directly: the two
+remaining eigenvalues are $(1\pm2i)^2$, whose ratio to $5$ is not
+a root of unity, while every divisor class has a Tate eigenvalue
+after some finite extension.  The factor, diagonal and automorphism
+graph divisors supply four independent classes.  With $d=4$,
+\eqref{r21mx:weight2} already has dimension two.  The subsequent
+Bertini preparation produces actual, potentially-bad-reduction
+fourfold fibers; it is not a vertical modification of this good
+surface's square.
+
+\paragraph{What is new here, and what remains unproved.}
+PG18 and SC18 assume that all product factors are positive powers of
+one relatively very ample line bundle.  Here $H_0=C\times\mathbf P^3$
+and $H_j=S\times\mathbf P^2$ are nonample in $S\times\mathbf P^3$;
+their factor line bundles are $\mathcal A\boxtimes\mathcal O$ and
+$\mathcal O\boxtimes\mathcal O(1)$.  Thus the frozen common-ample-factor
+theorem does not apply to this presentation.  The proof above supplies
+the required model, its full component positivity, and its native
+double comparison directly.  The weight-two calculation separately
+proves that these fibers need not have potential good reduction.
+
+We do not assert that no member could have another earlier qualifying
+presentation or satisfy a more general earlier motivic criterion.
+The newly proved class is this explicit local smoothing presentation,
+stable for all new cycles after finite extension; a claim of strict
+set-theoretic non-overlap with every earlier G class is not made.
+The argument does not prove every smooth divisor in
+$|\mathcal A_K\boxtimes\mathcal O(d)|$ has G.
+
+For a variety over a number field one may apply the local theorem
+at a completion with such supplied data.  A complete BB height on
+the full global homological Chow groups still requires the frozen
+local hypotheses at every other finite place.  No such global
+coefficient or spreading construction is supplied here.  General G
+and arbitrary-variety complete unconditional heights remain open.

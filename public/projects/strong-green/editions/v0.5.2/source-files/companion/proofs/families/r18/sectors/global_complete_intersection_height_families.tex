@@ -1,0 +1,515 @@
+% Round 18. ci_global branch. Independent review required before activation.
+\section{Complete height families of non-hypersurface fourfolds}
+\label{r18cg:section}
+
+This section constructs a fixed-number-field, Zariski-dense family
+of smooth complete intersections of type $(2,5)$ whose full local
+strong-G domains occur at every finite place.  A specified prime
+has the deep degeneration of CA18, with $\operatorname{rank}N^4=1$.
+At the other primes the reductions are good or ordinary quadratic.
+The fixed-member Lefschetz argument is proved on the actual quadric
+ambient variety; GP17's projective-space statement is not applied
+outside its hypotheses.
+
+All local conclusions retain the original valued field, its absolute
+value, the precise support of the specified cycle, and every compact
+ordinary actual test.  The full-height implication is the frozen
+PH16 theorem, with GA17's admissible-lift conclusion on that proved
+domain.  No claim about a general variety or about historical
+priority for arithmetic pencil constructions is made.
+
+\subsection{A smooth integral quadric and its section space}
+
+Fix any preassigned number field $F_{\mathrm{base}}$.  Let
+\[
+ \mathcal Y=V(q_2)\subset\mathbf P^6_{\mathbf Z},\qquad
+ q_2=X_0X_1+X_2X_3+X_4X_5+X_6^2.
+ \tag{CG18.1}\label{r18cg:quadric}
+\]
+This is a smooth projective relative quadric of dimension five
+over $\mathbf Z$.  Indeed, in every characteristic a common zero
+of its six partial derivatives with respect to $X_0,\ldots,X_5$
+has these six coordinates zero.  The equation then forces
+$X_6=0$, which is not a projective point.  This also proves
+smoothness in characteristic two.  Every geometric fiber is
+connected, hence integral: for example the standard projective
+hypersurface sequence gives $H^0(\mathcal Y_{\bar k},\mathcal O)=\bar k$,
+and smooth components of a connected scheme cannot meet or be
+disjoint components of it.
+
+Let $V_{\mathbf Z}$ be the free module of degree-five homogeneous
+forms in the seven displayed variables.  We work with actual forms
+in this space and their restrictions to $\mathcal Y$.
+They supply the complete section space of $\mathcal O_{\mathcal Y}(5)$:
+the sequence
+\[
+ 0\longrightarrow\mathcal O_{\mathbf P^6}(3)
+    \xrightarrow{q_2}\mathcal O_{\mathbf P^6}(5)
+    \longrightarrow\mathcal O_{\mathcal Y}(5)\longrightarrow0
+ \tag{CG18.2}\label{r18cg:section-sequence}
+\]
+and the vanishing of the intermediate cohomology of projective
+space give this surjectivity over any field.  One can alternatively
+keep the full ambient coefficient space throughout; its linear
+kernel consists of the multiples $q_2V_{\mathbf Z,3}$ and does not
+affect any of the arguments below.
+
+\begin{lemma}[Smooth sections and isolated-node integrality]
+\label{r18cg:smooth-integral}
+Over every field $k$, a nonempty geometrically dense open set in
+$\mathbf P(V_k)$ consists of sections cutting a smooth fourfold
+on $Y_k$.  A section whose divisor on $Y_{\bar k}$ has at most
+isolated singular points defines a geometrically integral fourfold.
+\end{lemma}
+
+\begin{proof}
+Degree-five forms give every first jet at each point of
+$\mathbf P^6_{\bar k}$: at $[1:0:\cdots:0]$ use $X_0^5$ and
+$X_0^4X_i$ for $1\le i\le6$.  Taking the quotient to the
+first jets on the smooth fivefold $Y$ preserves surjectivity.
+The incidence of a section with a marked singular point is
+therefore a projective bundle over $Y$ of dimension one less
+than $\mathbf P(V_k)$.  Its image is closed, since $Y$ is
+proper, and is a proper subset by that dimension bound.
+Its complement is the asserted geometrically nonempty open.
+The argument applies also in small positive characteristic.
+
+For integrality, a nonzero section defines a Cartier divisor
+on the smooth integral $Y_{\bar k}$.  Its local rings are
+Cohen--Macaulay, hence satisfy Serre's condition $S_2$.
+An isolated singular locus in dimension four gives $R_1$.
+Thus the divisor is normal.  It is connected: the exact sequence
+$0\to\mathcal O_Y(-5)\to\mathcal O_Y\to\mathcal O_X\to0$
+gives $H^0(X,\mathcal O_X)=\bar k$, because
+\[
+                   H^1(Y,\mathcal O_Y(-5))=0.
+\]
+For a direct check of this vanishing, use
+$0\to\mathcal O_{\mathbf P^6}(-7)\to
+\mathcal O_{\mathbf P^6}(-5)\to\mathcal O_Y(-5)\to0$
+and the intermediate projective-space cohomology vanishings.
+A connected normal scheme has just one irreducible component,
+since normal irreducible components are open and closed.
+It is therefore integral.  This proves the geometric assertion;
+in particular it applies to the smooth members and to the
+ordinary-node members used below.
+\end{proof}
+
+\subsection{Lefschetz pencils through a fixed smooth section}
+
+\begin{lemma}[The fixed-member open on the quadric]
+\label{r18cg:fixed-member}
+Let $k$ have characteristic zero, and let $F_0\in V_k$ cut a
+smooth fourfold on $Y_k$.  There is a nonempty Zariski open
+subset of $V_k$ of forms $F_1$ for which:
+\begin{enumerate}
+\item the section $F_1=0$ on $Y_k$ is smooth;
+\item the base $F_0=F_1=0$ on $Y_k$ is smooth of dimension three;
+\item every singular geometric member of the pencil
+      $uF_0+vF_1=0$ on $Y_k$ has exactly one ordinary quadratic
+      singularity, and its parameter line meets the section
+      discriminant transversely there.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We prove the assertion geometrically.  Write
+$\mathbf P(V_k)=\mathbf P^M$ and let
+\[
+ I=\{([f],x):j_x^1(f|_Y)=0\}\subset\mathbf P^M\times Y.
+ \tag{CG18.3}\label{r18cg:incidence}
+\]
+First-jet surjectivity makes this a smooth irreducible projective
+bundle of dimension $M-1$.  The quadratic term at a marked point
+can be prescribed arbitrarily: degree-five forms give every
+second jet on projective space, using the monomials
+$X_0^5$, $X_0^4X_i$ and $X_0^3X_iX_j$, and their images give
+every second jet on $Y$.  Hence degeneracy of that quadratic
+term is a proper closed subset of $I$, of dimension at most
+$M-2$.
+
+First-jet evaluations at two distinct points are jointly
+surjective.  Move the two points in projective space to its
+first two coordinate points.  The monomials prescribing the
+two first jets are $X_0^5,X_0^4X_i$ and
+$X_1^5,X_1^4X_j$ with the respective remaining indices.
+They are distinct and have zero first jet at the opposite
+point.  Restricting to the two smooth tangent spaces of $Y$
+preserves this surjectivity.  Thus the incidence with two
+distinct marked singular points has dimension
+\[
+          2\dim Y+M-2(\dim Y+1)=M-2.
+\]
+Its image closure in the coefficient space has dimension at
+most $M-2$.
+
+First forget only the second marked point in the two-point
+incidence.  Its image closure in $I$ has dimension at most
+$M-2$.  Removing that subset and the degenerate-quadratic
+subset leaves a nonempty open of $I$ parametrizing sections
+with one singular point and invertible Hessian.  The projection
+to coefficients has singleton fibers on this open, so its image
+has dimension $M-1$.  The full image of $I$ is consequently an
+irreducible discriminant hypersurface $\Delta$.
+The images in coefficient space of the two bad incidences
+have closures of dimension at most $M-2$.  Their removal
+gives a dense open of $\Delta$ consisting of one-node sections.
+At such a point the critical-point equations can be solved
+etale locally as coefficients vary, because their Hessian is
+invertible.  The remaining critical-value equation has a
+nonzero differential, namely evaluation of the coefficient
+variation at the marked point.  The discriminant is smooth
+there.  Denote this one-node smooth open by $\Delta^\circ$;
+its complement in $\Delta$ has dimension at most $M-2$.
+
+Projection from $[F_0]\notin\Delta$ gives a finite morphism
+\[
+                         \Delta\longrightarrow\mathbf P^{M-1}
+\]
+to the space of lines through $[F_0]$.  Its fibers are finite
+line intersections, and properness turns quasi-finiteness into
+finiteness.  The map is generically etale in characteristic
+zero.  Exclude its branch locus and the image of
+$\Delta\setminus\Delta^\circ$.  What remains is a nonempty
+open set of directions whose lines have precisely the required
+transverse one-node intersections.
+
+There is another nonempty open set of directions with smooth
+base on the fixed $X_0=Y\cap V(F_0)$.  The restrictions of
+degree-five forms give a very ample, base-point-free system
+on this smooth fourfold, so the usual characteristic-zero
+Bertini theorem applies to it.  Intersect the two open sets
+of directions.  Lift to choices of $F_1$ and exclude the
+discriminant itself.  This gives the asserted nonempty open.
+At each base point the differentials of $F_0,F_1$ on $Y$
+are independent, so every pencil member is smooth there.
+All constructions descend to $k$.
+\end{proof}
+
+\paragraph{Classical inputs.}
+The Bertini and Lefschetz-pencil setting is classical; see
+Jannsen--Saito, \emph{Bertini theorems and Lefschetz pencils over
+discrete valuation rings}, \url{https://arxiv.org/pdf/0911.1470},
+Sections 0--2.  The proof above records the fixed-member and
+degree-five jet assertions needed here, instead of assuming
+that an unspecified generic pencil can be arranged through
+the already chosen section.
+
+\subsection{One fixed number field handles the small residue fields}
+
+Choose an integral $F_0\in V_{\mathbf Z}$ cutting a smooth
+fourfold over $\mathbf Q$; the preceding nonempty open and
+density of rational points ensure that such a choice exists.
+Let $S_0$ be a finite set of rational primes containing $2$
+and every prime where $F_0=0$ on $\mathcal Y$ does not have
+smooth four-dimensional reduction.  Its finiteness follows
+by spreading this fixed proper smooth generic member.
+
+For each $p\in S_0$, Lemma~\ref{r18cg:smooth-integral} gives
+a nonempty geometric open of smooth quintic sections on
+$Y_{\mathbf F_p}$.  Choose one point of this open over a
+finite field $\mathbf F_{p^{f_p}}$.  Such a point exists
+because each of its finitely many algebraic coordinates is
+defined over a finite extension of $\mathbf F_p$.
+Choose an integer $N\ge2$ divisible by every $f_p$ and view
+all these chosen sections over $\mathbf F_{p^N}$.
+There is no assertion that a fixed-degree smooth section
+exists already over each original small residue field.
+
+For each $p\in S_0$ choose a monic irreducible polynomial of
+degree $N$ over $\mathbf F_p$.  The coefficient Chinese
+remainder theorem lifts all these polynomials to one monic
+$g\in\mathbf Z[T]$ of degree $N$.
+It is irreducible over $\mathbf Q$ by reduction at any of
+these primes.  Put $L=\mathbf Q[T]/(g)$ and
+\[
+                              F=F_{\mathrm{base}}L.
+ \tag{CG18.4}\label{r18cg:field}
+\]
+At each $p\in S_0$, the ring $\mathbf Z_p[T]/(g)$ is the
+unramified degree-$N$ discrete valuation ring, since its
+reduction is irreducible and separable.  Thus $p$ is inert
+and unramified in $L$, and its residue field is
+$\mathbf F_{p^N}$.  This also follows from the fact that
+the discriminant of $g$ is a unit at $p$.
+The compositum $F$ need not be unramified at these primes;
+its every residue field above $p$ contains the indicated
+residue field of $L$, which is all that is needed.
+
+Lift the chosen smooth section over $\mathbf F_{p^N}$ to
+an actual degree-five form $G_p\in\mathcal O_L[X_0,\ldots,X_6]$,
+and regard it also over $\mathcal O_F$.
+At every prime of $F$ above $p$, its reduction remains a
+smooth section by scalar extension.
+The field $F$ and these finitely many forms are now fixed,
+before selecting any pencil or its parameters.
+
+\subsection{A fixed deep local condition and the coefficient lattice}
+
+Over $\mathbf Q$ choose five linear forms
+$\ell_1,\ldots,\ell_5$ whose hyperplane sections on $Y$
+have all the geometric SNC and complete-intersection
+properties in CA18.  Their fivefold intersection consists
+of two geometric points.  Choose a quintic $Q$ cutting
+every positive-dimensional intersection transversely and
+avoiding those two points.  These are finitely many
+nonempty characteristic-zero Bertini open conditions.
+Clear denominators and put $P=\prod_{i=1}^5\ell_i$.
+
+Choose a rational prime $q$ outside $S_0$, outside the
+discriminant of the already fixed field $F$, and outside
+the finite set where these transverse intersection data
+fail to spread.  The prime can avoid any additional
+prescribed finite set.  In particular $q$ is odd and is
+a uniformizer at every completion $F_w$ with $w\mid q$.
+
+Set
+\[
+                 B=\prod_{p\in S_0}p,\qquad M=q^2B.
+ \tag{CG18.5}\label{r18cg:MB}
+\]
+Choose a degree-five form $F_1$ with coefficients in
+$\mathcal O_F$ satisfying
+\[
+ \begin{aligned}
+ F_1&\equiv P+qQ&&\pmod{q^2\mathcal O_F},\\
+ F_1&\equiv G_p&&\pmod{p\mathcal O_F}\quad(p\in S_0).
+ \end{aligned}
+ \tag{CG18.6}\label{r18cg:coefficient-CRT}
+\]
+These ideals are pairwise coprime, so the solution set is
+one nonempty full affine coefficient lattice, a translate
+of $M\mathcal O_F^{\dim V}$.
+It is Zariski dense over $F$: it contains a product of
+infinite one-variable arithmetic progressions, and the
+one-variable polynomial root bound, applied successively,
+proves that no nonzero polynomial vanishes on it.
+Its intersection with the fixed-$F_0$ open of
+Lemma~\ref{r18cg:fixed-member} is therefore nonempty and
+Zariski dense.  Restrict $F_1$ to that intersection.
+
+After fixing this $F_1$, spread its pencil over
+$\mathcal O_F[1/S]$ for a finite set of prime ideals $S$.
+We choose $S$ to contain all primes over $q$ and $S_0$.
+Outside $S$, the base and total pencil are smooth, the
+critical scheme is finite etale and maps as a closed
+immersion into the parameter line, and its Hessians are
+invertible.  We also require that the two sections are
+linearly independent in each residue field.
+
+Here is why that spread is available.  Over $F$ the
+incidence divisor $uF_0+vF_1=0$ in $Y\times\mathbf P^1$
+is smooth: away from the base a parameter derivative is
+nonzero, and at the base the two section differentials
+are independent.  Every fiber is a nonzero Cartier
+divisor, so the pencil is flat.  The lemma gives finitely
+many nondegenerate critical points with distinct geometric
+values; their scheme is finite etale in characteristic
+zero and has a closed-immersion map to $\mathbf P^1$.
+All data are of finite presentation.  After removing
+finitely many prime ideals, smoothness, finite etaleness,
+closed immersion and the invertible Hessians spread.
+One first removes any vertical components of the critical
+locus; no extra critical points then remain on the spread.
+The independence condition excludes zero sections as fibers.
+Every geometric member outside $S$ is consequently smooth
+or has exactly one ordinary quadratic singularity.
+No uniform set $S$ is asserted as $F_1$ varies.
+
+\subsection{The arithmetic members and all finite places}
+
+Let $T$ be the finite set of rational primes below the
+prime ideals of $S$.  Choose integers $a$ in the infinite
+arithmetic progression
+\[
+ \begin{aligned}
+ a&\equiv1\pmod{q^2},&
+ a&\equiv1\pmod B,\\
+ a&\equiv0\pmod p&&
+       (p\in T\setminus(S_0\cup\{q\})).
+ \end{aligned}
+ \tag{CG18.7}\label{r18cg:parameter-CRT}
+\]
+All distinct moduli are coprime.  Discard the finitely
+many parameters whose characteristic-zero pencil member
+is singular, and put
+\[
+    X_a=Y_F\cap V(MF_0+aF_1)\subset\mathbf P^6_F.
+ \tag{CG18.8}\label{r18cg:family}
+\]
+Every remaining member is a smooth geometrically integral
+complete-intersection fourfold of type $(2,5)$.
+
+\begin{theorem}[Full local G and complete heights for a non-hypersurface family]
+\label{r18cg:height-family}
+For the fixed number field $F$ of \eqref{r18cg:field},
+every member \eqref{r18cg:family} has the following properties.
+\begin{enumerate}
+\item At every finite place $w$ of $F$, every specified
+      geometrically homologically trivial rational cycle on
+      $(X_a)_{F_w}$ satisfies strong G in every codimension,
+      with its exact original support and every original
+      compact ordinary actual test.
+\item At every $w\mid q$ it has the actual reduced strictly
+      semistable model of CA18 and
+      $\operatorname{rank}N^4=1$.  It has no potential good
+      reduction there and no strict semistable dominant
+      witness of crossing depth less than four.
+\item The preceding full local assertion holds for all new
+      cycles after every finite extension $F'/F$ unramified
+      at all places above $q$.  At the other places no
+      ramification restriction is imposed.
+\item For every such $F'$ (in particular $F'=F$) and every
+      $1\le r\le4$, the frozen PH16 theorem gives the
+      canonical real-valued Beilinson--Bloch pairing on
+      the complete displayed homological Chow groups:
+      \[
+      \operatorname{CH}^r((X_a)_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+       \ \times\
+      \operatorname{CH}^{5-r}((X_a)_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+                        \longrightarrow\mathbf R.
+      \tag{CG18.9}\label{r18cg:height}
+      \]
+\end{enumerate}
+Every geometric $X_a$ is not isomorphic to any smooth
+projective hypersurface fourfold, even after a field
+extension.  As $F_1$ varies through the fixed lattice
+\eqref{r18cg:coefficient-CRT} in the fixed-member open
+and $a$ varies through its permitted progression, the
+resulting members are Zariski dense in the space of
+smooth sections of $\mathcal O_{Y_F}(5)$.
+The field $F$, the quadric, and the distinguished prime
+are fixed throughout this density statement.
+\end{theorem}
+
+\begin{proof}
+At a place $w$ above $q$, the exact integral equation is
+\[
+ MF_0+aF_1=P+qQ_a,\qquad
+ Q_a=\frac{MF_0+aF_1-P}{q},\qquad \bar Q_a=\bar Q.
+ \tag{CG18.10}\label{r18cg:local-product}
+\]
+Coefficientwise integrality and the last equality follow
+from $q^2\mid M$, \eqref{r18cg:coefficient-CRT}, and
+$a\equiv1\pmod{q^2}$.  Because $q$ is unramified in $F$,
+it has uniformizer exponent one in the native ring
+$\mathcal O_{F_w}$.  All special-fiber transverse factor
+data hold after the residue extension.  CA18 therefore
+applies to the entire native cycle group over $F_w$,
+giving full strong G and the rank-one fourth monodromy.
+
+If $w$ lies above $p\in S_0$, the coefficient $M$ reduces
+to zero and $a$ to one.  The equation reduces to the
+smooth section $G_p$ on the special quadric.  This is
+good reduction, including at every place of characteristic
+two.  If $w$ lies above a prime
+$p\in T\setminus(S_0\cup\{q\})$, then $M$ is a unit
+and $a$ reduces to zero.  The reduction is the smooth
+section $F_0$.  This also gives good reduction.  Although
+$S$ was a set of prime ideals, imposing $a\equiv0\pmod p$
+does no harm at the other places above the same rational
+prime: $F_0$ is smooth at all of them by the definition
+of $S_0$.
+
+At every remaining place $w$, the pencil is in its
+spread good set and $M$ is a unit.  The parameter
+$[M:a]$ has a well-defined integral specialization.
+Its special member is smooth or has one ordinary
+quadratic point.  It is geometrically integral by
+Lemma~\ref{r18cg:smooth-integral}.  In all cases the
+equation gives a flat projective model: it is a
+nonzero Cartier equation also after reduction, so
+the divisor sequence has no uniformizer torsion.
+Its integral smooth generic fiber then makes the
+flat model integral as well.
+
+The remaining residue characteristics are odd.
+The frozen ON17 theorem applies to this flat integral
+model of ordinary quadratic reduction.  Its hypotheses
+do not require a projective-space hypersurface: ON17
+constructs the native smooth local ambient from the
+flat ordinary quadratic local ring.  Here the smooth
+quadric already supplies such an ambient.
+The possible finite node thickness is arbitrary and
+is retained by ON17 and QF17.  Those theorems therefore
+give full strong G in every degree at these places.
+At the good places use the frozen good-reduction theorem.
+This proves the full placewise statement.
+
+For a finite $F'/F$ unramified above $q$, the exact
+product model \eqref{r18cg:local-product} still has
+uniformizer exponent one at each place above $q$.
+Apply CA18 afresh to every specified new cycle over
+each new completion; none is presumed to descend as
+a pullback.  At good places, base change preserves
+good reduction.  At ordinary quadratic places,
+ON17's finite-extension corollary applies anew;
+the thickness is multiplied by the ramification
+index, and all its native auxiliary degrees and
+absolute values remain those of that theorem.
+This proves the asserted extension domain.
+
+Every finite place and both complementary cycle
+codimensions now satisfy precisely the hypotheses
+of PH16.  Its full-domain height implication gives
+\eqref{r18cg:height}; GA17 supplies the admissible
+regular-model lifts on this established domain.
+No unproved general-height premise is used.
+
+The rank-one monodromy and crossing-depth assertions
+are CA18 with ambient degree two, five linear factors
+and the frozen NM17 obstruction.  The non-hypersurface
+assertion is intrinsic: adjunction gives $K_{X_a}=0$;
+a hypothetical hypersurface fourfold isomorphism
+would force degree six, whereas its top Chern degree
+would be $2610$ instead of the actual $2190$, as
+computed directly in CA18.  The argument does not
+presume any polarization compatibility.
+
+For density, let a polynomial $b$ in the affine form
+coefficients over $F$ vanish on every constructed
+$MF_0+aF_1$.  For each allowed $F_1$, it vanishes
+at infinitely many integers $a$ on that affine line.
+The polynomial $b(MF_0+tF_1)$ is therefore identically
+zero.  At $t=1$ this gives $b(MF_0+F_1)=0$ for every
+allowed $F_1$.  Those forms are Zariski dense in the
+full affine coefficient space, so translation gives
+$b=0$.  The linear surjection to
+$H^0(Y_F,\mathcal O(5))$, followed by projectivization,
+proves density in the section parameter space and
+then in its smooth open.  The set $S$ and the
+progression can depend on $F_1$; infinitely many
+parameters for each $F_1$ suffice for the argument.
+\end{proof}
+
+\paragraph{Additional finite-extension conclusion, conditional only on RI18.}
+If RI18's inertia-and-norm theorem is independently activated,
+then the unramified restriction at $q$ in
+Theorem~\ref{r18cg:height-family} can be removed.
+Indeed CA18 gives full G anew after every unramified
+extension of each native $F_w$, exactly the hypothesis
+needed by RI18.  RI18 then covers all cycles over every
+finite extension of $F_w$, using its full-degree actual
+trace descent.  All other places already have that
+extension stability by good reduction and ON17.
+PH16 therefore gives \eqref{r18cg:height} over every
+finite $F'/F$.  This paragraph does not count RI18 as
+proved before its separate independent review is complete.
+
+\paragraph{Precise scope and comparison with earlier domains.}
+For every preassigned $F_{\mathrm{base}}$ the construction
+uses a finite extension $F/F_{\mathrm{base}}$ and then
+gives density over that one fixed $F$.  It does not
+claim that the displayed family descends to
+$F_{\mathrm{base}}$, nor that every smooth type-$(2,5)$
+fourfold belongs to it.  The geometric fibers are
+not hypersurfaces; their deep degeneration is not
+a new model of a potentially good generic fiber.
+Thus this is an explicit complete-height class
+beyond the hypersurface families GP17 and GF18.
+No classification of overlap with every earlier
+motivic sector is asserted.  Zariski density supplies
+no deformation or specialization principle proving
+G for all complete intersections.  General strong G
+and arbitrary-variety full unconditional heights
+remain open.

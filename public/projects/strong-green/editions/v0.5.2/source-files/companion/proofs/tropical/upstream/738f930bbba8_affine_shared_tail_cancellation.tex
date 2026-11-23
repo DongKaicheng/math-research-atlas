@@ -1,0 +1,386 @@
+\section{Affine common ideals with a shared tail give an original-support Green form}
+\label{sec:r11-affine-shared-tail}
+
+\paragraph{Status and construction.}
+\textbf{PROVED THIS ROUND}, subject to exact-source independent review.
+The construction contributor is \texttt{/root/r11\_challenge}.
+The new input is the explicit two-chart analytic block theorem GB,
+not an asserted factorization of an arbitrary analytic matrix.
+The conormal calculation used to find the invertibility neighborhood
+is the elementary frozen ICC calculation, recalled below.
+Neither the cancellation locus nor its closure is assumed separated
+from the remaining support in $X$.
+
+\subsection{An algebraic certificate on one affine neighborhood}
+
+Keep the original finite $K/\mathbf Q_p$, its absolute value, and a
+smooth projective geometrically integral $X/K$ of dimension $n$.
+Let $n\ge r\ge2$, let $L$ be one line bundle with one of the actual
+metrics allowed in frozen CI, and let
+\[
+ s_0=(f_1,f_2,f_3,\ldots,f_r),\qquad
+ s_1=(g_1,g_2,f_3,\ldots,f_r)
+ \tag{AST1}
+\]
+be regular global $r$-tuples of sections of $L$.  The last $r-2$
+sections are literally identical, not merely generators of equal
+tail ideals.  For $r=2$ the tail is empty.  Put
+\[
+ \begin{split}
+ Y_i&=V(s_i),\\
+ Z&=[Y_1]-[Y_0],\\
+ U&=X^{\rm an}\setminus|Z|,\\
+ W_0&=X^{\rm an}\setminus(|Y_0|\cup|Y_1|),\\
+ C_U&=(|Y_0|\cup|Y_1|)\cap U.
+ \end{split}
+ \tag{AST2}
+\]
+All cycles, multiplicities and supports in (AST2) are the original
+ones.  In particular $C_U$ can accumulate at $|Z|$ in $X^{\rm an}$.
+
+Supply a \emph{single Zariski affine open} $V_{\rm alg}\subset X$
+such that
+\[
+ C_U\subset V_{\rm alg}^{\rm an},\qquad
+ \mathcal I_{Y_0}|_{V_{\rm alg}}
+       =\mathcal I_{Y_1}|_{V_{\rm alg}}=:\mathcal I.
+ \tag{AST3}
+\]
+This is an independently checkable additional hypothesis.  Equality
+of cycle multiplicities alone is not (AST3).  No trivialization of
+$L|_{V_{\rm alg}}$ is required.
+
+\begin{lemma}[A global block matrix over the original affine ring]
+There are matrices $A\in M_2(\mathcal O(V_{\rm alg}))$ and
+$B\in M_{2,r-2}(\mathcal O(V_{\rm alg}))$ such that
+\[
+ s_1=T s_0,\qquad
+ T=\begin{pmatrix}A&B\\0&I_{r-2}\end{pmatrix}
+ \tag{AST4}
+\]
+on all of $V_{\rm alg}$.  The regular function $\det A$ has no
+zero on the underlying common zero scheme in $V_{\rm alg}$.
+The ordinary open
+\[
+ N=\bigl(V_{\rm alg}\setminus V(\det A)\bigr)^{\rm an}\cap U
+ \tag{AST5}
+\]
+therefore contains $C_U$, and $T$ is invertible on all of $N$.
+The common zero scheme need not be reduced.
+\end{lemma}
+
+\begin{proof}
+The first tuple defines a surjection of quasi-coherent sheaves
+\[
+             \mathcal O_{V_{\rm alg}}^r
+                       \longrightarrow \mathcal I\otimes L.
+ \tag{AST6}
+\]
+Because $V_{\rm alg}$ is affine, its map of global sections is
+surjective.  Explicitly, under the equivalence with modules over
+$\mathcal O(V_{\rm alg})$, the cokernel of the module map has
+zero localization at every prime, hence is zero.  This applies
+to the quasi-coherent kernel and cokernel of (AST6); it does not
+require the invertible module corresponding to $L$ to be free.
+The sections $g_1,g_2$ belong to
+$\Gamma(V_{\rm alg},\mathcal I\otimes L)$ by (AST3).
+Lift them by (AST6), giving the first two rows of $T$.
+The last rows in (AST4) are the displayed identity because
+the tail in (AST1) is exactly shared.
+
+At a local point of the common zero scheme, trivialize $L$ and
+write the tuples as regular-sequence generators $f,g$ of the
+same ideal $I$ in the local ring.  Locally there is a matrix
+$S$ with $f=Sg$.  Thus $(ST-I_r)f=0$.  The frozen ICC
+regular-sequence relation calculation says that each coefficient
+of every relation among the $f_i$ is in $I$.  Consequently
+\[
+                     ST\equiv I_r\pmod I.
+ \tag{AST7}
+\]
+Taking determinants over the commutative quotient ring gives
+that $\det T=\det A$ is a unit modulo $I$.  In particular
+it is nonzero at every point of the underlying zero scheme.
+No passage to its reduction was used.  A common scalar change
+of frame of $L$ leaves the coefficient matrix (AST4) unchanged.
+
+Since (AST3) gives the same two zero schemes on $V_{\rm alg}$,
+every point of $C_U$ belongs to that common scheme and to the
+nonvanishing locus of $\det A$.  Formula (AST5) is an ordinary
+analytic open, lies in the original $U$, and contains $C_U$.
+The adjugate formula makes $A^{-1}$ and $T^{-1}$ analytic there.
+All coefficients and inverses are over the original $K$.
+\end{proof}
+
+\subsection{Actual relative primitives and the all-test identity}
+
+On the entire open $N$, the matrix in (AST4) has the concrete
+finite decomposition
+\[
+ T=\begin{pmatrix}I_2&B\\0&I_{r-2}\end{pmatrix}
+                    \begin{pmatrix}A&0\\0&I_{r-2}\end{pmatrix},
+ \qquad
+ \begin{pmatrix}I_2&B\\0&I_{r-2}\end{pmatrix}
+       =\prod_{i=1}^{2}\prod_{j=3}^{r} E_{ij}(B_{i,j-2}).
+ \tag{AST8}
+\]
+Fix, for example, lexicographic order in the finite product.
+The factors commute because their targets are in $\{1,2\}$
+and their sources are in $\{3,\ldots,r\}$; no product of two
+of their off-diagonal matrix units is nonzero.  The product is
+empty when $r=2$.  Formula (AST8) is a direct multiplication
+identity for this block shape, not a general matrix factorization
+result.  The analytic entries of $B$ may vanish or be unbounded.
+
+Apply GB23 on $N$ to the first executed block $A\oplus I$.
+It constructs a whole-neighborhood relative actual pair by
+two ordinary Gaussian charts and the explicitly proved native
+overlap relation.  Then execute each shear in (AST8), using
+the full native SHT pair, including its coefficient-zero
+extension.  Evaluate each pair at the actual intermediate
+tuple, and add the resulting finitely many pairs and residues.
+All intermediate matrices are invertible on $N$, so all
+intermediate tuples have the same common zero set there.
+This gives actual forms
+\[
+ \begin{split}
+ p=(p',p'')&\quad\hbox{on }N\cap W_0,\\
+ E&\in B^{r-1,r-1}(N),
+ \end{split}
+ \qquad
+ G_1-G_0=d'p'+d''p''+E|_{N\cap W_0}.
+ \tag{AST9}
+\]
+Here the only nonzero extending residue is the one explicitly
+constructed in GB22 for the block; each shear has determinant
+one and contributes no curvature residue.  This assertion
+does not discard the differentiated partition terms in GB22.
+
+\begin{theorem}[Affine shared-tail cancellation]
+Under (AST1)--(AST3), the original cycle $Z$ admits an actual
+\[
+                       g_Z\in B^{r-1,r-1}(U)
+ \tag{AST10}
+\]
+over the original field and absolute value such that
+\[
+ \int_U g_Z\wedge d'd''\eta=-\int_Z\eta
+       \quad\hbox{for every }
+       \eta\in B_c^{n-r,n-r}(X^{\rm an}).
+ \tag{AST11}
+\]
+The theorem holds in every $n\ge r\ge2$.  It imposes no
+closedness of $C_U$ in $X^{\rm an}$ and no separation of its
+closure from $|Z|$.
+\end{theorem}
+
+\begin{proof}
+Use (AST9) and the frozen RSP cutoff on $U$: choose an
+ordinary smooth actual $\chi$ with support closed in $U$
+and contained in $N$, equal to one on an ordinary neighborhood
+of $C_U$.  With the RSP closed-support zero extensions, put
+\[
+       g_Z=G_1-G_0-d'(\chi p')-d''(\chi p'')
+                                \quad\hbox{on }W_0.
+ \tag{AST12}
+\]
+Near $C_U$, (AST9) says that (AST12) equals the actual form
+$E$.  The two actual formulas therefore glue on the open
+cover of $U$ formed by $W_0$ and that neighborhood of $C_U$.
+There is no assertion that the raw difference itself extends.
+
+For any actual test $\eta$ in (AST11), the frozen support
+lemma gives $\operatorname{supp}D\eta\Subset W_0$, where
+$D=d'd''$.  In particular both correction products with
+$D\eta$ in (AST12) have compact support in $W_0$.
+Since $d'D\eta=d''D\eta=0$, actual Stokes makes their
+integrals zero.  Subtracting the two full actual CI formulas
+cancels the identical curvature term from the same metric
+on the same $L$, and gives exactly (AST11).  This verifies
+all actual compact tests, not only smooth or separated ones.
+The use of the cutoff occurs on $U$, never on $X$ across
+the remaining support.
+\end{proof}
+
+The same frozen support and fixed-presentation seminorm argument
+makes $I(g_Z)$ continuous for the full coefficient-final target
+topology in degree $(n-r+1,n-r+1)$.  This is the interface of
+the actual form just constructed, not a substitute for (AST10).
+No claim about a full lower-middle kernel topology or a universal
+continuous primitive selection is made.
+
+\subsection{A moving curve in every rank with neither pivot globally available}
+
+The following calibration is over the original $K$ for every
+$r\ge2$.  It exhibits nonclosed cancellation and shows that the
+two pivot charts in GB can both be needed by this presentation.
+It is not a claim that this particular cycle evades every older
+certificate.
+
+Take
+\[
+ X=\mathbf P^1_{[s:t]}\times\mathbf P^r_{[z_0:\cdots:z_r]},
+       \qquad L=\mathcal O(1,1),
+       \qquad h_j=s z_j+t z_{j-1}\quad(3\le j\le r),
+ \tag{AST13}
+\]
+with any one of the allowed actual metrics on $L$, and set
+\[
+ \begin{split}
+ s_0&=(s z_1,\ s z_2+t z_0,\ h_3,\ldots,h_r),\\
+ s_1&=(t z_1-s z_2-t z_0,
+          (s-t)z_1+s z_2+t z_0,\ h_3,\ldots,h_r).
+ \end{split}
+ \tag{AST14}
+\]
+These are global sections of the same $L$ in every entry.
+On $s\ne0$ put $\tau=t/s$.  The exact matrix identity is
+\[
+ s_1=\left(\begin{pmatrix}\tau&-1\\1-\tau&1\end{pmatrix}
+                           \oplus I_{r-2}\right)s_0,
+                    \qquad\det A=1.
+ \tag{AST15}
+\]
+The common zero locus over this affine base is the graph
+\[
+          z_1=0,\qquad z_j=(-\tau)^{j-1}z_0
+                     \quad(2\le j\le r).
+ \tag{AST16}
+\]
+Here $z_0$ cannot be zero, because then every projective
+coordinate would be zero.  Thus this graph lies in the one
+affine open
+\[
+       V_{\rm alg}=\{s\ne0\}\times\{z_0\ne0\}
+                                  \simeq\mathbf A^{r+1}_K.
+ \tag{AST17}
+\]
+Identity (AST15) proves equality of the two ideals throughout
+this affine open, with an exactly shared tail.
+
+Let $C$ be the closure of (AST16).  Explicitly it is the graph
+of the morphism from $\mathbf P^1$ with projective coordinates
+\[
+ z_0=s^{r-1},\quad z_1=0,\quad
+ z_j=(-1)^{j-1}t^{j-1}s^{r-j}\ (2\le j\le r).
+ \tag{AST18}
+\]
+They have no common zero, and the first projection identifies
+$C$ with $\mathbf P^1_K$.  In the fiber $s=0$, set
+\[
+ \begin{split}
+ D_0&=\{s=0,\ z_0=z_2=\cdots=z_{r-1}=0\},\\
+ D_1&=\{s=0,\ z_1=z_0,\ z_2=\cdots=z_{r-1}=0\}.
+ \end{split}
+ \tag{AST19}
+\]
+An empty list of the equations $z_2,\ldots,z_{r-1}$ is
+understood for $r=2$.  Both $D_i$ are projective lines.
+They are distinct, and their intersection is the single point
+\[
+             P_\infty=([0:1],[0:\cdots:0:1]).
+ \tag{AST20}
+\]
+The curve $C$ meets that fiber precisely at $P_\infty$.
+
+\begin{lemma}[Exact schemes and multiplicities in the calibration]
+The tuples (AST14) are regular.  Their zero schemes are reduced
+local complete intersection curves with cycle decompositions
+\[
+                     [Y_0]=[C]+[D_0],\qquad
+                     [Y_1]=[C]+[D_1].
+ \tag{AST21}
+\]
+There are no further components or embedded associated points.
+\end{lemma}
+
+\begin{proof}
+On $s\ne0$, successively eliminating $z_1,z_2,\ldots,z_r$
+in the chart $z_0\ne0$ proves that $Y_0$ is the smooth graph
+(AST16), cut out by a regular sequence.  Formula (AST15)
+gives the same scheme for $Y_1$ there.  At $s=0$, the equations
+of $s_0$ reduce to $z_0=z_2=\cdots=z_{r-1}=0$ and those of
+$s_1$ reduce to $z_1-z_0=z_2=\cdots=z_{r-1}=0$.
+Thus the underlying supports are precisely $C\cup D_i$.
+
+At $P_\infty$ use $t=z_r=1$ as frames and affine coordinates.
+The tail equations successively eliminate
+\[
+             z_{r-1}=-s,\quad z_{r-2}=s^2,\quad\ldots,
+                         z_2=(-s)^{r-2}.
+ \tag{AST22}
+\]
+For $r=2$ this simply says $z_2=1$ in the chosen chart.
+For $Y_0$, its second equation eliminates
+$z_0=-s z_2$, and its first remaining equation is $s z_1=0$.
+For $Y_1$, its first equation eliminates
+$z_0=z_1-s z_2$, and the sum of its first two equations is
+again $s z_1=0$.  Hence in each case the local ring after
+these eliminations is
+\[
+                         K[s,z_1]_{(s,z_1)}/(s z_1),
+ \tag{AST23}
+\]
+with the corresponding localizations away from the origin.
+This is reduced; its two branches have multiplicity one.
+The branch $z_1=0$ is $C$, while the branch $s=0$ is $D_i$.
+The eliminated $r-1$ linear equations followed by the
+non-zero-divisor $s z_1$ are a regular sequence.
+
+Away from $P_\infty$ on $D_0$, take $z_1=t=1$.
+The first equation is $s=0$; the second and the tail then
+eliminate $z_0,z_2,\ldots,z_{r-1}$, leaving the one coordinate
+$z_r$.  Away from $P_\infty$ on $D_1$, the same chart applies
+because $z_1=z_0\ne0$.  The sum of its first two equations
+is $s=0$, and the other equations eliminate $z_0-1$ and
+$z_2,\ldots,z_{r-1}$, again leaving $z_r$.
+These local schemes are smooth and reduced.  Together with
+(AST23) and the finite-base chart they cover the zero schemes.
+Each is a codimension-$r$ local complete intersection in the
+smooth ambient variety; its displayed $r$ generators form a
+regular sequence.  The explicit reduced local rings have only
+the listed minimal components and no embedded components.
+This proves (AST21), including all multiplicities.
+\end{proof}
+
+Consequently this calibration has the nonzero original cycle
+\[
+                  Z=[D_1]-[D_0],\qquad
+                  C_U=C^{\rm an}\setminus\{P_\infty\}
+                                      \simeq\mathbf A^{1,\rm an}_K.
+ \tag{AST24}
+\]
+The cycle is geometrically homologically trivial, as also follows
+by subtracting the cycle classes of two regular zero schemes
+of the same $L^{\oplus r}$.  The canceled curve accumulates at
+the remaining support at $P_\infty$, so it is not closed in
+$X^{\rm an}$.  Nevertheless (AST17) contains all of $C_U$,
+and the original-support theorem applies.  The two first-column
+pivots of (AST15) are $\tau$ and $1-\tau$; each vanishes at a
+point of $C_U$.  Thus neither one of the displayed Gaussian
+charts covers the cancellation locus by itself.  This checks
+the automatic overlap mechanism without using a closed-cancel
+separation assumption.  The example has $n=r+1$ in every rank;
+it calibrates the mechanism rather than restricting the theorem
+to that dimension.
+
+\paragraph{Limits and exact inputs.}
+The new conclusion requires both a literally shared tail and
+one affine common-ideal neighborhood (AST3).  It is not a theorem
+for arbitrary equal ideals on an arbitrary cover, nor for arbitrary
+matrices in $\mathrm{GL}_r$ without a supplied factorization.
+It does not remove the hypotheses of the frozen OFC closed-cancel
+class or modify frozen CI0.  General different-ideal cancellation,
+the full lower-middle kernel problem, arbitrary homologically
+trivial cycles, and the extra Beilinson--Bloch height axioms remain
+open here.  No high-order form descent or norm-root choice is used.
+
+GB: \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9}.
+ICC, only its elementary conormal relation lemma:
+\path{6836e2a945bfbf49faf41bef2d31a9d11c2af1434ada08048616069b906f4e49}.
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+RSP: \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+CI: \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+All further exact native relation and partition dependencies are
+those locked in GB.  Internal exact-hash review is not formal
+verification, external peer review, or proof of external novelty.

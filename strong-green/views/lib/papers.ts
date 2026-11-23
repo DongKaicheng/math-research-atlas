@@ -8,6 +8,7 @@ import pairingCases from "@/content/papers/pairing-constructions.json";
 import obstructionRoute from "@/content/papers/obstruction-height-route.json";
 import greenRoute from "@/content/papers/green-height-route.json";
 import zhangRoute from "@/content/papers/zhang-height-route.json";
+import chowGreenPairs from "@/content/papers/chow-obstruction-green-pairs.json";
 
 export type Paper = {
   slug:string; title:string; subtitle:string; category:string; summary:string;
@@ -18,6 +19,6 @@ export type Paper = {
   htmlSha256:string; proofCount:number; formulaCount:number;
   sources:{file:string;sha256:string}[]; statements:{kind:string;count:number}[];
 };
-export const papers = [obstructionRoute,greenRoute,zhangRoute,programme,arithmeticProgramme,globalHeight,pairingCases,green,arithmetic,metrics] as Paper[];
+export const papers = [chowGreenPairs,obstructionRoute,greenRoute,zhangRoute,programme,arithmeticProgramme,globalHeight,pairingCases,green,arithmetic,metrics] as Paper[];
 export const getPaper = (slug:string) => papers.find(paper=>paper.slug===slug);
 export const papersForEntry = (id:string) => papers.filter(paper=>paper.entries.includes(id));

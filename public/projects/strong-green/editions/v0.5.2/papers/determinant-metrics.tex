@@ -1,0 +1,447 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{xcolor}
+\definecolor{InternalLink}{HTML}{245B53}
+\definecolor{CitationLink}{HTML}{7A4937}
+\definecolor{ExternalLink}{HTML}{365A83}
+\usepackage[colorlinks=true,linkcolor=InternalLink,citecolor=CitationLink,urlcolor=ExternalLink]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\Td}{\operatorname{Td}}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\MathEqref}[1]{\eqref{#1}}
+\newcommand{\MathSecref}[1]{\Cref{#1}}
+\setlength{\emergencystretch}{3em}
+\title{Normalized Determinants and Height Metrics}
+\author{}
+\date{17 November 2026}
+\hypersetup{pdftitle={Normalized Determinants and Height Metrics},pdfauthor={}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We compare normalized determinant-of-cohomology metrics on Jacobian
+families. For a perfect complex on the product of a pointed curve and
+a smooth projective variety, the derived projection formula, for product
+Kähler metrics, induces an exact isometry after normalization at the origin. In virtual rank zero,
+the resulting line is the Deligne pairing with the determinant of the
+pushforward. Filtered Grothendieck--Riemann--Roch identifies the line
+attached to a curve correspondence and a homologically trivial cycle.
+At a finite place where the pointed source curve has good reduction,
+a model-perfect complex of generic virtual rank zero and degree-zero
+determinant yields the canonical rigidified Poincar\'e model metric.
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}
+The comparison between a cycle-theoretic height and a determinant
+construction has two parts. One must identify the underlying line, and
+one must identify its metric with the correct normalization. The second
+part contains a genuine constant ambiguity even when the two curvature
+forms agree. A Jacobian family provides a useful setting in which that
+ambiguity can be removed exactly.
+
+Let \(C\) be a pointed smooth projective complex curve and
+\(J=\Pic^0(C)\). The standard Poincar\'e metric on \(C\times J\)
+has purely mixed curvature. In a determinant family obtained by
+twisting a fixed complex with the Poincar\'e bundle, the family index
+formula therefore depends only on the virtual rank of its pushforward
+to \(C\). Dividing by the determinant fibre at the origin equips the
+line with a unit rigidification. Equality of curvature forms then gives
+equality of metrics: their logarithmic ratio is pluriharmonic on the
+compact connected variety \(J\), and its value at the origin is zero.
+
+This argument proves the projection-formula isometry in
+\Cref{thm:quillen-isometry}. Its rank-zero specialization is
+\Cref{thm:deligne-isometry}. Applied to a curve correspondence, the two
+theorems give \Cref{cor:cycle-determinant}; the relevant rank and
+determinant are computed by the leading terms of
+Grothendieck--Riemann--Roch. The good-reduction analogue is
+\Cref{prop:good-reduction}. There the quotient of two model lines has a
+vertical divisor, and the unit rigidification forces its coefficient
+to vanish.
+
+The full arguments appear in the next section in this order. Throughout,
+\(\CH^j(X)_{\Q}\) denotes the rational Chow group, and
+\[
+ V^j(X)=\ker\bigl(\CH^j(X)_{\Q}\longrightarrow
+                    H^{2j}(X,\Q)\bigr)
+\]
+over \(\mathbf C\). The cochain determinant convention and the
+Poincar\'e normalization are fixed explicitly before the comparison
+theorems. The determinant--biextension identifications of
+\cite{Gorchinskiy,Nakayama} explain how this comparison enters local
+height formulas.
+
+
+% Source: research-sources/height-r2/sections/determinants.tex
+\section{Normalized determinants on Jacobian families}\label{sec:metrics}
+
+\subsection{The Poincaré metric and normalization}\label{sec:poincare-metric}
+
+Let \(C\) be a smooth projective connected complex curve with
+basepoint \(o\), and let \(J=\Pic^0(C)\). Let \(\cP\) be the
+Poincaré line bundle on \(C\times J\), rigidified on both axes.
+Equip it with the standard smooth metric for which these
+rigidifications have norm one. Its Chern form
+\(\Omega=c_1(\cP)\) is purely mixed: it has real degree one in
+\(C\) and degree one in \(J\).
+
+One way to see this is to pull back the canonical Poincaré bundle
+on \(J\times J^\vee\) by the Abel map and the principal
+polarization, with the convention realizing \(\cP\). For a
+translation-invariant theta curvature \(\theta\), the corresponding
+Poincaré curvature is the mixed form obtained from
+\(m^*\theta-p_1^*\theta-p_2^*\theta\), up to the chosen duality
+sign. The pure terms cancel. Pullback by the Abel map preserves
+the mixed-degree assertion.
+
+For a fixed smooth projective complex variety \(Z\), use the
+cochain determinant convention
+\[
+ \lambda_Z(K)=\det R\Gamma(Z,K)
+       =\bigotimes_i\det H^i(Z,K)^{(-1)^i}.
+\]
+A perfect complex is given a bounded vector-bundle representative
+with smooth hermitian metrics; its determinant metric is the
+alternating tensor product of the Quillen metrics of the terms.
+Choose fixed Kähler metrics on the varieties involved.
+
+\subsection{The normalized projection-formula isometry}
+\label{sec:quillen-proof}
+
+Let \(X\) be a smooth projective connected complex variety,
+\(M=C\times X\), and \(q:M\to C\). For a hermitian perfect
+complex \(\mathcal F\) on \(M\), put \(K=Rq_*\mathcal F\)
+and choose any hermitian vector-bundle representative of \(K\).
+Define line bundles on \(J\) by
+\begin{align*}
+ \cD_M(\mathcal F)
+  &=\det Rp_{J*}(\cP_M\otimes\mathcal F_J)
+     \otimes\bigl(\lambda_M(\mathcal F)\otimes\cO_J\bigr)^{-1},\\
+ \cD_C(K)
+  &=\det Rp_{J*}(\cP\otimes K_J)
+     \otimes\bigl(\lambda_C(K)\otimes\cO_J\bigr)^{-1}.
+\end{align*}
+The subscripts indicate pullbacks to the appropriate products with
+\(J\). Each constant denominator has the Quillen norm of the same
+complex and metrics that occur in the numerator at \(0\).
+Thus each line has a canonical origin rigidification of norm one.
+
+\begin{theorem}\label[theorem]{thm:quillen-isometry}
+Use product Kähler metrics on \(C\times X\). The derived
+projection-formula isomorphism gives an exact isometry of
+rigidified line bundles
+\[
+ \cD_M(\mathcal F)\xrightarrow{\sim}\cD_C(Rq_*\mathcal F).
+\]
+Both Chern forms equal
+\begin{equation}\label{eq:quillen-curvature}
+ \frac{\rk K}{2}\int_C\Omega^2.
+\end{equation}
+Under the canonical rigidified identifications, these normalized
+metrics are independent of the hermitian representatives and the
+fixed product Kähler metrics used to construct them.
+\end{theorem}
+
+\begin{proof}
+Derived projection formula and base change identify the numerator
+complexes and their restrictions at \(0\). Applying determinants
+to these two identifications gives the asserted algebraic
+isomorphism, respecting the origin rigidifications.
+
+The Bismut--Gillet--Soulé curvature formula
+\cite[Theorem~0.1]{BGS}, in the cochain determinant convention,
+gives the Chern form of the first line as the base-degree-two
+component of
+\[
+ \int_{C\times X}\Td(T_C)\Td(T_X)\ch(\mathcal F)
+                          (e^\Omega-1).
+\]
+Every factor except \(\Omega\) is pulled back from \(C\times X\).
+Since \(\Omega\) is purely mixed, only \(\Omega^2/2\) can
+contribute degree two on \(J\). It already has degree two on
+\(C\), so the remaining factor contributes its degree-zero-in-\(C\)
+part. Integration over \(X\) gives
+\[
+ \int_X\Td(T_X)\ch(\mathcal F|_{\{x\}\times X})
+       =\chi(X,\mathcal F|_{\{x\}\times X})=\rk K
+ \qquad(x\in C).
+\]
+The final equality follows by derived base change and the constant
+Euler characteristic of the perfect pushforward. This proves
+\MathEqref{eq:quillen-curvature} for \(\cD_M\). The curve
+calculation gives the same form: all positive-degree forms from
+\(K\) or \(T_C\) have too much \(C\)-degree to contribute.
+
+The determinant lines with their Quillen metrics are smooth on
+the whole \(J\), including cohomology-jump loci. Under the
+algebraic isomorphism, the logarithm of the ratio of their metrics
+is therefore a smooth pluriharmonic function on the compact
+connected manifold \(J\). It is constant, and the norm-one
+origin rigidifications make that constant zero. Changing the
+hermitian representatives or the fixed product metrics preserves both the
+curvature computation and this normalization, proving the last
+assertion.
+\end{proof}
+
+\subsection{Virtual rank zero and Deligne pairings}
+\label{sec:deligne-proof}
+
+\begin{theorem}\label[theorem]{thm:deligne-isometry}
+Let \(K\) be a perfect complex of virtual rank zero on \(C\),
+and put \(L=\det K\). There is a unique rigidified isomorphism
+\[
+ \cD_C(K)\xrightarrow{\sim}
+       \langle\cP,p_C^*L\rangle_{C\times J/J}.
+\]
+It is an isometry for the normalized Quillen metric and the
+Deligne metric. Both metrics are smooth and flat. The right side
+can be formed using any smooth hermitian metric on \(L\).
+\end{theorem}
+
+\begin{proof}
+On a nonsingular curve, rank and determinant identify
+\(K_0(C)\) with \(\Z\oplus\Pic(C)\). Thus
+\([K]=[L]-[\cO_C]\). At the level of line-bundle isomorphism
+classes, the normalized determinant becomes
+\[
+ \lambda_C(\cP L)\lambda_C(\cP)^{-1}
+       \lambda_C(L)^{-1}\lambda_C(\cO_C),
+\]
+the determinant expression for the Deligne pairing. Here the first
+two factors are relative determinants over \(J\). Normalize an
+isomorphism at \(0\). It becomes unique because an invertible
+holomorphic function on the connected projective \(J\) is
+constant.
+
+The Quillen curvature is zero by
+\MathEqref{eq:quillen-curvature}. The Deligne curvature is
+\(\int_C\Omega\,c_1(L)=0\), since the integrand has degree
+three on \(C\). At \(0\), \(\cP\) is the trivially metrized
+line with unit rigidification; the Deligne unit has norm one.
+The two flat metrics therefore agree by the same compactness
+argument as above. The determinant and Deligne curvature formulas
+are also discussed in \cite[Section~2]{BiswasSchumacher}.
+\end{proof}
+
+\subsection{Curve correspondences in arbitrary codimension}
+\label{sec:correspondence-metric}
+
+Let \(\dim X=n\), take
+\(\Gamma\in\CH^r(C\times X)_\Q\), and let
+\(W\in V^{n+1-r}(X)\). Choose rational \(K_0\)-lifts
+\(E_\Gamma,E_W\) whose Chern characters start with \(\Gamma,W\)
+in their indicated codimensions. Virtual sums of structure sheaves
+give such lifts on these smooth varieties. Set
+\[
+ \mathcal F=E_\Gamma\otimes^{\mathbf L}p_X^*E_W,
+ \qquad K=Rq_*\mathcal F.
+\]
+The product Chern character starts in codimension \(n+1\).
+Filtered Grothendieck--Riemann--Roch for \(q\) gives
+\begin{equation}\label{eq:grr-leading}
+ \rk K=0,\qquad
+ c_1(\det K)=q_*(\Gamma\cdot p_X^*W)={}^t\Gamma_*W.
+\end{equation}
+Positive-degree Todd terms do not contribute to these two
+components. The divisor class on the right has degree zero because
+\(W\) is homologically trivial.
+
+\begin{corollary}\label[corollary]{cor:cycle-determinant}
+There is a rigidified isometry of rational metrized line bundles
+on \(J\),
+\[
+ \cD_{C\times X}(E_\Gamma\otimes^{\mathbf L}p_X^*E_W)
+   \xrightarrow{\sim}
+ \langle\cP,\cO_C({}^t\Gamma_*W)\rangle.
+\]
+The metric is the normalized flat Poincaré metric attached to the
+degree-zero divisor class \({}^t\Gamma_*W\).
+\end{corollary}
+
+\begin{proof}
+Combine \Cref{thm:quillen-isometry,thm:deligne-isometry} with
+\MathEqref{eq:grr-leading}. For rational classes, take a common
+tensor power throughout and then the positive real root of the
+norm. Changing the chosen cycle lifts by higher filtration changes
+their product only in codimension at least \(n+2\), which is
+zero on \(C\times X\); the rational Chern character then gives
+the same normalized line.
+\end{proof}
+
+The relation to the classical archimedean height uses the
+determinant--cycle--Hodge biextension comparison of
+\cite[Propositions~4.3, 4.29, 4.31 and Corollary~4.32]{Gorchinskiy}.
+Its disjoint-cycle trivialization gives the local height
+\cite[Remark~4.7]{Gorchinskiy}. The relative comparison over a
+smooth base is given in \cite[Theorem~10.9]{Nakayama}; that theorem
+includes an inversion of the central \(\mathbf G_m\) under its
+conventions. Fixing the cochain determinant convention above and
+the corresponding Poincaré convention fixes this sign.
+
+An incidence locus can be a zero or pole locus of the chosen
+meromorphic frame without being a singularity of the line metric.
+If \(s=fe\), where \(e\) is a nonvanishing holomorphic frame, then
+\[
+ -\log\|s\|=-\log|f|-\log\|e\|.
+\]
+The second term is smooth across incidence in the Jacobian family
+just constructed. This global line comparison resolves the
+normalization and continuity issue for that determinant model.
+
+\subsection{The source-curve good-reduction comparison}
+\label{sec:good-reduction-metric}
+
+Let \(\mathcal O\) be a complete discrete valuation ring with
+fraction field \(K_v\), equipped with a fixed non-Archimedean
+absolute value inducing the given discrete valuation.
+Let \(\mathcal C/\mathcal O\) be a smooth proper geometrically
+connected curve with a section, let \(\mathcal J/\mathcal O\)
+be its Jacobian, and let \(\mathcal P\) be the axis-rigidified
+Poincaré bundle. For a perfect complex \(K\) on \(\mathcal C\),
+form the normalized determinant line \(\cD_{\mathcal C}(K)\)
+on \(\mathcal J\) by the same algebraic construction.
+
+\begin{proposition}\label[proposition]{prop:good-reduction}
+Suppose the generic virtual rank of \(K\) is zero and
+\(\deg\det K_{K_v}=0\). The model metric of
+\(\cD_{\mathcal C}(K)\) on the generic fibre is the canonical
+rigidified Poincaré metric associated with \(\det K_{K_v}\).
+\end{proposition}
+
+\begin{proof}
+The degree of \(\det K\) is zero on every fibre. After
+rigidification along the section, it defines a point of the
+relative \(\Pic^0\), and hence a rigidified Poincaré extension
+on \(\mathcal J\). The rank-zero determinant identity on the
+generic curve identifies its generic line with
+\(\cD_{\mathcal C}(K)\), respecting the origin rigidification.
+
+Regard this isomorphism as a rational section of the quotient of
+the two model lines. Its divisor is vertical. The abelian scheme
+\(\mathcal J\) is regular and its special fibre is geometrically
+integral, so this divisor is \(a[\mathcal J_s]\) for an integer
+\(a\). Pullback to the zero section has valuation \(a\), but
+the two integral unit rigidifications make that valuation zero.
+Thus \(a=0\). Normality extends the isomorphism and its inverse
+over the whole model. The model metrics coincide. The Poincaré
+multiplication laws extend over the abelian scheme and are
+isometries, identifying this model metric with the canonical one.
+\end{proof}
+
+If an ambient model \(\mathcal X\) and a model-perfect complex
+on \(\mathcal C\times\mathcal X\) have a perfect derived
+pushforward to \(\mathcal C\), the determinant projection
+formula reduces their model comparison to this proposition.
+At a bad-reduction source curve the vertical correction involves
+the geometry of a semistable or Néron model; this is a separate
+comparison problem.
+
+
+
+\section{The remaining metric comparisons}\label{sec:remaining-metrics}
+
+The comparisons above provide the complex-place and good-reduction
+inputs for a local height comparison. The next step is to identify the
+vertical correction at a place of semistable reduction.
+
+\begin{problem}[Semistable source curves]\label[problem]{prob:semistable-metric}
+Fix a complete discretely valued field \(K_v\) with its original
+absolute value, a pointed smooth projective geometrically connected
+curve \(C/K_v\), and a semistable model \(\mathcal C\). Let \(K\)
+be a perfect complex on the model with generic virtual rank zero and
+\(\deg\det K_{K_v}=0\). Construct the admissible correction to its
+normalized determinant model metric and identify the resulting
+rigidified metric with the canonical Poincar\'e metric attached to
+\(\det K_{K_v}\). For a determinant arising from a curve
+correspondence, compare this metric with the actual-form Green
+construction, retaining the finite local lengths, prescribed cycle
+representatives and native finite-extension degree.
+\end{problem}
+
+In the smooth-model case, \Cref{prop:good-reduction} supplies this
+comparison. At semistable reduction the correction must account for
+the components and intersection graph. Passage to an actual-form
+height also uses its trace, correspondence covariance and
+normalization on the complete actual test space.
+
+The corresponding family problem concerns both the boundary and the
+growth of the resulting height. One can formulate a precise target
+without asserting that every family has positive height growth.
+
+\begin{problem}[Height domination in a family]\label[problem]{prob:family-height}
+Let \(F\) be a number field, \(S/F\) a smooth quasi-projective
+variety, and \(f:\mathcal X\to S\) a smooth projective family of
+relative dimension \(2r-1\). Let \(Z\) be a relative codimension
+\(r\) cycle whose fibres are homologically trivial, and assume the
+fibrewise pairings \(h_s\) have been constructed with the fixed
+absolute height convention, invariant under extension of number fields.
+Determine geometric hypotheses on \((f,Z)\)
+under which the function
+\[
+ q_Z(s)=(-1)^r h_s(Z_s,Z_s)
+\]
+is the height of a canonically metrized biextension line, has controlled
+boundary asymptotics on a specified projective compactification \(\overline S\),
+and satisfies
+\[
+ q_Z(s)\ge\varepsilon h_A(s)-C\qquad(s\in U(\overline F))
+\]
+for a nonempty open \(U\subset S\), an ample line bundle \(A\)
+on \(\overline S\), and constants \(\varepsilon>0\), \(C\).
+\end{problem}
+
+Such an inequality would give finiteness of bounded-height points of
+bounded degree on \(U\) by the classical Northcott theorem for
+\(h_A\). It is a statement about the parameter space, distinct from
+Northcott for all integral classes in one fixed Chow group.
+The relative biextension comparison over a smooth base is
+\cite[Theorem~10.9]{Nakayama}. Its singular-fibre extension in
+Theorem~11.2 requires a modified cycle with a specified cohomological
+property; Lemma~11.1 obtains that modification under the Hodge
+conjecture. These conditions belong to the boundary comparison in
+\Cref{prob:family-height}.
+
+\begin{thebibliography}{9}
+\bibitem{BGS}
+J.-M. Bismut, H. Gillet and C. Soul\'e,
+\emph{Analytic torsion and holomorphic determinant bundles I:
+Bott--Chern forms and analytic torsion},
+Communications in Mathematical Physics \textbf{115} (1988), 49--78.
+\href{https://www.imo.universite-paris-saclay.fr/~jean-michel.bismut/Bismut/1988.pdf}{Author-hosted article}.
+
+\bibitem{BiswasSchumacher}
+I. Biswas and G. Schumacher,
+\emph{Deligne pairing and Quillen metric},
+\href{https://arxiv.org/abs/1501.02539}{arXiv:1501.02539}.
+
+\bibitem{Gorchinskiy}
+S. Gorchinskiy, \emph{Notes on the biextension of Chow groups},
+\href{https://arxiv.org/abs/0802.1437v2}{arXiv:0802.1437v2}.
+
+\bibitem{Nakayama}
+Y. Nakayama, \emph{Asymptotics of local height pairing},
+\href{https://arxiv.org/abs/2512.22551v1}{arXiv:2512.22551v1},
+27 December 2025.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,495 @@
+% Round 17. Foundation branch. Candidate pending independent review.
+\section{Finite ordinary actual tests for the cycle obstruction}
+\label{r17fd:section}
+
+\paragraph{Scope.}
+\textbf{Internally reviewed.} The final claims register identifies the independent audits and frozen dependencies.
+This section extracts a finite testing theorem from VT17.
+The finite family is chosen once for the variety and the
+codimension, before choosing a cycle or its representative.
+It detects strong G for all rational Chow classes, not only
+the homologically trivial classes. It does not say that the
+finite obstruction coordinates vanish on the latter group.
+All analytic output is ordinary actual, and all asserted
+Green solutions retain the exact specified support and the
+full original actual test space.
+
+\subsection{A rational finite-dimensional model quotient}
+
+Let $K/\mathbf Q_p$ and its absolute value be fixed, let
+$X/K$ be smooth projective geometrically integral of dimension
+$n$, and fix $1\le r\le n$.
+Choose once a finite valued extension $L/K$, a smooth
+projective geometrically integral $Y/L$, a projective dominant
+generically finite morphism $g:Y\to X_L$, and a regular
+projective reduced strictly semistable model
+$\mathcal Y/L^\circ$. Such data exist by the version of
+de Jong's Theorem 6.5 used in VT17.
+Let $p:X_L\to X$, let $m=[L:K]$, and put
+$c_L=-\log|\varpi_L|>0$ with the extending absolute value.
+
+For the native smooth components $D_i$ of $\mathcal Y_k$,
+use the numerical system of VT17:
+\[
+ C^a_{\mathcal Y}=\bigoplus_iN^a(D_i)_{\mathbf Q},\qquad
+ A_{r-1}:C^{r-1}_{\mathcal Y}\longrightarrow C^r_{\mathcal Y},
+ \qquad
+ V_{\mathcal Y,r}=\ker A_{n-r}.
+ \tag{FD17.1}\label{r17fd:spaces}
+\]
+The group $C^r_{\mathcal Y}/\operatorname{im}A_{r-1}$
+is naturally the rational dual of $V_{\mathcal Y,r}$ by
+the perfect componentwise numerical degree pairing and
+the transpose identity VT17.2.
+
+\begin{definition}[The model obstruction coordinates]
+\label{r17fd:coordinates}
+For $z\in\operatorname{CH}^r(X)_{\mathbf Q}$, choose any
+cycle $W$ in the Chow pullback class $g^*p^*z$ on $Y$, and
+any rational Chow extension $\Theta_W$ on $\mathcal Y$.
+Define
+\[
+ \nu_{\mathcal Y,g,p}^r(z)(v)
+       =\langle r_r\Theta_W,v\rangle,
+       \qquad v\in V_{\mathcal Y,r}.
+ \tag{FD17.2}\label{r17fd:nu}
+\]
+Here all degrees are in the native finite residue field of
+$L$, with the residue fields of the actual cycle components
+retained.
+\end{definition}
+
+\begin{lemma}[Well-definedness and exact kernel]
+\label{r17fd:numerical-kernel}
+The map in \eqref{r17fd:nu} is a well-defined rational linear
+map
+\[
+ \nu_{\mathcal Y,g,p}^r:
+ \operatorname{CH}^r(X)_{\mathbf Q}
+                  \longrightarrow V_{\mathcal Y,r}^{\vee}.
+\]
+Its kernel is exactly $\ker\mathfrak o_{X,K}^r$.
+Consequently it is independent of the representative $W$
+and of every chosen extension, and its zero locus is
+independent of the witness $(L,Y,g,\mathcal Y)$.
+\end{lemma}
+
+\begin{proof}
+Chow localization says that two extensions of the same
+generic Chow class differ by a sum of actual rational
+vertical cycles $\sum_i j_{i*}u_i$. Their component
+restrictions differ by $A_{r-1}u$, which pairs to zero
+with $v\in\ker A_{n-r}$ by VT17.2. This also covers
+different generic representatives of the same Chow class.
+Linearity follows by adding extensions.
+
+If $\mathfrak o_{X,K}^r(z)=0$, finite-constant comparison
+and obstruction pullback give
+$\mathfrak o_{Y,L}^r(g^*p^*z)=0$. VT17 on the supplied
+model places $r_r\Theta_W$ in the image of $A_{r-1}$,
+so every coordinate in \eqref{r17fd:nu} is zero.
+
+Conversely, if every coordinate is zero, finite-dimensional
+perfect numerical duality puts $r_r\Theta_W$ in that
+image. Choosing actual rational representatives of a
+numerical preimage gives a vertically numerically zero
+extension of $g^*p^*z$. The frozen model detector gives
+zero obstruction on $Y$. The all-degree dominant
+Bott--Chern pullback injection descends this through $g$,
+and the full finite-constant injection descends it through
+$p$, giving $\mathfrak o_{X,K}^r(z)=0$.
+The last finite degree is exactly $m=[L:K]$; no
+geometric sheet count is substituted. This proof never
+requires the chosen cycle to pull back in proper position.
+\end{proof}
+
+\subsection{Actual test representatives of every coordinate}
+
+\begin{theorem}[A finite rational-valued actual test criterion]
+\label{r17fd:finite-tests}
+There exist finitely many global ordinary actual forms
+\[
+ \eta_1,\ldots,\eta_t\in B^{n-r,n-r}(X^{\mathrm{an}}),
+ \qquad D\eta_j=0,
+ \qquad t=\dim_{\mathbf Q}V_{\mathcal Y,r},
+ \tag{FD17.3}\label{r17fd:actual-tests}
+\]
+such that the following hold.
+\begin{enumerate}
+\item For every specified rational codimension-$r$ cycle
+      $Z$ on $X$, each period $\int_Z\eta_j$ is rational
+      and depends only on $[Z]\in\operatorname{CH}^r(X)_{\mathbf Q}$.
+\item If $v_1,\ldots,v_t$ is a chosen rational basis of
+      $V_{\mathcal Y,r}$, the forms may be chosen so that
+\[
+       \int_Z\eta_j
+            =\nu_{\mathcal Y,g,p}^r([Z])(v_j)
+                \quad\hbox{for every }Z.
+ \tag{FD17.4}\label{r17fd:periods}
+\]
+\item Every such specified $Z$ satisfies
+\[
+ \boxed{\quad
+   G_X(Z)\quad\Longleftrightarrow\quad
+            \int_Z\eta_j=0\ \text{for all }1\le j\le t.
+       \quad}
+ \tag{FD17.5}\label{r17fd:criterion}
+\]
+The Green conclusion is the exact-support all-actual
+statement over the original $K$. There is no homological
+triviality assumption in this theorem.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Choose actual rational cycle representatives of the basis
+$v_j$ on the native components, and use the framed VT17
+construction once to obtain
+\[
+       \beta_j\in B^{n-r,n-r}(Y^{\mathrm{an}}),\qquad
+       D\beta_j=0,
+       \qquad
+       \int_W\beta_j
+         =c_L\langle r_r[\overline W],v_j\rangle
+ \tag{FD17.6}\label{r17fd:vertical-values}
+\]
+for every rational cycle $W$ of codimension $r$ on $Y$.
+The scalar is the same $c_L$ for every $j$ and $W$.
+It is the uniformizer scalar in the fixed-framed MM16.3
+comparison; the complete resolution differential is retained.
+
+Apply AD17 to $g$ over $L$ and choose once a global
+$D$-closed actual $b_j\in B^{n-r,n-r}(X_L^{\mathrm{an}})$
+whose pairing with every global separately closed actual
+$\omega$ of degree $(r,r)$ is
+\[
+             \int_{X_L}b_j\wedge\omega
+                    =\int_Y\beta_j\wedge g^*\omega.
+ \tag{FD17.7}\label{r17fd:adjoint}
+\]
+No canonical choice of $b_j$ is needed.
+
+For a specified $Z$, let $(g_{Z_L},\Omega_{Z_L})$ be its
+frozen curved pair over $L$. Because $Db_j=0$ literally,
+the all-actual curved identity gives
+\[
+                \int_{Z_L}b_j
+                     =\int_{X_L}\Omega_{Z_L}\wedge b_j.
+\]
+Choose any cycle $W$ representing the Chow class $g^*[Z_L]$.
+Obstruction functoriality gives a global actual $\Psi$ with
+$g^*\Omega_{Z_L}-\Omega_W=D\Psi$. Stokes and
+$D\beta_j=0$ remove this difference. Equation
+\eqref{r17fd:adjoint} and the curved pair for $W$ then give
+\[
+ \int_{Z_L}b_j
+      =\int_Y\beta_j\wedge\Omega_W
+      =\int_W\beta_j
+      =c_L\nu_{\mathcal Y,g,p}^r([Z])(v_j).
+ \tag{FD17.8}\label{r17fd:upstairs-period}
+\]
+Thus the graph adjoint preserves exactly the framed
+period, not only its vanishing. No support condition on
+$g^{-1}|Z_L|$ was used.
+
+It remains to obtain original-$K$ actual tests with the
+correct normalization. Read $b_j$ on the $K$-variety $X_L$
+using the identical genuine analytic-unit presentations,
+as in FG16's finite-constant corollary. Apply the frozen
+full actual finite trace over $K$, and set
+\[
+          \eta_j=\frac{1}{m c_L}\operatorname{Tr}_{p}^{K}(b_j).
+ \tag{FD17.9}\label{r17fd:normalized-test}
+\]
+Its output is ordinary actual and is $D$-closed. The
+finite-flat cycle-trace identity FG16.1 applies to every
+prime of $Z$, including cycles contained in branch loci;
+for the constant extension all native flat lengths are
+retained. Mihatsch's finite-constant integral comparison,
+in the precise FG16 formulation, gives
+\[
+ \begin{split}
+  \int_{Z/K}\eta_j
+    &=\frac{1}{m c_L}\int_{Z_L/K}b_j\\
+    &=\frac{1}{c_L}\int_{Z_L/L}b_j
+     =\nu_{\mathcal Y,g,p}^r([Z])(v_j).
+ \end{split}
+ \tag{FD17.10}\label{r17fd:native-calibration}
+\]
+The common multiplier in the second line is the full
+$[L:K]$, including ramification and residue degree. The
+absolute value is extended without renormalizing it, so
+$c_L=c_K/e(L/K)$; formula \eqref{r17fd:normalized-test}
+keeps this scalar rather than silently replacing it by
+$c_K$. This proves the exact rational period assertion.
+
+All choices of basis cycles, framed complexes, graph
+extensions, cutoffs and adjoint representatives were made
+before $Z$. Projectivity makes each $\eta_j$ a compact
+actual test. Necessity in \eqref{r17fd:criterion} therefore
+also follows immediately by inserting these literal
+$D$-closed tests into a supplied strong equation.
+For sufficiency, their periods vanish if and only if
+$\nu_{\mathcal Y,g,p}^r([Z])=0$. The preceding lemma gives
+obstruction zero, and the frozen sufficient direction
+constructs a Green form for this very specified $Z$ on
+its exact support complement, valid for every compact
+actual test. No smaller finite testing space replaces the
+test space of the resulting Green identity.
+\end{proof}
+
+\begin{corollary}[The algebraic cycle obstruction quotient is finite]
+\label{r17fd:local-finite}
+Write
+\[
+ \mathcal G_K^r(X)=\{z\in\operatorname{CH}^r(X)_{\mathbf Q}:
+      \text{every specified representative of $z$ has strong G}\}.
+\]
+Then $\mathcal G_K^r(X)=\ker\mathfrak o_{X,K}^r$ is a
+rational vector subspace, and the period vector induces
+an injection
+\[
+ \operatorname{CH}^r(X)_{\mathbf Q}/\mathcal G_K^r(X)
+       \hookrightarrow\mathbf Q^t,
+ \qquad [Z]\longmapsto\left(\int_Z\eta_j\right)_j.
+ \tag{FD17.11}\label{r17fd:local-quotient}
+\]
+In particular the rational span of cycle obstructions in
+actual Bott--Chern cohomology is finite-dimensional.
+The same finite family separates this cycle-generated
+sector under the Bott--Chern/Aeppli integration pairing.
+\end{corollary}
+
+\begin{proof}
+VT17 identifies the existence kernel with the obstruction
+kernel on all rational Chow classes. The preceding theorem
+gives the stated injection, whose image is precisely the
+image of the rational linear map $\nu$ in the chosen basis.
+For a separately closed cycle curvature, replacing it by
+a global $D$-boundary does not change any of its pairings
+with the $D$-closed tests. Thus their separation of the
+cycle-generated obstruction sector is the same assertion.
+This says nothing about the dimension or nondegeneracy of
+the full actual Bott--Chern and Aeppli groups.
+\end{proof}
+
+\subsection{Removing the cohomologically compatible part of the kernel}
+
+Assume in this subsection that $n\ge3$, as in KC17, and
+fix one $\ell\ne\operatorname{char}k_L$.
+
+\begin{definition}[The rational compatible-representative subspace]
+\label{r17fd:compatible}
+Let $K_{\mathrm{comp},\ell}(\mathcal Y,r)$ consist of those
+$v\in V_{\mathcal Y,r}$ for which there exist actual rational
+Chow representatives
+\[
+          \zeta_i\in\operatorname{CH}^{n-r}(D_i)_{\mathbf Q},
+          \qquad [\zeta_i]_{\rm num}=v_i,
+\]
+such that the geometric classes $\operatorname{cl}_\ell(\zeta_i)$
+have equal restrictions on every double intersection.
+This is a condition on the existence of representatives;
+no cycle-class map from a numerical group is presumed.
+\end{definition}
+
+\begin{proposition}[The finite residual test space for homological classes]
+\label{r17fd:homological-refinement}
+The set $K_{\mathrm{comp},\ell}(\mathcal Y,r)$ is a rational
+vector subspace of $V_{\mathcal Y,r}$. On geometrically
+$\ell$-homologically trivial classes, the map $\nu$ factors as
+\[
+ \operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom},\ell}
+   \longrightarrow
+   \bigl(V_{\mathcal Y,r}/K_{\mathrm{comp},\ell}(\mathcal Y,r)\bigr)^\vee.
+ \tag{FD17.12}\label{r17fd:residual-map}
+\]
+Its kernel is still exactly the strong-G existence kernel
+on that homological subgroup. Thus there is a family of at
+most
+\[
+       \dim_{\mathbf Q}V_{\mathcal Y,r}
+          -\dim_{\mathbf Q}K_{\mathrm{comp},\ell}(\mathcal Y,r)
+ \tag{FD17.13}\label{r17fd:residual-number}
+\]
+fixed rational-valued global $D$-closed actual tests detecting
+strong G within that subgroup.
+\end{proposition}
+
+\begin{proof}
+If representatives $\zeta_i$ and $\xi_i$ establish the
+condition for $v$ and $w$, then $a\zeta_i+b\xi_i$ establish
+it for $av+bw$ for every $a,b\in\mathbf Q$. The zero
+representatives establish it for zero. This proves the
+subspace assertion directly on actual Chow classes.
+
+Take a homological class $z$ as stated, an extension
+$\Theta_W$ of $g^*p^*z$, and a compatible tuple $v$ with
+the chosen representatives. The pure operational class of
+$\Theta_W$ supplies the global model cohomology class $a$
+used in KC17; it restricts to zero on the geometric generic
+fiber. The compatible-representative lifting lemma KC17
+supplies a global model cohomology class $b$ restricting to
+$\operatorname{cl}_\ell(\zeta_i)$ on every component.
+It need not be algebraic or Frobenius fixed. The model is
+reduced, so the native top trace of KC17.5 gives
+\[
+ \nu(z)(v)
+       =\sum_i\deg_{k_L}\bigl((j_i^!\Theta_W)\zeta_i\bigr)
+       =\operatorname{Tr}_{Y_{\bar L}}
+                      (a|_{Y_{\bar L}}b|_{Y_{\bar L}})=0.
+\]
+This uses the trace theorem for an arbitrary global top
+cohomology class; it does not assert that the cohomological
+lift of $b$ is represented by a model Chow class.
+Thus $\nu(z)$ annihilates the defined rational subspace,
+which proves \eqref{r17fd:residual-map}.
+
+Choose a rational basis of $K_{\mathrm{comp},\ell}$ and
+extend it to a rational basis of $V_{\mathcal Y,r}$. In the
+finite actual test construction the first block has zero
+period on every class under consideration. The remaining
+block suffices by Theorem~\ref{r17fd:finite-tests} and has
+the size in \eqref{r17fd:residual-number}. This is an upper
+bound; the image of $\nu$ may have smaller dimension.
+\end{proof}
+
+\subsection{A fixed finite set of local coordinates for the height domain}
+
+Let $F$ be a number field and $X/F$ smooth projective
+geometrically integral. Let $\mathcal H^r(X)$ be the R16
+height domain, equivalently the homologically trivial classes
+having local strong G at every finite place by VT17.
+Use a single arithmetic witness $(E,Y,f,\mathcal Y)$ of
+GA17, chosen before the classes. Choose once an auxiliary
+rational prime $\ell$, and let $S$ be the finite set of
+places $w$ of $E$ at which $\mathcal Y$ is not smooth,
+together with all places above $\ell$.
+For $w\in S$, use the strictly semistable completed model
+and put
+\[
+        V_{w,r}=\ker A_{n-r,w},\qquad
+        t_w=\dim_{\mathbf Q}V_{w,r}.
+\]
+Smooth completed fibers included in $S$ are also reduced
+strictly semistable, with one geometric component after
+retaining the native decomposition.
+
+\begin{theorem}[Finite rational obstruction coordinates for the height domain]
+\label{r17fd:global-finite}
+There is a rational linear map
+\[
+ \mathcal P^r_{X,\mathcal Y}:
+ \operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}
+             \longrightarrow\bigoplus_{w\in S}V_{w,r}^{\vee}
+ \tag{FD17.14}\label{r17fd:global-map}
+\]
+whose kernel is exactly $\mathcal H^r(X)$.
+Every coordinate is the period of a fixed global ordinary
+$D$-closed actual form on $X_{F_v}^{\mathrm{an}}$, where
+$v$ is the place below $w$, evaluated on the original
+specified $Z_{F_v}$. All these tests and the finite set $S$
+are independent of the cycle and its representative.
+Consequently
+\[
+ \dim_{\mathbf Q}
+ \left(\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}
+                         /\mathcal H^r(X)\right)
+                  \le\sum_{w\in S}t_w<\infty.
+ \tag{FD17.15}\label{r17fd:global-bound}
+\]
+If $n\ge3$, choose for each $w\in S$ one
+$\ell_w\ne\operatorname{char}k_w$, and put
+$K_w=K_{\mathrm{comp},\ell_w}(\mathcal Y_w,r)$.
+The target in \eqref{r17fd:global-map} can be replaced by
+$\bigoplus_{w\in S}(V_{w,r}/K_w)^\vee$, and the bound
+improves to
+\[
+ \dim_{\mathbf Q}
+ \left(\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}
+                         /\mathcal H^r(X)\right)
+             \le\sum_{w\in S}(t_w-\dim_{\mathbf Q}K_w).
+ \tag{FD17.16}\label{r17fd:global-refined-bound}
+\]
+\end{theorem}
+
+\begin{proof}
+At $w\in S$, apply the preceding construction with
+$K=F_v$, $L=E_w$, generic map
+$f_w:Y_{E_w}\to X_{E_w}$, and the fixed completed model.
+The resulting map is
+\[
+   z\longmapsto
+       \bigl[v\longmapsto
+          \langle r_r[\overline{(f^*z_E)_w}],v\rangle\bigr]
+          \in V_{w,r}^{\vee}.
+\]
+Choosing a rational basis and the normalized forms
+\eqref{r17fd:normalized-test} realizes every entry by an
+original-$F_v$ actual period. The full local field degree
+$[E_w:F_v]$ is used for this particular summand, without
+an additional factor from the other places of $E$ over $v$.
+Take the direct sum of these maps.
+
+For $w\notin S$, the model is smooth and the fixed $\ell$
+is invertible. Every geometric homologically trivial
+$z\in\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}$
+has geometrically zero $\ell$-adic class, as does $f^*z_E$.
+Smooth proper specialization makes every closure restriction
+geometrically cohomologically zero on the smooth special
+fiber. The native degree pairing with every algebraic test
+is therefore zero. The frozen model detector gives local
+strong G for $(f^*z_E)_w$. This argument applies to the
+entire indicated homological group using the same fixed
+model and $\ell$, and hence the same finite set $S$.
+
+If $z\in\mathcal H^r(X)$, obstruction pullback and native
+finite-constant comparison make all displayed coordinates
+zero. Conversely their vanishing gives obstruction zero
+for $(f^*z_E)_w$ for every $w\in S$, by the local
+finite-test theorem or the supplied-model VT17 criterion.
+The good-place argument gives the same vanishing for every
+remaining $w$. Thus $f^*z_E\in\mathcal H^r(Y)$.
+For each finite $v$ of $F$, choose one $w$ above it.
+Dominant Bott--Chern injectivity for $f_w$, followed by
+finite-constant injectivity for $E_w/F_v$, gives
+$\mathfrak o_{X_{F_v},F_v}^r(z_{F_v})=0$.
+Hence $z\in\mathcal H^r(X)$. The quotient injection and
+dimension bound follow by rational linear algebra.
+For the refinement, geometric homological triviality over
+the number field gives the zero class for each chosen
+$\ell_w$. Apply Proposition~\ref{r17fd:homological-refinement}
+at each of the finitely many places. Choose bases adapted
+to $K_w$ and omit the universally zero blocks of periods.
+The resulting smaller finite family still has exactly
+the same kernel.
+\end{proof}
+
+\paragraph{What is still open.}
+The finite numerical spaces and their bases are existence
+objects; the theorem does not assert an effective algorithm
+for computing all their numerical cycle groups. The period
+map need not surject onto the displayed finite target.
+Changing witnesses changes its coordinates, while their
+kernel and the quotient that embeds into their image are
+intrinsic. General local G is now precisely the assertion
+that these coordinates vanish on every geometric homological
+class. The unrestricted global BB construction would follow
+if the finite map \eqref{r17fd:global-map} vanished on the
+complete geometric homological Chow group. Neither vanishing
+has been proved by the finite-dimensional description.
+
+\paragraph{Dependency ledger.}
+The new input is the independently audited VT17 framed
+vertical-test theorem, its AD17 graph adjoint, and its
+general converse. The original-field cycle-trace identity
+and the finite-constant integral calibration are frozen
+FG16.1 and its constants corollary. Their trace is the full
+ordinary actual trace of R16. The fixed arithmetic witness
+and its geometric integrality are supplied by GA17. The
+compatible-representative refinement uses KC17's arbitrary-degree
+cohomological lift and the final R12 native top trace, without
+an algebraic lifting assumption. All
+cycle curvatures, exact-support reconstruction, model
+detectors and curvature functoriality are the explicit
+R10--R12 and R16 interfaces listed in those sources.

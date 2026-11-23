@@ -1,0 +1,384 @@
+% Round 22 / geometry branch. Candidate; independent review required.
+\section{A fixed-field dense family in an elliptic fourfold times a line}
+\label{r22dg:section}
+
+\paragraph{Contribution and limits.}
+We now construct a family at every finite place, so that the new local
+DS22 theorem supplies a complete height domain rather than only a local
+example.  The ambient fivefold is $E_0^4\times\mathbf P^1$.
+Its smooth divisor fourfolds have $b_1=8,b_2=29$, distinguishing them
+from the named SG18 and MG21 families, whose $b_1=4,b_2=7$.
+At the distinguished places their exact second monodromy has rank
+$802816$ and their third monodromy vanishes.  This is a distinction
+of generic fibers and not just of chosen special-fiber models.
+We do not classify overlap with every older abstract motivic or
+correspondence criterion.  The full arbitrary-variety Green and
+unconditional complete-height problems remain open.
+
+\subsection{Global good data and actual coefficient modules}
+
+Use the frozen and independently reviewed SG18 global good-reduction
+datum
+\[
+ E_0/\mathbf Q:\ y^2=x^3-x,\qquad
+ F_0=\mathbf Q(E_0[3]),\qquad
+ \mathcal E/\mathcal O_{F_0},\qquad
+ \mathcal S=\mathcal E^2,
+ \qquad \mathcal A_0=\mathcal O_{\mathcal E}(3[0])
+                         \boxtimes\mathcal O_{\mathcal E}(3[0]).
+ \tag{DG22.1}\label{r22dg:good}
+\]
+The field contains all geometric $3$-torsion coordinates.  SG18 proves
+that it is unramified at $5$ and that $\mathcal E$ is an everywhere
+smooth projective elliptic scheme.  Its proof at $2$ uses potential
+good reduction from complex multiplication, finite $3$-adic inertia,
+the torsion-freeness of $1+3M_2(\mathbf Z_3)$, and
+Neron--Ogg--Shafarevich; it does not assert that the original displayed
+Weierstrass equation is globally smooth.  The exact frozen source is
+\texttt{research\_input/round18/sectors/}
+\texttt{abelian\_surface\_ambient\_complete\_heights.tex},
+Lemma \texttt{r18sg:global-good}; its SHA-256 is
+\texttt{14fb50ae6121f72918f18850c4b8e8c17ac7289ca8305c9205cb7497751f3905}.
+
+The new ambient and polarization are
+\[
+ \mathcal Y=\mathcal S\times\mathcal S\times\mathbf P^1_{\mathcal O_{F_0}},
+ \qquad \mathcal L_0=\mathcal A_0\boxtimes\mathcal A_0\boxtimes\mathcal O(1).
+ \tag{DG22.2}\label{r22dg:ambient}
+\]
+Both surface copies and this fivefold are good at every finite place.
+
+\begin{lemma}[Full sections from literal ambient coefficients]
+\label{r22dg:coefficients}
+There is a fixed relative embedding
+$\mathcal Y\hookrightarrow\mathbf P^N_{\mathcal O_{F_0}}$ with
+$\mathcal O(1)|_{\mathcal Y}=\mathcal L_0$ such that the finite free
+module $V_5$ of degree-five ambient polynomials surjects onto
+$H^0(\mathcal Y,\mathcal L_0^5)$ and onto every field-fiber section
+space.  This remains true after every finite number-field base
+extension.  In particular every section
+\[
+ P=f g\prod_{j=1}^5l_j,\qquad
+ f,g\in H^0(\mathcal S,\mathcal A_0^5),\quad
+ l_j\in H^0(\mathbf P^1,\mathcal O(1)),
+ \tag{DG22.3}\label{r22dg:P}
+\]
+has a literal degree-five ambient polynomial representative.
+\end{lemma}
+
+\begin{proof}
+The degree-three line bundle on each elliptic fiber embeds it as
+a plane cubic.  The plane-cubic exact sequence and
+$H^1(\mathbf P^2,\mathcal O(t))=0$ show that its coordinate
+polynomials surject onto every positive tensor degree of that
+line bundle.  The four elliptic embeddings and the standard
+$\mathbf P^1$ embedding combine by Segre.  Fiberwise multiplication
+in degree $m$ is consequently surjective onto the full
+$H^0(\mathcal L_0^m)$: a pure tensor of products of $m$ sections
+from each factor is the product of $m$ external-product sections.
+
+Positive elliptic line bundles and positive projective-line line
+bundles have no higher cohomology.  Kunneth and cohomology and base
+change therefore make the section modules locally free and identify
+their fibers.  Choose a finite free module surjecting onto the
+degree-one section module.  Its evaluation gives a relative closed
+immersion into an ordinary projective space; redundant generators
+do not change the very ample property.  Fiberwise surjectivity in
+every degree and Nakayama give the asserted global surjectivity.
+No section module over a Dedekind ring was assumed to be free.
+The cohomology calculation and surjectivity commute with the finite
+flat extension of number rings.
+
+The three groups of factors in \eqref{r22dg:P} have multidegrees
+$(5,0,0)$, $(0,5,0)$, and $(0,0,5)$.  Their product has
+multidegree $(5,5,5)$, exactly $\mathcal L_0^5$.  It is not
+incorrectly counted as a degree-fifteen Segre polynomial.
+The proved surjection supplies its degree-five representative.
+\end{proof}
+
+\subsection{The new complete-height family}
+
+\begin{theorem}[Two-surface global family, DG22]
+\label{r22dg:main}
+There is one fixed finite extension $F/F_0$, unramified at every
+place over $5$, and a Zariski-dense family of smooth geometrically
+integral fourfolds
+\[
+                              X\in|\mathcal L_0^5|_{Y_F}
+ \tag{DG22.4}\label{r22dg:family}
+\]
+with the following properties.
+\begin{enumerate}
+\item For every finite extension $F'/F$, every finite place $w$ of
+$F'$, every codimension, and every specified geometrically
+homologically trivial rational cycle on $X_{F'_w}$, strong G holds
+with its exact support, every compact ordinary actual test, the
+complete auxiliary field degrees, and the given absolute value.
+\item For every such $F'/F$, the frozen PH16 pairings are defined
+on the full complementary geometric homological Chow groups:
+\[
+ \operatorname{CH}^r(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+ \times\operatorname{CH}^{5-r}(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+                    \longrightarrow\mathbf R,\qquad1\le r\le4.
+ \tag{DG22.5}\label{r22dg:heights}
+\]
+GA17 supplies regular-model admissible Chow lifts on these complete
+proved domains.
+\item At every place of $F$ over $5$, the actual DS22 model has
+triple strata and no quadruple strata, and on its generic $H^4$
+\[
+                  \operatorname{rank}N^2=802816,\qquad N^3=0.
+ \tag{DG22.6}\label{r22dg:N}
+\]
+Its minimum strict semistable dominance depth, taken over all
+finite valued extensions and their witnesses, is exactly two;
+the lower bound holds over every fixed finite extension.
+\item Every member has $b_1=8,b_2=29$.  It is not geometrically
+isomorphic to a member of the named SG18 or MG21 families, or to a
+smooth projective-space complete-intersection fourfold.  The claimed
+density is over the one fixed field $F$ in the full section space;
+it is not a statement about every section of that space.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{1. Fix reference and residue data before fixing the field.}
+Choose an integral polynomial $H_0\in V_5$ with smooth generic
+divisor.  Smooth Bertini in characteristic zero gives a nonempty
+open, and the integral coefficient lattice is Zariski dense.
+Let $S_0$ be the finite set of rational primes other than $5$
+lying below a bad reduction of this reference divisor, together
+with $2$.  A place where the entire defining section reduces to
+zero is included.  At every place $v$ of $F_0$ above every prime
+of $S_0$, even if the reference is already smooth there, choose
+a smooth degree-five special section $G_v$ after a finite residue
+extension.
+
+At every $v\mid5$, choose after a finite residue extension two
+smooth geometrically integral curves
+$C_v=V(f_v)$ and $D_v=V(g_v)$ in $|\mathcal A_{0,v}^5|$,
+five distinct native points of $\mathbf P^1$, their linear forms,
+and a section $Q_v$ transverse to all factor strata of DS22,
+with every positive-dimensional cut geometrically integral.
+The very ample restriction of $\mathcal L_0^5$ to each smooth
+stratum gives a nonempty Bertini open.  The finite intersection
+of these opens is nonempty over the algebraic closure, and thus
+has a point over a finite residue extension.  This also supplies
+all center-integrality hypotheses needed in DW22.
+
+Choose an integer $N$ divisible by the finitely many residue
+extension degrees just used.  At each selected maximal ideal of
+$\mathcal O_{F_0}$ choose a monic irreducible polynomial of degree
+$N$ over its residue field.  Coefficientwise CRT produces one
+monic $g_0\in\mathcal O_{F_0}[T]$ with all these reductions.
+It is irreducible over $F_0$: a nontrivial monic factor has
+coefficients integral over, hence in, the integrally closed number
+ring and would factor one of the irreducible reductions.
+Put $F=F_0[T]/(g_0)$.  At every selected place this extension is
+unramified and inert of degree $N$, because the chosen residual
+polynomial is separable and irreducible.  The corresponding local
+finite etale algebra is already the unramified integer ring.
+All residue choices are therefore available over this one $F$.
+In particular $F/\mathbf Q$ is unramified at $5$.
+
+\emph{2. Literal polynomial congruences and the Lefschetz open.}
+Positive elliptic cohomology and base change let CRT lift all
+$f_v$ to one global section $f$ and all $g_v$ to one global
+section $g$ of $\mathcal A_0^5$.  The point forms lift in the free
+module $\mathcal O_F^2$.  Form their actual product $P$ and use
+Lemma~\ref{r22dg:coefficients} to choose its representative in
+$V_5$.  The same free coefficient module lifts the $Q_v$ to $Q$
+and represents all $G_v$.  All subsequent congruences are literal
+ambient polynomial congruences.
+
+Put $B=\prod_{p\in S_0}p$ and $M=25B$.  Impose
+\[
+ H_1\equiv P+5Q\pmod{25\mathcal O_F},\qquad
+ H_1\equiv G_v\pmod{\mathfrak p_v}\quad(v\text{ above }S_0).
+ \tag{DG22.7}\label{r22dg:H1}
+\]
+The conditions are compatible and their solutions form a translate
+of a full integral coefficient lattice.  Unramifiedness at $5$
+gives $25\mathcal O_F=\prod_{v\mid5}\mathfrak p_v^2$.
+
+Require in addition that $H_1$ be smooth and that the pencil
+$[uH_0+vH_1]$ have smooth base locus and only transverse one-node
+singular geometric members.  This is the nonempty fixed-smooth-member
+Lefschetz open of frozen CG18/SC18, used in SG18 and MG21.
+The input on the present ambient is checked directly: degree-five
+polynomials in its relative projective embedding supply second
+jets at one point and independent first jets at two distinct
+points.  The marked-singularity incidence has the expected
+codimension, its nonsingular-Hessian locus is nonempty, and
+projection from the fixed smooth point is generically etale in
+characteristic zero.  Avoiding the non-node and branch loci gives
+the stated pencil open.  These jet assertions do not depend on
+the old ambient being $E_0^2\times\mathbf P^3$; they apply to
+the present smooth fivefold.  The congruence lattice meets this
+open densely.
+
+\emph{3. Spread each pencil and choose infinitely many parameters.}
+After fixing one such $H_1$, spread the smooth base locus, the
+finite separated critical-value scheme, the nonzero Hessians, and
+the smooth complement of the critical points.  Outside a finite
+set of finite places every geometric pencil member is smooth or
+has exactly one ordinary quadratic point.  Spread also the
+independence of the two sections, so that no pencil parameter
+there gives a zero section.  Include every place over
+$S_0\cup\{5\}$ and every characteristic-two place in the
+exceptional set.  Let $T_0$ be its finite set of underlying
+rational primes.  This set may depend on $H_1$; the field $F$
+and the previous congruence lattice do not.
+
+There are infinitely many integers $a$ satisfying
+\[
+ a\equiv1\pmod{25},\qquad a\equiv1\pmod B,\qquad
+ a\equiv0\pmod p\quad
+                (p\in T_0\setminus(S_0\cup\{5\})).
+ \tag{DG22.8}\label{r22dg:a}
+\]
+For them put
+\[
+                          X_a=V(MH_0+aH_1)\subset Y_F.
+ \tag{DG22.9}\label{r22dg:Xa}
+\]
+Remove the finitely many singular generic pencil parameters.
+All remaining generic members are smooth.
+
+\emph{4. Verify every finite place and actual local model.}
+At $v\mid5$ write $H_1=P+5Q+25R_1$.  The integer $a$ is a
+unit; dividing by it gives the actual local equation
+\[
+ P+5Q_a=0,\qquad
+ Q_a=Q+5R_1+5B a^{-1}H_0,\qquad \bar Q_a=\bar Q.
+ \tag{DG22.10}\label{r22dg:local}
+\]
+The number $5$ is a native uniformizer.  This is the precise
+DS22 datum with $\mathcal A=\mathcal B=\mathcal A_0^5$ and
+$d=5$.  Its special surfaces are both the square of the reduction
+of $E_0$, so Corollary~\ref{r22ds:elliptic} supplies full middle
+positivity over every finite constant field.
+
+At every place above $S_0$, $M$ reduces to zero and $a$ to one;
+the special divisor is the chosen smooth $G_v$.  At any
+exceptional place outside $S_0\cup\{5\}$, $M$ is a unit and
+$a$ reduces to zero; the divisor is the smooth reference $H_0$.
+The definition of $S_0$ ensures that reference is smooth at
+every such place.  All other special fibers are smooth or have
+one ordinary quadratic point.  Thus every finite place is
+accounted for, and all characteristic-two places are smooth.
+
+Every displayed defining special section is nonzero.  In the
+smooth ambient with integral fibers it is a nonzerodivisor;
+the relative Cartier divisor is flat over the trait.  Smooth
+and one-node geometric divisors here are geometrically integral,
+as follows explicitly from the divisor sequence.  On every
+geometric field fiber,
+\[
+                    H^1(Y,\mathcal L_0^{-5})=0.
+ \tag{DG22.11}\label{r22dg:negative-H1}
+\]
+Indeed $Y$ is a product of four elliptic curves and $\mathbf P^1$,
+and in every degree-one Kunneth term at least three of the elliptic
+factors occur in $H^0$ of a negative-degree line bundle, which
+is zero.  Also $H^0(Y,\mathcal L_0^{-5})=0$.  The divisor
+sequence therefore gives $H^0(X,\mathcal O_X)=\bar k$.
+A Cartier fourfold is $S_2$; a smooth or isolated-node fourfold
+is also $R_1$, so it is normal.  Connectedness and normality
+give geometric integrality.  The same applies to the smooth
+generic members.  Their flat closures are integral: flatness
+makes the structure sheaf torsion-free over the trait, and the
+generic integral ring injects its affine local rings after
+localization.  These are actual projective flat local models,
+not only prescribed equations on unrelated special fibers.
+
+\emph{5. All new extension cycles and the complete heights.}
+At places above $5$, DS22 gives full G for every new cycle after
+every finite valued extension, by its separate all-unramified
+reapplication and RI18 ramified argument.  At all other places
+the frozen good-reduction or ON17 ordinary-quadratic theorem
+applies with its all-finite-extension scope.  Now take an arbitrary
+finite $F'/F$ and every finite completion $F'_w$.  Apply the
+corresponding local theorem to its entire new homological Chow
+group.  No such group is replaced by classes pulled back from
+$F$ or from the original completion.
+
+The frozen PH16 hypotheses consequently hold in every
+complementary degree at every finite place.  Together with its
+already closed archimedean input, PH16 gives
+\eqref{r22dg:heights} on the full original global homological
+Chow groups over $F'$.  GA17 then supplies the regular-model
+admissible lifts on those full proved domains.  The local
+identities have exactly the supports of the specified cycles,
+all ordinary actual compact tests, complete auxiliary field
+degrees, and the extending original absolute values.
+
+\emph{6. Density over the one fixed field.}
+The field $F$, the residue targets, and the congruence lattice
+were fixed before varying $H_1$.  The allowed $H_1$ in that
+lattice and the Lefschetz open are Zariski dense in $V_{5,F}$.
+For every such direction infinitely many $a$ survive
+\eqref{r22dg:a} and the finite generic exclusions.  A polynomial
+vanishing on all constructed vectors $MH_0+aH_1$ vanishes on
+the full affine line in every such direction, hence at
+$MH_0+H_1$.  Those points are dense, so the polynomial is zero.
+The coefficient surjection of Lemma~\ref{r22dg:coefficients}
+makes the images dense in the full section space, and then in
+its projectivization.  Dependence of $T_0$ on the chosen pencil
+does not change this argument or the fixed field.
+
+\emph{7. Exact generic-fiber invariants.}
+On the abelian surface $S=E^2$ the canonical class is zero and
+$\mathcal A_0^2=18$.  The chosen curves have classes
+$5\mathcal A_0$, hence
+\[
+                 C^2=D^2=450,\quad g(C)=g(D)=226,\quad
+                 p_C=p_D=452-4=448.
+ \tag{DG22.12}\label{r22dg:genus}
+\]
+DW22 with $d=5$ yields
+$\operatorname{rank}N^2=448^2\cdot4=802816$ and $N^3=0$,
+as well as the exact minimum depth two.  These are actual
+generic cohomology invariants and persist under finite valued
+extension.  In particular these members have no potential good
+reduction at the distinguished places and no depth-one
+semistable dominant witness there.
+
+Weak Lefschetz for the smooth ample divisor in the fivefold
+gives the full low-degree cohomology of $Y$ in degrees one
+and two.  Since $H^1(E^4)$ has dimension eight and
+$H^2(E^4)=\bigwedge^2H^1(E^4)$ has dimension $28$,
+\[
+                         b_1(X)=8,\qquad b_2(X)=28+1=29.
+ \tag{DG22.13}\label{r22dg:Betti}
+\]
+The named SG18 and MG21 families have $b_1=4,b_2=7$ by their
+own frozen calculations, whereas a smooth projective-space
+complete-intersection fourfold has $b_1=0,b_2=1$ by weak
+Lefschetz.  These immutable geometric invariants prove the
+claimed nonisomorphism.  The comparison with MG21 is also
+consistent with its nonzero third monodromy, in contrast to
+\eqref{r22dg:N}.  This proves every assertion.
+\end{proof}
+
+\paragraph{Exact contribution to the open problems.}
+The new closed domain consists of every specified homologically
+trivial cycle in every codimension on the displayed dense family,
+including all new cycles after all finite field extensions.
+This is a new explicit family of generic fibers relative to the
+named previous constructions.  A dense family is not the whole
+ambient linear system.  Positivity of arbitrary products of
+surfaces, all nonarchimedean actual period comparison, general G,
+and complete unconditional heights for arbitrary varieties are
+not deduced here.
+
+\paragraph{Dependencies and source provenance.}
+The new local inputs are DS22 and DW22.  The arithmetic framework
+is the fully frozen SG18/MG21 fixed-field coefficient, pencil,
+spreading and CRT construction, with its hypotheses checked above
+for the different ambient and its three-factor multidegree.
+The exact classical inputs behind the good elliptic model are
+Serre--Tate, \emph{Good reduction of abelian varieties}, Theorems
+1 and 6(a), as verified in the frozen SG18 bridge.  The other
+frozen interfaces are CG18/SC18, ON17, RI18, PH16 and GA17.
+No claim of first discovery in the literature is made.

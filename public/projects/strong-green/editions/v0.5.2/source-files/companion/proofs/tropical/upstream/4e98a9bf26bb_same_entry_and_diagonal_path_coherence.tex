@@ -1,0 +1,284 @@
+\section{Same-entry loops and arbitrary finite diagonal factorizations}
+\label{sec:r10-diagonal-path-coherence}
+
+\paragraph{Draft status.}
+This module is submitted for independent review.  Its inputs are the
+complete edge identity CS10 and the separately proved whole-loop
+metric transport MT16.  It supplies strict witnesses for same-entry
+loops, then combines them with the distinct-entry square CS3.
+No elementary-shear, general $\mathrm{GL}_r$ or arbitrary-cover
+coherence theorem is asserted.
+
+\subsection{A closed path which changes only one entry}
+
+Let $N,L,f,W,s$ have the setting of CS1, with $r\ge2$ and
+$s=r-1$.  Fix one entry $i$.  A finite same-entry loop consists
+of actual intermediate tuples $f^{(0)},\ldots,f^{(\ell)}$ and
+analytic units $\lambda_j$ on all of $N$, with each step multiplying
+only entry $i$ by $\lambda_j$.  Assume the product of the units is
+one; the slightly weaker condition that its norm is identically
+one gives the same norm-path result.  Put
+\[
+ c_j=v(\lambda_j),\quad \sum_{j=1}^{\ell}c_j=0,\qquad
+ P=\sum_{j=1}^{\ell}p_{j-1,j,c_j},
+ \tag{SL1}
+\]
+where all primitives are the prescribed full SHT expressions.
+The final potential equals the initial potential.  Thus the
+endpoint telescoping required by MT is available.
+
+Let $\psi$ be the common norm potential of the unchanged
+$(r-1)$-tuple, with value $+\infty$ on its zero set.  Choose
+$\varepsilon>0$ and define
+\[
+ C_{\mathrm{wt}}=\sum_{j=1}^{\ell}|c_j|,\qquad
+ \Psi=\min(\psi,\Phi_0+C_{\mathrm{wt}}+\varepsilon),\qquad
+ R_*=R-D\Psi,\quad p_j=\Phi_j-\Psi .
+ \tag{SL2}
+\]
+The proof of actualness in CS24 applies verbatim: near an
+unchanged-block zero, the changed entry is nonzero on $W$, and
+the second term of the minimum is selected on an ordinary
+neighborhood.  Every scalar and every finite formula in (SL2)
+is actual on the entire original $W$.
+
+The two ordinary opens
+\[
+ W_{\mathrm{unch}}=\{\psi<\Phi_0+C_{\mathrm{wt}}+\varepsilon\},
+ \qquad
+ W_{\mathrm{one}}=\{\psi>\Phi_0+C_{\mathrm{wt}}\}
+ \tag{SL3}
+\]
+cover $W$.  On the first the unchanged block has normalized
+maximum norm one.  On the second all intermediate tuple norms
+are determined by the changed entry alone, since
+$|\Phi_j-\Phi_0|\le C_{\mathrm{wt}}$.
+
+\begin{lemma}[The one-entry residual is zero]
+For every edge of the loop, compute $S_{e,k}$ by CS7 with the
+normalized potentials and curvature of (SL2).  Then for every
+$k\ge1$,
+\[
+                         S_{e,k}=0
+                               \quad\hbox{on all of }W.
+ \tag{SL4}
+\]
+\end{lemma}
+
+\begin{proof}
+On $W_{\mathrm{unch}}$, consider first $c\ge0$.  After removing
+the $C_p$-containing monomials by the full actual relation CS15,
+the residual becomes
+\[
+               \mathfrak a(p+c,q;h_{k-1}(R_*,C_q)).
+ \tag{SL5}
+\]
+There is now a pointwise first-form identity
+$\mathfrak a(p+c,q;1)=0$ on the entire normalized open.
+Where the changed entry attains the new minimum, $p+c=q$.
+Where an unchanged entry attains the minimum, $q=0$ with
+zero tangential first jet on each carrier of that locus.
+Equivalently, on a unit chart where the changed entry is nonzero,
+write
+\[
+                  p=\min(x,0),\qquad q=\min(x+c,0).
+ \tag{SL6}
+\]
+For $c\ge0$ the elementary homogeneous relation
+$s(x+c,\min(x+c,0))=0$ proves the assertion; on the part
+where $x\ge0$ both minima are zero.  At a changed-entry zero
+the unchanged block remains active and both potentials are
+identically zero on an ordinary neighborhood.  All boundary
+first jets are the actual restricted ones.  Thus (SL5) is zero
+without assuming any nilpotence for $R_*$.
+The reverse-edge argument treats $c\le0$, and at $c=0$
+the same full carrier check as CS15 applies.
+
+On $W_{\mathrm{one}}$, all projective curvatures $C_p,C_q$
+are zero, because a single nonzero entry strictly determines
+each norm.  Also $q=p+c$.  In degree one, CS7 is
+\[
+ \begin{split}
+ S_{e,1}
+  &=\mathfrak a(p,p+c;1)
+       +\mathfrak a(c_+,p+c;1)
+       +\mathfrak a(c_-,p;1)\\
+  &=\mathfrak a(c_+,c;1)=0.
+ \end{split}
+ \tag{SL7}
+\]
+The last equality is the homogeneous first-form relation for
+$c_+=\max(c,0)$, including its wall.  Since $C_p=C_q=0$,
+CS7 in any degree is exactly $R_*^{k-1}S_{e,1}$, so it is
+zero as well.  Actual locality on (SL3) proves (SL4).
+\end{proof}
+
+For each edge use the scalar and tetrahedron triples of CS6--CS9
+with its normalized data and put
+\[
+ Q_{\mathrm{edges}}=
+ \sum_{e}\left\{(0,0,M_{e,s})
+       +\frac12(Q^{\mathrm{tet}}_{e,s}
+                         -R_*Q^{\mathrm{tet}}_{e,s-1})\right\}.
+ \tag{SL8}
+\]
+By CS10 and SL4 the normalized loop is exactly
+$\partial_2Q_{\mathrm{edges}}$.  Let $Q_{\mathrm{met}}$ be
+MT15 for the original loop and common scalar $-\Psi$.
+
+\begin{theorem}[Strict actual same-entry loop witness]
+The explicit actual triple
+\[
+                         q_{\mathrm{one}}
+                              =Q_{\mathrm{edges}}-Q_{\mathrm{met}}
+ \tag{SL9}
+\]
+on the original $W$ satisfies
+\[
+                                  P=\partial_2q_{\mathrm{one}}.
+ \tag{SL10}
+\]
+This holds for every $r\ge2$, for the full original metric and
+all actual walls and mixed derivatives.  No extending pair
+is required for this particular loop class.
+\end{theorem}
+
+\begin{proof}
+Metric transport gives $P^*-P=\partial_2Q_{\mathrm{met}}$.
+The normalized edge identity and SL4 give
+$P^*=\partial_2Q_{\mathrm{edges}}$.  Subtract the two identities.
+All displayed forms were constructed on all of $W$, so no
+gluing of triples over the opens (SL3) is involved.
+\end{proof}
+
+In particular the triangle comparing two successive factors
+$\lambda,\mu$ on the same entry with their product $\lambda\mu$
+has edge weights $a,b,-a-b$ and satisfies (SL10).  Reversing
+the triangle gives an explicit splitting witness.  This strict
+statement does not conflict with ASP, whose obstruction comes
+from distinct-entry squares.  Nor does it assert that each
+original one-edge primitive is a boundary: MT is applied to
+the complete zero-weight loop, not to a nonclosed one-edge
+expression.
+
+\subsection{A computable extending symbol for every diagonal path}
+
+A finite diagonal path $\mathcal P$ is a list
+$(i_1,\lambda_1),\ldots,(i_\ell,\lambda_\ell)$ of entry indices
+and analytic units on one whole $N$.  Let $c_u=v(\lambda_u)$,
+and let $p_{\mathcal P}$ be its literal sum of SHT primitives.
+Its endpoint is the original tuple multiplied by the diagonal
+matrix whose $i$th entry is
+\[
+                        \Lambda_i=\prod_{u:i_u=i}\lambda_u .
+ \tag{SL11}
+\]
+Let $\mathcal P_{\mathrm{can}}$ multiply entries in increasing
+index order once each, by $\Lambda_i$, omitting empty products.
+
+Normalize $\mathcal P$ by stable sorting its entries and then
+merging each consecutive same-entry group.  Stable sorting
+uses adjacent swaps only on distinct entries, while merging
+uses SL10.  At every step all data remain analytic units and
+actual intermediate tuples on the same whole $N$.  Accumulating
+the explicit CS and SL triples gives an actual
+$q_{\mathcal P}$ on $W$.  The extending pair can be written
+without recording the intermediate sorting sequence:
+\[
+ E_{\mathcal P}
+       =\sum_{\substack{u<v\\i_u>i_v}} e_{c_u,c_v},
+ \qquad e_{x,y}=(x\,d''y,\ y\,d'x).
+ \tag{SL12}
+\]
+The sum ranges over the finite inversion pairs of the original
+index word.
+
+\begin{theorem}[Full finite diagonal-factorization comparison]
+For the prescribed original SHT primitives,
+\[
+ p_{\mathcal P}-p_{\mathcal P_{\mathrm{can}}}
+        =\partial_2q_{\mathcal P}+R^{r-2}E_{\mathcal P}|_W.
+ \tag{SL13}
+\]
+Consequently, for any two finite diagonal paths with the same
+analytic diagonal endpoint matrix,
+\[
+ p_{\mathcal P_1}-p_{\mathcal P_0}
+    =\partial_2(q_{\mathcal P_1}-q_{\mathcal P_0})
+                  +R^{r-2}(E_{\mathcal P_1}-E_{\mathcal P_0})|_W .
+ \tag{SL14}
+\]
+The actual extending pair in these formulas is closed on all of $N$.
+\end{theorem}
+
+\begin{proof}
+Choose ordinary stable bubble sorting, so each original inversion
+pair crosses once and no other pair crosses.  At an adjacent
+inversion $(i,\lambda),(j,\mu)$ with $i>j$, the old path is
+first $\lambda$ then $\mu$, and the new path is the reverse.
+CS3 gives old minus new as its explicit triple boundary plus
+$e_{v(\lambda),v(\mu)}R^{r-2}$.  Relabeling the two changed
+entries changes no sign: the orientation is the path order.
+All factors commute as diagonal matrices, so every common
+prefix and suffix has exactly the same intermediate tuples
+on both sides.  Their primitive terms cancel literally.
+
+Merging a same-entry group contributes only the strict boundary
+SL10.  Therefore the accumulated extending pair is exactly
+(SL12), while the finite sum of the triple witnesses gives
+$q_{\mathcal P}$.  This proves (SL13).  Two paths with the same
+analytic endpoint have identical units $\Lambda_i$, not merely
+equal determinant norms.  Their canonical primitive expressions
+are consequently literally the same.  Subtract (SL13) to obtain
+(SL14).  Each summand $e_{x,y}$ is closed and actual on $N$
+because $Dx=Dy=0$, so the stated extension and closedness follow.
+\end{proof}
+
+The symbol (SL12) is independent of the initial section tuple.
+The triple $q_{\mathcal P}$ is an actual finite construction;
+no canonical continuous linear choice on the entire form space
+is asserted.  Different permitted sorting algorithms need not
+produce the same triple.  A strict comparison with the canonical
+primitive is obtained after subtracting the displayed extending
+pair, but that observation does not remove the ASP obstruction
+for the uncorrected chosen primitives.
+
+\subsection{Original-support use and limits}
+
+For original CI data satisfying the local frame-path hypotheses
+of CS38--CS39, suppose two path expressions on the entire
+unpunctured overlap are finite diagonal paths with the same
+analytic diagonal endpoint, possibly after common identical
+prefixes and suffixes have been cancelled.  Equation (SL14)
+supplies the actual whole-overlap triple and extending pair
+required by RAG.  Insert those exact witnesses into CS40,
+then use the $U$-only cutoff and actual form CS41.  The full
+support/Stokes argument CS42 proves the Green identity for
+every original actual compact test.  The original $K$, cycle,
+metric and exact support complement remain unchanged.
+
+This replaces a supplied finite swap sequence by the directly
+checkable condition of equality of the analytic diagonal
+endpoint entries.  It still does not identify arbitrary
+analytic pivot paths with diagonal ones or supply sequential
+higher-overlap witnesses after a partition gluing.  A globally
+defined diagonal comparison already had a single-path actual
+repair in R9, so SL14 is a new exact relation theorem, not an
+independent new cycle-existence class.
+
+The construction uses complete finite norm presentations,
+ordinary analytic opens and full derivatives.  The cap remains
+actual at unchanged-block zeros; nonproduct units and moving
+punctures with arbitrary passive base directions cause no
+change to the proof.  Only the usual fixed-whole-presentation
+mixed seminorm control is asserted.  No full relation
+classification, inherited kernel topology theorem, arbitrary
+higher actual descent, or complete BB-height theory follows.
+
+\paragraph{Provenance.}
+The same-entry extension and the inversion-symbol formula are
+R10 constructions by the diagonal constructor.  The full edge
+identity, MT and CS are separately frozen dependencies once
+their independent reviews have passed.  No numerical
+calibration substitutes for the all-rank proof above.
+

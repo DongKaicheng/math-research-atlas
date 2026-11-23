@@ -1,0 +1,384 @@
+\section{Numerical certificates under Chow correspondences}
+\label{sec:correspondences}
+
+This section uses ordinary rational intersection theory on regular
+projective models.  The only analytic input is the finite numerical
+descent theorem already proved in \Cref{thm:finite-numerical}.
+
+\subsection{A supported numerical projection formula}
+
+Let $\mathcal V/R$ be a regular, integral, projective and flat model,
+and let $\Theta\in\CH^p(\mathcal V)_{\mathbf Q}$ be homogeneous.
+By the rational Chern-character isomorphism for regular schemes
+\cite[Tag~0FEY]{StacksFEY}, there is a unique
+$\xi_\Theta\in K_0(\mathcal V)_{\mathbf Q}$ such that
+\begin{equation}\label{eq:op-pure-character}
+       \operatorname{ch}(\xi_\Theta)\cap[\mathcal V]=\Theta.
+\end{equation}
+The Adams identity, applied to \eqref{eq:op-pure-character}, gives
+$\psi^2\xi_\Theta=2^p\xi_\Theta$ and hence
+$\operatorname{ch}_j(\xi_\Theta)=0$ as an operational class
+for $j\ne p$.  We write
+$c_\Theta=\operatorname{ch}_p(\xi_\Theta)$.  It is an
+operational class on every closed support and satisfies
+$c_\Theta\cap[\mathcal V]=\Theta$.
+
+We call $\Theta$ \emph{vertically $p$-numerically trivial} if
+\begin{equation}\label{eq:vertical-numerical-def}
+ \deg_k(c_\Theta\cap[T])=0
+ \quad\text{for every integral vertical $p$-cycle}
+ \quad T\subset\mathcal V_s.
+\end{equation}
+Equivalently, $\xi_\Theta$ is a $p$-numerical certificate for
+$\Theta$ on the generic fiber.
+
+\begin{lemma}[Numerical pullback]\label{lem:operational-pullback}
+Let $f:\mathcal W\to\mathcal V$ be a projective morphism between
+regular integral projective flat $R$-models.  If $\Theta$ is
+vertically $p$-numerically trivial, then its refined pullback
+$f^!\Theta=(f^*c_\Theta)\cap[\mathcal W]$ is vertically
+$p$-numerically trivial.
+\end{lemma}
+
+\begin{proof}
+The schemes are regular, so $f$ is a local complete intersection
+morphism, and the projective factorization supplies its refined
+Gysin operation.  For any integral vertical $p$-cycle
+$T\subset\mathcal W_s$, the proper projection formula gives
+\[
+ \deg_k((f^*c_\Theta)\cap[T])
+       =\deg_k(c_\Theta\cap f_*[T])=0.
+\]
+Indeed $f_*[T]$ is a rational linear combination of vertical
+$p$-cycles, or zero.  The displayed refined pullback has pure
+operational representative $f^*c_\Theta$ by
+\eqref{eq:op-pure-character} and Gysin compatibility.
+\end{proof}
+
+\begin{lemma}[Supported numerical projection]
+\label{lem:supported-numerical-projection}
+Let $f:\mathcal W\to\mathcal V$ be a projective morphism between
+regular integral projective flat $R$-models of total dimensions
+$M$ and $N$.  Let $\Theta\in\CH^p(\mathcal W)_{\mathbf Q}$ be
+vertically $p$-numerically trivial.  Put
+$\delta=M-N$, $q=p-\delta$, and assume $0\le q\le N-1$.
+Then $f_*\Theta\in\CH^q(\mathcal V)_{\mathbf Q}$ is vertically
+$q$-numerically trivial.
+More precisely, for every integral vertical $q$-cycle
+$T\subset\mathcal V_s$ one has the supported projection identity
+\begin{equation}\label{eq:supported-identity}
+ (f_*\Theta)\cdot[T]
+   = f_*\bigl(\Theta\cdot f^![T]\bigr)
+                      \qquad\text{in }\CH_0(\mathcal V)_{\mathbf Q}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $\mathcal V$ and $\mathcal W$ are regular, the projective
+morphism $f$ is a local complete intersection morphism: factor it
+through a projective bundle over $\mathcal V$, then use the
+regular embedding of the regular source into that regular bundle.
+The fundamental class $[T]$ has codimension $N-q$ in the regular
+scheme $\mathcal V$.  Its refined pullback
+\[
+       f^![T]\in\CH_{M-(N-q)}(\mathcal W)_{\mathbf Q}
+                   =\CH_p(\mathcal W)_{\mathbf Q}
+\]
+is supported on $f^{-1}(T)$, hence is a rational combination of
+vertical $p$-cycles.  The bivariant projection formula for the
+lci pullback on regular schemes
+\cite[Chapter~17]{Fulton} and \cite[Tags~0FF6 and 0FFA]{StacksGysin}
+gives \eqref{eq:supported-identity}.
+The degree of $\Theta\cdot f^![T]$ is zero by the numerical
+hypothesis on $\Theta$.  Since $c_{f_*\Theta}\cap[T]$ is the
+intersection product $(f_*\Theta)\cdot[T]$, the degree required
+for vertical numerical triviality vanishes.
+\end{proof}
+
+\begin{lemma}[Products of numerical and operational classes]
+\label{lem:numerical-times-class}
+Let $\mathcal W$ be a regular projective flat model.  Suppose
+$\alpha\in\CH^p(\mathcal W)_{\mathbf Q}$ is vertically
+$p$-numerically trivial and
+$\beta\in\CH^t(\mathcal W)_{\mathbf Q}$.
+If $p+t$ lies between zero and the relative dimension of
+$\mathcal W$, then $\alpha\cdot\beta$ is vertically
+$(p+t)$-numerically trivial.
+\end{lemma}
+
+\begin{proof}
+For an integral vertical $(p+t)$-cycle $T$, the operational
+intersection $c_\beta\cap[T]$ is a rational combination of
+vertical $p$-cycles.  The degrees of
+$c_\alpha\cap(c_\beta\cap[T])$ vanish termwise.  Purity of
+the rational operational representatives identifies
+$c_{\alpha\beta}=c_\alpha c_\beta$.
+\end{proof}
+
+\subsection{Transfer along algebraic correspondences}
+
+Let $V$ and $X$ be smooth projective geometrically integral
+$F$-varieties of dimensions $m$ and $n$.  A correspondence
+$\Gamma\in\CH^{m+a}(V\times_F X)_{\mathbf Q}$ acts by
+\[
+ \Gamma_*b=(\operatorname{pr}_X)_*
+             (\operatorname{pr}_V^*b\cdot\Gamma)
+       \in\CH^{r+a}(X)_{\mathbf Q},
+       \qquad b\in\CH^r(V)_{\mathbf Q}.
+\]
+
+\begin{proposition}[Algebraic correspondence transfer]
+\label{prop:correspondence-transfer}
+Assume that $V$ and $X$ have regular integral projective flat
+$R_F$-models $\mathcal V$ and $\mathcal X$.  Suppose that
+$b\in\CH^r(V)_{\mathbf Q}$ has an $r$-numerical certificate
+on $\mathcal V$.  For every correspondence
+$\Gamma\in\CH^{m+a}(V\times X)_{\mathbf Q}$ with
+$1\le r+a\le n$, its image $\Gamma_*b$ has an
+$(r+a)$-numerical certificate on $\mathcal X$.
+\end{proposition}
+
+\begin{proof}
+Write $R'=R_F$.  The projective flat product
+$\mathcal V\times_{R'}\mathcal X$ is integral: its generic
+fiber $V\times_F X$ is geometrically integral, and flatness
+excludes any additional irreducible component supported on the
+special fiber.  By the projective semistable alteration theorem
+of de Jong \cite[Theorem~6.5]{deJong}, there is a projective
+generically finite morphism
+\[
+ g:\mathcal W\longrightarrow
+                  \mathcal V\times_{R'}\mathcal X
+\]
+from a regular integral projective flat model (possibly over a
+finite extension of $R'$).  The native degree of its generic
+map $g_F:W\to V\times_F X$ is a positive integer $d$.
+Indeed, de Jong first constructs a semistable open source inside
+a projective compactification.  Since the target here is proper,
+the alteration source is proper over the base, so this open
+immersion is closed as well.  The integral compactification
+therefore equals the source.
+Let $f_V$ and $f_X$ be the composite model morphisms to the
+respective factors.
+
+Choose a pure vertically numerical class
+$\Theta\in\CH^r(\mathcal V)_{\mathbf Q}$ with
+$\Theta|_V=b$.  The generic class $g_F^*\Gamma$ has a Chow
+extension $\widetilde\Gamma\in\CH^{m+a}(\mathcal W)_{\mathbf Q}$;
+the closure of cycle representatives gives such an extension.
+Set
+\[
+ \Xi=(f_V^!\Theta)\cdot\widetilde\Gamma
+      \in\CH^{r+m+a}(\mathcal W)_{\mathbf Q}.
+\]
+By Lemmas~\ref{lem:operational-pullback}
+and~\ref{lem:numerical-times-class},
+$\Xi$ is vertically $(r+m+a)$-numerically trivial.  Since
+$\dim\mathcal W-\dim\mathcal X=m$, the supported numerical
+projection lemma applies to $f_X$, and gives the vertically
+$(r+a)$-numerically trivial class
+\[
+          \Lambda=\frac1d(f_X)_*\Xi
+                     \in\CH^{r+a}(\mathcal X)_{\mathbf Q}.
+\]
+
+On smooth generic fibers, pullback is an ordinary lci Chow
+pullback, and the projection formula for the generically finite
+$g_F$ gives
+\[
+ \begin{aligned}
+ \Lambda|_X
+  &=\frac1d(\operatorname{pr}_X)_*
+       (g_F)_*g_F^*(\operatorname{pr}_V^*b\cdot\Gamma)\\
+  &=(\operatorname{pr}_X)_*
+                      (\operatorname{pr}_V^*b\cdot\Gamma)
+   =\Gamma_*b.
+ \end{aligned}
+\]
+The pure virtual model bundle $\xi_\Lambda$ defined by
+\eqref{eq:op-pure-character} is the required numerical
+certificate.
+\end{proof}
+
+\begin{theorem}[A Chow-correspondence criterion for actual Green forms]
+\label{thm:chow-abelian-criterion}
+Let $X/K$ be smooth projective geometrically integral.  Suppose
+there exists a finite extension $F/K$ for which the following
+properties hold:
+\begin{enumerate}
+\item $X_F$ has a regular integral projective flat $R_F$-model;
+\item there is an abelian variety $B/F$ with a regular projective
+  semistable model satisfying \Cref{thm:kunnemann-local};
+\item there are finitely many correspondences
+  $u_j:X_F\rightsquigarrow B$ and
+  $v_j:B\rightsquigarrow X_F$ of opposite degree shifts
+  with
+  \begin{equation}\label{eq:abelian-diagonal}
+                \sum_jv_j\circ u_j=\Delta_{X_F}
+       \qquad\text{in }\CH^{\dim X}(X_F\times X_F)_{\mathbf Q}.
+  \end{equation}
+\end{enumerate}
+Then every prescribed rational cycle $Z$ on $X$ with
+geometrically homologically trivial class admits an actual
+zero-curvature Green form on the exact complement
+$X^{\an}\setminus |Z|^{\an}$ satisfying
+\eqref{eq:main-green} against every compact actual test over $K$.
+\end{theorem}
+
+\begin{proof}
+Write $z=[Z]$ and $z_F=[Z_F]$.  Equation
+\eqref{eq:abelian-diagonal} gives
+\[
+             z_F=\sum_j(v_j)_*(u_j)_*z_F.
+\]
+Each $(u_j)_*z_F$ is geometrically homologically trivial, by
+compatibility of algebraic correspondences with geometric
+$\ell$-adic cycle classes.  Terms of codimension outside
+$1,\ldots,\dim B$ vanish (in codimension zero this follows
+from homological triviality); for the remaining terms
+Lemma~\ref{lem:abelian-lift} supplies a numerical certificate on
+the regular semistable model of $B$.
+
+Apply Proposition~\ref{prop:correspondence-transfer} to $v_j$, taking the
+given regular model of $X_F$ as the target.  Its resulting
+numerical certificates add to a certificate for $z_F$.
+Finally, $X_F\to X$ is finite flat of native degree $[F:K]$.
+The finite numerical descent theorem \Cref{thm:finite-numerical}
+produces the asserted actual Green form on the original $X$.
+\end{proof}
+
+\subsection{Products of curves and abelian varieties}
+
+\begin{lemma}[Chow diagonal of a product of curves]
+\label{lem:curve-product-diagonal}
+Let $F$ have characteristic zero, let $A/F$ be an abelian variety,
+and let $C_1,\ldots,C_s/F$ be smooth projective geometrically
+integral curves with $F$-rational points.  Put
+$X=A\times_F C_1\times_F\cdots\times_F C_s$.
+Then the diagonal of $X$ admits a finite decomposition
+\eqref{eq:abelian-diagonal}, where every intermediate variety
+is the single abelian variety
+$B=A\times_F\prod_i\operatorname{Jac}(C_i)$,
+and all correspondences are defined over $F$.
+\end{lemma}
+
+\begin{proof}
+Choose points $P_i\in C_i(F)$.  The three mutually orthogonal
+Chow projectors
+\[
+ \pi_{0,i}=[P_i\times C_i],\qquad
+ \pi_{2,i}=[C_i\times P_i],\qquad
+ \pi_{1,i}=\Delta_{C_i}-\pi_{0,i}-\pi_{2,i}
+\]
+split the motive of each curve into $\mathbf 1$, its
+degree-one motive, and the Lefschetz motive $\mathbb L$.
+Idempotence follows from $\deg(P_i)=1$ and the mixed
+compositions vanish because $[P_i]^2=0$ on the curve.
+The Abel--Jacobi map and the Poincar\'e correspondence identify
+the degree-one motive with the degree-one direct summand of
+the Chow motive of $J_i=\operatorname{Jac}(C_i)$.  The latter
+is split by the rational Chow--K\"unneth projector of the
+abelian variety, so the inverse correspondences exist in the
+category of rational Chow motives.  These standard identities
+are established in \cite[Sections~3 and~5]{Scholl}.
+
+Take the tensor product of the finitely many splittings, including
+the identity motive of $A$.  Every resulting summand factors
+through the motive of $A$ times a product of some $J_i$, with
+an integral Tate twist recording the number of Lefschetz factors.
+The projection $\pi$ from $B=A\times\prod_i J_i$ onto any such
+subproduct admits a zero-section $i$.  The identity
+$i^*\pi^*=\operatorname{id}$, implemented by transpose-graph
+correspondences, splits the motive of the subproduct from
+the motive of $B$.  Thus every summand can be
+factored through this one abelian variety, with the same Tate
+shift.
+Express the inclusion and retraction morphisms as algebraic
+correspondences $u_j$ and $v_j$; their composition is the tensor
+product of the chosen projectors.  Summing over all choices of
+the three projectors on each curve gives
+$\sum_jv_j\circ u_j=\Delta_X$ in rational Chow groups.
+\end{proof}
+
+\begin{lemma}[Regular models for products]
+\label{lem:product-model}
+Let $A/K$ be an abelian variety and let $C_1,\ldots,C_s/K$
+be smooth projective geometrically integral curves.  After
+one finite extension $F/K$ there are simultaneously:
+\begin{enumerate}
+\item rational points on all the $C_{i,F}$;
+\item regular projective strictly semistable models of the
+  $C_{i,F}$, and a regular projective strictly semistable
+  model of $A_F\times\prod_i C_{i,F}$;
+\item a regular projective semistable model of the abelian
+  variety $B=A_F\times\prod_i\operatorname{Jac}(C_{i,F})$
+  satisfying \Cref{thm:kunnemann-local}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Each curve acquires a rational point and a projective regular
+strictly semistable model after finite extension, by the
+semistable reduction theorem for curves.  Enlarge this initial
+field so that $A$ has a regular projective strictly semistable
+model by \Cref{thm:kunnemann-local}.  Now apply that theorem to
+the single abelian variety
+$B=A\times\prod_i\operatorname{Jac}(C_i)$, obtaining a
+possibly larger field on which $B$ has the required model.
+The earlier models of $A$ and the curves are carried to this
+final field by the ramified base-change regularization below.
+Semistable
+curve and abelian models remain regular and strictly semistable
+after an unramified extension.  After ramified extension,
+Hartl's explicit sequence of blowups recovers such a model
+without changing the generic fiber
+\cite[Proposition~2.2]{Hartl}.  Finally, his regularization of
+the product of two strict semistable models
+\cite[Proposition~2.1]{Hartl} can be iterated over the finite
+family.  All operations are projective blowups of projective
+schemes; thus the resulting model is projective, regular and
+flat, with the prescribed smooth generic fiber.
+\end{proof}
+
+\begin{theorem}[Products of curves and abelian varieties]
+\label{thm:curve-products-G}
+Let $A/K$ be an abelian variety and let $C_1,\ldots,C_s/K$
+be smooth projective geometrically integral curves, with
+$K/\mathbf Q_p$ finite.  On
+\[
+                       X=A\times_K C_1\times_K\cdots\times_K C_s,
+\]
+every prescribed rational cycle of codimension
+$1\le r\le\dim X$ whose class is geometrically homologically
+trivial has an actual zero-curvature Green form satisfying
+\eqref{eq:main-green} on its exact support complement over the
+original field, against all compact actual tests.
+\end{theorem}
+
+\begin{proof}
+Choose $F/K$ and the regular semistable models of
+Lemma~\ref{lem:product-model}.  The Chow-diagonal identity of
+Lemma~\ref{lem:curve-product-diagonal} meets every hypothesis of
+\Cref{thm:chow-abelian-criterion}.  Apply that theorem.
+\end{proof}
+
+\begin{corollary}[Finite domination by products]
+\label{cor:finite-curve-product}
+Let $Y/K$ be smooth projective geometrically integral, and
+suppose that there is a finite surjective morphism
+$A\times\prod_i C_i\to Y$ from a product as in
+\Cref{thm:curve-products-G}.  Then the conclusion of that
+theorem holds for every geometrically homologically trivial
+rational cycle on $Y$.
+\end{corollary}
+
+\begin{proof}
+Pull a cycle back through the finite map and choose the common
+extension and models of Lemma~\ref{lem:product-model}.  The proof
+of \Cref{thm:chow-abelian-criterion} constructs an actual
+numerical certificate for the pullback on a regular model of
+the product after that extension.  The composite map from
+the base-changed product to $Y$ is finite flat and has degree
+$[F:K]$ times the degree of the original finite map.  Apply
+\Cref{thm:finite-numerical} directly to this composite.
+\end{proof}

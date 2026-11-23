@@ -64,7 +64,12 @@ test('The map is usable static HTML and does not extend or restyle the frozen ed
   assert.ok(html.includes(`href="${prefix}/assets/research-map.css?v=`));
   assert.ok(html.includes(`src="${prefix}/assets/research-map.js?v=`));
   await assert.rejects(read(`projects/strong-green/editions/${revision}/research-map/index.html`), { code: 'ENOENT' });
-  const frozen = await read(`projects/strong-green/editions/${revision}/index.html`);
-  assert.doesNotMatch(frozen, /research-map/);
-  assert.equal(frozen, await readFile(path.join(root, 'public/projects/strong-green/editions', revision, 'index.html'), 'utf8'));
+  for (const edition of new Set(['v0.5.1', revision])) {
+    const frozen = await read(`projects/strong-green/editions/${edition}/index.html`);
+    const resources = [...frozen.matchAll(/<(?:link|script)\b[^>]*\b(?:href|src)=["']([^"']+)["']/gi)].map(match => match[1]);
+    assert.deepEqual(resources.filter(url => /\/(?:research-map|logic-tree|progress-proofs)\.(?:css|js)(?:[?#]|$)/.test(url)), [], edition + ': frozen pages do not load current map assets');
+    assert.deepEqual([...frozen.matchAll(/\bdata-(?:research-map|logic-forest|logic-tree|logic-panel|complete-logical-diagram|diagram-scroll|diagram-zoom-controls)\b/g)].map(match => match[0]), [], edition + ': no current map or logic canvas is embedded');
+    if (edition === 'v0.5.1') assert.doesNotMatch(frozen, /research-map|logic-tree/, 'The historical homepage remains unchanged');
+    assert.equal(frozen, await readFile(path.join(root, 'public/projects/strong-green/editions', edition, 'index.html'), 'utf8'));
+  }
 });

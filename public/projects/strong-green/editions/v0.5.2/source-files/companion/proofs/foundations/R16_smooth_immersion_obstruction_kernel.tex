@@ -1,0 +1,216 @@
+% Round 16. Deformation proof of covariance of the obstruction kernel.
+% ACTIVATED after independent root and model-obstruction reviews.
+\section{A deformation argument for the obstruction kernel under a smooth closed immersion}
+\label{r16gi:section}
+
+This argument uses the new Bott--Chern projective-bundle formula and
+smooth-center blowup injectivity, but does not require a form-valued
+pushforward for a closed immersion.  It also does not use the unproved
+reverse implication from a strong Green solution to obstruction
+vanishing.  Every occurrence of a proper cycle push below is an
+algebraic Chow operation used to specify a cycle before its obstruction
+class is taken.
+The independent mathematical review passed the source at SHA256
+\texttt{8c08b161337500a9113b72ce19c4d71523ecb1d71a5fbb19e55fdef5ec0b2972},
+including the explicit choice of a $K$-rational nonzero parameter.
+Only this status notice differs from that version.
+
+\begin{lemma}[Two components of the deformation fiber detect its general-fiber class]
+\label{r16gi:detection}
+Let $X/K$ be smooth integral projective and
+$i:C\hookrightarrow X$ a smooth integral closed immersion of
+codimension $c\geq1$.  Set
+\[
+ q:\mathcal W=\operatorname{Bl}_{C\times\{0\}}
+                    (X\times\mathbf P^1)\longrightarrow X\times\mathbf P^1.
+\]
+Its exceptional divisor is
+$E=\mathbf P_C(N_{C/X}\oplus\mathcal O_C)$, and the strict transform
+of $X\times\{0\}$ is $F=\operatorname{Bl}_C X$.  Choose
+$t\in\mathbf P^1(K)\setminus\{0\}$, for example $t=1$, and
+identify the fiber $X_t$ of $\mathcal W\to\mathbf P^1$ with $X$.
+If an actual Bott--Chern class $\alpha$ on $\mathcal W$ restricts
+to zero on both $E$ and $F$, then its restriction to $X_t$ is zero.
+All bidegrees are permitted.
+\end{lemma}
+
+\begin{proof}
+Choose a separately closed actual representative $A$ of $\alpha$.
+The zero restriction class on $E$ means $i_E^*A=D\sigma$ for an
+actual form $\sigma$ on $E$.  Extend $\sigma$ degreewise to an
+actual form $\widetilde\sigma$ on $\mathcal W$, using the frozen
+ordinary closed-immersion extension theorem, and replace $A$ by
+$A-D\widetilde\sigma$.  Its restriction to $E$ is now literally
+zero.  If either primitive degree is negative, the boundary space is
+zero and this step simply uses $\sigma=0$.
+
+The frozen relative double-complex isomorphism for this blowup is
+\[
+ q^*:\ker\bigl(B(X\times\mathbf P^1)\to B(C\times\{0\})\bigr)
+       \xrightarrow{\ \sim\ }
+       \ker\bigl(B(\mathcal W)\to B(E)\bigr).
+ \tag{GI16.1}\label{r16gi:relative}
+\]
+Its inverse commutes with $d',d''$.  Hence the modified $A$ is
+$q^*B$ for a global separately closed ordinary actual form $B$ on
+$X\times\mathbf P^1$.  This is an actual descent, not a descent
+of a current followed by a representability assertion.
+
+The new full Bott--Chern formula for a projective line gives uniquely
+\[
+ [B]=\operatorname{pr}_X^*a+
+       h_t\wedge\operatorname{pr}_X^*b,
+ \tag{GI16.2}\label{r16gi:product-class}
+\]
+where $h_t$ is the first Chern class of
+$\operatorname{pr}_{\mathbf P^1}^*\mathcal O(1)$ and the negative
+coefficient degrees mean zero.  Its pullback to any point fiber
+is zero.  Restricting \eqref{r16gi:product-class} to $F$ therefore
+gives $q_F^*a$, where $q_F:F\to X$ is the blowup along $C$.
+The assumed zero restriction to $F$ gives $q_F^*a=0$.
+Theorem~\ref{r16pb:blowup} makes this pullback injective, so $a=0$.
+When $c=1$, $q_F$ is an isomorphism and the same conclusion holds.
+Restriction to $X_t$ of the modified representative has class $a$,
+and the earlier modification was a global $D$-boundary.  Thus the
+original $\alpha|_{X_t}$ is zero as asserted.
+\end{proof}
+
+\begin{lemma}[The lifted center and its two special restrictions]
+\label{r16gi:geometry}
+With the preceding notation, the strict transform of
+$C\times\mathbf P^1$ is a closed immersion
+\[
+ k:C\times\mathbf P^1\hookrightarrow\mathcal W.
+\]
+It is disjoint from $F$.  Its intersection with $E$ is the section
+$s:C\to\mathbf P_C(N_{C/X}\oplus\mathcal O_C)$ corresponding
+to the trivial line summand, with intersection multiplicity one.
+For any rational Chow class $z\in\operatorname{CH}^u(C)_{\mathbf Q}$,
+put $\widetilde z=k_*\operatorname{pr}_C^*z$.  Then
+\[
+ i_F^*\widetilde z=0,\qquad
+ i_E^*\widetilde z=s_*z,
+ \qquad i_t^*\widetilde z=i_*z\quad(t\ne0).
+ \tag{GI16.3}\label{r16gi:restrictions}
+\]
+For the convention that projectivization parametrizes lines, if
+$\xi=c_1(\mathcal O_E(1))$ and $\pi:E\to C$, then
+\[
+ s_*z=
+   \left(\sum_{j=0}^{c}\xi^j\pi^*c_{c-j}(N_{C/X})\right)
+                                 \wedge\pi^*z.
+ \tag{GI16.4}\label{r16gi:section-class}
+\]
+These are algebraic Chow identities.
+\end{lemma}
+
+\begin{proof}
+The pullback of the blowup ideal to $C\times\mathbf P^1$ is the
+invertible ideal of $C\times\{0\}$.  The universal property gives
+the indicated lift.  Locally choose regular normal coordinates
+$x_1,\ldots,x_c$ for $C$ and a parameter $t$ at zero.  In the
+$t$-leading blowup chart, write $x_j=t u_j$.  The lifted center is
+defined by $u_1=\cdots=u_c=0$; thus it remains isomorphic to
+$C\times\mathbf P^1$, and meets the exceptional divisor $t=0$
+transversely with multiplicity one.  Its central line is the
+$t$-direction, which is exactly the trivial summand of
+$N_{C/X}\oplus\mathcal O_C$.
+
+The strict transform $F$ meets the exceptional divisor along
+$\mathbf P_C(N_{C/X})$, so it misses this section.  Outside the
+central fiber it is already disjoint from the lifted center.
+These facts give \eqref{r16gi:restrictions}, by ordinary refined
+intersection and the projection formula, also for rational cycle
+coefficients and arbitrary representatives of $z$.
+
+On $E$ the map from the tautological line to $\pi^*N_{C/X}$ is a
+section of the rank-$c$ bundle
+$\mathcal O_E(1)\otimes\pi^*N_{C/X}$.  Its regular zero scheme
+is precisely $s(C)$.  Its top Chern class is
+$\sum_{j=0}^c\xi^j\pi^*c_{c-j}(N_{C/X})$.
+Multiplication by $\pi^*z$ and the algebraic projection formula
+give \eqref{r16gi:section-class}.  In particular no analytic
+Gysin covariance has entered this calculation.
+\end{proof}
+
+\begin{theorem}[The obstruction kernel is stable under smooth closed push]
+\label{r16gi:kernel}
+Let $i:C\hookrightarrow X$ be a smooth integral closed immersion
+of codimension $c\geq1$ between smooth integral projective
+$K$-varieties.  For every rational Chow class
+$z\in\operatorname{CH}^u(C)_{\mathbf Q}$ one has
+\[
+ \mathfrak o_{C,K}^u(z)=0
+ \quad\Longrightarrow\quad
+ \mathfrak o_{X,K}^{u+c}(i_*z)=0.
+ \tag{GI16.5}\label{r16gi:kernel-stability}
+\]
+The assertion is entirely in the original-field actual theory,
+with no degree or dimension restriction.  It holds componentwise
+for disconnected smooth centers.
+\end{theorem}
+
+\begin{proof}
+Apply the frozen Chow-to-actual Bott--Chern map to the single
+algebraic cycle class $\widetilde z$ of
+Lemma~\ref{r16gi:geometry}, and put
+\[
+ \alpha=\mathfrak o_{\mathcal W,K}^{u+c}(\widetilde z).
+\]
+Only the contravariant functoriality and graded-ring property of
+that map are now used.  Its restriction to $F$ is zero by the
+first identity of \eqref{r16gi:restrictions}.  Its restriction
+to $E$ is, by \eqref{r16gi:section-class},
+\[
+ \alpha|_E=
+   \sum_{j=0}^{c}[\xi]^j\wedge
+      \pi^*\bigl(\mathfrak o_{C,K}^{c-j}(c_{c-j}(N_{C/X}))
+                       \wedge\mathfrak o_{C,K}^{u}(z)\bigr)=0.
+ \tag{GI16.6}\label{r16gi:exceptional-zero}
+\]
+Lemma~\ref{r16gi:detection} therefore gives $\alpha|_{X_t}=0$.
+The last identity of \eqref{r16gi:restrictions} and pullback
+compatibility identify this restriction with
+$\mathfrak o_{X,K}^{u+c}(i_*z)$.  This is
+\eqref{r16gi:kernel-stability}.
+
+The proof never compares two arbitrary Green curvatures via their
+current equations.  It proves a zero class in actual Bott--Chern
+cohomology directly, using a deformation whose special restrictions
+are computed in the Chow ring.  Native constant-field conventions
+are unchanged in the blowups, products, restrictions, and
+cohomology decompositions.
+\end{proof}
+
+\begin{corollary}[Exact-support Green forms for the pushed obstruction-zero sector]
+\label{r16gi:strong-G}
+Under Theorem~\ref{r16gi:kernel}, let $Z$ be any specified rational
+cycle on $C$ with $\mathfrak o_{C,K}([Z])=0$.  Then its specified
+push $i_*Z$ has a strong Green form in
+$B^{u+c-1,u+c-1}(X^{\mathrm{an}}\setminus|i_*Z|^{\mathrm{an}})$,
+with zero curvature against every compact complementary actual
+test over $K$.
+\end{corollary}
+
+\begin{proof}
+Apply the frozen sufficient direction from obstruction zero to
+the exact-support all-actual strong Green identity to the class
+vanishing just proved.  No converse from strong G to obstruction
+zero is asserted or needed.
+\end{proof}
+
+\paragraph{Dependencies and scope.}
+The frozen relative double-complex isomorphism and degreewise
+extension come from Round 13
+\texttt{analytic\_descent/retracted\_modification\_descent.tex}.
+The obstruction's pullback and ring properties are the final
+Round 11 construction and Round 12
+\texttt{foundations\_audit/compact\_parameter\_algebraic\_triviality.tex},
+Proposition \texttt{r12p:ring}.  The new inputs are precisely
+Theorem~\ref{r16pb:formula} for a projective line and
+Theorem~\ref{r16pb:blowup}; their proofs use the independently
+reviewed finite and projective-bundle actual outputs.
+The argument proves covariance of the kernel for this algebraic
+proper push.  It does not define a pushforward of arbitrary actual
+forms along the immersion, and its result alone is not an
+unrestricted rational-dominance statement.

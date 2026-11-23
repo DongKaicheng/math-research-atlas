@@ -1,0 +1,518 @@
+% Round 17. Foundation branch; candidate pending independent root review.
+% Historical R7 provenance is explicit. No frozen source is modified.
+\section{Vertical tests, adjoint representatives, and necessity of obstruction zero}
+\label{r17vt:section}
+
+\paragraph{Status and provenance.}
+\textbf{Internally reviewed.} The final claims register identifies the independent audits and frozen dependencies.
+The construction of vertical radical tests and the supplied-model
+necessity argument already occur in the historical Round 7 source
+\path{proofs/descent_vertical_tests_BC_detection.tex}, with the
+independent audit
+\path{audits/threefold_vertical_test_equivalence_audit.md}.
+Those files retained unresolved analytic interfaces and are not
+silently reclassified here. We reactivate their precise argument
+using the frozen R10--R12 constructions and the reconstructed
+R16 framed comparison. The additional graph-adjoint lemma below
+removes the requirement that the original variety have a supplied
+regular model. It does not push an arbitrary actual form through
+an arbitrary proper map.
+
+Throughout, $K/\mathbf Q_p$ and its absolute value are fixed,
+$R=K^\circ$, $k$ is the residue field, and
+$c_R=-\log|\varpi|>0$. All actual forms and all tests are in
+the native $K$-analytic theory. Put $D=d'd''$.
+All Chow and numerical groups have rational coefficients.
+
+\subsection{A global closed actual adjoint test for a projective morphism}
+
+\begin{lemma}[An actual adjoint representative for a closed test]
+\label{r17vt:adjoint}
+Let $f:Y\to X$ be a morphism of smooth integral projective
+$K$-varieties, of dimensions $m$ and $n$. Let
+$0\le r\le\min(m,n)$ and let
+\[
+       \beta\in B^{m-r,m-r}(Y^{\mathrm{an}}),\qquad D\beta=0.
+\]
+There exists a global ordinary actual form
+\[
+       B_f(\beta)\in B^{n-r,n-r}(X^{\mathrm{an}}),
+       \qquad D B_f(\beta)=0,
+       \tag{AD17.1}\label{r17vt:adjoint-output}
+\]
+such that, for every global separately closed
+$\omega\in B^{r,r}(X^{\mathrm{an}})$,
+\[
+       \int_X B_f(\beta)\wedge\omega
+          =\int_Y\beta\wedge f^*\omega.
+       \tag{AD17.2}\label{r17vt:adjoint-pairing}
+\]
+The same chosen representative works for all such $\omega$.
+The assertion is existential: no canonical choice, arbitrary
+proper pushforward of forms, or nondegeneracy of full actual
+Bott--Chern/Aeppli duality is part of the statement.
+\end{lemma}
+
+\begin{proof}
+Choose a closed immersion $j:Y\hookrightarrow\mathbf P^a_K$,
+enlarging $a$ so that $c=n+a-m\ge1$, and factor $f$ as
+\[
+ Y\xrightarrow{i=(f,j)}P=X\times\mathbf P^a
+                  \xrightarrow{\pi}X.
+\]
+The graph $i$ is a smooth integral projective closed immersion.
+Use degreewise actual extension across $i$ from R14's immersion
+germ/extension theorem, in the formulation GP16.1, to choose
+\[
+       \widetilde\beta\in B^{m-r,m-r}(P^{\mathrm{an}}),
+                     \qquad i^*\widetilde\beta=\beta.
+\]
+Since $i^*D\widetilde\beta=D\beta=0$, immersion-germ
+injectivity gives an ordinary open neighborhood $N$ of
+$i(Y)^{\mathrm{an}}$ on which $D\widetilde\beta=0$.
+This is a derivative collar for this extension, not a claim
+of an ambient extension preserving both first derivatives.
+
+Take the frozen R11 curved Green pair $(\Gamma_i,\Omega_i)$
+for the specified cycle $[i(Y)]$. Choose an ordinary smooth
+scalar $\lambda$, equal to one near $i(Y)$, whose closed
+support is contained in $N$. The GP16 localized pair is
+\[
+ \Gamma_N=\lambda\Gamma_i,
+ \qquad
+ \Omega_N=\Omega_i+D((\lambda-1)\Gamma_i).
+ \tag{AD17.3}\label{r17vt:localized-graph}
+\]
+The added term is a global actual form, because its factor
+$(\lambda-1)$ is identically zero on an ordinary neighborhood
+of the polar support. The form $\Omega_N$ is separately
+closed and has closed support in $\operatorname{Supp}\lambda
+\subset N$. The closure in $P$ of the support of $\Gamma_N$
+also lies there. The graph Green identity holds for all
+compact complementary actual tests.
+
+The product $\Omega_N\wedge\widetilde\beta$ is global actual
+of degree $(n+a-r,n+a-r)$. Since $\Omega_N$ is separately
+closed,
+\[
+ D(\Omega_N\wedge\widetilde\beta)
+                 =\Omega_N\wedge D\widetilde\beta=0.
+\]
+On $N$ the second factor is zero; off the closed support of
+$\Omega_N$ the first factor has zero germ. These two opens
+cover $P$. Apply the all-actual projective-bundle integration
+of OUT16 to define
+\[
+             B_f(\beta)=I_\pi(\Omega_N\wedge\widetilde\beta).
+\]
+OUT16 supplies its ordinary actual output, commutation with
+$d',d''$, and hence \eqref{r17vt:adjoint-output}.
+
+For a separately closed $\omega$ as in the statement,
+$\widetilde\beta\wedge\pi^*\omega$ has degree $(m,m)$,
+which is the complementary graph-testing degree on $P$.
+It is compact because $P$ is projective. Moreover
+\[
+ D(\widetilde\beta\wedge\pi^*\omega)
+                   =D\widetilde\beta\wedge\pi^*\omega
+\]
+vanishes on $N$, so its product with $\Gamma_N$ is zero.
+The all-actual graph Green identity therefore yields
+\[
+ \int_P\Omega_N\wedge\widetilde\beta\wedge\pi^*\omega
+                          =\int_Y\beta\wedge f^*\omega.
+\]
+The all-actual adjunction for $I_\pi$ identifies the left side
+with \eqref{r17vt:adjoint-pairing}. Every choice was made
+before $\omega$, so the same $B_f(\beta)$ has all the stated
+pairings. No proper actual pushforward along $i$ or $f$ has
+been assumed.
+\end{proof}
+
+\subsection{Reactivating the framed vertical tests}
+
+Let $\mathcal Y/R$ be regular, integral, projective, flat,
+with smooth geometrically integral generic fiber $Y$ of dimension $n$ and
+reduced strictly semistable special fiber
+\[
+              \mathcal Y_k=\bigcup_{i=1}^sD_i.
+\]
+Write $j_i:D_i\hookrightarrow\mathcal Y$, and put
+\[
+ C^a=\bigoplus_iN^a(D_i)_{\mathbf Q},\qquad
+ r_p\Theta=(j_i^!\Theta)_i,\qquad
+ A_{p-1}u=r_p\left(\sum_i j_{i*}u_i\right).
+ \tag{VT17.1}\label{r17vt:numerical-system}
+\]
+All numerical pairings use the native degree $\deg_k$.
+
+\begin{lemma}[Adjoint correction maps]
+\label{r17vt:transpose}
+For $1\le r\le n$, the maps $A_{r-1}$ and $A_{n-r}$
+are transposes under the componentwise perfect numerical
+degree pairings. Consequently
+\[
+ T\in\operatorname{im}A_{r-1}
+ \quad\Longleftrightarrow\quad
+ \langle T,v\rangle=0\quad\hbox{for every }v\in\ker A_{n-r}.
+ \tag{VT17.2}\label{r17vt:annihilator}
+\]
+\end{lemma}
+
+\begin{proof}
+Write $D_{ij}=D_i\cap D_j$ and restrictions with a vertical
+bar. The reduced special fiber is principal. Therefore
+$c_1(N_{D_i/\mathcal Y})=-\sum_{j\ne i}[D_{ij}]$.
+Self-intersection and proper projection give
+\[
+ \langle A_{r-1}u,v\rangle
+   =-\sum_{i<j}\deg_k
+       \bigl((u_j|_{ij}-u_i|_{ij})(v_j|_{ij}-v_i|_{ij})\bigr)
+   =\langle u,A_{n-r}v\rangle.
+\]
+The displayed codimensions add to $n-1=\dim D_{ij}$.
+Restriction and pushforward preserve numerical equivalence
+by the same projection formula. Finite-dimensional perfect
+numerical duality now proves \eqref{r17vt:annihilator}.
+Neither a cycle-class map from numerical groups nor a
+standard-conjecture positivity statement is required.
+\end{proof}
+
+\begin{lemma}[Closed actual vertical tests with their framed values]
+\label{r17vt:vertical}
+Fix $1\le r\le n$ and $v=(v_i)\in\ker A_{n-r}$.
+Choose rational cycle representatives on the actual $D_i$,
+and form the vertical cycle
+$V=\sum_i j_{i*}v_i$ of codimension $q=n+1-r$ on
+$\mathcal Y$. Resolving its prime cycle sheaves, with the
+full differentials retained, and applying the concrete
+R11 generic-acyclic construction gives
+\[
+       \beta_v\in B^{n-r,n-r}(Y^{\mathrm{an}}),
+       \qquad D\beta_v=0.
+       \tag{VT17.3}\label{r17vt:vertical-output}
+\]
+For every rational codimension-$r$ cycle $W$ on $Y$, with
+cycle closure $\overline W$, one has
+\[
+ \int_W\beta_v
+       =c_R\sum_i\deg_k((j_i^![\overline W])v_i)
+       =c_R\langle r_r[\overline W],v\rangle.
+ \tag{VT17.4}\label{r17vt:vertical-pairing}
+\]
+Different cycle representatives of $v$ may give different
+actual forms, but the displayed values on every algebraic
+$W$ agree. No uniqueness of $\beta_v$ is asserted.
+\end{lemma}
+
+\begin{proof}
+Regularity and projectivity give finite model vector-bundle
+resolutions of the prime sheaves in $V$. They are exact on
+the entire generic fiber, so their R11 Green forms are
+global actual; their rational sum has degree $(q-1,q-1)$
+and satisfies
+\[
+                         D\beta_v=\Omega_V.
+\]
+The degree-$q$ model character is the ordinary operational
+class $c_{[V]}$ of R12 ND1. Here is the precise operational
+justification. The leading localized-character identity on
+the regular ambient model gives $[V]$ in this Chow degree.
+Decompose the total character capped with $[\mathcal Y]$
+into its homogeneous Chow pieces. Each piece has the unique
+pure operational $K_0$ preimage of R12 ND1; its other
+operational degrees vanish by the Adams argument there.
+The sum of those preimages equals the sheaf-resolution
+$K_0$ class by the cap/character isomorphism. Comparing
+degree $q$ gives exactly $c_{[V]}$, including its action
+on every vertical support. This does not discard the
+differential in the Green construction.
+
+Its numerical restrictions on the components are
+\[
+                    r_q[V]=A_{q-1}v=A_{n-r}v=0.
+\]
+Every integral vertical $q$-cycle lies on at least one
+$D_i$, so $c_{[V]}$ has degree zero on every such cycle.
+The strict R10 numerical model-Chern detector therefore
+gives the literal actual identity $\Omega_V=0$, which
+proves \eqref{r17vt:vertical-output}. A mere zero
+cohomology class would not suffice for this step.
+
+For a prime $W$, its dimension is $n-r=q-1$, precisely
+the MM16.3 testing dimension for a degree-$q$ complex.
+The generic support of the complex is empty, so every
+$W$ is allowed, including a branch-locus cycle in a
+chosen finite presentation. MM16.3 gives $c_R$ times the degree of the localized
+degree-$q$ character on
+$B=|V|\cap|\overline W|$, a proper vertical support.
+
+Take first one prime of $V$ and one of $\overline W$.
+Let their resolutions be $C_V,C_W$. Supported centrality
+and the supported leading-character identity identify the
+zero-cycle class on their intersection as
+\[
+ \operatorname{ch}^{V}_q(C_V)\cap[\overline W]
+       =\operatorname{ch}^{\overline W}_r(C_W)\cap[V]
+           \quad\hbox{in }\operatorname{CH}_0(B)_{\mathbf Q}.
+\]
+Indeed each side is the product of the two leading supported
+operations applied to $[\mathcal Y]$; centrality interchanges
+their order. The leading identities hold before support is
+forgotten. Push this equality along the proper map $B\to V$.
+The second operation then becomes the ordinary operational
+degree-$r$ character of $C_W$ on $V$, hence $c_{[\overline W]}$,
+by the same pure-degree argument. For a prime $V\subset D_i$
+its degree is
+$\deg_k((j_i^![\overline W])\cdot V)$. Add rational
+components to obtain \eqref{r17vt:vertical-pairing}.
+No degree on $\operatorname{CH}_0(\mathcal Y)$ is used,
+and positive-dimensional vertical excess has never been
+removed. Numerical dependence proves the final statement.
+\end{proof}
+
+\begin{remark}[The nonzero constant test is retained]
+The complex $[\mathcal O\xrightarrow{\varpi}\mathcal O]$
+has zero absolute $K_0$ class and zero curvature, but its
+framed Green scalar is $c_R$. Thus the construction must
+retain the resolution differentials and vertical support.
+The argument does so throughout; it never attempts to
+recover $\beta_v$ from $\Omega_V$ alone.
+\end{remark}
+
+\begin{proposition}[The supplied-model converse]
+\label{r17vt:model-converse}
+Let $W$ be a specified rational codimension-$r$ cycle on
+the generic fiber of the preceding regular semistable model.
+Then the following are equivalent:
+\begin{enumerate}
+\item $W$ admits a strong ordinary actual Green form on its
+      exact support complement, tested against all compact
+      actual forms in the native $K$ theory.
+\item $r_r[\overline W]\in\operatorname{im}A_{r-1}$.
+\item $[W]$ has a vertically numerically zero rational Chow
+      extension on this particular model.
+\item $\mathfrak o_{Y,K}^r([W])=0$.
+\end{enumerate}
+No geometric homological triviality assumption is needed
+for this equivalence.
+\end{proposition}
+
+\begin{proof}
+For (1)$\Rightarrow$(2), test the supplied strong equation
+with every $\beta_v$ from Lemma~\ref{r17vt:vertical}.
+Projectivity makes it compact; its degree is exactly
+$(n-r,n-r)$, and $D\beta_v=0$ literally. Thus
+\[
+                    0=\int_W\beta_v
+                     =c_R\langle r_r[\overline W],v\rangle.
+\]
+Apply Lemma~\ref{r17vt:transpose}. There is no extension
+of an off-support primitive in this argument.
+
+Conditions (2) and (3) are equivalent by choosing actual
+rational representatives of a numerical solution $u$ and
+subtracting $\sum_i j_{i*}u_i$ from $[\overline W]$.
+Conversely Chow localization makes the difference of any
+two extensions a sum of such vertical classes. On the
+smooth components, zero numerical restrictions are exactly
+the operational vertical-degree condition of R12 ND2.
+
+For (3)$\Rightarrow$(4), take the pure operational virtual
+bundle representative of the corrected Chow extension.
+The strict numerical detector makes its degree-$r$ actual
+curvature zero. The R11 generic-Chow-zero primitive theorem
+identifies its obstruction with that of $[W]$.
+Finally (4)$\Rightarrow$(1) is the frozen R11 sufficient
+direction: subtract a global actual primitive from the
+curved pair for the specified cycle. It preserves its exact
+support complement and all actual tests.
+\end{proof}
+
+\subsection{The general reverse implication without a regular model on the target}
+
+\begin{theorem}[Strong actual Green existence detects its obstruction]
+\label{r17vt:general-converse}
+Let $X/K$ be smooth geometrically integral projective of dimension $n$,
+let $1\le r\le n$, and let $Z$ be a specified rational
+codimension-$r$ cycle. Relative to the explicitly frozen
+R10--R16 interfaces cited above, the following are equivalent:
+\[
+ \boxed{
+ \begin{gathered}
+ \text{$Z$ has a strong ordinary actual Green form on}
+       \ X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}
+       \text{ against all actual compact tests}
+ \\
+ \Longleftrightarrow\quad
+                   \mathfrak o_{X,K}^r([Z])=0.
+ \end{gathered}}
+ \tag{VT17.5}\label{r17vt:equivalence}
+\]
+The reverse implication uses no proper-position hypothesis
+on the inverse image of the specified cycle in an alteration.
+It does not assert that every homologically trivial class
+has zero obstruction.
+\end{theorem}
+
+\begin{proof}
+Only necessity is new. Let $\gamma_Z$ be the supplied strong
+form. Fix the frozen curved pair $(g_Z,\Omega_Z)$ for the
+same specified cycle, so $\Omega_Z$ is global separately
+closed and represents its obstruction.
+
+Suppose first that there is a projective regular strictly
+semistable $R$-model $\mathcal Y$, with smooth geometrically
+integral projective generic fiber $Y$ and a dominant
+generically finite $K$-morphism $f:Y\to X$. No finiteness
+of $f$ on $X\setminus|Z|$ is claimed or needed. The finite
+extension needed to obtain such a witness in general will
+be handled after this argument, using FG16.
+
+Choose any actual rational cycle $W$ representing the
+Chow pullback $f^*[Z]$, and let $\Omega_W$ be its curved-pair
+curvature. Contravariance of the frozen Chow-to-actual
+Bott--Chern obstruction and the R11 generic-Chow-zero
+primitive theorem give a global ordinary actual $\Psi$ with
+\[
+                  f^*\Omega_Z-\Omega_W=D\Psi.
+                  \tag{VT17.6}\label{r17vt:comparison}
+\]
+This equality concerns global model-character forms and a
+Chow pullback class; it is not obtained by pulling back the
+polar Green form $\gamma_Z$, and requires no proper
+intersection of $f$ with the primes of $Z$.
+
+For $v\in\ker A_{n-r}$ on $\mathcal Y$, take the global
+native actual test $\beta_v$ from Lemma~\ref{r17vt:vertical}.
+Apply Lemma~\ref{r17vt:adjoint} to produce a global
+$D$-closed $B_f(\beta_v)$ of degree $(n-r,n-r)$ on $X$.
+Testing the supplied strong equation with this form gives
+\[
+                         \int_Z B_f(\beta_v)=0.
+\]
+Testing the curved pair for $Z$ with the same form then
+gives $\int_X\Omega_Z B_f(\beta_v)=0$, since its
+$D$ is literally zero. The adjoint identity implies
+\[
+                         \int_Y f^*\Omega_Z\,\beta_v=0.
+\]
+Actual Stokes and $D\beta_v=0$ allow
+\eqref{r17vt:comparison} to replace $f^*\Omega_Z$ by
+$\Omega_W$. The curved pair for $W$, tested with
+$\beta_v$, and \eqref{r17vt:vertical-pairing} now yield
+\[
+ 0=\int_Y\Omega_W\beta_v
+    =\int_W\beta_v
+    =c_R\langle r_r[\overline W],v\rangle.
+ \tag{VT17.7}\label{r17vt:upstairs-annihilation}
+\]
+Every integral is of global actual forms or of the
+prescribed compact all-actual Green pairing. There is no
+pairing of a singular Green form with a nonpermitted test.
+
+Lemma~\ref{r17vt:transpose} supplies a rational numerical
+solution of the vertical correction equation on
+$\mathcal Y$. Choosing actual cycle representatives gives
+a vertically numerically zero Chow extension of $[W]$.
+As in Proposition~\ref{r17vt:model-converse}, the strict
+detector and global primitive theorem give
+\[
+                    \mathfrak o_{Y,K}^r(f^*[Z])=0.
+\]
+Frozen all-degree dominant Bott--Chern injectivity
+\texttt{r16pb:dominant} then gives
+$\mathfrak o_{X,K}^r([Z])=0$ under the temporary
+same-field witness hypothesis.
+
+In general, take any integral projective flat $R$-model of
+$X$ and apply de Jong's Theorem 6.5 with the whole special
+fiber as the marked closed subset. The theorem supplies a
+finite extension $L/K$, an alteration of this model, and a
+strict semistable projective compactification with
+geometrically irreducible generic fiber. Since the original
+model is proper, the alteration is proper; its indicated
+open immersion into the integral compactification is also
+proper and hence is the whole compactification. Thus it
+supplies exactly the same-field witness over $L$, with
+geometrically integral smooth generic fiber. This is the
+projective semistable witness input already used in the
+frozen R12/R16 arguments; the geometric-integrality clause
+is explicit in de Jong 6.5(i), printed p.83. Write
+$q:X_L\to X$. FG16's finite-constant corollary supplies
+the strong form $q^*\gamma_Z$ for the exact flat cycle
+$Z_L=q^*Z$, against \emph{every} compact $L$-actual test.
+Apply the preceding same-field argument over $L$ to get
+\[
+                         \mathfrak o_{X_L,L}^r([Z_L])=0.
+\]
+The finite-constant comparison in FG16 identifies the actual
+sheaves by their genuine analytic unit presentations;
+native top integration differs by the common factor
+$[L:K]$. Thus this global actual primitive can also be read
+in the native $K$ theory on $X_L$, with the same operators.
+Functoriality identifies its curvature class with
+$q^*\mathfrak o_{X,K}^r([Z])$. Full finite Bott--Chern
+injectivity gives $\mathfrak o_{X,K}^r([Z])=0$.
+Equivalently, apply the native trace to its actual primitive
+and divide by the complete degree $[L:K]$. This returns to
+the original field and all original actual tests.
+
+Sufficiency in \eqref{r17vt:equivalence} is the established
+exact-support construction: a global actual primitive of
+$\Omega_Z$ is subtracted from $g_Z$. It deletes no extra
+locus and supplies the required identity for all actual
+compact tests.
+\end{proof}
+
+\begin{corollary}[Existence is a property of the Chow class]
+\label{r17vt:Chow-existence}
+Under the same frozen interfaces, if one specified rational
+cycle in a Chow class has strong actual G, every specified
+rational cycle in that class has strong actual G on its own
+exact support complement. The classes with this property
+form exactly the kernel of the actual obstruction map.
+Consequently the frozen contravariance, proper covariance,
+and Chow-correspondence stability of that kernel apply to
+the existence property as well, in their precise degree
+and source--target ranges.
+\end{corollary}
+
+\begin{proof}
+The obstruction is defined on the Chow class. Necessity in
+Theorem~\ref{r17vt:general-converse} makes it zero from the
+one supplied representative; the frozen sufficient direction
+then constructs a new form for each prescribed representative.
+This does not attempt to remove canceled poles from a sum
+of preexisting Green forms. Additivity and the stated
+functorialities are those of the frozen obstruction kernel.
+\end{proof}
+
+\paragraph{Precise gain and remaining existence problem.}
+The historical vertical tests separate the finite numerical
+model obstruction. The new adjoint representative lets those
+tests be used downstairs without pulling a polar form through
+an alteration. Thus the sufficiency-only statement becomes an
+equivalence. The independent internal reviews are recorded in the final claims register.
+The unresolved general assertion is still that geometric
+homological triviality annihilates this obstruction. No
+unconditional height on the entire homologically trivial Chow
+group is inferred. The result does make every available strong
+Green existence theorem eligible for the already proved
+obstruction-kernel operations and admissible height construction.
+
+\paragraph{Exact dependency ledger.}
+The only analytic inputs are the R10 strict numerical
+model-Chern detector; R11 supported-complex curved pairs and
+generic-Chow-zero global actual primitives; R14 actual immersion
+germs and degreewise extensions; R16 GP16 localized graph
+pairs, OUT16 all-actual projective integration, MM16.3 fixed
+framed scalar comparison and its native vertical normalization,
+FG16 finite-constant ascent on all tests, and
+\texttt{r16pb:dominant} all-degree dominant detection.
+R12 ND1 supplies pure operational representatives. Supported
+centrality and leading characters are Stacks 42.52.2,
+42.52.6, and 42.57.1 (tag 0FEW); the regular cap/character
+isomorphism is 42.58.1 (tag 0FEY). The specific R7 source
+and audit cited at the beginning provide provenance, not an
+unconditional substitute for these presently checked inputs.

@@ -1,0 +1,663 @@
+\section{Native Steinberg loops: zero domains and strong passive separation}
+\label{sec:r11-challenge-zero-domains}
+
+\paragraph{Provenance and scope.}
+This module is jointly constructed by the R11 root and challenge agents;
+both independently obtained the strong-separation mechanism.  Neither
+may be counted as its nonconstructor reviewer.  Its current status is
+\textsc{proved draft, pending exact-hash independent review}.  The local
+statements concern the literal frozen SHT pair, not an unspecified
+primitive of its boundary.  They require no regular-sequence assumption.
+The Green consequence below has separately stated geometric hypotheses.
+
+Fix an ordinary original-$K$ analytic open $N$, a metrized line bundle,
+and an $r$-tuple $f$ of its analytic sections, where $r\ge3$.  Let $i,j,k$
+be distinct.  Put $W=N\setminus |f=0|$ and let $b,c$ be arbitrary analytic
+functions on $N$, including functions with zeros and unbounded norm.
+Put $s=r-1$ and reserve $D=d'd''$ for the full differential operator.
+Write
+\[
+ B=E_{ij}(b),\qquad C=E_{jk}(c),\qquad E=E_{ik}(bc),
+ \qquad BC=CEB.
+ \tag{ZDS1}
+\]
+Matrices act on column tuples, with the rightmost matrix acting first.
+Set
+\[
+ u=Cf,\qquad v=Bf,\qquad w=EBf,\qquad h=BCf=CEBf.
+ \tag{ZDS2}
+\]
+If $\mathcal P_{ab,t}(g)$ denotes the frozen SHT native shear pair,
+the prescribed defect is
+\[
+ \mathscr P=
+ \mathcal P_{jk,c}(f)+\mathcal P_{ij,b}(u)
+ -\mathcal P_{ij,b}(f)-\mathcal P_{ik,bc}(v)
+ -\mathcal P_{jk,c}(w).
+ \tag{ZDS3}
+\]
+For $t\ne0$, this native pair is the exact sum of two unit edges
+with potentials
+\[
+ (\Phi_g,\Phi_{D_a(t)^{-1}g},-v(t)),\qquad
+ (\Phi_{D_a(t)^{-1}g},\Phi_{E_{ab}(t)g},v(t)).
+ \tag{ZDS4}
+\]
+The middle potential is equally the norm potential of
+$D_a(t)^{-1}E_{ab}(t)g$, by the norm isometry $E_{ab}(1)$.
+In particular, equal endpoint norm potentials make the \emph{entire}
+native pair zero, for arbitrary unit coefficient $t$.  Frozen SHT
+extends the pair by zero through $t=0$ using its literal vanishing on
+$|t|<1$.
+
+\subsection{The complete ten-edge presentation}
+
+On $N_{bc}=\{bc\ne0\}$ put $d=v(b)$ and $e=v(c)$, and introduce
+\[
+ \begin{array}{llll}
+ F=\Phi_f,& U=\Phi_{D_j(c)^{-1}f},& C_0=\Phi_u,
+   & T=\Phi_{D_i(b)^{-1}u},\\
+ H=\Phi_h,& J=\Phi_{D_j(c)^{-1}w},& W_0=\Phi_w,
+   & K_0=\Phi_{D_i(bc)^{-1}v},\\
+ V=\Phi_v,& S=\Phi_{D_i(b)^{-1}f}.&&
+ \end{array}
+ \tag{ZDS5}
+\]
+The complete oriented loop, including the direction of every reversed
+edge, is
+\[
+\begin{array}{c|c|c}
+\text{edge}&\text{ordered potentials}&\text{weight}\\\hline
+1&(F,U)&-e\\
+2&(U,C_0)&e\\
+3&(C_0,T)&-d\\
+4&(T,H)&d\\
+5&(H,J)&-e\\
+6&(J,W_0)&e\\
+7&(W_0,K_0)&-(d+e)\\
+8&(K_0,V)&d+e\\
+9&(V,S)&-d\\
+10&(S,F)&d.
+\end{array}
+\tag{ZDS6}
+\]
+This is a literal expansion of (ZDS3), not a replacement path.
+
+\begin{lemma}[Coefficient-zero neighborhoods]
+Define ordinary opens
+\[
+ O_b=\{|b|<1,\ |bc|<1\},\qquad
+ O_c=\{|c|<1,\ |bc|<1\}.
+ \tag{ZDS7}
+\]
+They contain the zero loci of $b,c$, respectively.  The actual pair
+$\mathscr P$ is identically zero on $(O_b\cup O_c)\cap W$.
+Moreover, on $N_{bc}$ each of these vanishing identities pairs all
+ten edges in (ZDS6) into five exact inverse pairs.
+\end{lemma}
+
+\begin{proof}
+On $O_b$, $B,E$ are norm isometries.  Consequently
+\[
+ F=V=W_0,\qquad C_0=H.
+ \tag{ZDS8}
+\]
+On the $c$-unit locus,
+\[
+ D_j(c)^{-1}(EB)D_j(c)
+       =E_{ik}(bc)E_{ij}(bc)
+ \tag{ZDS9}
+\]
+is a product of norm isometries, so $U=J$.  Thus edges $(1,6)$,
+$(2,5)$, $(3,4)$, $(7,8)$, $(9,10)$ are exact inverse pairs.
+If $c=0$, its native shear pairs are zero on a neighborhood by SHT,
+so the same actual identity holds without dividing by $c$ there.
+
+On $O_c$, $C,E$ are norm isometries.  Therefore
+\[
+ F=C_0,\qquad V=W_0=H.
+ \tag{ZDS10}
+\]
+Because $i,j,k$ are distinct, $D_i(b)^{-1}$ commutes with $C$.
+Hence $S=T$ on the $b$-unit locus.  The inverse-edge pairs are now
+$(1,2)$, $(3,10)$, $(4,9)$, $(5,6)$, $(7,8)$.
+SHT zero gluing handles $b=0$.  Each assertion is equality of
+norm potentials on an ordinary open, and hence equality of their
+actual derivatives and all mixed jets, not merely pointwise
+agreement of one chosen coefficient representative.
+\end{proof}
+
+\subsection{A strong passive-separation region}
+
+Let the common passive tuple be
+\[
+ f_{\rm pas}=(f_a)_{a\notin\{i,j\}},
+ \qquad M=\|f\|_\infty,\qquad P=\|f_{\rm pas}\|_\infty.
+ \tag{ZDS11}
+\]
+It contains $f_k$ and has $r-2$ entries.  The metric is the same
+in all these norms.  On $N_{bc}\cap W$ set
+\[
+ B_0=\max(0,-d),\qquad C_0^*=\max(0,-e,-d-e),\qquad
+ \kappa=B_0+C_0^*.
+ \tag{ZDS12}
+\]
+The notation $C_0^*$ denotes a scalar bound, not a curvature or the
+potential $C_0$ in (ZDS5).  If desired it may be replaced by any
+larger nonnegative actual piecewise affine bound.
+
+\begin{lemma}[Strong passive separation gives literal loop cancellation]
+On the ordinary open
+\[
+ \mathcal O_{\rm small}
+ =\{P<e^{-\kappa}M\}
+ =\{\psi>\Phi_f+\kappa\},\qquad \psi=-\log P,
+ \tag{ZDS13}
+\]
+with $\psi=+\infty$ at $P=0$, one has
+\[
+ F=C_0,\qquad V=W_0=H,\qquad S=T.
+ \tag{ZDS14}
+\]
+Thus the complete ten-edge loop cancels in the same five inverse
+pairs as on $O_c$, even when $b,c,bc$ have arbitrarily large norm.
+\end{lemma}
+
+\begin{proof}
+The inequalities are pointwise over the completed residue field of
+every analytic point.  They are independent of any rational-point
+density claim.  Put $L=\max(1,|b|)=e^{B_0}$ and
+$A=\max(1,|c|,|bc|)=e^{C_0^*}$.  The hypothesis is
+\[
+                     AP<M/L.
+ \tag{ZDS15}
+\]
+The inverse matrix $B^{-1}=E_{ij}(-b)$ has operator norm at most
+$L$, so $\|v\|\ge M/L$.  Also
+\[
+ \|D_i(b)^{-1}f\|\ge M/L,
+ \tag{ZDS16}
+\]
+because the inverse of this diagonal matrix has operator norm
+$L$.  The differences of the relevant tuples satisfy
+\[
+ \begin{split}
+ \|u-f\|&\le |c|P<M/L\le M,\\
+ \|w-v\|&\le |bc|P<M/L\le\|v\|,\\
+ \|h-v\|&\le\max(|c|,|bc|)P<M/L\le\|v\|.
+ \end{split}
+ \tag{ZDS17}
+\]
+The strong triangle law therefore gives $\|u\|=\|f\|$ and
+$\|w\|=\|h\|=\|v\|$.
+
+Finally $D_i(b)^{-1}$ leaves the $j$-th component unchanged and
+commutes with $C$.  Thus the difference between
+$D_i(b)^{-1}u$ and $D_i(b)^{-1}f$ is exactly $c f_k$ in its
+$j$-th component.  Its norm is strictly less than $M/L$, while
+(ZDS16) bounds the latter tuple from below.  Their norms agree.
+This proves (ZDS14).  All inequalities define ordinary opens via
+continuous norm ratios.  The equalities hold on the entire open,
+so they retain the full fixed-presentation actual relations.
+\end{proof}
+
+\subsection{Precise consequence for the common-cap construction}
+
+This paragraph records the construction, not a claim that an arbitrary
+closed pair is exact.  Choose $\varepsilon>0$
+and use the one common actual cap
+\[
+ \Psi=\min(\psi,\Phi_f+\kappa+\varepsilon),\qquad
+ R_*=R-D\Psi.
+ \tag{ZDS18}
+\]
+At passive-zero points the second branch holds on an ordinary
+neighborhood; hence the cap is actual on all of $N_{bc}\cap W$.
+The two ordinary opens
+\[
+ \mathcal O_{\rm pas}=\{\psi<\Phi_f+\kappa+\varepsilon\},
+ \qquad\mathcal O_{\rm small}=\{\psi>\Phi_f+\kappa\}
+ \tag{ZDS19}
+\]
+cover.  On the former, $\Psi=\psi$.  Every edge changes only
+target $i$ or $j$ and leaves the same $r-2$ passive sections
+unchanged.  Therefore the proof of the frozen CS passive-block
+lemma applies edgewise: the reference curvature comes from
+$\mathbf P^{r-3}$ and its $(r-2)$nd power is zero.  With
+$s=r-1$, each full edge residual $S_{e,s}$ vanishes there.
+
+On $\mathcal O_{\rm small}$, (ZDS14) pairs all edges inversely
+after the same common scalar $\Psi$ is subtracted.  The exact
+antisymmetry of the frozen CS edge triple consequently gives
+\[
+ \sum_e\mathcal K_s(e;R_*)=0,\qquad
+ \sum_eS_{e,s}=0.
+ \tag{ZDS20}
+\]
+The full-loop MT source sums $f_k$ and $\Gamma_k$ cancel pairwise
+as well, so the explicit metric-transport triple is zero there.
+Actual sheaf locality gives $\sum_eS_{e,s}=0$ on the whole unit
+locus.  Frozen CS10 and MT16 then yield the explicit triple
+\[
+ q=\sum_e\mathcal K_s(e;R_*)-Q_{\rm met},\qquad
+                       \partial_2q=\mathscr P.
+ \tag{ZDS21}
+\]
+This uses the full edge formula and full-loop metric transport;
+it never declares individual lower-degree blocks closed.
+
+On $O_b\cap N_{bc}$ and $O_c\cap N_{bc}$, (ZDS8)--(ZDS10)
+also pair every edge inversely, for this same cap and reference
+curvature.  Consequently the entire specified triple (ZDS21),
+not just its boundary, equals zero.  It therefore glues with
+zero across $b=0$ and $c=0$ as an actual triple on all of $W$.
+No logarithm of a zero coefficient is assigned a finite value.
+
+\subsection{The explicit finite formula and the local theorem}
+
+Here are all operations in (ZDS21), so that the witness is a specified
+actual form rather than an existential boundary assertion.  Put
+\[
+ L_1^s=B^{s-1,s}\oplus B^{s,s-1},\qquad
+ L_2^s=B^{s-2,s}\oplus B^{s,s-2}\oplus B^{s-1,s-1},
+ \tag{ZDS25}
+\]
+with negative bidegrees zero, and
+\[
+ \partial_1(\alpha,\beta)=d'\alpha+d''\beta,\qquad
+ \partial_2(A,B,M)=(d'A+d''M,d''B+d'M).
+ \tag{ZDS26}
+\]
+These are the frozen actual CPT spaces and operators; no quotient
+or completion is introduced.
+
+For variables $Q_1,\ldots,Q_a$ of even diagonal degree, let
+$h_j(Q_1,\ldots,Q_a)$ be the complete homogeneous polynomial of
+degree $j$, with $h_0=1$ and $h_j=0$ for $j<0$.  For an edge with
+normalized potentials $p,q$, weight $c_e$, and reference $R_*$, put
+\[
+ C_p=R_*-Dp,\quad C_q=R_*-Dq,\quad t=|c_e|,
+ \tag{ZDS27}
+\]
+\[
+ \begin{split}
+ H_k&=h_{k-1}(R_*,C_p,C_q),\\
+ J_k&=h_{k-1}(C_p,C_q),\\
+ K_{p,k}&=h_{k-1}(R_*,C_p),\\
+ K_{q,k}&=h_{k-1}(R_*,C_q),\\
+ M_{e,k}&=-\tfrac14\bigl((q^2-p^2)H_k+t(q-p)J_k
+                      +c_e(pK_{p,k}+qK_{q,k})\bigr).
+ \end{split}
+ \tag{ZDS28}
+\]
+For $k\ge2$ define
+\[
+ F_{e,k}=h_{k-2}(R_*,R_*-Dt,C_p,C_q)
+ \tag{ZDS29}
+\]
+and the triple $\mathcal T_{e,k}=(A_{e,k}/3,B_{e,k}/3,-Z_{e,k}/6)$,
+where
+\[
+\begin{split}
+A_{e,k}={}&(t\,d''p\wedge d''q-p\,d''t\wedge d''q
+                         +q\,d''t\wedge d''p)F_{e,k},\\
+B_{e,k}={}&(t\,d'p\wedge d'q-p\,d't\wedge d'q
+                         +q\,d't\wedge d'p)F_{e,k},\\
+Z_{e,k}={}&\bigl[t(d'p\wedge d''q-d'q\wedge d''p)
+ -p(d't\wedge d''q-d'q\wedge d''t)\\
+&\hspace{21mm}+q(d't\wedge d''p-d'p\wedge d''t)\bigr]F_{e,k}.
+\end{split}
+\tag{ZDS30}
+\]
+Set $\mathcal T_{e,0}=\mathcal T_{e,1}=0$.  The frozen CS edge
+triple used above is exactly
+\[
+ \mathcal K_k(e;R_*)=(0,0,M_{e,k})
+          +\tfrac12(\mathcal T_{e,k}-R_*\mathcal T_{e,k-1}).
+ \tag{ZDS31}
+\]
+This retains the full curvature $D|c_e|$.  Its exact antisymmetry
+under $(p,q,c_e)\mapsto(q,p,-c_e)$ follows termwise from
+(ZDS28)--(ZDS31).
+
+For clarity the residual suppressed only after proof above is
+\[
+ S_{e,k}=\mathfrak a(p,q;H_k)
+       +\mathfrak a((c_e)_+,q;K_{q,k})
+       +\mathfrak a((c_e)_-,p;K_{p,k}),
+ \tag{ZDS32}
+\]
+where
+\[
+ \mathfrak a(a,b;Q)=
+ ((a\,d''b-b\,d''a)Q,-(a\,d'b-b\,d'a)Q).
+ \tag{ZDS33}
+\]
+Frozen CS10 says $p_e^{[k]}=\partial_2\mathcal K_k-S_{e,k}/2$.
+Only the full top-degree sum $\sum_eS_{e,s}$ was proved zero;
+no summand or low-degree block is assumed closed.
+
+For the metric term use the original ten vertex potentials
+$\Phi_a$ in (ZDS6) and their unchanged projective curvatures
+$C_a=R-D\Phi_a$.  For every oriented edge $a\to b$ let
+$v_e=\Phi_b-\Phi_a$ and $\overline\Phi_e=(\Phi_a+\Phi_b)/2$.
+Define
+\[
+ \mathcal L(u,Q)=(u\,d''Q,d'u\wedge Q),\qquad
+ \Gamma_k=\tfrac12\sum_e c_e(C_a^k+C_b^k),
+ \tag{ZDS34}
+\]
+\[
+ f_k=-\sum_e\left\{
+ \mathcal L(\overline\Phi_e,v_eh_{k-1}(C_a,C_b))
+ +\mathcal L\left(c_e,
+        \tfrac12(\Phi_aC_a^{k-1}+\Phi_bC_b^{k-1})\right)\right\}.
+ \tag{ZDS35}
+\]
+Put $h=-\Psi$ and
+\[
+ \mathcal H_h(\alpha,\beta)=
+ (d''h\wedge\alpha,-d'h\wedge\beta,h\,d'\alpha),\qquad
+ S_t(R_*,R)=\sum_{\ell=0}^tR_*^\ell R^{t-\ell}.
+ \tag{ZDS36}
+\]
+The actual metric triple with the sign used in (ZDS21) is
+\[
+ Q_{\rm met}=
+ \sum_{k=1}^{s-1}S_{s-k-1}(R_*,R)\mathcal H_h(f_k)
+ -\left(0,0,h\sum_{k=1}^s\Gamma_{k-1}R_*^{s-k}\right).
+ \tag{ZDS37}
+\]
+Frozen MT16 gives $\mathscr P^*-\mathscr P=\partial_2Q_{\rm met}$,
+where the star means that every vertex potential has been shifted
+by $h$ and $R$ replaced by $R_*=R+Dh$.  Combining this with
+(ZDS31)--(ZDS33) and the proved top residual cancellation gives
+exactly (ZDS21), including its minus sign.
+
+\begin{theorem}[Native all-rank Steinberg relation]
+For all $r\ge3$, original-$K$ data (ZDS1)--(ZDS3), and arbitrary
+analytic $b,c$ on the stated whole ordinary open, there is an
+explicit actual triple $q\in L_2^{r-1}(W)$ with
+\[
+ \boxed{\quad
+ \mathcal P_{jk,c}(f)+\mathcal P_{ij,b}(Cf)
+ -\mathcal P_{ij,b}(f)-\mathcal P_{ik,bc}(Bf)
+ -\mathcal P_{jk,c}(EBf)=\partial_2q.
+ \quad}
+ \tag{ZDS38}
+\]
+On $\{bc\ne0\}\cap W$, $q$ is (ZDS18), (ZDS21),
+(ZDS27)--(ZDS37).  On $(O_b\cup O_c)\cap W$, it is zero.
+These formulas agree on the full ordinary overlaps and cover
+$W$.  They include the original common metric, every absolute-value
+and cap wall, zeros of individual tuple entries, zeros of $b,c$,
+and all mixed coefficient jets.  No field extension, analytic
+root, boundedness assumption, completion, choice of an abstract
+primitive, or continuous linear right inverse is used.
+\end{theorem}
+
+\begin{proof}
+The preceding lemmas prove the norm equalities and exact inverse-edge
+cancellations.  Here is the remaining passive-block argument in the
+precise generality needed, so that no square-specific hypothesis is
+silently imported.  On $\mathcal O_{\rm pas}$ the reference curvature
+$R_*=R-D\psi$ is the pullback of the standard form from the map
+defined by the unchanged $r-2$ passive sections to $\mathbf P^{r-3}$.
+Thus $R_*^{s-1}=R_*^{r-2}=0$.  For a unit edge of weight $c_e\ge0$,
+frozen CS15 kills every $C_p$-containing monomial in its first
+residual symbol.  The rest is
+\[
+          \mathfrak a(p+c_e,q;h_{s-1}(R_*,C_q)).
+ \tag{ZDS39}
+\]
+The pure $R_*^{s-1}$ term is zero.  On a carrier of every other
+monomial there is a positive power of $C_q$.  If the changed row
+is active, $p+c_e=q$ with full tangential first-jet equality.  If
+it is inactive and a passive row is active, $q=0$ with zero
+tangential first jet.  If neither occurs, the other target row
+is uniquely active, so $C_q$ vanishes on an ordinary neighborhood.
+These alternatives exhaust all rows.  Reverse the edge for negative
+$c_e$; on $c_e=0$ use $p=q$ and the zero restricted first jets of
+$(c_e)_\pm$.  Hence $S_{e,s}=0$ for every one of the ten edges
+on $\mathcal O_{\rm pas}$.  This is the full actual carrier
+calculation of frozen CS, retaining arbitrary extra base directions.
+
+The strong-separation lemma gives the full inverse pairing on
+$\mathcal O_{\rm small}$, including the cap-transition part.
+Consequently all terms in (ZDS20) and all $f_k,\Gamma_k$ vanish
+there.  The two opens cover, so $\sum_eS_{e,s}=0$ globally on
+the coefficient-unit locus.  Equations (ZDS31)--(ZDS37) prove
+(ZDS38) on it.  The coefficient-zero lemma gives equality of
+the \emph{specified triples} with zero on both overlaps, so
+ordinary actual sheaf gluing proves the theorem on all $W$.
+\end{proof}
+
+\paragraph{Presentations, refinements, and topology.}
+The new object is the actual triple (ZDS21), not an enlarged space
+of forms.  On a fixed whole local unit presentation its formula
+uses only finitely many actual norm minima, real piecewise affine
+operations, full differentials, wedge products, and finite sums.
+At zero-entry or coefficient-zero points, the displayed ordinary
+open equalities are its local presentations.  Pulling those data
+to a common allowed actual refinement preserves every formula,
+including all relations of non-product units.  The pair and triple
+spaces retain their own inherited coefficient-final topologies.
+The frozen finite-stage operations supply their usual finite-jet
+estimates in a common finite refinement for each fixed presentation.
+No claim is made that varying arbitrary analytic coefficient data
+has a common global Fr\'echet stage, that an actual kernel is closed,
+or that a probe topology equals the full inherited topology.
+
+\subsection{Two ordinary opens and the original-support Green form}
+
+Retain global regular complete-intersection tuples $s_0,s_1$ of
+the same metrized line bundle on a smooth projective $X/K$,
+with $1\le r\le n$, and now assume $r\ge3$ for the use of
+(ZDS38).  Put
+\[
+ Z=[Y_1]-[Y_0],\quad S_0=|Y_0|\cup|Y_1|,\quad T_0=|Z|,
+ \quad U_0=X^{\rm an}\setminus T_0,\quad
+ V_0=X^{\rm an}\setminus S_0,\quad C_{U_0}=S_0\cap U_0.
+ \tag{ZDS40}
+\]
+Supply an ordinary open $N=N_0\cup N_1\subset U_0$ containing
+$C_{U_0}$ and finite original-$K$ analytic frame paths on $N_0,N_1$.
+Require that their frozen SHT/RSP expressions give
+\[
+ G_{s_1}-G_{s_0}=\partial_1p_a+E_a\quad\text{on }N_a\cap V_0,
+ \quad p_a=(\alpha_a,\beta_a),\quad E_a\in B^{s,s}(N_a).
+ \tag{ZDS41}
+\]
+Require also an explicit finite sequence of the native Steinberg
+substitutions (ZDS3), with signs, on the \emph{whole} overlap
+$N_0\cap N_1$.  All their intermediate tuples and analytic
+coefficients must be supplied there.  Common prefixes and suffixes
+are literally retained.  If these substitutions transform the full
+primitive $p_0$ into $p_1$, the finite sum of (ZDS38) gives
+\[
+ p_1-p_0=\partial_2q_{01},\qquad
+ q_{01}=(A_{01},B_{01},M_{01})\quad\text{on }N_0\cap N_1\cap V_0.
+ \tag{ZDS42}
+\]
+Thus the extending error is the genuinely extending pair $e=0$;
+this is a proved feature of this relation, not an imposed general
+condition on all path repairs.
+
+Let $\theta_0+\theta_1=1$ be an ordinary smooth partition
+subordinate to $N_0,N_1$ and put $\theta=\theta_1$.  Frozen RAG,
+with its full mixed-derivative calculation, gives
+\[
+ \begin{split}
+ \alpha&=\theta_0\alpha_0+\theta_1\alpha_1
+                   +d'\theta\wedge A_{01}+d''\theta\wedge M_{01},\\
+ \beta&=\theta_0\beta_0+\theta_1\beta_1
+                   +d''\theta\wedge B_{01}+d'\theta\wedge M_{01},\\
+ E&=\theta_0E_0+\theta_1E_1.
+ \end{split}
+ \tag{ZDS43}
+\]
+Overlap-supported products are actual zero extensions.  Both mixed
+$D\theta\wedge M_{01}$ terms are retained before their opposite
+signs cancel.  Consequently
+\[
+ G_{s_1}-G_{s_0}=d'\alpha+d''\beta+E\quad\text{on }N\cap V_0.
+ \tag{ZDS44}
+\]
+Choose the frozen RSP ordinary smooth cutoff $\zeta$ on $U_0$,
+equal to one near $C_{U_0}$, with closed $U_0$-support in $N$.
+Extend $\zeta\alpha,\zeta\beta$ by zero to $V_0$, obtaining
+$\widetilde\alpha,\widetilde\beta$.  The actual form
+\[
+ g_{V_0}=G_{s_1}-G_{s_0}
+                   -d'\widetilde\alpha-d''\widetilde\beta
+ \tag{ZDS45}
+\]
+equals $E$ on a neighborhood of $C_{U_0}$ in $V_0$.  Gluing it
+with $E$ there constructs an actual $g_Z\in B^{r-1,r-1}(U_0)$
+on exactly the original support complement.
+
+For every actual $\eta\in B_c^{n-r,n-r}(X^{\rm an})$, frozen
+support avoidance gives $\operatorname{supp}D\eta\Subset V_0$.
+Both correction products with $D\eta$ have compact support in
+$V_0$, so full actual Stokes and the original CI8 formula imply
+\[
+ \boxed{\qquad\int_{U_0}g_Z\wedge D\eta=-\int_Z\eta
+       \quad\text{for every actual compact test }\eta.\qquad}
+ \tag{ZDS46}
+\]
+The cutoff is not required to extend across $T_0$ and no growth
+condition is added near $T_0$.  Neither $Z$ nor the base field is
+changed.  Uniform support avoidance gives the usual full
+coefficient-final continuous functional of this actual form.
+
+This is an independently checkable two-open repair criterion for
+the prescribed path relations.  It does not assert the existence
+of the displayed paths or substitutions for an arbitrary matrix,
+does not automatically handle higher overlaps of an arbitrary
+finite cover, and is not advertised as a new independent cycle
+class without such geometric data.  General Strong G, arbitrary
+homologically trivial actual periods and representatives, higher
+actual descent, the entire lower-middle kernel, and the full
+Beilinson--Bloch height theory remain open.
+
+\paragraph{Audit obligations for integration into a final theorem.}
+The final construction must quote the exact frozen CS edge formula,
+its antisymmetry, the passive-block proof with the shared tuple
+specified, and the exact MT triple with its sign.  It must keep
+the entire ten-edge presentation (ZDS6), the ordinary cap cover,
+and equality of the triple on coefficient-zero overlaps.  A
+two-open Green application additionally requires the frozen
+RAG/RSP original-support and all-actual-test interfaces; none is
+automatic from the local matrix identity alone.
+
+\subsection{A rejected shortcut: mere inactivity of passive entries}
+
+It is false that $\sum_eS_{e,1}=0$ follows just because every one
+of the ten vertex norms is determined by entries $i,j$.  On a
+local unit presentation put
+\[
+ x=v(f_i),\quad y=v(f_j),\quad v_1=v(f_j+cf_k),\quad
+ w_1=v(f_i+bf_j+bcf_k).
+ \tag{ZDS22}
+\]
+Using the ultrametric triangle relation on each native shear,
+the degree-one residual on that open reduces, separately in each
+colour, to
+\[
+ \begin{split}
+ &\mathfrak s(F-C_0,x)+\mathfrak s(C_0-H,v_1)
+   -\mathfrak s(F-W_0,y)-\mathfrak s(W_0-H,w_1)\\
+ &\hspace{30mm}=\mathfrak s(x-w_1,v_1-y),
+ \qquad\mathfrak s(a,b)=a\,db-b\,da.
+ \end{split}
+ \tag{ZDS23}
+\]
+For the equality use $F=\min(x,y)$, $C_0=\min(x,v_1)$,
+$W_0=\min(w_1,y)$, $H=\min(w_1,v_1)$ and the full piecewise
+linear identity
+$\mathfrak s(\min(a,b),a-b)=-\mathfrak s(a,b)$.
+The coefficient can be nonzero on a strict Gauss chamber: take
+\[
+ (v(f_i),v(f_j),v(f_k),v(b),v(c))=(-2,-3,0,-2,-5).
+ \tag{ZDS24}
+\]
+The relevant sums have unique leading terms, yielding
+$v_1=-5$, $w_1=-7$, and all ten vertex norms are less than $0$.
+The coefficient of $dx$ in (ZDS23) is $2$.  These are real
+valuation coordinates, not an assertion that the original field
+contains elements with these exact values; Gauss analytic points
+of the corresponding torus supply them.  Arbitrarily many
+passive base directions may be appended.
+
+This counterexample refutes only the stated degree-one shortcut.
+It does not refute (ZDS21), because the strong separation
+(ZDS13) is much stricter than mere vertexwise inactivity.  Nor
+does it refute existence of another strict witness, any extending
+error witness, or the original Strong G conjecture.
+
+\paragraph{Pressure tests and exclusions.}
+The norm estimates use only the ultrametric triangle law in every
+completed residue field.  Thus cancellation loci of sums, including
+a non-product unit presentation $(T_1,T_2,T_1+T_2)$, are not removed:
+the proof never replaces the valuation of a sum by a generic minimum.
+Analytic coefficients and sections may depend simultaneously on a
+relative curve parameter, its moving puncture, and arbitrarily many
+passive base directions.  The proof only applies on the ordinary
+open where the supplied analytic data are defined; it makes no
+compact-angular-support or uniform behavior at the omitted puncture
+claim.  Mixed derivatives of all such data occur in (ZDS30) and
+(ZDS35)--(ZDS37), and remain present in the carrier identities.
+The rank-three endpoint has passive target $\mathbf P^0$; higher
+ranks use $\mathbf P^{r-3}$ without restricting the total dimension.
+No coefficient divisions by a residue characteristic occur: the
+displayed $2,3,4,6$ are real scalar coefficients.  All formulae
+are constructed over $K$ itself, so they invoke neither a higher
+actual descent theorem nor a change of absolute-value normalization.
+No factor of a field degree is introduced or canceled.
+
+The frozen TROP-NR, CI0, FL, JR, AQ, QP, ND, wedge and LTF
+failures are not weakened: the proof uses a specified finite actual
+relation and full top residual, not arbitrary current
+representability, probe products, unrestricted finite-level descent,
+or separate closedness of low-degree pieces.  In particular the
+two-open criterion does not replace the original CI0 hypothesis;
+it is a separate repair across a canceled part with independently
+supplied local frame paths.
+
+\paragraph{Exact frozen source dependencies.}
+All following paths are relative to the byte-preserved R10 recovery
+package.  Their hashes, source entries, current nonconstructor
+review entries, and dependency entries are the frozen authority,
+not the overview prose.
+\begin{itemize}
+\item SHT:
+\texttt{frozen\_r9/round9/research/proofs/}
+\texttt{direct\_unbounded\_analytic\_shear\_transgression.tex},
+SHA256 \texttt{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+\item CS:
+\texttt{recovered\_checkpoint/round10/agents/diagonal/}
+\texttt{commuting\_diagonal\_relative\_square.tex},
+SHA256 \texttt{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+\item MT:
+\texttt{recovered\_checkpoint/round10/agents/diagonal/}
+\texttt{full\_loop\_metric\_transport.tex},
+SHA256 \texttt{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+\item RAG:
+\texttt{frozen\_r9/round9/research/proofs/root\_relative\_aeppli\_gluing.tex},
+SHA256 \texttt{34c1f00070f1e6ad596d9c8de58a20145a3670e1be7890710d5a4285733f9f82}.
+\item RSP:
+\texttt{frozen\_r9/round9/research/proofs/direct\_relative\_support\_aeppli\_patch.tex},
+SHA256 \texttt{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+\item CI:
+\texttt{frozen\_r9/round9/frozen\_inputs/proofs/CI\_global\_complete\_intersection\_green.tex},
+SHA256 \texttt{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+\end{itemize}
+The pair complex and the closed-pair restriction are inherited from
+CPT, SHA256
+\texttt{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6}.
+The full-loop transport is used exactly to avoid applying that
+closed-pair restriction to nonclosed coefficient blocks.  The PPD
+full remainder, SHA256
+\texttt{abd440303eed245219373562bda232d7231c4295027c3d6d4d8cf429a69a2e27},
+is preserved as the original scope of the prescribed primitive
+problem, not replaced by a low-degree projection.

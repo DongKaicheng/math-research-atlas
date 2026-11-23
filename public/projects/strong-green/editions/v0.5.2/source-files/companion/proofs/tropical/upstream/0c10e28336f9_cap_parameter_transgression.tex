@@ -1,0 +1,358 @@
+\section{Finite two-colour parameter transgression and cap independence}
+\label{sec:r11-cap-parameter}
+
+\paragraph{Status and scope.}
+This is a new R11 construction by \texttt{/root/r11\_cube}, submitted
+for two independent exact-source reviews.  It proves a finite algebraic
+transgression criterion and applies it to the two prescribed capped-CS
+triples for the \emph{same} square and the \emph{same} passive block.
+It does not identify the six different passive-block triples in the
+raw three-distinct-entry cube.  General strong G, finite-cover frame
+coherence, and the entire lower-middle OPEN-KERNEL remain open.
+
+\subsection{The finite polynomial extension of the actual algebra}
+
+Let $W$ be an ordinary analytic open over the original $K$.  Write
+$\mathscr B(W)=\bigoplus_{p,q}B^{p,q}(W)$ for the actual algebra,
+with full anticommuting differentials $d',d''$ and $D=d'd''$.
+Tensor it algebraically over $\mathbb R$ with
+\[
+ \mathbb R[t]\otimes\Lambda(\epsilon',\epsilon''),
+ \qquad \deg t=(0,0),\quad
+ \deg\epsilon'=(1,0),\quad\deg\epsilon''=(0,1).
+ \tag{CT1}
+\]
+The two exterior variables anticommute with each other and with
+odd-total-degree actual forms.  Extend the full differentials by
+\[
+ \widetilde d't=\epsilon',\qquad
+ \widetilde d''t=\epsilon'',\qquad
+ \widetilde d'\epsilon'=\widetilde d'\epsilon''
+ =\widetilde d''\epsilon'=\widetilde d''\epsilon''=0.
+ \tag{CT2}
+\]
+Their restrictions to $\mathscr B(W)$ are $d',d''$.  The graded
+Leibniz rules imply $\widetilde d'{}^2=\widetilde d''{}^2=0$ and
+$\widetilde d'\widetilde d''=-\widetilde d''\widetilde d'$.
+This is a polynomial coefficient device, not an analytic parameter
+space and not a pullback or pushforward involving a real interval.
+
+Every element has a unique expression
+\[
+ F=F_0(t)+\epsilon'F_1(t)+\epsilon''F_2(t)
+                          +\epsilon'\epsilon''F_{12}(t),
+ \tag{CT3}
+\]
+with the exterior variables on the left and all $F_I(t)$ finite
+polynomials with actual coefficients.  Evaluation
+$\operatorname{ev}_a F=F_0(a)$ is a morphism of actual differential
+algebras.  Coefficient integration means the finite operation
+$\int_0^1\sum_jF_jt^j\,dt=\sum_jF_j/(j+1)$ and therefore lands in
+actual $B$ itself.
+
+Actual zero relations have already been imposed in $\mathscr B(W)$.
+Consequently (CT1), coefficient extraction, restriction, and integration
+respect all actual presentations and refinements.  On each fixed
+polynomial degree this is a finite direct sum of the inherited actual
+coefficient-final topologies.  All integration and extraction maps
+are finite linear maps.  Products and differentials in the statements
+below use one common finite refinement of the whole supplied
+presentation; their finite-stage estimates are the usual full mixed
+Leibniz estimates.  No global wedge-continuity theorem, strictness,
+Hausdorff quotient, completion, or whole-kernel comparison is asserted.
+
+Use the frozen pair/triple/quadruple maps
+\[
+ \begin{split}
+ \partial_2(A,B,M)&=(d'A+d''M,\ d''B+d'M),\\
+ \partial_3(U,V,P,Q)&=(d'U+d''P,\ d''V+d'Q,\ d'P+d''Q),
+ \end{split}
+ \tag{CT4}
+\]
+with $L_2^s=B^{s-2,s}\oplus B^{s,s-2}\oplus B^{s-1,s-1}$ and
+$L_3^s=B^{s-3,s}\oplus B^{s,s-3}\oplus B^{s-2,s-1}
+\oplus B^{s-1,s-2}$.  Negative bidegrees are zero.  Tildes mean
+that the maps are formed with the differentials in (CT2).
+
+\begin{theorem}[A finite two-colour transgression criterion]
+Let $\widetilde q=(\widetilde A,\widetilde B,\widetilde M)$ be
+a finite polynomial triple of total bidegrees $L_2^s$ in (CT1).
+Suppose
+\[
+       \widetilde\partial_2\widetilde q=p,
+       \qquad p\in L_1^s(W)\subset(\mathrm{CT1}),
+ \tag{CT5}
+\]
+so the right side has neither parameter nor exterior-variable terms.
+Expand its three components as in (CT3), and suppose
+\[
+                    A_2(0)=M_1(0)=0.
+ \tag{CT6}
+\]
+Put
+\[
+ \begin{gathered}
+ J=\int_0^1(1-t)M_{12}(t)\,dt,\\
+ \mathcal T(\widetilde q)=
+ \left(\int_0^1 A_1\,dt,\ \int_0^1 B_2\,dt,\
+       \int_0^1 M_1\,dt-d''J,\ \int_0^1 M_2\,dt\right).
+ \end{gathered}
+ \tag{CT7}
+\]
+Then $\mathcal T(\widetilde q)\in L_3^s(W)$ is an explicitly
+specified actual quadruple and
+\[
+       \operatorname{ev}_1\widetilde q
+        -\operatorname{ev}_0\widetilde q
+                    =\partial_3\mathcal T(\widetilde q).
+ \tag{CT8}
+\]
+In particular this criterion does not assume or prove
+$\ker\partial_2=\operatorname{im}\partial_3$.
+\end{theorem}
+
+\begin{proof}
+Put a dot for the derivative of a polynomial in $t$.  The first,
+second, and mixed exterior coefficients of the first component of
+(CT5) give
+\[
+ \begin{split}
+ \dot A_0&=d'A_1+d''M_1,\\
+ \dot M_0&=d'A_2+d''M_2,\\
+ \partial_t(A_2-M_1)&=-d'A_{12}-d''M_{12}.
+ \end{split}
+ \tag{CT9}
+\]
+The same coefficients of its second component give
+\[
+ \begin{split}
+ \dot M_0&=d''B_1+d'M_1,\\
+ \dot B_0&=d''B_2+d'M_2,\\
+ \partial_t(M_2-B_1)&=-d''B_{12}-d'M_{12}.
+ \end{split}
+ \tag{CT10}
+\]
+The signs follow by moving both exterior variables to the left.
+For example,
+$\widetilde d'(\epsilon''A_2)
+ =-\epsilon''d'A_2+\epsilon'\epsilon''\dot A_2$, whereas
+$\widetilde d''(\epsilon'M_1)
+ =-\epsilon'd''M_1-\epsilon'\epsilon''\dot M_1$.
+
+The first and second components of (CT8) now follow by integrating
+the first equation of (CT9) and the second of (CT10), since
+$d''d''J=0$.  For the third component define
+\[
+ E(t)=\dot M_0-d'M_1-d''M_2=d'(A_2-M_1).
+ \tag{CT11}
+\]
+Equation (CT9) gives $\dot E=-DM_{12}$, and (CT6) gives $E(0)=0$.
+Finite polynomial integration therefore gives
+\[
+ \int_0^1E(t)\,dt
+    =-D\int_0^1(1-t)M_{12}(t)\,dt=-DJ.
+ \tag{CT12}
+\]
+This is exactly the correction supplied by the term $-d''J$
+in the third entry of (CT7).  Thus all three components agree.
+The bidegree of $J$ is $(s-2,s-2)$, so the displayed correction
+has the required bidegree.  All integrations were finite scalar
+coefficient integrations, proving the actual-form assertion.
+\end{proof}
+
+\subsection{Applying the criterion to two caps of the same square}
+
+Retain exactly the data and the primitive convention of the recovered
+R10 module CS.  Thus $f=(f_1,\ldots,f_r)$, $r\ge3$, is a tuple
+of sections of the same metrized line bundle on $N$; $a=v(\lambda)$
+and $b=v(\mu)$ are valuations of units on all of $N$; the two
+changes affect entries $1,2$; $W=N\setminus|f=0|$; and $s=r-1$.
+The original curvature is $R$, the four norm potentials are
+$\Phi_0,\Phi_A,\Phi_B,\Phi_{AB}$, and the original projective
+curvatures are $C_i=R-D\Phi_i$.
+
+For two positive real constants $\delta_0,\delta_1$, let
+\[
+ \begin{split}
+ \psi&=-\log\|(f_3,\ldots,f_r)\|,\\
+ \Psi_i&=\min\{\psi,\Phi_0+|a|+|b|+\delta_i\},\qquad i=0,1.
+ \end{split}
+ \tag{CT13}
+\]
+At passive-zero points the first term is interpreted as $+\infty$.
+The caps are actual on all of $W$ by the ordinary-open argument
+in CS23--CS25.  Let $q_s[\Psi_i]$ denote \emph{exactly} CS36 with
+that cap, including its entire CS30 tetrahedron expression, MT15
+metric correction, scalar correction, and CPT curvature correction.
+
+\begin{theorem}[Actual independence of the cap constant]
+For the fixed whole square and fixed passive block in (CT13), there
+is the following explicit actual quadruple on all of the original $W$:
+\[
+       H_{01}=\mathcal T(\widetilde q),\qquad
+       q_s[\Psi_1]-q_s[\Psi_0]=\partial_3H_{01}.
+ \tag{CT14}
+\]
+Here $\widetilde q$ is obtained by the following finite recipe:
+\[
+ \rho(t)=3t^2-2t^3,\quad
+ H=\Psi_1-\Psi_0,\quad
+ \widetilde\Psi=\Psi_0+\rho(t)H,\quad
+ \widetilde R_*=R-\widetilde D\widetilde\Psi,\quad
+ \widetilde p_i=\Phi_i-\widetilde\Psi.
+ \tag{CT15}
+\]
+Insert these data into every term of CS36 and use the full
+operators (CT2), including all $\epsilon'\epsilon''$ coefficients.
+Then extract the coefficients in (CT7).  No extending error is
+needed for this same-passive-block comparison.
+\end{theorem}
+
+\begin{proof}
+The polynomials in (CT15) and all operations in CS36 are finite;
+in particular neither an infinite series nor a parameter-dependent
+choice of actual source layer occurs.  The curvature identity is
+literal in (CT1):
+\[
+             \widetilde R_*-\widetilde D\widetilde p_i=C_i.
+ \tag{CT16}
+\]
+All original $a,b,R,C_i$ are constant in the formal parameter.
+We prove the stronger identity required by (CT5):
+\[
+        \widetilde\partial_2\widetilde q
+                      =P_s-e_{a,b}R^{s-1},\qquad
+        e_{a,b}=(a\,d''b,b\,d'a).
+ \tag{CT17}
+\]
+
+First, CS10, MT8--MT21, CS32--CS35 are identities of finite
+graded differential expressions.  They remain valid in (CT1).
+The support step used in CS10 is unchanged: on a carrier of
+$D|c|$, the original edge difference $\Phi_j-\Phi_i$ is zero
+with all tangential first jets, while $|c|$ and its tangential
+first jets vanish.  The normalized difference is still precisely
+that same original difference by (CT15).  The exterior coefficients
+therefore satisfy the identical vanishing; no mixed formal derivative
+has been discarded.  Full nonclosed coefficient remainders in MT12
+are retained and telescope exactly as in MT20--MT21.
+
+It remains to verify the support identity CS29 for the formal
+normalization.  The two ordinary opens
+\[
+ \begin{split}
+ W_0&=\{\psi<\Phi_0+|a|+|b|+\min(\delta_0,\delta_1)\},\\
+ W_2&=\{\psi>\Phi_0+|a|+|b|\}
+ \end{split}
+ \tag{CT18}
+\]
+cover $W$, including passive-zero points in $W_2$.  On $W_0$,
+$\Psi_0=\Psi_1=\psi$, so $H=0$ as an actual scalar on this
+ordinary open.  Consequently all its actual and formal derivatives
+vanish there.  The formal normalization is the unchanged passive
+norm normalization, and CS21 proves both sides of CS29 are zero.
+This uses the original-$K$ passive projective map to
+$\mathbf P^{r-3}$; no new formal-parameter dimension argument
+is made.
+
+On $W_2$, all four norms are determined by the two affected entries.
+CS17--CS20 work for any common reference normalization.  To verify
+this in (CT1), observe that on the old corner the relation
+$\widetilde p=\widetilde q$ is the original relation $\Phi_i=\Phi_j$;
+on the changed-entry new corner,
+$\widetilde p+c=\widetilde q$ is the original relation
+$\Phi_i+c=\Phi_j$.  Their actual tangential derivatives agree,
+and their formal parameter derivatives agree because the same
+$\widetilde\Psi$ is subtracted from both sides.  These facts kill
+the specific symbol coefficients in CS19 before arbitrary remaining
+closed curvature factors are wedged.  The rank-one wall check
+$c=0$ is unchanged.  Finally the degree-one square sum is invariant
+under an arbitrary common change $p_i\mapsto p_i+h$: each edge
+residual changes by $\mathfrak a(h,\Phi_j-\Phi_i-c_e;1)$,
+whose sum is zero by endpoint and unit-weight telescoping.
+Thus CS20, and then CS18, hold coefficientwise in (CT1).
+
+Actual sheaf locality applied to each of the finitely many coefficients
+gives CS29 on all of $W$.  Combining it with the already verified
+edge, metric, scalar, and independently closed-pair corrections gives
+(CT17).  This is stronger than showing that each numerical
+$q_s[\Psi(t)]$ has the same ordinary boundary: it also controls
+the single and double exterior-variable coefficients.
+
+The ordinary endpoint evaluations of (CT15) are $\Psi_0,\Psi_1$,
+so $\operatorname{ev}_i\widetilde q=q_s[\Psi_i]$.  Each single
+exterior coefficient in any derivative polynomial in
+$\widetilde\Psi$ contains a factor $\rho'(t)$.  One sees this
+directly from the first derivatives and from
+\[
+ \widetilde D\widetilde\Psi
+  =D\Psi_0+\rho DH
+   +\epsilon'\rho' d''H-\epsilon''\rho' d'H
+   +\epsilon'\epsilon''\rho''H.
+ \tag{CT19}
+\]
+The remaining formulas contain only finite multiplication and full
+differentiation; equivalently, differentiating once in the parameter
+always leaves a factor $\rho'$, whereas two parameter differentials
+belong to the double exterior coefficient.  No double exterior term
+can turn into a single exterior term.  Since $\rho'(0)=\rho'(1)=0$,
+all single exterior coefficients of $\widetilde q$ vanish at both
+endpoints.  In particular (CT6) holds.  Applying (CT8) to (CT17)
+proves (CT14).
+\end{proof}
+
+\paragraph{Entire-presentation and field checks.}
+All operations in (CT13)--(CT19) use the original units and all their
+real absolute-value and cap walls, the original complete metric,
+and one finite common refinement of the supplied whole presentation.
+They commute with restriction and refinement, including presentations
+with non-product units such as $(T_1,T_2,T_1+T_2)$ wherever all three
+are units.  The argument is pointwise over completed residue fields,
+not restricted to rational points.  Passive factors and moving
+punctures add no hypothesis: equality is verified on the ordinary
+opens (CT18), not on a rational cover substituted for actual opens.
+No field extension, higher actual descent, domain enlargement, or
+extra growth assumption occurs.
+
+\subsection{What this removes, and what it does not remove, in the cube}
+
+For the raw six-face CS cube QH10, (CT14) implies that replacing the
+positive cap constant on any one face changes the cube by an explicitly
+specified $\partial_3$ boundary.  A finite list of replacements is
+handled by the signed sum of the corresponding $H_{01}$.  Thus the
+existence of a relative witness for QH10 is independent of those cap
+constants; arbitrary positive cap constants are not an additional
+obstruction.
+
+This conclusion does not compare distinct passive blocks.  In QH10,
+for example, $q_{a,b}(f)$ and $q_{a,b}(Cf)$ normalize by
+$(f_3,\ldots,f_r)$ and its $C$-changed tuple respectively.  Their
+uncapped norm potentials need not agree on the passive-active open.
+Then $H=0$ on $W_0$ in (CT18) is false, the formal mixed curvature
+can survive there, and the passive projective nilpotence used in
+the proof of (CT17) is no longer justified for the interpolation.
+The finite parameter criterion is therefore not an automatic
+solution of the raw cube.
+
+Likewise, six faces would cancel term by term if a single actual
+normalization were known to be simultaneously legal for all of them,
+but the existence of that common normalization is not supplied here.
+Replacing each of six different caps by an arbitrary shared function
+without proving the full CS29 identity is not permitted.
+
+No new original-$U$ Green representative is asserted by this module:
+it proves a comparison of specified overlap triples.  Applying the
+frozen RAG/RSP bridge still requires its whole-overlap relative data
+and, for a general finite cover, the remaining independent coherence
+hypotheses.  The statement is not a reproof of the frozen CS existence
+class and is not a claim that a failure of the cube would disprove G.
+
+\paragraph{Exact dependencies.}
+The only frozen mathematical inputs used are the actual differential
+algebra and carrier interfaces already used in the exact recovered
+R10 CS module, its CS10--CS36 formulas, exact MT8--MT21, the actual
+pair homotopy CPT, and the explicit triple/quadruple conventions
+QH1--QH3.  Their paths and SHA256 hashes are recorded in the companion
+dependency JSON.  The FIV five-potential identity is not invoked to
+identify a raw capped-CS triple with a PPC tetrahedron.  No unrecovered
+R10 source is used.

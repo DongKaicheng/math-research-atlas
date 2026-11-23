@@ -1,6 +1,7 @@
 // Reading diagrams for the geometric Progress cases. The mathematical source
-// is the unsigned v0.5.1 public edition, whose analytic assertions are explicit
-// hypotheses. The archived source dossiers retain their original review state.
+// retains the geometric arguments of the unsigned v0.5.1 public edition.
+// The new construction theorem discharges its precise Chow-obstruction and
+// prescribed-pair input; the broader analytic assertions remain hypotheses.
 // Every arrow below records an inference in the cited proof, not a dependency
 // inferred from a catalogue entry. Source bindings are checked by the publisher.
 const paper = '/papers/pairing-constructions';
@@ -25,6 +26,11 @@ const C = (caseId, title, tree, node, anchor, label) => ({
 const publicPaper = {
   file: 'public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex',
   sha256: '246716570c7476e2ccac6f9b3c19eb55941aca9cf265e431e1f14502272311f1',
+};
+const chowGreenBinding = {
+  file: 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex',
+  sha256: '631e594925498df62e14f69e3776f6a5c29575fbc0b9d9b88dca1f2a4a05b920',
+  locators: ['h22:main', 'h22:correction', 'h22c:numerical-zero', 'h22c:chern', 'r11p:minimal-trace-theorem', 'r11p:generic-chow-primitive'],
 };
 const productDossier = 'companion/proofs/products/inertia/all_factor_deletion_and_core_exactness.tex';
 const surfaceDossier = 'companion/proofs/products/families/surface_incidence_inverse_and_good_coefficients.tex';
@@ -57,8 +63,8 @@ function abelianRetracts() {
                   n('native-transfer', 'Chow covariance in the original K-theory', 'prop:covariance',
                     'Insert L-correspondences into the open-and-closed L-diagonal factor of the K-product. Finite trace uses [L:K]=e(L/K)f(L/K), not a residue or ramification factor alone.', 'hypothesis'),
                 ])),
-            n('analytic-inputs', 'Actual obstruction, numerical comparison and reciprocity', 'sec:analytic',
-              'The v0.5.1 edition states these as hypotheses: exact-support actual curved pairs; the full vertical numerical criterion; Chow covariance and finite trace; and the admitted-domain height theorem with independence, reciprocity, almost-everywhere vanishing, adjunction and comparison. Their independent analytic audit is unfinished.', 'hypothesis'),
+            n('analytic-inputs', 'Established curved pairs; further numerical and height hypotheses', 'sec:analytic',
+              'Hypothesis 2.2 is now established: the Chow obstruction, genuine pullbacks and exact-support actual curved pairs. This geometric deduction still assumes the full vertical numerical criterion, Chow-correspondence covariance and the required finite trace, together with admitted-domain height theory, independence, reciprocity, almost-everywhere vanishing, adjunction and comparison.', 'hypothesis', undefined, [{ href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'The established local construction' }]),
             n('both-completions', 'Both r and s=n+1−r are admitted at every finite place', 'lem:two-degrees',
               'Geometric cycle classes commute with localization. Hence Hʳ(X)=Vʳ(X) and Hˢ(X)=Vˢ(X); the height input supplies the archimedean terms and rational-equivalence descent.'),
           ])), {
@@ -67,9 +73,9 @@ function abelianRetracts() {
             'For the original cycle Z, obstruction zero means Ω_Z=DΨ for a global ordinary actual Ψ. Then γ_Z=G_Z−Ψ lies on Xᵃⁿ∖|Z|ᵃⁿ and satisfies the identity against every complementary compact actual test, with the supplied integrability.', 'conditional',
             G('all', 'Subtract a GLOBAL primitive from the original curved pair',
               'The support is the support of the specified collected cycle; no larger support is removed and no altered space replaces X.',
-              [S('prop:obstruction', 'Exact-support correction hypothesis'), S('proof:main', 'Last paragraph of the transfer proof')], [
+              [{ href: '/papers/chow-obstruction-green-pairs#h22:correction', label: 'Proved exact-support correction' }, S('proof:main', 'Last paragraph of the transfer proof')], [
                 n('support-vanishing', 'The original class has zero obstruction', link(c, 'local-transfer'), 'Use the preceding native descent result.'),
-                n('support-pair', 'The exact-support actual pair and all-test Stokes identity', 'prop:obstruction', 'D[G_Z]+δ_Z=[Ω_Z], with ordinary actual forms and every compact complementary actual test.', 'hypothesis'),
+                n('support-pair', 'The exact-support actual pair and all-test Stokes identity', '/papers/chow-obstruction-green-pairs#h22:main', 'The established pair satisfies D[G_Z]+δ_Z=[Ω_Z] on the exact complement, with ordinary actual forms and every compact complementary actual test. Actual Stokes applies to the global correction.', 'proved'),
               ])),
           n('height-formula', 'The normalized abelian formula', 'eq:height-main',
             'h_X(z,w)=[E:ℚ]⁻¹ Σⱼ ⟨uⱼ∗z_E, ᵗvⱼ∗w_E⟩Kun. The degrees on Aⱼ are r+aⱼ and dim Aⱼ+1−r−aⱼ; zero or impossible homological terms vanish.', 'conditional',
@@ -221,7 +227,7 @@ function abelianRetracts() {
     C(c, 'Separated-variable cubic hypersurfaces', 'cubics', 'cubics', 'proof:cubic', 'Cubic block theorem and finite Chow descent'),
     C(c, 'Cyclic covers with separated branch equations', 'cyclic', 'cyclic', 'proof:cyclic', 'Finite flat cover and product diagonal'),
     C(c, 'Finite products and forms over finite extensions', 'forms', 'forms', 'lem:tensor', 'Tensor and graph-conjugation proof'),
-  ], sourceBindings: [{ ...publicPaper, locators: [
+  ], sourceBindings: [chowGreenBinding, { ...publicPaper, locators: [
     'Standing analytic hypotheses; prop:obstruction; prop:numerical; prop:covariance; hyp:height-input',
     'def:abelian-retraction; thm:main; lem:model-correction; prop:abelian-zero; proof:main',
     'lem:tensor; lem:blowup; lem:degree; lem:join; proof:binary; eq:ambient-recursion; eq:center-recursion',
@@ -322,28 +328,28 @@ function surfaceProducts() {
                           'The smooth projective L°-model is regular and has an ample line bundle. Repeated surjections from sums of negative ample twists terminate in a locally free kernel, giving finite global resolutions of every prescribed component closure without modifying the good model. Their degree-r generic character is h*[Z].'),
                         n('good-native-vertical-degrees', 'Every integral vertical r-cycle has zero Chern degree', '/papers/green-constructions#r11p:potential-good-G',
                           'Smooth proper base change identifies the geometric special Chern class with the zero generic class. Over K° the special fiber is the e(L/K)-fold nilpotent thickening of its L° reduction. Integral cycles lie on that reduction; residue-field change multiplies degrees by f(L/K), so each degree stays zero. Retain all native multiplicities.'),
-                        n('good-numerical-calculus', 'The actual numerical model-Chern detector', 'prop:numerical',
-                          'This is an analytic input, applied on the projective flat native K°-model and tested against every integral vertical r-cycle. Its output is equality as a K-actual form, not merely vanishing of a current or a cohomology class; the independent analytic audit remains unfinished.', 'hypothesis'),
+                        n('good-numerical-calculus', 'The actual numerical model-Chern detector', '/papers/chow-obstruction-green-pairs#h22c:numerical-zero',
+                          'The proved detector applies to the model Chern character on the integral projective flat native K°-model, tested against every integral vertical r-cycle. It gives equality as a K-actual form, with no smooth or reduced special-fibre hypothesis.', 'proved'),
                       ])),
                   n('good-character-comparison', 'h*ΩX−Ωgood has generic degree-r Chow class zero', '/papers/green-constructions#r11p:generic-chow-primitive',
                     'Choose ΩX for the original specified cycle and compare on a common model of Y. Strict Chern pullback and invariance of the original model metrics under refinement preserve h*ΩX. The resolutions have the same generic class h*[Z], and Ωgood=0 by the preceding calculation.', 'conditional'),
                   n('good-constructive-primitives', 'The global Chow-zero primitive retains its original line sums', '/source-files/' + supportedDossier,
-                    'The Adams degree-r projector reduces a generic Chow-zero character to a generically K₀-zero virtual class. The finite K₀ relation is resolved by generically acyclic complexes, whose exact generic open is all Y. Their construction gives finite-flat bⱼ on all Y and the permitted global Gⱼ used above. The strict actual Chern and minimal-trace interfaces remain assumptions.', 'hypothesis', undefined,
-                    [GS('r11p:generic-chow-primitive', 'Adams projection and the generic K₀-zero proof'), D(goodCoverDossier, 'r11o:finite-good-vanishing: the stronger structured form of the primitive')]),
+                    'The new theorem proves existence of a global actual primitive by Adams projection and generically acyclic complexes. This descent argument additionally requires its stronger structured representation by the stated finite-flat bⱼ and permitted original global line sums Gⱼ. That extra representation remains an explicit input here.', 'hypothesis', undefined,
+                    [{ href: '/papers/chow-obstruction-green-pairs#r11p:generic-chow-primitive', label: 'Established global primitive for generic Chow-zero characters' }, D(goodCoverDossier, 'r11o:finite-good-vanishing: the stronger structured form of the primitive')]),
                 ])),
             n('good-composite-trace-calculus', 'Composite minimal trace, native degree, Stokes and current injectivity', '/source-files/' + goodCoverDossier,
               'Each h∘bⱼ is finite flat on all X with complete degree a dⱼ. Trace the original Gⱼ in the permitted module, with normalization (a dⱼ)⁻¹ and the original absolute value. The calculation uses every compact K-actual complementary test. No general trace on an arbitrary already constructed βY is assumed.', 'hypothesis'),
           ])), {
-        scope: 'K/ℚp is finite with its original absolute value. Let X/K be smooth projective geometrically integral, n=dim X≥1, 1≤r≤n, and Z a prescribed rational cycle with zero geometric ℓ-adic class for one ℓ≠p. Assume X_L has a smooth projective model over L° for a finite valued L/K. The actual Chern, numerical detector, structured primitive, minimal trace, Stokes and current-injectivity interfaces remain explicit conditional inputs.',
+        scope: 'K/ℚp is finite with its original absolute value. Let X/K be smooth projective geometrically integral, n=dim X≥1, 1≤r≤n, and Z a prescribed rational cycle with zero geometric ℓ-adic class for one ℓ≠p. Assume X_L has a smooth projective model over L° for a finite valued L/K. The new construction theorem establishes model Chern forms, their numerical detector, the restricted trace and global Chow-zero primitives. This good-cover route retains its stronger structured-primitive and composite-trace descent requirements.',
         related: [n('good-exact-support', 'The original GZ−βX is strong G on exactly Xᵃⁿ∖|Z|ᵃⁿ', 'prop:obstruction',
           'The global primitive does not add poles or change the prescribed cycle. The original curved pair and every compact actual complementary test remain the ones used in the final identity.', 'conditional',
           G('all', 'The global native primitive + the original exact-support curved pair',
             'Subtract the globally defined βX with DβX=ΩX from GZ on the exact prescribed complement. The all-test Stokes identity removes only the curvature term.',
-            [D(goodCoverDossier, 'r11o:sufficient and r11o:finite-good-vanishing'), S('prop:obstruction', 'The exact-support actual-pair input')], [
+            [D(goodCoverDossier, 'r11o:sufficient and r11o:finite-good-vanishing'), { href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'Established exact-support actual pair' }], [
               n('good-support-primitive', 'DβX=ΩX on all Xᵃⁿ', link(c, 'good-native-obstruction'),
                 'Use the native primitive constructed above, not a primitive defined only away from the cycle.'),
-              n('good-original-pair', 'D[GZ]+δZ=[ΩX] on every compact actual test', 'prop:obstruction',
-                'Use the prescribed collected cycle, its exact support and the supplied local integrability. The curved-pair theorem remains an analytic input.', 'hypothesis'),
+              n('good-original-pair', 'D[GZ]+δZ=[ΩX] on every compact actual test', '/papers/chow-obstruction-green-pairs#h22:main',
+                'The construction theorem supplies the pair for the prescribed collected cycle, with its original coefficients, exact support complement and all compact actual complementary tests.', 'proved'),
             ]))],
       }),
     T(c, 'deletion', 'Deletion and the residual core', 'The complete product-model decomposition',
@@ -481,6 +487,7 @@ function surfaceProducts() {
     C(c, 'Hilbert schemes of points on surfaces', 'hilbert', 'hilbert', 'thm:hilbert', 'Incidence decomposition and degree shifts'),
     C(c, 'Moduli spaces on K3 and abelian surfaces', 'moduli', 'moduli', 'thm:moduli', 'Finite specialization and Bülles application'),
   ], sourceBindings: [
+    chowGreenBinding,
     { ...publicPaper, locators: ['Standing analytic hypotheses; sec:analytic; prop:obstruction; prop:numerical; prop:endpoint-input; prop:product-model; eq:inner-inverse; eq:numerical-correction; eq:image-saturation', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; eq:hilbert-motive; thm:hilbert; lem:specialize-certificate; thm:moduli'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/products_moduli.tex', sha256: 'bbd62b83d09b3843fbc85bfcd3960681c19e6a84779c876a34781868232d2829', locators: ['prop:product-model and proof description', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; thm:hilbert; lem:specialize-certificate; thm:moduli, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + productDossier, sha256: 'ccd5bc7fa68826143984175e206ab9e43657c712a48ab4b3901de430fc4c461d', locators: ['Status paragraph', 'r20dp:towers; r20dp:projectors; r20dp:generator; r20dp:core', 'DP20.1–DP20.16; r20dp:model; r20dp:green, complete proofs'] },
