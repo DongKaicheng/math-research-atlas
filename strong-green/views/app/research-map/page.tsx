@@ -95,6 +95,13 @@ export default function ResearchMapPage() {
       <p><a href="/results/proof-diagrams">Follow the detailed proof diagrams for every Progress result →</a></p>
     </header>
 
+    <section className="map-reading-key" aria-labelledby="strong-green-height-theorem">
+      <h2 id="strong-green-height-theorem">Why Strong G matters: a full height construction</h2>
+      <p><strong>Theorem 7.5 (PH16) proves the implication from Strong G to the full Beilinson–Bloch height pairing, within the stated analytic foundations.</strong> Strong G is required at every finite completion in both complementary codimensions, for every specified geometrically homologically trivial rational cycle. The proof includes reciprocity, a finite sum over places and descent through rational equivalence.</p>
+      <p>The first tree keeps the analytic and global inputs together at its AND connection. General Strong G remains open; positivity, nondegeneracy and arithmetic finiteness are further questions.</p>
+      <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem and complete proof →</a> · <a href="/papers/global-height-pairing#sec:height-hypotheses">Analytic foundations</a> · <a href="/about">Review status</a></p>
+    </section>
+
     <LogicForest trees={logicalTrees} />
 
     <details className="map-reference-index" id="complete-record-index">

@@ -9,7 +9,7 @@ import { progressProofRequirements } from './progress-proof-required.mjs';
 export const progressProofEdition = 'v0.5.1';
 export const progressProofInventory = {
   file: 'strong-green/views/content/pairing-progress.mjs',
-  sha256: 'cfab4112871bde2719b5a9d510240cf88695fdb6834f1e61cef52e0eb18b965d',
+  sha256: 'b53862e700bbb393e19501381e7e0181fedba737b3475ca3c690dcf9cec9283d',
 };
 export const progressProofPath = '/results/proof-diagrams';
 const authored = [...progressProofCore, ...progressProofGeometry, ...progressProofModels];

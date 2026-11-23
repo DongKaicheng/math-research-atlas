@@ -25,12 +25,12 @@ export default function Page() {
     <section className="programme-target" aria-labelledby="target-heading">
       <h2 id="target-heading">The main objective</h2>
       <MathText text={programmeOverview.target} />
-      <p>The local conjecture supplies Green forms; a global construction must also establish the local sum, independence of choices and rational equivalence. The paper states each of these requirements explicitly.</p>
+      <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem 7.5 (PH16)</a> establishes the finite sum of local terms, independence of Green choices and descent to both Chow groups from Strong G at every finite completion in both complementary codimensions, within the <a href="/papers/global-height-pairing#sec:height-hypotheses">stated analytic foundations</a>. This identifies the significance of the local conjecture for the global height problem.</p>
     </section>
 
     <section className="programme-logic" aria-labelledby="logic-heading">
       <h2 id="logic-heading">The logical implications</h2>
-      <p>There are two routes to the global pairing: enlarge the obstruction-zero domain, or construct it directly from strong Green forms with the additional analytic hypotheses.</p>
+      <p>There are two routes to the global pairing: enlarge the obstruction-zero domain, or apply the proved principal-push theorem directly to strong Green forms. Each route keeps its stated analytic hypotheses and review status.</p>
       <table className="programme-implications">
         <thead><tr><th scope="col">Hypotheses</th><th scope="col">Conclusion</th><th scope="col">Argument</th></tr></thead>
         <tbody>{programmeImplications.map(item => <tr key={item.id}>
@@ -42,18 +42,18 @@ export default function Page() {
     </section>
 
     <section className="programme-objectives" aria-labelledby="objectives-heading">
-      <header><h2 id="objectives-heading">The research problems</h2><p>Steps 1–3 concern existence. Step 4 identifies the resulting height. Steps 5–6 ask for additional arithmetic properties; they do not follow from existence alone.</p></header>
+      <header><h2 id="objectives-heading">The construction and further research</h2><p>Steps 1–2 address local existence. Step 3 is the proved conditional passage to a full height pairing. Step 4 concerns comparison with classical constructions. Steps 5–6 ask for additional arithmetic properties.</p></header>
       <nav className="programme-section-links" aria-label="Research problems">{programmeSteps.map(step => <a key={step.id} href={"#" + step.id}>{step.number}. {step.title}</a>)}</nav>
       {programmeSteps.map(step => <section className="programme-problem" id={step.id} key={step.id}>
         <h3><span>{step.number}.</span> {step.title}</h3>
         <p className="programme-problem-goal">{step.goal}</p>
         <div className="programme-problem-formula"><MathText text={step.formula} /></div>
         <dl>
-          <div><dt>Proposed argument</dt><dd>{step.method}</dd></div>
+          <div><dt>{step.methodLabel || 'Proposed argument'}</dt><dd>{step.method}</dd></div>
           <div><dt>Consequence</dt><dd>{step.output}</dd></div>
           <div><dt>Prerequisites</dt><dd>{step.depends}</dd></div>
         </dl>
-        <a className="programme-section-paper" href={step.paper}>Precise statement and research plan <span aria-hidden="true">→</span></a>
+        <a className="programme-section-paper" href={step.paper}>{step.linkLabel || 'Precise statement and research plan'} <span aria-hidden="true">→</span></a>
       </section>)}
     </section>
 
