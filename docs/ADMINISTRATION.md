@@ -1,5 +1,22 @@
 # Participation and administration entry points
 
+## Independent management implementation
+
+`management/` contains the standalone GitHub-login service, private SQLite
+storage, project roles, source editor, exact-version review, owner-approved
+public PR adapter, API access, and portable deployment configuration. Its
+setup and cutover instructions are in [management/README.md](../management/README.md).
+The implementation needs its own host and OAuth registration; merging its code
+or deploying GitHub Pages does not start it. Existing public management links
+are changed only after the replacement host and real sign-in are verified.
+
+The legacy Site workflow below remains a description of the older service.
+Its account IDs, grants and private drafts are not automatically transferred
+into the independent database. Any migration must verify GitHub numeric IDs
+and preserve the private records' original scope and provenance.
+
+## Existing participation routes
+
 The public site welcomes new mathematical projects and applications to manage
 existing projects. Both use this repository's existing public GitHub Issues:
 

@@ -1,0 +1,12 @@
+{$MANAGEMENT_DOMAIN} {
+	encode zstd gzip
+	header X-Robots-Tag "noindex, nofollow, noarchive"
+	reverse_proxy management:8787
+}
+
+# Docker Compose's optional tls profile supplies MANAGEMENT_DOMAIN and DNS must
+# resolve it to this host. Caddy serves HTTPS; the application keeps enforcing
+# APP_ORIGIN, sessions, CSRF, and project authorization.
+#
+# For a host-installed Caddy, replace management:8787 with 127.0.0.1:8787.
+# Do not add request/URL logging that records OAuth callback codes or tokens.

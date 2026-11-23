@@ -1,0 +1,24 @@
+name: Check standalone management
+on:
+  pull_request:
+    paths: ['management/**', 'package.json', 'package-lock.json', '.github/workflows/management.yml']
+  push:
+    branches: [main]
+    paths: ['management/**', 'package.json', 'package-lock.json', '.github/workflows/management.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run management:check
+      - name: Build portable image without credentials
+        run: docker build -f management/Dockerfile -t openmath-management:check .
