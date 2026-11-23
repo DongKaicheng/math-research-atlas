@@ -112,7 +112,7 @@ export async function buildStrongGreen({root,output,base,origin,repository}){
   ];
 
   const url=p=>base+p;
-  const currentAssetNames=['research-map.css','research-map.js','logic-tree.css','progress-proofs.css'];
+  const currentAssetNames=['research-map.css','research-map.js','logic-tree.css','progress-proofs.css','overview.css'];
   const currentAssetVersions=new Map(await Promise.all(currentAssetNames.map(async name=>[
     name,createHash('sha256').update(await readFile(path.join(root,'strong-green',name))).digest('hex').slice(0,16),
   ])));
@@ -178,6 +178,7 @@ ${noindex||archived?'<meta name="robots" content="noindex,follow">':''}
 ${!archived&&route==='/'&&process.env.SITE_BRAND==='OpenMath'?'<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage',name:title,url:canonical,description,isPartOf:{'@id':origin+'/#website'},about:['Beilinson–Bloch height pairing','Strong Green conjecture','Arakelov geometry','Berkovich spaces']})+'</script>':''}
 <link rel="icon" type="image/svg+xml" href="${url('/assets/favicon.svg')}"><link rel="stylesheet" href="${url(assetPath+'/katex.min.css')}"><link rel="stylesheet" href="${url(assetPath+'/strong-green.css')}">
 ${archived?'':`<link rel="stylesheet" href="${currentAsset('research-map.css')}">`}
+${!archived&&route==='/'?`<link rel="stylesheet" href="${currentAsset('overview.css')}">`:''}
 ${!archived&&logicRoute?`<link rel="stylesheet" href="${currentAsset('logic-tree.css')}">`:''}
 ${!archived&&(proofRoute||route==='/results')?`<link rel="stylesheet" href="${currentAsset('progress-proofs.css')}">`:''}
 </head><body><a class="skip-link" href="#main-content">Skip to content</a>
@@ -221,7 +222,7 @@ ${route==='/records'?`<script defer src="${url(assetPath+'/records.js')}"></scri
     const title=typeof metadata.title==='string'?metadata.title:metadata.title?.absolute||project.title;
     const description=metadata.description||project.summary;
     const searchTitle=route==='/'&&!base?'Beilinson–Bloch Heights and Strong Green Conjecture':title;
-    const searchDescription=route==='/'&&!base?'A research programme in Arakelov geometry: Beilinson–Bloch height pairings, the strong zero-curvature Green conjecture, Berkovich forms and arithmetic positivity.':description;
+    const searchDescription=description;
     const node=await module.default(props);
     const body=renderToStaticMarkup(node);
     const currentRoute=projectPath+(route==='/'?'/':trailing(route));
