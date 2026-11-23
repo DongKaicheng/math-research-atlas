@@ -1,0 +1,268 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,enumitem,booktabs,array,longtable,fancyhdr}
+\usepackage{xcolor}
+\definecolor{MathInternalLink}{HTML}{1F4E79}
+\definecolor{MathSectionLink}{HTML}{00656D}
+\definecolor{MathEquationLink}{HTML}{643F7A}
+\definecolor{MathCitationLink}{HTML}{2F6B3C}
+\definecolor{MathExternalLink}{HTML}{843C39}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=MathInternalLink,citecolor=MathCitationLink,
+urlcolor=MathExternalLink,linktoc=all,bookmarksnumbered=true,
+pdftitle={Arithmetic Lefschetz theory, residual regulators, and integral heights},
+pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\crefname{conjecture}{conjecture}{conjectures}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{question}{question}{questions}
+\Crefname{question}{Question}{Questions}
+\DeclareRobustCommand{\MathSecref}[1]{\begingroup\hypersetup{linkcolor=MathSectionLink}\Cref{#1}\endgroup}
+\DeclareRobustCommand{\MathEqref}[1]{\begingroup\hypersetup{linkcolor=MathEquationLink}\eqref{#1}\endgroup}
+\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}\newcommand{\A}{\mathbb A}\newcommand{\Fbar}{\overline F}
+\newcommand{\CH}{\operatorname{CH}}\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Hom}{\operatorname{Hom}}\newcommand{\End}{\operatorname{End}}
+\newcommand{\Spec}{\operatorname{Spec}}\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\rad}{\operatorname{rad}}\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}\newcommand{\Griff}{\operatorname{Griff}}
+\newcommand{\AJ}{\operatorname{AJ}}\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\cl}{\operatorname{cl}}\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\Td}{\operatorname{Td}}\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\homol}{\mathrm{hom}}\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\et}{\textnormal{ét}}\newcommand{\cont}{\mathrm{cont}}
+\newcommand{\cP}{\mathcal P}\newcommand{\cO}{\mathcal O}
+\newcommand{\cD}{\mathscr D}\newcommand{\cV}{\mathcal V}
+\newcommand{\tGamma}{{}^t\Gamma}
+\numberwithin{equation}{section}
+\setlist{leftmargin=2em,itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{3pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Lefschetz theory and integral heights}
+\fancyhead[R]{\small Research archive}\fancyfoot[C]{\thepage}
+\title{Arithmetic Lefschetz theory, residual regulators,\\
+and integral heights on products of curves}
+\author{}
+\date{Research note, second round --- 16 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a product of pointed curves, we identify noncentral vanishing in
+the all-\(h^1\) Chow groups of its subproducts with arithmetic hard
+Lefschetz for product polarizations. An explicit primitive identity
+expresses the signed height as a weighted sum of central heights.
+These identities reduce primitive integral Northcott to the central
+algebraic Abel--Jacobi kernel and residual integral Northcott.
+We construct a residual arithmetic Abel--Jacobi map on the central
+Griffiths quotient by applying an actual Chow projector to continuous
+étale cohomology. We then separate integral Northcott finiteness into
+three arithmetic problems: rational detection, a common integral
+lattice, and control of the fields of definition. Trace and
+Hermite--Minkowski give an exact ramification criterion for the last
+problem. Finally, in Jacobian twisting families we prove a normalized
+Quillen projection-formula isometry and its rank-zero Deligne-pairing
+specialization. The height statements apply to a given system with
+correspondence adjunction and the classical curve normalization.
+\end{abstract}
+{\hypersetup{linkcolor=MathSectionLink}\tableofcontents}
+
+\section{Introduction}\label{sec:introduction}
+
+Let \(F\) be a number field. For a smooth projective variety \(X/F\)
+of dimension \(n\), set
+\[
+ V^r(X_E)=\CH^r(X_E)_{\homol,\Q}
+\]
+for every finite extension \(E/F\). A Beilinson--Bloch height pairs
+\(V^r\) with \(V^{n+1-r}\). Nondegeneracy, positivity and finiteness
+of integral height balls ask different questions about this pairing.
+On products of curves, the tensor Chow projectors make their
+relationship explicit.
+
+Write \(X=\prod_{i=1}^n C_i\), choose points \(o_i\in C_i(F)\), and
+put \(H_i=p_i^*[o_i]\). For \(S\subseteq\{1,\ldots,n\}\), let
+\[
+ Y_S=\prod_{i\in S}C_i,\qquad
+ \Pi_S=\bigotimes_{i\in S}
+  (\Delta_{C_i}-o_i\times C_i-C_i\times o_i),\qquad
+ U_S^c(E)=\Pi_{S*}V^c(Y_{S,E}).
+\]
+The empty subproduct has zero homologically trivial Chow group.
+The central degree of a nonempty subproduct is characterized by
+\(|S|=2c-1\).
+
+\begin{theorem}[Arithmetic Lefschetz reduction]
+\label[theorem]{thm:main-lefschetz}
+Fix positive integers \(a_i\) and
+\(\ell=\sum_i a_iH_i\). For every finite \(E/F\), the following
+conditions are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \(U_S^c(E)=0\) for every \(S,c\) with \(|S|\ne2c-1\).
+\item For \(1\le r\le\lfloor(n+1)/2\rfloor\),
+\[
+ \ell^{n+1-2r}:V^r(X_E)\xrightarrow{\sim}V^{n+1-r}(X_E).
+\]
+\end{enumerate}
+In particular, condition (ii) for one choice of positive integers
+\(a_i\) is equivalent to condition (ii) for every such choice,
+with the points \(o_i\) fixed.
+\end{theorem}
+
+The proof in \MathSecref{sec:lefschetz-proof} is a calculation in
+actual Chow groups. Each summand is a tensor product
+\[
+ U_S^c(E)\otimes_\Q
+ \Q[x_i:i\notin S]/(x_i^2),
+\]
+where \(x_i\) represents \(a_iH_i\). Multiplication by \(\ell\)
+acts on the second factor. A noncentral core places the centre of
+this Lefschetz string in the wrong degree, forcing a failure of
+injectivity or surjectivity.
+
+The height-theoretic statements use a given system of pairings
+\(h_X\) with the four properties in
+\MathSecref{sec:height-data}: symmetry and bilinearity, absolute
+field-extension invariance, correspondence adjunction, and the
+negative Néron--Tate normalization on curves. Under these assumptions,
+the same calculation yields an exact identity. If \(|S|=2c-1\),
+\(m=n-|S|\), \(t=r-c\), and
+\(z_S=\sum_{|T|=t}u_Tx_T\) is primitive, then
+\begin{equation}\label{eq:intro-squares}
+ (-1)^r h_X(z_S,\ell^{n+1-2r}z_S)
+  =(m-2t)!\prod_{i\notin S}a_i
+       \sum_{|T|=t}(-1)^c h_{Y_S}(u_T,u_T).
+\end{equation}
+Here \(x_T=\prod_{i\in T}x_i\), interpreted by the fixed Chow
+embeddings of \MathSecref{sec:chow-blocks}. The proof in
+\MathSecref{sec:primitive-proof} determines both the sign and the
+factorial. It reduces real primitive positivity and integral
+Northcott on \(X\) to central cores, with explicit constants and
+uniform denominators.
+
+The central core contains two different arithmetic pieces. Suppose
+\(Y=\prod_{i=1}^{2c-1}C_i\), \(U_E=\Pi_*V^c(Y_E)\), and
+\(A_E=U_E\cap\CH^c(Y_E)_{\alg,\Q}\), where algebraic triviality is
+geometric. After a fixed finite extension \(F_0/F\), an actual
+self-transpose projector \(e\le\Pi\) realizes the maximal
+curve-generated subspace of \(\Pi H^{2c-1}(Y)\). Put \(R=\Pi-e\).
+The construction and its consequences are proved in
+\MathSecref{sec:central-projector}. They give
+\[
+ U_E=eU_E\oplus RU_E,\qquad
+ RA_E=\ker(\AJ_\Q|_{A_E}),\qquad
+ RU_E/RA_E\simeq G_E:=U_E/A_E.
+\]
+The first summand has a classical Néron--Tate height. Orthogonalizing
+by \(R\) gives a canonical residual pairing \(h_G\) on \(G_E\).
+
+For the projected integral images, central Northcott is equivalent
+to vanishing of \(RA_E\) and residual Northcott
+(\Cref{thm:central-northcott}). Northcott itself forces real
+positive definiteness, even without a finite-rank assumption:
+rounding multiples of a real null vector would otherwise give
+infinitely many integral vectors of bounded height
+(\Cref{lem:northcott-real}). Together with the primitive formula,
+these facts give the exact equivalence between the product and
+residual programs in \Cref{thm:program-equivalence}.
+
+\begin{theorem}[Residual arithmetic regulator]
+\label[theorem]{thm:main-regulator}
+For every prime \(\ell_0\) and finite \(E/F_0\), set
+\[
+ V_{\ell_0}=R_*H^{2c-1}_{\et}(Y_{\Fbar},\Q_{\ell_0}(c)).
+\]
+There is a natural \(\Q\)-linear map
+\[
+ a_{\ell_0,E}:G_E\longrightarrow H^1(E,V_{\ell_0})
+\]
+induced by the continuous étale cycle class. It is independent of
+the curve-visible Chow lift under the common cohomological
+identification, and is compatible with restriction and trace.
+There is one finite set \(S_0\) of places of \(F_0\) such that
+inflation identifies
+\[
+ H^1(G_{E,S_E},V_{\ell_0})\simeq H^1(E,V_{\ell_0}),
+\]
+where \(S_E\) consists of places above \(S_0\) and \(\ell_0\).
+This whole target is finite-dimensional over \(\Q_{\ell_0}\).
+\end{theorem}
+
+In \MathSecref{sec:regulator-proof}, the \(R\)-part of
+Hochschild--Serre has exactly one geometric row. A curve-generated
+algebraically trivial class maps to zero on its only associated
+graded term, hence to zero in the whole target. This provides an
+arithmetic detector on the Griffiths quotient without choosing a
+splitting of a multi-step filtration. The proof is completed in
+\MathSecref{sec:fixed-model}: the residual representation has
+weight \(-1\), so local Galois cohomology at good places proves
+finite-dimensionality of the whole target. Scalar-extended
+injectivity of the regulator would imply finite rational rank.
+
+Finite rank and real positivity still leave an integral problem.
+For a subgroup \(\Lambda\) of a finite-dimensional rational space
+with a real positive quadratic form, Northcott is equivalent to one
+uniform denominator bound in a rational basis. We prove an
+all-prime saturation criterion for this bound in
+\MathSecref{sec:all-prime}. We also give a weak-Mordell--Weil plus
+height-gap criterion, including an explicit bound for the number
+of classes in a height ball.
+
+The field of definition introduces a further condition. If an
+integral class \(\xi\) is represented over \(E\), its minimal
+\emph{class} field \(K=F_0(\xi)\) may be smaller than the field of
+its representative. Trace nevertheless gives
+\[
+ [E:K]\xi\in\Lambda(K).
+\]
+Consequently, fixed-field Northcott together with a finite
+ramification set for minimal class fields at bounded height and
+degree is equivalent to bounded-degree Northcott
+(\MathSecref{sec:ramification-proof}). An explicit Galois-module
+example shows why uniform bounds on ranks, height gaps and Kummer
+quotients alone do not settle the varying-field problem.
+
+Finally, \MathSecref{sec:metrics} treats a metric comparison on a
+proper parameter space. Let \(C\) be a pointed complex curve,
+\(J=\Pic^0(C)\), and \(\cP\) the normalized Poincaré bundle on
+\(C\times J\). Twisting a fixed perfect complex on \(C\times X\)
+by \(\cP\) gives a normalized Quillen determinant line on \(J\).
+Derived projection to \(C\) preserves this normalized metric
+exactly. In virtual rank zero, it is the flat Deligne-pairing
+metric. The proof combines the Bismut--Gillet--Soulé curvature
+formula with the origin rigidification on the compact Jacobian.
+
+These reductions fit within established conjectural frameworks.
+The arithmetic Lefschetz and primitive positivity assertions are
+the Beilinson conjectures recorded in
+\cite[Conjecture~2.3.1]{ZhangStandard}. The arithmetic regulators use
+the continuous-cohomology framework of
+\cite{Raskind,Kahn}; the determinant argument uses
+\cite{BGS,BiswasSchumacher}. The final section formulates the
+remaining detection, saturation and ramification problems for the
+specific residual motive. The proofs below supply reductions and
+comparison statements within these frameworks.
+
+\input{sections/setup}
+\input{sections/lefschetz}
+\input{sections/central_northcott}
+\input{sections/regulators}
+\input{sections/lattices}
+\input{sections/fields}
+\input{sections/determinants}
+\input{sections/program}
+\input{references}
+\end{document}

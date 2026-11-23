@@ -1,0 +1,525 @@
+% Round 15. New assembly, requiring separate independent review.
+% This file does not modify any Round 1--14 result.
+\section{PWS integration along a projective line over an arbitrary smooth base}
+\label{r15hp:section}
+
+The local perturbation of presenting moments changes the scope of the
+relative construction.  It permits a new splitting tuple at each base
+point, rather than requiring one fixed global tuple to remain separable.
+The result below is a pushforward for the particular projection with
+fiber $\mathbf P^1$, on PWS inputs.  It is not a proper pushforward
+theorem for arbitrary actual delta-forms.
+
+We work over the original finite valued extension $K/\mathbf Q_p$.
+Write $\operatorname{PS}^{p,q}=\mathcal B^{p,q,0}$, with the
+ordinary topology throughout.  An ordinary open in a smooth algebraic
+analytification is boundaryless and has the same pure dimension as its
+ambient component.  The notation $U\times\mathbf P^1$ means the
+analytic inverse image of $U$ under the algebraic projection; no
+Cartesian-product topology is asserted.
+
+\begin{theorem}[Ordinary PWS integration along $\mathbf P^1$]
+\label{r15hp:projection}
+Let $S/K$ be a smooth integral algebraic variety of dimension $d$,
+let $U\subset S^{\mathrm{an}}$ be an ordinary open, and let
+$\pi:U\times\mathbf P^1\to U$ be the projection.
+For $p,q\geq1$ and every
+$\omega\in\operatorname{PS}^{p,q}(U\times\mathbf P^1)$,
+there is a unique ordinary PWS form
+\[
+ \mathcal I_U\omega\in\operatorname{PS}^{p-1,q-1}(U)
+\tag{HP15.1}\label{r15hp:output}
+\]
+such that
+\[
+ \int_U\mathcal I_U\omega\wedge\eta
+       =\int_{U\times\mathbf P^1}\omega\wedge\pi^*\eta
+\tag{HP15.2}\label{r15hp:all-smooth-pairing}
+\]
+for every ordinary smooth compactly supported test
+$\eta\in\mathcal A_c^{d+1-p,d+1-q}(U)$.
+The operator is linear and commutes with restriction to ordinary
+base opens.  Degrees outside the dimension range are interpreted
+as zero; if $p=0$ or $q=0$, the current pushforward is zero by
+relative degree.  Every auxiliary finite cover is removed using
+its full native algebraic degree.
+\end{theorem}
+
+\begin{proof}
+We construct the representative near an arbitrary $x\in U$.
+
+\emph{Complete-fiber presentations and a finite etale splitting.}
+Choose a smooth affine algebraic chart $V$ containing $x$.
+Lemma~\ref{r15b:Laurent-fiber-exists} applies to $\omega$ on the
+inverse image of $U\cap V^{\mathrm{an}}$.  It supplies finitely
+many algebraic Laurent source domains whose ordinary interiors
+cover the complete fiber over $x$, and then cover the complete
+inverse image of a smaller ordinary base neighborhood.  Their
+defining conditions have scalar constant thresholds on compact
+coordinate boxes.  All presenting units are rationalized as
+quotients of polynomials in $z$ or $1/z$ with coefficients regular
+on $V$.
+
+Apply Proposition~\ref{r15b:separable-perturbation}.  Its changes
+preserve each entire source domain, including its boundary and
+every point excluded from it, and preserve every presenting unit
+norm on an ordinary neighborhood of the domain.  Consequently
+the represented actual form is unchanged.  At $x$, the new
+polynomials have nonzero leading and constant coefficients and
+pairwise disjoint simple roots.  Corollary~\ref{r15b:local-etale-splitting}
+therefore gives a Zariski open $V^g$ containing $x$ and a finite
+etale surjective map
+\[
+                    a:V'\longrightarrow V^g
+\tag{HP15.3}\label{r15hp:local-cover}
+\]
+of smooth integral algebraic varieties on which all those roots
+split as regular units.  Their pairwise differences are units.
+Append the fixed marks $0$ and $\infty$.
+
+If needed, the cover may be chosen Galois: order all roots of the
+total monic polynomial in the finite etale splitting algebra and
+choose a connected component.  Its function field is generated
+by all the roots, hence is the splitting field of the original
+polynomial.  It is a finite Galois extension.  The resulting
+normal finite etale cover is a torsor for that Galois group.
+No ramified normalization or alteration is used here.
+
+Choose a compact affinoid neighborhood $B$ of $x$ inside the
+ordinary neighborhood where the complete-fiber cover holds, and
+put $B'=a^{-1}(B)$.  Set $\Omega=B^\circ$ and
+$\Omega'=a^{-1}(\Omega)$, shrinking $B$ first if necessary.
+The compact affinoid $B'$ contains $\Omega'$ in its ordinary
+interior.  The pulled-back form is denoted $\omega'$.  The
+finite base tuple $b$ contains all leading factors and all
+nonzero root differences.  Proposition~\ref{r15b:local-whole-source-presentation}
+gives one intrinsic PWS tensor for $\omega'$ on the whole finite
+polyhedral moment image of
+\[
+ W_{B'}=(B'\times\mathbf A^1_z)\setminus
+                         \bigcup_{i=1}^m\{z=a_i\},
+ \qquad a_1=0,
+\tag{HP15.4}\label{r15hp:whole-source}
+\]
+in the genuine tuple $(b,z-a_1,\ldots,z-a_m)$.  All source-domain
+inequalities, including the fixed coordinate boxes, are accounted
+for in this tuple.  This is a statement on the complete moment
+image over $B'$, not only on a skeleton or on selected fiber
+points.
+
+\emph{Excision of every marked tail.}
+For a finite marked section $s_i$ or for the infinity section,
+the actual form
+\[
+              \omega'-\pi'^*s_i^*\omega'
+\tag{HP15.5}\label{r15hp:graph-difference}
+\]
+has zero restriction to that algebraic graph.  The frozen
+algebraic immersion-germ isomorphism, Round 14
+\texttt{r14l:germ-iso}, makes it zero on an ordinary neighborhood
+of the graph.  It applies locally even though $\omega'$ is only
+given on an ordinary open.  The graph over $B'$ is compact.
+The continuous chordal distance to it has a strictly positive
+minimum on the complement of any chosen such neighborhood in
+$B'\times\mathbf P^1$.  Thus one can choose a uniform small
+chordal tube on which
+$\omega'=\pi'^*\beta_i$, where $\beta_i=s_i^*\omega'$.
+
+Choose a scalar PWS cutoff $\theta_i$ which is zero on a smaller
+tube and one off that tube.  On the complement of the section it
+can be taken as a smooth function of
+\[
+ v(z-a_i)-\min(0,v(z))-\min(0,v(a_i)),
+\tag{HP15.6}\label{r15hp:chordal-moments}
+\]
+and for infinity as a smooth function of $-\min(0,v(z))$.
+For the section $0$ the term $\min(0,v(a_i))$ is simply zero.
+The cutoff is constant zero near the deleted graph, so extends
+there as an ordinary PWS scalar.  All its moments belong to the
+same tuple: $z=z-a_1$, and $a_i=a_i-a_1$ is among the nonzero
+base differences when $i\ne1$.  Put $\theta=\prod_i\theta_i$,
+including the infinity factor.
+
+For any smooth compact complementary test $\eta'$ on $\Omega'$,
+the discarded term on the $i$th tube satisfies
+\[
+ \omega'\wedge\pi'^*\eta'
+     =\pi'^*(\beta_i\wedge\eta')=0.
+\tag{HP15.7}\label{r15hp:tail-degree}
+\]
+Indeed the form inside the pullback has bidegree $(d+1,d+1)$
+on a $d$-dimensional space.  This is equality of actual forms,
+before integration.  Applying the elementary product-cutoff
+identity to $1-\theta$ now proves
+\[
+ \pi'_*[\theta\omega']=\pi'_*[\omega']
+\tag{HP15.8}\label{r15hp:tail-current}
+\]
+against every prescribed smooth test.  No derivative of a cutoff
+is introduced, and no vertical derivative or fiberwise value is
+being substituted for this degree calculation.
+
+\emph{A genuine finite presentation with compact moment support.}
+The retained form $\theta\omega'$ is zero on ordinary
+neighborhoods of every deleted graph and infinity.  Its support
+in the complement of those graphs is proper over $\Omega'$.
+The uniform lower chordal bounds and the infinity cutoff bound
+all $|z-a_i|$ above and away from zero over $B'$.  The base
+moments are bounded on $B'$.  Hence its entire moment support is
+contained in a compact portion of the finite polyhedral image
+in \eqref{r15hp:whole-source}.
+
+Multiplication of that intrinsic tensor by the displayed cutoffs
+gives one PWS tensor on the entire source image; it is tangentially
+zero off that compact portion.  For precision, take three nested
+large Euclidean cubes, with the support in the interior of the
+smallest.  Extend the intrinsic tensor near its intersection with
+the largest cube using the frozen degreewise finite-polyhedron
+PWS extension lemma, Round 14 \texttt{r14f:extension}.  Multiply
+the extension by a Euclidean smooth cutoff equal to one near the
+smallest intersection and supported in the extension neighborhood
+and in the interior of the largest cube.  It can be extended by
+zero to the entire ambient Euclidean space.  On the source image
+it agrees with $\theta\omega'$ everywhere: in the intermediate
+collar the original tangential tensor is zero.  Thus this is one
+finite ordinary PWS presentation in $(b,z-a_i)$ on
+$W_{\Omega'}$.  It is not zero extension of a tensor restricted
+by the indicator of a moving polyhedral band.
+
+\emph{All mixed tests on the splitting cover.}
+Proposition~\ref{r15ray:analytic} now applies, with base
+$\Omega'$ of dimension $d$ and input degree $(p,q)$.
+The uniformly removed tails supply its finite integration bounds.
+It produces an ordinary PWS form $\tau'$ of degree
+$(p-1,q-1)$ satisfying
+\[
+ \int_{\Omega'}\tau'\wedge\eta'
+      =\int_{\Omega'\times\mathbf P^1}\omega'
+                                                \wedge\pi'^*\eta'
+\tag{HP15.9}\label{r15hp:upstairs-pairing}
+\]
+for every ordinary smooth compact test $\eta'$.
+The cited proposition adds every moment of that test, proves the
+refined skeleton is the marked-tree family over the refined base
+skeleton, retains the native base weight times the weight-one
+relative edge, and integrates the contracted tensor on every
+minimum-label band.  It therefore covers mixed tests and target
+moment images of insufficient initial rank.  No scalar-only
+fiber calculation is used as a substitute for that assertion.
+
+\emph{Native finite descent and ordinary gluing.}
+Let $e=\deg_K a$ be the full native degree, and define on $\Omega$
+\[
+             \tau=e^{-1}\operatorname{Tr}^{\mathrm{PS}}_a\tau'.
+\tag{HP15.10}\label{r15hp:finite-descent}
+\]
+This uses the ordinary sheaf trace of Round 14
+\texttt{r14f:pws-trace} for a finite dominant map of normal
+integral algebraic varieties, restricted to $\Omega$.
+It is available in every PWS bidegree.  For a prescribed test
+$\eta$ on $\Omega$, its all-actual-test pairing and
+\eqref{r15hp:upstairs-pairing} give
+\[
+ \begin{split}
+ \int_\Omega\tau\wedge\eta
+ &=e^{-1}\int_{\Omega'}\tau'\wedge a^*\eta\\
+ &=e^{-1}\int_{\Omega'\times\mathbf P^1}
+                  (a\times\mathrm{id})^*
+                       (\omega\wedge\pi^*\eta)\\
+ &=\int_{\Omega\times\mathbf P^1}\omega\wedge\pi^*\eta.
+ \end{split}
+\tag{HP15.11}\label{r15hp:native-calibration}
+\]
+The final equality is the frozen native finite degree formula.
+The map on the product has degree $e$, not a higher power of
+$e$.  All relevant paired supports are compact by properness of
+the projective-line projection.  Constant-field extensions,
+if present in the splitting field, are included in $e$.
+
+Local representatives constructed near different points or with
+different source domains, perturbations, labels, cutoffs, or
+finite covers have the same ordinary current on every ordinary
+overlap.  Mihatsch Proposition 4.11 makes them equal as actual
+forms.  They glue to \eqref{r15hp:output}; the same injectivity
+gives uniqueness, linearity, and restriction compatibility.
+\end{proof}
+
+\begin{lemma}[Finite etale Galois compatibility]
+\label{r15hp:finite-compatibility}
+Let $a:S'\to S$ be a finite etale Galois surjective morphism of
+smooth integral algebraic varieties, with group $H$, and restrict
+it to an ordinary open $U$ and its inverse image $U'$.
+For every PWS input $\omega$ as in Theorem~\ref{r15hp:projection},
+\[
+ a^*\mathcal I_U\omega
+       =\mathcal I_{U'}((a\times\mathrm{id})^*\omega).
+\tag{HP15.12}\label{r15hp:finite-pullback}
+\]
+\end{lemma}
+
+\begin{proof}
+Write $\tau'$ for the right side.  In its defining current
+pairing, change variables by any $\sigma\in H$.  The input is
+$H$-invariant and the automorphism has native degree one.
+Current injectivity gives $\sigma^*\tau'=\tau'$ as an actual
+PWS form.  The same calculation as
+\eqref{r15hp:native-calibration} gives
+\[
+ \operatorname{Tr}^{\mathrm{PS}}_a\tau'
+                              =|H|\mathcal I_U\omega.
+\]
+The orbit identity in the proof of Round 14
+\texttt{r14f:pws-trace}, or equivalently its Galois descent
+theorem \texttt{r14f:galois-pws}, gives
+\[
+ a^*\operatorname{Tr}^{\mathrm{PS}}_a\tau'
+             =\sum_{\sigma\in H}\sigma^*\tau'=|H|\tau'.
+\]
+Divide by the positive native degree $|H|$.
+This proof does not assume a trace base-change theorem.
+\end{proof}
+
+\begin{proposition}[Algebraic base-change naturality]
+\label{r15hp:base-change}
+Let $b:T\to S$ be an arbitrary algebraic morphism between smooth
+integral $K$-varieties.  It need not be dominant or equidimensional.
+Let $U\subset S^{\mathrm{an}}$ and $V\subset T^{\mathrm{an}}$
+be ordinary opens with $b(V)\subset U$.  For every PWS input
+$\omega$ on $U\times\mathbf P^1$,
+\[
+ b^*\mathcal I_U\omega
+       =\mathcal I_V((b\times\mathrm{id})^*\omega)
+\tag{HP15.13}\label{r15hp:base-change-formula}
+\]
+as ordinary actual PWS forms in the indicated degree.
+\end{proposition}
+
+\begin{proof}
+The assertion is local on $V$.  Around $x=b(t)$ choose the
+finite Galois etale splitting cover and the retained finite
+presentation used in the proof of Theorem~\ref{r15hp:projection}.
+Pull back the algebraic cover to an algebraic neighborhood of
+$t$ in $T$.  The resulting finite etale $H$-torsor may be
+disconnected.  Choose a connected component $T'$.  Its stabilizer
+$H_0\subset H$ acts transitively on its geometric fibers; thus
+$T'\to T$ on that neighborhood is a finite etale Galois cover
+with group $H_0$, and is surjective.  It is smooth and integral.
+One may equivalently verify this on the finite etale torsor and
+its open-and-closed connected components.
+
+On the common splitting cover, pull back the roots, all base
+units, and all the cutoffs.  They remain genuine units and
+distinct marked sections.  The root-tail equality
+\eqref{r15hp:graph-difference} pulls back as an actual equality,
+and its excision proof \eqref{r15hp:tail-degree} still applies
+with $\dim T$ in place of $d$.  The pulled retained form has the
+same finite tensor presentation through the pulled-back moments.
+
+The moment map from any compact target chart on $T'$ to the
+original base moment image is a restriction of a linear
+coordinate map after adjoining the pulled-back base units.
+The distance functions, the root-ray maps, the minimum-label
+bounds, and the two vertical contractions pull back by that map.
+Lemma~\ref{r15ray:band} therefore identifies the entire band
+integral with the pullback of the original band integral,
+including on every collapsed or lower-dimensional image face.
+Proposition~\ref{r15ray:analytic} identifies both sides with
+their prescribed currents against all tests on their respective
+bases.  Consequently \eqref{r15hp:base-change-formula} holds on
+this common splitting cover as an equality of actual PWS forms.
+
+Lemma~\ref{r15hp:finite-compatibility} identifies the pullbacks
+of the two downstairs operators with exactly those two
+upstairs operators.  Faithfulness of finite dominant actual
+pullback then proves the equality downstairs near $t$.
+Ordinary gluing finishes the proof.  The argument never pulls
+back an unspecified current, and never assumes that finite trace
+commutes with an arbitrary base change.
+\end{proof}
+
+\begin{corollary}[The product mixed comparison in arbitrary base dimension]
+\label{r15hp:product-comparison}
+Let $Y=U\times\mathbf P^1$, let
+$T=U\times\mathbf P^1_z\times\mathbf P^1_y$, and write
+$p_z,p_y:T\to Y$ and $\pi:Y\to U$ for the indicated
+projections.  For every PWS form $\gamma$ on $Y$,
+\[
+                 \mathcal I_{p_y}(p_z^*\gamma)
+                            =\pi^*\mathcal I_\pi\gamma.
+\tag{HP15.14}\label{r15hp:product-M}
+\]
+The left-hand representative has the prescribed current pairing
+against every ordinary smooth compact complementary test on $Y$.
+In particular this applies to $\gamma=\alpha$ and to
+$\gamma=h\wedge\alpha$ for a smooth reference $(1,1)$ form $h$
+on the projective line and any PWS $(1,1)$ input $\alpha$.
+\end{corollary}
+
+\begin{proof}
+Apply Proposition~\ref{r15hp:base-change} to the algebraic
+projection $S\times\mathbf P^1_y\to S$, restricted to $U$.
+The all-test assertion is Theorem~\ref{r15hp:projection}, not
+a test-class reduction to exterior products.
+\end{proof}
+
+\section{The fixed three Green operators over an arbitrary smooth base}
+\label{r15hp:green-section}
+
+Let $U\subset S^{\mathrm{an}}$ be as above and set
+$Y=U\times\mathbf P^1$.  Retain exactly the Round 14 kernel
+\[
+ g=g_0+f(z)+f(y),\qquad
+             Dg=h_z+h_y-\delta_\Delta,
+ \qquad D=d'd'',
+\tag{HP15.15}\label{r15hp:fixed-kernel}
+\]
+where $g_0$ is the standard chordal kernel and $f$ is its fixed
+global PWS correction.  The original-field normalization of the
+mass-one reference form $h$ is unchanged.
+
+\begin{lemma}[Diagonal excision in arbitrary base dimension]
+\label{r15hp:diagonal-excision}
+For $\alpha\in\operatorname{PS}^{1,1}(Y)$, the three prescribed
+Green current pairings can be computed locally over the base by
+the PWS integrands
+\[
+ \chi g\,p_z^*\alpha,\qquad
+ \chi d'g\wedge p_z^*\alpha,\qquad
+ \chi d''g\wedge p_z^*\alpha,
+\tag{HP15.16}\label{r15hp:cut-green-integrands}
+\]
+where $\chi$ is an ordinary PWS scalar identically zero near
+$\Delta$ and one off a sufficiently small ordinary neighborhood
+of $\Delta$.  The pairings are independent of all such choices
+and agree on overlaps.  All compact ordinary smooth mixed tests
+of the required bidegrees are included.
+\end{lemma}
+
+\begin{proof}
+Along the algebraic diagonal, $p_z^*\alpha-p_y^*\alpha$
+restricts to zero.  The frozen immersion-germ isomorphism makes
+it zero on an ordinary neighborhood $N$ of the diagonal.
+For a compact base affinoid $B\subset U$, the diagonal over
+$B$ is compact and the ambient $B\times\mathbf P^1\times
+\mathbf P^1$ is compact.  The chordal distance to the diagonal
+therefore supplies a uniform small tube inside $N$.  A smooth
+cutoff of the logarithmic chordal distance is zero on a smaller
+tube and one outside this tube.  It is PWS off the diagonal
+and extends as the constant zero on an ordinary neighborhood
+of the diagonal.  Shrinking to an ordinary base open inside
+$B$ gives the required local $\chi$.
+
+Let $b=d+1=\dim Y$.  On the part where a cutoff changes the
+integrand, replace $p_z^*\alpha$ by $p_y^*\alpha$.  For the
+$G$ pairing the target test has degree $(b,b)$, so
+$\alpha\wedge\eta$ has degree $(b+1,b+1)$ on $Y$ and is zero.
+For $P$ the test has degree $(b-1,b)$, and the same product has
+degree $(b,b+1)$ and is zero.  For $Q$ the degrees are
+$(b,b-1)$ and $(b+1,b)$, with the same conclusion.  Thus even
+if $d'g$ or $d''g$ has a normal component, it is wedged with
+the pullback of an already zero actual form.  The paired
+integrand vanishes before integration on that punctured tube.
+
+The cutoff products in \eqref{r15hp:cut-green-integrands} extend
+by zero as ordinary PWS forms across the diagonal, of degrees
+$(1,1),(2,1),(1,2)$.  The first actual derivatives of the PWS
+scalar $g$ away from its singular diagonal are of delta
+codimension zero.  Their products with a cutoff which is zero
+on an ordinary collar have genuine zero extension.  No
+derivative of $\chi$ is taken.
+
+The preceding degree calculation proves independence of any
+two permitted cutoffs on every compact test.  It is the same
+cutoff interpretation as the frozen prescribed Green currents;
+the discarded punctured-neighborhood pairing is literally zero,
+and no diagonal-supported current is added.  It also proves
+compatibility for tests supported on overlapping base opens.
+All remaining paired supports are compact by properness, so
+the displayed integrals are defined.
+\end{proof}
+
+\begin{theorem}[Ordinary Green outputs over every smooth algebraic base]
+\label{r15hp:green-outputs}
+Let $S/K$ be smooth and integral, and let $U\subset S^{\mathrm{an}}$
+be any ordinary open.  For every
+$\alpha\in\operatorname{PS}^{1,1}(U\times\mathbf P^1)$,
+without a symmetry or closedness hypothesis, the fixed prescribed
+currents
+\[
+ \begin{split}
+ G_U\alpha&=(p_y)_*[g\,p_z^*\alpha],\\
+ P_U\alpha&=(p_y)_*[d'g\wedge p_z^*\alpha],\\
+ Q_U\alpha&=(p_y)_*[d''g\wedge p_z^*\alpha]
+ \end{split}
+\tag{HP15.17}\label{r15hp:three-currents}
+\]
+have ordinary actual PWS representatives of degrees
+$(0,0),(1,0),(0,1)$ on $U\times\mathbf P^1$.
+Their pairings agree with the prescribed currents for every
+ordinary smooth compact complementary test, including all mixed
+tests.  They commute with ordinary restriction and with the
+pullback of the base by any algebraic morphism between smooth
+integral varieties, using the same fixed kernel.
+\end{theorem}
+
+\begin{proof}
+On each relatively compact ordinary base open choose the three
+PWS integrands \eqref{r15hp:cut-green-integrands}.
+Apply Theorem~\ref{r15hp:projection} to
+\[
+ p_y:(U\times\mathbf P^1_y)\times\mathbf P^1_z
+                                      \longrightarrow U\times\mathbf P^1_y.
+\]
+Here the base has dimension $d+1$ and is an ordinary open of the
+smooth algebraic variety $S\times\mathbf P^1_y$.
+The input degrees $(1,1),(2,1),(1,2)$ give exactly the three
+claimed output degrees.  The theorem supplies genuine ordinary
+PWS representatives and all smooth compact mixed-test pairings.
+Lemma~\ref{r15hp:diagonal-excision} identifies these pairings
+with \eqref{r15hp:three-currents}.  Current injectivity glues them
+on all ordinary overlaps and removes the choice of cutoff.
+
+There is no omitted target-collision locus in this application.
+At an arbitrary target point $(x,y)$, including one where $y$
+equals a root of some earlier presentation, the projection
+theorem selects a new complete-fiber presentation for the
+already PWS forms in \eqref{r15hp:cut-green-integrands}.
+Near $z=y$ those forms are identically zero and admit the zero
+presentation.  On the remaining compact source pieces, any
+moment involving $z-y$ is a unit and may be perturbed within
+its exact-norm class.  The resulting artificial roots are
+separated at this target point.  The new target tuple consists
+of genuine units; it never requires the logarithm of a
+vanishing function $y-a_i(x)$.  Its use represents the same
+actual integrand, not a displaced geometric diagonal.
+This is why neither a bad divisor of a fixed global splitting
+tuple nor a rigid-fiber reduction is required in this theorem.
+
+For algebraic base change, choose a permitted cutoff downstairs
+near the image of the point in question and pull it back to the
+upstairs triple product.  The actual equality defining the
+excision neighborhood pulls back, so this is also a permitted
+cutoff upstairs.  Its three PWS integrands are the genuine
+pullbacks of the downstairs ones.  Proposition~\ref{r15hp:base-change}
+for the projective-line projection identifies their actual
+outputs.  Cutoff independence and ordinary gluing prove the
+asserted naturality.  No pullback of a raw current is used.
+\end{proof}
+
+\paragraph{Exact dependencies and limits.}
+The new inputs are the local separable-moment perturbation,
+its whole-source finite-tree presentation, and the labelled-ray
+all-mixed integration theorem.  The inherited inputs are Round 14
+\texttt{arbitrary\_algebraic\_immersion\_germs.tex},
+\texttt{r14l:germ-iso};
+\texttt{finite\_pws\_descent.tex},
+\texttt{r14f:extension}, \texttt{r14f:galois-pws}, and
+\texttt{r14f:pws-trace}; the separately audited native finite
+degree formula; and Mihatsch Propositions 4.7 and 4.11 and
+Corollary 4.9(2), as used in the labelled-ray proof.
+All conclusions remain in the ordinary PWS, hence actual,
+category.  No general proper actual pushforward, ambient closed
+lifting theorem, or arbitrary analytic-map base-change theorem
+is asserted.  Cohomology, modification descent, higher-codimension
+certificates, and strong Green existence require their separate
+arguments and are not consequences asserted in this section.

@@ -1,0 +1,296 @@
+\section{External-row crossing and the precise residual in a Schur comparison}
+\label{sec:r12-external-row-gaussian-residual}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND} are the finite unpartitioned crossing
+construction, the exact residual identity (ECR9), and the Schur
+matrix calculations below.  The relative primitive of the displayed
+closed triple remains \textbf{OPEN}.  The sole construction
+contributor is the R12 matrix agent \texttt{/root/r11\_challenge}.
+This separates a genuine whole-presentation residual from an
+unsupported identification with the AGC commuting-diagonal cube.
+
+\subsection{An external row and a fixed block word}
+
+Fix $r\ge3$, the original $K,N,\overline L,f,W$ as before, and
+three selected rows, denoted $1,2,3$.  The other $r-3$ rows are
+unchanged.  A block matrix $S\in\mathrm{GL}_2(\mathcal O(N))$
+acts in rows $2,3$; write $B=\operatorname{diag}(1,S,I_{r-3})$.
+For an analytic row vector $v=(v_2,v_3)$ fix the ordered native
+word and its actual pair
+\[
+ V(v)=E_{12}(v_2)E_{13}(v_3),\qquad
+ \mathcal P_V(v;g)
+ =\mathcal P_{13,v_3}(g)
+       +\mathcal P_{12,v_2}(E_{13}(v_3)g).
+ \tag{ECR1}
+\]
+The rightmost factor acts first.  The exact matrix equality is
+\[
+                 BV(v)=V(vS^{-1})B.
+ \tag{ECR2}
+\]
+Every coefficient in these words is allowed to vanish.
+
+First supply a fixed finite unpartitioned block word
+$w=B_l\cdots B_1=S$, whose factors are row units, shears in
+rows $2,3$, and the fixed signed permutation $J_{23}$.
+For each factor use its prescribed native pair.  There is an
+explicit finite actual triple $q_w(v;g)$ with
+\[
+\begin{split}
+ \partial_2 q_w(v;g)={}&\mathcal P_V(v;g)+p(w;V(v)g)\\
+ &-p(w;g)-\mathcal P_V(vS^{-1};Bg).
+\end{split}
+ \tag{ECR3}
+\]
+This is a strict assertion about the supplied whole word, not
+about a partitioned Gaussian block.
+
+Here is a fully specified finite algorithm for the triple.  Use
+the following matrix rewrite table, always retaining its displayed
+native word before and after a substitution:
+\[
+\begin{array}{c|c|p{0.49\linewidth}}
+\text{block factor}&\text{new row vector}&\text{ordered finite rules}\\\hline
+D_2(\lambda)&(v_2/\lambda,v_3)
+ &\text{NSC on }E_{12};\text{ passive MX on }E_{13}.\\
+D_3(\lambda)&(v_2,v_3/\lambda)
+ &\text{passive MX on }E_{12};\text{ NSC on }E_{13}.\\
+E_{23}(c)&(v_2,v_3-cv_2)
+ &\text{the signed ST substitution (ECR5) on }E_{12},E_{23};
+   \text{DTC on }E_{13},E_{23};
+   \text{same-target commutation and SAR to collect }E_{13}.\\
+E_{32}(c)&(v_2-cv_3,v_3)
+ &\text{DTC on }E_{12},E_{32};
+   \text{the relabeled signed ST substitution (ECR5)};
+   \text{same-target commutation and SAR to collect }E_{12}.\\
+J_{23}&(-v_3,v_2)
+ &\text{literal signed-permutation equivariance, followed by
+   the same-target commutation of the two external shears.}
+\end{array}
+ \tag{ECR4}
+\]
+For clarity, the noncommuting shear step in the third row is the
+exact consequence
+\[
+ E_{23}(c)E_{12}(a)
+   =E_{12}(a)E_{13}(-ac)E_{23}(c)
+ \tag{ECR5}
+\]
+of the frozen ST relation; the fourth row is its relabeling.
+Its fixed substitution is the following: append the literal
+inverse pair $E_{23}(-c)E_{23}(c)$ on the right, use ST with
+parameters $a,-c$ on the middle $E_{12}(a)E_{23}(-c)$,
+cancel the now adjacent $E_{23}(c)E_{23}(-c)$ on the left,
+and commute $E_{13}(-ac)$ with $E_{12}(a)$ by the specified
+same-target witness.  The resulting word is (ECR5).
+The collection uses the fixed order of (ECR1).  For every rule
+take precisely its frozen full triple, with its orientation
+reversed when the rule is used backwards, evaluated at the
+chronological starting tuple of that subword.  Common prefixes
+and suffixes are retained exactly as in GB's finite substitution
+rule.  Each coefficient in (ECR4) is an analytic polynomial in
+the old coefficients and the supplied unit inverses.
+
+The same-target commutation in this table has a precise current
+source interface: expand its four native shears into the eight
+unit edges and use the SAN triple $\mathcal J_0$ for that closed
+loop.  Every edge changes only row $1$, all other entries remain
+literally the same, the norm vertices telescope and the unit
+weights sum to zero.  SAN therefore applies with normalization
+zero.  Its prescribed isometry jumps have zero native pair.
+Every individual shear companion is zero on its own
+small-coefficient open by TCT2, so the complete expression
+extends through all coefficient zeros.  This is a derived
+same-target facet; it does not restore the missing historical
+CG/RA source bytes or count that historical relation as a new
+independent cycle-existence class.
+
+To make the starting tuples in the algorithm unambiguous, put
+$g_0=g$, $v^{(0)}=v$, and recursively
+\[
+        g_j=B_jg_{j-1},\qquad
+        v^{(j)}=v^{(j-1)}B_j^{-1}.
+ \tag{ECR6}
+\]
+Apply the appropriate row of (ECR4) at $(g_{j-1},v^{(j-1)})$
+and add all its oriented actual triples.  Then sum over
+$j=1,\ldots,l$.  The intermediate external path pairs cancel
+literally, giving exactly (ECR3).  All rules in the table are
+strict.  In particular the passive MX rule uses its full
+difference of CS witnesses with canceling extending symbols,
+not either CS witness alone.  No cap is changed: each call keeps
+its own entire frozen expression and zero extension.  Thus this
+is an explicit finite construction with every metric and mixed
+coefficient term, on the original ordinary domains.
+
+\subsection{What changes after the GB partition}
+
+Now take the two exact GB words $w_\alpha,w_\gamma$ for $S$,
+their original overlap triple $Q_S(g)$, and their original
+ordinary partition $\theta$.  All these coefficient data depend
+on $S$, not on the input tuple $g$.  The extending pair in GB18
+is also independent of $g$.  Use (ECR3) to construct the two
+whole triples $q_\alpha(v;g),q_\gamma(v;g)$ without changing
+any of their frozen caps.  On the punctured pivot overlap set
+\[
+ \mathcal T(S,v;g)=q_\alpha(v;g)-q_\gamma(v;g)
+                        -Q_S(V(v)g)+Q_S(g).
+ \tag{ECR7}
+\]
+This is a specified finite actual triple.  It includes all of
+the ST, DTC, passive-MX, same-target and GB cap terms just listed.
+The two copies of $Q_S$ are evaluated at their \emph{different}
+original tuples, so their passive subtuples have not been
+identified.  Subtracting the two exact identities (ECR3) and
+then using GB18 proves
+\[
+                       \partial_2\mathcal T(S,v;g)=0.
+ \tag{ECR8}
+\]
+The GB errors cancel because their coefficients and original
+metric are identical, not because one cancels a curvature factor.
+
+Let $p_S(g)$ be the entire partitioned GB pair, and define the
+external crossing pair
+\[
+ \mathcal X(S,v;g)=\mathcal P_V(v;g)+p_S(V(v)g)
+                      -p_S(g)-\mathcal P_V(vS^{-1};Bg).
+\]
+The complete partition calculation is
+\[
+ \boxed{\quad
+ \mathcal X(S,v;g)
+ =\partial_2\bigl(\theta q_\alpha+(1-\theta)q_\gamma\bigr)
+                      -K_2(\theta)\mathcal T(S,v;g).
+ \quad}
+ \tag{ECR9}
+\]
+Indeed $p_S=\theta p_\alpha+(1-\theta)p_\gamma+K_2(\theta)Q_S$.
+Insert this identity twice and use the full product differential.
+Its derivative terms are precisely
+$-K_2(\theta)(q_\alpha-q_\gamma)
+ +K_2(\theta)(Q_S(V(v)g)-Q_S(g))$, giving (ECR9).
+All products have the closed-support zero extensions specified
+by RAG.  No term containing $d'\theta$ or $d''\theta$ has
+been omitted.  The pair $\mathcal X$ is independently
+$\partial_1$-closed, as also follows from GB's input-independent
+curvature expression and (ECR2).
+
+For reference, the \emph{exact sufficient missing statement} is
+a relative identity on an ordinary neighborhood of the closed
+supports of the partition derivatives,
+\[
+              \mathcal T=\partial_3 H+e_2|_W,
+         \qquad H\text{ actual},\quad e_2\in L_2^{r-1}(N)
+                       \text{ actual on that neighborhood}.
+ \tag{ECR10}
+\]
+If it is supplied, the full derivative-insertion identity
+$\partial_2K_3+K_2\partial_3=0$ yields the explicit certificate
+\[
+ \mathcal X
+   =\partial_2\bigl(\theta q_\alpha+(1-\theta)q_\gamma
+                                  +K_3(\theta)H\bigr)
+                               -K_2(\theta)e_2|_W.
+ \tag{ECR11}
+\]
+The final error extends as an actual pair on $N$ by closed-support
+zero extension.  In this section (ECR10) is \textbf{OPEN}, not a
+consequence of (ECR8).  In particular one cannot normalize every
+ST and GB witness to a cap based only on the last $r-3$ rows
+using TCT: their original unchanged passive blocks include
+different members among rows $1,2,3$.  TCT explicitly supplies
+no such cross-passive-block assertion.  Nor has (ECR7) been
+identified with the six-face raw cube of AGC.
+
+\subsection{Why this residual occurs already at three Gaussian pivots}
+
+Take an arbitrary analytic invertible three-row block
+\[
+ M=\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}
+\]
+inside an arbitrary tuple of length $r\ge3$.  On $a\ne0$ put
+$t=d/a$, $u=g/a$, and
+\[
+ S_a=\begin{pmatrix}E&F\\H&I\end{pmatrix}
+ =\begin{pmatrix}e-tb&f-tc\\h-ub&i-uc\end{pmatrix},\qquad
+ U_a=E_{12}(b/a)E_{13}(c/a).
+ \tag{ECR12}
+\]
+The first Gaussian factorization is
+\[
+       M=E_{31}(u)E_{21}(t)
+               D_1(a)\operatorname{diag}(1,S_a)U_a.
+ \tag{ECR13}
+\]
+For the first pivots $d$ and $g$, use the signed permutations
+$J_{12}$ and $J_{13}$, respectively, then the same rule.  On
+the corresponding overlaps direct matrix multiplication gives
+\[
+ \begin{split}
+ S_d&=\begin{pmatrix}t^{-1}&0\\-u/t&1\end{pmatrix}S_a
+                         =E_{32}(-u)D_2(t^{-1})S_a,\\
+ S_g&=\begin{pmatrix}1&-t/u\\0&u^{-1}\end{pmatrix}S_a
+                         =E_{23}(-t)D_3(u^{-1})S_a.
+ \end{split}
+ \tag{ECR14}
+\]
+The row labels in the right formulas are the ambient labels
+$2,3$.  On $adg\ne0$ their transition satisfies
+\[
+ T_{ga}T_{da}^{-1}
+  =\begin{pmatrix}0&-t/u\\1&1/u\end{pmatrix}
+                  =J_{23}D_3(t/u)E_{23}(u^{-1}).
+ \tag{ECR15}
+\]
+These are concrete two-row triangular/unit/Weyl words, rather
+than an abstract invocation of Gaussian elimination.
+
+They are not the entire comparison of the native pairs.  The
+upper prefixes also change:
+\[
+ \begin{split}
+ U_d&=V\bigl((E,F)/d\bigr)U_a,
+       &\operatorname{diag}(1,S_a)U_d
+          &=E_{12}(d^{-1})\operatorname{diag}(1,S_a)U_a,\\
+ U_g&=V\bigl((H,I)/g\bigr)U_a,
+       &\operatorname{diag}(1,S_a)U_g
+          &=E_{13}(g^{-1})\operatorname{diag}(1,S_a)U_a.
+ \end{split}
+ \tag{ECR16}
+\]
+Thus the specific residuals (ECR7) occur with $S=S_a$ and
+$v=(E,F)/d$ or $(H,I)/g$, starting at the actual tuple $U_af$.
+The row-unit and triangular multiplication theorems address the
+coefficient-matrix part (ECR14); they do not delete (ECR16).
+There may in addition be higher associativity requirements for
+chosen pair-comparison triples.  No complete three-pivot triple
+compatibility theorem is inferred from these matrix identities.
+
+\paragraph{Exact boundary of this calculation.}
+This source provides both a constructive strict crossing for every
+supplied finite unpartitioned block word and the full, explicitly
+located obstruction after GB partitioning.  The obstruction is
+not asserted nonzero, nonextendable, or a counterexample to Strong G.
+It is also not replaced by selected Gauss chambers, tensor probes
+or an abstract quotient primitive.  A further construction of
+(ECR10), with all the displayed original caps and ordinary zero
+domains, would be needed before this route gives a whole
+$\mathrm{GL}_3$ block certificate or an original-$U$ actual
+Green form.  The same external-row interface recurs in the
+$\mathrm{GL}_k$ Schur recursion; low-dimensional notation here
+describes that general mechanism, not a lower-dimensional
+restriction of the final Green problem.
+
+\paragraph{Exact frozen inputs.}
+SAN: \path{c8416ab1d14618f8f23724bcdad19db08a36928cb19b590a46d2306701a7a3b6}.
+TCT: \path{effdf9332b6fa606237a99a25217cdfdd44b7fd09cd685f654ff221201d68c2c}.
+ST: \path{da4de041961b99f38c6378f448a52cf30b875a122384bbcb3f207e745be8a7ca}.
+DTC: \path{9bf95b4b9ae7ec0717ec573b135c390172efcadfd5ff2b00242c2a0e7f648117}.
+MX: \path{ba5eebf4b312b7df4f3a7beceacaafbfaa171cbe97eb2614af7e717197d450fa}.
+GB: \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9}.
+NSC, SAR, RAG and SHT are the exact inputs named in these frozen
+sources.  The AGC source is used only to distinguish its narrower
+fixed-cube statement from the unresolved identity (ECR10).

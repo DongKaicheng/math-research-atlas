@@ -1,0 +1,631 @@
+\section{Supported perfect complexes and exact-support Green forms}
+\label{r11p:supported-complex}
+
+Let $K$ be complete discretely valued of characteristic zero, $R=K^\circ$,
+and let $\mathcal X/R$ be integral, flat and projective, with smooth
+integral projective generic fiber $X$ of dimension $n$.
+The special fiber may be singular or nonreduced.  Let
+\[
+       C=(0\longrightarrow C_N\longrightarrow\cdots
+                             \longrightarrow C_0\longrightarrow0)
+\]
+be a bounded complex of model vector bundles, exact on
+$\mathcal U=\mathcal X\setminus\mathcal Z$, with generic open
+$U=X\setminus Z$.  Assume $Z$ is pure of codimension $r$, $1\leq r\leq n$.
+The same construction is linear in finite rational combinations of
+such complexes.  Define
+\[
+ \Omega_C=\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)
+                              \in\mathcal B^{0,0,r}(X^{\rm an}),
+ \qquad
+ z_C=\operatorname{ch}^{Z}_r(C|_X)\cap[X]
+                              \in\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC1}\label{r11p:omega-and-cycle}
+\]
+The first expression is an actual form by Theorem~\ref{r10c:chern}.
+The second is a cycle with coefficients, because
+$\operatorname{CH}_{n-r}(Z)$ is the free group on the top-dimensional
+components of $Z$.  It is not merely an ambient Chow class.
+
+\subsection{Finite multisections of flag bundles}
+
+\begin{lemma}[A smooth finite flat multisection]
+\label{r11p:multisection}
+Let $F\to Y$ be a smooth projective surjection of smooth projective
+integral varieties over the infinite field $K$, of pure relative
+dimension $d$.  There is a smooth projective integral closed subscheme
+$T_0\subset F$ whose map to $Y$ is finite flat surjective.
+It may be taken as a connected component of a smooth complete intersection.
+If the source is geometrically integral and $\dim Y\geq1$, $T_0$
+can be chosen geometrically integral.
+\end{lemma}
+
+\begin{proof}
+Choose a very ample $H$ on $F$ and use $M=H^m$ with
+$m\geq\max(\dim Y,1)$.  For any positive-dimensional integral component
+$A$ of any intermediate fiber complete intersection, two sections
+$a_0,a_1$ of $H$ have nonconstant ratio on $A$.  Consequently
+\[
+                    a_0^m,a_0^{m-1}a_1,\ldots,a_1^m
+\]
+are linearly independent on $A$.  In the parameter space
+$V=H^0(F,M)$, the sections vanishing identically on $A$ therefore
+have codimension at least $m+1$.
+
+Fix a geometric fiber, which is pure Cohen--Macaulay of dimension $d$.
+Induct on $j\leq d$ to see that the bad $j$-tuples, whose common
+zero locus has dimension greater than $d-j$, have codimension at least
+$m+1$ in $V^j$.  Above a good prefix, a bad next section vanishes
+on one of the finitely many components just considered; above a bad
+prefix the inductive bound applies.  Upper semicontinuity of fiber
+dimension makes the universal bad locus closed.  Adding $\dim Y$
+still leaves its dimension strictly smaller than $\dim V^d$.
+Properness of $Y$ makes its projection to $V^d$ closed.  Thus a
+nonempty open of $d$-tuples has zero-dimensional fibers everywhere.
+The fibers are nonempty, because $d$ ample divisors meet every
+nonempty pure $d$-dimensional projective fiber.
+
+Smooth Bertini supplies a second nonempty open on which the total
+intersection is smooth of dimension $\dim Y$.  Geometric irreducibility
+Bertini supplies the stated refinement when relevant.  Their intersection
+has a $K$-rational point since $K$ is infinite.  The resulting proper
+quasi-finite morphism is finite and surjective.  Its source is
+Cohen--Macaulay and its target regular of the same dimension, so
+miracle flatness applies.  If necessary choose a connected component;
+it is integral, finite flat, and still surjective.
+\end{proof}
+
+The bound $m+1>\dim Y$, not just Bertini, is what rules out a
+positive-dimensional fiber anywhere on the base.  The primary
+ingredients are Stacks Tags 0D4I, 0FD6, 0G4C and 00R4.
+
+\begin{lemma}[Relative diagonalization with the original open fixed]
+\label{r11p:relative-lines}
+There is a projective morphism of integral flat models
+$f:\mathcal T\to\mathcal X$ with smooth projective generic fiber $T$,
+such that $f:T\to X$ is generically finite of degree $d$ and finite
+flat over the \emph{entire} prescribed open $U$.  There are model
+line maps $s_\alpha:L_\alpha\to M_\alpha$, isomorphisms above
+$\mathcal U$, and signs $\epsilon_\alpha$, satisfying
+\[
+                 [f^*C]
+                   =\sum_\alpha\epsilon_\alpha[L_\alpha\to M_\alpha]
+\tag{PC2}\label{r11p:supported-k-equality}
+\]
+in supported perfect $K_0$.  Their generic divisors
+$D_\alpha=\operatorname{div}(s_\alpha|_T)$ are supported in $f^{-1}Z$.
+\end{lemma}
+
+\begin{proof}
+On $\mathcal U$, exactness of a bounded vector-bundle complex is locally
+split.  Hence $S_i^\circ=\ker d_i=\operatorname{im}d_{i+1}$ are
+subbundles, with $S_0^\circ=C_0$ and $S_N^\circ=0$.  Close the graph
+of this section in the product of the corresponding Grassmann bundles.
+This gives a projective birational integral model
+$\mathcal Y\to\mathcal X$, an isomorphism over $\mathcal U$, with
+tautological subbundles $S_i\subset C_i$ and quotient bundles $Q_i$.
+Every asserted vanishing of a bundle map that holds on the dense open
+holds on this integral model.  The differential therefore factors as
+\[
+                            a_i:Q_i\longrightarrow S_{i-1},
+\]
+an equal-rank map that is an isomorphism over $\mathcal U$.
+
+There is an actual filtration by subcomplexes: its $p$th term has
+$C_i$ for $i>p$, $S_p$ in degree $p$, and zero below $p$.
+The successive two-term quotients are
+$Q_{p+1}\to S_p$ in degrees $p+1,p$.  They are exact on the given
+open, and yield
+\[
+                     [C]=\sum_i(-1)^{i-1}[Q_i\to S_{i-1}]
+\]
+in supported $K_0$, rather than only in ordinary $K_0$.
+
+Resolve the generic $\mathcal Y_K$ in characteristic zero, without
+changing its smooth open $U$, and extend the projective resolution by
+graph closure over $R$.  This uses resolution over the field $K$ only,
+not mixed-characteristic resolution of a model.  Call the resulting
+smooth projective generic fiber $Y$.
+
+Take the product of the full source flag bundles of \emph{all} $Q_i$
+over $Y$.  Before extending the transported target flags, choose a
+smooth finite flat multisection $T_0\to Y$ by
+Lemma~\ref{r11p:multisection}.  Take its flat model closure.  Over
+$\mathcal U$, the isomorphisms $a_i$ transport every source flag to a
+target flag.  Close the graph of these target flags, and resolve the
+resulting generic fiber without changing its smooth inverse image of
+$U$.  Its final generic fiber $T$ is therefore still exactly $T_0$
+over $U$.  In particular $T\to X$ is finite flat over all of $U$;
+the successive modifications have introduced no new excluded image.
+
+The maps $a_i$ preserve the two full flags.  Their associated graded
+maps are model line maps $L_\alpha\to M_\alpha$, isomorphisms on the
+original model open.  Termwise filtration of the two-term complexes
+gives \eqref{r11p:supported-k-equality}.  A nonzero map of line bundles
+on the integral model is injective and defines an effective Cartier
+divisor.  Its generic divisor can only lie above $Z$.  Empty generic
+divisors are allowed, for instance for a purely vertical line map.
+\end{proof}
+
+\subsection{Localized characters and cycle coefficients}
+
+For degree-one variables $l,m$ put
+\[
+ B_{r-1}(l,m)=\frac1{r!}\sum_{a=0}^{r-1}m^{r-1-a}l^a,
+ \qquad
+                  (m-l)B_{r-1}(l,m)=\frac{m^r-l^r}{r!}.
+\tag{PC3}\label{r11p:B-polynomial}
+\]
+For a nonzero line map $s:L\to M$ on $T$, with divisor $D$, the
+all-degree Cartier localized character formula is
+\[
+ \operatorname{ch}^{D}_r([L\to M])\cap[T]
+         =B_{r-1}(c_1L,c_1M)\cap[D].
+\tag{PC4}\label{r11p:cartier-localized}
+\]
+Here $L$ has degree one and $M$ degree zero.  To check the full
+polynomial, the complex resolves $M|_D$ and the normal bundle of
+$D\hookrightarrow T$ is $(M\otimes L^{-1})|_D$.  Localized
+Riemann--Roch for this regular immersion gives
+\[
+ e^m\,\frac{1-e^{-(m-l)}}{m-l}\cap[D]
+                         =\frac{e^m-e^l}{m-l}\cap[D].
+\]
+Its homogeneous degree $r-1$ is exactly \eqref{r11p:cartier-localized}.
+This is Fulton, \emph{Intersection Theory}, Corollary 18.1.2,
+specialized to a Cartier immersion; the proof uses deformation to the
+normal bundle.  A leading-term statement alone, such as Stacks 0FEH,
+would not justify this all-degree polynomial.
+
+Additivity on supported perfect $K_0$, compatibility with arbitrary
+base change, and the proper bivariant projection formula now give
+\[
+ \sum_\alpha\epsilon_\alpha
+    (f|_{D_\alpha})_*
+       \left(B_{r-1}(c_1L_\alpha,c_1M_\alpha)\cap[D_\alpha]\right)
+                              =d\,z_C
+       \quad\hbox{in }\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC5}\label{r11p:source-equality}
+\]
+The underlying equality is
+$f_*(\operatorname{ch}^{f^{-1}Z}(f^*C)\cap[T])
+=\operatorname{ch}^Z(C)\cap f_*[T]$, and $f_*[T]=d[X]$.
+These are supported identities; one has not first forgotten the
+support and then attempted to recover coefficients.  Nilpotent
+thickenings can be used to make every indicated factorization through
+$Z$ scheme-theoretic.  Chow groups are unchanged by those thickenings.
+Since the target Chow group is top-dimensional on $Z$,
+\eqref{r11p:source-equality} is equality of actual cycle coefficients.
+See Stacks 0FB3 (base change), 0FBE (additivity), and 0FET (supported
+perfect $K_0$).
+
+\subsection{Chern degrees and actual top-degree tests}
+
+\begin{lemma}[Chern degree against an arbitrary actual top test]
+\label{r11p:proper-chern-degree}
+Let $h:B\to A$ be proper between integral projective $K$-varieties,
+$\dim A=m$, $\dim B=m+t$.  Let $P$ be a homogeneous degree-$t$
+polynomial in first Chern forms of algebraic line bundles on $B$
+with PWS metrics.  For every compact actual top form $\eta$ on $A$,
+\[
+              \int_BP\wedge h^*\eta
+                =\int_{h_*(P_{\rm alg}\cap[B])}\eta.
+\tag{PC6}\label{r11p:proper-top-pairing}
+\]
+The statement is linear in cycles and includes their generic lengths.
+\end{lemma}
+
+\begin{proof}
+Write each algebraic line bundle as a quotient of two very ample ones.
+Choose PWS metrics on those factors so that their quotient is the
+given metric.  Expand $P$ by multilinearity.  For each resulting
+monomial, choose a section of each very ample factor successively,
+meeting the finitely many current integral cycle components properly.
+The infinite field $K$ supplies such choices.  Work componentwise
+when an intermediate divisor is reducible or nonreduced.
+
+At every step apply scalar strong Poincare--Lelong, Mihatsch
+Corollary 5.6, with the remaining closed curvature factors and the
+pullback of $\eta$ as test.  The latter is separately closed because
+$\eta$ is top-degree on $A$.  The Green correction is therefore zero.
+One is left with the pullback of $\eta$ integrated on a cycle of
+dimension $m$.
+
+A component mapping to a lower-dimensional subset of $A$ contributes
+zero, because the support of the actual top test avoids that subset.
+For a dominating component, remove a proper closed subset of $A$
+so that the component maps finite flat of its native generic degree.
+The top test again avoids the removed subset.  The native finite
+degree formula evaluates the integral with exactly that degree.
+This is precisely algebraic proper pushforward of the terminal
+intersection cycle, proving \eqref{r11p:proper-top-pairing}.
+\end{proof}
+
+This scalar equality applies to
+each $D_\alpha\to Z_j$ in \eqref{r11p:source-equality}, with
+$m=n-r$ and $t=r-1$.  Components whose image has smaller dimension
+contribute zero by the same support argument.
+
+\subsection{The exact-open Green construction}
+
+\begin{theorem}[A strong Green pair for a supported model complex]
+\label{r11p:complex-green}
+Under the assumptions of \eqref{r11p:omega-and-cycle}, there is an
+actual form
+\[
+                       G_C\in\mathcal B^{r-1,r-1}(U^{\rm an})
+\]
+such that, for every compact actual
+$\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})$,
+\[
+                 \int_UG_C\wedge D\eta+\int_{z_C}\eta
+                                     =\int_X\Omega_C\wedge\eta.
+\tag{PC7}\label{r11p:complex-green-equation}
+\]
+The domain is the prescribed $U=X\setminus Z$, with no auxiliary
+closed subset removed.  If a tube is disjoint from the full model
+support $\mathcal Z$, the construction can be chosen zero on that tube.
+\end{theorem}
+
+\begin{proof}
+Use Lemma~\ref{r11p:relative-lines} and give the line bundles their
+model metrics.  Write
+\[
+ l_\alpha=c_1(\overline L_\alpha),\qquad
+ m_\alpha=c_1(\overline M_\alpha),\qquad
+ g_\alpha=-\log\|s_\alpha\|.
+\]
+On $f^{-1}U$ each $g_\alpha$ is a PL scalar.  Put
+\[
+       G_T=\sum_\alpha\epsilon_\alpha
+                    g_\alpha B_{r-1}(l_\alpha,m_\alpha),
+       \qquad
+       G_C=\frac1d\operatorname{Tr}^{\mathscr M}_{f|_{f^{-1}U}}(G_T).
+\tag{PC8}\label{r11p:complex-green-formula}
+\]
+Every summand lies in the scalar-curvature module of
+Theorem~\ref{r11p:minimal-trace-theorem}.  Source and target of the
+finite restriction are smooth, hence normal; all its assumptions hold.
+The resulting form is actual on the full ordinary open $U$.
+
+Strict model Chern additivity and functoriality from Theorem~\ref{r10c:chern} convert
+\eqref{r11p:supported-k-equality}, after forgetting support, into
+the actual identity on $T$
+\[
+ \sum_\alpha\epsilon_\alpha
+             (m_\alpha-l_\alpha)B_{r-1}(l_\alpha,m_\alpha)
+                                      =f^*\Omega_C.
+\tag{PC9}\label{r11p:actual-curvature-equality}
+\]
+
+
+Apply scalar strong Poincare--Lelong to each $s_\alpha$ with test
+$B_{r-1}(l_\alpha,m_\alpha)f^*\eta$.  These tests are compact because
+$f$ is proper.  Curvature factors are separately closed.  Summation
+and \eqref{r11p:actual-curvature-equality} yield
+\[
+ \int_{T\setminus f^{-1}Z}G_Tf^*D\eta
+ +\sum_\alpha\epsilon_\alpha
+       \int_{[D_\alpha]}B_{r-1}(l_\alpha,m_\alpha)f^*\eta
+                         =\int_Tf^*(\Omega_C\eta).
+\tag{PC10}\label{r11p:upstairs-complex-PL}
+\]
+For the first term, extending each off-divisor integral to the
+displayed common open changes nothing: $D\eta$ has bidegree
+$(n-r+1,n-r+1)$, so its closed support avoids $Z$ by
+Mihatsch Corollary 4.9.  Properness puts its pulled-back support
+inside the finite locus $f^{-1}U$.  The minimal trace pairing identifies
+this first term with $d\int_UG_CD\eta$.
+
+The form $\Omega_C\eta$ is top-degree on $X$, so its support also
+avoids $Z$.  On that support $f$ is finite flat of degree $d$;
+the last term is $d\int_X\Omega_C\eta$ by the native degree formula.
+The middle term equals $d\int_{z_C}\eta$ by
+Lemma~\ref{r11p:proper-chern-degree} and
+\eqref{r11p:source-equality}.  Divide by $d$.
+
+All tests defining the off-$Z$ integration functional of $G_C$
+have bidegree $(n-r+1,n-r+1)$ and therefore support away from $Z$.
+Thus its canonical extension and the all-actual meaning of
+\eqref{r11p:complex-green-equation} require no integrability
+assumption near $Z$ beyond those already encoded by support avoidance.
+
+Finally, above the model open $\mathcal U$ each $s_\alpha$ is a model
+isomorphism of line bundles, so its model norm is one and $g_\alpha=0$.
+The local trace then vanishes over every tube avoiding $\mathcal Z$.
+This concerns the full model support, including possible vertical
+cohomology, not just the closure of its generic support.
+\end{proof}
+
+\paragraph{Support of the prescribed representative.}
+The source of a supported complex can have more components than its
+associated cycle after coefficient cancellation.  Choosing one complex
+for each nonzero integral component of a prescribed cycle gives the
+form on its exact complement, as follows.
+
+\subsection{Arbitrary prescribed cycles and the good-reduction sector}
+
+\begin{corollary}[Every prescribed cycle has a strong model-curvature pair]
+\label{r11p:any-cycle-pair}
+Let $X/K$ be smooth geometrically integral projective and let
+$Z=\sum_j a_j[Z_j]$ be a rational codimension-$r$ cycle, written with
+distinct integral components and nonzero coefficients.  After choosing
+projective model data, there are an actual model Chern form $\Omega_Z$
+and an actual
+\[
+                  G_Z\in\mathcal B^{r-1,r-1}
+                           (X^{\rm an}\setminus|Z|^{\rm an})
+\]
+satisfying $D[G_Z]_\delta+\delta_Z=[\Omega_Z]_\delta$ on all compact
+actual tests.  No generic cycle representative is moved.
+\end{corollary}
+
+\begin{proof}
+On the regular projective generic fiber, $\mathcal O_{Z_j}$ has a
+finite globally locally free resolution.  Its degree-$r$ supported
+character is $[Z_j]$, including the leading coefficient; this is
+Stacks 0FEW, or the leading-term part of localized Riemann--Roch.
+It is not necessary for $Z_j$ to be a regular immersion.
+
+These finitely many generic bundle complexes extend to a common
+projective model after a vertical modification.  For completeness,
+extend each bundle coherently, twist to obtain finitely many generators,
+and close the graph of its generic quotient in a Grassmann bundle.
+Its tautological quotient is a model vector bundle with the original
+generic fiber.  Use the product of the finitely many Grassmann bundles.
+Every generic differential extends after multiplying by a common
+power of a uniformizer; the resulting successive products are zero
+because they vanish on the dense generic fiber.  The scaled generic
+complex is chain-isomorphic to the original one by degreewise scalar
+rescaling.  Its full model cohomology support has generic support
+exactly $Z_j$.
+
+Apply Theorem~\ref{r11p:complex-green} to each complex and sum with
+coefficients $a_j$.  The union of the removed sets is exactly
+$|Z|$, because the prescribed cycle was first written with distinct
+nonzero components.  The zero cycle is handled by the zero form.
+\end{proof}
+
+\begin{corollary}[Strong G for arbitrary cycles on a smooth good model]
+\label{r11p:good-reduction-G}
+Suppose $X$ admits a smooth projective $R$-model $\mathcal X$.
+For every rational codimension-$r$ cycle $Z$ on $X$ whose geometric
+$\ell$-adic class is zero, $\ell\ne\operatorname{char}(k)$, the form
+in Corollary~\ref{r11p:any-cycle-pair} can be chosen with
+$\Omega_Z=0$:
+\[
+                  \int_{X\setminus|Z|}G_ZD\eta=-\int_Z\eta
+       \qquad
+       \bigl(\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})\bigr).
+\tag{PC11}\label{r11p:good-reduction-zero}
+\]
+This includes arbitrary singular or non-complete-intersection cycle
+components and retains the exact support and original field.
+\end{corollary}
+
+\begin{proof}
+For each prescribed component take its scheme-theoretic flat closure
+$\mathcal Z_j\subset\mathcal X$.  The smooth model over a DVR is regular
+of finite dimension and has an ample line bundle.  Hence
+$\mathcal O_{\mathcal Z_j}$ has a finite globally locally free
+resolution on this fixed model.  One explicit justification is to
+surject finite sums of negative ample twists onto a coherent sheaf
+and its successive coherent kernels.  After at most $\dim\mathcal X$
+steps the remaining kernel is locally free, since every regular
+local ring has global dimension its Krull dimension.  Thus the
+global assertion is not inferred from perfectness without using the
+resolution property.  No modification of the good model
+is needed.  Use those model complexes in the preceding construction.
+
+Their alternating degree-$r$ Chern character on the generic fiber
+is $[Z]$ in $\operatorname{CH}^r(X)_{\mathbb Q}$.  Smooth proper
+base change and compatibility of etale Chern classes identify its
+geometric special-fiber Chern class with the zero generic class.
+Its degree against every integral $r$-cycle on the smooth special
+fiber is therefore zero by the etale trace pairing.
+
+Theorem~\ref{r10c:numerical-zero} now gives
+$\Omega_Z=0$ as an actual form, not just as a current or a
+cohomology class.  Substitute into the strong equation already
+proved against every actual test.
+\end{proof}
+
+\begin{corollary}[Finite good covers and potential good reduction]
+\label{r11p:potential-good-G}
+Let $X/K$ be smooth integral projective.  Suppose there are a finite
+valued extension $K'/K$, a smooth integral projective $K'$-variety
+$Y$ with a smooth projective $R'=K'^\circ$-model, and a finite
+dominant $K$-morphism $h:Y\to X$.  Then every rational geometrically
+homologically trivial codimension-$r$ cycle $Z$ on $X$ admits a
+zero-curvature strong Green form on exactly
+$X^{\rm an}\setminus|Z|^{\rm an}$, over the original field $K$,
+against every compact $K$-actual complementary test.
+
+In particular this holds when $X$ has potential good reduction:
+take $Y=X_{K'}$ and its finite projection to $X$, working componentwise
+if the base change is disconnected.
+It also holds for a finite dominant smooth projective good-reduction
+cover over $K$ itself.
+\end{corollary}
+
+\begin{proof}
+Regard $Y$ as a $K$-variety.  It is smooth and integral, though it
+need not be geometrically integral over $K$.  This is enough for
+the preceding supported-complex theorem and the minimal trace:
+the multisection proof permits choosing a smooth connected component
+finite flat over an integral base.  Since $Y$ is Cohen--Macaulay
+and $X$ is regular of the same dimension, the finite dominant $h$
+is flat by miracle flatness.  Write $a=\deg_K h$ and set $Z'=h^*Z$,
+with the scheme-theoretic generic lengths in flat pullback.
+Its support is exactly $h^{-1}|Z|$, its geometric cohomology class
+is zero, and
+\[
+                                  h_*Z'=aZ.
+\tag{PC12}\label{r11p:finite-cover-cycle-degree}
+\]
+
+Resolve the closures of the distinct components of $Z'$ on the
+fixed smooth $R'$-model $\mathcal Y$, with their rational
+coefficients.  View $\mathcal Y$ also as a projective flat
+$R$-model of the $K$-variety $Y$.  If $e$ is the ramification index,
+its special fiber over $R$ is the $e$th nilpotent thickening of its
+good special fiber over $R'$: locally a uniformizer of $R$ is a
+unit times the $e$th power of one of $R'$.
+
+Every integral $r$-cycle on this thickened special fiber lies on
+its reduction.  The restriction of the alternating operational
+degree-$r$ Chern class there is geometrically homologically zero
+by smooth proper base change over $R'$.  Thus it has degree zero
+against every such cycle.  Computing degrees over the smaller
+residue field only multiplies them by $[k':k]$, so they remain zero.
+Apply Theorem~\ref{r10c:numerical-zero} directly to the $R$-model
+$\mathcal Y$.  It gives
+\[
+              \Omega_{Z'}=0
+                       \quad\hbox{as a $K$-actual form on $Y^{\rm an}$}.
+\]
+Native special-fiber multiplicities, including $e$, are retained;
+none has been replaced by one.  This step does not infer the
+$K$-actual statement from equality on a smaller collection of
+$K'$-tests.
+
+Perform the relative line construction over this $R$-model
+simultaneously for the finitely many chosen resolutions.  Close the
+joint kernel-Grassmann graph over their common exact open, then take
+the product of all source flag bundles before choosing one smooth
+finite multisection.  Transport and close all target flags on that
+same multisection.  This gives one common map carrying the rationally
+weighted sum of all the line complexes; it does not use a fiber
+product of separately chosen branched finite multisections.
+Keep its line sum $G_T$ before applying any trace.  Let $b:T\to Y$
+be the resulting map of generic degree $d$, finite flat over
+$Y\setminus h^{-1}|Z|$.  The composite
+$f=h\circ b:T\to X$ is finite flat of degree $ad$ above the whole
+$U=X\setminus|Z|$.  Define directly over $K$
+\[
+                   G_Z=\frac1{ad}
+                       \operatorname{Tr}^{\mathscr M}_{f|_{f^{-1}U}}
+                                      (G_T|_{f^{-1}U}).
+\tag{PC13}\label{r11p:potential-good-formula}
+\]
+This is a permitted trace: $G_T$ is the original finite sum of
+PL scalars times model curvature polynomials.  We have not assumed
+that an already constructed $G_{Z'}$ lies in the trace module.
+
+Repeat the scalar Poincare--Lelong proof of
+Theorem~\ref{r11p:complex-green} with an arbitrary compact actual
+test $\eta$ on $X$.  The source curvature is
+$b^*\Omega_{Z'}=0$.  Its residue pushed to $Y$ is $dZ'$, hence
+pushed to $X$ is $daZ$ by
+\eqref{r11p:finite-cover-cycle-degree}.  The support of $D\eta$
+avoids $|Z|$, so the first term is evaluated entirely on the
+finite open for the composite $f$.  Its minimal-trace pairing
+is $ad\int_U G_ZD\eta$.  Division by $ad$ proves
+$\int_U G_ZD\eta=-\int_Z\eta$ on all the stated tests and on the
+exact final complement.
+
+For potential good reduction with geometrically integral $X$, the
+native degree of the projection $X_{K'}\to X$ is $[K':K]$.
+If that base change is disconnected, a smooth integral connected
+component and its good-model component may instead be used, with its
+actual native degree over $X$.  The possible ramification factor is
+already part of the degree and of the model calibrations; no
+additional normalization is inserted.
+\end{proof}
+
+\subsection{Global primitives for generic Chow-zero model characters}
+
+\begin{corollary}[Generically acyclic complexes]
+\label{r11p:acyclic}
+If a bounded model complex is exact on all of $X$, then
+$\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)$ has a global actual
+$D$-primitive on $X^{\rm an}$.
+\end{corollary}
+
+\begin{proof}
+The same relative construction is made with generic open $U=X$;
+its final generic multisection is finite flat over all of $X$ and all
+generic line divisors are empty.  Formula \eqref{r11p:complex-green-formula}
+is global, and \eqref{r11p:complex-green-equation} has zero residue.
+Actual current injectivity identifies its $D$ with the displayed
+actual curvature.
+\end{proof}
+
+\begin{proposition}[A generic $K_0$ relation has an actual primitive]
+\label{r11p:generic-k-primitive}
+Let $\xi\in K_0(\mathcal X)_{\mathbb Q}$.  If $\xi|_X=0$ in
+$K_0(X)_{\mathbb Q}$, then every positive-degree actual
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+A relation in $K_0(X)$ is a finite combination of short exact sequence
+relations and differences of isomorphic vector bundles.  Extend the
+finitely many bundles to a common vertical model refinement, which
+does not change any original model metric on the generic fiber.
+For a generic exact sequence $0\to A\to B\to C\to0$, close the graph
+of the subbundle $A\subset B$ in a Grassmann bundle of the already
+chosen model extension of $B$.  This produces a model exact sequence
+\[
+                         0\to S\to B\to Q\to0
+\]
+with $S|_X\simeq A$ and $Q|_X\simeq C$.  Strict model Whitney gives
+\[
+      \operatorname{ch}_r(B-A-C)
+       =\operatorname{ch}_r(S-A)+\operatorname{ch}_r(Q-C).
+\]
+After clearing uniformizer powers, the two generic isomorphisms are
+model maps giving two-term generically acyclic complexes.  Their
+global primitives exist by Corollary~\ref{r11p:acyclic}.
+The same handles the isomorphic-bundle differences in the chosen
+finite presentation of the $K_0$ relation.  Add the primitives and
+divide by the cleared integer denominator.
+\end{proof}
+
+\begin{proposition}[Only the generic degree-$r$ Chow class matters]
+\label{r11p:generic-chow-primitive}
+If $\xi\in K_0(\mathcal X)_{\mathbb Q}$ satisfies
+$\operatorname{ch}_r(\xi|_X)=0$ in
+$\operatorname{CH}^r(X)_{\mathbb Q}$, then its actual model
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+Let $\psi^2$ be the Adams operation on model vector-bundle $K_0$ and set
+\[
+ e_r(T)=\prod_{\substack{0\leq j\leq n\\j\ne r}}
+                  \frac{T-2^j}{2^r-2^j},
+ \qquad
+                            \xi_r=e_r(\psi^2)\xi.
+\]
+On the smooth projective generic fiber the rational Chern character
+$K_0(X)_{\mathbb Q}\simeq\bigoplus_{j=0}^n
+\operatorname{CH}^j(X)_{\mathbb Q}$ is an isomorphism, and
+$\operatorname{ch}_j(\psi^2\zeta)=2^j\operatorname{ch}_j(\zeta)$.
+All generic Chern components of $\xi_r$ are zero, so $\xi_r|_X=0$.
+
+The same Adams identity is strict for actual model Chern forms:
+it is a universal symmetric-root identity, hence follows from
+Theorem~\ref{r10c:chern}.
+Therefore $\operatorname{ch}_r(\xi_r)=\operatorname{ch}_r(\xi)$
+as actual forms.  Apply Proposition~\ref{r11p:generic-k-primitive}
+to $\xi_r$.
+\end{proof}
+
+\begin{corollary}[Chow-zero cycles without a reduction hypothesis]
+\label{r11p:chow-zero-G}
+For every prescribed rational codimension-$r$ cycle $Z$ with
+$[Z]=0$ in $\operatorname{CH}^r(X)_{\mathbb Q}$, strong G holds
+on exactly $X^{\rm an}\setminus|Z|^{\rm an}$, over $K$, without
+a good-reduction assumption.
+\end{corollary}
+
+\begin{proof}
+Construct the exact-support pair $(G_Z,\Omega_Z)$ above.
+Its model curvature is $\operatorname{ch}_r(\xi)$ for a model
+virtual class with generic degree-$r$ character $[Z]=0$.
+Choose a global actual $\Psi$ with $D\Psi=\Omega_Z$ by the preceding
+proposition.  Then $G_Z-\Psi|_{X\setminus|Z|}$ has zero curvature
+and the same source cycle, with no new poles.
+\end{proof}
+

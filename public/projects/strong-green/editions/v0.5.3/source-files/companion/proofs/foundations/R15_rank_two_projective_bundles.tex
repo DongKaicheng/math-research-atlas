@@ -1,0 +1,358 @@
+% Round 15. Conditional on the arbitrary-base P1 output theorem and its
+% specified product base-change property. Not a claim about rank > 2 bundles.
+\section{A global diagonal kernel for rank-two projective bundles}
+\label{r15b:rank-two-section}
+
+The construction in this section uses smooth metrics on two line
+bundles, not a smooth norm on the rank-two vector bundle itself.
+This distinction is substantive in non-archimedean geometry.
+The local analytic output input is recorded explicitly before it
+is used.
+
+\begin{definition}[The local projective-line output input]
+\label{r15b:HP}
+Write $(\mathrm{HP})_K$ for the following assertions on every
+ordinary open $U$ in a smooth algebraic $K$-variety.
+\begin{enumerate}
+\item The prescribed current pushforward for
+$\operatorname{pr}:U\times\mathbf P^1\to U$ of every ordinary
+PWS form of bidegree $(p,q)$ has an ordinary PWS representative
+of degree $(p-1,q-1)$, with all ordinary smooth compact-test
+pairings. Degrees with $p=0$ or $q=0$ give zero. The assertion
+is local on $U$ and applies to support proper over paired
+compact subsets.
+\item For the fixed reference diagonal kernel of Round 14,
+the three outputs on every PWS $(1,1)$ input on
+$U\times\mathbf P^1$ have ordinary PWS representatives of
+degrees $(0,0),(1,0),(0,1)$ with all prescribed smooth mixed-test
+pairings.
+\item The projection in the first item has the coordinate
+base-change identity for
+$U\times\mathbf P^1_y\to U$, and hence for a morphism locally
+of this form. In particular an input pulled back from
+$U\times\mathbf P^1_z$ has the pullback of its $z$-integral
+as integral on $U\times\mathbf P^1_z\times\mathbf P^1_y$.
+This is an identity of ordinary PWS tensors with all mixed-test
+pairings, not merely an equality on exterior-product tests.
+\end{enumerate}
+\end{definition}
+
+The new arbitrary-base projection and kernel construction is the
+intended source of $(\mathrm{HP})_K$. The base-change clause is
+part of the hypothesis until its separate tensor/finite-descent
+proof is accepted. The results below are conditional on precisely
+this input; they do not infer that clause from fiberwise scalar
+integration alone.
+
+\begin{lemma}[Smooth line metrics and their actual classes]
+\label{r15b:smooth-line-metrics}
+Let $M/K$ be smooth integral projective and let $L$ be an
+algebraic line bundle on $M$. It admits an ordinary smooth
+metric. Its curvature is a separately closed ordinary smooth
+$(1,1)$ form. Relative to any model metric on the same line,
+the difference of the two first Chern forms is $D$ of a global
+ordinary PWS scalar. Thus their actual Bott--Chern and Aeppli
+classes agree.
+\end{lemma}
+
+\begin{proof}
+Choose an ordinary trivializing cover with local frames $e_j$
+and an ordinary smooth partition of unity $\rho_j$ subordinate
+to it. Define, for a local nonvanishing section $s$,
+\[
+                    \log\|s\|=\sum_j\rho_j\log|s/e_j|.
+\tag{PB15.1}\label{r15b:smooth-metric-formula}
+\]
+Each summand is extended by zero off the support of $\rho_j$.
+The support condition makes it smooth across that extension,
+and the expression has the metric transformation law because
+$\sum_j\rho_j=1$. Local weights are smooth; their $D$ values
+glue because transition functions are analytic units and their
+logarithms have zero $D$. Both actual differentials kill the
+resulting curvature.
+
+The ordinary partition and metric facts are also CLD,
+Propositions 15.2.8 and 17.1.7--17.1.8 in the 2025 version.
+The space here is good, Hausdorff and compact, so their
+paracompactness and local separation hypotheses hold.
+A model metric has local PL weights. Subtracting the two
+weights gives a global PWS metric-ratio scalar; applying $D$
+gives the curvature difference. This proves the class statement
+in Mihatsch's actual theory. No positivity of either metric
+is required.
+\end{proof}
+
+Let now $S/K$ be smooth integral projective, let $N$ be a
+rank-two vector bundle, and use the convention of lines in
+\[
+                \pi:E=\mathbf P_S(N)\longrightarrow S.
+\]
+Choose smooth metrics on the line bundles
+$\mathcal O_E(1)$ and $\det N$, with curvatures $h$ and $\kappa$,
+respectively. Put $T=E\times_S E$, with projections $p_z,p_y$
+and structural map $\pi_T:T\to S$.
+
+\begin{lemma}[The global relative diagonal Green scalar]
+\label{r15b:rank-two-kernel}
+On $T$, the diagonal is the zero divisor of a canonical section
+$s_\Delta$ of
+\[
+ \mathcal L_\Delta
+   =p_z^*\mathcal O_E(1)\otimes p_y^*\mathcal O_E(1)
+                         \otimes\pi_T^*\det N.
+\tag{PB15.2}\label{r15b:diagonal-line}
+\]
+For the tensor product of the chosen metrics, the scalar
+\[
+                         g_E=-\log\|s_\Delta\|
+\]
+is ordinary PWS on $T^{\mathrm{an}}\setminus\Delta^{\mathrm{an}}$
+and satisfies the scalar Green identity
+\[
+             Dg_E=h_z+h_y+\pi_T^*\kappa-\delta_\Delta.
+\tag{PB15.3}\label{r15b:rank-two-Green}
+\]
+The determinant term has a plus sign in the convention of lines.
+Locally on a trivializing Zariski open $U\subset S$, it has
+the form
+\[
+          g_E=g_{\mathrm{ref}}+a(x,z)+a(x,y)+b(x),
+\tag{PB15.4}\label{r15b:rank-two-local-kernel}
+\]
+where $a$ is an ordinary PWS scalar on $U\times\mathbf P^1$
+and $b$ is an ordinary smooth scalar on $U$.
+\end{lemma}
+
+\begin{proof}
+The tautological lines on the two factors are subbundles
+$L_z,L_y\subset\pi_T^*N$. Their wedge defines
+\[
+                 L_z\otimes L_y\longrightarrow\pi_T^*\det N.
+\]
+It is a section of the line in \eqref{r15b:diagonal-line}.
+In a local frame of $N$ it is the determinant of the two
+homogeneous vectors. Its zero scheme is exactly the relative
+diagonal, with multiplicity one. This proves both the divisor
+and the sign of the determinant factor.
+
+The scalar actual Poincare--Lelong formula for a metrized line
+bundle gives \eqref{r15b:rank-two-Green}; its smooth metric
+weights are actual PWS weights. On a trivializing open of $N$,
+compare the chosen metric on $\mathcal O_E(1)$ with the fixed
+reference metric on the projective line. Their ratio is the
+PWS scalar $a$. The determinant frame has smooth negative log
+norm $b$. The determinant section and the tensor metric then
+give \eqref{r15b:rank-two-local-kernel} literally. No metric on
+the rank-two bundle $N$ is used. In particular this does not
+contradict the warning in CLD Remark 17.1.9 about smooth
+ultrametric norms on vector bundles of rank greater than one.
+\end{proof}
+
+\begin{proposition}[Actual outputs for the global rank-two kernel]
+\label{r15b:rank-two-outputs}
+Assume $(\mathrm{HP})_K$. For every
+$\alpha\in\operatorname{PS}^{1,1}(E)$, the currents
+\[
+ G_E\alpha=(p_y)_*[g_Ep_z^*\alpha],\qquad
+ P_E\alpha=(p_y)_*[d'g_E\wedge p_z^*\alpha],\qquad
+ Q_E\alpha=(p_y)_*[d''g_E\wedge p_z^*\alpha]
+\tag{PB15.5}\label{r15b:rank-two-outputs-formula}
+\]
+have global ordinary PWS representatives of degrees
+$(0,0),(1,0),(0,1)$. They have the prescribed pairing against
+every ordinary smooth compact complementary test on $E$.
+The proper current pushforward along $\pi$ of any PWS form
+also has its ordinary PWS representative in the shifted degree.
+\end{proposition}
+
+\begin{proof}
+The global singular expressions have the same diagonal-excision
+meaning as in Round 14. The two pullbacks of $\alpha$ agree
+on the diagonal, hence on an ordinary neighborhood of it by
+the frozen immersion-germ theorem. Against the complementary
+tests for the three displayed degrees, replacing $\alpha_z$
+there by $\alpha_y$ makes at least one target degree exceed
+$\dim E$. Thus a sufficiently small diagonal cutoff changes
+none of the currents. Properness supplies such a cutoff on
+each paired compact part, and globally here because $E$ is
+projective.
+
+On a trivializing open $U$ use
+\eqref{r15b:rank-two-local-kernel}. The fixed-kernel part has
+its prescribed outputs by the second part of
+$(\mathrm{HP})_K$. The difference is a global PWS scalar on
+$U\times\mathbf P^1_z\times\mathbf P^1_y$. Its products
+with $\alpha_z$, $d'$ of that scalar with $\alpha_z$, and
+$d''$ of that scalar with $\alpha_z$ are PWS of degrees
+$(1,1),(2,1),(1,2)$. The first part of $(\mathrm{HP})_K$,
+applied with target $U\times\mathbf P^1_y$, integrates all
+three to ordinary PWS tensors with all mixed-test pairings.
+No multiplication of an unspecified distribution by a PWS
+tensor is being postulated.
+
+The local sums therefore represent the global currents in
+\eqref{r15b:rank-two-outputs-formula}. Actual-current
+injectivity makes them equal on ordinary overlaps, so they
+glue. The assertion for $\pi$ follows in the same way from
+its local trivializations and the prescribed-current identity
+in the first part of $(\mathrm{HP})_K$.
+\end{proof}
+
+\begin{theorem}[The Aeppli formula for a rank-two projective bundle]
+\label{r15b:rank-two-aeppli}
+Assume $(\mathrm{HP})_K$ and retain the frozen first-strip PWS
+replacement, proper scalar constancy, and finite trace results.
+For every $S,N,E$ as above,
+\[
+ H_{\mathrm A,\mathrm{act}}^{1,1}(E)
+       =\pi^*H_{\mathrm A,\mathrm{act}}^{1,1}(S)
+                                      \oplus\mathbf R[h].
+\tag{PB15.6}\label{r15b:rank-two-aeppli-formula}
+\]
+The class $[h]$ is the actual class of any model first Chern
+form for $\mathcal O_E(1)$. No computation of
+$H_{\mathrm A}^{1,1}(S)$ is assumed.
+\end{theorem}
+
+\begin{proof}
+The frozen replacement theorem supplies a $D$-closed PWS
+representative $\alpha$ of an arbitrary actual Aeppli class
+on $E$. Define ordinary PWS outputs
+\[
+                     I\alpha=\pi_*\alpha,\qquad
+                     J\alpha=\pi_*(h\wedge\alpha).
+\tag{PB15.7}\label{r15b:rank-two-IJ}
+\]
+They have degrees $(0,0)$ and $(1,1)$ on $S$, respectively.
+The second input is PWS because $h$ is smooth. Proper-current
+differentiation and actual Stokes give
+\[
+                             D(I\alpha)=D(J\alpha)=0.
+\]
+These are actual identities by current injectivity, using
+$D\alpha=0$ and separate closedness of $h$. The frozen
+projective scalar constancy theorem makes $I\alpha=c$ a
+real constant.
+
+Here is a direct all-smooth-test derivation of the needed
+homotopy, which also fixes its signs. Put $m=\dim E$ and let
+$\eta\in A_c^{m-1,m-1}(E)$ be arbitrary. Apply the scalar
+Green identity \eqref{r15b:rank-two-Green} to the global actual
+test $\Phi=\alpha_z\wedge p_y^*\eta$ on $T$, of degree
+$(m,m)$. It gives
+\[
+ \int_Tg_E D\Phi
+   =\int_T(h_z+h_y+\pi_T^*\kappa)\wedge\Phi
+                                     -\int_E\alpha\wedge\eta.
+\tag{PB15.8}\label{r15b:rank-two-scalar-pairing}
+\]
+On a neighborhood of the diagonal, the forms
+$\alpha_z\wedge p_y^*d'\eta$ and
+$\alpha_z\wedge p_y^*d''\eta$ vanish, since there one can
+replace $\alpha_z$ by $\alpha_y$ and one of their base degrees
+exceeds $m$. Hence their products with $g_E$ extend by zero
+across the diagonal as actual compactly supported forms.
+Applying actual Stokes to those two products, and using
+$D\alpha=0$, gives
+\[
+ \begin{split}
+ \big\langle DG_E\alpha+d''P_E\alpha-d'Q_E\alpha,\eta\big\rangle
+ &=\int_T\bigl(g_E\alpha_z\wedge D\eta_y
+      +d'g_E\wedge\alpha_z\wedge d''\eta_y
+      -d''g_E\wedge\alpha_z\wedge d'\eta_y\bigr)\\
+ &=-\int_Tg_E D(\alpha_z\wedge\eta_y).
+ \end{split}
+\tag{PB15.9}\label{r15b:rank-two-boundary-sign}
+\]
+For example
+$D(\alpha_z\eta_y)=-d''\alpha_z\,d'\eta_y
+ +d'\alpha_z\,d''\eta_y+\alpha_zD\eta_y$;
+the two Stokes identities cancel these first-derivative terms
+with precisely the signs in \eqref{r15b:rank-two-boundary-sign}.
+Thus no differentiated cutoff term has been discarded.
+
+The coordinate base-change clause of $(\mathrm{HP})_K$,
+checked on local trivializations and then glued by current
+injectivity, identifies
+\[
+ (p_y)_*\alpha_z=\pi^*I\alpha,
+ \qquad (p_y)_*(h_z\alpha_z)=\pi^*J\alpha.
+\]
+The ordinary projection formula with the smooth target forms
+$h$ and $\pi^*\kappa$ handles the other two curvature terms.
+Equations \eqref{r15b:rank-two-scalar-pairing} and
+\eqref{r15b:rank-two-boundary-sign} consequently prove, for
+every prescribed smooth test, the identity
+\[
+ \alpha=c h+\pi^*(J\alpha+c\kappa)
+                  +DG_E\alpha+d''P_E\alpha-d'Q_E\alpha.
+\tag{PB15.10}\label{r15b:rank-two-homotopy}
+\]
+All terms are ordinary actual forms. Current injectivity makes
+this an actual identity. The last three terms are Aeppli
+boundaries, while $J\alpha+c\kappa$ is $D$-closed on $S$.
+This proves spanning in \eqref{r15b:rank-two-aeppli-formula}.
+
+For directness restrict a relation
+$\pi^*[\beta]+a[h]=0$ to a fiber over a closed point $s$ of
+$S$. The first term restricts to zero. The native mass of
+$h$ on that projective-line fiber is $[\kappa(s):K]$:
+compare its smooth metric with the standard model metric
+using the global PWS ratio and actual Stokes on the fiber.
+Therefore $a=0$. Finally $\pi^*$ is injective on actual
+$H_{\mathrm A}^{1,1}$ by the frozen R14 constant-fiber-dimension
+theorem, \texttt{r14j:equidimensional}, applied to the smooth
+projective surjection $\pi$. This gives $[\beta]=0$.
+The same PWS metric-ratio argument identifies $[h]$ with its
+model first Chern class. Every step retains native degrees.
+\end{proof}
+
+\begin{corollary}[Codimension-two smooth centers in any ambient dimension]
+\label{r15b:codim-two-center}
+Assume $(\mathrm{HP})_K$. Let $X/K$ be smooth integral
+projective and let $C\subset X$ be a smooth closed center of
+pure codimension two. Then the blowup $q:Y\to X$ induces
+an injection on actual $H_{\mathrm{BC}}^{2,2}$.
+\end{corollary}
+
+\begin{proof}
+Treat the disjoint integral components of $C$ separately.
+The exceptional divisor is $E=\mathbf P_C(N_{C/X})$ with
+rank-two normal bundle. Theorem~\ref{r15b:rank-two-aeppli}
+gives its full Aeppli group as the sum of a center pullback
+and the relative hyperplane class. The latter is the negative
+of $i^*c_1(\mathcal O_Y(E))$. Both summands therefore vanish
+in the normalized exceptional quotient of
+Proposition~\ref{r15:degree-two-all-centers}. That proposition,
+which has no center-dimension restriction, identifies this
+quotient with the kernel of $q^*$ in curvature degree $(2,2)$.
+The quotient is zero, as required.
+\end{proof}
+
+\paragraph{Exact limits.}
+This argument treats rank two. It does not automatically give
+an Aeppli formula for $\mathbf P_S(N)$ when
+$\operatorname{rank}N>2$: its relative diagonal is no longer
+a divisor and the scalar kernel used here is unavailable.
+It gives no general proper actual pushforward and no all-cycle
+Green theorem in higher ambient dimension. It does remove the
+surface-center analytic quotient in a fourfold, conditional
+on $(\mathrm{HP})_K$, without computing the surface's own
+Aeppli group. The hypothesis $(\mathrm{HP})_K$ is supplied
+by Theorem~\ref{r15hp:projection} and its Green-output
+consequence. The separate incidence theorem
+\ref{r15i:aeppli} establishes the all-rank $(1,1)$
+formula; it is not inferred merely from the rank-two
+diagonal calculation above.
+
+\paragraph{Primary metric references checked.}
+CLD, \emph{Formes differentielles reelles et courants sur les
+espaces de Berkovich}, 2025 version,
+\url{https://arxiv.org/pdf/1204.6277}, Propositions 15.2.8,
+17.1.7 and 17.1.8; Remark 17.1.9 distinguishes higher-rank
+vector norms. The scalar actual divisor Green identity and
+actual-current injectivity are the previously fixed Mihatsch
+inputs. The first-strip PWS replacement is
+\texttt{round14/projective\_cohomology/pws\_replacement\_degree\_11.tex},
+and scalar constancy is
+\texttt{round14/foundations\_audit/proper\_scalar\_constancy.tex}.

@@ -1,0 +1,423 @@
+\section{Automatic two-chart coherence for an analytic invertible two-row block}
+\label{sec:r11-gl2-block-two-chart}
+
+\paragraph{Status and construction.}
+\textbf{PROVED THIS ROUND}, subject to exact-source independent review.
+The construction contributor is \texttt{/root/r11\_challenge}.
+The new geometric certificate is one arbitrary analytic invertible
+$2\times2$ block on a whole ordinary neighborhood, acting inside
+an arbitrary rank-$r$ tuple.  Its two ordinary Gaussian charts have
+an explicit relative native overlap witness.  This is not a global
+factorization theorem for arbitrary analytic $\mathrm{GL}_r$ matrices
+and does not assume arbitrary finite pivot covers are coherent.
+
+The same-root additivity used below is the separately marked SAR
+\textsc{recovery revalidation} of a historically reported CG/RA
+facet, not counted again as new mathematics.  The new Weyl relation
+WNR, and the exact frozen MX/NSC/SL/CS relations, provide the other
+steps.  Every word comparison below refers to the literal native
+SHT pair with the original metric, not an unspecified primitive.
+
+\subsection{The original-field two-chart atlas}
+
+Let $N$ be an ordinary analytic open in the original smooth
+$K$-analytic space, with the ordinary smooth partition interface
+of frozen RAG.  It need not be compact.  Let $f$ be an $r$-tuple
+of sections of the same actual metrized line bundle, $r\ge2$,
+and put $W=N\setminus|f=0|$, $s=r-1$, $R=c_1(\overline L)$.
+After a fixed relabeling of two selected rows, supply the analytic
+matrix
+\[
+ M=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}
+                      \oplus I_{r-2},\qquad
+ \Delta=\alpha\delta-\beta\gamma\in\mathcal O(N)^\times.
+ \tag{GB1}
+\]
+Only this block is changed; the other rows remain exactly unchanged.
+No coefficient bound, common lattice, or Zariski presentation is
+assumed.  Write $D_i(\lambda)$ for a unit scaling of row $i$,
+$E_{ij}(t)$ for an elementary shear, and
+\[
+                J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+                      \oplus I_{r-2}.
+ \tag{GB2}
+\]
+The fixed norm isometry $J$ has primitive pair zero.
+
+The two ordinary opens
+\[
+ N_\alpha=\{\alpha\ne0\},\qquad N_\gamma=\{\gamma\ne0\}
+ \tag{GB3}
+\]
+cover $N$: an analytic point with both entries zero would have
+$\Delta=0$ in its completed residue field.  Reciprocal pivot
+functions are analytic units on these ordinary opens.  We are not
+replacing rational domains by ordinary opens, nor requiring the
+entries to be units before restricting to (GB3).
+
+On the first chart set $u=\beta/\alpha$, $t=\gamma/\alpha$ and
+$h=\Delta/\alpha$.  The first native Gaussian word is
+\[
+               w_\alpha=E_{21}(t)D_1(\alpha)D_2(h)E_{12}(u).
+ \tag{GB4}
+\]
+On the second chart the word is
+\[
+        w_\gamma=J E_{21}(-\alpha/\gamma)
+            D_1(\gamma)D_2(\Delta/\gamma)E_{12}(\delta/\gamma).
+ \tag{GB5}
+\]
+All words are matrix products, with the rightmost factor executed
+first.  Direct multiplication proves $w_\alpha=w_\gamma=M$ on
+their respective domains.  Let $p_\alpha,p_\gamma$ be their full
+native path pairs, with the pair for $J$ equal to zero.  Frozen
+SHT3--SHT5 give
+\[
+ G_{Mf}-G_f=\partial_1p_\nu+v(\Delta)R^s,
+                 \qquad \nu=\alpha,\gamma.
+ \tag{GB6}
+\]
+The two diagonal weights sum to $v(\Delta)$ in either word; all
+shear weights sum to zero.  The arbitrary shear coefficients in
+these words may vanish, and their native zero extensions are part
+of (GB6).
+
+\subsection{Exact conventions for finite native word substitutions}
+
+For a finite word $w$ let $p(w;g)$ denote its chronological native
+pair sum starting at $g$.  If two subwords have the same matrix,
+the pairs contributed by an identical suffix agree literally,
+because they start at the same tuple.  An identical prefix puts
+both subwords at the same actual intermediate tuple.  Thus a
+displayed relation between the two subwords may be evaluated there
+and inserted into a longer word by adding exactly its actual
+witness.  This is a finite substitution rule, not an assertion
+that two arbitrary words are related by the available rules.
+
+Two literal rules need no cochain.  A unit edge followed by its
+inverse cancels by SHT antisymmetry.  A shear $E_{ij}(z)$ followed
+by $E_{ij}(-z)$ also cancels: their coefficients have equal
+valuations, and their native middle norm vertices agree by
+$E_{ij}(1)$ and the norm-one sign scaling.  The equality persists
+through $z=0$ by the native SHT zero extension.
+
+The other literal rule is signed-permutation equivariance, for
+the fixed matrices whose nonzero entries are $\pm1$.  This is
+checked for the whole presentation, not inferred from equal
+endpoints.  A diagonal edge conjugates to the permuted row with
+the same unit weight; both of its endpoint norms are unchanged.
+For a shear, conjugation permutes its source and target and
+possibly replaces $z$ by $-z$.  Its unit weight is unchanged,
+and its middle normalizer is the signed permutation of the old
+one, up to an additional norm-one diagonal sign.  Hence the
+entire two-edge SHT formula has the same three norm potentials
+and weights.  Zero-coefficient gluing is preserved because
+$|z|=|-z|$.  This proves the exact pair equivariance used when
+moving $J$ through diagonal factors below.  No equivariance under
+a general norm-isometric matrix is claimed.
+
+Use the following specified actual witness notation:
+\[
+ \begin{array}{ll}
+ Q^{\rm tar}_{ij;z,\lambda}(g)&\text{the exact MX2 target witness},\\
+ Q^{\rm src}_{ij;z,\lambda}(g)&\text{the exact NSC3 source witness},\\
+ Q^{\rm sl}_{i;\lambda,\mu}(g)&\text{the SL9 loop for }
+       (\lambda,\mu,(\lambda\mu)^{-1}),\\
+ Q^{\rm cs}_{i,\lambda;j,\mu}(g)&\text{the CS3 square: temporal }
+           (i,\lambda),(j,\mu)\text{ minus the reverse order},\\
+ Q^{\rm add}_{ij;z_1,z_2}(g)&\text{the exact SAR8 witness},\\
+ Q^{\rm W}_{ij;z}(g)&\text{the exact WNR18 witness}.
+ \end{array}
+ \tag{GB7}
+\]
+The first three, fifth and sixth are strict.  The fourth has the
+displayed extending pair
+\[
+ e_{x,y}R^{r-2},\qquad
+ e_{x,y}=(x\,d''y,y\,d'x),\quad x=v(\lambda),\ y=v(\mu).
+ \tag{GB8}
+\]
+Every symbol in (GB7) denotes its fixed finite actual formula in
+the stated exact source, with any positive cap constant fixed
+once.  No linear primitive selector or quotient lifting is used.
+
+\subsection{A strict pivot-exchange subword}
+
+For an analytic unit $t$, define $Z=E_{12}(t^{-1})$.  The identity
+needed for comparing the two Gaussian words is
+\[
+ E_{21}(t)=J E_{21}(-t^{-1})D_2(t^{-1})D_1(t)E_{12}(t^{-1}).
+ \tag{GB9}
+\]
+It has the following explicit strict native witness:
+\[
+ \begin{split}
+ Q^{\rm piv}_t(g)={}&
+ Q^{\rm W}_{21;t}\bigl(E_{21}(-t)Zg\bigr)
+ +Q^{\rm src}_{21;-t,t}(Zg)\\
+ &+Q^{\rm tar}_{21;-1,t^{-1}}\bigl(D_1(t)Zg\bigr).
+ \end{split}
+ \tag{GB10}
+\]
+In particular, the native pair of the left word minus that of
+the right word in (GB9) equals $\partial_2Q^{\rm piv}_t(g)$.
+
+\begin{proof}
+WNR with the two row labels interchanged gives
+\[
+ E_{21}(t)E_{12}(-t^{-1})E_{21}(t)
+                     =D_1(t^{-1})D_2(t)J.
+ \tag{GB11}
+\]
+Insert this relation after the prefix
+$E_{21}(-t)E_{12}(t^{-1})$.  On the left the two adjacent
+shear-inverse pairs cancel literally, leaving $E_{21}(t)$.
+The strict discrepancy is the first term of (GB10).
+Signed-permutation equivariance moves $J$ to the left of the
+two diagonal factors, giving
+\[
+ J D_2(t^{-1})D_1(t)E_{21}(-t)E_{12}(t^{-1}).
+ \tag{GB12}
+\]
+Apply NSC to
+$D_1(t)E_{21}(-t)=E_{21}(-1)D_1(t)$, then MX to
+$D_2(t^{-1})E_{21}(-1)=E_{21}(-t^{-1})D_2(t^{-1})$.
+Their starting tuples are precisely the second and third
+arguments in (GB10), and both orientations are positive.
+The result is (GB9), proving the claimed full pair identity.
+\end{proof}
+
+\subsection{The entire Gaussian overlap witness}
+
+On the whole ordinary overlap $N_{\alpha\gamma}=N_\alpha\cap
+N_\gamma$, all of $\alpha,\gamma,\Delta,t,h$ are units.  Put
+\[
+ t=\gamma/\alpha,\quad h=\Delta/\alpha,\quad
+ u=\beta/\alpha,\quad v=h/(\alpha t)=\Delta/(\alpha\gamma).
+ \tag{GB13}
+\]
+Then
+\[
+ \gamma=\alpha t,\qquad \Delta/\gamma=h/t,
+                   \qquad \delta/\gamma=u+v.
+ \tag{GB14}
+\]
+The last coefficient can be zero; no unit assumption on $u$ or
+$u+v$ is made.
+
+Define actual intermediate tuples
+\[
+ \begin{split}
+ g_0&=D_1(\alpha)D_2(h)E_{12}(u)f,\\
+ g_1&=D_2(h)E_{12}(u)f,\qquad g_2=E_{12}(u)f,\\
+ g_3&=D_2(h)E_{12}(v)E_{12}(u)f,\qquad
+ g_4=E_{12}(v)E_{12}(u)f.
+ \end{split}
+ \tag{GB15}
+\]
+All invertible matrices here are defined on the whole overlap,
+and every tuple has the same common zero set as $f$.  Set
+\[
+ \begin{split}
+ Q_{\alpha\gamma}={}&Q^{\rm piv}_t(g_0)
+ -Q^{\rm tar}_{12;(\alpha t)^{-1},\alpha}(g_1)
+ -Q^{\rm src}_{12;v,h}(g_2)\\
+ &+Q^{\rm sl}_{1;\alpha,t}(g_3)
+ +Q^{\rm cs}_{1,\gamma;2,t^{-1}}(g_3)
+ +Q^{\rm sl}_{2;h,t^{-1}}(g_4)
+ +Q^{\rm add}_{12;u,v}(f).
+ \end{split}
+ \tag{GB16}
+\]
+This is a finite explicit sum of actual triples on
+$W\cap N_{\alpha\gamma}$.  Its extending pair on the full,
+unpunctured overlap is
+\[
+ \epsilon_{\alpha\gamma}=e_{v(\gamma),-v(t)}R^{r-2}
+                              \in L_1^{r-1}(N_{\alpha\gamma}).
+ \tag{GB17}
+\]
+
+\begin{lemma}[Exact two-chart native relation]
+On the entire punctured overlap,
+\[
+          p_\alpha-p_\gamma
+                =\partial_2Q_{\alpha\gamma}
+                           +\epsilon_{\alpha\gamma}|_W.
+ \tag{GB18}
+\]
+\end{lemma}
+
+\begin{proof}
+Replace the leftmost factor $E_{21}(t)$ in (GB4) by (GB9),
+using the first term of (GB16).  The remaining explicit word is
+\[
+ J E_{21}(-t^{-1})D_2(t^{-1})D_1(t)
+                   E_{12}(t^{-1})D_1(\alpha)D_2(h)E_{12}(u).
+ \tag{GB19}
+\]
+Move $E_{12}(t^{-1})$ through $D_1(\alpha)$ to the right by
+the target relation, obtaining coefficient $(\alpha t)^{-1}$.
+This uses the negative of MX2 at $g_1$, as written in (GB16).
+Move that shear through $D_2(h)$ to the right by the source
+relation, obtaining coefficient $v$; this uses the negative
+of NSC3 at $g_2$.  We have now reached
+\[
+ J E_{21}(-t^{-1})D_2(t^{-1})D_1(t)D_1(\alpha)D_2(h)
+                                       E_{12}(v)E_{12}(u).
+ \tag{GB20}
+\]
+Merge the two consecutive row-one scalings by the SL loop with
+temporal factors $\alpha,t$, evaluated at $g_3$.  Next swap
+$D_2(t^{-1})$ and $D_1(\gamma)$ using the complete CS square
+at the same $g_3$.  Its temporal order is first row one with
+factor $\gamma$, then row two with factor $t^{-1}$.  It therefore
+contributes exactly the positive error (GB17), not its reverse.
+No other step has an extending error.
+
+Merge the row-two scalings with temporal factors $h,t^{-1}$
+at $g_4$, and merge $E_{12}(u)$ followed by $E_{12}(v)$ by
+SAR8 at $f$.  The resulting word is
+\[
+ J E_{21}(-t^{-1})D_1(\gamma)D_2(h/t)E_{12}(u+v),
+ \tag{GB21}
+\]
+which is exactly (GB5) by (GB14).  The actual witnesses of
+these seven substitutions are precisely (GB16).  Common
+prefixes and suffixes cancel in the entire native expressions.
+This proves (GB18), including all metric transport, coefficient
+zeros and mixed jets already present in the input witnesses.
+\end{proof}
+
+\subsection{Actual gluing on the whole original neighborhood}
+
+Choose an ordinary smooth actual partition
+$\theta_\alpha+\theta_\gamma=1$ subordinate to (GB3), and put
+$\theta=\theta_\alpha$.  Write
+$Q_{\alpha\gamma}=(A_2,B_2,M_2)$ and
+$p_\nu=(p'_\nu,p''_\nu)$.  With the closed-support zero-extension
+conventions of RAG, define
+\[
+ \begin{split}
+ p'={}&\theta_\gamma p'_\gamma+\theta_\alpha p'_\alpha
+                         +d'\theta\wedge A_2+d''\theta\wedge M_2,\\
+ p''={}&\theta_\gamma p''_\gamma+\theta_\alpha p''_\alpha
+                         +d''\theta\wedge B_2+d'\theta\wedge M_2,\\
+ E={}&v(\Delta)R^s
+              -d'\theta\wedge\epsilon'_{\alpha\gamma}
+              -d''\theta\wedge\epsilon''_{\alpha\gamma}.
+ \end{split}
+ \tag{GB22}
+\]
+The pair $p$ is actual on $W$; the form $E$ is actual on all
+of $N$.  The overlap error was already supplied across $|f=0|$.
+The support of each differentiated partition factor is closed
+in $N$ and contained in the whole ordinary overlap, so its
+product with an unbounded analytic-unit expression extends
+by zero.  No additional growth condition is used.
+
+\begin{theorem}[An analytic two-row block has a whole-neighborhood relative primitive]
+For any original-$K$ data (GB1), in every rank $r\ge2$, the
+explicit actual forms (GB22) satisfy
+\[
+                      G_{Mf}-G_f=\partial_1p+E|_W.
+ \tag{GB23}
+\]
+Only one finite ordinary two-chart cover is used.  Its overlap
+compatibility is constructed by (GB10) and (GB16), not assumed.
+\end{theorem}
+
+\begin{proof}
+Equations (GB6) and (GB18) are exactly the hypotheses of the
+two-open RAG theorem with $p_0=p_\gamma$, $p_1=p_\alpha$.
+Its complete mixed partition computation is (GB22), proving
+(GB23).  If either pivot chart is empty, the other chart covers
+$N$ and (GB6) already gives the conclusion; the overlap sums
+are empty.  Thus no exceptional global pivot is required.
+\end{proof}
+
+\subsection{Original-support Green forms and finite supplied block products}
+
+Let the original global tuples $s_0,s_1$ be regular sections of
+the same $r$-fold sum of the same metrized line bundle on $X/K$.
+Retain
+\[
+ Z=[Y_1]-[Y_0],\quad U=X^{\rm an}\setminus|Z|,\quad
+ V=X^{\rm an}\setminus(|Y_0|\cup|Y_1|),\quad
+ C=(|Y_0|\cup|Y_1|)\cap U.
+ \tag{GB24}
+\]
+Suppose an ordinary neighborhood $N\subset U$ of $C$ carries
+one analytic block (GB1) with the actual section identity
+$s_1=Ms_0$ on all of $N$.  Then (GB23) supplies the RSP data
+on $N\cap V$ and $N$ without an additional path-overlap hypothesis.
+Choose the frozen ordinary cutoff $\chi$ on $U$ supported in
+$N$ and equal to one near $C$.  Set
+\[
+        g_Z=G_1-G_0-d'(\chi p')-d''(\chi p'')\quad\hbox{on }V
+ \tag{GB25}
+\]
+with the RSP closed-support extensions.  Near $C$ this agrees
+with the actual form $E$, so it glues to an actual
+$g_Z\in B^{r-1,r-1}(U)$.
+
+For every actual compact
+$\eta\in B_c^{n-r,n-r}(X^{\rm an})$, the frozen support lemma
+gives $\operatorname{supp}D\eta\Subset V$.  The two correction
+products in (GB25) therefore have compact support in $V$;
+actual Stokes annihilates them.  The individual frozen CI
+identities give
+\[
+                    \int_Ug_Z\wedge D\eta=-\int_Z\eta.
+ \tag{GB26}
+\]
+The original cycle, field, absolute value and exact support
+complement are unchanged.  The original CI0 condition is not
+modified: this is a separate extension construction when its
+geometric certificate is provided.
+
+The same conclusion holds if $s_1=M_m\cdots M_1s_0$ on $N$
+is a supplied finite product of analytic invertible two-row
+blocks, with possibly different row pairs at different steps.
+Apply (GB23) to each actual intermediate tuple.  Every step
+has the same common zero set, and summing its actual $p$ and
+extending $E$ gives the required whole-neighborhood pair and
+residue.  This finite product statement does not infer that
+an arbitrary analytic $\mathrm{GL}_r$ matrix has such a global
+factorization.
+
+\paragraph{Exact scope and topology.}
+The neighborhood need not be closed in $X$ or separated there
+from the remaining support.  It is required to lie in $U$ and
+to carry the displayed analytic block identity.  Thus the
+certificate is analytic and directly checkable on the original
+space; an ideal-equality claim without this matrix is not its
+substitute.  No ordinary-open descent from a rational cover,
+field extension, analytic root, coefficient bound or universal
+unit majorant is used.
+
+All expressions have finite local actual presentations.  The
+whole-presentation zero relations, including non-product units
+and moving-puncture refinements, are retained by each exact
+input and by the explicit word substitutions.  This constructs
+actual forms, not a class in an Aeppli quotient or a completion.
+It does not prove a global continuous right inverse, a full
+lower-middle inherited-topology theorem, arbitrary higher
+matrix-word coherence, or the general homologically trivial
+cycle case of Strong G.  It also supplies none of the additional
+Beilinson--Bloch height axioms automatically.
+
+\paragraph{Exact proof inputs.}
+WNR: \path{e0f23e1d1b0a6042a0e7f5b848126c712589684b179f36a4753362b3d3a884c6}.
+SAR recovery revalidation:
+\path{b01895d9d8a52e0c5e2a2e37ef6ed9d3a77ef654d10928b0193b91606ba625ec}.
+SHT: \path{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+MX: \path{ba5eebf4b312b7df4f3a7beceacaafbfaa171cbe97eb2614af7e717197d450fa}.
+NSC: \path{9046f887d8c95ab5e07d0798f46d23be47a969c36cdbb56209df31ee4d12b739}.
+SL: \path{4e98a9bf26bbfb5e27ad48de2b8ac8d1b147ebad9d1fe9dbaaced0e1eb2883b0}.
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+RAG: \path{34c1f00070f1e6ad596d9c8de58a20145a3670e1be7890710d5a4285733f9f82}.
+RSP: \path{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+CI: \path{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+Internal review of the current hashes is not formal verification,
+external peer review, or an external novelty assertion.

@@ -1,0 +1,645 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[margin=1.12in]{geometry}
+\usepackage{microtype}
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,mathtools}
+\usepackage{xcolor}
+\definecolor{mathblue}{HTML}{1F4E79}
+\definecolor{mathteal}{HTML}{00656D}
+\definecolor{mathpurple}{HTML}{643F7A}
+\definecolor{mathgreen}{HTML}{2F6B3C}
+\definecolor{mathurl}{HTML}{843C39}
+\usepackage[colorlinks=true,linkcolor=mathblue,citecolor=mathgreen,urlcolor=mathurl,breaklinks=true]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\pdfmapfile{+cm.map}
+\pdfmapfile{+cmextra.map}
+\pdfmapfile{+symbols.map}
+\pdfmapfile{+latxfont.map}
+\pdfmapfile{+euler.map}
+\pdfmapfile{+rsfs.map}
+\newcommand{\Secref}[1]{{\hypersetup{linkcolor=mathteal}\Cref{#1}}}
+\newcommand{\Eqref}[1]{{\hypersetup{linkcolor=mathpurple}\eqref{#1}}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\K}{K}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\homol}{\mathrm{hom}}
+\newcommand{\BC}{\mathrm{BC,act}}
+\newcommand{\B}{\mathcal B}
+\newcommand{\Obs}{\mathfrak o}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\et}{\mathrm{\acute{e}t}}
+\newcommand{\M}{\mathscr M}
+\numberwithin{equation}{section}
+\title[Algebraic equivalence and strong Green forms]{Algebraic Equivalence and Chow--Motivic Transfer\\for Actual Non-Archimedean Green Forms}
+\author{}
+\date{Revised internal research draft, 16 November 2026}
+\begin{document}
+\begin{abstract}
+Let $K/\Q_p$ be finite.  Given the Chow-invariant actual
+Bott--Chern obstruction and the exact-support Green-pair construction
+of the companion analytic theory, we prove that the obstruction
+vanishes on geometrically algebraically trivial cycles of every
+smooth projective $K$-variety.  The proof uses local rigidity of
+actual forms in proper families and a compactness argument on
+$p$-adic abelian groups.  Adding the numerical-model criterion and
+correspondence covariance, we establish a transfer theorem for
+homologically trivial cycles whose Chow classes factor through
+abelian varieties after finite extension.  K\"unnemann's special-fiber
+theorem supplies the required abelian input.  These deductions produce
+zero-curvature Green forms on the precise complement of any
+prescribed representative, tested against all compact actual
+$\delta$-forms.  The four analytic inputs are stated as explicit
+hypotheses so that the geometric deductions can be verified
+independently of their companion proofs.
+\end{abstract}
+\maketitle
+\pagestyle{plain}
+\tableofcontents
+
+\section{The two vanishing theorems}\label{sec:intro}
+
+Let $K/\Q_p$ be a finite extension, with its fixed non-archimedean
+absolute value, and let $X/K$ be smooth, projective and geometrically
+integral of dimension $n$.  For a rational cycle $Z$ of codimension
+$r$, $1\le r\le n$, put $U_Z=X^{\an}\setminus|Z|^{\an}$, where
+$|Z|$ is the union of the components with nonzero coefficient.
+Write $D=d'd''$ and denote by $\B^{p,q}$ the sheaf of ordinary actual
+Mihatsch $\delta$-forms on the ordinary topology of $X^{\an}$
+\cite{Mihatsch}.  The sought form is
+\[
+  \gamma_Z\in\B^{r-1,r-1}(U_Z),
+  \qquad
+  \int_{U_Z}\gamma_Z\wedge D\eta
+          =-\int_{Z^{\an}}\eta
+  \quad\bigl(\eta\in\B_c^{n-r,n-r}(X^{\an})\bigr).
+\]
+The integrals are those of actual $\delta$-forms; the construction
+below provides their well-definedness.  In particular, the right
+side retains the coefficients of the specified cycle.
+
+The companion construction associates to every codimension-$r$ Chow
+class a closed actual Bott--Chern class
+\[
+\Obs^r_{X,K}:\CH^r(X)_\Q\longrightarrow
+ H^{r,r}_{\BC}(X):=
+ \frac{\{\omega\in\B^{r,r}(X^{\an}):d'\omega=d''\omega=0\}}
+ {D\B^{r-1,r-1}(X^{\an})}.
+\]
+Its zero class is a sufficient condition for the above Green form.
+We state the precise companion results used in \Secref{sec:inputs}.
+
+\begin{theorem}[Geometric algebraic equivalence]\label{thm:alg}
+Assume the actual obstruction and exact-support properties
+\textup{(A1)--(A2)} of \Cref{prop:inputs}.  For every
+$z\in\CH^r(X)_{\Q,\alg}$, where algebraic equivalence is taken
+over $\overline K$, one has
+\[
+                    \Obs^r_{X,K}(z)=0.
+\]
+For each specified rational cycle $Z$ representing $z$, there is a
+form $\gamma_Z\in\B^{r-1,r-1}(U_Z)$ satisfying the preceding
+zero-curvature identity for every compact actual test.
+\end{theorem}
+
+The proof in \Secref{sec:algproof} constructs an additive Chow family
+over a Weil restriction of a Jacobian.  Its obstruction is an additive,
+locally constant function on a compact $p$-adic abelian group and
+hence vanishes.
+
+We use rational correspondences with the convention that a degree-$a$
+correspondence $V\rightsquigarrow W$ is a class in
+$\CH^{\dim V+a}(V\times W)_\Q$.  Thus it sends codimension $r$
+to codimension $r+a$.
+
+\begin{definition}[Potential abelian Chow retraction]
+\label[definition]{def:retraction}
+The variety $X$ has a \emph{potential abelian Chow retraction} if
+there are a finite extension $L/K$, abelian varieties $A_j/L$,
+integers $a_j$, and correspondences
+\begin{align*}
+ u_j&\in\CH^{n+a_j}(X_L\times_L A_j)_\Q,\\
+ v_j&\in\CH^{\dim A_j-a_j}(A_j\times_L X_L)_\Q
+\end{align*}
+for which
+\begin{equation}\label{eq:diagonal}
+        \Delta_{X_L}=\sum_j v_j\circ u_j
+                   \quad\text{in }\CH^n(X_L\times_L X_L)_\Q.
+\end{equation}
+The zero-dimensional abelian variety $\Spec L$ is allowed.
+\end{definition}
+
+\begin{theorem}[Transfer through abelian Chow motives]
+\label{thm:abelian}
+Assume the companion properties \textup{(A1), (A2), (N), (C)} of
+\Cref{prop:inputs}.  If $X$ has a potential abelian Chow retraction,
+then for every $r$
+\[
+  \Obs^r_{X,K}(z)=0
+         \qquad (z\in\CH^r(X)_{\Q,\homol}).
+\]
+For $1\le r\le n$, every specified rational cycle in such a class
+has an ordinary actual strong Green form on its exact support
+complement and against all compact actual tests.  For a fixed $r$,
+it suffices that the right side of \Eqref{eq:diagonal} act as the
+identity on $\CH^r(X_L)_{\Q,\homol}$.  The same conclusion holds
+if its action is a fixed nonzero scalar multiple of the identity.
+\end{theorem}
+
+Here homological triviality means the vanishing of the geometric
+$\ell$-adic cycle class for one (equivalently every) $\ell\ne p$.
+The proof in \Secref{sec:motivproof} combines K\"unnemann's
+semistable abelian model with the literal Chow diagonal.  This
+separates the local analytic construction from the motivic
+transfer, and keeps every operation on actual forms over the original
+valued field.
+
+Mihatsch constructs Green $\delta$-forms for complete-intersection
+formal models \cite[Theorem~5.5]{Mihatsch}.  K\"unnemann established
+unconditional height pairings for homologically trivial Chow cycles
+on abelian varieties \cite{Kunnemann2001}.  The present statements
+concern the actual differential-form representatives of local Green
+identities.  Their analytic foundation is the internally developed
+package described next.
+
+\section{Actual curvatures, numerical models and correspondence kernels}
+\label{sec:inputs}
+
+This section records the exact companion results needed for the two
+proofs.  They are internal analytic theorems, rather than assertions
+from the external references cited for background.  The proofs
+are contained in the frozen Rounds 10, 11, 12 and 16 \cite{R10,R11,R12,R16}.
+
+\begin{proposition}[Companion analytic package]\label[proposition]{prop:inputs}
+For smooth projective integral $K$-varieties $V$, the companion
+construction has the following properties.
+
+\smallskip\noindent
+\textup{(A1)} There is a $\Q$-linear, Chow-invariant map
+$\Obs^s_{V,K}:\CH^s(V)_\Q\to H^{s,s}_{\BC}(V)$, computed by
+actual, separately closed degree-$s$ Chern-character forms of vector
+bundles on projective flat models.  These model forms are functorial
+under genuine analytic pullback, including rational fiber maps
+$s_a:V\to V\times S$, with
+$s_a^*\Obs^s_{V\times S,K}(\Theta)=\Obs^s_{V,K}(s_a^*\Theta)$.
+If two such model characters have the same generic codimension-$s$
+Chow class, their difference is $D$ of a global actual form.
+
+\smallskip\noindent
+\textup{(A2)} Every specified rational codimension-$s$ cycle $W$
+has a pair
+\[
+ G_W\in\B^{s-1,s-1}(V^{\an}\setminus|W|^{\an}),\qquad
+ \Omega_W\in\B^{s,s}(V^{\an})
+\]
+with $d'\Omega_W=d''\Omega_W=0$, $[\Omega_W]=\Obs^s_{V,K}([W])$,
+and
+\begin{equation}\label{eq:curved}
+ \int_{V^{\an}\setminus|W|^{\an}}G_W\wedge D\eta
+   +\int_{W^{\an}}\eta
+    =\int_{V^{\an}}\Omega_W\wedge\eta
+       \quad\bigl(\eta\in\B_c^{\dim V-s,\dim V-s}(V^{\an})\bigr).
+\end{equation}
+
+\smallskip\noindent
+\textup{(N)} If $h:V'\to V$ is finite dominant, with $V'$ smooth
+integral (possibly with a finite larger constant field), and a
+projective flat model of $V'$ carries a rational virtual vector
+bundle representing $h^*z$ whose degree-$s$ special-fiber Chern
+character has degree zero on every integral vertical $s$-cycle,
+then $\Obs^s_{V,K}(z)=0$.  Special-fiber multiplicities, residue
+degrees and the full native degree of $h$ enter the criterion.
+
+\smallskip\noindent
+\textup{(C)} The kernels of the maps $\Obs^s_{V,K}$ are stable under
+algebraic Chow correspondences between smooth projective integral
+$K$-varieties, including proper algebraic pushforward.  For finite
+$L/K$, the algebraic projection $\pi:V_L\to V$ satisfies
+$\pi_*\pi^*=[L:K]$ on Chow groups.  The kernel assertion is
+interpreted for $L$-schemes regarded as $K$-schemes, componentwise
+after geometric base change.
+\end{proposition}
+
+The inputs split into two proof chains.  Properties (A1)--(A2)
+come from model Chern forms, generic-Chow-zero primitives, and the
+supported-perfect-complex Green-pair construction.  Property (N)
+also uses the numerical detector for actual model Chern forms and
+its finite-flat certificate descent.  Property (C) uses the actual
+projective-bundle integration theorem and the smooth-immersion
+deformation argument.  The latter is a statement about the kernel
+of $\Obs$, not a form-valued pushforward along an arbitrary proper map.
+
+\begin{lemma}[Correcting a prescribed Green pair]\label[lemma]{lem:correction}
+Let $1\le s\le\dim V$.  Under \textup{(A2)}, if
+$\Obs^s_{V,K}([W])=0$, then the zero-curvature Green form for $W$
+can be chosen on precisely $V^{\an}\setminus|W|^{\an}$.
+\end{lemma}
+\begin{proof}
+Choose $\Psi\in\B^{s-1,s-1}(V^{\an})$ with $D\Psi=\Omega_W$.
+Then $G_W-\Psi|_{V^{\an}\setminus|W|^{\an}}$ satisfies
+\Eqref{eq:curved} with zero right-hand side.  The correction is
+global on $V^{\an}$, so the domain of the original $G_W$ is
+unchanged.
+\end{proof}
+
+\section{A compact-parameter argument for algebraic equivalence}
+\label{sec:compact}
+
+The key geometric feature of actual forms is their dependence on
+valuations of analytic units.  In a proper family, these valuations
+remain literally constant when a rational parameter is sufficiently
+close to a fixed point.
+
+\begin{lemma}[Uniform constancy on rational fibers]
+\label[lemma]{lem:rigid}
+Let $S/K$ be smooth and separated, $a_0\in S(K)$ and
+$\omega\in\B^{p,q}((X\times_K S)^{\an})$.  For
+$s_a:X^{\an}\to(X\times S)^{\an}$ the section at $a\in S(K)$,
+there is an ordinary analytic neighborhood $V$ of $a_0$ in $S^{\an}$
+such that
+\[
+                     s_a^*\omega=s_{a_0}^*\omega
+                 \qquad(a\in V\cap S(K)).
+\]
+\end{lemma}
+\begin{proof}
+Write $p:(X\times S)^{\an}\to X^{\an}$ and
+$q:(X\times S)^{\an}\to S^{\an}$, and put $s=s_{a_0}$.
+Locally near any point of $s(X^{\an})$, present $\omega$ as
+$t_f^\star\kappa$ with $f=(f_1,\ldots,f_m)$ a tuple of analytic
+units and $\kappa$ a Euclidean $\delta$-form.  On a common
+neighborhood of the section, set $f_i^0=p^*s^*f_i$.  The difference
+$f_i-f_i^0$ vanishes along the section.  Shrinking gives
+\[
+                      |f_i-f_i^0|<|f_i^0|,
+\]
+and hence $|f_i|=|f_i^0|$.  Thus $f$ and $f^0$ induce the same
+tropical moment map on that neighborhood.  By the local definition
+of actual forms and their functorial pullback
+\cite[Definition~4.2 and Theorem~4.5]{Mihatsch},
+$\omega=p^*s^*\omega$ there.
+
+The resulting local neighborhoods cover $s(X^{\an})$; let $W$
+denote their union.  Since $X$ is proper, $q$ is proper and closed.
+The closed set $q((X\times S)^{\an}\setminus W)$ does not contain
+$a_0$, because the analytic fiber over $a_0$ is exactly
+$s(X^{\an})$.  Its complement is an ordinary neighborhood $V$
+of $a_0$ with $q^{-1}(V)\subset W$.  Pull back
+$\omega=p^*s^*\omega$ along each $s_a$ to obtain the assertion.
+\end{proof}
+
+\begin{lemma}[Multiples approach the identity]\label[lemma]{lem:multiple}
+If $A/K$ is an abelian variety, $a\in A(K)$, and $U$ is a
+neighborhood of $0$ in $A(K)$, then $ma\in U$ for some $m>0$.
+\end{lemma}
+\begin{proof}
+$A(K)$ is compact, being a closed subset of $\mathbf P^N(K)$.
+Choose a neighborhood $V$ of $0$ with $V-V\subset U$.
+Finitely many translates of $V$ cover $A(K)$.  Two of sufficiently
+many points $0,a,2a,\ldots$ lie in the same translate; their
+difference is a positive multiple $ma\in U$.
+\end{proof}
+
+\begin{lemma}[Compact rigidity]\label[lemma]{lem:compact-rigidity}
+Let $A$ be a compact topological abelian group and $W$ a torsion-free
+abelian group.  An additive map $\varphi:A\to W$ is zero if its kernel
+contains a neighborhood of the identity.
+\end{lemma}
+\begin{proof}
+For any $a\in A$, the argument of \Cref{lem:multiple} gives a
+positive integer $m$ such that $ma$ lies in the given neighborhood.
+Then $m\varphi(a)=0$, and torsion-freeness gives
+$\varphi(a)=0$.
+\end{proof}
+
+\begin{proposition}[Additive Chow families]\label[proposition]{prop:additive}
+Assume \textup{(A1)}.  Let $A/K$ be an abelian variety and
+$\Theta\in\CH^r(X\times A)_\Q$ satisfy
+\[
+ \Theta_0=0,\qquad
+ \Theta_{a+b}=\Theta_a+\Theta_b
+                      \quad(a,b\in A(K))
+\]
+for refined Chow fibers.  Then $\Obs^r_{X,K}(\Theta_a)=0$
+for every $a\in A(K)$.
+\end{proposition}
+\begin{proof}
+Represent $\Theta$ by the degree-$r$ Chern character of a rational
+virtual bundle on $X\times A$, and extend the finitely many bundles
+to a common projective flat model.  Let $\Omega$ denote its actual
+model character.  Define
+\[
+       \varphi(a)=\Obs^r_{X,K}(\Theta_a)
+                       =[s_a^*\Omega]\in H^{r,r}_{\BC}(X).
+\]
+The fiber identities and $\Q$-linearity of the obstruction make
+$\varphi$ additive.  By \Cref{lem:rigid}, the actual forms
+$s_a^*\Omega$ are constant for $a$ in a neighborhood of $0$.
+Thus $\varphi$ is locally constant at the identity, and
+$\varphi(0)=0$ since $\Theta_0=0$.  Its target is a real
+vector space and hence torsion-free.  Apply
+\Cref{lem:compact-rigidity} to the compact group $A(K)$.
+\end{proof}
+
+\section{The Poincar\'e family and proof of Theorem~\ref{thm:alg}}
+\label{sec:algproof}
+
+\begin{lemma}[Poincar\'e correspondence]\label[lemma]{lem:poincare}
+Let $L/K$ be finite, let $C/L$ be a smooth projective geometrically
+integral pointed curve, and let
+$\Gamma\in\CH^r(X_L\times_L C)_\Q$.  With
+$J=\Pic^0_{C/L}$, there is a class
+$\Theta\in\CH^r(X_L\times_L J)_\Q$ such that
+\[
+ \Theta_t=\Gamma_*c_1(\mathcal P_t),\quad
+ \Theta_0=0,\quad
+ \Theta_{t+t'}=\Theta_t+\Theta_{t'}
+                    \qquad(t,t'\in J(L)),
+\]
+where $\mathcal P$ is the normalized Poincar\'e line bundle.
+\end{lemma}
+\begin{proof}
+On $X_L\times_L C\times_L J$ set
+\[
+ \Theta=(p_{XJ})_*
+      \bigl(p_{XC}^*\Gamma\cdot p_{CJ}^*c_1(\mathcal P)\bigr).
+\]
+The projection has relative dimension one, so the resulting class
+has codimension $r$.  Refined Gysin base change gives the asserted
+fiber formula.  The normalized Poincar\'e bundle satisfies
+$\mathcal P_{t+t'}\simeq\mathcal P_t\otimes\mathcal P_{t'}$,
+and its zero fiber is trivial.  First Chern classes and Chow
+correspondences are additive, proving the identities.
+\end{proof}
+
+\begin{lemma}[Norm of an additive family]\label[lemma]{lem:norm}
+Let $L/K$ be finite Galois, $J/L$ an abelian variety, and
+$\Theta\in\CH^r(X_L\times_L J)_\Q$ additive on $J(L)$.
+Then $A=\Res_{L/K}J$ admits an additive family
+$\Theta^N\in\CH^r(X\times_K A)_\Q$ whose fiber at
+$a\in A(K)=J(L)$ corresponding to $t$ is
+\[
+                   (\Theta^N)_a=h_*\Theta_t,
+                \quad h:X_L\longrightarrow X.
+\]
+\end{lemma}
+\begin{proof}
+Let $e:A_L\to J$ be evaluation and
+$h_A:(X\times A)_L\to X\times A$ the finite flat projection.
+Define
+\[
+ \Theta^N=(h_A)_*(\id_{X_L}\times e)^*\Theta.
+\]
+All operations here are algebraic Chow operations.  The
+proper-pushforward/refined-Gysin base-change identity gives the
+claimed formula for fibers.  Since $e$ is a group morphism, the
+Chow fibers are additive.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:alg}]
+Every geometrically algebraically trivial class is, after finite
+extension, a finite rational sum of images of degree-zero divisors
+on smooth projective curves under Chow correspondences.  This is
+the curve-parameter description of algebraic equivalence
+\cite{ACMV}.  Choose a finite Galois extension $L/K$ over which
+the curves, correspondences, pointed structures, divisor classes,
+and the rational-equivalence identities defining $z_L$ are all
+defined.  Taking products of their Jacobians and sums of the
+Poincar\'e families in \Cref{lem:poincare} gives an abelian variety
+$J/L$, an additive family $\Theta$, and $t\in J(L)$ with
+$\Theta_t=z_L$.
+
+Apply \Cref{lem:norm}.  The resulting $K$-family is additive and
+has a point $a\in A(K)$ such that
+\begin{equation}\label{eq:norm}
+           (\Theta^N)_a=h_*z_L=[L:K]z.
+\end{equation}
+By \Cref{prop:additive},
+$[L:K]\Obs^r_{X,K}(z)=0$.  The target is a real vector
+space, so division by $[L:K]$ proves $\Obs^r_{X,K}(z)=0$.
+Finally, for the original specified representative $Z$, apply
+\Cref{lem:correction}.  The global correction is performed on
+$X^{\an}$, hence the complement remains $U_Z$.
+\end{proof}
+
+\section{Homologically trivial classes on abelian varieties}
+\label{sec:abelianlocal}
+
+We isolate the algebraic argument that converts K\"unnemann's
+semistable model theorem into the numerical hypothesis of (N).
+Let $F$ be a finite extension of $K$, $R=F^\circ$, and let
+$\mathcal P/R$ be a regular projective strictly semistable model
+of relative dimension $d$, with special fiber
+$Y=\bigcup_i D_i$.  Write $Y^{(j)}$ for the disjoint union of the
+$j$-fold component intersections.  Let
+$A^q(Y)=\ker(A^q(Y^{(1)})\xrightarrow{\rho}A^q(Y^{(2)}))$
+and
+$A_q(Y)=\operatorname{coker}(A_{d-q-1}(Y^{(2)})
+\xrightarrow{\gamma} A_{d-q}(Y^{(1)}))$, where the groups of
+special-fiber cycles are taken modulo geometric homological
+equivalence.
+
+K\"unnemann proves for his semistable models of abelian varieties
+that the geometric cycle class map on $A_q(Y)$ is injective and
+that the complex
+\begin{equation}\label{eq:kunn}
+ A_{d+1-r}(Y)\xrightarrow{i^*i_*} A^r(Y)
+               \xrightarrow{\cap[Y]} A_{d-r}(Y)
+\end{equation}
+is exact at the middle term
+\cite[Theorems~5.6 and 6.6; \S5.8]{Kunnemann2001}.
+
+\begin{lemma}[An extension with trivial component classes]
+\label[lemma]{lem:extension}
+Let $A/F$ be an abelian variety and let $\mathcal P/R$ be a
+K\"unnemann semistable model with the preceding properties.
+For $z\in\CH^r(A)_{\Q,\homol}$ there is
+$\Theta_0\in\CH^r(\mathcal P)_\Q$ extending $z$ such that
+its refined restrictions to all components $D_i$ have vanishing
+geometric cycle classes.
+\end{lemma}
+\begin{proof}
+Choose a cycle extension $\Theta$ and let $a\in A^r(Y)$ be
+its tuple of component restrictions.  The class $a\cap[Y]$ is
+the algebraic specialization of $z$.  Its $\ell$-adic class
+vanishes because specialization commutes with the cycle class
+map.  The injectivity on $A_{d-r}(Y)$ gives
+$a\cap[Y]=0$.  Exactness of \Eqref{eq:kunn} supplies
+$b\in A_{d+1-r}(Y)$ with $i^*i_*b=a$.
+Lift $b$ to a rational Chow class $\beta$ on $Y$, and set
+$\Theta_0=\Theta-i_*\beta$.  This has generic restriction $z$
+and zero restriction in $A^r(Y)$.  Since $A^r(Y)$ is a subspace
+of the direct sum of the component cycle-class images, each
+component restriction has zero geometric class.
+\end{proof}
+
+\begin{proposition}[Abelian obstruction vanishing]
+\label[proposition]{prop:abelianzero}
+Assume \textup{(A1) and (N)} of \Cref{prop:inputs}.
+For every abelian variety $A/F$, with $F/K$ finite, and every
+$r\ge0$, the obstruction of every geometrically homologically
+trivial class in $\CH^r(A)_\Q$ is zero when $A$ is regarded as
+a smooth integral $K$-scheme.
+\end{proposition}
+\begin{proof}
+The assertion is immediate in degree zero and impossible degrees.
+Otherwise, enlarge $F$ finitely so that $A$ admits a regular
+projective semistable model as above \cite{Kunnemann2001}.
+By \Cref{lem:extension}, the pulled-back class admits an extension
+whose restrictions to each geometric component of the special
+fiber are homologically, hence numerically, trivial.
+
+On the regular model, take the rational virtual-bundle class whose
+Chern character represents this codimension-$r$ cycle and is
+operationally pure.  Existence of this representative follows
+from the rational Chern character isomorphism on regular schemes
+\cite[Section~42.58]{StacksK}.  Its degree-$r$ operational
+Chern class pairs to zero with every integral vertical $r$-cycle:
+such a cycle is contained in a special-fiber component, and the
+pairing is the numerical pairing with the refined restriction
+there.  Regard the model over $K^\circ$.  Its scheme-theoretic
+special-fiber multiplicities and residue-field degrees are
+retained, and the finite morphism from the extended abelian
+variety to the original has its full degree.  Property (N)
+therefore gives zero obstruction in the original $K$-actual theory.
+\end{proof}
+
+\section{Proof of the Chow--motivic transfer theorem}
+\label{sec:motivproof}
+
+\begin{proposition}[Transfer from correspondence-generated classes]
+\label[proposition]{prop:transfer}
+Assume \textup{(A1) and (C)}.  Let $X/K$ be smooth projective
+integral, and let $z\in\CH^r(X)_\Q$.  Suppose that after a finite
+extension $L/K$ there are smooth projective $L$-varieties $V_j$,
+classes $a_j\in\CH^{q_j}(V_j)_\Q$ of zero actual obstruction
+over the original $K$, and rational correspondences
+$v_j:V_j\rightsquigarrow X_L$ of degree $r-q_j$ such that
+\[
+              \lambda z_L=\sum_j(v_j)_*a_j
+                      \quad\text{in }\CH^r(X_L)_\Q
+\]
+for some $\lambda\in\Q^\times$.  Then $\Obs^r_{X,K}(z)=0$.
+\end{proposition}
+\begin{proof}
+Regard the $L$-varieties as smooth projective $K$-schemes.
+By \textup{(C)}, the right side has zero obstruction on $X_L$.
+For the finite projection $\pi:X_L\to X$, the algebraic identity
+$\pi_*z_L=[L:K]z$ and \textup{(C)} give
+$\lambda[L:K]z\in\ker\Obs^r_{X,K}$.
+Since the kernel is a $\Q$-vector space, the assertion follows.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:abelian}]
+Choose the data $L/K$, $u_j$, $v_j$ of
+\Eqref{eq:diagonal}.  Fix $z\in\CH^r(X)_{\Q,\homol}$.
+The classes
+\[
+               a_j:=(u_j)_*(z_L)
+                  \in\CH^{r+a_j}(A_j)_\Q
+\]
+are geometrically homologically trivial, since geometric
+cycle classes commute with correspondences.  By
+\Cref{prop:abelianzero}, their native-$K$ obstruction classes
+vanish.  The Chow diagonal identity supplies
+$z_L=\sum_j(v_j)_*a_j$.  Apply \Cref{prop:transfer} with
+$V_j=A_j$ and $\lambda=1$.  If the diagonal correspondence acts
+as a nonzero scalar $\lambda$ on the indicated subgroup, the same
+proposition applies with that scalar.
+For $1\le r\le n$, the exact-support Green form follows from
+\Cref{lem:correction}.  Only the action of
+\Eqref{eq:diagonal} on the given Chow degree was used, proving
+the fixed-degree assertion.
+\end{proof}
+
+\section{The algebraic--homological boundary}
+\label{sec:boundary}
+
+The first theorem is independent of the motivic hypothesis, whereas
+the second acts on the larger Chow subgroup
+\[
+ \CH^r(X)_{\Q,\alg}\subseteq\CH^r(X)_{\Q,\homol}.
+\]
+The possible difference between the two groups is measured in part
+by Griffiths-type phenomena.  On a variety with a potential abelian
+Chow retraction, \Cref{thm:abelian} reaches such homologically
+trivial classes as well.  Its proof uses two mechanisms beyond
+the compact-parameter argument: numerical orthogonality on
+K\"unnemann's special fibers, and preservation of the actual
+obstruction kernel by the Chow correspondences in
+\Eqref{eq:diagonal}.
+
+Both vanishing theorems retain an explicit relationship to the
+underlying cycle.  The model-character obstruction is computed
+on a Chow class, but the final Green form is obtained from the
+curved pair of the specified cycle.  Its singularity set is
+therefore determined by that cycle, rather than by a convenient
+representative chosen during the Chow calculation.
+
+\begin{thebibliography}{99}
+\bibitem{Mihatsch}
+A.~Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces},
+arXiv:2112.10018, version 4 (2024), particularly Definition~4.2,
+Theorems~4.5 and 5.5.
+
+\bibitem{Kunnemann2001}
+K.~K\"unnemann, \emph{Height pairings for algebraic cycles on
+abelian varieties}, Ann. Sci. \`Ecole Norm. Sup. (4) \textbf{34}
+(2001), 503--523, especially Theorems~5.6 and 6.6 and \S5.8.
+
+\bibitem{ACMV}
+J.~D.~Achter, S.~Casalaina-Martin and C.~Vial,
+\emph{Parameter spaces for algebraic equivalence},
+Int. Math. Res. Not. IMRN (2019), no.~6, 1863--1893.
+
+\bibitem{StacksK}
+The Stacks Project, \emph{Intersection Theory},
+Section~42.58 (rational Chern character on regular schemes),
+\url{https://stacks.math.columbia.edu/}.
+
+\bibitem{R10}
+Research archive, \emph{Model Chern forms without a finite trace},
+internal source of Strong Green Round~10 (November 2026),
+\texttt{chern/model\_chern\_without\_trace.tex}.
+
+\bibitem{R11}
+Research archive, \emph{The minimal finite trace and supported-complex
+Green pairs}, internal sources of Round~11 (November 2026),
+\texttt{one\_parameter\_trace.tex} and
+\texttt{supported\_complex\_green.tex}.
+
+\bibitem{R12}
+Research archive, \emph{Compact parameters and numerical-model
+descent}, internal sources of Round~12 (November 2026),
+\texttt{compact\_parameter\_algebraic\_triviality.tex} and
+\texttt{numerical\_witness\_descent.tex}.
+
+\bibitem{R16}
+Research archive, \emph{Immersion kernel covariance and proper
+correspondence transfer}, internal sources of Round~16
+(November 2026), including
+\texttt{smooth\_immersion\_obstruction\_kernel.tex} and
+\texttt{proper\_covariance\_and\_rational\_domination.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,390 @@
+\section{A finite transverse sweep for native actual curl primitives}
+\label{sec:r11-finite-native-sweep}
+
+\paragraph{Status, authorship, and the remaining geometric boundary.}
+\textbf{PROVED THIS ROUND}, submitted for exact-source independent review.
+The construction contributors are \texttt{/root} and
+\texttt{/root/r11\_cube}.  This section constructs actual forms on a
+specified whole native unit-valuation chart, in every positive carrier
+codimension.  It does not assert extension through zero entries of the
+original tuple, independence of the chosen unit presentation, or a
+global projective primitive.  In particular it does not yet supply the
+original-support Green bridge for the general higher-rank cube.
+
+The external definition input is checked against A.~Mihatsch,
+\emph{$\delta$-Forms on Lubin--Tate spaces},
+\texttt{arXiv:2112.10018v4}, dated 7 September 2024:
+Definitions 2.7--2.13, Proposition 2.32 and its proof, and the native
+pullback interface of Proposition 2.38 and Lemma 4.4.
+The original text was read at
+\url{https://arxiv.org/html/2112.10018v4}.
+Only the following consequence is used for existence: a finite
+polyhedral current on a Euclidean open whose two full derivatives are
+polyhedral is a native actual $\delta$-form.  This is not a criterion
+for arbitrary currents on arbitrary Berkovich spaces.
+
+\subsection{Fixed finite objects and a transverse rational vector}
+
+Write $V=\mathbb R^d$ and fix a nonzero rational linear coordinate
+$\tau$ and the open half-space
+\[
+                         \Omega=\{\tau>0\}.
+ \tag{SWP1}
+\]
+A finite central carrier presentation on $\Omega$ is the restriction
+of finitely many closed polyhedral cones with vertex zero, together
+with their weighted integration forms.  Intersections with $\Omega$
+are understood relatively; no boundary at $\tau=0$ belongs to our
+domain.  Supply an actual form
+\[
+ F=\sum_{\sigma}\alpha_\sigma\wedge[\sigma,\mu_\sigma]
+       \in B^{p+c,q+c}(\Omega),\qquad c\ge1,
+       \qquad d'F=d''F=0,
+ \tag{SWP2}
+\]
+where every nonempty carrier has codimension $c$, and
+$\alpha_\sigma$ is a constant tangential $(p,q)$-form.  Its value
+means a form on $N_\sigma$, not a choice of ambient extension.
+The weights $\mu_\sigma\in\det N_\sigma/\{\pm1\}$ are those
+of Mihatsch's Definition 2.8; signs of summands may be included in
+$\alpha_\sigma$.  Presentations are equivalent by common refinement
+and equality of the tangential coefficients with their weights.
+
+There exists a nonzero rational vector
+\[
+       v\in\ker\tau,\qquad v\notin N_\sigma
+                              \quad\hbox{for every carrier.}
+ \tag{SWP3}
+\]
+Indeed, $N_\sigma\cap\ker\tau$ is a proper subspace of
+$\ker\tau$.  Otherwise $c=1$, $N_\sigma=\ker\tau$,
+and the central carrier would have empty intersection with $\Omega$.
+A finite union of proper subspaces cannot contain all rational
+vectors in $\ker\tau$.  If $d=1$, the assumptions in (SWP2)
+force $F=0$, which has the zero primitive; below assume $d\ge2$.
+Fix one vector (SWP3) for the entire given presentation.  All further
+subdivisions retain transversality.  No new irrational direction is
+needed when the original cones have rational directions.
+
+For each carrier define
+\[
+ \begin{split}
+ \widehat\sigma&=\sigma+\mathbb R_{\ge0}v\subset\Omega,\\
+ x&=y+t_\sigma(x)v,
+       \quad y\in\sigma,\quad t_\sigma(x)\ge0,\\
+ \widehat\mu_\sigma&=\mu_\sigma\wedge v
+                     \in\det(N_\sigma+\mathbb Rv)/\{\pm1\}.
+ \end{split}
+ \tag{SWP4}
+\]
+The decomposition in (SWP4) is unique.  The function $t_\sigma$
+is the restriction of a homogeneous linear function on
+$N_\sigma+\mathbb Rv$.  Let $\widehat\alpha_\sigma$ be the
+constant $(p,q)$-form on that space obtained from
+$\alpha_\sigma$ by projection parallel to $v$.  Thus both of
+its contractions by $v$ vanish.  The swept carriers are polyhedral
+cones of codimension $c-1$; take a finite common refinement of them
+when they overlap.
+
+\begin{theorem}[Finite actual transverse sweep]
+The explicit finite polyhedral form
+\[
+ \boxed{\quad
+ \mathcal S_v F=\sum_\sigma
+       t_\sigma\widehat\alpha_\sigma
+                         \wedge[\widehat\sigma,\widehat\mu_\sigma]
+       \in B^{p+c-1,q+c-1}(\Omega)
+ \quad}
+ \tag{SWP5}
+\]
+is actual and satisfies
+\[
+                         D\mathcal S_vF=F,
+                         \qquad D=d'd''.
+ \tag{SWP6}
+\]
+For this fixed $v$, it depends only on the original native actual
+form, not on its chosen transverse subdivision.  It uses finite
+linear coefficient functions, not an infinite-series completion.
+\end{theorem}
+
+\begin{proof}
+We first check the finite construction as an equality of native
+distribution-valued superforms; this will also verify its boundary
+coefficients.  For a constant vector $v$, denote its two ordinary
+graded contractions on distribution-valued forms by $i'_v,i''_v$.
+These individual contractions are not claimed to preserve actual
+$\delta$-forms.  Write $T_t(x)=x-tv$, which preserves $\Omega$.
+On a compact subset $K\subset\Omega$, the set of parameters
+\[
+       \{t\ge0:(\sigma+tv)\cap K\ne\varnothing}
+ \tag{SWP7}
+\]
+is bounded, uniformly for the finite list of carriers.  To see this,
+choose a linear function $\ell_\sigma$ vanishing on $N_\sigma$
+and satisfying $\ell_\sigma(v)=1$.  If $x=y+tv$ belongs to
+$K$, then $t=\ell_\sigma(x)$, which is bounded on $K$.
+This argument also bounds all terms arising by differentiation or
+contraction; these operations do not enlarge the carrier support.
+Consequently all the following parameter integrals have compact
+parameter support on every compact test support.
+
+A direct calculation in linear coordinates adapted to
+$N_\sigma\oplus\mathbb Rv$ gives
+\[
+ \int_0^\infty t\,T_t^*
+           (i''_vi'_v(\alpha_\sigma[\sigma,\mu_\sigma]))\,dt
+       =t_\sigma\widehat\alpha_\sigma
+                             [\widehat\sigma,\widehat\mu_\sigma].
+ \tag{SWP8}
+\]
+Here is also the normalization and sign check.  Arrange that the
+first normal coordinate of $N_\sigma$ has value one on $v$ and
+all other normal coordinates vanish on $v$.  The two contractions,
+in the order $i''_vi'_v$, remove that prime--double-prime normal
+pair.  Moving them past the tangential coefficient produces the
+same total-degree sign twice, hence sign $+1$.
+Integration in $t$ replaces this normal pair by the swept tangent
+direction with weight $\mu_\sigma\wedge v$.
+For $F=\delta_0d'x\wedge d''x$ in one dimension and
+$v=a\partial_x$, the result is $|x|$ on the ray $x/a\ge0$,
+zero on the opposite ray.  Its second derivative is exactly $F$;
+the factor $|a|$ in the new weight is essential.
+The affine change-of-coordinate rule for weights proves (SWP8)
+without any orthonormality or lattice-primitivity assumption.
+
+In the same adapted coordinates the single-contraction formulas are
+\[
+ \begin{split}
+ -\int_0^\infty T_t^*(i''_vF)\,dt
+   &=\sum_\sigma d't_\sigma\wedge\widehat\alpha_\sigma
+                         [\widehat\sigma,\widehat\mu_\sigma],\\
+ \int_0^\infty T_t^*(i'_vF)\,dt
+   &=\sum_\sigma d''t_\sigma\wedge\widehat\alpha_\sigma
+                         [\widehat\sigma,\widehat\mu_\sigma].
+ \end{split}
+ \tag{SWP9}
+\]
+All three right sides (SWP8)--(SWP9) are finite polyhedral forms.
+They are not defined only as formal integrals of currents.
+
+The constant-vector Cartan identities on distributions are
+\[
+ \begin{gathered}
+ d'i'_v+i'_vd'=L_v,\qquad d''i''_v+i''_vd''=L_v,\\
+ d'i''_v+i''_vd'=0,\qquad d''i'_v+i'_vd''=0,\qquad
+                         \partial_tT_t^*=-T_t^*L_v.
+ \end{gathered}
+ \tag{SWP10}
+\]
+They follow on coordinate distribution coefficients by the graded
+Leibniz rule.  Using $d'F=d''F=0$, (SWP8), and integration by
+parts with the bounded support (SWP7), one obtains
+\[
+ \begin{split}
+ d'\mathcal S_vF&=-\int_0^\infty T_t^*(i''_vF)\,dt,\\
+ d''\mathcal S_vF&=\int_0^\infty T_t^*(i'_vF)\,dt,\\
+ D\mathcal S_vF&=\int_0^\infty T_t^*(L_vF)\,dt=F.
+ \end{split}
+ \tag{SWP11}
+\]
+In the first two equations the boundary at $t=0$ is zero because
+of the factor $t$.  In the last equation the boundary at $t=0$
+is precisely $F$.  The identities use the full closedness of $F$;
+its side-face boundary terms cannot be dropped carrier by carrier.
+
+By (SWP9) and (SWP11), the finite form in (SWP5) and both of its
+full derivatives are polyhedral.  The native Euclidean case of
+Mihatsch's Proposition 2.32 proves that (SWP5) is an actual
+$\delta$-form.  Its displayed finite weighted-carrier presentation
+is the representative.  Equation (SWP6) is therefore an identity
+in native $B$, with every wall coefficient included.
+
+Finally, the left side of (SWP8) is linear in the entire native
+current $F$ and is well-defined on every compact support by (SWP7).
+Thus any equality of native actual presentations is respected.
+Equivalently, subdividing $\sigma$ subdivides its injectively swept
+polyhedron, with the same coefficients and weights.  This proves
+the asserted refinement compatibility.  No assertion about arbitrary
+analytic refinements has been used to create the primitive.
+\end{proof}
+
+\subsection{The finite native space needed after the sweep}
+
+The output (SWP5) has an explicit finite polyhedral presentation.
+We do not assume, without proof, that it belongs to the smaller
+algebra of differential polynomials in the original PL generators
+from CE1.  Instead the following elementary extension supplies the
+precise operator domain needed for the two-colour solver.
+
+Let $\mathscr P_{\rm cone}(\Omega)$ consist of native actual
+$\delta$-forms with a finite central polyhedral presentation and
+polynomial tangential coefficients.  We allow a finite subdivision
+of its carriers.  Equivalence is equality of those actual forms on
+a common refinement.  All derivative operations are the full native
+derivatives.  Polynomial coefficients, their tangential derivatives,
+and all facet traces remain polynomial on a finite central
+refinement, so $d',d''$ preserve this space.
+
+Let $E=\sum_jx_j\partial_{x_j}$.  Define $I'$ and $I''$
+on a presented form by contraction of its tangential coefficients
+by $E|_\sigma$.  Define $N$ on tangential coefficients by sending
+every prime covector to its double-prime counterpart and killing
+double-prime covectors.  The radial vector is tangent to every
+central carrier and all of its faces.  These operations therefore
+respect common refinement and actual equality of coefficients.
+They give finite polyhedral forms before any actualness assertion.
+
+On a homogeneous polynomial coefficient of degree $m$ and
+tangential bidegree $(p,q)$, set
+\[
+                         E'=m+p,\qquad E''=m+q.
+ \tag{SWP12}
+\]
+These numbers do not count the codimension of the carrier.  As
+distribution-valued forms the exact identities are
+\[
+ \begin{gathered}
+ d'I'+I'd'=E',\qquad d''I''+I''d''=E'',\\
+ d''I'+I'd''=N,\qquad d'I''+I''d'=N^+,\\
+ [N,d']=d'',\qquad [N,d'']=0.
+ \end{gathered}
+ \tag{SWP13}
+\]
+For completeness these identities may be checked in linear normal
+coordinates for each carrier.  Radial contraction kills every normal
+pair on the carrier, and $N$ kills that pair because its image has a
+repeated double-prime normal factor.  The normal distribution is
+homogeneous of degree minus its codimension, cancelling the normal
+covector contribution to either Euler weight.  What remains is
+exactly the tangential coefficient calculation (SWP12).  The same
+calculation on all faces gives the distributional identities,
+including the facet derivatives.  Alternatively (SWP13) follows
+directly from the coordinate Cartan identities on distributions
+and the just-described homogeneous normal factors.
+
+For $T\in\mathscr P_{\rm cone}(\Omega)$, both
+\[
+ d'I'T=E'T-I'd'T,\qquad d''I'T=NT-I'd''T
+ \tag{SWP14}
+\]
+are finite polyhedral forms; the analogous assertions hold for
+$I''T$.  Proposition 2.32 again proves $I'T,I''T$ actual.
+The commutators in (SWP13) similarly prove $NT$ actual.  Thus the
+operators in (SWP13) act on this explicitly specified finite native
+space, with no use of an abstract quotient inverse.  They agree
+with CE2 on the original finite generator algebra.
+
+For a fixed carrier complex, a fixed vector $v$, and a fixed bound
+on polynomial degree, all constructions above are linear maps
+between finite-dimensional coefficient spaces and hence continuous.
+The target refinement is fixed for the whole input coefficient
+space, not enlarged coefficient by coefficient.  This statement
+does not identify any whole Berkovich coefficient-final topology,
+give a universal continuous selector, or solve OPEN-KERNEL.
+
+\subsection{An explicit native third witness in every positive codimension}
+
+Supply a triple $u=(A,B,M)$ on $\Omega$ with total bidegrees
+\[
+ (c,c+2),\qquad(c+2,c),\qquad(c+1,c+1),\qquad c\ge1,
+ \tag{SWP15}
+\]
+lying in $\mathscr P_{\rm cone}(\Omega)$, with Euler weights
+$(1,3),(3,1),(2,2)$ and
+\[
+                 d'A+d''M=0,\qquad d''B+d'M=0.
+ \tag{SWP16}
+\]
+Assume its curls $C=d''A$ and $C^+=d'B$ have finite
+constant-coefficient central presentations of pure carrier
+codimension $c$, tangential bidegrees $(0,3)$ and $(3,0)$.
+This is a finite, entire-presentation condition, not an assertion
+that arbitrary actual curls have this shape.
+Both curls are independently closed by (SWP16) and
+anticommutation.  Choose a single rational $v$ transverse to the
+union of both finite carrier lists and put
+\[
+ F=\mathcal S_vC,\qquad G=\mathcal S_vC^+,\qquad
+ A^\circ=A+d'F,\quad B^\circ=B-d''G,\quad M^\circ=M.
+ \tag{SWP17}
+\]
+Then $DF=C$, $DG=C^+$, the corrected triple is
+$\partial_2$-closed, and
+\[
+                        d''A^\circ=d'B^\circ=0.
+ \tag{SWP18}
+\]
+The swept coefficients have degree one, so their Euler weights are
+$(1,4)$ and $(4,1)$ respectively; the corrected triple retains
+the original three weights.
+
+Define the following explicit finite forms in the enlarged native
+space just verified:
+\[
+ \begin{gathered}
+ P_0=\tfrac13 I''A^\circ,\qquad Q_0=\tfrac13 I'B^\circ,\\
+ M_0=M-d'P_0-d''Q_0,\qquad P_1=\tfrac12 I'M_0,\qquad
+ U_1=-\tfrac12 I'NM_0.
+ \end{gathered}
+ \tag{SWP19}
+\]
+The literal identity is
+\[
+ \boxed{\quad
+ u=\partial_3(U_1-F, G, P_0+P_1, Q_0).
+ \quad}
+ \tag{SWP20}
+\]
+Indeed (SWP13) and (SWP18) give $d''P_0=A^\circ$ and
+$d'Q_0=B^\circ$.  Then $d'M_0=d''M_0=0$,
+$d'P_1=M_0$, and $d''P_1=NM_0/2$.
+The closed form $NM_0$ has prime Euler weight one, so
+$d'U_1=-NM_0/2$.  This proves the three components of
+(SWP20), with the remaining correction signs from (SWP17).
+This is the CGS algebraic argument, now with the previously missing
+native operator-domain verification after a sweep; it does not
+silently identify two different finite algebras.
+
+\subsection{Analytic substitution and the exact unresolved extension}
+
+Let $\mathcal V$ be a pure-dimensional original-$K$ analytic space
+without boundary, supplied with an entire finite tuple of analytic
+units whose valuation map takes values in $\Omega$.  The native
+forms (SWP5) and (SWP19), as well as their identities, pull back to
+actual Mihatsch forms on $\mathcal V$ by the original native
+presentation interface.  Every refinement and all mixed coefficients
+are retained: the identity is in the full Euclidean $B(\Omega)$,
+not merely on the image of a selected skeleton or on probe products.
+There is no extension of arbitrary-current pullback in this step.
+One may specialize the auxiliary unit to an original element
+$\pi\in K$ with $v(\pi)>0$ after this actual construction.
+
+For the native universal raw capped cube, the finite curvature
+products and first valuation differentials give exactly the pure
+constant-coefficient curl presentations required above.  Thus (SWP20)
+is available on its full unit-log chart once its full closedness and
+weight identities have been read from the exact CS/MT formulas.
+This statement has no conclusion at a proper-entry-zero point of
+the original tuple.  A swept coefficient can depend on an individual
+unit logarithm that becomes infinite there.  The finite norm/cap
+preservation lemma NCP does not apply to such a coefficient merely
+because its curvature equation holds on the unit locus.
+
+In particular, extending these native primitives across the original
+proper-entry zero sets, making them compatible across projective
+charts, and realizing the resulting higher-rank witness on the
+original exact $U$ remain \textbf{OPEN}.  No original cycle is
+changed, but no general original-cycle Green form is claimed by this
+native construction alone.  The known strict proper-fiber
+obstructions are consistent with a strict primitive on an affine
+unit-valuation chart.  The whole analytic OPEN-KERNEL and its
+inherited topology likewise remain open.
+
+\paragraph{Exact internal sources.}
+CE: \path{68a14ad23c956c211aaae0c188aebb672332181b0a13a269e21cda595a0b6f1d}.
+CGS: \path{dc64c1fb85dbd8dfba2105a230e11dc563189df38a4d681e587b3d5784fc6d21}.
+CS: \path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+MT: \path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+NCP: \path{144df3e33ec6beeefa7907b1292edc31855d289727da777082c5015d33676743}.
+This section does not replace or alter any of these frozen sources.

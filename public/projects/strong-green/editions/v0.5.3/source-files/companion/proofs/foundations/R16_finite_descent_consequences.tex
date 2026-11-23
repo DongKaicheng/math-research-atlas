@@ -1,0 +1,185 @@
+% Round 16. Consequences conditional only on the newly reconstructed full trace.
+% Status: downstream deductions have passed root independent review.
+\section{Consequences of full finite trace for exact support and higher outputs}
+\label{r16fc:section}
+
+The statements in this section use the independently reviewed and
+activated Theorem~\ref{r16ft:full-trace}. Their downstream deductions
+have passed separate root review at mathematical source SHA256
+\texttt{10572fe01a0e3bf4c5c2bd9a998af9f35509d0896a1403ba7d8418eeab3a90a6},
+recorded in \path{audits/finite_descent_consequences_root_review.md}.
+This status notice is the only subsequent change.
+All older Rounds 1--15 result files remain unchanged.
+
+\begin{theorem}[Projective-line actual output in every bidegree]
+\label{r16fc:all-line}
+Let $S/K$ be smooth integral algebraic, $U\subset S^{\mathrm{an}}$
+ordinary open, and $\pi:U\times\mathbf P^1\to U$. For every actual
+$\alpha\in B^{p,q}(U\times\mathbf P^1)$ with $p,q\geq1$ there is a
+unique ordinary actual form
+\[
+ I_\pi\alpha\in B^{p-1,q-1}(U)
+\]
+representing $\pi_*[\alpha]$. It has the prescribed pairing against
+all ordinary smooth compact complementary mixed tests. It commutes
+with ordinary restriction and, wherever the corresponding bidegrees
+are nonnegative, with $d',d''$. The statement glues on projective-line
+bundles. Every relative diagonal Green input of bidegree $(r,r)$,
+$r\geq1$, consequently has ordinary actual $G,P,Q$ outputs in degrees
+$(r-1,r-1),(r,r-1),(r-1,r)$, with the same smooth mixed-test scope.
+\end{theorem}
+
+\begin{proof}
+The Round 15 universal graphic kernel UG15.8 and finite ambient atlas
+AD15.3 have no bidegree restriction on the upstairs input or output.
+Their independent audits separate this assertion from the finite
+output trace. For an arbitrary $(p,q)$ input they give, on an ordinary
+cover of the entire finite split base cover $a:U'\to U_0$, actual
+outputs $\beta'$ with all prescribed smooth mixed tests. Current
+injectivity glues those upstairs outputs. Set
+\[
+                \beta=(\deg a)^{-1}\operatorname{Tr}_a\beta'.
+\]
+The new trace exists in the required degree without a strip
+restriction. The same three equalities as A215.3, using its all-actual
+finite pairing and the native top-degree formula, identify $[\beta]$
+with the original prescribed current. Current injectivity proves
+choice independence and ordinary gluing. Proper current differentiation
+identifies $d'I_\pi\alpha$ and $I_\pi d'\alpha$, and similarly for
+$d''$, now that both outputs exist. The outer bidegrees are interpreted
+as zero when necessary. Algebraic local trivializations handle bundles.
+
+For the Green operators, the frozen ordinary immersion-germ identity
+near the diagonal identifies the source input with the target pullback.
+Its product with every smooth complementary target test has excessive
+target bidegree and is zero on an ordinary neighborhood. Thus the three
+singular paired integrands may be excised with genuine ordinary cutoffs.
+Apply the all-degree projection just proved to the retained actual
+inputs of degrees $(r,r),(r+1,r),(r,r+1)$. Excision changes no prescribed
+pairing; current injectivity gives the ordinary actual outputs.
+\end{proof}
+
+\begin{theorem}[Exact-support finite descent in every codimension]
+\label{r16fc:exact-support}
+Let $q:Y\to X$ be a finite surjective morphism of smooth integral
+projective $K$-varieties of common dimension $n$, of degree $d$.
+Let $Z$ be a specified rational codimension-$r$ cycle on $X$, where
+$1\leq r\leq n$. The map $q$ is finite flat. Suppose strong G is
+supplied for the exact flat pullback cycle $q^*Z$ on $Y$.
+Then strong G holds for $Z$ on its exact original support complement,
+with all compact actual tests over $K$. Explicitly,
+\[
+ \gamma_Z=d^{-1}\operatorname{Tr}_{q|_{Y\setminus|q^*Z|}}\gamma_{q^*Z}.
+ \tag{FD16.1}\label{r16fc:Green-descent}
+\]
+\end{theorem}
+
+\begin{proof}
+Since source and target are smooth of the same dimension and $q$ is
+finite surjective, miracle flatness makes $q$ finite flat. Flat
+pullback of the specified cycle carries its generic scheme lengths and
+has support exactly $q^{-1}|Z|$. Thus the trace in
+\eqref{r16fc:Green-descent} is an ordinary actual form of degree
+$(r-1,r-1)$ on precisely $X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}$.
+
+Take any $\eta\in B_c^{n-r,n-r}(X^{\mathrm{an}})$. The form $D\eta$
+has maximum bidegree $n-r+1$, greater than the dimension $n-r$ of
+$|Z|$. Mihatsch Corollary 4.9 therefore gives an ordinary neighborhood
+of $|Z|$ on which $D\eta=0$. Its restriction to the complement is a
+compact actual test. The trace pairing and the supplied strong G give
+\[
+\begin{split}
+ \int_{X\setminus|Z|}\gamma_Z\wedge D\eta
+ &=d^{-1}\int_{Y\setminus|q^*Z|}\gamma_{q^*Z}\wedge Dq^*\eta\\
+ &=-d^{-1}\int_{(q^*Z)^{\mathrm{an}}}q^*\eta
+ =-\int_{Z^{\mathrm{an}}}\eta.
+\end{split}
+ \tag{FD16.2}\label{r16fc:Green-pairing}
+\]
+The last equality is the native finite-flat cycle degree formula,
+including generic scheme lengths and residue degrees. In particular
+it is valid when a component of $Z$ is contained in the branch locus;
+replacing the scheme pullback by its reduced inverse image would be
+incorrect. The source test $q^*\eta$ is compact because $q$ is finite.
+No modification pushforward or assumption about an alteration outside
+$|Z|$ is involved.
+\end{proof}
+
+\begin{corollary}[Finite forms of the small-base tower class]
+\label{r16fc:twisted-towers}
+Let $X/K$ be smooth projective geometrically integral. Suppose that,
+after a finite valued extension $L/K$, there is a smooth integral
+projective $L$-variety $Y$, a finite surjective $L$-morphism
+$q:Y\to X_L$, and a supplied projective-bundle tower structure on $Y$
+over a smooth projective geometrically integral $L$-base of dimension
+at most three. Then every specified geometrically homologically trivial
+rational cycle on $X$, in every codimension, satisfies strong G over
+the original $K$, with its exact support and all original actual tests.
+In particular this holds if $X_L$ itself is such a tower.
+\end{corollary}
+
+\begin{proof}
+Regard $Y$ as a $K$-variety and compose $q$ with $X_L\to X$. It is a
+finite surjective morphism of smooth integral projective $K$-varieties
+of degree $\deg(q)[L:K]$. Its scheme-theoretic flat pullback of the
+specified cycle is geometrically homologically trivial, by functoriality
+of the geometric cycle class on each geometric component. The Round 15
+all-codimension tower theorem supplies its strong G; the finite-constant
+version there views the tower itself in the native $K$ theory. Apply
+Theorem~\ref{r16fc:exact-support}. No high-degree descent had been
+available in Round 15 for an arbitrary variety merely becoming a tower
+after extension; that is the new scope supplied here.
+\end{proof}
+
+\begin{corollary}[Regular dominant images of obstruction-zero varieties]
+\label{r16fc:dominant-towers}
+Assume the all-degree dominant Bott--Chern detection of
+Theorem~\ref{r16pb:dominant}.  Let $X/K$ be smooth projective
+geometrically integral.  Suppose that after a finite valued extension
+$L/K$ there is a smooth integral projective $L$-variety $Y$ with the
+native original-$K$ property $\mathcal V_{*,K}(Y)$ of Round 15, and
+a dominant morphism $f:Y\to X_L$.  Then
+$\mathcal V_{*,K}(X)$ holds.  Every specified rational geometrically
+homologically trivial cycle on $X$ has strong G in every codimension,
+over its exact original support complement and against all original
+compact actual tests.  In particular $Y$ may be a supplied
+projective-bundle tower over a smooth projective geometrically integral
+$L$-base of dimension at most three.
+\end{corollary}
+
+\begin{proof}
+Regard $Y$ as a smooth integral projective $K$-variety and compose
+$f$ with $X_L\to X$, obtaining a dominant morphism $F:Y\to X$.
+For a geometrically homologically trivial class $z$ on $X$, its
+Chow pullback $F^*z$ is geometrically homologically trivial on every
+geometric component of $Y$.  Pullback compatibility of the frozen
+Chow-to-actual Bott--Chern obstruction gives
+\[
+ F^*\mathfrak o_{X,K}^r(z)
+       =\mathfrak o_{Y,K}^r(F^*z)=0.
+\]
+Theorem~\ref{r16pb:dominant} makes $F^*$ injective in this degree,
+so $\mathfrak o_{X,K}^r(z)=0$.  The frozen sufficient direction
+from obstruction zero to the exact-support all-actual strong Green
+identity supplies the asserted form for every specified representative.
+Round 15 Theorem \texttt{r15tower:full-G} provides the last input
+class over the original $K$, including the native finite constant field.
+\end{proof}
+
+\paragraph{Limits.}
+Arbitrary rational domination by a tower requires an additional
+obstruction-vanishing argument on the resolved source.
+The regular dominant-image corollary does not extend by fiat to a
+dominant rational map from $Y$.  Resolving that map changes the source
+by blowups.  The new injectivity for modification pullback descends a
+supplied primitive; it does not imply that every homologically trivial
+class on the modified source has zero obstruction.  Its additional
+Chow summands may come from centers whose own obstruction vanishing
+is still unknown.  This distinction matters in high codimension.
+The projection theorem above initially states all smooth mixed tests.
+The separate source
+\texttt{all\_actual\_projective\_bundle\_output.tex} proves its
+all-actual upgrade by an ambient target-factor projection formula
+followed by a compact top-input argument.  The strong-G finite descent
+theorem here has all actual tests directly from the full finite trace
+and the support bound for $D\eta$.

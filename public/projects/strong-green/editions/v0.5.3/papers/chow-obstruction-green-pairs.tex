@@ -1,0 +1,2321 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage[margin=28mm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{booktabs,longtable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,
+ citecolor=blue!45!black,pdftitle={Chow Obstructions and Prescribed Actual Green Pairs}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbf R}
+\newcommand{\B}{\mathcal B}
+\newcommand{\an}{\mathrm{an}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\Id}{\operatorname{id}}
+\setlength{\emergencystretch}{2em}
+\title{Chow Obstructions and Prescribed Actual Green Pairs}
+\author{}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct a rational-linear Chow obstruction with values in the actual
+Bott--Chern quotient, and an actual curved Green pair for every prescribed
+rational cycle on a smooth integral projective variety over a finite
+extension of $\mathbf Q_p$. The proof retains the original valued field,
+the exact prescribed support complement, and all compact actual tests.
+Its inputs are actual model Chern forms, a finite trace on the
+scalar--curvature module, and supported perfect complexes. We give explicit
+arguments for the actual/Bedford--Taylor comparison, detection by model
+Hessians, scalar PL descent with a uniform parameter, and the coordinate
+Gauss product. The further vanishing of the obstruction on homologically
+trivial Chow classes is a separate problem.
+\end{abstract}
+
+\paragraph*{Relation to the Strong Green programme.}
+Theorem~\ref{h22:main} proves the Chow-obstruction and prescribed
+curved-Green-pair construction formerly stated as Hypothesis 2.2 in
+\href{https://openmath-atlas.org/projects/strong-green/papers/strong-g-programme/\#hyp:green-pairs}
+{the Strong Green programme}. Its scope is the original finite extension
+$K/\mathbf Q_p$, every smooth integral projective $K$-variety, the exact
+prescribed support, and the full space of compact actual tests.
+The argument below supplies the model-Chern construction, the minimal
+finite trace, the supported-complex formula, the global primitive, and
+the integral-scope extension. General vanishing on homologically trivial
+Chow classes remains a separate assertion.
+
+\tableofcontents
+\newpage
+\section{Chow classes and prescribed curved Green pairs}
+\label{h22:main-section}
+
+Fix a finite extension $K/\mathbf Q_p$ with its given absolute value,
+and write $R=K^\circ$. For a smooth integral projective $K$-variety $X$
+of dimension $n$, let $\mathcal B_X$ denote the ordinary sheaf of actual
+delta-forms and put $D=d'd''$. Set
+\[
+ H^{r,r}_{\mathrm{BC,act}}(X)=
+ \frac{\{\omega\in\mathcal B^{r,r}(X^{\mathrm{an}}):
+                  d'\omega=d''\omega=0\}}
+      {D\mathcal B^{r-1,r-1}(X^{\mathrm{an}})}.
+\]
+This is the algebraic quotient of the indicated spaces of global forms.
+For a rational cycle $Z$, its support is the union of its distinct
+integral components with nonzero coefficient, and
+$U_Z=X^{\mathrm{an}}\setminus |Z|^{\mathrm{an}}$.
+
+\begin{theorem}[Chow obstruction and prescribed Green pairs]
+\label{h22:main}
+For every such $X$ and $1\le r\le n$, there is a rational-linear map
+\[
+ \mathfrak o^r_{X,K}:\operatorname{CH}^r(X)_{\mathbf Q}
+                 \longrightarrow H^{r,r}_{\mathrm{BC,act}}(X)
+\]
+with the following properties.
+\begin{enumerate}
+\item If $\xi$ is a rational virtual vector bundle on an integral
+projective flat $R$-model of $X$ and
+$\operatorname{ch}_r(\xi|_X)=a$, then
+\[
+              \mathfrak o^r_{X,K}(a)
+                         =[\operatorname{ch}_r(\bar\xi)].
+\]
+The right side is independent of the model, the model extensions and
+the virtual-bundle presentation. For a $K$-morphism $f:X\to Y$
+between smooth integral projective varieties,
+\[
+ (f^{\mathrm{an}})^*\mathfrak o^r_{Y,K}(a)
+                    =\mathfrak o^r_{X,K}(f^*a).
+\]
+The groups in degrees beyond the dimension are interpreted as zero.
+\item For every prescribed rational codimension-$r$ cycle $Z$ on $X$
+there are actual forms
+\[
+ G_Z\in\mathcal B^{r-1,r-1}(U_Z),\qquad
+ \Omega_Z\in\mathcal B^{r,r}(X^{\mathrm{an}})
+\]
+with $d'\Omega_Z=d''\Omega_Z=0$ and
+$[\Omega_Z]=\mathfrak o^r_{X,K}([Z])$, such that
+\begin{equation}
+\label{h22:curved-identity}
+ \int_{U_Z}G_Z\wedge D\eta+\int_{Z^{\mathrm{an}}}\eta
+       =\int_{X^{\mathrm{an}}}\Omega_Z\wedge\eta,
+ \qquad \eta\in\mathcal B_c^{n-r,n-r}(X^{\mathrm{an}}).
+\end{equation}
+All products, pullbacks and integrals in this identity are in the
+actual calculus over the original valued field $K$.
+\end{enumerate}
+\end{theorem}
+
+The proof assembles the model-Chern construction, the scalar--curvature
+finite trace, and the supported-complex construction. Their proofs,
+together with the detailed analytic interfaces, are given below. The present theorem does not assume that
+$Z$ is homologically trivial.
+
+\begin{proof}
+\textit{Step 1: actual model characters.}
+Theorem~\ref{h22c:chern} constructs separately closed model characters,
+strictly additive on model vector-bundle exact sequences and functorial
+for morphisms of projective flat models. Its proof first establishes
+the numerical detector for polynomials in model first Chern forms,
+then descends symmetric root polynomials along local sections of a
+flag bundle. The actual/CLD comparison and the detector are explained
+in Section~\ref{h22c:section}. This construction uses no
+finite trace or prescribed-cycle Green pair.
+
+\textit{Step 2: global primitives for generic Chow relations.}
+If a model complex is generically acyclic, apply the supported-complex
+construction with the entire generic fibre as its exact open. The
+relative line construction is then finite flat everywhere on that
+fibre, and its scalar--curvature line sum has empty generic divisor.
+The trace formula gives a global actual form $\Psi$ whose $D$ is the
+alternating model character. Actual-current injectivity turns the
+testing identity into an equality of actual forms. This is the
+argument of Corollary~\ref{r11p:acyclic}; it also covers the empty
+generic support, for which no codimension is assigned to the empty set.
+
+A relation in $K_0(X)_{\mathbf Q}$ is a finite rational combination of
+short exact sequence relations and isomorphic-bundle differences.
+On a common model, the graph of each generic subbundle yields an exact
+model sequence. Strict Whitney reduces the original relation to
+differences of model extensions of isomorphic generic bundles.
+After uniformizer rescaling, these differences are represented by
+generically acyclic two-term complexes. Adding their primitives proves
+Proposition~\ref{r11p:generic-k-primitive}.
+
+Now suppose that a model virtual class $\zeta$ satisfies only
+$\operatorname{ch}_r(\zeta|_X)=0$. Put
+\[
+ e_r(T)=\prod_{\substack{0\le j\le n\\j\ne r}}
+                  \frac{T-2^j}{2^r-2^j},\qquad
+                         \zeta_r=e_r(\psi^2)\zeta.
+\]
+The rational Chern character is an isomorphism
+$K_0(X)_{\mathbf Q}\simeq\bigoplus_j\operatorname{CH}^j(X)_{\mathbf Q}$.
+Consequently $\zeta_r|_X=0$. The strict model Adams identity gives
+$\operatorname{ch}_r(\bar\zeta_r)=\operatorname{ch}_r(\bar\zeta)$.
+The preceding paragraph therefore supplies a global actual primitive
+of $\operatorname{ch}_r(\bar\zeta)$. This is
+Proposition~\ref{r11p:generic-chow-primitive}. All coefficients are
+rational; the construction imposes no restriction on the residue
+characteristic.
+
+\textit{Step 3: the Chow map and its pullbacks.}
+For $a\in\operatorname{CH}^r(X)_{\mathbf Q}$ choose a generic virtual
+bundle with degree-$r$ character $a$, and extend its finitely many
+bundles to a common projective flat model. Define
+$\mathfrak o^r_{X,K}(a)=[\operatorname{ch}_r(\bar\xi)]$.
+Two choices can be pulled to a common model refinement, preserving
+their metrics. Their difference has zero generic degree-$r$ Chow
+character. Step 2 shows that their actual characters differ by $D$
+of a global actual form. Thus the definition is independent of all
+choices and is rational-linear.
+
+For $f:X\to Y$, take the closure of its graph in projective models
+and refine the source model. The target model bundles now have model
+pullbacks. Strict model-Chern functoriality identifies their actual
+characters with the genuine analytic pullbacks. The latter commute
+with $D$ by the actual pullback theorem, so the equality descends to
+the displayed quotient. On Chow groups this is the usual
+contravariant operational pullback on smooth varieties.
+
+\textit{Step 4: the prescribed cycle and its exact complement.}
+Write $Z=\sum_j a_j[Z_j]$ with distinct integral components and
+$a_j\ne0$. Resolve each $\mathcal O_{Z_j}$ by generic vector bundles
+and extend these complexes to a common projective flat model.
+The degree-$r$ localized character is exactly $[Z_j]$ on its support.
+Theorem~\ref{r11p:complex-green} gives an actual Green pair for each
+complex on $X^{\mathrm{an}}\setminus Z_j^{\mathrm{an}}$.
+Lemma~\ref{r12i:integral-PC} supplies this construction for smooth
+integral $X$, including the case that $X$ is not geometrically integral.
+The lemma works with native $K$-schemes throughout.
+
+Sum the resulting pairs with coefficients $a_j$. The common domain
+is precisely $U_Z$, and the localized characters add to the original
+cycle with its original coefficients. The curvature is the degree-$r$
+model character of the corresponding rational virtual complex, whose
+generic character is $[Z]$; Step 3 therefore identifies its class with
+$\mathfrak o^r_{X,K}([Z])$.
+
+For any displayed test $\eta$, the support of $D\eta$ is compact and
+disjoint from $|Z|^{\mathrm{an}}$, since its bidegree is
+$(n-r+1,n-r+1)$ and $\dim Z=n-r$. This is the support-avoidance
+corollary in the actual calculus. Thus its pairing with $G_Z$ is
+defined on the exact open. The global curvature term and the cycle
+term are also actual top-degree integrals. The all-actual identity
+from the supported-complex theorem gives~\eqref{h22:curved-identity}.
+For $Z=0$, choose both forms to be zero.
+\end{proof}
+
+\begin{corollary}[Curvature correction]
+\label{h22:correction}
+If $\mathfrak o^r_{X,K}([Z])=0$, the prescribed cycle $Z$ has an actual
+zero-curvature Green form on $U_Z$ against all compact actual tests.
+\end{corollary}
+\begin{proof}
+The definition of the quotient supplies a global actual $\Psi_Z$ with
+$D\Psi_Z=\Omega_Z$. Set $\gamma_Z=G_Z-\Psi_Z|_{U_Z}$. Actual Stokes
+subtracts the curvature term in~\eqref{h22:curved-identity}, giving
+\[
+          \int_{U_Z}\gamma_Z\wedge D\eta=-\int_{Z^{\mathrm{an}}}\eta.
+\]
+The correction is global and creates no new deleted subset.
+\end{proof}
+
+The additional vanishing
+$\mathfrak o^r_{X,K}(\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{hom}})=0$
+is the remaining general source-vanishing problem on this route.
+The theorem above constructs the map and its curved representatives;
+it does not assert this further vanishing.
+
+
+\section{Model Chern forms: the measure comparison and descent interfaces}
+\label{h22c:section}
+
+Fix a finite extension $K/\mathbf Q_p$ with its given absolute value, and
+write $R=K^\circ$.  Let $\mathcal X$ be an integral projective flat
+$R$-scheme with smooth integral projective generic fibre $X$ of dimension
+$n$.  Write $D=d'd''$, and use Mihatsch's actual sheaf $\mathcal B$ on the
+ordinary analytic topology.  In its intrinsic trigrading,
+$\mathcal B^{0,0,r}$ has bidegree $(r,r)$.  All current comparisons in this
+section may be restricted to the original smooth CLD test forms.
+
+The analytic inputs used below are the following primary-source results.
+Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces},
+arXiv:2112.10018v4, Definition 4.2, Remark 4.3(1), Lemma 4.4,
+Theorem 4.5, Definition 4.10 and Proposition 4.11 provide the actual
+sheaf, pullback, coefficientwise multiplication by PWS forms, integration,
+Stokes, and the injective map to currents commuting with $d',d''$.
+The paragraph following his Theorem 5.3 identifies model first Chern
+forms with elements of $\mathcal B^{0,0,1}$.
+Gubler--Martin, \emph{On Zhang's semipositive metrics}, Theorem 1.1 and
+Proposition 2.15 give algebraization of model metrics on a proper
+variety and uniform density of rational model functions.
+Chambert-Loir--Ducros, arXiv:1204.6277v2, Corollary 17.8.9,
+\S8.8.5 and Theorem 18.5.5 give the difference-of-psh decomposition,
+the multilinear Bedford--Taylor product, and its native model mass
+formula.  Proposition 18.5.8 gives the component multiplicities on a
+relatively normal model over the discretely valued field $K$.
+These references are numbered as in the PDF, rather than the flattened
+section counters of its HTML rendering.
+
+\begin{lemma}[Comparison of actual model products and Bedford--Taylor products]
+\label{h22c:comparison}
+For any finite list of model metrized algebraic line bundles on $X$, the
+current of the actual wedge of their first Chern forms equals their
+CLD multilinear curvature product, when tested against original smooth
+forms.  In top degree the two sides therefore define the same signed
+Radon measure.  This assertion holds over $K$ itself.
+\end{lemma}
+
+\begin{proof}
+Work on an ordinary open on which the bundles are trivial, and write
+$u_i=-\log\|s_i\|$ for their continuous PWS weights.  By Corollary
+17.8.9 of CLD, model metrized line bundles on a projective
+analytification are differences of psh metrized line bundles.  The
+identity can consequently be proved by induction for psh factors and
+extended by multilinearity.  The local weights and all products below
+are actual forms; in particular $Du_i$ is the actual first curvature.
+
+The induction step requires a multiplication statement, which we make
+explicit.  Let $T$ be the actual product of the already treated
+curvatures.  Its current has order zero: on a common moment
+presentation, pairing $T$ with a fixed compactly supported smooth
+complementary form gives a finite sum of signed measures with smooth
+coefficient densities on polyhedra.  For a continuous PWS weight $u$,
+Mihatsch's coefficientwise formula in Remark 4.3(1) gives
+\[
+             [uT](\eta)=\int u\,d\mu_{T,\eta},
+       \qquad \mu_{T,\eta}\text{ the measure of }T\wedge\eta .
+\]
+The formula can be checked on a finite ordinary cover of the support
+of $\eta$ and then summed using smooth partitions.  Thus it is
+independent of the common moment presentation.  By the induction
+hypothesis, $[T]$ is the CLD curvature product.  Its standard
+continuous multiplication by $u$ gives precisely the same coefficient
+measures.  Equivalently, equality on smooth scalar multipliers extends
+to continuous scalar multipliers by uniform approximation on each
+compact support.  Hence $[uT]=u[T]$.
+
+The factors of $T$ are separately closed.  Actual Leibniz and the
+chain-map assertion of Mihatsch's Proposition 4.11 now give
+\[
+ [Du\wedge T]=[D(uT)]=D[uT]=D\bigl(u[T]\bigr).
+\]
+This is the defining Bedford--Taylor recursion, with its extension to
+differences of psh functions supplied by CLD \S8.8.5.  The induction
+starts with the fundamental integration current and proves the
+assertion in every degree.  In top degree, these currents are Radon
+measures and equality on smooth scalar tests determines the measure.
+No scalar extension or general product of arbitrary currents occurs.
+\end{proof}
+
+\begin{lemma}[Detection of a closed pure actual form]
+\label{h22c:detector}
+Let $0\le r\le n$, let $q=n-r$, and let
+$\Omega\in\mathcal B^{0,0,r}(X^{\mathrm{an}})$ be separately closed.
+Suppose that
+\[
+                 \Omega\wedge D\phi_1\wedge\cdots\wedge D\phi_q=0
+\]
+as a signed Radon measure for every tuple of global rational model
+functions $\phi_1,\ldots,\phi_q$.  Then $\Omega=0$ as an actual form.
+\end{lemma}
+
+\begin{proof}
+A compactly supported actual top form has a finite signed measure by
+its local polyhedral integration formula.  Its associated current is
+integration against that measure.  Thus the case $q=0$ follows from
+the injectivity in Mihatsch's Proposition 4.11.
+
+For $q>0$, successively replace model-function slots by global
+original-smooth functions.  At an induction step, let $T$ denote
+$\Omega$ wedged with the other $q-1$ Hessians.  It is separately
+closed and has bidegree $(n-1,n-1)$.  If $\phi$ is a global rational
+model function and $\psi$ is a global original-smooth function,
+actual Stokes on the compact space $X^{\mathrm{an}}$ gives
+\[
+                  \int\phi\,T\wedge D\psi
+                    =\int\psi\,T\wedge D\phi=0.
+\]
+The last equality is the induction hypothesis.  The expression on
+the left tests the fixed finite signed measure $T\wedge D\psi$
+against $\phi$.  Uniform density of rational model functions in
+$C(X^{\mathrm{an}})$ therefore makes that measure zero.  After $q$
+steps,
+\[
+                  \Omega\wedge D\chi_1\wedge\cdots\wedge D\chi_q=0
+\tag{H22.C1}\label{h22c:all-smooth-hessians}
+\]
+for all global original-smooth functions $\chi_i$.  This argument
+does not differentiate a uniformly convergent sequence.
+
+We spell out the dimension of a witnessing skeleton.  By Mihatsch's
+Definition 3.8, $\Sigma(U,g)$ is the $n$-dimensional locus of the
+moment skeleton; by his Proposition 3.7 it is purely
+$n$-dimensional away from the analytic boundary.  His Lemma 4.4,
+applied on an ordinary open and with refining toric coordinates,
+therefore implies that a nonzero actual form has a nonzero restriction
+on such an $n$-dimensional skeleton.  This can also be seen by first
+using Proposition 4.11 to choose a detecting smooth complementary
+test, whose top-degree product has a containing $n$-dimensional
+skeleton by Corollary 4.9 and Definition 4.10.
+
+Suppose $\Omega\ne0$ and choose such a restriction.  After a
+polyhedral subdivision, purity means that on some $q$-dimensional
+open face $\sigma$ its coefficient is a nonzero scalar function.
+The moment coordinates $u_a=-\log|g_a|$ have an injective tangent
+map on each linearity face: a nonzero tangent kernel would give
+positive-dimensional fibres, contrary to the finite-fibre property
+of skeleton tropicalization.  Hence
+\[
+                         h=\frac12\sum_a u_a^2
+\]
+has positive definite Hessian on $T\sigma$.  Choose a smooth cutoff
+supported inside the moment-chart open and equal to one near a point
+where the scalar coefficient is nonzero.  Multiplying $h$ by this
+cutoff and extending by zero gives a global original-smooth function
+$\chi$ with $D\chi=Dh$ on that neighbourhood.  The coefficientwise
+wedge formula makes
+$\Omega\wedge(D\chi)^q$ nonzero on $\sigma$.
+This contradicts \eqref{h22c:all-smooth-hessians} and top-form
+injectivity.  Therefore $\Omega=0$.
+\end{proof}
+
+\begin{theorem}[Numerically trivial model-root polynomials vanish as actual forms]
+\label{h22c:numerical-zero}
+Let $P$ be a homogeneous rational polynomial of degree $r$ in the first
+Chern classes of finitely many model line bundles $\mathcal L_i$ on
+$\mathcal X$, where $1\le r\le n$.  If
+\[
+ \xi=P\bigl(c_1(\mathcal L_{i,s})\bigr)\in A^r(\mathcal X_s)_{\mathbf Q}
+\]
+has degree zero on every integral $r$-dimensional subvariety of
+$\mathcal X_s$, then
+\[
+                    P\bigl(c_1(\overline L_i)\bigr)=0
+                    \quad\text{in }\mathcal B^{0,0,r}(X^{\mathrm{an}}).
+\]
+\end{theorem}
+
+\begin{proof}
+Put $\Omega=P(c_1(\overline L_i))$ and $q=n-r$.  For any $q$ rational
+model functions, take a common projective flat model refinement on
+which they are represented by vertical rational Cartier divisors
+$D_1,\ldots,D_q$.  We may moreover normalize this refinement.
+Indeed $R$ is an excellent DVR, so normalization is finite; it
+preserves projectivity and, because $X$ is smooth, is the identity
+on the generic fibre.  The resulting integral model remains flat.
+Write $f:\mathcal Y\to\mathcal X$ for the resulting map.  As usual,
+common models of finitely many model metrics are obtained by
+admissible modifications; their algebraization in the projective
+case is the model-metric correspondence used in Gubler--Martin
+Theorem 1.1 and in the proof of CLD Corollary 17.8.9.
+
+Lemma~\ref{h22c:comparison} identifies the top actual wedge with the
+CLD model measure.  On the normal model, CLD Theorem 18.5.5 and
+Proposition 18.5.8 identify its mass at the divisorial point of an
+irreducible special-fibre component $V$ with
+\[
+ b_V\,\deg\!\left(
+     f_s^*\xi\cap
+     \prod_{j=1}^q c_1(\mathcal O(D_j)|_V)\cap[V]\right),
+\]
+where $b_V$ is the full special-fibre multiplicity.  Rational divisor
+denominators are retained multilinearly.  Alternatively, without
+normalization one may keep the full native weight
+$m(x)\operatorname{def}_K(x)\lambda_{\mathcal Y}(x)$ from
+Theorem 18.5.5; the following zero calculation is unchanged.
+
+The operational projection formula rewrites the degree as
+\[
+ \deg\!\left(\xi\cap f_{s*}
+       \left(\prod_{j=1}^q c_1(\mathcal O(D_j)|_V)\cap[V]\right)\right).
+\]
+The inner intersection is a rational $r$-cycle.  Proper pushforward
+is a rational combination of integral $r$-cycles on $\mathcal X_s$;
+components whose images have smaller dimension contribute zero.
+The numerical hypothesis therefore makes every displayed degree
+zero.  The support assertion in CLD Theorem 18.5.5 now makes the
+entire top measure zero.  Lemma~\ref{h22c:detector} gives $\Omega=0$.
+Neither smoothness nor reducedness of the special fibre is used.
+\end{proof}
+
+\begin{theorem}[Strict actual Chern forms of model vector bundles]
+\label{h22c:chern}
+For model vector bundles $\mathcal E_1,\ldots,\mathcal E_s$ on
+$\mathcal X$ and a homogeneous rational Chern polynomial $P$ of
+degree $r$, $1\le r\le n$, there is a unique separately closed
+actual form
+\[
+                c_{\mathcal X}(P)\in\mathcal B^{0,0,r}(X^{\mathrm{an}})
+\]
+whose pullback to the simultaneous full flag bundle is the
+corresponding model-root polynomial.  The construction is functorial
+under morphisms of integral projective flat models with smooth
+integral generic fibres.  Polynomial operational identities, including
+Whitney identities, Chern-character additivity and Adams identities,
+hold as strict identities of actual forms.  Numerical triviality
+of the special-fibre polynomial implies $c_{\mathcal X}(P)=0$.
+\end{theorem}
+
+\begin{proof}
+Let
+$a:\mathcal F=\prod_{\mathcal X}\operatorname{Flag}(\mathcal E_j)
+\to\mathcal X$ and write $\Omega_F$ for its model-root polynomial.
+Flag bundles, and their fibre products here, are integral projective
+flat models; their generic fibres are smooth integral varieties.
+On $\mathcal F\times_{\mathcal X}\mathcal F$, the two root
+polynomials represent the same operational Chern class, by the two
+tautological filtrations.  Thus their difference restricts to the
+zero operational class on the special fibre.  It is a polynomial
+in first Chern classes of model line bundles, so
+Theorem~\ref{h22c:numerical-zero}, applied in the dimension of this
+larger generic fibre, proves
+\[
+                         p_1^*\Omega_F=p_2^*\Omega_F
+\tag{H22.C2}\label{h22c:flag-cocycle}
+\]
+as actual forms.
+
+Trivialize the finitely many generic bundles simultaneously on
+Zariski opens $U_i\subset X$.  Their standard flags give algebraic
+sections $s_i:U_i\to F$.  These are genuine analytic sections on
+ordinary opens after analytification.  All their domains and targets
+are pure-dimensional and boundaryless, so Mihatsch's Theorem 4.5
+applies even though the sections need not extend to the models.
+Pulling \eqref{h22c:flag-cocycle} back by $(s_i,s_j)$ proves that
+$s_i^*\Omega_F$ glue to an actual form $c_{\mathcal X}(P)$.
+Pulling it back by $(\mathrm{id},s_i\circ a)$ on $a^{-1}(U_i)$
+proves $a^*c_{\mathcal X}(P)=\Omega_F$.  The sections also make
+$a^*$ injective, proving uniqueness.  Pullback respects tridegree
+and differentials, so the descended form is pure and separately
+closed.
+
+To prove a universal operational identity among finitely many
+bundles, take their simultaneous flag bundle and subtract the
+corresponding root polynomials.  The difference is zero in
+special-fibre operational Chow.  The preceding theorem makes it
+zero as an actual form upstairs; injectivity of flag pullback gives
+the strict identity downstairs.  This proves Whitney and additive
+relations.  Applied to the universal symmetric-root identity for
+Adams operations, it gives
+\[
+          \operatorname{ch}_r(\psi^k\xi)=k^r\operatorname{ch}_r(\xi)
+\]
+strictly for model virtual bundles and $k\ge1$.
+
+For a morphism of the specified models, pull back the flag bundle
+and its tautological line quotients.  Model first Chern forms are
+functorial, so the pulled-back form and the newly constructed form
+have the same characteristic flag pullback.  Faithfulness of that
+pullback proves functoriality.  The same argument with the product
+of two splitting presentations proves independence of presentation.
+In particular a model refinement leaves the actual form of a fixed
+pulled-back model bundle unchanged.
+
+Finally, if $\xi=P(c(\mathcal E_{j,s}))$ is numerically trivial,
+then for every integral $r$-cycle $W$ on $\mathcal F_s$,
+\[
+             \deg(a_s^*\xi\cap[W])
+               =\deg(\xi\cap a_{s*}[W])=0.
+\]
+Theorem~\ref{h22c:numerical-zero} kills $\Omega_F$ and the local
+sections kill its descent.  This proves the last assertion.
+\end{proof}
+
+\paragraph*{Scope of the conclusion.}
+The preceding construction uses no finite trace and no prescribed
+Green-pair theorem.  It supplies the strict model-Chern input used in
+Sections~\ref{r11p:minimal-trace} and~\ref{r11p:supported-complex}.  It does not identify two arbitrary model extensions merely
+because their generic bundles are isomorphic; that comparison requires
+the separate global-primitive argument.  It also makes no assertion
+that the curvature of every geometrically homologically trivial
+cycle is exact.
+
+
+\section{The minimal trace needed by a supported perfect complex}
+\label{r11p:minimal-trace}
+
+\paragraph*{The scalar--curvature module.}
+The supported-complex Green formula needs only expressions
+\[
+                       u_0\,Du_1\cdots Du_k, \qquad D=d'd'',
+\tag{MT1}\label{r11p:module-generators}
+\]
+with PL scalar potentials. A single parameter evaluates the whole
+scalar coefficient $u_0$, even when $u_0$ is nonlinear PL in many moment
+coordinates. The proof constructs this trace directly from scalar PL
+descent, max/min sorting, and Euclidean projection. The inputs are
+specified below; a trace on arbitrary actual forms or a universal
+Green-pair construction is not assumed.
+
+Throughout this section $K$ is a complete nontrivially valued field of
+characteristic zero, and all analytic spaces are the analytifications of
+normal integral separated $K$-varieties, with their ordinary topology.
+All forms are Mihatsch actual delta-forms.  A PL scalar means a function
+locally presented by a finite piecewise affine function of logarithms of
+analytic units.  Its $D$ is a pure form of tridegree $(0,0,1)$.
+Let $\mathscr M^k$ be the actual image sheaf of finite sums of
+\eqref{r11p:module-generators}.  Relations in $\mathscr M^k$ are actual-form
+relations; no chosen presentation is part of a section.
+
+\subsection{Primary analytic inputs and native degree}
+
+We use the following statements in their stated scopes.
+\begin{enumerate}
+\item Mihatsch, \emph{Delta-Forms on Lubin--Tate Spaces},
+arXiv:2112.10018v4, Definition 4.2 and Theorem 4.5: local Euclidean
+presentations, the ordinary sheaf, arbitrary actual pullback between
+pure-dimensional boundaryless spaces, and compatibility with products
+and differential operators.
+\item Ibid., Remark 4.3(1), Lemma 4.4, Corollary 4.9 and Proposition 4.11:
+coefficientwise multiplication by a PWS scalar on a witnessing skeleton;
+support avoidance when the maximum bidegree exceeds the algebraic
+dimension; Stokes; and injectivity into ordinary CLD currents.
+\item Ibid., Definition 3.4 and Lemmas 3.3 and 3.15:
+native calibrated tropical weights and the finite-flat degree formula.
+These are used for top forms only.
+\item Ibid., Proposition 2.17, Definition 2.29(3), Lemma 2.37,
+Proposition 2.38 and Definition 2.41: proper-on-support pushforward
+of polyhedral currents on weighted pwl spaces, its differential
+compatibility, and the boundary-excluded chart characterization of
+tropical pullback.  Definition 3.8, Remark 3.9 and the coordinate case
+of the proof of Proposition 3.21 identify product skeletons with their
+linear functions and native weights.  Definition 4.10 defines analytic
+integration intrinsically on skeletons.
+\item Mihatsch, \emph{On Tropical Intersection Theory},
+arXiv:2107.12067v3, Section 2.3, Example 2.5, Theorem 4.1(3), and
+Proposition/Definition 4.2: affine proper-on-support Euclidean
+pushforward, its projection formula, and affine pullback.
+\end{enumerate}
+
+For a finite dominant map $q:Y\to X$ of generic degree $d$ and any compact
+actual top form $\tau$ on $X$, these inputs give
+\[
+                            \int_Yq^*\tau=d\int_X\tau.
+\tag{MT2}\label{r11p:native-degree}
+\]
+Indeed remove a proper closed subset outside which $q$ is finite flat of
+constant degree $d$.  The support of $\tau$ avoids this subset by
+Corollary 4.9; so does the support of its pullback above it.
+Lemma 3.15 and the native skeletal integration formula apply on the
+remaining open.  This argument does not construct a trace of arbitrary
+source coefficients.  It also proves that finite dominant pullback on
+actual forms is faithful: pair a putatively zero pullback with pulled-back
+original-smooth complementary tests, use \eqref{r11p:native-degree}, and
+apply Proposition 4.11.
+
+\subsection{Only scalar PL functions pass through a finite quotient}
+
+\begin{lemma}[Ordinary local scalar PL descent]
+\label{r11p:pl-descent}
+Let $q:Y\to X$ be finite Galois between normal integral varieties, with
+group $G$.  A $G$-invariant source PL scalar descends to a PL scalar on
+$X$.  If finitely many invariant potentials on
+$Y^{\rm an}\times(\mathbf G_m)^{\rm an}$ are jointly PL in fixed source
+unit logarithms and the parameter $t=v(z)$, their descended potentials
+are locally jointly PL in a fixed finite tuple of base-unit logarithms
+and $t$.  The base tuple and base shrinking are independent of $t$.
+\end{lemma}
+
+\begin{proof}
+Work around a whole finite analytic fiber.  Choose disjoint ordinary
+neighborhoods of its points on which the finitely many source potentials
+have moment presentations.  Properness permits shrinking the base so
+that its full inverse image lies in their union.  The corresponding
+source pieces are then clopen.  Analytic units can be pasted on these
+pieces.  Add constant units with distinct valuations as markers; after
+shrinking compact neighborhoods, their moment images lie in separated
+compact polyhedral boxes.  Finite PL extension on these boxes
+combines the presentations.  A smooth cutoff of a PL potential is
+neither required nor used.
+
+Include the full $G$-orbit of the resulting source-unit tuple.  Its
+logarithms $\ell\in\mathbf R^s$ then carry a coordinate-permutation
+$G$-action; add a constant unit if necessary so that $s\geq1$.
+If an ambient PL presentation $\varphi(\ell)$ is
+invariant only after restriction to the actual source moment image,
+replace it by $|G|^{-1}\sum_{g\in G}\varphi(g\ell)$.  This is an
+ambient invariant PL function with the same source restriction.
+For ordered orbit potentials the sorting itself already gives this
+ambient invariance.  The same operation leaves an independent
+parameter fixed.  Put $d=|G|$ and $N=d(s-1)+1$.  For distinct integers $a_j$
+take the Vandermonde directions
+\[
+                     m_j=(1,a_j,\ldots,a_j^{s-1})\in\mathbf Z^s.
+\]
+Define $J(\ell)$ by recording, for each $j$, the ordered multiset
+$\{\langle m_j,g\ell\rangle:g\in G\}$.  It separates $G$-orbits.
+In fact if $J(x)=J(y)$, for each $j$ one can choose $g_j$ with
+$\langle m_j,x\rangle=\langle m_j,g_jy\rangle$.  One $g$ occurs for
+at least $s$ indices.  The resulting polynomial of degree at most $s-1$
+has $s$ roots, hence $x=gy$.
+
+The map $J$ is proper: any $s$ independent Vandermonde directions bound
+$\ell$ when all the displayed coordinates are bounded.  It is finite
+piecewise linear.  On a common polyhedral subdivision its linearity
+cells map affinely and injectively to their images; a noninjective
+tangent direction would produce an infinite fiber.  Every invariant
+PL scalar therefore factors as a PL scalar through $J$, after common
+image subdivision and PL ambient extension.  The identical argument
+applies to $J\times\operatorname{id}_{\mathbf R}$ and jointly PL
+potentials with the fixed parameter $t$.
+
+It remains to realize $J$ downstairs without an illicit nonlinear
+pullback of forms.  For each source monomial $F_j=f^{m_j}$ take its monic
+orbit polynomial
+\[
+                          \prod_{g\in G}(T-gF_j).
+\]
+Its coefficients are invariant analytic functions, hence analytic
+functions on the normal finite quotient.  Algebraically the quotient
+is $X$; analytically this follows on affinoids from finite coherent
+base change and the Reynolds idempotent in characteristic zero.
+With the convention that the coefficient of $T^i$ gives the point
+$(i,v(a_i))$, the ordered root valuations are the negatives of the
+lower Newton polygon's slopes, with multiplicity.  They are therefore
+PL in the valuations of the coefficients that contribute to that
+polygon.
+
+At a fixed base point retain the nonzero coefficients and shrink so
+that they are units.  The constant coefficient $a_0$ is a unit because
+it is a product of source units; the leading coefficient is one.
+Choose a uniform upper bound $B$ for $v(a_0)$ on the shrunken base.
+Every coefficient vanishing at the fixed point can, by continuity and
+a further common shrinking, be made to have valuation greater than
+$\max(B,0)+1$.  Its point is then above the endpoint chord of the
+Newton polygon and cannot affect the lower hull.  Such coefficients
+can be omitted uniformly.
+Thus $J$ is PL in finitely many base-unit logarithms.  These
+coefficients involve source units alone, so their choice and shrinking
+are independent of $t$.  Substitution is only a substitution into a
+scalar PL function.  Taking its actual derivatives happens afterwards;
+no nonlinear PL pullback of a general delta-form has been postulated.
+\end{proof}
+
+\subsection{Sorting gives a pure-curvature trace}
+
+\begin{lemma}[Max/min identities]
+\label{r11p:sorting}
+For source PL scalars $u,v$, put $M=\max(u,v)$ and $m=\min(u,v)$.
+For every $k\geq0$ there are actual identities
+\[
+ (DM)^k+(Dm)^k=(Du)^k+(Dv)^k,
+\tag{MT3}\label{r11p:sorting-powers}
+\]
+\[
+ M(DM)^k+m(Dm)^k=u(Du)^k+v(Dv)^k.
+\tag{MT4}\label{r11p:sorting-energies}
+\]
+\end{lemma}
+
+\begin{proof}
+Write $h=u-v$, $h_+=\max(h,0)$, $h_-=\min(h,0)$, and
+$A=Dh_+$, $B=Dh_-$.  Coefficientwise multiplication on support
+polyhedra gives $h_+B=h_-A=0$: on one open side the appropriate
+function is zero, and on the common wall its continuous scalar
+coefficient is zero.  Applying $D$ and using separate closedness gives
+$AB=0$.  Since
+\[
+ M=v+h_+,\quad m=v+h_-,\quad u=v+h_++h_-,
+\]
+expansion proves \eqref{r11p:sorting-powers}.  The same expansion,
+now using both $AB=0$ and the two scalar-weighted zero identities,
+proves \eqref{r11p:sorting-energies}.
+\end{proof}
+
+The second identity is useful but has a definite limitation:
+polarizing $u(Du)^k$ recovers symmetrized energies, not an arbitrary
+ordered scalar-curvature monomial $u_0Du_1\cdots Du_k$.
+The parameter argument below supplies precisely that missing step.
+
+\begin{lemma}[Trace of pure PL curvature polynomials]
+\label{r11p:pure-trace}
+For finite dominant $q:Y\to X$ between normal integral varieties, a
+finite sum $C$ of products $Du_1\cdots Du_k$ has an intrinsic actual
+trace $\operatorname{Tr}^{\rm curv}_q(C)$, characterized by
+\[
+ \int_X\operatorname{Tr}^{\rm curv}_q(C)\wedge\eta
+                         =\int_YC\wedge q^*\eta
+\tag{MT5}\label{r11p:pure-pairing}
+\]
+for all compact complementary actual tests.  With a parameter, jointly
+PL source potentials in fixed source logarithms and $t$ yield a trace
+with a product-moment presentation using fixed base logarithms and $t$.
+\end{lemma}
+
+\begin{proof}
+First let $q$ be Galois.  Sort the orbit of a scalar $u$ by a finite
+sorting network.  Repeated use of \eqref{r11p:sorting-powers} gives
+\[
+                     \sum_{g\in G}(Dg^*u)^k
+                            =\sum_{j=1}^d(Du_{(j)})^k.
+\]
+The ordered potentials $u_{(j)}$ are invariant and descend by
+Lemma~\ref{r11p:pl-descent}.  The right side is consequently the
+pullback of a downstairs actual form.  Define it to be the trace of
+$(Du)^k$.  Polarization,
+\[
+ Du_1\cdots Du_k
+   =\frac1{k!}\sum_{I\subset\{1,\ldots,k\}}
+           (-1)^{k-|I|}\left(D\sum_{i\in I}u_i\right)^k,
+\]
+does the same for all mixed products.  For $k=0$ set
+$\operatorname{Tr}^{\rm curv}_q(1)=d$.
+
+This construction satisfies the actual orbit identity
+\[
+                 q^*\operatorname{Tr}^{\rm curv}_q(C)
+                                      =\sum_{g\in G}g^*C.
+\]
+Wedge with $q^*\eta$, integrate, and use
+\eqref{r11p:native-degree} and invariance of native integration under
+automorphisms.  Division by $d$ proves \eqref{r11p:pure-pairing}.
+Finite pullback faithfulness proves independence of every actual
+relation.  Current injectivity gives gluing on ordinary overlaps.
+The pairing permits arbitrary actual downstairs multipliers; they
+have not been treated as arbitrary source coefficients.
+
+For a general separable finite map take a normal Galois closure
+$\widetilde Y\to X$ factoring through $r:\widetilde Y\to Y$, and divide
+the Galois trace of $r^*C$ by $e=\deg r$.  Applied to the top form
+$Cq^*\eta$, \eqref{r11p:native-degree} proves the required pairing and
+independence of the closure.  Characteristic zero covers every map
+used here.  All spaces and parameter tori remain over the original
+$K$; native generic degrees are not normalized away.
+
+For the last assertion use the parameter version of
+Lemma~\ref{r11p:pl-descent} at the sorting step.  The descended
+potentials have fixed base moments, so their Hessians and products
+have the required product-moment presentation.
+\end{proof}
+
+\subsection{Certified integration along a parameter torus}
+
+\paragraph*{The boundary issue.}
+Compact analytic support does not imply that an ambient moment
+coefficient avoids the tropicalized analytic boundary of an affinoid
+chart.  We do not use the single-chart integral formula with that
+unverified hypothesis.  Instead we first prove a pushforward identity
+for polyhedral currents on the product skeleton, retaining the boundary
+exclusion of Proposition 2.38 at every chart calculation.  The
+intrinsic skeletal definition of integration then gives the analytic
+pairing.  In this subsection $f^\star$ denotes tropical-space pullback
+in that proposition, distinguished from the notation $t_c^*$ for the
+resulting actual analytic form.
+
+\begin{lemma}[The coordinate product skeleton, including its structures]
+\label{r11p:coordinate-product-skeleton}
+Let $V$ be a boundaryless ordinary analytic open of pure dimension $n$,
+let $b$ be a tuple of analytic units on $V$, and put $S=\Sigma(V,b)$.
+The relative Gauss section identifies
+\[
+ \begin{split}
+ \iota_b:S\times\mathbf R&\ \xrightarrow{\ \sim\ }\
+       \Sigma(V\times(\mathbf G_m)^{\rm an},(b,z)),\\
+                  (y,t)&\longmapsto \nu_t(y),
+ \end{split}
+\tag{PS1}\label{r11p:product-skeleton-identity}
+\]
+where $\nu_t(y)$ is the Gauss point of radius $e^{-t}$ in the torus
+over $\mathcal H(y)$.  This is an isomorphism of weighted pwl spaces
+and of tropical spaces.  Its weight is the product of the native
+weight on $S$ and the standard weight on $\mathbf R$, and its linear
+function sheaf is generated by the base linear functions and $t$.
+The identification is compatible with every ordinary base shrinking
+and every additional base moment refinement.
+\end{lemma}
+
+\begin{proof}
+Let $x$ lie above $y$ in the analytic product.  The graded field
+generated by $b$ and $z$ has transcendence degree $n+1$ precisely
+when the graded field generated by $b$ at $y$ has transcendence
+degree $n$ and $\widetilde z$ is transcendental over
+$\widetilde{\mathcal H(y)}$.  Indeed adjoining $z$ increases that
+degree by at most one; in the degree-$n$ case
+$\widetilde{\mathcal H(y)}$ is algebraic over the graded field
+generated by $b$.  This is the graded-transcendence calculation in
+(3.27) of the cited proof, here with the single coordinate $z$.
+
+The condition on $\widetilde z$ characterizes the Gauss valuation
+over $\mathcal H(y)$: no cancellation among leading monomials is
+possible, and for every Laurent polynomial one has
+\[
+ \left|\sum_i a_i z^i\right|_{\nu_t(y)}
+                         =\max_i |a_i|e^{-it}.
+\]
+Conversely these Gauss valuations have the required graded
+transcendence degree.  Thus Definition 3.8 and the absence of analytic
+boundary give the claimed bijection.  No valued extension of $K$,
+or rationality of the radius in its value group, is needed.
+
+The inverse is $(p,v(z))$ on the displayed skeleton.  It is pwl:
+a base skeleton chart is described by an affinoid domain and
+valuations of its analytic units; their pullbacks are valuations of
+the same units on the product, and $v(z)$ is the extra coordinate.
+The corresponding closed chart domains pull back to closed pwl
+domains.  This inverse is also proper.  A compact subset of
+$S\times\mathbf R$ is contained in a finite union of compact base
+analytic domains times a bounded interval.  Its inverse image is
+closed in the corresponding finite union of products with compact
+analytic annuli, and is therefore compact.  It follows that the
+continuous bijective inverse is a homeomorphism.  Subdivision into
+local polyhedral charts makes its injective affine pieces invertible
+onto their images, so both directions are pwl.  This is the
+coordinate specialization of the topology and atlas argument
+following (3.31), now without its changes of field or center.
+
+For the weights, take a top-dimensional base cell and a local toric
+projection used in Definition 3.8(2) to compute its native degree
+$e$.  Its product with the identity on $\mathbf G_m$ is finite flat
+of the same degree $e$.  Hence its induced weight is the base weight
+times the standard parameter weight.  This calculation retains
+residue-field degrees and is exactly the last weight calculation
+in the proof of Proposition 3.21.  It is local on cells and hence
+determines the entire product weight.
+
+Under the bijection the moments are $(t_b,t)$.
+Definition 3.8(3) therefore gives precisely the product linear
+function sheaf, not merely a set-theoretic identification.
+For additional base moments $b'$, the same Gauss section applies.
+The inclusions of base and product skeletons agree under it, and
+their weights agree by Remark 3.9.  The new linear functions are the
+new base ones together with the same $t$.  This proves the stated
+compatibility for all refinements and ordinary restrictions.
+\end{proof}
+
+\begin{lemma}[Tropical product pushforward with boundary control]
+\label{r11p:tropical-product-push}
+Let $S$ be a pure-dimensional tropical space and
+$f:S\to\mathbf R^N$ a linear map.  Give $S\times\mathbf R$ the
+product weight and linear functions.  Write $p_S$ for its projection
+and $\pi:\mathbf R^N\times\mathbf R\to\mathbf R^N$ for the coordinate
+projection.  If $\Gamma$ is a Euclidean delta-form with support in
+a fixed compact set of parameter values, then
+\[
+ (p_S)_*\bigl((f,\operatorname{id})^\star\Gamma\bigr)
+                                      =f^\star(\pi_*\Gamma)
+\tag{PS2}\label{r11p:tropical-product-push-identity}
+\]
+as polyhedral currents on $S$.  The left side uses only the
+proper-on-support pwl-current pushforward of Proposition 2.17.
+\end{lemma}
+
+\begin{proof}
+The product is a tropical space: on a product polyhedral subdivision,
+the vertical balancing conditions are those of $S$, and horizontal
+internal facets cancel in pairs with the standard parameter weight.
+The support of
+$B=(f,\operatorname{id})^\star\Gamma$ is contained in
+$S\times J_0$ for a compact interval $J_0$.  Thus it is proper over
+$S$, and Proposition 2.17 supplies the polyhedral current
+$P=(p_S)_*B$ before any assertion that it is a delta-form.
+
+Work in a polyhedral neighborhood carrying a finite-fiber linear
+map $h$ to $\mathbf R^m$, as supplied by the axioms of a sheaf of
+linear functions.
+Append $f$ and put $g=(f,h)$.  Then $g$ has finite fibers and
+$f=A\circ g$, where $A$ is a literal coordinate projection.
+Let $H$ be any compact polyhedral subset of the interior of this
+neighborhood, and put
+\[
+ E_H=g(\partial_S H),\qquad
+ W_H=\mathbf R^{N+m}\setminus E_H,\qquad
+ H_g^\circ=H\setminus g^{-1}(E_H).
+\]
+The restricted $g:H_g^\circ\to W_H$ is proper.  Write
+$C_H=g_*[H_{\dim S},\mu_S]|_{W_H}$.
+It is a tropical cycle on $W_H$ by Corollary 2.35.
+
+Choose an interval $J=[a,b]$ containing $J_0$ in its interior.
+The boundary of $H\times J$ is contained in
+\[
+        (\partial_S H\times J)\ \cup\ (H\times\{a,b\}).
+\]
+Apply the characterizing identity (2.40) of Proposition 2.38 to
+this compact product and the refinement $g\times\operatorname{id}$.
+On the boundary-free region $W_H\times(a,b)$ it gives
+\[
+ (g\times\operatorname{id})_*
+       \bigl(B|_{H_g^\circ\times(a,b)}\bigr)
+       =(C_H\times\mathbf R)\wedge
+                             (A\times\operatorname{id})^*\Gamma.
+\tag{PS3}\label{r11p:boundary-chart-product}
+\]
+Both sides vanish near the artificial parameter endpoints because
+$\Gamma$ does.  They may therefore be viewed on $W_H\times\mathbf R$,
+but the exclusion of $E_H$ in the base remains in force.  There
+is no assertion of this chart identity across $g(\partial_S H)$.
+
+Let $\pi_g:W_H\times\mathbf R\to W_H$ be projection.  Functoriality
+of pwl-current pushforward and the Euclidean projection formula
+give, entirely on $W_H$,
+\[
+\begin{split}
+  g_*\bigl(P|_{H_g^\circ}\bigr)
+   &=\pi_{g,*}\!\left((C_H\times\mathbf R)\wedge
+                          (A\times\operatorname{id})^*\Gamma\right)\\
+   &=C_H\wedge
+                  \pi_{g,*}(A\times\operatorname{id})^*\Gamma\\
+   &=C_H\wedge A^*(\pi_*\Gamma).
+\end{split}
+\tag{PS4}\label{r11p:boundary-chart-push}
+\]
+The last step needs only coordinate Fubini.  For a coordinate
+projection $A$, its Euclidean delta-pullback adds free standard
+coordinates.  On each weighted carrier of $\Gamma$, fiber
+integration in $t$ before or after adding those coordinates
+has the same fibers, coefficient integral and quotient weights.
+Thus
+$\pi_{g,*}(A\times\operatorname{id})^*\Gamma=A^*(\pi_*\Gamma)$.
+This carrierwise argument applies to an arbitrary Euclidean
+delta-form, with compact parameter support; it does not invoke a
+general affine base-change lemma.
+
+The last expression in \eqref{r11p:boundary-chart-push} is exactly
+the characterizing expression (2.40) for
+$f^\star(\pi_*\Gamma)$.  Varying the compact polyhedral set $H$
+inside the fixed finite-fiber $g$-chart, Lemma 2.37 shows that
+$P=f^\star(\pi_*\Gamma)$ on that chart.  These charts cover $S$,
+which proves \eqref{r11p:tropical-product-push-identity}.
+In particular the polyhedral pushforward has the asserted
+delta-form representative; this is a conclusion of the calculation.
+\end{proof}
+
+\begin{lemma}[Integration on the product-moment subspace]
+\label{r11p:product-integration}
+Let $p:U\times(\mathbf G_m)^{\rm an}\to U$ be projection.  Suppose
+\[
+                   \beta=t_{(c,z)}^*\Gamma
+\]
+for a fixed base analytic-unit tuple $c$, $t=v(z)$, and a Euclidean
+delta-form $\Gamma(u,t)$ supported in a fixed compact set of $t$.
+With $\pi(u,t)=u$, define
+\[
+                       I_p(\beta)=t_c^*(\pi_*\Gamma).
+\tag{MT6}\label{r11p:product-definition}
+\]
+This is intrinsic among product-moment presentations and satisfies
+\[
+             \int_UI_p(\beta)\wedge\eta
+                    =\int_{U\times\mathbf G_m}\beta\wedge p^*\eta
+\tag{MT7}\label{r11p:product-pairing}
+\]
+for every compact actual complementary test.  It commutes with
+$d',d''$ on these presentations.
+\end{lemma}
+
+\begin{proof}
+\textit{1. A skeletal identity before integration.}
+Euclidean pushforward supplies the actual candidate
+$\theta=t_c^*(\pi_*\Gamma)$.
+On an arbitrary ordinary $V\subseteq U$, refine the base moments
+by tuple concatenation, $b=(c,h)$, and put $S=\Sigma(V,b)$.
+Under \eqref{r11p:product-skeleton-identity}, the restriction of
+$\beta$ to the product skeleton is
+$(t_c|_S,\operatorname{id})^\star\Gamma$.
+Lemma~\ref{r11p:tropical-product-push} therefore gives
+\[
+       \theta|_S
+        =(p_S)_*\bigl(\beta|_{S\times\mathbf R}\bigr).
+\tag{PS5}\label{r11p:actual-product-skeletal}
+\]
+This is an equality of intrinsic polyhedral currents on $S$ for
+every base refinement.  Its proof used the boundary-excluded chart
+identities \eqref{r11p:boundary-chart-product}--\eqref{r11p:boundary-chart-push},
+not an integral over a global tropicalization of $V$.
+
+If two product-moment presentations define the same actual $\beta$,
+concatenate both base tuples and any further test tuple.  Their
+restrictions to every resulting product skeleton agree by Definition
+4.2.  Equation \eqref{r11p:actual-product-skeletal} makes their
+candidate outputs agree on every corresponding base skeleton.
+Lemma 4.4, using all refinements, gives actual equality.  This proves
+independence of presentations and their relations, and also their
+compatibility on ordinary overlaps, before any current pairing.
+
+\textit{2. Products with arbitrary actual base forms.}
+On an open $V$ where an actual form $\eta$ has a moment presentation,
+take $b$ to be the concatenation of its moments and $c$, and write
+$\eta=t_b^*\eta_b$.  Let $A$ be the coordinate projection selecting
+$c$.  The product $\beta\wedge p^*\eta$ has Euclidean coefficient
+\[
+           (A\times\operatorname{id})^*\Gamma\wedge\pi_b^*\eta_b
+\]
+in the fixed moments $(b,z)$, with the same compact parameter support.
+Euclidean projection and coordinate Fubini give
+\[
+ \pi_{b,*}\!\left(
+      (A\times\operatorname{id})^*\Gamma\wedge\pi_b^*\eta_b\right)
+                         = A^*(\pi_*\Gamma)\wedge\eta_b.
+\]
+Apply \eqref{r11p:actual-product-skeletal} to this coefficient.
+For $S=\Sigma(V,b)$ it gives
+\[
+ (p_S)_*
+     \left((\beta\wedge p^*\eta)|_{S\times\mathbf R}\right)
+                         =(\theta\wedge\eta)|_S.
+\tag{PS6}\label{r11p:product-test-skeletal}
+\]
+The coefficient $\eta_b$ here is an arbitrary Euclidean delta-form.
+No restriction to smooth tests or to products of model curvatures
+has occurred.
+
+\textit{3. Intrinsic skeletal integration and ordinary partitions.}
+Now let $\eta$ be compact and of complementary bidegree.  Cover its
+support by finitely many ordinary opens $V_i$ on which it has the
+presentations used in the preceding step, and choose an
+original-smooth partition $(\lambda_i)$ subordinate to this cover
+on a neighborhood of the support.  Put
+$S_i=\Sigma(V_i,b_i)$.
+On $V_i$ the unweighted form $\theta\wedge\eta$ is top-degree
+and is presented in $b_i$; on $V_i\times\mathbf G_m$ the
+unweighted form $\beta\wedge p^*\eta$ is top-degree and is
+presented in $(b_i,z)$.  Corollary 4.9(2) puts their supports in
+$S_i$ and $S_i\times\mathbf R$, respectively.
+
+Multiplication by $\lambda_i$ or $p^*\lambda_i$ cannot enlarge
+these supports.  Their paired supports are compact: the relevant
+base support is compact inside $V_i$, and the parameter values lie
+in a fixed compact interval, hence in a compact analytic annulus.
+Finitely many affinoid neighborhoods of the base support give
+compact total paired support.  This compactness justifies the
+integrals; it is not used to exclude any tropicalized base boundary.
+
+The restriction $\lambda_i|_{S_i}$ need only be PWS.  Remark 4.3(1)
+makes its multiplication coefficientwise, and Proposition 2.17
+gives the coefficientwise projection formula
+\[
+ (p_{S_i})_*\!\left(p_{S_i}^*(\lambda_i|_{S_i})\,T\right)
+                  =(\lambda_i|_{S_i})(p_{S_i})_*T
+\]
+for the relevant polyhedral current $T$.
+Use Definition 4.10(1) to evaluate the analytic top integrals on
+these containing skeletons, followed by (2.17) and the integrable
+current pushforward formula in Definition 4.10(4).  With
+\eqref{r11p:product-test-skeletal}, this gives
+\[
+\begin{split}
+ \int_{U\times\mathbf G_m}p^*\lambda_i\,\beta\wedge p^*\eta
+ &=\int_{S_i\times\mathbf R}
+      p_{S_i}^*(\lambda_i|_{S_i})
+          (\beta\wedge p^*\eta)|_{S_i\times\mathbf R}\\
+ &=\int_{S_i}(\lambda_i|_{S_i})(\theta\wedge\eta)|_{S_i}\\
+ &=\int_U\lambda_i\,\theta\wedge\eta.
+\end{split}
+\]
+Definition 4.10(2) permits summing this identity over the ordinary
+partition.  It proves \eqref{r11p:product-pairing} for every
+compact actual test.  The partition is not required to have a
+single Euclidean presentation in the preassigned tuple $b_i$.
+
+Finally, Euclidean proper-on-support pushforward commutes with
+$d',d''$, and differentiation retains the compact parameter support.
+Applying this to \eqref{r11p:product-definition}, whose actual
+independence is already proved, gives the asserted differential
+compatibility.  Equivalently it follows from the linear-map
+current identity of Definition 2.29(3) in
+\eqref{r11p:actual-product-skeletal}.
+\end{proof}
+
+\begin{lemma}[One-parameter evaluation of a nonlinear PL scalar]
+\label{r11p:one-parameter}
+Let $u$ be a bounded PL scalar on an ordinary open $V$.  Choose
+$\chi\in C_c^\infty(\mathbf R)$ equal to one near its range.  On
+$V\times(\mathbf G_m)^{\rm an}$ put
+\[
+                         H=\max(u-t,0).
+\]
+For every actual form $C$ on $V$ with a common moment presentation,
+\[
+                  I_p\bigl(\chi(t)t\,DH\wedge p^*C\bigr)=uC.
+\tag{MT8}\label{r11p:graph-evaluation}
+\]
+Only one parameter occurs, independently of the number of source
+moments needed to present $u$.
+\end{lemma}
+
+\begin{proof}
+Write $u=\varphi(\ell)$ for a finite Euclidean PL scalar.  Work first
+on its Euclidean moment domain with $H(x,t)=\max(\varphi(x)-t,0)$.
+On each cell where $\varphi$ is affine, the graph face $t=\varphi(x)$
+in $DH$ has projection weight one.  The coefficient of $t$ in the
+defining affine difference is $-1$, so projection of its calibrated
+divisor measure is the standard base measure.  Weighting by $\chi(t)t$
+gives $\chi(\varphi(x))\varphi(x)$.
+
+There are also vertical faces above walls of $\varphi$, in the region
+$t<\varphi(x)$.  It would be false to identify $DH$ with the graph
+alone.  On every such vertical face, however, projection drops the
+dimension of its pure carrier; its pure Euclidean pushforward is
+zero, exactly as in Mihatsch's Example 2.5.  Thus
+\[
+               \pi_*\bigl(\chi(t)t\,D\max(\varphi-t,0)\bigr)
+                                  =\chi(\varphi)\varphi.
+\]
+The equality on affine cells extends across walls as an equality of
+actual scalar functions; the right side is continuous and the
+Euclidean pushforward is a delta-form of bidegree zero.
+
+The affine projection formula now permits an arbitrary delta-form
+$C$:
+\[
+ \pi_*\bigl(\chi(t)t\,DH\wedge\pi^*C\bigr)
+       =\pi_*(\chi(t)t\,DH)\wedge C.
+\]
+Apply Lemma~\ref{r11p:product-integration} after moment refinement.
+Only after actual moment pullback do we use the cutoff choice:
+$\chi(\varphi(\ell))\varphi(\ell)=\chi(u)u=u$.
+The ambient extension $\varphi$ need not be bounded, so
+$\chi(\varphi)\varphi=\varphi$ is not asserted on its entire
+Euclidean domain.
+This argument has not pulled $C$ through the nonlinear PL graph;
+only the affine projection pullback and projection formula are used.
+\end{proof}
+
+\subsection{The minimal finite trace theorem}
+
+\begin{theorem}[Finite trace on the scalar-curvature module]
+\label{r11p:minimal-trace-theorem}
+Let $q:Y\to X$ be finite dominant between normal integral separated
+varieties over $K$.  Every $\omega\in\mathscr M^k(Y^{\rm an})$ has a
+unique actual trace on $X^{\rm an}$ satisfying
+\[
+                 \int_X\operatorname{Tr}^{\mathscr M}_q(\omega)
+                                      \wedge\eta
+                          =\int_Y\omega\wedge q^*\eta
+\tag{MT9}\label{r11p:minimal-pairing}
+\]
+for all compact complementary actual tests.  It is local on the
+ordinary topology, respects actual relations, and retains the full
+native generic degree.  For a locally presented generator
+$\omega=u_0Du_1\cdots Du_k$, a local formula is
+\[
+ \boxed{\displaystyle
+ \operatorname{Tr}^{\mathscr M}_q(\omega)
+ = I_{p_X}\!\left(
+     \chi(t)t\,
+     \operatorname{Tr}^{\rm curv}_{q\times\operatorname{id}}
+       \left(D\max(u_0-t,0)\wedge\prod_{i=1}^kDu_i\right)
+                         \right).}
+\tag{MT10}\label{r11p:trace-formula}
+\]
+\end{theorem}
+
+\begin{proof}
+Shrink around an entire finite source fiber so that finitely many
+generator presentations are combined as in
+Lemma~\ref{r11p:pl-descent}, and $u_0$ is bounded there.  Choose
+$\chi=1$ near that whole range.  The curvature trace inside
+\eqref{r11p:trace-formula} exists by Lemma~\ref{r11p:pure-trace}.
+Its parameter-uniform assertion supplies a product-moment presentation,
+so multiplication by $\chi(t)t$ and application of $I_{p_X}$ are
+legitimate.
+
+Pair with an arbitrary compact actual test $\eta$.  First
+Lemma~\ref{r11p:product-integration}, then
+\eqref{r11p:pure-pairing} with the actual downstairs multiplier
+$\chi(t)t\,p_X^*\eta$, and finally
+Lemma~\ref{r11p:one-parameter}, give
+\[
+\begin{split}
+ \int_X\operatorname{Tr}^{\mathscr M}_q(\omega)\eta
+ &=\int_{X\times\mathbf G_m}\chi(t)t\,
+     \operatorname{Tr}^{\rm curv}_{q\times\operatorname{id}}
+        (DH\prod_iDu_i)\,p_X^*\eta\\
+ &=\int_{Y\times\mathbf G_m}\chi(t)t\,DH\prod_iDu_i\,
+                                          p_Y^*q^*\eta\\
+ &=\int_Yu_0\prod_iDu_i\,q^*\eta.
+\end{split}
+\]
+All these integrals have compact paired support.  The identity is
+proved for all actual tests, not merely for model or original-smooth
+tests.  Add generators.  If an expression represents zero as an
+actual source form, its trace has zero pairing with every test, and
+is zero by Proposition 4.11.  The same argument removes dependence
+on the cutoff, source moments, quotient moments, Galois closure, and
+all local choices.  It also glues the local answers in the ordinary
+topology and proves uniqueness.
+\end{proof}
+
+\paragraph*{Limits of this theorem.}
+It is enough for a PL scalar times a model Chern polynomial, since
+model line curvatures locally have PL potentials.  It does not assert
+a trace for an arbitrary source delta-form, and it does not assert
+an analytic proper pushforward for a positive-dimensional proper map.
+Normality of the target is retained throughout.  The Galois quotient
+and native calibration arguments do not replace the original field
+by an algebraic closure.  The theorem is independently derived above;
+its use should be labelled as this internal minimal trace, rather than
+as an externally published finite-trace result.
+
+\paragraph*{Primary references.}
+\begin{itemize}
+\item \url{https://arxiv.org/html/2112.10018v4}
+\item \url{https://arxiv.org/html/2107.12067v3}
+\end{itemize}
+
+
+\section{Finite orbit coordinates and a uniform parameter}
+
+\begin{lemma}[An elementary polyhedral estimate]\label{h22:hoffman}
+Let $C$ be a closed convex polyhedral cone in a finite-dimensional
+Euclidean space and let $L$ be linear. There is a constant $c$ such that
+\[
+ \dist(z,C\cap\ker L)\leq c\|Lz\|\qquad(z\in C).
+\]
+\end{lemma}
+\begin{proof}
+Write $C=\{z:Az\geq0\}$, allowing pairs of opposite inequalities to
+encode linear equalities. Let $y$ be the metric projection of $z$ onto
+$Q=C\cap\ker L$, put $u=z-y$, and let $I$ index the inequalities active
+at $y$. Thus $A_Iu\geq0$. The elementary normal-cone formula for a
+polyhedron gives
+\[
+ u\in N_Q(y)=\{-A_I^{\mathsf T}\lambda+L^{\mathsf T}\mu:
+                                  \lambda\geq0\}.
+\]
+This formula is the finite-dimensional polar-cone alternative for the
+linear inequalities $A_Iv\geq0$, $Lv=0$: a vector is in the normal cone
+exactly when its scalar product with each such tangent vector is
+nonpositive. Define the closed polyhedral cone
+\[
+ E_I=\{u:A_Iu\geq0\}\cap
+     \{-A_I^{\mathsf T}\lambda+L^{\mathsf T}\mu:\lambda\geq0\}.
+\]
+If $u\in E_I$ and $Lu=0$, its displayed representation gives
+\[
+ \|u\|^2=-\lambda^{\mathsf T}A_Iu+\mu^{\mathsf T}Lu\leq0,
+\]
+so $u=0$. Compactness of $E_I\cap\{\|u\|=1\}$ therefore gives
+$\|u\|\leq c_I\|Lu\|$ on $E_I$; an empty intersection causes no
+problem. There are finitely many possible active sets. Taking their
+maximum and using $Ly=0$ proves the assertion.
+\end{proof}
+
+\begin{lemma}[PL factorization through finite orbit coordinates]
+\label{h22:orbit-pl}
+Let a finite group $G$, of order $d$, act on $\R^s$ by coordinate
+permutations, where $s\geq1$. Put $N=d(s-1)+1$, choose distinct integers
+$a_1,\ldots,a_N$, and set
+\[
+ m_j=(1,a_j,\ldots,a_j^{s-1}).
+\]
+Let $J:\R^s\longrightarrow\R^{Nd}$ record, for each $j$, the ordered
+multiset $\{\langle m_j,gx\rangle:g\in G\}$. Then:
+\begin{enumerate}
+\item $J(x)=J(y)$ if and only if $x=gy$ for some $g\in G$.
+\item There is a constant $C$ such that
+\[
+ \min_{g\in G}\|x-gy\|\leq C\|J(x)-J(y)\|.
+\]
+\item For every $G$-invariant finite PL function
+$\varphi:\R^s\times\R\to\R$, where $G$ fixes the last coordinate,
+there is a finite PL function $\Phi:\R^{Nd}\times\R\to\R$ with
+\[
+                   \varphi(x,t)=\Phi(J(x),t).
+\]
+The same assertion holds for any finite collection of functions with
+one common map $J$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+If $J(x)=J(y)$, for each $j$ choose $g_j\in G$ with
+$\langle m_j,x-g_jy\rangle=0$. Some $g$ occurs at least $s$ times.
+The polynomial with coefficients $x-gy$ has degree at most $s-1$ and
+has these $s$ distinct roots. It is zero, so $x=gy$. The converse is
+immediate.
+
+The ordering hyperplanes give a finite fan of closed convex polyhedral
+cones $C_\alpha$ on each of which $J=A_\alpha$ is linear. For a pair
+of cones apply Lemma~\ref{h22:hoffman} to
+\[
+ C_\alpha\times C_\beta,
+ \qquad L(x,y)=A_\alpha x-A_\beta y.
+\]
+If $(x_0,y_0)$ is in its kernel, part~(1) gives $x_0=gy_0$ for
+some $g\in G$. Since the action is orthogonal,
+\[
+ \min_g\|x-gy\|\leq
+ \|x-x_0\|+\|y-y_0\|
+ \leq\sqrt2\|(x,y)-(x_0,y_0)\|.
+\]
+The finitely many cone-pair estimates prove part~(2).
+
+Write $A=J(\R^s)$ and define $\psi(J(x),t)=\varphi(x,t)$ on
+$A\times\R$. This is well defined. A finite PL function on a Euclidean
+space is globally Lipschitz, by the finite bound on its affine gradients
+and subdivision of a straight segment. Part~(2), applied after choosing
+the best orbit representative, shows that $\psi$ is globally Lipschitz
+for the induced Euclidean metric on $A\times\R$.
+
+The map $A_\alpha$ is injective on the span of $C_\alpha$: otherwise a
+nonzero kernel vector would give infinitely many points with the same
+$J$-value near a relative interior point, contradicting part~(1).
+Refine $C_\alpha\times\R$ by the affine cells of $\varphi$. Their
+images under $J\times\Id$ form a finite closed polyhedral cover of
+$A\times\R$ on which $\psi$ is affine. Values agree on overlaps.
+
+Here is an explicit ambient extension. Choose $L_0$ at least a
+Lipschitz constant for $\psi$ with respect to the $\ell^1$ norm and put
+\[
+ \Phi(w)=\inf_{a\in A\times\R}
+              \bigl(\psi(a)+L_0\|w-a\|_1\bigr).
+\tag{TD1}\label{h22:mcshane}
+\]
+The Lipschitz inequality shows that the infimum is finite and that
+$\Phi=\psi$ on $A\times\R$. It also shows that $\Phi$ is Lipschitz.
+On each of the finitely many polyhedra where $\psi$ is affine, \eqref{h22:mcshane} is
+the value of a finite linear program: introduce variables $r_i$ with
+$r_i\geq w_i-a_i$ and $r_i\geq a_i-w_i$ and minimize the affine
+function $\psi(a)+L_0\sum_i r_i$. Its epigraph is the projection of a
+polyhedron, hence a polyhedron. The value is everywhere finite and is
+therefore a finite convex PL function. Taking the minimum over the
+finite cover again gives a finite continuous PL function. This proves
+part~(3), including its whole-parameter-line assertion. The same $J$
+serves every member of a finite collection; their Lipschitz constants
+can be bounded by one common constant if desired.
+\end{proof}
+
+\begin{proposition}[Ordinary scalar descent with fixed parameter moments]
+\label{h22:scalar-descent}
+Let $K$ be complete, nontrivially valued and of characteristic zero.
+Let $q:Y\to X$ be a finite dominant morphism of normal integral
+separated algebraic $K$-varieties whose function-field extension is
+Galois with group $G$. A $G$-invariant PL scalar on $Y^{\an}$ descends
+locally in the ordinary topology to a PL scalar on $X^{\an}$.
+
+For the parameter version, fix $x\in X^{\an}$ and an ordinary
+neighborhood $U$ of $x$. Suppose finitely many invariant scalar
+functions on $q^{-1}U\times\mathbf G_m^{\an}$ admit presentations
+\[
+ F_i(y,z)=\varphi_i(\ell(y),t(z)),\qquad
+ \ell=(v(f_1),\ldots,v(f_s)),\quad t=v(z),
+\]
+where $f_j$ are a fixed tuple of analytic units on $q^{-1}U$ and
+$\varphi_i$ are finite PL functions on the whole Euclidean moment
+space. After shrinking $U$ around $x$, there are a fixed tuple of base
+analytic units $b$ and finite PL functions $\Psi_i$ such that
+\[
+                  F_i=q^*\Psi_i(v(b),t).
+\]
+The base tuple and shrinking are independent of every $t\in\R$.
+\end{proposition}
+\begin{proof}
+For the nonparameter assertion, choose disjoint relatively compact
+ordinary neighborhoods of the finitely many points of $q^{-1}(x)$,
+small enough for moment presentations of the prescribed scalars.
+Properness of $q^{\an}$ gives an ordinary neighborhood $U$ of $x$
+whose full inverse image lies in their union. The source pieces are
+clopen in $q^{-1}U$. Paste analytic units across these pieces, inserting
+constant units on the other pieces. Use one additional pasted constant
+unit with different valuations to distinguish the pieces. Nontriviality
+of the valuation supplies arbitrarily many such constants. By the
+initial shrinking the source moment images lie in finitely many
+disjoint compact boxes. A finite triangulation of a surrounding compact
+box, subordinate to these boxes and to the scalar affine cells,
+extends each of their finite PL functions. Extending beyond the
+surrounding box by coordinatewise clipping gives one finite PL
+presentation on the full source moment space.
+
+In the parameter case the stipulated common presentation is the
+starting point; no extension from arbitrary unbounded disjoint
+cylinders is needed. Enlarge the source tuple by its $G$-orbit.
+The group now acts by coordinate permutations. Average each ambient
+presentation over $G$. Invariance on the source shows that averaging
+does not change the represented scalar function, while it produces
+an invariant finite PL function on the whole Euclidean space.
+Apply Lemma~\ref{h22:orbit-pl}, with or without the parameter.
+
+It remains to express the coordinates of $J(\ell)$ in base moments.
+For the integer direction $m_j$ let $f^{m_j}$ be the corresponding
+analytic unit. Form the polynomial
+\[
+                    P_j(T)=\prod_{g\in G}(T-g(f^{m_j})).
+\]
+Its coefficients are invariant analytic functions and descend to $U$.
+One can check this last assertion directly on an affinoid domain
+inside an affine algebraic chart $\operatorname{Spec}R\subset X$.
+If $\operatorname{Spec}S=q^{-1}(\operatorname{Spec}R)$, normality
+gives $S^G=R$: an invariant element lies in $\operatorname{Frac}(R)$
+and is integral over $R$. For an affinoid domain with algebra $A$, its
+finite inverse image has algebra $S\otimes_R A$. The averaging
+idempotent on $S$ splits $S=R\oplus\ker(e)$. Tensoring the splitting
+with $A$ shows $(S\otimes_R A)^G=A$. This also proves descent on
+ordinary overlaps.
+
+At $x$, retain every nonzero coefficient of each $P_j$, including its
+constant coefficient, which is a unit. Shrink $U$ so that the retained
+coefficients are analytic units. If the constant coefficient is
+$a_0$, arrange $v(a_0)\leq B$. A coefficient vanishing at $x$ has,
+after further shrinking, valuation greater than $\max(B,0)+1$.
+Its point in the Newton diagram lies above the chord from
+$(0,v(a_0))$ to $(d,0)$ and cannot affect the lower hull. Thus all
+discarded coefficients may be omitted uniformly on $U$.
+
+The ordered root valuations of a fixed-degree polynomial are finite
+PL functions of the valuations of its retained coefficients: on each
+region specifying its lower-hull vertices, they are the negatives of
+the intervening slopes, with the appropriate multiplicities. At every
+point over the base these roots are the orbit values used to define
+$J$. Consequently $J(\ell)$ is a finite PL function of a single finite
+tuple $v(b)$ of base-unit valuations. These coefficients involve only
+the original source units and are independent of $t$. Composing this
+scalar PL expression with the extensions from
+Lemma~\ref{h22:orbit-pl} proves the assertion. Derivatives are taken
+only after this scalar construction; no nonlinear pullback of a
+general delta-form is used.
+\end{proof}
+
+\begin{remark}[Why the parameter hypothesis matters]\label{h22:parameter-scope}
+There is no assertion here that arbitrary finite PL functions given
+on disjoint unbounded polyhedra always admit a finite PL ambient
+extension. That assertion is false: on the two parallel lines
+$\{0\}\times\R$ and $\{1\}\times\R$, prescribe respectively the
+values $t$ and $0$. A finite PL function on $\R^2$ is globally
+Lipschitz, so cannot have these restrictions. The parameter statement
+above uses its specified common finite PL presentation. In the minimal
+trace application, first combine the base potentials $u_0,\ldots,u_k$
+on compact source moment boxes, and only then form
+$\max(u_0-t,0)$. This produces exactly the required common finite
+jointly PL presentation for the whole parameter line.
+\end{remark}
+
+\section{A compact-parameter alternative sufficient for the trace}
+
+\begin{proposition}[Uniform moments only on the necessary annulus]
+\label{h22:compact-parameter}
+In the formula for the minimal finite trace of
+$u_0Du_1\cdots Du_k$, the whole-line parameter assertion of
+Proposition~\ref{h22:scalar-descent} may be replaced by its assertion
+on one fixed compact interval $I$ containing the support of the cutoff
+in its interior. The resulting trace has exactly the same domain,
+all-actual pairing property, native degree and independence of
+presentations as the original formula.
+\end{proposition}
+\begin{proof}
+Shrink the base around the finite fiber so that the base potentials
+have common bounded moment boxes. Choose $\chi\in C_c^\infty(\R)$
+equal to one near the range of $u_0$, and choose a compact interval
+$I$ with $\Supp\chi\subset I^\circ$. All source boxes times $I$
+are compact. Finite PL functions on their finite polyhedral union
+can be extended by a finite triangulation of a larger compact box.
+The same is true for the compact image of the orbit-coordinate map:
+subdivide by its injective linearity cells and by the given scalar
+affine cells; invariant values agree on overlapping images. Thus the
+scalar-descent proof needs only compact finite polyhedral extension,
+followed by the same Newton-polynomial coefficient construction.
+
+Sorting and polarization give a fixed product-moment presentation
+$\Theta$ for the pure-curvature trace on
+$U\times\{t\in I^\circ\}$, after one common base shrinking.
+Its ambient Euclidean coefficient may be extended outside that
+interval by the finite PL potential extensions just constructed.
+Multiplication by $\chi(t)t$ kills every possible discrepancy near
+and outside the ends of $I$. Hence $\chi(t)t\Theta$ has a genuine
+global product-moment presentation with compact parameter support
+on $U\times\mathbf G_m^{\an}$. It is the zero extension of its
+restriction on the annulus. No extension of an arbitrary current or
+arbitrary delta-form is required.
+
+The product-integration argument applies to this compactly supported
+coefficient, and its pairing with any compact actual base test is
+computed entirely on that annulus. The one-parameter graph evaluation
+likewise sees only $\Supp\chi$. It therefore returns
+$u_0Du_1\cdots Du_k$ with exactly the same pairing formula as in
+Theorem~\ref{r11p:minimal-trace-theorem}. Detection by ordinary smooth tests, a subset of the actual
+tests already allowed, removes all choices and glues the resulting
+actual forms. Neither the final trace theorem nor any of its tests
+has been restricted.
+\end{proof}
+
+\section{The product skeleton and its topology}
+
+\begin{proposition}[Coordinate Gauss product]
+\label{h22:gauss-product}
+Let $V$ be a boundaryless ordinary analytic open of pure dimension
+$n$ in an algebraic $K$-analytic space, and let $b$ be a finite tuple
+of analytic units on $V$. Put $S=\Sigma(V,b)$. The relative Gauss
+section identifies
+\[
+ S\times\R\ \simeq\
+ \Sigma(V\times\mathbf G_m^{\an},(b,z)),\qquad
+              (y,t)\longmapsto\nu_t(y),
+\tag{TD2}\label{h22:gauss}
+\]
+as weighted pwl spaces with their specified linear function sheaves.
+The weight is the base weight times the standard weight on $\R$.
+The identification respects ordinary restriction and every additional
+base moment tuple.
+\end{proposition}
+\begin{proof}
+The skeleton criterion is the graded-transcendence-degree criterion
+of \cite[\S3.1]{MihLT}. A point above $y$ has degree $n+1$ in the
+moments $(b,z)$ if and only if $b$ has degree $n$ at $y$ and the
+graded reduction of $z$ is transcendental over
+$\widetilde{\mathcal H(y)}$. For this equivalence, once the base
+degree is $n$, the full graded residue field of $y$ is algebraic over
+the field generated by $b$. The last condition means precisely that
+every Laurent polynomial has the Gauss norm
+\[
+ \left|\sum_i a_i z^i\right|=\max_i |a_i(y)|e^{-it}.
+\]
+It thus specifies the unique point $\nu_t(y)$. This proves the
+bijection in \eqref{h22:gauss}, without extending $K$ or restricting the radius.
+
+Here are the topology details. On an affinoid base domain and a
+compact annulus in the parameter, analytic functions have uniformly
+convergent Laurent expansions. Their values on the Gauss section
+are limits of the finite maxima displayed above, uniformly on that
+domain times the parameter interval. They are continuous in $(y,t)$.
+The Gauss section is therefore continuous locally, hence globally.
+Its inverse is the continuous map $(p,v(z))$ on its image.
+Equivalently, its image over a compact base set and a compact interval
+is closed inside the corresponding compact relative annulus, since
+the displayed Gauss equalities are closed conditions and determine
+the image uniquely. This verifies, when needed, the properness claim
+used in the product-integration argument.
+
+The inverse map is pwl for the skeleton atlases: a pwl chart on a
+base skeleton is locally described by valuations of analytic units
+on an affinoid domain; their pullbacks, together with $v(z)$, give
+the same coordinate functions upstairs. Analytic-domain restrictions
+and their inverse images restrict the corresponding pwl charts.
+After taking finite polyhedral charts, this continuous bijective pwl
+map is a pwl isomorphism. Indeed subdivide until each piece is
+affine. Injectivity makes each linear part injective on the span of
+its piece, so its inverse is affine on the image. Properness on
+compact charts and a common image subdivision make these inverse
+pieces a locally finite pwl atlas. This is also the coordinate case
+of the atlas argument following (3.31) in \cite{MihLT}.
+
+On a top-dimensional base cell, compute its native weight by a
+generic toric projection that is locally finite flat, as in the
+definition of the skeleton weight. Its product with the identity
+on the parameter torus is finite flat of the same degree. Hence the
+weight on the product cell is the base weight times the standard
+parameter weight. All residue and field-degree factors are retained.
+The moment tuple is literally $(b,z)$, so the specified sheaf of
+linear functions is generated by the base linear functions and $t$.
+Adding base moments uses the same relative Gauss section and the
+same degrees; restriction does likewise. This proves all the claimed
+compatibilities.
+\end{proof}
+
+\section{How the two details enter the full-test trace argument}
+
+Let $q:Y\to X$ be finite dominant between the normal integral
+varieties of Section~\ref{r11p:minimal-trace}. The following records
+how scalar descent and the coordinate Gauss product enter the
+full-test trace formula.
+
+For PL scalars $u,v$, set $h=u-v$, $h_+=\max(h,0)$ and
+$h_-=\min(h,0)$. Coefficientwise multiplication on every witnessing
+skeleton gives
+\[
+ h_+Dh_-=h_-Dh_+=0.
+\]
+The actual Leibniz rule and separate closedness then give
+$Dh_+\wedge Dh_-=0$. Expanding proves the max/min curvature power
+identity. A finite sorting network and polarization descend the sum
+of conjugate pure curvature products. Proposition~\ref{h22:scalar-descent},
+or Proposition~\ref{h22:compact-parameter} in the cutoff application,
+provides its required scalar presentations. A normal Galois closure
+and division by its full generic degree handle the nongalois case.
+
+The native top-degree identity
+\[
+                  \int_Yq^*\tau=(\deg q)\int_X\tau
+\]
+follows from generic flatness, support avoidance of the nonflat
+algebraic locus, and the native skeletal finite-flat degree identity.
+It proves the pure-curvature pairing identity and faithfulness of
+finite pullback; it does not assert pushforward of arbitrary source
+forms.
+
+For a product-moment form $\beta=t_{(c,z)}^*\Gamma$ with compact
+parameter support, let $\pi$ denote the Euclidean coordinate
+projection and define
+\[
+                         I_p(\beta)=t_c^*(\pi_*\Gamma).
+\]
+Proposition~\ref{h22:gauss-product} identifies the relevant product
+skeletons. On each finite-fiber tropical chart $g$ and each compact
+polyhedral set $H$, keep the excluded set
+$E_H=g(\partial H)$. On the complement of $E_H$, the characterization
+(2.40) of \cite[Proposition~2.38]{MihLT} and the affine projection
+formula of \cite{MihTrop} identify the pushforward on the product
+skeleton with $t_c^*(\pi_*\Gamma)$. Varying $H$ detects the whole
+polyhedral current by \cite[Lemma~2.37]{MihLT}. The boundary exclusion
+must not be dropped.
+
+For an arbitrary compact actual test $\eta$, concatenate its moment
+tuple with $c$. The same identity then applies to the Euclidean
+coefficient of $\beta\wedge p^*\eta$. Original smooth partitions
+give compact local paired supports, and intrinsic skeletal integration
+gives
+\[
+                   \int_X I_p(\beta)\wedge\eta
+                    =\int_{X\times\mathbf G_m}\beta\wedge p^*\eta.
+\]
+In particular the test is not required to be an external product,
+smooth, or a polynomial in model curvatures.
+
+Finally $D\max(\varphi(x)-t,0)$ has graph faces, with projection
+weight one, and vertical faces over the bends of $\varphi$. Projection
+annihilates the latter pure carriers because it drops their dimension.
+This yields
+\[
+ \pi_*\bigl(\chi(t)tD\max(\varphi(x)-t,0)\bigr)
+                         =\chi(\varphi(x))\varphi(x).
+\]
+The affine projection formula permits multiplication by an arbitrary
+actual coefficient after moment refinement. Thus, for
+$\chi=1$ near the range of $u_0$,
+\[
+ \Tr_q^{\mathscr M}(u_0Du_1\cdots Du_k)
+  =I_{p_X}\left(\chi(t)t\,
+    \Tr_{q\times\Id}^{\mathrm{curv}}
+       \left(D\max(u_0-t,0)\prod_{i=1}^kDu_i\right)\right)
+\]
+satisfies the full complementary-actual-test pairing. Detection by
+ordinary smooth tests proves that actual source relations have zero
+trace, and removes the cutoff, Galois-closure, moment and local choices.
+This is exactly the minimal finite trace required for the supported
+perfect-complex construction.
+
+
+
+\section{Supported complexes, prescribed cycles, and global primitives}
+\label{r11p:supported-complex}
+
+\paragraph*{Construction and dependencies.}
+The supported-complex construction uses the actual model Chern forms of
+Theorem~\ref{h22c:chern} and the one-parameter minimal trace of
+Theorem~\ref{r11p:minimal-trace-theorem}. A smooth finite multisection
+is the algebraic ingredient; its role and proof are stated below.
+
+Let $K$ be complete discretely valued of characteristic zero, $R=K^\circ$,
+and let $\mathcal X/R$ be integral, flat and projective, with smooth
+integral projective generic fiber $X$ of dimension $n$.
+The special fiber may be singular or nonreduced.  Let
+\[
+       C=(0\longrightarrow C_N\longrightarrow\cdots
+                             \longrightarrow C_0\longrightarrow0)
+\]
+be a bounded complex of model vector bundles, exact on
+$\mathcal U=\mathcal X\setminus\mathcal Z$, with generic open
+$U=X\setminus Z$.  Assume $Z$ is pure of codimension $r$, $1\leq r\leq n$.
+The same construction is linear in finite rational combinations of
+such complexes.  Define
+\[
+ \Omega_C=\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)
+                              \in\mathcal B^{0,0,r}(X^{\rm an}),
+ \qquad
+ z_C=\operatorname{ch}^{Z}_r(C|_X)\cap[X]
+                              \in\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC1}\label{r11p:omega-and-cycle}
+\]
+The first expression is an actual form by Theorem~\ref{h22c:chern}.
+The second is a cycle with coefficients, because
+$\operatorname{CH}_{n-r}(Z)$ is the free group on the top-dimensional
+components of $Z$.  It is not merely an ambient Chow class.
+
+\subsection{The algebraic finite multisection actually needed}
+
+\begin{lemma}[A smooth finite flat multisection]
+\label{r11p:multisection}
+Let $F\to Y$ be a smooth projective surjection of smooth projective
+integral varieties over the infinite field $K$, of pure relative
+dimension $d$.  There is a smooth projective integral closed subscheme
+$T_0\subset F$ whose map to $Y$ is finite flat surjective.
+It may be taken as a connected component of a smooth complete intersection.
+If the source is geometrically integral and $\dim Y\geq1$, $T_0$
+can be chosen geometrically integral.
+\end{lemma}
+
+\begin{proof}
+Choose a very ample $H$ on $F$ and use $M=H^m$ with
+$m\geq\max(\dim Y,1)$.  For any positive-dimensional integral component
+$A$ of any intermediate fiber complete intersection, two sections
+$a_0,a_1$ of $H$ have nonconstant ratio on $A$.  Consequently
+\[
+                    a_0^m,a_0^{m-1}a_1,\ldots,a_1^m
+\]
+are linearly independent on $A$.  In the parameter space
+$V=H^0(F,M)$, the sections vanishing identically on $A$ therefore
+have codimension at least $m+1$.
+
+Fix a geometric fiber, which is pure Cohen--Macaulay of dimension $d$.
+Induct on $j\leq d$ to see that the bad $j$-tuples, whose common
+zero locus has dimension greater than $d-j$, have codimension at least
+$m+1$ in $V^j$.  Above a good prefix, a bad next section vanishes
+on one of the finitely many components just considered; above a bad
+prefix the inductive bound applies.  Upper semicontinuity of fiber
+dimension makes the universal bad locus closed.  Adding $\dim Y$
+still leaves its dimension strictly smaller than $\dim V^d$.
+Properness of $Y$ makes its projection to $V^d$ closed.  Thus a
+nonempty open of $d$-tuples has zero-dimensional fibers everywhere.
+The fibers are nonempty, because $d$ ample divisors meet every
+nonempty pure $d$-dimensional projective fiber.
+
+Smooth Bertini supplies a second nonempty open on which the total
+intersection is smooth of dimension $\dim Y$.  Geometric irreducibility
+Bertini supplies the stated refinement when relevant.  Their intersection
+has a $K$-rational point since $K$ is infinite.  The resulting proper
+quasi-finite morphism is finite and surjective.  Its source is
+Cohen--Macaulay and its target regular of the same dimension, so
+miracle flatness applies.  If necessary choose a connected component;
+it is integral, finite flat, and still surjective.
+\end{proof}
+
+The bound $m+1>\dim Y$, not just Bertini, is what rules out a
+positive-dimensional fiber anywhere on the base.  The primary
+ingredients are Stacks Tags 0D4I, 0FD6, 0G4C and 00R4.
+
+\begin{lemma}[Relative diagonalization with the original open fixed]
+\label{r11p:relative-lines}
+There is a projective morphism of integral flat models
+$f:\mathcal T\to\mathcal X$ with smooth projective generic fiber $T$,
+such that $f:T\to X$ is generically finite of degree $d$ and finite
+flat over the \emph{entire} prescribed open $U$.  There are model
+line maps $s_\alpha:L_\alpha\to M_\alpha$, isomorphisms above
+$\mathcal U$, and signs $\epsilon_\alpha$, satisfying
+\[
+                 [f^*C]
+                   =\sum_\alpha\epsilon_\alpha[L_\alpha\to M_\alpha]
+\tag{PC2}\label{r11p:supported-k-equality}
+\]
+in supported perfect $K_0$.  Their generic divisors
+$D_\alpha=\operatorname{div}(s_\alpha|_T)$ are supported in $f^{-1}Z$.
+\end{lemma}
+
+\begin{proof}
+On $\mathcal U$, exactness of a bounded vector-bundle complex is locally
+split.  Hence $S_i^\circ=\ker d_i=\operatorname{im}d_{i+1}$ are
+subbundles, with $S_0^\circ=C_0$ and $S_N^\circ=0$.  Close the graph
+of this section in the product of the corresponding Grassmann bundles.
+This gives a projective birational integral model
+$\mathcal Y\to\mathcal X$, an isomorphism over $\mathcal U$, with
+tautological subbundles $S_i\subset C_i$ and quotient bundles $Q_i$.
+Every asserted vanishing of a bundle map that holds on the dense open
+holds on this integral model.  The differential therefore factors as
+\[
+                            a_i:Q_i\longrightarrow S_{i-1},
+\]
+an equal-rank map that is an isomorphism over $\mathcal U$.
+
+There is an actual filtration by subcomplexes: its $p$th term has
+$C_i$ for $i>p$, $S_p$ in degree $p$, and zero below $p$.
+The successive two-term quotients are
+$Q_{p+1}\to S_p$ in degrees $p+1,p$.  They are exact on the given
+open, and yield
+\[
+                     [C]=\sum_i(-1)^{i-1}[Q_i\to S_{i-1}]
+\]
+in supported $K_0$, rather than only in ordinary $K_0$.
+
+Resolve the generic $\mathcal Y_K$ in characteristic zero, without
+changing its smooth open $U$, and extend the projective resolution by
+graph closure over $R$.  This uses resolution over the field $K$ only,
+not mixed-characteristic resolution of a model.  Call the resulting
+smooth projective generic fiber $Y$.
+
+Take the product of the full source flag bundles of \emph{all} $Q_i$
+over $Y$.  Before extending the transported target flags, choose a
+smooth finite flat multisection $T_0\to Y$ by
+Lemma~\ref{r11p:multisection}.  Take its flat model closure.  Over
+$\mathcal U$, the isomorphisms $a_i$ transport every source flag to a
+target flag.  Close the graph of these target flags, and resolve the
+resulting generic fiber without changing its smooth inverse image of
+$U$.  Its final generic fiber $T$ is therefore still exactly $T_0$
+over $U$.  In particular $T\to X$ is finite flat over all of $U$;
+the successive modifications have introduced no new excluded image.
+
+The maps $a_i$ preserve the two full flags.  Their associated graded
+maps are model line maps $L_\alpha\to M_\alpha$, isomorphisms on the
+original model open.  Termwise filtration of the two-term complexes
+gives \eqref{r11p:supported-k-equality}.  A nonzero map of line bundles
+on the integral model is injective and defines an effective Cartier
+divisor.  Its generic divisor can only lie above $Z$.  Empty generic
+divisors are allowed, for instance for a purely vertical line map.
+\end{proof}
+
+\paragraph*{Why ordinary flag sections alone do not replace this step.}
+The model-Chern construction in Section~\ref{h22c:section} descends forms by local sections because the
+upstairs Chern form satisfies its fiber-product cocycle identity.
+A primitive on a flag bundle need not satisfy that identity: pulling
+it to two sections only produces forms whose difference is $D$-closed.
+The present argument does not infer Green descent from Chern descent.
+Its use of a finite multisection is exactly where the minimal trace is
+subsequently applied.
+
+\subsection{The source cycle with all coefficients retained}
+
+For degree-one variables $l,m$ put
+\[
+ B_{r-1}(l,m)=\frac1{r!}\sum_{a=0}^{r-1}m^{r-1-a}l^a,
+ \qquad
+                  (m-l)B_{r-1}(l,m)=\frac{m^r-l^r}{r!}.
+\tag{PC3}\label{r11p:B-polynomial}
+\]
+For a nonzero line map $s:L\to M$ on $T$, with divisor $D$, the
+all-degree Cartier localized character formula is
+\[
+ \operatorname{ch}^{D}_r([L\to M])\cap[T]
+         =B_{r-1}(c_1L,c_1M)\cap[D].
+\tag{PC4}\label{r11p:cartier-localized}
+\]
+Here $L$ has degree one and $M$ degree zero.  To check the full
+polynomial, the complex resolves $M|_D$ and the normal bundle of
+$D\hookrightarrow T$ is $(M\otimes L^{-1})|_D$.  Localized
+Riemann--Roch for this regular immersion gives
+\[
+ e^m\,\frac{1-e^{-(m-l)}}{m-l}\cap[D]
+                         =\frac{e^m-e^l}{m-l}\cap[D].
+\]
+Its homogeneous degree $r-1$ is exactly \eqref{r11p:cartier-localized}.
+This is Fulton, \emph{Intersection Theory}, Corollary 18.1.2,
+specialized to a Cartier immersion; the proof uses deformation to the
+normal bundle.  A leading-term statement alone, such as Stacks 0FEH,
+would not justify this all-degree polynomial.
+
+Additivity on supported perfect $K_0$, compatibility with arbitrary
+base change, and the proper bivariant projection formula now give
+\[
+ \sum_\alpha\epsilon_\alpha
+    (f|_{D_\alpha})_*
+       \left(B_{r-1}(c_1L_\alpha,c_1M_\alpha)\cap[D_\alpha]\right)
+                              =d\,z_C
+       \quad\hbox{in }\operatorname{CH}_{n-r}(Z)_{\mathbb Q}.
+\tag{PC5}\label{r11p:source-equality}
+\]
+The underlying equality is
+$f_*(\operatorname{ch}^{f^{-1}Z}(f^*C)\cap[T])
+=\operatorname{ch}^Z(C)\cap f_*[T]$, and $f_*[T]=d[X]$.
+These are supported identities; one has not first forgotten the
+support and then attempted to recover coefficients.  Nilpotent
+thickenings can be used to make every indicated factorization through
+$Z$ scheme-theoretic.  Chow groups are unchanged by those thickenings.
+Since the target Chow group is top-dimensional on $Z$,
+\eqref{r11p:source-equality} is equality of actual cycle coefficients.
+See Stacks 0FB3 (base change), 0FBE (additivity), and 0FET (supported
+perfect $K_0$).
+
+\subsection{A proper degree calculation, only against top tests}
+
+\begin{lemma}[Chern degree against an arbitrary actual top test]
+\label{r11p:proper-chern-degree}
+Let $h:B\to A$ be proper between integral projective $K$-varieties,
+$\dim A=m$, $\dim B=m+t$.  Let $P$ be a homogeneous degree-$t$
+polynomial in first Chern forms of algebraic line bundles on $B$
+with PWS metrics.  For every compact actual top form $\eta$ on $A$,
+\[
+              \int_BP\wedge h^*\eta
+                =\int_{h_*(P_{\rm alg}\cap[B])}\eta.
+\tag{PC6}\label{r11p:proper-top-pairing}
+\]
+The statement is linear in cycles and includes their generic lengths.
+\end{lemma}
+
+\begin{proof}
+Write each algebraic line bundle as a quotient of two very ample ones.
+Choose PWS metrics on those factors so that their quotient is the
+given metric.  Expand $P$ by multilinearity.  For each resulting
+monomial, choose a section of each very ample factor successively,
+meeting the finitely many current integral cycle components properly.
+The infinite field $K$ supplies such choices.  Work componentwise
+when an intermediate divisor is reducible or nonreduced.
+
+At every step apply scalar strong Poincare--Lelong, Mihatsch
+Corollary 5.6, with the remaining closed curvature factors and the
+pullback of $\eta$ as test.  The latter is separately closed because
+$\eta$ is top-degree on $A$.  The Green correction is therefore zero.
+One is left with the pullback of $\eta$ integrated on a cycle of
+dimension $m$.
+
+A component mapping to a lower-dimensional subset of $A$ contributes
+zero, because the support of the actual top test avoids that subset.
+For a dominating component, remove a proper closed subset of $A$
+so that the component maps finite flat of its native generic degree.
+The top test again avoids the removed subset.  The native finite
+degree formula evaluates the integral with exactly that degree.
+This is precisely algebraic proper pushforward of the terminal
+intersection cycle, proving \eqref{r11p:proper-top-pairing}.
+\end{proof}
+
+This lemma is an all-actual-test scalar equality.  It does not define
+the proper pushforward of an arbitrary actual form.  It applies to
+each $D_\alpha\to Z_j$ in \eqref{r11p:source-equality}, with
+$m=n-r$ and $t=r-1$.  Components whose image has smaller dimension
+contribute zero by the same support argument.
+
+\subsection{The exact-open Green construction}
+
+\begin{theorem}[A strong Green pair for a supported model complex]
+\label{r11p:complex-green}
+Under the assumptions of \eqref{r11p:omega-and-cycle}, there is an
+actual form
+\[
+                       G_C\in\mathcal B^{r-1,r-1}(U^{\rm an})
+\]
+such that, for every compact actual
+$\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})$,
+\[
+                 \int_UG_C\wedge D\eta+\int_{z_C}\eta
+                                     =\int_X\Omega_C\wedge\eta.
+\tag{PC7}\label{r11p:complex-green-equation}
+\]
+The domain is the prescribed $U=X\setminus Z$, with no auxiliary
+closed subset removed.  If a tube is disjoint from the full model
+support $\mathcal Z$, the construction can be chosen zero on that tube.
+\end{theorem}
+
+\begin{proof}
+Use Lemma~\ref{r11p:relative-lines} and give the line bundles their
+model metrics.  Write
+\[
+ l_\alpha=c_1(\overline L_\alpha),\qquad
+ m_\alpha=c_1(\overline M_\alpha),\qquad
+ g_\alpha=-\log\|s_\alpha\|.
+\]
+On $f^{-1}U$ each $g_\alpha$ is a PL scalar.  Put
+\[
+       G_T=\sum_\alpha\epsilon_\alpha
+                    g_\alpha B_{r-1}(l_\alpha,m_\alpha),
+       \qquad
+       G_C=\frac1d\operatorname{Tr}^{\mathscr M}_{f|_{f^{-1}U}}(G_T).
+\tag{PC8}\label{r11p:complex-green-formula}
+\]
+Every summand lies in the scalar-curvature module of
+Theorem~\ref{r11p:minimal-trace-theorem}.  Source and target of the
+finite restriction are smooth, hence normal; all its assumptions hold.
+The resulting form is actual on the full ordinary open $U$.
+
+Strict model Chern additivity and functoriality from Theorem~\ref{h22c:chern} convert
+\eqref{r11p:supported-k-equality}, after forgetting support, into
+the actual identity on $T$
+\[
+ \sum_\alpha\epsilon_\alpha
+             (m_\alpha-l_\alpha)B_{r-1}(l_\alpha,m_\alpha)
+                                      =f^*\Omega_C.
+\tag{PC9}\label{r11p:actual-curvature-equality}
+\]
+No model-to-cycle Bott--Chern comparison is being used here.
+
+Apply scalar strong Poincare--Lelong to each $s_\alpha$ with test
+$B_{r-1}(l_\alpha,m_\alpha)f^*\eta$.  These tests are compact because
+$f$ is proper.  Curvature factors are separately closed.  Summation
+and \eqref{r11p:actual-curvature-equality} yield
+\[
+ \int_{T\setminus f^{-1}Z}G_Tf^*D\eta
+ +\sum_\alpha\epsilon_\alpha
+       \int_{[D_\alpha]}B_{r-1}(l_\alpha,m_\alpha)f^*\eta
+                         =\int_Tf^*(\Omega_C\eta).
+\tag{PC10}\label{r11p:upstairs-complex-PL}
+\]
+For the first term, extending each off-divisor integral to the
+displayed common open changes nothing: $D\eta$ has bidegree
+$(n-r+1,n-r+1)$, so its closed support avoids $Z$ by
+Mihatsch Corollary 4.9.  Properness puts its pulled-back support
+inside the finite locus $f^{-1}U$.  The minimal trace pairing identifies
+this first term with $d\int_UG_CD\eta$.
+
+The form $\Omega_C\eta$ is top-degree on $X$, so its support also
+avoids $Z$.  On that support $f$ is finite flat of degree $d$;
+the last term is $d\int_X\Omega_C\eta$ by the native degree formula.
+The middle term equals $d\int_{z_C}\eta$ by
+Lemma~\ref{r11p:proper-chern-degree} and
+\eqref{r11p:source-equality}.  Divide by $d$.
+
+All tests defining the off-$Z$ integration functional of $G_C$
+have bidegree $(n-r+1,n-r+1)$ and therefore support away from $Z$.
+Thus its canonical extension and the all-actual meaning of
+\eqref{r11p:complex-green-equation} require no integrability
+assumption near $Z$ beyond those already encoded by support avoidance.
+
+Finally, above the model open $\mathcal U$ each $s_\alpha$ is a model
+isomorphism of line bundles, so its model norm is one and $g_\alpha=0$.
+The local trace then vanishes over every tube avoiding $\mathcal Z$.
+This concerns the full model support, including possible vertical
+cohomology, not just the closure of its generic support.
+\end{proof}
+
+\paragraph*{A support qualification that must not be omitted.}
+For an arbitrary complex, coefficients of $z_C$ can cancel even when
+its cohomology support is larger.  The theorem produces a form on
+$X\setminus Z$, and does not automatically extend it through those
+canceled components.  To obtain the exact final support of a
+\emph{prescribed cycle}, choose the complexes component by component
+as in the next corollary. The componentwise construction avoids
+attempting to extend a Green form across canceled components.
+
+\subsection{Arbitrary prescribed cycles}
+
+\begin{corollary}[Every prescribed cycle has a strong model-curvature pair]
+\label{r11p:any-cycle-pair}
+Let $X/K$ be smooth geometrically integral projective and let
+$Z=\sum_j a_j[Z_j]$ be a rational codimension-$r$ cycle, written with
+distinct integral components and nonzero coefficients.  After choosing
+projective model data, there are an actual model Chern form $\Omega_Z$
+and an actual
+\[
+                  G_Z\in\mathcal B^{r-1,r-1}
+                           (X^{\rm an}\setminus|Z|^{\rm an})
+\]
+satisfying $D[G_Z]_\delta+\delta_Z=[\Omega_Z]_\delta$ on all compact
+actual tests.  No generic cycle representative is moved.
+\end{corollary}
+
+\begin{proof}
+On the regular projective generic fiber, $\mathcal O_{Z_j}$ has a
+finite globally locally free resolution.  Its degree-$r$ supported
+character is $[Z_j]$, including the leading coefficient; this is
+Stacks 0FEW, or the leading-term part of localized Riemann--Roch.
+It is not necessary for $Z_j$ to be a regular immersion.
+
+These finitely many generic bundle complexes extend to a common
+projective model after a vertical modification.  For completeness,
+extend each bundle coherently, twist to obtain finitely many generators,
+and close the graph of its generic quotient in a Grassmann bundle.
+Its tautological quotient is a model vector bundle with the original
+generic fiber.  Use the product of the finitely many Grassmann bundles.
+Every generic differential extends after multiplying by a common
+power of a uniformizer; the resulting successive products are zero
+because they vanish on the dense generic fiber.  The scaled generic
+complex is chain-isomorphic to the original one by degreewise scalar
+rescaling.  Its full model cohomology support has generic support
+exactly $Z_j$.
+
+Apply Theorem~\ref{r11p:complex-green} to each complex and sum with
+coefficients $a_j$.  The union of the removed sets is exactly
+$|Z|$, because the prescribed cycle was first written with distinct
+nonzero components.  The zero cycle is handled by the zero form.
+\end{proof}
+
+\subsection{Global primitives for generic Chow-zero model characters}
+
+\begin{corollary}[Generically acyclic complexes]
+\label{r11p:acyclic}
+If a bounded model complex is exact on all of $X$, then
+$\sum_i(-1)^i\operatorname{ch}_r(\overline C_i)$ has a global actual
+$D$-primitive on $X^{\rm an}$.
+\end{corollary}
+
+\begin{proof}
+The same relative construction is made with generic open $U=X$;
+its final generic multisection is finite flat over all of $X$ and all
+generic line divisors are empty.  Formula \eqref{r11p:complex-green-formula}
+is global, and \eqref{r11p:complex-green-equation} has zero residue.
+Actual current injectivity identifies its $D$ with the displayed
+actual curvature.
+\end{proof}
+
+\begin{proposition}[A generic $K_0$ relation has an actual primitive]
+\label{r11p:generic-k-primitive}
+Let $\xi\in K_0(\mathcal X)_{\mathbb Q}$.  If $\xi|_X=0$ in
+$K_0(X)_{\mathbb Q}$, then every positive-degree actual
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+A relation in $K_0(X)$ is a finite combination of short exact sequence
+relations and differences of isomorphic vector bundles.  Extend the
+finitely many bundles to a common vertical model refinement, which
+does not change any original model metric on the generic fiber.
+For a generic exact sequence $0\to A\to B\to C\to0$, close the graph
+of the subbundle $A\subset B$ in a Grassmann bundle of the already
+chosen model extension of $B$.  This produces a model exact sequence
+\[
+                         0\to S\to B\to Q\to0
+\]
+with $S|_X\simeq A$ and $Q|_X\simeq C$.  Strict model Whitney gives
+\[
+      \operatorname{ch}_r(B-A-C)
+       =\operatorname{ch}_r(S-A)+\operatorname{ch}_r(Q-C).
+\]
+After clearing uniformizer powers, the two generic isomorphisms are
+model maps giving two-term generically acyclic complexes.  Their
+global primitives exist by Corollary~\ref{r11p:acyclic}.
+The same handles the isomorphic-bundle differences in the chosen
+finite presentation of the $K_0$ relation.  Add the primitives and
+divide by the cleared integer denominator.
+\end{proof}
+
+\begin{proposition}[Only the generic degree-$r$ Chow class matters]
+\label{r11p:generic-chow-primitive}
+If $\xi\in K_0(\mathcal X)_{\mathbb Q}$ satisfies
+$\operatorname{ch}_r(\xi|_X)=0$ in
+$\operatorname{CH}^r(X)_{\mathbb Q}$, then its actual model
+$\operatorname{ch}_r(\xi)$ has a global actual $D$-primitive.
+\end{proposition}
+
+\begin{proof}
+Let $\psi^2$ be the Adams operation on model vector-bundle $K_0$ and set
+\[
+ e_r(T)=\prod_{\substack{0\leq j\leq n\\j\ne r}}
+                  \frac{T-2^j}{2^r-2^j},
+ \qquad
+                            \xi_r=e_r(\psi^2)\xi.
+\]
+On the smooth projective generic fiber the rational Chern character
+$K_0(X)_{\mathbb Q}\simeq\bigoplus_{j=0}^n
+\operatorname{CH}^j(X)_{\mathbb Q}$ is an isomorphism, and
+$\operatorname{ch}_j(\psi^2\zeta)=2^j\operatorname{ch}_j(\zeta)$.
+All generic Chern components of $\xi_r$ are zero, so $\xi_r|_X=0$.
+
+The same Adams identity is strict for actual model Chern forms:
+it is a universal symmetric-root identity, hence follows from
+the strict operational identities and flag-section descent in
+Section~\ref{h22c:section}.
+Therefore $\operatorname{ch}_r(\xi_r)=\operatorname{ch}_r(\xi)$
+as actual forms.  Apply Proposition~\ref{r11p:generic-k-primitive}
+to $\xi_r$.
+\end{proof}
+
+
+
+\section{The supported-complex construction over a nongeometrically integral base}
+\label{r12i:section}
+
+\begin{lemma}[Native integral scope of the supported-complex construction]
+\label{r12i:integral-PC}
+Keep the original finite extension $K/\mathbf Q_p$ and its absolute
+value.  The supported-complex theorem of Section~\ref{r11p:supported-complex}, the exact-support
+Green-pair construction for every prescribed rational cycle, and
+the generic-Chow-zero global primitive construction apply to every
+smooth integral projective $K$-variety $X$.  Geometric integrality
+over $K$ is not required.  Every actual form, test and finite-trace
+operation in these statements is in the original $K$-analytic theory.
+\end{lemma}
+
+\begin{proof}
+The supported-complex section and its main theorem already assume
+only that $X$ is smooth and integral.  We check the one potentially
+sensitive ingredient and then the passage to an arbitrary prescribed
+cycle, whose preceding corollary was stated with the stronger hypothesis.
+
+Let $F\to Y$ be the smooth projective flag fibration appearing after
+the kernel-Grassmann modification and its characteristic-zero generic
+resolution.  Both $F$ and $Y$ are smooth integral $K$-varieties.
+Put $d=\dim F-\dim Y$.  If $d=0$, the map is already finite etale
+and its integral source can be used.  If $d>0$, the uniform fiber
+dimension argument in Lemma~\ref{r11p:multisection} gives a nonempty open of tuples of
+high-degree very ample sections whose common zero locus has finite
+nonempty fibers over every point of $Y$.  Its dimension estimate is
+made on every geometric fiber and does not require the total space
+or the base to be geometrically integral.
+
+Intersect this parameter open with the smooth complete-intersection
+Bertini open.  The latter requires smoothness of the source and a
+linear system giving an immersion, not geometric irreducibility;
+these are exactly the hypotheses of Stacks Lemma 33.47.3,
+Tag~\texttt{0FD6}.  Successive restrictions of the very ample linear
+system still give immersions.  Equivalently, after algebraic base
+change the smoothness conditions are imposed simultaneously on the
+finitely many geometric components; the resulting nonempty open is
+defined over $K$.  Since $K$ is infinite it has a $K$-rational tuple.
+No analytic scalar extension is involved in this algebraic check.
+
+The resulting complete intersection $T_0^{\rm all}$ is smooth,
+projective, and of pure dimension $\dim Y$.  Its map to $Y$ is
+proper with finite nonempty fibers, hence finite surjective.
+Miracle flatness applies, since its source is Cohen--Macaulay and
+$Y$ is regular; see Stacks Tag~\texttt{00R4}.
+Every connected component of a regular scheme is integral, because
+its irreducible components are disjoint.  Choose any nonempty
+connected component $T_0$.  It is open and closed in
+$T_0^{\rm all}$, so its finite map is still flat.  Its image is both
+open and closed in integral $Y$, and therefore all of $Y$.
+Consequently $T_0\to Y$ is smooth-source, integral, finite flat and
+surjective, with its own native positive degree.
+
+Choosing this component does not spoil the supported $K_0$ identity:
+the identity is pulled back to the chosen component, rather than
+being an equality that would require summing the classes of all
+components of a fixed intersection cycle.  Subsequent target-flag
+graph closures and generic resolutions are birational on this
+integral source and preserve its full prescribed finite open.
+The leading supported-character identity then uses
+$f_*[T]=d[X]$ with this actual function-field degree $d$.
+Normality needed by the minimal trace follows from smoothness of
+the generic source and target.  None of these statements requires
+geometric integrality.
+
+For a prescribed cycle $Z=\sum_j a_j[Z_j]$ on this $X$, resolve each
+$\mathcal O_{Z_j}$ by finitely many generic vector bundles.  Such
+resolutions use regularity and the projective resolution property,
+which hold for smooth integral $X$ over $K$.  Extend the bundles by
+the same finite Grassmann-graph construction to a projective flat
+model, and extend the differentials after uniformizer rescaling.
+Each model complex has generic support exactly $Z_j$.  The preceding
+supported-complex theorem applies component by component.  Summing
+with the nonzero coefficients gives a Green pair on exactly
+$X^{\rm an}\setminus|Z|^{\rm an}$, with the original cycle and all
+actual tests retained.  This proves the stated extension of the
+exact-support corollary.
+
+The global primitive proof uses the same construction with generic
+open $U=X$.  Generic $K_0$ relations, Grassmann subbundle graphs,
+and rational Adams projectors require smooth integral projectivity,
+not geometric integrality.  Their primitives consequently retain
+the original global scalar-curvature line sums and finite-flat maps
+over $K$, as in Section~\ref{r11p:supported-complex}.
+\end{proof}
+
+\begin{remark}[Finite constant extensions are treated as native schemes]\label{h22:native-constant-extensions}
+Let $K'/K$ be finite and let $Y/K'$ be smooth integral projective.
+The composite $Y\to\operatorname{Spec}K$ is smooth because
+$K'/K$ is separable, and it is still integral and projective.
+A projective flat $R'$-model of $Y$ is projective and flat over $R$.
+Lemma~\ref{r12i:integral-PC} can therefore be run directly on this
+$R$-model, producing $K$-actual forms and testing against arbitrary
+$K$-actual tests.  This is not an inference from a formula tested
+only over $K'$.
+
+The special fiber over $R$ keeps its ramification thickening, and
+the degree of a finite generic map is its full degree as a
+$K$-morphism.  Thus no comparison of native skeleton measures over
+different ground fields is required for this scope clarification.
+The present lemma makes this native treatment explicit for the
+exact-support corollary.
+\end{remark}
+
+\begin{thebibliography}{99}
+\bibitem{MihLT} A. Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces},
+arXiv:2112.10018v4, 7 September 2024.
+\url{https://arxiv.org/abs/2112.10018v4}.
+\bibitem{MihTrop} A. Mihatsch, \emph{On Tropical Intersection Theory},
+arXiv:2107.12067v3, 28 August 2022.
+\url{https://arxiv.org/abs/2107.12067v3}.
+\bibitem{CLD} A. Chambert-Loir and A. Ducros,
+\emph{Formes diff\'erentielles r\'eelles et courants sur les espaces de Berkovich},
+arXiv:1204.6277v2. Section and proposition numbers in this paper refer
+to the PDF version. \url{https://arxiv.org/pdf/1204.6277v2}.
+\bibitem{GM} W. Gubler and F. Martin, \emph{On Zhang's semipositive metrics},
+Documenta Mathematica 24 (2019), 331--372; arXiv:1608.08030v3.
+\url{https://arxiv.org/abs/1608.08030v3}.
+\bibitem{Fulton} W. Fulton, \emph{Intersection Theory}, second edition,
+Springer, 1998, Corollary 18.1.2.
+\bibitem{Stacks} The Stacks Project, Tags 0D4I, 0FD6, 0G4C, 00R4,
+0FB3, 0FBE, 0FET, 0FEW, 0FEY and 0FEI; accessed 23 November 2026.
+\url{https://stacks.math.columbia.edu/}.
+\bibitem{R10R12} OpenMath Strong Green project,
+\emph{Companion foundations, R10--R12}, frozen edition v0.5.1.
+\url{https://openmath-atlas.org/projects/strong-green/editions/v0.5.1/}.
+\end{thebibliography}
+\end{document}

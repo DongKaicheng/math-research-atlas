@@ -1,0 +1,256 @@
+% Round 20. GC20. family20. Candidate pending independent review and DP20 activation.
+\section{Finite specialization of geometric Chow certificates and surface moduli}
+\label{r20gc:section}
+
+\paragraph{Scope and historical bridge.}
+The R9 source
+\texttt{root\_geometric\_chow\_splitting\_applications.tex}
+already recorded the finite-certificate method and the B\"ulles
+application as consequences of its product candidate.  We verify
+the method with the present DP20 and frozen CV16/VT17 interfaces.
+The statement below permits the auxiliary curves and surfaces to
+vary during specialization; they need not be defined over the
+original arithmetic field.  This is a consequence of an actual
+finite rational-equivalence certificate, not a general motivic
+generation assertion or a priority claim.
+
+\subsection{Specializing the correspondences and their relation together}
+
+\begin{lemma}[Finite extension carrying a replacement Chow certificate]
+\label{r20gc:finite-certificate}
+Let $k$ be a characteristic-zero field, let $X/k$ be smooth,
+projective and geometrically integral, and let $\Omega/k$ be a
+field extension.  Suppose there are finitely many smooth projective
+geometrically integral curves and surfaces $S_\alpha/\Omega$,
+finite products $V_i$ of these varieties, and rational Chow
+correspondences of opposite degree shifts satisfying
+\[
+ u_i:X_\Omega\dashrightarrow V_i,\qquad
+ v_i:V_i\dashrightarrow X_\Omega,\qquad
+ \sum_i v_i\circ u_i=[\Delta_{X_\Omega}]
+       \quad\text{in }\operatorname{CH}^{\dim X}
+                    (X_\Omega\times X_\Omega)_{\mathbf Q}.
+ \tag{GC20.1}\label{r20gc:geometric-certificate}
+\]
+A product with no factors is permitted and means a point.
+Then there is a finite extension $E/k$, smooth projective
+geometrically integral curves and surfaces $S_{\alpha,E}'/E$,
+the corresponding products $V_{i,E}'$, and rational Chow
+correspondences of the same degree shifts with
+\[
+ \sum_i v_{i,E}'\circ u_{i,E}'=[\Delta_{X_E}].
+ \tag{GC20.2}\label{r20gc:finite-identity}
+\]
+The new auxiliary varieties and cycles need not be base changes
+of varieties and cycles over $k$, or of the original ones over
+$\Omega$.
+\end{lemma}
+
+\begin{proof}
+\emph{Step 1: retain finite cycle and relation data.}
+Choose finite rational cycle representatives for every $u_i,v_i$.
+Clear their denominators.  The equality
+\eqref{r20gc:geometric-certificate} means that the difference
+of the composite cycles and the diagonal is a finite sum of
+principal-divisor pushforwards on integral subvarieties.
+The equations of the auxiliary varieties, their projective
+embeddings, all cycle representatives, all rational functions
+certifying the relation, and the finite data for the indicated
+products descend to one field $L\subset\Omega$ finitely
+generated over $k$.  Enlarge $L$ when necessary to retain
+the rational-equivalence certificate itself.  Thus the identity
+holds in rational Chow over $L$, not only after returning to
+$\Omega$.
+
+\emph{Step 2: spread the smooth projective geometry.}
+Choose an integral finite-type $k$-scheme $B$ with function
+field $L$.  Since $k$ has characteristic zero, shrink $B$ to
+a nonempty smooth open.  Spread each $S_\alpha$ and its
+projective embedding to a projective family
+$\mathcal S_\alpha\to B$.  After a further shrinking, each
+family is smooth with geometrically integral fibers of its
+original dimension one or two.  Smoothness and geometric
+integrality are open for these projective finite-presentation
+families.  Form the indicated relative products $\mathcal V_i$.
+The family of $X$ remains the constant family $X\times_k B$.
+
+\emph{Step 3: retain the equality over an open base.}
+Take closures of the finitely many cycle representatives in
+the appropriate relative products.  Shrink so that their
+dimensions and codimensions are constant and the cycle families
+are flat over $B$.  Relative correspondence composition is
+defined by the smooth projections, intersection in the smooth
+total product, and proper projection to the two outer factors.
+On the generic fiber it gives the composition in
+\eqref{r20gc:geometric-certificate}.  The equality holds over
+some nonempty open of $B$: explicitly spread the finitely many
+principal-divisor data and remove the closed images of any
+remaining vertical cycle components.  Equivalently, Chow
+groups over $L$ are the direct limit over these open bases;
+this follows directly by spreading cycles and the finite
+rational-equivalence relations.  Replace $B$ by that open.
+We have an actual identity of relative correspondence classes
+on $X\times_k X\times_k B$.
+
+\emph{Step 4: specialize at a finite closed point.}
+Choose a closed point $b\in B$.  Its residue field $E=\kappa(b)$
+is finite over $k$.  Because $B$ is smooth, $b\hookrightarrow B$
+is a regular immersion.  Every ambient relative product is
+smooth over $B$, so the base-change squares are Tor-independent
+and the fiber inclusions are regular immersions.  Their refined
+Gysin pullbacks commute with the proper projections, smooth
+pullbacks and diagonal Gysin maps defining composition.
+Consequently, for the specialized correspondences,
+\[
+ i_b^!(v_i\circ u_i)=v_{i,b}\circ u_{i,b},\qquad
+ i_b^![\Delta_{X\times B/B}]=[\Delta_{X_E}].
+ \tag{GC20.3}\label{r20gc:composition-specializes}
+\]
+The compatibility is the bivariant refined-intersection
+formalism; no cancellation of an ambient Gysin push is used.
+Apply it to the equality from Step 3.  This yields
+\eqref{r20gc:finite-identity}, with
+$S_{\alpha,E}'=\mathcal S_{\alpha,b}$ and the corresponding
+products.  The fibers have the required smoothness,
+projectivity and geometric integrality by Step 2.
+\end{proof}
+
+The refined-Gysin compatibilities used here are, for example,
+Stacks Project, Section 42.59, particularly Lemmas 42.59.1,
+42.59.6 and 42.59.7, together with the proper-push compatibility
+in Definition 42.33.1:
+\url{https://stacks.math.columbia.edu/tag/0FEZ} and
+\url{https://stacks.math.columbia.edu/tag/0B75}.
+This proof specializes both cycles and their relation.  It is
+not a claim that each original geometric cycle descends to a
+finite extension.
+
+\subsection{The precise local and global transfer}
+
+\begin{theorem}[Geometrically supplied surface-product Chow envelope]
+\label{r20gc:local}
+Fix a finite valued $K/\mathbf Q_p$ and its absolute value.
+Let $X/K$ be smooth projective geometrically integral and assume
+that \eqref{r20gc:geometric-certificate} is supplied over some
+field extension $\Omega/K$.  Let $T/K$ be smooth projective
+geometrically integral with potentially good projective
+reduction, permitting a point.  Then every specified geometrically
+homologically trivial rational cycle on $T\times X$ has strong
+G in every codimension $1\leq r\leq\dim(T\times X)$.
+The conclusion holds after every finite valued extension of
+$K$ and for all new homological cycles over it.
+\end{theorem}
+
+\begin{proof}
+Apply Lemma~\ref{r20gc:finite-certificate} to obtain the actual
+diagonal identity over one finite $E/K$.  Tensor it with
+$\Delta_{T_E}$.  Each new intermediate variety is
+$T_E\times V_{i,E}'$, on which DP20 gives zero obstruction
+for the full geometric homological Chow group in every
+degree; for an empty product use the frozen potentially-good
+case.  By the frozen CV16 correspondence stability, the
+actual diagonal identity sends every geometric homological
+class on $T_E\times X_E$ into its obstruction kernel.
+VT17 gives strong G for each specified cycle there.
+The all-degree finite actual trace descends to $K$ with
+the complete degree $[E:K]$ and the original absolute value.
+
+For a finite $L/K$ and an arbitrary new homological cycle
+over $L$, form a finite compositum $EL$ in an algebraic
+closure.  Base change the actual certificate to $EL$,
+apply DP20 to the new correspondence images of that cycle,
+and repeat the preceding kernel argument.  The finite
+actual trace descends with the complete degree $[EL:L]$.
+Neither the new cycle nor the intermediate new cycles are
+assumed to descend to the original field.  The Green form
+comes from VT17 for the specified support, and its test
+space is the full ordinary-actual compact test space.
+No arbitrary proper actual-form pushforward is used.
+\end{proof}
+
+\begin{theorem}[Complex Chow certificates for arithmetic varieties]
+\label{r20gc:global}
+Let $F$ be a number field and $X/F$ smooth projective
+geometrically integral.  Fix one embedding $F\hookrightarrow
+\mathbf C$.  Suppose $X_{\mathbf C}$ has an actual rational
+Chow retraction as in \eqref{r20gc:geometric-certificate}
+through products of complex curves and surfaces.
+Then $X$ has full local G at every finite place, including
+every finite local extension and all new homological cycles,
+and has the full PH16 height domain in all complementary
+degrees over $F$ and every finite number-field extension.
+The same holds for $T\times X$ if $T/F$ has potentially
+good projective reduction at every finite place.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{r20gc:finite-certificate}, with $k=F$ and
+$\Omega=\mathbf C$, gives a finite $E/F$ and an actual
+certificate through products of curves and surfaces over
+$E$.  At any finite place $v$ of $F$, choose $w\mid v$
+and use this certificate over $E_w$.  DP20 and CV16 kill
+the full obstruction there; finite actual trace descends
+by $[E_w:F_v]$.  At any finite extension of $F_v$, pass
+to a finite compositum with $E_w$ and reapply the same
+certificate to the new cycle.  This proves all the claimed
+local quantifiers.  PH16 and GA17 now give the complete
+complementary homological Chow groups as the global height
+domain.  The argument over any finite extension of $F$
+uses the same finite-compositum construction.
+\end{proof}
+
+\subsection{The exact B\"ulles application}
+
+\begin{corollary}[Specified smooth projective surface moduli spaces]
+\label{r20gc:moduli}
+Let $M/F$ be smooth projective geometrically integral over a
+number field.  Suppose that for one complex embedding it is
+isomorphic to a moduli space in B\"ulles's Theorem 0.1:
+a smooth projective moduli space of Gieseker-stable twisted
+sheaves, or of stable objects for a generic stability condition,
+on a complex projective K3 surface or abelian surface.
+The complex surface and stability data need not have been
+given over $F$.  Then $M$ has the full conclusions of
+Theorem~\ref{r20gc:global}.  Finite products of such $M$,
+surface point Hilbert schemes and curve/surface products
+have the same conclusion; an everywhere potentially-good
+projective coefficient may also be included.
+\end{corollary}
+
+\begin{proof}
+The primary theorem supplies actual rational Chow
+correspondences exhibiting
+\[
+ h(M_{\mathbf C})\mid
+       \bigoplus_i h(S_{\mathbf C}^{k_i})(n_i).
+ \tag{GC20.4}\label{r20gc:bulles}
+\]
+This means the inclusion and retraction compose to the
+diagonal in rational Chow, with the indicated degree
+shifts.  Finite-dimensionality of the K3 motive is not
+a hypothesis; it is a separate corollary in that paper.
+Apply Theorem~\ref{r20gc:global}.  For products, tensor the
+actual diagonal certificates.  Their intermediate varieties
+remain finite products of curves and surfaces.  For point
+Hilbert schemes the native certificate is HM20's checked
+de Cataldo--Migliorini identity.  This proves every assertion.
+\end{proof}
+
+The primary source read is T.-H. B\"ulles,
+\emph{Motives of moduli spaces on K3 surfaces and of special
+cubic fourfolds}, Theorem 0.1 and its proof, especially the
+actual diagonal equality in Section 2.1:
+\url{https://arxiv.org/pdf/1806.08284}.
+The theorem is used with its complex hypotheses, followed
+by the separately proved specialization; it is not silently
+quoted as a theorem over an arbitrary $p$-adic field.
+
+\paragraph{Limits.}
+The geometric input must be an actual Chow retraction.
+A numerical, cohomological, motivated, or Grothendieck-ring
+identity is insufficient.  This does not include all
+hyperkahler deformation types, all moduli spaces, or all
+varieties.  No all-prime absolute local-class vanishing,
+all-prime local-link comparison, positivity or nondegeneracy
+of the height is concluded.  The general conjecture G and
+arbitrary-variety full unconditional heights remain open.

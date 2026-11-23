@@ -1,0 +1,488 @@
+% Round 16. Author: model_obstruction. Independent review required.
+% A new criterion relative to the frozen archive, not a priority claim.
+\section{Finite symmetries of the canonical numerical residual}
+\label{r16sym:section}
+
+The residual of Round 15 is canonical enough to carry the symmetries
+of a supplied model.  Its total isotropy can then force vanishing
+without a sign condition on the primitive intersection form.  This
+section does not prove that an arbitrary variety has such a model
+or such symmetries.
+
+\subsection{The exact geometric input}
+
+Fix a finite extension $K/\mathbf Q_p$, its absolute value, its
+valuation ring $R$, and its finite residue field $k$.  Let
+$\mathcal X/R$ be regular, integral, flat, and projective of
+relative dimension $n\geq4$, with smooth geometrically integral generic fiber
+$X$.  Assume
+\[
+                  \mathcal X_k=\sum_{i\in I}m_iD_i
+\tag{ER16.1}\label{r16sym:special-fiber}
+\]
+has strict normal crossings reduced support and smooth native
+closed strata.  The $m_i$ are its scheme-theoretic multiplicities.
+All numerical groups below have rational coefficients, and all
+degrees are native degrees over $k$.
+
+Let $H$ be one relatively ample line bundle, used on all strata,
+and write
+\[
+\begin{gathered}
+ V^a=\bigoplus_iN^a(D_i),\qquad
+ A_1u=\left(j_i^!\sum_jj_{j*}u_j\right)_i,\\
+ P_H^2=\bigoplus_i\ker\left(
+     H^{n-3}:N^2(D_i)\longrightarrow N^{n-1}(D_i)\right),\\
+ Q_{H,m}(x,y)=\sum_i m_i\deg_{D_i}(x_iy_iH^{n-4}).
+\end{gathered}
+\tag{ER16.2}\label{r16sym:numerical-data}
+\]
+For one prime $\ell\ne p$, put
+\[
+ C_X^2=\ker\left(\operatorname{cl}_\ell:
+     \operatorname{CH}^2(X)_{\mathbf Q}
+       \longrightarrow H^4(X_{\bar K},\mathbf Q_\ell(2))\right).
+\]
+
+We use exactly the following frozen results, with their original
+model hypotheses and native normalizations.
+Theorem \texttt{r15res:canonical-residual}, in
+\path{round15/actual_local/canonical_primitive_numerical_residual.tex},
+constructs a rational-linear map
+\[
+                    R_{\mathcal X,H}:C_X^2\longrightarrow P_H^2.
+\tag{ER16.3}\label{r16sym:residual-map}
+\]
+If $\Theta$ extends $z$ in the model Chow group and
+$T=(j_i^!\Theta)_i$, choose a rational solution of
+$H^{n-3}A_1u=H^{n-3}T$ and set
+$R_{\mathcal X,H}(z)=T-A_1u$.  The answer is independent
+of both choices.  Its zero condition is equivalent to a
+componentwise numerically zero model extension and implies
+$\mathfrak o_X^2(z)=0$ and strong G on the prescribed exact
+support complement.  Proposition \texttt{r15iso:total-isotropy},
+in \path{round15/actual_local/weighted_primitive_isotropy.tex},
+proves
+\[
+             Q_{H,m}(R_{\mathcal X,H}(z),R_{\mathcal X,H}(w))=0
+                      \quad(z,w\in C_X^2).
+\tag{ER16.4}\label{r16sym:frozen-isotropy}
+\]
+In particular, this is total isotropy of the whole image, not
+only the vanishing of a norm for one chosen cycle.
+
+\begin{definition}[Finite model symmetry]
+\label{r16sym:datum}
+A finite model symmetry is a finite group $G$ acting on
+$\mathcal X$ by $R$-automorphisms and preserving the numerical
+class of $H$.  We use the left action
+$g\cdot z=(g^{-1})^*z$ on generic Chow groups and the analogous
+permuted pullback on the component numerical groups.
+
+A rational $G$-module is called multiplicity-free if each
+simple $\mathbf Q[G]$-module occurs with multiplicity at most
+one.  This is a statement over $\mathbf Q$, not over a
+splitting field and not about the dimension of the invariant
+subspace alone.
+\end{definition}
+
+If a finite group already acts on the model, a preserved ample
+class can always be chosen by replacing an ample line bundle
+$L$ with $\bigotimes_{g\in G}g^*L$.  The multiplicity-free
+condition must be checked for the resulting primitive space;
+we do not assert that it is independent of the polarization.
+
+\begin{lemma}[Equivariance and isometry]
+\label{r16sym:equivariance}
+For a finite model symmetry, $P_H^2$ is a rational
+$G$-module, $Q_{H,m}$ is $G$-invariant, and
+\[
+                  R_{\mathcal X,H}(g\cdot z)
+                         =g\cdot R_{\mathcal X,H}(z)
+                         \qquad(g\in G, z\in C_X^2).
+\tag{ER16.5}\label{r16sym:equivariance-formula}
+\]
+Thus $W=\operatorname{im}R_{\mathcal X,H}$ is a
+$G$-stable totally isotropic rational subspace of $P_H^2$.
+\end{lemma}
+
+\begin{proof}
+An $R$-automorphism preserves the Cartier divisor of a
+uniformizer.  It therefore permutes the $D_i$ and preserves
+their scheme multiplicities $m_i$.  Isomorphic native
+components and strata have the same native degree functional.
+The assumed equality of numerical ample classes makes
+multiplication by $H$ equivariant.  Hence the kernel defining
+$P_H^2$ is stable and the sum defining $Q_{H,m}$ is invariant.
+
+Restriction and regular Gysin commute with the Cartesian
+squares defined by these isomorphisms.  Therefore $A_1$ and
+$H^{n-3}A_1$ commute with the permuted pullback action.  Given
+an extension $\Theta$ and a solution $u$ for $z$, the extension
+$(g^{-1})^*\Theta$ and the vector $g\cdot u$ solve the same
+normalization equation for $g\cdot z$.  Substituting them in
+the defining formula for the residual proves
+\eqref{r16sym:equivariance-formula}.  Geometric cycle-class
+vanishing is preserved by these pullbacks, so the source
+$C_X^2$ is itself stable.  Rational linearity and
+\eqref{r16sym:frozen-isotropy} prove the last assertion.
+No numerical-to-homological implication in codimension two
+is used.
+\end{proof}
+
+\subsection{The representation-theoretic argument}
+
+\begin{lemma}[A multiplicity-free orthogonal module]
+\label{r16sym:linear-algebra}
+Let $G$ be finite and $P$ a finite-dimensional rational
+$G$-module.  Let $Q$ be a nondegenerate $G$-invariant symmetric
+bilinear form on $P$.  If $P$ is multiplicity-free, its only
+$G$-stable totally isotropic subspace is zero.
+
+More generally, write $P$ as its rational isotypic direct sum
+$\bigoplus_\rho P_\rho$.  Distinct $P_\rho$ are
+$Q$-orthogonal and every restricted form $Q|_{P_\rho}$ is
+nondegenerate.  The same assertions hold for any sum of
+isotypic summands.
+\end{lemma}
+
+\begin{proof}
+Maschke's averaging argument makes every rational finite-group
+module semisimple.  Every rational simple module is self-dual:
+choose a rational basis, average its positive definite
+coordinate form over $G$, and use the resulting rational
+$G$-invariant nondegenerate pairing to identify the module
+with its dual.  This auxiliary positive definite form is a
+linear-algebra construction; it makes no assertion about
+the geometric intersection form $Q$.
+
+The bilinear restriction $Q:P_\rho\times P_\sigma\to
+\mathbf Q$ corresponds to a $G$-map
+$P_\rho\to P_\sigma^*$.  For distinct rational simple
+types it is zero by semisimplicity and Schur's lemma.  Hence
+the isotypic decomposition is orthogonal.  Nondegeneracy of
+$Q$ on $P$ then implies nondegeneracy on each summand and on
+every sum of them.
+
+Suppose now that $P$ is multiplicity-free and $W\subset P$
+is stable.  Maschke's theorem supplies a stable complement
+$U$.  Since each simple type occurs at most once in $P$,
+$W$ and $U$ have no common simple type.  The self-duality
+argument gives $Q(W,U)=0$.  If $W$ is totally isotropic,
+also $Q(W,W)=0$.  Thus $W$ lies in the radical of $Q$ on
+$P=W\oplus U$, which is zero.
+\end{proof}
+
+\begin{theorem}[Vanishing from finite model symmetries]
+\label{r16sym:vanishing}
+Under the model assumptions \eqref{r16sym:special-fiber},
+suppose $G$ is a finite model symmetry, $Q_{H,m}$ is
+nondegenerate on $P_H^2$, and $P_H^2$ is multiplicity-free
+as a rational $G$-module.  Then
+\[
+                       R_{\mathcal X,H}=0.
+\tag{ER16.6}\label{r16sym:zero}
+\]
+Every class in $C_X^2$ has a componentwise numerically zero
+model extension.  Every specified rational cycle $Z$ in
+such a class has an ordinary actual form
+\[
+             \gamma_Z\in B^{1,1}
+                    (X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}})
+\]
+satisfying
+\[
+ \int_{X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}}
+                         \gamma_Z\wedge D\eta
+                  =-\int_{Z^{\mathrm{an}}}\eta
+                 \quad\text{for every }
+                 \eta\in B_c^{n-2,n-2}(X^{\mathrm{an}}).
+\tag{ER16.7}\label{r16sym:strong-G}
+\]
+\end{theorem}
+
+\begin{proof}
+The image of the residual is stable and totally isotropic
+by Lemma~\ref{r16sym:equivariance}.  Lemma~\ref{r16sym:linear-algebra}
+makes it zero.  The numerical and actual conclusions are
+then exactly the zero-residual conclusions of the frozen
+Theorem \texttt{r15res:canonical-residual}.  In particular,
+they use the pure operational model witness, the original
+field model-Chern detector, and the established sufficient
+direction $\mathfrak o_X^2([Z])=0\Rightarrow G(Z)$.
+No converse to that direction is required.
+\end{proof}
+
+\begin{corollary}[The fourfold criterion]
+\label{r16sym:fourfold}
+If $n=4$, nondegeneracy in
+Theorem~\ref{r16sym:vanishing} is automatic.  Thus a finite
+model symmetry acting multiplicity-free on $P_H^2$ implies
+strong G for all geometrically $\ell$-homologically trivial
+codimension-two cycles on $X$, with no upper bound on
+$\dim_{\mathbf Q}P_H^2$.
+\end{corollary}
+
+\begin{proof}
+On a smooth projective fourfold $D_i$, the middle numerical
+pairing $N^2(D_i)\times N^2(D_i)\to\mathbf Q$ is
+nondegenerate by the definition of numerical equivalence.
+Its restriction to $HN^1(D_i)$ is the divisor pairing
+$\deg(uvH^2)$, which is nondegenerate by the divisor Hodge
+index theorem.  The numerical orthogonal complement of
+$HN^1(D_i)$ is precisely
+$\ker(H:N^2(D_i)\to N^3(D_i))$.  Consequently the primitive
+restriction is nondegenerate.  The direct sum and the
+nonzero weights $m_i$ preserve nondegeneracy.  This is also
+the argument recorded in the proof of frozen Corollary
+\texttt{r15iso:fourfold-rank-one}; no codimension-two Hodge
+standard conjecture enters.
+\end{proof}
+
+\begin{corollary}[Selected rational isotypic cycle sectors]
+\label{r16sym:sectors}
+Let $n=4$ and let $e\in\mathbf Q[G]$ be a sum of rational
+central primitive idempotents.  Suppose $eP_H^2$ is
+multiplicity-free.  Then
+\[
+                 R_{\mathcal X,H}(ez)=0
+                              \qquad(z\in C_X^2),
+\tag{ER16.8}\label{r16sym:isotypic-vanishing}
+\]
+and every specified cycle representing a class in $eC_X^2$
+satisfies the full conclusion \eqref{r16sym:strong-G}.
+It is enough that the simple types selected by $e$ each
+occur with multiplicity at most one; other isotypic
+summands may have arbitrary multiplicity.
+\end{corollary}
+
+\begin{proof}
+Equivariance gives $R(ez)=eR(z)$.  The space
+$W_e=R(eC_X^2)$ is $G$-stable because $e$ is central and
+is totally isotropic by \eqref{r16sym:frozen-isotropy}.
+The fourfold argument makes $Q_{H,m}$ nondegenerate on
+$P_H^2$, and the isotypic assertion of
+Lemma~\ref{r16sym:linear-algebra} makes its restriction to
+$eP_H^2$ nondegenerate.  That lemma now forces $W_e=0$.
+The frozen exact-support bridge applies to every specified
+representative, including a representative whose support
+is unrelated to the individual orbit representatives
+used to describe the class $ez$.
+\end{proof}
+
+\paragraph{Two directly checkable forms of the hypothesis.}
+In relative dimension four it suffices that $P_H^2$ be an
+irreducible rational representation of the finite model
+symmetry group.  More generally, suppose commuting model
+involutions act on $P_H^2$, preserve $H$, and each simultaneous
+rational eigenspace has dimension at most one.  Their finite
+elementary abelian group acts multiplicity-free, so the
+same theorem applies.  For one involution, it is enough
+that both primitive eigenspaces have dimension at most one.
+
+\begin{proposition}[A cohomological certificate for the symmetry criterion]
+\label{r16sym:cohomological-certificate}
+In the fourfold setting, let $e\in\mathbf Q[G]$ be a sum of
+rational central primitive idempotents.  If, for some
+$\ell\ne p$, the finite-dimensional representation
+\[
+       e\left(\bigoplus_i
+          H^4((D_i)_{\bar k},\mathbf Q_\ell(2))\right)
+\tag{ER16.9}\label{r16sym:cohom-representation}
+\]
+is multiplicity-free as a $\mathbf Q_\ell[G]$-module,
+then $eP_H^2$ is multiplicity-free over $\mathbf Q$.
+Consequently every class in $eC_X^2$ satisfies strong G.
+No Tate conjecture and no identification of numerical
+and homological equivalence in codimension two is required.
+\end{proposition}
+
+\begin{proof}
+For a native component $D_i$, let $A_{i,\ell}$ be the image
+of the geometric cycle map from
+$\operatorname{CH}^2(D_i)_{\mathbf Q}\otimes\mathbf Q_\ell$
+to its displayed cohomology.  There is a natural surjection
+\[
+                  A_{i,\ell}\longrightarrow
+                         N^2(D_i)_{\mathbf Q}\otimes\mathbf Q_\ell.
+\tag{ER16.10}\label{r16sym:cycle-image-quotient}
+\]
+Indeed, if a finite $\mathbf Q_\ell$-linear combination of
+cycle classes has zero cohomology class, its intersection
+degree against every native complementary cycle is zero
+by compatibility of the cycle map with intersection and
+trace.  The perfect numerical pairing after scalar
+extension makes its numerical class zero.  Thus the
+numerical quotient factors through the cohomological
+image, and it is surjective by the definition of the
+numerical cycle group.  This direction is homological
+vanishing implying numerical vanishing, not its converse.
+
+The direct sum of \eqref{r16sym:cycle-image-quotient} is
+$G$-equivariant because the action comes from model
+isomorphisms, including the permutation of components.
+The primitive numerical group is a $G$-stable subspace
+of the target.  Hence $eP_H^2\otimes\mathbf Q_\ell$ is
+a subquotient of \eqref{r16sym:cohom-representation}.
+Maschke semisimplicity shows that a subquotient of a
+multiplicity-free representation is multiplicity-free.
+
+If a rational simple representation occurred twice in
+$eP_H^2$, its nonzero scalar extension to $\mathbf Q_\ell$
+would have at least one simple constituent, occurring
+at least twice in $eP_H^2\otimes\mathbf Q_\ell$.
+This contradicts the preceding conclusion.  Thus
+$eP_H^2$ is multiplicity-free over $\mathbf Q$.
+Apply Corollary~\ref{r16sym:sectors}.
+\end{proof}
+
+This certificate deliberately uses the full geometric
+degree-four cohomology in the selected isotypic sector.
+Replacing it by a smaller cohomological primitive group
+would require a separate proof that it surjects onto the
+numerical primitive sector; such a comparison is not
+silently assumed.
+
+\paragraph{Why this is a different sufficient criterion.}
+The elementary example
+$P=\mathbf Q^2$, $Q(x,x)=x_1^2-x_2^2$, with an involution
+$(x_1,x_2)\mapsto(x_1,-x_2)$, is multiplicity-free and has
+no nonzero invariant totally isotropic subspace, although
+$Q$ has nonzero rational isotropic vectors.  Thus the new
+linear-algebra criterion is not an implication of rational
+anisotropy.  This example is only a linear-algebra comparison;
+it is not asserted to be the primitive numerical lattice
+of a fourfold, nor is it a counterexample to a Hodge
+standard conjecture.  No new geometric family beyond the
+stated, verifiable symmetry condition has been identified
+in this section.
+
+\subsection{Original-field dominant propagation}
+
+\begin{corollary}[Invariant numerical ranks on a dominant model]
+\label{r16sym:invariant-cover}
+Let $X/K$ be smooth projective geometrically integral of
+dimension at least two.  Suppose that after a finite
+extension $F/K$ there is a projective dominant morphism
+$f:V\to X_F$, where $V/F$ is smooth projective geometrically
+integral of dimension $n\geq4$, and a supplied model
+$\mathcal V/F^\circ$ with the same regular SNC hypotheses
+and a finite model symmetry $G$ preserving $H$.
+Assume $f\circ g=f$ on the generic fiber for every $g\in G$.
+Put $V^a=\bigoplus_iN^a(D_i)$ for this model.
+
+Either of the following conditions is sufficient for
+$\mathfrak o_X^2$ to vanish on the complete geometric
+homological kernel, and hence for strong G on every
+prescribed cycle in that kernel:
+\begin{enumerate}
+\item $\dim (V^2)^G=\dim (V^1)^G$, in any relative
+      dimension $n\geq4$;
+\item $n=4$ and
+      $\dim (V^2)^G-\dim (V^1)^G\leq1$.
+\end{enumerate}
+In particular a Galois alteration with a regular
+$G$-equivariant model may be used when it satisfies the
+stated invariant-rank condition.  Existence of alterations
+with that condition is not asserted.
+\end{corollary}
+
+\begin{proof}
+The frozen numerical divisor splitting
+$V^2=H V^1\oplus P_H^2$ is $G$-equivariant.  Taking
+invariants and using injectivity of multiplication by
+$H$ gives
+\[
+             \dim(P_H^2)^G
+                    =\dim(V^2)^G-\dim(V^1)^G.
+\tag{ER16.11}\label{r16sym:invariant-rank}
+\]
+For a geometric homologically trivial class $z$ on $X$,
+the pullback $f^*z$ is fixed by $G$.  Equivariance puts
+its residual in $(P_H^2)^G$.
+
+Under the first condition this space is zero.  Under
+the second condition the fourfold pairing is
+nondegenerate on $P_H^2$.  Its restriction to the
+trivial isotypic summand $(P_H^2)^G$ is nondegenerate
+by Lemma~\ref{r16sym:linear-algebra}.  A nondegenerate
+rational form on a space of dimension at most one has
+no nonzero isotropic vector, so the residual is again
+zero by \eqref{r16sym:frozen-isotropy}.
+
+The vanishing supplies a numerical model witness on
+$V$.  Regard the model over $K^\circ$, retaining
+ramification multiplicities and residue-field degrees,
+and apply the frozen original-field numerical detector.
+Then frozen dominant degree-two Bott--Chern injectivity
+and the exact-support bridge give the assertion on $X$.
+The same native-field argument is written in detail in
+Corollary~\ref{r16sym:dominant} below.  It does not require
+the alteration to be finite on any prescribed complement.
+\end{proof}
+
+\begin{corollary}[A dominant symmetric model witness]
+\label{r16sym:dominant}
+Let $X/K$ be smooth geometrically integral projective with $\dim X\geq2$.
+Suppose there is a finite extension $F/K$, a smooth geometrically integral
+projective $F$-variety $V$, and a projective dominant
+$F$-morphism $f:V\to X_F$.  Suppose $V$ has a supplied
+regular flat projective model over $F^\circ$ satisfying the
+geometric and symmetry hypotheses of
+Theorem~\ref{r16sym:vanishing}, or the fourfold criterion
+of Corollary~\ref{r16sym:fourfold}.
+
+Then every geometrically $\ell$-homologically trivial
+codimension-two class on $X$ has zero actual obstruction.
+Every specified representative satisfies strong G over
+the original $K$, on its exact support complement, against
+all original actual tests.
+\end{corollary}
+
+\begin{proof}
+The pullback of a geometric homologically trivial class
+to $V$ is again geometric homologically trivial.  The new
+criterion gives a numerical model witness there.  Regard
+that model as a model over $K^\circ$.  Its special-fiber
+multiplicities acquire the ramification factor and its
+supported degrees acquire the residue-field factor;
+numerical vanishing is preserved.  The frozen native-field
+model-witness argument therefore gives
+$\mathfrak o_{V,K}^2(f^*z)=0$ directly in the original
+$K$-actual theory.  There is no identification of different
+test categories by a change of notation.
+
+Apply frozen Theorem \texttt{r15dom:dominant} and Corollary
+\texttt{r15dom:obstruction-witness}, in
+\path{round15/root/general_degree_two_descent.tex}, to the
+composite dominant $K$-morphism $V\to X_F\to X$.
+Its finite maps retain their complete native function-field
+degrees, including constant-field factors.  They descend
+the global curvature primitive; the exact-support Green
+pair is then formed for the original prescribed cycle.
+No Green form is pushed along an arbitrary alteration.
+\end{proof}
+
+\paragraph{Audit boundaries.}
+The new step is the equivariance--isotropy argument and its
+cycle sectors.  The residual, weighted isotropy, model
+detector, and dominant degree-two descent are frozen inputs.
+For $n>4$, nondegeneracy of $Q_{H,m}$ remains an explicit
+additional assumption; this text does not deduce it from
+divisor Hodge index.  The representation condition must
+hold for actual model automorphisms, not for an arbitrary
+abstract action invented on the numerical vector space.
+A nonzero residual never implies failure of strong G.
+Neither general strong G nor a canonical unconditional
+BB height on the complete geometric homological kernel
+is concluded.
+
+\paragraph{Literature check and status.}
+The representation-theoretic input is elementary Maschke
+semisimplicity and Schur orthogonality, for which a primary
+author reference is J.~S.~Milne, \emph{Group Theory},
+Section 7, Theorem 7.4 and the following semisimplicity
+discussion, \url{https://www.jmilne.org/math/CourseNotes/GTe6.pdf}.
+The argument is proved above in the exact rational scope used.
+A focused literature search was performed during this round;
+no claim of priority or comprehensive novelty is made.

@@ -1,0 +1,347 @@
+% Round 16. Actual activation of a historically present boundary criterion.
+% New independently checkable short proof and explicit degeneration charts.
+% Root and global_height independently PASS at mathematical SHA
+% 5f827bf13c5a9e660100288385074e558f585a3b9d2d086236af78fb7811ccc6.
+% This activation changes only the status notice.
+% No general hypersurface or general-G assertion.
+\section{A Lefschetz double stratum and an explicit hypersurface family}
+\label{r16tb:section}
+
+\paragraph{Provenance and purpose.}
+Rank-one cohomological double strata were already a sufficient
+numerical condition in the historical Round 7 source
+\path{history_01_07/bb_round7/proofs/threefold_boundary_residual_matrix.tex}.
+We retain that provenance and its original review flags.
+For the two-component case the following proof uses only proper
+nearby-cycle comparison, smooth-locus restriction, and the
+localization sequence for one smooth divisor. It avoids the
+signed-preimage lifting and boundary cochain arguments. The new
+actual dominant descent and one-cycle theorem activate the full
+fourfold conclusion. We also construct the required two-component
+model for a precisely specified polynomial degeneration.
+
+\begin{lemma}[Primitive vanishing with a Lefschetz double stratum]
+\label{r16tb:numerical}
+Let $R$ be the valuation ring of a finite extension of $\mathbf Q_p$,
+with fraction field $F$ and finite residue field $k$. Let
+$\mathcal V/R$ be an integral regular projective strictly semistable
+model of relative dimension $n\geq4$, with geometrically integral
+smooth generic fiber $V$. Suppose its special fiber is exactly
+\[
+                   \mathcal V_k=D_1\cup D_2,
+                   \qquad E=D_1\cap D_2,
+ \tag{TB16.1}\label{r16tb:model}
+\]
+with multiplicities one, where $D_1,D_2,E$ are smooth projective
+geometrically integral over $k$ and $E\ne\varnothing$.
+Fix a relatively ample line bundle $H$ and one prime $\ell\ne p$.
+Assume the full geometric cohomology satisfies
+\[
+ H^2(E_{\bar k},\mathbf Q_\ell(1))
+          =\mathbf Q_\ell\,c_{1,\ell}(H|_E).
+ \tag{TB16.2}\label{r16tb:rank-one}
+\]
+Then every $z\in\operatorname{CH}^2(V)_{\mathbf Q}$ with zero
+geometric $\ell$-adic class has a rational model Chow extension
+whose restrictions to both components are numerically zero.
+Equivalently its frozen canonical primitive residual is zero.
+No positivity statement for $P_H^2(D_i)$ is assumed.
+\end{lemma}
+
+\begin{proof}
+Use the frozen primitive normalization
+\texttt{r15res:canonical-residual} to choose an actual rational
+Chow extension $\Theta^H$ of $z$ with component restrictions
+$\theta_i\in\operatorname{CH}^2(D_i)_{\mathbf Q}$ satisfying
+\[
+ R_i=[\theta_i]_{\rm num},\qquad
+             H_i^{n-3}R_i=0\quad\hbox{in }N^{n-1}(D_i),
+             \qquad H_i=H|_{D_i}.
+ \tag{TB16.3}\label{r16tb:primitive}
+\]
+The actual Chow restrictions are chosen before any cycle classes
+are taken. The frozen pure operational $K_0$ representative
+\texttt{r12n:K0} supplies a global degree-four $\ell$-adic
+Chern class on the model whose restrictions are
+$a_i=\operatorname{cl}_\ell(\theta_i)$ and whose geometric
+generic restriction is $\operatorname{cl}_\ell(z)=0$.
+
+Put $Y=\mathcal V_{\bar k}$ and $U_i=(D_i\setminus E)_{\bar k}$.
+Proper nearby-cycle comparison identifies
+\[
+ H^4(Y,R\Psi\mathbf Q_\ell(2))
+                      =H^4(V_{\bar F},\mathbf Q_\ell(2)).
+\]
+Under this identification, the natural image of the chosen
+special-fiber Chern class is its geometric generic Chern class,
+hence zero. Restrict this zero class to $U_i$.
+The model morphism is smooth there, because the model is
+\emph{reduced} strictly semistable and only one component meets
+each point of $U_i$. Smooth base change identifies the unit
+$\mathbf Q_\ell\to R\Psi\mathbf Q_\ell$ with an isomorphism
+on $U_i$. It follows that $a_i|_{U_i}=0$.
+This argument uses the proper global comparison first; it is
+not an assertion that a nonproper smooth open has an automatic
+cohomological specialization isomorphism.
+
+For the smooth Cartier immersion $j_i:E_{\bar k}\hookrightarrow
+(D_i)_{\bar k}$, purity and localization give the exact segment
+\[
+ H^2(E_{\bar k},\mathbf Q_\ell(1))
+ \xrightarrow{j_{i*}}H^4((D_i)_{\bar k},\mathbf Q_\ell(2))
+ \longrightarrow H^4(U_i,\mathbf Q_\ell(2)).
+\]
+By \eqref{r16tb:rank-one}, there is $c_i\in\mathbf Q_\ell$ with
+\[
+             a_i=c_i j_{i*}c_{1,\ell}(H|_E).
+ \tag{TB16.4}\label{r16tb:cohom-boundary}
+\]
+Pairing this actual cycle class with $c_{1,\ell}(H_i)^{n-2}$
+and using \eqref{r16tb:primitive} yields
+\[
+ 0=\deg_k(\theta_i H_i^{n-2})
+             =c_i\deg_k\bigl((H|_E)^{n-1}\bigr).
+ \tag{TB16.5}\label{r16tb:coefficient-zero}
+\]
+The last degree is a positive integer. Hence $c_i=0$ and
+$a_i=0$ for both components. Homological triviality of the
+\emph{chosen cycles} $\theta_i$ implies their numerical
+triviality by the cycle-class intersection and trace formula.
+Thus $R_i=0$ without a cycle-class map on an abstract numerical
+quotient, a Tate lifting, or numerical-to-homological reasoning.
+
+The primary nearby-cycle input is SGA 7, Expose XIII; the precise
+natural maps, smooth-locus identity and proper comparison are
+also displayed in Illusie, \emph{Grothendieck and vanishing cycles},
+\S1.2, equations (1.5)--(1.8), printed p.~86,
+\url{https://www.numdam.org/item/AFST_2021_6_30_1_83_0.pdf}.
+Only ordinary purity for a smooth divisor is needed here; no
+weight-monodromy statement or invariant-cycle surjectivity is used.
+\end{proof}
+
+\begin{theorem}[Native actual activation from a two-component witness]
+\label{r16tb:actual}
+Let $K/\mathbf Q_p$ be finite and let $X/K$ be smooth projective
+geometrically integral of dimension $n\geq4$. Suppose that, after
+a finite extension $F/K$, there is a smooth projective geometrically
+integral $n$-fold $V/F$, a projective dominant morphism
+$f:V\to X_F$, and a model of $V$ satisfying
+Lemma~\ref{r16tb:numerical}. Then
+\[
+ \mathfrak o_{X,K}^2(z)=0\qquad
+ \bigl(z\in\operatorname{CH}^2(X)_{\mathbf Q,\mathrm{geom\,hom}}\bigr).
+ \tag{TB16.6}\label{r16tb:obstruction-zero}
+\]
+For $n=4$, every geometrically homologically trivial Chow class
+in every positive codimension has zero obstruction. In particular,
+every specified rational codimension-$r$ cycle $Z$ in those groups
+has an ordinary actual strong Green form on
+$X^{\rm an}\setminus|Z|^{\rm an}$, with the identity on all
+$\eta\in B_c^{n-r,n-r}(X^{\rm an})$ over the original $K$.
+For $n>4$ the new assertion in this theorem is codimension two;
+it does not settle the other middle codimensions.
+\end{theorem}
+
+\begin{proof}
+The refined pullback $f^*z_F$ is geometrically homologically
+trivial. The lemma supplies a numerically admissible model Chow
+lift and its frozen pure operational representative on $\mathcal V$.
+The native numerical witness theorem
+Corollary~\ref{r16G:numerical-witness} applies to
+$V\to X_F\to X$ and gives \eqref{r16tb:obstruction-zero}.
+Viewed over $K^\circ$, the model's special multiplicities acquire
+the ramification index and its native vertical degrees acquire
+the residue-field degree. The zero numerical degrees remain zero;
+these factors are retained by that theorem. All finite traces in
+its dominant descent use full original-field degrees and the
+original actual test space. The morphism need not be finite away
+from a prescribed support.
+
+When $n=4$, divisors and degree-zero zero-cycles are the frozen
+endpoints, and codimension three is
+Theorem~\ref{r16G:one-cycles}. These, together with
+\eqref{r16tb:obstruction-zero}, exhaust the positive degrees.
+For each specified $Z$, the exact-support conclusion is obtained
+by taking the frozen Green pair for that very cycle and subtracting
+a global actual primitive of its zero curvature class, as in
+Proposition~\ref{r16G:dominant-witness}. No substitute support or
+proper actual pushforward is used.
+\end{proof}
+
+\begin{proposition}[An explicit split hypersurface degeneration]
+\label{r16tb:hypersurface-model}
+Let $R$ be as above, let $\pi$ be a uniformizer, and fix positive
+integers $a,b$. Choose homogeneous forms
+\[
+ A\in R[T_0,\ldots,T_5]_a,\qquad
+ B\in R[T_0,\ldots,T_5]_b,\qquad
+ G\in R[T_0,\ldots,T_5]_{a+b}.
+\]
+Assume the following schemes over $k$ are smooth and geometrically
+integral of the indicated dimensions, and that the defining
+differentials are independent along each indicated intersection:
+\[
+ \begin{array}{c|c}
+ D_1=V(\bar A),\ D_2=V(\bar B)&4\\
+ E=V(\bar A,\bar B)&3\\
+ \Sigma=V(\bar A,\bar B,\bar G)&2.
+ \end{array}
+ \tag{TB16.7}\label{r16tb:transverse-data}
+\]
+Assume that
+\[
+ X=V(AB+\pi G)\subset\mathbf P^5_F
+ \tag{TB16.8}\label{r16tb:hypersurface}
+\]
+is smooth and geometrically integral. In the flat projective
+hypersurface model $\mathcal X=V(AB+\pi G)\subset\mathbf P^5_R$,
+blow up the ideal sheaf locally generated by $(A,\pi)$.
+The resulting $\widetilde{\mathcal X}$ is an integral regular
+projective strictly semistable model of $X$, with exactly two
+reduced components
+\[
+       \widetilde D_1\simeq\operatorname{Bl}_{\Sigma}D_1,
+       \qquad \widetilde D_2\simeq D_2,
+       \qquad \widetilde D_1\cap\widetilde D_2\simeq E.
+ \tag{TB16.9}\label{r16tb:resolved-fiber}
+\]
+Consequently $X/F$ satisfies full local strong G in every
+positive codimension. The same conclusion holds over an original
+$K$ for a fourfold admitting this model after a finite extension,
+or a dominant fourfold witness of this form after that extension.
+\end{proposition}
+
+\begin{proof}
+The polynomial is nonzero modulo $\pi$ and defines a flat
+projective hypersurface. Its integral generic fiber and the
+primitive hypersurface equation imply that the model is integral.
+Away from $\Sigma$, the model is regular and the indicated
+ideal is invertible. Indeed, where $\bar B\ne0$ on $D_1$,
+the equation makes $(A,\pi)=(\pi)$; where $\bar A\ne0$
+the ideal is the unit ideal. Along $E\setminus\Sigma$, $G$
+is a unit and the equation makes $(A,\pi)=(A)$.
+Off the special fiber, $\pi$ itself is a unit. Thus the
+blowup is an isomorphism away from $\Sigma$ and on the
+whole generic fiber.
+
+At a point of $\Sigma$, choose compatible local trivializations
+of the three line bundles. Independence of the relative
+differentials permits etale coordinates
+$x=A$, $y=B$, $g=G$, and two further parameters on the smooth
+ambient fivefold over $R$. The hypersurface has the exact local
+equation
+\[
+                         xy+\pi g=0.
+\]
+The two blowup charts of $(x,\pi)$ are
+\[
+ \begin{array}{c|c}
+ x\text{-chart}&\pi=xv,\quad y+vg=0,\\
+ \pi\text{-chart}&x=\pi u,\quad uy+g=0.
+ \end{array}
+ \tag{TB16.10}\label{r16tb:charts}
+\]
+These are the blowup charts, not the unsaturated total-transform
+equations $x(y+vg)=0$ and $\pi(uy+g)=0$. For example the first
+chart is the subalgebra generated by $\pi/x$ inside the localization
+at $x$ of the integral hypersurface ring; cancellation gives
+$y=-vg$. Conversely the displayed ring, with $\pi=xv$, embeds
+in that localization and gives the same generated subalgebra.
+The other chart is identical with $x/\pi$ and $g=-uy$.
+
+Eliminating $y$ in the first chart leaves the regular semistable
+equation $\pi=xv$, with the parameters $g$ and the two remaining
+ambient coordinates free. Its special fiber is $xv=0$.
+Eliminating $g$ in the second chart leaves a smooth $R$-chart
+with coordinates $y,u$ and those two remaining coordinates.
+These charts prove regularity and reduced strict normal crossings.
+
+In the first chart the component $x=0$ maps to $D_1$ by
+$(g,v)\mapsto(g,y=-vg)$. This is the $g$-chart of
+$\operatorname{Bl}_{(y,g)}D_1$. Its second, $y$-chart is precisely
+the special fiber of the $\pi$-chart, with $g=-uy$.
+Thus this component is $\operatorname{Bl}_{\Sigma}D_1$.
+The component $v=0$ maps isomorphically to $D_2$ with its
+coordinates $x,g$ and the two remaining parameters. Their
+intersection $x=v=0$ maps isomorphically to $E$.
+Equivalently $\Sigma$ is Cartier inside $E$, so its blowup
+there leaves $E$ unchanged. There is no additional component
+of the special fiber: the fibers over $\Sigma$ have dimension
+one and form a codimension-two subset of the total model.
+This proves \eqref{r16tb:resolved-fiber} globally.
+As an independent normal-bundle check, the normal of $E$ in $D_1$
+was $\mathcal O_E(b)$, while the Cartier divisor $\Sigma\subset E$
+has class $\mathcal O_E(a+b)$. On the blown-up component its
+new normal is consequently $\mathcal O_E(-a)$. On the unchanged
+$D_2$ its normal is $\mathcal O_E(a)$. These are dual, as required
+for a reduced two-component semistable fiber.
+
+The double stratum $E$ is a smooth projective complete intersection
+of dimension three. Deligne, SGA 7 II, Expose XI, Theorem 1.6(ii),
+printed p.~48, gives
+\[
+ H^2(E_{\bar k},\mathbf Q_\ell(1))
+           =\mathbf Q_\ell\,c_{1,\ell}(\mathcal O_E(1)).
+\]
+The original French scan was checked directly at
+\url{https://library.slmath.org/nonmsri/sga/sga/pdf/sga7-2.pdf}.
+Any ample restriction from the new model has nonzero class
+in this one-dimensional space, since its top degree on $E$
+is positive. Thus \eqref{r16tb:rank-one} holds for a relatively
+ample line bundle on the new projective model. Apply
+Theorem~\ref{r16tb:actual}, with the identity generic morphism,
+and then its explicit native dominant-witness variant as stated.
+\end{proof}
+
+\begin{corollary}[Nonempty local families in every split degree]
+\label{r16tb:nonempty}
+For every pair $a,b\geq1$, such data exist after a finite
+unramified extension of any given $p$-adic field. In particular,
+the degeneration criterion is nonvacuous for every degree
+$a+b\geq2$.
+\end{corollary}
+
+\begin{proof}
+Over the algebraic closure of the residue field, sections of
+$\mathcal O(d)$ for $d\geq1$ separate the value and all first
+derivatives at a point of projective space; their restrictions
+do so along any smooth embedded subvariety. On a smooth
+$m$-dimensional projective subvariety, vanishing of a section
+and all its first derivatives imposes $m+1$ independent linear
+conditions. The incidence of such a singular point therefore
+has dimension strictly less than the coefficient space; its
+projection is closed by projectivity. Thus the smooth-section
+condition is nonempty open. Choose successively $\bar A$ smooth,
+$\bar B$ smooth both on the ambient space and on $D_1$, and
+$\bar G$ with smooth restriction divisor on $E$. This gives
+the smooth complete intersections in \eqref{r16tb:transverse-data}.
+They are geometrically connected by the degree-zero case of
+SGA 7 II, XI, Theorem 1.6(ii); as smooth schemes they are then
+geometrically integral. All their dimensions are positive.
+
+The finite list of coefficients is defined over a finite residue
+extension. Lift these coefficients to its unramified valuation
+ring. For fixed lifts of $A,B$, the map
+$G\mapsto AB+\pi G$ is an affine isomorphism on the full
+generic coefficient space of degree $a+b$ forms. Smooth
+hypersurfaces form a nonempty Zariski open subset there, by
+the same incidence calculation.
+The chosen residue class of $G$ is a product of infinite
+valuation-ring cosets and is Zariski dense: induction on the
+number of coefficient variables shows that a polynomial
+vanishing on the whole product is zero. Hence a lift with
+smooth generic hypersurface exists without changing the
+special transversality data. Smooth positive-dimensional
+projective hypersurfaces in this projective space are
+geometrically integral.
+\end{proof}
+
+\paragraph{Scope.}
+This is a supplied local degeneration criterion, not a statement
+that every hypersurface can be put in this form after extension.
+It invokes no primitive positivity of the fourfold components,
+which in this construction are a hypersurface and a surface
+blowup of a hypersurface. It also gives no unqualified global
+height statement for all hypersurfaces over a number field:
+the required local hypotheses must be checked at every finite
+place, or replaced there by another proved local criterion.

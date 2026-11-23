@@ -1,6 +1,6 @@
 // Current-only proof-reading diagrams for the model, family and arithmetic cases.
 // Model and descent arguments retain their immutable v0.5.1 source bindings.
-// The precise prescribed-pair correction also cites the new v0.5.2 theorem.
+// Analytic steps use the audited v0.5.3 propositions and kernel-domain height theorem.
 // Every edge is a stated inference with its full local scope, not a dependency-array edge.
 const paper = (slug, anchor, label) => ({ href: `/papers/${slug}${anchor ? '#' + anchor : ''}`, label });
 const P = (anchor, label) => paper('pairing-constructions', anchor, label);
@@ -25,20 +25,20 @@ function factory(caseId) {
   const C = (title, tree, target, source) => ({ title, treeId: id(tree + '-tree'), nodeId: id(target), source });
   return { id, N, L, T, C };
 }
-const localScope = 'K/ℚₚ is the original finite extension with its prescribed absolute value. X is smooth projective geometrically integral. Retain the actual obstruction, exact support complement, full actual tests, native residue degrees and complete finite degrees. Analytic and model comparison inputs remain conditional.';
-const heightScope = 'Over a number field F, use geometrically homologically trivial rational Chow classes, complementary r+s=dim(X)+1, absolute height normalization, and the supplied Green, reciprocity, correspondence and comparison hypotheses. Local auxiliary fields are descended before the global sum.';
+const localScope = 'K/ℚₚ is the original finite extension with its prescribed absolute value. X is smooth projective geometrically integral. Retain the actual obstruction, exact support complement, full actual tests, native residue degrees and complete finite degrees. Actual numerical detection and native covariance are proved in this scope. Each model, numerical lift and additional period or stratum comparison must satisfy the conditions stated in its branch.';
+const heightScope = 'Over a number field F, use geometrically homologically trivial rational Chow classes, complementary r+s=dim(X)+1, absolute height normalization, and BOTH local-kernel domains ℋʳ(X) and ℋˢ(X). H16 constructs the height and HA16 gives adjunction on these domains; MM16 compares supplied admissible model lifts. Local auxiliary fields are descended before the global sum. Membership of arbitrary homological classes and existence of admissible models remain separate requirements.';
 const arithmeticScope = 'Fix a pointed product of curves, its positive integral product polarization and the projected integral images in the geometric rational Chow group. Every height assertion assumes H1–H4 on the required products, correspondence sources and finite extensions; no proof status is promoted.';
 
 function numericalModels() {
   const { N, L, T, C } = factory('numerical-models');
-  const numerical = P('prop:numerical', 'Finite numerical-model hypothesis');
+  const numerical = P('prop:numerical', 'Proposition: finite numerical-model detection');
   const assembly = T('assembly', 'Numerical corrections and the global pairing',
     'Vertical numerical vanishing gives native obstruction zero; both complementary local kernels then give the height domain.', heightScope,
     N('main', 'A pairing on the numerically certified subgroups', P('sec:models', 'Model criteria'),
       'The full product Vʳ(X) × Vˢ(X) is obtained only when every class in BOTH degrees has the required certificates at every finite place.',
       G('all', 'BOTH local membership and the admitted-domain height theorem',
         'Local vanishing identifies the two subgroups contained in ℋ. The separate reciprocity theorem supplies the pairing, its Chow descent and its absolute normalization.',
-        [P('lem:two-degrees', 'The two-degree criterion'), P('hyp:height-input', 'Admitted-domain reciprocity')], [
+        [P('lem:two-degrees', 'The two-degree criterion'), P('hyp:height-input', 'Theorem: admitted-domain reciprocity')], [
           N('both-domains', 'The certified classes lie in ℋʳ(X) and ℋˢ(X)', P('lem:two-degrees', 'Both localizations'),
             'Check every finite completion; checking only one degree supplies only that factor of the pairing.',
             G('all', 'Apply the local argument to EACH class in BOTH degrees at EACH finite place',
@@ -50,12 +50,12 @@ function numericalModels() {
                     [numerical, P('sub:covariance', 'Native covariance and degrees')], [
                       N('vertical-certificate', 'A pure operational lift with all vertical degrees zero', numerical,
                         'The character equals the pulled-back cycle in degree r and vanishes in other degrees. Every integral vertical r-cycle is tested, with its native multiplicity and residue degree.', undefined, 'hypothesis'),
-                      N('descent', 'The supplied dominant detector and full-degree finite descent', P('sec:models', 'General witness formulation'),
-                        'The witness is smooth and projective over the specified finite extension. Preserve the original valued field; the finite push–pull scalar is [L:K].', undefined, 'hypothesis'),
+                      N('descent', 'Native dominant detection and full-degree finite descent', P('sec:models', 'General witness formulation'),
+                        'The witness is smooth and projective over the specified finite extension. Preserve the original valued field; the finite push–pull scalar is [L:K].', undefined, 'proved'),
                     ])),
               ])),
-          N('height-input', 'The Green, residue and global reciprocity construction', P('hyp:height-input', 'The independent global input'),
-            'Includes good-place vanishing, archimedean terms, symmetry, rational-equivalence descent and finite number-field invariance.', undefined, 'hypothesis'),
+          N('height-input', 'The Green, residue and global reciprocity construction', P('hyp:height-input', 'Theorem: height on both local-kernel domains'),
+            'On ℋʳ(X)×ℋˢ(X), the proved theorem gives good-place vanishing, archimedean terms, symmetry, rational-equivalence descent and finite number-field invariance. Each class must first satisfy every local kernel condition.', undefined, 'proved'),
         ])));
   const scalar = T('scalar', 'One-dimensional Gysin images',
     'The component degrees form a zero-sum vector; a weighted Laplacian corrects all of them at once.', localScope + ' The supplied regular projective reduced strictly semistable model has n≥3, smooth geometrically integral components and smooth closed strata.',
@@ -76,7 +76,7 @@ function numericalModels() {
                     ])),
                 N('scalar-one-dimensional', 'Each total Gysin image is one-dimensional', P('prop:scalar-model', 'Full component hypothesis'), 'The condition is imposed on the sum over all adjacent strata, not separately on each summand.', undefined, 'hypothesis'),
               ])),
-          N('scalar-detector', 'The pure operational lift and numerical comparison apply', numerical, 'This remains the analytic numerical-model input of the paper.', undefined, 'hypothesis'),
+          N('scalar-detector', 'Every supplied pure numerical lift has zero actual curvature', numerical, 'The proved detector uses the exact operational degree and zero intersection with EVERY vertical testing cycle. The preceding model correction must supply that lift.', undefined, 'proved'),
         ])));
   const twoFactor = T('two-factor', 'The two-factor hypersurface model',
     'The blowup of (A,ϖ) produces the two components used in the scalar calculation.', localScope,
@@ -109,9 +109,9 @@ function numericalModels() {
                       N('positive-identity', 'Σᵢmᵢdeg(Rᵢ²)=0 for Rᵢ∈ker(H:N²(Dᵢ)→N³(Dᵢ))', P('prop:positive-model', 'Companion residual theorem'), 'The residual theorem is a supplied model input.', undefined, 'hypothesis'),
                       N('positive-form', 'deg(xy) is positive definite on every P²_H(Dᵢ)', P('prop:positive-model', 'Positivity hypothesis'), 'The statement is over rational numerical classes; the supplied list includes abelian fourfolds and the stated projective-bundle hosts.', undefined, 'hypothesis'),
                     ])),
-                N('positive-witness', 'The numerical and dominant witness descent hypotheses hold', numerical, 'Preserve the finite extension and all multiplicities of the supplied witness.', undefined, 'hypothesis'),
+                N('positive-witness', 'Numerical detection and dominant witness descent apply to the supplied lift', numerical, 'Given the corrected pure lift, the proved detector and native covariance descend its zero obstruction. Preserve the finite extension and every multiplicity of the supplied smooth projective dominant witness.', undefined, 'proved'),
               ])),
-          N('positive-endpoints', 'Degrees 1,3,4 are covered by endpoint and one-cycle vanishing', P('prop:endpoint-input', 'Remaining fourfold degrees'), 'Use those established conditional inputs on the original variety.'),
+          N('positive-endpoints', 'Degrees 1,3,4 are covered by endpoint and one-cycle vanishing', P('prop:endpoint-input', 'Remaining fourfold degrees'), 'The proved divisor, one-cycle and zero-cycle cases apply on the original smooth projective fourfold, with its original valued field and all actual tests.', undefined, 'proved'),
         ])));
   const symmetry = T('symmetry', 'Multiplicity-free finite-group actions',
     'The invariant residual is totally isotropic; a multiplicity-free nondegenerate representation has no such nonzero submodule.', localScope + ' The regular projective model has n≥4 and a finite group preserving the numerical ample class H.',
@@ -131,14 +131,14 @@ function numericalModels() {
                       N('symmetry-hypotheses', 'The relevant rational primitive representation is multiplicity-free and Q is nondegenerate', P('prop:symmetry-model', 'Representation and intersection conditions'), 'In dimension four, numerical duality and divisor Hodge index supply nondegeneracy.', undefined, 'hypothesis'),
                     ])),
               ])),
-          N('symmetry-descent', 'Zero residual gives an admissible lift and native obstruction descent', numerical, 'Use the same model comparison as in the numerical criterion.', undefined, 'hypothesis'),
+          N('symmetry-descent', 'Zero residual supplies an admissible lift to which native descent applies', numerical, 'The residual-to-lift construction remains a supplied model condition. Once that lift is given, the numerical detector and native obstruction descent are proved.', undefined, 'hypothesis'),
         ])), [
       N('symmetry-fourfold', 'In dimension four the full-group criterion gives every complementary height', P('prop:symmetry-model', 'Fourfold and subgroup consequences'),
         'For a restricted e-sector in higher dimension, the resulting subgroup pairs with the admitted complementary group.',
         G('all', 'The codimension-two conclusion AND the other degrees at every completion',
           'Fourfold endpoint and one-cycle vanishing supplies degrees 1,3,4; the two-degree criterion then supplies the full pairings.', [P('prop:symmetry-model', 'Fourfold completion'), P('lem:two-degrees', 'Global assembly')], [
             L('symmetry-fourfold-input', 'Full codimension-two vanishing at each completion', 'symmetry-main', 'Use e=1 and n=4, with the model hypotheses satisfied at every finite place.'),
-            N('symmetry-other-degrees', 'Endpoint, one-cycle and global reciprocity inputs', P('prop:endpoint-input', 'Remaining degrees'), 'All the global analytic assumptions continue to apply.', undefined, 'hypothesis'),
+            N('symmetry-other-degrees', 'Endpoint and one-cycle vanishing, followed by kernel-domain reciprocity', P('prop:endpoint-input', 'Remaining degrees'), 'The proved local cases cover degrees 1,3,4. H16 supplies the height once BOTH complementary classes belong to every local kernel; the codimension-two model conditions remain required at every finite place.', undefined, 'proved'),
           ])),
     ]);
   return {
@@ -161,9 +161,9 @@ function reductionStrata() {
   const assembly = T('assembly', 'From placewise models to global heights',
     'A full local criterion is chosen separately at every finite place; its original-field vanishing supplies both global factors.', heightScope,
     N('main', 'Every complementary homological pair has a height', P('sub:ordinary-reduction', 'Good or ordinary reduction and global assembly'),
-      'This is conditional on the stated analytic inputs. The local witnesses and their auxiliary extensions may depend on the place.',
+      'The local witnesses and their auxiliary extensions may depend on the place. Each chosen model criterion retains all of its geometric and comparison conditions; H16 supplies the height once both local-kernel memberships have been established.',
       G('all', 'All finite completions AND the admitted-domain reciprocity theorem',
-        'Each local criterion gives every codimension, so both r and n+1−r lie in the intersection of the local kernels.', [P('lem:two-degrees', 'Both complementary groups'), P('hyp:height-input', 'Reciprocity input')], [
+        'Each local criterion gives every codimension, so both r and n+1−r lie in the intersection of the local kernels.', [P('lem:two-degrees', 'Both complementary groups'), P('hyp:height-input', 'Theorem: kernel-domain reciprocity')], [
           N('placewise', 'At EACH finite place, one applicable full local criterion holds', P('sec:models', 'Alternative local model criteria'),
             'For a fixed variety, the choice of criterion can vary with the finite place.',
             G('any', 'Choose an applicable local criterion, including all of its hypotheses',
@@ -174,8 +174,8 @@ function reductionStrata() {
                 L('strata-link', 'The all-strata criterion, including Drinfeld presentations', 'strata-main', 'Every connected closed geometric stratum and the full weight–monodromy input are required.'),
                 L('degenerate-link', 'The totally degenerate criterion', 'degenerate-main', 'Supply all integral cycle-class and primitive positivity hypotheses on the actual witness.'),
               ])),
-          N('global-input', 'The full analytic, residue and reciprocity height input', P('hyp:height-input', 'Independent global construction'),
-            'Good-place vanishing, archimedean terms, absolute normalization and rational-equivalence descent are not consequences of a special-fibre description alone.', undefined, 'hypothesis'),
+          N('global-input', 'The proved height and reciprocity construction on both local kernels', P('hyp:height-input', 'Theorem: global kernel-domain height'),
+            'Once both classes lie in every native local kernel, H16 gives good-place vanishing, archimedean terms, absolute normalization and rational-equivalence descent. The placewise model hypotheses still establish the required membership.', undefined, 'proved'),
         ])));
   const ordinaryTree = T('ordinary', 'Ordinary quadratic singularities',
     'Resolve an actual ordinary local model into a reduced quadric forest, correct numerically, and descend the native obstruction.', localScope + ' dim X=n≥3. The supplied integral flat projective model has integral geometric special fibre, smooth except at finitely many ordinary quadratic points with smooth projectivized tangent quadrics.',
@@ -194,7 +194,7 @@ function reductionStrata() {
                 L('ordinary-even-n', 'Residue two, even n≥4: the explicit degenerate-node chain', 'node-chain', 'The separate tree retains the actual étale equation, the finite order q and the q blowups.'),
               ])),
           N('ordinary-native-descent', 'Descent divides by the COMPLETE common field degree', P('sub:covariance', 'Native finite and dominant detection'),
-            'The descent hypothesis returns zero obstruction to the original field with its fixed absolute value. The established prescribed Green-pair theorem then supplies the exact-support correction.', undefined, 'hypothesis'),
+            'The proved native covariance and full-degree finite descent return zero obstruction to the original field with its fixed absolute value. The prescribed Green-pair theorem then supplies the exact-support correction. The numerical forest and its witness remain the stated model inputs.', undefined, 'proved'),
         ])), [
       N('ordinary-new-cycles', 'The construction reapplies to all new cycles after every finite extension', ordinary,
         'This statement is stronger than compatibility only for pullbacks of old cycles.',
@@ -242,7 +242,7 @@ function reductionStrata() {
                     ])),
               ])),
           L('strata-repair-input', 'The ramified semistable repair retains the closed-stratum property', 'repair-main', 'This makes the argument applicable to every newly specified cycle and finite valued extension.'),
-          N('strata-detector', 'The companion model criterion and complete-degree native descent', strata, 'The curved-pair correction returns to the exact support on the original valued variety.', undefined, 'hypothesis'),
+          N('strata-detector', 'The companion model criterion and complete-degree native descent', strata, 'The companion stratum criterion still must supply the required numerical lift. Its subsequent actual detection, complete-degree native descent and exact-support curved-pair correction are proved.', undefined, 'hypothesis'),
         ])));
   const repair = T('repair', 'Why ramified repair preserves the stratum condition',
     'Toroidal factorization expresses the repaired strata through operations that preserve actual rational Chow motives of abelian type.', localScope,
@@ -296,7 +296,7 @@ function reductionStrata() {
                     ])),
                 N('degenerate-comparison', 'The companion rational-period / local Abel–Jacobi comparison', degenerate, 'The detector period and its native intersection degree are retained exactly.', undefined, 'hypothesis'),
               ])),
-          N('degenerate-detector', 'Finite actual detection, support reconstruction and full-degree descent', degenerate, 'All auxiliary constants are descended; the original support complement is restored.', undefined, 'hypothesis'),
+          N('degenerate-detector', 'Finite actual detection, support reconstruction and full-degree descent', degenerate, 'The finite-period reconstruction requires its stated exact detector comparison. Given that comparison, the proved native descent retains all auxiliary field degrees and the original support complement.', undefined, 'hypothesis'),
         ])));
   const totalDetection = T('degenerate-detection', 'Integral strata give the required detector tests',
     'A finite constant extension defines the integral generators, and cycle-class duality identifies the actual incidence-compatible numerical groups.', localScope,
@@ -359,7 +359,7 @@ function arithmeticFamilies() {
                 N('assembly-distinguished', 'The chosen distinguished model has the stated uniform finite-extension theorem', P('sec:models', 'Companion model hypotheses'), 'A monodromy rank calculation by itself is not this vanishing theorem.', undefined, 'hypothesis'),
                 N('assembly-ordinary', 'At the other places the good or ordinary criterion applies', P('thm:ordinary', 'Ordinary quadratic criterion'), 'Check every completion, including those above residue characteristic two.', undefined, 'hypothesis'),
               ])),
-          N('assembly-global', 'The admitted-domain analytic height and reciprocity hypotheses', P('hyp:height-input', 'Independent height construction'), 'Both local kernels, archimedean terms, absolute normalization and Chow descent are required.', undefined, 'hypothesis'),
+          N('assembly-global', 'The height and reciprocity theorem on both local-kernel domains', P('hyp:height-input', 'Theorem: global kernel-domain height'), 'For classes in BOTH local-kernel domains, H16 provides archimedean terms, absolute normalization, symmetry and Chow descent. The family model conditions must establish that membership at every finite place and after each stated extension.', undefined, 'proved'),
         ])), [
       N('hypersurface-ci-main', 'Hypersurfaces and complete intersections', ci,
         'The ordinary hypersurfaces are dense over ℚ; the successive-section construction uses one fixed extension of the specified initial field.',
@@ -494,15 +494,15 @@ function arithmeticFamilies() {
           L('products-host', 'M×P¹: the full positive-fourfold-host construction', 'host-main', 'The primary PSH22/AS22-local route uses the uniform signature. A separate SU22/RB18 sufficient route also requires uniform boundary curve comparison.'),
         ])));
   const positiveHost = T('positive-host', 'The positive-fourfold-host suspension',
-    'PSH22 uses the uniform signature through the independent PC16 obstruction argument and RI18 norm detection. SU22/RB18 gives another sufficient route with an additional curve-comparison gate. The incidence join and section module supply the rank and density.', familyScope + ' M is a supplied smooth projective geometrically integral fourfold over the WHOLE number ring of F₀; odd p is unramified in F₀. H is sufficiently positive for very ampleness, normal generation and section base change. Let c=deg H⁴. The primary PSH22/AS22-local proof requires the displayed uniform signature, with its explicit analytic inputs. Uniform CCℓ(Fᵢ), for fixed ℓ≠p, belongs only to the alternative SU22/RB18 route.',
+    'PSH22 uses the uniform signature through the independent PC16 obstruction argument and RI18 norm detection. SU22/RB18 gives another sufficient route with an additional curve-comparison gate. The incidence join and section module supply the rank and density.', familyScope + ' M is a supplied smooth projective geometrically integral fourfold over the WHOLE number ring of F₀; odd p is unramified in F₀. H is sufficiently positive for very ampleness, normal generation and section base change. Let c=deg H⁴. The primary PSH22/AS22-local proof requires the displayed uniform signature, its supplied residual and operational-lift constructions, and its exact period comparison. Uniform CCℓ(Fᵢ), for fixed ℓ≠p, belongs only to the alternative SU22/RB18 route.',
     N('host-main', 'One fixed F/F₀ unramified above p supports a dense complete-height family in the full |(H⊠O(1))⁵|', products,
       'rank N⁴=4(5c−4), b₁(X)=b₁(M), b₂(X)=b₂(M)+1. The unramified condition concerns only the initial F/F₀; full heights persist after EVERY subsequent finite F′/F, including ramified extensions.',
       G('all', 'All-place local vanishing AND global height theory AND full-coefficient pencils AND the separate invariants',
-        'The coefficient module and prepared data feed the common dense-pencil construction. The local theorems put BOTH complementary groups in the kernels at EVERY finite place; the independent global height hypotheses then supply reciprocity and the pairing. The incidence and Betti calculations give the separate stated invariants.', [products, positiveHostSource, pencils, P('hyp:height-input', 'Independent admitted-domain height theorem')], [
+        'The coefficient module and prepared data feed the common dense-pencil construction. The local theorems put BOTH complementary groups in the kernels at EVERY finite place; the proved kernel-domain height theorem then supplies reciprocity and the pairing. The incidence and Betti calculations give the separate stated invariants.', [products, positiveHostSource, pencils, P('hyp:height-input', 'Independent admitted-domain height theorem')], [
           N('host-vanishing', 'The five-divisor / five-point local model has all-new-cycle vanishing', products,
             'At each distinguished completion K, either complete source route treats EVERY finite valued L/K and EVERY newly specified geometrically homologically trivial rational cycle on X_L. No new cycle is assumed to descend to K.',
             G('any', 'PSH22 signature-only route OR the SU22/RB18 signature-plus-CCℓ route',
-              'AS22-local explicitly proves the first route without a double-curve comparison hypothesis, using PC16 and RI18. The second route uses the separate double-comparison gate of SU22 and RB18. Each branch retains its own complete analytic inputs.', [products, positiveHostSource, positiveLocal, suspension, ramified], [
+              'AS22-local explicitly proves the first route without a double-curve comparison hypothesis, using PC16 and RI18. The second route uses the separate double-comparison gate of SU22 and RB18. Each branch retains its complete model and period-comparison conditions; the numerical detector and covariance steps are proved.', [products, positiveHostSource, positiveLocal, suspension, ramified], [
                 N('host-signature-route', 'PSH22: the uniform signature gives the full new-cycle domain', positiveHostSource,
                   'Primitive-positive components feed PC16 directly. Its obstruction-zero result holds anew over every unramified extension; RI18 then treats every finite valued extension.',
                   G('all', 'Prepared geometry AND uniform signature AND PC16 native obstruction zero AND RI18',
@@ -510,7 +510,7 @@ function arithmeticFamilies() {
                       N('host-signature', 'b⁻(N²(Mₖ′)ℝ,deg xy)=ρ(Mₖ′)−1 for EVERY v∣p and EVERY finite k′/k(v)', P('eq:host-signature', 'Exact signature quantifier'), 'Everywhere-good abelian fourfolds, the stated projective-bundle hosts and P⁴ supply the listed numerical signatures on the whole native numerical groups. This is the primary PSH22 hypothesis.', undefined, 'hypothesis'),
                       N('host-strata', 'Five divisors and five distinct P¹ points have the stated prepared intersections', products, 'One-, two- and three-divisor intersections are smooth geometrically integral; fourfold intersections are split finite étale of degree c; fivefold intersection is empty. The smoothing cuts strata transversely and avoids zero-dimensional strata.', undefined, 'hypothesis'),
                       L('host-signature-unramified', 'AS22-local and PC16 give Ob=0 for all new unramified classes', 'host-unramified-domain', 'Use the same actual ordered geometry and full numerical signature over each finite constant field.'),
-                      L('host-signature-all-finite', 'RI18 norm detection gives Ob=0 after EVERY finite valued extension', 'host-all-finite-domain', 'The exact FD17 period kernel, its analytic inputs and the complete final field degree remain explicit.'),
+                      L('host-signature-all-finite', 'RI18 norm detection gives Ob=0 after EVERY finite valued extension', 'host-all-finite-domain', 'The exact FD17 period kernel remains an explicit condition. The proved native descent retains the complete final field degree.'),
                     ])),
                 N('host-cc-route', 'SU22/RB18: uniform signature plus boundary CCℓ gives the full domain', suspension,
                   'This alternative sufficient proof requires the extra CCℓ gate; it does not restrict the preceding PSH22 route.',
@@ -526,7 +526,7 @@ function arithmeticFamilies() {
           N('host-coefficients', 'Serre vanishing and a sufficiently high Veronese supply FULL coefficients and jets', products, 'Apply the congruence-pencil lemma over one fixed extension unramified above p; use ordinary comparison elsewhere.', undefined, 'hypothesis'),
           L('host-pencil-construction', 'The prepared full coefficient system gives the fixed-field dense-pencil construction', 'pencils-main', 'PSH22 supplies the finite residue preparation and jets before choosing the pencil directions; the field remains fixed as the exceptional spreading sets vary.'),
           L('host-other-places', 'Good or ordinary comparison holds at EVERY other finite completion', 'assembly-ordinary', 'PSH22 checks smooth replacement fibres at the prepared exceptional places and smooth or odd-characteristic one-node fibres elsewhere; residue characteristic two lies in the smooth regime. The criterion reapplies to every new class after every finite extension.', 'hypothesis'),
-          L('host-global-height', 'The independent admitted-domain analytic height and reciprocity input', 'assembly-global', 'Retain BOTH complementary local kernels, archimedean terms, absolute normalization, symmetry and rational-equivalence descent.', 'hypothesis'),
+          L('host-global-height', 'The proved height and reciprocity theorem on both local kernels', 'assembly-global', 'Retain BOTH complementary local kernels, archimedean terms, absolute normalization, symmetry and rational-equivalence descent.', 'proved'),
         ])), [
       N('host-projective-example', 'For M=P⁴, H=O(1), p=5: rank N⁴=4 and (b₁,b₂)=(0,2)', products,
         'These are bidegree-(5,5) fourfolds in P⁴×P¹.',
@@ -565,12 +565,12 @@ function arithmeticFamilies() {
           N('host-pc16-obstruction', 'PC16 kills the actual obstruction in every degree 1≤r≤4', positiveComponents,
             'For r=2, positive weights and primitive positive definiteness force every canonical residual component to be zero. The other three degrees use the separately established endpoint and one-cycle inputs.',
             G('all', 'Primitive positivity AND canonical weighted residuals AND a pure operational witness AND native detection',
-              'For r=2 the imported identities give Rᵢ∈P²_H(Dᵢ) and Σmᵢdeg(Rᵢ²)=0. Hence every Rᵢ=0. The residual theorem supplies a rational model Chow lift with zero component numerical restrictions; its pure operational character gives the native obstruction-zero certificate.', [products, positiveComponents, P('prop:numerical', 'The analytic numerical-model interface')], [
+              'For r=2 the imported identities give Rᵢ∈P²_H(Dᵢ) and Σmᵢdeg(Rᵢ²)=0. Hence every Rᵢ=0. The residual theorem supplies a rational model Chow lift with zero component numerical restrictions; its pure operational character gives the native obstruction-zero certificate.', [products, positiveComponents, P('prop:numerical', 'Proposition: actual numerical-model detection')], [
                 L('host-pc16-positive-input', 'Use positivity of the entire primitive component groups', 'host-components-positive', 'This is the input to PC16. The separate statement U₂=0 is not substituted for it.'),
                 N('host-canonical-residual-input', 'Rᵢ∈P²_H(Dᵢ) and Σᵢmᵢdegₖ′(Rᵢ²)=0 for the specified homological class', positiveComponents, 'PC16 explicitly imports r15res:canonical-residual and r15iso:total-isotropy. They remain supplied historical inputs; no new proof of their original dossiers is asserted here. Each mᵢ and every residue-field degree is positive.', undefined, 'hypothesis'),
                 N('host-operational-lift-input', 'Residual zero supplies a pure operational K₀ witness for the same generic class', positiveComponents, 'Use PC16’s imported r12n:K0 construction. Its degree-two character has zero degree on EVERY integral vertical two-cycle and generic character exactly the prescribed pulled Chow class.', undefined, 'hypothesis'),
-                N('host-native-detector-input', 'Actual model-Chern detection and dominant/finite obstruction injection', positiveComponents, 'The detector kills the upstairs actual curvature in the original valued-field theory. The supplied dominant Bott–Chern injection and full finite-constant injection descend Ob=0, retaining ramification, native residue degrees and the original absolute value. These analytic interfaces remain conditional.', undefined, 'hypothesis'),
-                N('host-other-degrees-input', 'r=1,3,4 use the conditional divisor, one-cycle and zero-cycle results', P('prop:endpoint-input', 'The remaining fourfold degrees'), 'PC16 applies those inputs over the current K′ to every new homological class. The same actual curved-pair reconstruction returns the specified exact support and all actual tests.', undefined, 'hypothesis'),
+                N('host-native-detector-input', 'Actual model-Chern detection and dominant/finite obstruction injection', P('prop:numerical', 'Proposition: actual model-Chern detection'), 'Given the supplied pure operational lift, the proved detector kills its actual curvature on the original valued-field theory. Native dominant Bott–Chern injection and full finite-constant injection then descend Ob=0, retaining ramification, native residue degrees and the original absolute value. The residual-to-lift input remains separate.', undefined, 'proved'),
+                N('host-other-degrees-input', 'r=1,3,4 use the proved divisor, one-cycle and zero-cycle results', P('prop:endpoint-input', 'The remaining fourfold degrees'), 'PC16 applies those inputs over the current K′ to every new homological class. The same actual curved-pair reconstruction returns the specified exact support and all actual tests.', undefined, 'proved'),
               ])),
         ])), [
       N('host-full-u2', 'The same primitive positivity also gives the entire U₂=0', positiveLocal,
@@ -602,17 +602,17 @@ function arithmeticFamilies() {
                       N('host-global-torus', 'The normal-torus action extends and glues over every boundary chart', inertia, 'The normal characters have an integral lattice basis, transition factors come from base units, and the monomial charts are homogeneous. Connected-torus translation preserves numerical classes via proper flat families. Native constant-field degrees remain intact.'),
                     ])),
                 N('host-norm-cycle', 'B=p_*W is homologically trivial and p*B=Σg∈I gW in rational Chow', inertia, 'Over the geometric generic fibre the pushforward class is a sum of conjugate zero classes. Finite flat Galois pullback gives the actual norm identity with all cycle coefficients retained.'),
-                N('host-norm-ascent-input', 'Strong G for B ascends to p*B on ALL E-actual tests', inertia, 'Use the full finite actual trace and FG16 finite-constant comparison with the complete degree [E:K₀], its native cycle lengths and the original absolute value. This is an analytic input on the whole test space.', undefined, 'hypothesis'),
-                { ...N('host-exact-period-input', 'The supplied FD17/VT17 period detector has BOTH necessary and sufficient directions', periods, 'Its global ordinary D-closed actual tests realize the full ν coordinates. VT17 constructs the framed vertical tests, proves the transpose identity and gives the supplied-model converse. Necessity gives ν(p*B)=0 from strong G. FD17 sufficiency uses its exact numerical kernel and reconstructs strong G on the exact support with every actual test. The independent analytic audit remains unfinished.', undefined, 'hypothesis'), links: [verticalTests] },
+                N('host-norm-ascent-input', 'Strong G for B ascends to p*B on ALL E-actual tests', P('sub:covariance', 'Proposition: finite-constant covariance'), 'The proved full finite actual trace and finite-constant comparison retain the complete degree [E:K₀], all native cycle lengths and the original absolute value. They apply to the whole E-actual test space. The separate identification of those tests with the full FD17 period coordinates remains required.', undefined, 'proved'),
+                { ...N('host-exact-period-input', 'The supplied FD17/VT17 period detector has BOTH necessary and sufficient directions', periods, 'Its global ordinary D-closed actual tests realize the full ν coordinates. VT17 constructs the framed vertical tests, proves the transpose identity and gives the supplied-model converse. Necessity gives ν(p*B)=0 from strong G. FD17 sufficiency uses its exact numerical kernel and reconstructs strong G on the exact support with every actual test. The exact identification of the full period space, including both necessary and sufficient directions, remains a supplied condition; the proved trace and numerical-descent results do not establish it.', undefined, 'hypothesis'), links: [verticalTests] },
               ])),
           N('host-period-kernel-input', 'FD17:r17fd:numerical-kernel gives ker ν = ker Ob', periods, 'For ν=0, perfect numerical duality supplies an actual rational vertical correction. The model detector, dominant Bott–Chern injection and full finite-constant injection give native Ob=0. This explicit conditional lemma is the bridge; no general converse is taken from the earlier R11 sufficient criterion.', undefined, 'hypothesis'),
           N('host-final-field-descent', 'Return from E to L with the full [E:L] and reconstruct the original support', inertia,
-            'Native obstruction pullback injection descends Ob(W)=0. The finite actual trace and the supplied reconstruction preserve the complete original test space and the absolute value on L.',
+            'Given Ob(W)=0 from the preceding period-kernel argument, the proved native obstruction injection descends it to L. Full finite actual trace and the prescribed-pair reconstruction preserve the complete original test space and the absolute value on L.',
             G('all', 'Full-degree native obstruction injection AND exact-support actual reconstruction',
               'The final cycle is the original specified Z over L. The descended zero obstruction provides a global primitive of its original curvature, which is subtracted from its own exact-support curved pair.', [products, inertia, periods, P('prop:obstruction', 'Native obstruction and exact-support reconstruction')], [
-                N('host-full-degree-injection', 'Finite-constant obstruction injection retains the complete [E:L]', P('sub:covariance', 'Native covariance and full degrees'), 'Ramification and residue degrees are not replaced by a geometric sheet count. The norm on L is the initially prescribed one.', undefined, 'hypothesis'),
+                N('host-full-degree-injection', 'Finite-constant obstruction injection retains the complete [E:L]', P('sub:covariance', 'Native covariance and full degrees'), 'Ramification and residue degrees are not replaced by a geometric sheet count. The norm on L is the initially prescribed one.', undefined, 'proved'),
                 N('host-exact-reconstruction-input', 'Zero obstruction gives the original exact-support Green form', { href: '/papers/chow-obstruction-green-pairs#h22:correction', label: 'Proved curvature correction' }, 'Once the preceding descent gives zero obstruction, the established pair and a global actual primitive give a form on exactly X_Lᵃⁿ∖|Z|ᵃⁿ against every compact actual complementary test.', undefined, 'proved'),
-              ])),
+              ]), 'proved'),
         ])));
   const hostCurveComparison = T('positive-host-curve-gate', 'The uniform ample-boundary curve-comparison gate',
     'The full SU22 proof isolates a sufficient ambient comparison and proves the Gysin cancellation needed on each boundary. Its elliptic host supplies the ambient comparison through the cited product-of-curves theorem.',
@@ -647,7 +647,7 @@ function arithmeticFamilies() {
             L('host-projective-ample-cc', 'Apply the proved ambient-to-boundary CCℓ implication', 'host-boundary-cc', 'Use the ambient CC just calculated and SU22’s weak-Lefschetz / dual-Gysin isomorphism, with fixed ℓ≠p.'),
           ])),
       N('host-elliptic-curve-comparison', 'The E⁴ host supplies CCℓ on every ample boundary over EVERY finite constant extension', ellipticCC,
-        'For E/𝔽₅: y²=x³−x and its finite constant extensions, this is the curve-comparison part of SU22:r22su:host. The independently required signature and the analytic hypotheses retain their existing scope and status.',
+        'For E/𝔽₅: y²=x³−x and its finite constant extensions, this is the curve-comparison part of SU22:r22su:host. The uniform signature, the supplied CC comparison and the exact period conditions retain their stated scope and status; the native detector and covariance steps are proved.',
         G('all', 'The cited SP19 comparison for E⁴ AND the ample-boundary proof',
           'SU22 applies SP19 to E⁴ as a product of curves and then applies its proved ample-boundary lemma to each Fᵢ. Both statements apply afresh to every native curve after every finite constant extension.', [products, ellipticCC, ampleCC], [
             N('host-elliptic-ambient-cc', 'The supplied SP19 theorem gives CCℓ(E⁴ₖ′) for EVERY finite k′/𝔽₅', ellipticCC, 'This is the comparison input explicitly invoked in the full elliptic-host proof; it concerns the whole native curve group over each k′.', undefined, 'hypothesis'),
@@ -730,10 +730,10 @@ function classicalComparison() {
       'For z∈ℋʳ(X), w∈ℋⁿ⁺¹⁻ʳ(X), use only the formula whose complete geometric and model hypotheses are supplied.',
       G('all', 'The three scoped comparison theorems',
         'These are compatible comparison conclusions, not three simultaneous assumptions on every X. Each computes the same already constructed height and therefore is independent of its auxiliary choices.', [H('r16ha:motivic-formula', 'Abelian formula'), global, H('r16ha:alteration-comparison', 'Alteration formula')], [
-          L('overview-motivic', 'A Chow abelian factorization gives the normalized Künnemann sum', 'motivic-main', 'The normalization is 1/[E:ℚ] and the same fixed height sign is retained.'),
-          L('overview-model', 'Supplied regular numerically admissible lifts give normalized arithmetic intersection', 'global-main', 'The normalization is 1/[F:ℚ], with exact native finite-place factors and the archimedean convention.'),
-          L('overview-alteration', 'A degree-d alteration over E gives the factor 1/(d[E:ℚ])', 'alteration-main', 'The geometric degree and the number-field degree have different origins.'),
-        ])));
+          L('overview-motivic', 'A Chow abelian factorization gives the normalized Künnemann sum', 'motivic-main', 'The normalization is 1/[E:ℚ] and the same fixed height sign is retained.', 'proved'),
+          L('overview-model', 'Supplied regular numerically admissible lifts give normalized arithmetic intersection', 'global-main', 'The normalization is 1/[F:ℚ], with exact native finite-place factors and the archimedean convention.', 'proved'),
+          L('overview-alteration', 'A degree-d alteration over E gives the factor 1/(d[E:ℚ])', 'alteration-main', 'The geometric degree and the number-field degree have different origins.', 'proved'),
+        ]), 'proved'));
   const movingTree = T('moving', 'Move the cycles before pulling them to a correspondence',
     'Fibre-dimension stratification first bounds one inverse image, then permits the other cycle to avoid its closed image.', scope + ' T is smooth projective of dimension ℓ, a:T→V, b:T→X and r+q=ℓ+1; work over the original infinite field.',
     N('moving-main', 'Rationally equivalent Z,W have disjoint inverse supports and the required dimension bounds', moving,
@@ -744,12 +744,12 @@ function classicalComparison() {
             'B is closed because b is proper; r+q=ℓ+1 gives the last inequality.',
             G('all', 'Fibre-dimension stratification AND a proper-moving representative',
               'For a stratum with fibre dimension k, dim S+k≤ℓ. Proper intersection of Z with its closure gives dim a⁻¹|Z|≤ℓ−r.', moving, [
-                N('moving-strata', 'Finitely many fibre-dimension strata for a and b', moving, 'Use closures of the strata as the moving constraints.', undefined, 'hypothesis'),
-                N('moving-z', 'Move Z properly against every a-stratum closure over the original field', moving, 'Use the stated moving lemma, not an alteration of the field.', undefined, 'hypothesis'),
-              ])),
+                N('moving-strata', 'Finitely many fibre-dimension strata for a and b', moving, 'Use closures of the strata as the moving constraints.', undefined, 'proved'),
+                N('moving-z', 'Move Z properly against every a-stratum closure over the original field', moving, 'Use the stated moving lemma, not an alteration of the field.', undefined, 'proved'),
+              ]), 'proved'),
           N('moving-w', 'Move W properly against B and every b-stratum closure', moving,
-            'Since dim B≤q−1 and codim W=q, proper meeting means W∩B is empty; the b-strata also give dim b⁻¹|W|≤ℓ−q.', undefined, 'hypothesis'),
-        ])));
+            'Since dim B≤q−1 and codim W=q, proper meeting means W∩B is empty; the b-strata also give dim b⁻¹|W|≤ℓ−q.', undefined, 'proved'),
+        ]), 'proved'));
   const adjunctionTree = T('adjunction', 'Adjunction for an actual Chow correspondence',
     'Resolve each correspondence component, use refined Gysin cycles in proper position, and apply the height projection formula twice.', scope + ' Γ∈CHᵐ⁺ᵈ(V×X)ℚ, m=dim V, n=dim X and r+d+q=n+1.',
     N('adjunction-main', 'h_X(Γ∗z,w)=h_V(z,ᵗΓ∗w)', adjunction,
@@ -760,13 +760,13 @@ function classicalComparison() {
             'T has dimension n−d; its refined cycles A=a!Z and B=b!W have disjoint supports.',
             G('all', 'Properly moved refined cycles AND the two height projection formulas',
               'The b-projection gives the first equality. The a-projection and symmetry give the second. The action is on cycle classes, not an arbitrary pushforward of actual differential forms.', [adjunction, H('r16ha:first-projection', 'First projection'), H('r16ha:second-projection', 'Second projection')], [
-                L('adjunction-position', 'Use the simultaneous moving lemma', 'moving-main', 'The full refined Gysin cycles and their coefficients are used after movement.'),
-                N('adjunction-projection', 'The proper-slice projection formula and symmetry on the admitted domain', adjunction, 'Pullback membership and every stated height input are retained.', undefined, 'hypothesis'),
-                N('adjunction-chow', 'j∗[T]=[Γ] and refined Chow projection formulas', H('r16ha:refined-cycles', 'Refined coefficient identities'), 'The generic resolution degree is one, and all refined intersection coefficients remain present.', undefined, 'hypothesis'),
-              ])),
+                L('adjunction-position', 'Use the simultaneous moving lemma', 'moving-main', 'The full refined Gysin cycles and their coefficients are used after movement.', 'proved'),
+                N('adjunction-projection', 'The proper-slice projection formula and symmetry on the admitted domain', adjunction, 'Pullback membership and every stated height input are retained.', undefined, 'proved'),
+                N('adjunction-chow', 'j∗[T]=[Γ] and refined Chow projection formulas', H('r16ha:refined-cycles', 'Refined coefficient identities'), 'The generic resolution degree is one, and all refined intersection coefficients remain present.', undefined, 'proved'),
+              ]), 'proved'),
           N('adjunction-descent', 'Split non-geometrically-integral components over a finite E and descend', adjunction,
-            'Keep the flat cycle coefficients. Absolute height invariance cancels the full field factor; sum the components and rational coefficients.', undefined, 'hypothesis'),
-        ])));
+            'Keep the flat cycle coefficients. Absolute height invariance cancels the full field factor; sum the components and rational coefficients.', undefined, 'proved'),
+        ]), 'proved'));
   const motivic = T('motivic', 'The normalized abelian height formula',
     'Expand by the actual Chow diagonal, move each return correspondence to the second argument, and use the fixed abelian comparison.', scope + ' Over finite E/F, Δ_XE=Σⱼvⱼ∘uⱼ in rational Chow, with uⱼ of degree dⱼ through the abelian Aⱼ and vⱼ of degree −dⱼ.',
     N('motivic-main', 'h_X(z,w)=[E:ℚ]⁻¹Σⱼ⟨uⱼ∗z_E,ᵗvⱼ∗w_E⟩Kun', H('r16ha:motivic-formula', 'Motivic formula and proof'),
@@ -775,16 +775,16 @@ function classicalComparison() {
         'Absolute field invariance gives h_X=h_XE. Expand z_E by the actual diagonal, then apply adjunction term by term and the fixed-sign classical abelian formula.', [H('r16ha:motivic-formula', 'Complete formula'), adjunction, H('r16mm:abelian', 'Abelian identification')], [
           N('motivic-diagonal', 'The actual rational Chow identity recovers z_E', H('r16ha:factorization', 'The factorization data'),
             'The geometric transfer theorem supplies every required admitted domain on X and each abelian factor; a realization-only decomposition is insufficient.', undefined, 'hypothesis'),
-          L('motivic-adjunction', 'Move vⱼ from the first height factor to ᵗvⱼ on the second', 'adjunction-main', 'Use the admitted-domain identity with the stated complementary degrees.'),
-          N('motivic-abelian', 'h_AE=[E:ℚ]⁻¹⟨−,−⟩Kun with the same convention', H('r16mm:abelian', 'Fixed classical abelian normalization'), 'This identifies the already published classical height under the model comparison; no new existence claim is made.', undefined, 'hypothesis'),
-        ])), [
+          L('motivic-adjunction', 'Move vⱼ from the first height factor to ᵗvⱼ on the second', 'adjunction-main', 'Use the admitted-domain identity with the stated complementary degrees.', 'proved'),
+          N('motivic-abelian', 'h_AE=[E:ℚ]⁻¹⟨−,−⟩Kun with the same convention', H('r16mm:abelian', 'Fixed classical abelian normalization'), 'This identifies the already published classical height under the model comparison; no new existence claim is made.', undefined, 'proved'),
+        ]), 'proved'), [
       N('motivic-independent', 'The value is independent of factorization, splitting field and representatives', H('r16ha:motivic-formula', 'Independence assertion'),
         'Independence follows because each allowed formula computes the canonical left-hand height.',
         G('all', 'Equality with h_X AND the already established height invariances',
           'This does not assert that arbitrary collections of abstract bilinear forms are uniquely determined by the factorization.', [H('r16ha:motivic-formula', 'Choice independence'), P('hyp:height-input', 'Height invariance')], [
-            L('motivic-independent-formula', 'Every allowed choice computes h_X', 'motivic-main', 'The same proof applies after a common further finite extension.'),
-            N('motivic-independent-height', 'The canonical height descends through rational equivalence and finite field extension', P('hyp:height-input', 'Independent height construction'), 'These properties are part of the supplied height theorem.', undefined, 'hypothesis'),
-          ])),
+            L('motivic-independent-formula', 'Every allowed choice computes h_X', 'motivic-main', 'The same proof applies after a common further finite extension.', 'proved'),
+            N('motivic-independent-height', 'The canonical height descends through rational equivalence and finite field extension', P('hyp:height-input', 'Theorem: kernel-domain height invariance'), 'H16 proves these properties on the two local-kernel domains, with the fixed absolute height normalization.', undefined, 'proved'),
+          ]), 'proved'),
     ]);
   const vertical = T('vertical', 'The native vertical Cartier scalar',
     'The special-fibre multiplicity in the actual model measure cancels the valuation denominator at its divisorial point.', scope + ' K/ℚₚ has its prescribed absolute value, c_R=−log|ϖ|. The model is integral, normal, flat and projective of relative dimension t. P is a HOMOGENEOUS degree-t polynomial in model first Chern classes; all zero-cycle degrees are native degrees over its residue field k.',
@@ -793,10 +793,10 @@ function classicalComparison() {
       G('all', 'The actual model measure AND the native divisor valuation',
         'At ξᵢ the measure coefficient contains bᵢ, while g_E(ξᵢ)=c_R aᵢ/bᵢ. Multiplication cancels bᵢ exactly, without changing fields.', H('r16mm:vertical', 'Proof of vertical evaluation'), [
           N('vertical-measure', '[Pᵃⁿ]=Σᵢbᵢdegₖ(P|Yᵢ)δξᵢ', H('r16mm:vertical', 'Actual-product/model-measure comparison'),
-            'Use the frozen actual-product comparison and its continuous model-weight recursion on the normal model.', undefined, 'hypothesis'),
+            'Use the frozen actual-product comparison and its continuous model-weight recursion on the normal model.', undefined, 'proved'),
           N('vertical-value', 'g_E(ξᵢ)=c_R aᵢ/bᵢ', H('r16mm:vertical', 'Native valuation index'),
-            'The valuation index is bᵢ; it is not replaced by one. Normality and excellence provide the stated divisorial formal model.', undefined, 'hypothesis'),
-        ])));
+            'The valuation index is bᵢ; it is not replaced by one. Normality and excellence provide the stated divisorial formal model.', undefined, 'proved'),
+        ]), 'proved'));
   const cartier = T('cartier', 'The supported line-complex character over the trait',
     'A deformation over the DVR computes the exceptional contribution without forgetting the vertical or nonreduced support.', scope + ' For a nonzero line-bundle map L→M with Cartier zero scheme E, put M in homological degree zero.',
     N('cartier-main', 'chᵉ_r([L→M])∩[V]=(1/r!)Σⱼ₌₀ʳ⁻¹ mʳ⁻¹⁻ʲlʲ∩[E]', H('r16mm:cartier', 'Supported Cartier character'),
@@ -804,10 +804,10 @@ function classicalComparison() {
       G('all', 'The exceptional deformation identity AND the projective-bundle calculation',
         'On P=ℙ_E(N∨⊕O), N=M⊗L⁻¹, the zero-section class h satisfies h²=(m−l)h, π∗h=[E] and π∗1=0. Push eᵐ(1−e⁻ʰ) and take degree r−1.', H('r16mm:cartier', 'Deformation proof'), [
           N('cartier-deformation', 'Blow up ℙ¹_V along E×{∞}; the strict transform contributes zero', H('r16mm:cartier', 'General-base deformation'),
-            'The local chart A[t,y]/(ty−f), J=(y), is valid even for singular ambient or nonreduced E because f is a non-zero-divisor.', undefined, 'hypothesis'),
+            'The local chart A[t,y]/(ty−f), J=(y), is valid even for singular ambient or nonreduced E because f is a non-zero-divisor.', undefined, 'proved'),
           N('cartier-polynomial', 'The exceptional push is (eᵐ−eˡ)/(m−l)∩[E]', H('r16mm:cartier', 'Formal polynomial series'),
             'This quotient denotes its polynomial series, never inversion of a Chow class. Its degree r−1 part is the displayed sum.', undefined, 'proved'),
-        ])));
+        ]), 'proved'));
   const framedTree = T('framed', 'The concrete framed Green scalar',
     'Actual trace adjunction reduces a framed splitting presentation to line complexes; their native Cartier integrals reconstruct the supported character.', scope + ' Fix the complex C exact OFF its FULL model support and its generic trivialization; its generic support Z has pure codimension r or is empty. The testing W is integral, has dimension r−1 and is contained in X∖Z. The supplied R11 presentation has generic finite flat degree d; all analytic forms and integrations remain native over K.',
     N('framed-main', 'The concrete framed Green integral equals c_R times the supported character degree', framed,
@@ -818,12 +818,12 @@ function classicalComparison() {
             'The weights are the generic Artinian lengths eλ. Nilpotent and residue-degree data are not discarded.',
             G('all', 'Finite-flat generic testing cycle AND proper closure with its lengths',
               'The finite-flat rank gives the generic cycle identity; proper closure and pushforward retain those coefficients.', framed, [
-                N('framed-presentation', 'The actual framed splitting presentation and full finite trace identity', H('r16mm:presentation', 'Framed presentation'), 'The degree d is the full generic rank of the presentation, and the frame is fixed.', undefined, 'hypothesis'),
-                N('framed-lengths', 'Every generic testing component carries its Artinian multiplicity', H('r16mm:closure-degree', 'Testing multiplicities'), 'Normalize the closures without changing their weighted pushforward.', undefined, 'hypothesis'),
-              ])),
-          L('framed-vertical', 'Evaluate each vertical line-complex term natively', 'vertical-main', 'The special-fibre multiplicity cancels against its valuation denominator; residue degrees remain.'),
-          L('framed-cartier', 'Reassemble the supported line-complex Chern character', 'cartier-main', 'Bivariant pushforward gives d times the original supported character; this d cancels the presentation factor d⁻¹.'),
-        ])), [
+                N('framed-presentation', 'The specified supported complex, frame and finite-flat presentation', H('r16mm:presentation', 'Framed presentation'), 'Retain the fixed differential and full model support. The degree d is the complete generic rank of this presentation. The framed comparison uses the proved full actual trace identity for these data.', undefined, 'hypothesis'),
+                N('framed-lengths', 'Every generic testing component carries its Artinian multiplicity', H('r16mm:closure-degree', 'Testing multiplicities'), 'Normalize the closures without changing their weighted pushforward.', undefined, 'proved'),
+              ]), 'proved'),
+          L('framed-vertical', 'Evaluate each vertical line-complex term natively', 'vertical-main', 'The special-fibre multiplicity cancels against its valuation denominator; residue degrees remain.', 'proved'),
+          L('framed-cartier', 'Reassemble the supported line-complex Chern character', 'cartier-main', 'Bivariant pushforward gives d times the original supported character; this d cancels the presentation factor d⁻¹.', 'proved'),
+        ]), 'proved'), [
       N('framed-warning', 'A valid scalar comparison for an arbitrary generically trivial complex', framed,
         'This target still requires a specified frame. A zero absolute K₀ class or zero curvature does not supply its scalar.',
         G('blocked', 'Curvature alone loses the framed vertical scalar',
@@ -838,10 +838,10 @@ function classicalComparison() {
       G('all', 'Purity of the localized cap product AND the support Euler pushforward',
         'The lower localized components vanish after capping in the indicated dimensions. The degree-N product is the leading cycle product; its proper support push is the alternating residue length.', H('r16mm:euler', 'Pure-zero-dimensional Euler argument'), [
           N('euler-leading', 'The leading localized characters are [Z̄] and [W̄]; the cap product is pure zero-dimensional', H('r16mm:pure-zero', 'Cap and Adams purity'),
-            'Retain the support and use the stated cap/Adams argument, including vanishing of lower-dimensional contributions.', undefined, 'hypothesis'),
+            'Retain the support and use the stated cap/Adams argument, including vanishing of lower-dimensional contributions.', undefined, 'proved'),
           N('euler-support', 'The supported G₀–Chow identification matches every closed point', H('r16mm:euler', 'Supported Riemann–Roch and length'),
-            'Proper Euler push sends Oₓ to [κ(x):k]. Summing the derived cohomology lengths with signs gives the same degree.', undefined, 'hypothesis'),
-        ])));
+            'Proper Euler push sends Oₓ to [κ(x):k]. Summing the derived cohomology lengths with signs gives the same degree.', undefined, 'proved'),
+        ]), 'proved'));
   const localTree = T('local', 'Numerically admissible local lifts',
     'The concrete Green forms have zero curvature by the numerical detector; their framed scalar is the model intersection, and the second admissible lift removes its vertical difference.', scope + ' A regular projective model and numerically admissible pure lifts Θ_Z,Θ_W are supplied; the generic cycles are disjoint and r+s equals the total model dimension.',
     N('local-main', 'The local analytic term is c_R I(Θ_Z,Θ_W)', local,
@@ -849,17 +849,17 @@ function classicalComparison() {
       G('all', 'Concrete numerical Green forms AND framed/Euler evaluation AND the second numerical correction',
         'First evaluate against the closure W̄. Since Θ_W−[W̄] is vertical, numerical admissibility of Θ_Z kills its contribution and replaces W̄ by Θ_W.', local, [
           N('local-green', 'The supplied pure numerically admissible resolutions have zero ACTUAL curvature', local,
-            'The finite model detector applies in the exact operational degree and yields Green forms on the original cycle support complement.', undefined, 'hypothesis'),
+            'For the supplied pure lifts, the proved numerical model detector applies in the exact operational degree and gives zero curvature on ALL actual tests. The concrete Green forms remain on the original exact cycle support complement.', undefined, 'proved'),
           N('local-evaluation', 'The concrete scalar is c_R I(Θ_Z,[W̄])', local,
             'The supported character computation and Euler comparison are both needed for this equality.',
             G('all', 'Framed scalar comparison AND the pure Euler-length identity',
               'Use the exact supported complexes and retain all local multiplicities, including vertical generically acyclic terms.', [framed, H('r16mm:euler', 'Euler comparison')], [
-                L('local-framed', 'The native framed Green scalar', 'framed-main', 'Use the fixed generic trivialization.'),
-                L('local-euler', 'The supported-character / derived-Euler identity', 'euler-main', 'No proper special-fibre intersection is required.'),
-              ])),
+                L('local-framed', 'The native framed Green scalar', 'framed-main', 'Use the fixed generic trivialization.', 'proved'),
+                L('local-euler', 'The supported-character / derived-Euler identity', 'euler-main', 'No proper special-fibre intersection is required.', 'proved'),
+              ]), 'proved'),
           N('local-vertical', 'Θ_W−[W̄] is vertical and Θ_Z tests every vertical complementary cycle as zero', local, 'This is the full numerical admissibility condition, not only vanishing against selected components.', undefined, 'hypothesis'),
-          N('local-choice', 'The two-sided Green-choice independence theorem applies', local, 'It permits replacement of the concrete forms by the chosen admitted Green forms.', undefined, 'hypothesis'),
-        ])));
+          N('local-choice', 'The proved two-sided Green-choice independence theorem applies', local, 'Both cycles have strong G from their supplied admissible lifts. The theorem therefore permits replacement of the concrete forms by the chosen admitted Green forms.', undefined, 'proved'),
+        ]), 'proved'));
   const globalTree = T('global', 'The normalized global arithmetic-model formula',
     'Native local weights turn the finite scalar into the arithmetic finite-place degree; the specified Green convention supplies the matching archimedean half-factor.', scope + ' A regular projective arithmetic model over O_F and numerically admissible lifts of both classes are supplied, with arithmetic Green lifts of ZERO archimedean curvature.',
     N('global-main', 'h_X(z,w)=[F:ℚ]⁻¹ deĝ(Θ̂_Z·Θ̂_W)', global,
@@ -870,14 +870,14 @@ function classicalComparison() {
             'Here c_v=(log p)/e_v and the height weight is [F_v:ℚₚ]/[F:ℚ]=e_v f_v/[F:ℚ].',
             G('all', 'The native local comparison AND the complete local/global weights',
               'Multiplication cancels e_v and leaves f_v log p=log#k(v); residue lengths remain inside the intersection term.', [local, H('r16mm:weight', 'Normalization')], [
-                L('global-local', 'The local equality c_v I(Θ_Z,Θ_W)', 'local-main', 'Apply at every finite place to the supplied admissible model data.'),
-                N('global-native-weights', 'c_v=(log p)/e_v and [F_v:ℚₚ]/[F:ℚ]', H('r16mm:weight', 'Native scalar and height weight'), 'The full degree, including ramification and residue degree, is retained.', undefined, 'hypothesis'),
-              ])),
+                L('global-local', 'The local equality c_v I(Θ_Z,Θ_W)', 'local-main', 'Apply at every finite place to the supplied admissible model data.', 'proved'),
+                N('global-native-weights', 'c_v=(log p)/e_v and [F_v:ℚₚ]/[F:ℚ]', H('r16mm:weight', 'Native scalar and height weight'), 'The full degree, including ramification and residue degree, is retained.', undefined, 'proved'),
+              ]), 'proved'),
           N('global-infinite', 'At infinity the normalized analytic Green term matches the arithmetic half-sum', global,
-            'Both arithmetic Green lifts have ZERO archimedean curvature, so the star product reduces to its evaluation term. The Gillet–Soulé convention is −log|f|² and the analytic one is half of it; real places have weight one and complex places weight two.', undefined, 'hypothesis'),
+            'For the supplied arithmetic Green lifts of ZERO archimedean curvature, the star product reduces to its evaluation term. The Gillet–Soulé convention is −log|f|² and the analytic one is half of it; real places have weight one and complex places weight two.', undefined, 'proved'),
           N('global-moving', 'Generic movement, extended principal divisors and height Chow invariance', global,
-            'Rational equivalences change the lifts by their complete principal arithmetic divisors, including vertical terms; no proper special-fibre intersection is assumed.', undefined, 'hypothesis'),
-        ])));
+            'Rational equivalences change the lifts by their complete principal arithmetic divisors, including vertical terms; no proper special-fibre intersection is assumed.', undefined, 'proved'),
+        ]), 'proved'));
   const alteration = T('alteration', 'The alteration comparison and its two degrees',
     'The supplied upstairs model first gives downstairs membership; projection formula then gives the geometric factor, while the model normalization gives the number-field factor.', scope + ' f:Y→X_E is a smooth-projective generically finite alteration of degree d over a finite E/F; both pulled-back classes have supplied regular numerically admissible arithmetic lifts on Y.',
     N('alteration-main', 'h_X(z,w)=deĝ(Θ̂_f*z·Θ̂_f*w)/(d[E:ℚ])', H('r16ha:alteration-comparison', 'Alteration comparison and proof'),
@@ -889,17 +889,17 @@ function classicalComparison() {
             G('all', 'Numerical vanishing upstairs AND dominant detection AND finite-constant descent',
               'The local numerical criterion kills the pulled-back obstruction; dominant injectivity and then finite-field injectivity descend it.', H('r16ha:alteration-comparison', 'Exact membership descent'), [
                 N('alteration-lifts', 'The upstairs regular numerically admissible lifts are actually supplied', H('r16ha:alteration-comparison', 'Model hypothesis'), 'No general existence theorem for arbitrary classes is inferred.', undefined, 'hypothesis'),
-                N('alteration-detectors', 'The stated native dominant and finite-degree obstruction detectors', H('r16ha:alteration-comparison', 'Obstruction descent inputs'), 'Use the original support and complete field degree.', undefined, 'hypothesis'),
-              ])),
+                N('alteration-detectors', 'The proved native dominant and finite-degree obstruction detectors', H('r16ha:alteration-comparison', 'Obstruction descent inputs'), 'Use the original support and complete field degree.', undefined, 'proved'),
+              ]), 'proved'),
           N('alteration-degree', 'h_Y(f*z_E,f*w_E)=d h_XE(z_E,w_E)', H('r16ha:alteration-height', 'Height projection identity'),
             'This is adjunction together with f∗f*=d; it is applied after both domains have been established.',
             G('all', 'Adjunction AND the generic-degree Chow push–pull identity',
               'Apply the graph correspondence and then divide by the nonzero rational integer d.', adjunction, [
-                L('alteration-adjunction', 'The correspondence adjunction theorem', 'adjunction-main', 'Use the graph of f.'),
-                N('alteration-chow-degree', 'f∗f*=d on the relevant rational Chow classes', H('r16ha:alteration-comparison', 'Geometric degree'), 'd is the generic degree of f, not [E:ℚ].', undefined, 'hypothesis'),
-              ])),
-          L('alteration-global', 'The upstairs model formula contributes 1/[E:ℚ]', 'global-main', 'Absolute extension invariance then identifies h_XE with h_X.'),
-        ])));
+                L('alteration-adjunction', 'The correspondence adjunction theorem', 'adjunction-main', 'Use the graph of f.', 'proved'),
+                N('alteration-chow-degree', 'f∗f*=d on the relevant rational Chow classes', H('r16ha:alteration-comparison', 'Geometric degree'), 'd is the generic degree of f, not [E:ℚ].', undefined, 'proved'),
+              ]), 'proved'),
+          L('alteration-global', 'The upstairs model formula contributes 1/[E:ℚ]', 'global-main', 'Absolute extension invariance then identifies h_XE with h_X.', 'proved'),
+        ]), 'proved'));
   const recursion = T('recursion', 'Blowups, Shioda–Katsura joins and cyclic covers',
     'The actual codimension-two blowup identity supplies a negative exceptional summand; a finite-flat cover supplies its full generic rank.', scope,
     N('blowup-main', 'For the resolved join, h_H=(h_V−h_C)/d on the specified transforms', P('cor:height-recursion', 'Signed join recursion'),
@@ -909,15 +909,15 @@ function classicalComparison() {
           N('blowup-degree', 'g∗g*=d on the generic Chow groups', P('the-signed-join-recursion', 'Join degree'), 'This d is the generic degree of the actual resolved join map.', undefined, 'hypothesis'),
           N('blowup-sign', 'The codimension-two blowup formula has the negative center term', P('the-signed-join-recursion', 'Exceptional normal-bundle sign'),
             'The normal bundle of the exceptional divisor fixes the minus sign. The center classes have degrees r−1,s−1, whose sum is dim C+1.', undefined, 'hypothesis'),
-          L('blowup-adjunction', 'Transfer each summand by correspondence adjunction', 'adjunction-main', 'Zero or out-of-range homological terms are omitted; split components after finite extension with absolute normalization.'),
+          L('blowup-adjunction', 'Transfer each summand by correspondence adjunction', 'adjunction-main', 'Zero or out-of-range homological terms are omitted; split components after finite extension with absolute normalization.', 'proved'),
         ])), [
       N('cyclic-main', 'A finite-flat rank-M cover gives h_X=h_Y/M', P('eq:cyclic-height', 'Cyclic-cover height scalar'),
         'With an abelian factorization of the covering variety over E, this is (M[E:ℚ])⁻¹ times its Künnemann sum.',
         G('all', 'Finite-flat push–pull AND adjunction AND the covering formula',
           'The generic finite-flat rank M and the field degree [E:ℚ] are independent. Absorbing 1/M into a return correspondence yields the same formula.', P('the-cyclic-cover-scalar', 'Complete cyclic-cover calculation'), [
             N('cyclic-rank', 'f∗f*=M for the actual finite-flat covering map', P('the-cyclic-cover-scalar', 'Full rank identity'), 'Use its full rank with all cycle multiplicities.', undefined, 'hypothesis'),
-            L('cyclic-adjunction', 'Correspondence adjunction identifies the pulled-back height', 'adjunction-main', 'Both classes are in their admitted domains.'),
-            L('cyclic-motivic', 'The normalized abelian formula on Y', 'motivic-main', 'Its normalization contributes the separate number-field factor.'),
+            L('cyclic-adjunction', 'Correspondence adjunction identifies the pulled-back height', 'adjunction-main', 'Both classes are in their admitted domains.', 'proved'),
+            L('cyclic-motivic', 'The normalized abelian formula on Y', 'motivic-main', 'Its normalization contributes the separate number-field factor.', 'proved'),
           ])),
     ]);
   const metrics = T('metric-overview', 'Determinant metrics and Deligne pairings',
@@ -1470,13 +1470,13 @@ function arithmeticProperties() {
 
 // Bind the reading view to the exact unsigned public source bytes inspected above.
 // Locators refer to labels or literal subsection titles inside these source files.
-const B = (file, sha256, locators) => ({ file: 'public/projects/strong-green/editions/v0.5.1/' + file, sha256, locators });
-const pairingBinding = B('papers/pairing-constructions.tex', '246716570c7476e2ccac6f9b3c19eb55941aca9cf265e431e1f14502272311f1', ['sec:analytic', 'prop:numerical', 'sub:covariance', 'hyp:height-input', 'lem:two-degrees', 'sec:models', 'sec:heights']);
+const B = (file, sha256, locators) => ({ file: 'public/projects/strong-green/editions/' + (file.startsWith('papers/') ? 'v0.5.3/' : 'v0.5.1/') + file, sha256, locators });
+const pairingBinding = B('papers/pairing-constructions.tex', '68043edb59e398a63e217c6b32057b1e07ed8b17f79c3951b2389a7e24207f34', ['sec:analytic', 'prop:numerical', 'sub:covariance', 'hyp:height-input', 'lem:two-degrees', 'sec:models', 'sec:heights']);
 const modelsBinding = (locators) => B('source-files/pairing-cases/sections/models_families.tex', '34cfba218bf4653f55cf09aae936c3c3acc7047dd051b7561a0432a4b73e7138', locators);
 const determinantBinding = B('source-files/height-r2/sections/determinants.tex', 'b2d1a9edb46fe597686acc287641fca8c8ea3ffa1c40f88950b0473747169a1c', ['sec:poincare-metric', 'thm:quillen-isometry', 'thm:deligne-isometry', 'eq:grr-leading', 'cor:cycle-determinant', 'prop:good-reduction']);
 const chowGreenBinding = {
-  file: 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex',
-  sha256: '631e594925498df62e14f69e3776f6a5c29575fbc0b9d9b88dca1f2a4a05b920',
+  file: 'public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex',
+  sha256: '62e3177c413d01c5c7a429da778f784196db10cd8148e5d2ca665f6919616a5a',
   locators: ['h22:main', 'h22:correction'],
 };
 const bindings = {

@@ -6,10 +6,10 @@ import { progressProofGeometry } from './progress-proof-geometry.mjs';
 import { progressProofModels } from './progress-proof-models.mjs';
 import { progressProofRequirements } from './progress-proof-required.mjs';
 
-export const progressProofEdition = 'v0.5.2';
+export const progressProofEdition = 'v0.5.3';
 export const progressProofInventory = {
   file: 'strong-green/views/content/pairing-progress.mjs',
-  sha256: '286275e99eb294c21ed9348cc03a68fff529d503427eeacbb33584f25e2ac252',
+  sha256: '19fff3d51a12a5c8d27b978b21a23505bdaf0bd651a1d29e4dc34fd43e0c34a1',
 };
 export const progressProofPath = '/results/proof-diagrams';
 const authored = [...progressProofCore, ...progressProofGeometry, ...progressProofModels];
@@ -68,8 +68,9 @@ export function validateProgressProofs(records, revision, candidates = progressP
     if (missingTrees.length) throw Error('Required Progress proof trees missing from ' + item.caseId + ': ' + missingTrees.join(', '));
     for (const source of item.sourceBindings) {
       const historicalSource = /^(?:content\/strong-green\/releases\/v0\.5\.1\/papers\/|public\/projects\/strong-green\/editions\/v0\.5\.1\/)/.test(source.file || '');
-      const constructionSource = source.file === 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex';
-      if (!(historicalSource || constructionSource) || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !Array.isArray(source.locators) || !source.locators.length || Array.from(source.locators).some(locator => typeof locator !== 'string' || !locator.trim()))
+      const constructionSource = source.file === 'public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex';
+      const reviewedPaperSource = /^public\/projects\/strong-green\/editions\/v0\.5\.3\/papers\/(?:pairing-constructions|global-height-pairing|green-constructions|determinant-metrics)\.tex$/.test(source.file || '');
+      if (!(historicalSource || constructionSource || reviewedPaperSource) || source.file.includes('..') || !/^[a-f0-9]{64}$/.test(source.sha256 || '') || !Array.isArray(source.locators) || !source.locators.length || Array.from(source.locators).some(locator => typeof locator !== 'string' || !locator.trim()))
         throw Error('Invalid Progress proof source binding: ' + item.caseId);
     }
     const sourceFiles = new Set(item.sourceBindings.map(source => source.file));

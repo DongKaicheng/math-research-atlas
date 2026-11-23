@@ -1,0 +1,406 @@
+\section{Finite actual unit-symbol relations, including the entire Steinberg wall}
+\label{sec:r12-actual-unit-symbol-relations}
+
+\paragraph{Status and scope.}
+\textbf{PROVED THIS ROUND, submitted for independent exact-source review.}
+The constructor is \texttt{/root}.  This source supplies actual finite
+boundary witnesses for symmetry and Steinberg relations of the higher
+unit cochains of HCT.  It includes the nonproduct-unit relation on its
+entire ordinary domain, with the common vertex and all mixed directions
+retained.  The low-degree first-form Steinberg identity is already
+contained in frozen GPR13; (USR15) below is its explicit symmetric
+primitive interface, not a new low-degree phenomenon.  The new
+constructions are the all-degree anticommutator and permutation
+witnesses and the finite propagation of this frozen relation through
+the full HCT maps.  It is not a classification of all analytic actual zero
+relations, a claim that a higher raw matrix cell equals a unit cochain,
+or a general original-support Green theorem.
+
+Use the HCT array complex $L_k^s$ and its full actual maps $J_k$.
+All functions and forms live over the original $K$ and absolute value.
+For a scalar $a$ with $Da=0$, put $E_1(a)=a$.  In every degree set
+\[
+ E_k(a_1,\ldots,a_k)
+      =J_{k-2}(a_k,E_{k-1}(a_1,\ldots,a_{k-1}))\quad(k\ge2).
+ \tag{USR1}
+\]
+For $k=2$ this uses HCT4 and gives exactly the HCT15 pair.
+We also use $D$ as the cycle condition on $L_0$.
+
+\subsection{A full commutator of two unit homotopies}
+
+Let $a,b$ be actual scalars with $Da=Db=0$ and let
+$u\in L_j^s$ be a cycle: $\partial_j u=0$ if $j\ge1$, and
+$Du=0$ if $j=0$.  Define the actual tuple
+$Q_j(a,b;u)\in L_{j+3}^{s+2}$ by its single possibly nonzero
+component
+\[
+      (Q_j(a,b;u))_{j+1}=-ab\,d'u_j,
+                  \qquad (Q_j(a,b;u))_i=0\ (i\ne j+1).
+ \tag{USR2}
+\]
+
+\begin{lemma}[Actual anticommutator homotopy]
+There is the literal identity
+\[
+ J_{j+1}(a,J_j(b,u))+J_{j+1}(b,J_j(a,u))
+                         =\partial_{j+3}Q_j(a,b;u).
+ \tag{USR3}
+\]
+This applies also at $j=0$ with the HCT endpoint convention.
+\end{lemma}
+
+\begin{proof}
+The cycle condition implies $Du_j=0$: for $j\ge1$, apply $d''$
+to $d''u_{j-1}+d'u_j=0$; for $j=0$ it is the hypothesis.
+On a closed input the last two components of $J_j(b,u)$ are
+\[
+                  b\,d'u_j,\qquad d''b\wedge u_j;
+ \tag{USR4}
+\]
+its earlier components are $-d'b\wedge u_i$ for $i<j$.
+Formula (USR4) is also exactly HCT4 when $j=0$.
+The output is a cycle by HCT5--HCT6 and $Db=0$.
+
+Expanding both iterated $J$ expressions, their components with
+$i<j$ cancel by $d'a\wedge d'b+d'b\wedge d'a=0$.
+The final component cancels in the same way in the double-prime
+colour.  The only remaining components, at indices $j,j+1$, are
+\[
+                   -d'(ab)\wedge d'u_j,\qquad
+                   -d''(ab)\wedge d'u_j.
+ \tag{USR5}
+\]
+The possible terms with $Da,Db,Du_j$ have been retained before
+their stated vanishing.  Differentiating (USR2) gives precisely
+(USR5), since $d'^2u_j=0$ and $d''d'u_j=-Du_j=0$.
+This proves the full actual equality.  Its component bidegree
+$(s-j+1,s)$ is exactly the degree of slot $j+1$ of
+$L_{j+3}^{s+2}$.
+\end{proof}
+
+\subsection{Displayed adjacent-transposition and permutation witnesses}
+
+The $E_k$ are multilinear in the scalar inputs by their finite
+formulas.  Each is a cycle in $L_{k-1}^{k-1}$ by HCT.
+Let $s_i$ transpose positions $i$ and $i+1$ in an ordered list.
+Here is an explicit recursive actual tuple
+$C_{k,i}(a)\in L_k^{k-1}$ satisfying
+\[
+                E_k(a)+E_k(s_i a)=\partial_k C_{k,i}(a).
+ \tag{USR6}
+\]
+Start with
+\[
+                      C_{2,1}(a_1,a_2)=(0,a_1a_2,0).
+ \tag{USR7}
+\]
+For $k\ge3$ and $i\le k-2$ define
+\[
+ C_{k,i}(a)=-J_{k-1}(a_k,C_{k-1,i}(a_1,\ldots,a_{k-1})).
+ \tag{USR8}
+\]
+For $i=k-1$, take
+\[
+ C_{k,k-1}(a)=Q_{k-3}(a_k,a_{k-1};E_{k-2}(a_1,\ldots,a_{k-2})).
+ \tag{USR9}
+\]
+For $k=3$, the last input in (USR9) means $E_1(a_1)=a_1$.
+Formula (USR7) is checked by the product rule.  Formula (USR8)
+follows from the \emph{nonclosed} HCT identity applied to
+$C_{k-1,i}$, retaining its nonzero boundary and using only
+$Da_k=0$.  Formula (USR9) is (USR3).  These observations prove
+(USR6) in all degrees, including its signs and missing negative
+components.
+
+For completeness, this gives a finite witness for any permutation,
+without assuming coherence of a collection of choices.  Choose one
+specified finite adjacent-transposition word for $\sigma$, for
+example a fixed bubble-sort word.  If its successive lists are
+$a^{(0)}=a,a^{(1)},\ldots,a^{(L)}=\sigma a$, with the $j$th
+transposition at $i_j$, put
+\[
+ W_\sigma(a)=\sum_{j=1}^L(-1)^{L-j}C_{k,i_j}(a^{(j-1)}).
+ \tag{USR10}
+\]
+Then direct telescoping gives
+\[
+ E_k(\sigma a)-\operatorname{sgn}(\sigma)E_k(a)
+                              =\partial_k W_\sigma(a).
+ \tag{USR11}
+\]
+Different adjacent words are not asserted to give the same $W$;
+their difference is a next closed ambiguity.  That is a separate
+higher-coherence question, not needed for the displayed finite
+identity.  In particular, with
+\[
+ \overline E_k(a)=\frac1{k!}\sum_\sigma
+                         \operatorname{sgn}(\sigma)E_k(\sigma a),
+ \qquad
+ V_k(a)=\frac1{k!}\sum_\sigma
+                         \operatorname{sgn}(\sigma)W_\sigma(a),
+ \tag{USR12}
+\]
+one has the actual equality $\overline E_k-E_k=\partial_k V_k$.
+If two inputs coincide, (USR6) and an actual permutation witness
+give an explicit boundary for $E_k$; no abstract choice of a
+primitive is used.
+
+\subsection{The entire actual Steinberg identity}
+
+\paragraph{Frozen low-degree input and the displayed interface.}
+Frozen GPR13 proves the entire actual first-form relation
+$\mathfrak s(x-y,z-y)=0$ for the three analytic units
+$(z_1,z_2,z_1+z_2)$, including the common vertex and every refined
+tropical cell.  Apply it to $(\lambda,1-\lambda,1)$ and use the
+product rule together with $ab=c^2$ in (USR13)--(USR14).
+It gives (USR15).  We include a direct all-refinement verification
+to fix the symmetric primitive and its coefficient-zero extension;
+this does not reclassify GPR13 as a result of this round.
+
+Let $\lambda$ and $1-\lambda$ both be analytic units on an ordinary
+open $N$.  Set
+\[
+ a=v(\lambda),\qquad b=v(1-\lambda),\qquad
+                 c=\min(a,0)=\min(b,0),\qquad F=c^2/2.
+ \tag{USR13}
+\]
+The equality of the two minima follows at every analytic point
+from the ultrametric inequality in its completed residue field.
+The point $(a,b)$ lies in the whole three-ray set
+\[
+ \mathcal Y=\{(t,0):t\ge0\}\ \cup\
+            \{(0,t):t\ge0\}\ \cup\
+            \{(t,t):t\le0\}.
+ \tag{USR14}
+\]
+
+\begin{theorem}[A finite actual Steinberg boundary]
+On all of $N$, in the original pair order $(\alpha,\beta)$,
+\[
+       e_{a,b}:=(a\,d''b,b\,d'a)=(d''F,d'F)
+                        =\partial_2(0,0,F).
+ \tag{USR15}
+\]
+Equivalently, in array order,
+$E_2(a,b)=\partial_2(0,F,0)$.
+\end{theorem}
+
+\begin{proof}
+All forms in (USR15) have finite common actual unit presentations.
+Their first derivatives have carrier codimension zero: their
+bidegrees are $(1,0)$ or $(0,1)$, which allow no positive
+delta-carrier codimension.  We verify the equality on every refined
+tropical presentation, not just on the two strict norm regions.
+
+On a cell mapping to the ray $(t,0)$, the restriction of $b$ and
+its tangential differential is zero, and $c=0$.  Both components
+of (USR15) vanish.  On a cell mapping to $(0,t)$ the same assertion
+holds with $a$ zero.  On a cell mapping to $(t,t)$ with $t\le0$,
+one has, as tangential functions and differentials,
+$a=b=c=t$; thus both sides are $t\,d''t$ and $t\,d't$.
+On any cell mapping to the common vertex, $a=b=c=0$ and the
+restricted coefficients and tangential differentials give zero.
+The traces of the first forms on the ends of the three rays also
+agree; their scalar factors vanish there.  There is no hidden
+lower-dimensional delta component in a first form of these degrees.
+
+More explicitly, take any affinoid domain inside $N$ and any finite
+unit refinement of $(\lambda,1-\lambda)$, together with any
+additional coefficient units used by other forms.  Refine its
+tropical cells by the inverse images of the three rays in (USR14).
+Every cell projects into one of those rays, since (USR14) holds at
+all analytic points.  The preceding tangential calculation shows
+that the refined tropical cycle wedged with either component of
+the difference in (USR15) is zero, including all boundary cells.
+The actual vanishing criterion, Mihatsch Definition 4.2 and
+Lemma 4.4, therefore gives the equality in actual $B$.
+This uses the criterion for \emph{every} unit refinement, not
+injectivity of one many-to-one tropical pushforward.
+
+Finally, the actual chain rule for $F=c^2/2$ gives $d'F=c\,d'c$
+and $d''F=c\,d''c$.  The last equality in (USR15) is the literal
+definition of the two-colour boundary.  No inference from an
+ordinary-smooth test identity is involved.
+\end{proof}
+
+There is a useful coefficient-zero extension of precisely this
+statement.  Suppose $\lambda$ is analytic on $N$ but may take the
+values $0$ or $1$.  On $N\setminus\{\lambda(1-\lambda)=0\}$
+use (USR15).  The scalar
+\[
+                        c=-\log\max(1,|\lambda|)
+ \tag{USR16}
+\]
+is actual on all of $N$ using the nowhere-zero tuple $(1,\lambda)$.
+Near $\lambda=0$ the ordinary inequality $|\lambda|<1$ makes
+$b=0$ and the entire pair in (USR15) zero; near $\lambda=1$,
+$|1-\lambda|<1$ makes $a=0$ and that pair zero.  The same
+ordinary neighborhoods have $c=0$.  Hence the pair and its
+displayed witness extend by the actual zero form there.  This is
+local sheaf gluing, not assignment of a value to $v(0)$ or a
+growth assumption.  No extension across a pole of $\lambda$ is
+asserted.
+
+\subsection{Higher Steinberg witnesses and the nonproduct triangle}
+
+For a list whose first two entries are as in (USR13), define
+\[
+ T_2=(0,F,0),\qquad
+ T_k=-J_{k-1}(a_k,T_{k-1})\in L_k^{k-1}\quad(k\ge3).
+ \tag{USR17}
+\]
+If the additional $a_j$ are original analytic-unit logarithms,
+then, on the entire ordinary open,
+\[
+                       E_k(a,b,a_3,\ldots,a_k)=\partial_kT_k.
+ \tag{USR18}
+\]
+Indeed HCT5 applied to the \emph{nonclosed} $T_{k-1}$ gives
+$\partial_kJ_{k-1}(a_k,T_{k-1})=-J_{k-2}(a_k,\partial_{k-1}T_{k-1})$.
+This proves (USR18) by induction.  It is important not to apply
+a closed-coefficient-only rule to $T_{k-1}$.
+For $k=3$, its array is particularly transparent:
+\[
+                      T_3=(0,F\,d'a_3,a_3d''F,0).
+ \tag{USR19}
+\]
+If the two Steinberg entries occur at any other positions while
+all entries are units, combine (USR10)--(USR11) with (USR17)
+to obtain an explicit actual witness.  In the coefficient-zero
+extension of (USR16), the ordered construction with those entries
+first remains identically zero near their zeros and extends in
+every degree.  No assertion is made that an arbitrary reordered
+witness, separately containing an unbounded $v(\lambda)$, extends
+without this check.
+
+Here is the complete nonproduct-unit relation in the coordinates
+required by the stress tests.  On the entire ordinary domain where
+$T_1,T_2,T_1+T_2$ are units, put
+\[
+ x=v(T_1),\qquad y=v(T_2),\qquad z=v(T_1+T_2),\qquad
+                            c=\min(x,y)-z.
+ \tag{USR20}
+\]
+Use $\lambda=T_1/(T_1+T_2)$ in (USR15); then
+$a=x-z$, $b=y-z$ and $c=\min(a,0)$.
+By exact bilinearity and (USR7), in the original pair order,
+\[
+ e_{x,y}-e_{x,z}-e_{z,y}
+       =\partial_2\left(0,0,\frac{c^2-z^2}{2}\right).
+ \tag{USR21}
+\]
+This retains the third, cancellation branch $x=y<z$ as well as
+the two strict dominant branches and the full common tie locus.
+It remains an actual equality after adjoining arbitrary passive
+unit coordinates and multiplying or differentiating any supplied
+actual expressions in them.  Equivalently, one may use the moving
+puncture presentation $(T,-b,T-b)$ on the original relative curve
+$T\notin\{0,b,\infty\}$ and then take any number of passive
+directions.  No product-factor assumption is imposed on their
+coefficients.
+
+\subsection{A concrete simplification of a supplied Gauss residue}
+
+Suppose a previously verified actual word relation has the literal
+form
+\[
+ p_1-p_0=\partial_2Q+e_{x,d}R^{r-2},\qquad
+ x=v(u),\quad y=v(v),\quad d=v(1+uv),
+ \tag{USR22}
+\]
+where $u,v,1+uv$ are analytic units on the whole stated ordinary
+open and $R$ is closed in both colours.  The frozen GPR relation
+is one instance, with its exact word and cap conventions left
+unchanged.  No assertion is made that arbitrary word relations
+have the form (USR22).
+
+The Steinberg input $\lambda=-uv$ gives, with
+$c=\min(x+y,0)$, the actual identity
+\[
+                   e_{x,d}+e_{y,d}
+                        =\partial_2(0,0,c^2/2).
+ \tag{USR23}
+\]
+In particular, if the independently checkable scalar identity
+\[
+                             x+y=\kappa x
+                 \quad\text{on the whole open},\qquad
+                             \kappa\in\mathbb R\setminus\{0\},
+ \tag{USR24}
+\]
+is supplied, then the original, specified relation becomes strict:
+\[
+ p_1-p_0=\partial_2\left(
+       Q+(0,0,c^2R^{r-2}/(2\kappa))\right).
+ \tag{USR25}
+\]
+For example $v=u^j$ gives (USR24) with $\kappa=j+1$ when
+$j\ne-1$, on the domain where $1+u^{j+1}$ is a unit.
+The equality (USR25) retains every term of the original $Q$;
+it does not replace that witness by another unspecified solution.
+If the relation (USR22) has already been independently zero-extended
+across coefficient zeros with $|uv|<1$, the correction in (USR25)
+has the same zero extension because $c=0$ there.  This last assertion
+requires that supplied original extension; it does not establish it
+for an arbitrary singular word.
+
+This is a strict-witness simplification for a specified loop, not a
+new independent regular-CI existence class.  Such a class would
+still require full finite overlap data and frozen RAG/RSP on the
+original exact $U$, followed by all actual compact-test verification.
+
+\subsection{Objects, topology, and limits of the symbol interpretation}
+
+The objects are the displayed actual $E_k$, and equivalence means
+difference by an explicitly constructed actual $\partial_k$ boundary.
+For analytic units, multiplicative additivity is literal because
+$v(\lambda\mu)=v(\lambda)+v(\mu)$; (USR6) supplies skew symmetry
+modulo actual boundaries; (USR18) supplies the Steinberg boundary.
+One may consequently map the algebraic unit-symbol quotient with
+these specified relations to
+$\ker\partial_{k-1}/\operatorname{im}\partial_k$ (using $\ker D$
+at degree zero).  This optional quotient is auxiliary.  It does
+not classify all actual cochains, is not asserted Hausdorff or
+complete, and never supplies a Green form in place of an actual
+representative.
+
+The cochain spaces retain their own inherited actual coefficient-final
+topologies and the auxiliary cohomology has its quotient topology.
+For every fixed finite unit list and finite word, all witnesses above
+use one finite common actual presentation and finite full Leibniz
+operations; their mixed coefficient seminorms have the corresponding
+fixed-stage estimates.  No global continuous choice of permutation
+witnesses, no universal Fr\'echet splitting, and no entire
+inherited-versus-final kernel comparison is inferred.
+
+Restrictions, refinements and the nonproduct analytic relations are
+handled before any quotient is formed.  The proof of (USR15) uses
+all refinements in the original field, including irrational-valued
+analytic points; there is no evaluation only on rational points.
+No field extension or rescaling of its absolute value occurs.
+The finite actual boundary formulas can be wedged with any specified
+jointly closed diagonal actual factor, retaining all mixed terms.
+This neither cancels that factor from another equation nor extends
+the scope to a nonclosed coefficient block, as forbidden by LTF.
+
+\paragraph{Exact inputs and primary-source interface.}
+HCT is used at
+\path{27af6c36a7819874f2a3137bf4ee6db4b8f8d4f7ffd99fc37d419b2144790549}.
+The lower pair convention is frozen CPT,
+\path{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6},
+and the all-refinement carrier method is the one retained in RAT,
+\path{4b21385df7d9727a3a011afc667320dc0e9bbed11b1584c8cd2ca568105c4333}.
+The analytic actual vanishing criterion was checked in the original
+text of A.~Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces},
+\texttt{arXiv:2112.10018v4}, 7 September 2024, Definition 4.2,
+Remark 4.3(1) and Lemma 4.4, at
+\url{https://arxiv.org/html/2112.10018v4}.
+Only the all-refinement zero criterion and codimension-zero tangential
+description are used; no arbitrary-current representability theorem
+or new assertion about proper pushforward is imported.
+GPR13 is the frozen low-degree Steinberg input, and GPR also supplies
+the separately assumed word interface (USR22).  Its exact source is
+\path{c846094675b5b002358fc5f731fde1229f1e324282fe42552c96fbfd115da6a3}.
+This source claims internal mathematical proofs, not external novelty,
+formal verification or external peer review.

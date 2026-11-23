@@ -1,0 +1,650 @@
+% Round 12, numerical-lift branch.  New files only; older rounds are unchanged.
+% This is an internal proof candidate.  The analytic conclusion explicitly
+% depends on the Round 10/11 actual-form foundations, not on a published G theorem.
+\section{Curve lifts on regular SNC models, with multiplicities}
+\label{r12n:section}
+
+\paragraph{Precise gain and status.}
+The reduced semistable curve correction was already an internal result
+of Round 9.  We prove its multiplicity-weighted extension below and then
+construct the original-model virtual vector bundle required by (OC4).
+This supplies a new connection to the actual Green-form problem rather
+than another formulation of (OC4).  In relative dimension three it
+applies to every geometrically homologically trivial codimension-two
+cycle on a supplied regular projective SNC model.  The word ``SNC''
+refers to the reduced support; the scheme-theoretic fibre may have
+arbitrary positive multiplicities.  No tameness assumption is imposed.
+The algebraic argument uses published divisor, intersection, and trace
+theorems.  The passage from the constructed witness to actual forms
+uses the expressly identified internal Round 10/11 results.
+
+Let $K/\mathbb Q_p$ be finite, let $R=K^\circ$, and let $k$ be its
+finite residue field.  Let $\mathcal X/R$ be a supplied integral,
+regular, flat, projective model of a smooth projective geometrically
+integral $n$-fold $X/K$, where $n\geq3$.  Assume
+\[
+       \mathcal X_k=\sum_{i\in I}m_iD_i,\qquad m_i\in\mathbb Z_{>0},
+       \qquad Y=(\mathcal X_k)_{\mathrm{red}}=\bigcup_iD_i
+\tag{NL1}\label{r12n:fibre}
+\]
+has strict normal crossings and all its closed strata are smooth over
+$k$.  Write $j_i:D_i\hookrightarrow\mathcal X$.  All Chow and numerical
+groups have rational coefficients.  Fix one relatively ample line
+bundle $H$ on $\mathcal X$ and use its restrictions on every stratum.
+All degrees are native degrees over $k$.
+
+\begin{theorem}[Original-model curve witness and strong G]
+\label{r12n:main}
+Let $Z$ be a prescribed rational codimension-$(n-1)$ cycle on $X$,
+and suppose, for one $\ell\ne p$, that
+\[
+          \operatorname{cl}_{\ell}(Z)=0
+          \quad\hbox{in }H^{2n-2}(X_{\bar K},\mathbb Q_\ell(n-1)).
+\]
+Then there is a rational virtual vector bundle
+$\xi\in K_0(\mathcal X)_{\mathbb Q}$ such that
+\[
+ \operatorname{ch}_{n-1}(\xi|_X)=[Z],\qquad
+ \deg\bigl(\operatorname{ch}_{n-1}(\xi|_V)\cap[V]\bigr)=0
+\tag{NL2}\label{r12n:witness}
+\]
+for every integral $(n-1)$-dimensional closed subvariety
+$V\subset\mathcal X_k$.  Consequently, under the actual-form
+foundations established internally in Rounds 10 and 11,
+\[
+       \mathfrak o_X^{n-1}([Z])=0,
+\]
+and strong G holds on exactly $X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}$
+over the original $K$, with its identity tested against all actual
+compactly supported test forms.
+\end{theorem}
+
+The proof occupies the following subsections.  It constructs the
+witness on $\mathcal X$ itself.  There is no analytic pushforward from
+an alteration in this proof, and the theorem does not assert that every
+smooth $X/K$ admits a regular SNC model over $R$.
+
+\subsection{The weighted divisor kernel}
+
+Put $V^a=\bigoplus_iN^a(D_i)_{\mathbb Q}$ and define the actual
+vertical incidence operator
+\[
+ A_a:V^a\longrightarrow V^{a+1},\qquad
+       A_a(v)=\left(j_i^!\sum_jj_{j*}v_j\right)_i.
+\tag{NL3}\label{r12n:actual-A}
+\]
+This notation is legitimate on numerical groups: restriction and
+Gysin maps between the smooth strata preserve numerical equivalence
+by projection, and the diagonal entry is the first Chern class of
+$N_{D_i/\mathcal X}$.  These descriptions also define $A_a$ directly.
+The principal-fibre relation in the regular model gives
+\[
+ m_i c_1(N_{D_i/\mathcal X})
+            =-\sum_{j\ne i}m_j[D_i\cap D_j].
+\tag{NL4}\label{r12n:normal}
+\]
+
+For each connected component $D_e$ of a double intersection, orient
+$e=(i,j)$ by $i<j$.  Likewise let $D_\tau$ denote a connected triple
+stratum.  Write $C^q$ for the rational space of functions on the
+connected $(q+1)$-fold strata, with the usual signed maps
+$d_0:C^0\to C^1$, $d_1:C^1\to C^2$.  In particular
+$(d_0c)_{ij}=c_j-c_i$ and
+$(d_1h)_{ijk}=h_{ij}-h_{ik}+h_{jk}$, with the indicated edges restricted
+to the connected triple in question.  Define
+\[
+ (\delta v)_e=v_j|_{D_e}-v_i|_{D_e},\qquad
+       \delta:V^1\longrightarrow\bigoplus_eN^1(D_e).
+\]
+Let $\gamma_0:C^1\to V^1$ be signed Gysin on constants: an edge
+has coefficient $-[D_e]$ on $D_i$ and $+[D_e]$ on $D_j$.
+On actual cycles, not merely on numerical groups,
+\[
+                 \sum_i j_{i*}(\gamma_0h)_i=0.
+\tag{NL5}\label{r12n:Jgamma}
+\]
+Indeed both terms of each edge are the same closed intersection
+cycle in $\mathcal X$, with opposite signs.
+
+Let $M$ be multiplication by $m_i$ on the component summands and set
+\[
+ \widetilde A=M A_1 M,
+ \qquad (\widetilde A w)_i
+        =\sum_{j\ne i}m_im_j[D_i\cap D_j](w_j-w_i).
+\tag{NL6}\label{r12n:weighted-A}
+\]
+Here products with an intersection mean restriction followed by Gysin.
+If $D_c$ on $C^1$ has diagonal entry $m_im_j$ at an edge $(i,j)$, put
+\[
+             \gamma_0^m=M^{-1}\gamma_0D_c.
+\tag{NL7}\label{r12n:weighted-gamma}
+\]
+Thus an edge constant contributes $-m_j[D_e]h_e$ on $D_i$ and
+$+m_i[D_e]h_e$ on $D_j$.  Equation \eqref{r12n:Jgamma} implies
+$\widetilde A\gamma_0^m=0$.
+
+\begin{lemma}[Multiplicity-corrected divisor kernel]
+\label{r12n:kernel}
+There are equalities of rational numerical subspaces
+\[
+ \ker\widetilde A=\ker\delta+\operatorname{im}\gamma_0^m,
+ \qquad
+ \boxed{\ \ker A_1=M(\ker\delta)+\operatorname{im}\gamma_0.\ }
+\tag{NL8}\label{r12n:kernel-formula}
+\]
+\end{lemma}
+
+\begin{proof}
+We give all weights, since simply reusing the reduced-fibre formula
+would give the wrong compatible summand.  On a double stratum $D_{ij}$,
+restriction of the principal-fibre relation gives
+\[
+ m_jN_{D_{ij}/D_i}+m_iN_{D_{ij}/D_j}
+                  +\sum_{k\ne i,j}m_k[D_{ijk}]=0
+                  \quad\hbox{in }N^1(D_{ij}).
+\tag{NL9}\label{r12n:double-normal}
+\]
+For an ordered triple $i<j<k$, its contribution to
+$\delta\gamma_0^m h$ on the edges $ij,ik,jk$ is, respectively,
+\[
+        -m_k(d_1h)_{ijk}[D_{ijk}],\quad
+        +m_j(d_1h)_{ijk}[D_{ijk}],\quad
+        -m_i(d_1h)_{ijk}[D_{ijk}].
+\tag{NL10}\label{r12n:triple-signs}
+\]
+For example, the coefficient of $h_{ij}$ on edge $ij$ is the sum
+$m_iN_{D_{ij}/D_j}+m_jN_{D_{ij}/D_i}$; the other two edge constants
+give $+m_kh_{ik}$ and $-m_kh_{jk}$ there.  This proves the displayed
+signs and shows that $d_1h=0$ implies $\delta\gamma_0^m h=0$.
+
+Define positive rational weights
+\[
+ a_e=m_im_j\deg_{D_e}H^{n-1},\qquad
+ b_\tau=m_im_jm_k\deg_{D_\tau}H^{n-2}
+\]
+and let $D_a,D_b$ be the corresponding diagonal matrices.  Set
+\[
+ \lambda(w)_e=m_im_j\deg_{D_e}((\delta w)_eH^{n-2}).
+\]
+The projection formula and \eqref{r12n:triple-signs} give
+\[
+ \lambda(w)^th
+       =\sum_i m_i\deg_{D_i}\bigl(w_i(\gamma_0^m h)_iH^{n-2}\bigr),
+ \qquad \lambda\gamma_0^m=-d_1^tD_bd_1.
+\tag{NL11}\label{r12n:lambda}
+\]
+Also
+\[
+ \deg_{D_i}((\gamma_0^m h)_iH^{n-1})
+                  =m_i^{-1}(d_0^tD_ah)_i,
+ \quad
+ (d_0^t\lambda(w))_i
+                  =-\deg_{D_i}((\widetilde Aw)_iH^{n-2}).
+\tag{NL12}\label{r12n:divergence}
+\]
+
+Take $h\in\ker d_1\cap\ker(d_0^tD_a)$ and write
+$u=\gamma_0^m h$.  The triple relation gives $\delta u=0$, and
+\eqref{r12n:divergence} makes each $u_i$ primitive with respect to
+$H$.  By \eqref{r12n:lambda},
+\[
+             \sum_i m_i\deg_{D_i}(u_i^2H^{n-2})
+                       =h^t\lambda(u)=0.
+\]
+The divisor Hodge index theorem is negative definite on the primitive
+numerical divisor space of each smooth projective $D_i$.  Since
+$m_i>0$, every $u_i$ is zero.  Thus
+\[
+       \gamma_0^m\bigl(\ker d_1\cap\ker(d_0^tD_a)\bigr)=0.
+\tag{NL13}\label{r12n:harmonic-zero}
+\]
+
+Now let $w\in\ker\widetilde A$.  By
+\eqref{r12n:divergence}, $\lambda(w)$ annihilates $\operatorname{im}d_0$.
+The weighted finite-dimensional decomposition
+\[
+ \ker d_1=\operatorname{im}d_0\ \oplus\
+           \bigl(\ker d_1\cap\ker(d_0^tD_a)\bigr)
+\]
+and \eqref{r12n:lambda}--\eqref{r12n:harmonic-zero} show that it
+annihilates all of $\ker d_1$.  Positivity of $D_b$ gives
+\[
+ \lambda(w)\in\operatorname{im}d_1^t
+                      =\operatorname{im}(d_1^tD_bd_1).
+\]
+The equality follows from equality of kernels over $\mathbb R$ and
+rational rank; a rational right-hand side has a rational solution.
+Choose $a\in C^1$ with $d_1^tD_bd_1a=\lambda(w)$, and put
+$w_0=w+\gamma_0^m a$.  Then
+$\widetilde Aw_0=0$ and $\lambda(w_0)=0$.
+
+Consequently $(\delta w_0)_e$ is primitive on each smooth projective
+$(n-1)$-fold $D_e$.  Directly summing the two endpoint contributions
+in \eqref{r12n:weighted-A} yields
+\[
+ \begin{split}
+ &\sum_{e=(i,j)}m_im_j
+       \deg_{D_e}((\delta w_0)_e^2H^{n-3})\\
+ &\hspace{12mm}=-\sum_i
+       \deg_{D_i}\bigl(w_{0,i}(\widetilde Aw_0)_iH^{n-3}\bigr)=0.
+ \end{split}
+\tag{NL14}\label{r12n:second-energy}
+\]
+Divisor Hodge index on the double strata and positivity of $m_im_j$
+now give $\delta w_0=0$.  This proves
+$\ker\widetilde A\subset\ker\delta+\operatorname{im}\gamma_0^m$.
+The reverse inclusion follows from \eqref{r12n:weighted-A} and
+$\widetilde A\gamma_0^m=0$.  Finally multiply by $M$ and use
+$M\gamma_0^m=\gamma_0D_c$, whose image equals
+$\operatorname{im}\gamma_0$ because $D_c$ is invertible.
+\end{proof}
+
+\paragraph{Known positivity and native fields.}
+The only positivity used is the divisor Hodge index theorem, first on
+$D_i$ and then on $D_e$.  For $n=3$, the exponent $n-3$ in
+\eqref{r12n:second-energy} is zero.  There is no appeal to a
+standard-conjecture sign statement for middle-dimensional cycles.
+A primary reference is Kleiman, \emph{The Picard scheme}, Theorem
+6.3(a,b,h) and Theorem B.27.  The surface index theorem, followed by
+a general complete-intersection surface over $\bar k$, proves
+nonpositivity in higher dimension; 6.3(h) identifies the zero locus
+with numerical triviality.  Native numerical equivalence can be
+checked after finite field extension by norming a test cycle, so the
+same conclusion holds over $k$ without assuming geometrically
+connected strata.  Our connected-stratum spaces and all their
+weights were defined over $k$; no normalization by the number of
+geometric components has been made.
+
+\subsection{Compatible divisor classes and the multiplicity-weighted trace}
+
+\begin{lemma}[Cohomological lift of a numerically compatible tuple]
+\label{r12n:cohom-lift}
+If $w\in\ker\delta$, its component divisor classes are restrictions
+of a class
+\[
+      b_Y\in H^2(Y_{\bar k},\mathbb Q_\ell(1)).
+\]
+This class lifts to
+$b_{\mathcal X}\in H^2(\mathcal X_{R^{\mathrm{sh}}},\mathbb Q_\ell(1))$.
+No algebraicity or Frobenius-fixedness of the chosen lift is required.
+\end{lemma}
+
+\begin{proof}
+Numerical equivalence of divisors implies equality of their geometric
+rational $\ell$-adic classes: by Kleiman 6.3(a,b), a numerically
+trivial line bundle has an algebraically trivial nonzero power, and
+algebraically trivial divisors have zero rational cycle class.  Thus
+the classes of $w_i$ form a compatible tuple.
+
+For the closed cover of $Y$ by its components, the augmented complex
+of constant sheaves with terms on the distinct multiple intersections
+is exact.  At a geometric point it is the augmented cochain complex
+of the simplex of the components containing that point.  Closed
+immersion pushforward is exact, so its hypercohomology spectral
+sequence is
+\[
+ E_1^{a,b}=H^b(D^{[a+1]}_{\bar k},\mathbb Q_\ell(1))
+             \Longrightarrow H^{a+b}(Y_{\bar k},\mathbb Q_\ell(1)).
+\tag{NL15}\label{r12n:cech}
+\]
+Deligne's purity theorem for smooth projective finite-field varieties
+makes $E_1^{a,b}$ pure of weight $b-2$.  The compatible tuple lies in
+$E_2^{0,2}$, of weight zero.  For $s\geq2$, an outgoing differential
+from $(0,2)$ lands in $(s,3-s)$, of weight $1-s$, and hence is zero;
+there is no incoming differential from a negative column.  Therefore
+the edge map from total $H^2$ surjects onto this compatible kernel,
+which gives $b_Y$.  This argument uses neither exactness of the
+Frobenius-fixed-vector functor nor a semisimplicity assertion.
+
+The nilpotent closed immersion $Y\hookrightarrow\mathcal X_k$
+does not change the etale topos.  Proper base change and the
+acyclicity of a strictly henselian local base identify
+\[
+ H^2(\mathcal X_{R^{\mathrm{sh}}},\mathbb Q_\ell(1))
+       \simeq H^2((\mathcal X_k)_{\bar k},\mathbb Q_\ell(1))
+       \simeq H^2(Y_{\bar k},\mathbb Q_\ell(1)).
+\]
+These statements may first be used with $\mathbb Z/\ell^a$ coefficients
+and then passed to the usual rational $\ell$-adic cohomology; the
+finite cohomology groups on the proper geometric fibre give the
+Mittag--Leffler condition.  This yields $b_{\mathcal X}$.
+\end{proof}
+
+\begin{lemma}[Trace with the scheme-theoretic multiplicities]
+\label{r12n:weighted-trace}
+Let $f:\mathcal X\to\operatorname{Spec}R$.  For a class
+$c\in H^{2n}(\mathcal X_{R^{\mathrm{sh}}},\mathbb Q_\ell(n))$,
+the structural trace satisfies
+\[
+ \sum_i m_i\operatorname{Tr}_{(D_i)_{\bar k}}
+                    (c|_{(D_i)_{\bar k}})
+      =\operatorname{Tr}_{X_{\bar K}}(c|_{X_{\bar K}}).
+\tag{NL16}\label{r12n:trace}
+\]
+On a native disconnected geometric fibre of $D_i$, its trace here
+is the sum of the geometric component traces; for a native zero-cycle
+it is precisely its degree over $k$.
+\end{lemma}
+
+\begin{proof}
+The proper flat map $f$ is equidimensional of relative dimension
+$n$, so SGA 4 XVIII, Theorem 2.9 applies, with its condition
+$(*)_n$ satisfied on all of $\mathcal X$.  Its trace is compatible
+with arbitrary base change (Var2) and composition (Var3).  Applied
+over $R^{\mathrm{sh}}$, the special and geometric generic traces
+of the restriction of the same global class are the same section of
+the constant sheaf $\mathbb Q_\ell$.  It remains to identify the
+special trace, since the etale topos itself does not see nilpotents.
+
+Remove all component intersections and a further closed subset of
+dimension less than $n$.  By SGA 4 XVIII, Lemma 2.1, extension from
+the remaining open induces an isomorphism in top compactly supported
+cohomology and does not alter the trace.  On a dense open of one
+geometric component, its nilpotent thickening has generic length
+$m_i$.  Over $\bar k$, choose a separating Noether normalization
+and shrink its base.  The reduced open is then finite etale over
+an open of $\mathbb A^n$, and the full thickening is finite locally
+free.  After an etale base change the reduced cover splits, and each
+thickened branch is finite locally free of rank $m_i$.  Such shrinking
+is valid by generic flatness; the generic length remains $m_i$.
+
+For this finite locally free map, the unit followed by its trace is
+multiplication by $m_i$, by Theorem 2.9, Var4(I).  Since the branch
+has the same etale topos as its reduction, this says that its trace
+on the corresponding constant sheaf is exactly $m_i$ times the
+reduced trace.  Compose with the structural trace of the affine open
+using Var3.  The resulting top trace is $m_i$ times the smooth
+reduced-component trace.  Add the disjoint dense opens and use
+Lemma 2.1 again.  This proves the left side of
+\eqref{r12n:trace}, including each native residue degree.
+The same argument with torsion coefficients passes to
+$\mathbb Q_\ell$; no prime-to-$m_i$ restriction is needed.
+\end{proof}
+
+\paragraph{Why this is not a fixed-vector argument.}
+The only Frobenius input is that maps between the distinct weights
+in \eqref{r12n:cech} vanish.  We choose any cohomological lift
+provided by the edge map, lift it over the strict henselization, and
+compare the traces of one cup product.  Its generic factor will
+vanish geometrically.  An assertion about an absolute generic
+cycle class, weight--monodromy, or a Tate-conjecture surjectivity
+statement is unnecessary.
+
+\subsection{Vertical correction of an arbitrary curve extension}
+
+\begin{proposition}[Numerically admissible curve extension]
+\label{r12n:admissible}
+Let $z\in\operatorname{CH}^{n-1}(X)_{\mathbb Q}$ have zero geometric
+$\ell$-adic cycle class.  Every extension
+$\Theta\in\operatorname{CH}^{n-1}(\mathcal X)_{\mathbb Q}$ can be
+corrected by a rational vertical cycle to an extension
+$\Theta^{\mathrm{ad}}$ such that
+\[
+          j_i^!\Theta^{\mathrm{ad}}=0
+              \quad\hbox{in }N^{n-1}(D_i)_{\mathbb Q}
+              \quad\hbox{for every }i.
+\tag{NL17}\label{r12n:component-zero}
+\]
+\end{proposition}
+
+\begin{proof}
+Put $T_i^{\mathrm{Ch}}=j_i^!\Theta\in\operatorname{CH}^{n-1}(D_i)$,
+let $T_i$ be its numerical image, and view $T=(T_i)$ as a functional
+on $V^1$ by
+\[
+                   t_\Theta(v)=\sum_i\deg_{D_i}(T_iv_i).
+\]
+The functional annihilates $\operatorname{im}\gamma_0$ by the
+supported identity \eqref{r12n:Jgamma} and the projection formula.
+We check that it also annihilates $M\ker\delta$.
+
+For $w\in\ker\delta$, choose $b_{\mathcal X}$ as in
+Lemma~\ref{r12n:cohom-lift}; each $w_i$ can be represented by any
+rational divisor, and its etale class is independent of that choice
+by the numerical-to-homological implication for divisors used there.
+On the regular projective model the
+rational Chern-character isomorphism (Stacks, Tag 0FEX) supplies
+a virtual bundle whose only nonzero operational Chern-character
+component caps $[\mathcal X]$ to $\Theta$ in degree $n-1$.
+Its etale Chern character gives a class
+\[
+ a\in H^{2n-2}(\mathcal X_{R^{\mathrm{sh}}},\mathbb Q_\ell(n-1)),
+\]
+whose restrictions are $\operatorname{cl}(T_i^{\mathrm{Ch}})$ and
+$\operatorname{cl}(z)$, by Chern-character functoriality and regular
+Gysin compatibility.  Apply Lemma~\ref{r12n:weighted-trace} to
+$c=a\cup b_{\mathcal X}$.  It gives
+\[
+ \begin{split}
+ t_\Theta(Mw)
+    &=\sum_i m_i\deg_{D_i}(T_iw_i)\\
+    &=\operatorname{Tr}_{X_{\bar K}}
+        \bigl(\operatorname{cl}(z)\cup b_{\mathcal X}|_{X_{\bar K}}\bigr)
+      =0.
+ \end{split}
+\tag{NL18}\label{r12n:obstruction-zero}
+\]
+Only the geometric generic class is used in the last equality.
+The cycle class here is taken from the displayed Chow representative;
+no cycle-class map out of a higher-codimension numerical group is
+asserted or needed.
+
+Lemma~\ref{r12n:kernel} implies $t_\Theta|_{\ker A_1}=0$.
+The ordinary numerical pairings on the smooth projective components
+give perfect finite-dimensional rational dualities
+\[
+ (V^1)^*=V^{n-1},\qquad (V^2)^*=V^{n-2}.
+\]
+Projection on each double stratum, and the identical self-normal
+term on the diagonal, show that the transpose of $A_1$ is
+$A_{n-2}$.  Thus
+\[
+                T\in(\ker A_1)^\perp=\operatorname{im}A_{n-2}.
+\]
+Choose a rational tuple $u\in V^{n-2}$ with $A_{n-2}u=T$ and
+choose rational Chow representatives for its entries.  Then
+\[
+                 \Theta^{\mathrm{ad}}
+                    =\Theta-\sum_i j_{i*}u_i
+\tag{NL19}\label{r12n:correction}
+\]
+has unchanged generic Chow class and satisfies
+\eqref{r12n:component-zero}.
+\end{proof}
+
+\subsection{From this Chow lift to an operational virtual-bundle witness}
+
+\begin{lemma}[Pure operational representative on the original regular model]
+\label{r12n:K0}
+Let $\alpha\in\operatorname{CH}^r(\mathcal X)_{\mathbb Q}$.  There is
+$\xi\in K_0(\mathcal X)_{\mathbb Q}$ satisfying
+\[
+ \operatorname{ch}_r(\xi)\cap[\mathcal X]=\alpha,
+ \qquad \operatorname{ch}_q(\xi)=0\text{ in }A^q(\mathcal X)_{\mathbb Q}
+                 \quad(q\ne r).
+\tag{NL20}\label{r12n:pure-character}
+\]
+If the component restrictions $j_i^!\alpha$ are numerically zero on
+the smooth $D_i$, then
+\[
+          \deg\bigl(\operatorname{ch}_r(\xi|_V)\cap[V]\bigr)=0
+\]
+for every integral $r$-dimensional $V\subset\mathcal X_k$.
+\end{lemma}
+
+\begin{proof}
+The model is regular, finite dimensional, projective over the regular
+noetherian base $R$, and has the resolution property.  Stacks,
+Lemma 42.58.1, Tag 0FEX, applies: the composite of rational Chern
+character with cap by $[\mathcal X]$ is an isomorphism from
+$K_0(\operatorname{Vect}\mathcal X)_{\mathbb Q}$ to the total
+homological Chow group.  Take the unique preimage of the
+pure-codimension class $\alpha$.  The proof of that lemma uses the
+Adams operation $\psi^2$ and uniqueness of the preimage to show that
+$2^{-r}\psi^2\xi=\xi$.  Since $\psi^2$ multiplies
+$\operatorname{ch}_q$ by $2^q$, all $q\ne r$ components vanish as
+\emph{operational classes}, giving \eqref{r12n:pure-character}.
+This avoids replacing an operational identity on arbitrary supports
+by only an equality after cap with the model's fundamental class.
+
+An integral $V\subset\mathcal X_k$ lies in at least one $D_i$.
+Regular Gysin commutes with the operational character, so
+\[
+       j_i^*\operatorname{ch}_r(\xi)\cap[D_i]=j_i^!\alpha.
+\]
+Because $D_i$ is smooth, its operational class is identified with
+this usual Chow class.  Projection therefore identifies the
+supported degree on $V$ with
+\[
+                    \deg_{D_i}\bigl((j_i^!\alpha)\cdot[V]\bigr)=0.
+\]
+This tests every integral $r$-dimensional special subvariety,
+including singular ones and ones lying in several components.
+It is not a test only on whole components or on ample powers.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{r12n:main}]
+Take the closure of the prescribed cycle as an initial model Chow
+extension.  Proposition~\ref{r12n:admissible} produces
+$\Theta^{\mathrm{ad}}$.  Apply Lemma~\ref{r12n:K0} with $r=n-1$.
+Generic restriction of \eqref{r12n:pure-character} gives the first
+condition of \eqref{r12n:witness}; its last assertion gives the
+second condition on every required special test.
+
+Equip a finite virtual-bundle presentation of $\xi$ with its model
+metrics.  The Round 10 numerical model-Chern detector gives the
+strict actual identity
+\[
+               \operatorname{ch}_{n-1}(\bar\xi)=0
+                         \quad\hbox{in }\mathcal B^{n-1,n-1}(X^{\mathrm{an}}).
+\tag{NL21}\label{r12n:actual-zero}
+\]
+Indeed the degree-$n-1$ Chern character is a homogeneous rational
+polynomial in model Chern classes; the detector includes virtual
+bundles and tests precisely the operational degrees in
+\eqref{r12n:witness}.  Round 11's model-curvature class and
+numerical-lift corollary (OC4) now give
+$\mathfrak o_X^{n-1}([Z])=0$.  Its exact-support prescribed-cycle
+Green-pair theorem and global primitive comparison give the stated
+strong G form.  A rational equivalence used to represent $[Z]$
+does not enlarge the final exceptional set: the invoked Round 11
+theorem is explicitly for the prescribed cycle itself and on its
+exact complement, with all actual tests.
+\end{proof}
+
+\paragraph{What happens to an already chosen curvature.}
+If $\Omega_Z$ is the curvature in any original-model Green-pair
+construction for $Z$, its generic Chow character agrees with that
+of $\xi$.  Round 11's generic-Chow-zero primitive theorem gives a
+global actual $(n-2,n-2)$ form $\Psi$ such that
+$D\Psi=\Omega_Z-\operatorname{ch}_{n-1}(\bar\xi)=\Omega_Z$.
+Subtracting $\Psi$ from the Green form removes curvature without
+introducing a new pole.  For a threefold this is a global actual
+$(1,1)$ correction to the $(2,2)$ curvature, not a scalar graph
+potential.  The algebraic construction of $\xi$ is the missing
+input that makes this use of the Round 11 theorem concrete.
+
+\subsection{A geometric check that multiplicities cannot be dropped}
+
+Start with $\mathbb P^3_R$, blow up a rational point of its special
+fibre, and then blow up the smooth intersection of its two special
+components.  After the first blowup the components are
+$D_0=\operatorname{Bl}_p\mathbb P^3$ and $D_1=\mathbb P^3$, meeting
+along $\mathbb P^2$.  The second centre is Cartier in either
+component, so their strict transforms remain these same varieties.
+The new component is
+\[
+       F=\mathbb P_{\mathbb P^2}
+                    (\mathcal O(-1)\oplus\mathcal O(1)),
+\]
+and the special fibre is $D_0+D_1+2F$.  The strict transforms
+$D_0,D_1$ are disjoint, and each meets $F$ in a section.  Locally the
+second blowup is the blowup of $(x,y)$ in $xy=\pi$; the chart
+$y=xt$ has $\pi=x^2t$, confirming regularity and multiplicities.
+
+Write $E$ for the exceptional divisor on $D_0$, $h$ for the
+hyperplane on the base of $F$, and $\zeta=c_1(\mathcal O_F(1))$.
+Choose the tautological convention in which $N_{F/\mathcal X}$
+has class $-\zeta$.  The two sections on $F$ have classes
+$\zeta+h$ and $\zeta-h$.  Their restrictions of $\zeta$ are $h$
+and $-h$, respectively; on the matching section of $D_0$ the class
+$E$ restricts to $-h$.  Hence the tuple
+\[
+               w=(E,\ 0,\ -\tfrac12(\zeta+h))
+\]
+has $\delta w=0$.  But by the actual self-normal entry
+$N_{D_0/\mathcal X}=-2E$, the $D_0$ component of $A_1w$ is
+\[
+                       -2E^2+E^2=-E^2\ne0.
+\]
+Here $E^3=1$ detects its nonvanishing.  Thus the unweighted assertion
+$\ker\delta\subset\ker A_1$ is false even in this elementary
+regular SNC model.  In contrast
+$Mw=(E,0,-(\zeta+h))$ is the negative of the ordinary edge-Gysin
+class for the edge $D_0F$, and \eqref{r12n:Jgamma} gives $A_1Mw=0$.
+This checks the location of $M$ in \eqref{r12n:kernel-formula}; the
+general proof also accounts for nonempty triple strata through
+\eqref{r12n:triple-signs}.
+
+\subsection{Scope, relation to alterations, and primary references}
+
+\begin{enumerate}
+\item The algebraic result covers curves, meaning
+$\operatorname{CH}^{n-1}$ on an $n$-fold.  In dimension three this is
+all codimension two.  For $n\geq4$ it does not prove all of
+$\operatorname{CH}^2$: that correction would require a different
+middle-degree kernel.  No substitution of divisor Hodge index for
+unknown higher-cycle positivity is made.
+\item Reduced strict semistability is the special case $m_i=1$.
+For arbitrary positive $m_i$, the new weighted kernel and weighted
+trace use only geometric homological vanishing.  The Round 9
+nonreduced inner-inverse criterion instead assumed an algebraic
+inner inverse and absolute generic vanishing; neither assumption
+appears in this curve theorem.
+\item The regular model in this section is a model of the original
+$X/K$.  A separate Round 12 supported algebraic pushdown theorem
+can transport numerical witnesses from an alteration onto a
+\emph{supplied regular original model}.  Combining that theorem
+with the reduced case above and a semistable alteration extends the
+conclusion to that regular-model sector.  It does not justify
+inventing a regular original model or pushing an arbitrary actual
+form through a proper alteration.
+\item The analytic inputs are exactly
+\path{round11/foundations/r10_model_chern.tex}, especially its
+numerical detector and higher-model-Chern extension, and
+\path{round11/root/curvature_class_and_next_step.tex}, (OC2)--(OC4),
+together with the exact-support and global-primitive constructions
+that file cites.  The present proof fills their numerical-witness
+existence hypothesis in the stated sector.  All those analytic
+arguments remain internal research results subject to independent
+expert review.
+\item This local strong-G sector does not by itself establish an
+unconditional Beilinson--Bloch height pairing in arbitrary
+codimension, its canonicity, a comparison with the Round 9 real
+height candidate, or global reciprocity.
+\end{enumerate}
+
+The following primary sources were opened and their relevant
+statements checked in this round:
+\begin{itemize}
+\item S. Kleiman, \emph{The Picard scheme}, Theorem 6.3(a,b,h),
+and Appendix B, Theorem B.27:
+\url{https://indico.ictp.it/event/a0255/session/66/contribution/39/material/0/0.pdf}.
+\item P. Deligne, \emph{La conjecture de Weil. I},
+Publ. Math. IHES 43 (1974), Theorem (1.6), printed page 276:
+\url{https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf}.
+\item SGA 4, Expose XVIII, Lemma 2.1, Theorem 2.9, particularly
+Var2, Var3, and Var4(I); the proof and Remark 2.10.1 also explicitly
+record the role of multiplicities:
+\url{https://www.normalesup.org/~forgogozo/SGA4/18/18.pdf}.
+\item Stacks Project, Tag 03QO (strict-local acyclicity),
+Tag 095T (proper base change), and Tag 0FEX (regular-model rational
+operational Chern-character isomorphism and its Adams purity argument):
+\url{https://stacks.math.columbia.edu/tag/03QO},
+\url{https://stacks.math.columbia.edu/tag/095T},
+\url{https://stacks.math.columbia.edu/tag/0FEX}.
+\end{itemize}
+
+The two-energy identity, the weighted kernel formula, the weighted
+obstruction argument, and their application to (OC4) are deductions
+written here, not assertions quoted as theorems from these sources.

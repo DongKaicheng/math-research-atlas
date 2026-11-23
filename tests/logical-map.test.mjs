@@ -110,6 +110,45 @@ test('The full target separates construction from functoriality, normalization a
   assert.match(local.note, /sufficient construction/);
 });
 
+test('Proved analytic inputs close their own gate while full-domain and model comparisons keep their conditions', () => {
+  const analytic = nodes.find(node => node.id === 'logic-analytic-interface');
+  assert.equal(analytic.record, 'BB-ANALYTIC-INTERFACE');
+  assert.equal(records.get(analytic.record).status, 'proved');
+  assert.equal(analytic.gate.kind, 'all');
+  assert.equal(analytic.gate.children.length, 5);
+  assert.deepEqual(analytic.gate.children.slice(0, 4).map(node => node.record), [
+    'BB-MODEL-DETECTOR', 'BB-RESTRICTED-TRACE', 'BB-SUPPORTED-GREEN-PAIR', 'BB-ACTUAL-OBSTRUCTION',
+  ]);
+  assert.ok(analytic.gate.children.every(node => (node.record ? records.get(node.record).status : node.status) === 'proved'));
+  assert.equal(analytic.gate.children[4].href, '/papers/global-height-pairing#sec:height-hypotheses');
+  assert.match(analytic.gate.explanation, /normal varieties.*projective-bundle.*supported-pair residues/);
+
+  const global = logicalTrees.find(tree => tree.id === 'logic-global').root;
+  const [construction, extension, adjunction, comparison] = global.gate.children;
+  const [direct, obstruction, zhang] = construction.gate.children;
+  assert.deepEqual(direct.gate.children.map(node => node.record || node.status), ['STRONG-G', 'proved', 'proved']);
+  assert.equal(extension.id, 'logic-extension-compatibility');
+  assert.equal(extension.status, 'proved');
+  assert.equal(adjunction.status, 'conditional');
+  assert.match(adjunction.note, /common local obstruction kernels/);
+  assert.equal(comparison.id, 'logic-classical-comparison');
+  assert.equal(comparison.status, 'open');
+  assert.match(comparison.note, /supplied admissible regular models or alterations/);
+  assert.equal(obstruction.gate.children[0].record, 'BB-H16-KERNEL-DOMAIN');
+  assert.equal(records.get('BB-H16-KERNEL-DOMAIN').status, 'conditional');
+  assert.equal(obstruction.gate.children[1].status, 'open');
+  assert.equal(zhang.gate.children[0].id, 'logic-admissible-liftings');
+  assert.equal(zhang.gate.children[0].status, 'hypothesis');
+  assert.equal(zhang.gate.children[1].href, '/papers/zhang-height-route#prop:zhang-degree-descent');
+  assert.equal(zhang.gate.children[1].status, 'hypothesis');
+  for (const id of ['STRONG-G', 'BB-GLOBAL', 'BB-RESIDUAL-PERIODS'])
+    assert.equal(records.get(id).status, 'open', id);
+  const periods = nodes.find(node => node.record === 'BB-RESIDUAL-PERIODS' && node.gate);
+  assert.equal(periods.gate.kind, 'all');
+  assert.equal(periods.gate.children.length, 2);
+  assert.ok(periods.gate.children.every(node => node.status === 'open'));
+});
+
 test('Arithmetic equivalences, alternative criteria and non-implications remain distinct', () => {
   const arithmetic = logicalTrees.find(tree => tree.id === 'logic-arithmetic');
   assert.equal(arithmetic.root.gate.kind, 'iff');

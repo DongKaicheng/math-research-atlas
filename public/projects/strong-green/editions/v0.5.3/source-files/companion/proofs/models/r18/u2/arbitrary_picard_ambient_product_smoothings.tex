@@ -1,0 +1,588 @@
+% Round 18. Author: general_u2 branch. Independent review is required.
+\section{Numerical local exactness with arbitrary ambient Picard rank}
+\label{r18pg:section}
+
+\paragraph{Scope.}
+The ambient variety in this section need not be a complete intersection,
+and its numerical divisor group need not have rank one.  The conclusion
+is unconditional numerical $U_2$-vanishing for the specified product
+smoothings.  The Green conclusion additionally uses the stated
+curve-comparison hypothesis.  In dimension four an ambient variety
+with algebraic geometric $H^2$ supplies that hypothesis and gives full
+local G.  No middle Hodge-standard conjecture on a fourfold component
+and no general numerical-to-homological comparison are used.
+
+\subsection{The native geometric datum}
+
+Let $R$ be the valuation ring of a finite extension $K/\mathbf Q_p$,
+with its original absolute value, uniformizer $\pi$, and finite
+residue field $k$.  Let $\mathcal Y/R$ be smooth and projective,
+with geometrically integral fibers of dimension $n+1$, where $n\ge4$.
+Let $\mathcal L$ be a relatively very ample line bundle and put
+$Y=\mathcal Y_k$ and $h=c_1(\mathcal L_k)$.
+Choose $m\ge3$, positive integers $d_1,\ldots,d_m$, and native sections
+\[
+ f_i\in H^0(\mathcal Y,\mathcal L^{d_i}),\qquad
+ Q\in H^0(\mathcal Y,\mathcal L^{D}),\qquad D=\sum_i d_i.
+ \tag{PG18.1}\label{r18pg:sections}
+\]
+Write $H_i=V(\bar f_i)$ and $H_I=\bigcap_{i\in I}H_i$.
+Require the following actual geometric conditions.
+\begin{enumerate}
+\item The $H_i$ form a geometric simple-normal-crossings divisor on
+      $Y$.  Every $H_I$ with $|I|\le n+1$ is smooth of the expected
+      dimension $n+1-|I|$.  Positive-dimensional $H_I$ are geometrically
+      integral; zero-dimensional $H_I$ are finite etale.  Intersections
+      of $n+2$ factors are empty.
+\item $\bar Q$ cuts every positive-dimensional $H_I$ transversely and
+      avoids every zero-dimensional $H_I$.  Each positive-dimensional
+      $H_I\cap V(\bar Q)$ is geometrically integral.  A zero-dimensional
+      such intersection is retained with all of its native points.
+\item The generic hypersurface
+      \[
+        X=V(f_1\cdots f_m+\pi Q)\subset\mathcal Y_K
+        \tag{PG18.2}\label{r18pg:generic}
+      \]
+      is smooth and geometrically integral.
+\end{enumerate}
+The positive powers of an ample class make every expected
+positive-dimensional factor intersection nonempty.  In particular
+every pair and every triple of distinct indices occurs.  Native
+connected pieces are always retained; there is no division by a
+geometric component count.
+
+Perform the ordered ambient blowups along the strict transforms of
+the special divisors $H_1,\ldots,H_{m-1}$, and take the strict
+transform $\mathcal X$ of \eqref{r18pg:generic}.  The HP18/NF18
+chart calculation applies inside the smooth ambient $\mathcal Y$:
+at a point on $s$ factors where $\bar Q=0$ the actual etale equation
+is $x_1\cdots x_s=\pi y$; each blowup uses the next ideal
+$(t,x_i)$ in the preceding chart.  The saturated charts are
+\[
+ \pi=x_1\cdots x_{a-1}t_{a-1},\qquad
+ x_a=t_{a-1}u_a,\qquad
+ y=u_a x_{a+1}\cdots x_s.
+ \tag{PG18.3}\label{r18pg:charts}
+\]
+At points where $\bar Q$ is a unit the family was already a strict
+crossing and these operations restrict to isomorphisms.  Thus
+$\mathcal X$ is regular, integral, flat and projective, with reduced
+strictly semistable special fiber $\bigcup_iD_i$, and no extra
+vertical component.  The native closed stratum $D_I$ is the iterated
+blowup of $H_I$ in the reverse-order centers
+\[
+ Z_{I,j}=H_I\cap H_j\cap V(\bar Q),\qquad
+                j=m,m-1,\ldots,\max I+1.
+ \tag{PG18.4}\label{r18pg:centers}
+\]
+Every occurring center is regular of codimension two and its strict
+transform is isomorphic to its original center.  Indeed preceding
+centers induce on it a Cartier ideal; at zero-dimensional centers
+those preceding intersections are empty by the avoidance hypothesis.
+These are the actual glued ideals $(\bar f_j,\bar Q)$ on $H_I$.
+They do not depend on the transition units of the line bundles.
+All these maps lie over $Y$, so $h$ denotes a single global pullback
+class on the resolved model and on its strata.  It is generally nef,
+not ample, on a blown-up stratum; the argument below retains this
+distinction.
+
+\subsection{The rational Picard comparison used on the starting strata}
+
+\begin{lemma}[Rational Picard Lefschetz in the needed characteristic]
+\label{r18pg:picard}
+Let $V$ be smooth projective over a field of characteristic $p>0$,
+of dimension at least four, and let $E\subset V$ be a smooth ample
+Cartier divisor.  Restriction induces an isomorphism
+\[
+                  \operatorname{Pic}(V)_{\mathbf Q}
+                    \xrightarrow{\sim}\operatorname{Pic}(E)_{\mathbf Q}.
+ \tag{PG18.5}\label{r18pg:picard-Q}
+\]
+In the datum above, restriction therefore identifies
+\[
+ M:=N^1(Y)_{\mathbf Q}\xrightarrow{\sim}N^1(H_i)_{\mathbf Q}
+                  \xrightarrow{\sim}N^1(H_i\cap H_j)_{\mathbf Q}.
+ \tag{PG18.6}\label{r18pg:ambient-NS}
+\]
+These are native rational maps, and the assertions reapply over
+every finite extension of $k$.
+\end{lemma}
+
+\begin{proof}
+The rational assertion in positive characteristic can be obtained
+directly from SGA~2, Expose XII, Corollaire~3.6, without invoking
+Kodaira vanishing.  Since $\dim E\ge3$, Serre duality and Serre
+vanishing give an integer $N$ such that
+\[
+ H^a(E,\mathcal O_E(-bE))=0\qquad(a=1,2,\ b\ge N).
+\]
+Let $E_N$ be the Cartier thickening $NE$.  For each $s\ge1$, the
+sheaf $\mathcal O_{E_N}(-sNE)$ has a filtration with quotients
+$\mathcal O_E(-(sN+j)E)$ for $0\le j<N$.  Its first and second
+cohomology therefore vanish.  The depth and parafactorial hypotheses
+of the cited Corollaire hold on the smooth $V$.  It consequently gives
+$\operatorname{Pic}(V)\simeq\operatorname{Pic}(E_N)$.
+
+For successive thickenings, the kernel of the map of unit sheaves
+is the additive sheaf $\mathcal O_E(-jE)$.  The cohomology sequence
+shows that the kernel and cokernel of
+$\operatorname{Pic}(E_{j+1})\to\operatorname{Pic}(E_j)$ are killed
+by $p$.  For the finite composite from $E_N$ to $E$ they are killed
+by a power of $p$.  Tensoring with $\mathbf Q$ proves
+\eqref{r18pg:picard-Q}.  The argument takes place over the original
+field; it does not replace native line bundles by geometric ones.
+
+Apply this twice, first from $Y$ to $H_i$, then from $H_i$ to
+$H_i\cap H_j$.  The intermediate dimensions are at least four.
+It gives surjectivity on the numerical divisor quotients.  For
+injectivity, if a native divisor $v$ on the larger variety restricts
+numerically to zero, pair its restriction with the restrictions of
+all native divisors and the appropriate power of $h$.  Since the
+cut divisor has class $d_i h$ or $d_jh$, projection formula gives
+a nonzero positive multiple of the divisor Hodge-index form on the
+larger variety.  That form is nondegenerate, so $v=0$ numerically.
+This proves both numerical isomorphisms.  The same proof, including
+the $p$-power thickening step, works after every finite constant
+extension.
+\end{proof}
+
+Put
+\[
+ q_Y(\alpha,\beta)=\deg_Y(\alpha\beta h^{n-1}),\qquad
+ M_0=\{\alpha\in M:\deg_Y(\alpha h^n)=0\}.
+ \tag{PG18.7}\label{r18pg:ambient-form}
+\]
+Divisor Hodge index gives the rational orthogonal decomposition
+\[
+                         M=\mathbf Qh\mathbin{\perp}M_0,
+              \qquad q_Y|_{M_0}\text{ is negative definite over }\mathbf R.
+ \tag{PG18.8}\label{r18pg:ambient-primitive}
+\]
+No assertion is made about $N^2(Y)$ or $N^2(H_i)$.
+
+\subsection{Actual triple columns and a nef numerical Lefschetz map}
+
+Use the DQ17 signs: $\rho$ is terminal restriction minus initial
+restriction and $\sigma$ is initial Gysin minus terminal Gysin.
+On an edge $E_{ij}$ with $i<j$, let $q_{ij}:E_{ij}\to H_i\cap H_j$
+be the specified composition of blowups and let $e_{ij,l}$ be the
+total-transform exceptional divisor for $l>j$.  The Chow blowup
+formula, followed by numerical coefficient extraction, gives
+\[
+       N^1(E_{ij})_{\mathbf Q}
+          =q_{ij}^*(M|_{H_i\cap H_j})
+                   \oplus\bigoplus_{l>j}\mathbf Qe_{ij,l}.
+ \tag{PG18.9}\label{r18pg:edge-basis}
+\]
+The center of each edge blowup has dimension $n-3\ge1$ and is
+geometrically integral by hypothesis, so it contributes exactly
+one exceptional divisor.  The maps descending to these numerical
+groups are proper pushforward, refined pullback and multiplication
+by the stated Chern classes; their preservation of numerical
+equivalence follows from the native degree projection formula.
+
+For $i<j<l$, the alternating Gysin of the fundamental class of the
+triple $D_{ijl}$ has its three nonzero divisor entries
+\[
+            \tau_{ijl}=(d_lh_{ij}-e_{ij,l},\ -d_jh_{il},\ d_ih_{jl}).
+ \tag{PG18.10}\label{r18pg:triple-columns}
+\]
+This is an actual Chow identity.  On the first edge its factor
+divisor has class $d_lh$ and its own blowup subtracts $e_{ij,l}$.
+The two opposite charts at that step separate this strict divisor
+from the later centers; hence no further exceptional term appears.
+On the other two edges it is the full factor-divisor pullback.
+This is precisely the two-parameter chart computation of NF18,
+which only uses the factor and $Q$ as local parameters and applies
+unchanged in $\mathcal Y$.  In particular the exceptional-coordinate
+block of all these columns is $-I$.
+
+Literal opposite pushes of a triple to each component cancel in
+Chow, giving $\sigma_2\tau_{ijl}=0$.  Thus every $w\in W^1$ can
+be changed, without changing $\sigma_2w$, to a tuple
+\[
+                        w_{ij}=q_{ij}^*(\alpha_{ij}|_{H_i\cap H_j}),
+                         \qquad\alpha_{ij}\in M.
+ \tag{PG18.11}\label{r18pg:base-tuple}
+\]
+This elimination does not identify $M$ with its ample line.
+
+\begin{lemma}[The ambient nef class remains injective on edge divisors]
+\label{r18pg:nef-injective}
+Multiplication by the actual global class $h$ is injective
+\[
+                             h:W^1\longrightarrow W^2.
+ \tag{PG18.12}\label{r18pg:nef-map}
+\]
+\end{lemma}
+
+\begin{proof}
+On an edge use the form
+$q_{E,h}(u,v)=\deg_E(uvh^{n-3})$ on numerical divisors.
+The starting block under \eqref{r18pg:ambient-NS} is
+$d_id_jq_Y$, hence is nondegenerate.  At one codimension-two
+blowup in $Z$, projection gives zero cross terms between its
+new exceptional divisor and pullback divisors.  If
+$j:F\hookrightarrow\widetilde E$, $p:F\to Z$ and
+$\xi=c_1(\mathcal O_F(1))$, self-intersection $j^*j_*=-\xi$
+and $p_*\xi=1$ give the exceptional square
+\[
+                             -\deg_Z(h^{n-3})<0.
+ \tag{PG18.13}\label{r18pg:exceptional-square}
+\]
+The last inequality holds because the center is isomorphic to its
+original positive-dimensional ample complete intersection and $h$
+restricts to its ample class.  Iterate, using total transforms for
+the earlier divisors: the new exceptional line is orthogonal to
+the entire earlier pullback block.  The final form is thus the
+orthogonal sum of $d_id_jq_Y$ and the nonzero negative entries
+\eqref{r18pg:exceptional-square}; it is nondegenerate.
+
+If $hu=0$ in $N^2(E)$, then for every divisor $v$ the number
+$\deg_E(uvh^{n-3})$ vanishes, by multiplying the assumed zero
+class by $vh^{n-4}$.  The exponent is nonnegative because $n\ge4$.
+Nondegeneracy forces $u=0$, proving the injection on every edge.
+The proof has not called the nef class ample and has not applied
+the ample Hodge-index theorem to a blowup pullback class.
+\end{proof}
+
+\subsection{The ambient primitive energy removes the non-scalar directions}
+
+\begin{theorem}[Arbitrary-Picard-rank numerical local exactness]
+\label{r18pg:U2}
+For every model satisfying \eqref{r18pg:sections}--\eqref{r18pg:generic}
+and the stated transversality hypotheses,
+\[
+       U_2=
+       \frac{\ker(\rho_2:C^2\to W^2)\cap
+                         \operatorname{im}(\sigma_2:W^1\to C^2)}
+                     {\operatorname{im}A_1}=0.
+ \tag{PG18.14}\label{r18pg:U2zero}
+\]
+This holds in every $n\ge4$ and imposes no bound on $\dim M$.
+True triple and higher strata are retained.
+\end{theorem}
+
+\begin{proof}
+Let $z=\sigma_2w\in\ker\rho_2$ and put $d=\rho_2\sigma_2$.
+Use \eqref{r18pg:triple-columns} to eliminate all exceptional
+divisor coordinates of $w$.  The new representative is
+\eqref{r18pg:base-tuple} and still has $dw=0$.
+Decompose uniquely
+\[
+             \alpha_{ij}=a_{ij}h+\alpha^0_{ij},
+                               \qquad\alpha^0_{ij}\in M_0.
+ \tag{PG18.15}\label{r18pg:alpha-decomposition}
+\]
+Let $w^0$ be the corresponding base-pullback tuple of the
+$\alpha^0_{ij}$.  DG18's actual triple factorization
+$d=\tau_2\delta_1$, paired with $w^0h^{n-4}$, gives
+\[
+ \begin{aligned}
+ 0&=\sum_e\deg_{E_e}(w^0_e\,(dw)_e h^{n-4})\\
+  &=\sum_{i<j<l}\deg_{D_{ijl}}
+                \bigl((\delta_1w^0)_{ijl}(\delta_1w)_{ijl}h^{n-4}\bigr)\\
+  &=\sum_{i<j<l}d_id_jd_l\,
+              q_Y(\alpha^0_{ij}-\alpha^0_{il}+\alpha^0_{jl},
+                   \alpha^0_{ij}-\alpha^0_{il}+\alpha^0_{jl}).
+ \end{aligned}
+ \tag{PG18.16}\label{r18pg:primitive-energy}
+\]
+Here the restrictions of each base-pullback entry to a resolved
+triple are the pullbacks of the same ambient divisor.  Its
+intersection number is unchanged by the specified proper birational
+blowups of that triple.  On the original triple the fundamental
+class in $Y$ is $d_id_jd_lh^3$.  These two facts prove the last
+equality, and orthogonality $q_Y(M_0,h)=0$ removes exactly the
+scalar terms.  No sign assertion for the full surface divisor
+space on a triple has been used.
+
+Every weight in the last sum is positive and $q_Y$ is negative
+definite on $M_0$.  Consequently
+\[
+                      \alpha^0_{ij}-\alpha^0_{il}+\alpha^0_{jl}=0
+                                \quad(i<j<l).
+ \tag{PG18.17}\label{r18pg:cocycle}
+\]
+Because every pair and triple occurs, this is the ordinary
+complete-simplex cocycle equation with coefficient space $M_0$.
+It is solved explicitly over $\mathbf Q$ by
+$v_1=0$, $v_i=\alpha^0_{1i}$ for $i>1$:
+$\alpha^0_{ij}=v_j-v_i$.  Choose native divisor representatives
+of the $v_i$ on $Y$ and pull them to $D_i$.  Their actual
+restrictions to every edge are the corresponding ambient
+pullbacks.  Subtracting their $\rho_1$ image therefore changes
+$z$ by an element of $\operatorname{im}A_1$ and leaves a
+representative of the form $hb$, with $b\in W^0$.
+
+It remains to remove this scalar part.  Its compatibility says
+\[
+                   0=\rho_2\sigma_2(hb)=h\rho_1\sigma_1b.
+ \tag{PG18.18}\label{r18pg:scalar-step}
+\]
+Lemma~\ref{r18pg:nef-injective} implies
+$\rho_1\sigma_1b=0$.  The unconditional $U_1=0$ of DG18 gives
+$\sigma_1b=A_0c$ for some rational $c\in C^0$.  That theorem
+uses any relatively ample class on the model and does not require
+the present nef $h$ to be its polarization.  Finally the actual
+global projection formula gives
+$\sigma_2(hb)=hA_0c=A_1(hc)$.
+Thus the original $z$ belongs to $\operatorname{im}A_1$, proving
+\eqref{r18pg:U2zero}.
+\end{proof}
+
+\begin{proposition}[The larger sufficient quotient is genuinely nonzero]
+\label{r18pg:Q-dimension}
+Write $b=\dim_{\mathbf Q}N^1(Y)_{\mathbf Q}$ and
+$c=\binom{m-1}{2}$.  Then
+\[
+                      \operatorname{rank}(\rho_2\sigma_2)=bc.
+ \tag{PG18.23}\label{r18pg:d-rank}
+\]
+For every relatively ample global rational class $H$ on the
+resolved model, the quotient of DG18 satisfies
+\[
+ Q_H=\frac{W^1}{\operatorname{im}\rho_1+HW^0+\ker\sigma_2},
+              \qquad \dim Q_H=(b-1)c.
+ \tag{PG18.24}\label{r18pg:Q-rank}
+\]
+In particular, if $b>1$, that stronger sufficient
+divisor-generation criterion fails for every such $H$, even
+though the entire $U_2$ vanishes.
+\end{proposition}
+
+\begin{proof}
+The exceptional block $-I$ in \eqref{r18pg:triple-columns}
+identifies $W^1/\operatorname{im}\tau$ with one copy of $M$
+per edge.  The map $d=\rho_2\sigma_2$ kills the triple image.
+Its kernel on these base representatives is precisely the
+space of $M$-valued vertex coboundaries.
+Indeed the proof of Theorem~\ref{r18pg:U2} first forces the
+$M_0$ part of a kernel representative to be a coboundary.
+After subtracting it, $d(hb)=h d_0b=0$ with
+$d_0=\rho_1\sigma_1$.  The injection
+\eqref{r18pg:nef-map} forces $d_0b=0$.
+The scalar triple identity gives
+\[
+ \sum_e b_e\deg_{E_e}((d_0b)_eh^{n-2})
+           =\sum_T\deg_T(h^{n-2})(\delta_0b)_T^2.
+\]
+All triple degrees here are positive: $h$ pulls back an ample
+class from the original triple and its top degree is unchanged
+by the specified blowups.  Thus $\ker d_0=\ker\delta_0$.
+Conversely $\delta_0b=0$ makes $d_0b=0$ by the same actual
+triple factorization.  In the complete two-skeleton,
+$\ker\delta_0=\operatorname{im}\rho_0$, of dimension $m-1$.
+Hence the remaining scalar tuple is also a vertex coboundary.
+All $M$-valued coboundaries are in $\ker d$ by
+$\rho_2A_1=0$.  It follows that
+\[
+ \operatorname{rank}d
+       =b\left(\binom m2-(m-1)\right)=bc.
+\]
+
+For any global relatively ample $H$, the projection formula
+gives $d(Hb)=H d_0b$.  Divisor Hodge index on every edge
+makes $H:W^1\to W^2$ injective for $n\ge4$, exactly as in
+DG18.  Thus $\operatorname{rank}d(HW^0)=\operatorname{rank}d_0=c$.
+The DG18 exact sequence
+$0\to U_2\to Q_H\to\operatorname{im}d/d(HW^0)\to0$,
+together with $U_2=0$, now gives
+$\dim Q_H=bc-c$, proving the assertion.
+\end{proof}
+
+This calculation distinguishes the new step from the scalar
+generation proof.  The kernel equation $dw=0$ forces the
+non-scalar ambient part to satisfy the triple cocycle equation.
+Those triple equations remove the nonzero quotient
+\eqref{r18pg:Q-rank}; declaring that quotient zero would miss
+the mechanism.
+
+\subsection{The separate representative gate and the actual Green conclusion}
+
+\begin{corollary}[Codimension two, and the complete fourfold group]
+\label{r18pg:green}
+Assume additionally that every numerically zero rational curve cycle
+on each native double $E_{ij}$ has zero geometric $\ell$-adic cycle
+class, for one $\ell\ne p$.  Then every specified geometrically
+homologically trivial rational codimension-two cycle on $X$ satisfies
+strong G.  In dimension $n=4$ this gives full local G in every
+codimension.
+
+A sufficient additional condition, valid uniformly after finite
+constant extensions, is that
+\[
+     H^2(Y_{\bar k},\mathbf Q_\ell(1))
+          \text{ is spanned by geometric divisor classes}.
+ \tag{PG18.19}\label{r18pg:H2-algebraic}
+\]
+Under \eqref{r18pg:H2-algebraic}, the Green assertions apply afresh
+to all cycles over every unramified finite valued extension of $K$.
+More generally the same extension assertion holds if the stated
+curve comparison is supplied on the doubles over every finite
+constant extension.  Comparison supplied only over the original
+native $k$ gives the Green assertion only over the original $K$.
+\end{corollary}
+
+\begin{proof}
+First verify the sufficient comparison.  Etale weak Lefschetz for
+the two smooth ample cuts identifies $H^2$ of the starting edge
+$H_i\cap H_j$ with $H^2(Y)$.  The successive codimension-two
+blowup formula adds the geometric $H^0$ of each center, represented
+by its exceptional divisors.  Under \eqref{r18pg:H2-algebraic},
+the entire geometric $H^2(E_{ij})(1)$ is therefore spanned by
+divisors defined over some finite extension of $k$.
+
+A native numerically zero curve stays numerically zero after that
+finite extension: its degree against a divisor there is, up to the
+positive full field degree, its original native degree against the
+properly pushed divisor.  All these degrees are zero.  Poincare
+duality between the curve-class degree and $H^2$ now makes its
+geometric cycle class zero.  This proves the precise comparison,
+including native nonsplit divisor classes; it does not assert a
+cycle-class map out of an arbitrary numerical higher cycle group.
+
+CL17 gives $K_{n-2}=B_{n-2}$ from that comparison.  Theorem
+\ref{r18pg:U2} gives $U_2=0$.  The DQ17 exact sequence makes
+$V_{n-2}/(K_{n-2}+L_{n-2})$ zero.  ER17 and VT17 consequently
+kill the obstruction of the original specified cycle.  The frozen
+reconstruction produces an ordinary actual delta-form on the
+complement of its precise support and proves the Green identity
+against every original compact ordinary actual test.  The finite
+model tests are not substituted for this final quantifier.
+
+For $n=4$, the other degrees are the frozen divisor, one-cycle and
+zero-cycle cases.  This gives the full cycle domain on that fourfold.
+An unramified extension preserves the supplied equations, geometric
+transversality and the uniformizer exponent.  The Picard and numerical
+arguments are repeated over its native residue field.  Under
+\eqref{r18pg:H2-algebraic} the geometric divisor-spanning hypothesis
+also remains true, so the cohomological comparison is proved anew
+there.  The same is valid when uniform comparison over all finite
+constant extensions is a separate hypothesis.  New cycles are then
+covered directly and are not assumed to descend as pullbacks.
+The original native curve-comparison hypothesis alone has not been
+shown to ascend to new cycles over a residue extension.  If the
+separate RI18 ramification theorem is activated, its
+unramified-to-all-finite implication applies to the full fourfold
+conclusion under either of the explicitly uniform hypotheses just
+stated.  That implication is an additional dependency, not part of
+the chart calculation above.
+\end{proof}
+
+\subsection{A Picard-rank-two fourfold outside the projective-space CI class}
+
+\begin{corollary}[A concrete deep-stratum example]
+\label{r18pg:product-example}
+Take $n=4$ and
+\[
+      \mathcal Y=\mathbf P^1_R\times\mathbf P^4_R,
+              \qquad\mathcal L=\mathcal O(1,1),
+              \qquad m=5,\qquad d_i=2.
+ \tag{PG18.20}\label{r18pg:product-data}
+\]
+Whenever the stated transversality and generic smoothness conditions
+hold, the resulting smooth bidegree-$(10,10)$ fourfold has full local
+G, has $U_2=0$ while $\dim Q_H=6$ for every global relatively ample
+$H$, and has
+\[
+                    \operatorname{rank}N^4=159
+               \quad\text{on }H^4(X_{\bar K},\mathbf Q_\ell).
+ \tag{PG18.21}\label{r18pg:monodromy-example}
+\]
+Such native data exist at suitable finite places.  Its geometric
+numerical Picard rank is two, so it is not isomorphic over any
+field extension to any smooth four-dimensional complete intersection
+in projective space.  It has no potential good reduction and cannot
+have a strict semistable smooth projective dominant witness of
+crossing depth less than four.
+\end{corollary}
+
+\begin{proof}
+The two factor hyperplane classes span the geometric $H^2$ of $Y$,
+so Corollary~\ref{r18pg:green} supplies full local G.
+Here $b=2$ and $c=\binom42=6$, so
+Proposition~\ref{r18pg:Q-dimension} gives $\dim Q_H=6$.
+For existence,
+choose five sufficiently general rational bidegree-$(2,2)$ sections
+on $\mathbf P^1_{\mathbf Q}\times\mathbf P^4_{\mathbf Q}$.
+The finite transversality conditions are nonempty open conditions
+by characteristic-zero Bertini for these very ample systems.
+Choose a rational bidegree-$(10,10)$ section $Q$ cutting every
+positive-dimensional stratum smoothly, avoiding all deepest points,
+and itself smooth on the ambient variety.  These choices are
+possible simultaneously in a nonempty rational parameter open.
+Positive-dimensional ample complete intersections are geometrically
+connected; together with smoothness they are geometrically integral.
+
+Spread all data and smoothness conditions over $\mathbf Z[1/S]$.
+The pencil $\prod f_i+tQ$ has a smooth member at infinity, so its
+singular parameters form a proper closed finite subset of the
+parameter line in characteristic zero.  For sufficiently large
+primes $p\notin S$ with the rational parameter $t=p$ outside that
+finite set, take $K=\mathbf Q_p$ and $\pi=p$.  All the native special
+and generic hypotheses above hold.
+
+Write $a,b$ for the two factor hyperplane classes.  Then
+$\deg_Y(a+b)^5=5$, since $a^2=0$, $b^5=0$, and
+$\deg_Y(ab^4)=1$.  Each fivefold factor intersection therefore
+has $5\cdot2^5=160$ geometric points.  Every lower factor stratum
+is geometrically connected, and the prescribed blowups preserve
+this.  Thus the weight-zero restriction complex has the complete
+simplex incidence through degree three and has 160 copies of its
+unique top four-simplex.  Its last differential has rank one.
+The HM18/NG18 extreme weight calculation gives an isomorphism for
+$N^4$ between the opposite extreme pieces, of dimension $160-1$.
+The same weight bounds and $E_2$ degeneration used there show that
+this is the actual rank of $N^4$, not merely a lower bound.  No
+general weight-monodromy conjecture is used.  NM17 gives the stated
+non-potential-good-reduction and crossing-depth consequences, with
+depth defined as the maximum simultaneous component count minus one.
+
+For the geometric distinction, weak Lefschetz for the smooth ample
+fourfold $X\subset\mathbf P^1\times\mathbf P^4$ gives $b_2(X)=2$.
+The restrictions of $a,b$ are numerically independent: their divisor
+intersection matrix with $(a+b)^2$ on $X$ is
+\[
+                          10\begin{pmatrix}0&1\\1&3\end{pmatrix},
+ \tag{PG18.22}\label{r18pg:Picard-matrix}
+\]
+whose determinant is nonzero.  Divisor numerical/homological
+comparison therefore gives geometric numerical Picard rank exactly
+two.  A smooth complete-intersection fourfold in projective space has
+geometric $b_2=1$, generated by its nonzero hyperplane class, and hence
+has numerical Picard rank one.  An isomorphism preserves that rank.
+This excludes every such complete intersection, including every smooth
+projective-space hypersurface, after arbitrary field extension.
+
+These distinctions do not classify all possible motivic overlaps with
+earlier sectors.  The claim is the explicit new supplied model and
+cycle-domain certificate, with the stated intrinsic exclusions.
+\end{proof}
+
+\paragraph{References, dependencies and remaining questions.}
+The primary Picard input is SGA~2, Expose XII, Corollaire~3.6,
+printed p.~153 in the original pagination, reproduced on PDF p.~129
+of \url{https://arxiv.org/pdf/math/0511279}.  Its cohomology hypotheses
+are verified above on the thickening; no characteristic-zero vanishing
+theorem has been used in characteristic $p$.
+The weak-Lefschetz and Poincare-duality inputs are the standard etale
+theorems already used with their precise degree ranges in NF18/CA18.
+The smooth complete-intersection rank-one comparison used only for
+the final exclusion is recorded by Ghorpade--Lachaud,
+\url{https://arxiv.org/abs/0808.2169}, Propositions~3.1--3.2.
+The geometric blowup calculation is HP18/NF18 in an arbitrary smooth
+ambient chart; the numerical argument uses DQ17, DG18, and ordinary
+divisor Hodge index.  All actual Green conclusions pass through
+CL17/ER17/VT17 and the unchanged frozen reconstruction.
+
+The general model need not admit this common ambient divisor frame
+or this complete-simplex arrangement.  Even here, without the specified
+curve-comparison gate, the result is $U_2=0$ and does not by itself
+annihilate the CL17 representative defect.  In dimensions greater than
+four the present argument proves codimension-two G under that gate,
+not full all-degree G.  No global height statement follows without
+checking the other finite places.  General G and the unrestricted
+complete Beilinson--Bloch height domain remain open.  No priority claim
+is made for the classical inputs or for this internally developed
+application.

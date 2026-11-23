@@ -1,0 +1,447 @@
+% Round 18, higher-centers branch. Candidate until independently reviewed.
+\section{Complete-intersection ambients and new fourfolds}
+\label{r18ca:section}
+
+The preceding product-smoothing calculation uses the projective
+ambient space in two distinct ways: its local smooth coordinates,
+and the complete-intersection description of the closed strata.
+Both properties persist in a smooth complete-intersection ambient
+variety with good reduction.  The resulting generic fibers can be
+smooth complete intersections that are not isomorphic to any
+hypersurface.  This is a change in the covered generic-fiber class,
+not a replacement of the model of an already covered hypersurface.
+
+\subsection{Complete native hypotheses}
+
+Fix the original finite valued extension $K/\mathbf Q_p$, its
+valuation ring $R$, a uniformizer $\pi$, and finite residue field
+$k$.  Let
+\[
+ \mathcal Y\subset\mathbf P_R^{n+c+1},\qquad n\ge4,\quad c\ge0,
+ \tag{CA18.1}\label{r18ca:ambient}
+\]
+be a smooth projective relative complete intersection of relative
+dimension $n+1$ and multidegree $(b_1,\ldots,b_c)$, with every
+$b_j\ge1$.  Its geometric fibers are assumed integral.
+Write $h=c_1(\mathcal O_{\mathcal Y}(1))$ and
+$\delta=\prod_j b_j$, with $\delta=1$ if $c=0$.
+Take $s\ge3$ actual homogeneous forms $f_i$ on the displayed
+projective space, of degrees $d_i\ge1$, and use the same
+symbols for their restrictions to $\mathcal Y$.
+Set $D=\sum_i d_i$.
+
+On $Y=\mathcal Y_k$, require that the divisors
+$H_i=V(\bar f_i)$ form a geometric simple-normal-crossings
+divisor.  More explicitly, every intersection
+$H_I=\bigcap_{i\in I}H_i$ for $1\le |I|\le n+1$ is a
+smooth complete intersection in the displayed projective space
+of its expected dimension $n+1-|I|$, and every intersection of
+$n+2$ factors is empty.  The positive-dimensional intersections
+are geometrically integral; a zero-dimensional intersection is
+a native finite etale scheme, with every one of its geometric
+points retained.  All these are the actual complete intersections
+of the ambient defining forms and the indicated factor forms.
+
+Choose an actual homogeneous form $Q$ of degree $D$, restricted
+to $\mathcal Y$, whose reduction cuts each positive-dimensional $H_I$ transversely
+and avoids every zero-dimensional $H_I$.  Assume
+\[
+       X=V\!\left(f_1\cdots f_s+\pi Q\right)\subset\mathcal Y_K
+ \tag{CA18.2}\label{r18ca:generic}
+\]
+is smooth and geometrically integral.
+It is then a smooth complete intersection of multidegree
+$(b_1,\ldots,b_c,D)$ in $\mathbf P_K^{n+c+1}$.
+All assumptions and degrees are native.  No alteration or
+extension is implicit in them.
+
+\subsection{The actual ordered model and its Chow data}
+
+\begin{lemma}[The same model construction in the smooth ambient variety]
+\label{r18ca:model}
+Blow up $\mathcal Y$ successively along the strict transforms
+of the special divisors $H_1,\ldots,H_{s-1}$, using their
+native ambient ideals, and take the strict transform of the
+family \eqref{r18ca:generic}.  The resulting $\mathcal X/R$
+is regular, projective and reduced strictly semistable, with
+components $D_1,\ldots,D_s$ and no extra vertical components.
+For each nonempty $I$, writing $j_0=\max I$, its stratum
+$D_I$ is the reverse-order iterated blowup of $H_I$ in
+the strict transforms of
+\[
+        Z_{I,j}=H_I\cap H_j\cap V(\bar Q),
+                 \qquad j=s,s-1,\ldots,j_0+1.
+ \tag{CA18.3}\label{r18ca:centers}
+\]
+Empty centers are omitted.  Every occurring center has
+codimension two in the current stratum, is smooth, and
+is isomorphic to its original complete intersection.
+The ambient hyperplane class restricts throughout this
+identification to its original hyperplane class.
+\end{lemma}
+
+\begin{proof}
+At a point of $Y$, the factor equations through it are
+independent local parameters by the geometric SNC hypothesis.
+If $\bar Q$ vanishes there, transversality on the common
+stratum supplies one more independent parameter.  After
+trivializing the relevant line bundles and absorbing the
+unit factors, the actual etale local equation is precisely
+\[
+                         x_1\cdots x_t=\pi y.
+ \tag{CA18.4}\label{r18ca:chart}
+\]
+If $\bar Q$ is nonzero, its local equation is a unit and
+the family is already an ordinary strict crossing.
+The ambient variety is smooth over $R$, so these are
+coordinates in an actual smooth ambient local chart,
+with the remaining parameters carried along.
+
+The ordered ambient blowup ideals are the same $(\pi,x_i)$
+ideals as in HP18/NF18.  Their saturated chart calculation
+therefore applies without changing any equation: in the
+$\pi$-chart substitute $x_i=\pi t_i$ and cancel the common
+Cartier factor; in the $x_i$-chart substitute $\pi=x_i t_i$
+and make the same cancellation.  Iterating the checked charts
+gives the regular reduced crossings and exactly the indexed
+old components.  There is no use of a global affine coordinate
+system on projective space in this argument.
+All centers are native closed subschemes of the smooth
+ambient model, so the blowups and the strict transform are
+projective.  The flatness and no-extra-component conclusion
+are the same local saturation conclusions as in NF18.
+The assumed integral generic fiber makes the strict transform
+integral.
+
+On $H_I$, the chart transition maps identify the induced
+ideals as $(\bar f_j,\bar Q)$, with reverse index order
+as in \eqref{r18ca:centers}.  Multiplication of either
+local generator by a transition unit does not change
+its ideal, so these identifications glue natively.
+The original center is a projective smooth complete
+intersection of dimension $n-|I|-1$.
+The trace of a preceding center on a later center is
+the Cartier divisor given by that additional factor.
+For a positive-dimensional center the transversality
+and expected-dimension hypotheses make it a regular
+Cartier divisor whenever nonempty.  A zero-dimensional
+center is disjoint from the other centers, since an
+intersection of the two centers would place $Q$ on a
+zero-dimensional original factor stratum.  Thus the
+successive strict center is its blowup in a Cartier
+ideal, or in an empty ideal locus, and remains isomorphic
+to it.  The local coordinates \eqref{r18ca:chart} give its
+regular codimension-two immersion at every stage.
+All these maps lie over $Y$, proving the assertion about $h$.
+\end{proof}
+
+For an edge $E_{ij}$ with $i<j$, its starting variety
+$H_i\cap H_j$ is a smooth complete intersection of dimension
+$n-1\ge3$.  The centers $Z_{ij,l}$, $l>j$, are smooth
+complete intersections of dimension $n-3\ge1$ and are
+geometrically integral.  Weak Lefschetz and the rational
+degree computation in NF18 give $N^1(H_i\cap H_j)=\mathbf Qh$.
+Consequently the numerical divisor basis is
+\[
+ N^1(E_{ij})_{\mathbf Q}
+    =\mathbf Qh_{ij}\oplus\bigoplus_{l>j}\mathbf Q e_{ij,l},
+ \tag{CA18.5}\label{r18ca:edge-divisors}
+\]
+where each $e_{ij,l}$ is the pulled-back exceptional divisor
+of the indicated actual blowup.  The native connectedness
+of each center accounts for exactly one such generator.
+This is a numerical statement; it does not assert that an
+arbitrary actual Chow group is rank one.
+
+The actual triple Gysin columns are
+\[
+ \tau_{ijk}
+   =(d_kh_{ij}-e_{ij,k},\ -d_jh_{ik},\ d_ih_{jk})
+       \quad(i<j<k).
+ \tag{CA18.6}\label{r18ca:triple}
+\]
+Indeed the factor divisor on $H_i\cap H_j$ has actual class
+$d_kh$, and its own center subtracts one exceptional divisor.
+The earlier and later center computations are the local
+two-parameter calculation of NF18: the later center and
+that strict divisor lie in disjoint opposite charts at the
+step where its own center is blown up.  The other two edges
+have only the full hyperplane pullback.  Thus higher strata
+introduce no missing exceptional correction.
+The exceptional block of \eqref{r18ca:triple} is $-I$,
+and literal triple Gysin cancellation gives
+$\operatorname{im}\tau\subseteq\ker\sigma_2$.
+
+Choose any relatively ample $\mathcal L$ on $\mathcal X$.
+Modulo the triple image, multiplication on the edge
+fundamental classes by
+$H_M=c_1(\mathcal L)+Mh$ has the same matrix $MI+C$
+in the remaining hyperplane bases as in NF18.
+It is invertible for a sufficiently large nonnegative
+integer $M$, which also gives one globally relatively
+ample class.  DG18 then proves
+\[
+                              U_2=0.
+ \tag{CA18.7}\label{r18ca:U2}
+\]
+
+\begin{theorem}[Full local G for complete-intersection ambient smoothings]
+\label{r18ca:full-G}
+Under \eqref{r18ca:ambient}--\eqref{r18ca:generic} and all
+the stated transversality hypotheses, every specified
+geometrically homologically trivial rational cycle on $X$
+satisfies strong G in every codimension.
+The form is an ordinary actual delta-form on the complement
+of that cycle's precise original support, and the equality
+holds for every original compactly supported ordinary actual
+test.  The assertion applies afresh to all cycles after
+every unramified finite valued extension of $K$.
+\end{theorem}
+
+\begin{proof}
+The argument separates according to parity only to control
+the precise numerical and representative gates.
+
+If $n$ is even, the starting edges of dimension $n-1$ and
+all their centers of dimension $n-3$ are odd-dimensional
+smooth complete intersections.  The all-degree comparison
+proved in EV18 therefore applies to both.  Actual Chow
+blowup decomposition and its numerical coefficient extraction
+give the same edge bases $h^u,e_lh^{u-1}$ in every interior
+degree and give numerical-to-geometric comparison on the
+final edges.  Multiplication by the actual ambient $h$ sends
+each displayed basis to its identically indexed next basis.
+The one ample perturbation $H_M$ has square matrices $MI+C_u$
+in all these degrees, and one integer $M$ makes them all
+invertible.  The proof of EV18 then gives $U_r=0$ for
+$1\le r\le n-2$ and $K_{\mathrm{comp},\ell}^a=\ker\rho_a$
+in every required degree.  The initial $U_2$ is
+\eqref{r18ca:U2}; every other input is identical to that
+proof on actual odd-dimensional complete intersections.
+
+If $n=2k+1$ is odd, the starting components and their
+codimension-two centers are odd-dimensional complete
+intersections.  Hence their numerical groups, with chosen
+actual representatives, are precisely the hyperplane and
+exceptional-power bases used in OD18.
+The edges and their centers are even-dimensional complete
+intersections.  Outside their one middle numerical degree,
+the same bases exhaust the groups.  In that middle degree
+the displayed hyperplane and exceptional subspace has the
+diagonal nondegenerate intersection matrix
+\[
+       \deg_{H_i\cap H_j}(h^{2k}),\qquad
+                    -\deg_{Z_{ij,l}}(h^{2k-2}).
+ \tag{CA18.8}\label{r18ca:middle-matrix}
+\]
+The proof is the actual codimension-two blowup pairing:
+cross pairings vanish by $p_*1=0$, and exceptional
+self-intersection pushes to minus the pairing on the center.
+All displayed degrees remain nonzero after replacing the
+projective-space starting variety by $H_i\cap H_j$.
+
+The component representatives restrict to geometric classes
+in that subspace, because every restricted exceptional divisor
+has degree-one cohomology in the native divisor basis, and
+its additional factor is the same global hyperplane power.
+Its numerical orthogonal complement lies in the literal
+Gysin kernel by adjunction, exactly as in OD18.
+The projected $MI+C_u$ matrices are again invertible for
+one sufficiently large $M$.  Starting with
+\eqref{r18ca:U2}, the weaker OD18 induction, using injectivity
+only on the restriction image, gives every required $U_r=0$.
+Pairing the chosen compatible representative differences
+against the actual generators of \eqref{r18ca:middle-matrix}
+proves $K_{\mathrm{comp},\ell}^a=\ker\rho_a$ in the remaining
+middle degree.  No comparison for arbitrary primitive
+middle cycles has been assumed.
+
+Thus in both parities the two DQ17 gates vanish in all
+middle cycle codimensions.  ER17 and VT17 kill the cycle
+obstruction, and frozen reconstruction gives the asserted
+precise-support ordinary actual form and full test quantifier.
+The frozen divisor, one-cycle and zero-cycle sectors give
+the endpoint codimensions.
+An unramified extension preserves the uniformizer exponent
+and all geometric complete-intersection hypotheses.
+Every comparison and chosen-representative calculation is
+then reapplied over its new native residue field and to
+its entire new cycle group.
+\end{proof}
+
+\subsection{The top monodromy count, including the ambient degree}
+
+\begin{proposition}[Deep strata in a complete-intersection ambient variety]
+\label{r18ca:monodromy}
+For the preceding model and every $\ell\ne p$,
+\[
+ \operatorname{rank}N^n
+       =\delta\sum_{|I|=n+1}\prod_{i\in I}d_i
+                                 -\binom{s-1}{n}.
+ \tag{CA18.9}\label{r18ca:rank}
+\]
+The empty-sum and binomial conventions are as in NG18.
+If the number is positive, $X$ has no potential good
+reduction, and the frozen monodromy obstruction forces
+every strict semistable smooth projective dominant witness
+to have crossing depth at least $n$.
+\end{proposition}
+
+\begin{proof}
+Every positive-dimensional original stratum is geometrically
+connected and remains so after the specified blowups.
+Every deepest zero-dimensional stratum is unchanged and
+has exactly $\delta\prod_{i\in I}d_i$ geometric points,
+by its actual transverse complete-intersection degree.
+The curves one level above it are unchanged because $Q$
+avoids the zero-dimensional factor strata.
+Consequently the weight-zero restriction complex is the
+simplex cochain complex through degree $n-1$, with
+the coordinate of a top subset $I$ repeated
+$\delta\prod_{i\in I}d_i$ times.
+The rank of its last differential is $\binom{s-1}{n}$,
+giving the cokernel dimension in \eqref{r18ca:rank}.
+
+The opposite extreme Gysin matrix is its transpose under
+the native degree pairing on the geometric points and
+connected curves.  The positive definite rational pairing
+on the geometric point basis makes its kernel complementary
+to the restriction image.  The extreme $N^n$ is the
+identity on the common point summand, so it induces an
+isomorphism from that kernel to the restriction cokernel.
+These are exactly the primary weight-spectral-sequence
+calculations of HM18/NG18; their proof uses the connected
+strata and the individual geometric point degrees, not
+that the ambient degree is one.
+Purity of the proper smooth strata gives degeneration
+at $E_2$, and the weights of $H^n$ lie in $[0,2n]$.
+Thus $N^n$ kills weights at most $2n-1$ and has image
+in weight zero, making the extreme dimension its actual
+rank.  The native residue degree of a closed point is
+retained as the number of its geometric point summands.
+The final assertions are the frozen NM17 obstruction.
+Here crossing depth means the largest number of components
+meeting simultaneously minus one.
+\end{proof}
+
+\subsection{A fourfold class which cannot be a hypersurface}
+
+\begin{corollary}[A full-G complete intersection of type $(2,5)$]
+\label{r18ca:quadric-example}
+Take $n=4$, let $\mathcal Y\subset\mathbf P_R^6$ be a
+smooth relative quadric of dimension five, and take five
+degree-one factors and a degree-five $Q$ satisfying all
+the hypotheses above.  Then the generic fiber is a smooth
+complete-intersection fourfold of type $(2,5)$ with full
+local strong G, and
+\[
+                         \operatorname{rank}N^4=1.
+ \tag{CA18.10}\label{r18ca:quadric-rank}
+\]
+Such data exist at suitable finite places.  No such
+geometric generic fiber is isomorphic to any smooth
+projective hypersurface fourfold, over any field extension.
+\end{corollary}
+
+\begin{proof}
+The complete local Green assertion is
+Theorem~\ref{r18ca:full-G}.  Here $\delta=2$, $s=5$,
+and every factor degree is one, so
+\eqref{r18ca:rank} gives $2-\binom44=1$.
+In particular this is not a potentially good-reduction
+example presented by a more complicated model.
+
+For nonemptiness, choose a smooth quadric over $\mathbf Q$
+and five sufficiently general rational hyperplanes.
+Their intersections are smooth of the expected dimensions;
+the final one consists of two geometric points.
+Choose a rational quintic cutting every positive-dimensional
+intersection and the ambient quadric smoothly, and avoiding
+those final points.  The required choices are nonempty
+Zariski open conditions by the characteristic-zero Bertini
+theorem for these finitely many very ample systems.
+Rational points are dense in the parameter affine spaces,
+so the choices can be made over $\mathbf Q$.
+Spread the finitely many equations and smoothness conditions
+over $\mathbf Z[1/S]$ for a finite set of primes $S$.
+The pencil $f_1\cdots f_5+tQ$ has a smooth member at
+$t=\infty$, since $Q$ was chosen smooth on the quadric.
+Its singular members therefore form a proper closed subset
+of the parameter line, and hence a finite set of parameters.
+For every sufficiently large prime $p\notin S$ avoiding
+that finite set of rational parameters, put $K=\mathbf Q_p$,
+$\pi=p$ and $t=p$.  The displayed native special-fiber
+conditions and generic smoothness hold.  A smooth positive-
+dimensional complete intersection is geometrically connected
+and therefore geometrically integral.  This constructs data
+of exactly the kind asserted.
+
+We prove the geometric distinction by intrinsic Chern numbers.
+Adjunction on a smooth type-$(2,5)$ fourfold in $\mathbf P^6$
+gives $K_X=\mathcal O_X(2+5-7)=\mathcal O_X$.
+If it were isomorphic to a smooth degree-$e$ hypersurface
+$T\subset\mathbf P^5$ over an algebraically closed extension,
+adjunction would give $\mathcal O_T(e-6)\simeq\mathcal O_T$.
+Intersecting its first Chern class with the third power
+of the ample hyperplane class gives $(e-6)e=0$.
+Since $e>0$, necessarily $e=6$.
+
+The tangent and normal exact sequences give
+\[
+ \begin{aligned}
+ c(T_X)&=\frac{(1+h)^7}{(1+2h)(1+5h)},&
+                c_4(T_X)&=219h^4,&\deg_Xh^4&=10,\\
+ c(T_T)&=\frac{(1+h)^6}{1+6h},&
+                c_4(T_T)&=435h^4,&\deg_Th^4&=6.
+ \end{aligned}
+ \tag{CA18.11}\label{r18ca:chern}
+\]
+For an explicit arithmetic check, the first denominator
+inverse through degree four is
+$1-7h+39h^2-203h^3+1031h^4$, so its coefficient after
+multiplication by $(1+h)^7$ is
+$1031-1421+819-245+35=219$.
+The sextic coefficient is
+$1296-1296+540-120+15=435$.
+Thus the intrinsic top Chern degrees, equivalently the
+geometric Euler characteristics, are
+\[
+                   \chi(X)=2190,\qquad \chi(T)=2610.
+ \tag{CA18.12}\label{r18ca:euler}
+\]
+An isomorphism identifies tangent bundles and preserves
+their top Chern degrees, contradicting these unequal
+values.  The calculation is geometric and is unchanged
+by any valued or unvalued field extension.  It proves
+the asserted non-hypersurface distinction independently
+of any polarization chosen on the hypothetical isomorphism.
+\end{proof}
+
+\paragraph{Dependencies and remaining scope.}
+The actual model charts and stratum identifications are the
+HP18/NF18 charts applied in the stated smooth ambient local
+coordinates.  The numerical and representative proofs are
+DG18, EV18 and OD18 on the explicitly checked complete
+intersections, with the frozen CL17/DQ17/ER17/VT17 interfaces.
+The monodromy proof is HM18/NG18 with the native ambient
+degree retained.  The Chern calculation comes directly
+from the Euler and normal sequences; the classical
+complete-intersection Euler formula is recorded, for
+example, in J.~Ewing and S.~Moolgavkar,
+\emph{Euler characteristics of complete intersections},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{56} (1976), 390--391,
+Theorem~1 (the Hirzebruch formula).
+This primary paper and the published Macaulay2
+\emph{Book3264Examples}, Section 5.4.3, were checked for
+the standard Chern/Euler convention.
+
+The theorem covers the specified smoothings, not every
+smooth complete intersection.  It does not supply a
+number-field full-height assertion without checking all
+other finite places, and it does not by itself treat
+new cycles after a ramified extension.
+In particular it does not infer a good-ambient witness
+for an arbitrary variety from the existence of the
+good-reduction ambient variety in this particular
+explicit construction.  General G remains open.
+There is no historical-priority claim.

@@ -1,0 +1,165 @@
+\section{An equivalent conjectural package}\label{sec:program}
+
+\subsection{The three central assertions}\label{sec:three-assertions}
+
+Fix a product \(X=\prod_{i=1}^nC_i\), its points \(o_i\), and
+\(\ell=\sum_i a_iH_i\), with \(a_i>0\). Pass to one field
+\(F_0\) defining the maximal curve-visible projectors for all
+odd subproducts. All height assertions use
+\Cref{def:heights}.
+
+\begin{conjecture}[Off-central vanishing]
+\label[conjecture]{conj:offcentral}
+For every subproduct \(Y_S\), every finite \(E/F_0\), and
+every \(c\) with \(|S|\ne2c-1\),
+\[
+ U_S^c(E)=0.
+\]
+\end{conjecture}
+
+\begin{conjecture}[Central algebraic Abel--Jacobi injectivity]
+\label[conjecture]{conj:AJ}
+For every odd subproduct \(|S|=2c-1\) and every finite \(E/F_0\),
+the rationalized Abel--Jacobi map is injective on \(A_{S,E}\).
+\end{conjecture}
+
+\begin{conjecture}[Residual integral Northcott]
+\label[conjecture]{conj:residual-northcott}
+For every odd subproduct \(|S|=2c-1\), the quadratic form
+\(q_{G,S}=(-1)^ch_{G,S}\) has bounded-degree Northcott on
+the projected integral image \(\Lambda_{G,S}\).
+\end{conjecture}
+
+The real-positivity assertion in the central program is a
+consequence of \Cref{conj:residual-northcott}, by
+\Cref{lem:northcott-real}. It can still be studied first as the
+weaker conjecture that \(q_{G,S}\) is real positive definite.
+\Cref{ex:denominators} shows the additional integral issue in the
+converse direction.
+
+\begin{theorem}[Equivalence of the product and residual programs]
+\label[theorem]{thm:program-equivalence}
+For the fixed pointed product and the displayed polarization, the
+following packages are equivalent.
+\begin{enumerate}[label=(\roman*)]
+\item Arithmetic hard Lefschetz holds in every degree and over
+every finite extension of \(F_0\), and
+\(q_{\ell,r}\) has bounded-degree Northcott on the primitive
+integral image in every degree
+\(1\le r\le\lfloor(n+1)/2\rfloor\).
+\item \Cref{conj:offcentral,conj:AJ,conj:residual-northcott} hold
+for all the subproducts of \(X\).
+\end{enumerate}
+Either package implies real primitive positivity and
+nondegeneracy of the complementary height pairings over every
+fixed number field.
+\end{theorem}
+
+\begin{proof}
+From (ii), \Cref{thm:main-lefschetz} gives arithmetic hard
+Lefschetz. \Cref{thm:central-northcott} gives central integral
+Northcott, and \Cref{lem:northcott-real} gives real central
+positivity. \Cref{cor:positivity-propagation} gives all the
+primitive Northcott and positivity assertions, as well as
+nondegeneracy.
+
+Conversely, hard Lefschetz in (i) gives off-central vanishing by
+\Cref{thm:main-lefschetz}. For an odd subproduct \(|S|=2c-1\),
+inflate \(u\in U_S^c(E)\) by fundamental classes on all omitted
+factors. In the notation of \MathSecref{sec:chow-blocks}, this is
+the integral injection \(u\mapsto j_\varnothing u\) in degree
+\(r=c\). With \(m=n-|S|\), it is primitive and satisfies
+\[
+ q_{\ell,c}(j_\varnothing u)
+       =m!\prod_{i\notin S}a_i\,q_{S,c}(u).
+\]
+Thus primitive Northcott on \(X\) gives central integral
+Northcott. \Cref{thm:central-northcott} supplies
+\Cref{conj:AJ,conj:residual-northcott}. The final assertion now
+follows from the first direction of the proof.
+\end{proof}
+
+This is a product-of-curves formulation of the arithmetic
+Lefschetz and Hodge--Riemann program, with an integral finite-height
+condition added. The underlying arithmetic standard conjectures
+are those in \cite[Conjecture~2.3.1]{ZhangStandard}.
+
+\subsection{Arithmetic detection and saturation}
+\label{sec:detection-conjectures}
+
+Fix one central residual group \(G_E\).
+
+\begin{conjecture}[Residual rational detection]
+\label[conjecture]{conj:detection}
+For every finite \(E/F_0\) and every prime \(p\), the map
+\[
+ G_E\otimes_\Q\Q_p\longrightarrow H^1(E,V_p)
+\]
+of \Cref{prop:residual-regulator} is injective.
+\end{conjecture}
+
+This is a residual form of rational arithmetic cycle-class
+injectivity, in the framework of \cite{Raskind,Kahn}. Together
+with \Cref{thm:lattice-equivalence}, it reduces fixed-field
+Northcott under real positivity to the following integral question.
+
+\begin{conjecture}[Residual integral discreteness]
+\label[conjecture]{conj:lattice}
+For every finite \(E/F_0\), \(G_E\) is finite-dimensional and
+there are a rational basis \(v_1,\ldots,v_s\) and an integer
+\(N_E\ge1\) with
+\[
+ \Lambda_G(E)\subseteq N_E^{-1}\sum_i\Z v_i.
+\]
+\end{conjecture}
+
+One route is to prove the common-lattice, almost-everywhere
+saturation hypothesis of \Cref{thm:all-prime} for the arithmetic
+regulators. A second route is a genuine positive height gap,
+together with the finite Kummer quotients of
+\Cref{thm:weak-mw-gap}. The local integral images of
+\Cref{prop:local-lattice} are already controlled; their comparison
+as the coefficient prime varies is the remaining step.
+
+Integral detection must refer to the stated image in a rational
+quotient. The unrestricted integral continuous cycle class map
+has torsion counterexamples over number fields in codimension
+three \cite[Theorems~1.3--1.4]{ScaviaSuzuki}. Those groups and
+their torsion kernels are different from \(\Lambda_G(E)\).
+
+\subsection{Varying fields and local metrics}\label{sec:next-targets}
+
+\begin{conjecture}[Residual class-field ramification]
+\label[conjecture]{conj:ramification}
+For each \(B\ge0,D\ge1\), the minimal class fields
+\(F_0(\xi)\) of \(\xi\in\Lambda_G(E)\), with
+\([E:F_0]\le D\) and \(q_G(\xi)\le B\), are unramified
+outside one finite set of places depending on \(Y,\Pi,B,D\).
+\end{conjecture}
+
+With fixed-field Northcott, this is exactly the remaining
+bounded-degree condition by \Cref{thm:ramification}. A quantitative
+version asks whether constants \(A_D,B_D\) in
+\MathEqref{eq:discriminant-target} exist. The quantitative
+inequality is recorded as a research question, rather than being
+identified with the qualitative conjecture.
+
+For the metric problem, the next comparison is local and precise.
+Starting with a fixed semistable source curve, construct the
+admissible correction to the model determinant and compare its
+rigidified metric with the classical Poincaré metric over the
+original valued field. \Cref{prop:good-reduction} is the smooth
+model case; the complex-place comparison is
+\Cref{thm:quillen-isometry,cor:cycle-determinant}. Applying these
+comparisons to an actual-form non-Archimedean Green construction
+requires its trace, covariance and normalization statements on
+their full test spaces.
+
+Boundary estimates in a varying family also require their own
+geometric input. The smooth relative biextension comparison in
+\cite[Theorem~10.9]{Nakayama} is unconditional. In that work,
+the singular-fibre extension in Theorem~11.2 uses a modified cycle
+satisfying a specified cohomological condition, and Lemma~11.1
+obtains that modification from the Hodge conjecture. These are
+the hypotheses to verify when importing boundary asymptotics
+into the family-height program.

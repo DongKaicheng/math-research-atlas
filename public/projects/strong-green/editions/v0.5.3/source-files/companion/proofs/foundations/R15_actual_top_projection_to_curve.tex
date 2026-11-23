@@ -1,0 +1,319 @@
+% Round 15. Arbitrary actual top inputs; a curve-specific output theorem.
+% This does not assert an auxiliary-factor or arbitrary-base-change formula.
+\section{Projection of arbitrary actual top forms to a curve}
+\label{r15tc:section}
+
+In relative dimension one over a curve, an actual $(2,2)$ input
+is a top form.  This permits the missing vertex contributions to
+be retained as ordinary measures.  The argument does not extend
+to a higher-dimensional base merely by adding an auxiliary factor.
+
+\begin{lemma}[Equal norm tuples give equal actual presentations]
+\label{r15tc:norm-tuples}
+Let $V$ be an ordinary analytic open and let $f=(f_1,\ldots,f_N)$
+and $r=(r_1,\ldots,r_N)$ be tuples of analytic units there.
+If $|f_i|=|r_i|$ pointwise on $V$ for every $i$, then
+\[
+                 t_f^\star\gamma=t_r^\star\gamma
+\tag{TC15.1}\label{r15tc:equal-norm}
+\]
+for every ambient $\delta$-form $\gamma$ for which these
+presentations are defined.  No PWS restriction on $\gamma$
+is needed.
+\end{lemma}
+
+\begin{proof}
+Use the defining tests on every common refined skeleton with
+coordinates containing $f$, $r$, and an arbitrary further unit
+tuple.  The components of $t_f$ and $t_r$ are literally the same
+linear functions on that tropical space, so their tropical
+pullbacks of $\gamma$ are equal.  Mihatsch Definition~4.2
+identifies the resulting actual forms.  The statement is about
+equality of the functions on the whole ordinary open, not merely
+equality of their values at one point.
+\end{proof}
+
+\begin{lemma}[Realizing a finite graph measure, including atoms]
+\label{r15tc:graph-measure}
+Let $C/F$ be a smooth geometrically integral projective curve,
+viewed in the native $K$ theory for finite $F/K$.  Let $\Gamma$
+be a finite connected compact split semistable skeleton of the
+kind in frozen Lemma \texttt{r14x:graph-extension}, allowing
+finite subdivisions at arbitrary real positions.  Suppose
+$\mu$ is a finite signed measure supported on $\Gamma$, whose
+edge densities are PWS and smooth up to endpoints on a finite
+subdivision, and whose other part is a finite sum of atoms.
+Then $\mu$ is the measure of an ordinary actual
+$(1,1)$ form on $C$.
+
+This hypothesis does not assume in advance that $\mu$ is the
+measure of an actual form.
+\end{lemma}
+
+\begin{proof}
+Enlarge the model skeleton if necessary so it contains the
+support of an ample model curvature $h$; extend the given
+measure by zero on the added edges.  The added graph remains
+finite and connected.  Put $M_h=\int_C h>0$ and
+\[
+             \mu_0=\mu-\frac{\mu(\Gamma)}{M_h}\,[h].
+\tag{TC15.2}\label{r15tc:mass-normalization}
+\]
+Its total mass is zero.  The frozen weighted-graph Green lemma
+\texttt{r14v:graph-green} applies directly to arbitrary signed
+graph-measure data: it integrates each edge density twice,
+corrects the endpoint values, and solves the finite weighted
+graph Laplacian for the remaining vertex masses.  It therefore
+supplies a continuous PWS graph function $f$ with
+$D_\Gamma f=\mu_0$.  The proof of that lemma is a graph
+calculation and has no actual-representability premise.
+
+Frozen Lemma \texttt{r14x:graph-extension} realizes the
+retraction-constant extension of $f$ as an ordinary actual
+PWS scalar on $C$.  Its arbitrary real breakpoints include
+atoms at type-III points; no assertion that they become model
+vertices after a finite extension is needed.  Scalar
+Poincar\'e--Lelong gives exactly the native weighted second
+derivatives on edges and outgoing slopes at vertices.
+Consequently
+\[
+                \frac{\mu(\Gamma)}{M_h}\,h+Df
+\tag{TC15.3}\label{r15tc:realization}
+\]
+is an ordinary actual form with measure $\mu$.
+All residue and edge weights are those of the native graph;
+they are not normalized to geometric sheet counts.
+\end{proof}
+
+\begin{theorem}[Actual top-form projection over a proper curve]
+\label{r15tc:projection}
+Let $C/K$ be smooth integral projective of dimension one and
+let $\pi:C\times\mathbf P^1\to C$ be projection.  For every
+\[
+                   \alpha\in B^{2,2}(C\times\mathbf P^1)
+\]
+there is a unique ordinary actual form
+$\mathcal T\alpha\in B^{1,1}(C)$ whose native top measure is
+the proper push of the measure of $\alpha$.  In particular
+\[
+     \int_C\mathcal T\alpha\,\eta
+       =\int_{C\times\mathbf P^1}\alpha\wedge\pi^*\eta
+\tag{TC15.4}\label{r15tc:pairing}
+\]
+for every ordinary actual scalar $\eta\in B^{0,0}(C)$,
+and hence for all ordinary smooth compact scalar tests.
+The construction is linear.  The input need not be PWS.
+
+The theorem concerns a top form over a one-dimensional base.
+It does not assert compatibility after adjoining an arbitrary
+auxiliary factor or algebraic base change to a higher-dimensional
+base.
+\end{theorem}
+
+\begin{proof}
+\emph{Finite rational presentations.}
+Choose finitely many algebraic rational/Laurent affinoids
+whose interiors cover the projective surface and ordinary
+smooth partition functions compactly supported in those
+interiors.  Choose finite unit-moment actual presentations
+for $\alpha$ there, and include the moment units of the
+partition functions and of the domain inequalities.
+As in the frozen curve-output proof, approximate each analytic
+unit $f$ in its affinoid algebra by a rational function $R$
+with $|f-R|<\min|f|$.  Then $|f|=|R|$ on the whole affinoid
+and the latter is still a unit.  Lemma~\ref{r15tc:norm-tuples}
+makes this an exact replacement of the actual presentation,
+including its positive-delta parts.  The initial choice of
+algebraic rational/Laurent domains is essential to the density
+of these rational functions.
+
+After a finite native cover $a:C'\to C$, the finitely many
+rational functions in the fiber variable split as
+\[
+                   R_i(x,z)=c_i(x)\prod_j(z-a_j(x))^{n_{ij}}
+\tag{TC15.5}\label{r15tc:split}
+\]
+away from a finite set of base closed points.  Add the marks
+$0$ and $\infty$ to the fixed root list, and combine equal
+marks.  Include the zeros and poles of the coefficients,
+the marks, their nonzero pairwise differences, and all required
+domain data in that finite bad set.  The normal projective
+curve with the splitting function field is smooth in
+characteristic zero.  Enlarge its constant field further so
+that the finite marked base curve has a regular split
+semistable model.  The full degree of the resulting map $a$
+is used below.  Put $Y'=C'\times\mathbf P^1$ and denote
+the pulled-back actual top form by $\alpha'$.
+
+\emph{A finite graph supports the pushed measure.}
+Mihatsch Corollary~4.9(1), or the frozen ordinary
+immersion-germ theorem, makes $\alpha'$ vanish on ordinary
+neighborhoods of every bad vertical fiber and every root
+graph section, explicitly including the section at infinity:
+all are algebraic curves in a surface, whereas
+the form has bidegree $(2,2)$.  Compactness gives simultaneous
+zero neighborhoods for this finite list.  Choose a marked
+semistable base skeleton carrying all base functions in
+\eqref{r15tc:split}, and truncate its rays in the zero
+neighborhoods over the bad base points.  Properness of the
+projection allows a whole base neighborhood of each bad
+point to be chosen with zero inverse-image form.  As in the
+frozen proper-curve construction, a further finite ramified
+extension and regularization subdivide the finitely many
+model edges sufficiently to make the model graph simplicial.
+Include that extension in $a$ and its native degree.  Let
+$\Gamma$ be the resulting compact simplicial model graph,
+with any additional real breakpoints treated as subdivisions.
+
+On every complementary ball away from those terminal zero
+balls, all coefficient and root-difference norms are constant.
+The joint norm image of the functions $z-a_j(x)$ on its
+projective-line fibers is the same fixed marked-tree image,
+independent of $x$.  Each source moment tuple on its original
+presentation domain therefore has image of dimension at most
+one over this ball.  This is the point at which a PWS-only
+argument would be insufficient.  Instead use Mihatsch
+Corollary~4.9(2): an actual top form presented by a tuple $f$
+is supported on its full-dimensional skeleton $\Sigma(-,f)$.
+That two-dimensional skeleton is empty when the tuple's
+moment image has dimension at most one.  The actual top form
+is consequently zero on the whole ordinary open in question,
+including every positive-delta component.  The same conclusion
+on a virtual ball follows after its individual splitting
+extension, with faithful pullback; no single field is assumed
+to split all residue directions.
+
+Thus, for the native signed Radon measure $\mu'$ of
+$\alpha'$, one has
+\[
+                \operatorname{Supp}|\mu'|
+                       \subseteq(\pi')^{-1}(\Gamma).
+\tag{TC15.6}\label{r15tc:graph-support}
+\]
+
+\emph{Retaining all polyhedral strata.}
+Use the simplicial model-PL graph embedding
+$j:\Gamma\hookrightarrow\mathbf R^N$ from the frozen
+proper-curve graph-extension lemma.  Its coordinates are
+global actual PL scalars constant on retraction fibers.
+Append their local unit-moment presentations after pulling
+them to the source, and take a common finite subdivision
+on each compact partition support.  Actual top-form
+integration and Corollary~4.9(2) now express that source
+measure as finitely many native weighted polyhedral
+measures on cells of dimensions zero, one, and two.
+The map to $j(\Gamma)$ is piecewise affine on this
+subdivision.  We push these measures as measures, retaining
+every dimension.  No positive-delta form is pulled through
+a merely piecewise affine map.
+
+On a cell whose map has rank one, its pushed measure has
+a PWS edge density.  For a one-dimensional cell this is
+ordinary affine substitution with its nonzero constant
+Jacobian.  For a two-dimensional cell it is a finite sum
+of integrals of smooth coefficients over intervals with
+affine endpoints, exactly as in the verified moving-interval
+calculation.  All coefficients are smooth up to endpoints
+after finite subdivision.  A rank-zero cell contributes a
+single atom, whose mass is the integral of its coefficient
+over that compact cell; a zero-dimensional cell also
+contributes an atom.  There are finitely many such terms.
+In particular the vertex-supported contribution exhibited
+in Proposition~\ref{r15vg:vertex} is retained here.
+
+These assertions use compactly supported partition pieces
+inside the presentation domains.  Analytic boundary images
+do not cut a nonzero paired measure, and all native
+multiplicities are carried by the cell weights.  Refining a
+cell creates no new measure; its faces are counted according
+to the original trigraded polyhedral measure, not discarded
+as if every component were an area density.
+
+For every continuous test function on $C'$, its restriction
+to $\Gamma$ factors through the embedding $j$.  Hence this
+calculation identifies the genuine Radon push measure
+$(\pi')_*\mu'$, rather than only its values on selected
+toric tests.  It is supported on $\Gamma$ and consists of
+PWS edge densities and finitely many atoms.
+Lemma~\ref{r15tc:graph-measure} supplies an ordinary actual
+form $\beta'\in B^{1,1}(C')$ with this measure.
+
+\emph{Native finite descent.}
+Set $e=\deg_K(a)$, the full native finite degree, and put
+\[
+               \beta=e^{-1}\operatorname{Tr}^{\mathrm{act}}_a
+                                      (\beta').
+\tag{TC15.7}\label{r15tc:trace}
+\]
+This uses only the frozen finite actual trace in degree
+$(1,1)$, Theorem \texttt{r14h:strip-trace}.  For every
+ordinary smooth scalar test $\eta$ on $C$, its all-actual
+test pairing and the native finite degree formula for
+$a\times\mathrm{id}$ give
+\[
+ \int_C\beta\eta
+ =e^{-1}\int_{C'}\beta'a^*\eta
+ =e^{-1}\int_{Y'}\alpha'\wedge(\pi')^*a^*\eta
+ =\int_{C\times\mathbf P^1}\alpha\wedge\pi^*\eta.
+\tag{TC15.8}\label{r15tc:native-pairing}
+\]
+These top forms define Radon measures.  Equality on ordinary
+smooth scalar tests identifies the measures, by the same
+scalar density used in the frozen curve-top comparison.
+It therefore gives \eqref{r15tc:pairing} for every actual
+scalar, which is a continuous PWS function.  Alternatively
+the finite all-actual trace and degree formulas apply to
+that scalar directly, since the intermediate identity is
+already an equality of Radon measures.  Finally actual
+current injectivity proves uniqueness, linearity, and
+independence of all choices.
+\end{proof}
+
+\begin{corollary}[A projective-line bundle over a curve]
+\label{r15tc:bundle}
+Theorem~\ref{r15tc:projection} also holds for
+$\pi:\mathbf P_C(N)\to C$, where $N$ is a rank-two
+algebraic vector bundle and the input is any global actual
+top $(2,2)$ form.
+\end{corollary}
+
+\begin{proof}
+Trivialize $N$ on the complement of finitely many base
+closed points.  The actual top form vanishes on an ordinary
+neighborhood of every omitted fiber, by its degree and the
+ordinary immersion-germ theorem.  Properness shrinks these
+to base neighborhoods with zero entire inverse-image form.
+Transport it through the algebraic trivialization and
+extend by zero to $C\times\mathbf P^1$.  This is a literal
+ordinary actual form, since it is already zero before any
+omitted fiber is reached.  Its projected measure is the
+original projected measure.  Apply the theorem.
+\end{proof}
+
+\paragraph{Dependencies and scope.}
+The two primary points used for the positive-delta extension
+are Mihatsch Definition~4.2 and Corollary~4.9(2), in
+\url{https://arxiv.org/html/2112.10018v4}.
+The finite graph geometry and rational factorizations are
+those of
+\path{round14/projective_cohomology/relative_curve_top_output_and_comparison.tex}.
+The realization is the explicit graph-measure lemma
+\texttt{r14v:graph-green} in
+\path{round14/structured_descent/projective_line_aeppli_and_surface_descent.tex},
+followed by \texttt{r14x:graph-extension} in
+\path{round14/structured_descent/proper_curve_aeppli.tex}.
+It does not invoke the conclusion of the old curve-potential
+theorem on a measure whose actual nature has not yet been
+proved.
+
+The result independently resolves arbitrary actual $(2,2)$
+projection over a proper curve, with every actual scalar test.
+In higher base dimension the input is not top degree, so this
+particular supporting-skeleton proof does not apply.  The later
+Theorem~\ref{r15a2:projection} resolves that higher-base output
+by the universal kernel and finite ambient atlas, with all
+ordinary smooth compact mixed tests.  It is a separate argument.
+The all-actual scalar comparison proved here does not become
+an all-actual proper pushforward theorem in general, and no
+auxiliary-factor mixed comparison is inferred from this
+curve-top proof alone.

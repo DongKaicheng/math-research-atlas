@@ -1,0 +1,268 @@
+\section{Residual arithmetic Abel--Jacobi maps}\label{sec:regulators}
+
+\subsection{The single-row construction}\label{sec:regulator-proof}
+
+We use continuous étale cohomology and its cycle class map as in
+\cite{Raskind,Kahn}. Fix a rational prime \(\ell_0\), and put
+\[
+ k=2c-1,\qquad
+ V_{\ell_0}=R_*H^k_{\et}(Y_{\Fbar},\Q_{\ell_0}(c)).
+\]
+The action of the actual Chow idempotent \(R\) on geometric
+cohomology is concentrated in degree \(k\). Apply it to the
+correspondence-compatible Hochschild--Serre spectral sequence
+\[
+ H^p\bigl(E,H^q_{\et}(Y_{\Fbar},\Q_{\ell_0}(c))\bigr)
+ \Longrightarrow H^{p+q}_{\cont}(Y_E,\Q_{\ell_0}(c)).
+\]
+Only the row \(q=k\) survives. Hence there is a canonical
+identification
+\begin{equation}\label{eq:single-row}
+ R_*H^{2c}_{\cont}(Y_E,\Q_{\ell_0}(c))
+       \simeq H^1(E,V_{\ell_0}).
+\end{equation}
+On this summand the Hochschild--Serre filtration satisfies
+\(F^1=H\) and \(F^2=0\).
+
+\begin{proposition}\label[proposition]{prop:residual-regulator}
+The assignment \(z\mapsto\cl_{\ell_0}(R_*z)\), followed by
+\MathEqref{eq:single-row}, annihilates \(A_E\). It therefore
+defines a map
+\[
+ a_{\ell_0,E}:G_E\longrightarrow H^1(E,V_{\ell_0}).
+\]
+The map is compatible with restriction, corestriction and
+correspondences preserving the indicated projectors. Under the
+common cohomological identification, it is independent of the
+maximal curve-visible projector \(e\).
+\end{proposition}
+
+\begin{proof}
+For a degree-zero divisor \(D\) on a pointed curve \(C\), its
+continuous cycle class lies in the \(\pi_{1,C}\)-part of
+\(H^2_{\cont}(C,\Q_{\ell_0}(1))\). This part has only the
+Hochschild--Serre term
+\(H^1(E,H^1(C_{\Fbar},\Q_{\ell_0}(1)))\).
+If \(\Delta\in\CH^c(C\times Y)_\Q\) is a projected curve
+correspondence, \(R\Delta\pi_{1,C}\) has zero geometric
+\(H^1\) action by \Cref{prop:central-projector}. By functoriality
+its map on the only associated graded term is zero. Its image in
+the target of \MathEqref{eq:single-row} is consequently in
+\(F^2=0\).
+
+Curve generation proves the vanishing for algebraically trivial
+cycles after a finite extension \(L/E\). It descends to \(E\)
+because
+\(\operatorname{cor}_{L/E}\operatorname{res}_{L/E}=[L:E]\)
+on rational cohomology. Restriction is therefore injective.
+Compatibility with restriction, trace and the stated
+correspondences follows from the cycle map and the spectral
+sequence.
+
+For independence, let \(e'\) be another maximal curve-visible
+lift. Its geometric action is the same orthogonal projector onto
+\(W\). The \(\Pi\)-part of total degree \(2c=k+1\) also has
+only its first associated graded term. Thus equality of the
+geometric actions of \(e,e'\) gives equality of their actions on
+this whole continuous-cohomology group. The cycle classes of
+\((\Pi-e)z\) and \((\Pi-e')z\) coincide.
+\end{proof}
+
+\subsection{Arithmetic models and weight-minus-one cohomology}
+\label{sec:fixed-model}
+
+In the notation \(G_{E,S_E}\), all archimedean places are included
+in \(S_E\); displayed conditions on \(S_E\) specify its finite
+places.
+
+\begin{proposition}\label[proposition]{prop:fixed-S}
+There is a finite set \(S_0\) of finite places of \(F_0\) such
+that, for every prime \(\ell_0\) and finite \(E/F_0\),
+\[
+ a_{\ell_0,E}(G_E)
+   \subseteq H^1(G_{E,S_E},V_{\ell_0})
+   \subseteq H^1(E,V_{\ell_0}),
+\]
+where \(S_E\) consists of places above \(S_0\) or \(\ell_0\).
+The first space is finite-dimensional over \(\Q_{\ell_0}\).
+\end{proposition}
+
+\begin{proof}
+Spread \(Y\) to a smooth proper scheme over
+\(\Spec\cO_{F_0}[1/S_0]\). Spread the finitely many cycle
+representatives and rational-equivalence witnesses defining the
+relative correspondence \(R\) and the identity \(R^2=R\).
+After enlarging \(S_0\) once, these data all exist on this model.
+For a chosen \(\ell_0\), work over
+\[
+ U_{\ell_0}=\Spec\cO_{F_0}
+                [1/(S_0\cup\{v:v\mid\ell_0\})].
+\]
+The higher direct images of the smooth proper morphism are lisse.
+Since their \(R\)-parts vanish at the geometric generic point in
+degrees other than \(k\), they vanish everywhere in those
+degrees. The surviving part is a lisse sheaf \(\cV_{\ell_0}\).
+Applying \(R\) to Leray yields
+\[
+ R_*H^{2c}_{\cont}(\mathcal Y,\Q_{\ell_0}(c))
+          \simeq H^1(U_{\ell_0},\cV_{\ell_0}).
+\]
+Every generic-fibre cycle extends by closure to this regular
+model. Compatibility of cycle classes with restriction proves the
+factorization. Arithmetic étale cohomology finiteness gives finite
+\(\Q_{\ell_0}\)-dimension. Equivalently one may apply the model
+argument of \cite[Proposition~2.5 and Corollary~2.6]{Raskind}.
+
+For a finite extension \(E/F_0\), base change this same model to
+\(\cO_E[1/S_E]\). This is a finite flat base change, preserves
+smoothness, and preserves the relative correspondence identities.
+Taking closures of cycles over \(E\) proves the assertion
+uniformly. In degree one, the étale cohomology of the base with
+this lisse sheaf identifies with \(H^1(G_{E,S_E},V_{\ell_0})\).
+\end{proof}
+
+The residual representation has a further useful property: its
+geometric weight is \(2c-1-2c=-1\). This strengthens the preceding
+image statement to one about the whole target.
+
+\begin{proposition}[Weight-minus-one cohomology]
+\label[proposition]{prop:weight-minus-one}
+Let \(S_0\) contain the bad-reduction places of \(Y/F_0\).
+For every finite \(E/F_0\), every prime \(\ell_0\), and every
+finite \(v\notin S_E\),
+\[
+ H^1(E_v,V_{\ell_0})=0.
+\]
+Inflation is an isomorphism
+\[
+ H^1(G_{E,S_E},V_{\ell_0})\xrightarrow{\sim}
+ H^1(E,V_{\ell_0}).
+\]
+In particular, the full group on the right is finite-dimensional.
+For every stable free \(\Z_{\ell_0}\)-lattice
+\(T\subset V_{\ell_0}\), inflation also identifies
+\(H^1(G_{E,S_E},T)\) with \(H^1(E,T)\), and these groups
+are finitely generated over \(\Z_{\ell_0}\).
+\end{proposition}
+
+\begin{proof}
+At \(v\notin S_E\), smooth proper base change makes inertia act
+trivially on \(V_{\ell_0}\). The eigenvalues of geometric
+Frobenius have complex absolute value \(q_v^{-1/2}\), by
+\cite[Theorem~1.6]{DeligneWeil}. Consequently
+\(V_{\ell_0}/(\mathrm{Fr}_v-1)V_{\ell_0}=0\).
+The \(\ell_0\)-part of tame inertia is \(\Z_{\ell_0}(1)\),
+and continuous homomorphisms to \(V_{\ell_0}\) kill wild inertia
+and the other tame factors. Therefore
+\[
+ H^1(I_v,V_{\ell_0})^{\mathrm{Fr}_v}
+   =V_{\ell_0}(-1)^{\mathrm{Fr}_v}=0,
+\]
+since the eigenvalues on the twist have absolute value
+\(q_v^{1/2}\). Local inflation--restriction proves the first
+assertion.
+
+For a global continuous cocycle, the restriction to every such
+inertia group is zero. Indeed its local class is zero, and
+inertia acts trivially, so even the local coboundaries restrict to
+zero on inertia. The kernel of
+\(\Gal(\Fbar/E)\to G_{E,S_E}\) is the closed normal subgroup
+generated by these inertia groups. It acts trivially on
+\(V_{\ell_0}\). If \(z\) is the cocycle and \(i\) is in one
+of these inertia groups, the cocycle identity gives
+\(z(gig^{-1})=(1-gig^{-1})z(g)=0\).
+The restriction of \(z\) to the kernel is thus a continuous
+homomorphism vanishing on all generators, hence on the whole
+kernel. It factors through \(G_{E,S_E}\). Inflation is
+injective, proving the isomorphism.
+
+For \(T\), the inertia invariants are
+\(T(-1)^{\mathrm{Fr}_v}=0\), as they inject into the rational
+ones. The same global cocycle argument proves integral inflation.
+The local integral group may be the nonzero finite group
+\(T/(\mathrm{Fr}_v-1)T\); its restriction to inertia is still
+zero. Finally, in degree one the continuous-cohomology convention
+agrees with these continuous cocycles: compactness gives a bounded
+image in a scalar multiple of a stable lattice.
+
+To prove finite generation, write \(G=G_{E,S_E}\). The groups
+\(H^i(G,T/\ell_0^aT)\) are finite by
+\cite[Corollary~I.4.15]{Milne}. The inverse system of degree-zero
+groups is Mittag--Leffler, so
+\[
+ H^1(G,T)=\varprojlim_a H^1(G,T/\ell_0^aT)
+\]
+is a compact pro-\(\ell_0\) module. The exact sequence for
+\(0\to T\xrightarrow{\ell_0}T\to T/\ell_0T\to0\)
+embeds its reduction modulo \(\ell_0\) in the finite group
+\(H^1(G,T/\ell_0T)\). The compact form of Nakayama's lemma
+therefore makes \(H^1(G,T)\) finitely generated. Every continuous
+cocycle into \(V_{\ell_0}\) takes values in
+\(\ell_0^{-a}T\) for some \(a\), and a coboundary can likewise
+be cleared of denominators. Hence
+\[
+ H^1(G,V_{\ell_0})=H^1(G,T)\otimes_{\Z_{\ell_0}}\Q_{\ell_0},
+\]
+which proves the rational finite-dimensionality.
+\end{proof}
+
+\Cref{prop:residual-regulator,prop:weight-minus-one} prove
+\Cref{thm:main-regulator}. These ramification statements concern
+cohomology over \(E\), rather than the ramification of
+\(E/F_0\). The latter enters separately in
+\MathSecref{sec:fields}.
+
+\begin{corollary}\label[corollary]{cor:finite-rank}
+If, for one prime \(\ell_0\), the scalar-extended map
+\begin{equation}\label{eq:scalar-detection}
+ G_E\otimes_\Q\Q_{\ell_0}
+       \longrightarrow H^1(E,V_{\ell_0})
+\end{equation}
+is injective, then \(\dim_\Q G_E<\infty\).
+\end{corollary}
+
+\begin{proof}
+Its image lies in the finite-dimensional space of
+\Cref{prop:fixed-S}. Scalar extension preserves the dimension of
+a rational vector space.
+\end{proof}
+
+The scalar extension in \MathEqref{eq:scalar-detection} is
+essential: a finite-dimensional \(\Q_{\ell_0}\)-space has
+infinite dimension over \(\Q\).
+
+\subsection{Local integral bounds}\label{sec:local-integral}
+
+\begin{proposition}\label[proposition]{prop:local-lattice}
+For every fixed \(E,\ell_0\), the subgroup
+\(a_{\ell_0,E}(\Lambda_G(E))\) is contained in a finitely
+generated \(\Z_{\ell_0}\)-module in the rational cohomological
+target. If \MathEqref{eq:scalar-detection} is injective, then
+\(\Lambda_G(E)\otimes_\Z\Z_{\ell_0}\) is finitely generated
+over \(\Z_{\ell_0}\), and
+\(\Lambda_G(E)/\ell_0\Lambda_G(E)\) is finite.
+\end{proposition}
+
+\begin{proof}
+Choose one integer \(M\) clearing the Chow denominators of \(R\).
+For an integral representative \(Z\),
+\(M\cl_{\ell_0}(RZ)=\cl_{\ell_0}((MR)Z)\) is in the image of
+the integral continuous cycle class map. This image is a finitely
+generated \(\Z_{\ell_0}\)-module by
+\cite[Theorem~2.4]{Kahn}. Let \(M_{\ell_0}\) be its image in
+rational continuous cohomology. The intersection
+\[
+ M_{\ell_0}\cap R_*H^{2c}_{\cont}(Y_E,\Q_{\ell_0}(c))
+\]
+is again finitely generated and contains
+\(M\cl_{\ell_0}(RZ)\). Applying the single-row identification
+to this intersection and dividing by \(M\) gives the claimed bound.
+
+Under scalar-extended injectivity, the induced map on
+\(\Lambda_G(E)\otimes\Z_{\ell_0}\) is injective. Its source is
+torsion-free over \(\Z_{\ell_0}\), and its localization is
+\(G_E\otimes\Q_{\ell_0}\), because \(\Lambda_G(E)\) spans
+\(G_E\). Its image is a submodule of a finitely generated
+\(\Z_{\ell_0}\)-module, hence is finitely generated. Reduction
+modulo \(\ell_0\) proves the last assertion.
+\end{proof}

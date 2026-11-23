@@ -1,0 +1,318 @@
+% Round 15. Multiplicity/native extension and explicit transpose criterion.
+\section{A numerical component condition for higher-dimensional codimension two}
+\label{r15model:section}
+
+The general degree-two modification argument does not supply a
+numerically admissible lift on a semistable model.  The older curve
+proof controls a different transpose kernel in dimensions greater
+than three.  We isolate that distinction and give a sufficient
+component condition under which the missing kernel is nevertheless
+controlled by the already established divisor argument.
+
+\paragraph{Historical provenance.}
+The reduced strictly semistable primitive normalization, isotropy,
+and positivity mechanism already occurs in Round 7,
+\path{history_01_07/bb_round7/proofs/threefold_codimension_two_obstruction.tex}
+and \path{threefold_boundary_primitive_obstruction.tex}.
+Those sources already assume geometric rational homological
+vanishing.  The present section records the component criterion
+with arbitrary scheme multiplicities, its exact transpose kernel,
+native residue degrees, and the revised pure-operational actual
+bridge of Round 12.  Its combination with the new analytic dominant
+descent is a Round 15 consequence; the reduced positivity mechanism
+is not claimed as a new discovery.
+
+Fix a finite valued extension $K/\mathbf Q_p$, with valuation ring
+$R$ and finite residue field $k$.  Let $\mathcal X/R$ be an integral
+regular flat projective model of a smooth geometrically integral
+projective $n$-fold $X$, where $n\geq3$.  Suppose
+\[
+ \mathcal X_k=\sum_{i\in I}m_iD_i,\qquad m_i>0,
+\tag{LW15.1}\label{r15model:snc}
+\]
+has strict normal crossings reduced support with all closed strata
+smooth over $k$.  Fix a relatively ample line bundle $H$ on
+$\mathcal X$; write $L$ for intersection with its restriction on
+any stratum.  All numerical groups, cycle groups, and degrees below
+are rational and native over $k$.
+
+\begin{definition}[The degree-two component condition]
+\label{r15model:condition}
+The pair $(\mathcal X,H)$ satisfies condition $\mathrm{LC}_2$ if,
+for every component $D_i$, the map
+\[
+ L:N^1(D_i)_{\mathbf Q}\longrightarrow N^2(D_i)_{\mathbf Q}
+\quad\hbox{is surjective}.
+\tag{LW15.2}\label{r15model:LC2}
+\]
+The same $H$ must be used on every component and every intersection.
+This is a hypothesis on numerical groups, not a claim that arbitrary
+semistable alterations possess it.  It does not require a
+cycle-class map out of $N^2$ or a higher-codimension positivity
+conjecture.
+\end{definition}
+
+\begin{lemma}[Rank form of the component condition]
+\label{r15model:rank-condition}
+For a smooth integral projective $n$-fold $D$ over the residue
+field, $n\geq3$, the condition $L_H:N^1(D)\to N^2(D)$ being
+surjective is equivalent to
+\[
+                 \dim_{\mathbf Q}N^1(D)=\dim_{\mathbf Q}N^2(D).
+\]
+Consequently its truth is independent of the choice of ample $H$.
+The powers used to compare different strata must still come from
+one global relatively ample class in the model argument.
+\end{lemma}
+
+\begin{proof}
+For every ample $H$, the divisor Hodge index pairing
+$\deg_D(u vH^{n-2})$ is nondegenerate.  If $H u=0$ in $N^2(D)$,
+all these pairings vanish and $u=0$.  Thus $L_H$ is always
+injective.  It is surjective exactly when the two finite dimensions
+are equal.  This proves both assertions, without a higher-degree
+hard Lefschetz or positivity assertion.
+\end{proof}
+
+\begin{lemma}[Two numerical Lefschetz isomorphisms]
+\label{r15model:lefschetz}
+Let $D$ be a smooth integral projective $n$-fold over $k$, $n\geq3$,
+and let $H$ be ample.  If $L:N^1(D)\to N^2(D)$ is surjective, then
+\[
+ L^{n-3}:N^1(D)\xrightarrow{\sim}N^{n-2}(D),\qquad
+ L^{n-3}:N^2(D)\xrightarrow{\sim}N^{n-1}(D).
+\tag{LW15.3}\label{r15model:two-isomorphisms}
+\]
+\end{lemma}
+
+\begin{proof}
+The divisor Hodge index theorem used in frozen Round 12 makes
+\[
+ (u,v)\longmapsto\deg_D(u v H^{n-2})
+\]
+nondegenerate on $N^1(D)_{\mathbf Q}$.  Therefore $L:N^1\to N^2$
+is injective: if $Lu=0$, all these pairings vanish.  By the stated
+surjectivity it is an isomorphism.  Numerical intersection gives
+perfect finite-dimensional pairings $N^a(D)\times N^{n-a}(D)$.
+Hence $\dim N^{n-2}=\dim N^2=\dim N^1=\dim N^{n-1}$.
+
+If $L^{n-3}u=0$ in $N^{n-2}$, pairing with $Lv\in N^2$ gives
+$\deg_D(u v H^{n-2})=0$ for all $v$, and $u=0$.
+This proves the first isomorphism by the dimension equality.
+For the second, write every $w\in N^2$ uniquely as $Lv$.
+If $L^{n-3}w=0$, pairing with an arbitrary $u\in N^1$ gives
+the same nondegenerate divisor pairing of $u$ with $v$.
+Thus $v=w=0$, and the second map is an isomorphism as well.
+For $n=3$ the asserted maps are identities; the component
+condition is automatic by the same divisor index pairing.
+\end{proof}
+
+Set $V^a=\bigoplus_i N^a(D_i)_{\mathbf Q}$ and retain the
+frozen actual vertical incidence maps
+\[
+ A_a:V^a\longrightarrow V^{a+1},\qquad
+ A_a(v)=\left(j_i^!\sum_j j_{j*}v_j\right)_i,
+\tag{LW15.4}\label{r15model:A}
+\]
+where $j_i:D_i\hookrightarrow\mathcal X$.
+Their numerical definition is the restriction--Gysin formula on
+double strata together with the self-normal term on each diagonal.
+Let $M$ multiply the $i$th component by $m_i$.
+Write $\delta$ for divisor restriction differences on double
+strata and $\gamma_0$ for the signed Gysin of constants on those
+strata.  These symbols have exactly the conventions of Round 12,
+\path{numerical_lift/curve_lifts_and_actual_green.tex},
+(NL3)--(NL8).  In particular the already proved formula is
+\[
+                  \ker A_1=M\ker\delta+\operatorname{im}\gamma_0.
+\tag{LW15.5}\label{r15model:old-kernel}
+\]
+No unweighted version of this formula is used.
+
+\begin{lemma}[The required transpose kernel under $\mathrm{LC}_2$]
+\label{r15model:kernel}
+Under condition $\mathrm{LC}_2$,
+\[
+ \ker A_{n-2}
+   = L^{n-3}\ker A_1
+   = L^{n-3}\bigl(M\ker\delta+\operatorname{im}\gamma_0\bigr).
+\tag{LW15.6}\label{r15model:kernel-reduction}
+\]
+\end{lemma}
+
+\begin{proof}
+Restriction and Gysin commute with intersection by the globally
+chosen $H$.  The normal self-intersection term also commutes with
+it.  Thus
+\[
+             A_{n-2}L^{n-3}=L^{n-3}A_1.
+\]
+The first isomorphism of Lemma~\ref{r15model:lefschetz}, component
+by component, writes every $v\in V^{n-2}$ uniquely as $L^{n-3}w$.
+The second makes $L^{n-3}:V^2\to V^{n-1}$ injective.  Therefore
+$A_{n-2}v=0$ if and only if $A_1w=0$.
+This proves the first equality, and the frozen weighted divisor
+kernel formula proves the second.  No assertion is made that a
+numerical hard Lefschetz statement in higher degree holds without
+$\mathrm{LC}_2$.
+\end{proof}
+
+\begin{theorem}[A numerically admissible codimension-two lift]
+\label{r15model:lift}
+Assume \eqref{r15model:snc} and $\mathrm{LC}_2$.
+Let $z\in\operatorname{CH}^2(X)_{\mathbf Q}$ satisfy
+\[
+ \operatorname{cl}_\ell(z)=0
+       \quad\hbox{in }H^4(X_{\bar K},\mathbf Q_\ell(2))
+       \qquad(\ell\ne p).
+\]
+Every extension $\Theta\in\operatorname{CH}^2(\mathcal X)_{\mathbf Q}$
+of $z$ admits a correction by vertical divisors on the components,
+\[
+ \Theta^{\mathrm{ad}}=\Theta-\sum_i j_{i*}u_i,
+       \qquad u_i\in\operatorname{CH}^1(D_i)_{\mathbf Q},
+\tag{LW15.7}\label{r15model:correction}
+\]
+such that
+\[
+         j_i^!\Theta^{\mathrm{ad}}=0
+                         \quad\hbox{in }N^2(D_i)_{\mathbf Q}
+                         \quad\hbox{for every }i.
+\tag{LW15.8}\label{r15model:component-zero}
+\]
+There is a pure operational virtual bundle
+$\xi\in K_0(\mathcal X)_{\mathbf Q}$ with generic
+$\operatorname{ch}_2(\xi|_X)=z$ and degree zero on every
+integral two-dimensional special-fiber subvariety.
+Under the frozen model-Chern detector and exact-support bridge,
+$\mathfrak o_X^2(z)=0$, and every prescribed rational cycle in
+class $z$ has a strong G form over $K$, on its exact complement,
+against every actual compact test.
+\end{theorem}
+
+\begin{proof}
+Put $T_i=j_i^!\Theta$ in $N^2(D_i)$ and consider the rational
+functional on $V^{n-2}$
+\[
+                    t(v)=\sum_i\deg_{D_i}(T_i v_i).
+\]
+We prove that it annihilates the two summands of
+\eqref{r15model:kernel-reduction}.
+
+First, the signed double-stratum Gysin identity
+$\sum_i j_{i*}(\gamma_0 a)_i=0$ holds on the common support,
+with the two occurrences of each double stratum cancelling.
+Intersecting by the same $H^{n-3}$ and applying the projection
+formula makes the two supported degree contributions from $T$
+cancel as well.  Hence
+\[
+                         t(L^{n-3}\gamma_0a)=0.
+\]
+This computation takes degrees on the proper special strata.
+It does not use an unweighted degree homomorphism on
+$\operatorname{CH}_0(\mathcal X)$.
+
+Next take $w\in\ker\delta$.  The frozen divisor cohomological-lift
+lemma, Round 12 \texttt{r12n:cohom-lift}, gives
+$b\in H^2(\mathcal X_{R^{\mathrm{sh}}},\mathbf Q_\ell(1))$
+whose component restrictions are the divisor classes of $w_i$.
+It uses numerical-to-homological triviality only for divisors,
+the finite-field purity of the smooth strata, and proper base
+change.  Let $a=\operatorname{ch}_2(\xi_\Theta)$ be the
+cohomological class of the pure operational representative of
+$\Theta$, as in Round 12 \texttt{r12n:K0}, and let
+$\mathfrak h=c_1(H)$ in cohomology.  Apply the frozen weighted
+trace lemma \texttt{r12n:weighted-trace} to the top-degree class
+\[
+                           a\cup b\cup\mathfrak h^{n-3}.
+\]
+It gives
+\[
+ \begin{split}
+ t(L^{n-3}Mw)
+ &=\sum_i m_i\deg_{D_i}(T_i w_i H^{n-3})\\
+ &=\operatorname{Tr}_{X_{\bar K}}
+       \bigl(\operatorname{cl}_\ell(z)\cup b|_{X_{\bar K}}
+                                    \cup\mathfrak h^{n-3}|_{X_{\bar K}}\bigr)
+ =0.
+ \end{split}
+\tag{LW15.9}\label{r15model:weighted-annihilation}
+\]
+The class $a$ comes from the chosen Chow representative, not from
+an unproved cycle-class map on $N^2$.  The factor $b$ may be any
+of the cohomological lifts supplied by the frozen lemma; no
+Frobenius-invariant lift or Tate-conjecture surjectivity is needed.
+
+Lemma~\ref{r15model:kernel} now gives $t|_{\ker A_{n-2}}=0$.
+The perfect numerical pairings identify the transpose of
+$A_{n-2}:V^{n-2}\to V^{n-1}$ with
+$A_1:V^1\to V^2$; this is the same restriction--Gysin and normal
+term calculation as in Round 12.  Finite-dimensional rational
+linear algebra yields
+\[
+                         T\in(\ker A_{n-2})^\perp
+                                          =\operatorname{im}A_1.
+\]
+Choose $u\in V^1$ with $A_1u=T$, and choose rational divisor
+representatives on the smooth $D_i$.  Formula
+\eqref{r15model:correction} has unchanged generic class and its
+component restrictions are $T-A_1u=0$, proving
+\eqref{r15model:component-zero}.
+
+Apply the frozen pure-operational representative lemma
+\texttt{r12n:K0} in degree $r=2$ to $\Theta^{\mathrm{ad}}$.
+It explicitly applies in arbitrary degree, even though the main
+curve theorem used it with $r=n-1$.
+It produces $\xi$ with all other operational Chern-character
+components zero.  Every integral surface in the special fiber
+lies in some $D_i$.  Its supported degree equals the numerical
+pairing of $j_i^!\Theta^{\mathrm{ad}}$ with that surface, hence
+is zero.  This includes singular surfaces and surfaces in
+multiple components.
+
+The frozen numerical model-Chern detector makes
+$\operatorname{ch}_2(\bar\xi)=0$ as an actual form.  The
+Round 11 generic-Chow-zero primitive theorem identifies its
+model-curvature class with $\mathfrak o_X^2(z)$, and thus that
+class is zero.  Apply the established sufficient direction
+$\mathfrak o=0\Rightarrow G$ to the prescribed representative.
+It subtracts a global actual primitive from its exact-support
+Green pair.  The correction adds no new pole and its identity
+holds on all actual compact tests.  No reverse implication from
+G is used.
+\end{proof}
+
+\begin{remark}[Readily checkable component groups]
+\label{r15model:examples}
+A component with $N^1=\mathbf Q[H]$ and
+$N^2=\mathbf Q[H^2]$ satisfies $\mathrm{LC}_2$.
+In particular projective-space components satisfy it by their
+Chow ring.  This verifies a component condition when such a
+regular SNC model is supplied; it is not an existence theorem
+for a model with these components.
+
+More generally, on a component for which the numerical groups
+and ample class are given explicitly, the condition is exactly
+surjectivity of one finite rational multiplication matrix
+$L:N^1\to N^2$.  No assertion about every codimension-two cycle
+being a complete intersection on the original generic fiber
+is part of the condition.
+\end{remark}
+
+\paragraph{The remaining numerical obstruction without this condition.}
+For an arbitrary supplied regular SNC model and any fixed extension
+$\Theta$, a correction of the displayed type exists if and only if
+\[
+           t_\Theta|_{\ker A_{n-2}}=0.
+\tag{LW15.10}\label{r15model:exact-numerical-gate}
+\]
+This follows from the same transpose pairing, with no extra
+hypothesis.  The frozen curve theorem proves the corresponding
+annihilation on $\ker A_1$, which is the correct transpose
+kernel for codimension $n-1$.  For $n>3$ those are different
+requirements.  Our new component condition supplies a genuine
+identification of the two kernels by \eqref{r15model:kernel-reduction};
+without it, that identification is not asserted.  In particular,
+this section does not prove a numerically admissible lift for all
+geometrically homologically trivial codimension-two cycles on
+arbitrary higher-dimensional SNC models.

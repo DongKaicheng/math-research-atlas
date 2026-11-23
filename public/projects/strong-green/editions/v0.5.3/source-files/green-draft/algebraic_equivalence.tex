@@ -1,0 +1,349 @@
+\section{Algebraic equivalence and compact parameters}
+\label{r12p:section}
+
+Throughout this section $K/\mathbf Q_p$ is finite and $X/K$ is smooth,
+projective and geometrically integral.  Write $D=d'd''$ and let
+$\mathcal B$ be the actual delta-form sheaf.
+
+Recall the algebraic quotient
+\[
+ H_{\mathrm{BC,act}}^{r,r}(X)=
+ \frac{\{\omega\in\mathcal B^{r,r}(X^{\rm an}):
+                    d'\omega=d''\omega=0\}}
+      {D\mathcal B^{r-1,r-1}(X^{\rm an})}.
+\]
+The preceding theorems define the model-independent class
+\[
+ \mathfrak o_X^r:\operatorname{CH}^r(X)_{\mathbb Q}
+       \longrightarrow H_{\mathrm{BC,act}}^{r,r}(X),
+ \qquad
+ \mathfrak o_X^r(a)=[\operatorname{ch}_r(\bar\xi)],
+ \quad \operatorname{ch}_r(\xi|_X)=a.
+\tag{R12.P1}\label{r12p:obstruction}
+\]
+
+
+\subsection{Actual forms are locally constant in a rigid parameter}
+
+\begin{lemma}[Uniform rigid-fiber constancy]
+\label{r12p:rigid-fiber}
+Let $S/K$ be smooth and separated, let $a_0\in S(K)$, and let
+$\omega\in\mathcal B((X\times S)^{\rm an})$.  Denote by
+$s_a:X^{\rm an}\to(X\times S)^{\rm an}$ the section with parameter
+$a\in S(K)$.  There is an ordinary analytic open neighborhood $V$ of
+$a_0$ in $S^{\rm an}$ such that
+\[
+                    s_a^*\omega=s_{a_0}^*\omega
+       \quad\text{for every }a\in V\cap S(K),
+\tag{R12.P2}\label{r12p:literal-constancy}
+\]
+as actual forms on the whole $X^{\rm an}$.
+\end{lemma}
+
+\begin{proof}
+Put $p:(X\times S)^{\rm an}\to X^{\rm an}$ and
+$q:(X\times S)^{\rm an}\to S^{\rm an}$.  The analytic section
+$s=s_{a_0}$ is closed and $ps=\operatorname{id}$.  We first check
+the retracted germ argument directly.
+
+Near a point of $s(X^{\rm an})$, write
+$\omega=t_f^\star\gamma$ for a finite tuple $f_i$ of analytic units
+and a Euclidean delta-form $\gamma$.  Shrink to where both $f_i$ and
+$f_i^0=p^*s^*f_i$ are defined.  Each $f_i-f_i^0$ vanishes along the
+section.  The inequalities
+\[
+                         |f_i-f_i^0|<|f_i^0|
+\]
+therefore define an ordinary open neighborhood of that part of the
+section.  On it $|f_i|=|f_i^0|$.  On every common refining skeleton
+the corresponding valuation tuples are equal as linear functions,
+so their intrinsic tropical pullbacks of $\gamma$ agree.  Mihatsch's
+Definition 4.2 and Lemma 4.4 identify the actual forms, and Theorem 4.5
+gives the compatibility with analytic pullback \cite{M}.  Taking the
+union of the resulting neighborhoods gives an ordinary open $W$
+containing the entire section, on which
+\[
+                         \omega=p^*s^*\omega.
+\]
+
+The projection $q$ is proper because $X$ is proper.  In particular it
+is closed on the ordinary topology.  Its closed set
+$q((X\times S)^{\rm an}\setminus W)$ does not contain $a_0$:
+the analytic fiber over a $K$-rational point is exactly the image of
+the corresponding section.  Its complement $V$ is an ordinary open
+with $q^{-1}(V)\subset W$.  Pull the displayed equality back by
+$s_a$ for $a\in V\cap S(K)$ to obtain
+\eqref{r12p:literal-constancy}.
+
+This argument uses properness of the analytic projection, not an
+identification of the underlying analytic product with a Cartesian
+product of point sets.  All pullbacks are of actual forms by genuine
+analytic morphisms, including the closed section.
+\end{proof}
+
+\begin{lemma}[A multiple enters a prescribed identity neighborhood]
+\label{r12p:compact-multiple}
+Let $A/K$ be an abelian variety.  For every $a\in A(K)$ and every
+open neighborhood $U$ of $0$ in $A(K)$, there is an integer $m>0$
+such that $ma\in U$.
+\end{lemma}
+
+\begin{proof}
+The group $A(K)$ is compact: a projective embedding realizes it as
+a closed subset of compact $\mathbf P^N(K)$.  Choose a neighborhood
+$V$ of $0$ with $V-V\subset U$.  Finitely many translates of $V$
+cover $A(K)$.  Two of sufficiently many points $0,a,2a,\ldots,Na$
+belong to one translate; their difference is $ma\in U$ for some
+$m>0$.  This remains valid when $a$ is torsion.
+\end{proof}
+
+\subsection{Additive parameter families and global primitives}
+
+\begin{definition}[Additive cycle family]
+For an abelian variety $A/K$, a class
+$\Theta\in\operatorname{CH}^r(X\times A)_{\mathbb Q}$ is called
+additive on rational fibers if its refined Gysin fibers satisfy
+$\Theta_0=0$ and
+\[
+       \Theta_{a+b}=\Theta_a+\Theta_b
+       \quad\text{in }\operatorname{CH}^r(X)_{\mathbb Q}
+       \qquad(a,b\in A(K)).
+\tag{R12.P3}\label{r12p:additive}
+\]
+The requirement is about Chow classes.  An arbitrary family on an
+abelian parameter variety is not presumed to satisfy it.
+\end{definition}
+
+\begin{theorem}[Compact additive parameters]
+\label{r12p:compact-additive}
+Let $\Theta$ be as in \eqref{r12p:additive}.  For every $a\in A(K)$,
+\[
+                          \mathfrak o_X^r(\Theta_a)=0.
+\tag{R12.P4}\label{r12p:additive-zero}
+\]
+More precisely, any actual degree-$r$ model character representing
+$\Theta_a$ has a global actual $D$-primitive that is a finite rational
+linear combination of the restricted finite-flat traces of global
+original PL-scalar/model-curvature line sums from Theorem~\ref{r11p:minimal-trace-theorem}.
+\end{theorem}
+
+\begin{proof}
+Choose a virtual bundle on $X\times A$ whose degree-$r$ generic
+Chern character is $\Theta$, and extend its finitely many bundles
+to a common projective flat model.  This uses the rational Chern
+character isomorphism on the smooth projective generic fiber and
+the model-extension argument of Corollary~\ref{r11p:any-cycle-pair}.
+Let $\Omega$ be its actual degree-$r$ model character and write
+$\Omega_b=s_b^*\Omega$.  Each $\Omega_b$ is a model character on a
+graph model of $X$.  For any finite list of parameters, all of these
+model bundles can be compared on one projective flat refinement.
+
+Lemma~\ref{r12p:rigid-fiber} gives a neighborhood $U$ of $0$ in
+$A(K)$ on which $\Omega_b=\Omega_0$ literally.  Fix $a$, and choose
+$m>0$ with $ma\in U$ by Lemma~\ref{r12p:compact-multiple}.  On a
+common model the actual character
+\[
+ \Delta=\Omega_{ma}-\Omega_0-m(\Omega_a-\Omega_0)
+                 =-m(\Omega_a-\Omega_0)
+\tag{R12.P5}\label{r12p:delta}
+\]
+has generic degree-$r$ Chow class
+$\Theta_{ma}-m\Theta_a=0$.  Proposition~\ref{r11p:generic-chow-primitive} supplies a global actual $H$ with $DH=\Delta$.
+Consequently
+\[
+                 \beta_a=-\frac{1}{m}H,
+                 \qquad D\beta_a=\Omega_a-\Omega_0.
+\tag{R12.P6}\label{r12p:beta}
+\]
+
+If $\Omega_a'$ is any other actual degree-$r$ model character with
+generic class $\Theta_a$, then
+$\Omega_a'-(\Omega_a-\Omega_0)$ has generic class zero.  Give this
+difference a global primitive by the same proposition and add it to
+$\beta_a$.  This proves \eqref{r12p:additive-zero} and independence
+of the chosen model metric at the level of actual primitives.
+
+For the asserted form of the primitive, the generic-Chow-zero proof
+first applies an Adams projector, then expresses a generic $K_0$
+relation by finitely many generically acyclic model complexes.
+Their prescribed generic open is the whole $X$.  Each primitive is
+therefore of the form
+\[
+       \sum_j q_jd_j^{-1}\operatorname{Tr}^{\mathscr M}_{b_j}(G_j),
+       \qquad q_j\in\mathbb Q,
+\tag{R12.P7}\label{r12p:certificate}
+\]
+where $b_j:T_j\to X$ is finite flat on all of $X$, $d_j$ is its
+native degree, and $G_j$ is a global original line sum on $T_j$.
+Taking the finite rational linear combinations in
+\eqref{r12p:beta} and in the final correction preserves this
+description.  No trace of an arbitrary already constructed actual
+primitive is used.
+\end{proof}
+
+\begin{remark}[A shorter quotient argument]
+By Lemma~\ref{r12p:rigid-fiber}, the map
+$a\mapsto\mathfrak o_X^r(\Theta_a)$ is locally constant as a map
+from the compact space $A(K)$ to an abstract set.  It therefore has
+finite image.  Additivity makes that image a finite subgroup of a
+real vector space, hence zero.  This proves the vanishing without
+putting any topology on $H_{\mathrm{BC,act}}^{r,r}(X)$.
+The proof above additionally retains the composable representation
+\eqref{r12p:certificate}.
+\end{remark}
+
+\subsection{The Poincare correspondence and descent over the original field}
+
+\begin{lemma}[An additive family attached to a pointed curve]
+\label{r12p:poincare}
+Let $F/K$ be a finite extension, let $C/F$ be a smooth projective
+geometrically integral curve with $c_0\in C(F)$, and let
+$\Gamma\in\operatorname{CH}^r(X_F\times C)_{\mathbb Q}$.
+Put $J=\operatorname{Pic}^0_{C/F}$.  There is a class
+$\Theta\in\operatorname{CH}^r(X_F\times J)_{\mathbb Q}$ such that
+\[
+ \Theta_t=\Gamma_*c_1(\mathcal P_t),\qquad
+ \Theta_0=0,\qquad \Theta_{t+t'}=\Theta_t+\Theta_{t'}
+ \quad(t,t'\in J(F)),
+\tag{R12.P8}\label{r12p:poincare-fiber}
+\]
+where $\mathcal P$ is the Poincare bundle normalized along
+$c_0\times J$ and $C\times\{0\}$.
+\end{lemma}
+
+\begin{proof}
+The pointed Picard functor has this normalized universal line bundle;
+see Milne's Theorem 1.2 and Lemma 1.3 \cite{MilneJV}.  On
+$X_F\times C\times J$ define
+\[
+ \Theta=(p_{XJ})_*\bigl(p_{XC}^*\Gamma\cdot
+                              p_{CJ}^*c_1(\mathcal P)\bigr).
+\tag{R12.P9}\label{r12p:poincare-family}
+\]
+Here $p_{XJ}$ has relative dimension one, so the codimension is $r$.
+Every pushforward in this formula is the usual algebraic proper
+pushforward on Chow groups.  Refined Gysin compatibility with that
+pushforward and with intersection gives the fiber formula.
+The rigidified Picard law identifies
+$\mathcal P_{t+t'}$ with $\mathcal P_t\otimes\mathcal P_{t'}$,
+and $\mathcal P_0$ is trivial.  First Chern classes and correspondence
+action are additive, proving all of \eqref{r12p:poincare-fiber}.
+\end{proof}
+
+\begin{lemma}[Algebraic norm of an additive family]
+\label{r12p:norm-family}
+Let $L/K$ be finite Galois, let $J/L$ be an abelian variety, and let
+$\Theta\in\operatorname{CH}^r(X_L\times J)_{\mathbb Q}$ be
+additive on $J(L)$.  Put $A=\operatorname{Res}_{L/K}J$.
+There is a class
+$\Theta^N\in\operatorname{CH}^r(X\times A)_{\mathbb Q}$,
+additive on $A(K)$, whose fiber at the point $a$ corresponding to
+$t\in J(L)=A(K)$ is
+\[
+                    (\Theta^N)_a=h_*\Theta_t,
+                    \qquad h:X_L\longrightarrow X.
+\tag{R12.P10}\label{r12p:norm-fiber}
+\]
+\end{lemma}
+
+\begin{proof}
+For completeness, $A$ can be constructed by descending the product
+$\prod_{\sigma\in\operatorname{Gal}(L/K)}{}^\sigma J$ with its
+canonical semilinear permutation datum.  Finite Galois descent for
+projective varieties gives a smooth projective group, geometrically
+connected, hence an abelian variety over $K$; see
+\cite[Proposition 1.8]{MilneJV}.  Its $K$-points are the conjugate
+tuples determined by a point of $J(L)$.  Let $e:A_L\to J$ be the
+evaluation morphism, which is a group morphism.  With
+$h_A:(X\times A)_L\to X\times A$, set
+\[
+ \Theta^N=(h_A)_*(\operatorname{id}_{X_L}\times e)^*\Theta.
+\tag{R12.P11}\label{r12p:norm-family-formula}
+\]
+The pullback here is an algebraic Chow pullback between smooth
+schemes, and $h_A$ is finite flat.  The proper-pushforward/refined-
+Gysin base-change formula gives \eqref{r12p:norm-fiber}.
+Since $e$ is additive and $h_*$ is a homomorphism, these fibers are
+additive; their zero fiber is zero.  This proof only uses algebraic
+norms.  It neither pulls actual forms back to $L$ nor descends them
+through an analytic finite trace.
+\end{proof}
+
+\begin{theorem}[Geometrically algebraically trivial curvature]
+\label{r12p:geometric-algebraic}
+Let $1\leq r\leq n$ and let
+$z\in\operatorname{CH}^r(X)_{\mathbb Q}$ become algebraically
+trivial over $\overline K$.  Then
+\[
+                              \mathfrak o_X^r(z)=0.
+\tag{R12.P12}\label{r12p:alg-zero}
+\]
+Every actual degree-$r$ model character representing $z$ has a
+global actual $D$-primitive of the form
+\eqref{r12p:certificate}.  No reduction assumption is needed.
+For every prescribed rational cycle $Z$ representing $z$, strong G
+holds on exactly $X^{\rm an}\setminus|Z|^{\rm an}$, over the
+original $K$, and on every compact actual test.
+\end{theorem}
+
+\begin{proof}
+Over $\overline K$, algebraically trivial Chow classes are generated
+by degree-zero divisor correspondences on smooth projective curves.
+This is also a consequence of the curve case of
+\cite[Theorems 1--2, Proposition 3.14]{ACMV}.  Write $z_{\overline K}$
+as a finite rational sum of such expressions.  All curves,
+correspondences, marked points, divisor classes and rational
+equivalence witnesses involve finitely many algebraic coefficients.
+They therefore descend, after enlarging once, to a finite Galois
+extension $L/K$.  Enlarge $L$ also so that each curve has a chosen
+$L$-point.  Rational coefficients can either be retained throughout
+or cleared by one positive integer at this step.
+
+Lemma~\ref{r12p:poincare}, followed by taking a product of the
+finitely many Jacobians and adding the pullbacks of their families,
+gives an abelian variety $J/L$, a class $\Theta$ additive on $J(L)$,
+and $t\in J(L)$ such that
+\[
+                              \Theta_t=z_L.
+\]
+Form the native family $\Theta^N$ from
+Lemma~\ref{r12p:norm-family}.  Its fiber at the corresponding
+$a\in A(K)$ is
+\[
+        (\Theta^N)_a=h_*z_L=[L:K]z
+                 \quad\text{in }\operatorname{CH}^r(X)_{\mathbb Q},
+\tag{R12.P13}\label{r12p:degree-norm}
+\]
+by the algebraic flat-pullback/proper-pushforward degree formula.
+Apply Theorem~\ref{r12p:compact-additive} entirely over $K$ and
+divide by $d=[L:K]$ to obtain \eqref{r12p:alg-zero}.
+
+Here is the primitive with every correction exposed.  Choose a
+model character $\Omega$ for $\Theta^N$ on $X\times A$, and let
+$\beta_a$ be \eqref{r12p:beta}.  If $\Omega_z$ is the prescribed
+model character for $z$, then
+$\Omega_a-\Omega_0-d\Omega_z$ has generic Chow character zero.
+Give it a global primitive $H_z$ by Proposition~\ref{r11p:generic-chow-primitive}.  Then
+\[
+             \Psi_z=\frac{\beta_a-H_z}{d},
+             \qquad D\Psi_z=\Omega_z.
+\tag{R12.P14}\label{r12p:final-primitive}
+\]
+Every term retains \eqref{r12p:certificate}.
+
+Finally take the exact-support pair $(G_Z,\Omega_Z)$ supplied by
+the supported-complex construction, and apply the preceding result
+to its model curvature.  Put
+\[
+       \gamma_Z=G_Z-\Psi_Z\big|_{X^{\rm an}\setminus|Z|^{\rm an}}.
+\]
+The correction is global, so introduces no additional pole.  Stokes
+and actual-current injectivity give, for every
+$\eta\in\mathcal B_c^{n-r,n-r}(X^{\rm an})$,
+\[
+ \int_{X^{\rm an}\setminus|Z|^{\rm an}}\gamma_ZD\eta
+                         =-\int_{Z^{\rm an}}\eta.
+\]
+This is the required exact-support, all-actual-test statement.
+
+\end{proof}

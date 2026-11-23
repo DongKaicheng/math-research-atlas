@@ -1,0 +1,148 @@
+% Round 16, global_height_audit. Independently reviewed by model_obstruction.
+\section{Exact strong Green equivalence under finite flat pullback}
+\label{r16fg:section}
+
+The full mathematical source passed independent model-branch
+review at SHA256
+\texttt{c8a295401d0d0b8422d2de8b2079636006fdeb3ee66725821af685317774248a},
+recorded in
+\path{audits/finite_flat_strong_green_ascent_model_review.md}.
+Only this activation notice differs from the reviewed source.
+
+The all-actual finite-flat restriction theorem also gives ascent
+of a supplied strong Green form, including along the ramification
+locus. This direction does not require an obstruction primitive
+or a P property for the input Green form.
+
+\begin{lemma}[Finite trace restricted to an arbitrary algebraic cycle]
+\label{r16fg:cycle-trace}
+Let $q:Y\to X$ be finite flat of degree $d$ between smooth
+integral projective $K$-varieties of dimension $n$, with $X$
+geometrically integral. If $A$ is a rational $k$-dimensional
+cycle on $X$ and $\eta\in B^{k,k}(Y^{\rm an})$ is arbitrary
+actual, then
+\[
+                   \int_{A^{\rm an}}\operatorname{Tr}_q\eta
+                          =\int_{(q^*A)^{\rm an}}\eta.
+ \tag{FG16.1}\label{r16fg:cycle-trace-eq}
+\]
+The flat cycle on the right retains its generic scheme lengths;
+components contained in the branch locus are permitted.
+\end{lemma}
+
+\begin{proof}
+By linearity assume $A$ integral, and write
+$a:A^\nu\to X$ for its finite normalization map followed by
+inclusion. Decompose the finite flat fiber product as
+\[
+ [Y\times_XA^\nu]=\sum_j e_j[W_j],\qquad N_j=W_j^\nu,
+\]
+with its generic Artinian lengths and finite maps
+$q_j:N_j\to A^\nu$, $\rho_j:N_j\to Y$.
+Theorem~\ref{r16h:finite-base-change} gives the equality of
+actual forms on $A^\nu$
+\[
+             a^*\operatorname{Tr}_q\eta
+                   =\sum_j e_j\operatorname{Tr}_{q_j}\rho_j^*\eta.
+\]
+All these forms have top degree on their normal carriers.
+Integrate and apply finite trace adjunction with the compact
+actual scalar $1$. This gives
+$\int_{A^\nu}a^*\operatorname{Tr}_q\eta
+  =\sum_j e_j\int_{N_j}\rho_j^*\eta$.
+Normalization has generic degree one and preserves top actual
+integration, by dense smooth-locus support avoidance. The weighted
+fundamental cycles on the right push to the flat cycle $q^*[A]$:
+normalizing $A$ does not change its generic field, so the same
+finite generic algebras and their full lengths occur.
+This proves \eqref{r16fg:cycle-trace-eq} with native $K$-degrees.
+\end{proof}
+
+\begin{theorem}[Finite flat ascent and descent of exact strong G]
+\label{r16fg:equivalence}
+Let $q:Y\to X$ satisfy the hypotheses of
+Lemma~\ref{r16fg:cycle-trace}. Let $Z$ be a specified rational
+codimension-$r$ cycle, with $1\leq r\leq n$. Then
+\[
+                         G_X(Z)\quad\Longleftrightarrow\quad G_Y(q^*Z)
+ \tag{FG16.2}\label{r16fg:equivalence-eq}
+\]
+in the ordinary actual theory over the original $K$, with exact
+support complements and all compact actual tests. Specifically,
+ascent takes $\gamma_Z$ to $q^*\gamma_Z$; descent takes
+$\gamma_{q^*Z}$ to $d^{-1}\operatorname{Tr}_q\gamma_{q^*Z}$
+on the respective complements. No direction asserts
+$G\Rightarrow\mathfrak o=0$.
+\end{theorem}
+
+\begin{proof}
+The flat pullback cycle has support exactly $q^{-1}|Z|$.
+Distinct prime components downstairs cannot acquire a common
+prime component upstairs under a finite map, since its image
+has a unique generic point. After collecting the original
+coefficients, the positive generic flat multiplicities therefore
+cause no extra cancellation of this support.
+
+Suppose a strong Green form $\gamma_Z$ is supplied and take
+an arbitrary $\eta\in B_c^{n-r,n-r}(Y^{\rm an})$.
+The support of $D\eta$ avoids $q^{-1}|Z|$ because its degree
+is one greater than the polar dimension. Its finite image is
+a compact subset of $X\setminus|Z|$. Insert an ordinary compact
+cutoff there when using $\gamma_Z$ as a target factor in the
+trace adjunction. Full actual trace, commutation with $D$, the
+supplied strong equation, and \eqref{r16fg:cycle-trace-eq} give
+\[
+ \begin{split}
+ \int_{Y\setminus|q^*Z|}q^*\gamma_Z\wedge D\eta
+   &=\int_{X\setminus|Z|}\gamma_Z\wedge\operatorname{Tr}_q(D\eta)\\
+   &=\int_{X\setminus|Z|}\gamma_Z\wedge D(\operatorname{Tr}_q\eta)\\
+   &=-\int_Z\operatorname{Tr}_q\eta
+    =-\int_{q^*Z}\eta.
+ \end{split}
+ \tag{FG16.3}\label{r16fg:ascent-eq}
+\]
+Here $\operatorname{Tr}_q\eta$ is a genuine global actual test
+of the required degree. Thus the equation is not confined to
+pullback or exterior-product tests upstairs. Ordinary actual
+pullback puts $q^*\gamma_Z$ on the entire exact complement.
+
+Conversely, Theorem~\texttt{r16fc:exact-support} gives the
+stated trace descent. Its proof uses the native finite-flat
+degree formula $q_*q^*Z=dZ$, with the same generic lengths.
+This proves both directions over the original field.
+\end{proof}
+
+\begin{corollary}[Native finite constant extension for a bare strong Green form]
+\label{r16fg:constants}
+For $L/K$ finite and $X/K$ smooth projective geometrically
+integral, a supplied strong Green form for $Z$ pulls back to
+a strong Green form for $Z_L$ on every $L$-actual test.
+The converse also holds by normalized native trace. If a cycle
+$W$ of complementary codimension $n+1-r$ is disjoint from
+$|Z|$ and has a supplied strong Green form, then
+\[
+                  \lambda_L(Z_L,W_L)=\lambda_K(Z,W)
+ \tag{FG16.4}\label{r16fg:constant-value}
+\]
+for the fixed extending absolute value.
+\end{corollary}
+
+\begin{proof}
+Apply the theorem to $X_L\to X$ in the original $K$-theory.
+The underlying actual sheaves have the same genuine analytic
+unit presentations in the $K$- and $L$-descriptions. Mihatsch
+Lemma~3.16 multiplies every native top integral in the former
+description by $[L:K]$. Dividing the full Green identity by
+this common factor gives exactly the $L$-identity. For descent,
+first read the $L$-identity in the native $K$-theory by the same
+common multiplication and use the theorem's normalized trace.
+
+The finite-cycle degree formula gives
+$\int_{W_L/K}q^*\gamma_Z=[L:K]\int_{W/K}\gamma_Z$.
+Changing the left integration to the native $L$-weight cancels
+this factor. Two-sided Green-choice independence then gives
+\eqref{r16fg:constant-value} for every permitted choice.
+The assertion concerns these pulled cycles; it does not deduce
+strong G for every newly defined cycle over $L$ from a theorem
+about cycles defined only over $K$.
+\end{proof}

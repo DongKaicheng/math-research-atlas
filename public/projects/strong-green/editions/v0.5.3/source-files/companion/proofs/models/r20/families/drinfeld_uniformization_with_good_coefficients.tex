@@ -1,0 +1,242 @@
+% Round 20. DU20. family20. Candidate until independent review.
+\section{Drinfeld uniformization with an arbitrary native good coefficient}
+\label{r20du:section}
+
+\paragraph{Status and scope.}
+This is a current-interface application of established uniformization
+geometry, not a priority claim.  The coefficient has good projective
+reduction over the field on which the Drinfeld models are supplied.
+No claim about an arbitrary potentially-good coefficient is inferred
+from weight--monodromy alone.  All Chow groups and motives below have
+rational coefficients.
+
+\subsection{The published input and the actual Chow consequence}
+
+We use the following four precise facts from T. Ito,
+\emph{Weight--monodromy conjecture for $p$-adically uniformized
+varieties}, Invent. Math. 159 (2005), 607--656,
+\url{https://arxiv.org/pdf/math/0301201}:
+Theorem 1.2 proves weight--monodromy in every degree for a projective
+Drinfeld quotient; Section 6.1 gives its projective algebraization;
+Section 6.2 passes to a finite etale cover with a strictly semistable
+model; Sections 4.1--4.3 and 6.2 identify that model's components and
+closed strata with products of the varieties $B_d$, obtained by
+successive blowups of rational linear subspaces of projective space.
+These facts include the existence of the projective model and are
+stronger than a statement solely about analytic uniformization.
+
+\begin{lemma}[Native split Tate motives of the model strata]
+\label{r20du:tate}
+Let $k$ be the native finite residue field.  Each $B_d/k$, and each
+closed stratum in the strictly semistable cover just described, has
+an actual rational Chow motive which is a finite direct sum of Tate
+motives over $k$.  This assertion remains true under arbitrary
+constant-field extension.
+\end{lemma}
+
+\begin{proof}
+Use induction on $d$, with $B_0=\operatorname{Spec}k$.
+At the stage which blows up the strict transforms of the
+$k$-rational $b$-planes, these strict transforms are disjoint and
+each is $B_b$.  Indeed their mutual intersections have already been
+blown up; restricting the preceding sequence to one $b$-plane
+performs exactly the lower-dimensional linear-subspace sequence.
+The centers are actual smooth closed subschemes over $k$.
+
+For a smooth center $Z\subset W$ of codimension $c$, the Chow
+blowup decomposition is induced by the actual maps
+\[
+ (\alpha,(\beta_a))\longmapsto
+ f^*\alpha+\sum_{a=1}^{c-1}
+ j_*\bigl(\xi^{a-1}p^*\beta_a\bigr),
+ \qquad \xi=c_1(\mathcal O_{\mathbf P(N_{Z/W})}(1)).
+ \tag{DU20.1}\label{r20du:blowup}
+\]
+The same formula after every smooth projective test product gives
+the actual Chow-motive isomorphism
+\[
+ h(\operatorname{Bl}_Z W)
+ \simeq h(W)\oplus\bigoplus_{a=1}^{c-1}h(Z)(a).
+ \tag{DU20.2}\label{r20du:motive}
+\]
+Here the twist notation means the usual Lefschetz summands in the
+Chow blowup formula, independently of the variance convention.
+Projective space has its standard actual split Tate decomposition.
+Induction in \eqref{r20du:motive} therefore proves the statement
+for $B_d$.  The stated closed-stratum product description then
+proves it for every stratum by the tensor product of the actual
+decompositions.  All defining correspondences remain inverse
+after constant extension.
+\end{proof}
+
+\begin{lemma}[A full cohomological inverse at every invertible prime]
+\label{r20du:inverse}
+For a regular projective reduced strictly semistable model of
+relative dimension $d$ whose components have native split Tate
+Chow motives, its incidence correspondence
+$A=\sigma\rho$ admits an actual rational matrix
+\[
+ G\in\bigoplus_{i,j}\operatorname{CH}^{d-1}(D_j\times D_i)
+ \quad\text{with}\quad A^H G^H A^H=A^H
+ \tag{DU20.3}\label{r20du:inverse-eq}
+\]
+on full geometric cohomology for every $\ell\ne\operatorname{char}k$.
+The same rational $G$ works for all these primes.  Tensoring with
+the diagonal of any smooth projective $T_0/k$ preserves this
+identity on all mixed cohomology classes.
+\end{lemma}
+
+\begin{proof}
+PI20 applies numerical-motive semisimplicity to the actual
+degree-one incidence correspondence and supplies rational $G$
+for which $E=A-AGA$ is numerically zero as a correspondence.
+Each component product has a split Tate Chow motive by
+Lemma~\ref{r20du:tate}.  For such a motive, the Chow group in any
+fixed degree is a finite sum of copies of $\mathbf Q$ with its
+perfect complementary intersection pairing.  The actual Tate
+decomposition identifies this pairing with the duality pairing
+of these summands.  Consequently numerical zero is already zero
+in its Chow group.  In particular each entry of $E$ is zero in
+Chow, and its class vanishes for every invertible prime.
+
+The product incidence is $\Delta_{T_0}\boxtimes A$ and its
+candidate inverse is $\Delta_{T_0}\boxtimes G$; their error is
+$\Delta_{T_0}\boxtimes E$.  The Kunneth formula proves its
+vanishing on the full cohomology of the component products.
+No numerical--homological comparison on $T_0$ is used.
+\end{proof}
+
+\subsection{The local result, all new extension cycles, and heights}
+
+\begin{theorem}[Arbitrary native good coefficient and Drinfeld factors]
+\label{r20du:local}
+Fix a finite valued $K/\mathbf Q_p$ with its original absolute value.
+Let $T/K$ be smooth, projective and geometrically integral, with a
+smooth projective model over $\mathcal O_K$.  For
+$1\leq b\leq m$, let $d_b\geq1$ and let
+$\Gamma_b\subset\operatorname{PGL}_{d_b+1}(K)$ be a cocompact
+torsion-free discrete subgroup.  Let $X_b/K$ be the smooth
+projective algebraization of
+$\Gamma_b\backslash\Omega_K^{d_b}$.
+Then
+\[
+ X=T\times_K X_1\times_K\cdots\times_K X_m
+ \tag{DU20.4}\label{r20du:generic}
+\]
+has strong G in every codimension $1\leq r\leq\dim X$.
+The assertion holds for every geometrically homologically trivial
+rational cycle after every finite extension of $K$, including new
+cycles which do not descend to $K$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: choose actual strict models.}
+For each factor choose the finite-index subgroup in Ito's
+Section 6.2.  This gives a finite etale cover $X_b'\to X_b$
+whose projective model is reduced strictly semistable and whose
+closed strata satisfy Lemma~\ref{r20du:tate}.  The corresponding
+product cover has constant positive degree.  We first prove the
+result on the cover, and descend only after constructing its
+actual Green solution.
+
+\emph{Step 2: retain the actual motive property in the product.}
+Apply the staircase construction and the full boundary-stratum
+blowup formulas of AT20 to the factor models successively.
+Its component towers use actual blowups along smooth closed
+boundary strata.  Formula \eqref{r20du:motive} and the projective
+bundle formula show, by induction, that every closed stratum of
+the resulting projective strictly semistable model is split
+Tate.  AT20's fan argument is independent of the dimensions of
+the factors.  The product with the smooth model of $T$ is still
+regular projective and strictly semistable.  Its component
+diagram is the previous diagram tensored with $T_0$.
+
+\emph{Step 3: remove the finite algebraic-image error.}
+Use Lemma~\ref{r20du:inverse} on the diagram before tensoring.
+The resulting identity on the full coefficient diagram gives
+PI20's actual kernel correction in every degree, hence
+$\Delta_A=\mathscr R_A=0$ there.  This applies to arbitrary
+mixed cycle classes; it makes no assertion that all cycles are
+exterior products.
+
+\emph{Step 4: kill the generic inertial term.}
+Ito's theorem supplies weight--monodromy for every $X_b'$ in
+all degrees.  Smooth proper base change and purity supply it
+for $T$.  Under Kunneth, tensor products of the monodromy
+filtrations are the centered monodromy filtration for the sum
+of the commuting nilpotent operators: this follows by splitting
+the associated $\mathfrak{sl}_2$ strings, or equivalently by
+the usual tensor-product primitive decomposition.  Tensoring
+pure graded pieces adds their weights.  Thus weight--monodromy
+holds in every degree of the product.  OW19 gives $\tau=0$
+for its geometrically homologically trivial cycles.  AK19 and
+CR19 now kill the model obstruction using Step 3; FD17 and
+VT17 give the strong actual Green form.  If the total dimension
+is at most two, use the already frozen endpoint/surface
+theorems instead of invoking AK19 outside its stated range.
+
+\emph{Step 5: treat new cycles after finite extensions.}
+First make any finite unramified extension.  The same strict
+models base change, their split Tate correspondences remain
+actual inverse correspondences, and weight--monodromy is
+unchanged.  Reapply Steps 2--4 to every new cycle over that
+field.  RI18's all-unramified-to-all-finite norm-detection
+theorem then gives G for every new cycle on the product cover
+over every finite extension, including ramified extensions.
+This invokes its native-model inertial numerical action and
+full norm formula, not an assertion that new cycles are
+pullbacks or that the base-changed singular model is strict.
+
+\emph{Step 6: descend to the original quotient.}
+Over any fixed finite extension $L/K$, pull a specified
+homologically trivial cycle on $X_L$ to the finite etale
+product cover.  Step 5 applies to that actual pulled cycle.
+The frozen all-degree finite actual trace and projection
+formula descend its Green form, dividing by the complete
+cover degree.  The complement is exactly the inverse image
+of the specified original support because this map is finite.
+The result has the original support and is tested against
+all actual compactly supported forms.  All field descents,
+if any, use the complete field degree and the original
+absolute value.  No arbitrary proper actual pushforward
+or finiteness assumption on an alteration complement enters.
+\end{proof}
+
+\begin{corollary}[A local criterion for the full height domain]
+\label{r20du:height}
+Let $Y/F$ be smooth projective and geometrically integral over
+a number field.  Suppose at every finite place $v$ there is
+a finite extension of $F_v$ over which $Y$ is isomorphic to
+a product as in Theorem~\ref{r20du:local}, with its native
+good coefficient and the stated Drinfeld factors.  Factors
+and the decomposition may depend on $v$.
+Then the frozen PH16 pairing is defined on the full
+geometrically homologically trivial rational Chow groups in
+every complementary degree, over $F$ and over every finite
+number-field extension.
+\end{corollary}
+
+\begin{proof}
+The local theorem covers every finite extension and every new
+cycle.  For a new completion use a finite compositum with the
+supplied local field, then descend by the complete degree.
+Thus every finite local obstruction vanishes on the full
+cycle domain.  PH16 and GA17 give the asserted global
+pairing and regular-model admissible Chow lifts.
+\end{proof}
+
+\paragraph{Historical bridge and remaining limits.}
+The R7 literature audit already records Drinfeld-uniformized
+varieties among previously known admissible height cases,
+following Zhang's Remark 1.6.5.  We therefore claim no new
+standalone height domain for a Drinfeld quotient.  The present
+argument records the actual Chow-motive certificate, its
+arbitrary native good coefficient, finite products, and
+the current ordinary-actual/full-test/full-degree interfaces.
+It does not assert that the generic quotient is of abelian
+Chow type.  It also does not infer the theorem for an
+arbitrary potentially-good $T$ without a common field on
+which the needed strict Tate-stratum model is supplied:
+after ramification, weight--monodromy alone does not certify
+the new component Chow motives.  General G and unrestricted
+full Beilinson--Bloch heights remain open.

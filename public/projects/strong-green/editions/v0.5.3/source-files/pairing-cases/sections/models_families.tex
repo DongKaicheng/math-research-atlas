@@ -1,0 +1,618 @@
+\section{Model criteria and arithmetic families}\label{sec:models}
+
+\subsection{Numerical corrections on a semistable witness}
+
+The numerical-model criterion of \propref{prop:numerical} is often
+applied through a projective dominant witness. In the general
+companion formulation \cite{InternalEndpoints}, the witness carries
+a rational virtual bundle whose generic degree-$r$ Chern character
+is the pulled-back class and whose degree on every vertical
+$r$-dimensional subvariety is zero. The native model-Chern detector
+then gives zero obstruction upstairs, and dominant detection gives
+zero obstruction downstairs. This formulation permits a witness
+of positive relative dimension as well as a generically finite one.
+
+We record three ways of producing this numerical correction.
+The model calculations and their supporting residue sequences are
+given in \cite{InternalModelCriteria}; all model conditions below
+refer to supplied projective models.
+
+\begin{proposition}[Scalar total boundary image]\label{prop:scalar-model}
+Let $R=K^\circ$ and let $\mathcal X/R$ be integral, regular,
+projective reduced strictly semistable, with smooth geometrically
+integral generic fiber,
+of relative dimension $n\geq3$, with smooth geometrically integral
+components $D_i$, smooth closed strata, connected dual graph, and
+one relatively ample class $H$. Fix $1\leq r\leq n$ and an
+invertible prime $\ell$. Assume that at every vertex $i$ the sum
+of Gysin images
+\[
+ \sum_{j\ne i}\im\bigl(
+ H^{2r-2}(E_{ij,\bar k},\Q_\ell(r-1))
+       \longrightarrow H^{2r}(D_{i,\bar k},\Q_\ell(r))\bigr)
+\]
+has dimension one. Then every geometrically homologically trivial
+codimension-$r$ cycle on the generic fiber has zero obstruction.
+\end{proposition}
+
+\begin{proof}
+Choose a Chow extension $\Theta$. The companion specialization
+calculation puts its component class in the displayed total image.
+Set
+\[
+ \lambda_i=\deg_k(i_i^!\Theta\,H_i^{n-r}),\qquad
+ w_{ij}=\deg_k((H|_{E_{ij}})^{n-1}),
+\]
+summing disconnected intersections with their native residue degrees.
+The specialization trace gives $\sum_i\lambda_i=0$.
+The connected weighted graph has positive weights and hence a rational
+solution of
+\[
+ \sum_jw_{ij}(v_j-v_i)=\lambda_i.
+\]
+The corrected extension
+$\Theta_{\rm ad}=\Theta-\sum_i v_i i_{i*}H_i^{r-1}$ has zero
+component class: in a one-dimensional total image its degree against
+$H_i^{n-r}$ detects that class. Its pure operational representative
+is numerically zero on every vertical $r$-cycle. Apply the numerical
+model criterion. A constant change of all $v_i$ adds the principal
+total-fiber class multiplied by $H^{r-1}$ and hence changes nothing
+in Chow.
+\end{proof}
+
+One geometric instance is a supplied two-factor hypersurface
+degeneration
+\begin{equation}\label{eq:two-factor-model}
+ AB+\varpi G=0\quad\text{in }\PP^{n+1}_R,
+ \qquad\deg A=a,\quad\deg B=b,\quad\deg G=a+b.
+\end{equation}
+Assume the two special hypersurfaces, their intersection, and
+$\Sigma=(A=B=G=0)$ have the smooth transverse geometrically
+integral strata specified by these equations, and that the generic
+fiber is smooth geometrically integral. Blowing up $(A,\varpi)$
+gives components $\Bl_\Sigma(A=0)$ and $(B=0)$ meeting in
+$(A=B=0)$. The blowup and restriction computation in
+\cite{InternalModelCriteria} verifies the scalar-image condition in
+every degree. Thus these local hypersurfaces have $\mathsf V$.
+
+\begin{proposition}[Positive primitive components]\label{prop:positive-model}
+Let a smooth projective fourfold have, after a finite extension, a
+projective dominant four-dimensional witness with a regular flat
+projective model. Write its special fiber as $\sum_i m_iD_i$, with
+$m_i>0$, reduced strict normal-crossings support and smooth closed
+strata. Suppose a relatively ample $H$ makes
+\[
+ \deg(xy)\quad\text{positive definite on}\quad
+ P_H^2(D_i)=\ker\bigl(H:N^2(D_i)_\Q\to N^3(D_i)_\Q\bigr)
+\]
+for every component. Then the original fourfold has $\mathsf V$.
+\end{proposition}
+
+\begin{proof}
+The companion numerical correction leaves a canonical primitive
+residual $R_i$ with
+$\sum_i m_i\deg(R_i^2)=0$. This residual identity, including the
+native constant-field factors, is the primitive-residual theorem of
+\cite{InternalModelCriteria}. Positivity and $m_i>0$ give $R_i=0$
+for every $i$. The resulting operational lift is numerically
+admissible, so codimension two follows by witness descent.
+One-cycles and the endpoint degrees complete the fourfold.
+\end{proof}
+
+The verified component classes include abelian fourfolds, rank-two
+projective bundles over smooth threefolds, rank-three bundles over
+smooth surfaces, rank-four bundles over smooth curves, and $\PP^4$.
+For the abelian case the positivity input is \cite{Ancona}; the
+projective-bundle cases follow from the numerical projective-bundle
+formula and divisor Hodge index. If $f:D'\to D_{k'}$ is finite
+surjective and $(D',f^*H_{k'})$ has the required positivity, then
+$(D,H)$ has it by pullback and the degree formula.
+
+\begin{proposition}[Finite model symmetries]\label{prop:symmetry-model}
+For a regular projective model of relative dimension $n\geq4$,
+with the preceding multiplicity and stratum conventions, put
+\[
+ P_H^2=\bigoplus_i\ker\bigl(H^{n-3}:N^2(D_i)_\Q\to
+                                    N^{n-1}(D_i)_\Q\bigr),
+ \qquad Q(x,y)=\sum_i m_i\deg(x_iy_iH_i^{n-4}).
+\]
+Let a finite group act on the model preserving the numerical class
+of $H$. If $Q$ is nondegenerate and $P_H^2$ is multiplicity-free
+as a rational representation, every codimension-two homological
+class has zero obstruction. In dimension four, nondegeneracy is
+automatic and the conclusion gives $\mathsf V$.
+\end{proposition}
+
+\begin{proof}
+The image of the canonical residual map is an invariant totally
+isotropic submodule of $P_H^2$, by the equivariant residual theorem
+in \cite{InternalModelCriteria}. Every rational simple representation
+of a finite group is self-dual, by an averaged positive rational
+form. Distinct simple summands are therefore orthogonal for $Q$.
+Multiplicity-freeness and nondegeneracy imply that each summand is
+nondegenerate, so no nonzero invariant totally isotropic submodule
+exists. The residual vanishes. Numerical correction and witness
+descent give the asserted degree. In dimension four, numerical
+duality and divisor Hodge index give the required nondegeneracy;
+the endpoints and one-cycles give all remaining degrees.
+\end{proof}
+
+The same proof applies to a sum of rational central isotypic
+projectors $e$ when $eP_H^2$ has these properties, and gives the
+corresponding cycle subspace $e\CH^2_{\Q,\geomhom}$. Such a
+subspace pairs globally with the admitted complementary group.
+
+\subsection{Ordinary quadratic reduction}
+
+\begin{theorem}[Companion ordinary-reduction theorem]\label{thm:ordinary}
+Let $K/\Q_p$ be finite for any prime $p$, and let $X/K$ be smooth
+projective geometrically integral of dimension at least three.
+Suppose $X$ has an integral flat projective model whose geometric
+special fiber is integral and smooth apart from finitely many
+ordinary quadratic points, meaning that their projectivized
+geometric tangent cones are smooth quadrics. Then $\mathsf V(X)$ holds. The same
+conclusion holds if such a smooth projective dominant witness is
+supplied after a finite extension. The theorem reapplies to all
+new cycles over every finite valued extension.
+\end{theorem}
+
+\begin{proof}
+In odd residue characteristic the normal-form and successive
+reduced-point blowup calculation of \cite{InternalOrdinary}
+produces a regular reduced quadric forest after finite extension.
+Its numerical corrections are compatible with the incidence maps.
+The all-characteristic quadric-forest theorem in the same source
+handles odd-dimensional ordinary quadratic models at residue two.
+
+For even $n\geq4$ at residue two, use the henselian normal form of
+\cite[Lemma 4(ii)]{JannsenSaito}. A common finite extension splits
+all the finitely many node polynomials. Translating each by an
+integral root gives an actual pointed \'etale local equation
+\[
+ P(x_1,\ldots,x_n)+z^2+\epsilon\varpi^qz=0,
+ \qquad q\geq1,\quad\epsilon\in R^\times,
+\]
+with unimodular polar form for $P$, where $R$ is the auxiliary
+field's valuation ring and $\varpi$ its uniformizer. The common \'etale charts and
+exact saturated blowup calculations are proved in
+\cite[common \'etale neighborhoods and native degenerate-node chains]
+{InternalOrdinary}. Each reduced-point blowup decreases $q$ by
+one. After exactly $q$ blowups the exceptional chain consists of
+$q-1$ copies of
+$\PP_E(\mathcal O_E\oplus\mathcal O_E(-1))$ and a terminal
+smooth quadric, where
+\[
+ E=(\overline P(X)+Z^2=0)\subset\PP^n,
+ \qquad
+ T=(\overline P(X)+Z^2+\overline\epsilon ZS=0)
+       \subset\PP^{n+1}.
+\]
+All double strata are the smooth odd-dimensional quadric $E$;
+all multiplicities are one and the intermediate sections are
+disjoint. The same quadric-forest numerical criterion now applies.
+
+In every case numerical witness descent uses the complete common
+field degree, and the original curved pair gives the form on the
+specified support complement. The dominant-witness version follows
+from the same detector. After a finite valued extension the ordinary
+geometric special points persist, with possibly larger finite
+orders; apply the construction anew to every new cycle.
+\end{proof}
+
+Over a number field, good reduction or the ordinary alternative at
+every finite completion, also on the stated dominant witnesses,
+gives the full height pairing. Local auxiliary extensions are
+descended before this global construction and need not come from
+one fixed global extension.
+
+\subsection{Tate and abelian-type strata}
+
+\begin{theorem}[Companion all-strata criterion]\label{thm:abelian-strata}
+Let $Y,T/K$ be smooth projective geometrically integral. Suppose
+$Y$ has a supplied regular projective reduced strictly
+semistable model whose every connected closed geometric stratum
+has a rational Chow motive of abelian type after finite constants.
+Assume weight--monodromy for $Y$ in every degree and every
+invertible coefficient prime. If $T$ has potentially good projective
+reduction, then $T\times Y$ has $\mathsf V$, also for all new
+cycles after every finite valued extension.
+\end{theorem}
+
+\begin{proof}
+The ramified all-strata theorem in \cite{InternalUniformization}
+preserves the stated Chow-motive condition on a projective
+semistable repair. Its toroidal calculation expresses new strata
+through blowups of old boundary strata and projective bundles over
+them. For a closed-boundary blowup the property holds in both
+directions; this permits the toroidal factorization steps. The
+character lattice of a new stratum is primitive, and its calculation
+retains the actual line-bundle transition functions.
+
+For a new cycle over $L/K$, pass to a finite extension where $T$
+is good and the strata split. On one abelian carrier, numerical
+semisimplicity and its comparison prime supply an algebraic
+cohomological inner inverse to the boundary incidence. Tensor it
+with the diagonal of the coefficient, so the inverse acts on all
+mixed K\"unneth summands. Weight--monodromy gives the odd-weight
+condition, while the inverse gives numerical-kernel lifting and
+actual-span saturation. Apply the companion model criterion and
+descend with the full degree. The final curved-pair correction is
+on the original support of the newly specified cycle.
+\end{proof}
+
+\begin{corollary}[Drinfeld uniformization]\label{cor:drinfeld}
+Let $X_a$ be smooth projective algebraizations of
+$\Gamma_a\backslash\Omega_K^{d_a}$, where
+$\Gamma_a\subset\operatorname{PGL}_{d_a+1}(K)$ is torsion-free,
+discrete and cocompact, and $d_a\geq1$. Then
+$T\times\prod_aX_a$ has $\mathsf V$ for every potentially good
+projective coefficient $T$, also over every finite extension.
+\end{corollary}
+
+\begin{proof}
+The projective semistable cover of a Drinfeld quotient has
+components and closed strata obtained by the successive
+rational-linear-subspace blowups of projective space. Their actual
+Chow motives are split Tate, by the blowup formula. Staircase
+products retain this property. Ito's theorem \cite{Ito} gives
+weight--monodromy, and K\"unneth gives it for the product. Apply
+\thmref{thm:abelian-strata} and descend the finite cover.
+\end{proof}
+
+One may also include curve or surface factors supplied with
+projective strict semistable models all of whose closed strata are
+of Chow abelian type. The resulting placewise presentations give
+full global heights when available at every finite completion;
+the factors in those local presentations may depend on the place.
+
+\begin{theorem}[Totally degenerate strata]\label{thm:totally-degenerate}
+Suppose a smooth projective $X/K$ has, over a finite extension
+$L/K$, a projective dominant generically finite morphism
+$Y\to X_L$, with $Y$ smooth projective geometrically integral
+of dimension $\dim X$ and carrying a regular projective reduced
+strictly semistable model. On every
+connected geometric closed stratum $D$, require:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Each integral Chow group is finitely generated. The compatible
+hyperplane class $H$ from a projective embedding of the special
+fiber satisfies, for $2c\leq\dim D$ and nonzero rational primitive
+$x$ with $H^{\dim D-2c+1}x=0$,
+\[
+ (-1)^c\deg(xH^{\dim D-2c}x)>0.
+\]
+\item For every $\ell$ different from the residue characteristic,
+odd geometric integral cohomology is torsion and
+\[
+ (\CH^c(D)/\mathrm{tors})\otimes\Z_\ell
+ \simeq H^{2c}(D,\Z_\ell(c))/\mathrm{tors}.
+\]
+\end{enumerate}
+Then $\mathsf V(X)$ holds. Smooth projective toric strata satisfy
+these hypotheses. A global full height domain follows if such
+witnesses, or another full local criterion, are supplied at every
+finite place.
+\end{theorem}
+
+\begin{proof}
+These are conditions (a),(b) of Raskind--Xarles
+\cite[Definition 1]{RX}. Define finitely many Chow generators and
+components over one finite residue extension and lift it
+unramifiedly. The cycle isomorphisms and Poincar\'e duality identify
+native numerical groups with even cohomology, compatibly with the
+actual incidence correspondences. Thus every numerical-kernel
+test lifts to a closed cohomological support test, by the companion
+component-detection theorem \cite{InternalDegenerate}.
+
+The cited Raskind--Xarles weight result kills the relevant odd
+local Galois groups. More precisely, for
+$W=H^{2t-1}(Y_{\bar L},\Q_\ell(t))$ the inertia invariants have
+weights at most $-1$, and the inertia-$H^1$ term has weights at
+least $1$. Hence $W^{G_L}=H^1(L,W)=0$. The companion period
+comparison identifies the rational detector period with the
+local Abel--Jacobi cup-product against the closed support test.
+It vanishes in $\Q_\ell$, hence is zero as its original rational
+intersection number. The finite detector and exact-support
+reconstruction give the result. The global assertion applies
+\lemref{lem:two-degrees} to these supplied local witnesses.
+\end{proof}
+
+\subsection{A common arithmetic construction}
+
+The dense families below use actual local models, together with an
+arithmetic pencil argument. We give the latter separately to specify
+the field and density quantifiers.
+
+\begin{lemma}[Congruence pencils]\label{lem:congruence-pencils}
+Let a fixed integral flat projective ambient model with geometrically
+integral fibers and a section system be supplied over a number
+ring. Suppose a finite free coefficient module surjects
+onto the section system and its required residue spaces. Suppose
+the system has a nonempty fixed-member Lefschetz-pencil open, and
+that one can prescribe smooth sections at a finite set of places
+and an established local smoothing model at distinguished places.
+Require the chosen equations to be nonzero on every special
+ambient fiber, and the generic smooth-member open to consist of
+geometrically integral members.
+After a single finite extension realizing these finite residue data,
+the congruence-pencil construction gives a Zariski-dense set of
+smooth generic members with the prescribed local models, smooth
+reduction at the exceptional places, and smooth or ordinary-quadratic
+reduction at all remaining places.
+\end{lemma}
+
+\begin{proof}
+Choose a smooth reference section $H_0$ and include in a finite
+set all rational primes below its bad reductions, its zero special
+sections, and residue characteristic two. Prepare the desired
+residue sections after finite residue extensions. A monic
+polynomial with separable irreducible reductions of one common
+degree realizes all these extensions in one number field, unramified
+at the chosen primes. This field is fixed from now on.
+
+In the free coefficient module impose the finite congruences for a
+second section $H_1$, using the square of each native maximal
+ideal to retain a prescribed first-order smoothing. For a
+distinguished rational prime $p$ unramified in the starting
+number field, this is the modulus $p^2$ used in the applications.
+Intersect this
+affine congruence lattice with the fixed-$H_0$ Lefschetz open. The
+intersection is Zariski dense. For a chosen $H_1$, spread its pencil
+outside a finite further set of primes. At those additional primes,
+choose the parameter to specialize to the already smooth reference
+member; at the originally prepared primes choose it to preserve
+the chosen residue member. Chinese remainders give infinitely many
+parameters with these requirements. Omit the finitely many singular
+generic members.
+
+Outside the spreading set, the pencil has smooth or ordinary
+quadratic fibers. At every exceptional prime the selected residue
+fiber is smooth or is the prescribed established smoothing.
+The nonzero residue equations are non-zero-divisors on the integral
+ambient fibers. The relative Cartier criterion therefore makes the
+resulting divisors flat over the number ring. Generic geometric
+integrality follows from the prescribed open. In each application,
+nonzero residue equations are checked at the exceptional primes by
+the congruences and elsewhere by independence of the two pencil
+sections. Finally a polynomial
+vanishing on all constructed members vanishes on each permitted
+pencil, since that pencil contains infinitely many of them. Varying
+$H_1$ in the dense congruence open proves density in the stated
+section space. The finite spreading set may depend on $H_1$; the
+fixed field does not.
+\end{proof}
+
+\subsection{Hypersurfaces and complete intersections}
+
+The following are the geometric conclusions of the local model
+calculations in \cite{InternalDense}. Their arithmetic proofs use
+\lemref{lem:congruence-pencils}. Each constructed member has full
+heights on all new homological classes after every finite extension
+of its stated field.
+
+\begin{theorem}[Dense hypersurface families]\label{thm:dense-hypersurfaces}
+For every $n\geq3$ and $D\geq3$, there is a Zariski-dense subset
+of the full degree-$D$ hypersurface parameter space over $\Q$
+consisting of smooth geometrically integral varieties with full
+height domains over every number field.
+
+For $n\geq4$, fix positive $d_1,\ldots,d_m$, $m\geq3$,
+$D=\sum_i d_i$, and suppose
+\[
+ b_n=\sum_{|I|=n+1}\prod_{i\in I}d_i-\binom{m-1}{n}>0.
+\]
+There is such a dense subset with a distinguished product-profile
+degeneration of extreme monodromy rank $\rk N^n=b_n$. For linear
+factors this gives $D\geq n+2$ and
+$\rk N^n=\binom{D-1}{n+1}$.
+\end{theorem}
+
+\begin{proof}
+For the ordinary family take
+\[
+ F_0=\sum_{j=0}^{n+1}X_j^D,\qquad
+ J_D=\sum_{j=0}^n X_j^{D-1}X_{j+1}+X_{n+1}^D.
+\]
+At a prime dividing $D$, descending through the partial derivatives
+shows $J_D$ is smooth. At every other prime $F_0$ is smooth.
+Choose an integral $F_1$ congruent to $J_D$ at primes dividing
+$D$ and in the fixed-$F_0$ Lefschetz open. The members
+$DF_0+aF_1$, with Chinese-remainder conditions on $a$, have smooth
+reduction at the finitely many exceptional primes, including two,
+and ordinary reduction elsewhere. Apply \thmref{thm:ordinary}.
+Varying $F_1$ proves the asserted full-space density.
+
+For the product profile, prepare transverse integral factors
+$P=\prod_i f_i$ and a smoothing section $Q$. Choose
+$q>D$ outside their finite bad set and impose
+$F_1\equiv P-DF_0+qQ\pmod{q^2}$ as well. For $a\equiv1$
+modulo $q^2$, the exact equation at $q$ is $P+qQ_a$ with
+$\bar Q_a=\bar Q$. The ordered product-model calculation in
+\cite{InternalDense} gives full local vanishing and the displayed
+extreme monodromy rank. Its ramified-extension theorem treats all
+new cycles after arbitrary finite extension. At the other primes
+use the preceding ordinary argument. The complementary-degree
+criterion gives the heights.
+\end{proof}
+
+\begin{theorem}[Successive complete-intersection sections]\label{thm:dense-ci}
+Let $\mathcal Y\subset\PP^N_{\mathcal O_F}$ be a supplied
+integral flat projective relative complete intersection of dimension
+$m\geq4$, with smooth geometrically integral generic fiber and
+geometrically integral special fibers smooth outside finite sets.
+For every $d\geq3$, after one fixed finite extension $E/F$ there
+is a dense subset of the full degree-$d$ section system on $Y_E$
+whose smooth members have full height domains over all finite
+extensions of $E$.
+
+Consequently one can construct complete intersections of any
+specified multidegree $(d_1,\ldots,d_t)$ with all $d_i\geq3$
+and final dimension at least three, over one fixed finite extension
+of any prescribed number field. The first equations may be fixed
+so that density holds in the final section system. A split quadric
+may be used as the initial ambient variety.
+\end{theorem}
+
+\begin{proof}
+The Koszul resolution supplies the full section space from ambient
+polynomials. Smooth residue sections can be chosen to avoid the
+finite ambient singular loci, after finite residue preparation.
+The degree-$d$ jets for $d\geq3$ give the fixed-member Lefschetz
+open. Apply \lemref{lem:congruence-pencils}; the resulting integral
+complete-intersection model has smooth or odd-characteristic
+ordinary fibers and good fibers at two. Use
+\thmref{thm:ordinary}. Its model has the same finite-singular-locus
+property, so one can iterate, fixing the earlier equations before
+varying the last one.
+\end{proof}
+
+There is also a product-profile final-section version on the fixed
+ambient of \thmref{thm:dense-ci}, with $m=n+1\geq5$. If the
+ambient degree is $\delta$, the final degree is
+$D=\sum_{i=1}^s e_i$ with $s\geq3$, $e_i\geq1$, the companion
+construction gives a dense final-section family after one fixed
+extension, with
+\[
+ \rk N^n=\delta\sum_{|I|=n+1}\prod_{i\in I}e_i
+                                      -\binom{s-1}{n}.
+\]
+For example degree-five sections of the split quadric fivefold
+give a dense family of type-$(2,5)$ fourfolds with $\rk N^4=1$.
+The local product theorem and the same congruence-pencil proof
+give their complete height domains.
+
+\subsection{Product ambients and positive fourfold hosts}
+
+\begin{theorem}[Dense product-ambient families]\label{thm:dense-products}
+For each fixed set of input data below, the constructed dense set
+has a full height domain over all finite extensions of one fixed
+finite extension of its stated initial number field.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item For every $D\geq5$ and every prescribed number field
+$F_{\rm base}$, one fixed finite $F/F_{\rm base}$ supports a
+dense subset of the full bidegree-$(D,D)$ system on
+$(\PP^1\times\PP^4)_F$. A distinguished product model has
+\[
+ \rk N^4=(D-1)\binom{D-1}{4}>0.
+\]
+\item Let $\mathcal S/\mathcal O_F$ be a supplied smooth
+projective geometrically integral surface model and let $A$ be
+relatively very ample. On $\mathcal S\times\PP^3$, put
+$L=A\boxtimes\mathcal O(1)$. After one fixed finite extension
+$E/F$, the image of degree-five embedding polynomials has a
+dense such subset, with
+$\rk N^4=10\deg(A^2)-1$. If those polynomials span the full
+section space, this is density in $|L^5|$.
+\item Let $\mathcal M/\mathcal O_{F_0}$ be a supplied smooth
+projective scheme of relative dimension four over the whole number
+ring, with geometrically integral fibers. Fix an odd rational prime $p$ unramified
+in $F_0$. At each $v\mid p$ and every finite residue extension
+$k'/k(v)$ assume
+\begin{equation}\label{eq:host-signature}
+ b^-(N^2(\mathcal M_{k'})_\R,\deg xy)
+                  =\rho(\mathcal M_{k'})-1.
+\end{equation}
+Choose $H$ sufficiently positive for relative very ampleness,
+normal generation and section base change. Put
+$L_0=H\boxtimes\mathcal O_{\PP^1}(1)$ and $c=\deg H^4$.
+One fixed finite $F/F_0$, unramified above $p$, supports a dense
+subset of the full $|L_0^5|_F$ with
+\[
+ \rk N^4=4(5c-4)>0,\qquad
+ b_1(X)=b_1(M),\quad b_2(X)=b_2(M)+1.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For (i), use $D$ transverse $\mathcal O(1,1)$ factors at a
+distinguished prime. The ambient double-stratum comparison retains
+both hyperplane classes. The ordered model and its uniform
+finite-extension comparison, proved in \cite{InternalDense}, give
+full local vanishing and
+$5\binom D5-\binom{D-1}4=(D-1)\binom{D-1}4$.
+
+For (ii), the local surface-ambient comparison uses the actual
+blowups of the double strata. Its extreme incidence complex gives
+$10\deg(A^2)-1$. The free module of embedding polynomials supplies
+the coefficient space in \lemref{lem:congruence-pencils}, proving
+density in its image. The stated spanning hypothesis identifies
+that image with the full section system.
+
+For (iii), the positive-host suspension calculation in
+\cite{InternalPositiveHosts} applies to five divisors on $M$
+and five distinct point factors on $\PP^1$. Residue Bertini
+prepares smooth geometrically integral intersections of one,
+two and three divisors, split finite-\'etale fourfold intersections
+of degree $c$, and empty fivefold intersection. The smoothing
+section cuts each positive-dimensional stratum transversely,
+with geometrically integral positive-dimensional cuts and
+finite-\'etale zero-dimensional cuts, and avoids the
+zero-dimensional strata. Condition \eqref{eq:host-signature} kills
+the primitive numerical residual. Its uniform form over finite
+residue extensions gives the all-new-cycle ramified conclusion.
+The incidence complex has $\dim H_3=5c-4$ before joining the
+five point vertices, hence $\rk N^4=4(5c-4)$ afterward.
+Weak Lefschetz gives the two Betti numbers. Relative Serre
+vanishing and a sufficiently high Veronese supply the full
+coefficient module and the required jets. Apply
+\lemref{lem:congruence-pencils} to all three cases, use ordinary
+reduction at nondistinguished bad primes, and then
+\lemref{lem:two-degrees}.
+\end{proof}
+
+The signature hypothesis in (iii) is supplied by everywhere-good
+abelian fourfolds, by the projective-bundle host types listed after
+\propref{prop:positive-model}, and by $\PP^4$. For $\PP^4$,
+$H=\mathcal O(1)$ and $p=5$, the result gives bidegree-$(5,5)$
+fourfolds with $\rk N^4=4$, $b_1=0$, $b_2=2$.
+
+\subsection{Explicit elliptic-power families}
+
+Let $E_0/\Q$ be $y^2=x^3-x$ and put
+$F_{\rm tor}=\Q(E_0[3])$, adjoining all geometric $3$-torsion.
+The elliptic curve has an everywhere-good model $\mathcal E$
+over this field. At two, potential good reduction follows from
+complex multiplication; after adjoining $3$-torsion its finite
+inertia image lies in the torsion-free principal congruence
+subgroup of $\operatorname{GL}_2(\Z_3)$, so it is trivial. The
+curve is already good at the other primes. This field is
+unramified above five.
+
+Put $A=\mathcal O_E(3[0])\boxtimes\mathcal O_E(3[0])$ on $E^2$,
+and $H=\boxtimes_{i=1}^4\mathcal O_E(3[0])$ on $E^4$.
+The plane-cubic embeddings and the Segre construction prove full
+section spanning. The following dense subsets of full linear
+systems are constructed over fixed finite extensions of
+$F_{\rm tor}$ unramified above five, and have full heights after
+every further finite extension:
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Ambient and system & Distinguished profile & Monodromy & $(b_1,b_2)$\\
+\midrule
+$E^2\times\PP^3$, $|(A\boxtimes\mathcal O(1))^5|$
+ & five section factors & $\rk N^4=179$ & $(4,7)$\\
+same system & curve and five hyperplanes & $N^4=0$ & $(4,7)$\\
+$E^4\times\PP^1$, $|(H\boxtimes\mathcal O(1))^5|$
+ & two curves and five points & $\rk N^2=802816$, $N^3=0$ & $(8,29)$\\
+same system & five divisors and five points & $\rk N^4=38864$ & $(8,29)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first row has $\deg A^2=18$. The second uses the mixed
+surface--hyperplane local theorem of \cite{InternalMixedFamilies};
+its weight-two contribution contains a nonzero eight-dimensional
+summand. In the third row the double-stratum model is the actual
+blowup of the curve product along the smoothing cuts. The local
+signature condition holds for the abelian fourfold product, and
+the exact rank formula is
+\[
+ \rk N^2=(2g(C)-b_1(S))(2g(D)-b_1(T))(d-1),\qquad N^3=0.
+\]
+Here $g(C)=g(D)=226$, $b_1(S)=b_1(T)=4$, and $d=5$.
+The final row is \thmref{thm:dense-products}(iii), with
+$c=4!\,3^4=1944$. The arithmetic argument is again
+\lemref{lem:congruence-pencils}, now with the full Segre coefficient
+system. The different monodromy profiles retain the distinctions
+among these constructed subsets even when the ambient system is
+the same.

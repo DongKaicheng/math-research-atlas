@@ -1,0 +1,776 @@
+% Round 13. Owner: r13_analytic_descent.
+% New internal results; published ingredients are identified explicitly.
+\section{Exceptional Aeppli classes and actual primitive descent}
+\label{r13d:section}
+
+This section identifies the exact obstruction to actual primitive descent
+through a smooth-center blowup as a quotient of exceptional Aeppli
+classes.  It proves vanishing in a supplied retraction sector without
+pushing an arbitrary actual form through a proper map.  It also exhibits a concrete
+obstruction to extending the minimal finite trace to proper modifications,
+even on its original scalar--curvature generators.  The obstruction is to
+that pushforward operation, not to the existence of zero-curvature Green
+forms.
+
+Fix the original finite valued extension $K/\mathbf Q_p$.  All forms
+below belong to Mihatsch's actual ordinary-topology sheaf $\mathcal B$;
+$D=d'd''$.  The analytic assertions use Definition 4.2, Theorem 4.5,
+Corollary 4.9 and Proposition 4.11 of \cite{M}.  The new deductions are
+proved below.  No algebraic closure, changed absolute value, finite
+dimensionality of Bott--Chern groups, or arbitrary proper actual-form
+pushforward is assumed.
+
+\subsection{Two elementary facts about actual forms}
+
+\begin{lemma}[Restriction off a proper algebraic subset is faithful]
+\label{r13d:dense-faithful}
+Let $T/K$ be a smooth integral $n$-dimensional variety and let
+$A\subsetneq T$ be a closed algebraic subset.  The restriction
+\[
+ \mathcal B^{p,q}(T^{\rm an})
+       \longrightarrow\mathcal B^{p,q}((T\setminus A)^{\rm an})
+\]
+is injective.  Consequently pullback by a modification of smooth
+integral varieties is injective on actual forms.
+\end{lemma}
+
+\begin{proof}
+Suppose $\theta$ restricts to zero.  For each compact original-smooth
+complementary test $\eta$, the actual top form $\theta\wedge\eta$ has
+support contained in $A^{\rm an}$.  Corollary 4.9 of \cite{M} says that
+the support of a top form avoids every algebraic subset of dimension
+less than $n$.  Hence $\theta\wedge\eta=0$ and all current pairings
+of $\theta$ vanish.  Proposition 4.11 then gives $\theta=0$ as an
+actual form.  A modification is an isomorphism off a proper closed
+subset; apply this assertion there to obtain the second statement.
+\end{proof}
+
+\begin{lemma}[An analytic retraction determines actual germs]
+\label{r13d:retraction-germ}
+Let $i:E\hookrightarrow Y$ be a closed immersion of pure-dimensional
+boundaryless analytic spaces.  Suppose an ordinary open neighborhood
+$N$ of $E$ admits an analytic retraction $\rho:N\to E$, so
+$\rho i=\operatorname{id}_E$.  For every actual form $\beta$ on $N$
+there is an ordinary open neighborhood $W\subset N$ of $E$ on which
+\[
+                         \beta=\rho^*i^*\beta.
+\tag{R13.D1}\label{r13d:germ-equality}
+\]
+In particular, $i^*\beta=0$ implies that $\beta$ vanishes on an
+ordinary neighborhood of $E$.  For this last implication it is enough
+to have a covering of $E$ by such local retractions.
+\end{lemma}
+
+\begin{proof}
+Near a point of $E$, choose a unit presentation
+$\beta=t_f^\star\gamma$ with finitely many analytic units $f_j$ and
+a Euclidean delta-form $\gamma$.  Shrink so that the units
+$f_j^0=\rho^*i^*f_j$ are also defined.  The functions $f_j-f_j^0$
+vanish on $E$.  Therefore the inequalities
+\[
+                          |f_j-f_j^0|<|f_j^0|
+\]
+define an ordinary open neighborhood of the part of $E$ under
+consideration.  On it $|f_j|=|f_j^0|$ for every $j$.
+
+Refine by the common tuple $(f,f^0)$ on any witnessing skeleton.
+The two valuation maps are equal as linear maps on that same weighted
+skeleton.  Their intrinsic tropical pullbacks of $\gamma$ therefore
+agree.  This is equality of pullbacks on the same source; it is not
+a restriction of an ambient Euclidean distribution to a nonlinear
+subset.  Definition 4.2 and Lemma 4.4 of \cite{M} identify the actual
+forms, and Theorem 4.5 identifies the second one with
+$\rho^*i^*\beta$.  Taking the union of these neighborhoods proves
+\eqref{r13d:germ-equality}.  The same proof on each member of a local
+retraction covering proves the final assertion.
+\end{proof}
+
+This proof applies to arbitrary actual forms, not only to pure model
+curvatures or to forms on a product family.  The retraction in the
+hypothesis is an analytic morphism.  A continuous retraction onto a
+Berkovich skeleton would not supply the pullbacks used here.
+
+\begin{lemma}[Smooth closed immersions admit local analytic retractions]
+\label{r13d:smooth-local-retraction}
+Let $E\hookrightarrow Y$ be a closed immersion of smooth
+$K$-varieties.  Every point of $E^{\rm an}$ has an ordinary analytic
+neighborhood in $Y^{\rm an}$ carrying an analytic retraction onto
+its intersection with $E^{\rm an}$.  Consequently an actual form
+on $Y^{\rm an}$ whose restriction to $E^{\rm an}$ is zero vanishes
+on an ordinary neighborhood of $E^{\rm an}$.
+\end{lemma}
+
+\begin{proof}
+Choose a sufficiently small algebraic affine neighborhood $Y_0$
+of the underlying scheme point, and write $E_0=E\cap Y_0$.
+Smoothness supplies an etale map
+$a:E_0\to\mathbf A_K^d$, with $d=\dim E_0$.
+Its coordinate functions lift through the surjection
+$\mathcal O(Y_0)\to\mathcal O(E_0)$, giving a map
+$g:Y_0\to\mathbf A_K^d$ restricting to $a$.
+This is the elementary coordinate construction used in Stacks,
+Tags 054L and 0FUE \cite{Stacks}.
+
+Form $W=Y_0\times_{\mathbf A_K^d}E_0$ and let
+$\nu:W\to Y_0$ be the first projection.  It is etale, and there
+is a diagonal lift $j:E_0\to W$ with $\nu j$ equal to the closed
+immersion.  For any analytic point $e\in E_0^{\rm an}$, the map
+of completed residue fields at $j(e)$ and $e$ is an isomorphism:
+both closed immersions identify that field with $\mathscr H(e)$.
+Berkovich's Theorem 3.4.1 \cite{BerEt} identifies finite etale
+germs at $e$ with finite etale $\mathscr H(e)$-algebras.  Applied
+to this degree-one branch, it gives ordinary open neighborhoods
+on which $\nu^{\rm an}$ is an analytic isomorphism.
+
+Shrink the target neighborhood $U$ further so that
+$j(E_0^{\rm an}\cap U)$ is in the chosen inverse branch; this is
+possible because $j$ is continuous and $E_0^{\rm an}$ is closed
+in $Y_0^{\rm an}$.  The inverse branch followed by $W^{\rm an}\to
+E_0^{\rm an}$ gives a morphism $r:U\to E_0^{\rm an}$ that is the
+identity on $E_0^{\rm an}\cap U$.  Replace $U$ by the open
+$U\cap (ir)^{-1}(U)$.  It is stable under $ir$, and $r$ is then
+a retraction onto $E_0^{\rm an}\cap U$.  This construction is over
+the original $K$ and applies also to nonrigid analytic points.
+The last assertion follows from Lemma~\ref{r13d:retraction-germ}.
+\end{proof}
+
+\begin{lemma}[Degreewise extension from a smooth closed subvariety]
+\label{r13d:restriction-surjective}
+Let $E\hookrightarrow Y$ be a closed immersion of smooth projective
+$K$-varieties.  Restriction
+$i^*:\mathcal B^{a,b}(Y^{\rm an})\to\mathcal B^{a,b}(E^{\rm an})$
+is surjective in every bidegree.  No extension commuting with
+differentials is asserted.
+\end{lemma}
+
+\begin{proof}
+Choose a finite ordinary neighborhood covering $U_j$ of the compact
+space $E^{\rm an}$ carrying the retractions in the preceding lemma.
+Add $Y^{\rm an}\setminus E^{\rm an}$ to obtain an open covering of
+$Y^{\rm an}$.  Smooth partitions of unity subordinate to such
+ordinary covers exist by Chambert-Loir--Ducros, Proposition 3.3.6
+of the original 2012 version \cite{CLDold}.
+The smooth coefficients multiply actual forms by Remark 4.3(1)
+of \cite{M}.
+
+For $\theta\in\mathcal B^{a,b}(E^{\rm an})$, multiply each local
+pullback $r_j^*\theta$ by its corresponding smooth cutoff and
+extend the product by zero outside $U_j$.  The supports of the
+cutoffs lie inside $U_j$, so these zero extensions are actual
+forms.  Their finite sum restricts to $\theta$, because the
+cutoff associated to $Y\setminus E$ restricts to zero and the
+remaining cutoffs sum to one on $E$.  This proves surjectivity.
+The derivatives of the cutoffs explain why this construction is
+only degreewise and is not claimed to preserve closedness.
+\end{proof}
+
+\subsection{Relative forms and an exceptional extension criterion}
+
+Let $q:Y\to X$ be a projective birational morphism between smooth
+integral projective $K$-varieties.  Fix a smooth closed subvariety
+$s:Z\hookrightarrow X$ such that $q$ is an isomorphism over
+$X\setminus Z$.  Suppose the inverse image of $Z$ has underlying
+closed analytic space a smooth closed subvariety $i:E\hookrightarrow Y$.
+Write $q_E:E\to Z$ for the induced morphism.  By
+Lemma~\ref{r13d:smooth-local-retraction} the following property holds:
+\[
+ \begin{gathered}
+ \text{the immersion }E^{\rm an}\hookrightarrow Y^{\rm an}
+ \\
+ \text{ admits local analytic retractions on an ordinary}
+ \\
+ \text{ neighborhood covering of }E^{\rm an}.
+ \end{gathered}
+\tag{R13.D2}\label{r13d:local-retractions}
+\]
+In particular this setup applies to every blowup of a smooth center
+in a smooth projective variety: its exceptional divisor is a smooth
+projective bundle over the center by Stacks, Tag 0FUT.
+The displayed local retractions will be used only to identify germs;
+global extension of a $D$-closed form remains a separate problem.
+
+Define the relative double complexes
+\[
+ \mathcal R_X^{p,q}=
+       \ker\bigl(s^*:\mathcal B^{p,q}(X^{\rm an})
+                              \to\mathcal B^{p,q}(Z^{\rm an})\bigr),
+ \qquad
+ \mathcal R_Y^{p,q}=
+       \ker\bigl(i^*:\mathcal B^{p,q}(Y^{\rm an})
+                              \to\mathcal B^{p,q}(E^{\rm an})\bigr).
+\]
+
+\begin{proposition}[Relative actual descent]
+\label{r13d:relative-isomorphism}
+In the stated smooth modification setup, pullback induces an isomorphism
+of bigraded differential algebras
+\[
+                          q^*:\mathcal R_X\xrightarrow{\ \sim\ }
+                                      \mathcal R_Y.
+\tag{R13.D3}\label{r13d:relative-isom}
+\]
+Its inverse $T$ is the following concrete operation: transport a
+relative form through the isomorphism off the exceptional locus,
+and extend it by zero over an ordinary neighborhood of $Z$.
+It commutes with $d'$, $d''$, and $D$.
+\end{proposition}
+
+\begin{proof}
+Pullback maps $\mathcal R_X$ into $\mathcal R_Y$ by the commutative
+square of the two closed immersions, and is injective by
+Lemma~\ref{r13d:dense-faithful}.  Let $\lambda\in\mathcal R_Y$.
+Lemma~\ref{r13d:retraction-germ} supplies an ordinary open
+$W\subset Y^{\rm an}$ containing $E^{\rm an}$ on which
+$\lambda=0$.
+
+Set
+\[
+                 V=X^{\rm an}\setminus
+                        q^{\rm an}(Y^{\rm an}\setminus W).
+\tag{R13.D4}\label{r13d:saturated-neighborhood}
+\]
+The set removed is closed: $Y^{\rm an}$ is compact, $X^{\rm an}$ is
+Hausdorff, and the map is continuous.  Thus $V$ is an ordinary open
+containing $Z^{\rm an}$, and $(q^{\rm an})^{-1}V\subset W$.
+Transport $\lambda$ to $(X\setminus Z)^{\rm an}$ and glue it with
+zero on $V$.  The forms agree on the overlap because $\lambda=0$
+on $q^{-1}V$.  The result $T\lambda$ is an actual form by the
+ordinary sheaf property, and its pullback is exactly $\lambda$.
+It vanishes near $Z$ and thus belongs to $\mathcal R_X$.
+
+The operator is independent of $W$ and $V$ by uniqueness off $Z$
+and Lemma~\ref{r13d:dense-faithful}.  Its compatibility with products
+and the differential operators can be checked on the displayed open
+cover, where it is either transport through an isomorphism or zero
+extension.  This proves all assertions.
+\end{proof}
+
+\begin{theorem}[A short exact double complex for a smooth modification]
+\label{r13d:double-complex}
+In the preceding setup there is a short exact sequence of bigraded
+vector spaces, compatible with both $d'$ and $d''$,
+\[
+0\longrightarrow\mathcal B(X^{\rm an})
+ \xrightarrow{\ (q^*,s^*)\ }
+ \mathcal B(Y^{\rm an})\oplus\mathcal B(Z^{\rm an})
+ \xrightarrow{\ i^*-q_E^*\ }
+ \mathcal B(E^{\rm an})\longrightarrow0.
+\tag{R13.D14}\label{r13d:short-exact}
+\]
+Its exactness is degreewise.  No splitting as a double complex is
+asserted here.
+\end{theorem}
+
+\begin{proof}
+Injectivity on the left is Lemma~\ref{r13d:dense-faithful}.
+Surjectivity on the right follows from
+Lemma~\ref{r13d:restriction-surjective} applied to $i$.
+Suppose a pair $(\beta,\zeta)$ satisfies $i^*\beta=q_E^*\zeta$.
+Extend $\zeta$ to an actual form $\eta$ on $X$ by the same lemma
+applied to $s$.  Then $\beta-q^*\eta$ is relative on $Y$, so
+\[
+                         \alpha=\eta+T(\beta-q^*\eta)
+\]
+has $q^*\alpha=\beta$ and $s^*\alpha=\zeta$.
+This proves middle exactness.  Compatibility with the differentials
+holds for all displayed arrows because they are analytic pullbacks.
+\end{proof}
+
+\begin{theorem}[Extend the exceptional restriction, then descend]
+\label{r13d:closed-extension}
+In the preceding smooth modification setup, let
+$\Omega\in\mathcal B^{r,r}(X^{\rm an})$ and suppose an actual form
+$\beta\in\mathcal B^{r-1,r-1}(Y^{\rm an})$ satisfies
+\[
+                             D\beta=q^*\Omega.
+\]
+If there exists a global actual form $\chi$ of the same bidegree on
+$Y^{\rm an}$ with
+\[
+                         D\chi=0,\qquad i^*\chi=i^*\beta,
+\tag{R13.D5}\label{r13d:closed-extension-condition}
+\]
+then $\Omega$ has the global actual primitive
+\[
+                           \beta_X=T(\beta-\chi).
+\tag{R13.D6}\label{r13d:extended-primitive}
+\]
+\end{theorem}
+
+\begin{proof}
+The difference lies in $\mathcal R_Y$, so the preceding proposition
+defines $\beta_X$ and gives $q^*\beta_X=\beta-\chi$.  Apply $D$:
+\[
+                      q^*(D\beta_X-\Omega)=0.
+\]
+Faithfulness of actual pullback by a modification proves
+$D\beta_X=\Omega$.
+\end{proof}
+
+The extension requirement concerns $D$-closed forms; separate
+$d'$- and $d''$-closedness of $\chi$ is not needed.  It is a
+substantive additional condition.  In particular, an arbitrary
+primitive supplied on an alteration is not asserted to satisfy it.
+
+\begin{corollary}[A global exceptional retraction]
+\label{r13d:global-retraction}
+Suppose that $i:E\hookrightarrow Y$ has a global analytic retraction
+$\rho:Y^{\rm an}\to E^{\rm an}$.  If
+$q_E^*s^*\Omega=0$ and $D\beta=q^*\Omega$, then
+\[
+          \boxed{\quad
+          \beta_X=T\bigl(\beta-\rho^*i^*\beta\bigr),
+          \qquad D\beta_X=\Omega.\quad}
+\tag{R13.D7}\label{r13d:retracted-primitive}
+\]
+In particular, for $r>\dim Z$ the pullback
+\[
+ q^*:H_{\mathrm{BC,act}}^{r,r}(X)
+                       \longrightarrow H_{\mathrm{BC,act}}^{r,r}(Y)
+\]
+is injective.
+\end{corollary}
+
+\begin{proof}
+Take $\chi=\rho^*i^*\beta$.  Since pullback commutes with $D$,
+\[
+             D\chi=\rho^*i^*q^*\Omega
+                        =\rho^*q_E^*s^*\Omega=0.
+\]
+Also $i^*\chi=i^*\beta$.  Theorem~\ref{r13d:closed-extension}
+gives the formula.  If $r>\dim Z$, the space
+$\mathcal B^{r,r}(Z^{\rm an})$ is zero by Corollary 4.9 of \cite{M},
+so the additional vanishing holds automatically.  Applying the formula
+to every separately closed $\Omega$ whose pullback is $D$-exact
+proves the Bott--Chern assertion.
+\end{proof}
+
+\subsection{The complete exceptional Aeppli obstruction}
+
+For a smooth projective $T/K$, define the algebraic Aeppli quotient
+\[
+ H_{\mathrm A,\mathrm{act}}^{k,k}(T)
+ =\frac{\ker\bigl(D:\mathcal B^{k,k}(T^{\rm an})
+                          \to\mathcal B^{k+1,k+1}(T^{\rm an})\bigr)}
+ {d'\mathcal B^{k-1,k}(T^{\rm an})+
+          d''\mathcal B^{k,k-1}(T^{\rm an})}.
+\tag{R13.D15}\label{r13d:aeppli}
+\]
+Spaces in negative bidegrees are zero.  The denominator is contained
+in the numerator by the differential identities.  All quotients in
+this subsection are plain vector-space quotients; no closed-range
+or finite-dimensionality assertion is needed.
+
+\begin{theorem}[The Aeppli--Bott--Chern connecting sequence]
+\label{r13d:connecting}
+For every $k\geq0$, the following sequence is exact at its two
+middle terms:
+\[
+\begin{split}
+ H_{\mathrm A,\mathrm{act}}^{k,k}(Y)\oplus
+ H_{\mathrm A,\mathrm{act}}^{k,k}(Z)
+ &\xrightarrow{\ i^*-q_E^*\ }
+ H_{\mathrm A,\mathrm{act}}^{k,k}(E)
+ \xrightarrow{\ \partial_D\ }
+ H_{\mathrm{BC,act}}^{k+1,k+1}(X)\\
+ &\xrightarrow{\ (q^*,s^*)\ }
+ H_{\mathrm{BC,act}}^{k+1,k+1}(Y)\oplus
+ H_{\mathrm{BC,act}}^{k+1,k+1}(Z).
+\end{split}
+\tag{R13.D16}\label{r13d:connecting-sequence}
+\]
+An explicit connecting map is
+\[
+               \partial_D[\theta]=[T(D\widetilde\theta)],
+       \qquad i^*\widetilde\theta=\theta,\quad D\theta=0,
+\tag{R13.D17}\label{r13d:connecting-formula}
+\]
+where $\widetilde\theta$ is any degreewise actual extension to $Y$.
+\end{theorem}
+
+\begin{proof}
+The extension exists by Lemma~\ref{r13d:restriction-surjective}.
+Since $i^*D\widetilde\theta=D\theta=0$, the form
+$D\widetilde\theta$ lies in $\mathcal R_Y$.  Its descent
+$\Omega=T(D\widetilde\theta)$ is separately closed, because $T$
+commutes with both differentials, and it restricts to zero on $Z$.
+Thus the displayed Bott--Chern class is defined.
+
+If the extension is changed, the difference is relative and hence
+equals $q^*\lambda$ for a global actual $\lambda$ on $X$.
+The descended curvature changes by $D\lambda$, so its class is
+unchanged.  If $\theta$ changes by $d'a+d''b$, extend $a,b$
+degreewise to $Y$ and change the extension by
+$d'\widetilde a+d''\widetilde b$.  Its $D$ is zero, so the formula
+passes to the Aeppli quotient.
+
+We check exactness at the Aeppli term.  The image of a $D$-closed
+form on $Y$ maps to zero, by using that same form as extension.
+If $\theta=q_E^*\zeta$ with $D\zeta=0$ on $Z$, extend $\zeta$
+to some $\eta$ on $X$ and use $q^*\eta$ as extension on $Y$.
+Its derivative descends to $D\eta$, because
+$s^*D\eta=D\zeta=0$; its Bott--Chern class is zero.  These facts
+show that the preceding image is contained in the kernel.
+
+Conversely suppose $\partial_D[\theta]=0$.  With the extension
+above write $T(D\widetilde\theta)=D\eta$ for an actual $\eta$
+on $X$.  Then
+$\chi=\widetilde\theta-q^*\eta$ is $D$-closed on $Y$, and
+$\zeta=s^*\eta$ is $D$-closed on $Z$, since the descended curvature
+restricts to zero.  The identity
+\[
+                            \theta=i^*\chi+q_E^*\zeta
+\]
+proves membership in the preceding image (the sign is immaterial
+for its image as a vector subspace).
+
+Finally, the image of $\partial_D$ has zero pullback Bott--Chern
+class on $Y$ and zero restriction on $Z$.  Conversely let a
+separately closed actual $\Omega$ represent a class in the kernel
+of $(q^*,s^*)$.  Choose primitives
+\[
+                        q^*\Omega=D\beta,\qquad
+                        s^*\Omega=D\zeta.
+\]
+Extend $\zeta$ degreewise to $\eta$ on $X$.  Then
+$\Omega_0=\Omega-D\eta$ restricts literally to zero on $Z$, and
+$\beta_0=\beta-q^*\eta$ satisfies $D\beta_0=q^*\Omega_0$.
+The exceptional restriction $\theta=i^*\beta_0$ is $D$-closed.
+Using $\beta_0$ in \eqref{r13d:connecting-formula} gives
+$\partial_D[\theta]=[\Omega_0]=[\Omega]$.
+This proves exactness at the Bott--Chern term by direct
+representative calculations, without an assumed long exact
+sequence for Bott--Chern cohomology.
+\end{proof}
+
+\begin{corollary}[An exact criterion for the curve-degree descent kernel]
+\label{r13d:aeppli-kernel}
+For $r>\dim Z$, the connecting map gives a canonical isomorphism
+\[
+ \boxed{\quad
+ \frac{H_{\mathrm A,\mathrm{act}}^{r-1,r-1}(E)}
+ {i^*H_{\mathrm A,\mathrm{act}}^{r-1,r-1}(Y)
+        +q_E^*H_{\mathrm A,\mathrm{act}}^{r-1,r-1}(Z)}
+ \ \simeq\ 
+ \ker\bigl(q^*:H_{\mathrm{BC,act}}^{r,r}(X)
+                         \to H_{\mathrm{BC,act}}^{r,r}(Y)\bigr).
+ \quad}
+\tag{R13.D18}\label{r13d:aeppli-kernel-iso}
+\]
+In particular, this applies to $r=n-1$ for every blowup of a
+nonempty smooth center of codimension at least two in an $n$-fold.
+For a specific model-curvature class, only its corresponding
+exceptional quotient class must vanish; the whole quotient need
+not vanish.
+\end{corollary}
+
+\begin{proof}
+The rightmost Bott--Chern group of $Z$ in
+\eqref{r13d:connecting-sequence} is zero when $r>\dim Z$.
+The asserted isomorphism is therefore precisely the two exactness
+statements of the theorem.  In the stated curve degree,
+$\dim Z\leq n-2<n-1$.
+\end{proof}
+
+Here is the constructive criterion for an individual curvature.
+Let $r>\dim Z$, let $\Omega$ be separately closed on $X$, and
+suppose $D\beta=q^*\Omega$.  Its exceptional class is
+\[
+ \varepsilon_q(\Omega)
+     =[i^*\beta]\quad\text{in the quotient on the left of
+                          \eqref{r13d:aeppli-kernel-iso}}.
+\tag{R13.D19}\label{r13d:individual-obstruction}
+\]
+It is independent of the primitive $\beta$, because two primitives
+differ by a global $D$-closed form on $Y$.  Changing the representative
+$\Omega$ by a global $D$ changes $i^*\beta$ by the pullback of a
+$D$-closed form on $Z$, so the class depends only on $[\Omega]$.
+It vanishes if and only if $\Omega$ has a global actual primitive
+on $X$.
+
+More explicitly, a vanishing certificate consists of $D$-closed
+actual forms $\chi$ on $Y$ and $\zeta$ on $Z$, and actual forms
+$a,b$ on $E$, such that
+\[
+                    i^*\beta=i^*\chi+q_E^*\zeta+d'a+d''b.
+\]
+Extend $a,b$ to $Y$ and absorb $d'\widetilde a+d''\widetilde b$
+into $\chi$.  Extend $\zeta$ to any actual $\eta$ on $X$.
+Then the formula
+\[
+                  \boxed{\quad
+                  \Psi_X=\eta+T(\beta-q^*\eta-\chi),
+                  \qquad D\Psi_X=\Omega\quad}
+\tag{R13.D20}\label{r13d:certificate-primitive}
+\]
+is valid.  The input of $T$ has zero exceptional restriction, and
+its derivative is $q^*(\Omega-D\eta)$, which proves the equation.
+This is an equivalence for primitive descent.  It is not a claimed
+equivalence between strong G and vanishing of the R11 sufficient
+model-curvature obstruction.
+
+\subsection{The blowup of a zero section in a split projective bundle}
+
+Let $S/K$ be smooth integral projective of dimension $d$, and let
+$V$ be a vector bundle of rank $c\geq2$.  Use the projective-bundle
+convention of lines.  Put
+\[
+ X=\mathbf P_S(\mathcal O_S\oplus V),\qquad
+ Z=\mathbf P_S(\mathcal O_S)\simeq S,
+ \qquad
+ E=\mathbf P_S(V).
+\]
+Write $p:X\to S$, $\pi:E\to S$, and let
+$L=\mathcal O_E(-1)\subset\pi^*V$ be the tautological line.  There
+is an isomorphism
+\[
+       Y:=\operatorname{Bl}_{Z}X
+          \simeq\mathbf P_E(\mathcal O_E\oplus L).
+\tag{R13.D8}\label{r13d:bundle-blowup}
+\]
+Its projection $\rho:Y\to E$ retracts the exceptional section
+$i:E=\mathbf P_E(\mathcal O_E)\hookrightarrow Y$.  The blowdown
+$q:Y\to X$ is induced by the inclusion
+$\mathcal O_E\oplus L\subset\pi^*(\mathcal O_S\oplus V)$, and
+\[
+                            pq=\pi\rho.
+\tag{R13.D9}\label{r13d:bundle-square}
+\]
+
+\begin{proof}[Verification of \eqref{r13d:bundle-blowup}]
+Trivialize $V$ on an open of $S$ and write a point of $X$ as
+$[a:v_1:\cdots:v_c]$.  The indicated $Y$ parametrizes a line
+$[\ell_1:\cdots:\ell_c]\in\mathbf P^{c-1}$ together with a point
+$[a:b\ell_1:\cdots:b\ell_c]$ of the corresponding projective line.
+The map to $X$ forgets the direction $\ell$ and is an isomorphism
+where $(v_1,\ldots,v_c)\ne0$.
+
+On $a\ne0$, its equations are the standard incidence equations
+$v_i\ell_j=v_j\ell_i$ for the blowup of the coordinate ideal
+$(v_1,\ldots,v_c)$ in affine $c$-space.  On $a=0$ the vector
+$(v_1,\ldots,v_c)$ is nonzero, so it is an isomorphism there.  These
+descriptions cover $X$ and are compatible with changes of frame of
+$V$, proving the global identification by the usual affine charts
+of the Rees-algebra blowup.  The locus $b=0$ is the exceptional
+section, and the projection to $E$ restricts to its identity.
+The identities claimed above follow from these descriptions.
+\end{proof}
+
+\begin{theorem}[A split blowup reduces injectivity to its base]
+\label{r13d:split-kernel}
+In \eqref{r13d:bundle-blowup}, for every diagonal degree $r$, the
+kernel of
+\[
+                  q^*:H_{\mathrm{BC,act}}^{r,r}(X)
+                                  \to H_{\mathrm{BC,act}}^{r,r}(Y)
+\]
+is identified by restriction to $Z\simeq S$ with
+\[
+                  \ker\bigl(\pi^*:H_{\mathrm{BC,act}}^{r,r}(S)
+                                    \to H_{\mathrm{BC,act}}^{r,r}(E)\bigr).
+\tag{R13.D10}\label{r13d:kernel-base}
+\]
+Thus $q^*$ is injective for $r>d$.  If $V$ has a line subbundle
+with locally free quotient, so that $\pi$ has a section
+$\sigma:S\to E$, then $q^*$ is injective in every degree.
+\end{theorem}
+
+\begin{proof}
+The two genuine retractions split the double complexes:
+\[
+ \mathcal B(X^{\rm an})\simeq\mathcal R_X\oplus\mathcal B(S^{\rm an}),
+ \qquad
+ \alpha\longmapsto(\alpha-p^*s^*\alpha,s^*\alpha),
+\]
+\[
+ \mathcal B(Y^{\rm an})\simeq\mathcal R_Y\oplus\mathcal B(E^{\rm an}),
+ \qquad
+ \beta\longmapsto(\beta-\rho^*i^*\beta,i^*\beta).
+\]
+Each is a direct-sum decomposition of bigraded vector spaces compatible
+with both differentials.  We do not claim it is a direct product of
+algebras.  By \eqref{r13d:bundle-square}, pullback $q^*$ becomes
+the block-diagonal map $(q^*|_{\mathcal R_X},\pi^*)$.
+Proposition~\ref{r13d:relative-isomorphism} makes its first block
+an isomorphism.  Bott--Chern cohomology commutes with this finite
+direct sum purely algebraically, giving
+\eqref{r13d:kernel-base}.  In degree $r>d$ its source on $S$ is
+zero.  If a section $\sigma$ exists, $\sigma^*\pi^*=\operatorname{id}$
+on actual forms and hence on Bott--Chern groups, proving the final
+assertion.
+\end{proof}
+
+When the section $\sigma$ is supplied, an explicit linear left inverse
+of $q^*$ on the entire actual double complex is
+\[
+ \mathcal L(\beta)=
+    T(\beta-\rho^*i^*\beta)+p^*\sigma^*i^*\beta.
+\tag{R13.D11}\label{r13d:left-inverse}
+\]
+It commutes with $d'$ and $d''$.  Substituting $q^*\alpha$ gives
+$\alpha-p^*s^*\alpha+p^*s^*\alpha=\alpha$.  The operator is not
+asserted to be multiplicative, and it is not the current pushforward
+along $q$.
+
+\begin{corollary}[Consequences for the model-curvature obstruction]
+\label{r13d:strong-G}
+Let $a\in\operatorname{CH}^r(X)_{\mathbf Q}$ in the projective bundle
+setting.  If
+\[
+                         \mathfrak o_Y^r(q^*a)=0,
+\]
+and either $r>d$ or $V$ has the line subbundle specified above, then
+$\mathfrak o_X^r(a)=0$.  Every prescribed representative of $a$
+therefore has a strong zero-curvature actual Green form over the
+original $K$, on its exact cycle complement and on every compact
+actual test.
+
+In particular, let $n=d+c\geq3$ and let $a$ be geometrically
+homologically trivial of codimension $n-1$.  A supplied regular
+projective model of $Y$ is sufficient for this conclusion; no regular
+model of $X$ is part of this implication's hypotheses.
+\end{corollary}
+
+\begin{proof}
+The R11 curvature map is compatible with actual pullback, so its
+value on $q^*a$ is $q^*\mathfrak o_X^r(a)$.  Apply
+Theorem~\ref{r13d:split-kernel}.  The exact-support Green-pair
+construction in R11 then subtracts the obtained global actual
+primitive from the pair attached to the prescribed cycle.  The
+identity $D\beta_X=\Omega$ is an identity of actual forms, and
+Stokes applies to every compact actual test.
+
+For the final assertion, $n-1=d+c-1>d$ because $c\geq2$.
+The pullback of a geometrically homologically trivial class remains
+so.  R12's curve theorem on the supplied regular model of $Y$ gives
+$\mathfrak o_Y^{n-1}(q^*a)=0$ and the first assertion applies.
+This is a conditional extension of the regular-model criterion to
+this explicit non-finite generic modification.  It does not establish
+the existence of such a regular model for every $Y$.
+\end{proof}
+
+\subsection{Why a universal proper trace on the old generators fails}
+
+\begin{proposition}[The actual range of birational current pushforward]
+\label{r13d:range}
+Let $q:Y\to X$ be a projective birational morphism between smooth
+integral projective $n$-folds, and let
+$\beta\in\mathcal B^{a,b}(Y^{\rm an})$.  Its proper CLD current pushforward
+is represented by an actual form $\alpha$ on $X^{\rm an}$ if and
+only if
+\[
+                                 \beta=q^*\alpha.
+\tag{R13.D12}\label{r13d:actual-range}
+\]
+Equivalently, a birational current pushforward produces an actual
+form precisely for forms that already descend by actual pullback.
+\end{proposition}
+
+\begin{proof}
+If $q_*[\beta]=[\alpha]$, restrict to an algebraic open on which
+$q$ is an isomorphism.  Equality of currents there and Proposition
+4.11 of \cite{M} imply $\beta=q^*\alpha$ on its inverse image.
+Lemma~\ref{r13d:dense-faithful} extends this equality to $Y$.
+
+Conversely suppose $\beta=q^*\alpha$.  For a compact smooth
+complementary test $\eta$, the top forms $\alpha\eta$ and
+$q^*(\alpha\eta)$ avoid the exceptional algebraic sets by
+Corollary 4.9.  Their integrals can therefore be computed on the
+isomorphism locus, where they agree.  Thus
+\[
+             \int_Y\beta\,q^*\eta=\int_X\alpha\eta,
+\]
+which is the required equality of currents.  The same argument is
+valid for every compact actual complementary test.
+\end{proof}
+
+\begin{theorem}[A proper trace fails even on pure PL curvatures]
+\label{r13d:counterexample}
+For every $n\geq2$ and every $1\leq k\leq n-1$, there are global
+PL scalars $v_1,\ldots,v_k$ on
+$Y=\operatorname{Bl}_{p}\mathbf P^n_K$, with $p\in\mathbf P^n(K)$,
+such that
+\[
+                      \beta=Dv_1\cdots Dv_k
+                           \in\mathscr M^k(Y^{\rm an})
+\]
+has no actual form representing $q_*[\beta]$ on $\mathbf P^{n,\rm an}$.
+Here $\mathscr M^k$ is exactly the scalar--curvature image sheaf
+used in the R11 minimal finite trace.  In addition, $D\beta=0$ and
+$\beta$ itself is globally $D$-exact.
+\end{theorem}
+
+\begin{proof}
+Use \eqref{r13d:bundle-blowup} over $S=\operatorname{Spec}K$ with
+$V=K^n$.  Then $E=\mathbf P^{n-1}$, and
+$\rho:Y\to E$ retracts the exceptional divisor.  Write $m=n-1$.
+On the standard dense torus of $E$, put
+\[
+ t_j=v(x_j/x_0),\qquad R(t)=\max_{1\leq j\leq m}|t_j|,
+ \qquad b(t)=\max(0,2a-R(t)),
+\]
+where $a=v(\varpi)>0$ for a uniformizer of the original $K$.  Define
+\[
+                        u_j(t)=\min(|t_j|,b(t)).
+\tag{R13.D13}\label{r13d:toric-potentials}
+\]
+These are finite PL functions.  They vanish for $R(t)\geq2a$.
+The inverse image of $R(t)\leq2a$ is a compact affinoid polyannulus
+contained in the torus, hence closed in $E^{\rm an}$.  Extending
+$u_j$ by zero off the torus consequently gives a global PL scalar
+on $E^{\rm an}$: the torus and the complement of that compact
+polyannulus are an ordinary open cover, with equal functions on
+the overlap.
+
+On the open cube $R(t)<a$, one has $u_j=|t_j|$.  Thus the actual
+form
+\[
+                              C_k=Du_1\cdots Du_k
+\]
+restricts on the standard weighted torus skeleton there to the
+nonzero tropical intersection
+\[
+                         2^k[t_1=\cdots=t_k=0].
+\]
+The coordinate hyperplanes meet transversally, and each corner
+locus of $|t_j|$ has weight two.  Hence $C_k\ne0$ as an actual
+form by its skeletal presentation.
+
+Set $v_j=\rho^*u_j$ and $\beta=\rho^*C_k$.
+Then $i^*\beta=C_k\ne0$.  If its current pushforward were
+represented by an actual $\alpha\in\mathcal B^{k,k}(\mathbf P^{n,\rm an})$,
+Proposition~\ref{r13d:range} would give $\beta=q^*\alpha$.
+Every positive-degree actual form vanishes on an ordinary
+neighborhood of the rigid point $p$, by Corollary 4.9 of \cite{M}.
+Its pullback therefore vanishes near the whole exceptional divisor,
+contradicting $i^*\beta=C_k\ne0$.
+
+Each curvature factor is separately closed, so $D\beta=0$ and
+\[
+                         \beta=D(v_1Dv_2\cdots Dv_k).
+\]
+This also proves the final assertion.
+\end{proof}
+
+For $n=3$ and $k=1$, this is already the bidegree of a curve-cycle
+Green primitive.  It prevents a universal extension of the R11
+finite trace even if its domain is kept to pure products of
+curvatures of global PL functions.  Conversely, in this example
+the retraction correction in \eqref{r13d:retracted-primitive}
+subtracts the entire unwanted form: $\rho^*i^*\beta=\beta$.
+The example therefore supports the need to adjust a primitive by
+a $D$-closed exceptional contribution; it supplies no counterexample
+to strong G or to injectivity of the curvature obstruction.
+
+\paragraph{Remaining scope.}
+The new general input is the exact exceptional Aeppli quotient
+\eqref{r13d:aeppli-kernel-iso} for smooth-center blowups, together
+with its actual primitive formula.  Vanishing of that quotient is
+proved in the explicit retraction sector, not for all blowups.
+A general alteration does not automatically supply the needed
+exceptional vanishing certificate.  The projective-bundle calculation
+does not assert a general non-archimedean Bott--Chern blowup formula,
+nor does it remove the regular-model condition for all curve cycles.
+All positive conclusions are identities of actual forms over the
+original field and therefore preserve the exact-support and all-test
+requirements when composed with the inherited Green-pair construction.

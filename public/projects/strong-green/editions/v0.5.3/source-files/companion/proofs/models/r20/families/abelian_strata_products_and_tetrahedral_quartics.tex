@@ -1,0 +1,569 @@
+% Round 20. AT20. family20. Candidate until exact independent review.
+\section{Abelian-type strata, staircase products, and tetrahedral quartics}
+\label{r20at:section}
+
+\paragraph{Scope.}
+This section gives a sufficient condition on actual Chow motives of
+closed strata.  It is stronger than a numerical-motive hypothesis.
+It is preserved by the specified staircase product construction, in
+arbitrary relative dimensions.  Combined with known weight--monodromy
+for curves and surfaces, it gives full-cycle G for any finite number
+of the supplied surface factors and any supplied good coefficient.
+An explicit simultaneous tetrahedral degeneration then gives dense
+global tuples of quartic surfaces whose products have full heights.
+The unrestricted product of arbitrary bad surfaces is not deduced
+from this stronger stratum hypothesis.  The R9 product candidates
+already contain related staircase and motivic ideas; no novelty or
+historical-domain-exclusion claim is made here.
+
+All schemes in the finite-field calculations are actual schemes,
+all Chow groups and motives have rational coefficients, and every
+degree is taken on a proper variety over its native finite field.
+
+\subsection{The comparison prime for finitely many Chow motives}
+
+Call a smooth projective $W/k$ of \emph{Chow abelian type} if its
+rational Chow motive is an actual direct summand of a finite direct
+sum of Tate twists of motives of abelian varieties over $k$.
+Thus the inclusion and retraction are rational Chow correspondences
+whose composite is the identity in Chow, not just numerically.
+The class is closed under finite sums, summands, products, and
+Tate twists.  We may split a finite number of constant fields by
+one finite extension of $k$ before using this definition.
+
+\begin{lemma}[One comparison prime for the whole finite diagram]
+\label{r20at:commonprime}
+Let $W_1,\ldots,W_t/k$ be of Chow abelian type.  There is a
+prime $\ell\ne\operatorname{char}k$ such that every native
+numerically zero rational cycle on every $W_i\times W_j$ has
+zero geometric $\ell$-adic class, in every codimension.
+\end{lemma}
+
+\begin{proof}
+Choose the actual motive presentations.  List all abelian carriers
+$B_\alpha$ occurring in them and put
+$B=\prod_\alpha B_\alpha^2$.  Every pair carrier
+$B_\alpha\times B_\beta$ is a Chow summand of $B$, using the
+zero sections and the projections on the unused factors; two copies
+also cover $\alpha=\beta$.  Thus each $h(W_i\times W_j)$ is
+a summand of a finite direct sum of twists of $h(B)$.
+
+Clozel's Theorem~1 supplies a positive-density set of primes for
+which numerical and geometric homological equivalence coincide
+for all cycles on $B_{\bar k}$; choose one invertible prime from
+that single set.  There is no intersection of unrelated
+positive-density prime sets.  A native numerically zero class
+remains numerically zero after every finite constant extension:
+against a new complementary cycle use proper norm and projection,
+with the full constant-field degree.  Consequently it is
+geometrically numerically zero.
+
+Apply the chosen Chow inclusion to a numerical-zero cycle on
+$W_i\times W_j$.  Each component is an actual numerical-zero
+cycle on a twist of $B$, hence has zero class at this prime.
+Apply the Chow retraction.  Its composite with the inclusion is
+the actual identity, so the original geometric class is zero.
+All operations preserve numerical equivalence by the Chow
+projection formula.  The statement uses neither full Tate
+surjectivity nor a numerical-class-to-cohomology map.
+\end{proof}
+
+\begin{proposition}[An incidence certificate from component motives]
+\label{r20at:inverse}
+Let $\mathcal Y/R$ be regular projective reduced strictly
+semistable, of relative dimension $d$, with finite residue field.
+Suppose its components have Chow abelian type after one finite
+constant extension.  After the corresponding unramified extension
+there is an actual rational correspondence matrix
+\[
+ G\in\bigoplus_{i,j}\operatorname{CH}^{d-1}(D_j\times D_i)
+ \quad\hbox{such that}\quad A^H G^H A^H=A^H
+ \tag{AT20.1}\label{r20at:AGA}
+\]
+on full geometric cohomology at one invertible prime.
+The conclusion is unchanged after tensoring the entire component
+diagram with the diagonal of any smooth projective coefficient
+$T_0/k$, without a comparison hypothesis on $T_0$.
+\end{proposition}
+
+\begin{proof}
+PI20 gives an actual rational $G$ whose error $E=A-AGA$ is
+numerically zero as a correspondence, using numerical-motive
+semisimplicity.  Each entry of $E$ is an actual cycle on
+$D_j\times D_i$.  Lemma~\ref{r20at:commonprime} kills all these
+entries geometrically at the same prime, proving
+\eqref{r20at:AGA}.  Tensoring gives the error
+$\Delta_{T_0}\boxtimes E$, which also has zero geometric class.
+Its action vanishes on every Kunneth summand, including mixed
+classes.  PI20's corrected actual kernel lifts therefore give
+$\Delta_A=\mathscr R_A=0$ in every degree on this product
+diagram.  The good coefficient need not have a Chow decomposition.
+\end{proof}
+
+\subsection{Actual stratum blowups preserve the motive hypothesis}
+
+Let $W/k$ be smooth projective and let $\partial W=\bigcup D_i$
+be an SNC divisor.  By a closed stratum we mean a connected
+component of some $D_J=\bigcap_{j\in J}D_j$, including $W$
+for $J=\varnothing$.  Suppose all of these have Chow abelian type.
+
+\begin{lemma}[All strata after a boundary-stratum blowup]
+\label{r20at:stratumblowup}
+Blow up the smooth intersection $Z=D_K$ of codimension $c=|K|$,
+allowing its disjoint connected components simultaneously.  The reduced total
+boundary on $\widetilde W=\operatorname{Bl}_Z W$ is SNC, and
+every closed stratum of this boundary has Chow abelian type.
+\end{lemma}
+
+\begin{proof}
+For $c=1$ the blowup is the identity.  Assume $c\ge2$ and use
+the convention that $\mathbf P^{\rm lines}(N)$ parametrizes
+one-dimensional subspaces of $N$.  Let $F$ be the exceptional
+divisor, with
+\[
+ F=\mathbf P_Z^{\rm lines}(N_{Z/W}),\qquad
+ N_{Z/W}=\bigoplus_{k\in K}\mathcal O_W(D_k)|_Z.
+ \tag{AT20.2}\label{r20at:normal}
+\]
+The normal decomposition is the dual of the actual conormal decomposition of
+the transverse Cartier equations.
+
+For a collection $J$ of old boundary indices with $K\not\subset J$,
+the nonempty intersection of the corresponding strict-transform
+divisors is
+\[
+ \widetilde D_J
+       =\operatorname{Bl}_{D_{J\cup K}}D_J.
+ \tag{AT20.3}\label{r20at:strictstratum}
+\]
+Here the center has codimension $c-|J\cap K|$ in $D_J$;
+a Cartier-center blowup is interpreted as the identity.  If
+$K\subset J$, the intersection of all those strict transforms
+is empty.  Its intersection with $F$ when nonempty is
+\[
+ F\cap\bigcap_{j\in J}\widetilde D_j
+  =\mathbf P_{D_{J\cup K}}^{\rm lines}
+       \left(\bigoplus_{k\in K\setminus J}
+                   \mathcal O_W(D_k)|_{D_{J\cup K}}\right).
+ \tag{AT20.4}\label{r20at:exceptionalstratum}
+\]
+These are scheme-theoretic formulas.  In the Rees charts they say
+that each $j\in J\cap K$ sets one homogeneous normal coordinate
+to zero, while each $j\notin K$ cuts the base transversely.
+They also prove that the displayed new boundary is SNC.  If an
+old intersection is disconnected, use its disjoint components;
+the same equations apply to each.
+
+The actual Chow blowup and projective-bundle formulas are
+\[
+ \begin{split}
+ \operatorname{CH}^q(\operatorname{Bl}_Z W)
+   &\simeq\operatorname{CH}^q(W)
+       \oplus\bigoplus_{a=1}^{c-1}\operatorname{CH}^{q-a}(Z),\\
+ (\alpha,\beta_a)&\longmapsto
+ f^*\alpha+\sum_{a=1}^{c-1}
+        j_*\bigl(\xi^{a-1}p^*\beta_a\bigr),\\
+ \operatorname{CH}^q(\mathbf P^{\rm lines}(N))
+   &\simeq\bigoplus_{a=0}^{\operatorname{rk}N-1}
+                  \operatorname{CH}^{q-a}(Z),\quad
+ (\beta_a)\longmapsto\sum_a\xi^a p^*\beta_a,
+ \end{split}
+ \tag{AT20.5}\label{r20at:chowformula}
+\]
+where $\xi=c_1(\mathcal O(1))$, $j:F\hookrightarrow\widetilde W$
+and $p:F\to Z$.  They hold after product with every smooth
+projective test variety.  Their maps and inverses are actual
+Chow correspondences, so the identity principle gives the usual
+direct-sum formulas in rational Chow motives.  Applying these to
+\eqref{r20at:strictstratum}--\eqref{r20at:exceptionalstratum}
+proves the claim for every new stratum.  This argument establishes
+actual motive splittings, not merely cohomological decompositions.
+\end{proof}
+
+\subsection{A staircase component is an actual stratum-blowup tower}
+
+\begin{proposition}[Closure for any finite number of supplied factors]
+\label{r20at:productstrata}
+Let $\mathcal Y_1,\ldots,\mathcal Y_m/R$ be regular projective
+reduced strictly semistable models, with smooth geometrically
+integral generic fibers.  Suppose every closed special-fiber
+stratum of every factor has Chow abelian type after one finite
+constant extension.  Their ordered staircase product has a
+regular projective reduced strictly semistable model whose every
+closed stratum has the same property.
+\end{proposition}
+
+\begin{proof}
+It suffices to construct one binary step and verify the full
+boundary, so that the step can be repeated.  Order the components
+of the two factors globally.  At a point with $r$ and $s$ branches,
+the product cone is
+\[
+ \{(a,b)\in\mathbf R_{\ge0}^{r+s}:\sum a_i=\sum b_j\},
+ \qquad N=\{(a,b)\in\mathbf Z^{r+s}:\sum a_i=\sum b_j\}.
+ \tag{AT20.6}\label{r20at:cone}
+\]
+Its height-one rays are $n_{ij}=(e_i,f_j)$.  Triangulate the
+height-one product of simplices by the monotone paths in the
+product order.  A path's first ray and successive differences
+form an integral basis of $N$, so every resulting cone is
+unimodular and every vertical multiplicity remains one.
+
+This subdivision is projective.  Give vertex $(i,j)$ the height
+$-ij$.  Transferring equal small mass from incomparable pairs
+$(a,b'),(a',b)$ to $(a,b),(a',b')$, with $a<a'$ and $b<b'$,
+preserves the two marginals and strictly decreases height.
+A minimizing combination therefore has chain support.  The
+monotone coupling gives every path simplex, and the heights
+restrict compatibly on faces.  Thus they define a global coherent
+subdivision for the fixed component orders.  Its monomial blowup
+charts are those of Hartl's product resolution.  This yields an
+actual projective model, not a merely formal local modification.
+
+Fix its component continuing $D_i\times E_j$.  The quotient
+star at $n_{ij}$ has the integral coordinates
+\[
+ n_{aj}\mapsto u_a,\qquad n_{ib}\mapsto v_b,\qquad
+ n_{ab}\mapsto u_a+v_b.
+ \tag{AT20.7}\label{r20at:star}
+\]
+Only the pairs $a<i,b<j$ or $a>i,b>j$ occur in its mixed rays.
+In a positive orthant with basis $u_1,\ldots,u_M,v_1,\ldots,v_N$,
+star-subdivide $\langle u_a,v_b\rangle$ by $u_a+v_b$, in
+reverse product order.  Its maximal cones are the monotone
+paths.  This follows by induction on $M+N$: the first ray
+$u_M+v_N$ gives two cones omitting respectively $v_N$ and $u_M$;
+the remaining steps restrict to the $(M,N-1)$ and $(M-1,N)$
+problems.  The two-face for an unprocessed pair remains a face
+until its own step, so each operation is a blowup of a smooth
+codimension-two boundary stratum.
+
+A path through $(i,j)$ splits into lower and upper paths with
+disjoint coordinate sets.  Consequently the component map to
+$D_i\times E_j$ is the actual sequence of blowups along the
+proper transforms of
+\[
+           (D_i\cap D_a)\times(E_j\cap E_b),
+ \tag{AT20.8}\label{r20at:centers}
+\]
+in ascending product order for the lower pairs and descending
+product order for the upper pairs.  Globally use the same component
+orders and the connected smooth pieces of these intersections.
+Restricting this sequence to any chart gives exactly the quotient
+star just computed.  The local identifications are the identity
+on the common dense toroidal open, so glue over $D_i\times E_j$.
+This argument has no bound on $r,s$ or on the relative dimensions.
+
+The original pair on $D_i\times E_j$ has boundary given by all
+old double divisors in either factor.  Its closed strata are
+products of old closed strata.  Lemma~\ref{r20at:stratumblowup}
+applies at each step of \eqref{r20at:centers}.
+Finally its complete reduced boundary is exactly its intersection
+with the other components of the new total model.  In the quotient
+star every boundary ray is a two-dimensional cone containing
+$n_{ij}$ and one other global component ray: the old axes and
+the mixed rays in \eqref{r20at:star} give precisely these rays.
+There is no further boundary ray or new vertical component.
+Thus every actual closed stratum of the new total model is a
+closed stratum of one of the just-treated component pairs.
+This proves the binary assertion and allows induction on $m$.
+No factorization theorem for arbitrary birational maps is used.
+\end{proof}
+
+\subsection{Full local cycle groups and all finite extensions}
+
+\begin{theorem}[A good coefficient and supplied abelian-type surface strata]
+\label{r20at:local}
+Fix the finite valued $K/\mathbf Q_p$ and its absolute value.
+Suppose $T/K$ is smooth, projective and geometrically integral,
+has a smooth projective model, and
+$S_1,\ldots,S_m/K$ have regular projective reduced strictly
+semistable models, each $S_i$ being a smooth projective
+geometrically integral curve or surface.  Suppose every closed
+stratum of each of these factor models has Chow abelian type
+after finite constant extension.  Then every geometrically
+homologically trivial rational cycle on
+\[
+                         X=T\times\prod_{i=1}^mS_i
+ \tag{AT20.9}\label{r20at:genericproduct}
+\]
+has strong ordinary-actual G in every $1\le r\le\dim X$.
+The assertion holds for every new cycle after every finite valued
+extension of $K$.  It also descends to an original valued field
+if all of the displayed models are supplied over one common
+finite extension of that field.
+\end{theorem}
+
+\begin{proof}
+Pass first to one finite unramified extension defining the finitely
+many motive splittings and splitting the stratum constants.
+Proposition~\ref{r20at:productstrata} supplies the semistable
+product witness for $P=\prod_iS_i$, with Chow-abelian components.
+Apply Proposition~\ref{r20at:inverse}, then tensor its actual
+inverse with the good coefficient $T_0$.  The resulting product
+model for $X$ has $\Delta_A=\mathscr R_A=0$ in every degree
+at one common prime.
+
+All degrees of cohomology of each curve or surface satisfy
+weight--monodromy.  The good factor is pure and unramified.
+Kunneth and tensor compatibility of monodromy filtrations give
+weight--monodromy on every degree of $X$, at every invertible
+prime.  Thus OW19 kills the actual inertia image at the chosen
+prime.  AK19/CR19 and FD17/VT17 give the stated G, with exact
+specified support and all compact actual tests.  If $\dim X\le2$,
+use the frozen divisor and zero-cycle endpoint theorems instead
+of AK19's stated geometric range.
+
+The same proof applies over every finite unramified extension of
+this field: base change the actual Chow splittings and choose one
+comparison prime anew.  Numerical-equivalence comparison is
+applied to all cycles over that new field.  The product witness
+is native and strictly semistable.  The frozen RI18 norm-detection
+corollary therefore extends the full cycle assertion to every
+finite valued extension, including ramified extensions and their
+new cycles.  Concretely, in a finite Galois closure first apply
+the theorem over the maximal unramified subfield and then RI18
+to the totally ramified Galois step; descend to the desired
+field by finite actual trace.  This uses the full extension
+degrees, including wild ramification, and the extending original
+absolute value.  No new cycle is assumed to be an old pullback.
+
+If the hypotheses were supplied only over a common finite
+extension $L/K_0$, a new cycle over any $K'/K_0$ is pulled to a
+finite compositum with $L$, treated by the all-extension assertion
+just proved, and descended with the complete field degree.  The
+final cycle is the originally specified one.  No arbitrary proper
+actual pushforward or finite-on-complement alteration is used.
+\end{proof}
+
+For a surface model the stratum hypothesis is automatic if all
+its geometric components are rational or geometrically ruled:
+double strata are curves and triple strata are points.  After
+finite constant extension a ruled component is birational to a
+projective bundle over a smooth projective curve.  Resolution of
+a birational map of smooth projective surfaces by point blowups
+and \eqref{r20at:chowformula} show that its motive is a summand
+of curve motives and Tate twists.  This includes supplied models
+of the usual ruled or rational Kulikov types.  Existence of such
+a projective model is an explicit hypothesis; it is not asserted
+for every K3 surface over every local field.
+
+\subsection{An explicit tetrahedral surface with true triple strata}
+
+\begin{proposition}[A quartic congruence with rational components]
+\label{r20at:quartic}
+Let the residue characteristic be odd and let $\pi$ be the
+uniformizer.  Let $F$ be a quartic form over $R$ such that
+$\bar F$ is nonzero at the four coordinate vertices of
+$\mathbf P^3_k$ and cuts each of the six coordinate lines in
+four simple geometric points away from their endpoints.  Then
+\[
+ \mathcal Q:\quad x_0x_1x_2x_3+\pi F(x_0,x_1,x_2,x_3)=0
+                    \ \subset\mathbf P^3_R
+ \tag{AT20.10}\label{r20at:quarticequation}
+\]
+has a projective regular reduced strictly semistable modification,
+isomorphic on its generic fiber, with four geometrically rational
+surface components, six double curves isomorphic to
+$\mathbf P^1$, and four unchanged triple points.  Its generic
+fiber is a smooth geometrically integral quartic K3 surface.
+The conditions are satisfied by $\bar F=\sum_i x_i^4$.
+\end{proposition}
+
+\begin{proof}
+The closed fiber consists of the four coordinate planes.  At a
+point on just one plane the total space is smooth over $R$.
+At a double-line point where $\bar F\ne0$, dividing by units
+gives a regular semistable equation $xy=\pi u$.  At a coordinate
+vertex $\bar F$ is a unit, and the equation has the regular
+semistable form $xyz=\pi u$ with three branches.
+
+The only other points are the $24$ simple geometric zeros of
+$\bar F$ on the double lines.  Write the local equation as
+$u xy+\pi F=0$ with $u$ invertible.  The simple-zero assumption
+makes $z=F/u$ a local etale coordinate along the line.  The actual
+etale local equation is therefore
+\[
+                              xy+\pi z=0.
+ \tag{AT20.11}\label{r20at:node}
+\]
+Blow up the ideal $(x,\pi)$ of one of its two plane components.
+The actual Rees charts, with the factors removed by the relation
+inside the common fraction field, are
+\[
+ \begin{array}{c|c|c}
+ \text{chart}&\text{coordinates and relations}&\text{map}\\ \hline
+ x=\pi t& R[t,y],&x=\pi t,\ z=-ty,\\
+ \pi=xv& R[x,v,z]/(xv-\pi),&y=-vz.
+ \end{array}
+ \tag{AT20.12}\label{r20at:smallresolution}
+\]
+The first chart is smooth over $R$ and the second is regular
+strictly semistable.  The chosen plane is blown up at the point,
+the other plane is unchanged, and their double curve remains
+isomorphic to the original line.  The exceptional curve is contained
+in the chosen vertical surface; it is not an additional vertical
+surface component.
+
+Globally blow up the ideals of the coordinate-plane components in
+the order $0,1,2$, always using their proper transforms.  Away
+from the remaining points \eqref{r20at:node}, each such component
+is Cartier, including at the triple points, so its blowup is an
+isomorphism there.  At a remaining node the displayed charts
+resolve it.  Every double line has an endpoint component among
+$0,1,2$, so every node is resolved.  The four final components
+are the planes blown up at respectively $12,8,4,0$ geometric
+points.  Closed points of larger residue degree are blown up
+natively, and split after a finite unramified extension.
+The double curves remain $\mathbf P^1$ and the four vertices
+are unchanged.  This proves the asserted regular reduced
+semistable model with actual triple strata.
+
+The semistable charts cover the closed fiber.  Since the model
+is proper, their union covers the entire model: its closed
+complement would have proper image contained in the generic
+point of the trait, which is impossible.  Its generic fiber is
+therefore smooth.  A smooth quartic surface in $\mathbf P^3$
+is geometrically integral and is K3 by adjunction and the
+standard hypersurface cohomology sequence.  Finally, for odd
+residue characteristic $x^4+y^4$ has four simple geometric
+zeros with neither coordinate zero, proving the asserted
+nonempty coefficient condition.
+\end{proof}
+
+\paragraph{The generic fiber is not potentially good.}
+The dual complex of the supplied model is the boundary of a
+tetrahedron, so its second cohomology is $\mathbf Q_\ell$.
+The weight spectral sequence identifies this with the nonzero
+weight-zero piece of generic $H^2$.  Surface weight--monodromy
+then gives $N^2\ne0$.  A finite extension multiplies $N$ by
+its ramification index and cannot kill it, whereas good reduction
+has $N=0$.  For a product of $m$ such surfaces, on the tensor
+of their $H^2$ spaces one has
+\[
+ N^{2m}(v_1\otimes\cdots\otimes v_m)
+   =\frac{(2m)!}{(2!)^m}
+       N_1^2v_1\otimes\cdots\otimes N_m^2v_m\ne0
+ \tag{AT20.13}\label{r20at:monodromy}
+\]
+after choosing $N_i^2v_i\ne0$.  Thus this is not a change of
+model of a potentially good generic fiber.
+
+\subsection{Dense global tuples and full complementary heights}
+
+\begin{theorem}[Dense quartic products with a common deep bad place]
+\label{r20at:global}
+Fix an odd rational prime $p$ and an integer $m\ge1$.
+There is a Zariski-dense set of ordered $m$-tuples of quartic
+forms over $\mathbf Q$ defining smooth surfaces
+$S_1,\ldots,S_m$ such that $X=\prod_iS_i$ has full
+strong G at every finite completion and after every finite
+number-field extension, for all new homological rational cycles.
+Consequently PH16 has the complete complementary domains
+\[
+ \operatorname{CH}^r(X_E)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^{2m+1-r}(X_E)_{\mathbf Q,\mathrm{geom\,hom}}
+                          \longrightarrow\mathbf R
+ \tag{AT20.14}\label{r20at:height}
+\]
+for every number field $E/\mathbf Q$ and $1\le r\le2m$.
+All factors have the tetrahedral degeneration at $p$, and
+$N^{2m}\ne0$ for the product there.
+\end{theorem}
+
+\begin{proof}
+Work in the affine space of the $35$ quartic coefficients.  Choose
+the first form, and then each next form, in the integral congruence
+class
+\[
+ P_i\equiv x_0x_1x_2x_3+p\sum_jx_j^4\pmod {p^2}.
+ \tag{AT20.15}\label{r20at:pcongruence}
+\]
+After earlier choices, let $B$ be the finite union, excluding $p$,
+of primes where their chosen primitive projective quartic closures
+are not smooth.  At every $q\in B$ impose that the next form
+reduce to a fixed geometrically smooth quartic over $\mathbf F_q$.
+Such a form exists for every $q$: use the Fermat quartic for odd
+$q$, and for $q=2$ use
+\[
+        H=x^4+x^3y+y^3z+z^3w+w^3x.
+ \tag{AT20.16}\label{r20at:char2good}
+\]
+Indeed, if its four partial derivatives vanish, a zero coordinate
+would force all coordinates zero.  Otherwise the four cyclic
+terms $x^3y,y^3z,z^3w,w^3x$ are equal, so sum to zero in
+characteristic two, while $x^4\ne0$.  Such a critical point
+does not lie on $H=0$.  This proves geometric smoothness.
+
+The Chinese remainder theorem makes all these coefficient
+conditions compatible and gives a full-rank integral affine
+progression.  It is Zariski dense; choose any point in it
+defining a smooth generic quartic.  In fact the $p$-condition
+already gives smoothness by Proposition~\ref{r20at:quartic}.
+The finite bad set exists because a smooth projective generic
+hypersurface spreads to a smooth projective model outside
+finitely many primes.  At a prime $q\ne p$ at most one
+factor is bad: any later factor was required to be good at
+every bad prime of the earlier ones.
+The content of a chosen integral form is prime to $p$ by
+\eqref{r20at:pcongruence}; dividing by it changes no local
+projective model at $p$.  At a specified good prime its content
+is also a unit, since the prescribed smooth reduction is nonzero.
+
+At $p$, all factors have the model of
+Proposition~\ref{r20at:quartic}, whose strata have Chow abelian
+type after splitting the finitely many closed points.  Apply
+Theorem~\ref{r20at:local}, with the coefficient a point, to
+all factors simultaneously.  Its RI18 conclusion treats every
+finite extension of $\mathbf Q_p$.  At any $q\ne p$, the
+product of the good factors has a smooth projective model;
+if one surface is bad, AS20 applies with that arbitrary
+surface as the bad factor.  If none is bad, use good reduction
+or the same AS20 statement.  These arguments remain valid
+over every finite completion of every number field and for
+all new cycles.  PH16 and GA17 now give
+\eqref{r20at:height} in every complementary degree.
+
+For density of the tuple set, use induction on $m$.  For each
+already chosen $(m-1)$-tuple, the permitted next forms contain
+a full-rank affine progression, hence are Zariski dense in
+the last coefficient space.  A polynomial vanishing on all
+constructed tuples therefore has every last-variable
+coefficient vanishing on all earlier constructed tuples.
+The inductive density makes every coefficient zero.
+The assertion is density of these explicitly constrained
+tuples, not a theorem about all quartic surfaces or all tuples.
+The monodromy assertion is \eqref{r20at:monodromy}.
+\end{proof}
+
+\paragraph{Dependencies, history and remaining scope.}
+Numerical semisimplicity and the finite error are PI20, based
+on Jannsen's Theorem~1.  The comparison-prime input is Clozel,
+\emph{Equivalence numerique et equivalence cohomologique pour
+les varietes abeliennes sur les corps finis}, Ann. of Math.
+150 (1999), 151--163, Theorem~1,
+\url{https://arxiv.org/pdf/math/9907203}; it is used for one
+finite carrier product.  The model input is Hartl,
+\emph{Semi-stability and base change}, Arch. Math.
+77 (2001), 215--221, Proposition~2.1 and its actual monomial
+charts, \url{https://ivv5hpp.uni-muenster.de/u/uhartl/Publikat/SemistBC.pdf}.
+The fan calculation is written above and also appears, for
+surface products, in the retained R9 ST candidate and the
+current PX20 investigation.  The actual Chow formulas are
+the classical projective-bundle and smooth-blowup formulas;
+their use after every test product gives the motive statement.
+Surface weight--monodromy is the known input recorded in OW19
+and Saito's discussion after Conjecture~0.5.  Arbitrary finite
+new cycles use the exact frozen RI18 norm theorem, rather
+than an unproved preservation of motives under arbitrary
+ramified resolutions.
+
+The motive condition is a sufficient supplied-model hypothesis.
+It is not deduced for components of arbitrary semistable
+alterations, and it is not required for general G.  Nothing
+here proves the general incidence error homologically zero,
+or proves general G or full heights on an arbitrary variety.
+The global family is a concrete consequence under verified
+local degeneration conditions; no external first-discovery
+claim is made.

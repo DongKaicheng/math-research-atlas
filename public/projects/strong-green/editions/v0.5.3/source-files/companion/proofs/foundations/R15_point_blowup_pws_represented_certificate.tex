@@ -1,0 +1,144 @@
+% Round 15. Conditional certificate; upstairs primitive may be arbitrary actual.
+\section{Point-blowup descent from a PWS-represented exceptional class}
+\label{r15pc:section}
+
+This certificate asks for a PWS representative only of the
+exceptional Aeppli class.  The supplied upstairs primitive
+itself may have arbitrary delta codimension.  In particular
+the hypothesis does not force a pure model curvature to have
+a PWS primitive.
+
+\begin{theorem}[An exceptional PWS-representability certificate]
+\label{r15pc:point-certificate}
+Let $X/K$ be smooth integral projective of dimension $m+1$,
+let $p$ be a closed point, and let
+\[
+ q:Y=\operatorname{Bl}_pX\longrightarrow X,
+ \qquad i:E\simeq\mathbf P^m_{\kappa(p)}\hookrightarrow Y.
+\]
+Fix $1\leq k\leq m$.  Suppose
+$\Omega\in B^{k+1,k+1}(X)$ is separately closed and there
+is a global ordinary actual form $\beta\in B^{k,k}(Y)$ with
+\[
+                             q^*\Omega=D\beta.
+\tag{EP15.1}\label{r15pc:upstairs}
+\]
+Assume that the class of its exceptional restriction has
+a $D$-closed PWS representative in the full actual Aeppli
+quotient:
+\[
+ [i^*\beta]\in
+ H_{\mathrm A,\mathrm{PSrep}}^{k,k}(E)
+       \subseteq H_{\mathrm A,\mathrm{act}}^{k,k}(E).
+\tag{EP15.2}\label{r15pc:exceptional-hypothesis}
+\]
+Then there is a global ordinary actual
+$\Psi\in B^{k,k}(X)$ with $D\Psi=\Omega$.
+Every identity uses the original $K$ theory and its native
+finite residue degree.
+\end{theorem}
+
+\begin{proof}
+The restriction of $\Omega$ to the point is zero by degree,
+so $D(i^*\beta)=0$.  Thus the class in
+\eqref{r15pc:exceptional-hypothesis} is defined without an
+extra closedness assumption.  By
+Theorem~\ref{r15allps:projective-space} and its native
+constant-field form, Corollary~\ref{r15allps:constant-field},
+there is a
+real number $a$ with
+\[
+                           [i^*\beta]=a[h^k],
+\tag{EP15.3}\label{r15pc:line}
+\]
+where $h$ is the smooth first Chern representative of
+$\mathcal O_E(1)$ chosen in that calculation.  This step uses
+the image inside the full actual Aeppli group, so its
+boundary relation has arbitrary actual coefficients.
+It does not require a PWS representative of $\beta$ on $Y$.
+
+Choose a global model metric on $\mathcal O_Y(-E)$ and let
+$c_Y$ be its separately closed actual curvature.  Its
+restriction $c_E=i^*c_Y$ is the curvature of a metric on
+$\mathcal O_E(1)$.  The ratio to the chosen smooth metric is
+a global PWS scalar $v$ with $c_E-h=Dv$.  Since all curvature
+factors are separately closed,
+\[
+ c_E^k-h^k
+   =D\left(v\sum_{j=0}^{k-1}c_E^j h^{k-1-j}\right).
+\tag{EP15.4}\label{r15pc:metric}
+\]
+This is an actual identity; the primitive on the right need
+not be PWS.  It follows that $[h^k]$ belongs to
+$i^*H_{\mathrm A,\mathrm{act}}^{k,k}(Y)$, via the global
+closed form $c_Y^k$.
+
+Apply the all-bidegree mixed connecting sequence of
+Proposition~\ref{r15m:mixed-connecting} in degree $(k,k)$.
+The center has no positive-degree actual forms, so the
+connecting representative for \eqref{r15pc:upstairs} is
+exactly $i^*\beta$; no center primitive or higher-degree
+finite trace is needed.  Its connecting image is $[\Omega]$.
+Equations \eqref{r15pc:line}--\eqref{r15pc:metric} put that
+representative in the restriction image from $Y$.  Exactness
+therefore gives $[\Omega]=0$ in
+$H_{\mathrm{BC,act}}^{k+1,k+1}(X)$, which by definition
+supplies the asserted global actual primitive.
+
+The coefficient in \eqref{r15pc:line} can be calibrated
+without passing to a geometric sheet:
+\[
+             a=\frac{\displaystyle\int_E i^*\beta\,h^{m-k}}
+                        {\displaystyle\int_E h^m}
+              =\frac{1}{[\kappa(p):K]}
+                        \int_E i^*\beta\,h^{m-k}.
+\tag{EP15.5}\label{r15pc:native}
+\]
+Actual Stokes kills the Aeppli boundary in the numerator,
+and the frozen projective-degree formula gives the full
+native denominator.  This verifies the stated original-field
+normalization.
+\end{proof}
+
+\begin{corollary}[Application to a specified Green pair]
+\label{r15pc:green-pair}
+Suppose, in addition, that $Z$ is a specified codimension-
+$(k+1)$ cycle and $(\gamma_0,\Omega)$ is a frozen exact-support
+actual Green pair for that same cycle, with $\gamma_0$
+defined on $X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}}$.
+If the hypotheses of Theorem~\ref{r15pc:point-certificate}
+hold for its curvature $\Omega$, then
+\[
+                  \gamma_Z=\gamma_0-\Psi|_{X\setminus|Z|}
+\tag{EP15.6}\label{r15pc:Green}
+\]
+is a strong zero-curvature actual Green form on the exact
+original support complement, with the prescribed identity
+for every original actual compact test.
+\end{corollary}
+
+\begin{proof}
+The correction $\Psi$ is global ordinary actual, so it
+restricts to the exact original complement.  Actual Stokes
+and $D\Psi=\Omega$ cancel the curvature term in the given
+all-actual-test Green identity.  The remaining term is
+exactly the original cycle integral.  No form-valued
+pushforward along the blowup is used.
+\end{proof}
+
+\paragraph{Precise scope.}
+The criterion is conditional on the supplied exceptional
+representability in \eqref{r15pc:exceptional-hypothesis}.
+The all-degree PWS-represented computation alone does not say
+that every $D$-closed actual form on a projective space has
+such a representative.  For $k=1$ the full actual computation
+was already proved; for $k=2$ it is supplied later by
+Corollary~\ref{r15a2:full-HA22}.  The exceptional hypothesis is
+therefore automatic in those two degrees, and the resulting
+point-blowup descent can be iterated with arbitrary actual
+intermediate primitives.  For $k\geq3$ the certificate must
+still be verified at every intermediate step.  This theorem
+does not prove general higher-degree Bott--Chern injectivity
+or general strong~(G).  It permits positive-delta upstairs primitives,
+and so is distinct from a criterion that assumes a global
+PWS primitive of a nonzero pure model curvature.

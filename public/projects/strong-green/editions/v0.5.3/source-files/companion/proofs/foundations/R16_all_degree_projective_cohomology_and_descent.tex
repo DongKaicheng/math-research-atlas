@@ -1,0 +1,291 @@
+% Round 16. Activated after independent review by higher_trace and model_obstruction.
+% Reviewed mathematical source SHA256: 387c79d577f04e8533eddaceaaaa568de279815aa7e214899ce7c0ace812027c.
+% This update changes only these status comments.
+\section{Projective-bundle cohomology and modification descent in every degree}
+\label{r16pb:section}
+
+The new input to this section is actual integration on projective bundles
+in every bidegree, with the all-actual target projection formula,
+$d',d''$ compatibility, and coordinate projective-bundle base change.
+These are the precise assertions of
+\path{higher_trace/all_actual_projective_bundle_output.tex}.
+The diagonal kernel used below is the frozen curved Green pair for a
+prescribed cycle, not a zero-curvature Green solution. The other frozen
+inputs are the Round 11 Chow-to-actual Bott--Chern curvature class,
+the Round 12 graded-ring property of that class, the Round 15 mixed
+connecting sequence and localized normal-Chern extension. In particular,
+general strong G is not a premise.
+
+\begin{lemma}[A diagonal Green pair with polynomial curvature]
+\label{r16pb:diagonal}
+Let $S/K$ be smooth integral projective, $N$ a vector bundle of rank
+$r+1\geq2$, and $\pi:E=\mathbf P_S(N)\to S$ the space of lines.
+Put $T=E\times_S E$ and write $p_z,p_y:T\to E$ and $\pi_T:T\to S$.
+Choose separately closed actual forms $C_k$ representing
+$\mathfrak o_S^k(c_k(N))$, with $C_0=1$, and a separately closed
+actual first Chern form $\xi$ of $\mathcal O_E(1)$. There is an actual
+Green form
+\[
+ \Gamma_\Delta\in B^{r-1,r-1}(T^{\rm an}\setminus\Delta^{\rm an})
+\]
+whose curvature is the global actual form
+\[
+ \Omega_\Delta=
+       \sum_{i+j+k=r}\xi_z^i\xi_y^j\pi_T^*C_k.
+ \tag{PB16.1}\label{r16pb:diagonal-polynomial}
+\]
+More precisely, for every compact complementary actual test $\Phi$,
+\[
+ \int_{T\setminus\Delta}\Gamma_\Delta\wedge D\Phi
+       =\int_T\Omega_\Delta\wedge\Phi-\int_\Delta\Phi.
+ \tag{PB16.2}\label{r16pb:diagonal-green}
+\]
+Every degree and form in this statement is over the original field.
+\end{lemma}
+
+\begin{proof}
+Let $L_z,L_y$ be the tautological lines, and let
+$Q_y=\pi_T^*N/L_y$. The tautological map $L_z\to Q_y$ is a section
+of the rank-$r$ bundle $L_z^\vee\otimes Q_y$. Its zero scheme is the
+relative diagonal, a regular embedding of codimension $r$. The top
+Chern formula and the exact sequence for $Q_y$ give in the Chow ring
+\[
+ [\Delta]=c_r(L_z^\vee\otimes Q_y)
+         =\sum_{i+j+k=r}\xi_{z,\mathrm{alg}}^i
+                         \xi_{y,\mathrm{alg}}^j\pi_T^*c_k(N).
+ \tag{PB16.3}\label{r16pb:diagonal-chow}
+\]
+The plus signs agree with the convention of lines: $c(L_y)=1-\xi_y$.
+
+The frozen exact-support curved Green-pair theorem gives
+$(\Gamma_0,\Omega_0)$ for this specified diagonal. The Round 11
+curvature-class theorem and the Round 12 graded-ring identity turn
+\eqref{r16pb:diagonal-chow} into
+$[\Omega_0]=[\Omega_\Delta]$ in actual Bott--Chern degree $(r,r)$.
+Consequently $\Omega_0-\Omega_\Delta=D\Psi$ for a global actual
+$\Psi\in B^{r-1,r-1}(T)$. Define
+$\Gamma_\Delta=\Gamma_0-\Psi|_{T\setminus\Delta}$.
+Actual Stokes gives \eqref{r16pb:diagonal-green} on every actual
+test. This subtracts a global form and therefore keeps the exact
+diagonal complement. It uses the vanishing for a Chow identity,
+not an unproved vanishing for homologically trivial cycles.
+\end{proof}
+
+\begin{proposition}[Actual diagonal homotopy]
+\label{r16pb:homotopy}
+Let $\alpha\in B^{a,b}(E)$ satisfy $D\alpha=0$.
+There are ordinary actual forms $G\alpha$, $P\alpha$, $Q\alpha$
+in degrees $(a-1,b-1),(a,b-1),(a-1,b)$, respectively, such that
+\[
+ \alpha=
+   \sum_{i+j+k=r}\xi^j\wedge\pi^*
+            \bigl(C_k\wedge I_\pi(\xi^i\wedge\alpha)\bigr)
+       +DG\alpha+d''P\alpha-d'Q\alpha.
+ \tag{PB16.4}\label{r16pb:homotopy-formula}
+\]
+Negative form degrees mean zero. The transgression currents are the
+prescribed integrals of $\Gamma_\Delta p_z^*\alpha$,
+$d'\Gamma_\Delta\wedge p_z^*\alpha$ and
+$d''\Gamma_\Delta\wedge p_z^*\alpha$ along $p_y$.
+They are represented on the ordinary topology and have all actual
+compact-test pairings in their stated degrees.
+\end{proposition}
+
+\begin{proof}
+The restrictions of $p_z^*\alpha$ and $p_y^*\alpha$ to $\Delta$
+are identical. The frozen actual immersion-germ theorem therefore
+makes them equal on an ordinary neighborhood of $\Delta$.
+Let $n=\dim E$. A complementary target test for the three proposed
+outputs, multiplied by this target pullback of $\alpha$, has degrees
+$(n+1,n+1),(n,n+1),(n+1,n)$, respectively. Each product is zero.
+This statement holds for arbitrary actual tests by the actual
+dimension bound, not merely for smooth test coefficients.
+
+Choose an ordinary smooth cutoff that vanishes near $\Delta$ inside
+this zero neighborhood. The three cutoff integrands extend by zero
+as actual forms on $T$. Their proper $p_y$ projections exist in all
+degrees by the new projective-bundle output theorem. On every paired
+compact set the cutoff changes only an identically zero product.
+The representatives are therefore intrinsic and have their prescribed
+uncut pairings, with ordinary gluing by current injectivity. This
+also deals with negative output degrees: the paired integrands then
+vanish by dimension and the corresponding currents are zero.
+
+Use \eqref{r16pb:diagonal-green} with
+$\Phi=p_z^*\alpha\wedge p_y^*\eta$. The first derivative test
+products needed for Stokes vanish on the same ordinary neighborhood
+of $\Delta$ by overdegree. Thus all Stokes operations are on global
+actual forms extended by zero before integration. The sign calculation
+is the following identity away from the diagonal. Since
+$\deg\Gamma_\Delta=2r-2$ is even and $D\alpha=0$,
+\[
+ D(\Gamma_\Delta\alpha_z)
+ +d''(d'\Gamma_\Delta\alpha_z)
+ -d'(d''\Gamma_\Delta\alpha_z)
+                      =-D\Gamma_\Delta\,\alpha_z.
+ \tag{PB16.5}\label{r16pb:sign}
+\]
+Applying the Green identity to the paired expression restores the
+diagonal restriction $\alpha$. It follows that
+\[
+ \alpha=I_{p_y}(\Omega_\Delta\wedge p_z^*\alpha)
+                     +DG\alpha+d''P\alpha-d'Q\alpha.
+\]
+For a summand of \eqref{r16pb:diagonal-polynomial}, the actual target
+projection formula removes $\xi_y^j\pi_T^*C_k$ from the integral.
+The specific base-change identity for the projective-bundle projection
+$\pi:E\to S$ gives
+\[
+ I_{p_y}p_z^*(\xi^i\alpha)=\pi^*I_\pi(\xi^i\alpha).
+\]
+These are exactly the tested base changes supplied by the new output
+theorem; no unrestricted current base change is invoked. This proves
+\eqref{r16pb:homotopy-formula}.
+\end{proof}
+
+\begin{theorem}[Full actual projective-bundle Aeppli and Bott--Chern formulas]
+\label{r16pb:formula}
+For every smooth integral projective $S/K$ and vector bundle $N$ of
+rank $r+1$, one has, in every bidegree,
+\[
+ \HA^{a,b}(\mathbf P_S(N))
+    =\bigoplus_{j=0}^{r}[\xi]^j\wedge
+                       \pi^*\HA^{a-j,b-j}(S).
+ \tag{PB16.6}\label{r16pb:HA}
+\]
+The same formula holds with $H_{\mathrm{BC,act}}$ in place of $\HA$.
+In particular the full actual Aeppli and Bott--Chern groups of
+$\mathbf P^r_K$ vanish off the diagonal and are $\mathbf R[h^k]$
+in degree $(k,k)$ for $0\leq k\leq r$.
+\end{theorem}
+
+\begin{proof}
+For an Aeppli class represented by $\alpha$, put
+\[
+ \beta_j=\sum_{i+k=r-j} C_k\wedge I_\pi(\xi^i\alpha).
+\]
+It has degree $(a-j,b-j)$ and is $D$-closed because $\xi,C_k$ are
+separately closed and integration commutes with both differentials.
+Equation \eqref{r16pb:homotopy-formula} proves spanning.
+Integration sends every actual Aeppli boundary to an actual boundary:
+each of its two primitive forms has a form-valued output, and current
+differentiation gives the required identity. Multiplication by any
+separately closed $\xi^k$ also preserves these boundaries.
+
+Suppose a sum in \eqref{r16pb:HA} is zero. Apply $I_\pi$.
+For $j<r$, $I_\pi(\xi^j)=0$ by negative degree; for $j=r$,
+$I_\pi(\xi^r)=1$ by the native all-actual fiber degree formula.
+The actual projection formula therefore gives $[\beta_r]=0$.
+Subtract that boundary summand, multiply the remaining relation by
+$\xi$, and integrate to get $[\beta_{r-1}]=0$. Continue. This proves
+directness without a Chern-polynomial relation among the forms.
+
+For a Bott--Chern class, choose $d'\alpha=d''\alpha=0$.
+The same excision and actual Stokes computation show
+$P\alpha=d'G\alpha$ and $Q\alpha=d''G\alpha$ as actual forms.
+Hence the boundary part of \eqref{r16pb:homotopy-formula} is
+$-DG\alpha$. The $\beta_j$ are separately closed, so this proves
+Bott--Chern spanning. The same descending integration argument proves
+directness, now because integration and multiplication by $\xi^k$
+preserve $D$-boundaries. On $\operatorname{Spec}K$ the only nonzero
+group is degree $(0,0)$, equal to $\mathbf R$, which gives the final
+projective-space assertion. The native top period over finite $L/K$
+viewed as a $K$-space is $[L:K]$, not one.
+\end{proof}
+
+\begin{theorem}[All-degree smooth-center modification descent]
+\label{r16pb:blowup}
+Let $X/K$ be smooth integral projective and let
+$q:Y=\operatorname{Bl}_C X\to X$ be the blowup of a smooth closed
+nowhere dense center. Then actual Bott--Chern pullback
+\[
+ q^*:H_{\mathrm{BC,act}}^{u,v}(X)
+             \longrightarrow H_{\mathrm{BC,act}}^{u,v}(Y)
+ \tag{PB16.7}\label{r16pb:blowup-inj}
+\]
+is injective in every bidegree. It remains injective for finite
+compositions of such blowups.
+\end{theorem}
+
+\begin{proof}
+Cartier or empty centers give an isomorphism. Work first with an
+integral center of codimension $r+1\geq2$, and write
+$i:E=\mathbf P_C(N_{C/X})\hookrightarrow Y$, $j:C\hookrightarrow X$,
+$\pi:E\to C$. Let $u,v\geq1$ and suppose
+$q^*\Omega=D\beta$, with $\Omega$ separately closed. Choose a smooth
+first Chern form $\xi$ of $\mathcal O_E(1)$. Define the actual center
+primitive
+\[
+                  \zeta=I_\pi(\xi^r\wedge i^*\beta).
+ \tag{PB16.8}\label{r16pb:center-primitive}
+\]
+The output exists in bidegree $(u-1,v-1)$. Separate closedness,
+differential compatibility, and the actual fiber degree formula give
+$D\zeta=j^*\Omega$. Thus $\ker q^*=\ker(q^*,j^*)$.
+
+Apply the mixed actual connecting sequence proved in Round 15. Its
+kernel is exactly
+\[
+ \frac{\HA^{u-1,v-1}(E)}
+ {i^*\HA^{u-1,v-1}(Y)+\pi^*\HA^{u-1,v-1}(C)}.
+ \tag{PB16.9}\label{r16pb:exceptional-quotient}
+\]
+The projective-bundle formula spans its numerator by
+$[\xi]^j\pi^*\HA^{u-1-j,v-1-j}(C)$ for $0\leq j\leq r$.
+The $j=0$ summand already belongs to the denominator. For every
+$j\geq1$, the Round 15 localized normal-Chern extension theorem
+extends every displayed $D$-closed representative to a global
+$D$-closed actual form on $Y$. This theorem applies in all degrees;
+it extends a degreewise center lift only after multiplying by a
+curvature supported where its derivative is zero. It requires no
+global closed ambient lift. Thus the quotient is zero.
+
+If $u=0$ or $v=0$, there are no $D$-boundaries. Faithfulness of actual
+pullback on the dense isomorphism locus, followed by the frozen dense
+faithfulness lemma, gives literal injectivity. Disconnected smooth
+centers are disjoint unions of smooth integral components and can be
+blown up in sequence. Finally every descended primitive is ordinary
+actual, so the argument iterates without a PWS-representative condition.
+\end{proof}
+
+\begin{corollary}[All-degree dominant Bott--Chern detection]
+\label{r16pb:dominant}
+Let $X/K$ be smooth integral projective and let $f:V\to X$ be a
+dominant morphism from a normal integral projective variety. In every
+bidegree, actual Bott--Chern pullback along $f$ is injective.
+For $u,v\geq1$, a supplied identity $f^*\Omega=D\beta$ gives a
+global actual primitive $D\Psi=\Omega$ on $X$.
+\end{corollary}
+
+\begin{proof}
+Use the frozen flattened finite-multisection diagram
+\[
+ \begin{array}{ccc}
+ T&\xrightarrow{a}&V\\
+ g\downarrow&&\downarrow f\\
+ X'&\xrightarrow{b}&X,
+ \end{array}
+\]
+where $T$ is normal integral projective, $g$ finite dominant of full
+native degree $e$, and $b$ a finite composition of blowups in smooth
+centers. The original-field full finite actual trace gives
+\[
+                \beta'=e^{-1}\operatorname{Tr}_g(a^*\beta),
+                     \qquad D\beta'=b^*\Omega.
+\]
+Apply Theorem~\ref{r16pb:blowup} along the factors of $b$.
+The zero-edge degrees follow by finite pullback faithfulness and the
+corresponding edge case of that theorem. No proper actual pushforward
+along $f$ or $b$ is defined in this argument. In particular it does not
+assume that $f$ is finite on a prescribed cycle complement.
+\end{proof}
+
+\paragraph{What remains after analytic descent.}
+This theorem removes the analytic descent obstruction for a global
+curvature primitive. It does not prove that the curvature class of a
+geometrically homologically trivial cycle vanishes upstairs. A supplied
+regular-model numerical witness now descends through a generically
+finite alteration in every degree, but existence of such witnesses in
+general remains a separate problem. The sufficient implication
+$\mathfrak o_X^r([Z])=0\Rightarrow G(Z)$ is retained; its general
+converse is not used.

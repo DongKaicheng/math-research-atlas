@@ -1,0 +1,314 @@
+\section{Labelled rays and integration of PWS tensors}
+\label{r15ray:section}
+
+\paragraph{Status.}
+The assertions in this section concern PWS tensors in finite ordinary
+unit-moment presentations.  They do not assert a pushforward for arbitrary
+actual forms or for arbitrary proper analytic maps.  The realization and
+cutoff hypotheses in Proposition~\ref{r15ray:analytic} are part of its
+statement.  Their verification for the Green operators is separate.
+
+We use the additive valuation $v=-\log|\cdot|$.  All radii below are real;
+no membership in the value group is imposed.  For a polyhedral set $P$,
+$\mathrm{PS}^{p,q}(P)$ denotes compatible smooth Lagerberg tensors on a
+finite polyhedral subdivision, including tangential agreement on faces.
+Pullback under a piecewise affine map is used only in this PWS category.
+We never use such a pullback for a delta-form of positive delta codimension.
+
+\begin{definition}[A finite distance family]
+\label{r15ray:distance}
+Let $P\subset\mathbb R^N$ be a finite polyhedral set.  Let
+$\lambda_{ij}=\lambda_{ji}:P\to\mathbb R$, $i\ne j$, be restrictions
+of affine functions, satisfying
+\[
+ \lambda_{ij}\geq\min(\lambda_{ik},\lambda_{kj})
+ \qquad(i,j,k\text{ distinct}).                 \tag{R15.1}
+\]
+Set $\lambda_{ii}=+\infty$.  For each $u\in P$ form the quotient
+\[
+ \mathcal T_u=(\{1,\ldots,m\}\times\mathbb R)/\sim,
+ \qquad (i,t)\sim(j,t)\iff t\leq\lambda_{ij}(u).
+                                                        \tag{R15.2}
+\]
+The parameter $t$ has weight one on each open edge.  The quotient embeds
+as a polyhedral tree in $\mathbb R^m$ by
+\[
+ F_i(u,t)_j=\min(t,\lambda_{ij}(u));\qquad F_i(u,t)_i=t.
+                                                        \tag{R15.3}
+\]
+Write $\mathcal T\subset P\times\mathbb R^m$ for this finite
+polyhedral family and $F_i:P\times\mathbb R\to\mathcal T$ for the
+maps including the $u$-coordinate.
+\end{definition}
+
+\begin{lemma}[The minimum-label decomposition]
+\label{r15ray:labels}
+For $i>1$ set $L_i(u)=\max_{j<i}\lambda_{ij}(u)$ and set
+$L_1=-\infty$.  For a fixed $u$, the sets
+\[
+ F_1(u,\mathbb R),\qquad
+ F_i(u,\{t>L_i(u)\})\quad(2\leq i\leq m)       \tag{R15.4}
+\]
+partition $\mathcal T_u$.  Using closed intervals instead changes only
+finitely many vertices.  This partition retains the weight one on each
+open edge.  The maps $F_i$ and the functions $L_i$ are finite piecewise
+affine functions of the supplied distance coordinates, including at
+equalities among the distances.
+\end{lemma}
+
+\begin{proof}
+Condition (R15.1) proves transitivity in (R15.2).  If $t\leq
+\lambda_{ij}$, the ultrametric condition implies
+$\min(t,\lambda_{ik})=\min(t,\lambda_{jk})$ for every $k$;
+thus the two expressions in (R15.3) agree.  Conversely equality of their
+$i$ and $j$ coordinates implies $t\leq\lambda_{ij}$.  This proves the
+embedding and the equivalence criterion.  Every equivalence class has
+a unique least label $i$.  The representative $(i,t)$ has that label
+exactly when $t>\lambda_{ij}$ for every $j<i$, which is exactly
+$t>L_i(u)$.  This proves (R15.4).  There are only finitely many affine
+comparisons; their common subdivision proves the piecewise affine
+assertion.  No tree ordering has to be chosen afresh as $u$ moves.
+\end{proof}
+
+Here is the tensor version of interval integration needed below.  The
+base may be nonpure-dimensional.  No weight or tropical-space structure
+on that base is required.
+
+\begin{lemma}[Integration on a moving band]
+\label{r15ray:band}
+Let $P\subset\mathbb R^N$ be a finite polyhedral set, let
+$a,b:P\to\mathbb R$ be continuous piecewise affine functions, and let
+$\theta\in\mathrm{PS}^{p,q}(P\times\mathbb R)$, $p,q\geq1$,
+be given on a neighborhood of the bands in question.  Define
+\[
+ \mathcal I_{a,b}\theta
+ =\int_{a(u)}^{b(u)}\operatorname{vc}_t(\theta)(u,t)\,dt
+       \quad\text{if }a(u)<b(u),
+ \qquad \mathcal I_{a,b}\theta=0\quad\text{if }a(u)\geq b(u).
+                                                        \tag{R15.5}
+\]
+Here $\operatorname{vc}_t$ means the coefficient after contraction
+with the two vertical tangent vectors, normalized by
+$\operatorname{vc}_t(d't\wedge d''t\wedge\xi)=\xi$ for a base tensor
+$\xi$.  Then (R15.5) is a PWS tensor of bidegree $(p-1,q-1)$ on $P$.
+It commutes with restriction to every base face and with pullback by
+a piecewise affine base map.  The assertion is local over relatively
+compact subsets of $P$, so finite bounds on the bands suffice.
+\end{lemma}
+
+\begin{proof}
+Refine $P$ so that $a,b$ are affine on its cells and add the cut $a=b$.
+Intersect a finite complex of definition of $\theta$ with each band.
+Projection of its finitely many faces gives a finite subdivision of the
+base.  One-dimensional slicing over each resulting cell gives finitely
+many intervals with affine endpoint functions.  On each slice the
+contracted coefficients are smooth up to its closed faces.  For such a
+coefficient $A$ the identity
+\[
+ \int_c^d A(u,t)\,dt
+  =(d-c)\int_0^1 A(u,c+s(d-c))\,ds             \tag{R15.6}
+\]
+proves smoothness up to the base face, including when $c=d$.  The same
+identity applies to every coefficient of the contracted tensor; the
+finite number of smooth extensions supplies bounded coefficients on
+compact parts.  This is also the affine fiber-integration construction
+of Mihatsch, Section 2.3, equations (2.15)--(2.16).
+
+For completeness, compatibility must be checked on a base face rather
+than inferred from scalar coefficients.  If $\tau$ is a base face, both
+vertical vectors are tangent to $\tau\times\mathbb R$.  Thus tangential
+restriction commutes with their contraction.  Slices whose length tends
+to zero have zero restricted tensor by (R15.6).  For every surviving
+open slice, all limiting source presentations restrict to the same
+tensor on $\tau\times\mathbb R$, by the PWS compatibility of $\theta$.
+Its two vertical contractions therefore coincide.  The finitely many
+slice endpoints have one-dimensional measure zero.  Summing proves
+that all neighboring formulas restrict to (R15.5) on $\tau$.
+The same argument applied to the graph of a piecewise affine base map
+proves the stated base-change property.  This proves a PWS tensor on
+the entire base, not merely smooth coefficients on its open cells.
+No indicator function of the band is extended by zero as a tensor.
+\end{proof}
+
+\begin{proposition}[A finite formula on the distance family]
+\label{r15ray:polyhedral}
+Let $\Theta\in\mathrm{PS}^{p,q}(\mathcal T)$, $p,q\geq1$.
+Suppose locally over a compact part of $P$ that the vertical contractions
+of every $F_i^*\Theta$ vanish outside one interval $[T_-,T_+]$.
+There is an intrinsic PWS tensor
+$\mathcal R\Theta\in\mathrm{PS}^{p-1,q-1}(P)$ given by
+\[
+ \mathcal R\Theta
+ =\sum_{i=1}^m
+     \mathcal I_{\max(T_-,L_i),T_+}(F_i^*\Theta),          \tag{R15.7}
+\]
+where $\max(T_-,L_1)=T_-$.  It is independent of the bounds and of
+the ordering of the labels.  It commutes with restrictions and
+piecewise affine base refinements.  Only PWS pullback and band
+integration occur in this construction.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{r15ray:band} gives a PWS tensor for every summand, proving
+existence on the whole $P$.  Its base-change and restriction statements
+give those for the sum.  Lemma~\ref{r15ray:labels} proves that the
+formula is exactly integration once along each open fiber edge.
+The contraction is invariant under a translated or reversed affine
+fiber coordinate with its weight-one measure.  Consequently a second
+label ordering gives the same edge integrals.  Vertices have
+one-dimensional measure zero; collapsed intervals contribute zero by
+(R15.6).  Bounds outside the vertical support do not change the
+integrals.  These observations also prove compatibility when a
+combinatorial edge disappears or several distance functions coincide.
+\end{proof}
+
+The last assertion does not claim that scalar coefficients of an
+arbitrary PWS tensor are continuous across its faces.  It is the
+contracted tensor, with its tangential restriction, that is integrated.
+For instance, a vertical coefficient may jump across $t=u$ without
+violating either lemma.
+
+\begin{proposition}[Ordinary realization and all smooth mixed tests]
+\label{r15ray:analytic}
+Let $B$ be an ordinary boundaryless analytic open of pure dimension $d$
+over the fixed field $K$.  Let $a_1=0,a_2,\ldots,a_m\in\mathcal O(B)$
+be pairwise distinct analytic sections such that every difference
+$a_i-a_j$ is a unit.  Choose a finite tuple of analytic units $b$ on
+$B$ containing these nonzero differences and all other base units
+used below.  Put
+\[
+ W=(B\times\mathbb A^1_z)\setminus
+                 \bigcup_i\{z=a_i\},\qquad w_i=z-a_i.
+\]
+Let $\theta\in\mathrm{PS}^{p,q}(W)$ have one finite PWS presentation
+in the genuine unit tuple $(b,w_1,\ldots,w_m)$.  Assume its support
+is proper over $B$ and, locally over each relatively compact target
+chart, is contained away from uniform tails at all marked sections
+and at infinity.  Then the current pushforward along $p:W\to B$
+is represented by an ordinary actual PWS tensor of degree
+$(p-1,q-1)$, for $p,q\geq1$.  More precisely the local representative
+is the pullback of (R15.7) through the finite unit tuple $b$, and
+\[
+ \int_B\mathcal R_B(\theta)\wedge\eta
+     =\int_W\theta\wedge p^*\eta                      \tag{R15.8}
+\]
+for every ordinary smooth compactly supported complementary test
+$\eta$, without an exterior-product restriction.  If $p=0$ or $q=0$,
+the corresponding pushforward current is zero by relative degree.
+\end{proposition}
+
+\begin{proof}
+\emph{A genuine ordinary candidate.}
+Work on a relatively compact affinoid neighborhood in $B$ whose
+interior is an ordinary neighborhood of the point under consideration.
+Its $b$-image is a finite polyhedral set $P$.  The distance functions
+$\lambda_{ij}=v(a_i-a_j)$ are coordinate functions on $P$ and satisfy
+(R15.1).  For each actual base point with image $u$, the Gauss
+valuation of the disk centered at $a_i$ with valuation radius $t$
+has $v(w_j)=\min(t,\lambda_{ij})$.  Thus the whole family
+$\mathcal T$ maps into the actual moment image of $W$.
+Restrict the given PWS presentation to this family, obtaining
+$\Theta$.  The tail hypothesis and boundedness of the distances on
+the compact target chart give finite uniform $T_-,T_+$.  Formula
+(R15.7) gives a PWS tensor on $P$.  The finite-polyhedron PWS
+extension lemma extends it to a neighborhood of $P$ in its ambient
+Euclidean space.  Pullback through the actual units $b$ therefore
+gives an ordinary PWS, hence actual, tensor.  This last step is why
+an intrinsic PWS output on an unspecified skeleton would not suffice.
+
+\emph{The skeleton after adding all test moments.}
+Take an ordinary chart for the arbitrary test $\eta$ and append all
+its unit moments to $b$, obtaining $b'$.  Write
+$S=\Sigma(B,b')$ on this chart.  The refined source skeleton for
+$(b',w_1,\ldots,w_m)$ is the marked-tree family over $S$.
+Here is a direct verification, including the projection to $S$.
+At any source point choose $i$ for which $v(w_i)$ is maximal.
+Then for each $j$ the ultrametric rule gives
+$v(w_j)=\min(v(w_i),v(a_i-a_j))$.  At equality a cancellation
+would give $v(w_j)>v(w_i)$, contradicting this choice.  Hence every
+graded reduction of $w_j$ is generated by that of $w_i$ and by
+the graded reductions of the differences, all included in $b'$.
+The source graded transcendence degree is therefore at most the
+base graded transcendence degree plus one.  A source point of
+the $(d+1)$-dimensional skeleton projects to $S$.  Over such a
+base point the graded field generated by $b'$ has transcendence
+degree $d$, so the full graded residue field of the base is algebraic
+over it.  The additional initial form of $w_i$ is therefore
+transcendental over the full graded residue field as well.  In a
+polynomial in $w_i$ this prevents cancellation among all terms of
+minimal valuation.  It gives the Gauss norm formula, and thus says
+precisely that the point is a Gauss point in the coordinate $w_i$.
+Conversely these Gauss points have the required transcendence
+degree.  Their valuations are exactly (R15.3).
+
+On an open edge, $w_i=z-a_i$ is a genuine analytic coordinate
+over the base.  The remaining moment logarithms are affine in
+the base logarithms and $t=v(w_i)$ there.  The coordinate-product
+skeleton lemma of Round 11 identifies this edge with the
+corresponding product band in $S\times\mathbb R$, with the native
+base weight times the standard weight one.  This statement is
+compatible with every appended test tuple.  The argument does
+not use the dimension of the initial coarse image $P$.
+
+\emph{Integration.}
+The paired input $\theta\wedge p^*\eta$ is PWS of top degree
+$(d+1,d+1)$.  Its support lies on the refined skeleton, by
+Mihatsch Corollary 4.9(2).  Integration is the intrinsic skeletal
+integration of Definition 4.10.  The relative vertices lie on finitely
+many graphs $t=\lambda_{ij}$ over $S$ and have dimension at most
+$d$.  They carry no PWS top-degree measure.  On every remaining
+open edge the product weight just computed gives ordinary
+coefficientwise Euclidean Fubini after contraction in both
+vertical directions.  Restricting the resulting top measure
+to a band is legitimate; no PWS zero extension across its
+boundary is made.  The finite number of coefficient pieces,
+their boundedness on compact paired support, and the uniform
+tail bounds prove absolute integrability.  Summing the
+minimum-label bands gives (R15.7), pulled back to every test
+refinement.  Its base-change property gives the paired top
+form $\mathcal R_B(\theta)\wedge\eta$ on $S$.
+Intrinsic skeletal integration proves (R15.8) on this chart.
+Ordinary smooth partitions of unity on the target prove it
+for every compactly supported $\eta$.
+
+Any two constructed ordinary representatives thus have the same
+current on their ordinary overlap.  Mihatsch Proposition 4.11
+makes them equal as actual forms.  They glue in the ordinary
+topology and are independent of all presentations, bounds,
+extensions, and label orderings.  Native weights have been
+retained throughout.  No auxiliary field extension occurs in
+this proposition itself.
+\end{proof}
+
+\paragraph{Explicit low-degree integrands.}
+On one band write the input as
+\[
+ \alpha=A\,d't\wedge d''t
+   +\sum_j B_j\,d'u_j\wedge d''t
+   +\sum_j C_j\,d't\wedge d''u_j+\alpha_{\mathrm{hor}}.
+\]
+For a scalar kernel $g$ and a common scalar cutoff $\chi$, the
+band contributions are
+\[
+ G_{\mathrm{band}}=\int\chi gA\,dt,\qquad
+ P_{\mathrm{band}}
+   =\int\chi\left(A\,d'_u g-g_t\sum_j B_jd'u_j\right)\,dt.
+                                                        \tag{R15.9}
+\]
+The second term in $P$ is essential: scalar edge-length integration
+does not recover it.  Derivatives of $\chi$ are absent because
+$P$ integrates $\chi\,d'g\wedge\alpha$, not
+$d'(\chi g)\wedge\alpha$.  The differential identity for the
+operators must be derived before cutoff insertion, as in Round 14.
+
+\paragraph{Dependencies and limitations.}
+The public inputs are PWS calculus, actual current injectivity,
+support on the presenting skeleton, and native integration in
+Mihatsch, \emph{$\delta$-Forms on Lubin--Tate spaces}, Sections
+2.2--2.4, 3.2--3.3, and 4.1--4.3.  The product weight and arbitrary
+test-refinement assertion are the separately audited Round 11
+coordinate-product skeleton lemma.  The finite-polyhedron extension
+is the Round 14 PWS extension lemma; it is degreewise and is not a
+closed ambient lifting theorem.  The verification of the global
+Green integrands against the hypotheses above, including collision
+charts and the bad base fibers, must be supplied separately.

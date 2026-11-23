@@ -1,0 +1,502 @@
+% Round 15. New incidence argument. Conditional on the separately proved
+% arbitrary-base P1 PWS integration and its algebraic base-change property.
+% No history file is modified by this section.
+\section{The actual Aeppli formula for projective bundles of every rank}
+\label{r15i:section}
+
+The relative diagonal of a higher-dimensional projective space is not
+a divisor.  The construction below replaces it by the divisor given
+by a marked point on a varying projective line.  Its integration maps
+are a tower of projective-bundle projections, for which ordinary PWS
+outputs have been established separately.  The birational incidence
+map is used only to compare integrals of already defined top forms.
+
+\begin{definition}[The natural projective-line input]
+\label{r15i:HPnat}
+Write $(\mathrm{HP}_{\mathrm{nat}})_K$ for ordinary PWS integration
+along $U\times\mathbf P^1\to U$ in every bidegree, with all ordinary
+smooth compact-test pairings, as in Theorem~\ref{r15hp:projection},
+together with its naturality for algebraic morphisms between smooth
+integral bases, as in Proposition~\ref{r15hp:base-change}.
+The assertion is required on ordinary base opens; a projective base
+is not required for that analytic input.  Its extension to projective
+bundles in Theorem~\ref{r15ps:projective-bundle}, with algebraic
+base change \eqref{r15ps:bundle-base-change} and the projection
+formula against smooth target forms, follows from this input and
+the frozen native finite degree formula.  Only that smooth target
+projection formula is needed for the main proof below.
+\end{definition}
+
+The name distinguishes this naturality hypothesis from the smaller
+product-base-change clause sufficient for the rank-two proof.
+No fixed-kernel output hypothesis beyond the PWS integration theorem
+is needed in this incidence argument.  We use smooth metrics on line
+bundles, whose existence and comparison with model metrics were
+proved in Lemma~\ref{r15b:smooth-line-metrics}.  No smooth norm on a
+vector bundle of rank greater than one is assumed.
+
+\begin{lemma}[Relative top Chern normalization]
+\label{r15i:normalization}
+Assume $(\mathrm{HP}_{\mathrm{nat}})_K$.  Let
+$a:P=\mathbf P_B(V)\to B$ be a projective bundle of relative
+dimension $s$, where $B/K$ is smooth integral and projective.
+Let $\zeta$ be the curvature of a smooth metric on
+$\mathcal O_P(1)$.  Then the ordinary PWS output satisfies
+\[
+                         a_*(\zeta^s)=1.
+\tag{I15.1}\label{r15i:relative-mass}
+\]
+For $s=0$ the assertion has the evident identity interpretation.
+\end{lemma}
+
+\begin{proof}
+The frozen projective-bundle degree lemma is
+\texttt{r10c:projective-degree}, formula (R10.1), in
+\texttt{round12/inherited/r10\_projective\_degree.tex}.
+It states, for any PWS metric on $\mathcal O_P(1)$ and every
+compact actual top test $\eta$ on the base, that
+\[
+                 \int_P\zeta^s a^*\eta=\int_B\eta.
+\]
+Its proof uses successive coordinate hyperplane sections and
+Mihatsch Corollary 5.6 against separately closed actual tests;
+it assumes no form-valued projective-bundle pushforward.
+The new PWS output has exactly this pairing for every smooth
+top test.  Current injectivity therefore gives
+\eqref{r15i:relative-mass}.  This also proves the normalization
+over a closed residue field $F$ viewed as a $K$-variety: both
+sides have native mass $[F:K]$.  No scalar extension
+normalization or comparison of different test spaces occurs.
+\end{proof}
+
+Fix now a smooth integral projective $K$-variety $S$, a vector
+bundle $N$ of rank $r+1$, with $r\geq1$, and the convention of
+lines in
+\[
+                     \pi:E=\mathbf P_S(N)\longrightarrow S.
+\]
+Put $m=\dim E$.  Denote by $L_y=\mathcal O_E(-1)$ the
+tautological line and by $Q=\pi^*N/L_y$ the quotient bundle of
+rank $r$.  Define
+\[
+ \lambda:F=\mathbf P_E(Q)\longrightarrow E,
+ \qquad T_F=\mathcal O_F(-1)\subset\lambda^*Q.
+\tag{I15.2}\label{r15i:flag-base}
+\]
+Let $M\subset\lambda^*\pi^*N$ be the inverse image of $T_F$;
+it is the rank-two vector bundle in
+\[
+                0\longrightarrow\lambda^*L_y
+                  \longrightarrow M\longrightarrow T_F
+                  \longrightarrow0.
+\tag{I15.3}\label{r15i:rank-two-subspace}
+\]
+Finally put
+\[
+ \rho:I=\mathbf P_F(M)\longrightarrow F,
+ \qquad p=\lambda\rho:I\longrightarrow E.
+\tag{I15.4}\label{r15i:incidence-tower}
+\]
+The inclusion $M\subset\lambda^*\pi^*N$ defines a second
+map $z:I\to E$.  A point of $F$ specifies a point $y$ of a
+fiber of $E\to S$ and a projective line through $y$; a point
+of $I$ additionally specifies a point $z$ on that line.
+All four spaces $S,E,F,I$ are smooth integral projective over
+the original $K$.
+
+\begin{lemma}[The incidence divisor and its Green scalar]
+\label{r15i:divisor}
+The tautological line map
+$\mathcal O_I(-1)\to\rho^*T_F$ cuts out a smooth section
+$\Sigma\simeq F$ of $\rho$.  Its divisor line and its normal
+line are, respectively,
+\[
+ \mathcal O_I(\Sigma)
+        =z^*\mathcal O_E(1)\otimes\rho^*\mathcal O_F(-1),
+ \qquad
+ N_{\Sigma/I}
+        =\lambda^*\mathcal O_E(1)\otimes\mathcal O_F(-1).
+\tag{I15.5}\label{r15i:section-lines}
+\]
+On $\Sigma$, both $z$ and $p$ are $\lambda$.
+The map
+\[
+        f=(z,p):I\longrightarrow E\times_S E
+\tag{I15.6}\label{r15i:incidence-map}
+\]
+is an isomorphism away from the relative diagonal, whose inverse
+image is $\Sigma$.
+
+Choose smooth line metrics with curvatures
+$\xi=c_1(\mathcal O_E(1))$ and
+$\nu=c_1(\mathcal O_F(1))$.  If $s_\Sigma$ is the displayed
+tautological section, set $g=-\log\|s_\Sigma\|$ for the
+tensor metric in \eqref{r15i:section-lines}.  With pullbacks
+of $\nu$ suppressed, it satisfies
+\[
+                 Dg=z^*\xi-\nu-\delta_\Sigma
+\tag{I15.7}\label{r15i:scalar-Green}
+\]
+against every compact actual test of the required degree.
+The scalar $g$ and its first derivatives are ordinary PWS off
+$\Sigma$.
+\end{lemma}
+
+\begin{proof}
+The kernel of $M\to T_F$ is the line $\lambda^*L_y$.
+Consequently the zero locus of the induced map from the
+tautological line of $\mathbf P_F(M)$ is exactly its section
+$\mathbf P_F(\lambda^*L_y)$, with multiplicity one.
+Since $\mathcal O_I(1)=z^*\mathcal O_E(1)$, its divisor
+line is the first line in \eqref{r15i:section-lines}.
+Restricting to the section gives the second; it is also
+$\operatorname{Hom}(\lambda^*L_y,T_F)$, the usual relative
+tangent line at that section.  This fixes in particular the
+minus sign on $\nu$.
+
+For distinct lines $L_z,L_y\subset N_s$, their span is the
+unique two-dimensional subspace containing both.  The image of
+$L_z$ in $N_s/L_y$ is nonzero and gives the corresponding line
+of $Q_y$.  This construction is algebraic on the complement
+of the diagonal and is inverse to \eqref{r15i:incidence-map}.
+The section is precisely its inverse image of the diagonal.
+In particular the map has native generic degree one.  The
+argument uses only the isomorphism on this open; no general
+actual pushforward along $f$ is introduced.
+
+The metric is smooth on its line bundle.  Its curvature is
+$z^*\xi-\rho^*\nu$.  The ordinary actual Poincare--Lelong
+formula, Mihatsch Corollary 5.6, proves
+\eqref{r15i:scalar-Green} with all actual compact tests.
+Locally off the section, $g$ is a smooth metric weight plus
+the valuation of an analytic unit, so it and its first
+derivatives are PWS there.
+\end{proof}
+
+Define the smooth separately closed form of degree $(r-1,r-1)$
+on $I$
+\[
+             W=\sum_{k=0}^{r-1}(z^*\xi)^{r-1-k}\nu^k.
+\tag{I15.8}\label{r15i:W}
+\]
+It satisfies the literal identity of smooth forms
+\[
+                      (z^*\xi-\nu)W=(z^*\xi)^r-\nu^r.
+\tag{I15.9}\label{r15i:telescoping}
+\]
+
+\begin{proposition}[The three actual incidence outputs]
+\label{r15i:outputs}
+Assume $(\mathrm{HP}_{\mathrm{nat}})_K$.
+For every $\alpha\in\operatorname{PS}^{1,1}(E)$, put
+$\beta_\alpha=W\wedge z^*\alpha\in
+\operatorname{PS}^{r,r}(I)$.  The expressions
+\[
+ \mathcal G\alpha=p_*[g\beta_\alpha],\qquad
+ \mathcal P\alpha=p_*[d'g\wedge\beta_\alpha],\qquad
+ \mathcal Q\alpha=p_*[d''g\wedge\beta_\alpha]
+\tag{I15.10}\label{r15i:three-outputs}
+\]
+have unique ordinary PWS representatives of degrees
+$(0,0),(1,0),(0,1)$, with their prescribed pairings against
+every ordinary smooth compact complementary test on $E$.
+Here the displayed singular pairings are defined by the
+following ordinary excision, not by an unproved product of
+a current with a PWS form.
+\end{proposition}
+
+\begin{proof}
+The two actual forms $z^*\alpha$ and $p^*\alpha$ restrict
+equally to the algebraic closed immersion $\Sigma\hookrightarrow I$.
+The frozen immersion-germ isomorphism, Round 14
+\texttt{r14l:germ-iso}, makes them equal on an ordinary open
+neighborhood $V$ of $\Sigma$.  Compactness permits a global
+smooth cutoff $\chi$ that is zero near $\Sigma$ and one
+outside $V$, with $\operatorname{Supp}(1-\chi)\subset V$.
+Smooth ordinary partitions of unity supply this cutoff.
+
+If $\eta$ is a complementary smooth test for respectively
+the three outputs, the bidegrees of $\alpha\wedge\eta$ on
+the $m$-dimensional target are respectively
+$(m+1,m+1),(m,m+1),(m+1,m)$.
+Thus on $V$
+\[
+             \beta_\alpha\wedge p^*\eta
+                 =W\wedge p^*(\alpha\wedge\eta)=0.
+\tag{I15.11}\label{r15i:cutoff-zero}
+\]
+This is an equality of actual forms before integration.
+It continues to kill the paired expression after multiplication
+by $g$, $d'g$, or $d''g$ off $\Sigma$.
+Consequently all three prescribed pairings are unchanged by
+inserting $\chi$ and are independent of its choice.
+
+The forms $\chi g\beta_\alpha$,
+$\chi d'g\wedge\beta_\alpha$ and
+$\chi d''g\wedge\beta_\alpha$ extend by zero across a
+whole ordinary neighborhood of $\Sigma$.  They are global
+PWS forms, of degrees $(r,r),(r+1,r),(r,r+1)$.
+Apply Theorem~\ref{r15ps:projective-bundle} successively to
+$\rho$ (relative dimension one) and to $\lambda$ (relative
+dimension $r-1$).  This constructs the claimed PWS outputs.
+For a final smooth test on $E$, its pullback through each
+proper stage remains smooth and compactly supported.  The
+two prescribed pairing identities therefore compose without
+ever using a PWS tensor as a test in a nonfinite pushforward.
+The resulting outputs have exactly the uncut pairings above.
+Current injectivity proves their uniqueness, cutoff independence,
+and linearity in $\alpha$.
+\end{proof}
+
+\begin{theorem}[All-rank projective-bundle Aeppli formula]
+\label{r15i:aeppli}
+Assume $(\mathrm{HP}_{\mathrm{nat}})_K$, the frozen global
+first-strip PWS replacement, proper scalar constancy, and the
+frozen constant-fiber Aeppli pullback injection.  For every
+smooth integral projective $S/K$ and every vector bundle $N$
+of rank $r+1\geq2$,
+\[
+ H_{\mathrm A,\mathrm{act}}^{1,1}(\mathbf P_S(N))
+      =\pi^*H_{\mathrm A,\mathrm{act}}^{1,1}(S)
+                                      \oplus\mathbf R[\xi].
+\tag{I15.12}\label{r15i:aeppli-formula}
+\]
+The class $[\xi]$ can equivalently be taken to be the actual
+class of a model first Chern form for $\mathcal O_E(1)$.
+For rank one the projective bundle is the base itself, with
+the evident formula without an added summand.
+\end{theorem}
+
+\begin{proof}
+Replace an arbitrary actual Aeppli class by a $D$-closed PWS
+representative $\alpha\in\operatorname{PS}^{1,1}(E)$,
+using Round 14's global first-strip replacement theorem.
+The following outputs are defined by projective-bundle PWS
+integration:
+\[
+ c_\alpha=\rho_*(z^*\alpha),\qquad
+ J\alpha=\pi_*(\xi^r\wedge\alpha),\qquad
+ \sigma=\lambda_*(\nu^r).
+\tag{I15.13}\label{r15i:auxiliary-outputs}
+\]
+Their degrees are respectively $(0,0)$ on $F$ and $(1,1)$
+on $S$ and $E$.  The first is $D$-closed and is a real
+constant by proper scalar constancy on $F$.  The other two
+are $D$-closed actual forms.  These facts follow by current
+differentiation and current injectivity from $D\alpha=0$
+and the separate closedness of the smooth Chern forms.
+They do not feed derivatives of positive delta codimension
+into the PWS pushforward theorem.
+
+\emph{The all-smooth-test homotopy.}
+Let $\eta\in\mathcal A_c^{m-1,m-1}(E)$ be arbitrary and
+put $\Phi=\beta_\alpha\wedge p^*\eta$.
+Since $\dim I=m+r$, this is an actual test of bidegree
+$(m+r-1,m+r-1)$.  Moreover $D\beta_\alpha=0$.
+The scalar actual Green identity \eqref{r15i:scalar-Green}
+and \eqref{r15i:telescoping} give
+\[
+ \int_{I\setminus\Sigma}gD\Phi
+  =\int_I\bigl((z^*\xi)^r-\nu^r\bigr)
+                           \wedge z^*\alpha\wedge p^*\eta
+        -\int_\Sigma W|_\Sigma\wedge\lambda^*(\alpha\eta).
+\tag{I15.14}\label{r15i:scalar-pairing}
+\]
+The last integral is $\int_E\alpha\eta$.
+Indeed
+$W|_\Sigma=\sum_{k=0}^{r-1}(\lambda^*\xi)^{r-1-k}\nu^k$.
+For $k<r-1$, multiplication by $\lambda^*(\alpha\eta)$
+gives zero already as a form: its base bidegree exceeds $m$.
+For $k=r-1$, apply the frozen projective-bundle degree
+formula (R10.1), recalled in
+Lemma~\ref{r15i:normalization}, to the compact actual top
+test $\alpha\eta$ on $E$.  That formula explicitly permits
+this nonsmooth test and gives
+\[
+        \int_F\nu^{r-1}\lambda^*(\alpha\eta)
+                                          =\int_E\alpha\eta.
+\]
+Alternatively the same equality follows from the newly
+proved PWS projection formula
+\eqref{r15ps:PWS-projection} and compact PWS test comparison
+of Corollary~\ref{r15ps:PWS-tests}, since
+$\lambda_*(\nu^{r-1})=1$.  In neither route is a PWS test
+inserted into a theorem that only permits smooth tests.
+
+For explicit control of the boundary terms, on a neighborhood
+of $\Sigma$ the forms
+$\beta_\alpha p^*d'\eta$ and
+$\beta_\alpha p^*d''\eta$ vanish by the same target-degree
+calculation as \eqref{r15i:cutoff-zero}.
+Their products with $g$ therefore extend by zero as global
+actual forms.  Actual Stokes applies to them and gives
+\[
+ \begin{split}
+ \big\langle D\mathcal G\alpha+d''\mathcal P\alpha
+                         -d'\mathcal Q\alpha,\eta\big\rangle
+ &=\int_I\bigl(g\beta_\alpha D\eta_p
+       +d'g\,\beta_\alpha d''\eta_p
+       -d''g\,\beta_\alpha d'\eta_p\bigr)\\
+ &=-\int_{I\setminus\Sigma}gD(\beta_\alpha\eta_p),
+ \qquad \eta_p=p^*\eta.
+ \end{split}
+\tag{I15.15}\label{r15i:boundary-sign}
+\]
+To check the signs independently of $r$, the total degree of
+$\beta_\alpha$ is $2r$, hence
+\[
+ D(\beta_\alpha\eta_p)
+   =-d''\beta_\alpha d'\eta_p
+        +d'\beta_\alpha d''\eta_p+\beta_\alpha D\eta_p.
+\]
+Stokes for $g\beta_\alpha d''\eta_p$ and
+$g\beta_\alpha d'\eta_p$ gives precisely
+\eqref{r15i:boundary-sign}.  No differentiated cutoff term
+is silently discarded.
+
+\emph{Evaluation of the two curvature terms.}
+For the first, the top actual PWS form
+\[
+       \Theta=\operatorname{pr}_z^*(\xi^r\alpha)
+                              \wedge\operatorname{pr}_y^*\eta
+\]
+on $E\times_S E$ has zero restriction to the diagonal by
+dimension.  The immersion-germ isomorphism makes it zero on
+an ordinary neighborhood of that diagonal.  Its compact
+support and that of $f^*\Theta$ are therefore on the
+isomorphism locus of \eqref{r15i:incidence-map}.  Ordinary
+change of variables on that locus gives
+\[
+ \int_I(z^*\xi)^r z^*\alpha\,p^*\eta
+       =\int_{E\times_S E}\Theta
+       =\int_E\pi^*(J\alpha)\wedge\eta.
+\tag{I15.16}\label{r15i:first-term}
+\]
+The second equality is the projective-bundle base-change
+identity for $\pi:E\to S$ pulled back along the algebraic
+map $\pi:E\to S$, with its all-smooth-test pairing.
+There is no actual pushforward along $f$ or $z$ in this step.
+
+For the second curvature term use the tower $p=\lambda\rho$.
+The target form $\nu^r\lambda^*\eta$ is smooth, so it is
+an allowed test for the $\rho$-integration.  Thus
+\[
+ \int_I\nu^r z^*\alpha\,p^*\eta
+       =\int_F c_\alpha\nu^r\lambda^*\eta
+       =\int_E c_\alpha\sigma\wedge\eta.
+\tag{I15.17}\label{r15i:second-term}
+\]
+The last equality uses only a smooth final test.  This records
+why smooth metrics, rather than arbitrary model curvatures,
+were chosen inside $W$.
+
+Combining \eqref{r15i:scalar-pairing}--\eqref{r15i:second-term}
+for every ordinary smooth compact test, and then using
+actual-current injectivity, proves the actual identity
+\[
+ \alpha=\pi^*(J\alpha)-c_\alpha\sigma
+          +D\mathcal G\alpha+d''\mathcal P\alpha
+                                      -d'\mathcal Q\alpha.
+\tag{I15.18}\label{r15i:homotopy}
+\]
+
+\emph{Eliminating the auxiliary class.}
+Apply the same identity to $\alpha=\xi$.
+The restriction of $z^*\mathcal O_E(1)$ to every
+$\rho$-fiber is its hyperplane line.  Lemma~\ref{r15i:normalization}
+gives $c_\xi=1$.
+Subtract $c_\alpha$ times that identity from
+\eqref{r15i:homotopy}.  It gives
+\[
+ \begin{split}
+ \alpha-c_\alpha\xi
+   &=\pi^*(J\alpha-c_\alpha J\xi)
+       +D(\mathcal G\alpha-c_\alpha\mathcal G\xi)\\
+   &\quad+d''(\mathcal P\alpha-c_\alpha\mathcal P\xi)
+       -d'(\mathcal Q\alpha-c_\alpha\mathcal Q\xi).
+ \end{split}
+\tag{I15.19}\label{r15i:normalized-homotopy}
+\]
+The base form in parentheses is $D$-closed; the other three
+terms are actual Aeppli boundaries.  This proves spanning in
+\eqref{r15i:aeppli-formula} without identifying $\sigma$
+with a Segre form or invoking any metric transgression for
+a vector bundle.
+
+For directness, restrict a relation
+$\pi^*[\gamma]+a[\xi]=0$ to a projective line in a fiber
+over a closed point of $S$ with residue field $F$.
+The first term restricts to zero, and the second has integral
+$a[F:K]$.  Actual Stokes kills the restricted Aeppli boundary,
+so $a=0$.  Finally the frozen constant-fiber theorem,
+Round 14 \texttt{r14j:equidimensional}, makes
+$\pi^*:H_{\mathrm A}^{1,1}(S)\to H_{\mathrm A}^{1,1}(E)$
+injective, proving $[\gamma]=0$.  All its hypotheses hold:
+the map is projective dominant between normal integral
+varieties with constant fiber dimension $r$, and the
+Aeppli bidegree has minimum one.  The comparison with a
+model Chern representative follows from the global PWS
+metric-ratio scalar.
+\end{proof}
+
+\begin{corollary}[Degree-two Bott--Chern descent through every smooth center]
+\label{r15i:all-smooth-centers}
+Assume $(\mathrm{HP}_{\mathrm{nat}})_K$ and the frozen
+foundations used above.  Let $X/K$ be smooth integral
+projective, and let $C\hookrightarrow X$ be a smooth closed
+nowhere dense center.  If $q:Y=\operatorname{Bl}_C X\to X$,
+then
+\[
+          q^*:H_{\mathrm{BC,act}}^{2,2}(X)
+                    \longrightarrow H_{\mathrm{BC,act}}^{2,2}(Y)
+             \quad\hbox{is injective}.
+\tag{I15.20}\label{r15i:all-center-BC22}
+\]
+There is no restriction on the dimension of $X$ or of $C$.
+\end{corollary}
+
+\begin{proof}
+A codimension-one smooth center is Cartier and its blowup
+is an isomorphism.  For an integral center of codimension
+$c\geq2$, let $i:E_C\hookrightarrow Y$ be the exceptional
+divisor and $\pi_C:E_C=\mathbf P_C(N_{C/X})\to C$.
+The new normalized boundary quotient, proved separately in
+Proposition~\ref{r15:degree-two-all-centers}, identifies the kernel with
+\[
+ \frac{H_{\mathrm A,\mathrm{act}}^{1,1}(E_C)}
+ {i^*H_{\mathrm A,\mathrm{act}}^{1,1}(Y)
+                  +\pi_C^*H_{\mathrm A,\mathrm{act}}^{1,1}(C)}.
+\tag{I15.21}\label{r15i:exceptional-quotient}
+\]
+Theorem~\ref{r15i:aeppli} says that its numerator is the
+sum of the base summand and the hyperplane class.
+The hyperplane line is
+$\mathcal O_Y(-E_C)|_{E_C}=\mathcal O_{E_C}(1)$.
+Its actual Chern class therefore belongs to the first
+denominator summand, and the quotient is zero.
+If the smooth center has several connected components,
+they are disjoint smooth integral projective centers.
+Blowing them up successively gives the same blowup and
+applies the integral-center conclusion component by
+component.  This also covers different codimensions on
+different components.  No assertion about finite behavior
+of a general alteration on a prescribed cycle complement
+enters this proof.
+\end{proof}
+
+\paragraph{Scope of this new consequence.}
+The corollary controls degree-two Bott--Chern primitive descent
+through all smooth-center modifications. This proof uses the
+PWS projective-bundle output theorem. The later actual
+projective-line theorem, Theorem~\ref{r15a2:projection},
+enlarges the input class through smaller input degree two.
+The full projective-space $(2,2)$ calculation consequently
+adds point-center Bott--Chern $(3,3)$ descent, but higher
+exceptional groups over positive-dimensional centers are
+not controlled by the present argument.
+Passing from the displayed primitive descent to new strong
+Green theorems still requires a separately verified upstairs
+curvature-obstruction vanishing theorem in the relevant cycle
+degree.  In particular this section does not assert the
+general strong Green conjecture or a general unconditional
+Beilinson--Bloch height.

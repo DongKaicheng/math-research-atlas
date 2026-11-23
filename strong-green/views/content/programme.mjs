@@ -2,7 +2,7 @@
 // Exact statements and proofs are in the linked programme and companion papers.
 export const programmeOverview = {
   title: 'From Green forms to height pairings',
-  summary: 'The Chow obstruction and prescribed curved Green pairs are now established in the full scope of Hypothesis 2.2. Vanishing of this obstruction on all homologically trivial classes remains the general local problem on this route. The principal-push theorem (PH16; Theorem 7.5) proves that Strong G at every finite completion gives the full Beilinson–Bloch height pairing within the stated analytic foundations. Classical comparisons, positivity and finiteness have their own hypotheses and research questions.',
+  summary: 'The Chow obstruction, prescribed curved Green pairs and the analytic foundations of the height construction have internal proofs in their stated scope. Vanishing of the obstruction on all homologically trivial classes remains the general local problem on this route. The principal-push theorem (PH16; Theorem 7.5) gives the full Beilinson–Bloch height pairing from Strong G at every finite completion in both complementary degrees. General admissible liftings, positivity and finiteness remain separate research questions.',
   target: String.raw`For a smooth, projective and geometrically integral variety \(X/F\) of dimension \(n\) over a number field, construct a canonical pairing
 \[
 h_X:\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\times\operatorname{CH}^{n+1-r}(X)_{\mathbb Q,\mathrm{hom}}\longrightarrow\mathbb R.
@@ -17,7 +17,7 @@ export const programmeImplications = [
     assumptions: 'A smooth integral projective variety over the original finite valued extension of ℚₚ, and a prescribed rational cycle in any positive codimension up to its dimension.',
     conclusion: 'A Chow-invariant actual Bott–Chern obstruction, compatible with genuine pullbacks, and an actual curved Green pair on the exact support complement against all compact actual tests.',
     href: '/papers/chow-obstruction-green-pairs#h22:main',
-    label: 'Established construction: Hypothesis 2.2',
+    label: 'Complete construction proof: Theorem 1.1',
   },
   {
     id: 'curvature-correction',
@@ -35,7 +35,7 @@ export const programmeImplications = [
   },
   {
     id: 'direct-assembly',
-    assumptions: 'Strong G at every finite completion for every specified geometrically homologically trivial rational cycle in both complementary codimensions, within the standing analytic foundations of the global height paper.',
+    assumptions: 'Strong G at every finite completion for every specified geometrically homologically trivial rational cycle in both complementary codimensions. The analytic operations used in the argument are the proved propositions in §2 of the global height paper.',
     conclusion: 'A canonical real pairing on both full Chow groups, with Green-choice independence, symmetry, finite summation, rational-equivalence descent and the stated base-extension and Bloch-biextension properties.',
     href: '/papers/global-height-pairing#r16ph:general-height',
     label: 'Proved implication: Theorem 7.5 (PH16)',
@@ -45,12 +45,12 @@ export const programmeImplications = [
 export const programmeSteps = [
   {
     id: 'analytic', number: '1', title: 'Chow obstructions and curved Green pairs',
-    goal: 'Established: the full construction in Hypothesis 2.2 for smooth integral projective varieties over the original non-Archimedean field, including varieties that are not geometrically integral.',
+    goal: 'Established: programme Theorem 2.2, with its complete proof in construction Theorem 1.1, applies to smooth integral projective varieties over the original non-Archimedean field, including varieties that are not geometrically integral.',
     formula: String.raw`\(D[G_Z]+\delta_Z=[\Omega_Z]\), where \(D=d'd''\) and \(G_Z\in\mathcal B^{r-1,r-1}(X^{\mathrm{an}}\setminus|Z|^{\mathrm{an}})\).`,
     methodLabel: 'Proved construction',
     method: 'Strict actual model Chern characters and the restricted scalar–curvature finite trace give the supported-complex identity. Global primitives for generic Chow-zero characters make the obstruction independent of model and presentation and compatible with genuine pullbacks. Summing the component constructions retains the prescribed cycle coefficients and exact complement, against all compact actual tests.',
     output: 'The pair exists for every rational cycle. Zero obstruction then supplies a global actual primitive; subtracting it gives Strong G on the same support complement.',
-    depends: 'The published actual calculus and the analytic and algebraic arguments proved in the new construction paper. The restricted trace is used on its specified scalar–curvature module; broader trace, intersection and reciprocity statements remain separate.',
+    depends: 'The actual calculus and the analytic and algebraic arguments proved in the construction paper. Its restricted trace acts on the specified scalar–curvature module. Full finite trace, projective-bundle integration and the supported height identities have separate proofs in the height foundations.',
     records: ['BB-CHOW-GREEN-PAIRS', 'BB-ACTUAL-OBSTRUCTION', 'BB-SUPPORTED-GREEN-PAIR', 'BB-RESTRICTED-TRACE', 'BB-GREEN-CORRECTION'],
     paper: '/papers/chow-obstruction-green-pairs#h22:main',
     linkLabel: 'The theorem and complete proof',
@@ -61,29 +61,29 @@ export const programmeSteps = [
     formula: String.raw`\(\mathfrak o^r_{X,K}\bigl(\operatorname{CH}^r(X)_{\mathbb Q,\mathrm{hom}}\bigr)=0\).`,
     method: 'First apply the algebraic-equivalence and Chow-correspondence arguments on their stated domains. For the remaining classes, seek a comparison theorem showing that vanishing of the cohomological cycle class forces every actual obstruction period to vanish.',
     output: 'Together with the established construction in Step 1, this gives Strong G. The tropical approach is an alternative method for constructing the required global actual primitives, with its own descent and integration comparisons.',
-    depends: 'The established Chow obstruction and curvature correction in Step 1. The geometric routes retain their separate rigidity, numerical and correspondence hypotheses.',
+    depends: 'The established Chow obstruction and curvature correction in Step 1, the proved rational-fibre rigidity, numerical descent and Chow-kernel covariance, and the exact geometric or model conditions in each application.',
     records: ['BB-ALG-TRANSFER', 'BB-MOTIVIC-TRANSFER', 'BB-RESIDUAL-PERIODS', 'BB-TROPICAL-INTERFACE'],
     paper: '/papers/strong-g-programme#sec:programme-source',
   },
   {
     id: 'global', number: '3', title: 'The proved height construction from Strong G',
-    goal: 'Apply Theorem 7.5 (PH16): within the standing analytic foundations, Strong G gives a local sum independent of Green choices that descends through rational equivalence in both variables.',
+    goal: 'Apply Theorem 7.5 (PH16): Strong G gives a local sum independent of Green choices that descends through rational equivalence in both variables, using the proved height foundations.',
     formula: String.raw`\(h_X(Z,W)=\sum_v \dfrac{[F_v:\mathbb Q_v]}{[F:\mathbb Q]}\,\lambda_v(Z_v,W_v)\).`,
     methodLabel: 'Proved construction',
     method: 'The principal-push proof computes the principal-cycle norm from −log|u| on a normal carrier. Reciprocity transfers the calculation to arbitrary supplied strong Green forms. Good-place vanishing makes the sum finite, and the product formula gives Chow descent. The alternative obstruction-kernel route reaches full domain by vanishing on localized global classes in both degrees.',
     output: 'A canonical real symmetric pairing on both full geometrically homologically trivial rational Chow groups, with the prescribed normalization and Bloch-biextension interpretation. Positivity and finiteness remain separate questions.',
-    depends: 'Strong G at every finite completion in both complementary codimensions, and the stated analytic foundations, whose review status is retained. The direct theorem does not require vanishing of a chosen obstruction map.',
+    depends: 'Strong G at every finite completion in both complementary codimensions, together with the analytic propositions proved in §2. The direct theorem does not require vanishing of a chosen obstruction map. The separate fixed finite-test description of the all-local-kernel domain still requires its identification hypothesis.',
     records: ['BB-H16-KERNEL-DOMAIN', 'BB-GLOBAL'],
     paper: '/papers/global-height-pairing#r16ph:general-height',
     linkLabel: 'Theorem 7.5 and its complete proof',
   },
   {
     id: 'comparison', number: '4', title: 'Correspondence adjunction and classical heights',
-    goal: 'Prove that the constructed pairing has the required correspondence identity and agrees with the classical height on common domains.',
+    goal: 'Apply the proved correspondence identity on the all-local-kernel domain and the comparison with classical heights on supplied admissible arithmetic models.',
     formula: String.raw`\(h_X(\Gamma_*z,w)=h_Y(z,{}^t\Gamma_*w)\).`,
     method: 'Apply the proper-intersection projection formula to correspondences. Compare the finite-place terms on supplied admissible arithmetic models, and match the archimedean determinant and Poincaré normalizations. At bad reduction, construct the required vertical corrections.',
     output: 'Identification with the classical Beilinson–Bloch pairing on the common domain, together with the normalization needed for subsequent height identities.',
-    depends: 'Step 3 and the additional projection-formula and admissible-model hypotheses used by each comparison.',
+    depends: 'The constructed kernel-domain pairing, its proved proper-intersection and correspondence identities, and supplied admissible model data. Existence of such lifts for all classes, and the general arithmetic-model projection formula retained in the Zhang route, remain separate requirements.',
     records: ['R2-M1', 'R2-M2', 'R2-M3', 'OPEN-BAD-REDUCTION-METRIC'],
     paper: '/papers/strong-g-programme#sec:programme-comparison',
   },

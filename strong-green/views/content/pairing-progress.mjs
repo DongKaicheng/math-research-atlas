@@ -1,14 +1,15 @@
 // A reading-order inventory of pairing domains, not a new theorem-status register.
-// The source manuscript is conditional on its companion analytic results.
+// Companion analytic constructions are proved on their exact domains; additional
+// geometric certificates, model inputs and finite-test comparisons remain explicit.
 // Each link points to a complete geometric deduction or to its explicitly named input.
 const paper = (anchor, label) => ({ href: `/papers/pairing-constructions#${anchor}`, label });
 const local = (anchor, label) => ({ href: `/papers/green-constructions#${anchor}`, label });
 
 export const pairingProgressIntroduction = {
   title: 'Results on Beilinson–Bloch height pairings',
-  summary: 'Hypothesis 2.2 is established: the Chow obstruction and prescribed actual curved Green pairs exist in every positive codimension up to the dimension over the original valued field. General vanishing on homologically trivial cycles remains open. The principal-push theorem (PH16; Theorem 7.5) constructs the full height from Strong G at every finite completion in both complementary codimensions, within the stated analytic foundations. The obstruction-kernel route and geometric cases below retain their additional hypotheses.',
+  summary: 'The Chow obstruction, prescribed actual curved Green pairs, full finite actual trace, rational-fibre rigidity, finite numerical descent and native Chow-kernel covariance are established in their stated scopes. H16 constructs the normalized height on the intersection of all local obstruction kernels, with HA16 adjunction and MM16 comparison on their stated domains. PH16 constructs the full height from Strong G at every finite completion in both complementary codimensions. General homological obstruction vanishing, a chosen finite-test identification, and the additional model conditions listed below remain separate requirements.',
   convention: String.raw`Let \(X/F\) be a smooth projective geometrically integral variety of dimension \(n\) over a number field. Write \(V^r(X)=\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{hom}}\) for geometrically homologically trivial rational Chow classes, and set \[\mathcal H^r(X)=\{z\in V^r(X):\mathfrak o^r_{X_{F_v}}(z_{F_v})=0\text{ for every finite place }v\},\] where \(\mathfrak o^r_{X_{F_v}}\) is the local Bott–Chern obstruction and \(r+s=n+1\). The kernel-domain route gives \(h_X:\mathcal H^r(X)\times\mathcal H^s(X)\to\mathbf R\); it has full domain when local vanishing holds in both degrees. PH16 directly gives \(h_X:V^r(X)\times V^s(X)\to\mathbf R\) from its Strong G hypothesis, without requiring that obstruction-vanishing criterion.`,
-  evidence: 'The Chow-invariant actual obstruction, its genuine pullbacks and the prescribed curved Green pair are established by the new construction theorem, after internal source-bound AI cross-review. The theorem includes smooth integral varieties that are not geometrically integral, every positive codimension up to the dimension, the exact support complement and all compact actual tests. Geometric deductions and global heights still use their stated rigidity, numerical, broader trace, Chow-correspondence, intersection and reciprocity hypotheses. Each linked paper specifies the additional inputs.',
+  evidence: 'The linked papers give proofs and precise source locators for the actual obstruction, full finite trace, rational-fibre rigidity, numerical descent, Chow covariance, and the all-completion height construction. They retain normal or smooth carriers as appropriate, the full native degree, the original absolute value, the prescribed support complement and all compact actual tests. A theorem for a supplied Chow certificate or model witness retains that premise. The product-model inverse, finite-period identification and general admissible-lift problem are not settled by these analytic constructions.',
   paper: '/papers/pairing-constructions',
 };
 
@@ -21,11 +22,11 @@ export const pairingGroups = [
       {
         id: 'kernel-domain',
         title: 'A height pairing when the local obstruction vanishes',
-        result: 'Under the Green-form and reciprocity hypotheses, the sum of local Green integrals is independent of representatives and Green forms. It defines a rational-bilinear pairing, symmetric in the complementary factors and invariant under finite extension of the number field.',
+        result: 'On the intersection of all local obstruction kernels, the sum of local Green integrals is independent of representatives and Green forms. It defines a rational-bilinear pairing, symmetric in the complementary factors and invariant under finite extension of the number field.',
         domain: String.raw`\[h_X:\mathcal H^r(X)\times\mathcal H^{n+1-r}(X)\longrightarrow\mathbf R,\qquad 1\le r\le n.\]`,
-        status: 'Conditional construction',
+        status: 'Theorem on all local obstruction kernels',
         established: 'At each finite place, subtract a global primitive from a Green form to remove its curvature. The residue identity gives the local transformation law under rational equivalence. Almost all local terms vanish, and the number-field product formula makes their weighted sum descend to Chow classes. The archimedean terms use the classical complex Green construction.',
-        proof: paper('sub:height-input', 'Statement and analytic hypotheses'),
+        proof: paper('hyp:height-input', 'Theorem 2.4 and its construction proof'),
         additionalProofs: [{ href: '/papers/global-height-pairing#r16h:global-height', label: 'Proof of the global pairing and reciprocity' }],
         dependencies: ['The supported Green-form construction and the local point-residue identity', 'Stokes, finite trace, good-reduction vanishing and the principal transformation law', 'Correspondence adjunction and arithmetic-model comparison for the additional formulas below'],
         gap: 'For a general variety, the unresolved extension is to prove that every localized global homologically trivial class has zero obstruction in each complementary degree. The finite-period description of this kernel additionally requires the specified comparison theorem.',
@@ -36,7 +37,7 @@ export const pairingGroups = [
         title: 'Height pairings on algebraically trivial cycles',
         result: 'In every dimension and codimension, the algebraically trivial subgroup is contained in the kernel of every local obstruction. Thus either algebraically trivial factor can be paired with the complementary group on which the general construction is defined.',
         domain: String.raw`\[\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{alg}}\times\mathcal H^{n+1-r}(X)\longrightarrow\mathbf R.\] In particular both factors may be algebraically trivial. Algebraic equivalence is taken over an algebraic closure.`,
-        status: 'Conditional consequence',
+        status: 'Theorem on the stated subgroups',
         established: 'Express an algebraically trivial cycle through a family parametrized by a smooth projective curve. The Poincaré bundle makes the obstruction an additive, locally constant map from a compact p-adic abelian group to a real vector space. Its image is finite and torsion-free, hence zero. Alternatively, transfer the vanishing for degree-zero divisors on the parameter curve by its Chow correspondence. Descent along the finite field extension returns the result to the original field.',
         proof: paper('sub:algebraic-triviality', 'Proof for algebraically trivial cycles'),
         additionalProofs: [local('sec:conditional-algebraic-proof', 'Alternative proof using compact parameter spaces')],
@@ -49,13 +50,13 @@ export const pairingGroups = [
         title: 'Divisors, zero-cycles and one-cycles',
         result: 'The local obstruction vanishes on homologically trivial divisors, zero-cycles and one-cycles. Consequently the divisor–zero-cycle pairing has both full factors on every variety; in dimension three this also gives the complete middle pairing.',
         domain: String.raw`\[h_X:V^1(X)\times V^n(X)\to\mathbf R.\] For \(n\ge2\), one also obtains \(V^{n-1}(X)\times\mathcal H^2(X)\to\mathbf R\).`,
-        status: 'Conditional consequences',
+        status: 'Theorems in the endpoint degrees',
         established: 'For one-cycles, pull the class to a strictly semistable alteration, correct its extension on the regular model to have zero vertical intersection numbers, and descend the obstruction vanishing. Together with the divisor and zero-cycle results, this covers every codimension in dimensions at most three.',
         proof: paper('sec:endpoints', 'Proofs for divisors, zero-cycles and one-cycles'),
         dependencies: ['The divisor and zero-cycle results and the regular-model correction for one-cycles', 'Detection of the obstruction after a dominant map, with the full field and generic degrees', 'The global pairing on the common local kernel'],
-        gap: 'In higher dimensions, the one-cycle result leaves the codimension-two factor to be determined. The regular-model correction and descent are explicit analytic inputs to this deduction.',
+        gap: 'In higher dimensions, the one-cycle result leaves the codimension-two factor to be determined. The one-cycle proof uses its regular-model correction and the proved dominant detection theorem with all native degrees.',
         children: [
-          { title: 'Varieties of dimension at most three', text: String.raw`Every complementary pair is covered. In particular, for every smooth projective threefold the construction gives \(h_X:V^2(X)\times V^2(X)\to\mathbf R\), under the same analytic hypotheses.` },
+          { title: 'Varieties of dimension at most three', text: String.raw`Every complementary pair is covered. In particular, for every smooth projective threefold the construction gives \(h_X:V^2(X)\times V^2(X)\to\mathbf R\), using the stated endpoint constructions.` },
         ],
       },
       {
@@ -63,7 +64,7 @@ export const pairingGroups = [
         title: 'A period criterion for individual cycle classes',
         result: 'A class belongs to the pairing domain if its specified local obstruction periods vanish at every relevant bad place. This criterion can be applied to individual classes and their rational linear combinations.',
         domain: String.raw`Classes \(z\in V^r(X)\) and \(w\in V^{n+1-r}(X)\) satisfying the period criterion in their respective degrees.`,
-        status: 'Conditional criterion',
+        status: 'Criterion requiring a fixed finite-test comparison',
         established: 'Fix the comparison identifying the local obstruction with finitely many rational intersection periods. Their vanishing places the class in the local kernel. Good reduction handles the remaining places, and the Green-form construction supplies a representative on the original support complement.',
         proof: paper('sub:finite-certificates', 'The period criterion and Green forms'),
         dependencies: ['The stated finite-period comparison, chosen before the cycle classes', 'Reconstruction in the original form sheaf and against every actual test', 'Good-reduction compatibility and the global pairing'],
@@ -84,7 +85,7 @@ export const pairingGroups = [
         title: 'Varieties with a Chow motive of abelian type',
         result: 'Both homologically trivial Chow groups are covered in every complementary pair of codimensions when, after finite extension, the diagonal factors through abelian varieties in rational Chow motives.',
         domain: String.raw`\[h_X:V^r(X)\times V^{n+1-r}(X)\to\mathbf R,\qquad 1\le r\le n,\] provided \(\Delta_{X_E}=\sum_jv_j\circ u_j\) in rational Chow, with \(u_j,v_j\) factoring through abelian varieties and having opposite degree shifts.`,
-        status: 'Conditional theorem',
+        status: 'Theorem for a supplied Chow retraction',
         established: 'Künnemann’s semistable model theorem gives a vertical correction of a homologically trivial cycle on an abelian variety. The numerical comparison then gives zero obstruction. Apply the Chow correspondences term by term to the diagonal identity and descend by the full field degree. A decomposition acting as the identity in one degree suffices for that degree.',
         proof: paper('sec:transfer', 'Proof by Chow correspondences from abelian varieties'),
         additionalProofs: [local('sec:conditional-abelian-proof', 'Local proof of numerical correction and descent')],
@@ -121,7 +122,7 @@ export const pairingGroups = [
         title: 'Varieties with a decomposition of the diagonal',
         result: 'A diagonal supported on a divisor in one term and on a subvariety of dimension at most three in the other gives the entire pairing in dimensions at most five, and the indicated outer complementary degrees in higher dimensions.',
         domain: String.raw`Assume \(\Delta_X=A+B\) in rational Chow, with \(\operatorname{Supp}A\subset D\times X\), \(D\) a divisor, and \(\operatorname{Supp}B\subset X\times T\), \(\dim T\le3\). Then \(h_X\) is defined on \(V^r(X)\times V^{n+1-r}(X)\) for every \(r\) if \(n\le5\), and for \(r\le2\) or \(r\ge n-1\) otherwise.`,
-        status: 'Conditional theorem',
+        status: 'Theorem in the stated degree ranges',
         established: String.raw`The diagonal and its transpose send the relevant classes to divisors, zero-cycles or one-cycles on resolutions of the supports. The local vanishing holds for \(r\le2\) or \(r\ge n-2\). Intersect this range with the range for \(n+1-r\) to obtain the stated global pairings.`,
         proof: paper('sub:small-support', 'Proof using the decomposition of the diagonal'),
         dependencies: ['Vanishing for divisors, zero-cycles and one-cycles', 'Functoriality under rational Chow correspondences and finite descent', 'Local vanishing at every finite place in both complementary degrees'],
@@ -139,7 +140,7 @@ export const pairingGroups = [
         title: 'Chow niveau, complete intersections and fibrations',
         result: 'If the part of the Chow motive not accounted for by abelian varieties is supported in sufficiently small dimension, the divisor and one-cycle results give additional full complementary pairings. Known Chow decompositions apply this criterion to the complete intersections and fibrations listed below.',
         domain: String.raw`Suppose \(h(X)=Q\oplus(T,e,u)\), where \(Q\) is of abelian type, \(u\ge0\), and \(\dim T\le n-2u\). The pairing on \(V^r(X)\times V^{n+1-r}(X)\) exists for every \(r\) if \(n\le2u+3\), and otherwise for \(r\le u+1\) or \(r\ge n-u\).`,
-        status: 'Conditional theorem and geometric applications',
+        status: 'Theorem with the stated Chow and fiber hypotheses',
         established: String.raw`The residual summand sends the relevant cycles to divisors or one-cycles on \(T\), giving local vanishing for \(r\le u+1\) or \(r\ge n-u-1\). Vial’s Chow decompositions and the cited low-degree Chow-group bounds supply the required factorizations. For intersections of quadrics, a self-intersection calculation gives the signed Chow retraction.`,
         proof: paper('sec:niveau', 'Proofs using Chow niveau and fibration theorems'),
         dependencies: ['Vial’s rational Chow-motive decompositions with their stated hypotheses', 'Vanishing on abelian varieties and in the divisor, zero-cycle and one-cycle degrees', 'The cited low-degree Chow-group theorems and the global pairing theorem'],
@@ -156,14 +157,14 @@ export const pairingGroups = [
   {
     id: 'model-domains',
     title: '3. Model criteria and arithmetic families',
-    summary: 'A cycle extension with zero intersection against the relevant vertical cycles has vanishing local obstruction, under the numerical comparison. Applying the criterion at every finite place in both complementary degrees gives a global height pairing.',
+    summary: 'A cycle extension with zero intersection against the relevant vertical cycles has vanishing local obstruction, by the numerical descent theorem. Applying the criterion at every finite place in both complementary degrees gives a global height pairing.',
     cases: [
       {
         id: 'numerical-models',
         title: 'Numerical corrections on regular models',
         result: 'A numerically trivial extension on a regular model is a sufficient condition for a cycle to belong to the local obstruction kernel. The criteria below produce such extensions by intersection theory on the special fiber.',
         domain: String.raw`At each finite place, require a pure operational representative on the stated dominant model with zero degree against every vertical test cycle. If every class in both \(V^r(X)\) and \(V^{n+1-r}(X)\) has such a representative, the pairing is defined on their full product. For individual classes satisfying the criterion, the conclusion is a pairing on the corresponding subgroups.`,
-        status: 'Conditional model criteria',
+        status: 'Criteria under the stated model hypotheses',
         established: 'Extend the pulled-back cycle to a regular model and modify it by a vertical class. If the corrected extension has zero intersection with every vertical test cycle, the model comparison annihilates its Bott–Chern obstruction. Descent along the dominant map and the finite field extension then gives vanishing on the original variety.',
         proof: paper('sec:models', 'Numerical correction and its applications'),
         dependencies: ['Comparison between vertical intersection numbers and the Bott–Chern obstruction', 'The stated specialization and primitive-residual identities on the model', 'Dominant descent with all multiplicities and field degrees retained'],
@@ -179,7 +180,7 @@ export const pairingGroups = [
         title: 'Good reduction and semistable reduction',
         result: 'The stated good-reduction, ordinary-quadratic and semistable-model criteria give vanishing of every local obstruction. If a criterion applies at every finite place, the global construction covers every complementary pair of homologically trivial Chow groups.',
         domain: String.raw`\(h_X:V^r(X)\times V^{n+1-r}(X)\to\mathbf R\) for all \(r\), provided the corresponding all-degree reduction criterion is satisfied at every finite place. The finite extensions and newly defined classes allowed by each theorem are retained.`,
-        status: 'Conditional consequences of model theorems',
+        status: 'Consequences of the stated reduction criteria',
         established: 'Ordinary quadratic singularities are resolved to models whose new components and intersections are quadrics with controlled intersection maps. For the semistable criteria, algebraic correspondences on the strata supply the corrections; weight–monodromy or the stated total-degeneration assumptions eliminate the remaining periods.',
         proof: paper('sub:ordinary-reduction', 'Proofs for ordinary quadratic and semistable models'),
         dependencies: ['The ordinary quadratic normal forms and resolution theorem, including residue characteristic two', 'Compatibility of semistable modification and the restriction–Gysin maps after ramified extension', 'The stated weight–monodromy or totally degenerate stratum hypotheses and the period comparison'],
@@ -194,9 +195,9 @@ export const pairingGroups = [
       {
         id: 'arithmetic-families',
         title: 'Arithmetic families from Lefschetz pencils',
-        result: 'The local model criteria yield Zariski-dense sets of varieties for which every complementary height pairing is defined, under the same analytic hypotheses. The density is in the particular coefficient or section space stated in each theorem.',
+        result: 'The stated local model and pencil criteria yield Zariski-dense sets of varieties for which every complementary height pairing is defined. The density is in the particular coefficient or section space stated in each theorem.',
         domain: String.raw`For every constructed member, \(V^r(X_E)\times V^{n+1-r}(X_E)\to\mathbf R\) for all \(r\) and every finite extension \(E\) of the fixed number field in the corresponding theorem.`,
-        status: 'Conditional constructions of arithmetic families',
+        status: 'Constructions under the stated model and pencil hypotheses',
         established: 'Choose congruences that preserve the required local smoothings and good reduction at exceptional primes. A Lefschetz pencil with one fixed smooth member gives ordinary quadratic reduction elsewhere. The local vanishing criteria then apply at every completion, and their finite-extension versions treat newly defined cycle classes.',
         proof: paper('sub:arithmetic-construction', 'Construction by Lefschetz pencils and congruences'),
         dependencies: ['The prescribed free module of sections and surjectivity to the required residue spaces', 'A nonempty open set of Lefschetz pencils through the chosen smooth member', 'The local smoothing and reduction theorems, including new cycles after finite extension'],
@@ -217,14 +218,14 @@ export const pairingGroups = [
       {
         id: 'classical-comparison',
         title: 'Comparison with classical height pairings',
-        result: 'Under the correspondence and model comparison theorems, the analytic pairing is a sum of classical abelian height pairings, or the normalized arithmetic intersection of numerically admissible lifts. The resulting formulas are independent of the chosen factorization or lifts.',
+        result: 'The correspondence and model comparison theorems identify the analytic pairing with a sum of classical abelian height pairings, or the normalized arithmetic intersection of supplied numerically admissible lifts. The resulting formulas are independent of the chosen factorization or lifts.',
         domain: String.raw`Pairs in \(\mathcal H^r(X)\times\mathcal H^{n+1-r}(X)\) with the stated abelian Chow factorization or regular numerically admissible arithmetic lifts.`,
-        status: 'Conditional comparison formulas',
+        status: 'Comparison theorems on the stated common domains',
         established: String.raw`For a factorization through abelian varieties over \(E\), correspondence adjunction gives \[h_X(z,w)=\frac{1}{[E:\mathbf Q]}\sum_j\langle u_{j*}z_E,{}^tv_{j*}w_E\rangle_{A_j,\mathrm{Kun}}.\] For admissible lifts on a regular arithmetic model over \(F\), the corresponding formula is \(h_X(z,w)=[F:\mathbf Q]^{-1}\widehat{\deg}(\widehat\Theta\cdot\widehat\Phi)\). A degree-\(d\) alteration over \(E\) contributes the factor \(1/(d[E:\mathbf Q])\).`,
         proof: paper('sec:heights', 'Proofs of the height comparison formulas'),
         additionalProofs: [{ href: '/papers/global-height-pairing#r16ha:motivic-formula', label: 'Correspondence adjunction and abelian formula' }, { href: '/papers/global-height-pairing#r16mm:global', label: 'Arithmetic-model comparison' }],
         dependencies: ['The global pairing and its invariance under finite number-field extension', 'Adjunction for rational Chow correspondences', 'Comparison with Künnemann’s abelian heights and with regular arithmetic models'],
-        gap: 'Agreement of the analytic, arithmetic-model and determinant constructions requires the stated comparison. For arbitrary bad reduction, the missing part is the corresponding admissible metric and its comparison identity.',
+        gap: 'The analytic-to-arithmetic-model and abelian comparisons hold on the stated common domains. Existence of admissible lifts on an arbitrary variety, and comparison with determinant metrics at general bad reduction, require further input.',
         children: [
           { title: 'Blowups and Shioda–Katsura constructions', text: 'The codimension-two blowup formula subtracts the height on the center, with the sign determined by the exceptional normal bundle. A finite flat cover contributes the inverse of its full rank, separately from the number-field normalization.' },
           { title: 'Determinant metrics and Deligne pairings', text: 'The determinant paper proves the stated comparison identities at complex places and for smooth models. Extending them to the required admissible metrics at general bad-reduction places is an open problem.' },
@@ -249,7 +250,7 @@ export const pairingGroups = [
 export const pairingSourceCoverage = [
   {
     title: 'Chow obstructions and prescribed curved Green pairs',
-    scope: 'The complete proof of Hypothesis 2.2: strict model Chern characters, restricted scalar–curvature finite trace, supported-complex Green forms, global primitives for generic Chow relations, genuine pullbacks and the original integral-variety scope.',
+    scope: 'The complete Chow-obstruction and prescribed-pair theorem: strict model Chern characters, restricted scalar–curvature finite trace, supported-complex Green forms, global primitives for generic Chow relations, genuine pullbacks and the original integral-variety scope.',
     source: 'The assembled construction theorem and its model-Chern and finite-trace supplements.',
     status: 'Internal proof completed after source-bound AI cross-review. The remaining general local problem is vanishing of the obstruction on homologically trivial Chow classes.',
     href: '/papers/chow-obstruction-green-pairs#h22:main',
@@ -258,14 +259,14 @@ export const pairingSourceCoverage = [
     title: 'Local Green forms: constructions and proofs',
     scope: 'Model Chern forms, finite traces, Green forms on prescribed support complements, algebraic equivalence, numerical corrections on abelian models, and Chow correspondences.',
     source: 'research-sources/green-draft/',
-    status: 'The Chow obstruction and prescribed-pair construction are established in the new theorem. The rigidity, numerical descent and correspondence-transfer arguments retain their separately stated status.',
+    status: 'Rational-fibre rigidity, finite numerical descent and native Chow-kernel covariance are proved in their precise scopes, together with the obstruction and prescribed-pair construction. Supplied numerical certificates and Chow retractions remain explicit premises.',
     href: '/papers/green-constructions',
   },
   {
     title: 'Geometric constructions of height pairings',
     scope: 'Complete geometric arguments for Chow-motive decompositions, products of curves and surfaces, partial codimension ranges, model criteria, arithmetic families and height formulas.',
     source: 'The original 37-page manuscript and complete eight-file LaTeX source, 16 November 2026.',
-    status: 'Each geometric deduction states the analytic or model hypotheses it uses.',
+    status: 'Each geometric deduction cites the established analytic constructions and retains every additional geometric or model premise.',
     href: '/papers/pairing-constructions',
   },
   {

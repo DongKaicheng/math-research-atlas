@@ -1,0 +1,357 @@
+% Round 17. Foundation branch. Candidate; independent review required.
+% Uses the separately stated C217 all-characteristic quadric criterion.
+\section{Degenerate ordinary quadratic points at two and the all-prime reduction sector}
+\label{r17cd2:section}
+
+\paragraph{Status and published input.}
+\textbf{Internally reviewed.} The final claims register identifies the independent audits and frozen dependencies.
+This section treats the even-dimensional ordinary quadratic
+case omitted from C217. Its local normal form is the published
+Jannsen--Saito Lemma 4(ii), Section 3, printed p.11, and its
+order reduction is their Theorem 5(d), printed pp.11--14,
+\url{https://arxiv.org/pdf/0911.1470}. Their lemma explicitly
+allows a finite etale extension of the DVR and gives an
+isomorphism of henselized local rings. We first explain why
+that statement supplies common pointed etale neighborhoods.
+We then check the native component geometry needed for the
+all-characteristic numerical quadric-forest theorem C217.
+No claim of novelty is made for the normal forms or blowups.
+
+\subsection{Using the published henselian normal form in actual etale charts}
+
+\begin{lemma}[A henselian local isomorphism gives a common etale neighborhood]
+\label{r17cd2:henselian-chart}
+Let $A$ and $B$ be local rings of finite-type schemes over
+a noetherian ring $R$, with the same residue field at the
+chosen points. Suppose there is an isomorphism of local
+$R$-algebras $A^h\simeq B^h$ inducing that residue
+identification. Then the two schemes have a common pointed
+etale neighborhood with that residue field.
+\end{lemma}
+
+\begin{proof}
+Choose an affine finite-presentation algebra representing
+a neighborhood on the $A$ side. Its map into $B^h$ factors
+through one of the finite-presentation pointed etale
+neighborhoods defining that henselization. Localizing at
+the selected point gives a local $R$-map $A\to B'$, with
+$B'$ pointed etale over $B$ and with unchanged residue
+field. Its induced map $A^h\to(B')^h\simeq B^h$ is the
+given isomorphism by the universal property of henselization.
+
+The induced map of completed noetherian local rings is
+therefore an isomorphism. Since $\widehat {B'}$ is
+faithfully flat over $B'$ and is identified over $A$ with
+the flat completion $\widehat A$, flatness descends to
+$A\to B'$. The completed tangent-space equality and
+the unchanged residue field make
+$\Omega_{B'/A}\otimes\kappa(B')=0$. This module is
+finite, so local Nakayama gives $\Omega_{B'/A}=0$.
+Thus the essentially finite-presentation map is flat and
+unramified, hence etale at the point. Shrink the selected
+neighborhood so that both maps are etale. This proves the
+claim by finite-presentation descent; it does not attempt
+to algebraize an arbitrary formal isomorphism.
+\end{proof}
+
+Let $K/\mathbf Q_2$ have valuation ring $R$, and let
+$\mathcal X/R$ be integral, flat and projective with
+smooth geometrically integral generic fiber of even
+dimension $n=2a\ge4$. Assume its geometrically integral
+special fiber is smooth except at finitely many ordinary
+quadratic points. Here ordinary quadratic means that
+the projectivized geometric tangent cone is a smooth
+quadric. In this even relative dimension its quadratic
+form has a one-dimensional polar radical in residue two;
+it is the degenerate case in the terminology of
+Jannsen--Saito.
+
+\begin{proposition}[A common finite field for all degenerate node equations]
+\label{r17cd2:field}
+There is a finite extension $L/K$ such that, at every
+special node of $\mathcal X_{R_L}$, there is a common
+pointed etale neighborhood with a hypersurface
+\[
+  P(x_1,\ldots,x_n)+z^2+\epsilon\varpi_L^qz=0,
+       \qquad q\ge1,\quad \epsilon\in R_L^\times,
+ \tag{CD217.1}\label{r17cd2:split-polynomial}
+\]
+whose polar form on the $n$ variables of $P$ is unimodular.
+One may arrange that the selected closed nodes are rational
+over the residue field of $L$. There is no assertion that
+$[L:K]$ is two or is independent of the number of nodes.
+\end{proposition}
+
+\begin{proof}
+First take a common finite unramified extension $K_0/K$
+which contains the finitely many residue fields and the
+finite etale DVR extensions allowed in the published
+normal-form lemma. Its conjugates give the same forms
+at all conjugate nodes; enlarging it finitely if needed
+handles all of them at once. The nodes are rational over
+its residue field. For each one, Jannsen--Saito Lemma 4(ii)
+gives a henselian local equation
+\[
+                   P(x)+z^2+bz+c=0,
+       \qquad 0\ne\Delta=b^2-4c\in\mathfrak m_{R_0},
+ \tag{CD217.2}\label{r17cd2:js-form}
+\]
+with $P$ nondegenerate in its even number $n$ of variables.
+The chosen special point is the origin, so $c$ lies in
+the maximal ideal; also $b$ does, since $b^2-4c$ does
+and the residue characteristic is two. Apply
+Lemma~\ref{r17cd2:henselian-chart} to obtain actual common
+pointed etale charts.
+
+Take a finite extension $L/K_0$ splitting all the finitely
+many polynomials $T^2+bT+c$, including the conjugate data.
+For example one may take a normal closure of the compositum
+of their quadratic splitting fields over $K$. Retain the
+full resulting degree. A root $\alpha\in L$ is integral,
+being a root of a monic polynomial, and its reduction is
+zero because the reduced polynomial is $T^2$. Thus the
+translation $z=w+\alpha$ fixes the special origin and
+changes \eqref{r17cd2:js-form} to
+\[
+                    P(x)+w^2+\beta w=0,
+                    \qquad \beta=2\alpha+b.
+\]
+One has $\beta^2=\Delta\ne0$. Its valuation is positive,
+so $\beta=\epsilon\varpi_L^q$ for a finite integer
+$q\ge1$. The polar matrix of $P$ stays invertible after
+the extension. Renaming $w$ as $z$ proves the assertion.
+All chosen charts remain etale after base change.
+
+This finite extension is auxiliary. In the final detector
+its complete degree $[L:K]$, including residue extension
+and ramification, will be retained. No selected geometric
+node or isolated square-root branch replaces that degree.
+\end{proof}
+
+\subsection{The order-one reduction and its exact exceptional quadrics}
+
+\begin{proposition}[Native degenerate-node chains]
+\label{r17cd2:chains}
+For the local equation \eqref{r17cd2:split-polynomial},
+exactly $q$ successive blowups at the remaining reduced
+special point produce a regular reduced strictly semistable
+model. Its exceptional chain consists of $q-1$ copies of
+\[
+       \mathbf P_E(\mathcal O_E\oplus\mathcal O_E(-1))
+\]
+and a terminal smooth projective quadric $T$, where
+\[
+ \begin{split}
+ E&=\{\overline P(X)+Z^2=0\}\subset\mathbf P^n_{k_L},\\
+ T&=\{\overline P(X)+Z^2+\overline\epsilon ZS=0\}
+                                      \subset\mathbf P^{n+1}_{k_L}.
+ \end{split}
+ \tag{CD217.3}\label{r17cd2:quadrics}
+\]
+Every double stratum is a copy of the smooth odd-dimensional
+quadric $E$, every component has multiplicity one, and the
+two sections on an intermediate component are disjoint.
+These statements remain valid over the native residue field
+when the selected node has not been made rational.
+\end{proposition}
+
+\begin{proof}
+Write $\pi=\varpi_L$ for this calculation. Blow up the
+maximal ideal $(x_1,\ldots,x_n,z,\pi)$.
+The saturated $x_i$-chart, with $t=x_i$, $z=tw$ and
+$\pi=tv$, is
+\[
+   tv=\pi,\qquad
+   P(y_1,\ldots,1,\ldots,y_n)+w^2
+                     +\epsilon t^{q-1}v^q w=0.
+ \tag{CD217.4}\label{r17cd2:x-chart}
+\]
+The saturated $z$-chart, with $t=z$, is
+\[
+          tv=\pi,\qquad
+          P(y)+1+\epsilon t^{q-1}v^q=0.
+ \tag{CD217.5}\label{r17cd2:z-chart}
+\]
+The saturated $\pi$-chart, with $x_i=\pi u_i$ and
+$z=\pi w$, is
+\[
+                  P(u)+w^2+\epsilon\pi^{q-1}w=0.
+ \tag{CD217.6}\label{r17cd2:pi-chart}
+\]
+These are actual Rees charts. In the first two charts
+the remaining polynomial modulo $t$ is a nonzero
+polynomial in the domain $k_L[v,y,w]$ or $k_L[v,y]$.
+The regular-sequence permutation argument in the
+semistable ambient $tv=\pi$ makes multiplication by $t$
+injective after imposing it, so removal of $t^2$ gives
+the exact saturation. In the last chart the equation is
+monic in $w$, hence its quotient is flat over the DVR
+and has no $\pi$-torsion. This gives its exact saturation.
+
+Let $B_P$ be the invertible polar matrix of $\overline P$.
+The quadric $E$ is smooth: vanishing of its $X$ derivatives
+forces $X=0$, and its equation then forces $Z=0$,
+impossible projectively. The same argument shows that
+the cone $\overline P(u)+w^2=0$ has the origin as its
+only reduced singular point.
+
+For $q>1$, the last summands of
+\eqref{r17cd2:x-chart} and \eqref{r17cd2:z-chart} vanish
+on the reduced special fiber $tv=0$. On an $x_i$-chart
+some $y$ derivative of $\overline P(1,y)$ is nonzero:
+if all the other $X$ derivatives vanished, Euler's
+identity in characteristic two would force the $i$
+derivative to vanish too, contradicting $B_PX\ne0$.
+On a $z$-chart, $\overline P(y)+1=0$ implies $y\ne0$,
+so some $y$ derivative is nonzero. Etale elimination
+therefore leaves the regular semistable equation
+$tv=\pi$. In the $\pi$-chart the only remaining special
+singular point is the origin, and the coefficient order
+has decreased from $q$ to $q-1$.
+
+For $q=1$, the $\pi$-chart is smooth because its derivative
+in $w$ reduces to $\overline\epsilon\ne0$.
+In the $x_i$- and $z$-charts, at the double locus
+$t=v=0$ the preceding $y$-derivative argument still
+applies and leaves $tv=\pi$. Where $v$ is a unit,
+one solves $t=\pi/v$; in the $x_i$-chart the $w$
+derivative is then a unit, while in the $z$-chart the
+coefficient of $v$ is a unit. These are smooth
+one-component charts. Where $t$ is a unit the same
+$y$-derivative test gives a smooth chart after solving
+$v=\pi/t$. Thus every chart is regular and strictly
+semistable at the last blowup.
+
+At $q>1$ the exceptional component is the projective
+cone over $E$, with vertex away from its preceding
+double stratum. At $q=1$ it is the terminal quadric $T$
+in \eqref{r17cd2:quadrics}. Its polar matrix is the
+direct sum of $B_P$ and
+\[
+             \begin{pmatrix}0&\overline\epsilon\\
+                             \overline\epsilon&0\end{pmatrix},
+\]
+so it is invertible and $T$ is smooth. Its hyperplane
+section $S=0$ is $E$.
+
+Blowing up the cone vertex gives
+$\mathbf P_E(\mathcal O_E\oplus\mathcal O_E(-1))$,
+by the direction-chart construction used in QF17 and
+C217. Its vertex and infinity sections are disjoint.
+Induction now gives exactly $q$ blowups, $q-1$
+intermediate bundles and one terminal quadric. The
+structural equations $tv=\pi$ give multiplicity one,
+and the moving singular vertex is disjoint from every
+previous double stratum, so no triple stratum occurs.
+Pointed etale base change identifies the native graded
+cones and the corresponding exceptional schemes; no
+splitting of their ruling classes is needed.
+\end{proof}
+
+\subsection{All ordinary quadratic reductions in mixed characteristic}
+
+\begin{theorem}[All-degree actual G for even-dimensional ordinary quadratic reduction at two]
+\label{r17cd2:actual}
+Let $K/\mathbf Q_2$ and its absolute value be fixed,
+and let $X/K$ be smooth projective geometrically integral
+of even dimension $n\ge4$. Suppose it has an integral
+flat projective model whose geometrically integral special
+fiber is smooth except at finitely many ordinary quadratic
+points. Then every geometrically homologically trivial
+rational cycle in every positive codimension has strong
+ordinary actual G over $K$, on its exact specified support
+complement and against every compact original actual test.
+The same conclusion holds for targets admitting such a
+projective dominant witness after a finite auxiliary
+extension, and anew for all cycles after every finite
+extension of $K$.
+\end{theorem}
+
+\begin{proof}
+Use Proposition~\ref{r17cd2:field} once for all nodes.
+The base-changed model remains integral because it is
+flat with geometrically integral generic fiber.
+The special geometric nodes persist. Apply the preceding
+native blowup construction at each one. Away from them
+flatness and fiber smoothness make the morphism smooth.
+The resulting model is regular, projective and reduced
+strictly semistable. Its main component and disjoint
+exceptional chains form a tree, with all double strata
+the native smooth quadrics $E$.
+
+The all-characteristic quadric-forest theorem C217 gives
+numerical admissible extensions in every codimension.
+Here the double quadrics have odd dimension, so only
+the one-dimensional ample numerical lines occur; no
+middle-degree sign argument is needed. The frozen native
+numerical witness and dominant Bott--Chern detectors
+descend obstruction zero through the full finite extension
+$L/K$, with its complete degree $[L:K]$ and all residue
+weights. No degree-two shortcut is used for the simultaneous
+splitting of several node polynomials. Reconstructing from
+the curved pair for the original specified cycle gives
+the asserted exact-support all-actual solution.
+
+The dominant-target assertion is the same frozen detector.
+After any finite extension the geometric ordinary
+quadratic special points, flatness and smooth generic
+fiber remain. Applying this theorem afresh gives the
+full conclusion for cycles newly defined over that field.
+No proper actual-form pushforward or off-support
+finiteness of an alteration is asserted.
+\end{proof}
+
+\begin{corollary}[The ordinary quadratic local theorem at every prime]
+\label{r17cd2:all-primes}
+For every finite $K/\mathbf Q_p$, every dimension $n\ge3$,
+and every smooth projective geometrically integral $X/K$
+with an integral flat projective ordinary quadratic model
+having geometrically integral special fiber, all
+geometrically homologically trivial rational cycles satisfy
+strong ordinary actual G in every positive codimension.
+The model may have arbitrary node orders and need not be
+regular. The conclusion is stable under finite field
+extension and the stated projective dominant witnesses.
+\end{corollary}
+
+\begin{proof}
+Use ON17 for odd residue characteristic, C217 for odd
+dimension at residue two, and the preceding theorem for
+even dimension at residue two. These cases exhaust the
+stated range. Each conclusion retains the original field,
+exact support and all actual tests.
+\end{proof}
+
+\begin{corollary}[Complete height on the all-prime ordinary quadratic reduction sector]
+\label{r17cd2:height}
+Let $X/F$ be smooth projective geometrically integral
+over a number field. Suppose that at every finite place,
+after a finite auxiliary local extension if needed, it
+has a projective dominant witness with good reduction
+or an ordinary quadratic model in the range of
+Corollary~\ref{r17cd2:all-primes}.
+Then the canonical real Beilinson--Bloch height is defined
+on the complete geometric homological rational Chow
+groups in every pair of complementary degrees, with the
+frozen number-field normalization and correspondence
+adjunction. GA17 gives its normalized admissible
+arithmetic-intersection description on a fixed regular
+arithmetic alteration.
+
+In particular there is no residue-two exclusion for
+varieties which themselves have good or ordinary quadratic
+reduction at every finite place. This remains a specified
+reduction sector, not a theorem that every variety has
+such a reduction witness.
+\end{corollary}
+
+\begin{proof}
+The local theorem and the good-reduction result give zero
+obstruction for every homological class at every finite
+place. Hence each complete homological Chow group equals
+the corresponding frozen height domain. Apply that
+canonical height theorem and GA17. The local auxiliary
+extensions need not be completions of one prescribed
+global extension: native local descent occurs first,
+before the global height theorem is invoked.
+\end{proof}

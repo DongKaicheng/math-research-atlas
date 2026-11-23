@@ -45,16 +45,16 @@ export default function HomePage() {
     <section className="sg-overview-section" aria-labelledby="height-question">
       <p className="eyebrow">The local-to-global argument</p>
       <h2 id="height-question">Why Strong Green would give Beilinson–Bloch heights</h2>
-      <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem 7.5</a> proves this passage within its <a href="/papers/global-height-pairing#sec:height-hypotheses">standing analytic and global foundations</a>. Strong Green is required at every finite completion, for every prescribed geometrically homologically trivial cycle in both complementary codimensions.</p>
+      <p><a href="/papers/global-height-pairing#r16ph:general-height">Theorem 7.5</a> proves this passage using the <a href="/papers/global-height-pairing#sec:height-hypotheses">analytic and global foundations proved in §2</a>. Strong Green is required at every finite completion, for every prescribed geometrically homologically trivial cycle in both complementary codimensions.</p>
       <HeightOverviewDiagram />
       <details className="sg-overview-details" id="height-construction">
         <summary>How the local pairings form a global height</summary>
         <MathText className="sg-overview-prose" text={String.raw`Choose disjoint representatives \(Z,W\). At a finite place \(v\), integrate the Green form for \(Z\) over \(W\); at the archimedean places use the classical Green pairing. Then take the normalized sum:`} />
         <MathText className="sg-overview-math" text={String.raw`\[\begin{aligned}\lambda_v(Z,W)&=\int_{W_{F_v}^{\mathrm{an}}}\gamma_{Z,v} &&\text{(finite }v\text{)},\\[4pt]h_X([Z],[W])&=\sum_v\frac{[F_v:\mathbb Q_v]}{[F:\mathbb Q]}\,\lambda_v(Z,W).\end{aligned}\]`} />
-        <p>Good-place vanishing makes the sum finite. The principal transformation law and the product formula make it independent of rational-equivalence representatives; reciprocity gives symmetry and independence of Green choices. These are parts of the theorem’s proof under the displayed foundations.</p>
+        <p>Good-place vanishing makes the sum finite. The principal transformation law and the product formula make it independent of rational-equivalence representatives; reciprocity gives symmetry and independence of Green choices. The foundations are proved for the actual forms, normal carriers and proper intersections used in this argument.</p>
       </details>
       <p className="sg-section-links"><a href="/papers/global-height-pairing#r16ph:general-height">Read the height theorem and proof →</a><a className="home-map-link" href="/research-map">Explore the full logical research map →</a></p>
-      <p className="sg-overview-note">Comparison with classical model constructions and further properties of the height have their own <a href="/papers/global-height-pairing#sec:height-remaining">hypotheses and research questions</a>.</p>
+      <p className="sg-overview-note">Comparison on supplied admissible models is proved on its stated domain. Existence of such models in general, positivity and further extensions remain <a href="/papers/global-height-pairing#sec:height-remaining">separate research questions</a>.</p>
     </section>
 
     <section className="sg-overview-section" aria-labelledby="other-routes">
@@ -83,9 +83,10 @@ export default function HomePage() {
 
     <aside className="sg-overview-progress" aria-labelledby="chow-green-theorem">
       <p className="eyebrow">Current progress</p>
-      <h2 id="chow-green-theorem">The curved Green construction is now proved internally</h2>
+      <h2 id="chow-green-theorem">Curved Green pairs and the height foundations</h2>
       <p><a href="/papers/strong-g-programme#hyp:green-pairs">Theorem 2.2</a> constructs a curved actual Green pair for every prescribed rational cycle and identifies its Chow-invariant curvature obstruction. If that obstruction vanishes, a global primitive removes the curvature and gives a strong Green form. General vanishing on homologically trivial classes remains open.</p>
-      <p className="sg-section-links"><a href="/papers/chow-obstruction-green-pairs#h22:main">Complete proof →</a><a href="/results">All results and known cases →</a></p>
+      <p>The current edition also gives explicit proofs for the finite trace, projective integration, rigidity and height identities used by the construction. <a href="/sources#hypothesis-audit">The 22-item source review</a> records each former hypothesis, its proof and the conditions that remain.</p>
+      <p className="sg-section-links"><a href="/papers/chow-obstruction-green-pairs#h22:main">Complete construction proof →</a><a href="/results">All results and known cases →</a></p>
     </aside>
 
     <nav className="sg-overview-reading" aria-label="Continue reading">
