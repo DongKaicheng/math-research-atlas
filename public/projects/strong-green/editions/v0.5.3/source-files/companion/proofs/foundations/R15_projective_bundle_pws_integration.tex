@@ -1,0 +1,397 @@
+% Round 15. Formal extension of the separately reviewed P1 integration.
+% Requires independent review of the quotient and iteration below.
+\section{PWS integration on projective spaces and projective bundles}
+\label{r15ps:section}
+
+This section derives a further specific form-valued pushforward
+from Theorem~\ref{r15hp:projection} and its algebraic base-change
+statement.  The input remains PWS and the prescribed comparison
+includes every ordinary smooth compact complementary test.
+An explicit tensor projection lemma below also permits compact
+PWS tests, still in delta codimension zero.
+Neither an all-actual-test proper pushforward nor a pushforward
+for arbitrary proper morphisms is asserted.
+
+\begin{lemma}[Projection against a PWS target tensor]
+\label{r15ps:PWS-projection-line}
+For the projective-line operator of
+Theorem~\ref{r15hp:projection}, let $\omega$ be a PWS source
+form and let $\beta$ be any PWS target form.  In every meaningful
+bidegree one has an equality of ordinary actual PWS forms
+\[
+ \mathcal I_U(\omega\wedge\pi^*\beta)
+                         =(\mathcal I_U\omega)\wedge\beta.
+\tag{PS15.0}\label{r15ps:PWS-projection-formula-line}
+\]
+This assertion is restricted to delta codimension zero in both
+inputs.  It is not inferred by inserting a nonsmooth test into
+the all-smooth pairing theorem.
+\end{lemma}
+
+\begin{proof}
+Work near an arbitrary target point.  Shrink so that $\beta$
+has one ordinary finite unit-moment PWS presentation.  Perform
+the complete-fiber construction for $\omega$ in the proof of
+Theorem~\ref{r15hp:projection}.  On its finite splitting cover,
+append all pullbacks of the moments of $\beta$ to the base
+tuple $b$.  These extra moments are analytic units on the
+working ordinary open; they need not be algebraic units on the
+whole splitting variety.  This is allowed by
+Proposition~\ref{r15ray:analytic}.  On a compact working chart
+their enlarged moment image is finite polyhedral.  The source
+tensor and the target tensor now have one common finite
+presentation in $(b,z-a_i)$ and $b$, respectively.
+
+Use the same root and infinity cutoff $\theta$ for both
+$\omega'$ and $\omega'\wedge\pi'^*\beta'$.  It is permitted
+for the latter as well: on a discarded tube the first factor
+is a base pullback by \eqref{r15hp:graph-difference}, so the
+product is also a base pullback, and its wedge with its own
+complementary test exceeds the base dimension exactly as in
+\eqref{r15hp:tail-degree}.  Its retained moment support is
+contained in that of $\theta\omega'$.  Thus both outputs may
+be computed by the same finite root-ray bands and the same
+finite cutoff bounds.
+
+On any such band write $\Theta$ for the retained source PWS
+tensor and $B$ for the target PWS tensor.  Refine by the finitely
+many pieces of $B$ as well.  Both vertical tangent vectors
+annihilate the pulled-back target tensor.  Therefore the double
+vertical contraction has the exact identity
+\[
+ \operatorname{vc}_t(\Theta\wedge\operatorname{pr}^*B)
+                         =\operatorname{vc}_t(\Theta)\wedge B.
+\]
+There is no additional sign: in the derivation rule the terms
+contracting $B$ vanish, and the two remaining contractions
+act on the first factor in the same order on both sides.
+The coefficients of $B$ depend only on the base variable, so
+coefficientwise band integration commutes with this wedge
+product.  Tangential restriction to every common face also
+commutes with contraction and wedge.  Lemma~\ref{r15ray:band}
+therefore gives equality as PWS tensors on the entire base
+image, including lower-dimensional faces and collapsing bands.
+Ordinary pullback through $b$ proves the desired equality on
+the splitting cover.  If a source slot has degree zero, the
+corresponding vertical contraction is zero on both sides;
+this also covers the zero relative-degree convention.
+
+Let $a$ have native degree $e$.  Both downstairs outputs may
+be constructed with this same finite cover.  Apply the finite
+PWS trace and divide by $e$.  The frozen finite PWS projection
+identity gives
+\[
+ \operatorname{Tr}^{\mathrm{PS}}_a(\tau'\wedge a^*\beta)
+                       =(\operatorname{Tr}^{\mathrm{PS}}_a\tau')
+                                                    \wedge\beta.
+\]
+Its hypotheses are satisfied: both factors are PWS, and in
+its pairing proof $\beta\wedge\eta$ for a smooth test $\eta$
+is a compact complementary \emph{actual} test, allowed by the
+already established finite all-actual-test trace theorem.
+This is an existing finite projection identity, not a
+nonfinite one being assumed.  The normalized trace construction
+and current uniqueness now give
+\eqref{r15ps:PWS-projection-formula-line} downstairs.  Ordinary
+gluing proves the assertion everywhere.
+\end{proof}
+
+\begin{lemma}[The ordered-factor finite quotient]
+\label{r15ps:symmetric-quotient}
+For every integer $m\geq1$, multiplication of homogeneous binary
+linear forms defines a finite surjective morphism
+\[
+ q_m:(\mathbf P^1_K)^m\longrightarrow\mathbf P^m_K
+\tag{PS15.1}\label{r15ps:quotient}
+\]
+of native generic degree $m!$.  Both source and target are smooth
+geometrically integral.  For every smooth integral $K$-variety
+$S$, the product map
+\[
+ Q_{m,S}=\mathrm{id}_S\times q_m:
+ S\times(\mathbf P^1)^m\longrightarrow S\times\mathbf P^m
+\tag{PS15.2}\label{r15ps:base-quotient}
+\]
+is finite surjective of the same generic degree $m!$, with
+smooth integral source and target.
+\end{lemma}
+
+\begin{proof}
+Send $([u_1:v_1],\ldots,[u_m:v_m])$ to the coefficients of
+$\prod_{j=1}^m(u_jX+v_jY)$.  These multihomogeneous coefficients
+never vanish simultaneously.  Thus they define a projective
+morphism over the original field $K$.
+Over an algebraically closed extension, every nonzero binary
+form is a product of linear factors, uniquely as an unordered
+multiset with multiplicities.  The geometric fibers of the map
+are therefore nonempty and finite.  Properness and
+quasi-finiteness make the map finite.  Over the nonempty open
+of forms with distinct roots, the ordered factorizations form
+a free transitive set under the symmetric group of order $m!$.
+Characteristic zero implies separability, so this is the
+generic degree.  The asserted smoothness and geometric
+integrality are those of products of projective spaces.
+
+Finiteness and surjectivity survive the indicated base change.
+At the generic point of $S$, the same distinct-root computation
+over $K(S)$ gives degree $m!$.  The products with geometrically
+integral smooth projective spaces are smooth integral over
+the given integral smooth $S$.  Thus no constant-field factor
+is added to or removed from the degree in
+\eqref{r15ps:base-quotient}.
+\end{proof}
+
+\begin{proposition}[Iteration on a product of projective lines]
+\label{r15ps:iterated-lines}
+Let $U$ be an ordinary open of a smooth integral algebraic
+$K$-variety $S$ of dimension $d$, and let
+$p_m:U\times(\mathbf P^1)^m\to U$ be the projection.
+Successive application of Theorem~\ref{r15hp:projection}
+gives, for every PWS input $\omega$ of bidegree $(p,q)$,
+an ordinary PWS form
+\[
+ \mathcal I^{[m]}_U\omega\in
+                    \operatorname{PS}^{p-m,q-m}(U).
+\tag{PS15.3}\label{r15ps:iterated-output}
+\]
+It has the prescribed pairing
+\[
+ \int_U\mathcal I^{[m]}_U\omega\wedge\eta
+      =\int_{U\times(\mathbf P^1)^m}\omega\wedge p_m^*\eta
+\tag{PS15.4}\label{r15ps:iterated-pairing}
+\]
+against every ordinary smooth compact complementary test.
+It is independent of the order of the $m$ integrations and
+commutes with ordinary restriction and with algebraic base
+change between smooth integral varieties.  A negative output
+degree means the zero current and the zero form.
+\end{proposition}
+
+\begin{proof}
+For $p,q\geq m$, integrate one projective-line coordinate at
+a time.  At every stage the remaining base is an ordinary open
+of a smooth algebraic product of $S$ with projective lines, and
+the input produced at the preceding stage is PWS.
+Thus every application of Theorem~\ref{r15hp:projection} has
+its stated hypotheses.  The final degree is $(p-m,q-m)$.
+
+Pair the last output with a test $\eta$ on $U$.  The pairing
+theorem expresses it as an integral on one additional projective
+line with the pullback of $\eta$.  That pullback is still an
+ordinary smooth test, and is compactly supported because the
+projection is proper.  Repeat at each stage.  This proves
+\eqref{r15ps:iterated-pairing} for the original arbitrary test,
+without expressing it as an exterior product.  Any integration
+order gives that same current.  Actual-current injectivity
+therefore proves independence of the order.
+
+For an algebraic map $b:T\to S$ of smooth integral varieties,
+apply Proposition~\ref{r15hp:base-change} at each stage to the
+algebraic map $b$ times the identity on the remaining projective
+lines.  Ordinary opens are restricted to the relevant inverse
+images.  Induction proves actual base-change compatibility
+of the whole iterated operator.  Restriction is proved in the
+same way.  If $p<m$ or $q<m$, a negative output degree has no
+nonzero complementary test on the $d$-dimensional target;
+equivalently the iteration reaches a zero relative-degree
+pushforward.  The claimed value is zero.
+\end{proof}
+
+\begin{theorem}[PWS integration along a projective space]
+\label{r15ps:projective-space}
+For $S,U,d$ as in the preceding proposition and every $m\geq0$,
+let $\pi_m:U\times\mathbf P^m\to U$ be the projection.
+For every $\omega\in\operatorname{PS}^{p,q}
+(U\times\mathbf P^m)$ its prescribed proper current has the
+unique ordinary PWS representative
+\[
+ \mathcal I_{\pi_m}\omega
+   =\frac1{m!}\mathcal I^{[m]}_U(Q_{m,S}^*\omega)
+       \in\operatorname{PS}^{p-m,q-m}(U),
+\tag{PS15.5}\label{r15ps:space-output}
+\]
+with the evident identity convention for $m=0$.
+For every ordinary smooth compact complementary test $\eta$,
+\[
+ \int_U\mathcal I_{\pi_m}\omega\wedge\eta
+       =\int_{U\times\mathbf P^m}\omega\wedge\pi_m^*\eta.
+\tag{PS15.6}\label{r15ps:space-pairing}
+\]
+This operator commutes with ordinary restriction and with every
+algebraic base change between smooth integral varieties.
+\end{theorem}
+
+\begin{proof}
+The finite map $Q_{m,S}$ is a genuine algebraic map, so its
+analytic pullback preserves PWS forms.  Proposition~\ref{r15ps:iterated-lines}
+makes the right side of \eqref{r15ps:space-output} an ordinary
+PWS form of the asserted degree.
+Its pairing with an arbitrary test is
+\[
+ \begin{split}
+ \int_U\mathcal I_{\pi_m}\omega\wedge\eta
+ &=\frac1{m!}\int_{U\times(\mathbf P^1)^m}
+                         Q_{m,S}^*\omega\wedge p_m^*\eta\\
+ &=\frac1{m!}\int_{U\times(\mathbf P^1)^m}
+                      Q_{m,S}^*(\omega\wedge\pi_m^*\eta)\\
+ &=\int_{U\times\mathbf P^m}\omega\wedge\pi_m^*\eta.
+ \end{split}
+\tag{PS15.7}\label{r15ps:one-native-factor}
+\]
+The final step is exactly the native finite degree formula
+for $Q_{m,S}$ of degree $m!$.  The paired input is an actual
+PWS top form of compact support.  There is a single finite
+quotient and a single factor $m!$ in this calculation; neither
+the iteration nor a change of presentation introduces another
+degree factor.  The formula remains the native one if the
+integral variety $S$ has a larger constant field than $K$:
+source and target have that same constant field, and their
+relative generic degree is still $m!$.
+
+Current injectivity gives uniqueness.  Restriction follows from
+the formula.  For algebraic base change $b:T\to S$, the finite
+maps $Q_{m,T}$ and $Q_{m,S}$ form a Cartesian product square.
+Functoriality of genuine analytic pullback gives
+\[
+ Q_{m,T}^*(b\times\mathrm{id}_{\mathbf P^m})^*\omega
+       =(b\times\mathrm{id}_{(\mathbf P^1)^m})^*
+                                                     Q_{m,S}^*\omega.
+\]
+Apply the iterated base-change identity of
+Proposition~\ref{r15ps:iterated-lines} and divide by the same
+$m!$.  This proves actual naturality.  It uses no base-change
+identity for a finite trace or a nonfinite current.
+\end{proof}
+
+\begin{theorem}[PWS integration along a projective bundle]
+\label{r15ps:projective-bundle}
+Let $S/K$ be smooth and integral, let $N$ be an algebraic vector
+bundle of rank $m+1$, and put
+$\pi:E=\mathbf P_S(N)\to S$.  On any ordinary open
+$U\subset S^{\mathrm{an}}$, every
+$\omega\in\operatorname{PS}^{p,q}(E_U)$ has a unique ordinary
+PWS pushforward
+\[
+ \mathcal I_\pi\omega\in\operatorname{PS}^{p-m,q-m}(U)
+\tag{PS15.8}\label{r15ps:bundle-output}
+\]
+with prescribed pairing
+\[
+ \int_U\mathcal I_\pi\omega\wedge\eta
+                    =\int_{E_U}\omega\wedge\pi^*\eta
+\tag{PS15.9}\label{r15ps:bundle-pairing}
+\]
+for every ordinary smooth compact complementary test.
+It commutes with ordinary restriction and with pullback of
+the vector bundle by every algebraic map between smooth
+integral bases.  It satisfies the projection formula against
+ordinary PWS target forms.  If the input is killed by
+$d'$, $d''$, or $D$, then its output is killed by that same
+operator as an actual form.
+\end{theorem}
+
+\begin{proof}
+Choose Zariski opens of $S$ on which $N$ is trivial.  They give
+ordinary opens $U_i$ covering $U$ and algebraic identifications
+$E_{U_i}\simeq U_i\times\mathbf P^m$.
+Theorem~\ref{r15ps:projective-space} produces an ordinary PWS
+form on each $U_i$.  Under any two trivializations it has the
+same prescribed current \eqref{r15ps:bundle-pairing} on every
+ordinary overlap: the identifications are actual isomorphisms,
+whose change-of-variables degree is one.  Current injectivity
+makes the forms equal.  They glue in the ordinary topology.
+Smooth partitions of unity on the target extend the local
+pairing equality to every compact test on $U$.  Properness of
+$\pi$ keeps all pulled-back paired supports compact.
+
+If $b:T\to S$ is algebraic between smooth integral bases, its
+pullback bundle is $E_T=\mathbf P_T(b^*N)$, and the pulled
+trivializations identify its Cartesian diagram locally with
+the product base-change diagram in
+Theorem~\ref{r15ps:projective-space}.  That theorem proves
+\[
+ b^*\mathcal I_\pi\omega
+        =\mathcal I_{\pi_T}(b_E^*\omega)
+\tag{PS15.10}\label{r15ps:bundle-base-change}
+\]
+on ordinary opens where the expressions are defined.  Ordinary
+gluing gives the global assertion.
+
+For a PWS target form $\nu$, first apply
+Lemma~\ref{r15ps:PWS-projection-line} at every stage of the
+iterated projective-line integration.  At each stage the
+remaining target factor is the pullback of $\nu$, and is PWS.
+The iterated operator therefore commutes with its wedge.
+The finite map $Q_{m,S}$ pulls back
+$\omega\wedge\pi_m^*\nu$ to
+$Q_{m,S}^*\omega\wedge p_m^*\nu$.  Formula
+\eqref{r15ps:space-output} proves the same projection identity
+for a projective space.  Applying this on every trivializing
+ordinary open and gluing gives
+\[
+ \mathcal I_\pi(\omega\wedge\pi^*\nu)
+                           =(\mathcal I_\pi\omega)\wedge\nu
+\tag{PS15.11}\label{r15ps:PWS-projection}
+\]
+as an actual PWS identity.  This deduction uses the explicit
+tensor lemma, not an insertion of a nonsmooth test into
+\eqref{r15ps:bundle-pairing}.
+
+Finally proper pushforward of currents commutes with the full
+actual differentials, as follows directly by actual Stokes
+with differentiated compact smooth tests.  The relative real
+degree is $2m$, so no odd-degree sign is introduced.  Thus, if
+the corresponding full derivative of $\omega$ is zero, that
+of the actual output has zero current and is zero by current
+injectivity.  This last assertion does not apply the PWS
+pushforward theorem to a derivative with positive delta
+codimension.  It uses only the current identity and the fact
+that the derivative of the already constructed output is an
+actual form.
+\end{proof}
+
+\begin{corollary}[Compact PWS test pairings]
+\label{r15ps:PWS-tests}
+For the projective-line, projective-space, and projective-bundle
+operators above, the prescribed pairing also holds against
+every compactly supported complementary ordinary PWS test.
+No test with positive delta codimension is included by this
+corollary.
+\end{corollary}
+
+\begin{proof}
+Let $\eta$ be such a PWS test on the base.  The source form
+$\omega\wedge\pi^*\eta$ is PWS and compactly supported,
+since $\pi$ is proper.  The projection identity gives the
+top-degree ordinary PWS output
+\[
+ \mathcal I_\pi(\omega\wedge\pi^*\eta)
+                             =(\mathcal I_\pi\omega)\wedge\eta.
+\]
+Its support lies in $\operatorname{supp}\eta$ by ordinary
+restriction compatibility.  Choose an ordinary smooth compact
+scalar $\zeta$ equal to one on a neighborhood of
+$\operatorname{supp}\eta$.  The original all-smooth pairing
+theorem, now applied to the PWS source
+$\omega\wedge\pi^*\eta$ and the smooth scalar test $\zeta$,
+gives
+\[
+ \int_U(\mathcal I_\pi\omega)\wedge\eta
+     =\int_{E_U}\omega\wedge\pi^*\eta.
+\]
+The same choice of $\zeta$ makes it drop out of the source
+integral.  This proves the assertion without extending the
+input or test category beyond PWS.
+\end{proof}
+
+\paragraph{Boundary of the new interface.}
+The theorem constructs PWS outputs for projective-bundle
+projections of any relative dimension, with all ordinary
+smooth-test pairings and the stated algebraic base change.
+It does not itself compute Aeppli cohomology of a nontrivial
+projective bundle.  In particular, a higher-rank relative
+diagonal is not a divisor, so the rank-two scalar diagonal
+kernel does not automatically extend.  Any incidence or flag
+argument using this interface must separately justify its
+cohomological identities, choice of smooth Chern forms,
+primitive degrees, and exceptional quotient.

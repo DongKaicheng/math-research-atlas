@@ -1,0 +1,319 @@
+% Round 18. New-sectors branch. Candidate until the independent audit is bound.
+\section{Fourfold hypersurfaces with a resolved hyperplane special fiber}
+\label{r18hp:section}
+
+This section constructs supplied strict semistable models with genuine
+higher strata.  It uses only blowups with explicitly computed charts.
+The resulting generic varieties need not have potential good reduction;
+Section~\ref{r18hm:section} proves a stronger monodromy distinction when
+there are at least six hyperplanes.  The model construction and the
+associated edge-divisor generation calculation are separate arguments.
+
+\subsection{The input and the ordered resolution}
+
+Let $R$ be the valuation ring of a finite extension $K/\mathbf Q_p$,
+let $\pi$ be a uniformizer, and let $k$ be its finite residue field.
+Fix $d\ge3$ linear forms $\ell_1,\ldots,\ell_d$ on
+$\mathbf P^5_R$ whose reductions are in geometric linear general
+position.  Thus every intersection of at most five of their reduced
+hyperplanes is a projective space of the expected dimension, and
+any intersection of six is empty.  Write
+\[
+ P=\prod_{i=1}^d\ell_i,\qquad H_i=V(\bar\ell_i),\qquad
+ H_I=\bigcap_{i\in I}H_i\simeq\mathbf P_k^{5-|I|}.
+ \tag{HP18.1}\label{r18hp:arrangement}
+\]
+For a degree-$d$ form $Q$ over $R$, impose the following condition:
+\[
+ \begin{array}{l}
+ V(\bar Q)\cap H_I\text{ is smooth of codimension one in }H_I
+       \text{ if }1\le |I|\le4,\\
+ V(\bar Q)\cap H_I=\varnothing\text{ if }|I|=5.
+ \end{array}
+ \tag{HP18.2}\label{r18hp:transverse}
+\]
+Empty strata are omitted.  In particular no positive-dimensional
+$H_I$ is contained in $V(\bar Q)$.  Assume that the hypersurface
+\[
+                  X=V(P+\pi Q)\subset\mathbf P^5_K
+ \tag{HP18.3}\label{r18hp:generic}
+\]
+is smooth and geometrically integral.
+
+Start with $\mathcal M_0=\mathbf P^5_R$.  In this ambient scheme
+blow up $H_1\subset(\mathcal M_0)_k$, then the strict transform
+of $H_2$, and continue through the strict transform of $H_{d-1}$.
+Denote the final ambient scheme by $\mathcal M$.  Let
+$\mathcal X\subset\mathcal M$ be the closure of $X$; equivalently
+it is the final strict transform of $V(P+\pi Q)$.
+All blowup centers in the ambient schemes are the specified native
+$k$-schemes, not centers chosen after an unnamed scalar extension.
+
+\begin{theorem}[The native resolved model and every closed stratum]
+\label{r18hp:model}
+The scheme $\mathcal X$ is integral, regular, flat and projective
+of relative dimension four over $R$.  Its special fiber is a
+reduced strict normal-crossings divisor
+\[
+                         Y=\bigcup_{i=1}^d D_i.
+ \tag{HP18.4}\label{r18hp:fiber}
+\]
+There are exactly $d$ irreducible components, indexed by the original
+hyperplanes.  For every nonempty $I\subseteq\{1,\ldots,d\}$ with
+$|I|\le5$, write $h=\max I$.  The closed stratum
+$D_I=\bigcap_{i\in I}D_i$ is obtained from $H_I$ by blowing up,
+in the order $j=d,d-1,\ldots,h+1$, the strict transforms of
+\[
+                    Z_{I,j}=H_I\cap H_j\cap V(\bar Q).
+ \tag{HP18.5}\label{r18hp:centers}
+\]
+An empty center is skipped.  Every center which occurs is smooth;
+its successive strict transforms are isomorphic to the original
+$Z_{I,j}$.  In particular:
+\[
+ \begin{array}{c|c|c}
+ |I|&H_I&\text{centers in }H_I\text{ and its successive blowups}\\ \hline
+ 1&\mathbf P^4&\text{smooth surfaces}\\
+ 2&\mathbf P^3&\text{smooth curves}\\
+ 3&\mathbf P^2&\text{smooth zero-dimensional schemes}\\
+ 4&\mathbf P^1&\text{none}\\
+ 5&\mathbf P^0&\text{none}.
+ \end{array}
+ \tag{HP18.6}\label{r18hp:types}
+\]
+Each $D_I$ is geometrically connected.  Intersections of six or
+more components are empty.  Thus the dual complex is precisely
+the $4$-skeleton of the $(d-1)$-simplex, with the convention that
+it is the whole simplex when $d\le5$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: native ambient centers.}
+The center $H_i$ has codimension two in $\mathbf P^5_R$ and is
+smooth over $k$.  Its strict transform after an earlier ambient
+blowup is unchanged: the earlier center induces on $H_i$ the
+ideal of the Cartier divisor $H_i\cap H_j$, and blowing up a
+Cartier ideal is an isomorphism.  The same observation applies
+successively.  In local coordinates the center of the next blowup
+is given by $(t,x_i)$ below, so is a regular codimension-two
+immersion in the already regular ambient scheme.  These equations
+also verify the assertion at intersections of several earlier
+centers.  Hence all ambient blowups are well defined and projective.
+
+The original hypersurface is flat over $R$: its special equation
+$P$ is nonzero, and its defining equation is primitive.  Its local
+rings inject into their generic localizations.  The generic fiber
+is integral, so the total hypersurface and its strict transforms
+are integral.  A strict transform is computed by removing the
+exceptional factor from the total-transform equation; the charts
+below are the saturated charts, or equivalently closures of the
+generic charts.  No component supported only on an exceptional
+divisor is retained.
+
+\emph{Step 2: the only local singularity to resolve.}
+At a geometric point of the special fiber, let
+$i_1<\cdots<i_s$ be exactly the hyperplanes passing through it.
+At most five pass through a point.  Locally rename their equations
+$x_1,\ldots,x_s$.  The other factors of $P$ are units.
+If $\bar Q$ is nonzero at the point, the hypersurface is already
+strict semistable, locally $x_1\cdots x_s=\pi$ after absorption of
+a unit.  Each component ideal on this hypersurface is Cartier,
+so the stated ambient blowups restrict to isomorphisms there.
+
+Suppose now that $\bar Q=0$.  Condition
+\eqref{r18hp:transverse} says that $x_1,\ldots,x_s$ and
+$y=-Q/u$, where $u$ is the product of the unit factors, are part
+of a relative etale coordinate system on the ambient smooth
+scheme.  In particular $s\le4$ in this case.  The exact equation is
+\[
+                          x_1\cdots x_s=\pi y.
+ \tag{HP18.7}\label{r18hp:binomial}
+\]
+The calculation is therefore in an actual etale chart, not merely
+in a formal completion.  Extra smooth coordinates are suppressed.
+
+Blow up $(\pi,x_1)$.  Its $\pi$-chart has
+$x_1=\pi u_1$ and strict equation
+\[
+                         y=u_1x_2\cdots x_s.
+\]
+After eliminating $y$ this chart is regular and smooth over $R$.
+Its other chart has $\pi=x_1t_1$ and strict equation
+\[
+                          x_2\cdots x_s=t_1y.
+\]
+The next ambient center is $(t_1,x_2)$ in this latter chart;
+its strict transform is absent from the first chart.
+Repeating gives the following complete collection of charts,
+indexed by $m=1,\ldots,s$:
+\[
+ \begin{split}
+  \pi&=x_1\cdots x_{m-1}t_{m-1},\\
+  x_m&=t_{m-1}u_m,\\
+  y&=u_mx_{m+1}\cdots x_s.
+ \end{split}
+ \tag{HP18.8}\label{r18hp:charts}
+\]
+For $m=1$, $t_0=\pi$ and the first line is tautological.
+For $m=s$, set $u_s=y$: this is the final chart after the
+first $s-1$ blowups, not an additional blowup.  Factors indexed
+by global hyperplanes absent from the local point give identity
+operations and are omitted.
+
+The independent coordinates in chart $m$ are
+$x_1,\ldots,x_{m-1},t_{m-1},u_m,x_{m+1},\ldots,x_s$
+and the extra smooth coordinates, subject only to the first
+line of \eqref{r18hp:charts}.  This is the standard regular
+strict semistable chart.  Its special components are
+$x_1=0,\ldots,x_{m-1}=0,t_{m-1}=0$, with multiplicity one.
+Their generic points map birationally to the corresponding
+original hyperplanes; the last divisor corresponds to $H_{i_m}$.
+Thus the charts give regularity and reduced strict semistability,
+and show that no additional vertical component occurs.
+They also prove smoothness of every intersection.
+Projectivity follows from the ambient construction, and
+flatness follows from integrality and the nonconstant map to
+$\operatorname{Spec}R$.
+
+\emph{Step 3: identification of every stratum.}
+Fix a set $I$ and let $h=\max I$.  In the local notation retain
+the factors after the largest index in $I$.  The stratum $D_I$
+is covered by precisely the charts in
+\eqref{r18hp:charts} whose last displayed component has index
+at least $h$.  On $D_I$ these charts, mapped to $H_I$, have the
+following form: first the chart
+\[
+             y=u_h\prod_{j>h}x_j,
+\]
+and for each later factor $x_m$, the chart
+\[
+             x_m=t u_m,\qquad y=u_m\prod_{j>m}x_j.
+ \tag{HP18.9}\label{r18hp:stratum-charts}
+\]
+The earlier $x_j$ not belonging to $I$ remain free coordinates.
+These are exactly the charts obtained by blowing up on $H_I$
+first $(y,x_d)$, then the strict-transform ideal $(y',x_{d-1})$,
+and so on down to $(y^{\prime\cdots\prime},x_{h+1})$.
+For example, the $x_d$-chart of the first blowup has $y=x_dy'$;
+the other chart has $x_d=ty$ and is already the last chart of
+\eqref{r18hp:stratum-charts}.  Induction gives every chart and
+its transition functions.  The ideals are the global ideals of
+\eqref{r18hp:centers}; the local descriptions therefore glue to
+the asserted global iterated blowup, including over native
+non-rational closed points.
+
+By \eqref{r18hp:transverse}, each nonempty $Z_{I,j}$ is smooth
+of dimension $3-|I|$.  Before blowing it up, a previously blown
+center $Z_{I,j'}$, $j'>j$, induces on it the Cartier ideal of
+$H_{j'}|_{Z_{I,j}}$.  This divisor is smooth whenever nonempty,
+again by \eqref{r18hp:transverse}; the relevant local ideals
+are $(x_j,y)$ and $(x_{j'},y)$.  Its strict transform is thus
+isomorphic to $Z_{I,j}$, and the coordinate calculation shows
+that it remains a regular codimension-two center in the
+transformed $H_I$.  For zero-dimensional $Z_{I,j}$ these
+intersections are empty, since $\bar Q$ avoids fivefold
+hyperplane intersections.  For $|I|=4$ the proposed centers
+are already empty for the same reason.  This proves
+\eqref{r18hp:types} and the smoothness assertions.
+
+Each iterated blowup is birational to the indicated projective
+space, hence geometrically connected.  No intersection with
+$|I|\ge6$ can occur, because its image would lie in the empty
+$H_I$.  Every $|I|\le5$ stratum is nonempty by the blowup
+description.  The last statement about the dual complex follows.
+\end{proof}
+
+\subsection{Numerical local exactness and ordinary actual Green forms}
+
+The direct argument in HG18 computes the actual Picard groups of
+the double strata and the actual triple divisor classes.  Their
+exceptional-coordinate matrix is the negative identity.  For one
+global relatively ample class $H$ it proves
+$W^1=HW^0+\operatorname{im}\tau$, with the actual alternating
+triple Gysin image contained in $\ker\sigma_2$.  The numerical
+divisor-generation theorem DG18 then gives $U_2=0$.  This is the
+primary argument; it requires no middle positivity on a component.
+
+\begin{corollary}[Fourfold local exactness on the new models]
+\label{r18hp:U2}
+On the model of Theorem~\ref{r18hp:model}, with the notation and
+signs of DQ17, one has
+\[
+ U_2=
+ \frac{\ker(\rho_2:C^2\to W^2)\cap
+                  \operatorname{im}(\sigma_2:W^1\to C^2)}
+      {\operatorname{im}(\sigma_2\rho_1:C^1\to C^2)}=0,
+ \qquad K_{\mathrm{comp},\ell}^2=\ker\rho_2.
+ \tag{HP18.10}\label{r18hp:U2zero}
+\]
+Hence the ER17 refined quotient vanishes in codimension two.
+More generally every specified geometrically homologically
+trivial rational cycle on $X$ has exact-support ordinary actual
+strong G in every codimension, over the original $K$ and for
+all original compact actual tests.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{r18hg:generation} in dimension four to
+obtain $U_2=0$.  Its proof retains every triple and higher stratum
+and uses the restrictions of one actual global ample class.
+
+Every threefold double is an iterated blowup of $\mathbf P^3$
+along smooth curves.  CD17 proves numerical-to-geometric-cycle-class
+comparison for its curve classes, and this statement is retained
+under the displayed smooth blowups over every finite extension of
+$k$.  CL17 therefore gives the second equality of
+\eqref{r18hp:U2zero}.  DQ17's exact sequence now makes the refined
+model quotient zero, and ER17 proves obstruction zero for the
+specified codimension-two cycle.  The other codimensions on a
+fourfold are the already frozen divisor, one-cycle, and zero-cycle
+cases.  The frozen original-field reconstruction gives the
+ordinary actual Green form for the original specified cycle on
+its exact support complement and its identity against every
+compact actual test.  No analytic pushforward along the ambient
+resolution appears in this argument.
+\end{proof}
+
+\paragraph{An independently checkable positivity route.}
+The new signature theorem S18 also proves that $\mathbf P^4$
+and its displayed iterated smooth blowups satisfy numerical
+hard Lefschetz and primitive middle Hodge positivity for every
+ample class.  The other strata have dimension at most three,
+where the necessary numerical assertions follow from divisor
+Hodge index.  Thus, conditional only on the separate proof and
+review of S18, the frozen R6 numerical BGS theorem gives
+$\ker A_a=\ker\rho_a+\operatorname{im}\sigma_a$ in every degree
+on these same models.  This supplies a second route to $U_2=0$.
+It is not a dependency of the direct HG18/DG18 proof above.
+
+\begin{remark}[Extensions and the precise range of this theorem]
+If $L/K$ is unramified, the same equations and the same model
+satisfy the hypotheses over $L^\circ$.  Applying the theorem anew
+to an arbitrary cycle on $X_L$ proves full G there; no claim that
+such a cycle descends to $K$ is needed.  A further arbitrary
+finite extension changes the coefficient of $Q$ to a unit times
+a higher power of a uniformizer.  The present chart theorem does
+not assert a semistable resolution for that new equation, and
+this corollary alone does not establish the full-cycle theorem
+on every ramified base change.  For classes actually pulled back
+from $K$, the already frozen finite-trace and pullback interfaces
+remain available with their full native degree.
+\end{remark}
+
+\paragraph{Nonemptiness and provenance.}
+Over an algebraic closure, general hyperplanes satisfy
+\eqref{r18hp:arrangement}, and the open set of degree-$d$ forms
+satisfying \eqref{r18hp:transverse} is nonempty by Bertini on the
+finitely many linear strata and avoidance of their zero-dimensional
+members.  These data are defined over a finite extension of a
+finite residue field, and over $\mathbf Q$ they can be chosen
+rationally and then spread away from finitely many primes.
+Smoothness of the generic member is an explicit hypothesis,
+verified in the global construction below.
+The use of ordered component blowups in hyperplane degenerations
+is classical; for example Gross--Siebert discuss it in
+\emph{Affine manifolds, log structures, and mirror symmetry}.
+No priority claim is made for the resolution procedure.
+The contribution here is its explicit native fourfold stratum
+calculation and activation of the refined numerical criterion
+by the direct edge-divisor generation calculation in HG18.

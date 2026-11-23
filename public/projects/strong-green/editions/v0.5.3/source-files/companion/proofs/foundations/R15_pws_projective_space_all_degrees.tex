@@ -1,0 +1,258 @@
+% Round 15. A complete PWS-represented calculation on projective space.
+% Uses constructive PWS three-term boundary certificates, not arbitrary actual trace.
+\section{The PWS-represented Aeppli groups of projective space in every bidegree}
+\label{r15allps:section}
+
+The symmetric-product finite cover gives a shorter route to the
+PWS-represented calculation on projective space in all degrees.
+The proof retains a stronger boundary certificate than mere
+vanishing in the actual Aeppli quotient: its two first-derivative
+primitive inputs and its separate $D$-primitive input are PWS.
+This is exactly what permits the established all-bidegree finite
+PWS trace to descend the certificate.
+
+\begin{definition}[A PWS three-term boundary certificate]
+\label{r15allps:certificate}
+For a PWS form $\omega$ of bidegree $(p,q)$, such a certificate
+is a strict actual equality
+\[
+                 \omega=d'\mu+d''\nu+D\psi
+\tag{PA15.1}\label{r15allps:three-term}
+\]
+with global PWS inputs of degrees
+$(p-1,q)$, $(p,q-1)$, and $(p-1,q-1)$, respectively.
+Negative degrees mean zero. Every such form is an actual Aeppli
+boundary. The individual derivatives in
+\eqref{r15allps:three-term} need not be PWS; only their combined
+sum is required to be the given PWS form.
+\end{definition}
+
+\begin{lemma}[Finite descent of this certificate]
+\label{r15allps:finite}
+Let $q:V\to W$ be finite dominant between normal integral
+projective $K$-varieties, of native degree $e$.
+Let $\omega\in\operatorname{PS}^{p,q}(W)$.
+If $q^*\omega$ has a PWS three-term boundary certificate
+on $V$, then $\omega$ has one on $W$.
+\end{lemma}
+
+\begin{proof}
+The frozen all-bidegree finite PWS trace is defined on
+$q^*\omega$ and on all three supplied primitive inputs.
+Its native projection identity gives
+$\operatorname{Tr}^{\rm PS}_q(q^*\omega)=e\omega$.
+Push the certificate as currents and commute proper current
+differentiation. The prescribed all-actual-test trace pairings
+and current injectivity give
+\[
+ \omega
+ =d'\bigl(e^{-1}\operatorname{Tr}^{\rm PS}_q\mu\bigr)
+  +d''\bigl(e^{-1}\operatorname{Tr}^{\rm PS}_q\nu\bigr)
+  +D\bigl(e^{-1}\operatorname{Tr}^{\rm PS}_q\psi\bigr).
+\tag{PA15.2}\label{r15allps:trace-certificate}
+\]
+The exact source is
+\path{round14/foundations_audit/finite_pws_descent.tex},
+Theorem \texttt{r14f:pws-trace} and its derivative-current
+consequence. No trace of an arbitrary actual primitive or
+of a separate positive-delta-codimension derivative is used.
+\end{proof}
+
+Choose a smooth curvature $h$ of $\mathcal O_{\mathbf P^1}(1)$.
+It is separately closed, satisfies $h^2=0$ by dimension, and
+has native mass one over $K$.
+
+\begin{lemma}[A constructive decomposition on a product of projective lines]
+\label{r15allps:product}
+Let $R_m=(\mathbf P_K^1)^m$ and write $h_i$ for the pullback
+of $h$ from its $i$th factor. Put $h_I=\prod_{i\in I}h_i$,
+with $h_\varnothing=1$. Every $D$-closed
+$\alpha\in\operatorname{PS}^{p,q}(R_m)$ has the following
+strict actual decomposition, with a PWS three-term boundary
+certificate on the right:
+\[
+ \alpha=
+ \begin{cases}
+ \displaystyle\sum_{|I|=k}c_I h_I+d'\mu+d''\nu+D\psi,
+                                      &p=q=k,\quad0\leq k\leq m,\\
+ d'\mu+d''\nu+D\psi,                    &p\ne q.
+ \end{cases}
+\tag{PA15.3}\label{r15allps:product-decomposition}
+\]
+Degrees above dimension are zero. The coefficients in the
+diagonal case are unique even modulo all actual Aeppli
+boundaries, and are given by
+\[
+                         c_I=\int_{R_m}\alpha h_{I^c}.
+\tag{PA15.4}\label{r15allps:product-period}
+\]
+\end{lemma}
+
+\begin{proof}
+Consider $\pi:R_{m-1}\times\mathbf P^1\to R_{m-1}$ and
+let $h_m$ be its last-factor curvature. Apply the proved
+all-bidegree PWS incidence homotopy
+Lemma~\ref{r15s:general-homotopy} to this trivial rank-two
+bundle. Choose its quotient-line metric so that the incidence
+curvature $\nu$ there is exactly $-h_m$.
+Projective-line base change gives $C\alpha=\pi^*I\alpha$,
+where
+\[
+              I\alpha=\pi_*\alpha,\qquad
+              J\alpha=\pi_*(h_m\alpha).
+\]
+These are $D$-closed PWS forms of degrees $(p-1,q-1)$ and
+$(p,q)$. The strict homotopy becomes
+\[
+ \alpha=\pi^*(J\alpha)+h_m\pi^*(I\alpha)
+               +D\mathcal G\alpha+d''\mathcal P\alpha
+                                      -d'\mathcal Q\alpha,
+\tag{PA15.5}\label{r15allps:product-homotopy}
+\]
+with every transgression input PWS in its indicated degree.
+
+Induct on $m$, starting with the point. Pull back the
+certificates for $I\alpha$ and $J\alpha$. Multiplication by
+the smooth separately closed $h_m$ preserves their three-term
+form and their PWS inputs. Thus the induction yields
+\eqref{r15allps:product-decomposition}. A scalar on the point
+contributes only in bidegree $(0,0)$, so a monomial can occur
+only when $p=q=k$ and it involves exactly $k$ distinct factors.
+
+To check uniqueness in the full actual quotient, pair the
+diagonal formula with $h_{I^c}$. The product $h_Jh_{I^c}$
+is zero unless $J=I$, because otherwise one factor is squared.
+For $J=I$ its native integral is one by iterated projective
+fiber-degree calibration. Every actual Aeppli boundary, including
+the $D\psi$ term, has zero pairing with this separately closed
+test by actual Stokes. This proves
+\eqref{r15allps:product-period} and the asserted uniqueness.
+\end{proof}
+
+\begin{definition}[PWS-represented groups in arbitrary bidegree]
+\label{r15allps:group}
+For a smooth integral projective variety $V/K$, let
+\[
+ H_{\mathrm A,\mathrm{PSrep}}^{p,q}(V)
+   =\operatorname{im}\left(
+       \ker(D:\operatorname{PS}^{p,q}(V)\to B^{p+1,q+1}(V))
+        \longrightarrow H_{\mathrm A,\mathrm{act}}^{p,q}(V)
+                         \right).
+\tag{PA15.6}\label{r15allps:PSrep}
+\]
+This agrees with the earlier definitions in diagonal degrees
+two and three; its quotient uses all actual boundary coefficients.
+\end{definition}
+
+\begin{theorem}[All PWS-represented groups of projective space]
+\label{r15allps:projective-space}
+For every $m\geq0$ and all nonnegative $p,q$,
+\[
+ H_{\mathrm A,\mathrm{PSrep}}^{p,q}(\mathbf P_K^m)
+   =
+   \begin{cases}
+      \mathbf R[h^k],&p=q=k,\quad 0\leq k\leq m,\\
+      0,&p\ne q\ \hbox{or}\ \max(p,q)>m.
+   \end{cases}
+\tag{PA15.7}\label{r15allps:Pm}
+\]
+Here $h$ may be any smooth curvature of $\mathcal O(1)$.
+More precisely, every $D$-closed PWS representative of a
+diagonal class differs from its scalar multiple of $h^k$
+by a PWS three-term boundary certificate, and every off-diagonal
+$D$-closed PWS form has such a certificate.
+\end{theorem}
+
+\begin{proof}
+The cases $m=0$ and forms above dimension are immediate.
+For $m\geq1$, use the finite symmetric-product morphism
+\[
+ q_m:(\mathbf P^1)^m\longrightarrow
+               \operatorname{Sym}^m(\mathbf P^1)\simeq\mathbf P^m,
+                         \qquad\deg_K q_m=m!.
+\tag{PA15.8}\label{r15allps:symmetric-cover}
+\]
+It is the binary-form multiplication map, so
+$q_m^*\mathcal O_{\mathbf P^m}(1)
+ \simeq\bigotimes_{i=1}^m\operatorname{pr}_i^*
+                  \mathcal O_{\mathbf P^1}(1)$.
+The finite map and this native degree are the same ones
+already used for PWS integration in
+Section~\ref{r15ps:section}.
+
+Let $\alpha$ be $D$-closed PWS on $\mathbf P^m$.
+The pullback $q_m^*\alpha$ is PWS and is invariant under
+all permutations of the factors. Apply
+Lemma~\ref{r15allps:product}. In diagonal degree $k$, the
+uniqueness of its actual Aeppli coefficients makes all
+$c_I$ with $|I|=k$ equal to one real number $c$.
+Indeed permutations act transitively on these subsets,
+preserve the pullback form, and carry PWS certificates to
+PWS certificates. In off-diagonal degree there are no
+monomial terms.
+
+Let $H=\sum_i h_i$ on the source. The ratio between the
+pullback smooth metric defining $q_m^*h$ and the product
+smooth metric defining $H$ is a global smooth scalar $u$,
+with sign chosen so that $q_m^*h-H=Du$.
+For $k\geq1$,
+\[
+ (q_m^*h)^k-H^k
+   =D\left(u\sum_{j=0}^{k-1}
+                    (q_m^*h)^jH^{k-1-j}\right),
+       \qquad
+ H^k=k!\sum_{|I|=k}h_I.
+\tag{PA15.9}\label{r15allps:metric}
+\]
+The primitive inside the first $D$ is smooth, and every
+curvature factor is separately closed. The case $k=0$
+is the identity $1=1$. Therefore
+$q_m^*(\alpha-(c/k!)h^k)$ has a PWS three-term boundary
+certificate in diagonal degree, with the evident value
+$c$ when $k=0$. In off-diagonal degree $q_m^*\alpha$
+already has that certificate. Lemma~\ref{r15allps:finite}
+descends it using the native degree $m!$ and the traces
+of its three PWS primitive inputs. This proves spanning
+and the stronger certificate statement.
+
+Finally $[h^k]\ne0$: pair with the separately closed
+$h^{m-k}$ and use $\int_{\mathbf P^m}h^m=1$.
+Actual Aeppli boundaries have zero such pairing.
+This proves the claimed dimension in the full actual
+quotient, not only in a smaller PWS boundary quotient.
+\end{proof}
+
+\begin{corollary}[Finite constant fields and original tests]
+\label{r15allps:constant-field}
+For finite $L/K$, the same formula holds for
+$\mathbf P_L^m$ regarded as a $K$-variety, in the original
+$K$-actual theory. Its nonzero diagonal generator has native
+top pairing $[L:K]$. On $(\mathbf P_L^1)^m$, the period
+formula \eqref{r15allps:product-period} is divided by $[L:K]$.
+\end{corollary}
+
+\begin{proof}
+Run the entire argument on these smooth integral projective
+$K$-schemes. Their projective-line operators and finite traces
+are the original-field ones. Each relative projective-line
+mass is one, while the final zero-dimensional native mass is
+$[L:K]$. The symmetric-product map between the two varieties
+with constant field $L$ still has native degree $m!$.
+No equality of test categories over different fields is inferred.
+\end{proof}
+
+\paragraph{Full actual groups and the later degree-two result.}
+The theorem computes the image of $D$-closed PWS forms in
+the actual Aeppli quotient. It does not prove
+$H_{\mathrm A,\mathrm{act}}^{p,q}(\mathbf P^m)
+ =H_{\mathrm A,\mathrm{PSrep}}^{p,q}(\mathbf P^m)$
+when a new positive-delta-codimension representative problem
+arises. The full actual groups in degrees $(1,1)$ and
+$(2,2)$ are proved by the separate incidence and
+fixed-section arguments; see Corollary~\ref{r15a2:full-HA22}
+for the latter. The full actual diagonal groups in degrees
+$(k,k)$ with $k\geq3$ remain open. The retained separate
+$D$-primitive in the certificate is essential; its first
+derivative need not be PWS. The theorem does not give a trace
+on arbitrary actual forms, replace every actual nonclosed
+primitive by PWS, or prove the general strong conjecture G.

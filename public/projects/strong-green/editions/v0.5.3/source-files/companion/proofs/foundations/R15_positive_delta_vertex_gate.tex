@@ -1,0 +1,167 @@
+% Round 15. A concrete failure of an open-edge-only extension.
+\section{Positive-delta mass at a moving tree vertex}
+\label{r15vg:section}
+
+The PWS moving-tree proof cannot be extended to arbitrary actual
+inputs by discarding the lower-dimensional vertex strata.  The
+following example identifies a precise failed step; it is not a
+counterexample to existence of an ordinary projected form.
+
+\begin{proposition}[A vertex contribution missed by open-edge integration]
+\label{r15vg:vertex}
+Let $K/\mathbf Q_p$ be any finite valued extension.  There are a
+global actual form
+\[
+ \alpha\in B^{2,2}(\mathbf P^1_x\times\mathbf P^1_z)
+\]
+and a nonzero global PWS form $\omega\in\operatorname{PS}^{1,1}
+(\mathbf P^1_x)$ with these properties.
+\begin{enumerate}
+\item For projection $\pi$ to the first factor, its prescribed
+proper current is $\pi_*[\alpha]=[\omega]$, with the original
+$K$ normalization.
+\item On a compact ordinary base annulus, the relevant marked
+fiber tree has marks $0,x,\infty$.  On every strict open edge
+of this tree, the restriction of $\alpha$ is zero.  Its nonzero
+top measure is carried by the moving branch vertex of this
+tree, whose radius is $|x|$.
+\item Consequently a procedure that extends the PWS ray formula
+by retaining only its open-edge integrals and discarding all
+vertex-supported strata returns zero for this input and fails
+the prescribed current pairing.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $u=-\log|x|$ on the base torus and choose a nonnegative,
+nonzero $F\in C_c^\infty(\mathbf R)$.  The smooth form
+\[
+                  \omega=F(u)\,d'u\wedge d''u
+\tag{VG15.1}\label{r15vg:omega}
+\]
+extends by zero to the base projective line.  Its support is
+contained in a compact annulus away from $0$ and $\infty$,
+and its native integral is nonzero.
+
+Let $\theta_0$ be the standard model-metric curvature of
+$\mathcal O_{\mathbf P^1_w}(1)$.  Its top measure is the
+native degree-one Dirac mass at the Gauss point.  On
+$\mathbf G_{m,x}\times\mathbf P^1_z$ the map
+\[
+          A(x,z)=(x,w=z/x)
+\tag{VG15.2}\label{r15vg:automorphism}
+\]
+is an algebraic automorphism over the base.  Put
+\[
+       \theta_x=A^*\operatorname{pr}_w^*\theta_0,
+       \qquad \alpha=\theta_x\wedge\pi^*\omega
+\tag{VG15.3}\label{r15vg:alpha}
+\]
+there.  Because the base support is contained in the compact
+annulus just chosen, this actual form is zero on a whole
+ordinary neighborhood of the two omitted base fibers and
+extends by zero to the projective product.  This uses a
+genuine analytic pullback and a literal ordinary zero
+extension, not restriction of a polyhedral current to a
+half-open cell.
+
+For every ordinary smooth scalar test $\eta$ on the proper
+base, the frozen projective degree formula (R10.1), applied
+to the actual top form $\omega\eta$, gives
+\[
+ \int_{\mathbf P^1\times\mathbf P^1}
+                  \alpha\wedge\pi^*\eta
+       =\int_{\mathbf P^1}\omega\eta.
+\tag{VG15.4}\label{r15vg:pairing}
+\]
+The same equality follows directly from the genuine product
+measure in coordinates $(x,w)$ and the automorphism $A$.
+Its degree is one, so no extension-field factor enters.
+Taking $\eta=1$ proves that this current is nonzero.
+
+In the $(x,w)$ coordinates, the top measure in
+\eqref{r15vg:alpha} is the product of the PWS base measure
+and the Gauss Dirac mass.  On the product skeleton its
+polyhedral description is therefore a density in the
+$u$ direction multiplied by the divisor $v(w)=0$.
+Writing $t=v(z)$, this becomes the graph
+\[
+                              t=u.
+\tag{VG15.5}\label{r15vg:moving-vertex}
+\]
+With the additional genuine unit $z-x$, the fiber tree with
+marks $0,x,\infty$ has three strict open edges: the edge
+toward zero, the edge toward $x$, and the edge toward
+infinity.  Under $w=z/x$ these are the three open edges
+of the tree with marks $0,1,\infty$.  The Gauss curvature
+vanishes on each of them and is concentrated at their
+common vertex.  Thus the same statement holds for the
+pulled-back top measure and for its polyhedral actual
+restrictions.  Its vertex moves with $u$ as in
+\eqref{r15vg:moving-vertex}.
+
+Every open-edge integral is consequently zero, whereas
+\eqref{r15vg:pairing} is nonzero for $\eta=1$.
+This proves the asserted failure of the specified procedure.
+\end{proof}
+
+\paragraph{The local interface isolated by the example.}
+For a finite splitting cover and a finite genuine tuple of base
+units, one may compute the push of the positive-delta source
+current on a refined moving-tree skeleton, retaining vertices
+and every higher-codimension stratum.  This supplies a candidate
+balanced polyhedral current on the base skeleton.  To obtain an
+ordinary actual output one needs a single ambient
+$\delta$-form in those base unit coordinates whose genuine
+pullbacks give the candidate on every further test-moment
+refinement.  The later universal graphic kernel of
+Section~\ref{r15ug:section} and the finite ambient atlas of
+Section~\ref{r15ad:section} supply precisely this interface.
+Theorem~\ref{r15a2:projection} consequently resolves arbitrary
+actual $(2,2)$ input over every smooth algebraic base, with
+all ordinary smooth compact mixed tests.  The independent
+proper-curve argument in Section~\ref{r15tc:section} additionally
+gives every actual scalar test in its top-degree scope.
+
+There are two distinct issues.  First, the PWS calculation's
+discarded vertex strata now carry nonzero mass, as the
+proposition proves.  Second, a balanced current on one tropical
+skeleton need not be a $\delta$-form there: Mihatsch,
+\emph{$\delta$-Forms on Lubin--Tate spaces}, Example~2.45(3),
+explicitly warns that a flat tropical pushforward can be
+balanced without admitting the required $\delta$ presentation.
+The verified finite trace was not the missing interface: the
+output has degree $(1,1)$, already within its actual range.
+The new proof supplies ordinary representability before that
+descent.  The example continues to rule out discarding vertex
+strata as a shortcut to that proof.
+
+\paragraph{The universal-family route and its subsequent completion.}
+The split root functions define an algebraic map to a
+configuration space of distinct marked points.  Its root
+differences give the corresponding valuated tree.  On a chamber
+of fixed tree type, the complete balanced tree cycle can be
+written as the sum of its translated vertex-star fans minus
+one entire affine line for each bounded edge.  Along a bounded
+edge, the two rays from its ends overlap exactly in the segment;
+subtracting the full line leaves that segment.  Every remaining
+unbounded ray occurs once.  This is an identity of weighted
+one-dimensional cycles on that chamber.
+
+Its affine translations permit ambient affine $\delta$ calculus
+inside the chamber; Section~\ref{r15ft:section} proves this
+ordinary actual output for a supplied single ambient input
+and a fixed tree type with positive bounded-edge lengths.
+Across a face where a bounded edge
+collapses, the vertex positions are only piecewise affine in
+the parameters.  One cannot pull a positive-delta input through
+those maps by the PWS pullback rule.  A universal balanced
+family, an ambient representative for its projected currents,
+and compatibility with the analytic configuration-map pullback
+resolve this specific problem.  They are proved separately
+in Sections~\ref{r15ug:section} and~\ref{r15ad:section}, using
+the complete-graph matroid family, its ambient cutting kernel,
+and genuine ambient cutoff partitions.  This example itself
+does not prove those assertions.  Neither a tropical
+forgetful-map picture alone nor equality of individual fiber
+integrals is used as an actual-output theorem.

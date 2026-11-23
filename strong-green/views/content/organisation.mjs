@@ -9,22 +9,22 @@ export const conjectureFamilies = [
     scope: "Ordinary actual forms; every compact complementary actual test; the original absolute value and full finite-extension degree.",
     branches: [
       { title: "The original cycle source", relation: "Open vanishing problem", text: "The Chow obstruction and prescribed curved pairs are established. Prove that the image of every original homologically trivial Chow class is zero; period methods require their stated detector comparison.", records: ["BB-CHOW-GREEN-PAIRS", "BB-RESIDUAL-PERIODS"] },
-      { title: "Global actual primitives", relation: "Further analytic methods", text: "Construct the required curvature primitives in the full actual complex. The tropical realization problem and broader trace and intersection operations retain their separate hypotheses.", records: ["BB-ANALYTIC-INTERFACE", "BB-TROPICAL-INTERFACE"] },
+      { title: "Global actual primitives", relation: "Further analytic methods", text: "Construct the required curvature primitives in the full actual complex. Finite normal trace, projective-bundle integration and the specified supported residues are established; realization of a proposed tropical primitive still needs its comparison map.", records: ["BB-ANALYTIC-INTERFACE", "BB-TROPICAL-INTERFACE"] },
     ],
-    implication: "The proved Chow obstruction and Green-pair theorem turns source-obstruction vanishing into the exact-support Green identity. Algebraic equivalence and abelian Chow retractions are two conditional vanishing routes for particular cycle sources.",
-    obstacle: "The general source-image vanishing theorem. Geometric vanishing routes and global heights also retain their additional rigidity, numerical, correspondence and analytic hypotheses.",
+    implication: "The proved Chow obstruction and Green-pair theorem turns source-obstruction vanishing into the exact-support Green identity. Algebraic equivalence and actual abelian Chow retractions give vanishing for their specified cycle sources.",
+    obstacle: "General source-image vanishing. Numerical witnesses and rational Chow factorizations retain their stated geometric scope; finite period descriptions still require identification with the original obstruction.",
   },
   {
     id: "global-heights", number: "02", title: "Canonical global height pairings",
-    lead: "The principal-push theorem (PH16; Theorem 7.5) proves that Strong G supplies a canonical real pairing on the full complementary geometrically homologically trivial rational Chow groups, within the stated analytic foundations.",
+    lead: "The principal-push theorem (PH16; Theorem 7.5) proves that Strong G supplies a canonical real pairing on the full complementary geometrically homologically trivial rational Chow groups, using the proved analytic operations.",
     principal: "BB-GLOBAL", paper: "/papers/strong-g-programme",
-    scope: "The global sum, normalization, correspondence adjunction, and independence of representatives belong to the construction.",
+    scope: "The kernel pairing has normalization, independence of representatives and correspondence adjunction. The bare Strong G implication constructs the full pairing; comparison beyond the established kernel and model domains remains separate.",
     branches: [
       { title: "The admitted global kernel", relation: "Intermediate domain", text: "H16 assembles the pairing on the intersection of local obstruction kernels. A fixed FD17 witness is an additional finite-detector presentation. Vanishing on localized global classes in both complementary degrees enlarges the domain.", records: ["BB-H16-KERNEL-DOMAIN", "BB-HEIGHT-DATA"] },
       { title: "Metrics and variation", relation: "Further research questions", text: "Compare admissible corrections at bad reduction, then identify the geometric input for height domination and boundary estimates in families.", records: ["OPEN-BAD-REDUCTION-METRIC", "BB-FAMILY-HEIGHTS"] },
     ],
     implication: "Theorem 7.5 proves the full height construction from Strong G at every finite completion in both complementary codimensions. Its proof includes reciprocity, the principal norm formula, finite summation and Chow descent. The obstruction-kernel construction is a separate route, enlarged by vanishing on localized global classes in both degrees.",
-    obstacle: "General Strong G remains open. The standing analytic foundations retain their separate review status, and classical comparison retains its own model hypotheses. Positivity and finiteness are separate arithmetic targets below.",
+    obstacle: "General Strong G remains open. Finite trace, supported residues and projective integration are established; classical comparison retains its supplied admissible-model hypotheses. Positivity and finiteness are separate arithmetic targets below.",
   },
   {
     id: "lefschetz-positivity", number: "03", title: "Lefschetz theory and central positivity",
@@ -56,17 +56,17 @@ export const conjectureFamilies = [
 export const resultFamilies = [
   {
     id: "green-constructions", number: "I", title: "Green constructions and transfer",
-    lead: "The Chow obstruction and actual curved Green pair are established for every prescribed rational cycle. A global actual primitive removes the curvature. Geometric arguments then address algebraically trivial classes and abelian Chow retracts under their remaining analytic inputs.",
+    lead: "The Chow obstruction and actual curved Green pair are established for every prescribed rational cycle. A global actual primitive removes the curvature. Rational-fibre constancy proves vanishing on algebraically trivial classes, and numerical descent with Chow-kernel covariance handles the specified abelian Chow retracts.",
     principal: "BB-CHOW-GREEN-PAIRS", paper: "/papers/chow-obstruction-green-pairs",
     premise: "For the curved construction: a smooth integral projective variety over the original finite valued extension of ℚₚ, in any positive codimension up to its dimension. For zero curvature: vanishing of the resulting actual Bott–Chern class.",
     mechanism: "Strict model Chern characters, restricted scalar–curvature trace and supported complexes give the pair. Generic Chow-zero primitives make its curvature class well-defined. When that class vanishes, subtract a global actual primitive on the same exact complement.",
     consequences: [
-      { title: "Algebraically trivial cycle classes", relation: "With established (A1)–(A2) and the additional parameter-rigidity input", text: "Curve generation and compact parameters annihilate the obstruction. Curvature correction gives a zero-curvature form for the specified representative.", record: "BB-ALG-TRANSFER" },
-      { title: "Abelian Chow retracts", relation: "Parallel transfer route; requires (A1), (A2), (N), (C), and a potential abelian Chow retraction", text: "The abelian numerical input and the actual Chow diagonal transport source vanishing, with finite-degree descent over the original field.", record: "BB-MOTIVIC-TRANSFER" },
-      { title: "Products of curves", relation: "Draft application through the recorded analytic and regular-model chain", text: "The draft combines a Chow-diagonal factorization with the abelian stage and compatible regular models.", record: "BB-CURVE-PRODUCT-DRAFT" },
+      { title: "Algebraically trivial cycle classes", relation: "Established using actual rational-fibre constancy", text: "Curve generation and compact parameters annihilate the obstruction. Curvature correction gives a zero-curvature form for the specified representative.", record: "BB-ALG-TRANSFER" },
+      { title: "Abelian Chow retracts", relation: "Established transfer through a specified potential abelian Chow retraction", text: "The abelian numerical input and the actual Chow diagonal transport source vanishing, with finite-degree descent over the original field.", record: "BB-MOTIVIC-TRANSFER" },
+      { title: "Products of curves", relation: "Established application with the stated Chow factorization", text: "The argument combines the rational Chow-diagonal factorization with the abelian stage and original-field descent.", record: "BB-CURVE-PRODUCT-DRAFT" },
     ],
     support: ["BB-MODEL-DETECTOR", "BB-RESTRICTED-TRACE", "BB-SUPPORTED-GREEN-PAIR", "BB-ACTUAL-OBSTRUCTION", "BB-GREEN-CORRECTION", "BB-CURVE-CHOW-DIAGONAL"],
-    obstacle: "General strong G still requires vanishing on the original homologically trivial source. Parameter rigidity, numerical descent and correspondence covariance retain their separate draft or conditional status.",
+    obstacle: "General Strong G still requires vanishing on the original homologically trivial source. The proved numerical criterion applies to its supplied witness; it does not produce such witnesses for arbitrary varieties or remove further geometric hypotheses from other families.",
   },
   {
     id: "arithmetic-reductions", number: "II", title: "Arithmetic structure and finiteness",

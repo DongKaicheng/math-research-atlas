@@ -1,0 +1,176 @@
+\section{Relative Aeppli witnesses modulo extending pairs}
+\label{sec:r9-relative-aeppli-gluing}
+
+The correct overlap requirement for original-support repair is
+weaker than equality of local primitives modulo a strict
+two-colour boundary.  A discrepancy which already extends
+across the cancelled part is harmless after its differentiated
+partition terms have been retained.  This section proves the
+precise finite gluing formula.  It is an interface with explicit
+cochain inputs, not an assertion that every actual kernel
+element admits the required input.
+
+\subsection{The relative objects and their actual witnesses}
+
+Let $N$ be an analytic open in the original space, let $C$ be
+a closed subset, and set $W=N\setminus C$.  Fix $s\ge1$.
+An actual extending pair means a pair in
+\[
+ \mathcal L^1_s(N)=B^{s-1,s}(N)\oplus B^{s,s-1}(N),
+ \tag{RAG1}
+\]
+restricted to $W$.  A local actual Aeppli description of
+$g\in B^{s,s}(W)$ is a pair $p=(\alpha,\beta)$ on $W$
+and a form $E\in B^{s,s}(N)$ with
+\[
+                 g=\partial_1p+E|_W,
+                     \qquad\partial_1p=d'\alpha+d''\beta.
+ \tag{RAG2}
+\]
+These are actual forms and literal identities.  For purposes
+of recording equivalence one may form the relative quotient
+of $\mathcal L^1_s(W)$ by the sum of restrictions of
+$\mathcal L^1_s(N)$ and the image of the actual operator
+$\partial_2$ from PPC3.  Give that quotient its quotient
+locally convex topology from the specified actual spaces;
+no Hausdorffness or closed-image assertion is made.
+We never infer a representative from that quotient.
+Every use below supplies separately the actual witnesses
+\[
+             q=(A,B,M),\quad e=(e',e''),
+          \qquad p_1-p_0=\partial_2q+e|_W.
+ \tag{RAG3}
+\]
+The degrees of $A,B,M$ are $(s-2,s),(s,s-2),(s-1,s-1)$;
+negative degrees mean zero.  The form $e$ is given on the
+unpunctured overlap.  The equivalence is thus checked by a
+finite differential identity, not by an unproved quotient
+lifting or completion statement.
+
+Local presentations are the finite actual presentations of
+the supplied cochains and their common refinements.  Addition,
+restriction and the two differentials are the operations used.
+For each whole fixed presentation the formulas below are
+finite polynomial/differential operations, with all mixed
+seminorms retained.  No topology of a full analytic relation
+image or a simultaneous kernel is identified with this
+quotient topology.
+
+\begin{theorem}[Two-open actual gluing modulo extending pairs]
+\label{thm:r9-relative-aeppli-two-open-gluing}
+Suppose $N=N_0\cup N_1$, put $W_i=N_i\cap W$, and supply
+actual data $p_i\in\mathcal L^1_s(W_i)$ and
+$E_i\in B^{s,s}(N_i)$ satisfying
+\[
+                         g|_{W_i}=\partial_1p_i+E_i|_{W_i}.
+ \tag{RAG4}
+\]
+On $W_0\cap W_1$ supply $q_{01}=(A,B,M)$, and on
+$N_0\cap N_1$ supply the actual extending pair $e$, with
+\[
+                     p_1-p_0=\partial_2q_{01}+e|_{W_0\cap W_1}.
+ \tag{RAG5}
+\]
+Then explicit actual $p\in\mathcal L^1_s(W)$ and
+$E\in B^{s,s}(N)$ satisfy $g=\partial_1p+E|_W$.
+\end{theorem}
+
+\begin{proof}
+Choose an ordinary smooth actual partition of unity
+$\chi_0+\chi_1=1$ on $N$, subordinate to its two opens,
+and write $\chi=\chi_1$.  On $W$ use the PPC16 formula
+\[
+ \begin{split}
+ \alpha={}&\chi_0\alpha_0+\chi_1\alpha_1
+                                  +d'\chi\wedge A+d''\chi\wedge M,\\
+ \beta={}&\chi_0\beta_0+\chi_1\beta_1
+                                  +d''\chi\wedge B+d'\chi\wedge M.
+ \end{split}
+ \tag{RAG6}
+\]
+The derivatives of $\chi$ have closed support contained
+in $N_0\cap N_1$.  Therefore all indicated products with
+overlap cochains extend by zero as actual forms.  They
+need not themselves extend through $C$.
+
+The first two terms in (RAG6) have boundary
+\[
+       g-\chi_0E_0-\chi_1E_1
+          +d'\chi\wedge(\alpha_1-\alpha_0)
+          +d''\chi\wedge(\beta_1-\beta_0).
+ \tag{RAG7}
+\]
+Substitute (RAG5).  The four correction terms cancel
+exactly the part containing $\partial_2q_{01}$, by
+the full two-colour calculation PPC18.  Both
+$D\chi\wedge M$ terms are included and cancel with
+opposite signs.  Hence
+\[
+             \partial_1p=g-\chi_0E_0-\chi_1E_1
+                              +d'\chi\wedge e'+d''\chi\wedge e''.
+ \tag{RAG8}
+\]
+Set, now on all of $N$,
+\[
+                 E=\chi_0E_0+\chi_1E_1
+                              -d'\chi\wedge e'-d''\chi\wedge e''.
+ \tag{RAG9}
+\]
+Each term is actual on its domain and has closed support
+there, so its zero extension is actual.  In contrast with
+the original cochains, the pair $e$ was supplied through
+$C$, so (RAG9) is an actual extending form.  Equation
+(RAG8) proves the asserted identity.
+\end{proof}
+
+No extra closedness hypothesis on $e$ is needed: applying
+$\partial_1$ to (RAG5) and using (RAG4) already gives
+$\partial_1e=(E_0-E_1)|_{W_0\cap W_1}$.  In the frequent
+case $E_0=E_1$, the restriction of $e$ to the punctured
+overlap is a closed pair.  No assertion of closedness on
+the whole unpunctured overlap is needed.  It is still wrong
+to discard its contribution in (RAG9).
+
+\subsection{Finite iteration and the original-support bridge}
+
+The two-open theorem can be iterated through a finite
+cover if, at each step, actual witnesses (RAG5) are supplied
+between the already constructed pair on the preceding
+union and the pair on the next open.  The next residue is
+then the explicit form (RAG9), not an assumed unchanged
+residue.  This is a finite compatibility certificate for
+the entire chosen cover.  Pairwise witnesses alone are not
+declared to provide the inductive witnesses or every higher
+overlap compatibility.
+
+For the original CI difference take
+$g=G_{s_1}-G_{s_0}$ on $V$ and an open $N\subset U$
+containing the cancelled part $C_U$.  If the local paths
+and the finite witnesses just described are supplied,
+(RAG6)--(RAG9) construct actual global $\alpha,\beta,E$
+on $N\cap V,N\cap V,N$, respectively.  Using this pair
+and this actual extending $E$ in RSP5 constructs the
+actual Green form on exactly $U$ and proves the strong
+formula for every actual compact test over the original
+$K$.  The witnesses can be verified in fixed common
+finite presentations.  Their existence for arbitrary
+analytic matrix pivot covers remains an additional,
+presently unproved geometric assertion.
+
+The rank-two commuting-diagonal calculation CDP supplies
+an explicit all-wall example of (RAG5) in which $e$ is
+nonzero.  On a chamber it also proves that the same
+chosen primitive discrepancy has no strict $\partial_2$
+witness.  Thus allowing the extending pair is mathematically
+necessary for that prescribed family of local choices.
+This is a failure of the strict witness route, not a
+counterexample to a Green representative, to full
+OPEN-KERNEL, or to another choice of primitives.
+
+The relative quotient introduced after (RAG2) is used
+only to name this precise compatibility.  It is neither
+a renamed existence assumption for general strong G nor
+a new exactness theorem for all actual forms.  The actual
+realization in each proved application is (RAG6), followed
+by (RAG9) and RSP5; when the needed witnesses have not
+been constructed, the application remains conditional.

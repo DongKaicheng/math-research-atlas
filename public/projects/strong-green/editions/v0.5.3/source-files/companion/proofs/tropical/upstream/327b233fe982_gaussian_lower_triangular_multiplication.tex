@@ -1,0 +1,391 @@
+\section{Left lower-shear multiplication of the entire Gaussian block pair}
+\label{sec:r12-gaussian-lower-triangular-multiplication}
+
+\paragraph{Status and attribution.}
+\textbf{PROVED THIS ROUND, submitted for independent exact-source review.}
+The construction contributors are \texttt{/root} and the R12 matrix
+agent \texttt{/root/r11\_challenge}.  The cap transport inputs SAN
+and TCT are separate frozen inputs of this round.  We compare the
+\emph{entire original GB pair}, including its original nested caps,
+ordinary partition derivatives, metric transport and shear-zero
+extensions.  Equal endpoint norms are not used to identify arbitrary
+primitive pairs.  This is a specified two-row multiplication relation,
+not an automatic coherence theorem for an arbitrary matrix atlas.
+
+\subsection{Data and the statement}
+
+Use the original $K$, absolute value, smooth analytic open $N$, actual
+metrized line bundle, tuple $f$ of length $r\ge2$, and
+$W=N\setminus|f=0|$ of GB.  All matrices below act in the first two
+rows and are the identity in the remaining rows.  Supply
+\[
+ A=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix},
+ \qquad \Delta=\det A\in\mathcal O(N)^\times,
+ \qquad z\in\mathcal O(N),\qquad
+ A'=E_{21}(z)A.
+ \tag{TML1}
+\]
+Thus $\alpha'=\alpha$, $\beta'=\beta$, $\gamma'=\gamma+z\alpha$,
+$\delta'=\delta+z\beta$ and $\Delta'=\Delta$.  The shear coefficient
+$z$ is arbitrary, including zeros and unbounded functions.
+
+Fix a positive real $\varepsilon$ and a smooth function
+$\chi:\mathbf R\to[0,1]$ equal to zero on $(-\infty,-\varepsilon]$
+and to one on $[\varepsilon,\infty)$.  In the GB construction use
+the prescribed ordinary partitions
+\[
+ \theta=\chi(v(\gamma)-v(\alpha)),\qquad
+ \theta'=\chi(v(\gamma')-v(\alpha)),
+ \tag{TML2}
+\]
+with their constant extensions across the zero pivots.  Each is zero
+on an ordinary neighborhood of $\alpha=0$, and is one near its own
+second-pivot zero.  Fix all positive offsets in the original GB
+subrelation caps once.  Write $p_A,p_{A'}$ for exactly these original
+GB22 pairs, $R=c_1(\overline L)$, $d=r-2$, and
+$\mathcal P_{21,z}(Af)$ for the prescribed native SHT pair.
+
+\begin{theorem}[Entire triangular multiplication relation]
+There are explicit finite actual forms
+\[
+ q\in L_2^{r-1}(W),\qquad e\in L_1^{r-1}(N),
+ \qquad
+ p_A+\mathcal P_{21,z}(Af)-p_{A'}=\partial_2q+e|_W.
+ \tag{TML3}
+\]
+On $\{\alpha\ne0\}$ the extending pair is
+\[
+ e=\bigl(-(1-\theta)e_{C,a-C}
+                +(1-\theta')e_{C',a-C'}\bigr)R^d,
+ \quad a=v(\alpha),\ C=v(\gamma),\ C'=v(\gamma'),
+ \tag{TML4}
+\]
+where $e_{x,y}=(x\,d''y,y\,d'x)$.  A summand is extended by zero
+through its second-pivot zero.  The difference in parentheses is
+extended by zero through $\alpha=0$ as one whole expression.
+The extending pair is not asserted to be independently closed after
+the nonconstant weights in (TML4) are inserted.
+\end{theorem}
+
+\subsection{A single finite admissible cap}
+
+We give the finite bound used below, rather than assuming a cap valid
+on a noncompact open.  Set
+\[
+ \begin{split}
+ M&=\max(1,|z|,\max|A_{ij}|,\max|A'_{ij}|,
+                  \max|(A^{-1})_{ij}|,\max|((A')^{-1})_{ij}|),\\
+ B&=1+\varepsilon+\log M,\qquad c_0=\max(|\alpha|,|\gamma|),\\
+ N_{\rm main}&=\{|\alpha|>e^{-4B}c_0\},\qquad
+ N_{\rm small}=\{|\alpha|<e^{-3B}c_0\}.
+ \end{split}
+ \tag{TML5}
+\]
+These are ordinary opens covering $N$.  The norm $c_0$ never
+vanishes; $e^{-B}\le c_0\le e^B$.  The finite maxima in $M$ have
+the constant entry $1$, so their logarithms are actual finite
+norm scalars.  At a zero analytic entry one uses a sufficiently
+small original-$K$ constant on an ordinary neighborhood; its
+contribution remains strictly below the positive floor.  This is
+the ordinary native norm presentation, not a calculus on a
+nonreduced space and not a general minimum of smooth functions.
+
+The following finite recipe specifies an integer $C_0$ once and
+for all, independently of $N,A,z,f$.  Use the elementary matrix
+words of GB4--GB5 and all the nine calls of GB10/GB16, their
+copies for $A'$, the SAR call with coefficients $\gamma/\alpha,z$,
+and the second-pivot substitution list (TML17) below.  Expand the
+native unit-edge tables in these finitely many specified sources.
+Before assigning a bound, delete each entire contribution which
+is literally zero on its frozen small-coefficient open.  The
+following rules give an upper bound $e^{bB}$ for each coefficient
+or inverse which remains:
+\[
+\begin{array}{p{0.40\linewidth}p{0.49\linewidth}}
+\text{Quantity or complete call}&\text{Bound rule}\\[1mm]
+A,A',A^{-1},(A')^{-1},z&1\text{ for each matrix entry or }z;\\
+\Delta,\Delta^{-1}&2;\\
+\alpha^{-1}\text{ on }N_{\rm main}&5;\\
+\gamma^{-1},(\gamma')^{-1}\text{ when their GB weights are nonzero}
+ &7\text{ on }N_{\rm main},\text{ using an ordinary }2\varepsilon
+ \text{ buffer for derivative supports};\\
+\gamma^{-1},(\gamma')^{-1}\text{ on }N_{\rm small}&1;\\
+\text{Sums and products}&\max\text{ and addition of exponents};\\
+\text{A native shear coefficient }b
+ &\text{if }|b|<1\text{ its entire two-edge companion is }0;
+   \text{ otherwise }|b|^{-1}\le1;\\
+\text{SAR with }b,c,b+c
+ &\text{if any has norm }<1\text{ its entire triple is }0;
+   \text{ otherwise all three inverses have norm }\le1;\\
+\text{MX with unit }\lambda\text{ and coefficient }b
+ &\text{its whole triple is }0\text{ if }|b|,|\lambda b|<1;
+   \text{ otherwise }|b|^{-1}\le\max(1,|\lambda|);\\
+\text{NSC with unit }\lambda\text{ and coefficient }b
+ &\text{its whole triple is }0\text{ if }|b|,|b/\lambda|<1;
+   \text{ otherwise }|b|^{-1}\le\max(1,|\lambda|^{-1}).
+\end{array}
+ \tag{TML6}
+\]
+In the second-pivot list the GPR call is identically zero on
+$N_{\rm small}$ and is deleted as a whole.  All other denominators
+in the finite list are products of the indicated nonzero pivots,
+$\Delta$, the unit $\gamma'/\gamma$ on $N_{\rm small}$, or the
+coefficients whose inverses are controlled by (TML6).  Consequently
+this recipe terminates.  For each genuine vertex matrix $F$ in the
+retained lists, sum its elementary-factor exponent bounds, both for
+$F$ and for $F^{-1}$.  Let $C_0$ be one plus the largest resulting
+integer.  This is an explicit finite integer algorithm on the
+displayed fixed words, not a pointwise choice or a new finite-layer
+capture assumption.  For every call which is not deleted,
+\[
+             \|F\|,\|F^{-1}\|<e^{C_0B},\qquad
+                    \Phi_{Ff}<\Phi_f+C_0B.
+ \tag{TML7}
+\]
+The bound for $\Phi_{Ff}$ uses the second matrix norm and the
+original common metric.  Prefixes in GB15 are included in $F$;
+no bound just for an isolated subword is substituted for (TML7).
+
+For $r\ge3$ let $\psi$ be the potential of the unchanged last
+$r-2$ sections, and use the one common actual cap
+\[
+       \kappa=(C_0+1)B,
+       \qquad \Psi=\min(\psi,\Phi_f+\kappa),
+       \qquad R_*=R-D\Psi.
+ \tag{TML8}
+\]
+The positive floor $e^{-\kappa}\|f\|$ makes (TML8) an actual
+finite norm presentation on $W$, including the common zero set
+of all passive entries.  Thus it is an admissible TCT cap for
+every retained call on the indicated ordinary regions.  Deleted
+calls are zero for every common normalization.  In particular
+there is no attempt to bound the singular separate normalizers
+inside a native shear contribution which already cancels.
+For $r=2$ omit $\Psi$ and all terms involving $h$ below, as in
+TCT; every displayed exponent $R_*^d$ then means $1$.
+
+\subsection{The explicit finite triple}
+
+Write $w_\alpha,w_\gamma,w'_{\alpha},w'_{\gamma'}$ for the four
+original GB words, retaining their actual starting tuple $f$.
+Let $\mathcal J_\Psi$ be the full linear edge companion TCT1,
+which includes the entire nonclosed MT polynomial, not only
+the CS edge primitives.  On each appropriate pivot overlap put
+\[
+ \begin{gathered}
+ h=-\Psi\sum_{j=0}^{d-1}R_*^jR^{d-1-j},\\
+ \sigma_A=(0,0,C(C-a)R_*^d/2)+H_h(e_{C,a-C}),\\
+ \sigma_{A'}=(0,0,C'(C'-a)R_*^d/2)+H_h(e_{C',a-C'}).
+ \end{gathered}
+ \tag{TML9}
+\]
+Here the base pairs supplied to $H_h$ are independently closed;
+the external partition weights below are multiplied only
+\emph{after} these complete triples have been formed.
+
+Define the following actual expression on $W\cap\{\alpha\ne0\}$:
+\[
+\begin{split}
+ \widetilde q={}&\mathcal J_\Psi(E_{21}(z);Af)
+       +\theta\mathcal J_\Psi(w_\alpha;f)
+       +(1-\theta)\mathcal J_\Psi(w_\gamma;f)\\
+ &-\theta'\mathcal J_\Psi(w'_{\alpha};f)
+       -(1-\theta')\mathcal J_\Psi(w'_{\gamma'};f)
+       -(1-\theta)\sigma_A+(1-\theta')\sigma_{A'}.
+\end{split}
+ \tag{TML10}
+\]
+Products supported in a pivot chart have their closed-support
+zero extensions.  The last two terms are kept as one difference
+when approaching $\alpha=0$.
+
+On $N_{\rm small}$ one has $\gamma\ne0$,
+\[
+       |z\alpha|<|\gamma|,\qquad
+       |\gamma'|=|\gamma|,\qquad C'=C,\qquad
+                          \theta=\theta'=0.
+ \tag{TML11}
+\]
+These are equalities on an ordinary open, so all actual mixed
+derivatives agree as well.  In particular the last difference
+of (TML10) is literally zero there.  The remaining formula is
+\[
+  \widetilde q=\mathcal J_\Psi(E_{21}(z);Af)
+                  +\mathcal J_\Psi(w_\gamma;f)
+                  -\mathcal J_\Psi(w'_{\gamma'};f),
+ \tag{TML12}
+\]
+which is defined on the entire $W\cap N_{\rm small}$, including
+$\alpha=0$.  The whole companions extend through zero shear
+coefficients by TCT2.  Equations (TML10)--(TML12) therefore give
+one actual finite triple on $W$.  The same ordinary equality
+(TML11) proves that (TML4), as one difference, extends by zero
+through $\alpha=0$ on $N$.
+
+\subsection{Verification on the first-pivot region}
+
+On $N_{\rm main}$ the first pivot is a unit.  Put
+$t=\gamma/\alpha$ and
+$g=D_1(\alpha)D_2(\Delta/\alpha)E_{12}(\beta/\alpha)f$.
+The first-pivot words differ exactly by the same-root shear
+addition $E_{21}(z)E_{21}(t)=E_{21}(t+z)$.  SAN permits its
+full SAR witness with the common normalization $\Psi$, and gives
+\[
+ p(w_\alpha;f)+\mathcal P_{21,z}(Af)-p(w'_{\alpha};f)
+   =\partial_2\bigl(\mathcal J_\Psi(w_\alpha;f)
+          +\mathcal J_\Psi(E_{21}(z);Af)
+          -\mathcal J_\Psi(w'_{\alpha};f)\bigr).
+ \tag{TML13}
+\]
+This includes zeros of $t,z,t+z$.  For the common-cap versions
+of the GB overlaps, TCT10 says literally
+\[
+ Q_A^{\rm com}=\mathcal J_\Psi(w_\alpha;f)
+                   -\mathcal J_\Psi(w_\gamma;f)+\sigma_A,
+ \quad
+ Q_{A'}^{\rm com}=\mathcal J_\Psi(w'_{\alpha};f)
+                   -\mathcal J_\Psi(w'_{\gamma'};f)+\sigma_{A'}.
+ \tag{TML14}
+\]
+The bound (TML7) applies wherever the respective factor
+$1-\theta$ or $1-\theta'$ is nonzero.  On the ordinary regions
+where it is zero the multiplied full formula is zero instead;
+this is why no inverse bound at a discarded pivot is needed.
+
+The exact Leibniz identity for GB22, not merely its ordinary
+boundary, gives on the first chart
+\[
+ p_A^{\rm com}=p(w_\alpha;f)
+       -\partial_2((1-\theta)Q_A^{\rm com})
+       -(1-\theta)e_{C,a-C}R^d,
+ \tag{TML15}
+\]
+and the identical formula for $A'$.  Subtract these formulas,
+use (TML13), then substitute (TML14).  Every original edge and
+every MT term cancels linearly, leaving exactly (TML10) and
+(TML4).  Hence (TML3), with common-cap pairs and triple
+$\widetilde q$, holds on the whole first-pivot region.  All
+mixed derivatives of $\theta$ in this computation are part of
+the product differential; none are omitted.
+
+\subsection{Verification through the vanishing first pivot}
+
+It remains to prove the identity on $N_{\rm small}$ directly;
+agreement on a dense unit locus would not suffice.  On this open
+put
+\[
+       \omega=\gamma'/\gamma=1+z\alpha/\gamma,
+       \qquad |\omega|=1,\qquad v(\omega)=0.
+ \tag{TML16}
+\]
+Signed-permutation equivariance moves the added shear past $J$:
+$E_{21}(z)J=JE_{12}(-z)$.  The following finite substitutions
+compare the entire second-pivot words, in matrix-product order:
+\[
+\begin{split}
+ E_{12}(-z)E_{21}(-\alpha/\gamma)
+  &\rightsquigarrow
+ E_{21}(-\alpha/\gamma')D_2(\omega^{-1})D_1(\omega)
+                                      E_{12}(-z/\omega),\\
+ E_{12}(-z/\omega)D_1(\gamma)D_2(\Delta/\gamma)
+  &\rightsquigarrow
+ D_1(\gamma)D_2(\Delta/\gamma)E_{12}(w),
+       \qquad w=-z\Delta/(\gamma\gamma'),\\
+ D_1(\omega)D_1(\gamma)&\rightsquigarrow D_1(\gamma'),\\
+ D_2(\omega^{-1})D_1(\gamma')&\rightsquigarrow
+                          D_1(\gamma')D_2(\omega^{-1}),\\
+ D_2(\omega^{-1})D_2(\Delta/\gamma)&\rightsquigarrow
+                                      D_2(\Delta/\gamma'),\\
+ E_{12}(w)E_{12}(\delta/\gamma)&\rightsquigarrow
+                                      E_{12}(\delta'/\gamma').
+\end{split}
+ \tag{TML17}
+\]
+The first is exactly GPR with parameters $-z,-\alpha/\gamma$.
+Its second coefficient and their product have norms strictly
+less than one on $N_{\rm small}$.  Its \emph{entire} actual
+triple is consequently zero on its frozen zero-neighborhood,
+including coefficient zeros.  Its scalar correction and
+extending pair are zero because $v(\omega)=0$.
+The second line uses the negative target and source witnesses
+with precisely the intermediate tuples displayed by this word.
+The third and fifth lines are SL; the fourth is CS; the last
+is SAR.  The sole CS error is
+$e_{v(\gamma'),-v(\omega)}R^d=0$ and its scalar correction
+is zero.  The identity
+$\delta'/\gamma'=\delta/\gamma-z\Delta/(\gamma\gamma')$
+checks the last endpoint without a unit assumption on either
+shear coefficient.
+
+All these complete relations may use the common cap by SAN/TCT
+and (TML7).  They have zero base corrections on this open.
+Their full companion sums therefore telescope literally to
+(TML12), not just to a triple with the same boundary.  The two
+GB partitions are identically zero here, so the common-cap and
+original GB pairs are their second-pivot pairs.  It follows
+that (TML3) holds throughout $W\cap N_{\rm small}$, and its
+error there is zero.  This proves the common-cap identity on an
+ordinary cover of the entire $W$.
+
+\subsection{Restoring the exact original nested caps}
+
+For $A$ the ordinary strip
+\[
+ V_A=\{\alpha\gamma\ne0,\ |v(\gamma)-v(\alpha)|<2\varepsilon\}
+ \tag{TML18}
+\]
+contains the closed supports of $d'\theta,d''\theta$;
+use the corresponding strip $V_{A'}$ for $\theta'$.
+The cap (TML8) is admissible for all their nine actual GB
+subrelation calls.  TCT9 provides the explicit full
+two-parameter-transgression quadruples
+\[
+ Q_A^{\rm com}-Q_A^{\rm old}=\partial_3\mathcal H_A,
+ \qquad Q_{A'}^{\rm com}-Q_{A'}^{\rm old}
+                                      =\partial_3\mathcal H_{A'}.
+ \tag{TML19}
+\]
+They include the CT mixed term $-d''J$.  No equality of ordinary
+boundaries is substituted for (TML19).  Set
+\[
+ T_A=K_3(\theta)\mathcal H_A,\qquad
+ T_{A'}=K_3(\theta')\mathcal H_{A'},\qquad
+                         q=\widetilde q+T_A-T_{A'}.
+ \tag{TML20}
+\]
+Each product has its closed-support zero extension from the
+indicated strip.  TCT11 gives
+$p_A^{\rm old}-p_A^{\rm com}=\partial_2T_A$ and its primed
+counterpart, proving (TML3) for the exact original GB pairs.
+This completes the proof of the theorem.
+
+\paragraph{Actual interface and exact scope.}
+Every expression is a finite combination of original-$K$ analytic
+units on ordinary domains, actual native norm minima, smooth
+functions of valuations, the original metric, finite mixed
+coefficient transgression and closed-support zero extension.
+Actual refinement preserves these identities and all their mixed
+jets.  The maps are continuous on each fixed smooth coefficient
+presentation by the frozen finite actual operations; no global
+continuous linear primitive selector is constructed.  The
+extending pair is an actual pair on $N$, not an arbitrary current
+or a class modulo $\partial_2$.
+
+This theorem may be inserted as one specified relative transition
+in the frozen RAG/RSP finite gluing construction.  Its derivative
+and extending error must both be retained in that construction.
+An original-cycle application still requires the complete
+geometric neighborhood and finite transition certificate, followed
+by the ordinary-$U$ cutoff and the actual support/Stokes argument
+of RSP.  We do not assert that a three-pivot Gaussian atlas
+automatically meets the higher compatibility hypotheses, that its
+triple defect is the AGC commuting-diagonal cube, or that arbitrary
+$\mathrm{GL}_r$ or homologically trivial cycles have been solved.
+
+\paragraph{Exact inputs.}
+SAN: \path{c8416ab1d14618f8f23724bcdad19db08a36928cb19b590a46d2306701a7a3b6}.
+TCT: \path{effdf9332b6fa606237a99a25217cdfdd44b7fd09cd685f654ff221201d68c2c}.
+GB: \path{f4f87d6aabfc325f7d2f01d629a6f4a9fa80227cb9600cf592ea380b0b5104d9}.
+GPR: \path{c846094675b5b002358fc5f731fde1229f1e324282fe42552c96fbfd115da6a3}.
+The remaining SL/MX/NSC/SAR/CS/MT/CT/RAG/RSP inputs are the exact
+sources named in SAN, TCT and GB.  No other research branch is used.

@@ -1,0 +1,186 @@
+% Round 18. Application overlay; authored after the RI18 independent review.
+\section{All finite fields for the complete product and ambient domains}
+\label{r18ru:section}
+
+This short overlay records the extension range supplied by RI18 after
+its independent review.  It leaves the earlier HP18, NF18, GF18,
+NG18, GH18 and CA18 sources and their originally stated scopes intact.
+No new-cycle assertion is obtained by presuming that cycles descend.
+
+\begin{corollary}[No new obstruction directions under totally ramified inertia]
+\label{r18ru:quotient}
+Let $X/K$ have the supplied native reduced strict semistable model
+of RI18, and let $L/K$ be finite, totally ramified and Galois of
+degree $d$.  For any $1\le r\le n$, put
+\[
+ \mathcal Q_K^r(X)=
+ \operatorname{CH}^r(X)_{\mathbf Q}/\ker\mathfrak o_{X,K}^r.
+\]
+The ordinary Chow pullback induces an isomorphism
+\[
+ p^*:\mathcal Q_K^r(X)\xrightarrow{\ \sim\ }
+            \mathcal Q_L^r(X_L),
+       \qquad (p^*)^{-1}=d^{-1}p_* .
+ \tag{RU18.0}\label{r18ru:quotient-iso}
+\]
+The same statement holds with each Chow group restricted to its
+geometrically homologically trivial subgroup and with the
+corresponding intersection of the obstruction kernel.
+This is an assertion about the obstruction quotients, not about
+Galois triviality of the entire Chow group.
+\end{corollary}
+
+\begin{proof}
+Frozen FG16 gives both preservation of the existence kernel under
+$p^*$ and injectivity on its quotient; VT17 identifies that existence
+kernel with the indicated obstruction kernel.  RI18's equality
+$\nu_{g z}=\nu_z$ for every rational Chow class shows that
+$g z-z$ belongs to the upstairs kernel for every $g$.
+Consequently the Galois identity $p^*p_*z=\sum_g gz$ gives
+\[
+                [p^*p_*z]=d[z]\quad\hbox{in }\mathcal Q_L^r(X_L).
+\]
+If $z$ lies in the upstairs kernel, the same identity and the exact
+period detector imply that $p^*p_*z$ lies in that kernel.  FG16's
+finite-field descent then implies that $p_*z$ lies in the downstairs
+kernel.  Thus $p_*$ really does induce a map on these quotients;
+this is not being presumed from an unspecified proper actual
+pushforward.  The Chow degree identity $p_*p^*=d$ and the displayed
+upstairs identity show that $d^{-1}p_*$ and $p^*$ are mutual inverses.
+Both Chow operations preserve geometric homological triviality,
+so the identical argument restricts to that subgroup.
+\end{proof}
+
+\begin{corollary}[Complete ambient domains over every finite valued field]
+\label{r18ru:local}
+Take all the native hypotheses of CA18: a smooth good-reduction
+complete-intersection ambient variety of relative dimension $n+1$,
+$n\ge4$, its specified geometric SNC factor divisors, every actual
+complete-intersection stratum with the stated connectedness and
+zero-dimensional conventions, the transverse degree-$D$ form $Q$,
+and the exponent-one smoothing with smooth geometrically integral
+generic fiber $X/K$.  Then for every finite valued extension $L/K$
+and every specified geometrically homologically trivial rational
+cycle $Z$ on $X_L$, in every codimension, there is a strong Green
+form on the complement of exactly $|Z|$ against every compact
+ordinary actual test, with the absolute value extending the fixed
+one on $K$.
+This includes every HP18/NF18/GH18 model and the type-$(2,5)$
+fourfolds of CA18.
+\end{corollary}
+
+\begin{proof}
+CA18 constructs an actual regular projective reduced strict
+semistable native model.  Its local full-G theorem is explicitly
+reapplied to all new cycles after every finite unramified extension:
+such base change preserves every geometric stratum condition and
+the exponent-one local equation.  Hence, for each codimension,
+this supplied model satisfies exactly the hypothesis of
+RI18's all-finite-field corollary.
+That corollary handles a specified cycle over an arbitrary $L$
+by a Galois closure, a fresh unramified-field theorem, inertial
+norm detection, and full finite actual trace.  It supplies the
+claimed form for that original cycle and its precise support.
+All field degrees are the complete degrees, and the absolute value
+is never renormalized.  The specializations named in the statement
+are cases of the same CA18 hypotheses; their cycle groups are not
+replaced by images of earlier-field Chow groups.
+\end{proof}
+
+\begin{corollary}[A finite-place criterion stable under every number-field extension]
+\label{r18ru:global-criterion}
+Let $F$ be a number field and $X/F$ a smooth projective geometrically
+integral variety of dimension $n\ge4$.  Suppose that for each finite
+place $v$ of $F$ there is a finite valued extension $L_v/F_v$ over
+which $X_{L_v}$ has one of the following supplied local descriptions:
+\begin{enumerate}
+\item a smooth projective good-reduction model;
+\item an ordinary-quadratic model in the precise frozen ON17/GP17
+      domain, including its allowed finite thickness and auxiliary
+      native splitting;
+\item one of the complete-intersection ambient product models of
+      CA18, with all hypotheses of Corollary~\ref{r18ru:local}.
+\end{enumerate}
+Then, for every finite extension $E/F$, every finite place $w$ of
+$E$, and every specified geometrically homologically trivial
+rational cycle on $X_{E_w}$, strong G holds in every codimension.
+Consequently the frozen PH16 construction and GA17 model-lift theorem
+give, for every $1\le r\le n$, the complete complementary-degree
+height pairing
+\[
+ \operatorname{CH}^r(X_E)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^{n+1-r}(X_E)_{\mathbf Q,\mathrm{geom\,hom}}
+                         \longrightarrow\mathbf R.
+ \tag{RU18.1}\label{r18ru:height}
+\]
+\end{corollary}
+
+\begin{proof}
+Fix $w\mid v$ and an arbitrary specified local cycle $Z$ over
+$E_w$.  Embed the finite local fields in a common algebraic closure
+of $F_v$ and take their compositum $M=L_vE_w$.
+In the good-reduction case, smooth proper base change and the frozen
+model detector apply anew to every homological cycle over $M$.
+In the ordinary-quadratic case, the stated frozen theorem is reapplied
+over $M$; its allowed thickness changes by the actual ramification
+index, and its finite native auxiliary extensions are included in
+its theorem.  In the ambient-product case, apply
+Corollary~\ref{r18ru:local} to the finite extension $M/L_v$ and
+the pullback of the present $Z$ to $M$.
+
+Thus in each case that pulled specified cycle has strong G over
+$M$.  The frozen finite actual trace descends it to $E_w$ with
+exactly the degree $[M:E_w]$, or with the corresponding complete
+composite degree if the frozen ordinary-quadratic theorem used a
+further auxiliary field.  The original absolute value on $E_w$
+and the precise support of $Z$ are retained.  Since $Z$ was arbitrary,
+this proves the full local domain at every $w$, including classes
+which are not defined over either $F_v$ or $L_v$.
+
+PH16 now has its full local hypotheses in both complementary
+codimensions on the entire displayed geometric homological groups.
+GA17 supplies the required admissible model lifts on this established
+domain.  Their frozen construction gives
+\eqref{r18ru:height}.  It is not being extended from a smaller
+already-defined height subgroup by choosing values on a quotient.
+\end{proof}
+
+\begin{corollary}[The unchanged GF18 and NG18 dense families]
+\label{r18ru:existing-global-families}
+Every member of the complete all-dimensional GF18/NG18 families
+as upgraded in GH18 has the height pairings
+\eqref{r18ru:height} after every number-field extension of
+$\mathbf Q$.  The condition ``unramified at the distinguished prime
+$q$'' in the earlier source statements is removed for these same
+members.  Their coefficient conditions, density assertions and
+monodromy ranks are unchanged.
+\end{corollary}
+
+\begin{proof}
+GF18/NG18 establish the product description at $q$ and the frozen
+good or ordinary-quadratic description at every other finite place.
+Thus Corollary~\ref{r18ru:global-criterion} applies with $F=\mathbf Q$;
+no new arithmetic spreading claim is necessary.
+\end{proof}
+
+\paragraph{Exact limits.}
+A single local CA18 example is not, by itself, a global height
+example: the finite-place hypothesis of
+Corollary~\ref{r18ru:global-criterion} must be checked at every
+other place.  A separate arithmetic construction of such examples
+may invoke that criterion after its placewise verification.
+These assertions cover the stated full cycle domains; they assert
+neither every smooth complete intersection nor every hypersurface,
+and they do not resolve general G or full BB heights for an arbitrary
+smooth projective variety.  In particular RI18 has not removed its
+need for a fresh full theorem over all unramified extensions.
+
+\paragraph{Dependency and review status.}
+The new input of this overlay is RI18's independently reviewed norm
+detection theorem.  The all-unramified starting theorem is GH18 or
+CA18, with its separately bound hypotheses and review; the full
+height construction is PH16/GA17.  The global specializations use
+the previously reviewed placewise GF18/NG18 construction.  This
+application overlay has no literature-priority claim and is to be
+bound separately by the final review/register.

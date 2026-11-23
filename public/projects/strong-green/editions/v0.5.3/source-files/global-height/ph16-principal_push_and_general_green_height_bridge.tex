@@ -1,0 +1,349 @@
+% Round 16. Activated after independent review by global_height_audit and model_obstruction.
+% Reviewed mathematical source SHA256: 0959e289975e1662723a62f800be3464e983bca8f73fa0bbb56cbe8ca0aabdfb.
+% This update changes only these status comments.
+\section{Principal-cycle push and a height bridge from strong G itself}
+\label{r16ph:section}
+
+This section separates two assertions which must not be confused.
+The actual obstruction-zero criterion remains only a sufficient
+criterion for strong G.  Nevertheless the principal transformation
+law for a height can be obtained without proving the converse and
+without a pullback theorem for an arbitrary supplied Green form.
+The key is to push a scalar principal Green function, and to evaluate
+that particular construction by the already proved point-slice residue
+of a supported-complex curved pair.
+
+\begin{lemma}[The direct immersion construction allows a normal carrier]
+\label{r16ph:normal-immersion}
+Let $i:M\hookrightarrow P$ be a closed immersion with $M$ normal
+integral projective and $P$ smooth integral projective over $K$, of
+codimension $c>0$.  Suppose an ordinary actual strong Green form is
+given for a specified codimension-$r$ cycle $D$ on $M$, with
+$1\le r\le\dim M$, against all compact actual tests on $M$.
+Then the construction of Theorem~\ref{r16gp:push} gives an ordinary
+actual strong Green form for $i_*D$ on its exact complement in $P$.
+It may use the particular supported-complex curved pair for $[M]$.
+\end{lemma}
+
+\begin{proof}
+Use the frozen arbitrary algebraic immersion theorem
+\texttt{round14/foundations\_audit/arbitrary\_algebraic\_immersion\_germs.tex},
+\texttt{r14l:local-lift}, \texttt{r14l:germ-iso} and
+\texttt{r14l:global-extension}.  Its hypotheses are reduced pure
+algebraic varieties; neither smoothness nor normality of the closed
+source is required.  Thus a degreewise extension of the supplied form
+exists on $U=P^{\rm an}\setminus|i_*D|^{\rm an}$.  The extension's
+$D$ is zero on an ordinary neighborhood of $M\cap U$.  The locally
+finite ordinary smooth cutoff argument of
+Lemma~\ref{r16gp:open-extension} uses only paracompactness of this
+smooth ambient open, so is unchanged.
+
+The frozen supported-complex curved pair exists for the arbitrary
+integral cycle $[M]$ on the smooth target $P$.  In particular its
+existence does not assert that $M$ is a regular immersion.  Localize
+this pair exactly as in GP16.1.  The product
+$\Omega_N\widetilde\gamma_D$ is actual on all of $U$.
+For an ambient complementary test $\eta$, the actual product
+$\widetilde\gamma_D D\eta$ is compact on $U$, its $D$ is zero
+on the support of the localized pair, and its restriction to $M$
+is $\gamma_D D(i^*\eta)$.  GP16.2 therefore gives precisely
+GP16.5.  All those statements make sense on the pure normal $M$;
+actual-current injectivity and scalar Stokes on normal spaces are
+the frozen interfaces.  No normal bundle of $M$ or smooth retraction
+from $P$ to all of $M$ is used.
+\end{proof}
+
+\begin{definition}[Principal datum with a neutral omitted fiber]
+\label{r16ph:datum}
+Let $X/K$ be smooth projective geometrically integral of dimension
+$n$, and put $p+q=n+1$, $1\le p,q\le n$.
+A principal datum consists of a normal integral projective
+$q$-fold $M$, a morphism $f:M\to X$, and a morphism
+$u:M\to\mathbf P^1$ not identically $0$ or $\infty$.
+Put $D=\operatorname{div}(u)$, $Z=f_*D$, and $S=f(|D|)$.
+Let $W$ be a rational codimension-$q$ cycle on $X$.  We require
+\[
+ |W|\cap S=\varnothing,\qquad
+ f^{-1}|W|\setminus u^{-1}(-1)\ \hbox{is finite}.
+ \tag{PH16.1}\label{r16ph:position}
+\]
+The second condition permits arbitrary intersection in the omitted
+fiber.  It is the condition supplied by a good higher-Chow
+one-chain with parameter space $\mathbf P^1\setminus\{-1\}$.
+All rational coefficients are cleared before forming a field norm.
+\end{definition}
+
+\begin{proposition}[An actual principal push with its exact norm evaluation]
+\label{r16ph:principal-push}
+For a datum in Definition~\ref{r16ph:datum}, there is an ordinary
+actual form $g_Z$ of degree $(p-1,p-1)$ on
+$X^{\rm an}\setminus S^{\rm an}$, with zero-curvature Green
+identity for the specified cycle $Z=f_*D$ against every compact
+actual test, such that
+\[
+                \int_W g_Z=-\log|\mu(M,u;W)|_K.
+ \tag{PH16.2}\label{r16ph:norm-evaluation}
+\]
+For integral data, $\mu$ is the product of the field norms of $u$
+at the refined zero-dimensional intersections with $W$ outside
+$u=-1$, with their refined integer coefficients.  The refinement
+is the graph intersection with the smooth target $X$; it is not
+replaced by the length of an underived intersection on a possibly
+non-Cohen--Macaulay carrier.  For rational data the displayed
+logarithm is divided by the common integral scaling.
+If $S=|Z|$, this is an exact-support strong Green form for $Z$.
+No removability across $S\setminus|Z|$ is asserted or needed.
+\end{proposition}
+
+\begin{proof}
+Write $W$ as its finite sum of prime components.  Make every
+neighborhood and cutoff choice below simultaneously for that finite
+union, constructing one form $g_Z$ with the one prescribed residue
+$Z$.  The displayed evaluation may then be read on each prime and
+summed with its coefficient; the Green forms themselves are not
+summed once for each prime of $W$.  Choose a projective
+embedding $e:M\hookrightarrow\mathbf P^a$ with
+$c=n+a-q>0$, and let $i=(f,e):M\hookrightarrow P=X\times\mathbf P^a$.
+The scalar $g=-\log|u|$ is an ordinary actual strong Green function
+for $D$ on the normal $M$, by scalar all-actual Poincare--Lelong.
+Let $U=P^{\rm an}\setminus|i_*D|^{\rm an}$.
+Extend $g$ degreewise to an actual scalar $\widetilde g$ on $U$.
+Its $D$ is zero near $i(M\setminus|D|)$ by the preceding lemma.
+Choose the particular supported-complex pair $(\Gamma_M,\Omega_M)$
+for the cycle $i(M)$, and a localized pair
+\[
+ \Gamma_N=\lambda\Gamma_M,\qquad
+ \Omega_N=\Omega_M+D((\lambda-1)\Gamma_M)
+ \tag{PH16.3}\label{r16ph:localized}
+\]
+on $U$, with support in a neighborhood where $D\widetilde g=0$.
+The neighborhood and cutoff will be made smaller below.
+Then $\Omega_N\widetilde g$ is the strong Green form for $i_*D$
+in Lemma~\ref{r16ph:normal-immersion}.  Set
+\[
+ g_Z=I_{P|_{X\setminus S}/(X\setminus S)}
+                  (\Omega_N\widetilde g).
+ \tag{PH16.4}\label{r16ph:bundle-output}
+\]
+Its degree is $c-a=p-1$.  The proof of DP16.4 uses only the
+just proved normal-carrier immersion result, projective-bundle
+actual adjunction, and proper cycle integration.  It therefore
+proves its zero-curvature identity with residue $f_*D$ and polar
+envelope $S$.  In particular no proper actual operator on $f$
+has been presumed.
+
+Here is the evaluation, including the omitted fiber.
+Let $W^\nu\to W$ be the normalization and put
+$T=W^\nu\times\mathbf P^a$, with its proper map $b:T\to P$.
+This is normal integral of dimension $c$.  Its native top integral
+is that on $W\times\mathbf P^a$, since normalization has generic
+degree one.  The cycle restriction formula PG16.4, applied on
+the complement of $S$, gives
+\[
+          \int_W g_Z=\int_T b^*(\Omega_N\widetilde g).
+ \tag{PH16.5}\label{r16ph:top-evaluation}
+\]
+This use of PG16.4 is legal on an ordinary neighborhood of the
+compact cycle $W\subset X\setminus S$: its smooth-locus proof
+and proper fiber support are local on that neighborhood.
+
+Write $B=i(u^{-1}(-1))$.  The function $g$ is identically zero
+on an ordinary neighborhood of $u^{-1}(-1)$, because
+$|u+1|<1$ implies $|u|=1$.  The arbitrary immersion germ theorem
+therefore makes $\widetilde g$ zero on an ordinary ambient
+neighborhood $O_B$ of the compact $B$.  This neighborhood is
+contained in $U$.  On
+$T^\circ=T\setminus b^{-1}B$, the inverse image of $i(M)$
+is finite by \eqref{r16ph:position}.  Denote its refined point
+cycle by
+\[
+                         I_b([M])=\sum_x m_x[x].
+ \tag{PH16.6}\label{r16ph:points}
+\]
+There are finitely many corresponding ambient closed points
+$t=i(m)$ outside $B$.  At each such point the restriction of
+$\widetilde g$ to $i(M)$ equals $-\log|u(m)|$ on a neighborhood:
+$u$ is a unit there and the absolute value of a unit is locally
+constant near a rigid point.  The immersion germ theorem makes
+the same constant equality hold on an ambient ordinary neighborhood
+of $t$.  Choose these neighborhoods disjoint and disjoint from $B$.
+Choose ordinary smooth ambient functions $\chi_t$ supported in
+them and equal to one on smaller neighborhoods of $t$.
+Shrink $O_B$ inside the zero neighborhood of $\widetilde g$ so
+that it is disjoint from every $\operatorname{Supp}\chi_t$.
+This is possible because the finite union of those closed
+supports is disjoint from the compact $B$.
+
+Shrink $N$ so that its intersection with the compact set $b(T)$
+lies either in $O_B$, where $\widetilde g=0$, or in those smaller
+constant neighborhoods, where the corresponding $\chi_t=1$.
+This is possible because the remaining closed subset of $b(T)$
+is disjoint from $i(M\setminus|D|)$; ordinary paracompactness
+gives the required cutoff $\lambda$.  Consequently the integral
+in \eqref{r16ph:top-evaluation} is
+\[
+       \sum_t -\log|u(m_t)|
+                       \int_{T^\circ}b^*\Omega_N\,b^*\chi_t.
+ \tag{PH16.7}\label{r16ph:localized-evaluation}
+\]
+All displayed tests have compact support in $T^\circ$.
+Use H16.4 for the particular pair $(\Gamma_M,\Omega_M)$
+and the normal testing map $T^\circ\to P$.  The correction
+$(\lambda-1)\Gamma_M$ is actual on $U$, so its ordinary pullback
+and Stokes give the same point-slice formula for the localized
+pair \eqref{r16ph:localized}.
+The derivative $D(b^*\chi_t)$ is zero on the support of
+$b^*\Gamma_N$ where it can contribute, by the chosen support
+conditions.  Thus
+\[
+           \int_{T^\circ}b^*\Omega_N\,b^*\chi_t
+                     =\sum_{b(x)=t}m_x[\kappa(x):K].
+ \tag{PH16.8}\label{r16ph:point-mass}
+\]
+There is no residue calculation on the possibly larger set over
+$B$; its contribution has already vanished as an actual germ.
+Equations \eqref{r16ph:localized-evaluation}--\eqref{r16ph:point-mass}
+and the identity
+$\log|N_{\kappa(x)/K}a|=[\kappa(x):K]\log|a|$
+prove \eqref{r16ph:norm-evaluation}.
+
+Finally, proper bivariant projection identifies the push of
+\eqref{r16ph:points} with the refined intersection of $M\to X$
+and $W\to X$ outside $u=-1$.  To see the compatibility, use the
+graph $M\hookrightarrow X\times\mathbf P^a$, flat pullback
+of $W$ to the projective factor, and then proper push by the
+projection.  Refined graph intersection commutes with that flat
+pullback and proper push; normalizing $W$ pushes its fundamental
+cycle to $[W]$.  These are the same bivariant identities used
+in H16.3 (Stacks 0FBP, 0FBR and 0FC0).  The point groups on the
+finite supports are free, so this keeps their coefficients.
+Transitivity of field norms gives exactly the stated $\mu$,
+independently of the embedding and normalization.
+\end{proof}
+
+\begin{corollary}[Principal transformation from an arbitrary strong Green form]
+\label{r16ph:principal-law}
+Assume in addition that $W$ has any ordinary actual strong Green
+form $\gamma_W$ on its exact complement.  For a sum of principal
+data as above, with $Z=\sum f_*\operatorname{div}(u)$, one has
+\[
+                   \int_Z\gamma_W
+                       =-\log|\mu(\xi;W)|_K.
+ \tag{PH16.9}\label{r16ph:principal-law-eq}
+\]
+The same formula gives the difference between local pairings of
+two disjoint representatives $Z_0,Z_1$ connected by a good
+higher-Chow one-chain $\xi$, provided their strong Green forms
+and that of $W$ are supplied.  No P property is required for
+the arbitrary form $\gamma_W$.
+\end{corollary}
+
+\begin{proof}
+The polar envelope $S$ in Proposition~\ref{r16ph:principal-push}
+is disjoint from $|W|$, and has dimension at most $n-p$.
+The frozen disjoint-polar actual Stokes identity therefore applies
+to $g_Z$ and $\gamma_W$, with the specified residue $Z$ even when
+its support is smaller than $S$.  It gives
+$\int_Z\gamma_W=\int_W g_Z$.
+Use \eqref{r16ph:norm-evaluation} and add the terms of the chain.
+For the difference statement, the same Stokes identity applied to
+the two supplied forms gives
+$\lambda(Z_1,W)-\lambda(Z_0,W)=\int_{Z_1-Z_0}\gamma_W$.
+It uses their separate polar supports, both disjoint from $W$;
+it does not require extending their difference across canceled
+poles.  The normalization of the projective closure of a good
+one-chain is a normal projective $q$-fold with its morphism to
+$\mathbf P^1$.  Proper intersection on the parameter open
+gives the finite set in \eqref{r16ph:position}, and the individual
+faces avoid $W$.  The omitted parameter is precisely $-1$.
+Thus the proposition applies without resolving the carrier.
+The norm is the usual higher-Chow biextension transition norm,
+up to factors of absolute value one from the omitted value and
+sign convention, as in the proof of Theorem~\ref{r16h:global-height}.
+\end{proof}
+
+\begin{theorem}[A general strong-G hypothesis suffices for the full height construction]
+\label{r16ph:general-height}
+Let $X/F$ be smooth projective geometrically integral over a
+number field, with $\dim X=n$ and $p+q=n+1$.
+Assume that, for every finite place $v$, strong G holds over
+$F_v$ for every specified geometrically homologically trivial
+rational cycle of codimension $p$ or $q$ on $X_{F_v}$.
+Then there is a canonical real bilinear height on the full groups
+\[
+ \operatorname{CH}^p(X)_{\mathbf Q,\mathrm{geom\,hom}}
+ \times\operatorname{CH}^q(X)_{\mathbf Q,\mathrm{geom\,hom}}
+                         \longrightarrow\mathbf R,
+ \qquad
+ h([Z],[W])=\sum_v\frac{[F_v:\mathbf Q_v]}{[F:\mathbf Q]}
+                         \int_W\gamma_{Z,v},
+ \tag{PH16.10}\label{r16ph:general-height-formula}
+\]
+with the fixed classical principal normalization at the infinite
+places.  It is independent of the disjoint representatives and
+all Green choices, symmetric with the complementary degrees
+interchanged, and compatible with finite number-field extension
+on pulled-back classes (and with the full height over the extension
+whenever its corresponding strong-G hypothesis is also supplied).
+It is the height of the Bloch biextension equipped with the
+local norms prescribed by these integrals.
+
+The theorem is a conditional implication from strong G.  It does
+not prove its hypothesis for a general $X$, nor infer
+$G(Z)\Rightarrow\mathfrak o_X([Z])=0$.
+\end{theorem}
+
+\begin{proof}
+Move the two classes to disjoint representatives over $F$.
+The strong-G hypothesis supplies the finite-place forms; the
+usual compact K\"ahler construction supplies the archimedean ones.
+The frozen disjoint-polar Stokes identity proves local Green-choice
+independence and symmetry.  At all but finitely many finite places,
+the pair has disjoint closures on a smooth projective model and
+the frozen R11 good-model supported-complex construction has zero
+curvature and vanishes outside the prescribed tube.  Its local
+pairing is zero.  Choice independence therefore makes the displayed
+sum finite for every permitted choice of Green forms.
+
+A good higher-Chow chain over $F$, moved properly with respect to
+the other cycle, connects two rationally equivalent disjoint
+representatives.  Corollary~\ref{r16ph:principal-law} gives the
+finite-place change as $-\log|\mu|_v$ for the single global
+transition element after clearing all rational denominators.
+At infinity the classical Green-function principal law gives the
+same expression.  The weighted product formula makes its sum zero.
+Symmetry handles the second variable; a third common moving
+representative handles simultaneous changes.  Additivity on cycles
+and this descent give rational bilinearity.  The algebraic
+higher-Chow cocycle identities are precisely the Bloch-biextension
+transition identities, so exponentiation gives its local norms.
+These algebraic inputs and the full moving statement are those
+checked in Gorchinskiy, Section 2 and Section 4.1, in the earlier
+height proof.
+
+For finite field extensions, use native finite actual trace to
+see that the pullback of a strong Green form is strong on all
+actual tests: in the pairing, trace the test first and apply
+finite-flat cycle restriction with the full generic lengths.
+The actual sheaves for a finite extension viewed over the original
+field have the same genuine unit presenters, and Mihatsch
+Lemma 3.16 scales their native measures by the full degree.
+The extension formula for local absolute values and
+$\sum_{w\mid v}[E_w:F_v]=[E:F]$ give equality of the normalized
+global sums.  This repeats the native calculation in the earlier
+height theorem with arbitrary strong forms; it does not use
+obstruction vanishing.  The hypothesis is only used to supply
+forms on all representatives, so no unjustified exact-support
+addition or removability is hidden in the Chow descent.
+\end{proof}
+
+\paragraph{What this bridge removes, and what remains.}
+The proof of the principal law uses the P theorem for a specific
+curved pair of an auxiliary cycle, which has been proved in this
+round.  It never applies P to an arbitrary strong Green form.
+Consequently the unresolved converse from G to the actual
+obstruction kernel is not an extra premise for the general
+height implication.  Supplied regular-model comparison is a
+separate theorem of this report.  Existence of strong forms for
+general homological cycles remains the substantive unresolved
+local hypothesis.

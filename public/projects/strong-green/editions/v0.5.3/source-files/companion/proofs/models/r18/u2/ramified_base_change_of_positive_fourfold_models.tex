@@ -1,0 +1,348 @@
+% Round 18. U2 branch. Candidate: requires a bound independent review.
+\section{Ramified base change of positive fourfold models}
+\label{r18rb:section}
+
+This section treats new cycles over a ramified field by constructing a
+new reduced strict semistable witness.  The calculation is algebraic on
+its actual strata.  It uses neither an assertion that those cycles
+already descend nor an unspecified proper pushforward of actual forms.
+The geometric input about toroidal factorization is the corrected
+\emph{weak} factorization theorem, not the withdrawn strong version.
+
+\subsection{The two precise toroidal inputs}
+
+We use the following published inputs in their indicated scopes.
+\begin{enumerate}
+\item Takeshi Saito, \emph{Weight spectral sequences and independence
+of $\ell$}, Lemmas 1.2.4--1.2.5, author manuscript
+\url{https://www.ms.u-tokyo.ac.jp/~t-saito/pp/wmr2r.pdf},
+printed pp.~15--16.  If $\mathcal X/R$ is strict semistable, its
+components have ideals $I_i=\mathcal O_{\mathcal X}(-D_i)$,
+and $R_L/R$ has ramification index $e$ and uniformizer $t$, then the
+\emph{actual blowup} of $\mathcal X_{R_L}$ in the coherent ideal
+\[
+ \mathfrak a_e=
+ \prod_{0\le j<k\le m}\ \prod_{h=1}^{e-1}
+       \bigl(I_{j+1}\cdots I_k\mathcal O_{\mathcal X_{R_L}}
+                      +t^h\mathcal O_{\mathcal X_{R_L}}\bigr)
+ \tag{RB18.1}\label{r18rb:saito-ideal}
+\]
+is reduced strict semistable.  For $e=1$ the ideal is the unit ideal.
+The proof is by the displayed monoid charts and integral unimodular
+subdivision.  It imposes no tame-ramification assumption.
+
+\item The integral-conical-complex weak factorization theorem:
+a proper birational toroidal map between nonsingular strict toroidal
+embeddings can be factored into smooth toroidal blowups and blowdowns;
+if the endpoints are projective, the intermediate varieties can be
+chosen projective.  Here we use the corrected conical-complex statement
+of Kenji Matsuki, \emph{Erratum to ``A note on the factorization theorem
+of toric birational maps after Morelli and its toroidal extension''},
+item~2, \url{https://arxiv.org/pdf/math/0006038}, together with the
+projectivity construction in Abramovich--Karu--Matsuki--W\l odarczyk,
+\emph{Torification and factorization of birational maps},
+Theorem~2.7.1 and its proof, JAMS \textbf{15} (2002), 551--552,
+\url{https://personal.math.ubc.ca/~karu/papers/semist.pdf}.
+\end{enumerate}
+
+We spell out the characteristic issue in the second input.  We do
+\emph{not} invoke the general characteristic-zero weak factorization
+theorem for an arbitrary birational map of special-fiber varieties.
+The input used here is its already toroidal, purely integral
+conical-complex part: the factorization consists of smooth star
+subdivisions and inverse operations in the integral cone complexes.
+These combinatorial operations do not depend on a ground-field
+characteristic.  A smooth star subdivision is realized, over any field,
+by blowing up the corresponding smooth closed stratum; its monomial
+charts and their gluing are the same integral charts in every
+characteristic.  A rational strictly convex support function realizes
+the asserted projectivity.  A common toroidal graph and its projective
+monomial resolution replace elimination of indeterminacy at the start
+of the projectivity argument.  No resolution of arbitrary
+positive-characteristic singularities enters that argument.
+
+In our application every boundary component and the lattices of the
+normal torus characters are individually labelled.  After a finite
+unramified extension, if needed, all connected old strata are
+geometrically integral.  Thus these are strict conical complexes
+without self-identifications; each smooth-star center is a native
+smooth closed stratum, or its disjoint connected components.  Applying
+the integral algorithm and then its monomial realization gives a
+specified finite chain of smooth projective blowups and blowdowns
+on the varieties under consideration.  This explanation does not
+assert arbitrary-field weak factorization for nontoroidal maps.
+
+\subsection{Every new stratum has an actual toroidal comparison}
+
+Let $\mathcal X/R$ be a regular projective reduced strict semistable
+model of relative dimension $n$.  Write $D_I=\bigcap_{i\in I}D_i$.
+Fix a finite extension $L/K$ and let $\mathcal Y/R_L$ be the blowup
+\eqref{r18rb:saito-ideal}.  Its generic fiber is exactly $X_L$.
+We first work after a residue extension splitting all connected old
+strata, so that each of their components is geometrically integral.
+The field descent at the end will retain its full degree.
+
+\begin{lemma}[Toroidal comparison for each actual closed stratum]
+\label{r18rb:strata}
+Let $S$ be a geometrically integral component of an actual closed
+stratum formed by $q$ distinct components of $\mathcal Y_k$.
+Then there is an old geometrically integral closed stratum $D_I$,
+with $s=|I|\ge q$, such that $S\to\mathcal X_k$ factors through
+$D_I$ and dominates it.  Put $b=s-q$.  There are line bundles
+$\mathcal L_1,\ldots,\mathcal L_b$ on $D_I$ for which $S$ and
+\[
+ \mathcal P_S=
+   \prod_{\nu=1}^{b}{}_{D_I}
+       \mathbf P_{D_I}(\mathcal O\oplus\mathcal L_\nu^\vee)
+ \tag{RB18.2}\label{r18rb:bundle}
+\]
+are connected by a finite chain of smooth projective blowups and
+blowdowns.  The projective bundles use the quotient convention;
+for $b=0$ the right side means $D_I$.
+The birational comparison and the factorization are toroidal and
+are identities on the same normal torus torsor over
+\[
+ D_I^\circ=D_I\setminus\bigcup_{j\notin I}D_j.
+\]
+No birational factorization theorem for arbitrary varieties is used.
+\end{lemma}
+
+\begin{proof}
+\emph{Step 1: the integral orbit lattice.}
+At a point of an old $s$-fold stratum, strict semistability gives an
+actual etale chart $x_1\cdots x_s=\pi$, with extra smooth coordinates.
+After base change write $\pi=u t^e$ and absorb the unit $u$ in one
+coordinate.  The local monomial character lattice and its dual are
+\[
+ M_I=\frac{\mathbf Z^{I}\oplus\mathbf Z[t]}
+               {\mathbf Z((1)_{i\in I},-e)},\qquad
+ N_I=\{((a_i)_{i\in I},h):\sum_i a_i=eh\}.
+ \tag{RB18.3}\label{r18rb:lattices}
+\]
+The Saito subdivision has height-one rays
+$((a_i),1)$, with $a_i\ge0$ and $\sum_i a_i=e$.
+Every cone is unimodular in $N_I$.
+An actual $q$-fold stratum corresponds to a $q$-dimensional cone
+$\sigma$; the union of the supports of its rays determines $I$.
+Its relative interior maps to the relative interior of the old
+cone for $D_I$, so $S$ dominates $D_I$.
+The character lattice of the dense orbit in the fiber is
+\[
+                  M_\sigma=M_I\cap\sigma^\perp,
+                       \qquad\operatorname{rank}M_\sigma=s-q=b.
+ \tag{RB18.4}\label{r18rb:orbit-lattice}
+\]
+Unimodularity makes the orbit a split torus of this rank, with no
+hidden finite cover of the old stratum.  Equivalently, the local
+monoid ring of the open orbit is the group ring of this free
+lattice over the coordinate ring of $D_I^\circ$.
+All these descriptions are compatible on faces of the old
+cone complex, hence describe the actual global stratum, not a
+formal substitute for it.  A connected component of an old
+stratum is treated separately if the intersection is disconnected.
+
+\emph{Step 2: the torsor and the extending line bundles.}
+Choose a lattice basis $\chi_1,\ldots,\chi_b$ of $M_\sigma$ and
+fixed integral representatives
+$((c_{i\nu})_{i\in I},d_\nu)$ in the numerator of
+\eqref{r18rb:lattices}.  On the local open orbit the corresponding
+coordinate is the residue of the valuation-zero monomial
+\[
+                           t^{d_\nu}\prod_{i\in I}x_i^{c_{i\nu}}.
+ \tag{RB18.5}\label{r18rb:characters}
+\]
+Negative exponents here are permitted: these are invertible
+characters on the open orbit and rational functions on its
+compactification, not purported global regular functions.
+
+If a local defining equation of $D_i$ changes from $x_i$ to
+$g_i x_i$, the coordinate \eqref{r18rb:characters} changes by
+$\prod_i(g_i|_{D_I})^{c_{i\nu}}$.  Therefore the torus torsor
+extends from $D_I^\circ$ to the product of the nonzero line-bundle
+spaces for
+\[
+                  \mathcal L_\nu=
+                  \bigotimes_{i\in I}
+                  \bigl(\mathcal O_{\mathcal X}(D_i)|_{D_I}\bigr)
+                                      ^{\otimes c_{i\nu}}.
+ \tag{RB18.6}\label{r18rb:line-bundles}
+\]
+With the quotient convention,
+$\mathbf P(\mathcal O\oplus\mathcal L_\nu^\vee)$ contains
+$\mathcal L_\nu^\times$ as the open set where its two quotient
+coordinates are nonzero.  This verifies the convention in
+\eqref{r18rb:bundle}.  A different representative of a character
+changes its extension by a boundary line bundle; a fixed choice
+has been made, and both extensions identify the same torus torsor
+on $D_I^\circ$.  No root of a transition unit is extracted, even
+when $e$ is divisible by the residue characteristic.
+
+The local monoid charts show that this torsor is precisely the
+open subset of $S$ avoiding the other new components.  Indeed a
+new boundary divisor is an adjacent toric orbit divisor, and the
+preimage of any old extra component is a union of such divisors.
+The transitions just computed depend only on their restrictions
+to $D_I$, since the map from $S$ factors through $D_I$.  Thus the
+identification is an actual algebraic identification on the common
+open subset; it does not rely on choosing a formal tubular
+neighborhood of $D_I$.
+
+\emph{Step 3: toroidal compactifications and their factorization.}
+The complement of the common open in $S$ is the restriction of the
+other components of the reduced SNC fiber of $\mathcal Y$.
+It is a strict normal-crossings divisor.  On $\mathcal P_S$ the
+complement is the union of the zero and infinity sections of its
+line-bundle factors and the inverse image of the old boundary of
+$D_I$.  This too is a strict normal-crossings divisor.
+The induced birational map between these two proper smooth
+compactifications is toroidal: on the actual charts its fiber
+coordinates are the integral monomials
+\eqref{r18rb:characters}, while its old boundary coordinates and
+smooth base coordinates are pulled back from $D_I$.
+In particular there is one fixed common open torus torsor; merely
+being locally toric with unrelated choices of open tori would
+not suffice.
+
+Apply the corrected integral-conical-complex weak factorization
+input above to this toroidal birational map.  Smooth stars are
+realized by blowups of the indicated native smooth closed strata,
+and the projectivity refinement keeps all intermediate varieties
+projective.  This gives the chain asserted in the lemma.  The
+construction does not claim that all blowups precede all blowdowns.
+\end{proof}
+
+\subsection{Fourfold numerical positivity and the double-curve gate}
+
+Call a smooth projective fourfold \emph{universally middle-positive}
+if, after every finite extension of its native finite field and on
+every resulting connected component, its native middle numerical
+pairing has negative index $\rho-1$, where $\rho=\dim N^1$.
+By S18 this is equivalent to the numerical primitive middle
+Hodge positivity for every ample class on that component.
+All other required numerical Lefschetz and Hodge-index assertions
+on a fourfold follow from divisor Hodge index as in S18.
+
+Projective bundles of total dimension four over smooth projective
+bases of dimension at most three are universally middle-positive,
+by S18.  The same holds for their specified smooth blowups and
+blowdowns.  Smooth four-dimensional quadrics are also universally
+middle-positive: the frozen C217 quadric middle-form lemma in every characteristic
+(with $a=2$, extending QF17) gives positive primitive form, and the ample square gives the
+remaining positive line.  Equivalently, after splitting, the two
+middle plane classes have intersection matrix $\operatorname{diag}(1,1)$;
+$N^1$ has rank one.  Pullback to a splitting field and the full native
+degree pairing retain this positivity on the native subspace.
+S18's computed exceptional blocks then give the same assertion for
+specified smooth blowups and blowdowns of these quadric fourfolds.
+
+\begin{theorem}[Arbitrary finite base change of a positive fourfold witness]
+\label{r18rb:fourfold}
+Let $X/K$ be a smooth projective geometrically integral fourfold
+with a native regular projective reduced strict semistable model
+$\mathcal X/R$.  Assume:
+\begin{enumerate}
+\item every component $D_i$ is universally middle-positive in the
+precise numerical sense just defined;
+\item on every double stratum, over every finite residue extension,
+every numerically zero rational curve has zero geometric
+$\ell$-adic cycle class.
+\end{enumerate}
+Then, for every finite valued extension $L/K$ and every specified
+geometrically homologically trivial rational cycle on $X_L$, strong
+G holds with exact original support and all ordinary actual compact
+tests over $L$.  In particular the fourfold conclusion of HP18 is
+stable on the full cycle groups under arbitrary finite extension.
+\end{theorem}
+
+\begin{proof}
+Fix $L$ and a cycle on $X_L$; no descent of this cycle is assumed.
+Choose a further finite unramified extension $L'/L$ splitting the
+finitely many connected components of all old strata if necessary.
+This does not change the ramification index in Saito's construction.
+The hypotheses explicitly persist under its residue extension.
+Let $\mathcal Y/R_{L'}$ be the actual projective reduced strict
+semistable model \eqref{r18rb:saito-ideal}.
+
+A new component has $q=1$ in Lemma~\ref{r18rb:strata}.
+If $s=1$, its toroidal comparison is a chain of smooth projective
+blowups and blowdowns from the corresponding old fourfold component.
+If $s\ge2$, the comparison bundle has positive torus rank $s-1$;
+its last factor is a $\mathbf P^1$-bundle over a smooth projective
+threefold.  It is therefore middle-positive by S18.  In both cases
+S18's exceptional-pairing computation transports middle positivity
+through the entire chain.  Every new fourfold component consequently
+satisfies numerical middle Hodge positivity for the restriction of
+one actual ample divisor on $\mathcal Y$.  All its other nonempty
+strata have dimension at most three and satisfy the numerical
+Lefschetz and primitive Hodge-index assertions by divisor Hodge
+index.  The frozen R6 numerical BGS criterion therefore gives the
+numerical local exactness $U_2(\mathcal Y)=0$.
+
+A new double has $q=2$.  If $s=2$, its comparison bundle is the old
+threefold double itself, which has the assumed curve comparison.
+If $s\ge3$, the bundle has $s-2\ge1$ projective-line factors and
+total dimension three.  Its last factor is a projective-line bundle
+over a smooth projective surface, hence has curve comparison by
+CD17.  That comparison is preserved through all the supplied smooth
+blowups and blowdowns, again by CD17.  Thus every actual new double
+has the curve-comparison property, including after any further
+finite residue extension.  CL17 gives
+$K_{\mathrm{comp},\ell}^2(\mathcal Y)=\ker\rho_2$.
+DQ17 and ER17 now give the zero refined obstruction for every
+specified homologically trivial codimension-two cycle on $X_{L'}$.
+The frozen actual reconstruction supplies its exact-support Green
+form against every compact actual test.  The other codimensions
+are the frozen divisor, one-cycle, and zero-cycle cases.
+
+Apply the just established conclusion on $\mathcal Y$ to the
+pullback of the arbitrary specified cycle fixed over $L$.  The frozen finite actual trace
+descends with division by the full $[L':L]$, including its unramified
+constant-field degree, and with the absolute value extending the
+original one on $L$.  This returns the form on the original support
+complement over $L$ with all original actual tests.  Since the cycle
+over $L$ was arbitrary at the start, the entire asserted cycle
+domain over every $L$ is covered.
+\end{proof}
+
+\begin{corollary}[Hyperplanes and linear--quadric arrangements]
+\label{r18rb:families}
+The full fourfold G theorem of HP18 remains true for every new cycle
+after every finite valued extension.  The same conclusion holds for
+the fourfold NF18 models whose factor degrees all lie in $\{1,2\}$.
+Consequently the fourfold global HP18/GF18 height families, and the
+fourfold NG18 families from these linear--quadric profiles, have the
+stated complete complementary-degree height pairings after
+\emph{every} number-field extension.  The restriction ``unramified
+at $q$'' is unnecessary for these particular fourfold families.
+\end{corollary}
+
+\begin{proof}
+The HP18 components are the specified smooth blowups of
+$\mathbf P^4$.  The indicated NF18 components are the specified
+smooth blowups of smooth hyperplanes or quadric fourfolds.
+They are universally middle-positive by the preceding calculation
+and S18.  HP18's actual doubles have CD17's curve comparison;
+NF18 proves the same property for its complete-intersection
+threefold doubles and their specified smooth blowups.  Apply
+Theorem~\ref{r18rb:fourfold} anew at every completion above the
+formerly distinguished prime $q$.  At all other places the frozen
+good or ordinary-quadratic theorem already accepts every finite
+extension.  PH16 then supplies the complete height pairings, with
+GA17's admissible model lifts, on the full homologically trivial
+Chow groups over the new number field.
+\end{proof}
+
+\paragraph{Limits and dependencies.}
+For nonlinear factor fourfolds of arbitrary degree, the native middle
+positivity of the original components is not supplied by NF18; that
+paper's direct DG18 proof does not assert it.  In particular the
+five-sextic profile is not included in the new extension corollary.
+For relative dimension greater than four, this argument does not
+supply the required higher numerical positivity of the new
+components, and gives no blanket ramified-extension upgrade of
+HG18.  General G remains open.  The new conclusion is obtained by
+an actual new semistable model, its toroidal stratum comparisons,
+S18, the corrected numerical BGS input frozen in R6, CD17, CL17,
+DQ17, ER17, and the full-degree finite trace.  The known resolution
+and weak factorization theorems are cited as external inputs, and
+no priority claim is made for them.

@@ -1,0 +1,418 @@
+% Round 15. New candidate local interface, independent of the curve-base repair.
+% Requires independent review. Does not itself assert a Green operator theorem.
+\section{Local separable perturbation of rational moments}
+\label{r15b:local-perturbation-section}
+
+This section addresses a specific obstruction in extending the
+curve-base construction. A fixed global rational tuple can have a
+discriminant divisor passing through the chosen base point. The
+tuple representing a PWS form is not fixed: sufficiently small
+changes of its rational functions preserve their norms on the
+compact domains on which they are used. The statements below make
+that freedom simultaneous with exact domain membership.
+
+Throughout $K/\mathbf Q_p$ is the original valued field. All
+analytic neighborhoods are ordinary neighborhoods. A polynomial
+perturbation changes a presenting moment, not the actual form it
+represents. No preservation of closedness by an ambient extension
+is assumed.
+
+\begin{lemma}[Threshold stability on the whole ambient box]
+\label{r15b:threshold-stability}
+Let $S$ be any set of valued points, let $u,\widetilde u$ be
+functions whose values lie in their corresponding valued residue
+fields, and let $r>0$. Suppose
+\[
+                 |u-\widetilde u|<r\quad\hbox{at every point of }S.
+\tag{SP15.1}\label{r15b:threshold-error}
+\]
+Then each of the four conditions
+$|u|<r$, $|u|\leq r$, $|u|>r$, $|u|\geq r$ is equivalent
+to the corresponding condition for $\widetilde u$, point by point
+on $S$.
+\end{lemma}
+
+\begin{proof}
+If $|u|\geq r$, the strict inequality in
+\eqref{r15b:threshold-error} gives
+$|\widetilde u|=|u|$. If $|u|<r$, the ultrametric inequality
+gives $|\widetilde u|<r$. The same reasoning with $u$ and
+$\widetilde u$ interchanged proves all four equivalences,
+including the boundary $|u|=r$.
+\end{proof}
+
+\begin{lemma}[Small original-field balls are Zariski dense]
+\label{r15b:small-ball-density}
+Let $L/K$ be any field extension, and let $B_1,\ldots,B_m$ be
+nonempty open valuation balls in $K$. If
+$H\in L[T_1,\ldots,T_m]$ is nonzero, then $H$ does not vanish
+at every point of $B_1\times\cdots\times B_m$.
+In particular, a finite list of nonzero polynomials over $L$
+can simultaneously be avoided by arbitrarily small choices of
+parameters in the original field $K$.
+\end{lemma}
+
+\begin{proof}
+Every such ball contains arbitrarily many distinct elements of
+$K$, since the valuation is nontrivial. If $d_j$ bounds the degree
+of $H$ in $T_j$, choose $d_j+1$ distinct elements of $B_j$.
+Vanishing on their Cartesian product would force every coefficient
+of $H$ to vanish by successive inversion of the Vandermonde matrices.
+Those matrices have nonzero determinants in $K$ and are therefore
+invertible over $L$. This contradicts $H\ne0$. For a finite list
+apply the result to its nonzero product.
+\end{proof}
+
+Let $V=\operatorname{Spec}R$ be a smooth integral affine
+$K$-variety, let $x\in V^{\mathrm{an}}$, and put
+$p:V\times\mathbf P^1\to V$.
+Use the two standard affine coordinates $t_0=z$ and
+$t_\infty=w=1/z$ on the projective line.
+
+\begin{definition}[A finite Laurent presentation around a complete fiber]
+\label{r15b:Laurent-fiber-presentation}
+Such a presentation consists of the following data.
+\begin{enumerate}
+\item A compact algebraic Laurent affinoid domain
+$A\subset V^{\mathrm{an}}$ with $x\in A^\circ$.
+Here ``algebraic Laurent'' means a domain given, inside a bounded
+affine-coordinate polydisc, by finitely many scalar upper and lower
+absolute-value bounds on elements of $R$, with all thresholds
+positive.
+\item Finitely many boxes
+\[
+ K_i=A\times\{|t_{\sigma_i}|\leq R_i\},\qquad
+        \sigma_i\in\{0,\infty\},\quad R_i>0,
+\]
+and compact domains $A_i\subset K_i$ defined by finitely many
+conditions
+\[
+      |P_{i\ell}(t_{\sigma_i})|\leq r_{i\ell}
+      \quad\hbox{or}\quad
+      |P_{i\ell}(t_{\sigma_i})|\geq r_{i\ell},
+ \qquad P_{i\ell}\in R[t_{\sigma_i}],\quad r_{i\ell}>0.
+\tag{SP15.2}\label{r15b:Laurent-inequalities}
+\]
+The ordinary interiors of the $A_i$ cover the entire analytic
+fiber $p^{-1}(x)$.
+\item Each of a specified finite family of PWS forms on
+$(V\times\mathbf P^1)^{\mathrm{an}}$ has a presentation on an
+ordinary neighborhood of $A_i$ in finitely many analytic units.
+Each of those units has been replaced, with exactly the same norm
+on an ordinary neighborhood of $A_i$, by a rational function
+\[
+          R_{ik}=N_{ik}(t_{\sigma_i})/Q_{ik}(t_{\sigma_i}),
+       \qquad N_{ik},Q_{ik}\in R[t_{\sigma_i}],
+\tag{SP15.3}\label{r15b:rational-unit}
+\]
+where both $N_{ik}$ and $Q_{ik}$ are nonzero at every point of
+$A_i$.
+\end{enumerate}
+Repeated occurrences of the same polynomial are allowed to be
+listed separately. The fixed box coordinate and its bound are
+not among the polynomials to be perturbed.
+\end{definition}
+
+\begin{lemma}[Existence of a finite Laurent fiber presentation]
+\label{r15b:Laurent-fiber-exists}
+Given $V,x$ and a finite family of ordinary PWS forms on
+$(V\times\mathbf P^1)^{\mathrm{an}}$, a presentation as in
+Definition~\ref{r15b:Laurent-fiber-presentation} exists. There is
+an ordinary neighborhood $U$ of $x$, with $U\subset A^\circ$,
+such that
+\[
+                 p^{-1}(U)\subseteq\bigcup_i A_i^\circ.
+\tag{SP15.4}\label{r15b:whole-fiber-tube}
+\]
+The same assertion holds if the forms are initially given only
+over the inverse image of an ordinary base neighborhood of $x$.
+\end{lemma}
+
+\begin{proof}
+First choose $A$ inside the prescribed base neighborhood. At each
+point of the compact fiber $p^{-1}(x)$ choose one of the two affine
+fiber charts and a simultaneous ordinary presentation domain for
+the finitely many forms. The topology on an affine algebraic
+analytification is generated by absolute values of regular
+functions. Finitely many strict scalar inequalities therefore give
+an ordinary neighborhood inside that presentation domain.
+Tighten their positive bounds while retaining the chosen point in
+the ordinary interior, and add a sufficiently large fixed bound
+on the affine fiber coordinate. Intersect with the inverse image
+of $A$. This gives a domain $A_i$ of the stated form inside the
+presentation domain. Compactness of the fiber gives finitely many
+such $A_i$.
+
+The coordinate algebra of an algebraic Laurent domain is obtained
+by completing the regular coordinate algebra after adjoining the
+inverses of the finitely many functions given positive lower
+bounds. Thus every analytic unit on $A_i$ can be approximated
+uniformly by rational functions with denominators that are products
+of those functions. The base-domain lower-bound functions are
+included among these denominators. Choose the approximation error
+strictly below the positive minimum norm of the unit on $A_i$.
+The denominator is nonzero on $A_i$, and the ultrametric equality
+makes the numerator nonzero there as well. This gives
+\eqref{r15b:rational-unit}. Both the original unit and the rational
+function are analytic on an ordinary neighborhood of $A_i$;
+the strict error inequality persists on such a neighborhood.
+Their norm functions, and therefore all their PWS moment
+pullbacks, agree there. This is also the frozen R14 exact-norm
+replacement argument in this explicit Laurent situation.
+
+The union $N=\bigcup_i A_i^\circ$ is an ordinary open containing
+the entire fiber. The projection $p$ is proper, so
+$p((V\times\mathbf P^1)^{\mathrm{an}}\setminus N)$ is closed
+and does not contain $x$. Intersect its open complement with
+$A^\circ$ to obtain $U$. This proves
+\eqref{r15b:whole-fiber-tube} without assuming that the topology of
+an analytic fiber product is the Cartesian-product topology.
+\end{proof}
+
+\begin{proposition}[Simultaneous norm preservation and root separation]
+\label{r15b:separable-perturbation}
+Given a finite Laurent fiber presentation, every polynomial
+occurrence in \eqref{r15b:Laurent-inequalities} and
+\eqref{r15b:rational-unit} can be replaced by a polynomial
+$\widetilde P\in R[t_{\sigma_i}]$ by adding arbitrarily small
+coefficients from $K$, with the following properties.
+\begin{enumerate}
+\item Replacing the domain polynomials leaves each $A_i$
+exactly unchanged as a subset of $K_i$, hence as a domain over
+$A$. This equality holds for points outside $A_i$ as well as
+for points inside it.
+\item For every presenting rational unit,
+\[
+       \left|\frac{\widetilde N_{ik}}{\widetilde Q_{ik}}\right|
+                   =|R_{ik}|
+\]
+on an ordinary neighborhood of $A_i$. Therefore the original
+actual PWS forms have the same local tensor presentations after
+the replacements.
+\item Set $D_P\geq\max(1,\deg P)$ for each occurrence before
+choosing the perturbation, and allow all coefficients through
+degree $D_P$ to vary. Express the perturbed polynomials in the
+single coordinate $z$ by
+\[
+ H_P(z)=\widetilde P(z)\quad(\sigma_i=0),\qquad
+ H_P(z)=z^{D_P}\widetilde P(1/z)\quad(\sigma_i=\infty).
+\tag{SP15.5}\label{r15b:single-coordinate-polynomial}
+\]
+At the chosen, possibly nonrigid, base point $x$, every $H_P$
+has degree $D_P$, has nonzero constant term, and the product
+of all the $H_P$ is squarefree over $\mathcal H(x)$.
+Thus all their roots are simple, mutually distinct, and
+different from $0$ and $\infty$ after splitting.
+\end{enumerate}
+No algebraic relations between distinct polynomial occurrences
+are required to survive the perturbation.
+\end{proposition}
+
+\begin{proof}
+For one polynomial occurrence on the box $K_i$, a perturbation
+$\delta P(t)=\sum_{j=0}^{D_P}\delta_jt^j$ satisfies
+\[
+        \sup_{K_i}|\delta P|
+                 \leq\max_{0\leq j\leq D_P}|\delta_j|R_i^j.
+\tag{SP15.6}\label{r15b:uniform-box-bound}
+\]
+For a domain polynomial require this bound to be strictly below
+every threshold at which that occurrence is used. For a numerator
+or denominator require it to be strictly below its positive
+minimum norm on the corresponding $A_i$. These are finitely
+many strict positive bounds on finitely many parameters from $K$,
+so they define a product of nonempty arbitrarily small open balls.
+
+The threshold-stability lemma proves each inequality in
+\eqref{r15b:Laurent-inequalities} equivalent to its perturbed
+inequality on the whole box $K_i$. The fixed box condition itself
+is unchanged. Thus the domain is exactly unchanged, including
+all of its boundary and all formerly excluded points of the box.
+Outside the box both definitions exclude the point. This is why
+an estimate only on $A_i$ would not suffice for this part of the
+proof.
+
+For presenting unit numerators and denominators, the separate
+minimum-norm bounds give
+$|\widetilde N_{ik}|=|N_{ik}|$ and
+$|\widetilde Q_{ik}|=|Q_{ik}|$ on $A_i$.
+They remain units on an ordinary neighborhood of $A_i$, where
+the same strict inequalities still hold. This proves the second
+assertion. It does not assert equality of the rational functions
+themselves, which is unnecessary for PWS moment presentations.
+
+It remains to impose the algebraic generic conditions without
+violating any of these smallness bounds. Evaluate all coefficient
+functions at $x$, in the field $L=\mathcal H(x)$. Reversal of
+the coefficients in the infinity chart is an invertible linear
+transformation. Consequently the independent perturbation
+parameters allow every coefficient of every polynomial $H_P$
+to vary independently over $L$. The product of their leading
+coefficients, constant coefficients, and the discriminant of
+their total product is a nonzero polynomial in these parameters
+with coefficients in $L$; an empty polynomial list is harmless
+and requires no choices. For a nonempty list it is nonzero because one can choose,
+over the infinite field $L$, monic polynomials of the prescribed
+degrees with all roots distinct and nonzero across the entire
+finite family. The corresponding coefficient differences give
+one parameter value where the displayed polynomial is nonzero.
+
+Lemma~\ref{r15b:small-ball-density} now supplies a parameter value
+in the previously specified small balls in the original $K$
+where that polynomial is nonzero. All norm and membership
+conditions already proved survive. The conditions at $x$ are
+exactly the third assertion. In particular the argument is valid
+when $x$ has a nonalgebraic completed residue field; it does not
+approximate elements of $\mathcal H(x)$ by elements of $K$.
+\end{proof}
+
+\begin{corollary}[A splitting cover etale at the chosen base point]
+\label{r15b:local-etale-splitting}
+After the preceding replacements there is a Zariski open
+$V^g\subset V$ with $x\in(V^g)^{\mathrm{an}}$, and a finite
+etale surjective map $a:V'\to V^g$ of smooth integral
+$K$-varieties, such that every perturbed polynomial splits
+into distinct linear factors on $V'$. Their finite roots
+$a_1,\ldots,a_m$ are regular units on $V'$, and every nonzero
+pairwise difference is a unit. The fixed roots $0$ and
+$\infty$ may be adjoined as additional marks.
+
+After shrinking the ordinary base neighborhood $U$ from
+\eqref{r15b:whole-fiber-tube} inside $(V^g)^{\mathrm{an}}$,
+all these properties hold above its entire inverse image.
+No discriminant divisor, root collision, or root pole passes
+through this working neighborhood.
+\end{corollary}
+
+\begin{proof}
+Invert the finitely many leading and constant coefficients and
+the discriminant of the total product. They are regular
+functions with nonzero values at $x$, so this defines a Zariski
+open containing $x$. The normalized product polynomial is monic
+with invertible discriminant there. Adjoining a root of a monic
+polynomial $F$ with unit discriminant gives a finite free etale
+algebra: $F'$ is a unit modulo $F$, the standard etale criterion.
+If $F=(T-a)G$ after that adjunction, the identity
+$\operatorname{Disc}(F)=\operatorname{Disc}(G)G(a)^2$
+shows that $G$ again has unit discriminant. Repeating therefore
+constructs a finite etale surjective cover on which all roots
+are ordered and split. The standard etale criterion is Stacks
+Project, Tag~03PA, Definition~59.26.3 and its following proof.
+Choose a connected
+component. Because $V^g$ is integral, every nonempty connected
+component is still surjective; it is smooth and integral.
+
+The roots are regular because they are roots of the monic
+polynomial on that cover. Their product is a unit, as is their
+discriminant product, so each root and each pairwise difference
+is a unit. The leading coefficients retain the unit factors in
+the factorization. The asserted ordinary shrinking follows
+because the chosen functions are nonzero at $x$. The cover
+may enlarge the constant field; its finite native degree
+includes that enlargement. No base modification is involved.
+\end{proof}
+
+\begin{proposition}[The local noncompact source image is a finite tree family]
+\label{r15b:local-whole-source-presentation}
+Retain the preceding data, and let $B$ be a compact affinoid
+ordinary neighborhood of $x$ contained in the shrunken $U$.
+Put $B'=a^{-1}(B)$, append the fixed finite mark $a_0=0$, and
+choose a finite base unit tuple $b$ on $V'$ containing all
+leading factors and all nonzero root differences, including the roots
+themselves. Set
+\[
+ P=t_b(B'),\qquad
+ W=\bigl(B'\times\mathbf A^1_z\bigr)
+                   \setminus\bigcup_{j=0}^m\{z=a_j\}.
+\tag{SP15.7}\label{r15b:local-W}
+\]
+Then the image of the genuine unit tuple
+$(b,z-a_0,\ldots,z-a_m)$ on $W$ is precisely the finite
+closed polyhedral marked-tree family over $P$ with distance
+coordinates $v(a_i-a_j)$. Each of the original forms is
+represented on $W$ by one PWS tensor on that finite polyhedral
+image, obtained by gluing a fixed finite family of local
+expressions. This supplies ordinary actual presentations on the
+ordinary source locus over $(B')^\circ$; no statement about a
+closed ambient lift or an operator output is made.
+\end{proposition}
+
+\begin{proof}
+The moment image $P$ is finite polyhedral by affinoid
+polyhedrality. At any point of $W$, choose $i$ maximizing
+$t=v(z-a_i)$. The ultrametric inequality and maximality give
+\[
+             v(z-a_j)=\min(t,v(a_i-a_j))
+                       \quad(j\ne i).
+\tag{SP15.8}\label{r15b:all-point-tree-image}
+\]
+In the equal-valuation case, strict cancellation would produce
+a larger value for $v(z-a_j)$, contradicting the choice of $i$.
+Thus every source moment value lies in the displayed tree
+family. Conversely, for any actual base point with moment
+value $u\in P$ and any real $t$, the Gauss point of radius
+$e^{-t}$ centered at $a_i$ in its projective-line fiber has
+exactly the values in \eqref{r15b:all-point-tree-image}.
+It is a point of $W$. Hence the image is the whole family.
+There are finitely many affine comparisons among the supplied
+distance coordinates; the family is a finite union of closed
+polyhedra. This statement concerns the entire moment image,
+not only the presenting skeleton or almost every fiber point.
+
+Every perturbed domain polynomial and presenting rational unit
+has valuation affine in the common tuple: factor it into the
+split root functions and its base unit factor, and use
+\eqref{r15b:single-coordinate-polynomial} in the infinity chart.
+The fixed box coordinate is $z$ or $1/z$, and its bound is
+also an affine inequality in this tuple. Membership in each
+pulled-back $A_i$ is therefore determined by a fixed closed
+polyhedron $Q_i$ in the common moment space. The domains cover
+the whole source over $B'$ by \eqref{r15b:whole-fiber-tube}.
+The moment image of an overlap is exactly the overlap of the
+corresponding image pieces.
+
+The local coefficient expressions can first be extended to
+globally defined Euclidean PWS tensors in their own variables
+without altering their values near the compact moment image
+of $A_i$. This is the degreewise finite-polyhedron extension
+lemma and a Euclidean smooth cutoff. Only the coefficients
+used for that particular domain need be bounded; other common
+moment coordinates may be unbounded on its image piece.
+After affine substitution the finitely many expressions are
+PWS on the common finite polyhedral image. Their pullbacks
+agree as the original actual form. The frozen R14 fixed-moment
+faithfulness argument makes them tangentially equal on every
+overlap cell, so they glue.
+
+One can check this last assertion using only compact domains:
+intersect the full common moment image with a large cube.
+Its inverse image in $W$ is an affinoid Laurent domain over
+$B'$, since all root moments are bounded above and below there;
+it is compact. Such cubes exhaust the finite image. The
+compact-domain faithfulness proof applies on each cube, with
+the same finite coefficient expressions. This also checks
+lower-dimensional maximal overlap cells. Thus no extension
+of equality from a compact domain to an unspecified ordinary
+open is being used.
+
+Finally the degreewise extension near any compact portion of
+this image, pulled back through genuine units, gives an
+ordinary PWS tensor. Mihatsch Proposition 4.7 identifies it
+with an ordinary actual form of delta codimension zero.
+No derivatives or closedness conditions were lost: the
+presentations represent the original form exactly wherever
+they are used.
+\end{proof}
+
+\paragraph{Scope of the new interface.}
+The statements prove that the local rational-presentation and
+root-splitting obstruction can be removed near any chosen analytic
+base point, in arbitrary smooth base dimension, by changing
+presenting moments within their exact-norm classes. They do not
+by themselves assert higher-dimensional relative Green outputs,
+a projective-bundle Aeppli formula, or modification descent in
+higher dimension. Such conclusions still require an explicit
+assembly with the root and diagonal cutoffs, the all-test native
+integration argument, and finite descent on the local covering.
+In particular, the older fixed-global-tuple analysis of bad
+divisors is not incorrect: the local perturbed tuple is different.

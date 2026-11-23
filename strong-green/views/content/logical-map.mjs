@@ -28,20 +28,20 @@ const fullChowPairing = node(
     'One route may construct a pairing for the varieties and classes satisfying all of its premises. A result for one geometric family does not settle the universal target.',
     [programme('sec:programme-global', 'Global construction'), source('/routes', 'Compare the three routes')], [
       node('Strong Green forms give the full pairing (PH16)', '/papers/global-height-pairing#r16ph:general-height', 'conditional',
-        'Theorem 7.5 proves the full canonical real pairing on both geometrically homologically trivial rational Chow groups, under the displayed analytic foundations.',
+        'Theorem 7.5 proves this full pairing from Strong G in both complementary degrees. Its actual calculus and global compatibility inputs are established in their stated scopes.',
         gate('all', 'ALL analytic and global inputs',
-          'The principal-push theorem (PH16; Theorem 7.5) proves this implication under the stated analytic foundations. Its proof establishes the principal norm law, Green-choice independence and reciprocity; good-place vanishing and the product formula give a finite sum that descends to both Chow groups. Strong G supplies the forms for every representative.',
-          [height('r16ph:general-height', 'PH16 · Theorem 7.5 and proof'), height('sec:height-hypotheses', 'Standing analytic foundations'), direct('groute:global-height', 'Local-to-global summary'), height('r16ph:principal-law', 'Principal transformation law')], [
+          'The principal-push theorem (PH16; Theorem 7.5) proves this implication using the established actual operations. Its proof establishes the principal norm law, Green-choice independence and reciprocity; good-place vanishing and the product formula give a finite sum that descends to both Chow groups. Strong G supplies the forms for every representative.',
+          [height('r16ph:general-height', 'PH16 · Theorem 7.5 and proof'), height('sec:height-hypotheses', 'Established analytic foundations'), direct('groute:global-height', 'Local-to-global summary'), height('r16ph:principal-law', 'Principal transformation law')], [
             rec('STRONG-G', 'Required at every finite completion, in BOTH complementary codimensions, over the original valued field.'),
-            node('Restriction, principal-cycle operations and reciprocity', '/papers/global-height-pairing#r16ph:principal-push', 'hypothesis', 'Use the stated current, intersection and principal-divisor calculus, including the auxiliary varieties and both ordered degrees. The source arguments are available; the analytic foundations retain their stated mathematical review status.'),
-            node('Moving, archimedean identities and good-place vanishing', '/papers/global-height-pairing#r16ph:general-height', 'hypothesis', 'These are inputs used in the supplied PH16 proof: moving handles representatives; the classical archimedean identities and good-model vanishing make the normalized sum well-defined. Their role in assembly is proved there, within the standing foundations.'),
+            node('Restriction, principal-cycle operations and reciprocity', '/papers/global-height-pairing#r16ph:principal-push', 'proved', 'Actual-test currents, the supported-pair point residues, normal-carrier germ extension and projective integration prove the principal norm law. Retain the normal carriers, refined coefficients and both ordered degrees.'),
+            node('Moving, archimedean identities and good-place vanishing', '/papers/green-height-route#groute:global-compatibility', 'proved', 'A good higher-Chow one-chain over F gives one refined norm product at every place. Smooth good models give finite support for each disjoint homologically trivial pair, and complex Green theory supplies the matching infinite-place identities.'),
           ])),
       node('Enlarge the obstruction-kernel pairing', '/routes/obstruction-vanishing', 'conditional',
         'Vanishing must hold on localizations of GLOBAL classes in BOTH degrees. This target can be weaker than Strong G for every local Chow class.',
         gate('all', 'BOTH the kernel construction and full-domain vanishing',
           'The same kernel-domain construction has full domain exactly when Hʳ=Vʳ and Hˢ=Vˢ. This is not a claim about every possible extension of that pairing. A finite-detector description needs its separate fixed-witness comparison.',
           [obstruction('obroute:kernel-height', 'Kernel pairing'), obstruction('obroute:full-domain', 'Full-domain criterion'), obstruction('obroute:detectors', 'Finite-detector qualifications')], [
-            rec('BB-H16-KERNEL-DOMAIN', 'Retain the local height identities and the source-version hypotheses. For the finite-detector presentation, retain the FD17 witness comparison.'),
+            rec('BB-H16-KERNEL-DOMAIN', 'The local height identities establish the pairing on all finite-place kernels. A finite-detector presentation still needs the separate fixed-witness identification with those kernels.'),
             node('Zero actual obstruction for all localized global classes in degrees r AND s', '/papers/obstruction-height-route#obroute:global-vanishing', 'open', 'Vanishing in only one degree enlarges only one factor.'),
           ])),
       node('Admissible arithmetic liftings', '/routes/zhang', 'conditional',
@@ -130,9 +130,9 @@ export const logicalTrees = [
         'This separates the requirements in the target statement. A construction theorem must be supplemented by the additional comparison and functoriality inputs on its own domain.',
         [source('/entries/BB-GLOBAL', 'Full target'), source('/entries/BB-HEIGHT-DATA', 'H1–H4'), programme('sec:programme-comparison', 'Separate comparison step')], [
           fullChowPairing,
-          node('H2: normalized extension, isomorphism and Galois compatibility', '/entries/BB-HEIGHT-DATA', 'hypothesis', 'For the direct construction, finite trace and its degree formula are additional inputs.', undefined, 'logic-extension-compatibility'),
-          node('H3: full correspondence adjunction', '/papers/global-height-pairing#r16ha:adjunction', 'hypothesis', 'The adjunction theorem retains its proper-intersection hypotheses and the specified height domains.'),
-          node('H4 and classical agreement on common domains', '/programme#comparison', 'open', 'Match the pointed-curve Néron–Tate sign and Poincaré normalization, and compare with classical heights under the stated model hypotheses.', undefined, 'logic-classical-comparison'),
+          node('H2: normalized extension, isomorphism and Galois compatibility', '/papers/green-height-route#groute:global-extension', 'proved', 'Full finite actual trace and the native [L:K] weight identity prove normalized extension invariance. Genuine pullback and the same local identities give isomorphism and Galois compatibility.', undefined, 'logic-extension-compatibility'),
+          node('H3: full correspondence adjunction', '/papers/global-height-pairing#r16ha:adjunction', 'conditional', 'Adjunction is established on the common local obstruction kernels by proper-intersection residues and Chow-kernel covariance. Applying it on a larger domain known only through bare Strong G requires the corresponding further compatibility.'),
+          node('H4 and classical agreement on common domains', '/programme#comparison', 'open', 'The pointed-curve sign and comparison on supplied admissible regular models or alterations are established. General agreement beyond those common domains retains the required model and functoriality hypotheses.', undefined, 'logic-classical-comparison'),
         ]),
     }),
   },
@@ -160,26 +160,26 @@ export const logicalTrees = [
                     [construction('thm:main-algebraic', 'Theorem A'), construction('hyp:construction-calculus', 'Construction calculus')], [
                       node('Z is geometrically algebraically trivial', '/entries/BB-ALG-TRANSFER', 'hypothesis', 'This domain is smaller than the full homologically trivial Chow group.'),
                       rec('BB-ACTUAL-OBSTRUCTION', 'The new theorem establishes the Chow-invariant actual obstruction (A1), genuine pullbacks and the curved Green construction (A2).'),
-                      rec('BB-RATIONAL-FIBRE-RIGIDITY', 'The rational-fibre rigidity input R is still a draft.'),
-                      rec('BB-COMPACT-RIGIDITY', 'This is the proved compact-group step, not a substitute for the analytic rigidity input.'),
+                      rec('BB-RATIONAL-FIBRE-RIGIDITY', 'Literal actual-form constancy near a rational section is proved by unit valuations and proper projection; it supplies the parameter-rigidity step R.'),
+                      rec('BB-COMPACT-RIGIDITY', 'Combine the proved compact-group step with actual rational-fibre constancy to force the additive obstruction map to vanish.'),
                     ]),
                 }),
                 rec('BB-MOTIVIC-TRANSFER', 'Theorem B applies to potential abelian Chow retracts, with geometrically homologically trivial Z.', {
                   gate: gate('all', 'ALL Theorem B premises',
                     'Use abelian obstruction vanishing and the actual Chow identity for the diagonal, then descend with the full finite degree. A numerical or cohomological factorization is not enough.',
                     [construction('thm:main-abelian', 'Theorem B'), construction('def:construction-retraction', 'Chow retraction and degree shifts')], [
-                      node('Established A1–A2 and the additional N and C hypotheses', '/papers/green-constructions#hyp:construction-calculus', 'hypothesis', 'The Chow obstruction and prescribed pairs are established. The numerical descent and Chow-correspondence compatibilities N and C remain separate premises; R is not an extra premise of this route.'),
-                      rec('BB-ABELIAN-STAGE', 'The abelian conclusion retains both the geometric certificate and the draft analytic descent input.', {
+                      node('Established A1–A2, numerical descent and Chow-kernel covariance', '/papers/green-constructions#hyp:construction-calculus', 'proved', 'The calculus theorem establishes the prescribed pairs, descent of a supplied finite numerical witness, and covariance for smooth-projective rational Chow correspondences. The geometric witness and exact Chow factorization retain their stated scope; R is not an extra premise of this route.'),
+                      rec('BB-ABELIAN-STAGE', 'Künnemann’s model construction supplies the abelian numerical certificate; the proved finite numerical criterion descends its zero obstruction with the full original-field degree.', {
                         gate: gate('all', 'BOTH the abelian numerical certificate and finite numerical descent',
                           'After finite extension, the semistable abelian model produces a certificate for the pullback of the given geometrically homologically trivial class. Finite numerical descent returns its obstruction to zero over the original field.',
-                          [construction('thm:kunnemann-local', 'Local semistable model input'), construction('lem:abelian-lift', 'The abelian numerical certificate'), construction('thm:abelian-G', 'Conditional abelian conclusion')], [
-                            node('Künnemann’s semistable input and the abelian numerical certificate', '/papers/green-constructions#lem:abelian-lift', 'hypothesis', 'For the prescribed homologically trivial class on A, retain the semistable component exactness, cycle-class injectivity and the numerical vanishing on every vertical testing cycle.'),
-                            rec('BB-FINITE-NUMERICAL-DESCENT', 'Assume the proposed analytic descent theorem for the finite map A_F→A. Retain the numerical detector, generic-Chow-zero primitive, trace on the original scalar–curvature generators, and full degree [F:K]. A proper alteration alone is not this finite map.'),
+                          [construction('thm:kunnemann-local', 'Local semistable model input'), construction('lem:abelian-lift', 'The abelian numerical certificate'), construction('thm:abelian-G', 'Abelian conclusion and proof')], [
+                            node('Künnemann’s semistable input and the abelian numerical certificate', '/papers/green-constructions#lem:abelian-lift', 'proved', 'For the prescribed homologically trivial class on A, Künnemann’s semistable model supplies component exactness and cycle-class injectivity. The correction has zero pairing with every vertical testing cycle in the stated numerical criterion.'),
+                            rec('BB-FINITE-NUMERICAL-DESCENT', 'Apply the proved numerical descent theorem to the finite map A_F→A and its supplied witness. Retain the model detector, global actual primitive, full finite trace and native degree [F:K]. A numerical certificate must be produced before this criterion applies.'),
                           ]),
                       }),
                       node('An actual abelian Chow retraction after finite extension', '/papers/green-constructions#def:construction-retraction', 'hypothesis', 'The rational Chow identity uses opposite Tate shifts. Z must be geometrically homologically trivial.', undefined, 'logic-chow-retraction'),
                     ]),
-                  links: [source('/entries/BB-CURVE-CHOW-DIAGONAL', 'Proved diagonal for pointed products'), source('/entries/BB-CURVE-PRODUCT-DRAFT', 'Product application: draft, with regular-model premises')],
+                  links: [source('/entries/BB-CURVE-CHOW-DIAGONAL', 'Proved diagonal for pointed products'), source('/entries/BB-CURVE-PRODUCT-DRAFT', 'Product application with its stated Chow factorization')],
                 }),
                 rec('BB-RESIDUAL-PERIODS', 'Only the image of the original Chow source needs to vanish; the entire obstruction space need not vanish. The general record concerns that whole source; this local branch applies the criterion to the fixed class [Z].', {
                   gate: gate('all', 'BOTH detection and vanishing',
@@ -198,33 +198,33 @@ export const logicalTrees = [
                     ]),
                 }),
               ])),
-          node('Actual Stokes against every complementary test', '/entries/BB-GREEN-CORRECTION', 'hypothesis', 'The primitive is global and belongs to the actual form space, not merely to a larger current space.'),
+          node('Actual Stokes against every complementary test', '/papers/green-height-route#groute:current-calculus', 'proved', 'Actual product Stokes applies to every compact actual complementary test. The primitive belongs to the global actual form space; no enlarged current primitive is substituted.'),
         ], {
           'BB-GREEN-CORRECTION': 'Conditional curvature-correction rule: the prescribed curved pair and a global actual primitive, with actual Stokes, give the strong identity on the SAME complement and every stated test.',
         })),
     related: [
-      rec('BB-CURVE-PRODUCT-DRAFT', 'The product-of-curves application retains its draft status, although its Chow-diagonal ingredient has an internal proof.', {
+      rec('BB-CURVE-PRODUCT-DRAFT', 'The product-of-curves application follows from the proved analytic calculus, the abelian stage and the actual Chow diagonal with its degree shifts.', {
         gate: gate('all', 'ALL premises of the model-sensitive application',
-          'A Chow factorization alone does not supply the simultaneous models or the actual-form transfer theorem.',
+          'The argument combines the actual rational Chow factorization with the established model and numerical transfer statements in their precise domains.',
           [construction('thm:chow-abelian-criterion', 'Model-sensitive Chow criterion')], [
             rec('BB-CURVE-CHOW-DIAGONAL', 'The actual rational Chow diagonal, with the required degree shifts.'),
-            rec('BB-REGULAR-PRODUCT-MODELS', 'The simultaneous regular-model construction remains a draft input.'),
-            rec('BB-REGULAR-CHOW-CRITERION', 'Retain its numerical detector, finite numerical descent and supported correspondence-transfer hypotheses.'),
+            rec('BB-REGULAR-PRODUCT-MODELS', 'The stated simultaneous regular-model construction supplies the compatible models in this application; its geometric scope is retained.'),
+            rec('BB-REGULAR-CHOW-CRITERION', 'Apply its proved numerical detector, finite numerical descent and supported correspondence transfer to the supplied model and rational Chow data.'),
           ]),
       }),
-      rec('BB-ANALYTIC-INTERFACE', 'The broader analytic interface remains open beyond the precise construction of Hypothesis 2.2. Its additional trace and intersection operations are not consequences of the restricted theorem.', {
+      rec('BB-ANALYTIC-INTERFACE', 'The differentiated finite trace, projective-bundle integration and specified supported residue identities required by the height arguments are established. These extend the original restricted construction in the exact domains recorded below.', {
         id: 'logic-analytic-interface',
-        gate: gate('open', 'OPEN operations beyond the established construction',
-          'The prescribed Green pair and Chow obstruction are available. Further uses must establish the enlarged trace domains, separate d′ and d″ compatibilities, intersection identities and functoriality required by the particular argument.',
-          [chowGreen('h22:main', 'Established construction'), source('/entries/BB-ANALYTIC-INTERFACE', 'The remaining analytic interface'), height('sec:height-hypotheses', 'Additional foundations for global heights')], [
+        gate: gate('all', 'ALL proved analytic operations used by the height arguments',
+          'Full finite trace on normal varieties, actual projective-bundle integration, immersion germs and the specified supported-pair residues supply the differentiated operations used in the global height proof. The statement does not posit actual pushforward along every proper map.',
+          [chowGreen('h22:main', 'Established construction'), source('/entries/BB-ANALYTIC-INTERFACE', 'Established analytic interface'), height('sec:height-hypotheses', 'Proofs of the height foundations')], [
             rec('BB-MODEL-DETECTOR', 'Established: strict actual model Chern characters and their numerical detector on integral projective flat models.'),
-            rec('BB-RESTRICTED-TRACE', 'Established on the actual scalar–curvature image module with all-test adjunction and native degrees. The enlarged differential trace domain remains a further question.'),
+            rec('BB-RESTRICTED-TRACE', 'Established first on the scalar–curvature image module and extended by the full finite actual trace theorem to all bidegrees on normal varieties, with both differential identities, all-test adjunction and native degrees.'),
             rec('BB-SUPPORTED-GREEN-PAIR', 'Established: the prescribed curved identity on the entire exact complement, with original coefficients and all compact actual tests.'),
-            rec('BB-ACTUAL-OBSTRUCTION', 'Established: rational linearity, Chow invariance, model independence and genuine pullbacks. Broader correspondence covariance remains separate.'),
-            node('The broader trace, differential and intersection interface', '/entries/BB-ANALYTIC-INTERFACE', 'open', 'On enlarged form domains, establish trace with separate d′ and d″ compatibilities and all-test adjunction. Retain the further projection, supported-intersection, Chow-correspondence and reciprocity assumptions used in each geometric or global deduction.'),
+            rec('BB-ACTUAL-OBSTRUCTION', 'Established: rational linearity, Chow invariance, model independence, genuine pullbacks and kernel preservation by rational Chow correspondences between smooth projective varieties.'),
+            node('Full actual finite trace, projective integration and supported residues', '/papers/global-height-pairing#sec:height-hypotheses', 'proved', 'FT16 and OUT16 provide actual outputs with d′ and d″ compatibility and all-test adjunction. The specified supported pair has the normal-carrier residues; graph factorization gives Chow-kernel covariance, and disjoint-polar Stokes gives reciprocity.'),
           ]),
       }),
-      rec('BB-CHOW-GREEN-PAIRS', 'Hypothesis 2.2 is established for every smooth integral projective X over the original finite valued extension of ℚₚ, including non-geometrically-integral X, and every prescribed rational cycle in 1≤r≤dim X.', {
+      rec('BB-CHOW-GREEN-PAIRS', 'Theorem 2.2 is established for every smooth integral projective X over the original finite valued extension of ℚₚ, including non-geometrically-integral X, and every prescribed rational cycle in 1≤r≤dim X.', {
         id: 'logic-chow-green-pairs',
         gate: gate('all', 'ALL parts of the proved construction',
           'Strict model characters and the restricted scalar–curvature trace give supported curved pairs. Generic Chow-zero primitives make their curvature class independent of model and presentation and compatible with genuine pullbacks. Sum over the original cycle components on their exact common complement.',
@@ -353,9 +353,9 @@ export const logicalTrees = [
     summary: 'Complex comparison and good-reduction comparison are parallel inputs; bad reduction and families need further arguments.',
     scope: 'Respect rank, degree, source-model, boundary, sign and normalization hypotheses. None of these comparisons alone establishes a global family-height theorem.',
     root: node('Classical comparison of a constructed global pairing', '/research-map#logic-classical-comparison', 'open',
-      'This supplies part of the comparison work in the first tree; it is not an automatic consequence of height existence.',
+      'Comparison is established on the common local kernels with supplied admissible regular models or alterations. This remaining bridge concerns extensions beyond those supplied domains and the further metric or family comparisons.',
       gate('open', 'OPEN global comparison bridge',
-        'The work package combines a constructed pairing with placewise comparisons and compatible projection, biextension and sign conventions.',
+        'The remaining work combines a constructed pairing on any enlarged domain with the additional placewise metric comparisons and admissible-model operations needed there. The existing kernel-domain adjunction and supplied-model height comparison are retained.',
         [programme('sec:programme-comparison', 'Global comparison programme')], [
           node('A constructed global pairing on the desired domain', '/research-map#logic-full-chow-pairing', 'conditional', 'Use one complete construction route from the first tree.'),
           rec('R2-M2', 'Rank-zero and cycle determinant comparisons at the complex places.', {
@@ -367,7 +367,7 @@ export const logicalTrees = [
               ]),
           }),
           rec('R2-M3', 'Independent good-reduction input: a smooth proper source-curve model, section, rank zero, determinant degree zero and perfect pushforward.'),
-          rec('OPEN-BAD-REDUCTION-METRIC', 'The semistable/Néron extension needs admissible vertical correction and matching actual-form trace, length and normalization.'),
+          rec('OPEN-BAD-REDUCTION-METRIC', 'The semistable/Néron metric extension still needs its specified admissible vertical corrections and metric comparison. Full finite actual trace and native degree normalization are already available.'),
           node('Compatible projection, biextension and sign conventions', '/programme#comparison', 'hypothesis', 'Keep the extra hypotheses of the chosen classical comparison, including singular-fibre conditions where relevant.'),
         ])),
     related: [

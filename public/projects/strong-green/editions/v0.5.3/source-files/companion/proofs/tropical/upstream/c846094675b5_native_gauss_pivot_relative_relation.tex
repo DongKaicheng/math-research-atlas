@@ -1,0 +1,622 @@
+\section{An actual relative witness for the opposite-root Gauss pivot}
+\label{sec:r11-native-gauss-pivot}
+
+\paragraph{Status and provenance.}
+\textsc{Proved draft, submitted for exact-hash independent review.}
+The R11 root and challenge agents are construction contributors and
+must be excluded from its counted nonconstructor reviews.  The new
+statement concerns one specified native opposite-root matrix relation.
+It is not a general factorization theorem, an arbitrary-cover coherence
+theorem, or a solution of Strong G.  The extending coefficient pair is
+retained; no strict witness is imposed where the proof gives a relative
+one.  No missing R10 CG, RA or RSC source is used.
+
+Let $N$ be an ordinary analytic open over the original fixed $K$, let
+$L$ carry its fixed piecewise smooth metric, and let
+$f=(f_1,\ldots,f_r)$ be analytic sections of $L$, with $r\ge2$.
+Set
+\[
+ W=N\setminus|f=0|,\qquad s=r-1,\qquad D=d'd'',\qquad
+ R=c_1(\overline L).
+ \tag{GPR1}
+\]
+No regular-sequence assumption is needed for the local relation.
+Fix distinct indices $i,j$.  Let $a,b\in\mathcal O(N)$ be arbitrary
+analytic functions, and assume only that
+\[
+                       \delta=1+ab\in\mathcal O(N)^\times.
+ \tag{GPR2}
+\]
+In particular $a,b$ may vanish and need not be bounded.  Define
+\[
+ \begin{gathered}
+ P=E_{ij}(a),\qquad Q=E_{ji}(b),\qquad
+ P_0=E_{ij}(a/\delta),\qquad Q_0=E_{ji}(b/\delta),\\
+ H_i=D_i(\delta),\qquad H_j=D_j(\delta^{-1}),
+ \qquad PQ=Q_0H_jH_iP_0.
+ \end{gathered}
+ \tag{GPR3}
+\]
+Matrices act on column tuples, rightmost first.  Thus the temporal
+left path is $Q,P$ and the temporal right path is $P_0,H_i,H_j,Q_0$.
+Put
+\[
+ f_b=Qf,\quad f_*=PQf,\quad
+ g_1=P_0f,\quad g_2=H_i g_1,\quad g_3=H_jg_2,
+ \qquad Q_0g_3=f_*.
+ \tag{GPR4}
+\]
+The prescribed native SHT pair defect is
+\[
+\begin{split}
+ \mathscr G={}&\mathcal P_{ji,b}(f)+\mathcal P_{ij,a}(f_b)
+ -\mathcal P_{ij,a/\delta}(f)\\
+ &-p_{i,\delta}(g_1)-p_{j,\delta^{-1}}(g_2)
+ -\mathcal P_{ji,b/\delta}(g_3).
+\end{split}
+\tag{GPR5}
+\]
+Here $\mathcal P$ is exactly the frozen SHT native shear pair,
+including its zero-coefficient extension, and $p$ is the prescribed
+full antisymmetric SHT unit-entry pair.  The two diagonal weights
+sum to zero, so $\partial_1\mathscr G=0$ by full endpoint
+telescoping; this alone would not construct a witness.
+
+\subsection{The extending pair and the complete ten-edge presentation}
+
+Write $N_a=\{a\ne0\}$ and set, there,
+\[
+ A=v(a),\qquad u=v(\delta),\qquad
+ e_{A,u}=(A\,d''u,\ u\,d'A).
+ \tag{GPR6}
+\]
+On the ordinary open $\{|ab|<1\}$ one has $|\delta|=1$, hence
+$u=0$ as an actual scalar with all derivatives zero.  The pair in
+(GPR6) is therefore zero on its overlap with this open, and glues
+with zero to a pair $e_{A,u}\in L_1^1(N)$ on all of $N$.
+The two domains cover $N$.  This notation always denotes that
+actual extension, not a value assigned to $v(0)$.
+Since $DA=Du=0$ on $N_a$, the signs in the two components give
+\[
+                         \partial_1e_{A,u}=0
+                                      \quad\text{on all of }N.
+ \tag{GPR7}
+\]
+The scalar $Au$ similarly extends by zero across $a=0$.
+
+On $N_{ab}=\{ab\ne0\}$ also write $B=v(b)$.  Put
+\[
+\begin{array}{llll}
+ F=\Phi_f,& M_b=\Phi_{D_j(b)^{-1}f},& F_b=\Phi_{f_b},
+   & M_a=\Phi_{D_i(a)^{-1}f_b},\\
+ F_*=\Phi_{f_*},& M_{b/\delta}=\Phi_{D_j(b/\delta)^{-1}g_3},
+ &G_3=\Phi_{g_3},&G_2=\Phi_{g_2},\\
+ G_1=\Phi_{g_1},&M_{a/\delta}=\Phi_{D_i(a/\delta)^{-1}f}.&&
+\end{array}
+\tag{GPR8}
+\]
+The exact oriented unit-edge loop of (GPR5) is
+\[
+\begin{array}{c|c|c}
+\text{edge}&\text{ordered potentials}&\text{weight}\\\hline
+1&(F,M_b)&-B\\
+2&(M_b,F_b)&B\\
+3&(F_b,M_a)&-A\\
+4&(M_a,F_*)&A\\
+5&(F_*,M_{b/\delta})&u-B\\
+6&(M_{b/\delta},G_3)&B-u\\
+7&(G_3,G_2)&u\\
+8&(G_2,G_1)&-u\\
+9&(G_1,M_{a/\delta})&u-A\\
+10&(M_{a/\delta},F)&A-u.
+\end{array}
+\tag{GPR9}
+\]
+Each native midpoint has its two genuine representatives related
+by the constant norm isometry $E_{ij}(1)$ or $E_{ji}(1)$.
+Every representative leaves all rows outside $i,j$ unchanged.
+All ten weights sum to zero, including the two diagonal edges.
+
+\subsection{The exact degree-one residual, including cancellations}
+
+For one of the two colours, write
+$\mathfrak s(x,y)=x\,dy-y\,dx$.  All calculations below are
+performed separately for $d'$ and $d''$, with the opposite sign
+in the second component prescribed by
+\[
+ \mathfrak a(x,y;Q)=
+ ((x\,d''y-y\,d''x)Q,-(x\,d'y-y\,d'x)Q).
+ \tag{GPR10}
+\]
+For a unit edge $(p,q,c)$, the degree-one scalar symbol of the
+frozen CS residual is
+\[
+ S_1(p,q,c)=\mathfrak s(p,q)
+       +\mathfrak s(c_+,q)+\mathfrak s(c_-,p),
+ \qquad c_+=\max(c,0),\quad c_-=\min(c,0).
+ \tag{GPR11}
+\]
+No claim is made that this edge residual is closed.
+
+\begin{lemma}[Two elementary full-wall symbol identities]
+For the finite piecewise affine valuation scalars used below, and
+also after adding one common actual scalar to both of them, the
+minimum has the displayed finite actual presentation and satisfies
+\[
+ \mathfrak s(\min(x,y),x-y)=-\mathfrak s(x,y).
+ \tag{GPR12}
+\]
+For analytic units $z_1,z_2,z_1+z_2$ on an ordinary open,
+writing $x=v(z_1)$, $y=v(z_2)$, $z=v(z_1+z_2)$,
+\[
+                         \mathfrak s(x-y,z-y)=0.
+ \tag{GPR13}
+\]
+Both identities are actual first-form identities and retain the
+full relations on all valuation walls.
+\end{lemma}
+
+\begin{proof}
+For (GPR12), substitute the two possible minima; both yield the
+same right side and hence the same restricted first jets on their
+common wall.  For (GPR13), divide by $z_2$.  The possible
+valuation pairs of $t$ and $1+t$ lie on the three rays
+$\{x=0,z\ge0\}$, $\{z=0,x\ge0\}$ and
+$\{x=z\le0\}$.  On each ray $x\,dz-z\,dx=0$, including
+the restricted first jet at the origin.  This is an identity on
+every allowed refinement of the actual unit presentation.  It
+does not replace $v(1+t)$ by a generic minimum or discard its
+cancellation locus.
+\end{proof}
+
+Suppose for the moment that all ten norm vertices are determined
+by rows $i,j$, and work on a local unit presentation for the four
+entries about to be displayed.  In a local frame put
+\[
+ x=v(f_i),\quad y=v(f_j),\quad
+ X=v(\delta f_i+a f_j),\quad Y=v(bf_i+f_j).
+ \tag{GPR14}
+\]
+A common metric potential may be added to all four values; it
+will cancel from the resulting full-loop expression.
+
+For a rank-one unit edge changing the first of two active rows,
+with other-row potential $y$, the full-wall one-entry minimum
+calculation gives
+\[
+ S_1(p,q,c)=\mathfrak s(p-q+c,y).
+ \tag{GPR15}
+\]
+Indeed subtract $y$ from both endpoints.  Their normalized
+potentials are $\min(t,0)$ and $\min(t+c,0)$.  Substitution
+in (GPR11), separately on the two signs of $c$, gives zero with
+the full restricted first jets.  The effect of adding $y$ back
+is exactly $\mathfrak s(p-q+c,y)$.  The same formula with
+$x$ holds when the second row changes.  The two edges of a
+native shear have opposite weights and the same unchanged row,
+so their sum is $\mathfrak s(p-q,y)$ or
+$\mathfrak s(p-q,x)$, respectively.
+
+Let
+\[
+ F=\min(x,y),\quad C=\min(x,Y),\quad H=\min(X,Y),
+ \quad S=\min(X,y).
+ \tag{GPR16}
+\]
+Write $R_1=\Phi_{g_1}$ and $T_1=\Phi_{g_3}$ temporarily.
+Applying (GPR15) to the six steps in (GPR5) gives
+\[
+\begin{split}
+ \sum_eS_{e,1}={}&\mathfrak s(F-C,x)+\mathfrak s(C-H,Y)
+       -\mathfrak s(F-R_1,y)\\
+ &-\mathfrak s(R_1-S+u,y)
+       -\mathfrak s(S-T_1-u,X)-\mathfrak s(T_1-H,X)\\
+ ={}&\mathfrak s(x-X,Y-y)-\mathfrak s(X-y,u).
+\end{split}
+\tag{GPR17}
+\]
+For the last equality first telescope $R_1,T_1$, and then use
+(GPR12) on the four corners (GPR16).  Thus no native midpoint,
+diagonal weight, or mixed derivative has been omitted.
+
+Now put
+\[
+ z_0=\frac{f_i}{a f_j},\qquad
+ V_0=1+\frac{bf_i}{f_j}=1+abz_0,\qquad
+ W_0=1+\frac{\delta f_i}{a f_j}=1+\delta z_0,
+ \tag{GPR18}
+\]
+and let $t=v(z_0)$, $v_0=v(V_0)$, $w_0=v(W_0)$.
+The crucial relations are the actual analytic equalities
+\[
+                         W_0=V_0+z_0,
+                 \qquad W_0=1+\delta z_0.
+ \tag{GPR19}
+\]
+By (GPR13) they imply
+\[
+ \mathfrak s(t-v_0,w_0-v_0)=0,\qquad
+ \mathfrak s(u+t,w_0)=0,
+ \qquad
+ \mathfrak s(t-w_0,v_0)=\mathfrak s(w_0,u).
+ \tag{GPR20}
+\]
+The last identity is their explicit subtraction.  Since
+$x-X=t-w_0$, $Y-y=v_0$ and $X-y=A+w_0$, (GPR17) becomes
+\[
+                  \sum_e S_{e,1}=-\mathfrak a(A,u;1)
+ \tag{GPR21}
+\]
+as an actual pair, for the complete ten-edge presentation.
+
+\paragraph{Zero active entries are not a density argument.}
+Here is an ordinary local verification where one of the four entries
+in (GPR14) vanishes.  All two-by-two matrices defining the finitely
+many norm vertices are invertible on $N_{ab}$, and the active
+two-tuple is nonzero.  Choose a local analytic frame.  At the given
+analytic point choose a vector $v\in K^2$ avoiding the kernels of
+the finitely many relevant nonzero row functionals, and then choose
+an arbitrarily small $\epsilon\in K$ avoiding the finitely many
+values for which one of the four entries of
+$f_{\rm act}+\epsilon v$ vanishes at that point.  This is possible
+over the infinite original local field.  Make $\epsilon$ small
+enough that its image under each of the finitely many matrices has
+strictly smaller norm than the original transformed two-tuple.
+The ultrametric inequality and continuity then give one ordinary
+neighborhood on which \emph{all} displayed norm potentials are
+unchanged by this auxiliary replacement, while the four entries
+needed for (GPR18) are units.  Equation (GPR21) proved there is
+therefore the same actual identity for the original potentials.
+The replacement is only a proof of equality of already fixed
+finite norm expressions: it is never used to replace the original
+cycle or the original Green data.
+
+The sum (GPR21) is also invariant under any one common actual
+scalar shift of all vertex potentials.  From (GPR11) its change
+is $\sum_e\mathfrak s(p_e-q_e+c_e,h)$, which is zero by
+endpoint and weight telescoping.  Thus it retains the original
+metric and the cap change used next.
+
+\subsection{All-rank transport and the actual triple}
+
+For $r\ge3$ let $\psi$ be the norm potential of the unchanged
+$r-2$ rows outside $i,j$, with value $+\infty$ at their common
+zero set.  On $N_{ab}\cap W$ put
+\[
+ \kappa=2\bigl(|A|+|B|+|A-u|+|B-u|+|u|\bigr),
+ \quad\Psi=\min(\psi,F+\kappa+\varepsilon),\quad
+ R_*=R-D\Psi,
+ \tag{GPR22}
+\]
+where $\varepsilon>0$ is one fixed real constant.  This is the
+sum of all ten absolute edge weights.  The cap is actual on the
+entire punctured unit locus by the ordinary-neighborhood argument
+of frozen CS24, including passive-zero points.  The ordinary opens
+\[
+ W_{\rm pas}=\{\psi<F+\kappa+\varepsilon\},\qquad
+ W_{\rm two}=\{\psi>F+\kappa\}
+ \tag{GPR23}
+\]
+cover.  Each vertex differs in potential from $F$ by at most
+$\kappa$, because each unit edge changes a norm by at most the
+absolute value of its weight.  Thus only rows $i,j$ determine
+every norm on $W_{\rm two}$.
+
+Compute all CS residuals using the shifted potentials
+$\Phi_\nu-\Psi$ and reference $R_*$.  On $W_{\rm pas}$,
+frozen CS21 applies to every edge: its common passive tuple has
+$r-2$ entries and is unchanged by all the actual intermediate
+representatives.  Thus $S_{e,s}=0$ and $R_*^{s-1}=0$ there.
+On $W_{\rm two}$ the full CS17 two-entry recurrence and (GPR21)
+give the top residual.  Actual locality proves
+\[
+                  \sum_eS_{e,s}=-\mathfrak a(A,u;R_*^{s-1})
+                   \quad\text{on all of }N_{ab}\cap W.
+ \tag{GPR24}
+\]
+This is not a separate-closedness claim about the lower-degree
+pieces and uses no division by a curvature form.
+
+For each of the ten edges use the explicit frozen CS6--CS10
+triple
+\[
+ \mathcal K_s(e;R_*)=(0,0,M_{e,s})
+       +\tfrac12\bigl(Q^{\rm tet}_{e,s}-R_*Q^{\rm tet}_{e,s-1}\bigr).
+ \tag{GPR25}
+\]
+Here, for edge $(p,q,c)$, $t=|c|$, $C_p=R_*-Dp$, $C_q=R_*-Dq$,
+\[
+ M_{e,s}=-\tfrac14\left[
+ (q^2-p^2)h_{s-1}(R_*,C_p,C_q)
+ +t(q-p)h_{s-1}(C_p,C_q)
+ +c\{p h_{s-1}(R_*,C_p)+q h_{s-1}(R_*,C_q)\}\right].
+ \tag{GPR26}
+\]
+The tetrahedron triple is the specified CS9 polynomial in
+$(t,p,q)$, whose curvature factor is
+$h_{s-2}(R_*,R_*-D|c|,C_p,C_q)$; it is zero in degree at
+most one.  In particular (GPR25) denotes that exact finite actual
+formula, not a chosen primitive.  All its terms are also displayed
+in the R11 Steinberg source ZDS27--ZDS31.
+
+Let $Q_{\rm met}$ be the exact full-loop MT15 triple for the
+ten unshifted vertex potentials, their edge weights in (GPR9),
+and the common scalar $h=-\Psi$.  Thus
+\[
+ Q_{\rm met}=
+ \sum_{k=1}^{s-1}\left(\sum_{\ell=0}^{s-k-1}R_*^\ell R^{s-k-1-\ell}\right)
+     \mathcal H_{-\Psi}(f_k)
+ -\left(0,0,-\Psi\sum_{k=1}^s\Gamma_{k-1}R_*^{s-k}\right),
+ \tag{GPR27}
+\]
+where $f_k,\Gamma_k$ are the complete finite edge sums MT5--MT6,
+not assumed closed, and
+$\mathcal H_h(\alpha,\beta)=(d''h\wedge\alpha,-d'h\wedge\beta,h\,d'\alpha)$.
+These polynomials are also displayed in ZDS34--ZDS37.  The sign
+convention is $\mathscr G^*-\mathscr G=\partial_2Q_{\rm met}$.
+
+Set $d_0=s-1=r-2$ and, for $r\ge3$, put
+\[
+ h_*=-\Psi\sum_{\ell=0}^{d_0-1}R_*^\ell R^{d_0-1-\ell},
+ \qquad Dh_*=R_*^{d_0}-R^{d_0}.
+ \tag{GPR28}
+\]
+The closedness (GPR7), not a false closedness of a residual block,
+allows the frozen CPT transport
+\[
+ e_{A,u}R_*^{d_0}-e_{A,u}R^{d_0}
+                     =\partial_2\mathcal H_{h_*}(e_{A,u}).
+ \tag{GPR29}
+\]
+For even $h_*$ the same component formula defines $\mathcal H$,
+with wedge multiplication and the indicated bidegrees.
+The required explicit triple on $N_{ab}\cap W$ is
+\[
+ \boxed{\quad
+ q_{\rm G}=
+ \sum_e\mathcal K_s(e;R_*)-Q_{\rm met}
+ -(0,0,Au R_*^{s-1}/2)+\mathcal H_{h_*}(e_{A,u}).
+ \quad}
+ \tag{GPR30}
+\]
+Indeed the full edge formula and (GPR24) give
+$\mathscr G^*=\partial_2\sum_e\mathcal K_s
+ +\mathfrak a(A,u;R_*^{s-1})/2$.
+The exact identity
+\[
+ \tfrac12\mathfrak a(A,u;R_*^{s-1})
+ =e_{A,u}R_*^{s-1}-\partial_2(0,0,AuR_*^{s-1}/2)
+ \tag{GPR31}
+\]
+and (GPR27)--(GPR29) prove
+\[
+                \mathscr G=\partial_2q_{\rm G}
+                                      +e_{A,u}R^{r-2}|_W.
+ \tag{GPR32}
+\]
+
+For $r=2$, the whole norm calculation is already two-entry and
+(GPR21) applies on all of $N_{ab}\cap W$ without a passive cap.
+Set $s=1$ and use simply
+\[
+                   q_{\rm G}=\sum_e(0,0,M_{e,1})-(0,0,Au/2).
+ \tag{GPR33}
+\]
+The MT loop correction is zero in degree one, and (GPR32) holds
+with $R^0=1$.  This handles the endpoint without a projective
+space of negative dimension or an undefined $h_*$.
+
+\subsection{The triple itself extends through coefficient zeros}
+
+Define
+\[
+ O_a=\{|a|<1,\ |ab|<1\},\qquad
+ O_b=\{|b|<1,\ |ab|<1\}.
+ \tag{GPR34}
+\]
+They contain the zero loci of $a,b$ respectively.  On their union
+$u=0$, both diagonal transformations are norm isometries, and
+the corresponding unit-edge triples are zero.
+
+On $O_a\cap N_{ab}$, the shears with coefficients $a,a/\delta$
+are norm isometries.  Thus $F_b=F_*$ and $F=G_1=G_2=G_3$.
+The two remaining native shear pairs have identical three
+potentials and identical weights: their middle tuples are
+\[
+ D_j(b)^{-1}f=(f_i,f_j/b,f_{\rm pas}),\qquad
+ D_j(b/\delta)^{-1}g_3=(\delta f_i+a f_j,f_j/b,f_{\rm pas}).
+ \tag{GPR35}
+\]
+On the two displayed rows the latter is obtained from the former
+by the matrix
+\[
+                   \begin{pmatrix}\delta&ab\\0&1\end{pmatrix}.
+ \tag{GPR36}
+\]
+Both it and its inverse have maximum operator norm at most one,
+since $|ab|<1$ and $|\delta|=1$.  Hence $M_b=M_{b/\delta}$.
+The inverse-edge pairings in (GPR9) are $(1,6),(2,5),(3,4)$,
+$(9,10)$, with edges $7,8$ zero.
+
+On $O_b\cap N_{ab}$, the shears with coefficients $b,b/\delta$
+are norm isometries.  Thus $F=F_b$ and $F_*=G_1=G_2=G_3$.
+The other middle potentials agree because, writing
+$X_0=f_i/a$ and $Y_0=f_j$, their two active rows are
+\[
+               (X_0,abX_0+Y_0),\qquad(\delta X_0,Y_0).
+ \tag{GPR37}
+\]
+Both tuples are norm-isometric to $(X_0,Y_0)$ on this open.
+The weights agree because $u=0$.  The inverse-edge pairings are
+$(1,2),(5,6),(3,10),(4,9)$, again with edges $7,8$ zero.
+
+For either pairing, a common shift by the same cap leaves every
+inverse relation intact.  The exact antisymmetry of the CS edge
+triple makes its entire sum zero.  Each MT source sum $f_k$ and
+$\Gamma_k$ cancels term by term, so $Q_{\rm met}=0$ as well.
+Finally $Au=e_{A,u}=0$ there, and hence both remaining terms of
+(GPR30) vanish.  The rank-two formula (GPR33) also vanishes.
+Consequently the specified triple, not just its boundary, satisfies
+\[
+                   q_{\rm G}=0
+              \quad\text{on }(O_a\cup O_b)\cap N_{ab}\cap W.
+ \tag{GPR38}
+\]
+Glue it with zero on $(O_a\cup O_b)\cap W$.  These ordinary
+opens and $N_{ab}\cap W$ cover $W$, producing a genuine actual
+triple on all of $W$.  On the zero domains the native defect is
+also literally zero by the same norm identities, while its
+extending pair is zero.  Thus (GPR32) holds everywhere.
+
+\begin{theorem}[Original-field relative native Gauss pivot]
+For every $r\ge2$, the original data (GPR1)--(GPR5) give an
+explicit actual triple $q_{\rm G}\in L_2^{r-1}(W)$ and the actual
+closed extending pair $e_{A,u}\in L_1^1(N)$ such that
+\[
+ \boxed{\qquad
+ \mathscr G=\partial_2q_{\rm G}+e_{A,u}R^{r-2}|_W.
+ \qquad}
+ \tag{GPR39}
+\]
+The formulas are (GPR22), (GPR25)--(GPR30) for $r\ge3$ and
+(GPR33) for $r=2$, with the proved zero gluing (GPR38).
+No bound on $a,b$, analytic root, base change, coefficientwise
+choice of a source layer, or enlargement of the deleted zero set
+is used.  In particular $a=0$, $b=0$, cancellation in $1+ab$,
+and zeros of any individual original or intermediate section
+are included whenever the stated pivot $1+ab$ remains a unit.
+\end{theorem}
+
+\subsection{The original-support actual Green interface}
+
+Retain original global regular CI tuples $s_0,s_1$ of the same
+metrized line bundle on smooth projective $X/K$, and set
+\[
+ Z=[Y_1]-[Y_0],\quad T=|Z|,\quad S=|Y_0|\cup|Y_1|,
+ \quad U=X^{\rm an}\setminus T,\quad V=X^{\rm an}\setminus S,
+ \quad C_U=S\cap U.
+ \tag{GPR40}
+\]
+Suppose an ordinary $N=N_0\cup N_1\subset U$ contains $C_U$,
+and that supplied finite original-$K$ analytic frame paths on
+$N_0,N_1$ give the literal full SHT/RSP data
+\[
+ G_{s_1}-G_{s_0}=\partial_1p_i+E_i\quad\text{on }N_i\cap V,
+ \qquad E_i\in B^{s,s}(N_i).
+ \tag{GPR41}
+\]
+Supply a finite sequence of Gauss substitutions (GPR5) on the
+whole overlap, with each actual pivot $1+ab$ an analytic unit
+there.  If these transform the entire $p_0$ into $p_1$, retaining
+literal common prefixes and suffixes, summing (GPR39) gives
+\[
+ p_1-p_0=\partial_2(A_{01},B_{01},M_{01})+\epsilon_{01}|_{N_0\cap N_1\cap V},
+ \quad \epsilon_{01}=R^{r-2}\sum_{\rm substitutions}\pm e_{v(a),v(1+ab)}.
+ \tag{GPR42}
+\]
+Every summand in $\epsilon_{01}$ is actual on the unpunctured
+overlap, including coefficient zeros.  This is a finite independent
+analytic certificate, not an assumption that overlap primitives
+are already exact.  It may also be combined with separately
+proved finite relation certificates by adding their full witnesses
+and their genuinely extending errors.
+
+For an ordinary smooth partition $\theta_0+\theta_1=1$ subordinate
+to $N_0,N_1$, put $\theta=\theta_1$.  Frozen RAG supplies
+\[
+\begin{split}
+ \alpha={}&\theta_0\alpha_0+\theta_1\alpha_1
+                     +d'\theta\wedge A_{01}+d''\theta\wedge M_{01},\\
+ \beta={}&\theta_0\beta_0+\theta_1\beta_1
+                     +d''\theta\wedge B_{01}+d'\theta\wedge M_{01},\\
+ E={}&\theta_0E_0+\theta_1E_1
+          -d'\theta\wedge\epsilon_{01}'-d''\theta\wedge\epsilon_{01}''.
+\end{split}
+\tag{GPR43}
+\]
+All overlap-supported products are actual zero extensions.  The
+extending-pair terms are retained, and the two mixed
+$D\theta\wedge M_{01}$ terms cancel only in the full
+differentiated identity.  Therefore
+$G_{s_1}-G_{s_0}=d'\alpha+d''\beta+E$ on $N\cap V$.
+
+Choose the frozen RSP cutoff $\zeta$ only on $U$, equal to one
+near $C_U$ with closed $U$-support inside $N$.  Extend
+$\zeta\alpha,\zeta\beta$ by zero to $V$ and set
+\[
+          g_V=G_{s_1}-G_{s_0}-d'\widetilde\alpha-d''\widetilde\beta.
+ \tag{GPR44}
+\]
+It equals $E$ near $C_U$ and hence glues with $E$ to an actual
+$g_Z\in B^{r-1,r-1}(U)$ on the original exact complement.
+For each actual $\eta\in B_c^{n-r,n-r}(X^{\rm an})$, frozen
+support avoidance gives $\operatorname{supp}D\eta\Subset V$.
+The two correction products have compact support there, so full
+actual Stokes and CI8 prove
+\[
+                         \int_Ug_Z\wedge D\eta=-\int_Z\eta
+                       \quad\text{for every actual compact test}.
+ \tag{GPR45}
+\]
+The original cycle, support, field and absolute value are unchanged.
+No growth condition or illicit test $\zeta\eta$ on all of $X$ is
+introduced.  This is a two-open criterion with supplied complete
+paths and substitutions, not an automatic gluing theorem for
+arbitrary elimination covers or arbitrary cycle cancellations.
+
+\paragraph{Actual presentations and topological scope.}
+No new form space has been defined.  The pair and triple spaces
+are the frozen actual CPT spaces with their own inherited
+coefficient-final topologies.  The formulas use finite norm
+minima, the actual full differentials, closed curvature powers,
+and finite wedge sums on a fixed whole presentation.  All wall
+relations, non-product units such as $(T_1,T_2,T_1+T_2)$, and
+mixed parameter jets remain in that presentation and its allowed
+refinements.  The local unit-substitution argument proves equality
+of fixed norm formulas on ordinary opens, not equality merely on
+rational points or on a dense probe set.  Moving punctures and
+arbitrarily many passive base directions are allowed on the
+ordinary domain where the supplied coefficients and pivot are
+analytic; no uniform assertion at an omitted puncture is made.
+The construction commutes with restriction and actual refinement.
+Only the frozen fixed-stage finite-jet continuity of its finite
+operations is used.  No full inherited/final kernel comparison,
+Hausdorff quotient theorem, arbitrary higher actual descent, or
+global continuous linear retraction follows.
+
+\paragraph{Failure boundaries preserved.}
+The error in (GPR39) is not removed.  A route that requires every
+native matrix relation to have a strict witness has not been
+proved.  This result does not contradict the diagonal ASP
+obstruction or the LTF failure: it uses the independently closed
+coefficient pair (GPR7) and the full MT correction, never an
+arbitrary closed low-degree block or canceled curvature factor.
+It classifies neither all matrix relations nor all actual forms.
+General Strong G, full lower-middle OPEN-KERNEL, general actual
+period vanishing and original-support representatives, and the
+full Beilinson--Bloch height axioms remain open.
+
+\paragraph{Exact input audit.}
+The proof uses the following byte-frozen same-branch inputs, all
+read at their precise source hashes.  Their original indices and
+current-hash review records remain the authority.
+\begin{itemize}
+\item SHT native and unit primitives:
+\texttt{a7bc2d335e69cf81800e97d9433fc563108e548a1f1ac3eb15aac15a0022631f}.
+\item CS6--CS10 full edge formula, CS17 two-entry recurrence,
+CS21 passive-block vanishing and CS24 cap:
+\texttt{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf}.
+\item MT15--MT16 full-loop metric transport:
+\texttt{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+\item CPT only on the independently closed pair (GPR7):
+\texttt{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6}.
+\item RAG full mixed partition formula:
+\texttt{34c1f00070f1e6ad596d9c8de58a20145a3670e1be7890710d5a4285733f9f82}.
+\item RSP exact-$U$ cutoff and all-actual-test support/Stokes bridge:
+\texttt{fbd8a7c32e7ec19e2f6775d48f6167f1322e7e13ab03d931a4305381bb3270b2}.
+\item CI8 on the original regular tuples:
+\texttt{a7a37d03f46437047aaf3cfe9227ae18ba3bf627b65c6dc2ea5d22f610379033}.
+\end{itemize}
+The equation references to the R11 Steinberg source merely point
+to repeated explicit CS/MT definitions for convenient reading;
+no new Steinberg relation is needed as a premise of this Gauss proof.

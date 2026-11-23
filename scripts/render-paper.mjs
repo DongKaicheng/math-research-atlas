@@ -142,7 +142,7 @@ function bindStatementTypes(ast, labels, theoremNames) {
       const [attr, blocks] = value.c;
       const kind = attr[1].find(name => kinds.has(name));
       const first = blocks[0];
-      if (kind && first?.t === 'Para' && first.c[0]?.t === 'Strong') {
+      if (kind && first?.t === 'Para' && ['Strong', 'Emph'].includes(first.c[0]?.t)) {
         const keys = [attr[0], ...first.c.filter(node => node.t === 'RawInline')
           .map(node => node.c[1].match(/^\\label\{([^}]+)\}$/)?.[1])].filter(Boolean);
         for (const key of keys) {
@@ -231,7 +231,7 @@ function transformAst(ast,labels,cites) {
         const rawLabel=findNodes(first,'RawInline').find(x=>/^\\label\{/.test(x.c[1]));
         const key=attr[0]||rawLabel?.c[1].match(/^\\label\{([^}]+)\}/)?.[1];
         const record=key?labels.get(key):undefined;
-        if(record?.number && first[0]?.t==='Strong') {
+        if(record?.number && ['Strong','Emph'].includes(first[0]?.t)) {
           first[0].c=[{t:'Str',c:capital(theoremType)+' '+record.number}];
         }
       }

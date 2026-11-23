@@ -5,7 +5,7 @@ export const researchBranches = [
   {
     id: 'local-green', title: 'Local Green forms',
     description: 'The prescribed curved construction is established; vanishing of its Chow obstruction remains the general local problem.',
-    scope: 'The construction theorem applies to smooth integral projective varieties over the original finite valued extension of ℚₚ, in every positive codimension up to the dimension, with ordinary actual forms, exact support and all compact complementary actual tests. The vanishing and transfer routes retain their additional hypotheses and full finite degrees.',
+    scope: 'The construction theorem applies to smooth integral projective varieties over the original finite valued extension of ℚₚ, in every positive codimension up to the dimension, with ordinary actual forms, exact support and all compact complementary actual tests. Rational-fibre constancy, finite actual trace and Chow-kernel covariance are established; geometric applications retain their actual numerical witnesses, Chow factorizations and full finite degrees.',
     plan: ['analytic', 'source'],
     links: [{ href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'The Chow obstruction and prescribed Green-pair theorem' }, { href: '/papers/green-constructions', label: 'Green constructions and transfer' }],
     groups: [
@@ -14,13 +14,13 @@ export const researchBranches = [
       { id: 'algebraic-equivalence', title: 'Algebraically trivial cycles', records: ['BB-COMPACT-RIGIDITY', 'BB-RATIONAL-FIBRE-RIGIDITY', 'BB-ALG-TRANSFER'] },
       { id: 'abelian-transfer', title: 'Abelian varieties and Chow transfer', records: ['BB-FINITE-NUMERICAL-DESCENT', 'BB-ABELIAN-STAGE', 'BB-MOTIVIC-TRANSFER'] },
       { id: 'curve-products', title: 'Products of curves', records: ['BB-CURVE-CHOW-DIAGONAL', 'BB-REGULAR-PRODUCT-MODELS', 'BB-REGULAR-CHOW-CRITERION', 'BB-CURVE-PRODUCT-DRAFT'] },
-      { id: 'local-open', title: 'The remaining general case', records: ['BB-ANALYTIC-INTERFACE', 'BB-RESIDUAL-PERIODS', 'BB-TROPICAL-INTERFACE'] },
+      { id: 'local-open', title: 'Analytic operations and the remaining general case', records: ['BB-ANALYTIC-INTERFACE', 'BB-RESIDUAL-PERIODS', 'BB-TROPICAL-INTERFACE'] },
     ],
   },
   {
     id: 'global-heights', title: 'Global height pairings',
     description: 'PH16 constructs the full pairing from Strong G; the obstruction route gives a second account of its domain.',
-    scope: 'Within the stated analytic foundations, PH16 (Theorem 7.5) constructs the full height from Strong G at every finite completion in both complementary codimensions. The kernel-domain route instead enlarges its pairing by proving local obstruction vanishing in both degrees. These are separate sufficient routes; the direct theorem does not require vanishing of a preselected obstruction.',
+    scope: 'Using the proved analytic operations, PH16 (Theorem 7.5) constructs the full height from Strong G at every finite completion in both complementary codimensions. The kernel-domain pairing is established; vanishing of the local obstruction in both degrees would enlarge it to the full domain. These are separate sufficient routes; the direct theorem does not require vanishing of a preselected obstruction.',
     plan: ['global'],
     links: [{ href: '/papers/global-height-pairing#r16ph:general-height', label: 'Strong G gives the full height: Theorem 7.5' }, { href: '/papers/global-height-pairing', label: 'The global construction' }, { href: '/papers/pairing-constructions', label: 'Geometric pairing domains' }],
     groups: [

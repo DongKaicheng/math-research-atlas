@@ -1,0 +1,290 @@
+% Round 15. Scope analysis and a formal consequence of frozen R13--R14.
+% The formal HB1--HB7 proof is unchanged; the scope discussion is updated
+% to the completed arbitrary-base and all-rank results of this round.
+\section{Degree-two center normalization and the fourfold boundary}
+\label{r15:higher-center-boundary}
+
+This section records the formal center-normalization step first
+isolated during the relative curve calculation.  Its final scope
+discussion incorporates the subsequent arbitrary-base and all-rank
+results of this round. The connecting sequence used below is the frozen Round~13
+result, not a new construction. Combining it with the subsequently
+proved Round~14 constant-fiber-dimension injectivity gives an additional
+formal corollary. The Round~13 source states the kernel quotient only
+under $r>\dim C$; the searched Round~14 sources retain that dimension
+condition when quoting the quotient. The argument below records exactly
+why it can now be removed in degree $r=2$, without treating the raw
+exceptional restriction as closed.
+
+Let $X/K$ be smooth integral projective, let $j:C\hookrightarrow X$
+be a nonempty smooth integral closed center of codimension $c\geq2$,
+and write
+\[
+ q:Y=\operatorname{Bl}_C X\longrightarrow X,\qquad
+ i:E=\mathbf P_C(N_{C/X})\hookrightarrow Y,\qquad
+ \pi:E\longrightarrow C.
+\tag{HB1}
+\]
+The convention for projectivization is that of lines, so
+$\mathcal O_Y(E)|_E=\mathcal O_E(-1)$.
+A disconnected smooth center is handled componentwise. All forms,
+finite maps and degrees are native over the original $K$.
+
+\begin{lemma}[A primitive on the center is already available]
+\label{r15:center-primitive}
+Suppose that $\Omega\in B^{2,2}(X)$ is separately closed and that
+$\beta\in B^{1,1}(Y)$ satisfies $D\beta=q^*\Omega$.
+Then there is $\zeta\in B^{1,1}(C)$ with
+\[
+                         D\zeta=j^*\Omega.
+\tag{HB2}
+\]
+One explicit choice is
+\[
+ \zeta=\frac1e\operatorname{Tr}_f(h^*i^*\beta),\qquad
+ h:T\longrightarrow E,\quad f=\pi h:T\longrightarrow C
+ \text{ finite dominant},\quad e=\deg f,
+\tag{HB3}
+\]
+where $T$ is a finite normal multisection of the projective bundle.
+No actual proper trace along $\pi$ is used.
+\end{lemma}
+
+\begin{proof}
+The map $\pi$ is projective, smooth, surjective, and all its geometric
+fibers have dimension $c-1$. Source and target are normal integral
+projective varieties. Thus the frozen Round~14 theorem
+\texttt{foundations\_audit/equidimensional\_projective\_descent.tex},
+label \texttt{r14j:equidimensional} (assembled Theorem~16.1),
+applies. In particular $\pi^*$ is injective on actual
+$H_{\mathrm{BC}}^{2,2}(C)$. Restriction of the supplied primitive gives
+\[
+                  \pi^*j^*\Omega=D(i^*\beta).
+\]
+This already proves existence in (HB2).
+
+For the explicit formula, the finite-normal-multisection lemma
+\texttt{r14e:finite-multisection} gives $h,T,f$ as in (HB3), and
+actual pullback gives
+\[
+              f^*j^*\Omega=D(h^*i^*\beta).
+\]
+The form inside the trace has bidegree $(1,1)$, within the canonical
+actual finite strip trace. Its derivative-current identity and the
+native finite degree formula give
+$D\operatorname{Tr}_f(h^*i^*\beta)=e\,j^*\Omega$ as actual forms.
+This is exactly Corollary \texttt{r14j:primitive}, formula
+\texttt{r14j:primitive-formula} (assembled Corollary~16.2),
+applied to $\pi$. All tests in the finite trace remain actual tests
+on the original $C$.
+\end{proof}
+
+\begin{definition}[The normalized exceptional class]
+\label{r15:normalized-exceptional-class}
+For the supplied pair $(\Omega,\beta)$ and a choice of (HB2), put
+\[
+ \theta_{\beta,\zeta}=i^*\beta-\pi^*\zeta\in B^{1,1}(E),
+ \qquad
+ \mathcal Q_C=
+ \frac{H_{\mathrm A,\mathrm{act}}^{1,1}(E)}
+ {i^*H_{\mathrm A,\mathrm{act}}^{1,1}(Y)
+       +\pi^*H_{\mathrm A,\mathrm{act}}^{1,1}(C)}.
+\tag{HB4}
+\]
+Then $D\theta_{\beta,\zeta}=0$.
+Its image $\varepsilon_q([\Omega])$ in $\mathcal Q_C$ is the
+normalized exceptional class. Defining $\theta$ requires no extension
+of $\zeta$ off the center.
+\end{definition}
+
+\begin{proposition}[The degree-two exceptional quotient for every smooth center]
+\label{r15:degree-two-all-centers}
+In (HB1), the frozen connecting map induces a canonical isomorphism
+\[
+ \mathcal Q_C\ \xrightarrow{\ \sim\ }\
+ \ker\bigl(q^*:H_{\mathrm{BC,act}}^{2,2}(X)
+                  \longrightarrow H_{\mathrm{BC,act}}^{2,2}(Y)\bigr).
+\tag{HB5}
+\]
+The class of (HB4) is independent of the supplied primitive and of the
+center primitive, and corresponds to $[\Omega]$ under (HB5).
+In particular, for the supplied $\Omega$, it vanishes if and only if
+$\Omega$ admits a global actual $D$-primitive on $X$.
+This is a statement about primitive descent, not a converse to the
+sufficient implication $\mathfrak o_X^2([Z])=0\Rightarrow G(Z)$.
+\end{proposition}
+
+\begin{proof}
+The frozen source
+\texttt{round13/analytic\_descent/retracted\_modification\_descent.tex},
+Theorem \texttt{r13d:connecting}, equation (R13.D16), gives exactness
+at the middle two terms of
+\[
+ H_{\mathrm A}^{1,1}(Y)\oplus H_{\mathrm A}^{1,1}(C)
+ \xrightarrow{i^*-\pi^*}H_{\mathrm A}^{1,1}(E)
+ \xrightarrow{\partial_D}H_{\mathrm{BC}}^{2,2}(X)
+ \xrightarrow{(q^*,j^*)}
+ H_{\mathrm{BC}}^{2,2}(Y)\oplus H_{\mathrm{BC}}^{2,2}(C).
+\tag{HB6}
+\]
+It holds without the condition $2>\dim C$. Exactness at the Aeppli
+term says that the full kernel of $\partial_D$ is precisely the sum
+of the two images in the denominator of (HB4); the minus sign does
+not change their sum as vector subspaces.
+
+If $q^*[\Omega]=0$, the commutative square gives
+$\pi^*j^*[\Omega]=i^*q^*[\Omega]=0$. Lemma~\ref{r15:center-primitive},
+or the injectivity used in its proof, gives $j^*[\Omega]=0$.
+Consequently $\ker q^*=\ker(q^*,j^*)$. The image statement in (HB6)
+therefore proves (HB5).
+
+For the representative check, extend $\zeta$ degreewise to an actual
+$\eta\in B^{1,1}(X)$ using the frozen immersion-germ extension theorem.
+Put
+\[
+ \Omega_0=\Omega-D\eta,\qquad
+ \beta_0=\beta-q^*\eta.
+\tag{HB7}
+\]
+Then $j^*\Omega_0=0$, $D\beta_0=q^*\Omega_0$, and
+$i^*\beta_0=\theta_{\beta,\zeta}$. The connecting-map construction
+with the extension $\beta_0$ therefore sends $[\theta]$ to
+$[\Omega_0]=[\Omega]$. This explains precisely where extending
+$\zeta$ changes the curvature representative and why its
+Bott--Chern class is unchanged.
+
+Replacing $\beta$ changes $\theta$ by the restriction of a global
+$D$-closed form on $Y$. Replacing $\zeta$ changes it by the pullback
+of a $D$-closed form on $C$. Both changes lie in the complete
+quotient denominator. If $\Omega$ is changed by $D\xi$, take
+$\beta+q^*\xi$ and $\zeta+j^*\xi$; the two added restrictions cancel
+in $\theta$. Thus the normalized class is canonical. The last
+assertion follows either from (HB5) or from the explicit corrected
+primitive formula in the frozen connecting proof.
+\end{proof}
+
+\subsection{The three fourfold exceptional cases are now controlled}
+
+Now let $\dim X=4$ and retain curvature degree $(2,2)$.
+A nontrivial smooth-center blowup has center dimension $0$, $1$, or
+$2$; a smooth Cartier-center blowup is an isomorphism.
+Let
+\[
+ h_E=c_1(\mathcal O_E(1))=-i^*c_1(\mathcal O_Y(E))
+ \quad\text{in }H_{\mathrm A}^{1,1}(E),
+\tag{HB8}
+\]
+with compatible model metrics, or with their scalar $D$-differences
+absorbed in the Aeppli class. Hence the normal hyperplane class is
+already in the first denominator of (HB4).
+
+\begin{enumerate}
+\item \emph{Point center.} Here $E\simeq\mathbf P^3_{\kappa(p)}$.
+The raw restriction $i^*\beta$ is $D$-closed and the center contributes
+no positive-degree form. The completed all-rank projective-bundle
+Aeppli theorem gives
+$H_{\mathrm A,act}^{1,1}(\mathbf P^3)=\mathbf R[h_E]$,
+and this generator is already a restriction from $Y$.
+This conclusion uses the full incidence argument of
+Section~\ref{r15i:section}; it is not inferred from the
+$\mathbf P^2$ computation by restriction to a hyperplane.
+
+\item \emph{Curve center.} Here $E=\mathbf P_C(N_{C/X})$ is a
+$\mathbf P^2$-bundle over a smooth curve. Again $j^*\Omega=0$ by
+dimension, so $\zeta=0$ is available. The completed relative theorem is
+\[
+ H_{\mathrm A}^{1,1}(E)
+       =\pi^*H_{\mathrm A}^{1,1}(C)+\mathbf R[h_E].
+\tag{HB9}
+\]
+The center summand is one-dimensional by the frozen proper-curve
+potential theorem. The proof of (HB9) uses the ordinary PWS
+projective-bundle integration theorem, all smooth mixed-test
+pairings, algebraic base change, and the global incidence
+homotopy. It does not infer a family statement merely from
+the groups of individual fibers. Both summands are now in
+the denominator of (HB4).
+
+\item \emph{Surface center.} Here $E$ is a $\mathbf P^1$-bundle over
+the smooth projective surface $C$. In general
+$D(i^*\beta)=\pi^*j^*\Omega$ is nonzero. One must first construct
+$\zeta$ by (HB2)--(HB3) and use $\theta=i^*\beta-\pi^*\zeta$.
+That center-primitive step is already proved; it is not an additional
+open existence conjecture. The now proved relative formula
+(HB9), with the full possibly unknown group
+$H_{\mathrm A}^{1,1}(C)$, kills (HB4). The necessary integration
+and Green outputs hold on arbitrary-dimensional smooth bases,
+and the bundle statement glues over its algebraic
+trivializations. Computing $H_{\mathrm A}^{1,1}(C)$ itself
+is not required by this relative formulation.
+\end{enumerate}
+
+Thus none of these three minimum-one exceptional Aeppli
+problems remains open in the completed round.  In fact
+Theorem~\ref{r15m:strip-injectivity} proves smooth-center
+Bott--Chern injectivity whenever the smaller bidegree is
+at most two, in every dimension, using the full first-strip
+formula and localized positive normal Chern extensions.
+This is a primitive-descent theorem.  It does not on its
+own supply a numerically admissible model witness for
+every codimension-two cycle on a fourfold.  The remaining
+model question is the primitive numerical residual in
+Section~\ref{r15res:section}; no universal vanishing of
+that residual or general strong-G conclusion is claimed.
+
+\subsection{The historical fixed-tuple obstruction and its local resolution}
+
+The first fixed-global-tuple proof had the following genuine
+limitation. Over a curve, the normalization in a finite splitting field is again
+smooth in characteristic zero. The poles of the root sections, their
+pairwise collision loci, and the vanishing loci of finitely many
+coefficient functions form a finite set of closed points. After a
+finite constant extension those points are rigid rational points.
+The frozen immersion-germ theorem and properness give
+$\alpha|_{U_b\times\mathbf P^1}=\operatorname{pr}_z^*\beta_b$ on a
+whole ordinary product neighborhood. The one-variable convolution
+then supplies all mixed test pairings there.
+
+For a base of dimension at least two, normalization in that same
+splitting field is generally only normal, not smooth. The bad locus
+can contain divisors and their intersections, and rational root maps
+to $\mathbf P^1$ can have higher-codimension indeterminacy. Thus it
+is not a finite collection of rigid fibers. Restricting an input to
+$D\times\mathbf P^1$ along a bad divisor produces a relative form
+with a positive-dimensional base; it is not a fixed one-variable
+form $\beta_b$. The immersion-germ extension theorem gives
+extensions of form germs, but no analytic retraction from a whole
+ordinary neighborhood of $D$ to $D$, and no prescribed-current
+compatibility for an arbitrary extension. It cannot substitute for
+the missing family operator.
+
+Resolving that fixed normal splitting cover or its root-map
+indeterminacy would introduce proper modifications. The finite
+PWS trace alone would not descend an output through their
+positive-dimensional fibers. These observations remain correct
+as a diagnosis of the earlier global-tuple strategy.
+
+The subsequent local separable-moment perturbation argument
+does not make that resolution step. Around each arbitrary
+analytic base point it first takes finite complete-fiber
+Laurent data, then perturbs the finitely many polynomial
+coefficients by sufficiently small elements of $K$.
+On the compact domains the norms of every relevant unit
+and every domain inequality are unchanged exactly, while
+the specialized leading coefficients, discriminants, and
+pairwise resultants are nonzero. Consequently the splitting
+cover is finite etale on an ordinary neighborhood of the
+chosen point. There is no remaining bad divisor on that
+local neighborhood. Ordinary gluing follows from uniqueness
+of the prescribed currents, not from an assumed retraction
+from a neighborhood of a bad divisor.
+
+This is the local input used in
+Theorem~\ref{r15hp:projection} and
+Proposition~\ref{r15hp:base-change}; its projective-bundle
+extension is Theorem~\ref{r15ps:projective-bundle}.
+Therefore the fixed-global-tuple limitations above are
+historical method boundaries, not unresolved hypotheses
+of the completed arbitrary-base PWS output theorem.
+The scope still does not include arbitrary proper
+pushforward of positive-delta-codimension actual forms.

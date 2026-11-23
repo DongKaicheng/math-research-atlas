@@ -1,0 +1,239 @@
+% Round 22 / geometry branch. Candidate; independent review required.
+\section{Positive fourfold suspensions with genuine higher strata}
+\label{r22su:section}
+
+\paragraph{The new mechanism.}
+The full hyperbolic middle form on a threefold times $\mathbf P^1$
+turns a positive good-reduction fourfold into a source of new
+fourfold Green models.  Boundary divisors on the good fourfold
+may have arbitrary middle cohomology.  Their curve-comparison
+gate is the additional input, and for ample divisors it follows
+from curve comparison on the ambient by an explicitly proved
+Gysin isomorphism.  The construction permits triple, quadruple,
+and quintuple strata; none is removed from the numerical gate.
+
+\subsection{An actual weak-Lefschetz curve gate}
+
+Say that a smooth projective variety over a finite field has
+$\mathrm{CC}_\ell$ if every actual native rational curve which
+is numerically zero has zero geometric $\ell$-adic class.
+
+\begin{lemma}[Ample threefold boundaries of a fourfold]
+\label{r22su:ampleCC}
+Let $M/k$ be a smooth projective geometrically integral fourfold
+with $\mathrm{CC}_\ell$, and let $i:F\hookrightarrow M$ be a
+smooth geometrically integral ample divisor.  Then $F$ has
+$\mathrm{CC}_\ell$.  The argument reapplies over every finite
+constant field for which $M$ has that property, to every new
+native curve there.
+\end{lemma}
+
+\begin{proof}
+Let $z$ be a native numerically zero curve on $F$.  For each
+native divisor $A$ on $M$, the actual projection formula gives
+$\deg_M(i_*z\cdot A)=\deg_F(z\cdot i^*A)=0$.  Hence $i_*z$
+is a numerically zero curve on $M$, and its geometric class is
+zero by the hypothesis.
+
+Weak Lefschetz for the smooth ample divisor gives the isomorphism
+\[
+ i^*:H^2(M_{\bar k},\mathbf Q_\ell(1))
+                  \xrightarrow{\sim}H^2(F_{\bar k},\mathbf Q_\ell(1)).
+ \tag{SU22.1}\label{r22su:weakL}
+\]
+By Poincare duality and the cohomological projection formula,
+the Gysin map
+\[
+ i_*:H^4(F_{\bar k},\mathbf Q_\ell(2))
+                  \xrightarrow{\sim}H^6(M_{\bar k},\mathbf Q_\ell(3))
+ \tag{SU22.2}\label{r22su:Gysiniso}
+\]
+is its dual and is itself an isomorphism.  It follows that
+$\operatorname{cl}_\ell(z)=0$.  Thus the cancellation of Gysin
+here has a specific proved justification.  It is not an inference
+from an arbitrary ambient pushforward equality.  All degrees are
+on the smooth projective special-fiber varieties.  The same
+argument over each new finite field proves the last assertion.
+\end{proof}
+
+\subsection{The general supplied suspension datum}
+
+Let $R=\mathcal O_K$ be the fixed valued trait and
+$\mathcal M/R$ a smooth projective geometrically integral
+fourfold scheme, with special fiber $M/k$.  Choose sections
+$f_1,\ldots,f_b$ of line bundles $\mathcal N_1,\ldots,\mathcal N_b$
+whose special zero divisors $F_1,\ldots,F_b$ are smooth and
+geometrically integral and whose union is a strict normal-crossings
+divisor on $M$.  Require every connected component of every
+nonempty $F_I=\bigcap_{i\in I}F_i$ to be geometrically integral
+over $k$.  Thus the zero-dimensional intersections are native
+points.  This last splitting can be supplied by a finite
+unramified preparation; the theorem is stated over the field
+where its datum is actually defined.
+
+Choose $d\ge1$ distinct native points of $\mathbf P^1_k$ and
+linear forms $l_1,\ldots,l_d$ lifting their equations.  Set
+\[
+ \mathcal Y=\mathcal M\times_R\mathbf P^1_R,\qquad
+ \mathcal L=(\mathop{\otimes}_{i=1}^b\mathcal N_i)
+                              \boxtimes\mathcal O(d),\qquad
+ P=(\prod_i f_i)(\prod_j l_j).
+ \tag{SU22.3}\label{r22su:datum}
+\]
+Order the special factors with all $F_i\times\mathbf P^1$
+first and all $M\times\{p_j\}$ last.  Choose a section $Q$ of
+$\mathcal L$ transverse to every connected component of every
+nonempty factor intersection.  Require every positive-dimensional
+cut to be geometrically integral, every zero-dimensional cut to
+be finite etale, and $Q$ to avoid every zero-dimensional stratum.
+The last requirement is also what transversality means on a
+zero-dimensional stratum.  Assume that
+\[
+                  X=V(P+\pi Q)\subset\mathcal Y_K
+ \tag{SU22.4}\label{r22su:X}
+\]
+is smooth and geometrically integral.
+
+The two numerical hypotheses are explicit:
+\[
+ b^-(N^2(M)_{\mathbf R})=\rho(M)-1,\qquad
+                    \mathrm{CC}_\ell(F_i)\quad\text{for every }i.
+ \tag{SU22.5}\label{r22su:gates}
+\]
+For a complete all-finite-extension statement require these over
+every finite constant field, for its whole new native cycle groups.
+It is enough for the second condition to have each $F_i$ ample
+and $\mathrm{CC}_\ell(M)$, by the preceding lemma.
+
+\begin{theorem}[Positive suspension, SU22]
+\label{r22su:theorem}
+For every supplied datum \eqref{r22su:datum}--\eqref{r22su:gates},
+the ordered ambient factor blowups give an actual projective
+reduced strictly semistable model with $U_2=0$ and with native
+curve comparison on every double.  Its generic fourfold has
+full strong G in every codimension.  Under the all-constant-field
+version of \eqref{r22su:gates}, the same holds for every new
+specified geometrically homologically trivial rational cycle
+after every finite valued extension of $K$.
+
+The conclusion allows nonempty quintuple intersections.  If
+four of the $F_i$ meet, each such point times any chosen point
+of $\mathbf P^1$ is a genuine quintuple stratum of the actual
+model.
+\end{theorem}
+
+\begin{proof}
+At a point on $s$ factor divisors the local product is
+$x_1\cdots x_s$, where $s\le5$.  At a zero of $\bar Q$
+transversality gives a further regular relative parameter $y$
+and the actual equation $x_1\cdots x_s=\pi y$.
+Necessarily $s\le4$ there, because the ambient has relative
+dimension five and $Q$ avoids the zero-dimensional strata.
+At a fivefold point $\bar Q$ is a unit and the equation is
+already $x_1\cdots x_5=\pi u$, strictly semistable with
+five distinct components.
+
+The saturated ordered charts in DS22 apply verbatim to each
+nonunit chart.  They prove regularity, reduced special fiber,
+and the absence of extra vertical components.  They also give
+the complete actual stratum description: if $H_I$ denotes an
+old factor intersection, its continuing stratum is its iterated
+blowup in
+\[
+                   H_I\cap H_j\cap V(\bar Q),\qquad j>\max I,
+ \tag{SU22.6}\label{r22su:centers}
+\]
+in decreasing order of $j$.  Each nonempty center has
+codimension two in $H_I$.  A preceding center cuts a subsequent
+one by the divisor of the remaining factor, since both already
+lie in $V(\bar Q)$.  It is Cartier by the given transversality,
+so the subsequent center is unchanged by that blowup.  When a
+zero-dimensional center could meet a further factor, that would
+put $Q=0$ on a zero-dimensional stratum, which is excluded.
+Thus the same chart proof handles all dimensions of centers
+without silently throwing away the higher intersections.
+
+Every component is consequently an iterated smooth surface
+blowup of $F_i\times\mathbf P^1$ or an unchanged copy of $M$.
+Each $F_i$ is a threefold, so DS22's full numerical hyperbolic
+lemma applies without any positivity hypothesis on its own
+middle cohomology.  The condition on $M$ gives the required
+signature on the point components.  Every surface blowup adds
+the negative of the center's divisor intersection form and
+increases the Picard rank by one, componentwise.  The complete
+negative middle index remains $\rho-1$.  For the restrictions
+of any one actual relatively ample class, every component's
+primitive middle form is therefore positive definite.
+
+The unmodified doubles are either $F_i$ or connected components
+of $(F_i\cap F_j)\times\mathbf P^1$.  The first have curve
+comparison by \eqref{r22su:gates}.  The second are projective
+bundles over smooth projective surfaces, so CD17 gives their
+entire native curve comparison.  Every actual double is an
+iterated smooth curve blowup of one of these original doubles,
+by \eqref{r22su:centers}.  CD17 smooth-blowup comparison, or
+SP19 birational ascent, retains the property.  This checks every
+double, including those adjacent to genuine quadruple and
+quintuple strata.
+
+Frozen PU18 now kills the entire $U_2$, because its unique
+primitive representative subspace is totally isotropic in the
+positive direct sum just established.  The full numerator is
+used; the proof does not assert $\ker A=\ker\rho$.
+The double comparison closes CL17, MZ20 kills the resulting
+cycle-visible obstruction, and VT17 produces the required
+ordinary actual Green form on the exact specified support
+complement with all compact actual tests.  The already closed
+other-codimension fourfold Green theorems supply every degree.
+
+Over each finite unramified extension, reapply these arguments
+to the whole new numerical and Chow groups using the explicit
+all-constant-field hypotheses.  RI18 then gives every finite
+valued extension, with its full ramification and residue
+degrees.  The final finite actual trace and VT17 retain the
+original norm and the precise original specified cycle support.
+There is no arbitrary proper actual pushforward.  The actual
+quintuple points described in the statement lie in the unit
+charts and survive every factor blowup, proving the last claim.
+\end{proof}
+
+\subsection{A new unconditional host for this theorem}
+
+\begin{corollary}[Elliptic fourth-power host]
+\label{r22su:host}
+Let the good special fourfold be $M=E^4$, where
+$E/\mathbf F_5$ is $y^2=x^3-x$, after any finite constant
+extension.  For every supplied simple-normal-crossings
+arrangement of smooth ample boundary divisors $F_i$ and every
+supplied smoothing satisfying the preceding hypotheses, SU22
+gives the complete all-finite-extension strong Green property.
+\end{corollary}
+
+\begin{proof}
+Write $M=(E^2)\times(E^2)$.  DS22's explicit all-powers
+Frobenius check, using the frozen FP21 theorem, proves the
+full middle signature after every finite constant extension,
+including the whole $t_2\otimes t_2$ block.  The frozen SP19
+comparison applies to $M$ as a product of curves.  The ample
+boundary lemma above gives curve comparison on every $F_i$.
+All these arguments apply afresh to every new native cycle
+over each finite constant field.  The theorem therefore applies.
+\end{proof}
+
+\paragraph{Scope boundary and dependencies.}
+This is a model-generation theorem under stated finite-field
+numerical hypotheses, with an unconditional concrete host.
+It is not a universal good-ambient witness, contrary to the
+route excluded by ML17.  No assertion embeds every given
+generic variety into such a suspension.  The threefold-times-line
+hyperbolicity restated in DS22 is already the closed rank-two
+projective-bundle case of PC16, with its R7 provenance.  The new
+model-generation argument combines that input with the proved
+ample-boundary Gysin isomorphism and the actual higher-stratum
+resolution.  The remaining frozen interfaces are PC16, FP21,
+PU18, CD17/SP19, CL17, MZ20,
+RI18, VT17, and the already closed other-codimension results.
+Weak Lefschetz and Poincare duality in
+\eqref{r22su:weakL}--\eqref{r22su:Gysiniso} are ordinary
+geometric etale cohomology statements; no numerical inverse
+Lefschetz on an arbitrary threefold is assumed.

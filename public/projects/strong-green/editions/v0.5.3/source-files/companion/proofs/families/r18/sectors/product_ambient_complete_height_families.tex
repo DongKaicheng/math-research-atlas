@@ -1,0 +1,451 @@
+% Round 18. ci_global branch. Activation requires independently reviewed PG18.
+\section{Complete heights in a product ambient variety beyond complete intersections}
+\label{r18pa:section}
+
+This application has a different generic-fiber geometry from the
+complete-intersection families.  Its ambient variety is
+$\mathbf P^1\times\mathbf P^4$ and its smooth divisors have
+second Betti number two.  They therefore cannot be isomorphic to
+projective complete intersections of dimension four.  The new
+local Green input is exactly the fourfold product-smoothing
+theorem PG18; its independent activation is a dependency of
+the theorem below.  All the remaining geometric, arithmetic
+and global-height steps are proved here or use the already
+frozen interfaces indicated explicitly.
+
+\subsection{The native product, sections and geometric connectedness}
+
+Put
+\[
+ \mathcal Y=\mathbf P^1_{\mathbf Z}\times\mathbf P^4_{\mathbf Z},
+ \qquad\mathcal H=\mathcal O_{\mathcal Y}(1,1),
+ \qquad h=c_1(\mathcal H).
+ \tag{PA18.1}\label{r18pa:ambient}
+\]
+It is smooth and projective over $\mathbf Z$ with geometrically
+integral fibers.  Write $x,y$ for the two native hyperplane
+classes, so
+\[
+ x^2=0,\quad y^5=0,\quad\deg(xy^4)=1,
+                  \qquad\deg(h^5)=5.
+ \tag{PA18.2}\label{r18pa:degree}
+\]
+Fix an integer $D\ge5$ and let $V_D$ be the space of
+bihomogeneous forms of bidegree $(D,D)$.
+
+The Segre embedding embeds $\mathcal Y$ in $\mathbf P^9$,
+with $\mathcal H$ the restricted hyperplane bundle.
+Every bidegree-$(D,D)$ monomial is a product of $D$
+bidegree-$(1,1)$ monomials: pair its $D$ factors in
+the first set of variables with its $D$ factors in
+the second.  Thus ambient degree-$D$ polynomials
+surject onto $V_D$ over every field.
+The one-point first and second jets and the two-point
+first jets used in CG18/CE18 are therefore all supplied
+by this actual section space for $D\ge3$.
+
+Here the product ambient is not a projective complete
+intersection.  The following computation supplies
+the connectedness input directly, without applying
+a complete-intersection hypothesis to it.  For
+every positive $t$, the Kunneth formula gives
+\[
+        H^j(Y_{\bar k},\mathcal O_Y(-t,-t))=0
+                                      \quad(0\le j<5).
+ \tag{PA18.3}\label{r18pa:negative-vanishing}
+\]
+Indeed $H^0(\mathbf P^1,\mathcal O(-t))$ and
+$H^0(\mathbf P^4,\mathcal O(-t))$ vanish;
+on $\mathbf P^1$ only degrees zero and one
+can occur, and on $\mathbf P^4$ only degrees
+zero and four can occur.  The only possible
+nonzero tensor product is therefore in total
+degree five.  This calculation holds in every
+characteristic.
+
+Suppose $r\le4$ sections of positive powers
+of $\mathcal H$ cut properly on $Y$, and
+let $Z$ be their scheme-theoretic intersection.
+The Koszul resolution, together with
+\eqref{r18pa:negative-vanishing}, gives
+\[
+                         H^0(Z_{\bar k},\mathcal O_Z)=\bar k.
+ \tag{PA18.4}\label{r18pa:connected}
+\]
+In fact the only additional cohomology in the
+resolution would have total degree $5-j\ge1$
+for its $j$th term with $j\le r\le4$;
+the sole degree-zero contribution is the
+constant class from $\mathcal O_Y$.
+Thus every such smooth positive-dimensional
+intersection is geometrically integral.
+
+A divisor of class $D h$ with at most isolated
+singularities is also geometrically integral.
+It is a Cartier divisor on a smooth variety,
+hence $S_2$; isolated singularities in dimension
+four give $R_1$, so it is normal.
+Equation~\eqref{r18pa:connected} for $r=1$
+makes it connected, hence integral.
+This is the precise replacement for the
+projective complete-intersection integrality
+lemma in the arithmetic construction below.
+
+\subsection{The local PG18 input and deep monodromy}
+
+At a finite valued field $K$ with ring $R$, take
+$D$ actual sections $f_i$ of $\mathcal H_R$ and
+an actual section $Q$ of $\mathcal H_R^D$.
+Require that their special reductions have the
+following properties:
+\begin{itemize}
+\item the $D$ divisors form a geometric SNC divisor;
+      every positive-dimensional intersection is
+      smooth of the expected dimension, every
+      fivefold intersection is finite etale, and
+      no sixfold intersection is nonempty;
+\item $\bar Q$ meets every positive-dimensional
+      factor stratum transversely and avoids
+      every zero-dimensional factor stratum;
+\item the generic divisor
+      $X=V(\prod_i f_i+\pi Q)$ is smooth and
+      geometrically integral.
+\end{itemize}
+All positive-dimensional factor strata and the
+positive-dimensional centers of the ordered
+model are geometrically integral by
+\eqref{r18pa:connected}.  The quadruple and
+quintuple intersections, in particular, are
+retained as actual schemes.
+The same Koszul computation with one of the
+sections taken to be $Q$ proves geometric
+integrality of every positive-dimensional
+$H_I\cap V(\bar Q)$ required by PG18.
+
+The precise local input used here is PG18's
+full ordinary-actual G theorem for this model:
+on a fourfold generic fiber the edge divisor
+classes are generated by the two ambient
+classes and the specified exceptional classes,
+PG18's primitive triple argument kills $U_2$,
+and its curve-comparison argument closes the
+compatible-representative gate.  Its ambient
+cohomological hypothesis holds because
+$H^2(Y_{\bar k},\mathbf Q_\ell(1))$ is the
+two-dimensional space of the actual native
+divisor classes $x,y$.  The same property
+holds over every finite residue extension;
+PG18 must therefore be applied afresh to
+all cycles after each unramified valued
+extension.  None of these new cycles is
+assumed to descend as a pullback.
+
+For clarity, the top monodromy count does
+not require a projective complete-intersection
+ambient.  Every connected positive-dimensional
+stratum contributes one copy of the constant
+cohomology group.  Each fivefold intersection
+has exactly $\deg(h^5)=5$ geometric points.
+The ordered resolution does not change these
+points or the curves immediately above them,
+because $Q$ avoids the zero-dimensional
+original strata.  Its weight-zero restriction
+complex is the simplex complex through degree
+three, with each top subset repeated five
+times.  Its last differential has rank
+$\binom{D-1}{4}$, so
+\[
+ \operatorname{rank}N^4
+       =5\binom D5-\binom{D-1}{4}
+       =(D-1)\binom{D-1}{4}>0.
+ \tag{PA18.5}\label{r18pa:monodromy}
+\]
+The equality with the actual rank follows
+by the HM18/NG18 extreme restriction--Gysin
+argument: the opposite extreme matrix is
+the transpose under the positive native
+degree pairing on the individual geometric
+point summands, and $N^4$ is the identity
+on the common summands.  It gives an
+isomorphism of the opposite extreme kernel
+with the restriction cokernel.  Purity gives
+$E_2$ degeneration, and the weights of
+$H^4$ lie in $[0,8]$, so the extreme rank
+is the actual fourth-monodromy rank.
+No general weight-monodromy assertion is
+invoked.  Closed-point residue degrees are
+retained as the sizes of their geometric
+point orbits.
+
+\subsection{An arithmetic family at every finite place}
+
+\begin{theorem}[Complete heights beyond projective complete intersections]
+\label{r18pa:global}
+Assume PG18's local theorem just specified has
+passed its separate independent review.
+For any preassigned number field $F_{\mathrm{base}}$
+and every $D\ge5$, there are a fixed finite
+extension $F/F_{\mathrm{base}}$, a rational
+prime $q$ unramified in $F$, and a Zariski-dense
+set of smooth bidegree-$(D,D)$ divisors
+\[
+                      X\subset(\mathbf P^1\times\mathbf P^4)_F
+ \tag{PA18.6}\label{r18pa:family}
+\]
+with full ordinary-actual strong G for all
+geometrically homologically trivial rational
+cycles in all codimensions at every finite
+completion.  The assertion holds for all
+new cycles after every finite extension
+of $F$.  Thus PH16 gives the Beilinson--Bloch
+height pairing on the full groups
+\[
+ \operatorname{CH}^r(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+ \times
+ \operatorname{CH}^{5-r}(X_{F'})_{\mathbf Q,\mathrm{geom\,hom}}
+                       \longrightarrow\mathbf R
+ \tag{PA18.7}\label{r18pa:height}
+\]
+for every finite $F'/F$ and every $1\le r\le4$.
+At each place above $q$, \eqref{r18pa:monodromy}
+holds.  Every geometric member is not isomorphic
+to any smooth projective complete intersection
+in projective space.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: fixed smooth reference and one field.}
+Choose a bihomogeneous integral $F_0$ of
+bidegree $(D,D)$ whose generic divisor is
+smooth.  Such sections form a nonempty open
+by first-jet surjectivity, or by Bertini in
+the Segre embedding.  Its generic divisor
+is geometrically integral by the preceding
+connectedness calculation.
+Let $S_0$ contain $2$ and the finitely many
+rational primes of nonsmooth reduction
+of this fixed reference section.
+At each $p\in S_0$, the smooth-section
+open over $\mathbf F_p$ is geometrically
+nonempty by the same first-jet incidence
+dimension argument.  Choose a point over
+some finite extension $\mathbf F_{p^{f_p}}$.
+Take a common multiple $N_0\ge2$ of those
+degrees and lift, by coefficient CRT,
+monic irreducible degree-$N_0$ polynomials
+over all those $\mathbf F_p$ to one
+monic polynomial over $\mathbf Z$.
+Its number field $L$ is unramified and
+inert of degree $N_0$ at those primes.
+Set $F=F_{\mathrm{base}}L$ and lift the
+selected smooth residue sections to forms
+$G_p$ over $\mathcal O_L$, hence over
+$\mathcal O_F$.  Their reductions are
+smooth at every place of $F$ above $p$.
+This is exactly the elementary finite-field
+and number-field construction in CG18;
+no smooth point over the original small
+residue field was presumed.
+
+\emph{Step 2: fix the deep condition before the pencil.}
+Over $\mathbf Q$ choose $D$ sections
+$f_i\in H^0(Y,\mathcal H)$ in geometric
+SNC position, with all partial intersections
+smooth of expected dimension and no sixfold
+intersection, and choose $Q\in V_D$ transverse
+to their positive-dimensional strata and
+avoiding all their zero-dimensional strata;
+one may also require $Q=0$ itself to be
+smooth on $Y$.
+These are nonempty characteristic-zero
+Bertini open conditions in a finite list
+of very ample section spaces.
+The connectedness calculation above gives
+their required geometric integrality.
+Clear denominators and put $P=\prod_i f_i$.
+Choose an odd rational prime $q$ outside
+$S_0$, outside the discriminant of $F$,
+and outside the finite set of primes where
+the displayed geometric data fail to
+spread.  At every $w\mid q$ all the
+PG18 local hypotheses on the special
+data hold natively and $q$ is a uniformizer.
+
+Put $B=\prod_{p\in S_0}p$, $M=q^2B$,
+and choose a bihomogeneous integral $F_1$
+subject to
+\[
+ \begin{aligned}
+ F_1&\equiv P+qQ&&\pmod{q^2\mathcal O_F},\\
+ F_1&\equiv G_p&&\pmod{p\mathcal O_F}\quad(p\in S_0).
+ \end{aligned}
+ \tag{PA18.8}\label{r18pa:coefficient-CRT}
+\]
+This is a full affine coefficient lattice,
+hence is Zariski dense over $F$.
+The fixed-$F_0$ Lefschetz open is nonempty
+on this product ambient: use the first-
+and second-jet and separated two-point
+first-jet surjectivities supplied by the
+Segre embedding above.  The incidence,
+invertible-Hessian, finite projection of
+the discriminant from $[F_0]$, and
+smooth-base arguments in CG18 then apply
+with dimension five on this actual $Y$.
+They do not require $Y$ to be a complete
+intersection.  Choose $F_1$ in that open
+and in \eqref{r18pa:coefficient-CRT}.
+
+\emph{Step 3: spread after fixing the pencil and choose parameters.}
+Let $S$ be a finite set of prime ideals
+over which this chosen pencil fails to
+have the smooth total/base and finite
+etale separated critical-scheme properties
+proved in CG18.  Enlarge $S$ to contain
+all primes above $q$ and $S_0$.  Outside
+$S$, every geometric member is smooth
+or has one ordinary quadratic point.
+Exclude primes of residue linear
+dependence of the two sections as well.
+Let $T$ be the rational primes under $S$.
+Choose integers $a$ with
+\[
+ \begin{gathered}
+ a\equiv1\pmod{q^2},\qquad a\equiv1\pmod B,\\
+ a\equiv0\pmod p\quad(p\in T\setminus(S_0\cup\{q\})),
+ \end{gathered}
+ \tag{PA18.9}\label{r18pa:parameter-CRT}
+\]
+and discard the finitely many singular
+generic members.  Set
+\[
+                           X_a=V(MF_0+aF_1)\subset Y_F.
+ \tag{PA18.10}\label{r18pa:equation}
+\]
+There are infinitely many remaining integers
+on each such pencil.
+
+\emph{Step 4: native local equations and complete cycle domains.}
+At $w\mid q$ one has the exact equation
+\[
+                 MF_0+aF_1=P+qQ_a,\qquad
+                  Q_a=(MF_0+aF_1-P)/q,\qquad\bar Q_a=\bar Q.
+ \tag{PA18.11}\label{r18pa:Qa}
+\]
+Its coefficients are integral by the two
+congruences modulo $q^2$.  PG18 gives
+full fourfold G for this actual model,
+and \eqref{r18pa:monodromy} gives its
+nonzero fourth monodromy.
+At $p\in S_0$ the special equation is
+the smooth $G_p$ section.  At
+$p\in T\setminus(S_0\cup\{q\})$ it
+is the smooth $F_0$ section, multiplied
+by the unit $M$.  All characteristic-two
+places are in these good cases.
+At the remaining places, the spread
+pencil gives a smooth or one-node
+special member in odd characteristic.
+
+Each equation is nonzero on the integral
+special ambient fiber.  Since the product
+ambient is smooth over the native valuation
+ring, this gives a relative Cartier divisor
+whose quotient has no uniformizer torsion;
+the model is flat and projective.  Its
+smooth integral generic fiber makes it
+integral.  Its special node members are
+geometrically integral by
+\eqref{r18pa:connected} and the $R_1,S_2$
+argument above.  Thus the frozen ON17
+theorem applies at every node place,
+with arbitrary finite thickness and no
+global complete-intersection requirement.
+At good places use the frozen good-
+reduction theorem.  This proves every
+original local cycle assertion.
+
+After any unramified extension at $w\mid q$,
+the PG18 hypotheses hold over the new
+native field and its ambient cohomology
+is still the same two algebraic divisor
+lines.  Apply PG18 afresh to all new
+cycles there.  The independently reviewed
+RI18 theorem upgrades this to all finite
+local extensions, with full-degree
+actual trace descent at the last step.
+Good reduction and ON17 already apply
+afresh to all new cycles after arbitrary
+finite extension at every other place.
+PH16 and GA17 therefore give
+\eqref{r18pa:height} on the full homological
+groups, not just on pulled-back cycle
+subspaces.
+
+\emph{Step 5: density and the geometric distinction.}
+For each allowed $F_1$ infinitely many
+parameters $a$ occur.  A coefficient
+polynomial vanishing on all resulting
+$MF_0+aF_1$ therefore vanishes on the
+whole line, and in particular at
+$MF_0+F_1$.  The allowed $F_1$ are
+dense in a fixed coefficient lattice
+and nonempty open, hence in $V_D$.
+Translation gives the claimed density
+in the full bihomogeneous section space
+and its smooth projective open over
+this fixed $F$.
+
+For the final geometric assertion use
+weak Lefschetz for the smooth ample
+divisor $X_a\subset Y$:
+\[
+ H^2(X_{a,\bar F},\mathbf Q_\ell)
+       \simeq H^2(Y_{\bar F},\mathbf Q_\ell)
+       \simeq\mathbf Q_\ell(-1)^2.
+ \tag{PA18.12}\label{r18pa:b2}
+\]
+The two classes are the restrictions of
+$x,y$, and are independent.  In the
+same degree a smooth projective complete
+intersection of dimension four has
+the one-dimensional hyperplane class
+by its weak Lefschetz theorem.  These
+geometric Betti numbers are isomorphism
+invariants and are unchanged by further
+field extension.  The claimed
+non-complete-intersection distinction
+follows.
+\end{proof}
+
+\paragraph{Exact dependencies and unproved extensions.}
+PG18 is the only new local theorem activated in
+this application; a failed PG18 audit would leave
+the product-height conclusion conditional, even
+though the arithmetic construction itself remains
+valid.  The actual ordered-model and extreme
+monodromy calculations are the same local
+normal-crossings and point-degree computations
+as HP18/HM18, with the positive-stratum
+connectedness and the native degree five checked
+above.  RI18 supplies arbitrary finite-extension
+coverage at the deep places; ON17 handles the
+ordinary places; PH16 and GA17 handle complete
+heights on that established domain.
+
+The cohomological distinction uses only ordinary
+weak Lefschetz (Deligne, \emph{La conjecture de
+Weil. II}, Section 4.1.6,
+\url{https://www.numdam.org/item/PMIHES_1980__52__137_0/})
+and the standard product cohomology calculation.
+The complete-intersection comparison is the
+same one checked in CA18/CE18.
+The positive $N^4$ excludes potential good
+reduction and lower-depth dominant witnesses
+by frozen NM17; in particular this is not
+a change of model for such a generic fiber.
+There is no assertion that every divisor in
+this linear system belongs to the arithmetic
+family, nor that every variety can be brought
+into this product ambient.  General G and
+general full unconditional heights remain open.

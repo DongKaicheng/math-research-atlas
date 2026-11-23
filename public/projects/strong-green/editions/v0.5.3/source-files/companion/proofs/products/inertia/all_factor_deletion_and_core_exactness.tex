@@ -1,0 +1,556 @@
+% Round20 inertia20. Independent reconstruction of R9 DB/DG/GL.
+% This is a new review target; historical candidate status is not changed.
+\section{Actual deletion models and the residual core for all surface products}
+\label{r20dp:section}
+
+\paragraph{Status.}
+This source reconstructs, with explicit actual maps, the one-prime
+coordinate-deletion route proposed in R9. It does not take the old
+DG/GL claims as frozen inputs, and it does not use the stronger
+all-prime decorated-transition assertion DT/UP. The statements below
+are author-proved candidates pending independent review of this
+source. The binary geometric and transport lemmas are those proved
+and reviewed in PX20; their fan proofs have no dimension restriction.
+Only the surface-motive and coefficient arguments below require
+factor dimensions at most two.
+
+\subsection{The actual ordered product and its complete boundary}
+
+Let $R$ be a complete DVR with finite residue field $k$, let $m\geq1$,
+and let
+$\mathcal X_1,\ldots,\mathcal X_m$ be regular projective reduced
+strictly semistable models of smooth projective geometrically
+integral curves or surfaces. Work after one finite unramified
+extension splitting their finitely many connected strata and the
+geometric Neron--Severi actions of all surface components. Further
+finite unramified extensions may be made to define a finite list
+of rational Chow correspondences; they will be descended at the
+end. Fix total orders of the original components.
+
+At a local product stratum with $r_a$ branches in factor $a$, put
+\[
+ \begin{split}
+ N&=\{(v^{(1)},\ldots,v^{(m)})\in\textstyle\bigoplus_a
+          \mathbf Z^{r_a}:\sum v^{(a)}=\sum v^{(b)}\},\\
+ n_{\mathbf i}&=(e_{i_1},\ldots,e_{i_m}).
+ \end{split}
+ \tag{DP20.1}
+\]
+The staircase fan consists of cones on chains in the product order.
+A maximal chain changes one coordinate at a time. Its first ray
+and successive differences form an integral basis of $N$; every
+vertical ray has height one. These fans agree on faces.
+
+One may construct the global model inductively by the projective
+binary staircase construction of PX20. Order the components of
+the previous product lexicographically. On any local simplex
+they already form a chain, and the induced order is its path
+order. Interleaving that chain with the next factor's chain gives
+exactly the full product staircase, independently of this binary
+parenthesization. The resulting projective model $\mathcal D$
+is regular strictly semistable, with components $D_{\mathbf i}$
+and no additional vertical component labels.
+
+\begin{lemma}[Full-boundary component towers]
+\label{r20dp:towers}
+Every component $D_{\mathbf i}$ is obtained from
+$B_{\mathbf i}=\prod_a X_{a,i_a}$ by a finite tower of blowups
+of smooth closed strata of the current reduced SNC boundary.
+Its entire final reduced boundary is exactly
+\[
+       \bigcup_{\mathbf h\ne\mathbf i}
+                      (D_{\mathbf i}\cap D_{\mathbf h}),
+ \tag{DP20.2}
+\]
+including every connected closed higher stratum.
+\end{lemma}
+
+\begin{proof}
+Induct on $m$. Pull the previous component tower back by the
+new smooth component; this is again a tower of boundary-stratum
+blowups. Apply the dimension-free binary quotient-star calculation
+PX20.4--PX20.5 to this smooth pair and the new component. Its
+centers are intersections of one boundary divisor from each
+side. They remain smooth because the relevant two-face is not
+subdivided before its own step, and stratum blowup preserves
+the SNC boundary. This proves the tower assertion.
+
+In the quotient star of the component ray $n_{\mathbf i}$,
+each final boundary divisor corresponds to a two-dimensional
+cone $\langle n_{\mathbf i},n_{\mathbf h}\rangle$.
+This is exactly the intersection with the actual component
+$D_{\mathbf h}$. Conversely every actual neighboring component
+gives that quotient-star ray. The component tower just constructed
+has that final fan; all its original and exceptional rays persist.
+Thus it has no extra unlabelled boundary divisor and misses none.
+Higher cones give the higher intersections in the same way.
+The identifications are over the original component product and
+are the identity on the common dense open, so they glue over all
+charts. Disconnected intersections are always kept componentwise.
+\end{proof}
+
+\subsection{Deletion morphisms, not unmodified remaining products}
+
+For a subset $I$ of factor indices, let $W_{-I,\mathbf i_{-I}}$
+be the actual staircase component of the remaining factors.
+An empty remaining product means $\operatorname{Spec}k$.
+Deleting coordinates in (DP20.1) sends every staircase cone into
+a staircase cone: remove repeated vertices of the projected
+chain. The corresponding toroidal morphisms glue and give
+\[
+ f_I:D_{\mathbf i}\longrightarrow
+ B_{I,\mathbf i}:=
+       \left(\prod_{j\in I}X_{j,i_j}\right)
+                     \times W_{-I,\mathbf i_{-I}}.
+ \tag{DP20.3}
+\]
+These maps are proper birational morphisms between smooth
+projective varieties and commute with further deletion.
+Writing $U_j=X_{j,i_j}\setminus\partial X_{j,i_j}$, they are
+isomorphisms over
+$\prod_{j\in I}U_j\times W_{-I}$. This follows directly from
+the local fan: each such factor has just one vertical ray,
+so its fan is $\Delta^0$ and it remains a smooth coefficient.
+Properness follows also from properness of the source and
+separatedness of the target over $k$.
+
+A double stratum whose two labels agree in all indices $I$ maps
+properly birationally to the corresponding connected double
+stratum of $B_I$, and is an isomorphism off the indicated factor
+boundaries. Here no double component is hidden over a fixed-factor
+boundary: the monomial of another branch has valuation zero on
+both defining rays and hence is invertible at the generic orbit
+of their two-cone. The projection of this two-cone is still a
+two-cone, because the remaining labels are different. Over the
+smooth coefficient locus the map is the literal product, of
+generic degree one. A double changing a fixed index maps into
+that factor's boundary. This is the exact multi-factor version
+of the no-hidden-double lemma PX20.
+
+\subsection{The commuting transcendental projector lattice}
+
+Let $J\subset\{1,\ldots,m\}$ be the indices of the surface
+factors. On the surface component $X_{j,i_j}$ choose the
+self-adjoint rational algebraic projector $p_j$ onto
+$H^2_{\rm tr}$, zero in other degrees, as in PX20/KMP.
+For $I\subset J$ put
+\[
+ p_I=\boxtimes_{j\in I}p_j,\qquad
+ P_I=f_I^*(p_I\boxtimes1)f_{I*},\qquad P_{\varnothing}=1.
+ \tag{DP20.4}
+\]
+These are self-adjoint algebraic cohomological projectors, since
+$f_{I*}f_I^*=1$. All statements about their products below are
+cohomological identities of actual rational correspondences.
+No unproved Chow-idempotent commutation is asserted.
+
+\begin{lemma}[Projector lattice, with the actual deletion model]
+\label{r20dp:projectors}
+For all $I\subset J$,
+\[
+                 P_I=\prod_{j\in I}P_{\{j\}}.
+ \tag{DP20.5}
+\]
+The individual projectors commute, including on every exceptional
+cohomology summand. On the direct sum of components one keeps
+the original labels $i_j$ distinct.
+\end{lemma}
+
+\begin{proof}
+For distinct $j,k$, factor the common deletion map through
+\[
+ D\xrightarrow{f_j}X_j\times W_{-j}
+       \xrightarrow{a}X_j\times X_k\times W_{-\{j,k\}},
+ \tag{DP20.6}
+\]
+and through the analogous $f_k,b$. The map $a$ modifies only
+the other coordinates and is an isomorphism away from
+$\partial X_k$. In this paragraph $p_j$ denotes its exterior
+product with the appropriate identity. The difference
+\[
+ P_j-f_{\{j,k\}}^*p_jf_{\{j,k\}*}
+       =f_j^*p_j(1-a^*a_*)f_{j*}
+ \tag{DP20.7}
+\]
+has image supported over $\partial X_k$: localization puts
+$\ker a_*$ there, and the independent factor operator $p_j$
+preserves this support. The projector $P_k$ kills every such
+supported class, by (PX20.9) and Kunneth with supports.
+On the pullback from the common base, $P_k$ acts as $p_k$ on
+its factor, because $p_k$ commutes with the other deletion map
+$b$ and $f_{k*}f_k^*=1$. Therefore
+$P_kP_j=P_{\{j,k\}}$. Transposing gives the opposite order.
+
+For the induction step replace the fixed factor $j$ by the set
+$I$: use the common base with factors $I\cup\{k\}$ deleted
+from the remaining model. The difference from its pullback is
+supported over $\partial X_k$ and is killed by $P_k$.
+On the common base the projectors act on distinct factors.
+This proves (DP20.5). It retains every exceptional copy in
+$W_{-I}$; replacing that variety by the unmodified product would
+be invalid, as explicitly demonstrated by HE20.
+\end{proof}
+
+\subsection{The actual incidence on these projectors}
+
+Let $A=\sigma\rho$ be the native actual restriction--Gysin
+correspondence on the disjoint union of $D_{\mathbf i}$.
+The full supported-cohomology transport lemma PX20.7--PX20.8
+applies to every same-label double of (DP20.3).
+For a double changing label $i_j$, restriction after $P_j$ is
+zero because the structural map lands in $\partial X_{j,i_j}$.
+Taking adjoints gives the corresponding Gysin statement.
+Thus
+\[
+ AP_j=P_jA,\qquad
+ A|_{\operatorname{im}P_I}
+       =1_{\bigotimes_{j\in I}t_2(X_{j,i_j})}\boxtimes A_{-I}.
+ \tag{DP20.8}
+\]
+For the nonzero off-diagonal terms, pushing back the actual
+same-label double to its deletion-model double uses
+$f'_*f'^*=1$ and gives precisely its restriction--Gysin.
+For a diagonal term use the same calculation at one endpoint;
+the normal self-intersection is the negative sum of all incident
+double-divisor classes, since the reduced total special fiber is
+principal. This includes all true higher intersections. An edge
+changing a fixed index is zero on that sector, as just proved.
+
+Under the identification of $\operatorname{im}P_I$ with its
+deletion-model realization, $P_k$ for $k\notin I$ becomes
+$1_{p_I}\boxtimes P_k^{(-I)}$. One can see the identity directly
+by factoring $f_{I\cup\{k\}}$ through $f_I$ and using
+(DP20.5); it is not an inference from a dimension count.
+Consequently the orthogonal projectors
+\[
+ R_I=P_I\prod_{k\in J\setminus I}(1-P_k),\qquad I\subset J,
+ \tag{DP20.9}
+\]
+sum to the identity, commute with $A$, and satisfy
+\[
+ A|_{R_I}=1_{\bigotimes_{j\in I}t_2(X_{j,i_j})}
+                 \boxtimes(A_{-I}|_{Q_{-I}}),
+ \qquad Q_{-I}=\prod_{k\in J\setminus I}(1-P_k^{(-I)}).
+ \tag{DP20.10}
+\]
+
+\subsection{A generator lemma that captures the exceptional copies}
+
+We give the needed geometry in full rather than assume that the
+complement of a higher-dimensional birational map is abelian.
+For a smooth SNC pair $(P,\bigcup D_i)$, blowing up the closed
+stratum $D_K$ gives, on every other closed stratum $D_L$,
+\[
+ \operatorname{Bl}_{D_{K\cup L}}D_L
+ \quad(K\not\subset L),
+ \qquad
+ \mathbf P_{D_{K\cup L}}
+      \left(\bigoplus_{i\in K\setminus L}O(D_i)|_{D_{K\cup L}}\right)
+ \tag{DP20.11}
+\]
+for the nonexceptional and exceptional strata, respectively.
+The first is omitted when $K\subset L$; the second is omitted
+when $K\setminus L$ is empty. These are the direct coordinate
+blowup formulas for an SNC ideal; Cartier blowups are identities.
+Apply the blowup and projective-bundle Chow formulas to them
+after every smooth projective test product. Induction yields
+actual rational motive isomorphisms
+\[
+ u:M=\bigoplus_\alpha h(S_\alpha)\otimes\mathbb L^{t_\alpha}
+            \longrightarrow h(D),
+ \qquad v:h(D)\longrightarrow M,\qquad uv=1,
+ \tag{DP20.12}
+\]
+where every $S_\alpha$ is an original closed product stratum and
+$\mathbb L$ denotes the Lefschetz motive. Thus this summand
+contributes $H^{q-2t_\alpha}(S_\alpha)(-t_\alpha)$ in degree
+$q$; the integers $t_\alpha\geq0$ are the actual blowup and
+projective-bundle exponents.
+Each injection $u_\alpha$ is composed of structural pullback,
+stratum Gysin, and powers of boundary or tautological line classes.
+All these correspondences are relative to the original component
+product. In particular, if the $j$th factor of $S_\alpha$ is
+the full surface $X_{j,i_j}$, write
+$S_\alpha=X_{j,i_j}\times M_\alpha$. Then $u_\alpha$ is a
+correspondence relative to that surface coordinate.
+More precisely, choose its class in the Chow group of the
+relative fiber product using the actual structural graph classes,
+boundary Chern operations, and refined-intersection compositions
+that define the displayed decomposition injection. Proper
+pushforward from that fiber product gives the ordinary
+correspondence. Refined intersections retain their specified
+support, and these constructions commute with restriction to
+an open subset of the original base. This supplies relative
+representatives, rather than merely an equality of the induced
+cohomology actions on an open set.
+
+\begin{lemma}[Exact deletion comparison for an actual generator]
+\label{r20dp:generator}
+For each such $u_\alpha$ there is an actual rational correspondence
+$u_{\alpha,-j}$ from $M_\alpha$ to the exact deletion component
+$W_{-j}$, with the same cohomological shift, such that
+\[
+ u_\alpha(p_j\boxtimes1)=
+       f_j^*(p_j\boxtimes u_{\alpha,-j})
+ \tag{DP20.13}
+\]
+on full geometric cohomology. In particular its image is contained
+in $\operatorname{im}P_j$.
+\end{lemma}
+
+\begin{proof}
+Restrict the whole component tower to $U_j$. At its first stage
+the smooth pair is $U_j$ times the remaining original pair.
+Each later center is an intersection of boundary divisors.
+By induction its restriction is either empty, if its original
+image lies in $\partial X_j$, or $U_j$ times a closed boundary
+stratum of the current remaining pair. Blowing up commutes with
+this product. Normal bundles, tautological classes and every
+structural injection in the blowup formula also restrict to
+the corresponding exterior product. Thus the restricted tower
+is $U_j\times R_j$ for one global smooth projective remaining
+stratum-blowup tower $R_j\to B_{-j}^{\rm orig}$, and the
+injection is $1_{U_j}\boxtimes u_{\alpha,R_j}$; a generator
+that disappears has $u_{\alpha,R_j}=0$.
+
+Deletion (DP20.3) identifies that same open piece with
+$U_j\times W_{-j}$ over $U_j\times B_{-j}^{\rm orig}$.
+This identifies $R_j$ with $W_{-j}$ over the original remaining
+product, not just their abstract motives. Indeed, take a closed
+point of $U_j$ and enlarge its finite residue extension to a
+finite Galois extension. Restricting the product isomorphism
+gives an isomorphism $R_j\simeq W_{-j}$ there. An isomorphism
+over their common base is unique because it agrees with the
+identity on their common dense birational open. Its conjugates
+therefore agree, and it descends. The original isomorphism over
+$U_j$ is the product of this descended map, by the same
+uniqueness. Transfer $u_{\alpha,R_j}$ to $W_{-j}$ to define
+$u_{\alpha,-j}$.
+
+The actual correspondences $u_\alpha$ and
+$f_j^*(1_{X_j}\boxtimes u_{\alpha,-j})$ are relative to $X_j$
+and agree over $U_j$ in its relative Chow group: their graph,
+Chern and refined-intersection constructions agree term by term
+on the product tower just identified. This equality is not
+inferred merely from equality of their cohomological actions.
+Their difference
+is represented by cycles over $\partial X_j$, by Chow
+localization in that relative fiber product. For an integral
+support $Z$, choose a smooth projective generically finite
+alteration $q:\widetilde Z\to Z$ of total degree $d$.
+The associated cohomological correspondence is
+$d^{-1}b_*a^*$, with $a,b$ its source and target maps.
+The surface coordinate of $a$ factors through a boundary curve
+or a point, so its pullback of $p_jH^*(X_j)$ is zero by
+(PX20.9). Hence this supported difference annihilates
+$p_j\boxtimes1$. This is (DP20.13).
+
+The alterations in the last paragraph are only a proof of a
+cohomological supported-cycle identity, with full generic
+degrees. They do not replace the fixed semistable witness and
+are not claimed finite on any specified cycle complement.
+\end{proof}
+
+\begin{proposition}[The entire residual core is abelian type]
+\label{r20dp:core}
+Let $Q=\prod_{j\in J}(1-P_j)$ on a component $D$.
+It is a homological direct summand of a finite sum of Tate
+shifts of motives of products of abelian varieties. The same
+assertion holds on every actual deletion model.
+\end{proposition}
+
+\begin{proof}
+Split each original surface motive in (DP20.12) into its
+$t_2$ and complementary Artin--Tate/Picard/Albanese pieces,
+using the KMP refined decomposition. The finite Artin actions
+have been split in the setup. Curves and points are of abelian
+type with Tate shifts. Therefore write the actual finite source
+as $M=M_{\rm ab}\oplus M_{\rm tr}$, where $M_{\rm ab}$ is of
+abelian type and every original-product summand of $M_{\rm tr}$
+has at least one full surface coefficient $t_2(X_j)$.
+Choose one such index for that summand. Lemma
+\ref{r20dp:generator} puts its image under $u$ in $P_j$,
+so $Qu|_{M_{\rm tr}}=0$ on full cohomology. Hence
+\[
+ Q=Q u_{\rm ab}\operatorname{pr}_{\rm ab}v,
+ \qquad
+ u_Q=Q u_{\rm ab},\quad v_Q=\operatorname{pr}_{\rm ab}vQ,
+ \qquad u_Qv_Q=Q.
+ \tag{DP20.14}
+\]
+All displayed maps are actual rational correspondences. They
+give the asserted direct summand in homological motives;
+they do not require a Chow-level lift of a new idempotent.
+Every deletion model has the same proved tower and boundary
+properties, so the same argument applies to it.
+\end{proof}
+
+\subsection{One common coefficient prime and the actual inner inverse}
+
+Choose one abelian variety $B$ containing, through finite products
+and Tate shifts, all the finitely many abelian carriers in
+(DP20.14) for all deletion models and component labels.
+Deligne--Clozel Theorem 1 and Remark (b) give one invertible
+prime $\ell$ at which numerical and geometric homological
+equivalence coincide on every power of $B$. Native numerical
+zero implies geometric numerical zero by finite-constant norms
+and the full-degree projection formula. Therefore the finite
+correspondence groups of these abelian carriers identify with
+their numerical versions at this prime.
+
+For clarity, the splitting step can be performed entirely on
+those carriers. Put $e=v_Qu_Q$ on $M_{\rm ab}$. It is
+idempotent in homological motives by (DP20.14), hence also in
+numerical motives. For the degree-one map on the core put
+$a=v_Q A u_Q$, with the appropriate target Tate shift.
+In the numerical category, Jannsen semisimplicity gives an
+inner inverse $g$ in the opposite rectangular corner:
+$aga=a$. Choose a rational Chow representative of $g$.
+The selected-prime comparison gives the same equality on
+cohomology, and
+\[
+                 G_Q=u_Qg v_Q
+ \tag{DP20.15}
+\]
+is an actual rational correspondence with $AG_QA=A$ on
+the $Q$ sector. This argument does not presume that $e$
+was an idempotent modulo rational equivalence.
+
+For every sector (DP20.10), tensor the corresponding inverse
+on $Q_{-I}$ with the identity of its fixed tensor of surface
+transcendental coefficients. Transport by $f_I^*,f_{I*}$ and
+$R_I$, and sum over the finitely many $I$ and fixed component
+labels. This gives a rational algebraic correspondence $G$,
+of degree minus one, such that
+\[
+                         A^HG^HA^H=A^H
+             \quad\hbox{on all geometric cohomology.}
+ \tag{DP20.16}
+\]
+The trivial empty-factor core has $A=0$ and needs no inverse.
+The argument retains cohomological degree and Tate labels;
+one may construct each degree corner and compose with the
+algebraic projectors before summing to the required ordinary
+correspondence codimension. Only the abelian coefficient
+operator is inverted. No equivalence theorem on an arbitrary
+tensor product of $t_2$ motives is asserted.
+The degree projectors here are available explicitly: transport
+the tensor products of the curve/surface Kunneth projectors
+through (DP20.12), retaining the displayed Lefschetz exponents.
+No general Chow--Kunneth conjecture on higher-dimensional
+components is invoked.
+
+If choices were defined over a further finite residue extension
+of the fixed model, normalized Galois averaging descends $G$:
+(DP20.16) is linear in $G$ and $A$ descends. This gives one
+suitable auxiliary prime for the whole model. It is not an
+all-prime assertion and does not use intersections of arbitrary
+positive-density prime sets.
+
+\begin{theorem}[Model splitting for every finite product of curves and surfaces]
+\label{r20dp:model}
+Under the precise model hypotheses of this section, the actual
+ordered staircase incidence has a rational algebraic inner
+inverse on full cohomology at one invertible prime, as in
+(DP20.16). Hence the AK19 lifting defects and the CR19 supported
+defects vanish in every degree. The same result holds after
+product with an arbitrary smooth projective $R$-scheme.
+\end{theorem}
+
+\begin{proof}
+The inverse has just been constructed. Actual Chow
+correspondences preserve the actual algebraic class spans
+and numerical equivalence. Thus $x-G^HA^Hx$ is a lift in
+$\ker A^H$ of the same numerical class whenever
+$p(x)\in\ker A^N$. This is the exact AK19 correction and
+gives $\Delta_A=0$. On the supported defect, if an actual
+class $\alpha=A^H\beta$, then $G^H\alpha$ is actual and
+$A^HG^H\alpha=\alpha$, giving its required numerical
+preimage. With a smooth projective coefficient $V$, the
+incidence and inverse are $\Delta_{V_0}\boxtimes A$ and
+$\Delta_{V_0}\boxtimes G$. Their identity holds on all
+Kunneth summands, so mixed Chow classes are included.
+\end{proof}
+
+\begin{theorem}[Full local strong G on the product domain]
+\label{r20dp:green}
+Assume the frozen AK19, OW19, VT17, FD17 and R16 descent
+interfaces. Fix $K/\mathbf Q_p$ finite and its absolute value.
+Let $m\geq1$ and let $X_1,\ldots,X_m/K$ be arbitrary smooth projective
+geometrically integral curves or surfaces. Let $V/K$ be
+smooth projective geometrically integral with a smooth
+projective model after a finite valued extension, allowing
+$V=\operatorname{Spec}K$. On
+\[
+                      X=V\times\prod_{a=1}^mX_a
+ \tag{DP20.17}
+\]
+every specified geometrically homologically trivial rational
+cycle, in every codimension $1\le r\le\dim X$, has an
+ordinary-actual strong Green form on its exact support
+complement, with the identity against every actual compact
+test form. This holds afresh after every finite valued
+extension and for all new cycles over that extension.
+\end{theorem}
+
+\begin{proof}
+If $\dim X\leq2$, the frozen divisor and zero-cycle endpoints
+give every codimension in the stated range. Suppose henceforth
+that $\dim X\geq3$, so the model criterion AK19 applies.
+Take a common finite valued extension and separate projective
+strictly semistable alterations of the low-dimensional factors,
+repairing later ramified base changes by Hartl 2.2 before
+forming the ordered product. The good model of $V$ persists
+under further extension. Theorem \ref{r20dp:model} applies
+to the resulting actual fixed witness.
+
+Every cohomological degree of each curve or surface satisfies
+weight--monodromy; the good factor is pure and unramified.
+The tensor product rule and Kunneth give OW19's odd-weight
+hypothesis in every needed degree, so the actual inertia
+cycle image is zero on this witness. AK19 and the model
+splitting annihilate the pulled-back actual Green obstruction.
+The R16 dominant detection and finite trace descend it by
+the full field and generic degrees, using the original
+absolute value. VT17 produces the asserted form with exact
+support and all actual tests. No alteration is assumed finite
+on the specified complement, and no arbitrary proper
+pushforward of analytic actual forms is used.
+
+For any further finite valued extension $K'/K$, the factors
+remain smooth projective and geometrically integral, and $V_{K'}$
+still has potential smooth projective good reduction. Run this
+same construction with $K'$ as the original valued field and
+with an arbitrary newly specified homological cycle over $K'$.
+All steps and the full-degree descent use its given absolute
+value. No assertion that this new cycle descends to $K$ is
+needed or made.
+\end{proof}
+
+\paragraph{Height consequence and honest scope.}
+For a number field and a finite product of arbitrary smooth
+projective curves and surfaces, the local theorem applies at
+every finite place, so frozen PH16 gives the canonical real
+Beilinson--Bloch height on the full geometrically homologically
+trivial complementary Chow groups. One may additionally
+include a fixed smooth projective factor that has potential
+smooth projective good reduction at every finite place.
+The theorem is applied again for new cycles after each finite
+field extension; they are not assumed pulled back from the
+original field. The general strong Green conjecture and
+arbitrary-variety complete height remain open.
+
+\paragraph{Literature and historical boundary.}
+Primary uses are exactly Hartl's model charts and ramified repair,
+Kahn--Murre--Pedrini's rational refined surface projectors,
+Deligne--Clozel's one-prime all-powers comparison, Jannsen's
+numerical semisimplicity, and the standard blowup/projective-bundle,
+localization and Poincare identities. Their precise scopes and
+links are recorded with PX20. The constructions (DP20.3),
+(DP20.5), (DP20.13), and (DP20.14) are proved here and are not
+claimed as conclusions of those references. The R9 archive
+already contained this route as an internal candidate; its
+status is not retrospectively altered by this reconstruction,
+and no external-priority assertion is made. The all-prime
+factorwise decorated-transition route is a separate stronger
+candidate and is unnecessary for (DP20.16)--(DP20.17).

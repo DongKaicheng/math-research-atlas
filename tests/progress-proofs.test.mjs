@@ -168,7 +168,7 @@ test('Progress proof views remain bound to the exact inspected public source byt
   }
 });
 
-test('Reviewed H22 constructions are proved and source-bound while source vanishing and height interfaces remain open', async () => {
+test('Reviewed H22 constructions remain source-bound and general source vanishing remains open', async () => {
   const sourcePath = `public/projects/strong-green/editions/${revision}/source-files/companion/chow-obstruction-green-pairs.tex`;
   const source = await readFile(path.join(root, sourcePath));
   const digest = createHash('sha256').update(source).digest('hex');
@@ -190,19 +190,21 @@ test('Reviewed H22 constructions are proved and source-bound while source vanish
     assert.equal(entry.source.sha256, digest, id + ': status is tied to the inspected proof bytes');
     assert.ok(entry.source.locator.includes(locator) && labels.has(locator), id + ': its exact proof locator exists');
   }
-  for (const id of ['BB-RESIDUAL-PERIODS', 'BB-ANALYTIC-INTERFACE', 'STRONG-G', 'BB-GLOBAL'])
+  for (const id of ['BB-RESIDUAL-PERIODS', 'STRONG-G', 'BB-GLOBAL'])
     assert.equal(records.get(id).status, 'open', id + ': H22 does not discharge this remaining assertion');
-  assert.equal(records.get('BB-RATIONAL-FIBRE-RIGIDITY').status, 'draft');
+  assert.equal(records.get('BB-ANALYTIC-INTERFACE').status, 'proved');
+  assert.equal(records.get('BB-RATIONAL-FIBRE-RIGIDITY').status, 'proved');
+  assert.equal(records.get('BB-H16-KERNEL-DOMAIN').status, 'conditional', 'The fixed finite-test comparison remains a separate condition');
 });
 
-test('Recovered endpoints use a separate conditional compact proof without circular curve transfer', () => {
+test('Recovered endpoints use a proved compact argument without circular curve transfer', () => {
   const endpoint = progressProofs.find(item => item.caseId === 'endpoints');
   const byId = new Map(allNodes(endpoint).map(node => [node.id, node]));
   for (const suffix of ['divisor', 'zero-cycle', 'algebraic-endpoint']) {
     const tree = endpoint.trees.find(item => item.id === `proof-endpoints-${suffix}-tree`);
     assert.ok(tree, suffix);
     assert.equal(tree.root.id, `proof-endpoints-${suffix}-conclusion`);
-    assert.equal(tree.root.status, 'conditional');
+    assert.equal(tree.root.status, 'proved');
     assert.equal(tree.root.gate.kind, 'all');
     assert.ok(tree.scope.includes('(A1)') && tree.scope.includes('(A2)') && tree.scope.includes('(R)'));
   }
@@ -211,7 +213,7 @@ test('Recovered endpoints use a separate conditional compact proof without circu
   for (const [record, status] of [
     ['BB-ACTUAL-OBSTRUCTION', 'proved'],
     ['BB-SUPPORTED-GREEN-PAIR', 'proved'],
-    ['BB-RATIONAL-FIBRE-RIGIDITY', 'draft'],
+    ['BB-RATIONAL-FIBRE-RIGIDITY', 'proved'],
   ]) {
     assert.ok(actualInputs.has(record), record);
     assert.equal(entries.find(item => item.id === record).status, status, record);
@@ -235,7 +237,7 @@ test('Kernel-domain proofs expand finite trace, point residue, proper slices, tr
     const tree = kernel.trees.find(item => item.id === `proof-kernel-domain-${unit}-tree`);
     assert.ok(tree, unit);
     assert.equal(tree.root.id, `proof-kernel-domain-${unit}-conclusion`);
-    assert.equal(tree.root.status, 'conditional');
+    assert.equal(tree.root.status, 'proved');
     assert.equal(tree.root.gate.kind, 'all');
     assert.ok(walkProofNodes(tree.root).filter(node => node.gate).length >= 2, unit + ': intermediate deductions are drawn');
   }
@@ -257,8 +259,8 @@ test('Expanded kernel arguments retain normal carriers, exact multiplicities and
   const slice = kernel.trees.find(item => item.id === 'proof-kernel-domain-proper-slice-tree');
   assert.match(finite.scope, /finite flat.*smooth integral.*normal integral/);
   assert.match(at('bc-cycle').note, /generic Artinian length/);
-  assert.equal(at('bc-ci-input').status, 'hypothesis');
-  assert.equal(at('bc-current-injection').status, 'hypothesis');
+  assert.equal(at('bc-ci-input').status, 'proved');
+  assert.equal(at('bc-current-injection').status, 'proved');
   assert.match(slice.scope, /normal, integral, quasiprojective.*finite.*compact actual scalar/);
   assert.equal(at('slice-supported-record').record, 'BB-SUPPORTED-GREEN-PAIR');
   assert.equal(entries.find(item => item.id === 'BB-SUPPORTED-GREEN-PAIR').status, 'proved');
@@ -302,12 +304,12 @@ test('The curve-surface product proof separates endpoints, the empty product and
     assert.ok(higher.has('proof-surface-products-' + suffix), suffix);
   assert.match(at('product-model-range').title, /m≥1 and n≥3/);
   assert.equal(at('product-model-assumption').status, 'hypothesis');
-  assert.equal(at('good-native-obstruction').status, 'conditional');
-  assert.equal(at('good-exact-support').status, 'conditional');
+  assert.equal(at('good-native-obstruction').status, 'proved');
+  assert.equal(at('good-exact-support').status, 'proved');
   assert.equal(at('good-numerical-calculus').status, 'proved');
   assert.equal(at('good-numerical-calculus').href, '/papers/chow-obstruction-green-pairs#h22c:numerical-zero');
   for (const suffix of ['good-constructive-primitives', 'good-composite-trace-calculus'])
-    assert.equal(at(suffix).status, 'hypothesis', suffix);
+    assert.equal(at(suffix).status, 'proved', suffix);
   assert.match(at('good-finite-cover').title, /\[L:K\]/);
   assert.match(at('good-composite-trace-calculus').note, /original Gⱼ.*original absolute value.*every compact K-actual/);
   const native = item.sourceBindings.find(source => source.file.endsWith('R11_curvature_class_and_next_step.tex'));
@@ -335,7 +337,7 @@ test('Positive hosts retain signature-only and boundary-comparison routes as gen
   assert.equal(at('host-projective-apply').href, '#proof-arithmetic-families-host-main');
   assert.equal(at('elliptic-fourth-model').href, '#proof-arithmetic-families-host-main');
   assert.equal(at('host-global-height').href, '#proof-arithmetic-families-assembly-global');
-  assert.equal(at('host-global-height').status, 'hypothesis');
+  assert.equal(at('host-global-height').status, 'proved');
   assert.ok(at('host-main').gate.children.some(node => node.id === 'proof-arithmetic-families-host-global-height'));
   assert.equal(at('host-curve-input').status, 'hypothesis');
   assert.match(at('host-curve-input').title, /EVERY v∣p.*EVERY finite k′\/k\(v\).*EVERY boundary i/);
@@ -363,8 +365,10 @@ test('The signature-only host proof separates numerical positivity, residuals an
   assert.equal(at('host-pc16-positive-input').href, '#proof-arithmetic-families-host-components-positive');
   assert.equal(at('host-u2-positive-input').href, '#proof-arithmetic-families-host-components-positive');
   assert.ok(!walkProofNodes(at('host-pc16-obstruction')).some(node => node.href === '#proof-arithmetic-families-host-full-u2'));
-  for (const suffix of ['host-canonical-residual-input', 'host-operational-lift-input', 'host-native-detector-input', 'host-exact-period-input', 'host-period-kernel-input', 'host-full-degree-injection'])
+  for (const suffix of ['host-canonical-residual-input', 'host-operational-lift-input', 'host-exact-period-input', 'host-period-kernel-input'])
     assert.equal(at(suffix).status, 'hypothesis', suffix);
+  for (const suffix of ['host-native-detector-input', 'host-full-degree-injection'])
+    assert.equal(at(suffix).status, 'proved', suffix);
   assert.equal(at('host-exact-reconstruction-input').status, 'proved');
   assert.equal(at('host-exact-reconstruction-input').href, '/papers/chow-obstruction-green-pairs#h22:correction');
   assert.match(at('host-canonical-residual-input').note, /r15res:canonical-residual.*r15iso:total-isotropy.*supplied historical inputs/);

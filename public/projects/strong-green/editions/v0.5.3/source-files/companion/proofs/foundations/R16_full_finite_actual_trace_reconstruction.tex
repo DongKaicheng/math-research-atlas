@@ -1,0 +1,450 @@
+% Round 16: reconstruction of the historical R6 candidate from the repaired R11 interfaces.
+% Status: ACTIVATED after independent root and global-height audits. Historical files unchanged.
+\section{Reconstructing the full finite actual trace from independent parameter tori}
+\label{r16ft:section}
+
+\paragraph{Provenance and status.}
+The multi-parameter diagonal construction was proposed in
+\texttt{history\_01\_07/research/round6\_general\_g/envelope\_full\_finite\_actual\_trace\_section.tex}.
+It is not a new construction of Round 16. The frozen final register of
+Round 14 retains the full trace as a historical candidate and activates
+only all-degree PWS trace and the first actual strip. The concrete
+boundary-localization gap identified in the initial Round 11 minimal-trace
+audit concerned product-moment integration; its final version was repaired
+by the refined-skeleton identities PS1--PS6. The proof below restarts from
+those repaired interfaces, supplies the multi-parameter steps explicitly,
+and does not cite the old full trace as a theorem. Two independent complete
+readings, by the root and global-height branches, passed the mathematical
+source at SHA256
+\texttt{7f1348a590742b822880cbd46cdb71ead9d0a9b4e192913cece1691eb661e694}.
+The theorem is activated relative to the explicitly frozen final Round 11
+input; the change from that audited source is confined to this status
+notice and the matching scope notice below.
+
+Let $K/\mathbf Q_p$ be finite with its fixed absolute value. All varieties
+in this section are normal integral separated $K$-varieties, and ordinary
+opens in their analytifications carry Mihatsch's actual forms. Every
+auxiliary torus is over $K$ and is not a constant-field extension. Write
+$D=d'd''$ and $T_s=(\mathbf G_m^s)^{\mathrm{an}}$.
+
+\subsection{The exact frozen input}
+
+We use the final source
+\texttt{round11/perfect\_complex/one\_parameter\_trace.tex}, read together
+with \texttt{round11/audits/minimal\_trace\_final\_audit.md} and its
+Round 12 inherited final audit. Its input assertions are:
+\begin{enumerate}
+\item The native degree formula for compact actual top forms under a
+finite dominant normal map, formula MT2. In particular finite actual
+pullback is faithful. This formula precedes any full source trace.
+\item Ordinary scalar PL Galois descent, including the explicit orbit
+separator and Newton-coefficient construction; the max/min sorting
+identities MT3--MT4; and pure PL-curvature trace MT5 with all compact
+actual tests and its actual orbit identity.
+\item Product-moment integration MT6--MT7, proved through the weighted
+product-skeleton identification PS1 and the refined skeletal identities
+PS2--PS6. Its input is an arbitrary Euclidean delta coefficient in
+$(c,z)$, with a fixed compact set of $v(z)$ values. Its target test is
+an arbitrary compact actual form, including additional mixed unit
+moments. The map commutes with $d',d''$.
+\end{enumerate}
+The third item is much more specific than a general proper actual
+pushforward. In particular an arbitrary actual form on a product is not
+presumed to have such a product-moment presentation.
+
+\subsection{Finitely many independent parameters}
+
+\begin{lemma}[Product-moment integration with $s$ parameters]
+\label{r16ft:product}
+Let $U$ be an ordinary open in the analytification of a normal integral
+$K$-variety, let $c$ be a finite tuple of analytic units on $U$, and let
+\[
+ \beta=t_{(c,z_1,\ldots,z_s)}^\star\Gamma,
+ \qquad \Gamma\in B^{p,q}(\mathbf R^{N+s}),
+\]
+where the support of $\Gamma$ lies in
+$\mathbf R^N\times C$ for a fixed compact $C\subset\mathbf R^s$.
+For $p_U:U\times T_s\to U$ and the coordinate projection
+$\pi_s:\mathbf R^{N+s}\to\mathbf R^N$, the form
+\[
+ I^{(s)}_U\beta:=t_c^\star(\pi_{s,*}\Gamma)
+ \tag{FT16.1}\label{r16ft:product-output}
+\]
+is ordinary actual of degree $(p-s,q-s)$ and satisfies
+\[
+ \int_U I^{(s)}_U\beta\wedge\eta
+ =\int_{U\times T_s}\beta\wedge p_U^*\eta
+ \tag{FT16.2}\label{r16ft:product-pairing}
+\]
+for every compact complementary actual test $\eta$. It is independent
+of product-moment presentations, commutes with $d',d''$, and is
+compatible with ordinary restriction. If $a:V\to U$ is an analytic
+map between such ordinary opens, then on these supplied presentations
+\[
+ a^* I^{(s)}_U\beta
+ =I^{(s)}_V (a\times\mathrm{id})^*\beta.
+ \tag{FT16.3}\label{r16ft:product-base-change}
+\]
+\end{lemma}
+
+\begin{proof}
+Enclose $C$ in a compact coordinate box $J_1\times\cdots\times J_s$.
+Integrate first in $z_s$. With $U\times T_{s-1}$ as base, the input has
+one-parameter product moments $(c,z_1,\ldots,z_{s-1};z_s)$.
+The frozen one-parameter theorem applies to an arbitrary actual
+Euclidean coefficient $\Gamma$ and produces the presentation
+\[
+ t_{(c,z_1,\ldots,z_{s-1})}^\star(\pi_{z_s,*}\Gamma).
+\]
+Its remaining parameter support lies in the projection of $C$, hence
+in $J_1\times\cdots\times J_{s-1}$. Repeat. Euclidean affine
+pushforward composes, so the final expression is
+\eqref{r16ft:product-output}.
+
+Here is the compact-test point in that iteration. Choose smooth compact
+functions $\theta_j$ on $\mathbf R$ equal to one on neighborhoods of
+$J_j$. Before applying the last-parameter pairing, insert
+\[
+ \left(\prod_{j<s}\theta_j(v(z_j))\right)p_U^*\eta
+\]
+as test on $U\times T_{s-1}$. This test is actual and compactly
+supported: the base support is compact and bounded parameter valuations
+lie in compact closed polyannuli. The inserted factors equal one on
+the input and output supports. At the next step omit the already
+integrated factor and repeat. Each one-parameter equality therefore
+uses an allowed compact actual test, and the cutoffs disappear from
+the final equality. No unbounded pullback test is used.
+
+The one-parameter proof identifies every refined base skeleton with
+its Gauss product, with base weight times parameter weight one. At
+each induction step its base includes all the preceding parameter
+coordinates and every additional test moment. Thus the native
+calibration and all-test scope persist, rather than merely a comparison
+on product test tensors. The argument never replaces an ordinary
+compact support by an assertion that its tropical image avoids every
+chart-boundary image; that issue is handled by the frozen PS2--PS6
+skeletal identities at each step.
+
+If two product presentations give the same actual input, the right
+side of \eqref{r16ft:product-pairing} is the same, so current
+injectivity makes the outputs identical. The same argument proves
+ordinary compatibility. Derivatives preserve the parameter support;
+Euclidean affine differentiation and the actual moment pullback give
+the asserted commutation.
+
+For \eqref{r16ft:product-base-change}, the pulled-back input is the
+supplied presentation $t_{(c\circ a,z)}^\star\Gamma$. Both displayed
+outputs are exactly $t_{c\circ a}^\star(\pi_{s,*}\Gamma)$. This is
+functoriality of actual pullback for a fixed presentation, not a
+base-change theorem for arbitrary currents or proper actual outputs.
+\end{proof}
+
+\begin{lemma}[Several parameters in pure-curvature trace]
+\label{r16ft:uniform}
+Let $q:V\to U$ be the restriction of a finite dominant normal algebraic
+map. Suppose finitely many PL scalar functions $u_i$ on $V\times T_s$
+are jointly finite PL in a fixed source-unit tuple $f$ and the
+independent parameter valuations $t=(v(z_1),\ldots,v(z_s))$.
+Locally around every whole finite base fiber, the pure-curvature trace
+of each $\prod_iDu_i$ has a presentation
+\[
+ t_{(c,z)}^\star K_0
+ \tag{FT16.4}\label{r16ft:uniform-output}
+\]
+for a single finite tuple of downstairs analytic units $c$, independent
+of $t$, and a Euclidean delta-form $K_0$. The base shrinking can be
+chosen independently of $t$. The trace retains its native degree and
+its all-actual-test pairing on $U\times T_s$.
+\end{lemma}
+
+\begin{proof}
+It suffices first to consider a Galois map with group $G$. Enlarge $f$
+by its $G$-orbit, so $G$ acts by coordinate permutation on its logarithm
+space $\mathbf R^a$. The frozen scalar descent uses the proper finite
+PL orbit separator
+\[
+ J:\mathbf R^a\longrightarrow\mathbf R^b
+\]
+formed from ordered orbit multisets in finitely many integral
+Vandermonde directions. For parameter-dependent invariant PL scalars
+one uses $J\times\mathrm{id}_{\mathbf R^s}$. This map still has
+precisely the $G$-orbits as fibers and is proper. On a finite common
+polyhedral subdivision it has affine inverses onto its image cells.
+Invariance identifies the expressions on overlapping image cells.
+A PL ambient extension gives a finite PL expression in $(J\ell,t)$.
+When the initial expression is invariant only on the realized source
+image, average its ambient expression over $G$ first; this changes
+neither its actual restriction nor its finite PL character.
+
+The tuple expressing $J\ell$ downstairs is constructed exclusively
+from orbit polynomials of source monomials in $f$. None of those
+monomials involves $z_j$. Their invariant coefficients are analytic
+functions downstairs. At the fixed base point keep the nonzero
+coefficients as units; shrink so coefficients vanishing there stay
+strictly above the endpoint chord of the corresponding Newton polygon.
+The constant coefficient is a unit and the leading coefficient is one,
+so that exclusion is uniform. Exactly as in the frozen scalar proof,
+ordered root valuations are therefore finite PL functions of a fixed
+finite downstairs unit tuple $c$. The choice of coefficients and the
+shrinking of $U$ do not depend on any $t_j$.
+
+Sort the $G$-orbit of any one potential, now viewed as a PL function
+of $(\ell,t)$. Max/min sorting preserves the sums of every power of
+its curvature by MT3. Each ordered potential is invariant, hence is a
+PL scalar in $(v(c),t)$ by the preceding paragraph. Apply polarization
+to treat mixed products $Du_1\cdots Du_k$. Differentiation is performed
+only after scalar descent and uses genuine actual pullback in the
+unit tuple $(c,z)$. This constructs \eqref{r16ft:uniform-output}; it
+never pulls a delta-form through the nonlinear Newton map.
+
+The same sorting proof gives the actual Galois orbit identity on the
+whole product, including all walls of the descended PL potentials.
+Its pairing with an arbitrary compact actual product-space test is
+proved by the native top-degree formula for $q\times\mathrm{id}$,
+whose degree is $|G|$, and invariance under the source automorphisms.
+The test may have arbitrary mixed analytic unit moments. Thus no
+product-test restriction has entered this step.
+
+For a non-Galois map take a normal Galois closure, pull the finite
+source-unit tuple to it, and divide the Galois trace by the full degree
+of that closure over $V$. The native degree formula proves the same
+pairing. All orbit coefficients still involve source units alone,
+so the parameter-uniform presentation remains valid.
+\end{proof}
+
+\subsection{The exact diagonal evaluates arbitrary delta coefficients}
+
+\begin{lemma}[Actual graph evaluation]
+\label{r16ft:graph}
+Let $f=(f_1,\ldots,f_s)$ be analytic units on an ordinary open $V$,
+with $v(f)(V)$ contained in a compact subset of $\mathbf R^s$, and let
+$\gamma\in B^{p,q}(\mathbf R^s)$. Choose
+$\chi\in C_c^\infty(\mathbf R^s)$ equal to one on a neighborhood of
+that subset. On $V\times T_s$ put
+\[
+ \Gamma_f=\prod_{i=1}^sD\max\{v(f_i)-v(z_i),0\}.
+\]
+Then the input below is a supplied product-moment input and
+\[
+ I^{(s)}_V\bigl(\chi(t)\gamma(t)\wedge\Gamma_f\bigr)
+                      =t_f^\star\gamma
+ \tag{FT16.5}\label{r16ft:graph-evaluation}
+\]
+as ordinary actual forms, hence with the full pairing of
+Lemma~\ref{r16ft:product}.
+\end{lemma}
+
+\begin{proof}
+In $\mathbf R^s_u\times\mathbf R^s_t$ the product
+\[
+ \Delta=\prod_{i=1}^sD\max\{u_i-t_i,0\}
+\]
+is the diagonal cycle with its standard weight. Its defining affine
+normal coordinates are $u_i-t_i$, so each normal determinant is one.
+The Euclidean delta intersection identity is
+\[
+ \pi_{u,*}\bigl(\pi_t^*(\chi\gamma)\wedge\Delta\bigr)
+                         =\chi\gamma.
+ \tag{FT16.6}\label{r16ft:euclidean-diagonal}
+\]
+This is the identity-graph pullback formula in Mihatsch's Euclidean
+intersection theory and applies to every Euclidean delta-form
+$\gamma$, not only smooth coefficients. In particular it is an
+intersection product of delta-forms, not multiplication or restriction
+of arbitrary distributions.
+
+Pull \eqref{r16ft:euclidean-diagonal} through the genuine unit tuple
+$f$ and use the definition \eqref{r16ft:product-output}. On the source,
+$\chi(v(f))=1$ on an ordinary neighborhood of its entire realized
+moment image, so $t_f^\star(\chi\gamma)=t_f^\star\gamma$.
+The product-moment theorem proves the corresponding identity on all
+refined skeletons and against every actual compact target test. The
+graph kernel has even total degree, so no sign is introduced by the
+written order of its factors.
+\end{proof}
+
+\subsection{The trace construction}
+
+\begin{theorem}[Full finite actual trace over the original field]
+\label{r16ft:full-trace}
+Let $q:Y\to X$ be finite dominant between normal integral separated
+$K$-varieties, of full generic degree $d$. There is a canonical map of
+ordinary sheaves in every bidegree
+\[
+ \operatorname{Tr}_q:q_*B_Y^{p,q}\longrightarrow B_X^{p,q}
+ \tag{FT16.7}\label{r16ft:trace-map}
+\]
+characterized by
+\[
+ \int_X\operatorname{Tr}_q\omega\wedge\eta
+       =\int_Y\omega\wedge q^*\eta
+ \tag{FT16.8}\label{r16ft:trace-pairing}
+\]
+for every compact complementary actual test on each ordinary open.
+It commutes with $d',d''$, is transitive, satisfies the projection
+formula for every actual downstairs factor, and
+\[
+             \operatorname{Tr}_q(q^*\alpha)=d\alpha.
+ \tag{FT16.9}\label{r16ft:degree}
+\]
+The original field and native residue and constant-field degrees are
+retained.
+\end{theorem}
+
+\begin{proof}
+Fix $x\in X^{\mathrm{an}}$. Its inverse image is a finite set. Around
+each of its points choose disjoint ordinary presentation neighborhoods
+for $\omega$, and then smaller relatively compact neighborhoods with
+unit logarithms in compact subsets of the respective Euclidean
+presentation domains. Properness of $q$ shrinks an ordinary neighborhood
+$U$ of $x$ so that $V=q^{-1}(U)$ lies in their union. The resulting
+source pieces are open and closed in $V$.
+
+Combine the finitely many source presentations as follows. Extend each
+unit from its own clopen piece by the constant one on the other pieces.
+Add a marker unit taking distinct constants $\varpi^{a_i}\in K^\times$
+on the pieces, for a fixed $\varpi$ with nonzero valuation. Each local
+Euclidean presenter can be multiplied by a smooth cutoff compactly
+supported in its original Euclidean open, equal to one near its compact
+realized image, and then extended by zero. A smooth function of the
+marker coordinate selects each piece. Summing the pullbacks of those
+extended presenters under coordinate projections therefore gives one
+finite tuple $f$ and one genuine Euclidean delta-form $\gamma$ such that
+\[
+                     \omega=t_f^\star\gamma\quad\hbox{on }V.
+ \tag{FT16.10}\label{r16ft:whole-fiber}
+\]
+The source log image remains bounded after this shrinking. No extension
+from an intrinsic tropical image or closed ambient lift is used.
+
+Let $s$ be the length of $f$. Form $\Gamma_f$ as in
+Lemma~\ref{r16ft:graph} and put $q_T=q\times\mathrm{id}_{T_s}$.
+It is a product of PL curvatures, so the independently constructed
+pure-curvature trace gives
+\[
+                    K_q=\operatorname{Tr}^{\mathrm{curv}}_{q_T}\Gamma_f.
+\]
+Lemma~\ref{r16ft:uniform} supplies a single product-moment expression
+$K_q=t_{(c,z)}^\star K_0$, with base units and shrinking independent of
+the parameter. Choose $\chi$ equal to one near $v(f)(V)$. Then
+\[
+ \Theta=\chi(t)\gamma(t)\wedge K_q
+       =t_{(c,z)}^\star\bigl(\pi_t^*(\chi\gamma)\wedge K_0\bigr).
+ \tag{FT16.11}\label{r16ft:integrand}
+\]
+has compact parameter support and hence lies in the proved
+product-moment integration domain. Define
+\[
+           \operatorname{Tr}_q\omega:=I^{(s)}_U\Theta.
+ \tag{FT16.12}\label{r16ft:trace-construction}
+\]
+Its degree is $(p+s-s,q+s-s)=(p,q)$.
+
+For a compact complementary actual test $\eta$ on $U$, the three
+independently established pairings give
+\[
+\begin{split}
+ \int_U I^{(s)}_U\Theta\wedge\eta
+ &=\int_{U\times T_s}\chi(t)\gamma(t)\wedge K_q\wedge p_U^*\eta\\
+ &=\int_{V\times T_s}\chi(t)\gamma(t)\wedge\Gamma_f
+                                      \wedge p_V^*q^*\eta\\
+ &=\int_V\omega\wedge q^*\eta.
+\end{split}
+ \tag{FT16.13}\label{r16ft:three-pairings}
+\]
+The first is Lemma~\ref{r16ft:product}; the second is the
+pure-curvature trace with the actual downstairs multiplier
+$\chi(t)\gamma(t)\wedge p_U^*\eta$; the third is
+Lemma~\ref{r16ft:graph} and its all-test product pairing.
+Every test in the middle step is compact: it has compact base support
+and compact logarithmic parameter support. Its degree is complementary
+to the graph kernel. The last target test $q^*\eta$ is compact because
+$q$ is finite. Thus all three equalities apply to arbitrary actual
+$\eta$, not merely smooth or product tests.
+
+If a different presenter, cutoff, marker tuple, Galois closure or
+ordinary neighborhood is chosen, the right side of
+\eqref{r16ft:three-pairings} is unchanged. The outputs are actual,
+so their equality follows from Mihatsch's current injectivity. In
+particular a source presentation of the zero actual form produces
+zero. These equalities on ordinary overlaps glue the sheaf map.
+Actual Stokes gives commutation with both differentials; since the
+construction exists in every degree, there is no degree-range proviso.
+Apply the pairing twice to obtain transitivity. Apply it with a
+product of any actual downstairs factor and a complementary test to
+obtain the projection formula. Finally the native degree formula on
+$q^*(\alpha\wedge\eta)$ gives \eqref{r16ft:degree}. No auxiliary field
+has been substituted for $K$ at any stage.
+\end{proof}
+
+\begin{corollary}[Orbit identity and all six differential operators]
+\label{r16ft:orbit}
+For finite Galois $q$ with group $G$,
+\[
+ q^*\operatorname{Tr}_q\omega=\sum_{g\in G}g^*\omega.
+ \tag{FT16.14}\label{r16ft:orbit-formula}
+\]
+For all finite dominant normal maps the trace preserves the intrinsic
+actual trigrading and commutes with
+$d',d'',d'_P,d''_P,\partial',\partial''$.
+In particular every invariant actual form descends through a finite
+Galois quotient as an ordinary actual form, in every bidegree.
+\end{corollary}
+
+\begin{proof}
+In the local construction, pure-curvature trace has the orbit identity
+$q_T^*K_q=\sum_g g^*\Gamma_f$. Pull back
+\eqref{r16ft:trace-construction} using the supplied-presentation
+base-change identity \eqref{r16ft:product-base-change}. The multiplier
+$\chi(t)\gamma(t)$ is fixed under $G$, and graph evaluation for the
+source tuple $g^*f$ gives \eqref{r16ft:orbit-formula}. The cutoff is
+one near all source values since $g$ permutes the whole source domain.
+
+Analytic pullback preserves the intrinsic trigrading and all six
+operators. The orbit identity and faithful finite pullback imply
+trigrading preservation and differential commutation for a Galois map.
+For a general finite map choose a normal Galois closure $p:W\to Y$,
+$q'=qp$. The defining all-test pairings and the native top-degree
+formula imply
+\[
+ \operatorname{Tr}_q\omega
+      =[K(W):K(Y)]^{-1}\operatorname{Tr}_{q'}(p^*\omega).
+\]
+This gives the assertions in general. For an invariant form, divide its
+trace by $|G|$ in \eqref{r16ft:orbit-formula}; uniqueness again follows
+from faithful pullback. The degree contains every constant-field and
+residual degree, not merely the number of topological fiber points.
+\end{proof}
+
+\begin{corollary}[Finite cohomological detection in all degrees]
+\label{r16ft:cohomology}
+Finite dominant normal pullback is injective on actual Bott--Chern,
+Aeppli, $d'$ and $d''$ cohomology in every bidegree. If
+$q^*\Omega=D\beta$ for an actual primitive of any degree, then
+\[
+          \Psi=d^{-1}\operatorname{Tr}_q\beta,
+                     \qquad D\Psi=\Omega.
+ \tag{FT16.15}\label{r16ft:primitive}
+\]
+\end{corollary}
+
+\begin{proof}
+The normalized trace is a left inverse to pullback and commutes with
+both differentials. It therefore preserves each of the stated
+numerators and boundary spaces. The displayed primitive formula is
+an equality of actual forms and retains all compact actual tests.
+\end{proof}
+
+\paragraph{Exact scope.}
+Normality of the target is retained; the normalization of a nodal curve
+already fails to admit trace for all ordinary scalar forms. The theorem
+does not define a proper actual pushforward for arbitrary analytic maps.
+It gives no new PWS replacement of higher-degree primitives, and the
+Round 15 trigrading counterexample remains valid. The activated trace does
+remove the finite-descent boundary in the Round 15 actual projective-line
+projection: UG and AD already construct the upstairs output in every
+degree, and the present full trace can descend that output. The latter
+projection retains the smooth-mixed-test scope of UG/AD unless a separate
+all-actual-test proof is supplied. Neither finite trace nor that relative
+projection alone proves the homological vanishing needed for general
+strong G or the global Beilinson--Bloch height.

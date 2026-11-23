@@ -14,7 +14,7 @@ const foundations = implication.gate.children.filter((node: any) => node.record 
 
 const inputs = [
   { id: "strong-green", title: "Strong Green", status: "Open conjecture", lines: ["Every finite place", "Both complementary codimensions"], href: "/papers/strong-g-programme#conj:strong-green" },
-  { id: "foundations", title: "Analytic and global foundations", status: "Standing hypotheses", lines: ["Actual intersection and trace calculus", "Moving, archimedean theory, good places"], href: route.foundations.href },
+  { id: "foundations", title: "Analytic and global foundations", status: "Internal proofs available", lines: ["Actual intersection and trace calculus", "Moving, archimedean theory, good places"], href: route.foundations.href },
 ];
 const outputs = [
   { id: "local", title: "Local Green pairings", lines: ["Integrate one cycle’s Green form over the other"], href: route.steps[1].href },
@@ -27,7 +27,7 @@ export default function HeightOverviewDiagram() {
     <figure className="sg-height-figure">
       <svg className="sg-height-svg" viewBox="0 0 840 602" role="img" aria-labelledby="sg-height-title sg-height-description">
         <title id="sg-height-title">From Strong Green to Beilinson–Bloch heights</title>
-        <desc id="sg-height-description">Both Strong Green at every finite place in both complementary codimensions and the standing analytic and global foundations are required. Together they supply local Green pairings. The finite normalized sum descends through rational equivalence to a canonical real height on both full homologically trivial Chow groups, by Theorem 7.5.</desc>
+        <desc id="sg-height-description">Strong Green at every finite place in both complementary codimensions is the open premise. The analytic and global foundations have internal proofs in their stated scope. Together they supply local Green pairings. The finite normalized sum descends through rational equivalence to a canonical real height on both full homologically trivial Chow groups, by Theorem 7.5.</desc>
         <defs><marker id="sg-height-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" /></marker></defs>
         <g className="sg-height-connectors" fill="none" stroke="currentColor" strokeWidth="1.8">
           <path d="M 210 126 V 150 H 420 M 630 126 V 150 H 420 V 168" />
@@ -58,12 +58,12 @@ export default function HeightOverviewDiagram() {
         <p className="sg-mobile-and">BOTH required</p>
         <ol>{outputs.map(output => <li key={output.id}><a className={"sg-mobile-node sg-mobile-" + output.id} href={output.href}><strong>{output.title}</strong><span>{output.lines.join(". ")}</span></a></li>)}</ol>
       </div>
-      <figcaption>A conditional implication proved in <a href={route.proof.href}>Theorem 7.5</a>. Strong Green remains open; the theorem also assumes the stated analytic and global foundations.</figcaption>
+      <figcaption>The implication is proved in <a href={route.proof.href}>Theorem 7.5</a>, using the analytic and global propositions in §2. Strong Green remains open in general.</figcaption>
     </figure>
     <details className="sg-height-foundations">
       <summary>Which analytic and global foundations enter the argument?</summary>
       {foundations.map((input: any) => <div key={input.href}><h3><a href={input.href}>{input.title}</a></h3><p>{input.note}</p></div>)}
-      <p><a href={route.foundations.href}>Read all standing hypotheses in §2 of the height paper →</a></p>
+      <p><a href={route.foundations.href}>Read the foundations and their proofs in §2 of the height paper →</a></p>
     </details>
   </div>;
 }

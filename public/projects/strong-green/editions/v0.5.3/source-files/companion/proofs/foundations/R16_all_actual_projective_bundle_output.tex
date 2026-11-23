@@ -1,0 +1,480 @@
+% Round 16. Full-test activation of the audited UG/AD construction.
+% ACTIVATED after independent review, including the negative-output edge case.
+\section{Projective-bundle actual output in all degrees and against all actual tests}
+\label{r16out:section}
+
+The finite trace theorem removes the degree boundary in the Round 15
+UG/AD construction.  A separate projection-formula argument removes
+its smooth-test boundary.  The latter does not follow merely from
+equality of currents: it uses the ambient representative that UG
+actually constructs, before passing to currents.
+The independent global-height review passed the complete mathematical
+source, including its negative-output degree extension, at SHA256
+\texttt{d0827bc7c4e68b1e3ce1235e6ebe5e2f789f321c6183644f94a5848a62bea4fe}.
+Only this activation notice differs from that reviewed version.
+
+\begin{lemma}[Actual target factors in the universal-tree construction]
+\label{r16out:target-factor}
+Use the split ambient data of Round 15 Theorem \texttt{r15ug:projection}.
+Suppose
+\[
+ \alpha=t_{(b,w)}^\star\omega,\qquad
+ \beta=t_b^\star\operatorname{pr}_*(\Gamma_s\wedge\omega),
+ \tag{OUT16.1}\label{r16out:local-output}
+\]
+where $\omega$ has proper ambient support in the vertical coordinates.
+For an arbitrary ordinary actual target form $\nu$, the same construction
+applied to $\alpha\wedge\pi^*\nu$ gives exactly $\beta\wedge\nu$.
+No condition on the delta codimension of $\nu$ is imposed.
+\end{lemma}
+
+\begin{proof}
+This is local on the ordinary base.  Choose an actual presentation
+$\nu=t_c^\star\nu_0$, with $c$ a finite tuple of genuine analytic units
+and $\nu_0$ a Euclidean delta-form on a suitable open.  On a smaller
+compact working neighborhood one may multiply $\nu_0$ by a smooth
+Euclidean cutoff inside this open and extend it by zero.  The
+resulting presenter has the same pullback there.  Append $c$ to $b$;
+write $l$ for the coordinate projection to the old base coordinates
+and $k$ for the coordinate projection to the $c$ coordinates.
+With $\operatorname{pr}'$ the new vertical projection, put
+\[
+ \widetilde\omega=(l\times\mathrm{id})^\star\omega,
+ \qquad \widetilde\nu=k^\star\nu_0.
+\]
+These pullbacks are along surjective Euclidean coordinate projections.
+In particular they are legitimate for arbitrary delta-forms.  The
+old kernel pulls back in the same way and still ignores all newly
+added base coordinates.  Proper vertical support is unchanged by
+adding base coordinates, and remains proper after multiplication
+by $\operatorname{pr}'{}^\star\widetilde\nu$.
+
+The affine delta projection formula gives the strict ambient identity
+\[
+ \operatorname{pr}'_*
+  \bigl(\widetilde\Gamma_s\wedge\widetilde\omega
+               \wedge\operatorname{pr}'{}^\star\widetilde\nu\bigr)
+   =\operatorname{pr}'_*
+        (\widetilde\Gamma_s\wedge\widetilde\omega)
+                  \wedge\widetilde\nu
+   =l^\star\operatorname{pr}_*(\Gamma_s\wedge\omega)
+                  \wedge\widetilde\nu.
+ \tag{OUT16.2}\label{r16out:ambient-projection}
+\]
+The second equality is only Cartesian product base change by the
+extra Euclidean coordinates.  It is not a base-change assertion for
+arbitrary analytic currents.  Genuine pullback through $(b,c)$
+proves the asserted equality of ordinary actual forms.  All
+intersections are Euclidean delta intersections, including any
+positive-delta wall or vertex terms of $\nu_0$.
+\end{proof}
+
+\begin{lemma}[The AD excision works with actual target factors]
+\label{r16out:excision}
+In the Round 15 ambient atlas AD15.3, the same horizontal cutoff
+$\rho$ is current-neutral for $\alpha'$ and for
+$\alpha'\wedge\pi'^*\nu'$, for every actual target form $\nu'$.
+It is also neutral for the pairing of $\alpha'$ with every compact
+complementary actual target test.
+\end{lemma}
+
+\begin{proof}
+On each discarded root or infinity tube the frozen actual
+retraction-germ lemma gives $\alpha'=\pi'^*\beta_j$.  Thus
+$\alpha'\wedge\pi'^*\nu'=\pi'^*(\beta_j\wedge\nu')$ on
+the same tube, as an actual identity.  If $\eta$ is any
+complementary actual test for either input, the paired product
+on the $d$-dimensional base has degree $(d+1,d+1)$ and is zero.
+For the second assertion this product is simply
+$\beta_j\wedge\eta$.  For the first assertion it is
+$\beta_j\wedge\nu'\wedge\eta$.
+The vanishing is an actual dimension statement, not a claim that
+a current can be restricted to a section.  Decomposing $1-\rho$
+into summands supported in the finitely many chosen tubes and
+multiplying by the remaining scalar cutoffs preserves the zero.
+The uniform tube and compactness arguments in AD are independent
+of the form degrees or of the test's delta codimension.
+\end{proof}
+
+\begin{theorem}[All-actual projective-line integration]
+\label{r16out:line}
+Let $S/K$ be smooth integral algebraic, let $U\subset S^{\mathrm{an}}$
+be ordinary open, and let $\pi:U\times\mathbf P^1\to U$.  For all
+$p,q\geq0$ there is a unique ordinary actual operator
+\[
+ I_\pi:B^{p,q}(U\times\mathbf P^1)\longrightarrow B^{p-1,q-1}(U)
+ \tag{OUT16.3}\label{r16out:line-map}
+\]
+where a negative output degree denotes the zero space, such that,
+for every compact complementary actual form $\eta$,
+\[
+ \int_U I_\pi\alpha\wedge\eta
+       =\int_{U\times\mathbf P^1}\alpha\wedge\pi^*\eta.
+ \tag{OUT16.4}\label{r16out:line-pairing}
+\]
+For every ordinary actual target form $\nu$ it satisfies
+\[
+ I_\pi(\alpha\wedge\pi^*\nu)=(I_\pi\alpha)\wedge\nu.
+ \tag{OUT16.5}\label{r16out:line-projection}
+\]
+It is linear, commutes with ordinary restriction, $d'$, and $d''$,
+and its current is the proper current pushforward.  Its support
+is contained in the proper image of the input support.  All weights
+and fields are native over the original $K$.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{r16fc:all-line} already constructs $I_\pi$ when
+$p,q\geq1$, with every smooth compact mixed-test pairing, by UG,
+AD, and the all-degree finite trace.  When $p=0$ or $q=0$, the same
+AD presenter can still be constructed.  To verify this extension
+of its stated scope, its nested neighborhoods, rational unit
+replacement, root perturbations, and Euclidean partition do not
+involve the form degree.  Its only degree calculation is neutral
+excision, whose proof is exactly Lemma~\ref{r16out:excision} and
+still applies whenever a complementary test exists.  The supplied
+UG output is now the genuine affine push of a form of degree
+$(p+s-1,q+s-1)$ along $\mathbf R^s$, hence is zero because one
+output degree is negative.  Thus define $I_\pi\alpha=0$ in these
+edge cases, using this same literal ambient formula.  We prove
+\eqref{r16out:line-projection} before using any nonsmooth test.
+Work on a small ordinary target neighborhood, choose the AD
+finite splitting cover $a:U'\to U_0$ of full degree $e$, and
+retain its entire inverse image.  Denote $a^*\nu$ by $\nu'$.
+The form $\rho\alpha'$ has the single proper ambient presentation
+supplied by AD.  Appending all target moments of $\nu'$ is allowed
+by UG.  Lemma~\ref{r16out:target-factor} says that the split outputs
+of the retained input and its product with $\nu'$ are $\beta'$
+and $\beta'\wedge\nu'$, respectively.
+
+Lemma~\ref{r16out:excision} shows, against the already permitted
+smooth tests, that these are the outputs of the uncut inputs.
+Thus the same splitting cover and cutoff compute both operators.
+The all-degree finite trace projection formula gives
+\[
+ e^{-1}\operatorname{Tr}_a(\beta'\wedge a^*\nu)
+       =\bigl(e^{-1}\operatorname{Tr}_a\beta'\bigr)\wedge\nu.
+ \tag{OUT16.6}\label{r16out:finite-projection}
+\]
+This proves \eqref{r16out:line-projection} locally and hence globally.
+It does not presuppose the desired all-actual nonfinite pairing.
+
+Now let $\eta$ be an arbitrary compact complementary actual test.
+The source input $\theta=\alpha\wedge\pi^*\eta$ is an actual top
+form of compact support, because $\pi$ is proper.  Its output has
+support inside $\operatorname{supp}\eta$: this follows from ordinary
+restriction and uniqueness, since $\theta$ is zero over the
+complement.  Choose an ordinary smooth compact scalar $\zeta$ equal
+to one on a neighborhood of $\operatorname{supp}\eta$.  The already
+proved smooth-test comparison for the top input $\theta$, tested
+against $\zeta$, gives
+\[
+ \int_U I_\pi\theta
+   =\int_U I_\pi\theta\,\zeta
+   =\int_{U\times\mathbf P^1}\theta\,\pi^*\zeta
+   =\int_{U\times\mathbf P^1}\alpha\wedge\pi^*\eta.
+\]
+The first equality uses the stated support containment and the last
+uses the source support.  Formula~\eqref{r16out:line-projection}
+identifies the left side with the left side of
+\eqref{r16out:line-pairing}.  This proves the full actual test claim.
+Proper current differentiation and actual-current injectivity prove
+commutation with $d'$ and $d''$, since the input and derivative
+outputs now all exist.  The even real relative degree introduces
+no additional sign.  The remaining assertions follow from the
+construction and ordinary uniqueness.
+\end{proof}
+
+\paragraph{The same refined-cycle calculation, including positive-delta tests.}
+Here is a direct check of why the test upgrade respects the native
+calibration.  In a split supplied presentation, append the entire
+target-test tuple and every localization moment before forming
+the common refined skeleton.  Let $T$ be the resulting base cycle
+with its original native weights.  The rank and Gauss-point argument
+of FT15.7 identifies the full refined source cycle as the marked-tree
+family over $T$, with base weight times relative weight one.  UG15.4
+then gives, on the boundary-excluded charts in that construction,
+\[
+ T_{\rm src}=\widetilde\Gamma_s\wedge\operatorname{pr}'{}^*[T].
+ \tag{OUT16.7}\label{r16out:cycle}
+\]
+Neither this identity nor its native weights depend on whether the
+ambient presenter $\eta_0$ of the target test is smooth or has
+positive delta codimension.  Consequently, with the source presenter
+$\widetilde\omega$, the all-delta affine projection formula reads
+\[
+\begin{split}
+ \int T_{\rm src}\wedge\widetilde\omega
+                           \wedge\operatorname{pr}'{}^\star\eta_0
+ &=\int [T]\wedge
+      \operatorname{pr}'_*(\widetilde\Gamma_s\wedge\widetilde\omega)
+                           \wedge\eta_0.
+\end{split}
+ \tag{OUT16.8}\label{r16out:cycle-test}
+\]
+Every product here is an ambient delta intersection after genuine
+moment refinement; there is no pullback through a piecewise affine
+ray map.  Definition 4.10 of Mihatsch identifies the two sides with
+the source and target actual top integrals on these charts.  The
+same smooth scalar localizations used in UG restrict to compact
+ordinary paired supports.  One does not infer that an arbitrary
+ambient presenter avoids tropicalized analytic boundary merely
+because its actual pullback is compact.  The form-level proof above
+instead retains the already audited UG boundary treatment and
+deduces the test upgrade from its ambient output and compact top
+input.  Thus no new boundary-removal lemma is hidden in the display.
+
+The horizontal excision in AD is neutral for the arbitrary actual
+test by Lemma~\ref{r16out:excision}.  On descent, for this same test,
+the native finite degree calculation is
+\[
+ \int_{U_0}e^{-1}\operatorname{Tr}_a\beta'\wedge\eta
+ =e^{-1}\int_{U'}\beta'\wedge a^*\eta
+ =e^{-1}\int_{U'\times\mathbf P^1}
+           (a\times\mathrm{id})^*(\alpha\wedge\pi^*\eta)
+ =\int_{U_0\times\mathbf P^1}\alpha\wedge\pi^*\eta.
+ \tag{OUT16.9}\label{r16out:native}
+\]
+The integrand in the last finite degree formula is a compact actual
+top form.  Compactness follows from properness of $\pi$ and $a$,
+and the degree is the full $e$, including every component and every
+constant-field contribution.
+
+\begin{theorem}[All-actual integration on every algebraic projective bundle]
+\label{r16out:bundle}
+Let $S/K$ be smooth integral algebraic, let $N$ be a vector bundle
+of rank $m+1\geq1$, let $U\subset S^{\mathrm{an}}$ be ordinary open,
+and put $\pi:E_U=\mathbf P_S(N)|_U\to U$.  For $p,q\geq0$ there is
+a unique ordinary actual operator
+\[
+ I_\pi:B^{p,q}(E_U)\longrightarrow B^{p-m,q-m}(U)
+ \tag{OUT16.10}\label{r16out:bundle-map}
+\]
+with negative output spaces interpreted as zero, representing the
+proper current pushforward and satisfying
+\[
+ \int_U I_\pi\alpha\wedge\eta=\int_{E_U}\alpha\wedge\pi^*\eta
+ \tag{OUT16.11}\label{r16out:bundle-pairing}
+\]
+for every compact complementary actual test $\eta$.  It commutes
+with $d',d''$, ordinary restriction, and multiplication by a pulled
+back arbitrary actual target form.  Successive projective-bundle
+operators compose to the proper current operator for the composite,
+with the same full actual pairing.  No arbitrary proper pushforward
+is asserted.
+\end{theorem}
+
+\begin{proof}
+The rank-one case is the identity.  First take the product bundle
+$U\times\mathbf P^m$.  The ordered-factor morphism
+\[
+ q_m:(\mathbf P^1)^m\longrightarrow\mathbf P^m
+\]
+is finite of native generic degree $m!$, as proved and independently
+audited in Round 15 Lemma \texttt{r15ps:symmetric-quotient}.
+Let $Q=\mathrm{id}_U\times q_m$ and let $P$ denote the successive
+projective-line projections from $U\times(\mathbf P^1)^m$.
+Define
+\[
+ I_m\alpha=(m!)^{-1}I_{P_m}\cdots I_{P_1}(Q^*\alpha).
+ \tag{OUT16.12}\label{r16out:symmetric}
+\]
+All intermediate bases are ordinary opens in smooth integral
+algebraic varieties.  If $p,q\geq m$, each input degree is at least
+one until that factor is integrated.  If $p<m$ or $q<m$, one stage
+is in the zero-output case of Theorem~\ref{r16out:line}, and all
+subsequent outputs are zero.  Its projection formula, already
+proved also for that case by the literal ambient formula, remains
+valid after an arbitrary actual target factor is added.  Thus
+Theorem~\ref{r16out:line} applies at every stage, including the
+degree-zero convention needed for lower powers of a Chern form.
+
+For an arbitrary compact actual base test $\eta$, its successive
+pullbacks are compact by properness of the projective factors.
+Repeated use of \eqref{r16out:line-pairing}, followed by the finite
+native top-degree formula for $Q$, gives
+\[
+\begin{split}
+ \int_U I_m\alpha\wedge\eta
+  &=(m!)^{-1}\int_{U\times(\mathbf P^1)^m}
+             Q^*(\alpha\wedge\pi_m^*\eta)\\
+  &=\int_{U\times\mathbf P^m}\alpha\wedge\pi_m^*\eta.
+\end{split}
+ \tag{OUT16.13}\label{r16out:symmetric-pairing}
+\]
+This calculation includes the ramification of the symmetric quotient:
+its degree is $m!$, not a pointwise count of distinct ordered roots.
+The source integrand is compact actual top degree.  Thus all
+intermediate finite and nonfinite formulas are used in their proved
+test classes.  Differential and target-factor compatibility follow
+at every stage of \eqref{r16out:symmetric}; the latter uses actual,
+not merely PWS, projection formulas.  Current uniqueness makes the
+choice and order of factors irrelevant.
+
+Choose algebraic local trivializations of $N$.  The local outputs
+above represent the same intrinsic proper current on every ordinary
+overlap, so actual-current injectivity glues them.  An ordinary smooth
+partition of unity on compact target test support yields the global
+all-actual pairing: each localized test remains an actual form, and
+its pullback has compact support.  The differential and projection
+identities glue as actual identities.  Successive operators satisfy
+the composite pairing by properness and the same repeated actual-test
+argument; uniqueness proves the composition assertion.
+\end{proof}
+
+\begin{corollary}[All-degree diagonal Green outputs with all actual tests]
+\label{r16out:green}
+For $Y=S\times\mathbf P^1$ and the relative diagonal Green kernel
+of Round 15, every actual $(r,r)$ input $\alpha$ has ordinary actual
+representatives
+\[
+ G_\alpha\in B^{r-1,r-1}(Y),\qquad
+ P_\alpha\in B^{r,r-1}(Y),\qquad
+ Q_\alpha\in B^{r-1,r}(Y),
+ \tag{OUT16.14}\label{r16out:green-output}
+\]
+with their prescribed pairings against all compact complementary
+actual tests.  The same holds on projective-line bundles whenever
+the stated diagonal kernel is supplied.  No closedness or symmetry
+of $\alpha$ is required for the output assertion.
+\end{corollary}
+
+\begin{proof}
+Work over a compact target neighborhood and use the frozen ordinary
+immersion-germ identity near the diagonal.  It identifies the
+source input there with the pullback of the target input.  For
+$G$, its product with a complementary actual test has bidegree
+$(\dim Y+1,\dim Y+1)$ on the target and is zero.  For $P$ the
+second degree exceeds $\dim Y$, and for $Q$ the first degree does.
+Thus the singular kernel and its first derivatives multiply the
+zero paired actual factor on an ordinary punctured neighborhood of
+the diagonal.  Choose a genuine ordinary scalar cutoff that removes
+a smaller diagonal neighborhood.  The three retained source inputs
+are actual of degrees $(r,r),(r+1,r),(r,r+1)$ on the full source.
+Apply Theorem~\ref{r16out:bundle} in relative dimension one.
+The overdegree argument shows that the cutoff changes none of the
+prescribed all-actual pairings.  Current injectivity proves cutoff
+independence and ordinary gluing.  No limiting regularization or
+evaluation of an arbitrary distribution along the diagonal occurs.
+\end{proof}
+
+\begin{lemma}[Finite trace under an independent projective factor]
+\label{r16out:finite-coordinate-base-change}
+Let $q:Y\to X$ be finite dominant between normal integral separated
+$K$-varieties.  For $b:X\times\mathbf P^a\to X$ and its source
+counterpart $b_Y$, put $q_b=q\times\mathrm{id}$.  On ordinary opens
+and in every actual bidegree one has
+\[
+ b^*\operatorname{Tr}_q\omega
+       =\operatorname{Tr}_{q_b}(b_Y^*\omega).
+ \tag{OUT16.15}\label{r16out:finite-coordinate}
+\]
+The formula also holds after ordinary restriction in the projective
+factor.
+\end{lemma}
+
+\begin{proof}
+Products with projective space preserve normality and integrality.
+They preserve the generic degree, since their function fields add
+independent transcendental variables.  If $q$ is Galois with group
+$G$, so is $q_b$, with $G$ acting trivially on the new factor.
+The actual orbit identity of Corollary~\ref{r16ft:orbit} gives
+\[
+ q_b^*\operatorname{Tr}_{q_b}(b_Y^*\omega)
+  =\sum_{g\in G}g^*b_Y^*\omega
+  =b_Y^*\sum_{g\in G}g^*\omega
+  =q_b^*b^*\operatorname{Tr}_q\omega.
+\]
+Faithfulness of finite pullback proves \eqref{r16out:finite-coordinate}.
+For arbitrary $q$, pass to its normal Galois closure and use the
+trace normalization by the full degree of the map to $Y$; this
+degree is unchanged by the independent factor.  Ordinary restriction
+then gives the local assertion.  This is a consequence of the
+explicit actual orbit identity, not of current base change.
+\end{proof}
+
+\begin{theorem}[Coordinate smooth base change for the actual operator]
+\label{r16out:coordinate-base-change}
+In Theorem~\ref{r16out:bundle}, let
+$b:U\times\mathbf P^a\to U$, and let
+$b_E:E_U\times\mathbf P^a\to E_U$ be its base change.  Write
+$\pi_b:E_U\times\mathbf P^a\to U\times\mathbf P^a$.  Then
+\[
+ b^*I_\pi\alpha=I_{\pi_b}(b_E^*\alpha)
+ \tag{OUT16.16}\label{r16out:coordinate-base-change-formula}
+\]
+as ordinary actual forms, in every permitted bidegree.  The same
+holds when $b$ is any algebraic projective-bundle projection over
+$U$, and after ordinary restrictions in its source.  No general
+analytic or arbitrary proper current base change is asserted.
+\end{theorem}
+
+\begin{proof}
+First let $\pi$ have relative dimension one and be the product
+projection.  At a fixed base point choose exactly one AD construction
+for $\alpha$: the finite moment charts, their nested Laurent domains,
+the original-field perturbations, the finite splitting cover
+$a:U'\to U_0$, the root functions, and the cutoff $\rho$.
+Pull all of this data from $U_0$ to $U_0\times\mathbf P^a$.
+The splitting cover is $a\times\mathrm{id}$ and has the same full
+degree.  Its roots remain distinct, its difference units remain
+units, the numerical domain margins remain the same, and the
+pullback of $\rho$ has the same neutral excision property.
+No approximation or new root splitting involving the independent
+factor is performed.
+
+The split retained input already has one supplied presentation
+$t_{(b_0,w)}^\star\omega$ from AD.  Its pullback has exactly the
+same ambient delta coefficient $\omega$ in the pulled-back base
+units $b_0$ and the same fiber units $w$.  Proper support in the
+vertical moment coordinates is unchanged.  Thus UG constructs
+both upstairs outputs by the identical coefficient
+\[
+                 \operatorname{pr}_*(\Gamma_s\wedge\omega).
+\]
+For the enlarged base this coefficient is simply pulled through
+the moments $b_0$ that ignore the new projective coordinates.
+There is no full-rank requirement on this initially supplied base
+tuple.  All test moments, including mixed units in the independent
+factor, are appended before the calibrated source-cycle argument.
+UG15.4 applies to precisely that refined base cycle; FT15.7
+identifies its source family with weight one in the primitive
+radius.  Hence the unchanged coefficient has every prescribed
+pairing on the enlarged base.  Positive-delta tests are covered
+by Theorem~\ref{r16out:line} and its ambient target-factor proof.
+This proves that the upstairs output is the pullback of the
+original upstairs output, as an ordinary actual form.
+
+To descend, apply Lemma~\ref{r16out:finite-coordinate-base-change}:
+\[
+ (\deg a)^{-1}\operatorname{Tr}_{a\times\mathrm{id}}(b_{U'}^*\beta')
+   =b^*\bigl((\deg a)^{-1}\operatorname{Tr}_a\beta'\bigr).
+\]
+This is exactly \eqref{r16out:coordinate-base-change-formula} for
+the line.  All ordinary localizations retain the same full cover;
+no individual analytic sheet is selected.
+
+For a product projective space of any relative dimension, use the
+same ordered-factor finite map $Q$ and commute the independent
+factor past each of the line operators in
+\eqref{r16out:symmetric}.  The algebraic diagram with $Q$ commutes,
+so genuine actual pullback commutes with it.  The normalization
+$m!$ is unchanged.  This proves the assertion for projective-space
+products.  Algebraic local trivializations of $E_U$ prove it for
+$\pi$.  Finally, if $b$ itself is a projective-bundle projection,
+trivialize its vector bundle on algebraic opens and apply the
+product statement.  Equality of ordinary actual forms glues on
+the overlaps.  Restriction compatibility gives the final local
+assertion.
+\end{proof}
+
+\paragraph{Precise new scope.}
+The new statements are all-degree, all-actual-output and
+all-actual-test theorems for algebraic projective bundles and their
+composites, using the specific UG/AD construction.  They do not
+identify arbitrary proper currents with actual forms, supply an
+unproved analytic base-change theorem, or replace any positive
+delta degree by PWS degree zero.  In particular a general
+modification still requires its separate boundary/cohomological
+analysis.  The original-field degree factors and all positive-delta
+test intersections have been retained explicitly.

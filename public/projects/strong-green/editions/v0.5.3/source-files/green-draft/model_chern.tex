@@ -1,0 +1,253 @@
+\section{Actual Chern forms of model vector bundles}
+\label{r10c:section}
+
+Let $K$ be a complete nontrivially discretely valued field, let
+$R=K^\circ$, and let $\mathcal X$ be an integral projective flat
+$R$-scheme with smooth projective generic fiber $X$ of pure dimension $n$.
+All analytic forms below are Mihatsch actual delta-forms on the ordinary
+topology of $X^{\rm an}$; their sheaf is denoted $\mathcal B$ and
+$D=d'd''$.  In the intrinsic trigrading, a form in
+$\mathcal B^{0,0,r}$ has bidegree $(r,r)$.
+The special fiber and its components need not be smooth, reduced, or
+normal.  All Chow operations are rational and operational unless
+otherwise stated.
+
+\subsection{A scalar-density detector for pure delta forms}
+
+\begin{lemma}[Detection with model Hessians]
+\label{r10c:detector}
+Let $\Omega\in\mathcal B^{0,0,r}(X^{\rm an})$ satisfy
+$d'\Omega=d''\Omega=0$, with $0\leq r\leq n$, and put $q=n-r$.  Suppose that for every
+tuple of global rational model functions $\phi_1,\ldots,\phi_q$,
+\[
+                 \Omega\wedge D\phi_1\wedge\cdots\wedge D\phi_q=0
+\]
+as a signed Radon measure.  Then $\Omega=0$ as an actual form.
+For $q=0$, the hypothesis is the vanishing of the measure of $\Omega$.
+\end{lemma}
+
+\begin{proof}
+An actual top-degree form has a locally finite signed measure: in finitely
+many polyhedral charts over a compact set this follows by integration of
+its smooth coefficient densities.  A partition of unity gives the same
+measure as actual integration.  If that measure is zero, Mihatsch
+Proposition 4.11 implies that the top form is zero.  This deals with $q=0$.
+
+Assume that vanishing of the displayed measure has already been proved
+with $k$ model-function slots replaced by arbitrary global original-smooth
+functions.  Fix those $k$ functions and all but one of the remaining
+model functions, and denote their product with $\Omega$ by $T$.
+Then $T$ has bidegree $(n-1,n-1)$ and is separately closed.  For every
+model function $\phi$ and every global original-smooth scalar $\psi$,
+two applications of actual Stokes give
+\[
+ \int_{X^{\rm an}}\phi\,T\wedge D\psi
+     =\int_{X^{\rm an}}\psi\,T\wedge D\phi=0.
+\]
+For fixed $T,\psi$, the left-hand side tests the single fixed finite
+signed measure $T\wedge D\psi$ against $\phi$.  Scalar uniform density
+therefore implies $T\wedge D\psi=0$.  Repeating this argument proves
+\[
+          \Omega\wedge D\chi_1\wedge\cdots\wedge D\chi_q=0
+\tag{D}\label{r10c:smooth-hessians}
+\]
+for arbitrary global original-smooth functions $\chi_i$.
+The density step concerns the continuous function \(\phi\) against one fixed signed measure, and consequently requires no convergence of Hessians.
+
+If $\Omega$ is nonzero, choose an $n$-dimensional witnessing skeleton
+in a moment chart, using Mihatsch Definition 3.8 and Lemma 4.4.
+On an open polyhedron $\sigma$ of dimension $q$ its pure tridegree
+means that the nonzero coefficient is scalar.  Refine the chart and
+subdivide so that its moment coordinates $u_a=-\log|h_a|$ have
+injective tangent map on $\sigma$; this follows from the finite-fiber
+property of skeleton tropicalization.  At a point in the relative
+interior of $\sigma$, choose a smooth cutoff equal to one nearby and
+supported in the moment-chart open set.  It globalizes
+\[
+                         \chi=\tfrac12\sum_a u_a^2
+\]
+to an original-smooth scalar on $X^{\rm an}$.  Near the chosen point,
+$D\chi=\sum_a d'u_a\wedge d''u_a$ is positive definite on the tangent
+space of $\sigma$.  Thus $(D\chi)^q$ is a nonzero volume form there.
+Coefficientwise wedge with smooth forms now shows that
+$\Omega\wedge(D\chi)^q$ is a nonzero actual top form.  This contradicts
+\eqref{r10c:smooth-hessians} and Proposition 4.11.
+\end{proof}
+
+\subsection{From operational numerical triviality to actual zero curvature}
+
+For clarity, the CLD top measure agrees with the measure of the actual
+wedge used above.  Locally let $u$ be a PWS model metric weight and let
+$T$ be a product of previously treated actual model curvatures.  Such a
+current is locally of order zero by its polyhedral description, so
+coefficientwise multiplication by the continuous function $u$ is defined
+and $[uT]=u[T]$. This equality is tested against original-smooth forms
+and follows directly from the same order-zero polyhedral integrals
+on both sides. Separate closedness and Mihatsch Proposition 4.11 give
+\[
+                  [Du\wedge T]=D[uT]=D\bigl(u[T]\bigr).
+\]
+Induction first identifies the actual wedge with the CLD recursive
+product for semipositive model factors. For signed model metrics,
+express them as differences of psh model
+metrics and use multilinearity.  This establishes the comparison over
+$K$ itself, before any scalar extension.
+
+\begin{theorem}[Numerical model curvature vanishing]
+\label{r10c:numerical-zero}
+Let $P$ be a homogeneous polynomial of degree $r$ in the first Chern
+classes of model line bundles $\mathcal L_1,\ldots,\mathcal L_t$ on
+$\mathcal X$.  Suppose that
+\[
+       \xi=P\bigl(c_1(\mathcal L_{1,s}),\ldots,
+                    c_1(\mathcal L_{t,s})\bigr)\in A^r(\mathcal X_s)_{\mathbb Q}
+\]
+has degree zero against every integral $r$-dimensional closed subvariety
+of $\mathcal X_s$.  Then
+\[
+        P\bigl(c_1(\overline L_1),\ldots,c_1(\overline L_t)\bigr)=0
+                 \quad\hbox{in }\mathcal B^{0,0,r}(X^{\rm an}).
+\]
+\end{theorem}
+
+\begin{proof}
+Let $\Omega$ be the displayed actual model polynomial.  Given $q=n-r$
+model functions, choose a common proper model refinement
+$f:\mathcal Y\to\mathcal X$ on which they are represented, after
+clearing denominators, by vertical Cartier divisors $D_1,\ldots,D_q$.
+One may work with formal completions; algebraic models and projective
+common refinements suffice here.  The induced metrics of the original
+bundles are unchanged by pullback.
+
+For a point $x$ reducing to the generic point of a special component
+$V\subset\mathcal Y_s$, the top wedge
+$\Omega\wedge\prod_jD\phi_j$ has mass equal to the native CLD weight
+$w_{\mathcal Y}(x)$ times
+\[
+ \deg\left(f_s^*\xi\cap
+       \prod_{j=1}^{q}c_1(\mathcal O(D_j)|_V)\cap[V]\right).
+\]
+The proper operational projection formula identifies this degree with
+\[
+ \deg\left(\xi\cap f_{s*}
+       \left(\prod_{j=1}^{q}c_1(\mathcal O(D_j)|_V)\cap[V]\right)\right)=0.
+\]
+The pushed-forward class has dimension $r$.  Terms whose images have
+smaller dimension have zero proper pushforward; all remaining terms are
+annihilated by the numerical hypothesis.  Operational pullback of a
+Cartier polynomial is available for arbitrary $f_s$: neither flatness of
+$f_s$ nor smoothness of $V$ has been used.  The CLD support and mass
+formula now gives a zero measure, with all native multiplicities and
+defect factors retained.  Lemma~\ref{r10c:detector} concludes the proof.
+\end{proof}
+
+\subsection{Descent along locally split morphisms}
+
+\begin{lemma}[Descent for a locally split morphism]
+\label{r10c:split-descent}
+Let $a:Y\to X$ be a morphism of pure-dimensional boundaryless analytic
+spaces.  Suppose $X$ has an ordinary open cover $(U_i)$ and morphisms
+$s_i:U_i\to Y$ with $a\circ s_i=\operatorname{id}_{U_i}$.
+For $\Theta\in\mathcal B(Y)$ the following are equivalent:
+\begin{enumerate}
+\item There is an actual form $\theta$ on $X$ with $a^*\theta=\Theta$.
+\item On $Y\times_XY$, $p_1^*\Theta=p_2^*\Theta$.
+\end{enumerate}
+When the fiber product is pure-dimensional and the displayed pullbacks
+are defined, the descended form is unique and is given by
+$\theta|_{U_i}=s_i^*\Theta$.
+\end{lemma}
+
+\begin{proof}
+The forward implication is functoriality.  Conversely pull the equality
+back along $(s_i,s_j):U_i\cap U_j\to Y\times_XY$ to obtain equality
+of the two local forms.  They glue by the sheaf property.  Pulling the
+same equality along
+$(\operatorname{id}_Y,s_i\circ a):a^{-1}(U_i)\to Y\times_XY$ proves
+$\Theta=a^*s_i^*\Theta$ on $a^{-1}(U_i)$, hence $\Theta=a^*\theta$.
+The local sections also prove uniqueness and injectivity of $a^*$ on
+actual forms.  
+\end{proof}
+
+\begin{theorem}[Actual model Chern forms by local flag sections]
+\label{r10c:chern}
+Let $\mathcal E_1,\ldots,\mathcal E_s$ be vector bundles on
+$\mathcal X$ and $P$ a homogeneous rational polynomial of degree $r$
+in their Chern classes.  There is a unique actual form
+\[
+              c_{\mathcal X}(P)\in\mathcal B^{0,0,r}(X^{\rm an})
+\]
+whose pullback to the simultaneous full flag bundle equals the
+corresponding symmetric polynomial in the model first Chern forms of
+the tautological line quotients.  The form is separately closed,
+independent of the chosen splitting presentation, and functorial under
+morphisms of projective flat models with smooth projective generic
+fibers.  Universal operational identities, in particular Whitney and
+the additivity of the Chern character in exact sequences of model
+bundles, hold as strict identities of actual forms.
+
+If the special-fiber operational class $P(c(\mathcal E_{j,s}))$ is
+numerically zero against every $r$-cycle, then $c_{\mathcal X}(P)=0$.
+\end{theorem}
+
+\begin{proof}
+Put $a:\mathcal F=\prod_{\mathcal X}\operatorname{Flag}(\mathcal E_j)
+\to\mathcal X$ and denote its generic fiber by $a:F\to X$.
+Let $\Omega_F$ be the symmetric model-root polynomial.  On
+$\mathcal F\times_{\mathcal X}\mathcal F$, the two root polynomials
+represent the same operational Chow class by the two tautological
+filtrations and Whitney's identity.  Their difference is therefore
+operationally zero on the special fiber, before taking a degree or
+capping with the fundamental class.  Theorem~\ref{r10c:numerical-zero},
+applied to the smooth projective generic fiber $F\times_XF$, gives
+\[
+                         p_1^*\Omega_F=p_2^*\Omega_F
+\]
+as actual forms.
+
+Simultaneously trivialize the finitely many generic bundles $E_j$ on
+a Zariski open cover of $X$.  Their standard full flags give algebraic
+sections $s_i:U_i\to F$, hence analytic sections on ordinary opens
+$U_i^{\rm an}$.  These sections need not extend to all of the model
+and need not preserve a model trivialization.  This is harmless:
+they pull back an already defined global actual form, and Mihatsch
+Theorem 4.5 applies to arbitrary analytic morphisms.  Applying
+Lemma~\ref{r10c:split-descent} defines
+$c_{\mathcal X}(P)|_{U_i^{\rm an}}=s_i^*\Omega_F$ and proves its
+characterizing pullback equality and uniqueness.  Pullback preserves
+the intrinsic trigrading and the differential operators, which proves
+purity and separate closedness.
+
+For any operational identity among finitely many model bundles, use
+their simultaneous flag bundle.  The difference of the root polynomials
+is operationally zero, so the numerical detector kills it upstairs.
+Faithfulness supplied by local sections gives the identity downstairs.
+The same argument on the product of two flag presentations proves
+independence of presentation.  Functoriality follows by pulling the
+model flags back and then using their characteristic equality and the
+faithfulness of the new flag pullback.
+
+Finally suppose $\xi=P(c(\mathcal E_{j,s}))$ is numerically zero.
+For every integral $r$-cycle $W$ on $\mathcal F_s$, the operational
+projection formula gives
+\[
+                 \deg(a_s^*\xi\cap[W])=
+                 \deg(\xi\cap a_{s*}[W])=0.
+\]
+If the image drops dimension then $a_{s*}[W]=0$; otherwise the numerical
+hypothesis applies.  Thus the root polynomial is numerically zero on
+the whole flag special fiber.  Theorem~\ref{r10c:numerical-zero}
+gives $\Omega_F=0$, and local sections give $c_{\mathcal X}(P)=0$.
+Although $a_s$ happens to be smooth and flat here, the projection
+argument is the operational one and does not use a smooth special fiber.
+\end{proof}
+
+The construction gives a homomorphism
+\[
+ K_0(\mathcal X)_{\mathbb Q}\longrightarrow
+      \bigoplus_{r=0}^{n}\mathcal B^{0,0,r}(X^{\rm an}),
+                  \qquad [\mathcal E]\longmapsto
+                       \sum_r c_{\mathcal X}(\operatorname{ch}_r\mathcal E).
+\]
+Each degree factors through its special-fiber operational numerical
+class.  This statement concerns classes of model bundles.  The dependence on the model is controlled by the numerical class of its special fiber.

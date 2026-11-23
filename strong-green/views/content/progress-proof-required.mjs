@@ -5,7 +5,9 @@
 // uniform ample-boundary curve gate (117 trees total).
 // The 23 November 2026 construction update adds the precise Hypothesis 2.2
 // source to the seven cases whose prescribed-pair or Chow-class input it supplies.
-// All previous proof units and source receipts remain required.
+// The v0.5.3 source review rebinds reading papers and the numbered construction
+// proof to their current exact bytes; all existing proof units remain required.
+// Historical mathematical fragments keep their immutable source receipts.
 // This explicit list is independent of candidate graph data. It records
 // published proof units and their source receipts, not mathematical acceptance.
 // Add reviewed trees and sources here when extending the protected minimum;
@@ -23,9 +25,9 @@ const requirements = {
       "proof-kernel-domain-chow-descent-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/global-height-pairing.tex"
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/global-height-pairing.tex"
     ]
   },
   "algebraically-trivial": {
@@ -35,10 +37,10 @@ const requirements = {
       "proof-algebraically-trivial-global-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/green-draft/algebraic_equivalence.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/green-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R12_compact_parameter_algebraic_triviality.tex"
     ]
   },
@@ -52,9 +54,9 @@ const requirements = {
       "proof-endpoints-model-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/green-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R12_compact_parameter_algebraic_triviality.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R12_curve_lifts_and_actual_green.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R16_one_cycles_and_dominant_activation.tex"
@@ -69,7 +71,7 @@ const requirements = {
       "proof-individual-certificates-ci-certificates-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R17_finite_actual_tests_and_height_obstruction_quotients.tex"
     ]
   },
@@ -85,8 +87,8 @@ const requirements = {
       "proof-abelian-retracts-tree-forms"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex"
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex"
     ]
   },
   "surface-products": {
@@ -100,12 +102,12 @@ const requirements = {
       "proof-surface-products-tree-moduli"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/products_moduli.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/products/inertia/all_factor_deletion_and_core_exactness.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/products/families/surface_incidence_inverse_and_good_coefficients.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/green-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R12_compact_parameter_algebraic_triviality.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R11_curvature_class_and_next_step.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/foundations/R11_supported_complex_green.tex"
@@ -121,7 +123,7 @@ const requirements = {
       "proof-small-support-tree-uniruled"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/endpoints_support.tex"
     ]
   },
@@ -137,7 +139,7 @@ const requirements = {
       "proof-chow-niveau-tree-relative-quadrics"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/niveau_fibrations.tex"
     ]
   },
@@ -150,7 +152,7 @@ const requirements = {
       "proof-numerical-models-symmetry-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/models_families.tex"
     ]
   },
@@ -166,8 +168,8 @@ const requirements = {
       "proof-reduction-strata-degenerate-detection-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/models_families.tex"
     ]
   },
@@ -189,8 +191,8 @@ const requirements = {
       "proof-arithmetic-families-elliptic-families-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/models_families.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/models/r22/geometry/positive_fourfold_suspensions_and_quintuple_models.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/companion/proofs/models/r18/u2/ramified_base_change_of_positive_fourfold_models.tex",
@@ -223,11 +225,11 @@ const requirements = {
       "proof-classical-comparison-good-metric-tree"
     ],
     "sourceFiles": [
-      "public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex",
+      "public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/global-height/ha16-correspondence_adjunction_and_motivic_height.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/global-height/mm16-regular_admissible_model_comparison.tex",
       "public/projects/strong-green/editions/v0.5.1/source-files/height-r2/sections/determinants.tex",
-      "public/projects/strong-green/editions/v0.5.1/papers/determinant-metrics.tex"
+      "public/projects/strong-green/editions/v0.5.3/papers/determinant-metrics.tex"
     ]
   },
   "arithmetic-properties": {

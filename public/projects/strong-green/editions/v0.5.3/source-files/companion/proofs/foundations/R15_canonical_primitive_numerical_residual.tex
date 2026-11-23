@@ -1,0 +1,410 @@
+% Round 15. Multiplicity/native/pure-operational extension of Round 7.
+% It identifies an obstruction to a supplied numerical model witness,
+% not an obstruction whose nonvanishing disproves strong G.
+\section{The canonical primitive residual on a fixed SNC model}
+\label{r15res:section}
+
+The component condition $\mathrm{LC}_2$ is sufficient because it
+removes every numerical primitive codimension-two direction.
+Without that condition, the missing directions can still be
+identified exactly.  The result below gives a canonical residual
+for each geometrically homologically trivial class on a fixed
+model and with a fixed ample class.  Its vanishing is equivalent
+to the existence of the stated numerical model lift; its
+nonvanishing is not asserted to imply a nonzero actual
+Bott--Chern obstruction or a failure of strong G.
+
+\paragraph{Historical provenance and the exact extension.}
+For a reduced strictly semistable special fiber, the compressed
+divisor kernel, primitive normalization, canonical residual,
+total isotropy, and the resulting positivity criteria were
+already established in the frozen Round 7 sources
+\path{history_01_07/bb_round7/proofs/threefold_codimension_two_obstruction.tex}
+(\texttt{bb7tf:weighted-kernel},
+\texttt{bb7tf:primitive-normalization},
+\texttt{bb7tf:primitive-zero-energy}) and
+\path{history_01_07/bb_round7/proofs/threefold_boundary_primitive_obstruction.tex}
+(\texttt{bb7tf:canonical-primitive-obstruction},
+\texttt{bb7tf:obstruction-totally-isotropic}).
+Those statements already assume \emph{geometric} rational
+$\ell$-adic triviality on the generic fiber; no weaker generic
+cohomological hypothesis is claimed here.
+The present section extends their argument to an SNC reduced
+support with arbitrary positive component multiplicities,
+retaining native degrees, and uses the final Round 12
+pure-operational $K_0$ interface to certify the actual
+strong-G conclusion.  The exact transpose-kernel quotient
+below is an explicit linear-algebra consequence of the
+compressed-kernel identity, not a claimed new independent
+mechanism.  No novelty claim is made for the reduced case.
+
+Use the hypotheses and notation of
+Section~\ref{r15model:section}, except that
+$\mathrm{LC}_2$ is \emph{not} assumed.  Thus the regular flat
+projective model has relative dimension $n\geq3$, special
+fiber $\sum_i m_iD_i$ with strict normal crossings reduced
+support, and smooth closed strata over the finite residue
+field.  The same relatively ample line $H$ is used on all
+strata.  Put
+\[
+ V^a=\bigoplus_i N^a(D_i)_{\mathbf Q},\qquad
+ \Lambda=L^{n-3},\qquad
+ P_H^2=\ker(\Lambda:V^2\longrightarrow V^{n-1}),
+\tag{NR15.1}\label{r15res:primitive-space}
+\]
+where $L$ means intersection with $H$.  The same symbol
+$\Lambda$ is used in its two degrees
+$V^1\to V^{n-2}$ and $V^2\to V^{n-1}$.
+Numerical intersection gives the perfect rational pairings
+between complementary $V^a$.  All degrees are native degrees
+over the original residue field.  The maps
+$A_a:V^a\to V^{a+1}$ are the actual vertical incidence maps
+of \eqref{r15model:A}, without a change of multiplicity convention.
+
+\begin{lemma}[Divisor Lefschetz linear algebra without $\mathrm{LC}_2$]
+\label{r15res:divisor-linear-algebra}
+The map $L^{n-2}:V^1\to V^{n-1}$ is an isomorphism.
+Consequently $\Lambda:V^1\to V^{n-2}$ is injective,
+$\Lambda:V^2\to V^{n-1}$ is surjective, and
+\[
+                    V^2=L V^1\oplus P_H^2.
+\tag{NR15.2}\label{r15res:lefschetz-splitting}
+\]
+The perfect pairing between $V^2$ and $V^{n-2}$ induces a
+perfect pairing
+\[
+            P_H^2\ \times\ (V^{n-2}/\Lambda V^1)
+                                          \longrightarrow\mathbf Q.
+\tag{NR15.3}\label{r15res:primitive-duality}
+\]
+These assertions use only the numerical divisor Hodge index theorem.
+\end{lemma}
+
+\begin{proof}
+Component by component, the divisor pairing
+$\deg(u v H^{n-2})$ is nondegenerate.  It makes
+$L^{n-2}:N^1(D_i)\to N^{n-1}(D_i)$ injective, and the two
+spaces have the same finite dimension by numerical duality.
+It is therefore an isomorphism.
+Since $L^{n-2}=L\Lambda$ on $V^1$, the first $\Lambda$ is
+injective.  Since $L^{n-2}=\Lambda L$ there, the second
+$\Lambda$ is surjective.  The latter is an isomorphism on
+$L V^1$, proving \eqref{r15res:lefschetz-splitting}.
+The annihilator of $\Lambda V^1$ in $V^2$ is exactly
+$\ker\Lambda=P_H^2$, by associativity of intersection.
+Perfect numerical duality proves \eqref{r15res:primitive-duality}.
+No cycle-class map on $N^2$ and no codimension-two sign
+conjecture are used.
+\end{proof}
+
+\begin{lemma}[Compression does not enlarge the divisor kernel]
+\label{r15res:compressed-kernel}
+For every model under consideration, without $\mathrm{LC}_2$,
+\[
+              \boxed{\ \ker(\Lambda A_1)=\ker A_1.\ }
+\tag{NR15.4}\label{r15res:kernel-compression}
+\]
+Equivalently,
+\[
+                       \operatorname{im}A_1\cap P_H^2=0.
+\tag{NR15.5}\label{r15res:image-primitive-disjoint}
+\]
+\end{lemma}
+
+\begin{proof}
+We indicate exactly how the frozen divisor-energy proof gives
+the stronger statement.  Let $M$ multiply each component by
+$m_i$, let $\widetilde A=M A_1 M$, and let
+$\gamma_0^m=M^{-1}\gamma_0D_c$ be the weighted edge Gysin.
+Use the edge functional denoted $\lambda(w)$ in Round 12;
+to avoid confusing it with $L$, denote it here by $\ell(w)$.
+Thus on a double stratum $D_e=D_i\cap D_j$,
+\[
+       \ell(w)_e=m_im_j\deg_{D_e}((w_j-w_i)|_{D_e}H^{n-2}).
+\tag{NR15.6}\label{r15res:edge-functional}
+\]
+The frozen source
+\path{round12/numerical_lift/curve_lifts_and_actual_green.tex}
+proves the following identities before its final kernel
+conclusion: (NL11), (NL12), (NL13), and (NL14).  In the present
+notation they give
+\[
+ \begin{split}
+ \ell(\gamma_0^m h)&=-d_1^tD_b d_1h,\\
+ (d_0^t\ell(w))_i&=-\deg_{D_i}((\widetilde Aw)_iH^{n-2}),\\
+ \ell(w)^th&=\sum_i m_i\deg_{D_i}
+                            (w_i(\gamma_0^m h)_iH^{n-2}),\\
+ \gamma_0^m(\ker d_1\cap\ker(d_0^tD_a))&=0.
+ \end{split}
+\tag{NR15.7}\label{r15res:frozen-identities}
+\]
+Here $D_a,D_b$ have the positive native edge and triple-stratum
+weights of that source.  In particular the last identity is
+independent of any assumption on $w$.  Also
+$\widetilde A\gamma_0^m=0$ on these numerical groups.
+
+Suppose only that $\Lambda\widetilde Aw=0$.
+The second identity in \eqref{r15res:frozen-identities}
+still gives $d_0^t\ell(w)=0$, since its right side is the
+degree of $H\Lambda\widetilde Aw$.
+The last two identities make $\ell(w)$ vanish on
+$\ker d_1\cap\ker(d_0^tD_a)$.
+The positive-weight decomposition
+\[
+ \ker d_1=\operatorname{im}d_0\oplus
+                  (\ker d_1\cap\ker(d_0^tD_a))
+\]
+therefore implies $\ell(w)|_{\ker d_1}=0$.
+As in the frozen rational linear algebra, there is a rational
+edge vector $a$ with
+$d_1^tD_b d_1a=\ell(w)$.
+Set $w_0=w+\gamma_0^m a$.  Then
+\[
+               \ell(w_0)=0,
+               \qquad\Lambda\widetilde Aw_0=0.
+\tag{NR15.8}\label{r15res:adjusted-weak-kernel}
+\]
+
+The weighted second-energy identity (NL14) now reads
+\[
+ \begin{split}
+ &\sum_{e=(i,j)}m_im_j
+             \deg_{D_e}\bigl(((w_{0,j}-w_{0,i})|_{D_e})^2H^{n-3}\bigr)\\
+ &\hspace{15mm}=-\sum_i
+             \deg_{D_i}(w_{0,i}(\widetilde Aw_0)_iH^{n-3})=0.
+ \end{split}
+\tag{NR15.9}\label{r15res:weak-energy}
+\]
+The final equality follows from the second assertion of
+\eqref{r15res:adjusted-weak-kernel}; it does not require
+$\widetilde Aw_0=0$ in advance.
+The first equality is a termwise identity for arbitrary $w_0$:
+grouping the two endpoint contributions of each edge in (NL6)
+gives the negative of its weighted squared difference.
+Thus that equality has no hidden full-kernel hypothesis.
+The first assertion makes every divisor difference on a
+double stratum primitive for $H$.  Divisor Hodge index on
+those smooth projective $(n-1)$-folds makes every summand
+nonpositive, with equality only for a numerically zero
+divisor.  All $m_im_j$ are positive, so every difference
+vanishes numerically.  The explicit formula (NL6) for
+$\widetilde A$ then gives $\widetilde Aw_0=0$.
+As $\widetilde A\gamma_0^m=0$, also $\widetilde Aw=0$.
+
+For an original vector $u$ with $\Lambda A_1u=0$, put
+$w=M^{-1}u$.  The multiplication matrix $M$ commutes with
+$\Lambda$, so the argument applies and gives $A_1u=0$.
+The reverse inclusion is immediate.  Formula
+\eqref{r15res:image-primitive-disjoint} is the same assertion
+on the image.
+\end{proof}
+
+\begin{proposition}[The exact residual kernel quotient]
+\label{r15res:kernel-quotient}
+There is an exact sequence of rational vector spaces
+\[
+ 0\longrightarrow\Lambda\ker A_1
+   \longrightarrow\ker A_{n-2}
+   \longrightarrow V^{n-2}/\Lambda V^1
+   \longrightarrow0,
+\tag{NR15.10}\label{r15res:exact-sequence}
+\]
+where the last map is the natural quotient map.
+Consequently
+\[
+ \frac{\ker A_{n-2}}{\Lambda\ker A_1}
+          \simeq V^{n-2}/\Lambda V^1,
+ \qquad
+ \left(\frac{\ker A_{n-2}}{\Lambda\ker A_1}\right)^*
+          \simeq P_H^2.
+\tag{NR15.11}\label{r15res:canonical-residual-space}
+\]
+\end{proposition}
+
+\begin{proof}
+Restriction, Gysin, and the self-normal term commute with $H$,
+so $A_{n-2}\Lambda=\Lambda A_1$.
+Together with Lemma~\ref{r15res:compressed-kernel}, this gives
+\[
+       \ker A_{n-2}\cap\Lambda V^1=\Lambda\ker A_1.
+\]
+It proves exactness at the first two terms and injectivity
+of the indicated quotient map.
+
+The numerical transpose of $A_1$ is $A_{n-2}$, by the
+restriction--Gysin projection formula and the symmetric normal
+self-intersection term.  Put $d_1=\dim V^1$,
+$d_2=\dim V^2=\dim V^{n-2}$, and $a=\operatorname{rank}A_1$.
+The source quotient in \eqref{r15res:canonical-residual-space}
+has dimension
+$(d_2-a)-(d_1-a)=d_2-d_1$.
+The target quotient has that same dimension because
+$\Lambda:V^1\to V^{n-2}$ is injective.
+Thus the injective quotient map is surjective as well.
+The dual identification is \eqref{r15res:primitive-duality}.
+\end{proof}
+
+\begin{theorem}[Canonical primitive component residual]
+\label{r15res:canonical-residual}
+Let $z\in\operatorname{CH}^2(X)_{\mathbf Q}$ have zero
+geometric rational $\ell$-adic class for one $\ell\ne p$.
+For an arbitrary Chow extension $\Theta$ to $\mathcal X$, put
+\[
+          T=(j_i^!\Theta)_i\in V^2,
+          \qquad B_H=\Lambda A_1:V^1\longrightarrow V^{n-1}.
+\tag{NR15.12}\label{r15res:compressed-system}
+\]
+The system
+\[
+                         B_Hu=\Lambda T
+\tag{NR15.13}\label{r15res:normalization-equation}
+\]
+always has a rational solution.  The residual
+\[
+              R_{\mathcal X,H}(z)=T-A_1u\in P_H^2
+\tag{NR15.14}\label{r15res:residual}
+\]
+is independent of that solution and of the Chow extension
+$\Theta$.  It depends only on the class $z$, the supplied
+model, and the chosen ample class, and is rational-linear in $z$.
+There are equivalent conditions:
+\begin{enumerate}
+\item $R_{\mathcal X,H}(z)=0$;
+\item some, equivalently any, extension of $z$ can be corrected
+by a sum of vertical component divisors so that all component
+restrictions are zero in $N^2(D_i)$;
+\item the functional $t_\Theta(v)=\sum_i\deg(T_i v_i)$
+vanishes on $\ker A_{n-2}$.
+\end{enumerate}
+The common zero condition is independent of the choice of $H$.
+When it holds, the frozen pure-operational model-Chern detector
+and exact-support bridge give strong G for every specified
+cycle representing $z$, with all original actual tests.
+No converse from actual obstruction vanishing or from strong G
+to these numerical conditions is asserted.
+\end{theorem}
+
+\begin{proof}
+We first recall precisely the annihilation that does not need
+$\mathrm{LC}_2$.  The frozen divisor kernel is
+$\ker A_1=M\ker\delta+\operatorname{im}\gamma_0$.
+For a signed edge Gysin $\gamma_0a$, the two copies of its
+double-stratum cycle cancel after pushforward to $\mathcal X$.
+Restricting $\Theta$ to that stratum and intersecting with
+$H^{n-3}$ therefore gives
+$t_\Theta(\Lambda\gamma_0a)=0$ using supported degrees.
+For a compatible divisor tuple $w\in\ker\delta$, the frozen
+cohomological-lift theorem \texttt{r12n:cohom-lift} and
+multiplicity-weighted trace theorem
+\texttt{r12n:weighted-trace}, applied to
+\[
+       \operatorname{cl}(\Theta)\cup b\cup c_1(H)^{n-3},
+\]
+give $t_\Theta(\Lambda Mw)=0$, since its generic restriction
+contains $\operatorname{cl}_\ell(z)=0$.
+The cohomology class of $\Theta$ is taken via its pure
+operational $K_0$ representative, as in
+Theorem~\ref{r15model:lift}; no cycle-class map out of $N^2$
+is assumed.  These two arguments show
+\[
+                     t_\Theta|_{\Lambda\ker A_1}=0.
+\tag{NR15.15}\label{r15res:known-annihilation}
+\]
+
+The operator $B_H$ is symmetric under the perfect pairing
+of $V^1$ with $V^{n-1}$.  Indeed its transpose is
+$A_{n-2}\Lambda=\Lambda A_1=B_H$.
+By Lemma~\ref{r15res:compressed-kernel},
+$\ker B_H=\ker A_1$.
+Equation \eqref{r15res:known-annihilation} says exactly that
+$\Lambda T$ annihilates this kernel.  Finite-dimensional
+rational linear algebra for the symmetric map $B_H$ therefore
+puts $\Lambda T$ in its image.  This proves existence in
+\eqref{r15res:normalization-equation}.
+
+That equation makes $R=T-A_1u$ lie in $P_H^2$.
+Two solutions differ by $\ker B_H=\ker A_1$, so they give
+the same $R$.  If $\Theta'$ is another Chow extension,
+closed--open Chow localization expresses
+\[
+                   \Theta'-\Theta=\sum_i j_{i*}v_i,
+                       \qquad v_i\in\operatorname{CH}^1(D_i)_{\mathbf Q}.
+\tag{NR15.16}\label{r15res:localization}
+\]
+For completeness, localization gives a cycle supported on
+the reduced special fiber; every codimension-two component
+of that supported cycle is a divisor in at least one $D_i$,
+so its cycle lifts to the displayed sum.  The scheme
+multiplicities $m_i$ are not inserted in this localization
+map.  They already occur in $A_1$ and in the compatible
+divisor kernel.  This is Chow localization over an excellent
+DVR with its dimension function, for example Stacks Project
+Tag~02RX, Lemma~42.19.3, applied in codimension two.
+It does not use an unweighted degree map on the model's
+zero-cycles.
+
+Numerically, \eqref{r15res:localization} gives
+$T'=T+A_1v$.  If $u$ solves the old system, $u+v$ solves
+the new one and gives the identical residual.  This proves
+extension independence and also independence of the
+representative of the generic Chow class.  Linearity follows
+from linearity of the equations and uniqueness of the residual.
+
+If $R=0$, a chosen rational divisor representative for each
+$u_i$ corrects $\Theta$ to an extension with all numerical
+component restrictions zero.  Conversely, such a correction
+gives a vector $u$ with $A_1u=T$, hence solves
+\eqref{r15res:normalization-equation} and makes $R=0$.
+The equivalence with the third condition is the perfect
+transpose identity
+$\operatorname{im}A_1=(\ker A_{n-2})^\perp$.
+Alternatively, for $v\in\ker A_{n-2}$ one has
+\[
+       t_\Theta(v)=\langle A_1u+R,v\rangle=\langle R,v\rangle,
+\tag{NR15.17}\label{r15res:functional-realization}
+\]
+and \eqref{r15res:canonical-residual-space} makes this
+functional zero exactly when $R=0$.
+The numerical correction condition does not mention $H$,
+so its equivalent zero condition is independent of that choice.
+
+Finally the corrected class has the pure operational virtual
+bundle supplied by frozen \texttt{r12n:K0} in degree two.
+Its supported degree on every integral special-fiber surface
+is zero, because that surface lies in some $D_i$ and its
+pairing with the corresponding $N^2$ class is zero.
+The frozen detector and exact-support bridge then apply
+exactly as in Theorem~\ref{r15model:lift}.  They use the
+established sufficient direction only.
+\end{proof}
+
+\begin{corollary}[The precise remaining numerical directions]
+\label{r15res:interpretation}
+For $n=3$ the primitive residual space is zero.  For arbitrary
+$n\geq3$, condition $\mathrm{LC}_2$ is equivalent to
+$P_H^2=0$, so it forces the residual to vanish for every
+geometrically homologically trivial codimension-two class.
+Without that condition, every such class still admits a
+vertical divisor correction whose component restrictions are
+the unique primitive tuple \eqref{r15res:residual}.
+\end{corollary}
+
+\begin{proof}
+For $n=3$, $\Lambda$ is the identity on $V^2$.
+In every dimension, \eqref{r15res:lefschetz-splitting} identifies
+surjectivity of $L:V^1\to V^2$ with $P_H^2=0$, component
+by component.  The remaining assertion is the defining
+normalization equation of the theorem.
+\end{proof}
+
+\paragraph{Open mathematical issue.}
+No nonzero value of $R_{\mathcal X,H}$ for a homologically
+trivial generic class is constructed here, and no universal
+vanishing theorem for it is proved.  Its codomain is a
+numerical primitive space on the special components, not an
+actual Aeppli or Bott--Chern group.  A nonzero value would
+exclude this numerical lift on this model; it would not
+exclude a different model witness, another actual primitive,
+or a strong Green form.  Determining whether and how generic
+homological triviality controls these remaining primitive
+directions is the precise next numerical problem.

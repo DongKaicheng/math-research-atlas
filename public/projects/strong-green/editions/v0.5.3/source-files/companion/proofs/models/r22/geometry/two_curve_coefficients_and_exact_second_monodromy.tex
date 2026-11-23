@@ -1,0 +1,347 @@
+% Round 22 / geometry branch. Candidate; independent review required.
+\section{Two curve coefficients and exact second monodromy}
+\label{r22dw:section}
+
+\paragraph{Scope.}
+Keep the actual local datum and model of DS22.  The positivity
+hypothesis on $S\times T$ is not needed in this section.  We compute
+both entire extreme terms of the weight spectral sequence on $H^4$
+and the actual map $N^2$ between them.  The computation retains the
+curve blowups of the common double and their nonzero exceptional
+restriction classes.  These corrections happen to vanish on a
+specified tensor coefficient; they are not discarded formally.
+
+All cohomology is geometric $\ell$-adic cohomology for
+$\ell\ne\operatorname{char}k$.  Put
+\[
+\begin{aligned}
+ V_S&=H^1(S),&W_C&=H^1(C),&
+ P_C&=\ker\{i_{C*}:W_C\longrightarrow H^3(S)(1)\},\\
+ V_T&=H^1(T),&W_D&=H^1(D),&
+ P_D&=\ker\{i_{D*}:W_D\longrightarrow H^3(T)(1)\}.
+\end{aligned}
+ \tag{DW22.1}\label{r22dw:coefficients}
+\]
+The two cohomological hard Lefschetz isomorphisms
+$i_{C*}i_C^*:V_S\to H^3(S)(1)$ and
+$i_{D*}i_D^*:V_T\to H^3(T)(1)$ give Frobenius-equivariant splittings
+\[
+ \begin{aligned}
+ W_C&=i_C^*V_S\oplus P_C,&
+ W_D&=i_D^*V_T\oplus P_D,\\
+ p_C&:=\dim P_C=2g(C)-b_1(S),&
+ p_D&:=\dim P_D=2g(D)-b_1(T).
+ \end{aligned}
+ \tag{DW22.2}\label{r22dw:split}
+\]
+Indeed $i_C^*(i_{C*}i_C^*)^{-1}i_{C*}$ is the displayed projector,
+and the second curve is identical.  No semisimplicity assertion or
+algebraic inverse to these cohomological maps is needed.  This is
+the same elementary splitting used in WD21, now in two independent
+curve factors.
+
+\subsection{The actual blowup corrections on the common double}
+
+Write $W=C\times D\times\mathbf P^1$,
+$E_j=C\times D\times\{p_j\}$, and
+$Z_j=E_j\cap V(\bar Q)$.  Let
+\[
+ q:\widetilde W=\operatorname{Bl}_{\coprod_j Z_j}W\longrightarrow W,
+ \quad j_j:F_j\hookrightarrow\widetilde W,
+ \quad p_j:F_j\longrightarrow Z_j.
+ \tag{DW22.3}\label{r22dw:blowup}
+\]
+The strict transform $E'_j$ is naturally isomorphic to $E_j$,
+because $Z_j$ is Cartier in $E_j$.  Let $i_j:E_j\hookrightarrow W$
+and $i'_j:E'_j\hookrightarrow\widetilde W$ denote the inclusions.
+The common double of DS22 is this $\widetilde W$, and its adjacent
+triples are precisely the $E'_j$.
+
+\begin{lemma}[Actual restriction and Gysin identities]
+\label{r22dw:actualmaps}
+For $a\in\operatorname{CH}^1(W)_{\mathbf Q}$,
+$z\in\operatorname{CH}^1(E_j)_{\mathbf Q}$, and scalars $\lambda_k$,
+one has
+\[
+\begin{aligned}
+ (i'_j)^*\left(q^*a+\sum_k\lambda_k[F_k]\right)
+       &=i_j^*a+\lambda_j[Z_j],\\
+ (i'_j)_*z&=q^*(i_j)_*z-(j_j)_*p_j^*(z|_{Z_j}).
+\end{aligned}
+ \tag{DW22.4}\label{r22dw:Chowmaps}
+\]
+The same formulas hold for all cohomological classes in the
+corresponding degrees, including nonalgebraic classes.  Moreover
+\[
+ [Z_j]=\operatorname{pr}_C^*c_1(\mathcal A|_C)
+                   +\operatorname{pr}_D^*c_1(\mathcal B|_D)
+                         \quad\text{on }E_j=C\times D.
+ \tag{DW22.5}\label{r22dw:external}
+\]
+In particular the exceptional restriction term has zero projection
+to $P_C\otimes P_D\subset H^2(C\times D)$, and
+$z|_{Z_j}=0$ in $H^2(Z_j)$ for every
+$z\in W_C\otimes W_D$.
+\end{lemma}
+
+\begin{proof}
+Since the centers are disjoint, it suffices to work with one.  The
+strict transform of a Cartier divisor containing the center has
+total transform $q^*E_j=E'_j+F_j$.  The Rees charts of the ideal
+$(E_j,\bar Q)$ show that $F_j\cap E'_j$ is the section $Z_j$ of
+the projective bundle $F_j\to Z_j$, and that the intersection is
+transverse.  Thus $[F_j]|_{E'_j}=+[Z_j]$; the sign is positive.
+The other exceptional divisors miss $E'_j$.  This proves the first
+formula at the actual Chow level.
+
+For the second formula, the two classes on its left and first
+right term have the same proper pushforward to $W$.  The actual
+codimension-two Chow blowup decomposition therefore writes their
+difference uniquely as $(j_j)_*p_j^*b$ with
+$b\in\operatorname{CH}^1(Z_j)_{\mathbf Q}$.  There are no terms
+from other centers, since those exceptional divisors are disjoint
+from $E'_j$.  Restrict to $F_j$.  The restriction of
+$q^*(i_j)_*z$ is zero: it factors through a codimension-two class
+on the curve $Z_j$.  The other restriction is
+$s_*(z|_{Z_j})$, where $s:Z_j\hookrightarrow F_j$ is the indicated
+section.  If $\xi=c_1(\mathcal O_{F_j}(1))$, then
+$s_*\beta=\xi p_j^*\beta$ for $\beta\in\operatorname{CH}^1(Z_j)$:
+the possible additional base-divisor term has product zero on a
+curve.  Finally $j_j^*j_{j*}=-\xi$ and $p_{j*}\xi=1$.
+Applying $p_{j*}$ identifies $b=-z|_{Z_j}$ and gives the second
+formula.  This uses the proved direct blowup decomposition and
+projective-bundle identity.  It does not cancel an arbitrary
+Gysin map or assign a native degree to absolute total-model
+$\operatorname{CH}_0$.
+
+The cohomological blowup decomposition, transverse base change,
+and the same projective-bundle identities give precisely this
+proof for all geometric cohomology classes.  Equation
+\eqref{r22dw:external} follows from the actual restricted line
+bundle of $Q$: the $\mathcal O(d)$ factor becomes a constant
+one-dimensional vector space on the native point $p_j$.
+It is an equality of divisor classes even though the curve $Z_j$
+itself need not be a product or a union of external divisors.
+
+For $z\in W_C\otimes W_D$, cup product with either external
+summand of \eqref{r22dw:external} is zero by the dimensions of the
+curves.  Hence $\int_{Z_j}z|_{Z_j}=0$.  The curve $Z_j$ is
+geometrically integral by hypothesis, and its $H^2$ is
+one-dimensional with nonzero trace.  It follows that $z|_{Z_j}=0$.
+The projection assertion is immediate from the Kunneth
+decomposition of $H^2(C\times D)$.
+\end{proof}
+
+\subsection{Both complete extreme terms}
+
+Write $D^{[m]}$ for the disjoint union of $m$-fold strata.  We use
+Saito's convention, translated from zero-based to this one-based
+stratum index:
+\[
+ E_1^{a,b}=\bigoplus_{i\ge\max(0,-a)}
+ H^{b-2i}\bigl(D^{[a+2i+1]},\mathbf Q_\ell\bigr)(-i)
+                 \Longrightarrow H^{a+b}(X_{\bar K},\mathbf Q_\ell).
+ \tag{DW22.6}\label{r22dw:RZ}
+\]
+The $d_1$ maps are the signed actual restrictions and Gysin maps.
+Because there are no quadruples, the complete terms affecting the
+lower extreme are
+\[
+ E_1^{1,2}=H^2(D^{[2]}),\qquad
+ E_1^{2,2}=H^2(D^{[3]})=H^2(C\times D)^{\oplus d},
+ \qquad E_1^{3,2}=0.
+ \tag{DW22.7}\label{r22dw:lowerterms}
+\]
+There are no omitted $H^0$-summands from fourfold intersections.
+Likewise the full upper terms are
+\[
+ E_1^{-3,6}=0,\qquad
+ E_1^{-2,6}=H^2(C\times D)^{\oplus d}(-2),\qquad
+ E_1^{-1,6}=H^4(D^{[2]})(-1).
+ \tag{DW22.8}\label{r22dw:upperterms}
+\]
+
+\begin{proposition}[Exact coefficient quotients and kernels]
+\label{r22dw:extremes}
+Put $P=P_C\otimes P_D$.  There are Frobenius-equivariant
+identifications of the whole displayed terms
+\[
+\begin{aligned}
+ E_2^{2,2}&=P\otimes
+     \bigl(\mathbf Q_\ell^d/\mathbf Q_\ell(1,\ldots,1)\bigr),\\
+ E_2^{-2,6}&=
+   \left(P\otimes\ker\{\mathbf Q_\ell^d
+                         \xrightarrow{\ \sum\ }\mathbf Q_\ell\}\right)(-2).
+\end{aligned}
+ \tag{DW22.9}\label{r22dw:extremeformula}
+\]
+In particular both have dimension $p_Cp_D(d-1)$.
+\end{proposition}
+
+\begin{proof}
+For the lower extreme, a triple labeled $j$ has two private
+doubles $C\times T$ and $S\times D$.  Their restriction images
+in $H^2(C\times D)$ contain both external Kunneth terms
+$H^2(C)\otimes H^0(D)$ and $H^0(C)\otimes H^2(D)$: restriction
+from a surface to its ample curve is nonzero on an ample divisor
+class.  Their mixed images are respectively
+$W_C\otimes i_D^*V_T$ and $i_C^*V_S\otimes W_D$.
+The splittings \eqref{r22dw:split} therefore identify the quotient
+by these two private images with exactly $P$, independently for
+each $j$.
+
+The remaining common double is $\widetilde W$.
+Its full $H^2$ is $q^*H^2(W)\oplus\bigoplus_j\mathbf Q_\ell[F_j]$.
+The pullback summand maps to the same $H^2(C\times D)$ class in
+all $d$ triples; the $\mathbf P^1$ class restricts to zero.  By
+Lemma~\ref{r22dw:actualmaps}, the exceptional class $[F_j]$
+restricts to $[Z_j]$ in its own coordinate and to zero elsewhere.
+These external divisor classes already lie in the private images.
+Consequently the common double contributes precisely the diagonal
+$P\to P^d$ to the remaining quotient.  With the ordering
+$0<1<j+1$, its incidence sign is always the positive sign of
+the face $\{0,1\}$ in $\{0,1,j+1\}$.  This proves the first
+formula and shows it is the whole lower term.
+
+For the upper extreme, consider a coordinate
+$z_j\in H^2(C\times D)$.  Its Gysin map to $C\times T$ sends
+the two external terms into, respectively,
+$H^2(C)\otimes H^2(T)$ and $H^0(C)\otimes H^4(T)$.
+These maps are injective on their one-dimensional domains:
+$[D]\ne0$ and the point trace is nonzero.  The mixed term goes
+by $1\otimes i_{D*}$ into $W_C\otimes H^3(T)$.
+The Kunneth summands are distinct, so the kernel of this private
+Gysin is exactly $W_C\otimes P_D$.  The other private Gysin
+has kernel exactly $P_C\otimes W_D$.  Each private double has
+only this one adjacent triple.  Thus their two conditions force
+each $z_j$ individually into $P$, with no cancellation across
+different triples.
+
+For $z_j\in P$, the exceptional term in
+\eqref{r22dw:Chowmaps} is zero in cohomology by the same lemma.
+Its Gysin to the common double is therefore
+$q^*(z_j\boxtimes h)$, where $h$ is the degree-one point class
+of $\mathbf P^1$.  The map $z\mapsto q^*(z\boxtimes h)$ is
+injective by Kunneth and the blowup decomposition.  Its incidence
+sign is common to all $j$, since the omitted point vertex is
+always in the same ordered position.  The remaining kernel
+condition is consequently $\sum_j z_j=0$.  There is no incoming
+quotient in \eqref{r22dw:upperterms}.  This proves the second
+formula and its asserted completeness.
+\end{proof}
+
+\subsection{The actual map and a sharp dominance-depth obstruction}
+
+\begin{theorem}[Exact second monodromy, DW22]
+\label{r22dw:monodromy}
+On the actual generic cohomology one has
+\[
+ \operatorname{rank}\!\left(N^2:H^4(X_{\bar K},\mathbf Q_\ell)
+                    \longrightarrow H^4(X_{\bar K},\mathbf Q_\ell)(-2)\right)
+                       =p_Cp_D(d-1),\qquad N^3=0.
+ \tag{DW22.10}\label{r22dw:rank}
+\]
+More precisely,
+$N^2:E_2^{-2,6}\to E_2^{2,2}(-2)$ is an isomorphism.  These
+statements survive every finite valued extension.  If
+$p_Cp_D(d-1)>0$, the minimum crossing depth, taken over all finite
+valued extensions and all projective reduced strictly semistable
+witnesses with smooth projective generic fiber dominating $X$, is
+exactly two.  The lower bound holds over every fixed finite valued
+extension; the original model supplies the upper bound for this
+minimum.  Here depth means the maximum number of components through
+a point minus one.
+\end{theorem}
+
+\begin{proof}
+Saito, Corollary 2.2.4(2), identifies the degree-two shift of a
+tame inertia operator $T-1$ on \eqref{r22dw:RZ} with
+$t_\ell(T)$ times the identity on the common stratum summands.
+The normalized logarithm $N=\log(T)/t_\ell(T)$ has the same
+graded map: higher terms of the logarithm lower the filtration
+by at least four.  Applying it twice sends the common triple
+$H^2$ summand in column $-2$ to that in column $2$ by the
+identity, with the displayed Tate twist.  Under
+\eqref{r22dw:extremeformula}, its induced map is therefore the
+tensor product with $P$ of
+\[
+ \ker(\mathbf Q_\ell^d\xrightarrow{\sum}\mathbf Q_\ell)
+       \longrightarrow\mathbf Q_\ell^d/\mathbf Q_\ell(1,\ldots,1).
+ \tag{DW22.11}\label{r22dw:scalariso}
+\]
+This map is an isomorphism: a constant vector in the kernel has
+sum $dc=0$, hence $c=0$, and both dimensions equal $d-1$.
+Equivalently it comes from the rational direct sum into the
+diagonal line and the sum-zero hyperplane.  There is no use of
+an ordering or positivity on a $\mathbf Q_\ell$-valued form.
+
+The spectral sequence degenerates at $E_2$: each $E_1^{a,b}$
+is pure of weight $b$ by finite-field purity, so each $E_2^{a,b}$
+has that same weight; all higher differentials have distinct
+source and target weights.  The abutment filtration on $H^4$
+has weights in $[2,6]$, since only columns $-2\le a\le2$
+occur.  The operator $N$ lowers this filtration by two.
+Thus $N^2$ kills $W_5$, lands in $W_2(-2)$, and is completely
+the just-computed map between the extreme graded pieces,
+because $W_1=0$.  This proves the exact rank, not merely a
+lower bound.  A third application lands in $W_0=0$, proving
+$N^3=0$ without a general weight--monodromy assumption.
+
+Restriction to a finite valued extension multiplies the logarithmic
+monodromy by its positive ramification index when the two tame
+characters are normalized using their respective uniformizers.
+With the transported character the operator is unchanged instead;
+only its invariance up to a nonzero scalar is used here.  All ranks
+and nilpotence assertions therefore persist.  Suppose a smooth
+projective $Y$ dominates $X$ over such an extension and has a
+reduced strictly semistable model of depth at most one.  Its weight
+spectral sequence has only columns $-1,0,1$, so $N^2=0$ on
+$H^4(Y)$.  Pullback $H^4(X)\to H^4(Y)$ is injective and commutes
+with inertia.  Indeed, if $m=\dim Y\ge4$ and $h$ is an ample
+class on $Y$, then proper trace followed by cup product with
+$h^{m-4}$ satisfies
+\[
+ f_*(h^{m-4}f^*x)=c\,x,
+ \qquad c=\deg(h^{m-4}|_{Y_{\eta_X}})>0.
+ \tag{DW22.12}\label{r22dw:dominanttrace}
+\]
+For a generically finite morphism $c$ is its positive degree.
+This is an ordinary cohomological projection formula; no actual
+analytic proper pushforward is inferred.  Injectivity contradicts
+the nonzero $N^2$ of $X$.  The actual DS22 model itself has depth
+two over $K$, and the identity is a dominating witness.  Hence the
+minimum over all such fields and witnesses is precisely two.
+No semistable upper-bound assertion over each fixed ramified
+extension is needed for this conclusion.
+\end{proof}
+
+\paragraph{A coefficient-sensitive nonarchimedean distinction.}
+The ordinary dual complex of this actual model is the edge
+$\{0,1\}$ joined with $d$ isolated point vertices.  It is a union
+of $d$ triangles glued along one common edge, hence is contractible.
+Nevertheless \eqref{r22dw:rank} is nonzero whenever $p_C,p_D>0$.
+The nonzero information lies in the actual coefficient
+$P_C\otimes P_D$ and in its restriction/Gysin complex, not in
+constant-coefficient cohomology of that dual complex.  DS22 proves
+full G for the explicit positive components even in this situation.
+Thus neither this coefficient group nor nonzero $N^2$ is by itself
+a Green obstruction.  What a general theory still must control is
+the cycle-visible period map, not annihilate every nearby-cycle
+coefficient.
+
+\paragraph{Primary-source check and dependencies.}
+The new work is the exact actual blowup correction and the complete
+two-curve coefficient calculation.  The spectral sequence and
+its differential are Saito, \emph{Weight spectral sequences and
+independence of $\ell$}, June 9, 2003, Corollary 2.2.4 and
+Proposition 2.2.6, at
+\url{https://www.ms.u-tokyo.ac.jp/~t-saito/pp/wmr2r.pdf}.
+The pure stratum weights are Deligne, \emph{La conjecture de Weil I},
+Theorem 1.6, at
+\url{https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf}.
+The curve splittings use cohomological hard Lefschetz as in
+Deligne, \emph{La conjecture de Weil II}, Theorem 4.1.1 and
+Lemma 4.1.2, at
+\url{https://publications.ias.edu/sites/default/files/Number40.pdf}.
+The independent frozen WD21 source uses the same monodromy
+normalization.  No new literature-priority claim is made.

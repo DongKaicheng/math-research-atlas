@@ -1,0 +1,122 @@
+\section{Fields of classes and bounded-degree finiteness}\label{sec:fields}
+
+\subsection{Descent by trace}\label{sec:class-fields}
+
+Let \(\mathcal G\) be a rational geometric Chow quotient with its
+discrete \(\Gal(\Fbar/F_0)\)-action, and let \(\Lambda(E)\subset\mathcal G\)
+be compatible integral images. We assume that restriction and trace
+preserve these images in their usual directions. Fixed rational Chow
+projectors and quotient by geometric algebraic equivalence have this
+property. Every element considered is defined over a finite extension,
+so its stabilizer is open. Define its minimal class field by
+\[
+ F_0(\xi)=\Fbar^{\operatorname{Stab}_{\Gal(\Fbar/F_0)}(\xi)}.
+\]
+
+\begin{lemma}\label[lemma]{lem:class-trace}
+If \(\xi\in\Lambda(E)\) and \(K=F_0(\xi)\), then
+\[
+ K\subseteq E,\qquad [E:K]\xi\in\Lambda(K).
+\]
+In particular, if \([E:F_0]\le D\), the required multiplier is
+at most \(D\).
+\end{lemma}
+
+\begin{proof}
+The inclusion \(\Gal(\Fbar/E)\subseteq\operatorname{Stab}(\xi)\) gives
+\(K\subseteq E\). Take an integral cycle over \(E\) representing
+\(\xi\) in the indicated quotient and push it forward to \(K\).
+Over \(\Fbar\), the resulting class is the sum over the
+\(K\)-embeddings of \(E\). Every summand equals \(\xi\), so
+the sum is \([E:K]\xi\). Fixed projectors commute with trace,
+and algebraic equivalence is preserved by it.
+\end{proof}
+
+The lemma concerns the field of a class in a rational quotient.
+It supplies the precise denominator even when no chosen integral
+cycle representative descends to that field.
+
+\subsection{The ramification criterion}\label{sec:ramification-proof}
+
+Let \(q\) be a Galois-invariant quadratic form on \(\mathcal G\).
+For \(B\ge0\) and \(D\ge1\), consider
+\[
+ \mathcal B(B,D)=
+ \{\xi\in\bigcup_{[E:F_0]\le D}\Lambda(E):q(\xi)\le B\}.
+\]
+
+\begin{theorem}\label[theorem]{thm:ramification}
+Assume \(q\) has fixed-field Northcott on \(\Lambda(K)\) for
+every finite \(K/F_0\). Then bounded-degree Northcott is
+equivalent to the following condition: for every \(B,D\), there
+is a finite set \(S(B,D)\) of finite places of \(F_0\) such that
+each field \(F_0(\xi)/F_0\), with \(\xi\in\mathcal B(B,D)\),
+is unramified outside \(S(B,D)\).
+\end{theorem}
+
+\begin{proof}
+Suppose the ramification condition holds. By the finite-ramification
+form of Hermite--Minkowski, there are only finitely many extensions
+\(K/F_0\) in \(\Fbar\) of degree at most \(D\) unramified
+ outside \(S(B,D)\); see \cite[Theorem~10.2.2]{Kedlaya}.
+This form also follows by bounding the local discriminant exponents
+in fixed degree and applying discriminant finiteness.
+
+For \(\xi\in\mathcal B(B,D)\), \Cref{lem:class-trace} gives
+\(m\xi\in\Lambda(K)\), where \(K=F_0(\xi)\) is among these
+finitely many fields and \(1\le m\le D\). Moreover
+\[
+ q(m\xi)=m^2q(\xi)\le D^2B.
+\]
+Fixed-field Northcott leaves finitely many possibilities for
+\(m\xi\). Multiplication by \(m\) is injective in the rational
+group, and only finitely many \(m\) occur. Thus the ball is finite.
+Conversely, if the ball is finite, the union of the ramification
+sets of its finitely many class fields is finite.
+\end{proof}
+
+An explicit discriminant estimate would give a quantitative route
+to the hypothesis. For example, with \(\mathfrak d_{K/F_0}\)
+the relative discriminant ideal, an inequality
+\begin{equation}\label{eq:discriminant-target}
+ \log N_{F_0/\Q}\mathfrak d_{F_0(\xi)/F_0}
+       \le A_D q(\xi)+B_D
+\end{equation}
+on integral classes of degree at most \(D\) would suffice.
+The qualitative ramification condition only asks for some finite
+set depending on \(B,D\); it is weaker than
+\MathEqref{eq:discriminant-target}.
+
+\subsection{Why uniform fixed-field estimates do not suffice}
+\label{sec:quadratic-example}
+
+\begin{example}\label[example]{ex:quadratic-fields}
+Choose infinitely many distinct quadratic extensions \(K_i/F_0\)
+with characters \(\chi_i\). Put
+\[
+ \mathcal G=\bigoplus_i\Q e_i,\qquad
+ \sigma e_i=\chi_i(\sigma)e_i,\qquad
+ \Lambda(E)=\bigoplus_{K_i\subseteq E}\Z e_i,
+ \qquad q\left(\sum a_ie_i\right)=\sum a_i^2.
+\]
+The lattices are compatible with restriction and trace. Every
+finite extension \(E\) has at most \([E:F_0]-1\) distinct
+quadratic subfields: their compositum is multiquadratic, and the
+number of its quadratic subfields is one less than its degree.
+Consequently
+\[
+ \rk\Lambda(E)\le[E:F_0]-1,\qquad
+ q(\lambda)\ge1\ (\lambda\ne0),\qquad
+ |\Lambda(E)/m\Lambda(E)|\le m^{[E:F_0]-1}.
+\]
+All fixed-field height balls are finite. Nevertheless the classes
+\(e_i\in\Lambda(K_i)\) all have degree two and height one.
+Thus bounded-degree Northcott fails despite uniform
+degree-dependent bounds on ranks, gaps and Kummer quotients.
+\end{example}
+
+The fixed-\(S\) cohomological statement of
+\Cref{prop:fixed-S} holds over a chosen field of definition.
+\Cref{thm:ramification} instead bounds the fields themselves.
+This distinction is essential when using residual arithmetic
+regulators to study the conjectural Northcott property.

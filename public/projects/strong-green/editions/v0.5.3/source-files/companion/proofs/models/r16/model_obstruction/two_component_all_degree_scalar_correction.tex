@@ -1,0 +1,410 @@
+% Round 16. All-degree two-component scalar correction and Gysin-image calculation.
+% Root and global_height full independent reviews PASS; higher_trace separately
+% PASS on the odd-central Gysin-image calculation. The final mathematical source
+% after display/generic-field clarification has SHA
+% b6a7b6d450732297f19023b256ef5769fb764a763203d01f958e29f664d9401f.
+% This activation changes only the status notice.
+% Preserve the historical higher-kernel provenance.
+\section{An all-degree scalar correction and hypersurfaces in every dimension}
+\label{r16sc:section}
+
+\paragraph{Provenance and the additional calculation.}
+Historical Round 7 already recorded a numerical-admissibility conclusion for
+even-dimensional generic fibers with complete-intersection double
+strata, even with many components:
+\path{history_01_07/bb_round7/proofs/threefold_scalar_degree_kernel.tex},
+\texttt{bb7tf:odd-CI-double-all-codimensions}. Its historical
+review flag is retained. We give a shorter independent correction
+for two components and use the new all-degree native actual descent.
+For the explicit split hypersurface degeneration we also compute
+the Gysin \emph{image} in the remaining odd-dimensional central
+degree. That calculation closes the central case without asserting
+that the full middle cohomology of the double stratum is one-dimensional.
+No novelty claim relative to the literature is made.
+
+\begin{definition}[A scalar boundary image in degree $r$]
+\label{r16sc:definition}
+Let $\mathcal V/R$ be an integral regular projective strictly
+semistable model of relative dimension $n\geq3$ over a $p$-adic
+valuation ring, with smooth geometrically integral generic fiber,
+and with reduced special fiber exactly $D_1\cup D_2$.
+Assume $D_1,D_2$ and $E=D_1\cap D_2\ne\varnothing$ are smooth
+projective geometrically integral over the finite residue field $k$.
+Fix one relatively ample line bundle $H$, put $H_i=H|_{D_i}$,
+$h=H|_E$, and fix $\ell\ne p$.
+For $1\leq r\leq n$, the scalar boundary-image condition means
+\[
+ \operatorname{im}\left(
+ H^{2r-2}(E_{\bar k},\mathbf Q_\ell(r-1))
+   \xrightarrow{j_{i*}}
+ H^{2r}((D_i)_{\bar k},\mathbf Q_\ell(r))\right)
+       =\mathbf Q_\ell\,j_{i*}c_{1,\ell}(h)^{r-1}
+       \qquad(i=1,2).
+ \tag{SC16.1}\label{r16sc:image}
+\]
+Here $j_i:E\hookrightarrow D_i$. Each displayed generator is
+nonzero, since its pairing with $c_{1,\ell}(H_i)^{n-r}$ is
+the positive integer
+\[
+                           e=\deg_k(h^{n-1})>0.
+ \tag{SC16.2}\label{r16sc:degree}
+\]
+Full generation $H^{2r-2}(E_{\bar k},\mathbf Q_\ell(r-1))
+=\mathbf Q_\ell c_{1,\ell}(h)^{r-1}$ is sufficient, but is
+not required by \eqref{r16sc:image}.
+\end{definition}
+
+\begin{theorem}[Direct rational vertical correction in every degree]
+\label{r16sc:correction}
+Assume \eqref{r16sc:image} in degree $r$. Every rational
+codimension-$r$ class $z$ on the generic fiber with zero geometric
+$\ell$-adic class has a rational Chow extension whose restrictions
+to both components are geometrically homologically trivial,
+and therefore numerically trivial. More precisely, for any
+rational Chow extension $\Theta$ put $\theta_i=i_i^!\Theta$,
+where $i_i:D_i\hookrightarrow\mathcal V$. Then
+\[
+ c=\frac{\deg_k(\theta_1 H_1^{n-r})}{e}\in\mathbf Q,
+ \qquad
+       \Theta^{\rm ad}=\Theta-i_{2*}(cH_2^{r-1})
+ \tag{SC16.3}\label{r16sc:explicit-correction}
+\]
+has these zero component classes and unchanged generic Chow class.
+No higher-codimension primitive normalization is needed.
+\end{theorem}
+
+\begin{proof}
+Choose the actual Chow extension first, for instance by closure of
+a cycle representative. Its frozen pure operational $K_0$
+representative \texttt{r12n:K0} gives a single global $\ell$-adic
+degree-$2r$ Chern class on the model with component restrictions
+$a_i=\operatorname{cl}_\ell(\theta_i)$ and zero geometric generic
+restriction. The proper nearby-cycle comparison and subsequent
+restriction to the smooth open $D_i\setminus E$, followed by
+purity for the one smooth divisor, are exactly the argument of
+Lemma~\ref{r16tb:numerical}, now in degree $2r$.
+They show that $a_i$ is in the Gysin image in
+\eqref{r16sc:image}. Thus
+\[
+                   a_i=c_i j_{i*}c_{1,\ell}(h)^{r-1}
+                   \qquad(c_i\in\mathbf Q_\ell).
+ \tag{SC16.4}\label{r16sc:scalar-classes}
+\]
+The projection formula and \eqref{r16sc:degree} determine
+these coefficients:
+\[
+                  c_i=\frac{\deg_k(\theta_i H_i^{n-r})}{e}
+                           \in\mathbf Q.
+ \tag{SC16.5}\label{r16sc:rational-coefficients}
+\]
+In particular no rational algebraic lifting of an unspecified
+$\ell$-adic preimage is being assumed.
+
+Apply frozen \texttt{r12n:weighted-trace}, equation \texttt{NL16}
+in \path{round12/numerical_lift/curve_lifts_and_actual_green.tex},
+to the global top-degree class
+$\operatorname{ch}_{r,\ell}(\Theta)\,c_{1,\ell}(H)^{n-r}$,
+where the notation denotes the chosen pure operational
+representative. The two special multiplicities are one.
+Its geometric generic restriction is zero, so
+\[
+ \deg_k(\theta_1H_1^{n-r})+
+ \deg_k(\theta_2H_2^{n-r})=0,
+             \qquad c_1+c_2=0.
+ \tag{SC16.6}\label{r16sc:sum-zero}
+\]
+All degrees in this equation are native degrees, not normalized
+geometric sheet counts.
+
+Because $D_1+D_2$ is the principal divisor of a uniformizer,
+$N_{D_2/\mathcal V}=\mathcal O_{D_2}(-E)$. Transverse refined
+restriction and the self-intersection formula give
+\[
+ \begin{split}
+ i_1^!i_{2*}(cH_2^{r-1})&=c\,j_{1*}h^{r-1},\\
+ i_2^!i_{2*}(cH_2^{r-1})&=-c\,j_{2*}h^{r-1}.
+ \end{split}
+ \tag{SC16.7}\label{r16sc:correction-signs}
+\]
+Equations \eqref{r16sc:scalar-classes}--\eqref{r16sc:sum-zero}
+therefore make the two component cycle classes of
+\eqref{r16sc:explicit-correction} zero. These are classes of
+specified Chow restrictions. Their homological vanishing implies
+numerical vanishing by the intersection trace formula; no cycle
+class of an abstract numerical quotient has been introduced.
+The correction is vertical, so the generic Chow class stays $z$.
+\end{proof}
+
+\begin{corollary}[Native actual activation of the scalar image condition]
+\label{r16sc:actual}
+Let $X/K$ be smooth projective geometrically integral. Suppose
+that, after a finite extension $F/K$, a smooth projective
+geometrically integral variety $V/F$ has a model satisfying
+\eqref{r16sc:image} in degree $r$, and has a projective dominant
+morphism $V\to X_F$. For every
+$z\in\operatorname{CH}^r(X)_{\mathbf Q,\mathrm{geom\,hom}}$,
+\[
+                         \mathfrak o_{X,K}^r(z)=0.
+ \tag{SC16.8}\label{r16sc:actual-zero}
+\]
+Every specified cycle in this class has a strong Green form on
+its exact support complement, with every original compact actual
+test. If the source model satisfies the image condition in all
+degrees, the target has full strong G in every positive codimension.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{r16sc:correction} to the refined generic
+pullback class. Frozen \texttt{r12n:K0} applied to its corrected
+Chow lift gives the rational virtual-bundle witness whose degree-$r$
+character has zero supported degree on every vertical integral
+$r$-fold. Corollary~\ref{r16G:numerical-witness} applies in the
+original $K$-actual theory to $V\to X_F\to X$. It retains the
+ramification and residue factors of the model viewed over
+$K^\circ$ and the complete degrees in dominant Bott--Chern descent.
+The exact-support construction of
+Proposition~\ref{r16G:dominant-witness} then gives the statement
+for the originally specified cycle and the full original test space.
+The source and target need not have equal dimension. No rational
+map, arbitrary proper actual pushforward, or finite-on-complement
+property is being assumed.
+\end{proof}
+
+\begin{lemma}[The codimension-two etale blowup decomposition]
+\label{r16sc:etale-blowup}
+Let $D$ be smooth projective over an algebraically closed field,
+let $S\subset D$ be smooth of codimension two, let
+$b:D'\to D$ be its blowup, and let $j:F\hookrightarrow D'$,
+$p:F\to S$ be the exceptional divisor and its projection.
+For $\ell$ invertible in the field, and with all usual Tate
+twists retained, the map
+\[
+ b^*+j_*p^*:
+ H^q(D,\mathbf Q_\ell(t))\oplus
+ H^{q-2}(S,\mathbf Q_\ell(t-1))
+               \longrightarrow H^q(D',\mathbf Q_\ell(t))
+ \tag{SC16.9}\label{r16sc:blowup-cohomology}
+\]
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+For completeness the exact maps needed here are verified from
+the primary blowup-square triangle: Stacks Project,
+Section 59.105, Lemmas 59.105.1--59.105.2, Tag \texttt{0EW4},
+\url{https://stacks.math.columbia.edu/tag/0EW4}.
+It gives the long exact sequence with successive terms
+\[
+ H^q(D)\longrightarrow H^q(D')\oplus H^q(S)
+       \xrightarrow{\,j^*-p^*\,}H^q(F)
+                   \longrightarrow H^{q+1}(D).
+\]
+These statements may be applied to finite $\ell$-power coefficients
+and then passed to rational $\ell$-adic cohomology; the proper
+smooth groups are finite and give the usual Mittag--Leffler passage.
+Write $\xi=c_1(\mathcal O_F(1))$ in the lines convention.
+The projective-bundle formula and divisor self-intersection give
+\[
+ H^q(F)=p^*H^q(S)\oplus\xi p^*H^{q-2}(S)(-1),
+                    \qquad j^*j_*p^*v=-\xi p^*v.
+\]
+Thus $j^*-p^*$ is surjective in every degree: its first
+summand is supplied by $S$ and its second by $j_*p^*$.
+The long exact sequence is consequently short exact in each degree.
+If $j^*\omega=p^*u+\xi p^*v$, then
+$j^*(\omega+j_*p^*v)=p^*u$. Exactness writes this pair as
+$(b^*w,w|_S)$, proving spanning by the two maps in
+\eqref{r16sc:blowup-cohomology}.
+If $b^*w+j_*p^*v=0$, restriction to $F$ and the projective
+decomposition first give $v=0$ and $w|_S=0$. Injectivity of
+the initial map into $H^q(D')\oplus H^q(S)$ then gives $w=0$.
+This proves the asserted decomposition and its concrete generators.
+\end{proof}
+
+\begin{proposition}[All-degree boundary images for the split hypersurface model]
+\label{r16sc:hypersurface-images}
+Fix $n\geq3$. Replace $\mathbf P^5_R$ in
+Proposition~\ref{r16tb:hypersurface-model} by
+$\mathbf P^{n+1}_R$, with the same degrees $a,b,a+b$.
+Assume that $D_1=V(\bar A)$ and $D_2=V(\bar B)$ are smooth
+geometrically integral $n$-folds, that
+$E=V(\bar A,\bar B)$ is a smooth geometrically integral
+$(n-1)$-fold, and that
+$\Sigma=V(\bar A,\bar B,\bar G)$ is a smooth geometrically
+integral $(n-2)$-fold, with the indicated transverse differentials.
+Assume the generic fiber
+$V=V(AB+\pi G)\subset\mathbf P^{n+1}_{F}$ is smooth and
+geometrically integral.
+Then the model obtained by blowing up $(A,\pi)$ satisfies
+the scalar boundary-image condition in \emph{every} degree
+$1\leq r\leq n$, for any chosen relatively ample $H$.
+\end{proposition}
+
+\begin{proof}
+The local equation and the saturated charts in
+\eqref{r16tb:charts} are unchanged; there are now $n-2$
+additional free ambient coordinates instead of two.
+The same chart proof gives an integral regular projective
+strictly semistable model with exactly two reduced components
+\[
+ D'_1=\operatorname{Bl}_{\Sigma}D_1,\qquad D'_2=D_2,
+                       \qquad D'_1\cap D'_2=E.
+ \tag{SC16.10}\label{r16sc:general-model}
+\]
+The exceptional locus over $\Sigma$ has dimension $n-1$
+and codimension two in the total model, so it is not an
+additional special-fiber component. The normal bundles along
+the double stratum are still $\mathcal O_E(-a)$ and
+$\mathcal O_E(a)$.
+
+If $2r-2\ne n-1$, smooth complete-intersection cohomology
+gives
+\[
+ H^{2r-2}(E_{\bar k},\mathbf Q_\ell(r-1))
+                         =\mathbf Q_\ell h_0^{r-1},
+ \tag{SC16.11}\label{r16sc:nonmiddle}
+\]
+where $h_0=c_{1,\ell}(\mathcal O_E(1))$.
+The primary statement is Deligne, SGA 7 II, Expose XI,
+Theorem 1.6(ii)--(iii), printed p.~48, checked in the
+original French scan cited in Section~\ref{r16tb:section}.
+Below the middle it is weak Lefschetz; above the middle
+the stated theorem, or Poincare duality, gives the same
+rational generator. The power of any ample restriction
+$h=H|_E$ is nonzero, as its complementary ample degree
+is positive, so it also generates this one-dimensional
+space. This proves \eqref{r16sc:image} in these degrees.
+In particular these are all degrees when $n$ is even.
+
+It remains to treat $n=2m-1$ and $r=m$, with $m\geq2$.
+The full middle cohomology $H^{n-1}(E)$ may be large.
+Poincare duality identifies the rank of
+\[
+ j_{i*}:H^{n-1}(E)\longrightarrow H^{n+1}(D'_i)
+\]
+with the rank of its adjoint restriction
+$H^{n-1}(D'_i)\to H^{n-1}(E)$; here and in this rank
+calculation the compatible Tate twists are suppressed.
+For $D'_2=D_2$, weak Lefschetz gives
+$H^{n-1}(D_2)=\mathbf Q_\ell H_0^{m-1}$, and its restriction
+is the nonzero class $h_0^{m-1}$. The restriction rank is one.
+
+For $D'_1$ write $b:D'_1\to D_1$ and let
+$j_F:F\hookrightarrow D'_1$, $p:F\to\Sigma$ be the
+exceptional divisor. Lemma~\ref{r16sc:etale-blowup} gives
+\[
+ H^{n-1}(D'_1)
+    =b^*H^{n-1}(D_1)
+            \oplus j_{F*}p^*H^{n-3}(\Sigma)(-1).
+ \tag{SC16.12}\label{r16sc:central-blowup}
+\]
+Both groups on the right are one-dimensional. Indeed the
+dimensions of the smooth complete intersections $D_1$
+and $\Sigma$ are respectively the odd numbers $n$ and
+$n-2$, and the two cohomological degrees lie one below
+their respective middle degrees. Thus the two displayed
+generators can be taken as
+\[
+                b^*H_0^{m-1},\qquad
+                j_{F*}p^*H_{\Sigma,0}^{m-2}.
+\]
+Their restrictions to $E$ are, respectively,
+\[
+                     h_0^{m-1},\qquad
+                     (a+b)h_0^{m-1}.
+ \tag{SC16.13}\label{r16sc:central-restrictions}
+\]
+For the second formula, the strict transform of $E$ meets
+$F$ transversely in $\Sigma$. In the first local chart,
+inside $D'_1$ they are $v=0$ and $g=0$, respectively.
+The transverse restriction--Gysin formula therefore gives
+the pushforward from $\Sigma\hookrightarrow E$ of
+$H_{\Sigma,0}^{m-2}$. That divisor has class
+$(a+b)h_0$, proving the formula.
+Consequently the restriction image from $D'_1$ also has
+dimension one, and Poincare duality proves that each of
+the two relevant Gysin images has dimension one.
+
+For the actual chosen relative ample restriction $h$, the
+element $j_{i*}c_{1,\ell}(h)^{m-1}$ is nonzero by
+\eqref{r16sc:degree}. It therefore generates the respective
+Gysin image, proving \eqref{r16sc:image} in the central
+degree as well. When $n=3$ we do not assert that the full
+$H^2(E)$ is one-dimensional or that $h$ is a multiple of
+$h_0$; nonvanishing in a one-dimensional \emph{image}
+is the only assertion needed.
+\end{proof}
+
+\begin{theorem}[Full local G for the supplied split hypersurface families]
+\label{r16sc:full-G}
+For every $n\geq3$ and every pair $a,b\geq1$, each smooth
+projective hypersurface supplied with the transverse local
+degeneration of Proposition~\ref{r16sc:hypersurface-images}
+satisfies full strong G in every positive codimension.
+The same is true for every smooth projective geometrically
+integral dominant image of such a hypersurface after a finite
+valued extension, with all degrees, forms and actual tests
+interpreted over the original local field.
+
+For each fixed $n,a,b$, the indicated local family is nonempty
+after a finite unramified extension of any given $p$-adic
+field. There is no bound on $a+b$. In particular the construction
+includes degrees $a+b>n+2$, where the smooth hypersurface has
+ample canonical bundle.
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{r16sc:hypersurface-images} supplies the
+scalar image condition in every degree. Apply
+Theorem~\ref{r16sc:correction} and
+Corollary~\ref{r16sc:actual} degree by degree. These prove
+zero obstruction, and hence exact-support strong G, not merely
+a current identity or a statement for algebraic test classes.
+
+The first-jet incidence and residue-coset density proof of
+Corollary~\ref{r16tb:nonempty} works in
+$\mathbf P^{n+1}$ with the same dimensions shifted.
+Here $\dim\Sigma=n-2\geq1$, so the smooth complete intersections
+are geometrically connected, and hence geometrically integral,
+as in that proof. A finite residue extension defines the
+transverse data; their lifts can be chosen with smooth generic
+hypersurface because its smooth-coefficient locus is nonempty
+Zariski open and the fixed residue coset of $G$ is Zariski dense.
+Finally adjunction for a degree-$d$ smooth hypersurface in
+$\mathbf P^{n+1}$ gives $\omega_V=\mathcal O_V(d-n-2)$,
+which is ample when $d=a+b>n+2$.
+\end{proof}
+
+\begin{corollary}[Global height on the corresponding placewise class]
+\label{r16sc:height}
+Let $X$ be smooth projective geometrically integral over a number
+field. Suppose that at every finite place its full homological
+Chow groups are covered by Theorem~\ref{r16sc:full-G}, possibly
+through its finite-extension dominant-witness clause, or by
+another proved full obstruction-zero local criterion.
+Then the canonical real height of Theorem~\ref{r16h:global-height}
+is defined on the full complementary geometrically homologically
+trivial rational Chow groups of $X$.
+\end{corollary}
+
+\begin{proof}
+The proved local statements give zero actual curvature obstruction
+for every required class at every finite place. Thus the local
+obstruction-zero domain in Theorem~\ref{r16h:global-height}
+is the full geometric homological Chow group in each degree.
+Apply that theorem, including its archimedean construction,
+native field normalization, principal law and good-place finiteness.
+No converse from the existence of a Green form to obstruction
+vanishing is needed.
+\end{proof}
+
+\paragraph{Limits.}
+No assertion is made that an arbitrary hypersurface admits this
+two-component degeneration after extension, or that an arbitrary
+variety is dominated by one of these supplied models. The central
+odd-dimensional argument used the particular hypersurface and
+complete-intersection center in \eqref{r16sc:general-model}; it
+does not close the middle-degree gate for arbitrary two-component
+SNC models. The global consequence requires its stated local
+hypotheses at every finite place and is not a proof of the general
+unconditional Beilinson--Bloch height conjecture.

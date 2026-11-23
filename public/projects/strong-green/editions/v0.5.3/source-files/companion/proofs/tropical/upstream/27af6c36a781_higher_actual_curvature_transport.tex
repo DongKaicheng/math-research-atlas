@@ -1,0 +1,333 @@
+\section{Finite actual curvature transport in every relation degree}
+\label{sec:r12-higher-actual-transport}
+
+\paragraph{Status and scope.}
+The constructor of this source is \texttt{/root}.  The formulas below
+are submitted as \textbf{PROVED THIS ROUND}, subject to exact-source
+independent review.  Their degrees one and two recover the frozen CPT
+and QHT formulas, respectively; those cases are not new results.
+The new statement is one finite nonclosed homotopy, with its entire
+defect retained, in every higher relation degree.  This is an actual
+cochain tool, not a theorem that an arbitrary matrix overlap or a
+higher raw cube has the necessary factorization.  No new cycle-existence
+class or full-kernel theorem is asserted here.
+
+\subsection{The actual complex and the full nonclosed formula}
+
+On an ordinary analytic open $W$ over the original field, use the
+array convention
+\[
+ L_k^s(W)=\bigoplus_{i=0}^k B^{s-i,s-k+i}(W),\qquad
+ (\partial_k u)_i=d''u_i+d'u_{i+1}\quad(0\le i<k).
+ \tag{HCT1}
+\]
+Negative bidegrees mean zero.  Put $L_0^s=B^{s,s}$ and
+$D=d'd''$ on this term.  Full anticommutation gives
+$\partial_{k-1}\partial_k=0$ for $k\ge2$ and $D\partial_1=0$.
+The array orders in the frozen notation are
+\[
+ L_1:(\beta,\alpha),\qquad L_2:(B,M,A),\qquad
+ L_3:(V,Q,P,U).
+ \tag{HCT2}
+\]
+Thus (HCT1) is exactly the two-colour complex already used for
+actual pairs, triples, quadruples and finite higher descent.
+
+Let $h\in B^{t,t}(W)$ be actual, with $t\ge0$.  For $k\ge1$
+and an arbitrary, not necessarily closed $u\in L_k^s(W)$, define
+$J_k(h,u)=v\in L_{k+1}^{s+t+1}(W)$ by
+\[
+ \begin{split}
+ v_i&=-d'h\wedge u_i &&(0\le i\le k-1),\\
+ v_k&=-h\wedge d''u_{k-1},\\
+ v_{k+1}&=d''h\wedge u_k.
+ \end{split}
+ \tag{HCT3}
+\]
+For $g\in L_0^s(W)$ define instead
+\[
+                 J_0(h,g)=(h\wedge d'g,\ d''h\wedge g).
+ \tag{HCT4}
+\]
+All indices and bidegrees in these formulas are literal; no inverse
+operator or choice of a primitive is involved.
+
+\begin{theorem}[All-degree identity with its nonclosed defect]
+For every $k\ge1$ and every actual $u\in L_k^s(W)$,
+\[
+ \partial_{k+1}J_k(h,u)
+       =Dh\wedge u-J_{k-1}(h,\partial_k u).
+ \tag{HCT5}
+\]
+At degree zero the precise endpoint identity is
+\[
+                  \partial_1J_0(h,g)=Dh\wedge g-h\wedge Dg.
+ \tag{HCT6}
+\]
+In particular, if $\partial_k u=0$ has been independently verified,
+then $Dh\wedge u$ is the displayed actual boundary
+$\partial_{k+1}J_k(h,u)$.
+\end{theorem}
+
+\begin{proof}
+Write $p=\partial_k u$.  Since $h$ has even total degree, its first
+derivatives have odd total degree.  For $0\le i\le k-2$, full
+Leibniz expansion gives
+\[
+ \begin{split}
+ d''v_i+d'v_{i+1}
+ &=Dh\wedge u_i+d'h\wedge d''u_i+d'h\wedge d'u_{i+1}\\
+ &=Dh\wedge u_i+d'h\wedge p_i.
+ \end{split}
+ \tag{HCT7}
+\]
+The two final components, without using closedness of $u$, are
+\[
+ \begin{split}
+ d''v_{k-1}+d'v_k&=Dh\wedge u_{k-1}-h\wedge Du_{k-1},\\
+ d''v_k+d'v_{k+1}&=Dh\wedge u_k-d''h\wedge p_{k-1}.
+ \end{split}
+ \tag{HCT8}
+\]
+For $k\ge2$, the penultimate component of $J_{k-1}(h,p)$ is
+$-h\wedge d''p_{k-2}=h\wedge Du_{k-1}$.  Its other components
+are exactly the negatives of the extra terms in (HCT7)--(HCT8).
+For $k=1$, (HCT4) gives the same result because
+$d'p_0=Du_0$.  Finally,
+\[
+ d''(h\wedge d'g)+d'(d''h\wedge g)
+             =Dh\wedge g-h\wedge Dg,
+ \tag{HCT9}
+\]
+which proves (HCT6).  No property of the coefficient forms beyond
+actualness, the full Leibniz rules and anticommutation has been used.
+\end{proof}
+
+If $k=1$ and $u=(\beta,\alpha)$ is closed, then the middle
+component in (HCT3) is $h\wedge d'\alpha$; after the reordering
+(HCT2) this is exactly CPT2.  For $k=2$, reordering (HCT3) is
+exactly QH2, including its nonclosed correction.  These identifications
+also fix all signs; the higher statement does not replace either
+frozen formula by a different representative.
+
+\subsection{An extending higher coefficient and a singular curvature}
+
+Let $W=N\setminus C$ be ordinary opens, let $R\in B^{1,1}(N)$
+be closed in both colours, and let
+\[
+ e\in L_k^a(N),\qquad \partial_k e=0,\qquad k\ge1.
+ \tag{HCT10}
+\]
+Suppose actual scalars on $W$ give $C_j=R-D\Phi_j$ for
+$1\le j\le b$.  For a multi-index $\nu$ of total degree $d\ge1$
+put
+\[
+ h_\nu=-\sum_{j:\nu_j>0}\Phi_j
+ \left(\sum_{\ell=0}^{\nu_j-1}C_j^\ell R^{\nu_j-1-\ell}\right)
+ \left(\prod_{i<j}C_i^{\nu_i}\right)R^{\sum_{i>j}\nu_i}.
+ \tag{HCT11}
+\]
+For a homogeneous $P=\sum_\nu t_\nu X^\nu$ of degree $d$,
+write $h_P=\sum_\nu t_\nu h_\nu$.  This is the literal CPT7
+potential, with all powers and mixed terms retained.  Its finite
+telescoping identity is
+\[
+                 Dh_P=P(C_1,\ldots,C_b)-P(1,\ldots,1)R^d.
+ \tag{HCT12}
+\]
+Consequently
+\[
+ P(C_1,\ldots,C_b)e|_W
+   =\partial_{k+1}J_k(h_P,e|_W)+P(1,\ldots,1)R^d e|_W.
+ \tag{HCT13}
+\]
+The last cochain is actual on all of $N$.  For $d=0$ use a zero
+witness and the evident equality.
+
+For example, a separately established entire-overlap equality
+\[
+ u_1-u_0=\partial_{k+1}v+
+                 \sum_j P_j(C_{j,1},\ldots,C_{j,b_j})e_j|_W,
+                 \qquad \partial_k e_j=0\text{ on }N,
+ \tag{HCT14}
+\]
+has the explicit boundary-plus-extending-cochain presentation obtained
+by adding $J_k(h_{P_j},e_j|_W)$ to $v$ and replacing each polynomial
+factor by $P_j(1,\ldots,1)R^{\deg P_j}$.  The equality (HCT14),
+and the closedness of every coefficient $e_j$ by itself, are genuine
+input hypotheses.  Neither follows from closedness of the entire
+sum, from a relation in a formal coefficient algebra, or by cancelling
+a possibly zero-divisor curvature factor.  No assertion is made that
+multiplication by a singular $C_j$ acts on a quotient modulo extending
+cochains.
+
+\subsection{Explicit higher unit cycles}
+
+Let $a_j=v(\lambda_j)$ for original-$K$ analytic units on $N$,
+so $Da_j=0$ in actual $B$.  Define
+\[
+ E_2(a_1,a_2)=(a_2d'a_1,\ a_1d''a_2)\in L_1^1(N),
+ \qquad
+ E_k(a_1,\ldots,a_k)=J_{k-2}(a_k,E_{k-1})\quad(k\ge3).
+ \tag{HCT15}
+\]
+These are finite, multilinear actual expressions, with no formal
+unit quotient being substituted for a form.  They satisfy
+\[
+ E_k\in L_{k-1}^{k-1}(N),\qquad \partial_{k-1}E_k=0.
+ \tag{HCT16}
+\]
+Indeed the two terms in $\partial_1E_2$ cancel, including the terms
+that vanish because $Da_1=Da_2=0$, and induction follows from
+(HCT5) with $Da_k=0$.
+
+The final component and its full double-prime curl are
+\[
+ \begin{split}
+ (E_k)_{k-1}
+   &=\epsilon_k a_1\,d''a_2\wedge\cdots\wedge d''a_k,\\
+ d''(E_k)_{k-1}
+   &=\epsilon_k d''a_1\wedge\cdots\wedge d''a_k,
+ \qquad \epsilon_k=(-1)^{(k-1)(k-2)/2}.
+ \end{split}
+ \tag{HCT17}
+\]
+The induction sign comes from moving $d''a_k$ past $k-2$
+double-prime factors.  For $k=3$, (HCT15), reordered as $(A,B,M)$,
+is precisely the already frozen CU6 triple
+\[
+ (-a_1d''a_2\wedge d''a_3,\quad
+   a_2d'a_1\wedge d'a_3,\quad a_3d'a_1\wedge d''a_2).
+ \tag{HCT18}
+\]
+Its recognition at degree three is not a new independent residue
+theorem.  For $k\ge4$, no identification of (HCT15) with any
+specified higher raw Gaussian or commuting-diagonal cell is claimed.
+Such an identification would require another entire-expression proof.
+
+\subsection{Why a strict higher witness cannot be required}
+
+\begin{proposition}[A specified extending higher cycle need not be strict]
+For every $r\ge k\ge2$ and every $q\ge0$, there is an ordinary
+original-$K$ analytic model of dimension $n=r+q$ and an actual
+cochain $e\in L_{k-1}^{r-1}$, defined everywhere on that model,
+such that $\partial_{k-1}e=0$ but no actual $t\in L_k^{r-1}$
+satisfies $e=\partial_k t$ there.
+\end{proposition}
+
+\begin{proof}
+Use
+\[
+ N=(\mathbb G_m^k)^{\rm an}\times(\mathbf P^{r-k}_K)^{\rm an}
+                       \times(\mathbf P^q_K)^{\rm an}.
+ \tag{HCT19}
+\]
+Write $a_i=v(T_i)$ for the original torus coordinates.  Let $R$ be
+the standard projective curvature on the middle factor and let
+$\Omega$ be the $q$th power of the standard projective curvature
+on the last factor.  A zero-dimensional projective factor has
+integral one, and the corresponding zeroth power is $1$.  Set
+\[
+                        e=R^{r-k}E_k(a_1,\ldots,a_k).
+ \tag{HCT20}
+\]
+Its bidegrees and closedness follow from (HCT16).  Choose an original
+$\pi\in K$ with $\gamma=v(\pi)>0$, and a nonzero nonnegative
+$\chi\in C_c^\infty((0,\gamma)^k)$.  Put
+\[
+ \eta=\chi(a_1,\ldots,a_k)\,
+            d'a_1\wedge\cdots\wedge d'a_k\wedge\Omega.
+ \tag{HCT21}
+\]
+This is an actual compactly supported form of bidegree $(k+q,q)$.
+Compactness holds because a compact valuation box has compact
+polyannulus inverse image and both projective factors are proper.
+The prime degree on the torus is already maximal, hence $D\eta=0$.
+No rational-valued intercept or density of rational points is needed;
+all points of the Berkovich torus participate in the actual form.
+
+If $e=\partial_k t$, its final component gives
+\[
+                         d''e_{k-1}=-Dt_k.
+ \tag{HCT22}
+\]
+For $r=k$ the degree of $t_k$ has negative first entry, so it is
+zero; for all other ranks, two actual Stokes identities after wedging
+with (HCT21) give the same conclusion
+\[
+                      \int_N d''e_{k-1}\wedge\eta=0.
+ \tag{HCT23}
+\]
+On the other hand, original-field torus integration and the standard
+projective calibrations give
+\[
+ \int_N d''e_{k-1}\wedge\eta
+   =\epsilon_k\int_N R^{r-k}\wedge d''a_1\wedge\cdots\wedge d''a_k
+                                      \wedge\eta\ne0.
+ \tag{HCT24}
+\]
+The orientation fixes the sign, which is irrelevant to nonvanishing;
+the projective masses are one and $\int\chi>0$.  This contradicts
+(HCT23).  Only products and actual integration are used, not an
+unproved preservation of actual forms by arbitrary proper pushforward.
+\end{proof}
+
+This proposition is a \textbf{ROUTE FAILURE} only for insisting on
+a strict witness for the specified cochain (HCT20).  The very same
+cochain is already an extending error.  Thus it supplies no
+counterexample to relative higher gluing, original-support Green
+existence, or entire actual OPEN-KERNEL.  It is not a claim that
+every higher raw path has this obstruction.  The mixed-degree test
+is used to detect a single false actual equality, not to replace the
+all-actual-test requirement in the original conjecture.
+
+\subsection{Actual presentations, topology and the original-field interface}
+
+Every object in (HCT1)--(HCT24) is an actual Mihatsch form or a finite
+tuple of such forms on an ordinary open.  The equivalence used for
+closed cochains is difference by a displayed actual $\partial$
+boundary; a relative equality additionally specifies an actual
+cochain on the unpunctured ordinary open.  No completion, dual
+element or unspecified equivalence class is counted as a witness.
+
+The local presentations use only finitely many actual coefficient
+presentations, full derivatives and wedge products.  All identities
+commute with restriction, common refinement and analytic substitution
+whenever the input actual forms admit the stated pullback.  Unlike a
+native radial contraction, (HCT3) does not operate on a chosen ambient
+coordinate that might disappear in the analytic quotient: it is built
+intrinsically from the input actual $h,u$ themselves.  Consequently
+an actual zero relation stays zero in every argument where the formula
+is linear.  Nonproduct unit tuples such as $(T_1,T_2,T_1+T_2)$ on
+their domain of invertibility cause no extra assumption.  A vanishing
+pullback of their top wedge merely makes that particular detector
+vanish; it does not alter the actual identities.
+
+Give each $L_k^s$ the product of its own inherited actual coefficient-final
+topologies, and its closed-cochain subspace the inherited topology.
+For fixed finite common presentations, all mixed coefficient
+seminorms of (HCT3) are controlled by finite Leibniz estimates.
+Nothing here identifies a full final topology with an inherited
+kernel topology, proves a general closed-range theorem, or produces
+a globally continuous linear retraction.
+
+The use in Green theory is only as follows: first prove an actual
+entire-overlap factorization such as (HCT14), then insert the explicit
+witnesses into the precisely specified finite higher descent data,
+and finally apply frozen RSP on the original exact $U$.  This source
+does not supply the missing factorization or the remaining higher
+Cech data.  It introduces no extension of $K$, no change of absolute
+value, no division by a field degree, and no extra growth condition.
+
+\paragraph{Exact frozen inputs.}
+CPT: \path{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6}.
+QHT: \path{aa10132dc6e8217dfa4c896699c76eaed90ce4d632abc5e0147cb9e278c423e0}.
+CU: \path{d38d0c77f879e3ca80962fa0fac2e56f6ea159fd59971a0bd810fbadc0a91471}.
+Finite higher-complex convention FHD:
+\path{c747f64b332027c5eea26dde22b7144e67c613ea96d4f2f1ff35a71b322fd37e}.
+The original-field standard projective calibration is the one in
+frozen AAT7--AAT10,
+\path{bd9f22da3a13de7e3b6bf77f7d00b487d57e9f4630fbfb014ceade7acf5abb1e}.
+The internal reviews of these inputs are not formal verification,
+external peer review, or a novelty claim.  This source requires its
+own exact-hash nonconstructor reviews.

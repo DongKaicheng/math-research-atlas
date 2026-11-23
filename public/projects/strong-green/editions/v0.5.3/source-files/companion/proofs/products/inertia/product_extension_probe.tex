@@ -1,0 +1,404 @@
+% Round 20, inertia20. New independent verification of a historical R9
+% candidate. Not a modification or automatic activation of the old archive.
+\section{Two bad surface factors: a staircase and projector verification}
+\label{r20px:section}
+
+\paragraph{Status and provenance.}
+The argument below independently reconstructs the two-factor part of
+the historical R9 ST/TR candidate. The old files are not treated as
+frozen theorems. The new surface-incidence inverse of AS20/PI20 is used
+only after its elementary proof is recalled below. This note proves
+the geometric component and incidence assertions needed for two bad
+surface factors, including genuine triple intersections in either
+factor. It does not activate the historical arbitrary-factor DT/UP
+claim. Independent review of this new source is required before it
+enters the Round 20 frozen theorem register.
+
+All Chow groups have rational coefficients. A cohomological identity
+of correspondences means an identity on full geometric etale
+cohomology, with the actual degree and Tate shifts; it need not be an
+identity in the Chow group. Numerical degrees below are always on
+proper varieties over a finite residue field.
+
+\subsection{The ordered staircase and its component towers}
+
+Let $R$ be a complete DVR with finite residue field $k$, and let
+$\mathcal S,\mathcal T$ be regular projective reduced strictly
+semistable surface models. After a finite unramified extension, split
+the finitely many component and stratum constants and the actions on
+the geometric Neron--Severi groups of all surface components.
+The zero-dimensional strata and all point centers in the surface
+factorizations below may be split by a further finite unramified
+extension; such extensions preserve the entire construction.
+Fix total orders
+on the components $S_i$ and $T_j$. Put
+$E_{ia}=S_i\cap S_a$, $F_{jb}=T_j\cap T_b$, treating nonempty
+connected components separately.
+
+At a product stratum with $r$ and $s$ local components, the vertical
+cone has lattice and rays
+\[
+ N=\{(a,b)\in\mathbf Z^r\oplus\mathbf Z^s:
+              \textstyle\sum a=\sum b\},\qquad
+ \sigma=N_{\mathbf R}\cap\mathbf R_{\geq0}^{r+s},\qquad
+ n_{ij}=(e_i,f_j).
+ \tag{PX20.1}
+\]
+Its height-one section is $\Delta^{r-1}\times\Delta^{s-1}$.
+Subdivide it into the monotone-path simplices for the fixed orders.
+The resulting cone complex glues on every face. Each maximal cone is
+unimodular: one first ray, followed by successive path-ray differences,
+is an integral basis of $N$. Every vertical ray still has height one.
+Thus the resulting toroidal modification $\mathcal P$ is regular
+strictly semistable and has precisely the components $P_{ij}$
+continuing $S_i\times T_j$.
+
+We specify projectivity, rather than silently impose it on an arbitrary
+subdivision. Give the vertex $(i,j)$ height $-ij$, using the globally
+chosen integer positions in the two orders. These heights give the
+staircase regular subdivision. Indeed, if a positive convex
+combination uses two incomparable pairs $(a,b'),(a',b)$ with
+$a<a'$ and $b<b'$, transferring equal small mass to
+$(a,b),(a',b')$ preserves both marginal coordinates and strictly
+decreases height by a positive multiple of
+$(a'-a)(b'-b)$. A minimizing combination therefore has chain support.
+The monotone coupling of the two marginal distributions gives such
+a chain, and its vertices extend to a monotone path. Conversely,
+strictly positive masses on a maximal path, with distinct cumulative
+marginals, give its unique monotone coupling; hence every path is a
+lower simplex. This is the claimed lower subdivision. The integral
+piecewise linear functions
+agree on faces, so the toroidal modification is projective; equivalently
+its Cartier boundary divisor given by these heights is relatively
+ample, with the sign corresponding to the lower-hull convention.
+The monomial local charts are the same charts used in Hartl,
+Proposition 2.1. This description selects a particular ordered
+staircase resolution, not every possible order of Hartl blowups.
+
+\begin{lemma}[Binary component tower, including triple times triple]
+\label{r20px:tower}
+The natural morphism
+\[
+                f_{ij}:P_{ij}\longrightarrow S_i\times T_j
+ \tag{PX20.2}
+\]
+is a sequence of blowups of smooth codimension-two centers. The
+centers are strict transforms of the products $E_{ia}\times F_{jb}$
+with either $a<i,b<j$ or $a>i,b>j$. Lower pairs are ordered in
+ascending product order and upper pairs in descending product order.
+Every center is a smooth projective surface birational to a product
+of two smooth projective curves. Consequently
+\[
+ h(P_{ij})=h(S_i\times T_j)\oplus K_{ij},
+ \qquad K_{ij}\text{ is of abelian type},
+ \tag{PX20.3}
+\]
+with actual rational Chow correspondences for the decomposition and
+its inverse. The projector onto the base summand is
+$f_{ij}^{*}f_{ij*}$.
+\end{lemma}
+
+\begin{proof}
+Here is the complete fan calculation. For a positive orthant with
+basis $u_1,\ldots,u_m,v_1,\ldots,v_n$, set $u_0=v_0=0$.
+Star-subdivide each two-face $\langle u_a,v_b\rangle$ by
+$u_a+v_b$, in any reverse-product order. The maximal cones become
+\[
+ \langle u_a+v_b:(a,b)\in C\setminus\{(0,0)\}\rangle,
+ \tag{PX20.4}
+\]
+where $C$ runs through monotone paths from $(0,0)$ to $(m,n)$.
+Proof is by induction on $m+n$. The first ray is $u_m+v_n$.
+Its two cones omit respectively $v_n$ and $u_m$. Subsequent
+subdivisions restrict to the $(m,n-1)$ and $(m-1,n)$ problems,
+each with the extra final ray. A different two-face subdivision
+cannot remove the two-face $\langle u_a,v_b\rangle$ before its
+own step. Each center is therefore a smooth codimension-two
+toroidal stratum. The induction gives exactly the paths classified
+by their last step.
+
+The quotient star of $n_{ij}$ in (PX20.1) has coordinates
+\[
+ n_{aj}\mapsto u_a,\quad n_{ib}\mapsto v_b,\quad
+ n_{ab}\mapsto u_a+v_b\quad(a\ne i,b\ne j).
+ \tag{PX20.5}
+\]
+The last formula follows from
+$n_{ab}+n_{ij}=n_{aj}+n_{ib}$. A path through $(i,j)$ splits
+uniquely into the lower and upper paths; their coordinate sets are
+disjoint. Apply (PX20.4) to those two orthants, reversing the lower
+orders. This gives precisely the center list and order asserted in
+the lemma. For example, the star at $(0,0)$ of
+$\Delta^2\times\Delta^2$ is obtained by the four subdivisions
+\[
+ u_2+v_2,\quad u_2+v_1,\quad u_1+v_2,\quad u_1+v_1.
+ \tag{PX20.6}
+\]
+It has the six monotone-path maximal cones. No triple stratum is
+removed or replaced by a node assumption.
+
+Globalize this list by the fixed global orders. Restricting it to
+indices present in a chart gives precisely the local list just
+proved. The centers are intersections of the relevant two strict
+transform boundary divisors; their two-face has not yet been
+subdivided. The reduced total boundary remains SNC after every
+step, proving smoothness of the centers. Both modifications have
+the same local fan and are the identity on their common dense open;
+the identifications therefore glue over $S_i\times T_j$.
+
+Each center has a projective birational map to its original
+$E_{ia}\times F_{jb}$. A birational morphism of smooth projective
+surfaces factors into point blowups, in arbitrary characteristic
+(Stacks Project, Lemma 54.17.1, Tag 0C5R).
+The curve-product motive and the additional point motives are of
+abelian type. The smooth blowup motive formula proves (PX20.3)
+with the indicated base projector. This argument does not assume
+that closed strata of $\mathcal P$ are toric bundles.
+\end{proof}
+
+\subsection{Actual same-label double strata}
+
+\begin{lemma}[No hidden double stratum]
+\label{r20px:double}
+Every connected double stratum joining $P_{ij}$ to $P_{il}$ maps
+properly birationally to a connected component of
+$S_i\times (T_j\cap T_l)$ and is an isomorphism away from
+$\partial S_i\times (T_j\cap T_l)$. There is no additional
+double component supported entirely over $\partial S_i$.
+If the $S$ label changes instead, the double stratum maps into
+$\partial S_i$ on its $S_i$ side. The symmetric assertions hold
+with $S,T$ interchanged.
+\end{lemma}
+
+\begin{proof}
+Over $S_i^{\circ}=S_i\setminus\partial S_i$, the first local
+simplex is $\Delta^0$. The staircase modification is the ordinary
+product, giving the asserted dense open map. To exclude an extra
+component, let $x_a$ be the local equation of a different first-factor
+component. Its valuation is zero on both rays $n_{ij},n_{il}$.
+It is therefore invertible at the generic orbit of their two-cone.
+Thus a double component cannot be supported over $x_a=0$.
+Equivalently, its support there would force it into a third distinct
+vertical component, contradicting the SNC codimension of a triple
+intersection. The same argument holds on all local charts and after
+passing to each connected component. Each remaining-factor double
+component therefore has exactly one dense open inverse image.
+Properness gives the birational statement. When the first labels
+differ, the map factors through their intersection by definition.
+\end{proof}
+
+\subsection{A supported-cohomology transport calculation}
+
+\begin{lemma}[Transport with all exceptional inputs]
+\label{r20px:transport}
+Let $f:D\to B$ be a proper birational morphism of smooth projective
+varieties, an isomorphism off $Z\subset B$. Let $p$ be a self-adjoint
+algebraic cohomological projector on $B$ annihilating
+$\operatorname{im}(H_Z^*(B)\to H^*(B))$. Then $P=f^*pf_*$ is
+a self-adjoint algebraic projector. In a commutative square
+\[
+\begin{matrix}
+ E&\xrightarrow{g}&D\\
+ f'\downarrow&&\downarrow f\\
+ B'&\xrightarrow{h}&B,
+\end{matrix}
+ \tag{PX20.7}
+\]
+assume $g,h$ are smooth-divisor embeddings, $f'$ is proper
+birational and an isomorphism off $Z'=h^{-1}Z$, and $p'$ is the
+analogous projector on $B'$ satisfying $h^*p=p'h^*$. Then
+\[
+ g^*P=P'g^*,\qquad Pg_*=g_*P',\qquad P'=f'^*p'f'_*.
+ \tag{PX20.8}
+\]
+\end{lemma}
+
+\begin{proof}
+The identity $f_*f^*=1$ gives idempotence, and transposition gives
+self-adjointness. Decompose $\beta\in H^*(D)$ as
+$f^*f_*\beta+\beta_0$, with $f_*\beta_0=0$. On the first
+summand (PX20.8) follows from the square and $h^*p=p'h^*$.
+The class $\beta_0$ vanishes on the locus where $f$ is an
+isomorphism. Localization puts it in supported cohomology over
+$f^{-1}Z$. Its pullback to $E$ and pushforward to $B'$ are
+supported over $Z'$. The projector $p'$ kills the latter class.
+This proves the first identity on the exceptional summand as well.
+Taking Poincare adjoints gives the second identity.
+\end{proof}
+
+For a smooth projective surface $S$, choose the self-adjoint
+surface Chow--Kunneth projector $p_S$ onto the orthogonal complement
+of divisor classes in $H^2(S)$, zero in other degrees. This is an
+actual rational algebraic projector; see Kahn--Murre--Pedrini,
+Propositions 7.2.1 and 7.2.3. For a union $B$ of SNC boundary curves,
+\[
+ p_S\operatorname{im}(H_B^*(S)\to H^*(S))=0,
+ \qquad p_S|_{H^*(B)}=0
+ \tag{PX20.9}
+\]
+where the second formula means restriction after $p_S$.
+Indeed the only supported image in degree two is generated by the
+boundary divisor classes; point intersections contribute nothing
+in that degree. Restriction to a boundary curve is the same divisor
+pairing. Kunneth with supports gives the same assertions for
+$p_S\boxtimes1$ and $B\times T$, for any smooth projective $T$.
+Only these cohomological annihilations are used; no Chow-level
+annihilation by arbitrary maps to curves is inferred.
+
+\subsection{The four sectors and a cohomological inverse}
+
+Let $A=\sigma\rho$ be the actual incidence correspondence of
+$\mathcal P$, of degree one. On each $P_{ij}$ put
+\[
+ P^S=f_{ij}^*(p_{S_i}\boxtimes1)f_{ij*},\qquad
+ P^T=f_{ij}^*(1\boxtimes p_{T_j})f_{ij*}.
+ \tag{PX20.10}
+\]
+They commute because $f_{ij*}f_{ij}^*=1$. Keep individual
+$S_i$ and $T_j$ labels separate on the direct sum of components.
+Lemma \ref{r20px:double}, (PX20.9), and
+Lemma \ref{r20px:transport} show that every boundary restriction
+and its Gysin adjoint commute with the corresponding projectors.
+An edge changing a transcendental factor label has zero restriction
+on that sector. Thus $A$ preserves the four orthogonal sectors
+\[
+ P^SP^T,\quad P^S(1-P^T),\quad(1-P^S)P^T,\quad
+ Q=(1-P^S)(1-P^T).
+ \tag{PX20.11}
+\]
+
+On $P^SP^T$, $A=0$. On the summand with fixed $t_2(S_i)$,
+transport back by $f_{ij*},f_{ij}^*$ identifies $A$ with
+\[
+                    1_{t_2(S_i)}\boxtimes A_{\mathcal T}.
+ \tag{PX20.12}
+\]
+For an off-diagonal entry this follows from the degree-one
+birational map of Lemma \ref{r20px:double}: its pushforward after
+pullback is the identity. The diagonal is the negative sum of the
+boundary self-intersections; applying the same argument with the
+same endpoint on both sides includes every diagonal term. The
+entries changing the first label are zero. The assertion with
+$S,T$ reversed follows identically.
+
+Recall why the required surface inverse is already rigorous without
+surface Tate conjectures. On the disjoint union of native surface
+components the incidence is a correspondence in $\operatorname{CH}^3$.
+Jannsen's numerical semisimplicity gives a numerical inner inverse
+represented by a divisor correspondence $G\in\operatorname{CH}^1$.
+The error $A-AGA$ is a numerical-zero curve on a product of two
+surfaces. Frozen SP19 curve comparison makes its entire geometric
+class zero. Hence $AGA=A$ on full cohomology for every invertible
+prime. To use it on $1-p_T$ in (PX20.11), replace $G$ by
+$(1-p_T)G(1-p_T)$; $A$ annihilates $p_T$ on both sides, so the
+inner-inverse identity persists. This splits both single-$t_2$
+sectors of (PX20.11).
+
+By Lemma \ref{r20px:tower}, the remaining $Q$ sector is of abelian
+type: its base is the tensor product of the nontranscendental surface
+parts, and its additional summand is $K_{ij}$. The former parts
+consist of Tate and Picard/Albanese motives. Choose one finite product
+of abelian varieties containing all these finitely many motives and
+all needed correspondence groups inside suitable finite sums and
+Tate shifts of its powers. Theorem 1 and Remark (b) of
+Deligne--Clozel (2009) supply a single invertible prime $\ell$ for
+which numerical and geometric homological equivalence coincide on
+all those powers. Jannsen's numerical semisimplicity then provides
+an algebraic inner inverse for $QAQ$, including each degree and
+Tate block. This does not apply numerical semisimplicity to an
+unidentified full category of homological motives.
+For the native residue-field version, numerical zero remains zero
+against geometric test cycles: descend any such test to a finite
+constant extension and use its norm, the full extension degree,
+and the projection formula. Thus native numerical-zero
+correspondences also have zero geometric class at this selected
+prime. No degree on the absolute arithmetic model is used.
+
+Summing the three nonzero-sector inverses gives an actual rational
+correspondence $G$ on $\coprod P_{ij}$ with
+\[
+                         A^HG^HA^H=A^H
+ \tag{PX20.13}
+\]
+on all geometric cohomology, at the one selected $\ell$.
+All choices over a finite residue extension descend by normalized
+Galois averaging: (PX20.13) is linear in $G$, and $A$ descends.
+The claim here is at one suitable prime; an all-prime assertion for
+the residual abelian-type core has not been proved by this argument.
+
+\begin{theorem}[Two bad surfaces with arbitrary good coefficients]
+\label{r20px:local}
+Assume the frozen AK19, OW19, VT17, FD17 and R16 descent interfaces.
+Fix a finite valued extension $K/\mathbf Q_p$ and its original
+absolute value. Let $S,T/K$ be arbitrary smooth projective
+geometrically integral surfaces. Let $V/K$ be any smooth projective
+geometrically integral variety having a smooth projective model
+after a finite valued extension. Then every specified geometrically
+homologically trivial rational cycle on $V\times S\times T$, in
+every codimension $1\leq r\leq\dim(V\times S\times T)$, has an
+ordinary-actual strong Green form on the
+complement of its exact support, tested against all actual compact
+forms. The assertion applies afresh after every finite valued
+extension and to all new cycles over that extension.
+\end{theorem}
+
+\begin{proof}
+Take a common finite valued extension giving a smooth projective
+model of $V$ and semistable projective alterations of both surfaces.
+Repair further ramified factor base changes by Hartl 2.2 before
+forming the product, as in frozen SP19. Split component constants
+unramifiedly and use the ordered staircase model above.
+Its product with the smooth model of $V$ has incidence and inverse
+$\Delta_{V_0}\boxtimes A$ and $\Delta_{V_0}\boxtimes G$.
+Equation (PX20.13) holds on full cohomology, including all mixed
+Kunneth summands. Both maps are actual Chow correspondences and
+therefore preserve the actual algebraic class span and its
+numerical projection. The correction $x-G^HA^Hx$ proves
+$\Delta_A=0$ in every degree, exactly as in PI20/AK19.
+
+All degrees of surface cohomology satisfy weight--monodromy, and
+the good factor has pure unramified cohomology. Kunneth and tensor
+stability give the odd-weight hypothesis of frozen OW19 in every
+required degree. Thus the actual inertia image is zero for this
+specific witness. AK19 makes every pulled-back homological cycle
+obstruction zero. R16 dominant detection and finite trace descent,
+with the full field degree and the original absolute value, return
+this vanishing to the specified original cycle; VT17 gives the
+asserted actual form with all tests and exact support. No alteration
+is assumed finite on the specified complement.
+\end{proof}
+
+\paragraph{Exact boundary of the present verification.}
+The statement for two surfaces alone is already contained in frozen
+SP19's four-dimensional all-codimension sector. The extra good
+coefficient allows higher-dimensional mixed cycles, including the
+middle codimension-three sector when $\dim V=1$. The idea and its
+historical candidate proof occurred in R9 ST/TR; this note makes no
+priority claim and does not silently revise historical registers.
+For arbitrary products of three or more bad surfaces, the deletion
+projector and residual-core argument requires additional geometric
+generator compatibility. The R9 DG/GL/DT files propose such a proof,
+but this binary verification alone does not establish it. General
+strong $G$ and arbitrary-variety complete Beilinson--Bloch height
+remain open.
+
+\paragraph{Primary sources checked for scope.}
+Hartl, \emph{Semi-stability and base change}, Arch. Math. 77 (2001),
+215--221, Proposition 2.1 and its two monomial charts on 218--219,
+and Proposition 2.2 on 219--221. Kahn--Murre--Pedrini,
+\emph{On the transcendental part of the motive of a surface},
+July 2005 author manuscript, Propositions 7.2.1 and 7.2.3,
+pp.12--15; the source uses covariant motives, so only its stated
+projectors and realized orthogonality are imported here.
+Deligne (written by Clozel), \emph{Equivalence numerique,
+equivalence cohomologique, et theorie de Lefschetz des varietes
+abeliennes sur les corps finis}, PAMQ 5 (2009), 495--506,
+Theorem 1 and Remarks (a)--(b), p.496. Jannsen,
+\emph{Motives, numerical equivalence, and semi-simplicity},
+Invent. Math. 107 (1992), Theorem 1, used only in numerical motives.
+The surface factorization input is Stacks Project, Tag 0C5R;
+the blowup and projective-bundle Chow formulas are Tags 0FVA and
+0FGQ, applied after every smooth projective test product to obtain
+the Chow-motive identity (Tag 0FGK, Manin's identity principle).
+No assertion in these references by itself supplies the component
+tower or projector transport: those are proved above.

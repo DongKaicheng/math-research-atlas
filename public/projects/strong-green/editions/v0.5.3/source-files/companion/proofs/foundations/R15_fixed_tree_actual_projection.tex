@@ -1,0 +1,223 @@
+% Round 15. Supplied fixed-tree actual presentations; independently reviewed.
+\section{An ambient whole-tree calculation on a fixed combinatorial chamber}
+\label{r15ft:section}
+
+A supplied affine family of one tree type admits a calculation which
+retains the complete balanced cycle before intersecting the input.
+This differs from substituting a positive-delta form into piecewise
+affine open-ray maps. The hypotheses below are explicit presentation
+data, not an assertion that every ordinary point admits them.
+
+\begin{definition}[A split affine-tree presentation]
+\label{r15ft:data}
+Let $S/K$ be smooth integral of dimension $d$ and let
+$U\subset S^{\rm an}$ be ordinary open. Let $b=(b_1,\ldots,b_N)$
+be analytic units on $U$, and let $a_1,\ldots,a_s$ be regular
+functions on a Zariski neighborhood, with distinct pairwise
+differences which are units on $U$ and are included in $b$.
+Put
+\[
+ W=(U\times\mathbf A^1)\setminus\bigcup_i\{z=a_i\},
+       \qquad f=(b,z-a_1,\ldots,z-a_s).
+\tag{FT15.1}\label{r15ft:moments}
+\]
+A split affine-tree presentation consists of an ambient open
+$O\subset\mathbf R^N$ containing $t_b(U)$ and one finite embedded
+labelled tree type with unbounded ends. Its vertices are affine
+functions $q_v:O\to\mathbf R^s$. Its oriented primitive edge
+directions are fixed; a bounded edge from $v$ to $w$ satisfies
+\[
+ q_w(u)-q_v(u)=\ell_{vw}(u)e_{vw},\qquad\ell_{vw}(u)>0,
+\tag{FT15.2}\label{r15ft:edges}
+\]
+with affine $\ell_{vw}$. Every vertex is balanced. All relative
+edge weights are one in the primitive disk-radius coordinate.
+The resulting tree $\Gamma_u$ equals the full norm image of the
+split marked fiber under $(v(z-a_i))_i$ for $u=t_b(x)$.
+Bivalent auxiliary vertices are allowed.
+
+The input has a supplied single presentation
+\[
+       \alpha=t_f^\star\omega,
+       \qquad\omega\in B^{p,q}(O\times\mathbf R^s),
+\tag{FT15.3}\label{r15ft:input}
+\]
+whose ambient support is proper over $O$. Over every compact
+base set it is thus contained in a bounded vertical box. The
+resulting ordinary zero extension over the omitted root and
+infinity sections is part of this notation. The ambient form
+is not assumed PWS or closed.
+\end{definition}
+
+The affine condition holds for supplied fixed split tree data on
+a chamber with positive bounded-edge lengths, after choosing
+affine extensions of its relations. It is a condition on an
+ordinary neighborhood, not merely on one fiber. New edges opening
+at the chosen point may prevent such a common chamber.
+
+\begin{lemma}[Stars minus lines give a balanced ambient family]
+\label{r15ft:family}
+The data give an ambient $\delta$-cycle $\mathscr T$ on
+$O\times\mathbf R^s$ of relative dimension one, with the
+whole-family weighted support of the trees $\Gamma_u$.
+\end{lemma}
+
+\begin{proof}
+For each vertex let $\operatorname{Star}_v$ be the full balanced
+fan of its outgoing rays, translated to the origin. Transport
+$\mathbf R^N\times\operatorname{Star}_v$ by the affine
+automorphism $(u,w)\mapsto(u,q_v(u)+w)$ and restrict to $O$;
+call this cycle $T_v$. For each bounded edge let $L_e$ be the
+full affine line family in its direction through either endpoint.
+All these objects are ambient $\delta$-cycles. Put
+\[
+                   \mathscr T=\sum_vT_v-\sum_{e\ {\rm bounded}}L_e.
+\tag{FT15.4}\label{r15ft:star-line}
+\]
+Along a bounded edge the opposite rays from its endpoints cover
+the intervening segment twice and each outside half-line once.
+Subtracting the full line leaves precisely that segment. Every
+unbounded ray occurs once. The same cancellation holds on the
+joint base--fiber cells because the positions and lengths are
+affine. Thus this is an equality of whole weighted cycles.
+There is no restriction of a distribution to an isolated vertex
+or a half-open edge, and later intersections retain vertex mass.
+\end{proof}
+
+\begin{theorem}[Actual projection for a supplied affine-tree presentation]
+\label{r15ft:projection}
+Under Definition~\ref{r15ft:data}, with
+$\operatorname{pr}:O\times\mathbf R^s\to O$, set
+\[
+ \beta_0=\operatorname{pr}_*(\mathscr T\wedge\omega),
+       \qquad\beta=t_b^\star\beta_0.
+\tag{FT15.5}\label{r15ft:output}
+\]
+Then $\beta$ is an ordinary actual form of degree $(p-1,q-1)$
+on $U$, with negative degrees interpreted as zero, and
+\[
+ \int_U\beta\wedge\eta
+       =\int_{U\times\mathbf P^1}\alpha\wedge\pi^*\eta
+\tag{FT15.6}\label{r15ft:comparison}
+\]
+for every ordinary smooth compact complementary test $\eta$.
+All mixed tests and every positive-delta input stratum are
+included. Different supplied presentations give the same actual
+output on an ordinary overlap. All degrees are native over $K$.
+\end{theorem}
+
+\begin{proof}
+The ambient affine $\delta$ calculus makes
+$\mathscr T\wedge\omega$ a $\delta$-form with proper support
+over $O$, and its affine pushforward is an ambient $\delta$-form
+of the claimed total bidegree. Genuine unit pullback gives the
+ordinary actual $\beta$. No closed ambient lifting is used.
+
+For the prescribed pairing, choose an affinoid chart of the test
+with support away from its analytic boundary, and append its
+entire unit tuple $c$ to $b$. Write $b'=(b,c)$, and let
+$l:\mathbf R^{N'}\to\mathbf R^N$ be coordinate projection.
+Include also the unit moments of scalar localization cutoffs,
+chosen to equal one near the paired support and zero near the
+analytic chart boundary, as in Proposition~\ref{r15ray:analytic}.
+On a common finite subdivision away from those boundary images,
+the weighted source tropical cycle is
+\[
+ T_{\rm src}=\operatorname{pr}'{}^*T_{\rm base}\wedge
+                         (l\times\mathrm{id})^*\mathscr T.
+\tag{FT15.7}\label{r15ft:cycle-product}
+\]
+Here the first pullback is product with the full vertical space.
+This equality is checked on maximal cells, before intersecting
+with the positive-delta input. A point on a maximal source
+skeletal cell has source moment graded transcendence degree $d+1$.
+Let $B$ be the graded field generated over the graded ground field
+by the initial forms of $b'$, and choose $i$ for which
+$v(w_i)$ is maximal, where $w_i=z-a_i$.
+Since $w_j=w_i+(a_i-a_j)$ and every nonzero difference occurs in $b$,
+the ultrametric rule puts every initial $w_j$ in $B(\widetilde w_i)$.
+At equal valuations, cancellation would give $v(w_j)>v(w_i)$,
+contradicting the choice of $i$. Thus the full source moment field
+has transcendence degree at most $\operatorname{trdeg}B+1$.
+It follows that $\operatorname{trdeg}B=d$; this proves full rank
+for the base moment tuple, not merely for the completed residue
+field of the base point.
+The latter graded field is algebraic over $B$, so
+$\widetilde w_i$ remains transcendental over it. The polynomial
+Gauss-norm criterion now identifies the relative point as a
+Gauss point of the split marked tree.
+Conversely these Gauss disks over full-rank base moment points
+realize every base maximal cell and every relative edge.
+A finite coordinate map on the base, combined with the primitive
+radius coordinate $z-a_i$, has the same degree as that base map.
+The native source weight is therefore the base weight times the
+relative edge weight one. This is the calibrated degree argument
+of Proposition~\ref{r15ray:analytic}, used to identify a whole tropical cycle.
+The affine family in \eqref{r15ft:star-line} has exactly those
+maximal cells and weights, proving \eqref{r15ft:cycle-product}.
+A vertex-supported input has not been discarded: it has not yet
+been intersected with this cycle.
+
+If $\eta_0$ is the smooth ambient test presentation, integration
+of actual top forms and the ambient affine projection formula give
+\[
+\begin{split}
+ \int T_{\rm src}\wedge(l\times\mathrm{id})^*\omega
+                                \wedge\operatorname{pr}'{}^*\eta_0
+ &=\int T_{\rm base}\wedge
+       \operatorname{pr}'_*(l\times\mathrm{id})^*
+                       (\mathscr T\wedge\omega)\wedge\eta_0\\
+ &=\int T_{\rm base}\wedge l^*\beta_0\wedge\eta_0.
+\end{split}
+\tag{FT15.8}\label{r15ft:refined-calculation}
+\]
+The base change here is only Cartesian product by the extra
+Euclidean test coordinates: $l$ is a surjective coordinate
+projection. It follows from affine current pushforward and flat
+product pullback, or from cellwise Fubini. No pullback of arbitrary
+analytic currents is asserted. The last integral is the pairing
+with $\beta$. A partition on the compact test support proves
+\eqref{r15ft:comparison}. Actual-current injectivity gives
+uniqueness and ordinary gluing.
+\end{proof}
+
+\begin{corollary}[Two finite marks and native finite descent]
+\label{r15ft:two-marks}
+With two distinct finite marks and infinity, the tree is a
+translated three-ray fan with vertex
+$(v(a_1-a_2),v(a_1-a_2))$. This is affine in an included base
+moment. Hence every supplied proper ambient actual presentation
+using those fiber units has the stated ordinary output, without
+any bounded-edge chamber condition. One finite mark gives the
+straight-line version.
+
+If such presentations, or general fixed-tree ones, are available
+on an ordinary covering of the full inverse image under a finite
+normal algebraic splitting cover to which the smooth-base presentation
+hypotheses apply (in particular a finite etale cover over the working
+open), the outputs descend whenever
+the output degree is in the established actual finite-trace strip.
+In particular input $(2,2)$ has output $(1,1)$ in that strip.
+\end{corollary}
+
+\begin{proof}
+The three primitive directions are $(1,0),(0,1),(-1,-1)$, with
+weights one, so the affine-family construction applies. For finite
+descent, glue upstairs by the prescribed current and apply the
+frozen actual trace in the output strip, divided by the full
+native degree. On every downstairs smooth test, the source finite
+product cover contributes exactly that same degree. This gives
+the original current. No trace in a higher actual degree is used.
+\end{proof}
+
+\paragraph{Why this fixed-tree calculation alone does not cross every wall.}
+The theorem needs a supplied ambient input and a common affine
+whole-tree family. It does not apply a delta pullback to a
+piecewise affine ray map. The subsequent universal graphic-matroid
+kernel in Section~\ref{r15ug:section} supplies the whole-cycle
+identity on every test refinement across changing tree types.
+The ambient atlas in Section~\ref{r15ad:section} and the available
+finite output trace then give Theorem~\ref{r15a2:projection}.
+The present fixed-tree construction remains a direct local proof,
+including the moving-vertex example; balancedness of a pushed
+current by itself is never substituted for an ambient representative.

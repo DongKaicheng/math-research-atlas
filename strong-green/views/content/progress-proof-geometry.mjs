@@ -1,7 +1,8 @@
 // Reading diagrams for the geometric Progress cases. The mathematical source
 // retains the geometric arguments of the unsigned v0.5.1 public edition.
-// The new construction theorem discharges its precise Chow-obstruction and
-// prescribed-pair input; the broader analytic assertions remain hypotheses.
+// The local trace, rigidity, numerical descent, covariance and admitted-domain
+// height constructions are established. Additional product-model inverses and
+// finite-test comparisons retain their separate status.
 // Every arrow below records an inference in the cited proof, not a dependency
 // inferred from a catalogue entry. Source bindings are checked by the publisher.
 const paper = '/papers/pairing-constructions';
@@ -11,7 +12,7 @@ const G = (kind, label, explanation, sources, children) => ({ kind, label, expla
 const nodeId = (caseId, key) => `proof-${caseId}-${key}`;
 const treeId = (caseId, key) => nodeId(caseId, `tree-${key}`);
 const link = (caseId, key) => `/results/proof-diagrams/${caseId}/#${nodeId(caseId, key)}`;
-const N = caseId => (key, title, anchor, note, status = 'conditional', gate, links = []) => ({
+const N = (caseId, defaultStatus = 'conditional') => (key, title, anchor, note, status = defaultStatus, gate, links = []) => ({
   id: nodeId(caseId, key), title, status,
   href: anchor.startsWith('/') ? anchor : `${paper}#${anchor}`, note,
   ...(gate ? { gate } : {}), ...(links.length ? { links } : {}),
@@ -24,12 +25,12 @@ const C = (caseId, title, tree, node, anchor, label) => ({
   title, treeId: treeId(caseId, tree), nodeId: nodeId(caseId, node), source: S(anchor, label),
 });
 const publicPaper = {
-  file: 'public/projects/strong-green/editions/v0.5.1/papers/pairing-constructions.tex',
-  sha256: '246716570c7476e2ccac6f9b3c19eb55941aca9cf265e431e1f14502272311f1',
+  file: 'public/projects/strong-green/editions/v0.5.3/papers/pairing-constructions.tex',
+  sha256: '68043edb59e398a63e217c6b32057b1e07ed8b17f79c3951b2389a7e24207f34',
 };
 const chowGreenBinding = {
-  file: 'public/projects/strong-green/editions/v0.5.2/source-files/companion/chow-obstruction-green-pairs.tex',
-  sha256: '631e594925498df62e14f69e3776f6a5c29575fbc0b9d9b88dca1f2a4a05b920',
+  file: 'public/projects/strong-green/editions/v0.5.3/source-files/companion/chow-obstruction-green-pairs.tex',
+  sha256: '62e3177c413d01c5c7a429da778f784196db10cd8148e5d2ca665f6919616a5a',
   locators: ['h22:main', 'h22:correction', 'h22c:numerical-zero', 'h22c:chern', 'r11p:minimal-trace-theorem', 'r11p:generic-chow-primitive'],
 };
 const productDossier = 'companion/proofs/products/inertia/all_factor_deletion_and_core_exactness.tex';
@@ -40,19 +41,19 @@ const compactDossier = 'companion/proofs/foundations/R12_compact_parameter_algeb
 const GS = (anchor, label) => ({ href: `/papers/green-constructions#${anchor}`, label });
 
 function abelianRetracts() {
-  const c = 'abelian-retracts', n = N(c);
-  const transfer = (key, note = '') => n(key, 'Apply conditional Chow transfer in every required degree',
-    link(c, 'local-transfer'), 'Use the literal rational Chow identity, native kernel covariance and full-degree descent. The local and global analytic hypotheses remain premises. ' + note);
+  const c = 'abelian-retracts', n = N(c, 'proved');
+  const transfer = (key, note = '') => n(key, 'Apply Chow transfer in every required degree',
+    link(c, 'local-transfer'), 'Use the literal rational Chow identity, native kernel covariance and full-degree descent. The proved local and admitted-domain height constructions apply in their stated scopes. ' + note);
   const trees = [
     T(c, 'transfer', 'Chow transfer and heights', 'Varieties with a Chow motive of abelian type',
       'Correct abelian classes, transfer them through the actual diagonal, descend over the original field, and admit both complementary groups.',
       n('result', 'The full pairing Vʳ(X) × Vⁿ⁺¹⁻ʳ(X) → ℝ', 'thm:height-main',
-        'For every 1≤r≤n when X has a potential abelian Chow retraction. This is a conditional geometric theorem, with the four analytic hypotheses below retained.', 'conditional',
+        'For every 1≤r≤n when X has a potential abelian Chow retraction. The displayed Chow retraction is the geometric premise; the four analytic inputs below are established.', 'proved',
         G('all', 'Local vanishing in BOTH degrees + admitted-domain height theory',
           'Apply the local result at every finite completion, with its original absolute value. Equality with each complete global homological group then gives the full pairing.',
           [S('proof:height', 'Full proof of the normalized height theorem'), S('lem:two-degrees', 'The two-degree criterion')], [
             n('local-transfer', 'Every homological class has zero native obstruction', 'proof:main',
-              'For a fixed r, an identity on Vʳ(X_L) already suffices; a full Chow diagonal gives all degrees.', 'conditional',
+              'For a fixed r, an identity on Vʳ(X_L) already suffices; a full Chow diagonal gives all degrees.', 'proved',
               G('all', 'Sum the Chow identity and divide by the complete field degree',
                 'Each uⱼ sends z_L to a homological abelian class. Covariance admits vⱼ∗uⱼ∗z_L. Their sum is z_L, and π∗z_L=[L:K]z.',
                 [S('proof:main', 'Transfer proof'), S('prop:covariance', 'Native covariance and full finite trace')], [
@@ -61,16 +62,16 @@ function abelianRetracts() {
                   n('abelian-source', 'All image classes uⱼ∗z_L lie in the abelian kernel', link(c, 'abelian-zero'),
                     'Their codimension is r+aⱼ. Apply the semistable abelian correction also to Aⱼ regarded as a K-scheme; impossible or homological rank degrees are zero.'),
                   n('native-transfer', 'Chow covariance in the original K-theory', 'prop:covariance',
-                    'Insert L-correspondences into the open-and-closed L-diagonal factor of the K-product. Finite trace uses [L:K]=e(L/K)f(L/K), not a residue or ramification factor alone.', 'hypothesis'),
+                    'Insert L-correspondences into the open-and-closed L-diagonal factor of the K-product. Finite trace uses [L:K]=e(L/K)f(L/K), not a residue or ramification factor alone.', 'proved'),
                 ])),
-            n('analytic-inputs', 'Established curved pairs; further numerical and height hypotheses', 'sec:analytic',
-              'Hypothesis 2.2 is now established: the Chow obstruction, genuine pullbacks and exact-support actual curved pairs. This geometric deduction still assumes the full vertical numerical criterion, Chow-correspondence covariance and the required finite trace, together with admitted-domain height theory, independence, reciprocity, almost-everywhere vanishing, adjunction and comparison.', 'hypothesis', undefined, [{ href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'The established local construction' }]),
+            n('analytic-inputs', 'Established local and admitted-domain height constructions', 'sec:analytic',
+              'Theorem 1.2 of the local construction paper and Propositions 2.2–2.3 and Theorem 2.4 of the pairing paper supply the numerical criterion, native Chow covariance, full finite trace and the admitted-domain height with reciprocity, independence, good-place vanishing, adjunction and comparison. Their actual-test, native-degree and normal/smooth carrier requirements are retained.', 'proved', undefined, [{ href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'The established local construction' }]),
             n('both-completions', 'Both r and s=n+1−r are admitted at every finite place', 'lem:two-degrees',
               'Geometric cycle classes commute with localization. Hence Hʳ(X)=Vʳ(X) and Hˢ(X)=Vˢ(X); the height input supplies the archimedean terms and rational-equivalence descent.'),
           ])), {
         related: [
           n('specified-support', 'The form belongs to the specified support complement', 'prop:obstruction',
-            'For the original cycle Z, obstruction zero means Ω_Z=DΨ for a global ordinary actual Ψ. Then γ_Z=G_Z−Ψ lies on Xᵃⁿ∖|Z|ᵃⁿ and satisfies the identity against every complementary compact actual test, with the supplied integrability.', 'conditional',
+            'For the original cycle Z, obstruction zero means Ω_Z=DΨ for a global ordinary actual Ψ. Then γ_Z=G_Z−Ψ lies on Xᵃⁿ∖|Z|ᵃⁿ and satisfies the identity against every complementary compact actual test, with the supplied integrability.', 'proved',
             G('all', 'Subtract a GLOBAL primitive from the original curved pair',
               'The support is the support of the specified collected cycle; no larger support is removed and no altered space replaces X.',
               [{ href: '/papers/chow-obstruction-green-pairs#h22:correction', label: 'Proved exact-support correction' }, S('proof:main', 'Last paragraph of the transfer proof')], [
@@ -78,12 +79,12 @@ function abelianRetracts() {
                 n('support-pair', 'The exact-support actual pair and all-test Stokes identity', '/papers/chow-obstruction-green-pairs#h22:main', 'The established pair satisfies D[G_Z]+δ_Z=[Ω_Z] on the exact complement, with ordinary actual forms and every compact complementary actual test. Actual Stokes applies to the global correction.', 'proved'),
               ])),
           n('height-formula', 'The normalized abelian formula', 'eq:height-main',
-            'h_X(z,w)=[E:ℚ]⁻¹ Σⱼ ⟨uⱼ∗z_E, ᵗvⱼ∗w_E⟩Kun. The degrees on Aⱼ are r+aⱼ and dim Aⱼ+1−r−aⱼ; zero or impossible homological terms vanish.', 'conditional',
+            'h_X(z,w)=[E:ℚ]⁻¹ Σⱼ ⟨uⱼ∗z_E, ᵗvⱼ∗w_E⟩Kun. The degrees on Aⱼ are r+aⱼ and dim Aⱼ+1−r−aⱼ; zero or impossible homological terms vanish.', 'proved',
             G('all', 'Extension invariance + adjunction + abelian comparison',
               'Expand z_E by the Chow diagonal, move vⱼ to the second factor by adjunction, and apply the classical abelian comparison. Every choice computes the same canonical left side.',
               [S('proof:height', 'Complete height calculation'), S('eq:abelian-comparison', 'Abelian normalization')], [
                 n('formula-domain', 'Both arguments are in the full admitted domain', link(c, 'result'), 'The domain is established before adjunction is used.'),
-                n('formula-input', 'H16, HA16 and MM16 in the stated version', 'hyp:height-input', 'Use normalized number-field extension invariance, correspondence adjunction and the factor [E:ℚ]⁻¹.', 'hypothesis'),
+                n('formula-input', 'H16, HA16 and MM16 in the stated version', 'hyp:height-input', 'Use normalized number-field extension invariance, correspondence adjunction and the factor [E:ℚ]⁻¹.', 'proved'),
               ])),
           n('cohomological-limit', 'A rational Chow retraction supporting the transfer', 'def:abelian-retraction',
             'The sum must recover the actual Chow class; an identity only modulo homological or numerical equivalence leaves an uncontrolled Chow difference.', 'open',
@@ -97,9 +98,9 @@ function abelianRetracts() {
     T(c, 'abelian-model', 'Abelian numerical correction', 'The semistable abelian correction',
       'Specialize the class, solve the exact component complex, lift its preimage to a vertical Chow cycle, and test every vertical cycle.',
       n('abelian-zero', 'Every homological abelian class has zero actual obstruction', 'prop:abelian-zero',
-        'This includes an abelian variety over finite L/K regarded natively over K, with homological triviality on every geometric component.', 'conditional',
-        G('all', 'Numerical certificate + the stated analytic numerical criterion',
-          'A vertical correction supplies a pure operational representative with all vertical pairings zero. The numerical hypothesis, with its complete native degree, then gives obstruction zero.',
+        'This includes an abelian variety over finite L/K regarded natively over K, with homological triviality on every geometric component.', 'proved',
+        G('all', 'Numerical certificate + the proved finite numerical criterion',
+          'A vertical correction supplies a pure operational representative with all vertical pairings zero. The numerical descent theorem, with its complete native degree, then gives obstruction zero.',
           [S('prop:abelian-zero', 'Full abelian proof'), S('lem:model-correction', 'Vertical correction lemma')], [
             n('zero-components', 'Θ₀=Θ−i∗β has zero component cycle classes', 'lem:model-correction',
               'Its generic restriction remains z, because β is vertical. The component restrictions are homologically, hence numerically, trivial.', 'proved',
@@ -116,12 +117,12 @@ function abelianRetracts() {
             n('all-vertical-tests', 'The pure operational representative passes every vertical test', 'prop:abelian-zero',
               'Each integral vertical r-cycle lies in a special-fiber component. Its pairing is the numerical pairing with the refined restriction of Θ₀ there; all such pairings vanish. Retain scheme multiplicities and residue degrees.'),
             n('numeric-hypothesis', 'The finite numerical-model criterion', 'prop:numerical',
-              'A pure rational virtual model bundle is required. When A is over L, regard its model over K°: residue degrees scale zero pairings and ramification remains in scheme multiplicities. Apply the finite K-morphism from its semistable extension.', 'hypothesis'),
+              'A pure rational virtual model bundle is required. When A is over L, regard its model over K°: residue degrees scale zero pairings and ramification remains in scheme multiplicities. Apply the finite K-morphism from its semistable extension.', 'proved'),
           ]))),
     T(c, 'images', 'Individual correspondence images', 'Correspondence images of abelian varieties',
       'An individual sum needs admitted abelian source classes and covariance; a diagonal is needed only to cover every target class.',
       n('images', 'A rational sum of abelian correspondence images is admitted', 'prop:covariance',
-        'For z=Σⱼ Γⱼ∗aⱼ with each aⱼ geometrically homologically trivial on an abelian source, ob_X(z)=0 in the matching shifted degree.', 'conditional',
+        'For z=Σⱼ Γⱼ∗aⱼ with each aⱼ geometrically homologically trivial on an abelian source, ob_X(z)=0 in the matching shifted degree.', 'proved',
         G('all', 'Admit each source class, push by Chow covariance, and add',
           'This argument concerns the displayed z. To identify the entire Vʳ(X), one additionally needs a diagonal identity or a specified surjectivity statement.',
           [S('prop:abelian-zero', 'Abelian kernel input'), S('prop:covariance', 'Chow-kernel covariance'), S('proof:main', 'Termwise transfer calculation')], [
@@ -132,10 +133,10 @@ function abelianRetracts() {
     T(c, 'curves', 'Products of curves', 'Products of curves and abelian varieties',
       'The pointed curve Chow projectors factor through Jacobians; exterior products preserve correspondence composition.',
       n('curves', 'Every complementary pairing on a curve–abelian product', 'lem:tensor',
-        'After finite extension choose points on all smooth projective geometrically integral curves. An arbitrary abelian factor is allowed.', 'conditional',
-        G('all', 'A tensor Chow diagonal + conditional transfer',
+        'After finite extension choose points on all smooth projective geometrically integral curves. An arbitrary abelian factor is allowed.', 'proved',
+        G('all', 'A tensor Chow diagonal + proved Chow transfer',
           'The Tate pieces factor through a point with their degree shifts; the degree-one pieces factor through the Jacobians. Summing the inclusions and retractions recovers the diagonal.',
-          [S('lem:tensor', 'Proof of the tensor identity'), S('proof:main', 'Conditional transfer')], [
+          [S('lem:tensor', 'Proof of the tensor identity'), S('proof:main', 'Chow transfer theorem')], [
             n('curve-splitting', 'h(C)=1 ⊕ h¹(C) ⊕ L in rational Chow motives', 'lem:tensor',
               'For a pointed curve the Chow projectors and Abel–Jacobi/Poincaré correspondences identify h¹(C) with its Jacobian summand. Scholl §3.2, Proposition 4.5 and Theorems 5.2–5.3 are the stated input.', 'published'),
             n('curve-tensor', 'Δ(V×W)=Σ(vⱼ⊠vₗ) ∘ (uⱼ⊠uₗ)', 'lem:tensor',
@@ -145,8 +146,8 @@ function abelianRetracts() {
     T(c, 'binary', 'Separated hypersurfaces', 'Separated-variable hypersurfaces',
       'Resolve the controlled join, retain its codimension-two center and degree d, and build the Chow diagonal by induction.',
       n('binary', 'Separated binary/unary hypersurfaces have all pairings', 'thm:families',
-        'Degree d≥2, disjoint blocks Σ fᵢ(xᵢ₀,xᵢ₁)+Σ cⱼtⱼᵈ, each binary zero divisor reduced and cⱼ≠0; 2b+a≥3. Fermat and diagonal hypersurfaces are included.', 'conditional',
-        G('all', 'The recursive actual Chow retraction + conditional transfer',
+        'Degree d≥2, disjoint blocks Σ fᵢ(xᵢ₀,xᵢ₁)+Σ cⱼtⱼᵈ, each binary zero divisor reduced and cⱼ≠0; 2b+a≥3. Fermat and diagonal hypersurfaces are included.', 'proved',
+        G('all', 'The recursive actual Chow retraction + proved Chow transfer',
           'Every recursion branch has smaller single-factor dimension and uses finitely many finite extensions. The Chow identity keeps the exceptional minus sign and exactly one factor d⁻¹.',
           [S('proof:binary', 'Complete recursive proof'), S('lem:join', 'Controlled join proof'), S('eq:ambient-recursion', 'Ambient maps'), S('eq:center-recursion', 'Center maps')], [
             n('binary-smooth', 'The block gradient vanishes only at the affine origin', 'sec:binary',
@@ -170,7 +171,7 @@ function abelianRetracts() {
     T(c, 'cubics', 'Separated cubic blocks', 'Separated-variable cubic hypersurfaces',
       'Apply the stated complex Chow-motive theorem, descend the actual cycles and rational-equivalence certificates, then use native transfer.',
       n('cubics', 'The specified split cubic blocks have all pairings', 'proof:cubic',
-        'There are 5b+a variables, 0≤a≤4, 5b+a≥3. Each five-variable block defines a smooth cubic threefold; the residual block is omitted, a nonzero unary cube, or a smooth cubic in ℙᵃ⁻¹.', 'conditional',
+        'There are 5b+a variables, 0≤a≤4, 5b+a≥3. Each five-variable block defines a smooth cubic threefold; the residual block is omitted, a nonzero unary cube, or a smooth cubic in ℙᵃ⁻¹.', 'proved',
         G('all', 'Complex abelian-type theorem + finite Chow descent + transfer',
           'Descent must carry the rational equivalences witnessing the diagonal, not only the cohomology classes of the correspondences.',
           [S('proof:cubic', 'Application to the block family'), S('lem:descent', 'Full finite-descent proof')], [
@@ -189,8 +190,8 @@ function abelianRetracts() {
     T(c, 'cyclic', 'Separated cyclic covers', 'Cyclic covers with separated branch equations',
       'A monic chart calculation supplies the finite flat rank; its Chow retraction and the number-field normalization contribute different factors.',
       n('cyclic', 'The separated cyclic cover has the full height domain', 'proof:cyclic',
-        'X={uᑫ=F} over ℙⁿ, n≥1, q≥2, m≥1 and deg F=qm, with disjoint reduced binary blocks and nonzero unary terms.', 'conditional',
-        G('all', 'Separated source + rank-m Chow retraction + conditional transfer',
+        'X={uᑫ=F} over ℙⁿ, n≥1, q≥2, m≥1 and deg F=qm, with disjoint reduced binary blocks and nonzero unary terms.', 'proved',
+        G('all', 'Separated source + rank-m Chow retraction + proved Chow transfer',
           'Use Y={Tᵠᵐ=F}⊂ℙⁿ⁺¹ and f:Y→X, u=Tᵐ. For products replace m by M=∏mᵢ; it occurs once in the retraction.',
           [S('lem:cyclic-cover', 'Full chart and smoothness proof'), S('eq:cyclic-diagonal', 'Product Chow retraction'), S('eq:cyclic-height', 'The separate height factors')], [
             n('cyclic-geometry', 'X is smooth, projective and geometrically integral', 'lem:cyclic-cover',
@@ -210,7 +211,7 @@ function abelianRetracts() {
     T(c, 'forms', 'Products and finite forms', 'Finite products and forms over finite extensions',
       'Exterior products and graph conjugation preserve an actual Chow identity; finite trace then returns to the original valued field.',
       n('forms', 'Products and finite forms inherit the full pairing domain', 'thm:families',
-        'A finite product of the admitted abelian-retract families, or a smooth projective geometrically integral variety isomorphic to it after finite extension, is covered.', 'conditional',
+        'A finite product of the admitted abelian-retract families, or a smooth projective geometrically integral variety isomorphic to it after finite extension, is covered.', 'proved',
         G('all', 'An actual transported diagonal + the original-field transfer',
           'All constituent finite fields and the isomorphism field are combined into a finite compositum before applying the degree-normalized descent.',
           [S('lem:tensor', 'Tensor and isomorphism proof'), S('proof:main', 'Original-field descent')], [
@@ -228,7 +229,7 @@ function abelianRetracts() {
     C(c, 'Cyclic covers with separated branch equations', 'cyclic', 'cyclic', 'proof:cyclic', 'Finite flat cover and product diagonal'),
     C(c, 'Finite products and forms over finite extensions', 'forms', 'forms', 'lem:tensor', 'Tensor and graph-conjugation proof'),
   ], sourceBindings: [chowGreenBinding, { ...publicPaper, locators: [
-    'Standing analytic hypotheses; prop:obstruction; prop:numerical; prop:covariance; hyp:height-input',
+    'The analytic constructions; prop:obstruction; prop:numerical; prop:covariance; hyp:height-input',
     'def:abelian-retraction; thm:main; lem:model-correction; prop:abelian-zero; proof:main',
     'lem:tensor; lem:blowup; lem:degree; lem:join; proof:binary; eq:ambient-recursion; eq:center-recursion',
     'thm:families; lem:descent; proof:cubic; lem:cyclic-cover; proof:cyclic; eq:cyclic-diagonal',
@@ -239,13 +240,13 @@ function abelianRetracts() {
 function surfaceProducts() {
   const c = 'surface-products', n = N(c);
   const productInput = key => n(key, 'The conditional curve–surface product theorem', link(c, 'local-products'),
-    'Use the low-dimensional endpoint, empty-product good-reduction, or higher-dimensional product-model branch in its stated range. Retain its analytic hypotheses and, for the last branch, the additional model hypothesis. At every finite place T must have potentially good projective reduction.');
+    'Use the low-dimensional endpoint, empty-product good-reduction, or higher-dimensional product-model branch in its stated range. Use the established analytic constructions and retain the additional model hypothesis in the last branch. At every finite place T must have potentially good projective reduction.');
   const trees = [
     T(c, 'products', 'Products and the local model', 'Products of curves and surfaces',
       'Low-dimensional endpoints and potential good reduction cover the boundary cases. For nonempty products of dimension at least three, the model inverse, odd weights and native descent give the conditional local argument.',
       n('result', 'All complementary pairings on T × ∏Cₐ × ∏Sᵦ', 'thm:products',
         'The curves and surfaces are arbitrary smooth projective geometrically integral varieties. T may be a point; otherwise it has potentially good projective reduction at every finite place.', 'conditional',
-        G('all', 'The all-degree local result + the global height hypotheses',
+        G('all', 'The all-degree local result + the admitted-domain height theorem',
           'Apply the local argument in r and s=n+1−r at every finite completion; both whole homologically trivial groups are then admitted.',
           [S('thm:products', 'Full product proof'), S('lem:two-degrees', 'Both complementary degrees'), S('hyp:height-input', 'Independent global height input')], [
             n('local-products', 'All homological product classes have zero obstruction over K', 'thm:products',
@@ -254,21 +255,21 @@ function surfaceProducts() {
                 'The branches together cover the permitted product domain. The AK19 route is used only when m≥1 and n≥3. Empty products are handled by native finite good-cover obstruction vanishing, not by a converse from existence of a Green form.',
                 [S('thm:products', 'Product scope: empty products and new classes are permitted'), D(productDossier, 'r20dp:green: the dimension split and the m≥1 hypothesis'), D(goodCoverDossier, 'r11o:finite-good-vanishing: obstruction zero for the empty product')], [
                   n('low-dimensional-products', 'All positive degrees are endpoint degrees when n≤2', 'prop:endpoint-input',
-                    'This branch applies to any of the permitted products with 1≤n≤2, including m=0. Both endpoint proofs retain their actual-form hypotheses.', 'conditional',
+                    'This branch applies to any of the permitted products with 1≤n≤2, including m=0. Both endpoint proofs use the established obstruction and algebraic-equivalence constructions.', 'proved',
                     G('all', 'The dimension range + the divisor and zero-cycle constructions',
                       'When 1≤n≤2 every 1≤r≤n is either r=1 or r=n. The two endpoint theorems therefore annihilate the original obstruction in every required degree; no AK19 model criterion is used.',
                       [D(productDossier, 'r20dp:green, first paragraph of the proof'), S('prop:endpoint-input', 'The endpoint statements'), D(compactDossier, 'r12p:picard-products; r12p:top-degree; r12p:geometric-algebraic')], [
                         n('low-dimensional-range', '1≤n≤2 and 1≤r≤n', 'prop:endpoint-input',
                           'For a curve r=1=n; for a surface the only positive degrees are r=1 and r=2=n.', 'hypothesis'),
                         n('low-dimensional-divisors', 'Ob¹X vanishes on homologically trivial divisors', link('endpoints', 'divisor-conclusion'),
-                          'The linked complete proof passes from geometric homological triviality to rational algebraic triviality and then uses the independent compact/Poincaré construction under (A1), (A2) and (R). It produces a global primitive for the prescribed curvature, as well as exact-support strong G.', 'conditional', undefined,
-                          [GS('thm:main-algebraic', 'Conditional algebraic-equivalence theorem'), D(compactDossier, 'r12p:picard-products and r12p:picard-primitive')]),
+                          'The linked complete proof passes from geometric homological triviality to rational algebraic triviality and then uses the independent compact/Poincaré construction using the established (A1), (A2) and (R). It produces a global primitive for the prescribed curvature, as well as exact-support strong G.', 'proved', undefined,
+                          [GS('thm:main-algebraic', 'Algebraic-equivalence theorem'), D(compactDossier, 'r12p:picard-products and r12p:picard-primitive')]),
                         n('low-dimensional-zero-cycles', 'ObⁿX vanishes on homologically trivial zero-cycles', link('endpoints', 'zero-cycle-conclusion'),
-                          'The linked complete proof uses degree zero on each geometric component, geometric point-difference families, and the same compact/Poincaré theorem under (A1), (A2) and (R). The conclusion concerns the original actual model curvature, not arbitrary atomic forms.', 'conditional', undefined,
-                          [GS('thm:main-algebraic', 'Conditional algebraic-equivalence theorem'), D(compactDossier, 'r12p:top-degree and its componentwise boundary')]),
+                          'The linked complete proof uses degree zero on each geometric component, geometric point-difference families, and the same compact/Poincaré theorem using the established (A1), (A2) and (R). The conclusion concerns the original actual model curvature, not arbitrary atomic forms.', 'proved', undefined,
+                          [GS('thm:main-algebraic', 'Algebraic-equivalence theorem'), D(compactDossier, 'r12p:top-degree and its componentwise boundary')]),
                       ])),
                   n('empty-product', 'The coefficient alone has zero obstruction', link(c, 'good-native-obstruction'),
-                    'For m=0 the product is X=T. The finite good-cover argument below proves vanishing of the original model-curvature class over K, so it supplies the needed domain statement directly.', 'conditional',
+                    'For m=0 the product is X=T. The finite good-cover argument below proves vanishing of the original model-curvature class over K, so it supplies the needed domain statement directly.', 'proved',
                     G('all', 'Empty-product scope + a potential smooth projective good model + native vanishing',
                       'Take the finite projection X_L→X after a valued extension admitting a smooth projective model. Apply the structured-primitive and composite-trace proof with full degree [L:K] and the original absolute value.',
                       [S('thm:products', 'Empty products are explicitly permitted'), D(goodCoverDossier, 'r11o:finite-good-vanishing'), GS('r11p:potential-good-G', 'Potential good reduction and native finite degree')], [
@@ -277,10 +278,10 @@ function surfaceProducts() {
                         n('empty-product-good-model', 'T has potential smooth projective good reduction', '/papers/green-constructions#r11p:potential-good-G',
                           'Choose a finite valued L/K and a smooth projective model of T_L. For the global height conclusion this hypothesis is required at every finite place, separately.', 'hypothesis'),
                         n('empty-product-native-vanishing', 'The finite good-cover proof gives ObʳX([Z])=0', link(c, 'good-native-obstruction'),
-                          'The complete branch below compares the original pulled curvature with a zero good-model curvature, then descends the original permitted line sums. It uses the stated analytic interfaces and does not trace an arbitrary primitive.'),
+                          'The complete branch below compares the original pulled curvature with a zero good-model curvature, then descends the original permitted line sums. It uses the stated analytic interfaces and does not trace an arbitrary primitive.', 'proved'),
                       ])),
                   n('higher-dimensional-products', 'The fixed product model gives native obstruction zero', 'thm:products',
-                    'This is the DP20 branch for a nonempty curve/surface product of dimension at least three. All original model and analytic assumptions remain in force.', 'conditional',
+                    'This is the DP20 branch for a nonempty curve/surface product of dimension at least three. The fixed model, full-cohomology inner inverse and weight comparison remain premises; the local analytic constructions are established.', 'conditional',
                     G('all', 'm≥1 and n≥3 + fixed witness + exactness + odd weights + comparison',
                       'Only this range invokes AK19. The algebraic calculation is on the actual ordered semistable witness; dominant detection and the full finite field degree descend its obstruction before the original curved pair is corrected.',
                       [D(productDossier, 'r20dp:green, complete proof with its dimension hypothesis'), S('thm:products', 'The conditional local product argument')], [
@@ -299,55 +300,55 @@ function surfaceProducts() {
                         n('product-weights', 'Odd-weight vanishing on the same witness', 'thm:products',
                           'Weight–monodromy for all cohomological degrees of curves and surfaces, the pure unramified good coefficient, and Künneth give the companion odd-weight condition. The comparison from this condition to the actual inertia term is retained.', 'hypothesis'),
                         n('product-analytic', 'The supplied model comparison and native descent', 'sec:analytic',
-                          'Use the stated actual-obstruction, numerical-model, dominant-detection and finite-trace interfaces; their analytic audit is unfinished. Retain full generic and field degrees and the original absolute value. The final form uses the original specified support and all actual tests.', 'hypothesis'),
+                          'The actual obstruction, numerical detector, full finite trace and native dominant detection are established. This model application additionally requires the specified numerical witness and its cohomological comparison. Retain full generic and field degrees, the original absolute value, exact support and all actual tests.', 'hypothesis'),
                       ])),
                 ])),
             n('product-global', 'Admitted-domain reciprocity at every finite completion', 'hyp:height-input',
-              'The global input supplies independence, reciprocity, archimedean terms and rational-equivalence descent. Potentially good projective reduction of T is required separately at each finite place and persists after finite extension.', 'hypothesis'),
+              'The global input supplies independence, reciprocity, archimedean terms and rational-equivalence descent. Potentially good projective reduction of T is required separately at each finite place and persists after finite extension.', 'proved'),
           ]))),
     T(c, 'good-reduction', 'The empty product and native good reduction', 'The finite good-cover proof for the coefficient alone',
       'Resolve the prescribed pulled cycle on the good model, obtain zero native curvature, compare the original curvature globally, and descend only the original permitted line sums.',
       n('good-native-obstruction', 'ObʳX([Z])=0 over the original valued field', '/source-files/' + goodCoverDossier,
-        'This is the conditional native finite good-cover route used when m=0. Its proof constructs a global actual primitive of the ORIGINAL ΩX; it does not infer obstruction zero from the existence of another Green form.', 'conditional',
+        'This is the proved native finite good-cover route used when m=0. Its proof constructs a global actual primitive of the ORIGINAL ΩX; it does not infer obstruction zero from the existence of another Green form.', 'proved',
         G('all', 'A structured global primitive upstairs + permitted composite traces downstairs',
           'For a=[L:K] define βX=a⁻¹Σⱼqⱼdⱼ⁻¹Tr(h∘bⱼ)(Gⱼ). On each compact actual test η, the pairing is a⁻¹Σⱼqⱼ∫YΩⱼh*η=a⁻¹∫Yh*(ΩXη)=∫XΩXη. Stokes and current injectivity give DβX=ΩX.',
           [D(goodCoverDossier, 'r11o:finite-good-vanishing, complete constructive proof'), GS('r11p:potential-good-G', 'Native good-model calculation and complete degree')], [
             n('good-global-line-primitive', 'DβY=h*ΩX with βY=Σⱼqⱼdⱼ⁻¹Tr(bⱼ)(Gⱼ)', '/source-files/' + goodCoverDossier,
-              'Each bⱼ is finite flat on all of Y, each Gⱼ is an original global PL-scalar/model-curvature line sum, DGⱼ=bⱼ*Ωⱼ, and ΣⱼqⱼΩⱼ=h*ΩX. These stronger constructive data permit the later composite trace.', 'conditional',
+              'Each bⱼ is finite flat on all of Y, each Gⱼ is an original global PL-scalar/model-curvature line sum, DGⱼ=bⱼ*Ωⱼ, and ΣⱼqⱼΩⱼ=h*ΩX. These stronger constructive data permit the later composite trace.', 'proved',
               G('all', 'Zero good-model curvature + a generic Chow-zero difference + constructive primitives',
                 'On a common projective model compare h*ΩX with the actual character of the good-model resolutions of h*Z. The latter is zero; both characters represent h*[Z], so their difference has generic degree-r Chow class zero. Use the global generically acyclic construction before tracing.',
                 [D(goodCoverDossier, 'r11o:finite-good-vanishing, construction of βY'), GS('r11p:generic-chow-primitive', 'Global primitive for a generic degree-r Chow-zero character')], [
                   n('good-zero-native-curvature', 'The resolved pulled cycle has zero K-actual curvature', '/papers/green-constructions#r11p:potential-good-G',
-                    'The numerical detector is applied directly to the good model viewed over K°, including its nonreduced native special fiber. Equality on a smaller collection of L-tests is not substituted for the K-actual assertion.', 'conditional',
+                    'The numerical detector is applied directly to the good model viewed over K°, including its nonreduced native special fiber. Equality on a smaller collection of L-tests is not substituted for the K-actual assertion.', 'proved',
                     G('all', 'Finite good model + fixed-model resolutions + every native vertical degree zero + detector',
                       'Smooth proper base change annihilates the geometric special Chern class. Every integral vertical r-cycle lies on the reduction of the native special fiber; its intersection degree is zero. The native numerical model-Chern detector then annihilates the actual curvature.',
                       [GS('r11p:good-reduction-G', 'Fixed smooth-model resolutions and numerical vanishing'), GS('r11p:potential-good-G', 'Ramification-thickened native model and full test space')], [
                         n('good-finite-cover', 'h:Y=X_L→X is finite flat of degree a=[L:K]', '/papers/green-constructions#r11p:potential-good-G',
                           'X/K is smooth projective geometrically integral and L/K is finite valued with a smooth projective model of X_L. Regard Y and that model natively over K. Flat pullback includes the generic scheme lengths and preserves geometric homological triviality.', 'hypothesis'),
                         n('good-fixed-resolutions', 'Resolve the actual flat closures on the fixed smooth model', '/papers/green-constructions#r11p:good-reduction-G',
-                          'The smooth projective L°-model is regular and has an ample line bundle. Repeated surjections from sums of negative ample twists terminate in a locally free kernel, giving finite global resolutions of every prescribed component closure without modifying the good model. Their degree-r generic character is h*[Z].'),
+                          'The smooth projective L°-model is regular and has an ample line bundle. Repeated surjections from sums of negative ample twists terminate in a locally free kernel, giving finite global resolutions of every prescribed component closure without modifying the good model. Their degree-r generic character is h*[Z].', 'proved'),
                         n('good-native-vertical-degrees', 'Every integral vertical r-cycle has zero Chern degree', '/papers/green-constructions#r11p:potential-good-G',
-                          'Smooth proper base change identifies the geometric special Chern class with the zero generic class. Over K° the special fiber is the e(L/K)-fold nilpotent thickening of its L° reduction. Integral cycles lie on that reduction; residue-field change multiplies degrees by f(L/K), so each degree stays zero. Retain all native multiplicities.'),
+                          'Smooth proper base change identifies the geometric special Chern class with the zero generic class. Over K° the special fiber is the e(L/K)-fold nilpotent thickening of its L° reduction. Integral cycles lie on that reduction; residue-field change multiplies degrees by f(L/K), so each degree stays zero. Retain all native multiplicities.', 'proved'),
                         n('good-numerical-calculus', 'The actual numerical model-Chern detector', '/papers/chow-obstruction-green-pairs#h22c:numerical-zero',
                           'The proved detector applies to the model Chern character on the integral projective flat native K°-model, tested against every integral vertical r-cycle. It gives equality as a K-actual form, with no smooth or reduced special-fibre hypothesis.', 'proved'),
                       ])),
                   n('good-character-comparison', 'h*ΩX−Ωgood has generic degree-r Chow class zero', '/papers/green-constructions#r11p:generic-chow-primitive',
-                    'Choose ΩX for the original specified cycle and compare on a common model of Y. Strict Chern pullback and invariance of the original model metrics under refinement preserve h*ΩX. The resolutions have the same generic class h*[Z], and Ωgood=0 by the preceding calculation.', 'conditional'),
+                    'Choose ΩX for the original specified cycle and compare on a common model of Y. Strict Chern pullback and invariance of the original model metrics under refinement preserve h*ΩX. The resolutions have the same generic class h*[Z], and Ωgood=0 by the preceding calculation.', 'proved'),
                   n('good-constructive-primitives', 'The global Chow-zero primitive retains its original line sums', '/source-files/' + supportedDossier,
-                    'The new theorem proves existence of a global actual primitive by Adams projection and generically acyclic complexes. This descent argument additionally requires its stronger structured representation by the stated finite-flat bⱼ and permitted original global line sums Gⱼ. That extra representation remains an explicit input here.', 'hypothesis', undefined,
+                    'The generic-Chow-zero proof constructs the primitive by Adams projection and generically acyclic complexes. Its stated finite-flat bⱼ and original global line sums Gⱼ give the structured representation used by the composite-trace proof. Full finite actual trace also permits direct descent of an actual primitive between normal carriers.', 'proved', undefined,
                     [{ href: '/papers/chow-obstruction-green-pairs#r11p:generic-chow-primitive', label: 'Established global primitive for generic Chow-zero characters' }, D(goodCoverDossier, 'r11o:finite-good-vanishing: the stronger structured form of the primitive')]),
                 ])),
             n('good-composite-trace-calculus', 'Composite minimal trace, native degree, Stokes and current injectivity', '/source-files/' + goodCoverDossier,
-              'Each h∘bⱼ is finite flat on all X with complete degree a dⱼ. Trace the original Gⱼ in the permitted module, with normalization (a dⱼ)⁻¹ and the original absolute value. The calculation uses every compact K-actual complementary test. No general trace on an arbitrary already constructed βY is assumed.', 'hypothesis'),
+              'Each h∘bⱼ is finite flat on all X with complete degree a dⱼ. Trace the original Gⱼ in the permitted module, with normalization (a dⱼ)⁻¹ and the original absolute value. The calculation uses every compact K-actual complementary test. This original proof traces the generators; full finite actual trace gives an additional direct descent route for βY.', 'proved'),
           ])), {
-        scope: 'K/ℚp is finite with its original absolute value. Let X/K be smooth projective geometrically integral, n=dim X≥1, 1≤r≤n, and Z a prescribed rational cycle with zero geometric ℓ-adic class for one ℓ≠p. Assume X_L has a smooth projective model over L° for a finite valued L/K. The new construction theorem establishes model Chern forms, their numerical detector, the restricted trace and global Chow-zero primitives. This good-cover route retains its stronger structured-primitive and composite-trace descent requirements.',
+        scope: 'K/ℚp is finite with its original absolute value. Let X/K be smooth projective geometrically integral, n=dim X≥1, 1≤r≤n, and Z a prescribed rational cycle with zero geometric ℓ-adic class for one ℓ≠p. Assume X_L has a smooth projective model over L° for a finite valued L/K. The new construction theorem establishes model Chern forms, their numerical detector, the restricted trace and global Chow-zero primitives. The displayed source proof supplies the structured primitive and its composite-trace descent.',
         related: [n('good-exact-support', 'The original GZ−βX is strong G on exactly Xᵃⁿ∖|Z|ᵃⁿ', 'prop:obstruction',
-          'The global primitive does not add poles or change the prescribed cycle. The original curved pair and every compact actual complementary test remain the ones used in the final identity.', 'conditional',
+          'The global primitive does not add poles or change the prescribed cycle. The original curved pair and every compact actual complementary test remain the ones used in the final identity.', 'proved',
           G('all', 'The global native primitive + the original exact-support curved pair',
             'Subtract the globally defined βX with DβX=ΩX from GZ on the exact prescribed complement. The all-test Stokes identity removes only the curvature term.',
             [D(goodCoverDossier, 'r11o:sufficient and r11o:finite-good-vanishing'), { href: '/papers/chow-obstruction-green-pairs#h22:main', label: 'Established exact-support actual pair' }], [
               n('good-support-primitive', 'DβX=ΩX on all Xᵃⁿ', link(c, 'good-native-obstruction'),
-                'Use the native primitive constructed above, not a primitive defined only away from the cycle.'),
+                'Use the native primitive constructed above, not a primitive defined only away from the cycle.', 'proved'),
               n('good-original-pair', 'D[GZ]+δZ=[ΩX] on every compact actual test', '/papers/chow-obstruction-green-pairs#h22:main',
                 'The construction theorem supplies the pair for the prescribed collected cycle, with its original coefficients, exact support complement and all compact actual complementary tests.', 'proved'),
             ]))],
@@ -488,11 +489,11 @@ function surfaceProducts() {
     C(c, 'Moduli spaces on K3 and abelian surfaces', 'moduli', 'moduli', 'thm:moduli', 'Finite specialization and Bülles application'),
   ], sourceBindings: [
     chowGreenBinding,
-    { ...publicPaper, locators: ['Standing analytic hypotheses; sec:analytic; prop:obstruction; prop:numerical; prop:endpoint-input; prop:product-model; eq:inner-inverse; eq:numerical-correction; eq:image-saturation', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; eq:hilbert-motive; thm:hilbert; lem:specialize-certificate; thm:moduli'] },
+    { ...publicPaper, locators: ['The analytic constructions; sec:analytic; prop:obstruction; prop:numerical; prop:endpoint-input; prop:product-model; eq:inner-inverse; eq:numerical-correction; eq:image-saturation', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; eq:hilbert-motive; thm:hilbert; lem:specialize-certificate; thm:moduli'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/products_moduli.tex', sha256: 'bbd62b83d09b3843fbc85bfcd3960681c19e6a84779c876a34781868232d2829', locators: ['prop:product-model and proof description', 'thm:products; lem:abelian-curve-source; cor:surface-envelope; thm:hilbert; lem:specialize-certificate; thm:moduli, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + productDossier, sha256: 'ccd5bc7fa68826143984175e206ab9e43657c712a48ab4b3901de430fc4c461d', locators: ['Status paragraph', 'r20dp:towers; r20dp:projectors; r20dp:generator; r20dp:core', 'DP20.1–DP20.16; r20dp:model; r20dp:green, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + surfaceDossier, sha256: '14aa76f0d14f505add0af6d95aa77098945b46aec35b9f56b909357433ca887a', locators: ['r20as:numerical-inverse; r20as:cohomological-inverse; r20as:good-coefficient; r20as:full-G; r20as:height, complete proofs'] },
-    { file: 'public/projects/strong-green/editions/v0.5.1/papers/green-constructions.tex', sha256: '968f0560d434f7fb071eedff83c9d90c73a5387113975eb9e8a3a6697d56b263', locators: ['hyp:construction-calculus', 'thm:main-algebraic', 'r11p:good-reduction-G', 'r11p:potential-good-G', 'r11p:generic-chow-primitive'] },
+    { file: 'public/projects/strong-green/editions/v0.5.3/papers/green-constructions.tex', sha256: '99ae2afe50d0b8c528946c710663f8037695af0d3217befeef9b05e0563396b0', locators: ['hyp:construction-calculus', 'thm:main-algebraic', 'r11p:good-reduction-G', 'r11p:potential-good-G', 'r11p:generic-chow-primitive'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + compactDossier, sha256: 'de1a3a130af7221532e3d860cc858ddea7b74e29316a3b854d7398512b9f0efe', locators: ['r12p:geometric-algebraic', 'r12p:picard-products', 'r12p:picard-primitive', 'r12p:top-degree'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + goodCoverDossier, sha256: 'd89fd326e55c711f63bb452df9e67e3250cbb2fef71d2661552d1d934bd459ca', locators: ['r11o:class', 'r11o:sufficient', 'r11o:finite-good-vanishing', 'No converse has been established.'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/' + supportedDossier, sha256: '250e905ad3f8ab6186053a24de225a46c695678ba84e77afe26d579f8feefce3', locators: ['r11p:good-reduction-G', 'r11p:potential-good-G', 'r11p:acyclic', 'r11p:generic-k-primitive', 'r11p:generic-chow-primitive'] },
@@ -500,29 +501,29 @@ function surfaceProducts() {
 }
 
 function smallSupport() {
-  const c = 'small-support', n = N(c);
+  const c = 'small-support', n = N(c, 'proved');
   const endpoint = key => n(key, 'Divisors, zero-cycles and one-cycles are admitted',
     '/results/proof-diagrams/endpoints/',
-    'Use the conditional endpoint input over the original valued field, including the regular-model one-cycle correction and dominant descent. Hence every degree is admitted on a smooth projective variety of dimension at most three.');
+    'Use the endpoint theorems over the original valued field, including the regular-model one-cycle correction and native dominant detection. Hence every degree is admitted on a smooth projective variety of dimension at most three.');
   const applySmall = key => n(key, 'Apply the small-support diagonal theorem and both-degree criterion', link(c, 'result'),
-    'The actual diagonal gives local r≤2 or r≥n−2. For n≤5 every degree is covered; for n≥6 the full global pairings have r≤2 or r≥n−1. Retain all actual-form, covariance and height hypotheses.');
+    'The actual diagonal gives local r≤2 or r≥n−2. For n≤5 every degree is covered; for n≥6 the full global pairings have r≤2 or r≥n−1. Use the established actual-form, covariance and admitted-domain height constructions.');
   const trees = [
     T(c, 'diagonal', 'Both orientations and the degree range', 'Varieties with a decomposition of the diagonal',
       'Resolve the two supports, use the forward or transposed Chow identity in the appropriate degree, then intersect the local range with its complementary range.',
       n('result', 'The full pairing in exactly the displayed complementary range', 'thm:small-support',
-        'Assume Δ_X=A+B in rational Chow, Supp A⊂D×X with D a divisor and Supp B⊂X×T with dim T≤3, possibly after finite extension. All 1≤r≤n are covered for n≤5; for n≥6 the supplied full pairings have r≤2 or r≥n−1.', 'conditional',
+        'Assume Δ_X=A+B in rational Chow, Supp A⊂D×X with D a divisor and Supp B⊂X×T with dim T≤3, possibly after finite extension. All 1≤r≤n are covered for n≤5; for n≥6 the supplied full pairings have r≤2 or r≥n−1.', 'proved',
         G('all', 'The local range S + admission of BOTH r and n+1−r',
           'Here S={r:r≤2 or r≥n−2}. Full pairs require S∩(n+1−S), not just membership in S.',
           [S('thm:small-support', 'Complete two-orientation proof'), S('lem:two-degrees', 'Complementary-degree intersection')], [
             n('small-local', 'The full local group is admitted for r≤2 or r≥n−2', 'eq:small-support-range',
-              'All intermediate classes are geometrically homologically trivial. Zero or impossible homological degrees are discarded for their stated reason.', 'conditional',
+              'All intermediate classes are geometrically homologically trivial. Zero or impossible homological degrees are discarded for their stated reason.', 'proved',
               G('all', 'Lift the actual supported cycles + use a valid endpoint orientation',
                 'The cycle lift is rational and includes its full generic degree, even for cycles in exceptional images. Correspondence covariance then returns the admitted classes to X.',
                 [S('eq:small-forward', 'Forward identity'), S('eq:small-transpose', 'Transposed identity'), S('lem:general-transfer', 'Finite native descent')], [
                   n('support-resolutions', 'Lift A and B to resolutions Dᵢ and Tⱼ', 'thm:small-support',
                     'For each supported integral cycle choose a closed point in the generic fiber of the proper support resolution, close it, and divide by its full degree. Obtain Uᵢ∈CHⁿ⁻¹(Dᵢ×X) and Vⱼ∈CHᵗʲ(X×Tⱼ), tⱼ≤3.', 'proved'),
                   n('support-orientation', 'One orientation reaches endpoint classes on Dᵢ', 'thm:small-support',
-                    'For the specified r, use the forward identity in the high range or the transposed identity in the low range.', 'conditional',
+                    'For the specified r, use the forward identity in the high range or the transposed identity in the low range.', 'proved',
                     G('any', 'ANY orientation whose displayed degree condition holds',
                       'The two alternatives are sufficient in their own ranges; neither is asserted to cover the remaining middle degrees.',
                       [S('eq:small-forward', 'High-degree orientation'), S('eq:small-transpose', 'Low-degree orientation')], [
@@ -533,12 +534,12 @@ function smallSupport() {
                       ])),
                   endpoint('support-endpoints'),
                   n('support-covariance', 'Chow-kernel covariance and full-degree finite descent', 'prop:covariance',
-                    'If the support identity is over L/K, use the L-diagonal component inside the K-product and push π∗π*=[L:K]. Keep the original absolute value and the actual curved-pair correction on X.', 'hypothesis'),
+                    'If the support identity is over L/K, use the L-diagonal component inside the K-product and push π∗π*=[L:K]. Keep the original absolute value and the actual curved-pair correction on X.', 'proved'),
                 ])),
             n('support-intersection', 'Intersect S with n+1−S', 'lem:two-degrees',
               'For n≤5 the intervals r≤2 and r≥n−2 already cover every degree. For n≥6 the simultaneous conditions for r and s=n+1−r give r≤2 or r≥n−1.', 'proved'),
-            n('support-heights', 'The standing analytic and admitted-domain height hypotheses', 'sec:analytic',
-              'The numerical and actual-form comparisons remain hypotheses with unfinished independent audit. The global height additionally needs reciprocity, independence, archimedean terms and rational-equivalence descent at all finite completions.', 'hypothesis'),
+            n('support-heights', 'The local and admitted-domain height constructions', 'sec:analytic',
+              'The numerical criterion, full finite trace and Chow covariance are proved in their stated scopes. H16 provides reciprocity, independence, archimedean terms and rational-equivalence descent on the all-completion kernel; the two-degree criterion supplies the full domain here.', 'proved'),
           ])), {
         related: [n('middle-target', 'A full pairing in an uncovered middle complementary degree', 'thm:small-support',
           'For n≥6, the stated diagonal calculation leaves some middle degree pairs outside S∩(n+1−S); a further admission argument is needed.', 'open',
@@ -551,7 +552,7 @@ function smallSupport() {
     T(c, 'universal', 'Universal zero-cycle support', 'Universal support of zero-cycles',
       'A finite rational-equivalence certificate at the generic point spreads to a supported diagonal and descends with its rational coefficients.',
       n('universal', 'Universal support in dimension ≤3 gives the pairing range', 'prop:universal-support',
-        'A closed T⊂X over the algebraic closure, dim T≤3, must surject onto CH₀(X_Ω)ℚ for every algebraically closed extension Ω. Support over only one field is not the displayed hypothesis.', 'conditional',
+        'A closed T⊂X over the algebraic closure, dim T≤3, must surject onto CH₀(X_Ω)ℚ for every algebraically closed extension Ω. Support over only one field is not the displayed hypothesis.', 'proved',
         G('all', 'The universal generic-point certificate + small-support transfer',
           'Norming and localization produce the actual rational Chow identity required by the preceding tree.',
           [S('prop:universal-support', 'Full generic-point and localization proof'), S('thm:small-support', 'The resulting range')], [
@@ -572,7 +573,7 @@ function smallSupport() {
     T(c, 'rationally-connected', 'Rationally connected fibrations', 'Rationally connected fibrations and Fano varieties',
       'A multisection supports all geometric zero-cycles after moving them into the smooth rationally connected locus.',
       n('rc', 'The stated rationally connected fibrations satisfy the pairing range', 'cor:rc-fibrations',
-        'Let f:X→B be surjective between smooth projective varieties in characteristic zero, smooth with rationally connected geometric fibers over a nonempty open. Require dim B≤3.', 'conditional',
+        'Let f:X→B be surjective between smooth projective varieties in characteristic zero, smooth with rationally connected geometric fibers over a nonempty open. Require dim B≤3.', 'proved',
         G('all', 'The multisection support argument + universal support transfer',
           'The conclusion is all degrees when dim X≤5, and the outer global range r≤2 or r≥n−1 otherwise.',
           [S('cor:rc-fibrations', 'Complete multisection proof'), S('prop:universal-support', 'From support to a Chow diagonal')], [
@@ -584,7 +585,7 @@ function smallSupport() {
               'Apply the generic-point norm and localization argument, then use the two orientations and both complementary degrees.'),
           ])), {
         related: [n('fano', 'Geometrically rationally connected varieties, including smooth Fano varieties', 'cor:rc-fibrations',
-          'Take B to be a point. The zero-cycle support has dimension zero; the same stated all-degree result for n≤5 and outer-degree result for n≥6 follow.', 'conditional',
+          'Take B to be a point. The zero-cycle support has dimension zero; the same stated all-degree result for n≤5 and outer-degree result for n≥6 follow.', 'proved',
           G('all', 'Rational connectedness + the base-point instance of the support proof',
             'The geometric rational-connectedness input is used to move all zero-cycles to one support point.',
             [S('cor:rc-fibrations', 'The geometrically rationally connected and Fano clause')], [
@@ -596,7 +597,7 @@ function smallSupport() {
     T(c, 'unirational', 'Unirational varieties in dimension ≤5', 'Geometrically unirational varieties of dimension at most five',
       'Rational domination supplies rational connectedness; the zero-dimensional support then gives every complementary pairing in the allowed dimensions.',
       n('unirational', 'Every complementary pairing for a geometrically unirational n-fold, n≤5', 'cor:rc-fibrations',
-        'In particular, a fivefold has the middle pairing V³(X)×V³(X)→ℝ as well as all its other positive complementary degrees.', 'conditional',
+        'In particular, a fivefold has the middle pairing V³(X)×V³(X)→ℝ as well as all its other positive complementary degrees.', 'proved',
         G('all', 'Geometric unirationality + the low-dimensional support range',
           'Work after a finite field carrying the rational domination and its finite data, then use the original-field descent of the support theorem.',
           [S('cor:rc-fibrations', 'Rationally connected varieties'), S('thm:small-support', 'The all-degree range n≤5')], [
@@ -608,19 +609,19 @@ function smallSupport() {
     T(c, 'closures', 'Projective bundles, blowups and morphisms', 'Projective bundles, blowups and dominant morphisms',
       'Each permitted operation has an actual Chow retraction or a direct-sum motive formula; the allowed input varieties must already have all-degree local vanishing.',
       n('closures', 'Property V is preserved by the three stated geometric operations', 'prop:closures',
-        'Property V means zero native obstruction for the complete geometrically homologically trivial groups in every degree. At every completion, these closures yield every complementary global pairing under the height hypotheses.', 'conditional',
+        'Property V means zero native obstruction for the complete geometrically homologically trivial groups in every degree. At every completion, these closures yield every complementary global pairing by the admitted-domain height theorem.', 'proved',
         G('all', 'The three closure assertions, each with its own sufficient inputs',
-          'These are separate preservation statements. In each one use the actual Chow formula, its degree shifts and the conditional general transfer theorem.',
+          'These are separate preservation statements. In each one use the actual Chow formula, its degree shifts and the general Chow transfer theorem.',
           [S('prop:closures', 'Full closure proof'), S('lem:general-transfer', 'General Chow transfer')], [
             n('closure-bundle', 'Projective bundles over an admitted base', 'prop:closures',
-              'For a rank-(e+1) bundle the projective-bundle motive is ⊕ⱼ₌₀ᵉ h(B)(j). Each shifted image is homological on the already admitted B; sum the inclusion/retraction maps.', 'conditional',
+              'For a rank-(e+1) bundle the projective-bundle motive is ⊕ⱼ₌₀ᵉ h(B)(j). Each shifted image is homological on the already admitted B; sum the inclusion/retraction maps.', 'proved',
               G('all', 'The projective-bundle formula + V(B)',
                 'The formula is an actual Chow motive decomposition, so it applies to mixed classes as well.',
                 [S('prop:closures', 'Projective-bundle argument')], [
                   n('bundle-base', 'The smooth projective base B has V', 'prop:closures', 'All intermediate degrees of B must be admitted.', 'hypothesis'),
                 ])),
             n('closure-blowup', 'A blowup when both ambient variety and smooth center are admitted', 'prop:closures',
-              'For a smooth center of codimension c, the blowup motive is h(V)⊕⊕ⱼ₌₁ᶜ⁻¹ h(C)(j). Apply the diagonal transfer to both the ambient and every shifted center class.', 'conditional',
+              'For a smooth center of codimension c, the blowup motive is h(V)⊕⊕ⱼ₌₁ᶜ⁻¹ h(C)(j). Apply the diagonal transfer to both the ambient and every shifted center class.', 'proved',
               G('all', 'The Chow blowup formula + BOTH V(V) and V(C)',
                 'Admission of the ambient variety alone does not admit an uncontrolled center.',
                 [S('prop:closures', 'Blowup preservation')], [
@@ -628,7 +629,7 @@ function smallSupport() {
                   n('blowup-center', 'The smooth center has V in every degree', 'prop:closures', 'This admits all its Tate-shifted summands.', 'hypothesis'),
                 ])),
             n('closure-dominant', 'A dominant morphism from an admitted smooth projective source', 'prop:closures',
-              'For f:V→X of relative dimension e, choose a relatively ample a with generic top degree d>0. Then d⁻¹f∗(aᵉ·−) is a left inverse to f*.', 'conditional',
+              'For f:V→X of relative dimension e, choose a relatively ample a with generic top degree d>0. Then d⁻¹f∗(aᵉ·−) is a left inverse to f*.', 'proved',
               G('all', 'The projection formula + V(V)',
                 'Repeat after every smooth projective test product: d⁻¹f∗(aᵉ·f*z)=z is an actual Chow correspondence identity.',
                 [S('prop:closures', 'Dominant morphism retraction')], [
@@ -637,7 +638,7 @@ function smallSupport() {
                 ])),
           ])), {
         related: [n('bundle-towers', 'Projective-bundle towers over the stated bases and their dominant images', 'cor:uniruled',
-          'Start from a variety of dimension at most three, or from an admitted uniruled fourfold. Each projective-bundle step preserves V, and the final dominant morphism image inherits it.', 'conditional',
+          'Start from a variety of dimension at most three, or from an admitted uniruled fourfold. Each projective-bundle step preserves V, and the final dominant morphism image inherits it.', 'proved',
           G('all', 'An admitted base + successive allowed operations',
             'Apply the closure assertion once per bundle and once to the final morphism; no rational-map shortcut is used.',
             [S('cor:uniruled', 'Tower and dominant-image consequence')], [
@@ -648,13 +649,13 @@ function smallSupport() {
     T(c, 'uniruled', 'Uniruled fourfolds', 'Geometrically uniruled fourfolds',
       'Resolve a rational domination by a threefold times ℙ¹; the four-dimensional source forces every nontrivial smooth center to have dimension at most two.',
       n('uniruled', 'Every complementary pairing on a geometrically uniruled fourfold', 'cor:uniruled',
-        'This includes V²(X)×V³(X) and the divisor–zero-cycle pairing V¹(X)×V⁴(X), with the reverse orders supplied by the same all-degree admission.', 'conditional',
+        'This includes V²(X)×V³(X) and the divisor–zero-cycle pairing V¹(X)×V⁴(X), with the reverse orders supplied by the same all-degree admission.', 'proved',
         G('all', 'An admitted resolution + actual dominant descent + global admission',
           'Only the rational domination is resolved. The argument explicitly checks the new blowup centers before applying the morphism closure theorem.',
           [S('cor:uniruled', 'Complete fourfold proof'), S('prop:closures', 'The permitted closure operations')], [
             n('uniruled-domination', 'After finite extension, B×ℙ¹ rationally dominates X', 'cor:uniruled', 'Choose B smooth projective of dimension three. Resolve in characteristic zero by smooth blowups of this four-dimensional source.', 'hypothesis'),
             n('uniruled-resolution', 'The source and every resolution center have V', 'cor:uniruled',
-              'B has V by the endpoint input; B×ℙ¹ has V by the projective-bundle formula. Every nontrivial blowup center has codimension at least two and hence dimension ≤2.', 'conditional',
+              'B has V by the endpoint input; B×ℙ¹ has V by the projective-bundle formula. Every nontrivial blowup center has codimension at least two and hence dimension ≤2.', 'proved',
               G('all', 'Endpoint admission + the projective-bundle and blowup formulas',
                 'Induct along the resolution sequence, using admission of each center rather than merely the birationality of the map.',
                 [S('prop:endpoint-input', 'Low-dimensional endpoint admission'), S('prop:closures', 'Closure proof')], [
@@ -673,30 +674,30 @@ function smallSupport() {
     C(c, 'Geometrically uniruled fourfolds', 'uniruled', 'uniruled', 'cor:uniruled', 'Resolution centers and dominant descent'),
     C(c, 'Projective bundles, blowups and dominant morphisms', 'closures', 'closures', 'prop:closures', 'The three separate Chow preservation arguments'),
   ], sourceBindings: [
-    { ...publicPaper, locators: ['Standing analytic hypotheses; prop:endpoint-input; lem:general-transfer; lem:two-degrees', 'def:small-support; thm:small-support; eq:small-forward; eq:small-transpose', 'prop:universal-support; cor:rc-fibrations; prop:closures; cor:uniruled, complete proofs'] },
+    { ...publicPaper, locators: ['The analytic constructions; prop:endpoint-input; lem:general-transfer; lem:two-degrees', 'def:small-support; thm:small-support; eq:small-forward; eq:small-transpose', 'prop:universal-support; cor:rc-fibrations; prop:closures; cor:uniruled, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/endpoints_support.tex', sha256: '44f5f43e0507a3804d0f934435ebc6fdfb52f859f86e42984418caab6db5d470', locators: ['lem:general-transfer; lem:two-degrees; prop:endpoint-input', 'thm:small-support; prop:universal-support; cor:rc-fibrations; prop:closures; cor:uniruled, complete proofs'] },
   ] };
 }
 
 function chowNiveau() {
-  const c = 'chow-niveau', n = N(c);
+  const c = 'chow-niveau', n = N(c, 'proved');
   const endpoints = key => n(key, 'Apply the divisor, zero-cycle and one-cycle inputs',
     '/results/proof-diagrams/endpoints/',
-    'Use the endpoint results with their stated model and analytic premises. Every feasible homological degree on a variety of dimension ≤3 is covered; homological rank and impossible degrees are zero.');
-  const standing = key => n(key, 'The standing native analytic and global height hypotheses', 'sec:analytic',
-    'Retain the actual-form obstruction, numerical comparison, Chow covariance and complete-degree descent hypotheses, whose independent analytic audit is unfinished. A global pairing additionally uses admitted-domain reciprocity at every finite completion in BOTH complementary degrees.', 'hypothesis');
+    'Use the endpoint results with their numerical curve correction and the proved native descent. Every feasible homological degree on a variety of dimension ≤3 is covered; homological rank and impossible degrees are zero.');
+  const standing = key => n(key, 'The native analytic and admitted-domain height constructions', 'sec:analytic',
+    'Use the proved actual obstruction, numerical criterion, Chow covariance and complete-degree descent. The global height theorem applies after admission at every finite completion in BOTH complementary degrees; it does not replace that two-degree requirement.', 'proved');
   const trees = [
     T(c, 'residual', 'Residual-motive degree calculation', 'Chow niveau, complete intersections and fibrations',
       'The residual cycle has codimension at most r−u and dimension n−r−u; endpoint admission therefore gives two local ranges before their complementary intersection.',
       n('result', 'Full pairings from a small residual Chow motive', 'thm:niveau',
-        'Suppose h(X)=Q⊕(T,e,u) in rational Chow after finite extension, Q of abelian type, u≥0 and m=dim T≤n−2u. Every pair is admitted if n≤2u+3; otherwise the guaranteed full pairs have r≤u+1 or r≥n−u.', 'conditional',
+        'Suppose h(X)=Q⊕(T,e,u) in rational Chow after finite extension, Q of abelian type, u≥0 and m=dim T≤n−2u. Every pair is admitted if n≤2u+3; otherwise the guaranteed full pairs have r≤u+1 or r≥n−u.', 'proved',
         G('all', 'The actual decomposition + all source images + the two-degree criterion',
           'The local range is r≤u+1 or r≥n−u−1. The upper threshold for a full global pairing is n−u because the complementary factor must also be admitted.',
           [S('thm:niveau', 'Full Chow-niveau proof'), S('eq:residual-degree', 'The residual degree calculation'), S('lem:two-degrees', 'Both-degree admission')], [
             n('niveau-decomposition', 'The actual inclusion/retraction maps recover Δ_X', 'eq:niveau-decomposition',
               'Work in covariant rational Chow motives, with CHₐ(h(T)(u))=CHₐ₋ᵤ(T). The projector e and the correspondences are actual Chow data over a finite field of definition.', 'hypothesis'),
             n('niveau-local', 'The residual images are endpoint classes in the claimed local range', 'eq:residual-degree',
-              'A codimension-r class has residual dimension n−r−u and codimension m−n+r+u≤r−u; the image remains geometrically homologically trivial.', 'conditional',
+              'A codimension-r class has residual dimension n−r−u and codimension m−n+r+u≤r−u; the image remains geometrically homologically trivial.', 'proved',
               G('any', 'ANY complete residual-degree condition',
                 'A negative or impossible degree gives zero. When n≤2u+3, m≤3, so every residual degree is covered by the endpoint input.',
                 [S('eq:niveau-local', 'The exact local range'), S('eq:residual-degree', 'Dimension and codimension')], [
@@ -704,7 +705,7 @@ function chowNiveau() {
                   n('niveau-high', 'If r≥n−u−1, residual dimension is at most one', 'eq:residual-degree', 'It is a one-cycle, zero-cycle or zero outside the range; the endpoint input applies.'),
                   n('niveau-all', 'If n≤2u+3, every feasible residual degree is an endpoint', 'thm:niveau', 'The bound m≤n−2u≤3 puts T in the all-degree endpoint domain. A negative residual dimension means the residual summand is zero.'),
                 ])),
-            n('niveau-abelian', 'The Q-images are admitted by conditional abelian transfer', '/results/proof-diagrams/abelian-retracts/',
+            n('niveau-abelian', 'The Q-images are admitted by abelian Chow transfer', '/results/proof-diagrams/abelian-retracts/',
               'An abelian-type summand is a retract of a finite sum of Tate-twisted abelian motives. Apply the abelian kernel theorem in every shifted degree.'),
             endpoints('niveau-endpoints'),
             standing('niveau-analytic'),
@@ -714,7 +715,7 @@ function chowNiveau() {
     T(c, 'criterion', 'The Vial criterion', 'A low-Chow sufficient criterion for the residual motive',
       'Surjectivity onto the algebraically trivial subgroups supplies the rational Chow decomposition; the required universal domain and finite-dimensional source remain explicit.',
       n('niveau-criterion', 'The stated low-Chow hypothesis supplies Q⊕(T,e,u)', 'thm:niveau',
-        'It suffices to have a morphism N→h(X) from an abelian-type Chow motive, surjective on CHᵢ(X_Ω)ℚ,alg for every i<u, on an algebraically closed universal domain Ω of infinite transcendence degree over the field of definition.', 'conditional',
+        'It suffices to have a morphism N→h(X) from an abelian-type Chow motive, surjective on CHᵢ(X_Ω)ℚ,alg for every i<u, on an algebraically closed universal domain Ω of infinite transcendence degree over the field of definition.', 'proved',
         G('all', 'The exact Vial hypothesis + self-duality of h(X)',
           'Apply Vial Theorem 3.11 with algebraic equivalence and M=h(X). The additional curve and Tate pieces are of abelian type and enter Q.',
           [S('thm:niveau', 'The sufficient-hypothesis proof'), S('bib-Vial', 'Vial, Theorem 3.11 in the cited version')], [
@@ -734,12 +735,12 @@ function chowNiveau() {
     T(c, 'chow-bounds', 'The low-degree Chow bounds', 'Bounds supplying the complete-intersection Chow certificate',
       'A permitted theorem makes each low-dimensional Chow group generated by a class of nonzero degree; its algebraically trivial subgroup therefore vanishes.',
       n('low-chow', 'CHᵢ(X_Ω)ℚ,alg=0 for 0≤i≤t', 'prop:small-degree',
-        'Let X⊂ℙᴺ be a smooth complete intersection of degrees d₁≥⋯≥d_c≥2, n=N−c and 0≤t≤n−1. The following are alternative sufficient hypotheses, with their own restrictions.', 'conditional',
+        'Let X⊂ℙᴺ be a smooth complete intersection of degrees d₁≥⋯≥d_c≥2, n=N−c and 0≤t≤n−1. The following are alternative sufficient hypotheses, with their own restrictions.', 'proved',
         G('all', 'One valid low-Chow bound + the nonzero degree of the generator',
           'The supplied literature theorem gives CHᵢ=ℚ generated by the ambient section. Projective degree is nonzero on that generator and zero on every algebraically trivial class.',
           [S('prop:small-degree', 'Proof from the low-Chow theorems'), S('eq:ot-bound', 'The additional mixed quadratic/cubic bound')], [
             n('low-bound-choice', 'A stated low-Chow theorem applies through degree t', 'prop:small-degree',
-              'Use the exact field, smoothness and numerical conditions of the chosen alternative.', 'conditional',
+              'Use the exact field, smoothness and numerical conditions of the chosen alternative.', 'proved',
               G('any', 'ANY applicable complete-intersection bound',
                 'The bounds are not interchangeable; each branch includes the conditions used by its cited theorem.',
                 [S('eq:elv', 'ELV condition'), S('eq:elv-quadratic', 'ELV all-quadratic alternative'), S('eq:hi-bound', 'HI hypersurface condition'), S('eq:ot-bound', 'Otwinowska condition')], [
@@ -756,39 +757,39 @@ function chowNiveau() {
               'The coefficient of the generator is detected by degree. Consequently an algebraically trivial class in this one-dimensional group must be zero.', 'proved'),
           ])), {
         related: [n('low-chow-transfer', 'With u=t+1, the residual-motive degree theorem applies', 'prop:small-degree',
-          'Every degree is covered if n≤2t+5; otherwise the guaranteed full global heights have r≤t+2 or r≥n−t−1.', 'conditional',
+          'Every degree is covered if n≤2t+5; otherwise the guaranteed full global heights have r≤t+2 or r≥n−t−1.', 'proved',
           G('all', 'Low algebraic-triviality vanishing + the Vial and endpoint deductions',
             'Use N=0 in the sufficient criterion, then substitute u=t+1 in the residual dimension and complementary-degree formulas.',
             [S('prop:small-degree', 'The exact resulting ranges'), S('thm:niveau', 'Residual-motive transfer')], [
               n('low-chow-use', 'The preceding bounds annihilate all subgroups with i<u', link(c, 'low-chow'), 'Here u=t+1, so i<u is exactly 0≤i≤t.'),
-              n('low-niveau-use', 'The Vial decomposition and conditional Chow transfer are available', link(c, 'niveau-criterion'), 'Retain the actual Chow category and all local/global analytic premises.'),
+              n('low-niveau-use', 'The Vial decomposition and Chow transfer are available', link(c, 'niveau-criterion'), 'Retain the actual Chow category and apply the proved analytic constructions with the global two-degree requirement.'),
             ]))],
       }),
     T(c, 'complete-intersections', 'The explicit complete-intersection list', 'Small-degree complete intersections',
       'The listed numerical instances supply their low-Chow parameters; the inequality n≤2t+5 then covers the entire residual motive.',
       n('ci', 'Every complementary pairing for every listed complete-intersection family', 'cor:ci-list',
-        'The source permits a presentation after finite extension. The complete list and each parameter calculation appear in the branches below.', 'conditional',
-        G('all', 'A listed Chow certificate + n≤2t+5 + the conditional niveau theorem',
+        'The source permits a presentation after finite extension. The complete list and each parameter calculation appear in the branches below.', 'proved',
+        G('all', 'A listed Chow certificate + n≤2t+5 + the niveau theorem',
           'The alternatives specify X and t. Each gives CHᵢ,alg=0 for i≤t, so the residual dimension is at most n−2(t+1)≤3.',
           [S('cor:ci-list', 'The complete table and its proof'), S('prop:small-degree', 'The low-Chow transfer')], [
             n('ci-table', 'X belongs to one of the following checked parameter rows', 'cor:ci-list',
-              'The distinct certificates below retain the cited bounds rather than treating all low-degree complete intersections alike.', 'conditional',
+              'The distinct certificates below retain the cited bounds rather than treating all low-degree complete intersections alike.', 'proved',
               G('any', 'ANY listed family with its displayed parameter t',
                 'Each branch is a sufficient alternative for the chosen X; the dimensions outside the table need a separate argument.',
                 [S('cor:ci-list', 'Parameter-by-parameter proof')], [
                   n('ci-cubic-quartic', 'Cubics n=6,7; n=8,9; n=11, and quartics n=7', 'cor:ci-list',
-                    'For cubics choose t=1,2,3 respectively. The HI right sides for j=0,1,2,3 are 4,10,20,35; the minimum N for those t are 6,9,12, and the listed N=n+1 satisfy them. For quartic n=7 use N=8,t=1: 9≥5 and 15≥15.', 'conditional'),
+                    'For cubics choose t=1,2,3 respectively. The HI right sides for j=0,1,2,3 are 4,10,20,35; the minimum N for those t are 6,9,12, and the listed N=n+1 satisfy them. For quartic n=7 use N=8,t=1: 9≥5 and 15≥15.', 'proved'),
                   n('ci-23', 'Type (2,3), n=6 or 7, with t=1', 'cor:ci-list',
-                    'N=n+2 is 8 or 9. ELV gives CH₀=ℚ. Its all-intersection quadratic form gives CH₂=ℚ on the upper quadric, even if singular. The distinct-largest-degree HI case j=1,c=2 has ρ=3N−19; ρ+1≥N−2 is exactly N≥8, giving CH₁=ℚ.', 'conditional'),
+                    'N=n+2 is 8 or 9. ELV gives CH₀=ℚ. Its all-intersection quadratic form gives CH₂=ℚ on the upper quadric, even if singular. The distinct-largest-degree HI case j=1,c=2 has ρ=3N−19; ρ+1≥N−2 is exactly N≥8, giving CH₁=ℚ.', 'proved'),
                   n('ci-mixed', 'Type (2,3), n=9; type (2,2,3), n=7; type (3,3), n=7', 'cor:ci-list',
-                    'Otwinowska uses (N,a,b)=(11,1,1),(10,2,1),(9,0,2), all N≤15. The parameters floor((N−2a−3b)/3) are respectively 2,1,1, giving every required low Chow group.', 'conditional'),
+                    'Otwinowska uses (N,a,b)=(11,1,1),(10,2,1),(9,0,2), all N≤15. The parameters floor((N−2a−3b)/3) are respectively 2,1,1, giving every required low Chow group.', 'proved'),
                 ])),
             n('ci-residual', 'Every listed row satisfies n≤2t+5', 'cor:ci-list',
               'Thus the residual dimensions are at most three: cubic n=6,7 with t=1; n=8,9 with t=2; n=11 with t=3; all the remaining n=7,t=1 rows and the n=9,t=2 row.', 'proved'),
             n('ci-transfer', 'Use the actual residual decomposition and both-degree admission', link(c, 'low-chow-transfer'), 'Apply the criterion over a common finite field, descend the full degree, and retain the original absolute values at all finite places.'),
           ])), {
         related: [n('ci-small-cubics', 'Smooth cubic hypersurfaces of dimension at most five', 'cor:ci-list',
-          'Dimensions at most three are in the endpoint domain. In dimensions four and five a smooth cubic is Fano, hence geometrically rationally connected; its small-support diagonal gives every degree.', 'conditional',
+          'Dimensions at most three are in the endpoint domain. In dimensions four and five a smooth cubic is Fano, hence geometrically rationally connected; its small-support diagonal gives every degree.', 'proved',
           G('any', 'The endpoint case or the rationally connected case',
             'The curve case is handled by the endpoint input; it is not asserted to be rationally connected.',
             [S('prop:endpoint-input', 'Dimensions at most three'), S('cor:rc-fibrations', 'Rationally connected varieties'), S('cor:ci-list', 'The low-dimensional cubic clause')], [
@@ -799,7 +800,7 @@ function chowNiveau() {
     T(c, 'fibration-criterion', 'The all-fiber theorem', 'Flat-fibration transfer through the actual Chow decomposition',
       'The low Chow condition is imposed on every geometric scheme fiber, including singular fibers; a generic-fiber statement alone is insufficient.',
       n('fibration', 'The fibration has the displayed local and global degree ranges', 'prop:fibration',
-        'Let f:Y→B be flat, projective and surjective, with Y,B smooth projective, dim Y=n, dim B=b, u≥1 and n−2u≥0. Assume V(B) and CHᵢ(Yω)ℚ=ℚ for every geometric scheme fiber over a universal domain and every 0≤i<u.', 'conditional',
+        'Let f:Y→B be flat, projective and surjective, with Y,B smooth projective, dim Y=n, dim B=b, u≥1 and n−2u≥0. Assume V(B) and CHᵢ(Yω)ℚ=ℚ for every geometric scheme fiber over a universal domain and every 0≤i<u.', 'proved',
         G('all', 'The all-fiber decomposition + admitted base + residual endpoint calculation',
           'The base summands need V(B), not an assertion that the base is abelian type. The residual part has dimension n−2u.',
           [S('prop:fibration', 'Full flat-fibration proof'), S('eq:fibration-motive', 'The actual Chow decomposition')], [
@@ -824,17 +825,17 @@ function chowNiveau() {
     T(c, 'fiber-applications', 'Quadric and cubic fibrations', 'Quadric and cubic fibrations',
       'Compute low Chow groups for every scheme fiber, choose u, and check that the residual dimension is at most three.',
       n('fibers', 'Every complementary pairing for the stated fiber/base dimensions', 'cor:quad-cubic-fibers',
-        'The map is flat, projective and surjective; total space and base are smooth projective geometrically integral. Every geometric scheme fiber is the stated nonzero fixed-dimensional hypersurface.', 'conditional',
+        'The map is flat, projective and surjective; total space and base are smooth projective geometrically integral. Every geometric scheme fiber is the stated nonzero fixed-dimensional hypersurface.', 'proved',
         G('all', 'An allowed fiber/base case + the all-fiber transfer theorem',
           'Each branch below supplies both the required low Chow range and the residual-dimension bound. Complete the argument at every finite place and in both complementary degrees.',
           [S('cor:quad-cubic-fibers', 'Complete quadric/cubic fiber proof'), S('prop:fibration', 'All-fiber criterion')], [
             n('fiber-cases', 'One of the two stated hypersurface-fiber cases holds', 'cor:quad-cubic-fibers',
-              'The dimensions and any extra base condition are part of each alternative.', 'conditional',
+              'The dimensions and any extra base condition are part of each alternative.', 'proved',
               G('any', 'ANY full quadric or cubic case',
                 'These alternatives establish all required Chow groups even for the possible singular and nonreduced scheme fibers.',
                 [S('cor:quad-cubic-fibers', 'Proof of both alternatives')], [
                   n('quadric-fibers', 'Quadric fibers: b=1,2,3; also b=4 with q odd and V(B)', 'cor:quad-cubic-fibers',
-                    'For nonzero quadric schemes of dimension q≥1, CHᵢ=ℤ for i<q/2. Take u=ceil(q/2); n−2u is b for even q and b−1 for odd q.', 'conditional',
+                    'For nonzero quadric schemes of dimension q≥1, CHᵢ=ℤ for i<q/2. Take u=ceil(q/2); n−2u is b for even q and b−1 for odd q.', 'proved',
                     G('all', 'Low Chow groups of every quadric + the base and dimension condition',
                       'For b≤3 the endpoint theorem supplies V(B). For b=4 require q odd and V(B) separately, for example B=ℙ⁴.',
                       [S('cor:quad-cubic-fibers', 'Quadric scheme-fiber argument')], [
@@ -844,7 +845,7 @@ function chowNiveau() {
                           'For b=1–3 this follows from endpoints. For b=4, odd q gives residual dimension 3, while V(B) is an additional hypothesis.', 'hypothesis'),
                       ])),
                   n('cubic-fibers', 'Cubic fibers: (q,b)=(5,1),(5,2),(6,1),(8,1)', 'cor:quad-cubic-fibers',
-                    'Choose u=2,2,2,3 respectively. Their residual dimensions n−2u are 2,3,3,3; each base has dimension ≤2 and is admitted by endpoints.', 'conditional',
+                    'Choose u=2,2,2,3 respectively. Their residual dimensions n−2u are 2,3,3,3; each base has dimension ≤2 and is admitted by endpoints.', 'proved',
                     G('all', 'The low-Chow bounds for all cubic schemes + the dimension calculation',
                       'The all-intersection ELV theorem gives CH₀=CH₁=ℚ for q≥5; the stated HI bound also gives CH₂=ℚ when q=8.',
                       [S('cor:quad-cubic-fibers', 'Reduced and nonreduced cubic fibers')], [
@@ -855,31 +856,31 @@ function chowNiveau() {
                       ])),
                 ])),
             n('fiber-transfer', 'Apply the actual decomposition and both-degree admission', link(c, 'fibration'),
-              'All fiber cases have n−2u≤3. Keep flatness and the all-scheme-fiber condition, the required V(B), and the local/global analytic premises.'),
+              'All fiber cases have n−2u≤3. Keep flatness and the all-scheme-fiber condition, the required V(B), and the proved local constructions and the global two-degree requirement.'),
           ]))),
     T(c, 'quadrics', 'Intersections of quadrics', 'Intersections of quadrics',
       'The universal quadric family supplies a low-dimensional residual motive; a signed self-intersection calculation retracts it back to the intersection.',
       n('quadrics', 'Full pairings for c≤4, or c=5 with N even; otherwise the stated outer range', 'thm:quadrics',
-        'Let X⊂ℙᴺ be a smooth complete intersection of c quadrics, 1≤c≤N−1, dim X=N−c. For arbitrary c the local range is r≤floor(N/2)−c+2 or r≥ceil(N/2)−2; the full global upper range begins at ceil(N/2)−1.', 'conditional',
+        'Let X⊂ℙᴺ be a smooth complete intersection of c quadrics, 1≤c≤N−1, dim X=N−c. For arbitrary c the local range is r≤floor(N/2)−c+2 or r≥ceil(N/2)−2; the full global upper range begins at ceil(N/2)−1.', 'proved',
         G('all', 'The local retraction argument + complementary-degree admission',
           'The two global factors are checked on X, after translating the codimension shift through the signed retraction.',
           [S('thm:quadrics', 'Complete universal-quadric proof'), S('eq:quadrics-retraction', 'The signed Chow retraction')], [
             n('quadrics-local', 'The intersection is admitted in the asserted local degrees', 'eq:quadrics-local',
-              'The one-quadric case has a separate cellular proof; c≥2 uses the universal quadric and the nonzero sign of its self-intersection.', 'conditional',
+              'The one-quadric case has a separate cellular proof; c≥2 uses the universal quadric and the nonzero sign of its self-intersection.', 'proved',
               G('any', 'The c=1 Tate case or the c≥2 universal-family case',
                 'Both alternatives give actual Chow decompositions or retractions, with finite field descent.',
                 [S('thm:quadrics', 'The two cases in the proof')], [
                   n('one-quadric', 'If c=1, split the smooth quadric over a finite field', 'thm:quadrics',
-                    'Its cellular Chow decomposition is Tate. Conditional abelian transfer, allowing the point motive and its Tate twists, gives every degree.'),
+                    'Its cellular Chow decomposition is Tate. Abelian Chow transfer, allowing the point motive and its Tate twists, gives every degree.'),
                   n('quadric-universal', 'For c≥2, retract h(X) from the universal quadric Y', 'thm:quadrics',
-                    'Y={ΣtⱼQⱼ=0}⊂ℙᴺ×ℙᶜ⁻¹ is a flat family of nonzero (N−1)-dimensional quadric schemes.', 'conditional',
+                    'Y={ΣtⱼQⱼ=0}⊂ℙᴺ×ℙᶜ⁻¹ is a flat family of nonzero (N−1)-dimensional quadric schemes.', 'proved',
                     G('all', 'Smooth total space + signed retraction + fibration range',
                       'At a possible singular point all Qⱼ vanish, and their independent conormal differentials make ΣtⱼdQⱼ nonzero. Thus the fibration theorem applies to the smooth total space.',
                       [S('thm:quadrics', 'Smoothness, normal sequence and range calculation')], [
                         n('quadric-sign', 'U=j∗p*, V=(−1)ᵐp∗j!, and VU=1', 'eq:quadrics-retraction',
                           'Set m=c−1 and E=X×ℙᵐ. The normal sequence has quotient p*O_X(2)⊗O(1); its degree-m Chern class has fiber-leading term (−1)ᵐξᵐ. Hence p∗c_m(N_E/Y)=(−1)ᵐ. Self-intersection gives VU=1 after every test product. U shifts r to r+c−1.', 'proved'),
                         n('quadric-fibration-range', 'Use u=ceil((N−1)/2) on Y→ℙᶜ⁻¹', 'thm:quadrics',
-                          'Projective space is admitted in all degrees. The residual dimension of Y is c−2 for even N and c−1 for odd N, so it is ≤3 exactly in the displayed full cases.', 'conditional'),
+                          'Projective space is admitted in all degrees. The residual dimension of Y is c−2 for even N and c−1 for odd N, so it is ≤3 exactly in the displayed full cases.', 'proved'),
                         n('quadric-shift', 'Substitute R=r+c−1 in the outer local range for Y', 'eq:quadrics-local',
                           'With dim Y=N+c−2 and u=floor(N/2), R≤u+1 becomes r≤floor(N/2)−c+2; R≥dim Y−u−1 becomes r≥ceil(N/2)−2. Apply V to return the admitted class to X.', 'proved'),
                       ])),
@@ -891,7 +892,7 @@ function chowNiveau() {
     T(c, 'relative-quadrics', 'Relative intersections of quadrics', 'Relative intersections of quadrics',
       'The coefficient projective bundle is admitted from the base; its universal quadric and the same signed retraction give the relative range.',
       n('relative-quadrics', 'Every pair if b+c≤5 for even N, or b+c≤4 for odd N', 'thm:relative-quadrics',
-        'B is smooth projective geometrically integral of dimension b≥1. Vector bundles V,F have ranks N+1,c, with c≥1 and N≥c+1. X is the smooth projective geometrically integral zero scheme of a regular section of O(2)⊗π*F in the lines convention ℙ_B(V); X→B is flat of expected codimension c in every geometric fiber.', 'conditional',
+        'B is smooth projective geometrically integral of dimension b≥1. Vector bundles V,F have ranks N+1,c, with c≥1 and N≥c+1. X is the smooth projective geometrically integral zero scheme of a regular section of O(2)⊗π*F in the lines convention ℙ_B(V); X→B is flat of expected codimension c in every geometric fiber.', 'proved',
         G('all', 'The precise regular family + admitted base + universal quadric retraction',
           'The local outer range is r≤floor(N/2)−c+2 or r≥b+ceil(N/2)−2. The corresponding full global upper threshold is b+ceil(N/2)−1.',
           [S('thm:relative-quadrics', 'Complete relative proof'), S('eq:quadrics-retraction', 'The shared signed self-intersection calculation')], [
@@ -902,7 +903,7 @@ function chowNiveau() {
             n('relative-retraction', 'The normal sequence on E=X×_B C gives VU=1', 'thm:relative-quadrics',
               'Fiber integration gives p∗c_{c−1}(N_E/Y)=(−1)ᶜ⁻¹, so use U=j∗p* and V=(−1)ᶜ⁻¹p∗j!. This is an actual Chow retraction with codimension shift c−1, also for c=1.', 'proved'),
             n('relative-residual', 'The universal residual dimension is b+c−2 or b+c−1', 'thm:relative-quadrics',
-              'dim Y=b+N+c−2 and u=ceil((N−1)/2). Thus the residual dimension is b+c−2 for even N and b+c−1 for odd N. It is ≤3 precisely under the displayed full-range inequalities.', 'conditional',
+              'dim Y=b+N+c−2 and u=ceil((N−1)/2). Thus the residual dimension is b+c−2 for even N and b+c−1 for odd N. It is ≤3 precisely under the displayed full-range inequalities.', 'proved',
               G('all', 'The all-fiber quadric calculation + the admitted projective-bundle base',
                 'The fibers are scheme quadrics, so the singular and rank-one cases of the preceding fiber proof remain part of the application.',
                 [S('prop:fibration', 'Flat-fibration theorem'), S('cor:quad-cubic-fibers', 'All scheme-quadric Chow groups')], [
@@ -921,7 +922,7 @@ function chowNiveau() {
     C(c, 'Intersections of quadrics', 'quadrics', 'quadrics', 'thm:quadrics', 'Signed retraction and exact outer ranges'),
     C(c, 'Relative intersections of quadrics', 'relative-quadrics', 'relative-quadrics', 'thm:relative-quadrics', 'Relative hypotheses, signs and dimensions'),
   ], sourceBindings: [
-    { ...publicPaper, locators: ['Standing analytic hypotheses; thm:niveau; eq:residual-degree; eq:niveau-local; eq:niveau-height', 'prop:small-degree; eq:elv; eq:elv-quadratic; eq:hi-bound; eq:ot-bound; cor:ci-list, complete proofs', 'prop:fibration; eq:fibration-motive; cor:quad-cubic-fibers, complete proofs', 'thm:quadrics; eq:quadrics-retraction; eq:quadrics-local; thm:relative-quadrics, complete proofs'] },
+    { ...publicPaper, locators: ['The analytic constructions; thm:niveau; eq:residual-degree; eq:niveau-local; eq:niveau-height', 'prop:small-degree; eq:elv; eq:elv-quadratic; eq:hi-bound; eq:ot-bound; cor:ci-list, complete proofs', 'prop:fibration; eq:fibration-motive; cor:quad-cubic-fibers, complete proofs', 'thm:quadrics; eq:quadrics-retraction; eq:quadrics-local; thm:relative-quadrics, complete proofs'] },
     { file: 'public/projects/strong-green/editions/v0.5.1/source-files/pairing-cases/sections/niveau_fibrations.tex', sha256: 'ac1071b324c86354aac39b776aa9105b6fc0e7c6aadd30342be266c77c87c255', locators: ['thm:niveau and the Vial sufficient-hypothesis proof', 'prop:small-degree; eq:ot-bound; cor:ci-list and every parameter row', 'prop:fibration; cor:quad-cubic-fibers, including singular and nonreduced scheme fibers', 'thm:quadrics; thm:relative-quadrics, full normal-sequence and range calculations'] },
   ] };
 }

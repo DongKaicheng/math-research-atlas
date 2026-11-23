@@ -1,0 +1,400 @@
+\section{The complete cube curl and a failed literal subtraction}
+\label{sec:r11-cube-curl-extraction}
+
+\paragraph{Status and scope.}
+The finite curl formulas below are \textbf{PROVED THIS ROUND}.
+The proposed literal cancellation of the GR remainder's first curl
+is a \textbf{ROUTE FAILURE}: an explicit native rank-four facet
+violates it.  The construction contributors to this module are
+\texttt{/root/r11\_kernel} and \texttt{/root}; neither is eligible
+as a nonconstructor reviewer.  The formula was derived before the
+facet calculation, and the latter was also checked independently
+by two finite exterior-algebra calculations.  Those calculations
+are calibrations, not replacements for the carrier proof below.
+
+The conclusion does not exclude an actual $D$-primitive for the
+nonzero curl, a different extending triple, or a relative cube
+witness.  In particular it is neither a Strong G counterexample
+nor an entire actual OPEN-KERNEL counterexample.
+
+\subsection{Notation and the exact extraction}
+
+Keep the eight original actual norm potentials and the six oriented
+faces of GR12, in rank $r\ge3$.  Put
+\[
+ s=r-1,\qquad d=r-2,\qquad \ell=r-3=d-1,\qquad
+ \theta_v=\Phi_v-\Phi_0,\qquad C_0=R-D\Phi_0,
+ \qquad C_v=C_0-D\theta_v.
+ \tag{CF1}
+\]
+For face $\nu$, put $\kappa_\nu=\Psi_\nu-\Phi_0$ with its
+specified original CS cap.  Its ordered weights are
+$(a_\nu,b_\nu)$; an oriented edge $e=(i,j)$ has signed weight
+$c_e$.  The face signs $\sigma_\nu$ are exactly GR12.  All these
+objects live on the whole original punctured open $W$.
+
+For a numerical parameter $w\in[0,1]$ set
+\[
+ R_{\nu,w}=C_0-wD\kappa_\nu,\qquad
+ p_{v,\nu}(w)=\theta_v-w\kappa_\nu.
+ \tag{CF2}
+\]
+These are finite polynomial expressions in actual forms, not
+assumed to be actual tuple norm presentations for intermediate
+$w$.  Write $h_j$ for the complete homogeneous polynomial and
+$\partial_Rh_j(R,\ldots)$ for its formal derivative in the first
+displayed variable.  The other curvature arguments are held fixed.
+
+Define the following completely specified actual form:
+\[
+\begin{split}
+ \mathcal J_{\nu,d}(w)
+  ={}&\sum_{e=(i,j)\in\nu}\Bigl[
+       d''\theta_i\wedge d''\theta_j\,
+          \partial_Rh_d(R_{\nu,w},C_i,C_j)\\
+ &\hspace{15mm}+d''(c_e)_+\wedge d''\theta_j\,
+          \partial_Rh_d(R_{\nu,w},C_j)\\
+ &\hspace{15mm}+d''(c_e)_-\wedge d''\theta_i\,
+          \partial_Rh_d(R_{\nu,w},C_i)\Bigr]\\
+ &+d\,d''a_\nu\wedge d''b_\nu\,R_{\nu,w}^{d-1}.
+\end{split}
+ \tag{CF3}
+\]
+Here $(c_e)_+=\max(c_e,0)$ and $(c_e)_-=\min(c_e,0)$ are
+the full actual piecewise affine unit-weight functions; no sign
+wall is discarded.
+
+\begin{proposition}[Full first curl of the metric-independent GR triple]
+For the exact $E_{\rm glob}$ of GR15, its first component satisfies
+the literal actual identity
+\[
+ \boxed{\quad
+ d''(E_{\rm glob})_A
+   =\sum_{\nu=1}^6\sigma_\nu\,
+      d''\kappa_\nu\wedge\int_0^1\mathcal J_{\nu,d}(w)\,dw.
+ \quad}
+ \tag{CF4}
+\]
+The integration consists only of integrating finitely many real
+polynomial coefficients.  It introduces no completion, current
+primitive or analytic parameter pushforward.
+\end{proposition}
+
+\begin{proof}
+Use GR's finite two-colour algebra and put $w(t)=1-\rho(t)$,
+where $w(0)=1$, $w(1)=0$.  The full reference curvature is
+\[
+ \widetilde R_\nu
+  =R_{\nu,w}-\epsilon'\dot w\,d''\kappa_\nu
+       +\epsilon''\dot w\,d'\kappa_\nu
+       -\epsilon'\epsilon''\ddot w\,\kappa_\nu.
+ \tag{CF5}
+\]
+The projective curvatures $C_v$ are independent of $t$ and of
+both exterior parameter variables, since
+$\widetilde R_\nu-\widetilde Dp_{v,\nu}=C_v$.
+
+For actual scalars write
+$s''(u,v)=u\,d''v-v\,d''u$.  Its formal counterpart has no
+single $\epsilon'$ coefficient.  Moving $\epsilon'$ to the
+left through the odd symbol $s''$ introduces a minus sign,
+which cancels the minus sign of the first parameter coefficient
+in (CF5).  Consequently the \emph{complete} $F_1^+$ coefficient
+in GR11 for this face is
+\[
+\begin{split}
+ (F_\nu)_1^+
+ =\frac{\dot w}{2}\Bigl\{\sum_{e=(i,j)}\bigl[
+ &s''(p_i(w),p_j(w))\wedge d''\kappa_\nu\,
+                         \partial_Rh_d(R_{\nu,w},C_i,C_j)\\
+ +{}&s''((c_e)_+,p_j(w))\wedge d''\kappa_\nu\,
+                         \partial_Rh_d(R_{\nu,w},C_j)\\
+ +{}&s''((c_e)_-,p_i(w))\wedge d''\kappa_\nu\,
+                         \partial_Rh_d(R_{\nu,w},C_i)\bigr]\\
+ +{}&d\,s''(a_\nu,b_\nu)\wedge d''\kappa_\nu\,
+                                      R_{\nu,w}^{d-1}\Bigr\}.
+\end{split}
+ \tag{CF6}
+\]
+This extraction does not declare the other single or double
+parameter coefficients zero.  They remain present in GR5--GR9;
+the first component of GR15 simply uses this particular one.
+
+The first component in GR15 is
+$-\int_0^1\sum_\nu\sigma_\nu(F_\nu)_1^+\,dt$.
+Changing variables from $t$ to $w$ reverses the endpoints and
+cancels this minus sign.  For each fixed numerical $w$, all
+curvature factors in (CF6) are $d''$-closed, and
+\[
+ d''\bigl(s''(u,v)\wedge d''\kappa\bigr)
+                  =2d''u\wedge d''v\wedge d''\kappa.
+ \tag{CF7}
+\]
+The factor two cancels the one half in (CF6).  In every resulting
+wedge, replacing $d''p_v(w)=d''\theta_v-wd''\kappa$ by
+$d''\theta_v$ makes no change, because another $d''\kappa$
+is already present.  Moving that last one-form to the front
+passes two odd factors and has positive sign.  The result is
+exactly (CF3)--(CF4).
+\end{proof}
+
+In rank three $d=1$, all three formal derivatives in (CF3)
+are one, as is the final factor $dR_{\nu,w}^{d-1}$.  In rank
+four $d=2$, the four integrated coefficients, in their displayed
+order, are
+\[
+ \begin{gathered}
+ C_0+C_{\Psi_\nu}+C_i+C_j,\qquad
+ C_0+C_{\Psi_\nu}+C_j,\qquad
+ C_0+C_{\Psi_\nu}+C_i,\qquad C_0+C_{\Psi_\nu},\\
+             C_{\Psi_\nu}=C_0-D\kappa_\nu.
+ \end{gathered}
+ \tag{CF8}
+\]
+This follows by integrating $2R_{\nu,w}$ and using
+$2C_0-D\kappa_\nu=C_0+C_{\Psi_\nu}$.  No curvature factor
+has been cancelled in an actual quotient.
+
+\subsection{A separate formula for the literal raw-face curl}
+
+The raw cube and its metric-independent remainder need not have
+the same first curl.  For comparison, let a face have unshifted
+potentials $\Phi_i$, common reference $R$, and actual normalizer
+$\Psi$.  Set $p_i=\Phi_i-\Psi$, $R_*=R-D\Psi$ and
+$C_i=R-D\Phi_i$.  For the \emph{entire} CS36 expression
+$q[\Psi]$, including full MT and CPT, one has
+\[
+\begin{split}
+ d''q[\Psi]_A
+ ={}&\frac12\sum_{e=(i,j)}d''|c_e|\wedge d''p_i\wedge d''p_j\,
+                                      h_\ell(R_*,C_i,C_j)\\
+ &+d''\Psi\wedge\sum_{e=(i,j)}\Bigl[
+      d''\Phi_i\wedge d''\Phi_j\,
+                                      h_\ell(R_*,R,C_i,C_j)\\
+ &\hspace{19mm}+\tfrac12 d''c_e\wedge d''\Phi_i\,
+                                      h_\ell(R_*,R,C_i)\\
+ &\hspace{19mm}+\tfrac12 d''c_e\wedge d''\Phi_j\,
+                                      h_\ell(R_*,R,C_j)\Bigr]\\
+ &+d''\Psi\wedge d''a_\nu\wedge d''b_\nu\,
+                                      h_\ell(R_*,R).
+\end{split}
+ \tag{CF9}
+\]
+
+\begin{proof}
+The first component of the scalar triple in CS6 has no
+contribution.  Differentiating the numerator of CS9 in the
+second colour gives three times
+$d''|c_e|\wedge d''p_i\wedge d''p_j$.
+The one-third factor of CS9 and the one-half factor of the full
+edge triple therefore give the first line of (CF9), initially
+with $R_*-D|c_e|$ in place of its first curvature argument.
+Every difference term contains $D|c_e|$.  Its carrier is on
+$c_e=0$, where the tangential first derivative of $|c_e|$ is
+zero.  The explicit factor $d''|c_e|$ therefore kills every
+such term, on all refinements.  This proves the first line
+with its stated curvature polynomial, without cancelling a
+curvature factor.
+
+For MT's complete coefficient pair $f_k$, direct differentiation
+of MT6 gives
+\[
+ -d''f_k'=
+ \sum_{e=(i,j)}\left[
+ d''\Phi_i\wedge d''\Phi_j\,h_{k-1}(C_i,C_j)
+ +\frac12d''c_e\wedge
+    (d''\Phi_iC_i^{k-1}+d''\Phi_jC_j^{k-1})\right].
+ \tag{CF10}
+\]
+Use $h=-\Psi$ in the actual full MT15 formula.  Applying $d''$
+to its first component, and remembering that CS36 subtracts
+the full MT triple, gives the second through fourth lines of
+(CF9).  The only polynomial simplifications are the finite
+convolutions
+\[
+ \sum_{k=1}^{s-1}h_{s-k-1}(R_*,R)h_{k-1}(C_i,C_j)
+                       =h_{s-2}(R_*,R,C_i,C_j)
+ \tag{CF11}
+\]
+and the analogous identity with one $C_i$ argument.
+Finally the scalar correction in CS36 has no first component.
+For its independently closed-pair correction, the first component
+is $d''h_\Psi\wedge(a_\nu d''b_\nu)$, where
+$h_\Psi=-\Psi h_\ell(R_*,R)$.  Its second-colour derivative is
+$d''\Psi\wedge d''a_\nu\wedge d''b_\nu h_\ell(R_*,R)$.
+This gives the final line and proves the complete formula.
+\end{proof}
+
+Summing (CF9) with the six GR12 signs computes the raw cube
+curl.  By GR16 it differs from (CF4) by the corresponding
+$D$-boundary of the first quadruple component; it is not
+legitimate to substitute one curl for the other without that
+term.
+
+\subsection{A full native facet where the proposed literal identity fails}
+
+Fix $r=4$.  Choose $\varpi\in K$, $0<|\varpi|<1$, and put
+$\lambda=v(\varpi)>0$.  On the standard angular torus in
+$\mathbf P^3_K$, write
+\[
+ x_i=v(z_i/z_4)\quad(1\le i\le3),\qquad x_4=0.
+ \tag{CF12}
+\]
+Take three independent original-$K$ torus units with valuations
+$a,b,c$, multiplying entries one, two and three respectively.
+Use the fixed positive cap constant $\varepsilon=4\lambda$.
+Let $O$ be the ordinary valuation-box open of radius
+$\lambda/10$ about
+\[
+ (x_1,x_2,x_3;a,b,c)
+                  =(-2,-2,8;3,8,7)\lambda.
+ \tag{CF13}
+\]
+The displayed center may lie on a facet; the open box contains
+both sides.  All three weights are positive on $O$.
+
+In the affine frame $z_4$, put $u=\min(x_1,x_2)$.
+On the \emph{whole} open $O$, the eight full tuple minima are
+\[
+\begin{array}{c|cccccccc}
+ v&0&A&B&AB&C&AC&BC&ABC\\\hline
+ \phi_v&u&x_2&x_1&0&u&x_2&x_1&0.
+\end{array}
+ \tag{CF14}
+\]
+The inequalities follow directly from (CF13): the third entry
+is strictly inactive, the first raised entry exceeds zero,
+the second raised entry exceeds zero, and the unchanged fourth
+entry has valuation zero.  These are strict inequalities on
+the whole box, not identities inferred from rational points.
+
+The raw face caps, in the exact order GR12, are likewise
+\[
+\begin{array}{c|cccccc}
+ \nu&1&2&3&4&5&6\\\hline
+ (a_\nu,b_\nu;\text{base})
+       &(a,b;0)&(a,c;B)&(b,c;0)&(b,c;A)&(a,c;0)&(a,b;C)\\
+ \sigma_\nu&+1&+1&+1&-1&-1&-1\\
+ \Psi_\nu^{\rm raw}&0&0&x_1&0&x_2&0.
+\end{array}
+ \tag{CF15}
+\]
+Indeed each passive minimum is the displayed affine function,
+and the alternative full-minimum-plus-weight-plus-cap branch
+is strictly larger on $O$.  This verifies the entire caps,
+not just their values on the center facet.
+
+Now work in the standard projective metric: its reference
+curvature is $C_0=-Du$ on this chart, its vertex scalars are
+$\theta_v=\phi_v-u$, and its cap scalars are
+$\kappa_\nu=\Psi_\nu^{\rm raw}-u$.
+The only corner carrier meeting $O$ is
+\[
+ H=\{x_1=x_2\},\qquad C_0=\omega_H,
+ \tag{CF16}
+\]
+with native weight one and positive standard normalization.
+All $C_v$ vanish on $O$ except $C_0$ and $C_C=C_0$.
+Every raw cap in (CF15) is affine, so
+$C_{\Psi_\nu}=0$ for all six faces.  On $H$ write
+$dx=d''x_1|_H=d''x_2|_H$.  The full tangential data are
+\[
+\begin{array}{c|cccccccc}
+ v&0&A&B&AB&C&AC&BC&ABC\\\hline
+ d''\theta_v|_H&0&0&0&-dx&0&0&0&-dx
+\end{array}
+ \tag{CF17}
+\]
+and
+\[
+ (d''\kappa_1,\ldots,d''\kappa_6)|_H
+                         =(-dx,-dx,0,-dx,0,-dx).
+ \tag{CF18}
+\]
+
+Every edge term of (CF3), after multiplication by
+$d''\kappa_\nu$ and restriction to $H$, vanishes: two of
+its one-form factors are zero or multiples of $dx$.
+Using (CF8), only the final unit-pair term remains.  Its
+six signed contributions give
+\[
+ \left.d''(E_{\rm glob})_A\right|_O
+       =C_0\wedge dx\wedge(d''b-d''a)\wedge d''c.
+ \tag{CF19}
+\]
+Here restriction to $H$ denotes the coefficient on the
+$C_0$ carrier; the right side is the indicated actual
+pure delta form on $O$.
+
+The independently closed unit triple CU6 has first component
+$-a\,d''b\wedge d''c$.  Therefore its expected comparison
+curl in this rank is
+\[
+                d''(C_0E_{abc})_A
+                   =-C_0\wedge d''a\wedge d''b\wedge d''c.
+ \tag{CF20}
+\]
+Subtracting (CF20) from (CF19) gives the nonzero actual form
+\[
+ \boxed{\quad
+ d''\bigl(E_{\rm glob}-C_0E_{abc}\bigr)_A
+ =C_0\wedge
+   \left[dx\wedge(d''b-d''a)\wedge d''c
+                         +d''a\wedge d''b\wedge d''c\right]
+                         \ne0\quad\text{on }O.
+ \quad}
+ \tag{CF21}
+\]
+For an explicit nonvanishing check, the bracket restricted to
+the tangent vectors in the $a,b,c$ directions, with $x$ fixed,
+has coefficient one.  These directions are independent on
+$H$.  The identity torus chart has weight one, so this is a
+nonzero native actual carrier coefficient.  Equivalently,
+wedging with an ordinary smooth compact complementary form
+supported near a relative interior point of $H$ gives a
+nonzero integral.  The assertion is thus not merely a
+many-to-one tropical pushforward calculation.
+
+The same small certificate also rejects the analogous literal
+curl identity for the raw cube in the standard projective
+metric.  In (CF9), all normalized endpoint and cap derivatives
+on $H$ are multiples of $dx$.  Its first line and all its
+edge-dependent metric terms vanish there.  Its last line
+has $h_1(C_{\Psi_\nu},C_0)=C_0$, so the same computation
+gives (CF19) for the raw first curl.  This assertion is only
+for this supplied metric and carrier; it does not identify
+the two full curls in general or discard their $D$-difference.
+
+\paragraph{The precise rejected step.}
+Equation (CF21) disproves the proposed general identity
+$d''(E_{\rm glob}-C_0^{r-3}E_{abc})_A=0$.
+It therefore blocks applying a curl-free conical solver
+directly to this uncorrected GR remainder.  It does
+\emph{not} prove that the nonzero curl has no actual
+$D$-primitive.  A prior explicit $D$-correction could remove
+it, and a different genuinely extending error is also
+permitted.  Neither possibility is decided here.
+
+\paragraph{Actual interfaces and exact dependencies.}
+The formulas (CF1)--(CF11) are finite actual differential
+polynomials on the original $W$, with all full mixed
+coefficients and every unit-weight wall retained.  Their
+construction commutes with the actual sheaf restrictions
+and all allowed refinements; arbitrary relations among
+the supplied analytic units are preserved.  The example
+uses an original-$K$ faithful native torus only to disprove
+a particular universal identity.  It does not replace
+the actual topology or test class of a general theorem.
+
+The exact frozen-in-R11 GR source is
+\path{c47cbd11e549bf94430182888bccffce20cad14ddc70f2929cab7ba04f5d3997}.
+The full edge formula CS has hash
+\path{d0c06d21c2289d292fb735d6966d456b9e05f1e4fab10f263a5007169d79cacf};
+the complete MT source has hash
+\path{d1365f528071a8db5e20f55628c88b84a06e73965dd808e8b27375c776fc73d4}.
+The closed-pair CPT interface has hash
+\path{725be5ed2460e1a0bbac88275b16533d5b5e8cc34a9befb3a6074c11f8e555f6},
+and the unit triple CU6 has hash
+\path{d38d0c77f879e3ca80962fa0fac2e56f6ea159fd59971a0bd810fbadc0a91471}.
+No missing recovery module, full-kernel hypothesis, auxiliary
+probe topology, arbitrary form descent or other branch is used.

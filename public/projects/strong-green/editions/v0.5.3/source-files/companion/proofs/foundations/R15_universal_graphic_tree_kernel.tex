@@ -1,0 +1,227 @@
+% Round 15. Universal graphic-matroid kernel; independent audit PASS.
+\section{A universal graphic-matroid kernel for all split tree types}
+\label{r15ug:section}
+
+The fixed affine-tree construction suggests a stronger local device.
+One can encode every split marked tree in a single graphic matroid
+family, and cut that family out by ambient delta forms before any
+input is intersected. This section separates that polyhedral
+construction from the still separate ordinary presentation problem.
+
+\begin{definition}[The universal split-tree fans]
+\label{r15ug:fans}
+For $s\geq2$, let $B_s\subset\mathbf R^{\binom s2}$ be the
+weight-one Bergman fan of the graphic matroid of the complete graph
+$K_s$, in the minimum valuation convention. Its coordinates are
+$\lambda_{ij}$, and the minimum on each cycle occurs at least twice.
+For a complete graph it is enough to impose this on triangles.
+Let
+\[
+ C_s=B_{s+1}\subset B_s\times\mathbf R^s,
+       \qquad f:C_s\longrightarrow B_s
+\tag{UG15.1}\label{r15ug:universal}
+\]
+forget the edges joining the new vertex to the old ones; denote
+those new coordinates by $w_i$. The convention is the negative
+of the fan-coordinate convention in Fran\c{c}ois \cite{Francois}.
+Every fan, function, and intersection from that reference is
+transported by the linear automorphism $u\mapsto-u$ when used here.
+For $s=1$ put $B_1=\{0\}$ and $C_1=\mathbf R$.
+\end{definition}
+
+\begin{lemma}[The weighted universal tree and flatness]
+\label{r15ug:flat}
+The fiber of $f$ over $\lambda\in B_s$ is exactly the split
+marked tree parametrized by
+\[
+          w_j=\min(t,\lambda_{ij}),\quad w_i=t,
+\tag{UG15.2}\label{r15ug:rays}
+\]
+with the least-label identification of Lemma~\ref{r15ray:labels}.
+All relative edge weights are one, including at degenerations.
+The linear map $f$ is flat in Mihatsch's sense.
+\end{lemma}
+
+\begin{proof}
+The new triangle relations say that the minimum of
+$w_i,w_j,\lambda_{ij}$ occurs at least twice. Choose $i$ with
+$w_i$ maximal. If $w_i>w_j$, the relation forces
+$w_j=\lambda_{ij}$; if $w_i=w_j$, it forces
+$w_i\leq\lambda_{ij}$. These are precisely
+\eqref{r15ug:rays}. Conversely those values satisfy all new
+triangle relations by the ultrametric inequalities for $\lambda$.
+The remaining cycles follow from the triangle relations: repeatedly
+insert a chord into a cycle having a putative unique minimum and
+obtain a shorter cycle with a unique minimum. Thus the description
+is the full fiber, not just a selected skeleton inside it.
+
+On every open tree edge, the old coordinates together with the
+primitive coordinate $w_i=t$ give the lattice of that cell as the
+base-cell lattice times $\mathbf Z$. All other $w_j$ are old
+coordinates or $t$. Conversely the inverse coordinate projection
+is integral. Thus there is no lattice index, and the quotient
+weight is one. This agrees with the weight-one flags-of-flats
+calibration of both graphic Bergman fans.
+
+For every compactly supported PWS input on $C_s$, the labelled-band
+formula of Proposition~\ref{r15ray:polyhedral} gives a PWS tensor
+on $B_s$ with its exact fiber integral against every PWS test.
+It includes the tangential restrictions on all faces and the zero
+contribution of collapsed intervals. This is exactly Definition
+2.18 of Mihatsch \cite{Mihatsch}: existence of PWS fiber integration
+for every compact PWS input is the definition of flatness. It also
+proves the statement after taking a product with an arbitrary
+Euclidean space of extra base coordinates.
+\end{proof}
+
+\begin{lemma}[An ambient relative delta kernel]
+\label{r15ug:kernel}
+There is a global ambient delta-cycle $\Gamma_s$ of bidegree
+$(s-1,s-1)$ on
+$\mathbf R^{\binom s2}\times\mathbf R^s$ such that
+\[
+ \Gamma_s\wedge[B_s\times\mathbf R^s]=[C_s].
+\tag{UG15.3}\label{r15ug:cut}
+\]
+More strongly, for every local weighted tropical cycle $T$ with
+rational polyhedral directions in
+$B_s\times\mathbf R^a$, with its original weights, one has
+\[
+ \widetilde\Gamma_s\wedge\operatorname{pr}^*[T]
+                   =(f\times\mathrm{id})^*[T]
+\tag{UG15.4}\label{r15ug:all-cycles}
+\]
+as polyhedral currents in the corresponding ambient space.
+Here $\widetilde\Gamma_s$ ignores the extra $a$ coordinates,
+and the right side is the weighted flat pullback, represented
+in the universal family. Negative or real cycle weights are
+allowed by linearity: on a fixed rational subdivision the balancing
+relations have integer coefficients, so their real solution space
+is spanned by rational, hence rescaled integer, solutions.
+\end{lemma}
+
+\begin{proof}
+For $s=1$ take $\Gamma_1=1$. Otherwise put
+\[
+ M=\operatorname{Mat}(K_s)\oplus U_{s,s},\qquad
+ N=\operatorname{Mat}(K_{s+1})
+\]
+on the common set of old and new graph edges. The new edges
+are coloops in $M$. Every circuit of $M$ is an old circuit of
+$N$, so $B(N)\subset B(M)=B_s\times\mathbf R^s$.
+These are weight-one balanced fans and
+$\operatorname{rank}M-\operatorname{rank}N=s-1$.
+Fran\c{c}ois \cite{Francois}, Remark 4.4, gives piecewise linear
+functions $\phi_1,\ldots,\phi_{s-1}$ on $B(M)$ whose divisor
+product is $B(N)$. In that paper's sign convention their value
+at the flat ray $V_F$ is $-1$ precisely when
+$r_M(F)-r_N(F)\geq i$, and zero otherwise. Transport the formula
+to our convention.
+
+Extend each of these finite-fan piecewise linear functions to
+an ambient continuous piecewise linear function $\Phi_i$.
+Such an extension is obtained by extending the finite fan to a
+complete subdivision and assigning values on its added rays,
+while extending the common linear part on the lineality space.
+Set
+\[
+                       \Gamma_s=D\Phi_1\wedge\cdots
+                                            \wedge D\Phi_{s-1}.
+\tag{UG15.5}\label{r15ug:explicit}
+\]
+The Euclidean delta intersection agrees with successive tropical
+Cartier divisors, by Mihatsch \cite{MihatschIntersection},
+Theorem 4.1. Consequently \eqref{r15ug:cut} is an identity of
+weighted cycles with the stated normalization.
+
+For \eqref{r15ug:all-cycles}, work locally near any point of
+$B_s\times\mathbf R^a$. Its star is a product of matroid-minor
+fans and a linear space. The local fan form of Fran\c{c}ois,
+Theorem 4.1 and Remark 4.2, cuts the local cycle $T$ out by a
+piecewise polynomial cocycle on this smooth tropical space.
+Piecewise polynomials on a finite fan are sums of products of
+piecewise linear functions (loc. cit., Section 3). Extending
+these factors to the Euclidean ambient space gives an ambient
+delta-form $\zeta$ such that
+\[
+                 [T]=\zeta\wedge[B_s\times\mathbf R^a]
+\tag{UG15.6}\label{r15ug:local-cut}
+\]
+on the chosen local open. This uses only local stars; no assertion
+about gluing global cocycles of arbitrary degree is needed.
+In particular $T$, intrinsically on that smooth tropical space,
+is a Mihatsch delta-form.
+
+Associativity and \eqref{r15ug:cut} now give
+\[
+ \widetilde\Gamma_s\wedge\operatorname{pr}^*[T]
+       =\operatorname{pr}^*\zeta\wedge[C_s\times\mathbf R^a].
+\tag{UG15.7}\label{r15ug:commute}
+\]
+By Lemma~\ref{r15ug:flat} and Mihatsch Proposition 2.44, flat
+pullback of the intrinsic delta-form $T$ agrees with substitution
+of its genuine ambient presentation. The right side of
+\eqref{r15ug:commute} is exactly that pullback. This proves
+\eqref{r15ug:all-cycles}. Equivalently one can apply the
+successive divisor formulas to the ambient PL factors of $\zeta$.
+No general delta pullback along the nonflat inclusion of the
+universal family is asserted. Local equality of these currents
+glues by uniqueness, without a global cocycle-injectivity claim.
+\end{proof}
+
+\begin{theorem}[Universal output for a supplied split ambient presentation]
+\label{r15ug:projection}
+Keep the smooth algebraic base, split analytic root functions,
+and complete tuple of difference units of Definition~\ref{r15ft:data},
+but impose no fixed tree-type condition. Suppose the input still
+has its supplied single ambient presentation with proper ambient
+vertical support. Then its projective-line current has an ordinary
+actual representative of degree $(p-1,q-1)$, with every ordinary
+smooth compact mixed-test pairing and the native normalization.
+\end{theorem}
+
+\begin{proof}
+Separate the root-difference coordinates from the extra base
+coordinates, duplicating a coordinate if necessary by a genuine
+unit refinement. Pull the ambient kernel $\Gamma_s$ back by that
+coordinate projection. For the supplied ambient input $\omega$ put
+\[
+          \beta_0=\operatorname{pr}_*(\Gamma_s\wedge\omega),
+                   \qquad\beta=t_b^\star\beta_0.
+\tag{UG15.8}\label{r15ug:output}
+\]
+Proper ambient support permits Euclidean affine delta pushforward;
+its degree is $(p+s-1-s,q+s-1-s)=(p-1,q-1)$.
+Thus $\beta$ is an ordinary actual form on the base.
+
+Append every target-test unit and the compact-localization cutoff
+moments, as in Theorem~\ref{r15ft:projection}. The refined base
+fundamental cycle $T$ lies in $B_s$ times the Euclidean space of
+all extra coordinates. On compact algebraic Laurent subcharts,
+exact-norm rationalization of the finite base tuple makes these
+fundamental cycles rational in their directions; arbitrary real
+domain radii do not change that assertion. The maximal initial-form argument in that
+theorem identifies the source fundamental cycle with the marked-tree
+family over $T$, with base weight times relative weight one.
+Lemma~\ref{r15ug:kernel} identifies that very whole cycle with
+$\Gamma_s\wedge\operatorname{pr}^*T$. This equality precedes
+intersection with the input, so retains every positive-delta stratum
+at vertices and changing tree types. The Euclidean projection formula
+and Cartesian product by the extra test coordinates prove the
+prescribed pairing with \eqref{r15ug:output}. Ordinary current
+injectivity proves uniqueness and gluing. Finite descent is valid
+whenever the output is in the established actual finite-trace strip,
+with division by the full native degree.
+\end{proof}
+
+\paragraph{The separate analytic presentation interface.}
+The theorem requires a supplied single ambient actual presentation.
+The earlier PWS assembly by degreewise PWS extension cannot simply
+be reused for positive-delta inputs. Proposition~\ref{r15ad:presenter}
+supplies the necessary new construction using two nested Laurent
+neighborhoods, strict numerical margins, and genuine Euclidean
+cutoffs. Combining that proposition with this kernel and the frozen
+finite actual trace gives Theorem~\ref{r15a2:projection} for
+$\min(p,q)\leq2$. The universal kernel itself works in all degrees
+for supplied ambient inputs, but descent of a general output beyond
+the established finite-trace strip remains open.

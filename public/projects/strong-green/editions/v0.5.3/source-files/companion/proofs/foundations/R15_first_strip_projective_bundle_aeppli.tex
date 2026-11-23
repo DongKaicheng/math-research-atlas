@@ -1,0 +1,318 @@
+% Round 15. New candidate following the independently reviewed incidence
+% formula. Requires a separate sign and boundary-category audit.
+\section{The incidence homotopy on the outer edges and the first strip}
+\label{r15s:section}
+
+This section keeps the incidence geometry, smooth line curvatures,
+scalar $g$, and polynomial $W$ from
+Section~\ref{r15i:section}.  Thus $E=\mathbf P_S(N)$ has
+relative dimension $r\geq1$, $F=\mathbf P_E(Q)$,
+$I=\mathbf P_F(M)$, and $p=\lambda\rho:I\to E$.
+Write $m=\dim E$ and $t=\pi\lambda:F\to S$.
+In addition to $(\mathrm{HP}_{\mathrm{nat}})_K$, the proofs
+below use the separately proved PWS target projection formula
+\eqref{r15ps:PWS-projection}.  This is an explicit
+tensor-level result, with its own band-integration proof;
+it is not treated as a formal extension of smooth testing.
+
+All Aeppli groups below are actual groups
+\[
+ H_{\mathrm A}^{a,b}(V)
+ =\ker(D:B^{a,b}(V)\to B^{a+1,b+1}(V))
+     /\bigl(d'B^{a-1,b}(V)+d''B^{a,b-1}(V)\bigr).
+\]
+Negative bidegrees are zero.  In particular
+$H_{\mathrm A}^{a,0}=\ker D/d'B^{a-1,0}$.
+Every actual form on an outer edge is PWS.
+
+\begin{lemma}[The PWS incidence homotopy in every bidegree]
+\label{r15s:general-homotopy}
+Let $\alpha\in\operatorname{PS}^{a,b}(E)$ satisfy $D\alpha=0$.
+Set
+\[
+ \beta_\alpha=Wz^*\alpha,
+ \quad C\alpha=\rho_*(z^*\alpha),
+ \quad J\alpha=\pi_*(\xi^r\alpha).
+\tag{FS15.1}\label{r15s:CJ}
+\]
+There are ordinary PWS outputs
+\[
+ \mathcal G\alpha\in\operatorname{PS}^{a-1,b-1}(E),\quad
+ \mathcal P\alpha\in\operatorname{PS}^{a,b-1}(E),\quad
+ \mathcal Q\alpha\in\operatorname{PS}^{a-1,b}(E)
+\tag{FS15.2}\label{r15s:degrees}
+\]
+representing the prescribed singular expressions with
+$g\beta_\alpha,d'g\beta_\alpha,d''g\beta_\alpha$,
+respectively.  The outputs of negative degree are zero.
+The following is an equality of ordinary actual forms:
+\[
+ \alpha=\pi^*(J\alpha)
+        -\lambda_*(\nu^r\wedge C\alpha)
+        +D\mathcal G\alpha+d''\mathcal P\alpha
+                                      -d'\mathcal Q\alpha.
+\tag{FS15.3}\label{r15s:homotopy}
+\]
+Both $C\alpha$ and $J\alpha$ are $D$-closed PWS forms,
+of degrees $(a-1,b-1)$ and $(a,b)$, respectively.
+\end{lemma}
+
+\begin{proof}
+The germ identity $z^*\alpha=p^*\alpha$ on an ordinary
+neighborhood of $\Sigma$ holds in every bidegree.  For the
+tests complementary to the three degrees in
+\eqref{r15s:degrees}, multiplication by $\alpha$ gives
+respectively target degrees $(m+1,m+1),(m,m+1),(m+1,m)$.
+Thus the same cutoff argument as in
+Proposition~\ref{r15i:outputs} produces global PWS inputs
+for the projective-bundle tower and proves every prescribed
+smooth-test pairing.  The input degrees are
+$(a+r-1,b+r-1),(a+r,b+r-1),(a+r-1,b+r)$;
+subtracting the relative degree $(r,r)$ gives exactly
+\eqref{r15s:degrees}.  There is no assertion about an
+operator on forms of positive delta codimension.
+
+For clarity we redo the signs, rather than extrapolate the
+even-degree calculation.  Let
+$\eta\in\mathcal A_c^{m-a,m-b}(E)$ and write
+$\eta_p=p^*\eta$ and $\epsilon=(-1)^{a+b}$.
+The total degree of $\beta_\alpha$ has parity $a+b$.
+Put
+\[
+ A=\int_I g\beta_\alpha D\eta_p,\quad
+ B=\int_I d'g\,\beta_\alpha d''\eta_p,\quad
+ C=\int_I d''g\,\beta_\alpha d'\eta_p.
+\]
+All displayed integrands vanish near $\Sigma$ whenever
+needed; hence these are ordinary integrals of forms on the
+complement, with compact support there.  The differential
+convention for currents gives
+\[
+ \langle D\mathcal G\alpha+d''\mathcal P\alpha
+                   -d'\mathcal Q\alpha,\eta\rangle
+                       =A+\epsilon B-\epsilon C.
+\tag{FS15.4}\label{r15s:current-sign}
+\]
+Actual Stokes for the zero extensions of
+$g\beta_\alpha d''\eta_p$ and
+$g\beta_\alpha d'\eta_p$ gives
+\[
+ \int_I g\,d'\beta_\alpha d''\eta_p=-B-\epsilon A,
+ \qquad
+ \int_I g\,d''\beta_\alpha d'\eta_p=-C+\epsilon A.
+\]
+Since $D\beta_\alpha=0$,
+\[
+ D(\beta_\alpha\eta_p)
+   =-\epsilon d''\beta_\alpha d'\eta_p
+      +\epsilon d'\beta_\alpha d''\eta_p
+      +\beta_\alpha D\eta_p.
+\]
+It follows that the right side of
+\eqref{r15s:current-sign} is
+$-\int_IgD(\beta_\alpha\eta_p)$.
+This also handles the outer edges: the inadmissible tests
+and corresponding integrals are zero by degree.
+
+Apply the scalar Green formula to the actual test
+$\beta_\alpha\eta_p$, of degree
+$(m+r-1,m+r-1)$.  On $\Sigma$, terms in $W$ with
+$k<r-1$ vanish because $\alpha\eta$ is a target top form.
+The remaining term integrates to $\int_E\alpha\eta$
+by the frozen projective fiber-degree formula (R10.1),
+valid against every actual top test.  The term containing
+$(z^*\xi)^r$ is $\int_E\pi^*(J\alpha)\eta$ by the
+top-form change of variables away from the diagonal and
+projective-bundle base change, exactly as in
+\eqref{r15i:first-term}.  The top form restricts to zero
+on the diagonal by dimension, independently of $(a,b)$.
+For the term containing $\nu^r$, first test $\rho_*z^*\alpha$
+against the smooth form $\nu^r\lambda^*\eta$, and then
+test $\lambda_*(\nu^r C\alpha)$ against $\eta$.
+This gives \eqref{r15s:homotopy} for all smooth tests,
+and actual-current injectivity proves it as stated.
+Closedness of $C\alpha,J\alpha$ follows by current
+differentiation and actual-current injectivity.
+\end{proof}
+
+\begin{theorem}[Projective bundles do not add outer-edge Aeppli classes]
+\label{r15s:edge}
+For every $a\geq0$,
+\[
+ H_{\mathrm A}^{a,0}(E)=\pi^*H_{\mathrm A}^{a,0}(S),
+ \qquad
+ H_{\mathrm A}^{0,a}(E)=\pi^*H_{\mathrm A}^{0,a}(S),
+\tag{FS15.5}\label{r15s:edge-formula}
+\]
+with injective pullbacks.  More precisely, for a $D$-closed
+actual form $\alpha$ of degree $(a,0)$ there are $D$-closed
+$\gamma\in\operatorname{PS}^{a,0}(S)$ and
+$q_\alpha\in\operatorname{PS}^{a-1,0}(E)$ such that
+\[
+                    \alpha=\pi^*\gamma-d'q_\alpha.
+\tag{FS15.6}\label{r15s:edge-identity}
+\]
+The conjugate statement holds on the other edge.
+\end{theorem}
+
+\begin{proof}
+The input is already PWS.  With $b=0$,
+$C\alpha$, $\mathcal G\alpha$, and $\mathcal P\alpha$
+have negative second degree, hence vanish.
+Equation~\eqref{r15s:homotopy} becomes
+\eqref{r15s:edge-identity}, with $\gamma=J\alpha$ and
+$q_\alpha=\mathcal Q\alpha$.
+Injectivity is the frozen constant-fiber Aeppli theorem,
+Round 14 \texttt{r14j:equidimensional}, in minimum degree
+zero.  The involution exchanging the two actual differentials
+gives the second assertion.  A projective bundle of relative
+dimension zero is an isomorphism, for which the same claim
+holds with $q_\alpha=0$.
+\end{proof}
+
+\begin{lemma}[The line contraction respects first-strip Aeppli boundaries]
+\label{r15s:C-boundaries}
+Let $a\geq1$ and let
+$\alpha\in\operatorname{PS}^{a,1}(E)$ be an actual
+Aeppli boundary.  Then
+\[
+           C\alpha=d'\delta
+           \quad\hbox{for some }\quad
+           \delta\in\operatorname{PS}^{a-2,0}(F).
+\tag{FS15.7}\label{r15s:C-boundary}
+\]
+For $a=1$ this says $C\alpha=0$.
+\end{lemma}
+
+\begin{proof}
+Write $\alpha=d'\mu+d''\tau$, with
+$\mu\in B^{a-1,1}(E)$ and $\tau\in B^{a,0}(E)$.
+The second form is PWS.  If $a\geq2$, the frozen actual
+first-strip replacement gives
+$\mu=\mu_0+d'\mu_1$ with both $\mu_0,\mu_1$ PWS.
+If $a=1$, $\mu$ is already on an outer edge and put
+$\mu_0=\mu$.  In either case
+$\alpha=d'\mu_0+d''\tau$.
+
+The proper current pushforward of $z^*\mu_0$ under
+$\rho$ has an ordinary PWS representative of degree
+$(a-2,0)$, whereas that of $z^*\tau$ has negative second
+degree and is zero.  Proper differentiation of currents
+therefore proves
+\[
+        [C\alpha]=d'[\rho_*z^*\mu_0].
+\]
+Both sides are currents of actual forms; injectivity proves
+\eqref{r15s:C-boundary}.  No form-valued pushforward of
+$d'\mu_0$ or $d''\tau$ is used.  These derivatives may
+indeed have positive delta codimension, and their current
+identity is used only to differentiate already constructed
+outputs.
+\end{proof}
+
+\begin{theorem}[The complete actual first-strip formula]
+\label{r15s:first-strip}
+Under the analytic inputs stated at the start of this section
+and the frozen first-strip PWS replacement, for every
+$a\geq1$ one has
+\[
+ H_{\mathrm A}^{a,1}(E)
+  =\pi^*H_{\mathrm A}^{a,1}(S)
+      \oplus [\xi]\wedge\pi^*H_{\mathrm A}^{a-1,0}(S).
+\tag{FS15.8}\label{r15s:first-strip-formula}
+\]
+There is the conjugate formula
+\[
+ H_{\mathrm A}^{1,a}(E)
+  =\pi^*H_{\mathrm A}^{1,a}(S)
+      \oplus [\xi]\wedge\pi^*H_{\mathrm A}^{0,a-1}(S).
+\tag{FS15.9}\label{r15s:conjugate-strip}
+\]
+The products are well defined because $\xi$ is separately
+closed.  The formula uses the actual Bott--Chern class of
+$\mathcal O_E(1)$; it does not depend on the chosen smooth
+metric.
+\end{theorem}
+
+\begin{proof}
+An arbitrary actual class of degree $(a,1)$ has a
+$D$-closed PWS representative $\alpha$ by Round 14's
+first-strip replacement.  The PWS form
+$C\alpha\in\operatorname{PS}^{a-1,0}(F)$ is $D$-closed.
+Apply the edge formula first to $\lambda:F\to E$ and
+then to $\pi:E\to S$.  It gives a $D$-closed PWS form
+$\gamma$ of degree $(a-1,0)$ on $S$ and a PWS form
+$\delta$ of degree $(a-2,0)$ on $F$ with
+\[
+                       C\alpha=t^*\gamma+d'\delta.
+\tag{FS15.10}\label{r15s:C-decomposition}
+\]
+For $a=1$ the last term is zero.  The relative-dimension-zero
+case of $\lambda$ when $r=1$ causes no change.
+
+The PWS target projection formula and the relative top
+Chern normalization give
+\[
+       C(\xi\wedge\pi^*\gamma)
+          =\rho_*(z^*\xi\wedge\rho^*t^*\gamma)
+          =t^*\gamma.
+\tag{FS15.11}\label{r15s:C-hyperplane}
+\]
+Put $\alpha_0=\alpha-\xi\pi^*\gamma$.  It is PWS and
+$D$-closed, and $C\alpha_0=d'\delta$.
+Since $\delta$ is on an outer edge, both $\delta$ and
+$d'\delta$ are PWS.  The form
+$\Lambda=\lambda_*(\nu^r\wedge\delta)$ is a PWS
+form of degree $(a-1,1)$ on $E$, and current Stokes gives
+the actual equality
+\[
+                  \lambda_*(\nu^r d'\delta)=d'\Lambda.
+\tag{FS15.12}\label{r15s:boundary-push}
+\]
+Here both inputs to the PWS operator are legitimately PWS;
+equivalently the identity follows by differentiating its
+prescribed currents and then using current injectivity.
+
+Apply \eqref{r15s:homotopy} to $\alpha_0$ and use
+\eqref{r15s:boundary-push}.  It expresses $\alpha_0$ as
+$\pi^*(J\alpha_0)$ plus actual Aeppli boundaries.
+The base form $J\alpha_0$ is $D$-closed of degree $(a,1)$.
+Together with $\alpha=\alpha_0+\xi\pi^*\gamma$ this
+proves spanning in \eqref{r15s:first-strip-formula}.
+
+For directness, represent the base classes by $D$-closed
+PWS forms $\beta$ of degree $(a,1)$ and $\gamma$ of
+degree $(a-1,0)$.  Suppose
+$\pi^*\beta+\xi\pi^*\gamma$ is an actual Aeppli boundary.
+Apply Lemma~\ref{r15s:C-boundaries}.  The line contraction
+of $\pi^*\beta$ is zero by relative degree and the PWS
+target projection formula.  The contraction of the second
+term is $t^*\gamma$ by \eqref{r15s:C-hyperplane}.
+Thus $[t^*\gamma]=0$ in $H_{\mathrm A}^{a-1,0}(F)$.
+The injective edge pullbacks for $\pi$ and $\lambda$
+give $[\gamma]=0$.  The second summand was therefore
+already an Aeppli boundary, so $\pi^*[\beta]=0$.
+The frozen constant-fiber Aeppli injection in minimum
+degree one gives $[\beta]=0$.
+
+If the metric is changed by a global PWS scalar $u$, the
+curvature changes by $Du$.  For any $D$-closed actual
+$\gamma$ the explicit identity
+\[
+       (Du)\wedge\gamma
+          =d'(d''u\wedge\gamma)+d''(u\,d'\gamma)
+\tag{FS15.13}\label{r15s:metric-independence}
+\]
+follows by the Leibniz rule and $D\gamma=0$.
+Hence its Aeppli action is unchanged.  Interchanging the
+two differentials proves \eqref{r15s:conjugate-strip}.
+\end{proof}
+
+\paragraph{Exact scope.}
+The general homotopy lemma is a statement about $D$-closed
+PWS inputs in every bidegree.  The complete actual cohomology
+conclusions above use PWS replacement only on the outer
+edges and the first strip, where the frozen theorem supplies
+it.  No replacement of arbitrary actual $(2,2)$ forms, no
+all-actual-test nonfinite pushforward, and no computation of
+the higher actual Aeppli groups is inferred.

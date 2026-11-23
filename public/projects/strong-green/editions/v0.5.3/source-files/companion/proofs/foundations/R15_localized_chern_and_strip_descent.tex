@@ -1,0 +1,416 @@
+% Round 15. New localized Chern extension and mixed-bidegree descent.
+% Separate from the frozen diagonal connecting sequence in Round 13.
+\section{Localized normal Chern classes and the first two Bott--Chern strips}
+\label{r15m:section}
+
+Let $X/K$ be smooth integral projective, let
+$j:C\hookrightarrow X$ be a nonempty smooth integral closed
+center of codimension $c\geq2$, and write
+\[
+ q:Y=\operatorname{Bl}_C X\longrightarrow X,
+ \quad i:E=\mathbf P_C(N_{C/X})\hookrightarrow Y,
+ \quad \pi:E\longrightarrow C.
+\tag{SD15.1}\label{r15m:setup}
+\]
+Projectivization parametrizes lines.  Thus
+$\mathcal O_Y(-E)|_E=\mathcal O_E(1)$.
+All spaces, ordinary sheaves, tests, and degrees are over
+the original $K$.  A disconnected smooth center will be
+handled component by component after the integral case.
+
+\begin{lemma}[A smooth divisor curvature with prescribed local support]
+\label{r15m:localized-metric}
+Let $V/K$ be smooth integral projective, let $D\subset V$
+be an effective Cartier divisor, and let $W$ be any ordinary
+open neighborhood of $D^{\mathrm{an}}$.  The line bundle
+$\mathcal O_V(-D)$ admits a smooth metric whose curvature
+$h$ is separately closed and satisfies
+\[
+                         \operatorname{Supp}(h)\subset W.
+\tag{SD15.2}\label{r15m:localized-support}
+\]
+It may be chosen to agree near $D$ with any prescribed
+initial smooth metric.
+\end{lemma}
+
+\begin{proof}
+Choose that initial smooth metric and let $h_0$ be its
+curvature.  On $V\setminus D$, the inverse of the canonical
+section of $\mathcal O_V(D)$ is a rational frame $t$ of
+$\mathcal O_V(-D)$.  It is not asserted to be a global
+regular section.  The metric weight
+$g_0=-\log\|t\|_0$ is smooth on $V^{\mathrm{an}}\setminus
+D^{\mathrm{an}}$ and satisfies $Dg_0=h_0$ there.
+
+Choose an ordinary smooth scalar $\lambda$ equal to one on
+an ordinary neighborhood of $D^{\mathrm{an}}$, with
+$\operatorname{Supp}(\lambda)\subset W$.
+Compactness of the divisor and ordinary smooth partitions
+of unity give this cutoff with the indicated closed support.
+The scalar
+\[
+             u=-(1-\lambda)g_0
+                  \quad\hbox{on }V^{\mathrm{an}}\setminus D^{\mathrm{an}}
+\]
+extends by zero to a global smooth scalar: it is identically
+zero on a whole neighborhood of $D$ before extension.
+Modify the additive weights of the initial metric by $u$.
+Its curvature is $h=h_0+Du$ and it agrees with $h_0$ near
+$D$.  Wherever $\lambda$ is identically zero, the new
+weight in the frame $t$ is $g_0+u=0$, so $h=0$ on that
+ordinary open.  Hence
+$\operatorname{Supp}(h)\subset\operatorname{Supp}(\lambda)
+\subset W$.  Separate closedness follows from the smooth
+curvature construction.
+\end{proof}
+
+\begin{proposition}[Extending positive normal Chern powers times Aeppli classes]
+\label{r15m:localized-extension}
+In \eqref{r15m:setup}, let
+$\alpha\in B^{u,v}(C^{\mathrm{an}})$ satisfy $D\alpha=0$,
+where $u,v\geq0$, and let $\ell\geq1$.
+There is a global actual $D$-closed form
+$\Theta\in B^{u+\ell,v+\ell}(Y^{\mathrm{an}})$ whose
+exceptional restriction has Aeppli class
+\[
+                  [i^*\Theta]=[\xi]^\ell\wedge\pi^*[\alpha],
+\tag{SD15.3}\label{r15m:extension-class}
+\]
+where $\xi$ is any smooth first Chern representative of
+$\mathcal O_E(1)$.  More precisely, a smooth representative
+$h_E=i^*h$ of this class can be chosen so that
+$i^*\Theta=h_E^\ell\wedge\pi^*\alpha$ literally.
+No closed extension of $\alpha$ to all of $X$ is assumed.
+\end{proposition}
+
+\begin{proof}
+The frozen degreewise extension theorem for an algebraic
+closed immersion gives an actual
+$\widetilde\alpha\in B^{u,v}(X)$ with
+$j^*\widetilde\alpha=\alpha$.
+Its derivative has zero restriction to $C$:
+$j^*D\widetilde\alpha=D\alpha=0$.
+The frozen ordinary immersion-germ isomorphism therefore
+makes $D\widetilde\alpha$ zero on an ordinary neighborhood
+$U$ of $C^{\mathrm{an}}$.
+This is a vanishing germ for the derivative of a degreewise
+extension, not a global closed ambient lifting theorem.
+
+Apply Lemma~\ref{r15m:localized-metric} on $Y$ with
+$D=E$ and $W=q^{-1}(U)$.  Let $h$ be the resulting smooth
+curvature of $\mathcal O_Y(-E)$ and define
+\[
+                   \Theta=h^\ell\wedge q^*\widetilde\alpha.
+\tag{SD15.4}\label{r15m:extension-form}
+\]
+It is a global actual form.  Since $h$ is separately closed,
+\[
+          D\Theta=h^\ell\wedge q^*(D\widetilde\alpha)=0:
+\]
+on $q^{-1}(U)$ the second factor is zero, and off that open
+the first factor has zero germ by its support condition.
+Restriction gives the stated literal identity with $h_E=i^*h$.
+
+For the class comparison, $h_E$ and any other smooth
+curvature $\xi$ on the same line differ by $Df$ for a
+global smooth scalar $f$.  Write
+$h_E^\ell-\xi^\ell=Df\wedge A$, where
+$A=\sum_{k=0}^{\ell-1}h_E^k\xi^{\ell-1-k}$ is smooth
+and separately closed.  The form
+$\gamma=A\wedge\pi^*\alpha$ is $D$-closed.
+The explicit identity
+\[
+             Df\wedge\gamma
+                =d'(d''f\wedge\gamma)+d''(f\,d'\gamma)
+\tag{SD15.5}\label{r15m:metric-Aeppli}
+\]
+shows that the difference is an Aeppli boundary.
+It need not be a $D$-boundary, because $d'\gamma$ and
+$d''\gamma$ need not vanish.  This proves
+\eqref{r15m:extension-class}.  If a model metric is used
+instead, its ratio is PWS and the same actual identity
+applies.  The whole construction is native over $K$.
+\end{proof}
+
+We next state the exact mixed-bidegree sequence needed for
+the strip application.  The frozen Round 13 source
+\texttt{analytic\_descent/retracted\_modification\_descent.tex},
+Theorem \texttt{r13d:connecting}, states its displayed
+sequence only in diagonal degree.  The underlying relative
+double-complex isomorphism and degreewise extension are in
+all bidegrees.  The following proof checks the extension
+directly on representatives; it is not a claim that the
+mixed formula was already written in the frozen source.
+
+\begin{proposition}[The mixed Aeppli--Bott--Chern connecting sequence]
+\label{r15m:mixed-connecting}
+For any $a,b\geq0$, the sequence
+\[
+ \begin{split}
+ H_{\mathrm A}^{a,b}(Y)\oplus H_{\mathrm A}^{a,b}(C)
+ &\xrightarrow{i^*-\pi^*}H_{\mathrm A}^{a,b}(E)
+  \xrightarrow{\partial_D}H_{\mathrm{BC}}^{a+1,b+1}(X)\\
+ &\xrightarrow{(q^*,j^*)}
+ H_{\mathrm{BC}}^{a+1,b+1}(Y)
+                       \oplus H_{\mathrm{BC}}^{a+1,b+1}(C)
+ \end{split}
+\tag{SD15.6}\label{r15m:mixed-sequence}
+\]
+is exact at the middle two terms.  All groups are actual.
+For a $D$-closed representative $\theta$ on $E$,
+\[
+                   \partial_D[\theta]
+                          =[T(D\widetilde\theta)],
+ \qquad i^*\widetilde\theta=\theta,
+\tag{SD15.7}\label{r15m:mixed-connecting-formula}
+\]
+where $T$ is the frozen inverse of relative pullback
+$q^*: \ker j^*\xrightarrow{\sim}\ker i^*$.
+\end{proposition}
+
+\begin{proof}
+The frozen relative isomorphism exists degreewise and
+commutes with $d'$ and $d''$.  A degreewise actual
+extension $\widetilde\theta$ exists by the same frozen
+closed-immersion extension theorem.
+Because $i^*D\widetilde\theta=D\theta=0$,
+its derivative lies in $\ker i^*$.
+Its descent under $T$ is separately closed and vanishes
+on $C$, so defines the Bott--Chern class in
+\eqref{r15m:mixed-connecting-formula}.
+
+If the extension is changed, its difference is relative,
+equal to $q^*\zeta$ for an actual form on $X$.
+The descended curvature changes by $D\zeta$.
+If $\theta$ changes by $d'\mu+d''\tau$, extend the two
+forms degreewise and change the extension by the same
+boundary; its $D$ is zero.  Negative degrees are zero,
+so the argument also applies on an outer edge.
+This proves that $\partial_D$ is well defined.
+
+A $D$-closed form on $Y$ maps to zero, using itself as
+the extension.  For a $D$-closed form $\gamma$ on $C$,
+extend it to an actual $\eta$ on $X$ and extend
+$\pi^*\gamma$ by $q^*\eta$.  Its descended derivative
+is $D\eta$, so its Bott--Chern class is zero.
+Conversely, if $\partial_D[\theta]=0$, write
+$T(D\widetilde\theta)=D\eta$ on $X$.
+Then $\chi=\widetilde\theta-q^*\eta$ is $D$-closed
+on $Y$, and $\gamma=j^*\eta$ is $D$-closed on $C$
+because the descended curvature restricts to zero.
+The equality $\theta=i^*\chi+\pi^*\gamma$ proves
+exactness at $H_{\mathrm A}^{a,b}(E)$.
+
+The class of \eqref{r15m:mixed-connecting-formula} has
+zero pullback class on $Y$ and zero restriction on $C$.
+Conversely, let a separately closed actual $\Omega$
+represent a class in the kernel of $(q^*,j^*)$, and choose
+actual primitives
+$q^*\Omega=D\beta$ and $j^*\Omega=D\zeta$.
+Extend $\zeta$ to an actual $\eta$ on $X$ and put
+$\Omega_0=\Omega-D\eta$, $\beta_0=\beta-q^*\eta$.
+Then $j^*\Omega_0=0$ and $D\beta_0=q^*\Omega_0$.
+The form $\theta=i^*\beta_0$ is $D$-closed, and using
+$\beta_0$ as extension in
+\eqref{r15m:mixed-connecting-formula} sends its class
+to $[\Omega_0]=[\Omega]$.
+This proves exactness at the Bott--Chern term by explicit
+representatives in bidegrees $(a,b)$ and $(a+1,b+1)$.
+\end{proof}
+
+\begin{corollary}[The normalized exceptional quotient in the first strip]
+\label{r15m:normalized-quotient}
+If $\min(a,b)\leq1$, there is a canonical isomorphism
+\[
+ \frac{H_{\mathrm A}^{a,b}(E)}
+      {i^*H_{\mathrm A}^{a,b}(Y)+\pi^*H_{\mathrm A}^{a,b}(C)}
+ \ \xrightarrow{\ \sim\ }\
+ \ker\bigl(q^*:H_{\mathrm{BC}}^{a+1,b+1}(X)
+                 \longrightarrow H_{\mathrm{BC}}^{a+1,b+1}(Y)\bigr).
+\tag{SD15.8}\label{r15m:quotient}
+\]
+For a supplied primitive $D\beta=q^*\Omega$, choose
+$D\zeta=j^*\Omega$ on $C$.  Its corresponding
+exceptional class is
+$[i^*\beta-\pi^*\zeta]$ in the displayed quotient.
+\end{corollary}
+
+\begin{proof}
+The projective bundle $\pi:E\to C$ is a projective
+surjective map between normal integral projective varieties
+with constant fiber dimension.  The frozen theorem
+\texttt{r14j:equidimensional} makes its pullback on
+$H_{\mathrm{BC}}^{a+1,b+1}$ injective because the smaller
+bidegree is at most two.  The commutative square gives
+$\pi^*j^*[\Omega]=i^*q^*[\Omega]$.
+Thus $q^*[\Omega]=0$ implies $j^*[\Omega]=0$, and
+$\ker q^*=\ker(q^*,j^*)$.
+Proposition~\ref{r15m:mixed-connecting} now proves
+\eqref{r15m:quotient} and the representative formula.
+
+If an explicit center primitive is desired, choose the
+frozen finite normal multisection $h:T\to E$ for which
+$f=\pi h:T\to C$ is finite dominant of native degree
+$e$, and take
+\[
+                   \zeta=e^{-1}\operatorname{Tr}_f(h^*i^*\beta).
+\]
+The primitive bidegree is $(a,b)$ with minimum at most
+one, so the actual finite-strip trace and its all-actual-test
+derivative identity apply.  The degree $e$ includes any
+constant-field factor.  No positive-dimensional actual
+trace is used for this normalization.
+\end{proof}
+
+\begin{theorem}[Smooth-center blowup injectivity in both first Bott--Chern strips]
+\label{r15m:strip-injectivity}
+Assume the independently proved projective-bundle Aeppli
+edge and first-strip formulas of
+Theorems~\ref{r15s:edge} and \ref{r15s:first-strip}.
+Let $X/K$ be smooth integral projective and let
+$C\hookrightarrow X$ be any smooth closed nowhere dense
+center.  Then for $q:Y=\operatorname{Bl}_C X\to X$,
+\[
+                  q^*:H_{\mathrm{BC,act}}^{u,v}(X)
+                          \longrightarrow H_{\mathrm{BC,act}}^{u,v}(Y)
+                  \quad\hbox{is injective whenever }\min(u,v)\leq2.
+\tag{SD15.9}\label{r15m:strip-injection}
+\]
+Equivalently, for $u,v\geq1$ in this range, every supplied
+actual identity $D\beta=q^*\Omega$, with $\Omega$
+separately closed, implies a global ordinary actual
+$\Psi\in B^{u-1,v-1}(X)$ with $D\Psi=\Omega$.
+Finite compositions of such blowups have the same property.
+\end{theorem}
+
+\begin{proof}
+An empty center or a Cartier center gives an isomorphism.
+First suppose the center is integral and of codimension
+at least two.  If $u=0$ or $v=0$, there are no $D$-boundaries
+in that bidegree; faithful actual pullback on the dense
+isomorphism locus, together with the frozen dense-faithfulness
+lemma, already gives the assertion.
+
+For $u,v\geq1$, put $(a,b)=(u-1,v-1)$.
+Then $\min(a,b)\leq1$ and the kernel is the quotient
+in \eqref{r15m:quotient}.
+If one of $a,b$ is zero, the edge formula says that its
+numerator is entirely the image from $C$, so the quotient
+is zero.  If $b=1$ and $a\geq1$, the first-strip formula
+says that the numerator is
+\[
+             \pi^*H_{\mathrm A}^{a,1}(C)
+                   +[\xi]\wedge\pi^*H_{\mathrm A}^{a-1,0}(C).
+\]
+The first summand lies in the denominator already.
+Proposition~\ref{r15m:localized-extension}, applied with
+$\ell=1$ and $\alpha$ of degree $(a-1,0)$, puts the
+second summand in $i^*H_{\mathrm A}^{a,1}(Y)$.
+The quotient is again zero.  The case $a=1$ follows by
+the conjugate first-strip formula and the same localized
+extension.  These cases exhaust the required bidegrees.
+
+A smooth center is a disjoint union of its smooth integral
+connected components.  Blowing up those components in
+sequence gives the same blowup.  The integral-center
+conclusion applies to each component, including different
+codimensions.  Composing the resulting injections proves
+the general case and the final assertion.
+
+The primitive formulation is the definition of vanishing
+of the actual Bott--Chern class.  It can also be recovered
+from the explicit representative proof above: normalize the
+center primitive, express the exceptional class in the two
+denominator images, extend its first-boundary coefficients
+degreewise to $Y$, and apply the frozen relative inverse
+$T$ to the resulting form with zero exceptional restriction.
+All steps are in ordinary actual sheaves and give an
+identity of actual forms.  Its pairings therefore hold
+against every compact actual test by actual Stokes, not
+only against the smooth tests used to construct the special
+projective-bundle PWS operators.
+\end{proof}
+
+\begin{corollary}[Dominant injectivity in both first Bott--Chern strips]
+\label{r15m:dominant-strips}
+Under the inputs of Theorem~\ref{r15m:strip-injectivity},
+let $X/K$ be smooth integral projective and let
+$f:V\to X$ be a dominant morphism from a normal integral
+projective $K$-variety.  There is no restriction on
+$\dim X$ or on the relative dimension of $f$.  Then
+\[
+                  f^*:H_{\mathrm{BC,act}}^{u,v}(X)
+                       \longrightarrow H_{\mathrm{BC,act}}^{u,v}(V)
+                  \quad\hbox{is injective for }\min(u,v)\leq2.
+\tag{SD15.10}\label{r15m:dominant-strip-injection}
+\]
+For $u,v\geq1$ this gives a global ordinary actual primitive
+on $X$ from any supplied actual primitive of $f^*\Omega$
+on $V$.  No proper actual trace along $f$ is asserted.
+\end{corollary}
+
+\begin{proof}
+Use the frozen finite-multisection diagram of Round 14,
+\path{foundations_audit/dominant_degree_one.tex},
+Lemma \texttt{r14e:flattened-diagram}:
+\[
+ \begin{array}{ccc}
+ T&\xrightarrow{a}&V\\
+ {\scriptstyle g}\downarrow&&\downarrow{\scriptstyle f}\\
+ X'&\xrightarrow{b}&X.
+ \end{array}
+\tag{SD15.11}\label{r15m:dominant-diagram}
+\]
+Here $T$ is normal integral projective, $X'$ is smooth
+integral projective, $g$ is finite dominant, and $b$ is
+a composition of blowups in smooth nowhere dense centers.
+The construction uses flattening of $f$ over a blowup of
+the smooth target, characteristic-zero principalization
+of that blowup ideal, and a finite normal multisection
+after the full flat base change.  It places no dimension
+bound on $V$ and does not assume that $f$ is finite over
+any specified complement.
+
+Suppose first $u,v\geq1$ and let
+$f^*\Omega=D\beta$ with
+$\beta\in B^{u-1,v-1}(V)$.  Actual pullback gives
+$g^*b^*\Omega=D(a^*\beta)$.
+The smaller primitive bidegree is at most one, so the
+frozen actual finite-strip trace is defined on $a^*\beta$.
+Set
+\[
+       \beta'=(\deg_K g)^{-1}\operatorname{Tr}_g(a^*\beta)
+                              \in B^{u-1,v-1}(X').
+\tag{SD15.12}\label{r15m:dominant-primitive}
+\]
+Its all-actual-test derivative identity and the native
+finite degree formula give $D\beta'=b^*\Omega$ as
+actual forms.  Only the primitive is traced; no trace
+on an arbitrary curvature of bidegree $(u,v)$ is used.
+Apply Theorem~\ref{r15m:strip-injectivity} successively
+to the smooth-center factors of $b$.  This makes
+$[\Omega]=0$ on $X$ and gives its global actual primitive.
+
+If $u=0$ or $v=0$, vanishing of $f^*[\Omega]$ is
+literal vanishing of $f^*\Omega$.  The diagram gives
+$g^*b^*\Omega=0$.  Faithfulness of finite actual pullback
+gives $b^*\Omega=0$, and the zero-degree case of
+Theorem~\ref{r15m:strip-injectivity} gives $\Omega=0$.
+Every degree in \eqref{r15m:dominant-primitive} is the
+full native function-field degree over $K$, including
+constant-field factors.  The use of a possibly singular
+normal $T$ is within the frozen finite trace and genuine
+actual pullback interfaces.
+\end{proof}
+
+\paragraph{Limits and future use.}
+Proposition~\ref{r15m:localized-extension} applies to any
+$D$-closed actual class on the center and any positive
+normal Chern power, beyond the first strip.  It supplies
+extensions of such explicit exceptional classes; it does
+not assert that they span higher exceptional Aeppli groups.
+The completed Bott--Chern descent theorem is confined to
+$\min(u,v)\leq2$.  Higher primitive bidegrees require
+additional input.  Neither an arbitrary proper actual
+pushforward nor a converse to the sufficient curvature
+criterion for strong Green forms is used or asserted.

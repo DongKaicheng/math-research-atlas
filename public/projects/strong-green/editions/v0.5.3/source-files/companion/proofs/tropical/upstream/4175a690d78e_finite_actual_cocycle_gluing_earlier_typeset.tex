@@ -1,0 +1,286 @@
+\section{Finite actual partition gluing with displayed higher witnesses}
+\label{sec:r10-finite-actual-cocycle-gluing}
+
+This section supplies two finite, checkable gluing formulas beyond
+the frozen two-open RAG formula.  The first uses a literal cocycle of
+actual triples on an arbitrary finite cover.  The second treats a
+three-open cover with a displayed quadruple and an extending triple
+on its triple intersection.  The existence of those cochains is an
+input, not an exactness assertion for an entire actual kernel.
+
+\subsection{Objects and the partition insertion operators}
+
+Let $N$ be an ordinary analytic open over the original $K$, let $C$
+be closed in $N$, and put $W=N\setminus C$.  Fix $s\ge1$ and use
+the actual spaces
+\[
+\begin{split}
+ L_0^s&=B^{s,s},\\
+ L_1^s&=B^{s-1,s}\oplus B^{s,s-1},\\
+ L_2^s&=B^{s-2,s}\oplus B^{s,s-2}\oplus B^{s-1,s-1},\\
+ L_3^s&=B^{s-3,s}\oplus B^{s,s-3}
+                 \oplus B^{s-2,s-1}\oplus B^{s-1,s-2}.
+\end{split}                                                    \tag{FG1}
+\]
+Negative bidegrees mean zero.  We use the exact operators
+\[
+\begin{split}
+ \partial_1(\alpha,\beta)&=d'\alpha+d''\beta,\\
+ \partial_2(A,B,M)&=(d'A+d''M,d''B+d'M),\\
+ \partial_3(U,V,P,Q)&=(d'U+d''P,d''V+d'Q,d'P+d''Q).
+\end{split}                                                    \tag{FG2}
+\]
+The first two are frozen RAG/CPT inputs; the third is the operator
+of FIV1.  Direct full differentiation gives
+$\partial_1\partial_2=\partial_2\partial_3=0$.
+
+For an ordinary smooth actual scalar $\chi$, define actual
+insertion operators $K_j(\chi):L_j^s\longrightarrow L_{j-1}^s$ by
+\[
+\begin{split}
+ K_1(\chi)(\alpha,\beta)
+       & =d'\chi\wedge\alpha+d''\chi\wedge\beta,\\
+ K_2(\chi)(A,B,M)
+       & =(d'\chi\wedge A+d''\chi\wedge M,
+                         d''\chi\wedge B+d'\chi\wedge M),\\
+ K_3(\chi)(U,V,P,Q)
+       & =(d'\chi\wedge U+d''\chi\wedge P,
+          d''\chi\wedge V+d'\chi\wedge Q,
+          d'\chi\wedge P+d''\chi\wedge Q).
+\end{split}                                                    \tag{FG3}
+\]
+They retain both differential colours and every mixed coefficient.
+The full Leibniz rules give
+\[
+ \partial_j(\chi u)=\chi\partial_j u+K_j(\chi)u,
+ \qquad
+ \partial_{j-1}K_j(\chi)+K_{j-1}(\chi)\partial_j=0
+                                     \quad(j=2,3).             \tag{FG4}
+\]
+For the second identity, apply $\partial_{j-1}$ to the first and
+use $\partial_{j-1}\partial_j=0$, including when it is applied to
+$\chi u$.  Thus the terms involving $D\chi$ are included before
+they cancel.  Nothing treats $d'\chi$ and $d''\chi$ as a single
+differential.  Also $\sum_i K_j(\chi_i)=0$ whenever $\sum_i\chi_i=1$.
+
+Use a finite ordinary open cover $N=\bigcup_iN_i$ and an ordinary
+smooth partition $(\chi_i)$ with $\operatorname{supp}_N\chi_i$
+closed and contained in $N_i$.  Write $W_i=W\cap N_i$.
+Every product below is extended by zero from its stated overlap.
+The factors $\chi_i$, $d'\chi_i$, $d''\chi_i$ ensure that its support
+is closed in the ambient $N$ or $W$ and contained in the domain
+where its remaining actual coefficient is defined.  In particular,
+this does not extend an unweighted singular cochain across $C$.
+
+All cochains below are alternating in their indices, with repeated
+indices giving zero.  For example,
+\[
+ (\delta q)_{ijk}=q_{jk}-q_{ik}+q_{ij},\qquad
+ (\delta t)_{lijk}=t_{ijk}-t_{ljk}+t_{lik}-t_{lij}.               \tag{FG5}
+\]
+These are actual restrictions and finite differences.  The direct
+sums in (FG1) have the direct-sum topologies of their own actual
+coefficient-final spaces.  No Hausdorff quotient or closed-range
+claim is imposed or obtained.
+
+\subsection{A finite cover with a literal triple cocycle}
+
+Supply $g\in L_0^s(W)$, actual $p_i\in L_1^s(W_i)$ and
+$E_i\in L_0^s(N_i)$ with
+\[
+                         g|_{W_i}=\partial_1p_i+E_i|_{W_i}.
+                                                                  \tag{FG6}
+\]
+On every punctured double overlap supply $q_{ij}\in L_2^s(W_{ij})$;
+on the unpunctured overlap supply $e_{ij}\in L_1^s(N_{ij})$, with
+\[
+ p_j-p_i=\partial_2q_{ij}+e_{ij}|_{W_{ij}},\qquad
+                         \delta q=0\quad\hbox{on }W_{ijk}.
+                                                                  \tag{FG7}
+\]
+No closedness assumption on the extending pairs $e_{ij}$ is needed.
+
+\begin{theorem}[Finite actual cocycle gluing]
+Under the displayed hypotheses, set
+\[
+\begin{split}
+ p&=\sum_i\chi_i p_i+
+                   \sum_{i,j}\chi_i K_2(\chi_j)q_{ij},\\
+ E&=\sum_i\chi_i E_i-
+                   \sum_{i,j}\chi_i K_1(\chi_j)e_{ij}.
+\end{split}                                                       \tag{FG8}
+\]
+The first formula is actual on $W$, the second is actual on $N$,
+and they satisfy $g=\partial_1p+E|_W$.
+\end{theorem}
+
+\begin{proof}
+Put $\bar p=\sum_i\chi_i p_i$ and
+$c_1=\sum_{i,j}\chi_i K_2(\chi_j)q_{ij}$.  Full differentiation
+and (FG4) give
+\[
+\begin{split}
+ \partial_1\bar p
+       &=g-\sum_i\chi_iE_i+\sum_iK_1(\chi_i)p_i,\\
+ \partial_1c_1
+       &=W_2-\sum_{i,j}\chi_iK_1(\chi_j)\partial_2q_{ij},\\
+ W_2&=\sum_{i,j}K_1(\chi_i)K_2(\chi_j)q_{ij}.
+\end{split}                                                       \tag{FG9}
+\]
+The sum of $\chi_iK_1(\chi_j)(p_j-p_i)$ equals
+$\sum_jK_1(\chi_j)p_j$ because $\sum_i\chi_i=1$ and
+$\sum_jK_1(\chi_j)=0$.  Using (FG7), it remains to prove $W_2=0$.
+Insert $\sum_k\chi_k=1$.  Since
+$q_{ij}=(\delta q)_{kij}+q_{kj}-q_{ki}$, summing the last two
+terms over $i$ or $j$ kills them.  Hence
+\[
+       W_2=\sum_{k,i,j}\chi_kK_1(\chi_i)K_2(\chi_j)
+                                                    (\delta q)_{kij}=0.
+                                                                  \tag{FG10}
+\]
+All manipulations are on the full actual triple intersections,
+with the closed-support zero extensions already specified.
+Equations (FG9)--(FG10) yield (FG8) with the stated sign of $E$.
+\end{proof}
+
+For two opens, antisymmetry and $\chi_0+\chi_1=1$ reduce the second
+sum in $p$ to $K_2(\chi_1)q_{01}$, and the second sum in $E$ to
+$K_1(\chi_1)e_{01}$.  Thus (FG8) specializes literally to RAG6--RAG9.
+
+A concrete way to satisfy the cocycle requirement is an actual
+normalization on each member of a fixed finite path family.  If
+$p_i-p_*=\partial_2a_i+b_i$ are displayed identities against the
+same actual reference expression, put $q_{ij}=a_j-a_i$ and
+$e_{ij}=b_j-b_i$.  Then $\delta q=0$ literally.  For finite diagonal
+paths on one common domain with a common analytic endpoint, SL13
+constructs these $a_i,b_i$.  This choice does not prove a third
+boundary for the separately chosen raw CS square triples.  Nor does
+it assert that arbitrary local pivot domains have a common reference
+path or such normalizations.  A globally defined diagonal endpoint
+already belongs to the frozen single-path existence classes.
+
+\subsection{Three opens with an actual quadruple witness}
+
+Now let the cover have exactly three members $N_0,N_1,N_2$.
+Retain (FG6) and the first identity of (FG7), but replace $\delta q=0$
+by displayed actual data
+\[
+ \begin{gathered}
+ t_{012}\in L_3^s(W_{012}),\qquad
+ f_{012}\in L_2^s(N_{012}),\\
+                         (\delta q)_{012}
+                         =\partial_3t_{012}+f_{012}|_{W_{012}}.
+ \end{gathered}                                                    \tag{FG11}
+\]
+Extend these cochains by alternation of their indices.  No existence
+of $t$ or $f$ is inferred from the equation
+$\partial_2\delta q=-\delta e$.  In particular, closedness of
+$\delta q$ alone would not supply (FG11).
+
+\begin{theorem}[Three-open gluing with a displayed next witness]
+The explicit actual forms
+\[
+\begin{split}
+ p={}&\sum_i\chi_i p_i+
+       \sum_{i,j}\chi_iK_2(\chi_j)q_{ij}
+       -\sum_{k,i,j}\chi_kK_2(\chi_i)K_3(\chi_j)t_{kij},\\
+ E={}&\sum_i\chi_iE_i-
+       \sum_{i,j}\chi_iK_1(\chi_j)e_{ij}
+       -\sum_{k,i,j}\chi_kK_1(\chi_i)K_2(\chi_j)f_{kij}
+\end{split}                                                       \tag{FG12}
+\]
+satisfy $g=\partial_1p+E|_W$.  Here $p$ is actual on all of $W$
+and $E$ is actual across $C$ on all of $N$.
+\end{theorem}
+
+\begin{proof}
+The calculation (FG9) still holds, and the first equality of
+(FG10) still expresses $W_2$ in terms of $\delta q$.
+Using (FG11) and (FG4) twice gives
+\[
+\begin{split}
+ W_2&=\partial_1 c_2-W_3+
+           \sum_{k,i,j}\chi_kK_1(\chi_i)K_2(\chi_j)f_{kij},\\
+ c_2&=\sum_{k,i,j}\chi_kK_2(\chi_i)K_3(\chi_j)t_{kij},\\
+ W_3&=\sum_{k,i,j}K_1(\chi_k)K_2(\chi_i)K_3(\chi_j)t_{kij}.
+\end{split}                                                       \tag{FG13}
+\]
+In fact
+$K_1(\chi_i)K_2(\chi_j)\partial_3
+ =\partial_1K_2(\chi_i)K_3(\chi_j)$, with two sign changes;
+differentiating the leading scalar $\chi_k$ produces $W_3$.
+This verifies the minus sign of $c_2$ in (FG12).
+
+As in (FG10), insert $\sum_l\chi_l=1$ and use the identity
+$t_{kij}=(\delta t)_{lkij}+t_{lij}-t_{lkj}+t_{lki}$.
+Each of the last three terms is killed by the sum of the $K$ factor
+in its absent index.  It follows that
+\[
+ W_3=\sum_{l,k,i,j}\chi_lK_1(\chi_k)K_2(\chi_i)K_3(\chi_j)
+                                                     (\delta t)_{lkij}=0.
+                                                                  \tag{FG14}
+\]
+The last equality is literal: an alternating four-index cochain
+on a cover with only three indices is zero.  Substitute (FG13)
+in (FG9) and subtract $\partial_1c_2$.  The result is precisely
+$g-\partial_1p=E|_W$ in (FG12).  In particular the differentiated
+extending triple contributes the last term in $E$ and is retained.
+\end{proof}
+
+The same formula works on a finite cover with more than three
+members if the actual input also satisfies $\delta t=0$.  Without
+that hypothesis the exact unremoved residual is $W_3$, not zero.
+Further displayed actual cochains would be needed to remove it.
+FIV supplies (FG11) only when the actual overlap triples have first
+been identified with its specified five-potential face expression.
+It does not identify arbitrary CS, shear, or pivot triples with that
+expression.
+
+\subsection{The original-support representative and precise scope}
+
+For the original regular CI difference, retain the frozen notation
+$g=G_{s_1}-G_{s_0}$ on $V=X^{\rm an}\setminus(|Y_0|\cup|Y_1|)$,
+$U=X^{\rm an}\setminus|[Y_1]-[Y_0]|$, and
+$C_U=(|Y_0|\cup|Y_1|)\cap U$.  If a neighborhood $N\subset U$
+of $C_U$ carries either of the displayed finite certificates above,
+the resulting actual $p=(\alpha,\beta)$ and $E$ are valid RSP inputs.
+Choose the frozen ordinary cutoff $\zeta$ on $U$, equal to one near
+$C_U$ and with closed $U$-support inside $N$.  On $V$ set
+\[
+ g_V=g-d'\widetilde{\zeta\alpha}-d''\widetilde{\zeta\beta}.
+                                                                  \tag{FG15}
+\]
+The tildes mean the actual closed-support zero extensions to $V$.
+Near $C_U$ this agrees with the actual form $E$, so gluing constructs
+an actual $g_Z\in B^{r-1,r-1}(U)$.
+
+For every original actual compact test
+$\eta\in B_c^{n-r,n-r}(X^{\rm an})$, the frozen support lemma gives
+$\operatorname{supp}D\eta\Subset V$.  Full actual Stokes annihilates
+each correction in (FG15), because its product with $D\eta$ has
+compact support in $V$.  Frozen CI8 therefore gives
+\[
+                    \int_U g_Z\wedge D\eta=-\int_Z\eta.
+                                                                  \tag{FG16}
+\]
+No test is multiplied by a cutoff on $X$, and no larger cycle support
+is removed.  The fixed field, its absolute value, and all actual
+tests are unchanged.
+
+The new content is the explicit finite partition calculation with
+its complete higher and extending terms.  It is an actual-certificate
+theorem, not an unconditional theorem that arbitrary covers possess
+the certificate.  In particular it does not by itself add a new
+cycle-existence class to R9 or close general strong G.  Its role is
+to specify exactly what a successful higher matrix-relation
+construction must provide and exactly how those forms produce the
+required representative.
+
+Every formula is a finite local actual presentation, respects full
+analytic refinement, and keeps all mixed jets.  On a fixed whole
+coefficient presentation its products and derivatives satisfy the
+ordinary finite Leibniz bounds into a common refinement.  No
+comparison with a probe topology, global strictness assertion,
+general higher-form descent, or complete BB-height statement is
+made.  The construction is by the root agent; independent reviews
+must exclude that constructor and bind the exact final source hash.
