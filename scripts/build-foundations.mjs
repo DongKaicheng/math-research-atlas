@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {lstat, mkdir, readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
+import {buildFoundationsUpdate, loadFoundationsUpdate} from './build-foundations-update.mjs';
 import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
 import {foundationsBookRoute, retiredFoundationsRoutes} from './build-foundations-web.mjs';
 import {createFoundationsNative, loadFoundationsNative, loadHistoricalStatements} from './build-foundations-native.mjs';
@@ -68,7 +69,11 @@ async function optionalRegular(file) {
 export async function loadFoundationsRelease(root) {
   const dir=path.join(root,'content','foundations');
   const selection=await optionalRegular(path.join(dir,'current.json'));
-  const current=selection ? JSON.parse(selection) : null;
+  const requested = selection ? JSON.parse(selection) : null;
+  const earlier = requested?.revision > 1
+    ? await regular(path.join(dir,'releases','sealed-1174','previous.json'))
+    : selection;
+  const current = earlier ? JSON.parse(earlier) : null;
   if (current) {
     requireFact(current.schemaVersion===1 && current.project==='foundations' && current.edition===edition &&
       current.revision===1 && current.editionManifestSha256===editionManifest &&
@@ -162,6 +167,7 @@ export async function loadFoundationsRelease(root) {
     proofCoverageReview,tagRegistry,manuscriptGapTypes,historicalGapTypes});
   if (current) loaded.historicalStatements = loadHistoricalStatements(loaded,
     await regular(path.join(dir,'historical-gap-statements.json')));
+  if (requested?.revision > 1) loaded.update = await loadFoundationsUpdate(dir,requested,loaded);
   return loaded;
 }
 
@@ -189,6 +195,8 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   if (!release) return {rows:[],routes:[],indexableRoutes:[]};
   const {contents,current}=release;
   const native=current ? createFoundationsNative(release,createProofDependencies(release)) : null;
+  const projection=release.update && native ? buildFoundationsUpdate(release.update,native,release) : null;
+  for (const [route,page] of projection?.active ?? []) native.pages.set(route,page);
   const retired=native ? retiredFoundationsRoutes(release) : new Map();
   for (const [route,page] of native?.redirects ?? []) retired.set(route,page);
   const pages=path.join(output,'projects','foundations');
@@ -228,6 +236,15 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     await emit(foundationsBookRoute.slice(1)+'tags.json',JSON.stringify({tags:rewrite(tagURLs),
       destinations:rewrite(native.destinations),pages:rewrite(release.native.pages ?? {})}));
   }
+  for (const [route,page] of projection?.frozen ?? []) {
+    await emit(route.slice(1)+'index.html',render(page,url,origin,null).replace('</head>',
+      '<meta name="robots" content="noindex,follow"></head>'));
+  }
+  if (projection) {
+    const name=release.update.readerPath.slice(1);
+    await emit(name,release.update.pdf);
+    if (!base) await emit('math-research-atlas/'+name,release.update.pdf);
+  }
   const versionRoute=publicHome+'versions/1/';
   const destination='/'+prefix;
   const redirect='<!doctype html><html lang="en"><head><meta charset="utf-8">'+
@@ -236,11 +253,20 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     '<p><a href="'+url(destination)+'">Open the fixed edition</a></p></main>'+
     '<script>location.replace('+JSON.stringify(url(destination))+'+location.search+location.hash);</script></body></html>';
   await emit(versionRoute.slice(1)+'index.html',redirect);
+  const editionRoutes=[];
+  if (projection) {
+    const newVersion=publicHome+'versions/2/';
+    const target=release.update.fixed;
+    const html=redirect.replaceAll(versionRoute,newVersion).replaceAll(destination,target)
+      .replaceAll('Foundations version 1','Foundations version 2');
+    await emit(newVersion.slice(1)+'index.html',html);
+    editionRoutes.push(newVersion,...projection.frozen.keys());
+  }
   const active = native ? [publicHome,...native.pages.keys()] : [];
   return {
     rows:native ? native.rows.map(({id,link,title,project,category,summary,coverage,keywords,body,status})=>
       ({id,link:url(link),title,project,category,summary,coverage,keywords,body,status})) : [],
-    routes:[...fixed.values(),versionRoute,...active,...retired.keys()],
+    routes:[...fixed.values(),versionRoute,...editionRoutes,...active,...retired.keys()],
     indexableRoutes:active,
   };
 }

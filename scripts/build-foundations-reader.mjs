@@ -3,7 +3,8 @@ import {contentsRoute, coverageRoute, escape, foundationsPdfLink, foundationsSea
 export const foundationsContentsRoute = contentsRoute;
 
 export function foundationsHome({release, title, description, history, url, canonical, redirect, brand}) {
-  const {current, meta} = release;
+  const current = release.update?.current ?? release.current;
+  const reader = release.update?.readerPath ?? release.meta.reader.path;
   const fixed = project+'editions/'+current.edition+'/';
   const context = {project:current.project, version:current.edition, page:url(project)};
   const feedback = url('/feedback/')+'?'+new URLSearchParams(context);
@@ -17,7 +18,7 @@ export function foundationsHome({release, title, description, history, url, cano
       <h1>${escape(title)}</h1>
       <p class="page-lead">An open reference for definitions, theorems and proofs in non-Archimedean geometry.</p>
       ${foundationsSearchForm({id:'foundations-query',url})}
-      ${foundationsPdfLink(url(meta.reader.path))}
+      ${foundationsPdfLink(url(reader))}
     </header>
     <div class="home-information">
       <section id="motivation"><h2>About the project</h2>

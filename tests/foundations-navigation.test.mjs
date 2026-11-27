@@ -7,6 +7,12 @@ const dist = path.resolve(import.meta.dirname, '../dist');
 const base = (process.env.SITE_BASE_PATH ?? '/math-research-atlas').replace(/\/$/, '');
 const project = '/projects/foundations/';
 const fixed = project + 'editions/sealed-1097/';
+const current = JSON.parse(await readFile(new URL('../content/foundations/current.json',import.meta.url),'utf8'));
+const selected = project + 'editions/' + current.edition + '/';
+const update = current.revision===2
+  ? JSON.parse(await readFile(new URL('../content/foundations/releases/sealed-1174/data.json',import.meta.url),'utf8'))
+  : null;
+const updated = id => update?.records[id];
 const local = route => base + route;
 const read = file => readFile(path.join(dist, file.slice(1)), 'utf8');
 const graph = async () => JSON.parse(await read(fixed + 'logic/data.json'));
@@ -28,14 +34,14 @@ test('The Foundations homepage has uniform project navigation and exact feedback
   const links = [...page.matchAll(/\bhref="([^"]+)"/g)].map(([, href]) =>
     new URL(href.replaceAll('&amp;', '&'), 'https://atlas.test' + local(project)));
   const board = links.find(link => link.pathname === local('/feedback/') && link.searchParams.get('project') === 'foundations' && link.searchParams.has('page'));
-  assert.equal(board?.searchParams.get('version'), 'sealed-1097');
+  assert.equal(board?.searchParams.get('version'), current.edition);
   assert.equal(board.searchParams.get('page'), local(project));
   assert.ok(!links.some(link => link.hostname === 'github.com'));
 });
 
 test('The homepage and contents offer the fixed English PDF, and the homepage discloses the role of AI',async()=>{
   const page = await read(project+'index.html');
-  const pdf = fixed+'reader-en.pdf';
+  const pdf = selected+'reader-en.pdf';
   for (const html of [page,await read(project+'contents/index.html'),await read(project+'reader/index.html')]) {
     assert.ok(html.includes(`href="${local(pdf)}" download="Non-Archimedean-Geometry-Foundations.pdf"`));
   }
@@ -98,10 +104,11 @@ test('The web edition preserves exact source and proof links', async () => {
   assert.ok(book.includes(`href="${local('/r/NAG-002462/#foundations-exact-proof')}"`));
   const tag = await read('/r/NAG-002462/index.html');
   assert.ok(tag.includes(href));
-  assert.match(tag, /Theorem 5\.56\.6/);
+  if (update) assert.match(tag, /reader-en\.pdf#nameddest=theorem\.5\.56\.6/);
+  else assert.match(tag, /Theorem 5\.56\.6/);
   assert.match(tag, /class="proof"/);
   assert.match(tag, /<math\b/);
-  assert.match(tag, /class="katex-html"/);
+  if (!update) assert.match(tag, /class="katex-html"/);
   assert.match(tag, /id="foundations-exact-proof"/);
   assert.doesNotMatch(tag, /\p{Script=Han}|Exact TeX source|<canvas/u);
   const frozen = await read(fixed + 'r/NAG-002462/index.html');
@@ -112,6 +119,13 @@ test('Chapters and all kinds of public Tags typeset display math and styled symb
   const routes = [project+'chapters/16/', '/r/NAG-900301/', '/r/NAG-002462/', '/r/NAG-002567/'];
   for (const route of routes) {
     const page = await read(route+'index.html');
+    const id=route.split('/').at(-2);
+    if (updated(id)?.proof) {
+      assert.match(page, /class="proof"/,route);
+      assert.match(page, /<math\b/,route);
+      assert.match(page, /id="foundations-exact-proof"/,route);
+      continue;
+    }
     assert.ok(page.includes(`href="${local('/assets/katex.min.css')}"`),route);
     assert.match(page, /<span class="katex-mathml"><math\b/,route);
     assert.match(page, /class="katex-html" aria-hidden="true"/,route);
@@ -123,8 +137,13 @@ test('Chapters and all kinds of public Tags typeset display math and styled symb
   assert.match(chapter, /class="mord mathbb">[CNRZ]</);
   assert.doesNotMatch(chapter, /class="katex"><math[^>]*display="block"/);
   const historical = await read('/r/NAG-002567/index.html');
-  assert.match(historical, /Historical statement/);
-  assert.match(historical, /class="tag"/);
+  if (updated('NAG-002567')) {
+    assert.match(historical, /data-closure="closed"/);
+    assert.match(historical, /id="foundations-exact-proof"/);
+  } else {
+    assert.match(historical, /Historical statement/);
+    assert.match(historical, /class="tag"/);
+  }
 });
 
 const diagramMarkup = /class="(?:proof-diagram|logic-flow|logic-inline|proof-arrow)|href="[^"]*(?:\/logic\/|#proof-dependencies)|(?:Proof|dependency) diagram/i;
@@ -154,8 +173,13 @@ test('Every permanent Tag gives its closure status and gap type where applicable
     assert.doesNotMatch(tag,diagramMarkup,row.id);
     assert.equal(tag.includes('id="open-status"'),Object.hasOwn(data.gaps,row.id),row.id);
     assert.match(tag,new RegExp('data-closure="'+row.status+'"'),row.id);
-    if (!['definition','closed'].includes(row.status)) assert.match(tag,/<dt>Problem types<\/dt><dd><a /,row.id);
-    const visible = tag.replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g,'').replace(/<[^>]+>/g,'');
+    if (updated(row.id)?.erratum) {
+      assert.match(tag,/Reviewed erratum/,row.id);
+      assert.match(tag,/Full proofs at narrower scope/,row.id);
+    } else if (!['definition','closed'].includes(row.status)) {
+      assert.match(tag,/<dt>Problem types<\/dt><dd><a /,row.id);
+    }
+    const visible = tag.replace(/<details(?: open)?><summary>TeX reading text<\/summary>[\s\S]*?<\/details>/g,'').replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g,'').replace(/<[^>]+>/g,'');
     assert.ok(!/(?:FSevenLabelAlias:|FSevenSourceLink:|[a-z\d]+(?:Alias|Source|Ref)@|f8restoration@|dimplacement@|\uFFFD|\\(?:href|hyperref|csname|begin|end)\b)/i.test(visible),row.id);
     if (row.id.startsWith('NAG-9')) continue;
     historical++;
@@ -171,7 +195,7 @@ test('The chapter tables reconcile all registered Tags and the fixed historical 
   const data=await graph();
   const overview=await read(project+'coverage/index.html');
   assert.match(overview,/1,712 permanent Tags/);
-  assert.doesNotMatch(overview,diagramMarkup);
+  assert.doesNotMatch(overview.replace(/editions\/sealed-1174\/logic\//g,''),diagramMarkup);
   let total=0;
   const assigned=new Set();
   for (const slug of Object.keys(data.chapters)) {
@@ -182,7 +206,11 @@ test('The chapter tables reconcile all registered Tags and the fixed historical 
     const ids=[...detail.matchAll(/<li data-tag-status="[^"]+"><a href="[^"]*\/r\/(NAG-\d{6})\//g)].map(([,id])=>id);
     const sealed=await read(fixed+`chapters/${slug}/index.html`);
     const old=[...sealed.matchAll(/<li class="entry"><small>(NAG-\d{6})<\/small>/g)].map(([,id])=>id);
-    assert.deepEqual(ids.filter(id=>!id.startsWith('NAG-9')).sort(),old.sort(),slug);
+    const expected=update ? [...new Set([
+      ...old.filter(id=>!updated(id) || updated(id).chapter===slug),
+      ...Object.values(update.records).filter(r=>r.chapter===slug).map(r=>r.id),
+    ])] : old;
+    assert.deepEqual(ids.filter(id=>!id.startsWith('NAG-9')).sort(),expected.sort(),slug);
     assert.equal(count('tags'),ids.length,slug);
     assert.equal(['closed','open','conditional','comparison','pending','definition'].reduce((n,g)=>n+count(g),0),ids.length,slug);
     for (const id of ids) {
@@ -291,11 +319,19 @@ test('The seven accepted export exceptions retain their available web proofs',as
 test('Colliding LaTeX labels do not put unrelated proofs under open or accepted Tags', async () => {
   for (const [id,foreign] of [['002565','003030'],['002976','002806'],['003100','002989'],['003002','003106']]) {
     const page=await read('/r/NAG-'+id+'/index.html');
-    assert.match(page,/Historical statement/);
     assert.match(page,/<math\b/);
-    assert.doesNotMatch(page,/id="foundations-exact-proof"|Proof in chapter|Read in chapter/,id);
+    if (updated('NAG-'+id)?.proof) {
+      assert.match(page,/data-closure="closed"/,id);
+      assert.match(page,/id="foundations-exact-proof"/,id);
+      assert.ok(page.includes('reader-en.pdf#nameddest='+encodeURIComponent(updated('NAG-'+id).reader.destination)),id);
+      assert.doesNotMatch(page,new RegExp('>'+foreign+'</a>'),id);
+    } else {
+      assert.match(page,/Historical statement/);
+      assert.doesNotMatch(page,/id="foundations-exact-proof"|Proof in chapter|Read in chapter/,id);
+    }
     const paired=await read('/r/NAG-'+foreign+'/index.html');
-    assert.ok(!paired.includes(`>NAG-${id}</a>`),foreign);
+    assert.equal(paired.includes(`>NAG-${id}</a>`),
+      updated('NAG-'+foreign)?.requires.includes('NAG-'+id) ?? false,foreign);
   }
   const lemma=await read('/r/NAG-002661/index.html');
   assert.match(lemma,/Lemma F\.1\.7\./);

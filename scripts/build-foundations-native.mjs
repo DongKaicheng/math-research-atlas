@@ -1,3 +1,4 @@
+import {applyFoundationsCoverage} from './build-foundations-update.mjs';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
@@ -342,13 +343,14 @@ export function createFoundationsNative(release, dependencies) {
   const coverage = foundationsCoverage({...release, native}, dependencies.policyByBlock);
   const registry = registerFoundationsTags(release,coverage,dependencies,native);
   const guide = foundationsGuide(release);
+  if (release.update) applyFoundationsCoverage(release.update,coverage,registry);
   const rows = [...registry.tags.values()];
   const redirects = new Map();
   const fixed = project + 'editions/' + release.current.edition + '/';
   const pdf = release.meta.reader.path;
   const pages = new Map([[nativeReaderRoute,bookContents(native,nativeReaderRoute,coverage,pdf)],
     [contentsRoute,bookContents(native,contentsRoute,coverage,pdf)],
-    [coverageRoute,coveragePage(coverage,fixed)],[guideRoute,guide.page],[searchRoute,searchPage()]]);
+    [coverageRoute,coveragePage(coverage,release.update?.fixed ?? fixed)],[guideRoute,guide.page],[searchRoute,searchPage()]]);
   for (const chapter of coverage.chapters.values()) {
     pages.set(chapterCoverageRoute(chapter),chapterCoveragePage(chapter));
     if (!chapter.native) pages.set(chapter.route,supplementPage(chapter,release.contents.get(chapter.route.slice(1)+'index.html').toString('utf8')));
