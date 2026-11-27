@@ -62,7 +62,7 @@ test('Reader pages share the project navigation and explain the actual Tag label
   }
   const glossary = await read(project+'guide/index.html');
   for(const status of ['closed','open','partial','conditional','comparison','pending','definition']) assert.ok(glossary.includes(`id="status-${status}"`),status);
-  assert.match(glossary,/The full statement remains open/);
+  assert.match(glossary,/restriction, counterexample or inference still open at the original scope/);
   assert.match(glossary,/specified objects, hypotheses and tests/);
   const tag = await read('/r/NAG-900298/index.html');
   assert.ok(tag.includes(local(project+'guide/#status-conditional')));
@@ -78,7 +78,11 @@ test('The table of contents links the numbered chapters and appendices as HTML',
     const chapter = await read(project + 'chapters/' + slug + '/index.html');
     assert.match(chapter, /<article class="book-text"/);
     assert.match(chapter, /<p>/);
-    assert.doesNotMatch(chapter, /<canvas|reader-en\.pdf|pdfjs/);
+    assert.doesNotMatch(chapter, /<canvas|<iframe|<embed|<object|pdfjs/);
+    if (update?.chapterReaders[slug]) {
+      const destination=encodeURIComponent(update.chapterReaders[slug].destination);
+      assert.ok(chapter.includes(local(selected+'reader-en.pdf#nameddest='+destination)),slug);
+    }
   }
   assert.match(contents, /Subject index/);
   assert.match(contents, /Bibliography/);
@@ -93,7 +97,7 @@ test('The web edition preserves exact source and proof links', async () => {
   assert.match(reader, /Table of contents/);
   assert.doesNotMatch(reader, /web-reader-sheet|<canvas|pdfjs/);
   const index = JSON.parse(await read(project + 'reader/tags.json'));
-  assert.equal(Object.keys(index.tags).length,1662);
+  assert.equal(Object.keys(index.tags).length,update ? 1712 : 1662);
   const href = index.tags['NAG-002462'];
   assert.equal(href,index.destinations['theorem.5.56.6']);
   assert.match(href, /\/chapters\/5\/#label-/);
@@ -314,6 +318,60 @@ test('The seven accepted export exceptions retain their available web proofs',as
   }
   const example=await read('/r/NAG-002484/index.html');
   assert.equal([...example.matchAll(/class="example"/g)].length,1);
+});
+
+test('The current chapters integrate the selected statements, proofs and scope corrections', {skip:!update}, async () => {
+  const chapters=new Map();
+  const selectedTags=new Set(update.selected);
+  for (const record of Object.values(update.records)) {
+    const chapter=project+'chapters/'+record.chapter+'/';
+    if (!chapters.has(chapter)) chapters.set(chapter,await read(chapter+'index.html'));
+    const page=chapters.get(chapter);
+    const tag=await read('/r/'+record.id+'/index.html');
+    const fragment='result-'+record.id;
+    assert.match(tag,new RegExp('data-closure="'+record.status+'"'),record.id);
+    if (!record.custody) {
+      assert.ok(page.includes('id="'+fragment+'"'),record.id);
+      assert.ok(page.includes('id="'+fragment+'-proof"'),record.id);
+      assert.ok(page.includes(local('/r/'+record.id+'/')),record.id);
+    }
+    assert.equal(selectedTags.has(record.id),record.status==='closed',record.id);
+    assert.ok(tag.includes('#nameddest='+encodeURIComponent(record.reader.destination)),record.id);
+    assert.ok(tag.includes('page='+encodeURIComponent('/r/'+record.id+'/')+'&amp;entry='+record.id),record.id);
+    if (record.erratum) {
+      assert.ok(tag.includes('#nameddest='+encodeURIComponent(record.historical.destination)),record.id);
+      for (const reader of record.narrowReaders) assert.ok(tag.includes('#nameddest='+encodeURIComponent(reader.destination)),record.id);
+    }
+  }
+  assert.doesNotMatch(chapters.get(project+'chapters/10/'),/transitive prerequisite cone is still under review/);
+  for(const chapter of chapters.values()) assert.doesNotMatch(chapter,/Earlier manuscript passages below retain/);
+});
+
+test('The current proof map uses formal clauses for model metrics and preserves exceptional scope dispositions', {skip:!update}, async () => {
+  const logic=await read(selected+'logic/chapters/3/index.html');
+  const metric=logic.match(/id="argument-nag-000176"[\s\S]*?<\/details>/)?.[0];
+  assert.ok(metric);
+  assert.match(metric,/joint registered proof inputs/);
+  assert.match(metric,/formal_topology/);
+  assert.match(metric,/formal_existence_restriction_product_pullback/);
+  assert.doesNotMatch(metric,/\/r\/NAG-00194[45]\/#foundations-exact-proof/);
+  const coverage=await read(project+'coverage/index.html');
+  assert.match(coverage,/1,174 accepted whole results, including 77/);
+  assert.match(coverage,/21 clauses separately/);
+  assert.match(coverage,/966 of 971 priority originals/);
+  assert.match(coverage,/68 of 68 exceptional originals/);
+});
+
+test('The shared search index exposes every current Tag with its supported scope and canonical link', {skip:!update}, async () => {
+  const rows=JSON.parse(await read('/search-index.json')).filter(row=>row.project==='foundations');
+  const byId=new Map(rows.map(row=>[row.id,row]));
+  for (const record of Object.values(update.records)) {
+    const row=byId.get(record.id);
+    assert.equal(row?.link,local('/r/'+record.id+'/'),record.id);
+    assert.equal(row.status,record.status,record.id);
+  }
+  assert.match(byId.get('NAG-000176').summary,/model.metric.+formal models/i);
+  assert.match(byId.get('NAG-001944').summary,/quasi-net.+finite-incidence/i);
 });
 
 test('Colliding LaTeX labels do not put unrelated proofs under open or accepted Tags', async () => {

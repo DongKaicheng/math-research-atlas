@@ -6,7 +6,7 @@ export const shortStatus = {closed:'Closed', open:'Open', partial:'Narrower scop
 const statusDescriptions = {
   closed:'The edition accepts a proof for the stated hypotheses and conclusion. The accepted result can be used within that scope.',
   open:'A step needed for the stated result is unresolved. The Tag identifies the step or records that a complete proof has yet to be verified.',
-  partial:'An accepted argument covers a narrower set of hypotheses or a weaker conclusion. The full statement remains open. Follow the selected scopes for the proved part.',
+  partial:'An accepted argument covers a narrower set of hypotheses or a weaker conclusion. The record describes the restriction, counterexample or inference still open at the original scope.',
   conditional:'The displayed argument establishes its conclusion assuming the listed inputs. Check those inputs in the setting where you want to apply the result.',
   comparison:'The Tag records what must be checked to relate two constructions or categories, such as matching their test spaces or local presentations.',
   pending:'The statement has a permanent Tag while its proof evidence is being checked. The Tag indicates whether an argument has been located.',

@@ -1,4 +1,5 @@
-import {applyFoundationsCoverage} from './build-foundations-update.mjs';
+import {additionalChapterSection, applyFoundationsCoverage, createFoundationsReadingUpdate, currentChapterRecord,
+  currentProofHref, currentResultTitle, historicalReadingAnchors, printed} from './build-foundations-update.mjs';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
@@ -9,7 +10,7 @@ import {foundationsCoverage, gapCount} from './foundations-reading-status.mjs';
 import {editFoundationsReadingHtml, foundationsReferenceLabels, foundationsRemarkNumbers} from './foundations-reading-editor.mjs';
 import {foundationsReadingLocations} from './foundations-reading-locations.mjs';
 import {closureGroup, coverageGroups, groupLabels, registerFoundationsTags, statusLabels, tagRoute} from './foundations-tag-register.mjs';
-import {contentsRoute, coverageRoute, escape, foundationsPdfLink, foundationsSearchForm, foundationsShell, guideRoute, link, project, searchRoute} from './foundations-layout.mjs';
+import {contentsRoute, coverageRoute, escape, foundationsFeedback, foundationsPdfLink, foundationsSearchForm, foundationsShell, guideRoute, link, project, searchRoute} from './foundations-layout.mjs';
 import {foundationsGuide, shortStatus} from './foundations-guide.mjs';
 
 export const nativeReaderRoute = project + 'reader/';
@@ -124,7 +125,7 @@ function chapterCount(entry, detailed = false) {
   return `<span class="chapter-open-count${open ? ' has-open' : ''}">${counts.join(' · ')}</span>`;
 }
 
-function bookContents(native, route, coverage, pdf) {
+function bookContents(native, route, coverage, pdf, reading) {
   const seen = new Set();
   let groups = [{title:'Front matter', items:[]}];
   for (const entry of native.catalogue) {
@@ -143,7 +144,7 @@ function bookContents(native, route, coverage, pdf) {
   const body = groups.map(({title,items,note}, i) => `<section class="contents-group" aria-labelledby="part-${i}" id="group-${i}">
     <div class="contents-group-title"><h2 id="part-${i}">${escape(title)}</h2>${note ? link(note,'Part overview') : ''}</div>
     <ul class="book-chapters">${items.map(entry => `<li><div class="book-chapter-entry">${link(entry.route,heading(entry.number,entry.title))}${chapterCount(coverage.chapters.get(chapterSlug(entry.route)))}</div>
-      ${entry.sections.length ? `<details><summary>${entry.sections.length} sections</summary><ul>${entry.sections.map(section =>
+      ${chapterSections(entry,reading).length ? `<details><summary>Sections</summary><ul>${chapterSections(entry,reading).map(section =>
         `<li>${link(entry.route+'#'+section.id,heading(section.number,section.title))}</li>`).join('')}</ul></details>` : ''}</li>`).join('')}</ul></section>`).join('');
   const jumps = `<aside class="book-sidebar"><details data-desktop-open><summary>Parts</summary><nav aria-label="Parts"><ul>${groups.map(({title},i)=>`<li>${link('#group-'+i,title)}</li>`).join('')}
     <li>${link('/projects/foundations/chapters/appendix-a/#bibliography','Bibliography')}</li>
@@ -163,7 +164,18 @@ function partChapterOutline(chapter, index, catalogue, coverage) {
   return `<section class="part-chapter-coverage"><h2>Chapters and proof coverage</h2><ul class="book-chapters">${entries.join('')}</ul></section>`;
 }
 
-function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locations, registry) {
+function chapterSections(chapter, reading) {
+  const additional=additionalChapterSection(reading,chapter.route);
+  return additional ? [...chapter.sections,{...additional,level:2}] : chapter.sections;
+}
+
+function newChapterSection(reading, route) {
+  const section=additionalChapterSection(reading,route);
+  return section ? `<section id="${section.id}"><h2>${escape(section.title)}</h2>
+    ${reading.additional.get(route).map(record=>currentChapterRecord(record)).join('')}</section>` : '';
+}
+
+function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locations, registry, reading) {
   const title = heading(chapter.number, chapter.title);
   const index = catalogue.findIndex(entry => entry.key===chapter.key);
   const nav = `<nav class="book-adjacent" aria-label="Chapter navigation">${[-1,1].map(offset => {
@@ -174,15 +186,25 @@ function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locatio
   const coverageEntry = coverage.chapters.get(chapterSlug(chapter.route));
   const count = chapterCount(coverageEntry);
   const part = partChapterOutline(chapter,index,catalogue,coverage);
-  const sections = chapter.sections.filter(section => section.level===2);
+  const sections = chapterSections(chapter,reading).filter(section => section.level===2);
   const sectionMenu = sections.length ? `<details data-desktop-open><summary>In this chapter</summary><nav aria-label="Chapter sections"><ul>${sections.map(section =>
     `<li>${link('#'+section.id,heading(section.number,section.title))}</li>`).join('')}</ul></nav></details>` : '';
-  const indexEntries = [...proofs.values()].map(proof=>`<li>${link('#'+proof.anchor,proof.title)} ${proof.tagLinks}</li>`).join('');
-  const proofIndex = indexEntries ? `<details class="chapter-proof-index" id="chapter-proofs"><summary>Proofs in this chapter (${proofs.size})</summary><ol>${indexEntries}</ol></details>` : '<span id="chapter-proofs"></span>';
+  const currentProofs = (reading?.byChapter.get(chapter.route) ?? []).filter(record=>!record.custody);
+  const nativeProofs = [...proofs.values()].filter(proof=>!reading?.superseded.has(chapter.key+':'+proof.index));
+  const indexEntries = nativeProofs.map(proof=>`<li>${link('#'+proof.anchor,proof.title)} ${proof.tagLinks}</li>`)
+    .concat(currentProofs.map(record=>`<li>${link(currentProofHref(record),currentResultTitle(record))} ${link(tagRoute(record.id),record.id)}</li>`)).join('');
+  const proofIndex = indexEntries ? `<details class="chapter-proof-index" id="chapter-proofs"><summary>Proofs in this chapter (${nativeProofs.length+currentProofs.length})</summary><ol>${indexEntries}</ol></details>` : '<span id="chapter-proofs"></span>';
   const menu = sectionMenu || indexEntries ? `<aside class="book-sidebar">${sectionMenu}${proofIndex}</aside>` : '';
   const body = chapter.blocks.map((block,i)=> {
     const key = `${chapter.key}:${i}`;
     const proof=proofs.get(i);
+    const replacement=reading?.replacements.get(key);
+    if (replacement && !replacement.custody) return currentChapterRecord(replacement,block,true);
+    if (reading?.superseded.has(key)) {
+      const oldAnchor=proof ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Proof links">
+        ${link(currentProofHref(reading.superseded.get(key)),'Current proof')} ${proof.tagLinks}</div>` : '';
+      return oldAnchor+historicalReadingAnchors(block);
+    }
     const note=coverage.sourceNotes.get(key);
     const review=coverage.reviewMarkers.get(key);
     const policy=dependencies.policyByBlock.get(key);
@@ -190,6 +212,11 @@ function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locatio
     const notice=policy ? `<div id="${escape(locator)}">${sourcePolicyNotice(policy)}</div>` : '';
     const id = registry.byBlock.get(key) ?? locations.restored.get(key);
     const sourceId = registry.sourceAliases.get(key);
+    const updatedNote=reading?.update.data.records[sourceId];
+    if ((note || review) && updatedNote) {
+      const oldId=(note ?? review).href.split('#')[1];
+      return `<p class="book-note" id="${escape(oldId)}">${link(tagRoute(sourceId),'Current scope and proof of '+sourceId)}</p>`;
+    }
     const result = registry.tags.get(id);
     const manuscript = registry.records.get(id);
     const resultLink = result ? `<p class="book-result-link"${manuscript?.generatedAnchor ? ` id="${manuscript.generatedAnchor}"` : ''}>${link(result.link,result.id)}
@@ -198,16 +225,29 @@ function chapterPage(chapter, catalogue, proofs, dependencies, coverage, locatio
     const gapMarks = open.length ? `<p class="book-gap-marks">${open.map(gap => link(gap.route+'#open-status', gap.id+' · '+gapLabel)).join(' ')}</p>` : '';
     const proofLink = !proof ? '' : proof.tagLinks ? `<div class="chapter-proof-links" id="${proof.anchor}" role="group" aria-label="Tag links for this proof">${proof.tagLinks}</div>` : `<span id="${proof.anchor}"></span>`;
     block = suppressTags(block, locations.suppressed.get(key));
-    const sourceBlock = locator ? block.replace(` id="${locator}"`,'') : block;
+    let sourceBlock = locator ? block.replace(` id="${locator}"`,'') : block;
+    if (reading && chapter.route===project+'chapters/10/' && sourceBlock.includes('Their transitive prerequisite cone is still under review.')) {
+      sourceBlock=sourceBlock.replace('native proof excerpts','proofs').replace('Their transitive prerequisite cone is still under review.',
+        'The selected arguments for the fixed-test identities and their transfer to currents are given below.');
+    }
+    if (replacement?.custody) sourceBlock=currentChapterRecord(replacement,sourceBlock);
+    const exportReceipt=reading?.readerOnly.get(id);
+    if (exportReceipt) sourceBlock+=`<p class="book-note">${printed(exportReceipt.reader,exportReceipt.onWeb ?
+      'Statement and proof in the English PDF' : 'Complete argument in the English PDF')}</p>`;
     const reviewLink = review ? `<p class="reviewed-proof-passage" id="${review.href.split('#')[1]}">${link(tagRoute(sourceId),sourceId+' · '+statusLabels[review.status])}</p>` : '';
     const wrapped = note ? `<div class="source-proof-note" id="${note.href.split('#')[1]}">${sourceBlock}<p>${link(tagRoute(sourceId),sourceId+' · Proof status')}</p></div>` : sourceBlock;
     return notice+resultLink+gapMarks+reviewLink+proofLink+wrapped;
   }).join('');
-  return shell(chapter.route,title,`${trail}<header class="page-intro"><h1>${escape(title)}</h1>${count ? `<p class="chapter-coverage">${count}</p>` : ''}</header>${menu ? '' : proofIndex}
-    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}</article></div>${part}${nav}`,'','reading-page');
+  const reader=reading?.update.data.chapterReaders[chapterSlug(chapter.route)];
+  const links=reader ? `<p class="page-actions">${printed(reader,'Chapter in the English PDF')}
+    ${link(reading.update.fixed+'logic/chapters/'+chapterSlug(chapter.route)+'/','Proof map')}
+    ${foundationsFeedback(chapter.route,reading.update.current.edition)}</p>` : '';
+  return shell(chapter.route,title,`${trail}<header class="page-intro"><h1>${escape(title)}</h1>${count ? `<p class="chapter-coverage">${count}</p>` : ''}${links}</header>${menu ? '' : proofIndex}
+    <div class="book-layout${menu ? ' has-sidebar' : ''}">${menu}<article class="book-text" aria-label="${escape(chapter.title)}">${body}
+    ${newChapterSection(reading,chapter.route)}</article></div>${part}${nav}`,'','reading-page');
 }
 
-function coveragePage(coverage, fixed) {
+function coveragePage(coverage, fixed, current) {
   const chapters = [...coverage.chapters.values()];
   const total = group => chapters.reduce((sum,chapter) => sum + chapter.tagCounts[group],0);
   const count = chapters.reduce((sum,chapter) => sum + chapter.tags.length,0);
@@ -219,12 +259,15 @@ function coveragePage(coverage, fixed) {
   }).join('');
   const historical = chapters.filter(chapter=>chapter.gaps.length).map(chapter=>`<section id="gaps-${chapter.slug}">
     <h3>${escape(chapter.title)}</h3><ul class="coverage-list">${chapter.gaps.map(gap=>`<li id="open-${gap.id}">${link(gap.route,gap.id+' · '+gap.label)}</li>`).join('')}</ul></section>`).join('');
+  const gapSummary=current ? 'Original-scope index' : 'Historical proof gaps';
+  const gapDescription=current ? plural(coverage.gaps.size,'original claim')+' with an obstruction, a restriction or a remaining case.' :
+    gapCount(coverage.gaps.size)+' from the fixed edition, including '+coverage.narrower+' with a narrower scope available.';
   return shell(coverageRoute,'Tag index',`<header class="page-intro"><h1>Tag index</h1>
     <p class="page-lead">Browse ${count.toLocaleString('en-US')} permanent Tags by chapter and proof status.</p>
     <p class="page-actions">${link(guideRoute+'#proof-statuses','What each status means')}</p></header>
     <section id="chapter-counts"><span id="manuscript-obligations"></span><h2 class="coverage-heading">By chapter</h2><table class="coverage-table" role="table" aria-label="Tags by chapter and proof status"><thead role="rowgroup"><tr role="row"><th scope="col">Chapter or supplement</th><th scope="col">Tags</th>${coverageGroups.map(group=>`<th scope="col">${groupLabels[group]}</th>`).join('')}</tr></thead>
     <tbody role="rowgroup">${table}</tbody><tfoot role="rowgroup"><tr role="row"><th scope="row">Total</th>${cell(count,'tags','Tags')}${coverageGroups.map(group=>cell(total(group),group,groupLabels[group])).join('')}</tr></tfoot></table></section>
-    <details class="historical-register" id="historical-proof-gaps"><summary>Historical proof gaps</summary><p>${gapCount(coverage.gaps.size)} from the fixed edition, including ${coverage.narrower} with a narrower scope available. ${link(fixed+'coverage/','Fixed-edition register')}</p>${historical}</details>`,'','coverage-page');
+    <details class="historical-register" id="historical-proof-gaps"><summary>${gapSummary}</summary><p>${gapDescription} ${link(fixed+'coverage/','Fixed-edition register')}</p>${historical}</details>`,'','coverage-page');
 }
 
 function chapterCoveragePage(chapter) {
@@ -327,13 +370,17 @@ function bindProofs(native, chapter, linkedTags) {
   return proofs;
 }
 
-function supplementPage(entry, archive) {
+function supplementPage(entry, archive, reading) {
   const trail = crumb([[project,'Foundations'],[contentsRoute,'Table of contents'],[null,entry.title]]);
   const sealed = archive.match(/<main id="main">[\s\S]*?<\/h1>([\s\S]*?)<\/main>/)[1]
     .replace(/<p><a href="[^" ]*\/reader-en\.pdf[^" ]*">Chapter in the English reader<\/a><\/p>/, '')
     .replace(/<p class="logic-inline">[\s\S]*?<\/p>/g, '');
+  const changed=new Set((reading?.byChapter.get(entry.route) ?? []).map(record=>record.id));
+  const earlier=sealed.replace(/<li class="entry"><small>(NAG-\d{6})<\/small>[\s\S]*?<\/li>/g,(entry,id)=>changed.has(id) ? '' : entry);
+  const reader=reading?.update.data.chapterReaders[entry.slug];
   return shell(entry.route,entry.title,`${trail}<h1>${escape(entry.title)}</h1>
-    <p class="chapter-coverage">${chapterCount(entry)}</p><div class="supplement-records">${sealed}</div>`);
+    <p class="chapter-coverage">${chapterCount(entry)}</p>${reader ? printed(reader,'Chapter in the English PDF') : ''}
+    <article class="book-text">${newChapterSection(reading,entry.route)}<div class="supplement-records">${earlier}</div></article>`);
 }
 
 export function createFoundationsNative(release, dependencies) {
@@ -344,16 +391,17 @@ export function createFoundationsNative(release, dependencies) {
   const registry = registerFoundationsTags(release,coverage,dependencies,native);
   const guide = foundationsGuide(release);
   if (release.update) applyFoundationsCoverage(release.update,coverage,registry);
+  const reading = createFoundationsReadingUpdate(release.update,release,registry);
   const rows = [...registry.tags.values()];
   const redirects = new Map();
   const fixed = project + 'editions/' + release.current.edition + '/';
-  const pdf = release.meta.reader.path;
-  const pages = new Map([[nativeReaderRoute,bookContents(native,nativeReaderRoute,coverage,pdf)],
-    [contentsRoute,bookContents(native,contentsRoute,coverage,pdf)],
-    [coverageRoute,coveragePage(coverage,release.update?.fixed ?? fixed)],[guideRoute,guide.page],[searchRoute,searchPage()]]);
+  const pdf = release.update?.readerPath ?? release.meta.reader.path;
+  const pages = new Map([[nativeReaderRoute,bookContents(native,nativeReaderRoute,coverage,pdf,reading)],
+    [contentsRoute,bookContents(native,contentsRoute,coverage,pdf,reading)],
+    [coverageRoute,coveragePage(coverage,release.update?.fixed ?? fixed,Boolean(reading))],[guideRoute,guide.page],[searchRoute,searchPage()]]);
   for (const chapter of coverage.chapters.values()) {
     pages.set(chapterCoverageRoute(chapter),chapterCoveragePage(chapter));
-    if (!chapter.native) pages.set(chapter.route,supplementPage(chapter,release.contents.get(chapter.route.slice(1)+'index.html').toString('utf8')));
+    if (!chapter.native) pages.set(chapter.route,supplementPage(chapter,release.contents.get(chapter.route.slice(1)+'index.html').toString('utf8'),reading));
   }
   const scopes = new Map();
   for (const node of Object.values(release.graph.nodes)) {
@@ -376,7 +424,7 @@ export function createFoundationsNative(release, dependencies) {
   const oldProofs=new Set(Object.values(native.tags).filter(record=>record.proof!=null).map(record=>`${record.key}:${record.proof}`));
   for (const chapter of native.chapters.values()) {
     const proofs=bindProofs(native,chapter,linkedProofs.get(chapter.key) ?? new Map());
-    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs,dependencies,coverage,readingLocations,registry));
+    pages.set(chapter.route,chapterPage(chapter,native.catalogue,proofs,dependencies,coverage,readingLocations,registry,reading));
     for (const proof of proofs.values()) {
       if (proof.tags.length) {
         for (const tag of proof.tags) locations.set(tag.id,proof.href);
@@ -411,5 +459,5 @@ export function createFoundationsNative(release, dependencies) {
     const edited = editFoundationsReadingHtml(page, remarkNumbers, referenceLabels);
     pages.set(route, typesetReadingMath(edited, mathCache, route));
   }
-  return {pages,tags:registry.tagLocations,destinations,rows,redirects};
+  return {pages,tags:registry.tagLocations,destinations,rows,redirects,reading,coverage};
 }
