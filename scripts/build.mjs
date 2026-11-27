@@ -215,7 +215,7 @@ const bundles=await Promise.all(projectFiles.map(async f=>JSON.parse(await readF
 if(new Set(bundles.map(x=>x.project.id)).size!==bundles.length)throw Error('Duplicate project ID');
 if(bundles.some(x=>x.schemaVersion!==1||!Array.isArray(x.entries)))throw Error('Invalid project bundle');
 const foundationsRelease=await loadFoundationsRelease(root);
-const foundationsCurrent=foundationsRelease?.current;
+const foundationsCurrent=foundationsRelease?.update?.current ?? foundationsRelease?.current;
 if(foundationsCurrent){
   const project=bundles.find(bundle=>bundle.project.id==='foundations');
   if(!project||project.revision!==0)throw Error('Unexpected Foundations project baseline');
@@ -356,6 +356,7 @@ for(const bundle of bundles){
   await save(route,isCurrentFoundations ? foundationsHome({release:foundationsRelease,title:p.title,description:searchSummary,
     history:histories.get(p.id),url,canonical,redirect:legacyRedirect,brand}) : loadPage(p.title,searchSummary,content,route,'',legacyRedirect));
   for(const snapshot of histories.get(p.id)){
+    if (isCurrentFoundations && snapshot.revision === 1) continue;
     const versionRoute='/projects/'+p.id+'/versions/'+snapshot.revision+'/';
     const old=snapshot.project;
     const oldEntries=snapshot.entries.map(e=>`<li class="entry-row"><strong>${esc(e.id)} · ${esc(e.kind)} · ${esc(e.status)}</strong><h3>${esc(e.title)}</h3><div class="prose-math">${markdown(e.statement)}</div>${e.proof?`<h4>Proof</h4><div class="prose-math">${markdown(e.proof)}</div>`:''}</li>`).join('');

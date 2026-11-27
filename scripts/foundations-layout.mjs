@@ -37,3 +37,9 @@ export function foundationsSearchForm({id = 'atlas-search', formId, url = path=>
 export function foundationsPdfLink(href) {
   return `<p class="reader-download"><a href="${escape(href)}" download="Non-Archimedean-Geometry-Foundations.pdf">Download the English PDF</a></p>`;
 }
+
+export function foundationsFeedback(href, edition, entry) {
+  const context = new URLSearchParams({project:'foundations',version:edition,page:href});
+  if (entry) context.set('entry',entry);
+  return link('/feedback/?'+context,'Send a correction');
+}

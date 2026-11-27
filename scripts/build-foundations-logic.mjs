@@ -89,10 +89,10 @@ function listInputs(items,nodes) {
       (inp.scopes.length?'<ul>'+inp.scopes.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul>':'')+'</li>';
   }).join('')+'</ul>';
 }
-function argument(data,key,{principal=false,body=false}={}) {
+function argument(data,key,{principal=false,body=false,logicRoot=index}={}) {
   const a=data.arguments[key], node=data.nodes[key];
   const argumentID=principal?'relation-uses-'+key:keyAnchor(key);
-  const location=ref(chapterRoute(a.chapter)+'#'+keyAnchor(key),'Chapter argument');
+  const location=ref(logicRoot+'chapters/'+a.chapter+'/#'+keyAnchor(key),'Chapter argument');
   const inputs=a.inputs.length
     ? '<p class="logic-gate">'+(a.inputs.length>1?'AND · joint registered proof inputs':'Registered proof input')+'</p>'+listInputs(a.inputs,data.nodes)
     : '<p>No addressable selected proof input is recorded in this projection.</p>';
@@ -120,9 +120,9 @@ function portableSVG(raw,branch) {
     .replace(/(xlink:href|href)="index\.html#([^"]+)"/g,(_,attr,target)=>attr+'="#'+target+'"');
   return svg.replace('<svg','<svg role="img" aria-label="Selected joint proof inputs"');
 }
-function gapsHTML(entries) {
+function gapsHTML(entries,title='Open proof steps') {
   if(!entries.length)return '';
-  return '<section id="open-steps"><h2>Open proof steps</h2>'+entries.map(([key,g])=>
+  return '<section id="open-steps"><h2>'+esc(title)+'</h2>'+entries.map(([key,g])=>
     '<article class="logic-open" id="open-'+esc(key)+'"><h3>'+ref(g.href,key+' · '+g.label)+'</h3><p>'+esc(g.step)+'</p></article>').join('')+'</section>';
 }
 function makePages(data,bytes) {
@@ -193,6 +193,36 @@ function decorate(contents,data) {
   }
 }
 
+export function currentFoundationsLogicPages(data, bytes, logicRoot, shell) {
+  const pages=new Map();
+  const cases=Object.entries(data.gaps);
+  const renderArgument=(key,principal=false)=>argument(data,key,{principal,logicRoot});
+  const chapters=Object.entries(data.chapters).map(([slug,title])=>'<li>'+ref(logicRoot+'chapters/'+slug+'/',title)+'</li>').join('');
+  const examples=data.principal.map(branch=>'<section class="logic-panel" id="'+branch.id+'"><h2>'+esc(branch.name)+'</h2>'+
+    '<p>'+ref('#text-'+branch.id,'Read the joint premises as text')+'</p><div class="logic-scroll" tabindex="0" aria-label="'+
+    esc(branch.name+' diagram')+'">'+portableSVG(bytes.get(branch.id+'.svg').toString('utf8'),branch.id)+'</div>'+
+    '<div id="text-'+branch.id+'">'+branch.targets.map(key=>renderArgument(key,true)).join('')+
+    '<ul>'+[...new Set(branch.targets.flatMap(key=>[key,...data.arguments[key].inputs.map(input=>input.key)]))].map(key=>
+      '<li id="node-'+esc(key)+'">'+sourceProofTarget(key,data.nodes[key])+'</li>').join('')+'</ul></div></section>').join('');
+  const feedback=route=>ref('/feedback/?'+new URLSearchParams({project:'foundations',version:data.edition,page:route}),'Discuss this map');
+  const mapContents='<h1>Foundations proof map</h1><p>Each argument lists its joint premises. The proof links give the precise hypotheses, '+
+    'including for results that require a supplied atlas or other additional data.</p><p>'+ref('#chapter-views','Chapter views')+
+    ' · '+ref('#open-steps','Original-scope cases')+' · '+feedback(logicRoot)+'</p>'+
+    '<section class="logic-panel"><h2>Formal models and metrics</h2>'+renderArgument('NAG-000176',true)+'</section>'+
+    examples+gapsHTML(cases,'Original-scope cases')+'<section id="chapter-views"><h2>Chapter and supplement views</h2><ul class="logic-index">'+chapters+'</ul></section>';
+  pages.set(logicRoot,shell(logicRoot,'Foundations proof map',mapContents));
+  for(const [slug,title] of Object.entries(data.chapters)) {
+    const route=logicRoot+'chapters/'+slug+'/';
+    const keys=Object.keys(data.arguments).filter(key=>data.arguments[key].chapter===slug);
+    const body='<p>'+ref(logicRoot,'Principal map')+' · '+ref(project+'chapters/'+slug+'/','Read the chapter')+
+      ' · '+feedback(route)+'</p><h1>'+esc(title)+' · proof inputs</h1>'+
+      (keys.length ? keys.map(key=>renderArgument(key)).join('') : '<p>No selected proof input record is exported for this chapter.</p>')+
+      gapsHTML(cases.filter(([,gap])=>gap.chapter===slug),'Original-scope cases');
+    pages.set(route,shell(route,title+' · proof inputs',body));
+  }
+  return pages;
+}
+
 export async function augmentFoundationsLogic(root,release) {
   const dir=path.join(root,directory);
   const manifestBytes=await regular(path.join(dir,'manifest.json'));
@@ -218,5 +248,5 @@ export async function augmentFoundationsLogic(root,release) {
   // destination for its canonical node and relation anchors.
   for(const name of ['data.json','logic.css'])contents.set((fixed+'logic/'+name).slice(1),bytes.get(name));
   contents.set((fixed+'logic/manifest.json').slice(1),manifestBytes);
-  return {...release,contents,graph:data};
+  return {...release,contents,graph:data,logicBytes:bytes};
 }
