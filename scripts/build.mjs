@@ -473,7 +473,7 @@ ${breadcrumbs([['Search']])}${heading(brand.toUpperCase(),'Search','Find a proje
 ${foundationsCurrent?`<p id="foundations-search-scope" class="foundations-search-scope" hidden>Searching Foundations only. <a href="${url('/search/')}">Search the whole atlas</a></p>`:''}
 <section class="search-results" id="search-results" aria-live="polite"></section>
 </main>`;
-await save('/search/',loadPage('Search','Search public project outlines, results, and mathematical topics.',search,'/search/','',
+await save('/search/',loadPage('Search','Search public project outlines, results, and mathematical topics.',search,'/search/','<meta name="robots" content="noindex,follow">',
   `<script defer src="${url(foundationsCurrent?'/assets/foundations-search.js':'/assets/search.js')}"></script>`));
 
 await cp(path.join(root,'public'),output,{recursive:true});
@@ -510,7 +510,7 @@ await writeFile(path.join(output,'sitemap-core.xml'),sitemapXML(coreRoutes));
 await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\nSitemap: ${canonical('/sitemap-core.xml')}\n`);
 const updateItems=bundles.filter(b=>b.revision>0).map(b=>`<item><title>${xml(b.project.title)}</title><link>${xml(canonical('/projects/'+b.project.id+'/'))}</link><description>${xml(b.changeSummary)}</description><pubDate>${new Date(b.publishedAt).toUTCString()}</pubDate></item>`).join('');
 await writeFile(path.join(output,'feed.xml'),`<?xml version="1.0"?><rss version="2.0"><channel><title>${xml(brand)} updates</title><link>${xml(canonical('/'))}</link><description>Changes to published mathematical research</description>${updateItems}</channel></rss>`);
-await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html'));
+await writeFile(path.join(output,'404.html'),loadPage('Page not found','This page could not be found.',`<main id="main-content" class="wrap index-page">${heading('NOT FOUND','Page not found','The link may be outdated.')}<p><a class="button button-dark" href="${url('/')}">Return to the atlas</a></p></main>`,'/404.html','<meta name="robots" content="noindex,follow">'));
 if(!base){
   // Old reading editions are immutable and still contain the
   // original GitHub Pages /math-research-atlas/ asset URLs. Supply a legacy

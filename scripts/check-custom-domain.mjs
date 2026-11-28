@@ -128,6 +128,41 @@ const coreURLs=[...coreXML.matchAll(/<loc>(.*?)<\/loc>/g)].map(match=>decode(mat
 if(JSON.stringify(coreURLs)!==JSON.stringify(expectedCore))fail('Core sitemap must contain exactly the four canonical entry points, in order');
 const fullXML=await text(path.join(dist,'sitemap.xml'));
 for(const page of expectedCore)if(!fullXML.includes('<loc>'+page+'</loc>'))fail('Main sitemap omits priority URL: '+page);
+// Check every submitted page, not only the four project entry points. A sitemap
+// must not advertise a search shell, a redirect, or a noncanonical duplicate.
+const sitemapURLs=[...fullXML.matchAll(/<loc>(.*?)<\/loc>/g)].map(match=>decode(match[1]));
+const submittedURLs=new Set(sitemapURLs);
+if(submittedURLs.size!==sitemapURLs.length)fail('Main sitemap repeats a URL');
+function headAttributes(tag){
+  return Object.fromEntries([...tag.matchAll(/\b([\w:-]+)\s*=\s*(["'])(.*?)\2/gs)]
+    .map(([,name,,value])=>[name.toLowerCase(),decode(value)]));
+}
+for(const page of sitemapURLs){
+  let parsed;
+  try{parsed=new URL(page);}catch{fail('Invalid sitemap URL: '+page);continue;}
+  if(parsed.origin!==origin||parsed.search||parsed.hash||!parsed.pathname.endsWith('/')){
+    fail('Sitemap URL is not a canonical directory URL: '+page);continue;
+  }
+  const file=path.join(dist,parsed.pathname.slice(1),'index.html');
+  if(!await isFile(file)){fail('Missing sitemap page: '+page);continue;}
+  const head=(await text(file)).match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1]??'';
+  const links=[...head.matchAll(/<link\b[^>]*>/gi)].map(([tag])=>headAttributes(tag));
+  const canonicals=links.filter(tag=>tag.rel?.toLowerCase().split(/\s+/).includes('canonical'));
+  if(canonicals.length!==1||canonicals[0].href!==page)fail('Sitemap page lacks one matching canonical: '+page);
+  const metadata=[...head.matchAll(/<meta\b[^>]*>/gi)].map(([tag])=>headAttributes(tag));
+  if(metadata.some(tag=>['robots','googlebot'].includes(tag.name?.toLowerCase())&&/\b(?:noindex|none)\b/i.test(tag.content??'')))fail('Sitemap page blocks indexing: '+page);
+  if(metadata.some(tag=>tag['http-equiv']?.toLowerCase()==='refresh'))fail('Sitemap page redirects: '+page);
+}
+for(const route of ['/search/','/projects/foundations/search/','/404.html']){
+  const file=path.join(dist,route.slice(1),route.endsWith('/')?'index.html':'');
+  const head=(await text(file)).split('</head>')[0];
+  if(!head.includes('<meta name="robots" content="noindex,follow">'))fail('Utility page lacks noindex: '+route);
+  if(submittedURLs.has(origin+route))fail('Utility page appears in sitemap: '+route);
+}
+const readerRoute='/projects/foundations/reader/';
+const readerHead=(await text(path.join(dist,readerRoute.slice(1),'index.html'))).split('</head>')[0];
+if(!readerHead.includes('<link rel="canonical" href="'+origin+'/projects/foundations/contents/"'))fail('Saved-reader entry does not select the contents canonical');
+if(submittedURLs.has(origin+readerRoute))fail('Duplicate reader root appears in sitemap');
 const robots=await text(path.join(dist,'robots.txt'));
 for(const path of ['/sitemap.xml','/sitemap-core.xml'])if(!robots.includes('Sitemap: '+origin+path))fail('Missing Search Console sitemap discovery in robots.txt: '+path);
 
@@ -227,4 +262,4 @@ if(failures.size){
   for(const message of [...failures].slice(0,30))process.stderr.write(message+'\n');
   throw Error(failures.size+' custom-domain checks failed');
 }
-process.stdout.write('Custom domain '+origin+': '+routes.length+' entry points, '+counts.currentPages+' mutable pages, '+counts.frozenPages+' frozen pages, '+counts.svg+' SVGs and '+counts.links+' internal links checked; '+counts.frozenFiles+' byte-identical historical aliases, '+counts.jsonLinks+' search links and anchored feedback verified.\n');
+process.stdout.write('Custom domain '+origin+': '+routes.length+' entry points, '+sitemapURLs.length+' indexable canonical sitemap pages, '+counts.currentPages+' mutable pages, '+counts.frozenPages+' frozen pages, '+counts.svg+' SVGs and '+counts.links+' internal links checked; '+counts.frozenFiles+' byte-identical historical aliases, '+counts.jsonLinks+' search links and anchored feedback verified.\n');
