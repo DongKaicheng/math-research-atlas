@@ -414,7 +414,7 @@ export function loadHistoricalStatements(release, bytes) {
   return statements;
 }
 
-const shell = (route,title,body,extra = '',layout = '') => foundationsShell(route,title,body,{extra,layout});
+const shell = (route,title,body,extra = '',layout = '',canonical = route) => foundationsShell(route,title,body,{extra,layout,canonical});
 
 function crumb(links) {
   return '<nav class="book-crumb" aria-label="Breadcrumb"><ol>' + links.map(([route,title]) =>
@@ -462,7 +462,7 @@ function bookContents(native, route, coverage, pdf, reading) {
   const fallback = route === nativeReaderRoute ? '<noscript><p class="book-note">Saved reading links use JavaScript. Choose a chapter below or '+
     link(coverageRoute,'browse the Tag index')+'.</p></noscript>' : '';
   return shell(route,'Table of contents',`<header class="page-intro"><h1>Table of contents</h1>${foundationsPdfLink(pdf)}</header>
-    <p id="reader-location" hidden></p>${fallback}<div class="book-layout has-sidebar">${jumps}<div class="contents-text">${body}</div></div>`,script,'contents-page');
+    <p id="reader-location" hidden></p>${fallback}<div class="book-layout has-sidebar">${jumps}<div class="contents-text">${body}</div></div>`,script,'contents-page',contentsRoute);
 }
 
 function partChapterOutline(chapter, index, catalogue, coverage) {
@@ -776,7 +776,7 @@ function searchPage() {
   return shell(searchRoute,'Search Foundations',`<header class="page-intro"><h1>Search Foundations</h1></header>
     ${foundationsSearchForm({formId:'site-search'})}<div id="search-results" class="foundation-search-results"></div>
     <noscript><p>Search uses JavaScript. ${link(coverageRoute,'Browse the Tag index')} to find statements and proofs.</p></noscript>`,
-    '<script defer src="/assets/foundations-search.js"></script>','search-page');
+    '<meta name="robots" content="noindex,follow"><script defer src="/assets/foundations-search.js"></script>','search-page');
 }
 const gapDescriptions = new Map([
   ['Pinned English candidate. This sweep did not bind an independently signed whole proof and operative scope map for these exact spans.',

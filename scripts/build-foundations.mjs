@@ -7,6 +7,7 @@ import {foundationsBookRoute, retiredFoundationsRoutes} from './build-foundation
 import {createFoundationsNative, loadFoundationsNative, loadHistoricalStatements} from './build-foundations-native.mjs';
 import {bindReviewedProofs, createProofDependencies} from './build-foundations-dependencies.mjs';
 import {restoreFoundationsPdfCaptions} from './foundations-reading-editor.mjs';
+import {searchRoute} from './foundations-layout.mjs';
 
 const edition = 'sealed-1097';
 const editionManifest = 'ca3238c1f7a5f15f97bc2d976133e07796c0a0839796731772af0f86109a0b2d';
@@ -279,6 +280,8 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
     rows:native ? native.rows.map(({id,link,title,project,category,summary,coverage,keywords,body,status})=>
       ({id,link:url(link),title,project,category,summary,coverage,keywords,body,status})) : [],
     routes:[...fixed.values(),versionRoute,...editionRoutes,...active,...retired.keys()],
-    indexableRoutes:active,
+    // The reader root retains saved bookmarks but shares the contents canonical.
+    // Search is a utility page; its individual results have permanent Tag URLs.
+    indexableRoutes:active.filter(route=>route!==foundationsBookRoute&&route!==searchRoute),
   };
 }
