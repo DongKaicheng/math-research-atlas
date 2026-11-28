@@ -9,7 +9,10 @@ export function generateStaticParams() { return entries.map(({ id }) => ({ id })
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params; const entry = getEntry(id);
   if (!entry) return { title: "Record not found", robots: { index: false } };
-  return { title: entry.title, description: entry.summary, alternates: { canonical: "/entries/" + entry.id }, robots: entry.status === "draft" ? { index: false, follow: true } : undefined };
+  // Definition records retain the legacy draft status without being draft claims.
+  // Match their existing public "Definition" label; do not promote a proof status.
+  const isDraftClaim = entry.status === "draft" && entry.kind !== "definition";
+  return { title: entry.title, description: entry.summary, alternates: { canonical: "/entries/" + entry.id }, robots: isDraftClaim ? { index: false, follow: true } : undefined };
 }
 export default async function EntryPage({ params }: Props) {
   const { id } = await params; const entry = getEntry(id); if (!entry) notFound();
