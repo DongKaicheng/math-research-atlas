@@ -38,6 +38,16 @@
           const text=[item.id,item.title,item.summary,item.body,...item.keywords].join(' ').toLowerCase();
           return terms.every(term=>text.includes(term));
         });
+      const numbered=/^(?:(definition|lemma|proposition|theorem|corollary|remark|example)\s+)?((?:[1-9]\d*|[a-i])\.\d+\.\d+)$/i.exec(q);
+      if (numbered) {
+        const [,kind,number]=numbered;
+        const exactStatement=item=>item.project==='foundations' && item.keywords.some(keyword=>{
+          const [label,printed,...rest]=keyword.toLowerCase().split(' ');
+          return !rest.length && printed===number.toLowerCase() && (!kind || label===kind.toLowerCase());
+        });
+        // A longer number can match the ordinary text search. Place exact printed statements first.
+        matches.sort((a,b)=>Number(exactStatement(b))-Number(exactStatement(a)));
+      }
       add(results,'p',matches.length+(matches.length===1?' result':' results')+' for “'+q+'”','eyebrow');
       matches.forEach(item=>{
         const a=document.createElement('a');a.href=item.link;a.className='search-result';

@@ -6,6 +6,7 @@ import {augmentFoundationsLogic} from './build-foundations-logic.mjs';
 import {foundationsBookRoute, retiredFoundationsRoutes} from './build-foundations-web.mjs';
 import {createFoundationsNative, loadFoundationsNative, loadHistoricalStatements} from './build-foundations-native.mjs';
 import {bindReviewedProofs, createProofDependencies} from './build-foundations-dependencies.mjs';
+import {restoreFoundationsPdfCaptions} from './foundations-reading-editor.mjs';
 
 const edition = 'sealed-1097';
 const editionManifest = 'ca3238c1f7a5f15f97bc2d976133e07796c0a0839796731772af0f86109a0b2d';
@@ -167,7 +168,11 @@ export async function loadFoundationsRelease(root) {
     proofCoverageReview,tagRegistry,manuscriptGapTypes,historicalGapTypes});
   if (current) loaded.historicalStatements = loadHistoricalStatements(loaded,
     await regular(path.join(dir,'historical-gap-statements.json')));
-  if (requested?.revision > 1) loaded.update = await loadFoundationsUpdate(dir,requested,loaded);
+  if (requested?.revision > 1) {
+    loaded.update = await loadFoundationsUpdate(dir,requested,loaded);
+    loaded.activeReadingLocators=JSON.parse(await regular(path.join(dir,'active-reading-locators-1174.json')));
+    loaded.chapterIntroductions=JSON.parse(await regular(path.join(dir,'chapter-introductions.json')));
+  }
   return loaded;
 }
 
@@ -197,7 +202,14 @@ export async function buildFoundationsRelease({release, output, url, origin, bas
   const native=current ? createFoundationsNative(release,createProofDependencies(release)) : null;
   const projection=release.update && native ? buildFoundationsUpdate(release.update,native,release) : null;
   for (const [route,page] of projection?.active ?? []) native.pages.set(route,page);
-  const retired=native ? retiredFoundationsRoutes(release) : new Map();
+  if (projection) {
+    for (const [route,page] of native.pages) {
+      const tag=route.startsWith('/r/') && idPattern.test(route.slice(3,-1));
+      if (!tag && !route.startsWith(publicHome+'chapters/')) continue;
+      native.pages.set(route,restoreFoundationsPdfCaptions(page,release.update.readerPath,native.destinations));
+    }
+  }
+  const retired=native ? retiredFoundationsRoutes(release,projection?.proofBookmarks) : new Map();
   for (const [route,page] of native?.redirects ?? []) retired.set(route,page);
   const pages=path.join(output,'projects','foundations');
   const allowedExisting=new Set(['index.html','acknowledgements/index.html','versions/0/index.html']);

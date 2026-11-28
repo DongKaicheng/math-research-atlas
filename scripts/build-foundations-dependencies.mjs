@@ -55,13 +55,17 @@ export function bindReviewedProofs(native, review) {
   return {...native,tags,byKey,chapters};
 }
 
+// The native reader can export a direct-input line as linked Tags without its printed heading.
+const tagCitationLine = /^<p>\s*<a href="\/r\/(NAG-\d{6})\/">\1<\/a>(?:,\s*<a href="\/r\/(NAG-\d{6})\/">\2<\/a>)*(?:,?\s+and\s+<a href="\/r\/(NAG-\d{6})\/">\3<\/a>)?\.?\s*<\/p>\s*$/;
+
 export function adjacentProof(chapter,index) {
   const next=chapter.proofs.find(proof=>proof.index>index);
   if (!next) return null;
   const notes=chapter.blocks.slice(index+1,next.index);
   return notes.every(html=> {
     const text=readingText(html);
-    return !text || /^(?:References?|Direct inputs?|Proof inputs?|Proof links?|Dependencies|Source references)[.:]/i.test(text);
+    return !text || tagCitationLine.test(html) ||
+      /^(?:References?|Direct inputs?|Proof inputs?|Proof links?|Dependencies|Source references)[.:]/i.test(text);
   }) ? next : null;
 }
 
@@ -275,7 +279,9 @@ export function createProofDependencies(release) {
     byProof.set(proof.key,entry);
     for(const id of proof.owners)byId.set(id,entry);
   }
-  const visibleResults=new Map([...results.stable].filter(([id])=>usedResults.has(id)));
+  // Binding the Appendix G proof removes this self-reference from the dependency candidates.
+  // The former result URL stays available as a reader bookmark.
+  const visibleResults=new Map([...results.stable].filter(([id])=>usedResults.has(id) || id==='FND-7196AB6E460E'));
   const visibleByBlock=new Map([...results.byBlock].filter(([,result])=>usedResults.has(result.id)));
   return {byProof,byId,results:visibleResults,resultByBlock:visibleByBlock,policyByBlock};
 }

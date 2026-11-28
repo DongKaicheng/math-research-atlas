@@ -1,3 +1,6 @@
+import {link} from './foundations-layout.mjs';
+import {tagRoute} from './foundations-tag-register.mjs';
+
 const numberedStatement = /(<div class="(?:definition|lemma|proposition|theorem|corollary|construction|example|question|remark)">\s*<p><strong>[^<]+\.<\/strong>)((?:\s*<a href="\/r\/NAG-\d{6}\/">NAG-\d{6}<\/a>)*)\s*\.(?=\s|<)/g;
 const numberedRemark = /(<div class="remark">\s*<p><em>Remark) \d+(?:\.\d+)+(<\/em>)([\s\S]*?)(?=<\/p>)/g;
 const sourceAnchor = /\bid="(label-[0-9a-f]+)"/g;
@@ -18,6 +21,52 @@ const referenceOverrides = [
   ['f9sc:refined', 'appendix-i', 'Theorem I.2.10'],
 ];
 const globalChainClause = '/projects/foundations/chapters/appendix-c/#label-666e643a6e61673030323430353a676c6f62616c2d66696e6974652d6d6f64756c652d636861696e2d77656967687473';
+
+// Link references in prose while preserving existing links, MathML, and attributes.
+const readingTokens = /<(a|math)\b[^>]*>[\s\S]*?<\/\1>|<code>NAG-\d{6}<\/code>(?:(?:\/|,\s+(?:and\s+)?|\s+and\s+)<code>\d{6}<\/code>)*|<[^>]+>|[^<]+/g;
+const tagCitation = /\bNAG-\d{6}(?:\/\d{6})*\b/g;
+const tagDigits = /(?:NAG-)?\d{6}\b/g;
+
+export function linkFoundationsTagCitations(html, tags) {
+  const cite = caption => {
+    const id = caption.startsWith('NAG-') ? caption : 'NAG-'+caption;
+    return tags.has(id) ? link(tagRoute(id),caption) : caption;
+  };
+  return html.replace(readingTokens, (token, protectedElement) => {
+    if (protectedElement) return token;
+    if (token.startsWith('<code>')) return token.replace(tagDigits,cite);
+    return token.startsWith('<') ? token : token.replace(tagCitation,citation=>citation.replace(tagDigits,cite));
+  });
+}
+
+export function linkFoundationsProofInputs(html, destinations) {
+  return html.replace(readingTokens,(token,protectedElement)=>{
+    if (protectedElement || (token.startsWith('<') && !token.startsWith('<code>'))) return token;
+    return token.replace(/\b(?:NAG-)?\d{6}\b/g, caption=>{
+      const href=destinations.get(caption.replace(/^NAG-/,''));
+      return href ? link(href,caption) : caption;
+    });
+  });
+}
+
+export function linkFoundationsStacksCitations(html, tags) {
+  if (!tags) return html;
+  return html.replace(readingTokens,(token,protectedElement)=>{
+    if (protectedElement || token.startsWith('<')) return token;
+    return token.replace(/\bTags?\s+[A-Z0-9]{4}(?:\s+and\s+[A-Z0-9]{4})?\b/g, citation=>
+      citation.replace(/\b[A-Z0-9]{4}\b/g, tag=>
+        tags.includes(tag) ? link('https://stacks.math.columbia.edu/tag/'+tag,tag) : tag));
+  });
+}
+
+export function linkFoundationsBibliographyKeys(html, keys) {
+  if (!keys) return html;
+  return html.replace(readingTokens, (token, protectedElement) => {
+    if (protectedElement || token.startsWith('<')) return token;
+    return token.replace(/\b[A-Z][A-Za-z0-9]+\b/g, key =>
+      keys.includes(key) ? link('/projects/foundations/chapters/appendix-a/#ref-'+key,key) : key);
+  });
+}
 
 export function foundationsRemarkNumbers(destinations = {}) {
   const numbers = new Map();
@@ -49,6 +98,30 @@ export function foundationsReferenceLabels(native) {
     references.set(label, {href: route + '#' + anchor, title});
   }
   return references;
+}
+
+// Some numbered cross-references expanded into a duplicated macro label and
+// an intact link. Drop the label only when both target and number are bound.
+export function restoreFoundationsNumberedLinks(html, referenceLabels) {
+  return html.replace(/f8nmTag:([\w:-]+)\s+<code>f8nmTag:\1<\/code>\s+(<a href="([^"]+)">([A-Z0-9]+(?:\.\d+)+)<\/a>)(?:\s+(?=[,.;:]))?/g,
+    (source,label,link,href,number) => {
+      const reference=referenceLabels.get(label);
+      if (reference?.href!==href || !reference.title.endsWith(' '+number)) return source;
+      return link;
+    });
+}
+
+// A named PDF statement and the current reader must identify the same author
+// label. Keep the PDF link and use the printed number in place of the label.
+export function restoreFoundationsPdfCaptions(html, readerPath, destinations) {
+  return html.replace(/(<a href="([^"#]+)#nameddest=([^"#]+)">)\[([\w.:-]+)\]<\/a>/g,
+    (citation, opening, pdf, destination, label) => {
+      if (pdf!==readerPath) return citation;
+      const number=referenceNumber.exec(destination)?.[2];
+      const authorAnchor='label-'+Buffer.from(label).toString('hex');
+      if (!number || !destinations[destination]?.endsWith('#'+authorAnchor)) return citation;
+      return opening+number+'</a>';
+    });
 }
 
 export function editFoundationsReadingHtml(html, remarkNumbers, referenceLabels) {

@@ -16,6 +16,7 @@ const expect=(condition,message)=>{if(!condition)throw Error('Foundations logic:
 const keyID=/^[A-Za-z0-9_:.@()/+-]{1,160}$/;
 const keyAnchor=key=>'argument-'+key.toLowerCase().replace(/[^a-z0-9_-]/g,'-');
 const chapterRoute=slug=>index+'chapters/'+slug+'/';
+export const proofMapArgumentHref=(logicRoot,chapter,key)=>logicRoot+'chapters/'+chapter+'/#'+keyAnchor(key);
 const file=route=>route.slice(1)+'index.html';
 
 async function regular(file) {
@@ -92,7 +93,7 @@ function listInputs(items,nodes) {
 function argument(data,key,{principal=false,body=false,logicRoot=index}={}) {
   const a=data.arguments[key], node=data.nodes[key];
   const argumentID=principal?'relation-uses-'+key:keyAnchor(key);
-  const location=ref(logicRoot+'chapters/'+a.chapter+'/#'+keyAnchor(key),'Chapter argument');
+  const location=ref(proofMapArgumentHref(logicRoot,a.chapter,key),'Chapter argument');
   const inputs=a.inputs.length
     ? '<p class="logic-gate">'+(a.inputs.length>1?'AND · joint registered proof inputs':'Registered proof input')+'</p>'+listInputs(a.inputs,data.nodes)
     : '<p>No addressable selected proof input is recorded in this projection.</p>';
@@ -214,10 +215,14 @@ export function currentFoundationsLogicPages(data, bytes, logicRoot, shell) {
   for(const [slug,title] of Object.entries(data.chapters)) {
     const route=logicRoot+'chapters/'+slug+'/';
     const keys=Object.keys(data.arguments).filter(key=>data.arguments[key].chapter===slug);
+    const moved=data.relocatedArguments.get(slug) ?? [];
+    const historical=moved.length ? '<section class="logic-panel"><h2>Arguments moved to their reading chapters</h2><ul>'+
+      moved.map(key=>'<li id="'+keyAnchor(key)+'">'+ref(proofMapArgumentHref(logicRoot,data.arguments[key].chapter,key),
+        key+' · '+data.nodes[key].label)+'</li>').join('')+'</ul></section>' : '';
     const body='<p>'+ref(logicRoot,'Principal map')+' · '+ref(project+'chapters/'+slug+'/','Read the chapter')+
       ' · '+feedback(route)+'</p><h1>'+esc(title)+' · proof inputs</h1>'+
       (keys.length ? keys.map(key=>renderArgument(key)).join('') : '<p>No selected proof input record is exported for this chapter.</p>')+
-      gapsHTML(cases.filter(([,gap])=>gap.chapter===slug),'Original-scope cases');
+      historical+gapsHTML(cases.filter(([,gap])=>gap.chapter===slug),'Original-scope cases');
     pages.set(route,shell(route,title+' · proof inputs',body));
   }
   return pages;
