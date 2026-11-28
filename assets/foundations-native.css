@@ -105,7 +105,8 @@ summary { cursor: pointer; }
 .book-text img { max-width: 100%; height: auto; }
 .book-text figure { margin: 1.25em 0; }
 .book-text hr { border: 0; border-top: 1px solid var(--rule); margin-block: 2em; }
-.book-text table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 1.2rem; font-size: .96em; }
+/* Keep KaTeX’s positioned accessibility layer inside the scrollable table. */
+.book-text table { position: relative; display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 1.2rem; font-size: .96em; }
 .book-text th, .book-text td { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
 .book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark,.fthreeHStrictVal,.fthreeHStrictGerm) { padding: .75em .95em; background: var(--surface); border-inline-start: 2px solid #8ca58d; margin: 1.05em 0; }
 .book-text :is(.theorem,.lemma,.proposition,.corollary,.definition,.example,.construction,.question,.remark,.fthreeHStrictVal,.fthreeHStrictGerm) > :last-child { margin-bottom: 0; }
@@ -115,14 +116,23 @@ summary { cursor: pointer; }
 .book-text li + li { margin-top: .35em; }
 .book-text :is(h2,h3,h4,h5,h6) { margin-block: 1.6em .55em; line-height: 1.29; }
 .book-text :is(div,span):has(> [id^="label-"]:target), .book-text :is(h2,h3):target { background: var(--tint); }
-.book-equation { display: block; max-width: 100%; overflow-x: auto; margin: .68em 0; padding-block: .23em; }
+.book-equation { position: relative; display: block; max-width: 100%; overflow-x: auto; margin: .68em 0; padding-block: .23em; }
 .book-equation > .katex-display { width: max-content; min-width: 100%; margin: 0; }
+.book-inline-equation { display: inline-block; vertical-align: middle; margin: 0; padding: 0; }
 .book-text .katex { font-size: 1.08em; }
 .chapter-proof-links { display: flex; flex-wrap: wrap; gap: .3rem .8rem; margin: .65rem 0 .15rem; font: .81rem/1.4 var(--sans); }
 .chapter-proof-links a { font-weight: 550; }
 .chapter-proof-links:target { background: var(--tint); }
 .book-math-fallback { font-size: .88em; overflow-wrap: anywhere; }
-.book-bib-item { display: grid; grid-template-columns: auto 1fr; gap: 1em; margin-bottom: .65em; }
+.book-bib-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1em; margin-bottom: .65em; }
+.book-bib-item a { overflow-wrap: anywhere; }
+.book-result-link[data-statement-bookmark] + div [id^="label-"] { scroll-margin-block-start: 3rem; }
+.book-result-link.early-status-bookmark + div [id^="label-"],
+#label-70726f703a6d656173757265 { scroll-margin-block-start: 4.5rem; }
+.book-result-link.midchapter-status-bookmark + div [id^="label-"] { scroll-margin-block-start: 5.5rem; }
+.book-text div span[id^="label-"][data-late-scope-bookmark] { scroll-margin-block-start: 6rem; }
+.book-text h3[data-numbered-heading] + div[id^="label-"] { scroll-margin-block-start: 5rem; }
+.book-text h2[data-numbered-heading] + div[id^="label-"] { scroll-margin-block-start: 6rem; }
 .book-text .book-result-link, .book-text .book-gap-marks { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .65rem; margin: .85rem 0 -.75rem; font: .84rem/1.4 var(--sans); }
 .book-tag-status { color: var(--muted); font: .77rem/1.4 var(--sans); }
 .book-source-open, .book-gap-marks a { color: var(--open-ink); font-weight: 600; }
@@ -226,3 +236,5 @@ summary { cursor: pointer; }
   overflow-x: auto;
 }
 .sealed-record .math.display { padding-block: .35rem; }
+.sealed-record .equation-number,
+.book-equation + .equation-number { display: block; text-align: end; }

@@ -13,10 +13,11 @@ const noteAnchor = index => `source-proof-obligation-${index}`;
 const statementAnchor = index => `coverage-statement-${index}`;
 const hash = html => createHash('sha256').update(html).digest('hex');
 
-export function foundationsCoverage({graph, rows, native, meta, contents, proofCoverageReview}, policyByBlock) {
+export function foundationsCoverage({graph, rows, native, meta, contents, proofCoverageReview, update}, policyByBlock) {
   const chapters = new Map(Object.entries(graph.chapters).map(([slug, title]) => {
     const route = chapterPrefix + slug + '/';
-    return [slug, {slug, title, route, native: native.chapters.has(route), gaps: [], tags:[]}];
+    const currentTitle=update && slug==='unlocated' ? 'Formerly unlocated records' : title;
+    return [slug, {slug, title:currentTitle, route, native: native.chapters.has(route), gaps: [], tags:[]}];
   }));
   const byRoute = new Map([...chapters.values()].map(chapter => [chapter.route,chapter]));
   const rowById = new Map(rows.map(row => [row.id,row]));
@@ -26,7 +27,9 @@ export function foundationsCoverage({graph, rows, native, meta, contents, proofC
     for (const [,id] of html.matchAll(chapterRecord)) {
       if (!rowById.has(id) || registered.has(id)) throw Error('Duplicate or unknown chapter Tag ' + id);
       registered.add(id);
-      chapter.tags.push(rowById.get(id));
+      const source=update && !update.data.records[id] ? native.byKey.get(native.tags[id]?.key) : null;
+      const currentChapter=source && byRoute.get(source.route);
+      (currentChapter ?? chapter).tags.push(rowById.get(id));
     }
   }
   if (registered.size !== rows.length) throw Error('Foundations chapter Tag totals do not reconcile');
